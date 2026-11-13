@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation
+public import SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 
 /-!

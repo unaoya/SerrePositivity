@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.Util.Citation
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Identity
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
@@ -18,7 +20,7 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 原典は R ↦ R₁ を超限回くり返すとだけ書く。Lean では後続基数による一元ずつの飽和と `SmallObject.SuccStruct.iterationFunctor` で ω₁ まで反復し、終段は可算個の証人の降下で自動的に p 進完備になる。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 AndreFlatness、BS の集約。
@@ -26,7 +28,7 @@ AndreFlatness、BS の集約。
 
 universe u v
 
-/-! ## AlgebraColimit（旧 Andre/Transfinite/AlgebraColimit.lean） -/
+/-! ## AlgebraColimit -/
 
 @[expose] public noncomputable section AlgebraColimit
 
@@ -243,7 +245,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end AlgebraColimit
 
-/-! ## CountableRelations（旧 Andre/Transfinite/CountableRelations.lean） -/
+/-! ## CountableRelations -/
 
 @[expose] public noncomputable section CountableRelations
 
@@ -412,7 +414,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end CountableRelations
 
-/-! ## ω₁ 塔の終段における三性質（旧 Andre/Transfinite/Terminal.lean）
+/-! ## ω₁ 塔の終段における三性質
 
 BS 著者版 Theorem 7.14（著者版 p.61）の超限塔が与えられた後の合成を行う。
 塔の存在を追加の公理や引用として宣言しない。
@@ -476,7 +478,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end Terminal
 
-/-! ## AlgebraCategory（旧 Andre/Transfinite/AlgebraCategory.lean） -/
+/-! ## AlgebraCategory -/
 
 @[expose] public noncomputable section AlgebraCategory
 
@@ -893,7 +895,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end AlgebraCategory
 
-/-! ## Existence（旧 Andre/Transfinite/Existence.lean） -/
+/-! ## Existence -/
 
 @[expose] public noncomputable section Existence
 
@@ -941,30 +943,6 @@ theorem exists_root_successor (X : AndreTowerAlgebra R p) :
   refine ⟨Y, ⟨φ, rfl⟩, ?_⟩
   intro P hP hdeg
   exact ⟨ρ ⟨P, hP, hdeg⟩, hroot ⟨P, hP, hdeg⟩⟩
-
-/-- ## 概要
-任意の可換環 R は、自身上で任意のイデアル I に関して完全忠実平坦である。
-BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
-
-## 方針
-R の平坦性から正次数 Tor を消し、剰余テンソルを剰余環自身と線形同型で比較する。
-
-## 規約
-基底環・各段・終段と添字は Type u に留める。後続操作は正次数条件付きの指定 step を使う。
-元の初段の係数射に関する完全忠実平坦性を保持する。
-
-## 使われ方
-一段拡大の成果を step に入力し、同じ宇宙の André 拡大の存在結論を得る。
--/
-theorem isCompletelyFaithfullyFlat_self (I : Ideal R) : IsCompletelyFaithfullyFlat I R := by
-  constructor
-  · intro N _ _ hN
-    apply (isConcentratedInDegreeZero_derivedTensor_iff R N).mpr
-    intro n hn
-    obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hn)
-    exact torModule_subsingleton_of_flat R N m
-  · exact Module.FaithfullyFlat.of_linearEquiv (R ⧸ I) (R ⧸ I)
-      (TensorProduct.AlgebraTensorModule.rid R (R ⧸ I) (R ⧸ I))
 
 /-- ## 概要
 指定 step の存在証明から、塔の代数の後続対象を選ぶ。
@@ -1124,7 +1102,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end Existence
 
-/-! ## SingleRoot（旧 Andre/Transfinite/SingleRoot.lean） -/
+/-! ## SingleRoot -/
 
 @[expose] public noncomputable section SingleRoot
 
@@ -1206,7 +1184,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end SingleRoot
 
-/-! ## FamilySaturation（旧 Andre/Transfinite/FamilySaturation.lean） -/
+/-! ## FamilySaturation -/
 
 @[expose] public noncomputable section FamilySaturation
 
@@ -1401,7 +1379,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end FamilySaturation
 
-/-! ## FamilyExtension（旧 Andre/Transfinite/FamilyExtension.lean） -/
+/-! ## FamilyExtension -/
 
 @[expose] public noncomputable section FamilyExtension
 
@@ -1479,7 +1457,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end FamilyExtension
 
-/-! ## BS 著者版 Theorem 7.14：André の完全忠実平坦な絶対整閉拡大（旧 Andre/Transfinite/Theorem714.lean）
+/-! ## BS 著者版 Theorem 7.14：André の完全忠実平坦な絶対整閉拡大
 
 A1 の完全 prism 商上の一元根付き拡大を一般の perfectoid 基底へ移し、
 固定した多項式族を一元ずつ飽和させて指定 step を証明する。
@@ -1519,7 +1497,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end Theorem714
 
-/-! ## DirectedCompletion（旧 Andre/Transfinite/DirectedCompletion.lean） -/
+/-! ## DirectedCompletion -/
 
 @[expose] public noncomputable section DirectedCompletion
 
@@ -1747,7 +1725,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end DirectedCompletion
 
-/-! ## André E3：BS 著者版 Theorem 7.14 の超限反復と証明済み存在定理（旧 Andre/Transfinite/Basic.lean）
+/-! ## André E3：BS 著者版 Theorem 7.14 の超限反復と証明済み存在定理
 
 ## 概要
 
@@ -1771,3 +1749,8 @@ A1 の完全 prism 商上の一元拡大を任意の perfectoid 基底へ移す�
 が元の署名の無条件存在定理を供給する。
 Inputs はこの無条件版の公開報告後、別保存単位で証明済み入口に置換した。
 -/
+
+/-! Reviewed literature correspondences. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 7.14"] _root_.SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed

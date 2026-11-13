@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationPointwiseComparison
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.FibrationPointwiseComparison
 public import SerrePositivity.KST.Spectra.LoopHomotopyNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsoSquareDetection
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsoSquareDetection
 
 /-!
 概要：標的の標準基点での正次数の同型性から、loop の全基点の同型性を得る。

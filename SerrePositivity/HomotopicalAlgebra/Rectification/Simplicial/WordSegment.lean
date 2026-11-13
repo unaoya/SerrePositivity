@@ -3,7 +3,7 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SegmentWords
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Cubes.ParameterCube
 
 /-!
 # 中断した任意モデル源への一般化：WordSegment

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationInitialPreservation
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationRightAdjunctionDescent
 public import SerrePositivity.KST.LocalizingInvariants.PointTerminalAdjunction
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 
 /-!
 概要：任意の辺集合の局所化は終対象と零対象を保ち、pointed な商を実際に与える。
@@ -35,14 +35,14 @@ lemma localization_preservesTerminal {X Q : SSet.{u}} [Quasicategory X] [Quasica
 
 lemma localization_preservesZero {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
     (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
-    (x : X _⦋0⦌) (hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) :=
+    (x : X _⦋0⦌) (hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) :=
   ⟨localization_preservesInitial F W hF x hx.1, localization_preservesTerminal F W hF x hx.2⟩
 
-instance edgeLocalization_hasZeroVertex (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
-    (W : Set (X _⦋1⦌)) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization X W) :=
-  ⟨⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap X W).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).vertex,
+instance edgeLocalization_hasZeroVertex (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
+    (W : Set (X _⦋1⦌)) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization X W) :=
+  ⟨⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap X W).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).vertex,
     localization_preservesZero _ W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization X W) _
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero⟩⟩
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero⟩⟩
 
 end SerrePositivity.KST.LocalizingInvariants

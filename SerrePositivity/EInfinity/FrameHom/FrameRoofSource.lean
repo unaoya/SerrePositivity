@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.LeftKanShapeIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofComparisonTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RoofComparisonTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalOpposite
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition
 
@@ -35,7 +35,7 @@ lemma roofSourceIso_degree : (roofSourceIso A Y).hom ≫ pullback.snd _ _ =
   exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeIso_hom_projection A Y
 
 lemma roofSourceIso_over : (roofSourceIso A Y).hom ≫ pullback.fst _ _ =
-    nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom := by
+    nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom := by
   rw [roofSourceIso, Iso.trans_hom, Category.assoc, pullbackSymmetry_hom_comp_fst]
   exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveLeftKanShapeMap_over A Y
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NormalizedEdgeFamilyHomotopy
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.NormalizedEdgeFamilyHomotopy
 
 /-!
 概要：元の全辺の族と native な前合成の比較を、終点固定の実際の円柱として保持する。

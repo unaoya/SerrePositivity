@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.StageComparisonNaturality
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 public import SerrePositivity.KST.Spectra.SpectrumWhiteheadEquivalence
 public import SerrePositivity.KST.Spectra.LoopMapBasedDetection
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.ArrowData

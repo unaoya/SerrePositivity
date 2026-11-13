@@ -1,5 +1,5 @@
 import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
-import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt

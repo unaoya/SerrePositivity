@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.PastingOuterColimitReplacement
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareDuality
+public import SerrePositivity.InfinityCategories.HA.Section6_1_1.SquareDuality
 
 /-!
 概要：五頂点図式を保つ延長は左四角形と下側の合成三角形を保つ。

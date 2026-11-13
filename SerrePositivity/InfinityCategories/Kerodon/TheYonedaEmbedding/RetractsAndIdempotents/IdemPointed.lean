@@ -23,17 +23,17 @@ namespace SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Retracts
 
 /-- 元の C の指定零頂点の同じ Yoneda 像は、元の Idem(C) の零頂点。 -/
 lemma idemYoneda_isZeroVertex {C : SSet.{u}} [Quasicategory C]
-    {z : C _⦋0⦌} (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda C).app (Opposite.op ⦋0⦌) (ULift.up z)) := by
-  have h₀ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := (SSet.uliftFunctor.{u + 1, u}).obj C) (ULift.up z) :=
+    {z : C _⦋0⦌} (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda C).app (Opposite.op ⦋0⦌) (ULift.up z)) := by
+  have h₀ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := (SSet.uliftFunctor.{u + 1, u}).obj C) (ULift.up z) :=
     ⟨(_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.isInitialVertex_iff_ulift z).mp hz.1, (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.isTerminalVertex_iff_ulift z).mp hz.2⟩
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda C)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isIdempotentCompletion C) h₀
 
 /-- 元の C が pointed なら、元の Yoneda retract 閉包 Idem(C) も pointed。 -/
-instance idem_hasZeroVertex (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Idem C) := by
-  obtain ⟨z, hz⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex.exists_zero (X := C)
+instance idem_hasZeroVertex (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Idem C) := by
+  obtain ⟨z, hz⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex.exists_zero (X := C)
   exact ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda C).app (Opposite.op ⦋0⦌) (ULift.up z), idemYoneda_isZeroVertex hz⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents

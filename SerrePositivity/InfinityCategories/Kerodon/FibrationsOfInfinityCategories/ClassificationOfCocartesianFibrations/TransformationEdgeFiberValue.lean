@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftUnstraighteningParametrizedTransport
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointedTransformationPointHom
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpaceEdgeTransportValue
 
 /-!
 概要：元の全変換空間の辺のfiber作用を、その同じ辺の点での空間値へ結ぶ。

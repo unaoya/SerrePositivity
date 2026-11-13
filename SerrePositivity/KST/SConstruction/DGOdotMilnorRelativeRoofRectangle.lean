@@ -27,7 +27,7 @@ structure DGOdotMilnorRelativeRoofRectangleInput where
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram
   image : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputPerfectNu R)
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary
-  kernel_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare rectangle.diagram 2) 0 0 =
+  kernel_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare rectangle.diagram 2) 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)
 
 namespace DGOdotMilnorRelativeRoofRectangleInput
@@ -38,7 +38,7 @@ variable {R d h} (v : DGOdotMilnorRelativeRoofRectangleInput R d h)
 規約：S 内の元始域頂点等号を要求しない。使われ方：元入力の値の回収。 -/
 def sourceRoof : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare v.rectangle.diagram 2) 0 0) := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare v.rectangle.diagram 2) 0 0) := by
   rw [v.kernel_vertex]
   exact dgOdotMilnorRelativeSourceRoof R d h
 
@@ -56,7 +56,7 @@ theorem comparison_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 def sourceValueIso (E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((dgKInputPerfectNu R ≫ E).app _
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare v.rectangle.diagram 2) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare v.rectangle.diagram 2) ≫
         dgKInputPerfectNu R ≫ E) 0 0) :=
   v.rectangle.sourceValueIso v.sourceRoof E
 

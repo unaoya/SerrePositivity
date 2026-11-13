@@ -18,10 +18,10 @@ public import SerrePositivity.BhattScholze.Delta.Division.Basic
 BS 著者版 Remark 7.15 の包に向けて、δ 除算包の完備化後の剰余と正則性を調べる。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPD`、`PowerRootEnvelope/CompletionPrism`、`PowerRootEnvelope/Unconditional/Residue`、`Variants/MonicRootedExtension`。
@@ -29,7 +29,7 @@ BS 著者版 Remark 7.15 の包に向けて、δ 除算包の完備化後の剰�
 
 universe u v w
 
-/-! ## André E1・E2：実完備化後の Frobenius 比較と二重剰余（旧 Andre/Remark715/DeltaDivisionFrobeniusCompletedResidue.lean）
+/-! ## 実完備化後の Frobenius 比較と二重剰余
 
 ## 概要
 
@@ -127,7 +127,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFrobeniusCompletedResidue
 
-/-! ## André E1・E2：Frobenius 側の実完備化剰余を raw 剰余へ戻す（旧 Andre/Remark715/DeltaDivisionFrobeniusCompletionToRaw.lean）
+/-! ## Frobenius 側の実完備化剰余を raw 剰余へ戻す
 
 ## 概要
 
@@ -216,7 +216,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFrobeniusCompletionToRaw
 
-/-! ## André E1・E2：実完備化の剰余を raw p 除算剰余へ接続（旧 Andre/Remark715/DeltaDivisionCompletionPResidue.lean）
+/-! ## 実完備化の剰余を raw p 除算剰余へ接続
 
 ## 概要
 
@@ -286,7 +286,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionCompletionPResidue
 
-/-! ## André E1・E2：実完備化の二元剰余と標準主 pd 表示（旧 Andre/Remark715/DeltaDivisionCompletionPrincipalPD.lean）
+/-! ## 実完備化の二元剰余と標準主 pd 表示
 
 ## 概要
 
@@ -364,7 +364,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionCompletionPrincipalPD
 
-/-! ## André E1・E2：有限 mod p 関係商での次関係の正則性（旧 Andre/Remark715/DeltaDivisionFiniteModPrimeRegularity.lean）
+/-! ## 有限 mod p 関係商での次関係の正則性
 
 ## 概要
 
@@ -539,7 +539,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFiniteModPrimeRegularity
 
-/-! ## André E1・E2：有限 δ 関係商の二重剰余と標準一重商（旧 Andre/Remark715/DeltaDivisionFinitePrimeQuotients.lean）
+/-! ## 有限 δ 関係商の二重剰余と標準一重商
 
 ## 概要
 
@@ -709,7 +709,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFinitePrimeQuotients
 
-/-! ## André E1・E2：有限 δ 関係商の p,d 正則性を次段へ保つ（旧 Andre/Remark715/DeltaDivisionFiniteRegularStep.lean）
+/-! ## 有限 δ 関係商の p,d 正則性を次段へ保つ
 
 ## 概要
 
@@ -839,7 +839,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFiniteRegularStep
 
-/-! ## André E1・E2：raw Frobenius 係数変更と二つの剰余（旧 Andre/Remark715/DeltaDivisionFrobeniusResidue.lean）
+/-! ## raw Frobenius 係数変更と二つの剰余
 
 ## 概要
 
@@ -989,7 +989,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFrobeniusResidue
 
-/-! ## André E1・E2：最初の一元 raw 関係商の p,d 正則性（旧 Andre/Remark715/DeltaDivisionUnaryFiniteInitialRegular.lean）
+/-! ## 最初の一元 raw 関係商の p,d 正則性
 
 ## 概要
 
@@ -1133,7 +1133,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionUnaryFiniteInitialRegular
 
-/-! ## André E1・E2：正則対上の一元 raw δ 除算包の p 正則性（旧 Andre/Remark715/DeltaDivisionUnaryRawRegular.lean）
+/-! ## 正則対上の一元 raw δ 除算包の p 正則性
 
 ## 概要
 
@@ -1237,7 +1237,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionUnaryRawRegular
 
-/-! ## André E1・E2：一元 raw δ 包の正則対（旧 Andre/Remark715/DeltaDivisionUnaryRawPairRegular.lean）
+/-! ## 一元 raw δ 包の正則対
 
 ## 概要
 

@@ -71,7 +71,7 @@ def zeroOuterSpanFamilyOfArrows {A X : SSet.{u}} (L R : A ⟶ _root_.SerrePositi
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (R.app (Opposite.op ⦋0⦌) v)
 
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
-instance zeroOuterSpanSource_trivialKanFibration (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] :
+instance zeroOuterSpanSource_trivialKanFibration (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroOuterSpanSource X) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).mpr
   intro n
@@ -107,11 +107,11 @@ instance zeroOuterSpanSource_trivialKanFibration (X : SSet.{u}) [_root_.SerrePos
 
 
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
-lemma zeroOuterSpanSourceFiber_isContractibleKan (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+lemma zeroOuterSpanSourceFiber_isContractibleKan (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (x : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (zeroOuterSpanSource X) x) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan _ _
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
-instance zeroOuterSpanSourceFiber_kanComplex (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+instance zeroOuterSpanSourceFiber_kanComplex (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (x : X _⦋0⦌) : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (zeroOuterSpanSource X) x) :=
   (zeroOuterSpanSourceFiber_isContractibleKan X x).kanComplex
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

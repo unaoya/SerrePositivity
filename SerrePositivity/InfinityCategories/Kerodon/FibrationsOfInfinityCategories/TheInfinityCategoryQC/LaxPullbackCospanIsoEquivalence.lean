@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CospanPathLaxSpan
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 /-!
 概要：全関手同型で可換な cospan の三成分同値から、元二射影を保つ全 lax 比較を構成する。
 方針：可逆 path 置換上の二厳密比較を合成し、元の入力 path と逆の往復同型で射影を回収する。

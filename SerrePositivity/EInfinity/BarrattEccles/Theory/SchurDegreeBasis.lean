@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.SchurDegreeDecomposition
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ArityFreeRepresentation
 public import SerrePositivity.EInfinity.BarrattEccles.Sequence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.TensorBasis
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.TensorBasis
 
 /-!
 # Schur 複体の次数付き基底の移送

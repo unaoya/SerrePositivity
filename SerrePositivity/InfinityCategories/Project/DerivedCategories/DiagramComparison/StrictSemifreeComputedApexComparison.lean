@@ -46,7 +46,7 @@ lemma coconeFamily_apex_evaluation {P I D : SSet.{u + 1}}
 
 /-- 同じ計算済み全余錐族のapexの全関手。 -/
 def strictSemifreeComputedApexFamily :
-    nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶ derivedInfinityCategory A :=
+    nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   lift (𝟙 _) (SSet.stdSimplex.isTerminalObj₀.from _) ≫
     (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁
       joinInr ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0]) ≫
@@ -75,7 +75,7 @@ def strictSemifreeComputedNativeApexIso :
   have e := (strictSemifreeComputedCoconeFamilyIso A).postcomp
     (coconeApexEvaluation
       ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-      (derivedInfinityCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
   rw [coconeFamily_apex_evaluation, coconeFamily_apex_evaluation] at e
   rw [strictSemifreeComputedColimitFamily_evaluation] at e
   rw [specifiedNativeApex_eq]

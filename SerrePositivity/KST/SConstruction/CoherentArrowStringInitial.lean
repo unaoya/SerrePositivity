@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowStrings
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CoherentArrowStrings
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.OrdinaryComparisonPrism
 public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 

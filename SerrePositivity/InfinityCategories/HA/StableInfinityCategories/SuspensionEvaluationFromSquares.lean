@@ -17,7 +17,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 
 /-- 同じ固定 span の普遍性と suspension の全単体構成。 -/
 lemma suspensionDiagramEvaluation_source_trivialKanFibration_of_squares (X : SSet.{u})
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (h : ∀ x : X _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare x)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.suspensionDiagramEvaluation X 0 0) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2

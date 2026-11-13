@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.GammaZeroRing
 public import SerrePositivity.KST.Comparison.DGAlgebra
 
@@ -133,3 +135,8 @@ def dgAlgebraComponentsH0RingEquiv (A : DGAlgebraModel R) :
   exact gammaEndH0RingEquiv (R := R) PUnit.unit
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.4.4" (partial := component) "仮定：可換環 R 上の一対象 dg 圏としての dg 代数（HA と一致する dg 模型）。結論：閉零射を境界で割った H⁰ に自己射の合成による環構造を与える（零次の環の部分に一致）。全次数の次数付き R 代数と擬同型による全次数の環同型の判定は含まれない。"] _root_.SerrePositivity.KST.Comparison.dgAlgebraH0Ring

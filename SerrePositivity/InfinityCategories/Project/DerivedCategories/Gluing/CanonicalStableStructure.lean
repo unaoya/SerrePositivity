@@ -1,5 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.UniverseDerivedExactness
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.UniverseTransport.UniverseDerivedExactness
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.NativeSemiorthogonal
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackStable
 /-!
@@ -34,7 +36,7 @@ lemma dgGluingCanonicalLaxPullback_isStable :
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullback_isStable _ _
 
 lemma dgGluingCanonicalLaxPullback_cofiber_iff
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullback (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullback (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda.{u, v, w} R C)
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedCoefficient R C D M))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare t.square ↔
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (t.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst
@@ -89,3 +91,10 @@ lemma dgGluingCanonicalTammeProjectionEquivalence_snd :
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTammeProjectionEquivalence_snd R C D M hC hD Φ _ _ hΦ
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KL "Construction §4.1"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCanonicalLaxPullback_isStable
+attribute [cite LT "Eq (5)" (partial := component) "仮定：dg gluing または指定 dg Milnor 四角形（Lean が強い）。結論：実 lax 引き戻しの安定性と native モデル比較。任意の ∞ 圏の図式一般での主定理の入力より範囲が狭い（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCanonicalLaxPullback_isStable
+attribute [cite LT "Eq (6)" (partial := component) "仮定：dg gluing または指定 dg Milnor 四角形（Lean が強い）。結論：実 lax 引き戻しの安定性と native モデル比較。任意の ∞ 圏の図式一般での主定理の入力より範囲が狭い（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCanonicalLaxPullback_isStable

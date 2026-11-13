@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.RightJoinCoproduct
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.RightJoinCoproduct
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.IteratedSliceOverRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.InnerFiber
 

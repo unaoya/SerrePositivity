@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumPiConnectivity
 public import SerrePositivity.KST.LocalizingInvariants.StableValueFunctor
 public import SerrePositivity.KST.LocalizingInvariants.Invariant
@@ -38,3 +40,8 @@ lemma IsKConnectiveOn.levelMap_connected {k n : ℤ}
   exact h.2.2 (f.app m) n hn ((hc m).piZeroIso hn) (hc m)
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Def 2.5" (partial := component) "仮定：可換基礎環上の dg 代数または U・Perf の指定模型と整数係数（Lean が強い）。結論：π₀ 同型で n≥1 の連結射について Φ の連結度が n+k になるという定義。一般 E₁ 環スペクトル・Λ 係数は対象外（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.IsKConnectiveOn

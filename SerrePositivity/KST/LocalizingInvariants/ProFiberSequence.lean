@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramCategory
 public import SerrePositivity.KST.LocalizingInvariants.ProSpectrumValues
 
@@ -63,3 +65,12 @@ lemma exact_base (n : ℕ) (j : ℤ) (x : (groups D 1 1 (j + 1)).obj n) :
 
 end ProFiberSequence
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (1.2)" (partial := component) "仮定：すでにレベルごとのファイバー列を与える（Lean が強い）。結論：各次数の境界と完全性。抽象ブローアップの非連結 K の四角形からこの列を得る部分は別（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.exact_base
+attribute [cite KST "Eq (1.2)" (partial := component) "仮定：すでにレベルごとのファイバー列を与える（Lean が強い）。結論：各次数の境界と完全性。抽象ブローアップの非連結 K の四角形からこの列を得る部分は別（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.exact_fiber
+attribute [cite KST "Eq (1.2)" (partial := component) "仮定：すでにレベルごとのファイバー列を与える（Lean が強い）。結論：各次数の境界と完全性。抽象ブローアップの非連結 K の四角形からこの列を得る部分は別（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.exact_total
+attribute [cite KST "Eq (6.1)" (partial := component) "仮定：レベルごとのファイバー列を指定する（Lean が強い）。結論：各次数の列の完全性。Δ^j 上の具体的な双相対 K のファイバーの三項を構成しない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.exact_fiber
+attribute [cite KST "Eq (6.1)" (partial := component) "仮定：レベルごとのファイバー列を指定する（Lean が強い）。結論：各次数の列の完全性。Δ^j 上の具体的な双相対 K のファイバーの三項を構成しない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.exact_total

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.YonedaBaseNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalPrecompositionPostMap
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.YonedaBaseNaturality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.IntervalPrecompositionPostMap
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaYonedaEvaluation
 
 /-!

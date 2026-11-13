@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStrictGluingFunctor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.PrimitiveComparison
 
 /-!
 概要：元全 Hom 自然な閉比較から作った厳密 gluing 関手の第三比較は零である。

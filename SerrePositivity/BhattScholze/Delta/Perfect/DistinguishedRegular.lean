@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
@@ -25,7 +27,7 @@ fd = 0 に δ と φ を当てて mod p で f^{2p} = 0 を得、被約性と p �
 @[expose] public noncomputable section
 universe u
 
-/-! ## distinguished元の非零因子性（旧 Delta/Perfect/DistinguishedRegular.lean）
+/-! ## distinguished元の非零因子性
 
 BS 著者版 Lemma 2.34(1)。mod pの被約性から零因子のp可除性を導き、
 pの消去とp進分離性により零因子を零と判定する。
@@ -108,7 +110,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DistinguishedRegular
 
-/-! ## distinguished商の有界p冪ねじれ（旧 Delta/Perfect/DistinguishedTorsion.lean）
+/-! ## distinguished商の有界p冪ねじれ
 
 BS 著者版 Lemma 2.34(2)。p正則でmod pが被約なδ環をdistinguished元で割ると、
 商の任意のp冪ねじれはpで消える。導来完備性やperfectoid性は仮定しない。
@@ -229,7 +231,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DistinguishedTorsion
 
-/-! ## distinguished元の冪商の有界pねじれ（旧 Delta/Perfect/DistinguishedPowerTorsion.lean）
+/-! ## distinguished元の冪商の有界pねじれ
 
 BS 著者版 Lemma 2.34(2)を、正則なdistinguished元の冪商に反復適用する。
 A/(dⁿ)のp冪ねじれはpⁿで消える。商の古典的・導来完備性は結論しない。
@@ -317,7 +319,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DistinguishedPowerTorsion
 
-/-! ## 完全p進完備δ環のdistinguished商と冪商のp完備性（旧 Delta/Perfect/DistinguishedQuotientComplete.lean）
+/-! ## 完全p進完備δ環のdistinguished商と冪商のp完備性
 
 受領したF5に既存BS BS 著者版 Lemma 2.34の有界ねじれ評価を供給する。
 商のp正則性・Noether性・有限表示性を仮定しない。
@@ -348,3 +350,10 @@ theorem IsPerfect.distinguished_power_quotient_isAdicComplete {D : DeltaStructur
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end DistinguishedQuotientComplete
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 2.34"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.mul_injective
+attribute [cite BS19 "Lemma 2.34"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.quotient_p_pow_torsion_killed_by_p
+attribute [cite BS19 "Lemma 2.34"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.distinguished_mul_injective

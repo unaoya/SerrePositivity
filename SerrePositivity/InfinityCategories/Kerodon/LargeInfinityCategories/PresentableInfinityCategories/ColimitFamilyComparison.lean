@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeCoconeHomComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomVertexTransport
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeEvaluation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FunctorCoconeEvaluation
 
 /-!
 概要：普遍余錐族からの指定比較を全関手の比較とし、各点の余極限性で判定する。

@@ -43,6 +43,6 @@ lemma exists_tammeOreCartesianSpanLift
   refine ⟨R, G, hR, ht, hG₁, hGt, hGr, ?_⟩
   apply isCartesianEdge_markedSpanFamilyProjection_of_pullback
   rw [SSet.yonedaEquiv.symm_apply_apply, hGr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily, uncurry_curry]
-  exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose R).mp hR
+  exact (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_transpose R).mp hR
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MooreZeroHomology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.MooreZeroHomology
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 
 /-!

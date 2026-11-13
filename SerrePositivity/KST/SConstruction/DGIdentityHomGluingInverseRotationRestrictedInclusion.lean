@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRestrictedInput
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationRealizedConeBoundary
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeInrTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNerveWhiskerHom
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHomTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGStrictNerveWhiskerHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGStrictNatTransNerveHomTransport
 
 /-!
 概要：元実逆回転全評価の右包含を元始域の同じ connecting cone 包含へ回収する。

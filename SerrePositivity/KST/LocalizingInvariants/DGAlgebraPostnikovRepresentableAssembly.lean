@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMappingDescentLimit
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellTestCriterion
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
@@ -117,3 +119,8 @@ lemma postnikovInfinityCone_isLimit
 end
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.4.1.29" (partial := component) "仮定：通常可換環 R 上の厳密非正次数の結合的 dg 代数 B、n≥0 と任意の dg cell 源（Lean が強い：この E₁ の dg 模型の場合）。結論：τ≤n+1 B の平方零 class の錐が擬同型 ∞ 局所化で実際に極限錐となり、実 cell 写像空間の錐も極限となる。摂動した左下の代数は τ≤n B に擬同型である（原典の隣接段の pullback の部分に一致）。塔全体の逆極限、零段の離散 Hom 同定、普遍 cotangent による導分の分類は含まれない。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovInfinityCone_isLimit

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PullbackAccessibilityDetection
 
 /-!
@@ -107,3 +109,13 @@ lemma pullback_isKappaAccessibleFunctor_iff_components {X : SSet.{u + 1}}
       by simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone, Category.assoc] using hd K H c hc⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.5.7" (partial := stronger-hyp) "仮定：同じ濃度 μ の filtered 余極限を両脚が保存する strict categorical pullback（Lean が強い：compact 性の部分には正則 κ<μ と IsCardinalChangeBound κ μ の冪評価を追加）。結論：(1) 元の引き戻しの小 μ-filtered 余極限の存在、(2) 両成分と共通像が μ-compact なら同じ頂点が μ-compact（この条件の下で一致）。射影の保存は同じ余極限存在の宣言から得る。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor
+attribute [cite HTT "5.4.5.7" (partial := stronger-hyp) "仮定：同じ濃度 μ の filtered 余極限を両脚が保存する strict categorical pullback（Lean が強い：compact 性の部分には正則 κ<μ と IsCardinalChangeBound κ μ の冪評価を追加）。結論：(1) 元の引き戻しの小 μ-filtered 余極限の存在、(2) 両成分と共通像が μ-compact なら同じ頂点が μ-compact（この条件の下で一致）。射影の保存は同じ余極限存在の宣言から得る。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_hasSmallKappaFilteredColimits
+attribute [cite HTT "5.4.5.7" (partial := stronger-hyp) "仮定：同じ濃度 μ の filtered 余極限を両脚が保存する strict categorical pullback（Lean が強い：compact 性の部分には正則 κ<μ と IsCardinalChangeBound κ μ の冪評価を追加）。結論：(1) 元の引き戻しの小 μ-filtered 余極限の存在、(2) 両成分と共通像が μ-compact なら同じ頂点が μ-compact（この条件の下で一致）。射影の保存は同じ余極限存在の宣言から得る。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_snd_isKappaAccessibleFunctor
+attribute [cite HTT "5.4.6.6" (partial := special) "仮定：accessible な三準圏と accessible な両脚（Lean が強い：元の平方を一方が categorical lifting を持つ strict pullback として与える）。結論：同じ引き戻しの accessibility、両射影の accessibility、およびその引き戻しへの関手の accessibility の成分判定（この模型の場合に一致）。共通の正則濃度に各保存性を上げて同じ iff を適用できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor
+attribute [cite HTT "5.4.6.6" (partial := special) "仮定：accessible な三準圏と accessible な両脚（Lean が強い：元の平方を一方が categorical lifting を持つ strict pullback として与える）。結論：同じ引き戻しの accessibility、両射影の accessibility、およびその引き戻しへの関手の accessibility の成分判定（この模型の場合に一致）。共通の正則濃度に各保存性を上げて同じ iff を適用できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_isKappaAccessibleFunctor_iff_components
+attribute [cite HTT "5.4.6.6" (partial := special) "仮定：accessible な三準圏と accessible な両脚（Lean が強い：元の平方を一方が categorical lifting を持つ strict pullback として与える）。結論：同じ引き戻しの accessibility、両射影の accessibility、およびその引き戻しへの関手の accessibility の成分判定（この模型の場合に一致）。共通の正則濃度に各保存性を上げて同じ iff を適用できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_snd_isKappaAccessibleFunctor

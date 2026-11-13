@@ -32,10 +32,10 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：供給された全四角形比較を使い、対象別同値から自然性を推論しない。
 使われ方：同じ元の BF 零角の零性の検出。 -/
 theorem dgKappaNativeBF_corner_spaceEvaluation_isTerminal (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) 0 1) := by
   have ht := verdierMultiKanSquare_corner_isTerminal r (dgKappaNativeVerdierDiagram R D I)
-  let k := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1})) 0 1
+  let k := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1})) 0 1
   exact ht.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (dgKappaNativeBFMultiSquareIso R D I hBF r)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k))
 
@@ -44,8 +44,8 @@ theorem dgKappaNativeBF_corner_spaceEvaluation_isTerminal (r : ℕ) :
 規約：有限 BF 供給命題だけに条件付き。Sp の安定性や K の局所化性は使わない。
 使われ方：同じ元の BF 四角形から実 fiber を作る零角。 -/
 theorem dgKappaNativeBFSquare_zero_corner :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1) := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1) := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1
   let X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject z
   let f := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal.from X
   let e : Sp.Edge z (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.{max (u + 1) v}) :=

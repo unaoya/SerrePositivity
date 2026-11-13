@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleEnriched
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransUnitNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGStrictNatTransUnitNaturality
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!

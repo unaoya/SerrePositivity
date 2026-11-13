@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.LengthAlgebra.Flat
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
@@ -162,3 +164,10 @@ theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
 end SerrePositivity
 
 end Corollary2_6Part
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Eq (3.10)"] _root_.SerrePositivity.lemma_3_4
+attribute [cite Paper "Lemma 3.4"] _root_.SerrePositivity.lemma_3_4
+attribute [cite Paper "Lemma 4.4"] _root_.SerrePositivity.lemma_3_4

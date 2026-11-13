@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyEvaluationClass
 
 /-! # 関手の h の射の頂点評価
 

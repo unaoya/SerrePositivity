@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceChange
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceNaturality
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TowerLimOne
 
 /-!
 概要：整合する球面の段ごとの零ホモトピーから lim¹ の障害を作る。

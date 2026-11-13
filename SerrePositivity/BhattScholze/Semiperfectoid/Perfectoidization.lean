@@ -1,9 +1,11 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-!
@@ -24,7 +26,7 @@ CLMST の perfectoid イデアル、BS 著者版 Theorem 7.4、§8 の環の結�
 
 universe u
 
-/-! ## 任意のイデアルの除算からの具体的な完全prism候補（旧 Prism/Perfection/PerfectDeltaDivisionPrism.lean）
+/-! ## 任意のイデアルの除算からの具体的な完全prism候補
 
 δ除算・p進完備δ完全化・実PD完備化を合成し、完全試験prismへの一意延長を得る。
 一般prismの始対象やIsPerfectoidizationはまだ結論しない。
@@ -136,7 +138,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaDivisionPrism
 
-/-! ## 任意の基底商から完全prism候補の標準商への射（旧 Prism/Perfection/PerfectDeltaDivisionQuotient.lean）
+/-! ## 任意の基底商から完全prism候補の標準商への射
 
 具体的なR/Jの射と標準商の古典的p完備性を公開する。
 候補商のperfectoid性・IsPerfectoidizationは別工程。
@@ -196,7 +198,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaDivisionQuotient
 
-/-! ## 完全prism商の任意の商の普遍perfectoid化（旧 Prism/Perfectoid/PerfectPrismQuotientPerfectoidization.lean）
+/-! ## 完全prism商の任意の商の普遍perfectoid化
 
 完全試験prismの普遍性を既存IsPerfectoidizationへ移す。
 全射性は結論に含めない。実PD完備化を使い、古典的完備化への置換をしない。
@@ -366,7 +368,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismQuotientPerfectoidization
 
-/-! ## B3：perfectoid環の商の普遍perfectoid化（旧 Semiperfectoid/SemiperfectoidPerfectoidization.lean）
+/-! ## perfectoid環の商の普遍perfectoid化
 
 BS 著者版 Corollary 7.3の存在・普遍性。
 δ除算→完全化→実PD完備化の完全試験prismへの普遍性とBS 著者版 Theorem 3.10の対応を合成する。
@@ -424,7 +426,7 @@ end SerrePositivity.BhattScholze
 
 end SemiperfectoidPerfectoidization
 
-/-! ## B3で選ぶ任意イデアル商の普遍perfectoid化（旧 Semiperfectoid/QuotientPerfectoidization.lean）
+/-! ## B3で選ぶ任意イデアル商の普遍perfectoid化
 
 一般有限代数の存在入力から独立に対象を選ぶBS接続層。
 全射性・冪等性・長さの条件は構成に含めない。
@@ -492,3 +494,11 @@ theorem quotientPerfectoidization_natCast_eq_zero (hp : (p : R) ∈ I) :
 end SerrePositivity
 
 end QuotientPerfectoidization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Cor 7.3" (partial := special) "Cor 7.3 の S′（根の商）の場合：S′ の prismatic 完全化と perfectoidization の単位を保つ唯一の δ-prism 同型（BS-W17 停止点 5、11-12）。一般の semiperfectoid の場合の存在は本体の Perfectoidization"] _root_.SerrePositivity.BhattScholze.exists_perfectoidization_of_perfectoid_surjective_quotient
+attribute [cite BS19 "Cor 7.3" (partial := special) "Cor 7.3 の S′（根の商）の場合：S′ の prismatic 完全化と perfectoidization の単位を保つ唯一の δ-prism 同型（BS-W17 停止点 5、11-12）。一般の semiperfectoid の場合の存在は本体の Perfectoidization"] _root_.SerrePositivity.BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient
+attribute [cite BS19 "Thm 1.12" (partial := special) "(1) Prop 7.2（全 prism の中の始対象）は本体になく不要（D37、代数的部分だけ Delta/Division）。(2) Cor 7.3・Thm 7.4 は本体で sorry なし（完全試験 prism への始性で構成、超限構成は経由しない） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient
+attribute [cite BS19 "Thm 1.12" (partial := special) "(1) Prop 7.2（全 prism の中の始対象）は本体になく不要（D37、代数的部分だけ Delta/Division）。(2) Cor 7.3・Thm 7.4 は本体で sorry なし（完全試験 prism への始性で構成、超限構成は経由しない） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.perfectPrismQuotientPerfectoidizationMap_isPerfectoidization

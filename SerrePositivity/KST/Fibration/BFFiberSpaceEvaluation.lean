@@ -93,8 +93,8 @@ theorem homotopyFiberSquare_spaceEvaluation_isPullback {X Y : OmegaSpectrum.{u}}
   exact h
 
 /-- 任意の元の Sp fiber 四角形は、同じ全 coherent 段評価で引き戻しへ写る。 -/
-theorem spectrumFiberSquare_spaceEvaluation_isPullback (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
-    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) (n : ℕ) :
+theorem spectrumFiberSquare_spaceEvaluation_isPullback (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (t.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation n)) := by
   let p := NativeFiber.rightMap t
   let s := NativeFiber.asFiberSquare t ht

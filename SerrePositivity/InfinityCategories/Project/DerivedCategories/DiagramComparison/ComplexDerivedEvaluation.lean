@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreePointComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInvertsQuasiIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.DGModuleResolvedInvertsQuasiIso
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictDiagramEvaluation
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictComplexDiagram
 
@@ -39,8 +39,8 @@ def complexClosedPresentation : Complex A ⥤ ClosedCategory A (Complex A) where
       Equiv.apply_symm_apply, Equiv.apply_symm_apply]
 
 /-- 元の全複体のnerveから、指定された既存D(A)の模型への実評価。 -/
-def complexDerivedEvaluation : nerve (Complex A) ⟶ derivedInfinityCategory A :=
-  nerveMap (complexClosedPresentation A) ≫ closedNerveInclusion A (Complex A) ≫
+def complexDerivedEvaluation : nerve (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
+  nerveMap (complexClosedPresentation A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) ≫
     dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
       (semifreePointEquivalence A).hom
 
@@ -48,14 +48,14 @@ def complexDerivedEvaluation : nerve (Complex A) ⟶ derivedInfinityCategory A :
 def strictComplexDerivedEvaluation (d : StrictDiagramDirection) :
     strictComplexDiagramNerve A d ⊗
         (SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)) ⟶
-      derivedInfinityCategory A :=
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   strictDiagramEvaluation (strictDiagramIndex d) (Complex A) ≫ complexDerivedEvaluation A
 
 /-- 元のstrict複体図式の全パラメーターを、同じD(A)の図式の全族へ送る。 -/
 def strictComplexDiagramFamily (d : StrictDiagramDirection) :
     strictComplexDiagramNerve A d ⟶
       (ihom ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)))).obj
-        (derivedInfinityCategory A) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   curry ((β_ _ _).hom ≫ strictComplexDerivedEvaluation A d)
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

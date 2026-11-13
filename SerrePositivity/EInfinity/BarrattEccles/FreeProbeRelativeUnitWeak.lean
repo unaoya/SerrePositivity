@@ -26,7 +26,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 def freeProbeRelativeUnitHom :
     (HomotopyCategory.mk ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
-        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
     HomotopyCategory.mk ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X)))) :=
@@ -66,12 +66,12 @@ lemma freeProbeRelativeUnderlyingRoofFamily_unit_triangle :
         ((nerve.edgeMk (complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
           (complexOrdinaryDerivedSource A)).toTruncated) := by
   let d := MixedNerve.down (freeProbeElementIndex A X B.obj)
-  let T := (hoFunctor.map ((pre d).app (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
+  let T := (hoFunctor.map ((pre d).app (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have h := congrArg T.map (freeProbeElementUnderlyingRoofFamily_unit_triangle A X B.obj)
   simp only [Functor.map_comp] at h
-  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) d
+  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) d
     (freeProbeUnitOrdinaryHom A X)
-  have ha := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) d
+  have ha := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) d
     (Truncated.HomotopyCategory.homMk
     ((nerve.edgeMk (complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
       (complexOrdinaryDerivedSource A)).toTruncated)

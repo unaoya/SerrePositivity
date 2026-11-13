@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Monoidal.Mod
 public import Mathlib.Tactic.CategoryTheory.Monoidal.Basic
 
@@ -145,3 +147,17 @@ end SerrePositivity.MonoidalFreeModule
 end
 
 end FreeModule
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.2.4.1" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A と、その標準自由内部加群 A⊗M₀ の生成射（Lean は通常圏の標準模型に限る）。結論：生成射に A をテンソルして作用と合成した射が恒等射となる（自由性条件をこの模型で満たす）。任意の λ に対する一般の定義は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.generator_action
+attribute [cite HA "4.2.4.2" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A と生成対象 M₀（Lean は通常圏の自己作用に限る）。結論：自由左加群 A⊗M₀ と生成射を構成し、生成射から誘導する作用写像が恒等射になる（(1) の通常圏の場合に一致）。代数も可変な (2) の写像空間の積同値は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeObj
+attribute [cite HA "4.2.4.2" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A と生成対象 M₀（Lean は通常圏の自己作用に限る）。結論：自由左加群 A⊗M₀ と生成射を構成し、生成射から誘導する作用写像が恒等射になる（(1) の通常圏の場合に一致）。代数も可変な (2) の写像空間の積同値は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.generator
+attribute [cite HA "4.2.4.2" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A と生成対象 M₀（Lean は通常圏の自己作用に限る）。結論：自由左加群 A⊗M₀ と生成射を構成し、生成射から誘導する作用写像が恒等射になる（(1) の通常圏の場合に一致）。代数も可変な (2) の写像空間の積同値は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.generator_action
+attribute [cite HA "4.2.4.5" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A（Lean は通常圏の自己作用に限り、A を固定する）。結論：A⊗M₀ が M₀ に関して関手的となる（第二変数の関手性に一致）。可変 A と M₀ の組を入力とする関手は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeFunctor
+attribute [cite HA "4.2.4.6" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A、標準自由加群 A⊗M₀ と A-加群 N（Lean は通常圏の標準模型に限る）。結論：生成射による前合成が内部加群 Hom と基礎圏の Hom の全単射となる（この場合に一致）。任意の自由模型と一般の写像空間は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeHomEquiv
+attribute [cite HA "4.2.4.8" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A（Lean は通常圏の自己作用に限る）。結論：内部加群の忘却の左随伴があり、その基礎対象は A⊗M₀ となる（この場合に一致）。一般の左テンソル ∞ 圏は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeForgetAdjunction
+attribute [cite HA "4.2.4.8" (partial := special) "仮定：通常のモノイダル圏の内部モノイド A（Lean は通常圏の自己作用に限る）。結論：内部加群の忘却の左随伴があり、その基礎対象は A⊗M₀ となる（この場合に一致）。一般の左テンソル ∞ 圏は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeFunctor
+attribute [cite HA "4.8.4.10" (partial := component) "仮定：通常のモノイダル圏の内部モノイド（Lean が強い：通常圏の自己作用に限る。左右を入れ替えた左加群版）。結論：忘却は自由テンソル関手を左随伴に持つ（底の随伴の存在部分に一致）。C の planar オペラッド上の相対随伴と、その線型性は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeForgetAdjunction
+attribute [cite HA "4.8.4.11" (partial := component) "仮定：通常のモノイダル圏の内部モノイド A（Lean が強い：左加群と右外部作用の版。モノイダル opposite により左右を交換できる）。結論：自由忘却随伴を構成し、自由対象 (A⊗X) の Y による右テンソルを A⊗(X⊗Y) と自然に同定する（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の相対随伴と coherent な線型関手の比較は含まれない。"] _root_.SerrePositivity.MonoidalFreeModule.freeForgetAdjunction

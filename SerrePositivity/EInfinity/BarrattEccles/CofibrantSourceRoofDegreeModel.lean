@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSlices
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.ProductSimplexLiftedOver
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.MixedNerveCostructuredPullback
 
 /-!
 # 実屋根 slice の次数モデルと元の sourceFrameHom×Δ[n]

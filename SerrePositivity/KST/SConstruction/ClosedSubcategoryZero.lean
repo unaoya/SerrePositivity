@@ -18,11 +18,11 @@ open scoped Simplicial
 
 /-- 閉じた全部分圏の包含は全ての零対象を保存する。 -/
 lemma closedSubcategoryInclusion_preservesZero {X : StableModel.{u}}
-    (P : ClosedStablePredicate X) (v : (closedSubcategory P) _⦋0⦌) (hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v.val := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
+    (P : ClosedStablePredicate X) (v : (closedSubcategory P) _⦋0⦌) (hv : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v.val := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier
   let w := fullSubcategoryVertex P.predicate z.vertex (P.zero_mem z.isZero)
-  have hw : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex w :=
+  have hw : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex w :=
     ⟨isInitialVertex_fullSubcomplex_of_ambient P.predicate w z.isInitial,
       isTerminalVertex_fullSubcomplex_of_ambient P.predicate w z.isTerminal⟩
   exact map_isZeroVertex_of_zero_image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P.predicate).ι

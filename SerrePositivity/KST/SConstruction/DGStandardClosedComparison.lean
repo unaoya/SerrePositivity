@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStandardEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.DGClosedWhiskerComponents
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.AWClosedComposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.EnrichedFunctors.AWClosedComposition
 
 /-! # 全 Hom 閉零比較の標準 DK 豊穣自然変換
 概要：元の全 Hom 上で自然な閉零射族を、標準 DK の豊穣自然変換へ移す。

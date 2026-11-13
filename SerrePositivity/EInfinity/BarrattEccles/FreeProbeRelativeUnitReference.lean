@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveElementRoofWeak
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeKProjectiveValues
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedPostcompositionFamily
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedActionEquivalences
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PinchedActionEquivalences
 /-!
 概要：元の全要素パラメータから実 U の値への弱な複体屋根族を構成する。
 方針：元の複体屋根・標的 augmentation・同じ忘却頂点比較を合成する。
@@ -30,7 +30,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 def freeProbeRelativeTargetHom :
     (HomotopyCategory.mk ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (complexSemifreeResolutionValue A B.obj.carrier).val)) :
-        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
     HomotopyCategory.mk ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))) :=

@@ -22,7 +22,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 variable (A : Type u) [CommRing A]
   (F : (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ dgKInputInfinity.{u, v} A)
-  (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputK A) 0 1))
+  (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ dgKInputK A) 0 1))
 
 /-- 元の K 四角形の右辺と上辺をそのまま底とする、Sp の構成済み極限錐。 -/
 def dgConnectiveKLimitCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (F ≫ dgKInputK A)) :=
@@ -32,8 +32,8 @@ theorem dgConnectiveKLimitCone_isLimit : _root_.SerrePositivity.InfinityCategori
   OmegaSpectrum.CoherentPullback.infinityCone_isLimit _
 
 /-- 元の零角と右辺を変えず、左下の頂点を実 fiber に置き換えた四角形。 -/
-def dgConnectiveCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (F ≫ dgKInputK A)) where
+def dgConnectiveCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (F ≫ dgKInputK A)) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgConnectiveKLimitCone A F)
   zero_corner := by
     have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgConnectiveKLimitCone A F) =
@@ -41,8 +41,8 @@ def dgConnectiveCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories
       rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_top]
       exact congrArg (fun q => q ≫ (F ≫ dgKInputK A))
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_topEdge
-    have hcorner : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgConnectiveKLimitCone A F)) 0 1 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputK A) 0 1 := by
+    have hcorner : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgConnectiveKLimitCone A F)) 0 1 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ dgKInputK A) 0 1 := by
       rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source, ht, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source]
     rw [hcorner]
     exact hz
@@ -50,7 +50,7 @@ def dgConnectiveCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_right]
     change horn₂₂.ι₀₂ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (F ≫ dgKInputK A) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge]
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     exact (SSet.yonedaEquiv.symm_apply_apply
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (F ≫ dgKInputK A))).symm
   isPullback := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_isPullback _ (dgConnectiveKLimitCone_isLimit A F)
@@ -80,7 +80,7 @@ def dgConnectiveFiberComparisonLegTriangle
 /-- 比較元の錐頂点は、元の相対 K 四角形の K(D) 頂点そのもの。 -/
 theorem dgConnectiveFiberComparison_source :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (F ≫ dgKInputK A)).vertex =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputK A) 0 0 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ dgKInputK A) 0 0 := by
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_eq]
   change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[0] (horn 2 2) ≫
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫ (F ≫ dgKInputK A))) = _
@@ -95,7 +95,7 @@ theorem dgConnectiveFiberComparison_target :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_sourceEvaluation
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (F ≫ dgKInputK A)))
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Sp.{max (u + 1) v})
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
       (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
         (dgConnectiveKLimitCone A F)) = _ at h
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at h
@@ -103,7 +103,7 @@ theorem dgConnectiveFiberComparison_target :
 
 /-- 元の K(D) から、元の零角と右辺を持つ実 fiber への同じ全一単体。 -/
 def dgConnectiveFiberVertexComparison :
-    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputK A) 0 0)
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ dgKInputK A) 0 0)
       (dgConnectiveCanonicalFiberSquare A F hz).fiber :=
   (SSet.Edge.ofTruncated (dgConnectiveFiberComparison A F)).ofEq
     (dgConnectiveFiberComparison_source A F) (dgConnectiveFiberComparison_target A F hz)

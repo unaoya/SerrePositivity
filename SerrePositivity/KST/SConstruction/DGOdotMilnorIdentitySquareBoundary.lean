@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityLaxCompletedComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityZeroBoundary
 public import SerrePositivity.KST.SConstruction.PerfectStableArrowSquareComparison

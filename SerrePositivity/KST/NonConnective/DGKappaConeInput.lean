@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGCountableSum
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInfinity
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientVerdierSequence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.ResolvedDGQuotientVerdierSequence
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Definition
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 

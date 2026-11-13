@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorExchangeCoherence
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TensorExchangeCoherence
 
 /-!
 概要：内部 Hom の合成と、二つの源の交換同型の両立。

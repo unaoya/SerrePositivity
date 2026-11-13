@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Maps
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConeAPI
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Localization
@@ -357,3 +359,8 @@ lemma isComplete_Q_of_terms
 end SerrePositivity.DerivedCompletion
 
 end TermwiseCompletePart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.3.25" (partial := direction) "仮定：通常可換環 R、一元 a と a 導来完備な通常の導来対象（Lean が強い：主元の通常導来模型）。結論：全次数の実ホモロジー加群が a 完備となる（原典 (1) の S-complete と印字された向きの主元版に一致）。逆向き、S-local と印字された後続の t 構造、局所化の t 完全性は含まれない。"] _root_.SerrePositivity.DerivedCompletion.isComplete_homology_isModuleComplete

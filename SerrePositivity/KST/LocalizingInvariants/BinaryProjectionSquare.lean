@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.BinaryProjectionCone
 public import SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareTransposeEdges
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareDuality
+public import SerrePositivity.InfinityCategories.HA.Section6_1_1.SquareDuality
 
 /-!
 概要：元の BF 積の射影を基底変換する、四辺を厳密に保持した実 pullback 正方形。
@@ -29,7 +29,7 @@ def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
     StrictCospanCone.square (Binary.fst Z Y) f (cone f Y)
 
 lemma square_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (square f Y) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mp
+  (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_transpose _).mp
     (StrictCospanCone.square_isPullback _ _ _ (infinityCone_isLimit f Y))
 
 lemma square_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square f Y =
@@ -50,8 +50,8 @@ lemma square_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndCo
     SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.fst Z Y)).edge := by
   rw [square, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_top, StrictCospanCone.square_right]
 
-lemma square_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (square f Y) 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj X Y) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (StrictCospanCone.square (Binary.fst Z Y) f (cone f Y)) 0 0 = _
+lemma square_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (square f Y) 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj X Y) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (StrictCospanCone.square (Binary.fst Z Y) f (cone f Y)) 0 0 = _
   exact StrictCospanCone.square_vertex _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.BinaryProjection

@@ -21,15 +21,15 @@ open scoped Simplicial
 structure ClosedStablePredicate (X : StableModel.{u}) where
   predicate : X.carrier _⦋0⦌ → Prop
   of_iso {x y : X.carrier _⦋0⦌} : predicate x → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y → predicate y
-  zero_mem {z : X.carrier _⦋0⦌} : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z → predicate z
+  zero_mem {z : X.carrier _⦋0⦌} : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z → predicate z
   pushout_mem (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X.carrier) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F → predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0) →
-      predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0) → predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1) →
-        predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F → predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0) →
+      predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0) → predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1) →
+        predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 1)
   pullback_mem (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X.carrier) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F → predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0) →
-      predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1) → predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1) →
-        predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F → predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0) →
+      predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1) → predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 1) →
+        predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0)
 
 /-- 閉じた頂点条件が定める全高次単体を持つ全部分圏。 -/
 def closedSubcategory {X : StableModel.{u}} (P : ClosedStablePredicate X) : SSet.{u} :=
@@ -48,8 +48,8 @@ lemma closedSubcategory_vertex {X : StableModel.{u}} (P : ClosedStablePredicate 
 /-- 四角形の四つの角の条件から全頂点での条件を得る。 -/
 lemma square_vertices_of_corners {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (h00 : P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0)) (h10 : P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0))
-    (h01 : P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1)) (h11 : P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1)) :
+    (h00 : P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0)) (h10 : P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0))
+    (h01 : P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1)) (h11 : P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 1)) :
     ∀ q, P (F.app (Opposite.op ⦋0⦌) q) := by
   rintro ⟨a, b⟩
   obtain ⟨i, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective a
@@ -67,8 +67,8 @@ def fullSubcategoryVertex {X : SSet.{u}} (P : X _⦋0⦌ → Prop) (x : X _⦋0�
 
 /-- 閉じた全部分圏は実際の零対象を持つ。 -/
 instance closedSubcategory_hasZeroVertex {X : StableModel.{u}} (P : ClosedStablePredicate X) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (closedSubcategory P) := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (closedSubcategory P) := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier
   let v := fullSubcategoryVertex P.predicate z.vertex (P.zero_mem z.isZero)
   exact ⟨⟨v, isInitialVertex_fullSubcomplex_of_ambient P.predicate v z.isInitial,
     isTerminalVertex_fullSubcomplex_of_ambient P.predicate v z.isTerminal⟩⟩

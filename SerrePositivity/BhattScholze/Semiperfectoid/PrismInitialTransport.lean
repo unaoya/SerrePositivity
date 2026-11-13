@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 
 /-!
 # 剰余の単位を指定した始性と環同型

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModulePropertyChoices
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModulePropertyChoices
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BicartesianCriterion
 
 /-! # dg 加群の実有限操作に閉じた対象条件

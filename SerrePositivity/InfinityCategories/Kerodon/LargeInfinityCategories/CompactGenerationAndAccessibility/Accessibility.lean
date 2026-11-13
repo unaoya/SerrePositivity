@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.RelativeCardinalAccessibility
 
 /-!
@@ -54,3 +56,9 @@ lemma pullback_isAccessible
   exact ⟨μ, hresult⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.6.6" (partial := special) "仮定：accessible な三準圏と accessible な両脚（Lean が強い：元の平方を一方が categorical lifting を持つ strict pullback として与える）。結論：同じ引き戻しの accessibility、両射影の accessibility、およびその引き戻しへの関手の accessibility の成分判定（この模型の場合に一致）。共通の正則濃度に各保存性を上げて同じ iff を適用できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible
+attribute [cite HTT "5.5.3.12" (partial := special) "仮定：presentable な三準圏と全小余極限保存な両脚（Lean が強い：元の平方は一方が categorical lifting を持つ strict pullback）。結論：同じ引き戻しが presentable、元の引き戻しへの関手の全小余極限保存の成分判定（この模型で一致）。汎用 accessibility 命題の入力は実証済みの AccessiblePullback.pullback_isAccessible で供給できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible

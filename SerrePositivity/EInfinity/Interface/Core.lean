@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
@@ -44,7 +44,7 @@ abbrev atVertex {X Y : SSet.{u}} (F : X ⟶ Y) (x : X _⦋0⦌) : Y _⦋0⦌ :=
 structure EInfinityCore where
   CAlg (S : Type u) [CommRing S] : SSet.{u+1}
   quasicategory (S : Type u) [CommRing S] : Quasicategory (CAlg S)
-  forget (S : Type u) [CommRing S] : CAlg S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S
+  forget (S : Type u) [CommRing S] : CAlg S ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S
   forget_preservesLimits (S : Type u) [CommRing S]
       {K : SSet.{u+1}} {F : K ⟶ CAlg S} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (forget S) c)

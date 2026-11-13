@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.RightSimplicialCones
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeComparison
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrame
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameCones
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameCones
 
 /-!
 # E 代数の始域 frame の錐と実際の右 frame の錐の比較

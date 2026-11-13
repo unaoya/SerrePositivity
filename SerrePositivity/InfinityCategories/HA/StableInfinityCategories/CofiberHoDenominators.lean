@@ -20,14 +20,14 @@ variable {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCatego
 /-- 指定 cofiber 三角形の第一射は指定実辺の類と同じ Arrow。 -/
 lemma CofiberSquare.triangle_first_arrow
     {x y : X _⦋0⦌} {f : Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle s.toZeroTriangle s.isPushout).mor₁ =
       Arrow.mk (SSet.Truncated.HomotopyCategory.homMk f) := by
   apply SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge, s.bottom_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge, s.bottom_edge]
   exact SSet.yonedaEquiv.apply_symm_apply f.edge
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (triangle_first_arrow)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (triangle_first_arrow)
 
 
 /-- 実辺の分母条件と、その類が三角的分母であることは同値。 -/

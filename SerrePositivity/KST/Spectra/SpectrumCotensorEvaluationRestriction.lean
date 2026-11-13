@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationCylinder
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderRestriction
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedParameterCylinderRestriction
 
 /-!
 概要：cotensor の coherent な評価のパラメータ制限と基点での零性。

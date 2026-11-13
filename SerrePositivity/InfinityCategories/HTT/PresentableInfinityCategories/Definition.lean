@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndCardinalChange
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits
@@ -88,3 +90,21 @@ lemma space_hasSmallLimits : HasSmallLimits _root_.SerrePositivity.InfinityCateg
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasLimit_coherentSpaceDiagram D
 
 end SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 2.19"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable
+attribute [cite HTT "4.2.3.11" (partial := direction) "仮定：κ 未満の図式に対する余極限の存在（Lean が強い：κ 未満だけでなく、指定宇宙内の全図式に要求）。結論：τ 未満の図式と小さい τ-フィルター付き半順序の神経について同じ余極限が存在する（必要方向。τ≪κ に基づく分解による十分方向は含まない）。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits
+attribute [cite HTT "4.2.3.11" (partial := direction) "仮定：κ 未満の図式に対する余極限の存在（Lean が強い：κ 未満だけでなく、指定宇宙内の全図式に要求）。結論：τ 未満の図式と小さい τ-フィルター付き半順序の神経について同じ余極限が存在する（必要方向。τ≪κ に基づく分解による十分方向は含まない）。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits.hasSmallKappaFilteredColimits
+attribute [cite HTT "4.2.3.12" (partial := direction) "仮定：κ 未満の図式に対する余極限を保つ関手（Lean が強い：κ 未満だけでなく、指定宇宙内の全図式に要求）。結論：τ 未満の図式と小さい τ-フィルター付き半順序の神経について同じ余極限を保つ（必要方向。τ≪κ に基づく分解による十分方向は含まない）。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits
+attribute [cite HTT "4.2.3.12" (partial := direction) "仮定：κ 未満の図式に対する余極限を保つ関手（Lean が強い：κ 未満だけでなく、指定宇宙内の全図式に要求）。結論：τ 未満の図式と小さい τ-フィルター付き半順序の神経について同じ余極限を保つ（必要方向。τ≪κ に基づく分解による十分方向は含まない）。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isKappaAccessibleFunctor
+attribute [cite HTT "5.1.5.1"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits
+attribute [cite HTT "5.1.6.2"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits
+attribute [cite HTT "5.1.6.5"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits
+attribute [cite HTT "5.3.3.1" (partial := stronger-hyp) "仮定：準圏 C が全小余極限を持つ（Lean が強い：κ-small な形状だけでなく全小形状に余極限を要求）。結論：κ-small な全図式が同じ図式を延長する余極限錐を持つ κ-closed 性（この場合に定義の条件と一致）。HasSmallKappaFilteredColimits は添字が κ-filtered の条件であり、κ-small と取り違えていない。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits
+attribute [cite HTT "5.5.0.1"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable
+attribute [cite HTT "5.5.1.6"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable
+attribute [cite HTT "5.5.1.9" (partial := component) "仮定：presentable な二準圏、κ-accessible な始域、全小余極限保存関手 f（HTT の (1) と一致）。結論：(2) の一つの要件である同じ κ の連続性（一致）。κ-compact 部分上の κ-small 余極限保存との組合せから全余極限保存を復元する逆方向はなく、両条件の iff と数えない。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isKappaAccessibleFunctor
+attribute [cite HTT "5.5.3.2"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable
+attribute [cite HTT "5.5.7.1"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable

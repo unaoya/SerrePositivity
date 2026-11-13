@@ -24,7 +24,7 @@ perfectoid 環の完備テンソル積、BS 著者版 Theorem 7.4 の底変換�
 
 universe u
 
-/-! ## B4-5：Witt商表示を持つ環のテンソルからのperfectoid化（旧 Perfectoidization/WittPresentation/WittPresentedPerfectoidTensor.lean）
+/-! ## Witt商表示を持つ環のテンソルからのperfectoid化
 
 共通のWitt基底写像に沿う商表示と図式を明示して入力する。
 標準Fontaine商表示をこの入口へ供給する工程とmod p比較は別に残る。
@@ -188,7 +188,7 @@ end SerrePositivity.BhattScholze
 
 end WittPresentedPerfectoidTensor
 
-/-! ## B4-5：全p完備試験環への普遍性からの標準mod p比較（旧 Perfectoidization/WittPresentation/WittPresentedPerfectoidTensorModP.lean）
+/-! ## 全p完備試験環への普遍性からの標準mod p比較
 
 pが零の試験環は自動的にp完備であることを使う。
 通常テンソルの標準射のmod pが同型であることを証明する。
@@ -281,7 +281,7 @@ end SerrePositivity.BhattScholze
 
 end WittPresentedPerfectoidTensorModP
 
-/-! ## B4-5：任意perfectoid環の通常テンソルのperfectoid化（旧 Perfectoidization/PerfectoidTensorPerfectoidization.lean）
+/-! ## 任意perfectoid環の通常テンソルのperfectoid化
 
 標準Fontaine表示と自然性を実際のperfectoid入力から供給する。
 基底・両因子・係数テンソルの零環の場合も含む。mod p比較は別工程。
@@ -373,7 +373,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidTensorPerfectoidization
 
-/-! ## B4-5：普遍perfectoid化の通常テンソルによる基底変更（旧 Perfectoidization/PerfectoidizationBaseChange.lean）
+/-! ## 普遍perfectoid化の通常テンソルによる基底変更
 
 共通基底の代数写像を用い、具体的な合成射の普遍性を証明する。
 底変換した射の全射性やmod p比較はこの定理の結論に含めない。

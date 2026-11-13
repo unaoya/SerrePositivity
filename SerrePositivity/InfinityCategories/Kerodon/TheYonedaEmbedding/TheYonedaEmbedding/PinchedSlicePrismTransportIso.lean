@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.PinchedSliceCompositionRealization
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LeftFibrationPrismTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeVertexFiber
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.OppositeVertexFiber
 
 /-!
 概要：元の pinched Hom の実 slice 円柱を、反対 left fibration の同じ輸送へ比較する。

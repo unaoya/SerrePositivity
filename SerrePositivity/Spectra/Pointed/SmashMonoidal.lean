@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.Spectra.Pointed.SmashPentagon
 public import SerrePositivity.Spectra.Pointed.SmashHexagon
 public import SerrePositivity.Spectra.Pointed.SmashTriangle
@@ -81,3 +83,11 @@ lemma ihom_obj_eq_basedHom (X Y : PointedObject C) :
     (ihom X).obj Y = basedHom X Y := rfl
 
 end SerrePositivity.PointedObject
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.8.2.14" (partial := component) "仮定：有限余極限と等化子をもつ通常の Cartesian 閉モノイダル圏の pointed objects（集合・単体集合の場合を含む）（Lean が強い：通常の Cartesian 閉モノイダル圏の場合）。結論：積から二つの軸を基点へ潰す smash を対称モノイダル積とし、基点付き内部 Hom を右随伴に持つ閉構造を構成する（この仮定での HA の結論の一部に一致）。pointed spaces の ∞ 圏への比較と、PrL の idempotent 性からの一意性は含まれない。"] _root_.SerrePositivity.PointedObject.smashMonoidalCategory
+attribute [cite HA "4.8.2.14" (partial := component) "仮定：有限余極限と等化子をもつ通常の Cartesian 閉モノイダル圏の pointed objects（集合・単体集合の場合を含む）（Lean が強い：通常の Cartesian 閉モノイダル圏の場合）。結論：積から二つの軸を基点へ潰す smash を対称モノイダル積とし、基点付き内部 Hom を右随伴に持つ閉構造を構成する（この仮定での HA の結論の一部に一致）。pointed spaces の ∞ 圏への比較と、PrL の idempotent 性からの一意性は含まれない。"] _root_.SerrePositivity.PointedObject.smashMonoidalClosed
+attribute [cite HA "4.8.2.14" (partial := component) "仮定：有限余極限と等化子をもつ通常の Cartesian 閉モノイダル圏の pointed objects（集合・単体集合の場合を含む）（Lean が強い：通常の Cartesian 閉モノイダル圏の場合）。結論：積から二つの軸を基点へ潰す smash を対称モノイダル積とし、基点付き内部 Hom を右随伴に持つ閉構造を構成する（この仮定での HA の結論の一部に一致）。pointed spaces の ∞ 圏への比較と、PrL の idempotent 性からの一意性は含まれない。"] _root_.SerrePositivity.PointedObject.smashSymmetricCategory
+attribute [cite HA "4.8.2.14" (partial := component) "仮定：有限余極限と等化子をもつ通常の Cartesian 閉モノイダル圏の pointed objects（集合・単体集合の場合を含む）（Lean が強い：通常の Cartesian 閉モノイダル圏の場合）。結論：積から二つの軸を基点へ潰す smash を対称モノイダル積とし、基点付き内部 Hom を右随伴に持つ閉構造を構成する（この仮定での HA の結論の一部に一致）。pointed spaces の ∞ 圏への比較と、PrL の idempotent 性からの一意性は含まれない。"] _root_.SerrePositivity.PointedObject.tensorObj_eq_smash

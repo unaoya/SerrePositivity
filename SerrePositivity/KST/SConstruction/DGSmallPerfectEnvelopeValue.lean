@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomTypedWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.FunctorHomTypedWhiskerAlgebra
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeNativeProperties
 public import SerrePositivity.KST.SConstruction.DGKNativeValueComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：指定実像を保持する小 Perf 包絡の固定 ν 値を、元基底の固定 ν 値へ戻す。

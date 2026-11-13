@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoPair
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TensorAdjunction
 
 /-!

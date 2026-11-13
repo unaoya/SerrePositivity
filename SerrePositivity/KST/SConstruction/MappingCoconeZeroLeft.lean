@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMapIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeMapIso
 
 /-! # 実零左成分を消す mapping cocone 同型
 概要：左成分が実零対象のとき、元の比較差を右成分へ制限した cocone と同型にする。

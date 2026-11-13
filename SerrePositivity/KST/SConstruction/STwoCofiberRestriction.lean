@@ -23,7 +23,7 @@ open scoped Simplicial
 方針：三つ組 (0,1,2) の零角と押し出し条件。
 規約：元の四角形を保持する。使われ方：全部分複体への制限。 -/
 lemma isGapped_two_middle {C : SSet.{u}} {F : arNerve 2 ⟶ C} (hF : IsGapped F) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (arTwoMiddleSquare ≫ F) 0 1) ∧
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (arTwoMiddleSquare ≫ F) 0 1) ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arTwoMiddleSquare ≫ F) := by
   refine ⟨?_, hF.2 0 1 1 2 (by decide) le_rfl (by decide)⟩
   rw [arTwoMiddleSquare, arSquare_cofiber_zero_corner]
@@ -42,7 +42,7 @@ def sTwoCofiberRestriction (C : SSet.{u}) : sConstruction 2 C ⟶ cofiberDiagram
       change IsCofiberDiagramVertex (((pre arTwoMiddleSquare).app C).app (Opposite.op ⦋0⦌) v.val)
       rw [← hv]
       change IsCofiberDiagramVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (arTwoMiddleSquare ≫ F))
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
         ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (arTwoMiddleSquare ≫ F))) 0 1) ∧
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (arTwoMiddleSquare ≫ F)))
@@ -63,9 +63,9 @@ lemma sTwoCofiberRestriction_vertex_surjective (C : SSet.{u}) [Quasicategory C] 
     Function.Surjective ((sTwoCofiberRestriction C).app (Opposite.op ⦋0⦌)) := by
   intro v
   let R := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val
-  have hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1) ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R :=
+  have hv : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1) ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R :=
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
-  obtain ⟨F, hF, he⟩ := exists_gapped_arTwo_of_cofiber (⟨R, hv.1⟩ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C) hv.2
+  obtain ⟨F, hF, he⟩ := exists_gapped_arTwo_of_cofiber (⟨R, hv.1⟩ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C) hv.2
   let w : (sConstruction 2 C) _⦋0⦌ := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _

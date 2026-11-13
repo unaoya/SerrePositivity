@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FreeGeneratorMixedOperators
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ReversedSimplexParameters
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.ReversedSimplexParameters
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarFreeResolutionMixedFaces

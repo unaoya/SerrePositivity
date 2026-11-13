@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 public import Mathlib.CategoryTheory.Bicategory.Adjunction.Mate
 public import Mathlib.Tactic.CrossRefAttribute
@@ -313,3 +315,12 @@ def homEquiv {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicatego
 
 end QCatAdjunction
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.rightAdjointFunctorIso
+attribute [cite HTT "5.2.2.6"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.comp
+attribute [cite HTT "6.3.1.2" (partial := component) "仮定：同じ一方の関手に二つの ∞ 随伴（HTT より弱い：任意の準圏に適用でき、∞ トポス性と左完全性は不要）。結論：他方の随伴が FunctorIso で同値となる部分は一致。全随伴データの選択空間が可縮という高次の一意性まではこの二つの型には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.leftAdjointFunctorIso
+attribute [cite HTT "6.3.1.2" (partial := component) "仮定：同じ一方の関手に二つの ∞ 随伴（HTT より弱い：任意の準圏に適用でき、∞ トポス性と左完全性は不要）。結論：他方の随伴が FunctorIso で同値となる部分は一致。全随伴データの選択空間が可縮という高次の一意性まではこの二つの型には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.rightAdjointFunctorIso
+attribute [cite HTT "6.3.1.4" (partial := stronger-hyp) "仮定：二つの幾何学的射とその左随伴（Lean が強い：左随伴が有限極限だけでなく全小極限を保存すると仮定）。結論：同じ左随伴の合成は全小極限を保存し、逆順の右随伴の合成と実際の ∞ 随伴を成すため、この場合の幾何学的射の合成は一致。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.comp

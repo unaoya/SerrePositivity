@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentActionInput
 public import SerrePositivity.KST.NonConnective.DGSuspensionEdgeIsoTransport
 
 /-!

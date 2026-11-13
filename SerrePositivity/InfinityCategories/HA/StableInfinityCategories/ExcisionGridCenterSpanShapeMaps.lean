@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionGridCenterSpanRetraction
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.PastingRightSpanIso
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.PastingRightSpanIso
 
 /-!
 概要：中央の三点 span と既存の右 span の全単体の順逆写像。

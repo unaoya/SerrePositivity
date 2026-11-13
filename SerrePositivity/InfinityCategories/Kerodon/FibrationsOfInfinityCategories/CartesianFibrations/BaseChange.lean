@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 
 /-!
@@ -112,3 +114,18 @@ instance cocartesianFibration_pullback_snd {X Y B : SSet.{u}} (p : X ⟶ B) (q :
       exact hfc
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.1.2.17" (partial := component) "仮定：余デカルト・ファイブレーション p と底への写像 q（Lean は任意の q を許し、HA では h₁ のファイバーの包含）。結論：底変換が余デカルト・ファイブレーションになる部分に一致する。色別の圏の族を分類する関手 χ と operad 上への延長は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_pullback_snd
+attribute [cite HA "4.1.1.14" (partial := direction) "仮定：単体集合上の余デカルトファイブレーションと底変換写像（HA の p が対称モノイダルである方向の余デカルト性に一致）。結論：引き戻し写像は余デカルトファイブレーションとなる（Assoc⊗ への底変換に適用した片方向に一致）。逆向きの二単体による検出は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_pullback_snd
+attribute [cite HA "4.1.3.11" (partial := direction) "仮定：底変換の単体写像（Lean では planar 条件は不要。HA の Cut を底変換に取る）。結論：元の射影が余デカルトなら引き戻しも余デカルトで、元で余デカルトな辺の引き戻しも余デカルトとなる（この二つの含意に一致）。planar 条件と逆向きの検出は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_pullback_snd
+attribute [cite HA "4.1.3.11" (partial := direction) "仮定：底変換の単体写像（Lean では planar 条件は不要。HA の Cut を底変換に取る）。結論：元の射影が余デカルトなら引き戻しも余デカルトで、元で余デカルトな辺の引き戻しも余デカルトとなる（この二つの含意に一致）。planar 条件と逆向きの検出は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_pullback
+attribute [cite HA "4.2.1.20" (partial := component) "仮定：余デカルトファイブレーションと底変換写像（Lean では Assoc⊗→LM⊗ を明示する）。結論：引き戻した写像は余デカルトファイブレーションとなる（代数色への制限の余デカルト性に一致）。Assoc 上の operadic 構造は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_pullback_snd
+attribute [cite HA "4.3.1.18" (partial := component) "仮定：余デカルトファイブレーションとその底変換（Lean では BM⊗ への各包含を明示する）。結論：制限した射影が余デカルトになる（左右のテンソル構造を作る射影の成分に一致）。二つの作用が可換となる整合性は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_pullback_snd
+attribute [cite HTT "2.4.1.11" (partial := stronger-hyp) "仮定：p-inner fibration の辺 e に大域的 IsCartesianEdge p e を追加（Lean が強い）。結論：isCartesianEdge_pullback を p(e):Δ1→S への引戻しと diagonal lift e に適用すると、同じ引戻し X×SΔ1 の同じ辺が Cartesian。局所 Cartesian の表示条件はこの追加仮定の下で得るが、元の大域性なしの局所述語を束ねた定義はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_pullback
+attribute [cite HTT "2.4.1.3" (partial := component) "仮定：任意の Cartesian edge の pullback（HTT の (2) と一致）。結論：isCartesianEdge_pullback はその同じ辺の Cartesian 性を保つので (2) に一致。また comp と、全対象が準圏という追加仮定下の cancellation は (3) の両方向を与える。(1) の全 iso と一般の simplicial sets での cancellation は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_pullback
+attribute [cite HTT "2.4.2.10" (partial := direction) "仮定：p が CartesianFibration（原典 iff の順方向と一致）。結論：任意 Δn→S の pullback は Cartesian なので、とくに n≤2 の条件に一致。逆方向はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_pullback_snd
+attribute [cite HTT "2.4.2.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_pullback_snd
+attribute [cite HTT "2.4.2.6" (partial := stronger-hyp) "仮定：p が大域的 CartesianFibration と追加（Lean が強い）。結論：cartesianFibration_pullback_snd を任意の辺 Δ1→S に適用し、その同じ pullback の Cartesian 性を得るので原典の local-Cartesian の条件はこの場合に成り立つ。一般の local lifting と二条件の iff を束ねる型はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_pullback_snd

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.Cohere
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.PointHomFamilyFiberCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconePointHomInitiality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleNerveHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGModuleNerveHomotopyEquivalence
 
 /-!
 # 同じ可逆閉射を持つ bar 余錐の余極限性

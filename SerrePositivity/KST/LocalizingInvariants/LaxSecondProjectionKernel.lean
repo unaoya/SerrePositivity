@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma snd_kernel (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (exactFromC p q) := by
   constructor
   · intro hx
@@ -30,11 +30,11 @@ lemma snd_kernel (x : (laxCategory p q).obj _⦋0⦌) :
     have := LaxCounit.fromC_unit_component_isIso p q x hx
     exact ⟨c, ⟨(asIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (fromCAdjunction p q).unitHom x)).symm⟩⟩
   · rintro ⟨c, ⟨e⟩⟩
-    have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌)
+    have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌)
         ((fromC p q).app (Opposite.op ⦋0⦌) c)) := by
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌) _)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌) _)
       rw [fromC_snd_vertex]
-      exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isZero
+      exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).isZero
     exact hz.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (laxSnd p q).hom)
 
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion

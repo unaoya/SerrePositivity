@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubicalCompositionTensorCalculus
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Cubes.CubicalCompositionTensorCalculus
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalTripleExt
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInStructuralIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceInStructuralIso
 
 /-! # 元の cubical mapping object の合成の結合則
 概要：元の全 mapping object 上の Day tensor 合成は、元の結合同型と両立する。

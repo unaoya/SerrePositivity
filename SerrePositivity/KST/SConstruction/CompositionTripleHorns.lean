@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CompositionTripleRightTetrahedron
 public import SerrePositivity.KST.SConstruction.HornHomExt
 
 /-! # 元の全三合成面を保持する二向きの結合替えホーン

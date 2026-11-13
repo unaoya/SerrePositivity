@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationInfinityEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.F1BKanComplexHomotopyClasses
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.UniverseEdgeTransport
 
 /-!
 概要：left fibrations の実射の coherent な辺の類の等式から、元の相対 Hom 内の同型を戻す。

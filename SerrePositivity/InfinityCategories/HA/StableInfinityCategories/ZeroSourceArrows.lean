@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：辺の終点は自由に動く。
 使われ方：零対象に向かう辺の全部分圏。 -/
 def IsZeroSourceArrow {X : SSet.{u}} (v : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌) : Prop :=
-  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
     (Opposite.op ⦋0⦌) v)
 
 /-- 概要：始点が零対象である辺の全部分単体集合。
@@ -45,7 +45,7 @@ def zeroSourceArrowTarget (X : SSet.{u}) : zeroSourceArrows X ⟶ X :=
 方針：正次元は始点の始対象性で prism を延長し、全頂点の零始点条件を境界から移す。
 規約：零対象の存在のみを要求し、安定性は不要。
 使われ方：S3 の cospan の入力と終点の比較。 -/
-instance zeroSourceArrowTarget_trivialKanFibration (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] :
+instance zeroSourceArrowTarget_trivialKanFibration (X : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroSourceArrowTarget X) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
@@ -53,7 +53,7 @@ instance zeroSourceArrowTarget_trivialKanFibration (X : SSet.{u}) [_root_.SerreP
   intro a b sq
   cases n with
   | zero =>
-    let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X
+    let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X
     obtain ⟨e⟩ := z.isInitial.nonempty_edge (SSet.yonedaEquiv b)
     let F : (Δ[1] : SSet.{u}) ⟶ X := SSet.yonedaEquiv.symm e.edge
     let w : (zeroSourceArrows X) _⦋0⦌ := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by

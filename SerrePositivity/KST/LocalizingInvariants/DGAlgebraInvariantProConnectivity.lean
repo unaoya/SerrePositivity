@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantPiProEquivalence
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectedLevelRepresentation
 public import SerrePositivity.KST.LocalizingInvariants.ProGroupConnectedComposition
@@ -75,3 +77,10 @@ lemma IsKConnective.invariantLevelMap_piProConnected (n : ℤ) (hn : 1 ≤ n)
     exact hh
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Cor 2.31" (partial := component) "仮定：可換基礎環上の非正 dg 代数の自然数塔、IsKConnective R Φ k（Lean が強い）。結論：実 Perf 値の射で n+k 連結性と π プロ同値の保存を証明。一般環スペクトルの Pro は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProConnected
+attribute [cite LT "Eq (17)" (partial := component) "仮定：前者は単一の dg Milnor 正方形と局所化不変量、後者は非正 dg 代数の塔と IsKConnective（Lean が強い）。結論：実 ⊙ 側の値の引き戻しと、別に塔の一本の射の連結度比較。元のプロ四角形が弱 n-引き戻しとの合成および K の適用はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProConnected
+attribute [cite LT "Thm 2.32" (partial := component) "仮定：前者は単一の dg Milnor 正方形と局所化不変量、後者は非正 dg 代数の塔と IsKConnective（Lean が強い）。結論：実 ⊙ 側の値の引き戻しと、別に塔の一本の射の連結度比較。元のプロ四角形が弱 n-引き戻しとの合成および K の適用はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProConnected

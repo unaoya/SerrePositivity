@@ -60,7 +60,7 @@ lemma transposeFamily_interval_vertex {A K D : SSet.{u}} (F : A ⊗ K ⟶ D)
 方針：ホーンの全頂点を二枝の端点で表し、λ・μ・E を回収する。
 規約：A と E の gapped 性だけを使う。使われ方：ρ の gapped 性の無条件な供給。 -/
 lemma mcCarthySpan_isGapped_vertex {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (hA : IsGapped A)
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (hA : IsGapped A)
     (α : Fin (n + 1) →o Fin (m + 1)) (τ : Fin (n + 1) →o Fin 2)
     (E : arNerve n ⟶ cofiberDiagrams C) (hE : IsGapped E)
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =

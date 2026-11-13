@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.TwistedSourceElementsComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.HTT.Section2_1_3.VertexFiberOpposite
 
 /-!
 概要：同じ始点を持つ全族の大域評価を、元の反転した fiber 内で読む。
@@ -42,13 +42,13 @@ lemma twistedSourceElementsSourceMap_projection :
 def twistedSourceElementsEvaluation : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedSourceElements p b ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b).op :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift (SSet.opFunctor.map p) (SSet.opObjEquiv.symm b)
     (twistedSourceElementsSourceMap p b) (twistedSourceElementsSourceMap_projection p b) ≫
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).inv
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).inv
 
 /-- 元の全空間へ含めると、構成済みの同じ大域評価の制限そのもの。 -/
 lemma twistedSourceElementsEvaluation_ι :
     twistedSourceElementsEvaluation p b ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p b) =
       twistedSourceElementsSourceMap p b := by
-  have hi : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).inv ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p b) =
+  have hi : (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).inv ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p b) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (SSet.opFunctor.map p) (SSet.opObjEquiv.symm b) := by rfl
   rw [twistedSourceElementsEvaluation, Category.assoc, hi, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift_ι]
 

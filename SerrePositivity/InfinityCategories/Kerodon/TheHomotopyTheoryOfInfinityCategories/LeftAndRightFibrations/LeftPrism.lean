@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.PairingHorns
 public import Mathlib.AlgebraicTopology.SimplicialSet.PushoutProduct
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
@@ -50,3 +52,8 @@ lemma leftAnodyneExtensions_point_whiskerRight (A : SSet.{u}) :
     (.ofIsInitialRight (curriedTensor _) (horn 1 0).ι (initial.to A) initialIsInitial)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.1.2.6" (partial := direction) "仮定：任意の単射 i と始端の包含（HTT の第三生成系と一致）。結論：その pushout-product は left anodyne、したがって第三生成系の弱飽和閉包は第一の閉包に含まれるという一方向に一致。逆の包含はなく、三生成系の閉包が等しいとは判定しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions_pushoutObjObj_point

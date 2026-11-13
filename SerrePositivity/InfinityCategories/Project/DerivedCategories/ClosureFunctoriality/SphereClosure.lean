@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.ModuleExtension
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureOperations
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureOperations
 
 /-!
 概要：D-3 の実閉包関手化を、D-2 が公開した sphere-free 閉包集合へ特殊化する。

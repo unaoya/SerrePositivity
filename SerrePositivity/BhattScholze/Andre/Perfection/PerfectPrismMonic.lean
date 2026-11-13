@@ -13,7 +13,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 
 /-!
 # 完全 prism 商上の有限モニック族の根付き拡大（BS 著者版 Theorem 7.14 の一段目 R ↦ R₁）
@@ -22,10 +22,10 @@ public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 完全 prism の商からのモニック根候補、完備化源の離散性、raw PD 環と既存 prism 候補の完全忠実平坦性、δ 完全化への入力、候補の剰余と perfectoid 商、標準 perfectoid 候補の p 完全忠実平坦性、完全 prism 商上の根付き拡大。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Transfinite/Tower`、`Variants/ArbitraryFamily`、`Variants/Auxiliary`、`Variants/MonicRootedExtension`、`Variants/RootedExtension`。
@@ -33,7 +33,7 @@ public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 
 universe u
 
-/-! ## André E1：完全 prism の商からのモニック根候補（旧 Andre/PerfectPrismMonicCandidate.lean）
+/-! ## André E1：完全 prism の商からのモニック根候補
 
 ## 概要
 
@@ -122,7 +122,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicCandidate
 
-/-! ## André E1・E2：完全 prism 上の有限モニック族の実完備化源の離散性（旧 Andre/PerfectPrismMonicSourceDiscrete.lean）
+/-! ## 完全 prism 上の有限モニック族の実完備化源の離散性
 
 ## 概要
 
@@ -225,7 +225,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicSourceDiscrete
 
-/-! ## André E1・E2：有限モニック族の raw 実 PD 環の完全忠実平坦性（旧 Andre/PerfectPrismMonicRawPDCompletelyFlat.lean）
+/-! ## 有限モニック族の raw 実 PD 環の完全忠実平坦性
 
 ## 概要
 
@@ -361,7 +361,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicRawPDCompletelyFlat
 
-/-! ## André E1・E2：raw モニック PD 環の δ 完全化への平坦性入力（旧 Andre/PerfectPrismMonicPDPerfectionInputs.lean）
+/-! ## raw モニック PD 環の δ 完全化への平坦性入力
 
 ## 概要
 
@@ -569,7 +569,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicPDPerfectionInputs
 
-/-! ## André E1・E2：有限モニック族の既存 prism 候補の完全忠実平坦性（旧 Andre/PerfectPrismMonicPrismCompletelyFlat.lean）
+/-! ## 有限モニック族の既存 prism 候補の完全忠実平坦性
 
 ## 概要
 
@@ -651,7 +651,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicPrismCompletelyFlat
 
-/-! ## André E1・E2：既存モニック prism 候補の標準剰余入力（旧 Andre/PerfectPrismMonicPrismResidue.lean）
+/-! ## 既存モニック prism 候補の標準剰余入力
 
 ## 概要
 
@@ -745,7 +745,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicPrismResidue
 
-/-! ## André E1・E2：多項式 prism 候補の実生成元商と標準 perfectoid 商（旧 Andre/PerfectPrismMonicQuotientReduction.lean）
+/-! ## 多項式 prism 候補の実生成元商と標準 perfectoid 商
 
 ## 概要
 
@@ -858,7 +858,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicQuotientReduction
 
-/-! ## André E1・E2：有限モニック族の標準 perfectoid 候補の p 完全忠実平坦性（旧 Andre/PerfectPrismMonicPerfectoidCompletelyFlat.lean）
+/-! ## 有限モニック族の標準 perfectoid 候補の p 完全忠実平坦性
 
 ## 概要
 
@@ -1070,7 +1070,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicPerfectoidCompletelyFlat
 
-/-! ## André E1・E2：完全 prism 商上の有限モニック族の根付き拡大（旧 Andre/PerfectPrismMonicRootedExtension.lean）
+/-! ## 完全 prism 商上の有限モニック族の根付き拡大
 
 ## 概要
 

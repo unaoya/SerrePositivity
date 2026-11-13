@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.FrameArrowCategory
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
 public import Mathlib.CategoryTheory.Elements
 public import Mathlib.CategoryTheory.Comma.StructuredArrow.Basic

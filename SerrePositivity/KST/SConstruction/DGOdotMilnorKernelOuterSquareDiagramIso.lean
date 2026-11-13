@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceOuterComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareDiagramIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：LT 絶対外周を厚平坦核を始点とする元実核面へ指定三境界付きで比較する。

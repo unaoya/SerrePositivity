@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LiftedShapeNerveIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.LiftedShapeNerveIso
 
 /-!
 概要：積・cospan・塔の反転豊穣係数の切断と coherent な錐の切断は同値。

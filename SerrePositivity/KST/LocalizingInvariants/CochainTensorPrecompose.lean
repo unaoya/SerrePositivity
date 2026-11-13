@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexTensorCochainUnit
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.ComplexTensorCochainUnit
 
 /-!
 概要：二因子の実鎖写像による前合成と、任意次数 cochain の tensor を比較する。

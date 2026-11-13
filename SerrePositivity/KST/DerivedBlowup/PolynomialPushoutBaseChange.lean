@@ -3,7 +3,7 @@ module
 public import Mathlib.RingTheory.TensorProduct.MvPolynomial
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Algebra.Homology.Additive
-public import SerrePositivity.KST.DerivedBlowup.ScalarTensorView
+public import SerrePositivity.CommutativeAlgebra.Module.ScalarTensorView
 
 /-!
 概要：KST Lemma3.6 の多項式表示環の pushout に沿う加群底変更の標準比較。
@@ -40,10 +40,10 @@ def polynomialPushoutModuleIso (M : ModuleCat.{u} (MvPolynomial I A)) :
     IsScalarTower.restrictScalars A (MvPolynomial I A) M
   exact
     (ModuleCat.restrictScalars (algebraMap B (MvPolynomial I B))).mapIso
-      (scalarExtensionTensorView (B := MvPolynomial I B) M).toModuleIso ≪≫
-    (scalarRestrictionTensorView (A := B) M).toModuleIso ≪≫
+      (_root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView (B := MvPolynomial I B) M).toModuleIso ≪≫
+    (_root_.SerrePositivity.CommutativeAlgebra.Module.scalarRestrictionTensorView (A := B) M).toModuleIso ≪≫
     (Algebra.IsPushout.cancelBaseChange A B (MvPolynomial I A) (MvPolynomial I B) M).toModuleIso ≪≫
-    (scalarExtensionTensorView (B := B)
+    (_root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView (B := B)
       ((ModuleCat.restrictScalars (algebraMap A (MvPolynomial I A))).obj M)).symm.toModuleIso
 
 /-- 概要：多項式 pushout 比較の逆は b⊗m を C(b)⊗m へ送る。
@@ -57,14 +57,14 @@ theorem polynomialPushoutModuleIso_inv_tmul (M : ModuleCat.{u} (MvPolynomial I A
   let := Module.restrictScalars A (MvPolynomial I A) M
   let : IsScalarTower A (MvPolynomial I A) M :=
     IsScalarTower.restrictScalars A (MvPolynomial I A) M
-  change (scalarExtensionTensorView (B := MvPolynomial I B) M).symm
+  change (_root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView (B := MvPolynomial I B) M).symm
       ((Algebra.IsPushout.cancelBaseChange A B (MvPolynomial I A) (MvPolynomial I B) M).symm
-        (scalarExtensionTensorView (B := B)
+        (_root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView (B := B)
           ((ModuleCat.restrictScalars (algebraMap A (MvPolynomial I A))).obj M)
           (b ⊗ₜ[A, algebraMap A B] m))) = _
-  rw [scalarExtensionTensorView_tmul, Algebra.IsPushout.cancelBaseChange_symm_tmul]
-  apply (scalarExtensionTensorView (B := MvPolynomial I B) M).injective
-  rw [LinearEquiv.apply_symm_apply, scalarExtensionTensorView_tmul]
+  rw [_root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView_tmul, Algebra.IsPushout.cancelBaseChange_symm_tmul]
+  apply (_root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView (B := MvPolynomial I B) M).injective
+  rw [LinearEquiv.apply_symm_apply, _root_.SerrePositivity.CommutativeAlgebra.Module.scalarExtensionTensorView_tmul]
   rfl
 
 /-- 概要：多項式 pushout 比較の逆は加群射と可換。

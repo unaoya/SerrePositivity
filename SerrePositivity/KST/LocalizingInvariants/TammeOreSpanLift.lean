@@ -43,7 +43,7 @@ lemma exists_tammeOreSpanLift
   have hr' : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ R = horn₂₀.ι₀₂ ≫ S :=
     hr.trans (SSet.yonedaEquiv.symm_apply_apply (horn₂₀.ι₀₂ ≫ S))
   have hb' : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ R) ∈ tammeLocalizingEdges p q :=
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge R) ▸ hb
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge R) ▸ hb
   obtain ⟨G, hG₁, hGt, hGr⟩ := exists_tammeSpanBaseChangeLift p q S hS R hr' hb'
   exact ⟨R, G, hR, ht, hG₁, hGt.trans ht, hGr⟩
 

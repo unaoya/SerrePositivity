@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TensorMapping
 
 /-! # 元の閉 Hom tensor 作用の通常射回収と左因子自然性
 概要：同じ左 tensor の全写像対象への作用を、通常射と左因子の射について照合する。

@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 方針：回転長方形の右面の cofiber 三角形と同型にする。
 規約：通常の一回シフトと負号を含む回転。使われ方：TR2 の代表上での順方向。 -/
 lemma cofiberTriangle_rotate_mem {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht).rotate ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberDistinguishedTriangles X := by
   let r := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberRotationRectangle t ht
   exact ⟨r.rotatedZeroTriangle, r.rotated_isCofiber, ⟨(r.triangleIsoRotate ht).symm⟩⟩
@@ -40,8 +40,8 @@ lemma rotate_mem_cofiberDistinguishedTriangles {X : SSet.{u}} [Quasicategory X] 
 方針：双対回転で前の列を作り、その順回転の第一辺を元の第一辺と照合する。
 規約：辺の厳密な一致を図式同型に移す。使われ方：逆回転への閉性。 -/
 lemma exists_cofiberTriangle_rotate_iso {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
-    ∃ (d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (hd : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence d),
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
+    ∃ (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (hd : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence d),
       Nonempty ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle d hd).rotate ≅ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht) := by
   obtain ⟨d, hd, he⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_cofiberPredecessor t ht
   let r := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberRotationRectangle d hd
@@ -56,7 +56,7 @@ lemma exists_cofiberTriangle_rotate_iso {X : SSet.{u}} [Quasicategory X] [_root_
 方針：前の cofiber 三角形の順回転表示を逆回転関手で戻す。
 規約：Mathlib の回転自己同値の単位同型を用いる。使われ方：TR2 の代表上での逆方向。 -/
 lemma cofiberTriangle_invRotate_mem {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht).invRotate ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberDistinguishedTriangles X := by
   obtain ⟨d, hd, ⟨e⟩⟩ := exists_cofiberTriangle_rotate_iso t ht
   exact ⟨d, hd, ⟨((invRotate (hoFunctor.obj X)).mapIso e).symm ≪≫

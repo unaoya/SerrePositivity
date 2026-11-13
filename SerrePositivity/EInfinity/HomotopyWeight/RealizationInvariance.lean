@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.LocalizationDetection
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Localizations.LocalizationDetection
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!

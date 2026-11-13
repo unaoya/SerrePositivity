@@ -45,13 +45,13 @@ def complexHammockDerivedComparison_valueIso (M : Semifree A) :
   change VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
     ((nerveMap (semifreeClosedToComplex A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ z)))
-    ((closedNerveInclusion A (Semifree A)).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ z)) at e
   rw [nerveMap_app_mk₀] at e
-  have hv : (closedNerveInclusion A (Semifree A)).app (Opposite.op ⦋0⦌)
+  have hv : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ z) = Simplex.vertex M := by
     apply (dgNerve.vertexEquiv A (Semifree A)).injective
-    rw [closedNerveInclusion_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion_vertex]
     rfl
   rw [hv] at e
   change VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)

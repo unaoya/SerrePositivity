@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarDifferential
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarDifferential
 
 /-!
 概要：一次 prefix の後尾ラベルは零番の面ラベルである。

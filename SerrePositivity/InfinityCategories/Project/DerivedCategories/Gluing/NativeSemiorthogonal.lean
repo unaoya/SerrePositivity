@@ -1,6 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.StableLaxStructure
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.StableTammeComparison
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.StableStructure.StableLaxStructure
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.StableTammeComparison
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.QCatEquivalenceAdjunction
 /-!
 概要：K-8b の実半直交分解を、元 dg gluing の共通宇宙の nerve へ戻す。
@@ -72,16 +74,16 @@ def dgGluingNativeDInclusion_left_iso :
     dgGluingNativeDInclusion, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingStableComparisonInverse, Category.assoc] using! hi
 
 lemma dgGluingNativeDInclusion_killed (d : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingStableInput.{u, w, v} R D hD).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseLeftNerve R C D M).app (Opposite.op ⦋0⦌) d) :=
   ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLaxSemiorthogonal R C D M hC hD hY hM).kills_inclusion d).of_vertexIso
     ((dgGluingNativeDInclusion_left_iso R C D M hC hD hY hM).app d).symm
 
 lemma dgGluingNativeDInclusion_generates_kernel
     (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingStableObject R C D M hC hD).obj _⦋0⦌)
-    (hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseLeftNerve R C D M).app (Opposite.op ⦋0⦌) x)) :
+    (hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseLeftNerve R C D M).app (Opposite.op ⦋0⦌) x)) :
     x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda.{u, v, w} R C)
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌)
         ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedNerveLaxComparison R C D M).app (Opposite.op ⦋0⦌) x)) := by
     have he := ConcreteCategory.congr_hom (NatTrans.congr_app
@@ -119,14 +121,14 @@ def dgGluingNativeSemiorthogonal :
     dsimp only [Bicategory.Adjunction.compCounit, bicategoricalComp]
     infer_instance
   · intro d
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedNerveLaxComparison R C D M ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda.{u, v, w} R C)
           (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌) d)
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedNerveLaxComparison_fst]
     exact dgGluingNativeDInclusion_killed R C D M hC hD hY hM d
   · intro x hx
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedNerveLaxComparison R C D M ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedNerveLaxComparison R C D M ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda.{u, v, w} R C)
         (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌) x) at hx
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedNerveLaxComparison_fst] at hx
@@ -167,3 +169,9 @@ lemma dgGluingNativeSemiorthogonal_mappingSpace
   (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).semiorthogonal d c
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Eq (7)" (partial := component) "仮定：安定 dg gluing と native lax の提示（Lean が強い）。結論：二因子の片方を核とする半直交分解・Verdier 列。与えた生成集合 S,T の合併で生成する一般命題を直接は述べない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingNativeSemiorthogonal_isVerdier
+attribute [cite LT "Lemma 1.9" (partial := component) "仮定：安定 dg gluing と native lax の提示（Lean が強い）。結論：二因子の片方を核とする半直交分解・Verdier 列。与えた生成集合 S,T の合併で生成する一般命題を直接は述べない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingNativeSemiorthogonal_isVerdier

@@ -45,7 +45,7 @@ lemma dgOdotMilnorNuAbsoluteTriangle_middle_zero : _root_.SerrePositivity.Infini
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2),
           stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
     apply Prod.ext <;> apply SSet.stdSimplex.ext <;> intro i <;> fin_cases i <;> rfl
-  have he : (X₁) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1) := by
+  have he : (X₁) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1) := by
     have hn' := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
@@ -63,7 +63,7 @@ def dgOdotMilnorNuAbsoluteTriangleMaximalComposite : _root_.SerrePositivity.Infi
 方針：元最大 path を二隣接 path に分解し、元零角の全零性を使う。
 規約：指定二単体を選び直さない。使われ方：同じ絶対全 Hom の零成分判定。 -/
 lemma dgOdotMilnorNuAbsoluteTriangleMaximalComposite_zero (x : (X₀).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotMilnorNuAbsoluteTriangleMaximalComposite R d h).hom.app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotMilnorNuAbsoluteTriangleMaximalComposite R d h).hom.app
       (Opposite.op ⦋0⦌) x) := by
   let F := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (σ)
   let p : (⟨ULift.up (0 : Fin 3)⟩ :
@@ -80,10 +80,10 @@ lemma dgOdotMilnorNuAbsoluteTriangleMaximalComposite_zero (x : (X₀).obj _⦋0�
       (homOfLE (show (ULift.up (1 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide))
   have he := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.hom (F.map_comp p q)
   change (F.map (p ≫ q)).hom = f.hom ≫ g.hom at he
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((F.map dgOdotMilnorNuNullUpperMaximalPath.{u}).hom.app
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((F.map dgOdotMilnorNuNullUpperMaximalPath.{u}).hom.app
     (Opposite.op ⦋0⦌) x)
   rw [hpq, he]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (g.hom.app _ (f.hom.app _ x))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (g.hom.app _ (f.hom.app _ x))
   exact @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ g.hom g.isExact _
     (dgOdotMilnorNuAbsoluteTriangle_middle_zero R d h _)
 

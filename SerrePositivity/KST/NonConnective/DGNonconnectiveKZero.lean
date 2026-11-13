@@ -50,7 +50,7 @@ theorem dgNonconnectiveK_pi_subsingleton (j : ℤ) :
 
 /-- 固定 ν が零なら、元の実非連結 K 自身の Sp 頂点が零。 -/
 theorem dgNonconnectiveK_vertex_isZero_of_zero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgNonconnectiveK R κ hκ A)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgNonconnectiveK R κ hκ A)) :=
   Fibration.spectrum_isZeroVertex_of_homotopyGroup_subsingleton _
     (dgNonconnectiveK_pi_subsingleton R κ hκ A hA)
 
@@ -66,7 +66,7 @@ theorem dgNonconnectiveK_preservesRelativeZero_of_vertex
   obtain ⟨B, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv (PerfDGInput.{u, max (u + 1) v} R)).surjective a
   have he := congrArg (fun z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{max (u + 1) v} _⦋0⦌ =>
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject z)) (dgKInputNu_vertex R B)
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex B))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex B))
   rw [hE B]
   exact dgNonconnectiveK_vertex_isZero_of_zero R κ hκ B (he.mp ha)
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexContraction
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexContraction
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
 
 /-!

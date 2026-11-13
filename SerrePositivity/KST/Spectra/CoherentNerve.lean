@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Spectra.SpectrumSimplicialCategory
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Quasicategory
 
@@ -42,3 +44,10 @@ instance sp_quasicategory : SSet.Quasicategory Sp.{u} := by
 end
 
 end SerrePositivity.KST.Spectra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.8" (partial := special) "仮定：標的は点付き Kan 空間（Lean が強い：有限極限を持つ一般の C ではない）。結論：Ω スペクトルとその coherent nerve（Lean が弱い：有限点付き空間からの縮約切除関手の充満部分圏との比較がない）。"] _root_.SerrePositivity.KST.Spectra.Sp
+attribute [cite HA "1.4.3.1" (partial := component) "仮定：点付き Kan 空間の Ω スペクトルの単体豊穣模型（HA と対応する対象）。結論：coherent nerve が準圏（Lean が弱い：HA の縮約切除関手としての Sp との比較が型にない）。"] _root_.SerrePositivity.KST.Spectra.Sp
+attribute [cite HA "1.4.3.1" (partial := component) "仮定：点付き Kan 空間の Ω スペクトルの単体豊穣模型（HA と対応する対象）。結論：coherent nerve が準圏（Lean が弱い：HA の縮約切除関手としての Sp との比較が型にない）。"] _root_.SerrePositivity.KST.Spectra.sp_quasicategory

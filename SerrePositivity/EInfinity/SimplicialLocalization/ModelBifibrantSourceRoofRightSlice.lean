@@ -77,7 +77,7 @@ lemma modelBifibrantSourceRoofProductCommaRightSlice :
         (SimplicialLocalization.hammockLocalizationNerveMap
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b =
     nerveMap (modelBifibrantSourceRoofProductCommaRightOver X Y q b) ≫
-      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)))
@@ -92,7 +92,7 @@ lemma modelBifibrantSourceRoofProductCommaRightSlice :
   dsimp only [frameRoofRightSliceMap]
   have h := modelBifibrantSourceRoofProductCommaRightOver_nerve X Y q b
   simpa only [Category.assoc] using congrArg
-    (fun g => g ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso
+    (fun g => g ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso
       (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)))

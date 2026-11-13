@@ -46,13 +46,13 @@ lemma isExactFunctor_of_adjunction {C E : SSet.{u}} [Quasicategory C] [_root_.Se
       exact (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitMappingSpaceCondition_iff_interval a.unitHom).mp
         a.unitMappingSpaceCondition x y).isContractibleKan_iff).mpr
         (hx.1.intervalMappingSpace_isContractibleKan _)
-    let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex E
+    let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex E
     exact ⟨hi, z.isTerminal.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.initialVertexIso z.isInitial hi)⟩
   preservesCofiber t ht := by
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (t.square ≫ L)
-    rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_reverseGrid, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_postcomp]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_reverseGrid, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_postcomp]
     let s := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid t.square
-    have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_reverseGrid t.square).mp ht
+    have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s := (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_reverseGrid t.square).mp ht
     have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCone_isLimit_of_adjunction
       (oppositeAdjunction a) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone s) hs
     exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_of_diagram_eq

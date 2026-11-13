@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovQuotientSuccessorValue
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteMapValuePro
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantQuasiIso
@@ -62,3 +64,9 @@ lemma IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence
   · exact hcut
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Prop 4.8" (partial := component) "仮定：非正 dg 代数のレベル射、IsKConnective の証人（Lean が強い）。結論：一般の指定された局所化不変量の値でのプロ同値。単体環の非連結 K に直接適用する証人はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence
+attribute [cite LT "Cor 2.31" (partial := component) "仮定：可換基礎環上の非正 dg 代数の自然数塔、IsKConnective R Φ k（Lean が強い）。結論：実 Perf 値の射で n+k 連結性と π プロ同値の保存を証明。一般環スペクトルの Pro は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence

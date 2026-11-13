@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoBoundary
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingNativeTriangle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGStrictNatTransNerveHom
 
 /-!
 概要：元実 gluing cone の右包含を元入力全同型・元上二単体と同時に保持する。

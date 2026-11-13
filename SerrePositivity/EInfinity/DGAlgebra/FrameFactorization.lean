@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelCofibrantHammockWeak
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelCofibrantHammockWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence
 
 /-!
@@ -71,7 +71,7 @@ def fibrantFactorization :
 使われ方：Sp の全 dg 代数の指定局所化への復帰。 -/
 lemma cofibrantHammockInclusion_weak :
     let := modelCategory R
-    ∀ X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R))).category,
+    ∀ X Y : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R))).category,
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
         (Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative (Mon (Complex R))) X Y) := by
   let := modelCategory R

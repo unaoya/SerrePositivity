@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFunctorBaseChange
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalWeakEquivalence
 public import Mathlib.Tactic.CrossRefAttribute
@@ -116,3 +118,10 @@ lemma IsRightCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}
   exact (ht.cancel_right hh).isSimplicialHomotopyEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.1.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.cancel_left
+attribute [cite HTT "4.1.1.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.comp
+attribute [cite HTT "4.1.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.cancel_left

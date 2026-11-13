@@ -28,7 +28,7 @@ lemma exists_limitCone_vertex_diagonal {K X : SSet.{u}} [Quasicategory X]
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagonalArrow (uncurry (SSet.yonedaEquiv.symm e.edge))).edge) := by
   have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (uncurry (SSet.yonedaEquiv.symm e.edge))) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (uncurry (SSet.yonedaEquiv.symm e.edge))) :=
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_functorEdge_edge e)).2 he
   obtain ⟨f, hf⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_squareDiagonalArrow_equivalence
     (uncurry (SSet.yonedaEquiv.symm e.edge)) hl

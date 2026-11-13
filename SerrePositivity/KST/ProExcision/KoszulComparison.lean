@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.ParameterQuotient
 public import SerrePositivity.KST.ProExcision.KoszulConeVanishing
 
@@ -42,3 +44,11 @@ theorem koszul_comparison_isProIso [IsNoetherianRing R] {e : ℕ} (z : Fin e →
     (koszulConeComparison_isProIso z K hK i)
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 4.10" (partial := component) "仮定：各ホモロジーが有限生成の余鎖複体と Noether 基礎環、有限列（Lean が強い：単体環の代わりに加群複体を入力）。結論：各次数の Koszul からパラメータ商へのプロ同型。単体環の乗法構造との比較はない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.koszul_comparison_isProIso
+attribute [cite KST "Lemma 5.5" (partial := component) "仮定：有限生成ホモロジーを持つ複体の Koszul 塔、または指定例外因子のチャート（Lean が強い）。結論：プロホモロジー比較と局所の例外因子の底変換。K の絶対・相対スペクトルに移す三つの同値は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.koszul_comparison_isProIso
+attribute [cite LT "Cor 2.35" (partial := component) "仮定：各ホモロジー有限の余鎖複体、および非正 dg 塔の Tor 比較入力（Lean が強い）。結論：Koszul 比較と局所化不変量の一本の値のプロ同値。c(μ)πᵢ のプロ同型から K の導来商の正方形への組立はない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.koszul_comparison_isProIso
+attribute [cite LT "Eq (18)" (partial := component) "仮定：各ホモロジー有限の余鎖複体、および非正 dg 塔の Tor 比較入力（Lean が強い）。結論：Koszul 比較と局所化不変量の一本の値のプロ同値。c(μ)πᵢ のプロ同型から K の導来商の正方形への組立はない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.koszul_comparison_isProIso

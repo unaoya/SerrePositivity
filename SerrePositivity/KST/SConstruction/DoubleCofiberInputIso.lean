@@ -40,9 +40,9 @@ def functorIsoOfFlip {E A C : SSet.{u}} [Quasicategory C]
 def doubleCofiberInputIso {E C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (J : E ⟶ cofiberDiagrams (cofiberDiagrams C))
     (hr : ∀ e : E _⦋0⦌,
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((doubleCofiberRow J 0 ≫ cofiberApex C).app (Opposite.op ⦋0⦌) e))
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((doubleCofiberRow J 0 ≫ cofiberApex C).app (Opposite.op ⦋0⦌) e))
     (hc : ∀ e : E _⦋0⦌,
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((doubleCofiberColumn J 0 ≫ cofiberApex C).app (Opposite.op ⦋0⦌) e)) :
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((doubleCofiberColumn J 0 ≫ cofiberApex C).app (Opposite.op ⦋0⦌) e)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (doubleCofiberRow J 1 ≫ cofiberProjection C)
       (doubleCofiberColumn J 1 ≫ cofiberProjection C) := by
   let R := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv E (Δ[1] ⊗ Δ[1] : SSet.{u}) C (doubleCofiberGrid J)

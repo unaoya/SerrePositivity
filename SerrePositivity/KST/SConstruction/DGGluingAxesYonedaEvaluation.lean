@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesHomShortExact
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaCone
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.RepresentableEvaluation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.RepresentableEvaluation
 
 /-! # 元の二軸 Yoneda 像の評価短完全列
 概要：同じ二射の Yoneda 像を評価した実短複体は、元の全 Hom 短複体と同型になる。

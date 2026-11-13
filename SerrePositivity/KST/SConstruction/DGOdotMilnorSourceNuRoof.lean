@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceKernelEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGStableHomotopyEquivalence
 
 /-!
 概要：元対角始域を cell 増大屋根の終端として回収する指定 ν 同値を構成する。
@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "T" => DGCategoryCellResolution.Source R (A)
 local notation "P" => dgQuotientImage R
   (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))

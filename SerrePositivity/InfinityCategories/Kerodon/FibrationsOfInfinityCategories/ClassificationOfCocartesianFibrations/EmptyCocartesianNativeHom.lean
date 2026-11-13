@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.EmptyRelativeFunctorHom
+public import SerrePositivity.InfinityCategories.HA.Section4_1_4.EmptyRelativeFunctorHom
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalSimplicialCore
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackNativeFunctor
 
@@ -24,7 +24,7 @@ variable {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) (a : Over B) (hA : IsIni
 /-- 空の部分底上の元の全 cocartesian 相対 Hom は終対象。 -/
 def cocartesianPullbackNativeHom_isTerminal_of_isInitial :
     IsTerminal (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.cocartesianRelativeFunctorSpace (pullback.fst a.hom p) (pullback.fst a.hom q)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.markedCocartesianFunctorSpace_isTerminal_of_isInitial
+  _root_.SerrePositivity.InfinityCategories.HA.Section4_1_4.markedCocartesianFunctorSpace_isTerminal_of_isInitial
     (pullback.fst a.hom q) (pullback.fst a.hom p) _
     (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sset_pullback_isInitial_of_left a.hom p hA)
 

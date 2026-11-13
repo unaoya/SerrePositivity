@@ -28,7 +28,7 @@ structure DGOdotMilnorRelativeRectangleInput where
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram
   image : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputPerfectNu R)
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary
-  source_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom) ≫
+  source_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom) ≫
     _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare rectangle.diagram 2) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)
 
@@ -67,7 +67,7 @@ lemma comparison_triangles :
 /-- 概要：比較四角形の始域は元の同じ固定 dg 入力。
 方針：入力の実頂点等号を保持する。規約：同値な別始域で代用しない。
 使われ方：K-B 向け S• 界面の元始域回収。 -/
-lemma comparison_source : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex v.comparisonSquare 0 0 =
+lemma comparison_source : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex v.comparisonSquare 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d) := v.source_vertex
 
 end DGOdotMilnorRelativeRectangleInput

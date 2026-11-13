@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionLeftCofinal
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionOpposite
 
@@ -27,3 +29,8 @@ lemma IsIdempotentCompletion.isRightCofinal {C D : SSet.{u}}
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_isLeftCofinal_op f).mpr h
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.4.6" (partial := stronger-hyp) "仮定：冪等完備化を与える関手（Lean が強い：内ファイブレーション）。結論：同じ関手は余極限を計算する向きに共終である（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal

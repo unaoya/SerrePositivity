@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 open _root_.SerrePositivity.KST.LocalizingInvariants
 
 def exactKernel {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) : Set (A.obj _⦋0⦌) :=
-  {x | _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x)}
+  {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x)}
 
 lemma exactKernel_stableClosure {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) :
     {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactKernel F) x} = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactKernel F := by

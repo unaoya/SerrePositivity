@@ -34,7 +34,7 @@ public import Mathlib.Data.Fintype.OfMap
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.AcyclicFiber
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIndexing
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryNormalization
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.NormalizedBoundaryFilling
 

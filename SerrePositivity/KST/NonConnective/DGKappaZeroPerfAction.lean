@@ -36,7 +36,7 @@ lemma dgKappaZeroPerfAction_closed_isZero (X : PresentedPerfectDGObject R (DGKap
 
 /-- 同じ実 Perf 作用の各出力は、元の native nerve で始対象かつ終対象。 -/
 lemma dgKappaZeroPerfAction_isZeroVertex (X : PresentedPerfectDGObject R (DGKappaCone R D I)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex
         ((presentedPerfectDGAction R (DGKappaCone R D I) (DGKappaCone R D I)
           (dgKappaZeroFunctor R D I Z)).obj X)) :=

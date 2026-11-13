@@ -25,7 +25,7 @@ structure PushoutCofiberRectangle {X : SSet.{u}}
     (L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) where
   diagram : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X
   left_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2 = L
-  zero_end : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 0) 1 0)
+  zero_end : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 0) 1 0)
   right_isPushout : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 0)
   outer_isPushout : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 1)
 
@@ -35,19 +35,19 @@ structure PushoutCofiberRectangle {X : SSet.{u}}
 lemma nonempty_pushoutCofiberRectangle {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L) :
     Nonempty (PushoutCofiberRectangle L) := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X
   obtain ⟨τ, hτ, hlast⟩ :=
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_terminalCompositeTriangle z.isTerminal (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow L)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_terminalCompositeTriangle z.isTerminal (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow L)
   have h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ L = stdSimplex.δ (2 : Fin 3) ≫ τ := by
-    rw [hτ, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+    rw [hτ, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
     exact (SSet.yonedaEquiv.symm_apply_apply _).symm
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (τ.app (Opposite.op ⦋0⦌)
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (τ.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (2 : Fin 3))) := by
     rw [hlast]
     exact z.isZero
   obtain ⟨F, hleft, hbottom, hright, houter⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_pushoutRectangle_of_zeroEnd L hL τ h hz
   refine ⟨⟨F, hleft, ?_, hright, houter⟩⟩
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingBottomTriangle F).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingBottomTriangle F).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (2 : Fin 3)))
   rw [hbottom]
   exact hz
@@ -63,20 +63,20 @@ def chosenPushoutCofiberRectangle {X : SSet.{u}} [Quasicategory X] [_root_.Serre
 方針：右下の零頂点を転置で標準の零角へ移す。
 規約：始点と終点は外側の対角頂点。使われ方：押し出しの第一の cofiber 列。 -/
 def PushoutCofiberRectangle.outerZeroTriangle {X : SSet.{u}}
-    {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X where
+    {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X where
   square := (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 1
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 0) 1 0)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 0) 1 0)
     exact r.zero_end
 
 /-- 概要：長方形の右面の転置は零角の列。
 方針：右下の零頂点を転置で標準の零角へ移す。
 規約：始点は中央下、終点は右上。使われ方：二つの cofiber の間の列。 -/
 def PushoutCofiberRectangle.rightZeroTriangle {X : SSet.{u}}
-    {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X where
+    {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X where
   square := (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 0
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 0) 1 0)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 0) 1 0)
     exact r.zero_end
 
 /-- 概要：外側を転置した列は cofiber 列。
@@ -84,14 +84,14 @@ def PushoutCofiberRectangle.rightZeroTriangle {X : SSet.{u}}
 規約：指定長方形の後は充填性不要。使われ方：八面体の二つ目の元の射の cofiber。 -/
 lemma PushoutCofiberRectangle.outer_isCofiber {X : SSet.{u}}
     {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence r.outerZeroTriangle := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose _).1 r.outer_isPushout
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence r.outerZeroTriangle := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose _).1 r.outer_isPushout
 
 /-- 概要：右面を転置した列は cofiber 列。
 方針：押し出し性の転置不変性を使う。
 規約：指定長方形の後は充填性不要。使われ方：八面体の最後の三角形の代表。 -/
 lemma PushoutCofiberRectangle.right_isCofiber {X : SSet.{u}}
     {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence r.rightZeroTriangle := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose _).1 r.right_isPushout
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence r.rightZeroTriangle := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose _).1 r.right_isPushout
 
 /-- 概要：外側の cofiber 列から右面の cofiber 列への実際のホモトピー。
 方針：外側から右面への形状の変形を転置で前合成する。
@@ -117,8 +117,8 @@ def PushoutCofiberRectangle.comparisonHom {X : SSet.{u}}
 規約：評価成分そのものを使う。使われ方：シフトの計算で端点の型を固定する。 -/
 def PushoutCofiberRectangle.sourceHom {X : SSet.{u}} [Quasicategory X]
     {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex r.outerZeroTriangle.square 0 0 ⟶
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex r.rightZeroTriangle.square 0 0 :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex r.outerZeroTriangle.square 0 0 ⟶
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex r.rightZeroTriangle.square 0 0 :=
   (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map r.comparisonHom
 
 /-- 概要：cofiber 比較の始点成分は左面の下辺である。
@@ -127,7 +127,7 @@ def PushoutCofiberRectangle.sourceHom {X : SSet.{u}} [Quasicategory X]
 lemma PushoutCofiberRectangle.comparisonHom_source_arrow {X : SSet.{u}} [Quasicategory X]
     {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) :
     Arrow.mk r.sourceHom =
-      Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom L) := by
+      Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom L) := by
   change Arrow.mk ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map
     (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp (β_ (Δ[1] : SSet.{u}) Δ[1]).hom
@@ -135,7 +135,7 @@ lemma PushoutCofiberRectangle.comparisonHom_source_arrow {X : SSet.{u}} [Quasica
   rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp]
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation_transpose]
   exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pastingOuterToRightHom_source_arrow r.diagram).trans (congrArg
-    (fun R => Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom R)) r.left_eq)
+    (fun R => Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom R)) r.left_eq)
 
 /-- 概要：cofiber 比較の終点成分は恒等射である。
 方針：転置で対角成分を保ち、固定した終点の計算を使う。
@@ -143,7 +143,7 @@ lemma PushoutCofiberRectangle.comparisonHom_source_arrow {X : SSet.{u}} [Quasica
 lemma PushoutCofiberRectangle.comparisonHom_target {X : SSet.{u}} [Quasicategory X]
     {L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (r : PushoutCofiberRectangle L) :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 1 1).map r.comparisonHom =
-      𝟙 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex r.outerZeroTriangle.square 1 1) := by
+      𝟙 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex r.outerZeroTriangle.square 1 1) := by
   change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 1 1).map
     (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp (β_ (Δ[1] : SSet.{u}) Δ[1]).hom

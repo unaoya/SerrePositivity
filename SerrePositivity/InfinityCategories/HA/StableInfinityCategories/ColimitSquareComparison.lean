@@ -66,7 +66,7 @@ lemma cosliceSquareDiagramMap_hom_target_arrow {X : SSet.{u}} [Quasicategory X]
       ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cosliceSquareDiagramMap p)).toFunctor.map f)) =
     Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection p)).toFunctor.map f) := by
   change Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 1))).toFunctor.map _) = _
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 1))).toFunctor.map _) = _
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoMap_comp]
   exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoMap_congr_arrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cosliceSquareDiagramMap_targetEvaluation p) f
 
@@ -76,7 +76,7 @@ lemma cosliceSquareDiagramMap_hom_target_arrow {X : SSet.{u}} [Quasicategory X]
 lemma cosliceSquareDiagramMap_sourceEvaluation {X : SSet.{u}}
     (p : (horn 2 0 : SSet.{u}) ⟶ X) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cosliceSquareDiagramMap p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0) =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0) =
     SSet.const ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.spanSourceEvaluation X).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p)) := by
   rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableSpanPrecomp_sourceEvaluation X, ← Category.assoc,
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cosliceSquareDiagramMap_fixed, SSet.const_comp]
@@ -93,7 +93,7 @@ lemma cosliceSquareDiagramMap_hom_source_arrow {X : SSet.{u}} [Quasicategory X]
     Arrow.mk (𝟙 (SSet.HomotopyCategory.mk
       ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.spanSourceEvaluation X).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p)) : hoFunctor.obj X)) := by
   change Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0))).toFunctor.map _) = _
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0))).toFunctor.map _) = _
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoMap_comp]
   exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoMap_congr_arrow (cosliceSquareDiagramMap_sourceEvaluation p) f).trans
     (stableHoMap_const_arrow _ f)

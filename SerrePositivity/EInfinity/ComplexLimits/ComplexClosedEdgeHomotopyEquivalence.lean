@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorAugmentation
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.StandardCofiberPullback
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.StandardCofiberPullback
 
 /-!
 # 元の複体射の閉辺の回収と同じホモトピー同値の反転

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.Adjunction
+public import SerrePositivity.InfinityCategories.HTT.Section5_2_5.Adjunction
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransRecovery
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.AdjunctionHomTriangles
 
@@ -82,7 +82,7 @@ lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u}
 lemma nonempty_adjunction_iff_nerveAdjunction {C D : Type u}
     [Category.{u} C] [Category.{u} D] (F : C ⥤ D) (G : D ⥤ C) :
     Nonempty (F ⊣ G) ↔ Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (nerveMap F) (nerveMap G)) :=
-  ⟨fun ⟨a⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveAdjunctionOfAdjunction a⟩,
+  ⟨fun ⟨a⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.HTT.Section5_2_5.nerveAdjunctionOfAdjunction a⟩,
     fun ⟨a⟩ ↦ ⟨adjunctionOfNerveAdjunction a⟩⟩
 
 end SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison

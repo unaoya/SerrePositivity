@@ -32,7 +32,7 @@ lemma dgOdotMilnorNuAbsoluteTriangle_source (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (0 : Fin 3)⟩ =
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0) := by
     have hn' := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
@@ -58,7 +58,7 @@ lemma dgOdotMilnorNuAbsoluteTriangle_target (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (2 : Fin 3)⟩ =
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 1) := by
     have hn' := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGClosedTriangleHomIsoLift
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleTriangleFunctor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Triangles.DGModuleTriangleFunctor
 
 /-! # 同じ全 Hom 持ち上げの加群二単体の回収
 概要：元の三閉射を固定した持ち上げは、指定した標的加群二単体を厳密に回収する。

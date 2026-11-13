@@ -76,11 +76,11 @@ variable (F : perfectStableInfinity.{u} ⟶ Sp.{u})
 
 /-- 同じ Sp 比較正方形の bottom 辺は、元の完全関手の同じ値の射の類。 -/
 lemma universalValueSquare_bottom_arrow :
-    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.universalValueSquare F)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.universalValueSquare F)) =
       Arrow.mk (perfectInvariantHoArrow F d.inclusion
         d.left_complete d.middle_complete) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
   change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ (d.universalSquare ≫ F)) = _
   rw [← Category.assoc, d.universalSquare_bottom,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply]
@@ -88,7 +88,7 @@ lemma universalValueSquare_bottom_arrow :
 
 /-- 同じ Sp 比較正方形の top 辺は、元の完全関手の同じ値の射の類。 -/
 lemma universalValueSquare_top_arrow :
-    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (d.universalValueSquare F)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (d.universalValueSquare F)) =
       Arrow.mk (perfectInvariantHoArrow F (IdentityLax.exactDiagonal d.sequence.right)
         d.sequence.right_complete (perfectLaxCategory_isIdempotentComplete (𝟙 d.sequence.right)
           (𝟙 d.sequence.right)
@@ -102,7 +102,7 @@ lemma universalValueSquare_top_arrow :
 
 /-- 同じ Sp 比較正方形の left 辺は、元の完全関手の同じ値の射の類。 -/
 lemma universalValueSquare_left_arrow :
-    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.universalValueSquare F)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.universalValueSquare F)) =
       Arrow.mk (perfectInvariantHoArrow F (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.kernelMap p q d.inclusion
         d.sequence.projection)
         d.left_complete d.sequence.right_complete) := by
@@ -115,14 +115,14 @@ lemma universalValueSquare_left_arrow :
 
 /-- 同じ Sp 比較正方形の right 辺は、元の完全関手の同じ値の射の類。 -/
 lemma universalValueSquare_right_arrow :
-    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.universalValueSquare F)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (d.universalValueSquare F)) =
       Arrow.mk (perfectInvariantHoArrow F (LaxUniversalDifference.exactLift p q
         d.sequence.projection)
         d.middle_complete (perfectLaxCategory_isIdempotentComplete (𝟙 d.sequence.right) (𝟙
           d.sequence.right)
         d.sequence.right_complete d.sequence.right_complete)) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (d.universalSquare ≫ F)) = _
   rw [← Category.assoc, d.universalSquare_right,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply]

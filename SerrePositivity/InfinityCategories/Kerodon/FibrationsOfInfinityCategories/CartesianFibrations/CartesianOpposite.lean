@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.Composition
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RelativeOuterHornOp
 public import Mathlib.Tactic.CrossRefAttribute
@@ -138,3 +140,10 @@ lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B]
   exact isCartesianEdge_of_isCocartesianEdge_op p _ h
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.1.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_longEdge
+attribute [cite HTT "2.4.2.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_iff_isCocartesianEdge_op
+attribute [cite HTT "2.4.2.14" (partial := component) "仮定：底が準圏で p は CartesianFibration、後半の g は Cartesian（原典最後の文に対して Lean が強い）。結論：triangle_longEdge と triangle_first_of_second_long で f が Cartesian iff h が Cartesian を得るので「In particular」の assertion に一致。一般の local f/h と別の global lift を使う (a)(b) は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_longEdge

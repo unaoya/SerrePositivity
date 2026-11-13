@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletion
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorLandTamme
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorProjectionRectangle
@@ -51,7 +53,7 @@ variable {F : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}} (hF : IsPerfectLocal
 方針：具体的提示に局所化不変量を適用する。規約：K の局所化性は仮定しない。
 使われ方：実 Cat^perf 版の結論。 -/
 theorem dgOdotMilnorCompletedPerfect_isFiber :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hF.fiberTriangle (dgOdotMilnorCompletedPerfectDiagram R d h)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hF.fiberTriangle (dgOdotMilnorCompletedPerfectDiagram R d h)) :=
   hF.fiberTriangle_isFiber _
 
 /-- 概要：同じ resolved 商の実完備化を終点とする実 LT 四角形。
@@ -98,3 +100,18 @@ lemma dgOdotMilnorCompletedLandTammeCone_source :
   dgOdotMilnorLandTammeCone_source R d h (κ) (hκ) hF
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Thm 4.11" (partial := component) "仮定：非正 dg 塔の Tor 模型と IsKConnective、また別に dg Milnor の単一正方形（Lean が強い）。結論：実不変量の一本のプロ同値と単一の ⊙ 引き戻し。c(μ)πᵢ と K のプロ四角形を組み立てていない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback
+attribute [cite LT "Eq (10)" (partial := component) "仮定：指定された dg Milnor 正方形（Lean が強い）。結論：実 lax gluing と resolved 商の Verdier 列をその冪等完備化まで構成。任意の E₁ 環の主定理の列より狭い（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfectSequence
+attribute [cite LT "Eq (11)" (partial := component) "仮定：指定 dg Milnor 四角形と Sp 値の完全局所化不変量（Lean が強い）。結論：実商のファイバー列と、その分裂を通じた同じ四頂点の引き戻し。一般環スペクトルと任意の安定標的は範囲外（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback
+attribute [cite LT "Eq (11)" (partial := component) "仮定：指定 dg Milnor 四角形と Sp 値の完全局所化不変量（Lean が強い）。結論：実商のファイバー列と、その分裂を通じた同じ四頂点の引き戻し。一般環スペクトルと任意の安定標的は範囲外（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfect_isFiber
+attribute [cite LT "Eq (12)" (partial := component) "仮定：指定 dg Milnor 四角形と Sp 値の完全局所化不変量（Lean が強い）。結論：実商のファイバー列と、その分裂を通じた同じ四頂点の引き戻し。一般環スペクトルと任意の安定標的は範囲外（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback
+attribute [cite LT "Eq (12)" (partial := component) "仮定：指定 dg Milnor 四角形と Sp 値の完全局所化不変量（Lean が強い）。結論：実商のファイバー列と、その分裂を通じた同じ四頂点の引き戻し。一般環スペクトルと任意の安定標的は範囲外（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfect_isFiber
+attribute [cite LT "Eq (17)" (partial := component) "仮定：前者は単一の dg Milnor 正方形と局所化不変量、後者は非正 dg 代数の塔と IsKConnective（Lean が強い）。結論：実 ⊙ 側の値の引き戻しと、別に塔の一本の射の連結度比較。元のプロ四角形が弱 n-引き戻しとの合成および K の適用はない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback
+attribute [cite LT "Eq (3)" (partial := component) "仮定：可換基礎環上の指定 dg Milnor 正方形（Lean が強い）。結論：対角と resolved 商の完備化を与える。一般の E₁ 環の引き戻しを指定するものではない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedPerfectSequence
+attribute [cite LT "Eq (4)" (partial := component) "仮定：可換基礎環上の指定 dg gluing の Milnor 正方形、Sp 値かつ filtered 余極限保存の局所化不変量（Lean が強い）。結論：実 resolved 商の冪等完備化を第 4 頂点とする Sp 引き戻しと、dg End の Morita 比較。任意の E₁ 環スペクトルについての自然な環の四辺と下部スペクトル A′⊗_A B の同定は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback
+attribute [cite LT "Thm 1.3" (partial := component) "仮定：可換基礎環上の指定 dg gluing の Milnor 正方形、Sp 値かつ filtered 余極限保存の局所化不変量（Lean が強い）。結論：実 resolved 商の冪等完備化を第 4 頂点とする Sp 引き戻しと、dg End の Morita 比較。任意の E₁ 環スペクトルについての自然な環の四辺と下部スペクトル A′⊗_A B の同定は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback
+attribute [cite LT "Thm 2.32" (partial := component) "仮定：前者は単一の dg Milnor 正方形と局所化不変量、後者は非正 dg 代数の塔と IsKConnective（Lean が強い）。結論：実 ⊙ 側の値の引き戻しと、別に塔の一本の射の連結度比較。元のプロ四角形が弱 n-引き戻しとの合成および K の適用はない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTamme_isPullback

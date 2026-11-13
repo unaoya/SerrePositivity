@@ -24,7 +24,7 @@ variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 
 /-- 元の値と二つの元の実 BF 積に向かう、同じ四頂点の指定同型。 -/
 def productCornerIso (a b : Fin 2) : Σ x : Sp.{u} _⦋0⦌,
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.universalValueSquare F) a b) x := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.universalValueSquare F) a b) x := by
   refine Fin.cases ?_ (fun a => ?_) a
   · refine Fin.cases ?_ (fun b => ?_) b
     · exact ⟨_, eqToIso (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj Sp.{u}))
@@ -58,7 +58,7 @@ def productVertexIsos (v : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) _⦋0⦌) : Σ x : S
   let a := stdSimplex.obj₀Equiv v.1
   let b := stdSimplex.obj₀Equiv v.2
   have he : (d.universalValueSquare F).app (Opposite.op ⦋0⦌) v =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.universalValueSquare F) a b := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.universalValueSquare F) a b := by
     change _ = (d.universalValueSquare F).app _
       (stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.1),
         stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.2))

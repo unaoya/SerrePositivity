@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.RegularSwap
+public import SerrePositivity.BhattScholze.Prism.Basic.GeneratorRegularity
+public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput
@@ -13,10 +16,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
 ϖ の持ち上げの mod p 正則性、ϖ 還元した無限根入力環と原典の係数環、ϖ 還元した pd 表示環と原典の標準表示、R/ϖ[Y^{1/p^∞}] 上の pd 包の比較・切断表示・忠実平坦性。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPD`、`PowerRootEnvelope/DeltaDivisionResidue`、`PowerRootEnvelope/Initiality`、`PowerRootEnvelope/PrincipalPair`、`PowerRootEnvelope/Unconditional/Residue`、`PowerRootEnvelope/VarpiComparison`、`Variants/MonicRootedExtension`。
@@ -24,7 +27,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
 
 universe u
 
-/-! ## André E1・E2：ϖ の持上げの mod p 正則性（旧 Andre/Remark715/PerfectPrismVarpiRegular.lean）
+/-! ## ϖ の持上げの mod p 正則性
 
 ## 概要
 
@@ -55,42 +58,7 @@ set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A]
 
-/-- 概要：a が正則で、b が A/(a) で正則なら、a は A/(b) で正則。
-方針：ac=be を mod a で調べ e=at とし、a を消去する。
-規約：完備性や局所性は仮定しない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の d と p の順序交換。 -/
-theorem principal_regular_swap (a b : A) (ha : IsSMulRegular A a)
-    (hb : IsSMulRegular (A ⧸ Ideal.span {a}) (Ideal.Quotient.mk (Ideal.span {a}) b)) :
-    IsSMulRegular (A ⧸ Ideal.span {b}) (Ideal.Quotient.mk (Ideal.span {b}) a) := by
-  apply isSMulRegular_iff_right_eq_zero_of_smul.mpr
-  intro c hc
-  obtain ⟨c, rfl⟩ := Ideal.Quotient.mk_surjective c
-  change Ideal.Quotient.mk _ a * Ideal.Quotient.mk _ c = 0 at hc
-  rw [← map_mul, Ideal.Quotient.eq_zero_iff_mem, Ideal.mem_span_singleton] at hc
-  obtain ⟨e, he⟩ := hc
-  have he0 : Ideal.Quotient.mk (Ideal.span {a}) b * Ideal.Quotient.mk _ e = 0 := by
-    rw [← map_mul, ← he, map_mul]
-    simp only [Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self a),
-      zero_mul]
-  have he' : Ideal.Quotient.mk (Ideal.span {a}) e = 0 :=
-    hb (by simpa only [smul_eq_mul, mul_zero] using he0)
-  obtain ⟨t, ht⟩ := Ideal.mem_span_singleton.mp (Ideal.Quotient.eq_zero_iff_mem.mp he')
-  have hct : c = b * t := ha (by change a * c = a * (b * t); rw [he, ht]; ring)
-  apply Ideal.Quotient.eq_zero_iff_mem.mpr
-  exact Ideal.mem_span_singleton.mpr ⟨t, hct⟩
-
 variable {p : ℕ} [Fact p.Prime]
-
-/-- 概要：p 正則な prism 商を持つ完全 prism の生成元は mod p でも正則。
-方針：prism 生成元の正則性と商の p 正則性の順序を交換する。
-規約：仮定は R=A/(d) 上の p の単射性。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の ϖ の mod p 正則性への入力。 -/
-theorem perfectPrism_generator_modPrime_regular (W : OrientedPrism p A)
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
-    IsSMulRegular (A ⧸ Ideal.span {(p : A)})
-      (Ideal.Quotient.mk (Ideal.span {(p : A)}) W.generator) := by
-  apply principal_regular_swap W.generator (p : A) W.generator_regular
-  simpa only [OrientedPrism.ideal, map_natCast] using hpR
 
 /-- 概要：選んだ ϖ の持上げは mod p で正則。
 方針：mod p の x^p=d と正の冪の正則性判定を使う。
@@ -114,7 +82,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiRegular
 
-/-! ## André E1・E2：ϖ 還元した無限根入力環と原典の係数環（旧 Andre/Remark715/PerfectPrismVarpiRootInput.lean）
+/-! ## ϖ 還元した無限根入力環と原典の係数環
 
 ## 概要
 
@@ -250,7 +218,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiRootInput
 
-/-! ## André E1・E2：ϖ 還元した pd 表示環と原典の入力上の標準表示（旧 Andre/Remark715/PerfectPrismVarpiPDComparison.lean）
+/-! ## ϖ 還元した pd 表示環と原典の入力上の標準表示
 
 ## 概要
 
@@ -361,7 +329,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiPDComparison
 
-/-! ## André R1：原典の R/ϖ 無限根環上の pd 比較の入口（旧 Andre/Remark715/PerfectPrismVarpiNativePDEnvelope.lean）
+/-! ## André R1：原典の R/ϖ 無限根環上の pd 比較の入口
 
 ## 概要
 
@@ -384,7 +352,7 @@ BS 著者版 Remark 7.15(1)（著者版 p.62）の台環・標準入力を保つ
 旧ファイルの import 経路を保ち、標準表示の同型と一般の実 pd 普遍性を供給する。
 -/
 
-/-! ## André E1・E2：原典の係数環上の実 pd 包の切断表示と忠実平坦性（旧 Andre/Remark715/PerfectPrismVarpiNativePDFlat.lean）
+/-! ## 原典の係数環上の実 pd 包の切断表示と忠実平坦性
 
 ## 概要
 

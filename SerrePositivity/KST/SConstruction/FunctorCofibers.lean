@@ -30,7 +30,7 @@ lemma cofiberFamilySquare_bottomEdge {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams
 lemma functor_cofiberSquare_nonempty {A C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     {x y : ((ihom A).obj C) _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom A).obj C)) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) := by
   let d : (Δ[1] : SSet.{u}) ⟶ (ihom A).obj C := SSet.yonedaEquiv.symm f.edge
   let h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (Δ[1] : SSet.{u}) A C d
   let H := h ≫ cofiberSection C

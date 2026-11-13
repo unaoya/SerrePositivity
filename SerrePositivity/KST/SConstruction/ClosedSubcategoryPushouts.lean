@@ -36,14 +36,14 @@ lemma square_initial_corners_of_span {X : StableModel.{u}} (P : ClosedStablePred
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ closedSubcategory P)
     (R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X.carrier)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan R = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (F ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P.predicate).ι)) :
-    P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0) ∧ P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 0) ∧
-      P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1) := by
-  have hb (i : Fin 2) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R i 0 =
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i 0).val :=
+    P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0) ∧ P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 0) ∧
+      P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1) := by
+  have hb (i : Fin 2) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R i 0 =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F i 0).val :=
     ConcreteCategory.congr_hom
       (NatTrans.congr_app (squareBottomEdge_eq_of_pushoutSpan_eq h) (Opposite.op ⦋0⦌))
       (stdSimplex.obj₀Equiv.symm i)
-  have hl : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1 = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1).val :=
+  have hl : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1 = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1).val :=
     ConcreteCategory.congr_hom
       (NatTrans.congr_app (squareLeftEdge_eq_of_pushoutSpan_eq h) (Opposite.op ⦋0⦌))
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))

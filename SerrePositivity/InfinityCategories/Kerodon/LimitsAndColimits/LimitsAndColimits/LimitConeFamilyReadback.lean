@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorVertexCone
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorVertexCone
 
 /-!
 概要：coherent な錐の関手頂点表示から元の極限性を読み戻す。

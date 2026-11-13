@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgFullLocalizationSource
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionSourceComparison
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.LocalizedNerveNatTrans
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.Adjunction
+public import SerrePositivity.InfinityCategories.HTT.Section5_2_5.Adjunction
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.QCatEquivalenceAdjunction
 
 /-!
@@ -73,7 +73,7 @@ def allAlgebraCoefficientAdjunction :
 def allAlgebraCoefficientNerveAdjunction :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (nerveMap (allAlgebraCoefficientExtension f))
       (nerveMap (allAlgebraCoefficientRestriction f)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveAdjunctionOfAdjunction (allAlgebraCoefficientAdjunction f)
+  _root_.SerrePositivity.InfinityCategories.HTT.Section5_2_5.nerveAdjunctionOfAdjunction (allAlgebraCoefficientAdjunction f)
 
 /-- 全相対圏の源と元の厳密代数の源は Hom の変更に関して可換。 -/
 lemma allAlgebraCAlgSource_down (A : Type u) [CommRing A] :

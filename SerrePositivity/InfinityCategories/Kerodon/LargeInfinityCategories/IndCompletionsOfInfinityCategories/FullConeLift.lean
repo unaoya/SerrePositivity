@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PresheafSubcategory
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullSubcomplexConeLift
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullSubcomplexLimitReflection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FullSubcomplexConeLift
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.FullSubcomplexLimitReflection
 
 /-!
 概要：元の Ind 図式の前層内の全錐を持ち上げ、同じ錐の極限性を反映する。

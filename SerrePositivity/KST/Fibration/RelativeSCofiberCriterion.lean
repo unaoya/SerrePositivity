@@ -24,7 +24,7 @@ variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 include h
 
 /-- 元の相対辺の条件は、同じ cofiber 図式の全 Ar 成分が元の核像に属すること。 -/
-theorem relativeSConstruction_mem_edge_iff_cofiber_components (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
+theorem relativeSConstruction_mem_edge_iff_cofiber_components (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
     f.edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
       ∀ a : (arNerve n) _⦋0⦌,
         (sComponentEvaluation B.obj n a).app (Opposite.op ⦋0⦌) s.cofiber ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i := by
@@ -33,9 +33,9 @@ theorem relativeSConstruction_mem_edge_iff_cofiber_components (s : _root_.SerreP
     (s.map (sComponentEvaluation B.obj n a)))
 
 /-- 同じ S 後合成で写した元の cofiber が零であることが、元の相対辺条件と同値。 -/
-theorem relativeSConstruction_mem_edge_iff_cofiber_zero (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
+theorem relativeSConstruction_mem_edge_iff_cofiber_zero (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
     f.edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
         (Opposite.op ⦋0⦌) s.cofiber) := by
   rw [relativeSConstruction_mem_edge_iff_cofiber_components h n s,
     sConstruction_isZeroVertex_iff_components]
@@ -45,7 +45,7 @@ theorem relativeSConstruction_mem_edge_iff_cofiber_zero (s : _root_.SerrePositiv
     m.app (Opposite.op ⦋0⦌) s.cofiber)
     (sPostcomp_gapped_evaluate n q.hom (exactMap_preservesSData q) a)
   exact (h.kernel _).symm.trans (iff_of_eq
-    (congrArg (fun z : C.obj _⦋0⦌ => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) he.symm))
+    (congrArg (fun z : C.obj _⦋0⦌ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) he.symm))
 
 /-- 元の相対 S_n 辺は、元の同じ S 後合成で反転される辺に正確に一致する。 -/
 theorem relativeSConstruction_mem_edge_iff_sPostcomp_invertible

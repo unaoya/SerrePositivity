@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Reflective
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FullSubcomplexFunctorFaithful
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.QCatPostcompFaithful
@@ -88,3 +90,9 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFun
 
 end ReflectiveSubcategory
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.8.2.3" (partial := direction) "仮定：準圏の頂点述語で切り出した全充満部分準圏への反射的包含と随伴を指定する（Lean が強い：この反射的局所化の場合）。結論：局所化自己関手 L の単位の左右 whisker は関手のホモトピー圏で可逆となり、L²≃L を得る（この仮定での HA の結論の一部に一致）。任意の単位付き自己関手の条件から反射的局所化を回復する逆向きは含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveSubcategory.idempotentIso
+attribute [cite HTT "5.2.7.5" (partial := special) "仮定：充満包含への反射 r と、その周囲の圏での K 型余極限の存在（Lean が強い：右随伴を包含として指定した形）。結論：部分圏の任意の K 型図式を包含し、周囲の余極限を反射すれば元の図式の余極限となり、その存在を得る（この場合に一致）。K の準圏性や filtered 性は要求しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveSubcategory.counitIso

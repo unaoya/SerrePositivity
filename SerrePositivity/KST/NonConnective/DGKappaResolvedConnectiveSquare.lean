@@ -59,13 +59,13 @@ theorem dgKappaResolvedConnectiveSquare_edges :
 
 /-- 実核・平坦 cone・懸垂・全対象商の四頂点は、元の同じ入力頂点である。 -/
 theorem dgKappaResolvedConnectiveSquare_vertices :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedKernelKInput R D I) ∧
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I) ∧
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R D I) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I) ∧
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)) := by
   obtain ⟨hi, hq, hl⟩ := dgKappaResolvedConnectiveSquare_edges R D I
   let ie : (dgKInputInfinity.{u, max (u + 1) v} R).Edge
@@ -101,9 +101,9 @@ theorem dgKappaResolvedConnectiveSquare_vertices :
 theorem dgKappaResolvedConnectiveSquare_zero_corner
     (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R
       (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)))) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I ≫ dgKInputK R) 0 1) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKInputK R).app (Opposite.op ⦋0⦌)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1))
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R D I ≫ dgKInputK R) 0 1) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKInputK R).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R D I) 0 1))
   rw [(dgKappaResolvedConnectiveSquare_vertices R D I).2.2.2]
   exact dgKInputK_vertex_isZero_of_zero R _ hz
 

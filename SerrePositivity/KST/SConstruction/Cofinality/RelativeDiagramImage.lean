@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.DiagramImage
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：有限 S 図式の全族回収を、指定された境界図式と比較する。

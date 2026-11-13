@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.BasedOperators
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarFaceDifferential
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarFaceDifferential
 /-!
 概要：元の面・退化ブロックを、始点を保つ単体写像の統一した係数入口と比較する。
 方針：既存の端点輸送の異種等号と、同じシフト単位ブロックを介して同定する。

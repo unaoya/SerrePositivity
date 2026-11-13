@@ -93,15 +93,15 @@ def rectangleValueIso_of_imageIso
     (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
     (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b)
     (r : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof ν original
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 2) 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((ν ≫ E).app _ original)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ E) 0 0) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ E) 0 0) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
   exact r.valueIso E ≪≫
     (((e.comparison.precomp c).postcomp E).toNatIso.app
-      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0)))
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0)))
 
 /-- 始域回収は全長方形比較の同じ成分を使い、元の屋根の可換式を保持する。 -/
 lemma rectangleValueIso_of_imageIso_triangle
@@ -110,7 +110,7 @@ lemma rectangleValueIso_of_imageIso_triangle
     (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
     (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b)
     (r : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof ν original
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 2) 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫
@@ -120,7 +120,7 @@ lemma rectangleValueIso_of_imageIso_triangle
         (((e.comparison.precomp ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
           (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})))).postcomp E).toNatIso.app
             (HomotopyCategory.mk
-              (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0))).hom := by
+              (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0))).hom := by
   change _ ≫ ((r.valueIso E).hom ≫ _) = _
   exact (Category.assoc _ _ _).symm.trans
     (congrArg (fun f => f ≫ _) (r.valueIso_triangle E))
@@ -134,18 +134,18 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 
 /-- 旧厳密版の始域頂点等号を、同じ長方形の恒等屋根として受ける。 -/
 def sourceRoofOfEq {original : S _⦋0⦌}
-    (h : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0 = original) :
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0 = original) :
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof ν original
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0) :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq h.symm
 
 /-- 実長方形を変えず、左上の値を元入力の値へ指定屋根で照合する。 -/
 def sourceValueIso {original : S _⦋0⦌}
     (r : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof ν original
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((ν ≫ E).app _ original)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) ≫ ν ≫ E) 0 0) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) ≫ ν ≫ E) 0 0) :=
   r.valueIso E
 
 /-- 指定三境界・上下二単体を保つ全 ν 比較と、元入力の指定屋根を同時に使う。
@@ -155,15 +155,15 @@ def sourceValueIso_of_imageIso {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
     (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b)
     {original : S _⦋0⦌}
     (r : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof ν original
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((ν ≫ E).app _ original)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ ν ≫ E) 0 0) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ ν ≫ E) 0 0) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
   exact d.sourceValueIso r E ≪≫
     (((e.comparison.precomp c).postcomp E).toNatIso.app
-      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0)))
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0)))
 
 /-- 全図式比較後も、元の二本の屋根と同じ指定始域比較が可換。
 四辺・上下二単体は e に指定され、ここではその同じ左上成分を合成する。 -/
@@ -173,7 +173,7 @@ lemma sourceValueIso_of_imageIso_triangle
     (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b)
     {original : S _⦋0⦌}
     (r : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof ν original
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫
@@ -183,7 +183,7 @@ lemma sourceValueIso_of_imageIso_triangle
         (((e.comparison.precomp ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
           (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})))).postcomp E).toNatIso.app
             (HomotopyCategory.mk
-              (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0))).hom := by
+              (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0))).hom := by
   change _ ≫ ((r.valueIso E).hom ≫ _) = _
   exact (Category.assoc _ _ _).symm.trans
     (congrArg (fun f => f ≫ _) (r.valueIso_triangle E))

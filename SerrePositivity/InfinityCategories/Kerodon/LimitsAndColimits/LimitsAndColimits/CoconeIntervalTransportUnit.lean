@@ -18,7 +18,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheY
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantPullbackCoordinates
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantTargetVertex
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeIntervalTransportSource
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ConstantDiagramTransportCoordinates
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.ConstantDiagramTransportCoordinates
 
 /-!
 概要：元の余錐の輸送始域の二座標を、元の単位作用そのものへ厳密に戻す。

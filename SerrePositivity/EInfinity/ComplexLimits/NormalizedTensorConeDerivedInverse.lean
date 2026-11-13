@@ -44,7 +44,7 @@ lemma normalizedTensorConePostDerived_inverse_arrow :
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y) F))
   have he : Arrow.mk e = Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).hom :=
     normalizedTensorDoubleConeSliceEvaluation_derived_arrow A X Y
-  have hi : ∀ (a b : Arrow (SSet.HomotopyCategory ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))),
+  have hi : ∀ (a b : Arrow (SSet.HomotopyCategory ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)))),
       a = b → IsIso b.hom → IsIso a.hom := by
     intro a b h hb
     subst b

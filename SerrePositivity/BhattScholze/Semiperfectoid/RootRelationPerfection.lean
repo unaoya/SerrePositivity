@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective
 public import SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison
@@ -124,3 +126,9 @@ theorem exists_rootRelationPrismaticPerfection (hR : IsIntegralPerfectoid R p) :
       (ainfClassicalPrism_perfect p Base hBase) r hr hrd Q v hv⟩
 
 end SerrePositivity.BhattScholze.Semiperfectoid
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Cor 7.3" (partial := special) "Cor 7.3 の S′（根の商）の場合：S′ の prismatic 完全化と perfectoidization の単位を保つ唯一の δ-prism 同型（BS-W17 停止点 5、11-12）。一般の semiperfectoid の場合の存在は本体の Perfectoidization"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_rootRelationPrismaticPerfection
+attribute [cite BS19 "Prop 7.10" (partial := component) "BS-W17 H5（11-12）：T（有限）と S′（任意添字）の古典的な部分は本体：固定 A_inf 上の有界な実包絡、全有界 prism への一意な射、S′ の完全化と Cor 7.3 の単位を保つ唯一の同型（停止点 4・5a・5）。S′ の単位の完全忠実平坦性は後回し（E3 は使わない）。Δ_R/A との同定（G10）は drafts ／ 11-12 節の見直し：S′ の部分は f_j=0 の場合（根の商）だけ"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_rootRelationPrismaticPerfection

@@ -34,7 +34,7 @@ lemma multiS_map_cofiberImageEdge (r : ℕ)
   let gY := ((multiSEndofunctor r).map α).app Y
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor gY.val := stableModelHom_exact gY
   obtain ⟨s, z, ⟨x, ⟨e⟩⟩, ⟨ez⟩⟩ := ha
-  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (gY.val.app (Opposite.op ⦋1⦌) a)) := {
+  let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (gY.val.app (Opposite.op ⦋1⦌) a)) := {
     toZeroTriangle := (s.map gY.val).toZeroTriangle
     bottom_edge := (s.map gY.val).bottom_edge
     isPushout := (s.map gY.val).isPushout }

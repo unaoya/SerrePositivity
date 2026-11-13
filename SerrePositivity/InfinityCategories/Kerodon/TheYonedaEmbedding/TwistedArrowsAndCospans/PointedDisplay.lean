@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.IdentityCoordinates
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CanonicalYonedaFiberTransport
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.PointFunctorEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseLeftFibration
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniverseLeftFibration
 
 /-!
 概要：元の Tw 全体から普遍 pointed-space 射影への一つの比較と、その始点固定の制限。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFTripleMappingSpace
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleDiamondTransport
 
 /-! # 全四辺と同じ対角辺を保つ元の三入力 BF 比較の二単体
 概要：元の二つの全 Path 二単体を、同じ元の BF 写像空間の実二単体へ束ねる。

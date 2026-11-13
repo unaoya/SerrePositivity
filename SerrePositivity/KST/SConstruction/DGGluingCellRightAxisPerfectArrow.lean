@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectFunctor
 public import SerrePositivity.KST.SConstruction.DGGluingAxesComparisons
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 
 /-!
 概要：元 gluing の固定 cell source 上で右軸から恒等への実 Perf 比較を構成する。

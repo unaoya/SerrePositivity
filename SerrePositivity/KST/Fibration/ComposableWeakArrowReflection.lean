@@ -23,14 +23,14 @@ namespace SerrePositivity.KST.Fibration
 /-- 両 W 辺射影が零対象なら元の接続図式も零対象。 -/
 lemma composableWeakArrow_isZeroVertex_of_components {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (v : (composableWeakArrowModel q).carrier _⦋0⦌)
-    (h₀ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((composableWeakFirstMap q).app (Opposite.op ⦋0⦌) v))
-    (h₁ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((composableWeakNextMap q).app (Opposite.op ⦋0⦌) v)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v := by
+    (h₀ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((composableWeakFirstMap q).app (Opposite.op ⦋0⦌) v))
+    (h₁ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((composableWeakNextMap q).app (Opposite.op ⦋0⦌) v)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v := by
   have h₀' := (weakArrowInclusion_preservesCofiberData q).1 _ h₀
   have h₁' := (weakArrowInclusion_preservesCofiberData q).1 _ h₁
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((composableWeakFirstMap q ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((composableWeakFirstMap q ≫
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι).app _ v) at h₀'
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((composableWeakNextMap q ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((composableWeakNextMap q ≫
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι).app _ v) at h₁'
   rw [composableWeakFirstMap_ι] at h₀'
   rw [composableWeakNextMap_ι] at h₁'

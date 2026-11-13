@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinAnodyne
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -342,3 +344,18 @@ instance sliceUnder_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ 
   quasicategory_of_innerFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection p)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.2.6" (partial := special) "仮定：準圏 X と図式 p : K→X（Lean が強い：底 S が一点）。結論：余スライスが準圏になり、一点への射が inner fibration となる場合に一致。任意の S への射に対する二種類のファイブレーションの主張は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnder_quasicategory
+attribute [cite HTT "1.2.9.3" (partial := component) "仮定：準圏 C と任意の p:K→C（HTT と一致）。結論：sliceOver p の Quasicategory を得るので最初の assertion に一致。後半の任意 categorical equivalence q に対する slice 比較は含まず、trivial Kan fibration の別の十分条件もその代用にはしない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOver_quasicategory
+attribute [cite HTT "2.0.0.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration
+attribute [cite HTT "2.0.0.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
+attribute [cite HTT "2.0.0.5" (partial := component) "仮定：単体集合の射（HTT と一致）。結論：自明・Kan・左または右・内ファイブレーション間の含意の一部（Lean が弱い：(co)Cartesian と圏論的ファイブレーションまで含む図および逆向きの反例を揃えていない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_innerFibration
+attribute [cite HTT "2.0.0.5" (partial := component) "仮定：単体集合の射（HTT と一致）。結論：自明・Kan・左または右・内ファイブレーション間の含意の一部（Lean が弱い：(co)Cartesian と圏論的ファイブレーションまで含む図および逆向きの反例を揃えていない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_innerFibration
+attribute [cite HTT "2.1.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration
+attribute [cite HTT "2.1.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnder_quasicategory
+attribute [cite HTT "2.1.3.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_innerFibration
+attribute [cite HTT "4.4.4.6"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration
+attribute [cite HTT "4.4.4.7" (partial := component) "仮定：準圏 C の任意の図式 p（HTT の双対の主張と一致）。結論：C の p 下のコスライスは左ファイブレーションであり、その全空間の始頂点の存在が HasColimit p である（一致する成分。一般の左ファイブレーションについて指定元による余表現と共変同値の双対判定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration

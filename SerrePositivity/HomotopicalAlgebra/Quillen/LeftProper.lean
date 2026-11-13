@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Under.Quillen
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
@@ -88,3 +90,8 @@ lemma pushout_map_weakEquivalence
   exact he ▸ (weakEquivalences C).comp_mem _ _ hpw hq
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.4.3" (partial := stronger-hyp) "仮定：抽象モデル圏 C、元の pushout、i cofibration、j weak equivalence に加え C が左固有（Lean が強い。A,A′ の cofibrant 性は不要）。結論：同じ pushout map j′ が弱同値（一致）。一般の C で cofibrant A,A′ だけからの型はない。"] _root_.SerrePositivity.Quillen.weakEquivalence_of_pushout_along_cofibration

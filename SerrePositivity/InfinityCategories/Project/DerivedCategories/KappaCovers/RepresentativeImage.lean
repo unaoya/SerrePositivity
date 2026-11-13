@@ -1,11 +1,11 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaClosedProjectivePretriangulated
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedModuleValuedCommonExact
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleH0Property
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaClosedProjectivePretriangulated
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGPretriangulatedModuleValuedCommonExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleH0Property
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExactFunctorTriangulated
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 public import SerrePositivity.KST.NonConnective.DGKappaConeInput
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedStability
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.DGPretriangulatedStability
 
 /-!
 概要：同じ選択代表系の K(D) 内の本質像を三角的対象条件として公開する。
@@ -63,7 +63,7 @@ lemma dgKappaCoversImage_isTriangulated (hκ : Cardinal.aleph0 < κ) (hreg : κ.
   let C := {M : ModuleCategory R D // _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaClosedProjectiveObjects R D κ M}
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaClosedProjectiveObjects_small R D κ
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaClosedProjectiveObjects_isDGPretriangulated R D hκ hreg
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R C
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R C
   have he := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPretriangulatedModuleValuedFunctorCommon_isExactFunctor.{u, max (u + 1) v, v, 0}
     R C D (dgKappaCoversUnderlying R D κ)
   let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_ulift (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaCoversUnderlying R D κ)) he

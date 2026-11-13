@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImage
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorConeIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleFunctorConeIso
 
 /-!
 概要：元 cone image 全比較の閉成分を同じ実 cone image 比較へ回収する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpecialHammockComparison
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialThreeArrowComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialThreeArrowComparison
 
 /-!
 # 元の Map^h と弱同値の両脚を持つ三本矢の比較

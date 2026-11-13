@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopInversion
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopySelfComposite
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopySelfComposite
 public import SerrePositivity.KST.Spectra.UnbasedHomotopyIsomorphism
 
 /-!

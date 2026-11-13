@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeStrict
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentRightConeStrict
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalCoconeSimplex
 
 /-!

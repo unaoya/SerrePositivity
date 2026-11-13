@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping
 public import SerrePositivity.KST.LocalizingInvariants.TensorHomotopyEquivalence
 public import SerrePositivity.KST.LocalizingInvariants.KanFibrationEquivalenceBaseChange
@@ -43,3 +45,8 @@ lemma laxDifferenceRho_arrowMapping_equivalence (x : (laxCategory p q).obj _⦋0
     (laxDifferenceRho_sndMapping_equivalence p q v a hv x y)
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (7)"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrowMapping_equivalence

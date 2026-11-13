@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CommaComparisons.AsSmallComma
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 

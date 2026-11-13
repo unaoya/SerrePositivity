@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanTensorAdjunction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.KanTensorAdjunction
 
 /-!
 概要：同じ時間の二つのホモトピーを対にし、直積のホモトピー同値を構成する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentUnderlyingHo
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentUnderlyingHo
 
 /-!
 概要：同じ相対関手の全 hammock 比較は元の局所化源の射と整合する。

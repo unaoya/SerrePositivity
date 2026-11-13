@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeBiprod
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorResolutionHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeBiprod
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleFunctorResolutionHomExt
 
 /-!
 概要：二成分の cocone の元の包含は、元の三成分の可換正方形に自然である。

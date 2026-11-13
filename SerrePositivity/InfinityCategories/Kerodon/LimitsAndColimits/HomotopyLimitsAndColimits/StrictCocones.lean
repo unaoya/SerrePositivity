@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentCoconeTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictCoconeIndices
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentCoconeTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictCoconeIndices
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictCones
 public import Mathlib.CategoryTheory.Limits.Opposites
 

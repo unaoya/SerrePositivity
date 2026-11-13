@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-! # 零角の列のホモトピー圏への関手性
 
@@ -21,40 +21,40 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：二つの端の四角形に零角があればよい。
 使われ方：fiber/cofiber 列の射の h C への移送。 -/
 def ZeroTriangle.hoShortComplexMap {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X)
+    [HasZeroMorphisms (hoFunctor.obj X)] (t d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X)
     (α : (hoFunctor.map t.square).toFunctor ⟶ (hoFunctor.map d.square).toFunctor) :
     t.hoShortComplex ⟶ d.hoShortComplex where
-  τ₁ := α.app (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0)
-  τ₂ := α.app (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 0)
-  τ₃ := α.app (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 1)
-  comm₁₂ := (α.naturality (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
-  comm₂₃ := (α.naturality (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
+  τ₁ := α.app (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0)
+  τ₂ := α.app (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 0)
+  τ₃ := α.app (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 1)
+  comm₁₂ := (α.naturality (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
+  comm₂₃ := (α.naturality (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap)
 
 
 /-- 概要：恒等自然変換は短複体の恒等射を与える。
 方針：三成分を計算する。規約：同じ四角形。
 使われ方：短複体への関手性の単位。 -/
 lemma ZeroTriangle.hoShortComplexMap_id {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) :
+    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) :
     t.hoShortComplexMap t (𝟙 (hoFunctor.map t.square).toFunctor) = 𝟙 t.hoShortComplex := by
   ext <;> rfl
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap_id)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap_id)
 
 
 /-- 概要：自然変換の合成は短複体の射の合成に写る。
 方針：三成分の合成を計算する。規約：合成は左から右。
 使われ方：短複体への関手性の合成則。 -/
 lemma ZeroTriangle.hoShortComplexMap_comp {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t d e : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X)
+    [HasZeroMorphisms (hoFunctor.obj X)] (t d e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X)
     (α : (hoFunctor.map t.square).toFunctor ⟶ (hoFunctor.map d.square).toFunctor)
     (β : (hoFunctor.map d.square).toFunctor ⟶ (hoFunctor.map e.square).toFunctor) :
     t.hoShortComplexMap e (α ≫ β) = t.hoShortComplexMap d α ≫ d.hoShortComplexMap e β := by
   ext <;> rfl
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap_comp)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap_comp)
 
 
 /-- 概要：四角形の間の単体的ホモトピーは零角の短複体の射を与える。
@@ -62,13 +62,13 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.Quasicateg
 規約：中間パラメーターでの零角条件は不要。
 使われ方：実際の四角形の族から cofiber 列の射を作る。 -/
 def ZeroTriangle.hoShortComplexMapOfHomotopy {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X)
+    [HasZeroMorphisms (hoFunctor.obj X)] (t d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X)
     (H : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) ⊗ Δ[1] ⟶ X)
     (h₀ : SSet.ι₀ ≫ H = t.square) (h₁ : SSet.ι₁ ≫ H = d.square) :
     t.hoShortComplex ⟶ d.hoShortComplex :=
   t.hoShortComplexMap d (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyNatTransOfEndpoints H h₀ h₁)
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMapOfHomotopy)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMapOfHomotopy)
 
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

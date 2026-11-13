@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ClosedComposition
 public import Mathlib.CategoryTheory.Equivalence
 
@@ -118,3 +120,9 @@ def unitIso : 𝟭 (nerveHomotopyCategory A D) ≅ toH0 A D ⋙ fromH0 A D :=
   (equivalence A D).unitIso
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.1.11" (partial := component) "仮定：dg 圏（HA と一致。Lean は任意の可換環を許す）。結論：dg nerve の二切断のホモトピー圏と dg 圏の H⁰ 圏の圏同値。比較関手は閉じた辺の境界商を対応させるが、型は通常圏の厳密な同型を与えない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.equivalence
+attribute [cite HA "1.3.2.2" (partial := special) "仮定：可換環上の dg 圏または加群複体（Lean が強い：任意の加法圏ではない）。結論：dg nerve の辺を閉次数 0 射と同定し、h の Hom を H⁰ と比べ、具体的な鎖写像を辺に対応させる（加群複体で一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.equivalence

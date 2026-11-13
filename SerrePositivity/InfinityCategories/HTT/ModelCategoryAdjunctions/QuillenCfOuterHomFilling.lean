@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UpperMissingCylinder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.UpperMissingCylinder
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfRightLift
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfLeftLift
 

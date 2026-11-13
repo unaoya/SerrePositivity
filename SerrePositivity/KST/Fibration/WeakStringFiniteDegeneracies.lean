@@ -53,7 +53,7 @@ lemma weakStringFiniteComparison_degeneracy_inserted {B C : _root_.SerrePositivi
 /-- 元の退化が挿入する共通核値 cofiber は、全関手圏の実際の零対象である。 -/
 theorem weakStringKernelCofiber_degeneracy_inserted_zero {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ) (i : Fin (n + 1)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((weakStringExactMap q (SimplexCategory.σ i) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((weakStringExactMap q (SimplexCategory.σ i) ≫
       weakStringKernelCofiber q (consecutiveWeakStringEdge (n + 1) i)).val)) := by
   rw [weakStringKernelCofiber_reindex, consecutiveWeakStringEdge_degeneracy]
   exact weakStringKernelCofiber_degenerate_isZeroVertex q _

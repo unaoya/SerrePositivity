@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ChosenColimitParameterApex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorColimitEvaluation
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.PointwiseColimitChoiceTransport
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_2.FunctorColimitEvaluation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.PointwiseColimitChoiceTransport
 
 /-!
 概要：選んだ余極限関手の全パラメータ余錐を、元の錐族の交換述語へ接続する。
@@ -28,7 +28,7 @@ lemma chosenColimitParameterCocone_pointwise {B A X : SSet.{u}} [Quasicategory X
     (hX : ∀ p : B ⟶ X, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit p) (U : A ⟶ (ihom B).obj X) :
     _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.IsPointwiseColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitParameterCocone hX U) := by
   intro a
-  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.isColimitCone_functor_evaluation_of_pointwise_exists
+  exact _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_2.isColimitCone_functor_evaluation_of_pointwise_exists
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitParameterCocone hX U) (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitParameterCocone_isColimit hX U)
     (fun k ↦ hX _) a
 

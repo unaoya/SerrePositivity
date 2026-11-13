@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedChain
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -73,3 +75,10 @@ instance doldKanHomSpaceKan (x y : D) : SSet.KanComplex (_root_.SerrePositivity.
   HomotopicalAlgebra.isFibrant_of_fibration (homSpaceDoldKanIso (R := R) x y).inv
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.3.14" (partial := special) "仮定：dg 圏の Dold–Kan 写像空間、または加群の導来 ∞ 圏（Lean が強い：任意の単体的アーベル群を直接入力しない）。結論：特例の Kan 性と、導来模型でのホモトピー群・コホモロジーの比較（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpaceKan
+attribute [cite HA "1.3.1.12"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomPinchedIso
+attribute [cite HA "1.3.1.13" (partial := component) "仮定：dg 圏 C（HA の CΔ の構成と一致。Lean は任意の可換環を許す）。結論：基礎圏を単体的に豊穣化し、Hom を切断した Hom 複体の Dold–Kan 模型と比較し、合成を Alexander–Whitney 写像で与える。任意の鎖複体に対する合成関手そのものの lax monoidal 構造は型に含まれない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardDoldKanModuleIso

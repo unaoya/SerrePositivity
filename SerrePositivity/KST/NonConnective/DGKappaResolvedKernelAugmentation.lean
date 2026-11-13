@@ -50,9 +50,9 @@ theorem dgKappaResolvedKernel_membership_iff
         ((DGCategoryCellResolution.augmentation R (DGKappaCone R D I)).obj x) ↔
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureProperty R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
         (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) x := by
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R
     (DGCategoryCellResolution.Source R (DGKappaCone R D I))
   have he := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellAugmentationNerve_isQCatEquivalence R (DGKappaCone R D I)
   let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence he
@@ -103,7 +103,7 @@ theorem dgKappaResolvedKernelAugmentation_quasiEquivalence :
 def dgKappaResolvedKernelNerveEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgKappaResolvedKernelKInput R D I))
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (dgKappaResolvedKernelAugmentation R D I)
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgQuasiEquivalenceNerveEquivalence (dgKappaResolvedKernelAugmentation R D I)
     (dgKappaResolvedKernelAugmentation_quasiEquivalence R D I)
 
 /-- 元の二つの実包含は、同じ増大を通すと全単体上で厳密に一致する。 -/

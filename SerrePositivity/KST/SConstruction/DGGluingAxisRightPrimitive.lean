@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxisRightComma
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Postcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Postcomposition
 
 /-! # 元の右軸包含の後合成による比較 cochain の保存
 概要：同じ右軸包含による全 Hom 後合成は、元の第三 cochain を厳密に保持する。

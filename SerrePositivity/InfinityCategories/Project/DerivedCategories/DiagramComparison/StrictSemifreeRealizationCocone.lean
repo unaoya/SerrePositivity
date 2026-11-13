@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplicialDerivedCocone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanDiagramColimitTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosedNerveFunctorNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.ClosedNerveFunctorNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.InvertibleEdgeIntervalExtension
 
 /-!
@@ -51,7 +51,7 @@ theorem pointSemifreeUnderlyingDiagram_projective (j : SimplexCategoryᵒᵖ) :
 def pointSemifreeStrictDiagram :=
   (smallDiagramShapeIso.{u} (nerve SimplexCategoryᵒᵖ)).hom ≫
     strictDiagramNerve SimplexCategoryᵒᵖ _ F ≫
-      closedNerveInclusion A (SemifreeDGModules A PUnit.{1})
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (SemifreeDGModules A PUnit.{1})
 
 /-- 射影的模型を経由した図式と、元の同じ半自由図式との既存単位による同型。 -/
 def pointSemifreeRealizationDiagramIso :
@@ -69,7 +69,7 @@ def pointSemifreeRealizationDiagramIso :
     apply (cancel_mono (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map i)).1
     rw [specifiedProjectiveDiagram, fullInclusionLift_comp]
     change _ = (smallDiagramShapeIso.{u} _).hom ≫ strictDiagramNerve SimplexCategoryᵒᵖ _ F ≫
-      (closedNerveInclusion A (SemifreeDGModules A PUnit.{1}) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (SemifreeDGModules A PUnit.{1}) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           (dgFullSubcategoryInclusion A (RightModule A PUnit.{1}) (dgModuleSemifreeProperty A PUnit.{1})))
     rw [closedNerveInclusion_dgFunctor]
@@ -83,7 +83,7 @@ def pointSemifreeRealizationDiagramIso :
 def pointSemifreeRealizationIntervalExtension :=
   exists_kanEquivalenceInterval_extension_of_invertibleEdge
     ((SSet.yonedaEquiv (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ)))).obj (derivedInfinityCategory A))).symm
+      ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ)))).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).symm
       (pointSemifreeRealizationDiagramIso A F).edge.edge) (by
       apply (isInvertibleEdge_congr (f := (pointSemifreeRealizationDiagramIso A F).edge)
         (by
@@ -98,7 +98,7 @@ def pointSemifreeRealizationCylinder := uncurry (pointSemifreeRealizationInterva
 theorem pointSemifreeRealizationCylinder_unit :
     equivalenceIntervalEdge ≫ (pointSemifreeRealizationIntervalExtension A F).choose =
       (SSet.yonedaEquiv (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ)))).obj (derivedInfinityCategory A))).symm
+      ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ)))).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).symm
       (pointSemifreeRealizationDiagramIso A F).edge.edge :=
   (pointSemifreeRealizationIntervalExtension A F).choose_spec
 

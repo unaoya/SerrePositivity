@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanParameterVertex
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomTensorStrength
 
 /-!
 概要：単位パラメータの内部 Hom と恒等関手を、同じ標準単位同型で全 Hom 上比較する。

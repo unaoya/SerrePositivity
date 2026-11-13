@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaColimitComparisonSquare
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.DiscreteConeIsoTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.DiscreteConeIsoTransport
 
 /-!
 概要：実際の前層余極限の頂点関手が、元の非空有限極限全錐を保存すると証明する。

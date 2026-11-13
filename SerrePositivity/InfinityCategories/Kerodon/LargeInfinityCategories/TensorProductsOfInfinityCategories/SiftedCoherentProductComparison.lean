@@ -1,8 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentProductTotalEquivalence
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentProductTotalEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedProductComparison
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalObject
 
 /-!
 概要：coherent な点ごとの積の元の余極限 Kan 模型から、二つの元の余極限模型の積へ比較する。
@@ -80,3 +82,8 @@ lemma coherentProductTotalKanComparison_homotopyEquivalence [_root_.SerrePositiv
   (coherentProductTotalKanComparison_isWeakHomotopyEquivalence F G).isSimplicialHomotopyEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.6" (partial := special) "仮定：sifted K と各変数で K 余極限を保つ二変数関手（Lean が強い：C=D=E=Space、二変数関手は積）。結論：元の二つの coherent 空間図式の点ごとの積の余極限と両余極限の積を比較する同じ射が単体的ホモトピー同値（この積の場合に一致）。単位と元の二射影の比較を伴う。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.coherentProductTotalKanComparison_homotopyEquivalence

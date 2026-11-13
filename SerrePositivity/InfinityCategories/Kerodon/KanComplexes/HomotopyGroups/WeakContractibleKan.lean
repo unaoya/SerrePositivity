@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.WeakContractibility
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.HTT.Section2_1_3.WeakContractibility
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.EquivalenceTerminal
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationContractible
 
@@ -25,8 +27,8 @@ namespace SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 使われ方：弱可縮な頂点 fiber から trivial Kan fibration 性を得る。 -/
 lemma IsWeaklyContractible.isContractibleKan {K : SSet.{u}} [KanComplex K]
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible K) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan K := by
-  have := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isContractibleKan_terminal.{u}.kanComplex
-  exact (h.isSimplicialHomotopyEquivalence).isContractibleKan_iff.mpr _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isContractibleKan_terminal
+  have := _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.isContractibleKan_terminal.{u}.kanComplex
+  exact (h.isSimplicialHomotopyEquivalence).isContractibleKan_iff.mpr _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.isContractibleKan_terminal
 
 with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible export _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsWeaklyContractible (isContractibleKan)
 
@@ -37,7 +39,7 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplex
 使われ方：Quillen A の弱い条件を Kan fiber 内でだけ強い充填条件へ移す。 -/
 lemma isWeaklyContractible_iff_isContractibleKan {K : SSet.{u}} [KanComplex K] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible K ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan K :=
-  ⟨IsWeaklyContractible.isContractibleKan, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.IsContractibleKan.isWeaklyContractible⟩
+  ⟨IsWeaklyContractible.isContractibleKan, _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.IsContractibleKan.isWeaklyContractible⟩
 
 /-- 概要：right fibration の全ての頂点 fiber が弱可縮なら trivial Kan fibration。
 方針：各 fiber の Kan 性により弱可縮性を全境界充填へ移して Core の判定を使う。
@@ -52,3 +54,8 @@ lemma rightFibration_trivialKanFibration_of_weaklyContractible_fibers {E B : SSe
   exact (hc b).isContractibleKan
 
 end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.3.2" (partial := special) "仮定：デカルトファイブレーション p の全頂点繊維が弱可縮（Lean が強い：p が右ファイブレーションで、デカルトファイブレーションの instance がある）。結論：同じ p に対する自明 Kan ファイブレーションの判定を直ちに共終性の宣言に適用すると p は共終（一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.rightFibration_trivialKanFibration_of_weaklyContractible_fibers

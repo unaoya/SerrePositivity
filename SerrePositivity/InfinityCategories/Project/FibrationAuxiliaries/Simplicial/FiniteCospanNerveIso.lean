@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanNerveIso
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.OrderDualNerveIso
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OppositeIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.FiniteSpanNerveIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.OrderDualNerveIso
+public import SerrePositivity.InfinityCategories.HTT.Section6_1_2.OppositeIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.Opposite
 
 /-!
@@ -26,13 +26,13 @@ abbrev FiniteCospanIndex := OrderDual _root_.SerrePositivity.InfinityCategories.
 
 /-- 元の標準 cospan と有限半順序 nerve の同型。 -/
 def finiteCospanNerveIso : nerve FiniteCospanIndex.{u} ≅ (horn 2 2 : SSet.{u}) :=
-  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderDualNerveIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex ≪≫ _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex ≪≫
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderDualNerveIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex ≪≫ _root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex ≪≫
     SSet.opFunctor.mapIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.finiteSpanNerveIso ≪≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.hornReverseIso 2 0).symm
 
 /-- 全単体上で、元の span の反転と同じ比較写像を回収する。 -/
 lemma finiteCospanNerveIso_hom_reverse :
     finiteCospanNerveIso.{u}.hom ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.hornReverseIso 2 0).hom =
-      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderDualNerveIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex).hom ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderDualNerveIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex).hom ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex).hom ≫
         SSet.opFunctor.map _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.finiteSpanNerveIso.hom := by
   simp only [finiteCospanNerveIso, Iso.trans_hom, Iso.symm_hom, Category.assoc,
     CategoryTheory.Functor.mapIso_hom, Iso.inv_hom_id, Category.comp_id]

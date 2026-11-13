@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGBimoduleResolvedMapInvertible
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGBimoduleResolvedMapInvertible
 
 /-!
 概要：元 graph 比較の増大 square を native 全関手圏の射として可換にする。

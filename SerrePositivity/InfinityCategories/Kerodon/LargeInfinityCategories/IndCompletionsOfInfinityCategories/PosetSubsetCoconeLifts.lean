@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FullPosetSubsetCoconeLift
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FinitePosetLowerSet
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.FinitePosetLowerSet
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Simplicial.PosetSubsetPointRemoval
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.OrderIsoNerve
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.OrderIsoNerve
 
 /-!
 概要：元の順序部分型への形状制限で指定全余錐を厳密に持ち上げる性質を保持する。

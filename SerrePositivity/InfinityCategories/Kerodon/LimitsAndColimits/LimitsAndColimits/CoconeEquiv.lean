@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SliceDiagramIso
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeEquiv
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OppositeIso
+public import SerrePositivity.InfinityCategories.HTT.Section6_1_2.OppositeIso
 
 /-!
 概要：通常の余錐と nerve の余錐を反転によって比較する。
@@ -30,8 +30,8 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] {F : I ⥤ C}
 使われ方：B5 の局所余極限の双方向比較。 -/
 def nerveOppositeSliceIso :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (nerveMap F.op) ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.opFunctor.map (nerveMap F)) :=
-  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceDiagramIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso I) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso C) _ _
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso_natural I F)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceDiagramIso (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso I) (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso C) _ _
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso_natural I F)
 
 /-- 概要：余錐の反転を全単射として束ねる。
 方針：反転と図式同型の射影公式を使う。

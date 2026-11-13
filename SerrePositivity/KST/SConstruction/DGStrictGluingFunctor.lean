@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStrictCommaFunctor
 public import SerrePositivity.KST.SConstruction.DGGluingFunctorLift
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Projections
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Projections
 
 /-! # 二つの元の dg 関手と閉元から作る実 gluing 関手
 概要：左右の実関手と双加群の閉元を使い、全 Hom を持つ実 gluing 関手を作る。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransAlgebra
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGStrictNatTransAlgebra
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CoherentDiagramVertices
 
 /-!

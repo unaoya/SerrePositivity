@@ -38,7 +38,7 @@ def dgOdotMilnorNuNullTriangleMaximalComposite : _root_.SerrePositivity.Infinity
 方針：最大 path を二つの隣接 path に分解し、実零角の零性を使う。
 規約：新しい合成二単体を選択しない。使われ方：元の二単体の Hom 成分の零性。 -/
 lemma dgOdotMilnorNuNullTriangleMaximalComposite_zero (x : (X₀).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotMilnorNuNullTriangleMaximalComposite R d).hom.app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotMilnorNuNullTriangleMaximalComposite R d).hom.app
       (Opposite.op ⦋0⦌) x) := by
   let F := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (σ)
   let p : (⟨ULift.up (0 : Fin 3)⟩ :
@@ -56,11 +56,11 @@ lemma dgOdotMilnorNuNullTriangleMaximalComposite_zero (x : (X₀).obj _⦋0⦌) 
       (homOfLE (show (ULift.up (1 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide))
   have he := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.hom (F.map_comp p q)
   change (F.map (p ≫ q)).hom = f.hom ≫ g.hom at he
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPath
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPath
     (show (ULift.up (0 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide))).hom.app
       (Opposite.op ⦋0⦌) x)
   rw [hpq, he]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (g.hom.app _ (f.hom.app _ x))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (g.hom.app _ (f.hom.app _ x))
   exact @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ g.hom g.isExact _
     (dgOdotMilnorNuNullTriangle_middle_zero R d _)
 

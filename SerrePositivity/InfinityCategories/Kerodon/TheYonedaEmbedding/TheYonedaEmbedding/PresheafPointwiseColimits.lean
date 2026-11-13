@@ -1,8 +1,10 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafCoherentColimitCones
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorColimitEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PresheafCoherentColimitCones
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_2.FunctorColimitEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FunctorPointwiseColimitCriterion
 
 /-!
@@ -40,7 +42,7 @@ lemma presheafInfinity_hasColimit : _root_.SerrePositivity.InfinityCategories.Ke
 /-- 同じ前層の任意の余極限全余錐は、元の各評価で余極限となる。 -/
 lemma presheafInfinity_evaluation_isColimit (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone p) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c)
     (x : C _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinityEvaluation x) c) :=
-  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.isColimitCone_functor_evaluation_of_pointwise_exists c hc
+  _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_2.isColimitCone_functor_evaluation_of_pointwise_exists c hc
     (fun k ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.evaluateFunctorDiagram p k))
     (ULift.up (SSet.opObjEquiv.symm x))
 
@@ -61,3 +63,9 @@ lemma presheafInfinity_isColimit_iff_evaluation (c : _root_.SerrePositivity.Infi
   ⟨presheafInfinity_evaluation_isColimit p c, presheafInfinity_isColimit_of_evaluation p c⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.2.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasColimit
+attribute [cite HTT "5.1.6.8" (partial := component) "仮定：指定前層が元の米田像の retract（Lean が強い：S は準圏）。結論：同じ全共変 Hom は、準圏を形状とする任意の小余極限を保存する。米田評価と指定宇宙変更の同型、および retract の余極限判定で得る（(2) からの保存のうち準圏形状の部分に一致。任意の単体集合形状と (1)⇒(2) は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_evaluation_isColimit

@@ -22,9 +22,9 @@ lemma JointlyReflectsSData.sConstruction {P X A : StableModel.{u}}
   zero v hp hq := by
     have hp' := (gappedInclusion_preservesSConstructionData n X.carrier).1 _ hp
     have hq' := (gappedInclusion_preservesSConstructionData n A.carrier).1 _ hq
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcompCofiber n p.val p.property ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcompCofiber n p.val p.property ≫
       (gappedSubcomplex n X.carrier).ι).app _ v) at hp'
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcompCofiber n q.val q.property ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcompCofiber n q.val q.property ≫
       (gappedSubcomplex n A.carrier).ι).app _ v) at hq'
     rw [sPostcompCofiber_ι] at hp' hq'
     have hz := (h.ihom (arNerve n)).zero v.val hp' hq'

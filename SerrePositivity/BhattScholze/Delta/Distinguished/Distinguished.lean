@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 public import Mathlib.RingTheory.WittVector.Identities
 public import Mathlib.RingTheory.Jacobson.Ideal
@@ -26,7 +28,7 @@ prism の定義（Prism/Basic）、BS 著者版 Lemma 2.28、BS 著者版 Propos
 @[expose] public noncomputable section
 universe u v
 
-/-! ## δ(p)のmod p計算（旧 Delta/Distinguished/DeltaPrime.lean）
+/-! ## δ(p)のmod p計算
 
 W₂切断の自然数上の値とMathlibの標数pにおけるWitt係数を用いる。
 BS 著者版 Example 2.20(1)の単元性に必要な合同式を、p正則性なしで証明する。
@@ -80,7 +82,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaPrime
 
-/-! ## distinguished元の単元倍と因子（旧 Delta/Distinguished/Distinguished.lean）
+/-! ## distinguished元の単元倍と因子
 
 BS著者公開版§2.3、BS 著者版 Lemma 2.23–2.25。
 原典のrad(A)はJacobson根基であり、nilradicalとは区別する。
@@ -213,7 +215,7 @@ theorem isDistinguished_of_p_mem_span (D : DeltaStructure p A) (d : A)
   exact one_ne_zero h
 
 /-- d,pがJacobson根基に属すれば、distinguished性はp∈(d,φ(d))と同値（BS 著者版 Lemma 2.25 の第一文）。
-完備性・p正則性を仮定しないBSBS 著者版 Lemma 2.25。 -/
+完備性・p正則性を仮定しないBS 著者版 Lemma 2.25。 -/
 theorem isDistinguished_iff_p_mem_span (D : DeltaStructure p A) (d : A)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A)) :
@@ -243,3 +245,15 @@ theorem isDistinguished_iff_of_span_eq (D : DeltaStructure p A) (d e : A)
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end Distinguished
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 2.20" (partial := special) "(1) d=p だけ（p 正則性なし）。(2) q-de Rham、(3) \\(A_{\\inf}(\\mathcal O_C)\\) の ξ は本体にない（Thm 3.10 側の perfectPrismWittGenerator_isDistinguished は完全 prism の生成元を W(A/p) へ移したもので、ξ の主張ではない）。(4) Breuil–Kisin はなし ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaStructure.delta_p_sub_one_mem
+attribute [cite BS19 "Ex 2.20" (partial := special) "(1) d=p だけ（p 正則性なし）。(2) q-de Rham、(3) \\(A_{\\inf}(\\mathcal O_C)\\) の ξ は本体にない（Thm 3.10 側の perfectPrismWittGenerator_isDistinguished は完全 prism の生成元を W(A/p) へ移したもので、ξ の主張ではない）。(4) Breuil–Kisin はなし ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_p
+attribute [cite BS19 "Lemma 2.23"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.unit_mul
+attribute [cite BS19 "Lemma 2.23"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_unit_mul_iff
+attribute [cite BS19 "Lemma 2.24"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_factor
+attribute [cite BS19 "Lemma 2.25"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_of_span_eq
+attribute [cite BS19 "Lemma 2.25"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span
+attribute [cite BS19 "Lemma 3.1" (partial := special) "主イデアル（向き付き）の場合だけ。locally principal・Prop 3.1(3) の局所化は未（D5 で不要）。向き付き prism の定義と distinguished 性の同値として E3 経路の土台 ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span

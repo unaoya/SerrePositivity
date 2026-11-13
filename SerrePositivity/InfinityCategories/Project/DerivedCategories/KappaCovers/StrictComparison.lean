@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.NativeRetract
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredPosetNerve
 
 /-!
@@ -31,18 +31,18 @@ def dgKappaStrictModuleDiagram {J : Type u} [Category J] (F : J ⥤ _root_.Serre
   (show (SSet.uliftFunctor.{max (u + 1) v, u}).obj (nerve J) ⟶
       nerve (_root_.SerrePositivity.DifferentialGraded.ClosedCategory R (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D)) from {
     app _ := ↾fun s => (s.down ⋙ F) ⋙ dgKappaModuleClosedRelabel R D }) ≫
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (ModuleCategory R D) ≫ dgConeModuleDerived R D
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (ModuleCategory R D) ≫ dgConeModuleDerived R D
 
 lemma dgKappaStrictModuleDiagram_vertex {J : Type u} [Category J]
     (F : J ⥤ _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) (i : (nerve J) _⦋0⦌) :
     (dgKappaStrictModuleDiagram R D F).app (Opposite.op ⦋0⦌) (ULift.up i) =
       dgConeModuleDerivedVertex R D (F.obj (i.obj 0)) := by
   change (dgConeModuleDerived R D).app _
-    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (ModuleCategory R D)).app _
+    ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (ModuleCategory R D)).app _
       ((i ⋙ F) ⋙ dgKappaModuleClosedRelabel R D)) = _
   apply congrArg ((dgConeModuleDerived R D).app _)
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv R (ModuleCategory R D)).injective
-  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion_vertex]
   rfl
 
 /-- D-bar に要求する最小の結論：固定した同じ strict 図式の native 余極限と頂点比較。

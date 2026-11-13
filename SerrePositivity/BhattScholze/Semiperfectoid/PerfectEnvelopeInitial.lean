@@ -1,8 +1,9 @@
 module
+public meta import SerrePositivity.Util.Citation
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeInitial
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
-import all SerrePositivity.BhattScholze.Prismatic.Envelope
+public import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInitial
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
+import all SerrePositivity.BhattScholze.Prismatic.Envelopes.Envelope
 
 /-!
 # 完全基底上の包絡の全有界試験 prism への始性
@@ -43,7 +44,7 @@ theorem existsUnique_perfectEnvelopeHom (hP : P.deltaStructure.IsPerfect)
     ∃! g : OrientedPrism.Hom Q Y,
       g.quotientMap.comp (perfectEnvelopeResidueUnit hJ hE) = z := by
   let a : A ⧸ P.ideal →+* A ⧸ J := Ideal.Quotient.factor hJ
-  obtain ⟨u, hu, huu⟩ := Andre.existsUnique_perfectPrismHomLift_to_bounded P hP Y hY (z.comp a)
+  obtain ⟨u, hu, huu⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded P hP Y hY (z.comp a)
   have hmap : J.map u.toRingHom ≤ Y.ideal := by
     apply Ideal.map_le_iff_le_comap.mpr
     intro x hx
@@ -83,3 +84,6 @@ theorem existsUnique_perfectEnvelopeHom (hP : P.deltaStructure.IsPerfect)
   exact congrArg OrientedPrism.Hom.toRingHom hbase
 
 end SerrePositivity.BhattScholze.Semiperfectoid
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 7.10" (partial := component) "BS-W17 H5（11-12）：T（有限）と S′（任意添字）の古典的な部分は本体：固定 A_inf 上の有界な実包絡、全有界 prism への一意な射、S′ の完全化と Cor 7.3 の単位を保つ唯一の同型（停止点 4・5a・5）。S′ の単位の完全忠実平坦性は後回し（E3 は使わない）。Δ_R/A との同定（G10）は drafts ／ 11-12 節の見直し：S′ の部分は f_j=0 の場合（根の商）だけ"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_perfectEnvelopeHom

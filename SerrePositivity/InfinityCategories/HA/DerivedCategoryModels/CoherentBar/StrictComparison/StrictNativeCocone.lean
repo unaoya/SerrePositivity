@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.Diagram
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeExtension
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeVertex
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 
 /-!
 概要：指定 strict 余錐を同じ coherent 図式の native 余錐にする。

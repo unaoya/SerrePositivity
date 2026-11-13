@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SkeletalZeroDifferential
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-!
 概要：骨格の零次数微分を、基点に依存しない連結成分へ移す。

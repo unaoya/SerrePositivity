@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PresheafSubcategory
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FullCoconeLift
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits
@@ -63,3 +65,10 @@ lemma ind_isColimit_iff_inclusion (c : _root_.SerrePositivity.InfinityCategories
   ⟨ind_inclusion_isColimit κ D c, ind_isColimit_of_inclusion κ D c⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_isColimit_iff_inclusion
+attribute [cite HTT "5.3.6.2" (partial := special) "仮定：C は小準圏、R は空、K は κ-filtered な全小準圏（Lean が強い：任意の関係・形状族ではない）。結論：Indκ は K-余極限を持ち、同じ米田制限による全関手準圏の普遍同値と j の充満忠実性を満たす（この場合に (1)〜(3) と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_colimitCone
+attribute [cite HTT "5.3.6.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_colimitCone

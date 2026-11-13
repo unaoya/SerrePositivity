@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfDerivedTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PrescribedCocartesianTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.PrescribedCocartesianTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.HomotopyPrism
 
 /-!
 概要：元の LX→R_D(LX) の随伴像を全頂点で保持する coherent 左関手を、元の導来左関手と比較する。

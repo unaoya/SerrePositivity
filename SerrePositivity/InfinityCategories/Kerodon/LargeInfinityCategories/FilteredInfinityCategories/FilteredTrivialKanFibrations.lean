@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredLifting
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FilteredLifting
 
 /-!
 概要：自明 Kan fibrations の filtered 余極限射は自明 Kan fibration。

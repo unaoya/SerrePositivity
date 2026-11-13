@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativeFilteredPreservation
 
 /-!
@@ -49,3 +51,8 @@ def indKappaContinuousRestriction (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicateg
   kappaContinuousFunctorInclusion κ (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity κ C) D ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda κ C)).app D
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.6.1" (partial := special) "仮定：形状のクラス K を κ-filtered な全小準圏に固定する（Lean が強い）。結論：同じ全関手準圏で K-余極限保存関手の張る全部分準圏 FunK を定義する（一致）。任意の指定された余極限図式族 R の FunR までは定義しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.KappaContinuousFunctorInfinity

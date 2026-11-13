@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaReflectorRightTriangle
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitLeftTriangle
 
@@ -90,3 +92,8 @@ lemma sigma_exists_reflector
   exact ⟨L, ⟨sigmaReflectorAdjunction β hβ⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.10" (partial := component) "仮定：有限余積を持つ小準圏 C（HTT と一致）。結論：元の包含の左随伴の存在、Yoneda の同じ因子化と有限余積保存、および PΣ の sifted 余極限閉性という (1) の反射部分・(2)・(4)（一致）。反射の accessibility、任意の随伴との (3) の iff、(6) の compact generation はこの組には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_exists_reflector

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.Cofinality
@@ -54,3 +56,8 @@ lemma isRightCofinal_sliceUnderProjection_of_filtered {K C : SSet.{u}} [K.Finite
   exact isWeaklyContractible_pullback_cosliceProjections p (SSet.yonedaEquiv.symm b)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.5.3.12" (partial := stronger-hyp) "仮定：C は filtered な準圏（Lean が強い：sifted より強い filtered 性）。結論：有限図式 p の coslice の射影が余極限を計算する向きに cofinal となる。特に p を一点 C に取ると CC/→C の cofinal 性を与える（この仮定で原典の sifted なら全 coslice 射影が left cofinal という方向に一致）。一般 sifted C と逆方向の判定は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isRightCofinal_sliceUnderProjection_of_filtered

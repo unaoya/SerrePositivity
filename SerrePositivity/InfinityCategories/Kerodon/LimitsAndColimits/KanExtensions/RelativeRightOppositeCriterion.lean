@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeRightCanonical
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Diagrams.OppositeHomotopyInvolution
 
@@ -61,3 +63,8 @@ lemma kanIsRelativeRightKanExtendedFrom_iff_op_left {K C D E : SSet.{u}}
   exact he.symm.trans h.symm
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.2.18"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeRightKanExtendedFrom_iff_op_left

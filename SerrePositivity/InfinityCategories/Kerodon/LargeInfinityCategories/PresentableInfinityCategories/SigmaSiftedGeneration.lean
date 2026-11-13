@@ -42,7 +42,7 @@ lemma sigmaPresheafElements_isSifted {C : SSet.{u}} [Quasicategory C]
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraightening F).op
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isSiftedInfinity_op_of_hasFiniteProducts (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraightening F)
   intro J hJ d
-  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hasLimit_smallLeftUnstraightening_of_finiteProducts F hF d
+  exact _root_.SerrePositivity.InfinityCategories.HA.Section5_2_2.hasLimit_smallLeftUnstraightening_of_finiteProducts F hF d
     (hC J (d ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningProjection F))
 
 /-- 各元の P_Σ 対象は、小さい sifted ∞ 圏上の同じ Yoneda 図式の余極限。 -/

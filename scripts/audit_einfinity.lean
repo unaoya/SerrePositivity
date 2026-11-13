@@ -2623,7 +2623,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockValue_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockNerveMap,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.inclusion,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow,
+      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.WeakThreeArrow,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.LeftTrivialThreeArrow,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.leftInclusion,
@@ -3039,7 +3039,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionSpecialSpanFunctor,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantTargetComparison_trivialCofibration,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanFunctor,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock,
+      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialHammock,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock.left_weakEquivalence,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock.right_weakEquivalence,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.value,
@@ -10068,12 +10068,12 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantDKFrame_map_weak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantDKFrameAugmentation_weak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantFrameHomIso,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCategory,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantInclusion,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory_weak_iff,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantObject,
-      `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantInclusionRelative,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantInclusion,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory_weak_iff,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantInclusionRelative,
       `SerrePositivity.EInfinity.SimplicialLocalization.modelFrameIndex_weaklyContractible,
       `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammockVertex,
       `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameAugmentation_invertible,
@@ -22034,7 +22034,7 @@ example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUnivers
     [Category.{e2RoofRightPrismUniverse} C] (F : I ⥤ C) (Y : C)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
     frameRoofMap F Y q ≫ pullback.fst _ _ =
-      nerveMap (CostructuredArrow.toOver F Y) ≫ (SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom ≫
+      nerveMap (CostructuredArrow.toOver F Y) ≫ (SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q := frameRoofMap_over F Y q
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
@@ -22562,7 +22562,7 @@ variable (A : Type e2DerivedForgetUniverse) [CommRing A]
 example {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)) _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))) x y)
     (he : QuasiIso ((closedToComplex A).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
       (e.map ((truncation 2).map (complexSemifreeResolutionInfinity A))) :=
   complexSemifreeResolutionInfinity_invertsQuasiIso A e he
 example : SSet.Homotopy
@@ -22626,22 +22626,22 @@ open scoped Simplicial
 variable (A : Type e2ExistingDiscreteComparisonUniverse) [CommRing A]
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)) ≫
-      complexSemifreeResolutionInfinity A) (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) :=
+      complexSemifreeResolutionInfinity A) (𝟙 (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) :=
   complexSemifreeResolutionRetractIso A
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A) ≫ complexOrdinaryDerivedSource A)
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) :=
   semifreeClosedDerivedSourceIso A
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (nerveMap (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0) ≫
       complexOrdinaryDerivedSource A)
-      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) :=
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) :=
   moduleSingleOrdinaryDerivedIso A
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (discreteCAlgUnderEmbedding A ≫ cAlgForgetDerived A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A) :=
   discreteCAlgUnderEmbedding_forgetIso A
 example (B : Under (CommRingCat.of A)) :
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B) =
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex A ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A).obj B) :=
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex A ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A).obj B) :=
   discreteDerivedEmbedding_vertex A B
 local instance : HasDerivedCategory.{e2ExistingDiscreteComparisonUniverse + 1}
     (ModuleCat.{e2ExistingDiscreteComparisonUniverse} A) :=
@@ -22861,15 +22861,15 @@ example (X : Complex A) :
       ((nerve.edgeMk ((freeProbeUnitNatTrans A).app X)).map
         (SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedSource A)).edge :=
   freeProbeUnitHomotopy_component A X
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     Truncated.HomotopyCategory.homMk (derivedFreeProbeUnitEdge A x) = derivedFreeProbeUnitHom A x :=
   derivedFreeProbeUnitEdge_homMk A x
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x) _⦋0⦌ := derivedFreeProbeUnitCommaVertex A x
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberTargetVertex (cAlgForgetDerived A) x (derivedFreeProbeUnitCommaVertex A x) =
       derivedFreeProbeVertex A x := derivedFreeProbeUnitCommaVertex_target A x
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (T : SSet.{e2DerivedFreeUnitUniverse + 1}) : HEq
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (T : SSet.{e2DerivedFreeUnitUniverse + 1}) : HEq
     (Truncated.HomotopyCategory.homMk
       (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (derivedFreeProbeUnitPointHomotopy A x T)))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap T (derivedFreeProbeUnitHom A x)) :=
@@ -22884,7 +22884,7 @@ open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.BarrattEc
 open SerrePositivity.HomotopyFunctionComplex
 open scoped Simplicial
 variable (A : Type e2NormalizedSimplexHomUniverse) [CommRing A]
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
   derivedFreeProbeUnitIntervalMap A x y
@@ -22912,7 +22912,7 @@ example (X Y : Complex A) : (_root_.SerrePositivity.InfinityCategories.Project.H
 example (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) : SSet.uliftFunctor.{e2NormalizedSimplexHomUniverse + 1,
     e2NormalizedSimplexHomUniverse}.obj
       ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val) ≅
-        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) :=
   normalizedSimplexDerivedHomIso A X Y
 example (H : Complex A) {n m : SimplexCategory} (f : n ⟶ m)
@@ -22921,7 +22921,7 @@ example (H : Complex A) {n m : SimplexCategory} (f : n ⟶ m)
       ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ SimplicialObject (ModuleCat A)).obj
         (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).map f.op
           (normalizedSimplexHomEquiv A H m g) := normalizedSimplexHomEquiv_naturality A H f g
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌)
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌)
     (T : SSet.{e2NormalizedSimplexHomUniverse + 1})
     (f : T ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ derivedFreeProbeUnitIntervalMap A x y) =
@@ -25427,7 +25427,7 @@ example :
 example :
     (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h =
       (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
-        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) :=
+        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard A X Y
 
 example :
@@ -25501,7 +25501,7 @@ example :
     (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{e2AugStandardU + 1})).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementAugmentationJoin A X Y =
       (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
-        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) :=
+        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_prism A X Y
 
 example {n : ℕ}
@@ -25806,7 +25806,7 @@ example :
     (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{e2EvaluationJoinU + 1})).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementEvaluationJoin A X Y =
       (FrameHom.MixedNerve.homotopy (normalizedTensorElementEvaluation A X Y)).h ≫
-        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) :=
+        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluationJoin_prism A X Y
 
 end e2EvaluationJoinFixtures
@@ -27011,7 +27011,7 @@ example {K C D : SSet.{e2F207U}} (F : C ⟶ D)
 
 example :
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (normalizedTensorElementDerivedPinchedMap A X Y ≫
-      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
         ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
         ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)))) =
       Arrow.mk (normalizedTensorElementDerivedRoof A X Y) :=
@@ -27019,11 +27019,11 @@ example :
 
 example :
     let K := nerve (normalizedTensorElementIndex A X Y)
-    let V := fun z : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ =>
+    let V := fun z : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ =>
       HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const (X := K) z))
     eqToHom (congrArg V (complexOrdinaryAmbient_vertex A X)) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (normalizedTensorElementDerivedPinchedMap A X Y ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
           ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
           ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y))) ≫
       eqToHom (congrArg V (complexOrdinaryAmbient_vertex A Y).symm) =
@@ -27148,7 +27148,7 @@ open scoped Simplicial
 universe u
 variable (A : Type u) [CommRing A]
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (derivedFreeProbeUnitIntervalMap A x y) :=
   derivedFreeProbeUnitIntervalMap_weak A x y
 example (X : Complex A) :
@@ -27157,7 +27157,7 @@ example (X : Complex A) :
         (hoFunctor.map (cAlgForgetDerived A)).toFunctor.map
           (freeProbeRelativeChosenSourceIso A X).hom = freeProbeRelativeUnitHom A X :=
   freeProbeRelativeChosenSourceIso_unit_triangle A X
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     (freeProbeUnitSourceIso A x).hom ≫ derivedFreeProbeUnitHom A x ≫
       (hoFunctor.map (cAlgForgetDerived A)).toFunctor.map
         (freeProbeRelativeChosenSourceIso A (freeProbeUnitComplex A x)).hom =
@@ -27170,10 +27170,10 @@ example (X : Complex A) (B : CofibrantAlgebra A) (T : SSet.{u + 1})
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (q ≫ freeProbeRelativeUnitReference A X B ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) := by
-  have h := congrArg (hoFunctor.map ((pre q).app (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor.map
+  have h := congrArg (hoFunctor.map ((pre q).app (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor.map
     (freeProbeRelativeUnit_forget_family_triangle A X B)
   simp only [Functor.map_comp] at h
-  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) q
+  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) q
     (freeProbeRelativeUnitHom A X)
   dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp] at hu
   rw [hu] at h
@@ -27192,7 +27192,7 @@ open scoped Simplicial
 universe e2F220U
 variable (A : Type e2F220U) [CommRing A]
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     ∃ g : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) ⟶
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y,
       Nonempty (SSet.Homotopy
@@ -27215,11 +27215,11 @@ open scoped Simplicial
 universe e2F221U
 variable (A : Type e2F221U) [CommRing A]
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     (derivedFreeProbeUnitCommaTargetFiberVertex A x).val =
       derivedFreeProbeUnitCommaVertex A x := rfl
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (h : ∀ y : (CAlg_R A) _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (cAlgForgetDerived A) (derivedFreeProbeVertex A x) y ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y)
@@ -27242,7 +27242,7 @@ universe e2F222U
 variable (A : Type e2F222U) [CommRing A]
 variable (h : FreeProbeUnitTransportCondition A)
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) :=
   derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso A x (h x)
 
@@ -27254,12 +27254,12 @@ example : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanEx
   (cAlgFreeForgetDerivedAdjunctionOfTransport A h).counitHom
 
 example {T : SSet.{e2F222U + 1}} [Quasicategory T]
-    (V : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) (W : T ⟶ CAlg_R A) :
+    (V : T ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) (W : T ⟶ CAlg_R A) :
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (V ≫ cAlgFreeDerivedOfTransport A h) W ≃
       _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom V (W ≫ cAlgForgetDerived A) :=
   (cAlgFreeForgetDerivedAdjunctionOfTransport A h).homEquiv V W
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x)
       (derivedFreeProbeUnitCommaVertex A x)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunctionOfTransport A h).unitHom x) :=
@@ -27286,11 +27286,11 @@ open scoped Simplicial
 universe e2F223U
 variable (A : Type e2F223U) [CommRing A]
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) :=
   derivedFreeProbeUnitCommaVertex_isInitial A x
 
-example : ∃ F : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A,
+example : ∃ F : _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A,
     Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction F (cAlgForgetDerived A)) :=
   cAlgForgetDerived_rightAdjoint_exists A
 
@@ -27302,11 +27302,11 @@ example : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanEx
   (cAlgFreeForgetDerivedAdjunction A).counitHom
 
 example {T : SSet.{e2F223U + 1}} [Quasicategory T]
-    (V : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) (W : T ⟶ CAlg_R A) :
+    (V : T ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) (W : T ⟶ CAlg_R A) :
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (V ≫ cAlgFreeDerived A) W ≃ _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom V (W ≫ cAlgForgetDerived A) :=
   (cAlgFreeForgetDerivedAdjunction A).homEquiv V W
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x)
       (derivedFreeProbeUnitCommaVertex A x)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunction A).unitHom x) :=
@@ -27323,14 +27323,14 @@ example {K : SSet.{e2F223U + 1}} (p : K ⟶ CAlg_R A) (hp : _root_.SerrePositivi
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (p ≫ cAlgForgetDerived A) :=
   cAlgForgetDerived_hasLimit_postcomp A p hp
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unitIntervalMapAt (derivedFreeProbeUnitCommaTargetFiberVertex A x) y =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (cAlgForgetDerived A) (derivedFreeProbeVertex A x) y ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y)
           (derivedFreeProbeUnitHom A x) :=
   unitIntervalMapAt_derivedFreeProbeUnitCommaTargetFiberVertex A x y
 
-example (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+example (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (derivedFreeProbeUnitIntervalMap A x y)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection (cAlgForgetDerived A) x)
           (derivedFreeProbeVertex A x) y ≫
@@ -27824,8 +27824,8 @@ example (X : CofibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantFrame X q ⋙ CofibrantObject.ι = q.obj := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantFrame_inclusion X q
 example (X : CofibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
     {E : SSet.{max e2F232U e2F232V}} [SSet.Quasicategory E]
-    (F : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))) :
+    (F : nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C).category ⟶ E)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantDKFrame X q) ≫ F) :=
   modelCofibrantFrame_hasLimit X q F hF
 
@@ -27861,7 +27861,7 @@ variable {C : Type e2F233U} [Category.{e2F233V} C] [ModelCategory C]
 example (X : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj) :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame X q ⋙ BifibrantObject.ι = q.obj :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame_inclusion X q
-example (X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C).category) :
+example (X Y : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C).category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r) X Y) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrant_colimitMap_weak r X Y
@@ -28059,8 +28059,8 @@ attribute [local instance] _root_.SerrePositivity.InfinityCategories.Project.Mod
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
     (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) := modelHammock_isLocalization r
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := modelCofibrantHammock_isLocalization r
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := modelCofibrantHammock_isLocalization r
 
 example (X Y : C) [IsCofibrant X] : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (SSet.uliftFunctor.{max e2F239U e2F239V, e2F239V}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))

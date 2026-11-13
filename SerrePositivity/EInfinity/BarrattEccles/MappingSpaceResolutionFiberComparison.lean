@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionRightInvariance
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceBarInclusion
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.NerveULiftHom
 
 /-!
 # 元の共通添字から分解の固定 fiber と全図式への比較

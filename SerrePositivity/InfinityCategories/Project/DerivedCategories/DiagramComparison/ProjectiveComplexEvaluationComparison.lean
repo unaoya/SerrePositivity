@@ -88,13 +88,13 @@ lemma projectiveRingUnderlyingComplex_presentation :
 def complexDerivedEvaluation_projectiveRingIso :
     FunctorIso
       (nerveMap (projectiveRingUnderlyingComplex A) ≫ complexDerivedEvaluation A)
-      (closedNerveInclusion A (ProjectiveRingComplex A) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           (projectiveRingComplexConstant A) ≫ (projectivePointEquivalence A).hom) := by
   have e := (projectiveRingComplexResolvedIso A).precomp
-    (closedNerveInclusion A (ProjectiveRingComplex A))
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A))
   have he : nerveMap (projectiveRingUnderlyingComplex A) ≫ complexDerivedEvaluation A =
-      closedNerveInclusion A (ProjectiveRingComplex A) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           (projectiveRingComplexInclusion A) ≫
             dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫

@@ -36,11 +36,11 @@ lemma oldFrame_eq : oldFrame a g S hb ht = _root_.SerrePositivity.InfinityCatego
   apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame.ext
   · exact hb.symm
   · exact ht.symm
-  · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow S).edge = _
+  · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow S).edge = _
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge, Equiv.symm_apply_apply]
     rfl
-  · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow S).edge = _
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge, Equiv.symm_apply_apply]
+  · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow S).edge = _
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge, Equiv.symm_apply_apply]
     rfl
 
 def newFrame : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.squareFrameOfEdges (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a)

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedSourceValues
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGStableHomotopyNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGStableHomotopyEdges
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.HomotopyEdgeNaturality
 
 /-!
@@ -72,7 +72,7 @@ lemma ambientCohomology_map (i : ℤ) {x y : (_root_.SerrePositivity.InfinityCat
 def derivedAmbientCohomologyIso (i : ℤ) :
     cohomologyOnHo A i ≅ hoMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion (S := A)) ⋙ ambientCohomology A i := by
   let I := dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)
-  exact Functor.isoWhiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)).inverse
+  exact Functor.isoWhiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)).inverse
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyComparison A i) ≪≫
     Functor.isoWhiskerRight (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence_naturalityIso A _ _ I).symm
       (complexHomotopyComparison A ⋙ _root_.HomotopyCategory.homologyFunctor
@@ -176,12 +176,12 @@ def complexResolutionCohomologyIso (i : ℤ) :
 def complexOrdinaryDerivedSourceHomologyIso (i : ℤ) :
     ordinaryToHoNerve (Complex A) ⋙ hoMap (complexOrdinaryDerivedSource A) ⋙ cohomologyOnHo A i ≅
       HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) i := by
-  let B := nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)
+  let B := nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
   let L := complexSemifreeResolutionInfinity A
   have e₁ : hoMap (complexOrdinaryDerivedSource A) ≅ hoMap B ⋙ hoMap L := by
     apply eqToIso
     change (hoFunctor.map (nerveMap (complexToClosed A) ≫
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) ≫ L)).toFunctor = _
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) ≫ L)).toFunctor = _
     rw [← Category.assoc, hoFunctor.map_comp]
     rfl
   have e₂ : ordinaryToHoNerve (Complex A) ⋙ hoMap B ⋙ ambientCohomology A i ≅

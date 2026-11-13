@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectRealizationPerfect
 public import SerrePositivity.KST.SConstruction.DGPerfectRealizationYonedaNative
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFullSubcategoryNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
 
 /-!

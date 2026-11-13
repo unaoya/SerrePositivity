@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
@@ -25,7 +27,7 @@ d で割る完全 prism の構成（Semiperfectoid/PerfectPrismDivision）、And
 
 universe u v w
 
-/-! ## p進完備なδ完全化と普遍性（旧 Prism/Perfection/PCompletedDeltaPerfection.lean）
+/-! ## p進完備なδ完全化と普遍性
 
 任意のδ環のFrobenius余極限を古典的p進完備化する。
 完全かつ古典的p進完備なδ環への一意な延長を具体的に証明する。
@@ -109,7 +111,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaPerfection
 
-/-! ## p進完備なδ完全化の正則性とdistinguished商（旧 Prism/Perfection/PCompletedDeltaRegularity.lean）
+/-! ## p進完備なδ完全化の正則性とdistinguished商
 
 具体的な完全化環と標準射に、既存BS 著者版 Lemma 2.28・2.34の結果を適用する。
 prismのイデアルの単項化や導来完備化との比較は結論しない。
@@ -155,7 +157,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaRegularity
 
-/-! ## p進完備なδ完全化の具体的な延長射と関手性（旧 Prism/Perfection/PCompletedDeltaFunctor.lean）
+/-! ## p進完備なδ完全化の具体的な延長射と関手性
 
 BS 著者版 Lemma 3.9のp進完備化段階。
 既存の存在・一意性から公開環射を取り出し、恒等射・合成との両立を証明する。
@@ -278,7 +280,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaFunctor
 
-/-! ## 完全p進完備δ環のp進完備δ完全化からの復元（旧 Prism/Perfection/PCompletedDeltaRecovery.lean）
+/-! ## 完全p進完備δ環のp進完備δ完全化からの復元
 
 BS 著者版 Lemma 3.9のp進完備化段階の冪等性。
 既に完全かつ古典的p進完備なδ環の標準射は同型で、逆射もδ射。
@@ -391,7 +393,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaRecovery
 
-/-! ## d進完備性を明示したp進完備δ完全化のprismと普遍性（旧 Prism/Perfection/PCompletedDistinguishedPrism.lean）
+/-! ## d進完備性を明示したp進完備δ完全化のprismと普遍性
 
 BS 著者版 Lemma 3.9の主イデアル・distinguished生成元の場合の部分定理。
 p進完備δ完全化での生成元像のd進完備性を仮定し、実導来条件を持つ完全prismを
@@ -485,7 +487,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDistinguishedPrism
 
-/-! ## p進完備δ完全化のprismへの標準射と普遍性（旧 Prism/Perfection/PCompletedPrismUniversal.lean）
+/-! ## p進完備δ完全化のprismへの標準射と普遍性
 
 distinguished生成元を持つoriented prismについて、生成元像のd進完備性を
 明示した普遍性を証明する。既に完全なprismなら、その追加完備性も復元同型から供給する。
@@ -604,3 +606,8 @@ def pCompletedPerfectPrismInverse (P : OrientedPrism p A) (hP : P.deltaStructure
 end SerrePositivity.BhattScholze
 
 end PCompletedPrismUniversal
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 3.9" (partial := special) "向き付き prism の場合に原典の形の定理がある（BS-W17）：classicalPrismPerfection（δ 完全化の (p,d) 完備化 H⁰、完全・有界）と、完全 prism への射についての普遍性 existsUnique_classicalPrismPerfectionHom。源の完全性は仮定しない。部品（完全δ環＋distinguished 元の PD 完備化が完全 prism で普遍、完全化と完備化の順序比較）も本体。付随の主張は一つの定理には入っていない。p 進完備化した段での正則性などは PCompletedPerfection:124–145 に別の定理としてある。未完備の A_perf についての主張と、導来と古典的完備化の一致は本体にない。PCompleted 版は d 進完備性を仮定。A3/A5 の始完全 prism で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：deltaPDCompletionPerfectionEquiv（原文の古典完備化との一致や普遍性とは別の比較同型。module docstring の関連を残す。） ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_pCompletedPrismHom

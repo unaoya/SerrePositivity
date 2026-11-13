@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PinchedHomPullbackLimit
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.WitnessPushoutContractible
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeInitialBoundaryCriterion
@@ -47,3 +49,8 @@ lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}}
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanInitialVertex_pinchedHom_isContractibleKan hb _)
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.5.2" (partial := stronger-hyp) "仮定：準圏の strict 引き戻しの指定頂点と、三成分の始対象性（Lean が強い：第一脚の全 pinched Hom 写像が Kan fibration という条件を明示）。結論：元の引き戻し頂点は始対象（成分の始対象性⇒始対象の方向に一致）。始対象の存在と逆方向を含む一般の iff は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isInitialVertex_pullback_of_components

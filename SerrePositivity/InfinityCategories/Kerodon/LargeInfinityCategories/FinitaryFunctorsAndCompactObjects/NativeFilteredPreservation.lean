@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.KappaColimits
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
@@ -53,3 +55,10 @@ lemma indInclusion_preservesSmallKappaFilteredColimits (κ : Cardinal.{u})
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_inclusion_isColimit κ D c hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "6.1.1.9" (partial := component) "仮定：C=Indℵ₀(A) を指定し、A は小さい冪等完備な compact 生成部分の模型（Lean が強い：指定した Ind 模型の場合）。結論：Indℵ₀(A) に全小 filtered 余極限が存在し、前層への全部分包含がそれらを保つ（冒頭の前層圏での filtered 余極限閉性に一致する部分）。任意の compactly generated C との全比較、presentability と有限極限の左完全性の全結論は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.indInclusion_preservesSmallKappaFilteredColimits
+attribute [cite HA "6.1.1.9" (partial := component) "仮定：C=Indℵ₀(A) を指定し、A は小さい冪等完備な compact 生成部分の模型（Lean が強い：指定した Ind 模型の場合）。結論：Indℵ₀(A) に全小 filtered 余極限が存在し、前層への全部分包含がそれらを保つ（冒頭の前層圏での filtered 余極限閉性に一致する部分）。任意の compactly generated C との全比較、presentability と有限極限の左完全性の全結論は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ind_hasSmallKappaFilteredColimits
+attribute [cite HTT "5.3.1.10"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.HasSmallKappaFilteredColimits

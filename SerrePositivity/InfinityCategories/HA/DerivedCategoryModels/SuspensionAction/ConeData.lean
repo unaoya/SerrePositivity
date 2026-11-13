@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.Perfect
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSuspensionCanonicalMapData
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSuspensionCanonicalMapData
 
 /-!
 概要：代表化した実延長を K-B3 の同じ cone・平坦分解の射データへ接続する。

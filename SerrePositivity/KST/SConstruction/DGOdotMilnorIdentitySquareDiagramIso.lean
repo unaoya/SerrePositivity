@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareSideRecovery
 public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元恒等実右面への指定三境界付き Cat^perf 全図式比較を構成する。
@@ -36,7 +36,7 @@ def rightSquareDiagramIso (h : _root_.SerrePositivity.InfinityCategories.Project
       (congrArg Iso.symm (perfectSquareComparison_right R d v))
   zero_eq := by
     apply perfectZeroPointFunctorIso_ext
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
       (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1))
     exact dgOdotMilnorIdentityNullSquare_perfect_zero R d
 end DGOdotMilnorIdentityLaxComparisonInput

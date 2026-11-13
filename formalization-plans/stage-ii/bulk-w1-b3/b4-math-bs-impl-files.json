@@ -11,6 +11,7 @@
   "SerrePositivity/EInfinity/SimplexCuts/Faces.lean",
   "SerrePositivity/EInfinity/SimplexCuts/GeneratorBoundary.lean",
   "SerrePositivity/EInfinity/SimplexCuts/HomogeneousTensor.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/LowerPart.lean",
   "SerrePositivity/EInfinity/SimplexCuts/Normalization.lean",
   "SerrePositivity/EInfinity/SimplexCuts/NormalizedGenerators.lean",
   "SerrePositivity/EInfinity/SimplexCuts/OutputBoundaryTerms.lean",
@@ -20,5 +21,12 @@
   "SerrePositivity/EInfinity/SimplexCuts/SignedTerms.lean",
   "SerrePositivity/EInfinity/SimplexCuts/Signs.lean",
   "SerrePositivity/EInfinity/SimplexCuts/TensorNaturality.lean",
-  "SerrePositivity/EInfinity/SimplexCuts/TopTerm.lean"
+  "SerrePositivity/EInfinity/SimplexCuts/TerminalCoordinates.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/TerminalData.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/TerminalEquiv.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/TerminalExtension.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/TerminalSuffix.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/TerminalTrace.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/TopTerm.lean",
+  "SerrePositivity/EInfinity/SimplexCuts/VertexLists.lean"
 ]

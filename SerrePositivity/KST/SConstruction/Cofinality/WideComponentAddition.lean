@@ -66,7 +66,7 @@ def completionWideZero (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) :=
   completionWideObjectClass r ι f hf
-    (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).vertex)
+    (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).vertex)
 
 /-- 概要：成分の双積和は可換。
 方針：元の双積の交換同型を成分の等号へ写す。
@@ -123,7 +123,7 @@ lemma completionWideAdd_zero_left (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     completionWideAdd r ι f hf (completionWideZero r ι f hf) a = a := by
   obtain ⟨a, rfl⟩ := SSet.π₀.mk_surjective a
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
   exact (completionWideAdd_objectClass r ι f hf (HomotopyCategory.mk z.vertex)
     (HomotopyCategory.mk a.val)).trans
       (completionWideObjectClass_iso r ι f hf (isoZeroBiprod

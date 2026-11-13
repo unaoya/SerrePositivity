@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderPairRestriction
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Products.EnrichedParameterCylinderPairRestriction
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderNervePair
 
 /-!

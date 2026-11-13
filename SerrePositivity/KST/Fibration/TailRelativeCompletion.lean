@@ -44,7 +44,7 @@ lemma tailCompletion_jointReflection {B C : _root_.SerrePositivity.InfinityCateg
       (tailCompletionPrefix q n).val where
   zero v hc hp := by
     have hn := (weakArrowCofiberEquivalence q).hom.property.1 _ hc
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((weakCofiberCompletionCofiber q (tailWeakEdgeExact q n) ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((weakCofiberCompletionCofiber q (tailWeakEdgeExact q n) ≫
       (weakArrowCofiberEquivalence q).hom).val.app _ v) at hn
     rw [weakCofiberCompletionCofiber_projection] at hn
     have hz := (tailWeak_jointReflection q n).zero

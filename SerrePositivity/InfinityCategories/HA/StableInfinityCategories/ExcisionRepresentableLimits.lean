@@ -1,7 +1,9 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionFunctorCriterion
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionGridUniverse
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseUniversalSquares
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentablePresheafLimitDetection
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallSimplicialSet
 
@@ -93,3 +95,9 @@ lemma excisionFullInput_isPullback_of_suspension_faces {C : SSet.{u}} [Quasicate
   exact h
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "6.1.1.6" (partial := special) "仮定：C=S を構成済みの空間 ∞ 圏に限定（Lean が強い：空間の場合）。結論：有限極限が存在し、選んだ全小余極限関手のうち filtered 添字のものは全有限極限錐を保つ。特に順序添字で differentiable の三条件を満たす（この場合の定義条件に一致）。任意 C に対する differentiable の専用述語は含まれない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionSpace_hasFiniteLimits
+attribute [cite HA "6.1.1.8" (partial := special) "仮定：∞ トポスを S の場合に限定（Lean が強い：構成済みの空間 ∞ 圏の場合）。結論：有限極限と全小余極限が存在し、filtered 余極限関手が全有限極限を保つので順序余極限も左完全（S が differentiable という結論に一致）。一般 ∞ トポスの切除と filtered exactness の主張は含まれない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionSpace_hasFiniteLimits

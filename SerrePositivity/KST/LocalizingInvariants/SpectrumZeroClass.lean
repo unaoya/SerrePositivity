@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows
 public import SerrePositivity.KST.Spectra.SpectrumZeroMaps
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroHomotopy
 
 /-!
 概要：元の BF 零射と fiber 包含の零合成を h Sp の零射に同定する。

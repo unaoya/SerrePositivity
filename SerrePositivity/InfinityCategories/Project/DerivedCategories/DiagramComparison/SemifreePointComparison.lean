@@ -1,12 +1,12 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSemifreeModules
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.InfinityCategory
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.DGSemifreeModules
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.DGQuasiEquivalenceNerve
 public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeSubcategory
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSemifreeModules
+import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.InfinityCategory
+import all SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeSubcategory
+import all SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.DGSemifreeModules
 import all SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 
 /-!
@@ -65,8 +65,8 @@ theorem semifreePointEvaluation_quasiEquivalence : QuasiEquivalence (semifreePoi
 /-- 既存 D(A) を終域とする一点半自由模型の全準圏同値。 -/
 def semifreePointEquivalence :
     SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
-      (dgModuleDerivedInfinityCategory A PUnit.{1}) (derivedInfinityCategory A) :=
-  dgQuasiEquivalenceNerveEquivalence (semifreePointEvaluation A)
+      (dgModuleDerivedInfinityCategory A PUnit.{1}) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgQuasiEquivalenceNerveEquivalence (semifreePointEvaluation A)
     (semifreePointEvaluation_quasiEquivalence A)
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

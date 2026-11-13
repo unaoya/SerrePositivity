@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.FilteredSpaceBridgeInput
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseBoundary
 /-!
 概要：境界が指定基点に定数である球面単体を、宇宙持ち上げと厳密に比較する。
 方針：標準単体・境界の同型と、ULift 関手の完全忠実性を使う。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PartialTotalizationTower
 public import SerrePositivity.KST.Spectra.SkeletalWeightedEndLimit
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationTowerLimitCone
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.FibrationTowerLimitCone
 public import SerrePositivity.KST.Spectra.TowerHomotopyComparison
 
 /-!

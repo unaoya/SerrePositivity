@@ -38,7 +38,7 @@ def zeroFunctorFullSKanFamily (A C : _root_.SerrePositivity.InfinityCategories.H
 
 /-- 同じ指定点では、元の全 S• 零値作用の同じ実現射の Ex∞ 表示を回収する。 -/
 theorem zeroFunctorFullSKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSKanFamily A C =
       eHomEquiv SSet (show fullSRealizationKanObject A ⟶
         stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from C) from

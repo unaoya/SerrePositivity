@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.LinearReflectionData
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveOppositeReindex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedLinearChainMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveOppositeReindex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedLinearChainMap
 /-!
 概要：線形座標の反転は、反転した全添字写像と厳密に可換である。
 方針：部分集合上の単射分岐では反転像、非単射分岐では零成分を比較する。

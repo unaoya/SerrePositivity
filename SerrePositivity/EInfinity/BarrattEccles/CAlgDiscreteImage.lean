@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteDerivedComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteCharacterization
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.DiscreteCharacterization
 
 /-!
 # 同じ U による離散入力の像の離散性
@@ -25,26 +25,26 @@ variable (A : Type u) [CommRing A]
 
 lemma discreteDerivedEmbedding_vertex (B : Under (CommRingCat.of A)) :
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B) =
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex A ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A).obj B) := by
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex A ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A).obj B) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).injective
   rfl
 
 variable [HasDerivedCategory.{w} (ModuleCat.{u} A)]
 
 lemma discreteDerivedEmbedding_disc (B : Under (CommRingCat.of A)) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityDisc ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.derivedInfinityDisc ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)) := by
   rw [discreteDerivedEmbedding_vertex]
-  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex_disc _
+  exact _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex_disc _
 
 def cAlgUnderlyingDisc (x : (CAlg_R A) _⦋0⦌) : Prop :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityDisc ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) x)
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.derivedInfinityDisc ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) x)
 
 lemma discreteCAlgUnderEmbedding_underlyingDisc (B : Under (CommRingCat.of A)) :
     cAlgUnderlyingDisc A
       ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)) := by
   have e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app (discreteCAlgUnderEmbedding_forgetIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
   have e' := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory
-    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).mapIso e
+    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).mapIso e
   intro i hi
   exact (discreteDerivedEmbedding_disc A B i hi).of_iso
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor A i).mapIso e')

@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ZeroCospan
 
-variable {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+variable {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
   (F G : (horn 2 2 : SSet.{u}) ⟶ X)
   (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (hG : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
   (L : (Δ[1] : SSet.{u}) ⟶ X) (hFL : horn₂₂.ι₀₂ ≫ F = L) (hGL : horn₂₂.ι₀₂ ≫ G = L)

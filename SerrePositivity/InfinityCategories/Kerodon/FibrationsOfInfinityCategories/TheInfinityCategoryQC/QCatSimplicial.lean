@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoreProduct
 public import Mathlib.CategoryTheory.Monoidal.Closed.Enrichment
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
@@ -109,3 +111,15 @@ instance qCat_sHom_kanComplex (X Y : QCat.{u}) :
   infer_instance
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.4.2.7" (partial := component) "仮定：小さい準圏と、関手単体集合の core で豊穣化した単体圏（HA の最初の模型と一致）。結論：写像空間が Kan であり、その単体圏の nerve が Cat∞ を与える部分に一致。位相実現の nerve との比較と反対圏の対称モノイダル構造は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom_kanComplex
+attribute [cite HTT "3.0.0.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat
+attribute [cite HTT "3.0.0.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom
+attribute [cite HTT "3.0.0.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat
+attribute [cite HTT "3.0.0.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_category
+attribute [cite HTT "3.0.0.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_simplicialCategory
+attribute [cite HTT "3.0.0.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom_kanComplex
+attribute [cite HTT "3.0.0.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom

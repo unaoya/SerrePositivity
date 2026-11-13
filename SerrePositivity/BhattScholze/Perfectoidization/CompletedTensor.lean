@@ -1,6 +1,7 @@
 module
+public meta import SerrePositivity.Util.Citation
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismTensor
+public import SerrePositivity.BhattScholze.Perfectoidization.Tensor.PerfectPrismTensor
 public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.CommutativeAlgebra.MappedPrincipalQuotient
@@ -30,7 +31,7 @@ BS 著者版 Lemma 10.3、BS 著者版 Proposition 8.13 の環版、CLMST。
 
 universe u
 
-/-! ## Discreteness and perfectoid H⁰ from the original Fontaine presentations（旧 Perfectoidization/WittPresentation/FontaineCompletedTensorDiscrete.lean） -/
+/-! ## Discreteness and perfectoid H⁰ from the original Fontaine presentations -/
 
 @[expose] public noncomputable section FontaineCompletedTensorDiscrete
 
@@ -171,7 +172,7 @@ end SerrePositivity.BhattScholze
 
 end FontaineCompletedTensorDiscrete
 
-/-! ## Discreteness and perfectoid H⁰ of the original completed tensor of perfectoid algebras（旧 Perfectoidization/PerfectoidCompletedTensorDiscrete.lean） -/
+/-! ## Discreteness and perfectoid H⁰ of the original completed tensor of perfectoid algebras -/
 
 @[expose] public noncomputable section PerfectoidCompletedTensorDiscrete
 
@@ -260,7 +261,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidCompletedTensorDiscrete
 
-/-! ## The original completed multiplication for perfectoid quotients（旧 Perfectoidization/PerfectoidCompletedQuotientMul.lean） -/
+/-! ## The original completed multiplication for perfectoid quotients -/
 
 @[expose] public noncomputable section PerfectoidCompletedQuotientMul
 
@@ -308,7 +309,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidCompletedQuotientMul
 
-/-! ## The original completed tensor H⁰ is the universal perfectoid tensor（旧 Perfectoidization/CompletedTensorPerfectoidization.lean）
+/-! ## The original completed tensor H⁰ is the universal perfectoid tensor
 
 The unit is normalized by the original actual H⁰ completion unit. The target
 retains precisely its original H⁰ ring structure, including zero factors.
@@ -449,7 +450,7 @@ end SerrePositivity.BhattScholze
 
 end CompletedTensorPerfectoidization
 
-/-! ## Perfectoid tests of the original completed tensor H⁰（旧 Perfectoidization/CompletedTensorPerfectoidUniversal.lean）
+/-! ## Perfectoid tests of the original completed tensor H⁰
 
 Use the existing G2 principal-completion comparison and its universal property.
 No discreteness of the original tensor, bounded torsion, or classical-completion
@@ -549,3 +550,7 @@ lemma completedTensorPerfectoidLift_isPerfectoidization
 end SerrePositivity.BhattScholze
 
 end CompletedTensorPerfectoidUniversal
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 10.2" (partial := special) "本体は単項 J=(g) の perfectoid 核で、導来完備加群の短完全拡大での閉性のみ（sorry 0）。核・余核での閉性と almost 圏 (R/J)_perfd 加群との同値は未。使用先は CLMST ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：completedTensor_isZero_of_shortExact（任意の元と加群についてテンソル後の零性を述べる一般補助。J-almost zero への適用は別の宣言。）；perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion（p 冪ねじれ加群の仮定から一般加群の高次 Tor の零化。Prop 10.2 の拡大閉性の宣言ではない。） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completeIdealExtensionClosed
+attribute [cite BS19 "Rem 10.7" (partial := special) "本体の perfectoidIdealMod_idempotent（単項 J=(g) の perfectoid 化の核の mod pⁿ 像が冪等）は、原典 Rem 10.7 の一文「J_perfd,n は R/pⁿ の冪等イデアル」の J=(g) の場合（調整役が原典の全文で確認、11-07。前の「ずれの疑い」は誤り）。使用先は CLMST。Galois 条件の mod pⁿ 版の部分は E3 に不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectoidIdeal_conormal_completion_isZero（原文は mod p^n 像の冪等性等を述べる。conormal の主張は別で、Lemma 10.3 の応用。）；perfectoidIdeal_eq_square_sup_pow_mul（核 K について K=K²+p^nK。原文の mod p^n 像の冪等性を出す補助で、原文の結論は perfectoid） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_ideal_mod_power_idempotent

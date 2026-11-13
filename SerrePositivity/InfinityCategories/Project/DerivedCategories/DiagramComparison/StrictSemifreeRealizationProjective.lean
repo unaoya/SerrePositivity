@@ -104,9 +104,9 @@ lemma strictSemifreeRealizationProjective_underlying :
 
 /-- 3b-1の同じ射影的模型を経由する実現の、全パラメーター族。 -/
 def strictSemifreeProjectiveRealizationFamily :
-    nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶ derivedInfinityCategory A :=
+    nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   nerveMap (strictSemifreeRealizationProjective A) ≫
-    closedNerveInclusion A (ProjectiveRingComplex A) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A) ≫
       SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
         (projectiveRingComplexConstant A) ≫ (projectivePointEquivalence A).hom
 

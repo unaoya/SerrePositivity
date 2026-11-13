@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockNerveEquivalence
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelCofibrantHammockWeak
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelCofibrantHammockWeak
 
 /-!
 概要：同じ bifibrant・cofibrant・全圏の実 hammock 比較を全 coherent nerve の同値へ上げる。

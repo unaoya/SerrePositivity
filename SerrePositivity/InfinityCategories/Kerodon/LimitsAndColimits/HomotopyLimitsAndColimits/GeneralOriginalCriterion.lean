@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralConeComparisonReflection
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralReflectedCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.RepresentableFiberCriterion
@@ -78,3 +80,10 @@ lemma strictNativeCocone_isColimit_iff_general_comparisonFiber {F : I ⥤ C} (c 
   exact strictCoherentCone_isLimit_iff_general_comparisonFiber c.op
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.23" (partial := stronger-hyp) "仮定：局所 Kan な単体圏の厳密図式と通常の錐（Lean が強い：一般の組合せ的モデル圏の局所化との同定を仮定に含めない）。結論：coherent nerve での極限性を各対象からの representable homotopy limit 比較で判定（Lean が弱い：モデル圏の homotopy limit からの比較を型に含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone_isLimit_iff_general_representableComparison
+attribute [cite HA "1.3.4.24" (partial := stronger-hyp) "仮定：局所 Kan な単体圏の厳密図式と通常の余錐（Lean が強い：一般の組合せ的モデル圏の局所化を扱わない）。結論：coherent nerve の余極限性を各対象への Hom の homotopy limit 比較で判定（Lean が弱い：モデル圏の homotopy colimit と同定しない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictNativeCocone_isColimit_iff_general_representableComparison
+attribute [cite HTT "4.2.4.1" (partial := special) "仮定：局所 Kan な単体圏への図式と指定余錐（Lean が強い：添字は離散豊穣化した通常の小圏）。結論：神経の余錐の余極限性と、各対象への豊穣 Hom の Bousfield–Kan ホモトピー極限への比較がホモトピー同値であることを同値にする（HTT のホモトピー余極限の定義 A.3.3.13 に一致する場合。豊穣添字一般は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictNativeCocone_isColimit_iff_general_representableComparison

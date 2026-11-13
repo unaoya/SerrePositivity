@@ -25,7 +25,7 @@ open SerrePositivity.EInfinity.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open IsomorphismsAndIsofibrations (isInvertibleEdge_congr)
@@ -64,7 +64,7 @@ lemma complexRelativeNerveDown_mk₁ {X Y : (complexRelativeCategory A).category
 
 /-- 元の通常導来源を、同じ宇宙表示の相対圏上で読む。 -/
 def complexRelativeDerivedSource :
-    nerve (complexRelativeCategory A).category ⟶ derivedInfinityCategory A :=
+    nerve (complexRelativeCategory A).category ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   complexRelativeNerveDown A ≫ complexOrdinaryDerivedSource A
 
 lemma complexRelativeDerivedSource_inverts :
@@ -84,7 +84,7 @@ lemma complexRelativeDerivedSource_inverts :
   rw [complexRelativeNerveDown_mk₁]
 
 /-- 全圏局所化の普遍性で作る、既存 D(A) への実比較。 -/
-def complexHammockDerivedComparison : complexHammockNerve A ⟶ derivedInfinityCategory A :=
+def complexHammockDerivedComparison : complexHammockNerve A ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   KST.LocalizingInvariants.localizationDescend _ _ (complexHammockSource_isLocalization A)
     (complexRelativeDerivedSource A) (complexRelativeDerivedSource_inverts A)
 

@@ -19,10 +19,10 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 BS 著者版 Proposition 3.13 の包を明示的な関係式で扱うため、δ 関係の有限反復で正則性を示す。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/FamilyEvaluation`、`Envelope/JetKoszul`、`Envelope/PDivision`、`Envelope/RootFamilyRaw`、`Envelope/RootResidueKoszul`、`PowerRootEnvelope/DeltaDivisionResidue`、`PowerRootEnvelope/DeltaDivisionWitt`、`PowerRootEnvelope/Unconditional/Residue`、`Variants/Auxiliary`。
@@ -30,7 +30,7 @@ BS 著者版 Proposition 3.13 の包を明示的な関係式で扱うため、δ
 
 universe u v
 
-/-! ## 最初のδ関係の一般mod(p,d)正則性（旧 Andre/RootedExtension/Division/DeltaDivisionFirstJetResidueRegular.lean）
+/-! ## 最初のδ関係の一般mod(p,d)正則性
 
 初期関係を課したmod(p,d)商を適切な係数商上の多項式環へ移す。
 指定単元δdを使うが、正則性・ghost単射・完備性は追加仮定しない。
@@ -163,7 +163,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFirstJetResidueRegular
 
-/-! ## 最初のδ関係の有限族のmod(p,d)Koszul分解（旧 Andre/RootedExtension/Division/DeltaDivisionFirstJetResidueKoszul.lean）
+/-! ## 最初のδ関係の有限族のmod(p,d)Koszul分解
 
 全深さ0を課した実mod(p,d)商上で、異なる有限個の深さ1関係を同時に扱う。
 添字環の一元性・有限性やghost単射・完備性は要求しない。
@@ -234,7 +234,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFirstJetResidueKoszul
 
-/-! ## 一般除数の有限反復δ関係と評価関係の正則性（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteEvaluationRegular.lean）
+/-! ## 一般除数の有限反復δ関係と評価関係の正則性
 
 全有限prefixの生成イデアルの一致を用いる。一元添字で任意除数・任意入力を扱い、
 完備性・p正則性・ghost単射は要求しない。
@@ -341,7 +341,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteEvaluationRegular
 
-/-! ## 通常環射後の有限δ列から実評価列へのKoszul分解の移送（旧 Andre/RootedExtension/Division/DeltaDivisionMappedEvaluationKoszul.lean）
+/-! ## 通常環射後の有限δ列から実評価列へのKoszul分解の移送
 
 対象環にδ構造を要求せず、各有限prefixの通常イデアルの一致を使う。
 -/
@@ -434,7 +434,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionMappedEvaluationKoszul
 
-/-! ## 初期有限δ関係商の後続多項式表示（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteStageTailQuotient.lean）
+/-! ## 初期有限δ関係商の後続多項式表示
 
 実自由δ環上の通常商を、その関係が属する初期有限環の商と後続変数に分離する。
 これは通常商の同型であり、導来δ基底変更の比較とは区別する。
@@ -586,7 +586,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteStageTailQuotient
 
-/-! ## 一般除数の次δ関係の正則性（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteRelationsRegular.lean）
+/-! ## 一般除数の次δ関係の正則性
 
 初期有限関係商と後続変数表示を用い、先頭係数φ^(N+1)(d)の正則性から
 次の実反復δ関係の正則性を得る。完備性・ghost単射は要求しない。
@@ -696,7 +696,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteRelationsRegular
 
-/-! ## Frobenius入力の係数イデアルと次のp除算入力の正則性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionNextInput.lean） -/
+/-! ## Frobenius入力の係数イデアルと次のp除算入力の正則性 -/
 
 @[expose] public noncomputable section DeltaPDivisionNextInput
 

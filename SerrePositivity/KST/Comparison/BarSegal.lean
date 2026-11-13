@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.GroupCompletion
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -149,3 +151,10 @@ def monoidBarRowIso (M : SimplicialObject MonCat.{u}) (r : ℕ) :
 
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.2.4" (partial := component) "仮定：通常のモノイド T を定値単体モノイドとする（HA の通常モノイドの場合）。結論：bar が SingleObj T の nerve に同型で、その n 単体と n 個の T の元の列が全単射になる（分類空間の構成と Segal 写像の成分に一致）。任意の単体集合からのモノイド再構成は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidWordEquiv
+attribute [cite HA "4.1.2.6" (partial := special) "仮定：通常モノイド T から作った単一対象圏の神経（Lean は HA の集合の場合のこの模型に限る）。結論：n 単体が 1 単体の n 個の列と同定される（この場合の X([n]) の標準同定に一致）。一般の準圏の積としての比較は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidWordEquiv
+attribute [cite HA "4.2.2.1" (partial := special) "仮定：通常のモノイド T の自分自身への正則作用（Lean は HA の X=T の場合に限る）。結論：作用圏の神経の n 単体を基底の n 単体と T の元の組に、基底の n 単体を n 個の T の元に同定する（n 単体の積座標に一致）。Lean は始点で座標を読み、HA の面・退化写像の式と一般の作用の特徴付けは含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidWordEquiv

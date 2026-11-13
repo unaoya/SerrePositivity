@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeNestedCosliceProjection
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ReindexSliceUnder
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.VertexFiberMapIso
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.VertexFiberMapIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CoslicePinchedLeft
 
 /-!

@@ -30,7 +30,7 @@ d で割る包の関係式の (p,d) 剰余の計算（Division/Relations）、An
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## B4-6：通常剰余射の下でのδ反復計算（旧 Delta/Free/Finite/DeltaResidueArithmetic.lean）
+/-! ## 通常剰余射の下でのδ反復計算
 
 δは剰余環へ降りるとは仮定せず、源でδを計算してから環射で写す。
 既存のWitt自然性・δ冪の可除性・δ(p)の合同式を再利用する。
@@ -80,7 +80,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaResidueArithmetic
 
-/-! ## δ加法補正項の積可除性（旧 Delta/Free/Finite/DeltaAdditionCarryProduct.lean）
+/-! ## δ加法補正項の積可除性
 
 整数係数の二変数で補正項を計算し、各変数での消滅から積可除性を得る。
 第2有限δ関係式に必要な、通常射の下での補正項のδ像を制御する。
@@ -180,7 +180,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdditionCarryProduct
 
-/-! ## 有限δ計算の通常剰余公式（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaResidue.lean）
+/-! ## 有限δ計算の通常剰余公式
 
 次の有限環からの通常射を明示し、pが消える場合の計算を行う。
 有限剰余環のδ構造は要求しない。
@@ -284,7 +284,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaResidue
 
-/-! ## 有限δ計算の減算誤差の平方所属（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaSubtraction.lean）
+/-! ## 有限δ計算の減算誤差の平方所属
 
 包含像が消えるイデアルの二乗まで、有限δ計算は符号・減算を保つ。
 -/
@@ -341,7 +341,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaSubtraction
 
-/-! ## 有限δ計算におけるp倍・d倍の代表元補正（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaPerturbation.lean）
+/-! ## 有限δ計算におけるp倍・d倍の代表元補正
 
 通常射がp,dを消す場合、補正のδ像をp乗の項として明示する。
 有限商のδ安定性を仮定しない。
@@ -411,7 +411,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaPerturbation
 
-/-! ## 有限δ計算の核の二乗に関する不変性（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaSquareCongruence.lean）
+/-! ## 有限δ計算の核の二乗に関する不変性
 
 有限δ計算は異なる有限環の間の写像である。
 通常射との合成について、初期包含の核の二乗に属す誤差を消す。
@@ -487,7 +487,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaSquareCongruence
 
-/-! ## 有限δ計算とrank 1変数の補助δ計算の差（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaLinearization.lean）
+/-! ## 有限δ計算とrank 1変数の補助δ計算の差
 
 pを消す通常射の下で差は加法的で、Frobeniusを係数作用とするLeibniz公式を満たす。
 -/

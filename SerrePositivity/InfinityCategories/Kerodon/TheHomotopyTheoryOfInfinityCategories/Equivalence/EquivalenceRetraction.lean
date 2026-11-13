@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionLifting
 
 /-!
@@ -44,3 +46,9 @@ lemma isQCatEquivalence_of_retraction_of_rightInverseIso {A B : SSet.{u}}
   rw [hr]
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.6.4" (partial := stronger-hyp) "仮定：単射な圏同値と始域の準圏性（Lean が強い：終域にも準圏性を要求）。結論：元の包含の厳密な左逆を与える（一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.exists_strict_retraction
+attribute [cite HTT "2.4.7.9" (partial := component) "仮定：元の単射 p に全空間の準圏性と native IsQCatEquivalence p を追加（Lean が強い）。結論：同じ underlying simplicial p に対して r:Y→X と p≫r=id を得る。この left-inverse の成分に一致するが、元の bifibration/fiberwise 仮定だけから追加同値を導く比較と、r が S×T 上の map である性質は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.exists_strict_retraction

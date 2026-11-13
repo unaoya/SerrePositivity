@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedKProjectiveDerivedHom
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorPinchedIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorPinchedMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.DGFunctorPinchedMap
 
 /-!
 # 元の K-projective Hom 同型の全複体への包含

@@ -1,8 +1,10 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBasisEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeBasisEquivalence
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 
 /-! # 完備導来テンソルの係数三角形
@@ -39,7 +41,7 @@ private theorem complexSemifree_kFlat {P : Complex R} (hP : _root_.SerrePositivi
 
 private def completedModuleTensorUnresolvedIso (p : ℕ) (N : ModuleCat.{u} R) (M : DVertex R) :
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
-      ⟨completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R N) M⟩) ≅
+      ⟨completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R N) M⟩) ≅
     (derivedComplexCompletionFunctor R (p : R)).obj
       (DerivedCategory.Q.obj ((moduleTensorCochainFunctor (M.obj 0).val).obj N)) := by
   let P := (M.obj 0).val
@@ -54,7 +56,7 @@ private def completedModuleTensorUnresolvedIso (p : ℕ) (N : ModuleCat.{u} R) (
 /-- 完備導来テンソルの左入力に、古典的な商の perfectoid 化の核を置く。 -/
 abbrev kernelTensor (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
     (hR : IsIntegralPerfectoid R p) (J : Ideal R) (M : DVertex R) : DVertex R :=
-  completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R (perfectoidKernel p R hR J))) M
+  completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R (perfectoidKernel p R hR J))) M
 
 end SerrePositivity.BhattScholze.Almost
 
@@ -65,7 +67,7 @@ attribute [local instance] HasDerivedCategory.standard
 
 /-- BS 著者版 Lemma 10.5 の連結性を、コホモロジー次数の上界で表す。 -/
 def IsConnectiveAt (R : Type u) [CommRing R] (n : ℤ)
-    (X : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
+    (X : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
   ∀ i : ℤ, n < i → Subsingleton (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R i X)
 
 end SerrePositivity.InfinityCategories.Derived
@@ -84,7 +86,7 @@ variable (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (J : Ideal R)
 /-- 完備導来テンソルの左入力に古典的な perfectoid 商を置く。 -/
 abbrev quotientTensor (M : DVertex R) : DVertex R :=
   completedModuleTensor p R
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R (QuotientPerfectoidization R J p hR))) M
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R (QuotientPerfectoidization R J p hR))) M
 
 /-- 頂点の連結性は通常の導来圏の t 構造で判定できる。 -/
 theorem isConnectiveAt_iff_isLE (n : ℤ) (M : DVertex R) :
@@ -95,8 +97,8 @@ theorem isConnectiveAt_iff_isLE (n : ℤ) (M : DVertex R) :
 
 /-- 離散加群の頂点は零次より上のコホモロジーを持たない。 -/
 theorem isLE_moduleHeartVertex (N : ModuleCat.{u} R) :
-    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R N⟩).IsLE 0 := by
-  let e := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartDerivedIso R).app N
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R N⟩).IsLE 0 := by
+  let e := (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartDerivedIso R).app N
   exact DerivedCategory.TStructure.t.isLE_of_iso e.symm 0
 
 /-- 商との完備テンソルの各コホモロジーは商環上の加群になる。 -/
@@ -202,3 +204,8 @@ theorem isAlmostZero_of_completedTensor_isZero (M : DVertex R)
     (quotientTensor_isAlmostZero p hR J M i)
 
 end SerrePositivity.BhattScholze.Almost
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 10.4" (partial := special) "一般の J で必要な同値（almost 零 ⇔ J_perfd との完備テンソルが 0）は証明済み。後半の圏同値は作らない（D66） ／ 11-10 更新"] _root_.SerrePositivity.BhattScholze.Almost.isAlmostZero_of_completedTensor_isZero

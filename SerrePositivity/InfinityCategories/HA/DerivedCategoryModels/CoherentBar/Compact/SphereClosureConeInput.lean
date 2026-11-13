@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureComparison
 
 /-!
 概要：B′ の sphere-only 閉包を使う無条件 cone 入力を公開する。

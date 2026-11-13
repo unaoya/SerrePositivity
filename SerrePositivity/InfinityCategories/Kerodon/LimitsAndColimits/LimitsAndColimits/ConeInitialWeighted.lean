@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeInitialReindex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedConePrecomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedConePrecomposition
 
 /-!
 概要：任意の coherent simplex の始点の取り替えを、既存の weighted cone の前合成と同定する。

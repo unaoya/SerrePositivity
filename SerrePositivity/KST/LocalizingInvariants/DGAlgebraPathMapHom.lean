@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathEndpoints
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeMap
 
 /-!
 概要：代数射に沿う経路複体の実射と、両評価・比較 cochain の厳密な自然性。

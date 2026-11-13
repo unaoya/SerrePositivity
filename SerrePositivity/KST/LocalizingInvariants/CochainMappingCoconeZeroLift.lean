@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeMap
 
 /-!
 概要：零の比較 cochain を持つ cocone の斉次持ち上げと、その射への自然性。

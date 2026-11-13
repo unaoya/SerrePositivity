@@ -74,6 +74,6 @@ def ArCofiberCompletion.pointFamily {A B C : SSet.{u}} {n : ℕ} {i : A ⟶ B}
 lemma ArCofiberCompletion.pointFamily_isCofiber {A B C : SSet.{u}} [Quasicategory C]
     {n : ℕ} {i : A ⟶ B} {a : A ⟶ sConstruction n C} {b : B ⟶ zeroFrameDiagrams n C}
     (c : ArCofiberCompletion n i a b) (v : B _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (cofiberFamilyTriangle (c.pointFamily v)) := cofiberFamilyTriangle_isCofiber _
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (cofiberFamilyTriangle (c.pointFamily v)) := cofiberFamilyTriangle_isCofiber _
 
 end SerrePositivity.KST.SConstruction

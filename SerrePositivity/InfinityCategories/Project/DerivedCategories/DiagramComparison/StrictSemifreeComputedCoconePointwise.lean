@@ -67,7 +67,7 @@ lemma strictSemifreeRawDACoconeAt_isColimit (F : StrictSemifreeDiagram A Simplex
 /-- U33の包装の分割：計算済み全余錐族の固定パラメーターの射。 -/
 def strictSemifreeComputedDACoconeMapAt (F : StrictSemifreeDiagram A SimplexCategoryᵒᵖ) :
     join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-      (Δ[0] : SSet.{u + 1}) ⟶ derivedInfinityCategory A :=
+      (Δ[0] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   lift (SSet.const (ComposableArrows.mk₀ F))
     (𝟙 (join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
       (Δ[0] : SSet.{u + 1}))) ≫ strictSemifreeComputedDAJoinFamily A
@@ -96,7 +96,7 @@ lemma strictSemifreeComputedDACoconeAt_isColimit
   apply isColimitCone_of_initialBoundaryLifting_coconeRestriction
   exact SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso
     (coconeRestriction ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-      (derivedInfinityCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
     (strictSemifreeRawDACoconeAt_isColimit A F).initialBoundaryLifting
     (strictSemifreeComputedDACoconeAtIso A F)
 

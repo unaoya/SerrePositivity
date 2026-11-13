@@ -67,7 +67,7 @@ def sPathRealizationProjection (C : SSet.{u}) : sPathRealization C ⟶ coreSCons
 規約：追加の安定性は不要。使われ方：S の delooping の経路全空間の比較。 -/
 lemma sPathRealization_toPoint_image_isIso {D : Type v} [Category.{w} D]
     (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
-    (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+    (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     IsIso (L.map (toUnit (sPathRealization C))) :=
   simplicialPathDiagonal_toPoint_image_isIso L hL (simplicialCoreSConstruction C)
     (coreSConstructionZero_isContractibleKan C)

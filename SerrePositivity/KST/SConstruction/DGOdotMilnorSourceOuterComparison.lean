@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofNuEdges
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceSquare
 public import SerrePositivity.KST.SConstruction.PastingOuterRightComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：元 cell 始域外面から厚平坦核を始域とする実核面への Cat^perf 全比較。
@@ -24,12 +24,12 @@ def dgOdotMilnorSourceOuterToKernelPerfectComparison : _root_.SerrePositivity.In
     (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) := by
   let F := (dgOdotMilnorSourceNullRectangle R d).diagram
-  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F ≫ dgKInputPerfectNu R) 2)) := by
-    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F) 2 ≫ dgKInputPerfectNu R))
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F ≫ dgKInputPerfectNu R) 2)) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F) 2 ≫ dgKInputPerfectNu R))
     rw [(dgOdotMilnorSourceNullRectangle R d).left_eq]
     exact dgOdotMilnorSourceKernelNullSquare_perfect_bottom_invertible R d h
-  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F ≫ dgKInputPerfectNu R) 2)) := by
-    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F) 2 ≫ dgKInputPerfectNu R))
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F ≫ dgKInputPerfectNu R) 2)) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F) 2 ≫ dgKInputPerfectNu R))
     rw [(dgOdotMilnorSourceNullRectangle R d).left_eq]
     exact dgOdotMilnorSourceKernelNullSquare_perfect_top_invertible R d
   exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (pastingOuterRightComparison (F ≫ dgKInputPerfectNu R) hb ht)

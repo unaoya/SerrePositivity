@@ -48,7 +48,7 @@ lemma hasLimit_cospan_of_initial_second {X : SSet.{u}} [Quasicategory X] [_root_
 規約：元の第二枝を変更しない。使われ方：指定された fiber の入力。 -/
 lemma hasLimit_cospan_of_zero_second {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (r : (horn 2 2 : SSet.{u}) ⟶ X)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((horn₂₂.ι₁₂ ≫ r).app (Opposite.op ⦋0⦌)
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((horn₂₂.ι₁₂ ≫ r).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit r :=
   hasLimit_cospan_of_initial_second r hz.1
 

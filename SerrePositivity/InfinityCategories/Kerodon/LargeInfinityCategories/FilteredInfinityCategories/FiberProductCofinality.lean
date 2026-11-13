@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberProductCofinality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.FiberProductCofinality
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalOpposite

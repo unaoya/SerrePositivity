@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ChosenColimitParameterCocone
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafCoconeFlip
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PresheafCoconeFlip
 
 /-!
 概要：選んだ普遍余錐族の変数交換の頂点を元の余極限関手へ照合する。

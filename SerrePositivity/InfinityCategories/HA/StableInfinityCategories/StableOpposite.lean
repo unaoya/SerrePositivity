@@ -1,6 +1,8 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialOpposite
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareDuality
+public import SerrePositivity.InfinityCategories.HA.Section6_1_1.SquareDuality
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceLeft
 
@@ -21,20 +23,20 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 /-- 概要：反対の単体集合の零頂点を元へ戻しても零頂点となる。
 方針：始対象と終対象の反転の同値を使う。
 規約：quasicategory 性は不要。使われ方：双対三角形の零角。 -/
-lemma IsZeroVertex.unop {X : SSet.{u}} {x : X.op _⦋0⦌} (hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := X) (SSet.opObjEquiv x) :=
+lemma IsZeroVertex.unop {X : SSet.{u}} {x : X.op _⦋0⦌} (hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := X) (SSet.opObjEquiv x) :=
   ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isInitialVertex_iff_isTerminalVertex_op (SSet.opObjEquiv x)).2 hx.2,
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isTerminalVertex_iff_isInitialVertex_op (SSet.opObjEquiv x)).2 hx.1⟩
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (unop)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (unop)
 
 
 /-- 概要：零対象の存在は反対の単体集合へ移る。
 方針：選んだ零頂点を反転する。
 規約：quasicategory 性は不要。使われ方：反対圏の安定性の第一条件。 -/
-instance hasZeroVertex_op {X : SSet.{u}} [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X.op where
+instance hasZeroVertex_op {X : SSet.{u}} [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X.op where
   exists_zero := by
-    obtain ⟨z, hz⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex.exists_zero (X := X)
+    obtain ⟨z, hz⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex.exists_zero (X := X)
     exact ⟨SSet.opObjEquiv.symm z, hz.op⟩
 
 /-- 概要：辺の反転を元へ戻してから単体を反転すると元の辺の表示となる。
@@ -71,36 +73,41 @@ instance isStable_op {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.In
   fiber_exists e := by
     let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeUnop (X := X) e)
     refine ⟨{
-      square := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square
+      square := _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square
       zero_corner := ?_
       right_edge := ?_
-      isPullback := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_dualSquare s.square).1 s.isPushout }⟩
-    · rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_vertex]
+      isPullback := (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_dualSquare s.square).1 s.isPushout }⟩
+    · rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_vertex]
       exact s.zero_corner.op
-    · rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_rightEdge, s.bottom_edge]
+    · rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_rightEdge, s.bottom_edge]
       exact reverseSimplex_edgeUnop e
   cofiber_exists e := by
     let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenFiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeUnop (X := X) e)
     refine ⟨{
-      square := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square
+      square := _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square
       zero_corner := ?_
       bottom_edge := ?_
-      isPushout := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_dualSquare s.square).1 s.isPullback }⟩
-    · rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_vertex]
+      isPushout := (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_dualSquare s.square).1 s.isPullback }⟩
+    · rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_vertex]
       exact s.zero_corner.op
-    · rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_bottomEdge, s.right_edge]
+    · rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_bottomEdge, s.right_edge]
       exact reverseSimplex_edgeUnop e
   fiber_iff_cofiber t := by
     let q := (SSet.opFunctorCompOpFunctorIso.app X).hom
-    let s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X :=
-      { square := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare t.square ≫ q
+    let s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X :=
+      { square := _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare t.square ≫ q
         zero_corner := by
-          change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := X) (SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 1))
+          change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := X) (SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 1))
           exact t.zero_corner.unop }
-    exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_dualSquare t.square).trans
-      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare t.square) q).trans
+    exact (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_dualSquare t.square).trans
+      ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare t.square) q).trans
         ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.fiber_iff_cofiber s).symm.trans
-          ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare t.square) q).symm.trans
-            (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_dualSquare t.square).symm)))
+          ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare t.square) q).symm.trans
+            (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_dualSquare t.square).symm)))
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.1.13"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_op

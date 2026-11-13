@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesNativeSquare
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedZeroVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedZeroVertex
 
 /-! # 元の二軸射を保つ実 dg nerve の cofiber 列
 概要：貼り合わせた実四角形の二辺と零角を元の対象・閉射に厳密に同定する。
@@ -31,7 +31,7 @@ lemma dgGluingAxesNativeSquare_bottom :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgGluingAxesNativeSquare R C D M zc hc zd hd X =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R GG
         ((U).onClosed.map (dgGluingAxisRightInclusion R C D M zc hc X))).edge := by
-  erw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.cofiberSquareTriangle_bottomEdge, Category.assoc, dgGluingAxesNativeSquare_lower,
+  erw [← _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.cofiberSquareTriangle_bottomEdge, Category.assoc, dgGluingAxesNativeSquare_lower,
     SSet.stdSimplex.δ_comp_yonedaEquiv_symm]
   apply congrArg SSet.yonedaEquiv.symm
   exact (dgSimplex_map_face _ (U) (2 : Fin 3)).trans
@@ -56,7 +56,7 @@ lemma dgGluingAxesNativeSquare_right :
 lemma dgGluingAxesNativeSquare_left :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgGluingAxesNativeSquare R C D M zc hc zd hd X =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R GG ((U).onClosed.map (0 : A ⟶ Z))).edge := by
-  erw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.cofiberSquareTriangle_leftEdge, Category.assoc, dgGluingAxesNativeSquare_upper,
+  erw [← _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.cofiberSquareTriangle_leftEdge, Category.assoc, dgGluingAxesNativeSquare_upper,
     SSet.stdSimplex.δ_comp_yonedaEquiv_symm]
   apply congrArg SSet.yonedaEquiv.symm
   exact (dgSimplex_map_face _ (U) (2 : Fin 3)).trans
@@ -66,27 +66,27 @@ lemma dgGluingAxesNativeSquare_left :
 
 /-- 同じ実四角形の零角は、指定した元の gluing 零対象の宇宙移送。 -/
 lemma dgGluingAxesNativeSquare_vertex01 :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgGluingAxesNativeSquare R C D M zc hc zd hd X) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgGluingAxesNativeSquare R C D M zc hc zd hd X) 0 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((U).obj (dgGluingRightAxisObject R C D M zc zd)) := by
   erw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target, dgGluingAxesNativeSquare_left, Equiv.apply_symm_apply]
   exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R GG ((U).onClosed.map (0 : A ⟶ Z))).tgt_eq
 
 /-- 同じ指定零角は、元の共通宇宙 dg nerve で実零頂点。 -/
 lemma dgGluingAxesNativeSquare_zero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgGluingAxesNativeSquare R C D M zc hc zd hd X) 0 1) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgGluingAxesNativeSquare R C D M zc hc zd hd X) 0 1) := by
   rw [dgGluingAxesNativeSquare_vertex01]
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isZeroVertex_of_closed_isZero _
     ((U).onClosed.map_isZero (dgGluingClosedZero_isZero R C D M zc hc zd hd))
 
 /-- 元の二軸射と指定零角を持つ、共通宇宙の実零角付き三角形。 -/
-def dgGluingAxesNativeZeroTriangle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R GG) where
+def dgGluingAxesNativeZeroTriangle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R GG) where
   square := dgGluingAxesNativeSquare R C D M zc hc zd hd X
   zero_corner := dgGluingAxesNativeSquare_zero R C D M zc hc zd hd X
 
 /-- 元の二圏が前三角的なら、元の同じ二軸列は実 ∞ cofiber 列となる。 -/
 lemma dgGluingAxesNativeZeroTriangle_isCofiber
     (hC : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R C) (hD : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R D) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (dgGluingAxesNativeZeroTriangle R C D M zc hc zd hd X) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (dgGluingAxesNativeZeroTriangle R C D M zc hc zd hd X) :=
   dgGluingAxesNativeSquare_isPushout R C D M zc hc zd hd X hC hD
 
 end SerrePositivity.KST.SConstruction

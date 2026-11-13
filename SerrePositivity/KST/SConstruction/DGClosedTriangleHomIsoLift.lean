@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorClosedCycles
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorClosedCycles
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.TripleHom
 
 /-! # 指定 Hom 鎖同型による実閉三角形の持ち上げ

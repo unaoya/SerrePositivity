@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.HatGLRankCoefficientIso
 public import SerrePositivity.KST.Comparison.BarPositiveDelooping
 public import SerrePositivity.KST.Comparison.BarFundamentalMultiplication
@@ -100,3 +102,9 @@ def lemma_2_13_higher (A : SimplicialObject RingCat.{u}) (n : ℕ) :
     (stableHatGLCoefficientHomotopyMulEquiv A n)
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 2.13" (partial := special) "仮定：単位つき単体環（Lean が強い：原典は非単位的環も含む）。結論：安定 GL(π₀) の基本群同型と高次の安定係数行列群の同型（原典の単位つきの場合と一致）。"] _root_.SerrePositivity.KST.Comparison.lemma_2_13_higher
+attribute [cite KST "Lemma 2.13" (partial := special) "仮定：単位つき単体環（Lean が強い：原典は非単位的環も含む）。結論：安定 GL(π₀) の基本群同型と高次の安定係数行列群の同型（原典の単位つきの場合と一致）。"] _root_.SerrePositivity.KST.Comparison.lemma_2_13_pi_one

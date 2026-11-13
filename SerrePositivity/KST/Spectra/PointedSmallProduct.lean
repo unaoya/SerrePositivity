@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DependentProductHomotopy
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Products.DependentProductHomotopy
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 

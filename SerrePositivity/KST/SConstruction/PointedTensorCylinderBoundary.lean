@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PointedTensorCylinder
 public import SerrePositivity.KST.SConstruction.BinaryCofanSourceIsos
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreeIntervalBoundary
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashMonomorphisms
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 
 /-! # 元の自由点つき区間の両端境界と smash の余積表示

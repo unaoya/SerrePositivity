@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.PointSourceCosliceData
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LeftIntervalFatHomotopy
 
 /-! # 元の可変終点 coslice 比較の、全時間での両端固定 -/

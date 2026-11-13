@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfDerivedTransport
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfFullyFaithful
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.PrescribedCartesianTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CartesianSourceComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CartesianSourceComparison
 
 /-!
 概要：元の Q(RY)→RY を全頂点で保持する coherent な右関手を、元の導来右関手と比較する。

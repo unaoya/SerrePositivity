@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Quillen.FibrantTesting
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 public import Mathlib.CategoryTheory.Adjunction.Limits
@@ -57,3 +59,9 @@ lemma isFibrant_obj (R : D ⥤ C) [R.IsRightAdjoint] [IsRightQuillen R]
     (Limits.terminalIsTerminal.isTerminalObj R (⊤_ D))).mpr inferInstance
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.3.7.2" (partial := direction) "仮定：抽象モデル圏の実際の随伴 L⊣R と left Quillen L（元の (1)、simplicial 条件を不要にする弱い仮定）。結論：L の cofibration 保存と R の fibrant object 保存を得るので (1)⇒(2) に一致。逆向きは native isLeftQuillen_of_fibrant_test が fibrant 対象間の fibration 保存も要求し、fibrant objects 保存のみからは証明していない。"] _root_.SerrePositivity.Quillen.isFibrant_obj
+attribute [cite HTT "A.3.7.9" (partial := component) "仮定：元の実際の Quillen 随伴、同じ A の IsLocalizationModel S m、標準 mono/horn-RLP を持つ補助 ModelCategory SSet（証明済み具体的 instance なし）。結論：局所化後の left Quillen 性 iff 全ての fibrant Y に対し RY が S-local、元の right Quillen 性で RY は元でも fibrant なので (1)⇔(3) に一致。derived criterion は生成 S を LF が反転するという形であり、原典 (2) の全ての新弱同値に対する記述との比較は含まない。"] _root_.SerrePositivity.Quillen.isFibrant_obj

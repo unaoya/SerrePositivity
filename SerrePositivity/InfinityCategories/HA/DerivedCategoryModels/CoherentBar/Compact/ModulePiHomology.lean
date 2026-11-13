@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.ModulePiTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModulePiMooreNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModulePiZeroMoore
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.EnrichedFunctors.ModulePiMooreNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ModulePiZeroMoore
 /-!
 概要：単体的加群の全基点の正次数 π を Moore ホモロジーへ自然に同定する。
 方針：加法平行移動の逆と零基点の Moore 比較を合成する。
@@ -25,7 +25,7 @@ def dgBarCompactModulePiHomologyEquiv (n : ℕ) (x : W.obj (op ⦋0⦌)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleUnderlyingSSet W) n x ≃*
       Multiplicative (((normalizedMooreComplex (ModuleCat.{v} R)).obj W).homology (n + 1)) :=
   (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso n (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso W x)
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso_zero W x)).symm.trans (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.modulePiMooreGroupEquiv W n)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso_zero W x)).symm.trans (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv W n)
 
 variable {W} {V : SimplicialObject (ModuleCat.{v} R)} [KanComplex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleUnderlyingSSet V)]
 
@@ -46,7 +46,7 @@ lemma dgBarCompactModulePiHomologyEquiv_naturality
   let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso n
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso V ((f.app (op ⦋0⦌)).hom x))
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso_zero V ((f.app (op ⦋0⦌)).hom x))
-  change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.modulePiMooreGroupEquiv V n)
+  change (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv V n)
     (e.symm (e (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleUnderlyingSSetMap f)
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleUnderlyingSSetMap_zero f) a₀))) = _
   rw [MulEquiv.symm_apply_apply]
@@ -62,7 +62,7 @@ lemma dgBarCompactModulePiTransport_of_homology_eq (n : ℕ)
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso_zero W x)
   let ey := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso n (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso W y)
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleTranslationIso_zero W y)
-  have h₀ : ex.symm a = ey.symm b := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.modulePiMooreGroupEquiv W n).injective h
+  have h₀ : ex.symm a = ey.symm b := (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv W n).injective h
   have hb : ey (ex.symm a) = b := by
     apply ey.symm.injective
     simpa only [MulEquiv.symm_apply_apply] using h₀

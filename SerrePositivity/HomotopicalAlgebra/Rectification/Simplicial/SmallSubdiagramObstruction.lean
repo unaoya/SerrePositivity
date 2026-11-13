@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneNonempty
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveInitialImage
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLift
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.CodiscreteNerveExtension
 public import Mathlib.CategoryTheory.WithTerminal.Basic
 public import Mathlib.CategoryTheory.CodiscreteCategory

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction
 public import SerrePositivity.KST.LocalizingInvariants.LaxProjectionKernel
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition
@@ -34,9 +36,9 @@ def laxSemiorthogonal : _root_.SerrePositivity.InfinityCategories.HA.StableInfin
   rightInclusion_fullyFaithful := LaxInclusion.fromC_fullyFaithful p q
   counit_isIso := LaxInclusion.fromCAdjunction_counit_isIso p q
   kills_inclusion a := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ a)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ a)
     rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero
+    exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero
   generates_kernel x := (LaxInclusion.fst_kernel p q x).1
 
 /-- 第一射影を商とする、元の lax pullback の切断付き Verdier 列。 -/
@@ -48,3 +50,8 @@ lemma laxVerdierSequence_inclusion : (laxVerdierSequence p q).inclusion =
 lemma laxVerdierSequence_projection : (laxVerdierSequence p q).projection = laxFst p q := rfl
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Prop 10"] _root_.SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence

@@ -81,7 +81,7 @@ lemma strictComplexDiagramFamily_inverts :
 theorem exists_strictDiagramEvaluation_factor :
     ∃ ev : StrictDiagramInfinity A d ⟶
         (ihom ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)))).obj
-          (derivedInfinityCategory A),
+          (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A),
       Nonempty (FunctorIso (strictDiagramLocalization A d ≫ ev) (strictComplexDiagramFamily A d)) :=
   (strictDiagramLocalization_isLocalization A d).exists_extension
     (strictComplexDiagramFamily A d) (strictComplexDiagramFamily_inverts A d)
@@ -89,7 +89,7 @@ theorem exists_strictDiagramEvaluation_factor :
 /-- 指定された局所化から、同じD(A)のcoherent図式への実比較写像。 -/
 def strictDiagramDerivedEvaluation : StrictDiagramInfinity A d ⟶
     (ihom ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)))).obj
-      (derivedInfinityCategory A) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   (exists_strictDiagramEvaluation_factor A d).choose
 
 /-- 局所化の比較射は、元のstrict図式の全射列の評価と全関手同型で結ばれる。 -/

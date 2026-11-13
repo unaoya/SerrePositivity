@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCochainZeroTarget
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorCommaHomExt
 
 /-! # 入力側が実零である comma Hom の比較対象射影同型
 概要：入力 Hom と比較標的が実零なら、元の比較対象 Hom 射影は鎖同型となる。

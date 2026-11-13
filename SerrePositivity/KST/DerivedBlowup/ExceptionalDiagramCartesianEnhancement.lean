@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalCartesianConditions
 
 /-!
@@ -106,3 +108,10 @@ def exceptionalCartesianPerfectDiagramHomotopyEquivalence (a : I → R) :
   (exceptionalCartesianPerfectDiagramToDerived R a).asEquivalence
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Construction §3.1 thickenings" (partial := component) "仮定：明示的な例外因子のチャート dg 模型と有限重なり（Lean が強い）。結論：例外因子のチャート比較と完全加群の比較。D(n) と E(n) を含む導来スキーム全体の厚化・立方体は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exceptionalCartesianPerfectDiagramToDerivedIsEquivalence
+attribute [cite KST "Eq (3.3)" (partial := component) "仮定：明示的な例外因子のチャート dg 模型と有限重なり（Lean が強い）。結論：例外因子のチャート比較と完全加群の比較。D(n) と E(n) を含む導来スキーム全体の厚化・立方体は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exceptionalCartesianPerfectDiagramToDerivedIsEquivalence
+attribute [cite KST "Rem 3.2" (partial := component) "仮定：明示的な例外因子のチャート dg 模型と有限重なり（Lean が強い）。結論：例外因子のチャート比較と完全加群の比較。D(n) と E(n) を含む導来スキーム全体の厚化・立方体は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exceptionalCartesianPerfectDiagramToDerivedIsEquivalence

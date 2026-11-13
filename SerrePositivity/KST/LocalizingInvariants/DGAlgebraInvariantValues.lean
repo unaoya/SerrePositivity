@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomology
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPerfectMoritaInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.Morita.DGAlgebraPerfectMoritaInfinity
 
 /-!
 概要：実非可換 dg 代数の Perf と実相対 tensor に、局所化不変量の値を接続する。

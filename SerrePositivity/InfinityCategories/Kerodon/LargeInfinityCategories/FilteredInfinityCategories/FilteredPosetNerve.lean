@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CofinalFilteredPoset
 
 /-!
@@ -42,3 +44,9 @@ lemma exists_cofinal_kappaFiltered_poset {κ : Cardinal.{u}} [Fact κ.IsRegular]
   exact ⟨I, o, f, hI, isKappaFiltered_nerve_of_cardinalFiltered I, hf⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.1.18"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset
+attribute [cite HTT "5.3.1.8" (partial := direction) "仮定：正則 κ と半順序 A の全 κ-small 部分集合に上界が存在する（HTT の一方の条件と一致）。結論：N(A) が全 κ-small 単体図式について κ-filtered（Lean が弱い：上界条件⇒神経の κ-filtered 性の向き）。Mathlib の任意の小さい族への共通上界から IsCardinalFiltered を得る型と、その神経への宣言を合成する。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered

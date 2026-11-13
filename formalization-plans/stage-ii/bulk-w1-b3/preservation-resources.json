@@ -1,0 +1,82 @@
+[
+  {
+    "command": [
+      "python3",
+      "-B",
+      "/tmp/bulk-w1-b3/preserve_slot.py"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 1639.817377999425,
+    "peak_process_tree_rss_bytes": 13294747648,
+    "peak_lean_or_snapshot_jobs": 2,
+    "threads": "4",
+    "started_local": "2026-11-14T01:41:46.422142",
+    "finished_local": "2026-11-14T02:09:06.107728"
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "/tmp/bulk-w1-b3/preserve_slot.py"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 1639.7721618767828,
+    "peak_process_tree_rss_bytes": 12818694144,
+    "peak_lean_or_snapshot_jobs": 2,
+    "threads": "4",
+    "started_local": "2026-11-14T02:09:06.192769",
+    "finished_local": "2026-11-14T02:36:25.934106"
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "/tmp/bulk-w1-b3/preserve_slot.py"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 1641.1479674577713,
+    "peak_process_tree_rss_bytes": 14508457984,
+    "peak_lean_or_snapshot_jobs": 2,
+    "threads": "4",
+    "started_local": "2026-11-14T02:36:26.012704",
+    "finished_local": "2026-11-14T03:03:47.127436"
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "/tmp/bulk-w1-b3/preserve_slot.py"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 1641.7635403759778,
+    "peak_process_tree_rss_bytes": 14631288832,
+    "peak_lean_or_snapshot_jobs": 2,
+    "threads": "4",
+    "started_local": "2026-11-14T03:03:47.209474",
+    "finished_local": "2026-11-14T03:31:09.198560"
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "/tmp/bulk-w1-b3/preserve_slot.py"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 1291.3189335390925,
+    "peak_process_tree_rss_bytes": 13843382272,
+    "peak_lean_or_snapshot_jobs": 2,
+    "threads": "4",
+    "started_local": "2026-11-14T03:31:09.301572",
+    "finished_local": "2026-11-14T03:52:40.707475"
+  }
+]

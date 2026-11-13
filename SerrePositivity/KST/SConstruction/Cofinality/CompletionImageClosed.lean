@@ -28,13 +28,13 @@ lemma completionImage_pushout_mem (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
     (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (((multiSEndofunctor r).obj ι).obj Y).carrier)
     (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L)
-    (h00 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 0 ∈ LocalizingInvariants.completionEssentialImage
+    (h00 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 0 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)
-    (h10 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 0 ∈ LocalizingInvariants.completionEssentialImage
+    (h10 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 0 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)
-    (h01 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 1 ∈ LocalizingInvariants.completionEssentialImage
+    (h01 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 1 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 1 ∈ LocalizingInvariants.completionEssentialImage
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 1 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val := by
   let F := ((multiSEndofunctor r).obj ι).map f
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
@@ -44,22 +44,22 @@ lemma completionImage_pushout_mem (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
   have hm (z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P z ↔ z ∈ P :=
     Iff.of_eq (congrArg (fun Q => z ∈ Q) he)
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenPushoutCofiberRectangle L hL
-  have hA : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.outerZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 0 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 0 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 0 0) t.left_eq
-  have hC : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.outerZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 1 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 1 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 0 1) t.left_eq
-  have hB : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.rightZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 0 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 0 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 1 0) t.left_eq
-  have hD : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.rightZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 1 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 1 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 1 1) t.left_eq
-  have hE : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.outerZeroTriangle.square 1 1) :=
+  have hA : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.outerZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 0 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 0 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 0 0) t.left_eq
+  have hC : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.outerZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 1 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 1 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 0 1) t.left_eq
+  have hB : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.rightZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 0 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 0 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 1 0) t.left_eq
+  have hD : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.rightZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 1 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 1 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 1 1) t.left_eq
+  have hE : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.outerZeroTriangle.square 1 1) :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_cofiber t.outerZeroTriangle t.outer_isCofiber
       (hA.symm ▸ (hm _).mpr h00) (hC.symm ▸ (hm _).mpr h01)
-  have hE' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.rightZeroTriangle.square 1 1) := hE
+  have hE' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.rightZeroTriangle.square 1 1) := hE
   exact (hm _).mp (hD ▸ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.extension P t.rightZeroTriangle
     t.right_isCofiber (hB.symm ▸ (hm _).mpr h10) hE')
 
@@ -72,13 +72,13 @@ lemma completionImage_pullback_mem (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
     (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (((multiSEndofunctor r).obj ι).obj Y).carrier)
     (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare L)
-    (h10 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 0 ∈ LocalizingInvariants.completionEssentialImage
+    (h10 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 0 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)
-    (h01 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 1 ∈ LocalizingInvariants.completionEssentialImage
+    (h01 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 1 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)
-    (h11 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 1 ∈ LocalizingInvariants.completionEssentialImage
+    (h11 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 1 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 0 ∈ LocalizingInvariants.completionEssentialImage
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 0 ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val := by
   let F := ((multiSEndofunctor r).obj ι).map f
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
@@ -88,22 +88,22 @@ lemma completionImage_pullback_mem (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
   have hm (z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P z ↔ z ∈ P :=
     Iff.of_eq (congrArg (fun Q => z ∈ Q) he)
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenPushoutCofiberRectangle L (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pushout_of_pullback_square L hL)
-  have hA : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.outerZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 0 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 0 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 0 0) t.left_eq
-  have hC : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.outerZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 0 1 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 1 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 0 1) t.left_eq
-  have hB : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.rightZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 0 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 0 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 1 0) t.left_eq
-  have hD : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.rightZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex L 1 1 := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 1 = _
-    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 1 1) t.left_eq
-  have hE : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.rightZeroTriangle.square 1 1) :=
+  have hA : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.outerZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 0 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 0 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 0 0) t.left_eq
+  have hC : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.outerZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 0 1 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 0 1 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 0 1) t.left_eq
+  have hB : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.rightZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 0 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 0 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 1 0) t.left_eq
+  have hD : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.rightZeroTriangle.square 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex L 1 1 := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare t.diagram 2) 1 1 = _
+    exact congrArg (fun D => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 1 1) t.left_eq
+  have hE : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.rightZeroTriangle.square 1 1) :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_cofiber t.rightZeroTriangle t.right_isCofiber
       (hB.symm ▸ (hm _).mpr h10) (hD.symm ▸ (hm _).mpr h11)
-  have hE' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.outerZeroTriangle.square 1 1) := hE
+  have hE' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.outerZeroTriangle.square 1 1) := hE
   exact (hm _).mp (hA ▸ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_fiber t.outerZeroTriangle
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pullback_of_pushout t.outerZeroTriangle t.outer_isCofiber)
       (hC.symm ▸ (hm _).mpr h01) hE')

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathInnerFibration
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 
@@ -83,3 +85,11 @@ instance stdSimplexTarget_innerFibration {X : SSet.{u}} [Quasicategory X]
   exact ⟨hp⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.3.0.1" (partial := special) "仮定：通常 F:C→C′ で底 C′ が thin（Lean が強い特殊形）。結論：X=N(C) は準圏であり thinNerve_innerFibration により N(F) は InnerFibration。最初の文のこの特殊形に一致する。底が非 thin の場合と、同型な底の二繊維が異なる実例は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration
+attribute [cite HTT "2.3.1.5" (partial := direction) "仮定：任意の通常圏 C と p:X→N(C) が inner fibration（原典の順方向と一致）。結論：N(C) の準圏性と quasicategory_of_innerFibration から X は準圏。逆向きは thin な C の場合のみで、一般の C に対する iff は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration
+attribute [cite HTT "2.3.3.3" (partial := component) "仮定：p:X→Δn が inner fibration（HTT と一致）。結論：quasicategory_of_innerFibration と Δn の準圏性から X は準圏であり、最初の明記された assertion に一致。p の相対 minimality iff X の minimality は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.stdSimplexTarget_innerFibration
+attribute [cite HTT "2.4.2.2" (partial := component) "仮定：通常 F:C→C′、底 C′ は thin（Lean が強い特殊形）。結論：N(C) は準圏なので thinNerve_innerFibration により N(F) は InnerFibration。明記された自動的 inner 性のこの場合に一致するが、IsFibered F と CartesianFibration N(F) の iff はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration

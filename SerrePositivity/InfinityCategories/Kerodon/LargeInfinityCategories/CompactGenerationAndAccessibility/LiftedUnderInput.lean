@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.UncurriedInputRightRestriction
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseJoinNaturality
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseJoinNaturality
 
 /-!
 概要：指定始点の下の小図式を、小さい join を持ち上げた全入力に展開する。

@@ -19,17 +19,17 @@ namespace SerrePositivity.KST.Fibration
 variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 元の相対四角形の右辺そのものから回収する、同じ dg 入力射のデータ。 -/
-def dgRelativeRightArrowData := dgInputArrowData A (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.square).edge
+def dgRelativeRightArrowData := dgInputArrowData A (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow d.square).edge
 
 /-- 同じ右辺の ν 像は、指定した像の Verdier 提示の元の商辺に厳密に一致する。 -/
 theorem dgRelativeRightArrow_nu_edge :
-    (dgKInputNu A).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.square).edge =
+    (dgKInputNu A).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow d.square).edge =
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.image.projection).edge := by
   calc
-    _ = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.square ≫ dgKInputNu A)).edge := rfl
-    _ = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.image.square).edge :=
-      congrArg (fun s => (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s).edge) d.image_eq
-    _ = SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ d.image.square) := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge _
+    _ = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (d.square ≫ dgKInputNu A)).edge := rfl
+    _ = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow d.image.square).edge :=
+      congrArg (fun s => (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s).edge) d.image_eq
+    _ = SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ d.image.square) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge _
     _ = _ := (congrArg SSet.yonedaEquiv d.image.right_edge).trans
       (SSet.yonedaEquiv.apply_symm_apply _)
 

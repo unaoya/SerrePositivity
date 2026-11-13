@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.RingTheory.TensorProduct.Quotient
@@ -38,7 +40,7 @@ CLMST、Lemma 10.3、BS 著者版 Proposition 8.13 の環版。
 
 universe u
 
-/-! ## B4-5：G1の剰余テンソルと通常テンソルのmod p（旧 Semiperfectoid/TensorResidueBaseChangeComparison.lean）
+/-! ## 根付き拡大の剰余テンソルと通常テンソルのmod p
 
 G1と同じ剰余代数構造を使い、Mathlibの基底変更の消去と商テンソルの同型を合成する。
 導来テンソルやTorの仮定を使わない通常テンソルの比較。
@@ -53,7 +55,7 @@ attribute [local instance] principalAdicQuotientAlgebra
 variable (p : ℕ) (R S T : Type u) [CommRing R] [CommRing S] [CommRing T]
 variable [Algebra R S] [Algebra R T]
 
-/-- G1の正確な剰余テンソルを、通常テンソルをpで割った商へ同定する。 -/
+/-- 根付き拡大の正確な剰余テンソルを、通常テンソルをpで割った商へ同定する。 -/
 def tensorResidueBaseChangeEquiv :
     ((R ⧸ Ideal.span {(p : R)}) ⊗[R] T) ⊗[R ⧸ Ideal.span {(p : R)}]
       (S ⧸ Ideal.span {algebraMap R S (p : R)}) ≃+*
@@ -81,7 +83,7 @@ def tensorResidueBaseChangeEquiv :
 
 variable {C : Type u} [CommRing C] [Algebra R C]
 
-/-- 比較同型はG1の線形テンソル射と通常テンソルの標準mod p射を結ぶ。 -/
+/-- 比較同型は根付き拡大の線形テンソル射と通常テンソルの標準mod p射を結ぶ。 -/
 theorem tensorResidueBaseChangeEquiv_natural [Fact p.Prime] (f : S →ₐ[R] C)
     (x : ((R ⧸ Ideal.span {(p : R)}) ⊗[R] T) ⊗[R ⧸ Ideal.span {(p : R)}]
       (S ⧸ Ideal.span {algebraMap R S (p : R)})) :
@@ -102,7 +104,7 @@ theorem tensorResidueBaseChangeEquiv_natural [Fact p.Prime] (f : S →ₐ[R] C)
     · simp only [TensorProduct.add_tmul, map_add, he, he']
   · simp only [map_add, hx, hy]
 
-/-- 通常テンソルのmod p全射性を、G1の正確な剰余テンソル線形射へ移す。 -/
+/-- 通常テンソルのmod p全射性を、根付き拡大の正確な剰余テンソル線形射へ移す。 -/
 theorem surjective_principalResidueTensor_of_modP_tensorMap [Fact p.Prime]
     (f : S →ₐ[R] C)
     (h : Function.Surjective
@@ -121,7 +123,7 @@ end SerrePositivity.BhattScholze
 
 end TensorResidueBaseChangeComparison
 
-/-! ## B4-5：受領G1によるperfectoid化の全射性降下（旧 Semiperfectoid/PerfectoidizationSurjectivityDescent.lean）
+/-! ## 根付き拡大によるperfectoid化の全射性降下
 
 mod pのテンソル射の全射性を入力とし、既存の忠実平坦降下を適用する。
 完備底変換との比較・その射の全射性は別工程の仮定であり、自動とはしない。
@@ -165,7 +167,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationSurjectivityDescent
 
-/-! ## B4-6：全射商の通常底変換の核（旧 Semiperfectoid/TensorBaseChangeKernel.lean）
+/-! ## 全射商の通常底変換の核
 
 全射algebraMap R Sの核をTへ拡張したイデアルが、T→S⊗[R]Tの実際の核である。
 平坦性・完備性・有限生成性は要求しない。根付き生成族の入力の接続に使う。
@@ -232,7 +234,7 @@ end SerrePositivity.BhattScholze
 
 end TensorBaseChangeKernel
 
-/-! ## B4-4：任意イデアルの全元が根を持つ場合の全射性（旧 Semiperfectoid/RootedExtension/RootedIdealSurjectivity.lean）
+/-! ## 任意イデアルの全元が根を持つ場合の全射性
 
 有限生成への帰着を使わず、Jの全元を根族の添字とする。
 根付き拡大の存在はこの定理の仮定であり、Andréの引用は使わない。
@@ -278,7 +280,7 @@ end SerrePositivity.BhattScholze
 
 end RootedIdealSurjectivity
 
-/-! ## B4-5：根を持つ核を持つ全射商のperfectoid化（旧 Semiperfectoid/RootedExtension/RootedKernelSurjectivity.lean）
+/-! ## 根を持つ核を持つ全射商のperfectoid化
 
 全射な環準同型を、その実際の核の商に同定して根付きイデアルの結果を適用する。
 一般全射商の全射性を引用せず、核の両立する根を明示して入力する。
@@ -309,7 +311,7 @@ end SerrePositivity.BhattScholze
 
 end RootedKernelSurjectivity
 
-/-! ## B4-5：根付き底変換後の全射性と標準mod pテンソル射（旧 Semiperfectoid/RootedExtension/RootedTensorBaseChangeSurjectivity.lean）
+/-! ## 根付き底変換後の全射性と標準mod pテンソル射
 
 全射商の通常底変換の標準射を、根を持つ実際の核の補題へ接続する。
 根付き拡大の存在・忠実平坦性・最終降下は別工程。
@@ -341,7 +343,7 @@ theorem surjective_perfectoidizationTensorBaseChangeMap_of_rootedKernel
     (perfectoidizationTensorBaseChangeMap_isPerfectoidization p f hf F hF)
 
 /-- 同じ根付き入力とFの標準mod p比較から、通常テンソル射のmod p全射性を得る。
-これをG1の剰余テンソル射へ運ぶ図式と忠実平坦降下は別工程。 -/
+これを根付き拡大の剰余テンソル射へ運ぶ図式と忠実平坦降下は別工程。 -/
 theorem surjective_modP_tensorMap_of_rootedKernel
     (p : ℕ) [Fact p.Prime] (hT : IsIntegralPerfectoid T p)
     (hq : Function.Surjective (algebraMap R S))
@@ -382,7 +384,7 @@ end SerrePositivity.BhattScholze
 
 end RootedTensorBaseChangeSurjectivity
 
-/-! ## B4-5：根付き完全忠実平坦perfectoid拡大からの全射性降下（旧 Semiperfectoid/RootedExtension/RootedPerfectoidSurjectivityDescent.lean）
+/-! ## 根付き完全忠実平坦perfectoid拡大からの全射性降下
 
 Witt余積・通常mod p比較・G1を合成する。拡大の存在は仮定として明示する。
 André引用を使わずに、任意の拡大データに相対的な公開定理を証明する。
@@ -443,7 +445,7 @@ end SerrePositivity.BhattScholze
 
 end RootedPerfectoidSurjectivityDescent
 
-/-! ## B4の一般全射性：André の補題による原典の証明（旧 Semiperfectoid/AndreSurjectivity.lean）
+/-! ## semiperfectoid 環の一般の全射性：André の補題による原典の証明
 
 André の補題（BS 著者版 Theorem 7.14、`Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、
 証明済み）による、原典の BS 著者版 Theorem 7.4 の証明。
@@ -477,7 +479,7 @@ end SerrePositivity.BhattScholze
 
 end AndreSurjectivity
 
-/-! ## B4：導来p完備なperfectoid環の全射商の普遍perfectoid化は全射（旧 Semiperfectoid/SemiperfectoidSurjectivity.lean）
+/-! ## 導来p完備なperfectoid環の全射商の普遍perfectoid化は全射
 
 ## 概要
 BS 著者版 Theorem 7.4。perfectoid 環 R の導来 p 完備な全射商 S の任意の perfectoid 化は全射。
@@ -536,7 +538,7 @@ end SerrePositivity.BhattScholze
 
 end SemiperfectoidSurjectivity
 
-/-! ## semiperfectoid全射性の証明済み互換入口（旧 Semiperfectoid/TorsionFreeQuotientSurjectivity.lean）
+/-! ## semiperfectoid全射性の証明済み互換入口
 
 BS 著者版 Corollary 7.3 / BS 著者版 Theorem 7.4の、pねじれのない古典的p進完備商への旧適用形。
 任意perfectoid源の導来p完備全射商に対する一般全射性とB3の存在・普遍性から証明する。
@@ -565,7 +567,7 @@ end SerrePositivity.BhattScholze.Inputs
 
 end TorsionFreeQuotientSurjectivity
 
-/-! ## 証明済みsemiperfectoid全射性から任意の普遍対象への移送（旧 Semiperfectoid/PerfectoidizationSurjectivity.lean） -/
+/-! ## 証明済みsemiperfectoid全射性から任意の普遍対象への移送 -/
 
 public section PerfectoidizationSurjectivity
 
@@ -587,7 +589,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationSurjectivity
 
-/-! ## Perfectoidization preserves surjective maps（旧 Semiperfectoid/PerfectoidizationSurjectiveMap.lean）
+/-! ## Perfectoidization preserves surjective maps
 
 The actual functorial map has complete image. Its inclusion into the target is
 again a universal perfectoidization, so B4 makes this inclusion surjective.
@@ -654,3 +656,11 @@ theorem perfectoidization_map_surjective_of_surjective
 end SerrePositivity.BhattScholze
 
 end PerfectoidizationSurjectiveMap
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 1.12" (partial := special) "(1) Prop 7.2（全 prism の中の始対象）は本体になく不要（D37、代数的部分だけ Delta/Division）。(2) Cor 7.3・Thm 7.4 は本体で sorry なし（完全試験 prism への始性で構成、超限構成は経由しない） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.exists_surjective_perfectoidization_of_semiperfectoid_quotient
+attribute [cite BS19 "Thm 7.4"] _root_.SerrePositivity.BhattScholze.exists_surjective_perfectoidization_of_semiperfectoid_quotient
+attribute [cite BS19 "Thm 7.4"] _root_.SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_andre
+attribute [cite BS19 "Thm 7.4"] _root_.SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient

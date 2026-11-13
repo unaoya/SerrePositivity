@@ -25,7 +25,7 @@ local instance : HasBinaryBiproducts X.HomotopyCategory := _root_.SerrePositivit
 方針：各終点で枝の基点を選び、零単位と後合成自然性を全射的な頂点表示の一般判定へ与える。
 規約：任意の基点に対して同じ等号。使われ方：二枝交換の右逆元を負号として読む。 -/
 lemma symmetricCoconeHomProduct_eq_add {x z : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f f)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) (y : X _⦋0⦌)
     (e : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpace (SSet.yonedaEquiv.symm f.edge) y) _⦋0⦌)
     (u v : (SSet.HomotopyCategory.mk c.vertex : hoFunctor.obj X) ⟶ SSet.HomotopyCategory.mk y) :
@@ -50,7 +50,7 @@ lemma symmetricCoconeHomProduct_eq_add {x z : X _⦋0⦌}
 方針：恒等射に対する演算の右逆元の式を加法へ移し、加法消去する。
 規約：余極限余錐は任意の選択。使われ方：対称な懸垂模型の交換の符号。 -/
 lemma fixedCoconeSwap_eq_neg_id {x z : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f f)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.fixedCoconeReindexVertexIso c hc _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.spanSwap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.edgeSpan_self_swap f) _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.spanSwap_comp_self).hom =
       -𝟙 (SSet.HomotopyCategory.mk c.vertex : hoFunctor.obj X) := by

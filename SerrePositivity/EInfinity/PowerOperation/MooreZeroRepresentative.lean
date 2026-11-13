@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModulePiZeroMoore
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ModulePiZeroMoore
 public import SerrePositivity.EInfinity.ComplexLimits.DoldKanZeroIso
 
 /-!

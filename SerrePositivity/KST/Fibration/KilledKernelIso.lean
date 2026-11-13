@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 全対象を零化する実完全関手の核は、元の安定圏と包含そのもので厳密に同型。 -/
 def killedKernelIso {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hr : ∀ a : A.obj _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (r.hom.app (Opposite.op ⦋0⦌) a)) :
+    (hr : ∀ a : A.obj _⦋0⦌, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (r.hom.app (Opposite.op ⦋0⦌) a)) :
     closedStableModel (kernelClosedPredicate r) ≅ sInputModel A where
   hom := closedStableInclusion (kernelClosedPredicate r)
   inv := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (kernelClosedPredicate r).predicate (𝟙 A.obj) hr, by

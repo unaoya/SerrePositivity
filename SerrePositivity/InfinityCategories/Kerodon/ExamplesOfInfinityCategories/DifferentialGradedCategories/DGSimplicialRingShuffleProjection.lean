@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSimplicialRingShuffleDegeneracy
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSimplicialRingShuffleNative
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGSimplicialRingShuffleDegeneracy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGSimplicialRingShuffleNative
 /-!
 概要：実 shuffle 積の退化零化と正規化射影の整合性。
 方針：共通退化因子・PInfty の補射影と元の実結合・単位を接続する。

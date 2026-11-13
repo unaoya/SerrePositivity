@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HigherComparisonComponents
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowValue
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrowValue
 
 /-!
 # 元の全 E 代数の reduced hammock と同じ普通の局所化への評価

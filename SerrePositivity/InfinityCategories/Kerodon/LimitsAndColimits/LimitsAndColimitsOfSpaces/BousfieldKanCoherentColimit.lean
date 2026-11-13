@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.BousfieldKanConeSourceRestriction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConeSourceApex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.BousfieldKanColimitCriterion
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.BousfieldKanConeSourceRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConeSourceApex
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.BousfieldKanColimitCriterion
 
 /-!
 概要：一般の通常の小圏上の Kan 値図式の Bousfield–Kan coend は、実際の ∞ 余極限を与える。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 
 /-!
@@ -135,3 +137,10 @@ lemma leftFibration_iff_cocartesianFibration_all_edges {X B : SSet.{u}} (p : X �
     exact leftFibration_of_cocartesianFibration_of_all_edges p he
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.2.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.rightFibration_iff_cartesianFibration_all_edges
+attribute [cite HTT "2.4.2.4" (partial := component) "仮定：任意の単体集合の射 p（原典より弱い）。結論：rightFibration_iff_cartesianFibration_all_edges は (1)⇔(2) を正確に与え、vertexFiber_kanComplex と合わせて (2)⇒(3) も得る。(3)⇒(1)/(2) は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.rightFibration_iff_cartesianFibration_all_edges
+attribute [cite HTT "2.4.2.5" (partial := stronger-hyp) "仮定：CartesianFibration p で全ての辺が p-Cartesian と追加（Lean が強い）。結論：原典の指定 X′ はこの仮定で X 全体なので、rightFibration_of_cartesianFibration_of_all_edges は同じ制限射 p|X′ が right fibration となる。この場合に一致するが一般の Cartesian-edge subcomplex の構成はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.rightFibration_of_cartesianFibration_of_all_edges

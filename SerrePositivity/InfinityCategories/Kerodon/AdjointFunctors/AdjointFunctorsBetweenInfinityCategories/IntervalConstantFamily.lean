@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalTriangleFamilyComposition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalMappingOppositeComposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.IntervalMappingOppositeComposition
 
 /-!
 概要：指定辺に定値な区間族と、定値関手の射を照合する。

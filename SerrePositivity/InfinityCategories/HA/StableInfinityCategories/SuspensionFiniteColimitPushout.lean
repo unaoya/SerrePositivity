@@ -16,9 +16,9 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 
 lemma suspensionFunctorOfFiniteColimits_pushout {X : SSet.{u}} [Quasicategory X]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteColimits X] (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteColimits X] (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
     (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (R ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctorOfFiniteColimits X) := by
-  obtain ⟨z, hz⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex.exists_zero (X := X)
+  obtain ⟨z, hz⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex.exists_zero (X := X)
   obtain ⟨d⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionSquareGrid_nonempty R z hz.2
   have h := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose _).mp d.extension.final_pushout
   exact h.of_functorIso (d.suspension_functor_comparison hz hR)

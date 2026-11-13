@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveIdempotence
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.AdjunctionUnitInvertible
 
@@ -92,3 +94,11 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFun
 
 end ReflectiveSubcategory
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.8.2.3" (partial := direction) "仮定：準圏の頂点述語で切り出した全充満部分準圏への反射的包含と随伴を指定する（Lean が強い：この反射的局所化の場合）。結論：局所化自己関手 L の単位の左右 whisker は関手のホモトピー圏で可逆となり、L²≃L を得る（この仮定での HA の結論の一部に一致）。任意の単位付き自己関手の条件から反射的局所化を回復する逆向きは含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveSubcategory.reflectedUnitIso
+attribute [cite HA "4.8.2.3" (partial := direction) "仮定：準圏の頂点述語で切り出した全充満部分準圏への反射的包含と随伴を指定する（Lean が強い：この反射的局所化の場合）。結論：局所化自己関手 L の単位の左右 whisker は関手のホモトピー圏で可逆となり、L²≃L を得る（この仮定での HA の結論の一部に一致）。任意の単位付き自己関手の条件から反射的局所化を回復する逆向きは含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveSubcategory.unitOnLocalizationIso
+attribute [cite HTT "5.2.7.4" (partial := direction) "仮定：充満部分圏への反射で L は reflector と包含の合成（原典の (2) を満たす場合）。結論：同じ単位 α の αL と Lα の全自然同型、すなわち (3)（Lean が弱い：(2)⇒(3) の向き）。Lα は reflectedUnitIso を包含で後合成して得る。(3) だけから反射を構成する向きや三条件の同値は主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveSubcategory.reflectedUnitIso
+attribute [cite HTT "5.2.7.4" (partial := direction) "仮定：充満部分圏への反射で L は reflector と包含の合成（原典の (2) を満たす場合）。結論：同じ単位 α の αL と Lα の全自然同型、すなわち (3)（Lean が弱い：(2)⇒(3) の向き）。Lα は reflectedUnitIso を包含で後合成して得る。(3) だけから反射を構成する向きや三条件の同値は主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveSubcategory.unitOnLocalizationIso

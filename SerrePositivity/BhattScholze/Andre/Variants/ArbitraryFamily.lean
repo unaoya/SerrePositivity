@@ -17,7 +17,7 @@ BS 著者版 Theorem 7.14 の根添加を、任意のモニック族に拡張す
 主経路（`Transfinite`）は一元ずつ根を足すので有限族で足りる。任意族の結果として残す（BS-W8）。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Variants/MonicRootedExtension`、`Variants/RootedExtension`。
@@ -25,7 +25,7 @@ BS 著者版 Theorem 7.14 の根添加を、任意のモニック族に拡張す
 
 universe u
 
-/-! ## André E1・E2：任意モニック族の実残余導来評価比較（旧 Andre/Variants/MonicPrismaticArbitraryResidue.lean）
+/-! ## 任意モニック族の実残余導来評価比較
 
 ## 概要
 
@@ -100,7 +100,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticArbitraryResidue
 
-/-! ## André E1・E2（任意族）：モニック族の係数側の実導来剰余比較（旧 Andre/Variants/ArbitraryMonicPrismaticCoefficientReduction.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：モニック族の係数側の実導来剰余比較
 
 ## 概要
 
@@ -200,7 +200,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticCoefficientReduction
 
-/-! ## André E1・E2（任意族）：モニック族の実自由 δ 源商上の導来還元（旧 Andre/Variants/ArbitraryMonicPrismaticQuotientDerived.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：モニック族の実自由 δ 源商上の導来還元
 
 ## 概要
 
@@ -391,7 +391,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticQuotientDerived
 
-/-! ## André E1・E2（任意族）：実商還元の H⁰ の元の係数商上の忠実平坦性（旧 Andre/Variants/ArbitraryMonicPrismaticQuotientFlat.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：実商還元の H⁰ の元の係数商上の忠実平坦性
 
 ## 概要
 
@@ -495,7 +495,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticQuotientFlat
 
-/-! ## André E1・E2（任意族）：元の係数環上の実 (p,d) 還元と raw 残余商（旧 Andre/Variants/ArbitraryMonicPrismaticPDReduction.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：元の係数環上の実 (p,d) 還元と raw 残余商
 
 ## 概要
 
@@ -628,7 +628,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticPDReduction
 
-/-! ## André E1・E2（任意族）：実逐次 p,d 完備化後のモニック源の剰余（旧 Andre/Variants/ArbitraryMonicPrismaticIteratedResidue.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：実逐次 p,d 完備化後のモニック源の剰余
 
 ## 概要
 
@@ -758,7 +758,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticIteratedResidue
 
-/-! ## André E1・E2（任意族）：モニック源の生成元冪商の標準冪零還元（旧 Andre/Variants/ArbitraryMonicPrismaticCanonicalPowerResidue.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：モニック源の生成元冪商の標準冪零還元
 
 ## 概要
 
@@ -899,7 +899,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticCanonicalPowerResidue
 
-/-! ## André E1・E2（任意族）：モニック源の実生成元冪商の G9 入力（旧 Andre/Variants/ArbitraryMonicPrismaticSourcePowerInputs.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：モニック源の実生成元冪商の G9 入力
 
 ## 概要
 
@@ -1016,7 +1016,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryMonicPrismaticSourcePowerInputs
 
-/-! ## André E1・E2（任意族）：完全 prism 上の任意モニック族の実完備化源の離散性（旧 Andre/Variants/ArbitraryPerfectPrismMonicSourceDiscrete.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：完全 prism 上の任意モニック族の実完備化源の離散性
 
 ## 概要
 
@@ -1118,7 +1118,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryPerfectPrismMonicSourceDiscrete
 
-/-! ## André E1・E2（任意族）：任意モニック族の raw 実 PD 環の完全忠実平坦性（旧 Andre/Variants/ArbitraryPerfectPrismMonicRawPDCompletelyFlat.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：任意モニック族の raw 実 PD 環の完全忠実平坦性
 
 ## 概要
 
@@ -1253,7 +1253,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryPerfectPrismMonicRawPDCompletelyFlat
 
-/-! ## André E1・E2（任意族）：raw モニック PD 環の δ 完全化への平坦性入力（旧 Andre/Variants/ArbitraryPerfectPrismMonicPDPerfectionInputs.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：raw モニック PD 環の δ 完全化への平坦性入力
 
 ## 概要
 
@@ -1398,7 +1398,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryPerfectPrismMonicPDPerfectionInputs
 
-/-! ## André E1・E2（任意族）：任意モニック族の既存 prism 候補の完全忠実平坦性（旧 Andre/Variants/ArbitraryPerfectPrismMonicPrismCompletelyFlat.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：任意モニック族の既存 prism 候補の完全忠実平坦性
 
 ## 概要
 
@@ -1479,7 +1479,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryPerfectPrismMonicPrismCompletelyFlat
 
-/-! ## André E1・E2（任意族）：既存モニック prism 候補の標準剰余入力（旧 Andre/Variants/ArbitraryPerfectPrismMonicPrismResidue.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：既存モニック prism 候補の標準剰余入力
 
 ## 概要
 
@@ -1572,7 +1572,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryPerfectPrismMonicPrismResidue
 
-/-! ## André E1・E2（任意族）：任意モニック族の標準 perfectoid 候補の p 完全忠実平坦性（旧 Andre/Variants/ArbitraryPerfectPrismMonicPerfectoidCompletelyFlat.lean）
+/-! ## BS 著者版 Remark 7.15 の包の計算（任意族）：任意モニック族の標準 perfectoid 候補の p 完全忠実平坦性
 
 ## 概要
 

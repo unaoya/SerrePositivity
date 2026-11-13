@@ -4,9 +4,9 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNativeValue
 public import SerrePositivity.KST.SConstruction.DGKNativeNuNaturality
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeNativeProperties
 public import SerrePositivity.KST.SConstruction.PerfectLaxIdempotent
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.LaxComparisonEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Pretriangulated
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.LaxComparisonEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Pretriangulated
 
 /-!
 概要：同じ実中央 dg 射の native 全辺を保存済み固定 ν 辺へ比較する。

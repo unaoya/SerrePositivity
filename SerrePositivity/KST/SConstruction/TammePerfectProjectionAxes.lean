@@ -73,9 +73,9 @@ lemma IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromC :
     let f : C ⟶ D := (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxSnd p q
     have hz := hF.perfectSpectrum_zero_of_zero_values f hC hD (by
       intro c
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
       rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-      exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isZero)
+      exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).isZero)
     change perfectInvariantSpectrumHom F
       (show C ⟶ D from (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxSnd p q)
       hC hD = 0 at hz
@@ -101,9 +101,9 @@ lemma IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromD :
     let f : D ⟶ C := (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxFst p q
     have hz := hF.perfectSpectrum_zero_of_zero_values f hD hC (by
       intro d
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
       rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-      exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero)
+      exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero)
     change perfectInvariantSpectrumHom F
       (show D ⟶ C from (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxFst p q)
       hD hC = 0 at hz

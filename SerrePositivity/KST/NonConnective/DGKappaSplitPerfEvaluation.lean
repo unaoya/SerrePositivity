@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfRelations
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosedNerveFunctorNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.ClosedNerveFunctorNaturality
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationExact
 
 /-!
@@ -32,8 +32,8 @@ private lemma curryFamily_evaluate {A B P : SSet.{u}} (H : A ⊗ P ⟶ B)
 
 private lemma squareVertex_post {A B : SSet.{u}}
     (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ A) (g : A ⟶ B) (i j : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ g) i j =
-      g.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i j) := rfl
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ g) i j =
+      g.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F i j) := rfl
 
 variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
@@ -64,7 +64,7 @@ theorem dgKappaClosedPerfFamily_label :
     (dgKappaClosedFunctorNativeMap R D I ≫ dgKappaFullPerfFamilyMap R D I) ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) =
       nerveMap (dgKappaPerfLabelFunctor R D I X) ≫
-        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (PresentedPerfectDGObject R (DGKappaCone R D I)) := by
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (PresentedPerfectDGObject R (DGKappaCone R D I)) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -81,7 +81,7 @@ def dgKappaSplitPerfPointwiseSquare (Z : DGKappaZeroInput R D I) :=
 theorem dgKappaSplitPerfPointwiseSquare_closed (Z : DGKappaZeroInput R D I) :
     dgKappaSplitPerfPointwiseSquare R D I X Z =
       dgKappaSplitClosedSquare R D I Z ≫ nerveMap (dgKappaPerfLabelFunctor R D I X) ≫
-        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (PresentedPerfectDGObject R (DGKappaCone R D I)) := by
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (PresentedPerfectDGObject R (DGKappaCone R D I)) := by
   change ((dgKappaSplitClosedSquare R D I Z ≫ dgKappaClosedFunctorNativeMap R D I) ≫
     dgKappaFullPerfFamilyMap R D I) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) = _
   rw [Category.assoc, Category.assoc, ← Category.assoc (dgKappaClosedFunctorNativeMap R D I),
@@ -97,7 +97,7 @@ theorem dgKappaSplitPerfPointwiseSquare_app (Z : DGKappaZeroInput R D I) {n : �
 
 /-- 同じ点ごとの評価は、元の零角を持つ実三角形である。 -/
 def dgKappaSplitPerfPointwiseZeroTriangle (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I))) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I))) where
   square := dgKappaSplitPerfPointwiseSquare R D I X Z
   zero_corner := by
     dsimp only [dgKappaSplitPerfPointwiseSquare]

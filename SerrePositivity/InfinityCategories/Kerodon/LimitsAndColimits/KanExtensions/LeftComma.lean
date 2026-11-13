@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibrationComparison
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaSourceOppositeFibration
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaCounit
@@ -107,3 +109,8 @@ instance kanLeftComma_quasicategory {K C : SSet.{u}}
   quasicategory_of_innerFibration (kanLeftCommaProjection δ)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.4.15" (partial := component) "仮定：準圏の間の任意の関手 δ（Lean が弱い：operad 構造を要求しない）。結論：δ の oriented fiber product の終点射影が余デカルト・ファイブレーション（(1) の D→O⊗ に一致）。余デカルト辺の判定と Env への制限はこの型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCommaProjection_cocartesianFibration

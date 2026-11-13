@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRawDAFamily
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictFamilyEvaluationNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosedNerveFunctorNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.ClosedNerveFunctorNaturality
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreeProjectivePointUnit
 
 /-!
@@ -39,7 +39,7 @@ lemma strictSemifreeProjectiveFront_image :
     (nerveMap (strictSemifreePointUnderlyingFunctor A) ▷
       (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) ≫
       strictDiagramEvaluation SimplexCategoryᵒᵖ (ModuleCategory A PUnit.{1}) ≫
-        closedNerveInclusion A (RightModule A PUnit.{1}) := by
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (RightModule A PUnit.{1}) := by
   rw [← whiskerLeft_comp_assoc, strictSemifreeJoinShapeIso_inl,
     whiskerLeft_comp_assoc, strictBarNativeProjectiveJoinFamily_image]
   unfold strictBarNativeJoinFamilyAlong
@@ -57,7 +57,7 @@ lemma strictSemifreeProjectiveFront :
           (strictSemifreePointUnderlyingFunctor A)
           (strictSemifreePointUnderlyingFunctor_projective A) =
     strictDiagramEvaluation SimplexCategoryᵒᵖ (ClosedCategory A (Semifree A)) ≫
-      closedNerveInclusion A (Semifree A) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           ((semifreePointConstant A).comp (dgSemifreeToProjective A PUnit.{1})) := by
   dsimp only

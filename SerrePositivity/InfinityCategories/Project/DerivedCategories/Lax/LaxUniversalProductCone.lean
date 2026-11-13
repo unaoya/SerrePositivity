@@ -61,7 +61,7 @@ lemma cospan_diagonal : horn₂₂.ι₁₂ ≫ _root_.SerrePositivity.InfinityC
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.lift (𝟙 (value Φ Q)) (𝟙 (value Φ Q)))).edge := by
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductCone.cospan, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_topEdge, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductCone.square_top]
 
-lemma square_source_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.square hΦ p q i r h) 0 0 =
+lemma square_source_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.square hΦ p q i r h) 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ A) := by
   have he := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.square hΦ p q i r h)
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductCone.square_bottom] at he

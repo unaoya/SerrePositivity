@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeFiberReflection
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictConeSmallReflectedFiber
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictConeSmallReflectedFiber
 
 /-!
 概要：三形状の strict な錐への pinched Hom と元の非反転 q_x の導来 fiber の反転の直接比較。

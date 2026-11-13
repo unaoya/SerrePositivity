@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalCochain
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SphericalCochain
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalAttachmentPushout
 
 /-!

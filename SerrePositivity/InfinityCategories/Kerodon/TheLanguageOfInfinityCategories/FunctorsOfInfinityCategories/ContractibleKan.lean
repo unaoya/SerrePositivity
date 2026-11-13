@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceKan
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalMap
 public import Mathlib.Tactic.CrossRefAttribute
@@ -129,3 +131,9 @@ lemma isContractibleKan_of_iso {K L : SSet.{u}} (e : K ≅ L) (h : IsContractibl
   rw [← Category.assoc, hF, Category.assoc, e.inv_hom_id, Category.comp_id]
 
 end SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.1.3.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_of_iso
+attribute [cite HTT "2.3.4.15" (partial := component) "仮定：k=−2、対象は Kan 複体で、可縮性を全境界の RLP による native IsContractibleKan で指定（Lean の十分条件）。結論：負二次を contractible とする原典の convention の成分を表す。k≥−1 の πi の消滅の一般定義と、SpaceInfinity 上の離散同値で定義した Is0TruncatedSpace との比較は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan

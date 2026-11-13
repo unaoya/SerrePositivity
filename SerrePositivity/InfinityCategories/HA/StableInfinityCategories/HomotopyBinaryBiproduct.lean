@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SplitCofiberProduct
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroSourceCofiberComparison
 public import Mathlib.CategoryTheory.Limits.Shapes.BinaryBiproducts
@@ -42,9 +44,9 @@ def binaryProductOfRetraction_of_arrow_eq {C : Type u} [Category.{v} C]
 規約：前加法構造は使わない。使われ方：標準射影の積性と射の加法逆元の構成。 -/
 def zeroSourcePushout_isBinaryProduct_of_retraction {X : SSet.{u}} [Quasicategory X]
     [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0))
-    (r : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0)
-    (hr : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R ≫ r = 𝟙 _) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0))
+    (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0)
+    (hr : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R ≫ r = 𝟙 _) :
     IsLimit (BinaryFan.mk r (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductSnd R hR hz.1)) := by
   apply Classical.choice
   obtain ⟨t, ht, hf, hg, _⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_coproductCofiberSequence R hR hz
@@ -56,7 +58,7 @@ def zeroSourcePushout_isBinaryProduct_of_retraction {X : SSet.{u}} [Quasicategor
 規約：安定性を仮定し、前加法構造は使わない。使われ方：二項双積の普遍性。 -/
 def zeroSourcePushout_isBinaryProduct {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
     IsLimit (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductFst R hR hz.1)
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductSnd R hR hz.1)) :=
   zeroSourcePushout_isBinaryProduct_of_retraction R hR hz _
@@ -67,14 +69,14 @@ def zeroSourcePushout_isBinaryProduct {X : SSet.{u}} [Quasicategory X] [_root_.S
 規約：双積の頂点は元の四角形の終端頂点。使われ方：h C の二項双積 instance。 -/
 def zeroSourcePushoutBinaryBiproduct {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    BinaryBiproductData (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1) where
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    BinaryBiproductData (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1) where
   bicone :=
-    { pt := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 1
+    { pt := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 1
       fst := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductFst R hR hz.1
       snd := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductSnd R hR hz.1
-      inl := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R
-      inr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop R
+      inl := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R
+      inr := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop R
       inl_fst := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproduct_right_fst R hR hz.1
       inl_snd := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproduct_right_snd R hR hz.1
       inr_fst := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproduct_top_fst R hR hz.1
@@ -94,9 +96,15 @@ instance hasBinaryBiproducts_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePo
     obtain ⟨R, hz, hx, hy, hR⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_zeroSourcePushoutSquare x y
     have h := HasBinaryBiproduct.mk (zeroSourcePushoutBinaryBiproduct R hR hz)
     change HasBinaryBiproduct (C := hoFunctor.obj X)
-      (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 0))
-      (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1)) at h
+      (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 0))
+      (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1)) at h
     rw [hx, hy] at h
     exact h
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.3.5" (partial := component) "仮定：安定準圏と二対象（HA と一致）。結論：有限積・余積の存在と、零始点の押し出しから hX の双積を作る。∞ 圏の正方形自体から余積→積の標準同値を比較する宣言は採用した型にない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushoutBinaryBiproduct
+attribute [cite HA "1.4.1.3" (partial := component) "仮定：安定準圏（Lean が弱い：presentable 性は不要）。結論：ホモトピー圏の前加法性と双積があり、原典冒頭の加法性に対応する（Lean が弱い：各対象の余群構造と compactly generated な場合の Brown の全仮定の確認は含まれない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasBinaryBiproducts_ho

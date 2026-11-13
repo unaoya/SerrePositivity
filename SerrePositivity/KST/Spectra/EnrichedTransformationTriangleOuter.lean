@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedTransformationTriangle
 
 /-!
 概要：豊穣自然変換の因子分解の三角形の外辺を、元の自然変換の円柱と照合する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LiftedConePointedRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.LiftedConePointedRestriction
 
 /-!
 概要：像の native 全錐の pointed 制限の同値性を、元の持ち上げた全錐の制限へ反映する。

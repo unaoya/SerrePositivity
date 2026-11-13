@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspension
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuotientPretriangulated
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYonedaIdempotentCompletion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.DGQuotientPretriangulated
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYonedaIdempotentCompletion
 
 /-!
 概要：同じ実平坦懸垂と、その元の Perf 値をつなぐ dg Yoneda の完備化性を保持する。
