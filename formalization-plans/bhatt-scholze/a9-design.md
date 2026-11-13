@@ -8,6 +8,8 @@ D(R) 版 `PerfectoidizationInterfaceE3` の存在を得て、唯一の引用 `Bh
 証明にする（下流の `Perfectoidization/Derived/{IntegralExistence,Excision}` は `Classical.choice (exists_perfectoidizationInterfaceE3 …)` で取り出しているので変更不要）。
 規約：BS 側で `Inputs/` を書き換えるのは中身の段階（暦に載せてから）。そのとき監査（`make_area_audits.py` の許可一覧、Prop 8.10 の引用 3 件と結晶の黒箱）の更新を
 調整役に知らせる。
+（11-13 追記：D71〜D73 の後、drafts/A9/Assembly は `EInfinityTheory` 版の `TheoryPerfectoidizationInterface`（EInfinity/Perfectoidization/TheoryInterface:138）と `nonempty_e3_of_theory`（:194） で組み立てる。この設計書の
+`PerfectoidizationInterfaceCAlg`・`nonempty_e3_of_cAlg` は 11-02 の書き方。）
 使われ方：Serre positivity の perfectoid 側の `sorry` の消去。残るのは K 理論側の二件。
 
 ## 1. 欄と供給元
@@ -28,7 +30,7 @@ D(R) 版 `PerfectoidizationInterfaceE3` の存在を得て、唯一の引用 `Bh
   universal := e3Universal p R, limitCone := e3LimitCone p R, limit_isLimit := e3LimitCone_isLimit p R, integral := e3Integral p R, excision := e3Excision p R }`。
 - `theorem nonempty_perfectoidizationInterfaceCAlg : Nonempty (PerfectoidizationInterfaceCAlg R p hR) := ⟨perfectoidizationInterfaceCAlg R p hR⟩`。
 - `theorem exists_perfectoidizationInterfaceE3 … : Nonempty (PerfectoidizationInterfaceE3 R p hR) := nonempty_e3_of_cAlg R p (hR := hR) (nonempty_perfectoidizationInterfaceCAlg R p hR)`
-  （hR は `nonempty_e3_of_cAlg` の暗黙引数、W9-III-13）— Inputs の定理の証明をこれに置き換える。docstring の「唯一の文献入力」の記述を更新し、原典の経路（A0〜A9）と
+  （hR は `nonempty_e3_of_cAlg` の暗黙引数、W9-III-13。11-13：今の drafts は `nonempty_e3_of_theory (E := E)`）— Inputs の定理の証明をこれに置き換える。docstring の「唯一の文献入力」の記述を更新し、原典の経路（A0〜A9）と
   **恒久的な引用**（下の §3 の表。W9-III-12 で D68 後の形に更新）を列挙する。
 
 ## 3. 依存の全体像（E3 の消去に要るもの）
@@ -69,6 +71,9 @@ A9-1：組み立て（骨組みのみ、drafts/A9/Assembly.lean）。中身の�
 
 ## 7. E3 非依存性と import の順序（W9-III-08・09、2026-11-03）
 
+（11-13 追記：W9-III-08 は解決済み。BS-W10 作業 A（main cc67ea88e、11-04）で有限直積は `BhattScholze/Perfectoid/FiniteProduct` の E3 非依存の直接証明になり、
+`Perfectoidization/CompletedTensor`・`Almost/Lemma103` から `Inputs/PerfectoidizationInterface` へは届かない。design-status §4 の 10。以下は 11-03 の記録。）
+
 **致命（W9-III-08）**：本体の実 import に、Assembly の上流から消去対象の `Inputs/PerfectoidizationInterface` へ戻る経路がある：
 `drafts/A6/ArcSite`・`ArcSheafProperty` → `Perfectoidization/CompletedTensor` → `Perfectoidization/Derived/IntegralExistence` → `Inputs`、および
 `drafts/A8/AlmostConnectivity` → `Almost/Lemma103` → `CompletedTensor` → 同じ経路。Inputs の証明を Assembly に置き換えると
@@ -97,5 +102,5 @@ Fontaine 表示による完備テンソルの前半（`integralPerfectoid_comple
 
 - **設計レビューは完了、判定は条件付き妥当**。新しい致命的な証明の循環・E3 接続の欠落・無番号の定義変更はなし。D19〜D70（撤回の D42・D48 を含む）は三者（設計・骨組み・ノート）で照合済み、κ は S1〜S3・D47・S₀・A_λ まで同じ閉性で通る。
 - 条件：**W9-III-08 の実施**（CompletedTensor の芯の分離と有限直積の E3 非依存化、2a 後）と、実ファイルでの到達性検査（Inputs への経路なし）。W9-III-14〜17 は配置・命名・記述の訂正（反映済み）。
-- drafts 49 本の `sorry`（コメント除く）：194 宣言・210 箇所。恒久的な引用 3 宣言（D68、G-A6-1a、G-A6-1b）、証明予定 125 宣言、基盤待ち 66 宣言。`: True :=` の仮置きは 317 箇所あり、sorry のないファイルを証明済みとは数えない。
+- drafts 49 本の `sorry`（コメント除く）：194 宣言・210 箇所（11-03 時点の数。11-13 の drafts は 57 本）。恒久的な引用 3 宣言（D68、G-A6-1a、G-A6-1b）、証明予定 125 宣言、基盤待ち 66 宣言。`: True :=` の仮置きは 317 箇所あり、sorry のないファイルを証明済みとは数えない。
 - 実装の完成・型検査・ビルド合格とは区別する。次の段階：2a の取り込み → CompletedTensor の分割（調整役）→ 改名表の反映 → 中身の段階（design-status §4）。

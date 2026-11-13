@@ -9,7 +9,8 @@ Lemma 8.4 は原典どおり E∞-F_p 代数の冪作用 P⁰（[Lur11, Rem 2.2.
 ホモトピーを殺すので coconnective。H⁰(Δ_perf) は p ねじれなしで完全 δ 環（A3 の (1′)）、d は正則（Lemma 2.34）、よって S_perfd も coconnective。
 規約：基底は完全 prism（向き付き、`Prism/Perfectoid`）。値は CAlg_A を正（D35）、S_perfd は CAlg_R（R = A/d）と D(R)。E3 の始域は離散な
 R 代数（`algebraNerve R`）で、Δ は離散 S に直接定義する（D32・D41）。Lean の名前は仮。ビルドしない。
-使われ方：E3 の `perfd`・`unit`・`h0`（CAlg 版 `PerfectoidizationInterfaceCAlg` を構成すれば D(R) 版が従う、`nonempty_e3_of_cAlg`）、
+使われ方：E3 の `perfd`・`unit`・`h0`（CAlg 版 `PerfectoidizationInterfaceCAlg` を構成すれば D(R) 版が従う、`nonempty_e3_of_cAlg`。11-13 追記：D71〜D73 の後の drafts は
+`EInfinityTheory` 版の `TheoryPerfectoidizationInterface`・`nonempty_e3_of_theory`（EInfinity/Perfectoidization/TheoryInterface:138・194） で組み立てる）、
 A5（Prop 8.5）、A6（Prop 8.10〜Cor 8.12）、A7（Prop 8.13、Cor 8.14）、A8（Thm 10.11）。
 
 ## 0. 範囲と前提
@@ -80,6 +81,7 @@ A5（Prop 8.5）、A6（Prop 8.10〜Cor 8.12）、A7（Prop 8.13、Cor 8.14）�
 - `e3H0RingData`：H⁰(S_perfd) の環の関手（CAlg 値なので環、A2-2 の `derivedPrismaticCohomology_h0_ring`）、加群構造との同型、射との整合、単位の整合。
   界面の `H0RingData` の各欄に対応（Interface.lean:477〜）。
 - CAlg 版の界面（`PerfectoidizationInterfaceCAlg`）を構成する方針なので、D(R) 版の欄は `nonempty_e3_of_cAlg` で従う（EInfinity/Perfectoidization/DerivedCorollary）。
+  （11-13 追記：今の drafts/A9/Assembly は `TheoryPerfectoidizationInterface`・`nonempty_e3_of_theory`（EInfinity/Perfectoidization/TheoryInterface:138・194） を使う。）
 
 ### 2.4 Example 8.3（標数 p）
 
@@ -127,6 +129,7 @@ A6（Prop 8.10：Perfd 上の arc 層性を tilt で標数 p に帰着）で使�
 2. **E3 の始域（D41）**：Def 8.2 は原典どおり導来 p 完備な S に定義。非完備な離散 S への延長は界面の欄 `perfd` の定義として (S^∧)_perfd で置き、
    直接の式との一致を定理にする（§2.1）。
 3. **構成する界面**：CAlg 版 `PerfectoidizationInterfaceCAlg` を正とし、D(R) 版は `nonempty_e3_of_cAlg` で得る。
+   （11-13 追記：D71〜D73 の後は `EInfinityTheory` 版の `TheoryPerfectoidizationInterface`・`nonempty_e3_of_theory`（EInfinity/Perfectoidization/TheoryInterface:138・194）。）
 
 ### 6.1 Codex W9 第 2 部の訂正（2026-11-02）
 

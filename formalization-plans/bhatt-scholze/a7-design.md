@@ -73,7 +73,7 @@ Lean の名前は仮。ビルドしない。
     上の一致と η_P の逆で左辺を P ⊗̂_P P ≃ P と同一視し、逆向きを e : F(X) → P とすると、単位の自然性から e ∘ η_X ∘ i_j = e ∘ F(i_j) ∘ η_P = id_P、押し出しの普遍性で
     e ∘ η_X = m。Cor 8.14 の一意性は使っていない）。よって η = g ∘ m、g_1 = η ∘ i_1 = g = g_2。
     離散な環の間の animated／E∞ 代数の射は環準同型（`discreteToAnimated_fullyFaithful`、G-A7-6）。
-- `e3Universal (S) (hS : IsDiscrete R (e3Perfd S))`：`IsPerfectoidization p (e3H0RingData.unit.app S)`。S^∧ について Cor 8.14、
+- `e3Universal (S) (hS : IsDiscrete R (e3Perfd S))`（11-13 追記：drafts の型は `IsTheoryDiscrete`（EInfinity/Perfectoidization/TheoryInterface:39）、D71〜D73）：`IsPerfectoidization p (e3H0RingData.unit.app S)`。S^∧ について Cor 8.14、
   perfectoid 環は p 完備なので S → T は S^∧ → T を一意に通る（`completionRing` の普遍性、Interface.lean:237）、`e3Perfd_of_complete`・
   `e3Unit_of_complete`・`e3H0_of_complete`（A4-3）で欄の射に読み替える。
 
