@@ -1,0 +1,119 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-14T08:39:45.495483",
+  "checks": [
+    {
+      "requirement": "SerrePositivity/Archive/KST/DescentConditional",
+      "proved": true,
+      "evidence": {
+        "actual_files": 67,
+        "mapped_files": 67,
+        "expected": 67
+      }
+    },
+    {
+      "requirement": "SerrePositivity/Archive/InfinityCategories/DGKappaDiagnostics",
+      "proved": true,
+      "evidence": {
+        "actual_files": 4,
+        "mapped_files": 4,
+        "expected": 4
+      }
+    },
+    {
+      "requirement": "ScalarTensorView moved with four required compatibility names",
+      "proved": true,
+      "evidence": {
+        "path_row": {
+          "source": "SerrePositivity/KST/DerivedBlowup/ScalarTensorView.lean",
+          "module": "SerrePositivity.KST.DerivedBlowup.ScalarTensorView",
+          "primary_target": "SerrePositivity/CommutativeAlgebra/Module/ScalarTensorView.lean",
+          "outputs": [
+            "SerrePositivity/CommutativeAlgebra/Module/ScalarTensorView.lean"
+          ],
+          "source_sha256": "a2aaa9183a7322fa37b39fef527db6f3c0e26de943636719fd2f5c562af39311",
+          "status": "moved"
+        },
+        "retained_old_path": "four deprecated aliases importing the new foundation module",
+        "alias_metadata_evidence": "alias-check-complete.json"
+      }
+    },
+    {
+      "requirement": "Four generic FlatBaseChange declarations in SharedFoundation; no implementation exception",
+      "proved": true,
+      "evidence": {
+        "module": "SerrePositivity.HomologicalAlgebra.FlatBaseChange",
+        "declarations": [
+          "flatBaseChangeHomologyEquiv",
+          "flatBaseChangeKoszulHomologyEquiv",
+          "flat_of_algebra_isPushout",
+          "pushoutKoszulHomologyEquiv"
+        ]
+      }
+    },
+    {
+      "requirement": "Approved Kerodon 7.4 to 9.3 literature exception retained with reason",
+      "proved": true,
+      "evidence": [
+        {
+          "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingOverNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso",
+          "reason": "B3 approved under bulk-b3-goal.md §2(2), inherited from the original main snapshot: the §7.4 mapping-space naturality proof uses normalized endpoint slice postcomposition and its isomorphism calculation stored in §9.3 (Tag 06FR). No Ind-specific premise is used. Preserve the literature placement; the import DAG remains acyclic. Approved by the coordinator and user for B3; retain this literature-placement exception."
+        }
+      ]
+    },
+    {
+      "requirement": "PD cochainHomotopy stays BS; only algebraModule and index helpers generic",
+      "proved": true,
+      "evidence": {
+        "cochainHomotopy": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDCechFrameHomotopy",
+        "generic_helpers": "SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra.FrameHelpers"
+      }
+    },
+    {
+      "requirement": "Both optional Spectrum entry moves remain deferred",
+      "proved": true,
+      "evidence": {
+        "roots": [
+          "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+          "SerrePositivity/KST/LocalizingInvariants/SpectrumHomotopyFunctor.lean"
+        ],
+        "decision": "Defer optional R83/ledger§9 to the head of maintenance: the two requested entry points have103 KST prerequisite modules and require their own namespace/caller audit; do not expand the freeze by presenting this as a two-file move."
+      }
+    },
+    {
+      "requirement": "BST13 corrected before citation application",
+      "proved": true,
+      "evidence": {
+        "key": "BST13",
+        "title": "The weak ordinarity conjecture and F-singularities",
+        "edition": "arXiv:1307.3763v3",
+        "source": "https://arxiv.org/abs/1307.3763v3",
+        "native_attribute": null,
+        "verified_edition": true,
+        "number_style": "kind and number",
+        "edition_provenance": "Primary title page/version record checked 2026-11-13; see primary_identity_check. Numbered correspondence is a separate review.",
+        "authors": [
+          "Bhatt",
+          "Schwede",
+          "Takagi"
+        ],
+        "primary_title_checked": "2026-11-13",
+        "primary_source": "https://arxiv.org/abs/1307.3763v3",
+        "primary_identity_check": {
+          "date": "2026-11-13",
+          "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+          "url": "https://arxiv.org/abs/1307.3763v3",
+          "note": "Corrected from the erroneous Bhatt–Schnell–Scholze; exact arXiv v3 author/title header checked."
+        },
+        "arxiv_id_version": "1307.3763v3"
+      }
+    },
+    {
+      "requirement": "Entire Lean tree remains inside approved rebased bundle and compiler-indexed delta",
+      "proved": true,
+      "evidence": "full-source-scope-check.json"
+    }
+  ],
+  "scope_note": "Additional B3 withdrawals: none. IntegralExistence retained by later instruction; broad R21 and later B3-prime scope remain outside the fixed bundle. No unused-declaration deletion was authorized or performed."
+}

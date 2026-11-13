@@ -28994,7 +28994,7 @@
       {
         "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingOverNaturality",
         "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso",
-        "reason": "B2 proposal, inherited from the original main snapshot: the §7.4 mapping-space naturality proof uses normalized endpoint slice postcomposition and its isomorphism calculation stored in §9.3 (Tag 06FR). No Ind-specific premise is used. Preserve the literature placement; the import DAG remains acyclic. Coordinator review is pending."
+        "reason": "B3 approved under bulk-b3-goal.md §2(2), inherited from the original main snapshot: the §7.4 mapping-space naturality proof uses normalized endpoint slice postcomposition and its isomorphism calculation stored in §9.3 (Tag 06FR). No Ind-specific premise is used. Preserve the literature placement; the import DAG remains acyclic. Approved by the coordinator and user for B3; retain this literature-placement exception."
       }
     ],
     "exclude_prefixes": [
