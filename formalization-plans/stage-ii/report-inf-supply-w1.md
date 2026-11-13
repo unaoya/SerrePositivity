@@ -2414,3 +2414,137 @@ B3取り込み後のB4追従は連絡を待つ。大きい監査は行わず対�
 Reedy構成ではこの追加入力を要求せず、元の弱同値のクラスも保持できた。
 R2の検証済み実測は111行（3b-3累計6,157行）。両変数の関手的解像の新規ファイルは未検証のまま。
 R2a〜R2eの完成を主張せず、引き続きR2aの構成を進める。
+
+### R2aの宇宙表示の係数移送（2/3・3/3、未検証）
+
+```lean
+def strictDiagramModelNerveIso :
+  strictComplexDiagramNerve A d ≅ nerve (modelRelativeCategory (StrictComplexDiagram A d)).category
+lemma strictDiagramModelNerveIso_weakEdges :
+  (strictDiagramModelNerveIso A d).hom.app (Opposite.op ⦋1⦌) '' strictDiagramWeakEdges A d =
+    weakNerveEdges (modelRelativeCategory (StrictComplexDiagram A d))
+
+def strictDiagramModelLocalization :
+  nerve (modelRelativeCategory (StrictComplexDiagram A d)).category ⟶ StrictDiagramInfinity A d
+lemma strictDiagramModelLocalization_isLocalization :
+  IsLocalization (strictDiagramModelLocalization A d)
+    (weakNerveEdges (modelRelativeCategory (StrictComplexDiagram A d)))
+```
+
+AsSmallの包みの同じ順逆と弱辺の像が2/3、既存の
+`isLocalization_of_precomposeIso` による同じ局所化普遍性の移送が3/3。
+R2aの前提計算はこれで3/3。既存のhammock比較への入力を揃える係数移送であり、
+新しい局所化一意性や一般のモデル圏比較の定理は作らない。
+照合の追加枠は消費していない（R6で使ったC1〜C3と別の照合を無断で足さない）。
+
+### R2a〜R2bの局所化側の中間比較（未検証）
+
+```lean
+def strictDiagramModelUp : StrictComplexDiagram A d ⥤
+  (modelRelativeCategory (StrictComplexDiagram A d)).category
+def strictDiagramModelDown : (modelRelativeCategory (StrictComplexDiagram A d)).category ⥤
+  StrictComplexDiagram A d
+
+def strictDiagramRightFrameFamily :
+  letI := strictDiagramReedyModelCategory A d
+  Reedy.CofibrantResolutionFamily (C := (StrictComplexDiagram A d)ᵒᵖ) Reedy.simplex
+
+def strictDiagramRightFrameMapping (X : StrictComplexDiagram A d) :
+  StrictComplexDiagram A d ⥤ SSet.{u}
+
+def strictDiagramRightFramePinchedEquivalence (X Y : StrictComplexDiagram A d)
+    [IsCofibrant X] :
+  QCatEquivalence
+    ((SSet.uliftFunctor.{u + 1, u}).obj ((strictDiagramRightFrameMapping A d X).obj Y))
+    (pinchedHom (X := StrictDiagramInfinity A d)
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y)))
+lemma strictDiagramRightFramePinchedEquivalence_homotopyEquivalence
+    (X Y : StrictComplexDiagram A d) [IsCofibrant X] :
+  IsSimplicialHomotopyEquivalence (strictDiagramRightFramePinchedEquivalence A d X Y).hom
+```
+
+上のcofibrancyは同じReedyモデルで読む。最終のR2a〜R2eにこの仮定を加えない。
+`modelRightFramePinchedEquivalence` は全モデル圏の∞局所化普遍性を既に証明しており、
+`LocalizedMappingBifunctor` や `StrictValueObstruction` は使わない。
+元の実right frame・第二分解・指定局所化射のままこのAPIを特殊化する。
+`ModelUp/Down` はR2aの宇宙移送の証明分割。`nerveMap`の共通Hom宇宙の制約のため、
+異なるHom宇宙の通常関手のnerve作用は、各全射列の同じ後合成として直接記述する。
+新しい宇宙や射を仮定するものではない。
+
+### R2aの任意局所化頂点への拡張の証明分割（未検証）
+
+```lean
+def strictDiagramHammockComparison :
+  EInfinity.FrameHom.CoherentLocalizationComparison
+    (hammockLocalizationNerveMap (modelRelativeCategory (StrictComplexDiagram A d)))
+    (strictDiagramModelLocalization A d)
+lemma strictDiagramLocalization_isEssentiallySurjective :
+  IsEssentiallySurjective (strictDiagramLocalization A d)
+```
+
+`modelRightFrameLocalizationComparison` の既存の全同値と全二胞体、
+`coherentNerveVertex_object` で、任意の局所化頂点を元の解像の入力へ戻す。
+これは§40.2の「局所化の頂点を無条件にqの像と仮定しない」の解消であり、R2aの証明分割。
+R3bの `strictDiagramDerivedEvaluation` の本質的全射性とは別。
+任意coherent図式のstrict表示を既に得たとは扱わない。
+
+### R2aのcofibrant表示の証明分割（未検証）
+
+```lean
+lemma exists_strictDiagramCofibrantVertex (x : (StrictDiagramInfinity A d) _⦋0⦌) :
+  ∃ X : StrictComplexDiagram A d, IsCofibrant X ∧
+    Nonempty (VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ X)) x)
+def strictDiagramCofibrantVertex (x : (StrictDiagramInfinity A d) _⦋0⦌) : StrictComplexDiagram A d
+lemma strictDiagramCofibrantVertex_isCofibrant (x : (StrictDiagramInfinity A d) _⦋0⦌) :
+  IsCofibrant (strictDiagramCofibrantVertex A d x)
+def strictDiagramCofibrantVertexIso (x : (StrictDiagramInfinity A d) _⦋0⦌) :
+  VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
+    (ComposableArrows.mk₀ (strictDiagramCofibrantVertex A d x))) x
+```
+
+同じ局所化の頂点表示に、既存のsource frameの零次増大を合成する。
+増大のobjectwise擬同型性と元のqの辺の反転を使い、中間比較のcofibrancyの仮定を放電する。
+R2aの型が任意の局所化頂点を引数に取るための証明分割で、coherent図式のstrict化は仮定しない。
+
+### R2aのspanの実構成・R2bの証明分割（未検証）
+
+```lean
+abbrev strictDiagramMappingSpace (x y : (StrictDiagramInfinity A d) _⦋0⦌) : SSet.{u + 1}
+def strictDiagramMappingSpaceEquivalence (x y : (StrictDiagramInfinity A d) _⦋0⦌) :
+  QCatEquivalence (strictDiagramMappingSpace A d x y)
+    (pinchedHom (X := StrictDiagramInfinity A d) x y)
+def strictDiagramMappingLeft (x y : (StrictDiagramInfinity A d) _⦋0⦌) :
+  strictDiagramMappingSpace A d x y ⟶ pinchedHom (X := StrictDiagramInfinity A d) x y
+def strictDiagramMappingRight (x y : (StrictDiagramInfinity A d) _⦋0⦌) :
+  strictDiagramMappingSpace A d x y ⟶
+    pinchedHom ((strictDiagramDerivedEvaluation A d).app (Opposite.op ⦋0⦌) x)
+      ((strictDiagramDerivedEvaluation A d).app (Opposite.op ⦋0⦌) y)
+```
+
+R2aのspanは§40.2のΣ型のまま。源は実right frame Homを同じ宇宙へ持ち上げたもの。
+左脚は元のframe比較と同じcofibrant表示の端点同型の合成。
+右脚は左脚と指定された同じ `pinchedHomMap ev` の合成として作る。
+右脚の同値性（R2c）はこの定義からは出ず、coherent変換空間との比較の数学として残る。
+R2bの型はこの同じspanの射影を使い、
+`IsSimplicialHomotopyEquivalence (strictDiagramMappingSpan A d x y).2.1`。
+R2dはR2cの後に証明する。一覧の順序を変えてR2cを完了したとは扱わない。
+
+### R2a・R2bの検証結果（11-13 23時台）
+
+上の未検証として記録した6本を対象ビルドで確認した。
+`StrictDiagramFunctorialFrames` 112行、`StrictDiagramModelLocalization` 130行、
+`StrictDiagramRightFrameComparison` 69行、`StrictDiagramLocalizedVertices` 65行、
+`StrictDiagramCofibrantVertices` 72行、`StrictDiagramMappingSpan` 84行。
+先の `StrictDiagramReedyMappingModel` 111行を含め、R2は7本643行、3b-3累計83本6,689行。
+対象ビルドの最終結果は `r2-mapping-span-2.log`（9,593 jobs、成功）。
+新規39宣言の小監査を分割して実施し、全て標準三公理のみ（最後の12件は
+`/tmp/is-w1/r2-span-audit.log`）。sorry・新公理・計算上限の引き上げはない。
+
+完成した一覧項目はR2a（任意の局所化頂点のspan）とR2b（その左脚の同値性）。
+R2c（同じ右脚の同値性）、R2d、R2eは残る。R2全体や停止点5の完成とは扱わない。
+R3aにはまだ入っていない。
+
+11-13 23時の連絡に従い、B3中も専用枝のコミットを続ける。mainへの取り込みは行わず、
+対象ビルドと上の小監査だけを行った。
