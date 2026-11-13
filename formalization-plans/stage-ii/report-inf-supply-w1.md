@@ -1254,3 +1254,24 @@ joinの宇宙変更は既存の `Project/QuasicategoryAuxiliaries/UniverseJoinSi
 再利用する。対象ごとの余錐の普遍性だけから全関手の比較を主張しない。
 R6は未完成、R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
 既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 29. R6 の元の native 単体の全 HA 写像（11-13、継続）
+
+検証済み追加5本・461行、監査対象15宣言。
+`StrictBarNativeOldComparison` は、最後へ届かない全成分を元の反復した閉零射列へ戻し、
+元の自然変換の全HA可換式を証明する。
+`StrictBarNativeMixedComparison` は、最後へ届く全成分を同じラベルのnative列へ戻し、
+同じ閉零cycleの通常順合成の可換式を証明する。
+
+`StrictBarNativeSimplexMap` は二つの可換式を合わせ、元のnative単体間の全HA写像を構成した。
+`StrictBarNativeSimplexMapAlgebra` は、同じ写像の恒等・合成の整合性。
+`StrictBarNativeSimplexMapPullback` は、既存のnative単体の引き戻しを再利用し、
+apexを保つ全ての面・退化に対する整合性を示す。いずれも自然性を新たな入力にはしていない。
+
+対象ビルド成功（5,282・5,284・5,290 jobs）。旧成分8宣言の監査は
+`/tmp/is-w1/3b3-build-55-native.log` の最初、残り7宣言は
+`/tmp/is-w1/3b3-build-56-native.log` の後段。15宣言全てsorry-free・標準三公理のみ。
+検証済み累計45本・3,574行、監査対象174宣言。R6実測2,911行。
+残りは各セルの全族をjoinの全余錐族へ貼り合わせ、元の実現・native apexの全関手同型へつなぐ接続。
+R6はまだ未完成、R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
