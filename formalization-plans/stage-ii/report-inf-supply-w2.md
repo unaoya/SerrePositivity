@@ -5538,3 +5538,113 @@ theorem freeTensorDiagramHomIso_inv_map_component (W : J ⥤ SSet.{u})
 累計 **253モジュール・15,346行・2,194宣言**。外枠20,000行まで残り4,654行。一覧 `/private/tmp/isw2-g10-twohundredfiftythree-modules.txt`。既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、大きな監査・rootビルドなし。未検証下書きはない。
 
 B02の全単体的射の等式、B03〜B08・C・Dは未完。次は今回の逆転置成分と§120の実dg合成成分を、§115のAW全切断和で照合する。Moore射影を無条件に消すことはせず、元の射影・包含と係数比較を保持する。停止点2a・2bの仕様と一覧は弱めない。
+
+## 124. B02の途中：実標準AW合成の負次数逆随伴を全次数で評価
+
+自由負次数鎖の指定逆随伴を、同じMoore逆随伴の延長とsmart切断包含の合成に分割した。射影生成元の評価は同じΓのMoore射影と余単位を通して計算した。切断包含は、境界外では元の項同型、零次数では既存のcycles包含として保持した。これを元の標準DK同型の成分式に適用し、**自由負次数逆随伴の全次数の生成元像が実標準Homの最上位成分**であることを証明した。
+
+実AW合成への適用では、正次数・零次数を統一して同じ全切断和が得られる。これは§114のMoore側の評価を、今回必要な元の負次数複体の射へ輸送したもの。B02の証明分割と既存構成の合成・評価則であり、別の比較射や新しい数学のまとまりを導入していない。
+
+### 124.1 登録対象・行数・型
+
+`SerrePositivity.HomologicalAlgebra.ComplexLimits.TruncationInclusionComponents`（47行）
+
+```lean
+theorem truncLEToRestriction_nonboundary (H : Complex A)
+    (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ)) [e.IsTruncLE]
+    {n : ℕ} {i : ℤ} (hi : e.f n = i) (hn : ¬ e.BoundaryLE n) :
+    (H.truncLE'ToRestriction e).f n ≫ (H.restrictionXIso e hi).hom =
+      (H.truncLE'XIso e hi hn).hom
+
+theorem extendedTruncationInclusion_nonboundary (H : Complex A)
+    (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ)) [e.IsTruncLE]
+    {n : ℕ} {i : ℤ} (hi : e.f n = i) (hn : ¬ e.BoundaryLE n) :
+    ((H.truncLE' e).extendXIso e hi).inv ≫
+      ((H.truncLEIso e).inv ≫ HomologicalComplex.ιTruncLE H e).f i =
+      (H.truncLE'XIso e hi hn).hom
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeHomDecomposition`（114行）
+
+```lean
+theorem freeNegativeChainsAdjunction_symm_moore (S : SSet.{u}) (H : Complex A)
+    (f : S ⟶ (truncatedDoldKanFunctor A).obj H) :
+    ((freeNegativeChainsAdjunction A).homEquiv S H).symm f =
+      ((negativeExtendTruncationAdjunction (ModuleCat A)).homEquiv
+        ((normalizedMooreComplex (ModuleCat A)).obj (S ⋙ ModuleCat.free A)) H).symm
+        (((freeMooreChainsAdjunction (R := A)).homEquiv S
+          (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).symm f)
+
+theorem negativeExtendTruncationAdjunction_symm_inclusion
+    (L : ChainComplex (ModuleCat A) ℕ) (H : Complex A)
+    (g : L ⟶ H.truncLE' (ComplexShape.embeddingUpIntLE 0)) :
+    ((negativeExtendTruncationAdjunction (ModuleCat A)).homEquiv L H).symm g =
+      extendMap g ComplexShape.embeddingDownNat ≫
+        truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+          embeddingDownNat_eq_upIntLE_zero H
+
+theorem freeNegativeChainsAdjunction_symm_inclusion (S : SSet.{u}) (H : Complex A)
+    (f : S ⟶ (truncatedDoldKanFunctor A).obj H) :
+    ((freeNegativeChainsAdjunction A).homEquiv S H).symm f =
+      extendMap (((freeMooreChainsAdjunction (R := A)).homEquiv S
+        (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).symm f)
+          ComplexShape.embeddingDownNat ≫
+        truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+          embeddingDownNat_eq_upIntLE_zero H
+
+theorem freeNegativeChainsAdjunction_symm_generator_eval (S : SSet.{u}) (H : Complex A)
+    (f : S ⟶ (truncatedDoldKanFunctor A).obj H) (n : ℕ)
+    (s : S.obj (Opposite.op ⦋n⦌)) :
+    (((freeNegativeChainsAdjunction A).homEquiv S H).symm f).f (-(n : ℤ))
+      (freeNegativeGenerator S n s) =
+      (((H.truncLE' (ComplexShape.embeddingUpIntLE 0)).extendXIso
+        ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv ≫
+        (truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+          embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ)))
+        (((DoldKan.PInftyToNormalizedMooreComplex
+          (Abelian.DoldKan.Γ.obj (H.truncLE' (ComplexShape.embeddingUpIntLE 0)))).f n ≫
+          (Abelian.DoldKan.equivalence.counitIso.hom.app
+            (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).f n)
+              (f.app (Opposite.op ⦋n⦌) s))
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeStandardHomEvaluation`（92行）
+
+```lean
+theorem connectiveHom_negative_inclusion (x y : D) (n : ℕ) :
+    (((homObject R D x y).truncLE' (ComplexShape.embeddingUpIntLE 0)).extendXIso
+      ComplexShape.embeddingDownNat (i := n + 1) (i' := -(n + 1 : ℤ)) (by simp)).inv ≫
+      (truncationExtendedInclusionOfShape R ComplexShape.embeddingDownNat
+        embeddingDownNat_eq_upIntLE_zero (homObject R D x y)).f (-(n + 1 : ℤ)) =
+      (connectiveHomComplex_positiveIso (R := R) x y n).hom
+
+theorem freeNegativeStandardHom_generator_eval (S : SSet.{u}) (x y : D)
+    (f : S ⟶ standardHomSpace (R := R) x y) (n : ℕ)
+    (s : S.obj (Opposite.op ⦋n⦌)) :
+    (((freeNegativeChainsAdjunction R).homEquiv S (homObject R D x y)).symm
+      (f ≫ standardDoldKanSpaceMap x y)).f (-(n : ℤ))
+        (freeNegativeGenerator S n s) =
+      standardTopEval (R := R) x y n (f.app _ s)
+
+theorem freeNegativeStandardAW_generator_eval (S T : SSet.{u}) (x y z : D)
+    (g : S ⟶ standardHomSpace (R := R) y z)
+    (f : T ⟶ standardHomSpace (R := R) x y) (n : ℕ)
+    (s : S.obj (Opposite.op ⦋n⦌)) (t : T.obj (Opposite.op ⦋n⦌)) :
+    let h := (g ⊗ₘ f) ≫ (β_ _ _).hom ≫ standardComposition (R := R) x y z
+    (((freeNegativeChainsAdjunction R).homEquiv (S ⊗ T) (homObject R D x z)).symm
+      (h ≫ standardDoldKanSpaceMap x z)).f (-(n : ℤ))
+        (freeNegativeGenerator (S ⊗ T) n (s, t)) =
+      ∑ c : (Finset.univ : Finset (Fin (n + 1))),
+        awTerm (g.app _ s).val (f.app _ t).val Finset.univ c (-(n : ℤ)) (by simp)
+
+```
+
+### 124.2 検収と残り
+
+コード **`2b2d1f50c`**（新規3本253行）。結合個別検査 `/private/tmp/isw2-negative-standard-aw-combined.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build139.log` は **4,164 jobs・終了コード0**。新規分だけの監査 `/private/tmp/AuditISW2G10B02NegativeStandard.lean` は **15宣言（2・8・5）、標準三公理のみ**。共有鍵は `--wait 3600`・一枚の整理券・実行1,700秒上限で使用し、返却済み。
+
+累計 **256モジュール・15,599行・2,209宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftysix-modules.txt`。外枠まで残り4,401行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
+
+B02、B03〜B08・C・Dは未完。次の照合は、raw AWの各成分の等式を先に示し、**元のMoore包含を前合成して**正規化側の等式へ制限する。包含→射影の合成が恒等である指定分裂則を使い、P∞がAWと可換という未証明の仮定は置かない。
