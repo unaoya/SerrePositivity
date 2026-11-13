@@ -1252,3 +1252,15 @@ public import SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeCenterAug
 public import SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeCoefficient
 
 public import SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeProjection
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCover
+
+public import SerrePositivity.AlgebraicGeometry.FiniteProductDomainFactor
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverFamily
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverBaseChange
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverSpectrum
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverFamilyBaseChange
