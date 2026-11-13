@@ -6904,3 +6904,290 @@ HA の地図の 4.2.1.15・4.5.2.1 は通常圏の場合の部分一致、4.5.3.
 
 **保存**：§106 の検証済み三本と報告は 9f27a22de に17:54 JSTにコミットした。
 本節は紙のみの追記。凍結確定の連絡はまだ受けていない。
+
+## 108. 5a-5a：一般 BF 作用の固定した型一覧（11-13、実装前の紙）
+
+### 108.1 範囲・数え方・構成
+
+§106 に対するユーザー承認に従い、上の三行を共通の **5a-5a** として切り出す。
+見込み7,200〜12,700行、外枠25,400行。M14 の残り四行・native Tot・G10 は含めない。
+置き場所は EInfinity/SimplexCuts/ と新設 EInfinity/Cosimplicial/。
+既存 IntervalCuts/・Operad/ の公開定義は変えない。共有入口と全体監査への登録は調整役に委ねる。
+他レーンの同じ新規ファイルを発見した場合は編集前に止めて報告する。
+
+数え方は inf-supply-w2.md §14 と、今回のユーザー指示のとおり。
+下の L01〜L28 が新しい数学の一覧。**証明の分割は数えず、型を追記する。
+前提計算（既存構成の単位・自然性・係数移送の法則）は各 L ごとに3本まで。
+照合は I01〜I03 の全体3本まで。それ以外の新しい数学は型と漏れた理由を報告して止める。**
+定義を作る際の恒等・合成のフィールドも下の法則に含める。
+「構造を引数に要求する」ことで下の法則を仮定に逃がさない。
+
+構成は次の二層に分ける。
+
+- 一般の単体集合の正規化鎖 C_A(S) 上に χ の切断余作用を構成し、TR:E→χ に沿って制限。
+- 標準単体 Δ[q] のその余代数と X^q の離散 BE 代数から、既存 convolutionAlgebra を作る。
+  ∏q Hom(C_A(Δ[q]),disc(X^q)) のうち、全 α:q→r で前合成と後合成が一致するものを、
+  **通常の BE 代数の等化子**として取る。この台と正規化したコチェイン複体を同定する。
+  native な ∞ 圏の Tot・錐の比較はここでは作らない。
+
+後半の convolutionFunctor・convolutionPre/Post と Operad.AlgebraLimits は再利用する。
+一般次元の cochain の operad 法則をもう一度直接証明する経路にはしない。
+
+### 108.2 型のために固定する定義と記号
+
+以下は **紙の Lean 型案、未型検査**。未供給名は新規定義として構成するもので、公理・仮定ではない。
+`A : Type u [CommRing A]`、`S T : SSet.{0}`、`X Y : CosimplicialAlgebra A` とする。
+`C S := (BarrattEccles.normalizedFunctor A).obj S : Complex A`。
+`χ := Surjection.operad A`、`E := BarrattEccles.operad A`。
+`cmap f := (BarrattEccles.normalizedFunctor A).map f`。
+`gen S q x : (C S).X (-(q:ℤ))` は既存の normalized generator を extend の同型で運んだもの。
+
+組合せの入口では `s : Cut m q`、`u : Surjection.Word r (m+1)`。
+`colorPositions s u.val a` は §106 の定義をそのまま使う。
+`vertices s u a` は、その順序列を s.vertical で読む OrderHom。
+`outputDegree s u a := (colorPositions s u.val a).card-1`。
+`face s u a : ⦋outputDegree s u a⦌ ⟶ ⦋q⦌` はその単調写像。
+空の色がないことは L01 で証明する。非退化性がなくても face は定義する。
+`lo s i`・`hi s i` は水平座標 i の fiber の最初・最後の垂直座標。
+
+BF §2.2.3–6 の符号は次の定義で固定する。
+
+```lean
+intervalLength s u i := hi s i - lo s i + if Surjection.Caesura u.val i then 1 else 0
+permutationExponent s u := ∑ i, ∑ j,
+  if i < j ∧ u.val j < u.val i then intervalLength s u i * intervalLength s u j else 0
+positionExponent s u := ∑ i, if Surjection.Caesura u.val i then hi s i else 0
+cutSign s u : ℤ := (-1) ^ (permutationExponent s u + positionExponent s u)
+```
+
+`cutTensor A S s u x` は、各色の `gen S _ (S.map (face s u a).op x)` の
+既存テンソル冪への純粋テンソル。総次数は L02 で合わせる。
+`cutTerm` は cutSign 倍の cutTensor、`cutSum` は全 s に関する和。
+退化な face は normalized generator によって零となるため、符号の定義を変えずに保持する。
+`rawComponent` は係数の自由基底と単体の自由基底から線形拡張した切断和。
+`component` は L07 により正規化へ降ろし、整数次数へ延長した双線形成分。
+
+余単体的正規化の入口は `N X : Complex A` とし、
+`(N X).X (q:ℤ)` を全 codegeneracy σ_i の核の共通部分、負次数を零とする。
+微分は交代余面の和の制限。`normInclusion X : N X ⟶ cosimplicialCochains A |>.obj X`。
+これは P⁰ や levelwise Frobenius を用いて定義するものではない。
+
+`P_X := ∏q convolutionAlgebra (hopf A) (simplexBECoalgebra A q) (discAlg(X^q))`。
+`Q_X := ∏(α:q→r) convolutionAlgebra (hopf A) (simplexBECoalgebra A q) (discAlg(X^r))`。
+`post_X, pre_X : P_X ⟶ Q_X` は各 α における後合成と前合成。
+`bfNormalizedAlgebra.obj X := equalizer post_X pre_X`、射は L22 による。
+台の族の次数 k を評価するとき、内部 Hom の微分の符号を保持する。
+正次数 k の評価と N X の比較には `(-1)^(k*(k+1)/2)` の次数ごとの係数を入れ、
+その微分の式を L24 で証明する。符号を省いた評価を複体射と主張しない。
+
+### 108.3 残る数学の型一覧：切断と余作用
+
+以下の `u` の引数は上の Word、degree d の際は BasisWord へ特殊化する。
+総次数の eqToHom は L02 が供給する等式で統一する。arity零は L14 で別に処理する。
+
+```lean
+-- L01 色の出現と非空性。
+colorPositions_nonempty (s : Cut m q) (u : Surjection.Word r (m+1)) (a : Fin r) :
+  (colorPositions s u.val a).Nonempty
+
+-- L02 各色の頂点数と全出力次数（非退化性を前提にしない）。
+outputDegree_sum (s : Cut m q) (u : Surjection.Word r (m+1)) :
+  ∑ a, outputDegree s u a = m + q + 1 - r
+
+-- L03 面の非退化性と §106 の対の単射性の同値。
+faces_mono_iff (s : Cut m q) (u : Surjection.Word r (m+1)) :
+  (∀ a, Mono (face s u a)) ↔ Nondegenerate s u.val
+
+-- L04 退化な切断項は実テンソルで零。
+cutTensor_eq_zero (h : ¬Nondegenerate s u.val) (x : S _⦋q⦌) :
+  cutTensor A S s u x = 0
+
+-- L05 正規化生成元と色ごとの面の引き戻しを保つ自然性。
+cutTerm_map (f : S ⟶ T) (x : S _⦋q⦌) :
+  (TensorPowers.map (cmap f) r).f _ (cutTerm A S s u x) =
+    cutTerm A T s u (f.app _ x)
+
+-- L06 切断和の生成元公式（rawComponent の線形拡張の値）。
+rawComponent_value (u : Surjection.BasisWord (r+1) d) (x : S _⦋q⦌) :
+  rawComponent A S (r+1) d q (Surjection.basis A u) (ModuleCat.freeMk (ULift.up x)) =
+    cutSum A S u x
+
+-- L07 入力の退化を消す。標準単体の退化も、一般 S の退化も含む。
+cutSum_degenerate (u : Surjection.BasisWord (r+1) d)
+    (i : Fin (q+1)) (x : S _⦋q⦌) :
+  cutSum A S u (S.σ i x) = 0
+
+-- L08 正規化した成分でも同じ切断和を復元。
+component_generator (u : Surjection.BasisWord (r+1) d) (x : S _⦋q⦌) :
+  component A S (r+1) (-(d:ℤ)) (-(q:ℤ)) _ (by omega)
+    (Surjection.complexBasis A u) (gen S q x) = cutSum A S u x
+
+-- L09 微分の項ごとの切断和の等式。q=0,d=0 の境界も含む。
+-- boundaryCoefficient / boundarySimplex は既存の χ の微分／交代面和。
+cutSum_boundary (u : Surjection.BasisWord (r+1) d) (x : S _⦋q⦌) :
+  dTensor (cutSum A S u x) =
+    cutSumLinear A S (boundaryCoefficient u) x +
+      (-1 : ℤ)^d • cutSumLinearSimplex A S u (boundarySimplex x)
+
+-- L10 全整数の双線形 Leibniz 則。
+component_d (r : ℕ) (i j : ℤ)
+    (a : (χ.arity r).X i) (b : (C S).X j) :
+  (power (C S) r).d (i+j) (i+j+1) (component A S r i j _ rfl a b) =
+    component A S r (i+1) j _ (by omega) ((χ.arity r).d i (i+1) a) b +
+      i.negOnePow • component A S r i (j+1) _ (by omega) a ((C S).d j (j+1) b)
+
+-- L11 置換に対する全切断和の Koszul 符号。
+cutSum_permutation (σ : Equiv.Perm (Fin r)) (u : Surjection.BasisWord r d)
+    (x : S _⦋q⦌) :
+  cutSum A S (Surjection.rename σ u) x =
+    ((permutationAction (C S) r σ).asIso.hom).f _ (cutSum A S u x)
+
+-- L12 二段の切断と合成語の切断の同じ実テンソルでの一致。
+-- compositeCutSum は既存 OverlapPartition と compositionSign の有限和。
+-- nestedCutSum は外側の色の一つを内側の切断で置き換えた有限和。
+cutSum_composite (u : Surjection.BasisWord (m+1) d)
+    (v : Surjection.BasisWord n e) (i : Fin (m+1)) (x : S _⦋q⦌) :
+  compositeCutSum A S u v i x = nestedCutSum A S u v i x
+
+-- L13 unary の単位切断。q は任意。
+cutSum_unit (x : S _⦋q⦌) :
+  cutSum A S Surjection.unitWord x = (oneIso (C S)).inv.f _ (gen S q x)
+
+-- L14 nullary の余作用と、nullary を含む部分合成。
+coaction_nullary : coaction A S 0 =
+  (nullaryCoefficient A ⊗ₘ chainsAugmentation A S) ≫ (λ_ (𝟙_ (Complex A))).hom
+coaction_comp_nullary (m : ℕ) (i : Fin (m+1)) :
+  (χ.comp m 0 i ▷ C S) ≫ coaction A S m =
+    ((β_ (χ.arity (m+1)) (χ.arity 0)).hom ▷ C S) ≫
+    (α_ _ _ _).hom ≫ (χ.arity 0 ◁ coaction A S (m+1)) ≫
+    tensorCoInsertionAction (C S) (χ.arity 0) m 0 i (coaction A S 0)
+
+-- L15 全整数の余作用の自然性。正規化生成元上の L05 から。
+coaction_natural (f : S ⟶ T) (r : ℕ) :
+  (χ.arity r ◁ cmap f) ≫ coaction A T r =
+    coaction A S r ≫ TensorPowers.map (cmap f) r
+
+-- L16 正の内側 arity の、実複体射の全部分合成則。
+coaction_comp (m n : ℕ) (hn : 0<n) (i : Fin (m+1)) :
+  (χ.comp m n i ▷ C S) ≫ coaction A S (m+n) =
+    ((β_ (χ.arity (m+1)) (χ.arity n)).hom ▷ C S) ≫
+    (α_ _ _ _).hom ≫ (χ.arity n ◁ coaction A S (m+1)) ≫
+    tensorCoInsertionAction (C S) (χ.arity n) m n i (coaction A S n)
+
+-- L17 実複体射の等変性・単位（L11,L13 の線形拡張）。
+coaction_equivariance (r : ℕ) (σ : Equiv.Perm (Fin r)) :
+  (χ.sequence.map (FiniteBijection.permutation r σ) ▷ C S) ≫ coaction A S r =
+    coaction A S r ≫ (permutationAction (C S) r σ).asIso.hom
+coaction_unit : (χ.unit ▷ C S) ≫ coaction A S 1 ≫ (oneIso (C S)).hom = (λ_ (C S)).hom
+
+-- L18 作用の式を保持して TR による BE 余代数と自然な射へ束ねる。
+bfCoalgebra_coaction (r : ℕ) : (bfCoalgebra A S).coaction r =
+  ((TableReduction.operadMap A).map.app (FiniteBijection.of r) ▷ C S) ≫ coaction A S r
+bfCoalgebraMap_comm (f : S ⟶ T) (r : ℕ) :
+  (E.arity r ◁ cmap f) ≫ (bfCoalgebra A T).coaction r =
+    (bfCoalgebra A S).coaction r ≫ TensorPowers.map (cmap f) r
+```
+
+L09・L12 は境界項の相殺・二段切断の有限添字対応を証明に含む。
+退化切断も零として同じ和に保持する。端点・同色の接着・空区間・arity零を捨てない。
+L06,L08 の basis 名は現在の自由加群の実 API に合わせて定義する略記であり、
+基底の存在や正規化への降下を別の未証明仮定にしない。
+
+### 108.4 残る数学の型一覧：正規化した cosimplicial 代数
+
+```lean
+-- L19 正規化部分加群を交代余面の微分が保つ。
+normalized_d_mem_exact (q : ℕ) (a : normalizedComponent X q) :
+  ∀ i : Fin (q+1), (X.σ i).hom (alternatingCofaces X q a.val) = 0
+
+-- L20 正規化包含の微分・自然性。
+normInclusion_d (i j : ℤ) :
+  (N X).d i j ≫ (normInclusion X).f j =
+    (normInclusion X).f i ≫ ((cosimplicialCochains A).obj X).d i j
+normInclusion_naturality (f : X ⟶ Y) :
+  (Nmap f) ≫ normInclusion Y = normInclusion X ≫ (cosimplicialCochains A).map f
+
+-- L21 正規化包含の指定ホモトピー逆。余単体的な Dold–Kan の分解を使う。
+normalizationHomotopyEquiv (X : CosimplicialAlgebra A) :
+  HomotopyEquiv (N X) ((cosimplicialCochains A).obj X)
+normalizationHomotopyEquiv_hom : (normalizationHomotopyEquiv X).hom = normInclusion X
+
+-- L22 convolution の等化子への全 X 射。二つの自然性の長方形。
+post_naturality (f : X ⟶ Y) : Pmap f ≫ post_Y = post_X ≫ Qmap f
+pre_naturality (f : X ⟶ Y) : Pmap f ≫ pre_Y = pre_X ≫ Qmap f
+bfNormalizedAlgebra_map_id (X) : bfMap (𝟙 X) = 𝟙 _
+bfNormalizedAlgebra_map_comp (f : X ⟶ Y) (g : Y ⟶ Z) : bfMap (f ≫ g) = bfMap f ≫ bfMap g
+
+-- L23 等化子の斉次元を恒等 q 単体で読む評価とその逆。
+evaluation_mem (q : ℕ) (a : bfCarrier X |>.X (q:ℤ)) :
+  scaledEvaluation X q a ∈ normalizedComponent X q
+reconstruction_evaluation (q : ℕ) (a : bfCarrier X |>.X (q:ℤ)) :
+  reconstruct X q (scaledEvaluation X q a) = a
+evaluation_reconstruction (q : ℕ) (a : normalizedComponent X q) :
+  scaledEvaluation X q (reconstruct X q a) = a
+bfCarrier_isZero_negative (i : ℤ) (hi : i<0) : IsZero ((bfCarrier X).X i)
+
+-- L24 評価の次数係数と微分の比較。符号なしの評価ではない。
+evaluation_d (i j : ℤ) :
+  (bfCarrier X).d i j ≫ evaluationComponent X j =
+    evaluationComponent X i ≫ (N X).d i j
+
+-- L25 同じ評価の全 X 射での自然性。
+evaluation_naturality (f : X ⟶ Y) (i : ℤ) :
+  (bfMap f).hom.f i ≫ evaluationComponent Y i =
+    evaluationComponent X i ≫ (Nmap f).f i
+
+-- L26 全関手の台の同型と指定された正規化比較。
+bfNormalizedUnderlyingIso :
+  bfNormalizedAlgebra A ⋙ Operad.Algebra.forget E ≅ bfNormalizedCochains A
+bfNormalizationComparison : bfNormalizedCochains A ⟶ cosimplicialCochains A
+bfNormalizationComparison_app : (bfNormalizationComparison A).app X = normInclusion X
+bfNormalizationComparison_quasiIso (X) : QuasiIso ((bfNormalizationComparison A).app X)
+
+-- L27 構成した代数の作用の、各 q への射影の評価公式。
+-- wedgeProjection は等化子から同じ convolution 代数への射。
+bfAction_projection (r q : ℕ) :
+  ((bfNormalizedAlgebra A).obj X).action r ≫ (wedgeProjection X q).hom =
+    (𝟙 _ ⊗ₘ TensorPowers.map (wedgeProjection X q).hom r) ≫
+      (simplexConvolution X q).action r
+
+-- L28 同じ作用を正規化コチェインの元で読む明示的な BF 切断公式。
+-- lhs は L26 の同型で運んだ「実際の」BE作用。rhs は TR の実係数を用いた切断和。
+bfAction_formula (r d : ℕ) (e : (E.arity r).X (-(d:ℤ)))
+    (degrees : Fin r → ℕ) (a : ∀ c, normalizedComponent X (degrees c)) :
+  normalizedActionValue X e degrees a = bfCutEvaluation X e degrees a
+```
+
+L19 の codegeneracy の添字は Fin(q+1)。
+L14 の nullaryCoefficient A : χ.arity 0 ⟶ 𝟙_ (Complex A) は、
+Surjection.zeroAugmentation と正次数の基底が空であることから定義する同じ係数射。
+χ 全体の operad augmentation の存在は仮定しない。
+L21 の複体のホモトピー同値には Mathlib の Dold–Kan の分解を反対圏で用いる。
+L23 の reconstruction は、各 q 単体の単射 θ:[k]→[q] の生成元を X.map θ の像へ送り、
+非単射 θ は零とする式。全 α の自然性と codegeneracy の核の条件の同値もこの主張に含む。
+L28 の出力次数は ∑c degrees c−d、負なら零。r=0・d=0 の単位の式も含める。
+ここで Frobenius・ν・May の P⁰ の係数の総和はまだ計算しない（M14 側の残り）。
+
+### 108.5 照合の三枠と既存の再利用
+
+I01 は区間の版との必須の照合として予約する。
+
+```lean
+-- I01 Δ¹ の同じ正規化鎖の同型に沿う、全部分余作用の厳密な一致。
+intervalCoaction_compare (r : ℕ) :
+  (χ.arity r ◁ intervalCarrierIso A |>.hom) ≫ IntervalCuts.cochainAction A r =
+    coaction A Δ[1] r ≫ TensorPowers.map (intervalCarrierIso A).hom r
+```
+
+intervalCarrierIso は定義的に同じ場合は Iso.refl、extend の表現差があればその既存の標準同型。
+BE の方は、この同じ式に TableReduction.operadMap を前置した帰結とし、別の新規数学には数えない。
+I02・I03 は未使用のまま残す。二項 AW や別の模型の比較を便利さだけで追加しない。
+
+再利用する既存宣言：ShufflePath.horizontal_surjective、vertex_strictMono_on_color、
+AlexanderWhitney.generator_map_of_not_mono、normalization_restrictToNormalized、
+既存 tensorLift・ι_tensorLift、Surjection の complexPartialComposition と compositionOnWords、
+Operad.restrictCoalgebraObj、convolutionAlgebra・convolutionPre・convolutionPost、
+AlgebraLimits、Mathlib Dold–Kan の normalized/alternating のホモトピー同値。
+[原典 BF §2.2.3–7](https://arxiv.org/pdf/math/0109158#page=33) の一般の切断と符号を用いる。
+証明の順は L01〜L18 → I01 → L19〜L28。定義・既存構成の組み立ては依存順に挟む。
+完成時が調整役への取り込み点。検証済み小束は枝に保存するが、native Tot の完了とはしない。
