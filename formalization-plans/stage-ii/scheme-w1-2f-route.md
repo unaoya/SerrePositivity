@@ -861,3 +861,30 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 残る単射側では `reesClosedCechIntThickeningDiagram_projection` を同じ標準開の比較で移し、射影後の厚化写像と p^e 乗後の射影を照合する。制限で消える元の p^e 乗を十分厚い制限の核に入れ、前の束のイデアル版の核の評価で IB に入れる。その後 B/IB と閉厚化の切断環の Frobenius 比較を閉じる。Proj の構造層の切断代数との環同型、F7 の幾何学的四角形、F8 の増大全複体は未完。
 
 2f 累計は **121 モジュール・7,674 行（登録込み 7,867 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
+
+## F7：斉次切断代数の商と閉厚化の Frobenius 比較（12b131cd9、11-13）
+
+新規 4 モジュール・12 公開宣言（局所インスタンスを除く）・287 行（登録込み 295 行）。対象ビルドは 3,268 jobs、直接 importer は 4,671 jobs 成功。別実行の公理監査は **9,682 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ使い、待ちは一つに保った。
+
+登録モジュール：`ReesHomogeneousThickeningProjection`、`ReesHomogeneousSectionKernelPower`、`ReesHomogeneousSectionQuotient`、`ReesHomogeneousSectionFrobeniusComparison`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `reesHomogeneousThickeningDiagram_projection` | 標準開から射影した後の厚化写像は、実際の環の p^e 乗後の厚い閉厚化への射影に一致する。 |
+| `reesHomogeneousSectionThickening_projection` | 同じ可換性が適合切断に成り立つ。 |
+| `reesClosedHomogeneousSectionProjection_kernel_power` | Noether 基底と有限生成性から、制限の核の一様な Frobenius 冪が IB に入る。 |
+| `projectiveHomogeneousAway_scalar_eq_zero` | 構造環で零になる基底スカラーは斉次局所化でも零になる。 |
+| `projectiveHomogeneousSectionAlgebra_scalar_eq_zero` | 同じスカラーは適合切断代数でも零になる。 |
+| `reesClosedHomogeneousSectionProjection_ideal_le_ker` | 閉厚化への制限は I^n の切断環への拡大を消す。 |
+| `reesClosedHomogeneousSectionQuotientMap` | B/(I^n B) から実際の閉厚化の切断代数への比較環準同型。 |
+| `reesClosedHomogeneousSectionQuotientMap_mk` | この比較写像は代表元上で元の切断の制限に一致する。 |
+| `projectiveHomogeneousSectionAlgebra_primeCast` | 基底環で p が零なら適合切断代数でも p は零。 |
+| `reesClosedHomogeneousSectionQuotientMap_kernel_nil` | B/IB から閉厚化の切断代数への比較写像の核は nil。 |
+| `reesClosedHomogeneousSectionQuotientMap_power_lifts` | 閉厚化の切断のある Frobenius 冪は、この比較写像の像に入る。 |
+| `reesClosedHomogeneousSectionQuotientMap_frobenius_bijective` | 実際の比較写像が誘導する Frobenius 順極限の環準同型は全単射。 |
+
+核の評価の定数を c とし、p^(c+1) が c+1 以上であることから、制限の核のその冪を IB に入れた。商写像の核の元を代表元で取り、商の零判定で nil 性を得る。全射性は前の束の一様な冪の持ち上げを用いる。最後に既存の `frobeniusDirectLimitMap_injective`・`frobeniusDirectLimitMap_surjective` を適用した。核・像の条件を入力仮定に残していない。主定理が BST13 Lemma 3.9 の H⁰ に用いる Čech 版であり、Stacks 30.2.6 の比較を形式化しないことを明記している。再帰深度の展開は成分補題で分け、上限は変更していない。
+
+**到達点**：斉次標準開の実際の環から作る切断代数 B について、B/IB と閉厚化の切断代数の Frobenius 比較が閉じた。未完は、Proj の構造層の切断代数との環同型、F7 の有限環の四角形への接続、F8 の増大全複体と停止点の自然性の検収。F7 全体や 2f の停止点とはしない。
+
+2f 累計は **125 モジュール・7,961 行（登録込み 8,162 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。最終出力の型も変更していない。
