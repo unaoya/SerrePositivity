@@ -3529,3 +3529,42 @@ def frameHomHomotopyOfChainHomotopy (F G : SimplexCategory ⥤ D)
 鍵付きの最終対象ビルドは **4,008 jobs、終了コード0**（`/private/tmp/isw2-build101.log`）。今夜の連絡に合わせ、監査は新規7モジュールだけ：**58宣言、標準三公理のみ**（`/private/tmp/AuditISW2G10A07.lean`）。既検収179本・1,831宣言と合わせた累計は **186モジュール・11,418行・1,889宣言**。累計対象一覧 `/private/tmp/isw2-g10-hundredeightysix-modules.txt`。上記7本を登録対象へ追加する（共通1本・DiagramComparison6本）。共有鍵は返却済み。
 
 新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。外枠14,500行まで残り3,082行。A07完了、A08は既存の二つのEZホモトピーをA07へ入れる個別検査が通っており、A09の同じ指定射の同値性へ接続中。A08以降は本節の検収数に未算入。B・C・Dと停止点2は未完。
+
+
+## 95. A08・A09完了：指定比較自身に同じshuffleの逆を与えた
+
+A08は既存の全余単体AW・shuffleの両合成のEZホモトピーに、A05の指定余作用とA07を適用した。A09は既存 `freeTensorDiagramHomIso`・`freeProductSectionsHomIso` の間でこの二つの実ホモトピーを前後合成し、`normalizedWeightSectionMap` 自身の逆を既存 `normalizedWeightSectionReverse` として与えた。別の同値は選ばず、Kan性や模型圏の仮定も追加していない。
+
+### 95.1 一覧A08・A09の型
+
+A08は `A : Type (max u v)`、`J : Type v`、`[SmallCategory J]`、`W : J ⥤ SSet.{max u v}`、`φ : simplicialRingCoefficient.{max u v} →+* A`、`P := standardParameterForCoefficients A J`。A09は既存入口と同じ `A : Type u`、`J : Type u`、`[SmallCategory J]`、`W : J ⥤ SSet.{u}`、`Q : J ⥤ CochainComplex (ModuleCat A) ℤ`、`φ : simplicialRingCoefficient.{u} →+* A`。いずれも`[CommRing A]`を固定。追加の前提計算枠・照合枠は使っていない。
+
+`FreeProductHomComparisonHomotopies`
+
+```lean
+def freeProductHomComparison_homotopy (Q : J ⥤ CochainComplex (ModuleCat A) ℤ) :
+    SSet.Homotopy
+      ((freeProductHomReverse A W P φ).app Q ≫ (freeProductHomComparison A W P φ).app Q)
+      (𝟙 _)
+```
+
+```lean
+def freeProductHomReverse_homotopy (Q : J ⥤ CochainComplex (ModuleCat A) ℤ) :
+    SSet.Homotopy
+      ((freeProductHomComparison A W P φ).app Q ≫ (freeProductHomReverse A W P φ).app Q)
+      (𝟙 _)
+```
+
+
+`NormalizedWeightSectionEquivalence`
+
+```lean
+theorem normalizedWeightSectionMap_equivalence :
+    IsSimplicialHomotopyEquivalence (normalizedWeightSectionMap A W Q φ)
+```
+
+### 95.2 検収と残り
+
+コード **`c3000d7aa`**。新規2本84行（FreeProductHomComparisonHomotopies 45、NormalizedWeightSectionEquivalence 39）。個別・結合検査 `/private/tmp/isw2-product-hom-homotopies2.log`・`/private/tmp/isw2-weight-section-equiv1.log` は終了コード0。鍵付き対象ビルド **4,400 jobs、終了コード0**、新規2モジュールだけの一時監査 **11宣言、標準三公理のみ**（`/private/tmp/isw2-build102.log`、`/private/tmp/AuditISW2G10A08A09.lean`）。既検収と合わせた累計は **188モジュール・11,502行・1,900宣言**。一覧 `/private/tmp/isw2-g10-hundredeightyeight-modules.txt`。上記2本を登録対象へ追加。鍵は返却済み。
+
+A10の自由テンソルHom同型の標的自然性の型が既定の200,000 heartbeatsに当たったため、既存の図式Homの標的射を明示する `DiagramHomTargetMap` とその転置の特殊化に分けて検査している。計算上限を上げず、既存宣言も変えていない。これは同じ一覧A10の構成・自然性の分割であり、新しい数学のまとまりを足していない。A10以降・B/C/D・停止点2は未完。外枠14,500行まで検証済みから2,998行。新公理・sorryなし、⑤a・入口・公式監査の変更なし。
