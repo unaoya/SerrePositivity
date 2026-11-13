@@ -1557,7 +1557,7 @@ def strictSemifreeRawDAJoinFamily : P ⊗ join I₂ (Δ[0] : SSet.{u + 1}) ⟶ D
     (strictSemifreePointUnderlyingFunctor_projective A) ≫ (projectivePointEquivalence A).hom
 
 -- U30: 同じjoinの宇宙変更。既存のsmallDiagramShapeIsoの逆を使う。
-def strictSemifreeJoinShapeIso :
+def strictSemifreeJoinShapeIso (A : Type u) :
   join I (Δ[0] : SSet.{u + 1}) ≅ join I₂ (Δ[0] : SSet.{u + 1})
 
 -- U31: 下方図式の既存の全関手同型に沿い、同じ全族を輸送する。
@@ -1756,3 +1756,69 @@ U29〜U30の構成・単位則は下書きのみで、まだコミットしな�
 前提計算はU20が1/3、U30が2/3、U38が1/3、他は0/3。照合0/3。
 R6は未完成で、残りは§33の型つき一覧のまま。既存宣言・他レーンの持ち分の変更はない。
 凍結確定の連絡はまだ受けていない。
+
+### U31の前提計算（3/3、既存の単位・評価の自然性）
+
+以下は既存の同値の単位と、既存の二つの全評価の係数移送の法則である。
+
+```lean
+def semifreeProjectivePointUnitIso :
+    FunctorIso
+      (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+        (dgSemifreeToProjective A PUnit.{1}) ≫ (projectivePointEquivalence A).hom)
+      (semifreePointEquivalence A).hom
+
+lemma strictModuleFamily_evaluation_factor {C : Type (u + 1)} [Category.{u} C]
+    (T : C ⥤ (J ⥤ ModuleCategory A PUnit.{1})) :
+    (nerveMap T ▷ (SSet.uliftFunctor.{u + 1, u}).obj
+        ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) ≫
+      (strictModuleCoherentFamily A J (𝟭 (J ⥤ ModuleCategory A PUnit.{1}))).evaluation =
+    (nerve C ◁ (smallDiagramShapeIso.{u} (nerve J)).hom) ≫
+      (nerveMap T ▷ (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) ≫
+      strictDiagramEvaluation J (ModuleCategory A PUnit.{1}) ≫
+      closedNerveInclusion A (RightModule A PUnit.{1})
+
+lemma strictDiagramEvaluation_postcompose {C D : Type (u + 1)}
+    [Category.{u} C] [Category.{u} D] (V : C ⥤ D) :
+    (nerveMap ((Functor.whiskeringRight J C D).obj V) ▷
+        (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) ≫ strictDiagramEvaluation J D =
+      strictDiagramEvaluation J C ≫ nerveMap V
+
+```
+
+U31は3/3となった。U20は1/3、U30は2/3、U38は1/3、その他0/3、一覧外の照合0/3。
+以後U31の前提計算を追加するときは、そのまま増やさず数え方と内容を確認する。
+
+### U23の包装の分割（計算枠の消費なし）
+
+次の同じ射を先に型づけし、`⟨射, rfl⟩` の型推論が全射影的持ち上げを簡約しないようにする。
+
+```lean
+def strictBarNativeProjectiveCoconeMapAt (c : C) :
+    join ((SSet.uliftFunctor.{u + 1, u}).obj
+      ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶
+        dgProjectiveModuleNerve A PUnit.{1}
+```
+
+U23の返す余錐は `JoinCocone (joinInl _ Δ[0] ≫ strictBarNativeProjectiveCoconeMapAt A J T hT c)`。
+元の型と定義的に同じであり、実際の射と脚は変えない。計算上限は引き上げない。
+
+## 36. 射影的な全余錐族と同じ余極限性（11-13 夜、継続）
+
+追加5本・326行を検証した。
+`StrictBarNativeProjectiveFamily`（99行、U18〜U22）は、同じ全native余錐族の射影的持ち上げ。
+`StrictBarNativeProjectiveCocone`（71行、U23〜U25）は、同じ余錐を固定パラメーターへ制限し、
+包含後に元の指定native余錐へ戻る等式と、その射影的模型での余極限性。
+`StrictSemifreeRawDAFamily`（62行、U29〜U30）は、その全族を既存D(A)へ送る構成とjoinの形状同型。
+`StrictFamilyEvaluationNaturality`（60行）はU31の二つの評価の自然性、
+`SemifreeProjectivePointUnit`（34行）は既存の同値の同じ単位。
+
+対象ビルド成功（6,343 jobs）、`/tmp/is-w1/3b3-build-78-cocone.log`。
+先行する11宣言の監査と後続の監査を重複を除いて数え、追加16宣言が標準三公理のみ、sorryAxなし。
+検証済み累計**63本・4,831行、監査対象239宣言、R6実測4,168行**。
+
+U01〜U30とU38、U31の前提計算3件まで通った。R6の残りはU31〜U37・U39〜U41。
+U23の包装は§33の同じ射の分割で通り、計算上限を引き上げていない。
+前提計算はU20が1/3、U30が2/3、U31が3/3、U38が1/3、他は0/3。照合0/3。
+次は全下方図式を指定の全評価へ接続し、同じ全余錐族・apexの比較を閉じる。
+凍結確定の連絡はまだ受けていないため、検証済みの分を保存した。
