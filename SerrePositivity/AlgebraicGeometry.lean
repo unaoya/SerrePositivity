@@ -1040,3 +1040,9 @@ public import SerrePositivity.AlgebraicGeometry.CechAlgebraNonemptyEqualizerEqui
 public import SerrePositivity.AlgebraicGeometry.ProjectiveProjCechSectionAlgebraEquiv
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSectionComparison
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousFiniteCenterExact
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousClosedCenterExact
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousClosedCenterMaps
