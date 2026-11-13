@@ -3871,3 +3871,84 @@ def asSmallLinearHomIso (P Q : CochainComplex (J ⥤ ModuleCat.{u} A) ℤ) :
 A12の指定射・同値性はまだ閉じていない。次は同じ正規化BK Homの係数重みを、既存 `normalizedLinearWeightFreeIso`、`normalizedMooreMapIso`、`pointwiseExtendIso`・`mapExtendIso` の指定射で、AsSmall添字の自由鎖図式へ接続する。そのΓ Homへ既存A09の指定比較を適用し、元のMoore反転と単体集合のop、今回の指定重み同型、既存の実Γ Hom図式の同型で `liftedClosedDiagram` の反転BK Holimへ戻す。射の等式と同値性は別々に検証する。
 
 その後に一覧Bの指定豊穣合成との等式・native切断の族・極限性、Cの標準脚とD(A)への輸送、Dの全図式射・指定錐の族・離散加群入口が残る。goal「Dまで進めてください」はactiveのままで、A11や今回の部品を完了条件に置き換えていない。停止点2の完了報告ではない。
+
+
+## 99. A12の途中：元の正規化BK係数重みを自由鎖図式へ接続
+
+前回のgoal turnはA11とAsSmallの検証済みコード・報告を保存した進捗。今回の開始時に枝がクリーンで`ffbea99f3`まであることを確認し、§98.3の係数重みの接続を進めた。goal「Dまで進めてください」はactiveのまま。
+
+既存のMoore比較を、加法関手間の自然変換に対して自然な形にした。その指定比較を評価関手で束ね、図式圏の正規化と点ごとの正規化の全自然同型を作った。既存 `pointwiseExtendIso`、`functorComplexExchangeCounitIso`、`normalizedLinearWeightFreeIso` と合成し、係数余積による正規化線形重みから同じ自由負鎖図式への指定同型を得た。最後に元の二重反対圏上の `normalizedBousfieldKanWeight` へ特殊化した。
+
+### 99.1 同じA12の分割と前提計算の型
+
+`normalizedMooreMapHom_functor_naturality`をA12の前提計算 **1/3** とする（既存正規化比較の自然性法則）。他は一覧A12の係数重み照合の同じ証明分割。照合枠は全体3/3のまま。既存宣言と計算上限は変更していない。
+
+最初の二本はHomologicalAlgebra名前空間。NormalizedMooreMapFunctorNaturalityでは`{C D : Type*}`、両Category構造とAbelian構造を固定する。PointwiseNormalizedMooreでは`J : Type*`・`[Category* J]`・`C : Type*`・`[Category* C] [Abelian C]`。LinearWeightFreeDiagramIsoはDiagramComparison名前空間、`A : Type u`・`[CommRing A]`・`J : Type v`・`[Category.{w} J]`・`W : J ⥤ SSet.{0}`。最後の特殊化はHA.DerivedCategoryModels.CosimplicialTotalization名前空間。
+
+`NormalizedMooreMapFunctorNaturality`
+
+```lean
+theorem normalizedMooreMapHom_functor_naturality {F G : C ⥤ D} [F.Additive] [G.Additive]
+    (α : F ⟶ G) (X : SimplicialObject C) :
+    (NatTrans.mapHomologicalComplex α (.down ℕ)).app ((normalizedMooreComplex C).obj X) ≫
+      normalizedMooreMapHom G X =
+    normalizedMooreMapHom F X ≫ (normalizedMooreComplex D).map (Functor.whiskerLeft X α)
+```
+
+
+`PointwiseNormalizedMoore`
+
+```lean
+def diagramMooreFunctor : SimplicialObject (J ⥤ C) ⥤ J ⥤ ChainComplex C ℕ
+```
+
+```lean
+def pointwiseMooreFunctor : SimplicialObject (J ⥤ C) ⥤ J ⥤ ChainComplex C ℕ
+```
+
+```lean
+def pointwiseMooreIso : diagramMooreFunctor J C ≅ pointwiseMooreFunctor J C
+```
+
+
+`LinearWeightFreeDiagramIso`
+
+```lean
+def freeLinearWeightDiagramIso :
+    (((normalizedMooreComplex _).obj (freeLinearizedSimplicialWeight A W.flip)).extend
+      ComplexShape.embeddingDownNat) ≅
+    (functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj
+      (freeNegativeChainsDiagram (A := A) (W ⋙ SSet.uliftFunctor.{u,0}))
+```
+
+```lean
+def normalizedLinearWeightDiagramIso :
+    (((normalizedMooreComplex _).obj (linearizedSimplicialWeight A W.flip)).extend
+      ComplexShape.embeddingDownNat) ≅
+    (functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj
+      (freeNegativeChainsDiagram (A := A) (W ⋙ SSet.uliftFunctor.{u,0}))
+```
+
+
+`NormalizedBKFreeWeight`
+
+```lean
+def normalizedBousfieldKanWeightFreeDiagramIso (A : Type u) [CommRing A] :
+    (normalizedBousfieldKanWeight (A := A)).extend ComplexShape.embeddingDownNat ≅
+      (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (freeNegativeChainsDiagram (A := A) (bousfieldKanSetWeight.flip ⋙ SSet.uliftFunctor.{u,0}))
+```
+
+### 99.2 検収と登録対象
+
+コード **`ff3dbf01a`**（共通2本70行）・**`1e434f076`**（係数重みの2本68行）。個別・結合検査 `/private/tmp/isw2-moore-functor-nat1.log`、`/private/tmp/isw2-pointwise-moore1.log`、`/private/tmp/isw2-bk-free-weight1.log` は終了コード0。
+
+鍵付き対象ビルドは **1,339 jobs**・**2,783 jobs**、どちらも終了コード0（`/private/tmp/isw2-build108.log`・`/private/tmp/isw2-build109.log`）。監査は新規分だけで各 **8宣言**、すべて標準三公理のみ（`/private/tmp/AuditISW2G10A12Moore.lean`・`/private/tmp/AuditISW2G10A12FreeWeight.lean`）。共有鍵は返却済み。
+
+累計 **206モジュール・12,260行・1,982宣言**。対象一覧 `/private/tmp/isw2-g10-twohundredsix-modules.txt`。上記4本を登録対象へ追加する（共通HomologicalAlgebra2本、DiagramComparison1本、HA/CosimplicialTotalization1本）。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。外枠14,500行まで残り2,240行。mainのB3凍結中なので、枝だけで作業・コミットした。
+
+### 99.3 残りと次の接続
+
+今回閉じたのは元の正規化BK係数重みから自由鎖図式への同型であり、A12の反転BK比較と同値性そのものではない。次は、この指定同型と§98の`asSmallLinearHomIso`をHom複体へ運び、元のMoore反転ホモトピー同値、AsSmall・ULift・重み付き切断の指定射を通して、A09の同じ比較を反転BK Holimへ戻す。`normalizedMooreReverse`は既存の**鎖ホモトピー同値の順射**であり、根拠なく厳密な同型として扱わない。全射と同値性を元の指定比較についてそれぞれ検査する。
+
+その後のB（指定豊穣合成・native切断の族・極限性）、C（標準脚・D(A)輸送）、D（全図式射・指定錐族・離散加群入口）は未完。目標の完了条件はDまでの検証済み実装のままで、停止点2の完了報告ではない。
