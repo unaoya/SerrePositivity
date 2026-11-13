@@ -346,3 +346,92 @@ thickTensorIdealGenerated R M N ↔
 再開時の判断材料は (i) 上端 11,700 の扱い、(ii) 一般 E の入口と BE への輸送の型、
 (iii) A5 の完備版 Prop の受け渡し。これらを未証明の新 interface 欄や仮定にして
 隠さず、段0の報告として自分の枝に保存する。
+
+
+## 2. D80 承認後：標準係数・結合的忘却・厳密底の加群関手（11-14）
+
+ユーザーの段0承認と指示書 §5 を受領。外枠は **17,000 行**、約8,500行での
+途中報告を維持する。任意 E への輸送は作らず、BE 模型と A5 の特殊化で進める。
+main の承認文書（`41101afb1` を含む）を自分の枝へマージした。
+main 自身・⑤a の所有する既存ファイル・界面には書き込んでいない。
+
+### 2.1 検証済みの新設三本
+
+全て `SerrePositivity/EInfinity/BarrattEccles/Modules/` 配下。
+
+| ファイル | 行数（空行・docstring 込み） | 明示宣言数 | 出力 |
+| --- | ---: | ---: | --- |
+| `StandardCoefficient.lean` | 129 | 9 | M01–M03：全 arity の標準零単体、単位との一致、厳密な全挿入 |
+| `AssociativeForget.lean` | 183 | 12 | M04：同じ carrier の結合的 dg 代数と全代数射の忘却関手 |
+| `StrictModules.lean` | 108 | 9 | M05 の実構成、M06 の二関手、M09 の拡大の弱同値不変性 |
+| **合計** | **420** | **30** | |
+
+生成された補助宣言を含まない明示 `def/abbrev/lemma/theorem` の実測。
+M01–M04 は検証済み。M05 は台・正則加群の実頂点を構成したが、
+解像度後の台と元の正則加群の指定比較（C01 の残り）は未完。
+M06 は全厳密射の拡大・制限の実 ∞ 関手を構成済みで、M07 の随伴はまだ別工程。
+M09 は同じ拡大の弱同値不変性が検証済み。
+M08・M10 以降の全族・相対テンソル・指数・降下・RHom・完備版は未完。
+**固定した厳密底の段階を、native CAlg の全辺への降下の完成とは数えない。**
+
+### 2.2 実装の内容と残る受け渡し
+
+M03 は収縮の切断を使わず、各 arity の恒等置換の零単体から作った。
+shuffle 次数 `(0,0)` の経路は一意で符号は一、内側・外側の恒等置換の合成も恒等。
+これを元の複体の零次の一の像で検査し、`n=0` 込みで厳密な合成則を証明した。
+M04 の左右単位則・結合則はこの等式と代数の作用公理から得た。
+右単位則に可換性やホモロジー上の一致は使っていない。
+原典対応は Berger–Fresse §1.1.1–1.1.3。
+
+主出力の型は段0どおり。実名は以下。
+
+```lean
+standardCoefficient_composite (A : Type u) [CommRing A]
+    (m n : ℕ) (i : Fin (m+1)) :
+  coefficientComposite m n i (standardCoefficient A (m+1))
+    (standardCoefficient A n) = standardCoefficient A (m+n)
+assocForget (A : Type u) [CommRing A] :
+  (operad A).Algebra ⥤ Mon (Complex A)
+assocForget_forget (A : Type u) [CommRing A] :
+  assocForget A ⋙ Mon.forget (Complex A) = Operad.Algebra.forget (operad A)
+strictModuleUnderlying A X : strictModuleInfinity A X ⟶ derivedInfinityCategory A
+strictModuleUnit A X : (strictModuleInfinity A X) _⦋0⦌
+strictModuleExtend (f : X ⟶ Y) : strictModuleInfinity A X ⟶ strictModuleInfinity A Y
+strictModuleRestrict (f : X ⟶ Y) : strictModuleInfinity A Y ⟶ strictModuleInfinity A X
+strictModuleExtend_weak (f : X ⟶ Y) (hf : QuasiIso f.hom) :
+  IsQCatEquivalence (strictModuleExtend f)
+```
+
+§1 の restriction の射影性保存の問題に対して、
+`dgModuleDerivedFunctor` に仮定を足す経路は採用しなかった。
+既存 `dgModuleResolvedInfinity` は任意の dg 加群値関手の出力を全関手的に解像する。
+これを半自由加群の全包含の後の `dgModuleRestriction` に適用して、実 restriction を構成。
+台の忘却にも `moduleEvaluationDG` と `ringConstantDG` の後に同じ構成を使い、
+`semifreePointEquivalence` で既存 D(A) に戻す。
+正則加群は同じ一対象 dg 圏の representable を解像して指定した。
+
+この出力解像度の存在は M07 の同じ単位・余単位の検証を自動では供給しない。
+一般 kernel の `dgKernelAdjunction` と graph 比較は再利用候補として確認済み。
+これと今構成した restriction の全関手比較が次の検査対象。
+
+数え方：M03 の shuffle 二補題は前提計算二本。
+M04 の全 arity における一入力単位則・部分合成則・射保存則は前提計算三本。
+三つのモノイド公理は M04 の構造構成の証明分割として数える。
+`assocForget_forget` は C01 の厳密な台の部分。C02・C03 は未使用。
+新しい一覧外の数学の補題を追加したとは数えていない。
+
+### 2.3 対象ビルドと小さい監査
+
+全呼び出しを `scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- ...` で実行。
+新設三本だけを `lake env lean -o <自分の .lake の出力> <対象>` で検証した。
+既存 main の olean は自分の .lake 配下の参照リンクから読み、新規三本の出力だけを
+自分の worktree に作った。main と⑤a の build 成果物は書き換えていない。
+
+三本の対象ビルド成功。新規30宣言の `#print axioms` の小監査も成功し、
+全て **`propext`・`Classical.choice`・`Quot.sound` のみ**。
+`sorryAx`・追加公理なし。監査入力は `/tmp/m15-small-audit.lean`、
+ログは `/tmp/m15-small-audit.log`。全体ビルド・大きい監査は回していない。
+`git diff --check` と新設三本の禁止語（`sorry`・`axiom`・`admit`）検査も実施する。
+
+これは 420 / 17,000 行時点の区切り記録で、規模による停止ではない。
+M15 の停止点1には未到達。引き続き M05 の指定比較・M07 の随伴・M08 の合成へ進む。
