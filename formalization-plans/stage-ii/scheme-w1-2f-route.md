@@ -1042,3 +1042,26 @@ unfold は保存則の補題の中に限定。加法保存では中間の切断�
 - `projectivePerfCechH0Iso_inv_add (z w : P(B)) : iso.inv.hom (z+w) = iso.inv.hom z + iso.inv.hom w`。
 
 H⁰ の差写像全体の `projectivePerfCechH0Difference_map_add` は未検証。中間補題の単独の成功を全体の成功とはしない。定義の等式による照合を三段に分け、さらに一般の逆比較の表示を独立補題にしたが、閉厚化へ代入した最後の型照合で最大再帰深度に達する。下書きは `ProjectivePerfCechH0SquareLaws` に保持し、未検証の Lean をコミットしていない。零保存の独立補題（85a68fc72）は引き続き検証済み。
+
+## 11-13 夜：零・加法の独立保存則の検証完了（d7f39c479）
+
+固定した関数の def `projectivePerfCechH0Difference`（85a68fc72）を変更せず、零保存と加法保存を別の宣言として検証した。零保存の対象ビルドは 3,378 jobs、今回の加法保存の対象ビルドは 3,381 jobs 成功。共有鍵 `--wait 3600` を使用。大きい監査・ルート登録・直接 importer 全体の検証は夜の指示に従い保留。
+
+変数 R, A, ι, G, I, p, hp, hR, hA とインスタンスは `ProjectivePerfCechH0SquareData` と同じ。二つの独立宣言の完全な主張の型は以下。
+
+```lean
+projectivePerfCechH0Difference_map_zero :
+  projectivePerfCechH0Difference (ι := ι) G I p hp hR hA 0 = 0
+
+projectivePerfCechH0Difference_map_add
+  (x y : projectivePerfCechH0 (ι := ι) G p hp hR hA ×
+    FrobeniusDirectLimit (R ⧸ (I ^ 1)) p hp
+      (frobeniusQuotientPrimeCast p hR (I ^ 1))) :
+  projectivePerfCechH0Difference (ι := ι) G I p hp hR hA (x + y) =
+    projectivePerfCechH0Difference (ι := ι) G I p hp hR hA x +
+      projectivePerfCechH0Difference (ι := ι) G I p hp hR hA y
+```
+
+配置：零保存は `ProjectivePerfCechH0SquareZero`、加法保存は `ProjectivePerfCechH0SquareLaws`。いずれも関数の def の unfold は補題の証明内だけ。加法保存は中央項の比較の加法保存、単独検証済みの切断環側の加法保存、逆 H⁰ 比較の加法保存を合成した。最後の逆比較の補題にすべての引数を明示し、最後だけ `convert ... using 1` で型照合を分離すると通った。探索上限・heartbeat・再帰上限は一切引き上げていない。sorry・admit・新しい公理は追加していない。
+
+これで調整役の「零・加法の保存を別宣言として検証し、型を報告する」依頼は完了。2f 全体は未完。次はこの二つの保存則で差の加法準同型を組み、H⁰ の短完全列の下書きへ適用する。基底の増大写像、F8 と停止点の自然性の検収も残る。未検証の `ProjectivePerfCechH0Square`・`ProjectivePerfCechH0SquareMaps` は作業木に保持している。
