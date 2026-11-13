@@ -1118,3 +1118,26 @@ Function.Surjective (projectivePerfCechH0Difference (ι := ι) G I p hp hR hA)
 差写像の表示の下書きは未検証。conv の最後の引数を選択して変換することで、中央項の評価、切断環側の差の公式、逆比較の差の保存が適用できた。自然性の合成射は `ModuleCat.hom_comp` と `LinearMap.comp_apply` で浅く正規化して、逆比較の評価補題に接続できた。最後の差の等式を作る箇所ではまだ isDefEq の上限に達する。旧証明は切断環側で比較していたが、新証明は H⁰ 側なので、基底の中心の項も逆 H⁰ 比較で移す必要があることを見つけ、その不足は下書きで修正済み。次はこの基底側の項を型を明示した写像に束ね、最終の差の照合を軽くする。
 
 2f の未完範囲は、実際の差の表示、基底側の増大写像、F8 の増大全複体、自然性・最終検収。今回の評価補題を F7 全体または停止点 2f の完成とはしない。
+
+## 11-14：H⁰ の差と実際の閉厚化の制限の一致（59cd5fa58）
+
+新規 2 モジュール・2 公開宣言・99 行。対象ビルド 3,386 jobs 成功（非推奨の補題名を現行名へ直した後にも成功）。共有鍵 --wait 3600 を対象ビルドの間だけ使用。探索上限・heartbeat・再帰上限は変更していない。大きい監査・ルート登録は引き続き保留。
+
+- `projectivePerfCechH0CenterClass`：基底の中心の Frobenius 順極限から、閉厚化の F6 の複体の H⁰ への写像。実際の `projectiveHomogeneousClosedCenterBaseMap` の Frobenius 順極限に既存の逆 H⁰ 比較を合成する。始域・終域を明示した def。
+- `projectivePerfCechH0Difference_apply`：移送した差写像が、F6 の実際の `reesClosedFrobeniusRingCechMap` の H⁰ の射と基底側の上記の写像の差であること。
+
+主張の型（変数・インスタンスは射影標準開の既存の設定）：
+```lean
+projectivePerfCechH0Difference_apply
+  (b : projectivePerfCechH0 (ι := ι) G p hp hR hA)
+  (c : FrobeniusDirectLimit (R ⧸ (I ^ 1)) p hp
+    (frobeniusQuotientPrimeCast p hR (I ^ 1))) :
+  projectivePerfCechH0Difference (ι := ι) G I p hp hR hA (b,c) =
+    (HomologicalComplex.homologyMap
+      (reesClosedFrobeniusRingCechMap (ι := ι) I G p hp hR hA 1) 0).hom b -
+      projectivePerfCechH0CenterClass (ι := ι) G I p hp hR hA c
+```
+
+中央項と切断環側の差の書き換えは、conv の最後の引数を選択して内側だけで行った。自然性の合成射の評価を `ModuleCat.hom_comp`、`LinearMap.comp_apply`、`ModuleCat.hom_ofHom`、`AddMonoidHom.coe_toIntLinearMap`、`RingHom.toAddMonoidHom_eq_coe`、`AddMonoidHom.coe_ofClass` で正規化した。最後は名前と型を固定した基底側の項を使って等式の合同性を適用し、convert で残る表示差を分離して閉じた。固定した差写像の def は変更していない。
+
+これで短完全列の右側の写像は F6 の実際の閉厚化の H⁰ の制限と揃った。2f は未完。残りは基底および基底の中心の増大写像を実際の零次コサイクルと照合すること、F8 の明示的な増大全複体、共通細分・底変換等の停止点の自然性の検収、登録・監査・最終報告。
