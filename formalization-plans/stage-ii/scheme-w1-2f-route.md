@@ -709,3 +709,26 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 全空間のアフィン性を仮定せず、層の一意貼り合わせから構成した。有限被覆や高次の消滅もこの同型には不要。導来関手の比較や Stein 分解は導入していない。最終出力の型は変更しない。
 
 次はこの同型で元の構造射を有限切断環の Spec を介して分解し、元の射の全射性を有限環側に渡す。閉厚化の零次環の Frobenius 比較、F7 の短完全列、F8 の増大全複体は未完。2f 累計は **104 モジュール・6,408 行（登録込み 6,567 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではない。
+
+## F7 途中：射影の有限切断環の中心四角形（b20a37a23、11-13）
+
+新規 3 モジュール・8 公開宣言・169 行（登録込み 175 行）。対象ビルドは 3,176 jobs、直接 importer は 4,653 jobs 成功。別実行の公理監査は **9,460 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ使い、待ちは一つに保った。
+
+登録モジュール：`SchemeCechSectionSpectrum`、`ProjectiveCechSectionSpectrum`、`ProjectiveCechFiniteCenterExact`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `schemeToCechSectionSpectrum` | 元のスキームから適合切断環の Spec への標準射。 |
+| `schemeToCechSectionSpectrum_comp` | 基底スカラーの Spec と合成すると元の構造射になる。 |
+| `schemeCechSectionAlgebra_surjectiveSpectrum` | 元の構造射が全射なら、適合切断環の Spec から基底の Spec への射も全射。 |
+| `projectiveCechSectionAlgebra_surjectiveSpectrum` | 標準開の生成条件のもとで、射影構造射の全射性を切断環の Spec に移す。 |
+| `projectiveCechSectionAlgebra_primeCast` | 基底環で p が零なら切断環でも p は零。 |
+| `projectiveCechSectionAlgebra_frobenius_injective` | 全射な射影構造射から、基底環から切断環への Frobenius 順極限の単射性を得る。 |
+| `projectiveCechSectionAlgebra_localized_surjective` | 中心外の同型と既存の余核の台の評価から、スカラー写像の局所化の全射性を得る。 |
+| `projectiveCechFiniteCenter_exact` | 射影有限性・構造射の全射性・中心外の同型から、基底・有限切断環 B・指定中心・B/IB の Frobenius 四角形の加法群の短完全性を得る。 |
+
+構造射の分解には前の束の大域切断の環の同型と Γ–Spec の標準射を使った。Stein 分解は使わない。有限環の四角形の補題に必要な局所全射性は、`projectiveCechScalarCokernel_support` と Mathlib の局所余核の判定から供給した。追加仮定として残していない。
+
+今回の短完全列の右下は **B/IB の Frobenius 順極限**。閉厚化 E の Čech H⁰ の順極限との比較はまだ必要であり、今回の定理を F7 全体の完成とはしない。次は実際の閉厚化への環の制限を H⁰ の比較へ接続し、2e の核の評価・像の安定化を使って B/IB と E の切断環の Frobenius 比較を得る。その後 F8 の増大全複体へ渡す。最終出力の型は変更しない。
+
+2f 累計は **107 モジュール・6,577 行（登録込み 6,742 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではない。
