@@ -1141,3 +1141,24 @@ projectivePerfCechH0Difference_apply
 中央項と切断環側の差の書き換えは、conv の最後の引数を選択して内側だけで行った。自然性の合成射の評価を `ModuleCat.hom_comp`、`LinearMap.comp_apply`、`ModuleCat.hom_ofHom`、`AddMonoidHom.coe_toIntLinearMap`、`RingHom.toAddMonoidHom_eq_coe`、`AddMonoidHom.coe_ofClass` で正規化した。最後は名前と型を固定した基底側の項を使って等式の合同性を適用し、convert で残る表示差を分離して閉じた。固定した差写像の def は変更していない。
 
 これで短完全列の右側の写像は F6 の実際の閉厚化の H⁰ の制限と揃った。2f は未完。残りは基底および基底の中心の増大写像を実際の零次コサイクルと照合すること、F8 の明示的な増大全複体、共通細分・底変換等の停止点の自然性の検収、登録・監査・最終報告。
+
+## 11-14：増大写像の組と有限段の零次スカラー（78164dd73）
+
+新規 2 モジュール・6 公開宣言・97 行。`ProjectivePerfCechH0PairEvaluation`（3,382 jobs）と `ProjectiveHomogeneousScalarCocycle`（3,383 jobs）の対象ビルド成功。共有鍵 --wait 3600 を各対象ビルドの間だけ使用。上限を変更せず、大きい監査・ルート登録は行っていない。
+
+- `projectivePerfCechH0ScalarClass`：基底の Frobenius 順極限から、切断代数へのスカラー写像の順極限と逆比較を通して F6 の複体の H⁰ に送る写像。
+- `projectivePerfCechH0Pair_apply`：左側の組は、このスカラーの H⁰ 類と基底の中心への実際の商写像の順極限の組。
+- `projectivePerfCechH0ScalarClass_of`：有限段 n の基底の元 r は、同じ段 n の切断代数の algebraMap r の順極限の類を逆比較で H⁰ に送ったもの。
+- `projectivePerfCechH0Pair_snd_of`：組の中心側の成分は、有限段で実際の商の元 Ideal.Quotient.mk (I^1) r を取る。
+- `projectiveHomogeneousSectionAlgebra_algebraMap_apply`：切断代数の algebraMap r は各標準開で同じ algebraMap r を取る。
+- `projectiveHomogeneousScalarCechIntH0_cocycle`：有限段のスカラーの Čech H⁰ 類を核表示に戻すと、各標準開で同じスカラーを取る実際の零次コサイクルとなる。
+
+最後の主張の型：D = projectiveHomogeneousChartAlgebraDiagram G とすると、
+```lean
+((fullCechH0KernelIso (algebraCechIntDiagram D)).hom.hom
+  (fullAlgebraCechIntH0Equiv D (algebraMap R
+    (projectiveHomogeneousSectionAlgebra (ι := ι) G) r))).val t =
+  algebraMap R (D.obj (cechTupleSupport t)) r
+```
+
+2f は未完。有限段での実際のスカラーのコサイクル表示は閉じたが、順極限の H⁰ 比較の有限段からの標準写像との可換性を明示し、今回の ScalarClass を順極限後の複体の増大写像と同定する必要がある。既存の `projectiveIntCechSequentialHomologyIso` と `ringDirectLimitIntColimitIso_of` を同じ標準写像に沿って照合する。基底の中心についても同じ接続が必要。F8 と共通細分・底変換等の最終検収、登録・監査・最終報告は引き続き残る。
