@@ -4854,3 +4854,123 @@ mainを読み取ると、`StrictSemifreeComputedColimitFamily.lean`に`strictSem
 3b-4ではこの**無条件版**を再利用する。BEの実例の`forget_preservesLimits`にも供給済みとの連絡を受領した。既存の`FramedLimit*`や`CAlgUnderlyingDerivedComparison`の再構成は行わない。
 
 これによりBE側の指定native極限錐が得られた後のU像の極限性は、追加のtransport仮定なしで上記定理へ接続できる。一方、元のstrict BE模型計算の指定錐をそのnative錐へ全高次単体とともに接続する工程と、実現側のU保存は、この極限保存定理だけで済ませない。G10（B02以降）の進行順は変えない。
+
+
+## 114. B02再開後：実AW合成の同じ自由逆随伴を全次数で評価
+
+### 114.1 進捗と型
+
+§16の承認に従いB02を再開した。実標準DK Homへの射を、既存の自由加群・Moore正規化随伴の**同じ合成**で戻す。その逆随伴を指定Moore射影生成元で評価すると、実Γの同じ射影と余単位による評価に一致することを示した。これを指定標準DK同型へ適用し、正次数は元の最上位成分、零次数はcyclesからの包含で元の最上位成分を回収する。
+
+実`standardComposition`に適用した逆随伴について、零次数・全正次数で元の`awTerm`の全切断点の和になる式を閉じた。後の射gを第一因子、前の射fを第二因子とし、元のbraidingと標準合成の順を保持する。これはB02の同じ生成元・成分照合の証明分割（§14）であり、独立した前提計算や照合の枠を追加しない。B02前提計算3/3、照合全体3/3のまま。
+
+下記はDiagramComparison名前空間。一般の式は`{R : Type u}`・`[CommRing R]`、標準Homの式はさらに`{D : Type v}`・`[DGCategory R D]`を固定する。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation`
+
+```lean
+def freeMooreChainsAdjunction :
+    ((Functor.whiskeringRight SimplexCategoryᵒᵖ (Type u) (ModuleCat R)).obj
+      (ModuleCat.free R) ⋙ normalizedMooreComplex (ModuleCat R)) ⊣
+    ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat R) ℕ ⥤ SimplicialObject (ModuleCat R)) ⋙
+      (Functor.whiskeringRight SimplexCategoryᵒᵖ (ModuleCat R) (Type u)).obj
+        (forget (ModuleCat R)))
+```
+
+```lean
+theorem normalizedFreeHomEquiv_symm_projected_eval (S : SSet.{u})
+    (K : ChainComplex (ModuleCat R) ℕ)
+    (f : S ⟶ (Abelian.DoldKan.Γ.obj K) ⋙ forget (ModuleCat R)) (n : ℕ)
+    (s : S.obj (Opposite.op ⦋n⦌)) :
+    (((freeMooreChainsAdjunction (R := R)).homEquiv S K).symm f).f n
+      ((DoldKan.PInftyToNormalizedMooreComplex (S ⋙ ModuleCat.free R)).f n
+        (ModuleCat.freeMk s)) =
+    ((DoldKan.PInftyToNormalizedMooreComplex (Abelian.DoldKan.Γ.obj K)).f n ≫
+      (Abelian.DoldKan.equivalence.counitIso.hom.app K).f n) (f.app _ s)
+```
+
+```lean
+def standardDoldKanSpaceMap (x y : D) :
+    standardHomSpace (R := R) x y ⟶
+      (Abelian.DoldKan.Γ.obj (connectiveHomComplex (R := R) x y)) ⋙
+        forget (ModuleCat R)
+```
+
+```lean
+theorem normalizedFreeStandardHom_positive_eval (S : SSet.{u}) (x y : D)
+    (f : S ⟶ standardHomSpace (R := R) x y) (n : ℕ)
+    (s : S.obj (Opposite.op ⦋n + 1⦌)) :
+    let g : (normalizedMooreComplex (ModuleCat R)).obj (S ⋙ ModuleCat.free R) ⟶
+        connectiveHomComplex (R := R) x y
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeAWProjectedEvaluation`
+
+```lean
+def normalizedFreeStandardHom (S : SSet.{u}) (x y : D)
+    (f : S ⟶ standardHomSpace (R := R) x y) :
+    (normalizedMooreComplex (ModuleCat R)).obj (S ⋙ ModuleCat.free R) ⟶
+      connectiveHomComplex (R := R) x y
+```
+
+```lean
+theorem normalizedFreeStandardAW_positive_eval (S T : SSet.{u}) (x y z : D)
+    (g : S ⟶ standardHomSpace (R := R) y z)
+    (f : T ⟶ standardHomSpace (R := R) x y) (n : ℕ)
+    (s : S.obj (Opposite.op ⦋n + 1⦌)) (t : T.obj (Opposite.op ⦋n + 1⦌)) :
+    let h
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomZeroEvaluation`
+
+```lean
+theorem mooreProjection_zero_eq (W : SimplicialObject (ModuleCat R)) :
+    (DoldKan.PInftyToNormalizedMooreComplex W).f 0 = (mooreDegreeZeroIso W).inv
+```
+
+```lean
+theorem normalizedFreeHomEquiv_symm_zero_eval (S : SSet.{u})
+    (K : ChainComplex (ModuleCat R) ℕ)
+    (f : S ⟶ (Abelian.DoldKan.Γ.obj K) ⋙ forget (ModuleCat R))
+    (s : S.obj (Opposite.op ⦋0⦌)) :
+    (((freeMooreChainsAdjunction (R := R)).homEquiv S K).symm f).f 0
+      ((mooreDegreeZeroIso (S ⋙ ModuleCat.free R)).inv (ModuleCat.freeMk s)) =
+    (gammaDegreeZeroIso K).hom (f.app _ s)
+```
+
+```lean
+theorem normalizedFreeStandardHom_zero_eval (S : SSet.{u}) (x y : D)
+    (f : S ⟶ standardHomSpace (R := R) x y) (s : S.obj (Opposite.op ⦋0⦌)) :
+    (homObject R D x y).iCycles 0
+      ((connectiveHomComplex_zeroIso (R := R) x y).hom
+        ((normalizedFreeStandardHom S x y f).f 0
+          ((mooreDegreeZeroIso (S ⋙ ModuleCat.free R)).inv (ModuleCat.freeMk s)))) =
+    standardTopEval (R := R) x y 0 (f.app _ s)
+```
+
+```lean
+theorem normalizedFreeStandardAW_zero_eval (S T : SSet.{u}) (x y z : D)
+    (g : S ⟶ standardHomSpace (R := R) y z)
+    (f : T ⟶ standardHomSpace (R := R) x y)
+    (s : S.obj (Opposite.op ⦋0⦌)) (t : T.obj (Opposite.op ⦋0⦌)) :
+    let h
+```
+
+### 114.2 検収と登録
+
+コード **`a34bfb003`**（1本117行）・**`8b0cc2644`**（2本157行）、計 **3本274行**。
+
+- 鍵付き対象ビルド127：**4,081 jobs・終了コード0**、新規監査`/private/tmp/AuditISW2G10B02FreeProjected.lean`は **6宣言・標準三公理のみ**。
+- 最終ソースの鍵付き対象ビルド129：**4,097 jobs・終了コード0**、新規監査`/private/tmp/AuditISW2G10B02FreeAWZero.lean`は **9宣言（4・5）・標準三公理のみ**。
+
+ログは`/private/tmp/isw2-build127.log`・`/private/tmp/isw2-build129.log`。共有鍵は返却済み。大きな監査・rootビルドは実行していない。再利用する零次数DK公式の成果物が枝になかったので、その依存は上記対象ビルドで補った。
+
+深いΓの型照合が既定の200,000 heartbeatに達した箇所は、同じ随伴と忘却射の型を固定し、合成の適用だけを明示して解消した。計算上限は上げず、既存宣言・⑤a・入口・公式監査・mainを変更していない。新公理・sorryなし。
+
+累計 **234モジュール・14,113行・2,130宣言**。対象一覧は`/private/tmp/isw2-g10-twohundredthirtyfour-modules.txt`。新しい外枠20,000行まで残り5,887行。登録対象は114.1の3本。
+
+### 114.3 次の接続
+
+B02は未完。今回の実合成の逆随伴の切断和を、A09の同じ自由鎖AWと指定tensor–Hom随伴の切断点ごとの式へ接続する。sourceのMoore射影を一般のAWと可換と仮定するのではなく、同じ生成元評価の後で比較し、包含と射影のsplit則を使う経路を検討している。
+
+`FreeTensorCoefficientGeneratorValues.lean`は、最後の切断の既存係数計算を任意の二次数へ分割する検査中の下書き。上のコミット・行数・監査には含めない。B03〜B08・C・Dも未完であり、今回の区切りは停止点2a・2bの完了報告ではない。Bが完了した時点でC・Dの見込みを実測に基づいて出し直す。
