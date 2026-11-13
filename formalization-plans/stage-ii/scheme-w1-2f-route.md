@@ -1102,3 +1102,19 @@ Function.Surjective (projectivePerfCechH0Difference (ι := ι) G I p hp hR hA)
 共有鍵 --wait 3600 を対象ビルドの間だけ使用。大きい監査・ルート登録・下流ビルドは未実施。実際の差写像の表示の下書き `ProjectivePerfCechH0SquareMaps` は再帰上限に達し、まだ未検証。今回の短完全列では差写像は固定した切断比較を介して定義したものであり、F6 の H⁰ 制限との差の表示および基底側の増大写像との照合を完了したとはしない。
 
 2f 全体は未完。残りは差写像の実際の制限との表示、基底と基底の中心の増大写像との照合、F8 の増大全複体、共通細分・底変換等の停止点の検収と最終報告。最後の型照合で使えなかった独立適用公式の試行は scheme-drafts に退避した。固定した差写像の def は変更していない。
+
+## 11-14：H⁰ の差の表示に使う独立評価補題（49bbffe22）
+
+`ProjectivePerfCechH0Evaluation` の対象ビルドが成功（3,381 jobs、追加補題を含む後続対象でも同モジュールは成功）。公開宣言と主張を記す。ここで e は `projectiveHomogeneousFrobeniusRingCechH0Iso`、P(B) は切断環の Frobenius 順極限、H は F6 の同じ複体の H⁰。
+
+- `projectivePerfCechH0CenterEquiv_apply (b : H) (c : P(R/I)) : centerEquiv (b,c) = (e.hom.hom b,c)`。
+- `projectivePerfCechH0Iso_inv_sub (z w : P(B)) : e.inv.hom (z-w) = e.inv.hom z - e.inv.hom w`。
+- `projectivePerfCechH0Iso_inv_hom (b : H) : e.inv.hom (e.hom.hom b) = b`。
+- `projectivePerfCechH0Iso_inv_congr (z w : P(B)) (h : z=w) : e.inv.hom z = e.inv.hom w`。
+- `projectivePerfCechH0Iso_inv_eq (b : H) (z : P(B)) (h : e.hom.hom b=z) : e.inv.hom z=b`。
+
+大きい監査・ルート登録は未実施。共有鍵 --wait 3600 を小さい対象ビルドの間だけ取得し、上限を一切引き上げていない。
+
+差写像の表示の下書きは未検証。conv の最後の引数を選択して変換することで、中央項の評価、切断環側の差の公式、逆比較の差の保存が適用できた。自然性の合成射は `ModuleCat.hom_comp` と `LinearMap.comp_apply` で浅く正規化して、逆比較の評価補題に接続できた。最後の差の等式を作る箇所ではまだ isDefEq の上限に達する。旧証明は切断環側で比較していたが、新証明は H⁰ 側なので、基底の中心の項も逆 H⁰ 比較で移す必要があることを見つけ、その不足は下書きで修正済み。次はこの基底側の項を型を明示した写像に束ね、最終の差の照合を軽くする。
+
+2f の未完範囲は、実際の差の表示、基底側の増大写像、F8 の増大全複体、自然性・最終検収。今回の評価補題を F7 全体または停止点 2f の完成とはしない。
