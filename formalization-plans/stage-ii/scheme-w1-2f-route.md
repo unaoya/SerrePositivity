@@ -1186,3 +1186,26 @@ ShortComplex.homologyMap (S.mapNatTrans (projectiveFilteredColimitInclusion j)) 
 `ι_preservesColimitIso_hom/inv` と `ShortComplex.homologyMap_mapNatTrans` を再利用した。新たなコホモロジーや余極限を定義して置き換えていない。結合の表示と局所名は等式の合成および限定した dsimp で揃えた。
 
 2f は未完。次は複体の sc 比較を有限段からの射と照合し、今回の短複体の結果を `projectiveFilteredComplexHomologyIso` へ通す。その後 ULift ℤ と AsSmall ℕ の比較の標準写像との可換性を合成し、Frobenius の各段からの H⁰ 比較を得る。F8・停止点の自然性の検収・登録・監査・最終報告も引き続き必要。
+
+## 11-14：複体の H と Čech H の canonical な標準写像（6039dfe45）
+
+新規 2 モジュール・5 公開宣言（private の逆四角形の補題を除く）・131 行。`ProjectiveFilteredComplexStage`（1,669 jobs）と `ProjectiveCechFilteredHomologyInclusions`（1,901 jobs）の対象ビルド成功。共有鍵 --wait 3600 をビルドの間だけ取得し、上限は変更していない。大きい監査・ルート登録は未実施。
+
+- `projectiveFilteredComplexStageIso`：短複体の図式を有限段で評価したものと、その段の複体の短複体との明示的な同型。
+- `projectiveFilteredComplexShortComplexIso_ι`：有限段からの短複体の標準写像と複体の標準写像は、既存の短複体の余極限比較を介して一致する。
+- `projectiveFilteredComplexHomologyIso_ι`：この可換性を H へ送り、前の短複体の H の標準写像の結果を合成した公式。評価と H の比較を型に明示。
+- `projectiveFilteredComplexHomologyIso_ι_canonical`：評価比較を打ち消して、複体の既存の filtered H 比較が有限段からの H の標準写像を保つことを示す。
+- `projectiveCechFilteredHomologyIso_ι`：既存の Čech H の filtered 比較について、有限段からの標準写像の公式を得る。
+
+最後の主張の型：
+```lean
+(HomologicalComplex.homologyFunctor (ModuleCat R) (.up ℕ) q).map
+    (fullCechComplexMap (colimit.ι D j)) ≫
+  (projectiveCechFilteredHomologyIso D q).hom =
+  colimit.ι (D ⋙ fullCechComplexFunctor ⋙
+    HomologicalComplex.homologyFunctor (ModuleCat R) (.up ℕ) q) j
+```
+
+各次数の評価関手の `ι_preservesColimitIso_inv`、短複体の H の自然性、前の束の標準写像の公式を使った。最後の表示差は逆同型の表記、関手の obj/map、結合則と限定した dsimp、および関手の恒等射の法則を等式として合成することで揃えた。既存の比較を別の任意の同型で置き換えていない。
+
+2f は未完。この公式を整数係数への ULift ℤ の移送と自然数の添字の AsSmall ℕ の移送に通し、Frobenius 系の有限段の標準写像との H⁰ 比較へつなぐことが次の接続。その後、基底・基底の中心の実際の増大写像と同定し、F8 の全複体と停止点の自然性を検収する。登録・監査・最終報告も残る。
