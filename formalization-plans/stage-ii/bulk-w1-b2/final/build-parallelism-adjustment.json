@@ -1,0 +1,13 @@
+{
+  "time": 1794511334.6378229,
+  "previous": 3,
+  "next_slots": 4,
+  "hardware_cpus": 10,
+  "physical_memory_gib": 64,
+  "observed_current_lean_rss_mib": [
+    1105,
+    175,
+    77
+  ],
+  "scope": "isolated target builds only; existing process and lease limit unchanged"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "scope": "Prospective isolated verification script only; production shared verifier is unchanged. Root/full audits/verify not executed in B2.",
+  "change": "Recursive discovery of registered scripts/audit/bs_power_root_envelope/*.lean",
+  "actual_discovery_count": 106,
+  "manifest_count": 106,
+  "missing_manifest_entries": [],
+  "unregistered_discovered": [],
+  "new_nested_audits": [
+    "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+    "scripts/audit/bs_power_root_envelope/Unoriented.lean",
+    "scripts/audit/bs_power_root_envelope/VarpiComparison.lean",
+    "scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean"
+  ],
+  "original_script_sha256": "664714d46abaf7f51f27590b4f1e3ddd81fcaf49468d3ef1dbe4e9d98e63e6cd",
+  "prospective_script_sha256": "69ec5ba538ef2b5a2ce5c4db02279298786b226d68cfd4e102a029b4f884d682"
+}

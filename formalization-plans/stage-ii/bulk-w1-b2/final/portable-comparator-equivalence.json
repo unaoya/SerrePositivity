@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "only_source_difference": "Portable import path for the unchanged shared comparator",
+  "runtime_source_sha256": "f83c8e97907113881f3b31ebb5f31690daa2acd1c7e8b7e16f1559929141f62d",
+  "portable_source_sha256": "8af8271c2f408078a2e4710c5e592c62cf1ac0605561e48d5f14a30d0c6d0822",
+  "tested_groups": [
+    "0000a",
+    "0207"
+  ],
+  "outputs_identical": true
+}

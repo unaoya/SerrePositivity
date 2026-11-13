@@ -1,0 +1,74 @@
+{
+  "status": "PASS in live captures with unchanged native binary, name map and comparator",
+  "reason": "Do not discard a completed before capture if the short daytime lease cannot finish after. Each side is reused only with the same full signature and byte hash. No name map, native binary, comparator or source is changed.",
+  "day_outer_seconds": 280,
+  "day_worker_seconds": 250,
+  "night_outer_seconds": 580,
+  "night_worker_seconds": 550,
+  "integrity_checks": 7,
+  "files": {
+    "preserve_slot.py": "cfafa340bc96b69221cf51e7e72127c6e6d4625f6907267e4fcdd79b9832e4be",
+    "capture_receipt.py": "7bd248aa3c2b7cc3c6fe7631fbbe62ca9a014c003d4a9904866661ff9fbc8db6",
+    "parallel_capture_transport.py": "c7779b12134c9d8e4bbf81d18106d10556ce4db126c87673980a34459ddfe30a",
+    "timed_bulk_slot.py": "8d8634c6aa547ed200752192157d3deeb19d0f2ef56b55b6105b7b2b2136e2b0"
+  },
+  "capture_parallelism": "2 independent library captures only when free+inactive+speculative memory >=20 GiB; otherwise serial; standalone scripts always serial",
+  "maximum_rss_bytes": 4428103680,
+  "resource_samples": [
+    {
+      "path": "preservation/0027/before.resources",
+      "maximum_rss_bytes": 3126198272
+    },
+    {
+      "path": "preservation/0027/after.resources",
+      "maximum_rss_bytes": 3117105152
+    },
+    {
+      "path": "preservation/0028/before.resources",
+      "maximum_rss_bytes": 3409084416
+    },
+    {
+      "path": "preservation/0028/after.resources",
+      "maximum_rss_bytes": 3431333888
+    },
+    {
+      "path": "preservation/0026/before.resources",
+      "maximum_rss_bytes": 3240296448
+    },
+    {
+      "path": "preservation/0026/after.resources",
+      "maximum_rss_bytes": 3248029696
+    },
+    {
+      "path": "preservation/0024/before.resources",
+      "maximum_rss_bytes": 3969318912
+    },
+    {
+      "path": "preservation/0024/after.resources",
+      "maximum_rss_bytes": 3955064832
+    },
+    {
+      "path": "preservation/0023/before.resources",
+      "maximum_rss_bytes": 2887581696
+    },
+    {
+      "path": "preservation/0023/after.resources",
+      "maximum_rss_bytes": 2895233024
+    },
+    {
+      "path": "preservation/0022/after.resources",
+      "maximum_rss_bytes": 4428103680
+    },
+    {
+      "path": "preservation/0025/before.resources",
+      "maximum_rss_bytes": 3263758336
+    },
+    {
+      "path": "preservation/0025/after.resources",
+      "maximum_rss_bytes": 3281321984
+    }
+  ],
+  "transport_guard_checks": 3,
+  "final_capture_schedule": "Up to two independent groups (at least 28 GiB available), each at most two independent sides (20 GiB guard). Standalone scripts are serial. A separate doc tree was validated within the same acquired lease, never a second request.",
+  "strict_compatibility": "v3b CLI --no-proof-irrelevant for Project.Compatibility; exact term structure, including proof arguments, is stronger than the usual erasure comparison. Input signatures include strict_term_structure."
+}

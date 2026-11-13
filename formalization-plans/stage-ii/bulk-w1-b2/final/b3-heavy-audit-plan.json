@@ -1,0 +1,13 @@
+{
+  "status": "B3 plan only, not a B2 verify run",
+  "VERIFY_JOBS": 4,
+  "VERIFY_MEMORY_GB": 32,
+  "VERIFY_EXCLUSIVE_AUDITS": "scripts/audit_infinity_f1.lean scripts/audit_infinity_f1b.lean scripts/audit_infinity_core.lean scripts/audit_einfinity.lean scripts/audit_infinity_presentable_localization.lean",
+  "historical_source": "kerodon-layout-stop-3/stop-3-final-receipt.json",
+  "three_large_audits": [
+    "scripts/audit_infinity_f1.lean",
+    "scripts/audit_infinity_f1b.lean",
+    "scripts/audit_infinity_core.lean"
+  ],
+  "scope": "Use the existing exclusive scheduler and retain the two conservative additional exclusions; refresh measurements if the audits change at the freeze."
+}

@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down",
+      "new_module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down",
+      "field_namespace": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "evidence": "Actual before/after native declarations match in kind/type/body/axioms/kernel attributes. The stored method stays at its original full name; a weak export attaches it to the moved receiver.",
+      "comparison_receipt": "0125.receipt.json"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down_vertex",
+      "new_module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down_vertex",
+      "field_namespace": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "evidence": "Actual before/after native declarations match in kind/type/body/axioms/kernel attributes. The stored method stays at its original full name; a weak export attaches it to the moved receiver.",
+      "comparison_receipt": "0125.receipt.json"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.isCofiber_down",
+      "new_module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.isCofiber_down",
+      "field_namespace": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "evidence": "Actual before/after native declarations match in kind/type/body/axioms/kernel attributes. The stored method stays at its original full name; a weak export attaches it to the moved receiver.",
+      "comparison_receipt": "0125.receipt.json"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.isFiber_down",
+      "new_module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.isFiber_down",
+      "field_namespace": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "evidence": "Actual before/after native declarations match in kind/type/body/axioms/kernel attributes. The stored method stays at its original full name; a weak export attaches it to the moved receiver.",
+      "comparison_receipt": "0125.receipt.json"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.ulift_down_square",
+      "new_module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.ulift_down_square",
+      "field_namespace": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "evidence": "Actual before/after native declarations match in kind/type/body/axioms/kernel attributes. The stored method stays at its original full name; a weak export attaches it to the moved receiver.",
+      "comparison_receipt": "0125.receipt.json"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroHomotopy",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex.isZeroHo",
+      "new_module": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroHomotopy",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex.isZeroHo",
+      "field_namespace": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+      "evidence": "Actual before/after native declarations match in kind/type/body/axioms/kernel attributes. The stored method stays at its original full name; a weak export attaches it to the moved receiver.",
+      "comparison_receipt": "0125.receipt.json"
+    }
+  ],
+  "semantic_changes": false,
+  "capture_inputs_unchanged": true
+}

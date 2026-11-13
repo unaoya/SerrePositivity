@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "source_sha256": "575132b4cb0e80feb0ec5c8fdc1a3662af0c6a3c1b69094ffb76bfa1de5f0d89",
+  "portable_renderer_matches_compiled_source": true,
+  "link_flag": "-rdynamic, matching Lake supportInterpreter on this non-Windows host"
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "verification reader only, no production or preview Lean edits",
+  "old_filter": "declaration namespace starts with SerrePositivity",
+  "new_filter": "actual defining module starts with SerrePositivity",
+  "previous_missing": [
+    "CategoryTheory.initial_of_natural_legs",
+    "CategoryTheory.initial_of_retraction_idempotent"
+  ],
+  "evidence": "existing immutable Lean query logs attribute-metadata/001.log and /002.log contain both records with actual owner SerrePositivity.CategoryTheory.InitialOfRetraction",
+  "records_reparsed": 14,
+  "actual": 1883,
+  "missing": 0,
+  "extra": 0,
+  "different": 0,
+  "metadata_errors": 0
+}

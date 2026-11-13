@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "actual_module_declaration_keys_identical": 189,
+  "kernel_hashes_attributes_axioms_identical": true,
+  "updated_name_rows": 62,
+  "updated_inventory_rows": 111,
+  "modules": [
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectCech",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+    "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+    "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+    "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+    "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+    "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+    "scripts.audit.bs_power_root_envelope.VarpiComparison"
+  ]
+}
