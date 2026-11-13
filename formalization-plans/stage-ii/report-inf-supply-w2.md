@@ -2134,7 +2134,7 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.P
 ```lean
 local notation "D" => J ⥤ CochainComplex (ModuleCat A) ℤ
 local notation "E" => functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)
-local notation "P" => liftedStandardSimplexParameter (u := u) J
+local notation "P" => standardParameterForCoefficients A J
 local notation "N" => freeNegativeChainsDiagramFunctor A J
 local notation "FP" => freeProductFrame A W P
 local notation "FT" => freeTensorFrame A W P
@@ -2488,3 +2488,34 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 A03 `StandardParameterAugmentation` は既存の `normalizedSimplexCochainContraction_naturality` と `freeStandardSimplexParameterIso` を合成する構成。依存のoleanが未生成だったため依存ソースを含む一時ファイルで個別検査し、成功した。対象ビルド・監査中、未コミット。A04の積側 `ProductFrameCoaction` は個別検査中。いずれも上の検証済み累計には含めない。§73の `liftedStandardSimplexParameter (u := u)` は宇宙を項引数に書いてしまった記法上の誤りであり、実装では係数環と同じ宇宙を型から固定する。数学的な型の変更ではない。追加枠は3/3のまま。
+
+## 78. 一覧A03の標準パラメータ増大写像を検証
+
+`DiagramComparison.StandardParameterAugmentation` を `bf6a100e0` に保存。35行、累計 **146本9,089行**。既存の全単体で自然な正規化単体の増大写像を、指定 `freeStandardSimplexParameterIso` で戻した。⑤aの既存ファイルは変更していない。
+
+依存ソースを含む個別検査、鍵付き対象ビルド **2,352 jobs**、累計 **1,669宣言・標準三公理のみ**の監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-78.log`、監査 `/private/tmp/AuditISW2G10HundredFortySix.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfortysix-modules.txt`。鍵は `--wait 3600`、整理券一枚、実行1,700秒上限で検証の間だけ使用。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation
+```
+
+## 79. 一覧A04の両frameの指定余作用を検証
+
+`DiagramComparison.ProductFrameCoaction`（39行）と `DiagramComparison.TensorFrameCoaction`（54行）を `f592cd727` に保存。新規2本93行、累計 **148本9,182行**。
+
+積側は既存のパラメータグラフとAW、テンソル側は同じ自由鎖の対角とAW・結合子で構成し、全単体作用素への自然性を証明した。係数環の宇宙を明示する `standardParameterForCoefficients A J` は既存 `liftedStandardSimplexParameter J` の型略記であり、新しい数学の主張ではない。§73の局所記法Pもこの略記に修正した。単位則A05はまだ証明していない。
+
+個別検査、鍵付き対象ビルド **2,278 jobs**、累計 **1,695宣言・標準三公理のみ**の監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-79.log`、監査 `/private/tmp/AuditISW2G10HundredFortyEight.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfortyeight-modules.txt`。鍵は `--wait 3600`、一枚、実行1,700秒上限。全検証プロセスは終了し、鍵は解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TensorFrameCoaction
+```
+
+再開後の一覧の実績は **A01〜A04完了**。独立した照合の追加枠は§74〜76の **3/3**。未コミットのLeanはない。外枠12,500行の残りは3,318行で、行数による中間停止はしない。次はA05の指定余作用の単位則、A06〜A09の区間評価と実単体的Hom比較の同値性へ進む。B01〜D08も引き続き今回の責任であり、停止点2は未完。
+
+A05に再利用できる候補を確認した：`EInfinity.AlexanderWhitney.cochainDiagonal_right_counit` と `cochainCounit_stdSimplex_eq_contraction`。ただし前者の対角と、今回の整数から係数移送した指定AWの一致は型の類似だけでは済ませない。A06の端点に使う零単体の単位同型には既存 `cochainCounit_stdSimplexZero_isIso` が候補となる。これらは現時点の参照候補で、A05・A06の検証完了には数えない。
