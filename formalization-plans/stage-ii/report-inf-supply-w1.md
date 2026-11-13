@@ -2679,3 +2679,71 @@ coherent側には
 今回の通常endの普遍性・Kan性だけから、homotopy endとの一致は結論していない。
 R2c・R2d・R2eは引き続き未了、R2の完成および停止点5の完成は未主張。
 R3aへの着手もない。目標「R2を完成」はactiveのまま。
+
+## 43. R2cの核心の再監査：独立の数学が不足（11-14、判断を要する地点）
+
+現物は `6f1102459`、作業木cleanで確認した。前回は進捗あり。
+R2cを既存APIだけで閉じられるか、coherent側の比較をさらに追跡した結果を記録する。
+この節では新しいLeanの仮定・宣言を追加していない。
+
+### 43.1 見つかった部品と、その限界
+
+| 現在の本体 | 実際に証明していること | 証明していないこと |
+| --- | --- | --- |
+| `StrictDiagramPointFrameEnd` | 実frame Homと通常endの同型、この特定のendのKan性 | homotopy endを計算すること |
+| `TwistedHomEndSection.twistedFunctorHomToEndSections` | 元のcoherentな関手Homからendの切断への実射と評価式 | その実射の同値性 |
+| `EndSectionsRelativeHom.functorEndSectionsBifunctorHomEquivalence` | 切断を分類した二変数図式間のHomに移す全同値 | 元の関手F,GのHomへの全同値 |
+| `EndSectionsYonedaModel.functorEndSectionsYonedaHomEquivalence` | 切断を `Hom(y_A, G ⋙ Hom_C(F(-),-))` に移す全同値 | 元のFun(A,C)のHomへの同値 |
+| `HomWeightYonedaLeftKan.exists_homWeightYonedaLeftKan` | 別の選択LがLanであることと、L(c)とHom係数の対象ごとの同型 | 指定Hom係数族と指定Yoneda単位自身がLanであること |
+| `HomWeightYonedaLeftKan.homWeightYonedaLeftKanComparison` | 選択Lから指定Hom係数族への実自然変換、単位との可換式 | 比較の成分が可逆であること |
+
+`homWeightYonedaLeftKan_valueIso` は、同じ実比較の成分の可逆性ではない。
+対象ごとの同型の存在だけを、指定の実自然変換の同型性として使用することはできない。
+`FunctorCompactEndReduction` もendを極限として与える族を入力に取る条件付きの帰着である。
+今回見つけたYoneda側の二つの同値を用いても、この不足は消えない。
+
+### 43.2 この経路に必要な独立の数学（型）
+
+第一はP-12のend表示の核心そのもの。既存の比較射を固定すると、必要な主張は次の型になる。
+
+```lean
+-- 一般の独立定理。現在の本体にはこの証明を確認できていない。
+lemma twistedFunctorHomToEndSections_isSimplicialHomotopyEquivalence
+    {K C : SSet.{v}} [Quasicategory K] [Quasicategory C] (F G : K ⟶ C) :
+  IsSimplicialHomotopyEquivalence (twistedFunctorHomToEndSections F G)
+```
+
+既存のYoneda経路を完成させる場合の不足は、全Hom係数族の指定単位が左Kan延長の単位であること。
+その途中で `homWeightYonedaLeftKanComparison F β hβ` の**同じ実比較**が全成分で可逆なことを、
+密度の局所余錐と指定単位との両立から示す必要がある。
+これは既存の単位・自然性・係数表示の計算一件ではなく、独立の数学の証明である。
+P-12の一般の核心をR2cの「係数移送3/3」の中へ隠して追加しない。
+
+第二は加群・Reedy図式側。§40.1と同じI, DAを使い、
+`F_X := evalVertex A d X`、`F_Y := evalVertex A d Y` と略記すると、
+実比較の存在と弱同値性として次が必要。
+
+```lean
+-- R2cで実際に要る局所形の不足。通常endのKan性からは従わない。
+∃ cmp : (SSet.uliftFunctor.{u + 1, u}).obj (strictDiagramFrameMapping A d X Y) ⟶
+    simplicialSections (functorEndProjection F_X F_Y),
+  IsSimplicialHomotopyEquivalence cmp
+```
+
+さらに、これらを最終のright frameのspanへ移したとき、指定された元の
+`strictDiagramDerivedEvaluation` が誘導する射と全族で一致する必要がある。
+R2dの平方の定義的な可換性を先に書いても、R2cの弱同値性は解消しない。
+
+### 43.3 停止条件の適用
+
+指示書 `inf-supply-w1.md` の「R6の取り込みと、R2〜R4の承認」は
+「順序はR2→R3→R4」「数え方はIS-W2 §14と同じ」。同§14の
+**「それ以外の新しい数学の補題が要ったら止まる」**をここで適用する。
+一般のP-12のend定理を追加するのは、承認済み§40のR2a〜R2eの実射の構成・比較そのものから
+独立したまとまりであり、証明分割や前提計算として無制限に追加しない。
+
+Leanは検証済み `6f1102459` で保存済み。この経路の追加実装は止め、
+P-12のendの核心を供給側に依頼するか、③-aの追加の型つき一覧へ入れるか、
+調整役の判断を待つ。Reedy側の局所比較も、上の一般end定理だけで完了したとはしない。
+R2cの完成のための二つの不足と元の評価の照合を区別し、R2自体の完了は主張しない。
+目標「R2を完成」はactiveのまま、blockedの判定はまだ行わない。
