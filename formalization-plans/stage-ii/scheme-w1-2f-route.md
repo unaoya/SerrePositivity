@@ -786,3 +786,25 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 未完の接続：この斉次切断代数と Proj の構造層の切断代数との環同型、Rees 側の核・像の評価を今回の射へ移すこと、B/IB と閉厚化の切断環の Frobenius 比較、F7 の幾何学的四角形、F8 の増大全複体。今回の線形比較だけで環の Frobenius 比較の完成とはしない。
 
 2f 累計は **113 モジュール・7,011 行（登録込み 7,188 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
+
+## F7 途中：Rees の核の評価を切断代数へ移す（98ba8c231、11-13）
+
+新規 2 モジュール・7 公開宣言（局所インスタンスを除く）・158 行（登録込み 162 行）。対象ビルドは 3,258 jobs、直接 importer は 4,661 jobs 成功。別実行の公理監査は **9,574 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ使い、待ちは一つに保った。
+
+登録モジュール：`ReesHomogeneousSectionH0Comparison`、`ReesHomogeneousSectionKernelBound`（ともに `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveHomogeneousSectionNatH0Equiv` | 斉次標準開の切断代数を、元の次数付き加群で計算した Čech H⁰ と比較する。 |
+| `projectiveHomogeneousSectionNatH0Equiv_projection` | この比較は閉厚化への実際の制限と可換。 |
+| `reesClosedHomogeneousSectionH0Equiv` | 閉厚化の切断代数を、Rees の商加群の Čech H⁰ と比較する。 |
+| `reesClosedHomogeneousSectionH0Equiv_reesProjection` | 切断代数の実際の制限を、Rees の核の評価で使った閉厚化への H⁰ の写像へ送る。 |
+| `reesClosedHomogeneousSectionProjection_eq_zero_iff` | 切断の制限が零であることと、対応する Rees の H⁰ の制限が零であることは同値。 |
+| `reesClosedHomogeneousSectionProjection_kernel_bound` | Noether 基底と有限生成性から、切断代数の制限の核は一様に I^(n-c) 倍の全加群に含まれる。 |
+| `reesClosedHomogeneousSectionProjection_kernel_ideal_bound` | 同じ評価を、基底の I^(n-c) を切断環へ拡大したイデアルへの所属として表す。 |
+
+核の評価は 2e の `reesAdicProjectiveClosedCechProjection_kernel_bound` をそのまま使う。比較同型によって核を移し、逆の線形同型がイデアルの作用を保つことから切断代数へ戻した。切断代数自身の I 冪による消滅や核の冪零性を入力仮定にはしていない。核の主張が原典 Stacks 30.20.4(1) の H⁰ に対応する Čech 版であることと、導来関手との比較を形式化しないことを docstring に記した。
+
+残る接続は、像の安定化の切断代数への移送、Frobenius の閉厚化への因子分解と環の冪乗の照合、斉次切断代数と Proj の構造層の切断代数の環同型、それらを用いた F7 の四角形、F8 の増大全複体。今回の核の評価だけで Frobenius 比較の完成とはしない。
+
+2f 累計は **115 モジュール・7,169 行（登録込み 7,350 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
