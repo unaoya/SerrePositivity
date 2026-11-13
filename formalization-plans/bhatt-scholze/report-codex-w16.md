@@ -6681,3 +6681,137 @@ root ビルドと全体監査・入口登録は調整役に委ねる。
 Shared の一般 k の性質は drafts のままであり、係数制限のホモロジー比較と
 π₀ の環比較の整合性も、その証明時に確認する必要がある。
 今回の native な F_p の零次・離散比較は、それらの未証明の一般 k の性質を使っていない。
+
+## 106. cosimplicial top operation：切断項の計算と、一般の BF 作用の不足（11-13）
+
+### 106.1 今回の検証済み出力
+
+main の零次・離散比較の登録 f63686a85 を枝へ取り込んだ。その後、
+任意次元の単体に対する切断の支持を、既存の ShufflePath で構成した。
+登録候補は次の三本（全て EInfinity/SimplexCuts/、計 **162行**）。
+
+| モジュール | 行数 | 証明済みの出力 |
+| --- | ---: | --- |
+| Expanded | 77 | 切断の展開位置から (色,単体の頂点) への写像。非退化性をその単射性として定義し、同色の頂点列が狭義単調であること、頂点数の上界 |
+| Balanced | 35 | top degree の頂点数の等式のもとで、各色の頂点数が q+1 であること |
+| TopTerm | 50 | 各色の面写像が同じ q 単体の恒等射であり、一つの非退化切断項の積が X^q の環での a^r になること |
+
+主な型は次のとおり（既に対象ビルドを通した宣言）。
+
+```lean
+colorPositions_card_of_top
+    (h : Nondegenerate s u) (htop : m + q + 1 = r * (q + 1))
+    (a : Fin r) : (colorPositions s u a).card = q + 1
+
+fullColorFace_eq_id
+    (h : Nondegenerate s u) (a : Fin r)
+    (hcard : (colorPositions s u a).card = q + 1) :
+    fullColorFace s u a hcard = 𝟙 ⦋q⦌
+
+topTerm_eq_power (X : CosimplicialObject CommRingCat)
+    (h : Nondegenerate s u)
+    (hcard : ∀ a, (colorPositions s u a).card = q + 1)
+    (a : X.obj ⦋q⦌) : topTerm X s u hcard a = a ^ r
+```
+
+r=p、語次数 d=q(p−1)、m+1=p+d の場合に頂点数の等式が成立する。
+これは n=−q に必要な **同じ次数 q の各項の値**の計算である。
+通常の cup 積によって次数を pq に移す操作ではない。
+ただし、まだ符号付き総和の係数を 1 と示しておらず、May の同じ W→BE 比較を評価した
+P⁰ の計算でもない。上の三本だけで n<0 の主張を完了と数えない。
+
+TopTerm までの対象ビルドは /tmp/bsw16/simplex-top-term-02.log で成功。
+専用監査 /tmp/bsw16/audit-simplex-cuts.lean は **3モジュール・18宣言、標準三公理のみ**で成功
+（/tmp/bsw16/audit-simplex-cuts.log）。新しい警告・sorry・追加公理なし。
+ビルドと監査は別々の一回の鍵で実行し、鍵を返した。共有入口・全体監査は変更していない。
+
+### 106.2 G10 より前に必要なもの
+
+§96.5 で注意したとおり、既存 IntervalCuts.cochainAction の入力は
+Surjection.complex A r ⊗ interval A、出力は power (interval A) r であり、Δ¹ 専用である。
+CochainActionComponents・CutSigns・CompositionCutSums も頂点／辺の分岐で証明しており、
+q を引数として適用する形にはなっていない。
+TableReduction.operadMap と Surjection の operad 自体は再利用できるが、
+これらが任意の正規化 cosimplicial 複体に作用するという宣言は、別に供給しなければならない。
+Assembly の ofCosimplicial と ofCosimplicial_forget も、現時点では未供給の引数である。
+
+原典 [Berger–Fresse §2.2.6–7](https://arxiv.org/pdf/math/0109158#page=34) の一般の切断公式を
+複体射と operad 作用へまとめた後で、TR に沿って同じ BE 作用に制限する必要がある。
+同論文 §3.2.3–10 の suspension と係数の評価は top 計算への経路になるが、
+既存の公開 API にその全次元版の比較はない。
+また §3.2.5 の直後の注意のとおり、下の複体の Eilenberg–Zilber 比較を取るだけでは
+BE 代数の比較を得たことにならない。複体の擬同型だけから同じ CAlg 対象とは報告しない。
+
+不足を、次の順の証明義務として切り分ける。以下の bf* は **紙の新規名**で、
+新たな仮定を本体に入れたものでも、型検査済みの宣言でもない。
+
+```lean
+-- 任意次元の単体の正規化鎖上の χ 作用。
+bfSimplexAction (A : Type u) [CommRing A] (q r : ℕ) :
+  Surjection.complex A r ⊗ bfSimplexChains A q ⟶
+    power (bfSimplexChains A q) r
+
+-- 微分・単位・置換・部分合成・単体の射での自然性を証明して作る。
+-- この段では既存 interval 上の作用との一致も照合する。
+bfNormalizedAlgebra (A : Type u) [CommRing A] :
+  CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+
+bfNormalizedUnderlyingIso (A : Type u) [CommRing A] :
+  bfNormalizedAlgebra A ⋙ Operad.Algebra.forget _ ≅
+    bfNormalizedCochains A
+
+-- 正規化から交代余面への、指定した自然な擬同型を保持する。
+bfNormalizationComparison (A : Type u) [CommRing A] :
+  bfNormalizedCochains A ⟶ cosimplicialCochains A
+
+-- 厳密 BF 代数上で、指定係数の演算を直接評価する最終形。
+-- κ は界面と同じ EInfinityPrimeField p。ν は mayNormalizationUnit の像。
+bfMayTopValue (p : ℕ) [Fact p.Prime]
+    (X : CosimplicialAlgebra κ) (n : ℤ)
+    (a : MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (-n)) :
+  mayNormalizedClass p ((bfNormalizedAlgebra κ).obj X) n ν a =
+    mayClosedClass _ (-n) (bfFrobeniusClosed X n a)
+```
+
+bfFrobeniusClosed は、同じ次数の a↦a^p が正規化した閉元を保つことを証明して作るもの。
+ここを P⁰ の定義に置き換えるのではない。指定 W→BE を計算できる比較へ移す際も、
+増大を保つ equivariant な鎖ホモトピーと、反復入力で T・N の項が消える計算を保持する。
+ν の逆冪・逆巡回生成元・TR と BF の符号を一致させる必要がある。
+
+同じ CAlg 対象との接続では、bfNormalizedAlgebra の nerve を既存の
+algebraCAlgSource へ送った関手を具体的な ofCosimplicial の候補とし、
+上の指定した正規化比較から ofCosimplicial_forget を供給する。
+任意に選んだ ofCosimplicial と台の比較だけを仮定して、上の演算の一致を結論しない。
+その候補と native な Tot の **指定錐・Frobenius の辺**との比較だけが G10 待ちである。
+**今回まだ G10 の待ちの境界には到達していない。G10 の部品は作っていない。**
+
+### 106.3 見込みの改訂と規模による中間停止
+
+§96.6 の top operation と _tot の **1,000〜1,800行**は過小な見込みだった。
+区間専用であることは §96.5 に記載済みだったが、一般の作用の微分・operad 法則を
+再利用済みの部分に近く数えてしまっていた。今回、その証明の入力型を確認して修正する。
+IntervalCuts の205本は約20,124行で、下の見込みはその全量を作り直す値ではない。
+Surjection・TR・ShufflePath・テンソルの共通 API は再利用し、区間に特殊化した
+切断の符号と境界・二段切断の証明を一般次元へ拡張する分を数える。
+
+| 残る束 | 暫定の新規見込み | 再利用／不足の根拠 |
+| --- | ---: | --- |
+| 一般の切断、符号、正規化での消滅、微分、単体の射での自然性 | 3,000〜5,500 | ShufflePath・χ の微分・tensorLift は既存。IntervalCuts の頂点／辺の境界分類は一般次元版が必要 |
+| 単位・置換・部分合成、TR による同じ BE 作用 | 3,000〜5,000 | χ と TR の operad は既存。二段切断と合成の全符号の比較は Δ¹ の証明を直接適用できない |
+| 正規化した cosimplicial 代数の全関手と指定比較 | 1,200〜2,200 | Dold–Kan の複体の比較は再利用。BE 作用の保存と同じ CAlg の選択は未供給 |
+| May の係数、ν、同じ次数での Frobenius の照合 | 1,200〜2,000 | 今回の各項の積と既存 May のホモトピー不変性を再利用。符号付き総係数は未証明 |
+| native Tot の指定比較への適用（G10 自体を除く） | 500〜900 | 全整数 H/π と現在の source 比較を再利用 |
+| A4 の二重模型の実現比較（G10 自体を除く） | 1,500〜2,800 | §96.6 の未完了分を保持 |
+| filtered 塔・A4 の利用側 | 300〜550 | §96.6 の未完了分を保持 |
+| **残り計** | **10,700〜18,950** | |
+
+改訂 May の完成済み4,128行と今回162行を足すと、現時点の完成見込みは
+**14,990〜23,240行**。これは必要行数の下界ではなく、現ソースからの暫定見込みである。
+ただし上端が指示書 §26 の外枠約20,000行を超えるため、coordination.md §2 の
+「上限を超えそうなときは報告して止める（止まる前に、それまでの検証済みの分をコミット）」
+に従い、検証済みの三本を保存して **この線の Lean を中間停止**する。
+実測が10,000行に達したという停止ではなく、一般 BF 作用を含めた残りの見込みによる停止。
+
+界面・型・範囲は変更しない。一般の BF 作用の供給を含むこの経路の規模・分担を
+調整役が判断できるように不足を明示し、代わりの作業である M15 の段0の紙を進める。
+G10 の取り込みだけでこの不足が解消するとは報告しない。
