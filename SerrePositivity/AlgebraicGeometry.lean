@@ -992,3 +992,9 @@ public import SerrePositivity.AlgebraicGeometry.SchemeCechSingletonSections
 public import SerrePositivity.AlgebraicGeometry.SchemeCechCompatibleSections
 
 public import SerrePositivity.AlgebraicGeometry.SchemeCechGlobalSections
+
+public import SerrePositivity.AlgebraicGeometry.SchemeCechSectionSpectrum
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSectionSpectrum
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveCechFiniteCenterExact
