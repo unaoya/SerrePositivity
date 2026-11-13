@@ -1014,3 +1014,9 @@ public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousSections
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionH0Comparison
 
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionKernelBound
+
+public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousTransition
+
+public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousSectionTransition
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionImageStabilization
