@@ -13,8 +13,12 @@ public import SerrePositivity.AlgebraicGeometry.ProjectiveFilteredHomology
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory CategoryTheory.Limits
-universe u
-variable {R : Type u} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+universe u v
+variable {R : Type v} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+
+local instance projectiveFilteredHomologyInclusionsExactColimits :
+    HasExactColimitsOfShape J (ModuleCat.{u} R) :=
+  moduleCatFiltered_hasExactColimitsOfShape R J
 
 /-- 評価関手から余極限関手への、標準写像の自然変換。 -/
 def projectiveFilteredColimitInclusion (j : J) :

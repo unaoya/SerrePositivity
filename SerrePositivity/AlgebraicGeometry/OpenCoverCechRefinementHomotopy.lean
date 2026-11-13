@@ -14,10 +14,10 @@ public import SerrePositivity.AlgebraicGeometry.CechTupleRefinementSupport
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace
-universe u v
-variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+universe u v w
+variable {X : Type u} [TopologicalSpace X] {R : Type w} [CommRing R]
 variable {ι κ : Type} [DecidableEq ι] [DecidableEq κ]
-variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat R) (U : ι → Opens X) (V : κ → Opens X)
+variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) (U : ι → Opens X) (V : κ → Opens X)
 variable (ρ σ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j)) (hσ : ∀ j, V j ≤ U (σ j))
 
 include hρ hσ in

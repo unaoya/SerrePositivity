@@ -12,10 +12,10 @@ public import SerrePositivity.AlgebraicGeometry.OpenCoverCechRefinementIndepende
 @[expose] public noncomputable section
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace
-universe u v
-variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+universe u v w
+variable {X : Type u} [TopologicalSpace X] {R : Type w} [CommRing R]
 variable {ι κ ν : Type} [DecidableEq ι] [DecidableEq κ] [DecidableEq ν]
-variable {P Q : (Opens X)ᵒᵖ ⥤ ModuleCat R}
+variable {P Q : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R}
 variable (U : ι → Opens X) (V : κ → Opens X)
 variable (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j))
 

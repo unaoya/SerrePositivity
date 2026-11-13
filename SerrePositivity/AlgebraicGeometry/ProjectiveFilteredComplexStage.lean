@@ -13,7 +13,7 @@ public import SerrePositivity.AlgebraicGeometry.ProjectiveFilteredHomologyInclus
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory CategoryTheory.Limits
-universe u
+universe u v
 private theorem stage_square_inverse {C : Type*} [Category* C]
     {X Y X' Y' : C} (e : X ≅ X') (d : Y ≅ Y') (f : X ⟶ Y) (g : X' ⟶ Y')
     (h : f ≫ d.hom = e.hom ≫ g) : g ≫ d.inv = e.inv ≫ f := by
@@ -21,7 +21,11 @@ private theorem stage_square_inverse {C : Type*} [Category* C]
   simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
   rw [h, Iso.inv_hom_id_assoc]
 
-variable {R : Type u} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+variable {R : Type v} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+
+local instance projectiveFilteredComplexStageExactColimits :
+    HasExactColimitsOfShape J (ModuleCat.{u} R) :=
+  moduleCatFiltered_hasExactColimitsOfShape R J
 variable (F : J ⥤ CochainComplex (ModuleCat.{u} R) ℕ)
 
 /-- 短複体の図式を評価すると、同じ有限段の複体の短複体となる。 -/

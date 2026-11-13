@@ -13,8 +13,12 @@ public import SerrePositivity.AlgebraicGeometry.ProjectiveFilteredHomology
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory CategoryTheory.Limits
-universe u
-variable {R : Type u} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+universe u v
+variable {R : Type v} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+
+local instance projectiveFilteredHomologyNaturalityExactColimits :
+    HasExactColimitsOfShape J (ModuleCat.{u} R) :=
+  moduleCatFiltered_hasExactColimitsOfShape R J
 
 /-- 関手圏の短複体の H と各段の H の比較は、図式の射に自然。 -/
 theorem projectiveFilteredShortComplexHomologyDiagramIso_naturality
