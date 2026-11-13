@@ -6289,3 +6289,88 @@ May 新規の累計は **1,169 行**（前回 607 + 今回 562）、途中報告
 擬同型での不変性・ho(CAlg) への降下はまだ完了していない。
 通常のテンソルのホモトピーを同変ホモトピーとして流用することはしない。
 凍結は引き続き予告段階なので、検証済みの六本をコミットし、未検証分は分けて進める。
+
+## §101　May の代表元独立性と規格化した P⁰ のホモロジー上の値（11-13）
+
+§100 の六本は **67c62e9d2** にコミットした。その後、下記十一本・745 行を検証した。
+今回も EInfinity/PowerOperation/ の新規ファイルのみであり、界面・Assembly・Shared/A4 の
+移行は、加法性と局所化が済むまで保留している。
+
+### 101.1　登録候補
+
+| モジュール | 行数 | 出力 |
+|---|---:|---|
+| MayClosedCycles | 71 | 実微分の kernel、次数の移送、複体射の閉元への制限、指定 D_s の閉元と自然性 |
+| MayPowerZeroCycles | 54 | i=−n(p−1) と ν(n) による規格化、全整数次数の P⁰ の閉元、正次数での零、自然性 |
+| MayClosedHomology | 122 | 実 cycles・homology との比較、類写像の全射性、零類の境界判定、代表と自然性 |
+| MayFreeProbeHomotopy | 49 | 既存の自由 probe のホモロジー関手は擬同型を反転し、鎖ホモトピックな射を同じ射に送る |
+| MayProbeCycles | 51 | 同じ probe の自明 fibration による、元の閉元の厳密な持ち上げ |
+| MaySphereHomotopy | 85 | 同じホモロジー類の二閉元の sphere 射の鎖ホモトピー、単位生成元の回収 |
+| MayProbeEvaluation | 75 | 同じ単位・比較射・自由持ち上げによる評価、普遍閉元の厳密な回収と全ホモロジーでの一致 |
+| MayDClasses | 65 | 全指定 D_s の実ホモロジー類・自然性・全次数の代表元独立性 |
+| MayPowerZeroClasses | 72 | 規格化した P⁰ の実ホモロジー上の関数、代表元独立性、正次数で零、全厳密 BE 射で自然 |
+| MayNormPolynomial | 44 | F_p[X] の (X−1)^{p−1}=∑_{i<p}X^i、非可換 F_p 代数への評価 |
+| MayCyclicNorm | 57 | 同じ生成元の位数と冪による列挙、同じ巡回表現での T^{p−1}=N |
+
+### 101.2　代表元独立性の接続
+
+既存の **freeProbeFunctor** と **freeProbeFunctor_map_quasiIso** を再利用した。
+自由 probe の全次数ホモロジー関手は、複体の擬同型を反転する。
+Mathlib の **ComplexShape.QFactorsThroughHomotopy.areEqualizedByLocalization** と
+**AreEqualizedByLocalization.map_eq_of_isInvertedBy** により、鎖ホモトピックな複体射は
+この関手の下で厳密に同じホモロジー射になる。
+
+二つの閉元の類が等しいとき、その差は元の複体の境界である。
+**complexSphereHomEquiv**・**complexSphereToDisk_comp** と
+**complexDiskContractingHomotopy** により、二つの sphere 射の鎖ホモトピーを作った。
+同じ sphere の生成元を元の cofibrant probe へ厳密に持ち上げ、自由代数へ含める。
+二つの評価射は上の意味で全ホモロジー上で一致するため、同じ普遍元の D_s の類を
+二方向へ送った値が一致する。評価が元の入力を回収する等式は元の複体で証明した。
+この結果が **mayDClass_independent** であり、規格化後の
+**mayPowerZeroClass_independent**・**mayPowerZeroHomology** へ接続した。
+
+この工程は、既存のモデル構造を使った実例側の証明である。
+公開する主張に [ModelCategory SSet] を要求せず、実際の
+projectiveModelCategory と BE の modelCategory を持つ既存の自由 probe を使った。
+通常のテンソルのホモトピーを同変ホモトピーとして流用したり、
+以前の未完成な positive-Hom/orbit の次数同型を鎖同型と仮定したりしていない。
+既存の 10,216 行は保存している。native な orbit・norm・Tate は使っていない。
+
+### 101.3　検証・現在の範囲
+
+代表元比較の束は /tmp/bsw16/may-power-zero-classes-03.log で、
+MayPowerZeroClasses まで成功した。ノルムの最終対象ビルドは
+/tmp/bsw16/may-cyclic-norm-02.log で成功した。最終ソースの警告なし。
+全 May モジュールを含む専用監査の結果は本節の末尾に記す。
+
+新規 May の累計は **1,914 行**（前回 1,169 + 今回 745）。
+途中報告の約 10,000 行・停止外枠約 20,000 行より下である。
+mayPowerZeroHomology は、現段階では **ホモロジー上の自然な関数**であり、
+まだ AddMonoidHom・ho(CAlg) 上の NatTrans には束ねていない。
+零次の既存の p 乗計算と新しい全次数の関数の照合も、これから接続する。
+界面の型を変更したとは報告しない。
+
+### 101.4　次の加法性の接続
+
+[May, Proposition 2.3(ii)](https://www.math.uchicago.edu/~may/PAPERS/10.pdf) を再確認した。
+混合語の和 Δ(a,b)=(a+b)^{⊗p}−a^{⊗p}−b^{⊗p} を、巡回軌道代表の和 c のノルム Nc として表す。
+既存 **cyclicBinaryTensorWord_fixed**・**cyclicBinaryTensorWord_orbit_injective** を再利用する。
+残りは、同次の色付き入力の置換公式、反復入力の二項展開、
+軌道代表での和の照合、および次の係数による境界表示である。
+全ての入力の次数が同じなので、巡回置換の Koszul 符号は §100 と同じ理由で消える。
+
+係数の次の段の微分が N の場合は、その係数に c を入力する。
+微分が T の場合は、次の係数に T^{p−2} を作用させ、今回の
+**mayCyclicNorm_eq** で T^{p−1}=N と照合する。
+同時置換の等変性で係数のノルムと入力のノルムを移し、差が境界であることを示す。
+加法性の証明後に可換群値の自然変換へ束ね、ho(CAlg) への局所化へ進む。
+この段階の加法性そのものは未実装である。
+
+### 101.5　監査完了・コミット時の状態
+
+専用監査 **/tmp/bsw16/audit-may-all.lean** は **May の全25モジュール・320宣言、
+標準三公理のみ**で成功した（/tmp/bsw16/audit-may-all.log）。
+本体に sorry・追加公理なし、linter の抑制なし。監査の鍵も返却済み。
+今回の十一本を報告とともにコミットする。新規ファイルだけなので他レーンとの重複なし。
+共通の入口と監査への登録候補は §100・§101.1 の計十七本。
+凍結の確定連絡はまだなく、検証済みを枝に保存した状態にする。
