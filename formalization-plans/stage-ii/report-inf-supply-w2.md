@@ -3167,3 +3167,103 @@ def normalizedIntervalHom {R S : J ⥤ Complex A} (f g : R ⟶ S)
 コード **`959f883a5`**。新規3本140行（CycleData 79、HomotopyIntervalCochain 31、Hom 30）。結合個別検査 `/private/tmp/isw2-homotopy-interval1.log` と本体個別検査 `/private/tmp/isw2-diagram-interval1.log` が通り、鍵付き対象ビルドと一時監査はともに終了コード0。168本時点は2,061 jobs・1,779宣言（`/private/tmp/isw2-build92.log`）、本体追加後は既存の零次切断包含の依存も含め3,993 jobs・1,793宣言（`/private/tmp/isw2-build93.log`）。累計 **169モジュール・10,467行・1,793宣言、標準三公理のみ**。一時監査 `/private/tmp/AuditISW2G10HundredSixtyNine.lean`、対象一覧 `/private/tmp/isw2-g10-hundredsixtynine-modules.txt`。上の3本を登録対象に追加する。共有鍵は返却済み。
 
 A06本体の射はできたが、両端の射がf,gに等しいことと前後合成の自然性は未完。作業木の `NormalizedIntervalVertexValues.lean` で零次生成元の値を照合中。A07以降・B/C/D・停止点2は未完。既存宣言、⑤a、入口、公式監査は変えていない。新公理・sorryなし、計算上限変更なし。A06前提計算は1/3、全体照合枠は3/3のまま。外枠12,500行まで検証済みから2,033行。凍結確定の連絡は未受領。
+
+
+## 92. A06の指定された両端の厳密等式を完了
+
+零次生成元での評価を、既存のsmart切断Hom回収式とcycles包含で計算した。零単体の増大写像の逆が単位の1を同じ生成元に送ること、元の頂点包含が同じ区間の頂点生成元へ送ることを確認した。内部Homにおける両端等式を、既存テンソル–Hom同値のパラメータ自然性と単位則で図式射の等式へ戻した。指定区間の作り直しも、型の弱化もしていない。
+
+### 92.1 証明分割と前提計算の型
+
+`DiagramTensorUnit` の単位則だけはA06の前提計算 **2/3** として追加する（既存の構成の単位法則）。残りは一覧A06の端点等式の同じ証明分割。照合枠は全体3/3のまま。VertexValuesとEndpointValuesでは `A : Type u`、`[CommRing A]` を固定。DiagramTensorUnitとHomEndpoints後半では `A : Type (max u v)`、`J : Type v`、`[SmallCategory J]`、`E := functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)`。
+
+`NormalizedIntervalVertexValues`
+
+```lean
+def normalizedIntervalVertexGenerator (ε : Fin 2) :
+    ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj ⦋1⦌)).X 0
+```
+
+```lean
+theorem normalizedIntervalCochainMapOfBoundary_vertex
+    (H : CochainComplex (ModuleCat.{u} A) ℤ)
+    (x y : H.X 0) (hx : H.d 0 1 x = 0) (hy : H.d 0 1 y = 0)
+    (w : H.X (-1)) (hw : H.d (-1) 0 w = y - x) (ε : Fin 2) :
+    (normalizedIntervalCochainMapOfBoundary A H x y hx hy w hw).f 0
+      (normalizedIntervalVertexGenerator A ε) = intervalVertexValue x y ε
+```
+
+
+`NormalizedIntervalEndpointValues`
+
+```lean
+theorem normalizedIntervalVertexGenerator_map (ε : Fin 2) :
+    ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
+      (SSet.stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋1⦌ ε))).f 0
+        (normalizedSimplexZeroGenerator A) = normalizedIntervalVertexGenerator A ε
+```
+
+```lean
+theorem normalizedIntervalEndpointChain_value (ε : Fin 2) :
+    (normalizedIntervalEndpointChain A ε).f 0
+      ((singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv (1 : A)) =
+        normalizedIntervalVertexGenerator A ε
+```
+
+```lean
+theorem normalizedIntervalCochainMapOfBoundary_endpoints
+    (H : CochainComplex (ModuleCat.{u} A) ℤ)
+    (x y : H.X 0) (hx : H.d 0 1 x = 0) (hy : H.d 0 1 y = 0)
+    (w : H.X (-1)) (hw : H.d (-1) 0 w = y - x) :
+    normalizedIntervalEndpointChain A 0 ≫
+      normalizedIntervalCochainMapOfBoundary A H x y hx hy w hw =
+        SerrePositivity.DifferentialGraded.unitFromCycle H ⟨x, hx⟩ ∧
+    normalizedIntervalEndpointChain A 1 ≫
+      normalizedIntervalCochainMapOfBoundary A H x y hx hy w hw =
+        SerrePositivity.DifferentialGraded.unitFromCycle H ⟨y, hy⟩
+```
+
+
+`DiagramTensorUnit`
+
+```lean
+theorem diagramTensorLinearHomEquiv_unit {R S : J ⥤ Complex A} (f : R ⟶ S) :
+    diagramTensorLinearHomEquiv R S (𝟙_ (Complex A)) ((ρ_ R).hom ≫ f) =
+      unitFromCycle (linearHomComplex A ((E).obj R) ((E).obj S))
+        ⟨Cochain.ofHom ((E).map f), δ_ofHom ((E).map f)⟩
+```
+
+
+`NormalizedIntervalHomEndpoints`
+
+```lean
+theorem homotopyIntervalCochainMap_endpoints (A : Type u) [CommRing A]
+    {C : Type v} [Category.{u} C] [Preadditive C] [Linear A C]
+    {R S : CochainComplex C ℤ} (f g : R ⟶ S) (h : Homotopy f g) :
+    normalizedIntervalEndpointChain A 0 ≫ homotopyIntervalCochainMap A f g h =
+      unitFromCycle (linearHomComplex A R S) ⟨Cochain.ofHom f, δ_ofHom f⟩ ∧
+    normalizedIntervalEndpointChain A 1 ≫ homotopyIntervalCochainMap A f g h =
+      unitFromCycle (linearHomComplex A R S) ⟨Cochain.ofHom g, δ_ofHom g⟩
+```
+
+```lean
+theorem normalizedIntervalEndpoint_parameter (ε : Fin 2) :
+    normalizedIntervalEndpoint A J ε ≫ (freeStandardSimplexParameterIso A J).hom.app ⦋1⦌ =
+      (Functor.const J).map (normalizedIntervalEndpointChain A ε)
+```
+
+```lean
+theorem normalizedIntervalHom_endpoints {R S : J ⥤ Complex A} (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) :
+    (ρ_ R).inv ≫ (𝟙 R ⊗ₘ normalizedIntervalEndpoint A J 0) ≫
+      normalizedIntervalHom f g h = f ∧
+    (ρ_ R).inv ≫ (𝟙 R ⊗ₘ normalizedIntervalEndpoint A J 1) ≫
+      normalizedIntervalHom f g h = g
+```
+
+### 92.2 検収と残り
+
+コード **`c04dbbbbe`**。新規4本290行（VertexValues 71、EndpointValues 102、DiagramTensorUnit 42、HomEndpoints 75）。個別検査 `/private/tmp/isw2-interval-values4.log`、結合検査 `/private/tmp/isw2-interval-endpoint-values2.log`・`/private/tmp/isw2-interval-hom-endpoints2.log` は終了コード0。鍵付き対象ビルドと一時監査も終了コード0（`/private/tmp/isw2-build94.log`：171本・1,806宣言、`/private/tmp/isw2-build95.log`：4,000 jobs・173本・1,810宣言）。累計 **173モジュール・10,757行・1,810宣言、標準三公理のみ**。一時監査 `/private/tmp/AuditISW2G10HundredSeventyThree.lean`、一覧 `/private/tmp/isw2-g10-hundredseventythree-modules.txt`。上の4本を登録対象へ追加する。鍵は返却済み。
+
+A06は本体と指定された両端の厳密等式まで完了。前後合成の自然性は未完で、作業木の `NormalizedIntervalChainNaturality.lean` で同じ自由鎖・正規化鎖評価の後合成を検査中。A07以降・B/C/Dと停止点2は未完。外枠12,500行まで検証済みから1,743行。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし、計算上限変更なし。凍結確定の連絡は未受領。
