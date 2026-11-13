@@ -593,3 +593,28 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 - F4 の適合する切断の部分代数を、大域切断へ環として貼る。Mathlib の `TopCat.Sheaf.existsUnique_gluing'` を使い、増大写像と基底のスカラーを保つ。`Scheme.toSpecΓ` を介した因子分解により、元のスキームの全射性から有限環の Spec の全射性を供給する。一般の Stein 分解は作らない。
 - B_Y/IB_Y→B_E の核について、2e の評価で十分厚い段への制限の核を IB_Y に入れる。閉厚化を経由する反復 Frobenius の式で、厚さ 1 の核の元の十分高い p 冪が IB_Y に入る。像側は検証済みの像の安定化と同じ因子分解を使う。H⁰ の環の写像との照合が必要で、単に H の加群の式を環の式と呼ばない。
 - F3 の有限変更の完全な四角形と合わせ、F7 の短完全性を同じ複体の H⁰ に移す。F8 では正次数と次数零を同じ制限写像の全複体へまとめる。停止点 2f はまだであり、最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変更しない。
+
+## F6 途中：標準開の環の Frobenius 順極限表示（991fa4a5b、11-13）
+
+凍結前の途中の取り込み候補。新規 3 モジュール・10 公開宣言・213 行（登録込み 219 行）。対象ビルドは 3,240 jobs、登録した直接 importer `SerrePositivity.AlgebraicGeometry` は 4,637 jobs 成功。別実行の公理監査は **9,306 宣言・標準三公理のみ**。共有鍵は `--wait 3600`、同じ worktree の待ちは一つに保った。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry`）：`RingDirectLimitIntColimit`、`ProjectiveHomogeneousIteratedFrobenius`、`ProjectiveChartFrobeniusRingColimit`。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `ringDirectSystemIntMap` | 環の有向系の射を同じ加法写像の整数線形表示へ移す。 |
+| `ringDirectSystemIntMap_directedSystem` | 整数線形表示でも有向系の法則が成り立つ。 |
+| `ringDirectLimitIntColimitIso` | 環の代数的順極限の加法群と整数加群の圏論的余極限は同型。 |
+| `ringDirectLimitIntColimitIso_of` | 同型は各有限段からの標準写像を保つ。 |
+| `projectiveHomogeneousChartLinearEquiv_iteratedFrobenius` | 次数零チャートの反復 Frobenius は斉次局所化の実際の p^e 乗に一致する。 |
+| `projectiveProjNativeChart_iteratedFrobenius` | 同じ反復 Frobenius は Proj の標準開の切断の p^e 乗に一致する。 |
+| `projectiveHomogeneousChart_primeCast` | 基底環で零となる p は各標準開の斉次局所化でも零。 |
+| `projectiveChartRingFrobeniusFunctor` | 標準開環の反復 Frobenius の系を整数加群の関手として表示する。 |
+| `projectiveChartFrobeniusRingSystemIso` | 各標準開で、既存の係数関手と実際の環の Frobenius 系は自然数の添字に関して自然同型。 |
+| `projectiveChartFrobeniusRingColimitIso` | 係数図式の余極限の各標準開は同じ標準開環の FrobeniusDirectLimit と同型。 |
+
+環と加群の順極限の加法構造を、同じ有限段の代表元で明示的に照合した。斉次分数の分子・分母の p^e 乗の式から標準開の比較を示し、非零環や ExpChar の仮定は追加していない。heartbeat・再帰深度の上限も変更していない。
+
+今回の同型は標準開ごとの整数加群の同型である。標準開の制限写像および閉厚化への写像との自然性、H⁰ の環構造との比較は次の接続として残る。各標準開の同型だけで F6〜F8 全体の完成とはしない。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更しない。
+
+2f 累計は **91 モジュール・5,415 行（登録込み 5,548 行）**。残りの主要な束は上記の自然性、F7 の H⁰ の有限環の四角形、F8 の増大全複体。暫定の残り見込み 3,000〜7,500 行、停止基準 18,000 行以内。18 時の凍結の確定連絡が来たら翌朝まで枝へのコミットを控え、下書きと紙の作業を作業木で進める。main への取り込みと全体ビルドは調整役に委ねる。
