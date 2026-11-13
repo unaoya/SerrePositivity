@@ -988,3 +988,22 @@ Spec 全射性は、実際の構造層の切断代数への全射性と、前の
 **残り**：係数代数図式の射に対する順極限の自然性は閉じた。次は `reesClosedFrobeniusCoefficientNatTrans` と `reesClosedHomogeneousAlgebraProjection` が、今回の `projectiveHomogeneousFrobeniusCoefficientIso` を介して同じ射になることを照合する。その可換性と既存の `reesClosedFrobeniusRingCechIso_projection` で、F6 の閉厚化の H⁰ の射と切断の制限を同定し、前の短完全列を移す。基底側の増大写像も同じ比較と揃える。F8 の増大全複体と、共通細分・底変換等の停止点の自然性の検収が引き続き残る。F7 全体または停止点 2f の完成とはしない。
 
 2f 累計 **137 モジュール・8,904 行（登録込み 9,129 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `AugmentedRingCechExact` の型は変更していない。
+
+## F7：閉厚化の実際の H⁰ の射の照合（a9dc69619、11-13）
+
+新規 2 モジュール・4 公開宣言（局所インスタンスを除く）・137 行（登録込み 141 行）。対象ビルド 3,280 jobs、直接 importer 4,685 jobs 成功。別実行の公理監査は **9,849 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ取得し、待ちは一つ。探索上限・最終出力の型は変更せず、sorry・新しい公理を追加していない。
+
+登録モジュール：`ReesHomogeneousFrobeniusCoefficientComparison`、`ReesHomogeneousFrobeniusH0Comparison`（ともに `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveHomogeneousFrobeniusCoefficientIso_projection` | F6 の閉厚化の実際の係数射と斉次代数係数の射影は、Frobenius 系の比較を介して可換。 |
+| `projectiveHomogeneousFrobeniusCoefficientColimitIso_projection` | 同じ可換性が係数系の順極限に成り立つ。 |
+| `projectiveHomogeneousFrobeniusRingCechIso_projection` | F6 の標準開環の複体と斉次代数係数の複体の比較は、実際の閉厚化の射と可換。 |
+| `projectiveHomogeneousFrobeniusRingCechH0Iso_projection` | F6 の閉厚化の射が Čech H⁰ に誘導する写像は、切断の実際の制限が誘導する Frobenius 順極限の写像と比較同型を介して一致する。 |
+
+各段の各標準開で、既存の斉次チャートの比較とその逆を打ち消した。係数系の等式を余極限と全タプル複体に送り、F6 の環チャートの定義中の比較とその逆も打ち消した。H⁰ の段ではこの複体の等式と、前の束の一般の代数係数図式の自然性を合成した。表示の異なる homologyMap と homologyFunctor.map を無理に展開せず、等式の合成と結合則で接続した。
+
+**残り**：F6 の正次数と F7 の H⁰ で使う閉厚化の射が同じであることが閉じた。次は `projectiveHomogeneousClosedCenter_exact` の短完全列をこの H⁰ 比較で移し、基底および基底の中心からの増大写像を同じ比較と揃える。続いて F8 の明示的な増大全複体と、共通細分・底変換等の停止点の自然性を検収する。F7 全体や停止点 2f の完成とはしない。
+
+2f 累計 **139 モジュール・9,041 行（登録込み 9,270 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。
