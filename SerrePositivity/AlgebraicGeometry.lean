@@ -1020,3 +1020,9 @@ public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousTransition
 public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousSectionTransition
 
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionImageStabilization
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraEqualizerAddMap
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousThickeningDiagram
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionPowerLift
