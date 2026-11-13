@@ -4833,3 +4833,24 @@ mainを読み取ると、`StrictSemifreeComputedColimitFamily.lean`に`strictSem
 このR6の供給を、任意のcoherent BE図式の厳密化の代わりには使わない。③-aの加群図式の比較は加群値の3b-3であり、BE作用を回復する全coherent図式の比較は§38.2の3として別に残る。strict BE図式の模型計算とそのU比較が済む前から、この追加の厳密化を仮定に押し込んだ主張を作らない。
 
 今回の紙の確認により、3b-4で最初に重複を避ける対象は上記の既存`FramedLimit*`・`CAlgUnderlyingDerivedComparison`、受け取り候補はR6の全余錐族の同型と明確になった。G10（3b-2）は未完のままなので、これを完了扱いして3b-4のLeanへ移ってはいない。
+
+
+## 113. 11-14の再開承認とBE忘却の無条件版の確認
+
+### 113.1 IS-W2 §16
+
+ユーザー承認とmainの指示書§16を読み取り、3b-2をB02から再開した。外枠は **20,000行**、一覧B01〜B08・C01〜C07・D01〜D08と§14の数え方は維持する。B・Cの完了を停止点**2a**として報告し、承認を待たずDへ進む。D完了は停止点**2b**（3b-2完成）。B完了時に、その実測とAの見込みに対する増分の比率も参考にC・Dを再見積もりして止まらず報告する。
+
+前回の外枠による中間停止は解除した。mainは凍結中なのでmerge・変更・ビルドをせず、自分の枝だけで検証とコミットを続ける。対象ビルドと新規分だけの小さな監査を用いる。
+
+### 113.2 §112の補足：FreeProbeUnitTransportConditionは本体で証明済み
+
+調整役の11-14の連絡を受け、実ファイルを読み直して確認した。
+
+- `EInfinity/BarrattEccles/FreeProbeUnitLocalTransport.lean`の`freeProbeUnitTransportCondition`は、`derivedFreeProbeUnitIntervalMap_transportIso`を使って`FreeProbeUnitTransportCondition A`を証明している。
+- `FreeProbeDerivedFreeForget.lean`の`cAlgFreeForgetDerivedAdjunction`は、その定理を`cAlgFreeForgetDerivedAdjunctionOfTransport`へ渡した無条件の随伴。
+- 同ファイルの`cAlgForgetDerived_mapJoinCone_isLimit`と`cAlgForgetDerived_hasLimit_postcomp`は、その定理を条件付き版へ代入した無条件版。§112の条件付き版だけの確認を、未供給の障害とは扱わない。
+
+3b-4ではこの**無条件版**を再利用する。BEの実例の`forget_preservesLimits`にも供給済みとの連絡を受領した。既存の`FramedLimit*`や`CAlgUnderlyingDerivedComparison`の再構成は行わない。
+
+これによりBE側の指定native極限錐が得られた後のU像の極限性は、追加のtransport仮定なしで上記定理へ接続できる。一方、元のstrict BE模型計算の指定錐をそのnative錐へ全高次単体とともに接続する工程と、実現側のU保存は、この極限保存定理だけで済ませない。G10（B02以降）の進行順は変えない。
