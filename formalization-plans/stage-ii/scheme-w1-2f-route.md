@@ -808,3 +808,29 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 残る接続は、像の安定化の切断代数への移送、Frobenius の閉厚化への因子分解と環の冪乗の照合、斉次切断代数と Proj の構造層の切断代数の環同型、それらを用いた F7 の四角形、F8 の増大全複体。今回の核の評価だけで Frobenius 比較の完成とはしない。
 
 2f 累計は **115 モジュール・7,169 行（登録込み 7,350 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
+
+## F7 途中：切断代数の遷移と像の安定化（220fa8956、11-13）
+
+新規 3 モジュール・11 公開宣言（局所インスタンスを除く）・270 行（登録込み 276 行）。対象ビルドは 3,260 jobs、直接 importer は 4,664 jobs 成功。別実行の公理監査は **9,616 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ使い、待ちは一つに保った。
+
+登録モジュール：`ReesClosedHomogeneousTransition`、`ReesClosedHomogeneousSectionTransition`、`ReesHomogeneousSectionImageStabilization`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `reesClosedGradedRingTransition` | 閉厚化の商環の因子写像は次数を保つ環準同型。 |
+| `reesClosedHomogeneousChartTransition` | 因子写像が標準開の斉次局所化に誘導する実際の環準同型。 |
+| `reesClosedHomogeneousModuleTransition` | 既存の線形な遷移を斉次局所化の図式へ移す。 |
+| `reesClosedHomogeneousModuleTransition_apply` | この線形写像は実際の斉次局所化の環の遷移と一致する。 |
+| `reesClosedHomogeneousChartAlgTransition` | 同じ遷移を基底環上の代数写像にする。 |
+| `reesClosedHomogeneousAlgebraTransition` | 閉厚化の遷移は斉次標準開の代数図式の自然変換。 |
+| `reesClosedHomogeneousSectionTransition` | 閉厚化間の実際の適合切断代数の遷移。 |
+| `reesClosedHomogeneousSectionTransition_apply` | 切断代数の遷移の各成分は標準開の環の遷移そのもの。 |
+| `projectiveHomogeneousSectionNatH0Equiv_transition` | 切断代数と次数付き加群の Čech H⁰ の比較は遷移に自然。 |
+| `reesClosedHomogeneousSectionH0Equiv_transition` | Rees の商の Čech H⁰ との比較も実際の遷移に自然。 |
+| `reesClosedHomogeneousSectionTransition_range_stabilizes` | 十分遅らせた閉厚化間の遷移の像は、元の切断代数からの制限の像に等しい。一様な遅れを Noether 基底と有限生成性から得る。 |
+
+像の評価は既存の `reesAdicProjectiveClosedCechTransition_range_stabilizes` を、制限と遷移に自然な比較同型で移した。安定した像を抽象的な部分加群で置き換えず、元の切断代数からの実際の制限の像と同定している。途中の H⁰ の比較で型の推論が heartbeat 上限に達した箇所は、曖昧な型推論を除き等式の合成を明示して解消した。上限は変更していない。
+
+前の束の核の評価と今回の像の安定化により、F7 の Frobenius 比較に必要な二つの評価が実際の斉次切断代数で使える。未完：Frobenius の厚化への因子分解と環の冪乗の照合、Proj の構造層の切断代数との環同型、それらを使う F7 の幾何学的四角形と F8 の増大全複体。評価だけで Frobenius 比較や 2f 全体の完成とはしない。
+
+2f 累計は **118 モジュール・7,439 行（登録込み 7,626 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
