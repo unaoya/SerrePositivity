@@ -6180,3 +6180,387 @@ M15 の実装担当・界面・相対テンソルの供給者について、今�
 
 **本ターンの変更は報告 §96〜97 のみ。M14 の Lean の停止は維持し、
 M15 も段 0 の紙まで。** 型・範囲の判断を先取りする Lean の下書きも作っていない。
+
+## §98　改訂 D79／May の最初の区切り（11-13）
+
+ユーザー承認の §96.7・指示書 §26 に従い、May 経路を再開した。
+main を math/bs-impl に取り込んだ（merge 5a94b4d6c）。界面・Assembly・drafts の
+型は、局所化が済むまで変更しない。既存の 10,216 行は保存している。
+
+### 98.1　今回の出力と登録候補
+
+| モジュール（EInfinity/PowerOperation/） | 行数 | 出力 |
+|---|---:|---|
+| MayCyclicGroup | 75 | 置換群内の巡回部分群、右回転の生成元、位数と生成性 |
+| MayNormalization | 58 | 単元としての ν(n)、全整数の指数 −n(p−1)、p=2 の規格化 |
+| MayResolution | 66 | 巡回自由解像度 W、制限した BE の射影解像度、増大を保つ W→BE |
+| MayZeroCoefficient | 78 | 同じ比較の零次係数、増大が 1、既存 aritySection とのホモトピー |
+| MayRepeatedInput | 97 | 同じ代表射の反復入力と、単位を第二因子にした挿入の厳密な照合 |
+| MayZeroOperation | 87 | 同じ D₀ の H⁰ 上の値が、既存の可換環構造の p 乗であること |
+| 合計 | 461 | 新規 May 実装の実測 |
+
+May, Definitions 1.2・2.1・2.2、Proposition 2.3 の規約を使う。
+生成元は既存の加法的な +1 生成元の逆（右回転）を取った。
+ν(n) は半階乗の単元の整数乗を使い、負の整数でも定義する。
+W→BE は射影解像度の比較を使い、その同じ零次係数を作用へ入力した。
+D₀ の計算は、増大が同じ二係数のホモトピーと既存の合成ホモトピーから得た。
+全次数での代表元独立性・加法性・局所化を、この零次の計算で代用してはいない。
+
+### 98.2　検証
+
+六本すべての対象ビルドが通った。最後の MayRepeatedInput・MayZeroOperation の
+ビルドは /tmp/bsw16/may-zero-operation-07.log、警告なし。
+専用監査 /tmp/bsw16/audit-may-first.lean は **184 モジュール・1,495 宣言、
+標準三公理のみ**で成功した。sorry・追加公理はない。
+既存の公開宣言の型・定義、本体の入口、共通監査スクリプトは変更していない。
+上の六本が調整役への登録候補である。
+
+### 98.3　次と凍結への対応
+
+最初の区切りを報告し、そのまま代表元独立性・加法性・自然性へ進む。
+新規 461 行は、中間報告の約 10,000 行・停止外枠約 20,000 行に対する実測。
+11-13 の凍結は予告段階で、18 時の確定連絡を待つ。
+検証済みは夕方までにコミットし、凍結確定後の夜はコミットを控える。
+
+## §99　May の零次の降下と全係数の境界（11-13、途中報告）
+
+§98 の取り込み候補は **1908ec200** にコミットした。その後も承認済みの順序で続行。
+今回の登録候補は同じ EInfinity/PowerOperation/ の次の二本。
+
+| モジュール | 行数 | 証明したこと |
+|---|---:|---|
+| MayZeroHomology | 83 | 同じ D₀ の H⁰ への降下、代表射を選び直しても一致、全厳密 BE 射で自然、F_p 上で加法的 |
+| MayResolutionCoordinates | 63 | 同じ W→BE の全係数 e_s の像と、境界のノルム／右回転の差の公式 |
+
+零次の操作は、最初から Frobenius と定義するのではなく、同じ指定係数の作用へ
+選んだ代表を入力して定義した。その値が p 乗という §98 の結果から、
+代表元独立性を証明した。自然性は既存 homologyAlgebraFunctor の厳密射から得た。
+加法性は二項定理と F_p の代数写像による `(p : H⁰ X) = 0` を使う。
+H⁰ X が零環の場合も含み、その環で CharP p を無条件に要求しない。
+
+全係数の境界は mayResolutionComparison の鎖写像の可換式を
+`.single 1 1` で評価し、既存 regularHomEvaluation_action・_norm へ送って証明した。
+新しい同変比較を仮定せず、零次と同じ増大付きの指定射を使っている。
+
+対象ビルド：MayZeroHomology は /tmp/bsw16/may-second-01.log の当該対象成功、
+MayResolutionCoordinates は /tmp/bsw16/may-coordinates-02.log で成功。最終ソースの警告なし。
+専用監査 /tmp/bsw16/audit-may-new-two.lean は **2 モジュール・26 宣言、標準三公理のみ**。
+§98 と合わせて May 新規 **607 行、8 モジュール・85 宣言**を監査済み
+（§98 の全 184 モジュール・1,495 宣言に今回の 26 宣言を追加）。sorry・追加公理なし。
+
+残りは、非零の係数次数での cycle、代表元独立性と混合入力による加法性、
+全次数の自然性、ho(CAlg) への局所化である。零次での完了を全次数の完了とはしていない。
+界面・Assembly・Shared/A4 は未変更、他レーンのファイルとの重複なし。
+鍵は今回も各対象ビルド／各監査の間だけ取り、監査完了後に返却済み。
+凍結確定の連絡はまだなく、検証済みのこの二本を報告とともにコミットする。
+
+## §100　May の全次数の同次値・巡回不変性・閉性（11-13）
+
+§99 の後も §26 の順で続行した。新規六本、562 行を検証した。
+
+| EInfinity/PowerOperation/ の登録候補 | 行数 | 出力 |
+|---|---:|---|
+| MayRepeatedCycles | 78 | 全整数次数での同次反復入力、次数 n*q、閉性、全複体射での自然性 |
+| MayRepeatedPermutation | 114 | 隣接交換と全置換の作用が sign(σ)^{q*q} になる厳密な等式 |
+| MayHomogeneousAction | 119 | 同次 BE 作用の微分公式・二変数線形性・自然性・同時置換の等変性・閉性の判定 |
+| MayCoefficientAction | 111 | 同じ実係数表現の作用との一致、生成元の差とノルムの評価、標数 p で係数境界の作用が零 |
+| MayCyclicInputInvariant | 64 | 奇素数で巡回置換の符号が 1、標数 2 で整数単元の作用が恒等、反復入力の巡回不変性 |
+| MayDValues | 76 | 同じ W→BE 比較による θ(e_s ⊗ a^{⊗p})、全厳密 BE 射に自然、閉入力から実閉元を作る |
+
+May, Definition 2.1 の値を実際の作用で作った。全次数の閉性では、
+係数の境界を §99 の同じ指定比較の境界公式へ戻している。
+奇数段は生成元の差、偶数段はノルムで、前者は巡回不変性、後者は
+p 倍のスカラーが零になることにより作用後に消える。正次数の係数を
+零次の収縮で置き換えていない。全置換の符号は、同次純テンソル上の
+実 Koszul 交換と隣接互換の生成性から証明した。
+
+反復入力の次数は右括弧に沿う mayRepeatedDegree で保持し、
+mayRepeatedDegree_eq が n*q と同定する。これは後の次数移送のための実装上の選択であり、
+全複体の無限直和を有限積へ読み替えたり、複体の有界性を追加したりしていない。
+
+対象ビルドは /tmp/bsw16/may-d-values-02.log で成功（最終ソースの警告なし）。
+専用監査 /tmp/bsw16/audit-may-cycles.lean は **六本・89 宣言、標準三公理のみ**で成功。
+sorry・追加公理はない。既存の宣言・入口・共通監査・界面・drafts は未変更。
+May 新規の累計は **1,169 行**（前回 607 + 今回 562）、途中報告の約 10,000 行より下。
+鍵は対象ビルドまたは監査の間だけ取り、最後の監査の鍵も返却済み。
+
+次は P⁰ の次数を保つ添字・ν をこの閉元へ接続し、代表元独立性へ進む。
+今回の出力は閉元と厳密射に沿う自然性までであり、全次数のホモロジー演算・加法性・
+擬同型での不変性・ho(CAlg) への降下はまだ完了していない。
+通常のテンソルのホモトピーを同変ホモトピーとして流用することはしない。
+凍結は引き続き予告段階なので、検証済みの六本をコミットし、未検証分は分けて進める。
+
+## §101　May の代表元独立性と規格化した P⁰ のホモロジー上の値（11-13）
+
+§100 の六本は **67c62e9d2** にコミットした。その後、下記十一本・745 行を検証した。
+今回も EInfinity/PowerOperation/ の新規ファイルのみであり、界面・Assembly・Shared/A4 の
+移行は、加法性と局所化が済むまで保留している。
+
+### 101.1　登録候補
+
+| モジュール | 行数 | 出力 |
+|---|---:|---|
+| MayClosedCycles | 71 | 実微分の kernel、次数の移送、複体射の閉元への制限、指定 D_s の閉元と自然性 |
+| MayPowerZeroCycles | 54 | i=−n(p−1) と ν(n) による規格化、全整数次数の P⁰ の閉元、正次数での零、自然性 |
+| MayClosedHomology | 122 | 実 cycles・homology との比較、類写像の全射性、零類の境界判定、代表と自然性 |
+| MayFreeProbeHomotopy | 49 | 既存の自由 probe のホモロジー関手は擬同型を反転し、鎖ホモトピックな射を同じ射に送る |
+| MayProbeCycles | 51 | 同じ probe の自明 fibration による、元の閉元の厳密な持ち上げ |
+| MaySphereHomotopy | 85 | 同じホモロジー類の二閉元の sphere 射の鎖ホモトピー、単位生成元の回収 |
+| MayProbeEvaluation | 75 | 同じ単位・比較射・自由持ち上げによる評価、普遍閉元の厳密な回収と全ホモロジーでの一致 |
+| MayDClasses | 65 | 全指定 D_s の実ホモロジー類・自然性・全次数の代表元独立性 |
+| MayPowerZeroClasses | 72 | 規格化した P⁰ の実ホモロジー上の関数、代表元独立性、正次数で零、全厳密 BE 射で自然 |
+| MayNormPolynomial | 44 | F_p[X] の (X−1)^{p−1}=∑_{i<p}X^i、非可換 F_p 代数への評価 |
+| MayCyclicNorm | 57 | 同じ生成元の位数と冪による列挙、同じ巡回表現での T^{p−1}=N |
+
+### 101.2　代表元独立性の接続
+
+既存の **freeProbeFunctor** と **freeProbeFunctor_map_quasiIso** を再利用した。
+自由 probe の全次数ホモロジー関手は、複体の擬同型を反転する。
+Mathlib の **ComplexShape.QFactorsThroughHomotopy.areEqualizedByLocalization** と
+**AreEqualizedByLocalization.map_eq_of_isInvertedBy** により、鎖ホモトピックな複体射は
+この関手の下で厳密に同じホモロジー射になる。
+
+二つの閉元の類が等しいとき、その差は元の複体の境界である。
+**complexSphereHomEquiv**・**complexSphereToDisk_comp** と
+**complexDiskContractingHomotopy** により、二つの sphere 射の鎖ホモトピーを作った。
+同じ sphere の生成元を元の cofibrant probe へ厳密に持ち上げ、自由代数へ含める。
+二つの評価射は上の意味で全ホモロジー上で一致するため、同じ普遍元の D_s の類を
+二方向へ送った値が一致する。評価が元の入力を回収する等式は元の複体で証明した。
+この結果が **mayDClass_independent** であり、規格化後の
+**mayPowerZeroClass_independent**・**mayPowerZeroHomology** へ接続した。
+
+この工程は、既存のモデル構造を使った実例側の証明である。
+公開する主張に [ModelCategory SSet] を要求せず、実際の
+projectiveModelCategory と BE の modelCategory を持つ既存の自由 probe を使った。
+通常のテンソルのホモトピーを同変ホモトピーとして流用したり、
+以前の未完成な positive-Hom/orbit の次数同型を鎖同型と仮定したりしていない。
+既存の 10,216 行は保存している。native な orbit・norm・Tate は使っていない。
+
+### 101.3　検証・現在の範囲
+
+代表元比較の束は /tmp/bsw16/may-power-zero-classes-03.log で、
+MayPowerZeroClasses まで成功した。ノルムの最終対象ビルドは
+/tmp/bsw16/may-cyclic-norm-02.log で成功した。最終ソースの警告なし。
+全 May モジュールを含む専用監査の結果は本節の末尾に記す。
+
+新規 May の累計は **1,914 行**（前回 1,169 + 今回 745）。
+途中報告の約 10,000 行・停止外枠約 20,000 行より下である。
+mayPowerZeroHomology は、現段階では **ホモロジー上の自然な関数**であり、
+まだ AddMonoidHom・ho(CAlg) 上の NatTrans には束ねていない。
+零次の既存の p 乗計算と新しい全次数の関数の照合も、これから接続する。
+界面の型を変更したとは報告しない。
+
+### 101.4　次の加法性の接続
+
+[May, Proposition 2.3(ii)](https://www.math.uchicago.edu/~may/PAPERS/10.pdf) を再確認した。
+混合語の和 Δ(a,b)=(a+b)^{⊗p}−a^{⊗p}−b^{⊗p} を、巡回軌道代表の和 c のノルム Nc として表す。
+既存 **cyclicBinaryTensorWord_fixed**・**cyclicBinaryTensorWord_orbit_injective** を再利用する。
+残りは、同次の色付き入力の置換公式、反復入力の二項展開、
+軌道代表での和の照合、および次の係数による境界表示である。
+全ての入力の次数が同じなので、巡回置換の Koszul 符号は §100 と同じ理由で消える。
+
+係数の次の段の微分が N の場合は、その係数に c を入力する。
+微分が T の場合は、次の係数に T^{p−2} を作用させ、今回の
+**mayCyclicNorm_eq** で T^{p−1}=N と照合する。
+同時置換の等変性で係数のノルムと入力のノルムを移し、差が境界であることを示す。
+加法性の証明後に可換群値の自然変換へ束ね、ho(CAlg) への局所化へ進む。
+この段階の加法性そのものは未実装である。
+
+### 101.5　監査完了・コミット時の状態
+
+専用監査 **/tmp/bsw16/audit-may-all.lean** は **May の全25モジュール・320宣言、
+標準三公理のみ**で成功した（/tmp/bsw16/audit-may-all.log）。
+本体に sorry・追加公理なし、linter の抑制なし。監査の鍵も返却済み。
+今回の十一本を報告とともにコミットする。新規ファイルだけなので他レーンとの重複なし。
+共通の入口と監査への登録候補は §100・§101.1 の計十七本。
+凍結の確定連絡はまだなく、検証済みを枝に保存した状態にする。
+
+
+## 102. May の加法性・厳密自然変換・ho(CAlg F_p) への局所化（11-13）
+
+### 102.1 今回閉じた主張
+
+May, Proposition 2.3(i)(ii) の代表元独立性（§101）に、加法性を接続した。
+**mayDClass_add** は全 s : ℕ・q : ℤ で、同じ指定 W→BE 比較による D_s の
+実ホモロジー類が閉入力の和に加法的であることを示す。
+**mayPowerZeroAddHom** は、規格化 ν と次数移送の後の P⁰ を、全整数次数の
+実ホモロジーの可換群の準同型に束ねる。
+
+**mayStrictPowerZero** は全厳密 BE 代数射に自然な可換群値の NatTrans。
+**mayHomologySourceIso** は既存の忘却比較・厳密複体の全次数ホモロジー比較から、
+全厳密代数への引き戻しを実ホモロジー関手と同定する。
+**mayLocalizedPowerZero** は ho(CAlg F_p) の全射に自然な同じ P⁰。
+**mayLocalizedPowerZero_source** により、源への引き戻しは同じ指定厳密演算の共役であり、
+局所化で別の演算を選んでいない。
+**mayLocalizedPowerZero_pos** は n > 0 の消滅を自然変換全体の等式で示す。
+
+### 102.2 加法性の実装の筋
+
+[May, Proposition 2.3(ii)](https://www.math.uchicago.edu/~may/PAPERS/10.pdf) の混合差の証明を使った。
+二色語に対する隣接交換・一般置換の符号公式を元のテンソル複体で示し、
+標数 p の巡回作用では符号が消えることを照合した。
+混合語の自由巡回軌道と代表の和から Δ(a,b)=Nc を得る。
+
+同じ W→BE 比較の次の係数に、必要なら T^{p−2} を作用させる。
+§101 の T^{p−1}=N により、その微分は前の指定係数のノルムとなる。
+実 BE 作用の同時置換の等変性で係数の norm と入力の norm を移す。
+ノルム係数そのものが実境界なので、閉混合入力とのテンソルは零類である。
+この最後の一般補助 **mayClosedTensor_class_zero_left** は sphere 射の実鎖ホモトピーを
+テンソルして証明し、平坦性・有界性の仮定を追加していない。
+
+使用した norm は有限群作用の線形写像の和であり、Sp の orbit・norm・Tate の模型は使わない。
+
+### 102.3 登録候補（今回の新規十八本）
+
+全て SerrePositivity/EInfinity/PowerOperation/ の下。
+
+- MayColoredValues、MayWordAdjacent、MayHomogeneousSwap、MayColoredPermutation
+- MayColoredCyclic、MayMixedWordOrbits、MayPureMixedWords、MayMixedInputNorm
+- MayCoefficientNormTransfer、MayCoefficientPrimitive、MayClosedTensor、MayNormCoefficient
+- MayDClassAdditivity、MayPowerZeroAdditivity、MayStrictNaturalTransformation
+- MayHomologySourceComparison、MayLocalizedPowerZero、MayLocalizedPositive
+
+新規十八本 **1,197 行**、検証済み May の累計 **3,111 行・43モジュール**。
+約 10,000 行の途中報告・約 20,000 行の外枠より下。
+共通入口と全体監査の登録は行っていない。他レーンと重なる既存 Lean ファイルへの変更なし。
+
+### 102.4 検証と残り
+
+対象ビルドは /tmp/bsw16/may-localized-05.log で、MayLocalizedPositive まで成功。
+同じ一回のコマンドで追加検査した未検証補助 MayNormBaseField のみが失敗したため、
+コマンド全体の終了値は 1 だった。原因は ZMod.castHom の引数（標数零の等式でなく
+p ∣ p を要求）であり、当該補助だけ修正して後続で検証する。
+検証済み十八本の新規警告は、letI を let に直して消した。依存先の既存の長行警告は残る。
+専用監査の最終結果は本節の末尾に追記する。
+
+局所化までの今回の本体は小さい宇宙の F_p に対するもの。
+EInfinityTheory.{u} の基底環は Type u なので、界面の本欄に置く F_p は ULift して
+同じ宇宙に置く必要がある。そのための素体別名・同じ係数の移送と規格化の補助は、
+まだ未検証の下書きとして作業木に置き、今回の十八本とは分ける。
+界面・Assembly・Shared/A4 の型の移行はまだ行っていない。
+
+零次の以前の p 乗計算と全次数の P⁰ との照合、離散・cosimplicial の top operation、
+_tot・filtered 塔・二重模型の実現比較は残る。最後の実現比較は指示どおり G10 の後。
+旧 10,216 行は削除していない。凍結の確定連絡はまだない。
+
+
+### 102.5 監査完了
+
+/tmp/bsw16/audit-may-additive.lean は、検証済み **43モジュール・467宣言、
+標準三公理のみ**で成功した（/tmp/bsw16/audit-may-additive.log）。
+全宣言の公理を検査し、sorry・追加公理なし。監査の鍵も返却済み。
+今回の十八本と本報告をコミットし、持ち上げた素体の補助の検証へ続ける。
+
+
+## 103. D79 改訂の界面・Assembly・Shared/A4 への接続（11-13、取り込み点）
+
+### 103.1 本欄と宇宙
+
+**EInfinityPrimeField.{u} p := ULift.{u} (ZMod p)** を、模型に依存しない
+Interface/PrimeField.lean に置いた。EInfinityTheory.{u} の基底環は Type u なので、
+素体をその宇宙へ置くための同じ環の持ち上げである。
+**eInfinityPrimeFieldEquiv** は元の ZMod p との環同型、
+**eInfinityPrimeFieldMap p k** は一般の標数 p の k への標準構造射。
+一般 k を界面の本欄へ戻す変更は行っていない。
+
+界面の **homotopyGroupsOnHo k U n := hoMap U ⋙ additiveCohomologyOnHo k (-n)** を使い、
+powerOp0 は次の型へ変更した。
+
+```lean
+powerOp0 (p : ℕ) [Fact p.Prime] (n : ℤ) :
+  homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n ⟶
+    homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n
+```
+
+通常の可換群値の NatTrans で、全整数 n・全 ho(CAlg) 射に自然。
+_zero は pi0_forget の成分で p 乗を読む等式、_pos は n > 0 の成分が零の等式。
+_discrete・_tot は F_p 上の Frobenius の自己射から誘導する写像との、
+**全整数 n の加法群準同型の等式**であり、coherent な Sp 値の辺を要求しない。
+型は §96.3 の案の素体を同じ宇宙に持ち上げたもの。
+toSpectra とその二つの比較の欄は変更せず、旧 10,216 行も削除していない。
+
+### 103.2 同じ規格化からの実例と一般係数での読み出し
+
+素体の持ち上げに必要な係数計算を、F_p の多項式の等式を標準環準同型で移して示した。
+**mayCyclicNorm_baseField**・**mayBaseFieldAdditivityCoefficient_boundary** から、
+同じ閉元・境界・実作用の証明で **mayBaseFieldDClass_add** を得る。
+これは持ち上げた素体にも使える係数計算の補助であり、一般 k の本欄を増やしていない。
+
+**mayNormalizedClass** は同じ D_i を指定係数 c で規格化し、代表元独立性と加法性を証明する。
+実例では c := ULift.up (mayNu p n : ZMod p) とし、全次数のホモロジー比較で局所化する。
+**mayPrimeFieldPowerZero**・**mayPrimeFieldPowerZero_source**・**mayPrimeFieldPowerZero_pos** が
+任意の宇宙の素体の全関手版と同じ指定演算の引き戻し・正次数消滅を与える。
+
+実例の公開名は **barrattEcclesPowerOp0**・**barrattEcclesPowerOp0_pos**。
+Assembly はこの二つを固定し、powerOp0 と powerOp0_pos の引数を外す。
+残り十九欄のうち冪作用については _zero・_discrete・_tot の三つだけが引数に残る。
+零次の旧 p 乗計算をまだ全次数の P⁰ に同定したとは主張しない。
+
+一般 k の利用者のため、Interface/PowerOperation.lean に
+**EInfinityTheory.restrictHomotopyGroupsIso** と **EInfinityTheory.powerOp0Over** を置いた。
+前者は restrict_forget と restrictD_homologyIso を合成する自然同型。
+後者は素体への制限に本欄を適用し、その自然同型で共役するだけの定義である。
+新しい Sp 値の作用や新しい自然性の仮定を追加しない。
+Interface/ には模型の直接 import・模型の API を使う宣言・[ModelCategory _] の欄を足していない。
+
+### 103.3 drafts の移行
+
+Shared/EInfinityPowerOperation の powerOperationZero は powerOp0Over の成分を
+homotopyCohomology で共役して読む型へ移した。
+離散・Tot の比較も、全整数次数のホモロジー写像と係数比較の成分の等式へ移した。
+強い三出力 powerOperationZero_natTrans・_primeField・_component は、
+本ファイルでは作らず補完へ回すことを明記した。
+それらを要求する他の drafts の参照はなかった。
+
+A4/Perfectoidization の Lemma 8.4(a) の証明の筋は、素体へ制限したホモロジー演算を使う形へ変更。
+同じ shift の作用は可逆、正次数の P⁰ は零、係数比較で H^{-n} の消滅へ戻す。
+二重模型の実現上の Frobenius 比較は A4 の局所補題として、G10 の後に残す。
+Lemma 8.4(a)(b) の主張の型は変更していない。
+A1 の二本・A0・A3 は触っていない。drafts はビルドしていない。
+
+### 103.4 登録候補
+
+本段の新規モジュールは次の十五本。
+
+- EInfinity/Interface/：PrimeField、PrimeFieldMap、PowerOperation
+- EInfinity/BarrattEccles/Theory/：MayPowerOperation
+- EInfinity/PowerOperation/：MayNormBaseField、MayBaseFieldPrimitive、MayBaseFieldNormCoefficient、MayBaseFieldDClassAdditivity
+- 同上：MayNormalizedClasses、MayNormalizedNaturalTransformation、MayNormalizedSourceComparison
+- 同上：MayPrimeFieldLocalization、MayPrimeFieldPositive、MayZeroClassComparison、MayUnitEvaluation
+
+最後の二本は、次の零次の接続に使う同じ類の表示と単位評価の補助。
+新規十五本は 693 行、May*.lean の累計は 3,672 行。
+新設の界面・実例四本は別に計132行（May の数に含めない）。既存四ファイルの差分は別記する。
+本段も約 10,000 行の途中報告・約 20,000 行の外枠より下。
+一般∞の五本の移動候補は、指示どおり元の場所のまま。
+共通入口と全体監査への登録は行っていない。
+
+### 103.5 検証と残り
+
+may-interface-01.log で新しい界面・Assembly と直接の利用者 TheoryInterface のビルドが成功した。
+may-interface-02.log で一般係数の補助・May の公開実例・正次数消滅まで成功した。
+後続の最終 Assembly・単位評価・専用監査の結果は、本節の末尾に追記する。
+既存の長行警告は残し、新規補助の非推奨名・未使用セクション引数は抑制せず修正した。
+
+この取り込み点は界面の型の移行と P⁰・正次数消滅の供給であり、M14 全体の完了ではない。
+残りは零次の p 乗との接続、離散、cosimplicial の top operation と _tot、filtered 塔、
+および G10 の後の二重模型の実現比較。次は零次の同じ単位射の照合から続ける。
+
+
+### 103.6 最終検証・取り込み点
+
+**/tmp/bsw16/may-interface-03.log** で、P⁰ と正次数消滅を固定した Assembly と
+MayUnitEvaluation の対象ビルドが成功した。新規十五本の最終ソースに新しい警告なし。
+Assembly・Theory・依存先の既存の長行警告は残る。
+
+**/tmp/bsw16/audit-may-interface.lean** は **60モジュール・638宣言、標準三公理のみ**で成功した
+（/tmp/bsw16/audit-may-interface.log）。May の全54モジュールと、変更した界面・実例・Assembly を検査した。
+本体に sorry・追加公理なし。Interface/ の模型直接 import と [ModelCategory _] の仮定は追加なし。
+ビルドと監査は別々の一回の鍵で行い、どちらの鍵も返却済み。
+root ビルド・全体監査・入口登録は調整役の取り込み時に委ねる。
+
+**取り込み点**：本節の十五本・界面・Assembly・Shared/A4 の移行と報告をコミットする。
+§100〜§102 と未登録分が重ならないよう、登録候補は各節の一覧を使ってほしい。
+次の零次比較の MayRepeatedZeroInput.lean は未検証の新規下書きとして作業木に残し、
+今回のコミットと監査には含めない。
+凍結の確定連絡はまだなく、検証済みの分を18時前に保存した。

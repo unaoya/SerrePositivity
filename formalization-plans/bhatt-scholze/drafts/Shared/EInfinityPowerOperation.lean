@@ -2,10 +2,10 @@
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md G-A4-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.PowerOperation
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.FieldTheory.Finite.Basic
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
 -- 取り込み時の依存先：drafts/DerivedGeneral/ScalarRestriction.lean。
 -- 本ファイルは drafts/Shared/CosimplicialEInfinity.lean（余単体的可換環の Tot_{E∞}）を使う。
 
@@ -18,7 +18,8 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 levelwise Frobenius x ↦ x^p が Tot_{E∞}（実現）の P⁰ を誘導すること、を述べる。
 
 ## 方針
-DAG XIII Construction 2.2.6 に対応するSp 値の自然自己変換を界面から読む。
+May の P⁰ を ho(CAlg F_p) 上の可換群値の自然変換として界面から読む。
+一般の k は素体への係数制限とホモロジーの自然同型で共役する。
 零次の環、係数制限、離散入力と Tot での値には、同じ界面の比較を用いる。
 
 ## 規約
@@ -80,19 +81,15 @@ def homotopyMap {X Y : (E.CAlg k) _⦋0⦌} (f : SSet.Edge X Y) (n : ℤ) :
       (homotopyCohomology (E := E) k p X n).toAddMonoidHom)
 
 /-- 概要：冪作用 P⁰ : π_n(X) → π_n(X)（加法的、π_* 全体で定義）。
-方針：DAG XIII Construction 2.2.6 の Sp 値の変換を π に送り、π/H の自然比較で台を読む。
+方針：本欄を素体へ制限し、ho(CAlg) 上の全整数次数の加法的演算を共役する。
 規約：k 線形ではない（φ_k 半線形）。
 使われ方：Lemma 8.4。
  -/
 def powerOperationZero (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
     (X : (E.CAlg k) _⦋0⦌) (n : ℤ) : homotopy (E := E) k p X n →+ homotopy (E := E) k p X n := by
-  let α := (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor (-(-n)) ⋙
-    CommGrpCat.toAddCommGrp).map (functorHomEvaluate (E.powerOp0 k p) X)
-  let cmp := (E.toSpectra_homologyIso k (-n)).app
-    (SSet.HomotopyCategory.mk ((E.forget k).app _ X))
+  let α := (E.powerOp0Over k p n).app (SSet.HomotopyCategory.mk X)
   exact (homotopyCohomology (E := E) k p X n).symm.toAddMonoidHom.comp
-    (cmp.hom.hom.comp (α.hom.comp (cmp.inv.hom.comp
-      (homotopyCohomology (E := E) k p X n).toAddMonoidHom)))
+    (α.hom.comp (homotopyCohomology (E := E) k p X n).toAddMonoidHom)
 
 /-- 概要：(i) π_0 では P⁰ は Frobenius x ↦ x^p。
 方針：作用素の次数 0 成分は積。
@@ -118,34 +115,19 @@ theorem powerOperationZero_pos (X : (E.CAlg k) _⦋0⦌) (n : ℤ) (hn : 0 < n) 
 theorem powerOperationZero_natural {X Y : (E.CAlg k) _⦋0⦌} (f : SSet.Edge X Y) (n : ℤ)
     (x : homotopy (E := E) k p X n) :
     homotopyMap (E := E) k p f n (powerOperationZero (E := E) k p X n x) = powerOperationZero (E := E) k p Y n (homotopyMap (E := E) k p f n x) := by
-  sorry -- functorCellToNatTrans_app_eq_evaluate と E.restrictD_homologyIso の自然性を
+  sorry -- E.powerOp0Over の NatTrans の自然性と E.restrictD_homologyIso の自然性を
         -- 合成し、n = 0 では E.pi0_forget の自然性で台の H⁰ の環から移す
 
-/-- 概要：P⁰ を忘却 U : CAlg_k → Sp 上の **coherent な自然自己変換**として（Lurie DAG XIII Constr 2.2.6 の強さ。W9-II-02）。
-方針：界面の Sp 値の自然自己変換を使う。π_n 上の作用はその成分。
-規約：E∞ 代数の射で自然、極限・幾何学的実現の錐と両立。
-使われ方：(iii)。 -/
-def powerOperationZero_natTrans : FunctorHom (E.forget k ≫ E.toSpectra k) (E.forget k ≫ E.toSpectra k) := E.powerOp0 k p
-
-def powerOperationZero_primeField (p : ℕ) [Fact p.Prime] :
-    FunctorHom (E.forget (ZMod p) ≫ E.toSpectra (ZMod p))
-      (E.forget (ZMod p) ≫ E.toSpectra (ZMod p)) := E.powerOp0 (ZMod p) p
+/-!
+D79 改訂：powerOperationZero_natTrans・powerOperationZero_primeField の coherent な
+Sp 値の出力、および powerOperationZero_component の強い成分比較は補完へ回す。
+このファイルでは作らず、ho(CAlg) 上の可換群の演算と辺に沿う自然性だけを使う。
+-/
 
 /-- 係数の読み替えは Hⁱ の台の加法群を変えない。 -/
 def restrictHomologyAddEquiv (M : (derivedInfinityCategory k) _⦋0⦌) (i : ℤ) :
     derivedInfinityHomology k i ((derivedInfinityRestrictScalars (E := E) (frobenius k p)).app _ M) ≃+
       derivedInfinityHomology k i M := E.restrictD_homology (frobenius k p) i M
-
-theorem powerOperationZero_component (X : (E.CAlg k) _⦋0⦌) (n : ℤ)
-    (x : homotopy (E := E) k p X n) :
-    let cmp := (E.toSpectra_homologyIso k (-n)).app
-      (SSet.HomotopyCategory.mk ((E.forget k).app _ X))
-    let α := (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor n ⋙
-      CommGrpCat.toAddCommGrp).map
-        (functorHomEvaluate (powerOperationZero_natTrans (E := E) k p) X)
-    homotopyCohomology (E := E) k p X n (powerOperationZero (E := E) k p X n x) =
-      cmp.hom (α (cmp.inv (homotopyCohomology (E := E) k p X n x))) := by
-  sorry -- 同じ Sp の成分を π/H の自然比較で読む。D(k) の辺は選ばない。
 
 abbrev frobeniusRestriction := Under.map (CommRingCat.ofHom (frobenius k p))
 
@@ -169,29 +151,34 @@ def totRestrictFrobeniusIso (X : Cosimplicial.CosimplicialAlgebra k) :
     VertexIso (Cosimplicial.totEInfinity (E := E) k (X ⋙ frobeniusRestriction k p))
       ((cAlgRestrictScalars (E := E) (frobenius k p)).app _ (Cosimplicial.totEInfinity (E := E) k X)) := (E.ofCosimplicial_restrict (frobenius k p)).app (nerveVertex X)
 
-/-- 概要：(iii) 離散な可換 k 代数 B では P⁰_{HB} = H(Frob_B)。U が極限と幾何学的実現を保ち P⁰ が coherent な自然変換なので、この同定は
-余単体的 Tot_{E∞}(X^•) と単体的実現へ移る：levelwise Frobenius x ↦ x^p が Tot・実現の P⁰ を誘導する。
-方針：自然変換の錐との両立（W9-II-02 で訂正：**通常の p 重 cup 積による説明は誤り**。P⁰ は次数を保つが p 重 cup 積は次数 q を pq にする。
-S¹ の mod 2 で x ∪ x = 0 だが Frobenius は恒等）。
-規約：Shared/CosimplicialEInfinity の `totEInfinity`。
-使われ方：Lemma 8.4 (a)：Δ_perf/p の塔の shift が P⁰ と同じ作用を誘導する（G-A3-9 の模型の φ との比較と合わせて）。 -/
-theorem powerOperationZero_eq_frobenius_discrete (B : A_R k) :
+/-- 離散な可換 k 代数では、全整数次数で P⁰ が Frobenius を誘導する。
+素体の本欄から係数制限で運ぶ。Sp 値の辺の等式は主張しない。 -/
+theorem powerOperationZero_eq_frobenius_discrete (B : A_R k) (n : ℤ) :
     let X := (E.discrete k).app _ (nerveVertex B)
     let U := E.forget k
     let f := (nerve.edgeMk (discreteFrobenius k p B)).map (E.discrete k ≫ U)
-    functorHomEvaluate (powerOperationZero_natTrans (E := E) k p) X =
-      (hoMap (E.toSpectra k)).map (Truncated.HomotopyCategory.homMk f.toTruncated ≫
-        ((cAlgRestrictScalars_algebraEmbedding (E := E) (frobenius k p) B).map U).hom ≫
-        ((cAlgRestrictScalars_forget (E := E) (frobenius k p)).app X).hom) ≫
-        (((E.toSpectra_restrict (frobenius k p)).precomp U).app X).hom := E.powerOp0_discrete k p B (discreteFrobenius k p B) (fun _ => rfl)
+    (E.powerOp0Over k p n).app (SSet.HomotopyCategory.mk X) =
+      (additiveCohomologyOnHo k (-n)).map
+        (Truncated.HomotopyCategory.homMk f.toTruncated ≫
+          ((cAlgRestrictScalars_algebraEmbedding (E := E) (frobenius k p) B).map U).hom ≫
+            ((cAlgRestrictScalars_forget (E := E) (frobenius k p)).app X).hom) ≫
+        (E.restrictD_homologyIso (frobenius k p) (-n)).hom.app
+          (SSet.HomotopyCategory.mk (atVertex U X)) := by
+  sorry -- E.powerOp0_discrete と discrete_restrict、restrictD_homologyIso で共役する。
 
-theorem powerOperationZero_eq_frobenius_tot (X : Cosimplicial.CosimplicialAlgebra k) :
+/-- Tot の全整数次数で、levelwise Frobenius が同じ P⁰ を誘導する。
+May の top operation の比較を使う。一般の実現との可換性はこの欄からは推論しない。 -/
+theorem powerOperationZero_eq_frobenius_tot (X : Cosimplicial.CosimplicialAlgebra k) (n : ℤ) :
     let T := Cosimplicial.totEInfinity (E := E) k X
     let U := E.forget k
     let f := (Cosimplicial.totEInfinity_map (E := E) k (cosimplicialFrobenius k p X)).map U
-    functorHomEvaluate (powerOperationZero_natTrans (E := E) k p) T =
-      (hoMap (E.toSpectra k)).map (Truncated.HomotopyCategory.homMk f.toTruncated ≫ ((totRestrictFrobeniusIso (E := E) k p X).map U).hom ≫
-        ((cAlgRestrictScalars_forget (E := E) (frobenius k p)).app T).hom) ≫
-        (((E.toSpectra_restrict (frobenius k p)).precomp U).app T).hom := E.powerOp0_tot k p X (cosimplicialFrobenius k p X) (fun _ _ => rfl)
+    (E.powerOp0Over k p n).app (SSet.HomotopyCategory.mk T) =
+      (additiveCohomologyOnHo k (-n)).map
+        (Truncated.HomotopyCategory.homMk f.toTruncated ≫
+          ((totRestrictFrobeniusIso (E := E) k p X).map U).hom ≫
+            ((cAlgRestrictScalars_forget (E := E) (frobenius k p)).app T).hom) ≫
+        (E.restrictD_homologyIso (frobenius k p) (-n)).hom.app
+          (SSet.HomotopyCategory.mk (atVertex U T)) := by
+  sorry -- E.powerOp0_tot と ofCosimplicial_restrict、restrictD_homologyIso で共役する。
 
 end SerrePositivity.EInfinity

@@ -5,6 +5,7 @@ public import Mathlib.Algebra.Category.Grp.EquivalenceGroupAddGroup
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyFunctor
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
+public import SerrePositivity.EInfinity.Interface.PrimeField
 public import SerrePositivity.EInfinity.Interface.Core
 public import SerrePositivity.EInfinity.Interface.StrictInputs
 public import SerrePositivity.EInfinity.Interface.CoproductTensorLegs
@@ -22,7 +23,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Bin
 
 ## 概要
 HA §3.2.2–3.2.4 の忘却と余極限、零次環、係数変更、厳密な入力の実現を指定する。
-DAG XIII Construction 2.2.6 の冪作用はスペクトルへの忘却の自然自己変換で受け取る。
+May, Proposition 2.3 の P⁰ は ho(CAlg F_p) 上のホモトピー可換群の自然変換で受け取る。
 
 ## 方針
 同じ忘却関手に対する自然比較を保持し、証明済みの中核に残りのデータを加える。
@@ -44,6 +45,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped _root_.Simplicial
 namespace SerrePositivity.EInfinity
 
+open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
+open TheSliceAndJoinConstructions (nerveVertex)
+
 attribute [local instance] HasDerivedCategory.standard
 
 /-- 指定関手が誘導する通常のホモトピー圏上の関手。 -/
@@ -62,6 +67,12 @@ abbrev additiveCohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=
 abbrev restrictRingAlgebra {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     RingAlgebra T ⥤ RingAlgebra S :=
   Under.map (CommRingCat.ofHom f)
+
+/-- 忘却した導来複体の H^{-n} を、ホモトピー次数 n の可換群として読む。 -/
+abbrev homotopyGroupsOnHo (k : Type u) [CommRing k] {C : SSet.{u + 1}}
+    (U : C ⟶ derivedInfinityCategory k)
+    (n : ℤ) :=
+  hoMap U ⋙ additiveCohomologyOnHo k (-n)
 
 /-- 離散代数の余単体的図式。 -/
 abbrev CosimplicialRingAlgebra (S : Type u) [CommRing S] :=
@@ -218,41 +229,33 @@ structure EInfinityTheory extends EInfinityCore.{u} where
     hoMap (toSpectra S) ⋙
       SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor (-i) ⋙
         CommGrpCat.toAddCommGrp ≅ additiveCohomologyOnHo S i
-  powerOp0 (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p] :
-    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (forget k ≫ toSpectra k) (forget k ≫ toSpectra k)
-  powerOp0_zero (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
-      (x : (CAlg k) _⦋0⦌) (a : ((pi0 k).obj (SSet.HomotopyCategory.mk x)).right) :
-    let e := (pi0_forget k).app (SSet.HomotopyCategory.mk x)
-    let α := (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor 0 ⋙
-      CommGrpCat.toAddCommGrp).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x)
-    let cmp := (toSpectra_homologyIso k 0).app
-      (SSet.HomotopyCategory.mk (atVertex (forget k) x))
-    α (cmp.inv (e.hom a)) = cmp.inv (e.hom (a ^ p))
-  powerOp0_pos (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
-      (x : (CAlg k) _⦋0⦌) (n : ℤ) (hn : 0 < n) :
-    (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor n ⋙
-      CommGrpCat.toAddCommGrp).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x) = 0
-  powerOp0_discrete (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
-      (B : RingAlgebra k) (f : B ⟶ (restrictRingAlgebra (frobenius k p)).obj B)
-      (hf : ∀ a : B.right, f.right.hom a = a ^ p) :
-    letI := quasicategory k
-    let x := atVertex (discrete k) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
-    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x =
-      (hoMap (toSpectra k)).map (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (discrete k ≫ forget k)) ≫
-        (((discrete_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)).map (forget k)).hom ≫
-        ((restrict_forget (frobenius k p)).app x).hom) ≫
-        (((toSpectra_restrict (frobenius k p)).precomp (forget k)).app x).hom
-  powerOp0_tot (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
-      (X : CosimplicialRingAlgebra k)
-      (f : X ⟶ X ⋙ restrictRingAlgebra (frobenius k p))
-      (hf : ∀ j (a : (X.obj j).right), (f.app j).right.hom a = a ^ p) :
-    letI := quasicategory k
-    let x := atVertex (ofCosimplicial k) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
-    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x =
-      (hoMap (toSpectra k)).map (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (ofCosimplicial k ≫ forget k)) ≫
-        (((ofCosimplicial_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).map (forget k)).hom ≫
-        ((restrict_forget (frobenius k p)).app x).hom) ≫
-        (((toSpectra_restrict (frobenius k p)).precomp (forget k)).app x).hom
+  /-- D79 改訂：素体上の全整数次数の P⁰。coherent な Sp 値の出力は要求しない。 -/
+  powerOp0 (p : ℕ) [Fact p.Prime] (n : ℤ) :
+    homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n ⟶
+      homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n
+  powerOp0_zero (p : ℕ) [Fact p.Prime]
+      (x : (CAlg (EInfinityPrimeField.{u} p)) _⦋0⦌)
+      (a : ((pi0 (EInfinityPrimeField.{u} p)).obj (SSet.HomotopyCategory.mk x)).right) :
+    let e := (pi0_forget (EInfinityPrimeField.{u} p)).app (SSet.HomotopyCategory.mk x)
+    (powerOp0 p 0).app (SSet.HomotopyCategory.mk x) (e.hom a) = e.hom (a ^ p)
+  powerOp0_pos (p : ℕ) [Fact p.Prime]
+      (x : (CAlg (EInfinityPrimeField.{u} p)) _⦋0⦌) (n : ℤ) (hn : 0 < n) :
+    (powerOp0 p n).app (SSet.HomotopyCategory.mk x) = 0
+  powerOp0_discrete (p : ℕ) [Fact p.Prime]
+      (B : RingAlgebra (EInfinityPrimeField.{u} p)) (f : B ⟶ B)
+      (hf : ∀ a : B.right, f.right.hom a = a ^ p) (n : ℤ) :
+    let x := atVertex (discrete (EInfinityPrimeField.{u} p)) (nerveVertex B)
+    (powerOp0 p n).app (SSet.HomotopyCategory.mk x) =
+      (homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n).map
+        (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (discrete (EInfinityPrimeField.{u} p))))
+  powerOp0_tot (p : ℕ) [Fact p.Prime]
+      (X : CosimplicialRingAlgebra (EInfinityPrimeField.{u} p)) (f : X ⟶ X)
+      (hf : ∀ j (a : (X.obj j).right), (f.app j).right.hom a = a ^ p) (n : ℤ) :
+    let x := atVertex (ofCosimplicial (EInfinityPrimeField.{u} p)) (nerveVertex X)
+    (powerOp0 p n).app (SSet.HomotopyCategory.mk x) =
+      (homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n).map
+        (SSet.HomotopyCategory.homMk
+          ((nerve.edgeMk f).map (ofCosimplicial (EInfinityPrimeField.{u} p))))
 
 /-- 自然比較の成分を台の加法同型として読む。 -/
 def EInfinityTheory.restrictD_homology (E : EInfinityTheory.{u})
