@@ -9630,3 +9630,71 @@ Overの元の増大射の弱同値性を、それぞれ実係数で検証した�
 残りは両射の合成と自由実現の元の増大射の評価値の一致。
 §103の評価同型・要素圏の余積表示の同型が増大射を保つことを、
 指定随伴の転置で照合する。弱同値な別の射でRR02(a)を代用しない。
+
+## §109 RR02(a)：元の増大射の評価同型による照合
+
+一覧：済み 1／全体 13（うち追加 11）
+
+まずOverとの比較を要素圏の余錐の増大へ戻す。
+
+```lean
+def strictDiagramFreeEvaluationElementsCocone :
+  Cocone (ConstantWeightHom.degree
+    (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements
+    (Functor.Elements.π (strictDiagramFreeEvaluationLiftedWeight d k) ⋙
+      strictDiagramFreeEvaluationBase A d X) (SimplexCategory.mk 0))
+def strictDiagramFreeEvaluationElementsAugmentation :=
+  FrameWeightRealization.bousfieldKanAugmentation _ (strictDiagramFreeEvaluationElementsCocone A d X k)
+lemma strictDiagramFreeEvaluationOverComparison_augmentation :
+  strictDiagramFreeEvaluationOverComparison A d X k ≫
+    strictDiagramFreeEvaluationOverAugmentation A d X k =
+      (strictDiagramFreeEvaluationBousfieldKanIso A d X k).hom ≫
+        strictDiagramFreeEvaluationElementsAugmentation A d X k
+```
+
+余錐はOverの同じ余錐を制限し、既存の係数同型の逆で前合成したもの。
+添字変更と係数移送に対する増大射の検証済み法則を使う。未検証。
+残る評価同型の部分は、指定実現随伴と要素圏の余米田同型の評価式で照合する。
+
+### §109.1 余積frameの要素圏表示と増大射（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def elementsZeroCocone :
+  Cocone (ConstantWeightHom.degree F.Elements (Functor.Elements.π F ⋙ B)
+    (SimplexCategory.mk 0))
+lemma weightedHomEquiv_zeroWeight :
+  weightedHomEquiv F B (bousfieldKanWeight Kᵒᵖ) c.pt
+    (bousfieldKanZeroWeight K ≫ (ConstantWeightHom.homEquiv K (frames F B) 0 c.pt).symm c.ι) =
+    Functor.whiskerLeft (Functor.Elements.π F).op (bousfieldKanZeroWeight K) ≫
+      (ConstantWeightHom.homEquiv F.Elements (Functor.Elements.π F ⋙ B) 0 c.pt).symm
+        (elementsZeroCocone F B c).ι
+lemma realizationIso_inv_augmentation :
+  (FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).map
+      (bousfieldKanWeightPost (Functor.Elements.π F).op) ≫
+    (realizationIso F B (bousfieldKanWeight Kᵒᵖ)).inv ≫
+      bousfieldKanAugmentation (frames F B) c =
+    bousfieldKanAugmentation (Functor.Elements.π F ⋙ B) (elementsZeroCocone F B c)
+```
+
+上の略記 `0` は `SimplexCategory.mk 0`。
+余錐の脚は余積の挿入と元の脚の合成。既存の表示同型の選択は変更しない。
+
+### §109.2 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+2本・141行の対象ビルドと10宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計228本・16,709行。
+上限変更後のRR02(a)は4,211行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/elements-augmentation/build-3.log`。
+
+Over比較と増大射の合成を要素圏の同じ余錐の増大へ戻す法則、および
+余積frameの要素圏表示同型が元の増大射を保つ法則を検証した。
+次数零余錐の脚を既存の `summand` で明示し、異なる余積構成の定義上の
+一致を仮定せず、単体的Yonedaの自然性で照合した。
+
+残りは左随伴（評価）と実現の交換同型が増大射を保つこと、実評価の係数同型を
+通した次数零余錐の脚の一致。この二つを通して元の自由増大射の評価値と
+§108の弱同値な合成を同定する。RR02(a)全体は未完。
