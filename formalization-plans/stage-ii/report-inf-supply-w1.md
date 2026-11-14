@@ -6293,3 +6293,71 @@ Kerodon [Tag 03KC](https://kerodon.net/tag/03KC) を確認した。
 まだ単体での全パラメーターの比較、境界制限の充填、極限での弱同値保存との接続が未確認。
 この経路で E05 が得られても、E01 の元の選んだ比較の可逆性への逆接続は別に必要であり、
 E01 の型を別の end 定理へ取り替えない。新しい独立の数学が必要なら実装前に報告する。
+
+
+## 61. RR01：同じ source frame の零次への増大射
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存構成の成分・増大射の法則。元の frame を別の解像に置き換えない。
+`MixedFrameComparison.rightComparison_isIso` の cofibrant な始域へ渡す入口として、
+零次の対象と同じ増大射を固定する。RR01 本体はまだ未了。以下は未検証の型。
+
+```lean
+/-- 指定 source frame の同じ零次対象。 -/
+def strictDiagramSourceFrameZero (X : StrictComplexDiagram A d) : StrictComplexDiagram A d :=
+  (strictDiagramSourceFrame A d X).obj.obj (SimplexCategory.mk 0)
+
+/-- 指定 source frame の零次対象は cofibrant。 -/
+lemma strictDiagramSourceFrameZero_isCofibrant (X : StrictComplexDiagram A d) :
+    IsCofibrant (strictDiagramSourceFrameZero A d X) :=
+  (strictDiagramSourceFrame A d X).isCofibrant_obj _
+
+/-- 零単体への潰し写像を、同じ frame に作用させた増大射。 -/
+def strictDiagramSourceFrameZeroAugmentation (X : StrictComplexDiagram A d) :
+    (strictDiagramSourceFrame A d X).obj ⟶
+      (Functor.const SimplexCategory).obj (strictDiagramSourceFrameZero A d X) where
+  app n := (strictDiagramSourceFrame A d X).obj.map
+    (SimplexCategory.const n (SimplexCategory.mk 0) 0)
+  naturality n m f := by
+    simp only [Functor.const_obj_map, Category.comp_id, ← Functor.map_comp]
+    congr 1
+    ext i
+    rfl
+
+/-- 同じ増大射の各成分は frame のホモトピー定値性による弱同値。 -/
+lemma strictDiagramSourceFrameZeroAugmentation_weak (X : StrictComplexDiagram A d)
+    (n : SimplexCategory) :
+    weakEquivalences (StrictComplexDiagram A d)
+      ((strictDiagramSourceFrameZeroAugmentation A d X).app n) :=
+  (strictDiagramSourceFrame A d X).homotopicallyConstant _
+
+/-- 元の図式への増大射は、零次への同じ増大射を経由する。 -/
+lemma strictDiagramSourceFrameZeroAugmentation_fac (X : StrictComplexDiagram A d)
+    (n : SimplexCategory) :
+    (strictDiagramSourceFrameZeroAugmentation A d X).app n ≫
+      (strictDiagramSourceFrame A d X).augmentation.app (SimplexCategory.mk 0) =
+        (strictDiagramSourceFrame A d X).augmentation.app n := by
+  simpa only [strictDiagramSourceFrameZeroAugmentation, Functor.const_obj_map,
+    Category.comp_id] using (strictDiagramSourceFrame A d X).augmentation.naturality
+      (SimplexCategory.const n (SimplexCategory.mk 0) 0)
+```
+
+
+### 61.1 検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`StrictDiagramSourceFrameZero` 69行。対象ビルド成功（2,677 jobs）、
+12宣言の小監査成功、標準三公理のみ。ログ `/tmp/is-w1/source-frame-zero/build-3.log`。
+初回の初期対象 instance 探索を既存の零対象で明示し、増大射の合成式は
+元の自然性等式と `Category.comp_id` の合成で検査した。計算上限は不変。
+
+RR01 の次の接続は、同じ source frame と
+`rightFrameDiagram (strictDiagramRightFrameFamily A d)` による混合 Hom。
+左脚は元の fibrant target からの right augmentation の後合成、
+右脚は今回の零次増大射の前合成とする。
+`MixedFrameComparison.leftComparison_isIso`・`rightComparison_isIso` を使い、
+同じ両脚の anodyne 局所化での可逆性を得る。
+その後の実際の単体集合の射への回収と元の評価の端点への輸送はまだ未了であり、
+RR01 全体を完成とはしない。
