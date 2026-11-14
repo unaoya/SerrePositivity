@@ -9059,3 +9059,243 @@ impl 鍵・待ち 3600 秒・gtimeout 280 秒で対象だけを実行した。
 M10・M11 以降・G12 は未完として、外枠を維持して進める。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §63 三相データの分岐別 cochain と通常二相の全 HA
+
+元の評価列の全射を、元の frame 射と元の評価射へ戻す全異種等式を証明した。
+三相データの各 cochain は、元の三つの引き戻し単体の cochain と分岐別に一致する。
+評価列の前面は元の frame 図式そのものであり、閉 nerve 単体の前面も同じである。
+これを元の cone の末尾面と合わせ、中央相の二表示の全 cochain が一致すると示した。
+
+以上の全成分・全切断の比較を既存の局所方程式移送に渡し、零相を含まない部分集合、
+または二相を含まない部分集合の全 HA 方程式を元の三相データについて証明した。
+全三相を混ぜる部分集合の方程式は、この主張には含まない。
+これらは既存構成の貼り合わせ・係数移送の法則であり、一次 ID の追加はない。
+
+`RawModuleTensorElementEvaluatedColumnMaps.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma downMap_heq {C : Type (u + 1)} [Category.{u} C]
+    {x y x' y' : ULiftHom.{u + 1} C} (hx : x = x') (hy : y = y')
+    (f : x ⟶ y) (g : x' ⟶ y') (hf : HEq f g) :
+    HEq (ULiftHom.down.{u, u + 1, u + 1}.map f)
+      (ULiftHom.down.{u, u + 1, u + 1}.map g)
+
+lemma strictRawModuleTensorElementEvaluatedColumn_map_cast_cast {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (i j : Fin (n + 1)) (hij : i ≤ j) :
+    HEq ((strictRawModuleTensorElementEvaluatedColumn A X P Q c).map
+      (homOfLE (Fin.castSucc_le_castSucc_iff.mpr hij)))
+      ((strictRawModuleTensorElementDiagram A X P Q).map (c.map (homOfLE hij)))
+
+lemma strictRawModuleTensorElementEvaluatedColumn_map_cast_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 1)) :
+    HEq ((strictRawModuleTensorElementEvaluatedColumn A X P Q c).map
+      (homOfLE (Fin.le_last i.castSucc)))
+      ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj i))
+```
+
+`RawModuleTensorTriangleComponents.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorTriangleData_hom_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbt : τ b ≠ 2) :
+    HEq ((strictRawModuleTensorTriangleData A X P Q c τ).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorTriangleFront A X P Q c τ).hom I a b k hI ha hb hk)
+
+lemma strictRawModuleTensorTriangleData_hom_back {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbt : τ b = 2) (haz : τ a ≠ 0) :
+    HEq ((strictRawModuleTensorTriangleData A X P Q c τ).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorTriangleBack A X P Q c τ).hom I a b k hI ha hb hk)
+
+lemma strictRawModuleTensorTriangleData_hom_pinched {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbt : τ b = 2) (haz : τ a = 0) :
+    HEq ((strictRawModuleTensorTriangleData A X P Q c τ).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorTrianglePinched A X P Q c τ).hom I a b k hI ha hb hk)
+```
+
+`RawModuleTensorTriangleMiddle.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementEvaluatedColumn_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    Fin.castSuccOrderEmb.toOrderHom.monotone.functor ⋙
+      strictRawModuleTensorElementEvaluatedColumn A X P Q c =
+      c ⋙ strictRawModuleTensorElementDiagram A X P Q
+
+lemma strictRawModuleTensorElementEvaluatedColumn_closed_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
+      (strictRawModuleTensorElementEvaluatedColumn A X P Q c)).pullback
+      Fin.castSuccOrderEmb.toOrderHom =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ strictRawModuleTensorElementDiagram A X P Q)
+
+lemma strictRawModuleTensorTriangleFront_Back_hom {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ))
+    (h0 : ∀ i ∈ I, τ i ≠ 0) (h2 : ∀ i ∈ I, τ i ≠ 2) :
+    HEq ((strictRawModuleTensorTriangleFront A X P Q c τ).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorTriangleBack A X P Q c τ).hom I a b k hI ha hb hk)
+```
+
+`RawModuleTensorTriangleOrdinaryEquation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorTriangleData_equation_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (I : Finset (Fin (n + 1)))
+    (h2 : ∀ i ∈ I, τ i ≠ 2) : (strictRawModuleTensorTriangleData A X P Q c τ).Equation I
+
+lemma strictRawModuleTensorTriangleData_equation_back {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (I : Finset (Fin (n + 1)))
+    (h0 : ∀ i ∈ I, τ i ≠ 0) : (strictRawModuleTensorTriangleData A X P Q c τ).Equation I
+```
+
+### 63.1 検証と実測
+
+RawModuleTensorTriangleOrdinaryEquation の対象ビルドは終了値 0 で成功した。
+新規公開宣言十本の小さい監査も終了値 0。依存公理は propext・Classical.choice・Quot.sound
+の範囲で、引用属性の新規追加・引用出力は 0 本。
+impl 鍵・待ち 3600 秒・gtimeout 280 秒で対象だけを実行した。
+大きい監査・root ビルド・heartbeat の上限変更はない。
+
+新規 Lean は四ファイル・239 行・明示宣言 11 本（private 一本）。
+所有ソース全体を再計数した検証済み累計は 222 ファイル・16,936 行・明示宣言 762 本
+（private 23 本）。17,000 行の外枠まで残り 64 行。
+200 行を超える証明や一次 ID の追加、既存 EInfinity ソースの変更はない。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+## §64 外枠の境界で Lean 追加を停止
+
+BS-M15 §5 の外枠 17,000 行と lane-goals-2026-11-14.md の共通規則の
+「外枠に届くとき」で止まる条件を適用する。
+次に予定する一まとまりは、定値相の重なりの全 cochain と、中央相を含まない集合の
+全 HA 方程式である。参照元の NormalizedTensorTriangleConstantOverlap.lean は 71 行、
+NormalizedTensorTrianglePinchedEquation.lean は 55 行で、合わせて 126 行ある。
+同じ対象・全 cochain・全切断の比較を保つこの次の移植単位は、BE の型引数を加える前でも
+残り 64 行に入らない。ここで新しい Lean ファイル・宣言の追加を止める。
+行数を圧縮して外枠を広げたり、主張を弱めて残りへ押し込んだりしない。
+
+M10 は未完である。三相データ全体の HA 方程式と全作用素への自然性、同じ全三角形の
+構成と K の実 Hom 誘導射との比較・完全忠実性、一般底の全 native な加群族への接続が残る。
+M11–M42 の相対テンソル、指数・降下、RHom、完備反射・完備テンソル・完備版の降下も未完。
+M19 の共通の厚さの芯はあるが、M19 の完了としては数えていない。
+N01 は追加済み・完了の一件であり、M01–M09 と合わせて済み十件である。
+M15 が未完なので完成停止点 1 には達しておらず、G12 に移っていない。
+
+外枠や一次一覧を自分で再設定しない。以後の Lean 実装は調整役の外枠・範囲の指示待ちとし、
+指定された代わりの紙の作業を §65 に行う。目標を完了扱いにはしない。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+## §65 停止時の紙：A5 Lemma 8.6 と Shared/Descendable の受け渡し差
+
+読み取り対象は drafts/Shared/Descendable.lean、drafts/A5/StrongDescent.lean と
+WeaklyInitialAndDescent.lean。drafts は編集せず、ビルドしていない。
+以下は §1 の M01–M42 と現在の本体を照合した受け渡しの差で、新しい Lean の構成や
+一次 ID の追加ではない。まだない API を実装済みとして A5 に渡さない。
+
+### 65.1 底と全族の入口
+
+Shared の IsDescendableOver は `(E.CAlg A)` の任意の頂点 R・B と native な辺 f を取る。
+StrongDescent の deltaRootEdge・perfRootEdge も、この型の実辺である。
+D80 に従い、利用側は E = barrattEcclesTheory に特殊化する。
+ただし、この特殊化だけでは現在の strictModuleInfinity A X への接続は済まない。
+現在の本体の入口 X は `(operad A).Algebra` の厳密対象であり、厳密底上の安定な dg 加群の
+準圏と台の忘却、厳密射の拡大・制限・全随伴まではある。
+任意の BE CAlg 頂点と全辺・全高次単体に対して、同じ fiber と transport を持つ族を渡すのが
+未完の M10 である。A5 の辺を勝手に厳密射へ読み替える接続にはしない。
+
+### 65.2 定義・指数・台の忘却
+
+Shared:59 の古い IsThickTensorIdeal は D(A) に固定されている。
+本体の EInfinity/Modules/ThickTensorIdeal.lean は共通の IsThick を継承し、
+任意の指定された安定準圏 C と全 tensorWith 関手を引数に取る。
+A5 の一般底の定義はこれを C = Mod_R、tensorWith = M11 の同じ相対テンソルで使う必要がある。
+厳密底上の stable 性はあるが、一般底の全族・相対テンソルとの結合はまだ渡せない。
+IsDescendableOver と HasDescentIndexLEOver の現状の sorry は、M20–M21 の実定義・定理へ
+接続する対象であり、仮定や True として残して済ませない。
+fiber は Mod_R で指定単位 R→B の fiber、指数射はその相対テンソル冪から同じ単位への射である。
+D(A) の忘却後だけの fiber・テンソルでこの型を代用しない。
+
+### 65.3 RHom と Lemma 8.6 の一変数段階
+
+StrongDescent:93 の fiberSquareRHom は、元の f と任意の D(A) 頂点 L から D(A) の頂点を返す。
+受け渡しは §1 の M31–M35 の同じ型である：
+
+```lean
+-- §1 M34 の予定型の再掲。ここは未実装の受け渡し型。
+fiberSquareRHom (f : SSet.Edge R B) (L : V D) : V D :=
+  U_R (moduleRHomObj R (fiberPower f 2) (moduleFromBase R L))
+-- §1 M35。Shared の True を置き換える実質的主張。
+DLE (-1) (fiberSquareRHom f (unitComplex A)) → Idx f 2
+```
+
+moduleFromBase R L は同じ R⊗_A L の全関手であり、L の平坦性を要求しない。
+Shared:202 の hasDescentIndexLEOver_two_of_rhom : True はこの M35 の代わりにはならない。
+StrongDescent:265 の rootMap_descendable_one は、まさに deltaRootEdge の指数 ≤2 を要求する。
+台を取った RHom の零次比較は M33 の全自然な加法同型を経由して同じ指数射の零性へ戻す。
+M31–M35 は未完なので現在の本体からこの入力は供給できない。
+
+StrongDescent:153 の rhom_baseChange_koszul_connection は任意の離散係数 L の評価、
+有限 Koszul 複体とその有限 Postnikov 各段、導来完備性を使う。
+M15 は全随伴・RHom・台の比較・完備反射と完備テンソルを渡す。
+個々の Koszul・Nakayama の証明と「By completeness」の具体的な塔の議論は、承認済みの
+分担どおり A5 に残す。任意の L について RHom とテンソルの交換を無条件に追加しない。
+
+### 65.4 完備版、Frobenius、同じ Amitsur 錐
+
+Lemma 8.6 の対象は完備な R・B である。Shared:213 の完備版 True を、M36–M39 の
+加群の完備反射・同じ完備相対テンソル・完備圏での定義と指数判定に置き換える必要がある。
+これらは未実装であり、通常圏における定義をそのまま完備圏の定義とは扱えない。
+§1 の M39 は台の完備性を入力に通常の指数から完備版へ送る向きであり、逆向きは要求していない。
+
+perfRootEdge の段階には Shared:205 の射の圏の ℕ 図式と同じ余極限錐、元の指数の上界 n から
+2*n への M40–M41 の比較が必要。変数の個数と指数の上界を同一視しない。
+StrongDescent の一変数から多変数への帰着には M26–M27 と完備版の同じテンソルが必要である。
+
+Shared:179 の AmitsurData は diagram・base・zero・leg・term を持つ実データであり、
+Shared:195 の主張はその同じ aug の極限性である。
+WeaklyInitialAndDescent:301 の rootCover の錐も、directPerfectionFunctor で送った同じ錐を要求する。
+M28–M30・M42 はこの指定図式と全脚を保って渡す。有限部分 Tot の retract を得たことだけで
+無限 Tot の極限性に置き換えない。これらの API はいずれも未完である。
+
+### 65.5 現在渡せる範囲
+
+本体から現在渡せるのは、厳密 BE 底での加群準圏・安定性・台の忘却・正則加群、
+厳密射の native な拡大・制限と全随伴・恒等合成の比較、および共通の thick の芯である。
+A5 の Lemma 8.6 の descendability 判定・RHom・完備版・降下を完成させる入力はまだ渡せない。
+任意 E の輸送、A5 の個々の Koszul・Nakayama の証明、drafts の改変は行っていない。
+この紙の照合後も M15・G12 の元の目標は未完で、外枠の指示待ちである。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
