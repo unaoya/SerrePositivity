@@ -8691,3 +8691,102 @@ sorry・新公理0、計算・再帰上限を増やさず、既存宣言・⑤a�
 検証済み累計 **357モジュール・22,126行**、外枠23,000行まで **874行**。登録候補JSONも同じ四本を追加。
 
 次はD02右境界の対角評価を元の評価関手の全nerveと同定する。現在の `NativeTotTailCellEvaluation` は未検証草稿であり、累計に含めない。続いて両境界、離散の頂点輸送と全族・ホモロジー入口へ進む。
+
+
+## 159. D02完了と、離散の全頂点輸送への短い経路（2026-11-14）
+
+一覧：済み 32／全体 36（うち追加 1）。D01〜D04が全て対象ビルド・小監査まで完了。D05〜D08はまだ完了と数えない。
+
+右境界の全セルを既存の底の面の法則で読み、閉零射の全射列の対角を元の評価関手のnerveと等置した。零次は閉零合成と `complexToClosed.map_comp`、高次は既存の零成分で示す。既定200,000 heartbeatsで巨大な表示の `change` が詰まった点は、`orderedSimplexFamily` の表示と零次の合成を分割して解消。計算上限は増やしていない。
+
+### 159.1 型と登録候補
+
+共通：`A : Type u`、`[CommRing A]`。既存構成の単位・合成・自然性・係数移送・表示・貼り合わせ則と、一覧の証明分割。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotTailCellEvaluation`（85行）。
+
+```lean
+def nativeTotClosedEvaluationNerve :
+    nerve (CosimplicialObject (Complex A)) ⊗
+      ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))) ⟶
+        nerve (ClosedCategory A (Complex A))
+
+theorem nativeTotTailCellEvaluation_diagonal {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n)
+    (d : ComposableArrows (CosimplicialObject (Complex A)) n) :
+    (strictSimplexFunctorEvaluation A (Complex A) (nativeTotTailCellFunctor A σ)).app
+      (Opposite.op ⦋n⦌) (d, ULift.up (𝟙 ⦋n⦌)) =
+    closedNerveSimplex (((σ ⋙ AsSmall.down).prod' d) ⋙
+      evaluationUncurried SimplexCategory (Complex A) ⋙ complexToClosed A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotJoinRightBoundary`（55行）。
+
+```lean
+theorem nativeTotJoinFamily_right :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinInr (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))) ≫
+      nativeTotJoinFamily A = nativeTotClosedEvaluationNerve A ≫
+        closedNerveInclusion A (Complex A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeRightBoundary`（73行）。
+
+```lean
+theorem derivedTotConeFamily_right :
+    (joinInr (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+        derivedTotEvaluationFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeFamilyBoundaries`（45行）。
+
+```lean
+theorem derivedTotConeFamily_boundaries :
+    (joinInl (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+      snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (Complex A))) ≫
+        derivedTotVertexFamily A ∧
+    (joinInr (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+        derivedTotEvaluationFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteTotFunctorCone`（106行）。
+
+```lean
+def rawDiscreteTotFunctorDiagram :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶
+      (ihom (nerve (CosimplicialObject (ModuleCat.{u} A)))).obj (derivedInfinityCategory A)
+
+def rawDiscreteTotFunctorCone : JoinCone (rawDiscreteTotFunctorDiagram A)
+
+theorem rawDiscreteTotFunctorCone_at (M : CosimplicialObject (ModuleCat.{u} A)) :
+    (rawDiscreteTotFunctorCone A).val ≫ evaluateFunctorAt (ComposableArrows.mk₀ M) =
+      (rawCosimplicialModuleCone A M).val
+
+theorem rawDiscreteTotFunctorCone_isLimit : IsLimitCone (rawDiscreteTotFunctorCone A)
+
+```
+
+### 159.2 検収・実測
+
+D02の四本は **`d2387aae7`**（258行）。鍵付き対象ビルド199は **8,130 jobs、終了コード0**、新規四本だけの小監査 **7（4・1・1・1）宣言、標準三公理のみ**。raw離散関手圏錐は **`61525eb4c`**（106行）。対象ビルド200は **8,136 jobs、終了コード0**、新規一本の小監査 **8宣言、標準三公理のみ**。ログ `/private/tmp/isw2-build199.log`・`200.log`、全ハンドル終了コード0を確認、鍵返却済み。整理券一枚、`--class impl --wait 3600`、対象ビルド・小監査中だけ鍵を保持。sorry・新公理0、既存宣言・⑤a・入口・公式監査・mainの変更なし。200行超のファイルなし。
+
+検証済み累計 **362モジュール・22,490行**、外枠23,000行まで **510行**。累計JSONを同じ五本で更新。
+
+### 159.3 残る離散四項の短い経路
+
+独立に選んだMごとの錐を後から自然にする方法は使わず、今回のraw全族を一つの関手圏の極限錐へcurryした。各Mで元のraw錐の全join射に戻る式と、既存 `isLimitCone_of_pointwise` による極限性が検証済み。
+
+その一つの錐に、既存 `complexOrdinaryDerivedNatTransIso` を `discreteTotalCochainNatIso.inv` に適用した全関手同型と、既存 `exists_limitCone_vertex_of_invertible` を使い、頂点を `functorVertex (nerveMap discreteCochainFunctor ≫ complexOrdinaryDerivedSource)` に厳密に固定する。これにより同じ頂点の全族とその評価錐を同時に選べる。関手圏の点ごとの極限の逆向きは既存 `isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits` を再利用し、評価した錐の極限性・頂点・全族の両境界・ホモロジー入口へ戻す。一般の頂点輸送・新しい厳密化・新しい模型圏構造を作らない。
+
+このための `DiscreteTotApexTransport` は92行の未検証草稿で累計外。mainの既存 `DerivedNatTransIso`・`LimitConeVertexTransport` の二本が冷たい依存なので、対象だけをビルド201で生成してから照合する。この段階ではD05〜D08の最終結果を主張しない。外枠の残りを追跡し、上限を超える工程が必要になったら検証済みを保存して報告する。
