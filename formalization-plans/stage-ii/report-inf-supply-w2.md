@@ -5948,3 +5948,92 @@ theorem homToNormalizedBousfieldKan_tensor_source_row (P : Complex A)
 累計 **263モジュール・16,119行・2,235宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtythree-modules.txt`。外枠まで残り3,881行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、rootビルド・大きな監査なし。未検証下書きはない。
 
 B02の全体等式とB03〜B08・C・Dは未完。次はA12の実際の反転・係数重み移送のHom成分を、同じ二つの重み射の合成による前合成とAsSmall制限に明示的に分解する。
+
+## 130. B02の途中：A12の実際の全次数の始域移送を評価
+
+一覧：済み 14／全体 36（うち追加 1）
+
+A12で使う `reflectedNormalizedBKSmallHomIso` の順射と `normalizedBKReverseHomotopyEquiv` の順射の全次数成分を、**同じ係数重み同型の逆射とMoore反転の合成によるcochain前合成**、続く指定 `AsSmall` 制限に厳密に同定した。別の同値を選んでいない。自由Moore重みの指定同型を前合成すると、その図式交換同型が相殺され、元の逆係数重み射だけが残る式も証明した。これにより§129のBK行の始域移送則へ渡す射が、実際のA12の射であることを明示できる。
+
+元のHom対象の非公開な余積の別名をまたぐrewriteと自動合同変形では既定heartbeatに達したため、反転のHom成分を先に一つの等式に固定し、明示的な `congrArg` で前合成・AsSmall制限へ運ぶ証明に分割した。計算上限を上げていない。これらはB02内の既存構成の評価・合成則と同じ証明の分割で、ID付き一覧の追加ではない。
+
+### 130.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomSourceCochainEvaluation`（48行）
+
+```lean
+theorem intervalHomPrePost_id_apply {P P' Q : CochainComplex C ℤ}
+    (σ : P' ⟶ P) (p : ℤ) (z : Cochain P Q p) :
+    (intervalHomPrePost A σ (𝟙 Q)).f p z =
+      (Cochain.ofHom σ).comp z (zero_add p)
+
+theorem linearHomSourceIso_hom_apply {P P' : CochainComplex C ℤ}
+    (e : P ≅ P') (Q : CochainComplex C ℤ) (p : ℤ) (z : Cochain P Q p) :
+    (linearHomSourceIso A e Q).hom.f p z =
+      (Cochain.ofHom e.inv).comp z (zero_add p) :=
+  intervalHomPrePost_id_apply A e.inv p z
+
+/-- 二つの閉零次始域射の前合成は同じ合成射の前合成。 -/
+theorem zeroSourcePrecomp_comp {P P' P'' Q : CochainComplex C ℤ}
+    (a : P'' ⟶ P') (b : P' ⟶ P) (p : ℤ) (z : Cochain P Q p) :
+    (Cochain.ofHom a).comp ((Cochain.ofHom b).comp z (zero_add p)) (zero_add p) =
+      (Cochain.ofHom (a ≫ b)).comp z (zero_add p)
+
+theorem zeroSourcePrecomp_comp {P P' P'' Q : CochainComplex C ℤ}
+    (a : P'' ⟶ P') (b : P' ⟶ P) (p : ℤ) (z : Cochain P Q p) :
+    (Cochain.ofHom a).comp ((Cochain.ofHom b).comp z (zero_add p)) (zero_add p) =
+      (Cochain.ofHom (a ≫ b)).comp z (zero_add p)
+
+```
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKSourceEvaluation`（66行）
+
+```lean
+theorem reflectedNormalizedBKSmallHomIso_hom_apply (X : CosimplicialObject (Complex A))
+    (p : ℤ) (z : (reflectedNormalizedBKHom X).X p) :
+    (reflectedNormalizedBKSmallHomIso A X).hom.f p z =
+      asSmallHomCochainEquiv A (SimplexCategoryᵒᵖᵒᵖ)
+        ((E).obj (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0})))
+        ((E).obj (doubleOppositeDiagram X)) p
+        ((Cochain.ofHom (normalizedLinearWeightDiagramIso A V).inv).comp z (zero_add p))
+
+theorem reflectedNormalizedBKSmallHomIso_reverse_apply (X : CosimplicialObject (Complex A))
+    (p : ℤ) (z : (normalizedBousfieldKanHom X).X p) :
+    (reflectedNormalizedBKSmallHomIso A X).hom.f p
+      ((normalizedBKReverseHomotopyEquiv X).hom.f p z) =
+      asSmallHomCochainEquiv A (SimplexCategoryᵒᵖᵒᵖ)
+        ((E).obj (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0})))
+        ((E).obj (doubleOppositeDiagram X)) p
+        ((Cochain.ofHom ((normalizedLinearWeightDiagramIso A V).inv ≫
+          extendMap (normalizedMooreReverse.app
+            (linearizedSimplicialWeight A bousfieldKanSetWeight))
+            ComplexShape.embeddingDownNat)).comp z (zero_add p))
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightInverseSource`（39行）
+
+```lean
+theorem freeLinearWeightDiagramIso_inverse_source :
+    (freeLinearWeightDiagramIso A W).hom ≫ (normalizedLinearWeightDiagramIso A W).inv =
+      (normalizedLinearWeightFreeIso A W.flip).inv
+
+theorem freeLinearWeightDiagramIso_inverse_precomp
+    {P Q : CochainComplex (J ⥤ ModuleCat A) ℤ}
+    (τ : (((normalizedMooreComplex _).obj (linearizedSimplicialWeight A W.flip)).extend
+      ComplexShape.embeddingDownNat) ⟶ P) (p : ℤ) (z : Cochain P Q p) :
+    (Cochain.ofHom (freeLinearWeightDiagramIso A W).hom).comp
+      ((Cochain.ofHom ((normalizedLinearWeightDiagramIso A W).inv ≫ τ)).comp z
+        (zero_add p)) (zero_add p) =
+      (Cochain.ofHom ((normalizedLinearWeightFreeIso A W.flip).inv ≫ τ)).comp z
+        (zero_add p)
+
+```
+
+### 130.2 検収と残り
+
+コード **`d448f63e4`**（新規3本153行）。結合個別検査 `/private/tmp/isw2-reflected-bk-source-inverse-combined2.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build144.log` は **4,540 jobs・終了コード0**。新規分のみの監査 `/private/tmp/AuditISW2G10B02ReflectedSource.lean` は **8宣言（3・2・3）、標準三公理のみ**。共有鍵は `--class impl --wait 3600` でビルド・監査の間だけ使用し返却済み。
+
+累計 **266モジュール・16,272行・2,243宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtysix-modules.txt`。外枠20,000行まで残り3,728行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、rootビルド・大きな監査なし。未検証下書きはない。
+
+B02は引き続き未完。次は、今回明示した同じ始域射を§129の行合成則へ代入し、自由重みの点ごとのMoore・延長・図式交換を通して、§127の各切断条件を閉じる。パラメータ側は§126の実標準Hom最上位評価、実AW側は§127の前面・後面の式を使う。その後、raw成分等式を§125のMoore制限と§122の指定自由随伴・uncurryへ渡し、反転・添字輸送後の全単体的射のB02等式へ戻す。B03〜B08・C・Dは未完、3b-4段0はG10完成後に出す。
