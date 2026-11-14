@@ -820,3 +820,19 @@ StageBaseChangeLimit **83 行**、ProperClosedBaseChangeLimitModel **46 行**、
 G1 共用部品込み本体 **4,839 行**、入口込み **4,931 行**。一般の A07 の模型の全射性・因子化を同じ段へそろえる接続、G2 の一般の模型は未完。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 のこの後の組立て（既定の A07 の証明分割、型は保つ）：(1) 極小素点集合が準コンパクトな被約基底の細分の既存構成から、固有な Noether 周辺模型とその底変換上の有限型閉イデアルの証人を保持する。既存の出口の名前・型は変えず、元の構成が選んだ証人を返す補助出口を足す（見込み150〜450行）。(2) Noether 係数環 A は有限生成 ℤ-代数なので、A→B∞ を整射の有限・有限表示段へ因子化する。既存の RingHom の有限表示の colimit の因子化を使い、ℤ を大きい Scheme の宇宙へ直接置く代わりに、必要なら ULift ℤ の初期環と ringEquiv を使う（係数移送・因子化の法則、見込み60〜180行）。(3) 固定した段の固有周辺模型と C03 から閉イデアルを降ろし、同じ段で固有・局所有限表示の閉部分の模型を取る。(4) 平坦側は Noether 模型上の平坦な射の実際の底変換として保ち、二つの全射性の比較を共通の後段へそろえる。(5) 元の有限表示 X への射と可換式を既存の因子化・一致判定で有限段へ降ろし、各有限・有限表示段の基底への固有全射と合成する。
+
+ここで得る A07 の特殊な模型の供給を、B01 の一般の有限表示の固有射の模型の代わりにしない。B01〜B04 は別に残り、C03 と有限段の比較を共用する。
+
+C02 の既存構成から有限型性の証人を保持する法則 `exists_finiteType_closedEnvelope` の型（見込み30〜70行）：qcqs X、K、指定開 V、support K⊆V に対し、J≤K、IsFiniteTypeIdealSheaf J、support J⊆V を同時に返す。既存の閉包絡の証明で選んだ同じ有限型部分イデアルの証人を返し、旧宣言の型・名前は変えない。C03 の入力となる有限型性を保持する、前記の証人を返す分割の一部。
+
+### A07：固有側・平坦側の全射性を有限段へ降ろす比較
+
+ConstructibleCompactness **43 行**、ProperFinitePresentationSurjectivityLimit **44 行**、FlatSurjectivityLimit **41 行**、入口 3 行。`isCompact_of_isConstructible_scheme` は構成可能位相の閉集合の連続像で元の位相の準コンパクト性を比較する。`exists_surjective_proper_pullback_of_isLimit` は既存の Noether 版の型を変更せず、新しい宣言として qcqs な段の固有・局所有限表示の射の全射性を有限段へ降ろす。`exists_surjective_flat_pullback_of_isLimit` は平坦・局所有限表示・準コンパクトな射の開像から同じ結論を得る。どちらも、遷移射の全射性・忠実平坦性を要求しない。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,881 ジョブ成功**、三モジュールの小監査は補助宣言込み **4 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-surjectivity-limit-batch-check-2.log`、`2g-surjectivity-limit-native.log`、`2g-surjectivity-limit-audit.log`。
+
+G1 共用部品込み本体 **4,967 行**、入口込み **5,062 行**。未検証の `FiniteTypeClosedEnvelopeWitness` は作業木の scheme-drafts に置き、コミットには含めない。次は、細分の構成で選んだ Noether 周辺模型と有限型閉イデアルの証人を保持し、整射の有限表示段の図式・今回の二つの全射性の比較・元の X への因子化を同じ段へそろえる。A07 の一般の基底と G2 は未完。
+
+一覧：済み 9／全体 14（うち追加 5）。
