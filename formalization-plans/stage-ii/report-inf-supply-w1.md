@@ -8281,3 +8281,97 @@ lemma bousfieldKanParameterHom_fibration
 
 それを随伴の持ち上げ同値へ入れる際にも、SSetのモデル構造は入力にしない。
 実増大射の弱同値性・全frameへの比較は未完。E01の紙は§80.1から変更なし。
+
+## §90 RR02(a)：相対内部Homの持ち上げの移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `380b92d55` の写像空間のKan性の検証。
+Mathlibの `anodyneExtensions_pushoutObjObjι'` を既存の二変数随伴で移す法則を置く。
+新しいSSetモデル入力は追加しない。
+
+```lean
+lemma anodyne_pullbackHom_trivialKanFibration {A B E Y : SSet}
+    (i : A ⟶ B) (hi : anodyneExtensions i) (p : E ⟶ Y) [Fibration p]
+    (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π
+```
+
+これは既存の構成の持ち上げ法則でIDは増やさない。次に成分ごとのこの法則を
+BK重みの射影的LLPへ渡す。相対内部Homの引き戻し図式を自然に組み立て、
+持ち上げを元のBK endの射へ戻す比較がなお必要。
+
+### 90.1 BK重みへの適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `PointwiseAdjunction.adjunction` と `evaluatePullbackObjObj` により、
+自然な相対内部Homの組み立てを作り直さずに次の移送を証明する。
+
+```lean
+lemma bousfieldKanTensor_hasLiftingProperty {A B : SSet}
+    (i : A ⟶ B) (hi : SSet.anodyneExtensions i)
+    {F G : K ⥤ SSet} (p : F ⟶ G) [∀ k, Fibration (p.app k)] :
+  HasLiftingProperty
+    (((pointwise K (curriedTensor SSet)).map i).app (bousfieldKanWeight K)) p
+```
+
+パラメータは左因子。§88の重みを左因子にした随伴へは、braidingの自然性で
+射の同型を介して移す必要がある。現段階でその同一視を定義上の等式とはしない。
+
+### 90.2 braidingと既存随伴による移送の型
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanParameterSwap (A : SSet) :
+  ((pointwise K (curriedTensor SSet)).obj A).obj (bousfieldKanWeight K) ≅
+    (weightedParameterFunctor (bousfieldKanWeight K)).obj A
+lemma bousfieldKanParameter_hasLiftingProperty
+    (i : A ⟶ B) (hi : SSet.anodyneExtensions i)
+    (p : F ⟶ G) [∀ k, Fibration (p.app k)] :
+  HasLiftingProperty ((weightedParameterFunctor (bousfieldKanWeight K)).map i) p
+lemma bousfieldKanEndMap_fibration
+    (p : F ⟶ G) [∀ k, Fibration (p.app k)] :
+  Fibration (weightedSectionsMap (bousfieldKanWeight K) p)
+```
+
+既存のbraidingの自然性で射の同型を作り、§90.1の持ち上げを移す。
+最後の主張は `weightedSectionsAdjunction.hasLiftingProperty_iff` による移送。
+全てRR02(a)の同じ実現随伴に対する計算。新しいモデル構造は構成しない。
+
+### 90.3 実現随伴への移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§89の `hA`, `hconst` の下で、既存のframe Homのfibration性へ§90.2を適用する。
+
+```lean
+lemma bousfieldKanParameterHom_fibration (p : Y ⟶ Z) [Fibration p] :
+  Fibration ((hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)).map p)
+lemma bousfieldKanParameterRealization_map_anodyne
+    (i : U ⟶ V) (hi : SSet.anodyneExtensions i) :
+  trivialCofibrations C ((bousfieldKanParameterRealization K A).map i)
+```
+
+最後はCの `fibrations_llp` と§88の同じ随伴による持ち上げの移送。
+
+### 90.4 検証済みの区切りと生存中の待機
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| AnodynePullbackHom | 31 | 1,762 jobs成功 | 1宣言、標準三公理のみ |
+| BousfieldKanTensorLifting | 43 | 2,187 jobs成功 | 1宣言、標準三公理のみ |
+
+ログは `/tmp/is-w1/anodyne-pullback-hom/build.log` と
+`/tmp/is-w1/bk-tensor-lifting/build-2.log`。計算上限変更なし。
+検証済み累計182本・14,098行、外枠24,000行まで9,902行。
+上限変更後のRR02(a)実測1,600行、(b)(c)新規0行。
+
+`BousfieldKanEndFibration` 57行は、初回の名前空間・明示引数のエラーを修正済み。
+再検証のプロセス session 90577 は生存確認済みで、調整役rootビルドの鍵を待機中。
+ログ `/tmp/is-w1/bk-end-fibration/build-2.log`。同じ整理券を維持する。
+`BousfieldKanRealizationAnodyne` 50行はその検証後にビルド予定。
+この2本は未検証として作業木に残し、今回の数学のコミットには含めない。
+E01の別経路の紙は§80.1のまま。停止点5aは未達。
