@@ -1024,3 +1024,12 @@ DeRhamComparisonPolyの[23参照](bulk-5inf0/de-rham-universal-specialization-fo
 一覧：済み 8／全体 14（うち追加 0）。[第39束](bulk-5inf0/draft-block39-validation.json)は約48秒でHodgeTateFiltrationが失敗。通常のホモトピー圏のloop関手と∞関手の違い・letのスコープのエラーは解消し、augmentationの始端のYonedaの評価の照合が1箇所残る。こちらの書換え処理が見出しの名前つき引数の`:=`を定義本文の区切りと誤認し、見出しを切った構文ミスもあったため、見出しを明示して訂正した。失敗として保存し、成功は32／57本のまま。
 
 第40束は同じ280秒の鍵の範囲で、A3冒頭のprismとlciClassifyingMapまでを現ソースからそのまま抽出する検査も先に行う。これは承認されたh₀の復元と既存の古典的な法則の証明の部分検査であり、A3全体や57本の成功件数へは加えない。原本のLake設定を引き継ぎ、検査中のソースの一致を確認し、型とaxiomsの出力を別の記録に残す。
+
+
+### 5∞-0 のdraft検査・第40〜42束とA3冒頭（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第40束](bulk-5inf0/draft-block40-validation.json)・[第41束](bulk-5inf0/draft-block41-validation.json)・[第42束](bulk-5inf0/draft-block42-validation.json)はいずれもHodgeTateFiltrationが失敗で、成功は32／57本のまま。第40束で壊れた見出しと合成の時間切れは解消し、augmentationの始端の、二切断の添字0を通常の添字0として照合する1箇所が残った。構成子と包含関手の定義を順に明示し、第43束で再検査する。
+
+A3冒頭の[第40](bulk-5inf0/a3-prism-prefix-block40-validation.json)・[第41](bulk-5inf0/a3-prism-prefix-block41-validation.json)・[第42](bulk-5inf0/a3-prism-prefix-block42-validation.json)の部分検査も全体としては失敗。冒頭のopenが通常は後続draftのimportから継承する二つの名前空間を、部分検査には本体の二つのpublic importで明示した。原本の古典的な宣言の本文はそのまま。docstringがvariableに付いていた構文を定義へ付け直し、Typeの値を存在命題から直接casesで取り出していた箇所を、同じ存在一意性からClassical.chooseで取り出す形に修正した。第42束の残りは構成した射の局所定義を照合する1箇所。これも第43束で検査する。
+
+部分検査の型とaxiomsの出力では、universalLciPrismが実際にP₀・h₀・rを取り、universalLciPrismとその有界性の2宣言は標準3公理だけと確認できた。ただし部分ファイル全体は失敗であり、A3全体や全57本の成功には数えていない。後続のlciClassifyingMapがエラーで登録された段階のsorryAxも、その失敗としてログに残している。
