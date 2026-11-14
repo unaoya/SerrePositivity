@@ -12996,6 +12996,72 @@
       ]
     },
     {
+      "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralClosureApproximation.lean",
+      "lines": 98,
+      "sha256": "7e100eaa5d730cb2537eb3f7bb06e6127fde2e87cd05b5850e4d13317f2a6192",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.reducedAway_algebraMap_isUnit",
+          "leaf": "reducedAway_algebraMap_isUnit",
+          "kind": "theorem",
+          "private": true,
+          "line": 38,
+          "lines": 5,
+          "signature_source": "private theorem reducedAway_algebraMap_isUnit (g : R) :\n    IsUnit (algebraMap R (reducedAway R S g) g)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_finitePresentation_approximation_fixedLocalization",
+          "leaf": "exists_finitePresentation_approximation_fixedLocalization",
+          "kind": "theorem",
+          "private": false,
+          "line": 43,
+          "lines": 50,
+          "signature_source": "theorem exists_finitePresentation_approximation_fixedLocalization (g : R)\n    (het : FiniteEtaleAway R (S ⧸ nilradical S) g) :\n    let T",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/PerfectoidFilteredColimit.lean",
+      "lines": 151,
+      "sha256": "379e666637f8fdd33af08413cd1568554df519284728f3792c58a3c55796d22d",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_final_directed_orderBot",
+          "leaf": "exists_final_directed_orderBot",
+          "kind": "theorem",
+          "private": true,
+          "line": 41,
+          "lines": 16,
+          "signature_source": "private theorem exists_final_directed_orderBot (I : Type u) [SmallCategory I] [IsFiltered I] :\n    ∃ (J : Type u) (_ : PartialOrder J) (_ : IsDirectedOrder J) (_ : OrderBot J)\n      (G : J ⥤ I), G.Final",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ringDirectLimitIso",
+          "leaf": "ringDirectLimitIso",
+          "kind": "def",
+          "private": true,
+          "line": 57,
+          "lines": 43,
+          "signature_source": "private def ringDirectLimitIso {J : Type u} [Preorder J] [Nonempty J] [IsDirectedOrder J]\n    (F : J ⥤ CommRingCat.{u}) (f : ∀ i j, i ≤ j → F.obj i →+* F.obj j)\n    (hf : ∀ i j h, f i j h = (F.map (homOfLE h)).hom)\n    [DirectedSystem (fun i => F.obj i) (fun i j h => f i j h)]\n    (c : Cocone F) (hc : IsColimit c) :\n    CommRingCat.of (Ring.DirectLimit (fun i => F.obj i) (fun i j h => f i j h)) ≅ c.pt",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.isIntegralPerfectoid_completedFilteredColimit",
+          "leaf": "isIntegralPerfectoid_completedFilteredColimit",
+          "kind": "theorem",
+          "private": false,
+          "line": 100,
+          "lines": 46,
+          "signature_source": "theorem isIntegralPerfectoid_completedFilteredColimit (p : ℕ) [Fact p.Prime]\n    {I : Type u} [SmallCategory I] [IsFiltered I]\n    (F : I ⥤ CommRingCat.{u}) (c : Cocone F) (hc : IsColimit c)\n    (hF : ∀ i, IsIntegralPerfectoid (F.obj i) p) :\n    IsIntegralPerfectoid (completionRing p c.pt) p ∧\n      (∀ (x : c.pt) (n : ℕ), (p : c.pt)^n * x = 0 → (p : c.pt) * x = 0) ∧\n      (∀ i : ℤ, i ≠ 0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat c.pt) i).obj\n        ((derivedComplexCompletionFunctor c.pt (p : c.pt)).obj\n          ((moduleObjectFunctor c.pt).obj (ModuleCat.of c.pt c.pt)))))",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
       "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
       "lines": 266,
       "sha256": "858fb828c526c5423b8842a597ff8560e0996c6dbafc444c44497fd48136b795",
@@ -13179,6 +13245,104 @@
           "line": 234,
           "lines": 27,
           "signature_source": "theorem integralClosureCompletion_isModuleComplete [Fact p.Prime] (hR : IsIntegralPerfectoid R p)\n    (g : R) (het : FiniteEtaleAway R (S ⧸ nilradical S) g) :\n    let T",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/FiniteEtale/FiniteEtalePerfectoid.lean",
+      "lines": 527,
+      "sha256": "382b1986abe849c51bb479d2ae3e93102eb0a6ed999fed81db5083a321b3e435",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.quotientBaseChangeEquiv",
+          "leaf": "quotientBaseChangeEquiv",
+          "kind": "def",
+          "private": true,
+          "line": 51,
+          "lines": 24,
+          "signature_source": "private def quotientBaseChangeEquiv (I : Ideal A) :\n    (A ⧸ I) ⊗[A] B ≃ₐ[A ⧸ I] B ⧸ I.map (algebraMap A B)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.quotientBaseChangeEtale",
+          "leaf": "quotientBaseChangeEtale",
+          "kind": "theorem",
+          "private": true,
+          "line": 75,
+          "lines": 4,
+          "signature_source": "private theorem quotientBaseChangeEtale (I : Ideal A) [Algebra.Etale A B] :\n    Algebra.Etale (A ⧸ I) (B ⧸ I.map (algebraMap A B))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.quotientBaseChangeFinite",
+          "leaf": "quotientBaseChangeFinite",
+          "kind": "theorem",
+          "private": true,
+          "line": 79,
+          "lines": 5,
+          "signature_source": "private theorem quotientBaseChangeFinite (I : Ideal A) [Module.Finite A B] :\n    Module.Finite (A ⧸ I) (B ⧸ I.map (algebraMap A B))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.bijective_of_etale_of_pow_in_range",
+          "leaf": "bijective_of_etale_of_pow_in_range",
+          "kind": "theorem",
+          "private": true,
+          "line": 86,
+          "lines": 64,
+          "signature_source": "private theorem bijective_of_etale_of_pow_in_range (A B : Type u) [CommRing A] [CommRing B]\n    [Algebra A B] [CharP B p] [Algebra.Etale A B]\n    (hpow : ∀ b : B, ∃ a : A, algebraMap A B a = b ^ p)\n    (hker : ∀ a ∈ RingHom.ker (algebraMap A B), IsNilpotent a) :\n    Function.Bijective (algebraMap A B)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.etale_frobenius_surjective_ker",
+          "leaf": "etale_frobenius_surjective_ker",
+          "kind": "theorem",
+          "private": false,
+          "line": 150,
+          "lines": 44,
+          "signature_source": "theorem etale_frobenius_surjective_ker (A B : Type u) [CommRing A] [CommRing B]\n    [Algebra A B] [CharP A p] [CharP B p] [Algebra.Etale A B]\n    (hF : Function.Surjective (frobenius A p)) :\n    Function.Surjective (frobenius B p) ∧\n      RingHom.ker (frobenius B p) = (RingHom.ker (frobenius A p)).map (algebraMap A B)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfection_coeff_zero_kernel_eq_map_of_frobenius",
+          "leaf": "perfection_coeff_zero_kernel_eq_map_of_frobenius",
+          "kind": "theorem",
+          "private": true,
+          "line": 201,
+          "lines": 84,
+          "signature_source": "private theorem perfection_coeff_zero_kernel_eq_map_of_frobenius\n    [Module.Finite A B] (hA : Function.Surjective (frobenius A p))\n    (hB : Function.Surjective (frobenius B p)) (a : A) (ha : a ^ p = 0)\n    (hk : RingHom.ker (frobenius B p) = Ideal.span {algebraMap A B a}) :\n    RingHom.ker (Perfection.coeff B p 0) =\n      (RingHom.ker (Perfection.coeff A p 0)).map (Perfection.map p (algebraMap A B))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.fontaineKer_eq_of_map_and_torsion",
+          "leaf": "fontaineKer_eq_of_map_and_torsion",
+          "kind": "theorem",
+          "private": true,
+          "line": 296,
+          "lines": 103,
+          "signature_source": "private theorem fontaineKer_eq_of_map_and_torsion [Module.Finite R T] [Module.Projective R T]\n    (hR : Function.Surjective (frobenius (ModP R p) p))\n    (hT : Function.Surjective (frobenius (ModP T p) p))\n    (d : WittVector p (PreTilt R p))\n    (hd : (wittDeltaStructure p (PreTilt R p)).IsDistinguished d)\n    (hdker : RingHom.ker (WittVector.fontaineTheta R p) = Ideal.span {d})\n    (hgen : RingHom.ker (PreTilt.coeff 0 : PreTilt T p →+* ModP T p) =\n      Ideal.span {Perfection.map p (modPMap p (algebraMap R T)) (d.coeff 0)}) :\n    RingHom.ker (WittVector.fontaineTheta T p) =\n      Ideal.span {WittVector.map (Perfection.map p (modPMap p (algebraMap R T))) d}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.coeffZeroKer_eq_span_of_fontaineKer",
+          "leaf": "coeffZeroKer_eq_span_of_fontaineKer",
+          "kind": "theorem",
+          "private": true,
+          "line": 402,
+          "lines": 32,
+          "signature_source": "private theorem coeffZeroKer_eq_span_of_fontaineKer {S : Type u} [CommRing S]\n    (p : ℕ) [Fact p.Prime] [Fact (¬ IsUnit (p : S))]\n    [IsAdicComplete (Ideal.span {(p : S)}) S]\n    (hF : Function.Surjective (frobenius (ModP S p) p))\n    (d : WittVector p (PreTilt S p))\n    (hd : RingHom.ker (WittVector.fontaineTheta S p) = Ideal.span {d}) :\n    RingHom.ker (PreTilt.coeff 0 : PreTilt S p →+* ModP S p) = Ideal.span {d.coeff 0}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.isIntegralPerfectoid_of_finiteEtale",
+          "leaf": "isIntegralPerfectoid_of_finiteEtale",
+          "kind": "theorem",
+          "private": false,
+          "line": 434,
+          "lines": 93,
+          "signature_source": "theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]\n    (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)\n    (T : Type u) [CommRing T] [Algebra R T] [Module.Finite R T] [Algebra.Etale R T] :\n    IsIntegralPerfectoid T p",
           "sorry_tokens": 0
         }
       ]
@@ -13903,6 +14067,1804 @@
           "line": 111,
           "lines": 19,
           "signature_source": "theorem perfectoidIdeal_TorInput_iff_of_isPullback\n    {R A B C D : Type u} [CommRing R] [CommRing A] [CommRing B]\n    [CommRing C] [CommRing D] [Algebra R A] [Algebra R B] [Algebra R C] [Algebra R D]\n    {p : ℕ} [Fact p.Prime] (hR : IsIntegralPerfectoid R p)\n    (f : A →ₐ[R] B) (l : A →ₐ[R] C) (r : B →ₐ[R] D) (b : C →ₐ[R] D)\n    (hPB : IsPullback (CommRingCat.ofHom f.toRingHom) (CommRingCat.ofHom l.toRingHom)\n      (CommRingCat.ofHom r.toRingHom) (CommRingCat.ofHom b.toRingHom))\n    (hC : IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0)\n    (N : ModuleCat.{u} R) (k : ℕ) (hN : ∀ x : N, (p : R) ^ k • x = 0) (i : ℕ) :\n    (∀ s ∈ perfectoidIdeal R p hR g,\n      torCoefficientScalarEndomorphism A N i (algebraMap R A s) = 0) ↔\n    (∀ s ∈ perfectoidIdeal R p hR g,\n      torCoefficientScalarEndomorphism B N i (algebraMap R B s) = 0)",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechOverlap.lean",
+      "lines": 51,
+      "sha256": "19350729d09709bee7334083f1aaec68ad8f84b8c374f713175fda3ae0f9aa51",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.cechExact_of_overlapTensor",
+          "leaf": "cechExact_of_overlapTensor",
+          "kind": "theorem",
+          "private": false,
+          "line": 29,
+          "lines": 22,
+          "signature_source": "theorem cechExact_of_overlapTensor {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    {a b : PrimeSpectrum V} (h : a ≤ b)\n    (B : Under (CommRingCat.of V)) (p : ℕ) [Fact p.Prime]\n    [PerfectRing V p] [PerfectRing B.right p] (hp : (p : V) = 0)\n    (hl : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V)\n      (CommRingCat.of (Localization.AtPrime b.asIdeal))).obj B).hom))\n    (hq : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V)\n      (CommRingCat.of (V ⧸ a.asIdeal))).obj B).hom))\n    (hr : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V)\n      (CommRingCat.of (ValuationIntervalRing h))).obj B).hom)) :\n    Cech.IsCechExact (Arrow.mk B.hom)",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechUltraproduct.lean",
+      "lines": 88,
+      "sha256": "17b69fde582f2d760515cc8187978d3eadd15656df35e1ad480d5664b80baf26",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.subsingleton_of_ultraproduct_tensor",
+          "leaf": "subsingleton_of_ultraproduct_tensor",
+          "kind": "theorem",
+          "private": false,
+          "line": 34,
+          "lines": 29,
+          "signature_source": "theorem subsingleton_of_ultraproduct_tensor (M : Type u) [AddCommGroup M] [Module (∀ i, R i) M]\n    (h : ∀ U : Ultrafilter ι, Subsingleton (RingUltraproduct R U ⊗[∀ i, R i] M)) :\n    Subsingleton M",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.cechExact_of_ultraproducts",
+          "leaf": "cechExact_of_ultraproducts",
+          "kind": "theorem",
+          "private": false,
+          "line": 65,
+          "lines": 23,
+          "signature_source": "theorem cechExact_of_ultraproducts\n    (B : Under (CommRingCat.of (∀ i, R i)))\n    (h : ∀ U : Ultrafilter ι, Cech.IsCechExact\n      (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of (∀ i, R i))\n        (CommRingCat.of (RingUltraproduct R U))).obj B).hom)) :\n    Cech.IsCechExact (Arrow.mk B.hom)",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectCech.lean",
+      "lines": 119,
+      "sha256": "75303b23cb780d18120fd3044d0889c5ecbae2eb2d849928b9b784818436208e",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.Cech.cechConerve_perfectRing",
+          "leaf": "cechConerve_perfectRing",
+          "kind": "theorem",
+          "private": false,
+          "line": 30,
+          "lines": 84,
+          "signature_source": "theorem cechConerve_perfectRing (p : ℕ) [Fact p.Prime]\n    (f : Arrow CommRingCat.{u}) (hp : (p : f.left) = 0)\n    [PerfectRing f.left p] [PerfectRing f.right p] (n : SimplexCategory) :\n    PerfectRing (f.cechConerve.obj n) p",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean",
+      "lines": 404,
+      "sha256": "baace00a83e24570474d36ae013aebc61a1268b201b576835e02d041cc7be656",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootPolynomial",
+          "leaf": "arcRootPolynomial",
+          "kind": "abbrev",
+          "private": false,
+          "line": 54,
+          "lines": 2,
+          "signature_source": "abbrev arcRootPolynomial",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootIdeal",
+          "leaf": "arcRootIdeal",
+          "kind": "def",
+          "private": false,
+          "line": 56,
+          "lines": 4,
+          "signature_source": "def arcRootIdeal : Ideal (arcRootPolynomial.{u} p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootQuotient",
+          "leaf": "arcRootQuotient",
+          "kind": "abbrev",
+          "private": false,
+          "line": 60,
+          "lines": 6,
+          "signature_source": "abbrev arcRootQuotient",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfectoidBaseRing",
+          "leaf": "perfectoidBaseRing",
+          "kind": "abbrev",
+          "private": false,
+          "line": 66,
+          "lines": 4,
+          "signature_source": "abbrev perfectoidBaseRing : Type u",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfectoidBaseRoot",
+          "leaf": "perfectoidBaseRoot",
+          "kind": "def",
+          "private": false,
+          "line": 70,
+          "lines": 4,
+          "signature_source": "def perfectoidBaseRoot (n : ℕ) : perfectoidBaseRing.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": null,
+          "leaf": null,
+          "kind": "instance",
+          "private": false,
+          "line": 74,
+          "lines": 6,
+          "signature_source": "instance : Algebra (PadicInt p) (perfectoidBaseRing.{u} p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRawRoot",
+          "leaf": "arcRawRoot",
+          "kind": "def",
+          "private": true,
+          "line": 80,
+          "lines": 3,
+          "signature_source": "private def arcRawRoot (n : ℕ) : arcRootQuotient.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRawRoot_zero",
+          "leaf": "arcRawRoot_zero",
+          "kind": "theorem",
+          "private": true,
+          "line": 83,
+          "lines": 5,
+          "signature_source": "private theorem arcRawRoot_zero : arcRawRoot.{u} p 0 = (p : arcRootQuotient.{u} p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRawRoot_succ_pow",
+          "leaf": "arcRawRoot_succ_pow",
+          "kind": "theorem",
+          "private": true,
+          "line": 88,
+          "lines": 7,
+          "signature_source": "private theorem arcRawRoot_succ_pow (n : ℕ) :\n    arcRawRoot.{u} p (n + 1) ^ p = arcRawRoot.{u} p n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRawRoot_pow_of_le",
+          "leaf": "arcRawRoot_pow_of_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 95,
+          "lines": 7,
+          "signature_source": "private theorem arcRawRoot_pow_of_le (m n : ℕ) (hmn : m ≤ n) :\n    arcRawRoot.{u} p n ^ (p ^ (n - m)) = arcRawRoot.{u} p m",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootQuotientLift",
+          "leaf": "arcRootQuotientLift",
+          "kind": "def",
+          "private": true,
+          "line": 102,
+          "lines": 12,
+          "signature_source": "private def arcRootQuotientLift {T : Type u} [CommRing T]\n    (f : ULift.{u} (PadicInt p) →+* T) (ρ : ℕ → T)\n    (hzero : ρ 0 = (p : T)) (hpow : ∀ n, ρ (n + 1) ^ p = ρ n) :\n    arcRootQuotient.{u} p →+* T",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootQuotientLift_root",
+          "leaf": "arcRootQuotientLift_root",
+          "kind": "theorem",
+          "private": true,
+          "line": 114,
+          "lines": 5,
+          "signature_source": "private theorem arcRootQuotientLift_root {T : Type u} [CommRing T]\n    (f : ULift.{u} (PadicInt p) →+* T) (ρ : ℕ → T) (hzero) (hpow) (n : ℕ) :\n    arcRootQuotientLift p f ρ hzero hpow (arcRawRoot p n) = ρ n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootQuotientLift_coeff",
+          "leaf": "arcRootQuotientLift_coeff",
+          "kind": "theorem",
+          "private": true,
+          "line": 119,
+          "lines": 6,
+          "signature_source": "private theorem arcRootQuotientLift_coeff {T : Type u} [CommRing T]\n    (f : ULift.{u} (PadicInt p) →+* T) (ρ : ℕ → T) (hzero) (hpow)\n    (a : ULift.{u} (PadicInt p)) :\n    arcRootQuotientLift p f ρ hzero hpow (Ideal.Quotient.mk _ (C a)) = f a",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerCoeff",
+          "leaf": "arcTowerCoeff",
+          "kind": "abbrev",
+          "private": true,
+          "line": 125,
+          "lines": 1,
+          "signature_source": "private abbrev arcTowerCoeff",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerParam",
+          "leaf": "arcTowerParam",
+          "kind": "abbrev",
+          "private": true,
+          "line": 126,
+          "lines": 1,
+          "signature_source": "private abbrev arcTowerParam : Fin 1 → arcTowerCoeff.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRawTower",
+          "leaf": "arcRawTower",
+          "kind": "abbrev",
+          "private": true,
+          "line": 127,
+          "lines": 2,
+          "signature_source": "private abbrev arcRawTower",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerRoot",
+          "leaf": "arcTowerRoot",
+          "kind": "def",
+          "private": true,
+          "line": 129,
+          "lines": 3,
+          "signature_source": "private def arcTowerRoot (n : ℕ) : arcRawTower.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerRoot_zero",
+          "leaf": "arcTowerRoot_zero",
+          "kind": "theorem",
+          "private": true,
+          "line": 132,
+          "lines": 8,
+          "signature_source": "private theorem arcTowerRoot_zero : arcTowerRoot.{u} p 0 = (p : arcRawTower.{u} p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerRoot_succ_pow",
+          "leaf": "arcTowerRoot_succ_pow",
+          "kind": "theorem",
+          "private": true,
+          "line": 140,
+          "lines": 9,
+          "signature_source": "private theorem arcTowerRoot_succ_pow (n : ℕ) :\n    arcTowerRoot.{u} p (n + 1) ^ p = arcTowerRoot.{u} p n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootQuotientToTower",
+          "leaf": "arcRootQuotientToTower",
+          "kind": "def",
+          "private": true,
+          "line": 149,
+          "lines": 4,
+          "signature_source": "private def arcRootQuotientToTower : arcRootQuotient.{u} p →+* arcRawTower.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerStageToQuotient",
+          "leaf": "arcTowerStageToQuotient",
+          "kind": "def",
+          "private": true,
+          "line": 153,
+          "lines": 17,
+          "signature_source": "private def arcTowerStageToQuotient (n : ℕ) :\n    TowerStage (arcTowerCoeff.{u} p) (arcTowerParam p) p n →+* arcRootQuotient.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerStageToQuotient_root",
+          "leaf": "arcTowerStageToQuotient_root",
+          "kind": "theorem",
+          "private": true,
+          "line": 170,
+          "lines": 4,
+          "signature_source": "private theorem arcTowerStageToQuotient_root (n : ℕ) (i : Fin 1) :\n    arcTowerStageToQuotient.{u} p n (stageX _ _ p n i) = arcRawRoot p n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerStageToQuotient_coeff",
+          "leaf": "arcTowerStageToQuotient_coeff",
+          "kind": "theorem",
+          "private": true,
+          "line": 174,
+          "lines": 5,
+          "signature_source": "private theorem arcTowerStageToQuotient_coeff (n : ℕ) (a : arcTowerCoeff.{u} p) :\n    arcTowerStageToQuotient p n (algebraMap _ _ a) = Ideal.Quotient.mk (arcRootIdeal p) (C a)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerStageToQuotient_compat",
+          "leaf": "arcTowerStageToQuotient_compat",
+          "kind": "theorem",
+          "private": true,
+          "line": 179,
+          "lines": 22,
+          "signature_source": "private theorem arcTowerStageToQuotient_compat (m n : ℕ) (hmn : m ≤ n) :\n    (arcTowerStageToQuotient.{u} p n).comp\n      (towerMapRingHom (arcTowerCoeff p) (arcTowerParam p) p m n hmn) =\n        arcTowerStageToQuotient p m",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerToRootQuotient",
+          "leaf": "arcTowerToRootQuotient",
+          "kind": "def",
+          "private": true,
+          "line": 201,
+          "lines": 7,
+          "signature_source": "private def arcTowerToRootQuotient : arcRawTower.{u} p →+* arcRootQuotient.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTowerToRootQuotient_stage",
+          "leaf": "arcTowerToRootQuotient_stage",
+          "kind": "theorem",
+          "private": true,
+          "line": 208,
+          "lines": 5,
+          "signature_source": "private theorem arcTowerToRootQuotient_stage (n : ℕ)\n    (x : TowerStage (arcTowerCoeff.{u} p) (arcTowerParam p) p n) :\n    arcTowerToRootQuotient p (towerOf _ _ p n x) = arcTowerStageToQuotient p n x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcRootQuotientEquivTower",
+          "leaf": "arcRootQuotientEquivTower",
+          "kind": "def",
+          "private": true,
+          "line": 213,
+          "lines": 34,
+          "signature_source": "private def arcRootQuotientEquivTower : arcRootQuotient.{u} p ≃+* arcRawTower.{u} p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcCompletedTowerPerfectoid",
+          "leaf": "arcCompletedTowerPerfectoid",
+          "kind": "theorem",
+          "private": true,
+          "line": 247,
+          "lines": 37,
+          "signature_source": "private theorem arcCompletedTowerPerfectoid :\n    IsIntegralPerfectoid (CompletedTower (arcTowerCoeff.{u} p) (arcTowerParam p) p) p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfectoidBaseRing_isPerfectoid",
+          "leaf": "perfectoidBaseRing_isPerfectoid",
+          "kind": "theorem",
+          "private": false,
+          "line": 284,
+          "lines": 22,
+          "signature_source": "theorem perfectoidBaseRing_isPerfectoid : IsIntegralPerfectoid (perfectoidBaseRing.{u} p) p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IsRankOneCompleteValuationRing",
+          "leaf": "IsRankOneCompleteValuationRing",
+          "kind": "structure",
+          "private": false,
+          "line": 306,
+          "lines": 6,
+          "signature_source": "structure IsRankOneCompleteValuationRing (V : Type u) [CommRing V] : Prop",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IsRankOneCompleteValuationRing.isModuleComplete",
+          "leaf": "IsRankOneCompleteValuationRing.isModuleComplete",
+          "kind": "theorem",
+          "private": false,
+          "line": 314,
+          "lines": 7,
+          "signature_source": "theorem IsRankOneCompleteValuationRing.isModuleComplete {V : Type u} [CommRing V]\n    (hV : IsRankOneCompleteValuationRing p V) :\n    IsModuleComplete V (p : V) (ModuleCat.of V V)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcBaseTensor",
+          "leaf": "arcBaseTensor",
+          "kind": "def",
+          "private": false,
+          "line": 321,
+          "lines": 9,
+          "signature_source": "def arcBaseTensor (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : CommRingCat.{u}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.baseExtension",
+          "leaf": "baseExtension",
+          "kind": "abbrev",
+          "private": false,
+          "line": 330,
+          "lines": 5,
+          "signature_source": "abbrev baseExtension (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : Type u",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.baseExtension_isModuleComplete",
+          "leaf": "baseExtension_isModuleComplete",
+          "kind": "theorem",
+          "private": false,
+          "line": 335,
+          "lines": 6,
+          "signature_source": "theorem baseExtension_isModuleComplete (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :\n    IsModuleComplete (baseExtension p S hS) (p : baseExtension p S hS)\n      (ModuleCat.of (baseExtension p S hS) (baseExtension p S hS))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": null,
+          "leaf": null,
+          "kind": "instance",
+          "private": false,
+          "line": 341,
+          "lines": 7,
+          "signature_source": "instance (S : Type u) [CommRing S] (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :\n    Algebra (perfectoidBaseRing.{u} p) (baseExtension p S hS)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.baseExtensionUnit",
+          "leaf": "baseExtensionUnit",
+          "kind": "def",
+          "private": false,
+          "line": 348,
+          "lines": 6,
+          "signature_source": "def baseExtensionUnit (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : S →+* baseExtension p S hS",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfectoidBaseRing_toValuationExtension",
+          "leaf": "perfectoidBaseRing_toValuationExtension",
+          "kind": "theorem",
+          "private": false,
+          "line": 354,
+          "lines": 17,
+          "signature_source": "theorem perfectoidBaseRing_toValuationExtension (W : CommRingCat.{u})\n    (hW : IsRankOneCompleteValuationRing p W) (ρ : ℕ → W)\n    (hzero : ρ 0 = (p : W)) (hpow : ∀ n, ρ (n + 1) ^ p = ρ n) :\n    ∃ b : perfectoidBaseRing.{u} p →+* W, ∀ n, b (perfectoidBaseRoot p n) = ρ n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_baseExtension_lift_of_map",
+          "leaf": "exists_baseExtension_lift_of_map",
+          "kind": "theorem",
+          "private": false,
+          "line": 371,
+          "lines": 33,
+          "signature_source": "theorem exists_baseExtension_lift_of_map (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))\n    (V W : CommRingCat.{u}) (_hV : IsRankOneCompleteValuationRing p V)\n    (hW : IsRankOneCompleteValuationRing p W) (k : S →+* V) (e : V →+* W)\n    (_he : e.FaithfullyFlat) (b : perfectoidBaseRing.{u} p →+* W) :\n    ∃ l : baseExtension p S hS →+* W,\n      l.comp (baseExtensionUnit p S hS) = e.comp k ∧\n      l.comp (algebraMap (perfectoidBaseRing.{u} p) (baseExtension p S hS)) = b",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcCechMilnor.lean",
+      "lines": 95,
+      "sha256": "6e4d0a4698324522b59f463e15d9f501439354eee14c570639d1da28a495f3f7",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.cechExact_baseChange_iff_tensorCochain",
+          "leaf": "cechExact_baseChange_iff_tensorCochain",
+          "kind": "theorem",
+          "private": false,
+          "line": 32,
+          "lines": 20,
+          "signature_source": "theorem cechExact_baseChange_iff_tensorCochain (B : Under (CommRingCat.of V))\n    (D : Type u) [CommRing D] [Algebra V D] :\n    Cech.IsCechExact\n      (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V) (CommRingCat.of D)).obj B).hom) ↔\n    (tensorCochain (Cech.moduleCech B) (ModuleCat.of V D)).Acyclic",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.moduleCech_tor_subsingleton",
+          "leaf": "moduleCech_tor_subsingleton",
+          "kind": "theorem",
+          "private": false,
+          "line": 52,
+          "lines": 20,
+          "signature_source": "theorem moduleCech_tor_subsingleton (B : Under (CommRingCat.of V))\n    (D : Type u) [CommRing D] [Algebra V D] (p : ℕ) [Fact p.Prime]\n    [PerfectRing V p] [PerfectRing B.right p] [PerfectRing D p] (hp : (p : V) = 0)\n    (i : ℕ) (hi : 0 < i) (n : ℕ) :\n    Subsingleton (TorModule V i ((Cech.moduleCech B).X n) D)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.cechExact_of_milnorTensor",
+          "leaf": "cechExact_of_milnorTensor",
+          "kind": "theorem",
+          "private": false,
+          "line": 72,
+          "lines": 18,
+          "signature_source": "theorem cechExact_of_milnorTensor [IsDomain V] [ValuationRing V] (P : Ideal V) [P.IsPrime]\n    (B : Under (CommRingCat.of V)) (p : ℕ) [Fact p.Prime]\n    [PerfectRing V p] [PerfectRing B.right p] (hp : (p : V) = 0)\n    (hl : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V)\n      (CommRingCat.of (Localization.AtPrime P))).obj B).hom))\n    (hq : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V)\n      (CommRingCat.of (V ⧸ P))).obj B).hom))\n    (hr : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of V)\n      (CommRingCat.of P.ResidueField)).obj B).hom)) :\n    Cech.IsCechExact (Arrow.mk B.hom)",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcIntervalOverlap.lean",
+      "lines": 143,
+      "sha256": "34cdd61912097ad7d2ba69e2b4a34972ad0390ae964118a9c22384e9c5174806",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.intervalRing_algebraMap_eq_zero_iff",
+          "leaf": "intervalRing_algebraMap_eq_zero_iff",
+          "kind": "theorem",
+          "private": false,
+          "line": 30,
+          "lines": 10,
+          "signature_source": "theorem intervalRing_algebraMap_eq_zero_iff (x : V) :\n    algebraMap V (ValuationIntervalRing h) x = 0 ↔ x ∈ a.asIdeal",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval",
+          "leaf": "localizationToInterval",
+          "kind": "def",
+          "private": false,
+          "line": 40,
+          "lines": 5,
+          "signature_source": "def localizationToInterval : Localization.AtPrime b.asIdeal →ₐ[V] ValuationIntervalRing h",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval_surjective",
+          "leaf": "localizationToInterval_surjective",
+          "kind": "theorem",
+          "private": false,
+          "line": 45,
+          "lines": 35,
+          "signature_source": "theorem localizationToInterval_surjective :\n    Function.Surjective (localizationToInterval h)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex",
+          "leaf": "overlapModuleComplex",
+          "kind": "def",
+          "private": false,
+          "line": 80,
+          "lines": 16,
+          "signature_source": "def overlapModuleComplex : ShortComplex (ModuleCat.{u} V)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex_shortExact",
+          "leaf": "overlapModuleComplex_shortExact",
+          "kind": "theorem",
+          "private": false,
+          "line": 96,
+          "lines": 47,
+          "signature_source": "theorem overlapModuleComplex_shortExact [IsDomain V] [ValuationRing V] :\n    (overlapModuleComplex h).ShortExact",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorDetection.lean",
+      "lines": 123,
+      "sha256": "91c9efe82c8ed20de5516d16b82c9569e5d79acba7ee51e47da66bed20988d0e",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain",
+          "leaf": "tensorCochain",
+          "kind": "def",
+          "private": false,
+          "line": 32,
+          "lines": 5,
+          "signature_source": "def tensorCochain (K : CochainComplex (ModuleCat.{u} V) ℕ) (W : ModuleCat.{u} V) :\n    CochainComplex (ModuleCat.{u} V) ℕ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor",
+          "leaf": "tensorCochainFunctor",
+          "kind": "def",
+          "private": false,
+          "line": 37,
+          "lines": 11,
+          "signature_source": "def tensorCochainFunctor (K : CochainComplex (ModuleCat.{u} V) ℕ) :\n    ModuleCat.{u} V ⥤ CochainComplex (ModuleCat.{u} V) ℕ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": null,
+          "leaf": null,
+          "kind": "instance",
+          "private": false,
+          "line": 48,
+          "lines": 8,
+          "signature_source": "instance (K : CochainComplex (ModuleCat.{u} V) ℕ) : (tensorCochainFunctor K).Additive",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_prod_acyclic",
+          "leaf": "tensorCochain_prod_acyclic",
+          "kind": "theorem",
+          "private": false,
+          "line": 56,
+          "lines": 25,
+          "signature_source": "theorem tensorCochain_prod_acyclic (K : CochainComplex (ModuleCat.{u} V) ℕ)\n    (L Q : Type u) [AddCommGroup L] [Module V L] [AddCommGroup Q] [Module V Q]\n    (hl : (tensorCochain K (ModuleCat.of V L)).Acyclic)\n    (hq : (tensorCochain K (ModuleCat.of V Q)).Acyclic) :\n    (tensorCochain K (ModuleCat.of V (L × Q))).Acyclic",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_shortExact",
+          "leaf": "tensorCochain_shortExact",
+          "kind": "theorem",
+          "private": false,
+          "line": 81,
+          "lines": 11,
+          "signature_source": "theorem tensorCochain_shortExact (K : CochainComplex (ModuleCat.{u} V) ℕ)\n    (T : ShortComplex (ModuleCat.{u} V)) (hT : T.ShortExact)\n    (htor : ∀ n, Subsingleton (TorModule V 1 (K.X n) T.X₃)) :\n    (T.map (tensorCochainFunctor K)).ShortExact",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.acyclic_of_tensorShortExact",
+          "leaf": "acyclic_of_tensorShortExact",
+          "kind": "theorem",
+          "private": false,
+          "line": 92,
+          "lines": 13,
+          "signature_source": "theorem acyclic_of_tensorShortExact (K : CochainComplex (ModuleCat.{u} V) ℕ)\n    (T : ShortComplex (ModuleCat.{u} V)) (hT : T.ShortExact)\n    (htor : ∀ n, Subsingleton (TorModule V 1 (K.X n) T.X₃))\n    (h₂ : (tensorCochain K T.X₂).Acyclic) (h₃ : (tensorCochain K T.X₃).Acyclic) :\n    (tensorCochain K T.X₁).Acyclic",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso",
+          "leaf": "tensorCochain_unitIso",
+          "kind": "def",
+          "private": false,
+          "line": 105,
+          "lines": 7,
+          "signature_source": "def tensorCochain_unitIso (K : CochainComplex (ModuleCat.{u} V) ℕ) :\n    tensorCochain K (ModuleCat.of V V) ≅ K",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.acyclic_of_milnorTensor",
+          "leaf": "acyclic_of_milnorTensor",
+          "kind": "theorem",
+          "private": false,
+          "line": 112,
+          "lines": 11,
+          "signature_source": "theorem acyclic_of_milnorTensor [IsDomain V] [ValuationRing V] (P : Ideal V) [P.IsPrime]\n    (K : CochainComplex (ModuleCat.{u} V) ℕ)\n    (htor : ∀ n, Subsingleton (TorModule V 1 (K.X n) P.ResidueField))\n    (hl : (tensorCochain K (ModuleCat.of V (Localization.AtPrime P))).Acyclic)\n    (hq : (tensorCochain K (ModuleCat.of V (V ⧸ P))).Acyclic)\n    (hr : (tensorCochain K (ModuleCat.of V P.ResidueField)).Acyclic) :\n    K.Acyclic",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean",
+      "lines": 129,
+      "sha256": "8f3bf4a9b335ac0428d637a2bbf67e7a215eedbc9d597b832f84d994359312ff",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.shortExact_tensorLeft_of_tor",
+          "leaf": "shortExact_tensorLeft_of_tor",
+          "kind": "theorem",
+          "private": false,
+          "line": 30,
+          "lines": 34,
+          "signature_source": "theorem shortExact_tensorLeft_of_tor {V : Type u} [CommRing V] (M : Type u)\n    [AddCommGroup M] [Module V M] (S : ShortComplex (ModuleCat.{u} V)) (hS : S.ShortExact)\n    (hTor : Subsingleton (TorModule V 1 M S.X₃)) :\n    (S.map (tensorLeft (ModuleCat.of V M))).ShortExact",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorInclusion",
+          "leaf": "milnorInclusion",
+          "kind": "def",
+          "private": false,
+          "line": 68,
+          "lines": 4,
+          "signature_source": "def milnorInclusion : V →ₗ[V] Localization.AtPrime P × (V ⧸ P)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference",
+          "leaf": "milnorDifference",
+          "kind": "def",
+          "private": false,
+          "line": 72,
+          "lines": 7,
+          "signature_source": "def milnorDifference : (Localization.AtPrime P × (V ⧸ P)) →ₗ[V] P.ResidueField",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex",
+          "leaf": "milnorModuleComplex",
+          "kind": "def",
+          "private": false,
+          "line": 79,
+          "lines": 7,
+          "signature_source": "def milnorModuleComplex : ShortComplex (ModuleCat.{u} V)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex_shortExact",
+          "leaf": "milnorModuleComplex_shortExact",
+          "kind": "theorem",
+          "private": false,
+          "line": 86,
+          "lines": 6,
+          "signature_source": "theorem milnorModuleComplex_shortExact [IsDomain V] [ValuationRing V] :\n    (milnorModuleComplex P).ShortExact",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfectRing_primeResidue",
+          "leaf": "perfectRing_primeResidue",
+          "kind": "theorem",
+          "private": false,
+          "line": 92,
+          "lines": 28,
+          "signature_source": "theorem perfectRing_primeResidue (p : ℕ) [Fact p.Prime] [PerfectRing V p]\n    (hp : (p : V) = 0) : PerfectRing P.ResidueField p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex_tensor_shortExact",
+          "leaf": "milnorModuleComplex_tensor_shortExact",
+          "kind": "theorem",
+          "private": false,
+          "line": 120,
+          "lines": 9,
+          "signature_source": "theorem milnorModuleComplex_tensor_shortExact\n    [IsDomain V] [ValuationRing V] (D : Type u) [CommRing D] [Algebra V D]\n    (p : ℕ) [Fact p.Prime] [PerfectRing V p] [PerfectRing D p]\n    (hp : (p : V) = 0) :\n    ((milnorModuleComplex P).map (tensorLeft (ModuleCat.of V D))).ShortExact",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Site/ArcCardinality.lean",
+      "lines": 157,
+      "sha256": "05f9647c5ae3c2fd8ccfd30a2a40fb43bf798177c2dc92b51996a1e4fd20fca2",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.card_le_countable_power",
+          "leaf": "card_le_countable_power",
+          "kind": "theorem",
+          "private": true,
+          "line": 37,
+          "lines": 3,
+          "signature_source": "private theorem card_le_countable_power (a : Cardinal) : a ≤ a ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.countable_power_idempotent",
+          "leaf": "countable_power_idempotent",
+          "kind": "theorem",
+          "private": true,
+          "line": 40,
+          "lines": 3,
+          "signature_source": "private theorem countable_power_idempotent (a : Cardinal) : (a ^ ℵ₀) ^ ℵ₀ = a ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.mk_countable_sequences",
+          "leaf": "mk_countable_sequences",
+          "kind": "theorem",
+          "private": true,
+          "line": 43,
+          "lines": 3,
+          "signature_source": "private theorem mk_countable_sequences (S : Type u) : #(ℕ → S) = #S ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionRing_cardinal_le",
+          "leaf": "completionRing_cardinal_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 46,
+          "lines": 7,
+          "signature_source": "private theorem completionRing_cardinal_le (p : ℕ) (S : CommRingCat.{u}) :\n    #(completionRing p S : Type u) ≤ #S ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootAdjunctionStep_cardinal_le",
+          "leaf": "rootAdjunctionStep_cardinal_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 53,
+          "lines": 14,
+          "signature_source": "private theorem rootAdjunctionStep_cardinal_le (p : ℕ) (R S : Type u) [CommRing R] [CommRing S]\n    {κ : Cardinal.{u}} (hinf : ℵ₀ ≤ κ) (hκ : κ ^ ℵ₀ = κ) (hS : #S ≤ κ) :\n    #(rootAdjunctionStep p R S) ≤ κ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootClosure_cardinal_le",
+          "leaf": "rootClosure_cardinal_le",
+          "kind": "theorem",
+          "private": false,
+          "line": 67,
+          "lines": 30,
+          "signature_source": "theorem rootClosure_cardinal_le (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]\n    (S : Type u) [CommRing S] [Algebra R S] :\n    #(rootClosure p R S) ≤ (#S + ℵ₀) ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.padicInt_cardinal_le",
+          "leaf": "padicInt_cardinal_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 99,
+          "lines": 7,
+          "signature_source": "private theorem padicInt_cardinal_le : #(PadicInt p) ≤ ℵ₀ ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.perfectoidBaseRing_cardinal_le",
+          "leaf": "perfectoidBaseRing_cardinal_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 106,
+          "lines": 16,
+          "signature_source": "private theorem perfectoidBaseRing_cardinal_le :\n    #(perfectoidBaseRing.{u} p) ≤ ℵ₀ ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorProduct_cardinal_le",
+          "leaf": "tensorProduct_cardinal_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 122,
+          "lines": 19,
+          "signature_source": "private theorem tensorProduct_cardinal_le {A : Type*} (S T : Type u) [CommRing A]\n    [CommRing S] [CommRing T] [Algebra A S] [Algebra A T] {κ : Cardinal.{u}}\n    (hinf : ℵ₀ ≤ κ) (hS : #S ≤ κ) (hT : #T ≤ κ) : #(S ⊗[A] T) ≤ κ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.baseExtension_cardinal_le",
+          "leaf": "baseExtension_cardinal_le",
+          "kind": "theorem",
+          "private": false,
+          "line": 141,
+          "lines": 16,
+          "signature_source": "theorem baseExtension_cardinal_le (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :\n    #(baseExtension p S hS) ≤ (#S + ℵ₀) ^ ℵ₀",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Site/ArcSite.lean",
+      "lines": 562,
+      "sha256": "3829c5fb3e1e223aecaea6e6fb13e1fc9b11f2b6c42ed90701e4f0b7956196ba",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.affComplProperty",
+          "leaf": "affComplProperty",
+          "kind": "def",
+          "private": false,
+          "line": 53,
+          "lines": 4,
+          "signature_source": "def affComplProperty : ObjectProperty CommRingCat.{u}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.AffComplLarge",
+          "leaf": "AffComplLarge",
+          "kind": "abbrev",
+          "private": false,
+          "line": 57,
+          "lines": 2,
+          "signature_source": "abbrev AffComplLarge",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.complete_of_ringEquiv",
+          "leaf": "complete_of_ringEquiv",
+          "kind": "theorem",
+          "private": true,
+          "line": 60,
+          "lines": 13,
+          "signature_source": "private theorem complete_of_ringEquiv {R T : Type u} [CommRing R] [CommRing T]\n    (e : R ≃+* T) (hR : IsModuleComplete R (p : R) (ModuleCat.of R R)) :\n    IsModuleComplete T (p : T) (ModuleCat.of T T)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.affComplLarge_essentiallySmall",
+          "leaf": "affComplLarge_essentiallySmall",
+          "kind": "instance",
+          "private": false,
+          "line": 73,
+          "lines": 25,
+          "signature_source": "instance affComplLarge_essentiallySmall : EssentiallySmall.{u} (AffComplLarge p κ)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.AffCompl",
+          "leaf": "AffCompl",
+          "kind": "abbrev",
+          "private": false,
+          "line": 98,
+          "lines": 2,
+          "signature_source": "abbrev AffCompl : Type u",
+          "sorry_tokens": 0
+        },
+        {
+          "name": null,
+          "leaf": null,
+          "kind": "instance",
+          "private": false,
+          "line": 100,
+          "lines": 3,
+          "signature_source": "instance : Category.{u} (AffCompl p κ)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.affComplForget",
+          "leaf": "affComplForget",
+          "kind": "def",
+          "private": false,
+          "line": 103,
+          "lines": 4,
+          "signature_source": "def affComplForget : AffCompl p κ ⥤ CommRingCat.{u}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.affPerfdProperty",
+          "leaf": "affPerfdProperty",
+          "kind": "def",
+          "private": false,
+          "line": 107,
+          "lines": 7,
+          "signature_source": "def affPerfdProperty : ObjectProperty (AffCompl p κ)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.AffPerfd",
+          "leaf": "AffPerfd",
+          "kind": "abbrev",
+          "private": false,
+          "line": 114,
+          "lines": 2,
+          "signature_source": "abbrev AffPerfd : Type u",
+          "sorry_tokens": 0
+        },
+        {
+          "name": null,
+          "leaf": null,
+          "kind": "instance",
+          "private": false,
+          "line": 116,
+          "lines": 3,
+          "signature_source": "instance : Category.{u} (AffPerfd p κ)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.affPerfdInclusion",
+          "leaf": "affPerfdInclusion",
+          "kind": "def",
+          "private": false,
+          "line": 119,
+          "lines": 9,
+          "signature_source": "def affPerfdInclusion : AffPerfd p κ ⥤ AffCompl p κ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IsArcCoverFamily",
+          "leaf": "IsArcCoverFamily",
+          "kind": "def",
+          "private": false,
+          "line": 128,
+          "lines": 12,
+          "signature_source": "def IsArcCoverFamily {R : Type u} [CommRing R] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)]\n    (f : ∀ i, R →+* B i) : Prop",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTopology",
+          "leaf": "arcTopology",
+          "kind": "def",
+          "private": false,
+          "line": 140,
+          "lines": 9,
+          "signature_source": "def arcTopology : GrothendieckTopology (AffCompl p κ)ᵒᵖ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcTopologyPerfd",
+          "leaf": "arcTopologyPerfd",
+          "kind": "def",
+          "private": false,
+          "line": 149,
+          "lines": 9,
+          "signature_source": "def arcTopologyPerfd : GrothendieckTopology (AffPerfd p κ)ᵒᵖ",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.isArcCoverFamily_baseChange",
+          "leaf": "isArcCoverFamily_baseChange",
+          "kind": "theorem",
+          "private": false,
+          "line": 158,
+          "lines": 37,
+          "signature_source": "theorem isArcCoverFamily_baseChange (p : ℕ) [Fact p.Prime]\n    {R R' : Type u} [CommRing R] [CommRing R']\n    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]\n    (f : ∀ i, R →+* B i) (g : R →+* R')\n    (_hR : IsModuleComplete R (p : R) (ModuleCat.of R R))\n    (_hR' : IsModuleComplete R' (p : R') (ModuleCat.of R' R'))\n    (_hB : ∀ i, IsModuleComplete (B i) (p : B i) (ModuleCat.of (B i) (B i)))\n    (hf : IsArcCoverFamily p B f) :\n    letI : Algebra R R'",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.isArcCoverFamily_comp",
+          "leaf": "isArcCoverFamily_comp",
+          "kind": "theorem",
+          "private": false,
+          "line": 195,
+          "lines": 19,
+          "signature_source": "theorem isArcCoverFamily_comp (p : ℕ) [Fact p.Prime]\n    {R : Type u} [CommRing R] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, R →+* B i)\n    (J : ι → Type u) [∀ i, Finite (J i)]\n    (C : ∀ i, J i → Type u) [∀ i j, CommRing (C i j)]\n    (g : ∀ i j, B i →+* C i j)\n    (hf : IsArcCoverFamily p B f)\n    (hg : ∀ i, IsArcCoverFamily p (C i) (g i)) :\n    IsArcCoverFamily p (fun ij : Sigma J => C ij.1 ij.2)\n      (fun ij => (g ij.1 ij.2).comp (f ij.1))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.isArcCoverFamily_prod_iff",
+          "leaf": "isArcCoverFamily_prod_iff",
+          "kind": "theorem",
+          "private": false,
+          "line": 214,
+          "lines": 62,
+          "signature_source": "theorem isArcCoverFamily_prod_iff (p : ℕ) [Fact p.Prime]\n    {R : Type u} [CommRing R] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, R →+* B i) :\n    IsArcCoverFamily p B f ↔\n      IsArcCoverFamily p (fun _ : PUnit.{u + 1} => ∀ i, B i)\n        (fun _ => RingHom.pi f)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionUnit_modP_surjective",
+          "leaf": "completionUnit_modP_surjective",
+          "kind": "theorem",
+          "private": true,
+          "line": 276,
+          "lines": 41,
+          "signature_source": "private theorem completionUnit_modP_surjective (p : ℕ) (C : CommRingCat.{u}) :\n    Function.Surjective ((Ideal.Quotient.mk (Ideal.span {(p : completionRing p C)})).comp\n      (completionUnit p C).hom)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootClosure_frobenius_surjective",
+          "leaf": "rootClosure_frobenius_surjective",
+          "kind": "theorem",
+          "private": true,
+          "line": 318,
+          "lines": 35,
+          "signature_source": "private theorem rootClosure_frobenius_surjective (R S : Type u) [CommRing R] [CommRing S] :\n    Function.Surjective (fun x : ModP (rootClosure p R S) p => x ^ p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.modP_adicCompletion_surjective",
+          "leaf": "modP_adicCompletion_surjective",
+          "kind": "theorem",
+          "private": true,
+          "line": 354,
+          "lines": 20,
+          "signature_source": "private theorem modP_adicCompletion_surjective (A : Type u) [CommRing A] :\n    let I : Ideal A",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_perfectoid_surjection_of_classical_complete",
+          "leaf": "exists_perfectoid_surjection_of_classical_complete",
+          "kind": "theorem",
+          "private": true,
+          "line": 374,
+          "lines": 49,
+          "signature_source": "private theorem exists_perfectoid_surjection_of_classical_complete {R A : Type u}\n    [CommRing R] [CommRing A] [IsAdicComplete (Ideal.span {(p : A)}) A]\n    (f : R →+* A) (hR : IsIntegralPerfectoid R p)\n    (hF : Function.Surjective (fun x : ModP A p => x ^ p)) :\n    ∃ (T : Type u) (_ : CommRing T) (q : T →+* A),\n      IsIntegralPerfectoid T p ∧ Function.Surjective q",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.adicCompletion_cardinal_le",
+          "leaf": "adicCompletion_cardinal_le",
+          "kind": "theorem",
+          "private": true,
+          "line": 423,
+          "lines": 14,
+          "signature_source": "private theorem adicCompletion_cardinal_le {A : Type u} [CommRing A] (I : Ideal A) :\n    #(AdicCompletion I A) ≤ #A ^ ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_perfectoid_arcCover",
+          "leaf": "exists_perfectoid_arcCover",
+          "kind": "theorem",
+          "private": false,
+          "line": 437,
+          "lines": 71,
+          "signature_source": "theorem exists_perfectoid_arcCover (S : Type u) [CommRing S]\n    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :\n    ∃ (T : CommRingCat.{u}) (g : baseExtension p S hS →+* T),\n      IsIntegralPerfectoid T p ∧\n      Cardinal.mk T ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 ∧\n      IsArcCoverFamily p (fun _ : PUnit.{u + 1} => (T : Type u))\n        (fun _ => g.comp (baseExtensionUnit p S hS))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.affPerfdInclusion_isCoverDense",
+          "leaf": "affPerfdInclusion_isCoverDense",
+          "kind": "theorem",
+          "private": false,
+          "line": 508,
+          "lines": 45,
+          "signature_source": "theorem affPerfdInclusion_isCoverDense (κ : Cardinal.{u})\n    [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :\n    (affPerfdInclusion p κ).op.IsCoverDense (arcTopology p κ)",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationCompletion.lean",
+      "lines": 280,
+      "sha256": "b736792fe437b62cbdc7c1c17df9274b53c449c77bd6e38a6a319846ba11da4a",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rankOneValuation_exists_dvd_pow",
+          "leaf": "rankOneValuation_exists_dvd_pow",
+          "kind": "theorem",
+          "private": false,
+          "line": 42,
+          "lines": 6,
+          "signature_source": "theorem rankOneValuation_exists_dvd_pow (hV : ringKrullDim V = 1)\n    {a b : V} (ha : ¬ IsUnit a) (hb : b ≠ 0) : ∃ n : ℕ, b ∣ a ^ n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rankOneValuation_completion_injective",
+          "leaf": "rankOneValuation_completion_injective",
+          "kind": "theorem",
+          "private": false,
+          "line": 55,
+          "lines": 22,
+          "signature_source": "theorem rankOneValuation_completion_injective (hV : ringKrullDim V = 1)\n    (ha : a ≠ 0) (hna : ¬ IsUnit a) : Function.Injective f",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationRing_completion_associated",
+          "leaf": "valuationRing_completion_associated",
+          "kind": "theorem",
+          "private": false,
+          "line": 77,
+          "lines": 41,
+          "signature_source": "theorem valuationRing_completion_associated (x : T) : ∃ r : V, Associated (f r) x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rankOneValuation_completion",
+          "leaf": "rankOneValuation_completion",
+          "kind": "theorem",
+          "private": false,
+          "line": 118,
+          "lines": 62,
+          "signature_source": "theorem rankOneValuation_completion (hV : ringKrullDim V = 1)\n    (ha : a ≠ 0) (hna : ¬ IsUnit a) :\n    ∃ hT : IsDomain T, @ValuationRing T _ hT ∧ ringKrullDim T = 1 ∧\n      IsAdicComplete (Ideal.span {f a}) T ∧ RingHom.FaithfullyFlat f",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completion_evalₐ_factor",
+          "leaf": "completion_evalₐ_factor",
+          "kind": "theorem",
+          "private": true,
+          "line": 185,
+          "lines": 8,
+          "signature_source": "private theorem completion_evalₐ_factor {m n : ℕ} (hmn : m ≤ n) (x : T) :\n    Ideal.Quotient.factorPow I hmn (AdicCompletion.evalₐ I n x) = AdicCompletion.evalₐ I m x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionRootLevel",
+          "leaf": "completionRootLevel",
+          "kind": "def",
+          "private": true,
+          "line": 193,
+          "lines": 9,
+          "signature_source": "private def completionRootLevel (n : ℕ) : (V ⧸ I ^ (p * n)) →+* (V ⧸ I ^ n)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionRootLevel_mk",
+          "leaf": "completionRootLevel_mk",
+          "kind": "theorem",
+          "private": true,
+          "line": 203,
+          "lines": 4,
+          "signature_source": "private theorem completionRootLevel_mk (n : ℕ) (x : V) :\n    completionRootLevel a p n (Ideal.Quotient.mk _ x) =\n      Ideal.Quotient.mk _ ((frobeniusEquiv V p).symm x)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionRootMap",
+          "leaf": "completionRootMap",
+          "kind": "def",
+          "private": true,
+          "line": 207,
+          "lines": 3,
+          "signature_source": "private def completionRootMap (n : ℕ) : T →+* (V ⧸ I ^ n)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionRootMap_compat",
+          "leaf": "completionRootMap_compat",
+          "kind": "theorem",
+          "private": true,
+          "line": 211,
+          "lines": 13,
+          "signature_source": "private theorem completionRootMap_compat {m n : ℕ} (hmn : m ≤ n) :\n    (Ideal.Quotient.factorPow I hmn).comp (completionRootMap a p n) =\n      completionRootMap a p m",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionInverseFrobenius",
+          "leaf": "completionInverseFrobenius",
+          "kind": "def",
+          "private": true,
+          "line": 224,
+          "lines": 3,
+          "signature_source": "private def completionInverseFrobenius : T →+* T",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionInverseFrobenius_eval",
+          "leaf": "completionInverseFrobenius_eval",
+          "kind": "theorem",
+          "private": true,
+          "line": 228,
+          "lines": 7,
+          "signature_source": "private theorem completionInverseFrobenius_eval (n : ℕ) (x : T) :\n    AdicCompletion.evalₐ I n (completionInverseFrobenius a p x) =\n      completionRootLevel a p n (AdicCompletion.evalₐ I (p * n) x)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completionInverseFrobenius_pow",
+          "leaf": "completionInverseFrobenius_pow",
+          "kind": "theorem",
+          "private": true,
+          "line": 239,
+          "lines": 20,
+          "signature_source": "private theorem completionInverseFrobenius_pow {V : Type*} [CommRing V] [IsDomain V]\n    [ValuationRing V] (a : V) (p : ℕ) [Fact p.Prime] [CharP V p] [PerfectRing V p]\n    (x : AdicCompletion (Ideal.span {a}) V) :\n    completionInverseFrobenius a p x ^ p = x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcValuation_completeAt",
+          "leaf": "arcValuation_completeAt",
+          "kind": "theorem",
+          "private": false,
+          "line": 262,
+          "lines": 18,
+          "signature_source": "theorem arcValuation_completeAt (p : ℕ) [Fact p.Prime] [Fact p.Prime]\n    (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V]\n    [CharP V p] [PerfectRing V p] (hV : ringKrullDim V = 1)\n    (a : V) (ha : a ≠ 0) (hna : ¬ IsUnit a) :\n    let T",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationExtension.lean",
+      "lines": 353,
+      "sha256": "0cd5f6c78183de4c0ccb16f1d9be815bc4d5b50d952e9109768137ff8aab0cd3",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.finite_coeff_dvd",
+          "leaf": "finite_coeff_dvd",
+          "kind": "theorem",
+          "private": true,
+          "line": 46,
+          "lines": 22,
+          "signature_source": "private theorem finite_coeff_dvd (P : V[X]) {s : Finset ℕ} (hs : s.Nonempty) :\n    ∃ n ∈ s, ∀ m ∈ s, P.coeff n ∣ P.coeff m",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraic_has_relation_with_unit_coeff",
+          "leaf": "algebraic_has_relation_with_unit_coeff",
+          "kind": "theorem",
+          "private": true,
+          "line": 69,
+          "lines": 21,
+          "signature_source": "private theorem algebraic_has_relation_with_unit_coeff\n    (hinj : Function.Injective (algebraMap V W)) {x : W} (hx : IsAlgebraic V x) :\n    ∃ P : V[X], aeval x P = 0 ∧ ∃ n, P.coeff n = 1",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rankOneValuation_dim_of_algebraic",
+          "leaf": "rankOneValuation_dim_of_algebraic",
+          "kind": "theorem",
+          "private": false,
+          "line": 90,
+          "lines": 58,
+          "signature_source": "theorem rankOneValuation_dim_of_algebraic [Algebra.IsAlgebraic V W]\n    [IsLocalHom (algebraMap V W)] (hinj : Function.Injective (algebraMap V W))\n    (hV : ringKrullDim V = 1) : ringKrullDim W = 1",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuation_dvd_of_pow_dvd",
+          "leaf": "valuation_dvd_of_pow_dvd",
+          "kind": "theorem",
+          "private": true,
+          "line": 154,
+          "lines": 19,
+          "signature_source": "private theorem valuation_dvd_of_pow_dvd {W : Type u} [CommRing W] [IsDomain W] [ValuationRing W]\n    {x y : W} (h : x ^ p ∣ y ^ p) : x ∣ y",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IsRankOneCompleteValuationRing.isPerfectoid_of_roots",
+          "leaf": "IsRankOneCompleteValuationRing.isPerfectoid_of_roots",
+          "kind": "theorem",
+          "private": false,
+          "line": 173,
+          "lines": 41,
+          "signature_source": "theorem IsRankOneCompleteValuationRing.isPerfectoid_of_roots\n    {W : Type u} [CommRing W] (hW : IsRankOneCompleteValuationRing p W)\n    (hF : Function.Surjective (fun x : ModP W p => x ^ p))\n    (ρ : ℕ → W) (hzero : ρ 0 = (p : W)) (hpow : ∀ n, ρ (n + 1) ^ p = ρ n) :\n    IsIntegralPerfectoid W p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationSubring_pow_surjective",
+          "leaf": "valuationSubring_pow_surjective",
+          "kind": "theorem",
+          "private": true,
+          "line": 214,
+          "lines": 11,
+          "signature_source": "private theorem valuationSubring_pow_surjective {K : Type u} [Field K] [IsAlgClosed K]\n    (V : ValuationSubring K) : Function.Surjective (fun x : V => x ^ p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.faithfullyFlat_of_local_injective_valuationRing",
+          "leaf": "faithfullyFlat_of_local_injective_valuationRing",
+          "kind": "theorem",
+          "private": true,
+          "line": 225,
+          "lines": 11,
+          "signature_source": "private theorem faithfullyFlat_of_local_injective_valuationRing {A B : Type u}\n    [CommRing A] [IsDomain A] [ValuationRing A] [CommRing B] [IsDomain B] [IsLocalRing B]\n    (f : A →+* B) [IsLocalHom f] (hf : Function.Injective f) : f.FaithfullyFlat",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_perfectoid_valuation_extension",
+          "leaf": "exists_perfectoid_valuation_extension",
+          "kind": "theorem",
+          "private": false,
+          "line": 236,
+          "lines": 76,
+          "signature_source": "theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})\n    (hV : IsRankOneCompleteValuationRing p V) :\n    ∃ (W : CommRingCat.{u}) (e : V →+* W), IsRankOneCompleteValuationRing p W ∧\n      IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧\n      ∃ ρ : ℕ → W, ρ 0 = (p : W) ∧ ∀ n, ρ (n + 1) ^ p = ρ n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.arcValuation_extendField",
+          "leaf": "arcValuation_extendField",
+          "kind": "theorem",
+          "private": false,
+          "line": 312,
+          "lines": 27,
+          "signature_source": "theorem arcValuation_extendField (p : ℕ) [Fact p.Prime] [Fact p.Prime]\n    (k : Type u) [Field k] [CharP k p] [PerfectRing k p]\n    (a : k) (ha : ¬ IsUnit a) :\n    ∃ (V : CommRingCat.{u}) (hV : IsDomain V) (e : k →+* V),\n      @ValuationRing V _ hV ∧ ringKrullDim V = 1 ∧ CharP V p ∧ PerfectRing V p ∧\n        e.FaithfullyFlat ∧ e a = 0",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_baseExtension_lift",
+          "leaf": "exists_baseExtension_lift",
+          "kind": "theorem",
+          "private": false,
+          "line": 339,
+          "lines": 11,
+          "signature_source": "theorem exists_baseExtension_lift (S : Type u) [CommRing S]\n    (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))\n    (V : CommRingCat.{u}) (hV : IsRankOneCompleteValuationRing p V) (k : S →+* V) :\n    ∃ (W : CommRingCat.{u}) (e : V →+* W) (l : baseExtension p S hS →+* W),\n      IsRankOneCompleteValuationRing p W ∧ IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧\n      l.comp (baseExtensionUnit p S hS) = e.comp k",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationMilnor.lean",
+      "lines": 92,
+      "sha256": "7e0c0275681a9af9761c9f60ea99eaefc50ad33436a33777e3475eb0a73c763a",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.MilnorShortExact",
+          "leaf": "MilnorShortExact",
+          "kind": "def",
+          "private": false,
+          "line": 34,
+          "lines": 9,
+          "signature_source": "def MilnorShortExact {V : Type u} [CommRing V] (P : Ideal V) [P.IsPrime] : Prop",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationRing_milnorSquare",
+          "leaf": "valuationRing_milnorSquare",
+          "kind": "theorem",
+          "private": false,
+          "line": 43,
+          "lines": 44,
+          "signature_source": "theorem valuationRing_milnorSquare {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    (𝔭 : Ideal V) [𝔭.IsPrime] : MilnorShortExact 𝔭",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationRing_milnorSquare_perfect",
+          "leaf": "valuationRing_milnorSquare_perfect",
+          "kind": "theorem",
+          "private": false,
+          "line": 87,
+          "lines": 5,
+          "signature_source": "theorem valuationRing_milnorSquare_perfect {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CharP V p] [PerfectRing V p]\n    (𝔭 : Ideal V) [𝔭.IsPrime] : MilnorShortExact 𝔭",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationProduct.lean",
+      "lines": 146,
+      "sha256": "9875b38d9c2ab1139a72c2880ad57394a8b83994a38194a0f53a12a3b0ec6081",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IsAffineVCover",
+          "leaf": "IsAffineVCover",
+          "kind": "def",
+          "private": false,
+          "line": 34,
+          "lines": 7,
+          "signature_source": "def IsAffineVCover {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) : Prop",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField",
+          "leaf": "valuationProbeField",
+          "kind": "abbrev",
+          "private": false,
+          "line": 44,
+          "lines": 4,
+          "signature_source": "abbrev valuationProbeField (P : PrimeSpectrum A)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeFieldMap",
+          "leaf": "valuationProbeFieldMap",
+          "kind": "def",
+          "private": false,
+          "line": 48,
+          "lines": 5,
+          "signature_source": "def valuationProbeFieldMap (P : PrimeSpectrum A) : A →+* valuationProbeField A P",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbeIndex",
+          "leaf": "ValuationProbeIndex",
+          "kind": "abbrev",
+          "private": false,
+          "line": 53,
+          "lines": 6,
+          "signature_source": "abbrev ValuationProbeIndex",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe",
+          "leaf": "ValuationProbe",
+          "kind": "abbrev",
+          "private": false,
+          "line": 59,
+          "lines": 3,
+          "signature_source": "abbrev ValuationProbe (t : ValuationProbeIndex A) : Type u",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap",
+          "leaf": "valuationProbeMap",
+          "kind": "def",
+          "private": false,
+          "line": 62,
+          "lines": 4,
+          "signature_source": "def valuationProbeMap (t : ValuationProbeIndex A) : A →+* ValuationProbe A t",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbe_aic",
+          "leaf": "valuationProbe_aic",
+          "kind": "theorem",
+          "private": false,
+          "line": 66,
+          "lines": 5,
+          "signature_source": "theorem valuationProbe_aic (t : ValuationProbeIndex A) :\n    IsAbsolutelyIntegrallyClosed (ValuationProbe A t)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbe_cardinal_le",
+          "leaf": "valuationProbe_cardinal_le",
+          "kind": "theorem",
+          "private": false,
+          "line": 71,
+          "lines": 12,
+          "signature_source": "theorem valuationProbe_cardinal_le (t : ValuationProbeIndex A) :\n    #(ValuationProbe A t) ≤ max #A ℵ₀",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProductMap",
+          "leaf": "valuationProbeProductMap",
+          "kind": "def",
+          "private": false,
+          "line": 83,
+          "lines": 5,
+          "signature_source": "def valuationProbeProductMap : A →+* ∀ t : ValuationProbeIndex A, ValuationProbe A t",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_valuationProbe_factor",
+          "leaf": "exists_valuationProbe_factor",
+          "kind": "theorem",
+          "private": false,
+          "line": 88,
+          "lines": 35,
+          "signature_source": "theorem exists_valuationProbe_factor {L : Type u} [Field L] [IsAlgClosed L]\n    (W : ValuationSubring L) (k : A →+* W) :\n    ∃ (t : ValuationProbeIndex A) (i : ValuationProbe A t →+* W),\n      i.FaithfullyFlat ∧ i.comp (valuationProbeMap A t) = k",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProduct_vCover",
+          "leaf": "valuationProbeProduct_vCover",
+          "kind": "theorem",
+          "private": false,
+          "line": 123,
+          "lines": 10,
+          "signature_source": "theorem valuationProbeProduct_vCover : IsAffineVCover (valuationProbeProductMap A)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProduct_perfectRing",
+          "leaf": "valuationProbeProduct_perfectRing",
+          "kind": "theorem",
+          "private": false,
+          "line": 133,
+          "lines": 13,
+          "signature_source": "theorem valuationProbeProduct_perfectRing (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :\n    PerfectRing (∀ t : ValuationProbeIndex A, ValuationProbe A t) p",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationTilt.lean",
+      "lines": 247,
+      "sha256": "15ed2f63f0299c27add322f2c131727efa446c5e94966c61cfab655304554225",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tiltRing",
+          "leaf": "tiltRing",
+          "kind": "def",
+          "private": false,
+          "line": 36,
+          "lines": 8,
+          "signature_source": "def tiltRing (O : Type u) [CommRing O] : CommRingCat.{u}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tiltRingEquivPreTilt",
+          "leaf": "tiltRingEquivPreTilt",
+          "kind": "def",
+          "private": false,
+          "line": 44,
+          "lines": 7,
+          "signature_source": "def tiltRingEquivPreTilt (O : Type u) [CommRing O] [Fact (¬ IsUnit (p : O))] :\n    (tiltRing p O : Type u) ≃+* PreTilt O p",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharpAt",
+          "leaf": "sharpAt",
+          "kind": "def",
+          "private": true,
+          "line": 56,
+          "lines": 3,
+          "signature_source": "private def sharpAt (x : PreTilt W p) (n : ℕ) : W",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharpAt_pow",
+          "leaf": "sharpAt_pow",
+          "kind": "theorem",
+          "private": true,
+          "line": 59,
+          "lines": 4,
+          "signature_source": "private theorem sharpAt_pow (x : PreTilt W p) (n : ℕ) :\n    sharpAt p x n ^ (p ^ n) = x.untilt",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharpAt_step",
+          "leaf": "sharpAt_step",
+          "kind": "theorem",
+          "private": true,
+          "line": 63,
+          "lines": 7,
+          "signature_source": "private theorem sharpAt_step (x : PreTilt W p) (n : ℕ) :\n    sharpAt p x (n + 1) ^ p = sharpAt p x n",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharpAt_modP",
+          "leaf": "sharpAt_modP",
+          "kind": "theorem",
+          "private": true,
+          "line": 70,
+          "lines": 4,
+          "signature_source": "private theorem sharpAt_modP (x : PreTilt W p) (n : ℕ) :\n    Ideal.Quotient.mk (Ideal.span {(p : W)}) (sharpAt p x n) = PreTilt.coeff n x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharp_zero",
+          "leaf": "sharp_zero",
+          "kind": "theorem",
+          "private": true,
+          "line": 74,
+          "lines": 3,
+          "signature_source": "private theorem sharp_zero : (0 : PreTilt W p).untilt = 0",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharp_eq_zero",
+          "leaf": "sharp_eq_zero",
+          "kind": "theorem",
+          "private": true,
+          "line": 79,
+          "lines": 8,
+          "signature_source": "private theorem sharp_eq_zero {x : PreTilt W p} : x.untilt = 0 ↔ x = 0",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.preTilt_dvd_iff_sharp_dvd",
+          "leaf": "preTilt_dvd_iff_sharp_dvd",
+          "kind": "theorem",
+          "private": false,
+          "line": 90,
+          "lines": 40,
+          "signature_source": "theorem preTilt_dvd_iff_sharp_dvd {x y : PreTilt W p} : x ∣ y ↔ x.untilt ∣ y.untilt",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.sharp_isUnit_iff",
+          "leaf": "sharp_isUnit_iff",
+          "kind": "theorem",
+          "private": true,
+          "line": 130,
+          "lines": 4,
+          "signature_source": "private theorem sharp_isUnit_iff (x : PreTilt W p) : IsUnit x.untilt ↔ IsUnit x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.preTilt_isDomain",
+          "leaf": "preTilt_isDomain",
+          "kind": "theorem",
+          "private": true,
+          "line": 135,
+          "lines": 10,
+          "signature_source": "private theorem preTilt_isDomain : IsDomain (PreTilt W p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.preTilt_valuationRing",
+          "leaf": "preTilt_valuationRing",
+          "kind": "theorem",
+          "private": true,
+          "line": 145,
+          "lines": 5,
+          "signature_source": "private theorem preTilt_valuationRing [IsDomain (PreTilt W p)] : ValuationRing (PreTilt W p)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_nonzero_nonunit_modP",
+          "leaf": "exists_nonzero_nonunit_modP",
+          "kind": "theorem",
+          "private": true,
+          "line": 151,
+          "lines": 27,
+          "signature_source": "private theorem exists_nonzero_nonunit_modP (hW : ringKrullDim W = 1)\n    (hF : ∃ (π : W) (u : Wˣ), (p : W) = u * π ^ p) :\n    ∃ r : ModP W p, r ≠ 0 ∧ ¬ IsUnit r",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.preTilt_ringKrullDim_eq_one",
+          "leaf": "preTilt_ringKrullDim_eq_one",
+          "kind": "theorem",
+          "private": true,
+          "line": 179,
+          "lines": 27,
+          "signature_source": "private theorem preTilt_ringKrullDim_eq_one [IsDomain (PreTilt W p)] [ValuationRing (PreTilt W p)]\n    (hW : ringKrullDim W = 1) (hperf : IsIntegralPerfectoid W p) :\n    ringKrullDim (PreTilt W p) = 1",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tilt_rankOneValuationRing",
+          "leaf": "tilt_rankOneValuationRing",
+          "kind": "theorem",
+          "private": false,
+          "line": 209,
+          "lines": 33,
+          "signature_source": "theorem tilt_rankOneValuationRing (W : Type u) [CommRing W]\n    (hW : IsRankOneCompleteValuationRing p W) (hperf : IsIntegralPerfectoid W p) :\n    let V",
+          "sorry_tokens": 0
+        }
+      ]
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationUntilt.lean",
+      "lines": 348,
+      "sha256": "2893dce4a744a066260d1c7a9d9a5c80533d4983e744a0e031357ae0ad42942a",
+      "sorry_tokens": 0,
+      "declarations": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp",
+          "leaf": "wittQuotientSharp",
+          "kind": "def",
+          "private": true,
+          "line": 43,
+          "lines": 3,
+          "signature_source": "private def wittQuotientSharp : V →* U",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_zero",
+          "leaf": "wittQuotientSharp_zero",
+          "kind": "theorem",
+          "private": true,
+          "line": 49,
+          "lines": 4,
+          "signature_source": "private theorem wittQuotientSharp_zero : sharp 0 = 0",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_associated_p",
+          "leaf": "wittQuotientSharp_associated_p",
+          "kind": "theorem",
+          "private": true,
+          "line": 54,
+          "lines": 13,
+          "signature_source": "private theorem wittQuotientSharp_associated_p\n    (hd : (wittDeltaStructure p V).IsDistinguished d) : Associated (p : U) (sharp d₀)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_modP",
+          "leaf": "wittQuotientSharp_modP",
+          "kind": "theorem",
+          "private": true,
+          "line": 68,
+          "lines": 6,
+          "signature_source": "private theorem wittQuotientSharp_modP (x : V) :\n    wittQuotientModPEquiv p V d (Ideal.Quotient.mk (Ideal.span {(p : U)}) (sharp x)) =\n      Ideal.Quotient.mk (Ideal.span {d₀}) x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.isLocalHom_mod_p_of_complete",
+          "leaf": "isLocalHom_mod_p_of_complete",
+          "kind": "theorem",
+          "private": true,
+          "line": 75,
+          "lines": 20,
+          "signature_source": "private theorem isLocalHom_mod_p_of_complete {S : Type*} [CommRing S]\n    [IsAdicComplete (Ideal.span {(p : S)}) S] :\n    IsLocalHom (Ideal.Quotient.mk (Ideal.span {(p : S)}))",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_isUnit_iff",
+          "leaf": "wittQuotientSharp_isUnit_iff",
+          "kind": "theorem",
+          "private": true,
+          "line": 95,
+          "lines": 16,
+          "signature_source": "private theorem wittQuotientSharp_isUnit_iff (ha : ¬ IsUnit d₀)\n    [IsAdicComplete (Ideal.span {(p : U)}) U] (x : V) :\n    IsUnit (sharp x) ↔ IsUnit x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_eq_zero_of_regular",
+          "leaf": "wittQuotientSharp_eq_zero_of_regular",
+          "kind": "theorem",
+          "private": true,
+          "line": 112,
+          "lines": 27,
+          "signature_source": "private theorem wittQuotientSharp_eq_zero_of_regular (ha : d₀ ≠ 0)\n    (hd : (wittDeltaStructure p V).IsDistinguished d)\n    [Fact (¬ IsUnit (p : U))] [IsAdicComplete (Ideal.span {(p : U)}) U]\n    [IsAdicComplete (Ideal.span {d₀}) V] {x : V} :\n    sharp x = 0 ↔ x = 0",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_associated_of_not_dvd_p",
+          "leaf": "wittQuotientSharp_associated_of_not_dvd_p",
+          "kind": "theorem",
+          "private": true,
+          "line": 139,
+          "lines": 54,
+          "signature_source": "private theorem wittQuotientSharp_associated_of_not_dvd_p\n    (hd : (wittDeltaStructure p V).IsDistinguished d) (ha : ¬ IsUnit d₀)\n    [IsAdicComplete (Ideal.span {(p : U)}) U] (x : U) (hx : ¬ (p : U) ∣ x) :\n    ∃ b : V, Associated (sharp b) x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientCoeffZeroIdeal",
+          "leaf": "wittQuotientCoeffZeroIdeal",
+          "kind": "theorem",
+          "private": true,
+          "line": 194,
+          "lines": 8,
+          "signature_source": "private theorem wittQuotientCoeffZeroIdeal\n    (hd : (wittDeltaStructure p V).IsDistinguished d) (h : d₀ = 0) :\n    Ideal.span {d} = Ideal.span {(p : WittVector p V)}",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientCoeffZeroEquiv",
+          "leaf": "wittQuotientCoeffZeroEquiv",
+          "kind": "def",
+          "private": true,
+          "line": 202,
+          "lines": 4,
+          "signature_source": "private def wittQuotientCoeffZeroEquiv\n    (hd : (wittDeltaStructure p V).IsDistinguished d) (h : d₀ = 0) : U ≃+* V",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientCoeffZeroEquiv_sharp",
+          "leaf": "wittQuotientCoeffZeroEquiv_sharp",
+          "kind": "theorem",
+          "private": true,
+          "line": 207,
+          "lines": 6,
+          "signature_source": "private theorem wittQuotientCoeffZeroEquiv_sharp\n    (hd : (wittDeltaStructure p V).IsDistinguished d) (h : d₀ = 0) (x : V) :\n    wittQuotientCoeffZeroEquiv p d hd h (sharp x) = x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotientSharp_associated",
+          "leaf": "wittQuotientSharp_associated",
+          "kind": "theorem",
+          "private": true,
+          "line": 213,
+          "lines": 29,
+          "signature_source": "private theorem wittQuotientSharp_associated\n    (hd : (wittDeltaStructure p V).IsDistinguished d) (ha : ¬ IsUnit d₀)\n    [IsAdicComplete (Ideal.span {(p : U)}) U] (x : U) : ∃ b : V, Associated (sharp b) x",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotient_valuation_of_sharp",
+          "leaf": "wittQuotient_valuation_of_sharp",
+          "kind": "theorem",
+          "private": true,
+          "line": 242,
+          "lines": 45,
+          "signature_source": "private theorem wittQuotient_valuation_of_sharp (hV : ringKrullDim V = 1)\n    (ha : ¬ IsUnit d₀) [IsAdicComplete (Ideal.span {(p : U)}) U]\n    (hzero : ∀ x : V, sharp x = 0 ↔ x = 0)\n    (hrep : ∀ x : U, ∃ b : V, Associated (sharp b) x) :\n    IsRankOneCompleteValuationRing p U",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.wittQuotient_p_nonunit",
+          "leaf": "wittQuotient_p_nonunit",
+          "kind": "theorem",
+          "private": true,
+          "line": 288,
+          "lines": 10,
+          "signature_source": "private theorem wittQuotient_p_nonunit (ha : ¬ IsUnit d₀) : ¬ IsUnit (p : U)",
+          "sorry_tokens": 0
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.untilt_rankOneValuationRing",
+          "leaf": "untilt_rankOneValuationRing",
+          "kind": "theorem",
+          "private": false,
+          "line": 301,
+          "lines": 44,
+          "signature_source": "theorem untilt_rankOneValuationRing (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V]\n    [CharP V p] [PerfectRing V p] (hV : ringKrullDim V = 1)\n    (d : WittVector p V) (hd : (wittDeltaStructure p V).IsDistinguished d)\n    (ha : d.coeff 0 = 0 ∨ (d.coeff 0 ≠ 0 ∧ ¬ IsUnit (d.coeff 0)))\n    (hc : IsAdicComplete (Ideal.span {d.coeff 0}) V) :\n    let S",
           "sorry_tokens": 0
         }
       ]

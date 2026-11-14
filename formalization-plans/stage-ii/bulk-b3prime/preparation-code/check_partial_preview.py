@@ -1,0 +1,10 @@
+from pathlib import Path
+import json,sys,collections
+R=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');A=Path('/tmp/bulk-b3prime-preview');W=Path('/tmp/bulk-b3prime');sys.path.insert(0,str(R/'scripts/refactor'));from klw1_layer_check import check,IMPORT;from layer_check import code_only
+base={m:set(ds) for m,ds in json.loads((W/'tracked-import-graph.json').read_text()).items()};graph=dict(base);changed=[]
+for m in base:
+ p=m.replace('.','/')+'.lean'
+ if (A/p).read_bytes()!=(R/p).read_bytes():graph[m]=set(IMPORT.findall(code_only((A/p).read_text())));changed.append(m)
+new=['SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories','SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface']+[r['new_module'] for r in json.loads((W/'projected-generic-plan.json').read_text())]
+for m in new:assert m not in graph;graph[m]=set(IMPORT.findall(code_only((A/(m.replace('.','/')+'.lean')).read_text())))
+profile=json.loads((A/'scripts/refactor/layers.json').read_text())['klw1'];report=check(graph,profile);baseline=json.loads((W/'tiers-baseline-report.json').read_text());key=lambda r:(r['kind'],tuple(r['path']));prior={key(r) for r in baseline['violations']};after={key(r) for r in report['violations']};summary={'status':'partial isolated preview only; not final bundle validation','baseline_violations':len(prior),'preview_violations':len(after),'new_violations':[r for r in report['violations'] if key(r) not in prior],'removed_violations':[r for r in baseline['violations'] if key(r) not in after],'modified_tracked_modules':changed,'new_manifest_modules':new,'policy':'Use existing checker and exact import parser; baseline tracked graph plus every modified tracked source and five declared new preview files, as staging those files would provide. No exclusions or exception additions.'};(W/'partial-preview-layer-comparison.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n');print('baseline/preview/new',len(prior),len(after),len(summary['new_violations']))

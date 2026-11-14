@@ -44,6 +44,26 @@ for path,data in captured:
   if key in rows:
    assert rows[key]['new']==row['new'];rows[key].update({k:v for k,v in row.items() if k=='field_namespace'})
   else:rows[key]=row
+declaration_contexts={}
+for path,data in captured:
+ raw=data['source'].encode();starts=[0]
+ for match in __import__('re').finditer(b'\n',raw):starts.append(match.end())
+ for ref in data['refs']:
+  if ref['kind']!='binder' or ref['module']!=data['module'] or (ref['module'],ref['start'],ref['stop']) not in verified_binders:continue
+  target=rows.get((ref['module'],ref['name']));original=native.get((ref['module'],ref['name']))
+  if not target or not original:continue
+  old=K.private_user_name(ref['module'],ref['name']);new=target['new'];pos=original.get('source_range') or {}
+  if old==new or not pos:continue
+  lo=starts[pos['start_line']-1];hi=starts[pos['end_line']] if pos['end_line']<len(starts) else len(raw)
+  declaration_contexts.setdefault(data['module'],[]).append((lo,hi,old,new))
+def declaration_namespace(module,a,b,curr):
+ matches=[x for x in declaration_contexts.get(module,[]) if x[0]<=a and b<=x[1]]
+ if not matches:return curr
+ lo,hi,old,new=min(matches,key=lambda x:x[1]-x[0])
+ if curr==old or curr.startswith(old+'.'):return new+curr[len(old):]
+ parent=old.rpartition('.')[0];dest=new.rpartition('.')[0]
+ if parent and (curr==parent or curr.startswith(parent+'.')):return dest+curr[len(parent):]
+ return curr
 plan={'modules':modules,'rows':sorted(rows.values(),key=lambda r:(r['module'],r['old'])),'namespaces':{},'opens':{},'module_opens':{},'policy':'Preserve all original namespace/open bindings; fully qualify moved uses. Field exports only for actual indexed dot uses; no namespace inferred from module paths.'};migration=K.Migration(plan);(W/'namespace-rewrite-plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2))
 # Instrument only the unchanged rewriter return to retain its exact byte edits for split projection.
 source=inspect.getsource(K.rewrite);assert source.count(B.OLD)==1;source=source.replace(B.OLD,B.NEW)
@@ -57,7 +77,18 @@ source=source.replace(anchor,'''        declaration_binder = (any(ref["kind"] ==
         for ref in candidates:
             # The command elaborator''')
 source=source.replace('if field_binder and ref["kind"] == "local":','if (field_binder or declaration_binder) and ref["kind"] == "local":')
-needle='    return (None if diagnostics else bytes(result)), diagnostics';assert source.count(needle)==1;scope=dict(vars(K));scope['_captured_edits']={};scope['_verified_binders']=verified_binders;source=source.replace(needle,'    _captured_edits[data["module"]] = edits\n'+needle);exec(compile(source,'<B3prime verified rewrite instrumentation>','exec'),scope);rewrite=scope['rewrite'];out=W/'rewritten';out.mkdir(exist_ok=True);done={};review={}
+anchor='            new_curr = rename_prefix(curr, ns_map)'
+assert source.count(anchor)==1
+source=source.replace(anchor,anchor+'''
+            if ref["kind"] == "term" and source[max(0,a-1):a] != b".":
+                new_curr = _declaration_namespace(module,a,b,new_curr)''')
+anchor='                if normal == old or (row.get("field_namespace") and old.endswith("." + normal)):'
+assert source.count(anchor)==1
+source=source.replace(anchor,'''                if (module,a,b) in _verified_binders and "." in normal and old.endswith("."+normal):
+                    replacements.add("_root_."+name)
+                elif normal == old or (row.get("field_namespace") and old.endswith("." + normal)):''')
+
+needle='    return (None if diagnostics else bytes(result)), diagnostics';assert source.count(needle)==1;scope=dict(vars(K));scope['_captured_edits']={};scope['_verified_binders']=verified_binders;scope['_declaration_namespace']=declaration_namespace;source=source.replace(needle,'    _captured_edits[data["module"]] = edits\n'+needle);exec(compile(source,'<B3prime verified rewrite instrumentation>','exec'),scope);rewrite=scope['rewrite'];out=W/'rewritten';out.mkdir(exist_ok=True);done={};review={}
 for path,data in captured:
  preview,issues=rewrite(data,migration)
  if issues:review[path]=issues;continue

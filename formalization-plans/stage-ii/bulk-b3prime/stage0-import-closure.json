@@ -2,8 +2,8 @@
   "status": "static direct imports and reverse closure; no build or preservation claims",
   "baseline": "32d364b53",
   "modules": 33639,
-  "changed_owner_seed_count": 111,
-  "reverse_closure_count": 191,
+  "changed_owner_seed_count": 127,
+  "reverse_closure_count": 201,
   "reverse_closure": [
     "SerrePositivity",
     "SerrePositivity.BhattScholze",
@@ -64,6 +64,7 @@
     "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralClosureApproximation",
     "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit",
     "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+    "SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid",
     "SerrePositivity.BhattScholze.Perfectoid.FiniteProduct",
     "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
     "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
@@ -72,10 +73,19 @@
     "SerrePositivity.BhattScholze.PerfectoidIdeal.Roots",
     "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
     "SerrePositivity.BhattScholze.PerfectoidIdeal.TorCriteria",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
     "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
     "SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcCardinality",
     "SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcSite",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion",
     "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
     "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationTilt",
     "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationUntilt",
     "SerrePositivity.BhattScholze.Perfectoidization.Cone",
@@ -230,5 +240,5 @@
       "proposed": "add new mapped path to aggregate; retain mathematically meaningful proved alternative/endpoint, no unused-declaration deletion"
     }
   ],
-  "seconds": 39.44378791563213
+  "seconds": 43.04885791614652
 }

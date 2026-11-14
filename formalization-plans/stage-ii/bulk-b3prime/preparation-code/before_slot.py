@@ -16,6 +16,12 @@ def run(label,cmd):
 if not (W/'r82-consumers-final.complete.json').exists():
  run('r82-consumers-final',['python3',str(W/'r82_consumers_slot.py')])
  (W/'r82-consumers-final.complete.json').write_text(json.dumps({'time':time.time(),'comparison':'r82-consumers-comparison.json'}))
+generic=W/'projected-generic-plan.json'
+if generic.exists():
+ signature=hashlib.sha256(generic.read_bytes()).hexdigest();attempted=W/'generic-attempted.signature'
+ if not attempted.exists() or attempted.read_text()!=signature:
+  run('generic-feasibility',['python3',str(W/'generic_slot.py')])
+  attempted.write_text(signature)
 for i,mods in enumerate(plan['groups']):
  label=f'group-{i:03}';snap=out/(label+'.json');done=out/(label+'.complete.json')
  if done.exists():

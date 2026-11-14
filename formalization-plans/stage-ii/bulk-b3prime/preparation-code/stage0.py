@@ -39,7 +39,7 @@ splits=[{'item':'B3P-01','old_path':iface,'new_path':'SerrePositivity/Homologica
 splits[0]['declarations'] += ['SerrePositivity.BhattScholze.PerfectoidizationInterface.'+n for n in ['targetUnitMap','targetUnitMap_naturality','quotientAlgebra','quotientProjection','quotientComparison','quotientSquare_commutes','ArcOutside']]
 splits[0]['note']='16 ordinary category, target-unit, quotient and valuation-extension declarations; nerves and simplicial squares stay in BS'
 splits.append({'item':'B3P-03','old_path':'SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean','new_path':'SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean','declarations':['SerrePositivity.BhattScholze.'+n for n in ['deltaAdjoinDivisionResidueIdeal','DeltaAdjoinDivisionResidue','deltaAdjoinDivisionResidueIdeal_eq_map','deltaAdjoinDivisionResidueSupEquiv','deltaAdjoinDivisionResidueSupEquiv_mk','deltaAdjoinDivisionResidueSupEquiv_coeff','deltaDivisionSourceResidueTargetAlgebra','deltaDivisionSourceResidueTargetAlgebra_algebraMap','deltaDivisionSourceTensor_residueIdeal_map','deltaDivisionSourceResidueTensorEquiv','deltaDivisionSourceResidueTensorEquiv_tmul','deltaDivisionSourceResidueTensorAlgEquiv']],'names':'unchanged','note':'Extract raw delta residue and tensor presentation only. Retain Normalized-dependent flatness/regularity in Andre, avoiding new Delta->Andre reverse edges.'})
-all_candidates=set(files)|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Semiperfectoid').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Almost').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/PerfectoidIdeal').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Andre/Envelope').glob('*.lean')}|{x['old_path'] for x in splits}
+all_candidates={str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Perfectoidization/Arc').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/IntegralPerfectoidization').rglob('*.lean')}|set(files)|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Semiperfectoid').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Almost').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/PerfectoidIdeal').rglob('*.lean')}|{str(p.relative_to(R)) for p in (R/'SerrePositivity/BhattScholze/Andre/Envelope').glob('*.lean')}|{x['old_path'] for x in splits}
 names=[];privates=[];inventory=[]
 for f in sorted(all_candidates):
  info=scan(R/f);inventory.append(info)
@@ -49,7 +49,7 @@ for f in sorted(all_candidates):
   new=old;owner=files.get(f,f)
   if '/Semiperfectoid/' in f:
    # Methods remain in the actual structure namespace; do not manufacture a module namespace.
-   keep=any(old.startswith(z) for z in ['SerrePositivity.BhattScholze.OrientedPrism.','SerrePositivity.BhattScholze.DeltaStructure.','SerrePositivity.BhattScholze.Prismatic.PrismOver.','SerrePositivity.BhattScholze.Inputs.'])
+   keep=any(old.startswith(z) for z in ['SerrePositivity.BhattScholze.OrientedPrism.','SerrePositivity.BhattScholze.DeltaStructure.','SerrePositivity.BhattScholze.Prismatic.PrismOver.','SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.','SerrePositivity.IsPerfectoidization.','SerrePositivity.BhattScholze.Inputs.'])
    if not keep:
     for prefix in ['SerrePositivity.BhattScholze.Semiperfectoid.','SerrePositivity.BhattScholze.Prismatic.','SerrePositivity.BhattScholze.','SerrePositivity.']:
      if old.startswith(prefix):new='SerrePositivity.BhattScholze.Semiperfectoid.'+old[len(prefix):];break
@@ -63,6 +63,9 @@ for f in sorted(all_candidates):
    if not old.startswith('SerrePositivity.BhattScholze.Almost.') and old.startswith('SerrePositivity.BhattScholze.'):new=old.replace('SerrePositivity.BhattScholze.','SerrePositivity.BhattScholze.Almost.',1)
   elif '/PerfectoidIdeal/' in f and old.startswith('SerrePositivity.') and not old.startswith('SerrePositivity.BhattScholze.'):
    new=old.replace('SerrePositivity.','SerrePositivity.BhattScholze.Almost.',1)
+  elif '/Perfectoidization/Arc/' in f:new=old.replace('SerrePositivity.BhattScholze.Perfectoidization.Derived.','SerrePositivity.BhattScholze.Perfectoidization.Arc.',1)
+  elif f.endswith('/Derived/RootAdjunction.lean'):new=old.replace('SerrePositivity.BhattScholze.Perfectoidization.Derived.','SerrePositivity.BhattScholze.Perfectoidization.Construction.',1)
+  elif '/IntegralPerfectoidization/' in f and not f.endswith('/IntegralApproximation.lean'):new=old.replace('SerrePositivity.BhattScholze.Perfectoidization.Derived.','SerrePositivity.BhattScholze.Almost.',1)
   elif f.endswith('/IntegralClosureCompletion.lean'):new=old.replace('SerrePositivity.BhattScholze.Perfectoidization.Derived.','SerrePositivity.BhattScholze.Almost.',1)
   elif f.endswith('/IntegralApproximation.lean'):new=old.replace('SerrePositivity.BhattScholze.Perfectoidization.Derived.','SerrePositivity.CommutativeAlgebra.',1)
   if new.endswith('.perfectoidIdeal_radical'):new=new[:-len('perfectoidIdeal_radical')]+'perfectoidKernel_radical'
@@ -79,6 +82,13 @@ for f in sorted(all_candidates):
     elif split.get('new_namespace'):new=split['new_namespace']+'.'+old.rsplit('.',1)[-1]
     else:new=old
   if new!=old or owner!=f:(privates if x['private'] else names).append({'old':old,'new':new,'old_module':f[:-5].replace('/','.'),'new_module':owner[:-5].replace('/','.'),'source_line':x['line'],'kind':x['kind']})
+# A method stays with the canonical parent declaration even when stored in another topic file.
+by_source_name={r['old']:r for r in names+privates}
+for row in sorted(names+privates,key=lambda r:r['old'].count('.')):
+ parent,_,leaf=row['old'].rpartition('.')
+ if parent in by_source_name:
+  expected=by_source_name[parent]['new']+'.'+row['new'].rsplit('.',1)[-1]
+  if row['new']!=expected:row['new']=expected;row['canonical_parent']=parent
 collisions=[{'target':v,'sources':ks} for v,ks in ((v,[k for k,w in files.items() if w==v]) for v in set(files.values())) if len(ks)>1 or (R/v).exists() and v not in files]
 bynew=collections.defaultdict(list)
 for n in names:bynew[n['new']].append(n['old'])

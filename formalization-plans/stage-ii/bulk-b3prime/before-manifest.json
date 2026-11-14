@@ -187,7 +187,17 @@
     "SerrePositivity.Paper.Section2.LengthAlgebra.MixedChar",
     "SerrePositivity.Paper.Section5.Reduction",
     "SerrePositivity.Paper.Section5.Setup",
-    "SerrePositivity.Paper.Statement"
+    "SerrePositivity.Paper.Statement",
+    "SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct"
   ],
   "groups": [
     [
@@ -424,6 +434,20 @@
       "SerrePositivity.Paper.Section5.Reduction",
       "SerrePositivity.Paper.Section5.Setup",
       "SerrePositivity.Paper.Statement"
+    ],
+    [
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion"
+    ],
+    [
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct"
     ]
   ],
   "reference_files": [
@@ -476,7 +500,9 @@
     "SerrePositivity/BhattScholze/Andre/Variants/RootedExtension.lean",
     "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralApproximation.lean",
     "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralClosureApproximation.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/PerfectoidFilteredColimit.lean",
     "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/FiniteEtale/FiniteEtalePerfectoid.lean",
     "SerrePositivity/BhattScholze/Perfectoid/FiniteProduct.lean",
     "SerrePositivity/BhattScholze/PerfectoidIdeal/Basic.lean",
     "SerrePositivity/BhattScholze/PerfectoidIdeal/CompletedQuotient.lean",
@@ -485,9 +511,19 @@
     "SerrePositivity/BhattScholze/PerfectoidIdeal/Roots.lean",
     "SerrePositivity/BhattScholze/PerfectoidIdeal/Tor.lean",
     "SerrePositivity/BhattScholze/PerfectoidIdeal/TorCriteria.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechOverlap.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechUltraproduct.lean",
     "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcCechMilnor.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcIntervalOverlap.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorDetection.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Site/ArcCardinality.lean",
     "SerrePositivity/BhattScholze/Perfectoidization/Arc/Site/ArcSite.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationCompletion.lean",
     "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationExtension.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationMilnor.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationProduct.lean",
     "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationTilt.lean",
     "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationUntilt.lean",
     "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
@@ -614,5 +650,6 @@
       "source": "SerrePositivity/EInfinity.lean"
     }
   ],
-  "no_scope_weakening": "All source-bearing affected modules snapshotted. Import-only aggregates have no owned declarations and remain covered by import/static/root validation."
+  "no_scope_weakening": "All source-bearing affected modules snapshotted. Import-only aggregates have no owned declarations and remain covered by import/static/root validation.",
+  "manifest_extension": "R8-8 complete20 Derived namespace coverage; preserve prior group IDs and captures; append new modules only"
 }

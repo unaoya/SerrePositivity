@@ -4,7 +4,7 @@
     {
       "section": "InitialLimit",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_declarations": [
         "SerrePositivity.BhattScholze.PerfectoidizationInterface.coneEdge_isIso_of_edge_eq",
         "SerrePositivity.BhattScholze.PerfectoidizationInterface.coneHomotopyMap",

@@ -4,10 +4,9 @@ R=Path.cwd();D=R/'formalization-plans/stage-ii/bulk-b3prime';mods=json.loads((D/
 for line in subprocess.check_output(['git','worktree','list','--porcelain'],text=True).splitlines():
  if line.startswith('worktree '):w=line[9:]
  if line.startswith('branch refs/heads/'):wts[line[18:]]=w
-terms={m[k] for m in mods for k in ['old_module','old_path']};terms.update(n['old'] for n in names if n['old']!=n['new']);pattern=re.compile('|'.join(re.escape(x)+r"(?![\w'])" for x in sorted(terms,key=len,reverse=True)))
+terms={m[k] for m in mods for k in ['old_module','old_path']};terms.update(n['old'] for n in names);pattern=re.compile('|'.join(re.escape(x)+r"(?![\w'])" for x in sorted(terms,key=len,reverse=True)))
 leafs={}
 for x in names:
- if x['old']==x['new']:continue
  ns,leaf=x['old'].rsplit('.',1)
  if len(leaf)<3:continue
  leafs.setdefault(leaf,set()).add(ns)
@@ -28,5 +27,5 @@ for b in branches:
    if found:possible.append({'path':p,'unqualified_candidates':found,'note':'lexical candidate only; must resolve binding with native collector'})
  collisions=[m['new_path'] for m in mods if (wt/m['new_path']).exists() and not (R/m['new_path']).exists()]
  rows.append({'branch':b,'head':subprocess.check_output(['git','rev-parse',b],text=True).strip(),'merge_base':base,'files_scanned':len(paths),'nontext_files_skipped':binary,'literal_hits':hits,'literal_count':len(hits),'possible_unqualified':possible,'possible_count':len(possible),'new_path_collisions':collisions})
-result={'status':'source-text stage0 branch impact, includes documents/data; no other lane writes','baseline':'32d364b53','method':'Read live branch worktrees for committed branch changes relative to merge-base(main, branch), plus tracked modifications and untracked files. Full old module/path strings and actually renamed full names; candidate unqualified identifiers reported separately. Binary files skipped. Current branch heads captured.','branches':rows,'literal_branch_file_count':sum(x['literal_count'] for x in rows),'conservative_with_unqualified_branch_file_count':sum(x['literal_count']+x['possible_count'] for x in rows),'new_path_collision_count':sum(len(x['new_path_collisions']) for x in rows)}
+result={'status':'source-text stage0 branch impact, includes documents/data; no other lane writes','baseline':'32d364b53','method':'Read live branch worktrees for committed branch changes relative to merge-base(main, branch), plus tracked modifications and untracked files. Full old module/path strings and full names whose name or owning module changes; candidate unqualified identifiers reported separately. Binary files skipped. Current branch heads captured.','branches':rows,'literal_branch_file_count':sum(x['literal_count'] for x in rows),'conservative_with_unqualified_branch_file_count':sum(x['literal_count']+x['possible_count'] for x in rows),'new_path_collision_count':sum(len(x['new_path_collisions']) for x in rows)}
 (D/'branch-impact-stage0.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print([(x['branch'],x['literal_count'],x['possible_count']) for x in rows]);print('totals',result['literal_branch_file_count'],result['conservative_with_unqualified_branch_file_count'],'collisions',result['new_path_collision_count'])

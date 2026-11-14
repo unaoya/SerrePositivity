@@ -1324,3 +1324,16 @@ R8-4の互換wrapper一個は[削除・利用先変更の台帳](bulk-b3prime/re
 一覧：済み 2／全体 22（うち追加 0）。調整役が指定したB3のruleをimportの依存順に適用し、[305本の割当表](bulk-b3prime/new-main-tiers.json)を保存。Portable21・Comparison67・Consumers217。既存の層変更0・例外変更0。推測による補正、循環による未決定、tier-order/implementation-boundaryの違反は0。設定への追加はB3′の束に含め、現時点では隔離プレビューの設定にだけ加えた（元環境の本体・設定は採取中のまま）。
 
 [検査の概要](bulk-b3prime/tier-classification-summary.json)と[全出力](bulk-b3prime/tiers-baseline-report.json.gz)を保存。節の順序の逆辺は移動前から46件ある。以前のB3の出力との[差](bulk-b3prime/baseline-layer-delta-from-b3.json)も一覧化した。これらへ新しい例外を加えて0件にせず、今回の変更前後で増えないことを検査する。InitialValueConeの行き先をCofinalityへ直したのも、この新規逆辺を避けるためである。
+
+
+### B3′ 準備・夜の採取と全名前空間の表（11-14 23時台）
+
+一覧：済み 2／全体 22（うち追加 0）。R8-8の20本すべての旧Perfectoidization.Derived名前空間を表へ揃えた。ArcはPerfectoidization.Arc、RootAdjunctionはPerfectoidization.Construction、§10の四本はBhattScholze.Almost、純粋なIntegralApproximationはCommutativeAlgebraへ。移動しない型IsPerfectoidization・IsPrismaticEnvelope・OrientedPrism・DeltaStructure・PrismOverのメソッドは、その実際の型の名前空間を保つ。別ファイルの型に属するメソッドも親の新しい完全名と揃え、モジュールのパスから名前空間を推定しない。
+
+更新後は全体移動70本・切り出し先7本、公開ソースの所有元/改名表1,936行（改名1,607）。閉包は201モジュール、importだけの四本を除くsnapshot197・参照採取176。進行済みの束番号と成果物は保ち、増分10モジュールだけを末尾へ加えた。新しい全表でも他枝への文字列の影響は2ファイル、行き先パス衝突0。名前を変えず所有モジュールだけが移るCAlg_R等の宣言も検索に含めた。
+
+[一般の三つの新ファイル](bulk-b3prime/projected-generic-plan.json)は独立プレビューの対象ビルドとsnapshot採取に成功（[実行記録](bulk-b3prime/generic-target-build-receipt.json)）。InitialValueCone14・IteratedPDH0 8・AdjoinResidue12宣言。これは対象ビルドの成功であり、元ファイル全体の保存比較の成功とは区別する。[部分プレビューの層比較](bulk-b3prime/partial-preview-layer-comparison.json)は基準46・プレビュー46・新規0、例外追加0。
+
+[準備のチェックポイント](bulk-b3prime/preparation-checkpoint.json)：128モジュールの部分カーネル表15,367行を作り、この範囲の公開ソース名の欠落は0。前提9,629モジュールのprivate元名5,228件、.ileanの欠落0・モジュール内の正規化名の衝突0。notationの補助宣言は元のコマンドとネイティブの型を根拠に分け、通常のprivateをモジュールを無視して同一視しない。部分表は圧縮版を保存し、全体が採取されてから実際の移動後のカーネル名と再照合する。
+
+採取済み127本は改名プレビューの保留0。修飾付きの宣言名五箇所は、同じ位置のネイティブ宣言とsource selectionを確認して完全名へ書き換えた。宣言名の変更が本体の名前解決の文脈を変える場合も元の参照を保つよう扱う。共通の道具は変更せず、隔離した準備コードで行っている。全体の対象ビルド・v3b・引用/タグ・root・正式全監査・verifyは未実施であり、適用の通知もまだ出していない。夜は一束1,650秒以内・--wait3600・bulkの一つの整理券で続ける。
