@@ -16379,3 +16379,450 @@ M14実測**19,233行**、L12a実測**4,026行**、一覧は12/48（追加4）の
 G10・M15・G12・drafts・界面・共有入口・mainは変更していない。
 ユーザーが/goalをactiveへ変更したことを受け、旧blocked表示の差は解消した。
 この取り込み点は承認待ちの停止点ではなく、同じL12aを続ける途中報告である。
+
+
+## 235. C451の同じ合成区間への逆方向（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは656d22333の検証・監査済み7本523行という進捗。
+作業木が空で同じ枝にいることを確かめ、§233の元の内側位置の所属から再開した。
+次は同じ内側順位が、元の合成語の区間の両端の間の高さになることを示す。
+部分語の最初/最後では元の外側区間の両端、内部では元の内側辺の所属と高さを使う。
+同じCut・指定verticesの合成の法則であり、別の経路・作用・仮定は作らない。
+200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegment_inverse_interval {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z) ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z)) :
+    lo c.2 (positiveCompositeSegmentPosition u v k c.1 i z) ≤
+        (vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k rank).val ∧
+      (vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k rank).val ≤
+        hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z)
+```
+
+有限点検：`/tmp/bsw16/check-inserted-vertex-inverse.py`、12,233組・非退化3,745組。
+全内側頂点について、同じ外側順位の出現・相対位置・元の高さから戻した二座標が、
+元の合成経路上のただ一つの頂点を表すことを先に確認した。
+この区間の所属の逆向きだけで、全色の順序同値やL12aの完了は主張しない。
+
+
+## 236. C451の部分語分解の一意性と指定した分解での評価（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+順方向の写像に使った分解の選択を、逆復元で得る同じ分解へ合わせる。
+異なる部分語は既存`compositeSegmentPosition_lt`で交わらず、
+同じ部分語では元の接頭長を消去する。元の構成の係数・位置の移送の法則。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentPosition_sigma_injective {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Function.Injective (fun s : Σ i, Fin (r.val i).val =>
+      positiveCompositeSegmentPosition u v k r s.1 s.2)
+
+lemma positiveCompositeSegmentInnerVertex_eq_of_same_source {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (hy : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 j w) :
+    positiveCompositeSegmentInnerVertex u v k c i z x hx =
+      positiveCompositeSegmentInnerVertex u v k c j w x hy
+
+lemma insertedColorPathMap_val_of_segment {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (hx : c.2.horizontal x.val = positiveCompositeSegmentPosition u v k c.1 i z) :
+    (insertedColorPathMap u v k c b x).val =
+      positiveCompositeSegmentInnerVertex u v k c i z x.val hx
+```
+
+有限点検：`/tmp/bsw16/check-composite-segment-position-injective.py`、12,233組・非退化3,745組。
+元の全部分語の全相対位置の像が互いに異なることを追加して点検した。
+写像を別の選択へ置き換えず、同じ合成位置の一意性で元の指定頂点を照合する。
+
+
+## 237. C451の元の逆頂点・順位の復元と全射性（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§235の元の区間への逆向きの所属を、同じ`coordinatePosition`へ渡す。
+元のverticesの高さから同じ色別順位へ戻る計算は既存の差の公式を使う。
+内側頂点の縦順位は既存の色別区間の被覆に属し、その部分語に横位置が属することは§233。
+そこから作った元の合成頂点を同じ写像で送り、元の二座標の単射性で内側頂点へ戻す。
+同じ既存のCut・指定面の逆の照合であり、各証明200行以内の見込み。
+
+```lean
+def positiveCompositeSegmentInverseVertex {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1)) :
+    Fin (m + n + (d + e) + q + 1)
+
+lemma positiveCompositeSegmentInverseVertex_coordinates {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z) ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z)) :
+    c.2.horizontal (positiveCompositeSegmentInverseVertex u v k c i z rank) =
+        positiveCompositeSegmentPosition u v k c.1 i z ∧
+      c.2.vertical (positiveCompositeSegmentInverseVertex u v k c i z rank) =
+        vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k rank
+
+lemma positiveCompositeSegmentInverseVertex_rank {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z) ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z)) :
+    positiveCompositeSegmentVertexRank u v k c i z
+        (positiveCompositeSegmentInverseVertex u v k c i z rank)
+        (positiveCompositeSegmentInverseVertex_coordinates u v k c i z rank hm hl hr).1 = rank
+
+lemma insertedColorPathMap_surjective {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    Function.Surjective (insertedColorPathMap u v k c b)
+```
+
+有限点検は§235の全内側頂点の逆復元（12,233組、非退化3,745組）。
+全射性の後も順序保存と指定面の全族・符号・nullaryは残る。
+ここは型の報告で、未検証の下書きは/tmpへ置き、実測に含めない。
+
+
+## 238. C451の挿入色の順序と指定面への接続（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じ部分語内では、元のcoordinate_sumと同じ順位の差の式により、写像は位置番号の
+平行移動となる。異なる部分語では、元の分割の境界と色別区間の狭義順序を使う。
+§237の全射性と合わせ、同じ全頂点の順序同値を§224の面の合成の法則へ渡す。
+既存の指定面・位置の合成の法則と同じC451の証明分割であり、各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentInnerVertex_strict_order {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (y : Fin (m + n + (d + e) + q + 1))
+    (hy : c.2.horizontal y = positiveCompositeSegmentPosition u v k c.1 j w) (hxy : x < y) :
+    positiveCompositeSegmentInnerVertex u v k c i z x hx <
+      positiveCompositeSegmentInnerVertex u v k c j w y hy
+
+lemma insertedColorPathMap_strictMono {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    StrictMono (insertedColorPathMap u v k c b)
+
+def insertedColorPathOrderIso {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)) ≃o
+      ↥(colorPositions (positiveCompositeInnerCut u v k c) (positiveWord v).val b)
+
+lemma insertedColorPathOrderIso_vertices {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b))) :
+    vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      ((positiveCompositeInnerCut u v k c).vertical (insertedColorPathOrderIso u v k c b x).val) =
+        c.2.vertical x.val
+
+lemma positiveComposite_inserted_face {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    (⟨outputDegree c.2 (positiveCompositeCutWord u v k c.1)
+        (BarrattEccles.insertedPosition m (n + 1) k b),
+      vertices c.2 (positiveCompositeCutWord u v k c.1)
+        (BarrattEccles.insertedPosition m (n + 1) k b)⟩ :
+        Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) =
+      ⟨outputDegree (positiveCompositeInnerCut u v k c) (positiveWord v) b,
+        (vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k).comp
+          (vertices (positiveCompositeInnerCut u v k c) (positiveWord v) b)⟩
+```
+
+有限点検は§232の元の全内側経路の列挙番号（12,233組、非退化3,745組）と、
+§199の全色の同じ面の合成の点検。順序を捨てた全単射や対象ごとの任意の同値で代用しない。
+ここは型と/tmpの下書きであり、検証後にのみ実測へ加える。
+
+
+## 239. C451の全指定面の族への包装（既報の型の接続）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§199の同じC451の型を変更せず、残り色と挿入色の厳密なSigmaの等式を
+元の`operadInsertionEquiv`の二つの成分で接続する。
+元の`insertionFamily`の出力順序・次数・指定面を保ち、任意の同型や順序なしの族で代用しない。
+
+```lean
+lemma positiveCompositeFaceFamily_eq_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positiveCompositeFaceFamily u v k c =
+      positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c)
+```
+
+有限点検は§199の元の全色の指定面の族の比較（12,233組・非退化3,745組）のまま。
+この包装が通った後も、C452の符号・C453の退化性、実テンソル・nullaryは未完。
+この型の報告をC451の証明完了の代わりにはしない。
+
+
+## 240. C453の元の指定面の単射性による二つの方向（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C453の既報の同値の証明分割。C451のSigmaの等式で面の単射性を移し、
+二段の非退化性から合成の非退化性、合成の非退化性から内側の非退化性を読む。
+既存の`faces_mono_iff`と`vertices_strictMono`を再利用する。各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeCut_nondegenerate_of_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (hOuter : Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val)
+    (hInner : Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val) :
+    Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val
+
+lemma positiveCompositeCut_inner_nondegenerate {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val
+```
+
+有限点検は§199の全12,233組の退化性の比較を再利用する。
+この二方向だけでC453全体を完成とはしない。合成から外側の指定色kの単射性へ戻す部分では、
+元の隣接する部分語の共有端点の同じラベル・高さを照合する必要が残る。
+新しい非退化性の仮定を入れたり、この色を検査から外したりはしない。
+
+
+## 241. C453の外側指定色の共有端点（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の隣接部分語の共有端点は、異なる合成位置に同じ挿入ラベルとして現れる。
+元の合成Cutの区間の最後/最初の経路頂点を取り、元の非退化性から高さを厳密に比較する。
+外側の指定色を検査から除かずに戻すC453の法則の証明分割。各証明200行以内。
+
+```lean
+lemma positiveCompositeSegment_boundary_pair {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i j : Fin (Surjection.occurrenceCount u.val k)) (hij : j.val = i.val + 1) :
+    compositeLastPosition u v k r (positiveOccurrencePosition u k i) <
+        compositeFirstPosition u v k r (positiveOccurrencePosition u k j) ∧
+      (positiveCompositeCutWord u v k r).val
+          (compositeLastPosition u v k r (positiveOccurrencePosition u k i)) =
+        (positiveCompositeCutWord u v k r).val
+          (compositeFirstPosition u v k r (positiveOccurrencePosition u k j))
+
+lemma positiveComposite_outer_slot_boundary_strict {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val)
+    (i j : Fin (Surjection.occurrenceCount u.val k)) (hij : j.val = i.val + 1) :
+    hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) <
+      lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k j)
+```
+
+有限点検：`/tmp/bsw16/check-outer-slot-boundary-strict.py`。
+全12,233組を読み、生き残る3,745組の隣接する外側指定色の全出現の間で、
+元の外側右端＜次の左端を先に確認した。
+ここも/tmpの未検証の下書きであり、実測へ加えていない。
+
+
+## 242. C453の全指定色と元の非退化性の同値への接続（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+共有端点の隣接する出現の厳密な高さの比較を、元のloの単調性で全出現へ延ばす。
+異なる同色区間が高さで厳密に離れれば、元の面の単射性が従うことを二座標で確認する。
+残り色はC451の面の等式、指定色kはこの区間の検査で外側へ戻す。
+§199のC453の同値の型を変更しない証明分割であり、各証明200行以内の見込み。
+
+```lean
+lemma vertices_injective_of_strict_intervals {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (h : ∀ p p', v.val p = a → v.val p' = a → p < p' → hi s p < lo s p') :
+    Function.Injective (vertices s v a)
+
+lemma positiveComposite_outer_slot_intervals_strict {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val)
+    (i j : Fin (Surjection.occurrenceCount u.val k)) (hij : i < j) :
+    hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) <
+      lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k j)
+
+lemma positiveCompositeCut_outer_nondegenerate {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val
+
+lemma positiveCompositeCut_nondegenerate_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val ↔
+      Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val ∧
+        Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val
+```
+
+有限点検は§199の全非退化性の同値と§241の共有端点の比較。
+この型の報告だけでC453の完成とせず、対象ビルド・小監査を経てから認定する。
+
+
+## 243. C452の元の符号の指数の比較（既報の型の証明分割、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C451・C453の後のC452は、元のcompositionExponent・cutSignの二指数を変更せず、
+全整数係数の(-1)の累乗の比較へ戻す。次は§199のC452と同じ主張のmod 2での法則の型。
+後から符号を定義し直すものでも、消えない項を捨てるものでもない。
+
+```lean
+lemma positiveCompositeCut_exponent_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nat.ModEq 2
+      (Surjection.compositionExponent u v k c.1 +
+        (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val +
+          positionExponent c.2 (positiveCompositeCutWord u v k c.1).val))
+      ((d * e + e * positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c)) +
+        (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+          positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val) +
+        (permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+          positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val))
+```
+
+このmod 2の比較を供給した後は、既存`neg_one_pow_eq_pow_mod_two`と`pow_add`で
+§199の同じ整数係数の等式へ戻せる。肝心の指数の比較を追加仮定として界面やL12aへ足さない。
+これはまだ紙の型で、有限点検は§198〜199の同じ3,745個の非退化な合成切断の符号比較。
+型の正しさ・Leanの証明・監査の代わりには扱わない。
+
+## 244. C451・C453の完成：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§233・235〜242の13本**849行**を検証した。
+C451（元の全出力次数と指定面の族の厳密な一致）とC453（元の合成Cutと同じ二段Cutの
+非退化性の同値）が、§199の型のまま閉じた。
+この二つはL12aの証明分割であり、一覧のIDを新しく増やしたりL12a全体を完成にしたりはしない。
+C452・実テンソル・nullaryは残る。
+
+挿入色の全頂点の写像は、同じ元の内側順位からの逆復元で全射性を示した。
+同じ部分語内では元のcoordinate_sumによる平行移動、異なる部分語では元の境界と
+色別区間の順序により、狭義順序を保つことを示した。
+残り色と挿入色のSigmaの等式を、元の`operadInsertionEquiv`で全族へ接続した。
+外側の指定色kも、隣接部分語の共有端点の同じラベルと元の非退化性で検査しており、
+検査から除いたり、追加の非退化性の仮定を置いたりしていない。
+
+対象ビルド：
+
+- `m14-inner-vertex-segment-coverage-01.log`（2,868 jobs）：元の内側位置の所属。
+- `m14-inserted-color-path-surjective-01.log`（2,890 jobs）：同じ逆頂点・順位・全射性。
+- `m14-composite-nondegenerate-components-01.log`（2,921 jobs）：C451とC453の二方向。
+- `m14-composite-nondegenerate-comparison-03.log`（2,924 jobs）：最終C453、100字の改行修正後。
+
+全て成功。最終の対象Lean警告0。
+途中の修正は、Sigmaに適用した位置写像の簡約の明示、指定面の包装での既存定義の展開、
+共有端点の自然数の等式を依存型のrewriteを使わずに読むこと、docstring/行の改行。
+元の型・定義・指定射を変更して通したものではない。
+
+小監査：`/tmp/bsw16/audit-m14-composite-faces-nondegenerate.log`、
+**13モジュール・65宣言、標準三公理のみ**。
+新しいsorry・公理なし。鍵は対象ビルド・監査ごとに一回取得して返した。
+待ちの整理券は常に一枚、編集・紙・報告の間は鍵を持っていない。
+`git diff --check`と、追加したソースを含むstaged diffの確認を行う。
+
+調整役への登録対象（共通接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| InnerVertexSegmentCoverage | 64 |
+| CompositeSegmentInverseInterval | 108 |
+| CompositeSegmentPositionInjective | 62 |
+| InsertedColorPathMapEvaluation | 29 |
+| CompositeSegmentInverseVertices | 76 |
+| InsertedColorPathMapSurjective | 67 |
+| CompositeSegmentInnerOrder | 87 |
+| InsertedColorFaces | 52 |
+| CompositeFaceComparison | 37 |
+| CompositeNondegenerateComponents | 59 |
+| CompositeSlotBoundary | 87 |
+| VerticesStrictIntervals | 41 |
+| CompositeNondegenerateComparison | 80 |
+| **合計** | **849** |
+
+M14実測は**20,082行**、L12a実測は**4,875行**。
+このうち今回C451の逆・順序・全族への接続が582行、C453が267行。
+§207のL12a完成時3,974〜4,624行の見込みは、既に実測が上端を251行超えており、
+完成の見込みとしては使わない。
+
+## 245. C451・C453後の残りと外枠の照合
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の全位置・順位・高さの比較が見込みより増えたことを、完了したC451・C453へ反映する。
+C453の完成を、符号や実テンソルの完成として控除しない。
+他の未供給の行の旧見込みを据え置いた、保守的な比較は次のとおり。
+
+| L12aの残り | 旧見込みを据え置いた残り |
+| --- | ---: |
+| C452：元のcompositionExponentと二つのcutSignの照合（§243） | 173〜323 |
+| 同じ指定面から元の実テンソル・係数移送への接続 | 130〜240 |
+| nullary：元の有限添字と項の接続 | 250〜400 |
+| **残り** | **553〜963** |
+| **L12a完成時（実測4,875行を含む）** | **5,428〜5,838** |
+
+§177以降のL12a以外の残り6,004〜10,914行も据え置くと、
+M14完成時の比較は**26,639〜31,959行**。
+外枠は§32の**31,000行のまま**で、上端には**959行の超過リスク**がある。
+増枠や範囲の削除は自己承認せず、収まるとの主張もしない。
+約25,000行で止まらず途中報告する指定は維持し、実測と残りを分けて報告する。
+§223で未確定の完備化後の比較を、新しく無料で供給された前提として扱ってもいない。
+供給が必要と分かった仕事は全体の見込みに算入し直し、(c)が必要と判明したら§32で止める。
+
+次は同じ既報のC452の整数符号・指数の比較。
+`vectorTensorAt_congr`と`IntervalCuts.coactionComposition_apply`の実際の型も読み、
+実テンソルへの接続で元の次数・二つの係数移動・指定面を保つことを再確認した。
+この二つのAPIだけで符号の指数の照合を供給したとは扱わない。
+G10・M15・G12・drafts・界面・共有入口・mainは変更していない。
+これは同じL12aの途中の取り込み点であり、goalはactiveのまま継続する。
