@@ -1063,3 +1063,12 @@ BaseChangeAndTensorは、係数変更を本体のchangePolyへ寄せたことと
 一覧：済み 8／全体 14（うち追加 0）。[第48束](bulk-5inf0/draft-block48-validation.json)でA4/Perfectoidizationが約41秒、A7/DiscreteCoreが約25秒で成功。有効な成功は37／57本。A4の本体への集約・明示の引数と塔の1単体・通常のホモトピー圏の表示が通った。P⁰の保護領域は基準efa846fe8とバイト単位で同一と再確認。この2本の検査済みソースをコミットする。
 
 A3/LciAndQuasiregular・A4/InterfaceFields・A7/AnimatedPerfectoidizationは失敗。A3は、同じPD完備化環のinstanceと構造射の生成元の法則を明示し、A1から移した最後のlciの定理の元のA・P・hPの文脈を復元する。直前のh₀の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)の範囲はハッシュも同一のまま。InterfaceFieldsは通常のホモトピー圏の表示とnerveMapの零単体の評価を明示する。A7は既に使うperfectoidizationFunctorの所有元がInterfaceFieldsであるため[依存表](bulk-5inf0/draft-staging-plan.json)にその1辺を補った（57頂点、循環0、既存の順序は有効）。A7の残る変更は既存の有界性を渡し、通常のホモトピー圏の脚に揃えるもの。第49束で検査する。
+
+
+### 5∞-0 のdraft検査・第49〜50束、A02・A06完了（11-14夕方）
+
+一覧：済み 10／全体 14（うち追加 0）。[第49束](bulk-5inf0/draft-block49-validation.json)の残る診断を直し、[第50束](bulk-5inf0/draft-block50-validation.json)でA3/LciAndQuasiregular全体が約48秒で成功。有効な成功は38／57本。承認されたuniversalLciPrism P₀ h₀ rの型と参照、普遍射、完全化したprismの同じ台環のinstance、最後に移したlciの系まで通った。A3の2本のsorryは53→27で、26箇所を既存の古典的な本体とその法則に寄せた。未証明の∞比較などは元の主張のまま残す。環・δ構造・生成元の式は保存。[引数の台帳](bulk-5inf0/restored-context-parameters.json)の全行も全ファイルの検査で通っている。
+
+[項目別状態](bulk-5inf0/item-status.json)のA02をPASSに更新。またA0/BaseChange・A1/HodgeTateComparisonの二つの振幅の定義を本体HasCochainCompleteTorAmplitudeへ寄せたことと、利用側A3の型検査がそろったためA06もPASSにした。残る項目はA01・A04・A05・A07。
+
+InterfaceFieldsは完備化単位の同じ辺の端点の補助定義自体は通り、公開された定義の本文から使うためその補助定義も公開する1箇所が残った。数学的な構成や仮定を増やすものではない。第51束で確認する。新たに実行できたDeRhamComparisonPolyは失敗で、普遍基底に特殊化した本体の引数・実際の所有元の依存・評価の照合を続ける。

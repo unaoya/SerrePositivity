@@ -1,5 +1,5 @@
 {
-  "completed_or_authorized_deferred": 8,
+  "completed_or_authorized_deferred": 10,
   "total": 14,
   "additional": 0,
   "items": [
@@ -9,7 +9,8 @@
     },
     {
       "id": "A02",
-      "state": "pending_draft_typechecks"
+      "state": "PASS",
+      "evidence": "A3/DiscreteCase block44 and A3/LciAndQuasiregular block50; moved universal lci theorem included; 53 to 27 source sorry tokens"
     },
     {
       "id": "A03",
@@ -25,7 +26,8 @@
     },
     {
       "id": "A06",
-      "state": "pending_draft_typechecks"
+      "state": "PASS",
+      "evidence": "A0/BaseChange and A1/HodgeTateComparison use HasCochainCompleteTorAmplitude; A3 callers validated in block50"
     },
     {
       "id": "A07",

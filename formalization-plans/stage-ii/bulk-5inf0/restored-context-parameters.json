@@ -1,5 +1,5 @@
 {
-  "status": "draft validation pending",
+  "status": "All listed context restorations validated; overall draft cleanup remains incomplete",
   "rows": [
     {
       "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
@@ -53,7 +53,7 @@
       "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
       "parameter": "h₀ : IsBoundedPrism P₀",
       "authorization": "Coordinator approval 2026-11-14; see a3-boundedness-decision.json",
-      "validation": "Classical prefix PASS block43, standard axioms only; whole file pending"
+      "validation": "Whole file PASS block50; prefix audit block43 uses only standard axioms"
     },
     {
       "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -82,7 +82,7 @@
       "declaration": "prismaticCohomology_lci_universal",
       "parameters": "A : Type u, CommRing A, P : OrientedPrism p A, hP : IsBoundedPrism P",
       "reason": "Retain the existing A1 theorem context when moving it after the closed Lci section. No mathematical hypothesis is added.",
-      "validation": "pending block49"
+      "validation": "Whole file PASS block50; prefix audit block43 uses only standard axioms"
     }
   ]
 }
