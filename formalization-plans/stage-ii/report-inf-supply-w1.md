@@ -7083,3 +7083,89 @@ Reedyの相対充填と、同じRR01射への照合は引き続き未了。
 `Reedy.NestedLatching` はlatching添字内の分解を供給するが、coherentな変換空間の
 導来end表示そのものを既に供給しているとは扱わない。
 E01 の直接比較・単位の一意性の経路は再試行していない。
+
+
+## 68 RR02：twisted-arrowの底の具体化
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存のtwisted-arrow射影・反対圏のnerve・積の同型を組み合わせる。
+新しいReedy構造は導入しない。RR02の係数比較に使う具体的な底の表示である。
+
+```lean
+/-- 積の同型で入れ替えた添字を、元の始点・終点の順へ戻す通常の関手。 -/
+def strictDiagramEndIndexFunctor (d : StrictDiagramDirection) :
+    AsSmall.{u} (strictDiagramIndex d) × (AsSmall.{u} (strictDiagramIndex d))ᵒᵖ ⥤
+      AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) :=
+  CategoryTheory.Prod.swap _ _ ⋙
+    (AsSmall.down : AsSmall.{u} (strictDiagramIndex d) ⥤ strictDiagramIndex d).op.prod
+      (AsSmall.down : AsSmall.{u} (strictDiagramIndex d) ⥤ strictDiagramIndex d) ⋙ AsSmall.up
+
+/-- 元の添字のtwisted arrowの始点・終点を、同じ二変数係数の底へ送る。 -/
+def strictDiagramEndIndexMap (d : StrictDiagramDirection) :
+    TwistedArrow (nerve (AsSmall.{u} (strictDiagramIndex d))) ⟶
+      nerve (AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d)) :=
+  twistedArrowProjection (nerve (AsSmall.{u} (strictDiagramIndex d))) ≫
+    ((nerveOppositeIso (C := AsSmall.{u} (strictDiagramIndex d))).hom ⊗ₘ
+      𝟙 (nerve (AsSmall.{u} (strictDiagramIndex d)))) ≫
+    (nerveProductSwapIso (AsSmall.{u} (strictDiagramIndex d))
+      (AsSmall.{u} (strictDiagramIndex d))ᵒᵖ).inv ≫ nerveMap (strictDiagramEndIndexFunctor d)
+
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+  (X Y : StrictComplexDiagram A d)
+
+/-- 同じ評価frame係数の、twisted-arrowの底上のcoherent end。 -/
+def strictDiagramEvaluatedFrameEnd : SSet.{u} :=
+  simplicialSections (smallLeftUnstraighteningProjection
+    (strictDiagramEvaluatedValueCoefficient A d X Y (strictDiagramEndIndexMap d)))
+
+/-- 標準frame係数の、同じ底上のcoherent end。 -/
+def strictDiagramStandardFrameEnd : SSet.{u} :=
+  simplicialSections (smallLeftUnstraighteningProjection
+    (strictDiagramStandardValueCoefficient A d X Y (strictDiagramEndIndexMap d)))
+
+/-- 同じ係数比較を、この指定したtwisted-arrowの底で使う。 -/
+def strictDiagramFrameEndCoefficientComparison :
+    strictDiagramEvaluatedFrameEnd A d X Y ⟶ strictDiagramStandardFrameEnd A d X Y :=
+  strictDiagramValueSectionsComparison A d X Y (strictDiagramEndIndexMap d)
+
+/-- この指定した係数比較は、同じ切断の射としてホモトピー同値。 -/
+lemma strictDiagramFrameEndCoefficientComparison_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramFrameEndCoefficientComparison A d X Y) :=
+  strictDiagramValueSectionsComparison_equivalence A d X Y (strictDiagramEndIndexMap d)
+
+```
+
+### 68.1 検証と残りの規模の点検
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFrameEndCoefficients` 68行：対象ビルド3,714 jobs成功、
+小監査7宣言成功、標準三公理のみ。
+ログ `/tmp/is-w1/frame-end-coefficients/build.log`。
+検証済み累計155本・12,498行、外枠20,800行まで8,302行。計算上限は変更していない。
+
+今回固定したendの底は `TwistedArrow (nerve (AsSmall (strictDiagramIndex d)))`。
+RR01の元の大きい底とは、後で宇宙移送と底の比較を照合する必要がある。
+この定義だけでそれらを定義上同一とは扱わない。
+
+残りの規模は、§44・§52の上端を短縮できたと仮定せず、次の暫定値で点検する。
+
+| 未了 | 残りの見込み（行） |
+| --- | ---: |
+| E01（別経路は紙で探索中） | 700〜1,400 |
+| E02〜E06 | 1,150〜1,950 |
+| RR02の導来end比較・実射照合 | 1,400〜2,200 |
+| RR03 | 600〜1,000 |
+| RR04 | 300〜450 |
+| RR05 | 150〜250 |
+| R2d・R2e | 500〜700 |
+| 残り合計 | 4,800〜7,950 |
+| 現在の検証済みを含むR2完成まで | 17,298〜20,448 |
+
+上端の余裕は352行。これは証明の完成を保証する数字ではなく、既存の見積もりを
+据え置いた点検値。導来endの芯の分割・E01の別経路でこの上端を超える見込みが
+出た時点で、外枠の停止規則に従って報告する。
+係数の包装を増やしてRR02の完成とせず、次は
+`strictDiagramFrameMapping A d X Y ⟶ strictDiagramEvaluatedFrameEnd A d X Y`
+の実射と同値性の証明を進める。
