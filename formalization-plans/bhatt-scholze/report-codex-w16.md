@@ -11333,3 +11333,258 @@ C242・C243は実際の内部削除に適用済み。一方、端点と全垂直
 実境界項の符号付き等式、`universalBoundaryValue_vertical_neg` の組み立ては残る。
 L09a全体を完了とは数えない。次は端点を含む同じ座標の供給と、C236・C241の接続。
 B4は595254e10で完了済みのまま。/goalは継続中。
+
+## 132. 垂直端点の列と同じ入力面の実境界項（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§131は593c7df71で検証・保存済み。C244・C245は既存の始端・終端の座標式を
+C242へ代入する法則。先の76,407例の点検には端点も含まれる。
+C246は語の全射性からの次数の計算。C247はC236・C241・C242の貼り合わせであり、
+同じ入力面に対する元の圏の厳密な等式を示す。既存の公開宣言の型は変えない。
+すべて個々の補題200行以内。以下の型を記録してから検証する。
+
+```lean
+lemma deletedVerticesList_vertical_first {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (h₀ : (0 : Fin (m + (q + 1))) ∉ s.val) (c : Fin r) :
+    deletedVerticesList s v 0 c =
+      (verticesList ((BarrattEccles.verticalInsertionEquiv m q 0).symm ⟨s, h₀⟩) v c).map
+        (0 : Fin (q + 2)).succAbove
+
+lemma deletedVerticesList_vertical_last {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (a : Fin (m + (q + 1))) (ha : a ∉ s.val)
+    (hlast : a.val + 1 = m + (q + 1)) (c : Fin r) :
+    deletedVerticesList s v (Fin.last (m + (q + 1))) c =
+      (verticesList ((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩) v c).map
+        (Fin.last (q + 1)).succAbove
+
+lemma verticalDeletion_degree_eq {m q r : ℕ} (v : Surjection.Word r (m + 1)) :
+    -((m + q + 1 - r : ℕ) : ℤ) = -((m + (q + 1) + 1 - r : ℕ) : ℤ) + 1
+
+lemma outputBoundaryTerm_vertical_of_coordinates {m q r : ℕ} (S : SSet.{0})
+    (s : Cut m (q + 1)) (t : Cut m q) (v : Surjection.Word r (m + 1))
+    (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q + 1⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x =
+      (-1 : ℤ) ^ (m + 1 - r + (s.vertical k).val) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (verticalDeletion_degree_eq (q := q) v))).hom
+            (cutTerm A S t v (S.δ (s.vertical k) x))
+
+```
+
+### 132.1 全添字への座標の貼り合わせ（C248）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存の三分割と水平挿入の座標式を同じ指定切断へ適用する構成の法則。
+新しい有限同値は作らない。C248を方向交換して、既存の垂直同値の同じ指定切断を読む。
+個々の補題200行以内。以下の型を記録する。
+
+```lean
+lemma horizontalBoundaryFaceEquiv_deleted_coordinates (m q : ℕ)
+    (c : Fin (m + 2) × Cut m q) (l : Fin (m + q + 1)) :
+    let z := (horizontalBoundaryFaceEquiv m q c).val
+    z.1.horizontal (z.2.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) =
+        c.1.succAbove (c.2.horizontal l) ∧
+      z.1.vertical (z.2.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) =
+        c.2.vertical l
+```
+
+### 132.2 同じ全垂直添字への方向交換（C249・C250）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C218・C248と既存の`exchange_horizontal`・`exchange_vertical`だけを使う構成の法則。
+小さい切断や入力面を別の同値で選び直さない。`hcast`は同じ自然数値のFinの移送と
+`succAbove`の可換性、`ht`はC248、`hv`・`hh`は小さい切断の交換公式の適用。
+個々の補題200行以内。型は次のとおり。
+
+```lean
+lemma verticalBoundaryFaceEquiv_vertical (m q : ℕ) (c : Fin (q + 2) × Cut m q) :
+    (verticalBoundaryFaceEquiv m q c).val.1.vertical
+      (verticalBoundaryFaceEquiv m q c).val.2 = c.1
+
+lemma verticalBoundaryFaceEquiv_deleted_coordinates (m q : ℕ)
+    (c : Fin (q + 2) × Cut m q) (j : Fin (m + q + 1)) :
+    let z := (verticalBoundaryFaceEquiv m q c).val
+    z.1.horizontal (z.2.succAbove j) = c.2.horizontal j ∧
+      z.1.vertical (z.2.succAbove j) = c.1.succAbove (c.2.vertical j)
+
+```
+
+### 132.3 指定された全入力面の実境界項（C251）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C247へC249・C250を代入する構成の法則。入力面の番号を元の同値の番号で置換し、
+型の仮定を追加せず同じ指定項の厳密な一致を得る。個々の補題200行以内。
+
+```lean
+lemma outputBoundaryTerm_verticalBoundaryFaceEquiv {m q r : ℕ} (S : SSet.{0})
+    (v : Surjection.Word r (m + 1)) (c : Fin (q + 2) × Cut m q)
+    (j : Fin (outputDegree (verticalBoundaryFaceEquiv m q c).val.1 v
+      (label (verticalBoundaryFaceEquiv m q c).val.1 v.val
+        (verticalBoundaryFaceEquiv m q c).val.2) + 1))
+    (hj : j.val = vertexRank (verticalBoundaryFaceEquiv m q c).val.1 v.val
+      (label (verticalBoundaryFaceEquiv m q c).val.1 v.val
+        (verticalBoundaryFaceEquiv m q c).val.2) (verticalBoundaryFaceEquiv m q c).val.2)
+    (x : S _⦋q + 1⦌) :
+    outputBoundaryTerm A S (verticalBoundaryFaceEquiv m q c).val.1 v
+      (label (verticalBoundaryFaceEquiv m q c).val.1 v.val
+        (verticalBoundaryFaceEquiv m q c).val.2) j x =
+      (-1 : ℤ) ^ (m + 1 - r + c.1.val) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (verticalDeletion_degree_eq (q := q) v))).hom
+            (cutTerm A S c.2 v (S.δ c.1 x))
+```
+
+### 132.4 全垂直分岐とL09aの貼り合わせ（C252〜C255、L09a）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C249〜C251の対象ビルド成功、警告0。以下は既存の全境界値・依存した色と面の組・
+元の対合の貼り合わせ。C253はC223と同じ次数移送の合成を入力境界の分岐に適用する。
+新しい数学の補題ではなく、L09aの未供給のhvと既存の三分岐への接続そのもの。
+L09aは§112の型のまま。検証するまでは完了数を増やさない。個々の補題200行以内。
+
+```lean
+lemma universalBoundaryValue_input (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (c : Fin (q + 1) × Cut (r + d) (q - 1)) :
+    universalBoundaryValue A S w q x (.inr (.inr c)) = simplexBoundaryTerm A S w q c x
+
+lemma universalBoundaryValue_vertical_succ (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q + 1⦌)
+    (c : Fin (q + 2) × Cut (r + d) q) :
+    universalBoundaryValue A S w (q + 1) x
+        (.inl (verticalBoundaryFaceEquiv (r + d) q c).val) =
+      -universalBoundaryValue A S w (q + 1) x (.inr (.inr c))
+
+lemma universalBoundaryValue_vertical_neg (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) (hq : 0 < q)
+    (c : Fin (q + 1) × Cut (r + d) (q - 1)) :
+    universalBoundaryValue A S w q x
+        (.inl ((verticalBoundaryAllEquiv (r + d) q hq) c).val) =
+      -universalBoundaryValue A S w q x (.inr (.inr c))
+
+lemma boundaryBalancePerm_neg (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : BoundaryBalanceIndex w q) :
+    boundaryBalanceTerm A S w q (boundaryBalancePerm w q i) x =
+      -boundaryBalanceTerm A S w q i x
+
+theorem boundaryBalance_pairing {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+    ∃ τ : Equiv.Perm (BoundaryBalanceIndex w q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        boundaryBalanceTerm A S w q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        boundaryBalanceTerm A S w q (τ i) x = -boundaryBalanceTerm A S w q i x)
+
+```
+
+### 132.5 同じ有限和の相殺（C256）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C252〜C254の対象ビルド成功。L09aの包装は混合角モジュールのimportを補って再検証する。
+C256は既存`Finset.sum_ninvolution`へ同じ対合を渡す法則であり、固定点零を使うため
+2が可逆という仮定も加えない。L09の複体の微分の式への照合は別に残る。
+個々の補題200行以内。
+
+```lean
+lemma sum_boundaryBalanceTerm_eq_zero (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    ∑ i : BoundaryBalanceIndex w q, boundaryBalanceTerm A S w q i x = 0
+```
+
+### 132.6 L09aの完了・取り込み点・検証
+
+一覧：済み 9／全体 48（うち追加 4）
+
+**L09a `boundaryBalance_pairing` は§112の型のまま完成**。同じ有限対合の対合性、
+固定点での実境界値の零、非固定点の両側の負号による一致を、任意の係数環・単体的集合・
+単体に対して元の加群で示した。三分岐のどれも仮定として残していない。
+ホモトピー圏への移行や2の可逆性は使わない。C256で同じ全境界項の和が零まで検証済み。
+**L09 `cutSum_boundary` の複体の微分の式への照合は未完**なので、完了数を増やすのはL09aの一件だけ。
+
+新規8モジュール・457行、既存公開宣言・界面・drafts・共通入口・共通監査に変更なし。
+対象ビルドと専用監査が成功。監査は **8モジュール・32宣言・標準三公理のみ**。
+全8本にsorry・追加公理0、最終ソースのLean警告0、`git diff --check`成功。
+鍵は各ビルド・監査ごとに取り、終了を確認して返却。一枚だけ並び、待機中の別レーンの
+鍵を使うことも、常駐のビルドセッションを置くこともしていない。
+
+登録候補（接頭部はすべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 | 検証内容 |
+| --- | ---: | --- |
+| VerticalEndpointVertices | 46 | 始端・終端の削除色列。最初の2対象ビルドでこの対象自体の生成成功、専用監査でも読込成功 |
+| VerticalInputTerms | 54 | 座標を指定した実境界項。最終対象ビルド成功、2,278 jobs |
+| AllHorizontalDeletionCoordinates | 93 | 全水平添字の両削除座標。下のVerticalFaceTermsの成功ビルドに含む |
+| VerticalFaceCoordinates | 61 | 全垂直添字の両削除座標・入力面番号。下の成功ビルドに含む |
+| VerticalFaceTerms | 45 | 指定した同じ入力面の実境界項。最終対象ビルド成功、2,303 jobs |
+| VerticalBoundaryValues | 78 | 全境界値のhv。下の成功ビルドに含む |
+| BoundaryPairingValues | 47 | 三分岐の貼り合わせ・L09a。下の成功ビルドに含む |
+| BoundarySumCancellation | 33 | 同じ全有限和の相殺。最終対象ビルド成功、2,334 jobs |
+
+ログ：`/tmp/bsw16/m14-vertical-input-terms-01.log`（端点の対象自体は成功、別対象失敗）、
+`m14-vertical-input-terms-02.log`、`m14-all-face-coordinates-03.log`（水平の対象自体は成功、別対象失敗）、
+`m14-vertical-face-terms-02.log`、`m14-boundary-sum-cancellation-01.log`。
+専用監査は `/tmp/bsw16/audit-m14-boundary-pairing.lean` と
+`/tmp/bsw16/m14-boundary-pairing-audit.log`。
+失敗した組全体を成功とは扱わず、該当対象の生成成功と後続の成功ビルド・監査で区別している。
+途中の修正は、同値の局所略記の展開、同じFin値の移送、入力面の略記の展開、
+混合角のimport不足だけ。新しい数学の前提や追加の構成は導入していない。
+
+### 132.7 約12,500行・約7,600行の途中報告（止まらず継続）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§131の検証済み12,349行に今回457行を加え、**M14全体12,806行**。
+L09a・L09は7,283+457=**7,740行**。旧coherent経路の保管済み10,216行、
+報告・監査・Pythonの点検はこれに含めない。未検証の本体下書きは現在ない。
+半分の12,500行と、L09a・L09の次の約7,600行の区切りを越えたため、ここで出し直す。
+外枠25,000行は変更せず、残り実装可能な枠は **12,194行**。
+
+§130.12の垂直の残り400〜750行に対し、§131の339行と今回の実境界値までの377行、
+合計716行を使った。差は **−34〜+316行**（今回の包装・有限和の80行は別計上）。
+内部だけでなく全添字へ接続するため、
+既存の水平三分割の削除座標を明示し、それを方向交換する2本154行が増えた。
+この座標の供給を証明済みと見なして見込みから消したり、同じ式の仮定を残してhv完了とはしなかった。
+L09aの包装は今回のBoundaryPairingValuesの47行、有限和の相殺は33行で閉じた。
+
+L09aの残りは0。L09の残りは、零次数も含む次の既存構成の法則と貼り合わせ。
+
+| 残り | 現在の不足 | 新規見込み |
+| --- | --- | ---: |
+| 出力の微分の和 | 右括弧の同じ純粋テンソルの微分則とgen_dを、指定削除面の全和へ戻す。現在の有限和零をこれだけで微分の式とは呼べない | 250〜450 |
+| 係数・入力の和 | 非全射・退化語を零にした係数の微分の実基底の式、および入力の交代面和と同じ指定移送を照合 | 100〜180 |
+| L09包装 | 三つの和をC256に代入し、零次数の分岐と共通次数の移送をまとめる | 50〜120 |
+| **L09残り** | **L09aをやり直す部分は含まない** | **400〜750** |
+
+前の「包装・L09」200〜350行は、純粋テンソルの一般の微分則を既存の同じ型で直接使えるかの
+確認が不足していた。IntervalCutsの区間版の境界定理を一般次元の代用にはしない。
+同じ右括弧テンソルの再帰と既存のテンソル微分則を使う法則として型を記録して進める。
+L09a・L09の完成時は **8,140〜8,490行** の見込み。
+
+L10〜L28の次元によらないconvolution・χ/TR・符号の再利用の筋と行ごとの見込みは
+§121.3・§121.4から変更なし。そこを今回の実測なしに控除しない。
+
+| M14全体の残り | 下端 | 上端 |
+| --- | ---: | ---: |
+| L09 | 400 | 750 |
+| L10〜L28（L12a込み） | 4,330 | 7,790 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後のnative Totへの適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **新規残り** | **8,230** | **14,790** |
+| **実測12,806行を含む完成見込み** | **21,036** | **27,596** |
+
+上側は外枠を **2,596行** 超えるリスクが残る。外枠を上げたとは扱わない。
+下端は収まり、現在の実測は外枠に届いていないため、指示どおり止まらずL09へ進む。
+次のL09a・L09の1,000行区切りは約8,600行。G10の部品、M15・G12は作らない。
