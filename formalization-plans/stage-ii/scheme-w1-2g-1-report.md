@@ -713,3 +713,21 @@ A07 の被約・極小素点集合が準コンパクトな場合の出口：`exi
 G1 累計は本体 **4,183 行**、入口込み **4,264 行**。A07 の任意の基底の主張は未完：C01 の整拡大後のこの細分を有限・有限表示段へ降ろし、固有性・全射性・因子化を同じ段でそろえる接続が残る。G2 の一般の有限表示固有模型の構成と使う部品を共有して進める。
 
 一覧：済み 8／全体 13（うち追加 4）。
+
+## C03：有限型イデアルの有限段への降下（11-14 の標準存在補題の枠で追加）
+
+A07 の C01 の整拡大後の閉包絡を有限表示段へ移すため、有限型イデアルの降下を C03 として追加する。11-14 夕の「標準の代数幾何の存在の補題は一つの見込み 4,000 行以下なら一覧へ追加して進む」の承認による。外枠 25,000 行は変えない。C03 は G1 のこの移送と G2 の模型の双方で使い、二重には作らない。
+
+原典：[Stacks 32.10.3 (3), Tag 0B8W](https://stacks.math.columbia.edu/tag/0B8W)。有限型準連接イデアルの降下で、イデアル層の pullback は実際の IdealSheafData.comap（閉部分スキームの底変換の定義）を使う。底変換の忠実平坦性は仮定しない。一般の有限表示対象の降下は [01ZM](https://stacks.math.columbia.edu/tag/01ZM)、固有性の有限段への降下は [081F](https://stacks.math.columbia.edu/tag/081F)、既定の固有近似の原典は [0A0P](https://stacks.math.columbia.edu/tag/0A0P)。B01 の一般の固有有限表示模型をブローアップだけに狭めない。
+
+| 子項目 | 型・主張 | 見込み |
+| --- | --- | ---: |
+| C03.(i) | J が filtered、F:J→CommRingCat、c が実際の colimit cocone、I:Ideal c.pt が有限生成なら、ある j の有限生成 I_j が存在し、Ideal.map (c.ι.app j).hom I_j=I | 180〜500 行 |
+| C03.(ii) | 同じ ring colimit の二段の有限生成イデアルが colimit で同じ像を持つなら、ある共通の後段で実際の像イデアルが一致する | 200〜600 行 |
+| C03.(iii) | D:J→Scheme が cofiltered、各段 qcqs、遷移射 affine、c:Cone D が実際の IsLimit を持つとき、c.pt 上の有限型 K に対し ∃j,I_j, IsFiniteTypeIdealSheaf I_j ∧ I_j.comap(c.π.app j)=K | 850〜2,100 行 |
+
+定義・入口・小監査等を含め C03 全体 **1,300〜3,400 行**の見込み。C02 の有限型性の局所判定とイデアル層の貼り合わせを共用し、準連接加群の圏全体を新しく作らない。(iii) は一般の qcqs な図式のまま、用途を射影模型へ限定しない。
+
+最初の宣言 `exists_fg_ideal_model_of_isColimit` は (i) の型。既存の forget CommRingCat の filtered colimit の保存、Types.jointly_surjective_of_isColimit、IsFiltered.sup_objs_exists で有限生成元を同じ段へ持ち上げ、その span を取る。有限個の元を同じ段へ戻すことはこの構成の分割で、別の主項目には数えない。
+
+一覧：済み 8／全体 14（うち追加 5）。
