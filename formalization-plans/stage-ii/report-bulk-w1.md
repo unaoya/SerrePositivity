@@ -1099,3 +1099,10 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 [第55束](bulk-5inf0/draft-block55-validation.json)はpublic import allというこちらの書式ミスで本文の前に失敗。public importとimport allを分け、第56束に並んだ。残る普通のホモトピー圏と辺の表示の[6参照](bulk-5inf0/remaining-ordinary-homotopy-edge-refresh.json)も、VertexIso・FunctorHomと組み合わせている同じ辺を揃える準備だけをし、未検査と明記した。
 
 現在のLeanの追加・削除の計は5,426行。段0の当初の見込み上端5,550行に近づいているが、外枠11,100行の内側である。残る項目はA01・A04・A05・A07で、新しい数学の項目は追加していない。
+
+
+### 5∞-0 のdraft検査・第56〜57束（11-14夜）
+
+一覧：済み 10／全体 14（うち追加 0）。[第56束](bulk-5inf0/draft-block56-validation.json)の診断を分け、第57束で普遍prismの正則性を乗法の単射性として明示し、p完備剰余環でpと互いに素な整数が単元になる既存の証明を同じ引数で記した。本体の非公開名を直接使うのをやめた。零次形式は既存の完備形式・複体延長の同型で読み、非公開の定義を展開する範囲だけno_exposeとした。関手の合成の等式は局所的な略記を明示して結合律で揃えた。新しい比較仮定・数学の項目・sorryは加えていない。
+
+[第57束](bulk-5inf0/draft-block57-validation.json)で、これらとzigzagの部分は通った。ファイル全体はrootFormsAugmentationの二つの端点の照合で失敗。nerveの零単体の評価と同じ形式関手の頂点を定義上の等式で揃え、第58束で再検査する。有効な成功は43／57本のまま。Leanの追加・削除は5,460行で外枠11,100行の内側。
