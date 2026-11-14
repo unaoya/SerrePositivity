@@ -7016,3 +7016,42 @@ theorem nativeTotConeFamilyLift_restriction
 鍵付き対象ビルド `/private/tmp/isw2-build158.log` は **6,109 jobs・終了コード0**。今回の二本だけの監査は **2宣言（1・1）、標準三公理のみ**。鍵は `--class impl --wait 3600`、対象ビルドと監査の間だけ保持し返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
 
 累計 **293モジュール・18,166行**、外枠まで1,834行。モジュール一覧 `/private/tmp/isw2-g10-twohundredninetythree-modules.txt`。B07・B08の接続を新規 `NativeTotConeLimit` に準備中（未検証・未コミット）。Bの完了後にC・Dを再見積もりする。
+
+
+## 144. B07・B08完了：同じ元のTot錐のnative極限性とC・Dの再見積もり（2026-11-14）
+
+一覧：済み 21／全体 36（うち追加 1）。A01〜A12・A05a・B01〜B08完了。C・Dは未完で、停止点2a・2bではない。
+
+### 144.1 型と検証
+
+`NativeTotConeLimit`（60行）。B07はB06・B03・既存のULiftホモトピー輸送と一般のBK→native比較の同値性。B08は同じ指定族 `a`、頂点式 `ha`、制限の同値性 `he` を `coherentCone_isLimit_of_family_lifts` に渡す。dg nerveへの移送には既存の同値による極限保存を使う。新しい模型圏の仮定、錐の選び直しなし。
+
+```lean
+theorem nativeTotConeFamilyLift_equivalence
+    (X : CosimplicialObject (Complex A)) (x : ClosedCategory A (Complex A)) :
+    IsSimplicialHomotopyEquivalence (nativeTotConeFamilyLift X x ≫
+      coneSectionRestriction (nativeCoherentCone X) (coherentNerveVertex x))
+
+theorem nativeCoherentCone_isLimit (X : CosimplicialObject (Complex A)) :
+    IsLimitCone (nativeCoherentCone X)
+
+theorem nativeDGCone_isLimit (X : CosimplicialObject (Complex A)) :
+    IsLimitCone (nativeDGCone X)
+
+```
+
+既存依存だけの対象ビルド159は4,471 jobs・終了コード0。個別検査後の鍵付き対象ビルド160は **6,810 jobs・終了コード0**、新規一本だけの監査は **3宣言、標準三公理のみ**（`/private/tmp/isw2-build160.log`）。鍵 `--class impl --wait 3600` はビルドと監査の間だけ保持し返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
+
+累計 **294モジュール・18,226行**、外枠20,000行まで1,774行。モジュール一覧 `/private/tmp/isw2-g10-twohundredninetyfour-modules.txt`。未検証下書きなし。
+
+### 144.2 Bの実測とC・Dの見込み
+
+A完了の§101（12,781行）からB完了までの増分は **5,445行**。§72.2のBの600〜900行という見込みに対し約6.1〜9.1倍、差は+4,545〜+4,845行。§111時点のB残量400〜700行に対しても実測4,387行だった。主な差は、指定AW・随伴・Moore・係数移送と実豊穣合成の厳密等式の照合が、抽象的な同値性から自動では得られなかったこと。
+
+| 残るまとまり | 従来の見込み | B実測を受けた現在の追加見込み | 再利用と不確定箇所 |
+| --- | ---: | ---: | --- |
+| C：標準脚とD(A)輸送 | 400〜700 | 900〜1,600 | rawの極限性はB08済み。出力分解の既存判定と同じ第0頂点の脚、AsSmall/ULiftのstrict等式・join引き戻しの照合が残る |
+| D：全図式射・指定錐の族・離散入口 | 500〜900 | 900〜1,600 | 重みの構成は全図式に自然。実際の全nerve上の族、点での同一join射、離散比較の頂点輸送の最終式は未実装 |
+| 合計 | 900〜1,600 | **1,800〜3,200** | 完成見込み20,026〜21,426行 |
+
+単純にBの倍率をC・Dへ掛けるのは過大にもなり得る。Bで作ったHomの照合と全パラメータの評価則を再利用できる分を引いて上表としたが、現外枠に収まる保証はない。指定一覧のCの証明を進め、計算上限・型・範囲は弱めず、外枠到達または一覧外の新しい数学が必要と判明した時点で検証済みを保存して停止する。追加の第五のまとまりは現時点で要求しない。
