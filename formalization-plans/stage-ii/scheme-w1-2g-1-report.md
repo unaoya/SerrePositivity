@@ -559,3 +559,58 @@ AffineFiniteTypeSubideal（63 行）、FiniteTypeIdealSheafCover（60 行）、I
 G1 累計は本体 **2,941 行**、入口込み **3,000 行**。C02.(i) の非アフィンの有限被覆の帰納と (iii) の一般の閉包絡は下書き段階。個別の下書きでは IdealSheafOpenPairGluing・AffineFiniteTypeSubidealFamily・FiniteIdealSupportSelection が検証成功したが、まだ本体ビルドと監査を通していないのでこの実測には加えない。C02 内は (ii) のみ完了のまま。
 
 一覧：済み 7／全体 13（うち追加 4）。
+
+## C02 完了：一般の有限表示閉包絡（2026-11-14）
+
+指定の一般の固有・局所有限表示 p:Y→Spec R に対し、K.support⊆V から
+`∃ J, J ≤ K ∧ LocallyOfFinitePresentation J.subschemeι ∧ (J.support : Set Y) ⊆ V`
+を構成した。J≤K は、指定された K の閉部分スキームを J の閉部分スキームが含む向きである。元の Y に Noether 性・射影性・ブローアップの形を仮定していない。内部では、より一般に qcqs スキーム上で同じ結論を得た。C02 の (i)〜(iii) は **3／3 完了**。
+
+原典は Stacks **01PF (28.23.2)**・**01PG (28.23.3)** の有限型部分イデアル層の延長と有限選択、および **01TV (29.22.7)** の有限型閉包含の有限表示性。新しい独立した存在項目は既定の C02 のままで、下の被覆・係数移送・貼り合わせ・有限帰納はその証明分割として数える。
+
+### 今回の検証と登録
+
+新規十三モジュール **681 行**、入口 13 行。下書き一式の検証後、個々の本体モジュールと直接の importer `SerrePositivity.AlgebraicGeometry` の対象ビルド **4,857 ジョブ成功**。新規十三モジュールだけの小監査は補助宣言込み **27 宣言・標準三公理のみ**、終了コード 0。共有鍵 `--class impl --wait 3600` は一つの待ちで、ビルドと監査の間だけ取得した。新しい resource limit・sorry・追加公理なし。ログ：`scheme-drafts/2g-c02-draft-batch-check-3.log`、`2g-c02-envelope-native.log`、`2g-c02-envelope-audit.log`。ルート・下流の全ビルドは行っていない。
+
+| 登録モジュール | 行数 |
+| --- | ---: |
+| IdealSheafOpenPairGluing | 53 |
+| FiniteTypeIdealSheafOpenCover | 51 |
+| AffineFiniteTypeSubidealFamily | 36 |
+| FiniteIdealSupportSelection | 44 |
+| IdealSheafOpenCoverExt | 66 |
+| AffineFiniteTypeSubidealOpen | 55 |
+| FiniteTypeIdealSheafOpenUnion | 29 |
+| FiniteTypeIdealOpenPairExtension | 91 |
+| FiniteTypeIdealFiniteFamilyExtension | 73 |
+| FiniteTypeIdealExtension | 42 |
+| FiniteTypeIdealSectionExtension | 53 |
+| FiniteTypeIdealApproximation | 38 |
+| FinitePresentationClosedEnvelope | 50 |
+
+### 宣言と主張（一行ずつ）
+
+- `idealSheaf_comap_inf_of_openImmersion`：開への逆像はイデアル層の二項共通部分を保存する。
+- `exists_subideal_gluing_open_pair`：重なりで一致する二つの部分イデアル層を、指定した大域イデアル層の中で貼る。
+- `fg_ideal_image_of_comap_openImmersion`：開への逆像の有限生成な切断イデアルを、その像のアフィン開へ戻す。
+- `isFiniteTypeIdealSheaf_of_openCover`：開被覆上の有限型性から大域有限型性を判定する。
+- `exists_finiteType_subideal_eq_on_affine_family_of_isAffine`：アフィン基底の指定有限族上で元のイデアルと一致する有限型部分を選ぶ。
+- `exists_finite_affine_sections_support_subset`：支持を指定開に含めるための有限個のアフィン切断を選ぶ。
+- `idealSheaf_ext_of_openCover`：開被覆上の逆像の等式から大域等式を検出する。
+- `idealSheaf_comap_opens_top`：アフィン開への制限の全体切断イデアルを topIso による像と比較する。
+- `idealSheaf_comap_eq_iff_affine_sections`：アフィン開への逆像の一致と切断イデアルの一致を比較する。
+- `fg_ideal_of_comap_opens_top`：制限の全体切断の有限生成性を元のアフィン切断へ戻す。
+- `exists_finiteType_subideal_eq_on_quasiCompact_open_of_isAffine`：アフィン基底上で準コンパクト開への制限を保つ有限型部分を選ぶ。
+- `isFiniteTypeIdealSheaf_comap_iSup`：開の和上の有限型性を各開への制限から得る。
+- `exists_subideal_extending_to_affine_open`：指定開への制限を保ち、別のアフィン開上の有限型性を加える。
+- `exists_finiteType_subideal_extending_open_pair`：二つの開が全体を覆う場合、アフィン側を加えて有限型部分イデアル層を延長する。
+- `exists_subideal_finiteType_on_finite_affine_family_extending`：指定開への制限を保ちながら、有限アフィン族上の有限型性を帰納的に加える。
+- `exists_finiteType_subideal_extension`：qcqs スキームの準コンパクト開上の有限型部分イデアル層を、同じ大域イデアルの中で延長する。
+- `exists_finiteType_subideal_containing_affine_finset`：一つのアフィン開の有限個の切断を含む大域有限型部分イデアル層を選ぶ。
+- `exists_finiteType_subideal_containing_affine_sections`：有限個のアフィン開の有限切断族を同時に含む大域有限型部分イデアル層を選ぶ（C02.(i)）。
+- `exists_finitePresentation_closedEnvelope`：qcqs スキーム上で指定閉部分スキームを含み指定開に入る有限表示閉包絡が存在する（C02.(iii)）。
+- `exists_finitePresentation_closedEnvelope_of_proper`：一般の固有・局所有限表示の Y 上の指定された C02 の型を供給する。
+
+C02 の本体は先の基礎を含め **1,027 行**、入口 20 行で、当初の 1,500〜4,000 行の見込みの上端内。G1 累計は本体 **3,622 行**、入口込み **3,694 行**。A07 は未完：閉包が平坦射の像の開 V に含まれることと閉包の全射性を、特殊化・v 判定により接続し、整全射の有限表示段との細分へ渡す。G2 の一般の固有有限表示モデルも未完。C02 の閉包絡の完成を A07 や一般の平坦化の完成とは呼ばない。
+
+一覧：済み 8／全体 13（うち追加 4）。
