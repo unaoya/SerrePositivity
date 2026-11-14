@@ -1,0 +1,19 @@
+{
+  "source": "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechH0SquareData.lean",
+  "sha256": "232146da0bea7129da3f08141cc229728677303beff167b0a46e9cb386668f67",
+  "capture": "scheme-drafts/b4/index-retry-square-2",
+  "preview": {
+    "batch": "retry-square-2",
+    "files": 1,
+    "review_paths": 0,
+    "changed_files": []
+  },
+  "build_jobs": 3379,
+  "audit_declarations": 48,
+  "axioms": "standard three only",
+  "log_sha256": {
+    "collect-retry-square-2.log": "c027d493ceba9d5f9530d7874cfcb7e2d23803e5958c7c3dad15363dc36e3d08",
+    "build-square-fix.log": "695b751473a32d141af78e062de957fd27af771e7daf2c300fc26cebb33cb6ec",
+    "audit-square-fix.log": "5dba9082e4897109679933055e8852e5bd3b47a72229ec68786ded6207236c96"
+  }
+}

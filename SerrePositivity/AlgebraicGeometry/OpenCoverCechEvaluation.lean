@@ -15,10 +15,10 @@ set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace
 open scoped BigOperators Classical
-universe u v
-variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+universe u v w
+variable {X : Type u} [TopologicalSpace X] {R : Type w} [CommRing R]
 variable {ι : Type} [DecidableEq ι]
-variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat R) (U : ι → Opens X)
+variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) (U : ι → Opens X)
 
 /-- タプルの整数鎖を、指定した開集合上の切断として評価する。 -/
 def openCoverCechEvaluateAt (W : Opens X) (k : ℕ) :
@@ -106,7 +106,7 @@ theorem openCoverCechEvaluateAt_boundary {W : Opens X} (k : ℕ)
 
 /-- 指定開集合での評価は、係数前層の射に自然。 -/
 theorem openCoverCechEvaluateAt_naturality
-    {Q : (Opens X)ᵒᵖ ⥤ ModuleCat R} (η : P ⟶ Q) {W : Opens X} {k : ℕ}
+    {Q : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R} (η : P ⟶ Q) {W : Opens X} {k : ℕ}
     (z : CechTupleChains ι k)
     (hz : ∀ t ∈ z.support, W ≤ cechOpenIntersection U (cechTupleSupport t))
     (a : FullCechCochains (openCoverCechDiagram P U) k) :

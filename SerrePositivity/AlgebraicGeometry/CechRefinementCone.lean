@@ -13,8 +13,8 @@ public import SerrePositivity.AlgebraicGeometry.ProjectiveCechFunctor
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory
-universe u
-variable {R : Type u} [CommRing R]
+universe u v
+variable {R : Type v} [CommRing R]
 variable (A B : CochainComplex (ModuleCat.{u} R) ℕ)
 
 /-- 自然数で添字付けした cone の項。 -/

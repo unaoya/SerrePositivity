@@ -14,8 +14,8 @@ public import Mathlib.Topology.Sheaves.Presheaf
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace
-universe u v
-variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+universe u v w
+variable {X : Type u} [TopologicalSpace X] {R : Type w} [CommRing R]
 variable {ι κ : Type} [DecidableEq ι] [DecidableEq κ]
 
 /-- 有限個の開集合の交叉。空交叉は全空間。 -/
@@ -32,8 +32,8 @@ theorem cechOpenIntersection_antitone (U : ι → Opens X) {T S : Finset ι}
   exact iInf_le_of_le i (iInf_le_of_le (h hi) le_rfl)
 
 /-- 前層を、有限交叉上の切断の共変な係数図式と見る。 -/
-def openCoverCechDiagram (P : (Opens X)ᵒᵖ ⥤ ModuleCat R) (U : ι → Opens X) :
-    Finset ι ⥤ ModuleCat R where
+def openCoverCechDiagram (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) (U : ι → Opens X) :
+    Finset ι ⥤ ModuleCat.{v} R where
   obj T := P.obj (Opposite.op (cechOpenIntersection U T))
   map {T S} h := P.map (homOfLE (cechOpenIntersection_antitone U (leOfHom h))).op
   map_id T := by
@@ -56,7 +56,7 @@ theorem cechOpenIntersection_refinement (U : ι → Opens X) (V : κ → Opens X
     (Finset.mem_image.mpr ⟨a, Finset.mem_univ _, rfl⟩) le_rfl)).trans (hρ (t a))
 
 /-- 細分による全タプル Čech 項の制限。 -/
-def openCoverCechRefinementCochains (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
+def openCoverCechRefinementCochains (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R)
     (U : ι → Opens X) (V : κ → Opens X) (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j))
     (k : ℕ) : FullCechCochains (openCoverCechDiagram P U) k →ₗ[R]
       FullCechCochains (openCoverCechDiagram P V) k :=
@@ -66,7 +66,7 @@ def openCoverCechRefinementCochains (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
         (openCoverCechDiagram P U).obj (cechTupleSupport s)) (ρ ∘ t))
 
 /-- 細分による制限の成分表示。 -/
-theorem openCoverCechRefinementCochains_apply (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
+theorem openCoverCechRefinementCochains_apply (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R)
     (U : ι → Opens X) (V : κ → Opens X) (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j))
     (k : ℕ) (a : FullCechCochains (openCoverCechDiagram P U) k) (t : Fin k → κ) :
     openCoverCechRefinementCochains P U V ρ hρ k a t =
@@ -74,7 +74,7 @@ theorem openCoverCechRefinementCochains_apply (P : (Opens X)ᵒᵖ ⥤ ModuleCat
 
 /-- 細分の制限は余境界と可換。 -/
 theorem openCoverCechRefinementCochains_differential
-    (P : (Opens X)ᵒᵖ ⥤ ModuleCat R) (U : ι → Opens X) (V : κ → Opens X)
+    (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) (U : ι → Opens X) (V : κ → Opens X)
     (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j)) (k : ℕ) :
     (openCoverCechRefinementCochains P U V ρ hρ (k + 1)).comp
         (fullCechDifferential (openCoverCechDiagram P U) k) =
@@ -97,7 +97,7 @@ theorem openCoverCechRefinementCochains_differential
   congr 2
 
 /-- 細分による Čech 複体の射。 -/
-def openCoverCechRefinementMap (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
+def openCoverCechRefinementMap (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R)
     (U : ι → Opens X) (V : κ → Opens X) (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j)) :
     fullCechComplex (openCoverCechDiagram P U) ⟶
       fullCechComplex (openCoverCechDiagram P V) :=
@@ -109,14 +109,14 @@ def openCoverCechRefinementMap (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
       exact (openCoverCechRefinementCochains_differential P U V ρ hρ (q + 1)).symm)
 
 /-- 係数前層の射が有限交叉の係数図式に誘導する射。 -/
-def openCoverCechCoefficientMap {P Q : (Opens X)ᵒᵖ ⥤ ModuleCat R}
+def openCoverCechCoefficientMap {P Q : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R}
     (η : P ⟶ Q) (U : ι → Opens X) : openCoverCechDiagram P U ⟶ openCoverCechDiagram Q U where
   app T := η.app (Opposite.op (cechOpenIntersection U T))
   naturality {T S} h := η.naturality _
 
 /-- 細分の制限は係数前層の自然変換に自然。 -/
 theorem openCoverCechRefinementCochains_naturality
-    {P Q : (Opens X)ᵒᵖ ⥤ ModuleCat R} (η : P ⟶ Q)
+    {P Q : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R} (η : P ⟶ Q)
     (U : ι → Opens X) (V : κ → Opens X) (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j)) (k : ℕ) :
     (fullCechCochainsMap (openCoverCechCoefficientMap η V) k).comp
         (openCoverCechRefinementCochains P U V ρ hρ k) =
@@ -129,7 +129,7 @@ theorem openCoverCechRefinementCochains_naturality
     (η.naturality (homOfLE (cechOpenIntersection_refinement U V ρ hρ t)).op))
 
 /-- 恒等細分は恒等写像を与える。 -/
-theorem openCoverCechRefinementCochains_id (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
+theorem openCoverCechRefinementCochains_id (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R)
     (U : ι → Opens X) (k : ℕ) :
     openCoverCechRefinementCochains P U U id (fun _ ↦ le_rfl) k = LinearMap.id := by
   apply LinearMap.ext
@@ -143,7 +143,7 @@ theorem openCoverCechRefinementCochains_id (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
 
 /-- 二つの細分を続けた制限は、合成細分の制限。 -/
 theorem openCoverCechRefinementCochains_comp
-    {ν : Type} [DecidableEq ν] (P : (Opens X)ᵒᵖ ⥤ ModuleCat R)
+    {ν : Type} [DecidableEq ν] (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R)
     (U : ι → Opens X) (V : κ → Opens X) (W : ν → Opens X)
     (ρ : κ → ι) (hρ : ∀ j, V j ≤ U (ρ j))
     (σ : ν → κ) (hσ : ∀ l, W l ≤ V (σ l)) (k : ℕ) :

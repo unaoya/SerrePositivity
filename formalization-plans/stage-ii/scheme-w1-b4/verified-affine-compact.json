@@ -1,0 +1,20 @@
+{
+  "source": "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean",
+  "source_sha256": "c30fdb5383461d15ffce84e4c606402620e4f72d6f9c981a74c8f9bbbe25a02c",
+  "capture": "scheme-drafts/b4/index-retry-affine-12",
+  "preview": {
+    "batch": "retry-affine-12",
+    "files": 1,
+    "review_paths": 0,
+    "changed_files": []
+  },
+  "build_jobs": 3280,
+  "audit_declarations": 17,
+  "axioms": "standard three only",
+  "additional_declarations": "three Cech H object aliases, three existing geometric proofs, two existing comparison factors",
+  "log_sha256": {
+    "collect-retry-affine-12.log": "56ea0d250c2241938495e744a4465caf406b4d72a9473dab2e5d7f7e0f2fd061",
+    "build-affine-compact.log": "0c812878a32ad0399e90506d9ad223923531a1081b9792f2a7bca9dd43c38957",
+    "audit-affine-compact.log": "9cc013e4d885e380a1c31f8b9597a2b98c8eef7076e41c06fc98e10eb22c897f"
+  }
+}

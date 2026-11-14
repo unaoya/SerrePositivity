@@ -13,8 +13,8 @@ public import SerrePositivity.AlgebraicGeometry.OpenCoverCechRefinementNaturalit
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace
-universe u v
-variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+universe u v w
+variable {X : Type u} [TopologicalSpace X] {R : Type w} [CommRing R]
 variable {ι κ ν : Type} [LinearOrder ι] [LinearOrder κ] [LinearOrder ν]
 variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R)
 

@@ -1,0 +1,21 @@
+{
+  "source_checkpoint": "28e73a366389cd1f1a2f03b22f18e606a0563072",
+  "requested_files": 289,
+  "covered_files": 287,
+  "review_paths": 0,
+  "changed_files": [],
+  "changed_lines": 0,
+  "missing": [
+    "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean",
+    "SerrePositivity/AlgebraicGeometry/ReesClosedCechThickeningFrobenius.lean"
+  ],
+  "refs": 254747,
+  "commands": 2272,
+  "collector_sha256": [
+    "45da217652c32acf13f15578fce8264ad7c3dba1caac67895bd2c6b5f5dcfeb8"
+  ],
+  "manifest_sha256": "2fcfbb66708a2fe83948e583928faff05c12c52bcaf88fa7dd898a0841c5ba97",
+  "review_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+  "main_merged": false,
+  "post_merge_build_and_audit_done": false
+}

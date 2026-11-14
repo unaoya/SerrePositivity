@@ -1,6 +1,6 @@
 module
 
-public import Mathlib.Algebra.Category.ModuleCat.AB
+public import SerrePositivity.AlgebraicGeometry.ModuleCatFilteredExact
 public import Mathlib.Algebra.Homology.ShortComplex.ExactFunctor
 public import Mathlib.Algebra.Homology.ShortComplex.FunctorEquivalence
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
@@ -18,8 +18,12 @@ public import Mathlib.CategoryTheory.Abelian.FunctorCategory
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory CategoryTheory.Limits
-universe u
-variable {R : Type u} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+universe u v
+variable {R : Type v} [CommRing R] {J : Type u} [SmallCategory J] [IsFiltered J]
+
+local instance projectiveFilteredHomologyExactColimits :
+    HasExactColimitsOfShape J (ModuleCat.{u} R) :=
+  moduleCatFiltered_hasExactColimitsOfShape R J
 variable (S : J ⥤ ShortComplex (ModuleCat.{u} R))
 
 /-- 短複体の filtered 図式を、関手圏の一つの短複体にまとめる。 -/
