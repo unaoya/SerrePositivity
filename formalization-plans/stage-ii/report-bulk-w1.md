@@ -1158,3 +1158,10 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 ### 5∞-0 のdraft検査・第67束（11-14夜）
 
 一覧：済み 11／全体 14（うち追加 0）。[第67束](bulk-5inf0/draft-block67-validation.json)でArcSheafPropertyの宇宙を調整したnerve、完備化H⁰の環構造、商写像、Sheavesの参照は通った。残るのは二成分の関数のパターン構文2件。同じfalse側・true側をBool.recとcasesで記し、第68束へ並んだ。有効な成功は51／57本のまま。
+
+
+### 5∞-0 のdraft検査・第68束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第68束](bulk-5inf0/draft-block68-validation.json)でArcSheafProperty全体が成功。有効な成功は52／57本。二成分の同じ定義のBool.rec・casesへの表示と、元の完備化H⁰の環構造の明示が通った。検査済みソースをコミットする。
+
+次のSheafOfSetsExcisionはpushout.descの未指定の二本の射の推論とisIntegralPerfectoid_prodのimport漏れで失敗。同じpushoutの二本を名前つき引数で渡し、乗法・剰余への射の始域・終域を明示する。積の補題は本体のPerfectoid.FiniteProductを直接importする。第69束で検査する。Leanの追加・削除は第68束前で5,556行、当初の見込み上端5,550行を6行超えたが、承認された外枠11,100行には達していない。新しい数学の項目は追加0。
