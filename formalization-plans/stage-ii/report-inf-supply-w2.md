@@ -7918,3 +7918,192 @@ theorem reflectedPointwiseBousfieldKanCone_dinaturality
 コード **`00613f0ed`**。鍵付き対象ビルド175・176・177はそれぞれ **2,759・2,772・2,785 jobs、終了コード0**。各新規一本だけの小監査は **9・8・10宣言、いずれも標準三公理のみ**（合計27は今回三本だけの数字）。ログ `/private/tmp/isw2-build175.log`〜`177.log`。各回 `--class impl --wait 3600`、整理券一枚、対象ビルド・小監査の間だけ保持して返却済み。sorry・新公理0、計算上限の増加、既存宣言、⑤a、入口・公式監査・mainへの変更なし。200行超のファイルなし。
 
 累計 **329モジュール・20,192行**、外枠まで **2,808行**。累計一覧は `is-w2-g10-20261114-modules.json`。D01の全錐族はまだ構成していない。次は同じΓ比較と実豊穣Homの前合成を照合する `DoldKanClosedPrecomposition`（未検証の草稿）と、その比較による同じBK錐の自然性の移送。D02〜D08と3b-4の範囲を削らず継続する。
+
+
+## 155. D01の途中：実豊穣Hom・native錐の同じ入力・混合係数への接続（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。D01の全族はまだ未完。以下は既存構成の自然性・単位・合成・係数移送・表示の法則と証明分割で、ID付きの新しい数学を加えない。
+
+### 155.1 型と登録候補
+
+元の閉零射の前合成と標準Hom鎖写像を全単体で同定し、点ごとのΓ比較を実豊穣Homへ戻した。既存の前後作用の全関手則で合成・交換を確認し、その同じ等式を実際のAsSmall添字・指定BK重みへ引き戻した。native錐を作った入力そのものの両作用の一致であり、別の錐を選び直したものではない。
+
+登録候補：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DoldKanClosedPrecomposition`（79行）。
+
+```lean
+theorem standardChainMap_closedPrecomposition (x y z : D)
+    (f : ForgetEnrichment.of (Complex R) x ⟶ ForgetEnrichment.of (Complex R) y) :
+    Functor.whiskerRight
+      (SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap
+        (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z)))
+      (forget (ModuleCat R)) =
+    eHomWhiskerRight SSet f (ForgetEnrichment.of (Complex R) z)
+
+theorem doldKanSimplicialHomIso_precomposition (x y z : D)
+    (f : ForgetEnrichment.of (Complex R) x ⟶ ForgetEnrichment.of (Complex R) y) :
+    eHomWhiskerRight SSet f (ForgetEnrichment.of (Complex R) z) ≫
+        (doldKanSimplicialHomIso (R := R) x z).hom =
+      (doldKanSimplicialHomIso (R := R) y z).hom ≫
+        Functor.whiskerRight
+          ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat R) ℕ ⥤ SimplicialObject (ModuleCat R)).map
+            (truncLE'Map (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z))
+              (ComplexShape.embeddingUpIntLE 0))) (forget (ModuleCat R))
+
+theorem complexDoldKanHomIso_precomposition {A : Type u} [CommRing A]
+    {P Q : Complex A} (f : P ⟶ Q) (T : Complex A) :
+    eHomWhiskerRight SSet ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map f)
+        (ForgetEnrichment.of (Complex A) T) ≫ (complexDoldKanHomIso A P).hom.app T =
+      (complexDoldKanHomIso A Q).hom.app T ≫
+        Functor.whiskerRight
+          ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ SimplicialObject (ModuleCat A)).map
+            (truncLE'Map (homPrecompose f T) (ComplexShape.embeddingUpIntLE 0)))
+          (forget (ModuleCat A))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBKConeNaturality`（111行）。
+
+```lean
+def enrichedBKHomDiagram (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    SimplexCategoryᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def enrichedBKHomIso (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomDiagram P X ≅ (pointwiseBKSetHomFunctor A).obj
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X)))
+
+def enrichedBKHomTargetMap (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    enrichedBKHomDiagram P X ⟶ enrichedBKHomDiagram P Y
+
+def enrichedBKHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomDiagram Q X ⟶ enrichedBKHomDiagram P X
+
+theorem enrichedBKHomIso_target_naturality (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    enrichedBKHomTargetMap P f ≫ (enrichedBKHomIso P Y).hom =
+      (enrichedBKHomIso P X).hom ≫
+        (pointwiseBKSetHomFunctor A).map (normalizedBKConeTargetMap P f)
+
+theorem enrichedBKHomIso_source_naturality {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomSourceMap f X ≫ (enrichedBKHomIso P X).hom =
+      (enrichedBKHomIso Q X).hom ≫
+        (pointwiseBKSetHomFunctor A).map (normalizedBKConeSourceMap f X)
+
+theorem enrichedBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    enrichedBousfieldKanCone X ≫
+        Functor.whiskerRight (enrichedBKHomTargetMap ((productTotalFunctor A).obj X) f)
+          SimplicialObject.opFunctor =
+      enrichedBousfieldKanCone Y ≫
+        Functor.whiskerRight (enrichedBKHomSourceMap ((productTotalFunctor A).map f) Y)
+          SimplicialObject.opFunctor
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBKHomComposition`（58行）。
+
+```lean
+theorem enrichedBKHomTargetMap_id (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomTargetMap P (𝟙 X) = 𝟙 (enrichedBKHomDiagram P X)
+
+theorem enrichedBKHomTargetMap_comp (P : Complex A)
+    {X Y Z : CosimplicialObject (Complex A)} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    enrichedBKHomTargetMap P (f ≫ g) =
+      enrichedBKHomTargetMap P f ≫ enrichedBKHomTargetMap P g
+
+theorem enrichedBKHomSourceMap_id (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomSourceMap (𝟙 P) X = 𝟙 (enrichedBKHomDiagram P X)
+
+theorem enrichedBKHomSourceMap_comp {P Q T : Complex A} (f : P ⟶ Q) (g : Q ⟶ T)
+    (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomSourceMap (f ≫ g) X =
+      enrichedBKHomSourceMap g X ≫ enrichedBKHomSourceMap f X
+
+theorem enrichedBKHomSourceMap_targetMap {P Q : Complex A} (f : P ⟶ Q)
+    {X Y : CosimplicialObject (Complex A)} (g : X ⟶ Y) :
+    enrichedBKHomSourceMap f X ≫ enrichedBKHomTargetMap P g =
+      enrichedBKHomTargetMap Q g ≫ enrichedBKHomSourceMap f Y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.LiftedBKConeNaturality`（57行）。
+
+```lean
+def liftedEnrichedBKHomDiagram (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    AsSmall.{u} SimplexCategory ⥤ SSet.{u}
+
+def liftedEnrichedBKHomTargetMap (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    liftedEnrichedBKHomDiagram P X ⟶ liftedEnrichedBKHomDiagram P Y
+
+def liftedEnrichedBKHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    liftedEnrichedBKHomDiagram Q X ⟶ liftedEnrichedBKHomDiagram P X
+
+theorem liftedEnrichedBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    liftedEnrichedBousfieldKanCone X ≫
+        liftedEnrichedBKHomTargetMap ((productTotalFunctor A).obj X) f =
+      liftedEnrichedBousfieldKanCone Y ≫
+        liftedEnrichedBKHomSourceMap ((productTotalFunctor A).map f) Y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSmallShape`（37行）。
+
+```lean
+def smallNativeTotConeDiagram (X : CosimplicialObject (Complex A)) :
+    (SSet.uliftFunctor.{u+1,u}).obj
+      (join (Δ[0] : SSet.{u}) (nerve (AsSmall.{u} SimplexCategory))) ⟶ dgNerve A (Complex A)
+
+theorem smallNativeTotConeDiagram_restore (X : CosimplicialObject (Complex A)) :
+    (uliftConeShapeIso (nerve (AsSmall.{u} SimplexCategory)) 0).inv ≫
+      smallNativeTotConeDiagram X = (nativeDGCone X).val
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedCoherentCoefficientNaturality`（41行）。
+
+```lean
+theorem weightedCoherentCoefficient_map (α : H ⟶ H')
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ H ⋙ SSet.opFunctor) (j : Fin (n + 1)) :
+    weightedCoherentCoefficient
+        (τ ≫ Functor.whiskerLeft σ (Functor.whiskerRight α SSet.opFunctor)) j =
+      weightedCoherentCoefficient τ j ≫ α.app (σ.obj j)
+
+theorem weightedCoherentCoefficient_dinaturality (α : H ⟶ H'') (β : H' ⟶ H'')
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ H ⋙ SSet.opFunctor)
+    (τ' : simplexPrefixWeight n ⟶ σ ⋙ H' ⋙ SSet.opFunctor)
+    (h : τ ≫ Functor.whiskerLeft σ (Functor.whiskerRight α SSet.opFunctor) =
+      τ' ≫ Functor.whiskerLeft σ (Functor.whiskerRight β SSet.opFunctor))
+    (j : Fin (n + 1)) :
+    weightedCoherentCoefficient τ j ≫ α.app (σ.obj j) =
+      weightedCoherentCoefficient τ' j ≫ β.app (σ.obj j)
+
+```
+
+### 155.2 検収
+
+実豊穣Homと指定入力の四本はコード **`3c6f9197d`**。対象ビルド178は標準成分表示の書き換えで失敗し、鍵を返却した。表示を明示して修正した179は **5,944 jobs、終了コード0**、小監査 **3宣言**。180は **6,191 jobs、終了コード0**、新規一本 **17宣言**。181は **6,204 jobs、終了コード0**、新規二本 **12宣言（7・5）**。全て標準三公理のみ。失敗した178を成功に数えない。
+
+同じ錐の小さい形状表示と混合係数の二本はコード **`bbc48fcc0`**。対象ビルド182・183は **6,048・2,246 jobs、終了コード0**、新規分の小監査は **4・2宣言、標準三公理のみ**。ログ `/private/tmp/isw2-build179.log`〜`183.log`。各回 `--class impl --wait 3600`、整理券一枚、対象ビルドと小監査の間だけ鍵を保持し、各ハンドルの終了コード0を確認して返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査・mainの変更なし。各ファイル200行以内。
+
+累計 **335モジュール・20,575行**、G10の外枠まで **2,425行**。累計一覧 `is-w2-g10-20261114-modules.json`。
+
+### 155.3 mainの既存R6を再利用するD01の短い組み立て
+
+mainの `StrictCoherentFamily A E K C` は、各パラメータでの**元の全dg nerve図式**と、全高次HA成分に厳密に可換する `StrictSimplexMap`、恒等・合成・全面・退化の整合性から、同じ全パラメータ評価を作る。`StrictCoherentFamilyEvaluation.lean` の `.evaluation` は `nerve C ⊗ (uliftFunctor.obj K) ⟶ dgNerve A E`。これは今回必要な全族の組み立ての既存部品として使える。新しいcollageや全族評価を一から作らない。
+
+`K := join (Δ[0] : SSet.{u}) (nerve (AsSmall.{u} SimplexCategory))`、`C := CosimplicialObject (Complex A)`、`E := Complex A` とし、`.obj X` に今回検証した `smallNativeTotConeDiagram X` をそのまま置く。その形状同型を戻せば、元の `nativeDGCone X` の全join射になることも検証済み。
+
+残る接続は次の順。
+
+1. 各図式射fの元の閉零成分（左頂点は `productTotalFunctor.map f`、右頂点は `f.app n`）を、全HA成分に可換する `StrictSimplexMap` にする。同じ立方体の旗の評価とcoherent比較の前後作用への自然性を使う。新規の草稿 `CubeEvaluationChainNaturality`・`CoherentComparisonStrictNaturality` はこの既存構成の法則の分割。
+2. mixedなweighted coneのHomでの自然性には、今回検証済みの `liftedEnrichedBousfieldKanCone_dinaturality` と `weightedCoherentCoefficient_dinaturality` を使う。尾部は元の図式射の自然性、逆方向の空Homは空型の消去。高次成分を通常の辺の自然性だけで代用しない。
+3. `StrictSimplexMap.ext` で単位・合成を、同じ引き戻しと `.hext` で全面・退化を確認して `StrictCoherentFamily` へ入れる。既存の `.evaluation` を使い、積の順序と同じ形状同型を戻し、同じ出力分解へ後合成してD01の全族にする。
+4. 既存 `orderedSimplexFamily_const` による各点の同じ全単体への復元と、前面・頂点への制限を使ってD02・D03を閉じ、§151の同じ頂点関手とD04を接続する。
+
+この経路はD01の指定された構成の証明分割で、範囲・型の変更ではない。新しい一般の厳密化定理や模型圏仮定は足さない。D05〜D08、続くBEのTot・実現と任意coherent BE図式の段0を保持して継続する。
