@@ -1,0 +1,72 @@
+--- SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DoldKanClosedPostcomposition.lean
++++ SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DoldKanClosedPostcomposition.lean
+@@ -1,6 +1,6 @@
+ module
+ public import SerrePositivity.EInfinity.ComplexLimits.DoldKanGammaChainNaturality
+-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStandardClosedPostcomposition
++public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardClosedPostcomposition
+ 
+ /-!
+ 概要：指定 Γ 同型を元の閉射の豊穣後合成と照合する。
+--- SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKSmallSections.lean
++++ SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKSmallSections.lean
+@@ -1,7 +1,7 @@
+ module
+ public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallHom
+ public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallSections
+-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedSectionsOpposite
++public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedSectionsOpposite
+ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEquivalence
+ /-!
+ 概要：反転正規化BK HomのΓから同じ持ち上げ重み付き切断への指定比較。
+--- SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientFree.lean
++++ SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientFree.lean
+@@ -1,5 +1,5 @@
+ module
+-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSimplicialRingCoefficientComplex
++public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGSimplicialRingCoefficientComplex
+ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerLinearizationDesc
+ public import Mathlib.Algebra.Category.ModuleCat.Adjunctions
+ public import Mathlib.CategoryTheory.Adjunction.Unique
+--- SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDegrees.lean
++++ SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDegrees.lean
+@@ -1,5 +1,5 @@
+ module
+-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGIntegerCoefficientTensor
++public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGIntegerCoefficientTensor
+ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorVanishing
+ public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
+ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney
+--- SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorValues.lean
++++ SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorValues.lean
+@@ -1,7 +1,7 @@
+ module
+ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient
+ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree
+-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGIntegerCoefficientTensor
++public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGIntegerCoefficientTensor
+ public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Adjunction
+ /-!
+ 概要：係数移送の純テンソル評価を随伴の単位で記す。
+--- SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsHom.lean
++++ SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsHom.lean
+@@ -3,7 +3,7 @@
+ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter
+ public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
+ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedFunctor
+-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseJoinSimplexShapes
++public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseJoinSimplexShapes
+ public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
+ 
+ /-!
+--- SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TruncatedDoldKanQuasiIso.lean
++++ SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TruncatedDoldKanQuasiIso.lean
+@@ -1,7 +1,7 @@
+ module
+ public import SerrePositivity.EInfinity.ComplexLimits.DoldKanPinchedChainNaturality
+ public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
+-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedChainMapQuasiIso
++public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.PinchedChainMapQuasiIso
+ public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Reflection
+ 
+ /-!
