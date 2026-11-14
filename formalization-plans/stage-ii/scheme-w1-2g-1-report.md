@@ -2608,3 +2608,27 @@ G1・G2共用部品込み本体15,105行、入口込み15,357行。B02〜B04 は
 一覧：済み14／全体17（うち追加8）。
 
 係数段の性質の移送（着手前の型、見込み40〜90行）：`filteredPushoutRingInl_vCover` は固定の射 f の affine v 判定を全ての段の第一挿入へ移す。`filteredPushoutRingInl_finiteType` は f の有限型性を同じ各段へ移す。既存の v 判定の pushout 安定性と、Mathlib の有限型性の底変換安定性の係数移送の法則として親項目を増やさない。
+
+
+実際の tensor 模型の環側の比較（着手前の型、見込み40〜100行）：`isPushout_affineTensorModel` は A,R,S,C と実際の R⊗_A S≃_R C から、A→R・A→S と R→C・S→C の同じ構造射の環の IsPushout を返す。既存の `isPullback_affineTensorModel` の環側の係数移送で、Mathlib の tensor の pushout の普遍性を同型で移す。これにより filtered pushout の頂点を構成した C に保つ。
+
+
+実際の係数図式への pushout の適用（着手前の型、見込み90〜180行、B03・B04 の内数）：A-代数 R,S と実際の R⊗_A S≃_R C から、`coefficientSubalgebraDiagram A R` の各段と S の実際の pushout の図式、C を頂点に保つ cocone と IsColimit、係数側・S 側の挿入の可換式、各段への自然な射を返す。A→S の v 判定と有限型性は全ての係数段へ保たれる。元の R の Noether 性は要求せず、模型 C を別の同型な頂点へ置き換えない。
+
+
+有限型な旧模型からの実際の射の因子化（着手前の型、見込み50〜120行）：`exists_coefficientPushout_stage_factor` は Noether な k、有限型 k-代数 D、係数写像 κ:k→A、実際の tensor 模型 C と k 上で可換な h:D→C から、ある係数段 j の実際の pushout への hⱼ と、元の h との合成式・κ に関する係数可換式を同時に返す。Mathlib の有限表示環の filtered 余極限への因子化を上記の実際の係数 pushout cocone に適用する。旧模型の各射を同じ後段へ移す既存 B03・B04 の分割で、元の R の Noether 性を仮定しない。
+
+
+### B03・B04：実際の模型の頂点と、各段の被覆性・有限型性
+
+`FilteredPushoutRingPoint`（50行）：`filteredPushoutRingPointCocone`・`filteredPushoutRingPointCoconeIsColimit` は指定した実際の pushout P を頂点に保ち、両挿入の可換式を同じ cocone で返す。
+
+`FilteredPushoutVCover`（38行）：`filteredPushoutRingInl_vCover`・`filteredPushoutRingInl_finiteType` は固定の射の affine v 判定と有限型性を、各係数段の実際の pushout の第一挿入へ移す。
+
+`AffineTensorModelPushout`（38行）：`isPushout_affineTensorModel` は実際の R⊗_A S≃_R C を、元の構造射と右挿入の合成の環の IsPushout へ移す。
+
+本体126行・入口3行。各単独検証、ソース完全一致、三対象と直接 importer AlgebraicGeometry のビルド5,043ジョブ、小監査9宣言（6・2・1）・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-filtered-pushout-ring-point-check-2.log`・`2g-filtered-pushout-vcover-check-2.log`・`2g-affine-tensor-model-pushout-check-2.log`・`2g-filtered-pushout-transfer-native.log`・`2g-filtered-pushout-transfer-audit.log`。
+
+G1・G2共用部品込み本体15,231行、入口込み15,486行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

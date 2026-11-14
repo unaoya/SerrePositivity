@@ -1577,3 +1577,9 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelCategory
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelObjects
 
 public import SerrePositivity.AlgebraicGeometry.FilteredPushoutRingModel
+
+public import SerrePositivity.AlgebraicGeometry.FilteredPushoutRingPoint
+
+public import SerrePositivity.AlgebraicGeometry.FilteredPushoutVCover
+
+public import SerrePositivity.AlgebraicGeometry.AffineTensorModelPushout
