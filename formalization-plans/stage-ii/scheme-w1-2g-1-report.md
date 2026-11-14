@@ -2632,3 +2632,22 @@ G1・G2共用部品込み本体15,105行、入口込み15,357行。B02〜B04 は
 G1・G2共用部品込み本体15,231行、入口込み15,486行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+有限段での同じ遷移に沿う一致（着手前の型、見込み40〜90行、B03・B04 の既存の有限個の等式の法則）：filtered な環の図式 F と実際の IsColimit、k からの自然な構造射、k 上有限型な D、同じ段 i への二つの k 上の射 a,b が余極限で一致するとき、ある一つの遷移 q:i→j で a と b が一致する。Mathlib の有限型環の一致判定が返す二遷移を filtered 性で等しくする。模型間の射の係数可換式と構造射の可換式を同じ後段で満たすために使う。
+
+
+模型の可換な正方形の同じ段への因子化（着手前の型、見込み140〜260行、B03・B04 の既存の有限図式の法則）：`exists_filtered_ring_arrow_factor` は二つの実際の filtered 環図式 F,G と自然変換 τ、両側の IsColimit と元の射 φ、k 上有限表示の二つの環から φ への可換な正方形から、同じ段で元の正方形と係数を保つ二つの射を返す。二つの射を別々に因子化して共通段へ移し、上記の一遷移による一致判定で正方形を実際に可換にする。これは各段の存在を図式へまとめる法則で、最終主張と一覧を変えない。
+
+
+### B03・B04：実際の係数部分代数の pushout 図式と同じ段での一致
+
+`CoefficientPushoutDiagram`（109行）：`coefficientSubalgebraBaseNatTrans`・`coefficientSubalgebraCocone_base` は実際の係数部分代数の図式を元の係数環上に保つ。`coefficientPushoutRingDiagram`・`coefficientPushoutBaseMap`・`coefficientPushoutRootMap` は各段と固定した代数の実際の pushout と自然な構造射。`coefficientPushoutRingCocone`・`coefficientPushoutRingCoconeIsColimit` は構成済みの実際の tensor 模型 C を頂点に保つ cocone と IsColimit。基底側・固定の代数側・係数環側の可換式と、各段の v 判定・有限型性の移送も供給した。
+
+`FilteredRingSameStageEquality`（33行）：`exists_same_stage_ringHom_equality` は k 上有限型な環から同じ段への二射が実際の余極限で一致するとき、一つの後段への同じ遷移で両射を一致させる。平坦性・単射性は要求しない。
+
+本体142行・入口2行。両単独検証、ソース完全一致、二対象と直接 importer AlgebraicGeometry のビルド5,045ジョブ、小監査20宣言（18・2）・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-pushout-diagram-check-2.log`・`2g-filtered-ring-same-stage-equality-check.log`・`2g-coefficient-pushout-diagram-native.log`・`2g-coefficient-pushout-diagram-audit.log`。
+
+G1・G2共用部品込み本体15,373行、入口込み15,630行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

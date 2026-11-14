@@ -1583,3 +1583,7 @@ public import SerrePositivity.AlgebraicGeometry.FilteredPushoutRingPoint
 public import SerrePositivity.AlgebraicGeometry.FilteredPushoutVCover
 
 public import SerrePositivity.AlgebraicGeometry.AffineTensorModelPushout
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutDiagram
+
+public import SerrePositivity.AlgebraicGeometry.FilteredRingSameStageEquality
