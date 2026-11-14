@@ -1113,3 +1113,10 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 一覧：済み 10／全体 14（うち追加 0）。[第58束](bulk-5inf0/draft-block58-validation.json)と[第59束](bulk-5inf0/draft-block59-validation.json)でもrootFormsAugmentationの端点の照合が残った。第60束では零単体の添字を明示し、nerveMap_app_mk₀の等式をcongrArgで渡す形で確認する。他の部分は第57束と同様に通り、未説明の失敗を成功には数えていない。
 
 [静的再確認](bulk-5inf0/draft-static-block60.json)：本体32,937ファイルと全57draftsの公開名の重複候補0。draftsとその前提のimportグラフ12,939頂点で、旧Inputs.Perfectoidization・Inputs.PerfectoidizationInterfaceへの経路0。A0〜A9のコード中のsorryは705→569、ファイルごとの増加0（未検査のソースも含むので完成の数値ではない）。全57本の現在のsorryは684。A4のP⁰節は基準とバイト単位で一致し、Sharedの保護ファイルのハッシュは承認済み11箇所の機械的変更の後と一致。変更禁止3ディレクトリの差分0。
+
+
+### 5∞-0 のdraft検査・第60束、A01完了（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第60束](bulk-5inf0/draft-block60-validation.json)でA1/DeRhamComparisonPoly全体が約34秒で成功。有効な成功は44／57本。rootFormsAugmentationの端点は、零単体の添字とnerveMapの評価の等式を明示し、形式関手の零単体はComposableArrows.ext₀で照合した。同じ辺の合成で、数学的な入力・仮定は追加していない。保持した二つの旧pd比較の型を含めてファイル全体が通った。検査済みソースをコミットする。A0・A1が全て通ったのでA01をPASSへ更新した。
+
+次のA5/StrongDescentは、削除済みのpairKoszulTowerへの古い参照で失敗した。既存のpowerKoszulTowerに同じ二つの座標を渡し、元のK(p,e)を第一冪の段として読む。D3の二切断のホモトピー圏の対象は既存のptから頂点を取る。元のRHomとKoszulの主張・仮定・sorryは増やさず、第61束で検査する。

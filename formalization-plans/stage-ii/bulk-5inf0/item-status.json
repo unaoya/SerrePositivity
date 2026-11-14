@@ -1,11 +1,12 @@
 {
-  "completed_or_authorized_deferred": 10,
+  "completed_or_authorized_deferred": 11,
   "total": 14,
   "additional": 0,
   "items": [
     {
       "id": "A01",
-      "state": "pending_draft_typechecks"
+      "state": "PASS",
+      "evidence": "All A0 and A1 whole-file checks PASS; final DeRhamComparisonPoly block60, canonical classical owners used and distinct original pd functor contracts retained."
     },
     {
       "id": "A02",

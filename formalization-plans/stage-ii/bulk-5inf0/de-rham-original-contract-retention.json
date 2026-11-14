@@ -1,5 +1,5 @@
 {
-  "status": "source preparation; full typecheck pending",
+  "status": "PASS whole file block60",
   "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
   "restored_from": "efa846fe8",
   "restored_declarations": [
@@ -104,5 +104,7 @@
       "old": "pdModelBaseChange.{u} p n",
       "new": "pdModelBaseChange.{u} p (WU p) (residueU p) n"
     }
-  ]
+  ],
+  "source_sha256": "c9af218a7a5e8adcc7f0c676e91394c17bb9ba0f472437c546795360ca0319b9",
+  "note": "Final psiRing calls use universalPrime_mul_injective, the explicit Function.Injective form of existing regularity. The historical replacement list records the preparation step."
 }
