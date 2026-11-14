@@ -654,3 +654,62 @@ ClosedEnvelopeFlatRefinement **76 行**、入口 1 行を追加。`exists_fppf_c
 A07 自体は未完。次は GenericFlatNoetherianModel の実際の模型、FiniteTypeFlatteningNoetherian の中心、strictTransformι・strictTransformπ、AffineTensorModelPullback の pullback 比較を、この図式の入力へ渡す。用いる平坦な閉部分は Noether 模型上の狭義変換の底変換であり、非 Noether 基底上の生の狭義変換を平坦と仮定しない。その後、整全射の有限・有限表示段への模型の移送と、G2 の一般の固有有限表示模型を接続する。条件付きの図式の接続を一般の Rydh 3.10 の完成とは数えない。
 
 一覧：済み 8／全体 13（うち追加 4）。
+
+## A07 の Noether 模型の実際の底変換への接続：次の型つきの法則
+
+- `closedRestrictionBaseChangeMap f i v`：i:Z→X、f:X→S、v:T→S に対し、既存の pullback.lift による pullback(i≫f,v)→pullback(f,v)。二射影の式を持つ。
+- `isPullback_closedRestrictionBaseChangeMap`：この射と元の i の四辺は pullback square。
+- `isClosedImmersion_closedRestrictionBaseChangeMap`：元の i が閉埋め込みなら、同じ実際の底変換射も閉埋め込み。
+- `closedRestrictionBaseChangeMap_properties`：i≫f の平坦・局所有限表示・準コンパクト性を、底変換射と第二射影の合成へ渡す。
+- `closedRestrictionBaseChangeMap_contains_preimage`：f⁻¹U⊆range i なら、底変換後も第二射影の v⁻¹U の逆像は底変換した i の像に入る。
+
+以上は Noether 模型上の strictTransformι をそのまま底変換する法則。原典 Rydh Proposition 3.7、既存の Cartesian な底変換の標準性質。見込み 80〜180 行で、独立な存在構成として数えない。
+
+- `iteratedModelBaseChangeMap`：IsPullback a x f₀ g（元の affine tensor 模型）と IsPullback v p p₀ g（固有模型の底変換）から、pullback(pullback.snd f₀ p₀,v)→X を普遍性で構成する。
+- `isPullback_iteratedModelBaseChangeMap`：同じ射、第二射影、x、p の四辺は pullback square。
+- `isSchemeVCover_iteratedModelBaseChange`：IsSchemeVCover x を、その第二射影へ渡す。
+
+二つ目の束は pullback の貼り合わせと既存の IsSchemeVCover.baseChange の法則（見込み 80〜180 行）。AffineTensorModelPullback からの v 判定を、閉包絡へ渡す周辺空間の v 判定へ接続する。A07 の完成とは区別する。
+
+一覧：済み 8／全体 13（うち追加 4）。
+
+模型上の指定開の像と稠密性の法則：`range_contains_open_of_isIso_restrict` は IsIso(f∣U) から U⊆range f を得る。`denseRange_openRestriction_of_model_baseChange` は IsPullback v p p₀ g、U₀⊆range p₀、Dense(g⁻¹U₀) から DenseRange((p⁻¹(g⁻¹U₀)).ι≫p) を得る。Rydh Proposition 3.7 の、模型上で同型な開と元の基底上の稠密開を比較する法則（見込み 40〜100 行）。
+
+模型の底変換と閉包絡の組立ての法則：`exists_fppf_proper_refinement_of_flat_model` は、IsSchemeVCover x:X→Spec R、実際の IsPullback a x f₀ g、固有・局所有限表示 p₀:Y₀→S₀、平坦・局所有限表示・準コンパクトな閉部分 i₀:Z₀→pullback(f₀,p₀)、指定開 U₀⊆range p₀、g⁻¹U₀ の準コンパクト性と稠密性、指定開上の閉部分の包含を入力にする。結論は同じ x の、有限表示の固有全射 r:T→Spec R と fppf 被覆 q:W→T による細分 a':W→X（a'≫x=q≫r）。模型の周辺空間・閉部分・基底を全て実際の pullback として構成し、直前の法則と C02 を合成する（Rydh Proposition 3.7、見込み 100〜250 行）。入力の模型の存在そのものを仮定した A07 の完成とはしない。次に GenericFlatNoetherianModel と Noether 平坦化からその模型を供給する。
+
+A07 の被約・極小素点集合が準コンパクトな場合の出口：`exists_fppf_proper_refinement_vCover_affineReduced_compact_minimalPrimes` は、任意の被約環 R、有限表示 R-代数 B、IsCompact{q:Spec R | q∈minimalPrimes R} と Spec B→Spec R の v 判定から、有限表示の固有全射 r:T→Spec R、fppf q:W→T、b:W→Spec B、b≫(Spec B→Spec R)=q≫r を構成する。GenericFlatNoetherianModel の実際の係数模型と一般平坦開、FiniteTypeFlatteningNoetherian の中心・strictTransformι、AffineTensorModelPullback を前の組立てへ渡す。Rydh Proposition 3.7 のこの場合の適用（見込み 100〜300 行）。A07 の任意の R の主張は変えず、C01 の整拡大と有限表示段への移送は引き続き残る。
+
+### 実際の Noether 模型と平坦な閉部分の底変換：検証結果
+
+五モジュール計 **345 行**、入口 5 行。下書き一式の検証後、個々の本体と直接の importer AlgebraicGeometry の対象ビルド **4,867 ジョブ成功**。五モジュールの小監査は補助宣言込み **28 宣言・標準三公理のみ**、終了コード 0。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`scheme-drafts/2g-flat-model-batch-check-3.log`、`2g-flat-model-native.log`、`2g-flat-model-audit.log`。
+
+| 登録モジュール | 行数 |
+| --- | ---: |
+| ClosedRestrictionBaseChange | 78 |
+| IteratedModelBaseChange | 69 |
+| DenseOpenModelBaseChange | 48 |
+| FlatModelBaseChangeRefinement | 73 |
+| CompactMinimalPrimeVCoverRefinement | 77 |
+
+- `closedRestrictionBaseChangeMap`：閉部分を同じ底変換で運ぶ実際の pullback.lift。
+- `closedRestrictionBaseChangeMap_fst`・`_assoc`：模型側への第一射影の可換式。
+- `closedRestrictionBaseChangeMap_snd`・`_assoc`：元の基底への第二射影の可換式。
+- `isPullback_closedRestrictionBaseChangeMap`：同じ底変換射と元の閉部分の射は Cartesian。
+- `isClosedImmersion_closedRestrictionBaseChangeMap`：元の閉埋め込みの実際の底変換も閉埋め込み。
+- `closedRestrictionBaseChangeMap_properties`：平坦・局所有限表示・準コンパクトな構造射の三性質を同じ底変換へ渡す。
+- `closedRestrictionBaseChangeMap_contains_preimage`：指定開の逆像が閉部分の像に入る条件を同じ底変換へ渡す。
+- `iteratedModelBaseChangeMap`：tensor 模型と固有模型の二つの pullback square から、元の空間へ戻す実際の射。
+- `iteratedModelBaseChangeMap_fst`・`_assoc`：元の模型の第一射影との可換式。
+- `iteratedModelBaseChangeMap_base`・`_assoc`：元の基底の構造射との可換式。
+- `isPullback_iteratedModelBaseChangeMap`：同じ射と周辺空間の第二射影は元の射の底変換を与える。
+- `isSchemeVCover_iteratedModelBaseChange`：元の v 判定を底変換した周辺空間へ渡す。
+- `range_contains_open_of_isIso_restrict`：制限が同型な開の全点は元の射の像に入る。
+- `denseRange_openRestriction_of_model_baseChange`：模型の指定開の像と元の基底上の稠密性から、同じ底変換の開の稠密像を得る。
+- `exists_fppf_proper_refinement_of_flat_model`：実際の平坦な閉部分を持つ模型、tensor 比較、指定開の条件を C02 へ渡し、元の射の fppf–proper 細分を組み立てる。
+- `exists_fppf_proper_refinement_vCover_affineReduced_compact_minimalPrimes`：被約 R と極小素点集合の準コンパクト性を仮定し、任意の有限表示 R-代数 B の v 判定から、有限表示の固有全射と fppf 被覆による実際の細分を構成する。
+
+最後の出口は模型の存在を追加仮定にせず、GenericFlatNoetherianModel と Noether 基底上の有限型射の平坦化から実際に模型を選ぶ。元の射に平坦性・固有性を仮定しない。模型上の指定開が稠密であるとは仮定せず、元の基底への逆像の稠密性を使う。平坦な閉部分は Noether 模型上の狭義変換の底変換であり、非 Noether 基底上の生の狭義変換の平坦性を使わない。
+
+G1 累計は本体 **4,183 行**、入口込み **4,264 行**。A07 の任意の基底の主張は未完：C01 の整拡大後のこの細分を有限・有限表示段へ降ろし、固有性・全射性・因子化を同じ段でそろえる接続が残る。G2 の一般の有限表示固有模型の構成と使う部品を共有して進める。
+
+一覧：済み 8／全体 13（うち追加 4）。
