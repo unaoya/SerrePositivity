@@ -7947,6 +7947,10 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMap,
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMapPullback]
 
+@[noinline] private def derivedAuditExpectedChunk39 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Thick,
+  `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThickClosureLaws]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -8437,7 +8441,8 @@ run_cmd do
     derivedAuditExpectedChunk35 ++
     derivedAuditExpectedChunk36 ++
     derivedAuditExpectedChunk37 ++
-    derivedAuditExpectedChunk38
+    derivedAuditExpectedChunk38 ++
+    derivedAuditExpectedChunk39
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -1100,6 +1100,36 @@ import SerrePositivity.EInfinity.PowerOperation.MayPrimeFieldZeroSource
 import SerrePositivity.EInfinity.PowerOperation.MayRepeatedZeroInput
 import SerrePositivity.EInfinity.PowerOperation.MayZeroActionEvaluation
 import SerrePositivity.EInfinity.PowerOperation.MayZeroIsoTransport
+import SerrePositivity.EInfinity.BarrattEccles.Modules.AlgebraModelComparison
+import SerrePositivity.EInfinity.BarrattEccles.Modules.AlgebraRoundTripComparison
+import SerrePositivity.EInfinity.BarrattEccles.Modules.AssociativeForget
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StandardCoefficient
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictAdjunction
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictFunctoriality
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictModules
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawCartesian
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawCoherence
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawFamily
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawFiber
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawModules
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRegularSection
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRestrictionComparison
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictUnderlyingComparison
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictUnderlyingRestriction
+import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictWeakRestriction
+import SerrePositivity.EInfinity.BarrattEccles.Modules.TotalLocalization
+import SerrePositivity.EInfinity.Modules.DGCounitRecovery
+import SerrePositivity.EInfinity.Modules.DGGraphCounit
+import SerrePositivity.EInfinity.Modules.DGGraphNerveAdjunction
+import SerrePositivity.EInfinity.Modules.DGResolutionAdjunction
+import SerrePositivity.EInfinity.Modules.DGRestrictionLaws
+import SerrePositivity.EInfinity.Modules.FreeHammockCoefficientLaws
+import SerrePositivity.EInfinity.Modules.FreeHammockCoefficientNerve
+import SerrePositivity.EInfinity.Modules.LocalizationSourceNaturality
+import SerrePositivity.EInfinity.Modules.RelativeCylinderLaws
+import SerrePositivity.EInfinity.Modules.RelativeLocalizationEquivalence
+import SerrePositivity.EInfinity.Modules.RelativeNaturalComparison
+import SerrePositivity.EInfinity.Modules.ThickTensorIdeal
 
 /-!
 概要：段階 II で BS の drafts から本体へ移したモジュールを公理監査する。
@@ -2211,7 +2241,37 @@ run_cmd do
     `SerrePositivity.EInfinity.PowerOperation.MayPrimeFieldZeroSource,
     `SerrePositivity.EInfinity.PowerOperation.MayRepeatedZeroInput,
     `SerrePositivity.EInfinity.PowerOperation.MayZeroActionEvaluation,
-    `SerrePositivity.EInfinity.PowerOperation.MayZeroIsoTransport]
+    `SerrePositivity.EInfinity.PowerOperation.MayZeroIsoTransport,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.AlgebraModelComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.AlgebraRoundTripComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.AssociativeForget,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StandardCoefficient,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictAdjunction,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictFunctoriality,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictModules,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawCartesian,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawCoherence,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawFamily,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawFiber,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawModules,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRegularSection,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRestrictionComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictUnderlyingComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictUnderlyingRestriction,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.StrictWeakRestriction,
+    `SerrePositivity.EInfinity.BarrattEccles.Modules.TotalLocalization,
+    `SerrePositivity.EInfinity.Modules.DGCounitRecovery,
+    `SerrePositivity.EInfinity.Modules.DGGraphCounit,
+    `SerrePositivity.EInfinity.Modules.DGGraphNerveAdjunction,
+    `SerrePositivity.EInfinity.Modules.DGResolutionAdjunction,
+    `SerrePositivity.EInfinity.Modules.DGRestrictionLaws,
+    `SerrePositivity.EInfinity.Modules.FreeHammockCoefficientLaws,
+    `SerrePositivity.EInfinity.Modules.FreeHammockCoefficientNerve,
+    `SerrePositivity.EInfinity.Modules.LocalizationSourceNaturality,
+    `SerrePositivity.EInfinity.Modules.RelativeCylinderLaws,
+    `SerrePositivity.EInfinity.Modules.RelativeLocalizationEquivalence,
+    `SerrePositivity.EInfinity.Modules.RelativeNaturalComparison,
+    `SerrePositivity.EInfinity.Modules.ThickTensorIdeal]
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

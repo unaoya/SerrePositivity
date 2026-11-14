@@ -2728,6 +2728,8 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexFunctorEvaluation
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMap
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMapPullback
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Thick
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThickClosureLaws
 
 
 
