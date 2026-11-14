@@ -11972,19 +11972,16 @@ theorem strictBETotJointNativeHomCoherent_fixSource (X : (operad A).Algebra) :
 #### RightMixedBifunctor（83行）
 
 ```lean
-def rightMixedBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v} where
-  obj X
+def rightMixedBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
 
 theorem rightMixedBifunctor_obj (X : C) :
     (rightMixedBifunctor q r).obj (Opposite.op X) = rightMixedFamily (q.atObject X) r
 
 def sourceFrameHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
 
-def rightMixedLeftBifunctorMap : sourceFrameHomBifunctor q ⟶ rightMixedBifunctor q r where
-  app X
+def rightMixedLeftBifunctorMap : sourceFrameHomBifunctor q ⟶ rightMixedBifunctor q r
 
-def rightMixedRightBifunctorMap : rightFrameHomBifunctor r ⟶ rightMixedBifunctor q r where
-  app X
+def rightMixedRightBifunctorMap : rightFrameHomBifunctor r ⟶ rightMixedBifunctor q r
 
 theorem rightMixedLeftBifunctorMap_app (X : C) :
     (rightMixedLeftBifunctorMap q r).app (Opposite.op X) =
@@ -11993,7 +11990,6 @@ theorem rightMixedLeftBifunctorMap_app (X : C) :
 theorem rightMixedRightBifunctorMap_app (X : C) :
     (rightMixedRightBifunctorMap q r).app (Opposite.op X) =
       rightMixedRight (q.atObject X) r
-
 ```
 
 #### StrictDiagramTotJointFirstSpan（159行）
@@ -12003,8 +11999,7 @@ def strictBETotJointFirstSpanBifunctor :
     Fin 4 → ((operad A).Algebraᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u})
 
 def strictBETotJointFirstSpanUnit :
-    strictBETotJointFirstSpanBifunctor A 0 ⟶ strictBETotJointFirstSpanBifunctor A 1 where
-  app X
+    strictBETotJointFirstSpanBifunctor A 0 ⟶ strictBETotJointFirstSpanBifunctor A 1
 
 def strictBETotJointFirstSpanRight :
     strictBETotJointFirstSpanBifunctor A 1 ⟶ strictBETotJointFirstSpanBifunctor A 2
@@ -12046,7 +12041,6 @@ theorem strictBETotJointFirstSpanCoherent_zero :
 
 def strictBETotJointFirstSpanComparison :
     FunctorIso (strictBETotJointRawHomCoherent A) (strictBETotJointFirstSpanCoherent A 3)
-
 ```
 
 ## 187. R03d：同じ固定始域比較で正規化された両変数比較の追加（紙、11-15）
@@ -12232,9 +12226,7 @@ theorem twistedPairingSimplexMap_comp (i j k : Fin (n+n+1+1))
     twistedPairingSimplexMap A B h σ i k (hij.trans hjk) =
       twistedPairingSimplexMap A B h σ i j hij ≫ twistedPairingSimplexMap A B h σ j k hjk
 
-def twistedPairingSimplex : Fin (n+n+1+1) ⥤ C where
-  obj
-
+def twistedPairingSimplex : Fin (n+n+1+1) ⥤ C
 ```
 
 #### TwistedPairingCrossNaturality（50行）
@@ -12251,7 +12243,6 @@ theorem twistedPairingCross_reindex {m : ℕ} (α : Fin (m+1) →o Fin (n+1))
     (a b : Fin (m+1)) :
     twistedPairingCross A B h (α.monotone.functor ⋙ σ) a b =
       twistedPairingCross A B h σ (α a) (α b)
-
 ```
 
 #### TwistedPairingCoordinates（93行）
@@ -12293,7 +12284,6 @@ theorem twistedPairingSimplexMap_right_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
     HEq (twistedPairingSimplexMap A B h σ i j hij)
       (B.map (σ.map (homOfLE (show twistedPairingRightIndex i hi ≤ twistedPairingRightIndex j hj
         by dsimp [twistedPairingRightIndex]; exact Nat.sub_le_sub_right hij _))))
-
 ```
 
 ## 191. 同じtwisted arrowへの全写像と二射影、R03dの半分での実測（11-15）
@@ -12369,7 +12359,6 @@ theorem twistedPairingCross_heq {a b c d : Fin (n+1)} (ha : a = c) (hb : b = d) 
 theorem twistedPairingSimplex_reindex :
     (edgewiseWeightReindexOrderHom.{u} α).monotone.functor ⋙ twistedPairingSimplex A B h σ =
       twistedPairingSimplex A B h (α.toOrderHom.monotone.functor ⋙ σ)
-
 ```
 
 #### TwistedPairingNerve（48行）
@@ -12380,17 +12369,15 @@ theorem twistedPairingWeightIso_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
       (edgewiseWeightIso m).hom ≫ stdSimplex.map
         (SimplexCategory.mkHom (edgewiseWeightReindexOrderHom.{u} α))
 
-def twistedPairingNerveMap : nerve I ⟶ TwistedArrow (nerve C) where
-  app n
-
+def twistedPairingNerveMap : nerve I ⟶ TwistedArrow (nerve C)
 ```
 
 #### NerveOppositeEvaluation（32行）
 
 ```lean
 theorem nerveOppositeIso_inv_apply {n : ℕ} (σ : ComposableArrows Cᵒᵖ n) :
-    (nerveOppositeIso (C
-
+    (nerveOppositeIso (C := C)).inv.app (Opposite.op ⦋n⦌) σ =
+      SSet.opObjEquiv.symm (nerveUnreverseChain σ)
 ```
 
 #### TwistedPairingRestrictions（69行）
@@ -12409,7 +12396,6 @@ theorem twistedPairingSimplex_restrict_right :
 theorem twistedPairingSimplex_restrict_left :
     (joinLeftOrderHom n n).monotone.functor ⋙ twistedPairingSimplex A B h σ =
       nerveUnreverseChain (σ ⋙ A)
-
 ```
 
 #### TwistedPairingProjections（67行）
@@ -12420,12 +12406,11 @@ theorem twistedPairingNerveMap_right :
 
 theorem twistedPairingNerveMap_left :
     twistedPairingNerveMap A B h hh ≫ edgewiseLeft (nerve C) =
-      nerveMap A ≫ (nerveOppositeIso (C
+      nerveMap A ≫ (nerveOppositeIso (C := C)).inv
 
 theorem twistedPairingNerveMap_projection :
     twistedPairingNerveMap A B h hh ≫ twistedArrowProjection (nerve C) =
-      lift (nerveMap A ≫ (nerveOppositeIso (C
-
+      lift (nerveMap A ≫ (nerveOppositeIso (C := C)).inv) (nerveMap B)
 ```
 
 ## 192. R03e：通常のGrothendieck構成の厳密なweighted nerve比較（紙、11-15）
@@ -12480,8 +12465,7 @@ R03eだけで後半の相対Kan比較が済むとは扱わない。要素圏の�
 def grothWeightedPrefixIndex (i : Fin (n+1)) (k : Fin (i.val+1)) : Fin (n+1)
 
 def grothWeightedPrefixArrow (i : Fin (n+1)) :
-    Fin (i.val+1) ⥤ CostructuredArrow (Grothendieck.forget F) (σ.obj i).base where
-  obj k
+    Fin (i.val+1) ⥤ CostructuredArrow (Grothendieck.forget F) (σ.obj i).base
 
 def grothWeightedPrefixFiber (i : Fin (n+1)) : Fin (i.val+1) ⥤ F.obj (σ.obj i).base
 
@@ -12493,5 +12477,69 @@ theorem grothWeightedPrefixFiber_obj (i : Fin (n+1)) (k : Fin (i.val+1)) :
 
 theorem grothWeightedPrefixFiber_last (i : Fin (n+1)) :
     (grothWeightedPrefixFiber F σ i).obj (Fin.last i.val) = (σ.obj i).fiber
+```
 
+## 194. R03eの全prefix係数と順向きの単体写像（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未完了。
+
+prefixの包含に対する自然性を、既存transportの自然性から示した。これをYonedaで元の重み係数の自然変換にし、任意の面・退化への自然性を保つ順向きの単体集合写像に束ねた。元の基底への射影との等式も厳密に成立する。逆向きの単体の関手性と両往復はまだ残る。
+
+263：新規三本の対象ビルド1,172 jobs・終了0、小監査113本852宣言・標準三公理のみ。実ハンドル66924の終了0を確認し、鍵返却済み。今回164行、累計113本・7,518行（外枠15,000）。R03eは229行／見込み500〜900行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+併せて直近の報告の型抜粋で、`where`で始まる構成の本体まで入っていた箇所を型のみへ直した。宣言や型の変更ではない。R03d・R02の指定錐の族・無条件のnative極限性は未完了のまま。次は元のweighted係数から回収した逆向きの射列と両往復を示す。
+
+### 194.1 型
+
+#### GrothendieckWeightedNervePrefixNaturality（55行）
+
+```lean
+theorem grothWeightedPrefixArrow_naturality {i j : Fin (n+1)} (f : i ⟶ j) :
+    grothWeightedPrefixArrow F σ i ⋙ CostructuredArrow.map (S := Grothendieck.forget F) (σ.map f).base =
+      (simplexPrefixInclusion i.val j.val (leOfHom f)).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixArrow F σ j
+
+theorem grothWeightedPrefixFiber_naturality {i j : Fin (n+1)} (f : i ⟶ j) :
+    (simplexPrefixInclusion i.val j.val (leOfHom f)).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixFiber F σ j =
+      grothWeightedPrefixFiber F σ i ⋙ (F.map (σ.map f).base).toFunctor
+```
+
+#### GrothendieckWeightedNerveCoefficients（43行）
+
+```lean
+def grothWeightedNerveCoefficients :
+    simplexPrefixWeight n ⟶ (σ ⋙ Grothendieck.forget F) ⋙ (F ⋙ nerveFunctor)
+
+def grothWeightedNerveSimplex : weightedNerveSimplex (F ⋙ nerveFunctor) n
+
+theorem grothWeightedNerveSimplex_base :
+    (grothWeightedNerveSimplex F σ).1 = σ ⋙ Grothendieck.forget F
+```
+
+#### GrothendieckWeightedNerveForward（66行）
+
+```lean
+theorem grothWeightedPrefixArrow_reindex {m n : SimplexCategory} (α : m ⟶ n)
+    (σ : ComposableArrows (Grothendieck F) n.len) (i : Fin (m.len+1)) :
+    grothWeightedPrefixArrow F (α.toOrderHom.monotone.functor ⋙ σ) i =
+      (simplexPrefixRestriction α i).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixArrow F σ (α.toOrderHom i)
+
+theorem grothWeightedPrefixFiber_reindex {m n : SimplexCategory} (α : m ⟶ n)
+    (σ : ComposableArrows (Grothendieck F) n.len) (i : Fin (m.len+1)) :
+    grothWeightedPrefixFiber F (α.toOrderHom.monotone.functor ⋙ σ) i =
+      (simplexPrefixRestriction α i).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixFiber F σ (α.toOrderHom i)
+
+theorem grothWeightedNerveSimplex_reindex {m n : SimplexCategory} (α : m ⟶ n)
+    (σ : ComposableArrows (Grothendieck F) n.len) :
+    grothWeightedNerveSimplex F (α.toOrderHom.monotone.functor ⋙ σ) =
+      weightedNerveSimplexMap (F ⋙ nerveFunctor) α (grothWeightedNerveSimplex F σ)
+
+def grothWeightedNerveForward : nerve (Grothendieck F) ⟶ weightedNerve (F ⋙ nerveFunctor)
+
+theorem grothWeightedNerveForward_projection :
+    grothWeightedNerveForward F ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+      nerveMap (Grothendieck.forget F)
 ```
