@@ -1106,3 +1106,10 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 一覧：済み 10／全体 14（うち追加 0）。[第56束](bulk-5inf0/draft-block56-validation.json)の診断を分け、第57束で普遍prismの正則性を乗法の単射性として明示し、p完備剰余環でpと互いに素な整数が単元になる既存の証明を同じ引数で記した。本体の非公開名を直接使うのをやめた。零次形式は既存の完備形式・複体延長の同型で読み、非公開の定義を展開する範囲だけno_exposeとした。関手の合成の等式は局所的な略記を明示して結合律で揃えた。新しい比較仮定・数学の項目・sorryは加えていない。
 
 [第57束](bulk-5inf0/draft-block57-validation.json)で、これらとzigzagの部分は通った。ファイル全体はrootFormsAugmentationの二つの端点の照合で失敗。nerveの零単体の評価と同じ形式関手の頂点を定義上の等式で揃え、第58束で再検査する。有効な成功は43／57本のまま。Leanの追加・削除は5,460行で外枠11,100行の内側。
+
+
+### 5∞-0 のdraft検査・第58〜59束と静的な再確認（11-14夜）
+
+一覧：済み 10／全体 14（うち追加 0）。[第58束](bulk-5inf0/draft-block58-validation.json)と[第59束](bulk-5inf0/draft-block59-validation.json)でもrootFormsAugmentationの端点の照合が残った。第60束では零単体の添字を明示し、nerveMap_app_mk₀の等式をcongrArgで渡す形で確認する。他の部分は第57束と同様に通り、未説明の失敗を成功には数えていない。
+
+[静的再確認](bulk-5inf0/draft-static-block60.json)：本体32,937ファイルと全57draftsの公開名の重複候補0。draftsとその前提のimportグラフ12,939頂点で、旧Inputs.Perfectoidization・Inputs.PerfectoidizationInterfaceへの経路0。A0〜A9のコード中のsorryは705→569、ファイルごとの増加0（未検査のソースも含むので完成の数値ではない）。全57本の現在のsorryは684。A4のP⁰節は基準とバイト単位で一致し、Sharedの保護ファイルのハッシュは承認済み11箇所の機械的変更の後と一致。変更禁止3ディレクトリの差分0。
