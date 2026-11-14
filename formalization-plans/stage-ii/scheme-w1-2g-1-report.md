@@ -1301,3 +1301,30 @@ B01 の段の開包含と有限個の式の移送（着手前の型、合計見�
 G1・G2共用部品込み本体8,332行、入口込み8,479行。一般の有限表示対象の模型の分割1,670行。次の段の開包含・有限個の式の移送は未検証下書きでこの実測に含めない。有限個の逆・cocycle の式を同じ段へそろえた gluing datum の供給、全体の模型、一般の固有性の降下、被覆模型が残る。B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+同じ段の三重交叉の移送（着手前の型、見込み100〜220行）：`baseChangedOverlapTripleComparison` と `isPullback_baseChangedOverlapTripleComparison` は、二つの開の段の底変換の交叉から元の二つの開の交叉への比較と、その係数基底上の Cartesian 性。`baseChangedOverlapTripleIso` は実際の段の二重交叉同士の pullback と、固定した三重交叉模型の底変換との具体的な同型を返す。`_hom_fst`・`_hom_snd` は段の基底座標と固定三重交叉への射影を保持する法則。既存の二つの Cartesian 比較・貼り合わせ・普遍性で作り、三重交叉の元の射を降ろして得た射を gluing datum の L に渡す。親項目は増やさない。
+
+
+B01 の段の射の自然性と実際の三種の射の読出し（着手前の型、見込み100〜250行）：`CartesianModelArrow.targetLiftAt` は元の射と基底座標から作る段の標的への lift。`comparisonAt_map` は、同時降下で保持した二射影の式から元の比較と段の射の自然性そのものを返す。`OpenAtlasModelData.stageDiagonal`・`stageReverse`・`stageTriple` は有限族の段の射を実際のチャート・重なり・三重交叉の間の射として取り出す。三重交叉は前記の具体的な同型で移し、それぞれ `_toBase` で同じ段の構造射上の可換式を保持する。逆・cocycle の式の極限での入力に使う既存構成の自然性・係数移送の法則。親項目は増やさない。
+
+
+### B01：段の開包含・三重交叉の移送・有限個の式の一致判定
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| BaseChangedOverlapMap | 50 | `baseChangedOverlapMap`：同じ段の模型間の実際の射 |
+| 同上 | 同上に含む | `baseChangedOverlapMap_fst`・`_snd`（各 `_assoc`）：段の基底座標と固定模型への射影との可換式 |
+| 同上 | 同上に含む | `isPullback_baseChangedOverlapMap`：この射は元の模型間の射の底変換 |
+| 同上 | 同上に含む | `isOpenImmersion_baseChangedOverlapMap`：開包含性の保存 |
+| FiniteStagePullbackEqualities | 45 | `exists_finite_stage_pullback_equalities_of_isLimit`：基底座標が同じ二射の固定模型への射影が極限で一致すれば、後の一つの段で実際の二射が有限個全て一致 |
+| BaseChangedOverlapTriple | 58 | `baseChangedOverlapTripleComparison`：段の重なりの交叉から固定三重交叉への比較 |
+| 同上 | 同上に含む | `isPullback_baseChangedOverlapTripleComparison`：同じ係数基底の底変換 |
+| 同上 | 同上に含む | `baseChangedOverlapTripleIso`：実際の段の三重交叉と固定三重交叉の底変換の具体的な同型 |
+| 同上 | 同上に含む | `baseChangedOverlapTripleIso_hom_fst`・`_snd`（各 `_assoc`）：同型は基底座標と固定模型への射影を保持 |
+
+本体153行・入口3行。直接 importer AlgebraicGeometry まで対象ビルド4,936ジョブ成功。小監査24宣言（10・1・13）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-stage-overlap-equalities-check-3.log`・`2g-stage-overlap-equalities-native.log`・`2g-stage-overlap-equalities-audit.log`。続けて検証した次の下書きの書換え照合は失敗したが、この三本の対象ビルド・監査はその前に成功している。次の下書きは本体にも実測にも含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体8,485行、入口込み8,635行。一般の有限表示対象の模型の分割1,823行。逆・cocycle の有限個の式の具体的な適用、gluing datum と全体の模型、一般の固有性の降下、被覆模型は残る。B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。

@@ -1432,3 +1432,6 @@ public import SerrePositivity.AlgebraicGeometry.OpenAtlasOriginalArrows
 public import SerrePositivity.AlgebraicGeometry.CartesianModelArrow
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasArrowFamily
 public import SerrePositivity.AlgebraicGeometry.CoefficientArrowStage
+public import SerrePositivity.AlgebraicGeometry.BaseChangedOverlapMap
+public import SerrePositivity.AlgebraicGeometry.FiniteStagePullbackEqualities
+public import SerrePositivity.AlgebraicGeometry.BaseChangedOverlapTriple
