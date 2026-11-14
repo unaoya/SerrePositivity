@@ -1,5 +1,5 @@
 {
-  "completed_or_authorized_deferred": 11,
+  "completed_or_authorized_deferred": 12,
   "total": 14,
   "additional": 0,
   "items": [
@@ -23,7 +23,8 @@
     },
     {
       "id": "A05",
-      "state": "pending_draft_typechecks"
+      "state": "PASS",
+      "evidence": "All A8 whole-file checks PASS: W13AssemblyInputs initial batch; AlmostConnectivity block52; AlmostPurityConnectivity block73; IntegralDiscreteness block74. Canonical main owners used for the forty planned overlaps; distinct original statements retained."
     },
     {
       "id": "A06",

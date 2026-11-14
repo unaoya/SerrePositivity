@@ -1196,3 +1196,10 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 一覧：済み 11／全体 14（うち追加 0）。[第73束](bulk-5inf0/draft-block73-validation.json)でAlmostPurityConnectivityが成功。有効な成功は55／57本。本体への参照、D3の対象のpt、孤立していた移動済み宣言の注記の整理が通った。検査済みソースをコミットする。
 
 次のIntegralDiscretenessはquotientTensorを呼ぶ2箇所で失敗。本体Almost/AlmostTensor.leanの変数宣言を確認し、同じRは暗黙引数なので(R := R)と明示して渡す。型の内容・仮定は変えず、第74束に並んだ。残るのはこの1本とA9/Assembly。
+
+
+### 5∞-0 のdraft検査・第74束、A05完了（11-14夜）
+
+一覧：済み 12／全体 14（うち追加 0）。[第74束](bulk-5inf0/draft-block74-validation.json)でIntegralDiscretenessが成功。有効な成功は56／57本。同じRをquotientTensorの暗黙引数として渡すことが通った。A8の全件が揃ったためA05をPASSへ更新し、本体の40対応の台帳も全体の型検査済みにした。この検査済みソースをコミットする。
+
+最後のAssemblyは失敗。構造の各欄へ同じhRを名前付き引数で渡し、PerfectoidizationInterfaceE3の実際の名前空間PerfectoidizationInterfaceを開く。既存のTheoryからE3への還元を使う方針はそのまま。界面の型・主張・仮定は変更しない。第75束で検査する。残る項目はA04・A07。

@@ -8,7 +8,7 @@
       "line": 36,
       "signature_source": "def quotientPerfdMap : R →+* QuotientPerfectoidization R J p hR"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -19,7 +19,7 @@
       "line": 40,
       "signature_source": "def perfectoidKernel : Ideal R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -30,7 +30,7 @@
       "line": 36,
       "signature_source": "abbrev DVertex"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -41,7 +41,7 @@
       "line": 39,
       "signature_source": "def completedModuleTensor (p : ℕ) (A : Type u) [CommRing A] (X Y : DVertex A) : DVertex A"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -52,7 +52,7 @@
       "line": 57,
       "signature_source": "abbrev kernelTensor (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]\n    (hR : IsIntegralPerfectoid R p) (J : Ideal R) (M : DVertex R) : DVertex R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -63,7 +63,7 @@
       "line": 87,
       "signature_source": "abbrev quotientTensor (M : DVertex R) : DVertex R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -74,7 +74,7 @@
       "line": 88,
       "signature_source": "def IsJAlmostZero (M : DVertex R) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -85,7 +85,7 @@
       "line": 93,
       "signature_source": "def IsAlmostConnective (M : DVertex R) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -96,7 +96,7 @@
       "line": 396,
       "signature_source": "theorem isAlmostZero_iff_completedTensor_isZero\n    (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))\n    (M : DVertex R) (hM : isPCompleteVertex p R M) :\n    IsJAlmostZero p R hR J M ↔ IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj\n      ⟨kernelTensor p R hR J M⟩)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -107,7 +107,7 @@
       "line": 473,
       "signature_source": "theorem isAlmostConnective_iff_completedTensor_connective\n    (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))\n    (M : DVertex R) (hM : isPCompleteVertex p R M) :\n    IsAlmostConnective p R hR J M ↔ Derived.IsConnectiveAt R 0 (kernelTensor p R hR J M)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -118,7 +118,7 @@
       "line": 482,
       "signature_source": "theorem connective_iff_almost\n    (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))\n    (M : DVertex R) (hM : isPCompleteVertex p R M) :\n    Derived.IsConnectiveAt R 0 M ↔ Derived.IsConnectiveAt R 0 (quotientTensor p hR J M) ∧\n      IsAlmostConnective p R hR J M"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -129,7 +129,7 @@
       "line": 69,
       "signature_source": "theorem perfectoidIdeal_radical :\n    perfectoidKernel p R hR J = perfectoidKernel p R hR J.radical"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -140,7 +140,7 @@
       "line": 98,
       "signature_source": "theorem isAlmostZero_radical (M : DVertex R) :\n    IsJAlmostZero p R hR J M ↔ IsJAlmostZero p R hR J.radical M"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
@@ -151,7 +151,7 @@
       "line": 157,
       "signature_source": "theorem isAlmostZero_iff_forall_gen (J : Ideal R) {r : ℕ} (f : Fin r → R)\n    (hf : J = Ideal.span (Set.range f)) (M : DVertex R) (hM : isPCompleteVertex p R M) :\n    IsJAlmostZero p R hR J M ↔ ∀ i, IsJAlmostZero p R hR (Ideal.span {f i}) M"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -162,7 +162,7 @@
       "line": 38,
       "signature_source": "abbrev AwaySplitting (g : R) (r : ℕ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -173,7 +173,7 @@
       "line": 43,
       "signature_source": "def splitSource (g : R) (r : ℕ) (e : AwaySplitting R S g r) :\n    S →ₐ[R] (Fin r → Localization.Away g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -184,7 +184,7 @@
       "line": 51,
       "signature_source": "def splitProduct (g : R) (r : ℕ) : (Fin r → R) →ₐ[R] (Fin r → Localization.Away g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -195,7 +195,7 @@
       "line": 60,
       "signature_source": "def trivialCoverComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :\n    Subalgebra R (Fin r → Localization.Away g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -206,7 +206,7 @@
       "line": 65,
       "signature_source": "def sourceToComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :\n    S →ₐ[R] trivialCoverComparison R S g r e"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -217,7 +217,7 @@
       "line": 71,
       "signature_source": "def productToComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :\n    (Fin r → R) →ₐ[R] trivialCoverComparison R S g r e"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -228,7 +228,7 @@
       "line": 113,
       "signature_source": "theorem trivialCoverComparison_finite [Module.Finite R S] (g : R) (r : ℕ)\n    (e : AwaySplitting R S g r) : Module.Finite R (trivialCoverComparison R S g r e)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -239,7 +239,7 @@
       "line": 132,
       "signature_source": "theorem trivialCoverComparison_integral [Module.Finite R S] (g : R) (r : ℕ)\n    (e : AwaySplitting R S g r) :\n    (sourceToComparison R S g r e).toRingHom.IsIntegral ∧\n      (productToComparison R S g r e).toRingHom.IsIntegral"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -250,7 +250,7 @@
       "line": 158,
       "signature_source": "theorem trivialCoverComparison_localization_iso (g : R) (r : ℕ) (e : AwaySplitting R S g r) :\n    Function.Bijective (Localization.awayMap (sourceToComparison R S g r e).toRingHom\n      (algebraMap R S g)) ∧\n    Function.Bijective (Localization.awayMap (productToComparison R S g r e).toRingHom\n      (algebraMap R (Fin r → R) g))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -261,7 +261,7 @@
       "line": 255,
       "signature_source": "theorem trivialCoverComparison_isModuleComplete (p : ℕ) [Fact p.Prime]\n    (hR : IsIntegralPerfectoid R p) [Module.Finite R S] (g : R) (r : ℕ)\n    (e : AwaySplitting R S g r) :\n    IsModuleComplete R (p : R) (ModuleCat.of R (trivialCoverComparison R S g r e))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -272,7 +272,7 @@
       "line": 45,
       "signature_source": "def FinitePresentedFinite (U : A_R R) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -283,7 +283,7 @@
       "line": 277,
       "signature_source": "theorem integral_isFilteredColimit_finitePresentation (h : Algebra.IsIntegral R S) :\n    ∃ (I : Type u) (_ : SmallCategory I) (_ : IsFiltered I) (F : I ⥤ A_R R)\n      (η : F ⟶ (Functor.const I).obj (ofAlgebra R S)),\n      (∀ i, FinitePresentedFinite R (F.obj i)) ∧ Nonempty (IsColimit (Cocone.mk _ η))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -294,7 +294,7 @@
       "line": 100,
       "signature_source": "theorem isIntegralPerfectoid_completedFilteredColimit (p : ℕ) [Fact p.Prime]\n    {I : Type u} [SmallCategory I] [IsFiltered I]\n    (F : I ⥤ CommRingCat.{u}) (c : Cocone F) (hc : IsColimit c)\n    (hF : ∀ i, IsIntegralPerfectoid (F.obj i) p) :\n    IsIntegralPerfectoid (completionRing p c.pt) p ∧\n      (∀ (x : c.pt) (n : ℕ), (p : c.pt)^n * x = 0 → (p : c.pt) * x = 0) ∧\n      (∀ i : ℤ, i ≠ 0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat c.pt) i).obj\n        ((derivedComplexCompletionFunctor c.pt (p : c.pt)).obj\n          ((moduleObjectFunctor c.pt).obj (ModuleCat.of c.pt c.pt)))))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -305,7 +305,7 @@
       "line": 63,
       "signature_source": "abbrev reducedAway (g : R)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -316,7 +316,7 @@
       "line": 67,
       "signature_source": "def reducedAwayBase (g : R) : Algebra R (reducedAway R S g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -327,7 +327,7 @@
       "line": 74,
       "signature_source": "def integralClosureInLocalization (g : R) : Subalgebra R (reducedAway R S g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -338,7 +338,7 @@
       "line": 92,
       "signature_source": "def toIntegralClosure (g : R) (h : Algebra.IsIntegral R S) :\n    S →ₐ[R] integralClosureInLocalization R S g"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -349,7 +349,7 @@
       "line": 97,
       "signature_source": "def closureArrow (g : R) (h : Algebra.IsIntegral R S) :\n    ofAlgebra R S ⟶ ofAlgebra R (integralClosureInLocalization R S g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -360,7 +360,7 @@
       "line": 103,
       "signature_source": "theorem integralClosureInLocalization_integral (g : R) (h : Algebra.IsIntegral R S) :\n    (toIntegralClosure R S g h).toRingHom.IsIntegral"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -371,7 +371,7 @@
       "line": 140,
       "signature_source": "theorem integralClosureInLocalization_arcOutside (g : R) (h : Algebra.IsIntegral R S) :\n    ArcOutside R p (closureArrow R S g h) (Ideal.span {algebraMap R S g})"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -382,7 +382,7 @@
       "line": 170,
       "signature_source": "def integralClosureCompletion (g : R) : A_R R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -393,7 +393,7 @@
       "line": 174,
       "signature_source": "def completedClosureArrow (g : R) (h : Algebra.IsIntegral R S) :\n    ofAlgebra R S ⟶ integralClosureCompletion p R S g"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -404,7 +404,7 @@
       "line": 234,
       "signature_source": "theorem integralClosureCompletion_isModuleComplete [Fact p.Prime] (hR : IsIntegralPerfectoid R p)\n    (g : R) (het : FiniteEtaleAway R (S ⧸ nilradical S) g) :\n    let T"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -415,7 +415,7 @@
       "line": 180,
       "signature_source": "theorem arcOutside_completionRing (g : R) (h : Algebra.IsIntegral R S) :\n    ArcOutside R p (completedClosureArrow p R S g h) (Ideal.span {algebraMap R S g})"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
@@ -426,7 +426,7 @@
       "line": 43,
       "signature_source": "theorem exists_finitePresentation_approximation_fixedLocalization (g : R)\n    (het : FiniteEtaleAway R (S ⧸ nilradical S) g) :\n    let T"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
@@ -436,6 +436,6 @@
       "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
       "line": 205
     },
-    "status": "same defining formula; namespace differs; imported explicitly; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks through block74"
   }
 ]
