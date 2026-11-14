@@ -1049,3 +1049,10 @@ A3冒頭の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)も
 一覧：済み 8／全体 14（うち追加 0）。[第44束](bulk-5inf0/draft-block44-validation.json)でA3/DiscreteCaseが約41秒で成功し、有効な成功は34／57本。Frobeniusの制限先のUnder対象は同じC.rightと明示し、零次Frobeniusを同じ台環の環自己準同型という結果型で記述した。環・射・将来のmod p比較の主張は変えず、本体へ寄せた古典的な法則の証明も通った。検査済みのソースをコミットする。
 
 BaseChangeAndTensorは、係数変更を本体のchangePolyへ寄せたこととPΣの完全名の追従は通り、神経の端点の照合2箇所が残った。nerveEquivとYonedaの逆の評価を明示し、第45束で検査する。鍵は各束の終わりに返し、次は同時に1本だけ並んでいる。
+
+
+### 5∞-0 のdraft検査・第45〜47束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第45束](bulk-5inf0/draft-block45-validation.json)・[第46束](bulk-5inf0/draft-block46-validation.json)の端点の診断を受け、余積の包含とYonedaの評価を順に書き換え、同じ神経の辺の始域・終域を定義上の等式で揃えた。[第47束](bulk-5inf0/draft-block47-validation.json)でA2/BaseChangeAndTensorが約39秒で成功。有効な成功は35／57本。この検査済みソースをコミットする。係数変更は本体のchangePolyを直接使い、重複していたmap_id・map_compのsorry2個を除いた。数学的な入力・仮定は追加していない。
+
+同じ束のA4/PerfectoidizationとA3/LciAndQuasiregularは失敗。A3は同じloopを検査済みのformShift S 1で読み、普遍prism射の補題の実際の所有元の名前に合わせる。A4は保護されたP⁰節の外だけで、反復の構文・1単体の添字・pと有界性の引数・ホモトピー圏の表示を合わせる。A4の完備包含・反射・単位はA2の同じ界面を直接使う準備にした。包含は具体的で、反射の存在はA2側の従来の未証明入力のまま一つに集約する。反射の存在を新しく証明したとは扱わない。第48束で検査する。P⁰の保護領域は変更前後で同一と確認した。
