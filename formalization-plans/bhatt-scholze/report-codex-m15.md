@@ -3706,3 +3706,58 @@ propext・Classical.choice・Quot.sound の範囲であることを確認した�
 Reedy fibrancy と単位 cotensor の同定、K の完全忠実性は引き続き未完。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 29. M10 の同じ全単体 cotensor の余単位比較（11-14）
+
+既存の `cochainCounitStdSimplexHomotopyEquiv` は、AW 余単位そのものを順射とする
+全次元の実鎖ホモトピー同値を保持している。これを既存の
+`homPrecomposeHomotopyEquiv` へ送り、値域加群に追加の仮定を課さず、元の全評価で
+係数前合成が擬同型となることを証明した。
+
+同じ AW 余単位の自然性から、単位係数 cotensor の定数図式から同じ全単体族への
+比較を構成した。この比較は元の全加群射について自然で、全次数で擬同型。
+その自然性と二つから三つにより、同じ simplicial 加群の全ての面・退化も擬同型になる。
+いずれも既存の cotensor の余単位・自然性・係数移送・合成の法則と証明の分割で、
+一次 ID は追加しない。
+
+比較の始域は正確に `moduleCotensor A D (𝟙_ (Complex A)) M` である。
+元の加群 M との同定はまだ残る。この比較だけで Reedy fibrancy や
+元の加群からの frame coaugmentation、K の完全忠実性を主張しない。
+文脈は `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]`、`[Small.{u} D]`。
+
+```lean
+lemma moduleCotensorPreMap_quasiIso {K L : Complex A} (f : K ⟶ L)
+    (hf : HomologicalComplex.homotopyEquivalences (ModuleCat A) (.up ℤ) f)
+    (M : ModuleCategory A D) :
+    moduleQuasiIso A D (moduleCotensorPreMap A D f M)
+
+def moduleCotensorCounitNat (M : ModuleCategory A D) :
+    (Functor.const SimplexCategoryᵒᵖ).obj (moduleCotensor A D (𝟙_ (Complex A)) M) ⟶
+      moduleCotensorSimplices A D M
+
+lemma moduleCotensorCounitNat_weak (M : ModuleCategory A D) (n : SimplexCategoryᵒᵖ) :
+    moduleQuasiIso A D ((moduleCotensorCounitNat A D M).app n)
+
+def moduleCotensorCounitFamily :
+    moduleCotensorFunctor A D (𝟙_ (Complex A)) ⋙ Functor.const SimplexCategoryᵒᵖ ⟶
+      moduleCotensorSimplicesFunctor A D
+
+lemma moduleCotensorSimplices_maps_weak (M : ModuleCategory A D)
+    {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) :
+    moduleQuasiIso A D ((moduleCotensorSimplices A D M).map f)
+```
+
+検証結果は本節の末尾へ追記する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+### §29.1 検証と実測
+
+CotensorCounit の通常の対象ビルドは成功し、新しい公開宣言 5 本の依存公理監査も
+成功した（標準の propext・Classical.choice・Quot.sound のみ）。どちらも指定の
+共有鍵・280 秒の塊で実行した。新規 Lean は本節の 1 ファイル 102 行を加えて、
+検証済み累計 59 ファイル・5,886 行・明示宣言 304 本（private 3 本）。
+200 行を超える証明はない。単位則の実装は次節で検証する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
