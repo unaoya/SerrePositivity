@@ -1317,3 +1317,10 @@ R8-4の互換wrapper一個は[削除・利用先変更の台帳](bulk-b3prime/re
 一覧：済み 2／全体 22（うち追加 0）。移動前の基準32d364b53と、R8-2等だけのプレビューで既存の層検査を実行したところ、どちらも既存305モジュールのper-file tier未登録で停止した。[全件と直接import](bulk-b3prime/baseline-unclassified.json)を保存。DiagramComparison149・CosimplicialTotalization91・その他65。これらはgitに追跡された本体であり、作業用一時ファイルではない。例：BKStandardZeroGeneratorはmainの1599b1e50で入った。現mainのlayers.jsonも基準と同じで、未登録を補う新しい表はまだ取り込まれていない。
 
 この失敗を「層の違反0」と扱わず、任意のConsumers指定や例外で覆わない。調整役へ割当の根拠を照会する。その間も、元環境の採取と承認範囲のプレビュー準備は続ける。今回新設するInitialValueConeにはPortableを提案しているが、基準の305件を登録したとは主張しない。
+
+
+### B3′ 準備・305本の層の機械的な登録（11-14夜、調整役の指示に追従）
+
+一覧：済み 2／全体 22（うち追加 0）。調整役が指定したB3のruleをimportの依存順に適用し、[305本の割当表](bulk-b3prime/new-main-tiers.json)を保存。Portable21・Comparison67・Consumers217。既存の層変更0・例外変更0。推測による補正、循環による未決定、tier-order/implementation-boundaryの違反は0。設定への追加はB3′の束に含め、現時点では隔離プレビューの設定にだけ加えた（元環境の本体・設定は採取中のまま）。
+
+[検査の概要](bulk-b3prime/tier-classification-summary.json)と[全出力](bulk-b3prime/tiers-baseline-report.json.gz)を保存。節の順序の逆辺は移動前から46件ある。以前のB3の出力との[差](bulk-b3prime/baseline-layer-delta-from-b3.json)も一覧化した。これらへ新しい例外を加えて0件にせず、今回の変更前後で増えないことを検査する。InitialValueConeの行き先をCofinalityへ直したのも、この新規逆辺を避けるためである。

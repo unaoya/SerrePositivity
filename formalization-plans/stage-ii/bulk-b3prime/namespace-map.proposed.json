@@ -9547,7 +9547,7 @@
     },
     {
       "old": "SerrePositivity.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_injective_aic",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_injective_aic",
+      "new": "SerrePositivity.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_injective_aic",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient",
       "source_line": 141,
@@ -9555,7 +9555,7 @@
     },
     {
       "old": "SerrePositivity.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_aic",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_aic",
+      "new": "SerrePositivity.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_aic",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient",
       "source_line": 205,
@@ -10267,7 +10267,7 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.existsUnique_transition",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPrismaticEnvelope.existsUnique_transition",
+      "new": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.existsUnique_transition",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "source_line": 45,
@@ -10275,7 +10275,7 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPrismaticEnvelope.transition",
+      "new": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "source_line": 60,
@@ -10283,7 +10283,7 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition_comp",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPrismaticEnvelope.transition_comp",
+      "new": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition_comp",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "source_line": 64,
@@ -10291,7 +10291,7 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition_self",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPrismaticEnvelope.transition_self",
+      "new": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition_self",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "source_line": 70,
@@ -10299,7 +10299,7 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition_trans",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPrismaticEnvelope.transition_trans",
+      "new": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.transition_trans",
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
       "source_line": 78,
@@ -10727,14 +10727,6 @@
       "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful",
       "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful",
       "source_line": 210,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope.exists_initial_of_base_quotient",
-      "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsPrismaticEnvelope.exists_initial_of_base_quotient",
-      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInitial",
-      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInitial",
-      "source_line": 44,
       "kind": "theorem"
     },
     {
