@@ -13887,3 +13887,73 @@ def totalElementsNativeClassificationIso :
         ((continuousLeftFibrationReplacement (nerve I)).obj
           (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
 ```
+
+## 223. BEの元の第三図式への適用と同じ全実射の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+全source-frame Homの両変数の添字をAsSmallで、係数だけをULiftで同じ宇宙に持ち上げた全図式から、同じ元のSourceFrameArrowElementsへのdownを52行で記録した。対象では元の両変数・単体次数とラベルのdownを取り、射では元の両変数の射・単体作用素を保つ。元のパラメーターへの射影の厳密な等式と、回収する実射が元のULiftされたラベルのdownそのものという等式を付けた。新しい全要素や射の模型は選んでいない。
+
+これをBEの元のprobeに関手的source frameを適用した図式と、元の標的置換へ適用した。strictBETotJointSourceCoefficientsは元のstrictBETotJointFirstSpanDiagram A 3のAsSmall.downによる前合成そのものであり、その等式はrflである。元の第三図式から、同じ全要素圏の元の置換のnativeな全分類への全FunctorIsoができた。さらに元のstrictBETotJointFirstSpanComparisonを合成し、両変数raw Homから同じnative全分類への全FunctorIsoを得た。BE固有の適用は72行。既存構成の全係数表示・単位・移送と合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+この比較の終域は元の全source-frame要素圏のnativeな全分類であり、正本の二変数Hom∞そのものへの比較はまだ組み立てていない。次は、回収した同じ実射の全pairingと同じ両端を既存twistedPairingNerveMapへ渡し、元の全augmentationの逆による両端の移送へ進む。元の固定始域のroof比較との全FunctorIsoの等式が閉じるまでR03dの完了としない。
+
+個別検査：全要素のdown11509・終了0、BEへの適用を二本結合した検査67659・終了0。300：対象ビルド10,697 jobs・終了0、小監査163本1,153宣言・標準三公理のみ（実ハンドル11457・終了0）。対象とその依存だけのビルドでありrootビルドや公式の大監査は実行していない。鍵はビルド・小監査の間だけ取り、終了と返却を確認した。
+
+今回52＋72＝124行、累計163本・10,557行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 223.1 型
+
+全source-frame係数の共通入力は `{C : Type u} [Category.{v} C] (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)`。BE側は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。
+
+#### LiftedSourceFrameElements（52行）
+
+```lean
+abbrev liftedSourceFrameIndex
+
+def liftedSourceFrameCoefficients : liftedSourceFrameIndex (C := C) ⥤ SSet.{max u v}
+
+def liftedSourceFrameElementsDown :
+    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ SourceFrameArrowElements Q R
+
+theorem liftedSourceFrameElementsDown_parameters :
+    liftedSourceFrameElementsDown Q R ⋙ sourceFrameArrowParameters Q R =
+      Functor.Elements.π (Functor.uncurry.obj (liftedSourceFrameCoefficients Q R)) ⋙
+        (AsSmall.down.prod (𝟭 SimplexCategoryᵒᵖ))
+
+theorem liftedSourceFrameElementsDown_value
+    (X : SimplicialTotalElements (liftedSourceFrameCoefficients Q R)) :
+    sourceFrameArrowValue Q R ((liftedSourceFrameElementsDown Q R).obj X) = X.val.down
+```
+
+#### StrictDiagramTotJointSourceElements（72行）
+
+```lean
+def strictBETotJointSourceFrame :
+    (operad A).Algebra ⥤ SimplexCategory ⥤ (operad A).Algebra
+
+def strictBETotJointSourceCoefficients : strictBETotJointHomIndex A ⥤ SSet.{u+1}
+
+theorem strictBETotJointSourceCoefficients_eq :
+    strictBETotJointSourceCoefficients A =
+      AsSmall.down ⋙ strictBETotJointFirstSpanDiagram A 3
+
+abbrev StrictBETotJointSourceElements
+
+def strictBETotJointSourceElementsProjection :
+    StrictBETotJointSourceElements A ⥤ strictBETotJointHomIndex A
+
+def strictBETotJointSourceElementsDown
+
+def strictBETotJointSourceElementsClassificationIso :
+    FunctorIso (strictBETotJointFirstSpanCoherent A 3)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj
+          (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).hom)
+
+def strictBETotJointRawSourceElementsClassificationIso :
+    FunctorIso (strictBETotJointRawHomCoherent A)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj
+          (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).hom)
+```

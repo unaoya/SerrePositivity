@@ -159,5 +159,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ContinuousLeftFibrationEquivalenceMap",
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsClassification",
   "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.NerveHomUniverseIso",
-  "SerrePositivity.EInfinity.FrameHom.TotalElementsNativeClassification"
+  "SerrePositivity.EInfinity.FrameHom.TotalElementsNativeClassification",
+  "SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameElements",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceElements"
 ]
