@@ -14431,3 +14431,61 @@ theorem simplicialElementsFiberComparison_isQCatEquivalence (i : I) :
 theorem simplicialElementsFiberUnit_isWeakHomotopyEquivalence (i : I) :
     IsWeakHomotopyEquivalence (simplicialElementsFiberUnit F i)
 ```
+
+## 233. 元のnative Hom写像と単位を固定する延長のfiber制限（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は未完了。
+
+元の全要素圏から底上への写像を、既存の同じfiber包含へ制限するsimplicialElementsFiberMapを定義した。元の置換単位を固定する延長について、そのfiberへの制限と元のfiber単位の合成がこの写像に厳密に等しいことを示した。既存の包含・単位・延長の合成則であり、新しい数学的な一覧項目は増やしていない。
+
+BEへの特殊化では同じ全パラメータのstrictBETotJointSourceNativeHomMapを制限した。fiber単位自体の弱同値性はR03gの係数移送から得た。hm・huは元の底射影と元の単位を固定する条件で、§229の実際の延長が満たすものを使う。native Hom写像のfiber制限自身の弱同値性、延長自身の同値性、元の固定始域のroof比較との全FunctorIsoの一致はまだ証明していない。
+
+個別検査は一般版23702・BE版31608とも終了0。312の対象ビルドは12,227 jobsで成功（既存依存を含む対象ビルドでありrootビルドではない）。続く小監査は178本・1,280宣言、標準三公理のみ。ログ/private/tmp/isw2-build312.logの両成功と該当プロセスの終了を確認した。元の実行ハンドルは会話圧縮後に復元できなかったため終了コードを推測して記載しない。鍵を重複取得せず、ビルドを再実行していない。
+
+今回2本101行、累計178本・11,564行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+### 233.1 型
+
+一般版の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`、BE版は `(A : Type u) [CommRing A]`。BEのmodel構造とfunctorial factorizationは既存の指定された局所instanceを使う。
+
+#### SimplicialElementsFiberMap（43行）
+
+```lean
+def simplicialElementsFiberMap {E : SSet.{u}} (p : E ⟶ nerve I)
+    (h : nerve (SimplicialTotalElements F) ⟶ E)
+    (hh : h ≫ p = nerveMap (simplicialTotalElementsProjection F)) (i : I) :
+    nerve ((simplicialElementsCatDiagram F).obj i) ⟶ vertexFiber p (nerveVertex i)
+
+theorem simplicialElementsFiberUnit_map {E : SSet.{u}} (p : E ⟶ nerve I)
+    (h : nerve (SimplicialTotalElements F) ⟶ E)
+    (hh : h ≫ p = nerveMap (simplicialTotalElementsProjection F))
+    (m : (simplicialElementsReplacement F).left ⟶ E)
+    (hm : m ≫ p = (simplicialElementsReplacement F).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).left ≫ m = h) (i : I) :
+    simplicialElementsFiberUnit F i ≫ vertexFiberMap _ p m hm (nerveVertex i) =
+      simplicialElementsFiberMap F p h hh i
+```
+
+#### StrictDiagramTotJointSourceNativeFiber（58行）
+
+```lean
+def strictBETotJointSourceNativeFiberMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) ⟶
+      vertexFiber (strictBETotJointNativeHomProjection A) (nerveVertex P)
+
+theorem strictBETotJointSourceFiberUnit_isWeakHomotopyEquivalence (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P)
+
+theorem strictBETotJointSourceNativeFiberUnit_map
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P ≫
+      vertexFiberMap _ (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) =
+        strictBETotJointSourceNativeFiberMap A P
+```
