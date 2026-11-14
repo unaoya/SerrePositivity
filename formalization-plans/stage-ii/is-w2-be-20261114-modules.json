@@ -59,5 +59,12 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKSections",
   "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointMap",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCoefficientsComparison",
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanUniverseWeight"
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanUniverseWeight",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanUniversePoints",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanUniverseSections",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedDiagramUniverse",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseComparison",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseHomEquiv",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseIso",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniversePoints"
 ]

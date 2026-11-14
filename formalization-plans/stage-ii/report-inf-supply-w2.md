@@ -10924,3 +10924,142 @@ def bousfieldKanUniverseWeightIso : bousfieldKanWeight (AsSmall.{v} J) ≅
     (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}
 
 ```
+
+## 174. 同じBK切断の宇宙変更と指定点（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。
+
+R02〜R03の係数移送の法則として、ULiftとAsSmall.downによる同じ切断空間の比較を構成した。順射は元の普遍評価の転置で、ULiftの全忠実性から各標準単体上で全単射になることを示した。同じBK重みの指定downとの合成が `bousfieldKanUniverseSectionsIso` の順射である。さらに元の自然変換が定める零単体を、同じdownで運んだ自然変換の零単体へ厳密に送ることを示した。新しいKan置換や別の指定点を選んでいない。
+
+7本・366行追加、累計68本・4331行（外枠15,000行）。いずれも200行以下。既存の宇宙変更・切断の普遍性・係数移送の法則で、一覧の追加項目は増やさない。native join錐の族と極限性はまだ未完で、R02/R03を完了とは数えない。
+
+検証：対象ビルド234は1,262 jobs、235は2,346 jobsで成功。235の小監査は68本・434宣言、標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ。両ログで成功と監査完走を確認し、235のプロセスも終了済み。sorry・新規公理なし。共通入口と本体監査には登録せず、上記manifestを調整役への登録候補とする。
+
+次は同じ零単体をEx∞の係数単位に運び、既存の全Hom∞比較およびcoslice分類との比較へ接続する。元の頂点と脚の照合を残す。
+
+### 174.1 今回の法則と証明分割の型
+
+#### BousfieldKanUniversePoints（43行）
+
+```lean
+def bousfieldKanUniverseCone (s : bousfieldKanWeight I ⟶ H) :
+    bousfieldKanWeight (AsSmall.{v} I) ⟶ (weightedDiagramUniverse.{u,v} I).obj H
+
+theorem bousfieldKanUniverseSectionsIso_point (s : bousfieldKanWeight I ⟶ H) :
+    (((bousfieldKanUniverseSectionsIso.{u,v} I H).hom).app (Opposite.op ⦋0⦌))
+      (ULift.up (nativeWeightedPoint I s)) =
+        nativeWeightedPoint (AsSmall.{v} I) (bousfieldKanUniverseCone I s)
+```
+
+#### BousfieldKanUniverseSections（32行）
+
+```lean
+def bousfieldKanUniverseSectionsIso :
+    (SSet.uliftFunctor.{max u v,u}).obj (bousfieldKanHolim H) ≅
+      bousfieldKanHolim ((AsSmall.down : AsSmall.{v} I ⥤ I) ⋙ H ⋙
+        SSet.uliftFunctor.{max u v,u})
+
+theorem bousfieldKanUniverseSectionsIso_hom :
+    (bousfieldKanUniverseSectionsIso.{u,v} I H).hom =
+      weightedSectionsUniverseComparison I (bousfieldKanWeight I) H ≫
+        weightedSectionsPre (bousfieldKanUniverseWeightDown I) ((weightedDiagramUniverse.{u,v} I).obj H)
+```
+
+#### WeightedDiagramUniverse（72行）
+
+```lean
+def weightedDiagramUniverse : (I ⥤ SSet.{u}) ⥤ (AsSmall.{v} I ⥤ SSet.{max u v})
+
+instance weightedDiagramUniverse_full : (weightedDiagramUniverse.{u,v} I).Full
+
+instance weightedDiagramUniverse_faithful : (weightedDiagramUniverse.{u,v} I).Faithful
+
+def weightedDiagramUniverseTensorIso (W : I ⥤ SSet.{u}) (A : SSet.{u}) :
+    (weightedDiagramUniverse.{u,v} I).obj (W ⊗ (Functor.const I).obj A) ≅
+      (weightedDiagramUniverse.{u,v} I).obj W ⊗
+        (Functor.const (AsSmall.{v} I)).obj ((SSet.uliftFunctor.{max u v,u}).obj A)
+
+@[reassoc] theorem weightedDiagramUniverseTensorIso_inv_parameter (W : I ⥤ SSet.{u})
+    {A B : SSet.{u}} (f : A ⟶ B) :
+    ((weightedDiagramUniverse.{u,v} I).obj W ◁
+      (Functor.const (AsSmall.{v} I)).map ((SSet.uliftFunctor.{max u v,u}).map f)) ≫
+        (weightedDiagramUniverseTensorIso I W B).inv =
+      (weightedDiagramUniverseTensorIso I W A).inv ≫
+        (weightedDiagramUniverse I).map (W ◁ (Functor.const I).map f)
+```
+
+#### WeightedSectionsUniverseComparison（47行）
+
+```lean
+def weightedSectionsUniverseEvaluation :
+    (weightedDiagramUniverse.{u,v} I).obj W ⊗
+      (Functor.const (AsSmall.{v} I)).obj
+        ((SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H)) ⟶
+          (weightedDiagramUniverse.{u,v} I).obj H
+
+def weightedSectionsUniverseComparison :
+    (SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H) ⟶
+      weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((weightedDiagramUniverse.{u,v} I).obj H)
+
+theorem weightedSectionsUniverseComparison_map_uncurry {A : SSet.{u}}
+    (f : A ⟶ weightedSections W H) :
+    weightedSectionsUncurry ((SSet.uliftFunctor.{max u v,u}).map f ≫
+      weightedSectionsUniverseComparison I W H) =
+        (weightedDiagramUniverseTensorIso I W A).inv ≫
+          (weightedDiagramUniverse I).map (weightedSectionsUncurry f)
+```
+
+#### WeightedSectionsUniverseHomEquiv（42行）
+
+```lean
+def weightedSectionsUniverseHomEquiv (A : SSet.{u}) :
+    (A ⟶ weightedSections W H) ≃
+      ((SSet.uliftFunctor.{max u v,u}).obj A ⟶
+        weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+          ((weightedDiagramUniverse.{u,v} I).obj H)) where
+  toFun f
+```
+
+#### WeightedSectionsUniverseIso（62行）
+
+```lean
+def weightedSectionsUniverseSimplexEquiv (n : ℕ) :
+    ((SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H)) _⦋n⦌ ≃
+      (weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((weightedDiagramUniverse.{u,v} I).obj H)) _⦋n⦌
+
+theorem weightedSectionsUniverseSimplexEquiv_apply {n : ℕ}
+    (s : ((SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H)) _⦋n⦌) :
+    weightedSectionsUniverseSimplexEquiv I W H n s =
+      (weightedSectionsUniverseComparison.{u,v} I W H).app (Opposite.op ⦋n⦌) s
+
+instance weightedSectionsUniverseComparison_isIso :
+    IsIso (weightedSectionsUniverseComparison.{u,v} I W H)
+
+def weightedSectionsUniverseIso :
+    (SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H) ≅
+      weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((weightedDiagramUniverse.{u,v} I).obj H)
+```
+
+#### WeightedSectionsUniversePoints（68行）
+
+```lean
+@[reassoc] theorem weightedDiagramUniverseTensorIso_zero_fst (W : I ⥤ SSet.{u}) :
+    ((weightedDiagramUniverse.{u,v} I).obj W ◁ (Functor.const (AsSmall.{v} I)).map
+      (uliftStdSimplexIso.{u,max u v} 0).inv) ≫
+        (weightedDiagramUniverseTensorIso I W (Δ[0] : SSet.{u})).inv ≫
+          (weightedDiagramUniverse I).map (fst W ((Functor.const I).obj (Δ[0] : SSet.{u}))) =
+      fst ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((Functor.const (AsSmall.{v} I)).obj (Δ[0] : SSet.{max u v}))
+
+theorem weightedSectionsUniverseComparison_point {W H : I ⥤ SSet.{u}} (s : W ⟶ H) :
+    ((weightedSectionsUniverseComparison.{u,v} I W H).app (Opposite.op ⦋0⦌))
+      (ULift.up (SSet.yonedaEquiv (weightedSectionsLift
+        (fst W ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ s)))) =
+        SSet.yonedaEquiv (weightedSectionsLift
+          (fst ((weightedDiagramUniverse.{u,v} I).obj W)
+            ((Functor.const (AsSmall.{v} I)).obj (Δ[0] : SSet.{max u v})) ≫
+              (weightedDiagramUniverse.{u,v} I).map s))
+```
