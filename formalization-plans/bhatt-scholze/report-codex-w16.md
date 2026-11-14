@@ -19873,3 +19873,293 @@ IntervalCutsの `nullaryOuterCutEquiv`・`nullaryNestedCutEquiv`・`nullary_edge
 
 完備化後のP⁰は§296の全鎖の有限原始元・指定完備化対象の比較を未供給のまま保持する。
 (c)が必要との判定には至っていない。3b-4aもmain未受領のままで、Tot九欄はまだ始めない。
+
+
+## 307. 実際の外側係数の交換と四射の合成（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§112のL12の右辺そのものを記法としてまとめる。新しい作用や模型を選ぶものではなく、
+元のbraiding・associator・外側cochainAction・tensorCoInsertionActionの四射をそのまま保つ。
+IntervalCutsの `coactionComposition_apply` はP,Q,K,W,Xが任意なので再利用する。
+定義の記法と適用の法則の型は次。各証明200行以内。
+
+```lean
+def iteratedCochainAction (S : SSet.{0}) (m n : ℕ) (i : Fin (m + 1)) :
+    (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) ⊗ chains A S ⟶ power (chains A S) (m + n) :=
+  ((β_ (Surjection.complex A (m + 1)) (Surjection.complex A n)).hom ▷ chains A S) ≫
+    (α_ (Surjection.complex A n) (Surjection.complex A (m + 1)) (chains A S)).hom ≫
+    (Surjection.complex A n ◁ cochainAction A S (m + 1)) ≫
+    tensorCoInsertionAction (chains A S) (Surjection.complex A n) m n i (cochainAction A S n)
+
+
+lemma iteratedCochainAction_apply (S : SSet.{0}) (m n : ℕ) (i : Fin (m + 1)) (r s t z : ℤ)
+    (hz : r + s + t = z) (x : (Surjection.complex A (m + 1)).X r) (y : (Surjection.complex A n).X s)
+    (w : (chains A S).X t) :
+    (iteratedCochainAction A S m n i).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) (chains A S) (r + s) t z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A n) r s (r + s) rfl
+          (x ⊗ₜ[A] y) ⊗ₜ[A] w)) =
+      (r * s).negOnePow •
+        (tensorCoInsertionAction (chains A S) (Surjection.complex A n) m n i (cochainAction A S n)).f z
+          (ιTensorObj (Surjection.complex A n) (power (chains A S) (m + 1)) s (r + t) z (by omega)
+            (y ⊗ₜ[A] (cochainAction A S (m + 1)).f (r + t)
+              (ιTensorObj (Surjection.complex A (m + 1)) (chains A S) r t (r + t) rfl
+                (x ⊗ₜ[A] w))))
+```
+
+符号は元のbraidingから出るr*sのnegOnePowである。
+語基底へ適用したr=-d,s=-eの符号を、あとで二段切断の元のd*eの指数と照合する。
+これは正のarityに限るための新しい仮定を付けず、全arityの同じ射の評価として置く。
+
+
+## 308. 外側の実切断和と二つの係数交換（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§307の同じ四射を基底語・正規化生成元で読み、外側の全切断和へ展開する。
+元の既存構成の加法性・係数移動・生成元の評価で、各証明200行以内。
+Aは共通の係数環変数。型は次。
+
+```lean
+lemma positiveNestedCutCoefficient_eq_koszul {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    positiveNestedCutCoefficient u v k c =
+      ((-(d : ℤ) * -(e : ℤ)).negOnePow : ℤ) *
+        (cutSign c.1 (positiveWord u).val *
+          (((-(e : ℤ) * -(positiveNestedPrefixDegree u k c.1 : ℤ)).negOnePow : ℤ) *
+            cutSign c.2 (positiveWord v).val))
+
+lemma iteratedCochainAction_basis_outer_cut_sum (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m (n + 1) k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A (n + 1)) (chains A S)
+        (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A (n + 1))
+          (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A (n + 1) e).inv
+              (Surjection.basis A (n + 1) e (ULift.up v))) ⊗ₜ[A] gen A S q x)) =
+      (-(d : ℤ) * -(e : ℤ)).negOnePow •
+        ∑ s : Cut (m + d) q, cutSign s (positiveWord u).val •
+          (tensorCoInsertionAction (chains A S) (Surjection.complex A (n + 1)) m (n + 1) k
+            (cochainAction A S (n + 1))).f z
+            (ιTensorObj (Surjection.complex A (n + 1)) (power (chains A S) (m + 1))
+              (-(e : ℤ)) (-(d : ℤ) + -(q : ℤ)) z (by omega)
+              ((Surjection.complexXIso A (n + 1) e).inv
+                (Surjection.basis A (n + 1) e (ULift.up v)) ⊗ₜ[A]
+                vectorTensorAt (chains A S) (m + 1)
+                  (fun a => ⟨outputDegree s (positiveWord u) a,
+                    gen A S (outputDegree s (positiveWord u) a)
+                      (S.map (face s (positiveWord u) a).op x)⟩)
+                  (-(d : ℤ) + -(q : ℤ))
+                  (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+                      have hnat : m + d + q + 1 - (m + 1) = d + q
+```
+
+係数の法則は負次数の積を自然数の積へ戻し、元の二つの冪をまとめる。
+外側の展開は§307と§300の同じcochainActionの全切断和の評価、map_sum・map_zsmul。
+正の語で全Cutを保ち、退化項を勝手に削除しない。
+内側の余代入の共通次数・面の合成・二段全添字への再添字付けを続けて接続する。
+
+
+## 309. 内側余代入の指定入力次数と同じ生成元の族（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§308の外側切断項に§300を適用するため、入力テンソルの次数をpと指定する。
+同じ次数移送・合成面の関手則の法則で、各証明200行以内の見込み。
+
+```lean
+lemma tensorCoInsertionAction_cochain_cut_sum_at (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n e : ℕ} (v : Surjection.BasisWord (n + 1) e) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (x : S _⦋(f i).1⦌) (hx : (f i).2 = gen A S (f i).1 x) (p z : ℤ)
+    (hp : -(vectorDegree (chains A S) (m + 1) f : ℤ) = p)
+    (hz : -(e : ℤ) + p = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A (n + 1)) m (n + 1) i
+      (cochainAction A S (n + 1))).f z
+      (ιTensorObj (Surjection.complex A (n + 1)) (power (chains A S) (m + 1))
+        (-(e : ℤ))
+        p
+        z hz ((Surjection.complexXIso A (n + 1) e).inv
+          (Surjection.basis A (n + 1) e (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f p hp)) =
+      (-(e : ℤ) * -(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ)).negOnePow •
+        ∑ s : Cut (n + e) (f i).1, cutSign s (positiveWord v).val •
+          vectorTensorAt (chains A S) (m + (n + 1))
+            (insertionFamily f (fun a => ⟨outputDegree s (positiveWord v) a,
+              gen A S (outputDegree s (positiveWord v) a)
+                (S.map (face s (positiveWord v) a).op x)⟩) i) z
+            (by rw [vectorDegree_insertionFamily]
+                have hs := outputDegree_sum s (positiveWord v)
+                rw [← degreeSum_eq_sum] at hs
+                have hnat : n + e + (f i).1 + 1 - (n + 1) = e + (f i).1 := by omega
+                rw [hnat] at hs
+                change -((vectorDegree (chains A S) i.val (prefixFamily f i) +
+                  degreeSum (n + 1) (outputDegree s (positiveWord v)) +
+                  vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℕ) : ℤ) = z
+                rw [hs]
+                have hf := vectorDegree_family_blocks (chains A S) f i
+                omega)
+
+lemma positiveNested_vectorFamily_eq_insertion (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (x : S _⦋q⦌) :
+    (fun a =>
+      (⟨(positiveNestedFaceFamily u v k c a).1,
+        gen A S (positiveNestedFaceFamily u v k c a).1
+          (S.map (SimplexCategory.mkHom (positiveNestedFaceFamily u v k c a).2).op x)⟩ :
+        Σ d : ℕ, (chains A S).X (-(d : ℤ)))) =
+      insertionFamily
+        (fun a => ⟨outputDegree c.1 (positiveWord u) a,
+          gen A S (outputDegree c.1 (positiveWord u) a)
+            (S.map (face c.1 (positiveWord u) a).op x)⟩)
+        (fun b => ⟨outputDegree c.2 (positiveWord v) b,
+          gen A S (outputDegree c.2 (positiveWord v) b)
+            (S.map (face c.2 (positiveWord v) b).op
+              (S.map (face c.1 (positiveWord u) k).op x))⟩) k
+```
+
+前者はpと元の三ブロックの次数の和の等式を消去して§300へ戻る。
+後者は同じoperadInsertionEquivの残り色・挿入色に場合分けし、
+既存gen_map_comp_facesで同じ合成面の生成元を読む。新しい面や新しい作用を選ばない。
+
+
+## 310. 実際の二段余作用を元の二段全切断和で読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の外側・内側の切断和と二つの係数交換を、同じ二段全添字の和へまとめる。
+既存構成の加法性・係数移送・合成面・有限和の再添字付けの法則。証明200行以内の見込み。
+
+```lean
+lemma iteratedCochainAction_basis_nested_cut_sum (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m (n + 1) k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A (n + 1)) (chains A S)
+        (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A (n + 1))
+          (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A (n + 1) e).inv
+              (Surjection.basis A (n + 1) e (ULift.up v))) ⊗ₜ[A] gen A S q x)) =
+      ∑ c : PositiveNestedCutIndex u v k q, positiveNestedCutCoefficient u v k c •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a => ⟨(positiveNestedFaceFamily u v k c a).1,
+            gen A S (positiveNestedFaceFamily u v k c a).1
+              (S.map (SimplexCategory.mkHom (positiveNestedFaceFamily u v k c a).2).op x)⟩) z
+          (by rw [vectorDegree, positiveNested_degreeSum]
+              have hn : m + n + (d + e) + q + 1 - (m + (n + 1)) = d + e + q := by omega
+              rw [hn]; omega)
+```
+
+§308で外側を展開し、各項に§309の指定入力次数での同じ内側評価を適用する。
+生成元の族の一致は§309、整数係数の一致は§308。
+Fintype.sum_sigmaで元の全二段添字へ戻し、退化した切断も保つ。
+この法則に、合成側の実際の係数合成の評価と§304の相殺を続けて接続する。
+nullaryの枝は含まず、その完成をこの型の前提には置かない。
+
+
+## 311. 合成側の実際の係数合成の全切断和（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元のcompositionOnWordsを同じ複体射cochainActionへ入れ、全合成切断項で読む。
+既存の語長・次数移送・加法性・生成元の評価の法則で、各証明200行以内の見込み。
+
+```lean
+lemma positiveWord_compositeBasisWord {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    positiveWord (Surjection.compositeBasisWord u v k r (by omega)) =
+      positiveCompositeCutWord u v k r
+
+lemma positiveCompositeCutTerm_eq_vectorTensorAt (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    positiveCompositeCutTerm A S u v k c x =
+      Surjection.compositionSign u v k c.1 •
+        (cutSign c.2 (positiveCompositeCutWord u v k c.1).val •
+          vectorTensorAt (chains A S) (m + (n + 1))
+            (fun a => ⟨outputDegree c.2 (positiveCompositeCutWord u v k c.1) a,
+              gen A S (outputDegree c.2 (positiveCompositeCutWord u v k c.1) a)
+                (S.map (face c.2 (positiveCompositeCutWord u v k c.1) a).op x)⟩)
+            (-((d + e + q : ℕ) : ℤ))
+            (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+                have hn : m + n + (d + e) + q + 1 - (m + (n + 1)) = d + e + q
+
+lemma cochainAction_composition_cut_sum (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    (cochainAction A S (m + (n + 1))).f (-((d + e + q : ℕ) : ℤ))
+      (ιTensorObj (Surjection.complex A (m + (n + 1))) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) (-((d + e + q : ℕ) : ℤ)) (by omega)
+        ((Surjection.complexXIso A (m + (n + 1)) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+      ∑ c : PositiveCompositeCutIndex u v k q, positiveCompositeCutTerm A S u v k c x
+```
+
+語長は同じEq.mpの証明無関係性。合成項の次数移送は元のeqToHomを保持する。
+全和はcompositionOnWordsの定義、正arityのcompositeGenerator_eq_basis、§300の基底値を使う。
+元の全分割と全Cutを足し、退化項を除くことや合成符号の再定義は行わない。
+この後に同じ総次数の相殺を実際の左右の値へ適用する。nullaryはなお別に残す。
+
+
+## 312. 実際の外側係数交換と元の全二段切断和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§307〜310の五本を検証した。元の四射の合成を、一般S・全語次数・任意の入力単体で
+同じpositiveNestedCutCoefficientと同じ生成元の全二段切断和へ展開した。
+d*eの外側係数交換と、内側係数が前方の出力を越える交換の双方を実際の射から評価した。
+整数係数を定義し直したり、二段の式を前提として置いたりしていない。
+
+型の接続で古い略記を正しいSurjection.complexとchains A Sへ直した。
+同じ前方族の部分適用と次数射影の展開差は、元の前方次数がrflで同じであることを
+明示して閉じた。既存の公開宣言・符号・仮定は変更していない。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-iterated-outer-cut-sum-01.log`：3,117 jobs成功、直接importerまで対象警告0。
+- `m14-nested-degrees-and-generators-01.log`：3,073 jobs成功、対象警告0。
+- `m14-iterated-nested-cut-sum-03.log`：3,224 jobs成功、対象警告0。
+
+別々の一回の鍵の小監査：
+
+- `audit-m14-iterated-outer-and-families.log`：4モジュール・29宣言。
+- `audit-m14-iterated-nested-cut-sum.log`：1モジュール・7宣言。
+
+**計5モジュール・36宣言、標準三公理のみ**、sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は対象ビルド/小監査の終了ごとに返した。
+main作業木・共有入口・共有監査・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| IteratedCochainAction | 61 |
+| IteratedOuterCutSum | 70 |
+| CochainInsertionCutDegrees | 61 |
+| NestedGeneratorFamilies | 51 |
+| IteratedNestedCutSum | 74 |
+| **計** | **317** |
+
+検証済みM14実測は**24,909行**、L12aは**9,702行**。
+外枠31,000行まで実測6,091行。§311の合成側の実評価は未検証なのでここには数えない。
+その実評価と相殺を元の左右の値へ戻す工程、nullary・後続L13以降は残る。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+約25,000行の区切りの見込みの出し直しは、次の合成側の検証の区切りで報告する。
+完備化後のP⁰は§296の未供給箇所を保持し、(c)が必要との判定にはまだ至っていない。
+3b-4aはmain未受領のままで、Tot九欄の実装はまだ始めていない。
