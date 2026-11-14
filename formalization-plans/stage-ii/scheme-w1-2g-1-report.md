@@ -327,3 +327,17 @@ B4 は e9ca4d5d4 で完了し、main ad523c511 を取り込んだ。続いて既
 各段から Spec R への実際の構造射 `integralModelSpecBaseMap i` について、有限性・局所有限表示性と、射影との合成が Spec(algebraMap R B) であるという式を示す。後者と元の射の全射性から各段の全射性を得る。これらは既報 I04 内の構成とその法則で、追加主項目ではない。見込み 150〜400 行を維持する。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+## A07 の次の既存構成の法則：有限型射の閉包と共通中心
+
+I04 の検証待ちの間に、固有射用の既存構成の法則を有限型射にも供給する分割を用意する。既存宣言の型は変更しない。以下では f:X→S は局所有限型かつ準コンパクト、U は S の開。
+
+- `hasFlatOpenClosure_comp_iff_of_finiteType f U p g [IsNoetherian V]`：`HasFlatOpenClosure f U (g ≫ p) ↔ HasFlatOpenClosure (pullback.snd f p) (p ⁻¹ᵁ U) g`。既存の二段 pullback の比較と、有限型・準コンパクト射の Noether 始域を使う。
+- `HasFlatOpenClosure.comp_of_dominant_of_finiteType h g [IsNoetherian V] [IsSchemeTheoreticallyDominant (g ⁻¹ᵁ p ⁻¹ᵁ U).ι]`：`HasFlatOpenClosure f U (g ≫ p)`。同じ閉包の稠密底変換の法則を再利用する。
+- `exists_admissible_flat_strictTransformπ_of_affine_local_of_finiteType`：Noether 基底 S、有限アフィン被覆 𝒰、局所許容中心 J_i と各 `Flat (strictTransformπ (pullback.snd f (𝒰.f i)) (𝒰.f i ⁻¹ᵁ U) (J_i))` から、`∃ K, centerComplement K = U ∧ Flat (strictTransformπ f U K)`。既存の局所中心の map・共通細分と、有限型版の閉包の法則を組む。
+
+この束は既存の構成の合成則・貼り合わせの法則と証明の分割であり、主項目の数を増やさない。見込み 140〜260 行。準コンパクト開を Noether 模型へ降ろす構成はこの束の出力ではない。
+
+一覧：済み 7／全体 12（うち追加 3）。
+
+同じ法則の次の合成：`exists_admissible_flat_strictTransformπ_of_finiteType` は Noether 基底 S 上の局所有限型・準コンパクト射 f と `Flat (f ∣_ U)` から、`∃ J, centerComplement J = U ∧ Flat (strictTransformπ f U J)` を返す。既存の固有射版で用いた初期中心・正則主境界の有限被覆・局所平坦化・中心の貼り合わせ・合成の共通細分を、上記有限型版の法則で接続する。既存構成の合成の法則として追加計上しない。見込み 90〜160 行、直前の三法則と合わせて 230〜420 行。原典が必要とする指定開 U を一つの主開へ狭めない。検証前は下書きに置く。
