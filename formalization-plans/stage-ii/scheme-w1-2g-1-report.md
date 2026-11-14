@@ -2530,3 +2530,14 @@ B04 の Spec 近似の基底上の自然性（着手前の型、見込み30〜70
 G1・G2共用部品込み本体14,658行、入口込み14,905行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B04：任意の代数の実際の有限表示模型の filtered 余極限
+
+`FinitePresentationModelColimit`（107行）：`finitePresentationModelSmallCocone_exists_rep` は任意の元を一変数多項式の模型で表示する。`finitePresentationModelSmallCocone_eq_eventually` は像が一致する二元を差一つの商模型で一致させる。`finitePresentationModelSmallCoconeIsColimit` は同じ実際の構造射の環の cocone の `IsColimit` を返す。元の代数の有限型性・有限表示性・整性を要求しない。
+
+本体107行・入口1行。多項式の変数の評価を明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,036ジョブ、小監査7宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-finite-presentation-model-colimit-check-2.log`・`2g-finite-presentation-model-colimit-native.log`・`2g-finite-presentation-model-colimit-audit.log`。
+
+G1・G2共用部品込み本体14,765行、入口込み15,013行。B02〜B04 は未完。同じ基底上の有限表示近似の余極限性までで、有限型 F_p の被覆模型の全図式とは区別する。
+
+一覧：済み14／全体17（うち追加8）。

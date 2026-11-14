@@ -1567,3 +1567,5 @@ public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelCocones
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelCoequalizer
 
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelFiltered
+
+public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelColimit
