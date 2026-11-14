@@ -13844,3 +13844,46 @@ def simplicialElementsNativeClassificationUnitIso :
         ((continuousLeftFibrationReplacement (nerve I)).obj
           (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
 ```
+
+## 222. 元の全係数図式へ戻したnative全要素分類（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§221の始域に残っていたHomの持ち上げを、元の同じ全射列へup・downを適用する実同型で外した。元の圏の関手への自然性も同じ射列で計算している。元のnerveと同じ宇宙で比較できるため、係数に新たな外側のULiftは入れない。既存のMixedNerveやNerveULiftHomは変更せず、一般の宇宙の表記で同じup・downの法則を56行で記録した。
+
+この同じ実同型を全係数の要素圏に自然に適用し、Kan化の全関手同型へ送った。§219の元の全要素nerveから反対要素nerveの元の終端augmentationへの比較と、§221の元の単位を保つnative全分類比較を合成した。totalElementsNativeClassificationIsoの始域は元のFのkanHomFamilyCoherentそのものであり、終域は同じFをuncurryした全要素圏の元の連続left-fibration置換のnative全分類である。型つきの定義は60行。点ごとの比較への弱化や、異なる置換・augmentationの選択はしていない。既存構成の宇宙・係数移送と合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+元の単位と元の反対要素augmentationを使っているが、その比較が元の固定始域のroof比較の全FunctorIsoと同じになるというR03dの正規化は、まだ証明していない。今回の全分類の接続の存在を、その等式の代用にはしない。
+
+個別検査：Homの宇宙比較24895・終了0、二本を結合した全係数比較76861・終了0。299：二本と直接importerの対象ビルド3,564 jobs・終了0、小監査161本1,131宣言・標準三公理のみ（実ハンドル75950・終了0）。鍵返却済み。今回56＋60＝116行、累計161本・10,433行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 222.1 型
+
+全係数の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。
+
+#### NerveHomUniverseIso（55行）
+
+```lean
+def nerveHomUniverseIso : nerve (ULiftHom.{max u v} C) ≅ nerve C
+
+theorem nerveHomUniverseIso_naturality {D : Type u} [Category.{v} D] (F : C ⥤ D) :
+    nerveMap (ULiftHom.down.{v,u,max u v} ⋙ F ⋙ ULiftHom.up) ≫
+      (nerveHomUniverseIso D).hom = (nerveHomUniverseIso C).hom ≫ nerveMap F
+```
+
+#### TotalElementsNativeClassification（61行）
+
+```lean
+def totalElementsNerveCoefficientIso :
+    simplicialElementsCatDiagram F ⋙ nerveFunctor ≅ simplexElementsNerveDiagram F
+
+def totalElementsNerveCoefficientKanIso :
+    FunctorIso (kanHomFamilyCoherent (simplicialElementsCatDiagram F ⋙ nerveFunctor))
+      (kanHomFamilyCoherent (simplexElementsNerveDiagram F))
+
+def totalElementsNativeClassificationIso :
+    FunctorIso (kanHomFamilyCoherent F)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
+```
