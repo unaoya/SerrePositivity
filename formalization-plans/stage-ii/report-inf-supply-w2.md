@@ -13283,3 +13283,144 @@ def simplicialReplacementRowLatchingIso :
     colimit (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) ≅
       simplicialReplacementDegenerateRow F n
 ```
+
+## 213. R03f.2完了：元のsimplicial replacementのleft anodyne性（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 21（うち追加 9）。R03f.2完了。R03f・R03d・R02・R03は未完了。
+
+元の各行と指定部分の包含・係数射・降下の法則を明示した。退化基底成分では元の指定境界の値を固定し、それ以外の成分では元の同じη.app iのleft anodyne性で持ち上げた。元の余積から行全体へ降下させ、元の二つの脚と退化境界の値を厳密な等式で保持する持ち上げを得た。
+
+実際のlatchingと退化部分の同型が、元の係数射と境界比較を厳密に保つことも全ての脚で照合した。元の相対latchingのpushoutの持ち上げ問題では、その逆同型で指定境界を取り出し、行全体の境界付き持ち上げを適用した。pushoutの二つの包含で元の脚を回収することを検収し、元の相対latching射そのもののleft anodyne性を得た。
+
+このReedy left anodyne性を§207の対角の定理へ送り、同じ係数射についての対角同型の自然性で、元のsimplicialReplacementMapそのものへ移した。§206の型を変更せずに閉じた。相対latchingの別の大きな射の同型を作り直す部分は、同じ元のpushoutの直接の持ち上げに置き換えた。元の標的の性質や主張の型を弱める変更ではない。
+
+283：包含の法則・境界の成分・境界付きの行全体の持ち上げ・latching自然性の四本の対象ビルド1,658 jobs・終了0、小監査144本1,014宣言・標準三公理のみ（実ハンドル81758・終了0）。284：元の相対latchingの持ち上げと最後のR03f.2の二本の対象ビルド1,661 jobs・終了0、小監査146本1,017宣言・標準三公理のみ（実ハンドル64724・終了0）。両方とも鍵返却済み。個別検査29337・4919・25258の終了0を確認した。
+
+今回85＋57＋60＋82＋95＋30＝409行、累計146本・9,467行／外枠15,000。R03f.2は1,278行。§206の当初見込み650〜1,200行の上端との差＋78行、§212の再見積もり1,169〜1,319行の範囲内。§19の中間定理一つ1,500行との差−222行である。計算上限の変更なし、sorry・独自公理0。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次は元のEx∞単位のbar上のleft anodyne性に適用し、元のscaffoldの同じ正方形と元の置換単位を固定した延長をつなぐ。延長の前合成同値性（R03f）と元の共同Hom比較（R03d）はなお別の未完了項目であり、R03f.2だけでnative極限性が得られたとは扱わない。
+
+### 213.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}`。境界付きの持ち上げの共通入力は以下のとおり。証明でのみ用いる `hη sq hd ha` もincludeで宣言の前提に明示的に含めている。
+
+```lean
+(η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) (n : ℕ)
+{E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+(a : simplicialReplacementRow F n ⟶ E) (b : simplicialReplacementRow G n ⟶ B)
+(d : (simplicialReplacementDegenerateRow G n : SSet.{u}) ⟶ E)
+(sq : CommSq a (simplicialReplacementRowMap η n) p b)
+(hd : d ≫ p = (simplicialReplacementDegenerateRow G n).ι ≫ b)
+(ha : simplicialReplacementRowPartMap η n ((nerve I).degenerate n) ≫ d =
+  (simplicialReplacementDegenerateRow F n).ι ≫ a)
+```
+
+#### SimplicialReplacementRowInclusionLaws（85行）
+
+```lean
+def simplicialReplacementRowPartInclusion (F : I ⥤ SSet.{u}) (P : Set (ComposableArrows I n))
+    (σ : ComposableArrows I n) (hσ : σ ∈ P) :
+    F.obj (σ.obj 0) ⟶ simplicialReplacementRowPart F n P
+
+theorem simplicialReplacementRowPartInclusion_inclusion (F : I ⥤ SSet.{u})
+    (P : Set (ComposableArrows I n)) (σ : ComposableArrows I n) (hσ : σ ∈ P) :
+    simplicialReplacementRowPartInclusion n F P σ hσ ≫ (simplicialReplacementRowPart F n P).ι =
+      simplicialReplacementRowInclusion F n σ
+
+theorem simplicialReplacementRowPartInclusion_map (η : F ⟶ G)
+    (P : Set (ComposableArrows I n)) (σ : ComposableArrows I n) (hσ : σ ∈ P) :
+    η.app (σ.obj 0) ≫ simplicialReplacementRowPartInclusion n G P σ hσ =
+      simplicialReplacementRowPartInclusion n F P σ hσ ≫ simplicialReplacementRowPartMap η n P
+
+theorem simplicialReplacementRowInclusion_map (η : F ⟶ G) (σ : ComposableArrows I n) :
+    simplicialReplacementRowInclusion F n σ ≫ simplicialReplacementRowMap η n =
+      η.app (σ.obj 0) ≫ simplicialReplacementRowInclusion G n σ
+
+theorem simplicialReplacementRow_hom_ext {E : SSet.{u}}
+    (f g : simplicialReplacementRow F n ⟶ E)
+    (h : ∀ σ, simplicialReplacementRowInclusion F n σ ≫ f =
+      simplicialReplacementRowInclusion F n σ ≫ g) : f = g
+
+theorem simplicialReplacementRowDesc_inclusion
+    (s : Cofan (fun σ : ComposableArrows I n => F.obj (σ.obj 0))) (σ : ComposableArrows I n) :
+    simplicialReplacementRowInclusion F n σ ≫ simplicialReplacementRowDesc F n s = s.inj σ
+
+theorem simplicialReplacementRowPart_hom_ext (P : Set (ComposableArrows I n)) {E : SSet.{u}}
+    (f g : (simplicialReplacementRowPart F n P : SSet.{u}) ⟶ E)
+    (h : ∀ σ hσ, simplicialReplacementRowPartInclusion n F P σ hσ ≫ f =
+      simplicialReplacementRowPartInclusion n F P σ hσ ≫ g) : f = g
+```
+
+#### SimplicialReplacementRowBoundaryComponents（56行）
+
+```lean
+theorem simplicialReplacementRowBoundary_component (σ : ComposableArrows I n) :
+    ∃ l : G.obj (σ.obj 0) ⟶ E,
+      η.app (σ.obj 0) ≫ l = simplicialReplacementRowInclusion F n σ ≫ a ∧
+      l ≫ p = simplicialReplacementRowInclusion G n σ ≫ b ∧
+      ∀ hσ : σ ∈ (nerve I).degenerate n,
+        l = simplicialReplacementRowPartInclusion n G ((nerve I).degenerate n) σ hσ ≫ d
+```
+
+#### SimplicialReplacementRowBoundaryLift（60行）
+
+```lean
+theorem simplicialReplacementRowBoundary_lift :
+    ∃ l : simplicialReplacementRow G n ⟶ E,
+      simplicialReplacementRowMap η n ≫ l = a ∧ l ≫ p = b ∧
+      (simplicialReplacementDegenerateRow G n).ι ≫ l = d
+```
+
+#### SimplicialReplacementRowLatchingNaturality（82行）
+
+```lean
+theorem simplicialReplacementRowLatchingIso_hom (F : I ⥤ SSet.{u}) :
+    (simplicialReplacementRowLatchingIso F n).hom = simplicialReplacementLatchingToDegenerate F n
+
+theorem simplicialReplacementRowLatchingIso_inclusion (F : I ⥤ SSet.{u}) :
+    (simplicialReplacementRowLatchingIso F n).hom ≫ (simplicialReplacementDegenerateRow F n).ι =
+      (latchingComparison simplexOp (Opposite.op ⦋n⦌)).app (simplicialReplacementRows F)
+
+theorem simplicialReplacementRowLatchingLeg_map {F G : I ⥤ SSet.{u}} (η : F ⟶ G)
+    (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    simplicialReplacementRowMap η j.obj.left.unop.len ≫ simplicialReplacementRowLatchingLeg G n j =
+      simplicialReplacementRowLatchingLeg F n j ≫
+        simplicialReplacementRowPartMap η n ((nerve I).degenerate n)
+
+theorem simplicialReplacementRowLatchingIso_naturality {F G : I ⥤ SSet.{u}} (η : F ⟶ G) :
+    (latchingEvaluation simplexOp (Opposite.op ⦋n⦌)).map (simplicialReplacementRowsMap η) ≫
+      (simplicialReplacementRowLatchingIso G n).hom =
+    (simplicialReplacementRowLatchingIso F n).hom ≫
+      simplicialReplacementRowPartMap η n ((nerve I).degenerate n)
+
+theorem simplicialReplacementRowLatchingIso_inv_naturality {F G : I ⥤ SSet.{u}} (η : F ⟶ G) :
+    simplicialReplacementRowPartMap η n ((nerve I).degenerate n) ≫
+      (simplicialReplacementRowLatchingIso G n).inv =
+    (simplicialReplacementRowLatchingIso F n).inv ≫
+      (latchingEvaluation simplexOp (Opposite.op ⦋n⦌)).map (simplicialReplacementRowsMap η)
+
+theorem simplicialReplacementRowLatchingIso_inv_inclusion (F : I ⥤ SSet.{u}) :
+    (simplicialReplacementRowLatchingIso F n).inv ≫
+      (latchingComparison simplexOp (Opposite.op ⦋n⦌)).app (simplicialReplacementRows F) =
+      (simplicialReplacementDegenerateRow F n).ι
+```
+
+#### SimplicialReplacementReedyLeftAnodyne（95行）
+
+```lean
+theorem simplicialReplacementRowsMap_relative_leftAnodyne (n : ℕ) :
+    leftAnodyneExtensions (relativeLatchingMap simplexOp (Opposite.op ⦋n⦌)
+      (simplicialReplacementRowsMap η))
+
+theorem simplicialReplacementRowsMap_reedy_leftAnodyne :
+    reedyLeft simplexOp leftAnodyneExtensions (simplicialReplacementRowsMap η)
+```
+
+#### SimplicialReplacementLeftAnodyne（30行）
+
+```lean
+theorem simplicialReplacementMap_leftAnodyne
+    {I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}
+    (η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) :
+    leftAnodyneExtensions (simplicialReplacementMap η)
+```
