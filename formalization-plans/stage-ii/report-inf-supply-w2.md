@@ -5708,3 +5708,59 @@ theorem negativeCoefficientAlexanderWhitney_f_eq_of_raw (n : ℕ) (T : ModuleCat
 累計 **258モジュール・15,725行・2,212宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftyeight-modules.txt`。既存宣言・⑤a・入口・公式監査・mainの変更なし。計算上限を上げず、sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。B02の最終等式とB03〜B08・C・Dは未完。
 
 次は標準単体Homの逆同値を同じ自由随伴へ戻し、§124の最上位評価をA09のパラメータに直接適用する。raw成分の照合の仮定そのものは、§115の全切断和と§120の実dg合成成分を使って別途閉じる必要があり、今回の制限則だけでB02を完了とは数えない。
+
+## 126. B02の途中：元の標準単体パラメータを指定自由随伴へ戻す
+
+正規化標準単体Hom同値の逆射を、同じ持ち上げ標準単体Hom同型の逆射と自由鎖随伴の逆射の合成に同定した。元の実標準Homから来る全パラメータについて、その逆射の各射影生成元の像が実標準Homの最上位成分になることを、§124の全次数評価へ接続した。これでA09側のパラメータを試験頂点だけでなく全標準単体で扱える。
+
+重いHom対象で逆射則を直接elaborateすると200,000 heartbeatの上限に達したため、同じ逆射則を任意の台単体集合で一つの部分補題に固定して解消した。新しい数学ではなく同じ証明の分割であり、計算上限を上げていない。
+
+### 126.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseAdjunction`（73行）
+
+```lean
+theorem normalizedSimplexHomEquiv_symm_freeAdjunction (H : Complex A)
+    (n : SimplexCategory)
+    (α : ((truncatedDoldKanFunctor A).obj H).obj (Opposite.op n)) :
+    (normalizedSimplexHomEquiv A H n).symm α =
+      ((freeNegativeChainsAdjunction A).homEquiv
+        ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H).symm
+        ((liftedStandardSimplexHomIso ((truncatedDoldKanFunctor A).obj H)).inv.app
+          (Opposite.op n) α)
+
+theorem liftedStandardSimplexHomIso_inv_hom_apply (Z : SSet.{u}) (m : SimplexCategory)
+    (t : (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m) ⟶ Z) :
+    (liftedStandardSimplexHomIso Z).inv.app (Opposite.op m)
+      ((liftedStandardSimplexHomIso Z).hom.app (Opposite.op m) t) = t
+
+theorem normalizedSimplexHomEquiv_symm_standard_generator
+    {D : Type v} [DGCategory A D] (x y : D) (m : SimplexCategory)
+    (f : (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m) ⟶
+      standardHomSpace (R := A) x y) (n : ℕ)
+    (s : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)).obj
+      (Opposite.op ⦋n⦌)) :
+    ((normalizedSimplexHomEquiv A (homObject A D x y) m).symm
+      ((liftedStandardSimplexHomIso
+        ((truncatedDoldKanFunctor A).obj (homObject A D x y))).hom.app (Opposite.op m)
+          (f ≫ standardDoldKanSpaceMap x y))).f (-(n : ℤ))
+            (freeNegativeGenerator
+              ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) n s) =
+      standardTopEval (R := A) x y n (f.app _ s)
+
+```
+
+### 126.2 検収と残り
+
+コード **`3f092fcc9`**（1本73行）。個別検査 `/private/tmp/isw2-simplex-inverse-adjunction3.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build141.log` は **4,197 jobs・終了コード0**。新規分だけの監査 `/private/tmp/AuditISW2G10B02SimplexInverse.lean` は **3宣言・標準三公理のみ**。共有鍵は返却済み。
+
+累計 **259モジュール・15,798行・2,215宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftynine-modules.txt`。外枠20,000行まで残り4,202行。既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、大きな監査・rootビルドなし。未検証下書きはない。
+
+B02の全体等式とB03〜B08・C・Dは未完で、Dまでの目標は維持する。次の具体的な接続は以下。
+
+1. 実標準Homの前面・後面への引き戻しの最上位成分を、`awTerm`の接頭・接尾集合の成分へ合わせる（`standardPullback_val`・`pullback_component_of_inj`・`awFront`・`awBack`の既存評価則）。
+2. §123の自由tensor逆射成分、§120の実dg合成成分、今回のパラメータ評価を§115のraw AW全切断和で照合する。
+3. raw等式を§125の指定Moore包含による制限へ渡し、元の正規化側の複体射を同定する。
+4. 指定自由随伴とweighted uncurryの単射性で元の全単体的射へ戻し、既存の反転・添字移送の等式を使ってB02を閉じる。
+
+これらはB02の指定された二つの既存比較の照合の内訳であり、raw等式や最後の輸送を検証済みとは数えない。
