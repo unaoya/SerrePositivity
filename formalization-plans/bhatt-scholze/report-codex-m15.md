@@ -2360,3 +2360,293 @@ B4 は §13 で完了済み。M10 の全関手比較と指定弱自然変換の�
 今回の可逆性だけで M10 を完了とは数えない。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 16. M10 の全比較の成分と指定された円筒辺（11-14、着手）
+
+前の goal ターンは、§15 の三つの対象ビルドと 13 宣言の小さい監査を通し、
+`e5b5413b9` で検証済みの実辺の保存・弱 lift の反転をコミットした進捗。
+今回は、円筒の同値の選択逆から作った全関手間の比較の成分が、
+元の弱自然変換の指定辺と一致することを照合する。
+対象ごとの別の可逆辺を選ぶのではなく、元の比較・元の射を保持する。
+M10 の既存構成の前合成・成分評価・恒等・自然性の法則の分割で、一次 ID は足さない。
+
+最初に使う補助法則の型は次のとおり。
+`LocalizationComparisonEvaluation.lean` の文脈は `A B Y : SSet.{u}`、
+`[Quasicategory Y]`。既存の後合成・合成・反転の評価則は import して使う。
+
+```lean
+lemma functorHomotopyEvaluation_precomp_map_app
+    (q : A ⟶ B) {v w : ((ihom B).obj Y) _⦋0⦌}
+    (a : (SSet.HomotopyCategory.mk v : hoFunctor.obj ((ihom B).obj Y)) ⟶
+      SSet.HomotopyCategory.mk w) (x : A _⦋0⦌) :
+    ((functorHomotopyEvaluation A Y).map
+      ((hoFunctor.map ((pre q).app Y)).toFunctor.map a)).app (SSet.HomotopyCategory.mk x) =
+      ((functorHomotopyEvaluation B Y).map a).app
+        (SSet.HomotopyCategory.mk (q.app (Opposite.op ⦋0⦌) x))
+
+lemma functorIso_precomp_hom_app {f g : B ⟶ Y}
+    (e : FunctorIso f g) (q : A ⟶ B) (x : A _⦋0⦌) :
+    (e.precomp q).toNatIso.hom.app (SSet.HomotopyCategory.mk x) =
+      e.toNatIso.hom.app (SSet.HomotopyCategory.mk (q.app (Opposite.op ⦋0⦌) x))
+```
+
+`LocalizationStrictIdentity.lean` の文脈は `C : RelativeCategory.{u}`。
+指定生成辺そのものが退化辺と等しいとは仮定しない。
+
+```lean
+lemma localizationStrictHom_id (X : C.category) :
+    SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom C (𝟙 X))) =
+      𝟙 _
+```
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 16.1 同じ選択逆の比較と指定交差射の型
+
+前合成・等式比較の評価は次も使う。共通文脈は `A Y : SSet.{u}`。
+
+```lean
+lemma functorIso_eqToIso_hom_app {f g : A ⟶ Y} (h : f = g) (x : A _⦋0⦌) :
+    (show FunctorIso f g from
+      eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) h)).toNatIso.hom.app
+      (SSet.HomotopyCategory.mk x) =
+    eqToHom (congrArg (fun k : A ⟶ Y => SSet.HomotopyCategory.mk
+      (k.app (Opposite.op ⦋0⦌) x)) h)
+```
+
+自分の既存 `RelativeNaturalComparison` の局所的な端点比較を、次の名前付きの
+法則に分けた。同じ射影の同じ選択逆と可逆二胞体を保持し、全関手の等式による
+輸送だけを明示する。既存の両端点比較・弱自然変換比較の型は変更しない。
+
+```lean
+def relativeCylinderInverseEndpointIso (C : RelativeCategory.{u}) (i : Fin 2) :
+    FunctorIso (relativeCylinderProjection_isQCatEquivalence C).choose.inv
+      (localizationNerveMap (relativeCylinderEndpoint C i))
+```
+
+以下は `RelativeCylinderPrescribedEdge` と `RelativeCylinderComponent` の今回の型。
+同じ円筒を使い、最後の成分の主張へつなぐ法則の分割。
+
+`RelativeCylinderPrescribedEdge.lean`：
+
+```lean
+lemma localizationStrictHom_coefficient_class {C D : RelativeCategory.{u}} (F : C ⟶ D)
+    {X Y : C.category} (f : X ⟶ Y) :
+    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex F X)).symm ≫
+      (hoFunctor.map (localizationNerveMap F)).toFunctor.map
+        (SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom C f))) ≫
+      eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex F Y)) =
+        SSet.HomotopyCategory.homMk
+          (coherentNerveEdge (kanLocalizationStrictHom D (F.functor.map f)))
+
+lemma relativeCylinderEndpoint_projection_vertex (i : Fin 2) (x : (localizationNerve C) _⦋0⦌) :
+    (localizationNerveMap (relativeCylinderProjection C)).app (Opposite.op ⦋0⦌)
+      ((localizationNerveMap (relativeCylinderEndpoint C i)).app (Opposite.op ⦋0⦌) x) = x
+
+def relativeCylinderCrossingClass (X : C.category) :
+    SSet.HomotopyCategory.mk
+      ((localizationNerveMap (relativeCylinderEndpoint C 0)).app (Opposite.op ⦋0⦌)
+        (localizationNerveVertexEquiv C X)) ⟶
+    SSet.HomotopyCategory.mk
+      ((localizationNerveMap (relativeCylinderEndpoint C 1)).app (Opposite.op ⦋0⦌)
+        (localizationNerveVertexEquiv C X))
+
+lemma relativeCylinderCrossingClass_projection (X : C.category) :
+    eqToHom (congrArg SSet.HomotopyCategory.mk
+      (relativeCylinderEndpoint_projection_vertex C 0 (localizationNerveVertexEquiv C X))).symm ≫
+    (hoFunctor.map (localizationNerveMap (relativeCylinderProjection C))).toFunctor.map
+      (relativeCylinderCrossingClass C X) ≫
+    eqToHom (congrArg SSet.HomotopyCategory.mk
+      (relativeCylinderEndpoint_projection_vertex C 1 (localizationNerveVertexEquiv C X))) = 𝟙 _
+
+```
+
+`RelativeCylinderComponent.lean`：
+
+```lean
+lemma relativeCylinderInverseEndpointIso_component (i : Fin 2)
+    (x : (localizationNerve C) _⦋0⦌) :
+    ((relativeCylinderInverseEndpointIso C i).app x).hom =
+      eqToHom (congrArg (fun v => SSet.HomotopyCategory.mk
+        ((relativeCylinderProjection_isQCatEquivalence C).choose.inv.app (Opposite.op ⦋0⦌) v))
+        (relativeCylinderEndpoint_projection_vertex C i x)).symm ≫
+      (((relativeCylinderProjection_isQCatEquivalence C).choose.homInvIso).app
+        ((localizationNerveMap (relativeCylinderEndpoint C i)).app (Opposite.op ⦋0⦌) x)).hom
+
+lemma relativeCylinderEndpointIso_component_of_projection
+    (x : (localizationNerve C) _⦋0⦌)
+    (a : SSet.HomotopyCategory.mk
+      ((localizationNerveMap (relativeCylinderEndpoint C 0)).app (Opposite.op ⦋0⦌) x) ⟶
+      SSet.HomotopyCategory.mk
+      ((localizationNerveMap (relativeCylinderEndpoint C 1)).app (Opposite.op ⦋0⦌) x))
+    (ha : eqToHom (congrArg SSet.HomotopyCategory.mk
+      (relativeCylinderEndpoint_projection_vertex C 0 x)).symm ≫
+      (hoFunctor.map (localizationNerveMap (relativeCylinderProjection C))).toFunctor.map a ≫
+      eqToHom (congrArg SSet.HomotopyCategory.mk
+        (relativeCylinderEndpoint_projection_vertex C 1 x)) = 𝟙 _) :
+    ((relativeCylinderEndpointIso C).app x).hom = a
+
+lemma relativeCylinderEndpointIso_component (X : C.category) :
+    ((relativeCylinderEndpointIso C).app (localizationNerveVertexEquiv C X)).hom =
+      relativeCylinderCrossingClass C X
+
+```
+
+ここで `relativeCylinderEndpointIso_component` は、全関手間の比較そのものの
+元の頂点での成分を、同じ指定交差射のホモトピー圏の類に等置する主張。
+M10 の出力をホモトピー圏へ置き換えるものではなく、既存の native 比較の成分の法則。
+全族の fiber の同定と cocartesian 性は別に必要。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 16.2 元の弱自然変換の指定成分への接続（検証中）
+
+`localizationNerveMapIsoOfWeakNatTrans` でも、同じ円筒比較・同じ後合成を保持し、
+全関手の零・一端点の等式による輸送を明示した。公開の型は変更していない。
+指定単位・余単位を持つ弱自然変換に適用できるよう、次の成分の法則を作る。
+文脈は `C D : RelativeCategory.{u}`、`F G : C ⟶ D`。
+
+```lean
+lemma relativeNaturalCylinder_crossing (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) (X : C.category) :
+    (relativeNaturalCylinder η hη).functor.map ((relativeCylinderContraction C).app (1, X)) =
+      η.app X
+
+lemma localizationNerveMapIsoOfWeakNatTrans_component (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) (X : C.category) :
+    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex F X)).symm ≫
+      ((localizationNerveMapIsoOfWeakNatTrans η hη).app (localizationNerveVertexEquiv C X)).hom ≫
+    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex G X)) =
+      SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom D (η.app X)))
+
+```
+
+最後の等式は、頂点比較の等式だけで両端を移した同じ全比較の成分を、元の
+`η.app X` の指定生成辺の類に等置する。対象ごとの別の同型の存在に弱めない。
+BE の往復比較がこの構成を使うため、影響する
+`BarrattEccles/Modules/AlgebraRoundTripComparison` も対象ビルドに含める。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+## 17. M10 の同じ全射影の inner fibration 置換と弱 lift（11-14、下書き）
+
+§16 の最後の検証の共有鍵待ちの間に、M10 の実射影の構成も進める。
+元の `moduleTotalProjection` は任意の内ホーンの相対充填性をまだ持たないため、
+既存の内ホーンの小対象論法を同じ射影に適用し、同じ CAlg 上で置換する。
+元の全圏からの包含は inner anodyne で準圏同値、射影の合成は全単体で等しい。
+新しい `[ModelCategory SSet]` や外部の分解データは入力に加えない。
+これは M10 の既存の全族の射影構成の証明の分割で、一次 ID の追加はない。
+
+指定弱 lift は元の実辺をこの包含で写したものとし、構成した inner fibration と
+同じ辺の可逆性から、native な Cartesian・cocartesian 条件を適用する。
+弱底変更の場合に限る。一般の底の辺の lift の存在・相対性や半自由 fiber の同定を
+この置換で証明済みとはしない。
+文献は HTT Theorem 2.0.0.6、Proposition 2.4.1.5、
+Kerodon Theorem 5.2.4.1（Tag 024N）・Proposition 5.1.1.9（Tag 01TB）。
+
+以下の型は文脈 `A : Type u`、`[CommRing A]`。分解データはファイル内で一度選ぶ。
+
+`TotalInnerReplacement.lean`：
+
+```lean
+def moduleTotalInnerFactorization :
+    MapFactorizationData innerHornInclusions.rlp.llp innerHornInclusions.rlp
+      (moduleTotalProjection A)
+
+def moduleTotalInnerInfinity : SSet.{u+1}
+
+def moduleTotalInnerInclusion : moduleTotalInfinity A ⟶ moduleTotalInnerInfinity A
+
+def moduleTotalInnerProjection : moduleTotalInnerInfinity A ⟶ CAlg_R A
+
+instance moduleTotalInnerProjection_innerFibration : InnerFibration (moduleTotalInnerProjection A)
+
+instance moduleTotalInnerInfinity_quasicategory : Quasicategory (moduleTotalInnerInfinity A)
+
+lemma moduleTotalInnerInclusion_innerAnodyne : innerAnodyneExtensions (moduleTotalInnerInclusion A)
+
+lemma moduleTotalInnerInclusion_projection :
+    moduleTotalInnerInclusion A ≫ moduleTotalInnerProjection A = moduleTotalProjection A
+
+lemma moduleTotalInnerInclusion_isQCatEquivalence : IsQCatEquivalence (moduleTotalInnerInclusion A)
+
+```
+
+`NativeInnerWeakLift.lean`：
+
+```lean
+def moduleInnerCartesianLiftEdge {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    SSet.Edge ((moduleTotalInnerInclusion A).app (Opposite.op ⦋0⦌)
+      (moduleTotalVertex A ((strictRawModuleFiberInclusion A X).obj
+        ((strictRawModuleRestrict f).obj M))))
+      ((moduleTotalInnerInclusion A).app (Opposite.op ⦋0⦌)
+        (moduleTotalVertex A ((strictRawModuleFiberInclusion A Y).obj M)))
+
+lemma moduleInnerCartesianLiftEdge_invertible {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
+    IsomorphismsAndIsofibrations.IsInvertibleEdge (moduleInnerCartesianLiftEdge A f M).toTruncated
+
+lemma moduleInnerCartesianLiftEdge_projection {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    ((moduleInnerCartesianLiftEdge A f M).map (moduleTotalInnerProjection A)).edge =
+      (coherentNerveEdge (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+        ((algebraToCofibrantDKRelative A).functor.map
+          ((ULiftHom.up.{u,u+1,u+1} (C
+
+lemma moduleInnerCartesianLiftEdge_cartesian {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
+    IsCartesianEdge (moduleTotalInnerProjection A) (moduleInnerCartesianLiftEdge A f M).edge
+
+lemma moduleInnerCartesianLiftEdge_cocartesian {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
+    IsCocartesianEdge (moduleTotalInnerProjection A) (moduleInnerCartesianLiftEdge A f M).edge
+
+```
+
+これら二ファイルはまだ対象ビルド・小さい監査の前の下書き。
+検証済み実測には加えず、M10 の完了にも数えていない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 17.1 検証済みの結果・実測と残る kernel 照合
+
+§16 の前合成の評価・指定恒等辺・交差辺の係数作用と射影、
+`relativeCylinderEndpointIso_component` までの全円筒比較の成分の一致、
+§17 の同じ射影の inner fibration 置換と元の弱 lift の native な
+Cartesian・cocartesian 性は、正規 Lake の対象ビルドが通過した。
+影響する自分の `AlgebraRoundTripComparison` の対象も通過している。
+全て指定の共有鍵 `--class impl --wait 3600` の下、各実行の上限を 280 秒とした。
+
+上記の新規公開 26 宣言、同じ全比較の既存 2 宣言、影響する BE 往復比較の
+既存 4 宣言の計 32 宣言について、小さい `#print axioms` 監査は終了コード 0。
+32 件の出力と対象名を機械照合し、依存公理は `propext`・`Classical.choice`・
+`Quot.sound` のみと確認した。追加公理・`sorryAx` はない。
+文献属性も同じ新規 26・既存比較 2 の計 28 宣言について一件ずつ、HTT の
+`component` と各宣言の指定番号に一致することを環境から検査し、終了コード 0。
+大きい監査やルートビルドは行っていない。
+
+検証済みの新規 Lean は **6 ファイル・539 行・25 宣言**。
+内訳は `LocalizationComparisonEvaluation` 81 行・3 宣言、
+`LocalizationStrictIdentity` 42 行・1 宣言、
+`RelativeCylinderPrescribedEdge` 116 行・4 宣言、
+`RelativeCylinderComponent` 118 行・3 宣言、
+`TotalInnerReplacement` 91 行・9 宣言、
+`NativeInnerWeakLift` 91 行・5 宣言。
+自分の既存 `RelativeNaturalComparison` の証明の分割は差引 23 行・1 宣言追加。
+200 行を超える補題はない。
+検証済み累計は新規 Lean **41 ファイル・3,848 行・208 宣言（private 3 を含む）**。
+一次 ID は追加していない。
+
+§16.2 の `LocalizationWeakNatComponent` は未コミットの下書きとして残す。
+最後の全弱自然変換の成分式は、型だけを仮定して返す独立した kernel 照合を行い、
+終了コード 0 で型自体は確認した。一つの宣言にした証明は kernel の計算上限
+（200,000・800,000）に達したため、個別の法則の宣言に分けて照合を続ける。
+証明の範囲や型を弱めること、追加公理で埋めることはしていない。
+この下書きは上記の検証済み実測に含めないが、17,000 行の外枠には含めて管理する。
+
+M10 は、最後の全弱自然変換の指定成分への接続、半自由 native fiber の同定、
+一般の底の辺の lift・transport と全族の cocartesian 性が引き続き必要。
+今回の inner fibration と弱 lift だけで M10 の完了とは数えない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
