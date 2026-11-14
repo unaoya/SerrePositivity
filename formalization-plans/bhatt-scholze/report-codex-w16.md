@@ -18630,3 +18630,351 @@ L13以降を完了に数えず、一覧12/48（追加4）のまま。goalはacti
 次は§281の補正の括弧を、元の外側の他色の先行活動頂点数B_iと
 元のprefixOutputDegreeのPへmod 2で照合する。
 既存の重み付き有限和と水平fiberの濃度を使い、同じ切断と元の出現位置で読む。
+
+## 284. C452の交差補正と二つの接頭和の整数の法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンafe18f779の整数の逆転指数の釣り合いを基点にする。
+指定位置pより前の小さい色の重みは、他色の先行数Bと全小色の重みPで二度数える。
+従って交差寄与Cにその重みの二倍を足すとB+Pになる。
+以下は元の位置順序・色順序と有限和の法則で、新しい演算や構成ではない。
+型は次。各証明200行以内の見込み。
+
+```lean
+lemma word_cross_weight_term_balance {r l : ℕ} (w : Fin l → Fin r)
+    (k : Fin r) (p : Fin l) (hp : w p = k) (j : Fin l) (a : ℕ) :
+    (IntervalCuts.positionInversionTerm w j p + IntervalCuts.positionInversionTerm w p j) * a +
+      2 * (if j < p ∧ w j < k then a else 0) =
+    (if j < p ∧ w j ≠ k then a else 0) + (if w j < k then a else 0)
+
+lemma word_cross_weight_balance {r l : ℕ} (w : Fin l → Fin r)
+    (k : Fin r) (p : Fin l) (hp : w p = k) (a : Fin l → ℕ) :
+    (∑ j : {j : Fin l // w j ≠ k},
+      (IntervalCuts.positionInversionTerm w j.val p +
+        IntervalCuts.positionInversionTerm w p j.val) * a j.val) +
+      2 * (∑ j : Fin l, if j < p ∧ w j < k then a j else 0) =
+    (∑ j : Fin l, if j < p ∧ w j ≠ k then a j else 0) +
+      (∑ j : Fin l, if w j < k then a j else 0)
+```
+
+有限点検：値域0〜3・語長0〜4の全語と指定位置534例。
+点ごとの重み0〜3と、位置ごとの試験重みについて等式とmod 2を点検した。
+同色の位置と指定位置自身の寄与は零であり、全和から除くことをLeanでも示す。
+この段のaは任意の自然数重み。次に元のintervalLengthを代入して同じ活動頂点数へ戻す。
+
+## 285. C452のB_iを元の水平位置の重み付き和で読む法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§284の任意の重みに元のintervalLengthを代入する。
+元の活動頂点を水平fiberで数え、同じ外側位置pの前の他色の濃度へ戻す。
+型は次。既存の有限濃度・水平座標の順序・区間長の法則で、各証明200行以内の見込み。
+
+```lean
+lemma active_filter_horizontal_card {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (P : Fin (m + 1) → Prop) [DecidablePred P] :
+    ((activeVertexPositions s w).filter (fun z => P (s.horizontal z))).card =
+      ∑ j : Fin (m + 1), if P j then intervalLength s w j else 0
+
+lemma other_before_iff_horizontal_before {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (k : Fin r) (p : Fin (m + 1)) (hp : w p = k)
+    (x j : Fin (m + q + 1)) (hx : s.horizontal x = p) :
+    (j < x ∧ label s w j ≠ k) ↔ (s.horizontal j < p ∧ label s w j ≠ k)
+
+lemma other_active_prefix_card_eq_weighted {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (k : Fin r) (p : Fin (m + 1)) (hp : w p = k)
+    (x : Fin (m + q + 1)) (hx : s.horizontal x = p) :
+    ((activeVertexPositions s w).filter (fun z => z < x ∧ label s w z ≠ k)).card =
+      ∑ j : Fin (m + 1), if j < p ∧ w j ≠ k then intervalLength s w j else 0
+```
+
+有限点検：`check-native-cross-prefix-counts.py`。
+水平幅0〜3・垂直幅0〜2の全経路、全二色列と各元の頂点1,796例で、
+B_iのnativeな先行他色数、水平位置の重み付き和、小色の全数、交差寄与のmod 2が一致した。
+任意の同じ水平位置の頂点xで他色の先行数が変わらないことも含む。
+指定色自身の先行頂点をB_iへ混ぜず、元のラベルの不等式を保持する。
+
+## 286. C452の同じnativeな先行数と元のPへのmod 2の移送
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§284の整数の法則と§285の元の水平fiberの濃度を合わせる。
+小さい色の出力次数の和は既存 `prefixOutputDegree_eq_active_card` で元の活動頂点数。
+元の `positiveNestedPrefixDegree` の再帰的な和も、同じ有限添字でこのPに一致させる。
+型は次。既存の有限濃度・次数・mod 2の法則で、各証明200行以内の見込み。
+
+```lean
+lemma cross_intervalLength_modeq_prefix {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin r) (p : Fin (m + 1)) (hp : v.val p = k)
+    (x : Fin (m + q + 1)) (hx : s.horizontal x = p) :
+    Nat.ModEq 2
+      (∑ j : {j : Fin (m + 1) // v.val j ≠ k},
+        (IntervalCuts.positionInversionTerm v.val j.val p +
+          IntervalCuts.positionInversionTerm v.val p j.val) * intervalLength s v.val j.val)
+      (((activeVertexPositions s v.val).filter (fun z => z < x ∧ label s v.val z ≠ k)).card +
+        ∑ b ∈ Finset.univ.filter (fun b : Fin r => b < k), outputDegree s v b)
+
+lemma positiveNestedPrefixDegree_eq_prefixOutputDegree {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) (s : Cut (m + d) q) :
+    positiveNestedPrefixDegree u k s =
+      ∑ b ∈ Finset.univ.filter (fun b : Fin (m + 1) => b < k), outputDegree s (positiveWord u) b
+```
+
+元のnativeな頂点xは任意の同じ水平位置pでよく、B_iには既に指定した最初の順位を使う。
+Pの前方因子自身を含めず、同じ出力次数を使う。
+有限点検の原料は§285の1,796例と、既存のprefixFamilyの同じ有限添字の表示である。
+この移送ではCAlg・BE作用・Tot・界面に触れない。
+
+## 287. C452の元のB_iと逆転指数のmod 2を接続する型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§286のgenericなnative頂点の式に、§253で指定した同じ色別の最初の順位を代入する。
+`positiveCompositeOtherActivePrefix` の定義は§253の型・本体のまま。
+別の水平和で定義し直さず、既存の `colorIntervalFirst` と `colorPositionEquiv` を使う。
+接続の補題の型は次。各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_crossWeight_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    Nat.ModEq 2
+      (∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+        (IntervalCuts.positionInversionTerm (positiveWord u).val p.val
+            (positiveOccurrencePosition u k i) +
+          IntervalCuts.positionInversionTerm (positiveWord u).val
+            (positiveOccurrencePosition u k i) p.val) *
+          intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p.val)
+      (positiveCompositeOtherActivePrefix u v k c i +
+        positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c))
+
+lemma positiveComposite_permutationExponent_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (_h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nat.ModEq 2 (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val)
+      (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+        permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+        (∑ i, Surjection.segmentDegree v.val c.1 i *
+          (positiveCompositeOtherActivePrefix u v k c i +
+            positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c))))
+```
+
+有限点検：`check-composite-permutation-modeq-native-prefix.py`、12,233組。
+B_iには同じ外側切断のその区間の最初のnative頂点を用い、
+元の活動頂点の先行他色数と小色の全数Pで元の逆転指数のmod 2が一致した。
+`positiveComposite_permutationExponent_modeq`の非退化性の仮定は§253の型どおりに残す。
+同じ整数の釣り合いと各iでの合同に成分次数を掛けて足すだけで接続する。
+位置指数の全和は依然として未完であり、C452全体は完了に数えない。
+
+## 288. C452の位置指数を外側と部分語内部へ分ける法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§287の逆転指数のmod 2はビルドと新規7本22宣言の小監査が成功した。
+残る位置指数では、同じ全合成位置の和を§273で分け、
+残り位置と各部分語の末尾を元の外側の区切り・高さへ戻す。
+型は次。既存の区切りと両端、有限和の接続の法則で各証明200行以内の見込み。
+
+```lean
+lemma positiveWord_position_sum {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (F : Fin (m + d + 1) → ℕ) :
+    (∑ p, F p) =
+      (∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k}, F p.val) +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), F (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_remaining_positionTerm {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    (if Surjection.Caesura (positiveCompositeCutWord u v k c.1).val
+        (compositeFirstPosition u v k c.1 p) then
+      hi c.2 (compositeFirstPosition u v k c.1 p) else 0) =
+    (if Surjection.Caesura (positiveWord u).val p then
+      hi (positiveCompositeOuterCut u v k c) p else 0)
+
+lemma positiveComposite_segment_positionTerm_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      if Surjection.Caesura (positiveCompositeCutWord u v k c.1).val
+          (positiveCompositeSegmentPosition u v k c.1 i z) then
+        hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z) else 0) =
+    (if Surjection.Caesura (positiveWord u).val (positiveOccurrencePosition u k i) then
+      hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) else 0) +
+    ∑ z : Fin ((c.1.val i).val - 1),
+      if Surjection.Caesura v.val
+          ⟨c.1.start i + z.val, by have hb := c.1.start_add_length_le i; have hz := z.isLt; omega⟩
+      then hi c.2 (positiveCompositeSegmentPosition u v k c.1 i
+        ⟨z.val, by have hz := z.isLt; omega⟩) else 0
+
+lemma positiveComposite_positionExponent_decomposition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positionExponent c.2 (positiveCompositeCutWord u v k c.1).val =
+      positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin ((c.1.val i).val - 1),
+        if Surjection.Caesura v.val
+            ⟨c.1.start i + z.val, by have hb := c.1.start_add_length_le i; have hz := z.isLt; omega⟩
+        then hi c.2 (positiveCompositeSegmentPosition u v k c.1 i
+          ⟨z.val, by have hz := z.isLt; omega⟩) else 0
+```
+
+有限点検：`check-composite-position-exponent-decomposition.py`、全12,233組。
+元の合成位置指数が、元の外側位置指数と部分語内部の区切り高さの和に一致した。
+共有端点は外側の元の区切りへ戻し、各部分語の末尾を内部の和へ重ねない。
+内側切断の同じ順位とこの内部の高さの和の比較は、まだ残る工程。
+
+## 289. C452の位置指数の残る順位・高さ・全和の接続（次の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§288の合成側の位置指数の分解は検証した。
+次は既存の同じ内側辺の高さと色別順位を使い、内部の各項を比較する。
+以下は次の工程の型で、実装済みの宣言には数えない。
+すべて既存の構成の法則、有限位置の分解・数え上げ、同じ指定射の照合、証明分割。
+各証明200行以内の見込み。新しいCut・作用・位相的な比較を作るものではない。
+
+```lean
+lemma caesura_word_eq_mp {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (p : Fin l') (q : Fin l) (hpq : p.val = q.val) :
+    Surjection.Caesura (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val p ↔
+      Surjection.Caesura v.val q
+
+lemma caesuraRank_word_eq_mp {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (p : Fin l') (q : Fin l) (hpq : p.val = q.val) :
+    Surjection.caesuraRank (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val p =
+      Surjection.caesuraRank v.val q
+
+lemma positionExponent_eq_edge_sum {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) :
+    positionExponent s w =
+      ∑ a : Fin m, if Surjection.Caesura w a.castSucc then (cutHeights s a).val else 0
+
+lemma sum_overlap_internal_positions {t n e : ℕ}
+    (r : Surjection.OverlapPartition t ((n + 1) + e)) (ht : 0 < t)
+    (F : Fin (n + e) → ℕ) :
+    (∑ a, F a) = ∑ i : Fin t, ∑ z : Fin ((r.val i).val - 1),
+      F ⟨r.start i + z.val, by have hb := r.start_add_length_le i; have hz := z.isLt; omega⟩
+
+lemma sum_internal_caesuraIndicators {r t n e : ℕ}
+    (w : Fin ((n + 1) + e) → Fin r)
+    (o : Surjection.OverlapPartition t ((n + 1) + e)) (i : Fin t) :
+    (∑ z : Fin ((o.val i).val - 1), if Surjection.Caesura w
+      ⟨o.start i + z.val, by have hb := o.start_add_length_le i; have hz := z.isLt; omega⟩
+      then 1 else 0 : ℕ) = Surjection.segmentDegree w o i
+
+lemma positiveComposite_segment_internal_height_balance {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin ((c.1.val i).val - 1)) :
+    hi (positiveCompositeInnerCut u v k c) (positiveCompositeSegmentInnerPosition u v k c i
+        ⟨z.val, by have hz := z.isLt; omega⟩) + positiveCompositeOtherActivePrefix u v k c i =
+      hi c.2 (positiveCompositeSegmentPosition u v k c.1 i
+        ⟨z.val, by have hz := z.isLt; omega⟩) +
+      Surjection.caesuraRank u.val (Surjection.occurrenceAt u.val k i)
+
+lemma positiveComposite_inner_positionExponent_decomposition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val =
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin ((c.1.val i).val - 1),
+        if Surjection.Caesura v.val
+            ⟨c.1.start i + z.val, by have hb := c.1.start_add_length_le i; have hz := z.isLt; omega⟩
+        then hi (positiveCompositeInnerCut u v k c) (positiveCompositeSegmentInnerPosition u v k c i
+          ⟨z.val, by have hz := z.isLt; omega⟩) else 0
+```
+
+有限点検：`check-composite-position-inner-height-balance.py`、全12,233組。
+全部分語の全内部位置で「同じ内側の右端順位＋元のB_i＝元の合成の高さ＋元の区切り順位」を確認。
+内側位置指数が同じ内部位置の和になることも確認した。退化する切断も含む。
+
+既存の宣言で進める筋は次。
+
+1. 語長の二つの移送は `word_eq_mp_value` と同じく長さの等式を消去し、同じ値のFinを等置する。
+2. 元の位置指数の最後の位置には後続位置がないのでCaesuraは偽。
+   `sum_fin_last` と `cutHeights` の定義で元の辺の和へ書き直す。
+3. 内部位置の有限和は開始位置＋zで写す。逆の所属番号は既存 `segmentEdgeOwner`。
+   `segmentEdgeOwner_start_le`・`segmentEdgeOwner_end_gt`・`segmentEdgeOwner_unique` により
+   同じ辺を重複なく読む。新しい公開の所属写像を作らない。
+4. 内部区切り数の式は§270の証明内ですでに使った
+   `sum_consecutive_caesuraIndicators` と同じ行順位の差を単独で再利用する。
+5. 高さの式は、内部辺aの所属番号がiであることを同じuniqueで確かめ、
+   `compositeInnerEdge_val` からその像が元の部分語の同じ位置であることを示す。
+   `positiveCompositeInnerCut_rank_mem`・`positiveCompositeInnerCut_vertices`、
+   `colorRank_add_other_active_prefix` をその同じ辺へ適用する。
+   B_iは `other_active_prefix_eq_on_interval` で元の最初の順位と同じに戻す。
+   最後に語長の区切り順位の移送を使う。
+6. 内側位置指数の式は(2)(3)と同じ語長のCaesuraの移送で得る。
+   各内部位置で(5)を同じCaesuraの0/1で重み付けして足し、(4)で一定のB_i・順位の和をg_i倍へ戻す。
+   §288と合わせれば、§253の `positiveComposite_positionExponent_balance` の型へ接続する。
+
+その後の元の係数の接続は、§287の逆転指数のmod 2と§253の位置指数の釣り合い、
+`compositionExponent_add_prefixRanks` を合わせる。
+成分次数の総和 `sum_segmentDegree` でPの和をe*Pへ戻し、
+元の `positiveCompositeCutCoefficient_eq_nested_of_modeq` に渡す。
+この数値の符号の接続を、実テンソル・nullaryやL12a全体の完成と混同しない。
+
+## 290. C452の逆転指数のmod 2と合成位置指数の分解：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§284〜288の**10モジュール485行**を検証した。
+元の交差補正に二度数える先行小色を足す整数の式、同じ水平fiberによるB_iの濃度、
+元の小色の出力次数Pとの比較を合わせた。
+`positiveComposite_permutationExponent_modeq` は、§253と同じB_i・P・非退化性の型で完成。
+B_iは§253どおり同じ `colorIntervalFirst`・`colorPositionEquiv` によるnativeな定義を使用した。
+さらに、元の合成位置指数を**元の外側位置指数＋同じ部分語内部の区切り高さの全和**へ分解した。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-word-cross-weight-balance-03.log`：855 jobs。
+- `m14-cross-interval-prefix-modeq-01.log`：2,893 jobs。
+- `m14-composite-permutation-modeq-02.log`：2,991 jobs（前方次数の行長修正も検証済み）。
+- `m14-composite-position-exponent-decomposition-02.log`：2,898 jobs。
+
+途中、指定位置そのものの場合を分けて関数の値の等式を明示し、
+同じ定義等式の照合には `backward.isDefEq.respectTransparency false` をOtherActivePrefixCountsで使った。
+心拍数・再帰上限は増やしていない。B_i/Pの別名は定義を展開して揃えた。
+位置指数では同じ内側位置の記法を展開した。最終ソースの対象警告0。
+200行を超える証明・ファイルなし。既存の公開宣言・界面・符号・仮定は変更していない。
+
+新規分だけの小監査：
+
+- `audit-m14-composite-permutation-modeq.log`：7モジュール・22宣言。
+- `audit-m14-position-exponent-decomposition.log`：3モジュール・20宣言。
+
+合計**10モジュール・42宣言、標準三公理のみ**。sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は各一回の対象ビルド/小監査の間だけ使用して返した。
+整理券は一枚ずつ。常駐セッション・rootビルド・大きい監査・他レーン・共有入口・共有監査・
+drafts・mainの作業木は変更していない。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| WordCrossWeightBalance | 57 |
+| ActiveHorizontalFilterCounts | 35 |
+| OtherActivePrefixCounts | 51 |
+| CrossIntervalPrefixModeq | 37 |
+| NestedPrefixDegreeSum | 35 |
+| CompositeOtherActivePrefix | 59 |
+| CompositePermutationModeq | 37 |
+| PositiveWordPositionSums | 38 |
+| CompositePositionTerms | 84 |
+| CompositePositionExponentDecomposition | 52 |
+| **計** | **485** |
+
+M14実測は**22,991行**、L12aは**7,784行**。
+逆転指数のmod 2は閉じたが、§289の内側の同じ順位・高さの全和の接続は紙のまま。
+§253の位置指数の釣り合い・元の係数の接続は未完で、C452/L12a全体を完了には数えない。
+実テンソル・nullary・L13以降も未完であり、一覧12/48（追加4）のまま、goalはactive。
+外枠31,000行は変更せず、旧見込みの上端の超過リスクは残す。
+約25,000行で止まらず実測と残りを出し直す指定を維持する。
+完備化後のP⁰の未供給の工程は§267・282のまま、無料の前提へ置いていない。
+(c)が必要との判定には至っておらず、その判定なら§32どおり止める。
+Tot九欄の段0は§260。3b-4aを受領したらmain§33の順へ切り替える。
+次は§289の型の法則を同じ指定辺・同じ順位で証明する。
