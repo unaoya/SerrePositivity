@@ -1034,3 +1034,26 @@ B01 の affine 局所の係数移送として `exists_finitePresentation_model_o
 同じ affine 局所の幾何への係数移送として `exists_affine_finitePresentation_coefficient_model`（見込み35〜90行）を作る。上記の A と S₀ に加え、実際の射 a:Spec S→Spec S₀ と、元の Spec S→Spec R・Spec S₀→Spec A・Spec R→Spec A による IsPullback を返す。既存の `isPullback_affineTensorModel` の適用であり、一般の固有模型の B01 はこれだけで完了としない。
 
 有限アフィン被覆を同じ係数環へそろえる法則 `exists_common_finitePresentation_coefficient_models`（見込み60〜150行）：有限個の有限表示 R-代数 Sᵢ に対し、一つの k 上有限生成部分代数 A⊆R と、全ての Sᵢ の有限表示 A-模型・実際の tensor 比較同型を返す。有限個の関係式の係数集合の和集合を取り、同じ `ModelOfHasCoeffs` を適用する。これは既存の係数模型の有限族への移送で、B01 の一般の対象の貼り合わせは別に残る。
+
+
+### G2：指定係数環を保つ affine 模型の最初の束
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| FinitePresentationCoefficientModel | 35 | `exists_finitePresentation_model_over_noetherian_coefficients`：Noether 係数環 k を保ち、有限表示 R-代数の有限生成係数部分代数 A⊆R・有限表示 A-模型・実際の tensor 比較同型を取る |
+| AffineFinitePresentationCoefficientModel | 36 | `exists_affine_finitePresentation_coefficient_model`：同じ模型を Spec 上の実際の射と Cartesian な比較に移す |
+| FiniteFamilyCoefficientModels | 38 | `exists_common_finitePresentation_coefficient_models`：有限個の有限表示 R-代数の模型を、同じ有限生成係数部分代数 A⊆R 上で取る |
+
+本体 **109 行**、入口 3 行。係数環 k の宇宙は元の環 R と独立なので、F_p を大きな宇宙の R の係数にそのまま使える。有限族の添字の宇宙も独立。既存宣言の型は変更していない。Mathlib の `ModelOfHasCoeffs` と tensor 同型、既存の Spec の pullback 比較を再利用し、係数模型の法則・有限族への移送として実装した。
+
+対象ビルドは直接 importer AlgebraicGeometry まで **4,909 ジョブ成功**、三モジュールの小監査は **3 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-coefficient-model-batch-check-2.log`、`2g-coefficient-models-native.log`、`2g-coefficient-models-audit.log`。
+
+G1・G2共用部品込み本体 **6,771 行**、入口込み **6,894 行**。G2 の一般の固有模型は未完で、この affine 局所の三本だけを B01 完了とは数えない。約12,000行の途中報告点・25,000行の外枠には未到達。
+
+一覧：済み 10／全体 14（うち追加 5）。
+
+### B01 の次の分割：一般の有限表示対象の模型（着手前の型）
+
+`exists_finitePresentation_scheme_coefficient_model` の型案：Noether 係数環 k、k-代数 R、f:X→Spec R が局所有限表示・準コンパクト・準分離なら、有限生成 k-部分代数 A⊆R、p:Y→Spec A が局所有限表示・準コンパクト・準分離、a:X→Y が存在し、元の f と Spec R→Spec A を含む正方形が IsPullback。Noether 性は A の有限生成から供給し、元の R には要求しない。原典は Stacks 01ZM (1)、この分割の見込み **1,800〜3,600行**（前記の係数模型109行を含む）。B01 に含めていた一般の対象の降下の分割で、新しい親項目は増やさない。
+
+紙の順序：有限アフィン被覆の模型を共通係数環へそろえる。重なりの準コンパクトな開を有限個の基本開で表示し、その元・有限個の射・等式を後の同じ係数部分代数へ移す。既存の局所有限表示の射の因子化・有限型の射の一致判定を使い、gluing datum とその余極限を作り、元の X との実際の pullback 比較を得る。固有性はこの構成だけでは結論にしない。固有性の有限段への移送081Fと一般の固有射の模型0A0Pの未完部分を保持する。Chowを経由する依存の実装量は引き続き照合し、4,000行を超える新しい標準存在補題が要ると判明した時点では指示どおり報告する。
