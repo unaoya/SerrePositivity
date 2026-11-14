@@ -9041,3 +9041,511 @@ L09a全体の `hc`・`hv`・`hmix` の符号付き値の相殺はまだ未証明
 先行同色数が一だけ違い、その交代符号が反対になることを有限点検した。
 この準備の点検だけを、未実装の照合や最終相殺の証明として扱わない。
 mainの凍結を維持し、root・全体監査やM15・G12の作業は行っていない。
+
+## 120. 次の約4,600行で残りの見込みを再評価する（11-14）
+
+調整役の最新指示に従い、L09a・L09が約4,600行になった報告で、
+L09a・L09の残りとM14全体の完成の見込みを、外枠25,000行と照合して出し直す。
+その見積もりのために停止せず、現在の符号の三群を閉じる作業を続ける。
+
+### 120.1 直前の同色の頂点（C112〜C115）
+
+`/tmp/bsw16/check-previous-vertices.py` で位置数1〜6・色数1〜3の全色列のうち、
+直前同色を持つ3,534位置の集合の削除・先行数の差一・直前位置の活動性を確認した。
+前後に同色を持たない1,006位置ではその色のfiberが一頂点であることも確認。
+以下は既存の `Surjection.previousOccurrences` の最大とその性質の評価。
+
+```lean
+previousVertex {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) : Fin N
+previousVertex_mem {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) :
+  previousVertex v k h ∈ Surjection.previousOccurrences v k
+previousVertex_lt {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) : previousVertex v k h < k
+previousVertex_value {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) : v (previousVertex v k h) = v k
+previousOccurrences_erase_previousVertex {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) :
+  (Surjection.previousOccurrences v k).erase (previousVertex v k h) =
+    Surjection.previousOccurrences v (previousVertex v k h)
+previousOccurrences_card_previousVertex {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) :
+  (Surjection.previousOccurrences v (previousVertex v k h)).card + 1 =
+    (Surjection.previousOccurrences v k).card
+previousVertex_active {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) (h : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  previousVertex (label s v) k h ∈ activeVertexPositions s v
+vertexRank_eq_previousOccurrences_card {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) :
+  vertexRank s v (label s v k) k = (Surjection.previousOccurrences (label s v) k).card
+vertexRank_previousVertex {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) (h : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  vertexRank s v (label s v k) k =
+    vertexRank s v (label s v (previousVertex (label s v) k h))
+      (previousVertex (label s v) k h) + 1
+```
+
+### 120.2 直前同色の面への符号の移送（C116・C117）
+
+元の語が全射・隣接非退化の場合、m=0〜4、q=0〜3、色数1〜3の全経路の
+直前同色を持つ位置で、実際のBF境界指数が一つ違って交代符号が反対になることを
+点検してから実装。`outputBoundarySignAt` の既存の係数の冪の法則とC115で証明する。
+
+```lean
+outputBoundarySignAt_rank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) :
+  outputBoundarySignAt s v k = cutSign s v.val * (-1 : ℤ) ^
+    ((∑ c ∈ Finset.univ.filter (fun c : Fin r => c < label s v.val k), outputDegree s v c) +
+    vertexRank s v.val (label s v.val k) k)
+outputBoundarySignAt_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (h : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputBoundarySignAt s v k = -outputBoundarySignAt s v (previousVertex (label s v.val) k h)
+outputBoundarySignAt_via_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (h : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputBoundarySignAt s v k = -
+    ((-1 : ℤ) ^ positionExponent s v.val *
+      (-1 : ℤ) ^ positionInversionCount (label s v.val)
+        ((activeVertexPositions s v.val).erase (previousVertex (label s v.val) k h)) *
+      (-1 : ℤ) ^ ((activeVertexPositions s v.val).filter
+        (fun j => j < previousVertex (label s v.val) k h)).card)
+```
+
+C117は、k自身が非活動でも直前の同色位置が活動的であるC114と、検証済みのC111の合成。
+
+### 120.3 直前同色を持たない非活動頂点（C118〜C120）
+
+§120.1の1,006個の単独色の位置の点検を使う。前後に同色を持たないなら色のfiberは一頂点、
+したがって正の出力次数を持つ非活動頂点には直前同色が必ず存在する。
+
+```lean
+colorPositions_singleton_of_inactive_no_previous {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1))
+    (hk : k ∉ activeVertexPositions s v)
+    (hp : ¬(Surjection.previousOccurrences (label s v) k).Nonempty) :
+  colorPositions s v (label s v k) = {k}
+outputDegree_zero_of_inactive_no_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∉ activeVertexPositions s v.val)
+    (hp : ¬(Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputDegree s v (label s v.val k) = 0
+previousOccurrences_nonempty_of_inactive_degree_pos {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∉ activeVertexPositions s v.val) (hd : 0 < outputDegree s v (label s v.val k)) :
+  (Surjection.previousOccurrences (label s v.val) k).Nonempty
+```
+
+### 120.4 既存の一般の単語削除のcaesura公式の再利用（C121〜C124）
+
+位置数1〜6・色数1〜3の全色列・全削除位置で、活動頂点の削除ではその位置だけを、
+最後の非活動頂点の削除では直前同色の活動性だけを失うことを点検した。
+既存の `IntervalCuts.GeneralDeletionCaesuras.caesura_erase_of_caesura` と
+`caesura_erase_final` を使い、同じ集合を像で移す。逆転数の移送は既存の
+`positionInversionCount_image` の法則である。
+
+```lean
+caesuraPositions {N r : ℕ} (v : Fin N → Fin r) : Finset (Fin N)
+caesuraPositions_erase_active_image {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : Surjection.Caesura v k) :
+  (caesuraPositions (Surjection.erase v k)).image k.succAbove = (caesuraPositions v).erase k
+caesuraPositions_erase_final_image {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : ¬ Surjection.Caesura v k)
+    (hp : (Surjection.previousOccurrences v k).Nonempty) :
+  (caesuraPositions (Surjection.erase v k)).image k.succAbove =
+    (caesuraPositions v).erase (previousVertex v k hp)
+inversionCount_erase_active {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : Surjection.Caesura v k) :
+  positionInversionCount (Surjection.erase v k) (caesuraPositions (Surjection.erase v k)) =
+    positionInversionCount v ((caesuraPositions v).erase k)
+inversionCount_erase_final {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : ¬ Surjection.Caesura v k)
+    (hp : (Surjection.previousOccurrences v k).Nonempty) :
+  positionInversionCount (Surjection.erase v k) (caesuraPositions (Surjection.erase v k)) =
+    positionInversionCount v ((caesuraPositions v).erase (previousVertex v k hp))
+```
+
+活動集合の移送を新しく仮定せず、既存の任意の色列での削除公式を使う証明分割。
+
+### 120.5 同じ削除色列へ移した実際のBF境界符号（C125〜C127）
+
+m=0〜4、q=0〜3、色数1〜3の全射・隣接非退化の語の全経路の正出力次数の面で、
+実際の境界符号が「位置符号・削除色列の逆転符号・展開色列の単語削除係数」の積に
+一致することを点検してから実装。既存の `Surjection.deletionCoefficient` の二分岐と、
+C111・C117・C123・C124をそのまま同じ削除色列で貼り合わせる。
+
+```lean
+erasedColorSign {N r : ℕ} (v : Fin (N + 1) → Fin r) (k : Fin (N + 1)) : ℤ
+caesuraRank_label_eq_active_rank {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) :
+  Surjection.caesuraRank (label s v) k =
+    ((activeVertexPositions s v).filter (fun j => j < k)).card
+outputBoundarySignAt_erase_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : Surjection.Caesura (label s v.val) k) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    erasedColorSign (label s v.val) k * Surjection.deletionCoefficient (label s v.val) k
+outputBoundarySignAt_erase_final {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : ¬ Surjection.Caesura (label s v.val) k)
+    (hp : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    erasedColorSign (label s v.val) k * Surjection.deletionCoefficient (label s v.val) k
+outputBoundarySignAt_erase {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hd : 0 < outputDegree s v (label s v.val k)) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    erasedColorSign (label s v.val) k * Surjection.deletionCoefficient (label s v.val) k
+```
+
+零次数では `outputBoundarySignAt` 自体は±1でも、既存の実際の境界項は零である。
+その場合まで誤って符号そのものを削除係数0と同一視する型にはしない。
+
+### 120.6 混合角の座標と区間端点の評価（C128〜C132）
+
+m=0〜5、q=0〜4の全経路の水平辺・垂直辺・水平から垂直への混合角で、
+水平辺直前の区間の最後、垂直辺の前後の同色、角交換の一頂点の座標を点検してから実装。
+既存の `step_of_mem`・`step_of_notMem`・`horizontal_swapSteps`・`vertical_swapSteps` を合成する。
+
+```lean
+interval_max_before_horizontal {m q : ℕ} (s : Cut m q) (a : Fin (m + q))
+    (ha : a ∈ s.val) :
+  (intervalPositions s (s.horizontal a.castSucc)).max'
+    (intervalPositions_nonempty s (s.horizontal a.castSucc)) = a.castSucc
+before_horizontal_active_iff {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a : Fin (m + q)) (ha : a ∈ s.val) :
+  a.castSucc ∈ activeVertexPositions s v ↔ Surjection.Caesura v (s.horizontal a.castSucc)
+before_vertical_active {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a : Fin (m + q)) (ha : a ∉ s.val) : a.castSucc ∈ activeVertexPositions s v
+previousVertex_after_vertical {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a : Fin (m + q)) (ha : a ∉ s.val)
+    (hp : (Surjection.previousOccurrences (label s v) a.succ).Nonempty) :
+  previousVertex (label s v) a.succ hp = a.castSucc
+swapSteps_hv_coordinates {m q : ℕ} (s : Cut m q) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  (s.swapSteps a b).horizontal b.castSucc = s.horizontal a.castSucc ∧
+    ((s.swapSteps a b).vertical b.castSucc).val = (s.vertical b.castSucc).val + 1
+```
+
+### 120.7 削除後の同じ番号の順位と隣接順位（C133〜C135）
+
+位置数1〜6、色数1〜3の全色列について、活動頂点を削除した同じ番号の順位と
+隣接二位置の順位の差を点検してから実装する。
+C133は既存の `caesura_erase_of_caesura` と同値な接頭集合の濃度、
+C135は既存の `prefix_count_succ` の同じcaesura集合での評価。
+
+```lean
+caesuraRank_erase_active_at {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : Surjection.Caesura v a) (t : Fin N) (ht : t.val = a.val) :
+  Surjection.caesuraRank (Surjection.erase v a) t = Surjection.caesuraRank v a
+deletionCoefficient_erase_active_rank {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : Surjection.Caesura v a) (t : Fin N) (ht : t.val = a.val) :
+  Surjection.deletionCoefficient v a = (-1 : ℤ) ^ Surjection.caesuraRank (Surjection.erase v a) t
+caesuraRank_eq_filter_card {N r : ℕ} (v : Fin N → Fin r) (k : Fin N) :
+  Surjection.caesuraRank v k = ((caesuraPositions v).filter (fun j => j < k)).card
+caesuraRank_adjacent {N r : ℕ} (v : Fin N → Fin r) (a b : Fin N)
+    (hab : b.val = a.val + 1) :
+  Surjection.caesuraRank v b =
+    Surjection.caesuraRank v a + if Surjection.Caesura v a then 1 else 0
+```
+
+### 120.8 混合角による右端と位置指数の増分（C136〜C139）
+
+m=1〜4、q=1〜3の全経路の水平・垂直の角で、右端が直前の区間だけ一つ進むこと、
+色数1〜3の全ての語で位置指数がその区間のcaesuraだけ一つ増えることを点検してから実装。
+右端の評価C128と、最大位置の非一致、既存の有限和の一位置更新の法則を使う。
+
+```lean
+interval_max_ne_before_vertical {m q : ℕ} (s : Cut m q) (b : Fin (m + q))
+    (hb : b ∉ s.val) (i : Fin (m + 1)) :
+  (intervalPositions s i).max' (intervalPositions_nonempty s i) ≠ b.castSucc
+hi_swapSteps_hv_of_ne {m q : ℕ} (s : Cut m q) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val)
+    (i : Fin (m + 1)) (hi : i ≠ s.horizontal a.castSucc) :
+  SimplexCuts.hi (s.swapSteps a b) i = SimplexCuts.hi s i
+hi_swapSteps_hv_at {m q : ℕ} (s : Cut m q) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  hi (s.swapSteps a b) (s.horizontal a.castSucc) = hi s (s.horizontal a.castSucc) + 1
+positionExponent_swapSteps_hv {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  positionExponent (s.swapSteps a b) v = positionExponent s v +
+    if Surjection.Caesura v (s.horizontal a.castSucc) then 1 else 0
+```
+
+### 120.9 同じ削除色列と隣接同色の係数（C140〜C143）
+
+位置数2〜6、色数1〜3の全色列で、隣接同色のどちらを削除しても同じ色列になり、
+削除係数は反対になることを点検してから実装する。
+C142・C143は、既存の混合角の中間以外の座標保存と§117の削除列の点検を同じ色列で評価した法則。
+
+```lean
+erase_adjacent_equal {N r : ℕ} (v : Fin (N + 1) → Fin r) (a b : Fin (N + 1))
+    (hab : b.val = a.val + 1) (hv : v a = v b) : Surjection.erase v a = Surjection.erase v b
+deletionCoefficient_adjacent_equal {N r : ℕ} (v : Fin N → Fin r) (a b : Fin N)
+    (hab : b.val = a.val + 1) (hv : v a = v b) :
+  Surjection.deletionCoefficient v b = -Surjection.deletionCoefficient v a
+erase_label_swapSteps {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) :
+  Surjection.erase (label (s.swapSteps a b) v) b.castSucc = Surjection.erase (label s v) b.castSucc
+erasedColorSign_swapSteps {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) :
+  erasedColorSign (label (s.swapSteps a b) v) b.castSucc = erasedColorSign (label s v) b.castSucc
+```
+
+### 120.10 混合角の削除係数と位置指数を合わせた符号（C144）
+
+m=1〜4、q=1〜3、色数1〜3の全語で28,398例を点検した。
+C134・C135・C139〜C142を、同じ削除色列の二つの隣接順位で評価する法則。
+新しい作用やホモトピーは作らない。
+
+```lean
+signedDeletionCoefficient_swapSteps_hv {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  (-1 : ℤ) ^ positionExponent (s.swapSteps a b) v *
+      Surjection.deletionCoefficient (label (s.swapSteps a b) v) b.castSucc =
+    -((-1 : ℤ) ^ positionExponent s v *
+      Surjection.deletionCoefficient (label s v) b.castSucc)
+```
+
+§31の追記を受領。約4,600行の区切りにはL10〜L28の各行について、
+`convolutionAlgebra`、`restrictCoalgebra`、χ・TRの既存の法則で再利用できる部分と、
+一般単体の切断でなお証明する部分を分け、M14全体の残りを数え直す。
+
+### 120.11 実際の出力境界符号への適用（C145〜C148）
+
+既存の活動頂点の色ごとの濃度と直前同色位置から、両側の出力次数が正であることを確認する。
+C147は共通の削除色列の逆転符号をくくってC144を適用し、C148は同じ角交換の自己逆性を使う。
+数値符号の有限点検は§120.10に含む。実テンソルの一致はまだ主張しない。
+
+```lean
+outputDegree_pos_of_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∈ activeVertexPositions s v.val) : 0 < outputDegree s v (label s v.val k)
+outputDegree_pos_of_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hp : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  0 < outputDegree s v (label s v.val k)
+outputBoundarySignAt_swapSteps_hv {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  outputBoundarySignAt (s.swapSteps a b) v b.castSucc = -outputBoundarySignAt s v b.castSucc
+outputBoundarySignAt_swapSteps_vh {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∉ s.val) (hb : b ∈ s.val) :
+  outputBoundarySignAt (s.swapSteps a b) v b.castSucc = -outputBoundarySignAt s v b.castSucc
+```
+
+### 120.12 同じ削除列による実テンソルの更新次数（C149〜C152）
+
+既存のC27のリストの一致の長さを取り、各色の出力次数を更新した族まで一致させる。
+これはテンソルの依存した型を合わせるための既存構成の評価で、新しい次数模型は導入しない。
+リストの削除と角交換の有限点検は§117と§120.10のものを引き継ぐ。
+
+```lean
+verticesList_length {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  (verticesList s v.val c).length = outputDegree s v c + 1
+deletedVerticesList_length {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) (c : Fin r) :
+  (deletedVerticesList s v.val k c).length =
+    outputDegree s v c + 1 - if label s v.val k = c then 1 else 0
+deletedVerticesList_length_update {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : 0 < outputDegree s v (label s v.val k)) (c : Fin r) :
+  (deletedVerticesList s v.val k c).length =
+    Function.update (outputDegree s v) (label s v.val k)
+      (outputDegree s v (label s v.val k) - 1) c + 1
+deletedOutputDegree_swapSteps {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc)) :
+  Function.update (outputDegree (s.swapSteps a b) v)
+      (label (s.swapSteps a b) v.val b.castSucc)
+      (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) - 1) =
+    Function.update (outputDegree s v) (label s v.val b.castSucc)
+      (outputDegree s v (label s v.val b.castSucc) - 1)
+```
+
+### 120.13 実際の標準面を削除列で読む（既存C40・C154）
+
+既存C40の`simplexVertexList_boundaryFace`とC36を再利用し、C26の指定削除列と同定する。
+個別ビルド後の合同監査でC153が既存C40と重複していることが分かり、
+重複宣言を除いて`BoundaryVertexLists`のimportへ置き換えた。
+式は単体圏の実際の射の頂点列であり、ホモトピー圏へ弱めない。
+
+```lean
+simplexVertexList_deletedFace {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) :
+  simplexVertexList (boundaryFace _ hd j ≫ face s v (label s v.val k)) =
+    deletedVerticesList s v.val k (label s v.val k)
+```
+
+## 121. 約4,600行の区切り：L09a・L09とM14全体の再見積もり（11-14、§31）
+
+### 121.1 実測と完成範囲
+
+§119.22の3,634行から、今回の14モジュール934行を加え、
+**L09a・L09の実測4,568行、改訂MayのM14全体9,634行**。
+Leanファイルの空行・docstring込みで数え、報告書・監査用ファイルは含めない。
+§110の旧coherent経路10,216行は保持するが、今回の改訂Mayの外枠へ重複計上しない。
+
+今回、混合角の交換について、同じ削除色列・その逆転符号・位置指数の差・
+単語削除係数を結び、**実際の出力境界符号が反対になることを両向きに証明した**。
+削除した色別リストから、実テンソルの更新次数の族も一致した。
+指定境界面を削除列で読むC154も検証した。
+これらは元の圏・実際の整数係数の等式であり、ホモトピー圏へ弱めていない。
+
+まだL09a全体・L09は閉じていない。とくに、混合角の**実テンソル値**の一致を、
+今回の更新次数と指定面から接続するところは残る。
+水平・垂直の有限添字の対合は構成済みだが、それぞれの符号と実際の値の照合は残る。
+
+### 121.2 L09a・L09の残り
+
+以下は既存の型一覧L09a・L09の証明の残りで、新しい数学の追加ではない。
+実測4,568行からの**追加**を数える。
+
+| 行 | 残りの内容・使える完成分 | 追加見込み |
+| --- | --- | ---: |
+| 混合角 | C27の削除列、C147・C148の実符号、C152の更新次数、C154の指定面から、依存した次数移送込みの`deletedCutTensor`を一致させる。逆向きと分類の包装も含む | 180〜300 |
+| 水平境界と係数微分 | 水平の全添字同値・内点/両端の経路は既存。元の語の削除と展開語の削除の順位・位置指数の比較、無効な削除語と退化面の零、実テンソルの移送が残る | 600〜1,100 |
+| 垂直境界と入力面 | 垂直の全添字同値・削除後の座標列は既存。入力面の交代符号と位置指数の差、端点、正規化生成元と実テンソルの移送が残る | 500〜950 |
+| L09aの包装・L09 | 構成済みの対合・固定点零・三分岐の合成に実際の値の等式を渡す。有限和の相殺をテンソル微分・語の微分・入力面の和へ戻す | 200〜350 |
+| **残り合計** | | **1,480〜2,700** |
+| **L09a・L09完成時** | 現在の4,568を加算 | **6,048〜7,268** |
+
+符号の一般的な正規形は今回までに得たので、三分岐ごとに重み付き逆転数を最初から
+展開し直す見積もりにはしていない。ただし、実テンソルの依存した型と正規化の零の
+処理は未完であり、リストの等式だけで完成と数えない。
+
+### 121.3 L10〜L28：次元によらない既存部分の再利用の確認
+
+ローカルの宣言の引数・結論を読んで、次の境界を確認した。
+
+1. `Surjection.operad`（`Surjection/OperadStructure.lean`）はχの単位・置換・部分合成の
+   全法則を持つ。`TableReduction.operadMap`と`operadMap_app`（`TableReduction/OperadMap.lean`）は
+   全arityの**実際の**dg operad射と指定TR成分である。χ/TRのoperad則を再証明しない。
+2. `Operad.restrictCoalgebraObj`・`restrictCoalgebraMap`・`restrictCoalgebra`
+   （`Operad/CoalgebraRestriction.lean`）は任意の複体の余代数に使える。
+   一般単体のχ余作用の法則が揃った後、TRによるBE余作用の公理はそのまま引き戻せる。
+   ただし、χ自身がoperadであることだけから単体鎖のχ余代数構造は出ない。
+3. `Operad.convolutionAlgebra`、`convolutionAction_comp`、`convolutionAction_equivariance`、
+   `convolutionAction_unit`は非有界の一般複体・全arityで使える。
+   `convolutionPre`・`convolutionPost`・`convolutionPreNat`、
+   `convolutionAction_pre`・`convolutionAction_post`も同様。
+   正規化コチェインのBE**代数**の公理を切断公式からもう一周証明する必要はない。
+   一方、入力となる単体鎖のBE**余代数**と、指定された正規化評価の同定は先に要る。
+4. `IntervalCuts.coactionComposition_apply`は`P Q K W X : Complex A`を任意に取り、
+   二係数を交換するKoszul符号をそのまま再利用できる。
+   `compositeWord_at_non_slot`・`compositeOuterPosition_value`・
+   `compositeBasisWord_outerPosition`も単語・OverlapPartitionだけの主張である。
+   `GeneralDeletionCaesuras`の削除則、一般の位置逆転数の埋込みの法則は既にL09aで使用している。
+5. `IntervalCuts.cochainAction`は`interval A`、
+   `cochainAction_comp`・`cochainAction_operad_comp`も`interval A`に固定される。
+   `NestedEdgeCut.compositionCoefficient`は`edgeSign`と辺の二段切断、
+   `VertexCompositionSigns`は頂点/辺の有限出力族に固定される。
+   これらを一般qの定理として直接適用することはできない。
+   一般単体のL12aで必要な二段切断の全対応・一般の位置指数の貼り合わせは残る。
+   `CutSigns.edgeIntervalLength`もpivot一つの区間用で、一般qの`intervalLength`と同一視しない。
+
+したがって短縮できるのは「χ/TR・convolutionの公理」「任意の複体の係数交換」
+「単語代入の接頭部分の評価」であり、一般qの作用則を区間の完成定理だけから出す経路は採らない。
+IntervalCutsとの一致I01は指定された同じ作用の照合として残す（下のL28に計上）。
+
+### 121.4 L10〜L28の行ごとの残りの新規見込み
+
+既存宣言は直さず、一般単体に適用する証明・包装・指定比較の行数だけを数える。
+L12aの有限対応はL12に重複計上しない。すべて未完成で、以下の数字は実測ではない。
+
+| 行 | 再利用する部分と、新規に残る部分 | 新規見込み |
+| --- | --- | ---: |
+| L10 | L09と基底/正規化生成元の展開から全整数Leibnizへ。`cochainActionComponent_d`と同じ`TensorProduct.ext`・`tensorLift`の方法。区間のLeibniz定理そのものは流用しない | 130〜230 |
+| L11 | 既存の`permutationAction`・Koszulテンソルの置換評価と色別リストを使う。一般qの切断符号の置換と実テンソルの一致は新規 | 250〜450 |
+| L12a | 既存OverlapPartition・単語代入の位置/値・`coactionComposition_apply`を使用。一般qの二段切断と一段切断の有限対応、位置符号、退化項零、全色の実テンソルの比較は新規 | 1,400〜2,400 |
+| L12 | L12aの同じ添字上の有限和の相殺を`compositeCutSum = nestedCutSum`へ。χの合成係数を再構成しない | 120〜200 |
+| L13 | unaryの切断の一意性と同じ生成元。既存`oneIso`を使う | 70〜130 |
+| L14 | nullary係数とaugmentationを束ね、L12aの空入力分岐から実余作用へ。区間のnullary完成定理の直接適用はしない | 200〜380 |
+| L15 | 既存の生成元自然性L05と線形/テンソル外延性で実複体射の自然性に延長 | 100〜180 |
+| L16 | L12の有限和を`tensorCoInsertionAction`の実複体射へ。一般の結合子/交換の評価は既存を使用 | 120〜220 |
+| L17 | L11・L13を複体射の等変性/単位へ線形延長。χの対称列を使う | 100〜180 |
+| L18 | `restrictCoalgebraObj`・`restrictCoalgebraMap`・`TableReduction.operadMap`でBEへ制限。指定作用の式と射の可換性を包装 | 70〜130 |
+| L19 | cosimplicial恒等式の交代和の相殺で正規化部分を保つ。新たなBE法則は不要 | 120〜220 |
+| L20 | 同じ包含・微分・写像の制限。既存の交代余面複体の法則を使用 | 100〜180 |
+| L21 | Mathlib Dold–Kanの正規化/退化分解・ホモトピーを反対圏で使用。同じ正規化包含が指定homになる接続は新規 | 250〜450 |
+| L22 | `convolutionPre`・`convolutionPost`と各自然性、`Algebra.algebraLimitCone`・`algebraLimitIsLimit`で等化子を代数にする。恒等/合成を底のHomで確認 | 140〜260 |
+| L23 | convolution等化子の元の恒等単体での評価と逆構成、非単射で零、全単体射の自然性。一般convolutionからは出ない | 450〜850 |
+| L24 | 同じ評価の次数係数を保持した微分比較。一般Homの微分は既存だが評価符号の計算は新規 | 180〜340 |
+| L25 | L23の評価と既存のpost/pre自然性で全X射に対する自然性を確認 | 80〜160 |
+| L26 | L23〜L25を関手同型へ包装し、L20・L21の指定包含/擬同型を接続 | 120〜220 |
+| L27 | `convolutionAction_uncurry`・評価自然性と代数の極限射影から指定射影の評価式を得る。BE代数の公理は再証明しない | 80〜160 |
+| L28 | L27を実際のTR成分・単体鎖の切断公式で評価し、L26の指定同型で運ぶ。全整数次数とI01の区間との一致を含む | 250〜450 |
+| **L10〜L28（L12a込み）合計** | | **4,330〜7,790** |
+
+L21・L23・L24には「既存の同値を選べば終わる」という省略を置かない。
+同じ包含・同じ評価・同じ次数係数との照合をこの見込みに含めた。
+L12aの上端は区間の有限対応を一般qへ拡張する部分で、実測による不確実性が最も大きい。
+一般のoperad則を再利用しても、単体鎖のχ余作用の合成則のこの入力は消えない。
+
+### 121.5 M14全体の完成の見込みと25,000行の外枠
+
+§110の完成見込みをそのまま据え置かず、現在の実測と各未完成行から積み直す。
+G10や③-bの橋そのものを作る行数は含めないが、**受け取った指定比較への適用**は含める。
+
+| 部分 | 現時点の実測 / 残りの新規 |
+| --- | ---: |
+| 完成済みMayと今回までの切断の実装 | **9,634（実測）** |
+| L09a・L09の残り | 1,480〜2,700 |
+| L10〜L28（L12a・I01込み） | 4,330〜7,790 |
+| L29〜L37：同じMay係数・ν・top operationとFrobeniusの照合 | 1,200〜2,000 |
+| L38〜L40：G10後の指定native Totと同じFrobenius辺への移送 | 500〜900 |
+| L41・L42：filtered塔とA4の利用側 | 300〜550 |
+| L43a・L43b・L43・L44：二重模型の実現と同じMay演算の比較 | 1,500〜2,800 |
+| **残りの新規合計** | **9,310〜16,740** |
+| **M14完成時の見込み** | **18,944〜26,374** |
+
+**上端は25,000行を1,374行上回る。外枠内に必ず閉じるとは報告できない。**
+下端は共通符号の正規形・一般convolution・指定Dold–Kan比較の再利用が素直に通る場合、
+上端は一般qの二段切断と正規化評価の接続に余裕を取った値である。
+現在の実測の余地は15,366行で、残り上端16,740行より1,374行少ない。
+これは外枠変更の承認を仮定した見込みではなく、§31の外枠判断のための数値である。
+
+以前の§110の完成上端23,240行との差は3,134行。
+L09aの有限添字だけでなく、実際の境界符号・出力次数・指定面までの接続に行数が要り、
+一般BFの最初の行の見込みを上方修正したためである。
+χ/TR/convolutionの既存の公理を再証明しない短縮を入れても、この増分は全ては吸収できない。
+
+§31の「止まらずに」に従い、この1,000行区切り自体では停止しない。
+外枠25,000行を引き上げず、新しい数学の追加もしないまま、型一覧内の混合角の
+実テンソルの照合から続ける。今後の実測が残り上端に寄る場合は外枠到達前に明示する。
+12,500行の半分報告も別に行う。M15・G12、G10の部品には入らない。
+
+### 121.6 対象ビルド・合同監査と登録候補
+
+今回の14本はすべて対象ビルド成功。合同監査は **14モジュール・104宣言・標準三公理のみ**。
+監査ログは `/tmp/bsw16/audit-m14-corner-signs-02.log`。
+新規14本のsorry・追加公理0、Leanの警告0、`git diff --check`成功。
+合同監査で見つかった既存C40との重複は§120.13のとおり除去し、再監査を通した。
+個々の補題は200行以下。共通入口・共通監査は変更していない。mainは凍結中のまま。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+- `AdjacentColorDeletions`（86行）
+- `CaesuraVertexDeletion`（85行）
+- `CornerBoundarySigns`（74行）
+- `CornerDeletionSigns`（59行）
+- `CornerEndpointCoordinates`（82行）
+- `CornerIntervalMaxima`（52行）
+- `CornerPositionExponent`（64行）
+- `DeletedFaceVertexLists`（28行）
+- `DeletedOutputDegrees`（65行）
+- `ErasedBoundarySigns`（70行）
+- `ErasedCaesuraRanks`（81行）
+- `InactiveColorDegrees`（51行）
+- `PreviousBoundarySigns`（49行）
+- `PreviousVertexPositions`（88行）
