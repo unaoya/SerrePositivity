@@ -1553,3 +1553,21 @@ B01 の元のアトラスから貼り合わせた模型への比較（着手前�
 G1・G2共用部品込み本体10,116行、入口込み10,289行。一般の有限表示対象の模型の分割3,454行。六種の具体的な式から後段の実際のgluing datumへの適用は済み、貼り合わせた構造射と全体の有限表示性・元の対象との全体のCartesian比較を検証中。一般の固有性の降下と被覆模型は残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の実際の模型の組立ての出口（着手前の型、見込み150〜350行）：`OpenAtlasModelData.atlasComparison` は元の被覆・チャート・重なりの比較から前記の具体的な全体の比較の入力を実際に構成する。`exists_glued_model` は供給済みの六種の式を満たす後段（affine・局所 Noether）に対し、実際の貼り合わせ Y→B' の局所有限表示性・準コンパクト性・準分離性と元の X との実際の Cartesian 比較を返す。`exists_finitePresentation_coefficient_model` は Noether な係数環 k、任意の k-代数 R、qcqs・局所有限表示の f:X→Spec R に対し、有限生成 k-部分代数 A⊆R、実際の模型 p:Y→Spec A、その qcqs・局所有限表示性、実際の a:X→Y と `IsPullback a f p (Spec.map (algebraMap A R))` を無条件に供給する。既存の有限 affine アトラス模型、三種の射を同じ段へ取る出口、六種の式の共通段、gluing と全体の Cartesian 比較の組立て。Stacks 01ZM の対象の降下の B01 内の証明分割で、親項目を増やさない。元の環 R の Noether 性や模型の存在・固有性は仮定しない。一般の固有性の有限段への降下は別に残る。
+
+
+### B01：貼り合わせた構造射の有限表示性と元の対象全体との Cartesian 比較
+
+`BaseChangedGluingToBase`（68行）：`baseChangedToBase_compat` は各チャートの基底への射の反転に関する可換式、`baseChangedToBase` は実際の貼り合わせの構造射、`_ι`（`_assoc` を含む）は全チャート上で指定射との一致、`locallyOfFinitePresentation_baseChangedToBase` は局所有限表示性、`finitePresentation_baseChangedToBase` は後段の局所 Noether 基底と有限 affine チャートから全体の qcqs な局所有限表示性を返す。
+
+`OpenTransitionAtlasComparison`（97行）：`OpenTransitionAtlasComparison` は元の実際の開被覆と局所比較の入力、`chartAt`・`pairAt` は後段の実際のチャート・重なりへの比較、開包含の instance、`pairAt_square` は後段の開包含との Cartesian 比較、`pairAt_compat` は後段の反転との可換式、`gluedComparison` は元の対象から模型全体への実際の射、`isPullback_gluedComparison` は元の構造射と貼り合わせた構造射の同じ底変換の比較。
+
+本体165行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,961ジョブ成功。二モジュールの小監査46宣言（9・37）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-glued-atlas-base-comparison-check.log`・`2g-glued-atlas-base-comparison-native.log`・`2g-glued-atlas-base-comparison-audit.log`。続けて一般の模型の組立ての下書きを検証中で、この実測には含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ使用。
+
+G1・G2共用部品込み本体10,281行、入口込み10,456行。一般の有限表示対象の模型の分割3,619行。貼り合わせた構造射と全体の Cartesian 比較の法則は供給済みで、元の任意の対象からの全体の模型の無条件の組立てを下書き検証中。一般の固有性の降下と被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
+
+一般の固有性の降下の原典の再照合（11-15、調査のみ）：[Stacks 081F](https://stacks.math.columbia.edu/tag/081F) は分離性を先に有限段へ移し、Chow の補題の固有全射と固有な射影的空間への immersion を用い、極限での閉埋め込み性を有限段へ移して固有性を得る。[0A0P](https://stacks.math.columbia.edu/tag/0A0P) は有限表示の対象の模型とこの固有性の降下を組み合わせる。[0202](https://stacks.math.columbia.edu/tag/0202) の有限表示対象から Noether 模型への帰着は、今作っている一般の有限表示対象の模型と分離性の降下を先に使うので、一般の固有性の降下を先取りしなければ循環しない。Noether 基底の Chow の構成の参照は [0200](https://stacks.math.columbia.edu/tag/0200)（EGA II 5.6.1(a)）。Mathlib には `ProjectiveSpectrum/Proper.lean` の `IsProper (Proj.toSpecZero 𝒜)` はあるが、`Chow`・`QuasiProjective`・`ProjectiveSpace` の供給の API は現行の AlgebraicGeometry 内の検索では見つからない。次の型付きの標準存在補題の一覧と見込みは、既存の affine チャート・Proj・閉包の材料を照合してから出す。この調査だけで新しい存在の親項目を追加・完了扱いにしない。
