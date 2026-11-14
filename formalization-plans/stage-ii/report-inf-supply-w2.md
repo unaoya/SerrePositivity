@@ -13296,7 +13296,7 @@ def simplicialReplacementRowLatchingIso :
 
 283：包含の法則・境界の成分・境界付きの行全体の持ち上げ・latching自然性の四本の対象ビルド1,658 jobs・終了0、小監査144本1,014宣言・標準三公理のみ（実ハンドル81758・終了0）。284：元の相対latchingの持ち上げと最後のR03f.2の二本の対象ビルド1,661 jobs・終了0、小監査146本1,017宣言・標準三公理のみ（実ハンドル64724・終了0）。両方とも鍵返却済み。個別検査29337・4919・25258の終了0を確認した。
 
-今回85＋57＋60＋82＋95＋30＝409行、累計146本・9,467行／外枠15,000。R03f.2は1,278行。§206の当初見込み650〜1,200行の上端との差＋78行、§212の再見積もり1,169〜1,319行の範囲内。§19の中間定理一つ1,500行との差−222行である。計算上限の変更なし、sorry・独自公理0。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+今回85＋56＋60＋82＋95＋30＝408行、累計146本・9,466行／外枠15,000。R03f.2は1,277行。§206の当初見込み650〜1,200行の上端との差＋77行、§212の再見積もり1,169〜1,319行の範囲内。§19の中間定理一つ1,500行との差−223行である。計算上限の変更なし、sorry・独自公理0。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
 
 次は元のEx∞単位のbar上のleft anodyne性に適用し、元のscaffoldの同じ正方形と元の置換単位を固定した延長をつなぐ。延長の前合成同値性（R03f）と元の共同Hom比較（R03d）はなお別の未完了項目であり、R03f.2だけでnative極限性が得られたとは扱わない。
 
@@ -13423,4 +13423,26 @@ theorem simplicialReplacementMap_leftAnodyne
     {I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}
     (η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) :
     leftAnodyneExtensions (simplicialReplacementMap η)
+```
+
+## 214. 元のEx∞係数単位のbar上のleft anodyne性（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 21（うち追加 9）。R03f・R03d・R02・R03は未完了。
+
+R03f.2を元のgrothendieckKanCoefficientUnitと元のexInfinityUnit_leftAnodyneへ適用した。同じCat図式の同じEx∞単位からのsimplicialReplacementMapそのものがleft anodyneである。既存の単位の性質の適用であり、新しい中間の数学的定理の追加ではない。
+
+285：新規一本の対象ビルド1,948 jobs・終了0、小監査147本1,018宣言・標準三公理のみ。実ハンドル4709の終了0を確認し、鍵返却済み。個別検査99542も終了0。今回29行、累計147本・9,495行／外枠15,000。実ファイルの機械的な再集計で、§213のBoundaryComponentsの一行の誤算を修正した。R03f.2は21本1,277行、§213までの累計は9,466行。主張や型の変更ではない。
+
+元のscaffoldの同じ正方形へこのleft anodyne性をつなぐため、既存のRelativeFunctorOverEquivalence.relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalenceを確認した。標的がquasicategoryなら、定義域の充填性や比較射の単射性を課さず、任意のleft fibrationへの同じ相対関手空間の制限が同値である。cofinalFunctorSpace/cofinalFunctorPreは同じfiberと前合成で定義されているため、この既存の定理を同じ構成の定義の照合でcofinal性の検査へ移す短い経路を試す。未検証の照合を仮定として使わない。
+
+sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 214.1 型（29行）
+
+#### GrothendieckKanBarLeftAnodyne（29行）
+
+```lean
+theorem grothendieckKanCoefficientBarMap_leftAnodyne
+    {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
+    leftAnodyneExtensions (simplicialReplacementMap (grothendieckKanCoefficientUnit F))
 ```
