@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Functor.Basic
 public import Mathlib.Order.Lattice.Nat
 public import Mathlib.CategoryTheory.Limits.Shapes.ZeroMorphisms
@@ -254,3 +256,14 @@ def IsProCartesian {D : Type u'} [Category.{v'} D] {ι : Type*}
   IsProEquivalence invariants fiberComparison
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def 4.4" (partial := component) "仮定：自然数添字と次数別のレベル図式・比較を使う（Lean が強い）。結論：次数別プロ同型による判定の抽象模型。スペクトルのホモトピー引き戻しと結ぶ比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.IsProCartesian
+attribute [cite KST "Def 4.4" (partial := component) "仮定：自然数添字と次数別のレベル図式・比較を使う（Lean が強い）。結論：次数別プロ同型による判定の抽象模型。スペクトルのホモトピー引き戻しと結ぶ比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.IsProEquivalence
+attribute [cite KST "Eq (4.1)" (partial := component) "仮定：自然数塔と次数別の検出関手（Lean が強い）。結論：全ての指定検出関手でプロ同型を要求する定義。点付き空間とその π のプロ関手を実装した形はない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.IsProEquivalence
+attribute [cite KST "Eq (4.2)" (partial := component) "仮定：次数別のレベル射でホモトピー比較を表す（Lean が強い）。結論：プロ引き戻しの判定条件を与える。任意のプロスペクトルの正方形そのものの型はない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.IsProCartesian
+attribute [cite KST "Eq (4.3)" (partial := component) "仮定：自然数の二重添字の図式（Lean が強い）。結論：対角の共終性と、二重添字でプロ零の塔の対角のプロ零。各固定 m のスペクトル同値から二重添字全体への主張は別（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.diagonal_cofinal
+attribute [cite KST "Lemma 4.6" (partial := component) "仮定：レベルのファイバー比較または既に与えたファイバー列（Lean が強い）。結論：比較がプロ同値であるという判定界面と、ファイバーのプロ連結度の群による比較。正方形の合成と実ホモトピー引き戻しの同値は供給しない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.IsProCartesian
+attribute [cite KST "Lemma 4.7" (partial := component) "仮定：自然数の二重添字の図式（Lean が強い）。結論：対角の共終性と、二重添字でプロ零の塔の対角のプロ零。各固定 m のスペクトル同値から二重添字全体への主張は別（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.diagonal_cofinal

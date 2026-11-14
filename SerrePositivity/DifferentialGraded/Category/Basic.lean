@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
@@ -1465,3 +1467,13 @@ end SerrePositivity.DifferentialGraded
 end
 
 end FaithfulHomConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.1.1"] _root_.SerrePositivity.DifferentialGraded.DGCategory
+attribute [cite HA "1.3.1.2"] _root_.SerrePositivity.DifferentialGraded.differential_unit
+attribute [cite HA "1.3.1.4"] _root_.SerrePositivity.DifferentialGraded.ClosedCategory
+attribute [cite HA "1.3.1.4"] _root_.SerrePositivity.DifferentialGraded.DGCategory
+attribute [cite HA "1.3.1.5"] _root_.SerrePositivity.DifferentialGraded.HomotopyCategory
+attribute [cite HA "1.3.1.5"] _root_.SerrePositivity.DifferentialGraded.homotopyHomologyEquiv

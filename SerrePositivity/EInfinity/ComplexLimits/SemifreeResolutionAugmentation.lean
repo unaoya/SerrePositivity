@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedAugmentationHomotopy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Bar.DGModuleResolvedAugmentationHomotopy
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SpanHomotopyGluing
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 

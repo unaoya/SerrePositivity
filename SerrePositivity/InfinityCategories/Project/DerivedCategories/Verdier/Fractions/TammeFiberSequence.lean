@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction
@@ -30,10 +32,10 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
   (v : E.obj ⟶ D.obj) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom v) (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v)
 
 /-- 元の通常 pullback・lax pullback・差の項の値を結ぶ零角付き実四角形。 -/
-def tammeFiberTriangle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u} :=
+def tammeFiberTriangle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u} :=
   hΦ.abstractFiberTriangle (tammeVerdierSequence p q v a hv)
 
-lemma tammeFiberTriangle_isFiber : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle hΦ) p q v a hv) :=
+lemma tammeFiberTriangle_isFiber : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle hΦ) p q v a hv) :=
   hΦ.abstractFiberTriangle_isFiber (tammeVerdierSequence p q v a hv)
 
 lemma tammeFiberTriangle_bottom :
@@ -54,7 +56,7 @@ def tammeFiberMiddleIso : SpectrumHo.obj (value Φ (laxCategory p q)) ≅
   (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitEquivalence hΦ) p q
 
 /-- fiber 四角形の実中頂点を、元の二つの値の実 ∞ 積へ同定する。 -/
-def tammeFiberSquareMiddleIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle hΦ) p q v a hv).square 1 0 ≅
+def tammeFiberSquareMiddleIso : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle hΦ) p q v a hv).square 1 0 ≅
     SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
   hΦ.fiberMiddleIso (tammeVerdierSequence p q v a hv) ≪≫ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberMiddleIso hΦ) p q
 
@@ -65,7 +67,7 @@ def tammeDifferenceHom : SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) �
 
 lemma tammeFiberSquareMiddleIso_right :
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberSquareMiddleIso hΦ) p q v a hv).hom ≫ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeDifferenceHom hΦ) p q =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle hΦ) p q v a hv).square ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle hΦ) p q v a hv).square ≫
         (hΦ.fiberRightIso (tammeVerdierSequence p q v a hv)).hom := by
   change ((hΦ.fiberMiddleIso (tammeVerdierSequence p q v a hv)).hom ≫
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitComparison hΦ) p q).inv) ≫ (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitComparison hΦ) p q).hom ≫ _) = _
@@ -157,3 +159,10 @@ deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInv
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeFiberSquareMiddleIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberSquareMiddleIso._proof_1
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (13)" (partial := stronger-hyp) "仮定：小安定圏自体の引き戻しと右脚の充満忠実な右随伴、Sp 値の局所化型不変量（Lean が強い：Ind 上の右随伴に加え小圏上で与える）。結論：引き戻しの値から lax 引き戻しの値を経て余ファイバー先の値に至るファイバー列（原典と同じ射）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle_bottom
+attribute [cite Tamme "Eq (13)" (partial := stronger-hyp) "仮定：小安定圏自体の引き戻しと右脚の充満忠実な右随伴、Sp 値の局所化型不変量（Lean が強い：Ind 上の右随伴に加え小圏上で与える）。結論：引き戻しの値から lax 引き戻しの値を経て余ファイバー先の値に至るファイバー列（原典と同じ射）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle_isFiber
+attribute [cite Tamme "Eq (13)" (partial := stronger-hyp) "仮定：小安定圏自体の引き戻しと右脚の充満忠実な右随伴、Sp 値の局所化型不変量（Lean が強い：Ind 上の右随伴に加え小圏上で与える）。結論：引き戻しの値から lax 引き戻しの値を経て余ファイバー先の値に至るファイバー列（原典と同じ射）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFiberTriangle_right

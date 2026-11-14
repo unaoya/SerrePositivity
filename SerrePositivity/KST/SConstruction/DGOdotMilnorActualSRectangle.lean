@@ -104,7 +104,7 @@ lemma dgOdotMilnorActualRectangleDiagram_right :
 方針：元比較面の回収と K-S2 の元頂点等号を使用する。
 規約：追加の頂点同値ではない。使われ方：ActualRectangleInput.kernel_vertex。 -/
 lemma dgOdotMilnorActualRectangleDiagram_kernel_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
       _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (dgOdotMilnorActualRectangleDiagram R d) 2) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d) := by
   rw [dgOdotMilnorActualRectangleDiagram_comparison]

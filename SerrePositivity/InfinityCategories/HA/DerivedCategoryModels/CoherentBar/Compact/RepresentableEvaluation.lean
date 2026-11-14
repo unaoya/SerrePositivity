@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedComplexModelComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedComplexModelComparison
 public import SerrePositivity.DifferentialGraded.Module.Graded
 public import SerrePositivity.DifferentialGraded.Module.Basic
 /-!

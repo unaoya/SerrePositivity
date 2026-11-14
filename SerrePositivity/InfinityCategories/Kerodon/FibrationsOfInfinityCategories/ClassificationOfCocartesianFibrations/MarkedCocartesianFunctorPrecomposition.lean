@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.MarkedCocartesianFunctorSpace
 
 /-!
@@ -52,3 +54,8 @@ lemma markedCocartesianFunctorPre_ι {E B : SSet.{u}} (q : E ⟶ B) {a b : Over 
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.2.2.15" (partial := component) "仮定：共通の底の上でマークを保つ写像（Lean では終点面の包含とマークを明示する）。結論：マーク付き相対関手の前合成を構成する（A∞ 加群から A∞ 代数への忘却の成分に一致）。LM の表示と固定 A ファイバーは型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.markedCocartesianFunctorPre

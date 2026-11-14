@@ -71,7 +71,7 @@ instance closedStableWide_innerFibration {B : StableModel.{u}} (P : ClosedStable
 規約：cofiber の選択に依存しない。使われ方：相対 cofiber 射影の制限。 -/
 lemma closedStableEdges_iff_cofiber {B : StableModel.{u}} (P : ClosedStablePredicate B)
     {x y : B.carrier _⦋0⦌}
-    {f : Truncated.Edge (X := (truncation 2).obj B.carrier) x y} (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
+    {f : Truncated.Edge (X := (truncation 2).obj B.carrier) x y} (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
     f.edge ∈ closedStableEdges P ↔ P.predicate s.cofiber := by
   have he : {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} :=
     Set.ext (closedStableClosure_iff P)
@@ -93,7 +93,7 @@ lemma closedArrowPredicate_iff {B : StableModel.{u}} (P : ClosedStablePredicate 
   have hw := ConcreteCategory.congr_hom
     (NatTrans.congr_app (arrowCofiberSection_projection (flagAmbient B))
       (Opposite.op ⦋0⦌)) v
-  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram w.val)).edge = arrowVertexSimplex v := by
+  have he : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram w.val)).edge = arrowVertexSimplex v := by
     rw [← cofiberProjection_vertex_simplex]
     exact congrArg arrowVertexSimplex hw
   have hc := cofiberVertex_corner (flagAmbient B) w

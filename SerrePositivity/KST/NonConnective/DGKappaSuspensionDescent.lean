@@ -22,7 +22,7 @@ local notation "Q" => dgKappaSuspensionInfinity R D I
 local notation "i" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I)
   (dgKappaConePerfectObjects R D I)
 local notation "q" => dgKappaSuspensionProjection R D I
-local instance descentConeStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+local instance descentConeStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R _
 local instance descentKernelStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R _ _
@@ -39,7 +39,7 @@ def dgKappaSuspensionDescentEquivalence :=
 variable (F : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I) ⟶ Y) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F)
   (hK : ∀ x ∈ Set.range ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I)).app (Opposite.op ⦋0⦌)),
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x))
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x))
 
 /-- 元の指定関手を表す、同じ全零化完全関手圏の頂点。 -/
 def dgKappaSuspensionDescentInputVertex :

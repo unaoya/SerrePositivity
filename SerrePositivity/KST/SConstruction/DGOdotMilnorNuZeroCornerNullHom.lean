@@ -43,7 +43,7 @@ def dgOdotMilnorNuZeroCornerNullHom :
 規約：零角への任意の実完全射。使われ方：全 Hom 像の零成分判定。 -/
 lemma dgOdotMilnorNuZeroCornerComposite_zero (f : (K) ⟶ (Z))
     (x : (K).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((f.hom ≫ (t).hom).app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((f.hom ≫ (t).hom).app (Opposite.op ⦋0⦌) x) := by
   exact @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ (t).hom (t).isExact _
     (dgFixedNullInput_isZeroCategory R _ _)
 

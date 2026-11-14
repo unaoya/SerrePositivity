@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaPreLeftRetraction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CommaComparisons.CommaPreLeftRetraction
 public import SerrePositivity.EInfinity.FrameHom.NerveQuillenA
 public import SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy

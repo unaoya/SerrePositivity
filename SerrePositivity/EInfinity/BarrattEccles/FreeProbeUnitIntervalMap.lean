@@ -23,7 +23,7 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
-def derivedFreeProbeUnitIntervalMap (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
+def derivedFreeProbeUnitIntervalMap (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
@@ -31,7 +31,7 @@ def derivedFreeProbeUnitIntervalMap (x : (_root_.SerrePositivity.InfinityCategor
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y)
       (derivedFreeProbeUnitHom A x)
 
-lemma derivedFreeProbeUnitIntervalMap_family (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
+lemma derivedFreeProbeUnitIntervalMap_family (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (y : (CAlg_R A) _⦋0⦌) (T : SSet.{u + 1})
     (f : T ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ derivedFreeProbeUnitIntervalMap A x y) =

@@ -58,7 +58,7 @@ def pullbackDiagonalIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanC
   simpa only [diagonal, Category.assoc] using e
 
 lemma difference_kernel (x : (laxCategory (𝟙 Q) (𝟙 Q)).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxDifference (𝟙 Q) (𝟙 Q)).app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxDifference (𝟙 Q) (𝟙 Q)).app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (exactDiagonal Q) := by
   constructor
   · intro hx

@@ -32,7 +32,7 @@ lemma weakStringOctahedronMiddleExact_ambient {B C : _root_.SerrePositivity.Infi
     (weakStringOctahedronMiddleExact q β).val ≫
       (closedStableInclusion (kernelClosedPredicate q)).val =
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj).symm
-          (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0) := by
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0) := by
   change (weakStringOctahedronRelativeFamily q β ≫ kernelRelativeMiddleMap q) ≫ _ = _
   rw [Category.assoc, kernelRelativeMiddleMap_ι, ← Category.assoc,
     weakStringOctahedronRelativeFamily_ι]
@@ -55,8 +55,8 @@ def weakStringOctahedronMiddleExact_comparison {B C : _root_.SerrePositivity.Inf
   rw [weakStringCofiberFamily_quotient] at he
   have hi : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj)
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj).symm
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0)) =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0 :=
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0)) =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0 :=
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj)
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj).symm _)) _

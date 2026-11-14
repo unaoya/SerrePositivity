@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeFullCompatibleFunctors
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedWhiskeredSquareComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedWhiskeredSquareComposition
 
 /-!
 概要：左右因子を保つ全 Hom の組上の元の相対 BF 左因子の厳密自然性。

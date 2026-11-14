@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfectRealization
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationRealizedConeBoundary
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYoneda
 public import SerrePositivity.KST.SConstruction.DGPerfectStrictNatTransLift
 
 /-!

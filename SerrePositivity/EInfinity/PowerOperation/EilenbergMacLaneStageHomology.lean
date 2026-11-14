@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneKan
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModulePiMooreNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.EnrichedFunctors.ModulePiMooreNaturality
 
 /-!
 # 各段の π と指定 smart 切断のホモロジー
@@ -47,8 +47,8 @@ def levelPiHomologyEquiv (M : Complex A) (r n : ℕ) :
   letI : SSet.KanComplex (moduleUnderlyingSSet W) := by
     change SSet.KanComplex ((levelSpaceFunctor A r).obj M)
     infer_instance
-  exact (modulePiMooreGroupEquiv W n).trans
-    (additiveGroupToMultiplicativeEquiv
+  exact (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv W n).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
       ((normalizedLevelHomologyIso A r (n + 1)).app M).toLinearEquiv.toAddEquiv)
 
 end SerrePositivity.EInfinity.PowerOperation

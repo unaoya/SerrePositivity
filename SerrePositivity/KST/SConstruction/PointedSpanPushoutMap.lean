@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedSpanPushoutEnrichedFunctor
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialHomWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SimplicialHomWhisker
 
 /-! # 元の自然変換による同じ実押し出し射の厳密な回収
 概要：全 Hom の押し出し作用から、元の自然変換による同じ通常の押し出し射を回収する。

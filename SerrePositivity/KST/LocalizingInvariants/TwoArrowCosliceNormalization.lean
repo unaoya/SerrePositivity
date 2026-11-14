@@ -73,7 +73,7 @@ def twoArrowCosliceDiagram {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ 
 lemma twoArrowCoslice_first_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (s : _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.SquareCosliceSeed F) :
     (twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowFirstTarget =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.lift 1 0 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.lift 1 0 := by
   change s.lift.app (Opposite.op ⦋0⦌)
     (twoArrowSquareBoundary.app (Opposite.op ⦋0⦌) twoArrowFirstTarget) = _
   rw [twoArrowFirstTarget, twoArrowSquareBoundary_left_vertex]
@@ -82,7 +82,7 @@ lemma twoArrowCoslice_first_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{
 lemma twoArrowCoslice_second_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (s : _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.SquareCosliceSeed F) :
     (twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowSecondTarget =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.lift 1 1 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.lift 1 1 := by
   change s.lift.app (Opposite.op ⦋0⦌)
     (twoArrowSquareBoundary.app (Opposite.op ⦋0⦌) twoArrowSecondTarget) = _
   rw [twoArrowSecondTarget, twoArrowSquareBoundary_right_vertex]
@@ -94,9 +94,9 @@ def twoArrowCosliceEdge {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     Truncated.Edge (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.fractionSquarePoint F)))
       ((twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowFirstTarget)
       ((twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowSecondTarget) :=
-  ⟨(_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s.lift).edge,
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s.lift).src_eq.trans (twoArrowCoslice_first_target s).symm,
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s.lift).tgt_eq.trans (twoArrowCoslice_second_target s).symm⟩
+  ⟨(_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s.lift).edge,
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s.lift).src_eq.trans (twoArrowCoslice_first_target s).symm,
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s.lift).tgt_eq.trans (twoArrowCoslice_second_target s).symm⟩
 
 lemma twoArrowCoslice_projection {B C : SSet.{u}} (q : B ⟶ C)
     (D L : (Δ[1] : SSet.{u}) ⟶ B) (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C)

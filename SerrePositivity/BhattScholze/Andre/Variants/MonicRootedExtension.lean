@@ -25,7 +25,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PerfectionFai
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.FrobeniusPullback
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputUniversal
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 public import SerrePositivity.BhattScholze.Prism.Bounded.Tilt
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.FrobeniusPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue
@@ -37,7 +37,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison
 
 /-!
-# André E1・E2 の集約
+# BS 著者版 Remark 7.15 の包の計算 の集約
 
 ## 概要
 

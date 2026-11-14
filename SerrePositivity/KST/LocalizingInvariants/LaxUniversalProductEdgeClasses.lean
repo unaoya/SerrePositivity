@@ -24,36 +24,36 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
   (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) Q)
   (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i r)
 
-lemma bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
+lemma bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ i) ≫ (hΦ.tammeProjectionEquivalence p q).hom) := by
   have hn := congrArg Arrow.mk (bottom_naturality hΦ p q i r h)
   have hl := arrow_mk_comp_congr (LaxUniversalValue.bottom_arrow Φ p q i r h)
     (component10_arrow hΦ p q i r h)
   have hr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_comp_of_any_identity (component hΦ p q i r h 0 0)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) (component00_arrow hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) (component00_arrow hΦ p q i r h)
   exact hr.symm.trans (hn.symm.trans hl)
 
-lemma left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
+lemma left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.kernelMap p q i r))) := by
   have hn := congrArg Arrow.mk (left_naturality hΦ p q i r h)
   have hl := arrow_mk_comp_congr (LaxUniversalValue.left_arrow Φ p q i r h)
     (component01_arrow hΦ p q i r h)
   have hr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_comp_of_any_identity (component hΦ p q i r h 0 0)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) (component00_arrow hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) (component00_arrow hΦ p q i r h)
   have hh := hr.symm.trans (hn.symm.trans hl)
   simpa only [Category.comp_id] using hh
 
-lemma top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
+lemma top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (Binary.lift (𝟙 (value Φ Q)) (𝟙 (value Φ Q)))) := by
   have hn := congrArg Arrow.mk (top_naturality hΦ p q i r h)
   have hl := arrow_mk_comp_congr (LaxUniversalValue.top_arrow Φ p q i r h)
     (component11_arrow hΦ p q i r h)
   have hr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_comp_of_any_identity (component hΦ p q i r h 0 1)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) (component01_arrow hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) (component01_arrow hΦ p q i r h)
   exact hr.symm.trans (hn.symm.trans hl) |>.trans
     (congrArg Arrow.mk (IdentityLax.valueDiagonal_product Q hΦ))
 
-lemma right_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
+lemma right_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (legMap (Φ := Φ) p q r)) := by
   have hn := congrArg Arrow.mk (right_naturality hΦ p q i r h)
   have hl := arrow_mk_comp_congr (LaxUniversalValue.right_arrow Φ p q i r h)

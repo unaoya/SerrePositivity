@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HigherHornEdgeCover
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.HigherHornEdgeCover
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Scaffold.ScaffoldFiniteNerveUniverse
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
 

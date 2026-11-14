@@ -16,10 +16,10 @@ public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 BS 著者版 Corollary 2.39 と Proposition 3.13 の包の計算に使う、δ 関係式の剰余を求める。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Andre/Envelope/JetRegularity`、`Andre/Envelope/Normalized`、`Andre/Envelope/PDivision`、`Delta/Division/Witt`。
@@ -27,7 +27,7 @@ BS 著者版 Corollary 2.39 と Proposition 3.13 の包の計算に使う、δ �
 
 universe u v w
 
-/-! ## δ除算関係式の有限深さの通常剰余（旧 Delta/Division/Relations/DeltaDivisionFiniteResidueRelation.lean）
+/-! ## δ除算関係式の有限深さの通常剰余
 
 商イデアルのδ安定性を仮定せず、源のδ計算と通常環射で最初の冪方程式を得る。
 -/
@@ -158,7 +158,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteResidueRelation
 
-/-! ## B4-6：δ除算関係式の(p,d)剰余の最初のモニック方程式（旧 Delta/Division/Relations/DeltaDivisionResidueRelation.lean）
+/-! ## δ除算関係式の(p,d)剰余の最初のモニック方程式
 
 d*x=aをδで微分し、p,dを消す通常の環射に沿って計算する。
 剰余環にδ構造を要求せず、一般pねじれ・零終域も含む。
@@ -247,7 +247,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionResidueRelation
 
-/-! ## B4-6：δ除算の二段目のモニック関係式（旧 Delta/Division/Relations/DeltaDivisionSecondResidueRelation.lean）
+/-! ## δ除算の二段目のモニック関係式
 
 p,dを消す射の下でδ²(d*x)を計算する。
 δ²の剰余が、δ(x)のp乗を単元係数で含むことを証明する。
@@ -403,7 +403,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSecondResidueRelation
 
-/-! ## 第2有限δ関係式からのモニック冪方程式（旧 Delta/Division/Relations/DeltaDivisionSecondFiniteResidueRelation.lean）
+/-! ## 第2有限δ関係式からのモニック冪方程式
 
 通常射が深さ0,1,2の関係式を消すことから次の変数の冪を求める。
 有限段の商のδ安定性を要求しない。
@@ -474,7 +474,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSecondFiniteResidueRelation
 
-/-! ## 第2有限段の関係式消滅の逆向き比較と実際の商（旧 Delta/Division/Relations/DeltaDivisionSecondFinitePresentation.lean）
+/-! ## 第2有限段の関係式消滅の逆向き比較と実際の商
 
 有限深さの商のδ安定性を要求せず、二つのモニック方程式を比較する。
 -/
@@ -611,7 +611,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSecondFinitePresentation
 
-/-! ## 最初のδ除算剰余のモニック関係式表示（旧 Delta/Division/Relations/DeltaDivisionFirstResiduePresentation.lean）
+/-! ## 最初のδ除算剰余のモニック関係式表示
 
 深さ0,1の通常イデアルを、係数関係式と初期変数のモニック冪関係式へ同定する。
 全δ段・完備化・perfectionの平坦性は別工程。
@@ -773,7 +773,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFirstResiduePresentation
 
-/-! ## 初期δ剰余を係数とする後続変数の多項式表示（旧 Delta/Division/Relations/DeltaDivisionFirstResiduePowerPresentation.lean）
+/-! ## 初期δ剰余を係数とする後続変数の多項式表示
 
 初期モニック関係式を係数イデアルへ移し、既存多項式商同型を使う。
 この係数商の根添加環表示と、全δ段の平坦性は別途比較する。
@@ -874,7 +874,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFirstResiduePowerPresentation
 
-/-! ## 第一δ除算関係式の二次誤差を含む具体的正規形（旧 Delta/Division/Relations/DeltaDivisionFirstOrderNormalForm.lean）
+/-! ## 第一δ除算関係式の二次誤差を含む具体的正規形
 
 減算補正をイデアルの二乗で追い、次のδ計算へ渡せる代表元を示す。
 -/
@@ -955,7 +955,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFirstOrderNormalForm
 
-/-! ## 第2通常δ剰余のモニック関係式イデアル（旧 Delta/Division/Relations/DeltaDivisionSecondMonicPresentation.lean）
+/-! ## 第2通常δ剰余のモニック関係式イデアル
 
 実際の第2剰余イデアルを二つのモニック冪方程式のイデアルへ同定する。
 -/
@@ -1080,7 +1080,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSecondMonicPresentation
 
-/-! ## 第2通常δ剰余を係数とする後続多項式表示（旧 Delta/Division/Relations/DeltaDivisionSecondPowerPresentation.lean）
+/-! ## 第2通常δ剰余を係数とする後続多項式表示
 
 二つのモニック方程式を有限初期変数の係数イデアルへ移す。
 この係数商と同時根添加環の比較は別工程。

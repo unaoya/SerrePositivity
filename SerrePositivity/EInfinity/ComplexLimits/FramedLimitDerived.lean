@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AdjointRightDerived
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.UnitComparisons.AdjointRightDerived
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitAdjunctionNormalization
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitNaturality
 

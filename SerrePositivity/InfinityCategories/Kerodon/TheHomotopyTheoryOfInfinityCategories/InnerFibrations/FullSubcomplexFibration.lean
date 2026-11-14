@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathInnerFibration
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -58,3 +60,8 @@ instance fullSubcomplexOnVertices_quasicategory (X : SSet.{u}) [Quasicategory X]
   quasicategory_of_innerFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "3.3.3.13" (partial := component) "仮定：準圏 X と頂点条件 P（HA の相対 Alg の全体が準圏という先行結果を用い、P を inert 保存に取る）。結論：頂点条件による充満部分複体が準圏となる（この成分は一致）。O⊗ への categorical fibration 性は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory

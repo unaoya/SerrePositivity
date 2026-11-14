@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialPrismBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalPrismBoundary
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IntervalBoundary
 
 /-! # 零対象上で恒等な零射の自然変換
@@ -23,7 +23,7 @@ open scoped Simplicial
 /-- 概要：零対象で一定な部分を固定して、任意の図式と零対象の間の prism を延長できる。
 方針：両端と指定部分の和を貼り、新しい単体の始点または終点が零対象であることを使う。
 規約：false は零対象から図式へ、true は図式から零対象へ。使われ方：零射の相対的な自然変換。 -/
-lemma exists_relative_zeroPrism {B C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool)
+lemma exists_relative_zeroPrism {B C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool)
     (S : B.Subcomplex) (f : B ⟶ C) (hf : S.ι ≫ f = SSet.const z.vertex) :
     ∃ H : (Δ[1] : SSet.{u}) ⊗ B ⟶ C,
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 B ≫ H = (if b then f else SSet.const z.vertex) ∧
@@ -100,7 +100,7 @@ lemma exists_relative_zeroPrism {B C : SSet.{u}} (z : _root_.SerrePositivity.Inf
 /-- 概要：零対象から恒等関手へ、または恒等関手から零対象への自然変換を選ぶ。
 方針：零対象の生成部分複体を固定する相対 prism の延長から選ぶ。
 規約：false は零対象から、true は零対象へ。使われ方：McCarthy ホモトピーの零射。 -/
-def zeroNaturalTransformation {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool) :
+def zeroNaturalTransformation {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool) :
     (Δ[1] : SSet.{u}) ⊗ C ⟶ C :=
   Classical.choose (exists_relative_zeroPrism z b (Subcomplex.ofSimplex z.vertex) (𝟙 C)
     (by rw [Category.comp_id, Subcomplex.ofSimplex_ι]))
@@ -108,7 +108,7 @@ def zeroNaturalTransformation {C : SSet.{u}} (z : _root_.SerrePositivity.Infinit
 /-- 概要：選んだ零射の自然変換の始点は指定した関手。
 方針：相対 prism の始点の仕様。
 規約：射の厳密な等号。使われ方：McCarthy の端点の照合。 -/
-lemma zeroNaturalTransformation_zero {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool) :
+lemma zeroNaturalTransformation_zero {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 C ≫ zeroNaturalTransformation z b =
       (if b then 𝟙 C else SSet.const z.vertex) :=
   (Classical.choose_spec (exists_relative_zeroPrism z b (Subcomplex.ofSimplex z.vertex) (𝟙 C)
@@ -117,7 +117,7 @@ lemma zeroNaturalTransformation_zero {C : SSet.{u}} (z : _root_.SerrePositivity.
 /-- 概要：選んだ零射の自然変換の終点は指定した関手。
 方針：相対 prism の終点の仕様。
 規約：射の厳密な等号。使われ方：McCarthy の端点の照合。 -/
-lemma zeroNaturalTransformation_one {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool) :
+lemma zeroNaturalTransformation_one {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 C ≫ zeroNaturalTransformation z b =
       (if b then SSet.const z.vertex else 𝟙 C) :=
   (Classical.choose_spec (exists_relative_zeroPrism z b (Subcomplex.ofSimplex z.vertex) (𝟙 C)
@@ -126,7 +126,7 @@ lemma zeroNaturalTransformation_one {C : SSet.{u}} (z : _root_.SerrePositivity.I
 /-- 概要：選んだ零射の自然変換は零対象上で恒等となる一定の prism。
 方針：相対延長で零対象の生成部分複体を厳密に固定した仕様。
 規約：全ての高次単体で固定する。使われ方：McCarthy の零対角の正規化。 -/
-lemma zeroNaturalTransformation_fixed {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool) :
+lemma zeroNaturalTransformation_fixed {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool) :
     (Δ[1] ◁ (Subcomplex.ofSimplex z.vertex).ι) ≫ zeroNaturalTransformation z b =
       SSet.const z.vertex :=
   (Classical.choose_spec (exists_relative_zeroPrism z b (Subcomplex.ofSimplex z.vertex) (𝟙 C)
@@ -135,7 +135,7 @@ lemma zeroNaturalTransformation_fixed {C : SSet.{u}} (z : _root_.SerrePositivity
 /-- 概要：零対象で一定な任意の図式に対し、選んだ零射の自然変換は一定。
 方針：一定図式を零対象の生成部分複体へ持ち上げ、相対固定の式を適用する。
 規約：任意のパラメーターの全単体での等号。使われ方：McCarthy の零対角の固定。 -/
-lemma zeroNaturalTransformation_constant {A C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool) :
+lemma zeroNaturalTransformation_constant {A C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool) :
     (Δ[1] ◁ (SSet.const z.vertex : A ⟶ C)) ≫ zeroNaturalTransformation z b =
       SSet.const z.vertex := by
   let g : A ⟶ (Subcomplex.ofSimplex z.vertex : SSet.{u}) :=

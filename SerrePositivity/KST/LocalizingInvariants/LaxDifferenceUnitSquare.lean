@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitComponents
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorHomSquareRealization
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.FunctorHomSquareRealization
 
 /-!
 概要：差の単位の二成分と両端の元の矢印を固定した、実際の coherent な正方形。
@@ -18,11 +18,11 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-local instance unitSquareFunctorZero (A X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex ((ihom A).obj X) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.functorHasZeroVertex A X
+local instance unitSquareFunctorZero (A X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex ((ihom A).obj X) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.functorHasZeroVertex A X
 local instance unitSquareFunctorZeroMorphisms (A X : SSet.{u})
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] : HasZeroMorphisms ((ihom A).obj X).HomotopyCategory :=
-  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.hasZeroMorphisms_ho
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] : HasZeroMorphisms ((ihom A).obj X).HomotopyCategory :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.hasZeroMorphisms_ho
 
 variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
   {v : E.obj ⟶ D.obj} (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom v) (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v)
@@ -48,7 +48,7 @@ lemma laxDifferenceUnitSquare_comm :
   have hz := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.comp_zero_of_arrowMk_eq (laxArrowHom p q) _
     (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (laxArrowHomotopy p q))) _ rfl hr (laxDifferenceUnitD_nullComposite p q a hv)
-  have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+  have ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
       (((laxDifference p q ≫ laxDifferenceRho p q v) ≫ (laxFst p q).hom) ≫ p.hom)) :=
     ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isInitialVertex_functorVertex_of_pointwise _
       (fun x => (laxDifferenceUnit_target_fst_post_zero p q v x).1),

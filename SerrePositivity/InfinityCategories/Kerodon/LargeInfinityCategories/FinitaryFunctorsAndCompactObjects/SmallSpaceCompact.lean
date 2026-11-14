@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeHomModel
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.KanTerminalHomComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FullyFaithfulHomComparison
@@ -58,3 +60,8 @@ lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular]
   exact hm.of_functorIso ((kanHom_covariantModelIso K).precomp (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCocone.ulift c).val).symm
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.1.5" (partial := special) "仮定：非可算正則 κ、κ-small な Kan 模型 K（Lean が強い：同値前の一般の X ではなく (3) の模型自身）。結論：その同じ空間頂点が κ-compact（(3)⇒(5) のこの場合に一致）。ホモトピー群の濃度、minimal 模型、compact 性から小模型を回収する方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallKanObject_isKappaCompact

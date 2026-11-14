@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightPrism
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
@@ -68,3 +70,8 @@ instance ihom_map_leftFibration {E B : SSet.{u}} (p : E ⟶ B) [_root_.SerrePosi
         (leftAnodyneExtensions_horn_whiskerRight k A p (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mem (p := p)))
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.2.2.12" (partial := special) "仮定：p:X→S は Cartesian、q:Y→Z は cocartesian（Lean が強い：S=Δ⁰、q を left fibration に限定）。結論：この場合は Y′=Fun(X,Y),Z′=Fun(X,Z) と取れ、q′ が left、従って cocartesian fibration となる。全 Y と Y′ の辺が cocartesian なので (2) の辺の条件も両側が成立し一致。一般の相対 q には拡張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.ihom_map_leftFibration

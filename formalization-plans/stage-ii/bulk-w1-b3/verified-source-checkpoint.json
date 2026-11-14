@@ -1,0 +1,18 @@
+{
+  "head": "4547afc5eabf0bf99a24685766a4efa66ccfab57",
+  "frozen_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+  "time": "2026-11-14T09:16:12.367490",
+  "preserved_mathematical_source_head": "1fb4a34bd131a96112f5322c01f63b11cc093d45",
+  "metadata_only_parent": "1fb4a34bd131a96112f5322c01f63b11cc093d45",
+  "metadata_revision_proof": "approved-exception-note-update.json",
+  "note": "Library sources and all build-target sources unchanged; two mandatory audit declaration Name literals restored from frozen declarations; full formal rerun still required.",
+  "prior_verified_source_checkpoint": "5c2a483ed503dbbe4fdc41fd686b009765206d99",
+  "audit_data_correction_proof": "audit-declaration-name-corrections.json",
+  "audit_correction_pending_formal_rerun": false,
+  "documentation_only_parent": "0bbbaec81337894959e9aefb390fbc292b35d5e7",
+  "documentation_updates": [
+    "SerrePositivity/BhattScholze/README.md",
+    "SerrePositivity/InfinityCategories/README.md"
+  ],
+  "audit_correction_passed_rerun": "audit-corrected-reruns.json"
+}

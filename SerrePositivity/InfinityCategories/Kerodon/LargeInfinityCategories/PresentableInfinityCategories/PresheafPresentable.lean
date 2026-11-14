@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafCompactGenerators
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableEquivalence
 
@@ -51,3 +53,11 @@ lemma presheaf_exists_compactGeneratorIndEquivalence :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafCompactGeneratorInclusion_isCompactGenerating C) hG e⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.12"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isKappaAccessible_aleph0
+attribute [cite HTT "5.4.1.8" (partial := component) "仮定：小準圏 D（HTT と一致）。結論：P(D) の局所小性（原典の最終文と一致）。一般の C,D についての冒頭の「CD is essentially small」は C=Set,D=Δ⁰ で成り立たず、証明末尾は locally small を述べる（source-notes 参照）。この候補はその冒頭の誤記を正しいとするものではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isPresentable
+attribute [cite HTT "5.4.2.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isKappaAccessible_aleph0
+attribute [cite HTT "5.5.3.7" (partial := component) "仮定：小準圏 S（Lean が強い：任意の小単体集合でなく準圏）。結論：P(S) が presentable（第一の結論に一致）。S↦P(S) を全 Cat∞ から PrL への左随伴として構成する全高次の自然性までは含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isPresentable

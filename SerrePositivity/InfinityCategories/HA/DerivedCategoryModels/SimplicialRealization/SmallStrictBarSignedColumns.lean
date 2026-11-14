@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.Simpli
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockComposition
 import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalColumns
 import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBlockCoefficients
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarDifferential
+import all SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarDifferential
 
 /-!
 # 同じ theta の符号つき面の列の後合成

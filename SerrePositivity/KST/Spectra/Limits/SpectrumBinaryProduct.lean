@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashProductMono
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashProductMono
 public import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
 
 /-!

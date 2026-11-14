@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.StableOneDirectionReducedComparison
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-!
 概要：元の S₁ 商比較を全自然同値族に厳密に自然な点つき変換にする。

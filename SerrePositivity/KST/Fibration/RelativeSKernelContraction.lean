@@ -31,7 +31,7 @@ theorem relativeSKernel_toPoint_localized_isIso
     IsIso (AnodyneHomotopy.anodyneQ.map
       (terminal.from (relativeSConstruction (i.hom ≫ q.hom) n : SSet.{u}))) := by
   have := initialVertex_toPoint_localized_isIso
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (sConstruction n A.obj)).isZero.1
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (sConstruction n A.obj)).isZero.1
   have he : (relativeSKernelTopIso h n).hom ≫ terminal.from (sConstruction n A.obj) =
       terminal.from (relativeSConstruction (i.hom ≫ q.hom) n : SSet.{u}) :=
     terminal.hom_ext _ _

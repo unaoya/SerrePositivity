@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Descent.Axioms
 public import Mathlib.CategoryTheory.Square
 public import Mathlib.AlgebraicGeometry.Morphisms.Proper
@@ -82,3 +84,10 @@ structure AbstractBlowupSquare (S : Scheme.{u}) where
   iso_on_complement : IsIso (square.f₂₄.hom.left ∣_ complement)
 
 end SerrePositivity.KST.Descent
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (1.1)" (partial := special) "仮定：固定基底 S 上の有限型スキームで、固有射・閉埋め込み・補開上の同型（Lean が強い：有限型の表示を指定）。結論：引き戻しで与えた例外因子を持つ抽象ブローアップ正方形（原典と一致）。"] _root_.SerrePositivity.KST.Descent.AbstractBlowupSquare
+attribute [cite KST "Eq (1.9)" (partial := component) "仮定：固定基底上の有限型スキーム、またはアフィン上の指定された通常ブローアップ（Lean が強い）。結論：抽象正方形の条件と通常例外因子の閉性。アフィン正則列中心の四角形として束ねた宣言は確認できない（Lean が弱い）。"] _root_.SerrePositivity.KST.Descent.AbstractBlowupSquare
+attribute [cite LT "Eq (21)" (partial := special) "仮定：固定基底 S 上の有限型スキームと固有射・閉中心・補開上の同型（Lean が強い）。結論：実引き戻し正方形を与える。一般の qcqs 上で有限表示の閉中心を指定する原典とは範囲が異なる（Lean が弱い）。"] _root_.SerrePositivity.KST.Descent.AbstractBlowupSquare

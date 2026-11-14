@@ -40,7 +40,7 @@ lemma circleSquareDiagramFamily_vertex (z : Sp.{u} _⦋0⦌) :
 lemma circleSquareDiagramFamily_isLoop (z : Sp.{u} _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (circleSquareDiagramFamily.app (Opposite.op ⦋0⦌) z) := by
   rw [circleSquareDiagramFamily_vertex]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
     (nativeCircleEvaluationSquare z))) 0 1) ∧ _
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagram_functorVertex]
   exact ⟨nativeCircleEvaluationSquare_zeroCorner_isZero z 0,

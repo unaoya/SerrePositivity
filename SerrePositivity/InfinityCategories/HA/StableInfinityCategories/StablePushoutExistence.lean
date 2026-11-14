@@ -23,20 +23,20 @@ lemma IsStable.exists_pushoutSquare_of_edges {X : SSet.{u}} [Quasicategory X] [_
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ R = SSet.yonedaEquiv.symm f.edge ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ R = SSet.yonedaEquiv.symm g.edge := by
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenFiberSquare g
-  have hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 0 = x := by
+  have hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0 = x := by
     rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, t.right_edge]
     exact (congrArg (X.δ 1)
       ((SSet.yonedaEquiv (X := X) (n := ⦋1⦌)).apply_symm_apply g.edge)).trans g.src_eq
-  let f' : SSet.Truncated.Edge (X := (truncation 2).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 0) y :=
+  let f' : SSet.Truncated.Edge (X := (truncation 2).obj X) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0) y :=
     ⟨f.edge, f.src_eq.trans hx.symm, f.tgt_eq⟩
-  let c := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow t.square).compStruct f'
+  let c := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow t.square).compStruct f'
   let τ : Δ[2] ⟶ X := SSet.yonedaEquiv.symm c.simplex
   have hface (i : Fin 3) : SSet.yonedaEquiv (stdSimplex.δ i ≫ τ) = X.δ i c.simplex := by
     rw [stdSimplex.yonedaEquiv_δ_comp]
     exact congrArg (X.δ i) (SSet.yonedaEquiv.apply_symm_apply c.simplex)
   have hfirst : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.square = stdSimplex.δ (2 : Fin 3) ≫ τ := by
     apply SSet.yonedaEquiv.injective
-    exact ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge t.square).symm.trans c.d₂.symm).trans (hface 2).symm
+    exact ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge t.square).symm.trans c.d₂.symm).trans (hface 2).symm
   obtain ⟨F, hleft, hbottom, hright, _⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_pushoutRectangle_of_zeroTriangle
     t.toZeroTriangle (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pushout_of_pullback t.toZeroTriangle t.isPullback) τ hfirst
   refine ⟨_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0, hright, ?_, ?_⟩

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.NativeDegeneracy
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarCuts
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarCuts
 /-!
 概要：最初の退化辺の coherent 係数は同じ頂点の単位である。
 方針：dg nerve の collapsed-pair 公式と、最初の prefix の厳密なラベル等式を使う。

@@ -1,0 +1,14 @@
+{
+  "source": "formalization-plans/stage-ii/kerodon-layout-stop-3/stop-3-final-receipt.json",
+  "historical_only": true,
+  "source_verified_head": "1304c688ff9e4b2486f547310d07bfc25a2780d7",
+  "root_seconds": 20.501838,
+  "verify_seconds": 2226.619,
+  "verify_jobs": 6,
+  "verify_memory_gb": 44,
+  "audit_count": 103,
+  "audit_cpu_serial_seconds": 6037.06,
+  "maximum_audit_seconds": 513.496,
+  "sorry_seconds": 361.969,
+  "warning": "This is the 11-12 KL-W1 measurement, not B2 or a B3 run; normal B3 budget is 4 jobs / 32 GB and the new audit set may differ."
+}

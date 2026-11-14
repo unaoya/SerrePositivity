@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneSpectrumCohomology
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneStageCohomologyNaturality
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopySquares
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopySquares
 
 /-!
 # 実 EM スペクトルの同じ置換射を通る段ごとの π/H 自然性

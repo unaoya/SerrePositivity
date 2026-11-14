@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NecklaceNumericNormalForm
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.NecklaceNumericNormalForm
 public import SerrePositivity.KST.SConstruction.CubicalPresheaf
 
 /-! # 全 necklace 射を持つ元の具体的立方体関手

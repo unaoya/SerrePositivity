@@ -49,7 +49,7 @@ theorem exInfinityCommSqInfinitySquare_left :
 
 /-- 同じ元の四角形の頂点を、元の Ex∞ Kan 値として回収する。 -/
 theorem exInfinityCommSqInfinitySquare_apex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (exInfinityCommSqInfinitySquare sq) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (exInfinityCommSqInfinitySquare sq) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (exInfinityClosedKanEnrichedFunctor.obj ⟨P⟩) := by
   have he : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ exInfinityCommSqInfinitySquare sq) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (exInfinityKanMap b)).edge :=
@@ -62,7 +62,7 @@ theorem exInfinityCommSqInfinitySquare_apex :
 
 /-- 同じ元の四角形の頂点を、元の Ex∞ Kan 値として回収する。 -/
 theorem exInfinityCommSqInfinitySquare_middle :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (exInfinityCommSqInfinitySquare sq) 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (exInfinityCommSqInfinitySquare sq) 1 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (exInfinityClosedKanEnrichedFunctor.obj ⟨Y⟩) := by
   have he : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ exInfinityCommSqInfinitySquare sq) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (exInfinityKanMap b)).edge :=
@@ -75,7 +75,7 @@ theorem exInfinityCommSqInfinitySquare_middle :
 
 /-- 同じ元の四角形の頂点を、元の Ex∞ Kan 値として回収する。 -/
 theorem exInfinityCommSqInfinitySquare_corner :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (exInfinityCommSqInfinitySquare sq) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (exInfinityCommSqInfinitySquare sq) 0 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (exInfinityClosedKanEnrichedFunctor.obj ⟨X⟩) := by
   have he : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ exInfinityCommSqInfinitySquare sq) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (exInfinityKanMap a)).edge :=
@@ -88,7 +88,7 @@ theorem exInfinityCommSqInfinitySquare_corner :
 
 /-- 同じ元の四角形の頂点を、元の Ex∞ Kan 値として回収する。 -/
 theorem exInfinityCommSqInfinitySquare_target :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (exInfinityCommSqInfinitySquare sq) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (exInfinityCommSqInfinitySquare sq) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (exInfinityClosedKanEnrichedFunctor.obj ⟨Z⟩) := by
   have he : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ exInfinityCommSqInfinitySquare sq) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (exInfinityKanMap g)).edge :=

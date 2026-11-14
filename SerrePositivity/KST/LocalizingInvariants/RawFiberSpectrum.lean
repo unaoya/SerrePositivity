@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFiber
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashMonomorphisms
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
 
 /-!

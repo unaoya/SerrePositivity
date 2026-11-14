@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence
 public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison
@@ -56,14 +58,14 @@ include r in
 規約：同じ元の nerve 源写像を最後に回収する。
 使われ方：cofibrant 源の指定局所化と全 C への移送。 -/
 lemma modelCofibrantHammock_isLocalization :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
-      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := by
   have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation_reverse
     (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative (C := C)).functor)
     (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r).functor)
     (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
     (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative (C := C)))
     (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r))
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantBifibrantUnit r))
@@ -73,7 +75,7 @@ lemma modelCofibrantHammock_isLocalization :
     (modelBifibrantHammock_isLocalization r)
   rw [← relativeKanHammockNerve_source] at ht
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_comp_equivalence_iff _ _
-    (hammockLocalizationNerveMap_inverts (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (hammockLocalizationNerveMap_inverts (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
     (modelCofibrantToBifibrant_nerve_isQCatEquivalence r).choose).mp ht
 
 include r in
@@ -87,8 +89,8 @@ lemma modelHammock_isLocalization :
   have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation
     (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C).functor)
     (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C).functor)
-    (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
     (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
     (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C))
     (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C))
@@ -103,3 +105,12 @@ lemma modelHammock_isLocalization :
     (modelToCofibrant_nerve_isQCatEquivalence C).choose).mp ht
 
 end SerrePositivity.EInfinity.SimplicialLocalization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.15" (partial := stronger-hyp) "仮定：モデル圏の cofibrant 対象と弱同値、hammock の構成には関手的分解と指定フレーム（Lean が強い：一般の定義だけなら追加データは不要）。結論：その通常の nerve を弱同値で局所化して underlying ∞ 圏の具体模型を得る（一致する場合）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization
+attribute [cite HA "1.3.4.16" (partial := component) "仮定：モデル圏の関手的分解と指定フレーム（Lean が強い：明示的な hammock 模型とフレームを選ぶ）。結論：全圏・cofibrant 圏・cf 圏の局所化を、置換の比較を使って構成する（Lean が弱い：fibrant だけの部分圏はこの型に含まれない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization
+attribute [cite HA "1.3.4.16" (partial := component) "仮定：モデル圏の関手的分解と指定フレーム（Lean が強い：明示的な hammock 模型とフレームを選ぶ）。結論：全圏・cofibrant 圏・cf 圏の局所化を、置換の比較を使って構成する（Lean が弱い：fibrant だけの部分圏はこの型に含まれない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization
+attribute [cite HA "1.3.4.20" (partial := stronger-hyp) "仮定：モデル圏の関手的分解と指定フレーム（Lean が強い：HA の単体モデル圏と構成された θ をそのまま入力しない）。結論：cofibrant 及び cf の通常の nerve の弱同値による局所化を hammock で得る（Lean が弱い：θ の標的である cf の豊穣 coherent nerve との指定比較がこの型にない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization
+attribute [cite HA "4.1.7.3" (partial := special) "仮定：C はモデル圏の通常の nerve で、W は弱同値。関手的分解と指定フレームを要求する（Lean が強い：一般の準圏と system を扱わない）。結論：指定された弱同値を反転する普遍的な C[W⁻¹] の模型（一致する特殊例。全 system に対する左随伴の構成は型にない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization

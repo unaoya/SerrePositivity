@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalVertexLifting
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InternalHomFlipVertices
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseLimitCriterion
@@ -92,3 +94,9 @@ lemma isLimitCone_iff_pointwise_of_hasPointwiseLimits {J K X : SSet.{u}} [Quasic
   ⟨isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits hp c, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_pointwise c⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "3.2.2.9" (partial := special) "仮定：任意の二つの単体集合を図式・パラメーターとし、準圏 X で全評価図式が極限を持つ（Lean が強い：底 D が終準圏の場合に限る）。結論：点ごとの極限錐が自然な族に延長でき、関手 ∞ 圏の極限性が点ごとの極限性と同値（一致する絶対極限の特殊例）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_pointwiseLimitCone
+attribute [cite HA "3.2.2.9" (partial := special) "仮定：任意の二つの単体集合を図式・パラメーターとし、準圏 X で全評価図式が極限を持つ（Lean が強い：底 D が終準圏の場合に限る）。結論：点ごとの極限錐が自然な族に延長でき、関手 ∞ 圏の極限性が点ごとの極限性と同値（一致する絶対極限の特殊例）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_pointwise_of_hasPointwiseLimits

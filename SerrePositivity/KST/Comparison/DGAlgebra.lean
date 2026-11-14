@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.GLComponents
 
 /-!
@@ -88,3 +90,8 @@ def dgAlgebraHatGLComponents (A : DGAlgebraModel R) (r : ℕ) :
   hatGLComponentsMulEquiv (dgAlgebraGamma R A) r
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.4.1"] _root_.SerrePositivity.KST.Comparison.DGAlgebraModel

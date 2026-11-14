@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.ProSpectrumPiConnectivity
 
 /-!
@@ -52,3 +54,9 @@ lemma piProConnected_of_levelwise {X Y : Tower.{u}} (f : LevelHom X Y) (n : ℤ)
 
 end ProSpectrum
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Def 2.1" (partial := component) "仮定：Sp のホモトピー圏と整数次数、整数係数（Lean が強い）。結論：π の零・単射・全射による対象と射の連結度を定義。Λ 係数と正方形の連結度を含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnected
+attribute [cite LT "Def 2.1" (partial := component) "仮定：Sp のホモトピー圏と整数次数、整数係数（Lean が強い）。結論：π の零・単射・全射による対象と射の連結度を定義。Λ 係数と正方形の連結度を含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.SpectrumHo.IsPiConnective

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Roof.HomotopyPostcomposition
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyEvaluationClass
 
 /-!
 概要：全後合成ホモトピーの各関手成分を、同じ元のホモトピーの制限へ照合する。

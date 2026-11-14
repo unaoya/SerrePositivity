@@ -41,7 +41,7 @@ lemma internalHomFlipHomEquiv_evaluate {A B X : SSet.{u}}
 lemma IsCofiberDiagramVertex.zero_evaluation {C : SSet.{u}}
     {v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C) _⦋0⦌}
     (hv : IsCofiberDiagramVertex v) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
         (Opposite.op ⦋0⦌) v) := by
   have hvF : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v) = v :=
@@ -73,8 +73,8 @@ lemma cofiberFamilySquare_evaluate {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C
 方針：内部 Hom の転置の零次成分と点ごとの零対象判定を使う。
 規約：C の quasicategory 性は不要。使われ方：関手圏の ZeroTriangle の零角。 -/
 lemma cofiberFamilySquare_zero_corner {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (cofiberFamilySquare H) 0 1) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((cofiberFamilySquare H).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (cofiberFamilySquare H) 0 1) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((cofiberFamilySquare H).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   rw [cofiberFamilySquare, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.internalHomFlipHomEquiv_app_zero]
   apply isZeroVertex_functorVertex_of_pointwise
@@ -84,7 +84,7 @@ lemma cofiberFamilySquare_zero_corner {A C : SSet.{u}} (H : A ⟶ cofiberDiagram
 /-- 概要：cofiber の族は関手圏で零角を持つ四角形。
 方針：転置した四角形と零角の普遍性をまとめる。
 規約：安定性は定義に不要。使われ方：cofiber 列の点ごとの構成。 -/
-def cofiberFamilyTriangle {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom A).obj C) :=
+def cofiberFamilyTriangle {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((ihom A).obj C) :=
   ⟨cofiberFamilySquare H, cofiberFamilySquare_zero_corner H⟩
 
 /-- 概要：cofiber 四角形の族は関手 ∞ 圏の cofiber 列。
@@ -92,7 +92,7 @@ def cofiberFamilyTriangle {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) : _root
 規約：C は quasicategory。A は任意で安定性の追加仮定は不要。
 使われ方：Ar[n] 全体の cofiber 補完と押し出しの貼り合わせ。 -/
 lemma cofiberFamilyTriangle_isCofiber {A C : SSet.{u}} [Quasicategory C]
-    (H : A ⟶ cofiberDiagrams C) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (cofiberFamilyTriangle H) := by
+    (H : A ⟶ cofiberDiagrams C) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (cofiberFamilyTriangle H) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise (cofiberFamilySquare H)
   intro a
   rw [cofiberFamilySquare_evaluate]
@@ -102,7 +102,7 @@ lemma cofiberFamilyTriangle_isCofiber {A C : SSet.{u}} [Quasicategory C]
 方針：転置の零次成分を計算する。
 規約：厳密等号。使われ方：補完した Ar 図式を cofiber 列の頂点として扱う。 -/
 lemma cofiberFamilyTriangle_apex {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (cofiberFamilyTriangle H).square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ cofiberApex C) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (cofiberFamilyTriangle H).square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ cofiberApex C) := by
   change (cofiberFamilySquare H).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
   rw [cofiberFamilySquare, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.internalHomFlipHomEquiv_app_zero]

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3ParameterPullbackCriterion
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashMonomorphisms
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 
 /-!

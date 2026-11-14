@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseSections
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniverseSections
 
 /-!
 概要：反転した豊穣 Hom の Bousfield–Kan end を coherent な錐の切断模型へ比較する。

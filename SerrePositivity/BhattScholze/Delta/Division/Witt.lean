@@ -19,10 +19,10 @@ Witt 除算の下位剰余多項式と零定数係数の Witt 除数の三角形
 BS 著者版 Remark 2.14 の Witt 座標を、Remark 7.15 の包に使う δ 除算関係式に適用する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Andre/Envelope/JetKoszul`、`Andre/Envelope/Normalized`。
@@ -30,7 +30,7 @@ BS 著者版 Remark 2.14 の Witt 座標を、Remark 7.15 の包に使う δ 除
 
 universe u v w
 
-/-! ## 全有限δ除算関係式と切り詰めWitt積方程式の対応（旧 Delta/Division/Relations/DeltaDivisionWittJetRelations.lean）
+/-! ## 全有限δ除算関係式と切り詰めWitt積方程式の対応
 
 任意通常射の下で比較し、終域のδ構造は要求しない。
 -/
@@ -95,7 +95,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittJetRelations
 
-/-! ## 零定数係数のWitt除数の全段三角形表示（旧 Delta/Division/Relations/WittDivisionTriangular.lean）
+/-! ## 零定数係数のWitt除数の全段三角形表示
 
 Verschiebungで一段下げて既存のWitt積係数公式を使う。
 -/
@@ -187,7 +187,7 @@ end SerrePositivity.BhattScholze
 
 end WittDivisionTriangular
 
-/-! ## 実際のδ除算関係式からの全段Wittモニック方程式（旧 Delta/Division/Relations/DeltaDivisionWittMonicRelations.lean）
+/-! ## 実際のδ除算関係式からの全段Wittモニック方程式
 
 有限δjet消滅を積係数等式へ移し、既存全段Witt三角形公式を使う。
 -/
@@ -262,7 +262,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittMonicRelations
 
-/-! ## Witt除算の下位剰余多項式（旧 Delta/Division/Relations/WittDivisionPolynomialRemainder.lean）
+/-! ## Witt除算の下位剰余多項式
 
 整数係数の有限多項式を固定し、除数係数とp乗変数へ置換する。
 -/
@@ -420,7 +420,7 @@ end SerrePositivity.BhattScholze
 
 end WittDivisionPolynomialRemainder
 
-/-! ## 実際のδ除算関係式の次段と具体的モニック多項式の根条件（旧 Delta/Division/Relations/DeltaDivisionWittPolynomialRelations.lean）
+/-! ## 実際のδ除算関係式の次段と具体的モニック多項式の根条件
 
 下位関係式を仮定して、次の関係式の消滅を双方向に比較する。
 -/
@@ -506,7 +506,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittPolynomialRelations
 
-/-! ## 源のWitt根関係元と通常射での自然性（旧 Delta/Division/Relations/DeltaDivisionWittRelationElement.lean）
+/-! ## 源のWitt根関係元と通常射での自然性
 
 源の指定単元を使い、根多項式の評価を実際の環元として固定する。
 -/
@@ -557,7 +557,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittRelationElement
 
-/-! ## 下位関係イデアル上の次段δ生成元のWitt根関係元への置換（旧 Delta/Division/Relations/DeltaDivisionWittRelationIdeal.lean）
+/-! ## 下位関係イデアル上の次段δ生成元のWitt根関係元への置換
 
 商射での消滅比較により、任意の下位イデアル上で正確なイデアル等式を示す。
 -/
@@ -654,7 +654,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittRelationIdeal
 
-/-! ## 実際の有限δ関係イデアルの全段Witt根生成元表示（旧 Delta/Division/Relations/DeltaDivisionWittFiniteRelationIdeal.lean）
+/-! ## 実際の有限δ関係イデアルの全段Witt根生成元表示
 
 既存の有限δイデアルと第一剰余イデアルを使い、後続式を反復する。
 -/
@@ -770,7 +770,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittFiniteRelationIdeal
 
-/-! ## 逆Witt座標での具体的モニック有限関係式（旧 Delta/Division/Relations/DeltaDivisionWittNormalizedRelation.lean）
+/-! ## 逆Witt座標での具体的モニック有限関係式
 
 最高変数のp乗と初期段の係数多項式を分離する。
 -/
@@ -902,7 +902,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittNormalizedRelation
 
-/-! ## 逆Witt座標による全有限関係イデアルの正規化（旧 Delta/Division/Relations/DeltaDivisionWittNormalizedIdeal.lean）
+/-! ## 逆Witt座標による全有限関係イデアルの正規化
 
 実際の有限δイデアルの全段式を、具体的モニック関係元族へ移す。
 -/
@@ -1019,7 +1019,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittNormalizedIdeal
 
-/-! ## 実際の有限δ剰余商と正規化モニック商の同型（旧 Delta/Division/Relations/DeltaDivisionWittNormalizedQuotient.lean） -/
+/-! ## 実際の有限δ剰余商と正規化モニック商の同型 -/
 
 @[expose] public noncomputable section DeltaDivisionWittNormalizedQuotient
 
@@ -1077,7 +1077,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionWittNormalizedQuotient
 
-/-! ## 正規化関係イデアルの初期有限変数による表示（旧 Delta/Division/Relations/DeltaDivisionFiniteNormalizedPresentation.lean） -/
+/-! ## 正規化関係イデアルの初期有限変数による表示 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedPresentation
 
@@ -1168,7 +1168,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedPresentation
 
-/-! ## 有限正規化関係イデアルの後続式（旧 Delta/Division/Relations/DeltaDivisionFiniteNormalizedStep.lean） -/
+/-! ## 有限正規化関係イデアルの後続式 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedStep
 
@@ -1308,7 +1308,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedStep
 
-/-! ## 下位関係商におけるδ反復関係とWitt根関係の正則性（旧 Delta/Division/Relations/DeltaDivisionWittJetRegularity.lean）
+/-! ## 下位関係商におけるδ反復関係とWitt根関係の正則性
 
 既存の主イデアル置換等式を使用する。p正則性・ghost単射・δd単元条件を明示する。
 -/

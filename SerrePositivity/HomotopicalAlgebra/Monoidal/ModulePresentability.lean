@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Smith.ConservativeAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.Free
@@ -37,3 +39,8 @@ lemma isLocallyPresentable : IsLocallyPresentable.{w} (Mod C M) := by
     (MonoidalFreeModule.freeForgetAdjunction M)
 
 end SerrePositivity.MonoidalModulePresentability
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.2.3.7" (partial := special) "仮定：通常の局所可呈示モノイダル圏と余極限を保つ左テンソル、または通常の環準同型と小さい加群図式（Lean は通常圏の場合に限る）。結論：固定内部モノイドの加群圏が局所可呈示となり、通常の環ではスカラー制限が極限と余極限を保つ（(1)・(2) の通常圏の成分に一致）。射影の presentable fibration 性は含まれない。"] _root_.SerrePositivity.MonoidalModulePresentability.isLocallyPresentable

@@ -14,11 +14,11 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 open CategoryTheory MonoidalCategory SSet
 open scoped _root_.Simplicial
-variable {X : SSet.{u}} {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X} {τ : Δ[2] ⟶ X}
+variable {X : SSet.{u}} {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X} {τ : Δ[2] ⟶ X}
 
 /-- 長辺の実 cofiber 四角形。 -/
 def CofiberOctahedronDiagram.compositeCofiberSquare (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram t τ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ τ))) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ τ))) where
   toZeroTriangle := d.first.outerZeroTriangle
   bottom_edge := by
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ d.first.outerZeroTriangle.square =
@@ -30,7 +30,7 @@ def CofiberOctahedronDiagram.compositeCofiberSquare (d : _root_.SerrePositivity.
 
 /-- 第二の短辺の実 cofiber 四角形。 -/
 def CofiberOctahedronDiagram.nextCofiberSquare (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram t τ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ τ))) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ τ))) where
   toZeroTriangle := d.second.outerZeroTriangle
   bottom_edge := by
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ d.second.outerZeroTriangle.square =
@@ -41,24 +41,24 @@ def CofiberOctahedronDiagram.nextCofiberSquare (d : _root_.SerrePositivity.Infin
 
 /-- 最後の列の始点は最初の cofiber。 -/
 lemma CofiberOctahedronDiagram.last_source (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram t τ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.second.rightZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 1 := by
-  have hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.second.rightZeroTriangle.square 0 0 =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.second.diagram 2) 1 0 := rfl
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.second.rightZeroTriangle.square 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 1 := by
+  have hv : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.second.rightZeroTriangle.square 0 0 =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.second.diagram 2) 1 0 := rfl
   rw [hv, d.second.left_eq]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.first.diagram 2) 1 1 = _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.first.diagram 2) 1 1 = _
   rw [d.first.left_eq]
 
 /-- 最後の列の中間頂点は合成射の cofiber。 -/
 lemma CofiberOctahedronDiagram.last_middle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram t τ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.second.rightZeroTriangle.square 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.second.rightZeroTriangle.square 1 0 =
       d.compositeCofiberSquare.cofiber := by
-  have hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.second.rightZeroTriangle.square 1 0 =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.second.diagram 2) 1 1 := rfl
+  have hv : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.second.rightZeroTriangle.square 1 0 =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.second.diagram 2) 1 1 := rfl
   rw [hv, d.second.left_eq]
   rfl
 
 /-- 最後の列の終点は第二の短辺の cofiber。 -/
 lemma CofiberOctahedronDiagram.last_target (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram t τ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.second.rightZeroTriangle.square 1 1 = d.nextCofiberSquare.cofiber := rfl
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.second.rightZeroTriangle.square 1 1 = d.nextCofiberSquare.cofiber := rfl
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

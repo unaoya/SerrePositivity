@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Descent.ClosedCoverAction
 public import SerrePositivity.KST.Descent.FixedPullbackComparison
 public import SerrePositivity.KST.Descent.InvariantProducts
@@ -103,3 +105,8 @@ theorem closedCover_piDescent (data : NaturalBlowupSequences L)
 end NaturalBlowupSequences
 
 end SerrePositivity.KST.Descent
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Proof step A.2 Step 1" (partial := component) "仮定：有限型スキーム、被約な始域と基底、有限群作用、次数付き前層のブローアップ完全列、各制限での降下を仮定（Lean が強い）。結論：閉被覆と交わりでの同変降下から、基底全体での次数別降下を得る。切断型不変量からの Sp 引き戻しの構成は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.Descent.NaturalBlowupSequences.closedCover_piDescent

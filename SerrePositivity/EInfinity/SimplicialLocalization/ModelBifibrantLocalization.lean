@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRightKanCofinality
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
@@ -97,3 +99,10 @@ lemma modelBifibrantHammock_isLocalization :
     (fun X => modelBifibrantFrameRightKanMap_cofinal r X)
 
 end SerrePositivity.EInfinity.SimplicialLocalization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.16" (partial := component) "仮定：モデル圏の関手的分解と指定フレーム（Lean が強い：明示的な hammock 模型とフレームを選ぶ）。結論：全圏・cofibrant 圏・cf 圏の局所化を、置換の比較を使って構成する（Lean が弱い：fibrant だけの部分圏はこの型に含まれない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization
+attribute [cite HA "1.3.4.20" (partial := stronger-hyp) "仮定：モデル圏の関手的分解と指定フレーム（Lean が強い：HA の単体モデル圏と構成された θ をそのまま入力しない）。結論：cofibrant 及び cf の通常の nerve の弱同値による局所化を hammock で得る（Lean が弱い：θ の標的である cf の豊穣 coherent nerve との指定比較がこの型にない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization
+attribute [cite HA "1.3.4.8" (partial := stronger-hyp) "仮定：モデル圏のcofibrant-fibrant 対象と関手的分解・フレーム（Lean が強い：任意の区間対象を持つ局所 Kan な単体圏を扱わない）。結論：弱同値を反転する hammock nerve の局所化（Lean が弱い：単体豊穣圏自身の coherent nerve との比較はこの型にない）。"] _root_.SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization

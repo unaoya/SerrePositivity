@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadTail
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWordReindex
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexHABeadTail
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexHABeadWordReindex
 public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorFaces
 
 /-! # 元の全 tensor 生成元の部分集合 bead 連結語への読み替え

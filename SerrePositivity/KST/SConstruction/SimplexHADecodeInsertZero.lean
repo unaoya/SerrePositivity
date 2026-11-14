@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.SimplexHADeleteVertexOrder
 public import SerrePositivity.KST.SConstruction.SerreCubeInsertGeneratorIndex
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeRightTail
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWordJoinEquality
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexHABeadWordJoinEquality
 
 /-! # 元の全生成元への任意座標の零端点挿入の読み替え
 概要：任意位置の零端点を挿入した語を、同じ内部頂点を削除した語として回収する。

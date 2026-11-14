@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.CochainPostIsoInjective
 public import SerrePositivity.KST.SConstruction.DGGluingAxesArrows
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.PrimitiveComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.CommaStrictPostcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.CommaComparisons.CommaStrictPostcomposition
 
 /-! # 元の右軸包含の comma 表示の厳密成分
 概要：元の右軸包含を代表加群 comma へ移しても、第三比較は零、係数射は恒等となる。

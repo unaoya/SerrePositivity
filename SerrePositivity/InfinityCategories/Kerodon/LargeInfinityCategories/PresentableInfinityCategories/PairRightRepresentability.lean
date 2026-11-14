@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PairUnitRightRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PairLeftRepresentability
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PostcompositionAdjunction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.UnitComparisons.PostcompositionAdjunction
 
 /-!
 概要：指定随伴の左関手は、元の全左関手圏上で固定右の単位空間を表現する。

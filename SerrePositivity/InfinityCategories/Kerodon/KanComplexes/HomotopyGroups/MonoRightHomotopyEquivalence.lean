@@ -45,7 +45,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGr
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.SpectrumHomotopyFunctor
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIndexing
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping
 public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 

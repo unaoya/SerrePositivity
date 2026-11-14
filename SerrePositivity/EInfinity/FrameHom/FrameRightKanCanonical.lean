@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKan
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CosliceRealizationLimitCone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.CosliceRealizationLimitCone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
 
 /-!

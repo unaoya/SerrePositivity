@@ -36,21 +36,21 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
 
 def bottomEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ A))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (value Φ C) (value Φ D))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
     (LaxUniversalProduct.vertex00 hΦ p q i r h) (LaxUniversalProduct.vertex10 hΦ p q i r h)
 
 def topEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ Q))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (value Φ Q) (value Φ Q))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
     (LaxUniversalProduct.vertex01 hΦ p q i r h) (LaxUniversalProduct.vertex11 hΦ p q i r h)
 
 def leftEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ A)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ Q)) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
     (LaxUniversalProduct.vertex00 hΦ p q i r h) (LaxUniversalProduct.vertex01 hΦ p q i r h)
 
 def rightEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (value Φ C) (value Φ D)))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (value Φ Q) (value Φ Q))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h))).ofEq
     (LaxUniversalProduct.vertex10 hΦ p q i r h) (LaxUniversalProduct.vertex11 hΦ p q i r h)
 
 def oldFrame : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.squareFrameOfEdges (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.bottomEdge hΦ p q i r h)
@@ -59,17 +59,17 @@ def oldFrame : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAu
 lemma oldFrame_eq : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.oldFrame hΦ p q i r h =
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h) := by
   apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame.ext
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow _).edge = _
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow _).edge = _
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow _).edge = _
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow _).edge = _
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow _).edge = _
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow _).edge = _
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow _).edge = _
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow _).edge = _
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
 
 lemma bottom_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.bottomEdge hΦ p q i r h).toTruncated =
@@ -77,7 +77,7 @@ lemma bottom_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.In
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.bottomEdge hΦ p q i r h).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
       (LaxUniversalProduct.bottom_native_arrow hΦ p q i r h)
 
 lemma top_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.topEdge hΦ p q i r h).toTruncated =
@@ -85,7 +85,7 @@ lemma top_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.Infin
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.topEdge hΦ p q i r h).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
       (LaxUniversalProduct.top_arrow hΦ p q i r h)
 
 lemma left_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.leftEdge hΦ p q i r h).toTruncated =
@@ -93,7 +93,7 @@ lemma left_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.Infi
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.leftEdge hΦ p q i r h).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
       (LaxUniversalProduct.left_arrow hΦ p q i r h)
 
 lemma right_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.rightEdge hΦ p q i r h).toTruncated =
@@ -101,7 +101,7 @@ lemma right_class : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.Inf
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductNormalization.rightEdge hΦ p q i r h).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) rfl).trans
       (LaxUniversalProduct.right_arrow hΦ p q i r h)
 
 def newFrame : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.squareFrameOfEdges

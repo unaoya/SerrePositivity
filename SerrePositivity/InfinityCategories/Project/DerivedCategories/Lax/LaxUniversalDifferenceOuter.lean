@@ -50,19 +50,19 @@ lemma outerSquare_left : _root_.SerrePositivity.InfinityCategories.Kerodon.Limit
 
 def outerDiagram : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u} := by
   let S := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.outerSquare p q i r h
-  have ha : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex S 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex A := by
+  have ha : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex S 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex A := by
     have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source S
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.outerSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow i).src_eq] at ht
     exact ht.symm
-  have hp : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex S 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (laxCategory p q) := by
+  have hp : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex S 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (laxCategory p q) := by
     have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_target S
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.outerSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow i).tgt_eq] at ht
     exact ht.symm
-  have hq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex S 1 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex Q := by
+  have hq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex S 1 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex Q := by
     have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target S
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.outerSquare_right, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow r).tgt_eq] at ht
     exact ht.symm
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex S 0 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} := by
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex S 0 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} := by
     have ht := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target S
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.outerSquare_left, Equiv.apply_symm_apply,
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A)).tgt_eq] at ht

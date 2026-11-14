@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
@@ -16,7 +18,7 @@ p 完全忠実平坦な代数構造が存在する。
 
 ## 方針
 
-`Andre/Transfinite/Theorem714.lean` の追加仮定のない存在定理を使う。
+`Andre/Transfinite/Tower.lean` の追加仮定のない存在定理を使う。
 A1 の完全 prism 商上の一元拡大を一般の perfectoid 基底へ移し、固定した族の一元飽和により
 任意族の一段根付き拡大を証明する。それを ω₁ まで反復し、自動的に p 進完備な終段で
 有限係数の降下と後続段の根から絶対整閉性を得る。
@@ -66,3 +68,8 @@ theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
       R p hR
 
 end SerrePositivity.BhattScholze.Inputs
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 7.14"] _root_.SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleRightClassInverseImage
 public import SerrePositivity.HomotopicalAlgebra.Smith.WeakEquivalenceFilteredColimits
 
@@ -80,3 +82,9 @@ lemma weakEquivalences_solutionSetCondition :
   exact solutionSetCondition (weakEquivalences C)
 
 end SerrePositivity.Smith
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.6.11" (partial := stronger-hyp) "仮定：抽象モデル圏 C が Mathlib locally presentable、I は small cofibration generators、W の可到達性は intrinsic accessible category と accessible inclusion を持つ形式（Lean の形式的仮定が強い）。結論：既存の combinatorial generation から元の W の accessibility、逆にその W の入力から同じモデル圏の small trivial-cofibration generators を構成する二方向が一致。原典の可呈示性・accessible full subcategory の定義からの入力比較は未供給。"] _root_.SerrePositivity.Smith.exists_accessible_weakEquivalences
+attribute [cite HTT "A.2.6.8" (partial := stronger-hyp) "仮定：抽象モデル圏 C、Mathlib IsLocallyPresentable C と小さい生成 I,J の CofibrantlyGenerated（Lean の形式的仮定が強い）。結論：元の W の full arrow subcategory と inclusion が accessible、F=J.rlp と F∩W=I.rlp も同じ right-lifting-class theorem により accessible となり、原典の三結論に一致。HTT の可呈示性と生成の定義から入力を得る完全な比較は未供給。"] _root_.SerrePositivity.Smith.exists_accessible_weakEquivalences

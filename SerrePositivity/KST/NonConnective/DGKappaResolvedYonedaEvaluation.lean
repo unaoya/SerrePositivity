@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelYoneda
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKernelTensorYonedaNerveIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedRawFactor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGKernelTensorYonedaNerveIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedRawFactor
 
 /-!
 概要：同じ実小核の Yoneda 後の実評価 Morita 作用を、元の厳密評価へ比較する。

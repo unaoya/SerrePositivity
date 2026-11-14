@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStandardHomChainMap
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MooreCyclesNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardHomChainMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.EnrichedFunctors.MooreCyclesNaturality
 /-!
 概要：Hom 鎖写像と標準 Moore 正規化の全成分比較との自然性を計算する。
 方針：正規化部分対象の包含で実単体を回収し、最上位成分で検査する。

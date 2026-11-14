@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageFamily
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeSquareFamily
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentSquareInput
 
 /-!
 概要：元の厳密 hF を保つ全四角形族を、採用 B1 の反復作用へ接続する。

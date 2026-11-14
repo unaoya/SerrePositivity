@@ -58,8 +58,8 @@ lemma cofiberFamilySquare_bottom {A : SSet.{u}} {B : _root_.SerrePositivity.Infi
 /-- 族の零角は、関手圏でも実際に零対象である。 -/
 lemma cofiberFamilySquare_zero {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (cofiberFamilySquare p) 0 1) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((cofiberFamilySquare p).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (cofiberFamilySquare p) 0 1) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((cofiberFamilySquare p).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm 0, stdSimplex.obj₀Equiv.symm 1))
   rw [cofiberFamilySquare, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.internalHomFlipHomEquiv_app_zero]
   apply isZeroVertex_functorVertex_of_pointwise
@@ -67,16 +67,16 @@ lemma cofiberFamilySquare_zero {A : SSet.{u}} {B : _root_.SerrePositivity.Infini
   have hz := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (p.app (Opposite.op ⦋0⦌) a)).1
   have he := cofiberVertex_corner B (p.app (Opposite.op ⦋0⦌) a)
     (stdSimplex.obj₀Equiv.symm 0, stdSimplex.obj₀Equiv.symm 1)
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr hz
 
 /-- パラメーター付き cofiber を関手圏の零角を持つ三角形として保持する。 -/
 def cofiberFamilyZeroTriangle {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
-    (p : A ⟶ cofiberDiagrams B.obj) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom A).obj B.obj) :=
+    (p : A ⟶ cofiberDiagrams B.obj) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((ihom A).obj B.obj) :=
   ⟨cofiberFamilySquare p, cofiberFamilySquare_zero p⟩
 
 /-- 転置した族は点ごとの普遍性から関手圏の実 cofiber 列である。 -/
 lemma cofiberFamily_isCofiber {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
-    (p : A ⟶ cofiberDiagrams B.obj) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (cofiberFamilyZeroTriangle p) := by
+    (p : A ⟶ cofiberDiagrams B.obj) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (cofiberFamilyZeroTriangle p) := by
   apply (functor_zeroTriangle_pushout_iff (cofiberFamilyZeroTriangle p)).2
   intro a
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (cofiberFamilySquare p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a)

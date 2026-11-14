@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.UniverseStabilityDescent
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.UniverseVertexIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure
 
 /-! # 指定頂点の実安定閉包の宇宙不変性
@@ -46,16 +46,16 @@ lemma StableVertexClosure.down (P : Set (X _⦋0⦌))
   | of_zero hx => exact .of_zero ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.isZeroVertex_iff_ulift _).mpr hx)
   | of_iso e _ ih => exact .of_iso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.downVertexIso e) ih
   | of_cofiber t ht _ _ ih₀ ih₁ =>
-    have h₀ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.down.square 0 0) :=
+    have h₀ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.down.square 0 0) :=
       (t.down_vertex 0 0).symm ▸ ih₀
-    have h₁ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.down.square 1 0) :=
+    have h₁ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.down.square 1 0) :=
       (t.down_vertex 1 0).symm ▸ ih₁
     exact (t.down_vertex 1 1) ▸
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_cofiber t.down (t.isCofiber_down ht) h₀ h₁
   | of_fiber t ht _ _ ih₁ ih₂ =>
-    have h₁ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.down.square 1 0) :=
+    have h₁ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.down.square 1 0) :=
       (t.down_vertex 1 0).symm ▸ ih₁
-    have h₂ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.down.square 1 1) :=
+    have h₂ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.down.square 1 1) :=
       (t.down_vertex 1 1).symm ▸ ih₂
     exact (t.down_vertex 0 0) ▸
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_fiber t.down (t.isFiber_down ht) h₁ h₂

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorUniversalSimplex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.SimplexTerminalParameter
 
 /-!
 概要：全単体列の終端における、元の普遍正規化 Hom 族を構成する。

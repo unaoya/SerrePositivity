@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaUniverseYoneda
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafHomWeights
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoYonedaConeLimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.PresheafHomWeights
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoYonedaConeLimits
 
 /-!
 概要：元の大きい Hom 係数前層への自然変換空間を、一つの全二変数の族にする。

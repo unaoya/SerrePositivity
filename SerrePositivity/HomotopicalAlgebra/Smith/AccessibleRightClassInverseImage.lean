@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Smith.RightClassInverseImageCover
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratedWeakReflection
 
@@ -83,3 +85,8 @@ lemma exists_accessible_rightClass_inverseImage
   exact ⟨ν, hν, hcover.isCardinalAccessibleCategory, inferInstance⟩
 
 end SerrePositivity.Smith
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.6.7" (partial := component) "仮定：C は Mathlib locally presentable、D=Arrow(E)、E も locally presentable、D0 は小さい生成射 I に対する right lifting class I.rlp、F:C→Arrow(E) は accessible（原典より特殊）。結論：F⁻¹D0 とその包含はある正則 ν で accessible。原典の固定した κ での κ-accessibility より弱く、一般の D0 も含まないが、この inverse-image category そのものの accessibility の部分は直接得られる。"] _root_.SerrePositivity.Smith.exists_accessible_rightClass_inverseImage

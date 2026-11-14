@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaUniverseCanonicalColimits
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaHomWeightFamily
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomCanonicalRightKan
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.HomCanonicalRightKan
 
 /-!
 概要：元の大きい Hom 係数前層への全自然変換空間族は、元の Yoneda の右 Kan 延長。

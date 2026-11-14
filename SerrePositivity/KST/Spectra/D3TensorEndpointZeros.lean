@@ -37,21 +37,21 @@ private def d3TensorEndpointVertexIso (A B : PointedSimplicialSet.{u})
 
 /-- 任意の左パラメータと point のテンソルからの Hom は、同じ実零頂点。 -/
 lemma d3PointedKanTensorPoint_isZero (A : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       ((d3PointedKanIhom (A ⊗ PointedObject.point)).obj Y)) :=
   (d3PointedKanHomPoint_isZero ((d3PointedKanIhom A).obj Y)).of_vertexIso
     (d3TensorEndpointVertexIso A PointedObject.point Y).symm
 
 /-- 任意の左パラメータと実 based interval のテンソルからの Hom も実零頂点。 -/
 lemma d3PointedKanTensorPath_isZero (A : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       ((d3PointedKanIhom (A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval)).obj Y)) :=
   (d3PointedKanPath_isZero ((d3PointedKanIhom A).obj Y)).of_vertexIso
     (d3TensorEndpointVertexIso A _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y).symm
 
 /-- point が左因子にある場合も、同じテンソルパラメータの Hom は実零頂点。 -/
 lemma d3PointedKanPointTensor_isZero (B : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       ((d3PointedKanIhom (PointedObject.point ⊗ B)).obj Y)) := by
   let e := d3EndpointVertexIsoOfIso ((d3PointedKanIhom (PointedObject.point ⊗ B)).obj Y)
     ((d3PointedKanIhom (B ⊗ PointedObject.point)).obj Y)
@@ -60,7 +60,7 @@ lemma d3PointedKanPointTensor_isZero (B : PointedSimplicialSet.{u}) (Y : Pointed
 
 /-- based interval が左因子にある場合も、同じ実 path パラメータからの Hom は零頂点。 -/
 lemma d3PointedKanPathTensor_isZero (B : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       ((d3PointedKanIhom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval ⊗ B)).obj Y)) := by
   let e := d3EndpointVertexIsoOfIso ((d3PointedKanIhom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval ⊗ B)).obj Y)
     ((d3PointedKanIhom (B ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval)).obj Y)

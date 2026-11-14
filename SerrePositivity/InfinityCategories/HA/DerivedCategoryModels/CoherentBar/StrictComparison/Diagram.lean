@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Unconditional
 
 /-!
@@ -23,7 +23,7 @@ def dgCoherentBarStrictDiagram :
     (SSet.uliftFunctor.{max (u + 1) v, u}).obj (nerve J) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D) :=
   (show (SSet.uliftFunctor.{max (u + 1) v, u}).obj (nerve J) ⟶
     nerve (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) from { app _ := ↾fun s => s.down ⋙ F }) ≫
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (RightModule R D)
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (RightModule R D)
 
 lemma dgCoherentBarStrictDiagram_simplex {n : ℕ} (s : (nerve J) _⦋n⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentDiagramSimplex (dgCoherentBarStrictDiagram R D F) s =
@@ -40,7 +40,7 @@ lemma dgCoherentBarStrictSource (s : _root_.SerrePositivity.InfinityCategories.P
 lemma dgCoherentBarStrictTopRaw_eq_zero {n : ℕ} (hn : 0 < n)
     (s : (nerve J) _⦋n + 1⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentDiagramTopRaw (dgCoherentBarStrictDiagram R D F) s = 0 := by
-  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_higher R (RightModule R D) (s ⋙ F)
+  exact _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion_higher R (RightModule R D) (s ⋙ F)
     Finset.univ 0 (Fin.last (n + 1)) (-(n : ℤ))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentDiagramTop_card n) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentDiagramTop_min n) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentDiagramTop_max n)
     (by simp; omega) (by simp; omega)

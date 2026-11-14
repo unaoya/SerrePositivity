@@ -16,10 +16,10 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、根関係の剰余の Koszul 分解を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/FamilyEvaluation`、`Envelope/MonicCandidate`、`Envelope/RootSource`。
@@ -27,7 +27,7 @@ BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、根関�
 
 universe u v
 
-/-! ## 一般d根添加の最初の有限評価関係のKoszul分解（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFirstEvaluationKoszul.lean）
+/-! ## 一般d根添加の最初の有限評価関係のKoszul分解
 
 根変数と自由δ変数を交換すると、深さ0の関係はモニック根関係の負になる。
 正のδ深さ・全源評価環への移行・完備化後の平坦性は含まない。
@@ -123,7 +123,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFirstEvaluationKoszul
 
-/-! ## 一元根添加の全有限δ深さのmod(p,d)Koszul分解（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFiniteResidueKoszul.lean）
+/-! ## 一元根添加の全有限δ深さのmod(p,d)Koszul分解
 
 初項の正則性はモニック根関係から供給する。高段のp正則性・ghost単射・指定単元は明示する。
 通常mod(p,d)商上の分解であり、導来完備化後の完全忠実平坦性とは区別する。
@@ -230,7 +230,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteResidueKoszul
 
-/-! ## 最初の根δ関係の任意有限族の実mod(p,d)Koszul分解（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFirstResidueFamilyKoszul.lean） -/
+/-! ## 最初の根δ関係の任意有限族の実mod(p,d)Koszul分解 -/
 
 @[expose] public noncomputable section DeltaRootFirstResidueFamilyKoszul
 
@@ -319,7 +319,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFirstResidueFamilyKoszul
 
-/-! ## 一元根添加の全有限深さの実残余評価Koszul分解と源Tor（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFiniteResidueSourceTor.lean）
+/-! ## 一元根添加の全有限深さの実残余評価Koszul分解と源Tor
 
 実自由δ射αの後にmod(p,d)商射を合成した通常射を使う。
 全源評価環のTorや実導来完備化後の完全忠実平坦性はここでは結論しない。
@@ -389,7 +389,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteResidueSourceTor
 
-/-! ## 有限添字の全根関係族のraw p除算包のp正則性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFiniteFamilyRegular.lean） -/
+/-! ## 有限添字の全根関係族のraw p除算包のp正則性 -/
 
 @[expose] public noncomputable section DeltaRootFiniteFamilyRegular
 
@@ -446,7 +446,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteFamilyRegular
 
-/-! ## 二つの独立根関係の具体的raw p除算包のp正則性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootPairRawRegular.lean） -/
+/-! ## 二つの独立根関係の具体的raw p除算包のp正則性 -/
 
 @[expose] public noncomputable section DeltaRootPairRawRegular
 

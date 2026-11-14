@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3GradedCompositionNerve
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerHom
 
 /-!
 概要：厳密豊穣変換の前後合成を、同じ coherent な区間族の前後合成と照合する。

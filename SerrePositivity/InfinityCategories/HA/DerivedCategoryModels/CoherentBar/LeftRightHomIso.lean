@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.LinearReflectionIso
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.NativeColimitPointHomCriterion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGLeftPinchedLinearCoordinates
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.DGLeftPinchedLinearCoordinates
 /-!
 概要：dg nerve の左右 pinched Hom を、明示的な線形反転による厳密同型で結ぶ。
 方針：dg 反対模型への既存の同型、線形反転、同じ Hom 複体の恒等鎖写像を合成する。

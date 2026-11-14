@@ -1,4 +1,5 @@
 module
+public meta import SerrePositivity.Util.Citation
 
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.TensorProduct.Maps
@@ -168,3 +169,7 @@ theorem existsUnique_tensorDeltaHom {T : Type t} [CommRing T] (G : DeltaStructur
     exact Algebra.TensorProduct.ringHom_ext (hj.2.1.trans hl.symm) (hj.2.2.trans hr.symm)
 
 end SerrePositivity.BhattScholze
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.7" (partial := special) "通常のテンソル積（p 正則性なし、BS-W15）、有向余極限、完全 δ 環のテンソル、w_R : R → W(R)（ghost 単射かつ p ねじれなしのとき）。一般の極限・余極限、W が右随伴であることは未 ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_tensorDeltaHom
+attribute [cite BS19 "Rem 2.7" (partial := special) "通常のテンソル積（p 正則性なし、BS-W15）、有向余極限、完全 δ 環のテンソル、w_R : R → W(R)（ghost 単射かつ p ねじれなしのとき）。一般の極限・余極限、W が右随伴であることは未 ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.tensorDeltaStructure

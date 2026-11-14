@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxVerdierProductMap
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FiberSquareRightTransport
 
@@ -28,7 +30,7 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
   (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i r)
 
 lemma exists_laxQuotientProductFiber :
-    ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (X := Sp.{u})
+    ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (X := Sp.{u})
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r)).toTruncated,
       ∃ l : Truncated.Edge
         (X := (truncation 2).obj ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u + 1})).obj Sp.{u}))
@@ -40,7 +42,7 @@ lemma exists_laxQuotientProductFiber :
   obtain ⟨s, l, hi, hl⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exists_fiberSquare_right_transport (X := Sp.{u})
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)) ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle_isFiber p q i r h hΦ))
     g ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductArrowIso hΦ) p q i r h)
-  let s' : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (X := Sp.{u})
+  let s' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (X := Sp.{u})
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r)).toTruncated := {
     square := s.square
     zero_corner := s.zero_corner
@@ -48,7 +50,7 @@ lemma exists_laxQuotientProductFiber :
     isPullback := s.isPullback }
   exact ⟨s', l, hi, hl⟩
 
-def laxQuotientProductFiberSquare : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (X := Sp.{u})
+def laxQuotientProductFiberSquare : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (X := Sp.{u})
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r)).toTruncated :=
   Classical.choose (hΦ.exists_laxQuotientProductFiber p q i r h)
 
@@ -79,7 +81,12 @@ def laxQuotientProductFiberComparison : _root_.SerrePositivity.InfinityCategorie
   exact asIso (SSet.Truncated.HomotopyCategory.homMk (hΦ.laxQuotientProductFiberEdge p q i r h))
 
 lemma laxQuotientProductFiber_isFiber :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hΦ.laxQuotientProductFiberSquare p q i r h).toZeroTriangle :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hΦ.laxQuotientProductFiberSquare p q i r h).toZeroTriangle :=
   (hΦ.laxQuotientProductFiberSquare p q i r h).isPullback
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (15)" (partial := stronger-hyp) "仮定：小安定圏で同じ Verdier 列を与え、Sp 値の弱局所化型関手を取る（Lean が強い：Ind の切除性から得る列を直接入力）。結論：二つの脚の値の直和を中央とする実ファイバー列と、その包含・差の射の同定（原典の同じ射の Sp 版）。"] _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_isFiber

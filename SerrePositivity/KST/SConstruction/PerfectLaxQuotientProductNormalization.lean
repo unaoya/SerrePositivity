@@ -28,7 +28,7 @@ def productBottomEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.K
   (perfectStableVertex d.left d.left_complete)))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (perfectInvariantSpectrum F (perfectStableVertex C
       d.c_complete)) (perfectInvariantSpectrum F (perfectStableVertex D d.d_complete)))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (d.productSquare hF))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (d.productSquare hF))).ofEq
     (d.productSquare_vertex00 hF) (d.productSquare_vertex10 hF)
 
 /-- 元の上辺の端点を同じ BF 表示へ合わせた実辺。 -/
@@ -36,14 +36,14 @@ def productTopEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kero
   d.sequence.rightVertex))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (perfectInvariantSpectrum F d.sequence.rightVertex)
       (perfectInvariantSpectrum F d.sequence.rightVertex))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (d.productSquare hF))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (d.productSquare hF))).ofEq
     (d.productSquare_vertex01 hF) (d.productSquare_vertex11 hF)
 
 /-- 元の左辺の端点を同じ BF 表示へ合わせた実辺。 -/
 def productLeftEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (perfectInvariantSpectrum F
   (perfectStableVertex d.left d.left_complete))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (perfectInvariantSpectrum
     F d.sequence.rightVertex)) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (d.productSquare hF))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (d.productSquare hF))).ofEq
     (d.productSquare_vertex00 hF) (d.productSquare_vertex01 hF)
 
 /-- 元の右辺の端点を同じ BF 表示へ合わせた実辺。 -/
@@ -52,7 +52,7 @@ def productRightEdge : Sp.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Ke
     d.d_complete))))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (perfectInvariantSpectrum F d.sequence.rightVertex)
       (perfectInvariantSpectrum F d.sequence.rightVertex))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.productSquare hF))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (d.productSquare hF))).ofEq
     (d.productSquare_vertex10 hF) (d.productSquare_vertex11 hF)
 
 /-- 元の同じ四辺を持つ実境界。 -/
@@ -63,17 +63,17 @@ def productOldFrame : _root_.SerrePositivity.InfinityCategories.Project.Quasicat
 lemma productOldFrame_eq : d.productOldFrame hF =
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare (d.productSquare hF) := by
   apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame.ext
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow _).edge = _
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow _).edge = _
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow _).edge = _
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow _).edge = _
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow _).edge = _
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow _).edge = _
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
-  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow _).edge = _
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  · change SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow _).edge = _
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
 
 /-- 同じ下辺の類は、元の実 C・D 射対の積包含。 -/
@@ -83,7 +83,7 @@ lemma productBottomEdge_class : Truncated.HomotopyCategory.homMk (d.productBotto
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (d.productBottomEdge hF).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (d.productSquare hF)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (d.productSquare hF)) rfl).trans
       (d.productSquare_bottom_native_arrow hF)
 
 /-- 同じ上辺の類は、元の完備化先の値の実対角。 -/
@@ -93,7 +93,7 @@ lemma productTopEdge_class : Truncated.HomotopyCategory.homMk (d.productTopEdge 
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (d.productTopEdge hF).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (d.productSquare hF)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (d.productSquare hF)) rfl).trans
       (d.productSquare_top_arrow hF)
 
 /-- 同じ左辺の類は、元の核の射の実 BF 値。 -/
@@ -102,7 +102,7 @@ lemma productLeftEdge_class : Truncated.HomotopyCategory.homMk (d.productLeftEdg
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (d.productLeftEdge hF).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (d.productSquare hF)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (d.productSquare hF)) rfl).trans
       (d.productSquare_left_native_arrow hF)
 
 /-- 同じ右辺の類は、元の完備化後の二脚の実積射。 -/
@@ -112,7 +112,7 @@ lemma productRightEdge_class : Truncated.HomotopyCategory.homMk (d.productRightE
   apply hom_eq_of_arrow_mk_eq
   exact (Truncated.HomotopyCategory.congr_arrowMk_homMk
     (d.productRightEdge hF).toTruncated
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.productSquare hF)) rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (d.productSquare hF)) rfl).trans
       (d.productSquare_right_arrow hF)
 
 /-- 元の四つの指定した実 BF 射を持つ実境界。 -/

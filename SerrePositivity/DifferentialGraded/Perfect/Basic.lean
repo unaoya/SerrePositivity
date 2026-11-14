@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
@@ -1100,3 +1102,10 @@ end SerrePositivity.DifferentialGraded
 end
 
 end RingHomotopyDerivedComparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.4.1" (partial := special) "仮定：可換環上の小さい dg 圏の通常の導来加群圏（Lean が強い：この dg 導来模型の場合）。結論：代表加群から有限セルと retract で生成される perfect 対象を定義し、生成元を含む最小の厚い部分圏として判定する（dg 代数の一対象圏の場合に HA の定義と一致する部分）。一般の環スペクトルの加群模型への比較は含まれない。"] _root_.SerrePositivity.DifferentialGraded.modulePerfect
+attribute [cite HA "7.2.4.1" (partial := special) "仮定：可換環上の小さい dg 圏の通常の導来加群圏（Lean が強い：この dg 導来模型の場合）。結論：代表加群から有限セルと retract で生成される perfect 対象を定義し、生成元を含む最小の厚い部分圏として判定する（dg 代数の一対象圏の場合に HA の定義と一致する部分）。一般の環スペクトルの加群模型への比較は含まれない。"] _root_.SerrePositivity.DifferentialGraded.modulePerfect_le_iff_generators
+attribute [cite HA "7.2.4.24" (partial := stronger-hyp) "仮定：可換環上の小さい dg 圏の通常の導来加群圏と retract で閉じる三角部分圏（Lean が強い：この通常の dg 導来模型の場合）。結論：代表加群を含むことと全 perfect 対象を含むことを同値にする（有限生成元からの厚い生成の部分に一致）。有限生成射影だけからの安定閉包が retract 閉性を自動で持つという HA の強い主張は含まれない。"] _root_.SerrePositivity.DifferentialGraded.modulePerfect_le_iff_generators

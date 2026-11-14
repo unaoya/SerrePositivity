@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Homot
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.Diagram
 import all SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallDiagramShape
 import all SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictDiagramEvaluation
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 
 /-!
 # 小さい strict 図式を既存 coherent bar の同じ入力へ渡す
@@ -41,7 +41,7 @@ def smallStrictBarDiagram (F : J ⥤ ModuleCategory A PUnit.{1}) :
       dgNerve A (RightModule A PUnit.{1}) :=
   (smallDiagramShapeIso.{u} (nerve J)).hom ≫
     strictDiagramNerve J (ModuleCategory A PUnit.{1}) F ≫
-      closedNerveInclusion A (RightModule A PUnit.{1})
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (RightModule A PUnit.{1})
 
 /-- 全単体は、元の同じ射列から作る閉零射の列。 -/
 theorem smallStrictBarDiagram_simplex (F : J ⥤ ModuleCategory A PUnit.{1}) {n : ℕ}
@@ -59,7 +59,7 @@ theorem smallStrictBarDiagram_higher (F : J ⥤ ModuleCategory A PUnit.{1})
     {n : ℕ} (hn : 0 < n)
     (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n + 1⦌) :
     coherentDiagramTopRaw (smallStrictBarDiagram A F) s = 0 := by
-  exact closedNerveInclusion_higher A (RightModule A PUnit.{1}) (s.down ⋙ F)
+  exact _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion_higher A (RightModule A PUnit.{1}) (s.down ⋙ F)
     Finset.univ 0 (Fin.last (n + 1)) (-(n : ℤ))
     (coherentDiagramTop_card n) (coherentDiagramTop_min n) (coherentDiagramTop_max n)
     (by simp; omega) (by simp; omega)

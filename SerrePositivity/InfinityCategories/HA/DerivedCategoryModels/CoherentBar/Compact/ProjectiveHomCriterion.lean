@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.NativeHomCriterion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactProjectiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGModuleKappaCompactProjectiveComparison
 /-!
 概要：代表可能加群そのものの射影的頂点で、native compact 性を全 Hom 保存へ接続する。
 方針：半自由分解との QCat 同値で compact 性を輸送し、同じ全 Hom 関手を比較する。

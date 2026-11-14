@@ -19,7 +19,7 @@ open scoped Simplicial
 private lemma recoverZeroVertex {X : SSet.{v}}
     {F : (Δ[1] ⊗ Δ[1] : SSet.{v}) ⟶ X} {a b : X _⦋0⦌}
     (e : X.Edge a b) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F = SSet.yonedaEquiv.symm e.edge) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1 = b := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1 = b := by
   have ht := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target F
   rw [h, Equiv.apply_symm_apply, e.tgt_eq] at ht
   exact ht.symm
@@ -47,8 +47,8 @@ local notation "N" => _root_.SerrePositivity.InfinityCategories.HA.StableInfinit
 方針：同じ実零化面の左辺の終点を回収する。
 規約：元の頂点の等号。使われ方：固定 ν の零角証明。 -/
 lemma dgOdotMilnorActualRight_zero_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (N) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (VInput)) := by
-  exact (congrArg (fun F => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (N) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (VInput)) := by
+  exact (congrArg (fun F => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1)
     (dgOdotMilnorActualRectangleDiagram_right R d)).trans
       (recoverZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := VInput)))
         (dgIdentityHomGluingNullDomainSquare_edges R (U)).2.2.1)
@@ -58,9 +58,9 @@ lemma dgOdotMilnorActualRight_zero_vertex :
 規約：各対象の収縮だけで代用しない。使われ方：実右面の零角認証。 -/
 lemma dgOdotMilnorActualRight_perfect_zero :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((N) ≫ dgKInputPerfectNu R) 0 1)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((N) ≫ dgKInputPerfectNu R) 0 1)) := by
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (N) 0 1)))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (N) 0 1)))
   rw [dgOdotMilnorActualRight_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R (VInput)
 

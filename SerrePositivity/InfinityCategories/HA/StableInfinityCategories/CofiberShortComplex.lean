@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 使われ方：S4 の distinguished triangle の存在の最初の段階。 -/
 lemma exists_cofiber_hoShortComplex {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     {a b : hoFunctor.obj X} (f : a ⟶ b) :
-    ∃ t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t ∧ Arrow.mk t.hoShortComplex.f = Arrow.mk f := by
+    ∃ t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t ∧ Arrow.mk t.hoShortComplex.f = Arrow.mk f := by
   obtain ⟨x, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective a
   obtain ⟨y, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective b
   obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective x y f
@@ -36,7 +36,7 @@ lemma exists_cofiber_hoShortComplex {X : SSet.{u}} [Quasicategory X] [_root_.Ser
 規約：安定性の fiber 存在条件を使う。使われ方：S5 の任意の射の fiber 列。 -/
 lemma exists_fiber_hoShortComplex {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     {a b : hoFunctor.obj X} (f : a ⟶ b) :
-    ∃ t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t ∧ Arrow.mk t.hoShortComplex.g = Arrow.mk f := by
+    ∃ t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t ∧ Arrow.mk t.hoShortComplex.g = Arrow.mk f := by
   obtain ⟨x, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective a
   obtain ⟨y, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective b
   obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective x y f

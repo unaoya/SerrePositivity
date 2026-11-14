@@ -9,7 +9,7 @@ public import SerrePositivity.EInfinity.Interface.PrimeField
 public import SerrePositivity.EInfinity.Interface.Core
 public import SerrePositivity.EInfinity.Interface.StrictInputs
 public import SerrePositivity.EInfinity.Interface.CoproductTensorLegs
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
@@ -45,7 +45,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped _root_.Simplicial
 namespace SerrePositivity.EInfinity
 
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open TheSliceAndJoinConstructions (nerveVertex)
 
@@ -56,7 +56,7 @@ abbrev hoMap {X Y : SSet.{u}} (F : X ⟶ Y) := (hoFunctor.map F).toFunctor
 
 /-- 余鎖次数 i のホモロジーを通常のホモトピー圏上で取る。 -/
 abbrev cohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=
-  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S)).inverse ⋙
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S)).inverse ⋙
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S i
 
 /-- 係数制限で比較するホモロジーの台の可換群。 -/
@@ -70,7 +70,7 @@ abbrev restrictRingAlgebra {S T : Type u} [CommRing S] [CommRing T] (f : S →+*
 
 /-- 忘却した導来複体の H^{-n} を、ホモトピー次数 n の可換群として読む。 -/
 abbrev homotopyGroupsOnHo (k : Type u) [CommRing k] {C : SSet.{u + 1}}
-    (U : C ⟶ derivedInfinityCategory k)
+    (U : C ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory k)
     (n : ℤ) :=
   hoMap U ⋙ additiveCohomologyOnHo k (-n)
 
@@ -139,9 +139,9 @@ structure EInfinityTheory extends EInfinityCore.{u} where
       (coprodWith_cocone S x y).val (coprodWith_cocone S x y).property.1 (coproduct_tensor S y)
 
   restrictD {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory T ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory T ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S
   restrictD_id (S : Type u) [CommRing S] :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrictD (RingHom.id S)) (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrictD (RingHom.id S)) (𝟙 (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S))
   restrictD_comp {S T W : Type u} [CommRing S] [CommRing T] [CommRing W]
       (f : S →+* T) (g : T →+* W) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (restrictD (g.comp f)) (restrictD g ≫ restrictD f)
@@ -177,7 +177,7 @@ structure EInfinityTheory extends EInfinityCore.{u} where
   pi0_restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     hoMap (restrict f) ⋙ pi0 S ≅ pi0 T ⋙ restrictRingAlgebra f
 
-  strictToD (S : Type u) [CommRing S] : nerve (Complex S) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S
+  strictToD (S : Type u) [CommRing S] : nerve (Complex S) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S
   /-- BS 著者版 Theorem 6.2 の Tot で使う、厳密複体のホモロジーとの自然比較。 -/
   strictToD_homologyIso (S : Type u) [CommRing S] (i : ℤ) :
     ordinaryToHoNerve (Complex S) ⋙ hoMap (strictToD S) ⋙ cohomologyOnHo S i ≅
@@ -218,7 +218,7 @@ structure EInfinityTheory extends EInfinityCore.{u} where
 
   /-- D79：同じ導来圏から実際の Ω スペクトルの準圏への忘却。 -/
   toSpectra (S : Type u) [CommRing S] :
-    SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S ⟶
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S ⟶
       SerrePositivity.KST.Spectra.Sp.{u}
   /-- 係数制限は台のスペクトルを変えない。 -/
   toSpectra_restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
@@ -260,7 +260,7 @@ structure EInfinityTheory extends EInfinityCore.{u} where
 /-- 自然比較の成分を台の加法同型として読む。 -/
 def EInfinityTheory.restrictD_homology (E : EInfinityTheory.{u})
     {S T : Type u} [CommRing S] [CommRing T]
-    (f : S →+* T) (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory T) _⦋0⦌) :
+    (f : S →+* T) (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory T) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology S i (atVertex (E.restrictD f) x) ≃+
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology T i x :=
   ((E.restrictD_homologyIso f i).app (SSet.HomotopyCategory.mk x)).addCommGroupIsoToAddEquiv

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransWhisker
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransWhisker
 public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!

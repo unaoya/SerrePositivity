@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityZeroSideWitnesses
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyInvertibility
 
 /-!
 概要：恒等実右面の四辺比較を、同じ四頂点経路を保つ一つの境界比較へ束ねる。

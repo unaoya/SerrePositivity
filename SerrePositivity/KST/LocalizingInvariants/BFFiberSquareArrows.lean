@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareLeg
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-!
 概要：BF fiber 四角形の三対象と二辺を、元の BF 射の類に同時に同定する。
@@ -41,38 +41,38 @@ lemma homMk_transport {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
 variable {E B : OmegaSpectrum.{u}} (f : E ⟶ B)
 
 lemma homotopyFiberSquare_source_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (homotopyFiberSquare f).square 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex E := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (homotopyFiberSquare f).square 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex E := by
   rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, (homotopyFiberSquare f).right_edge]
   exact (congrArg (fun v : Sp.{u} _⦋1⦌ ↦ Sp.{u}.δ 1 v)
     (SSet.yonedaEquiv.apply_symm_apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)).trans
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).src_eq
 
 lemma homotopyFiberSquare_target_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (homotopyFiberSquare f).square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex B := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (homotopyFiberSquare f).square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex B := by
   rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target, (homotopyFiberSquare f).right_edge]
   exact (congrArg (fun v : Sp.{u} _⦋1⦌ ↦ Sp.{u}.δ 0 v)
     (SSet.yonedaEquiv.apply_symm_apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)).trans
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).tgt_eq
 
-def fiberObjectIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (homotopyFiberSquare f).square 0 0 ≅
+def fiberObjectIso : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (homotopyFiberSquare f).square 0 0 ≅
     SpectrumHo.obj (homotopyFiber f) :=
   eqToIso (congrArg SSet.HomotopyCategory.mk (homotopyFiberSquare_vertex f))
 
-def totalObjectIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (homotopyFiberSquare f).square 1 0 ≅ SpectrumHo.obj E :=
+def totalObjectIso : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (homotopyFiberSquare f).square 1 0 ≅ SpectrumHo.obj E :=
   eqToIso (congrArg SSet.HomotopyCategory.mk (homotopyFiberSquare_source_vertex f))
 
-def baseObjectIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (homotopyFiberSquare f).square 1 1 ≅ SpectrumHo.obj B :=
+def baseObjectIso : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (homotopyFiberSquare f).square 1 1 ≅ SpectrumHo.obj B :=
   eqToIso (congrArg SSet.HomotopyCategory.mk (homotopyFiberSquare_target_vertex f))
 
 /-- 三対象の比較は元の homotopyFiberInclusion と下辺の類を可換させる。 -/
 lemma bottom_naturality : (fiberObjectIso f).hom ≫
       SpectrumHo.hom (homotopyFiberInclusion f) =
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (homotopyFiberSquare f).square ≫ (totalObjectIso f).hom := by
-  have h := homMk_transport (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (homotopyFiberSquare f).square)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (homotopyFiberSquare f).square ≫ (totalObjectIso f).hom := by
+  have h := homMk_transport (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (homotopyFiberSquare f).square)
     (homotopyFiberSquareBottom f).toTruncated
     (homotopyFiberSquare_vertex f) (homotopyFiberSquare_source_vertex f)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge (homotopyFiberSquare f).square)
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (homotopyFiberSquare f).square ≫ (totalObjectIso f).hom =
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge (homotopyFiberSquare f).square)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (homotopyFiberSquare f).square ≫ (totalObjectIso f).hom =
     (fiberObjectIso f).hom ≫
       SSet.Truncated.HomotopyCategory.homMk (homotopyFiberSquareBottom f).toTruncated at h
   exact (h.trans (congrArg ((fiberObjectIso f).hom ≫ ·)
@@ -80,12 +80,12 @@ lemma bottom_naturality : (fiberObjectIso f).hom ≫
 
 /-- 同じ三対象の比較は右辺と元の BF 射の類も可換させる。 -/
 lemma right_naturality : (totalObjectIso f).hom ≫ SpectrumHo.hom f =
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (homotopyFiberSquare f).square ≫ (baseObjectIso f).hom := by
-  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (homotopyFiberSquare f).square).edge =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (homotopyFiberSquare f).square ≫ (baseObjectIso f).hom := by
+  have he : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (homotopyFiberSquare f).square).edge =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge, (homotopyFiberSquare f).right_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge, (homotopyFiberSquare f).right_edge]
     exact SSet.yonedaEquiv.apply_symm_apply _
-  exact (homMk_transport (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (homotopyFiberSquare f).square)
+  exact (homMk_transport (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (homotopyFiberSquare f).square)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated (homotopyFiberSquare_source_vertex f)
     (homotopyFiberSquare_target_vertex f) he).symm
 

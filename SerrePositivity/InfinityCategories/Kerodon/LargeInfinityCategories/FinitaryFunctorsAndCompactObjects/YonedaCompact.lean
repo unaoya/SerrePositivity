@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Preservation
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.F2CompactUniverseColimits
@@ -50,3 +52,8 @@ lemma yonedaInfinityMap_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) :
   exact representablePresheafInfinity_isKappaCompact κ y
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.4.17" (partial := special) "仮定：正則 κ、小準圏 C と表現可能前層の有限形状余極限の retract X（Lean が強い：κ-small 形状を有限形状に限定）。結論：同じ X が κ-compact（この場合の (1)⇒(2) と一致）。各表現可能頂点、同じ指定余極限、その retract の三宣言を直接適用する。逆方向と一般 κ-small 形状の表示は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.representablePresheafInfinity_isKappaCompact

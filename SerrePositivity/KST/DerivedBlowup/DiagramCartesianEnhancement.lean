@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.DiagramCartesianIsomorphism
 
 /-!
@@ -102,3 +104,8 @@ def cartesianPerfectDiagramHomotopyEquivalence (a : I → R) :
   (cartesianPerfectDiagramToDerived R a).asEquivalence
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Rem 2.5" (partial := component) "仮定：指定有限アフィンチャートの導来係数図式（Lean が強い）。結論：Cartesian な完全加群の局所 dg 図式と導来側の比較。全準連接加群の局所記述は範囲外（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.cartesianPerfectDiagramToDerivedIsEquivalence

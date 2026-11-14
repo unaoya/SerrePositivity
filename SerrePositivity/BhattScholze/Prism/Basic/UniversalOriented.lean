@@ -1,9 +1,12 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Universal
-public import SerrePositivity.BhattScholze.Prismatic.PrismOver
+public import SerrePositivity.BhattScholze.Prism.Basic.Bounded
+public import SerrePositivity.BhattScholze.Prism.Basic.GeneratorRegularity
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
-public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalPair
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.PrincipalPairRegularity
 
 /-!
 # 普遍向き付き prism
@@ -154,3 +157,10 @@ theorem existsUnique_universalOrientedPrismHom {A : Type u} [CommRing A]
   exact hgu _ ⟨k.map_delta.comp (pdCompletionUnit_isDeltaHom D d), hk⟩
 
 end SerrePositivity.BhattScholze
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 3.4"] _root_.SerrePositivity.BhattScholze.existsUnique_universalOrientedPrismHom
+attribute [cite BS19 "Ex 3.4"] _root_.SerrePositivity.BhattScholze.universalOrientedPrism
+attribute [cite BS19 "Ex 3.4"] _root_.SerrePositivity.BhattScholze.universalOrientedPrism_bounded

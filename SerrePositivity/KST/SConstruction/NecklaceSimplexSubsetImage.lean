@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetImageOrder
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInSimplexVertexEquality
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.SimplexSubsetImageOrder
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.NecklaceInSimplexVertexEquality
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetAt
 public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeRefinement
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklacePostcomposition
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklacePostcomposition
 
 /-! # 元の単射な像部分集合 bead の augmentation
 概要：元の部分集合上で単射な単調写像の後合成は、同じ像部分集合の元の bead。

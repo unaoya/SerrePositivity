@@ -67,7 +67,7 @@ lemma landTamme_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAn
 /-- 概要：正方形の左下は元の対角始域の同じ不変量値。
 方針：BF 表示と元の Sp 頂点を既存比較で同定する。
 規約：同値な別頂点への言い換えではない。使われ方：元の値の極限錐。 -/
-lemma landTamme_source : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (c.landTammeSquare h hF) 0 0 =
+lemma landTamme_source : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (c.landTammeSquare h hF) 0 0 =
     F.app (Opposite.op ⦋0⦌) (perfectStableVertex
       (dgKInputStableValue R (dgOdotDiagonalSourceInput R d)) c.source_complete) :=
   (Q).valuePullbackSquare_vertex_value hF
@@ -75,7 +75,7 @@ lemma landTamme_source : _root_.SerrePositivity.InfinityCategories.Project.Quasi
 /-- 概要：右上は c の同じ実 ⊙ の不変量値。
 方針：元の上辺の終点と BF 表示を照合する。規約：商候補へ置換しない。
 使われ方：LT の終点の回収。 -/
-lemma landTamme_odot : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (c.landTammeSquare h hF) 1 1 =
+lemma landTamme_odot : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (c.landTammeSquare h hF) 1 1 =
     F.app (Opposite.op ⦋0⦌) (perfectStableVertex
       (dgKInputStableValue R (dgOdotAlgebraInput R d)) c.odot_complete) := by
   exact (NativeSquareRows.vertex11 _ _ (c.landTamme_top h hF)).trans
@@ -83,7 +83,7 @@ lemma landTamme_odot : _root_.SerrePositivity.InfinityCategories.Project.Quasica
 
 /-- 概要：右下は元の左代数の同じ不変量値。方針：元の下辺の終点を読む。
 規約：BF 表示の別対象に留めない。使われ方：四頂点の回収。 -/
-lemma landTamme_leftValue : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (c.landTammeSquare h hF) 1 0 =
+lemma landTamme_leftValue : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (c.landTammeSquare h hF) 1 0 =
     F.app (Opposite.op ⦋0⦌) (perfectStableVertex
       (dgKInputStableValue R (dgOdotLeftInput R d)) c.left_complete) :=
   (NativeSquareRows.vertex10 _ _ (c.landTamme_bottom h hF)).trans
@@ -91,7 +91,7 @@ lemma landTamme_leftValue : _root_.SerrePositivity.InfinityCategories.Project.Qu
 
 /-- 概要：左上は元の右代数の同じ不変量値。方針：元の上辺の始点を読む。
 規約：入力した右代数を保つ。使われ方：四頂点の回収。 -/
-lemma landTamme_rightValue : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (c.landTammeSquare h hF) 0 1 =
+lemma landTamme_rightValue : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (c.landTammeSquare h hF) 0 1 =
     F.app (Opposite.op ⦋0⦌) (perfectStableVertex
       (dgKInputStableValue R (dgOdotRightInput R d)) c.right_complete) :=
   (NativeSquareRows.vertex01 _ _ (c.landTamme_top h hF)).trans

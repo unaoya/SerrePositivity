@@ -33,7 +33,7 @@ theorem fullSRealization_toPoint_localized_isIso (A : _root_.SerrePositivity.Inf
     apply BisimplicialModel.localized_diagonal_map
     intro n
     exact initialVertex_toPoint_localized_isIso
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (sConstruction n.unop.len A.obj)).isZero.1
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (sConstruction n.unop.len A.obj)).isZero.1
   have he : simplicialDiagonalFunctor.map c ≫ (constantSSetDiagonalIso (⊤_ SSet.{u})).hom =
       terminal.from (simplicialDiagonalFunctor.obj F) := terminal.hom_ext _ _
   change IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from (simplicialDiagonalFunctor.obj F)))
@@ -48,7 +48,7 @@ theorem fullSRealizationKanObject_isTerminal (A : _root_.SerrePositivity.Infinit
 
 /-- 指定した零圏への全 S• 実射そのものが局所化可逆。 -/
 theorem zeroFunctorFullSMap_localized_isIso {A Z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A Z)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory Z) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory Z) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
   let Q := AnodyneHomotopy.anodyneQ.{u}
@@ -64,7 +64,7 @@ theorem zeroFunctorFullSMap_localized_isIso {A Z : _root_.SerrePositivity.Infini
 /-- 元の指定左辺を全 S• に作用させた同じ実 Kan 射。 -/
 def verdierFullSZeroCornerKanMap (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     fullSRealizationKanObject d.left ⟶
-      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1)) :=
+      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1)) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
     (zeroFunctorFullSMap (verdierLeftExactMap d) (verdierLeftExactMap_zero d)))
 
@@ -91,7 +91,7 @@ theorem verdierFullSZeroCornerKanMap_left (d : _root_.SerrePositivity.InfinityCa
 theorem verdierFullSZeroCornerKanMap_top (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     verdierFullSZeroCornerKanMap d ≫
         (show stableCoreSingleKanObject
-          (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1)) ⟶
+          (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1)) ⟶
             stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right) from
           _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierTopExactMap d)))) =
       (show fullSRealizationKanObject d.left ⟶

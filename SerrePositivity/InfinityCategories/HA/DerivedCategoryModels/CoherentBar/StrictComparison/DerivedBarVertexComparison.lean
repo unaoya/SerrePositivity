@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.DerivedBarDiagram
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.StrictAugmentationQuasiIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactClassicalTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGModuleKappaCompactClassicalTransport
 
 /-!
 概要：C1 の同じ標準射が、実導来 bar 余錐の頂点と strict 余極限の頂点を同型にする。

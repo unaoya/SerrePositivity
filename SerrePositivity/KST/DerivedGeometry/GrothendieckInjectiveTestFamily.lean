@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedGeometry.DiskEnvelopeInjectivity
 public import SerrePositivity.KST.DerivedGeometry.GrothendieckTestQuasiIso
 
@@ -70,3 +72,8 @@ lemma exists_mono_quasiIso_injective_test_orthogonal
     exact ⟨homotopyZero_of_envelope_lifting (A i) N f⟩
 
 end SerrePositivity.KST.DerivedGeometry
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.5.3" (partial := stronger-hyp) "仮定：有界な cochain 複体で、Quillen のモデル構造には十分な入射対象を要求。無界側の補題は Grothendieck 圏と小さい試験族を入力（Lean が強い：モデル圏は有界な場合に限定）。結論：有界側には scoped ModelCategory instance が実在し、余ファイブレーションはモノ、弱同値は準同型。無界側で得られるのは試験族に直交する入射複体へのモノ準同型（Lean が弱い：無界側の injective ModelCategory instance と左固有性・組合せ性は確認できない）。"] _root_.SerrePositivity.KST.DerivedGeometry.exists_mono_quasiIso_injective_test_orthogonal

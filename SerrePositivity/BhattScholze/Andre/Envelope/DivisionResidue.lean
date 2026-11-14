@@ -12,10 +12,10 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、δ 除算包の剰余表示を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/JetRegularity`、`Envelope/MonicCandidate`、`Envelope/MonicSource`、`Envelope/RootRelation`、`Envelope/RootSource`、`PowerRootEnvelope/Unconditional/Residue`、`Variants/ArbitraryFamily`、`Variants/RootedExtension`。
@@ -23,7 +23,7 @@ BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、δ 除�
 
 universe u v
 
-/-! ## 既存δ除算添加環のraw (p,d)商の具体的表示（旧 Andre/RootedExtension/Division/DeltaAdjoinDivisionResiduePresentation.lean） -/
+/-! ## 既存δ除算添加環のraw (p,d)商の具体的表示 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionResiduePresentation
 
@@ -88,7 +88,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionResiduePresentation
 
-/-! ## 既存δ除算添加環のraw (p,d)商の標準係数射と忠実平坦性（旧 Andre/RootedExtension/Division/DeltaAdjoinDivisionResidueFlat.lean） -/
+/-! ## 既存δ除算添加環のraw (p,d)商の標準係数射と忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionResidueFlat
 
@@ -174,7 +174,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionResidueFlat
 
-/-! ## 実残余自由δ射の通常テンソルとraw(p,d)商（旧 Andre/RootedExtension/Division/DeltaDivisionSourceResidueTensor.lean）
+/-! ## 実残余自由δ射の通常テンソルとraw(p,d)商
 
 既存の通常pushout比較と標準テンソル商比較を合成する。
 完備化・Tor消滅・対象残余商のδ構造は要求しない。
@@ -280,7 +280,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceResidueTensor
 
-/-! ## raw除算包の残余商での次入力の正則性（旧 Andre/RootedExtension/Division/DeltaAdjoinDivisionResidueRegular.lean）
+/-! ## raw除算包の残余商での次入力の正則性
 
 既存の残余商の平坦性を使う。一般のraw環のp正則性は結論しない。
 -/

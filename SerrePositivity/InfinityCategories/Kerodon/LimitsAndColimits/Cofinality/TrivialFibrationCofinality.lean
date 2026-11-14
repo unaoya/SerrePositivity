@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalHomotopyRetract
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TrivialFibrationHomotopy
 
@@ -52,3 +54,10 @@ lemma isRightCofinal_of_trivialKanFibration {A B : SSet.{u}} (f : A ⟶ B)
   exact d.isRightCofinal
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.3.4.6" (partial := special) "仮定：単体集合の射が自明 Kan ファイブレーション（Lean が強い：弱ホモトピー同値のうち自明 Kan の場合。底の Kan 性は要求しない）。結論：左共終性（その場合に HA と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_trivialKanFibration
+attribute [cite HA "2.3.4.7" (partial := special) "仮定：準圏内の余極限余錐と添字への自明 Kan ファイブレーション（Lean が強い：弱ホモトピー同値を自明 Kan に限定。図式の辺が同値であることは要求しない）。結論：引き戻した余錐の余極限性（その場合に HA と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_trivialKanFibration
+attribute [cite HTT "4.1.3.2" (partial := special) "仮定：デカルトファイブレーション p の全頂点繊維が弱可縮（Lean が強い：p が右ファイブレーションで、デカルトファイブレーションの instance がある）。結論：同じ p に対する自明 Kan ファイブレーションの判定を直ちに共終性の宣言に適用すると p は共終（一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_trivialKanFibration

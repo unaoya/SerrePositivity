@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullStableClosure
 
 public import SerrePositivity.KST.LocalizingInvariants.FullSubcomplexSquares
@@ -27,10 +29,10 @@ variable {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
 variable [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] (hP : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.StableVertexCondition P)
 
 /-- 部分圏は周囲の選んだ零対象を含む。 -/
-def zeroVertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) where
-  vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.vertex P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).vertex (hP.zero _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero)
-  isInitial := (reflects_zero P _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero).1
-  isTerminal := (reflects_zero P _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero).2
+def zeroVertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) where
+  vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.vertex P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).vertex (hP.zero _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero)
+  isInitial := (reflects_zero P _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero).1
+  isTerminal := (reflects_zero P _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero).2
 
 include hP
 
@@ -38,7 +40,7 @@ lemma inclusion_preservesZero : _root_.SerrePositivity.InfinityCategories.Kerodo
   intro x hx
   let z := zeroVertex P hP
   let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertexIso hx.2 z.isTerminal
-  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero.of_vertexIso
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero.of_vertexIso
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι).symm
 
 variable {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌}
@@ -47,7 +49,7 @@ variable {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTh
 
 /-- 閉性から元の全部分複体の安定性を導く。 -/
 theorem isStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) := by
-  have : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) := ⟨⟨(zeroVertex P hP).vertex,
+  have : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) := ⟨⟨(zeroVertex P hP).vertex,
     (zeroVertex P hP).isZero⟩⟩
   apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_bicartesian_choices
   · intro x y f
@@ -65,3 +67,9 @@ theorem isStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCa
 
 end FullSubcomplex
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.3.2"] _root_.SerrePositivity.KST.LocalizingInvariants.FullSubcomplex.isStable
+attribute [cite HA "1.1.3.3" (partial := stronger-hyp) "仮定：安定準圏の充満部分圏でファイバーにも閉じる、または hX の三角閉性（Lean が強い：HA は余ファイバーとシフトのみ）。結論：前者は充満部分圏の安定性、後者はシフト閉性。余ファイバーの逆シフトからファイバー閉性を導く判定は得られない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.FullSubcomplex.isStable

@@ -1,0 +1,92 @@
+{
+  "modules": 14,
+  "identical": 14,
+  "library_modules": 12,
+  "library_identical": 12,
+  "rows": [
+    {
+      "module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+      "before_public_olean_sha256": "dfa6a56efbb4e978a095f0d0adbd2ffc3d0acc571da9781b61730931f76db3f7",
+      "after_public_olean_sha256": "dfa6a56efbb4e978a095f0d0adbd2ffc3d0acc571da9781b61730931f76db3f7",
+      "identical": true
+    },
+    {
+      "module": "scripts.audit.bs_power_root_envelope.VarpiComparison",
+      "before_public_olean_sha256": "163c213c077243a88abf891e02bf2787b3895c86a95852d32c01e104361f5638",
+      "after_public_olean_sha256": "163c213c077243a88abf891e02bf2787b3895c86a95852d32c01e104361f5638",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+      "before_public_olean_sha256": "a1bd0792bbb3b75da8b711f57825b99c0035e505c4a5dfeff7bc998936317c16",
+      "after_public_olean_sha256": "a1bd0792bbb3b75da8b711f57825b99c0035e505c4a5dfeff7bc998936317c16",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+      "before_public_olean_sha256": "d955fd7c46bbb28a9a586905416ed935ab8f7fc078f08a7f747d23f22760b869",
+      "after_public_olean_sha256": "d955fd7c46bbb28a9a586905416ed935ab8f7fc078f08a7f747d23f22760b869",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+      "before_public_olean_sha256": "a6959c7ba190c07becef9fc8360c0d3c22cf024478e1ec832353f113ad5ec692",
+      "after_public_olean_sha256": "a6959c7ba190c07becef9fc8360c0d3c22cf024478e1ec832353f113ad5ec692",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+      "before_public_olean_sha256": "38076c17f491376644c35d0fe86ecb8669a8042844e5acf521436924d046d15f",
+      "after_public_olean_sha256": "38076c17f491376644c35d0fe86ecb8669a8042844e5acf521436924d046d15f",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+      "before_public_olean_sha256": "c5c820ce50ea13271432963abbbd34385643e60964e60a438494054d066c8724",
+      "after_public_olean_sha256": "c5c820ce50ea13271432963abbbd34385643e60964e60a438494054d066c8724",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+      "before_public_olean_sha256": "83c9761522605165cd283ee07768eba5126e74b4bdb3dc5b8e93b4497c1535c7",
+      "after_public_olean_sha256": "83c9761522605165cd283ee07768eba5126e74b4bdb3dc5b8e93b4497c1535c7",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectCech",
+      "before_public_olean_sha256": "4bb878579c942aac2af55c1b0a1a142f48da01ccc271298eac37031b1730d9ce",
+      "after_public_olean_sha256": "4bb878579c942aac2af55c1b0a1a142f48da01ccc271298eac37031b1730d9ce",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+      "before_public_olean_sha256": "714eb355fd14f8a8727dcd29d22f25a4b269feda9d094f8c4ec80b7acf9515ae",
+      "after_public_olean_sha256": "714eb355fd14f8a8727dcd29d22f25a4b269feda9d094f8c4ec80b7acf9515ae",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+      "before_public_olean_sha256": "a49f64be08b914196b452e8e3019e094c087c3d1c1c4e4e29986742bcef50a35",
+      "after_public_olean_sha256": "a49f64be08b914196b452e8e3019e094c087c3d1c1c4e4e29986742bcef50a35",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+      "before_public_olean_sha256": "98c2911992a094a03675ad82b85b535404dffcb26c097ad6a3693a3c5a1f821c",
+      "after_public_olean_sha256": "98c2911992a094a03675ad82b85b535404dffcb26c097ad6a3693a3c5a1f821c",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "before_public_olean_sha256": "d0a2183da7bbf077fdc52e9ac1108c77efba6939a47036a79c1352222504010c",
+      "after_public_olean_sha256": "d0a2183da7bbf077fdc52e9ac1108c77efba6939a47036a79c1352222504010c",
+      "identical": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "before_public_olean_sha256": "8caa37fdaf58556753e8e4f24b3c3e2abbe05718a53a1d8805289a3e45c16500",
+      "after_public_olean_sha256": "8caa37fdaf58556753e8e4f24b3c3e2abbe05718a53a1d8805289a3e45c16500",
+      "identical": true
+    }
+  ]
+}

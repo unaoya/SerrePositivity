@@ -18,13 +18,13 @@ open scoped Simplicial
 /-- 冪等完備化後の実右射を含む Cat^perf の coherent な Verdier 図式。 -/
 structure PerfectVerdierDiagram extends PerfectVerdierSequence.{u} where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}
-  left_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex square 0 0 = toPerfectVerdierSequence.leftVertex
-  middle_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex square 1 0 = toPerfectVerdierSequence.middleVertex
-  right_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex square 1 1 = toPerfectVerdierSequence.rightVertex
+  left_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex square 0 0 = toPerfectVerdierSequence.leftVertex
+  middle_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex square 1 0 = toPerfectVerdierSequence.middleVertex
+  right_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex square 1 1 = toPerfectVerdierSequence.rightVertex
   bottom_edge : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square ≫ perfectStableInfinityInclusion =
     SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow verdier.inclusion).edge
   right_edge : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ square ≫ perfectStableInfinityInclusion =
     SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow toPerfectVerdierSequence.projection).edge
-  zero_corner : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex square 0 1))
+  zero_corner : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex square 0 1))
 
 end SerrePositivity.KST.SConstruction

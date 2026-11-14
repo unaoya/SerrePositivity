@@ -1,0 +1,25 @@
+[
+  {
+    "path": "scripts/audit_einfinity.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_einfinity.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 187.54667116515338,
+    "peak_process_tree_rss_bytes": 7706050560,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "1",
+    "heavy_job_limit": 1,
+    "started_local": "2026-11-14T09:28:07.026182",
+    "finished_local": "2026-11-14T09:31:14.577095",
+    "source_sha256": "6fce44c2f2771091c47ee0ff63629dd943fda73c2620e5856ec8bad652a6d2da",
+    "replaces_initial_failure": "audit-first-pass-failures/046.log"
+  }
+]

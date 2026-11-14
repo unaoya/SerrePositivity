@@ -28,7 +28,7 @@ abbrev dgBarResolvedCoherentDiagram := G ≫ dgBarModuleResolution R D ≫ _root
   (dgFullSubcategoryInclusion R (RightModule R D) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty R D))
 
 def dgBarResolvedCoherentAugmentation : SSet.Homotopy (dgBarResolvedCoherentDiagram R D G) G := by
-  let h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolutionAugmentationHomotopy R D) G
+  let h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleResolutionAugmentationHomotopy R D) G
   exact { h := h.h
           h₀ := h.h₀
           h₁ := by simpa only [Category.comp_id] using! h.h₁
@@ -36,11 +36,11 @@ def dgBarResolvedCoherentAugmentation : SSet.Homotopy (dgBarResolvedCoherentDiag
 
 lemma dgBarResolvedCoherentAugmentation_vertex_mem (s : I _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (dgBarResolvedCoherentAugmentation R D G)
-      (ULift.up s)).edge ∈ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
+      (ULift.up s)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolutionAugmentationHomotopy R D) G) (ULift.up s)).edge ∈ _
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleResolutionAugmentationHomotopy R D) G) (ULift.up s)).edge ∈ _
   rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge]
-  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolutionAugmentationHomotopy_vertex_mem R D _
+  exact _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleResolutionAugmentationHomotopy_vertex_mem R D _
 
 variable {J : Type u} [Category.{u} J]
   (H : (SSet.uliftFunctor.{max (u + 1) v, u}).obj (nerve J) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve R D)

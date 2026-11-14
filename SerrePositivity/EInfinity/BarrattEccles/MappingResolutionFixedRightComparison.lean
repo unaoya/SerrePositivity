@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionCofinality
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanDiagram
 public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CostructuredArrowPreDiagram
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CostructuredArrowPreDiagram
 public import SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion
 
 /-!

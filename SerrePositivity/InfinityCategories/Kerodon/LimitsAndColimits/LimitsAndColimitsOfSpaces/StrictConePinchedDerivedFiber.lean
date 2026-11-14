@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ComparisonFiberIndex
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.ComparisonFiberIndex
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.ConeRestrictionDerivedFiber
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.WeightedConeDerivedFiberComparison
 

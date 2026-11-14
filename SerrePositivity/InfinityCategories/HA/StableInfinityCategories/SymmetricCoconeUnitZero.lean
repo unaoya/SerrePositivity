@@ -32,7 +32,7 @@ lemma edgeTerminalCocone_vertex {X : SSet.{u}} (g : (Δ[1] : SSet.{u}) ⟶ X) :
 使われ方：対角の成分から得る単位を零射に同定する。 -/
 lemma coconeMappingSpacePiZeroEquiv_fold_eq_zero {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms X.HomotopyCategory] {x z : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f f)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) (y : X _⦋0⦌)
     (a : SSet.π₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpace (SSet.yonedaEquiv.symm f.edge) y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpacePiZeroEquiv c hc y (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.symmetricCoconeFold f y) a) = 0 := by
@@ -53,7 +53,7 @@ lemma coconeMappingSpacePiZeroEquiv_fold_eq_zero {X : SSet.{u}} [Quasicategory X
 規約：零頂点と余極限余錐、h X の零射構造だけを使う。使われ方：加法の一般判定の単位条件。 -/
 lemma symmetricCoconeLoopUnit_hom_eq_zero {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms X.HomotopyCategory] {x z : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f f)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) (y : X _⦋0⦌)
     (e : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpace (SSet.yonedaEquiv.symm f.edge) y) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpacePiZeroEquiv c hc y (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.symmetricCoconeLoopUnit f y e) = 0 := by

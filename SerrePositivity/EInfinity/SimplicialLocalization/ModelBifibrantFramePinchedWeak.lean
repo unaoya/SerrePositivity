@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoofWeak
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelBifibrantFrameElements
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.ModelBifibrantFrameElements
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanShape
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
 public import SerrePositivity.EInfinity.Hammock.AsSmallComparison

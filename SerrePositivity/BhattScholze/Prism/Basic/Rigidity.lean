@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import Mathlib.LinearAlgebra.TensorProduct.Lift
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
@@ -19,7 +21,7 @@ prism の p と生成元は導来完備性から Jacobson 根基に属し、生�
 どの主張も p 正則性・完全性・有界性を仮定しない。
 
 ## 規約
-BS 著者版 Lemma 3.5 の後半（B[I] = 0 なら (B, IB) は prism）は扱わない（ノート課題 T3-5）。
+BS 著者版 Lemma 3.5 の後半（B[I] = 0 なら (B, IB) は prism）は扱わない。
 
 ## 使われ方
 完全 prism の比較、BS 著者版 Theorem 3.10、BS 著者版 Lemma 4.8、André の有界試験 prism への射。
@@ -316,3 +318,13 @@ def inverseOfQuotient (f : Hom P Q) (hf : Function.Bijective f.quotientMap) : Ho
 end SerrePositivity.BhattScholze.OrientedPrism.Hom
 
 end OrientedPrismIsoCriterion
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 3.5" (partial := special) "単項（向き付き）の場合。後半の逆（B[I]=0 なら (B,IB) は prism）は扱わない（T3-5）。PrismOver の Q.ideal=(d)B に使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：bijective_iff_quotientMap_bijective（本文のテンソル比較と像等式とは別の帰結。） ／ DOC1 照合：ok 3 件。後半の逆の「⇒」にあたる map_generator_mul_injective はある ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit
+attribute [cite BS19 "Lemma 3.5" (partial := special) "単項（向き付き）の場合。後半の逆（B[I]=0 なら (B,IB) は prism）は扱わない（T3-5）。PrismOver の Q.ideal=(d)B に使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：bijective_iff_quotientMap_bijective（本文のテンソル比較と像等式とは別の帰結。） ／ DOC1 照合：ok 3 件。後半の逆の「⇒」にあたる map_generator_mul_injective はある ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv
+attribute [cite BS19 "Lemma 3.5" (partial := special) "単項（向き付き）の場合。後半の逆（B[I]=0 なら (B,IB) は prism）は扱わない（T3-5）。PrismOver の Q.ideal=(d)B に使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：bijective_iff_quotientMap_bijective（本文のテンソル比較と像等式とは別の帰結。） ／ DOC1 照合：ok 3 件。後半の逆の「⇒」にあたる map_generator_mul_injective はある ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.idealTensorEquiv
+attribute [cite BS19 "Lemma 3.5" (partial := special) "単項（向き付き）の場合。後半の逆（B[I]=0 なら (B,IB) は prism）は扱わない（T3-5）。PrismOver の Q.ideal=(d)B に使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：bijective_iff_quotientMap_bijective（本文のテンソル比較と像等式とは別の帰結。） ／ DOC1 照合：ok 3 件。後半の逆の「⇒」にあたる map_generator_mul_injective はある ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.map_generator_mul_injective
+attribute [cite BS19 "Prop 1.5" (partial := special) "原典は「(Proposition 3.5)」と書くが §3 の番号は Lemma 3.5（Rigidity of maps）。向き付き prism の射についてだけ ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit
+attribute [cite BS19 "Prop 1.5" (partial := special) "原典は「(Proposition 3.5)」と書くが §3 の番号は Lemma 3.5（Rigidity of maps）。向き付き prism の射についてだけ ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv

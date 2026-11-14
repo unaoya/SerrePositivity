@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.EpsilonCellRigidity
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.QuasicategoryCore
 
 /-!

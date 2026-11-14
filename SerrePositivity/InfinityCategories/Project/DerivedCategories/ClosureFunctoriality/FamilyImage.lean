@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.ExtensionRange
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGProjectiveClosureFamily
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGProjectiveClosureFamily
 
 /-!
 概要：基底間の実 dg 同型から、閉包族の添字写像と対象別同型を得る。

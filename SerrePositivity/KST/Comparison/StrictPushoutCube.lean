@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.DoubleMappingCylinderMap
 public import SerrePositivity.KST.Comparison.CylinderBoundary
 public import Mathlib.CategoryTheory.Adhesive.Basic
 

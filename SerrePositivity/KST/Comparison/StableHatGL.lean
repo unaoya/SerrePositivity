@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.HatGLStabilization
 public import SerrePositivity.KST.Comparison.GrouplikeColimit
 public import SerrePositivity.KST.Comparison.HatGLDelooping
@@ -64,3 +66,9 @@ theorem stableHatGLGroupCompletionMap_localized_isIso (A : SimplicialObject Ring
   monoidGroupCompletionMap_localized_isIso _ (stableHatGL_isGrouplike A)
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (2.3)" (partial := component) "仮定：単位つき単体環と有限行列の安定化（Lean が強い）。結論：安定 ĜL とその群状性。原典の非単位的単体環を含む安定行列のホモトピー引き戻し正方形全体は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.Comparison.stableHatGL
+attribute [cite KST "Eq (2.3)" (partial := component) "仮定：単位つき単体環と有限行列の安定化（Lean が強い）。結論：安定 ĜL とその群状性。原典の非単位的単体環を含む安定行列のホモトピー引き戻し正方形全体は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.Comparison.stableHatGL_isGrouplike

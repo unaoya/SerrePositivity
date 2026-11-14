@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectFunctor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolutionStrictNatTransInvertible
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolutionStrictNatTransInvertible
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTrans
 
 /-!
 概要：同じ解像度 graph 増大を native 導来加群値の全関手同型として保持する。

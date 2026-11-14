@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CartesianPrismOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CartesianPrismOpposite
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.EdgeTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibrationComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.HTT.Section2_1_3.VertexFiberOpposite
 
 /-!
 概要：元の終点 fiber から始点 fiber への Cartesian transport と輸送 prism を構成する。
@@ -30,8 +30,8 @@ def cartesianEdgeTransport {E B : SSet.{u}} (p : E ⟶ B) [_root_.SerrePositivit
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cartesianFibration_op_toCocartesianHornFibration p
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianHornFibration_toCocartesianFibration (SSet.opFunctor.map p)
   let T : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b).op ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p a).op :=
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom ≫
-      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport (SSet.opFunctor.map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp e) ≫ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p a).inv
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport (SSet.opFunctor.map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp e) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p a).inv
   exact (SSet.opFunctorCompOpFunctorIso.app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b)).inv ≫
     SSet.opFunctor.map T ≫ (SSet.opFunctorCompOpFunctorIso.app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p a)).hom
 
@@ -48,16 +48,16 @@ lemma cartesianEdgeTransport_witness {E B : SSet.{u}} (p : E ⟶ B) [_root_.Serr
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cartesianFibration_op_toCocartesianHornFibration p
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianHornFibration_toCocartesianFibration (SSet.opFunctor.map p)
   obtain ⟨H, h0, h1, hb, hc⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport_isTransport (SSet.opFunctor.map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp e)
-  let K := ((Δ[1] : SSet.{u}) ◁ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom) ≫ H
+  let K := ((Δ[1] : SSet.{u}) ◁ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom) ≫ H
   have hk0 : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ K = SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p b) := by
     exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (SSet.opFunctor.map p) (SSet.opObjEquiv.symm b) ⟶
-      E.op ↦ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom ≫ f) h0
+      E.op ↦ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom ≫ f) h0
   have hk1 : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ K =
-      ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport (SSet.opFunctor.map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp e) ≫ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p a).inv) ≫
+      ((_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport (SSet.opFunctor.map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp e) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p a).inv) ≫
           SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p a) := by
     exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (SSet.opFunctor.map p) (SSet.opObjEquiv.symm b) ⟶
-      E.op ↦ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom ≫ f) h1
+      E.op ↦ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom ≫ f) h1
   refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.unreversePrism K, ?_, ?_, ?_, ?_⟩
   · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.unreversePrism_endpoint]
     change (SSet.opFunctorCompOpFunctorIso.app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b)).inv ≫
@@ -74,15 +74,15 @@ lemma cartesianEdgeTransport_witness {E B : SSet.{u}} (p : E ⟶ B) [_root_.Serr
           (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp e).edge : (Δ[1] : SSet.{u}) ⟶ B.op) := by
       exact congrArg (fun f : (Δ[1] : SSet.{u}) ⊗
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (SSet.opFunctor.map p) (SSet.opObjEquiv.symm b) ⟶ B.op ↦
-          ((Δ[1] : SSet.{u}) ◁ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom) ≫ f) hb
+          ((Δ[1] : SSet.{u}) ◁ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom) ≫ f) hb
     rw [← _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unreversePrism_postcomp, hkb, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unreversePrism_base]
   · apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unreversePrism_vertical_isCartesian p K
     intro v
     change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCocartesianEdge (SSet.opFunctor.map p)
-      (H.app (Opposite.op ⦋1⦌) (_, (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom.app _
+      (H.app (Opposite.op ⦋1⦌) (_, (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom.app _
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant v 1)))
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map]
-    exact hc ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom.app _ v)
+    exact hc ((_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom.app _ v)
 
 end
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations

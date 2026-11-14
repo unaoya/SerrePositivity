@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGSumFamily
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransUnitNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGStrictNatTransUnitNaturality
 
 /-!
 概要：同じ dg 関手族の実直和への、全斉次射に自然な元の注入。

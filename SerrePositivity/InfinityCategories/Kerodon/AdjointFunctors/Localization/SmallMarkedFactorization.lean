@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SmallMarkedQuasicategoryHull
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallMarkedQuasicategoryHull
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseEdges
 
 /-!
@@ -52,3 +54,8 @@ theorem exists_small_inverting_factorization {K : SSet.{u}} {E : SSet.{max u v}}
   exact ConcreteCategory.congr_hom hh (ULift.up.{v, u} w)
 
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.2" (partial := special) "仮定：単体集合と全辺、又は W を反転する与えられた関手（Lean が強い：任意の W で仮定なしの存在ではない）。結論：全辺の局所化、及び任意の W の小さい反転因数分解（Lean が弱い：後者は普遍性を要求しない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_small_inverting_factorization

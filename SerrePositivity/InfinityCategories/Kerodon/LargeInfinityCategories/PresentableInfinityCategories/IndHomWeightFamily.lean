@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndUniverseHomInclusion
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.YonedaWeightFamilyComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomCanonicalRightKan
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.HomCanonicalRightKan
 
 /-!
 概要：Ind 対象から元の Hom 係数前層への全自然変換空間族。

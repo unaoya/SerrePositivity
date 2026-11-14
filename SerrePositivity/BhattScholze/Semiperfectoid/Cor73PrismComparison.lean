@@ -1,4 +1,5 @@
 module
+public meta import SerrePositivity.Util.Citation
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
@@ -38,23 +39,23 @@ theorem existsUnique_perfectPrismComparison (Q : OrientedPrism p B)
   have hbV : IsBoundedPrism V := ⟨1, fun n x hx => by
     simpa only [pow_one] using V.quotient_p_pow_torsion_killed_by_p hV n x hx⟩
   obtain ⟨e, he⟩ := IsPerfectoidization.exists_equiv p hv hw
-  obtain ⟨F, hF, _⟩ := Andre.existsUnique_perfectPrismHomLift_to_bounded Q hQ V hbV e.toRingHom
-  obtain ⟨G, hG, _⟩ := Andre.existsUnique_perfectPrismHomLift_to_bounded V hV Q hbQ e.symm.toRingHom
+  obtain ⟨F, hF, _⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded Q hQ V hbV e.toRingHom
+  obtain ⟨G, hG, _⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded V hV Q hbQ e.symm.toRingHom
   have hGF : G.comp F = OrientedPrism.Hom.id Q := by
-    apply Andre.perfectPrismHom_ext_to_bounded_target Q hQ Q hbQ
+    apply _root_.SerrePositivity.BhattScholze.perfectPrismHom_ext_to_bounded_target Q hQ Q hbQ
     rw [OrientedPrism.Hom.quotientMap_comp, hG, hF, OrientedPrism.Hom.quotientMap_id]
     apply RingHom.ext
     intro x
     exact e.symm_apply_apply x
   have hFG : F.comp G = OrientedPrism.Hom.id V := by
-    apply Andre.perfectPrismHom_ext_to_bounded_target V hV V hbV
+    apply _root_.SerrePositivity.BhattScholze.perfectPrismHom_ext_to_bounded_target V hV V hbV
     rw [OrientedPrism.Hom.quotientMap_comp, hG, hF, OrientedPrism.Hom.quotientMap_id]
     apply RingHom.ext
     intro x
     exact e.apply_symm_apply x
   refine ⟨F, ⟨by rw [hF]; exact he, G, hGF, hFG⟩, ?_⟩
   intro k hk
-  apply Andre.perfectPrismHom_ext_to_bounded_target Q hQ V hbV
+  apply _root_.SerrePositivity.BhattScholze.perfectPrismHom_ext_to_bounded_target Q hQ V hbV
   exact ((hv.2 (C ⧸ V.ideal) hw.1 w).unique hk.1 he).trans hF.symm
 
 variable {A : Type u} [CommRing A]
@@ -119,3 +120,7 @@ theorem classicalPrismPerfection_cor73_of_subsingleton [Subsingleton T]
     (perfectDeltaDivisionPrism_isPerfect _ _ _ _) w hw
 
 end SerrePositivity.BhattScholze.Semiperfectoid
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 7.10" (partial := component) "BS-W17 H5（11-12）：T（有限）と S′（任意添字）の古典的な部分は本体：固定 A_inf 上の有界な実包絡、全有界 prism への一意な射、S′ の完全化と Cor 7.3 の単位を保つ唯一の同型（停止点 4・5a・5）。S′ の単位の完全忠実平坦性は後回し（E3 は使わない）。Δ_R/A との同定（G10）は drafts ／ 11-12 節の見直し：S′ の部分は f_j=0 の場合（根の商）だけ"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.classicalPrismPerfection_cor73
+attribute [cite BS19 "Prop 7.10" (partial := component) "BS-W17 H5（11-12）：T（有限）と S′（任意添字）の古典的な部分は本体：固定 A_inf 上の有界な実包絡、全有界 prism への一意な射、S′ の完全化と Cor 7.3 の単位を保つ唯一の同型（停止点 4・5a・5）。S′ の単位の完全忠実平坦性は後回し（E3 は使わない）。Δ_R/A との同定（G10）は drafts ／ 11-12 節の見直し：S′ の部分は f_j=0 の場合（根の商）だけ"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_perfectPrismComparison

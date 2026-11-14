@@ -976,3 +976,1345 @@ E : SSet.{u+1} が presentable なら、ι : Type u と M : ι → E₀ が存�
 - [WeakContractibleContractionCospan](../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/WeakContractibleContractionCospan.lean)：56行。
 - [LeftCofinalUniverseLift](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/LeftCofinalUniverseLift.lean)：30行。
 - [NerveLeftQuillenA](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/NerveLeftQuillenA.lean)：35行。
+
+
+## 20. 3b-3 段0（11-13、見込み上端超過のため実装前で停止）
+
+main `bf5536ccc` を取り込んだ。3b-1（登録 `cfa0e8324`）は本体にある。
+IS-W2 §0・§3.2・§8・§10、③-b報告§21.3・§21.4・§38.1〜§38.2を照合した。
+§38は本体側の報告がまだ§21までのため、共有worktree `../SerrePositivity-bs-d68/` の同じ報告を読んだ。
+⑤b枝のmerge・コードimport・編集はしていない。3b-2の未取込ファイル・G10を入力にしない。
+
+### 型案（加群版だけ）
+
+A : Type u、CommRing A。Jは `SimplexCategory` とその反対圏の二つだけ。
+`I_J := (SSet.uliftFunctor.{u+1,0}).obj (nerve J)`、`DA := derivedInfinityCategory A`、
+`D_J := (ihom I_J).obj DA` とする。`Complex A` は本体の dg 複体模型の閉零圏として扱う。
+
+1. `W_J(f) := ∀ j, QuasiIso (f.app j)` を持つ strict な複体図式の相対圏と、その∞局所化模型
+   `S_J := StrictDiagramInfinity A J` を構成する。局所化写像 `q_J : nerve (J ⥤ Complex A) ⟶ S_J` は
+   W_Jの辺を反転し、`IsLocalization q_J W_J` を結論に持つ。W_Jの辺の集合への変換も明示する。
+2. 実評価 `ev_J : S_J ⟶ D_J` と `IsQCatEquivalence ev_J`。
+   下の全関手同型を合わせて返す：
+   `FunctorIso (q_J ≫ ev_J) strictComplexDiagramFamily`。
+   ここで右辺は元のstrict図式の射列をDAへ送る実評価。対象ごとの表示の選択で代用しない。
+3. 任意パラメーター P と `P ⟶ D_J` の族を、同値の逆と単位・余単位の全族同型でS_Jへ運ぶ。
+   対応する join 錐・余錐の族を両方向に運び、往復を元の図式同型に沿う同型として返す。
+   元の頂点を固定した比較、脚・全高次単体の互換、極限性／余極限性の保存を含む。
+4. J=Δᵒᵖについて、strict実現の全パラメーターの関手と
+   `strictSemifreeNativeApexFamily` の FunctorIso、さらに元の標準脚を持つ指定余錐族の比較。
+   これが§38.1第四行の受け渡し。Totの全族比較は③-b、BE値の厳密化は§38.2の③-bに残す。
+
+S_Jの宇宙はDAと同じ u+1 の模型を目標にする。raw hammockの構成の宇宙を無条件に同じと扱わず、
+projectiveなdg図式の模型等で小さいHomと評価を確認する。元の複体を対象ごとに独立選択して固定したまま
+厳密化する主張はしない。strict模型の値を置換できる形で、元の評価との全関手同型を結論にする。
+
+### 本体の再利用
+
+- `DiagramComparison/StrictSemifreeDiagram` の `strictSemifreeEvaluation`・`strictSemifreeDiagram`：
+  strict図式圏の全nerveにわたる実評価。これは局所化後の評価同値そのものではない。
+- `StrictSemifreeColimitFamily` の `strictSemifreeDiagramFamily`・`strictSemifreeColimitFamily_projection`・
+  `strictSemifreeJoinCoconeFamily`・`strictSemifreeNativeApexFamily`：同じ全高次単体の指定余錐族を再利用。
+  その選択だけから具体的実現の全関手比較が出たとは扱わない。
+- `StrictSemifreeRealizationCocone`、`StrictSimplicialDerivedCocone`、`SpecifiedProjectiveCocone`：
+  3b-1の図式ごとの同じ頂点・標準脚の余錐と余極限性を使う。native barを作り直さない。
+- `SemifreePointComparison.semifreePointEquivalence`、`derivedInfinityCategory`、dg nerve・
+  projective加群の既存比較：値のDAへの接続。図式圏の写像空間の比較は別に要る。
+- `HomotopicalAlgebra/Diagram/Projective.modelCategory`・`modelCategory_weakEquivalences`：
+  通常の図式圏のobjectwise弱同値とprojective置換。これは∞関手圏比較を結論には持たない。
+- `DGModuleFunctorResolutionNerve.dgModuleFunctorResolutionSourceNerve_isQCatEquivalence`：
+  dg関手の入力射影の既存比較。任意のcoherent図式からstrict図式への持ち上げを結論に持つものではない。
+- G8の全写像空間の随伴比較は指定余錐の全族自然性、G14は写像の同値性の検出、
+  G9はbarの添字のleft cofinal性・uliftに再利用できる。これらから図式圏の局所化同値を直接結論しない。
+- `ColimitCoconeFamilies` と既存の cone/cocone の関手単体集合・図式同型による比較を輸送へ使う。
+  図式同型の往復を指定錐の全パラメーターで読む接続は新規。
+
+除外する候補：`HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/LocalizedMappingBifunctor`
+は `[ModelCategory SSet]` を要求し、ordinary homotopy category値の族を延長するもので、docstringも
+strictなSSet値rectificationを別課題と明記する。`Rectification/Simplicial/StrictValueObstruction`
+も同じモデル圏仮定を持ち、独立に固定した値を保つ厳密化の障害の定理。どちらも今回の同値の代用にしない。
+
+### 型つきの残りと見込み（新規実装分）
+
+| # | 結論・受け渡しの型 | 不足の中身 | 見込み行数 |
+| --- | --- | --- | ---: |
+| R1 | `q_J` と `IsLocalization q_J W_J`、同じ閉零strict図式からの写像 | projective/dg図式模型とobjectwise擬同型の∞局所化を接続。通常のprojective模型の存在だけでは足りない | 600〜1,000 |
+| R2 | 各X,Yで `pinchedHomMap ev_J X Y` が同値 | 局所化後の図式間の写像空間と、coherent図式の全変換空間の比較。strict自然変換の通常endやH⁰だけでは代用不可 | 2,200〜3,200 |
+| R3 | `IsEssentiallySurjective ev_J` と全関手の逆・単位・余単位 | 任意の `I_J ⟶ DA` のcoherent作用をstrict複体図式へ置換。対象と射の個別表示だけで高次単体を補ったとはしない | 1,800〜2,600 |
+| R4 | 任意Pの錐／余錐族の両方向輸送と往復、極限性／余極限性の保存 | 図式射への自然性、指定頂点・脚・join全体の整合性。既存の錐の比較の接続 | 900〜1,500 |
+| R5 | `FunctorIso (q_J ≫ ev_J) strictComplexDiagramFamily` と同じ元の射の照合 | 局所化の評価と元の全nerve評価の一致。Semifree表示と全複体表示の比較もここに数える | 500〜900 |
+| R6 | strict実現の全関手同型と同じ指定余錐の全族比較 | §8の移管分。3b-1の各図式の同型を元の射・高次単体・標準脚と同時に自然化 | 450〜750 |
+| R7 | 同じ宇宙の型・端点表示の整合性 | 小さいHom・ULiftの同定、同型を通す評価と射影の局所接続。一般の形状へ範囲を広げない | 250〜450 |
+| 合計 | | | **6,700〜10,400** |
+
+§21.3の4,850〜7,150行より上端が増えた理由は、R2・R3で必要なHTT 4.2.4.4の内容を、
+既存の通常図式模型・写像空間の局所比較・3b-1の図式ごとの余錐だけから短く適用できる定理として
+確認できなかったため。特にR2の全変換空間とR3の全高次単体を持つstrict化を分けて数えた。
+これは必要行数の下界ではなく、今回のAPI照合に基づく実装予測。
+
+**上端10,400行が条件付き事前承認の7,150行を超えるため、段0を報告して止める。**
+今回の指示どおり、Lean実装・ビルドには入っていない。新しい数学・drafts・③-b/⑤aのファイルは変更なし。
+配置は全て `Project/DerivedCategories/DiagramComparison/` を候補とし、登録は調整役。
+範囲をstrict図式や対象ごとの同値に狭める変更、自然性・strict表示の存在を仮定する変更はしていない。
+
+
+## 21. 3b-3 再開・R1（11-13、継続）
+
+main `c3f6cb0f1` の追記を取り込み、§20のR1〜R7・上限12,000行・約5,200行での途中報告を確認。
+順序はR1→R5→R7→R6→R2→R3→R4。R6までの途中取り込み候補の報告はまだ先。
+今夜のB3凍結は予告の段階で、18時の確定後はコミットを控える指示を確認。
+
+**R1の検証済み部分**：`5ca806662`、新規2本・121行・16命名宣言。
+`StrictComplexDiagram` は元の通常の複体を値とし、添字は `StrictDiagramDirection` によりΔ・Δᵒᵖだけ。
+`strictDiagramQuasiIsos` と `strictDiagramWeakEdges` は元の自然変換の各成分の擬同型条件。
+`StrictDiagramInfinity`・`strictDiagramLocalization` は一般辺局所化 `edgeLocalization` の実構成を使う。
+同じSSet.{u+1}の準圏、元の指定局所化写像、objectwise擬同型辺の反転、全関手圏の普遍性を得た。
+既存 `GeneralLocalization.edgeLocalization_isLocalization`・`edgeLocalization_universal` を再利用。
+
+対象ビルド成功（R1単独2,395 jobs）、16宣言の監査は全てsorry-free、標準三公理のみ。
+監査入力 `/tmp/is-w1/3b3-r1-audit.lean`、監査実行ログ `3b3-build-3.log`（R5の最初の評価定義と同時、4,960 jobs）。
+鍵は `--wait 3600`、待ちは一枚、ビルド・監査中だけ保持し解放済み。
+本体入口・全体監査登録、③-bの3b-2・G10・⑤aの既存ファイルは変更していない。
+
+R5は作業木で進行中。通常複体の元の閉零射から、既存の一点dg加群の指定分解と
+`semifreePointEquivalence` を使う実評価を作り、元の擬同型辺の反転まで対象ビルドが通った。
+このR5分は一括監査前なのでまだコミットしていない。coherent図式圏への比較写像の同値性はR2・R3に残る。
+**3b-3の完了・停止点5は主張せず、続行する。**
+
+## 22. R5 の局所化評価の因子化・凍結前の検証済み分（11-13、継続）
+
+`8fecef670`：新規3本・246行・13命名宣言。
+`ComplexDerivedEvaluation` は元の複体・鎖写像の全nerveから既存D(A)への評価を構成。
+`ComplexDerivedQuasiIsomorphisms` は元の擬同型の辺の反転を証明。
+`StrictDiagramEvaluationFactorization` は固定添字での元の評価との等式、
+全図式評価のobjectwise擬同型反転、局所化からの実評価
+`strictDiagramDerivedEvaluation` と
+`FunctorIso (strictDiagramLocalization ≫ strictDiagramDerivedEvaluation) strictComplexDiagramFamily`
+を与える。各点の選択だけでなく全関手圏の局所化普遍性を使用。
+
+対象ビルド成功（4,998 jobs、`/tmp/is-w1/3b3-build-13.log`）。
+13宣言の監査成功（`/tmp/is-w1/3b3-r5-audit.log`、全てsorry-free、標準三公理のみ）。
+R1からの検証済み累計は5本・367行・29命名宣言。
+R5の半自由表示との比較は作業木で継続し、その後R7→R6へ進む。
+R2・R3の充満忠実性・任意coherent図式の厳密化は未着手で、同値性の完了は主張しない。
+上限12,000行・途中報告約5,200行・R6後の報告の条件に変更なし。
+
+B3は18時の確定連絡を待つ予告として扱う。現時点の検証済み分は上のコミットに保存済み。
+凍結確定後は枝へのコミットを控え、翌朝のmain取り込み・改名表への追従を行う。
+未検証分はコミットしない。入口・監査の登録は調整役に委ねる。
+
+## 23. R5・R7 の照合、R6 の実現関手側（11-13、継続）
+
+§22に続く検証済み追加は新規4本・351行・22命名宣言。
+
+| ファイル | 行 | 内容 |
+| --- | ---: | --- |
+| `ComplexDerivedSemifreeComparison` | 140 | 実分解の半自由入力への制限、定数一点加群との比較、元の通常鎖写像の表示を通す閉nerve包含との全FunctorIso |
+| `StrictSemifreeEvaluationComparison` | 110 | 半自由strict図式を通常複体へ忘れる関手、全評価の自然性、3b-1の `strictSemifreeDiagramFamily` と局所化評価との全族比較 |
+| `StrictDiagramEvaluationEndpoints` | 46 | 同じSSet.{u+1}で任意の全パラメーター・指定添字の評価を照合するFunctorIso |
+| `StrictSemifreeRealizationFamily` | 55 | 元の自然変換を同じ `directSumTotalFunctor` で写す実現関手と全nerveの族、元の頂点・辺の像との等式。R6の指定余錐との比較はまだない |
+
+再利用は `dgModuleResolvedInfinity_precompIso`、
+`dgModuleResolvedInfinity_inclusionIso`、`dgSemifreeModulesInclusion_isFullyFaithful`、
+`closedNerveInclusion_dgFunctor`、`FunctorIso.map_post`。
+半自由入力の比較は、包含後の全関手比較を充満忠実性で戻して得た。
+対象ごとの同型の選択から全族の自然性を仮定していない。
+
+対象ビルド成功（7,304 jobs）。追加22宣言の一括監査成功、全てsorry-free・標準三公理のみ。
+入力 `/tmp/is-w1/3b3-r5-r7-audit.lean`、ログ `/tmp/is-w1/3b3-build-23-audit.log`。
+鍵は一枚・`--wait 3600`、対象ビルドと監査の間のみ保持し解放済み。
+登録は調整役。本体の既存宣言、③-bの3b-2・G10・⑤aのファイルは変更・利用していない。
+
+規模の照合：R1は121行（見込み600〜1,000）、R5は386行（500〜900）、
+R7は156行（250〜450）。一般辺局所化と既存の出力分解・全関手同型のAPIを使えた分が小さい。
+R6は実現関手側55行のみで、全族の指定余錐との照合は残る。
+検証済み累計は9本・718行・51命名宣言。
+R2・R3・R4は未着手。比較射の同値性、停止点5、R6の完成は主張しない。
+次は予定どおりR6の指定余錐と元の実現関手・射を同時に比較する。
+12,000行の上限、約5,200行の途中報告、R6後の報告の条件に変更なし。
+
+## 24. R6 の実現・bar の関手比較（11-13、継続）
+
+追加の検証済み分は新規13本・973行、監査対象45宣言。
+`ProjectiveOutputResolvedComparison`・`ProjectiveComplexEvaluationComparison` は、
+元の実分解の評価を、同じ射影的模型の評価へ全関手同型で比較する。
+`StrictSemifreeRealizationProjective` は元の直和実現関手を同じ射で持ち上げ、
+`strictSemifreeRealizationFamily_projectiveIso` を与える。射影性には3b-1を使用。
+
+`ComplexDerivedNaturalComparison` は既存 `ordinaryNatTransPrism` と
+`functorIsoOfEquivalenceHomotopy` を再利用する。
+`StrictSemifreeReplacementComparison` は、既存の同じ
+`replacementTotalAugmentationNatTrans` を元のstrict図式へ制限し、全関手同型へ運ぶ。
+対象ごとの逆射を自然な族と仮定していない。
+
+`StrictBarGradedFunctor`・`StrictBarNormalizedGradedFunctor` は、元の自然変換の先頭成分を
+同じ射列ラベル・シフトで写す関手と、元のgraded包含・射影の自然性。
+`StrictBarUnnormalizedFunctor` は、同じ `smallStrictBarTotalPointIso` に固定した非正規化barの関手と自然同型。
+`StandardRowCochainNaturality`・`StrictBarColumnNaturality`・`StrictBarDegreeNaturality` は、
+既存の行・余積の自然性から元の比較列の自然性を得る。
+`StrictBarUnnormalizedComponents` は実barの射が各内部次数で元のgraded射そのものと証明し、
+`StrictBarThetaNaturality` はその同じ射とMC項との可換式を各内部次数で証明する。
+比較同型による関手の構成だけから、native余錐との整合性を主張していない。
+
+対象ビルド成功（共通部分7,508 jobs、成分・MC項の比較5,173 jobs）。
+監査ログ `/tmp/is-w1/3b3-build-38-audit.log`：45宣言全てsorry-free、標準三公理のみ。
+入口・全体監査は未登録（調整役）。③-bの3b-2・G10・⑤aのファイルは変更・利用なし。
+
+検証済み累計は22本・1,691行・監査対象96宣言。R6は種の55行を含め実測1,028行で、
+当初の450〜750行を超えた。増分は元の射を保つbarの関手性と比較列の自然性の照合。
+残りは、正規化MC項・元の射影の自然性、元の指定余錐の全パラメーター族、
+元の実現関手と同じapex・脚・HA成分の比較。R6の完成・途中取り込み点はまだ主張しない。
+R2・R3・R4の型・範囲は変更なし。残りを含む全体の暫定見込みは約8,000〜11,300行。
+12,000行の上限を維持し、超過が見込まれる場合は検証済み分をコミットして止める。
+
+## 25. R6 の正規化と全 HA 写像（11-13、継続）
+
+検証済みの追加5本・427行、監査対象20宣言。
+`StrictBarNormalizedThetaNaturality` は、前節の次数ごとの可換式を全Homへ戻し、
+元の包含・射影の自然性から正規化MC項の可換式も証明した。
+`StrictBarNormalizedFunctor` は同じ正規化barと射を通常関手にし、元の正規化射影を自然変換にする。
+`StrictBarNormalizedEvaluationComparison` は、その同じ射影と既存の指定全複体同型から
+`strictBarNormalizedTotalDerivedIso` を構成する。逆は全関手同型の逆であり、
+対象ごとの逆の自然性を新たな仮定にはしていない。
+
+`StrictSimplexMap`・`StrictSimplexMapPullback` は、全HA成分に可換する閉零写像の
+恒等・合成と全ての面・退化への引き戻し。指定余錐の全族を組み立てるR6の局所データであり、
+元の指定余錐でこの可換式が成立することは、これから接続して証明する。
+
+対象ビルド成功（5,265 jobs、全族の対角データの下書き2本も含む）。
+ログ `/tmp/is-w1/3b3-build-43-normalized.log`：上記20宣言は全てsorry-free、標準三公理のみ。
+全族の対角評価・引き戻しの下書きは別の対象監査中で、今回のコミットには含めない。
+入口・監査への登録は調整役。既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。
+
+検証済み累計27本・2,118行、監査対象116宣言。R6実測は1,455行。
+残りは元の標準脚・HA成分を持つ指定余錐の全パラメーター族と、
+元の実現・native apexの全関手比較。R6完成・停止点5はまだ主張しない。
+R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持する。
+
+## 26. R6 の全 HA 族の同時評価（11-13、継続）
+
+検証済み追加4本・386行、監査対象22宣言。
+`StrictCoherentFamily` は全HA成分の可換式・恒等・合成・面・退化の整合性を持つ局所データ。
+`OrderedSimplexDiagonal` は元の有限射列の閉零成分を後合成し、
+切断位置の可換式と合成則から全HA方程式を満たす対角の実単体を構成する。
+`OrderedSimplexPullback` は単射・潰れた辺・高次零成分の三分岐で、
+同時引き戻しと対角評価の可換式を示す。
+`StrictCoherentFamilyEvaluation` は同じデータを
+`nerve C ⊗ ULift I ⟶ dgNerve A E` の全単体的写像へ束ねる。
+定値パラメーターでは元の全HA単体と一致することも示した。
+
+これらはR6の元の指定余錐族の組み立ての道具であり、元の余錐が入力の可換式を満たすことは
+これから同じnative列の計算で証明する。元の余錐の自然性を仮定した完成版とは扱わない。
+
+対象ビルド成功（3,504 jobs）、対象監査22宣言全てsorry-free・標準三公理のみ。
+ログ `/tmp/is-w1/3b3-build-47-family-native.log` の最初の監査まで。
+同じ鍵の後段で実行したnative列側はshift包含の表示の修正中で、今回には含めない。
+検証済み累計31本・2,504行、監査対象138宣言。R6実測1,841行。
+R6は未完成。元の指定余錐・native apexと元の実現関手の全族比較が残る。
+R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 27. R6 の元の列・strict 図式への接続（11-13、継続）
+
+検証済み追加5本・308行、監査対象9宣言。
+`PointShiftInNaturality` は元の符号付きshift包含の全内部次数の自然性。
+`StrictBarNormalizedColumnNaturality` は元の全ラベルの包含を同じ正規化射影へ送った列の自然性と、
+元の正規化shift包含との一致。退化ラベルも含む。
+`StrictBarNativeColumnValues` は元のnative列の同じ全次数の値を、上の同じshift包含と列へ戻す。
+
+`StrictModuleCoherentFamily` は元のstrict加群図式の通常関手から全HA族の入力を実際に作る。
+閉零自然変換の合成を使い、全HA可換式・恒等・合成・全面退化を証明した。
+`StrictModuleFamilyEvaluationComparison` はその対角評価と元の通常strict評価が、
+全有限射列・全部分集合のHA成分で同じであることを示す。
+
+対象ビルド成功（5,274 jobs）。ログ `/tmp/is-w1/3b3-build-51-native.log` の最初の監査9宣言は
+全てsorry-free、標準三公理のみ。後段の合成記号への変換と添字同定の下書きは今回のコミットに含めない。
+元のnative列の自然性の2宣言もビルド済みだが、対象監査は次の束に回す。
+検証済み累計36本・2,812行、監査対象147宣言。R6実測2,149行。
+残りは元のnative余錐の全HA写像・全パラメーター族と、元の実現・native apexとの全関手比較。
+R6は未完成。R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 28. R6 の native 列と単体間成分（11-13、継続）
+
+検証済み追加4本・301行、監査対象12宣言。
+`StrictBarNativeColumnNaturality` は元のnative列の厳密自然性を、全内部次数と全Homの両方で示す。
+`StrictBarNativeCycleNaturality` は同じ式を、HA方程式で使う元の閉零cycleの通常順合成へ接続する。
+`SmallStrictNativeLabelSource` は、元の混合成分ラベルの先頭が同じ旧頂点であることを
+添字圏の中で証明する。係数加群の対象が一致することから添字の一致を推論していない。
+`StrictBarNativeSimplexComponents` は、既存の同じnative単体を使い、旧頂点には元の自然変換、
+apexには元の正規化barの射を与える。対象の等式に沿うcycleの移送と同じ成分との異種等号も示した。
+
+対象ビルド成功（5,274 jobs）。ログ `/tmp/is-w1/3b3-build-54-native.log` の最初の監査12宣言は
+全てsorry-free、標準三公理のみ。後段では旧成分の全HA可換式のファイルもビルドが通り、
+混合成分の添字の最後の表示同定を修正中。これらの下書きは今回のコミットに含めない。
+検証済み累計40本・3,113行、監査対象159宣言。R6実測2,450行。
+残りは元のnative余錐の全HA写像を全族へ束ねる接続と、元の実現・native apexとの全関手比較。
+joinの宇宙変更は既存の `Project/QuasicategoryAuxiliaries/UniverseJoinSimplexShapes.uliftCoconeShapeIso` を
+再利用する。対象ごとの余錐の普遍性だけから全関手の比較を主張しない。
+R6は未完成、R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 29. R6 の元の native 単体の全 HA 写像（11-13、継続）
+
+検証済み追加5本・461行、監査対象15宣言。
+`StrictBarNativeOldComparison` は、最後へ届かない全成分を元の反復した閉零射列へ戻し、
+元の自然変換の全HA可換式を証明する。
+`StrictBarNativeMixedComparison` は、最後へ届く全成分を同じラベルのnative列へ戻し、
+同じ閉零cycleの通常順合成の可換式を証明する。
+
+`StrictBarNativeSimplexMap` は二つの可換式を合わせ、元のnative単体間の全HA写像を構成した。
+`StrictBarNativeSimplexMapAlgebra` は、同じ写像の恒等・合成の整合性。
+`StrictBarNativeSimplexMapPullback` は、既存のnative単体の引き戻しを再利用し、
+apexを保つ全ての面・退化に対する整合性を示す。いずれも自然性を新たな入力にはしていない。
+
+対象ビルド成功（5,282・5,284・5,290 jobs）。旧成分8宣言の監査は
+`/tmp/is-w1/3b3-build-55-native.log` の最初、残り7宣言は
+`/tmp/is-w1/3b3-build-56-native.log` の後段。15宣言全てsorry-free・標準三公理のみ。
+検証済み累計45本・3,574行、監査対象174宣言。R6実測2,911行。
+残りは各セルの全族をjoinの全余錐族へ貼り合わせ、元の実現・native apexの全関手同型へつなぐ接続。
+R6はまだ未完成、R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 30. R6 の各 HA セルの全族評価（11-13、継続）
+
+検証済み追加5本・305行、監査対象15宣言。
+`StrictSimplexCategory` は固定次元の元のHA単体と全厳密写像の独立した通常圏。
+元のnative単体の通常関手と引き戻しの通常関手を、前節の同じ写像で与える。
+`StrictSimplexCategoryEvaluation` は同じ小さい標準セルのYoneda図式から、
+全nerveとセルの同時評価を作る。宇宙変更は既存の `uliftStdSimplexIso` を使う。
+
+`StrictSimplexEvaluationNaturality` は全セル評価の引き戻しとの可換式と、
+元のnativeセル関手の面・退化の全関手等号。
+`StrictCoherentCellEvaluation` は任意の元の全HA族の一つのセルの全関手を作り、
+その同時評価が元の全族の同じYoneda制限に一致することを証明する。
+`StrictBarNativeCellFront` は、元のnativeセル関手の前面を元のstrict図式のセル関手へ厳密に戻す。
+
+対象ビルド成功（5,293・5,297 jobs）。ログ `/tmp/is-w1/3b3-build-59-cells.log` の
+後段15宣言は全てsorry-free・標準三公理のみ（前段8宣言と重複する分は一度だけ数えた）。
+検証済み累計50本・3,879行、監査対象189宣言。R6実測3,216行。
+残りは同じapex関手の全族比較、既存sliceの普遍性による全余錐族の貼り合わせ、
+元の実現・native apexの全関手比較。各頂点の余錐の普遍性だけでは完成と扱わない。
+R6は未完成、R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 31. R6 の同じ apex 関手と規模の再確認（11-13 17:36）
+
+検証済み追加2本・175行、監査対象9宣言。
+`StrictSimplexFunctorEvaluation` は固定HAセルへの通常関手の同時評価と、
+引き戻し・元のnativeセルの前面の全族比較。
+`StrictBarNativeCellApex` は元のnativeセルのapexを同じ正規化barの通常関手へ戻し、
+その全射・全nerveで同じapex評価であることを証明した。
+
+対象ビルド成功（5,302 jobs）。`/tmp/is-w1/3b3-build-66-cocone.log` の最初の監査9宣言は
+全てsorry-free・標準三公理のみ。後段の全余錐族は公開宣言内の局所記法を明示型へ直して再検証中。
+検証済み累計52本・4,054行、監査対象198宣言。R6実測3,391行。
+未検証6本（全余錐の貼り合わせ、各セルと固定パラメーターの回復、射影的持ち上げ、
+各パラメーターの余極限性）は作業木に置き、通るまでコミットしない。
+
+### 上限の再見積もり
+
+R6の実測が当初上端750行を超え、次の接続も残っている。
+
+| R6の残り（既存の部品の接続のみ） | 型・必要な比較 | 見込み |
+| --- | --- | ---: |
+| 現在の未検証の束 | 同じnative余錐の全族、元の余錐への厳密な回復、射影的模型での余極限性 | 約450行＋検証の修正 |
+| D(A)値の同じ全余錐族 | `nerve (StrictSemifreeDiagram A J) ⟶ colimitCocones I DA`、射影は同じ `strictSemifreeDiagramFamily A J`。一点／射影的比較の全関手同型で運ぶ | 250〜400行 |
+| 元の正規化barのapexと実現 | `FunctorIso (strictSemifreeRealizationFamily A) computedApexFamily`。元の一点評価・正規化射影・指定Tot比較を使う | 200〜350行 |
+| 指定native余錐族との比較 | 二重ULiftのjoinの既存同型を通した全余錐族の同型と、そのapexへの像 `FunctorIso (strictSemifreeRealizationFamily A) (strictSemifreeNativeApexFamily A SimplexCategoryᵒᵖ)` | 150〜250行 |
+
+R6の残りは現在の検証済みから約1,050〜1,450行。
+R2〜R4は未着手で、段0の4,900〜7,300行を据え置くと、全体は約10,000〜12,800行となる。
+前の11,300〜11,800行という見込みの上端は維持できない。
+**上限12,000行を超える見込みなので、今ある束の検証を区切り、検証済みを保存してこの線のLeanを止める。**
+R6は未完成。R2〜R4をstrictな図式や点ごとの比較へ縮めて数字を合わせない。
+
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+凍結は予告のみで、確定の連絡はまだ受けていない。今回の検証済みは18時前に保存する。
+
+## 32. 規模による中間停止・最後の検証結果（11-13 17:49）
+
+§31の判断に従い、この線のLeanを止めた。R6は未完成で、R6完了の途中の取り込み候補とはしない。
+保存済みの数学は `a2d637dca`（2本・175行・9宣言）。検証済み累計は
+**52本・4,054行、監査対象198宣言、R6実測3,391行** のまま。
+全体の見込みは§31の約10,000〜12,800行で、上限12,000行を超える。R2〜R4は未着手。
+
+最後の対象ビルドは `/tmp/is-w1/3b3-build-69-cocone.log`、終了コード1。
+既検証2本の再ビルドと9宣言の再監査は成功。
+`StrictBarNativeFunctorCocone.strictBarNativeFunctorOverSection` の自然性で、
+`obtain ⟨⟨n⟩⟩ := n` の簡約中に `whnf` のheartbeat上限800,000へ達した。
+下流の未知宣言等のエラーはこの未構成の切断に続くもの。
+またdocstringと局所 `set_option ... in` の配置にも構文エラーがあった。
+最終実行後、この配置だけを直したが、再検証はしていない。
+
+未検証6本はコミットせず、作業木に残した（合計約445行）。
+
+- `StrictBarNativeFunctorCocone`：関手単体集合のsliceによる全余錐族。上記で停止。
+- `StrictBarNativeJoinCells`：貼り合わせた各joinセルを元の同じ全セル族へ戻す比較。
+- `StrictSimplexEvaluationAtParameter`：定値パラメーターでの全HAセルの回復。
+- `StrictBarNativeParameterRecovery`：全余錐族から元の指定native余錐全体への厳密な回復。
+- `StrictBarNativeProjectiveFamily`：同じ全余錐族の射影的模型への持ち上げ。
+- `StrictBarNativeProjectiveCocone`：各パラメーターの同じ余錐の余極限性の反映。
+
+後五本の今回の対象ビルドは、最初の失敗の後に進んでいない。
+ソースにsorry・axiomはないが、検証済みの成果には数えず、入口・監査への登録対象にも含めない。
+再開時はまず切断の自然性の簡約を局所化してから、この順で検証する。
+R6の残る型と接続、R2〜R4の見込みは§31の表と§20のまま。型・範囲を縮める変更はしていない。
+
+共有鍵の待ちは一枚ずつとし、最後のプロセス終了で鍵は解放済み。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。mainの作業木は編集・ビルドしていない。
+凍結確定の連絡はまだ受けていない。検証済みのコミットとこの報告は18時前に保存した。
+
+## 33. R6 の型つき一覧（11-13 18時の指示による再開）
+
+§31〜32の行数による停止を解除する。外枠20,800行。R6を先に閉じて途中の取り込み点を報告し、
+R2〜R4は別の型つき一覧を紙で出し直して止める。凍結確定の連絡はまだ受けていない。
+
+以下をR6の残りの有限な一覧とする。U01〜U25は未検証6本に現在ある構成と主張の型を全て転記したもの。
+各ブロックの引数・宇宙・openは当該ファイルの冒頭と同じで、定義の本体・証明を省いている。
+構成の前提に新しい自然性・完全性を足さない。U26以降は§31の後三行を個別の出力に分けたもの。
+証明の分割は本数に入れず、型を追記する。前提計算の法則は各U番号ごとに最大3本、
+一覧外の既存構成の照合は全体で最大3本。別の数学が必要なら検証済みを保存して止める。
+計算上限は既定値に戻し、簡約を局所化する。
+
+
+### StrictBarNativeFunctorCocone
+
+```lean
+-- U01
+def strictBarNativeFunctorDiagram : ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) ⟶ (ihom (nerve (J ⥤ ModuleCategory A PUnit.{1}))).obj (dgNerve A (RightModule A PUnit.{1}))
+-- U02
+def strictBarNativeFunctorApex : (Δ[0] : SSet.{u + 1}) ⟶ (ihom (nerve (J ⥤ ModuleCategory A PUnit.{1}))).obj (dgNerve A (RightModule A PUnit.{1}))
+-- U03
+def strictBarNativeFunctorOverSimplex {n : ℕ} (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    (sliceOver (strictBarNativeFunctorApex A J)) _⦋n⦌
+-- U04
+def strictBarNativeFunctorOverSection : ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) ⟶ sliceOver (strictBarNativeFunctorApex A J)
+-- U05
+lemma strictBarNativeFunctorOverSection_projection :
+    strictBarNativeFunctorOverSection A J ≫ sliceOverProjection (strictBarNativeFunctorApex A J) =
+      strictBarNativeFunctorDiagram A J
+-- U06
+def strictBarNativeFunctorCocone : JoinCocone (strictBarNativeFunctorDiagram A J)
+-- U07
+def strictBarNativeJoinFamily : (nerve (J ⥤ ModuleCategory A PUnit.{1})) ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶ (dgNerve A (RightModule A PUnit.{1}))
+-- U08
+lemma strictBarNativeJoinFamily_front :
+    ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ joinInl ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1})) ≫ strictBarNativeJoinFamily A J =
+      (strictModuleCoherentFamily A J (𝟭 (J ⥤ ModuleCategory A PUnit.{1}))).evaluation
+-- U09
+lemma strictBarNativeJoinFamily_apex :
+    ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ joinInr ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1})) ≫ strictBarNativeJoinFamily A J =
+      strictBarApexCellEvaluation A J
+```
+
+
+### StrictBarNativeJoinCells
+
+```lean
+-- U10
+lemma strictBarNativeFunctorCocone_cell {n : ℕ} (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    joinMap (SSet.yonedaEquiv.symm (ULift.up s) : (Δ[n] : SSet.{u + 1}) ⟶ ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))))
+        (𝟙 Δ[0]) ≫ (strictBarNativeFunctorCocone A J).val =
+      (joinStdSimplexIso n 0).hom ≫ curry (strictBarNativeCellEvaluation A J s)
+-- U11
+lemma strictBarNativeJoinFamily_cell {n : ℕ} (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ joinMap (SSet.yonedaEquiv.symm (ULift.up s) : (Δ[n] : SSet.{u + 1}) ⟶ ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))))
+        (𝟙 Δ[0])) ≫ strictBarNativeJoinFamily A J =
+      ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ (joinStdSimplexIso n 0).hom) ≫ strictBarNativeCellEvaluation A J s
+```
+
+
+### StrictSimplexEvaluationAtParameter
+
+```lean
+-- U12
+lemma strictFamilyCurry_evaluateAt {K : SSet.{u + 1}}
+    (H : nerve C ⊗ K ⟶ dgNerve A E) (c : C) :
+    MonoidalClosed.curry H ≫
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+          (ComposableArrows.mk₀ c) =
+      lift (SSet.const (ComposableArrows.mk₀ c)) (𝟙 K) ≫ H
+-- U13
+lemma strictSimplexFunctorEvaluation_atParameter {n : ℕ}
+    (F : C ⥤ StrictSimplexCategory A E n) (c : C) :
+    lift (SSet.const (ComposableArrows.mk₀ c)) (𝟙 (Δ[n] : SSet.{u + 1})) ≫
+        strictSimplexFunctorEvaluation A E F =
+      SSet.yonedaEquiv.symm (F.obj c).val
+-- U14
+lemma strictBarNativeCellEvaluation_atParameter (J : Type) [SmallCategory J]
+    (F : J ⥤ ModuleCategory A PUnit.{1}) {n : ℕ}
+    (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    lift (SSet.const (ComposableArrows.mk₀ F)) (𝟙 (Δ[n + 1] : SSet.{u + 1})) ≫
+        strictBarNativeCellEvaluation A J s =
+      SSet.yonedaEquiv.symm (strictBarNativeSimplex A J F s)
+```
+
+
+### StrictBarNativeParameterRecovery
+
+```lean
+-- U15
+lemma strictSliceOverUncurry_eq_of_values {K L X : SSet.{u + 1}} {p q : L ⟶ X}
+    (hp : p = q) (s : K ⟶ sliceOver p) (t : K ⟶ sliceOver q)
+    (h : ∀ (n : SimplexCategoryᵒᵖ) (a : K.obj n),
+      (s.app n a).val = (t.app n a).val) :
+    sliceOverUncurry s = sliceOverUncurry t
+-- U16
+lemma strictBarNativeFunctorApex_atParameter (F : J ⥤ ModuleCategory A PUnit.{1}) :
+    strictBarNativeFunctorApex A J ≫ evaluateFunctorAt (ComposableArrows.mk₀ F) =
+      SSet.yonedaEquiv.symm
+        (dgCoherentBarNativeApex A PUnit.{1} (smallStrictBarDiagram A F)
+          (dgCoherentBarMaurerCartan_unconditional A PUnit.{1} (smallStrictBarDiagram A F)))
+-- U17
+lemma strictBarNativeFunctorCocone_atParameter (F : J ⥤ ModuleCategory A PUnit.{1}) :
+    (strictBarNativeFunctorCocone A J).val ≫
+        evaluateFunctorAt (ComposableArrows.mk₀ F) =
+      (dgCoherentBarNormalizedNativeCocone A PUnit.{1} (smallStrictBarDiagram A F)
+        (dgCoherentBarMaurerCartan_unconditional A PUnit.{1} (smallStrictBarDiagram A F))).val
+```
+
+
+### StrictBarNativeProjectiveFamily
+
+```lean
+-- U18
+lemma strictBarNormalizedFunctor_projective (F : J ⥤ ModuleCategory A PUnit.{1})
+    (hF : ∀ j, moduleHomotopicallyProjective A PUnit.{1} (F.obj j)) :
+    moduleHomotopicallyProjective A PUnit.{1} ((strictBarNormalizedFunctor A J).obj F)
+-- U19
+def strictBarNativeJoinFamilyAlong :
+    nerve C ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶ dgNerve A (RightModule A PUnit.{1})
+-- U20
+lemma strictBarNativeJoinFamilyAlong_projective :
+    ∀ z : (nerve C ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1})) _⦋0⦌,
+      dgModuleProjectiveProperty A PUnit.{1}
+        (((strictBarNativeJoinFamilyAlong A J T).app _ z).obj 0)
+-- U21
+def strictBarNativeProjectiveJoinFamily :
+    nerve C ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶ dgProjectiveModuleNerve A PUnit.{1}
+-- U22
+lemma strictBarNativeProjectiveJoinFamily_image :
+    strictBarNativeProjectiveJoinFamily A J T hT ≫
+        SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+          (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+            (dgModuleProjectiveProperty A PUnit.{1})) =
+      strictBarNativeJoinFamilyAlong A J T
+```
+
+
+### StrictBarNativeProjectiveCocone
+
+```lean
+-- U23
+def strictBarNativeProjectiveCoconeAt (c : C) :
+    JoinCocone (joinInl ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ≫
+      lift (SSet.const (ComposableArrows.mk₀ c)) (𝟙 _) ≫
+        strictBarNativeProjectiveJoinFamily A J T hT)
+-- U24
+lemma strictBarNativeProjectiveCoconeAt_image (c : C) :
+    (fullInclusionCocone A (RightModule A PUnit.{1}) (dgModuleProjectiveProperty A PUnit.{1})
+      (strictBarNativeProjectiveCoconeAt A J T hT c)).val =
+    (dgCoherentBarNormalizedNativeCoconeUnconditional A PUnit.{1}
+      (smallStrictBarDiagram A (T.obj c))).val
+-- U25
+lemma strictBarNativeProjectiveCoconeAt_isColimit (c : C) :
+    IsColimitCone (strictBarNativeProjectiveCoconeAt A J T hT c)
+```
+
+
+### §31の残る接続の型（U26以降）
+
+以下の略記を固定する。`I₂` と `I` は同一視せず、既存の
+`smallDiagramShapeIso` とjoinの同型で移送する。
+
+```lean
+variable (A : Type u) [CommRing A]
+local notation "J" => SimplexCategoryᵒᵖ
+local notation "C" => StrictSemifreeDiagram A J
+local notation "P" => nerve C
+local notation "I" => (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)
+local notation "I₂" => (SSet.uliftFunctor.{u + 1, u}).obj
+  ((SSet.uliftFunctor.{u, 0}).obj (nerve J))
+local notation "DA" => derivedInfinityCategory A
+
+-- U26: 元の半自由一点図式から台の加群図式への全通常関手。
+def strictSemifreePointUnderlyingFunctor : C ⥤ (J ⥤ ModuleCategory A PUnit.{1})
+
+-- U27: 構成は既存の同じ台の図式を使う。
+lemma strictSemifreePointUnderlyingFunctor_obj (F : C) :
+  (strictSemifreePointUnderlyingFunctor A).obj F =
+    pointSemifreeUnderlyingDiagram A (strictSemifreePointDiagram A F)
+
+-- U28: U21への射影性の入力は結論として供給する。
+lemma strictSemifreePointUnderlyingFunctor_projective (F : C) (j : J) :
+  moduleHomotopicallyProjective A PUnit.{1}
+    (((strictSemifreePointUnderlyingFunctor A).obj F).obj j)
+
+-- U29: U21を既存のprojectivePointEquivalenceで送る同じ全余錐族。
+def strictSemifreeRawDAJoinFamily : P ⊗ join I₂ (Δ[0] : SSet.{u + 1}) ⟶ DA :=
+  strictBarNativeProjectiveJoinFamily A J (strictSemifreePointUnderlyingFunctor A)
+    (strictSemifreePointUnderlyingFunctor_projective A) ≫ (projectivePointEquivalence A).hom
+
+-- U30: 同じjoinの宇宙変更。既存のsmallDiagramShapeIsoの逆を使う。
+def strictSemifreeJoinShapeIso (A : Type u) :
+  join I (Δ[0] : SSet.{u + 1}) ≅ join I₂ (Δ[0] : SSet.{u + 1})
+
+-- U31: 下方図式の既存の全関手同型に沿い、同じ全族を輸送する。
+def strictSemifreeComputedDAJoinFamily : P ⊗ join I (Δ[0] : SSet.{u + 1}) ⟶ DA
+lemma strictSemifreeComputedDAJoinFamily_front :
+  (P ◁ joinInl I (Δ[0] : SSet.{u + 1})) ≫ strictSemifreeComputedDAJoinFamily A =
+    strictSemifreeEvaluation A J
+
+-- U32: 輸送は全joinの関手同型を持つ（頂点・辺だけの対応ではない）。
+def strictSemifreeComputedDAJoinFamily_transportIso :
+  FunctorIso ((P ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+    strictSemifreeRawDAJoinFamily A) (strictSemifreeComputedDAJoinFamily A)
+
+-- U33: 同じ全族の各パラメーターでの余錐は余極限。
+def strictSemifreeComputedDACoconeAt (F : C) :
+  JoinCocone (joinInl I (Δ[0] : SSet.{u + 1}) ≫
+    lift (SSet.const (ComposableArrows.mk₀ F)) (𝟙 _) ≫
+      strictSemifreeComputedDAJoinFamily A)
+lemma strictSemifreeComputedDACoconeAt_isColimit (F : C) :
+  IsColimitCone (strictSemifreeComputedDACoconeAt A F)
+
+-- U34: 全族を普遍余錐の全部分圏へ制限する。別の族を選び直さない。
+def strictSemifreeComputedColimitFamily : P ⟶ colimitCocones I DA
+lemma strictSemifreeComputedColimitFamily_evaluation :
+  (β_ P (join I (Δ[0] : SSet.{u + 1}))).hom ≫
+    uncurry (strictSemifreeComputedColimitFamily A ≫
+      (relativeInitialVertices (coconeRestriction I DA)).ι) =
+    strictSemifreeComputedDAJoinFamily A
+
+-- U35: 指定されている同じ全下方図式。
+lemma strictSemifreeComputedColimitFamily_projection :
+  strictSemifreeComputedColimitFamily A ≫ colimitCoconeProjection I DA =
+    strictSemifreeDiagramFamily A J
+
+-- U36: 同じ下方図式を持つ全普遍余錐族の既存比較。
+def strictSemifreeComputedColimitFamilyIso :
+  FunctorIso (strictSemifreeComputedColimitFamily A) (strictSemifreeColimitFamily A J)
+
+-- U37: 同じ比較を全余錐へ送る。全高次単体と脚の比較を含む。
+def strictSemifreeComputedCoconeFamilyIso :
+  FunctorIso (strictSemifreeComputedColimitFamily A ≫
+    (relativeInitialVertices (coconeRestriction I DA)).ι)
+    (strictSemifreeCoconeFunctorFamily A J)
+
+-- U38: 元の正規化barの同じ通常関手と複体評価。
+def strictSemifreeNormalizedBarComplex : C ⥤ Complex A :=
+  strictSemifreePointUnderlyingFunctor A ⋙ strictBarNormalizedFunctor A J ⋙
+    moduleEvaluation A PUnit.{1} PUnit.unit
+def strictSemifreeNormalizedBarRealizationIso :
+  FunctorIso (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
+    (strictSemifreeRealizationFamily A)
+
+-- U39: 同じ全余錐族のapex。U32のapex制限と既存のprojective複体比較を使う。
+def strictSemifreeComputedApexFamily : P ⟶ DA :=
+  lift (𝟙 _) (SSet.stdSimplex.isTerminalObj₀.from _) ≫
+    (P ◁ joinInr I (Δ[0] : SSet.{u + 1})) ≫ strictSemifreeComputedDAJoinFamily A
+def strictSemifreeNormalizedBarApexIso :
+  FunctorIso (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
+    (strictSemifreeComputedApexFamily A)
+
+-- U40: 同じU36・U37のapexへの像。
+def strictSemifreeComputedNativeApexIso :
+  FunctorIso (strictSemifreeComputedApexFamily A) (strictSemifreeNativeApexFamily A J)
+
+-- U41: R6の最終受け渡し。U37と同じ比較から作る。
+def strictSemifreeRealizationNativeApexIso :
+  FunctorIso (strictSemifreeRealizationFamily A) (strictSemifreeNativeApexFamily A J)
+```
+
+U31・U33・U34・U38・U39は構成とその性質を同じ番号で記載した。
+単位・余単位・自然性・係数移送の前提計算：全番号とも0/3から開始。
+一覧外の照合：0/3から開始。既検証52本は追加計算の枠として再度数えない。
+順序はU01〜U25（未検証の解消）→U26〜U41。
+R6完成後は止まらず、R2〜R4の紙の型つき一覧と③-b§38.2の3との照合へ進む。
+
+### U04の証明の分割（追加の数学・計算枠の消費なし）
+
+```lean
+lemma strictBarNativeFunctorOverSimplex_naturality {m n : ℕ}
+    (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌)
+    (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    (joinStdSimplexIso m 0).hom ≫ curry (strictBarNativeCellEvaluation A J
+      (((SSet.uliftFunctor.{u, 0}).obj (nerve J)).map α.op s)) =
+    joinMap (SSet.stdSimplex.map α) (𝟙 Δ[0]) ≫
+      ((joinStdSimplexIso n 0).hom ≫ curry (strictBarNativeCellEvaluation A J s))
+```
+
+固定した次元で上式を先に証明し、切断の自然性にはこの式だけを渡す。
+`maxHeartbeats 800000` は取り除いた。型の分解で大きなbarの構成を簡約しない。
+
+### U38の前提計算（1/3、係数移送）
+
+元の一点定数関手の評価の法則を全図式・全自然変換に移す。次の三表示は一つの係数移送の法則と、
+その値の圏への分割・同じ後合成の帰結であり、新しい数学の三件とは数えない。
+
+```lean
+lemma strictSemifreePointValue_evaluation :
+    (semifreePointConstant A).onClosed ⋙
+      (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+        (dgModuleSemifreeProperty A PUnit.{1})).onClosed ⋙
+      moduleEvaluation A PUnit.{1} PUnit.unit = semifreeUnderlyingComplex A
+
+lemma strictSemifreePointUnderlyingFunctor_evaluation :
+    strictSemifreePointUnderlyingFunctor A ⋙
+      (Functor.whiskeringRight SimplexCategoryᵒᵖ _ _).obj
+        (moduleEvaluation A PUnit.{1} PUnit.unit) =
+      strictSemifreeUnderlyingComplex A .simplicial
+
+lemma strictSemifreePointUnderlyingFunctor_total :
+    strictSemifreePointUnderlyingFunctor A ⋙ strictBarTotalComplexFunctor A SimplexCategoryᵒᵖ =
+      strictSemifreeReplacementRealization A
+
+```
+
+既存の `strictSemifreePointDiagram_coefficients` の係数射の計算を全射に再利用する。
+U38は1/3、他のU番号は0/3、一覧外の照合は0/3。下書きは未検証で、数学のコミットにはまだ含めない。
+
+## 34. R6 U01〜U14 の検証（11-13 18:20、継続）
+
+追加3本・238行を検証した。
+`StrictBarNativeFunctorCocone`（120行）はU01〜U09、
+`StrictBarNativeJoinCells`（39行）はU10〜U11、
+`StrictSimplexEvaluationAtParameter`（79行）はU12〜U14。
+U04は、図形だけの等式の宇宙を明示して先に固定し、後合成の大きな型推論を避けて
+直接書き換えることで、既定のheartbeat上限で通った。上限の引き上げは全て取り除いた。
+U04の分割は§33に記載したものだけ。追加の数学はない。
+U12は既存の `curry_evaluateFunctorAt_unitHomEquiv` を再利用し、単位からの頂点表示を計算した。
+
+対象ビルド成功（5,305 jobs）。`/tmp/is-w1/3b3-build-73-cocone.log` の前段。
+対象監査は全余錐族9宣言、セル・固定パラメーター5宣言の計14宣言で、全て標準三公理のみ。
+全余錐族の9宣言にはsorry検査も通り、残る5宣言にもsorryAxはない。
+検証済み累計**55本・4,292行、監査対象212宣言、R6実測3,629行**。
+
+U15以降は継続中。最初の回復ファイルでは `SimplicialRealization` のopenが抜けていたため、
+名前の指定を直して再検証へ回した。U26〜U28とU38の独立した構成も下書きを用意し、
+同じ対象ビルドの後続で検証する。これらはまだ数学のコミットへ含めない。
+U38の前提計算は§33の1/3、その他は0/3、一覧外の照合は0/3のまま。
+R6完成後は指示どおりR2〜R4の紙の一覧へ進む。凍結確定の連絡はまだ受けていない。
+
+### U20の前提計算（1/3、パラメーター制限の自然性）
+
+U17の元の同じ余錐への回復を、パラメーター関手Tに沿って制限する。
+Tを介した全評価の既存のcurryの自然性だけを使う。
+
+```lean
+lemma strictBarNativeJoinFamilyAlong_atParameter (c : C) :
+    lift (SSet.const (ComposableArrows.mk₀ c))
+        (𝟙 (join ((SSet.uliftFunctor.{u + 1, u}).obj
+          ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}))) ≫
+      strictBarNativeJoinFamilyAlong A J T =
+    (dgCoherentBarNormalizedNativeCoconeUnconditional A PUnit.{1}
+      (smallStrictBarDiagram A (T.obj c))).val
+```
+
+U20の射影性はこの式を零単体で評価してから既存のbarの射影性を使う。
+同じ式はU24にも再利用する。U20は1/3、U38は1/3、その他は0/3、一覧外の照合は0/3。
+
+### U30の前提計算（2/3、join同型の単位）
+
+既存のjoinIsoの前面・apexの法則を指定形状で読む。
+
+```lean
+lemma strictSemifreeJoinShapeIso_inl :
+    joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫
+        (strictSemifreeJoinShapeIso A).hom =
+      (smallDiagramShapeIso.{u} (nerve SimplexCategoryᵒᵖ)).inv ≫
+        joinInl ((SSet.uliftFunctor.{u + 1, u}).obj
+          ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ))) Δ[0]
+
+lemma strictSemifreeJoinShapeIso_inr :
+    joinInr ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫
+        (strictSemifreeJoinShapeIso A).hom =
+      joinInr ((SSet.uliftFunctor.{u + 1, u}).obj
+        ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ))) Δ[0]
+
+```
+
+U20は1/3、U30は2/3、U38は1/3、その他0/3、一覧外の照合0/3。
+
+## 35. R6 の回復と元の実現への全関手比較（11-13 18:27、継続）
+
+追加3本・213行、対象監査11宣言が通った。
+`StrictBarNativeParameterRecovery`（83行、U15〜U17）は、
+全余錐族を固定パラメーターで評価すると元の指定native余錐全体に厳密に戻る比較。
+`StrictSemifreePointUnderlyingFunctor`（42行、U26〜U28）は同じ一点加群図式の全通常関手と射影性。
+`StrictSemifreeNormalizedBarRealization`（88行、U38）は、元の正規化射影・指定全複体同型・
+単体的置換の増大を合成した、元のstrict実現への全関手同型。
+
+対象ビルドは `/tmp/is-w1/3b3-build-74-cocone.log` の成功した3本、
+対象監査11宣言は `/tmp/is-w1/3b3-build-75-cocone.log` の最初。
+全て標準三公理のみ、sorryAxなし。検証済み累計
+**58本・4,505行、監査対象223宣言、R6実測3,842行**。
+
+U18〜U25の射影的余錐への接続は、U20の§33に記載した自然性を使う形で再検証中。
+U29〜U30の構成・単位則は下書きのみで、まだコミットしない。
+前提計算はU20が1/3、U30が2/3、U38が1/3、他は0/3。照合0/3。
+R6は未完成で、残りは§33の型つき一覧のまま。既存宣言・他レーンの持ち分の変更はない。
+凍結確定の連絡はまだ受けていない。
+
+### U31の前提計算（3/3、既存の単位・評価の自然性）
+
+以下は既存の同値の単位と、既存の二つの全評価の係数移送の法則である。
+
+```lean
+def semifreeProjectivePointUnitIso :
+    FunctorIso
+      (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+        (dgSemifreeToProjective A PUnit.{1}) ≫ (projectivePointEquivalence A).hom)
+      (semifreePointEquivalence A).hom
+
+lemma strictModuleFamily_evaluation_factor {C : Type (u + 1)} [Category.{u} C]
+    (T : C ⥤ (J ⥤ ModuleCategory A PUnit.{1})) :
+    (nerveMap T ▷ (SSet.uliftFunctor.{u + 1, u}).obj
+        ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) ≫
+      (strictModuleCoherentFamily A J (𝟭 (J ⥤ ModuleCategory A PUnit.{1}))).evaluation =
+    (nerve C ◁ (smallDiagramShapeIso.{u} (nerve J)).hom) ≫
+      (nerveMap T ▷ (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) ≫
+      strictDiagramEvaluation J (ModuleCategory A PUnit.{1}) ≫
+      closedNerveInclusion A (RightModule A PUnit.{1})
+
+lemma strictDiagramEvaluation_postcompose {C D : Type (u + 1)}
+    [Category.{u} C] [Category.{u} D] (V : C ⥤ D) :
+    (nerveMap ((Functor.whiskeringRight J C D).obj V) ▷
+        (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) ≫ strictDiagramEvaluation J D =
+      strictDiagramEvaluation J C ≫ nerveMap V
+
+```
+
+U31は3/3となった。U20は1/3、U30は2/3、U38は1/3、その他0/3、一覧外の照合0/3。
+以後U31の前提計算を追加するときは、そのまま増やさず数え方と内容を確認する。
+
+### U23の包装の分割（計算枠の消費なし）
+
+次の同じ射を先に型づけし、`⟨射, rfl⟩` の型推論が全射影的持ち上げを簡約しないようにする。
+
+```lean
+def strictBarNativeProjectiveCoconeMapAt (c : C) :
+    join ((SSet.uliftFunctor.{u + 1, u}).obj
+      ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶
+        dgProjectiveModuleNerve A PUnit.{1}
+```
+
+U23の返す余錐は `JoinCocone (joinInl _ Δ[0] ≫ strictBarNativeProjectiveCoconeMapAt A J T hT c)`。
+元の型と定義的に同じであり、実際の射と脚は変えない。計算上限は引き上げない。
+
+## 36. 射影的な全余錐族と同じ余極限性（11-13 夜、継続）
+
+追加5本・326行を検証した。
+`StrictBarNativeProjectiveFamily`（99行、U18〜U22）は、同じ全native余錐族の射影的持ち上げ。
+`StrictBarNativeProjectiveCocone`（71行、U23〜U25）は、同じ余錐を固定パラメーターへ制限し、
+包含後に元の指定native余錐へ戻る等式と、その射影的模型での余極限性。
+`StrictSemifreeRawDAFamily`（62行、U29〜U30）は、その全族を既存D(A)へ送る構成とjoinの形状同型。
+`StrictFamilyEvaluationNaturality`（60行）はU31の二つの評価の自然性、
+`SemifreeProjectivePointUnit`（34行）は既存の同値の同じ単位。
+
+対象ビルド成功（6,343 jobs）、`/tmp/is-w1/3b3-build-78-cocone.log`。
+先行する11宣言の監査と後続の監査を重複を除いて数え、追加16宣言が標準三公理のみ、sorryAxなし。
+検証済み累計**63本・4,831行、監査対象239宣言、R6実測4,168行**。
+
+U01〜U30とU38、U31の前提計算3件まで通った。R6の残りはU31〜U37・U39〜U41。
+U23の包装は§33の同じ射の分割で通り、計算上限を引き上げていない。
+前提計算はU20が1/3、U30が2/3、U31が3/3、U38が1/3、他は0/3。照合0/3。
+次は全下方図式を指定の全評価へ接続し、同じ全余錐族・apexの比較を閉じる。
+凍結確定の連絡はまだ受けていないため、検証済みの分を保存した。
+
+### 照合C1（1/3）：同じ射影的native前面とstrict全評価
+
+U31の二つの既存構成の前面の照合をC1として使う。最終の型は次である。
+
+```lean
+lemma strictSemifreeProjectiveFront :
+  let P := nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ)
+  let I := (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)
+  (P ◁ joinInl I (Δ[0] : SSet.{u + 1})) ≫
+    (P ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+      strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
+        (strictSemifreePointUnderlyingFunctor A)
+        (strictSemifreePointUnderlyingFunctor_projective A) =
+  strictDiagramEvaluation SimplexCategoryᵒᵖ (ClosedCategory A (Semifree A)) ≫
+    closedNerveInclusion A (Semifree A) ≫
+      SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+        ((semifreePointConstant A).comp (dgSemifreeToProjective A PUnit.{1}))
+```
+
+まず包含で戻した次の同じ等式を証明し、単射性で戻す。これはC1の証明の分割である。
+
+```lean
+lemma strictSemifreeProjectiveFront_image :
+    (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁
+      joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0]) ≫
+    (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+      strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
+        (strictSemifreePointUnderlyingFunctor A)
+        (strictSemifreePointUnderlyingFunctor_projective A) ≫
+      SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+        (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+          (dgModuleProjectiveProperty A PUnit.{1})) =
+    (nerveMap (strictSemifreePointUnderlyingFunctor A) ▷
+      (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) ≫
+      strictDiagramEvaluation SimplexCategoryᵒᵖ (ModuleCategory A PUnit.{1}) ≫
+        closedNerveInclusion A (RightModule A PUnit.{1})
+```
+
+前提計算はU20=1/3、U30=2/3、U31=3/3、U38=1/3、その他0/3。
+照合C1を使用して1/3。新しい数学の一覧外の補題は追加していない。
+
+### U32の前提計算（1/3、評価の余単位）
+
+既存の `functorIsoLiftRight` と評価の後合成で、全族の同型を元の共同評価へ戻す。
+
+```lean
+def fullFamilyUncurryIso {P K D : SSet.{u}} [Quasicategory D]
+    {F G : K ⟶ (ihom P).obj D} (e : FunctorIso F G) :
+    FunctorIso (uncurry F) (uncurry G)
+```
+
+U32は1/3となった。U20=1/3、U30=2/3、U31=3/3、U38=1/3、その他0/3、照合C1のみ1/3。
+
+### U31〜U32の存在部分の分割（数学・前提計算枠の消費なし）
+
+全パラメーターを標的関手圏に入れ、既存の `exists_cartesian_cocone_lift` を使う。
+底の可逆性とcartesian性から持ち上げた辺の可逆性を得る既存の定理を使うので、
+新しい関手圏の持ち上げ理論は作らない。次はU31・U32の同じ主張をcurryした型である。
+
+```lean
+lemma exists_strictSemifreeTransportedFunctorCocone :
+    ∃ g : join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
+        (Δ[0] : SSet.{u + 1}) ⟶
+        (ihom (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).obj
+          (derivedInfinityCategory A),
+      joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫ g =
+        strictSemifreeStrictFunctorDiagram A ∧
+      Nonempty (FunctorIso g (strictSemifreeRawFunctorCoconeMap A))
+```
+
+その全関手圏での存在を一度選び、`strictSemifreeComputedFunctorCoconeMap` とする。
+そのuncurryがU31の `strictSemifreeComputedDAJoinFamily`、同じ存在の同型をuncurryしたものがU32。
+元の底の辺は持ち上げの等式で保たれ、全パラメーターを対象別には選ばない。
+
+## 37. R6 の指定前面への全族輸送（約5,200行での途中報告、11-13 夜）
+
+追加4本・350行を検証した。
+`StrictSemifreeProjectiveFront`（113行）は照合C1、元の同じnative前面と全strict DG評価の等式。
+`FullFamilyUncurryIso`（31行）はU32の評価の余単位の全族輸送。
+`StrictSemifreeRawDAFrontIso`（61行）は同じD(A)値の前面から指定全評価へのFunctorIso。
+`StrictSemifreeFunctorCoconeTransport`（145行）はU31〜U32の本体。
+全パラメーターを標的関手圏へ入れ、既存の `exists_cartesian_cocone_lift` で
+元の可逆な底の辺を持ち上げた。既存のcartesian辺の可逆性の判定とuncurryを使い、
+指定前面の全余錐族と、元の全joinの族からの全関手同型を得た。
+
+対象ビルドは `/tmp/is-w1/3b3-build-82-front.log`（7,552 jobs）と
+`/tmp/is-w1/3b3-build-85-transport.log`（7,553 jobs）。
+C1・uncurry・底の比較の4宣言と、輸送の5宣言の監査が全て標準三公理のみ、sorryAxなし。
+検証済み累計**67本・5,181行、監査対象248宣言、R6実測4,518行**。
+
+U01〜U32とU38が完了。残りは§33のU33〜U37・U39〜U41。
+前提計算はU20=1/3、U30=2/3、U31=3/3、U32=1/3、U38=1/3、その他0/3。
+照合はC1のみ1/3。全て計算上限は既定値。
+
+残りの筋は、同じ輸送の全族同型を固定パラメーターへ制限し、U25の同じ余極限性を
+既存の `InitialBoundaryLifting.of_vertexIso` で移す（U33）。その全族を普遍余錐の
+全部分圏へ制限し（U34〜U35）、既存の全余錐族と比較する（U36〜U37）。
+U39では元の正規化barの一点評価・射影的模型と同じapexを比較し、U38と合成してU40〜U41を返す。
+R2〜R4はLeanに入らず、R6の完成後に紙の型つき一覧と見込みを出し直す。
+行数の旧停止は再開の指示で解除済み。外枠20,800行と型つき一覧の枠を維持し、このまま続ける。
+凍結確定の連絡はまだ受けていない。
+
+### U33の前提計算（1/3、形状変更とパラメーター評価）
+
+同じ射影的余錐を同値・形状同型で運んだものと、元の全族の固定パラメーター評価を比較する。
+
+```lean
+lemma strictSemifreeRawDACoconeAt_val (F : StrictSemifreeDiagram A SimplexCategoryᵒᵖ) :
+    (strictSemifreeRawDACoconeAt A F).val =
+      lift (SSet.const (ComposableArrows.mk₀ F))
+        (𝟙 (join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
+          (Δ[0] : SSet.{u + 1}))) ≫ strictSemifreeReindexedRawDAJoinFamily A
+```
+
+包装の分割 `strictSemifreeComputedDACoconeMapAt` はこの右辺と同じパラメーター制限を
+計算済みの全族に適用した射。U33の余極限性は既存の同値による保存、形状同型による保存、
+`InitialBoundaryLifting.of_vertexIso` を順に使う。新しい余極限の保存理論は作らない。
+U33は1/3。U20=1/3、U30=2/3、U31=3/3、U32=1/3、U38=1/3、他0/3、照合C1=1/3。
+
+### U34の前提計算（1/3、転置と頂点評価）
+
+同じ共同評価を余錐の関手単体集合で読むと、その頂点はU33の同じ余錐である。
+
+```lean
+lemma strictSemifreeComputedCoconeFunctorMap_vertex
+    (F : StrictSemifreeDiagram A SimplexCategoryᵒᵖ) :
+    (strictSemifreeComputedCoconeFunctorMap A).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ F) =
+      functorVertex (strictSemifreeComputedDACoconeAt A F).val
+```
+
+既存の `transposeFunctorFamily_vertex` とU12の評価を使う。U34は1/3。
+その他の使用数はU20=1/3、U30=2/3、U31=3/3、U32=1/3、U33=1/3、U38=1/3、照合C1=1/3。
+
+### U40の前提計算（1/3、apexの共同評価）
+
+```lean
+lemma coconeFamily_apex_evaluation {P I D : SSet.{u + 1}}
+    (f : P ⟶ (ihom (join I (Δ[0] : SSet.{u + 1}))).obj D) :
+    f ≫ coconeApexEvaluation I D =
+      lift (𝟙 P) (SSet.stdSimplex.isTerminalObj₀.from P) ≫
+        (P ◁ joinInr I Δ[0]) ≫ (β_ P (join I Δ[0])).hom ≫ uncurry f
+```
+
+既存の `curry_evaluateFunctorAt_vertex` と終対象の一意性による計算。
+U40は1/3。新しい数学の追加ではなく、既存の評価の法則として記録する。
+
+### U37の前提計算（1/3、既存の全余錐の包含）
+
+```lean
+lemma specifiedCoconeFamily_eq :
+    strictSemifreeCoconeFunctorFamily A SimplexCategoryᵒᵖ =
+      strictSemifreeColimitFamily A SimplexCategoryᵒᵖ ≫
+        (relativeInitialVertices (coconeRestriction
+          ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
+            (derivedInfinityCategory A))).ι
+```
+
+既存の非expose定義の計算を私有の証明に局所化し、等式だけ公開する。
+既存ファイルは変更しない。U37は1/3（証明包装の分割は数えない）。
+
+## 38. R6 の同じ全普遍余錐族とapexへの比較（11-13 夜、継続）
+
+- 新規3本344行：`StrictSemifreeComputedCoconePointwise`（103）、
+  `StrictSemifreeComputedColimitFamily`（157）、`StrictSemifreeComputedApexComparison`（84）。
+- U33〜U37・U40を検証。元の同じ全族を固定パラメーターへ制限して余極限性を移し、
+  全族を普遍余錐の全部分圏へ制限、既存の指定全余錐族と比較した。
+  同じ比較のapex評価も通った。対象ごとの別の余錐へ取り替えていない。
+- ビルド87（U33）、93（U34〜U37）、94（U40）成功。
+  監査87・93・95の計13宣言は標準三公理のみ、sorryAxなし。
+  検証済み累計70本5,525行、監査対象261宣言。R6実測4,862行。
+- 既存の非expose定義は、私有の定義計算の証明を公開補題に包んだ。
+  既存ファイルの本文・型・属性は変更していない。
+- U40の `specifiedNativeApex_eq` は既存apexの定義計算（2/3）。
+  型は `strictSemifreeNativeApexFamily A J = lift (𝟙 _) (stdSimplex.isTerminalObj₀.from _) ≫
+  (P ◁ joinInr I Δ[0]) ≫ (β_ P _).hom ≫ uncurry (strictSemifreeCoconeFunctorFamily A J)`
+  （ここでは J=Δᵒᵖ、I・Pは§33の同じ略記）。証明包装は追加に数えない。
+- 残りはU39（同じ正規化barの一点評価と計算済みapex）、U41（U38・U39・U40の合成）。
+  照合C2・C3は未使用。計算上限は既定値。凍結確定の連絡は未受領。
+
+**R6は未完了。このままU39・U41を続ける。R2〜R4のLeanには入らない。**
+
+### 照合C2（2/3）：同じ射影的apexと正規化barの全閉nerve
+
+```lean
+lemma strictSemifreeProjectiveApex :
+  let P := nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ)
+  let I := (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)
+  lift (𝟙 P) (stdSimplex.isTerminalObj₀.from P) ≫
+    (P ◁ joinInr I Δ[0]) ≫ (P ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+      strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
+        (strictSemifreePointUnderlyingFunctor A)
+        (strictSemifreePointUnderlyingFunctor_projective A) =
+    nerveMap (strictSemifreeNormalizedProjectiveModule A) ≫
+      closedNerveInclusion A (ProjectiveDGModules A PUnit.{1})
+```
+
+`strictSemifreeNormalizedProjectiveModule` は元の正規化barと同じ射影的一点加群・同じ射の包装。
+証明分割 `strictClosedVertexEvaluation` の型は、任意の通常関手
+`G : C ⥤ ModuleCategory A PUnit.{1}` に対する
+`lift (𝟙 _) (stdSimplex.isTerminalObj₀.from _) ≫
+ strictSimplexFunctorEvaluation A _ (G ⋙ strictBarClosedVertexFunctor A)
+ = nerveMap G ≫ closedNerveInclusion A _`。
+その局所成分 `closedVertex_pullback_hom` は任意の `α : Fin (n+1) →o Fin 1` で
+`((closedNerveSimplex (Functor.const.obj M)).pullback α).hom T a b k ...
+ = closedNerveHom (𝟙 M) k`。
+既存の引き戻し等式と `data_hom_heq_of_eq` を使い、次数零の単位と高次零成分を比較する。
+新しいHAセルの構成や理論を足さない。これらはC2の証明分割として数える。
+
+### U39の前提計算（1/3）と照合C3（3/3）
+
+```lean
+lemma projectivePointRingPresentation_underlying :
+  projectivePointRingPresentation A ⋙ projectiveRingUnderlyingComplex A =
+    projectivePointCoefficientComplex A
+
+def projectivePointRingPresentation_constantIso :
+  projectivePointRingPresentation A ⋙ (projectiveRingComplexConstant A).onClosed ≅
+    𝟭 (ClosedCategory A (ProjectiveDGModules A PUnit.{1}))
+```
+
+前者は係数移送の法則（U39の1/3）。後者がC3：既存の `ringModule_recover` による
+同じ一点加群の復元の全関手比較で、係数評価の充満忠実性を使う。
+その証明分割 `projectivePointRingPresentation_constant_coefficients` は
+`projectivePointRingPresentation A ⋙ (projectiveRingComplexConstant A).onClosed ⋙
+ projectivePointCoefficientComplex A = projectivePointCoefficientComplex A`。
+射影性は `ringModule_recover` で元の射影性へ移すだけで、新しい射影性の定理を作らない。
+照合の枠はC1・C2・C3の3/3となる。以後、新しい照合が要れば止める。
+
+### U39の前提計算の残り（計3/3）
+
+```lean
+def projectivePointCoefficientDerivedIso :
+  FunctorIso (nerveMap (projectivePointCoefficientComplex A) ≫ complexDerivedEvaluation A)
+    (closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
+      (projectivePointEquivalence A).hom)
+
+lemma strictSemifreeNormalizedProjectiveModule_coefficients :
+  strictSemifreeNormalizedProjectiveModule A ⋙ projectivePointCoefficientComplex A =
+    strictSemifreeNormalizedBarComplex A
+```
+
+前者は既存の `complexDerivedEvaluation_projectiveRingIso` とC3の復元の合成、
+後者は同じ正規化加群の係数評価。U39の前提計算はこれで3/3。
+C3では同じ復元比較の強い形
+`projectivePointRingPresentation A ⋙ (projectiveRingComplexConstant A).onClosed = 𝟭 _`
+も証明する。別の照合ではない。
+巨大な `eqToHom` の自然性の簡約を避け、私有の等式消去
+`functorMap_heq_of_eq (e : F = G) (f : M ⟶ N) : HEq (F.map f) (G.map f)`
+（`cases e; rfl`）と、その係数射への適用に分割した。証明分割のみで新しい数学はない。
+全て既定の200,000 heartbeatsのまま検証する。
+
+## 39. R6完成・途中の取り込み点（11-13 夜）
+
+**§33のU01〜U41を完了。R6の途中取り込み候補として報告し、指示どおり止まらずR2〜R4の紙へ進む。**
+
+今回の数学は新規6本521行。
+
+| ファイル（`Project/DerivedCategories/DiagramComparison/`） | 行数 | 内容 |
+| --- | ---: | --- |
+| `StrictClosedVertexEvaluation` | 78 | C2の閉零セルの全HA評価 |
+| `StrictSemifreeNormalizedProjectiveModule` | 64 | 元の正規化barの同じ射影的一点加群への包装 |
+| `StrictSemifreeProjectiveApex` | 84 | C2：同じnative全余錐族のapexの照合 |
+| `ProjectivePointRingPresentation` | 145 | C3：同じ一点加群の係数からの全関手復元 |
+| `ProjectivePointCoefficientDerivedComparison` | 61 | 既存の射影的複体比較への係数移送 |
+| `StrictSemifreeNormalizedBarApexComparison` | 89 | U39・U41：同じ計算済みapex、元の実現、指定apexの全関手同型 |
+
+最終型は§33のとおり：
+
+```lean
+def strictSemifreeNormalizedBarApexIso :
+  FunctorIso (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
+    (strictSemifreeComputedApexFamily A)
+
+def strictSemifreeRealizationNativeApexIso :
+  FunctorIso (strictSemifreeRealizationFamily A)
+    (strictSemifreeNativeApexFamily A SimplexCategoryᵒᵖ)
+```
+
+U41はU38の逆、U39、U40を順に合成する。全余錐族自体の比較はU37。
+U39は同じ全族輸送U32のapex制限から作ったため、別々に選んだ点ごとの同型ではない。
+
+検証：`3b3-build-112-final.log` の対象ビルド7,570 jobs成功、同じ鍵の中で
+`3b3-r6-final-112-audit.lean` の17宣言を監査し、全て標準三公理のみ・sorryAxなし。
+C2の先行監査は103、U33〜U40の先行監査は§38を参照。
+既存宣言・入口・全体監査登録・③-b・⑤aのファイルは変更していない。
+`whnf`は係数射のHEqによる小さい等式消去、左右別の合成の正規化で閉じた。
+新規ファイルの計算上限は既定値、上限引き上げなし。
+
+検証済み3b-3の累計 **76本6,046行、選択監査278宣言**。
+R1・R5・R7の663行を除くR6は **5,383行**。
+§20のR6見込み450〜750行に対し、下端＋4,933・上端＋4,633行。
+元のnativeセルの全HA成分・全面退化・全パラメーター自然性のAPIが必要だったことが主因。
+§31の「四行＋未検証6本」はすべて§33の一覧を通して解消した。
+
+枠の最終使用数：前提計算はU20=1/3、U30=2/3、U31=3/3、U32=1/3、
+U33=1/3、U34=1/3、U37=1/3、U38=1/3、U39=3/3、U40=2/3、他0/3。
+照合はC1・C2・C3の3/3。証明の包装・分割を新しい数学として追加していない。
+外枠20,800行まで14,754行を残す。凍結確定の連絡はこの記録時点で未受領。
+
+## 40. R2〜R4の紙の型つき一覧・再見積もり（11-13 夜、ここで停止）
+
+R6の数学コミットは **`b54bb5e12`**（先行のU33〜U40は`15829cad7`）。
+以下は未実装の型案。R2〜R4のLean・ビルドには入らない。
+配置は引き続き `Project/DerivedCategories/DiagramComparison/`。
+③-bの未取り込みの3b-2、G10、⑤aには依存させず、既存ファイルも変更しない。
+
+### 40.1 共通の記号と受け渡し
+
+以下のコード内だけで次を略記する（新しい本体の定義ではない）。
+
+```lean
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+local notation "J" => strictDiagramIndex d
+local notation "I" => (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)
+local notation "DA" => derivedInfinityCategory A
+local notation "S" => StrictDiagramInfinity A d
+local notation "D" => (ihom I).obj DA
+local notation "q" => strictDiagramLocalization A d
+local notation "ev" => strictDiagramDerivedEvaluation A d
+-- Pin X x y := Basic.pinchedHom (X := X) x y
+-- qv X := q.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X)
+-- evalVertex X := (functorVertexEquiv I DA).symm
+--   ((strictComplexDiagramFamily A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+```
+
+`d` は二つの方向だけ。`ev`はR5で作った同じ実射を保持する。
+以下で模型や逆を構成するときも、別の評価写像へ結論を差し替えない。
+`IsFullyFaithful` の本体の定義に合わせ、写像空間の結論は
+`IsSimplicialHomotopyEquivalence` とする（H⁰や通常の自然変換の集合には縮めない）。
+
+### 40.2 R2：写像空間の比較（型つき5項目）
+
+R2aの `M・left・right` は証明で構成するデータであり、比較の同値性を仮定するレコードを入力にはしない。
+
+```lean
+-- R2a：両側の全変換空間へ写る同じ解像の模型を構成する。
+def strictDiagramMappingSpan (x y : S _⦋0⦌) :
+  Σ M : SSet.{u + 1}, (M ⟶ Pin S x y) ×
+    (M ⟶ Pin D (ev.app (Opposite.op ⦋0⦌) x) (ev.app (Opposite.op ⦋0⦌) y))
+-- 以下、M・left・rightはこの同じspanの射影。
+
+-- R2b：解像から元のobjectwise局所化の全写像空間へ。
+lemma strictDiagramMappingSpan_left (x y : S _⦋0⦌) :
+  IsSimplicialHomotopyEquivalence (left A d x y)
+
+-- R2c：解像からcoherentな全自然変換空間へ。
+lemma strictDiagramMappingSpan_right (x y : S _⦋0⦌) :
+  IsSimplicialHomotopyEquivalence (right A d x y)
+
+-- R2d：二つの比較は指定された同じevの作用を計算する。
+def strictDiagramMappingSpan_square (x y : S _⦋0⦌) :
+  FunctorIso (left A d x y ≫ pinchedHomMap ev x y) (right A d x y)
+
+-- R2e：指定の局所化評価の充満忠実性。
+lemma strictDiagramDerivedEvaluation_isFullyFaithful : IsFullyFaithful ev
+```
+
+筋：projectiveな図式の解像と全Homを使う変換空間の模型を組み、局所化側とcoherent変換側へ比較する。
+R2bで必要なのはobjectwise弱同値の∞局所化としての比較であり、通常のホモトピー圏のroof計算だけでは足りない。
+R2cは対象ごとの `Hom` の積や通常endをそのまま使わず、射・合成・全高次成分の整合を含む。
+R2dの平方も全写像空間の射として証明し、最後に既存の2-out-of-3とG14の検出を使う。
+
+本体にあるのは `strictDiagramLocalization_isLocalization`・`_universal`、元の
+`strictDiagramDerivedEvaluation_factor`、`DGModuleFunctorResolutionNerve` の入力射影の比較。
+最後のものは**既にdg関手がある場合**の道具であり、R2cやR3の存在を供給するとは扱わない。
+G8の全変換空間・切断比較、G14、barの射影性は再利用する。
+不足は上のR2a〜R2dで、R2eはそれらの接続。局所化の頂点が全てqの像だとは無条件に仮定しない。
+解像の入力へ戻す場合には局所化の普遍性による同値と端点の輸送をR2a〜R2bに含める。
+
+| 項目 | 見込み行数 |
+| --- | ---: |
+| R2a：解像・全変換空間の模型 | 800〜1,200 |
+| R2b：objectwise局所化との比較 | 900〜1,350 |
+| R2c：coherent変換空間との比較 | 1,000〜1,550 |
+| R2d・R2e：元の作用の平方・充満忠実性 | 500〜700 |
+| R2計 | **3,200〜4,800** |
+
+### 40.3 R3：任意coherent図式の厳密化（型つき5項目）
+
+```lean
+-- R3a：任意のcoherent図式Fからstrictな複体図式の模型を実際に作る。
+lemma exists_strictComplexDiagram_model (F : I ⟶ DA) :
+  ∃ X : StrictComplexDiagram A d, Nonempty (FunctorIso (evalVertex A d X) F)
+
+-- R3b：元のevの本質的全射性。R5の元の因子化も使う。
+lemma strictDiagramDerivedEvaluation_isEssentiallySurjective :
+  IsEssentiallySurjective ev
+
+-- R3c：順射を元のevに固定した全同値。
+lemma strictDiagramDerivedEvaluation_isQCatEquivalence : IsQCatEquivalence ev
+
+-- R3d：この同値から選ぶ逆。別の対象ごとのstrict化の選択ではない。
+def strictDiagramCoherentInverse : D ⟶ S
+
+def strictDiagramCoherentUnit :
+  FunctorIso (𝟙 S) (ev ≫ strictDiagramCoherentInverse A d)
+
+def strictDiagramCoherentCounit :
+  FunctorIso (strictDiagramCoherentInverse A d ≫ ev) (𝟙 D)
+
+-- R3e：任意のパラメーターと全高次単体への同じ逆・余単位。
+def strictDiagramCoherentFamilyIso {P : SSet.{u + 1}} (F : P ⟶ D) :
+  FunctorIso (F ≫ strictDiagramCoherentInverse A d ≫ ev) F
+```
+
+R3dは逆・単位・余単位の一組の構成として数える。
+R3aでは頂点の複体を個別に選んでからcoherent作用の存在を仮定しない。
+全作用を持つ解像からstrict図式を構成し、元の全coherent図式への同型を結論とする。
+R3b〜R3cは既存の
+`isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective` に接続できる。
+R3d〜R3eの一般の同値の逆と前合成のAPIも既存。
+不足の中心はR3aの全coherent作用のstrictな解像で、G8・G14・G9だけから存在を出したとはしない。
+G9は解像の添字・宇宙変更に使う場合に限る。R6の具体的barの全族自然性は同じ計算部品として再利用する。
+
+| 項目 | 見込み行数 |
+| --- | ---: |
+| R3a：全coherent作用の解像・strict図式への実構成 | 3,300〜5,300 |
+| R3b・R3c：本質的全射性・指定evの同値判定 | 350〜550 |
+| R3d・R3e：逆・単位・余単位と全パラメーター族 | 350〜650 |
+| R3計 | **4,000〜6,500** |
+
+**③-b報告§38.2の3との照合**：今回のR3aのFは任意のcoherentなD(A)図式であり、
+strict図式に範囲を狭めない。R3eは任意Pの全族なので、任意のcoherentなBE図式のU像にも適用できる。
+一方、BE作用を持つstrict表示への持ち上げそのものは、加群のstrict化の結論からは出ない。
+同節が別途必要と明記した「BE図式の局所化→Fun(I,CAlg)の比較、または一般定理のBE模型への適用」は
+③-bの3b-4側に残る。この不足を③-aの加群版の同値だけで済んだとは報告しない。
+R3の入力にBE側のstrict表示の存在を追加することもない。
+
+### 40.4 R4：指定錐・余錐族の両方向輸送（型つき5項目）
+
+下の `JoinCoconeFamily F`・`JoinConeFamily F` は今後の型案。
+前者は `H : P ⊗ join I Δ[0] ⟶ DA` と
+`(P ◁ joinInl I Δ[0]) ≫ H = (β_ P I).hom ≫ uncurry F`、
+後者は `H : P ⊗ join Δ[0] I ⟶ DA` と対応する右端の同じ等式の組である。
+`apex`は同じ零単体端への制限、`IsColimitFamily`・`IsLimitFamily`は全パラメーター頂点の錐の普遍性。
+`RelativeFamilyIso c c'` は全join写像の `FunctorIso` と、同じapexでの比較の辺が恒等であることを含む。
+単なる点ごとのapex同型の族を表す型ではない。
+
+```lean
+-- R4a：図式の全関手同型に沿う余錐・錐の輸送（同じapexを保つ）。
+def transportJoinCoconeFamily {P : SSet.{u + 1}} {F G : P ⟶ D}
+    (e : FunctorIso F G) (c : JoinCoconeFamily F) : JoinCoconeFamily G
+
+def transportJoinConeFamily {P : SSet.{u + 1}} {F G : P ⟶ D}
+    (e : FunctorIso F G) (c : JoinConeFamily F) : JoinConeFamily G
+
+-- R4b：全joinの比較と同じ指定apex。相対比較を実際に返す。
+def transportJoinCoconeFamily_iso (e : FunctorIso F G) (c : JoinCoconeFamily F) :
+  RelativeFamilyIso c (transportJoinCoconeFamily e c)
+-- 錐にも同じ型。下方への制限は同じeと一致させる。
+
+-- R4c：同じ逆による往復と、任意のパラメーター制限との整合性。
+def transportJoinCoconeFamily_roundtrip (e : FunctorIso F G) (c : JoinCoconeFamily F) :
+  RelativeFamilyIso (transportJoinCoconeFamily e.symm (transportJoinCoconeFamily e c)) c
+-- 錐にも同じ型。任意r : Q ⟶ Pで制限した輸送の相対比較もこの項目。
+
+-- R4d：余極限性・極限性の保存と反映。
+lemma transportJoinCoconeFamily_isColimit (e : FunctorIso F G) (c : JoinCoconeFamily F) :
+  IsColimitFamily (transportJoinCoconeFamily e c) ↔ IsColimitFamily c
+-- 錐ではIsLimitFamilyの同じiff。
+
+-- R4e：R3の同じ余単位に適用し、coherent族と局所化側の模型の族を両方向へ運ぶ。
+def strictDiagramCoconeFamilyComparison {P : SSet.{u + 1}} (F : P ⟶ D) :
+  QCatEquivalence
+    (coconeFamilySpace (F ≫ strictDiagramCoherentInverse A d ≫ ev))
+    (coconeFamilySpace F)
+-- 錐にも同じ型。順逆・往復・同じapex・脚・普遍性はR4a〜R4dのデータを保持する。
+```
+
+`coconeFamilySpace F` は同じ `coconeRestriction` の関手単体集合上の引き戻しで表す予定。
+パラメーターPに準圏性は課さず、既存の関手単体集合と固定apexのsliceの構成を使う。
+R4a〜R4dは元の図式同型に自然な全族の接続で、型名だけを新設して性質を仮定にはしない。
+`exists_cartesian_cocone_lift`、固定apexのslice、`EquivalenceColimitCones`・極限側、
+全族の `FunctorIso.precomp/postcomp`・`fullFamilyUncurryIso` を再利用する。
+元の具体的実現と全余錐族の比較は完成済みR6を再利用し、作り直さない。
+
+| 項目 | 見込み行数 |
+| --- | ---: |
+| R4a・R4b：全族の両方向輸送・指定apexと脚の比較 | 650〜1,050 |
+| R4c：往復・パラメーター制限 | 300〜500 |
+| R4d・R4e：普遍性と同じR3の逆への接続 | 350〜550 |
+| R4計 | **1,300〜2,100** |
+
+### 40.5 全体見込み・停止
+
+未実装は **8,500〜13,400行**。既検証6,046行との合計は **14,546〜19,446行**。
+外枠20,800行との差は上端で1,354行。
+§20のR2〜R4の計4,900〜7,300行から増えたのは、R6の実測に基づき、
+全変換空間の解像と同じ評価への比較、coherent作用のstrict化、固定apexの全族輸送を分けて数え直したため。
+この上端は保証ではない。特にR2c・R3aは既存のHTT 4.2.4.4の適用一行で済むAPIをまだ確認できていない。
+一覧外のまとまりや外枠超過の見込みが出た場合は、その時点で止めて報告する。
+
+**指示どおり、R2〜R4の紙の一覧を出した地点で停止。Lean実装には進まない。**
+R6の途中取り込みと、この一覧の確認を調整役に渡す。共有鍵は解放済み。

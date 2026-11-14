@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UniversalUnitComma
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaSourceOppositeFibration
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CartesianInitialBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.CartesianInitialBoundary
 
 /-!
 概要：comma の fiber の始対象性から相対始点境界充填を得る。

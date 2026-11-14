@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectMapEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGStableHomotopyNaturality
 public import SerrePositivity.KST.SConstruction.PerfectDGMoritaHomotopy
 
 /-!

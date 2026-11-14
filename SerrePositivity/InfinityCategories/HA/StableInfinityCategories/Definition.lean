@@ -1,10 +1,12 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FiniteLimitsColimits
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.Pullback
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
 
 /-! # 安定 ∞ 圏
@@ -23,39 +25,39 @@ open scoped _root_.Simplicial
 /-- 概要：零対象、全射の fiber/cofiber、零角の列の一致を持つ quasicategory は安定である。
 方針：HA 1.1.1.9 の三条件を実際の頂点・辺・四角形で表す。
 規約：fiber/cofiber の選択は存在命題のみ。使われ方：ΣΩ と h C の三角構造の前提。 -/
-class IsStable (X : SSet.{u}) [Quasicategory X] : Prop extends _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X where
+class IsStable (X : SSet.{u}) [Quasicategory X] : Prop extends _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X where
   fiber_exists {x y : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f)
   cofiber_exists {x y : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f)
-  fiber_iff_cofiber (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t ↔ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f)
+  fiber_iff_cofiber (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t ↔ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t
 
 /-- 概要：安定な ∞ 圏の任意の射の fiber 四角形を選ぶ。
 方針：存在条件から古典的選択を使う。
 規約：関手性と選択の比較は S3 で別に証明する。使われ方：fiber の選択の入力。 -/
 def chosenFiberSquare {X : SSet.{u}} [Quasicategory X] [IsStable X] {x y : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f :=
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f :=
   Classical.choice (IsStable.fiber_exists f)
 
 /-- 概要：安定な ∞ 圏の任意の射の cofiber 四角形を選ぶ。
 方針：存在条件から古典的選択を使う。
 規約：関手性はまだ主張しない。使われ方：cofiber の選択の入力。 -/
 def chosenCofiberSquare {X : SSet.{u}} [Quasicategory X] [IsStable X] {x y : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f :=
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f :=
   Classical.choice (IsStable.cofiber_exists f)
 
 /-- 概要：安定な ∞ 圏の零角の引き戻し四角形は押し出しでもある。
 方針：安定性の第三条件の順方向を使う。
 規約：零角の条件を保持する。使われ方：cofiber 列から suspension を扱う際の双対性。 -/
 lemma IsStable.pushout_of_pullback {X : SSet.{u}} [Quasicategory X] [IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare t.square) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare t.square :=
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare t.square) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare t.square :=
   (IsStable.fiber_iff_cofiber t).1 ht
 
 /-- 概要：安定な ∞ 圏の零角の押し出し四角形は引き戻しでもある。
 方針：安定性の第三条件の逆方向を使う。
 規約：一般の四角形への拡張は別に証明する。使われ方：fiber と cofiber の比較。 -/
 lemma IsStable.pullback_of_pushout {X : SSet.{u}} [Quasicategory X] [IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare t.square) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare t.square :=
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare t.square) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare t.square :=
   (IsStable.fiber_iff_cofiber t).2 ht
 
 /-- 概要：有限極限・有限余極限を持ち、引き戻しと押し出しが一致する pointed ∞ 圏は安定である。
@@ -63,7 +65,7 @@ lemma IsStable.pullback_of_pushout {X : SSet.{u}} [Quasicategory X] [IsStable X]
 規約：HA 1.1.3.4 の十分な向きのみであり、逆向きは入力しない。
 使われ方：有限極限・余極限からの安定性の判定。 -/
 theorem isStable_of_finite_limits_colimits {X : SSet.{u}} [Quasicategory X]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteColimits X]
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteColimits X]
     (h : ∀ F : Δ[1] ⊗ Δ[1] ⟶ X, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F) : IsStable X where
   toHasZeroVertex := inferInstance
   fiber_exists f := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_fiberSquare_of_cospan_limits
@@ -73,3 +75,13 @@ theorem isStable_of_finite_limits_colimits {X : SSet.{u}} [Quasicategory X]
   fiber_iff_cofiber t := h t.square
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 2.12"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
+attribute [cite BGT "Def 2.12"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_finite_limits_colimits
+attribute [cite HA "1.1.1.14" (partial := component) "仮定：準圏 X（HA と一致）。結論：IsStable X は Prop であり構造の選択を追加しない。注記で予告する一般の安定 ∞ 圏の標準的なスペクトル豊穣化は型に含まれない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
+attribute [cite HA "1.1.1.9"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
+attribute [cite HA "1.1.3.4"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_finite_limits_colimits
+attribute [cite HA "6.3.3.10" (partial := stronger-hyp) "仮定：K=∆0の一射f、Cは安定準圏（Leanが強い：stableの場合）。結論：fと零対象のhomotopy pullbackであるfiberを選ぶ（このKのtotal fiberとして指定する通常のfiber模型の構成に一致）。一般有限Kのtfibの構成とその選択の全比較は含まれない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenFiberSquare

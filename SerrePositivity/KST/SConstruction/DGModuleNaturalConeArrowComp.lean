@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransAlgebra
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGStrictNatTransAlgebra
 
 /-!
 概要：全厳密比較の合成を元の同じ閉加群射の合成として回収する。

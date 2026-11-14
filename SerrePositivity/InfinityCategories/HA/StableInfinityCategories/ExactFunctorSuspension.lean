@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ExactFunctor
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Suspension
 
@@ -114,3 +116,9 @@ def exactFunctorSuspensionIso {X Y : SSet.{u}}
   exact (eqToIso hl).symm ≪≫ e ≪≫ eqToIso hr
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.14" (partial := direction) "仮定：両準圏が安定で F が完全、または全 suspension 面の像の引き戻し性を与える（HA と一致する幾何学的条件）。結論：完全性から suspension 図式の保存が従い、引き戻し判定から全押し出しへ拡張する（Lean が弱い：標準比較 ΣF(X)→F(ΣX) の同値を明示した完全性との双条件はこの型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsExactFunctor.preservesSuspensionDiagramVertex
+attribute [cite HA "6.1.1.20" (partial := component) "仮定：C,D は安定準圏、F は完全、S は二元集合（Lean が強い：安定・完全な場合）。結論：hC,hD 上で F と懸垂が自然同型により可換となる（二点の C_S との比較のホモトピー圏での部分に一致）。全有限 S の C_S の族、および C×N(Fin_i) 全体の可換 homotopy は含まれない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exactFunctorSuspensionIso

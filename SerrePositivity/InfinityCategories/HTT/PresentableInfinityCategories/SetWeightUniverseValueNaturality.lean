@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetSections
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallUnstraighteningValueTransport
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpaceEdgeTransportValue
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FamilyEquivalenceReflection
 
 /-!

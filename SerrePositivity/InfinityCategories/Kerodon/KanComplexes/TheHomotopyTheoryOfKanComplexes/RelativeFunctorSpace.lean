@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibrationInternalHom
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.LeftFiberKan
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FunctorFiber
@@ -87,3 +89,12 @@ instance relativeFunctorSpace_kanComplex {A E B : SSet.{u}} (p : E ⟶ B) [_root
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex_of_leftFibration ((ihom A).map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a)
 
 end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "A.4.17" (partial := component) "仮定：Y→Sing(X)とSing(U)→Sing(X)を指定（HAの入力に一致する単体集合模型）。結論：底上の全単体的写像空間Fun_SingX(Sing(U),Y)をinternal Homのfiberで構成する（θ(U,Y)の値の式に一致する部分）。θ全体の関手性、モデル圏のfibrant-cofibrant比較、層条件、ΨXとその全nerveの構成は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace
+attribute [cite HA "A.7.3" (partial := component) "仮定：p:E→N(A)をexit-path射影の入力模型として指定し、chain aを∆n→N(A)で与える（HAの式の入力に一致）。結論：内部Homからchainの点へのfiberでFun_{N(A)}(∆n,E)を構成する（SingA(X)[a]の表示に一致）。位相空間からのE=SingA(X)自体の構成は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace
+attribute [cite HA "A.7.4" (partial := stronger-hyp) "仮定：p:E→N(A)がleft fibrationである場合に限定（Leanが強い：HAのinner fibrationに代えてleft fibrationを追加）。結論：任意∆n→N(A)上のrelativeFunctorSpaceはKan complex（表示された固定chainのfiberのKan性に一致）。conicalなXからSingAを構成し一般inner fibrationの場合にも適用する比較は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace_kanComplex
+attribute [cite HA "A.9.2" (partial := component) "仮定：p:Y→SingA(X)をleft fibration、a:SingA(U)→SingA(X)を指定（HAのfibrant入力の単体的条件に一致）。結論：底上のrelativeFunctorSpaceを定め、その値がKan complexとなる（θ(U,Y)の式とKan性に一致する部分）。位相的SingAの構成、全(U,Y)でのfunctoriality、covariant model structureとcoherent nerve、およびΨX全体の構成は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace
+attribute [cite HA "A.9.2" (partial := component) "仮定：p:Y→SingA(X)をleft fibration、a:SingA(U)→SingA(X)を指定（HAのfibrant入力の単体的条件に一致）。結論：底上のrelativeFunctorSpaceを定め、その値がKan complexとなる（θ(U,Y)の式とKan性に一致する部分）。位相的SingAの構成、全(U,Y)でのfunctoriality、covariant model structureとcoherent nerve、およびΨX全体の構成は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace_kanComplex

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyReplacementComparisons
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardFamilyReplacementComparisons
 
 /-!
 # 元の中央 backward 語の全頂点・全列の位置

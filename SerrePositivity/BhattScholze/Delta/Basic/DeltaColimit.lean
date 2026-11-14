@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.Colimit.Ring
 
@@ -7,7 +9,7 @@ public import Mathlib.Algebra.Colimit.Ring
 # δ 環の極限と余極限（BS 著者版 Remark 2.7）
 
 ## 概要
-δ 両立な遷移を持つ有向系の環余極限の δ 構造と普遍性。勉強ノート第 2 章の命題 2.1.6 の有向の場合。
+δ 両立な遷移を持つ有向系の環余極限の δ 構造と普遍性。BS 著者版 Remark 2.7 の有向余極限の場合。
 
 ## 方針
 各段の W₂ 切断を Mathlib の Ring.DirectLimit.lift で貼り合わせる。
@@ -22,7 +24,7 @@ public import Mathlib.Algebra.Colimit.Ring
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## 環余極限のδ構造（旧 Delta/Basic/DeltaDirectLimit.lean）
+/-! ## 環余極限のδ構造
 
 各段のW₂切断を、δと両立する遷移に沿ってMathlibの同じ環余極限へ移す。
 遷移関数を別表現に置き換えず、標準段射と適合する普遍射のδ両立性を供給する。
@@ -120,3 +122,9 @@ theorem deltaDirectLimitLift_isDeltaHom {B : Type w} [CommRing B]
 end SerrePositivity.BhattScholze
 
 end DeltaDirectLimit
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.7" (partial := special) "通常のテンソル積（p 正則性なし、BS-W15）、有向余極限、完全 δ 環のテンソル、w_R : R → W(R)（ghost 単射かつ p ねじれなしのとき）。一般の極限・余極限、W が右随伴であることは未 ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.deltaDirectLimitLift_isDeltaHom
+attribute [cite BS19 "Rem 2.7" (partial := special) "通常のテンソル積（p 正則性なし、BS-W15）、有向余極限、完全 δ 環のテンソル、w_R : R → W(R)（ghost 単射かつ p ねじれなしのとき）。一般の極限・余極限、W が右随伴であることは未 ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.deltaDirectLimitStructure

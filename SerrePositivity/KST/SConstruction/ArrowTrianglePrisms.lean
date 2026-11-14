@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CofiberUnitPrism
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-! # 四角形の対角から上辺・右辺への二つの三角形 prism
 概要：対角辺を上辺または右辺へ動かし、終点を固定した比較を作る。

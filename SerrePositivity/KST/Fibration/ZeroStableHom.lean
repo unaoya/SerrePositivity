@@ -31,7 +31,7 @@ theorem stableHomAmbient_vertex {A B : _root_.SerrePositivity.InfinityCategories
 /-- 零標的への元の完全関手は、関手圏の実零頂点である。 -/
 theorem stableHomZeroVertex_of_zeroTarget {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (hB : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory B)
     (v : (A ⟶[SSet.{u}] B) _⦋0⦌) : StableHomZeroVertex A B v := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) v)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) v)
   have h := isZeroVertex_functorVertex_of_pointwise (stableHomExactMap v).hom
     (fun a => hB ((stableHomExactMap v).hom.app (Opposite.op ⦋0⦌) a))
   exact (stableHomAmbient_vertex v).symm ▸ h
@@ -39,7 +39,7 @@ theorem stableHomZeroVertex_of_zeroTarget {A B : _root_.SerrePositivity.Infinity
 /-- 零始域からの元の完全関手は、完全性により関手圏の実零頂点である。 -/
 theorem stableHomZeroVertex_of_zeroSource {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (hA : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory A)
     (v : (A ⟶[SSet.{u}] B) _⦋0⦌) : StableHomZeroVertex A B v := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) v)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) v)
   have h := isZeroVertex_functorVertex_of_pointwise (stableHomExactMap v).hom
     (fun a => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := (stableHomExactMap v).hom) a (hA a))
   exact (stableHomAmbient_vertex v).symm ▸ h

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.Claim415Relative
 public import SerrePositivity.KST.ProExcision.RightColumnBlockComponents
 
@@ -69,3 +71,11 @@ theorem claim415 (I : NonUnitalSimplicialRing.{u}) (a : I.obj (op ⦋0⦌)) (n m
   claim415_factorized_relative_zero I a n m F hF M hi
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Claim 4.15" (partial := component) "仮定：非単位的単体環と頂点、i≤m、anodyne を反転するホモロジーの模型（Lean が強い）。結論：指定した相対 bar の列写像が零。原典の行列半直積の相対ホモロジーへの同定を別途要する（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.claim415
+attribute [cite KST "Eq (4.4)" (partial := component) "仮定：中心元と非単位的単体環の列、ホモロジー模型（Lean が強い）。結論：中心倍イデアルの自然性と列に関する零化。安定 GL(ℤ) のホモロジー像への作用の自明性までは得ない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.claim415
+attribute [cite KST "Eq (4.5)" (partial := component) "仮定：非単位的単体環と頂点、i≤m、anodyne を反転するホモロジーの模型（Lean が強い）。結論：指定した相対 bar の列写像が零。原典の行列半直積の相対ホモロジーへの同定を別途要する（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.claim415
+attribute [cite KST "Prop 4.14" (partial := component) "仮定：中心元と非単位的単体環の列、ホモロジー模型（Lean が強い）。結論：中心倍イデアルの自然性と列に関する零化。安定 GL(ℤ) のホモロジー像への作用の自明性までは得ない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.claim415

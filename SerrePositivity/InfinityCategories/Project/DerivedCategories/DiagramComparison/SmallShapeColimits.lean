@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallDiagramShape
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.SemifreeNativeColimit
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitReindex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentCoconeTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentCoconeTransport
 import all SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreePointComparison
 
 /-!
@@ -40,7 +40,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 小さい形状を持つ既存 D(A) の図式は native な余極限を持つ。 -/
 theorem smallShape_hasColimit (K : SSet.{0})
-    (p : (SSet.uliftFunctor.{u + 1, 0}).obj K ⟶ derivedInfinityCategory A) :
+    (p : (SSet.uliftFunctor.{u + 1, 0}).obj K ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :
     HasColimit p := by
   let s := smallDiagramShapeIso.{u} K
   let e := semifreePointEquivalence A

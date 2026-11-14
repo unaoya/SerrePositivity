@@ -70,9 +70,9 @@ include h in
 方針：native の同じ thick 核を両指定頂点同値で輸送する。
 規約：retract を含む同じ実核を保持する。使われ方：固定 ν の実列の核欄。 -/
 lemma dgOdotMilnorNuKernel (b : (T).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotMilnorNuNativeProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotMilnorNuNativeProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
       b ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (j) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection R (G) (P)).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection R (G) (P)).app (Opposite.op ⦋0⦌)
     ((V).inv.app (Opposite.op ⦋0⦌) b)) ↔ _
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection_zero_iff_thickEssentialImage R (G) (P)]
   constructor

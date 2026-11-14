@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisHom
 public import SerrePositivity.KST.SConstruction.DGPointedQuotientEnd
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 
 /-! # 元の右対象 End から指定商 End への実 dg 射
 概要：元の右軸包含を通し、右対象 b の End を同じ (0,b,0) の商 End へ送る。

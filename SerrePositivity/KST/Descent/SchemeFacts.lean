@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Descent.NilpotentThickening
 public import SerrePositivity.KST.Descent.ClosedDimension
 public import Mathlib.AlgebraicGeometry.Morphisms.Proper
@@ -112,3 +114,10 @@ theorem closedImmersion_dimension_lt_bound {X Y : Scheme.{u}} [IrreducibleSpace 
       f.isClosedEmbedding.isClosed_range proper d bound
 
 end SerrePositivity.KST.Descent
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Proof step §3.3 geometry" (partial := component) "仮定：分離スキーム射の切断と、整な基底上の異なる切断の一致軌跡（原典の幾何の仮定）。結論：切断は閉埋め込みで、一致軌跡は真の閉集合（原典の幾何の一部。軌道和の被約化および L への作用は別）。"] _root_.SerrePositivity.KST.Descent.closedImmersion_equalizer
+attribute [cite Paper "Proof step §3.3 geometry" (partial := component) "仮定：分離スキーム射の切断と、整な基底上の異なる切断の一致軌跡（原典の幾何の仮定）。結論：切断は閉埋め込みで、一致軌跡は真の閉集合（原典の幾何の一部。軌道和の被約化および L への作用は別）。"] _root_.SerrePositivity.KST.Descent.closedImmersion_of_section
+attribute [cite Paper "Proof step §3.3 geometry" (partial := component) "仮定：分離スキーム射の切断と、整な基底上の異なる切断の一致軌跡（原典の幾何の仮定）。結論：切断は閉埋め込みで、一致軌跡は真の閉集合（原典の幾何の一部。軌道和の被約化および L への作用は別）。"] _root_.SerrePositivity.KST.Descent.equalizer_range_ne_univ_of_ne

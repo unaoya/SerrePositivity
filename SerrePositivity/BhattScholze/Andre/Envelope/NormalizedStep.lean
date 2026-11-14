@@ -13,10 +13,10 @@ public import SerrePositivity.HomologicalAlgebra.TorFlatBaseChangeVanishing
 BS 著者版 Remark 7.15 の包の比較に使う、正規化した δ 関係の一段での Koszul 分解を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/JetKoszul`。
@@ -24,7 +24,7 @@ BS 著者版 Remark 7.15 の包の比較に使う、正規化した δ 関係の
 
 universe u
 
-/-! ## 有限正規化δ関係の一段におけるKoszul分解と相対比較（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedStepKoszul.lean）
+/-! ## 有限正規化δ関係の一段におけるKoszul分解と相対比較
 
 既存の正規化関係を最高変数分離・前段商への係数変更で実根関係へ移す。
 δ包との比較の追加仮定や、完備化後の完全忠実平坦性は別の工程。
@@ -108,7 +108,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedStepKoszul
 
-/-! ## 前段関係だけで割った実源商と最高段関係の正則性（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedStepSourceQuotient.lean） -/
+/-! ## 前段関係だけで割った実源商と最高段関係の正則性 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedStepSourceQuotient
 
@@ -187,7 +187,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedStepSourceQuotient
 
-/-! ## 全相対自由環の下位正規化関係商と有限実源商の比較（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedAmbientSource.lean） -/
+/-! ## 全相対自由環の下位正規化関係商と有限実源商の比較 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedAmbientSource
 
@@ -280,7 +280,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedAmbientSource
 
-/-! ## 最高段関係を課した二重商と次段実正規化商の比較（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionNormalizedStepQuotientComparison.lean） -/
+/-! ## 最高段関係を課した二重商と次段実正規化商の比較 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedStepQuotientComparison
 
@@ -358,7 +358,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedStepQuotientComparison
 
-/-! ## 有限最高段Koszul複体から次段実正規化商への擬同型（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionNormalizedStepResolution.lean）
+/-! ## 有限最高段Koszul複体から次段実正規化商への擬同型
 
 有限性はこの途中の有限Koszulモデルだけに使用する。
 -/
@@ -468,7 +468,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedStepResolution
 
-/-! ## 実正規化一段の標準スカラー塔と係数拡大加群に対するTor消滅（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionNormalizedStepTor.lean）
+/-! ## 実正規化一段の標準スカラー塔と係数拡大加群に対するTor消滅
 
 この計算には添字集合の有限性は不要。
 -/

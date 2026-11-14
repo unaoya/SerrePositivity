@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEdges
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGStableHomotopyEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedEdges
 
 /-! # 実 dg 関手 Hom end の閉同型を同じ native core の辺にする
 概要：全次数自然変換 end の元の閉同型から、同じ native 写像空間の実辺を得る。

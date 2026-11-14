@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightConeBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 public import Mathlib.Tactic.CrossRefAttribute
@@ -69,3 +71,8 @@ lemma joinPoint_mono_rightAnodyne {A T : SSet.{u}} (i : A ⟶ T) [Mono i] :
     exact h
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.2.3.6" (partial := special) "仮定：単射と弱可縮な右因子 B（Lean が強い：B が一点）。結論：同じ結合写像は右アノダイン（一致する場合。一般の弱可縮な右因子は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinPoint_mono_rightAnodyne

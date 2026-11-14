@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ConeCounitHomNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftConeHomEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeTerminalHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.RelativeTerminalHom
 
 /-!
 概要：指定した極限錐の余単位による頂点への Hom 対応は全単射。

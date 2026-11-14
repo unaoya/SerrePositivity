@@ -1,9 +1,11 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers
 public import SerrePositivity.HomologicalAlgebra.Tor
-import all SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionRegularSequence
+import all SerrePositivity.BhattScholze.Delta.DividedPower.Frobenius.FrobeniusDivisionRegularSequence
 import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaFrobeniusFlat
 import SerrePositivity.CommutativeAlgebra.CompletelyFlat.LocalizedTor
 import Mathlib.RingTheory.RingHom.Flat
@@ -14,7 +16,7 @@ import Mathlib.Algebra.Module.LocalizedModule.Away
 # 自由 Frobenius 除算の高次 Tor
 
 ## 概要
-BS 著者版 Remark 2.37 の二脚を、有限個の自由 δ 座標に対して記述する。
+BS 著者版 Remark 2.37 の二脚を、任意の添字型の自由 δ 座標に対して記述する。
 
 ## 方針
 Frobenius の p 完全平坦性と、p を逆にした後で p 倍への評価が可逆になることを使う。
@@ -444,3 +446,9 @@ theorem existsUnique_frobeniusDivisionPushoutLift {B : Type u} [CommRing B]
 end PrimeLocal
 
 end SerrePositivity.BhattScholze
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.37" (partial := special) "導来 pushout の離散性を、通常の環での高次 Tor の消滅と零次の押し出しの同定として（単体的可換環としては述べない。BS-W15 K3） ／ 11-11 更新"] _root_.SerrePositivity.BhattScholze.existsUnique_frobeniusDivisionPushoutLift
+attribute [cite BS19 "Rem 2.37" (partial := special) "導来 pushout の離散性を、通常の環での高次 Tor の消滅と零次の押し出しの同定として（単体的可換環としては述べない。BS-W15 K3） ／ 11-11 更新"] _root_.SerrePositivity.BhattScholze.frobeniusDivisionPushout_torAlg_subsingleton

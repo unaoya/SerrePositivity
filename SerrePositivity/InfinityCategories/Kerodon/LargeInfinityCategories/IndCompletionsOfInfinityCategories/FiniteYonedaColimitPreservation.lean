@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.UliftCoconeReverse
 
 /-!
@@ -39,3 +41,8 @@ lemma indYoneda_finiteColimit_isColimit (κ : Cardinal.{u}) (hκ : Cardinal.alep
     ((_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.isLimitCone_restrict_iff_of_isIso t (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.uliftOppositeIso K).hom).mp ht)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.14" (partial := special) "仮定：小準圏 C、正則 κ、C に存在する指定余極限（Lean が強い：形状は有限単体集合）。結論：同じ米田像の余極限が Indκ 内で保存される（この場合に一致）。任意の κ-small 形状には拡張していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_finiteColimit_isColimit

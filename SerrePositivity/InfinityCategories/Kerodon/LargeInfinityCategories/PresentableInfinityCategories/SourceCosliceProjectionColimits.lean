@@ -1,7 +1,9 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceJoinCofinality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IteratedSliceUnderRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.IteratedSliceUnderRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.TrivialFibrationCocone
 
@@ -63,3 +65,8 @@ lemma sourceCoslice_isColimitCone_iff_projection {K L C : SSet.{u}}
   exact h.choose.isInitialVertex_iff c
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.2.8" (partial := special) "仮定：準圏の余スライスの図式、join の右包含の共終性（Lean が強い：底 S が一点、図式形状を準圏とする）。結論：指定余錐の余極限性を元の準圏への射影で判定し、底の存在から余スライスの余極限を得る（この場合の (1) と (2) に一致）。底の任意の射に沿う相対版は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_isColimitCone_iff_projection

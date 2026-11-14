@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseColimitShapeReduction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafUniverseColimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.UniverseColimitShapeReduction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PresheafUniverseColimits
 
 /-!
 概要：指定された前層の宇宙変更は、任意の小さい添字の元の余極限全余錐を保存する。

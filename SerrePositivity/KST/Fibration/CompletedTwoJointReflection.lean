@@ -20,7 +20,7 @@ lemma completedTwo_jointReflection {B C : _root_.SerrePositivity.InfinityCategor
     JointlyReflectsSData (completedTwoCofiber q).val (completedTwoFirst q).val where
   zero v hc hf := by
     have hn := (weakArrowCofiberEquivalence q).hom.property.1 _ hc
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((completedTwoCofiber q ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((completedTwoCofiber q ≫
       (weakArrowCofiberEquivalence q).hom).val.app _ v) at hn
     rw [completedTwoCofiber_projection] at hn
     have hz := composableWeakArrow_isZeroVertex_of_components q

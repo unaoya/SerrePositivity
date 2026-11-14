@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeCoconeCriterion
 public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 
@@ -46,3 +48,9 @@ lemma kanIsRelativeColimitCone_iff_of_functorIso {A D E : SSet.{u}}
     fun h ↦ kanIsRelativeColimitCone_of_functorIso U h e.symm⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.1.5" (partial := component) "仮定：内ファイブレーションと関手準圏で同値な二つの余錐（HTT の (3) と一致）。結論：二つの余錐の相対余極限性が同値（結論 (3) が一致。他の安定性はこの宣言に含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_of_functorIso
+attribute [cite HTT "4.3.1.9" (partial := stronger-hyp) "仮定：点ごとに余デカルトで頂点の底の像が退化する余錐間の変換（Lean が強い：変換が関手準圏の同型を与える場合に適用）。結論：同じ二余錐の相対余極限性が同値（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_of_functorIso

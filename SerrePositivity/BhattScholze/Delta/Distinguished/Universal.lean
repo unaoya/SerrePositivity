@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaFrobeniusFlat
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
@@ -152,3 +154,11 @@ theorem universalDistinguished_regular :
     rwa [hmap] at h
 
 end SerrePositivity.BhattScholze
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 2.21"] _root_.SerrePositivity.BhattScholze.UniversalDistinguishedRing
+attribute [cite BS19 "Ex 2.21"] _root_.SerrePositivity.BhattScholze.existsUnique_universalDistinguishedHom
+attribute [cite BS19 "Ex 2.21"] _root_.SerrePositivity.BhattScholze.universalDistinguishedGenerator_isDistinguished
+attribute [cite BS19 "Ex 2.21"] _root_.SerrePositivity.BhattScholze.universalDistinguished_regular

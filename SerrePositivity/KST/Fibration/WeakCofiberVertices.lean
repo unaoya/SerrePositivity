@@ -32,11 +32,11 @@ lemma cofiberVertex_corner (B : _root_.SerrePositivity.InfinityCategories.HA.Sta
 
 /-- 元の全 cofiber 図式の頂点を、元の底辺の指定 cofiber として扱う。 -/
 def vertexCofiberSquare {B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (v : (cofiberDiagrams B.obj) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val
   zero_corner := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v).1
   bottom_edge := (SSet.yonedaEquiv.symm_apply_apply _).symm.trans
-    (congrArg SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).symm)
+    (congrArg SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).symm)
   isPushout := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v).2
 
 /-- E(C,C,ker q) の元の頂点条件は、同じ底辺の商像の可逆性と同値。 -/
@@ -44,16 +44,16 @@ lemma weakCofiber_predicate_iff_invertible
     {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (v : (cofiberDiagrams B.obj) _⦋0⦌) :
     (relativeCofiberPredicate (ClosedStablePredicate.top (sInputModel B))
       (kernelClosedPredicate q)).predicate v ↔
-      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).map
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).map
         ((truncation 2).map q.hom)) := by
-  change (True ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌)
+  change (True ∧ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌)
     ((cofiberStableQuotient (sInputModel B)).val.app (Opposite.op ⦋0⦌) v))) ↔ _
   rw [true_and]
   have he := cofiberVertex_corner B v
     (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1)
   change (cofiberStableQuotient (sInputModel B)).val.app (Opposite.op ⦋0⦌) v =
     (vertexCofiberSquare v).cofiber at he
-  exact (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x)) he).to_iff.trans
+  exact (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x)) he).to_iff.trans
     ((vertexCofiberSquare v).map_isInvertible_iff_zero q.hom).symm
 
 /-- 元の Verdier 列では相対 cofiber 図式の底辺は正確に W 辺である。 -/
@@ -62,7 +62,7 @@ lemma weakCofiber_predicate_iff_weakEquivalence
     (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (v : (cofiberDiagrams B.obj) _⦋0⦌) :
     (relativeCofiberPredicate (ClosedStablePredicate.top (sInputModel B))
       (kernelClosedPredicate q)).predicate v ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i :=
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i :=
   (weakCofiber_predicate_iff_invertible q v).trans
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.mem_weakEquivalences_iff_invertible h _).symm
 

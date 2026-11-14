@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 
@@ -191,3 +193,8 @@ theorem isAlmostZero_iff_forall_gen (J : Ideal R) {r : ℕ} (f : Fin r → R)
     exact hs _ (he ▸ Set.Subset.rfl)
 
 end SerrePositivity.BhattScholze.Almost
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 10.9" (partial := component) "主イデアルへの帰着、分裂比較環、整閉包の完備化（BS-W13）。組み立ては A6・A7 待ち ／ 11-10 更新 ／ 11-12：integralClosureCompletion_isModuleComplete は Thm 10.11 の部品なので列から外した"] _root_.SerrePositivity.BhattScholze.Almost.isAlmostZero_iff_forall_gen

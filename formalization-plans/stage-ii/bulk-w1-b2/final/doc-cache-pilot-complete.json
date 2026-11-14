@@ -1,0 +1,43 @@
+{
+  "temporary_source": "SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.lean",
+  "consumer": "SerrePositivity.BhattScholze.Prismatic.Site.FlatCover",
+  "source_restored": true,
+  "steps": [
+    {
+      "phase": "baseline",
+      "rc": 0,
+      "seconds": 5.650594875216484
+    },
+    {
+      "phase": "whitespace-edit",
+      "rc": 0,
+      "seconds": 3.7201718762516975
+    },
+    {
+      "phase": "restored-source",
+      "rc": 0,
+      "seconds": 3.7196744587272406
+    }
+  ],
+  "before_artifacts": {
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean": "db097b3c8e9a1232915ea679a2ba19332f670dc63ff8d5b25940329116cad3d4",
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean.private": "4daae160b305b534227ae8ef2f0533b42f342bfb7917ba3c10e4f0d6a7e168c2",
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean.server": "d2d45ade22d32602bdd0e2a0d59a4d8e10a1c3e555045359ca50a53587392889",
+    ".lake/build/lib/lean/SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.olean": "3a101d2f0040af20f596315ab6a47265981dbe76ffba066184f4cee396ad9f02",
+    ".lake/build/lib/lean/SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.olean.private": "79f00c02407941a9050f2c24104b6ae05439076d7bed4b05f4e706c4c72ff5c1",
+    ".lake/build/lib/lean/SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.olean.server": "26fc65bd47477fbf4774edf32f16293fecd09402995db77a7f26343e47fe4153"
+  },
+  "edited_artifacts": {
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean": "db097b3c8e9a1232915ea679a2ba19332f670dc63ff8d5b25940329116cad3d4",
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean.private": "ded9039a7e55e4c550af853724645196aa9dd31b4ff1e6e752d990fbabb4a5fb",
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean.server": "c7e2fb0c5d254ccc2e667b7833971a1624a93750e5b292091cc153658dfc1fbb",
+    ".lake/build/lib/lean/SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.olean": "3a101d2f0040af20f596315ab6a47265981dbe76ffba066184f4cee396ad9f02",
+    ".lake/build/lib/lean/SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.olean.private": "79f00c02407941a9050f2c24104b6ae05439076d7bed4b05f4e706c4c72ff5c1",
+    ".lake/build/lib/lean/SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.olean.server": "26fc65bd47477fbf4774edf32f16293fecd09402995db77a7f26343e47fe4153"
+  },
+  "changed_artifacts": [
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean.private",
+    ".lake/build/lib/lean/SerrePositivity/CommutativeAlgebra/CompletelyFlat/Identity.olean.server"
+  ],
+  "scope": "Two targets only, whitespace in an existing declaration docstring; no mathematical text invented."
+}

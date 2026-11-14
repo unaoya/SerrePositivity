@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianTerminalBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
 
@@ -71,3 +73,8 @@ lemma leftFibration_isTerminalVertex_of_contractibleFiber
   rwa [hp]
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.6.6" (partial := special) "仮定：coCartesian p:E→B とファイバー・基底で k 切断な点（Lean が強い：k=−2、p は left fibration、指定ファイバーは可縮 Kan）。結論：同じファイバーの指定点は元の全空間 E の終対象、従って −2 切断（この場合に一致）。元の点を保持し、全空間の弱可縮性だけで代用しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_isTerminalVertex_of_contractibleFiber

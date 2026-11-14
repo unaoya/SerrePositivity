@@ -46,7 +46,7 @@ lemma counit_snd_isIso : IsIso ((hoFunctor.map ((ihom (laxCategory p q).obj).map
   exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.counit_postcompRight_isIso (LaxInclusion.fromDAdjunction p q)
 
 lemma cofiber_snd_zero (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((cofiber p q ≫ (laxSnd p q).hom).app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((cofiber p q ≫ (laxSnd p q).hom).app (Opposite.op ⦋0⦌) x) := by
   let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (LaxInclusion.fromDAdjunction p q).counitHom
   let J := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H (laxSnd p q).hom
   have hj : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J)) := by
@@ -62,7 +62,7 @@ lemma cofiber_snd_zero (x : (laxCategory p q).obj _⦋0⦌) :
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge ((ZeroArrowFamily.ofHomotopy H).app _ x)) =
         (laxSnd p q).hom.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).edge
     rw [ofHomotopy_vertex_edge]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌)
     ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber (laxCategory p q).obj (arrow p q)).app _ x))
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber_vertex]
   exact (s.map_isInvertible_iff_zero (laxSnd p q).hom).mp hi

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedTensorCylinder
 public import SerrePositivity.KST.SConstruction.PointedTensorTransformations
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationComposition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationWhisker
 
 /-! # 元の点つき円柱の両端・射影の厳密豊穣自然変換
 概要：自由点つき区間の実両端と射影を、同じ円柱関手の全 Hom に自然に束ねる。

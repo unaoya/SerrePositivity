@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransWhisker
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransWhisker
 
 /-!
 概要：元全厳密比較の合成等号を同じ dg 後合成で保持する。

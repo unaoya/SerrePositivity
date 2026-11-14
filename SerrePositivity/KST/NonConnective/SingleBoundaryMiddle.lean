@@ -49,7 +49,7 @@ theorem singleBoundaryMiddle_additivity (X : StableModel.{u}) (n : ℕ)
     singleBoundaryGroupMap (cofiberStableMiddle X) n a =
       singleBoundaryGroupMap (cofiberStableSubobject X) n a *
         singleBoundaryGroupMap (cofiberStableQuotient X) n a := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier
   apply additivityGroup_middle
     (singleBoundaryGroupMap (cofiberStableSubobject X) n)
     (singleBoundaryGroupMap (cofiberStableQuotient X) n)

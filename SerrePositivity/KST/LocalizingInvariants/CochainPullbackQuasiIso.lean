@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelHomology
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexShortExactQuasiIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.ComplexShortExactQuasiIso
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Kernels
 
 /-!

@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorExchangeBraid
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TensorExchangeBraid
 
 /-!
 概要：内部 Hom の二つのパラメータ交換は、列の構造に使う tensor strength と両立する。

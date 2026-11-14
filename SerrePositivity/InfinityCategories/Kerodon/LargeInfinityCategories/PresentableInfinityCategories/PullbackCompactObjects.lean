@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PullbackCosliceEndpointComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeCartesianFibrationPreservation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CosliceBaseChangePreservation
@@ -71,3 +73,8 @@ lemma isKappaCompact_pullback_of_components
   exact hc.of_functorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.covariantRepresentableInfinity_cosliceIso v).symm
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.5.7" (partial := stronger-hyp) "仮定：同じ濃度 μ の filtered 余極限を両脚が保存する strict categorical pullback（Lean が強い：compact 性の部分には正則 κ<μ と IsCardinalChangeBound κ μ の冪評価を追加）。結論：(1) 元の引き戻しの小 μ-filtered 余極限の存在、(2) 両成分と共通像が μ-compact なら同じ頂点が μ-compact（この条件の下で一致）。射影の保存は同じ余極限存在の宣言から得る。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_pullback_of_components

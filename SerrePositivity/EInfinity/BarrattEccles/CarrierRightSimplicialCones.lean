@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHom
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameDiagrams
 public import SerrePositivity.EInfinity.HomotopyWeight.ConeReindex
 
 /-!

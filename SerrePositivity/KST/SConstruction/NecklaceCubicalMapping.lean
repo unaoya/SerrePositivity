@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceConcreteCube
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceIn
 
 /-! # 元の固定端点 necklace 図式の cubical 余極限
 概要：K 内の x から y への全 necklace から、表現可能立方体の余極限を構成する。

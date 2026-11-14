@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuKernel
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SourceEquivalencePrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.SourceEquivalencePrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PrecompositionCriterion
 
@@ -49,7 +49,7 @@ lemma dgOdotMilnorNuKernelLocalization : _root_.SerrePositivity.InfinityCategori
       obtain ⟨s, z, hz, ⟨v⟩⟩ := ha
       have hm : (V).hom.app (Opposite.op ⦋1⦌) a ∈
           _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (i)) := by
-        let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((V).hom.app (Opposite.op ⦋1⦌) a)) := {
+        let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((V).hom.app (Opposite.op ⦋1⦌) a)) := {
           toZeroTriangle := (s.map (V).hom).toZeroTriangle
           bottom_edge := (s.map (V).hom).bottom_edge
           isPushout := (s.map (V).hom).isPushout }

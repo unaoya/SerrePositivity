@@ -22,20 +22,20 @@ namespace SerrePositivity.KST.LocalizingInvariants.FiberComparison
 
 /-- 全四角形の同型は三頂点と二辺を同時に保つ短複体の同型を与える。 -/
 def shortComplexIso {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X)
+    [HasZeroMorphisms (hoFunctor.obj X)] (t d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X)
     (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso t.square d.square) : t.hoShortComplex ≅ d.hoShortComplex := by
   let a := e.toNatIso
   exact ShortComplex.isoMk
-    (a.app (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0))
-    (a.app (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 0))
-    (a.app (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 1))
-    (a.hom.naturality (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
-    (a.hom.naturality (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
+    (a.app (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0))
+    (a.app (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 0))
+    (a.app (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 1 1))
+    (a.hom.naturality (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
+    (a.hom.naturality (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])))).symm
 
 /-- 同じ右辺の任意の fiber 列の比較。三対象と両射の同時自然性を含む。 -/
 def fiberShortComplexIso {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)] {x y : X _⦋0⦌}
-    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) :
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) :
     s.toZeroTriangle.hoShortComplex ≅ t.toZeroTriangle.hoShortComplex :=
   shortComplexIso s.toZeroTriangle t.toZeroTriangle (relativeFunctorIso s t).iso
 

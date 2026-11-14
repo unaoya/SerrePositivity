@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseLeftKanCanonical
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseRightKanCanonical
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanOppositeCanonicalLimits
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoYonedaConeLimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.UniverseLeftKanCanonical
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.UniverseRightKanCanonical
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.KanOppositeCanonicalLimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoYonedaConeLimits
 
 /-!
 概要：元の標準左 Kan 余錐から持ち上げた全 Hom 族の右 Kan 条件。

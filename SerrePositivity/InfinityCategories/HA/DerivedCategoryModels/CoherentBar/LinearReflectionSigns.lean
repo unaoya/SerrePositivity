@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveOppositeEquations
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveOppositeEquations
 /-!
 概要：左右 pinched Hom の線形座標の反転に必要な削除符号を計算する。
 方針：濃度 c に choose(c,2) の符号を付け、反転で交換する左右の点数を数える。

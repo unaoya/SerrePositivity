@@ -34,7 +34,7 @@ theorem stableHomZeroVertex_comp_throughZero {A Z B : _root_.SerrePositivity.Inf
   obtain ⟨f, rfl⟩ := (SimplicialCategory.homEquiv' A Z).surjective v
   obtain ⟨g, rfl⟩ := (SimplicialCategory.homEquiv' Z B).surjective w
   have hz : StableHomZeroVertex A B (SimplicialCategory.homEquiv' A B (f ≫ g)) := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) _)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) _)
     have hf := isZeroVertex_functorVertex_of_pointwise (f.hom ≫ g.hom)
       (fun a => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := g.hom) _
         (hZ (f.hom.app (Opposite.op ⦋0⦌) a)))

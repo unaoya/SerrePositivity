@@ -12,10 +12,10 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaColimit
 BS 著者版 Proposition 3.13 と Proposition 7.2 の包の構成に使う、δ 除算の族と有限部分族を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Andre/Envelope/PDivision`、`Andre/Envelope/RootFamilyRaw`、`Andre/PowerRootEnvelope/DeltaDivisionWitt`、`Delta/DividedPower/PDivisionCompletion`、`Delta/Division/Source`。
@@ -23,7 +23,7 @@ BS 著者版 Proposition 3.13 と Proposition 7.2 の包の構成に使う、δ 
 
 universe u v w z
 
-/-! ## 同時族と二段raw δ除算の標準同型（旧 Delta/Division/DeltaAdjoinDivisionSum.lean）
+/-! ## 同時族と二段raw δ除算の標準同型
 
 指定した除算解についての既存普遍性を用いる。非零因子性や平坦性は不要。
 -/
@@ -217,7 +217,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionSum
 
-/-! ## raw δ除算包の再添字付け（旧 Delta/Division/DeltaAdjoinDivisionReindex.lean） -/
+/-! ## raw δ除算包の再添字付け -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionReindex
 
@@ -312,7 +312,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionReindex
 
-/-! ## 空族のraw δ除算包は元の係数δ環（旧 Delta/Division/DeltaAdjoinDivisionEmpty.lean） -/
+/-! ## 空族のraw δ除算包は元の係数δ環 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionEmpty
 
@@ -373,7 +373,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionEmpty
 
-/-! ## raw再添字射の恒等・合成公式（旧 Delta/Division/DeltaAdjoinDivisionReindexFunctorial.lean） -/
+/-! ## raw再添字射の恒等・合成公式 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionReindexFunctorial
 
@@ -415,7 +415,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionReindexFunctorial
 
-/-! ## 有限部分族raw包の具体的な有向系（旧 Delta/Division/DeltaAdjoinDivisionFiniteSystem.lean） -/
+/-! ## 有限部分族raw包の具体的な有向系 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionFiniteSystem
 
@@ -499,7 +499,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionFiniteSystem
 
-/-! ## 有限部分族raw包の環余極限と標準δ構造（旧 Delta/Division/DeltaAdjoinDivisionFiniteColimit.lean） -/
+/-! ## 有限部分族raw包の環余極限と標準δ構造 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionFiniteColimit
 
@@ -630,7 +630,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionFiniteColimit
 
-/-! ## 有限部分族raw環余極限と全族raw包の標準δ同型（旧 Delta/Division/DeltaAdjoinDivisionFiniteColimitEquiv.lean） -/
+/-! ## 有限部分族raw環余極限と全族raw包の標準δ同型 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionFiniteColimitEquiv
 

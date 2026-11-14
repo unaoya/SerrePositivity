@@ -62,7 +62,7 @@ def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
     StrictCospanCone.square (Binary.snd Y Z) f (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.cone f Y)
 
 lemma square_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (square f Y) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mp
+  (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_transpose _).mp
     (StrictCospanCone.square_isPullback _ _ _ (_root_.SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection.infinityCone_isLimit f Y))
 
 lemma square_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square f Y =

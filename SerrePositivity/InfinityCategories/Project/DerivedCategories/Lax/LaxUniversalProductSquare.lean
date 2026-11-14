@@ -31,7 +31,7 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
   (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i r)
 
 def cornerIso (a b : Fin 2) : Σ x : Sp.{u} _⦋0⦌,
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (LaxUniversalValue.square Φ p q i r h) a b) x := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (LaxUniversalValue.square Φ p q i r h) a b) x := by
   refine Fin.cases ?_ (fun a => ?_) a
   · refine Fin.cases ?_ (fun b => ?_) b
     · exact ⟨_, eqToIso (congrArg HomotopyCategory.mk
@@ -56,7 +56,7 @@ def vertexIsos (v : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) _⦋0⦌) : Σ x : Sp.{u} _
   let a := stdSimplex.obj₀Equiv v.1
   let b := stdSimplex.obj₀Equiv v.2
   have he : (LaxUniversalValue.square Φ p q i r h).app (Opposite.op ⦋0⦌) v =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (LaxUniversalValue.square Φ p q i r h) a b := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (LaxUniversalValue.square Φ p q i r h) a b := by
     change _ = (LaxUniversalValue.square Φ p q i r h).app _
       (stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.1),
         stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.2))

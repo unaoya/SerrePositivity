@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenARightFibration
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -56,3 +58,8 @@ lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicate
   ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.3.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_weaklyContractible_coslices

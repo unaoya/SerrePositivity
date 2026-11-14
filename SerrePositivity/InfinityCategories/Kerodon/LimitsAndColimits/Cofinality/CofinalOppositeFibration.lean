@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFactorizationCriterion
 
@@ -85,3 +87,14 @@ instance cofinalTrivialKanFibration_op {E B : SSet.{u}} (p : E ⟶ B)
     exact (SSet.opEquivalence.toAdjunction.hasLiftingProperty_iff i p).mp h
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.1.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalLeftFibration_op_rightFibration
+attribute [cite HA "5.2.1.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalLeftFibration_op_rightFibration
+attribute [cite HTT "2.0.0.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalLeftAnodyne_op_of_rightAnodyne
+attribute [cite HTT "2.0.0.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalLeftFibration_op_rightFibration
+attribute [cite HTT "2.0.0.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalRightAnodyne_op_of_leftAnodyne
+attribute [cite HTT "2.1.3.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalLeftFibration_op_rightFibration
+attribute [cite HTT "2.1.3.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalTrivialKanFibration_op

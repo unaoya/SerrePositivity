@@ -1,0 +1,13 @@
+{
+  "standalone_audit_roots": 4,
+  "library_imports_of_moved_audits": [],
+  "import_parser": "layer_check.imports (all modules on a directive, comments and strings masked)",
+  "root_targets": 9561,
+  "local_closure": 28587,
+  "static_edges": 110230,
+  "missing_project_imports": [],
+  "cycles": [],
+  "layer_violations": [],
+  "new_exception_status": "pending coordinator review; see new-reverse-edge-proposal.json",
+  "source_sha256": "b2fbd3f5426554aa13a1e660c44435cd921471cb6a27e850fa25f77dce6e8980"
+}

@@ -36,19 +36,19 @@ instance exactSPostcomp_isExactFunctor {B C : _root_.SerrePositivity.InfinityCat
 
 /-- 零対象を保つ充満忠実な実関手は、元の零対象の存在を用いて零性を反映する。 -/
 theorem zeroVertex_of_fullyFaithful_preservesZero {X Y : SSet.{u}}
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [Quasicategory Y] (f : X ⟶ Y)
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [Quasicategory Y] (f : X ⟶ Y)
     (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f) (hzero : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesZeroVertices f) {x : X _⦋0⦌}
-    (hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.app (Opposite.op ⦋0⦌) x)) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X
-  let e := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroVertexIso ⟨_, (hzero z.vertex z.isZero).1, (hzero z.vertex z.isZero).2⟩
+    (hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (f.app (Opposite.op ⦋0⦌) x)) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X
+  let e := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.zeroVertexIso ⟨_, (hzero z.vertex z.isZero).1, (hzero z.vertex z.isZero).2⟩
     ⟨_, hx.1, hx.2⟩
   exact z.isZero.of_vertexIso (hf.preimageVertexIso e)
 
 /-- 元の全 gapped 図式が零対象であることは、全 Ar 成分の零性と同値。 -/
 theorem sConstruction_isZeroVertex_iff_components (B : SSet.{u})
     [Quasicategory B] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable B] (n : ℕ) (v : (sConstruction n B) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v ↔ ∀ a : (arNerve n) _⦋0⦌,
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sComponentEvaluation B n a).app (Opposite.op ⦋0⦌) v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v ↔ ∀ a : (arNerve n) _⦋0⦌,
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sComponentEvaluation B n a).app (Opposite.op ⦋0⦌) v) := by
   constructor
   · intro hv a
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := sComponentEvaluation B n a) _ hv

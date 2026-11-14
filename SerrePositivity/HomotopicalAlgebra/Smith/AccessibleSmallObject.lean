@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleCellAttachment
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleIteration
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
@@ -86,3 +88,8 @@ lemma exists_accessible_factorization [IsLocallyPresentable.{w} C]
   exact ⟨κ, hκ, exists_factorization_at I κ⟩
 
 end SerrePositivity.Smith.AccessibleSmallObject
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.1.2.5" (partial := stronger-hyp) "仮定：原典の C に加え Mathlib IsLocallyPresentable C、局所小性と一つの colimit universe を明示し、生成射の類は小さい（Lean の形式的仮定が強い）。結論：I.rlp.llp と I.rlp の同じ functorial factorization があり、生成射の両端が κ-presentable なら指定分解の全 arrow factors が κ-filtered colimits を保つ。generatedLeft_le_of_closed と coproduct closure により左類は最小の弱飽和類に入り、原典の二結論に一致。この Mathlib presentability と原典の poset 型定義の完全な比較は含まない。"] _root_.SerrePositivity.Smith.AccessibleSmallObject.exists_factorization_at

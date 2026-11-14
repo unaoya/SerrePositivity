@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Monoidal.Mod
 public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
@@ -592,3 +594,9 @@ end SerrePositivity.MonoidalBalancedTensor
 end
 
 end BalancedTensorIterated
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.5.2.1" (partial := special) "仮定：通常の対称モノイダル圏の可換内部モノイド A と必要な余等化子およびテンソルによる保存条件（Lean が強い：通常圏に限る）。結論：内部左加群に組紐から右作用を入れ、その作用で平衡化した相対テンソルを積とする対称モノイダル構造を構成する（この仮定での HA の結論の一部に一致）。(1) の通常圏の場合と (2) のテンソル公式に対応し、∞ オペラッド間のモノイダル比較は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.moduleObj
+attribute [cite HA "4.5.2.1" (partial := special) "仮定：通常の対称モノイダル圏の可換内部モノイド A と必要な余等化子およびテンソルによる保存条件（Lean が強い：通常圏に限る）。結論：内部左加群に組紐から右作用を入れ、その作用で平衡化した相対テンソルを積とする対称モノイダル構造を構成する（この仮定での HA の結論の一部に一致）。(1) の通常圏の場合と (2) のテンソル公式に対応し、∞ オペラッド間のモノイダル比較は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.rightActionMap

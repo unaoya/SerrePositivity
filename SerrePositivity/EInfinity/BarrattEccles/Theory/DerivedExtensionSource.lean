@@ -69,7 +69,7 @@ def derivedInfinityBaseChange_sourceIso {C : SSet.{u + 1}}
       complexKFlat S ((atVertex F x).obj 0)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ complexOrdinaryDerivedSource S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange f)
       (F ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f) ≫ complexOrdinaryDerivedSource T) := by
-  let L := F ≫ nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion S (Complex S)
+  let L := F ≫ nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S)
   let R := complexExtensionNerve f
   let Q := complexSemifreeResolutionInfinity T
   let H := complexSemifreeResolutionAugmentationHomotopy S
@@ -110,7 +110,7 @@ def derivedInfinityBaseChange_sourceIso {C : SSet.{u + 1}}
       Category.assoc]
   · change (L ≫ 𝟙 _) ≫ (R ≫ Q) = _
     rw [Category.comp_id]
-    change (F ≫ (nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion S (Complex S))) ≫
+    change (F ≫ (nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S))) ≫
       (R ≫ Q) = _
     rw [Category.assoc, ← Category.assoc _ R Q, complexClosedNerve_extension]
     simp only [complexOrdinaryDerivedSource, Q, Category.assoc]

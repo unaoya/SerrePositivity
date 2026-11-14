@@ -19,7 +19,7 @@ open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (DGOdotGluing R d) :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnor_isDGPretriangulated R d
-local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "B" => DGOdotGluing R d
 local notation "δ" => DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d)
 local notation "P" => dgQuotientImage R (δ)
@@ -41,7 +41,7 @@ lemma dgOdotMilnorSourceCellComparison_mem (x : T) :
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B) (P)) ((dgOdotMilnorSourceCellComparison R d).obj x) := by
   apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection_vertex_isZero_iff_thick R (B) (P) _).mp
   apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFunctor_flat_vertex_zero_iff R (B) (P) _).mp
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedQuotientFunctor R d).app _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedQuotientFunctor R d).app _
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((δ).obj x.val)))
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedQuotient_kills_diagonal R d x.val
 

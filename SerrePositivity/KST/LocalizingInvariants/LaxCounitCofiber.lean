@@ -52,13 +52,13 @@ instance cofiber_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.Lim
 lemma fst_arrow_source_zero (x : (laxCategory p q).obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow
     ((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom).app
       (Opposite.op ⦋0⦌) x) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
   rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowMap_evaluation, ← Category.assoc, arrow_source,
     Category.assoc, LaxInclusion.fromD_fst]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero
 
 lemma fst_arrow_target :
     (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫

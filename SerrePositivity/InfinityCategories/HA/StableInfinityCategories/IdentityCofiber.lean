@@ -20,29 +20,29 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 方針：上の二頂点が辺の終点と等しいことを使う。
 規約：値域への追加仮定は不要。使われ方：恒等射の cofiber 列。 -/
 def columnZeroTriangle {X : SSet.{u}} (g : (Δ[1] : SSet.{u}) ⟶ X)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X := ⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram g, hz⟩
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X := ⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram g, hz⟩
 
 /-- 概要：零終点の列四角形は cofiber 列である。
 方針：横に一定な四角形の押し出し性を使う。
 規約：値域は quasicategory。使われ方：恒等射の三角形の代表。 -/
 lemma columnZeroTriangle_isCofiber {X : SSet.{u}} [Quasicategory X]
-    (g : (Δ[1] : SSet.{u}) ⟶ X) (hz) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (columnZeroTriangle g hz) :=
+    (g : (Δ[1] : SSet.{u}) ⟶ X) (hz) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (columnZeroTriangle g hz) :=
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram_isPushout g
 
 /-- 概要：列四角形の短複体の第一射は恒等射である。
 方針：下辺の一次単体が始点の退化単体に等しいことを用いる。
 規約：二つの下頂点は定義的に同じ。使われ方：可縮三角形との比較。 -/
-lemma columnZeroTriangle_f_eq_id {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+lemma columnZeroTriangle_f_eq_id {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (g : (Δ[1] : SSet.{u}) ⟶ X) (hz) :
     (columnZeroTriangle g hz).hoShortComplex.f =
       𝟙 (SSet.HomotopyCategory.mk (g.app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) : hoFunctor.obj X) := by
   let x := g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
-  let e := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram g)
+  let e := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram g)
   let d := SSet.Truncated.Edge.id (X := (truncation 2).obj X) x
   have he : e.edge = d.edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
     have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram g = SSet.const x := by
       change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ (snd Δ[1] Δ[1] ≫ g) = _
       rw [← Category.assoc]
@@ -80,7 +80,7 @@ lemma contractibleTriangle_mem_cofiberDistinguishedTriangles {X : SSet.{u}}
     [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] (a : hoFunctor.obj X) :
     contractibleTriangle a ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberDistinguishedTriangles X := by
   obtain ⟨x, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective a
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X
   let e := Classical.choice (z.isTerminal.nonempty_edge x)
   let g := SSet.yonedaEquiv.symm e.edge
   have hsrc : g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = x := by

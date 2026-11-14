@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.UniverseVertexIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroObjects
 /-!
 概要：実零対象核と包含の本質像の一致を任意の追加宇宙へ持ち上げる。
 方針：核の零性と本質像の頂点同型をそれぞれ ULift で保ち反映する。
@@ -15,13 +15,13 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 open CategoryTheory SSet
 open scoped _root_.Simplicial
 variable {A B C : SSet.{u}} [Quasicategory B] (i : A ⟶ B) (q : B ⟶ C)
-  (h : ∀ b : B _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.app (Opposite.op ⦋0⦌) b) ↔
+  (h : ∀ b : B _⦋0⦌, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.app (Opposite.op ⦋0⦌) b) ↔
     ∃ a : A _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (i.app (Opposite.op ⦋0⦌) a) b))
 include h
 
 lemma zeroKernel_ulift_iff_essentialImage
     (b : ((SSet.uliftFunctor.{v}).obj B) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((SSet.uliftFunctor.{v}).map q).app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((SSet.uliftFunctor.{v}).map q).app (Opposite.op ⦋0⦌) b) ↔
       ∃ a : ((SSet.uliftFunctor.{v}).obj A) _⦋0⦌,
         Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
           (((SSet.uliftFunctor.{v}).map i).app (Opposite.op ⦋0⦌) a) b) := by

@@ -1,11 +1,13 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IdentityCocone
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CosliceTwistedHomEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.Source
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibrationPointHomFamily
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointHomActionComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PointHomActionComparison
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -126,3 +128,9 @@ lemma twistedArrowIdentityHomTransport_isQCatEquivalence
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceFiberIso x y)).isQCatEquivalence)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.1.10" (partial := component) "仮定：準圏 C と頂点 x（HA と一致）。結論：始点を固定した本体の Tw の恒等頂点が始対象となる。反対を取ると HA の対応 fiber の恒等射が final となり、各 x について片側の universal object を与える（HA の representability と (c)⇒(a) の恒等射の場合の部分に一致）。任意の同値射の iff と他方の全判定は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceIdentity_isInitialVertex
+attribute [cite HA "5.2.1.10" (partial := component) "仮定：準圏 C と頂点 x（HA と一致）。結論：始点を固定した本体の Tw の恒等頂点が始対象となる。反対を取ると HA の対応 fiber の恒等射が final となり、各 x について片側の universal object を与える（HA の representability と (c)⇒(a) の恒等射の場合の部分に一致）。任意の同値射の iff と他方の全判定は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceIdentity_projection

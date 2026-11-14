@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.MilnorVerdierSequence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientThickKernelEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.MilnorVerdierSequence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.ResolvedDGQuotientThickKernelEdges
 
 /-!
 概要：Milnor 条件から元対角と cell 平坦商の実 Verdier 列を接続する。
@@ -50,7 +50,7 @@ def dgOdotMilnorNativeSequence (h : _root_.SerrePositivity.InfinityCategories.Pr
 規約：単なる安定閉包で代用しない。使われ方：d③ の実核の証拠。 -/
 lemma dgOdotMilnorNativeKernel (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
     (b : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeMiddle R d).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
       b ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeDiagonal R d) :=
   (dgOdotMilnorNativeSequence R d h).isVerdier.kernel b
 

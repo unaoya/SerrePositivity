@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.KoszulPro
 public import Mathlib.RingTheory.Flat.CategoryTheory
 
@@ -102,3 +104,9 @@ theorem koszul_flatTensor_homology_proZero [IsNoetherianRing R]
     (koszulTensorHomologyTower_isProZero z M q hq)
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 4.1" (partial := component) "仮定：Noether 環上の有限加群の Koszul 塔と平坦底変換（Lean が強い）。結論：Koszul の正次数ホモロジーのプロ消滅を平坦底変換へ移す。一般のプロ単体環の導来テンソルは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.koszul_flatTensor_homology_proZero
+attribute [cite LT "Lemma 2.29" (partial := component) "仮定：同一の可換基礎環上の通常加群の自然数塔と固定加群（Lean が強い）。結論：通常テンソルでプロ同型を保つ。基礎環と両加群が動く導来テンソルでの π プロ同値は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.tensor_proIso

@@ -61,7 +61,7 @@ theorem dgKappaResolvedPerfectEvaluation_quasiEquivalence :
 def dgKappaResolvedPerfectEvaluationNerveEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgKappaResolvedKernelKInput R D I))
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory R D) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (dgKappaResolvedPerfectEvaluation R D I P)
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgQuasiEquivalenceNerveEquivalence (dgKappaResolvedPerfectEvaluation R D I P)
     (dgKappaResolvedPerfectEvaluation_quasiEquivalence R D I P)
 
 end SerrePositivity.KST.NonConnective

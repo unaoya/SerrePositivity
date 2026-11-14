@@ -43,7 +43,7 @@ theorem verdierLowerDeformationZeroHomLift_reindex (d : _root_.SerrePositivity.I
       (fun z ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformation_reindex g a t (P.obj z)).symm)
   apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices
     ((ihom ((verdierLowerTriangle d).obj ⟨a (g j)⟩).obj).obj
-      ((verdierLowerTriangle d).obj ⟨a (g k)⟩).obj) _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex).ι).1
+      ((verdierLowerTriangle d).obj ⟨a (g k)⟩).obj) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex).ι).1
   simp only [verdierLowerDeformationZeroHomLift, zeroStableHomFamilyLift,
     Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
   change nerveMap (SimplicialThickening.functorMap g ⟨j⟩ ⟨k⟩) ≫

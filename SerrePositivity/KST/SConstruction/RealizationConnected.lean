@@ -41,7 +41,7 @@ lemma isConnected_of_anodyne {A B : SSet.{u}} [SSet.IsConnected A]
 /-- 概要：S• 実現の Kan 置換の単位は連結成分の全単射を誘導する。
 方針：構成済みの単位の anodyne 性を使う。
 規約：対角自体の Kan 性は仮定しない。使われ方：二つの実現模型の π₀ の照合。 -/
-lemma sRealizationToKan_piZero_bijective (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+lemma sRealizationToKan_piZero_bijective (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     Function.Bijective (SSet.mapπ₀ (sRealizationToKan C).right) :=
   mapPiZero_bijective_of_anodyne _ (sRealizationToKan_anodyne C)
 
@@ -49,7 +49,7 @@ lemma sRealizationToKan_piZero_bijective (C : SSet.{u}) [Quasicategory C] [_root
 方針：対角実現の連結性を anodyne な単位に沿って移す。
 規約：零対象を持つ quasicategory に適用でき、安定性は不要。
 使われ方：K(C) の連結な delooping 空間。 -/
-instance kanSRealization_isConnected (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+instance kanSRealization_isConnected (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     SSet.IsConnected (kanSRealization C).right := by
   letI : SSet.IsConnected (pointedSRealization C).right := diagonalCoreSConstruction_isConnected C
   exact isConnected_of_anodyne (sRealizationToKan C).right (sRealizationToKan_anodyne C)

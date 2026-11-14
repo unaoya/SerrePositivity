@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
 lemma dgAlgebraMap_id (B : Mon (Complex R)) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (𝟙 B) = DGFunctor.id (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B) := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (𝟙 B) = DGFunctor.id (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B) := by
   apply EnrichedFunctor.ext (Complex R) (fun x => by cases x; rfl)
   intro x y
   change (𝟙 B.X) ≫ eqToHom _ = 𝟙 B.X

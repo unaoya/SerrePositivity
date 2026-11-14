@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.ContractibleTotalConnecting
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopySquares
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopySquares
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FiberComponents
 

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SpaceSmallLimits
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentablePresheafLimitDetection
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoYonedaConeLimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoYonedaConeLimits
 
 /-!
 概要：元の全 co-Yoneda 族は、同じ全錐の極限性を反映する。

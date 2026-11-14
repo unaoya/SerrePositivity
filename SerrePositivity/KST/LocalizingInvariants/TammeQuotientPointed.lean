@@ -23,17 +23,17 @@ variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 lemma tammeQuotientMap_preservesZero : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesZeroVertices (tammeQuotientMap p q) :=
   localization_preservesZero _ _ (tammeQuotient_isLocalization p q)
 
-lemma tammeQuotient_zeroImage_isZero : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex
+lemma tammeQuotient_zeroImage_isZero : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex
     ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (laxCategory p q).obj).vertex) :=
-  tammeQuotientMap_preservesZero p q _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (laxCategory p q).obj).isZero
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (laxCategory p q).obj).vertex) :=
+  tammeQuotientMap_preservesZero p q _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (laxCategory p q).obj).isZero
 
-instance tammeQuotient_hasZeroVertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (tammeQuotient p q) :=
+instance tammeQuotient_hasZeroVertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (tammeQuotient p q) :=
   ⟨⟨_, tammeQuotient_zeroImage_isZero p q⟩⟩
 
 /-- 商内の真の零対象性と、元の通常 pullback の本質像の一致。 -/
 lemma tammeQuotientMap_kernel (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q) := by
   rw [← tammeQuotient_zeroImageIso_iff_essentialImage]
   constructor

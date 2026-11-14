@@ -1,9 +1,11 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.BhattScholze.Semiperfectoid.SurjectiveQuotientPerfectoidization
 public import SerrePositivity.BhattScholze.Almost.Lemma103
 public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology
 public import SerrePositivity.BhattScholze.Almost.CompletedModuleTensor
 
 /-! # 商の perfectoid 化の核と複体の almost 零性
@@ -136,7 +138,14 @@ attribute [local instance] HasDerivedCategory.standard
 
 /-- 頂点を通常の導来圏に移し、主元 p に関する導来完備性を判定する。 -/
 def isPCompleteVertex (p : ℕ) (R : Type u) [CommRing R]
-    (M : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
+    (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
   IsComplete R (p : R) ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩)
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Def 10.1"] _root_.SerrePositivity.BhattScholze.Almost.IsJAlmostZero
+attribute [cite BS19 "Def 10.1"] _root_.SerrePositivity.BhattScholze.Almost.perfectoidKernel
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.perfectoidKernel_quotient_isIntegralPerfectoid

@@ -5,7 +5,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.Normalized
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicCandidate
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Complete
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
@@ -25,10 +25,10 @@ public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 BS 著者版 Remark 7.15 のモニック根の包に使う、源の剰余の忠実平坦性と完備化の比較を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Perfection/PerfectPrismMonic`、`PowerRootEnvelope/Unconditional/Source`、`Variants/ArbitraryFamily`、`Variants/MonicRootedExtension`。
@@ -36,7 +36,7 @@ BS 著者版 Remark 7.15 のモニック根の包に使う、源の剰余の忠�
 
 universe u
 
-/-! ## André E1・E2：一般 f/d 包の初期係数商（旧 Andre/MonicPrismaticCoefficient.lean）
+/-! ## 一般 f/d 包の初期係数商
 
 ## 概要
 
@@ -188,7 +188,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticCoefficient
 
-/-! ## André E1・E2：一般 f/d 包の raw (p,d) 剰余の忠実平坦性（旧 Andre/MonicPrismaticRawResidue.lean）
+/-! ## 一般 f/d 包の raw (p,d) 剰余の忠実平坦性
 
 ## 概要
 
@@ -318,7 +318,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticRawResidue
 
-/-! ## André E1・E2：実商還元の H⁰ の元の係数商上の忠実平坦性（旧 Andre/MonicPrismaticQuotientFlat.lean）
+/-! ## 実商還元の H⁰ の元の係数商上の忠実平坦性
 
 ## 概要
 
@@ -422,7 +422,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticQuotientFlat
 
-/-! ## André E1・E2：元の係数環上の実 (p,d) 還元と raw 残余商（旧 Andre/MonicPrismaticPDReduction.lean）
+/-! ## 元の係数環上の実 (p,d) 還元と raw 残余商
 
 ## 概要
 
@@ -573,7 +573,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticPDReduction
 
-/-! ## André E1・E2：実逐次 p,d 完備化後のモニック源の剰余（旧 Andre/MonicPrismaticIteratedResidue.lean）
+/-! ## 実逐次 p,d 完備化後のモニック源の剰余
 
 ## 概要
 
@@ -726,7 +726,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticIteratedResidue
 
-/-! ## André E1・E2：モニック源の実逐次完備性と生成元冪商の p 完備性（旧 Andre/MonicPrismaticSourceComplete.lean）
+/-! ## モニック源の実逐次完備性と生成元冪商の p 完備性
 
 ## 概要
 
@@ -866,7 +866,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticSourceComplete
 
-/-! ## André E1・E2：モニック源の生成元冪商の標準冪零還元（旧 Andre/MonicPrismaticCanonicalPowerResidue.lean）
+/-! ## モニック源の生成元冪商の標準冪零還元
 
 ## 概要
 
@@ -1007,7 +1007,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticCanonicalPowerResidue
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/MonicPrismaticRawSourceComparison.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -1190,7 +1190,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticRawSourceComparison
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/MonicPrismaticRawCoefficients.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -1278,7 +1278,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticRawCoefficients
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/MonicPrismaticSourceNonpositive.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -1395,7 +1395,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticSourceNonpositive
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/MonicPrismaticSourceCompletionH0.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -1493,7 +1493,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticSourceCompletionH0
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/MonicPrismaticRawCompletionRestriction.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -1630,7 +1630,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticRawCompletionRestriction
 
-/-! ## André E1・E2：モニック源の実 H⁰ と raw PD 完備化環の比較（旧 Andre/MonicPrismaticRawPDComparison.lean）
+/-! ## モニック源の実 H⁰ と raw PD 完備化環の比較
 
 ## 概要
 
@@ -1702,7 +1702,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticRawPDComparison
 
-/-! ## André E1・E2：モニック源の実生成元冪商の G9 入力（旧 Andre/MonicPrismaticSourcePowerInputs.lean）
+/-! ## モニック源の実生成元冪商の G9 入力
 
 ## 概要
 

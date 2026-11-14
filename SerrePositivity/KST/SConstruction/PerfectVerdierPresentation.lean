@@ -17,9 +17,9 @@ open scoped Simplicial
 
 /-- 全頂点を保つ持ち上げは、同じ元の三つの非零角を厳密に回収する。 -/
 lemma perfectVerdierSquare_vertices (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (perfectVerdierSquare d) 0 0 = d.leftVertex ∧
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (perfectVerdierSquare d) 1 0 = d.middleVertex ∧
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (perfectVerdierSquare d) 1 1 = d.rightVertex := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (perfectVerdierSquare d) 0 0 = d.leftVertex ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (perfectVerdierSquare d) 1 0 = d.middleVertex ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (perfectVerdierSquare d) 1 1 = d.rightVertex := by
   have h := perfectVerdierRawSquare_vertices d
   constructor
   · apply Subtype.ext
@@ -43,7 +43,7 @@ def PerfectVerdierSequence.presentation (d : PerfectVerdierSequence.{u}) :
   right_edge := (congrArg (fun Q => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ Q)
     (perfectVerdierSquare_inclusion d)).trans (perfectVerdierRawSquare_edges d).2.2.2
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (perfectVerdierRawSquare d) 0 1))
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (perfectVerdierRawSquare d) 0 1))
     rw [(perfectVerdierRawSquare_vertices d).2.2.2, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
     exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero
 

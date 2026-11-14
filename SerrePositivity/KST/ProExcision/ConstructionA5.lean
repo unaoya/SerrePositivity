@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.TensorAugmentationMHomotopy
 public import SerrePositivity.KST.ProExcision.LinearizedGroupProduct
 
@@ -54,3 +56,8 @@ def constructionA5 {T P Q H : Type u} [Group T] [Group P] [Group Q] [Group H]
     exact (h.h₁ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hr)
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Construction A.5" (partial := stronger-hyp) "仮定：離散群の直積を経由する準同型と、因子 P,Q 内でのホモトピーを要求（Lean が強い）。結論：次数 m+m′+1 までの積と増大補正つき二項和の鎖ホモトピー。非被約 C で定値写像を引く形は計画の決定 14 に従う（原典の表示に対し補正あり）。"] _root_.SerrePositivity.KST.ProExcision.constructionA5

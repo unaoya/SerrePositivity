@@ -36,7 +36,7 @@ def semifreeClosedHoHomologyIso (i : ℤ) :
       semifreeClosedToComplex A ⋙
         HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) i := by
   let Q := dgClosedHoFunctor A (Semifree A)
-  let B := (homotopyCategoryBridge (derivedInfinityCategory A)).inverse
+  let B := (homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)).inverse
   let H := _root_.HomotopyCategory.homologyFunctor (ModuleCat A) (.up ℤ) i
   have h₁ : Q ⋙ cohomologyOnHo A i ≅
       ((Q ⋙ B) ⋙ ((derivedInfinityH0Equivalence A).functor ⋙

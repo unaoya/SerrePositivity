@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafUnstraightening
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits
@@ -64,3 +66,8 @@ lemma presheafElementsColimitCocone_evaluation (x : C _⦋0⦌) :
   (Classical.choose_spec (presheafElementsYonedaDiagram_exists_colimitCone F)).2 x
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.5.8" (partial := special) "仮定：小さい単体集合 S（Lean が強い：S は準圏）。結論：任意の元の前層は、頂点が元の米田像である小さい元の圏上の図式の余極限として表示される（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafElementsYonedaDiagram_vertex

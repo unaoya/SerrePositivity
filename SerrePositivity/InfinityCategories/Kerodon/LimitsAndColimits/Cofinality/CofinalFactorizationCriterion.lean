@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.TrivialFibrationCofinality
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalAnodyneRecognition
 public import Mathlib.Tactic.CrossRefAttribute
@@ -80,3 +82,9 @@ lemma isRightCofinal_iff_exists_anodyne_trivialKan_factorization {A B : SSet.{u}
     exact he ▸ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_rightAnodyne i hi).comp (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_trivialKanFibration p)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.1.11"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.trivialKanFibration_iff_rightFibration_and_isRightCofinal
+attribute [cite HTT "4.1.1.12"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_exists_anodyne_trivialKan_factorization

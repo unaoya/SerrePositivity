@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryKanBarMappingClasses
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteLocalizedExtension
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLift.UniverseLiftPiZero
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryKanBarQuotient

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.OrdinalSimplexEdges
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.OrdinalSimplexEdges
 public import SerrePositivity.KST.Spectra.WeightedConeTriangleEdgewise
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseWeightCoordinates
 

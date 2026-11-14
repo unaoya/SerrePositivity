@@ -28,14 +28,14 @@ lemma cofibrantAlgebraUnderlyingDerivedSource_vertex
     (cofibrantAlgebraUnderlyingDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (ComplexLimits.complexSemifreeResolutionValue A
         ((cofibrantAlgebraDKForget A).obj X)) := by
-  have h : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋0⦌)
+  have h : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋0⦌)
       ((nerveMap (ComplexLimits.complexToClosed A)).app (Opposite.op ⦋0⦌)
         ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((cofibrantAlgebraDKForget A).obj X) := by
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv (A := A) (D := Complex A)).injective
     rfl
   change (ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋0⦌)
       ((nerveMap (ComplexLimits.complexToClosed A)).app (Opposite.op ⦋0⦌)
         ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))) = _
   rw [h, ComplexLimits.complexSemifreeResolutionInfinity_vertex]

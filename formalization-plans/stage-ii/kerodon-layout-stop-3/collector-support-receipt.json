@@ -1,0 +1,839 @@
+{
+  "base": "2656665d0901b968048f9c76bfe94591759865ac",
+  "configuration": "Current per-file Lake ModuleSetup from lake --no-build setup-file; synchronous snapshots are the sole intentional elaboration override.",
+  "tested_tools_sha256": {
+    "klw1_namespace.py": "35042a2ccb8d2bba0870eb776e393176920a950bcba4ff532e48cec3c661a46e",
+    "klw1_collect_refs.lean": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+    "test_klw1_tools.py": "7c902dbcedb60077cc7584a4d7e9a3b3bd66619363a3ebd39a58f0e9f38ed154",
+    "targets/kl-namespace-map.json": "9a9530f2a24be2237bb9e63c481e36cfe4af116f36b8bfc063a2fa0f2c3268f8"
+  },
+  "tests": 28,
+  "lean_fixtures": 4,
+  "failed_tests": 0,
+  "source_changes": 0,
+  "captures": {
+    "classical": 18,
+    "impl": 31,
+    "scheme": 68
+  },
+  "rewrite_review": {
+    "impl": 0,
+    "scheme": 0
+  },
+  "stages": {
+    "c18": {
+      "stage": "c18",
+      "started": "2026-11-12T11:10:05.586495+09:00",
+      "root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
+      "head": "0850731ff490a2071429a6e92f2d13463a2f8176",
+      "rc": 0,
+      "seconds": 253.764,
+      "finished": "2026-11-12T11:14:19.355526+09:00",
+      "log_sha256": "556647cf95225d42907127c67ef0cddf2623e40498bdb8bb753a909f78d1e155",
+      "count": 18,
+      "collector_sha256": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+      "source_changes": 0
+    },
+    "a31": {
+      "stage": "a31",
+      "started": "2026-11-12T11:17:08.794732+09:00",
+      "root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl",
+      "head": "ebc312599fce7666e97a25814e10c4b18e73225d",
+      "rc": 0,
+      "seconds": 453.786,
+      "finished": "2026-11-12T11:24:42.589080+09:00",
+      "log_sha256": "7dc9ae2022d89e116b510aeb25d47b82d73d335d9ff793d3eab14df3b2113c99",
+      "count": 31,
+      "collector_sha256": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+      "source_changes": 0
+    },
+    "s1": {
+      "stage": "s1",
+      "started": "2026-11-12T11:26:09.970261+09:00",
+      "root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "head": "3a7f198f33a60eb42be750cef8f0cfe592970abc",
+      "rc": 0,
+      "seconds": 188.566,
+      "finished": "2026-11-12T11:29:18.534150+09:00",
+      "log_sha256": "41ca550e611f83e2b6fce92a5bc46dce316a4c13f9019039397c6a14d7b7651b",
+      "count": 17,
+      "collector_sha256": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+      "source_changes": 0
+    },
+    "s2": {
+      "stage": "s2",
+      "started": "2026-11-12T11:29:40.656395+09:00",
+      "root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "head": "3a7f198f33a60eb42be750cef8f0cfe592970abc",
+      "rc": 0,
+      "seconds": 224.573,
+      "finished": "2026-11-12T11:33:25.232789+09:00",
+      "log_sha256": "816a4107ed34d66f6d989f41de07eb3473066af56f614d018c213b74e08c9302",
+      "count": 17,
+      "collector_sha256": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+      "source_changes": 0
+    },
+    "s3": {
+      "stage": "s3",
+      "started": "2026-11-12T11:35:09.282667+09:00",
+      "root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "head": "3a7f198f33a60eb42be750cef8f0cfe592970abc",
+      "rc": 0,
+      "seconds": 216.715,
+      "finished": "2026-11-12T11:38:46.001604+09:00",
+      "log_sha256": "0b0e051fa248ed4c5ce8764a3e49013da277e3c596eb11255a48ee6d40419504",
+      "count": 17,
+      "collector_sha256": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+      "source_changes": 0
+    },
+    "s4": {
+      "stage": "s4",
+      "started": "2026-11-12T11:38:46.081311+09:00",
+      "root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "head": "3a7f198f33a60eb42be750cef8f0cfe592970abc",
+      "rc": 0,
+      "seconds": 229.469,
+      "finished": "2026-11-12T11:42:35.554306+09:00",
+      "log_sha256": "8c7ded2852f5e4ad2c8e39e8a8a96c00900a68a60cbd4cc218027d9a3bfc9bbe",
+      "count": 17,
+      "collector_sha256": "67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a",
+      "source_changes": 0
+    },
+    "units": {
+      "stage": "units",
+      "started": "2026-11-12T11:42:35.660955+09:00",
+      "rc": 0,
+      "seconds": 12.039,
+      "finished": "2026-11-12T11:42:47.699868+09:00",
+      "log_sha256": "16717e8d236b1d128e9bab55a30c37fec0fee00e34ff0c4bb916b584162061e6"
+    },
+    "depth3-fixed": {
+      "stage": "depth3-fixed",
+      "started": "2026-11-12T11:08:53.930413+09:00",
+      "rc": 0,
+      "seconds": 18.275,
+      "finished": "2026-11-12T11:09:12.205395+09:00",
+      "log_sha256": "1bec0c411e2efdf6cabc02615a3a9b59f1928594272c1fc00a920cee0c499bfb"
+    }
+  },
+  "source_provenance": [
+    {
+      "source": "SerrePositivity/BhattScholze/Prism/Bounded/PDCompletionPrism.lean",
+      "source_sha256": "4900a8fceb09e7d9596c70b66cd1810d16063562054d46186e7b1c42acf4f2a6",
+      "capture_sha256": "4898bca12cd37d5403ae9d5ce14ae4e27f47a88970fcca301bedfa85beb57585",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Prism/Perfection/ClassicalPrismPerfection.lean",
+      "source_sha256": "c3a7288b0f054b7f26b9136f38e54f8f26b6553fb6644454f93ebf3bee1b5262",
+      "capture_sha256": "b4fc9ce45e67ef115295e0c5628ba011838953062d614d6f165328c243dd590b",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Prismatic/FiniteEnvelopeCompletion.lean",
+      "source_sha256": "0e8508a4a718f16ac0a63fb8e4f61f067e46c089fafc9e2faea4777e416641ff",
+      "capture_sha256": "55e0db12bf31e0bdaf4a829fa52460b2fbc66216f82f22c21ddc29182f514506",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Prismatic/FiniteEnvelopeDiagram.lean",
+      "source_sha256": "153ce9fb2755f7cbc91f76aaa3dd6097425c304118d123565ba2a6f73e047c55",
+      "capture_sha256": "d9e92a522a1dedd788fea9bc55f2dfc9eafd4d9d81aa821a5962b8e0ef916e56",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Prismatic/FiniteEnvelopeRawColimit.lean",
+      "source_sha256": "f8c3f80703939cb6ccd811e947a5dee1f17f7ce6ea7526966df7c20d766cd719",
+      "capture_sha256": "8026c0ee9ff91ff6270e44e8fc80a4ee26ef651f9a9076068a8bcf956cd8a073",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/Cor73PrismComparison.lean",
+      "source_sha256": "0af0994e5fbaf4922a2663454e53890d84f4490ade4bf68206495dce32e48f81",
+      "capture_sha256": "06e968295da183be9419b10172b8257e08a4fe5eecae1d7b1b37865aef14fd9f",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/InitialPrismPerfection.lean",
+      "source_sha256": "37c9f536f14adb5920dcdd8dbb293afeeb51b50283ed3168d13d949a4c94a34d",
+      "capture_sha256": "46aad64daf052329b962f589112873dee1858e5d42933bc8283dffaca1772c62",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/PrismInitialCompletion.lean",
+      "source_sha256": "81bd821e412c9ccfc8d1870660a67e51684a46f0fa05a00e946203ee78b4d91f",
+      "capture_sha256": "e8784b9cb79c747e8027162bc8ad99702032357f0fb2c91740522bae3708d653",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilySparseBasis.lean",
+      "source_sha256": "59841a1d3dc1dc4e8ae9a41bdccafe897fb2378aef97e47e2cd6425f10f697ab",
+      "capture_sha256": "461de34191030736a0a6d2cc17ef5a1305e6827a186de8cb35ab25e255a94c63",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedInitial.lean",
+      "source_sha256": "0bea014b64167dfaf348376ebcbcd1e526f6276fcf32f503cc0bb7f39fad6f8e",
+      "capture_sha256": "40a681d2ed6d885e5ae76489314c6f1bc811caa6264a208322574de11634327e",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedSurjective.lean",
+      "source_sha256": "51a115ae2f3c26e110c6c1239f389bb7cbe3e148bcdc634d83aad117080c727e",
+      "capture_sha256": "e2d3149bcf49182075d765ca9fe24f1c0c1c869e7925f8bbf30df0597ec22f3e",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteAmbient.lean",
+      "source_sha256": "fac598874d6efd217c4b493da2256f98083e93d8a2156ce07d97dd6ddfc14099",
+      "capture_sha256": "f93f88fcd589d21e0956f45779e052865bde7ca7fe88e0d40101587904806ee1",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteEnvelopeDiagram.lean",
+      "source_sha256": "cd237b14d719e090114ded915d48bb27dfe6648475a43a9508d2c2e48c44540e",
+      "capture_sha256": "d5e11d6b3da5d338425d12c3c368a384cd2bee40f4a6c3e8448b3fd4875e964c",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationPerfection.lean",
+      "source_sha256": "35235f39be461407529e6ff01e2f2428cd7a3841998b02ddd65a4bd30b8ade8b",
+      "capture_sha256": "a6e3231ba982a3c8c3082b0140be4af67ca7267ad9359aeaff4d93925f4ebc9f",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationSubsetRaw.lean",
+      "source_sha256": "4e7534beeb7d6a9661bb1e340e7dd36e656c3a7c7af5961b478e0c8ecc8286e5",
+      "capture_sha256": "1ba059725e8e3700e96748df56525387390bc9725014595cea8c886699cda185",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/CommutativeAlgebra/DirectLimitRelations.lean",
+      "source_sha256": "5d56f7d1df28467a491300923a51de63e97d0c8c56add3e69990463283494b93",
+      "capture_sha256": "32adc21d86b63b76519e2c9790b195642fa7a3286da9a50fa91d50dfad94f365",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/CommutativeAlgebra/PolynomialSubsetQuotient.lean",
+      "source_sha256": "6f2f70070e2845c1e91232f9c8d9ed6e65db7338b6b02d4b6a4b269ffe55fc2f",
+      "capture_sha256": "86290de3bdd20a462318b23c5fe978520642fc4211e218e5c7942de1e52ed99f",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/PrincipalCompletionUniformBound.lean",
+      "source_sha256": "53078682ea61538436528c549af919b625e731f3edbaa87031c58fdf3b122618",
+      "capture_sha256": "672f079ed5d8a1102c1dffaa719a8918bb390b0eab2c4152506055e1dcbf75da",
+      "mode": "c18"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/AnodyneBinaryProducts.lean",
+      "source_sha256": "be13b665ccaf9903f76f08d1f46ac3ce7364b15c4011fc005e86f73a08084cc2",
+      "capture_sha256": "6247d929691dca46a83775127ca4ed927fe08a1e822a5c97bd32271eec94ebce",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/Assembly.lean",
+      "source_sha256": "9a1f48dc0a1937549b7f397125d36bac33346affecd354fe77cde9a985bab8fa",
+      "capture_sha256": "9ca235a7f0d94a5772d0580b6adf92e8d55e486306c196c9328f29318dd78626",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryTensorColorClassification.lean",
+      "source_sha256": "0b957bb101a64aedd3720f16f772daf8d295497abf81f12694d7e8f7e9b2eefa",
+      "capture_sha256": "f022d7add28c3efb116f7158f341a66dd6ed0d0578ce4fdf1d8a6995ccbffee2",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryTensorInputDecomposition.lean",
+      "source_sha256": "14f7c9e48830be9d862924e63b2848ae9a49008c162d8635024810223abc98e0",
+      "capture_sha256": "a0e5147d95f987eb1ee2f22cb22a826e4c275ab1e52cae9e77bd0419fc02ff76",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryTensorOrbitDecomposition.lean",
+      "source_sha256": "448a0d96480eadf7409f89b6ce34a74361714a99a0ee3ba1789afbda949c5b9b",
+      "capture_sha256": "267bed01f226f3cb63e0c7a37a09fe256998c4ea97183f69c9b1b56557688b20",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryTensorOrbitInputs.lean",
+      "source_sha256": "1afa4b34923e345b6dda68eaf737c136ee116523cbf6a0bdc4315a3df82b2fa7",
+      "capture_sha256": "1efafe8098c48f5190e8a1581d4ab8c431c34e3fe3b49b283d769132ffc9d81a",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryTensorWordCounts.lean",
+      "source_sha256": "ce6f1919768d50f5de8f11547a48e7c906f90127aa475d87b4e0c4568b602992",
+      "capture_sha256": "c2dc85817d9f0828f00cdbac79d97921ed580457ab33ac627cb79dec0b4b9de4",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductDKHom.lean",
+      "source_sha256": "3732fb5111b69ac579330b84533963baaf78c642325c56d6f8e950554deb9119",
+      "capture_sha256": "f906d1fa63828cee68dd740ada4cae571dec0f9778dc630cd5f5d5ce2f91a650",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrameHom.lean",
+      "source_sha256": "a265ab51f72ec87cd2a07cfc367a8b756fa3150558b2a81c3cab77359863df6c",
+      "capture_sha256": "f088bb4ffa33709020dc1de842b365a906f4d5510243a8d038941e7adb8b4b28",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean",
+      "source_sha256": "3c8a444607810d8397c29b379fc2b617ac40c0ecd991dde6356c32be495f27af",
+      "capture_sha256": "4ad9d60229c43cc13405a4a4dac9fdc190b65fa2965e9beac6c9b03b665477ee",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean",
+      "source_sha256": "ce904e95b4b16f6ff0d90020134e7a2aa7780f04179f771fe4241893009e336e",
+      "capture_sha256": "2890344eddb9ae85aaeb13d2e93091be28ce511307db43c6e93a64953716e218",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean",
+      "source_sha256": "5921ff36733814e0bf549a641c8050cf332303e1c942e0a16136f951ed742466",
+      "capture_sha256": "0111cfc47216dfec0b9c6dacef5b9f200557d3a051b88004c7a485d63c65f8ba",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean",
+      "source_sha256": "848998d09cf53a9e42b61ca8352eaab693a40a6b2cdbbf3e308b755a05c3e351",
+      "capture_sha256": "62896ce2b264561c7496e9cb829186fd30961d69e714030a5b629a2b0735c5b1",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/FiniteInductionMatrix.lean",
+      "source_sha256": "3aff7ef5a9d43b21e06877a09684c0f3d86a4d155d8b3cfa5be247bb99170a85",
+      "capture_sha256": "5be0be2ef0759483a30be8cec8e24d389a23009009310bcdfc0d5c8a87da310f",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean",
+      "source_sha256": "b39a6650d0f0137fa7dd630c0bf41c55eec3f930ce53329f84b3e59da167f1c0",
+      "capture_sha256": "6b528dbcb56e5ebcdc1a9da5720224d8da2ba2b6bcfb8faf339a3100ff753267",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean",
+      "source_sha256": "f4fc4b8495ccb81d045376df2d88a15d91d90f488e9a9a46e75316b93385157a",
+      "capture_sha256": "303c809c54da3b1bbf578bed8dd8c85be50abdca80aa84750ab3743bdb482fd5",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean",
+      "source_sha256": "43ba825b82f3732264336f14567e744707a7648a0704d2d2c08efc15aa8892bb",
+      "capture_sha256": "e19d3c3922d685a933b2acb12348c393aca4e823d628c9c7995321cfaf9bd72d",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/StrictBar.lean",
+      "source_sha256": "9b35da458441df2c436ea298f06cbb29614087f1826e8ced84f1cd2572580ad9",
+      "capture_sha256": "7a4d85dfa107b051104a68249a76af05e9f01138863d39cb1d619c1fdd5b85fb",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorComplexInputs.lean",
+      "source_sha256": "49bb2bb8c3d9d8a6703c5deb077c1513949e2947000799a590eacb909668ae4b",
+      "capture_sha256": "b97d5ea374ca994fe6ca175759c02687233ebf55a864fbd4f8107fa0014c8749",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorInputComponents.lean",
+      "source_sha256": "6c8148cbe90234442150ef5e4aae5bac9cbe9f05c3240ee983989d6b6a6fc1e8",
+      "capture_sha256": "1ad461dde4fab21964f6260d27704e85e19976e8a81b0808317ea00c52653cdb",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorInputMatrix.lean",
+      "source_sha256": "f608b20c42f3457fcdfdcbd49dd711d2c48cf8cb6c3508fddaece5078fd3b5b8",
+      "capture_sha256": "b43a0542c0bca185b7533b685f88a1b4c3d26881b22e5aad1a0f1b3ac5b4c006",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorStandardAction.lean",
+      "source_sha256": "699f7580229e4f9a7c69f6093435f6efd57f70f7495b144d9c34ee0aa3450610",
+      "capture_sha256": "c7091f08146287b6f4cb54ea12bcc56dec7ad77e5ef6db0a4581d86006f2d02e",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorStandardInclusion.lean",
+      "source_sha256": "aaa35a133f95a95d0af8fda64e4e91c1db114814259637ab418e73c93693e582",
+      "capture_sha256": "8b3b90dfbbdb15c5aebcbacc405c6998d1fad5028e057599474a59a35670b64e",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorStandardPowers.lean",
+      "source_sha256": "d07d63c7110e3715aba5e923195c5be4b464151046c2c42675403caf35e66e68",
+      "capture_sha256": "724f21b7c2cca724b0b1c83446f6974b7d9ebb1ce4e69aa3018fa9a5d9fe0168",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/Interface/CoproductTensorLegs.lean",
+      "source_sha256": "7ea398be20f90a0286e0086c8944a766d636b4ef1d701c6f2df452d4e62a3b20",
+      "capture_sha256": "a5d0ba67da204f609a969011c83d8b9f90dfb1c400de515885762185e8691944",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/Interface/TensorLegs.lean",
+      "source_sha256": "07f509034a8f6394ed52947d603112b4696f4d3c3cfa889625b2deec8675d37b",
+      "capture_sha256": "512dcac39ca72eec6b994ccafd75c13bc7cfe7e670c027206936b2fecf033014",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean",
+      "source_sha256": "727693376db8ff90da68dd5147b16a6c8ac725cba9cfcf3b3b15cc46c2f39fbf",
+      "capture_sha256": "e9a8eef60e5ceb1e87433f0fed733ccce625dc3168c24aa141a53c4579e7c3d2",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/Interface/Theory.lean",
+      "source_sha256": "b5d9fb073dc8a213b723b5ce503e4a4a481c0a96fd81f81786c18ba39ecbfbb7",
+      "capture_sha256": "6c184608b0f66e71770016907892b168b2d471b9fb27765952c084585872323f",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean",
+      "source_sha256": "6273997240699638b5ce625e5ac50c991ed49d9756d37cb50b34c6595964a4f5",
+      "capture_sha256": "53802b99a2b2b81683d69f5fae6fc09fc61a011e1351fc86aa7cc34e12133d70",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/EInfinity/StrictAdjunctionBar.lean",
+      "source_sha256": "6099ed7281a0ae2f85f824f4f9b2839983398dd376689be33fff809f2e1c1e9e",
+      "capture_sha256": "74b7c6e8194d8aadcb7fcc5d69082bbca5b5418b265486852b9028e2a104d360",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean",
+      "source_sha256": "90882c62bedc811fd13f5a39b23bf773826472a34892eb31dbcfa52655b2fd66",
+      "capture_sha256": "b21cc86a2e011acf11b6a146897ae7694119741a04058a1cb8224b806cca7ce4",
+      "mode": "a31"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry.lean",
+      "source_sha256": "9b88b5e01ef36f99def5a0640e4efbb947d8644ba308f2f4da588308f63f7818",
+      "capture_sha256": "561e4dca0ef5c92d89463a274e33577b383f38b70e078b8eb408207ac9eb757b",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/AdicProjectionCompletionInverse.lean",
+      "source_sha256": "8e00e78ebaa3ce9a1880001e977e8836170bca75589c4bf8618e1527223c9903",
+      "capture_sha256": "ca40b1ba12b3e4b5c9689ef7ac70107162ad29ab036a00f9fae2fe5ed765aed7",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/AdicProjectionFactor.lean",
+      "source_sha256": "fa1d70a0e79f9acfa92eb22d4f0a88d33f54fba5717aa8b3ec0236f01a931bf0",
+      "capture_sha256": "83343354cc58660dad7e8d30a3491a05e7570d661c0cef37aae8f885a7cab6b4",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/AdicProjectionInverseComponents.lean",
+      "source_sha256": "5e3f8a1fa1b6fe1b366149477b651afb23809e905b04d927c3a489a3e6c81027",
+      "capture_sha256": "71de10eea0adde459e728a861b5f6dc15957666b6f1a0738ce0f305447d72b53",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/AdicProjectionNaturality.lean",
+      "source_sha256": "443f819c5ab2831eeb8c97446fa0b49961fc315451362ad20b283a53bcf4b9ea",
+      "capture_sha256": "28320b77d88f1fe3e145fea842a3eb38e38101b95a5db0d7d6a3cdd07d0fcce8",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/AdicProjectionSemilinearNaturality.lean",
+      "source_sha256": "1370b75efbf0a2cd2722e64479e7aa9357c8617c04121bdfed4b4d5c0eaac0dc",
+      "capture_sha256": "1840166888662bfb32f434356bda0d04816fde49d53edb7d17ee56031eb034f4",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/AdicSemilinearMap.lean",
+      "source_sha256": "aed71512dffddcfe48eb87115177d5c64103dfc20a7b4c7bbd2ef5ffb488e686",
+      "capture_sha256": "87c65862e34a7fbd9c4edc7cf3600e5de4c5a6ae1f78e92cd06f3d824271801e",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/FrobeniusAdicControl.lean",
+      "source_sha256": "59c015fdd55538fc61d3d5d4ee79188c76c12970049af4149eb09df517567eba",
+      "capture_sha256": "bc209053158b0f1ac844d2c867c122e3ada0897a6fa9bf42135a5fd0f549ef59",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/LinearCompatibleFamilies.lean",
+      "source_sha256": "a0bdaffbcedd2169a8e600e5d98dcd37a7388a7c082b5a87126be52af2bf5bb5",
+      "capture_sha256": "e3b7917f9d6a10074e8c5d86698538d4c5e2f1e0badd494eab581b104b2ad1bc",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/LinearCompatibleFamiliesEquiv.lean",
+      "source_sha256": "889eeb83262ee0d529930ea07b63bb8a2778e3adf0fea5a13f150a47985d95e8",
+      "capture_sha256": "cb2056226453bf761f3357efa4637be4a944b7554f1c04fa0c606a758c11d8e7",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/LinearCompatibleFamiliesMap.lean",
+      "source_sha256": "139477dc8c960cb1f488fa165aeb096f2afa3f67eec5df1af8a7e90747a0ea03",
+      "capture_sha256": "003c0d8414ef176e605499bc529c91322202a9fafd662b46660f4aa136f72071",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/LinearRangeDescent.lean",
+      "source_sha256": "362cbc009540eb68442b4c078a75ba12eb380255ea80e83ddb40b1fd12d7b1a4",
+      "capture_sha256": "f4969c254bf0ffca36fa3014fef4dff277e191438bb96f835ea349765cebdfa7",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveCechFlatBaseChange.lean",
+      "source_sha256": "4e95c7d7a3cf7b64782933dd30a1d51ffa55e4a5503168c715ddd36721c173bd",
+      "capture_sha256": "ad3de998ab7f5850f031a2685479df7449f78740a8e19096441b26cacd6f87d2",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveCechSemilinearMap.lean",
+      "source_sha256": "7796650bc46b6ec848893ed5d06f1a50ab8b7e052e6a3771bb19dc500ce382a1",
+      "capture_sha256": "f4395121a2e2f12057e4361ba4ee6238e8af46acf08c1559f2b38b50f8cf1241",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveCechTensorBaseChange.lean",
+      "source_sha256": "bb4bde546407c8bdb4fd7e8b134a1d92d1053e6154438f2652e2279bae4dd0d9",
+      "capture_sha256": "a97a77e8d0761dd750f2dfc605e57bbf3a492c888397d54181503c83b0ea91f3",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveCechTensorNaturality.lean",
+      "source_sha256": "0dd4955cbfbfa8d44b200d71617df0e76adb99d430b8d5ea7ccb5ec719937709",
+      "capture_sha256": "83591cd88174dc09fef78634193844fe441242c2bacac3109340811f29236dd3",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveCoefficientChartTransport.lean",
+      "source_sha256": "99c2020e4e11b59a945bd3304a141da0f823791a45f99e013188368c3c984d5b",
+      "capture_sha256": "1ada7b05fc9d7dad199652bc86f650188238349a5bbd351f06a916d3f830955d",
+      "mode": "s1"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedFrobenius.lean",
+      "source_sha256": "73dc6f9fcd1a2f2e73b2dc94dee5264ec27eace9cf44fc7ddaa11e95e9b42e64",
+      "capture_sha256": "83f7c1ace1bc924840cf59ce93a886b6b7bc8445867a45edb0ab2480bd05815c",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedTensorCoefficientChange.lean",
+      "source_sha256": "2c70368dd2f24228d879bec6ad9b765718912aa9019bcb8fcae75c7d0d6c95ad",
+      "capture_sha256": "54aa156e6fb5aca8d182cd3053870de3393de55b845f615da8dab8fc81776339",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedTensorLocalization.lean",
+      "source_sha256": "c58d6229ef26a056c85a5e9c74a44a83c2017d9a5fa7d79bb52c5d463656b6ea",
+      "capture_sha256": "dca6df14752ee527a652506695ea6e1a494fae8af1029e60150a24b994bacd8c",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveHomogeneousCoefficientLift.lean",
+      "source_sha256": "099009729d89f976e5a1396add3f35686f3691a9baf07965b4e9fcb917e5b0d4",
+      "capture_sha256": "081222ee9695717dd6a405ec928dfcd70d1d690a145b8aebed0b84cd82075360",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean",
+      "source_sha256": "ec0c6978874c1d9e621fc5b828a1a8493f24e793facefa05be86c0d14bf2ae0b",
+      "capture_sha256": "61509fc8c0e3955dcb60889aa7206481f5b319d59fdbbf92f586d86c28067a2c",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveNatCoefficientNaturality.lean",
+      "source_sha256": "46da2680b237c987f2beb7b4eca9993d0b86ab1394977bd79bed4c62f03d95a5",
+      "capture_sha256": "79c0dbf35b9d78ed630ae2d094af326d8bf727e37deb8ca690d44cb5a73ea863",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveNatGradedEquiv.lean",
+      "source_sha256": "83f107e3fdebc6114821922acd781c8968bf25dbecf9a94658f6bbaae4bacc85",
+      "capture_sha256": "8c9c6d16c24708e9780160a5635c15f9e548a96a1dd3a6e719bd9fd0f6637206",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveNatGradedTensorBaseChange.lean",
+      "source_sha256": "61dd1da3b0a60920aa80732479afb1042b56bb30600144a0c51858c6a2873e2e",
+      "capture_sha256": "305182cb77f42ec9b638360c8d6aed2c063645e58d34fcfc01d64e730d8cd5ed",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveNativeTensorCechBaseChange.lean",
+      "source_sha256": "5d6860546ee5793ca0f7bc25e0ecfdc13b5a7ba41b266b76f3ee606ff205f20e",
+      "capture_sha256": "a1ca8ebb300459ef3bdd0a9c9142531e83a000bd96169419f0c0c65491dc014d",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveRightTensorLocalization.lean",
+      "source_sha256": "4450a9856145df22349987d4dfd13687a59309b782237c2761affc96ce9d56a4",
+      "capture_sha256": "f04052972e3a14770f1b7b6748762308f2645a70ec4db81db4a45954bcf40203",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveTensorChartComparison.lean",
+      "source_sha256": "31b1d4e6e81889e73d3ecf335c7b295dd7a99041fe77398f0a5fa950aaa196f7",
+      "capture_sha256": "d0853dc3feef6721532483a319d048630689bcaccbd2e9acd932db037dfcc584",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveTensorChartDiagram.lean",
+      "source_sha256": "a525a62243719a5bd630d8aff51b0cc4f310541ceaae3d08d193638f6b838512",
+      "capture_sha256": "90cae45c6a63eec1c43aa8e9eeeae23ffc469f6a3628991f14fcad21bd545626",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveTensorChartNaturality.lean",
+      "source_sha256": "9ec3b1826a121643756f733442cbf4f664e8a5992f1ef0b312bbf9f307157f19",
+      "capture_sha256": "89caa5859b97890e585f93e1b6ad320afdcafab3021c6a2dc58f783a31612873",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveTensorGradedChart.lean",
+      "source_sha256": "e4963f6f6763edf24f18ffb6e50345c77bb79e3b5c3403cde5705da180d46953",
+      "capture_sha256": "3e2a813d97f9e04b7b4ba5093a82a1718f5554c41be7e402d70afdf478a845ce",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveTensorGrading.lean",
+      "source_sha256": "5bbe4a6f640902cd915ab70bfbeeba4287061d634080a5f7bd62e81c00c597dc",
+      "capture_sha256": "4316a1d31eacc25f19dc968d7cf5a9a0d43decb5cf3c5e796915d27d2347b6bd",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ProjectiveTensorPolynomialModule.lean",
+      "source_sha256": "e16df4189b5be0e8fcc426196d6d7c71d3fbc0c95605c5da4e718de77acee9a6",
+      "capture_sha256": "0e8ee77002abce651259e6a13bbba21211d1a3004d41ec7f46e9bf0fb3b0135e",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesAdicProjectiveModuleMap.lean",
+      "source_sha256": "0a12c01801cdcf80aeb560999f6cf7549a0369c79d14cfa899e26e2cd14182a4",
+      "capture_sha256": "7d17c08538bf1cdc44e61536c4f7575df9bdfd77ce54a4d0a750260ca3c0f051",
+      "mode": "s2"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCechCompletion.lean",
+      "source_sha256": "0b3685b17f5ea6b401716d034bb4af86b98a64219cf3cca49412574d011bd1e8",
+      "capture_sha256": "f5ffc6a2b1cd480e556a5946898e0da539f45ee7f7f087f5c1cfbbcba0fb0569",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCechInverseSystem.lean",
+      "source_sha256": "703e63de3d435389750eca78f7f182fbd81d1bd8558f9e1ff7bbf7b5f4bb47f5",
+      "capture_sha256": "6c4a786c5b8ca2a7ea9ad561dc13b85d6561c01c00511c901192db70e9822485",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCechModuleMap.lean",
+      "source_sha256": "83da7a5088404c1b78dcda0374af5bd7deb5c0fd599065829bf677a4bc9ea3e5",
+      "capture_sha256": "62cea703d5b7a60ef99f3d2bb38bbfe56ea360fcfbbd99d190df8513725dd690",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCechModuleNaturality.lean",
+      "source_sha256": "5ff5d21c013636754250924b05027d197395de7280597c094b3861ce68d10aad",
+      "capture_sha256": "0b81c5ce4497a25b7adbab069e5463e1eb725964112619d732ac00fe6f7dcfd3",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientAdicFormalFunctions.lean",
+      "source_sha256": "723d27e07a6e82f6c024e6fea83ff0660ccf30a7a73c3208517924c100d59cc9",
+      "capture_sha256": "1dfef08167b2022ac5ac4c7980547e4b09be1a5adcdbadb4973d803be6699a87",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientAdicModuleNaturality.lean",
+      "source_sha256": "fc515220225d5aa89146e14bd82ef2622a4da4b6b1e7b8e9e491e90f516c0467",
+      "capture_sha256": "6eaab7f3eae3c1071d6d34ad8f4836beecae630f71f178e97e3b7b92ab4c27a6",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientCech.lean",
+      "source_sha256": "cb99a5a310fd55ef2c1e4430f03376c043542d4f39f1dd2005190b1db7e8d71c",
+      "capture_sha256": "7ec7ea2ca5383dc5d681918e92147bc0ee08338f337a21de83c3cfc18d810b0b",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientGrading.lean",
+      "source_sha256": "9dc12383b3a5224d6ab79b97e947917e8680214fdee7cc28ce93282e67efa6d5",
+      "capture_sha256": "2e829f20377ee9f121813ddbf7aaec631aaeb8dfba7574215546f9cac75a68e2",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientModule.lean",
+      "source_sha256": "361dad77a694bbff4e42ca3032c8329f3fb06685ffd154bc67b1e8249abf7779",
+      "capture_sha256": "ee9a09859bc3d8a01f2904dd0983425350a2608b63890000ff97f9a0c6e2e4d3",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientModuleMap.lean",
+      "source_sha256": "c6611fe9f2074a0812399995203b8dd907ab3fb47104b29bb5290bc2a5f96c61",
+      "capture_sha256": "7223e81815510024a1397666cba53593672f7ef9edc43c885ebe6a00d04c4a09",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientNaturality.lean",
+      "source_sha256": "309d1bd3d8a7414cd3f5ef8b8d3cda3edd33571908706dddcd2eb70d9ba7c4a6",
+      "capture_sha256": "cc8f0667a015dc6ceb6d8ac523008658dff5f8e42ba4fd0e4eb63b5237e9b21d",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCoefficientTower.lean",
+      "source_sha256": "2f35a76a4a1f41d2eca5b32fb76d2775fc74a69a41f906190830614a9046e73b",
+      "capture_sha256": "536c5712a4e9ceea14c4bc7ba1ba1899664826b392300c3765569b6ac9a2e7fe",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedTensorChart.lean",
+      "source_sha256": "9f9bf2cd5f24f00ce1e2fcc98bdc8b14fdf7cc85e74dbe287e2800a068246d2f",
+      "capture_sha256": "02b8fda50582e27287c5c493ef089118224611a458b6b68cf277d0229e6b06ef",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedTensorComparison.lean",
+      "source_sha256": "e74701c668e33ae4c45b76a427408d5bba5fbf606685d0b545951f1d2a2b3124",
+      "capture_sha256": "0fe15e112fdf93c4b23e6f04955e16739f15e33989b8be0ccf4bdb664859406e",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedTensorNaturality.lean",
+      "source_sha256": "0a427d9cb4edb657cda3b2eb8305177be31632371da8964e9b16f4746960fbb9",
+      "capture_sha256": "53c5914ca9096df05abc96aafd3695dccbdcae309b1a87f08e1b28bfbadb0474",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedThickeningFormalFunctions.lean",
+      "source_sha256": "7f7ca6b9f9c4c878c4162c178da03c2b3a0c0c8e8b7e14b882daae1a81076750",
+      "capture_sha256": "458114998477dd3cee27bce07856209825082512a175c1236d411185266aa913",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesClosedThickeningNaturality.lean",
+      "source_sha256": "53ee7cb7b502ecb1f6d7ecc49016278d1c5de5ba4ea40fcbb063823e3cbd4f0a",
+      "capture_sha256": "e47843d11a42a3cf8a0aa09a9603f50a77ef537860157a75ed076f3ca5c7dc8f",
+      "mode": "s3"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicCech.lean",
+      "source_sha256": "23b01eea9cccddc1a9976745ab326e425242a2d1c4963f3f3b354bdb2b846e63",
+      "capture_sha256": "40030d5c31afd80635b4e6eb9e18b6bb78a67057027c9b9cc27d9627ae510fe2",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicCechTransition.lean",
+      "source_sha256": "e0795c370b8c33afd08afffc30537e5fb7acb04e52078f6f1cc9fa99b298f670",
+      "capture_sha256": "d298b965fe3686805066c6628669a658cfadf2ae952c244bcf9a4ed69f612b9f",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicFamiliesNaturality.lean",
+      "source_sha256": "6d3658a5a5c2b10e07c4e10ffed464c2d30ccd8ffb44e715909b050ee3072d4e",
+      "capture_sha256": "4a6a88f9b112377e60220ca533073f1cd14625bba22885db2db5ad720128c6fe",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicFormalFunctionsNaturality.lean",
+      "source_sha256": "07005b36f963325f183cb6150f9a4994d826607332ff3f46ccd2469a4b83baae",
+      "capture_sha256": "2605821917c4c2f6894a46685eb67584eff0067f8408278ce95a25e649d87e73",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicModuleCech.lean",
+      "source_sha256": "9a97d57285a1619d84b7fc8fb7d43fb305039fae2de5dba41c812e653e3a51df",
+      "capture_sha256": "eaf2dc5fa2e2701c0c9c40d7f3cbfe3e9e86c40e1b9418265a178370e0bfcfaf",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicModuleMap.lean",
+      "source_sha256": "72d836aacfdd23368bf90cc7dddb7ab133c04df5e946dc30b489b11123a6f92d",
+      "capture_sha256": "a3f9c26b1052cfe319821a9e1e1930d9a62d599f7e42b5de5084ff394a7429b0",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesCoefficientAdicQuotient.lean",
+      "source_sha256": "5e959a6191202d436f9c6c81a6fbb0ea26fd5e7054fdadc4e11e9a18d04d8387",
+      "capture_sha256": "6b0b35149f855074b889d0a60a40e7c9be37bd50099b05d81a8df1999e22a46d",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesIteratedClosedCechTransition.lean",
+      "source_sha256": "c285de69b5d2991aef3d506de0417cf43c2fccb7476eb9a4763d9686ebd9130b",
+      "capture_sha256": "25d8a2bbf86509b8a8d83d34d1339f6d4aaa7384e66e33aa81e8e3f9a989b615",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesIteratedClosedGrading.lean",
+      "source_sha256": "dedfb9777ef18d4e386e8041a1f1c67276285c18c72d4cb2f43920bdb7f9759c",
+      "capture_sha256": "76f6ed5e7ed075af1d165d2b399a13fef7e8530460cb0a110ba40db2c26b0e99",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesIteratedClosedQuotient.lean",
+      "source_sha256": "107c6db80aa22e9de4aa0ccb07070da0cee0351ee8e237df8ba9e345b65ca182",
+      "capture_sha256": "8534996d44ac93abe2ce9a69bfa2a760475cf0f52a8192b3c21b4c560d1bcdaf",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesIteratedClosedSumDecomposition.lean",
+      "source_sha256": "1d5f07c1d56875556b8e003b14a48fad975fdeb7edf1b611990adf4a3b4f64dd",
+      "capture_sha256": "fc28478852d85bc190cee556ed099ec3e735700a210f6ebcddb05141a17dc314",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesIteratedClosedTransition.lean",
+      "source_sha256": "36e35245cc38ef80a9a690058a027abff6a2f06aac0e121ede735863e2ed9e7a",
+      "capture_sha256": "44814be47e39b2aa8f83e566271ee7797bc61f6315503e1c0ad9545aabd17a99",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/ReesQuotientTransitionLaws.lean",
+      "source_sha256": "01330275601d8a6c08bdaa153cb484fa101af9be316748bd167a4eee636ee771",
+      "capture_sha256": "1421e1952988c2ae58712d9197b27f09ef8939a77c72ea808008c38892ff254e",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/SemilinearCompatibleFamiliesMap.lean",
+      "source_sha256": "7259c4daf926f99e0c23c8b245fcd3169e891e96d2cb2ef40495fe03438ec602",
+      "capture_sha256": "bf82e68901f4f0fb8fd53df5c7e1ee22d30529b09acf5345604e60890ae56d4d",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/SurjectiveCoefficientQuotient.lean",
+      "source_sha256": "e526728eace1880a10c8950121a9f980e72b3a02a4826ab75cc6d13cf5eb11b3",
+      "capture_sha256": "23bff7ae3dbbf05d163746cef3eedbfb6568ec6f81e5b9f66b982028ec31f4f1",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/TensorCoefficientAlgebraModule.lean",
+      "source_sha256": "94bedba9d0dc33c56e445aebc02f65af31079352c0cb70ca5dd33834bbad0364",
+      "capture_sha256": "72e2b309962bc0fad6c1e66f768ef5802abd732ab6ec50105da21c51fc69a80f",
+      "mode": "s4"
+    },
+    {
+      "source": "SerrePositivity/AlgebraicGeometry/TensorCoefficientRightModule.lean",
+      "source_sha256": "ae0bdfbb7db77777584e419cdbc341b38d92f5bdfc53d12e486e16e20e3a99ec",
+      "capture_sha256": "34a3bfed0bf14e7d060a377a93d9e55993c21276c68fe5334618a884b45633b6",
+      "mode": "s4"
+    }
+  ],
+  "opens": {
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductNativeUniversal": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.NativeCoproduct": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.NativeCoproductLegs": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.Interface.Theory": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    }
+  },
+  "policy": "Keep mixed old namespaces, qualify moved references, remove four all-moved HomotopyLimits opens locally, keep global Mathlib Simplicial scope. Do not open new Kerodon destination namespaces.",
+  "collection_snapshot": "Each capture records the same collector SHA; the helper is copied once per collect invocation. All 68 scheme files were freshly collected."
+}

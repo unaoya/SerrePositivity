@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Kan
 public import SerrePositivity.EInfinity.Hammock.AsSmallComparison
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRelative
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
 
 /-!

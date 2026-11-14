@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData
 
@@ -232,3 +234,9 @@ lemma toFunctor_map_outgoing {x : Lower r (r.deg j)} (f : j ⟶ x.obj) (hf : inv
       d.outgoing f hf := d.toFunctor_map_inverse _ hf
 
 end SerrePositivity.Reedy.BoundaryExtension
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.9.15" (partial := direction) "仮定：指定次数の低次部分圏に一つの対象を追加し、L→M の分解を与える（Lean が強い特殊形）。結論：同じ境界分解の中間対象を新しい頂点とする延長 functor を構成し、その元の下方図式への制限同型を得る。原典の (2) から (1) の方向に一致するが、任意 good filtration における二つのデータの同値は含まない。"] _root_.SerrePositivity.Reedy.BoundaryExtension.restrictionIso
+attribute [cite HTT "A.2.9.15" (partial := direction) "仮定：指定次数の低次部分圏に一つの対象を追加し、L→M の分解を与える（Lean が強い特殊形）。結論：同じ境界分解の中間対象を新しい頂点とする延長 functor を構成し、その元の下方図式への制限同型を得る。原典の (2) から (1) の方向に一致するが、任意 good filtration における二つのデータの同値は含まない。"] _root_.SerrePositivity.Reedy.BoundaryExtension.toFunctor

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRestriction
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalAnodyneRecognition
@@ -87,3 +89,11 @@ lemma isColimitCone_iff_restrict_rightCofinal {A K X : SSet.{u}}
   (sliceUnderRestrict_equivalence_of_rightCofinal f hf F).choose.isInitialVertex_iff c
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.3.4.7" (partial := special) "仮定：準圏内の余極限余錐と添字への自明 Kan ファイブレーション（Lean が強い：弱ホモトピー同値を自明 Kan に限定。図式の辺が同値であることは要求しない）。結論：引き戻した余錐の余極限性（その場合に HA と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal
+attribute [cite HTT "4.1.1.7" (partial := special) "仮定：準圏の図式を共終写像で制限する（Lean が強い：元の添字単体集合も準圏）。結論：同じ余錐制限の全空間での同値を、射影との可換性と左ファイブレーションの繊維判定に代入し、各頂点の繊維上の同値を得る（HTT の同じ繊維射。任意の添字単体集合は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceUnderRestrict_equivalence_of_rightCofinal
+attribute [cite HTT "4.1.1.8" (partial := direction) "仮定：共終な形状の射と準圏の図式（Lean が強い：元の添字が準圏で、共終性を仮定する向き）。結論：余錐圏の制限は同値となり、指定余錐の余極限性を保存・反映する（Lean が弱い：余錐圏の同値または全図式の余極限保存から共終性を検出する向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal
+attribute [cite HTT "4.1.1.8" (partial := direction) "仮定：共終な形状の射と準圏の図式（Lean が強い：元の添字が準圏で、共終性を仮定する向き）。結論：余錐圏の制限は同値となり、指定余錐の余極限性を保存・反映する（Lean が弱い：余錐圏の同値または全図式の余極限保存から共終性を検出する向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceUnderRestrict_equivalence_of_rightCofinal

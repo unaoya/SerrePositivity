@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementSelectedCochain
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusionSimplex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.NerveInclusionSimplex
 
 /-!
 概要：実 cone の対象族と、元の frame 図式の同じ通常単体を構成する。

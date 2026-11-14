@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallFamilyGeneratorTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallGeneratorPresentation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleEquivalence
@@ -92,3 +94,10 @@ lemma exists_common_accessibilityCardinal {ι : Type u} (C : ι → SSet.{u + 1}
   exact ⟨μ, hμ, hσ, fun i ↦ (hκ i).of_cardinalChangeBound (h i)⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.3.2.12" (partial := component) "仮定：presentable な準圏 C の accessibility（HA の仮定から従う）。結論：σ=ℵ₀ を指定すると、ある非可算正則 μ に関して C は μ-compact 生成となる（(1) の存在部分に一致）。同じ μ における tensor・単位と全代数の加群の compact 条件 (2)〜(4) は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_larger
+attribute [cite HTT "5.3.5.12"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound
+attribute [cite HTT "5.4.2.9"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound

@@ -22,7 +22,7 @@ variable (A : Type u) [CommRing A]
 /-- 概要：実 U と既存の標準導来単位による比較射自身は任意頂点で弱同値。
 方針：同じ二つの弱な全 pinched 族と元の全族三角形を、指定した三つの同型で輸送する。
 規約：任意の別の Hom 同値で置き換えない。使われ方：同じ単位 comma 候補の普遍性。 -/
-lemma derivedFreeProbeUnitIntervalMap_weak (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
+lemma derivedFreeProbeUnitIntervalMap_weak (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (y : (CAlg_R A) _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (derivedFreeProbeUnitIntervalMap A x y) := by
   exact unitComparisonTransport_weak (cAlgForgetDerived A)
     (freeProbeRelativeChosenSourceIso A (freeProbeUnitComplex A x))

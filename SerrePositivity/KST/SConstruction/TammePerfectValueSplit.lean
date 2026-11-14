@@ -79,7 +79,7 @@ lemma IsPerfectLocalizingInvariant.tammeValueFactorComparison_inl :
         (hF.tammeRightFactorIso p q hC hD).hom ≫ SpectrumHo.hom (Binary.inr
           (OmegaSpectrum.homotopyFiber (NativeFiber.rightMap
             (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD))))
-          (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex
+          (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex
             (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD)).square 1 1))) := by
   exact (tammeFactorLeftAxis
     (perfectInvariantSpectrumIso F (perfectStableVertex C hC) ≪≫
@@ -97,7 +97,7 @@ lemma IsPerfectLocalizingInvariant.tammeValueFactorComparison_inr :
         (hF.tammeLeftFactorIso p q hC hD).hom ≫ SpectrumHo.hom (Binary.inl
           (OmegaSpectrum.homotopyFiber (NativeFiber.rightMap
             (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD))))
-          (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex
+          (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex
             (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD)).square 1 1))) := by
   exact (tammeFactorRightAxis
     (perfectInvariantSpectrumIso F (perfectStableVertex C hC) ≪≫

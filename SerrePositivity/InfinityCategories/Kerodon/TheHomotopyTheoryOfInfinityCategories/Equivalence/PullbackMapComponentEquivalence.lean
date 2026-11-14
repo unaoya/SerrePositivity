@@ -1,9 +1,11 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanLimits
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PullbackFunctorCoreNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PostcompositionCoreDetection
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.StrictKanPullbackMapEquivalence
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.CoreEquivalence
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorComposition
 /-!
 概要：同値持ち上げ性を持つ二つの cospan の成分同値は、同じ pullback.map を圏同値にする。
@@ -83,3 +85,8 @@ lemma pullbackMap_isQCatEquivalence_of_components
     hcomp
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.3.6.2" (partial := stronger-hyp) "仮定：Δ¹ 上の準圏 A・B、categorical equivalence A→B、両射影の EquivalenceLifting（Lean が強い：任意の単体集合と射影に対してこの持ち上げ性・準圏性を追加する）。結論：底ともう一脚を恒等、第二脚を端点 {1}→Δ¹ とすると同じ pullback.map が準圏同値となる（この仮定での端点ファイバーの結論に一致）。任意の A・B への一般化は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.pullbackMap_isQCatEquivalence_of_components

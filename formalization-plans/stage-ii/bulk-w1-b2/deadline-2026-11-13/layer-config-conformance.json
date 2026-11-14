@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "rendered_config": "scripts/refactor/layers.json",
+  "rendered_sha256": "8af931ffb854b890f1142bf65ba78ad33cda41f0e347a4fc7e37a1b87eb766fc",
+  "checked_configuration_exactly_matches_rendered_klw1": true,
+  "proposals_pending": [
+    "FlatBaseChange SharedFoundation reclassification and retired implementation edge",
+    "Kerodon 7.4 -> 9.3 RightFibrationMappingOverNaturality -> PointSlicePostcompIso"
+  ]
+}

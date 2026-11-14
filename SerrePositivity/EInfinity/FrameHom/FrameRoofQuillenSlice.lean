@@ -41,18 +41,18 @@ abbrev roofQuillenSlice := pullback f (_root_.SerrePositivity.InfinityCategories
 def roofQuillenSliceOver : roofQuillenSlice A Y q b f ⟶
     nerve (Over (roofTargetDegree A Y q b)) :=
   pullback.snd _ _ ≫ roofTargetOverBaseMap A Y q b ≫
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso (roofTargetDegree A Y q b)).inv
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso (roofTargetDegree A Y q b)).inv
 
 lemma roofQuillenSliceOver_projection : roofQuillenSliceOver A Y q b f ≫
     nerveMap (Over.forget (roofTargetDegree A Y q b)) =
       pullback.fst f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b)) ≫
         f ≫ roofTargetProjection A Y q := by
-  have hi : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso (roofTargetDegree A Y q b)).inv ≫
+  have hi : (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso (roofTargetDegree A Y q b)).inv ≫
       nerveMap (Over.forget (roofTargetDegree A Y q b)) =
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b))) := by
     change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (roofTargetDegree A Y q b))
-    rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection, Iso.inv_hom_id_assoc]
+    rw [← _root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso_projection, Iso.inv_hom_id_assoc]
   rw [roofQuillenSliceOver, Category.assoc, Category.assoc, hi,
     roofTargetOverBaseMap_projection]
   rw [← Category.assoc, ← pullback.condition, Category.assoc]

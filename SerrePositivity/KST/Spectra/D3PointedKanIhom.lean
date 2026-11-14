@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.D3CommonStageLoop
 public import SerrePositivity.KST.Spectra.PointedIhomActionNaturality
 public import SerrePositivity.KST.Spectra.EndpointCircle
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedUnitTransformationHom
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedUnitTransformationHom
 
 /-!
 概要：点つき Kan 複体上で、元の Hom パラメータと制限射の全自然性を保持する。

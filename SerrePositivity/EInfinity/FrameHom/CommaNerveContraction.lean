@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CostructuredArrowDiagram
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CostructuredArrowDiagram
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization

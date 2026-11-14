@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Fibration
 lemma weakStringOctahedron_source_preservesCofiberData {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     PreservesCofiberData ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj).symm
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 0 0)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 0 0)) := by
   apply preservesCofiberData_of_familyVertexIso _
     ((weakStringKernelCofiber q (SimplexCategory.δ (2 : Fin 3) ≫ β)).val ≫
       (closedStableInclusion (kernelClosedPredicate q)).val)
@@ -35,7 +35,7 @@ lemma weakStringOctahedron_source_preservesCofiberData {B C : _root_.SerrePositi
 lemma weakStringOctahedron_middle_preservesCofiberData {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     PreservesCofiberData ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (weakStringCategory q n) B.obj).symm
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0)) := by
   apply preservesCofiberData_of_familyVertexIso _
     ((weakStringKernelCofiber q (SimplexCategory.δ (1 : Fin 3) ≫ β)).val ≫
       (closedStableInclusion (kernelClosedPredicate q)).val)

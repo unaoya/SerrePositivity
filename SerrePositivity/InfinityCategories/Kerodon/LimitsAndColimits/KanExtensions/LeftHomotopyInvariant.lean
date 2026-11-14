@@ -133,7 +133,7 @@ lemma LeftKanCoconeTransport.coconeFamily_opIso_of_homMk_eq
         (SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk _ _ hsEdge).symm)
   obtain ⟨v, w, hv, hw, ⟨i⟩⟩ :=
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_kanTransportEndVertexIso_of_homMk_eq a po b e f hy hz he hf hbase
-  let q := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanDiagram δ F₀ c))
+  let q := _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanDiagram δ F₀ c))
   have hv' : q.inv.app (Opposite.op ⦋0⦌) v =
       SSet.opObjEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeFamilyVertexEquiv _ t.cocone) := by
     apply SSet.opObjEquiv.injective

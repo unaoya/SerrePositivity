@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredNullHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FilteredNullHomotopy
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
 
 

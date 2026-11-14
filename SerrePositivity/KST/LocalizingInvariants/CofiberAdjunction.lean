@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationAdjunction
 public import SerrePositivity.KST.LocalizingInvariants.ArrowTargetAdjunction
 
@@ -37,3 +39,9 @@ def cofiberAdjunction :
   exact a
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.1.8" (partial := stronger-hyp) "仮定：安定準圏 X（Lean が強い：HA は点付きかつ余ファイバーを持てばよい）。結論：余ファイバー関手を左随伴とし、対象を零頂点からの射へ送る関手を右随伴とする（一致）。"] _root_.SerrePositivity.KST.LocalizingInvariants.cofiberAdjunction
+attribute [cite HA "1.2.4.15" (partial := direction) "仮定：安定準圏（HA と一致）。結論：余ファイバーが左随伴であり、射の図式の既存の余極限を保存する方向を与える。HA の条件のもとで余ファイバーの余極限性から元の比較を復元する方向は型に含まれない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.cofiberAdjunction

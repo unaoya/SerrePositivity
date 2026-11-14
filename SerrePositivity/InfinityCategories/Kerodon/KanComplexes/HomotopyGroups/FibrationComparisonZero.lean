@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FiberComponentNaturality
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopySquares
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopySquares
 
 /-!
 概要：Kan fibration の可換正方形の全空間・底の π_* 同型から fiber の連結成分の全単射。

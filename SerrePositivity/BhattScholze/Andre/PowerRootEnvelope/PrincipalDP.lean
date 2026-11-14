@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Principal.PrincipalDP
 
 /-!
 # 一次関係の分冪表示と係数商
@@ -11,10 +11,10 @@ public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
 BS 著者版 Lemma 2.38 と Remark 7.15 の一元分冪包の計算に使う、一次関係と係数商を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPD`、`PowerRootEnvelope/DeltaDivisionWitt`、`PowerRootEnvelope/PowerRootInput`、`PowerRootEnvelope/Varpi`、`PowerRootEnvelope/VarpiPD`、`Variants/Auxiliary`、`Variants/MonicRootedExtension`。
@@ -22,7 +22,7 @@ BS 著者版 Lemma 2.38 と Remark 7.15 の一元分冪包の計算に使う、�
 
 universe u v w
 
-/-! ## André E1・E2：自由一元分冪代数の係数主イデアル商（旧 Andre/Remark715/RankOneDPCoefficientQuotient.lean）
+/-! ## 自由一元分冪代数の係数主イデアル商
 
 ## 概要
 
@@ -147,7 +147,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RankOneDPCoefficientQuotient
 
-/-! ## André E1・E2：一次関係分冪表示と係数主イデアル商の交換（旧 Andre/Remark715/PrincipalDPCoefficientQuotient.lean）
+/-! ## 一次関係分冪表示と係数主イデアル商の交換
 
 ## 概要
 
@@ -300,7 +300,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPCoefficientQuotient
 
-/-! ## André E1・E2：主分冪表示と任意の係数イデアル商（旧 Andre/Remark715/PrincipalDPIdealQuotient.lean）
+/-! ## 主分冪表示と任意の係数イデアル商
 
 ## 概要
 
@@ -464,7 +464,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPIdealQuotient
 
-/-! ## André E1・E2：正則一元入力の mod p 一次関係商の実分冪構造（旧 Andre/Remark715/RegularPrincipalModPrimeDividedPowers.lean）
+/-! ## 正則一元入力の mod p 一次関係商の実分冪構造
 
 ## 概要
 
@@ -569,7 +569,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RegularPrincipalModPrimeDividedPowers
 
-/-! ## André E1・E2：正次数分冪構造を持つ一次関係商の実普遍性（旧 Andre/Remark715/PrincipalDPPositiveUniversal.lean）
+/-! ## 正次数分冪構造を持つ一次関係商の実普遍性
 
 ## 概要
 
@@ -645,7 +645,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPPositiveUniversal
 
-/-! ## André E1・E2：係数同型による実分冪構造と普遍性の移送（旧 Andre/Remark715/PrincipalDPTransport.lean）
+/-! ## 係数同型による実分冪構造と普遍性の移送
 
 ## 概要
 
@@ -726,7 +726,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPTransport
 
-/-! ## André E1・E2：正則 δ 持ち上げの mod p 一次関係商の pd 包普遍性（旧 Andre/Remark715/RegularPrincipalModPrimeUniversal.lean）
+/-! ## 正則 δ 持ち上げの mod p 一次関係商の pd 包普遍性
 
 ## 概要
 
@@ -781,7 +781,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RegularPrincipalModPrimeUniversal
 
-/-! ## André E1・E2：一次関係商と係数 p 乗商上の切断表示（旧 Andre/Remark715/PrincipalDPTruncatedPresentation.lean）
+/-! ## 一次関係商と係数 p 乗商上の切断表示
 
 ## 概要
 
@@ -1042,7 +1042,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPTruncatedPresentation
 
-/-! ## André E1・E2：正次数分冪イデアルによる商と元の入力商（旧 Andre/Remark715/PrincipalDPPositiveQuotient.lean）
+/-! ## 正次数分冪イデアルによる商と元の入力商
 
 ## 概要
 

@@ -23,7 +23,7 @@ open MorphismSpaces.Basic (pinchedHom)
 open FullFaithfulAndEssentiallySurjectiveFunctors (pinchedHomMap)
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors
 open AdjointFunctorsBetweenInfinityCategories (intervalFamilyHom)
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 

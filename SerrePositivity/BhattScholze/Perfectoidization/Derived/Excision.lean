@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FiberLongExactSequence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.FiberLongExactSequence
 public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
@@ -30,7 +30,7 @@ perfectoid 化の excision の適用（Perfectoidization/Excision）、CLMST。
 
 universe u
 
-/-! ## 離散性を仮定した perfectoid 化の excision の橋（旧 PerfectoidizationInterface/ExcisionBridge.lean）
+/-! ## 離散性を仮定した perfectoid 化の excision の橋
 
 概要：界面の引き戻しを指定四辺の長完全列に送り、環の引き戻しと差の全射性を得る。
 方針：D6a の零次の列を H⁰ の環構造の比較同型で移す。
@@ -52,7 +52,7 @@ variable (R : Type u) [CommRing R]
 
 /-- 長完全列の両端の消滅から零次の中央三項が短完全になる。 -/
 theorem squareHZero_shortExact
-    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)
     (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F)
     (hD : IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R (-1) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareTargetVertex F)))
     (hA : IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone F).vertex)) :
@@ -65,7 +65,7 @@ theorem squareHZero_shortExact
 section Square
 variable {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
     (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
-    (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+    (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)
 
 private lemma ordinarySquare_bottom :
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareBottomEdge ≫ ordinarySquare R a b c d w =
@@ -123,15 +123,15 @@ private lemma square_top_edge :
   rw [SSet.yonedaEquiv_comp]
   rfl
 
-private lemma edge_source_eq {x y x' y' : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
-    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x y)
-    (e' : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x' y')
+private lemma edge_source_eq {x y x' y' : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
+    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)).Edge x y)
+    (e' : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)).Edge x' y')
     (h : e.edge = e'.edge) : x = x' :=
   e.src_eq.symm.trans ((congrArg _ h).trans e'.src_eq)
 
-private lemma edge_target_eq {x y x' y' : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
-    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x y)
-    (e' : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x' y')
+private lemma edge_target_eq {x y x' y' : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
+    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)).Edge x y)
+    (e' : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)).Edge x' y')
     (h : e.edge = e'.edge) : y = y' :=
   e.tgt_eq.symm.trans ((congrArg _ h).trans e'.tgt_eq)
 
@@ -168,20 +168,20 @@ end UnderAlgebra
 
 section HZeroSquare
 attribute [local instance] underAlgebra
-variable {P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R}
+variable {P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R}
     {η : NatInfinity R (J R) P} (h0 : H0RingData R P η)
     {A B C D : A_R R} (a : A ⟶ B) (b : A ⟶ C)
     (c : B ⟶ D) (d : C ⟶ D) (w : a ≫ c = b ≫ d)
 
-private def ringModuleIso (S : A_R R) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌)
+private def ringModuleIso (S : A_R R) (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌)
     (hx : x = vertex R P S) :
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (h0.ringFunctor.obj S) ≅ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R 0 x :=
   h0.moduleIso S ≪≫ eqToIso (congrArg (H R 0) hx.symm)
 
 private lemma ringModuleIso_map {S T : A_R R} (f : S ⟶ T)
-    {x y : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
+    {x y : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
     (hx : x = vertex R P S) (hy : y = vertex R P T)
-    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)).Edge x y)
+    (e : ((SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)).Edge x y)
     (he : e.edge = (edge R P f).edge) :
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).map (h0.ringFunctor.map f) ≫
         (ringModuleIso R h0 T y hy).hom =
@@ -443,7 +443,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end ExcisionBridge
 
-/-! ## 四つの指定普遍環からの excision（旧 PerfectoidizationInterface/Excision.lean）
+/-! ## 四つの指定普遍環からの excision
 
 概要：界面と四つの IsPerfectoidization から、環の引き戻しと差の全射性を得る。
 方針：指定錐を始対象で計算した離散性を、Disc 仮定付きの橋へ合成する。
@@ -518,7 +518,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end Excision
 
-/-! ## perfectoid 化の環としての excision（界面から導出した定理）（旧 PerfectoidizationInterface/ArcExcision.lean）
+/-! ## perfectoid 化の環としての excision（界面から導出した定理）
 
 従来 BS 著者版 Corollary 8.12 の環としての帰結を直接引用していた公開入口である。
 現在は E3 界面から指定錐の比較・離散性・長完全列を経て導く。

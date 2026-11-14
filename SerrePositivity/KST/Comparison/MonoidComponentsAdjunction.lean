@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.MonoidComponentsDescent
 public import Mathlib.CategoryTheory.Adjunction.Limits
 
@@ -109,3 +111,8 @@ instance componentsFunctor_isLeftAdjoint : componentsFunctor.{u}.IsLeftAdjoint :
 
 end SimplicialMonoid
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.6.9" (partial := component) "仮定：厳密単体的モノイドの自然数順序列の実際の余極限で各項の π₀ が群（Lean が強い：k=1 の厳密模型の順序列）。結論：余極限も π₀ が群で、成分モノイド関手は定数関手の左随伴となる（順序列での閉性と π₀ の余極限保存の通常模型の部分）。全 k の空間の ∞ 余極限との比較と任意小余極限の閉性は含まれない。"] _root_.SerrePositivity.KST.Comparison.SimplicialMonoid.componentsConstAdjunction

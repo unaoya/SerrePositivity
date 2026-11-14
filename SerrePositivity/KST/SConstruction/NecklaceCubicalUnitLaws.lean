@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalDayData
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInStructuralIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceInStructuralIso
 
 /-! # 元の cubical 合成の左右単位則
 概要：一点 necklace の実単位射が、mapping object 全体の合成の左右単位になる。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementDerivedRoofComparison
 public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveElementRoofWeak
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedEndpointFamilyArrow
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.PinchedEndpointFamilyArrow
 
 /-!
 # 元の通常導来屋根の全制限を同じ端点へ戻す弱な基準族
@@ -22,7 +22,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.FrameHom
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 open SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors
@@ -48,13 +48,13 @@ def complexRelativeElementReferencePinchedMap :=
 lemma complexRelativeElementReferencePinchedMap_roof_arrow :
     let I := normalizedTensorElementIndex A X Y
     let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
-      (derivedInfinityCategory A))).toFunctor
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (intervalFamilyHom (complexRelativeElementReferencePinchedMap A X Y ≫
       MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
       Arrow.mk (T.map (normalizedTensorElementDerivedRoof A X Y)) := by
   let I := normalizedTensorElementIndex A X Y
   let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
-    (derivedInfinityCategory A))).toFunctor
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have hn := (congrArg Arrow.mk (normalizedTensorElementOrdinaryPinchedMap_family A X Y)).trans
     (normalizedTensorElementDerivedRoofFamily_arrow A X Y)
   have hp := congrArg T.mapArrow.obj hn

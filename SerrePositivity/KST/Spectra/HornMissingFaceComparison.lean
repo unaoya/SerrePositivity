@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.HornBoundaryFactor
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.HornBoundaryFactor
 public import SerrePositivity.KST.Spectra.AnodyneRelativeComparison
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CommonHom
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedWhiskeredSquareComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedWhiskeredSquareComposition
 
 /-!
 概要：指定比較射を保つ共通 Hom の恒等と実豊穣合成。

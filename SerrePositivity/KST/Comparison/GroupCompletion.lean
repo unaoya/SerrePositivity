@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.DGAlgebra
 public import Mathlib.CategoryTheory.SingleObj
 public import Mathlib.CategoryTheory.Functor.Currying
@@ -119,3 +121,9 @@ def hatGLBar (A : SimplicialObject RingCat.{u}) (r : ℕ) : SSet.{u} :=
   monoidBar (hatGLMonoidObject A r)
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.6.14" (partial := component) "仮定：離散群 G を定数単体的モノイドとして与える（HA と一致する離散群）。結論：各次数の一対象圏の nerve の対角とその唯一の零単体を使うので、通常の BG とその基点を得る（原典の通常の分類空間という対象の構成に一致）。HA の E₁ 代数の普遍的 Bar との比較宣言は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidBar
+attribute [cite HA "5.2.6.14" (partial := component) "仮定：離散群 G を定数単体的モノイドとして与える（HA と一致する離散群）。結論：各次数の一対象圏の nerve の対角とその唯一の零単体を使うので、通常の BG とその基点を得る（原典の通常の分類空間という対象の構成に一致）。HA の E₁ 代数の普遍的 Bar との比較宣言は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidBarBasepoint

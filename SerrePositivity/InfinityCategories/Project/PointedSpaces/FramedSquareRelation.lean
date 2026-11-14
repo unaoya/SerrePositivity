@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SquareBoundaryComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SquareBoundaryComposition
 
 /-!
 概要：三つの隅を元の同一点に固定した正方形で、定値上辺を消去する。

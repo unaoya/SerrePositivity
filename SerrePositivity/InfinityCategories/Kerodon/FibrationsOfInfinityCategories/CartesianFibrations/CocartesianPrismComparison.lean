@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Witness
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.HomotopyPrism
 
 /-!
 概要：同じ始点と底を持つ coCartesian prism の終点を比較する。

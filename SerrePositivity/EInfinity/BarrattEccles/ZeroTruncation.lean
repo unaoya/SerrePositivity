@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.ConnectiveCover
 public import SerrePositivity.EInfinity.Operad.ZeroTruncation
 
@@ -64,3 +66,9 @@ lemma zeroDegreeModelProjection_quasiIso (B : (operad A).Algebra)
     (arity_nonpositive A) (connectiveCover A B)
 
 end SerrePositivity.EInfinity.BarrattEccles
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.3.15" (partial := component) "仮定：通常可換環上の厳密に非正次数の非可換 dg 代数、または実 Barratt–Eccles 代数（Lean が強い：厳密な dg 模型の場合）。結論：非可換 dg 代数には全 n≥0 の Postnikov 切断・代数射を構成し、次数 n 以下の群の同型と n より大きい群の消滅を示す。実 E 代数には n=0 の台の切断に同じオペラッド代数構造と射を与える（指定した模型での代数構造と基礎切断の一致の部分に一致）。任意 n の Eₖ モノイダル整合性、切断普遍性、HA の模型との比較は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.zeroTruncation
+attribute [cite HA "7.1.3.15" (partial := component) "仮定：通常可換環上の厳密に非正次数の非可換 dg 代数、または実 Barratt–Eccles 代数（Lean が強い：厳密な dg 模型の場合）。結論：非可換 dg 代数には全 n≥0 の Postnikov 切断・代数射を構成し、次数 n 以下の群の同型と n より大きい群の消滅を示す。実 E 代数には n=0 の台の切断に同じオペラッド代数構造と射を与える（指定した模型での代数構造と基礎切断の一致の部分に一致）。任意 n の Eₖ モノイダル整合性、切断普遍性、HA の模型との比較は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.zeroTruncationProjection

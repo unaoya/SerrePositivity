@@ -28,7 +28,7 @@ BS 著者版 Proposition 8.13 の環版。
 
 universe u
 
-/-! ## The actual completed scalar extension of perfectoid coefficients is discrete（旧 Perfectoidization/PerfectoidCompletedBaseChangeDiscrete.lean）
+/-! ## The actual completed scalar extension of perfectoid coefficients is discrete
 
 The target scalar ring is retained throughout restriction, completion, and the
 normalized comparison with the actual zeroth homology module.
@@ -148,7 +148,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidCompletedBaseChangeDiscrete
 
-/-! ## New-base coefficient comparison with a specified universal perfectoidization（旧 Perfectoidization/CompletedBaseChangeCoefficientComparison.lean） -/
+/-! ## New-base coefficient comparison with a specified universal perfectoidization -/
 
 @[expose] public noncomputable section CompletedBaseChangeCoefficientComparison
 
@@ -283,7 +283,7 @@ end SerrePositivity.BhattScholze
 
 end CompletedBaseChangeCoefficientComparison
 
-/-! ## Original perfectoidization coefficients after completed base change（旧 Perfectoidization/PerfectoidizationCompletedBaseChange.lean） -/
+/-! ## Original perfectoidization coefficients after completed base change -/
 
 @[expose] public noncomputable section PerfectoidizationCompletedBaseChange
 

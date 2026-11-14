@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardVertices
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Quasicategory
 public import Mathlib.Tactic.CrossRefAttribute
@@ -88,3 +90,11 @@ instance doldKanCoherentNerve_quasicategory :
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory (ClosedCategory R D)
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.1.13" (partial := component) "仮定：dg 圏 C（HA の CΔ の構成と一致。Lean は任意の可換環を許す）。結論：基礎圏を単体的に豊穣化し、Hom を切断した Hom 複体の Dold–Kan 模型と比較し、合成を Alexander–Whitney 写像で与える。任意の鎖複体に対する合成関手そのものの lax monoidal 構造は型に含まれない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanSimplicialCategory
+attribute [cite HA "1.3.1.14"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanSimplicialCategory_locallyKan
+attribute [cite HA "1.3.2.12" (partial := special) "仮定：可換環上の dg 圏から作る特定の単体加群（Lean が強い：任意の単体アーベル群を入力しない）。結論：対応する Hom 単体集合が Kan（一致する特別な場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanSimplicialCategory_locallyKan
+attribute [cite HA "1.3.2.13" (partial := special) "仮定：可換環上の dg 圏（Lean が強い：任意の加法圏の複体を dg 圏とした入力はこの型に組み込まれない）。結論：Dold–Kan で作る対応する単体豊穣圏（一致する特別な場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanSimplicialCategory

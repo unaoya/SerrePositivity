@@ -15,7 +15,7 @@ P レーンの所有モジュールの全宣言について、再帰的に公理
 open Lean in
 run_cmd do
   let oldAuditPrefix1 := `SerrePositivity.InfinityCategories.F2.Presentable
-  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/bulk-kl-module-map.json")
   let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
   let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
     if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
@@ -32,10 +32,10 @@ run_cmd do
       mod == `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones ||
       mod == `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible ||
       mod == `SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CoYonedaLimitReflection ||
-      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoYonedaRestrictedLimits ||
-      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafSliceConeRestriction ||
-      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseConeRestriction ||
-      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullyFaithfulPrecompositionColimits do
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoYonedaRestrictedLimits ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PresheafSliceConeRestriction ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.UniverseConeRestriction ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FullyFaithfulPrecompositionColimits do
       continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do

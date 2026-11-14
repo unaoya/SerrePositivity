@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -146,3 +148,9 @@ lemma rightFibration_isInvertibleEdge_of_constant_image {E B : SSet.{u}}
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr rfl).mp hm
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.4.2" (partial := component) "仮定：reduced pairing の片側の単位 fiber の射影が trivial Kan fibration（HA の仮定 (b) と一致）。結論：その射影のもう一方の単位点での fiber が可縮 Kan となる（原典冒頭の二つの単位を固定した fiber の可縮性に一致する部分）。全空間 M におけるその点の始対象性と weakly reduced 性は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan
+attribute [cite HTT "2.4.2.4" (partial := component) "仮定：任意の単体集合の射 p（原典より弱い）。結論：rightFibration_iff_cartesianFibration_all_edges は (1)⇔(2) を正確に与え、vertexFiber_kanComplex と合わせて (2)⇒(3) も得る。(3)⇒(1)/(2) は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex

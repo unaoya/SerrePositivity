@@ -1,0 +1,557 @@
+{
+  "checked": "2026-11-13",
+  "references": 25,
+  "edition_strings_changed": 0,
+  "scope": "Primary title/author/version identity; correspondence tables remain separately reviewed",
+  "rows": [
+    {
+      "key": "AGH",
+      "previous": {
+        "title": "Calmès–Dotto–Harpaz–Hebestreit–Land–Moi–Nardin–Nikolaus–Steimle, Hermitian K-theory for stable ∞-categories II",
+        "source": "https://arxiv.org/abs/2009.07224v5",
+        "edition": "arXiv:2009.07224v5"
+      },
+      "title": "Hermitian K-theory for stable ∞-categories II: Cobordism categories and additivity",
+      "authors": [
+        "Calmès",
+        "Dotto",
+        "Harpaz",
+        "Hebestreit",
+        "Land",
+        "Moi",
+        "Nardin",
+        "Nikolaus",
+        "Steimle"
+      ],
+      "edition": "arXiv:2009.07224v5",
+      "primary_source": "https://arxiv.org/abs/2009.07224v5",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/2009.07224v5",
+        "note": "Nine authors checked; AGH remains the approved legacy key, not an author-initials claim."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "BGT",
+      "previous": {
+        "title": "Blumberg–Gepner–Tabuada, A universal characterization of higher algebraic K-theory",
+        "source": "research/k-coverage/maps/bgt/toc.md",
+        "edition": "arXiv:1001.2282v4"
+      },
+      "title": "A universal characterization of higher algebraic K-theory",
+      "authors": [
+        "Blumberg",
+        "Gepner",
+        "Tabuada"
+      ],
+      "edition": "arXiv:1001.2282v4",
+      "primary_source": "https://arxiv.org/abs/1001.2282v4",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1001.2282v4",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "BM18",
+      "previous": {
+        "title": "Bhatt–Mathew, The arc-topology",
+        "source": "https://arxiv.org/abs/1807.04725v4",
+        "edition": "arXiv:1807.04725v4"
+      },
+      "title": "The arc-topology",
+      "authors": [
+        "Bhatt",
+        "Mathew"
+      ],
+      "edition": "arXiv:1807.04725v4",
+      "primary_source": "https://arxiv.org/abs/1807.04725v4",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1807.04725v4",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "BS17",
+      "previous": {
+        "title": "Bhatt–Scholze, Projectivity of the Witt vector affine Grassmannian",
+        "source": "https://arxiv.org/abs/1507.06490v3",
+        "edition": "arXiv:1507.06490v3"
+      },
+      "title": "Projectivity of the Witt vector affine Grassmannian",
+      "authors": [
+        "Bhatt",
+        "Scholze"
+      ],
+      "edition": "arXiv:1507.06490v3",
+      "primary_source": "https://arxiv.org/abs/1507.06490v3",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1507.06490v3",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "BS19",
+      "previous": {
+        "title": "Bhatt–Scholze, Prisms and prismatic cohomology",
+        "source": "paper/refs/BS-prisms-author.pdf",
+        "edition": "author version"
+      },
+      "title": "Prisms and prismatic cohomology",
+      "authors": [
+        "Bhatt",
+        "Scholze"
+      ],
+      "edition": "author version",
+      "primary_source": "https://people.mpim-bonn.mpg.de/scholze/prisms.pdf",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://people.mpim-bonn.mpg.de/scholze/prisms.pdf",
+        "note": "Author PDF remains the locator edition; arXiv:1905.08229v3 has the same title/authors but different item numbering and is not substituted.",
+        "local_pdf_sha256": "4cb49a42c80fc734fb7585da273538e09632431ba06709ae05a11ded6673c27a"
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "BST13",
+      "previous": {
+        "title": "The weak ordinarity conjecture and F-singularities",
+        "source": "https://arxiv.org/abs/1307.3763v3",
+        "edition": "arXiv:1307.3763v3"
+      },
+      "title": "The weak ordinarity conjecture and F-singularities",
+      "authors": [
+        "Bhatt",
+        "Schwede",
+        "Takagi"
+      ],
+      "edition": "arXiv:1307.3763v3",
+      "primary_source": "https://arxiv.org/abs/1307.3763v3",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1307.3763v3",
+        "note": "Corrected from the erroneous Bhatt–Schnell–Scholze; exact arXiv v3 author/title header checked."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "BalmerSchlichting",
+      "previous": {
+        "title": "Balmer–Schlichting",
+        "source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/balmschl.pdf",
+        "edition": "2001 刊行版, J. Algebra 236"
+      },
+      "title": "Idempotent Completion of Triangulated Categories",
+      "authors": [
+        "Balmer",
+        "Schlichting"
+      ],
+      "edition": "2001 刊行版, J. Algebra 236",
+      "primary_source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/balmschl.pdf",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/balmschl.pdf",
+        "note": "Original title page and stated publication edition match the registry."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Barwick",
+      "previous": {
+        "title": "Barwick",
+        "source": "https://arxiv.org/abs/1204.3607v6",
+        "edition": "arXiv:1204.3607v6"
+      },
+      "title": "On the algebraic K-theory of higher categories",
+      "authors": [
+        "Barwick"
+      ],
+      "edition": "arXiv:1204.3607v6",
+      "primary_source": "https://arxiv.org/abs/1204.3607v6",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1204.3607v6",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Drinfeld",
+      "previous": {
+        "title": "Drinfeld",
+        "source": "https://arxiv.org/abs/math/0210114v7",
+        "edition": "arXiv:math/0210114v7"
+      },
+      "title": "DG quotients of DG categories",
+      "authors": [
+        "Drinfeld"
+      ],
+      "edition": "arXiv:math/0210114v7",
+      "primary_source": "https://arxiv.org/abs/math/0210114v7",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/math/0210114v7",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Goodwillie",
+      "previous": {
+        "title": "Goodwillie",
+        "source": "https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/goodwillie-cyclic.pdf",
+        "edition": "1986 刊行版, Ann. Math. 124"
+      },
+      "title": "Relative algebraic K-theory and cyclic homology",
+      "authors": [
+        "Goodwillie"
+      ],
+      "edition": "1986 刊行版, Ann. Math. 124",
+      "primary_source": "https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/goodwillie-cyclic.pdf",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/goodwillie-cyclic.pdf",
+        "note": "Original title page and stated publication edition match the registry."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "HA",
+      "previous": {
+        "title": "Lurie, Higher Algebra",
+        "source": "research/ha-coverage/README.md",
+        "edition": "2017-09-18"
+      },
+      "title": "Higher Algebra",
+      "authors": [
+        "Lurie"
+      ],
+      "edition": "2017-09-18",
+      "primary_source": "https://www.math.ias.edu/~lurie/papers/HA.pdf",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://www.math.ias.edu/~lurie/papers/HA.pdf",
+        "note": "Author website identifies this as Lurie’s book; PDF first page says September 18, 2017. No arXiv number assigned."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "HTT",
+      "previous": {
+        "title": "Lurie, Higher Topos Theory",
+        "source": "research/htt-coverage/README.md",
+        "edition": "2017-04-09"
+      },
+      "title": "Higher Topos Theory",
+      "authors": [
+        "Lurie"
+      ],
+      "edition": "2017-04-09",
+      "primary_source": "https://www.math.ias.edu/~lurie/papers/HTT.pdf",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://www.math.ias.edu/~lurie/papers/HTT.pdf",
+        "note": "Author PDF first page says April 9, 2017; title/author also match arXiv:math/0608040v4, whose 2008 revision is not the specified 2017 edition.",
+        "local_pdf_sha256": "58855f3a0ad6d9c470ded74a38938b9468927592e9ae1209bab6a068e67ede6e"
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "KL",
+      "previous": {
+        "title": "Kuznetsov–Lunts",
+        "source": "https://arxiv.org/abs/1212.6170v1",
+        "edition": "arXiv:1212.6170v1"
+      },
+      "title": "Categorical resolutions of irrational singularities",
+      "authors": [
+        "Kuznetsov",
+        "Lunts"
+      ],
+      "edition": "arXiv:1212.6170v1",
+      "primary_source": "https://arxiv.org/abs/1212.6170v1",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1212.6170v1",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "KST",
+      "previous": {
+        "title": "Kerz–Strunk–Tamme, Algebraic K-theory and descent for blow-ups",
+        "source": "research/k-coverage/maps/kst/toc.md",
+        "edition": "arXiv:1611.08466v4"
+      },
+      "title": "Algebraic K-theory and descent for blow-ups",
+      "authors": [
+        "Kerz",
+        "Strunk",
+        "Tamme"
+      ],
+      "edition": "arXiv:1611.08466v4",
+      "primary_source": "https://arxiv.org/abs/1611.08466v4",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1611.08466v4",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Kerodon",
+      "previous": {
+        "title": "Lurie, Kerodon",
+        "source": "https://kerodon.net",
+        "edition": "stable Tags"
+      },
+      "title": "Kerodon",
+      "authors": [
+        "Lurie"
+      ],
+      "edition": "stable Tags",
+      "primary_source": "https://kerodon.net",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://kerodon.net",
+        "note": "Author homepage links Kerodon; use native stable Tag identifiers, not a fabricated dated arXiv edition."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "LT",
+      "previous": {
+        "title": "Land–Tamme, On the K-theory of pullbacks",
+        "source": "research/k-coverage/maps/land-tamme/toc.md",
+        "edition": "arXiv:1808.05559v3"
+      },
+      "title": "On the K-theory of pullbacks",
+      "authors": [
+        "Land",
+        "Tamme"
+      ],
+      "edition": "arXiv:1808.05559v3",
+      "primary_source": "https://arxiv.org/abs/1808.05559v3",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1808.05559v3",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Neeman",
+      "previous": {
+        "title": "Neeman",
+        "source": "https://www.numdam.org/articles/10.24033/asens.1659/",
+        "edition": "1992 刊行版, Ann. ENS 25"
+      },
+      "title": "The connection between the K-theory localization theorem of Thomason, Trobaugh and Yao and the smashing subcategories of Bousfield and Ravenel",
+      "authors": [
+        "Neeman"
+      ],
+      "edition": "1992 刊行版, Ann. ENS 25",
+      "primary_source": "https://www.numdam.org/articles/10.24033/asens.1659/",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://www.numdam.org/articles/10.24033/asens.1659/",
+        "note": "Original journal article is the registry default; reviewed rows about other Neeman works are not thereby reassigned to this paper."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Paper",
+      "previous": {
+        "title": "Positivity of Serre’s Intersection Multiplicity",
+        "source": "paper/paper.pdf",
+        "edition": "2026-09-23; upstream adc7f1241b42e322a6451854ab7e4b4c146bf78a"
+      },
+      "title": "Positivity of Serre’s Intersection Multiplicity",
+      "authors": [
+        "OpenAI"
+      ],
+      "edition": "2026-09-23; upstream adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+      "primary_source": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Positivity-of-Serres-Intersection-Multiplicity-September-23-2026",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Positivity-of-Serres-Intersection-Multiplicity-September-23-2026",
+        "note": "Local paper first page and SOURCE.md checked: OpenAI, September 23, 2026, fixed upstream commit; no arXiv number assigned.",
+        "local_pdf_sha256": "7985cfbc11547cf659efdd6abc076a0c0371e9a38e8026aa09b23cbb042af917"
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Rydh",
+      "previous": {
+        "title": "Rydh, Submersions and effective descent",
+        "source": "https://arxiv.org/abs/0710.2488v3",
+        "edition": "arXiv:0710.2488v3"
+      },
+      "title": "Submersions and effective descent of étale morphisms",
+      "authors": [
+        "Rydh"
+      ],
+      "edition": "arXiv:0710.2488v3",
+      "primary_source": "https://arxiv.org/abs/0710.2488v3",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/0710.2488v3",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Schlichting",
+      "previous": {
+        "title": "Schlichting",
+        "source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/schlneg.pdf",
+        "edition": "公開稿（11.4・11.7・11.10・6.4）"
+      },
+      "title": "Negative K-theory of derived categories",
+      "authors": [
+        "Schlichting"
+      ],
+      "edition": "公開稿（11.4・11.7・11.10・6.4）",
+      "primary_source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/schlneg.pdf",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/schlneg.pdf",
+        "note": "Public draft identity retained, not relabeled as a dated journal edition. Title/author checked on draft first page."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Stacks",
+      "previous": {
+        "title": "The Stacks project",
+        "source": "https://stacks.math.columbia.edu",
+        "edition": "stable Tags"
+      },
+      "title": "The Stacks project",
+      "authors": [
+        "The Stacks project authors"
+      ],
+      "edition": "stable Tags",
+      "primary_source": "https://stacks.math.columbia.edu",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://stacks.math.columbia.edu",
+        "note": "Official collective resource; native stable Tag identifiers, no arXiv edition."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "TT",
+      "previous": {
+        "title": "Thomason–Trobaugh",
+        "source": "https://gwern.net/doc/math/1990-thomason.pdf",
+        "edition": "1990 刊行版, Grothendieck Festschrift III"
+      },
+      "title": "Higher Algebraic K-Theory of Schemes and of Derived Categories",
+      "authors": [
+        "Thomason",
+        "Trobaugh"
+      ],
+      "edition": "1990 刊行版, Grothendieck Festschrift III",
+      "primary_source": "https://link.springer.com/chapter/10.1007/978-0-8176-4576-2_10",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://link.springer.com/chapter/10.1007/978-0-8176-4576-2_10",
+        "note": "Original scan title/authors checked. Keep original 1990 Festschrift III edition; publisher’s 2013 reprint/online date is not a replacement edition. Thomason’s 1993 original article also cites TT in the 1990 volume."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Tamme",
+      "previous": {
+        "title": "Tamme, Excision in algebraic K-theory revisited",
+        "source": "research/k-coverage/maps/tamme/toc.md",
+        "edition": "arXiv:1703.03331v3"
+      },
+      "title": "Excision in algebraic K-theory revisited",
+      "authors": [
+        "Tamme"
+      ],
+      "edition": "arXiv:1703.03331v3",
+      "primary_source": "https://arxiv.org/abs/1703.03331v3",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://arxiv.org/abs/1703.03331v3",
+        "note": "Version-specific arXiv title/author/submission header matches the registry ID and version."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Thomason",
+      "previous": {
+        "title": "Thomason",
+        "source": "https://www.digizeitschriften.de/download/pdf/356556735_0112/log23.pdf",
+        "edition": "1993 刊行版, Invent. Math. 112"
+      },
+      "title": "Les K-groupes d’un schéma éclaté et une formule d’intersection excédentaire",
+      "authors": [
+        "Thomason"
+      ],
+      "edition": "1993 刊行版, Invent. Math. 112",
+      "primary_source": "https://link.springer.com/article/10.1007/BF01232430",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://link.springer.com/article/10.1007/BF01232430",
+        "note": "Old DigiZeit PDF URL returned 404; publisher DOI gives matching title/author, volume 112, pages 195–215, 1993."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    },
+    {
+      "key": "Waldhausen",
+      "previous": {
+        "title": "Waldhausen",
+        "source": "https://noah.nrw/ubbihs/content/titleinfo/5112640",
+        "edition": "1985 刊行版, LNM 1126"
+      },
+      "title": "Algebraic K-theory of spaces",
+      "authors": [
+        "Waldhausen"
+      ],
+      "edition": "1985 刊行版, LNM 1126",
+      "primary_source": "https://link.springer.com/chapter/10.1007/BFb0074449",
+      "check": {
+        "date": "2026-11-13",
+        "scope": "title, authors, stated edition and arXiv identity only; not a new theorem-correspondence review",
+        "url": "https://link.springer.com/chapter/10.1007/BFb0074449",
+        "note": "Publisher’s title/author, LNM 1126 and original 1985 copyright/citation checked; 2006 digitization date is not the publication year."
+      },
+      "result": "matched; bibliographic title/author corrections applied"
+    }
+  ]
+}

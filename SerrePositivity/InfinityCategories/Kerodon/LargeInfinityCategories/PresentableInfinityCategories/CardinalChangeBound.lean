@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Presentable.SharplyLT.Lemmas
 
 /-!
@@ -67,3 +69,8 @@ lemma exists_regular_cardinalChangeBound_family {ι : Type u} (κ : ι → Cardi
   exact ⟨μ, hμ, hσ, fun i ↦ h.of_le (hθ i)⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.2.9"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsCardinalChangeBound

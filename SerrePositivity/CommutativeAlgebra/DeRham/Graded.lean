@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.DirectSum.Algebra
 
 /-!
@@ -59,3 +61,8 @@ def GradedCommDGAlgebra.mul {k : Type u} [CommRing k] (H : GradedCommDGAlgebra k
   GradedMonoid.GMul.mul x y
 
 end SerrePositivity.DeRham
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.4.8" (partial := special) "仮定：任意可換環 R と非負余鎖次数（Lean が強い：非負次数に限る）。結論：xy=(-1)^(ij)yx と微分の Leibniz 則を満たす可換 dg 代数を構造として定義する（この次数範囲の定義に一致）。全整数次数の dg 代数圏の充満部分圏としての束ね方は含まれない。"] _root_.SerrePositivity.DeRham.GradedCommDGAlgebra

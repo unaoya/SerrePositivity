@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import Mathlib.CategoryTheory.Functor.Derived.Adjunction
 public import Mathlib.CategoryTheory.Adjunction.FullyFaithful
@@ -148,3 +150,8 @@ lemma derivedAdjunction_counit_choice :
 end Uniqueness
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.5.1" (partial := direction) "仮定：抽象モデル圏 C,D の Quillen adjunction、元の weak-equivalence localizations と選んだ左右導来関手（HTT と一致）。結論：全 cofibrant X,fibrant Y の adjoint maps における weak equivalence の iff、すなわち条件 (3) から LF が equivalence、導来随伴により RF も equivalence となる方向は一致。導来同値から全 adjoint maps の判定へ戻す型はこの宣言にはなく、三条件全体の iff とは数えない。"] _root_.SerrePositivity.Quillen.derivedAdjunction

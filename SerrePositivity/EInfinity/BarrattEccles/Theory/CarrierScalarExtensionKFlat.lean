@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeBaseChange
 
 /-!
 # K 平坦な台の semifree 解像度と係数拡大

@@ -38,7 +38,7 @@ def rawSquareComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanC
     ((dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) ≫ perfectStableInfinityInclusion)
     ((perfectIdentityLaxSequence (Q) (hQ)).presentation.square ≫ perfectStableInfinityInclusion) :=
   stableZeroSquareComparison (rawSquareFrameComparison R d v) (by
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
       ((dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) ≫ perfectStableInfinityInclusion) 0 1))
     rw [Category.assoc, dgKInputPerfectNu_inclusion]
     exact dgOdotMilnorIdentityNullSquare_zero R d)

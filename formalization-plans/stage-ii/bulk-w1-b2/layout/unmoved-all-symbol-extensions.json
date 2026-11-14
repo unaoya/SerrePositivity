@@ -1,0 +1,93 @@
+[
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.ulift_down_square",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down_vertex",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.isFiber_down",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+    "kind": "def"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.down._proof_1",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.isCofiber_down",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.DerivedCategories.StableHomotopyChainMap",
+    "name": "SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedStableHomotopyBridge.eq_1",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedStableHomotopyBridge",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedStableHomotopyBridge",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.DerivedCategories.StableHomotopyChainMap",
+    "name": "SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedStableHomotopyEquivalence.eq_1",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedStableHomotopyEquivalence",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedStableHomotopyEquivalence",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TotalKanNativeHomAction",
+    "name": "SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject.eq_1",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject",
+    "receiver_new": "SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TotalKanNativeHomAction",
+    "name": "SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalVertex.eq_1",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalVertex",
+    "receiver_new": "SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalVertex",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorLiftedExact",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence.eq_1",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorLiftedExact",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.mk.congr_simp",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.mk",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle.mk",
+    "kind": "theorem"
+  },
+  {
+    "owner": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroHomotopy",
+    "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex.isZeroHo",
+    "receiver_old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex",
+    "receiver_new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+    "kind": "pending-native-snapshot"
+  }
+]

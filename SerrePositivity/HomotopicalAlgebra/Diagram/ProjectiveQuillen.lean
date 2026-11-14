@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Diagram.Projective
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import Mathlib.CategoryTheory.Adjunction.Limits
@@ -85,3 +87,10 @@ lemma hasPointwiseLeftDerivedColimit {H : Type uH} [Category.{vH} H]
   infer_instance
 
 end SerrePositivity.DiagramModel.Projective
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.8.11" (partial := component) "仮定：小さい K と Mathlib locally presentable な cofibrantly generated 抽象モデル圏 A、元の weak equivalences の任意の localization（HTT の homotopy-colimit の部分と一致）。結論：実際の colim は projective model に関して pointwise left derived functor を持ち、元の homotopy colimit の部分に一致。一般の f! の derived left Kan extension の各点判定を含む「全く双対な議論」までは含まない。"] _root_.SerrePositivity.DiagramModel.Projective.hasPointwiseLeftDerivedColimit
+attribute [cite HTT "A.2.8.7" (partial := component) "仮定：原典の f:K→K′ を K′=一点への唯一の functor に固定、値域は Mathlib locally presentable な cofibrantly generated 模型（Lean が強い特殊形）。結論：(f!,f*)=(colim,const) は実際の projective models の Quillen adjunction。この (1) の特別な場合は一致するが、任意の f と injective の (2) は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.colimit_isLeftQuillen
+attribute [cite HTT "A.2.8.7" (partial := component) "仮定：原典の f:K→K′ を K′=一点への唯一の functor に固定、値域は Mathlib locally presentable な cofibrantly generated 模型（Lean が強い特殊形）。結論：(f!,f*)=(colim,const) は実際の projective models の Quillen adjunction。この (1) の特別な場合は一致するが、任意の f と injective の (2) は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.constant_isRightQuillen

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseYonedaComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.UniverseYonedaComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaYonedaInfinity
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralReflectedFibers
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictConeSmallReflectedFiber
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictConeSmallReflectedFiber
 
 /-!
 概要：任意の小圏上の coherent な錐から strict な錐への pinched Hom の導来 fiber 模型。

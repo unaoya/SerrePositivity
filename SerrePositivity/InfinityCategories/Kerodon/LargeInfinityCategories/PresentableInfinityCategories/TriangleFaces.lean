@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCardinals
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FunctorCoconeReindex
 
 /-!
 概要：元の二単体の全関手圏と、その三つの辺への制限を扱う。

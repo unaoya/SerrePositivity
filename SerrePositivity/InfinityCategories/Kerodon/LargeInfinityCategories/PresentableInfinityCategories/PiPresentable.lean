@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafSigmaBase
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PiAccessibility
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PiAdjunction
@@ -69,3 +71,9 @@ lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}}
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.qCatEquivalencePi e)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.7.2" (partial := stronger-hyp) "仮定：小族の各成分が presentable（Lean が強い：原典は accessible のみ）。結論：同じ全単体の積準圏が presentable、従って accessible（この場合の第一結論に一致）。成分余極限の判定もあるが、任意の accessible 関手の成分ごとの iff まではこの二宣言で主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_isPresentable
+attribute [cite HTT "5.5.3.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_isPresentable

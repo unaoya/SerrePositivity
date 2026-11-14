@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorZeroObjects
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeTensor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransUnitNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransClosedIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorZeroObjects
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.SemifreeTensor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGStrictNatTransUnitNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStrictNatTransClosedIso
 public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
 public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 
@@ -54,14 +54,14 @@ end FixedTensor
 open FixedTensor
 
 /-- 任意の M との左導来テンソル N ↦ M ⊗ᴸ N。 -/
-def tensorLeft (M : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (leftDG (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv A M))
+def tensorLeft (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (leftDG (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A M))
 
 /-- 任意の M との右導来テンソル N ↦ N ⊗ᴸ M。 -/
-def tensorWith (M : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (rightDG (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv A M))
+def tensorWith (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (rightDG (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A M))
 
 /-- 半自由代表上で右テンソルの値は元のテンソル複体である。 -/
 lemma tensorWith_vertex (M N : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) :
@@ -71,9 +71,9 @@ lemma tensorWith_vertex (M N : _root_.SerrePositivity.InfinityCategories.Project
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex _ _
 
 /-- 符号つき交換同型は固定因子との左右導来テンソルの自然同型を与える。 -/
-def tensorWithSymmetry (M : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+def tensorWithSymmetry (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (tensorWith M) (tensorLeft M) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransFunctorIsoOfClosedIso (swapStrict (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv A M))
-    (swapIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv A M)) (fun _ => rfl)).symm
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransFunctorIsoOfClosedIso (swapStrict (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A M))
+    (swapIso (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A M)) (fun _ => rfl)).symm
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndComparisonEquivalence
 
 /-!
@@ -41,3 +43,8 @@ lemma IsKappaAccessible.exists_indEquivalence {κ : Cardinal.{u}}
   exact ⟨A, hA, ⟨e⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.3.6" (partial := direction) "仮定：accessible な小準圏 C（HTT と一致）。結論：C は idempotent complete（同値の必要方向と一致）。一般の accessible C の実 Ind 模型の冪等完備性を同じ全同値で戻す。小 idempotent complete C の accessibility、およびそこからの任意の関手の accessibility は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.exists_indEquivalence

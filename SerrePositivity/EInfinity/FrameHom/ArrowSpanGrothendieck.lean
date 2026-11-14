@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CommaComparisons.ArrowSpanComma
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.CommaGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.FrameElementSpans
 
 /-!

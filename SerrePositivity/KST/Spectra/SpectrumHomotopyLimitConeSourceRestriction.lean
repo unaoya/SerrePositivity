@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitConePointSection
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitNativeConeComparison
 public import
-  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConeSourceWeightedRestriction
+  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoherentConeSourceWeightedRestriction
 
 /-!
 概要：構成した coherent 錐全体の Hom の族の制限は、元の反転 end の点の比較族に一致。

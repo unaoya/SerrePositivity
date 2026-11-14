@@ -34,7 +34,7 @@ lemma nativeCircleEvaluationSquare_evaluation (z : Sp.{u} _⦋0⦌) :
 
 /-- 点ごとの四角形の二つの非対角頂点は、元の一点 BF スペクトルの標準頂点。 -/
 lemma nativeCircleEvaluationSquare_zeroCorner (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) i i.rev =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (nativeCircleEvaluationSquare z) i i.rev =
       pointZeroVertex.vertex := by
   rw [nativeCircleEvaluationSquare_evaluation]
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z).app (Opposite.op ⦋0⦌)
@@ -49,7 +49,7 @@ lemma nativeCircleEvaluationSquare_zeroCorner (z : Sp.{u} _⦋0⦌) (i : Fin 2) 
 
 /-- 点ごとの四角形の非対角頂点は、Sp の実際の零対象。 -/
 lemma nativeCircleEvaluationSquare_zeroCorner_isZero (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) i i.rev) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (nativeCircleEvaluationSquare z) i i.rev) := by
   rw [nativeCircleEvaluationSquare_zeroCorner]
   exact pointZeroVertex.isZero
 

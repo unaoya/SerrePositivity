@@ -76,7 +76,7 @@ def basedPathPointIso (Y : OmegaSpectrum.{u}) :
 
 /-- BF path の頂点は実際の Sp の零頂点。 -/
 lemma basedPath_isZeroVertex (Y : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (basedPath Y)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (basedPath Y)) :=
   pointZeroVertex.isZero.of_vertexIso (basedPathPointIso Y).symm
 
 end OmegaSpectrum

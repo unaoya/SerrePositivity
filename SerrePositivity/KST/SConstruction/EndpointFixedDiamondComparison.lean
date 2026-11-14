@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.EndpointFixedTriangleHomotopy
 public import SerrePositivity.KST.SConstruction.FixedBoundaryCospanComparison
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleDiamondComposition
 
 /-! # 共通辺への元の二実三角形から両端固定の直接比較円柱
 概要：元の二辺を共通辺へ結ぶ同じ実三角形から、二辺間の両端固定実比較を得る。

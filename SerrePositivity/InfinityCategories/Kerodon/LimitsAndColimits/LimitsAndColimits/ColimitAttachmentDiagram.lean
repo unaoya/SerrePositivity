@@ -1,7 +1,9 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitAttachment
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentCoconeTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentCoconeTransport
 
 /-!
 概要：部分図式の余極限頂点を、元の図式へ実際に付加した単体集合と図式を構成する。
@@ -64,3 +66,11 @@ lemma colimitAttachedDiagram_restriction_trivialKanFibration (c : _root_.SerrePo
 
 end
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.2.3.4" (partial := special) "仮定：K 上の図式と、各 K_I に対する指定余極限余錐（Lean が強い：I が一対象一射）。結論：K_F は K と K_I の余錐を貼る押し出しとなり、Lean は双方の制限を満たす図式とその余錐制限の自明 Kan ファイブレーション性を与える（指定した拡張の場合に一致。一般の I と全拡張は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitAttachedDiagram
+attribute [cite HTT "4.2.3.4" (partial := special) "仮定：K 上の図式と、各 K_I に対する指定余極限余錐（Lean が強い：I が一対象一射）。結論：K_F は K と K_I の余錐を貼る押し出しとなり、Lean は双方の制限を満たす図式とその余錐制限の自明 Kan ファイブレーション性を与える（指定した拡張の場合に一致。一般の I と全拡張は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitAttachedDiagram_left
+attribute [cite HTT "4.2.3.4" (partial := special) "仮定：K 上の図式と、各 K_I に対する指定余極限余錐（Lean が強い：I が一対象一射）。結論：K_F は K と K_I の余錐を貼る押し出しとなり、Lean は双方の制限を満たす図式とその余錐制限の自明 Kan ファイブレーション性を与える（指定した拡張の場合に一致。一般の I と全拡張は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitAttachedDiagram_restriction_trivialKanFibration
+attribute [cite HTT "4.2.3.4" (partial := special) "仮定：K 上の図式と、各 K_I に対する指定余極限余錐（Lean が強い：I が一対象一射）。結論：K_F は K と K_I の余錐を貼る押し出しとなり、Lean は双方の制限を満たす図式とその余錐制限の自明 Kan ファイブレーション性を与える（指定した拡張の場合に一致。一般の I と全拡張は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitAttachedDiagram_right

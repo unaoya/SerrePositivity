@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedSpace
 
 /-!
@@ -151,3 +153,8 @@ theorem linearizedTensorIso_naturality {X X' Y Y' : SSet.{u}}
   exact integerTensorIso_naturality (f.app n) (g.app n)
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (A.1)" (partial := component) "仮定：単体集合の積を線形化する（原典の類別空間の場合を含む）。結論：積の線形化と整数テンソルの同型。G₁×G₂ の C(-) への類別空間同型は別に使う（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.PrismContraction
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanFibrationHomotopyLift
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeLeftFibrationPrism
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeLeftFibrationPrism
 
 /-!
 概要：Kan fibration に沿う指定ホモトピーを、指定部分円柱を保って持ち上げる。

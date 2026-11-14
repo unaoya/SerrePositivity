@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafElementsLeftKan
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.EquivalentCoconeRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCanonicalRestrictionHom
@@ -59,3 +61,9 @@ lemma presheafIdentity_isLeftKanExtension :
   _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_refl_of_canonicalColimits _ _ presheafIdentity_canonicalColimits
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.5.3" (partial := special) "仮定：小さい単体集合 S（Lean が強い：S は準圏）。結論：同じ米田写像に沿う恒等関手の標準局所余錐がすべて余極限となり、同じ恒等単位付きの左 Kan 条件を満たす（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_canonicalColimits
+attribute [cite HTT "5.1.5.3" (partial := special) "仮定：小さい単体集合 S（Lean が強い：S は準圏）。結論：同じ米田写像に沿う恒等関手の標準局所余錐がすべて余極限となり、同じ恒等単位付きの左 Kan 条件を満たす（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_isLeftKanExtension

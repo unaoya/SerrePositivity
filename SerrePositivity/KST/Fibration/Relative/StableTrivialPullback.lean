@@ -93,7 +93,7 @@ lemma stableTrivialPullback_jointReflection {E Y T X : StableModel.{u}}
       (stableTrivialPullbackSnd p b).val v).2
     apply h.zero _ hv₁
     have hp := p.property.1 _ hv₀
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableTrivialPullbackFst p b ≫ p).val.app _ v) at hp
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableTrivialPullbackFst p b ≫ p).val.app _ v) at hp
     rw [stableTrivialPullback_condition] at hp
     exact hp
   · intro t ht₀ ht₁

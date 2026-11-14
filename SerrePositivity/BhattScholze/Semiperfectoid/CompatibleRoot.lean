@@ -25,7 +25,7 @@ CLMST の perfectoid イデアル、BS 著者版 Theorem 7.4 の降下。
 
 universe u
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootIdeal.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -46,7 +46,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootIdeal
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootIdealFlat.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -61,7 +61,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootIdealFlat
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootIdealTensor.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -81,7 +81,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootIdealTensor
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootQuotientTor.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -95,7 +95,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootQuotientTor
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootPerfectQuotient.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -109,7 +109,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootPerfectQuotient
 
-/-! ## B4-3：両立する根列のtiltへの移送（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootTilt.lean）
+/-! ## 両立する根列のtiltへの移送
 
 根列そのものをmod pの逆極限へ送り、untiltの標準図式を証明する。
 -/
@@ -178,7 +178,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootTilt
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootFamilyIdeal.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -199,7 +199,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootFamilyIdeal
 
-/-! ## 根イデアル商と完備化の制限付き普遍性（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootQuotient.lean）
+/-! ## 根イデアル商と完備化の制限付き普遍性
 
 BS 著者版 Theorem 7.4の単項・根を持つ場合に向けた部分定理。
 試験環の被約性を明示し、候補のperfectoid性と完備化射の全射性は結論しない。
@@ -283,7 +283,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootQuotient
 
-/-! ## B4-1：根付き商の任意perfectoid試験環への普遍性（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootPerfectoidUniversal.lean）
+/-! ## 根付き商の任意perfectoid試験環への普遍性
 
 既存の根イデアル商の普遍性に、一般perfectoid環の被約性と完備性を供給する。
 候補のperfectoid性は別工程の仮定として明示する。Andréの引用は使わない。
@@ -330,7 +330,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootPerfectoidUniversal
 
-/-! ## B4-2：根イデアル商のp完備化への標準射の全射性（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootCompletionSurjective.lean）
+/-! ## 根イデアル商のp完備化への標準射の全射性
 
 商の前完備性を既存の全射移送から供給する。
 根イデアルの閉性・商の分離性・有限生成性を仮定しない。
@@ -383,7 +383,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootCompletionSurjective
 
-/-! ## B4-4：任意根族の商とp完備化の普遍性・標準射（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootFamilyQuotient.lean）
+/-! ## 任意根族の商とp完備化の普遍性・標準射
 
 被約なp進完備試験環への普遍性を先に示し、perfectoid試験環への入口を特殊化する。
 候補自身のperfectoid性は別の仮定とする。

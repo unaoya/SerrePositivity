@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.Gapped
 public import SerrePositivity.KST.SConstruction.ZeroChoices
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
 

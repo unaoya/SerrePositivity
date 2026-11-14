@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisResolvedLif
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectFunctorImage
 public import SerrePositivity.KST.SConstruction.DGHomGluingStrictSquare
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 
 /-!
 概要：恒等 lax 差の対角・実 cone を、小さい厳密 dg 入力と実 S 二辺で表す。

@@ -36,9 +36,9 @@ public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Data.Fintype.EquivFin
 public import Mathlib.Logic.Equiv.Defs
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.SuspensionLoop
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpectrumPoint
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SpectrumPoint
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
 public import SerrePositivity.KST.Spectra.SuspensionLoop
 public import SerrePositivity.Spectra.Pointed.Basic

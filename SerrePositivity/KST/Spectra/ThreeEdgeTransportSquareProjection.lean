@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.ThreeEdgeTransportSquare
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransportRelabel
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.ThreeEdgeTransportRelabel
 
 /-!
 概要：三辺輸送の正方形を、元の三角形単体の射影と端点表示の変更に照合する。

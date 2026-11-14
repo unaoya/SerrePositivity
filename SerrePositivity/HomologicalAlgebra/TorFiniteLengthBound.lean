@@ -20,7 +20,7 @@ public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
 ## 使われ方
 
-解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 4。
+Paper Theorem 2.5 の式 (2.4) の等標数部分で、高次 Koszul ホモロジーの消滅に用いる有限長の一様な上界。
 `W = R'/(Z^q)` とし、`K` を `q` によらない有限生成自由分解にとれば、
 一様な零化元 `c` から `q` によらない係数 `β` で長さを抑えられる。
 -/

@@ -1,0 +1,8 @@
+{
+  "file": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/PointedKanWhitehead.lean",
+  "before_sha256": "61a8e01de43868e49c9c6f2243856fa5fe280cfa96432b4b8502542ff065ec1f",
+  "after_sha256": "a285eb925e22eb80b312794f45d41e768829ebcacd36f583e0678012a7fa0772",
+  "removed_commands": 3,
+  "namespace_body_empty": true,
+  "status": "isolated source applied; build and preservation pending"
+}

@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedSlicePrismGeneral
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.SliceComparisons.DGClosedSlicePrismGeneral
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.DGWalkingHomPrismNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPrecompositionSlicePrism
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransSliceWhisker
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedPrecompositionSlicePrism
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransSliceWhisker
 
 /-! # 閉前合成の実 slice prism の dg 関手自然性
 

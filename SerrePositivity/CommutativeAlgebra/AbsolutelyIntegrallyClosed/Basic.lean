@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Polynomial.Monic
 public import Mathlib.Algebra.Polynomial.Eval.Defs
 public import Mathlib.Algebra.Polynomial.Lifts
@@ -153,3 +155,8 @@ theorem IsAbsolutelyIntegrallyClosed.finiteEtale_residueFiber_exists_algEquiv
 end SerrePositivity
 
 end AbsolutelyIntegrallyClosedFibersPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 7.14"] _root_.SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots

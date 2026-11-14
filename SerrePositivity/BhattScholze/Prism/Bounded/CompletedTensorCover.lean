@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorH0
 import all SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatReduction
 import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
@@ -202,3 +204,8 @@ theorem prismCompletedTensor_completelyFaithfullyFlat
   exact Module.FaithfullyFlat.of_linearEquiv _ _ (e₄.trans (e₃.trans e₅))
 
 end SerrePositivity.BhattScholze.Prismatic
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 3.7" (partial := special) "(1) と (2)（完全平坦な複体の離散性、通常の導来圏で、BS-W15 K4）、(3)（完全平坦な δ 代数から有界 prism、exists_boundedPrism_of_completelyFlat_deltaAlgebra）は本体。(4) は不要（D19）。向き付きの基底 ／ 11-11 更新（2） ／ 11-12 夜更新（ノート本文の更新時）"] _root_.SerrePositivity.BhattScholze.Prismatic.prismCompletedTensor_completelyFaithfullyFlat

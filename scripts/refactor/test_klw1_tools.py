@@ -6,9 +6,12 @@ from pathlib import Path
 import subprocess
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
+from contextlib import redirect_stderr
+from io import StringIO
 
 from klw1_layer_check import check
-from klw1_namespace import Migration, checked_capture, module_name, render_aliases, rewrite, select_aliases
+from klw1_namespace import Migration, checked_capture, collect, module_name, render_aliases, rewrite, select_aliases
 from klw1_review_assignment import check_review_gate, load_reviews, refresh, toc_sections
 
 
@@ -198,6 +201,26 @@ class NamespaceTests(unittest.TestCase):
                 self.assertEqual(issues, [])
                 self.assertEqual(rendered, text.encode())
 
+    def test_published_partial_namespace_policies_keep_actual_namespaces(self):
+        plan = json.loads((Path(__file__).parent / "targets/kl-namespace-map.json").read_text())
+        for name in ("SerrePositivity.SimplicialModel", "SerrePositivity.HomotopyFunctionComplex"):
+            self.assertEqual(plan["opens"][name], name)
+        self.assertIsNone(plan["module_opens"]["SerrePositivity.EInfinity.BarrattEccles.Theory.EnrichedPointPrecomposition"]["SerrePositivity.KST.Comparison"])
+
+    def test_module_open_policy_keeps_other_consumers_and_qualifies_retained_names(self):
+        text = "open Old\n#check retained\n#check moved\n"
+        plan = Migration({"rows": [{"module": "Owner", "old": "Old.moved", "new": "New.moved"}],
+                          "opens": {"Old": "Old"}, "namespaces": {"Owner": {"Old": "New"}},
+                          "module_opens": {"NewConsumer": {"Old": None}}})
+        data = {"module": "OldConsumer", "source": text, "refs": [occurrence(text, "retained", "Old.retained", "Unmoved"), occurrence(text, "moved", "Old.moved", "Owner")],
+                "commands": [{"kind": "open", "mode": "simple", "names": ["Old"], "start": 5, "stop": 8, "command": {"start": 5, "stop": 8}}]}
+        rendered, issues = rewrite(data, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"open Old\n#check retained\n#check _root_.New.moved\n")
+        rendered, issues = rewrite(data | {"module": "NewConsumer"}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"\n#check _root_.Old.retained\n#check _root_.New.moved\n")
+
     def test_detached_method_adds_a_name_resolution_export(self):
         text = "def Old.Record.step (n : Nat) := n + 1\n"
         ref = occurrence(text, "Old.Record.step", "Old.Record.step", "Old", kind="binder")
@@ -219,6 +242,56 @@ class NamespaceTests(unittest.TestCase):
             capture.write_text(json.dumps({"schema_version": 1, "module": "Test", "source": "def f := 1\n"}))
             with self.assertRaisesRegex(ValueError, "exact source"):
                 checked_capture(root, "Test.lean", capture)
+
+
+class CollectionTests(unittest.TestCase):
+    def test_collect_inherits_lake_setup_even_with_direct_lean(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "lakefile.toml").write_text('name = "Fixture"\n')
+            (root / "Fixture.lean").write_text("def value := 1\n")
+            def run(args, **kwargs):
+                self.assertEqual(kwargs["cwd"], root.resolve())
+                if args[:3] == ["lake", "--no-build", "setup-file"]:
+                    return subprocess.CompletedProcess(args, 0, json.dumps({"name": "Fixture", "options": {"maxSynthPendingDepth": 3}}), "")
+                self.assertEqual(args[0], str((root / "lean").resolve()))
+                self.assertEqual(json.loads(Path(args[-1]).read_text())["options"]["maxSynthPendingDepth"], 3)
+                Path(args[-2]).write_text(json.dumps({"schema_version": 1, "module": "Fixture", "source": (root / "Fixture.lean").read_text(), "refs": [], "commands": []}))
+                return subprocess.CompletedProcess(args, 0)
+            with patch("klw1_namespace.subprocess.run", side_effect=run) as calls:
+                collect(root, ["Fixture.lean"], root / "index", root / "lean")
+            self.assertEqual(calls.call_count, 2)
+            self.assertEqual(json.loads((root / "index/files.json").read_text()), ["Fixture.lean"])
+
+    def test_one_collection_freezes_helper_across_all_files(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            tools = root / "tools"
+            tools.mkdir()
+            original = tools / "klw1_collect_refs.lean"
+            original.write_bytes(b"tested helper version")
+            for name in ("A", "B"):
+                (root / (name + ".lean")).write_text("def value := 1\n")
+            def run(args, **kwargs):
+                self.assertNotEqual(Path(args[2]), original)
+                self.assertEqual(Path(args[2]).read_bytes(), b"tested helper version")
+                original.write_bytes(b"concurrent future release")
+                Path(args[5]).write_text(json.dumps({"schema_version": 1, "module": args[3], "source": (root / args[4]).read_text(), "refs": [], "commands": []}))
+                return subprocess.CompletedProcess(args, 0)
+            with patch("klw1_namespace.HERE", tools), patch("klw1_namespace.subprocess.run", side_effect=run):
+                collect(root, ["A.lean", "B.lean"], root / "index", root / "lean")
+            fingerprints = {json.loads((root / "index" / (name + ".json")).read_text())["elaboration"]["collector_sha256"] for name in ("A", "B")}
+            self.assertEqual(len(fingerprints), 1)
+
+    def test_setup_failure_does_not_fall_back_to_empty_options(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "lakefile.toml").touch()
+            with patch("klw1_namespace.subprocess.run", return_value=subprocess.CompletedProcess([], 1, "", "missing dependency")) as calls, redirect_stderr(StringIO()):
+                with self.assertRaisesRegex(ValueError, "build dependencies before collect"):
+                    collect(root, ["Fixture.lean"], root / "index", root / "lean")
+            self.assertEqual(calls.call_count, 1)
+            self.assertFalse((root / "index/files.json").exists())
 
 
 class LayerTests(unittest.TestCase):
@@ -388,6 +461,73 @@ def withNotation := kRef
             self.assertIn(b"def shadow (f : Nat) := f + 1", result)
             after.write_bytes(result + b"\nexample : fully = 4 := rfl\nexample : withNotation = 2 := rfl\n")
             subprocess.run([lean, after.name], cwd=root, check=True)
+
+    def test_configured_options_and_explicit_universes(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = Path(__file__).with_name("klw1_collect_refs.lean").resolve()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            text = """import Lean
+open Lean in
+run_cmd do
+  let opts ← getOptions
+  unless opts.get `maxSynthPendingDepth (1 : Nat) == 3 do throwError "lost depth"
+  unless opts.get `relaxedAutoImplicit true == false do throwError "lost implicit policy"
+  unless Elab.async.get opts == false do throwError "collector must be synchronous"
+universe u
+namespace Old
+def value (α : Type u) : Type u := α
+end Old
+-- 日本語：宇宙の構文はそのまま保持する。
+#check Old.value.{u}
+#check Old.value.{max u 1}
+"""
+            (root / "Fixture.lean").write_text(text)
+            setup = {"name": "Fixture", "package": "Fixture", "isModule": False, "plugins": [], "dynlibs": [], "importArts": {}, "options": {"maxSynthPendingDepth": 3, "relaxedAutoImplicit": False, "Elab.async": True}}
+            (root / "setup.json").write_text(json.dumps(setup))
+            subprocess.run([lean, "--run", str(helper), "Fixture", "Fixture.lean", "refs.json", "setup.json"], cwd=root, check=True)
+            data = checked_capture(root, "Fixture.lean", root / "refs.json")
+            self.assertEqual(data["elaboration"]["setup_options"]["maxSynthPendingDepth"], 3)
+            refs = [r for r in data["refs"] if r["kind"] == "term" and r["name"] == "Old.value"]
+            self.assertEqual(len({(r["start"], r["stop"]) for r in refs}), 2)
+            self.assertTrue(all(text.encode()[r["start"]:r["stop"]] == b"Old.value" for r in refs))
+            plan = Migration({"rows": [{"module": "Fixture", "old": "Old.value", "new": "New.value"}], "namespaces": {"Fixture": {"Old": "New"}}})
+            rendered, issues = rewrite(data, plan)
+            self.assertEqual(issues, [])
+            self.assertIn(b"_root_.New.value.{u}", rendered)
+            self.assertIn(b"_root_.New.value.{max u 1}", rendered)
+            (root / "setup.json").write_text(json.dumps(setup | {"name": "Wrong"}))
+            result = subprocess.run([lean, "--run", str(helper), "Fixture", "Fixture.lean", "bad.json", "setup.json"], cwd=root, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("setup module mismatch", result.stderr)
+            self.assertFalse((root / "bad.json").exists())
+
+    def test_keep_partial_namespace_when_destination_module_has_another_name(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = Path(__file__).with_name("klw1_collect_refs.lean").resolve()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            env = dict(os.environ, LEAN_PATH=directory + os.pathsep + os.environ.get("LEAN_PATH", ""))
+            (root / "Base.lean").write_text("namespace Shared\ndef retained : Nat := 2\nend Shared\n")
+            (root / "Original.lean").write_text("import Base\nnamespace Shared\ndef moved : Nat := 1\nend Shared\nnamespace Removed\ndef extra : Nat := 4\nend Removed\n")
+            for name in ("Base", "Original"):
+                subprocess.run([lean, "-o", name + ".olean", name + ".lean"], cwd=root, env=env, check=True)
+            text = "import Original\nopen Shared Removed\ndef result := moved + retained + extra\nexample : result = 7 := rfl\n"
+            (root / "Uses.lean").write_text(text)
+            subprocess.run([lean, "--run", str(helper), "Uses", "Uses.lean", "refs.json"], cwd=root, env=env, check=True)
+            data = checked_capture(root, "Uses.lean", root / "refs.json")
+            plan = Migration({"modules": {"Original": "MovedLayout"}, "rows": [{"module": "Original", "old": "Shared.moved", "new": "New.Actual.moved"}, {"module": "Original", "old": "Removed.extra", "new": "New.Actual.extra"}], "namespaces": {"Original": {"Shared": "New.Actual"}}, "opens": {"Shared": "Shared", "Removed": "Removed"}, "module_opens": {"Uses": {"Removed": None}}})
+            rendered, issues = rewrite(data, plan)
+            self.assertEqual(issues, [])
+            self.assertIn(b"open Shared", rendered)
+            self.assertIn(b"_root_.New.Actual.moved + retained", rendered)
+            self.assertNotIn(b"open _root_.MovedLayout", rendered)
+            self.assertNotIn(b"open Shared Removed", rendered)
+            self.assertIn(b"_root_.New.Actual.extra", rendered)
+            (root / "MovedLayout.lean").write_text("import Base\nnamespace New.Actual\ndef moved : Nat := 1\ndef extra : Nat := 4\nend New.Actual\n")
+            subprocess.run([lean, "-o", "MovedLayout.olean", "MovedLayout.lean"], cwd=root, env=env, check=True)
+            (root / "After.lean").write_bytes(rendered)
+            subprocess.run([lean, "After.lean"], cwd=root, env=env, check=True)
 
     def test_detached_method_resolves_in_importing_module(self):
         lean = os.environ["KLW1_TEST_LEAN"]

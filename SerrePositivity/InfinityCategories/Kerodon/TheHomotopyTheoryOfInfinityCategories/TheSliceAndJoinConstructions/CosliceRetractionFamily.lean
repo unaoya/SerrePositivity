@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeRetractCosliceFamily
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.RelativeRetractCosliceFamily
 
 /-!
 概要：図式の切断と収縮に沿い、全余錐族を同じ終端と底のまま戻す。

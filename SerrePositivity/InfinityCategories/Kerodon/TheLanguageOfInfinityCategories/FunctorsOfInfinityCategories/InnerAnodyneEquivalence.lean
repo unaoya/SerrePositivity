@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -83,3 +85,8 @@ lemma isQCatEquivalence_of_innerAnodyne {A B : SSet.{u}}
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence i := (qCatEquivalenceOfInnerAnodyne i hi).isQCatEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.3.2.2" (partial := direction) "仮定：C が準圏、制限射を二次元 inner horn とする（順方向の仮定と一致）。結論：trivialKanFibration_pre_of_innerAnodyne によりその同じ restriction は自明 Kan fibration。逆向きはない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne

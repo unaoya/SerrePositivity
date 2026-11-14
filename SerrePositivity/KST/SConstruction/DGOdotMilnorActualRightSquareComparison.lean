@@ -93,9 +93,9 @@ def dgOdotMilnorActualRightSquareFrameComparison :
 def dgOdotMilnorActualRightPerfectSquareComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F) (G) := by
   let H := squareFrameHomotopyPostcomp
     (dgOdotMilnorActualRightSquareFrameComparison R d) perfectStableInfinityInclusion
-  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((F) ≫
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((F) ≫
       perfectStableInfinityInclusion) 0 1)) := by
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F) 0 1))
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F) 0 1))
     exact dgOdotMilnorActualRight_perfect_zero R d
   exact perfectStableInfinityInclusion_isFullyFaithful.preimageFunctorIso
     (stableZeroSquareComparison H hz)

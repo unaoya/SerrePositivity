@@ -28,7 +28,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：旧 kOmegaSpectrum 値との等式ではない。
 使われ方：同じ実中央零性を四角形の頂点へ適用する。 -/
 theorem dgKappaSuppliedBFSquare_middle :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 1)) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_target (dgKappaNativeCoherentBFSquare R D I)
@@ -69,7 +69,7 @@ include hcofinal Z in
 規約：共終性・I・Z に条件付きで、旧 BF 頂点の実同型を仮定しない。
 使われ方：実供給の fiber 四角形を loop 四角形にする。 -/
 theorem dgKappaSuppliedBFSquare_middle_isZero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0) := by
   rw [dgKappaSuppliedBFSquare_middle]
   exact spectrum_isZeroVertex_of_homotopyGroup_subsingleton _
     (dgKappaSuppliedBFCone_subsingleton R D I hcofinal Z)

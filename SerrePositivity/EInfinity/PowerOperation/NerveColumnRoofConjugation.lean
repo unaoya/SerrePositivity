@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.PowerOperation.NerveColumnConstantRestriction
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoPrecompositionCoherence
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentPinchedTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.CoherentPinchedTransport
 
 /-!
 # 同じ sourceIso の両端成分で全屋根族を共役する
