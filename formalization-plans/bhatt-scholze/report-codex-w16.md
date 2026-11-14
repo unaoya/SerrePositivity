@@ -14728,3 +14728,204 @@ L12a検証済み実測1,758+624=**2,382行**、M14は16,965+624=**17,589行**。
 実測は17,589行で外枠にはまだ届いていない。既存構成の法則・証明分割は型を報告して
 続け、新しい数学・まとまりの外・外枠に届くときに止まる規則を維持する。
 G10・M15・G12は作らない。B4は595254e10で完了済みのまま。
+
+## 195. §192の左逆の法則C444〜C448の実装開始
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは4de85cfabで元の右逆を検証・コミットした進捗。枝は変更なしから再開した。
+§192の型のまま、同じ区間の順位の上下比較C444・C445、順方向の所属C446、
+同じ分割の両端との比較C447、有限比較による端点の特定C448を書いた。
+証明済みとして数えるのは対象ビルドと小監査の後。
+型は§192のままで、既存の法則・証明分割以外の数学は追加していない。
+各証明200行以内。G10・M15・G12・共有入口には触れない。
+
+有限点検を先に実施：`/tmp/bsw16/check-color-rank-bound-comparisons.py`。
+884組の元の語と切断・5,410箇所の高さを点検する既存スクリプトに、
+同じ色の全区間の最初/最後の順位との両比較を加え、全例で一致を確認した。
+C446・C447の分割の所属比較は§191の799辺の点検と同じ読み方。
+B4は595254e10で完了済み。前の凍結の記述はB4の明示指示で解除されている。
+
+## 196. C449の元の二端点の復元（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C449の証明を、同じ交換経路の両端を読む二つの法則C449a・C449bへ分ける。
+新しい構成・定理ではなく、C421・C447・C448をそのまま合わせる証明分割。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma positiveCompositeNestedMap_segmentStart {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    lo (positiveCompositeInnerCut u v k c).exchange
+        (colorIntervalFirst (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i)) =
+      c.1.start i
+
+lemma positiveCompositeNestedMap_segmentEnd {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    hi (positiveCompositeInnerCut u v k c).exchange
+        (colorIntervalLast (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i)) =
+      c.1.start i + (c.1.val i).val - 1
+```
+
+比較する両端は元の内側幅以下。全ての有限辺との同じ比較からC448で端点を特定し、
+C376・C426に戻して元の部分長を得る。有限点検は§185の元の21,939組の対応。
+
+## 197. C450と既報の正の有限対応の組み立て
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C450は§192の型のまま実装する。C449で同じ分割をそろえ、C429の全水平辺の
+元の二種類の各像でC393・C416・C434を使う。元のcutHeightsの単射性で同じCutへ戻す。
+その後、§159で既報の次の正の全有限添字のEquivを、両方の逆の等式から組み立てる。
+これは固定したL12aの同じ有限対応の組み立てであり、新しい数学の項目ではない。
+
+```lean
+def positiveCompositeNestedEquiv {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    PositiveCompositeCutIndex u v k q ≃ PositiveNestedCutIndex u v k q
+```
+
+各証明200行以内の見込み。退化した切断も除かない。符号・実テンソル・nullaryの
+照合はまだ別に残り、このEquivの構成だけでL12aを完了には数えない。
+
+## 198. C449の同じ位置の順位の移送（既存構成の法則）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C444〜C448・C449a・C449bは対象ビルドに成功した。
+C449の出現位置を直接rewriteすると、その位置の色を示す証明も依存するためmotiveが不正になる。
+位置と色の証明をまとめた同じcolorIntervalFirst/Lastの移送をC449c・C449dで明示する。
+既存構成の係数移送の法則であり、新しい数学ではない。各証明200行以内。
+型は次。
+
+```lean
+lemma colorIntervalFirst_congr_position {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a) (h : p = p') :
+    colorIntervalFirst s v a p hp = colorIntervalFirst s v a p' hp'
+
+lemma colorIntervalLast_congr_position {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a) (h : p = p') :
+    colorIntervalLast s v a p hp = colorIntervalLast s v a p' hp'
+```
+
+次の符号照合の有限点検も実施した（まだLeanの証明ではない）：
+`/tmp/bsw16/check-general-composite-signs.py`。
+外側語長1〜4・内側語長1〜3、外側arity最大3・内側arity最大2、単体次数0〜2で、
+元の非退化全射語と全ての正の重なる分割を読む12,233組について、合成側の面の非退化性が
+二段側の両方の面の非退化性と一致した。残る3,745組では、元のcompositionExponentと
+一般cutSignの指数が、二段側の係数交換d*e・内側係数の移動e*prefixDegree・
+元の両cutSignの指数の和とmod 2で一致した。退化項は符号検査の対象から除いて別に零を比較する。
+元の符号規約を変更するものではない。
+
+## 199. L12a の同じ指定面・符号の比較の型（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+正の全有限添字の同値の後は、元の指定面と元の符号を照合する。
+指定面の族は、次数と元のverticesをそのまま組にしたもの。二段側の挿入色では
+元の外側verticesと元の内側verticesを合成し、残り色では元の外側verticesを使う。
+出力順序は既存IntervalCuts.insertionFamilyを使い、選び直さない。
+前方次数は元のoutputDegreeのprefixFamilyのdegreeSumで、係数移動と同じ次数。
+型は次。C451〜C453は固定したL12aの指定面・符号・零項の法則の証明分割であり、
+新しい数学の項目ではない。型や元の符号規約は変更しない。
+
+```lean
+def positiveCompositeFaceFamily {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Fin (m + (n + 1)) → Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)
+
+def positiveNestedFaceFamily {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    Fin (m + (n + 1)) → Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)
+
+def positiveNestedPrefixDegree {m d q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (s : Cut (m + d) q) : ℕ
+
+def positiveNestedCutCoefficient {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) : ℤ
+
+-- C451：次数と元の指定面の族そのものの厳密な一致。
+lemma positiveCompositeFaceFamily_eq_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positiveCompositeFaceFamily u v k c =
+      positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c)
+
+-- C452：元の符号の比較。零となる面の項に符号の等式を強制しない。
+lemma positiveCompositeCutCoefficient_eq_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Surjection.compositionSign u v k c.1 * cutSign c.2 (positiveCompositeCutWord u v k c.1).val =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c)
+
+-- C453：元の正規化前の面の退化性も同じ有限対応で照合する。
+lemma positiveCompositeCut_nondegenerate_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val ↔
+      Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val ∧
+        Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val
+```
+
+有限点検を先に拡張した：`/tmp/bsw16/check-general-composite-faces.py`。
+§198の12,233組で、合成側の全色の元の頂点列が、残り色の外側頂点列と、挿入色の
+内側頂点列を元の外側頂点列で読んだ列に、順序・重複も含め厳密に一致した。
+同じ全例で退化性が一致し、生き残る3,745組で元の符号も一致した。
+この点検はLeanの全称証明の代わりに数えない。零arityはこれらの型では含まず、
+L12aのnullaryの行として別に残る。
+
+## 200. L12a の正の全有限添字の同値：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C444〜C450を閉じ、§159のpositiveCompositeNestedEquivを構成した。
+任意の正の内外arity、全語次数・単体次数で、元の重なる分割と元の一段切断の全添字と、
+元の二段切断の全添字が厳密に対応する。退化した切断も除かず、両方向の逆は元の型の等式。
+正の全添字の同値だけで、符号・実テンソル・nullaryまで閉じたとは扱わない。
+
+対象ビルド：`/tmp/bsw16/m14-composite-inner-rank-bounds-01.log`（順位比較2本成功）、
+`/tmp/bsw16/m14-composite-nested-equiv-01.log`（端点比較・端点復元成功）、
+`/tmp/bsw16/m14-composite-nested-equiv-02.log`（2,884 jobs、全対象成功・対象警告0）。
+有限端点の補助では、不要な存在しないtactic importを除き、反射性をNat.le_reflで明示した。
+C449の位置と色の証明はC449c・C449dで同じ順位ごと移して閉じた。
+
+小監査入力 `/tmp/bsw16/audit-m14-composite-nested-equiv.lean`、
+結果 `/tmp/bsw16/m14-composite-nested-equiv-audit.log`、
+**7モジュール・24宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+個別の証明200行超はない。既存の公開宣言・界面・共有入口・共有監査は変更していない。
+各ビルドと監査は一回ずつ鍵を取り、実行が終わったら返した。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| ColorRankBoundComparisons | 53 |
+| CompositeInnerRankBounds | 54 |
+| FiniteEndpointComparison | 30 |
+| CompositeSegmentRecovery | 60 |
+| CompositePartitionRecovery | 43 |
+| ColorRankPositionTransport | 31 |
+| CompositeNestedEquiv | 47 |
+| **合計** | **318** |
+
+§194の左逆の接続200〜350行に対し実測318行で、見込み内。
+L12a検証済み実測2,382+318=**2,700行**、M14は17,589+318=**17,907行**。
+外枠25,000行まで**7,093行**。残るL12aの行は符号200〜350行・指定面と実テンソル
+400〜750行・nullary250〜400行で合計850〜1,500行、完成時3,550〜4,200行の見込み。
+他の行の見込みを据え置くとM14完成時**24,761〜30,321行**。
+上端に**5,321行の超過リスク**が残り、収まるとは扱わない。外枠・範囲の停止規則は維持する。
+§199の二本は未検証の組み立ての下書きで、上の実測・登録候補に含めない。
