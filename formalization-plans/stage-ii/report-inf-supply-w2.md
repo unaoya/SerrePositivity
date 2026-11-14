@@ -12550,7 +12550,7 @@ theorem grothWeightedNerveForward_projection :
 
 各weighted係数のYoneda表示を取り、prefixの最終対象を逆向きのGrothendieck対象とした。係数の自然性は、包含で制限した射列と基底の射に沿って送った射列の厳密な等式である。その最終対象への評価を型の移送に使い、同じ底を持つGrothendieck射を回収した。恒等射・合成則もこの自然性の射への評価と有限順序上の射の一意性から示し、逆向きの全射列に束ねた。
 
-264：新規二本の対象ビルド1,168 jobs・終了0、小監査115本866宣言・標準三公理のみ。実ハンドル19367の終了0を確認し、鍵返却済み。今回120行、累計115本・7,638行（外枠15,000）。R03eは349行／見込み500〜900行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+264：新規二本の対象ビルド1,168 jobs・終了0、小監査115本866宣言・標準三公理のみ。実ハンドル19367の終了0を確認し、鍵返却済み。今回118行、累計115本・7,636行（外枠15,000）。R03eは347行／見込み500〜900行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
 
 残りは、両往復と順向き写像の各次数での全単射性、そこからの同じ写像を前向きに持つ単体集合の同型、指定点の等式である。逆向き写像の面・退化との自然性を別に作り直さず、検証済みの順向き自然変換の各成分が可逆であることから全同型を得る。見込みの半分450行に達する前だが、現時点の残りは200〜450行と見積もる。R03d・R02・無条件のnative極限性はまだ閉じていない。
 
@@ -12595,4 +12595,95 @@ def grothWeightedNerveInverseSimplex : ComposableArrows (Grothendieck F) n
 
 theorem grothWeightedNerveInverseSimplex_base :
     grothWeightedNerveInverseSimplex F s ⋙ Grothendieck.forget F = s.1
+```
+
+## 196. R03eの半分での実測（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは対象ビルド前で未完了。
+
+検証済み347行に、両往復・全同型・指定頂点の作業木の四本259行を加えて606行となり、当初見込み500〜900行の半分450行を超えた。作業木を含む累計は7895行／外枠15,000行。両往復と全同型はまとめた個別検査の実ハンドル11719で終了0。指定頂点はまだ個別検査中であり、四本の対象ビルド・小監査は未実施。この時点で未検証分をコミットしない。
+
+残りは指定頂点の次数零の計算、四本の対象ビルドと小監査である。型は§192のR03eを保持しており、見込み500〜900行以内で閉じる見通し。R03dの後半は、同じ底上のKan分類と元のaugmentationの指定点の照合が引き続き必要であり、R03eだけでnative極限性が得られたとは扱わない。
+
+## 197. R03e完了：同じ射影と指定点を持つ厳密なweighted nerve同型（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 18（うち追加 6）。今回R03eが完了。R02・R03・R03dは未完了。
+
+元のweighted係数から回収した射列のprefixは、元の同じ係数の全射列に一致する。対象は係数の自然性の対象への評価、射は同じ関手等式の射への評価で示し、Yonedaの往復で元のweighted単体へ戻した。逆方向の往復も、元のprefixの最終対象と最終射の評価から、元のGrothendieck射列そのものへ戻る等式として示した。
+
+これらの両往復から順向きの既存全写像の各次数が全単射となり、その同じ全写像を前向きに持つ単体集合の同型を得た。元の底への射影の厳密な等式と、元の各fiber対象の指定頂点が同じconstant liftになる等式を併記し、§192のR03eの型をそのまま閉じた。逆写像の自然性を仮定したり、対象ごとの同値で代用したりしていない。
+
+265：四本の対象ビルド1,570 jobs・終了0、小監査119本885宣言・標準三公理のみ。実ハンドル23927の終了0を確認し、鍵返却済み。直前の全個別検査は実ハンドル32248の終了0。今回260行、累計119本・7,896行／外枠15,000。R03eは607行で、当初見込み500〜900行の範囲内（上端との差−293行）。モジュール実ファイルの再集計で§195・196の二行の誤算も修正した。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+R03dの後半へ進むにあたり、`weightedNerveMap_isPrecompositionEquivalence` の入力には両係数のKan性が要ることを確認した。したがって、一般の `nerve (F.obj i)` からKan化への射にそのまま適用することはできない。continuousLeftFibrationReplacementの単位はleft anodyneで、`continuousLeftFibrationHomIso` は同じ底上の全相対Homを保つが、これだけで元の係数の全分類との同型や指定点の正規化が得られたとはしない。次はR03eを同じ底のOverの同型へ持ち上げる既存構成の法則を使い、相対Kan比較の残りを確認する。§192.1の候補はまだ一覧に加えず、未証明のまま使わない。
+
+### 197.1 型
+
+#### GrothendieckWeightedNerveRecovery（63行）
+
+```lean
+theorem grothWeightedPrefixFiber_inverse_obj (i : Fin (n+1)) (k : Fin (i.val+1)) :
+    (grothWeightedPrefixFiber F (grothWeightedNerveInverseSimplex F s) i).obj k =
+      (grothWeightedNerveFiberChain F s i).obj k
+
+theorem grothWeightedPrefixFiber_inverse (i : Fin (n+1)) :
+    grothWeightedPrefixFiber F (grothWeightedNerveInverseSimplex F s) i =
+      grothWeightedNerveFiberChain F s i
+
+theorem grothWeightedNerveSimplex_inverse :
+    grothWeightedNerveSimplex F (grothWeightedNerveInverseSimplex F s) = s
+```
+
+#### GrothendieckWeightedNerveRetraction（82行）
+
+```lean
+theorem grothWeightedNerveFiberChain_forward (i : Fin (n+1)) :
+    grothWeightedNerveFiberChain F (grothWeightedNerveSimplex F σ) i =
+      grothWeightedPrefixFiber F σ i
+
+theorem grothWeightedNerveInverseObj_forward (i : Fin (n+1)) :
+    grothWeightedNerveInverseObj F (grothWeightedNerveSimplex F σ) i = σ.obj i
+
+theorem grothWeightedPrefixFiber_last_map {i j : Fin (n+1)} (f : i ⟶ j) :
+    (grothWeightedPrefixFiber F σ j).map (homOfLE
+      (show grothWeightedNerveInverseIndex f ≤ Fin.last j.val from leOfHom f)) =
+        eqToHom (by
+          rw [grothWeightedPrefixFiber_obj]
+          rfl) ≫ (σ.map f).fiber ≫
+            eqToHom (grothWeightedPrefixFiber_last F σ j).symm
+
+theorem grothWeightedNerveInverseSimplex_forward :
+    grothWeightedNerveInverseSimplex F (grothWeightedNerveSimplex F σ) = σ
+```
+
+#### GrothendieckWeightedNerveIso（40行）
+
+```lean
+theorem grothWeightedNerveForward_bijective (n : ℕ) :
+    Function.Bijective (grothWeightedNerveSimplex F (n := n))
+
+def grothendieckWeightedNerveIso : nerve (Grothendieck F) ≅ weightedNerve (F ⋙ nerveFunctor)
+
+theorem grothendieckWeightedNerveIso_projection :
+    (grothendieckWeightedNerveIso F).hom ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+      nerveMap (Grothendieck.forget F)
+```
+
+#### GrothendieckWeightedNerveVertex（75行）
+
+```lean
+theorem grothWeightedNerveForward_vertex (i : I) (x : F.obj i) :
+    (grothWeightedNerveForward F).app (Opposite.op ⦋0⦌)
+      (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
+        (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
+          (Opposite.op ⦋0⦌) (nerveVertex x)
+
+theorem exists_grothendieckWeightedNerveIso :
+    ∃ e : nerve (Grothendieck F) ≅ weightedNerve (F ⋙ nerveFunctor),
+      e.hom ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+        nerveMap (Grothendieck.forget F) ∧
+      ∀ (i : I) (x : F.obj i),
+        e.hom.app (Opposite.op ⦋0⦌) (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
+          (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
+            (Opposite.op ⦋0⦌) (nerveVertex x)
 ```
