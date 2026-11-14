@@ -1139,3 +1139,10 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 ### 5∞-0 のdraft検査・第64束（11-14夜）
 
 一覧：済み 11／全体 14（うち追加 0）。[第64束](bulk-5inf0/draft-block64-validation.json)はPerfectSiteComparisonの既存の有界性補題のimport漏れ1件、ArcSiteのIsWeaklyTerminal・CechNerveDataの二つの所有元の曖昧さで失敗。有界性補題の実際の所有モジュールPerfectBoundedをimportし、二つのČechの名前は元の意図どおりSheaves側に修飾して第65束へ並んだ。実行中の対象は変更していない。
+
+
+### 5∞-0 のdraft検査・第65束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第65束](bulk-5inf0/draft-block65-validation.json)でPerfectSiteComparison（約44秒）・ArcSite（約22秒）・AfterComparison（約23秒）が成功。有効な成功は49／57本。既存の完全性から有界性を渡すこと、animated関手の実際の依存、Sheaves側のČechデータへの修飾が通った。この3本の検査済みソースをコミットする。
+
+InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際に持つhRを同じ変数から転送する1箇所。後者はPrismaticのAnimatedAlgebra・polyYonedaの所有元と、通常のHomotopyCategory.homMkのAPIを直接使うようにする。selfTensorの後続のエラーはその未定義の脚の連鎖なので、先に脚を検査する。第66束へ並んだ。
