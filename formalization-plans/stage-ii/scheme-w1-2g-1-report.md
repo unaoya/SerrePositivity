@@ -210,3 +210,34 @@ A07 の平坦な稠密開の供給に使う既存の局所化・有限生成の�
 対象ビルドは順に 2,239・2,240・1,982 jobs 成功。登録後の直接の importer `SerrePositivity.AlgebraicGeometry` は **4,815 jobs 成功**。新規三モジュールだけの小さい監査は **5 宣言・標準三公理のみ**で成功。ログは `scheme-drafts/2g-a07-minimal-relations-build.log`、`2g-a07-quotient-factor-build.log`、`2g-a07-noetherian-model-build.log`、`2g-a07-model-registered-check.log`。共有鍵は `--class impl --wait 3600`、待ちは一つ。root ビルドと大きい監査は行っていない。
 
 A07 と G2 は未完。Noether 模型は affine な有限表示代数の模型であり、有限アフィン開被覆の重なりの貼り合わせ、固有性、全射性、filtered な被覆模型を一括して供給したという意味ではない。次は整域商上の一般自由性の開を実際の基底へ引き戻す係数・局所化の比較を組む。
+
+## A07 の次の係数移送：整域商の主開を元の基底へ戻す（着手前の型）
+
+一覧：済み 7／全体 12（うち追加 3）
+
+`exists_away_quotient_localization_factor_of_minimalPrime`：f:S→R、R は被約、p∈minimalPrimes R、(p.comap f).FG、t:S/(p.comap f)、t≠0 に対し、r∉p と `Localization.Away t →+* Localization.Away r` を構成する。S から両辺への自然な射が可換であることも返す。前の有限関係の消去で得た s と t の代表 a から r=s*f(a) を取る。既存の商と局所化の構成の係数移送であり、主項目の追加には数えない。見込み 50〜120 行。
+
+同じ A07 の一般平坦性の束の出口（着手前の型）：`exists_free_basicOpen_at_minimalPrime_of_finitePresentation` は、被約環 R、有限表示 R-代数 B、極小素点 p に対し、r∉p と `Module.Free (Localization.Away r) (Localization.Away r ⊗[R] B)` を返す。上の実際の Noether 模型、整域商の主開の係数移送、既存の整域上の一般自由性、テンソル積の cancelBaseChange をつなぐ。これは A07 の予定済みの平坦な稠密開の供給のアフィン局所であり、主項目の追加ではない。見込み 100〜300 行。
+
+A07 の一般平坦性の次の出口（着手前の型）：`exists_compact_dense_open_flat_restrict_specMap_of_finitePresentation` は、被約環 R、極小素点集合の準コンパクト性、有限表示 R-代数 B に対し、全極小素点を含む準コンパクト稠密開 U と Spec B→Spec R の U 上の平坦性を返す。上の極小素点ごとの自由な基本開の和を取り、準コンパクト開の選択の法則を適用する。flat の target-local な貼り合わせ・制限と、自由な局所化の環の比較は既存の構成の法則として再利用・分割する。見込み 100〜220 行。
+
+A07 の一般平坦性の有限開被覆への貼り合わせ（着手前の型）：`exists_compact_dense_open_flat_restrict_of_compact_generics` は、被約環 R と準コンパクトな極小素点集合、準コンパクトな始域 X、局所有限表示の f:X→Spec R に対し、全極小素点を含む準コンパクト稠密開上の平坦性を返す。アフィン版を有限アフィン開被覆で適用し、基底の開を共通に狭めて source-local に貼る。一般平坦性の予定済みの束の貼り合わせであり、主項目の追加ではない。見込み 100〜220 行。
+
+## 2026-11-14：準コンパクトな一般点集合から一般平坦性への接続
+
+一覧：済み 7／全体 12（うち追加 3）
+
+予定した四ファイルの対象・入口・小さい監査が通った。追加は本体 **267 行**、入口 4 行。G1 累計は本体 **1,375 行**、入口込み **1,410 行**（G0 は別計上）。各ファイルは 200 行以下。
+
+- `exists_away_quotient_localization_factor_of_minimalPrime`：整域商の非零元の主開から、元の被約環の極小素点を避ける主開への射を、係数環からの可換式つきで供給。
+- `exists_free_basicOpen_at_minimalPrime_of_finitePresentation`：被約環上の有限表示代数は、各極小素点の近くの基本開で自由。Noether 模型・整域商・係数移送・テンソル積の cancelBaseChange を実際につないだ。
+- private `flat_restrict_iSup_generic`：各開で平坦なら、その和の開で平坦。既存の target-local な貼り合わせの法則。
+- `exists_compact_dense_open_flat_restrict_specMap_of_finitePresentation`：極小素点集合が準コンパクトな被約環上の有限表示アフィン射は、全極小素点を含む準コンパクト稠密開で平坦。
+- private `exists_compact_generic_flat_of_isAffine`：同じアフィン射の結果を、始域の canonical な isoSpec で移送。
+- `exists_compact_dense_open_flat_restrict_of_compact_generics`：始域が準コンパクトな局所有限表示射について、有限アフィン開被覆で上の結果を貼り合わせる。元の基底の Noether 性・元の射の固有性は仮定しない。
+
+一般点集合から平坦開を得る際、一般の平坦性の開性の定理を新しく仮定せず、有限表示の係数模型と既存の整域上の一般自由性で供給した。局所化のスカラー作用は元の標準作用を保持し、Spec の点と PrimeSpectrum の点の所属の照合では明示した集合の等式を使った。新しい resource limit、sorry、追加公理は導入していない。
+
+対象ビルドは `GenericFreeAtMinimalPrime` が **2,359 jobs**、`CompactGenericFlatnessAffine` が **2,986 jobs**、`CompactGenericFlatness` が **2,987 jobs** 成功。直接の importer `SerrePositivity.AlgebraicGeometry` は **4,819 jobs 成功**。新規四モジュールのみの小さい監査は **6 宣言、標準三公理のみ**で成功。ログは `scheme-drafts/2g-a07-generic-minimal-build-3.log`、`2g-a07-compact-generic-flatness-build.log`、`2g-a07-compact-generic-flatness-scheme-build-3.log`、`2g-a07-compact-generic-registered-check.log`。共有鍵は全て `--class impl --wait 3600`、待ちは一つ。
+
+残りの主項目は **5 件**（A07 と B01〜B04）。A07 では今得た平坦な準コンパクト稠密開と射を共通の Noether 段へ移すこと、中心を構成して戻すこと、整全射の有限表示近似と細分の有限段への降下が残る。G2 のスキーム模型の構成は未完。この束は一般平坦性の入口であり、一般基底の fppf–proper 細分の完成ではない。約 12,000 行の時点で C01・A07・G2 を合わせて再見積もりする指示は維持する。
