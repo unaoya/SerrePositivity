@@ -8172,3 +8172,67 @@ SSetモデル入力も追加せず、§83で固定した同じ実現対象につ
 検証済み累計177本・13,874行、外枠24,000行まで10,126行。
 上限変更後のRR02(a)実測1,376行、(b)(c)新規0行。
 E01の別経路の紙は§80.1の状態で、単位の普遍性を仮定する経路は使っていない。
+
+## §88 RR02(a)：単体パラメータ付き実現の境界条件
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `2c7e94a04` の検証済み163行の追加という進捗。
+`WeightedFunctor.weightedSectionsAdjunction` と元のframe実現随伴をそのまま合成する。
+右随伴がCの自明fibrationを自明Kan fibrationへ送ることは、前ターンと同じ
+境界持ち上げと `bousfieldKanMap_trivialKanFibration` から出る。
+この通常の随伴の持ち上げ法則で、全単射パラメータの実像がcofibrationであることを得る。
+SSetのモデル存在入力は使わない。RR02(a)の既存の随伴法則への接続で、IDを増やさない。
+
+```lean
+def bousfieldKanParameterRealization : SSet.{w} ⥤ C :=
+  weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ) ⋙ functor K A
+def bousfieldKanParameterAdjunction :
+    bousfieldKanParameterRealization K A ⊣
+      hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)
+instance bousfieldKanParameterRealization_isLeftAdjoint :
+    (bousfieldKanParameterRealization K A).IsLeftAdjoint
+lemma bousfieldKanParameterRealization_map_cofibration
+    (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+    {U V : SSet.{w}} (i : U ⟶ V) [Mono i] :
+    cofibrations C ((bousfieldKanParameterRealization K A).map i)
+```
+
+左因子は重み、右因子はパラメータで固定する。既存の反対順序のtensorとの
+同一視は仮定しない。次は標準単体の境界によるReedy cofibrancyへ接続する。
+
+### 88.1 検証と次の境界の移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+パラメータ付き実現は対象ビルド2,795 jobs成功、4宣言の小監査で標準三公理のみ。
+ログ `/tmp/is-w1/bk-parameter-realization/build.log`。計算上限は変更なし。
+次は既存の有限tensor・latching同型による次の二つの移送を証明する。
+
+```lean
+lemma bousfieldKanRealization_boundary_cofibration (n : ℕ) :
+  cofibrations C (SubcomplexTensor.inclusion (SSet.boundary n)
+    (StandardCosimplicial.diagram (bousfieldKanParameterRealization K A)))
+lemma bousfieldKanRealization_reedy_cofibrant :
+  reedyLeft simplex (cofibrations C)
+    (initial.to (StandardCosimplicial.diagram (bousfieldKanParameterRealization K A)))
+```
+
+共通引数は `hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k))`。
+RR02(a)の証明の分割であり、増大射の弱同値性を主張するものではない。
+
+### 88.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanParameterizedRealization | 59 | 2,795 jobs成功 | 4宣言、標準三公理のみ |
+| BousfieldKanRealizationReedy | 53 | 2,798 jobs成功 | 2宣言、標準三公理のみ |
+
+後者のログは `/tmp/is-w1/bk-realization-reedy/build.log`。計算上限は変更なし。
+今回112行、検証済み累計179本・13,986行、外枠24,000行まで10,014行。
+上限変更後のRR02(a)実測1,488行、(b)(c)新規0行。
+単体パラメータ付き実現とそのReedy cofibrancyまで検証済み。
+実増大射の弱同値性、全frameへの比較、RR02(b)(c)は引き続き未完。
+E01の別経路の紙は§80.1のまま。停止点5aにはまだ到達していない。
