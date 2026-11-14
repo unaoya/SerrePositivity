@@ -1545,3 +1545,5 @@ public import SerrePositivity.AlgebraicGeometry.AffineVCoverFlatModelWitness
 public import SerrePositivity.AlgebraicGeometry.IntegerModelAbsoluteFinitePresentation
 
 public import SerrePositivity.AlgebraicGeometry.IntegerModelStageFactor
+
+public import SerrePositivity.AlgebraicGeometry.IntegerFlatRefinementStage

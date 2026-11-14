@@ -2392,3 +2392,20 @@ B02・B03 の固定の平坦模型と細分の射の同じ段への接続（着�
 G1・G2共用部品込み本体13,999行、入口込み14,235行。β と細分の射・全射性を同じ段へそろえる接続は下書きで、B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B02・B03 の係数図式の基底上の自然性（着手前の型、見込み40〜100行）：同じ宇宙の係数環 k と k-代数 R について `coefficientSpecBaseNatTrans k R` は実際の `coefficientSpecDiagram k R` の各段から Spec k への構造射を自然変換に束ねる。`coefficientSpecCone_base` は元の Spec R の cone と Spec k への構造射の可換式を返す。既存の部分代数の包含と Spec の合成の自然性の法則で、親項目を増やさない。G2 で k に元の有限生成係数部分代数を取ると、後段はその上有限型なので元の F_p 上でも有限型となる。
+
+
+B02・B03 の実際の共通係数模型の供給（着手前の型、見込み180〜320行、前記350〜800行の内数）：`exists_integer_flat_refinement_coefficient_model` は Noether な同じ宇宙の k、任意の k-代数 R、実際の固有全射 r:T→Spec R、固定の整数平坦模型 q:Z→Y と β:T→Y・その底変換の全射性、局所有限表示の固定標的 V→Spec k への細分の射・基底上の式から、有限生成 k-部分代数 B⊆R 上の実際の固有全射・fppf 全射と細分の射、元の W との Cartesian 比較を返す。B01 の固有全射模型自体をここで構成し、模型の存在を追加仮定にしない。既存の模型と同じ段での因子化の組立てとして親項目を増やさない。
+
+
+### B02・B03：固有全射・fppf 全射・細分の射を同じ後段へそろえる
+
+`IntegerFlatRefinementStage`（69行）：`exists_integer_flat_refinement_stage` は実際の固有全射の模型から β を因子化し、その段で既存の平坦模型の全射性と細分の射の因子化を適用する。同じ後段の固有・全射・局所有限表示の Rⱼ、平坦・全射・局所有限表示・qcqs な Qⱼ、固定標的への射と基底上の可換式、元の細分の射との一致、元の W の実際の Cartesian 比較を返す。
+
+本体69行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,024ジョブ、小監査3宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-integer-flat-refinement-stage-check.log`・`2g-integer-flat-refinement-stage-native.log`・`2g-integer-flat-refinement-stage-audit.log`。
+
+G1・G2共用部品込み本体14,068行、入口込み14,305行。実際の係数模型を供給しての適用と模型の v 被覆性はなお残り、B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
