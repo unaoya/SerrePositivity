@@ -66,5 +66,11 @@
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseComparison",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseHomEquiv",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseIso",
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniversePoints"
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniversePoints",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanExInfinityUnit",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeKanCoefficients",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCosliceClassification",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeKanDiagram",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKClassification",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeClassification"
 ]

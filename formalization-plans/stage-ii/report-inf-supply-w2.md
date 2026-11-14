@@ -11063,3 +11063,192 @@ theorem weightedSectionsUniverseComparison_point {W H : I ⥤ SSet.{u}} (s : W �
             ((Functor.const (AsSmall.{v} I)).obj (Δ[0] : SSet.{max u v})) ≫
               (weightedDiagramUniverse.{u,v} I).map s))
 ```
+
+## 175. 分類比較から同じ切断模型への接続 R03b（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 15（うち追加 3）。
+
+IS-W2 §19の同じまとまり・1,500行以下の枠で、次の中間項目 **R03b** を追加する。R02〜R03の、元のBK係数のweighted nerveと同じ頂点のcosliceの引き戻しの分類比較から、その二つの射影の切断空間へ戻す段である。全分類同型だけをnative切断や錐そのものと取り違えないために、元の二つの射影を型に指定する。
+
+```lean
+universe u
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces
+
+def classifiedLeftFibrationSectionsEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (η : FunctorIso (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram q)) :
+    QCatEquivalence (simplicialSections p) (simplicialSections q)
+```
+
+見込みは250〜500行（同じ底を厳密に保つ復元の比較80〜160行、相対関手空間と元の切断模型の照合100〜180行、合成・BEへの適用70〜160行）。既存 `leftStraighteningInfinityReconstruction`、`smallLeftUnstraighteningComparisonOfFunctorIso` と、底上の前合成同値による `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` を使う。共通の復元を頂点とする二本の実写像で比較し、元の切断空間の同型を通して戻す。新しいstrictificationやBE模型は作らない。
+
+これは固定された射影の中間比較であり、R02の全図式射の錐族・R03の極限判定のa・ha・heは残す。元の指定BK点の像と、元の図式の標準脚の一致も後で明記する。この比較だけでnative join錐族を完成と数えない。外枠15,000行・⑤aの既存欄の型は変更しない。見込みが1,500行を超える場合や別のまとまりが必要と分かった場合は、検証済みを保存して報告する。
+
+## 176. 同じEx∞係数とnative錐射影の全分類比較（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 15（うち追加 3）。R03bは§175で追加し個別検査中。R02/R03は未完了。
+
+元のraw right-frame Hom係数を同じAsSmall.downとULiftで運び、元のEx∞単位を合成した。Kan係数への単位が誘導する**実際のBK切断写像**のホモトピー同値を、既存BK係数不変性から証明した。元の指定BK点が同じ宇宙変更と同じ単位により送られる零単体の等式も証明した。
+
+この係数図式は、既存の全frame比較の第零Kan図式を指定添字関手で引き戻したものと定義どおり等しい。そのcoherent nerveも既存の全図式の前合成と等しい。これに元の全Hom∞比較とcoslice分類の全同型を合成し、同じweighted nerveと同じ頂点のnative錐射影の**元の二つのleft fibrationの全分類同型**まで接続した。値ごとの同値だけを集めたものではない。
+
+検証：236は対象ビルド10,630 jobs・70本448宣言、237は10,639 jobs・73本482宣言、238は10,636 jobs・74本497宣言。各対象ビルドと小監査が終了0、標準三公理のみ。対象は新規2本・3本・1本を指定し、rootや公式大監査は実行していない。実ハンドル67359・21555・31411の終了0を確認。個別検査で不足していたKanインスタンスと関手的分解を明示し、計算上限は変更しなかった。
+
+今回6本415行、累計74本・4746行。各200行以下。全て既存の係数移送・全比較の合成・貼り合わせの法則で、これら6本による一覧の追加は0。新しい中間項目は別途§175のR03bだけ。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+次はR03bの元の切断模型への復帰、その同じ比較を通じた指定点の像と元の標準脚の照合。native join錐の全族や極限判定のa・ha・heはまだ証明したと数えない。
+
+### 176.1 今回の法則の型
+
+#### BousfieldKanExInfinityUnit（53行）
+
+```lean
+def bousfieldKanExInfinityCoefficientUnit (H : I ⥤ SSet.{u}) : H ⟶ H ⋙ exInfinity
+
+theorem bousfieldKanExInfinityUnit_homotopyEquivalence (H : I ⥤ SSet.{u})
+    [∀ i, KanComplex (H.obj i)] :
+    IsSimplicialHomotopyEquivalence
+      (weightedSectionsMap (bousfieldKanWeight I) (bousfieldKanExInfinityCoefficientUnit I H))
+
+theorem bousfieldKanExInfinityUnit_point {H : I ⥤ SSet.{u}}
+    (s : bousfieldKanWeight I ⟶ H) :
+    ((weightedSectionsMap (bousfieldKanWeight I)
+      (bousfieldKanExInfinityCoefficientUnit I H)).app (Opposite.op ⦋0⦌))
+        (nativeWeightedPoint I s) = nativeWeightedPoint I
+          (s ≫ bousfieldKanExInfinityCoefficientUnit I H)
+```
+
+#### StrictDiagramTotProbeKanCoefficients（96行）
+
+```lean
+def strictBETotProbeFrameIndex (F : K ⥤ (operad A).Algebra) :
+    AsSmall.{u+1} Kᵒᵖᵒᵖ ⥤ AsSmall.{u+1} (operad A).Algebra
+
+theorem strictBETotProbeKanCoefficients_eq (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    (weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj (strictBETotProbeRightHomDiagram A K F Y) ⋙
+      exInfinity = strictBETotProbeFrameIndex A K F ⋙
+        FrameHom.rightFrameHammockKanDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C
+
+theorem strictBETotProbeRightHomDiagram_kanComplex (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
+    KanComplex ((strictBETotProbeRightHomDiagram A K F Y).obj i)
+
+theorem strictBETotProbeUniverseCoefficients_kanComplex (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    KanComplex (((weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+      (strictBETotProbeRightHomDiagram A K F Y)).obj i)
+
+theorem strictBETotProbeBKExInfinityUnit_homotopyEquivalence
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsMap
+      (bousfieldKanWeight (AsSmall.{u+1} Kᵒᵖᵒᵖ))
+      (HomotopyWeight.bousfieldKanExInfinityCoefficientUnit (AsSmall.{u+1} Kᵒᵖᵒᵖ)
+        ((weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+          (strictBETotProbeRightHomDiagram A K F Y))))
+
+def strictBETotUniversalBKExInfinityCone (F : K ⥤ (operad A).Algebra) :
+    bousfieldKanWeight (AsSmall.{u+1} Kᵒᵖᵒᵖ) ⟶
+      (weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+        (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F)) ⋙ exInfinity
+
+theorem strictBETotUniversalBKExInfinityCone_point (F : K ⥤ (operad A).Algebra) :
+    ((weightedSectionsMap (bousfieldKanWeight (AsSmall.{u+1} Kᵒᵖᵒᵖ))
+      (HomotopyWeight.bousfieldKanExInfinityCoefficientUnit _
+        ((weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+          (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F))))).app (op ⦋0⦌))
+        (((bousfieldKanUniverseSectionsIso.{u,u+1} Kᵒᵖᵒᵖ
+          (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F))).hom).app (op ⦋0⦌)
+            (ULift.up (strictBETotUniversalBKRightHomPoint A K F))) =
+      HomotopyWeight.nativeWeightedPoint _ (strictBETotUniversalBKExInfinityCone A K F)
+```
+
+#### StrictDiagramTotProbeCosliceClassification（63行）
+
+```lean
+def strictBEAlgebraProbeCosliceClassificationIso (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+        FrameHom.rightFrameHammockCoherentDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C
+
+def strictBETotDiagramProbeCosliceClassificationIso
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBECosimplicialNerve A F) ≫
+        (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+          FrameHom.rightFrameHammockCoherentDiagram
+            ((SimplicialLocalization.modelSourceFrameFamily (C
+```
+
+#### StrictDiagramTotProbeKanDiagram（53行）
+
+```lean
+def strictBETotProbeKanDiagram (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    AsSmall.{u+1} Kᵒᵖᵒᵖ ⥤ KanObject.{u+1}
+
+theorem strictBETotProbeKanDiagram_frame (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    strictBETotProbeKanDiagram A K F Y = strictBETotProbeFrameIndex A K F ⋙
+      FrameHom.rightFrameHammockKanDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C
+
+theorem strictBETotProbeKanDiagram_coherent (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    kanDiagramCoherentNerve (strictBETotProbeKanDiagram A K F Y) =
+      (SSet.uliftFunctor.{u+2,u+1}).map (nerveMap (strictBETotProbeFrameIndex A K F)) ≫
+        FrameHom.rightFrameHammockCoherentDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C
+```
+
+#### StrictDiagramTotBKClassification（74行）
+
+```lean
+def strictBETotUniverseDiagram (F : K ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ)) ⟶
+      (SSet.uliftFunctor.{u+2,u+1}).obj (CAlg_R A)
+
+def strictBETotKanDiagramCosliceIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    FunctorIso (kanDiagramCoherentNerve (strictBETotProbeKanDiagram A K F Y))
+      (strictBETotUniverseDiagram A K F ≫
+        leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))))
+
+def strictBETotBKClassificationIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    FunctorIso
+      (leftStraighteningCandidate ((weightedNerveKanEnriched (AsSmall.{u+1} Kᵒᵖᵒᵖ)).obj
+        ⟨strictBETotProbeKanDiagram A K F Y, trivial⟩).val.hom)
+      (strictBETotUniverseDiagram A K F ≫
+        leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))))
+```
+
+#### StrictDiagramTotBKNativeClassification（76行）
+
+```lean
+def strictBETotUniverseSourceDiagram (F : K ⥤ (operad A).Algebra) :
+    nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ) ⟶ CAlg_R A
+
+theorem strictBETotUniverseSourceDiagram_lift (F : K ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotUniverseSourceDiagram A K F) =
+      strictBETotUniverseDiagram A K F
+
+def strictBETotBKNativeClassificationIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    FunctorIso
+      (leftStraighteningInfinityDiagram (weightedNerveProjection
+        (strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget)))
+      (leftStraighteningInfinityDiagram (coherentConeProjection
+        (strictBETotUniverseSourceDiagram A K F)
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+          (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))))
+```
