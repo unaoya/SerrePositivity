@@ -4096,3 +4096,190 @@ M10 の一般の native な辺・fiber と全族の完成は未完。
 M11 以降と G12 を含む元の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 35. M10 の選択済み frame と同じ source frame の全自然比較（11-14）
+
+前の goal ターンは §33–§34 の実 source frame 条件と元の dg Hom の実 Dold–Kan
+への全単体・全標的自然な比較を検証してコミットした進捗。
+今回は元の `SemifreeDGModules` の閉零圏と同じ dg 全包含を probe のパラメータにする。
+元の全閉零射を持つ全包含であり、対象の離散族に置き換えない。
+N01 の同じモデル構造・同じ関手的分解・同じ `strictRawModuleSourceFrameFamily` を使う。
+
+既存の `FrameOverFunctor.commonObj` に同じ二つの augmentation を渡し、
+元の probe を底に持つ共通 Reedy cofibrant 族を得る。二つの実射と、同じ augmentation
+の上で可換する全自然変換の等式を保持する。
+三つの cosimplicial Hom を全 probe に反変・元の任意の標的に共変な二変数関手として構成し、
+標準 Hom とテンソル Hom から同じ共通 Hom への二つの自然変換を回収する。
+
+両脚の同じ射に `fixedFrameOverFunctor_homLeft_homotopyEquivalence` と
+`fixedFrameOverFunctor_homRight_homotopyEquivalence` を適用する。
+三つの元の Hom は Kan であり、二つの比較射は各 probe・各標的で実単体的ホモトピー同値。
+単体集合のモデル構造を仮定せず、比較を homotopy category だけへ落とさない。
+
+これは M10 の既存の frame/Hom 比較の証明分割と、既存の augmentation・自然性・
+貼り合わせの法則であり、一次 ID は追加しない。
+文脈は `A : Type u`、`[CommRing A]`。`IsSimplicialHomotopyEquivalence` は Kerodon の
+`KanComplexes.TheHomotopyTheoryOfKanComplexes` の実ホモトピー同値。
+
+### RawModuleProbeFrame
+
+```lean
+abbrev strictRawModuleProbeCategory (X : (operad A).Algebra) : Type (u + 1)
+
+def strictRawModuleProbeFunctor (X : (operad A).Algebra) :
+    strictRawModuleProbeCategory A X ⥤ strictRawModuleCategory A X
+
+lemma strictRawModuleProbeFunctor_semifree (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X))
+      ((strictRawModuleProbeFunctor A X).obj P)
+
+lemma strictRawModuleProbeFunctor_cofibrant (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    let := strictRawModuleModelCategory A X
+    IsCofibrant ((strictRawModuleProbeFunctor A X).obj P)
+
+def strictRawModuleProbeTensorFrame (X : (operad A).Algebra) :
+    strictRawModuleProbeCategory A X ⥤ (SimplexCategory ⥤ strictRawModuleCategory A X)
+
+def strictRawModuleProbeTensorAugmentation (X : (operad A).Algebra) :
+    strictRawModuleProbeTensorFrame A X ⟶
+      strictRawModuleProbeFunctor A X ⋙ Functor.const SimplexCategory
+
+lemma strictRawModuleProbeTensorFrame_cofibrant (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    let := strictRawModuleModelCategory A X
+    reedyLeft simplex (cofibrations (strictRawModuleCategory A X))
+      (initial.to ((strictRawModuleProbeTensorFrame A X).obj P))
+
+lemma strictRawModuleProbeTensorAugmentation_weak (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) (n : SimplexCategory) :
+    let := strictRawModuleModelCategory A X
+    weakEquivalences (strictRawModuleCategory A X)
+      (((strictRawModuleProbeTensorAugmentation A X).app P).app n)
+
+lemma strictRawModuleProbeTensorFrame_homotopicallyConstant (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) {n m : SimplexCategory} (f : n ⟶ m) :
+    let := strictRawModuleModelCategory A X
+    weakEquivalences (strictRawModuleCategory A X)
+      (((strictRawModuleProbeTensorFrame A X).obj P).map f)
+```
+
+### RawModuleProbeCommonFrame
+
+```lean
+def strictRawModuleProbeStandardFrame (X : (operad A).Algebra) :
+    strictRawModuleProbeCategory A X ⥤ (SimplexCategory ⥤ strictRawModuleCategory A X)
+
+def strictRawModuleProbeCommonFrame (X : (operad A).Algebra) :
+    strictRawModuleProbeCategory A X ⥤ (SimplexCategory ⥤ strictRawModuleCategory A X)
+
+def strictRawModuleProbeCommonToStandard (X : (operad A).Algebra) :
+    strictRawModuleProbeCommonFrame A X ⟶ strictRawModuleProbeStandardFrame A X
+
+def strictRawModuleProbeCommonToTensor (X : (operad A).Algebra) :
+    strictRawModuleProbeCommonFrame A X ⟶ strictRawModuleProbeTensorFrame A X
+
+lemma strictRawModuleProbeCommon_over (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    strictRawModuleProbeCommonToStandard A X ≫
+        Functor.whiskerLeft (strictRawModuleProbeFunctor A X)
+          (strictRawModuleSourceFrameFamily A X).augmentation =
+      strictRawModuleProbeCommonToTensor A X ≫ strictRawModuleProbeTensorAugmentation A X
+
+def strictRawModuleProbeStandardHom (X : (operad A).Algebra) :
+    (strictRawModuleProbeCategory A X)ᵒᵖ ⥤ strictRawModuleCategory A X ⥤ SSet.{u}
+
+def strictRawModuleProbeTensorHom (X : (operad A).Algebra) :
+    (strictRawModuleProbeCategory A X)ᵒᵖ ⥤ strictRawModuleCategory A X ⥤ SSet.{u}
+
+def strictRawModuleProbeCommonHom (X : (operad A).Algebra) :
+    (strictRawModuleProbeCategory A X)ᵒᵖ ⥤ strictRawModuleCategory A X ⥤ SSet.{u}
+
+def strictRawModuleProbeHomFromStandard (X : (operad A).Algebra) :
+    strictRawModuleProbeStandardHom A X ⟶ strictRawModuleProbeCommonHom A X
+
+def strictRawModuleProbeHomFromTensor (X : (operad A).Algebra) :
+    strictRawModuleProbeTensorHom A X ⟶ strictRawModuleProbeCommonHom A X
+```
+
+### RawModuleProbeHomComparison
+
+```lean
+lemma strictRawModuleProbeHomFromStandard_homotopyEquivalence (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    IsSimplicialHomotopyEquivalence (((strictRawModuleProbeHomFromStandard A X).app P).app N)
+
+lemma strictRawModuleProbeHomFromTensor_homotopyEquivalence (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    IsSimplicialHomotopyEquivalence (((strictRawModuleProbeHomFromTensor A X).app P).app N)
+
+lemma strictRawModuleProbeStandardHom_kanComplex (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    SSet.KanComplex (((strictRawModuleProbeStandardHom A X).obj P).obj N)
+
+lemma strictRawModuleProbeTensorHom_kanComplex (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    SSet.KanComplex (((strictRawModuleProbeTensorHom A X).obj P).obj N)
+
+lemma strictRawModuleProbeCommonHom_kanComplex (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    SSet.KanComplex (((strictRawModuleProbeCommonHom A X).obj P).obj N)
+```
+
+
+対象ビルドと小さい監査の結果・実測は §35.2 に記録した。
+K の完全忠実性と元の全族の一般の native な辺・fiber の完成はまだ残る。
+M11 以降と G12 を含む元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 35.1 同じ共通 frame 条件の証明分割
+
+共通 Hom の Kan 条件へ直接実共通置換の構成を渡すと、深い定義の展開により
+200,000 heartbeats に達した。同じ共通 frame の Reedy 条件と定数性を、その具体的な
+族の型を持つ二本の補題へ分割して渡す。新しい数学の条件は加えず、モデルも同じ実構成。
+いずれも既存の共通 frame の法則と M10 の証明分割であり、一次 ID は追加しない。
+
+```lean
+lemma strictRawModuleProbeCommonFrame_cofibrant (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    let := strictRawModuleModelCategory A X
+    reedyLeft simplex (cofibrations (strictRawModuleCategory A X))
+      (initial.to ((strictRawModuleProbeCommonFrame A X).obj P))
+
+lemma strictRawModuleProbeCommonFrame_homotopicallyConstant (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) {n m : SimplexCategory} (f : n ⟶ m) :
+    let := strictRawModuleModelCategory A X
+    weakEquivalences (strictRawModuleCategory A X)
+      (((strictRawModuleProbeCommonFrame A X).obj P).map f)
+```
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 35.2 検証と実測
+
+RawModuleProbeFrame、RawModuleProbeCommonFrame、RawModuleProbeHomComparison の
+通常の対象ビルドはすべて成功した。新しい公開宣言 26 本の依存公理監査も成功し、
+propext・Classical.choice・Quot.sound の範囲である。指定の impl 鍵と
+一回 280 秒の塊で実行した。
+
+§35.1 の分割に加え、共通族の関手等式から弱同値の命題を congrArg で明示的に移送した。
+大きい実共通置換の定義どうしを展開して照合することを避け、200,000 heartbeats の
+制限を上げずに通った。型・数学の条件・元の比較射は変えていない。
+
+新規 Lean は三ファイル、それぞれ 109・157・90 行、計 356 行、公開宣言 26 本。
+§34.1 の累計に加え、検証済み累計は 69 ファイル・6,983 行・明示宣言 360 本
+（private 3 本）。200 行を超える証明はない。一次 ID は追加していない。
+
+同じ元の半自由 probe をパラメータとする三つの全 Hom が Kan であり、同じ二変数の
+実自然変換の両脚が各 probe・任意の標的で実単体的ホモトピー同値であることまで検証した。
+元の augmentation の底の全等式も保持する。
+§34 の dg Hom 同型の probe 変数への自然性の束ね、通常源の局所化比較 K の同じ作用の照合と
+完全忠実性、M10 の一般の native な辺・fiber と全族の完成は引き続き残る。
+M11 以降と G12 を含む元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
