@@ -7637,3 +7637,53 @@ lemma strictDiagramFreeArrowAugmentation_hom (X Y : StrictComplexDiagram A d)
 上限変更後のRR02(a)実測573行、(b)(c)新規0行。
 実係数との同型は全添字射に自然であり、値だけの同型ではない。
 増大射と、重みの実現の弱同値性は残る。RR02を完了に数えず、続ける。
+
+## §75 RR02(a)：指定したsource frameへの増大射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `62d404e74` の検証済み67行を追加した進捗。
+§74.1の二つの型を実装する。成分は次の型で切り出す。
+これらは§69.2(a)の証明分割であり、新しいIDは設けない。
+
+```lean
+def strictDiagramFreeArrowAugmentationComponent (X : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (strictDiagramFreeArrowFrame A d X).obj (Opposite.op t) ⟶
+      (strictDiagramSourceFrame A d X).obj
+```
+
+余積の添字 `h : j ⟶ k` には `Q.map (t.val ≫ h)` を対応させる。
+全族への束縛にはHom要素圏の射の `map_val` を使い、元の添字射の前後合成の式を保つ。
+最後に、随伴Hom同型の単位成分で計算して、既存の `strictDiagramFrameArrowLeg` と照合する。
+重みの実現後の弱同値性はまだ証明対象として残る。
+
+### 75.1 評価点での比較の次案（紙、未検証）
+
+各評価点 `k` で、自由図式の余積の添字をまとめた圏は、
+`(strictDiagramFreeArrowIndex d ⋙ Prod.fst _ _ ⋙ yoneda.obj k).Elements`
+で表せる見込み。対象は `i ⟶ j ⟶ k` で、係数は元のframeの `i` での値。
+これから `Over k` への関手を合成 `i ⟶ k` で作る。
+逆向きの候補は `i ⟶ k` を `(i ⟶ k, 𝟙 k)` とするもの。
+後者を左随伴とする随伴のHomの対応では、終点側の射は要素圏の条件で決まり、
+始点側の射が `Over k` の射になる。これはまだLeanで検証していない。
+
+この添字の比較だけで重み付き実現の弱同値性を結論せず、実際の重み・増大射の移送を
+さらに照合する必要がある。新たな一般のcofinality定理を入力として仮定しない。
+
+### 75.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeArrowAugmentation.lean` 104行、対象ビルド3,759 jobs成功。
+小監査14宣言は標準三公理のみ。ログ `/tmp/is-w1/free-arrow-augmentation/build-5.log`。
+自然性の逆向きのsimpが再帰上限に達した箇所は、必要な一本の等式の直接適用に変えた。
+縮小添字の表示を局所的な定義的等式で照合し、計算上限は変更せずに通した。
+初回の不成功な証明に伴うLeanの二次的なpanicは、修正後のビルドでは再現していない。
+未検証のE01下書き4本は今回の対象外。
+
+検証済み累計164本・13,175行。外枠24,000行まで10,825行。
+上限変更後のRR02(a)実測677行、(b)(c)新規0行。
+増大射とそのHomが既存の錐の脚に一致することまで検証した。
+§75.1の添字比較、実現後の弱同値性、既存twisted-arrow切断への接続は未完。
+E01の別経路の紙は§71〜§74の状態を維持する。RR02の完了数は変えず、続ける。
