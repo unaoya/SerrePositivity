@@ -7507,3 +7507,288 @@ theorem strictDerivedTotCone_pullback (X : CosimplicialObject (Complex A)) :
 | D：全図式射・指定錐の族・離散入口 | 500〜900行 | 未完、§144.2の900〜1,600行を維持 |
 
 予測だけで再停止せず、D01の全族の境界を固定する同じ全関手の部品から進める。D04の辺だけを全族の代用品にしない。外枠到達または一覧外の新しい数学が必要になった時点で検証済みをコミットして止め、3b-4の紙の整理へ移る。
+
+
+## 151. Dの途中：全境界・指定複体代表の自然性・離散raw錐（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。D01〜D08は最終の型をまだ閉じていないため、完了数に加えない。以下はD01・D02・D04・D05の既存構成の自然性・合成則と証明分割であり、新しい数学のまとまりを追加しない。
+
+### 151.1 型と登録対象
+
+全評価を同じ全関手で固定し、元の指定BK比較を全図式射に自然にまとめた。零単体だけの族を全錐族と呼ばない。離散の補助錐は `rawCosimplicialModuleCone` と明記し、元の積Totを頂点にする。D06の整数零延長した交代余面複体を頂点にする最終 `cosimplicialModuleCone` は、このraw錐から同じ指定自然同型で移す工程が残る。後で既存宣言の型を変更して頂点を差し替える方針にはしない。
+
+§73.4の `ρ_.inv` と `jX : Δ[0] ⟶ B` の積の紙の略記は、実際のMathlibでは単位対象（定値PUnit）と `Δ[0]` が定義的に一致しないため、そのままでは型が合わない。今回の `strictCosimplicialEvaluationNerve_at` は、既存の標準射影同型 `fst K Δ[0]` の逆を明示した同じ点での評価で述べた。点の選び直しやFunctorIsoへの弱化ではない。D03・D07もこの標準同型を表記に含める。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomTargetNaturality`（89行）。
+
+```lean
+theorem extendedChainHomRows_postcomp {H H' : CochainComplex (Jᵒᵖ ⥤ ModuleCat A) ℤ}
+    (f : H ⟶ H') (q : ℤ) (z : Cochain (K.extend ComplexShape.embeddingDownNat) H q)
+    (n : ℕ) :
+    extendedChainHomRows K H' q ((intervalHomPrePost A (𝟙 _) f).f q z) n =
+      extendedChainHomRows K H q z n ≫ f.f (q-n)
+
+theorem weightEndHomIso_target_naturality {X Y : Jᵒᵖ ⥤ Complex A} (f : X ⟶ Y) :
+    (linearWeightEndTotalMap A f).app (op K) ≫ (weightEndHomIso A K Y).hom =
+      (weightEndHomIso A K X).hom ≫
+        intervalHomPrePost A (𝟙 (K.extend ComplexShape.embeddingDownNat))
+          ((functorToComplexOfFunctors Jᵒᵖ (ModuleCat A) (.up ℤ)).map f)
+
+theorem weightEndHomIso_target_naturality_postcompose {X Y : Jᵒᵖ ⥤ Complex A}
+    (f : X ⟶ Y) :
+    (linearWeightEndTotalMap A f).app (op K) ≫ (weightEndHomIso A K Y).hom =
+      (weightEndHomIso A K X).hom ≫
+        SerrePositivity.EInfinity.PowerOperation.linearHomComplexPostcompose A
+          (K.extend ComplexShape.embeddingDownNat)
+          ((functorToComplexOfFunctors Jᵒᵖ (ModuleCat A) (.up ℤ)).map f)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotFamilyBoundaries`（75行）。
+
+```lean
+def strictCosimplicialEvaluationNerve :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⊗
+      nerve (CosimplicialObject (Complex A)) ⟶ nerve (Complex A) where
+  app _ := ↾fun p => (p.1.down.prod' p.2) ⋙
+    evaluationUncurried SimplexCategory (Complex A)
+  naturality _ _ _
+
+theorem strictCosimplicialEvaluationNerve_at (X : CosimplicialObject (Complex A)) :
+    inv (fst ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) (Δ[0] : SSet.{u+1})) ≫
+      (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex X)) ≫
+        strictCosimplicialEvaluationNerve A = strictCosimplicialComplexNerve X
+
+def derivedTotEvaluationFamily :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⊗
+      nerve (CosimplicialObject (Complex A)) ⟶ derivedInfinityCategory A
+
+def derivedTotVertexFamily :
+    nerve (CosimplicialObject (Complex A)) ⟶ derivedInfinityCategory A
+
+theorem derivedTotVertexFamily_map {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    (derivedTotVertexFamily A).app (Opposite.op ⦋1⦌) (nerve.edgeMk f).edge =
+      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+        (nerve.edgeMk ((productTotalFunctor A).map f)).edge
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanComparisonNaturality`（77行）。
+
+```lean
+def normalizedBousfieldKanHomFunctor : CosimplicialObject (Complex A) ⥤ Complex A
+
+theorem normalizedBousfieldKanHomComparison_naturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    normalizedBousfieldKanHomComparison X ≫ normalizedBousfieldKanHomFunctor.map f =
+      (productTotalFunctor A).map f ≫ normalizedBousfieldKanHomComparison Y
+
+def normalizedBousfieldKanHomComparisonNatTrans :
+    productTotalFunctor A ⟶ normalizedBousfieldKanHomFunctor where
+  app X := normalizedBousfieldKanHomComparison X
+  naturality _ _ f := (normalizedBousfieldKanHomComparison_naturality f).symm
+
+/-- 同じHom–Tot比較と指定正規化比較を全図式上で合成する。 -/
+def homToNormalizedBousfieldKanNatTrans (P : Complex A) :
+    productTotalFunctor A ⋙ homFunctor P ⟶
+      homDiagramFunctor P ⋙ normalizedBousfieldKanHomFunctor
+
+theorem homToNormalizedBousfieldKanNatTrans_app (P : Complex A)
+    (X : CosimplicialObject (Complex A)) :
+    (homToNormalizedBousfieldKanNatTrans P).app X = homToNormalizedBousfieldKan P X
+
+theorem homToNormalizedBousfieldKan_naturality (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    (homFunctor P).map ((productTotalFunctor A).map f) ≫ homToNormalizedBousfieldKan P Y =
+      homToNormalizedBousfieldKan P X ≫
+        normalizedBousfieldKanHomFunctor.map ((homDiagramFunctor P).map f)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeRepresentativeNaturality`（49行）。
+
+```lean
+def normalizedBKConeTargetMap (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (doubleOppositeDiagram ((homDiagramFunctor P).obj X)) ⟶
+    (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (doubleOppositeDiagram ((homDiagramFunctor P).obj Y))
+
+theorem normalizedBousfieldKanRepresentative_naturality (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y)
+    (g : P ⟶ (productTotalFunctor A).obj X) :
+    normalizedBousfieldKanRepresentative P X g ≫ normalizedBKConeTargetMap P f =
+      normalizedBousfieldKanRepresentative P Y (g ≫ (productTotalFunctor A).map f)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteNativeTotCone`（58行）。
+
+```lean
+def strictCosimplicialModuleNerve (M : CosimplicialObject (ModuleCat.{u} A)) :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ nerve (ModuleCat.{u} A)
+
+def discreteModuleSource : nerve (ModuleCat.{u} A) ⟶ derivedInfinityCategory A
+
+theorem discreteDiagram_strict (M : CosimplicialObject (ModuleCat.{u} A)) :
+    strictCosimplicialComplexNerve ((discreteDiagramFunctor A).obj M) ≫
+      complexOrdinaryDerivedSource A =
+    strictCosimplicialModuleNerve A M ≫ discreteModuleSource A
+
+def rawCosimplicialModuleCone (M : CosimplicialObject (ModuleCat.{u} A)) :
+    JoinCone (strictCosimplicialModuleNerve A M ≫ discreteModuleSource A)
+
+theorem rawCosimplicialModuleCone_isLimit (M : CosimplicialObject (ModuleCat.{u} A)) :
+    IsLimitCone (rawCosimplicialModuleCone A M)
+
+```
+
+### 151.2 検収欄（最終の対象ビルド待ち）
+
+鍵付き対象ビルド172は線形Homの単位則の型推論で失敗し、鍵を返却した。型を明示して修正後の173は **7,845 jobs・終了コード0**、三本だけの小監査は **21宣言（3・7・11）、標準三公理のみ**。これを失敗した172の成功と取り違えない。残る実複体代表の自然性・離散raw錐の個別検査は成功し、最終の二本の対象ビルド174と小監査を `--class impl --wait 3600` の一枚の整理券で待っている。174の確定結果とコードコミットは次節へ記す。
+
+新規五本合計348行、草稿込み累計 **326モジュール・19,901行**、外枠20,000行まで **99行**。一覧 `/private/tmp/isw2-g10-threehundredtwentysix-modules.txt`。どのファイルも200行以内。全錐族の本体・両境界・各点で同じ全join射になる式、離散頂点の移送・全族・ホモロジー入口は未完。
+
+
+## 152. 代わりの紙の作業：3b-4 §38.2の1・2の型つき段0案（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。これはG10完成後の3b-4を開始したという意味ではなく、外枠に近づいた際の指定された代わりの紙の作業。以下のR番号は**3b-4の提案一覧**であり、G10の36項目には加えない。Leanでelaboration・証明済みの宣言と数えない。既存ファイル、入口、⑤aの欄は変更しない。
+
+### 152.1 既存の道具と、③-aから使う場所
+
+- `EInfinity/BarrattEccles/FramedLimit.lean` の `framedLimitFunctor A K` は既に**全関手**。同じ右frame・一点重みのendを再定義しない。`FramedLimitLocalization.lean` の `framedLimit_inverts` と `localizedFramedLimit` は通常局所化への降下に使う。
+- `FramedLimitCarrierDerivedComparison.lean` の `carrierFramedLimitComparisonIso` は台の**通常局所化**における比較。`_cone`・`_forgetCone` は同じ通常錐との両立を照合する入力。これだけでnativeな全join錐族の同型が済んだとは数えない。
+- `CAlgUnderlyingDerivedComparison.lean` の `algebraCAlgSource_underlyingDerivedIso A` は実際の `algebraCAlgSource A ≫ cAlgForgetDerived A` と `nerveMap forget ≫ complexOrdinaryDerivedSource A` の**全関手同型**。Uを別の通常忘却関手で代用しない。
+- `FreeProbeDerivedFreeForget.lean` の `cAlgForgetDerived_mapJoinCone_isLimit A c hc` は**追加の輸送条件を引数に取らない**既存の定理。ユーザーの11-14の訂正に従い、そのまま使用する。`FreeProbeUnitTransportCondition` を未証明の前提として再導入しない。
+- 実現では `HomotopyWeight/{TensorRealization,PointwiseRealization,FrameLifting}` と既存のframe/重みの関手性を使う。右Quillen性や全対象fibrantだけでUの実現保存・通常limによるTotの計算を推論しない。
+
+③-aの3b-3が必要な場所は二つ。(i) strictな複体図式の局所化から `Fun(I_J,D(A))` への全評価と同型を使い、下のR05・R10を局所化上の関手同型へ降ろす所。(ii) 3b-1から3b-3へ移した**全パラメータ実現余錐**とその輸送をR09・R10で使う所。図式ごとの余錐だけで全族の比較を閉じない。R01〜R04のstrict入力・台の通常比較の整理は③-aを待たずにできる。
+
+任意のcoherent **BE値**図式への拡張（§38.2の3）は別の段。加群値の評価同値からBE値の厳密化を得たとは扱わない。そこに来たらBE版の評価同値か一般の模型定理のBEへの適用条件を具体的に受け取る。今回の段0案はその入力を仮定に隠して完成扱いしない。
+
+### 152.2 紙の記法とTot側の型案
+
+`E := (BarrattEccles.operad A).Algebra`、`CA := CAlg_R A`、`DA := derivedInfinityCategory A`、`S := algebraCAlgSource A`、`U := cAlgForgetDerived A`。`J₊ := AsSmall.{u} SimplexCategory`、`J₋ := AsSmall.{u} SimplexCategoryᵒᵖ`、`K± := (SSet.uliftFunctor.{u+1,u}).obj (nerve J±)`、`B± := nerve (J± ⥤ E)` とする。元のΔ・Δᵒᵖとの往復はG10の `nativeTotIndexIso` と同じAsSmall・ULiftの指定同型を使う。
+
+`strictBE : (J± ⥤ E) → (K± ⟶ CA)` は、同じFの全nerveを `resizedNerveMap` で読みSへ後合成する表示。`evalBE± : K± ⊗ B± ⟶ CA` は同じ評価関手の全nerve。`forget± : (J± ⥤ E) ⥤ (J± ⥤ Complex A)` は既存 `Diagram.forget`。`forgetCosimp` はそのΔへの指定AsSmall引き戻し。以下はこの**紙の略記を展開してから検査する型案**。
+
+```lean
+-- R01：既存の計算全関手のnerve。新しいend/frameを選ばない。
+def strictBETotVertex : B₊ ⟶ CA :=
+  nerveMap (BarrattEccles.framedLimitFunctor A J₊) ≫ S
+
+-- R02：同じ計算対象の、全図式射を含む指定錐族。
+def strictBETotConeFamily : join (Δ[0] : SSet.{u+1}) K₊ ⊗ B₊ ⟶ CA
+theorem strictBETotConeFamily_boundaries :
+  (joinInl Δ[0] K₊ ⊗ₘ 𝟙 B₊) ≫ strictBETotConeFamily =
+    pointLeftProjection B₊ ≫ strictBETotVertex ∧
+  (joinInr Δ[0] K₊ ⊗ₘ 𝟙 B₊) ≫ strictBETotConeFamily = evalBE₊
+def strictBETotCone (F : J₊ ⥤ E) : JoinCone (strictBE F)
+theorem strictBETotConeFamily_at (F : J₊ ⥤ E) :
+  pointRightSection (join Δ[0] K₊) (nerveVertex F) ≫ strictBETotConeFamily =
+    (strictBETotCone F).val
+
+-- R03：同じ指定錐そのもののnative極限性。
+theorem strictBETotCone_isLimit (F : J₊ ⥤ E) : IsLimitCone (strictBETotCone F)
+theorem strictBETotCone_vertex (F : J₊ ⥤ E) :
+  (strictBETotCone F).vertex = S.app (Opposite.op ⦋0⦌)
+    (nerveVertex ((BarrattEccles.framedLimitFunctor A J₊).obj F))
+
+-- R04：Uの既存の全比較を、同じ評価・錐の全族へ適用。
+def strictBETotUnderlyingIso : FunctorIso
+  (strictBETotVertex ≫ U)
+  (nerveMap forgetCosimp ≫ derivedTotVertexFamily A)
+def strictBETotUnderlyingConeFamilyIso : FunctorIso
+  (strictBETotConeFamily ≫ U)
+  ((𝟙 _ ⊗ₘ nerveMap forgetCosimp) ≫ derivedTotConeFamily)
+-- 上の同型の右境界への制限はalgebraCAlgSource_underlyingDerivedIsoの
+-- 評価前合成、左境界への制限はstrictBETotUnderlyingIsoそのもの。
+
+-- R05：上記をstrict図式の∞局所化へ降ろした全関手比較。
+def strictBETotLocalizedUnderlyingIso : FunctorIso
+  (TotBE ≫ U) (ForgetStrictBEInfinity ≫ TotDA)
+```
+
+`pointLeftProjection B` は `Δ[0] ⊗ B → B` の指定射影、`pointRightSection L v` は `inv (fst L Δ[0]) ≫ (𝟙 L ⊗ₘ yonedaEquiv.symm v)`。Mathlibの単位PUnitとΔ[0]を混同しない。R02〜R04の同じ全族・境界の等式は省略しない。R04の比較が必要とするG10の `derivedTotConeFamily` は**まだ未完**。
+
+R03でUによる極限保存を使うのは、まず得られたBEの極限錐の**像**の検収。Uが保存するからBEの元の錐が極限だ、と逆向きに推論しない。BEの元の普遍性は既存frameのHom比較・模型の導来普遍性と指定native錐の橋から得る必要がある。
+
+### 152.3 実現側・制限の型案
+
+```lean
+-- R06：既存の左frame・cofibrant重み・図式置換からの計算全関手。
+def strictBERealizationModel : (J₋ ⥤ E) ⥤ E
+def strictBERealizationVertex : B₋ ⟶ CA := nerveMap strictBERealizationModel ≫ S
+
+-- R07：全パラメータの指定余錐と両境界。
+def strictBERealizationCoconeFamily : join K₋ (Δ[0] : SSet.{u+1}) ⊗ B₋ ⟶ CA
+-- 左境界 = evalBE₋、右境界 = pointLeftProjection B₋ ≫ strictBERealizationVertex。
+def strictBERealizationCocone (F : J₋ ⥤ E) : JoinCocone (strictBE F)
+theorem strictBERealizationCoconeFamily_at (F : J₋ ⥤ E) :
+  pointRightSection (join K₋ Δ[0]) (nerveVertex F) ≫
+    strictBERealizationCoconeFamily = (strictBERealizationCocone F).val
+
+-- R08：同じ余錐そのもののnative余極限性。
+theorem strictBERealizationCocone_isColimit (F : J₋ ⥤ E) :
+  IsColimitCone (strictBERealizationCocone F)
+
+-- R09：台のstrict図式の実現への全比較と同じ余錐の制限。
+def strictBERealizationUnderlyingIso : FunctorIso
+  (strictBERealizationVertex ≫ U)
+  (nerveMap forgetSimplicial ≫ complexRealizationVertexFamily)
+def strictBERealizationUnderlyingCoconeFamilyIso : FunctorIso
+  (strictBERealizationCoconeFamily ≫ U)
+  ((𝟙 _ ⊗ₘ nerveMap forgetSimplicial) ≫ complexRealizationCoconeFamily)
+-- 両境界の制限はS≫Uの既存比較とstrictBERealizationUnderlyingIso。
+
+-- R10：strict図式の∞局所化上の全関手比較。
+def strictBERealizationLocalizedUnderlyingIso : FunctorIso
+  (RealizeBE ≫ U) (ForgetStrictBEInfinity ≫ RealizeDA)
+```
+
+R06は「通常colimの台が通常colim」という事実のみで導来実現の台を同定しない。R09の `complexRealizationCoconeFamily` は③-aの3b-3が組み立てる3b-1第四行の全族を要求する。R05・R10に出るstrict図式局所化の実評価は、元の通常図式の射・全単体との指定同型付きで受け取る。BE図式局所化と任意の `Fun(K±,CA)` の評価同値を、加群版のR2から無条件には導かない。
+
+最後にR11として、既存の離散BE埋め込みに制限したR02〜R05が⑤aの `ofCosimplicial_forget`・`TotalizationCone` の**既存の型・同じ指定頂点**へ一致する照合を置く。ここは⑤aの更新後の入口の型を読む段で、欄の型をこちらで変えない。R12は係数変更と指定錐族の制限の両立。必要な全同型の型を⑤aの既存欄に合わせてから確定する。この二つを確定前から完了項目に数えない。
+
+### 152.4 置き場所・見込み・停止境界
+
+| 束 | 提案する新規ファイル | 見込み（行、docstring/import込み） |
+| --- | --- | ---: |
+| R01〜R03 strict Totの模型・同じnative錐族 | `EInfinity/BarrattEccles/StrictDiagramTotalizationComparison*.lean` | 1,400〜2,300 |
+| R04〜R05 TotのU比較・局所化への全輸送 | `.../StrictDiagramTotUnderlying*.lean` | 1,000〜1,800 |
+| R06〜R08 strict実現の模型・同じ余錐族 | `.../StrictDiagramRealizationComparison*.lean` | 1,600〜2,800 |
+| R09〜R10 実現のU比較・全関手比較 | `.../StrictDiagramRealizationUnderlying*.lean` | 1,200〜2,000 |
+| R11〜R12 離散制限・既存入口・係数変更の照合 | `.../StrictDiagramDiscreteCompatibility*.lean` | 500〜900 |
+| 合計 | | **5,700〜9,800** |
+
+これは新しい承認済み外枠ではなく、3b-1/G10の実測を踏まえた**紙の提案**。R11・R12の型とBEのnative錐への模型の橋を読んだ後で再見積もりする。一般になった錐の等式移送・族の貼り合わせはKerodon、加群の共通比較はHA/DerivedCategoryModels、BE固有の照合だけを新規BEファイルに置く。既存 `FramedLimit*`、`CAlgUnderlyingDerivedComparison`、⑤aのファイルを変更・再構築しない。点つきKanのTotは作らない。今回この紙のためのBEビルドは行っていない。
+
+
+## 153. 外枠直前の保存点：停止点2aは完成、Dは未完（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。B4は§137で完了済み。B・Cの停止点2aはコード `b43d4be81`、報告 `ecb21022f`（表の訂正 `fe5555f64`）。その後のD補助五本は **`acfde8f61`**。停止点2b・G10全体の完成は未達成。
+
+### 153.1 最終検収
+
+§151の最終の二本の鍵付き対象ビルド174は **7,850 jobs・終了コード0**、小監査は **12宣言（4・8）、標準三公理のみ**（`/private/tmp/isw2-build174.log`）。173の三本21宣言と合わせ、今回D補助五本の監査は **33宣言**。これは新規五本だけの小監査であり、全段階II・全326本を今回再監査した数字ではない。途中の失敗172は成功に含めない。
+
+鍵は各回 `--class impl --wait 3600`、整理券一枚、対象ビルドと小監査の間だけ保持し、各ハンドルの終了コード0を確認して返却済み。sorry・新公理0、計算上限・再帰上限の増加、既存宣言・⑤a・入口・公式監査・mainへの変更なし。rootビルド・大きな監査なし。未検証のLean下書きは残さない。
+
+全累計の対象一覧は永続ファイル `formalization-plans/stage-ii/is-w2-g10-20261114-modules.json` にも保存した。これはG10累計の対象一覧であり、mainへ未登録の差分一覧を自動的に意味しない。今回追加分の登録候補は§149〜§151に列挙した各モジュール。入口・公式監査への登録は調整役に任せる。
+
+### 153.2 外枠と、次に残る具体的な束
+
+現ソースを一覧から再集計して **326モジュール・19,901行**、外枠20,000行まで **99行**。Dの全族の型を弱めたり、既存の部分補題を不自然に圧縮して枠を空けたりはしない。
+
+| 未完の項目 | 次に必要な同じ構成の照合 | 追加見込み |
+| --- | --- | ---: |
+| D01〜D03 | §151の実複体代表の自然性を、同じΓ・反転・豊穣Hom・BK切断の比較へ運び、元の全join錐を全パラメータで貼り合わせる。両境界と各Xでの**同じ全join射**を閉じる | 350〜650行 |
+| D04 | 頂点辺の式は§151で証明済み。D02で全族の左境界をこの同じ `derivedTotVertexFamily` と確定して接続する | 上の束に含む |
+| D05〜D06 | `rawCosimplicialModuleCone` を、既存 `discreteTotalCochainNatIso` により**整数零延長した交代余面複体を頂点とする**指定錐へ移す。raw頂点とその頂点の等号を仮定しない | 150〜250行 |
+| D07〜D08 | 同じ離散頂点移送を全図式射・全錐族に行い、既存の導来ホモロジー比較へ接続する | 250〜450行 |
+| 合計 | | **750〜1,350行** |
+
+99行の残枠では、次のD01の全join族と各点の厳密照合の束を収められない所まで来た。`coordination.md` §2（62〜65行の規模上限・型つき一覧・代わりの紙の作業）とIS-W2 §16の外枠に従い、**検証済みをコミットした上で、この線の追加Leanをここで区切る**。新しい第五のまとまり・範囲の縮小・新しい模型圏仮定を要求しているのではなく、承認済みDの同じ型の工程が残る。数を使い切るための補題追加はしない。
+
+代わりの紙の作業として§152に、3b-4の§38.2の1・2について、既存部品、全関手・同じ指定錐族の型案、③-aの3b-3を使う場所、規模の案を残した。BEの新規Leanや点つきKanのTotは開始していない。この紙をG10や3b-4の検証済み完成と数えない。再開箇所は上表のD01の全族への自然性の輸送であり、B4やB・Cの再実装ではない。
