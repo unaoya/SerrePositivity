@@ -154,5 +154,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NativeNerveStraighteningComparison",
   "SerrePositivity.EInfinity.FrameHom.KanHomFamilyOpposite",
   "SerrePositivity.EInfinity.FrameHom.KanNerveOppositeFamily",
-  "SerrePositivity.EInfinity.FrameHom.KanElementsFamily"
+  "SerrePositivity.EInfinity.FrameHom.KanElementsFamily",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsGrothendieck",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ContinuousLeftFibrationEquivalenceMap"
 ]

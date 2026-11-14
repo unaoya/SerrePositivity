@@ -13722,3 +13722,69 @@ def simplexElementsKanAugmentationIso :
     FunctorIso (kanHomFamilyCoherent (simplexElementsNerveDiagram F))
       (kanHomFamilyCoherent F)
 ```
+
+## 220. 全要素圏の同じGrothendieck表示と、元の置換の係数移送則（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元の全係数Fの各要素圏を、Homだけ同じ宇宙へ持ち上げてCat値図式にした。そのGrothendieck構成と、Fをuncurryした全二重添字の要素圏は、同じ底・単体次数・ラベルと同じ元の射を並べ直す圏同値である。順方向・逆方向、単位・余単位の全自然性、元の底への二つの射影の厳密な等式を148行で示した。比較を自由な圏同値として選んだものではなく、両方向とも元のラベルと元の底の射・単体作用素を保つ。Grothendieckの合成に含まれる等式輸送は、元の単体次数への射影関手のmap_comp・eqToHom_mapで計算した。同じ二つの既存の構成の表示の照合であり、新しい数学的な一覧項目は増やしていない。
+
+次に、既存の連続left-fibration置換が元のcofinalな底上の射を前合成同値へ送ることを46行で記録した。元の置換単位の自然性を同じ全空間の射の等式として使い、元の単位のleft anodyne性、cofinal性の合成・消去則、検証済みR03f.3の同じ底上の検出を合成した。置換も単位も選び直していない。標的の全空間が準圏である場合の、元の底上の前合成同値を移す版も付けた。この仮定は型に明記し、任意の非準圏の標的で同じ検出ができるとは主張していない。これは元の置換関手・単位の自然性と同じ底上の移送の法則であり、独立の数学的な一覧項目は増やしていない。
+
+個別検査：全要素圏の圏同値と射影の最終版13688・終了0、元の置換の移送則79822・終了0。296：全要素圏のGrothendieck表示の対象ビルド1,125 jobs・終了0、小監査157本1,102宣言・標準三公理のみ（実ハンドル89214・終了0）。297：元の置換の移送則の対象ビルド2,219 jobs・終了0、小監査158本1,104宣言・標準三公理のみ（実ハンドル88369・終了0）。鍵返却済み。
+
+今回148＋46＝194行、累計158本・10,227行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は、この同じ圏同値のnerveを同じ底のOverの射とし、元の置換へ送ってR03fの全分類へ接続する。元の固定始域のroof比較との等式は依然R03dの残りであり、native極限性の完了は主張しない。
+
+### 220.1 型
+
+全係数の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。
+
+#### SimplicialElementsGrothendieck（148行）
+
+```lean
+def simplicialElementsCatDiagram : I ⥤ Cat.{u,u}
+
+abbrev SimplicialTotalElements
+
+def simplicialTotalElementsProjection : SimplicialTotalElements F ⥤ I
+
+lemma uliftElements_eqToHom_hom {K : SSet.{u}} {x y : ULiftHom.{u} K.Elements}
+    (h : x = y) : (eqToHom h).down.hom = eqToHom (congrArg (fun z => z.obj) h)
+
+def simplicialElementsGrothendieckForward :
+    Grothendieck (simplicialElementsCatDiagram F) ⥤ SimplicialTotalElements F
+
+def simplicialElementsGrothendieckObject (X : SimplicialTotalElements F) :
+    Grothendieck (simplicialElementsCatDiagram F)
+
+def simplicialElementsGrothendieckHom {X Y : SimplicialTotalElements F} (f : X ⟶ Y) :
+    simplicialElementsGrothendieckObject F X ⟶ simplicialElementsGrothendieckObject F Y
+
+def simplicialElementsGrothendieckInverse :
+    SimplicialTotalElements F ⥤ Grothendieck (simplicialElementsCatDiagram F)
+
+def simplicialElementsGrothendieckEquivalence :
+    Grothendieck (simplicialElementsCatDiagram F) ≌ SimplicialTotalElements F
+
+theorem simplicialElementsGrothendieckForward_projection :
+    simplicialElementsGrothendieckForward F ⋙ simplicialTotalElementsProjection F =
+      Grothendieck.forget (simplicialElementsCatDiagram F)
+
+theorem simplicialElementsGrothendieckInverse_projection :
+    simplicialElementsGrothendieckInverse F ⋙ Grothendieck.forget (simplicialElementsCatDiagram F) =
+      simplicialTotalElementsProjection F
+```
+
+#### ContinuousLeftFibrationEquivalenceMap（46行）
+
+```lean
+theorem continuousLeftFibrationReplacement_map_isPrecompositionEquivalence_of_leftCofinal
+    {B : SSet.{u}} [Quasicategory B] {X Y : Over B} (f : X ⟶ Y)
+    (hc : IsLeftCofinal f.left) :
+    IsPrecompositionEquivalence ((continuousLeftFibrationReplacement B).map f).left
+
+theorem continuousLeftFibrationReplacement_map_isPrecompositionEquivalence
+    {B : SSet.{u}} [Quasicategory B] {X Y : Over B} [Quasicategory Y.left]
+    (f : X ⟶ Y) (hf : IsPrecompositionEquivalence f.left) :
+    IsPrecompositionEquivalence ((continuousLeftFibrationReplacement B).map f).left
+```
