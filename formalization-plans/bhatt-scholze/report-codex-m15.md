@@ -7815,3 +7815,339 @@ root ビルドや大きい監査は実行していない。
 まだ未完である。M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §52 元の全 augmentation 円柱・同じ逆・実評価屋根との比較
+
+元の全要素圏と Hom 持ち上げ先を、同じ宇宙の通常圏として使う。
+同じ frame 図式に元の augmentation を後合成した通常余錐を構成し、
+既存の通常余錐の有限列表示から、同じ終端を持つ元の加群の列を作る。
+対象と全射は元の frame 射・augmentation の型移送付きの式へ回収する。
+この列の閉単体と、§50 の同じ実二重 cone の末尾単体を全次数で照合した。
+
+同じ通常余錐の全 join を元の dg 源へ送り、各標準単体への制限を同じ終端付き列へ
+同定する。元の全 slice 図式を uncurry した写像は、この同じ通常余錐の join に等しい。
+既存の通常余錐の全 prism 比較により、同じ指定された実分解 moduleResolution を
+後合成した slice 評価の実写像 h は、元の通常 augmentation の全自然変換円柱の
+実写像 h と一致する。全パラメータの等式を保ち、点ごとの射の類の一致に切り下げない。
+
+この同じ全実写像の等式を、両端も記録する Arrow の一致へ移す。
+§51 の同じ全三角形を同じ実分解へ後合成し、元の全 augmentation 同型の逆の一意性から、
+元の cone 族の像を同じ augmentation 逆へ同定する。
+元の cone の端点移送が実写像 h を保持する既存の式を使い、
+strictRawModuleTensorConeSourceFamilyHom 自身の逆との Arrow 比較と同型性を導く。
+同じ元の全評価を後合成し、元の全実屋根と定値端点へ移した同じ実屋根の Arrow 比較を行う。
+
+これらは M10 の同じ既存構成の自然性・係数移送・合成・逆の法則と証明分割であり、
+一次 ID は追加しない。元の K の全 Hom 誘導射との照合、その同値性・完全忠実性、
+指定 fiber・native な辺と全族、および M11 以降と G12 は未完である。
+対象ビルドと新規公開宣言の小さい監査は §52.1 のとおり成功した。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+`RawModuleTensorConeSourceInverse.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma postcompTriangle {K S T : SSet.{u + 1}} {U V : K ⟶ S}
+    (F : S ⟶ T) (l : SSet.Homotopy U V) (r : SSet.Homotopy V U)
+    (h : Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy l) ≫
+      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy r) = 𝟙 _) :
+    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp l F)) ≫
+      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp r F)) = 𝟙 _
+
+private lemma inverseArrowEq {C : Type*} [Category* C] {x y x' y' : C}
+    (f : x ⟶ y) (g : x' ⟶ y') [IsIso f] [IsIso g] (h : Arrow.mk f = Arrow.mk g) :
+    Arrow.mk (inv f) = Arrow.mk (inv g)
+
+private lemma isIsoOfArrowEq {C : Type*} [Category* C] {x y x' y' : C}
+    (f : x ⟶ y) (g : x' ⟶ y') [IsIso g] (h : Arrow.mk f = Arrow.mk g) : IsIso f
+
+private lemma leftInverse_eq_inv {C : Type*} [Category* C] {x y : C}
+    (c : x ⟶ y) (e : y ⟶ x) [IsIso e] (h : c ≫ e = 𝟙 x) : c = inv e
+
+lemma strictRawModuleTensorDoubleConeSliceEvaluation_source_arrow :
+    Arrow.mk (Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp
+        (strictRawModuleTensorDoubleConeSliceEvaluationHomotopy A X P Q)
+        (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)))))) =
+    Arrow.mk (strictRawModuleTensorElementSourceAugmentationIso A X P Q).hom
+
+lemma strictRawModuleTensorConePostSource_inverse_arrow :
+    Arrow.mk (Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp
+        (strictRawModuleTensorConeHomotopy A X P Q)
+        (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)))))) =
+    Arrow.mk (strictRawModuleTensorElementSourceAugmentationIso A X P Q).inv
+
+lemma strictRawModuleTensorConeSourceFamilyHom_inverse_arrow :
+    Arrow.mk (strictRawModuleTensorConeSourceFamilyHom A X P Q) =
+      Arrow.mk (strictRawModuleTensorElementSourceAugmentationIso A X P Q).inv
+
+lemma strictRawModuleTensorConeSourceFamilyHom_isIso :
+    IsIso (strictRawModuleTensorConeSourceFamilyHom A X P Q)
+```
+
+`RawModuleTensorConeSourceRoof.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma arrowPostcompEq {C : Type*} [Category* C] {x x' y z : C}
+    (f : x ⟶ y) (g : x' ⟶ y) (h : Arrow.mk f = Arrow.mk g) (b : y ⟶ z) :
+    Arrow.mk (f ≫ b) = Arrow.mk (g ≫ b)
+
+private lemma arrowTransportEq {C : Type*} [Category* C] {x y x' y' : C}
+    (hx : x = x') (hy : y = y') (f : x ⟶ y) :
+    Arrow.mk (eqToHom hx.symm ≫ f ≫ eqToHom hy) = Arrow.mk f
+
+lemma strictRawModuleTensorConeSourceEvaluation_arrow :
+    Arrow.mk (strictRawModuleTensorConeSourceFamilyHom A X P Q ≫
+      strictRawModuleTensorElementSourceEvaluation A X P Q) =
+    Arrow.mk (strictRawModuleTensorElementSourceRoof A X P Q)
+
+lemma strictRawModuleTensorElementSourceRoofFamily_arrow :
+    Arrow.mk (strictRawModuleTensorElementSourceRoofFamily A X P Q) =
+      Arrow.mk (strictRawModuleTensorElementSourceRoof A X P Q)
+
+lemma strictRawModuleTensorConeSourceEvaluation_family_arrow :
+    Arrow.mk (strictRawModuleTensorConeSourceFamilyHom A X P Q ≫
+      strictRawModuleTensorElementSourceEvaluation A X P Q) =
+    Arrow.mk (strictRawModuleTensorElementSourceRoofFamily A X P Q)
+```
+
+`RawModuleTensorDoubleConeAugmentationComparison.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeOverDiagram_uncurry :
+    sliceOverUncurry (strictRawModuleTensorDoubleConeOverDiagram A X P Q) =
+      strictRawModuleTensorElementAugmentationJoin A X P Q
+
+lemma strictRawModuleTensorDoubleConeSliceEvaluationHomotopy_h_source :
+    (strictRawModuleTensorDoubleConeSliceEvaluationHomotopy A X P Q).h ≫
+      moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)) =
+    (strictRawModuleDiagramNatTransHomotopy A X
+      (strictRawModuleTensorElementAugmentation A X P Q)).h
+```
+
+`RawModuleTensorDoubleConeOverColumn.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeOverDiagram_app {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    ((strictRawModuleTensorDoubleConeOverDiagram A X P Q).app (Opposite.op ⦋n⦌) c).val =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))))).symm
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
+          (strictRawModuleTensorElementAugmentedColumn A X P Q c))
+```
+
+`RawModuleTensorDoubleConeTailComparison.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeTail_eq_closed {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorDoubleConeTail A X P Q c =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (strictRawModuleTensorElementAugmentedColumn A X P Q c)
+```
+
+`RawModuleTensorDoubleConeTailFront.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementAugmentedColumn_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    Fin.castSuccOrderEmb.toOrderHom.monotone.functor ⋙
+      strictRawModuleTensorElementAugmentedColumn A X P Q c =
+      c ⋙ strictRawModuleTensorElementDiagram A X P Q
+
+lemma strictRawModuleTensorElementAugmentedColumn_closed_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
+      (strictRawModuleTensorElementAugmentedColumn A X P Q c)).pullback
+      Fin.castSuccOrderEmb.toOrderHom =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ strictRawModuleTensorElementDiagram A X P Q)
+
+def strictRawModuleTensorDoubleConeTail {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (n + 1)
+
+lemma strictRawModuleTensorDoubleConeTail_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorDoubleConeTail A X P Q c).pullback Fin.castSuccOrderEmb.toOrderHom =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ strictRawModuleTensorElementDiagram A X P Q)
+```
+
+`RawModuleTensorDoubleConeTailTerminal.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeTail_hom_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    HEq ((strictRawModuleTensorDoubleConeTail A X P Q c).hom I a b k hI ha hb hk)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (A := A) (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) ((strictRawModuleTensorElementAugmentation A X P Q).app
+        (c.obj ((Fin.last n).predAboveOrderHom a))) k)
+```
+
+`RawModuleTensorElementAugmentationJoin.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma ordinaryCoconeRestriction {I C : Type (u + 1)}
+    [Category.{u + 1} I] [Category.{u + 1} C] {F : I ⥤ C}
+    (c : CategoryTheory.Limits.Cocone F) {n : ℕ} (Γ : ComposableArrows I n)
+    {T : SSet.{u + 1}} (G : nerve C ⟶ T) :
+    joinMap (SSet.yonedaEquiv.symm Γ) (𝟙 (Δ[0] : SSet.{u + 1})) ≫
+      ((nerveCoconeEquiv c).val ≫ G) =
+      (joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+        (G.app (Opposite.op ⦋n + 1⦌) (diagram c Γ))
+
+def strictRawModuleTensorElementAugmentationJoin :
+    join (nerve (strictRawModuleTensorElementIndex A X P Q)) (Δ[0] : SSet.{u + 1}) ⟶
+      dgModuleNerve A (dgAlgebraCategory A ((assocForget A).obj X))
+
+lemma strictRawModuleTensorElementAugmentationJoin_inr :
+    joinInr (nerve (strictRawModuleTensorElementIndex A X P Q)) (Δ[0] : SSet.{u + 1}) ≫
+      strictRawModuleTensorElementAugmentationJoin A X P Q = strictRawModuleTensorConePoint A X P
+
+lemma strictRawModuleTensorElementAugmentationJoin_restrict_simplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{u + 1})) ≫
+      strictRawModuleTensorElementAugmentationJoin A X P Q =
+    (joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+      (closedNerveSimplex (strictRawModuleTensorElementAugmentedColumn A X P Q c))
+
+lemma strictRawModuleTensorElementAugmentationJoin_prism_source :
+    (β_ (nerve (strictRawModuleTensorElementIndex A X P Q)) (Δ[1] : SSet.{u + 1})).hom ≫
+      rightMappingSpacePrism _ ≫ strictRawModuleTensorElementAugmentationJoin A X P Q ≫
+        moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)) =
+      (strictRawModuleDiagramNatTransHomotopy A X
+        (strictRawModuleTensorElementAugmentation A X P Q)).h
+```
+
+`RawModuleTensorElementAugmentedColumn.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementAugmentationCocone :
+    Cocone (strictRawModuleTensorElementDiagram A X P Q ⋙
+      ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X))
+
+def strictRawModuleTensorElementAugmentedColumn {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    ComposableArrows (strictRawModuleCategory A X) (n + 1)
+
+lemma strictRawModuleTensorElementAugmentedColumn_obj_castSucc {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 1)) :
+    (strictRawModuleTensorElementAugmentedColumn A X P Q c).obj i.castSucc =
+      (strictRawModuleTensorElementDiagram A X P Q).obj (c.obj i)
+
+lemma strictRawModuleTensorElementAugmentedColumn_obj_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorElementAugmentedColumn A X P Q c).obj (Fin.last (n + 1)) =
+      (strictRawModuleProbeFunctor A X).obj P
+```
+
+`RawModuleTensorElementAugmentedColumnMaps.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma downMap_heq {C : Type (u + 1)} [Category.{u} C]
+    {x y x' y' : ULiftHom.{u + 1} C} (hx : x = x') (hy : y = y')
+    (f : x ⟶ y) (g : x' ⟶ y') (hf : HEq f g) :
+    HEq (ULiftHom.down.{u, u + 1, u + 1}.map f)
+      (ULiftHom.down.{u, u + 1, u + 1}.map g)
+
+lemma strictRawModuleTensorElementAugmentedColumn_map_cast_cast {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (i j : Fin (n + 1)) (hij : i ≤ j) :
+    HEq ((strictRawModuleTensorElementAugmentedColumn A X P Q c).map
+      (homOfLE (Fin.castSucc_le_castSucc_iff.mpr hij)))
+      ((strictRawModuleTensorElementDiagram A X P Q).map (c.map (homOfLE hij)))
+
+lemma strictRawModuleTensorElementAugmentedColumn_map_cast_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 1)) :
+    HEq ((strictRawModuleTensorElementAugmentedColumn A X P Q c).map
+      (homOfLE (Fin.le_last i.castSucc)))
+      ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj i))
+```
+
+`RawModuleTensorElementAugmentedColumnTerminal.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma closedHom_heq {P Q P' Q' : ModuleCategory A (dgAlgebraCategory A ((assocForget A).obj X))} (hP : P = P') (hQ : Q = Q')
+    (f : P ⟶ Q) (g : P' ⟶ Q') (hf : HEq f g) (k : ℤ) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (A := A) (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) f k)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (A := A) (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) g k)
+
+lemma strictRawModuleTensorElementAugmentedColumn_hom_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    HEq ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (strictRawModuleTensorElementAugmentedColumn A X P Q c)).hom I a b k hI ha hb hk)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (A := A) (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) ((strictRawModuleTensorElementAugmentation A X P Q).app
+        (c.obj ((Fin.last n).predAboveOrderHom a))) k)
+```
+
+
+### 52.1 検証と実測
+
+RawModuleTensorConeSourceRoof の通常の対象ビルドは成功した。
+新規十一ファイルの公開宣言 27 本の依存公理監査も成功し、すべて
+propext・Classical.choice・Quot.sound の範囲である。引用属性の新規追加はなく、
+引用出力は 0 本。impl 鍵・待ち 3600 秒・gtimeout 280 秒の同じ一つの実行で
+対象ビルドと小さい監査を行い、プロセスの終了値 0 を確認した。
+root ビルドや大きい監査は実行していない。
+
+新規 Lean は 11 ファイル・756 行・明示宣言 36 本（private 9 本）。
+§51.1 の累計に加え、検証済み累計は 194 ファイル・15,312 行・
+明示宣言 693 本（private 21 本）。現作業木の M15 所有ソースも再計数し、
+同じ値と確認した。17,000 行の外枠まで残り 1,688 行。
+今回、200 行を超える証明はない。一次 ID は追加していない。
+既存 EInfinity Lean ファイルの変更もないことをコミット前に確認した。
+
+同じ通常余錐の元の対象・全射、同じ終端付き列の閉単体と二重 cone の末尾面の
+全 cochain の一致、同じ全余錐 join の標準単体への制限、全 slice 図式の uncurry の一致、
+同じ元の指定導来源における slice 評価の実写像 h と通常 augmentation 円柱の
+実写像 h の厳密な一致まで検証した。元の通常円柱を別の自己同型で置き換えていない。
+
+さらに、元の全 augmentation 同型の順射への Arrow 比較、同じ全三角形の後合成、
+逆の一意性による元の cone 族の augmentation 逆への Arrow 比較と同型性、
+同じ元の評価を後合成した実屋根の Arrow 比較、同じ元の定値端点への移送まで検証した。
+実写像の等式と全パラメータの構成を保持し、点ごとの射の類だけで代用していない。
+名前空間・probe・Hom 持ち上げの宇宙を明示し、通常余錐の制限と三角形の後合成は
+一般の既存法則へ証明を分割した。200,000 heartbeat の既定上限は増やしていない。
+
+次は、この同じ元の実屋根を元の全 pinched 族・K の実 Hom 誘導射と照合する。
+その同値性・完全忠実性、指定 fiber・native な辺と全族を含む M10 はまだ未完であり、
+M11 以降と G12 の元の目標も未完である。17,000 行の外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
