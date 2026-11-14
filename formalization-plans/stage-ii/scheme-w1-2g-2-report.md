@@ -69,3 +69,23 @@
 2g-2 本体181行・入口込み184行、小監査19宣言・標準三公理のみ。G3〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3：全レベルの任意の底変換
+
+`ProperInductiveLevelBaseChange`（90行）：`ProperInductiveLevel.baseChange` は任意の n、f:X→Y、g:T→Y に対し、f のレベルnから実際の pullback.snd f g のレベルnを返す。正段の nilimmersion・proper fppf と固有全射は実際の底変換で保持し、閉中心上の帰納仮定を Cartesian 比較の同型で移す。中心外の同型性も制限した Cartesian 正方形で移す。基底の Noether 性・底変換の平坦性を要求しない。
+
+本体90行・入口1行。略記と中心外開集合の逆像の等式を明示して単独検証、ソース完全一致、対象・直接 importer のビルド5,070ジョブ、小監査1宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-proper-inductive-level-base-change-check-3.log`・`2g-proper-inductive-level-base-change-native.log`・`2g-proper-inductive-level-base-change-audit.log`。鍵は各検証中だけ使用。
+
+2g-2 本体271行・入口込み275行、小監査20宣言・標準三公理のみ。G3〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+## G3 の存在証明の組み立てと次の法則（着手前の型）
+
+Lemma 2.6 に必要な出口は `∃ n, ProperInductiveLevel n f`。原典の次元によるより精密な上界は、この出口・G4 の消去には使わない。Mathlib `Topology/NoetherianSpace.lean` には Noether 空間の閉集合の WellFoundedLT がある。したがって Noether な周辺 S の閉部分スキーム Y→S について、その閉像に関する整礎帰納で同じ存在の出口を証明する経路を使う。各段で Y を被約化し、2d の細分で得る稠密開の閉補集合が閉像の真部分集合になる。帰納仮定が返す n に1を足すので、一般の Noether スキームに有限 Krull 次元を仮定する必要はない。これは有限型 F_p の場合を含む同じ出口の証明の組み立てで、最終の v 降下の主張を変更しない。存在の完成はまだ未証明。
+
+- `ProperInductiveLevel.of_isPullback`：Cartesian な正方形でレベルを移送。実際の pullback との同型と baseChange の法則を使う。見込み10〜25行。
+- `ProperInductiveLevel.comp_nilimmersion`：有限表示・全射閉埋め込み i:Y→Z と f:X→Y のレベルnから f≫i のレベルn。既に選んだ nilimmersion に i を合成する法則。見込み25〜60行。
+- `ProperInductiveLevel.of_nilimmersion_baseChange`：上と任意の底変換、実際の細分からの消去を組み合わせ、f の i による底変換のレベルnから元の f のレベルnを得る。見込み10〜30行。
+- 被約化の供給の分割：既存の `Y.nilradical.subscheme` に IsReduced を与え、その包含の全射性・Noether 基底上の局所有限表示性を示す。既存の nilradical・subschemeCover を使う（見込み50〜160行）。これは G3 の既承認の nilimmersion の零段と存在証明の分割で、TIC や新しい模型の存在を追加しない。
