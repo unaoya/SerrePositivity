@@ -7951,6 +7951,19 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Thick,
   `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThickClosureLaws]
 
+@[noinline] private def derivedAuditExpectedChunk40 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedHammockSource,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCofibrantVertices,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFrames,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameSections,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFunctorialFrames,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalizedVertices,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMappingSpan,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramModelLocalization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramPointFrameEnd,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramReedyMappingModel,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramRightFrameComparison]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -8442,7 +8455,8 @@ run_cmd do
     derivedAuditExpectedChunk36 ++
     derivedAuditExpectedChunk37 ++
     derivedAuditExpectedChunk38 ++
-    derivedAuditExpectedChunk39
+    derivedAuditExpectedChunk39 ++
+    derivedAuditExpectedChunk40
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
