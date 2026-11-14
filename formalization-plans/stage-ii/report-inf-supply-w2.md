@@ -12427,3 +12427,35 @@ theorem twistedPairingNerveMap_projection :
       lift (nerveMap A ≫ (nerveOppositeIso (C
 
 ```
+
+## 192. R03e：通常のGrothendieck構成の厳密なweighted nerve比較（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未証明。
+
+§191.2の橋を紙で分けて確認した。最初に、任意の通常のCat値図式のGrothendieck構成のnerveと、各fiberのnerveからなる図式のweighted nerveとの厳密な同型を、**独立した数学的な中間定理R03e**として追加する。元の底の射影と元のfiberの指定頂点を保つ。IS-W2 §19の同じR01〜R03のまとまりの中の中間定理であり、見込みは500〜900行（1,500行以下）なので、承認を待たず進める。
+
+これはR03dの行数だけを分割するための補題ではない。任意の通常のCat値図式に対する二つの既存の全構成を、底上の厳密な単体集合同型と指定頂点の等式で結ぶ、一つの独立した比較定理。全要素圏の射影を既存のweighted nerveの分類へ接続する最初の段に使う。単なる全空間の弱同値とは区別する。
+
+```lean
+theorem exists_grothendieckWeightedNerveIso
+    {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
+  ∃ e : nerve (Grothendieck F) ≅ weightedNerve (F ⋙ nerveFunctor),
+    e.hom ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+      nerveMap (Grothendieck.forget F) ∧
+    ∀ (i : I) (x : F.obj i),
+      e.hom.app (Opposite.op ⦋0⦌) (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
+        (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
+          (Opposite.op ⦋0⦌) (nerveVertex x)
+```
+
+この型を `/private/tmp/CheckISW2GrothWeightedNerveType.lean` のPropとしてLeanで確認し、実ハンドル74299の終了0を確認した。定理の証明を仮定にしたり本体に未証明で登録したりしていない。
+
+置き場所は `InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/GrothendieckWeightedNerve*.lean`。既存の同名ファイルはない。前向きの単体と自然性150〜250行、逆向きの重み係数からのGrothendieck射列150〜250行、両往復150〜250行、射影・指定点の照合50〜150行、計500〜900行。見込みの半分で実測と残りを報告する。
+
+短い経路として、既存の `SliceTransport/GrothendieckCommaTransport.transport` を再利用する。Grothendieck射列の各初区間を同じ最終基底へのCostructuredArrowに送り、その既存のtransportでfiberへ移す。このprefixのnerveが前向きの重み係数になる。逆は各prefixの最終対象と元の係数の自然性から実射を回収する。元のCat関手の合成の型の移送は、既存のtransportが処理する。
+
+### 192.1 後半にまだ必要な判定
+
+別途、全単体集合値図式Fについて、`Grothendieck (F ⋙ Functor.elementsFunctor)` の同じ底上の射影のcontinuousLeftFibrationReplacementを分類すると、元のFのEx∞のKan図式に全関手同型となる、という候補の型も一時ファイルで確認した。261で既存のContinuousLeftFibrationFilling一本を対象ビルド（1,503 jobs・終了0）してから `/private/tmp/CheckISW2ElementsLeftStraighteningType.lean` を通し、実ハンドル62729の終了0を確認した。この候補はまだ一覧に追加しておらず、証明も存在も主張しない。
+
+R03eだけで後半の相対Kan比較が済むとは扱わない。要素圏の反対と元のaugmentation、同じ底上のKan化、元の指定点の回収を、どの既存の全比較で示すかを別に確認する。必要な独立の中間定理があれば、同じく型と見込みで§19を判定する。R03dの元の全FunctorIsoと固定始域の同じ比較への一致という型は保つ。R03eの証明に進む。
