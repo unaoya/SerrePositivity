@@ -2714,3 +2714,25 @@ G1・G2共用部品込み本体15,669行、入口込み15,931行。75d018aa2 の
 G1・G2共用部品込み本体15,718行、入口込み15,981行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+次の組立てで再利用する既存の API の確認：
+
+- Mathlib `CategoryTheory.Filtered.Final` の `IsFiltered.of_exists_of_isFiltered_of_fullyFaithful` と `Functor.final_of_exists_of_isFiltered_of_fullyFaithful` は、filtered な全模型の圏から被覆模型の充満部分圏へ進む際、各対象から被覆模型への実際の射を供給すれば、filtered 性と final 性を返す。この一般論を作り直さない。
+- `SerrePositivity/HomologicalAlgebra/Cech/Filtered.lean` の `isCechExact_colimit` は、環写像の Arrow の filtered 余極限に直接適用できる。本文では `CosimplicialObject.augmentedCechConerve` の左随伴性と `preservesColimitIso` を既に使用している。したがって模型の Arrow の実際の IsColimit を閉じた後の conerve 比較は、この関手の余極限保存による増大余単体対象全体の自然な同型を使う。面・退化・増大写像を次数ごとに新しく作らず、B1 の完全性の filtered 移送へ同じ型でつなぐ。
+
+全模型から被覆模型への射の供給の紙の接続：任意の有限型 k の模型 A₀→D₀ と元の g:R→C への正方形を、同じ基底 R の P=R⊗_{A₀}D₀ に移す。k が Noether なので A₀ も Noether、D₀ は A₀ 上有限表示で P は R 上有限表示。P→C の射があり、R→P→C の合成は元の v 被覆なので、G0 の合成からの消去で R→P も v 被覆。検証済みの実際の被覆係数模型を P に供給し、上記の実際の正方形の因子化で旧模型からある被覆係数段への射を得る。元の R の Noether 性を加えず、模型の v 判定を仮定していない。これを全模型の共同後段・平行射の一致と組み合わせる段はまだ未検証。
+
+
+関手の法則の証明分割（着手前の型、既存の100〜220行の内数）：具体的な pushout 模型のデータを直接展開した Map の検証は kernel の deterministic timeout となった。上限は変更しない。一般の二環図式 F,G、構造自然変換 τ、k 構造の自然変換、元の R,C への可換な自然変換、各段の有限型性・v 判定から `coefficientVCoverModelFunctorOfRingDiagrams` を作り、具体的な係数図式の関手はその適用に分ける。両辺の環と構造写像・元の g を保持する同じ自然性と合成則の分割で、既存宣言の型は変更しない。
+
+
+### B03・B04：抽象的な二環図式からの模型の関手
+
+`CoefficientVCoverDiagramFunctor`（73行）：`coefficientVCoverDiagramObj`・`coefficientVCoverDiagramMap` は、係数・元の環写像への自然変換を持つ二環図式の各段と遷移を、実際の有限型被覆模型へ移す。`coefficientVCoverModelFunctorOfRingDiagrams` は恒等・合成と整合する実際の関手を返す。具体的な pushout 模型のデータを直接展開した未検証の案の kernel timeout を、この自然性の分割で解消した。
+
+本体73行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,052ジョブ、小監査39宣言・標準三公理のみ、終了状態0。既定の kernel 上限を維持し、追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。ログ `2g-coefficient-vcover-diagram-functor-check.log`・`2g-coefficient-vcover-diagram-functor-native.log`・`2g-coefficient-vcover-diagram-functor-audit.log`。
+
+G1・G2共用部品込み本体15,791行、入口込み16,055行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
