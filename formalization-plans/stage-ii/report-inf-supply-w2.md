@@ -7792,3 +7792,1142 @@ R06は「通常colimの台が通常colim」という事実のみで導来実現�
 99行の残枠では、次のD01の全join族と各点の厳密照合の束を収められない所まで来た。`coordination.md` §2（62〜65行の規模上限・型つき一覧・代わりの紙の作業）とIS-W2 §16の外枠に従い、**検証済みをコミットした上で、この線の追加Leanをここで区切る**。新しい第五のまとまり・範囲の縮小・新しい模型圏仮定を要求しているのではなく、承認済みDの同じ型の工程が残る。数を使い切るための補題追加はしない。
 
 代わりの紙の作業として§152に、3b-4の§38.2の1・2について、既存部品、全関手・同じ指定錐族の型案、③-aの3b-3を使う場所、規模の案を残した。BEの新規Leanや点つきKanのTotは開始していない。この紙をG10や3b-4の検証済み完成と数えない。再開箇所は上表のD01の全族への自然性の輸送であり、B4やB・Cの再実装ではない。
+
+
+## 154. 再開：D01の指定複体代表から点ごとの実Γまでの全自然性（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。D01〜D08の最終結論は未完であり、今回の法則・証明分割をIDの完了数へ加えない。前ターンは停止点2aとD補助の検証・コミットという進捗。mainの `d7b418962` を作業枝へfast-forwardで取り込み、IS-W2 §17・§18と /goal 更新を読んで再開した。旧20,000行の停止は解除、G10の外枠は **23,000行**。G10後の3b-4はTot側を先に、外枠15,000行、停止点3b-4a・3b-4bの後に任意coherent BE図式の段0まで進む指示を保持する。
+
+### 154.1 型と登録候補
+
+同じ閉零射によるHom図式の前合成を構成済みの行合成則に特殊化し、元の指定BK錐代表の図式方向と頂点方向の自然性を一致させた。その等式を既存 `normalizedLinearWeightHomEquiv_postcomp` と `pointwiseTruncationGammaIso` の全自然性で移した。新しい比較・点・錐を選び直さず、Moore反転と再反転も元のもの。新しい数学のまとまりではなくD01の既存構成の自然性・合成・係数移送の法則。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeSourceNaturality`（98行）。
+
+```lean
+def bousfieldKanHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    doubleOppositeDiagram ((homDiagramFunctor Q).obj X) ⟶
+      doubleOppositeDiagram ((homDiagramFunctor P).obj X) where
+  app j := homPrecompose f (X.obj ((opOpEquivalence SimplexCategory).functor.obj j))
+  naturality i j a
+
+def normalizedBKConeSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (doubleOppositeDiagram ((homDiagramFunctor Q).obj X)) ⟶
+    (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (doubleOppositeDiagram ((homDiagramFunctor P).obj X))
+
+theorem normalizedBKConeSourceMap_f {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) (q : ℤ) :
+    (normalizedBKConeSourceMap f X).f q =
+      homDiagramDegreePrecompose X 0 q q (zero_add q) (Cochain.ofHom f)
+
+theorem normalizedBousfieldKanRepresentative_precompose {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (f : P ⟶ Q)
+    (g : Q ⟶ (productTotalFunctor A).obj X) :
+    normalizedBousfieldKanRepresentative Q X g ≫ normalizedBKConeSourceMap f X =
+      normalizedBousfieldKanRepresentative P X (f ≫ g)
+
+theorem normalizedBousfieldKanConeRepresentative_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    normalizedBousfieldKanConeRepresentative X ≫
+        normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f =
+      normalizedBousfieldKanConeRepresentative Y ≫
+        normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSetConeNaturality`（86行）。
+
+```lean
+def bousfieldKanSetHomFunctor :
+    CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ ⥤
+      SimplicialObject (SimplexCategoryᵒᵖᵒᵖ ⥤ Type u)
+
+theorem normalizedBousfieldKanSetCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    normalizedBousfieldKanSetCone X ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f) =
+      normalizedBousfieldKanSetCone Y ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y)
+
+theorem reflectedBousfieldKanConeRepresentative_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reflectedBousfieldKanConeRepresentative X ≫
+        normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f =
+      reflectedBousfieldKanConeRepresentative Y ≫
+        normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y
+
+theorem reflectedBousfieldKanSetCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reflectedBousfieldKanSetCone X ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f) =
+      reflectedBousfieldKanSetCone Y ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.PointwiseBKConeNaturality`（107行）。
+
+```lean
+def pointwiseBKSetHomFunctor :
+    CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ ⥤
+      SimplexCategoryᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def pointwiseBKSetHomComparison
+    (H : CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ)
+
+theorem pointwiseBKSetHomComparison_naturality
+    {H H' : CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ} (f : H ⟶ H') :
+    (flipFunctor SimplexCategoryᵒᵖ SimplexCategoryᵒᵖᵒᵖ (Type u)).map
+        ((bousfieldKanSetHomFunctor A).map f) ≫ pointwiseBKSetHomComparison A H' =
+      pointwiseBKSetHomComparison A H ≫ (pointwiseBKSetHomFunctor A).map f
+
+theorem reversedWeightPointwiseBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reversedWeightPointwiseBousfieldKanCone X ≫
+        (pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f) =
+      reversedWeightPointwiseBousfieldKanCone Y ≫
+        (pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y)
+
+theorem reflectedPointwiseBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reflectedPointwiseBousfieldKanCone X ≫
+        Functor.whiskerRight ((pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f))
+          SimplicialObject.opFunctor =
+      reflectedPointwiseBousfieldKanCone Y ≫
+        Functor.whiskerRight ((pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y))
+          SimplicialObject.opFunctor
+
+```
+
+`pointwiseBKSetHomComparison A H` の推論された型は、`(flipFunctor Δᵒᵖ Δᵒᵖᵒᵖ (Type u)).obj ((bousfieldKanSetHomFunctor A).obj H) ⟶ (pointwiseBKSetHomFunctor A).obj H`。上の紙の表示で型を省いた場合もこの全図式射を意味し、各点のHomの元だけの主張ではない。
+
+### 154.2 検収と継続箇所
+
+コード **`00613f0ed`**。鍵付き対象ビルド175・176・177はそれぞれ **2,759・2,772・2,785 jobs、終了コード0**。各新規一本だけの小監査は **9・8・10宣言、いずれも標準三公理のみ**（合計27は今回三本だけの数字）。ログ `/private/tmp/isw2-build175.log`〜`177.log`。各回 `--class impl --wait 3600`、整理券一枚、対象ビルド・小監査の間だけ保持して返却済み。sorry・新公理0、計算上限の増加、既存宣言、⑤a、入口・公式監査・mainへの変更なし。200行超のファイルなし。
+
+累計 **329モジュール・20,192行**、外枠まで **2,808行**。累計一覧は `is-w2-g10-20261114-modules.json`。D01の全錐族はまだ構成していない。次は同じΓ比較と実豊穣Homの前合成を照合する `DoldKanClosedPrecomposition`（未検証の草稿）と、その比較による同じBK錐の自然性の移送。D02〜D08と3b-4の範囲を削らず継続する。
+
+
+## 155. D01の途中：実豊穣Hom・native錐の同じ入力・混合係数への接続（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。D01の全族はまだ未完。以下は既存構成の自然性・単位・合成・係数移送・表示の法則と証明分割で、ID付きの新しい数学を加えない。
+
+### 155.1 型と登録候補
+
+元の閉零射の前合成と標準Hom鎖写像を全単体で同定し、点ごとのΓ比較を実豊穣Homへ戻した。既存の前後作用の全関手則で合成・交換を確認し、その同じ等式を実際のAsSmall添字・指定BK重みへ引き戻した。native錐を作った入力そのものの両作用の一致であり、別の錐を選び直したものではない。
+
+登録候補：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DoldKanClosedPrecomposition`（79行）。
+
+```lean
+theorem standardChainMap_closedPrecomposition (x y z : D)
+    (f : ForgetEnrichment.of (Complex R) x ⟶ ForgetEnrichment.of (Complex R) y) :
+    Functor.whiskerRight
+      (SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap
+        (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z)))
+      (forget (ModuleCat R)) =
+    eHomWhiskerRight SSet f (ForgetEnrichment.of (Complex R) z)
+
+theorem doldKanSimplicialHomIso_precomposition (x y z : D)
+    (f : ForgetEnrichment.of (Complex R) x ⟶ ForgetEnrichment.of (Complex R) y) :
+    eHomWhiskerRight SSet f (ForgetEnrichment.of (Complex R) z) ≫
+        (doldKanSimplicialHomIso (R := R) x z).hom =
+      (doldKanSimplicialHomIso (R := R) y z).hom ≫
+        Functor.whiskerRight
+          ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat R) ℕ ⥤ SimplicialObject (ModuleCat R)).map
+            (truncLE'Map (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z))
+              (ComplexShape.embeddingUpIntLE 0))) (forget (ModuleCat R))
+
+theorem complexDoldKanHomIso_precomposition {A : Type u} [CommRing A]
+    {P Q : Complex A} (f : P ⟶ Q) (T : Complex A) :
+    eHomWhiskerRight SSet ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map f)
+        (ForgetEnrichment.of (Complex A) T) ≫ (complexDoldKanHomIso A P).hom.app T =
+      (complexDoldKanHomIso A Q).hom.app T ≫
+        Functor.whiskerRight
+          ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ SimplicialObject (ModuleCat A)).map
+            (truncLE'Map (homPrecompose f T) (ComplexShape.embeddingUpIntLE 0)))
+          (forget (ModuleCat A))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBKConeNaturality`（111行）。
+
+```lean
+def enrichedBKHomDiagram (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    SimplexCategoryᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def enrichedBKHomIso (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomDiagram P X ≅ (pointwiseBKSetHomFunctor A).obj
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X)))
+
+def enrichedBKHomTargetMap (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    enrichedBKHomDiagram P X ⟶ enrichedBKHomDiagram P Y
+
+def enrichedBKHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomDiagram Q X ⟶ enrichedBKHomDiagram P X
+
+theorem enrichedBKHomIso_target_naturality (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    enrichedBKHomTargetMap P f ≫ (enrichedBKHomIso P Y).hom =
+      (enrichedBKHomIso P X).hom ≫
+        (pointwiseBKSetHomFunctor A).map (normalizedBKConeTargetMap P f)
+
+theorem enrichedBKHomIso_source_naturality {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomSourceMap f X ≫ (enrichedBKHomIso P X).hom =
+      (enrichedBKHomIso Q X).hom ≫
+        (pointwiseBKSetHomFunctor A).map (normalizedBKConeSourceMap f X)
+
+theorem enrichedBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    enrichedBousfieldKanCone X ≫
+        Functor.whiskerRight (enrichedBKHomTargetMap ((productTotalFunctor A).obj X) f)
+          SimplicialObject.opFunctor =
+      enrichedBousfieldKanCone Y ≫
+        Functor.whiskerRight (enrichedBKHomSourceMap ((productTotalFunctor A).map f) Y)
+          SimplicialObject.opFunctor
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBKHomComposition`（58行）。
+
+```lean
+theorem enrichedBKHomTargetMap_id (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomTargetMap P (𝟙 X) = 𝟙 (enrichedBKHomDiagram P X)
+
+theorem enrichedBKHomTargetMap_comp (P : Complex A)
+    {X Y Z : CosimplicialObject (Complex A)} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    enrichedBKHomTargetMap P (f ≫ g) =
+      enrichedBKHomTargetMap P f ≫ enrichedBKHomTargetMap P g
+
+theorem enrichedBKHomSourceMap_id (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomSourceMap (𝟙 P) X = 𝟙 (enrichedBKHomDiagram P X)
+
+theorem enrichedBKHomSourceMap_comp {P Q T : Complex A} (f : P ⟶ Q) (g : Q ⟶ T)
+    (X : CosimplicialObject (Complex A)) :
+    enrichedBKHomSourceMap (f ≫ g) X =
+      enrichedBKHomSourceMap g X ≫ enrichedBKHomSourceMap f X
+
+theorem enrichedBKHomSourceMap_targetMap {P Q : Complex A} (f : P ⟶ Q)
+    {X Y : CosimplicialObject (Complex A)} (g : X ⟶ Y) :
+    enrichedBKHomSourceMap f X ≫ enrichedBKHomTargetMap P g =
+      enrichedBKHomTargetMap Q g ≫ enrichedBKHomSourceMap f Y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.LiftedBKConeNaturality`（57行）。
+
+```lean
+def liftedEnrichedBKHomDiagram (P : Complex A) (X : CosimplicialObject (Complex A)) :
+    AsSmall.{u} SimplexCategory ⥤ SSet.{u}
+
+def liftedEnrichedBKHomTargetMap (P : Complex A)
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    liftedEnrichedBKHomDiagram P X ⟶ liftedEnrichedBKHomDiagram P Y
+
+def liftedEnrichedBKHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    liftedEnrichedBKHomDiagram Q X ⟶ liftedEnrichedBKHomDiagram P X
+
+theorem liftedEnrichedBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    liftedEnrichedBousfieldKanCone X ≫
+        liftedEnrichedBKHomTargetMap ((productTotalFunctor A).obj X) f =
+      liftedEnrichedBousfieldKanCone Y ≫
+        liftedEnrichedBKHomSourceMap ((productTotalFunctor A).map f) Y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSmallShape`（37行）。
+
+```lean
+def smallNativeTotConeDiagram (X : CosimplicialObject (Complex A)) :
+    (SSet.uliftFunctor.{u+1,u}).obj
+      (join (Δ[0] : SSet.{u}) (nerve (AsSmall.{u} SimplexCategory))) ⟶ dgNerve A (Complex A)
+
+theorem smallNativeTotConeDiagram_restore (X : CosimplicialObject (Complex A)) :
+    (uliftConeShapeIso (nerve (AsSmall.{u} SimplexCategory)) 0).inv ≫
+      smallNativeTotConeDiagram X = (nativeDGCone X).val
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedCoherentCoefficientNaturality`（41行）。
+
+```lean
+theorem weightedCoherentCoefficient_map (α : H ⟶ H')
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ H ⋙ SSet.opFunctor) (j : Fin (n + 1)) :
+    weightedCoherentCoefficient
+        (τ ≫ Functor.whiskerLeft σ (Functor.whiskerRight α SSet.opFunctor)) j =
+      weightedCoherentCoefficient τ j ≫ α.app (σ.obj j)
+
+theorem weightedCoherentCoefficient_dinaturality (α : H ⟶ H'') (β : H' ⟶ H'')
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ H ⋙ SSet.opFunctor)
+    (τ' : simplexPrefixWeight n ⟶ σ ⋙ H' ⋙ SSet.opFunctor)
+    (h : τ ≫ Functor.whiskerLeft σ (Functor.whiskerRight α SSet.opFunctor) =
+      τ' ≫ Functor.whiskerLeft σ (Functor.whiskerRight β SSet.opFunctor))
+    (j : Fin (n + 1)) :
+    weightedCoherentCoefficient τ j ≫ α.app (σ.obj j) =
+      weightedCoherentCoefficient τ' j ≫ β.app (σ.obj j)
+
+```
+
+### 155.2 検収
+
+実豊穣Homと指定入力の四本はコード **`3c6f9197d`**。対象ビルド178は標準成分表示の書き換えで失敗し、鍵を返却した。表示を明示して修正した179は **5,944 jobs、終了コード0**、小監査 **3宣言**。180は **6,191 jobs、終了コード0**、新規一本 **17宣言**。181は **6,204 jobs、終了コード0**、新規二本 **12宣言（7・5）**。全て標準三公理のみ。失敗した178を成功に数えない。
+
+同じ錐の小さい形状表示と混合係数の二本はコード **`bbc48fcc0`**。対象ビルド182・183は **6,048・2,246 jobs、終了コード0**、新規分の小監査は **4・2宣言、標準三公理のみ**。ログ `/private/tmp/isw2-build179.log`〜`183.log`。各回 `--class impl --wait 3600`、整理券一枚、対象ビルドと小監査の間だけ鍵を保持し、各ハンドルの終了コード0を確認して返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査・mainの変更なし。各ファイル200行以内。
+
+累計 **335モジュール・20,575行**、G10の外枠まで **2,425行**。累計一覧 `is-w2-g10-20261114-modules.json`。
+
+### 155.3 mainの既存R6を再利用するD01の短い組み立て
+
+mainの `StrictCoherentFamily A E K C` は、各パラメータでの**元の全dg nerve図式**と、全高次HA成分に厳密に可換する `StrictSimplexMap`、恒等・合成・全面・退化の整合性から、同じ全パラメータ評価を作る。`StrictCoherentFamilyEvaluation.lean` の `.evaluation` は `nerve C ⊗ (uliftFunctor.obj K) ⟶ dgNerve A E`。これは今回必要な全族の組み立ての既存部品として使える。新しいcollageや全族評価を一から作らない。
+
+`K := join (Δ[0] : SSet.{u}) (nerve (AsSmall.{u} SimplexCategory))`、`C := CosimplicialObject (Complex A)`、`E := Complex A` とし、`.obj X` に今回検証した `smallNativeTotConeDiagram X` をそのまま置く。その形状同型を戻せば、元の `nativeDGCone X` の全join射になることも検証済み。
+
+残る接続は次の順。
+
+1. 各図式射fの元の閉零成分（左頂点は `productTotalFunctor.map f`、右頂点は `f.app n`）を、全HA成分に可換する `StrictSimplexMap` にする。同じ立方体の旗の評価とcoherent比較の前後作用への自然性を使う。新規の草稿 `CubeEvaluationChainNaturality`・`CoherentComparisonStrictNaturality` はこの既存構成の法則の分割。
+2. mixedなweighted coneのHomでの自然性には、今回検証済みの `liftedEnrichedBousfieldKanCone_dinaturality` と `weightedCoherentCoefficient_dinaturality` を使う。尾部は元の図式射の自然性、逆方向の空Homは空型の消去。高次成分を通常の辺の自然性だけで代用しない。
+3. `StrictSimplexMap.ext` で単位・合成を、同じ引き戻しと `.hext` で全面・退化を確認して `StrictCoherentFamily` へ入れる。既存の `.evaluation` を使い、積の順序と同じ形状同型を戻し、同じ出力分解へ後合成してD01の全族にする。
+4. 既存 `orderedSimplexFamily_const` による各点の同じ全単体への復元と、前面・頂点への制限を使ってD02・D03を閉じ、§151の同じ頂点関手とD04を接続する。
+
+この経路はD01の指定された構成の証明分割で、範囲・型の変更ではない。新しい一般の厳密化定理や模型圏仮定は足さない。D05〜D08、続くBEのTot・実現と任意coherent BE図式の段0を保持して継続する。
+
+
+## 156. D01の途中：同じnative錐の全セル識別と全高次HA写像（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。D01の全族の完成はまだ主張しない。以下は既存構成の係数移送・単位・合成・自然性・表示・貼り合わせの法則と証明分割。
+
+### 156.1 型と登録候補
+
+立方体の符号付き旗和が元のHom鎖写像に可換することから、全豊穣Homの可換式を `coherentComparisonStrictMap` の**全高次HA成分の厳密可換式**へ移した。weighted coneの頂点・尾部・混合・空Homを照合し、元の図式射のTot成分と各次数の成分を持つ `nativeTotWeightedSimplexMap` と、その単位・合成則を閉じた。
+
+さらに、元のnative錐のcoslice切断の**任意次数**の評価と、パラメータ第一射影の係数則を使い、局所weighted単体が元の同じ全join射のセル制限そのものであることを `nativeTotCone_cellMap`・`_cellSimplex` で証明した。ここは辺だけの照合でも、FunctorIsoによる別のセルへの取り換えでもない。
+
+登録候補：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CubeEvaluationChainNaturality`（56行）。
+
+```lean
+theorem standardTopEval_chainMap (f : homObject R D x y ⟶ homObject R E x' y')
+    (m : ℕ) (s : StandardSimplex R x y m) :
+    standardTopEval x' y' m ((standardModuleChainMap f).app (Opposite.op ⦋m⦌) s) =
+      f.f (-(m : ℤ)) (standardTopEval x y m s)
+
+theorem cubeFlagEvaluation_chainMap {T : Type u} {m : ℕ} (e : Fin m ≃ T)
+    (f : homObject R D x y ⟶ homObject R E x' y')
+    (φ : SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube T ⟶
+      standardHomSpace (R := R) x y) :
+    cubeFlagEvaluation e (φ ≫ Functor.whiskerRight (standardModuleChainMap f)
+      (forget (ModuleCat R))) = f.f (-(m : ℤ)) (cubeFlagEvaluation e φ)
+
+theorem cubeEvaluation_chainMap {T : Type u} {m : ℕ} (e : Fin m ≃ T)
+    (f : homObject R D x y ⟶ homObject R E x' y')
+    (φ : SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube T ⟶
+      standardHomSpace (R := R) x y) :
+    cubeEvaluation e (φ ≫ Functor.whiskerRight (standardModuleChainMap f)
+      (forget (ModuleCat R))) = f.f (-(m : ℤ)) (cubeEvaluation e φ)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoherentComparisonStrictNaturality`（70行）。
+
+```lean
+theorem cubeEvaluation_closed_naturality {T : Type u} {m : ℕ} (e : Fin m ≃ T)
+    {x y x' y' : D}
+    (f : ForgetEnrichment.of (Complex R) x ⟶ ForgetEnrichment.of (Complex R) x')
+    (g : ForgetEnrichment.of (Complex R) y ⟶ ForgetEnrichment.of (Complex R) y')
+    (φ : SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube T ⟶
+      standardHomSpace (R := R) x y)
+    (ψ : SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube T ⟶
+      standardHomSpace (R := R) x' y')
+    (h : φ ≫ eHomWhiskerLeft SSet (ForgetEnrichment.of (Complex R) x) g =
+      ψ ≫ eHomWhiskerRight SSet f (ForgetEnrichment.of (Complex R) y')) :
+    compose R (closedHomEquiv R D _ _ g).val (cubeEvaluation e φ) (add_zero (-(m : ℤ))) =
+      compose R (cubeEvaluation e ψ) (closedHomEquiv R D _ _ f).val
+        (zero_add (-(m : ℤ)))
+
+def coherentComparisonStrictMap {n : ℕ}
+    (s t : (doldKanCoherentNerve (R := R) (D := D)) _⦋n⦌)
+    (f : ∀ i, s.obj i ⟶ t.obj i)
+    (hf : ∀ i j, s.map i j ≫ eHomWhiskerLeft SSet (s.obj i) (f j) =
+      t.map i j ≫ eHomWhiskerRight SSet (f i) (t.obj j)) :
+    StrictSimplexMap R D (coherentSimplexData s) (coherentSimplexData t) where
+  app i := closedHomEquiv R D _ _ (f (.mk (ULift.up i)))
+  naturality I a b k hI ha hb hk
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedConeComparisonStrictMap`（39行）。
+
+```lean
+def weightedConeComparisonStrictMap {n : ℕ} {σ : ComposableArrows I n}
+    (η : F ⟶ G) {x y : ClosedCategory R D} (f : x ⟶ y)
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ simplicialHomDiagram F x ⋙ SSet.opFunctor)
+    (τ' : simplexPrefixWeight n ⟶ σ ⋙ simplicialHomDiagram G y ⋙ SSet.opFunctor)
+    (h : τ ≫ Functor.whiskerLeft σ
+        (Functor.whiskerRight (weightedConeHomTargetMap η x) SSet.opFunctor) =
+      τ' ≫ Functor.whiskerLeft σ
+        (Functor.whiskerRight (weightedConeHomSourceMap f G) SSet.opFunctor)) :
+    StrictSimplexMap R D (coherentSimplexData (weightedConeSimplex F x τ))
+      (coherentSimplexData (weightedConeSimplex G y τ'))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointSimplexEvaluation`（47行）。
+
+```lean
+theorem uliftPointSimplexEvaluation (K E Q : SSet.{u})
+    (p : (Δ[0] : SSet.{u}) ⟶ E) (f : K ⊗ E ⟶ Q)
+    {n : ℕ} (σ : K _⦋n⦌) (a₀ : (Δ[0] : SSet.{u}) _⦋n⦌) :
+    let U := SSet.uliftFunctor.{v,u}
+    let e := (uliftStdSimplexIso.{u,v} 0).inv ≫ U.map p
+    let s := inv (fst (U.obj K) (Δ[0] : SSet.{max u v})) ≫
+      (U.obj K ◁ e) ≫ (uliftTensorIso K E).inv ≫ U.map f
+    s.app (Opposite.op ⦋n⦌) (ULift.up σ) =
+      ULift.up (f.app (Opposite.op ⦋n⦌)
+        (σ, p.app (Opposite.op ⦋n⦌) a₀))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.ClosedVertexWhiskering`（56行）。
+
+```lean
+theorem closedVertex_whiskerLeft {x y z : C} (f : x ⟶ y) (g : y ⟶ z) :
+    eHomEquiv SSet f ≫ eHomWhiskerLeft SSet x g = eHomEquiv SSet (f ≫ g)
+
+theorem closedVertex_whiskerRight {x y z : C} (f : x ⟶ y) (g : y ⟶ z) :
+    eHomEquiv SSet g ≫ eHomWhiskerRight SSet f z = eHomEquiv SSet (f ≫ g)
+
+theorem enrichedUnit_whiskering {x y : C} (f : x ⟶ y) :
+    eId SSet x ≫ eHomWhiskerLeft SSet x f =
+      eId SSet y ≫ eHomWhiskerRight SSet f y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedConeHomNaturality`（97行）。
+
+```lean
+theorem weightedConeTailHom_naturality {n : ℕ} {F G : Fin (n + 1) ⥤ C}
+    (η : F ⟶ G) (i j : Fin (n + 1)) :
+    weightedConeTailHom F i j ≫ eHomWhiskerLeft SSet (F.obj i) (η.app j) =
+      weightedConeTailHom G i j ≫ eHomWhiskerRight SSet (η.app i) (G.obj j)
+
+def weightedConeHomTargetMap (η : F ⟶ G) (x : C) :
+    simplicialHomDiagram F x ⟶ simplicialHomDiagram G x
+
+def weightedConeHomSourceMap {x y : C} (f : x ⟶ y) (G : I ⥤ C) :
+    simplicialHomDiagram G y ⟶ simplicialHomDiagram G x
+
+def weightedConeVertexMap {n : ℕ} (η : F ⟶ G) {x y : C} (f : x ⟶ y)
+    (σ : ComposableArrows I n) (i : Fin (n + 2)) :
+    weightedConeObj x (σ ⋙ F) i ⟶ weightedConeObj y (σ ⋙ G) i
+
+theorem weightedConeHom_naturality {n : ℕ} {σ : ComposableArrows I n}
+    (η : F ⟶ G) {x y : C} (f : x ⟶ y)
+    (τ : simplexPrefixWeight n ⟶ σ ⋙ simplicialHomDiagram F x ⋙ SSet.opFunctor)
+    (τ' : simplexPrefixWeight n ⟶ σ ⋙ simplicialHomDiagram G y ⋙ SSet.opFunctor)
+    (h : τ ≫ Functor.whiskerLeft σ
+        (Functor.whiskerRight (weightedConeHomTargetMap η x) SSet.opFunctor) =
+      τ' ≫ Functor.whiskerLeft σ
+        (Functor.whiskerRight (weightedConeHomSourceMap f G) SSet.opFunctor))
+    (i j : Fin (n + 2)) :
+    weightedConeHom F x τ i j ≫ eHomWhiskerLeft SSet
+        (weightedConeObj x (σ ⋙ F) i) (weightedConeVertexMap η f σ j) =
+      weightedConeHom G y τ' i j ≫ eHomWhiskerRight SSet
+        (weightedConeVertexMap η f σ i) (weightedConeObj y (σ ⋙ G) j)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.WeightedNerveCoefficientProjection`（32行）。
+
+```lean
+theorem weightedNerveCoefficients_fst (B : SSet.{u}) (φ : bousfieldKanWeight I ⟶ H)
+    {n : ℕ} (σ : ComposableArrows I n) (a : (Δ[n] : SSet.{u}) ⟶ B) :
+    weightedNerveCoefficients
+        (fst (bousfieldKanWeight I) ((Functor.const I).obj B) ≫ φ) σ a =
+      prefixOverWeight σ ≫ Functor.whiskerLeft σ φ
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentConeCellEvaluation`（31行）。
+
+```lean
+theorem coherentConeCosliceSection_cell {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (z : X _⦋0⦌) (h : c.vertex = z) {n : ℕ} (σ : K _⦋n⦌) :
+    (((coherentConeCosliceSection c ≫ eqToHom (congrArg
+      (fun w => sliceUnder (SSet.yonedaEquiv.symm w)) h)).app
+        (Opposite.op ⦋n⦌) σ)).val =
+      joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm σ) ≫ c.val
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedSimplex`（73行）。
+
+```lean
+def liftedClosedDiagramMap {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    liftedClosedDiagram X ⟶ liftedClosedDiagram Y
+
+def nativeTotWeightedPrefix (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    simplexPrefixWeight n ⟶ σ ⋙
+      simplicialHomDiagram (liftedClosedDiagram X)
+        (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)) ⋙ SSet.opFunctor
+
+def nativeTotWeightedSimplexData (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) : SimplexData A (Complex A) (n+1)
+
+theorem nativeTotWeightedPrefix_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedPrefix X σ ≫ Functor.whiskerLeft σ
+        (Functor.whiskerRight
+          (weightedConeHomTargetMap (liftedClosedDiagramMap f)
+            (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))) SSet.opFunctor) =
+      nativeTotWeightedPrefix Y σ ≫ Functor.whiskerLeft σ
+        (Functor.whiskerRight
+          (weightedConeHomSourceMap ((complexToClosed A).map ((productTotalFunctor A).map f))
+            (liftedClosedDiagram Y)) SSet.opFunctor)
+
+def nativeTotWeightedSimplexMap
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    StrictSimplexMap A (Complex A) (nativeTotWeightedSimplexData X σ)
+      (nativeTotWeightedSimplexData Y σ)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedSimplexComposition`（66行）。
+
+```lean
+theorem nativeTotWeightedSimplexMap_id (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedSimplexMap (𝟙 X) σ = StrictSimplexMap.id (nativeTotWeightedSimplexData X σ)
+
+theorem nativeTotWeightedSimplexMap_comp {X Y Z : CosimplicialObject (Complex A)}
+    (f : X ⟶ Y) (g : Y ⟶ Z) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedSimplexMap (f ≫ g) σ =
+      (nativeTotWeightedSimplexMap f σ).comp (nativeTotWeightedSimplexMap g σ)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSectionSimplex`（79行）。
+
+```lean
+theorem nativeTotCone_cosliceSection_simplex (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋n⦌)
+    (a₀ : (Δ[0] : SSet.{u}) _⦋n⦌) :
+    let I := AsSmall.{u} SimplexCategory
+    let F := liftedClosedDiagram X
+    let z := ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)
+    let φ := liftedEnrichedBousfieldKanCone X
+    ((coherentConeCosliceSection (nativeCoherentCone X) ≫ eqToHom (congrArg
+      (fun w : (SimplicialNerve (ClosedCategory A (Complex A))) _⦋0⦌ =>
+        sliceUnder (SSet.yonedaEquiv.symm w)) (nativeCoherentCone_vertex X))).app
+          (Opposite.op ⦋n⦌) (ULift.up σ)) =
+    weightedCosliceSimplex F z
+      ((weightedNerveSectionFromTransform
+        (fst (bousfieldKanWeight I) ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ φ)).app
+          (Opposite.op ⦋n⦌) (σ, a₀))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedCellIdentification`（79行）。
+
+```lean
+theorem nativeTotCone_cosliceCell (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋n⦌)
+    (a₀ : (Δ[0] : SSet.{u}) _⦋n⦌) :
+    (((coherentConeCosliceSection (nativeCoherentCone X) ≫ eqToHom (congrArg
+      (fun w : (SimplicialNerve (ClosedCategory A (Complex A))) _⦋0⦌ =>
+        sliceUnder (SSet.yonedaEquiv.symm w)) (nativeCoherentCone_vertex X))).app
+          (Opposite.op ⦋n⦌) (ULift.up σ))).val =
+      (leftPointStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm
+        (weightedConeSimplex (liftedClosedDiagram X)
+          (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+          (nativeTotWeightedPrefix X σ))
+
+theorem nativeTotCone_cellMap (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋n⦌)
+    (a₀ : (Δ[0] : SSet.{u}) _⦋n⦌) :
+    joinMap (𝟙 (Δ[0] : SSet.{u+1})) (SSet.yonedaEquiv.symm (ULift.up σ)) ≫
+        (nativeCoherentCone X).val =
+      (leftPointStdSimplexIso n).hom ≫ SSet.yonedaEquiv.symm
+        (weightedConeSimplex (liftedClosedDiagram X)
+          (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+          (nativeTotWeightedPrefix X σ))
+
+theorem nativeTotCone_cellSimplex (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋n⦌)
+    (a₀ : (Δ[0] : SSet.{u}) _⦋n⦌) :
+    SSet.yonedaEquiv ((leftPointStdSimplexIso n).inv ≫
+      joinMap (𝟙 (Δ[0] : SSet.{u+1})) (SSet.yonedaEquiv.symm (ULift.up σ)) ≫
+        (nativeCoherentCone X).val) =
+      weightedConeSimplex (liftedClosedDiagram X)
+        (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+        (nativeTotWeightedPrefix X σ)
+
+```
+
+### 156.2 検収・実測
+
+立方体・全coherent比較の二本は **`22125d8a0`**。鍵付き対象ビルド184は **3,790 jobs・終了コード0**、新規一本3宣言の小監査。185は **5,949 jobs・終了コード0**、新規一本5宣言の小監査。184ではmainの既存 `StrictSimplexMap` も必要な依存として対象だけ生成したが、新規監査の数には含めていない。
+
+weighted coneから元の全セルまでの十本は **`e9bdb2d07`**。対象ビルド186・187・188・189はそれぞれ **5,953・6,213・6,273・6,275 jobs、終了コード0**。各新規分の小監査は **10（3・5・2）・15・4（2・1・1）・5（1・1・3）宣言**。全て標準三公理のみ。これらは今回の新規対象だけの分割監査であり、全累計の再監査ではない。ログ `/private/tmp/isw2-build184.log`〜`189.log`。
+
+各回 `--class impl --wait 3600`、整理券一枚、対象ビルドと小監査の間だけ鍵を保持し、各ハンドルの終了コード0を確認して返却済み。sorry・新公理0、計算上限・再帰上限の増加、既存宣言、⑤a、入口・公式監査・mainの変更なし。200行超のファイルなし。
+
+累計 **347モジュール・21,300行**、外枠23,000行まで **1,700行**。累計一覧 `is-w2-g10-20261114-modules.json`。
+
+### 156.3 そのまま継続する接続
+
+D01の残りは、これら同じセルの写像を全面・退化と整合する**全錐形状**での `StrictCoherentFamily` へまとめ、既存 `.evaluation` を同じ形状同型で戻して元の出力分解へ後合成する所。`nativeTotCone_cellSimplex` は頂点を保持する全cosliceセルの識別を与えたが、これだけで任意のjoin単体上の全面・退化の整合性が済んだとは数えない。純粋な左頂点・右面と、重複した左頂点を持つ混合単体も既存の引き戻しとして照合する。新しい全族評価の構成は作り直さない。
+
+その後、元の両境界・各Xでの同じ全join射（D02・D03）、保存済みの頂点辺の式（D04）、離散の整数零延長した交代余面複体への頂点移送・全族・ホモロジー入口（D05〜D08）を閉じる。3b-4の承認済みTot先行の範囲と、さらに実現・任意coherent BE図式の段0までの目標は保持している。今回は中間停止・承認待ち・目標の縮小ではなく、検証済みの保存点。
+
+
+## 157. D01の全join族と元の同じ指定錐への全単体での復元（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。以下はD01〜D03の証明の分割と、既存構成の単位・自然性・貼り合わせ・表示の法則。最終D型の導来入口と両境界は引き続き接続中で、IDを先に完了として数えない。
+
+§156の全join形状での構成は、mainの既存R6をさらに短く使い、各セルの `StrictSimplexCategory` 関手評価を既存cosliceの切断に入れて `sliceUnderUncurry` で貼り合わせる形にした。新しい評価原理・厳密化定理を作らず、純粋な左右面と重複した初点を含む全join単体は同じcosliceの既存普遍性で扱う。固定Xで元の `nativeDGCone X` の全射に厳密に戻る等式も示した。頂点や脚だけの照合ではない。
+
+### 157.1 追加した法則・証明分割の型
+
+共通：`A : Type u`、`[CommRing A]`。各型の名前空間・importは同名ソースのとおり。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedCellFamily`（72行）。
+
+```lean
+def nativeTotWeightedCellFunctor {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    CosimplicialObject (Complex A) ⥤ StrictSimplexCategory A (Complex A) (n+1)
+
+def nativeTotWeightedCellFamily {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nerve (CosimplicialObject (Complex A)) ⊗
+      join (Δ[0] : SSet.{u+1}) (Δ[n] : SSet.{u+1}) ⟶ dgNerve A (Complex A)
+
+theorem nativeTotWeightedCellFamily_at {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) (X : CosimplicialObject (Complex A)) :
+    lift (SSet.const (ComposableArrows.mk₀ X))
+        (𝟙 (join (Δ[0] : SSet.{u+1}) (Δ[n] : SSet.{u+1}))) ≫
+      nativeTotWeightedCellFamily A σ =
+    (leftPointStdSimplexIso n).hom ≫
+      SSet.yonedaEquiv.symm (nativeTotWeightedCellFunctor A σ |>.obj X |>.val)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedReindex`（78行）。
+
+```lean
+theorem nativeTotWeightedPrefix_reindex (X : CosimplicialObject (Complex A))
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedPrefix X ((SimplexCategory.toCat.map α).toFunctor ⋙ σ) =
+      simplexPrefixWeightRestriction α ≫
+        Functor.whiskerLeft (SimplexCategory.toCat.map α).toFunctor
+          (nativeTotWeightedPrefix X σ)
+
+theorem nativeTotWeightedSimplex_reindex (X : CosimplicialObject (Complex A))
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    coherentSimplex (weightedConeSimplex (liftedClosedDiagram X)
+      (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+      (nativeTotWeightedPrefix X ((SimplexCategory.toCat.map α).toFunctor ⋙ σ))) =
+    (coherentSimplex (weightedConeSimplex (liftedClosedDiagram X)
+      (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+      (nativeTotWeightedPrefix X σ))).pullback (prependOrderHom α.toOrderHom)
+
+theorem nativeTotWeightedSimplexMap_reindex
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y)
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    HEq (nativeTotWeightedSimplexMap f ((SimplexCategory.toCat.map α).toFunctor ⋙ σ))
+      ((nativeTotWeightedSimplexMap f σ).pullback (prependOrderHom α.toOrderHom))
+
+theorem nativeTotWeightedCellFunctor_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedCellFunctor A ((SimplexCategory.toCat.map α).toFunctor ⋙ σ) =
+      nativeTotWeightedCellFunctor A σ ⋙
+        strictSimplexPullbackFunctor A (Complex A) (prependOrderHom α.toOrderHom)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedApexFamily`（90行）。
+
+```lean
+def nativeTotClosedVertexFunctor :
+    ClosedCategory A (Complex A) ⥤ StrictSimplexCategory A (Complex A) 0
+
+theorem nativeTotWeightedCellFunctor_apex {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedCellFunctor A σ ⋙ strictSimplexPullbackFunctor A (Complex A)
+        (SimplexCategory.const ⦋0⦌ ⦋n+1⦌ 0).toOrderHom =
+      productTotalFunctor A ⋙ complexToClosed A ⋙ nativeTotClosedVertexFunctor A
+
+def nativeTotApexFamily :
+    nerve (CosimplicialObject (Complex A)) ⊗ (Δ[0] : SSet.{u+1}) ⟶
+      dgNerve A (Complex A)
+
+theorem nativeTotWeightedCellFamily_apex {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinInl (Δ[0] : SSet.{u+1}) (Δ[n] : SSet.{u+1})) ≫
+        nativeTotWeightedCellFamily A σ = nativeTotApexFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedCellNaturality`（41行）。
+
+```lean
+theorem nativeTotWeightedCellFamily_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedCellFamily A ((SimplexCategory.toCat.map α).toFunctor ⋙ σ) =
+      (nerve (CosimplicialObject (Complex A)) ◁
+        joinMap (𝟙 (Δ[0] : SSet.{u+1})) (SSet.stdSimplex.map α)) ≫
+          nativeTotWeightedCellFamily A σ
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotFunctorCosliceFamily`（81行）。
+
+```lean
+def nativeTotFunctorCosliceSimplex {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    (sliceUnder (curry (nativeTotApexFamily A))) _⦋n⦌
+
+def nativeTotFunctorCosliceSection :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶
+      sliceUnder (curry (nativeTotApexFamily A))
+
+def nativeTotJoinFamily :
+    nerve (CosimplicialObject (Complex A)) ⊗
+      join (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))) ⟶
+          dgNerve A (Complex A)
+
+theorem nativeTotJoinFamily_apex :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinInl (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))) ≫
+      nativeTotJoinFamily A = nativeTotApexFamily A
+
+theorem nativeTotJoinFamily_cell {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinMap (𝟙 (Δ[0] : SSet.{u+1}))
+        (SSet.yonedaEquiv.symm (ULift.up σ))) ≫ nativeTotJoinFamily A =
+      nativeTotWeightedCellFamily A σ
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotJoinEvaluation`（92行）。
+
+```lean
+theorem nativeTotJoin_cell_ext {K L T : SSet.{u+1}} {f g : join K L ⟶ T}
+    (hleft : joinInl K L ≫ f = joinInl K L ≫ g)
+    (hc : ∀ (n : ℕ) (σ : L _⦋n⦌),
+      joinMap (𝟙 K) (SSet.yonedaEquiv.symm σ) ≫ f =
+        joinMap (𝟙 K) (SSet.yonedaEquiv.symm σ) ≫ g) : f = g
+
+theorem nativeTotJoinFamily_at_cell (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    joinMap (𝟙 (Δ[0] : SSet.{u+1})) (SSet.yonedaEquiv.symm (ULift.up σ) : (Δ[n] : SSet.{u+1}) ⟶
+      (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))) ≫
+      (lift (SSet.const (ComposableArrows.mk₀ X))
+        (𝟙 (join (Δ[0] : SSet.{u+1})
+          ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))))) ≫
+        nativeTotJoinFamily A) =
+      joinMap (𝟙 (Δ[0] : SSet.{u+1})) (SSet.yonedaEquiv.symm (ULift.up σ) : (Δ[n] : SSet.{u+1}) ⟶
+      (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))) ≫
+        (nativeDGCone X).val
+
+theorem nativeTotJoinFamily_at (X : CosimplicialObject (Complex A)) :
+    lift (SSet.const (ComposableArrows.mk₀ X))
+        (𝟙 (join (Δ[0] : SSet.{u+1})
+          ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))))) ≫
+      nativeTotJoinFamily A = (nativeDGCone X).val
+
+```
+
+### 157.2 検収・残り
+
+コード `3d090bc59`（二本150行）、`dd4962dd1`（三本212行）、`7e7941572`（一本92行）。対象ビルド191〜195はそれぞれ **6,531・6,532・6,534・6,535・6,536 jobs、終了コード0**。新規分だけの一時監査は **13・4・8（1・7）・9・3宣言**、すべて標準三公理のみ。190の結合則の書き換え失敗は、等式を単体ごとの表示で示してから合成する証明へ直し191で再検証済み。検証中の失敗を成功の数には含めていない。
+
+鍵は各回 `--class impl --wait 3600`、整理券一枚、ビルド・小監査中だけ。全ハンドルの終了コード0を確認して返却済み。大きい累計監査・rootは実行していない。sorry・新公理0、計算・再帰上限の増加、既存宣言・⑤a・入口・公式監査・mainの変更なし。今回200行超のファイルなし。
+
+検証済み累計 **353モジュール・21,754行**、外枠23,000行まで **1,246行**。累計JSONを今回の六本で更新。
+
+次は同じ族を元の添字同型と既存の半自由出力分解へ後合成し、D01の型、D03の指定点制限、D02の両境界を閉じる。D04は既検証の同じ頂点辺の式へ接続する。D05〜D08、BEのTot先行・実現・任意coherent図式の紙の整理まで目標を保持して継続する。
+
+
+## 158. D01・D03・D04完了、D02の両境界の照合（2026-11-14）
+
+一覧：済み 31／全体 36（うち追加 1）。D01の全導来錐族、D03の元の同じ全指定錐への点制限、D04の図式射の像が対象ビルド・監査まで完了。D02は左境界と右境界の同じセルの照合までで、両境界の最終結論は未完。D05〜D08とBEの範囲を保持する。
+
+D03は§151のとおり、標準零単体の第一射影の逆 `inv (fst J Δ[0])` を使う。紙の `ρ_.inv` はモノイダル単位PUnitの型なので、標準零単体との同型を含むこの表示にした。同様にD02左境界の紙の `λ_.hom` は標準零単体を左因子に持つ第二射影 `snd Δ[0] B` に固定。元の点・全パラメータ・全高次単体・既存の型は変えていない。
+
+### 158.1 型と登録候補
+
+共通：`A : Type u`、`[CommRing A]`。閉零頂点の二法則はmainの既存R6の計算を複体の場合へ同じ式で特殊化したもの。その他も既存構成の単位・合成・自然性・係数移送・貼り合わせの法則と一覧の証明分割。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeFamily`（102行）。
+
+```lean
+def derivedTotConeFamily :
+    join (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗
+        nerve (CosimplicialObject (Complex A)) ⟶ derivedInfinityCategory A
+
+theorem derivedTotConeFamily_at_lift (X : CosimplicialObject (Complex A)) :
+    lift (𝟙 (join (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory))))
+      (SSet.const (ComposableArrows.mk₀ X)) ≫ derivedTotConeFamily A =
+        (strictDerivedTotCone X).val
+
+theorem derivedTotConeFamily_at (X : CosimplicialObject (Complex A)) :
+    inv (fst (join (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory))) (Δ[0] : SSet.{u+1})) ≫
+      (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex X)) ≫
+        derivedTotConeFamily A = (strictDerivedTotCone X).val
+
+theorem derivedTotConeFamily_map {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    (derivedTotVertexFamily A).app (Opposite.op ⦋1⦌) (nerve.edgeMk f).edge =
+      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+        (nerve.edgeMk ((productTotalFunctor A).map f)).edge
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotClosedVertexEvaluation`（94行）。
+
+```lean
+lemma nativeTotClosedVertex_pullback_hom (M : ClosedCategory A (Complex A)) {n : ℕ}
+    (α : Fin (n + 1) →o Fin 1) (T : Finset (Fin (n + 1)))
+    (a b : Fin (n + 1)) (k : ℤ) (hT : 2 ≤ T.card)
+    (ha : a = T.min' (Index.nonempty hT)) (hb : b = T.max' (Index.nonempty hT))
+    (hk : k = 2 - (T.card : ℤ)) :
+    ((closedNerveSimplex (A := A) (D := Complex A)
+      ((Functor.const (Fin 1)).obj M)).pullback α).hom T a b k hT ha hb hk =
+        closedNerveHom (𝟙 M) k
+
+lemma nativeTotClosedVertexEvaluation (G : C ⥤ ClosedCategory A (Complex A)) :
+    lift (𝟙 (nerve C)) (SSet.stdSimplex.isTerminalObj₀.from (nerve C)) ≫
+      strictSimplexFunctorEvaluation A (Complex A)
+        (G ⋙ nativeTotClosedVertexFunctor A) =
+      nerveMap G ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
+
+theorem nativeTotClosedVertexEvaluation_full (G : C ⥤ ClosedCategory A (Complex A)) :
+    strictSimplexFunctorEvaluation A (Complex A) (G ⋙ nativeTotClosedVertexFunctor A) =
+      fst (nerve C) (Δ[0] : SSet.{u+1}) ≫ nerveMap G ≫
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeLeftBoundary`（77行）。
+
+```lean
+theorem nativeTotApexFamily_derived :
+    nativeTotApexFamily A ≫ complexSemifreeResolutionInfinity A =
+      fst (nerve (CosimplicialObject (Complex A))) (Δ[0] : SSet.{u+1}) ≫
+        derivedTotVertexFamily A
+
+theorem derivedTotConeFamily_left :
+    (joinInl (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+      snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (Complex A))) ≫
+        derivedTotVertexFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedTailFamily`（99行）。
+
+```lean
+def nativeTotTailCellFunctor {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    CosimplicialObject (Complex A) ⥤ StrictSimplexCategory A (Complex A) n
+
+theorem nativeTotWeightedCell_tail (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    ((nativeTotWeightedCellFunctor A σ).obj X).val.pullback
+        (SimplexCategory.δ (0 : Fin (n+2))).toOrderHom = ((nativeTotTailCellFunctor A σ).obj X).val
+
+theorem nativeTotWeightedCellFunctor_tail {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedCellFunctor A σ ⋙
+        strictSimplexPullbackFunctor A (Complex A) (SimplexCategory.δ (0 : Fin (n+2))).toOrderHom =
+      nativeTotTailCellFunctor A σ
+
+theorem nativeTotWeightedCellFamily_tail {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinInr (Δ[0] : SSet.{u+1}) (Δ[n] : SSet.{u+1})) ≫
+        nativeTotWeightedCellFamily A σ =
+      strictSimplexFunctorEvaluation A (Complex A) (nativeTotTailCellFunctor A σ)
+
+```
+
+### 158.2 検収と実測
+
+D01・D03・D04は **`2d6662535`**、左境界は **`9ad43eac1`**、右境界セルは **`13c3e3040`**。鍵付き対象ビルド196・197・198はそれぞれ **8,123・8,125・6,535 jobs、終了コード0**。各新規分だけの小監査は **5・5（3・2）・7宣言**、標準三公理のみ。ログ `/private/tmp/isw2-build196.log`〜`198.log`。各ハンドル終了コード0を確認、整理券一枚、`--class impl --wait 3600`、ビルド・小監査中だけ鍵を保持し返却済み。全体の新しい累計監査ではない。
+
+sorry・新公理0、計算・再帰上限を増やさず、既存宣言・⑤a・入口・公式監査・mainは変更していない。今回も200行超のファイルなし。
+
+検証済み累計 **357モジュール・22,126行**、外枠23,000行まで **874行**。登録候補JSONも同じ四本を追加。
+
+次はD02右境界の対角評価を元の評価関手の全nerveと同定する。現在の `NativeTotTailCellEvaluation` は未検証草稿であり、累計に含めない。続いて両境界、離散の頂点輸送と全族・ホモロジー入口へ進む。
+
+
+## 159. D02完了と、離散の全頂点輸送への短い経路（2026-11-14）
+
+一覧：済み 32／全体 36（うち追加 1）。D01〜D04が全て対象ビルド・小監査まで完了。D05〜D08はまだ完了と数えない。
+
+右境界の全セルを既存の底の面の法則で読み、閉零射の全射列の対角を元の評価関手のnerveと等置した。零次は閉零合成と `complexToClosed.map_comp`、高次は既存の零成分で示す。既定200,000 heartbeatsで巨大な表示の `change` が詰まった点は、`orderedSimplexFamily` の表示と零次の合成を分割して解消。計算上限は増やしていない。
+
+### 159.1 型と登録候補
+
+共通：`A : Type u`、`[CommRing A]`。既存構成の単位・合成・自然性・係数移送・表示・貼り合わせ則と、一覧の証明分割。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotTailCellEvaluation`（85行）。
+
+```lean
+def nativeTotClosedEvaluationNerve :
+    nerve (CosimplicialObject (Complex A)) ⊗
+      ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))) ⟶
+        nerve (ClosedCategory A (Complex A))
+
+theorem nativeTotTailCellEvaluation_diagonal {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n)
+    (d : ComposableArrows (CosimplicialObject (Complex A)) n) :
+    (strictSimplexFunctorEvaluation A (Complex A) (nativeTotTailCellFunctor A σ)).app
+      (Opposite.op ⦋n⦌) (d, ULift.up (𝟙 ⦋n⦌)) =
+    closedNerveSimplex (((σ ⋙ AsSmall.down).prod' d) ⋙
+      evaluationUncurried SimplexCategory (Complex A) ⋙ complexToClosed A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotJoinRightBoundary`（55行）。
+
+```lean
+theorem nativeTotJoinFamily_right :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinInr (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))) ≫
+      nativeTotJoinFamily A = nativeTotClosedEvaluationNerve A ≫
+        closedNerveInclusion A (Complex A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeRightBoundary`（73行）。
+
+```lean
+theorem derivedTotConeFamily_right :
+    (joinInr (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+        derivedTotEvaluationFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeFamilyBoundaries`（45行）。
+
+```lean
+theorem derivedTotConeFamily_boundaries :
+    (joinInl (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+      snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (Complex A))) ≫
+        derivedTotVertexFamily A ∧
+    (joinInr (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+        derivedTotEvaluationFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteTotFunctorCone`（106行）。
+
+```lean
+def rawDiscreteTotFunctorDiagram :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶
+      (ihom (nerve (CosimplicialObject (ModuleCat.{u} A)))).obj (derivedInfinityCategory A)
+
+def rawDiscreteTotFunctorCone : JoinCone (rawDiscreteTotFunctorDiagram A)
+
+theorem rawDiscreteTotFunctorCone_at (M : CosimplicialObject (ModuleCat.{u} A)) :
+    (rawDiscreteTotFunctorCone A).val ≫ evaluateFunctorAt (ComposableArrows.mk₀ M) =
+      (rawCosimplicialModuleCone A M).val
+
+theorem rawDiscreteTotFunctorCone_isLimit : IsLimitCone (rawDiscreteTotFunctorCone A)
+
+```
+
+### 159.2 検収・実測
+
+D02の四本は **`d2387aae7`**（258行）。鍵付き対象ビルド199は **8,130 jobs、終了コード0**、新規四本だけの小監査 **7（4・1・1・1）宣言、標準三公理のみ**。raw離散関手圏錐は **`61525eb4c`**（106行）。対象ビルド200は **8,136 jobs、終了コード0**、新規一本の小監査 **8宣言、標準三公理のみ**。ログ `/private/tmp/isw2-build199.log`・`200.log`、全ハンドル終了コード0を確認、鍵返却済み。整理券一枚、`--class impl --wait 3600`、対象ビルド・小監査中だけ鍵を保持。sorry・新公理0、既存宣言・⑤a・入口・公式監査・mainの変更なし。200行超のファイルなし。
+
+検証済み累計 **362モジュール・22,490行**、外枠23,000行まで **510行**。累計JSONを同じ五本で更新。
+
+### 159.3 残る離散四項の短い経路
+
+独立に選んだMごとの錐を後から自然にする方法は使わず、今回のraw全族を一つの関手圏の極限錐へcurryした。各Mで元のraw錐の全join射に戻る式と、既存 `isLimitCone_of_pointwise` による極限性が検証済み。
+
+その一つの錐に、既存 `complexOrdinaryDerivedNatTransIso` を `discreteTotalCochainNatIso.inv` に適用した全関手同型と、既存 `exists_limitCone_vertex_of_invertible` を使い、頂点を `functorVertex (nerveMap discreteCochainFunctor ≫ complexOrdinaryDerivedSource)` に厳密に固定する。これにより同じ頂点の全族とその評価錐を同時に選べる。関手圏の点ごとの極限の逆向きは既存 `isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits` を再利用し、評価した錐の極限性・頂点・全族の両境界・ホモロジー入口へ戻す。一般の頂点輸送・新しい厳密化・新しい模型圏構造を作らない。
+
+このための `DiscreteTotApexTransport` は92行の未検証草稿で累計外。mainの既存 `DerivedNatTransIso`・`LimitConeVertexTransport` の二本が冷たい依存なので、対象だけをビルド201で生成してから照合する。この段階ではD05〜D08の最終結果を主張しない。外枠の残りを追跡し、上限を超える工程が必要になったら検証済みを保存して報告する。
+
+
+## 160. 停止点2b：G10の完成（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。A01〜A12・A05a、B01〜B08、C01〜C07、D01〜D08が全て完了。停止点2aに加え、全図式射・全高次単体を持つ同じ指定Tot錐の全族、両境界、各図式での同じ全join射への厳密復元、離散入力の交代余面複体への頂点輸送と全族、整数次数への零延長を明記したホモロジー入口まで閉じた。
+
+取り込み用コードの最終点は **`39d5ccd32`**（D05・D06と頂点輸送 **`5e2448beb`**、D01・D03・D04 **`2d6662535`**、D02 **`d2387aae7`** を含む）。停止点2a後に登録する新規40本を `is-w2-stop2b-20261114-modules.json` に分けた。全G10累計は `is-w2-g10-20261114-modules.json`。入口・公式監査・mainへの取り込みは調整役に任せ、こちらでは変更していない。
+
+### 160.1 最後の四本の型
+
+共通：`A : Type u`、`[CommRing A]`。D08は既存 `HasDerivedCategory.standard` をlocal instanceとして使い、追加の仮定にしていない。一般のSSetの模型圏仮定なし。全て既存構成の自然性・単位・合成・係数移送・貼り合わせの法則と、承認済み一覧の証明分割。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteTotApexTransport`（93行）。
+
+```lean
+theorem discreteTotFunctorVertex_curry_fst {B D : SSet.{u+1}} (F : B ⟶ D) :
+    SSet.yonedaEquiv (curry (fst B (Δ[0] : SSet.{u+1}) ≫ F)) = functorVertex F
+
+theorem rawDiscreteTotFunctorCone_vertex :
+    (rawDiscreteTotFunctorCone A).vertex =
+      functorVertex (nerveMap (discreteTotalFunctor A) ≫ complexOrdinaryDerivedSource A)
+
+def discreteTotCochainDerivedIso :
+    FunctorIso (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A)
+      (nerveMap (discreteTotalFunctor A) ≫ complexOrdinaryDerivedSource A)
+
+theorem exists_discreteCochainFunctorCone :
+    ∃ c : JoinCone (rawDiscreteTotFunctorDiagram A), IsLimitCone c ∧
+      c.vertex = functorVertex (nerveMap (discreteCochainFunctor A) ≫
+        complexOrdinaryDerivedSource A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleCone`（96行）。
+
+```lean
+def discreteCochainFunctorCone : JoinCone (rawDiscreteTotFunctorDiagram A)
+
+theorem discreteCochainFunctorCone_isLimit : IsLimitCone (discreteCochainFunctorCone A)
+
+theorem discreteCochainFunctorCone_vertex :
+    (discreteCochainFunctorCone A).vertex =
+      functorVertex (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A)
+
+theorem rawDiscreteTotFunctorDiagram_at (M : CosimplicialObject (ModuleCat.{u} A)) :
+    evaluateFunctorDiagram (rawDiscreteTotFunctorDiagram A) (ComposableArrows.mk₀ M) =
+      strictCosimplicialModuleNerve A M ≫ discreteModuleSource A
+
+theorem discreteCochainFunctorCone_isPointwise :
+    IsPointwiseLimitCone (discreteCochainFunctorCone A)
+
+def cosimplicialModuleCone (M : CosimplicialObject (ModuleCat.{u} A)) :
+    JoinCone (strictCosimplicialModuleNerve A M ≫ discreteModuleSource A)
+
+theorem cosimplicialModuleCone_isLimit (M : CosimplicialObject (ModuleCat.{u} A)) :
+    IsLimitCone (cosimplicialModuleCone A M)
+
+theorem cosimplicialModuleCone_vertex (M : CosimplicialObject (ModuleCat.{u} A)) :
+    (cosimplicialModuleCone A M).vertex =
+      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((discreteCochainFunctor A).obj M))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleConeFamily`（146行）。
+
+```lean
+theorem moduleConeCurry_evaluateAt {K D : SSet.{u+1}}
+    (H : nerve (CosimplicialObject (ModuleCat.{u} A)) ⊗ K ⟶ D)
+    (M : CosimplicialObject (ModuleCat.{u} A)) :
+    curry H ≫ evaluateFunctorAt (ComposableArrows.mk₀ M) =
+      lift (SSet.const (ComposableArrows.mk₀ M) : _ ⟶
+      nerve (CosimplicialObject (ModuleCat.{u} A))) (𝟙 K) ≫ H
+
+def cosimplicialModuleConeFamily :
+    join (Δ[0] : SSet.{u+1}) ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗
+      nerve (CosimplicialObject (ModuleCat.{u} A)) ⟶ derivedInfinityCategory A
+
+def discreteTotEvaluationFamily :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⊗
+      nerve (CosimplicialObject (ModuleCat.{u} A)) ⟶ derivedInfinityCategory A
+
+theorem cosimplicialModuleConeFamily_at_lift (M : CosimplicialObject (ModuleCat.{u} A)) :
+    lift (𝟙 _) (SSet.const (ComposableArrows.mk₀ M) : _ ⟶
+      nerve (CosimplicialObject (ModuleCat.{u} A))) ≫ cosimplicialModuleConeFamily A =
+      (cosimplicialModuleCone A M).val
+
+theorem cosimplicialModuleConeFamily_at (M : CosimplicialObject (ModuleCat.{u} A)) :
+    inv (fst (join (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory))) (Δ[0] : SSet.{u+1})) ≫
+      (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex M)) ≫ cosimplicialModuleConeFamily A =
+        (cosimplicialModuleCone A M).val
+
+theorem cosimplicialModuleConeFamily_boundaries :
+    (joinInl (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ 𝟙 _) ≫
+      cosimplicialModuleConeFamily A =
+        snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (ModuleCat.{u} A))) ≫
+          nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A ∧
+    (joinInr (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ 𝟙 _) ≫
+      cosimplicialModuleConeFamily A = discreteTotEvaluationFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleConeHomology`（45行）。
+
+```lean
+def cosimplicialModuleCone_homology (M : CosimplicialObject (ModuleCat.{u} A)) (i : ℤ) :
+    derivedInfinityHomology A i (cosimplicialModuleCone A M).vertex ≃ₗ[A]
+      ((discreteCochainFunctor A).obj M).homology i
+
+```
+
+### 160.2 最終検収
+
+- 201は再利用するmainの既存二本の生成のみ：5,714 jobs、終了コード0。新規監査の数には含めない。
+- 202：交代余面全頂点への輸送、8,153 jobs、終了コード0、新規一本6宣言・標準三公理のみ。
+- 203：D05・D06および既存 `StrictHomology` の生成、10,234 jobs、終了コード0。新規一本だけの小監査10宣言・標準三公理のみ。
+- 204：D07・D08、10,236 jobs、終了コード0。**停止点2a後の自レーン新規40モジュールをまとめて小監査し208宣言、標準三公理のみ**。これは全段階IIや全366本の今回の再監査ではない。A・B・Cと前段の依存は各報告の検証済み対象ビルド・監査を引き継ぐ。
+
+ログ `/private/tmp/isw2-build201.log`〜`204.log`、最終監査 `/private/tmp/AuditISW2G10DComplete.lean`。全ハンドルの終了コード0を確認済み、鍵返却済み。各回 `--class impl --wait 3600`、整理券一枚、一回1,700秒、対象ビルド・小監査の間だけ鍵を使用。root・大きい監査は流していない。`git diff --check`成功。sorry・独自公理0、計算・再帰上限の増加なし、既存宣言・⑤a・入口・公式監査・mainの変更なし。今回200行超のファイルなし。未検証のG10草稿を残さない。
+
+最終実測 **366モジュール・22,870行**。外枠23,000行内（残り **130行**）。
+
+### 160.3 §37.2・§72.2の四まとまり：見込みと実測の差
+
+実測は各まとまりを完了した報告の累計間の増分で、共通の前提計算・証明分割・docstring/importを含む。Aは両見積もりの時点で既に途中まであったので、同じ時点からA完了までを比較した。B〜DはそれぞれA・B・C完了時点からの増分。B4の配置・名前空間追従を含む最終ソースの数え直しは上記累計JSON。
+
+| まとまり | §37.2見込み | §72.2見込み | 完了実測と差 |
+| --- | ---: | ---: | --- |
+| A：正規化テンソル／積重み | 1,000〜1,600 | 400〜700 | §37の5,786→A完了12,781：6,995（+5,395〜+5,995）。§72の8,834→12,781：3,947（+3,247〜+3,547） |
+| B：指定豊穣Hom・native極限性 | 600〜900 | 600〜900 | 12,781→18,226：5,445（+4,545〜+4,845） |
+| C：標準脚・D(A)輸送 | 400〜700 | 400〜700 | 18,226→19,553：1,327（+627〜+927） |
+| D：全図式射・指定全錐族・離散入口 | 500〜900 | 500〜900 | 19,553→22,870：3,317（+2,417〜+2,817） |
+
+主な超過は抽象的な同値から自動では出ない、元のAW/Γ/Moore/豊穣合成の同じ射の照合と、全パラメータの厳密HA写像・元の全joinセルの復元。D後半の離散部分は、既存の関手圏の点ごとの極限判定と全自然同型に沿う頂点輸送を使い、全族を作り直す増分を抑えた。型・範囲を削る短縮はしていない。
+
+### 160.4 そのまま3b-4へ
+
+IS-W2 §18・更新後の/goalに従い、ここで承認待ちにせず、承認済み§152のR01〜R12（外枠15,000行）のTot側から進む。TotのR01〜R05・R11/R12のTot部分が停止点3b-4a、実現のR06〜R10が停止点3b-4b。その後に任意coherent BE図式の段0を報告して止まる。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aを変えず、無条件の `cAlgForgetDerived_mapJoinCone_isLimit` を使う。点つきKan Totは作らない。3b-4の実測はG10とは別に数える。
