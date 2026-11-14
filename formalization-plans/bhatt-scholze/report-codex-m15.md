@@ -1388,3 +1388,321 @@ instance moduleTotalInfinity_quasicategory : Quasicategory (moduleTotalInfinity 
 
 def moduleTotalProjection : moduleTotalInfinity A ⟶ CAlg_R A
 ```
+
+## 7. M10 の固定底の fiber と全圏への包含（11-14、着手前）
+
+main の `b2d198488` までの文書を取り込んだ。B4 の実行指示はまだない。
+M10 の既存構成の分割として、同じ固定底の加群圏の包含と、通常の fiber の比較を作る。
+Mathlib の同じ擬関手の Grothendieck 構成が持つ包含・Cartesian lift・fiber 同値を再利用する。
+native な局所化後の fiber 同値や cocartesian 性を、この通常圏の結果で代用しない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+```lean
+-- A : Type u; [CommRing A]; X Y : (operad A).Algebra; f : X ⟶ Y
+def strictRawModuleFiberInclusion (X : (operad A).Algebra) :
+  strictRawModuleCategory A X ⥤ strictRawModuleTotal A
+
+lemma strictRawModuleFiberInclusion_projection (X : (operad A).Algebra) :
+  strictRawModuleFiberInclusion A X ⋙ strictRawModuleProjection A =
+    (Functor.const (strictRawModuleCategory A X)).obj X
+
+lemma strictRawModuleFiberInclusion_forget (X : (operad A).Algebra) :
+  strictRawModuleFiberInclusion A X ⋙ strictRawModuleTotalForget A = strictRawModuleUnderlying X
+
+def strictRawModuleFiberEquivalence (X : (operad A).Algebra) :
+  strictRawModuleCategory A X ≌ Functor.Fiber (strictRawModuleProjection A) X
+
+def strictRawModuleFiberInclusionRelative (X : (operad A).Algebra) :
+  strictRawModuleRelativeCategory A X ⟶ strictRawModuleTotalRelative A
+
+def strictRawModuleFiberBaseRelative (X : (operad A).Algebra) :
+  strictRawModuleRelativeCategory A X ⟶ algebraRelativeCategory A
+
+lemma strictRawModuleFiberInclusionRelative_projection (X : (operad A).Algebra) :
+  strictRawModuleFiberInclusionRelative A X ≫ strictRawModuleTotalProjectionRelative A =
+    strictRawModuleFiberBaseRelative A X
+
+def moduleRawFiberInclusion (X : (operad A).Algebra) :
+  localizationNerve (strictRawModuleRelativeCategory A X) ⟶ moduleTotalInfinity A
+-- 同じ相対関手の全単体での射影可換式も構成する。
+```
+
+単位比較の逆成分が同じ台で恒等になる §6 の法則を使い、包含と台の忘却を
+厳密な関手等式で接続する。相対包含の準同型保存はこの等式から供給する。
+
+### 7.1 同じ通常の Cartesian lift の相対性（着手前）
+
+続いて M10 の既存の Grothendieck 構成の Cartesian lift の法則を使う。
+元の制限が同じ台を保つため、その標準 lift の台は恒等射であり、底の射が弱同値なら
+標準 lift は全圏の指定準同型となる。これは局所化後の底の弱同値の反転に使う法則。
+
+```lean
+instance strictRawModuleProjection_isFibered : IsFibered (strictRawModuleProjection A)
+
+def strictRawModuleCartesianLift (f : X ⟶ Y) (M : strictRawModuleCategory A Y) :
+  (strictRawModuleFiberInclusion A X).obj ((strictRawModuleRestrict f).obj M) ⟶
+    (strictRawModuleFiberInclusion A Y).obj M
+
+lemma strictRawModuleCartesianLift_isStronglyCartesian (f : X ⟶ Y)
+  (M : strictRawModuleCategory A Y) :
+  IsStronglyCartesian (strictRawModuleProjection A) f (strictRawModuleCartesianLift A f M)
+
+lemma strictRawModuleCartesianLift_underlying (f : X ⟶ Y)
+  (M : strictRawModuleCategory A Y) :
+  (strictRawModuleTotalForget A).map (strictRawModuleCartesianLift A f M) =
+    𝟙 ((strictRawModuleUnderlying Y).obj M)
+
+lemma strictRawModuleCartesianLift_weak (f : X ⟶ Y) (hf : QuasiIso f.hom)
+  (M : strictRawModuleCategory A Y) :
+  (strictRawModuleTotalRelative A).weakEquivalences
+    (ULiftHom.up.map (strictRawModuleCartesianLift A f M))
+```
+
+これは通常の Cartesian 性の法則で、native な cocartesian 性は依然別に証明する。
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 7.2 同じ正則加群の section（着手前）
+
+M05・M10 の同じ正則加群を全圏へ載せる分割として、既存の
+`representableRestrictionMap` により通常の section を構成する。
+この射の同じ台は元の BE 代数射そのものなので、section は準同型を保つ。
+
+```lean
+-- A : Type u; [CommRing A]
+def strictRawRegularObject (X : (operad A).Algebra) : strictRawModuleTotal A
+
+def strictRawRegularMap (f : X ⟶ Y) : strictRawRegularObject A X ⟶ strictRawRegularObject A Y
+
+lemma strictRawRegularMap_underlying (f : X ⟶ Y) :
+  (strictRawModuleTotalForget A).map (strictRawRegularMap A f) = f.hom
+
+def strictRawModuleUnitSection : (operad A).Algebra ⥤ strictRawModuleTotal A
+
+lemma strictRawModuleUnitSection_projection :
+  strictRawModuleUnitSection A ⋙ strictRawModuleProjection A = 𝟭 (operad A).Algebra
+
+def strictRawModuleUnitSectionRelative : algebraRelativeCategory A ⟶ strictRawModuleTotalRelative A
+
+lemma strictRawModuleUnitSectionRelative_projection :
+  strictRawModuleUnitSectionRelative A ≫ strictRawModuleTotalProjectionRelative A = 𝟙 (algebraRelativeCategory A)
+
+def moduleUnitSection : CAlg_R A ⟶ moduleTotalInfinity A
+-- 同じ section の局所化射影との全単体での合成式も検証する。
+```
+
+正則加群の台・恒等・合成の法則と全圏の射の外延性を、この同じ構成の法則として
+記録する。局所化後の fiber 同値が完成するまで、既存の半自由模型の単位との
+全比較が終わったとは数えない。
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 7.3 同じ相対局所化の係数移送の法則（着手前）
+
+M10 で同じ全代数模型と cofibrant 模型を移すため、既存の自由 hammock の
+augmentation・比較の係数自然性から、同じ局所化 Hom 射の弱同値性へ移す法則を使う。
+これは既存の相対局所化関手の係数移送であり、新しいモデル構造は構成しない。
+
+```lean
+-- C D : RelativeCategory.{u}; F : C ⟶ D
+lemma localizationHomMap_weak_of_hammock (X Y : C.category)
+  (h : IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+  IsWeakHomotopyEquivalence (localizationHomMap F X Y)
+
+lemma localizationNerveMap_fullyFaithful_of_hammock
+  (h : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+  IsFullyFaithful (localizationNerveMap F)
+
+-- G : D ⟶ C; ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category
+lemma localizationNerveMap_essentiallySurjective_of_counit
+  (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
+  IsEssentiallySurjective (localizationNerveMap F)
+
+lemma localizationNerveMap_isQCatEquivalence_of_hammock_counit
+  (h : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y))
+  (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
+  IsQCatEquivalence (localizationNerveMap F)
+```
+
+両合成から恒等への元の弱自然変換がある場合の既存の hammock 判定を、この同じ
+全 nerve へ移す系も記録する。元の全関手・Hom 射を保持する係数移送であり、
+対象ごとの比較や h 上の同値には弱めない。
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 7.4 同じ BE 底の模型の係数移送への適用（着手前）
+
+前節の既存局所化の法則を、⑤a の元の二つの相対関手と指定弱比較に適用する。
+⑤a のソースは変更しない。
+
+```lean
+lemma cAlgToAlgebraLocalization_isQCatEquivalence :
+  IsQCatEquivalence (localizationNerveMap (cofibrantToAlgebraDKRelative A))
+lemma algebraLocalizationToCAlg_isQCatEquivalence :
+  IsQCatEquivalence (localizationNerveMap (algebraToCofibrantDKRelative A))
+lemma moduleUnitSection_projection_isQCatEquivalence :
+  IsQCatEquivalence (moduleUnitSection A ≫ moduleTotalProjection A)
+```
+
+二つの関手が同値であることだけでは、指定弱自然変換の全関手圏での回収や、
+正則加群の実関手が指定された恒等底上の section となる全比較は完成しない。
+その比較と native fiber・cocartesian 性は引き続き必要。
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 7.5 検証済みの結果と実際の型（2026-11-14）
+
+§7〜§7.4 の五ファイルを対象ビルドで検証した。今回追加は 491 行・33 宣言、
+累計は新規 Lean 26 ファイル・2,479 行・141 宣言（private 3 を含む）。
+IS-W2 §14 と同じソース全行で数え、200 行を超える補題はない。
+外枠 17,000 行、約 8,500 行での途中報告の規約を維持する。
+
+全て `scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- ...` の下で実行し、
+五ファイルの対象ビルドと今回の公開 33 宣言の小さい公理監査が通過した。
+監査の実出力は 33 件あり、依存公理は `propext`・`Classical.choice`・`Quot.sound`
+のみ。`sorryAx`・追加公理はない。大きい監査は実施していない。
+通常の fiber 同値と Cartesian lift、正則加群の実関手、
+同じ二つの BE 底の局所化関手自身の準圏同値性までを得た。
+指定弱自然変換の全関手圏での回収、半自由の native fiber との比較と
+native cocartesian 性は依然未完了なので、M10 は完了に数えない。
+
+既存の構成の係数移送・射影・自然性・合成則の分割として、今回の実際の宣言の型を
+以下に記録する。共通文脈は各ソースの `universe u`、`A : Type u`、`[CommRing A]`、
+および明記した名前空間・変数である。新しい一次 ID は追加しない。
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean`（121 行・9 宣言）：
+
+```lean
+def strictRawModuleFiberInclusion (X : (operad A).Algebra) :
+    strictRawModuleCategory A X ⥤ strictRawModuleTotal A
+
+lemma strictRawModuleFiberInclusion_projection (X : (operad A).Algebra) :
+    strictRawModuleFiberInclusion A X ⋙ strictRawModuleProjection A =
+      (Functor.const (strictRawModuleCategory A X)).obj X
+
+lemma strictRawModuleFiberInclusion_forget (X : (operad A).Algebra) :
+    strictRawModuleFiberInclusion A X ⋙ strictRawModuleTotalForget A = strictRawModuleUnderlying X
+
+def strictRawModuleFiberEquivalence (X : (operad A).Algebra) :
+    strictRawModuleCategory A X ≌ Functor.Fiber (strictRawModuleProjection A) X
+
+def strictRawModuleFiberInclusionRelative (X : (operad A).Algebra) :
+    strictRawModuleRelativeCategory A X ⟶ strictRawModuleTotalRelative A
+
+def strictRawModuleFiberBaseRelative (X : (operad A).Algebra) :
+    strictRawModuleRelativeCategory A X ⟶ algebraRelativeCategory A
+
+lemma strictRawModuleFiberInclusionRelative_projection (X : (operad A).Algebra) :
+    strictRawModuleFiberInclusionRelative A X ≫ strictRawModuleTotalProjectionRelative A =
+      strictRawModuleFiberBaseRelative A X
+
+def moduleRawFiberInclusion (X : (operad A).Algebra) :
+    localizationNerve (strictRawModuleRelativeCategory A X) ⟶ moduleTotalInfinity A
+
+lemma moduleRawFiberInclusion_projection (X : (operad A).Algebra) :
+    moduleRawFiberInclusion A X ≫ moduleTotalProjection A =
+      localizationNerveMap (strictRawModuleFiberBaseRelative A X ≫ algebraToCofibrantDKRelative A)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean`（78 行・5 宣言）：
+
+```lean
+instance strictRawModuleProjection_isFibered : IsFibered (strictRawModuleProjection A)
+
+def strictRawModuleCartesianLift {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    (strictRawModuleFiberInclusion A X).obj ((strictRawModuleRestrict f).obj M) ⟶
+      (strictRawModuleFiberInclusion A Y).obj M
+
+lemma strictRawModuleCartesianLift_isStronglyCartesian {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    IsStronglyCartesian (strictRawModuleProjection A) f (strictRawModuleCartesianLift A f M)
+
+lemma strictRawModuleCartesianLift_underlying {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    (strictRawModuleTotalForget A).map (strictRawModuleCartesianLift A f M) =
+      𝟙 ((strictRawModuleUnderlying Y).obj M)
+
+lemma strictRawModuleCartesianLift_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
+    (strictRawModuleTotalRelative A).weakEquivalences
+      ((ULiftHom.up.{u,u+1,u+1} (C
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean`（137 行・11 宣言）：
+
+```lean
+-- M T : strictRawModuleTotal A; f g : M ⟶ T（hom_ext の暗黙引数）
+lemma strictRawModuleTotal_hom_ext {M T : strictRawModuleTotal A} {f g : M ⟶ T}
+    (hb : (strictRawModuleProjection A).map f = (strictRawModuleProjection A).map g)
+    (hv : (strictRawModuleTotalForget A).map f = (strictRawModuleTotalForget A).map g) : f = g
+
+def strictRawRegularObject (X : (operad A).Algebra) : strictRawModuleTotal A
+
+lemma strictRawRegularObject_underlying (X : (operad A).Algebra) :
+    (strictRawModuleTotalForget A).obj (strictRawRegularObject A X) = X.carrier
+
+def strictRawRegularMap {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictRawRegularObject A X ⟶ strictRawRegularObject A Y
+
+lemma strictRawRegularMap_underlying {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    (strictRawModuleTotalForget A).map (strictRawRegularMap A f) = f.hom
+
+def strictRawModuleUnitSection : (operad A).Algebra ⥤ strictRawModuleTotal A
+
+lemma strictRawModuleUnitSection_projection :
+    strictRawModuleUnitSection A ⋙ strictRawModuleProjection A = 𝟭 (operad A).Algebra
+
+def strictRawModuleUnitSectionRelative : algebraRelativeCategory A ⟶ strictRawModuleTotalRelative A
+
+lemma strictRawModuleUnitSectionRelative_projection :
+    strictRawModuleUnitSectionRelative A ≫ strictRawModuleTotalProjectionRelative A =
+      𝟙 (algebraRelativeCategory A)
+
+def moduleUnitSection : CAlg_R A ⟶ moduleTotalInfinity A
+
+lemma moduleUnitSection_projection :
+    moduleUnitSection A ≫ moduleTotalProjection A =
+      localizationNerveMap (cofibrantToAlgebraDKRelative A ≫ algebraToCofibrantDKRelative A)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraModelComparison.lean`（53 行・3 宣言）：
+
+```lean
+lemma cAlgToAlgebraLocalization_isQCatEquivalence :
+    IsQCatEquivalence (localizationNerveMap (cofibrantToAlgebraDKRelative A))
+
+lemma algebraLocalizationToCAlg_isQCatEquivalence :
+    IsQCatEquivalence (localizationNerveMap (algebraToCofibrantDKRelative A))
+
+lemma moduleUnitSection_projection_isQCatEquivalence :
+    IsQCatEquivalence (moduleUnitSection A ≫ moduleTotalProjection A)
+```
+
+`SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean`（102 行・5 宣言）：
+
+```lean
+variable {C D : RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ C)
+lemma localizationHomMap_weak_of_hammock (X Y : C.category)
+    (h : IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+    IsWeakHomotopyEquivalence (localizationHomMap F X Y)
+
+lemma localizationNerveMap_fullyFaithful_of_hammock
+    (h : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+    IsFullyFaithful (localizationNerveMap F)
+
+lemma localizationNerveMap_essentiallySurjective_of_counit
+    (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category)
+    (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
+    IsEssentiallySurjective (localizationNerveMap F)
+
+lemma localizationNerveMap_isQCatEquivalence_of_hammock_counit
+    (h : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y))
+    (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category)
+    (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
+    IsQCatEquivalence (localizationNerveMap F)
+
+lemma localizationNerveMap_isQCatEquivalence_of_weak_comparisons
+    (η : F.functor ⋙ G.functor ⟶ 𝟭 C.category) (hη : ∀ X, C.weakEquivalences (η.app X))
+    (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category) (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
+    IsQCatEquivalence (localizationNerveMap F)
+```
+
+**一覧：済み 9／全体 42（うち追加 0）**。
