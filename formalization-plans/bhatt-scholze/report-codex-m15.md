@@ -2736,3 +2736,256 @@ M11 以降の相対テンソル・RHom・完備反射・完備テンソルと G1
 M10 を完了とは数えず、元の全目標を維持して続ける。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 18. M10 の固定底の通常加群から指定半自由模型への源（11-14、着手）
+
+前の goal ターンは、全弱自然変換の指定成分までの kernel 照合を通し、
+`621a7b739`・`f9da36f0d` に検証済みの実装と監査をコミットした進捗。
+今回は通常の閉零加群圏の DK 局所化と、半自由加群の dg nerve の間の fiber 比較を進める。
+既存の `DGModuleResolutionLocalization.dgModuleResolution_isLocalization` は、
+全 dg 加群の **dg nerve** から半自由模型への局所化を与える。
+元の通常の閉零圏の nerve からの普遍性とは源が異なり、同じ主張として流用しない。
+BE の `CAlgLocalizationUniversal.cAlgLocalizationSource_isLocalization` は既にある。
+いずれも他レーンのファイルは読んで import するだけで変更しない。
+
+まず同じ通常の閉零加群の全 nerve を元の dg nerve へ送り、同じ指定半自由分解を適用する。
+元の擬同型の反転と本質的全射性を照合し、次に制限に関する全関手間の比較へつなぐ。
+Hom の ULift を戻す際には通常の `nerveMap` の同一 Hom 宇宙の制約を避け、
+元の列の Hom を戻して同じ閉零 dg 単体にする。
+これは M10/C02 の既存構成の源・係数移送・指定辺と分解比較の証明の分割で、一次 ID は追加しない。
+通常 nerve からの局所化普遍性と、全圏の fiber の同定は引き続き必要。
+
+`RawModuleDerivedSource.lean` の今回の型。文脈は `A : Type u`、`[CommRing A]`。
+
+```lean
+def strictRawModuleDGSource (X : (operad A).Algebra) :
+    nerve (strictRawModuleRelativeCategory A X).category ⟶
+      dgModuleNerve A (dgAlgebraCategory A ((assocForget A).obj X))
+
+def strictRawModuleSource (X : (operad A).Algebra) :
+    nerve (strictRawModuleRelativeCategory A X).category ⟶ strictModuleInfinity A X
+
+lemma strictRawModuleDGSource_vertex (X : (operad A).Algebra)
+    (M : (strictRawModuleRelativeCategory A X).category) :
+    (strictRawModuleDGSource A X).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ M) =
+      Simplex.vertex (A := A) (ForgetEnrichment.to (Complex A)
+        ((ULiftHom.down.{u,u+1,u+1} (C := strictRawModuleCategory A X)).obj M))
+
+lemma strictRawModuleDGSource_edge (X : (operad A).Algebra)
+    {M N : (strictRawModuleRelativeCategory A X).category} (f : M ⟶ N) :
+    (strictRawModuleDGSource A X).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f) =
+      (dgClosedEdge A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) f.down).edge
+
+lemma strictRawModuleSource_vertex (X : (operad A).Algebra)
+    (M : (strictRawModuleRelativeCategory A X).category) :
+    (strictRawModuleSource A X).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ M) =
+      (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X))).app (Opposite.op ⦋0⦌)
+        (Simplex.vertex (A := A) (ForgetEnrichment.to (Complex A)
+          ((ULiftHom.down.{u,u+1,u+1} (C := strictRawModuleCategory A X)).obj M)))
+
+lemma strictRawModuleSource_inverts (X : (operad A).Algebra) :
+    InvertsEdges (strictRawModuleSource A X) (weakNerveEdges (strictRawModuleRelativeCategory A X))
+
+lemma strictRawModuleSource_essentiallySurjective (X : (operad A).Algebra) :
+    IsEssentiallySurjective (strictRawModuleSource A X)
+```
+
+文献は閉零 nerve の包含が HA Construction 1.3.1.9、
+指定半自由分解への反転・本質的全射性は HA Proposition 1.3.5.13 の同じ dg 加群模型の成分。
+同じ通常の源を局所化とする普遍性はこの属性では主張しない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 18.1 同じ通常の源と制限・台・単位の全比較の型
+
+`RawModuleSourceRestriction.lean` の文脈は `A : Type u`、`[CommRing A]`。
+全 dg 加群の分解の前後の制限を、元の擬同型保存と同じ入力前合成則で比較し、
+元の通常の源の全単体自然性と貼り合わせる。
+既存の `strictModuleResolvedUnderlyingIso` を同じ源で前合成し、正則加群の値も
+同じ頂点の式で指定単位へ等置する。いずれも M10/C02 の元の構成の法則の分割。
+
+```lean
+lemma strictRawModuleDGSource_restrict {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    nerveMap (strictRawModuleRestrictRelative f).functor ≫ strictRawModuleDGSource A X =
+      strictRawModuleDGSource A Y ≫
+        N (dgModuleRestriction A (dgAlgebraCategory A ((assocForget A).obj X))
+          (dgAlgebraCategory A ((assocForget A).obj Y)) (dgAlgebraMap A ((assocForget A).map f)).op)
+
+def strictRawResolvedRestrictionIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    FunctorIso
+      (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj Y)) ≫ strictModuleRestrict f)
+      (N (dgModuleRestriction A (dgAlgebraCategory A ((assocForget A).obj X))
+        (dgAlgebraCategory A ((assocForget A).obj Y)) (dgAlgebraMap A ((assocForget A).map f)).op) ≫
+        moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)))
+
+def strictRawModuleSource_restrictIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    FunctorIso
+      (nerveMap (strictRawModuleRestrictRelative f).functor ≫ strictRawModuleSource A X)
+      (strictRawModuleSource A Y ≫ strictModuleRestrict f)
+
+def strictRawModuleSource_underlyingIso (X : (operad A).Algebra) :
+    FunctorIso (strictRawModuleSource A X ≫ strictModuleUnderlying A X)
+      (strictRawModuleDGSource A X ≫
+        N (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
+          (Opposite.op DGAlgebraPoint.star)) ≫
+        dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
+          (DiagramComparison.semifreePointEquivalence A).hom)
+
+lemma strictRawModuleSource_regular (X : (operad A).Algebra) :
+    (strictRawModuleSource A X).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ ((ULiftHom.up.{u,u+1,u+1}
+        (C := strictRawModuleCategory A X)).obj (strictRawRegularObject A X).fiber)) =
+      strictModuleUnit A X
+```
+
+上の自然性は全ての厳密 BE 代数射 `f` に対する、同じ実関手間の主張。
+一般の native CAlg の辺上の transport の構成や fiber 比較の普遍性は、これから必要。
+他レーンのファイルや `EInfinity/Interface/` は変更していない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+## 19. M10/C02 の次の経路：通常 dg 加群の projective モデル構造（N01、追加案）
+
+### 19.1 現在の入力と差
+
+§18 の源は通常の閉零加群の全 nerve から指定半自由模型へ送るが、反転と
+本質的全射性だけでは局所化普遍性にはならない。
+`DGModuleResolutionLocalization.dgModuleResolution_isLocalization` の源は dg nerve。
+通常 nerve と dg nerve の間の比較を、同じ定理の代入だけで埋めることはできない。
+リポジトリの `ModelCategory` を持つ定義と `RightModule`・`ModuleCategory` 等が共存する
+ファイルを調べたが、現在の `strictRawModuleCategory A X` のモデル構造は見つからなかった。
+これは不在の形式的証明ではなく、この経路の既存入力を探した結果。
+
+採る経路の案は、同じ通常加群圏に projective モデル構造を実際に構成し、
+既存の `SimplicialLocalization/ModelBifibrantLocalization`・`ModelHammockLocalization` の
+全圏・bifibrant 比較と全標的の局所化普遍性を再利用するもの。
+元の弱同値類と半自由模型を同じものに照合する。
+新しい `[ModelCategory SSet]` や未証明の加群モデル構造を入力に加える案ではない。
+
+### 19.2 N01 の型と仕様（未実装・採否の確認用）
+
+新しい一次項目の追加案 **N01** は、同じ BE 固定底の通常加群圏のモデル構造を返す構成。
+文脈は `A : Type u`、`[CommRing A]`、`X : (operad A).Algebra`。
+
+```lean
+def strictRawModuleModelCategory (X : (operad A).Algebra) :
+    HomotopicalAlgebra.ModelCategory (strictRawModuleCategory A X)
+
+lemma strictRawModuleModelCategory_weakEquivalences (X : (operad A).Algebra) :
+    @HomotopicalAlgebra.weakEquivalences (strictRawModuleCategory A X) _
+      (strictRawModuleModelCategory A X).categoryWithWeakEquivalences =
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+
+lemma strictRawModuleModelCategory_fibrations (X : (operad A).Algebra) :
+    @HomotopicalAlgebra.fibrations (strictRawModuleCategory A X) _
+      (strictRawModuleModelCategory A X).categoryWithFibrations =
+    (projectiveFibrations A).inverseImage (strictRawModuleUnderlying X)
+
+lemma strictRawModuleModelCategory_allFibrant (X : (operad A).Algebra)
+    (M : strictRawModuleCategory A X) :
+    letI := strictRawModuleModelCategory A X
+    HomotopicalAlgebra.IsFibrant M
+
+lemma strictRawModuleModelCategory_semifreeCofibrant (X : (operad A).Algebra)
+    (P : SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X))) :
+    letI := strictRawModuleModelCategory A X
+    HomotopicalAlgebra.IsCofibrant (ForgetEnrichment.of (Complex A) P.val)
+```
+
+モデル構造の弱同値・fibration・元の半自由対象の条件までを仕様に含める。
+大域 instance にはせず、必要な比較で局所的に選ぶ。
+X の carrier の平坦性・cofibrancy は追加仮定にしない。
+この仕様は型の案で、Lean での検証済み宣言ではない。
+
+その後の M10/C02 内の比較の目標は、既存の型のまま次を閉じること。
+
+```lean
+lemma strictRawModuleSource_isLocalization (X : (operad A).Algebra) :
+    IsLocalization (strictRawModuleSource A X)
+      (weakNerveEdges (strictRawModuleRelativeCategory A X))
+```
+
+N01 の存在だけでこの局所化や全族の fiber 同定が従うとは数えない。
+実 frame Hom と同じ dg Hom の比較、指定源の同じ全関手比較を実装し、
+その後に全族の fiber と一般の底の辺の lift・transport を証明する。
+
+### 19.3 再利用・見込み・文献
+
+既存の `moduleEvaluation`・`freeEvaluationAdjunction`（`Module/TensorFree.lean`）、
+`Module/ActionLimits.lean` の加群の極限・余極限、
+`Module/ShiftResolution.lean` の実半自由 filtration と解像度、
+`ProjectiveModel` と `ModelGeneration.rightTransfer` を再利用する。
+新たに必要になるのは、同じ自由加群で移した生成 I/J の小対象性、
+自由な J-cell の擬同型性、モデル構造の選択とクラスの照合、半自由対象の cofibrancy。
+
+N01 単体の暫定見込みは **1,000〜2,200 行**。
+小対象性・自由な J-cell の部分を実測して再評価する。M10 の比較の残りや
+M11 以降をこの見込みに入れて完成見込みとすることはしない。
+M15 の外枠 **17,000 行は据え置く**。N01 の採否が決まるまで実装は始めない。
+
+文献は [Keller, On differential graded categories, Theorem 3.2 (1)](https://webusers.imj-prg.fr/~bernhard.keller/publ/dgcat.pdf) の projective 構造。
+HA Proposition 4.3.3.15 も W/F の転送を述べるが、一般のモノイダル模型では
+作用する代数の cofibrancy を仮定する。その仮定を今回の任意 X へ黙って追加しない。
+[HA 原典 §4.3.3](https://www.math.ias.edu/~lurie/papers/HA.pdf) を確認した。
+
+### 19.4 止める規則との関係
+
+`lane-goals-2026-11-14.md` 共通規則の
+「**止まって報告するのは、新しい構成・新しい定理（既存の構成の法則でないもの）**」
+に照らし、通常加群圏の ModelCategory を返す構成は、元の M01〜M42 に型のない
+新しい構成と判断した。この判断は当レーンの解釈であり、M10/C02 の単なる証明分割
+として追加承認を不要とする指示があればそれに従う。
+N01 を採用する場合だけ一次 ID の追加として数える案で、現在の一覧にはまだ追加しない。
+§18 の承認範囲内の実装・検証は完了まで進める。
+その後は N01 の採否を確認し、待つ間は指示どおり drafts/A5 の受け渡しを紙で照合する。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+
+### 19.5 N01 の追加承認と着手（11-14、調整役）
+
+N01 は調整役の返答で追加承認された。§19.2 の仕様のまま、モデル構造を実際に
+構成し、元の擬同型・次数別全射・半自由対象の cofibrancy と照合する。
+ModelCategory を引数の instance として仮定しない。外枠は 17,000 行のまま。
+先に既存の `HomotopicalAlgebra/Diagram/Projective.modelCategory` と
+`BarrattEccles.Diagram.projectiveModelCategory`、一般の転送の構成を確認する。
+N01 は未完で、一次一覧は M01〜M42 と N01 の計 43 項目となった。
+
+**一覧：済み 9／全体 43（うち追加 1）**。
+
+
+## 20. §18 の検証完了と N01 の既存部品の確認（11-14）
+
+§18 の `RawModuleDerivedSource`（168 行・7 宣言）と
+`RawModuleSourceRestriction`（137 行・5 宣言）の二つの通常対象ビルドは成功。
+新規公開 12 宣言の小さい依存公理監査は、12 件の実出力を宣言名と機械照合して成功した。
+依存公理は `propext`・`Classical.choice`・`Quot.sound` の範囲内。
+12 宣言の HA 文献属性も、各一件・component・指定番号を環境から照合して成功。
+共有 impl 鍵、各組 280 秒上限。200 行を超える補題はない。
+検証済み累計は **44 ファイル・4,279 行・226 宣言（private 3 を含む）**。
+通常 nerve からの局所化普遍性や M10 全体の完成とは数えない。
+
+§18 の型の転記に、名前付き引数の `:=` を宣言本体の区切りと誤認して途中で
+切れた箇所があった。括弧の深さを追って区切る方法に直し、同節の全 12 型を
+実ソースから完全な形で転記し直した。
+
+N01 について、指定された既存の二つの構成を先に読んだ。
+`HomotopicalAlgebra/Diagram/Projective.modelCategory` は通常の `K ⥤ C` を対象とし、
+基礎モデルと locally presentable 性を入力に持つ。
+`BarrattEccles.Diagram.projectiveModelCategory` は `K ⥤ (operad A).Algebra` を対象とし、
+実自由評価族と証明済みの cell 非輪状性を一般転送に渡している。
+今回の元の dg 加群圏はそのいずれの通常関手圏でもないので、直接の代入にはしない。
+代わりに同じ設計の既存 `ModelGeneration.rightTransfer` を再利用する。
+`EInfinity/DGAlgebra/ModelCategory` と `SmallObject` の使い方も確認した。
+
+さらに既存 `DGModuleDiskCoverAcyclic` に、任意 dg 底の実 disk 被覆の非輪状性と、
+非輪状直和項からの射影の擬同型性がある。自由 disk 被覆の全次数全射性も既存。
+これらをそのまま import し、全射の左類の射 f を
+`M → M ⊕ diskCover(N)` の retract として非輪状性を証明する経路にした。
+新しい path object や底 X の cofibrancy 仮定を必要としない。
+自由 I/J の実小対象性とこの非輪状性の実装は、次の対象ビルドで検証中。
+他レーンの既存ファイルは変更していない。
+
+N01 は着手したが未完。追加した一次 ID は N01 一件だけ。
+
+**一覧：済み 9／全体 43（うち追加 1）**。
