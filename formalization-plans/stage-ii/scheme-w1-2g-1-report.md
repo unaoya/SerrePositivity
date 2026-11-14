@@ -2288,3 +2288,16 @@ B02 の固有性と全射性を同じ係数段へそろえる接続（着手前�
 G1・G2共用部品込み本体13,544行、入口込み13,773行。一般の Noether 係数環上の固有模型は供給済み。B01 の F_p への明示的な係数移送は下書きで検証中のため、台帳はこの時点で13／17を維持する。B02〜B04 の同じ段の全射性・細分の有限図式・被覆模型・filtered 整合性は残る。
 
 一覧：済み13／全体17（うち追加8）。
+
+
+## B01 完了：一般の固有・局所有限表示射の有限型 F_p 上の模型
+
+`PrimeFieldProperCoefficientModel`（30行）：`exists_primeField_proper_coefficient_model` は素数 p と任意の F_p-代数 R、一般の固有・局所有限表示の f:X→Spec R から、有限生成 F_p-部分代数 A⊆R、`Algebra.FiniteType (ZMod p) A`、実際の固有・局所有限表示の p₀:Y→Spec A と Cartesian 正方形を供給する。元の R の Noether 性・射影性・ブローアップ構造を要求しない。
+
+本体30行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,017ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-prime-field-proper-coefficient-model-check.log`・`2g-prime-field-proper-coefficient-model-native.log`・`2g-prime-field-proper-coefficient-model-audit.log`。
+
+B01 の元の有限表示対象の模型・分離性の降下・C06・固有性の降下・一般の係数模型と F_p の特殊化をつなぎ、台帳に記録した実際の固有模型の出口を閉じた。最終の模型は元の X を実際の pullback として保持し、単なる射の因子化を模型の代わりにしていない。B02 の全射性と細分の図式は別に残る。
+
+今回の区切り（9010ce12e の後）は4モジュール、本体270行＋入口4行、小監査合計13宣言・標準三公理のみ。G1・G2共用部品込み本体13,574行、入口込み13,804行。B02〜B04 は未完、停止点 2g-1 ではない。全射性を同じ係数段へそろえる接続は引き続き検証する。
+
+一覧：済み14／全体17（うち追加8）。
