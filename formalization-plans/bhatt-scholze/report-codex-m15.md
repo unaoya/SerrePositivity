@@ -3899,3 +3899,200 @@ propext・Classical.choice・Quot.sound のみ。指定の impl 鍵で、一回 
 と全族の完成は残る。M11 以降と G12 の目標も維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 33. M10 の同じ半自由 source frame と全標的 Hom（11-14）
+
+前の goal ターンは §28–§32 の単位則・全単体 coaugmentation と半自由 Hom の
+Quillen 条件を対象ビルドと小さい監査まで通した進捗。
+今回、§32.1 で確認した既存の転置・逆転置の両逆を実随伴に束ねた。
+標的への自然性は元の主 Hom end の評価ごとに Hom 後合成の式から証明した。
+
+同じ `SSet.stdSimplex ⋙ BarrattEccles.normalizedFunctor A` を既存の
+`tensorModuleFunctor` で送り、元の全加群射に自然な source frame の全族を作る。
+元の AW 余単位と既存の左単位同型から、元の加群への全自然 augmentation を保持する。
+
+BE 固定底では N01 の実モデルと同じ Hom の右 Quillen 条件を使い、係数テンソルの
+左 Quillen 条件を得る。既存の `normalizedSimplex_reedyCofibrant` と
+`leftQuillen_frame_reedyCofibrant` を使い、Reedy 条件を作り直さない。
+同じ AW 余単位の実鎖収縮と Brown の補題により、全作用素の弱同値性と指定 augmentation
+の弱同値性を照合する。実モデルの全対象の fibrancy から、元の任意の標的への同じ
+cosimplicial Hom の Kan 性を得る。
+
+いずれも既存の tensor/Hom の随伴・自然性・単位/余単位の貼り合わせの法則と、
+M10 の証明の分割であり、一次 ID は追加しない。半自由であるのは始域の probe P。
+標的 N は元の任意の通常 dg 加群である。単体集合のモデル構造を仮定しない。
+一般の文脈は `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]`、`[Small.{u} D]`。
+BE の文脈では `A : Type u`、`[CommRing A]` と表示された固定 BE 底 X を使う。
+
+### TensorHomAdjunction
+
+```lean
+lemma moduleParamCurry_postcompose {K : Complex A} {M N P : ModuleCategory A D}
+    (f : moduleTensorLeftObj A D K M ⟶ N) (g : N ⟶ P) :
+    moduleParamCurry A D (f ≫ g) =
+      moduleParamCurry A D f ≫ eHomWhiskerLeft (Complex A) M g
+
+def moduleTensorHomEquiv (M : ModuleCategory A D) (K : Complex A)
+    (N : ModuleCategory A D) :
+    ((tensorModuleFunctor (ForgetEnrichment.to (Complex A) M)).obj K ⟶ N) ≃
+      (K ⟶ ((eHomFunctor (Complex A) (ModuleCategory A D)).obj (op M)).obj N)
+
+def moduleTensorHomAdjunction (M : ModuleCategory A D) :
+    tensorModuleFunctor (ForgetEnrichment.to (Complex A) M) ⊣
+      (eHomFunctor (Complex A) (ModuleCategory A D)).obj (op M)
+```
+
+### TensorSimplices
+
+```lean
+def moduleTensorSimplicesFunctor :
+    ModuleCategory A D ⥤ (SimplexCategory ⥤ ModuleCategory A D)
+
+lemma moduleTensorSimplices_obj_eval (M : ModuleCategory A D) (n : SimplexCategory) (x : D) :
+    (moduleEvaluation A D x).obj (((moduleTensorSimplicesFunctor A D).obj M).obj n) =
+      AlexanderWhitney.cochains A (SSet.stdSimplex.obj n) ⊗
+        (moduleEvaluation A D x).obj M
+
+lemma moduleTensorSimplices_map_eval {M N : ModuleCategory A D} (f : M ⟶ N)
+    (n : SimplexCategory) (x : D) :
+    (moduleEvaluation A D x).map (((moduleTensorSimplicesFunctor A D).map f).app n) =
+      𝟙 (AlexanderWhitney.cochains A (SSet.stdSimplex.obj n)) ⊗ₘ
+        (moduleEvaluation A D x).map f
+
+def moduleTensorSimplicesAugmentation (M : ModuleCategory A D) :
+    (moduleTensorSimplicesFunctor A D).obj M ⟶ (Functor.const SimplexCategory).obj M
+
+lemma moduleTensorSimplicesAugmentation_eval (M : ModuleCategory A D)
+    (n : SimplexCategory) (x : D) :
+    (moduleEvaluation A D x).map ((moduleTensorSimplicesAugmentation A D M).app n) =
+      (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ⊗ₘ
+        𝟙 ((moduleEvaluation A D x).obj M)) ≫ (λ_ ((moduleEvaluation A D x).obj M)).hom
+
+def moduleTensorSimplicesAugmentationFamily :
+    moduleTensorSimplicesFunctor A D ⟶ Functor.const SimplexCategory
+```
+
+### RawModuleTensorFrame
+
+```lean
+lemma strictRawModuleSemifree_tensor_isLeftQuillen (X : (operad A).Algebra)
+    (P : strictRawModuleCategory A X)
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P) :
+    letI := projectiveModelCategory A
+    letI := strictRawModuleModelCategory A X
+    SerrePositivity.Quillen.IsLeftQuillen
+      (tensorModuleFunctor (ForgetEnrichment.to (Complex A) P))
+
+lemma strictRawModuleTensorFrame_reedyCofibrant (X : (operad A).Algebra)
+    (P : strictRawModuleCategory A X)
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P) :
+    letI := strictRawModuleModelCategory A X
+    reedyLeft simplex (cofibrations (strictRawModuleCategory A X))
+      (initial.to ((moduleTensorSimplicesFunctor A
+        (dgAlgebraCategory A ((assocForget A).obj X))).obj P))
+
+lemma strictRawModuleTensorFrame_homotopicallyConstant (X : (operad A).Algebra)
+    (P : strictRawModuleCategory A X)
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P)
+    {n m : SimplexCategory} (f : n ⟶ m) :
+    letI := strictRawModuleModelCategory A X
+    weakEquivalences (strictRawModuleCategory A X)
+      (((moduleTensorSimplicesFunctor A
+        (dgAlgebraCategory A ((assocForget A).obj X))).obj P).map f)
+
+lemma strictRawModuleTensorFrame_augmentation_weak (X : (operad A).Algebra)
+    (P : strictRawModuleCategory A X)
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P)
+    (n : SimplexCategory) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+      ((moduleTensorSimplicesAugmentation A
+        (dgAlgebraCategory A ((assocForget A).obj X)) P).app n)
+
+lemma strictRawModuleTensorHom_kanComplex (X : (operad A).Algebra)
+    (P N : strictRawModuleCategory A X)
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P) :
+    SSet.KanComplex
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
+        ((moduleTensorSimplicesFunctor A
+          (dgAlgebraCategory A ((assocForget A).obj X))).obj P)).obj N)
+```
+
+
+対象ビルド・小さい監査の結果と最終実測は §34.1 に記録した。
+同じ source frame Hom と元の dg Hom との全標的自然な同型は §34 で実装した。
+モデルで選んだ frame との比較、K の完全忠実性と元の全族の一般の native な辺・fiber
+の完成は引き続き残る。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 34. M10 の同じ source frame Hom と元の dg Hom の全比較（11-14）
+
+§33 の同じ全単体 source frame Hom を、元の主 Hom end の
+`DK(τ≤0 moduleHom(P,N))` に全単体で同定する。
+既存の `normalizedSimplexHomEquiv` に同じ実 tensor/Hom 転置を前置するだけであり、
+Dold–Kan の部品・smart 切断・自由単体の評価は作り直さない。
+
+同じ転置の係数前合成自然性を両逆と逆転置の法則から回収し、全ての面・退化と可換する
+実単体集合同型を得る。標的射については §33 の転置の後合成自然性と既存の
+`normalizedSimplexHomEquiv_postcomp` を貼り合わせる。
+従って標的 N を動かす同じ全関手の自然同型となる。
+
+比較対象の dg 圏は正確に `RightModule A D`、対象は元の P,N を
+`ForgetEnrichment.to (Complex A)` で戻したもの。零次数をホモロジーの商へ変えない。
+これは M10 の既存の写像空間比較の証明分割と、既存の転置・自然性の法則で、
+一次 ID は追加しない。文脈は `A : Type u`、`[CommRing A]`、`D : Type v`、
+`[DGCategory A D]`、`[Small.{u} D]`。
+略記 `doldKanHomModule`・`doldKanHomSpace` は Kerodon の
+`ExamplesOfInfinityCategories.DifferentialGradedCategories` の実 Dold–Kan。
+`cosimplicialHom` は既存の `Project.HomotopyDiagramComparison.CosimplicialHom`、
+`truncatedDoldKanFunctor` は既存の `EInfinity.ComplexLimits` の関手である。
+
+```lean
+lemma moduleParamCurry_precompose {K L : Complex A} {P N : ModuleCategory A D}
+    (g : K ⟶ L) (f : moduleTensorLeftObj A D L P ⟶ N) :
+    moduleParamCurry A D (tensorModuleMap g (ForgetEnrichment.to (Complex A) P) ≫ f) =
+      g ≫ moduleParamCurry A D f
+
+def moduleTensorSimplexHomEquiv (P N : ModuleCategory A D) (n : SimplexCategory) :
+    (((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) ≃
+      (doldKanHomModule (R := A) (D := RightModule A D)
+        (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) N)).obj (op n)
+
+def moduleTensorHomDoldKanIso (P N : ModuleCategory A D) :
+    (cosimplicialHom ((moduleTensorSimplicesFunctor A D).obj P)).obj N ≅
+      doldKanHomSpace (R := A) (D := RightModule A D)
+        (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) N)
+
+def moduleTensorHomDoldKanNatIso (P : ModuleCategory A D) :
+    cosimplicialHom ((moduleTensorSimplicesFunctor A D).obj P) ≅
+      (eHomFunctor (Complex A) (ModuleCategory A D)).obj (op P) ⋙
+        truncatedDoldKanFunctor A
+```
+
+対象ビルドと小さい監査の結果・最終実測は §34.1 に記録した。
+モデルで選んだ frame とこの具体的な source frame の全比較、K の完全忠実性、
+元の全族の一般の native な辺・fiber の完成は残る。M11 以降・G12 の目標も維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 34.1 §33–§34 の検証と実測
+
+通常の対象ビルドは TensorHomAdjunction、TensorSimplices、RawModuleTensorFrame、
+TensorDoldKanHom のすべてで成功した。新しい公開宣言 18 本の依存公理監査も成功し、
+propext・Classical.choice・Quot.sound のみを使う。すべて指定の impl 鍵と
+一回 280 秒の塊で実行した。
+
+新規 Lean は四ファイル、それぞれ 78・147・147・97 行、計 469 行、公開宣言 18 本。
+§32.2 の累計に加え、検証済み累計は 66 ファイル・6,627 行・明示宣言 334 本
+（private 3 本）。200 行を超える証明はない。一次 ID の追加はない。
+
+同じ元の半自由 P の具体的 source frame が実モデルの条件を満たし、任意の元の標的 N
+への全単体 Hom が元の dg Hom の実 Dold–Kan に全標的自然に同型になることまで検証した。
+モデルで選んだ frame との全比較、通常源からの局所化比較 K の完全忠実性、
+M10 の一般の native な辺・fiber と全族の完成は未完。
+M11 以降と G12 を含む元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
