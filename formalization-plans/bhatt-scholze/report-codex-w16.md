@@ -21395,3 +21395,148 @@ m14-nullary-repeated-composition-02.log（3,082 jobs）まで成功。対象の�
 
 完備化後のP⁰の三案の追加の紙の比較は§347。反射の仕様からの完備部分圏の余極限表示と、
 Mayの演算をπ_nへ運ぶ義務を区別した。(c)が不可避との判定はまだ出していない。
+
+## 349. 一点削除の残り色の指定面を同じSigma型で比較する（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+一出現の分岐の実際のテンソルを照合するため、§333の全頂点列の等式を
+出力次数と指定面の同じSigma型の等式へ戻す。既存構成の法則・証明分割で各証明200行以内。
+
+```lean
+lemma faceData_eq_of_vertexList {q : ℕ}
+    (F G : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1))
+    (h : List.ofFn F.2 = List.ofFn G.2) : F = G
+
+lemma nullaryPointEraseCut_faceData_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) (c : Fin r) :
+    (⟨outputDegree (nullaryPointEraseCut s p) w c,
+      vertices (nullaryPointEraseCut s p) w c⟩ : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) =
+      ⟨outputDegree s v (k.succAbove c), vertices s v (k.succAbove c)⟩
+```
+
+最初は同じ列の長さから始域次数を比較し、List.ofFnの各値で順序写像を比較する。
+後者は既存simplexVertexList_faceで元の全頂点列へ戻し、§333を使う。
+次数や面を選び直すものではなく、HEqだけを最終出力に残さない。
+
+## 350. 一出現削除の同じ全出力順序と零次因子（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§349の成分を、元のoperadInsertionEquivによる全出力順序へ戻す。
+さらに選んだ零次の面が実際の零単体の生成元を与えることをSigma型で取り出す。
+いずれも既存構成の法則で各証明200行以内。
+
+```lean
+lemma nullaryPointEraseCut_faceFamily_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) :
+    (fun c : Fin r => (⟨outputDegree (nullaryPointEraseCut s p) w c,
+      vertices (nullaryPointEraseCut s p) w c⟩ : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1))) =
+      IntervalCuts.insertionFamily
+        (fun a => (⟨outputDegree s v a, vertices s v a⟩ :
+          Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)))
+        (fun j : Fin 0 => Fin.elim0 j) k
+
+lemma faceData_generator_zero (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ}
+    (F : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) (hF : F.1 = 0) (x : S _⦋q⦌) :
+    ∃ y : S _⦋0⦌,
+      (⟨F.1, gen A S F.1 (S.map (SimplexCategory.mkHom F.2).op x)⟩ :
+        Σ d : ℕ, (chains A S).X (-(d : ℤ))) = ⟨0, gen A S 0 y⟩
+```
+
+全出力順序は元のoperadInsertionEquivの逆の全射性を使い、空の内側Fin 0を除く。
+残り色の成分は§330の同じremainingPositionをk.succAboveで戻す法則と§349を組み合わせる。
+生成元はFの次数を一般化して零次の等式を消去するだけで、逆像を仮定しない。
+
+
+## 351. 一点削除の同じ生成元の全族と符号付き実テンソル（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§350の同じ面の全族を、元の正規化生成元の族と指定整数次数の実テンソルへ運ぶ。
+各証明200行以内、既存構成の評価と照合の法則。符号は元の整数で比較し、
+終域の同じ全次数の証明ht・ht′は実際の次数和から供給する型を明示する。
+
+```lean
+lemma nullaryPointEraseCut_generatorFamily_relabel (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) (x : S _⦋q⦌) :
+    (fun c : Fin r =>
+      (⟨outputDegree (nullaryPointEraseCut s p) w c,
+        gen A S (outputDegree (nullaryPointEraseCut s p) w c)
+          (S.map (face (nullaryPointEraseCut s p) w c).op x)⟩ :
+        Σ d : ℕ, (chains A S).X (-(d : ℤ)))) =
+      IntervalCuts.insertionFamily
+        (fun a => ⟨outputDegree s v a,
+          gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩)
+        (fun j : Fin 0 => Fin.elim0 j) k
+```
+
+```lean
+lemma nullaryPointEraseCut_signedTensor_relabel (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p) (hu : ∀ j, v.val j = v.val p → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) (x : S _⦋q⦌) (z : ℤ)
+    (ht : -(vectorDegree (chains A S) r
+      (fun c => ⟨outputDegree (nullaryPointEraseCut s p) w c,
+        gen A S (outputDegree (nullaryPointEraseCut s p) w c)
+          (S.map (face (nullaryPointEraseCut s p) w c).op x)⟩) : ℤ) = z)
+    (ht' : -(vectorDegree (chains A S) (r + 0)
+      (IntervalCuts.insertionFamily
+        (fun a => ⟨outputDegree s v a,
+          gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩)
+        (fun j : Fin 0 => Fin.elim0 j) k) : ℤ) = z) :
+    cutSign (nullaryPointEraseCut s p) w.val •
+      vectorTensorAt (chains A S) r
+        (fun c => ⟨outputDegree (nullaryPointEraseCut s p) w c,
+          gen A S (outputDegree (nullaryPointEraseCut s p) w c)
+            (S.map (face (nullaryPointEraseCut s p) w c).op x)⟩) z ht =
+      cutSign s v.val • vectorTensorAt (chains A S) (r + 0)
+        (IntervalCuts.insertionFamily
+          (fun a => ⟨outputDegree s v a,
+            gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩)
+          (fun j : Fin 0 => Fin.elim0 j) k) z ht'
+```
+
+
+## 352. 一点削除の指定面・生成元の全族・符号付き実テンソル（検証済み）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§349〜351を検証した。元の頂点列の一致から出力次数と指定面の同じSigma型の等式を得て、
+元のoperadInsertionEquivの順序で全族へまとめた。同じ正規化生成元の全族と、
+同じ指定整数次数の元の整数符号付き実テンソルの厳密な一致までつながる。
+同じ零次の面から来る零単体の生成元も存在を証明し、内側作用の値の仮定として残さない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|NullaryPointFaceData|49|
+|NullaryPointFaceFamilies|43|
+|ZeroFaceGenerator|29|
+|NullaryPointGeneratorFamilies|49|
+|NullaryPointSignedTensors|53|
+
+今回223行。M14実測27,043行、L12a 11,836行、外枠31,000行まで3,957行。
+L12aは未完了。実際の一出現のraw合成語への型の移送、正規化零項を含めた全有限和、
+零出力arityと全arityの包装は残る。既存構成の法則・証明分割だけで一覧IDは増やしていない。
+
+対象ビルドm14-nullary-point-face-families-01.log（2,917 jobs）、
+m14-nullary-point-signed-tensors-02.log（2,920 jobs）は成功、対象警告0。
+小監査audit-m14-nullary-point-signed-tensors.logは5本6宣言・標準三公理のみ、sorry・独自公理0。
+ビルド・監査ごとに鍵を取り返却。共有入口・監査・mainの作業木は変更していない。
+登録候補と実測はこの表のとおり。作業木の未検証のLeanは残していない。
+
+mainはこの時点で391b2a0d2のままで、§33の3b-4a完成の取り込みはまだない。
+取り込まれたら指示どおりM14を区切ってTotの9欄を先にする（段0は§260）。
+完備化後のP⁰の三案は§347の比較を維持し、(c)への判定はまだ出していない。
