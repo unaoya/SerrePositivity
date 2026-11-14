@@ -6978,3 +6978,108 @@ RR02 全体は未了。次は底を保つunstraightening比較への移送を行
 既存 `smallLeftUnstraighteningComparisonOfFunctorIso` は底の等式と
 前合成同値性も供給するので、全空間の同値だけから切断の同値性を推測しない。
 その後も、元のframe Homがcoherent endを計算する比較と、同じRR01射との一致が残る。
+
+
+## 67 RR02：底上の比較と切断への移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+同じ係数同型を任意の指定底の射 `a` に制限する。
+既存のsmall unstraighteningの比較と相対後合成の同値を適用する、RR02の証明分割。
+型と使用する証明を記録する。通常endの計算との一致は含めない。
+
+```lean
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+  (X Y : StrictComplexDiagram A d) {B : SSet.{u}} [Quasicategory B]
+  (a : B ⟶ nerve (AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d)))
+
+/-- 同じ評価係数を、指定した底の射に沿って制限する。 -/
+def strictDiagramEvaluatedValueCoefficient :
+    (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u} :=
+  (SSet.uliftFunctor.{u + 1, u}).map a ≫
+    kanDiagramCoherentNerve (strictDiagramEvaluatedValueKan A d X Y)
+
+/-- 同じ標準係数を、同じ底の射に沿って制限する。 -/
+def strictDiagramStandardValueCoefficient :
+    (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u} :=
+  (SSet.uliftFunctor.{u + 1, u}).map a ≫
+    kanDiagramCoherentNerve (strictDiagramStandardValueKan A d X Y)
+
+/-- 制限後も同じ全関手同型で係数を比較する。 -/
+def strictDiagramValueCoefficientIso :
+    FunctorIso (strictDiagramEvaluatedValueCoefficient A d X Y a)
+      (strictDiagramStandardValueCoefficient A d X Y a) :=
+  FunctorIso.precomp (strictDiagramValueKanIso A d X Y)
+    ((SSet.uliftFunctor.{u + 1, u}).map a)
+
+/-- 指定の係数同型から選んだ、底上の小さい全空間の比較。 -/
+def strictDiagramValueTotalComparison :
+    smallLeftUnstraightening (strictDiagramEvaluatedValueCoefficient A d X Y a) ⟶
+      smallLeftUnstraightening (strictDiagramStandardValueCoefficient A d X Y a) :=
+  smallLeftUnstraighteningComparisonOfFunctorIso (strictDiagramValueCoefficientIso A d X Y a)
+
+/-- 同じ全空間の射が、底を厳密に保つ等式。 -/
+lemma strictDiagramValueTotalComparison_projection :
+    strictDiagramValueTotalComparison A d X Y a ≫
+      smallLeftUnstraighteningProjection (strictDiagramStandardValueCoefficient A d X Y a) =
+    smallLeftUnstraighteningProjection (strictDiagramEvaluatedValueCoefficient A d X Y a) :=
+  smallLeftUnstraighteningComparisonOfFunctorIso_projection (strictDiagramValueCoefficientIso A d X Y a)
+
+/-- 底を保つ同じ射の後合成による、coherent係数の切断の比較。 -/
+def strictDiagramValueSectionsComparison :
+    simplicialSections (smallLeftUnstraighteningProjection
+      (strictDiagramEvaluatedValueCoefficient A d X Y a)) ⟶
+    simplicialSections (smallLeftUnstraighteningProjection
+      (strictDiagramStandardValueCoefficient A d X Y a)) :=
+  simplicialSectionsMap (strictDiagramValueTotalComparison A d X Y a)
+    (strictDiagramValueTotalComparison_projection A d X Y a)
+
+/-- 同じ切断比較は、底上の逆射による相対後合成の同値からホモトピー同値となる。 -/
+lemma strictDiagramValueSectionsComparison_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramValueSectionsComparison A d X Y a) := by
+  let p := smallLeftUnstraighteningProjection (strictDiagramEvaluatedValueCoefficient A d X Y a)
+  let q := smallLeftUnstraighteningProjection (strictDiagramStandardValueCoefficient A d X Y a)
+  haveI := simplicialSections_kanComplex p
+  haveI := simplicialSections_kanComplex q
+  have he := relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence
+    p q (strictDiagramValueTotalComparison A d X Y a)
+    (strictDiagramValueTotalComparison_projection A d X Y a)
+    (smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence
+      (strictDiagramValueCoefficientIso A d X Y a)) (𝟙 B)
+  have hp := (qCatEquivalenceOfIso (simplicialSectionsRelativeIso p)).isQCatEquivalence
+  have hq := (qCatEquivalenceOfIso (simplicialSectionsRelativeIso q)).isQCatEquivalence
+  apply IsQCatEquivalence.isSimplicialHomotopyEquivalence
+  apply hq.cancel_right
+  change IsQCatEquivalence
+    (simplicialSectionsMap (strictDiagramValueTotalComparison A d X Y a)
+      (strictDiagramValueTotalComparison_projection A d X Y a) ≫
+        (simplicialSectionsRelativeIso q).hom)
+  rw [simplicialSectionsRelativeIso_naturality]
+  exact hp.comp he
+
+```
+
+### 67.1 検証と残りの芯
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramValueSectionsComparison` 96行：対象ビルド3,694 jobs成功、
+小監査7宣言成功、標準三公理のみ。
+ログ `/tmp/is-w1/value-sections-comparison/build-3.log`。
+二回の失敗は既存補題の名前空間不足で修正した。計算上限は変更していない。
+検証済み累計154本・12,430行、外枠20,800行まで8,370行。
+
+指定係数同型から選ばれる全空間の射について、底を厳密に保つ等式を使って
+切断の射を定義し、その同じ切断の射のホモトピー同値性を証明した。
+全空間の同値だけを切断の同値と取り違えていない。
+この宣言は任意の指定底の射 `a` に適用できるが、異なる `a` に対する選択の
+厳密な自然性まで主張するものではない。
+
+次の芯は、元の `strictDiagramFrameMapping` と評価係数のcoherent endとの比較。
+必要な底の射は、添字のnerveのtwisted-arrow射影を、既存の
+`nerveOppositeIso` と `nerveProductSwapIso` およびAsSmallの通常の関手で表示する。
+そこへの係数比較の適用だけで、通常endと導来endの一致を済ませない。
+Reedyの相対充填と、同じRR01射への照合は引き続き未了。
+`Reedy.NestedLatching` はlatching添字内の分解を供給するが、coherentな変換空間の
+導来end表示そのものを既に供給しているとは扱わない。
+E01 の直接比較・単位の一意性の経路は再試行していない。
