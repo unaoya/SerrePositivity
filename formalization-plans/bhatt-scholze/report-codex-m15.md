@@ -3394,3 +3394,30 @@ N01 を完了に数える。M10 の同じ通常源と半自由 native 模型の�
 M11 以降の相対テンソル・RHom・完備反射・完備テンソル、G12 は引き続き進める。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 25. M10/C02：元の通常加群 DK 源の普遍性まで検証（11-14）
+
+§22 の三つのファイルの通常対象ビルドと小さい監査が完了した。
+`RawModuleFrameInput` 88 行・5 宣言、`RawModuleRelativeModel` 69 行・3 宣言、
+`RawModuleLocalizationUniversal` 118 行・5 宣言、計 **275 行・13 公開宣言**。
+修正は結果型のモデル選択 let の導入と、BE 代数の同名判定に隠れた
+`HomotopicalAlgebra.weakEquivalence_iff` の完全名指定であり、仕様を変えていない。
+
+最終の対象 `RawModuleLocalizationUniversal:olean` は終了コード 0。
+13 宣言の `#print axioms` は宣言名と実出力を機械照合し、監査は終了コード 0。
+全て `propext`・`Classical.choice`・`Quot.sound` の範囲内で、追加公理・sorryAx はない。
+共有 impl 鍵、実行上限 280 秒の組で行った。200 行を超える補題はない。
+
+同じ通常加群圏の ULiftHom と AsSmall の相対比較を通じ、元の自由 DK 源
+`localizationNerveSourceMap (strictRawModuleRelativeCategory A X)` が、元の擬同型を反転する
+全 quasicategory 標的への局所化であることを得た。
+これにより、同じ通常源から指定半自由模型への §18 の関手を全関手のまま降下できる。
+その降下と指定三角比較を次に作り、完全忠実性と同じ全族の fiber の同定へ接続する。
+反転・本質的全射性だけで同値・普遍性と数えることはしない。
+
+監査まで済んだ累計は、新規 Lean **53 ファイル・5,247 行・268 宣言（private 3 を含む）**。
+いずれも同じ実モデル・同じ相対局所化の比較・源移送の法則と証明分割で、一次 ID は追加しない。
+M10 はまだ未完。一次一覧の完了数は M01–M09 と N01 の計 10 のまま。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
