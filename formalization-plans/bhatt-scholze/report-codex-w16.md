@@ -10643,3 +10643,471 @@ L09a・L09累計 **6,281行**、改訂MayのM14全体 **11,347行**。
 次は既存`horizontalBoundaryFaceEquiv`／`horizontalBoundaryAllEquiv`の
 指定された語の位置・小さい切断との照合を行い、実際の全水平添字のhcへ接続する。
 垂直hv、全相殺とL09a・L09全体は未完。G10や他レーンのファイルには触っていない。
+
+## 130. 全水平添字の同値との厳密な照合（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは§129の6モジュールを検証・コミットした進捗。作業木がクリーンであることを確認して続行。
+B4は完了済み。新しい数学や別の同値を作らず、既存C70・C71が選ぶ文字位置と切断を読む。
+先にm=0〜5、q=0〜4の全切断・係数位置について、三分割の逆、対応する水平座標、
+指定削除で元の切断が復元されることをPythonで **2,771例** 点検した
+（`/tmp/bsw16/check-horizontal-index-transport.py`）。
+
+### 130.1 三つの枝での指定添字の評価（C211–C216）
+
+既存の構成の合成・逆の法則と有限の添字の計算。各補題200行以内。
+内部の文字位置は`i.castSucc.succ`、両端は0と`Fin.last (m+1)`で、元の添字を保持する。
+
+```lean
+lemma coefficientIndexEndpointEquiv_symm_first (m q : ℕ) (t : Cut m q) :
+    (coefficientIndexEndpointEquiv m q).symm (.inl t) = (0, t)
+
+lemma coefficientIndexEndpointEquiv_symm_interior (m q : ℕ) (t : Cut m q) (i : Fin m) :
+    (coefficientIndexEndpointEquiv m q).symm (.inr (.inl (t, i))) = (i.castSucc.succ, t)
+
+lemma coefficientIndexEndpointEquiv_symm_last (m q : ℕ) (t : Cut m q) :
+    (coefficientIndexEndpointEquiv m q).symm (.inr (.inr t)) = (Fin.last (m + 1), t)
+
+lemma horizontalBoundaryFaceEquiv_first (m q : ℕ) (t : Cut m q) :
+    (horizontalBoundaryFaceEquiv m q (0, t)).val = (horizontalFirstFaceEquiv m q t).val
+
+lemma horizontalBoundaryFaceEquiv_interior (m q : ℕ) (t : Cut m q) (i : Fin m) :
+    (horizontalBoundaryFaceEquiv m q (i.castSucc.succ, t)).val =
+      (horizontalInteriorFaceEquiv m q (t, i)).val
+
+lemma horizontalBoundaryFaceEquiv_last (m q : ℕ) (t : Cut m q) :
+    (horizontalBoundaryFaceEquiv m q (Fin.last (m + 1), t)).val =
+      (horizontalLastFaceEquiv m q t).val
+```
+
+### 130.2 元の文字位置の保存（C217・C218）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+点検済みの有限な座標の計算と、既存の同値の法則。
+C217は`horizontalCornerEquiv_horizontal`と`horizontalMarkedEdgeEquiv_horizontal`の合成。
+C218は同じ既存の三分割の逆で三場合に分け、C214–C217と水平座標の端点の式を使う。
+個々の補題200行以内。
+
+```lean
+lemma horizontalInteriorFaceEquiv_horizontal (m q : ℕ) (t : Cut m q) (i : Fin m) :
+    (horizontalInteriorFaceEquiv m q (t, i)).val.1.horizontal
+      (horizontalInteriorFaceEquiv m q (t, i)).val.2 = i.castSucc.succ
+
+lemma horizontalBoundaryFaceEquiv_horizontal (m q : ℕ) (c : Fin (m + 2) × Cut m q) :
+    (horizontalBoundaryFaceEquiv m q c).val.1.horizontal
+      (horizontalBoundaryFaceEquiv m q c).val.2 = c.1
+```
+
+### 130.3 指定された全水平添字での実項の照合（C219・C220）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C219は既存の構成の貼り合わせの法則。C211–C216で同じ三分割に分け、
+C200・C196・C201を適用し、指定挿入の`Equiv.symm_apply_apply`で元の小さい切断へ戻す。
+C220はC218の文字位置の一致とC210の無効削除の消滅の貼り合わせ。
+どちらも元の加群の等式で、実際の小さい切断`c.2`と削除位置`c.1`を保持する。
+各補題200行以内。C219の局所型は挿入辺の所属`ha`・`hb`、
+`hh : (e t).val.horizontal a.succ = i.castSucc.succ`と
+`hw' : w.val = Surjection.erase v.val ((e t).val.horizontal a.succ)`。
+
+```lean
+lemma outputBoundaryTerm_horizontalBoundaryFaceEquiv_valid {m q r : ℕ} (S : SSet.{0})
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1)) :
+    ∀ (c : Fin (m + 2) × Cut m q) (_hw : w.val = Surjection.erase v.val c.1)
+      (j : Fin (outputDegree (horizontalBoundaryFaceEquiv m q c).val.1 v
+        (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+          (horizontalBoundaryFaceEquiv m q c).val.2) + 1))
+      (_hj : j.val = vertexRank (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+        (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+          (horizontalBoundaryFaceEquiv m q c).val.2) (horizontalBoundaryFaceEquiv m q c).val.2)
+      (x : S _⦋q⦌),
+    outputBoundaryTerm A S (horizontalBoundaryFaceEquiv m q c).val.1 v
+        (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+          (horizontalBoundaryFaceEquiv m q c).val.2) j x =
+      Surjection.deletionCoefficient v.val c.1 •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom (cutTerm A S c.2 w x)
+
+lemma outputBoundaryTerm_horizontalBoundaryFaceEquiv_invalid {m q r : ℕ} (S : SSet.{0})
+    (v : Surjection.Word r (m + 2)) (c : Fin (m + 2) × Cut m q)
+    (hinvalid : ¬(Function.Surjective (Surjection.erase v.val c.1) ∧
+      Surjection.Nondegenerate (Surjection.erase v.val c.1)))
+    (j : Fin (outputDegree (horizontalBoundaryFaceEquiv m q c).val.1 v
+      (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+        (horizontalBoundaryFaceEquiv m q c).val.2) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S (horizontalBoundaryFaceEquiv m q c).val.1 v
+      (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+        (horizontalBoundaryFaceEquiv m q c).val.2) j x = 0
+```
+
+### 130.4 元の係数境界値との次数移送（C221–C224）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存構成の係数移送・貼り合わせの法則。C221・C222は同じ実境界項を読む定義の照合。
+C223はC219・C220を元の全境界値の共通次数へ運び、定義の負号と相殺する。
+C224の係数次数零の場合は、削除語の長さがarityより小さいため全射が存在しないことを
+既存`Fintype.card_le_of_surjective`から読み、C220へ戻す。新しい非退化性の仮定は足さない。
+C223の局所型`ho`・`hc`は書かれている二つの整数次数の等式、
+`step {M N P : ModuleCat A} (hMN : M = N) (hNP : N = P) (y : M) :
+(eqToHom hNP).hom ((eqToHom hMN).hom y) = (eqToHom (hMN.trans hNP)).hom y`は
+§127の同じ移送の合成則。C224の`hns`は削除語の全射性・非退化性の連言の否定。
+各補題200行以内。未検証の段階ではhcの完了とは数えない。
+
+```lean
+lemma coefficientBoundaryTerm_succ_eq {r d q : ℕ} (S : SSet.{0})
+    (u : Surjection.BasisWord (r + 1) (d + 1)) (c : Fin (r + d + 2) × Cut (r + d) q)
+    (x : S _⦋q⦌)
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) = -(((d + 1) + q : ℕ) : ℤ) + 1) :
+    coefficientBoundaryTerm A S r (d + 1) q u c x =
+      if hw : Function.Surjective (Surjection.erase (positiveWord u).val c.1) ∧
+          Surjection.Nondegenerate (Surjection.erase (positiveWord u).val c.1) then
+        -Surjection.deletionCoefficient (positiveWord u).val c.1 •
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (cutTerm A S c.2 ⟨Surjection.erase (positiveWord u).val c.1, hw⟩ x)
+      else 0
+
+lemma universalBoundaryValue_coefficient (S : SSet.{0}) {r d : ℕ}
+    (u : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (c : Fin (r + d + 1) × Cut (r + d - 1) q) :
+    universalBoundaryValue A S u q x (.inr (.inl c)) = coefficientBoundaryTerm A S r d q u c x
+
+lemma universalBoundaryValue_horizontal_succ (S : SSet.{0}) {r d : ℕ}
+    (u : Surjection.BasisWord (r + 1) (d + 1)) (q : ℕ) (x : S _⦋q⦌)
+    (c : Fin (r + d + 2) × Cut (r + d) q) :
+    universalBoundaryValue A S u q x (.inl (horizontalBoundaryFaceEquiv (r + d) q c).val) =
+      -universalBoundaryValue A S u q x (.inr (.inl c))
+
+lemma universalBoundaryValue_horizontal_neg (S : SSet.{0}) {r d : ℕ}
+    (u : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) (hm : 0 < r + d)
+    (c : Fin (r + d + 1) × Cut (r + d - 1) q) :
+    universalBoundaryValue A S u q x (.inl ((horizontalBoundaryAllEquiv (r + d) q hm) c).val) =
+      -universalBoundaryValue A S u q x (.inr (.inl c))
+```
+
+### 130.5 依存する面番号を保つ証明分割
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C219の最初の型検査では、面番号`j`に依存する型の中を部分的にsimpして、
+元の同値の値が残った。証明の分割として、次の同じ述語`P`を局所的に置き、
+指定頂点を丸ごと書き換えてから面番号を導入する。主張の型・比較する射・前提は変更しない。
+
+```lean
+  let P (z : MarkedCut (m + 1) q) (a : Fin (m + 2)) (t : Cut m q) : Prop :=
+    ∀ (_hw : w.val = Surjection.erase v.val a)
+      (j : Fin (outputDegree z.1 v (label z.1 v.val z.2) + 1))
+      (_hj : j.val = vertexRank z.1 v.val (label z.1 v.val z.2) z.2) (x : S _⦋q⦌),
+      outputBoundaryTerm A S z.1 v (label z.1 v.val z.2) j x =
+        Surjection.deletionCoefficient v.val a •
+          (eqToHom (congrArg (fun n : ℤ => (power (chains A S) r).X n)
+            (horizontalDeletion_degree_eq (q := q) w))).hom (cutTerm A S t w x)
+```
+
+C219の同じ指定切断への戻りは、局所型
+`hsmall : e.symm ⟨(e t).val, (e t).property⟩ = t`（内部では所属証明`ha`）を
+既存`e.symm_apply_apply t`から明示し、元の等式で書き換える。新しい照合の仮定ではない。
+
+待ち時間には垂直分岐の有限計算も先に点検した。
+`/tmp/bsw16/check-vertical-position-signs.py`、**14,942例**で、
+C170の接頭順位、位置指数の差が削除区間以後のcaesura数になること、
+同色の直前の面の削除係数と実境界符号の一致を確認した。
+垂直の新しいLeanはまだ書かず、水平hcの検証を先にする。この点検を垂直hvの証明済み扱いにはしない。
+
+C223・C224の全出力値への移送では、C168で読む`⟨z.val.1,z.val.2⟩`と
+元の指定頂点`z.val`を既存`Sigma.eta`で明示的に照合する。
+局所型`hout`はC168の等式の左辺をその同じ指定頂点へ戻したもので、
+新しい射・仮定・自然性の選択を加えない。
+
+C223では、同じ実境界項の等式`ht`を、指定された共通次数への線形射に
+`congrArg`で写した`ht'`として使う。型はC219またはC220の両辺に
+`(eqToHom (congrArg (fun n : ℤ => (power (chains A S) (r+1)).X n) ho)).hom`
+を適用した等式そのもので、`map_zsmul`・`map_zero`と上の`step`だけを使う。
+依存した引数内へのrwの照合に頼らず、既存の係数移送の法則を明示する分割である。
+
+C223の詳細型の比較では、`r+(d+1)`と`(r+d)+1`が式内部に異なる形で残っていた。
+`Nat.add_assoc`で同じ正規形へそろえ、上の移送の合成則を適用する。
+一時的なppオプションは除去した。型クラス引数を明示した診断ログは
+`/tmp/bsw16/m14-horizontal-boundary-values-diag.log`に保持する。
+
+### 130.6 色と面番号の依存した組を保つ（C225）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+より具体的な型検査で、逆同値の`.2`の型が`.1`に依存し、`.1=label`を
+semireducibleな定義の展開だけで読むと、通常のimplicit透明性では型が合わないことを確認した。
+加法の括弧をそろえるだけでは解消しなかった。C225は元の値を同じ依存した組のまま読む定義の法則。
+既存公開宣言は変えず、新しい名前で足す。C223・C224では
+`hp : (colorPositionEquiv z.val.1 v).symm z.val.2 = ⟨a,j⟩`で一度だけ分解し、
+既存C22から`ha : a = label z.val.1 v.val z.val.2`を得て色を置き換える。
+その後の`j`は正しい色のFinとして通常の透明性でも型が合う。
+`hj : j.val = vertexRank z.val.1 v.val (label z.val.1 v.val z.val.2) z.val.2`は既存C28の順位の式から得る。
+新しい構成や主張の弱化はなく、同じ出力値の評価の分割。C225は200行以内。
+
+```lean
+lemma universalBoundaryValue_output_paired (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (s : Cut (r + d) q) (k : Fin (r + d + q + 1))
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+    universalBoundaryValue A S w q x (.inl ⟨s, k⟩) =
+      (eqToHom (congrArg (fun n : ℤ => (power (chains A S) (r + 1)).X n) h)).hom
+        (outputBoundaryTerm A S s (positiveWord w)
+          ((colorPositionEquiv s (positiveWord w)).symm k).1
+          ((colorPositionEquiv s (positiveWord w)).symm k).2 x)
+```
+
+### 130.7 待ち時間の垂直の次の型案（紙のみ）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+水平hcの検証待ちの間に、同じL09aの垂直の有限計算を整理した。
+以下のC226–C229は**紙の型案で、Lean未実装・未検証**。
+新しい数学のまとまりではなく、既存の垂直削除の座標・右端・位置指数の法則。
+C229の位置差は非退化性・全射性を仮定しない任意の3色の関数についても
+先に **76,407例** 点検した（`/tmp/bsw16/check-vertical-arbitrary-position.py`）。
+これは既存C170の接頭順位と、削除後に残る区間の右端を使う経路を確認する点検であり、
+Leanでの証明を代用しない。
+
+```lean
+-- C226：指定された垂直削除で、削除しない右端を垂直の順序単射で比較する。
+hi_eq_of_vertical_deleted_coordinates {m q : ℕ} (s : Cut m (q + 1)) (t : Cut m q)
+    (k : Fin (m + (q + 1) + 1))
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j))
+    (i : Fin (m + 1))
+    (hmax : (intervalPositions s i).max' (intervalPositions_nonempty s i) ≠ k) :
+  hi s i = ((s.vertical k).succAbove ⟨hi t i, by have := hi_le_q t i; omega⟩).val
+
+-- C227：垂直の削除頂点は、活動区間の右端ではない。
+hi_vertex_ne_vertical_of_caesura {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (i : Fin (m + 1)) (hi : Surjection.Caesura v i) :
+  (intervalPositions s i).max' (intervalPositions_nonempty s i) ≠ k
+
+-- C228：入力の削除頂点以後にある右端は、その区間以後のものに限る。
+vertical_vertex_le_hi_iff {m q : ℕ} (s : Cut m (q + 1))
+    (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical) (i : Fin (m + 1)) :
+  (s.vertical k).val ≤ hi s i ↔ s.horizontal k ≤ i
+
+-- C229：同じ語の位置指数の差は、削除区間以後のcaesuraの個数。
+positionExponent_vertical_deleted_coordinates {m q r : ℕ}
+    (s : Cut m (q + 1)) (t : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) :
+  positionExponent s v = positionExponent t v +
+    ((caesuraPositions v).filter (fun i => s.horizontal k ≤ i)).card
+```
+
+C226は既存C173・C06と同じ右端の上下界の特徴付けを、
+垂直座標の狭義単調な`Fin.succAbove`へ移す。C227は内部・始端の次の垂直辺と、
+終端では元の最後の区間がcaesuraにならないことを使う有限な計算。
+C228は既存の座標の単調性と直前の垂直辺、C229はこれらと`Fin.succAbove`の値の式を
+既存`positionExponent_eq_caesura_sum`へ戻す。
+全caesura数は既存`Surjection.Word.card_caesuras`／`Surjection.card_caesuras_basisWord`を使い、
+同じ濃度の式を再証明しない。C170の接頭順位と合せて入力面の交代符号へ戻す。
+
+### 130.8 待ち時間のC226のLean下書き
+
+一覧：済み 8／全体 48（うち追加 4）
+
+水平hcの検証順は維持し、待ち時間に紙のC226のみLeanの下書きを置いた。
+C227–C229はまだ紙のまま。C226は検証前にはコミットしない。
+右端の達成と上界の既存C06を使い、削除前の右端の逆像`j`と削除後の右端`jt`を比較する。
+局所型`hji : t.horizontal j = i`、`hsmall : t.vertical j ≤ ⟨hi t i,⋯⟩`、
+`hmon`は既存`Fin.strictMono_succAbove`による同じ上界の移送。
+
+実装前の有限点検は`/tmp/bsw16/check-vertical-interval-maxima.py`、
+**12,341例**で右端の移送、入力頂点以上の右端と区間番号の閾値の一致、
+削除頂点自体が右端なら最後の頂点・最後の区間になることを確認した。
+この点検はC226–C228の有限計算の確認であり、Leanの検証結果ではない。
+
+C227・C228に使う隣接辺の証明分割も作業木へ下書きした（未検証、検証前にはコミットしない）。
+既存C51–C53の始端・内部・終端の式を指定した辺へ戻すだけで、
+垂直のための新しい構造や判定の定義は作らない。各補題200行以内。
+有限点検は上の垂直頂点の全候補12,341例と、既存の全境界の対合6,070添字の点検で
+用いた同じ前後の辺の条件。局所型`he0`・`helast`は指定終始点の0・Fin.lastとの等式、
+`heq`・`hl`・`hr`は指定辺と既存の端点/角の辺番号との等式。
+
+```lean
+lemma vertical_kind_outgoing_not_mem {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (e : Fin (m + q)) (he : e.castSucc = k) : e ∉ s.val
+
+lemma vertical_kind_incoming_not_mem {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (e : Fin (m + q)) (he : e.succ = k) : e ∉ s.val
+```
+
+C227も同じ検証待ちの間に下書きした。型は§130.7のまま、未検証。
+既存の右端の達成から`hhi : s.horizontal k = i`。次の頂点がある場合は、
+上の`vertical_kind_outgoing_not_mem`と既存`step_of_notMem`で同じ区間の次の頂点が得られ、
+右端の最大性`hb : e.succ ≤ max' (intervalPositions s i) ⋯`に反する。
+終端なら水平座標の端点の式から`i=Fin.last m`で、caesuraの定義に反する。
+新しい構成を加えない有限の右端の計算。個々の補題200行以内。
+
+C228も同じ待ち時間に、§130.7の型のまま下書きした（未検証）。
+右端の頂点`j`の水平座標は`i`。`i < s.horizontal k`なら単調性で`j<k`となり、
+直前の垂直辺の厳密な増分により`hi s i < (s.vertical k).val`。
+逆に区間番号が指定区間以後なら、右端が`k`より前にあると同じ区間に`k`を含める
+最大性に反する。局所型`hjk : j < k`、`hjle : j ≤ e.castSucc`、
+`hm : (s.vertical j).val ≤ (s.vertical e.castSucc).val`、
+`hkmem : k ∈ intervalPositions s i`。既存の順序と最大性だけの有限計算で、200行以内。
+
+C229の位置指数の式も、§130.7の型のまま下書きした（未検証）。
+局所型は
+`hterm : ∀ i ∈ caesuraPositions v, hi s i = hi t i + if s.horizontal k ≤ i then 1 else 0`。
+C226・C227の右端の式と既存`Surjection.succAbove_val_eq`、C228の閾値を合わせ、
+既存`positionExponent_eq_caesura_sum`・`Finset.sum_add_distrib`・`Finset.sum_filter`へ戻す。
+任意の語の位置指数の76,407例の点検は実装前に済ませてある。
+200行以内で、同じ有限の分解と加法の法則。検証・監査前にはコミットしない。
+
+### 130.9 依存した組の等式を全体の値へ写す法則
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C225の評価は通ったが、組の等式の部分的なrwは通常の透明性で型を見失うため、
+組全体を引数に取る同じ値の関数へ`congrArg`で写す法則を明示する。
+新しい構成や仮定ではなく、同じ実境界値への等式の合成。200行以内。
+垂直側ではC226・前後の辺の補題がビルド成功。C227・C228に必要な既存
+`ShuffleStepMembership`のimportを明示し、同じ主張を再検証する。
+
+```lean
+lemma universalBoundaryValue_output_of_pair (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (s : Cut (r + d) q) (k : Fin (r + d + q + 1))
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1)
+    (ij : Σ a : Fin (r + 1), Fin (outputDegree s (positiveWord w) a + 1))
+    (hp : (colorPositionEquiv s (positiveWord w)).symm k = ij) :
+    universalBoundaryValue A S w q x (.inl ⟨s, k⟩) =
+      (eqToHom (congrArg (fun n : ℤ => (power (chains A S) (r + 1)).X n) h)).hom
+        (outputBoundaryTerm A S s (positiveWord w) ij.1 ij.2 x)
+```
+
+C226〜C228と隣接辺の補題は対象ビルドを通った。C229では`rw [Nat.add_zero]`が
+暗黙の次元引数を抽象して型を崩すため、同じ算術の等式を`simpa only`で使う形に直す。
+水平C223では、依存した組の評価を通した後、同じ移送の合成の照合が残るため、
+新しいこのファイルの補助的なbackward/透明性オプションを外し、通常の設定で検証する。
+主張・比較する射・公理の仮定は変更しない。
+
+通常の透明性に戻したC223では移送の合成が通り、C229も対象ビルド成功。
+最後のC223の値の照合で、追加していた`Nat.add_assoc`と局所名の展開を外し、
+既に指定されている同じ次数・点・語のまま、負号と零だけを簡約して等式を使う。
+垂直のC226–C229はここまで検証済みだが、専用監査前にはコミットしない。
+
+C223の最後の値の型の診断では、局所名を除いた式の内部表現でも
+`r+(d+1)`と`(r+d)+1`の差が残ることを確認した。一般の結合則の展開ではなく、
+定義と同じ向きの既存`Nat.add_succ`だけで両方をそろえる。
+一時的な`run_tac`の内部表現出力は除去し、本体には残さない。
+診断の生データは`/tmp/bsw16/horizontal-actual-expr.txt`・
+`horizontal-expected-expr.txt`に保持する。
+
+### 130.10 水平hcのビルド成功
+
+一覧：済み 8／全体 48（うち追加 4）
+
+`universalBoundaryValue_horizontal_neg`が、係数次数零も含めて対象ビルドを通った。
+最後の同じ値の照合は`convert ht' using 1`で合同を明示すると閉じ、
+補助的に付けていた`rfl`は未使用なので除去した。
+同じ元の加群での等式で、ホモトピー圏への弱化や未供給の数学的仮定はない。
+同じ`universalBoundaryPartner_neg_of_cases`のhcをそのまま供給する。
+垂直のC226〜C229もビルド済みだが、垂直hvの全体やL09a・L09の完了とは数えない。
+この後は警告を除いた対象ビルドと全10モジュールの専用監査を行う。
+
+### 130.11 検証・登録候補と約6,600行の区切りの確定
+
+一覧：済み 8／全体 48（うち追加 4）
+
+以下の10本、計 **663行** を対象ビルドと専用監査で検証した。
+接頭部は`SerrePositivity.EInfinity.SimplexCuts.`。
+
+| 登録候補 | 実測 |
+| --- | ---: |
+| `EndpointCoefficientIndices` | 67行 |
+| `HorizontalFaceCoordinates` | 44行 |
+| `HorizontalFaceTerms` | 108行 |
+| `HorizontalBoundaryValues` | 131行 |
+| `OutputBoundaryPairedValues` | 46行 |
+| `VerticalDeletedMaxima` | 46行 |
+| `VerticalVertexEdges` | 67行 |
+| `VerticalActiveMaxima` | 47行 |
+| `VerticalIntervalThresholds` | 53行 |
+| `VerticalDeletionExponents` | 54行 |
+
+最終対象ビルドは`/tmp/bsw16/m14-horizontal-vertical-final.log`、
+`HorizontalBoundaryValues`・`VerticalDeletionExponents`の二対象で **2,320 jobs成功・警告0**。
+両対象のimportで新規10本を覆う。
+専用監査は別の一回の鍵で`/tmp/bsw16/audit-m14-horizontal-vertical-progress.lean`を実行し、
+**10モジュール・54宣言・標準三公理のみ**で成功
+（`/tmp/bsw16/m14-horizontal-vertical-audit.log`）。
+全10モジュールを明示し、それぞれの宣言数が0でないことも確認した。
+新規本体のsorry・追加公理0。`run_tac`や一時的なppの診断は本体に残っていない。
+`git diff --check`成功。既存公開宣言・共通入口・共通監査・draftsは変更していない。
+共通入口・共通監査への登録は調整役の担当のまま。
+
+ビルド・監査はそれぞれ独立した一回の`--class impl --wait 3600`で実行。
+整理券は常に一枚、待ち時間と編集・報告の間に鍵は持たず、各実行の終了と返却を確認した。
+
+実際に閉じたもの：
+
+- `universalBoundaryValue_horizontal_neg`：元の全水平添字のhcを、係数次数零も含め仮定なく供給。
+  元の同じ加群・指定射での等式で、ホモトピー圏へ弱めていない。
+- `positionExponent_vertical_deleted_coordinates`：C226〜C229の有限な幾何を合わせ、
+  任意の語の位置指数の差を同じ語の末尾側のcaesura数へ戻す。
+  実際の垂直の指定座標は既存C90と端点の公式から次に供給する。
+
+L09a・L09の約6,600行の区切りは、§130の途中で下書き込みの実測を止まらず報告した。
+その検証待ちの間に垂直の267行を進め、今回の検証済みの最終累計は
+**L09a・L09 6,944行、改訂MayのM14全体12,010行**。
+次は垂直の実際の削除係数と入力面の符号、指定面・生成元・実テンソル、全垂直添字のhv、
+L09aの対合への包装とL09の微分の和への戻し。
+L09a全体・L09はまだ閉じていないため、一覧の完了件数を増やさない。
+M14の半分12,500行までは490行で、その時点でも止まらず途中報告する。
+L09a・L09の次の1,000行区切りは約7,600行。
+
+### 130.12 実測による残りと外枠の照合
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§121の水平の600〜1,100行に対し、混合角の完了後の5,015行から
+水平hcを閉じるまでの実測は **1,662行**（垂直に再利用する共通の順位・次数移送も含む）。
+差は **+562〜+1,062行**。依存した面番号と指定された全添字の同値、
+共通次数への実際の移送までの照合を含めた増分で、数学の主張の弱化はしていない。
+垂直の267行はこの1,662行に重複計上しない。
+
+垂直の残りの見込みは、位置指数が閉じた実測から次のように置く。
+
+| 残りの部分 | 追加の見込み |
+| --- | ---: |
+| 元の削除係数・全caesura数を合わせた実符号 | 80〜150行 |
+| 入力の面を合成した指定面・正規化生成元・実テンソル | 150〜280行 |
+| 方向交換で指定された全垂直添字の座標と小さい切断への照合 | 90〜170行 |
+| 元の入力境界値への包装とhv | 80〜150行 |
+| **垂直の残り** | **400〜750行** |
+| L09aの全対合・L09の微分の和への包装 | 200〜350行 |
+| **L09a・L09の残り** | **600〜1,100行** |
+
+垂直全体は今回までの267行を含め667〜1,017行の見込みで、
+§121の500〜950行の上端より67行高い。指定射を省いた短縮は見込んでいない。
+L09a・L09完成時の見込みは **7,544〜8,044行**。
+L10以後の既存部分の再利用は§121.3・§121.4のまま、未実装部分を勝手に控除しない。
+
+| M14の部分 | 実測／残り |
+| --- | ---: |
+| 完成済みMayと現在までの切断 | **12,010行（実測）** |
+| L09a・L09の残り | 600〜1,100行 |
+| L10〜L28（L12a込み） | 4,330〜7,790行 |
+| L29〜L37の係数・ν・top operation | 1,200〜2,000行 |
+| L38〜L40のG10後の指定比較への適用 | 500〜900行 |
+| L41・L42のfiltered塔とA4の利用側 | 300〜550行 |
+| L43a・L43b・L43・L44の二重模型の比較 | 1,500〜2,800行 |
+| **残りの合計** | **8,430〜15,140行** |
+| **M14完成時の見込み** | **20,440〜27,150行** |
+
+上端は外枠25,000行より **2,150行高い**。外枠を変更した扱いにはせず、
+同じ型一覧の中で続ける。旧coherent経路10,216行は保持し、改訂Mayに二重計上しない。
+G10・③-bの橋そのもの、M15・G12のLeanは作っていない。
