@@ -77,5 +77,8 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeSections",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniverseNativeCone",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniverseIndex",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeConeAt"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeConeAt",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationTransport",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedSectionsTriangle",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSectionsRecovery"
 ]

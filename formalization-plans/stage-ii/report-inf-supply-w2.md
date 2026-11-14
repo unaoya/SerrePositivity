@@ -11363,3 +11363,57 @@ theorem strictBETotNativeConeAt_vertex
     (strictBETotNativeConeAt A F).vertex = (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
       (nerveVertex ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F))
 ```
+
+## 178. 指定分類変換を回収する全切断の三角形（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。R02/R03の全錐族・標準脚・極限性は未完了。
+
+R03bの型は保ち、証明に用いる共通の復元への写像を明示した。従来の `smallLeftUnstraighteningComparisonOfFunctorIso` の公開仕様は底上の比較と前合成同値を与える。指定した分類同型の変換そのものを回収して次の評価を追跡するため、既存 `smallUnstraighteningFunctorHom η.hom` による同じ復元への合成を使用した。代表辺の類が元のη.homに等しい既存回収則を明示している。新しいBE模型・strictification・型の変更はない。
+
+`classifiedLeftFibrationSectionsEquivalence_triangle` は、同じ切断比較を標的の復元へ送ると、元の指定ηを使用する復元射による切断と全関手同型で一致することを証明する。元の後合成の同値の余単位を、同じ元の切断写像で前合成したもの。これをBEのBK切断同型とnative錐切断同型を通して運んだ `strictBETotBKNativeSections_reconstruction` も証明した。零単体・π₀の一致だけで代用していない。
+
+三本166行追加、R03b本体は67→62行。累計82本・5,205行。全て既存構成の回収・余単位・合成の法則と、R03bの証明分割で、追加の一覧項目は0。200行超の新規ファイルなし。main・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparison・入口・公式監査は変更していない。修正したR03bはこの枝で追加した未取り込みの宣言であり、型は§175のまま。
+
+検証：依存一本の対象ビルド241は2,561 jobsで終了0。242は新規共通二本と直接importerの指定native錐を再ビルドして10,648 jobs・終了0、小監査81本548宣言。243はBEの回収三角形一本を対象ビルドして10,645 jobs・終了0、小監査82本568宣言。全て標準三公理のみ、sorry・独自公理0。実ハンドル93037・5489・31459の終了0を確認し、鍵は返却済み。既存の回収APIの未ビルド依存で止まった個別検査は成功に数えず、241の後に個別検査と対象ビルドを通した。計算上限は変更していない。
+
+次は元の切断のfiber評価と後合成の厳密な自然性を使い、同じ共通の復元のfiberでこの全三角形を評価する。まだ標準脚そのものとの一致や全図式射の錐族を得たとは数えない。
+
+### 178.1 今回の法則・証明分割の型
+
+#### ClassifiedFibrationTransport（49行）
+
+```lean
+def classifiedFibrationTransport :
+    E ⟶ smallLeftUnstraightening (leftStraighteningInfinityDiagram q)
+
+theorem classifiedFibrationTransport_projection :
+    classifiedFibrationTransport p q η ≫
+      smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q) = p
+
+theorem classifiedFibrationTransport_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (classifiedFibrationTransport p q η)
+
+theorem classifiedFibrationTransport_edge_hom :
+    SSet.Truncated.HomotopyCategory.homMk
+      (smallUnstraighteningHomEdge η.hom).toTruncated = η.hom
+```
+
+#### ClassifiedSectionsTriangle（45行）
+
+```lean
+def classifiedLeftFibrationSectionsEquivalence_triangle :
+    FunctorIso
+      ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+        simplicialSectionsMap (leftStraighteningInfinityReconstruction q)
+          (leftStraighteningInfinityReconstruction_projection q))
+      (simplicialSectionsMap (classifiedFibrationTransport p q η)
+        (classifiedFibrationTransport_projection p q η))
+```
+
+#### StrictDiagramTotNativeSectionsRecovery（72行）
+
+```lean
+def strictBETotBKNativeSections_reconstruction
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    let H
+```

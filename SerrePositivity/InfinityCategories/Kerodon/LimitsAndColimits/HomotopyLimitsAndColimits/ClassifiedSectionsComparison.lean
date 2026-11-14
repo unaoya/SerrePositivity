@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationTransport
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SectionsFiberwiseEquivalence
 
 /-!
@@ -47,15 +47,10 @@ def classifiedLeftFibrationSectionsEquivalence
       (leftStraighteningInfinityDiagram q)) :
     QCatEquivalence (simplicialSections p) (simplicialSections q) := by
   let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q)
-  let f := leftStraighteningInfinityReconstruction p ≫
-    smallLeftUnstraighteningComparisonOfFunctorIso η
-  have hf : f ≫ r = p := by
-    dsimp only [f, r]
-    rw [Category.assoc, smallLeftUnstraighteningComparisonOfFunctorIso_projection,
-      leftStraighteningInfinityReconstruction_projection]
+  let f := classifiedFibrationTransport p q η
+  have hf : f ≫ r = p := classifiedFibrationTransport_projection p q η
   have ef : IsPrecompositionEquivalence f :=
-    (leftStraighteningInfinityReconstruction_isPrecompositionEquivalence p).comp
-      (smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence η)
+    classifiedFibrationTransport_isPrecompositionEquivalence p q η
   let g := leftStraighteningInfinityReconstruction q
   have hg : g ≫ r = q := leftStraighteningInfinityReconstruction_projection q
   have eg : IsPrecompositionEquivalence g :=
