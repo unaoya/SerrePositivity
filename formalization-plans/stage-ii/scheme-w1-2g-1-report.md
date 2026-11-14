@@ -2066,3 +2066,19 @@ G1・G2共用部品込み本体12,467行、入口込み12,680行。C06 は本体
 一覧：済み12／全体17（うち追加8）。
 
 監査出力：`SerrePositivity.AlgebraicGeometry.SchemeDenseAffineCoverModel: 37 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 37 declarations.`。
+
+
+C06 の稠密な射による閉部分への因子化の法則（着手前の型、見込み80〜180行）：`exists_closed_factor_of_schemeTheoreticallyDominant` は scheme-theoretically dominant な j:U→Z と射 p:Z→P、閉包含 c:C→P に対し、j≫p が c を通るなら p 自身の実際の C への因子化を返す。`exists_proper_closed_factor_of_schemeTheoreticallyDominant` は p が固有ならその因子化も固有と返す。閉包含の pullback の核が j の核以下になることから pullback が同型になり、既存の核・pullback の法則で構成する。チャートの像への射影の因子化に使う C06 内の法則で、親項目を増やさない。
+
+
+### C06：実際の affine 被覆模型からの固有なグラフ閉包
+
+`AffineCoverProperGraphClosure`（55行）：`exists_affine_cover_proper_graph_closure` は有限被覆模型の実際の各チャートの固有な周辺と、共通の開の実際の固有なグラフ閉包、各周辺への固有な射影と可換式を供給する。
+
+本体55行・入口1行。下書きの単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,001ジョブ、公理監査はすべて終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-affine-cover-proper-graph-closure-check.log`・`2g-affine-cover-proper-graph-closure-native.log`・`2g-affine-cover-proper-graph-closure-audit.log`。
+
+G1・G2共用部品込み本体12,522行、入口込み12,736行。C06 は本体588行までで未完。各チャート像への因子化・貼り合わせと一般の成分からの接続、一般の固有性の降下と B01〜B04 は残る。
+
+一覧：済み12／全体17（うち追加8）。
+
+監査出力：`SerrePositivity.AlgebraicGeometry.AffineCoverProperGraphClosure: 1 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 1 declarations.`。
