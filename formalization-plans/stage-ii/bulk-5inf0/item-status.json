@@ -1,5 +1,5 @@
 {
-  "completed_or_authorized_deferred": 12,
+  "completed_or_authorized_deferred": 14,
   "total": 14,
   "additional": 0,
   "items": [
@@ -19,7 +19,8 @@
     },
     {
       "id": "A04",
-      "state": "pending_draft_typechecks"
+      "state": "PASS",
+      "evidence": "All A4-A7 and A9 whole-file checks PASS, final Assembly block75. Theory interfaces and original mathematical claims retained; protected P0 unchanged."
     },
     {
       "id": "A05",
@@ -33,7 +34,8 @@
     },
     {
       "id": "A07",
-      "state": "pending_draft_typechecks"
+      "state": "PASS",
+      "evidence": "Obsolete baseline headers updated to efa846fe8; auxiliary files with no baseline header remain without one. Protected Shared file kept within mechanical import/name edits. All 57 staging checks PASS; README describes actual validation and historical layout."
     },
     {
       "id": "B01",

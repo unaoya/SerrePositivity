@@ -18,6 +18,10 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 [報告](../../stage-ii/report-bulk-w1.md)と[全件台帳](../../stage-ii/bulk-5inf0/declaration-disposition-audit.json)に残す。
 `PASS` は元の Lake 設定を引き継いだ型検査の成功を表し、残る `sorry` の証明を表さない。
 
+5∞-0 の最終状態は57／57本が有効なPASS。ソース・依存・成果物の照合は
+[最終台帳](../../stage-ii/bulk-5inf0/draft-final-validation.json)、範囲と保護対象の確認は
+[完了記録](../../stage-ii/bulk-5inf0/completion.json)を参照。
+
 - `Poly` は本体の `Prismatic.Poly`、Tor 振幅は `HasCochainCompleteTorAmplitude` を使う。
 - prism の圏・本質的小ささ・完全 prism の site・有界 p 冪ねじれ・semiperfectoid・一般の連結性の述語は、本体の7モジュールを使う。
 - 同じ構成を持つ `CosimplicialAlgebra`・Čechデータ・de Rham のコホモロジー積も本体を直接使う。

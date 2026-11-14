@@ -8,7 +8,7 @@
       "line": 32,
       "signature_source": "abbrev cechIndex (n : ℕ) : Type u"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -19,7 +19,7 @@
       "line": 31,
       "signature_source": "@[expose] def cechIndexMap {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) : cechIndex R m → cechIndex R n"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -30,7 +30,7 @@
       "line": 35,
       "signature_source": "abbrev cechFreeDelta (n : ℕ) : Type u"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -41,7 +41,7 @@
       "line": 48,
       "signature_source": "def cechFreeDeltaMap {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) :\n    cechFreeDelta P R m →+* cechFreeDelta P R n"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -52,7 +52,7 @@
       "line": 38,
       "signature_source": "@[expose] def cechEval (n : ℕ) : MvPolynomial (cechIndex R n) A →+* R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -63,7 +63,7 @@
       "line": 67,
       "signature_source": "@[expose] def cechKernel (n : ℕ) : Ideal (cechFreeDelta P R n)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -74,7 +74,7 @@
       "line": 82,
       "signature_source": "theorem generator_mem_cechKernel (n : ℕ) :\n    completedFreeDeltaBase P _ P.generator ∈ cechKernel P R n"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -85,7 +85,7 @@
       "line": 90,
       "signature_source": "@[expose] def HasEnvelopes : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -96,7 +96,7 @@
       "line": 63,
       "signature_source": "@[expose] def cechAlexanderObj (n : ℕ) : PrismOver P R κ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -107,7 +107,7 @@
       "line": 68,
       "signature_source": "@[expose] def cechAlexander : CosimplicialObject (PrismOver P R κ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -118,7 +118,7 @@
       "line": 74,
       "signature_source": "theorem cechAlexanderObj_weaklyInitial :\n    CategoryTheory.IsWeaklyInitial (cechAlexanderObj P R h κ hκ 0)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -129,7 +129,7 @@
       "line": 81,
       "signature_source": "def cechAlexander_isCoproduct (n : ℕ) :\n    IsColimit (Cofan.mk ((cechAlexander P R h κ hκ).obj ⦋n⦌)\n      (fun i : Fin (n + 1) => (cechAlexander P R h κ hκ).map\n        (SimplexCategory.const ⦋0⦌ ⦋n⦌ i)))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -140,7 +140,7 @@
       "line": 37,
       "signature_source": "def smallCechNerveOfCoproducts (X : CosimplicialObject (PrismOver P R κ))\n    (hc : ∀ n : ℕ, IsColimit (Cofan.mk (X.obj ⦋n⦌)\n      (fun i : Fin (n + 1) => X.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i)))) :\n    CategoryTheory.CechNerveData\n      (Opposite.op ((equivSmallModel (PrismOver P R κ)).functor.obj (X.obj ⦋0⦌)))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -151,7 +151,7 @@
       "line": 49,
       "signature_source": "def cechNerveData : CategoryTheory.CechNerveData\n    (Opposite.op ((equivSmallModel (PrismOver P R κ)).functor.obj\n      (cechAlexanderObj P R h κ hκ 0)))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -162,7 +162,7 @@
       "line": 58,
       "signature_source": "theorem cechSmall_weaklyTerminal : CategoryTheory.IsWeaklyTerminal\n    (Opposite.op ((equivSmallModel (PrismOver P R κ)).functor.obj\n      (cechAlexanderObj P R h κ hκ 0)))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -173,7 +173,7 @@
       "line": 55,
       "signature_source": "def cechAlexanderComplex : CochainComplex (ModuleCat.{u} A) ℕ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -184,7 +184,7 @@
       "line": 62,
       "signature_source": "def cechAlexanderReducedComplex : CochainComplex (ModuleCat.{u} A) ℕ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -195,7 +195,7 @@
       "line": 35,
       "signature_source": "def cechAlexanderAffine_isCoproduct (n : ℕ) :\n    IsColimit (Cofan.mk ((cechAlexanderAffine P hP r κ hκ).obj ⦋n⦌)\n      (fun i : Fin (n + 1) => (cechAlexanderAffine P hP r κ hκ).map\n        (SimplexCategory.const ⦋0⦌ ⦋n⦌ i)))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
@@ -206,7 +206,7 @@
       "line": 51,
       "signature_source": "theorem cechAlexanderAffine_baseChange :\n    letI"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
@@ -217,7 +217,7 @@
       "line": 46,
       "signature_source": "theorem isFaithfullyFlat_of_isIso {X Y : PrismOver P R κ} (f : X ⟶ Y) [IsIso f] :\n    IsFaithfullyFlat f"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
@@ -228,7 +228,7 @@
       "line": 62,
       "signature_source": "theorem IsFaithfullyFlat.comp {X Y Z : PrismOver P R κ} {f : X ⟶ Y} {g : Y ⟶ Z}\n    (hf : IsFaithfullyFlat f) (hg : IsFaithfullyFlat g) : IsFaithfullyFlat (f ≫ g)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
@@ -239,7 +239,7 @@
       "line": 45,
       "signature_source": "theorem exists_isPushout_isFaithfullyFlat (hκ : IsAdmissibleCutoff P R κ)\n    {X Y X' : PrismOver P R κ} (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (g : X ⟶ X') :\n    ∃ (Y' : PrismOver P R κ) (f' : X' ⟶ Y') (g' : Y ⟶ Y'),\n      IsPushout f g g' f' ∧ IsFaithfullyFlat f'"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticEnvelope.lean",
@@ -250,7 +250,7 @@
       "line": 204,
       "signature_source": "@[expose] def IsCompletelyRegularRel (a : Fin n → A) (x : Fin r → B) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean",
@@ -261,7 +261,7 @@
       "line": 41,
       "signature_source": "def IsFaithfullyFlat {X Y : PrismOver P R κ} (f : X ⟶ Y) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -272,7 +272,7 @@
       "line": 84,
       "signature_source": "def changePoly (f : k →+* l) : Poly k ⥤ Poly l"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -283,7 +283,7 @@
       "line": 204,
       "signature_source": "def _root_.SerrePositivity.BhattScholze.Prismatic.pdPolynomialFunctor :\n    Poly k ⥤ SimplexCategory ⥤ Under (CommRingCat.of k)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -294,7 +294,7 @@
       "line": 47,
       "signature_source": "structure IsCompletedPDEnvelope (p : ℕ) {k : Type u} [CommRing k] {J : Ideal k}\n    (γ : DividedPowers J) {B : Type u} [CommRing B] [Algebra k B] (K : Ideal B)\n    {D : Type u} [CommRing D] [Algebra k D] {K' : Ideal D}\n    (δ : DividedPowers K') (η : B →ₐ[k] D) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -305,7 +305,7 @@
       "line": 158,
       "signature_source": "theorem exists_completedPDEnvelope (p : ℕ) {k : Type u} [CommRing k] {J : Ideal k}\n    (γ : DividedPowers J) (hp : (p : k) ∈ J) {B : Type u} [CommRing B] [Algebra k B]\n    (K : Ideal B) (hK : J.map (algebraMap k B) ≤ K) :\n    ∃ (D : Type u) (rc : CommRing D), letI"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -316,7 +316,7 @@
       "line": 37,
       "signature_source": "abbrev pdFrame (k : Type u) [CommRing k] (S : Type u) (n : ℕ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -327,7 +327,7 @@
       "line": 41,
       "signature_source": "def pdFrameEval {k : Type u} [CommRing k] {A : Type u} [CommRing A] [Algebra k A]\n    {S : Type u} (s : S → A) (n : ℕ) : pdFrame k S n →ₐ[k] A"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -338,7 +338,7 @@
       "line": 244,
       "signature_source": "@[expose] def pdCechNerve : Cosimplicial.CosimplicialAlgebra k"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -349,7 +349,7 @@
       "line": 257,
       "signature_source": "@[expose] def pdCechAugmentation : ((pdCechNerve p γ hp hJ s).obj ⦋0⦌).right →+* A"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -360,7 +360,7 @@
       "line": 315,
       "signature_source": "@[expose] def pdCechNerveMap {S' : Type u} (s' : S' → A)\n    (φ : S → ((pdCechNerve p γ hp hJ s').obj ⦋0⦌).right)\n    (hφ : ∀ t, pdCechAugmentation p γ hp hJ s' (φ t) = s t) :\n    pdCechNerve p γ hp hJ s ⟶ pdCechNerve p γ hp hJ s'"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -371,7 +371,7 @@
       "line": 306,
       "signature_source": "theorem pdCechNerveMap_quasiIso\n    (_hk : IsAdicComplete (Ideal.span {(p : k)}) k)\n    (hs : Function.Surjective (pdFrameEval (k"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
@@ -382,7 +382,7 @@
       "line": 242,
       "signature_source": "def pdModel_iso_pdCechNerve (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k]\n    {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)\n    (_hγ : ∀ n : ℕ, (n.factorial : k) * γ.dpow n (p : k) = (p : k)^n)\n    (hk : IsAdicComplete (Ideal.span {(p : k)}) k)\n    (hreg : Function.Injective (fun x : k => (p : k) * x)) (r : ℕ)\n    (hJ : J ≤ RingHom.ker (algebraMap k (MvPolynomial (Fin r) (k ⧸ J)))) :\n    pdModel p k r ≅ pdCechNerve p γ hp hJ\n      (fun j : ULift.{u} (Fin r) => (MvPolynomial.X j.down : MvPolynomial (Fin r) (k ⧸ J)))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -393,7 +393,7 @@
       "line": 34,
       "signature_source": "def IsCrystallineCutoff (k R : Type u) (κ : Cardinal.{u}) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -404,7 +404,7 @@
       "line": 43,
       "signature_source": "structure CrysOver (κ : Cardinal.{u})"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -415,7 +415,7 @@
       "line": 74,
       "signature_source": "structure Hom (X Y : CrysOver p γ R κ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -426,7 +426,7 @@
       "line": 33,
       "signature_source": "def IsZariskiFamily {ι : Type u} [Finite ι] {X : CrysOver p γ R κ}\n    (Y : ι → CrysOver p γ R κ) (f : ∀ i, X ⟶ Y i) : Prop"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -437,7 +437,7 @@
       "line": 92,
       "signature_source": "theorem essentiallySmall : EssentiallySmall.{u} (CrysOver p γ R κ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -448,7 +448,7 @@
       "line": 102,
       "signature_source": "abbrev CrysOverSmall : Type u"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -459,7 +459,7 @@
       "line": 105,
       "signature_source": "abbrev CrystallineSite : Type u"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -470,7 +470,7 @@
       "line": 38,
       "signature_source": "def zariskiTopology : GrothendieckTopology (CrystallineSite p γ R κ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -481,7 +481,7 @@
       "line": 105,
       "signature_source": "def crysAlgebras (κ : Cardinal.{u}) :\n    CrysOver p γ R κ ⥤ Under (CommRingCat.of k)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -492,7 +492,7 @@
       "line": 54,
       "signature_source": "def crystallineStructureRing :\n    (CrystallineSite p γ R κ)ᵒᵖ ⥤ Under (CommRingCat.of k)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -503,7 +503,7 @@
       "line": 64,
       "signature_source": "theorem crystallineStructure_isSheaf (hκ : Cardinal.aleph0 ≤ κ) :\n    Presheaf.IsSheaf (zariskiTopology p γ R κ) (crystallineStructureRing p γ R κ)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -514,7 +514,7 @@
       "line": 32,
       "signature_source": "def crysPullback (f : R →ₐ[k ⧸ J] R') :\n    CrysOver p γ R' κ ⥤ CrysOver p γ R κ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -525,7 +525,7 @@
       "line": 61,
       "signature_source": "def crysPullbackSite (f : R →ₐ[k ⧸ J] R') :\n    CrystallineSite p γ R' κ ⥤ CrystallineSite p γ R κ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -536,7 +536,7 @@
       "line": 33,
       "signature_source": "def crysBaseRestriction : CrysOver p ε R κ ⥤ CrysOver p γ R κ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -547,7 +547,7 @@
       "line": 28,
       "signature_source": "abbrev crysResidueAlgebra : Algebra k R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -558,7 +558,7 @@
       "line": 32,
       "signature_source": "theorem crysResidue_kernel :\n    letI"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -569,7 +569,7 @@
       "line": 80,
       "signature_source": "def pdCechTower : ℕᵒᵖ × SimplexCategory ⥤ CrysOver p γ R κ"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
@@ -580,7 +580,7 @@
       "line": 94,
       "signature_source": "theorem pdCechTower_proWeaklyTerminal :\n    IsProWeaklyTerminal (pdCechTowerZero p γ hp R s hs (hsmall 0))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -591,7 +591,7 @@
       "line": 95,
       "signature_source": "def psiRing : A →+* WittVector p R"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -602,7 +602,7 @@
       "line": 81,
       "signature_source": "@[expose] def wittCrystallinePrism [IsAdicComplete (Ideal.span {(p : C)}) C] :\n    OrientedPrism p (WittVector p C)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -613,7 +613,7 @@
       "line": 111,
       "signature_source": "def psiPrism (hpR : Function.Injective (fun x : R => (p : R) * x))\n    [IsAdicComplete (Ideal.span {(p : R)}) R] :\n    OrientedPrism.Hom P (wittCrystallinePrism hpR)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -624,7 +624,7 @@
       "line": 40,
       "signature_source": "abbrev wZero : W →+* C"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -635,7 +635,7 @@
       "line": 99,
       "signature_source": "theorem wZero_psi : (wZero p R).comp (psiRing P hpA) = (q).comp P.deltaStructure.frobeniusLift"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -646,7 +646,7 @@
       "line": 43,
       "signature_source": "@[expose] def wittPdIdeal : Ideal W"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -657,7 +657,7 @@
       "line": 242,
       "signature_source": "def wittPdStructure (hlocalC : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : C)) :\n    DividedPowers (wittPdIdeal p C)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -668,7 +668,7 @@
       "line": 422,
       "signature_source": "def bigCechAlexander (hP : IsBoundedPrism P) :\n    Poly C ⥤ SerrePositivity.Cosimplicial.CosimplicialAlgebra A"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -679,7 +679,7 @@
       "line": 37,
       "signature_source": "abbrev bigResidue (Q : Poly C)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -690,7 +690,7 @@
       "line": 41,
       "signature_source": "instance bigResidueAlgebra (Q : Poly C) : Algebra k (bigResidue P Q)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -701,7 +701,7 @@
       "line": 45,
       "signature_source": "theorem p_mem_wittPdIdeal : (p : W) ∈ wittPdIdeal p C"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -712,7 +712,7 @@
       "line": 125,
       "signature_source": "def wittBigPdModel (hpC : Function.Injective (fun x : C => (p : C) * x))\n    (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : C)) :\n    Poly C ⥤ SimplexCategory ⥤ Under (CommRingCat.of (WittVector p C))"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -723,7 +723,7 @@
       "line": 147,
       "signature_source": "def _root_.SerrePositivity.BhattScholze.Prismatic.wittBigCrystalline :\n    OrientedPrism p (term P hpC hlocal Q n).carrier"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -734,7 +734,7 @@
       "line": 378,
       "signature_source": "def _root_.SerrePositivity.BhattScholze.Prismatic.wittBigBridge (hP : IsBoundedPrism P) :\n    bigCechAlexander P hP ⟶ wittBigPdModel P hpC hlocal ⋙ resCosimplicial"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -745,7 +745,7 @@
       "line": 283,
       "signature_source": "def _root_.SerrePositivity.BhattScholze.Prismatic.wittToSmall :\n    wittBigPdModel P hpC hlocal ⟶\n      pdPolynomialFunctor p γC (Ideal.mem_span_singleton_self (p : C)) hk hpC ⋙\n      (Functor.whiskeringRight _ _ _).obj resW"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -756,7 +756,7 @@
       "line": 229,
       "signature_source": "def residuePdStructure\n    (hpR : Function.Injective (fun x : R => (p : R) * x))\n    (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : R)) :\n    DividedPowers (Ideal.span {(p : R)})"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -767,7 +767,7 @@
       "line": 259,
       "signature_source": "theorem wZero_isDPMorphism\n    (hlocalC : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : C)) :\n    (wittPdStructure p C hpC hlocalC).IsDPMorphism (residuePdStructure p hpC hlocalC)\n      (wZero p C)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -778,7 +778,7 @@
       "line": 200,
       "signature_source": "def cechAlexanderFrame (Q : Poly C) (X : ∀ n, AffineEnvelopeTerm P Q.n n κ)\n    (Y : ∀ (Q' : Poly C) n, BigCechTerm P Q' n) :\n    polyCosimplicialAlgebraOfAffineTerms P X ⟶ (bigCechAlexanderOfTerms P Y).obj Q"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -789,7 +789,7 @@
       "line": 211,
       "signature_source": "def wittSmallFrame : pdModel p W Q.n ⟶ (wittBigPdModel P hpC hlocal).obj Q"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -800,7 +800,7 @@
       "line": 47,
       "signature_source": "def pdModelBaseChange : pdModel p k r ⟶ pdModel p l r ⋙ resK"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -811,7 +811,7 @@
       "line": 207,
       "signature_source": "theorem _root_.SerrePositivity.BhattScholze.Prismatic.wittToSmall_frame :\n    wittSmallFrame P hpC hlocal Q hk ≫ (wittToSmall P hpC hlocal hk).app Q ≫\n      Functor.whiskerRight (eqToHom (show\n        (pdPolynomialFunctor p γC (Ideal.mem_span_singleton_self (p : C)) hk hpC).obj Q =\n          pdModel p C Q.n from by rfl)) resW =\n      @pdModelBaseChange _ W C _ _ (wZero p C).toAlgebra Q.n"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
@@ -822,7 +822,7 @@
       "line": 65,
       "signature_source": "private def polynomialZeroForm : B ≃ₗ[B] DeRham.forms k T 0"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   },
   {
     "draft": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean",
@@ -833,6 +833,6 @@
       "line": 150,
       "signature_source": "@[instance_reducible] def koszulResidueModule {R : Type u} [CommRing R] (a : Fin n → R) (q : ℤ) :\n    Module (KoszulResidue a) ((koszulComplex a).homology q)"
     },
-    "status": "source_retargeted; Lean validation pending"
+    "status": "PASS canonical owner import and whole-draft type checks; see draft-final-validation.json"
   }
 ]

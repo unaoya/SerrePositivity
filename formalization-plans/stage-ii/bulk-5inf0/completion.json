@@ -1,0 +1,44 @@
+{
+  "status": "5inf-0 complete; B06 uses expressly authorized deferral to 5inf-3a",
+  "baseline": "efa846fe8",
+  "items": {
+    "completed_or_authorized_deferred": 14,
+    "total": 14,
+    "additional": 0
+  },
+  "draft_checks": {
+    "PASS": 57,
+    "fail": 0,
+    "stale": 0
+  },
+  "sorry_all57": {
+    "before": 827,
+    "current": 684,
+    "per_file_increases": 0
+  },
+  "lean_diff": {
+    "added": 2791,
+    "removed": 2800,
+    "total": 5591,
+    "original_estimate_upper": 5550,
+    "outer_cap": 11100
+  },
+  "core": {
+    "source_artifacts_checked_unchanged": 13,
+    "audit_declarations": 99,
+    "record": "core-validation.json",
+    "main_math_unchanged_after_core_checks": true
+  },
+  "guards": {
+    "protected_shared_sha256": "56d43529a0b0b6c3e123a57abe7a9fd84f1308c96a567a9ea4b135e4f4c424ce",
+    "protected_A4_P0_identical": true,
+    "forbidden_directory_changes": 0,
+    "additional_layer_violations": 0,
+    "preexisting_layer_violations": 15,
+    "old_E3_input_import_paths": 0,
+    "dependency_graph_nodes": 12944,
+    "main_duplicate_candidates": 0,
+    "main_files_scanned": 32937
+  },
+  "scope_note": "Drafts retain original unfinished mathematical proofs; no full root build or full verify is claimed for 5inf-0. Required core target build and small audit are retained with unchanged-source checks."
+}

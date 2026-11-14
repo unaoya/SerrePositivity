@@ -1203,3 +1203,22 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 一覧：済み 12／全体 14（うち追加 0）。[第74束](bulk-5inf0/draft-block74-validation.json)でIntegralDiscretenessが成功。有効な成功は56／57本。同じRをquotientTensorの暗黙引数として渡すことが通った。A8の全件が揃ったためA05をPASSへ更新し、本体の40対応の台帳も全体の型検査済みにした。この検査済みソースをコミットする。
 
 最後のAssemblyは失敗。構造の各欄へ同じhRを名前付き引数で渡し、PerfectoidizationInterfaceE3の実際の名前空間PerfectoidizationInterfaceを開く。既存のTheoryからE3への還元を使う方針はそのまま。界面の型・主張・仮定は変更しない。第75束で検査する。残る項目はA04・A07。
+
+
+### 5∞-0 停止点・完了報告（11-14夜）
+
+一覧：済み 14／全体 14（うち追加 0）。[第75束](bulk-5inf0/draft-block75-validation.json)でAssemblyが成功し、[最終照合](bulk-5inf0/draft-final-validation.json)は**57／57本が有効なPASS、失敗0・期限切れ0**。元のLake設定（maxSynthPendingDepth=3等）を継承し、一時配置の依存12,944頂点と、draft間234辺の順序を明示した。構造の八欄は同じhRを渡し、TheoryからE3への既存の還元で組み立てた。rootの選択済みE3入力にはdraftsから戻らない。共有鍵は各束280秒以内で取得・返却し、現在は持っていない。
+
+本体7モジュールと直接利用側を含む13対象のビルド、小監査（所有する99宣言、必要な11名）は既にPASSで、その13ソースのハッシュが最終状態と一致することを再確認した。小監査は標準のpropext・Classical.choice・Quot.soundだけ。正式BS監査への[登録案](bulk-5inf0/stage2-audit-registration-proposal.json)は案のまま。5∞-0の指示は対象ビルドと小監査であり、この枝の変更後のroot全体ビルド・full verifyを通したとは扱わない。
+
+[完了記録](bulk-5inf0/completion.json)：本体とdraftsの公開名の重複候補0（本体32,937ファイルを走査）、旧E3入力へのimport経路0。層の検査は基準と同じ15辺で追加0・例外追加0。[層の差分](bulk-5inf0/final-layer-comparison.json)と[全出力](bulk-5inf0/layers-final.json.gz)を保存。変更禁止のEInfinity/・InfinityCategories/・AlgebraicGeometry/は差分0。Sharedの保護ファイルは承認済み11箇所の機械的追従後と同一、A4のP⁰節は基準とバイト単位で一致する。
+
+[宣言の全件台帳](bulk-5inf0/declaration-disposition-audit.json)は123対応（同名所有元113・別名置換7・旧型を保持した改名3）、削除120・改名3・未説明0。型が異なった一般pd模型と普遍Witt比較は元の未証明の主張を保ち、強い仮定への置き換えで消していない。承認されたuniversalLciPrismのh₀と、同じ理由の[引数の復元](bulk-5inf0/restored-context-parameters.json)は全ファイルの型検査で通った。環・δ構造・生成元は[保存の確認](bulk-5inf0/a3-restored-parameter-source-guard.json)どおり。
+
+[ソースのsorry](bulk-5inf0/all-draft-sorry-summary.json)は全57本で827→684（143減、ファイル別の増加0）。従来の変更対象56本の系列では819→676、A0〜A9は705→569。残るsorryは⑤∞で証明する元の数学であり、今回それを証明したとは主張しない。B06の一般の結晶比較は§2B6の明示の許容に従い5∞-3aへ回した。
+
+Lean差分は追加2,791・削除2,800、計5,591行。当初見込み上端5,550行を超えたが、承認された外枠11,100行の内側。追加の数学項目は0。A07は古い基準の記載をefa846fe8へ更新し、元から基準の記載のない補助ファイルには書き足さず、保護ファイルは許された機械的追従だけに留めた。READMEの旧配置は履歴と明示した。
+
+保護されたShared/EInfinityPowerOperationには既存のdocstring linterのwarningが残り、本文にerrorという語を含むが診断の重大度はwarning、Leanの終了コードは0である。保護範囲の文章を変えてこの警告を消すことはしていない。
+
+これを5∞-0の単独取り込み用の停止点とする。取り込みは調整役に委ね、指示どおり続いてB5の段0（属性からの地図生成の紙の設計）へ進む。
