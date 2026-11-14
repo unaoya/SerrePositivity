@@ -2592,3 +2592,19 @@ B03・B04 の被覆模型の始域を係数段で動かす法則（着手前の�
 G1・G2共用部品込み本体15,040行、入口込み15,291行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+前記 pushout 余極限の実際の模型への移送（着手前の型、見込み40〜90行）：指定した環 P と実際の `IsPushout β f i j` から、各段の pushout の図式の頂点を P に保つ cocone と IsColimit、両挿入との同じ可換式を返す。`IsPushout.isoPushout` による cocone の同型移送の法則で、元の模型の存在を追加仮定にするものではない。
+
+
+### B03・B04：係数段ごとの実際の pushout の filtered 余極限
+
+`FilteredPushoutRingModel`（65行）：`filteredPushoutRingDiagram`・`filteredPushoutRingCocone` は固定の環写像を実際の filtered 係数図式に沿って pushout する。`filteredPushoutRingCoconeIsColimit` は Mathlib の Under の lift と左随伴な pushout・forget の filtered 余極限保存から、その cocone の IsColimit を返す。`filteredPushoutRingInl` は各係数段からの自然変換。二つの挿入と cocone の可換式も保持する。
+
+本体65行・入口1行。pushout の両挿入の普遍性を明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,040ジョブ、小監査10宣言・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-filtered-pushout-ring-model-check-2.log`・`2g-filtered-pushout-ring-model-native.log`・`2g-filtered-pushout-ring-model-audit.log`。
+
+G1・G2共用部品込み本体15,105行、入口込み15,357行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
+
+係数段の性質の移送（着手前の型、見込み40〜90行）：`filteredPushoutRingInl_vCover` は固定の射 f の affine v 判定を全ての段の第一挿入へ移す。`filteredPushoutRingInl_finiteType` は f の有限型性を同じ各段へ移す。既存の v 判定の pushout 安定性と、Mathlib の有限型性の底変換安定性の係数移送の法則として親項目を増やさない。
