@@ -8338,3 +8338,138 @@ propext・Classical.choice・Quot.sound の範囲。引用属性の追加はな�
 次は元の frame 評価と既存の複体側の同じ三相データを比較する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §55 全 frame Hom と全要素図式の評価
+
+M10 の元の全加群 frame Hom から各対象での複体の全 frame Hom への写像を作り、
+同じ Dold–Kan 同型と主 Hom end の評価との可換性を証明した。
+複体側の frame は P(x)⊗N(Δⁿ)、加群 frame の評価は N(Δⁿ)⊗P(x) であるため、
+両者を定義上等しいとは扱わない。転置の比較から、全単体での実射が
+符号付き交換の後に元の加群射を評価した射に一致することを証明した。
+その符号付き交換を全作用素に自然な frame 同型へ束ねた。
+
+同じ全 Hom 評価に要素圏関手を作用させ、元の加群の全要素図式を複体の全要素図式へ
+送った。次数射影に同じ frame 同型を前合成した全図式の自然同型と、
+同じ元の二つの評価自然変換を結ぶ厳密な可換式を証明した。
+評価後の定値関手の同定も元の constComp 同型で明示する。
+いずれも既存の構成の評価・係数移送・自然性の法則であり、一次 ID の追加はない。
+
+`RawModuleTensorElementEvaluationIndex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementEvaluationIndex
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    strictRawModuleTensorElementIndex A X P Q ⥤
+      normalizedTensorElementIndex A
+        ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+        ((moduleEvaluation A _ x).obj Q)
+
+def strictRawModuleTensorElementEvaluationDiagramIso
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    strictRawModuleTensorElementEvaluationIndex A X P Q x ⋙
+      normalizedTensorElementDiagram A
+        ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+        ((moduleEvaluation A _ x).obj Q) ≅
+      strictRawModuleTensorElementDiagram A X P Q ⋙ moduleEvaluation A _ x
+
+lemma strictRawModuleTensorElementEvaluationDiagramIso_evaluation
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    (strictRawModuleTensorElementEvaluationDiagramIso A X P Q x).hom ≫
+      CategoryTheory.Functor.whiskerRight
+        (strictRawModuleTensorElementEvaluation A X P Q) (moduleEvaluation A _ x) ≫
+      (Functor.constComp (strictRawModuleTensorElementIndex A X P Q) Q
+        (moduleEvaluation A _ x)).hom =
+      CategoryTheory.Functor.whiskerLeft
+        (strictRawModuleTensorElementEvaluationIndex A X P Q x)
+        (normalizedTensorElementEvaluation A
+          ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+          ((moduleEvaluation A _ x).obj Q))
+```
+
+`TensorFrameEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+def moduleTensorEvaluationFrameIso (P : ModuleCategory A D) (x : D) :
+    normalizedSimplexTensor A ((moduleEvaluation A D x).obj P) ≅
+      ((moduleTensorSimplicesFunctor A D).obj P) ⋙ moduleEvaluation A D x
+
+lemma moduleTensorEvaluationHomMap_frame (P Q : ModuleCategory A D) (x : D)
+    (n : SimplexCategory)
+    (f : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ Q) :
+    (moduleTensorEvaluationHomMap A D P Q x).app (op n) f =
+      (moduleTensorEvaluationFrameIso A D P x).hom.app n ≫
+        (moduleEvaluation A D x).map f
+```
+
+`TensorHomEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+def moduleTensorEvaluationHomMap (P Q : ModuleCategory A D) (x : D) :
+    (cosimplicialHom ((moduleTensorSimplicesFunctor A D).obj P)).obj Q ⟶
+      (cosimplicialHom (normalizedSimplexTensor A ((moduleEvaluation A D x).obj P))).obj
+        ((moduleEvaluation A D x).obj Q)
+
+lemma moduleTensorHomDoldKanIso_evaluation (P Q : ModuleCategory A D) (x : D) :
+    (moduleTensorHomDoldKanIso A D P Q).hom ≫
+      (truncatedDoldKanFunctor A).map
+        (moduleHomπ A D (ForgetEnrichment.to (Complex A) P)
+          (ForgetEnrichment.to (Complex A) Q) x) =
+      moduleTensorEvaluationHomMap A D P Q x ≫
+        (normalizedSimplexTensorHomIso A ((moduleEvaluation A D x).obj P)
+          ((moduleEvaluation A D x).obj Q)).hom
+
+lemma moduleTensorEvaluationHomMap_transpose (P Q : ModuleCategory A D) (x : D)
+    (n : SimplexCategory)
+    (f : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ Q) :
+    normalizedSimplexTensorHomEquiv A ((moduleEvaluation A D x).obj P)
+      ((moduleEvaluation A D x).obj Q) n
+      ((moduleTensorEvaluationHomMap A D P Q x).app (op n) f) =
+    normalizedSimplexHomEquiv A _ n (curryRight ((moduleEvaluation A D x).map f))
+```
+
+`TensorHomEvaluationValue.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleTensorEvaluationHomMap_app (P Q : ModuleCategory A D) (x : D)
+    (n : SimplexCategory)
+    (f : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ Q) :
+    (moduleTensorEvaluationHomMap A D P Q x).app (op n) f =
+      (signedSwap ((moduleEvaluation A D x).obj P)
+        ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n))).hom ≫
+          (moduleEvaluation A D x).map f
+```
+
+
+### 55.1 検証と実測
+
+TensorHomEvaluationValue、TensorFrameEvaluation、RawModuleTensorElementEvaluationIndex の
+対象ビルドは終了値 0 で成功した。新規公開宣言九本は四本・二本・三本の小さい監査に分け、
+いずれも終了値 0。依存公理は propext・Classical.choice・Quot.sound のみで、
+新規引用属性・引用出力は 0 本。すべて impl 鍵・待ち 3600 秒・gtimeout 280 秒で実行した。
+root ビルドや大きい監査、heartbeat 上限の変更はしていない。
+
+今回の検証済み Lean は四ファイル・233 行・明示宣言九本（private 0 本）。
+§54.1 に加え、検証済み累計は 203 ファイル・15,841 行・明示宣言 717 本
+（private 21 本）。外枠まで残り 1,159 行。
+200 行を超える証明や一次 ID の追加はない。既存 EInfinity ソースは変更していない。
+
+次の augmentation 評価法則を TensorFrameAugmentationEvaluation.lean の新規下書きとして
+実装中であり、この検証済み累計にはまだ含めていない。下書きは 37 行で、
+現作業木全体は 15,878 行、外枠まで残り 1,122 行である。
+
+元の全要素圏と実評価射の比較は通ったが、元の全三相単体・三角形と K の実 Hom 射の
+比較は未完である。複体側の triangle 系列の実測は 40 ファイル・2,541 行であり、
+単純移植では残りの外枠に入らない。評価による再利用を進めているが、未証明の比較を
+仮定にして済ませない。M10・M11 以降・G12 は未完、外枠 17,000 行は維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
