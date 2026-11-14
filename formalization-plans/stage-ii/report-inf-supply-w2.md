@@ -11857,3 +11857,96 @@ theorem strictBETotBKProbeArrowCone_comparison (F : K ⥤ (operad A).Algebra)
         weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) (framedLimitProbe A Y)
           (framedLimitProbeComparison A Y ≫ f)
 ```
+
+## 185. 両変数の入力と固定始域の制限の厳密な照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R02の全錐族・標準脚の最終正規化、R03の無条件の極限性は未完了。
+
+元のprobeつきright frame Homの二変数関手をuncurryし、同じAsSmall・ULift・Ex∞による全Kan図式とcoherentな入力を作った。正本側は同じCAlg源の両射影をtwistedArrowHomInfinityの底へ送る。始域の反変性には、同じnerveOppositeIsoの逆を使う。
+
+両入力の始域を固定すると、それぞれ既存の第零frame比較の入力と同じ共変Hom∞に**全単体で厳密に等しい**。反転同型の逆と定値写像の可換則を一般の小圏で証明し、これを使って正本側を照合した。これは既存構成の係数移送・前合成則で、一覧への新規定理の追加は0。二入力を結ぶ全FunctorIsoはまだ証明していない。固定始域ごとの比較をそのまま両変数の比較と見なさない。
+
+### 185.1 検証と実測
+
+253：JointHomInput一本の対象ビルド10,624 jobs・終了0、小監査94本693宣言。254：NerveOppositeConstantとJointHomRestriction二本の対象ビルド10,626 jobs・終了0、小監査96本698宣言。全て標準三公理のみ。実ハンドル91462・76154の終了0を確認し、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。
+
+今回三本の行数は下の型一覧に記載。累計96本・6,170行（外枠15,000）。登録予定一覧を更新した。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 185.2 残る接続の位置
+
+同じ普遍単位で正規化されたjoint比較、または同等の全パラメーター評価則がheへの残る接続である。今回の制限等式は、その比較を構成するときに既存の固定始域比較との両立を明記するための型の照合である。既存の豊穣Yoneda比較とframe比較のどこで始域のcoherenceを作るかを先に確認する。
+
+### 185.3 既存構成の法則と入力の型
+
+#### StrictDiagramTotJointHomInput（119行）
+
+```lean
+abbrev strictBETotJointHomIndex
+
+def strictBETotJointRawHom :
+    ((operad A).Algebraᵒᵖ × (operad A).Algebra) ⥤ SSet.{u}
+
+def strictBETotJointRawHomKan : strictBETotJointHomIndex A ⥤ KanObject.{u+1}
+
+def strictBETotJointRawHomCoherent :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (strictBETotJointHomIndex A)) ⟶ SpaceInfinity.{u+1}
+
+def strictBETotJointHomSourceIndex :
+    strictBETotJointHomIndex A ⥤ (AsSmall.{u+1} (operad A).Algebra)ᵒᵖ
+
+def strictBETotJointHomTargetIndex :
+    strictBETotJointHomIndex A ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotJointNativeHomInput :
+    nerve (strictBETotJointHomIndex A) ⟶ (CAlg_R A).op ⊗ CAlg_R A
+
+def strictBETotJointNativeHomCoherent :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (strictBETotJointHomIndex A)) ⟶ SpaceInfinity.{u+1}
+
+def strictBETotJointHomFixSource (X : (operad A).Algebra) :
+    AsSmall.{u+1} (operad A).Algebra ⥤ strictBETotJointHomIndex A
+
+theorem strictBETotJointRawHom_fixSource (X : (operad A).Algebra) :
+    CategoryTheory.Prod.sectR (Opposite.op X) (operad A).Algebra ⋙ strictBETotJointRawHom A =
+      rightFrameHom (rightFrameFamily A) (framedLimitProbe A X)
+
+theorem strictBETotJointRawHomKan_fixSource (X : (operad A).Algebra) :
+    strictBETotJointHomFixSource A X ⋙ strictBETotJointRawHomKan A =
+      FrameHom.rightFrameHammockKanDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C
+
+theorem strictBETotJointRawHomCoherent_fixSource (X : (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).map (nerveMap (strictBETotJointHomFixSource A X)) ≫
+      strictBETotJointRawHomCoherent A =
+    FrameHom.rightFrameHammockCoherentDiagram
+      ((SimplicialLocalization.modelSourceFrameFamily (C
+
+```
+
+#### NerveOppositeConstant（52行）
+
+```lean
+theorem nerveOppositeIso_inv_constant (c : C) (n : ℕ) :
+    ((nerveOppositeIso (C
+
+theorem nerveOppositeIso_inv_const {K : SSet.{u}} (c : C) :
+    SSet.const (X
+
+```
+
+#### StrictDiagramTotJointHomRestriction（76行）
+
+```lean
+theorem strictBETotJointNativeHomInput_fixSource (X : (operad A).Algebra) :
+    nerveMap (strictBETotJointHomFixSource A X) ≫ strictBETotJointNativeHomInput A =
+      lift (SSet.const (SSet.opObjEquiv.symm
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))))
+          (strictBETotModelSource A)
+
+theorem strictBETotJointNativeHomCoherent_fixSource (X : (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).map (nerveMap (strictBETotJointHomFixSource A X)) ≫
+      strictBETotJointNativeHomCoherent A =
+    (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelSource A) ≫
+      homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+
+```

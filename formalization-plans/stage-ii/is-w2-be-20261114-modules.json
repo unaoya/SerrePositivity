@@ -91,5 +91,8 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSourceFamily",
   "SerrePositivity.EInfinity.FrameHom.RightFrameHomBifunctor",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeSourceFunctor",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalSourceNaturality"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalSourceNaturality",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInput",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveOppositeConstant",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomRestriction"
 ]
