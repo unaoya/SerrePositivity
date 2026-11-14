@@ -848,3 +848,12 @@ A07の冒頭の更新はA0〜A9の40本だけに限定せず、保護対象を�
 [旧ルート名の追従台帳](bulk-5inf0/root-reference-refresh.json)を追加。単体集合の固有名は所有元つき対応表に合わせ、一般的なHasLimit・HasColimitは使用箇所を確かめたものだけを直す。型検査で残ったIsPresentableの曖昧さは、元から指定されているHTTの定義への完全修飾で解消する修正とした。Čech形状はΔのnerveがSSet.{0}にあることを反映し、同じrightOpのnerve写像を単体ごとに書いた。圏同値のunit/counit・錐の表示・端点移送の法則の証明も既存APIへ追従中で、新しい数学的な仮定は加えていない。端点移送の局所補題は `∀ {x x' y : E₀} (h : x = x') (e : Edge x y), ((h ▸ e).toTruncated).edge = e.toTruncated.edge` で、既存の構成の法則の証明分割（未検査、一覧の追加項目ではない）。
 
 現在のLean差分は追加1829・削除2135、合計3964行、外枠11,100行。禁止3ディレクトリと保護されたSharedファイルの差分0、`git diff --check`も成功。第8束は通常のbulk整理券で待機しており、成功に算入していない。
+
+
+### 5∞-0 のdraft検査・第8〜9束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第8束はGlobalSections・CechConerveLimitの2本が成功、第9束はScalarRestriction・Truncation・AnimatedDomainの3本が成功。全体の型検査が通ったdraftは計11本。既存の未証明部分は維持する。成功した5本をこの区切りでコミットする。[第8束](bulk-5inf0/draft-block08-validation.json)・[第9束](bulk-5inf0/draft-block09-validation.json)の全対象と各回の署名・成否を保持した。個別ログは再実行で更新するため、第9束の生ログをこの時点で保存した。鍵は各束の終了時に返却し、一束は280秒以内とした。
+
+係数制限は旧sifted名の完全修飾、Truncationは旧pt射影3箇所をMathlibのHomotopyCategory.objEquivへ、AnimatedDomainは既存の評価環射・R線形性と離散埋め込みの合成の定義展開を直したもの。いずれも新しい数学的仮定・構成を追加していない。SetSectionsは第8〜9束で同じ旧版の診断が残り、第9束の採取後に入った最新修正はまだ検査前（署名が異なる）で、成功には算入していない。
+
+次の前線はPrismaticSite・Shared/DeRhamPolynomial・Shared/Descendable。前者はCoverage.coverings・旧∞圏名、後二者は名前空間と旧pt射影の診断。A2で3宣言の所有元がimportの閉包に入っていなかったので、現在のソースから確かめた2モジュールを直接importした。古い対応表のmodule欄にはその後の分割前のパスが残るため、所有元の確認は現行ソースで行った。再検査した所有元の到達性は欠落0（型検査そのものではない）。

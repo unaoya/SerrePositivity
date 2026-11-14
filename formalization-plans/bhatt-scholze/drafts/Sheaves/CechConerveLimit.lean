@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.CechConerveLimit（層 Sheaves）
--- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1（弱終対象による計算）、単位 S3。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1（弱終対象による計算）、単位 S3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
@@ -70,16 +70,17 @@ structure CechNerveData (U : 𝒟) where
 規約：始域は持ち上げた N(Δ)（`presheafShape SimplexCategory` = N(Δᵒᵖ) ではない。W9-I-02 で訂正）。Tot の添字は Δ（原典 Constr 4.18・脚注 10）。
 使われ方：前層 F をこれに沿って制限すると余単体的対象 [n] ↦ F(U_n)。 -/
 def cechShape {U : 𝒟} (d : CechNerveData U) :
-    (SSet.uliftFunctor.{u + 1, u}).obj (nerve SimplexCategory) ⟶ presheafShape 𝒟 :=
-  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap d.obj.rightOp)
+    (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategory) ⟶ presheafShape 𝒟 where
+  app _ := ↾fun s => ⟨s.down ⋙ d.obj.rightOp⟩
+  naturality _ _ _ := rfl
 
 /-- 概要：脚注 10（前層版）：U が弱終で U_• がその Čech 脈体なら、F 上の錐が極限錐であることと、Čech 脈体への制限が極限錐であることは同値。
 方針：§方針 の (i) または (ii)。
 規約：錐の頂点はそのまま。E の極限の存在は仮定しない。
 使われ方：Constr 4.18、Rem 4.19、Prop 8.5。 -/
 theorem isLimitCone_iff_restrict_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechNerveData U)
-    (F : Presheaf 𝒟 E) (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShape d)) := by
+    (F : Presheaf 𝒟 E) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone c (cechShape d)) := by
   sorry -- G9：効果的エピの Čech 脈体の実現、または Bousfield–Kan との比較
 
 /-- 概要：極限の存在も同値。
@@ -88,7 +89,7 @@ theorem isLimitCone_iff_restrict_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : 
 使われ方：Tot の存在から Δ_{R/A} の存在（層化を経由しない直接の形）。 -/
 theorem hasLimit_iff_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechNerveData U)
     (F : Presheaf 𝒟 E) :
-    HasLimit F ↔ HasLimit (cechShape d ≫ F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit F ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (cechShape d ≫ F) := by
   sorry -- 同上。逆向きは錐の延長
 
 /-- 概要：Čech 側の極限錐（Tot）から、同じ頂点をもつ F 上の極限錐を得る。
@@ -96,8 +97,8 @@ theorem hasLimit_iff_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechNerveDat
 規約：頂点の等号で述べる（E3 の `vertex_eq` と同じ規約）。
 使われ方：Δ_{R/A} ≃ Tot O_Δ(C^•)（`prismaticCohomology_iso_cechAlexanderTot`）。 -/
 theorem exists_limitCone_of_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechNerveData U)
-    (F : Presheaf 𝒟 E) (t : JoinCone (cechShape d ≫ F)) (ht : IsLimitCone t) :
-    ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex := by
+    (F : Presheaf 𝒟 E) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (cechShape d ≫ F)) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) :
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- 錐の延長と `isLimitCone_iff_restrict_cech`
 
 /-! ## 大きい添字圏の版（W9-I-04、BS-D3 の D3-02。2026-11-03）
@@ -133,14 +134,14 @@ def cechShapeLarge {U : 𝒟} (d : CechNerveDataLarge U) :
 
 /-- 大きい添字圏の前層に対する S3。制限の前後で錐の頂点は同じ。 -/
 theorem isLimitCone_iff_restrict_cech_large {E : SSet.{u+1}} [Quasicategory E] {U : 𝒟} (hU : IsWeaklyTerminalLarge U)
-    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShapeLarge d)) := by
+    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone c (cechShapeLarge d)) := by
   sorry -- 各試験対象から U への写像の集合は非空。その Čech 脈体で S3 と同じ極限判定
 
 /-- A5 が受け取るのは Čech 側の錐だけなので、その延長も頂点つきで述べる。 -/
 theorem exists_limitCone_of_cech_large {E : SSet.{u+1}} [Quasicategory E] {U : 𝒟} (hU : IsWeaklyTerminalLarge U)
-    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (t : JoinCone (cechShapeLarge d ≫ F))
-    (ht : IsLimitCone t) : ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex := by
+    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (cechShapeLarge d ≫ F))
+    (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) : ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- Čech の添字関手の始性による錐の延長（G8・G9）
 
 end Large
