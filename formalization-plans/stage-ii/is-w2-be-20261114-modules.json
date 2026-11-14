@@ -12,5 +12,10 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotLocalization",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotEvaluationLocalization",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotVertexLocalization",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingLocalization"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingLocalization",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightUnitNaturality",
+  "SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedCone",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbePointComparison"
 ]

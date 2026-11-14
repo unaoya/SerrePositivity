@@ -9353,3 +9353,130 @@ def strictBETotLocalizedForget_factor :
 3b-4の検証済み **14モジュール・879行**、外枠15,000行まで14121行。新規200行超のファイルなし。登録候補を同じBE用JSONに追記。G10の366本とは分ける。
 
 次はR02〜R03の核心へ戻る。同じ実frameのHom比較と重み付き錐空間の同型は§162で検証済みだが、これだけで元のCAlg図式上の指定native全錐とその極限性は得ていない。全族の錐を独立な点ごとの錐から自然だと仮定したり、通常局所化の随伴の余単位をnativeな全錐の代用にしたりしない。元の実frameの標準射を持つ全錐を構成し、同じ制限射との等式を追跡する。今回の局所化の因子化はこの構成後のR05へ再利用する。保存点であり、承認待ち・外枠・新規数学による停止ではない。/goalはactiveのまま。
+
+
+## 164. 普遍重み付き錐・元のprobe・実Homの標準点（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R02・R03の既存随伴単位・零次同型の法則を分割。指定native錐・その極限性は未完了。
+
+### 164.1 元の普遍錐を固定する
+
+同じFrameWeightRealizationの随伴の単位を、元の重みで評価する。これが `strictBETotUniversalWeightedCone` で、随伴で戻すと**同じ元の計算対象の恒等射**になる。任意の元の射が表す重み付き錐は、この単位への同じ前合成。元の全計算関手の射の反対は、同じframe族の射の実現のmateそのものでもある。
+
+元の計算対象の同じ `framedLimitProbeComparison` を前合成すると、同じ `framedLimitConeSpace` の具体的な普遍probe錐の零単体が得られる。さらに元の `strictBETotTensorFrameConeIso` は、零次同型にそのprobe比較を合成したHomを、**その同じ零単体**に写す。この同定を単なるπ₀上の等式へ弱めていない。
+
+### 164.2 検証済みの型
+
+共通のunit則の宇宙・圏・余極限の仮定はソースと同じ。BE側は `A : Type u`、`[CommRing A]`、`K : Type u`、`[SmallCategory K]`。
+
+`SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightUnitNaturality`（26行）：
+
+```lean
+theorem unit_frame_naturality {B B' : K ⥤ SimplexCategory ⥤ C}
+    (a : B ⟶ B') (W : Kᵒᵖ ⥤ SSet.{w}) :
+    (adjunction K B').unit.app W ≫ ((homFamily K).map a.op).app ((functor K B').obj W) =
+      (adjunction K B).unit.app W ≫ (hom K B).map ((map K a).app W)
+```
+
+`SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint`（36行）：
+
+```lean
+theorem tensorFrameHomIso_point (Y : C)
+    (f : (FrameWeightRealization.functor K B).obj W ⟶ Y) :
+    (((tensorFrameHomIso K W B).hom.app Y).app (Opposite.op ⦋0⦌))
+      ((tensorFrameZeroIso K W B).hom ≫ f) =
+        conePoint Kᵒᵖ W ((FrameWeightRealization.adjunction K B).homEquiv W Y f)
+```
+
+`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedCone`（67行）：
+
+```lean
+def strictBETotUniversalWeightedCone (F : K ⥤ (operad A).Algebra) :
+    HomotopyWeight.framedLimitWeight K ⟶
+      (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj
+        (op ((framedLimitFunctor A K).obj F))
+
+theorem strictBETotUniversalWeightedCone_identity (F : K ⥤ (operad A).Algebra) :
+    ((FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
+      (HomotopyWeight.framedLimitWeight K)
+      (op ((framedLimitFunctor A K).obj F))).symm
+        (strictBETotUniversalWeightedCone A K F) = 𝟙 _
+
+theorem strictBETotUniversalWeightedCone_precomp (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (f : Y ⟶ (framedLimitFunctor A K).obj F) :
+    (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) Y) f =
+      strictBETotUniversalWeightedCone A K F ≫
+        (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map f.op
+
+def strictBETotFrameMap {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    rightFrameDiagram A K G ⟶ rightFrameDiagram A K F
+
+theorem strictBETotFrameMap_eq {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    strictBETotFrameMap A K f = (rightFrameDiagramFamily A K).map f.op
+
+theorem strictBETotFunctor_map_op {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    ((framedLimitFunctor A K).map f).op =
+      (FrameWeightRealization.map Kᵒᵖ ((rightFrameDiagramFamily A K).map f.op)).app
+        (HomotopyWeight.framedLimitWeight K)
+```
+
+`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone`（46行）：
+
+```lean
+def strictBETotUniversalProbeWeightedCone (F : K ⥤ (operad A).Algebra) :
+    HomotopyWeight.framedLimitWeight K ⟶
+      (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj
+        (op (framedLimitProbe A ((framedLimitFunctor A K).obj F)))
+
+theorem strictBETotUniversalProbeWeightedCone_comparison
+    (F : K ⥤ (operad A).Algebra) :
+    strictBETotUniversalProbeWeightedCone A K F =
+      weightedCotensorHomEquiv A K F (HomotopyWeight.weight K)
+        (framedLimitProbe A ((framedLimitFunctor A K).obj F))
+        (framedLimitProbeComparison A ((framedLimitFunctor A K).obj F))
+
+def strictBETotUniversalProbeConePoint (F : K ⥤ (operad A).Algebra) :
+    ((framedLimitConeSpace A K ((framedLimitFunctor A K).obj F)).obj F) _⦋0⦌
+```
+
+`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbePointComparison`（43行）：
+
+```lean
+theorem strictBETotTensorFrameConeIso_universalPoint
+    (F : K ⥤ (operad A).Algebra) :
+    ((strictBETotTensorFrameConeIso A K F ((framedLimitFunctor A K).obj F)).hom.app
+      (Opposite.op ⦋0⦌))
+        ((strictBETotTensorFrameZeroIso A K).hom.app (op F) ≫
+          (framedLimitProbeComparison A ((framedLimitFunctor A K).obj F)).op) =
+      strictBETotUniversalProbeConePoint A K F
+```
+
+### 164.3 全自然性の未検証部を区別する
+
+共通の `FrameWeightRealization.unit_frame_naturality` は、既存の `unit_conjugateEquiv_symm` を直接代入して証明済み。一方、それをBE全図式族の評価表示と独立なrightFrameDiagram表示の間で一括照合する特殊化では、定義展開が200,000 heartbeatsに当たった。型・計算上限は変更せず、単位則・同じ全frame族の射・実現の射の表示を小さく分割した。
+
+特殊化の全自然性の未検証部分は `/private/tmp/StrictBETotUniversalWeightedConeNaturality-draft.lean.txt` に残し、成功した宣言・対象ビルドに含めない。残る型は次（同じ元の全frame族の射で、別の比較射を選ばない）：
+
+```lean
+theorem strictBETotUniversalWeightedCone_naturality
+    {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    strictBETotUniversalWeightedCone A K F ≫
+      ((FrameWeightRealization.homFamily Kᵒᵖ).map
+        ((rightFrameDiagramFamily A K).map f.op).op).app
+          (op ((framedLimitFunctor A K).obj F)) =
+      strictBETotUniversalWeightedCone A K G ≫
+        (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K G)).map
+          (((framedLimitFunctor A K).map f).op)
+```
+
+この未検証部を一覧から除外したり、R02の全族を点ごとの錐だけへ縮めたりしない。次の指定native錐の構成と合わせて閉じる。現時点の `strictBETotUniversalProbeConePoint` をnative join錐の代用にはしない。
+
+### 164.4 検収
+
+215は共通単位則と既存ConePointsの依存だけの対象ビルド **2,325 jobs・終了0**。型照合の途中の個別検査は、未検証部でheartbeat・一時ファイルのインデント・開いた記法の不足を検出した回を成功に数えず、上記の検証済み部を合併した `CheckBETotUniversalProbePointComparison2.lean` の終了0を確認してから対象ビルドした。計算上限は増やしていない。
+
+最終216：新規五本の対象ビルド **4,018 jobs・終了0**、3b-4新規全19本の小監査 **113（2・7・3・9・10・4・10・6・7・6・13・8・5・9・1・1・7・3・2）宣言・標準三公理のみ**。実ハンドル92611・41565の終了0を確認、鍵返却済み。ログ `/private/tmp/isw2-build215.log`・`216.log`、小監査 `/private/tmp/AuditISW2BEUniversalPoint.lean`。sorry・独自公理0。
+
+同時に整理券一枚、`--class impl --wait 3600`。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。新規200行超のファイルなし。これは保存点であり、承認待ちや外枠による停止ではない。
+
+3b-4新規は **19モジュール・1097行**（今回218行、共通二本を含む。外枠15,000行）。登録候補JSONにも共通二本を記録し、BSやG10の登録候補と混ぜない。次は元の試験対象とprobeのnative Homの始点を合わせ、同じ普遍錐・制限射へ接続する。/goalはactive。
