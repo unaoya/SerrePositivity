@@ -19390,3 +19390,267 @@ L12a全体・L13以降は未完で、一覧12/48（追加4）、goalはactive。
 追加で切り分け、閉元の稠密性を仮定しない。(b)の単位の全射の一般原理は使えず、
 derived商の比較の穴は残る。(c)が必要との結論にはまだ至っていない。
 G10の供給者側の部品は作らず、3b-4aがmainへ入ったら§33のTot九欄を優先する。
+
+
+## 298. 内側の全有限和を元の余代入へ代入する法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§293・295の一項の評価を、実際の内側切断和へ適用するため有限和の法則を追加する。
+既存の同じテンソルの加法性・係数移送の法則で、一覧には加算しない。
+共通のopenと係数変数は§295のとおり。各証明200行以内の見込み。
+
+```lean
+lemma coInsertionBlocks_vector_sum_apply {ι : Type v} [Fintype ι] (K C : Complex A) (s n t : ℕ)
+    (θ : C ⊗ K ⟶ power K n)
+    (c q z : ℤ) (f : Fin s → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : ι → Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (h : Fin t → Σ d : ℕ, K.X (-(d : ℤ)))
+    (hz : c + (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) = z)
+    (a : C.X c) (y : K.X q) (hg : ∀ j, -(vectorDegree K n (g j) : ℤ) = c + q)
+    (r : ι → ℤ) (hθ : θ.f (c + q) (ιTensorObj C K c q (c + q) rfl (a ⊗ₜ[A] y)) =
+      ∑ j, r j • vectorTensorAt K n (g j) (c + q) (hg j)) :
+    (IntervalCuts.coInsertionBlocks K C s n t θ).f z
+      (ιTensorObj C (power K s ⊗ (K ⊗ power K t))
+        c (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) z hz
+        (a ⊗ₜ[A] ιTensorObj (power K s) (K ⊗ power K t)
+          (-(vectorDegree K s f : ℤ)) (q + -(vectorDegree K t h : ℤ))
+          (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) rfl
+          (vectorTensor K s f ⊗ₜ[A] ιTensorObj K (power K t)
+            q (-(vectorDegree K t h : ℤ)) (q + -(vectorDegree K t h : ℤ)) rfl
+            (y ⊗ₜ[A] vectorTensor K t h)))) =
+      (c * -(vectorDegree K s f : ℤ)).negOnePow •
+        ∑ j, r j • vectorTensorAt K (s + (n + t)) (Fin.append f (Fin.append (g j) h)) z
+          (by rw [vectorDegree_append, vectorDegree_append]; have := hg j; omega)
+
+lemma tensorCoInsertionAction_vector_sum_apply {ι : Type v} [Fintype ι] (K C : Complex A)
+    (m n : ℕ) (i : Fin (m + 1))
+    (θ : C ⊗ K ⟶ power K n)
+    (c z : ℤ) (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : ι → Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (hz : c + (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))) = z)
+    (a : C.X c) (hg : ∀ j, -(vectorDegree K n (g j) : ℤ) = c + -((f i).1 : ℤ))
+    (r : ι → ℤ) (hθ : θ.f (c + -((f i).1 : ℤ))
+      (ιTensorObj C K c (-((f i).1 : ℤ))
+        (c + -((f i).1 : ℤ)) rfl (a ⊗ₜ[A] (f i).2)) =
+      ∑ j, r j • vectorTensorAt K n (g j) (c + -((f i).1 : ℤ)) (hg j)) :
+    (tensorCoInsertionAction K C m n i θ).f z
+      (ιTensorObj C (power K (m + 1)) c
+        (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ)))
+        z hz (a ⊗ₜ[A] vectorTensorAt K (m + 1) f _ (by
+          have := vectorDegree_family_blocks K f i; omega))) =
+      (c * -(vectorDegree K i.val (prefixFamily f i) : ℤ)).negOnePow •
+        ∑ j, r j • vectorTensorAt K (m + n) (insertionFamily f (g j) i) z (by
+          rw [vectorDegree_insertionFamily]; have := hg j; omega)
+```
+
+既存の元のブロック評価に内側の全有限和を代入し、TensorProductと射のmap_sumで分配する。
+各項は§293・295の同じappendIsoの評価である。空和・零項も含める。
+θの値の全和は前提として明示するが、BFの適用ではcochainActionの実生成元の値から供給し、
+新しい公理やBFの合成法則の仮定にはしない。外側係数の移動とnullaryの接続はなお残る。
+
+
+## 299. 同じ切断和とcochainActionの基底値（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+共通次数の等式移送を明示して、§298のθの値を元のcochainActionから供給する。
+以下は既存構成の法則と同じ生成元の照合で、一覧に追加しない。
+各証明200行以内の見込み。open・係数変数は§295と同じ。
+
+```lean
+lemma module_eqToHom_apply_heq (M N : ModuleCat A) (h : M = N) (x : M) :
+    HEq ((eqToHom h).hom x) x
+
+lemma vectorTensorAt_heq (K : Complex A) (r : ℕ)
+    (f : Fin r → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (ht : -(vectorDegree K r f : ℤ) = t) :
+    HEq (vectorTensorAt K r f t ht) (vectorTensor K r f)
+
+lemma cutTensorAt_heq_vectorTensor (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (w : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    HEq (cutTensorAt A S s w x)
+      (vectorTensor (chains A S) r (fun a =>
+        ⟨outputDegree s w a, gen A S (outputDegree s w a) (S.map (face s w a).op x)⟩))
+
+lemma cutSum_eq_sum_vectorTensorAt (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    cutSum A S u x = ∑ s : Cut (r + d) q, cutSign s (positiveWord u).val •
+      vectorTensorAt (chains A S) (r + 1)
+        (fun a => ⟨outputDegree s (positiveWord u) a,
+          gen A S (outputDegree s (positiveWord u) a) (S.map (face s (positiveWord u) a).op x)⟩)
+        (-((d + q : ℕ) : ℤ))
+        (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]; congr 1; congr 1; omega)
+
+lemma cochainAction_basis_generator (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (cochainAction A S (r + 1)).f (-((d + q : ℕ) : ℤ))
+      (ιTensorObj (Surjection.complex A (r + 1)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-((d + q : ℕ) : ℤ)) (by omega)
+        ((Surjection.complexXIso A (r + 1) d).inv
+          (Surjection.basis A (r + 1) d (ULift.up u)) ⊗ₜ[A] gen A S q x)) =
+      cutSum A S u x
+```
+
+最初の三つは同じeqToHomの等式消去であり、元を選び直さない。
+切断和ではmap_sum・map_zsmulで分配し、各項の同じ次数移送を比較する。
+最後は既存 `ι_cochainAction`・`positiveIntegerBilinear_neg`・`positiveComponent_generator` を使う。
+これでθを任意の射の仮定として残さず、実際のBFの内側切断和を供給する前段に届く。
+
+
+## 300. θの実評価を元のBF切断和から供給する（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§299の元の複体射の値を任意の指定全次数で読み、§298へ適用する二つの法則。
+既存構成の同じ生成元での評価・係数移送。証明200行以内の見込み。
+以下ではprefixFamily・suffixFamily・insertionFamilyは既存IntervalCutsのもの。
+
+```lean
+lemma cochainAction_basis_cut_sum (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌)
+    (t : ℤ) (ht : -(d : ℤ) + -(q : ℤ) = t) :
+    (cochainAction A S (r + 1)).f t
+      (ιTensorObj (Surjection.complex A (r + 1)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) t ht
+        ((Surjection.complexXIso A (r + 1) d).inv
+          (Surjection.basis A (r + 1) d (ULift.up u)) ⊗ₜ[A] gen A S q x)) =
+      ∑ s : Cut (r + d) q, cutSign s (positiveWord u).val •
+        vectorTensorAt (chains A S) (r + 1)
+          (fun a => ⟨outputDegree s (positiveWord u) a,
+            gen A S (outputDegree s (positiveWord u) a)
+              (S.map (face s (positiveWord u) a).op x)⟩) t
+          (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+              have hnat : r + d + q + 1 - (r + 1) = d + q
+
+lemma tensorCoInsertionAction_cochain_cut_sum (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n e : ℕ} (v : Surjection.BasisWord (n + 1) e) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (x : S _⦋(f i).1⦌) (hx : (f i).2 = gen A S (f i).1 x) (z : ℤ)
+    (hz : -(e : ℤ) + (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ))) = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A (n + 1)) m (n + 1) i
+      (cochainAction A S (n + 1))).f z
+      (ιTensorObj (Surjection.complex A (n + 1)) (power (chains A S) (m + 1))
+        (-(e : ℤ))
+        (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ)))
+        z hz ((Surjection.complexXIso A (n + 1) e).inv
+          (Surjection.basis A (n + 1) e (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f _
+            (by have h := vectorDegree_family_blocks (chains A S) f i; omega))) =
+      (-(e : ℤ) * -(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ)).negOnePow •
+        ∑ s : Cut (n + e) (f i).1, cutSign s (positiveWord v).val •
+          vectorTensorAt (chains A S) (m + (n + 1))
+            (insertionFamily f (fun a => ⟨outputDegree s (positiveWord v) a,
+              gen A S (outputDegree s (positiveWord v) a)
+                (S.map (face s (positiveWord v) a).op x)⟩) i) z
+            (by rw [vectorDegree_insertionFamily]
+                have hs := outputDegree_sum s (positiveWord v)
+                rw [← degreeSum_eq_sum] at hs
+                have hnat : n + e + (f i).1 + 1 - (n + 1) = e + (f i).1
+```
+
+前者は指定全次数の等式を消去して§299に戻る。
+後者は内側射を同じcochainActionへ固定し、実際の基底語・指定生成元での全切断和を
+前者で供給する。零項を除かず全Cutを足す。各項の次数は元のoutputDegree_sum。
+fの指定因子が元のgenであるというhxは、外側切断の出力で定義どおりに供給できる条件であり、
+cochainActionの評価や合成法則を仮定に足すものではない。
+この法則の後にも外側係数の移動とnullary・全添字の相殺への接続は残る。
+
+
+## 301. 同じ共通整数次数での符号付き項の比較（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§292の斉次テンソルのHEqを、元のcutTensorAtと同じ共通次数の等式へ戻す。
+既存構成の次数・同じ指定面の法則、証明分割。各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_nested_degreeSum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    degreeSum (m + (n + 1))
+      (fun a => (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1) =
+        m + n + (d + e) + q + 1 - (m + (n + 1))
+
+lemma positiveComposite_signedCutTerm_eq_nested (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) (x : S _⦋q⦌) :
+    (Surjection.compositionSign u v k c.1 *
+      cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+      cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a =>
+            ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+              gen A S
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+                (S.map (SimplexCategory.mkHom
+                  (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum])
+```
+
+前者はC451の次数の射影と元のoutputDegree_sum。
+後者はC452の元の整数係数の等式、C451の同じ面の族、§299の同じ次数移送を使う。
+両辺は元の圏の同じ加群成分の等式である。係数の規約や退化項の扱いを変えない。
+この型は非退化性を保持し、退化時の零項の比較と全有限添字の相殺は別に接続する。
+
+
+## 302. 元のcochainActionから内側全切断和の実評価へ：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§298〜300の六本を検証した。任意のθの評価を追加前提として残す段から、
+元の `cochainAction` の基底語・正規化生成元での値を供給する段へ接続した。
+`tensorCoInsertionAction_cochain_cut_sum` は実際のBFの内側射を固定し、
+元の全Cut（退化する項も含む）の符号付き和へ展開する。
+指定生成元である条件hxは外側の切断の因子で定義どおり供給するもの。
+合成法則や指数の合同を追加仮定にはしていない。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-vector-co-insertion-sums-01.log`：2,828 jobs成功、対象警告0。
+- `m14-cochain-action-generator-01.log`：2,657 jobs成功、対象警告0。
+- `m14-cochain-insertion-cut-sum-02.log`：3,004 jobs成功、対象警告0。
+
+型の検証では全次数を消すsubstに、選ぶ等式を明示した。
+内部次数の関数をメタ変数でchangeする代わりに、同じoutputDegreeとdegreeSumを明示した。
+それ以外の数学・元の公開宣言・符号規約は変更していない。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+
+別々の一回の鍵の小監査：
+
+- `audit-m14-vector-co-insertion-sums.log`：2モジュール・15宣言。
+- `audit-m14-cochain-action-generator.log`：3モジュール・11宣言。
+- `audit-m14-cochain-insertion-cut-sum.log`：1モジュール・13宣言。
+
+**計6モジュール・39宣言、標準三公理のみ**、sorry・独自公理0。
+全ハンドルの終了コード0を確認した。鍵は一回の対象ビルド/小監査の間だけ取って返し、
+整理券は一枚ずつ。main作業木・共有入口・共有監査・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| VectorCoInsertionSums | 66 |
+| VectorCoInsertionActionSums | 91 |
+| CutTensorDegreeTransport | 44 |
+| CutSumVectorExpansion | 44 |
+| CochainActionGenerator | 41 |
+| CochainInsertionCutSum | 95 |
+| **計** | **381** |
+
+検証済みM14実測は**24,273行**、L12aは**9,066行**。
+外枠31,000行まで実測6,727行。約25,000行での実測と完成見込みの出し直しを維持する。
+§301の共通次数の項の比較はこの取り込み点に数えず、対象ビルド中。
+外側係数の移動・元の全添字の相殺・nullaryと後続のL13以降は残る。
+L12a全体は未完、一覧12/48（追加4）、goalはactiveのまま。
+完備化後のP⁰は§296の検収箇所を保持する。(c)が必要との判定には至っていない。
+3b-4aはまだmain未受領なので、Tot九欄の実装は始めていない。
