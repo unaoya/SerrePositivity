@@ -7444,3 +7444,66 @@ theorem nativeDerivedDiagram_eq (X : CosimplicialObject (Complex A)) :
 コード `5674cfded`。鍵付き対象ビルド168・169・170はそれぞれ **3,755・3,944・7,836 jobs、すべて終了コード0**。新規四本だけの分割監査は **3 + 2 + 1 = 6宣言、標準三公理のみ**（各ログ `/private/tmp/isw2-build168.log`〜`170.log`）。一つの整理券ずつ `--class impl --wait 3600`、ビルドと小監査の間だけ保持し返却済み。sorry・新公理0、既存宣言・⑤a・入口・公式監査・mainの変更なし。
 
 累計 **319モジュール・19,459行**、外枠まで541行。一覧 `/private/tmp/isw2-g10-threehundrednineteen-modules.txt`。C06・C07は同じslice制限の同型と底図式の等式消去で証明中。Dは未着手。外枠と型つき一覧の規則を維持する。
+
+
+## 150. 停止点2a：B・C完了、同じ元のstrict図式のnative極限錐（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。A・B・C完了。D01〜D08未完。停止点2bと3b-2全体の完成はまだ宣言しない。停止点2aの単独取り込み点はコード `b43d4be81`（C05 `5674cfded`を含む）。
+
+### 150.1 C06・C07の型と登録対象
+
+一般の部分はKerodonに、G10の適用はHAに置いた。slice制限の既存の同型と終頂点の同型不変性、同じ底図式の等式消去のみを使う既存構成の法則。各ファイル200行以内。
+
+登録対象：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SpecifiedConeReindex`（43行）。
+
+```lean
+theorem restrictJoinCone_isLimit_of_isIso {K L X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (f : L ⟶ K) [IsIso f] (hc : IsLimitCone c) :
+    IsLimitCone (restrictJoinCone c f)
+
+def joinConeOfDiagramEq {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCone p) : JoinCone q := h ▸ c
+
+/-- 同じ全join射を保つ。 -/
+theorem joinConeOfDiagramEq_val {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCone p) : (joinConeOfDiagramEq h c).val = c.val
+
+theorem joinConeOfDiagramEq_isLimit {K X : SSet.{u}} {p q : K ⟶ X}
+    (h : p = q) (c : JoinCone p) (hc : IsLimitCone c) :
+    IsLimitCone (joinConeOfDiagramEq h c)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StrictDerivedTotCone`（51行）。
+
+```lean
+theorem nativeDerivedDiagram_reindex (X : CosimplicialObject (Complex A)) :
+    nativeTotIndexIso.inv ≫ nativeDerivedDiagram X =
+      strictCosimplicialComplexNerve X ≫ complexOrdinaryDerivedSource A
+
+def strictDerivedTotCone (X : CosimplicialObject (Complex A)) :
+    JoinCone (strictCosimplicialComplexNerve X ≫ complexOrdinaryDerivedSource A)
+
+theorem strictDerivedTotCone_isLimit (X : CosimplicialObject (Complex A)) :
+    IsLimitCone (strictDerivedTotCone X)
+
+theorem strictDerivedTotCone_pullback (X : CosimplicialObject (Complex A)) :
+    joinMap (𝟙 (Δ[0] : SSet.{u+1})) nativeTotIndexIso.hom ≫
+      (strictDerivedTotCone X).val = (nativeDerivedCone X).val
+
+```
+
+### 150.2 検収と見込みとの差
+
+鍵付き対象ビルド171は **7,841 jobs、終了コード0**。新規二本の小監査は **10宣言（4・6）、標準三公理のみ**。ログ `/private/tmp/isw2-build171.log`。`--class impl --wait 3600`、鍵は対象ビルドと小監査の間だけ保持し返却済み。sorry・新公理0、計算上限の増加、既存宣言、⑤a、入口・公式監査・mainの変更なし。
+
+累計 **321モジュール・19,553行**、外枠まで447行。一覧 `/private/tmp/isw2-g10-threehundredtwentyone-modules.txt`。B完了18,226行からC完了までの増分は **1,327行**。§72.2の400〜700行に対して+627〜+927行、B実測を受けた§144.2の900〜1,600行の範囲内。標準脚の零単体の評価とstrict nerveの全単体の等式を明示する部分に増分が集中した。
+
+| まとまり | §72.2の見込み | 現在の実測・残り |
+| --- | ---: | --- |
+| A：正規化テンソル／積重み | 約1,800〜2,200行（§72） | §101で完了12,781行。Aの倍率の解釈は§111・§144を参照 |
+| B：指定豊穣Homとnative極限性 | 600〜900行 | 完了5,445行（A完了からの増分） |
+| C：標準脚とD(A)輸送 | 400〜700行 | 完了1,327行 |
+| D：全図式射・指定錐の族・離散入口 | 500〜900行 | 未完、§144.2の900〜1,600行を維持 |
+
+予測だけで再停止せず、D01の全族の境界を固定する同じ全関手の部品から進める。D04の辺だけを全族の代用品にしない。外枠到達または一覧外の新しい数学が必要になった時点で検証済みをコミットして止め、3b-4の紙の整理へ移る。
