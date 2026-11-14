@@ -1,0 +1,57 @@
+{
+  "status": "draft validation pending",
+  "rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "parameter": "E : EInfinityTheory",
+      "reason": "Pass the same EInfinityTheory already required by the imported A2 CAlg constructions; classical declarations do not reference E and keep their parameter lists.",
+      "affected_declarations": [
+        "polynomialDelta",
+        "polynomialChangeEdge",
+        "PrismaticCohomologyBaseChangeStatement"
+      ],
+      "call_edits": [
+        {
+          "line": 80,
+          "name": "prismCompleteInclusion",
+          "start": 3390
+        },
+        {
+          "line": 80,
+          "name": "prismaticCohomologyCAlg",
+          "start": 3424
+        },
+        {
+          "line": 85,
+          "name": "cAlgBaseChange",
+          "start": 3663
+        },
+        {
+          "line": 85,
+          "name": "prismCompletion",
+          "start": 3693
+        },
+        {
+          "line": 85,
+          "name": "polynomialDelta",
+          "start": 3720
+        },
+        {
+          "line": 86,
+          "name": "prismaticCohomologyCAlg",
+          "start": 3760
+        },
+        {
+          "line": 91,
+          "name": "polynomialChangeEdge",
+          "start": 4069
+        }
+      ]
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+      "parameter": "h₀ : IsBoundedPrism P₀",
+      "authorization": "Coordinator approval 2026-11-14; see a3-boundedness-decision.json"
+    }
+  ]
+}

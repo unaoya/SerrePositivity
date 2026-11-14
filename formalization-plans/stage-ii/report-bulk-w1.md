@@ -962,3 +962,10 @@ A1/HodgeTateMapは `import all …Prismatic.HodgeTateOneDerivative` の旧パス
 一覧：済み 8／全体 14（うち追加 0）。`universalLciPrism` のsection変数h₀がsorryのため型から落ちていることを確認。調整役よりD4-03・D4-06と同じ「意図した型に戻す」扱いとして承認を得た。[型と全参照の台帳](bulk-5inf0/a3-boundedness-decision.json)のとおり、`universalLciPrism P₀ h₀ r` として14参照を追従し、それでh₀が必要になるlciClassifyingMap・lciMapの呼出し3箇所にも同じ引数を明示した。環・δ構造・生成元のソースは同一で、正則性を既存のcompletedFreeDelta_generator_regularから証明する。p完備性・生成元完備性・pのイデアルへの所属・剰余の有界性の4欄も、追加の仮定を入れずに本体へ寄せた。A3全体は前提待ちで未検査なので、まだ成功に算入していない。
 
 同じ理由で型から落ちているsection変数は、調整役の承認に従い同じ扱いで戻し、今後も一覧に残す。新しい数学的な入力を追加する変更はこの扱いに混ぜない。
+
+
+### 5∞-0 の本体全域での同名確認（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[全域の静的な同名候補](bulk-5inf0/all-main-draft-duplicate-candidates.json)は本体の32,937ファイルを走査して0件。前の対象ディレクトリ限定の検査を本体全域へ広げ、aliasも構文走査に含めた。構文上の名前の候補の検査であり、型の一致やLean環境による照合の代わりではない。`import all`を含め直した[所有元へのimport到達性](bulk-5inf0/section5-owner-import-reachability.json)も欠落0件だった。
+
+A3はソース上ではDiscreteCaseが23→13、LciAndQuasiregularが30→14、計53→27のsorry。環・生成元を変えず、26箇所を本体の既存の古典的な芯とその法則へ寄せた。A3全体の型検査は前提待ちなので、この数だけを根拠に完了とはしない。対応先の[一覧](bulk-5inf0/a3-classical-followup.json)と、意図した[文脈の引数](bulk-5inf0/restored-context-parameters.json)を保存した。

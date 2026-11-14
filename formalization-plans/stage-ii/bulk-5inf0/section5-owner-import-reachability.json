@@ -1,4 +1,5 @@
 {
   "status": "static necessary import reachability check, not proof of elaboration",
-  "missing": []
+  "missing": [],
+  "import_forms": "public/meta imports and import all included"
 }
