@@ -351,3 +351,16 @@ S03 の商との比較の分割（着手前、前記100〜250行の内数）：`
 2g-2 本体1,286行・入口込み1,308行、小監査122宣言・標準三公理のみ。商との同型・Segre チャート比較以降は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3・S03：脱斉次化の商と斉次局所化の実際の同型
+
+`HomogeneousDegreeOneQuotient`（66行）：`homogeneousDegreeOneQuotientToAway` は正規化を A/(f−1) へ降ろした写像、`homogeneousDegreeOneQuotient_denominator` は商で f=1 となる式、`homogeneousDegreeOneAwayToQuotient` は商写像による特殊化。`homogeneousDegreeOneQuotientEquiv` はこれらの実際の環同型、`homogeneousDegreeOneQuotientEquiv_mk` は商の元上の式。次数一生成・平坦性・分母の非零性は不要。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,092ジョブ、小監査13宣言・標準三公理のみ、終了状態0。ログ `2g-degree-one-quotient-check-2.log`・`2g-degree-one-quotient-native.log`・`2g-degree-one-quotient-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は検証中だけ使用。
+
+2g-2 本体1,352行・入口込み1,375行、小監査135宣言・標準三公理のみ。S03 は商との環同型まで到達。係数環との整合性・Segre の二因子の比較・重なりの自然性、S04・有限冪、G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+S03 の係数の法則の分割（着手前、S03 の内数、40〜90行）：既存の `projectiveHomogeneousAwayAlgebra G f` の下で正規化が R の係数を保つことを示し、同じ環同型を `A/(f−1) ≃ₐ[R] Away G f` に束ねる。既存の代数構造を置き換えず、係数環の一般化や最終の型の変更はしない。
