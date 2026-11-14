@@ -27,7 +27,7 @@ lemma inclusion_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.Limi
   preservesZero := inclusion_preservesZero P hP
   preservesCofiber t ht := by
     let f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.square))
-    let d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f := {
+    let d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f := {
       toZeroTriangle := t
       bottom_edge := (SSet.yonedaEquiv.symm_apply_apply _).symm
       isPushout := ht }

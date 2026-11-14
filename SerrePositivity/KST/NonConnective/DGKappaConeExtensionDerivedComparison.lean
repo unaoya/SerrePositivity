@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.Perfect
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.Comparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedChangeComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedPrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedChangeComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedPrecomposition
 
 /-!
 概要：実延長と代表化した cone 関手を、同じ実導来模型への全関手同型で比較する。

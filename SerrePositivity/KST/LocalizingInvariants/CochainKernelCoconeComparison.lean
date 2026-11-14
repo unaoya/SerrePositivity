@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelHomology
 public import SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeZeroLift
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorResolutionHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleFunctorResolutionHomExt
 
 /-!
 概要：実 kernel の零比較による持ち上げは、cocone 間の標準射の実 kernel である。

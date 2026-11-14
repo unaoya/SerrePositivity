@@ -48,8 +48,8 @@ lemma IsIdempotentCompletion.isExactFunctor {C D : SSet.{u}}
 /-- 元の任意の冪等完備化は、標的の安定性を仮定せず元の fiber 列も保存する。 -/
 lemma IsIdempotentCompletion.preservesFiber {C D : SSet.{u}}
     [Quasicategory C] [Quasicategory D] (f : C ⟶ D) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f)
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (t.map f (fun _ hz ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isZeroVertex f hf hz)) :=
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (t.map f (fun _ hz ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isZeroVertex f hf hz)) :=
   IsIdempotentCompletion.preservesPullbackSquare f hf t.square ht
 
 /-- 元の全 Yoneda の冪等完備化への因子化は、標的の安定性を仮定せず完全。 -/

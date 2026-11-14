@@ -1,0 +1,571 @@
+{
+  "source_commands": [
+    {
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/ExactFunctor.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ZeroTriangle",
+      "leaves": [
+        "map"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ZeroTriangle (map)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/SplitCofiberProduct.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "binaryProductOfRetraction"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (binaryProductOfRetraction)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleVanishing.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_cofiber_of_zero_source_middle"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_cofiber_of_zero_source_middle)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleVanishing.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_middle_of_zero_source_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_middle_of_zero_source_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleVanishing.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_source_of_zero_middle_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_source_of_zero_middle_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleVanishing.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_cofiber_of_fiber_zero_source_middle"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_cofiber_of_fiber_zero_source_middle)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleVanishing.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_middle_of_fiber_zero_source_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_middle_of_fiber_zero_source_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleVanishing.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_source_of_fiber_zero_middle_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_source_of_fiber_zero_middle_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberFunctorMapping.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "map"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (map)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberFunctorMapping.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "map_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (map_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberFunctorMapping.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "map_isInvertible_iff_zero"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (map_isInvertible_iff_zero)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/BicartesianChoice.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "isPullback_iff"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (isPullback_iff)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/BicartesianChoice.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare",
+      "leaves": [
+        "isPushout_iff"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (isPushout_iff)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IsomorphismCofiberZero.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "zero_cofiber_of_isIso_bottom"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (zero_cofiber_of_isIso_bottom)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IsomorphismCofiberZero.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "zero_of_homMk_isIso"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (zero_of_homMk_isIso)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IsomorphismCofiberZero.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "homMk_isIso_iff_zero"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (homMk_isIso_iff_zero)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IntervalCofiberComparison.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "target_isEquivalencePath_of_source_middle"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (target_isEquivalencePath_of_source_middle)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/UniverseStabilityDescent.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "ulift"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (ulift)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/LoopEquivalenceZeroCofiber.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isIso_bottom_of_zero_cofiber_of_loopEquivalence"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isIso_bottom_of_zero_cofiber_of_loopEquivalence)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroCofiberIso.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isIso_f_of_fiber_terminal_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isIso_f_of_fiber_terminal_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroCofiberIso.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isIso_g_of_cofiber_initial_fiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isIso_g_of_cofiber_initial_fiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroCofiberIso.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isIso_f_of_zero_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isIso_f_of_zero_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroCofiberIso.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isIso_g_of_zero_fiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isIso_g_of_zero_fiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroCofiberIso.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "homMk_isIso_of_zero"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (homMk_isIso_of_zero)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroCofiberIso.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare",
+      "leaves": [
+        "homMk_isIso_of_zero"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (homMk_isIso_of_zero)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberHoDenominators.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "triangle_first_arrow"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (triangle_first_arrow)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleHoMap.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "hoShortComplexMap"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleHoMap.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "hoShortComplexMap_id"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap_id)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleHoMap.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "hoShortComplexMap_comp"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMap_comp)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleHoMap.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "hoShortComplexMapOfHomotopy"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (hoShortComplexMapOfHomotopy)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberPredecessor.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "op"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (op)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberPredecessor.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "op_isCofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (op_isCofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberPredecessor.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "unop"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (unop)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberPredecessor.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "unop_isCofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (unop_isCofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/InitialTransport.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex",
+      "leaves": [
+        "of_vertexIso"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (of_vertexIso)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/InitialOpposite.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex",
+      "leaves": [
+        "op"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (op)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IntervalCofiberSourceReflection.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "source_isEquivalencePath_of_middle_target"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (source_isEquivalencePath_of_middle_target)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/StableOpposite.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex",
+      "leaves": [
+        "unop"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (unop)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IsomorphismFiberZero.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare",
+      "leaves": [
+        "opCofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (opCofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IsomorphismFiberZero.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare",
+      "leaves": [
+        "zero_of_homMk_isIso"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (zero_of_homMk_isIso)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/IsomorphismFiberZero.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare",
+      "leaves": [
+        "homMk_isIso_iff_zero"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (homMk_isIso_iff_zero)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/FunctorLoopCofiberEvaluation.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex",
+      "leaves": [
+        "functor_evaluation"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (functor_evaluation)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/FunctorLoopCofiberEvaluation.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex",
+      "leaves": [
+        "isEquivalencePathVertex"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (isEquivalencePathVertex)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/FunctorLoopCofiberEvaluation.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isCofiber_evaluate_of_loopEquivalence"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isCofiber_evaluate_of_loopEquivalence)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberZeroSource.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "source_vertex"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (source_vertex)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberZeroSource.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "target_vertex"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (target_vertex)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberZeroSource.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "cofiberIsoOfZeroSource"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (cofiberIsoOfZeroSource)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/LoopEquivalenceZeroTriangle.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isFiber_of_isCofiber_of_loopEquivalence"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isFiber_of_isCofiber_of_loopEquivalence)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/LoopEquivalenceZeroTriangle.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle",
+      "leaves": [
+        "isFiber_iff_isCofiber_of_loopEquivalence"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (isFiber_iff_isCofiber_of_loopEquivalence)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/UniverseCofiberEdges.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "ulift"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (ulift)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/UniverseCofiberEdges.lean",
+      "old_receiver": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare",
+      "new_receiver": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+      "old_sender": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare",
+      "leaves": [
+        "ulift_cofiber"
+      ],
+      "replacement": "with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (ulift_cofiber)",
+      "policy": "preserve actual kernel method names; update field alias receiver from the moved declaration table"
+    }
+  ],
+  "distributed_policies": [],
+  "unrelated_formatting_restored": [
+    "SerrePositivity/EInfinity/Hammock/WordBackwardDecomposition.lean",
+    "SerrePositivity/EInfinity/Hammock/WordBackwardBlocks.lean",
+    "SerrePositivity/EInfinity/Hammock/WordBackwardBlockDirections.lean"
+  ]
+}

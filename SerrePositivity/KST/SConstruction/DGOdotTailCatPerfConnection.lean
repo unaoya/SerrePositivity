@@ -55,7 +55,7 @@ def dgOdotTailCatPerfConnectionOfCertificates
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram)
     (comparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary)
-    (kernel_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 =
+    (kernel_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) :
     DGOdotTailCatPerfConnection R d h :=
   dgOdotTailCatPerfConnection R d h
@@ -70,7 +70,7 @@ variable {R d h} (c : DGOdotTailCatPerfConnection R d h)
 使われ方：e② の実商側結論。 -/
 theorem isFiber {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.fiberTriangle c.quotient.sequence.presentation) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hE.fiberTriangle c.quotient.sequence.presentation) :=
   hE.fiberTriangle_isFiber _
 
 /-- 概要：共通 S 長方形の比較面を同じ不変量が引き戻しへ送る。
@@ -104,7 +104,7 @@ theorem landTammeCone_isLimit {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 def sourceValueIso (E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((dgKInputPerfectNu R ≫ E).app _
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare c.quotient.rectangleDiagram 2) ≫ E) 0 0) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare c.quotient.rectangleDiagram 2) ≫ E) 0 0) := by
   rw [c.quotient_eq]
   exact c.actual.sourceValueIso E
 end DGOdotTailCatPerfConnection

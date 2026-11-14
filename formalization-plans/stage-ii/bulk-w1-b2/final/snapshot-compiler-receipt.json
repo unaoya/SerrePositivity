@@ -1,0 +1,36 @@
+{
+  "link_profile": "interpreter-rdynamic-v1",
+  "original_source_sha256": "5d466e25d7dfbda1b6e86515ee19b7c8e6f5ca6a2ad40945c3bbe8c19ebedcf8",
+  "verification_source_sha256": "575132b4cb0e80feb0ec5c8fdc1a3662af0c6a3c1b69094ffb76bfa1de5f0d89",
+  "binary_sha256": "044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9",
+  "normalization": "Unchanged Expr DAG mixing, proof erasure and axiom/attribute checks; include ordinary private rows and honor ownership-qualified rules for actual raw private kernel names",
+  "steps": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=/tmp/bulk-w1-b2/private-snapshot",
+        "-c",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot.c",
+        "/tmp/bulk-w1-b2/private-snapshot/Snapshot.lean"
+      ],
+      "rc": 0,
+      "seconds": 6.982018498703837
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "leanc",
+        "-O3",
+        "-rdynamic",
+        "-o",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot.c"
+      ],
+      "rc": 0,
+      "seconds": 6.193500252440572
+    }
+  ]
+}

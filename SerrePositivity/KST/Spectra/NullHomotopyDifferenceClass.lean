@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.NullHomotopyDifference
 public import SerrePositivity.KST.Spectra.HornMissingFaceComparison
 
 /-!

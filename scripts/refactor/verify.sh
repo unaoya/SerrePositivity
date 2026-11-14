@@ -63,7 +63,7 @@ try:
             removed += 1
     print(f'removed orphan modules: {removed}')
     audits = sorted(str(p) for p in Path('scripts').glob('audit_*.lean'))
-    audits += sorted(str(p) for p in Path('scripts/audit').glob('*.lean'))
+    audits += sorted(str(p) for p in Path('scripts/audit').rglob('*.lean'))
     audits = sorted(audits)
     prep['audit_count'] = len(audits)
     manifest = [s.strip() for s in Path('scripts/refactor/audit_manifest.txt').read_text().splitlines()

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderTransformations
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationWhisker
 
 /-! # 元の実写像円柱比較と全厳密 dg Hom の可換性
 概要：同じ源比較・標的包含・射影の全 Hom 自然性を、元の通常成分で回収する。

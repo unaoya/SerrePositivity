@@ -38,7 +38,7 @@ variable (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHom
 /-- 基底の fiber 四角形を元の辺を固定して持ち上げる。 -/
 lemma trivialKanFibration_lift_fiberSquare {x y : E _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (f.map ((truncation 2).map q))) : Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) := by
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (f.map ((truncation 2).map q))) : Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) := by
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := q) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge inferInstance
   have sq : CommSq (SSet.yonedaEquiv.symm f.edge) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge q s.square := ⟨by
     rw [s.right_edge, SSet.yonedaEquiv_symm_comp]
@@ -49,7 +49,7 @@ lemma trivialKanFibration_lift_fiberSquare {x y : E _⦋0⦌}
     right_edge := sq.fac_left
     isPullback := ?_ }⟩
   · apply (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q _).2
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (sq.lift ≫ q) 0 1)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (sq.lift ≫ q) 0 1)
     rw [sq.fac_right]
     exact s.zero_corner
   · apply (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPullbackSquare_iff_postcomp_trivialKanFibration q _).2
@@ -59,7 +59,7 @@ lemma trivialKanFibration_lift_fiberSquare {x y : E _⦋0⦌}
 /-- 基底の cofiber 四角形を元の辺を固定して持ち上げる。 -/
 lemma trivialKanFibration_lift_cofiberSquare {x y : E _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (f.map ((truncation 2).map q))) : Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) := by
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (f.map ((truncation 2).map q))) : Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) := by
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := q) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge inferInstance
   have sq : CommSq (SSet.yonedaEquiv.symm f.edge) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge q s.square := ⟨by
     rw [s.bottom_edge, SSet.yonedaEquiv_symm_comp]
@@ -70,7 +70,7 @@ lemma trivialKanFibration_lift_cofiberSquare {x y : E _⦋0⦌}
     bottom_edge := sq.fac_left
     isPushout := ?_ }⟩
   · apply (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q _).2
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (sq.lift ≫ q) 0 1)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (sq.lift ≫ q) 0 1)
     rw [sq.fac_right]
     exact s.zero_corner
   · apply (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPushoutSquare_iff_postcomp_trivialKanFibration q _).2
@@ -82,7 +82,7 @@ lemma isStable_of_trivialKanFibration (q : E ⟶ B) [_root_.SerrePositivity.Infi
     [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable B] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable E where
   exists_zero := by
     obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section q
-    let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex B
+    let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex B
     refine ⟨s.app (Opposite.op ⦋0⦌) z.vertex,
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q _).2 ?_⟩
     have h := ConcreteCategory.congr_hom

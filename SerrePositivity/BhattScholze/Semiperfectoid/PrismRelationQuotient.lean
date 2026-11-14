@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeExistence
+public import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeExistence
 public import SerrePositivity.HomologicalAlgebra.KoszulRingEquiv
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 

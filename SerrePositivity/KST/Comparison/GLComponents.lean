@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.DoldKanGL
 public import Mathlib.Algebra.Group.TransferInstance
 
@@ -230,3 +232,8 @@ theorem hatGL_mk_one : (π₀.mk (1 : hatGLSubmonoid A r 0) : π₀ (hatGLSpace 
   exact (matrixToComponents A r 0).map_one
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (2.2)" (partial := component) "仮定：単位つき単体環の有限階数行列を用いる（Lean が強い：原典は非単位的環も含む）。結論：指定成分に制限した行列モノイドとその成分群。任意の非単位的単体環の安定化した ĜL までの同定は別（Lean が弱い）。"] _root_.SerrePositivity.KST.Comparison.hatGLComponentsMulEquiv

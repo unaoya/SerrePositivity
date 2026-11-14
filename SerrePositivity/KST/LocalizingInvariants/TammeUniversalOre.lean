@@ -24,10 +24,10 @@ variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 
 lemma tammeLocalizingEdges_pullback_bottom_top
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (laxCategory p q).obj) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow R).edge ∈ tammeLocalizingEdges p q ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow R).edge ∈ tammeLocalizingEdges p q := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow R).edge ∈ tammeLocalizingEdges p q ↔
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow R).edge ∈ tammeLocalizingEdges p q := by
   have h := tammeLocalizingEdges_pullback_iff p q ((β_ Δ[1] Δ[1]).hom ≫ R)
-    ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose R).mp hR)
+    ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_transpose R).mp hR)
   exact h
 
 lemma tammeLocalizingEdges_rightOre_pullback {x y z : (laxCategory p q).obj _⦋0⦌}
@@ -37,10 +37,10 @@ lemma tammeLocalizingEdges_rightOre_pullback {x y z : (laxCategory p q).obj _⦋
     ∃ R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (laxCategory p q).obj,
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ R = SSet.yonedaEquiv.symm f.edge ∧
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ R = SSet.yonedaEquiv.symm s.edge ∧
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow R).edge ∈ tammeLocalizingEdges p q := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow R).edge ∈ tammeLocalizingEdges p q := by
   obtain ⟨R, hR, hr, ht⟩ := exists_stable_pullbackSquare_of_edges f s
   refine ⟨R, hR, hr, ht, (tammeLocalizingEdges_pullback_bottom_top p q R hR).mpr ?_⟩
-  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow R).edge = s.edge :=
+  have he : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow R).edge = s.edge :=
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge R).trans
       ((congrArg SSet.yonedaEquiv ht).trans (SSet.yonedaEquiv.apply_symm_apply s.edge))
   exact he.symm ▸ hs

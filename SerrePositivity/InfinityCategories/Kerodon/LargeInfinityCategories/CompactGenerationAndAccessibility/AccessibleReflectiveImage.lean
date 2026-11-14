@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallFamilyGeneratorTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AdjunctionHomPreservation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeUniverseContinuity
@@ -71,3 +73,10 @@ lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}}
     exact ⟨f.app _ k, ⟨Iso.refl _⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.1.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image
+attribute [cite HTT "5.5.7.2" (partial := direction) "仮定：κ-filtered 余極限を持つ準圏の指定随伴 L⊣R と κ-continuous な R（HTT と一致）。結論：L が同じ κ-compact 対象を κ-compact に送る (1)（一致）。C が κ-accessible のときの逆方向 (2) は、この全般性の公開型には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image
+attribute [cite HTT "5.5.7.3" (partial := stronger-hyp) "仮定：κ-compactly generated C の指定反射 L⊣R（Lean が強い：包含 R の κ-continuity、反射像の全小余極限と固定頂点写像の小ささを明示）。結論：同じ反射像の κ-accessibility、仮定した余完備性と合わせ κ-compact generation という (4)（一致）。L 自身の κ-continuity との iff や retract の特徴づけは結論しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.reflectiveImage_isKappaAccessible

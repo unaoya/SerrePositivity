@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsofibrationCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 /-!
@@ -47,3 +49,8 @@ lemma leftFibration_equivalenceLifting {X Y : SSet.{u}} [Quasicategory X] [Quasi
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceLifting_of_innerFibration_of_targetLifting p
     (leftFibration_invertibleTargetLifting p)
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.3.1.7" (partial := stronger-hyp) "仮定：原典の Cartesian p:X→S に加え X,S が準圏かつ p が left fibration（Lean が強い）。結論：p は単射な categorical equivalence に対する RLP を持つ F1B.EquivalenceLifting、すなわち categorical fibration（この場合の結論は一致）。一般の Cartesian p のみからの型はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_equivalenceLifting

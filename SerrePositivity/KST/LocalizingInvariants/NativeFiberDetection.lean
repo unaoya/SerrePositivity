@@ -23,9 +23,9 @@ local instance nativeDetectionSimplicialCategory : SimplicialCategory OmegaSpect
   OmegaSpectrum.simplicialCategory
 
 /-- 全整数 π の消滅は、任意の実 fiber 列の元の第二辺の同値性を検出する。 -/
-lemma isInvertible_of_fiberGroups (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u}) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t)
+lemma isInvertible_of_fiberGroups (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u}) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t)
     (hF : ∀ j : ℤ, Subsingleton (group t 0 0 j)) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow t.square) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow t.square) := by
   have h : ∀ j : ℤ, Subsingleton (homotopyGroup (homotopyFiber (rightMap t)) j) := by
     intro j
     let e := FiberPi.fiberEquiv (rightMap t) (asFiberSquare t ht) j
@@ -33,6 +33,6 @@ lemma isInvertible_of_fiberGroups (t : _root_.SerrePositivity.InfinityCategories
     exact ⟨fun a b ↦ e.symm.injective (hn.elim _ _)⟩
   have hf := FiberDetection.isInvertible_of_fiberGroups (rightMap t) h
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
-    (SpectrumHo.edgeMap_edge (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow t.square)))).mp hf
+    (SpectrumHo.edgeMap_edge (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow t.square)))).mp hf
 
 end SerrePositivity.KST.LocalizingInvariants.NativeFiber

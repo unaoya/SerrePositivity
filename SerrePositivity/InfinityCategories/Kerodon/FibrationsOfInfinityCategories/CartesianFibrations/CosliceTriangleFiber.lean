@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRightRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.VertexFiberMap
 
@@ -106,3 +108,8 @@ lemma cosliceTriangleTarget_trivialKanFibration {X : SSet.{u}} [Quasicategory X]
   exact cosliceRestrictionFiberMap_trivialKanFibration e _ y
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.1.7" (partial := special) "仮定：準圏の図式を共終写像で制限する（Lean が強い：元の添字単体集合も準圏）。結論：同じ余錐制限の全空間での同値を、射影との可換性と左ファイブレーションの繊維判定に代入し、各頂点の繊維上の同値を得る（HTT の同じ繊維射。任意の添字単体集合は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.sliceUnderRestrict_projection

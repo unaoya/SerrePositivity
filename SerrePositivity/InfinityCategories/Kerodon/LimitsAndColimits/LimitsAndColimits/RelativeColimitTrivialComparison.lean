@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceTrivialFibration
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeInitialComparison
 
@@ -104,3 +106,9 @@ lemma kanIsRelativeColimitCone_precomp_iff_of_trivialKanFibration {K X Y Z : SSe
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration _).isFullyFaithful hsurj c
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.1.6" (partial := stronger-hyp) "仮定：内ファイブレーションを縦射とする可換四角形で横射が圏同値（Lean が強い：横射がともに自明 Kan ファイブレーション）。結論：前合成と後合成の同値を同じ四角形に適用し、指定余錐とその像の相対余極限性が同値（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_comp_iff_of_trivialKanFibration
+attribute [cite HTT "4.3.1.6" (partial := stronger-hyp) "仮定：内ファイブレーションを縦射とする可換四角形で横射が圏同値（Lean が強い：横射がともに自明 Kan ファイブレーション）。結論：前合成と後合成の同値を同じ四角形に適用し、指定余錐とその像の相対余極限性が同値（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_precomp_iff_of_trivialKanFibration

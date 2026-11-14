@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleClosedOperations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFullSquareLift
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleConePullback
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFiberPushout
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGFullSquareLift
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleConePullback
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleFiberPushout
 
 /-! # 実有限操作の閉性で制限した dg 加群の標準四角形
 
@@ -28,7 +28,7 @@ include hM hN hP
 
 /-- 標準 cone 四角形の四頂点は同じ実操作の条件を満たす。 -/
 lemma dgModuleClosedConeVertices (i j : Fin 2) :
-    P ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare A D f) i j).obj 0) := by
+    P ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare A D f) i j).obj 0) := by
   fin_cases i <;> fin_cases j
   · exact (congrArg (fun t : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve A D) _⦋0⦌ =>
       P (t.obj 0))
@@ -45,7 +45,7 @@ lemma dgModuleClosedConeVertices (i j : Fin 2) :
 
 /-- 標準 fiber 四角形の四頂点は同じ実操作の条件を満たす。 -/
 lemma dgModuleClosedFiberVertices (i j : Fin 2) :
-    P ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFiberSquare A D f) i j).obj 0) := by
+    P ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFiberSquare A D f) i j).obj 0) := by
   fin_cases i <;> fin_cases j
   · exact (congrArg (fun t : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve A D) _⦋0⦌ =>
       P (t.obj 0))

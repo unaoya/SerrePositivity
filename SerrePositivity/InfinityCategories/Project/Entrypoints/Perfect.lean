@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PerfectZero
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PerfectOperations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PerfectPullback
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PerfectDerivedImage
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PerfectEnhancementComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.PerfectZero
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.PerfectOperations
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.PerfectPullback
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.PerfectDerivedImage
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.PerfectEnhancementComparison
 
 /-! # 完全導来 ∞ 圏 Perf(S) の公開インターフェース
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PullbackPiComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PullbackPiComparison
 public import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints
 
 /-!

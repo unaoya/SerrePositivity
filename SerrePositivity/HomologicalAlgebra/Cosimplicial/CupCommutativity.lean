@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCohomology
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerLinearizationDesc
@@ -883,3 +885,8 @@ theorem cohomologyCup_comm {m n : ℕ} (a : cohomology X m) (b : cohomology X n)
 end Evaluation
 
 end SerrePositivity.Cosimplicial
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Construction 4.9" (partial := special) "多項式代数の場合の Hodge–Tate 写像（BS-D68 停止点 3）。一般の R は不要 ／ 11-10 更新（2）"] _root_.SerrePositivity.Cosimplicial.cohomologyCup_comm

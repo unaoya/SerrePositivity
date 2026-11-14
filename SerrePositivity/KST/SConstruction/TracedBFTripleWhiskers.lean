@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFTripleComparisonDiamond
 public import SerrePositivity.KST.SConstruction.EnrichedComparisonWhiskers
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleDiamondComposition
 
 /-! # 三入力 BF 二経路の元の固定因子との実比較辺
 概要：元の保存面の比較辺を元の第一射・最終射と合成し、同じ BF 写像空間の実辺にする。

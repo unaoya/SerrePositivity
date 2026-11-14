@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraProConeComparison
 
 /-!
@@ -107,3 +109,13 @@ lemma IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel
     (piProEquivalence_of_positiveTorModel R f hB hzero T e he hTor)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Thm 4.11" (partial := component) "仮定：非正 dg 塔の Tor 模型と IsKConnective、また別に dg Milnor の単一正方形（Lean が強い）。結論：実不変量の一本のプロ同値と単一の ⊙ 引き戻し。c(μ)πᵢ と K のプロ四角形を組み立てていない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel
+attribute [cite LT "Cor 2.33" (partial := component) "仮定：非正 dg 代数のレベル射、全正次数の Tor を模す塔とそのプロ零性、π₀ プロ同型、IsKConnective（Lean が強い）。結論：実値の一本のプロ同値。離散環のイデアル冪からの Tor 模型と K の四角形を構成しない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel
+attribute [cite LT "Cor 2.34" (partial := component) "仮定：Noether 環と有限加群の冪 Koszul 塔、別に非正 dg 塔で Tor 比較を入力（Lean が強い）。結論：個別の Koszul 消滅と抽象 Tor 模型からの値のプロ同値。原典の pro-Tor 条件と K のプロ正方形を接続しない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel
+attribute [cite LT "Cor 2.35" (partial := component) "仮定：各ホモロジー有限の余鎖複体、および非正 dg 塔の Tor 比較入力（Lean が強い）。結論：Koszul 比較と局所化不変量の一本の値のプロ同値。c(μ)πᵢ のプロ同型から K の導来商の正方形への組立はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel
+attribute [cite LT "Eq (18)" (partial := component) "仮定：各ホモロジー有限の余鎖複体、および非正 dg 塔の Tor 比較入力（Lean が強い）。結論：Koszul 比較と局所化不変量の一本の値のプロ同値。c(μ)πᵢ のプロ同型から K の導来商の正方形への組立はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel
+attribute [cite LT "Rem 2.36" (partial := component) "仮定：非正 dg 塔と連結度条件、π₀ プロ同型と明示的 Tor 塔を要求（Lean が強い）。結論：連結な局所化不変量の一本の射への帰結。Cor. 2.34・2.35 の正方形の一般化は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.invariantLevelMap_piProEquivalence_of_positiveTorModel

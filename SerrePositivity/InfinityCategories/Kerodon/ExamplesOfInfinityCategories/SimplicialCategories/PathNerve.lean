@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Path
 
 /-!
@@ -73,3 +75,8 @@ def pathInteriorNerveIso (hab : a < b) : nerve (Path a b) ≅ nerve (Set (Set.Io
     rw [pathOfInteriorFunctor_comp_pathInteriorFunctor hab]
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.1.5.2" (partial := component) "仮定：[n] 内の a<b（Lean が強い特殊形）。結論：pathInteriorNerveIso は原典 C[Δn] の Hom=nerve(Path a b) を内部点の冪集合の nerve と同型にするので、明記された cube の記述に一致。全ての a≤b と [n] への enriched weak equivalence、および cosimplicial cofibrant replacement は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorNerveIso

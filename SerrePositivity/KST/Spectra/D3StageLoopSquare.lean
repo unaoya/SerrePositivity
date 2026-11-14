@@ -26,7 +26,7 @@ local instance d3LoopSquareStageSpectrumCategory : SimplicialCategory OmegaSpect
 /-- 実四角形の各角の評価は、元の角への実際の後合成。 -/
 lemma d3SquareVertex_postcomp {X Y : SSet.{u + 1}}
     (S : (Δ[1] : SSet.{u + 1}) ⊗ Δ[1] ⟶ X) (F : X ⟶ Y) (i j : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (S ≫ F) i j = F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex S i j) := rfl
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (S ≫ F) i j = F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex S i j) := rfl
 
 /-- 元の BF 辺の段評価は、同じ段射そのものの coherent な一次単体。 -/
 lemma d3Stage_edge {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
@@ -37,7 +37,7 @@ lemma d3Stage_edge {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
 
 /-- 元の一点スペクトルの段頂点は、点つき Kan ∞ 圏の実零頂点。 -/
 lemma d3StagePoint_isZero (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched.{u} n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched.{u} n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint)) := by
   let Z := (d3StageKanEnriched.{u} n).obj _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint
   have hZ : IsIso Z.obj.hom := by
     change IsIso (𝟙 (𝟙_ SSet.{u}))
@@ -67,17 +67,17 @@ def d3StageBasedPathPointIso (Y : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 元の BF path の各段も、同じ指定比較を通じて実零頂点。 -/
 lemma d3StageBasedPath_isZero (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj (basedPath Y))) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj (basedPath Y))) :=
   (d3StagePoint_isZero n).of_vertexIso (d3StageBasedPathPointIso Y n).symm
 
 /-- 同じ共通実四角形を、元の厳密 tail の段を終点とする実 loop 四角形へ評価。 -/
 def commonLoopSquare_stage (X : OmegaSpectrum.{u}) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj (tail X))) := by
   let F := (commonLoopSquare X).square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n)
-  have hp : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquare X).square 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := by
+  have hp : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (commonLoopSquare X).square 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := by
     rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source, commonLoopSquare_top, Equiv.apply_symm_apply]
     exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint (tail X))).src_eq
-  have hb : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquare X).square 1 0 =
+  have hb : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (commonLoopSquare X).square 1 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (basedPath (tail X)) := by
     rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, commonLoopSquare_right, Equiv.apply_symm_apply]
     exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (basedPathProjection (tail X))).src_eq
@@ -86,12 +86,12 @@ def commonLoopSquare_stage (X : OmegaSpectrum.{u}) (n : ℕ) :
            target_eq := ?_
            other_zero := ?_
            isPullback := commonLoopSquare_stage_isPullback X n }
-  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_ ≫ _) 0 1)
+  · change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_ ≫ _) 0 1)
     rw [d3SquareVertex_postcomp, hp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
     exact d3StagePoint_isZero n
-  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_ ≫ _) 1 1 = _
+  · change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_ ≫ _) 1 1 = _
     rw [d3SquareVertex_postcomp, (commonLoopSquare X).target_eq, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
-  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_ ≫ _) 1 0)
+  · change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_ ≫ _) 1 0)
     rw [d3SquareVertex_postcomp, hb, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
     exact d3StageBasedPath_isZero (tail X) n
 
@@ -99,7 +99,7 @@ def commonLoopSquare_stage (X : OmegaSpectrum.{u}) (n : ℕ) :
 lemma commonLoopSquare_stage_vertex (X : OmegaSpectrum.{u}) (n : ℕ) :
     (commonLoopSquare_stage X n).vertex =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3StageKanEnriched n).obj (commonRefinement X)) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((commonLoopSquare X).square ≫ _) 0 0 = _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((commonLoopSquare X).square ≫ _) 0 0 = _
   rw [d3SquareVertex_postcomp]
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n)).app _ (commonLoopSquare X).vertex = _
   rw [commonLoopSquare_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]

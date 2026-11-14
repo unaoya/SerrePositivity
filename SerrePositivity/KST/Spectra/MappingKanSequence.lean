@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.KanSequence
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreePathSpace
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomTensorStrength
 
 /-!
 概要：Kan 列へ点つき内部 Hom を各段で施す構成。

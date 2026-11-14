@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedModuleValuedCommonExact
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleVertexShift
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGPretriangulatedModuleValuedCommonExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleVertexShift
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableHoGeneration
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExactFunctorTriangulated
 
@@ -39,7 +39,7 @@ lemma dgKappaPerfect_stableClosure_iff (M : DGKappaCone R D I) :
       dgKappaConePerfectObjects R D I M := by
   constructor
   · intro hM
-    let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
+    let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
     let := dgKappaPerfectUnderlying_isExactFunctor R D I
     let P := (_root_.SerrePositivity.DifferentialGraded.modulePerfect R D).inverseImage (_root_.SerrePositivity.DifferentialGraded.moduleHomotopyToDerivedClosed R D)
     let Q := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleHoProperty R D P).inverseImage

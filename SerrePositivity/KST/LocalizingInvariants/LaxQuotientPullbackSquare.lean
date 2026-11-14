@@ -50,7 +50,7 @@ lemma square_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
     SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (cLeg (Φ := Φ) p q r)).edge :=
   BinaryProductCospanNormalized.square_right _ _ _ _ _ _ _ _ _ _
 
-lemma square_vertex00 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (square hΦ p q i r h) 0 0 =
+lemma square_vertex00 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (square hΦ p q i r h) 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ A) :=
   NativeSquareRows.vertex00 _ _ (square_bottom hΦ p q i r h)
 

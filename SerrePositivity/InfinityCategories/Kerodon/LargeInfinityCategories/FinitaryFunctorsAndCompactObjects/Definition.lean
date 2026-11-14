@@ -1,9 +1,11 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.TrivialFibrationCocone
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CovariantRepresentableValues
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -74,3 +76,13 @@ lemma isKappaCompact_aleph0_iff_filtered {C : SSet.{max u v}} [Quasicategory C] 
     exact h I D c hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 5.3" (partial := component) "仮定：準圏の頂点と正則基数 κ（原典と一致）。結論：その頂点からの写像空間関手による κ フィルター付き余極限保存（原典のコンパクト性の定義）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact
+attribute [cite BGT "Def 5.3" (partial := component) "仮定：準圏の頂点と正則基数 κ（原典と一致）。結論：その頂点からの写像空間関手による κ フィルター付き余極限保存（原典のコンパクト性の定義）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits
+attribute [cite HTT "5.3.4.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsCompact
+attribute [cite HTT "5.3.4.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact
+attribute [cite HTT "5.3.4.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits
+attribute [cite HTT "5.5.8.20" (partial := direction) "仮定：全小余極限を持つ C と対象 X の全 Hom が sifted 余極限を保つ（HTT と一致）。結論：同じ Hom の filtered 余極限・幾何学的実現保存、従って X は compact かつ projective という必要方向（一致）。任意 C の Hom に対する逆方向を始域 PΣ の特別な判定から補わない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact

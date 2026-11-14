@@ -42,7 +42,7 @@ def strictSemifreeRawDAFrontIso :
       (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁
         (strictSemifreeJoinShapeIso A).hom) ≫ strictSemifreeRawDAJoinFamily A =
       strictDiagramEvaluation SimplexCategoryᵒᵖ (ClosedCategory A (Semifree A)) ≫
-        closedNerveInclusion A (Semifree A) ≫
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           ((semifreePointConstant A).comp (dgSemifreeToProjective A PUnit.{1})) ≫
           (projectivePointEquivalence A).hom := by
@@ -54,7 +54,7 @@ def strictSemifreeRawDAFrontIso :
   rw [semifreePointConstant_equivalence] at hu
   have h := hu.precomp
     (strictDiagramEvaluation SimplexCategoryᵒᵖ (ClosedCategory A (Semifree A)) ≫
-      closedNerveInclusion A (Semifree A))
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A))
   simpa only [Category.assoc, Category.comp_id, strictSemifreeEvaluation,
     SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] using! h
 

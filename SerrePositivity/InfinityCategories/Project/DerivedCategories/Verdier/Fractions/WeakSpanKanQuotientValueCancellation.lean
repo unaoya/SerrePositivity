@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakSpanKanQuotientValueEdge
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceTriangleFaces
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpaceTriangleFaces
 
 /-!
 概要：元の実商比較と既存指定値比較の合成を、同じ Kan 値で零化する。

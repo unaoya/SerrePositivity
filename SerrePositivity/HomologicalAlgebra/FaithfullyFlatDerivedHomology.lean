@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedBaseChange
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveExactDerived
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
@@ -97,3 +99,8 @@ lemma faithfullyFlatDerivedHomology_scalar_eq_zero_iff (φ : R →+* S)
   faithfullyFlatDerivedHomology_map_eq_zero_iff φ hφ n _
 
 end SerrePositivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.2.13" (partial := stronger-hyp) "仮定：通常可換環の平坦な準同型 R→S と任意の通常の導来 R 加群（Lean が強い：平坦因子を離散可換 R 代数 S とする場合）。結論：平坦な導来スカラー拡大後の全 Hⁿ を Hⁿ の通常のスカラー拡大と自然に同定する（この平坦因子の場合の結論に一致）。任意の flat 環スペクトル加群とその π の比較は含まれない。"] _root_.SerrePositivity.flatDerivedBaseChangeHomologyNatIso

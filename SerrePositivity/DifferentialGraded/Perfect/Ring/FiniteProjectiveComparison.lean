@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 public import SerrePositivity.HomologicalAlgebra.Complex.StrictlyPerfect
@@ -1601,3 +1603,9 @@ end SerrePositivity.DifferentialGraded
 end
 
 end RingRetractSingle
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.4.25" (partial := stronger-hyp) "仮定：通常可換環上の有界な有限生成射影複体（Lean が強い：この通常の dg 導来模型で有限射影表示を指定する）。結論：その導来像が perfect となる（有限射影複体から perfect への方向に一致）。原典は項の有限生成性のみを印字しているが、Lean は有限射影性を仮定する。一般の加群スペクトルの表示との同値は含まれない。"] _root_.SerrePositivity.DifferentialGraded.strictlyPerfectComplex_ringDerived_perfect
+attribute [cite HA "7.2.4.5" (partial := component) "仮定：通常可換環上の有界有限射影複体 P、P の厳密な余鎖上限 n とその導来 retract X（Lean が強い：この模型の上端の次数を指定する）。結論：上端の Hⁿ(X) が有限生成となる（最低ホモトピー次数の有限表示性から従う有限生成の部分に一致）。有限表示性そのものと一般の連結環スペクトルでの下限の存在は含まれない。"] _root_.SerrePositivity.DifferentialGraded.ringDerivedRetract_topHomology_finite_of_strictlyPerfect

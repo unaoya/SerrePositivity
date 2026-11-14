@@ -30,7 +30,7 @@ def strictSemifreeRealizationComplex :
 
 /-- 同じ実現関手の全nerveを、指定されたD(A)へ評価した全族。 -/
 def strictSemifreeRealizationFamily :
-    nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶ derivedInfinityCategory A :=
+    nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   nerveMap (strictSemifreeRealizationComplex A) ≫ complexDerivedEvaluation A
 
 /-- 全族の頂点は元の同じ直和全複体の評価である。 -/

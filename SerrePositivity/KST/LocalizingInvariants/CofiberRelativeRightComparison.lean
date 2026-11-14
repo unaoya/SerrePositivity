@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exa
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyIsoPostcomp
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.HomotopyIsoPostcomp
 
 /-!
 概要：同じ底辺の全 cofiber 図式比較は、指定右辺の自然性とその始点の恒等性を保つ。

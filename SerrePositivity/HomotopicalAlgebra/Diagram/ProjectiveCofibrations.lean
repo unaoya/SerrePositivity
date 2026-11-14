@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveQuillen
 public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
 
@@ -82,3 +84,9 @@ lemma isCofibrant_obj (F : K ⥤ C)
       (⊥_ (K ⥤ C)))).mpr h
 
 end SerrePositivity.DiagramModel.Projective
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.8.12" (partial := direction) "仮定：walking span と同値な小さい K、Mathlib locally presentable な cofibrantly generated 抽象モデル圏（HTT の必要条件と一致）。結論：実際の projectively cofibrant diagram から root X の cofibrant 性と二つの legs の cofibration 性を得る。三条件から projective cofibrancy を構成する逆方向の型はない。"] _root_.SerrePositivity.DiagramModel.Projective.isCofibrant_obj
+attribute [cite HTT "A.2.8.5" (partial := stronger-hyp) "仮定：K 小さい、A は Mathlib locally presentable な cofibrantly generated 抽象モデル圏（Lean の形式的可呈示性の入力が強い）。結論：実際の projective cofibrations は objectwise cofibrations。W との交わりにも適用して rlp の反単調性を取ると、定義上の injective fibrations⊆projective fibrations も得られ、原典の二含意に一致。injective model の存在はこの二つの class inclusion には不要。"] _root_.SerrePositivity.DiagramModel.Projective.cofibrations_le_objectwise

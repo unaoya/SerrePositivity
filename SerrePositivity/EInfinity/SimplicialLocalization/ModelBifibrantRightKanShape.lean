@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelBifibrantFrame
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.ModelBifibrantFrame
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelCofibrantRightKanShape
 public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKan

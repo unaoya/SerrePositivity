@@ -1,0 +1,105 @@
+{
+  "status": "B2 NOT complete; this is a deadline status, not the approved stop-point",
+  "files": [
+    {
+      "artifact": "preview-build-complete.json",
+      "sha256": "eaa46fea3a4bf881311d9e3f01d46ae559920a3df9bd1d9ed1ce344f70ec8246"
+    },
+    {
+      "artifact": "cache-portability-complete.json",
+      "sha256": "0449feb7214ac065c0249d9cc87500d42080ad6dd6ef6e4d6fb81d323b8a834b"
+    },
+    {
+      "artifact": "native-tag-metadata-check.json",
+      "sha256": "c3c6ac912342df907f5655ecf7c9ed1957186f1ae01778da2873705bc223848a"
+    },
+    {
+      "artifact": "attribute-metadata-check.json",
+      "sha256": "9090293b2f9dc9e52d4a07e9bf805139c4133e532474b51c074c35a5c84316e0"
+    },
+    {
+      "artifact": "alias-check-complete.json",
+      "sha256": "c6328738d03355c40547a4ef06ec328f716afa4ad1ef80f334959b1c483a3a97"
+    },
+    {
+      "artifact": "moved-audits-complete.json",
+      "sha256": "1720b37b04c46d70a524746c4d23d995edc0f0f43820278af5f18cd9d385106a"
+    },
+    {
+      "artifact": "bounded-doc-supplement-complete.json",
+      "sha256": "851f77e9d9c4743ded353f1976032d0b8680e4fc3df263d355843f2750843c0d"
+    },
+    {
+      "artifact": "bounded-doc-public-artifact-check.json",
+      "sha256": "09969fa0feef4701aa61ee349f7d16c095d3b580b178df75f9b6d99d2ed77846"
+    },
+    {
+      "artifact": "final-comment-graph-summary.json",
+      "sha256": "29bdafd609eec05ea7e0daafcf34f3e01d580632af2f9364a21050aed12fdc36"
+    },
+    {
+      "artifact": "layer-config-conformance.json",
+      "sha256": "88c673a593913bea1553b0041a60a6b0a915b678ca32717eb5e67875c80ea2c0"
+    },
+    {
+      "artifact": "bs-section-order-check.json",
+      "sha256": "fdc499c2c724b64b8e1c1f15fc43cc23b327d734b951778de85af7b41002fef9"
+    },
+    {
+      "artifact": "main-incremental-refresh.json",
+      "sha256": "f5912128a3f74bded1f1d667e6c01185a9434421c3c92c4da2dfeb0303244166"
+    },
+    {
+      "artifact": "main-script-incremental-refresh.json",
+      "sha256": "b6dc5ed4152fd382860437c72febce5f1ce877ccf694432fd1a94d77a440dc2a"
+    },
+    {
+      "artifact": "main-delta-rewrite-inventory.json.gz",
+      "sha256": "ca73236c10eb16076cfdef93c4d17f96f8864bd9beb141d7d3f3e9a8a5ddc1d7"
+    },
+    {
+      "artifact": "audit-discovery-check.json",
+      "sha256": "d6c95ee34ec6202db219a89ff1c6a55d4a4f2d1b431e693f6ccd0e1b187ee0e9"
+    },
+    {
+      "artifact": "b3-heavy-audit-plan.json",
+      "sha256": "157af402a02c557aab84e7fd1aaf70de36bc0536e597e701f25e16496d670c50"
+    },
+    {
+      "artifact": "production-lean-scope-check.json",
+      "sha256": "0537b4c545b634227273543fb3651a92fed7d0082441e2f9670a33291305f0ba"
+    },
+    {
+      "artifact": "attribute-plan-summary-final.json",
+      "sha256": "d19e766b955136c19261bd52e01c9253f0bb6ada4c915b583209f75175a7448d"
+    },
+    {
+      "artifact": "sleep-intervals.json",
+      "sha256": "137054b6e204f2a8e0db089eda62fbaa10be06a563526208e0eb3a060554ed23"
+    },
+    {
+      "artifact": "namespace-plan-field-reviewed.json.gz",
+      "sha256": "e45378a7dc7b9163f0e0e8d9ca03e4092338b4555f2249591f26669108cbe630"
+    },
+    {
+      "artifact": "module-map.json.gz",
+      "sha256": "0768b4411ea48da64ba07192377abc14703703e8051849e9c3767dbbbd5f7ea7"
+    },
+    {
+      "artifact": "layout.json.gz",
+      "sha256": "4b234fc6479b1a321754e50694454f81a321aa2b208ee7a8424e364d1f5b9cc6"
+    },
+    {
+      "artifact": "attribute-declaration-final.json.gz",
+      "sha256": "c4f2c062b8e3424e39f6008ea3a5cd19876022855340195edda4553ebcb0cecf"
+    },
+    {
+      "artifact": "attribute-rows-final.json.gz",
+      "sha256": "91021f26d437eb3d11350e5ee5d08c91f0f032517fbbc271d74581e2e04979de"
+    },
+    {
+      "artifact": "unresolved-187-ledger-final.json.gz",
+      "sha256": "3ef723529c2e80db07e59d29ed98eb7fd59594c787d94df197276f1e59ee36b0"
+    }
+  ]
+}

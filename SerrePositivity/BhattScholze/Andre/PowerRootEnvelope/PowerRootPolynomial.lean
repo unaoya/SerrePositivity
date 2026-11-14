@@ -33,10 +33,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivision
 BS 著者版 Remark 7.15 の方程式商に使う無限 p 冪根多項式環を構成する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPD`、`PowerRootEnvelope/PowerRootInput`、`PowerRootEnvelope/Unconditional/Residue`、`PowerRootEnvelope/VarpiPD`、`Variants/MonicRootedExtension`。
@@ -44,7 +44,7 @@ BS 著者版 Remark 7.15 の方程式商に使う無限 p 冪根多項式環を�
 
 universe u v
 
-/-! ## André E1・E2：p 冪根多項式の指数と整数・小数部分の分解（旧 Andre/Remark715/PowerRootExponents.lean）
+/-! ## p 冪根多項式の指数と整数・小数部分の分解
 
 ## 概要
 
@@ -218,7 +218,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootExponents
 
-/-! ## André E1・E2：無限 p 冪根多項式環の単項式基底（旧 Andre/Remark715/PowerRootPolynomial.lean）
+/-! ## 無限 p 冪根多項式環の単項式基底
 
 ## 概要
 
@@ -326,7 +326,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomial
 
-/-! ## André E1・E2：無限 p 冪根多項式環の δ 構造（旧 Andre/Remark715/PowerRootPolynomialDelta.lean）
+/-! ## 無限 p 冪根多項式環の δ 構造
 
 ## 概要
 
@@ -510,7 +510,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialDelta
 
-/-! ## André E1・E2：小数指数ごとの通常多項式座標（旧 Andre/Remark715/PowerRootPolynomialCoordinates.lean）
+/-! ## 小数指数ごとの通常多項式座標
 
 ## 概要
 
@@ -596,7 +596,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialCoordinates
 
-/-! ## André E1・E2：通常多項式環上の小数指数基底（旧 Andre/Remark715/PowerRootPolynomialFractionBasis.lean）
+/-! ## 通常多項式環上の小数指数基底
 
 ## 概要
 
@@ -717,7 +717,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialFractionBasis
 
-/-! ## André E1・E2：無限 p 冪根多項式環内のモニック商の自由性（旧 Andre/Remark715/PowerRootMonicQuotient.lean）
+/-! ## 無限 p 冪根多項式環内のモニック商の自由性
 
 ## 概要
 
@@ -879,7 +879,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicQuotient
 
-/-! ## André E1・E2：無限 p 冪根多項式環の実 mod p 係数比較（旧 Andre/Remark715/PowerRootPolynomialModPrime.lean）
+/-! ## 無限 p 冪根多項式環の実 mod p 係数比較
 
 ## 概要
 
@@ -1043,7 +1043,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialModPrime
 
-/-! ## André E1・E2：無限根環と任意の係数主イデアル商（旧 Andre/Remark715/PowerRootCoefficientQuotient.lean）
+/-! ## 無限根環と任意の係数主イデアル商
 
 ## 概要
 
@@ -1187,7 +1187,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCoefficientQuotient
 
-/-! ## André E1・E2：無限根多項式環の完全 δ 構造（旧 Andre/Remark715/PowerRootPolynomialPerfectDelta.lean）
+/-! ## 無限根多項式環の完全 δ 構造
 
 ## 概要
 
@@ -1353,7 +1353,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialPerfectDelta
 
-/-! ## André E1・E2：無限根環と任意の係数イデアル商（旧 Andre/Remark715/PowerRootCoefficientIdealQuotient.lean）
+/-! ## 無限根環と任意の係数イデアル商
 
 ## 概要
 
@@ -1494,7 +1494,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCoefficientIdealQuotient
 
-/-! ## André E1・E2：互換な根列による無限根指数の評価（旧 Andre/Remark715/PowerRootExponentEvaluation.lean）
+/-! ## 互換な根列による無限根指数の評価
 
 ## 概要
 
@@ -1614,7 +1614,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootExponentEvaluation
 
-/-! ## André A1-a：無限根多項式環の任意の係数主商（旧 Andre/Remark715/PowerRootPolynomialModScalar.lean）
+/-! ## André A1-a：無限根多項式環の任意の係数主商
 
 ## 概要
 

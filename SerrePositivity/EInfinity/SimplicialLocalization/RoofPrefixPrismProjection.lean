@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeFront
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentRightConeFront
 
 /-!
 # 元の native roof 全 prism の底は標準評価円柱

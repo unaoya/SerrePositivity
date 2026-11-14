@@ -27,13 +27,13 @@ variable (A : Type u) [CommRing A]
 規約：P-6 の公開入口を代入するまで、この命題を入力に残す。
 使われ方：条件付きの g2-2〜4 の唯一の追加入力。 -/
 def FreeProbeUnitTransportCondition : Prop :=
-  ∀ (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌),
+  ∀ (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌),
     Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (derivedFreeProbeUnitIntervalMap A x y)
       (derivedFreeProbeUnitCommaTransportMap A x y))
 
 lemma cAlgForgetDerived_rightAdjoint_exists_of_transport
     (h : FreeProbeUnitTransportCondition A) :
-    ∃ F : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A,
+    ∃ F : _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A,
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction F (cAlgForgetDerived A)) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.exists_qcatAdjunction_of_commaFiberInitial (cAlgForgetDerived A)
   intro x
@@ -41,7 +41,7 @@ lemma cAlgForgetDerived_rightAdjoint_exists_of_transport
     derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso A x (h x)⟩
 
 def cAlgFreeDerivedOfTransport (h : FreeProbeUnitTransportCondition A) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A :=
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A :=
   (cAlgForgetDerived_rightAdjoint_exists_of_transport A h).choose
 
 def cAlgFreeForgetDerivedAdjunctionOfTransport (h : FreeProbeUnitTransportCondition A) :
@@ -53,7 +53,7 @@ def cAlgFreeForgetDerivedAdjunctionOfTransport (h : FreeProbeUnitTransportCondit
 規約：元の候補の始対象性を、別の単位頂点の始対象性で置き換えない。
 使われ方：g1 の元の単位と、条件付きで構成した全随伴との接続。 -/
 def derivedFreeProbeUnitCommaAdjunctionIsoOfTransport
-    (h : FreeProbeUnitTransportCondition A) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (h : FreeProbeUnitTransportCondition A) (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x)
       (derivedFreeProbeUnitCommaVertex A x)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunctionOfTransport A h).unitHom x) := by

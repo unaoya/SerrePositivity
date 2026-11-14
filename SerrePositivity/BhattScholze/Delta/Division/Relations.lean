@@ -14,10 +14,10 @@ public import Mathlib.Data.Finsupp.Weight
 BS 著者版 Corollary 2.39 と Proposition 3.13 の包を調べるため、δ 除算の反復関係式を多項式で表示する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Andre/Envelope/JetRegularity`、`Delta/DividedPower/PDivision`、`Delta/Division/Residue`、`Delta/Division/Source`、`Delta/Division/Witt`。
@@ -25,7 +25,7 @@ BS 著者版 Corollary 2.39 と Proposition 3.13 の包を調べるため、δ �
 
 universe u v w
 
-/-! ## δ除算包の全反復関係式（旧 Delta/Division/Relations/DeltaDivisionIteratedRelations.lean）
+/-! ## δ除算包の全反復関係式
 
 δ閉包を、元の指定生成元の反復δ像だけによる通常イデアルとして表示する。
 δ除算包の全段の関係式と変数を具体化する。三角形の次数評価は別工程。
@@ -177,7 +177,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionIteratedRelations
 
-/-! ## 全反復δ除算関係式の具体的な有限多項式表示（旧 Delta/Division/Relations/DeltaDivisionFiniteRelationPolynomial.lean）
+/-! ## 全反復δ除算関係式の具体的な有限多項式表示
 
 有限δ計算を反復し、深さnの関係式を初期n+1段に置く。
 この段数制御だけからモニック性・平坦性は結論しない。
@@ -249,7 +249,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteRelationPolynomial
 
-/-! ## 実δ反復関係の整係数での最高変数分離（旧 Delta/Division/Relations/DeltaDivisionFiniteLeadingLinear.lean）
+/-! ## 実δ反復関係の整係数での最高変数分離
 
 第n関係の最高変数は一次で係数φ^n(d)、残りは厳密に下のn段に属する。
 p剰余への移行もpねじれの消去も使わない。
@@ -395,7 +395,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteLeadingLinear
 
-/-! ## 全反復除算関係式の最高偏微分のp剰余像（旧 Delta/Division/Relations/DeltaDivisionFiniteTopDerivative.lean）
+/-! ## 全反復除算関係式の最高偏微分のp剰余像
 
 任意深さの最高偏微分を、基底Frobeniusの反復で表す。
 -/
@@ -483,7 +483,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteTopDerivative
 
-/-! ## 全反復除算関係式の最高変数係数と次数（旧 Delta/Division/Relations/DeltaDivisionFiniteTopCoefficient.lean）
+/-! ## 全反復除算関係式の最高変数係数と次数
 
 通常p剰余で各深さの最高係数を基底Frobeniusの反復で表す。
 -/
@@ -556,7 +556,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteTopCoefficient
 
-/-! ## 係数の(p,d)剰余での全反復関係式の最高係数消滅（旧 Delta/Division/Relations/DeltaDivisionFiniteGeneratorResidue.lean）
+/-! ## 係数の(p,d)剰余での全反復関係式の最高係数消滅
 
 p商の係数をさらにdで割る。係数商にδ構造は要求しない。
 -/
@@ -631,7 +631,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteGeneratorResidue
 
-/-! ## 全反復関係式の(p,d)係数商での最高変数除去（旧 Delta/Division/Relations/DeltaDivisionFiniteGeneratorConstant.lean）
+/-! ## 全反復関係式の(p,d)係数商での最高変数除去
 
 次数1以下と全一次係数の消滅から、最高変数分離表示の定数性を導く。
 -/

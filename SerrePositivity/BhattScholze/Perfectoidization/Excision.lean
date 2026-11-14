@@ -24,7 +24,7 @@ CLMST。
 
 universe u
 
-/-! ## The actual four universal maps of an excision diagram（旧 Perfectoidization/PerfectoidizationExcisionDiagram.lean）
+/-! ## The actual four universal maps of an excision diagram
 
 The closed sides are chosen by B3 from quotients of the specified perfectoid
 rings. Their units are universal for the original source quotients as well.
@@ -151,7 +151,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationExcisionDiagram
 
-/-! ## 指定された標準 perfectoid 化の excision 四角形（旧 Perfectoidization/PerfectoidizationExcision.lean）
+/-! ## 指定された標準 perfectoid 化の excision 四角形
 
 ## 概要
 BS 著者版 Corollary 8.12（印刷 p.69）の環の引用から、元の普遍単位と
@@ -278,7 +278,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationExcision
 
-/-! ## 環の excision の引用とその二つの系の集約（旧 Perfectoidization/PerfectoidizationExcisionResults.lean）
+/-! ## 環の excision の引用とその二つの系の集約
 
 ## 概要
 BS 著者版 Corollary 8.12（印刷 p.69）の環の引用と、標準閉側四角形に関する二つの系を公開する。

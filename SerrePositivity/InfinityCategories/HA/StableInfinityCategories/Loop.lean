@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopEvaluationLifting
 
 /-! # ホモトピー圏上の loop 関手
@@ -92,3 +94,8 @@ def LoopSquare.loopFunctorObjIso {X : SSet.{u}} [Quasicategory X] [_root_.SerreP
   exact hi
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.6"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor

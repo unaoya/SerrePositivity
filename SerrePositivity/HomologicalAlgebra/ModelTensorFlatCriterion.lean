@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedFlatModelTensor
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
@@ -55,3 +57,10 @@ theorem derived_pure_flat_of_modelTensor_tests
   exact (torModuleComm (R := R) n H N).injective.subsingleton
 
 end SerrePositivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.2.12" (partial := special) "仮定：通常の可換環 R と有界上導来対象、指定した射影模型（Lean が強い：通常環のこの導来模型の場合）。結論：全離散係数との模型テンソルが零次以外で消える条件から対象の離散性と H⁰ の平坦性を示し、逆に離散かつ平坦な H⁰ から同じ模型での消滅を示す（離散環上の平坦性のテンソル検査の部分に一致）。一般の環スペクトルの flat 述語との比較は含まれない。"] _root_.SerrePositivity.derived_pure_flat_of_modelTensor_tests
+attribute [cite HA "7.2.2.15" (partial := direction) "仮定：通常可換環上の有界上導来対象と、その射影模型の全離散係数によるテンソルの零次集中（Lean が強い：この通常の導来模型の場合）。結論：対象が離散で H⁰ が平坦となる（(5)⇒(3) の離散環の場合に対応する部分に一致）。有限自由加群の filtered 余極限による Lazard 表示と五条件全体の同値は含まれない。"] _root_.SerrePositivity.derived_pure_flat_of_modelTensor_tests
+attribute [cite HA "7.2.4.22" (partial := direction) "仮定：通常可換環の有界上導来対象と全離散係数との指定模型テンソルの零次集中（Lean が強い：この通常の導来模型の場合）。結論：対象が離散かつ H⁰ が平坦となる（amplitude 零のテンソル検査からの平坦性の方向に一致）。一般の連結環スペクトルにおける両方向の同値は含まれない。"] _root_.SerrePositivity.derived_pure_flat_of_modelTensor_tests

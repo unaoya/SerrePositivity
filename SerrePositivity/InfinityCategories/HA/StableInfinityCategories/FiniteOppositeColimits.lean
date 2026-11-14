@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FiniteLimitsColimits
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OppositeDiagramReturn
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteOppositeSSet
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteOppositeSSet
 
 /-!
 概要：有限極限から反対圏の同じ有限図式の余極限を構成する。

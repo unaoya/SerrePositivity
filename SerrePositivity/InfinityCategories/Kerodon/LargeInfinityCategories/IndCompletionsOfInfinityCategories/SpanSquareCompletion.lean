@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FilteredSquareCompletion
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpanSquareUniverseReading
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpanSquareUniverseReading
 
 /-!
 概要：持ち上げた span 全余錐族の filtered 補完は、同じ実引き戻し性を保つ。

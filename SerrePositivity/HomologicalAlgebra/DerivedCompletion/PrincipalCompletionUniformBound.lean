@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
-import all SerrePositivity.BhattScholze.Prism.Bounded.CompletelyFlatPrism
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons
+import all SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlat.Discrete
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity

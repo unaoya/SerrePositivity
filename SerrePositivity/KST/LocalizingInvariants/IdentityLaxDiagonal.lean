@@ -44,7 +44,7 @@ instance diagonal_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.Li
 def exactDiagonal : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A (laxCategory (𝟙 A) (𝟙 A)) := ⟨diagonal A, inferInstance⟩
 
 lemma difference_diagonal_zero (x : A.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((diagonal A ≫ laxDifference (𝟙 A) (𝟙 A)).app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((diagonal A ≫ laxDifference (𝟙 A) (𝟙 A)).app (Opposite.op ⦋0⦌) x) := by
   apply (laxDifference_zero_iff (𝟙 A) (𝟙 A) _).2
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex ((diagonal A ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 A.obj) (𝟙 A.obj)).app (Opposite.op ⦋0⦌) x)

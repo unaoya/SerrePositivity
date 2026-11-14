@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaCategory
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorCommaCategory
 
 /-! # 全 Hom 上の閉比較から作る実 dg comma の対象と作用
 概要：元の二 dg 関手と全次数で自然な閉比較から、同じ comma 対象と全 Hom 作用を作る。

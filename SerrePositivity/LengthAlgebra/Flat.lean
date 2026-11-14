@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
@@ -310,3 +312,10 @@ end base
 end SerrePositivity.LengthAlgebra
 
 end CohenMacaulayPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Eq (3.10)"] _root_.SerrePositivity.normalizedLength_tor_of_isWeaklyRegular
+attribute [cite Paper "Lemma 3.4"] _root_.SerrePositivity.normalizedLength_tor_of_isWeaklyRegular
+attribute [cite Paper "Lemma 4.4"] _root_.SerrePositivity.normalizedLength_tor_of_isWeaklyRegular

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
 public import SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.TargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
 

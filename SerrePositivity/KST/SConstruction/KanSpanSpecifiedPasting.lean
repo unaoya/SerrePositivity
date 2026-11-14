@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.KanSpanPastingChoices
 public import SerrePositivity.KST.SConstruction.AnodyneExtensionSpecifiedVertices
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.KanMappingSpanComposition
 
 /-! # 元の指定辺・指定三角形を保つ span 貼り合わせの頂点
 概要：元の三辺を持つ実三角形を可縮選択空間へ入れ、その辺と二単体を厳密に回収する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalCoconeRestriction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullyFaithfulPrecompositionColimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FullyFaithfulPrecompositionColimits
 
 /-!
 概要：全余錐空間の同値による余極限の存在の比較。

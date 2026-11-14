@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity
@@ -56,3 +58,10 @@ lemma idemYoneda_isIdempotentCompletion (C : SSet.{u}) [Quasicategory C] :
   exact ⟨ULift.up x, hx⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.4.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion
+attribute [cite HTT "5.1.4.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isIdempotentCompletion
+attribute [cite HTT "5.3.6.9" (partial := special) "仮定：小準圏 C と冪等完備な準圏 E（Lean が強い：任意の大きさの C に対する別宇宙の構成はこの宣言で述べない）。結論：Idem(C) は同じ Yoneda の冪等完備化で、制限 Fun(Idem(C),E)→Fun(C,E) が全準圏同値（この場合の自由冪等完備化の普遍性と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isIdempotentCompletion

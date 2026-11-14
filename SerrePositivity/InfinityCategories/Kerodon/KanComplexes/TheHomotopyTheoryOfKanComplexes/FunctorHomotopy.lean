@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.SimplicialHomotopyEquivalence
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 public import Mathlib.Tactic.CrossRefAttribute
@@ -127,3 +129,10 @@ lemma IsQCatEquivalence.isSimplicialHomotopyEquivalence {X Y : SSet.{u}}
   exact ⟨g, ⟨FunctorIso.simplicialHomotopy e⟩, ⟨FunctorIso.simplicialHomotopy e'⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.2.1.7" (partial := special) "仮定：準圏 C の図式 p と頂点 v（Lean が強い：p が一点の包含）。結論：その一点の通常コスライスの繊維を左 pinched 模型で、太い方を両端固定の区間模型で表すと、同じ比較がホモトピー同値となる（一致する場合。一般の図式は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence.isSimplicialHomotopyEquivalence
+attribute [cite HTT "4.2.1.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence.isSimplicialHomotopyEquivalence
+attribute [cite HTT "4.3.3.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge

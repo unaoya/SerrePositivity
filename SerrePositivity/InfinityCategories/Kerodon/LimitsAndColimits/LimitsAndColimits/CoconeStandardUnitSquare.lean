@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NativeCoconeTopIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.NativeCoconeTopIso
 
 /-!
 概要：元の全余錐の脚の正方形を、両端で選んだ標準余錐の変換へ移す。

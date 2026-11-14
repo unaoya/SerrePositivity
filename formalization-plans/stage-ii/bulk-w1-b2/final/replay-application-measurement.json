@@ -1,0 +1,10 @@
+{
+  "seconds": 6.179757250472903,
+  "rc": 0,
+  "bundle_sha256": "5d402907e295ee4d514b8fc3e32f4f4af28be9706ac1d6cb813eef4ac004da64",
+  "source_files": 32255,
+  "library_source_signature": "e8dbff0cc32e6e28b0c93678e7a7c54ec57ca2560202c3a143559d1ca70ddf80",
+  "all_library_sources_match": true,
+  "precondition": "Citation.lean and bibliography from reviewed B2 preparation are installed first",
+  "root": "/tmp/bulk-w1-b2/replay-tree"
+}

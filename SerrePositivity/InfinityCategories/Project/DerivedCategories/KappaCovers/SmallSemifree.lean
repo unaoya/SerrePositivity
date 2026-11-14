@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.GradedExtension
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereFreeCover
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereFreeCover
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import SerrePositivity.DifferentialGraded.Derived.Basic
 

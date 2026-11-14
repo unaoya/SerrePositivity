@@ -59,7 +59,7 @@ lemma dgOdotMilnorSourceNullOuterSquare_edges :
 方針：同じ実左辺の終点から回収する。規約：頂点を選び直さない。
 使われ方：Sp の完備化付き実面の零角認証。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_zero_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorSourceCellInput R d)) := by
   have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgOdotMilnorSourceNullOuterSquare R d)
   let e : (dgKInputInfinity.{u, u + 1} R).Edge
@@ -75,10 +75,10 @@ lemma dgOdotMilnorSourceNullOuterSquare_zero_vertex :
 方針：元の全対象商の実 Perf 零性を適用する。
 規約：外周の指定完備化を変更しない。使われ方：Sp の外面零角条件。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_perfect_zero :
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
       (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1)))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1)))
   rw [dgOdotMilnorSourceNullOuterSquare_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R _
 

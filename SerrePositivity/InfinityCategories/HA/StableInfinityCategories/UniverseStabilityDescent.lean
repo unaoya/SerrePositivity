@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseUniversalSquares
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroObjects
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSquareHom
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InnerFibration
 
@@ -21,21 +21,21 @@ open CategoryTheory SSet MonoidalCategory
 open scoped _root_.Simplicial
 
 /-- 零角を指定した三角形を実四角形として持ち上げる。 -/
-def ZeroTriangle.ulift {X : SSet.{u}} (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((SSet.uliftFunctor.{v, u}).obj X) where
+def ZeroTriangle.ulift {X : SSet.{u}} (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((SSet.uliftFunctor.{v, u}).obj X) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare t.square
   zero_corner := by
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare_vertex]
     exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.isZeroVertex_iff_ulift _).1 t.zero_corner
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (ulift)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle (ulift)
 
 
 /-- 持ち上げた指定辺の Fiber 四角形を元の辺の実四角形へ降下する。 -/
 def fiberSquareOfULift {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f := by
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f := by
   let F := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquareHomEquiv.{u, v} X).symm s.square
   have hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare F = s.square :=
     (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquareHomEquiv.{u, v} X).apply_symm_apply s.square
@@ -53,8 +53,8 @@ def fiberSquareOfULift {X : SSet.{u}} {x y : X _⦋0⦌}
 /-- 持ち上げた指定辺の Cofiber 四角形を元の辺の実四角形へ降下する。 -/
 def cofiberSquareOfULift {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f := by
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f := by
   let F := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquareHomEquiv.{u, v} X).symm s.square
   have hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare F = s.square :=
     (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquareHomEquiv.{u, v} X).apply_symm_apply s.square

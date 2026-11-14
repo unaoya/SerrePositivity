@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetNonjointInclusion
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceNumericMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceNumericMap
 
 /-! # 元の部分集合包含の右端からの数値座標埋め込み
 概要：元の非 joint 包含を右端からの列挙で数値化し、元の順序・像・入力値を回収する。

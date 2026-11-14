@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.ConeLifting
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SourceInvariance
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.PointwiseBrown
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SourceInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.PointwiseBrown
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightFunctoriality
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution

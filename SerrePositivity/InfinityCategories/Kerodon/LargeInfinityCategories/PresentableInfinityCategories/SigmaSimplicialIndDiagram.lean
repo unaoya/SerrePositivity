@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaGeometricIndGeneration
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PresheafSubcategory
 
@@ -48,3 +50,8 @@ lemma sigmaPresheaf_simplicialIndDiagram (C : SSet.{u}) [Quasicategory C]
   exact ⟨G, H, d, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _, hd, hv⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.14" (partial := direction) "仮定：有限余積を持つ小 C と PΣ(C) の対象 X（HTT と一致）。結論：実際の Ind(C) 値の全単体的図式と PΣ 内の実現 X が存在し、包含は実現を保つので元の P(C) 内でも同じ表示となる (1)⇒(2)（一致）。任意の P(C) 内の Ind 値表示から X の有限積保存を回収する逆向きはこの型の結論に含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaPresheaf_simplicialIndDiagram

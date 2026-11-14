@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.YonedaHomNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransCommonIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransCommonIso
 /-!
 概要：代表からの全 Hom と評価の dg Yoneda 比較を共通宇宙の全 nerve 関手同型へ移す。
 方針：全次数自然な厳密 dg 自然変換と同じ閉同型成分を使う。

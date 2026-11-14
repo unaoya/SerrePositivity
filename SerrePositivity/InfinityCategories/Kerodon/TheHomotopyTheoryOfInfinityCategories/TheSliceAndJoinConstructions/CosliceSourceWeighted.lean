@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceSourcePrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeInitialWeighted
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCoslicePrecomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedCoslicePrecomposition
 
 /-!
 概要：coslice 全体の前合成を、既存の weighted な比較と厳密に照合する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConnectedKSwindle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleSplitCofiber
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleSplitCofiber
 public import SerrePositivity.KST.Fibration.SpectrumZeroFromPositiveLevels
 
 /-!
@@ -42,7 +42,7 @@ theorem dgKappaSplitCofiberInput
 /-- 元の点ごとの native 分裂零三角形は、追加 cofiber 仮定なしに実 cofiber 列。 -/
 theorem dgKappaSplitPerfPointwiseZeroTriangle_isCofiber
     (X : PresentedPerfectDGObject R (DGKappaCone R D I)) (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (dgKappaSplitPerfPointwiseZeroTriangle R D I X Z) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (dgKappaSplitPerfPointwiseZeroTriangle R D I X Z) :=
   dgKappaSplitPerfPointwiseZeroTriangle_isCofiber_of_input R D I X
     (dgKappaSplitCofiberInput R D I X) Z
 
@@ -59,14 +59,14 @@ theorem dgKappaFixedK_subsingleton_of_split (Z : DGKappaZeroInput R D I) (j : �
 
 /-- 元の同じ cone の連結 BF K 頂点は、実 Sp 内の零対象。 -/
 theorem dgKappaConnectedK_isZeroVertex (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       (kOmegaSpectrum (presentedPerfectDGStableModel R (DGKappaCone R D I)))) :=
   Fibration.spectrum_isZeroVertex_of_homotopyGroup_subsingleton _
     (dgKappaConnectedK_subsingleton_of_split R D I Z)
 
 /-- 元の同じ固定 dg K 入力の実スペクトル頂点も、実 Sp 内の零対象。 -/
 theorem dgKappaFixedK_isZeroVertex (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaConeKInput R D I))) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaConeKInput R D I))) :=
   Fibration.spectrum_isZeroVertex_of_homotopyGroup_subsingleton _
     (dgKappaFixedK_subsingleton_of_split R D I Z)
 

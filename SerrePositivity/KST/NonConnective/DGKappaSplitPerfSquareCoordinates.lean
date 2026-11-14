@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitNativeSquare
 public import SerrePositivity.KST.NonConnective.DGKappaPerfZeroFamily
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.CommutativeSquareRealization
 
 /-!
 概要：元の閉 dg 関手の分裂四角形の二胞体と、Perf の実零角を回収する。
@@ -91,13 +91,13 @@ theorem dgKappaSplitPerfFamilySquare_top :
 
 /-- 同じ四角形の零角は、元の実零自己関手の全 Perf 作用の頂点。 -/
 theorem dgKappaSplitPerfFamilySquare_corner :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 1 =
       (dgKappaFullPerfFamilyMap R D I).app (Opposite.op ⦋0⦌)
         (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (dgKappaZeroFunctor R D I Z))) := by
   have hv := congrArg (fun F => F.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (1 : Fin 3)))
       (dgKappaSplitPerfFamilySquare_upper R D I Z)
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 1 =
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 1 =
     (dgKappaFullPerfFamilyMap R D I).app (Opposite.op ⦋0⦌) _ at hv
   refine hv.trans (congrArg ((dgKappaFullPerfFamilyMap R D I).app (Opposite.op ⦋0⦌)) ?_)
   apply ULift.ext
@@ -106,12 +106,12 @@ theorem dgKappaSplitPerfFamilySquare_corner :
 
 /-- 元の実分裂四角形の同じ零角は、全 Perf 関手空間の零頂点。 -/
 theorem dgKappaSplitPerfFamilySquare_corner_isZero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 1) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 1) := by
   rw [dgKappaSplitPerfFamilySquare_corner]
   exact dgKappaFullPerfZeroVertex_isZero R D I Z
 
 /-- 元の全 Perf 関手空間における、同じ零角を持つ実三角形。 -/
-def dgKappaSplitPerfZeroTriangle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle
+def dgKappaSplitPerfZeroTriangle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle
     ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))).obj
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))) where
   square := dgKappaSplitPerfFamilySquare R D I Z

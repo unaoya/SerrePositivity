@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationModels
@@ -17,7 +19,7 @@ perfectoid 環の完備導来テンソル積は離散で perfectoid、核と商�
 商の自己積の証明に、perfectoid 環どうしの完備導来テンソルの離散性と perfectoid 性を使う。
 
 ## 方針
-Tor 独立性を平坦な全射表示で示す（原典の単体的証明の代わり、ノート D13）。
+Tor 独立性を平坦な全射表示で示す（BS 著者版 Lemma 10.3 の単体的証明に対する古典的な代数計算）。
 
 ## 規約
 —
@@ -28,7 +30,7 @@ BS 著者版 Proposition 10.2・BS 著者版 Remark 10.7、CLMST。
 
 universe u
 
-/-! ## BS 著者版 Lemma 10.3 の核と商の混合積（旧 Almost/Lemma103KernelTensor.lean）
+/-! ## BS 著者版 Lemma 10.3 の核と商の混合積
 
 ## 概要
 perfectoid 環の perfectoid 商について、核と商の完備導来テンソルは零である。
@@ -266,7 +268,7 @@ end SerrePositivity.BhattScholze
 
 end Lemma103KernelTensor
 
-/-! ## BS 著者版 Lemma 10.3 の一般の perfectoid テンソル（旧 Almost/Lemma103PerfectoidTensor.lean）
+/-! ## BS 著者版 Lemma 10.3 の一般の perfectoid テンソル
 
 ## 概要
 BS 著者版 Lemma 10.3 の証明中の主張（印刷 pp.78–79）を、実際の完備導来テンソルの
@@ -326,7 +328,7 @@ end SerrePositivity.BhattScholze
 
 end Lemma103PerfectoidTensor
 
-/-! ## 単項商の perfectoid 化の核に対する BS 著者版 Lemma 10.3（旧 Almost/PerfectoidIdealLemma103.lean）
+/-! ## 単項商の perfectoid 化の核に対する BS 著者版 Lemma 10.3
 
 ## 概要
 B3 の選ばれた perfectoid 化の核について、BS 著者版 Lemma 10.3（印刷 pp.78–79）を述べる。
@@ -451,3 +453,13 @@ theorem perfectoidIdeal_completedQuotientMul_isIso :
 end SerrePositivity.BhattScholze
 
 end PerfectoidIdealLemma103
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedDerivedIdealMul_isIso
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedIdealMul_isIso
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedIdealTensorQuotient_isZero
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedQuotientTensorIdeal_isZero
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul_isIso
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdeal_lemma103

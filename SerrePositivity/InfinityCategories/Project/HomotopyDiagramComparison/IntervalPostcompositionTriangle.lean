@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalPrecompositionTriangle
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.IntervalPrecompositionTriangle
 
 /-!
 概要：元の区間 Hom の後合成を、指定三辺の三角形族で表示する。

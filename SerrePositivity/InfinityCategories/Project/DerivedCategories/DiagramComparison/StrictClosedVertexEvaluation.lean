@@ -34,7 +34,7 @@ lemma closedVertex_pullback_hom (M : ModuleCategory A PUnit.{1}) {n : ℕ}
     ((closedNerveSimplex (A := A) (D := RightModule A PUnit.{1})
       ((Functor.const (Fin 1)).obj M)).pullback α).hom T a b k hT ha hb hk =
         closedNerveHom (𝟙 M) k := by
-  have h := closedNerveSimplex_pullback (A := A) (D := RightModule A PUnit.{1})
+  have h := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback (A := A) (D := RightModule A PUnit.{1})
     ((Functor.const (Fin 1)).obj M) α
   have hh := SimplexData.data_hom_heq_of_eq (congrArg Simplex.toSimplexData h)
     T a b k hT ha hb hk
@@ -46,7 +46,7 @@ lemma strictClosedVertexEvaluation (G : C ⥤ ModuleCategory A PUnit.{1}) :
     lift (𝟙 (nerve C)) (SSet.stdSimplex.isTerminalObj₀.from (nerve C)) ≫
       strictSimplexFunctorEvaluation A (RightModule A PUnit.{1})
         (G ⋙ strictBarClosedVertexFunctor A) =
-      nerveMap G ≫ closedNerveInclusion A (RightModule A PUnit.{1}) := by
+      nerveMap G ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (RightModule A PUnit.{1}) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext

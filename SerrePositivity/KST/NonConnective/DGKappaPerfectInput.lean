@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGKappaSuspension
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectModulesInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectModulesInfinity
 
 /-!
 概要：小さい dg cone 内の perfect 安定閉包と、β5 の元の Perf の比較を明示入力にする。
@@ -54,9 +54,9 @@ def dgKappaPerfectInclusion (P : DGKappaPerfectInput R D I) :
 /-- 同じ懸垂の商射影は、元の Perf の全頂点を実際に零化する。 -/
 lemma dgKappaSuspension_kills_perfect (P : DGKappaPerfectInput R D I)
     (z : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory R D) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaPerfectInclusion R D I P ≫ dgKappaSuspensionProjection R D I).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKappaPerfectInclusion R D I P ≫ dgKappaSuspensionProjection R D I).app
       (Opposite.op ⦋0⦌) z) := by
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
   let := dgKappaSuspensionInfinity_isStable R D I
   exact (dgKappaSuspension_isStableVerdierSequence R D I).kills

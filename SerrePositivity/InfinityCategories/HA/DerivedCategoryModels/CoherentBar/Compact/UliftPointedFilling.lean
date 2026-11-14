@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.UliftPointedSimplex
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseBoundaryHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseBoundaryHom
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Kan
 /-!
 概要：指定基点球面単体の関係と積の充填を、宇宙の間で保持する。

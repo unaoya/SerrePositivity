@@ -24,7 +24,7 @@ perfectoid 環の通常テンソル積の perfectoid 化。
 
 universe u
 
-/-! ## 共通層へ移した根・完全係数環のAPIの互換入口（旧 Perfectoidization/PerfectCoefficientTensor.lean）
+/-! ## 共通層へ移した根・完全係数環のAPIの互換入口
 
 既存のBS宣言名を保ち、証明は共通層の同じ宣言を再利用する。
 -/
@@ -44,7 +44,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectCoefficientTensor
 
-/-! ## B4-5：Witt係数テンソルから完備環への普遍射（旧 Perfectoidization/WittPresentation/WittCoefficientPushout.lean）
+/-! ## Witt係数テンソルから完備環への普遍射
 
 既存の一般Witt持上げを用いる。完備テンソルを新しく定義せず、
 完全係数環のテンソルのWitt環について、p完備試験環への普遍性を証明する。
@@ -250,7 +250,7 @@ end SerrePositivity.BhattScholze
 
 end WittCoefficientPushout
 
-/-! ## B4-5：源のFontaine生成元を共用するWitt商表示（旧 Perfectoidization/WittPresentation/PerfectoidWittBasePresentation.lean）
+/-! ## 源のFontaine生成元を共用するWitt商表示
 
 非零枝のFontaine写像のデータを入力し、標準写像と両立する具体的商同型を構成する。
 源の生成元の像を使うため、余積の両因子の表示に同じ基底生成元を利用できる。
@@ -311,7 +311,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidWittBasePresentation
 
-/-! ## B4-5：共通生成元によるWitt商の余積（旧 Perfectoidization/WittPresentation/PerfectoidWittPushout.lean）
+/-! ## 共通生成元によるWitt商の余積
 
 完全係数環のテンソルのWitt環を、基底の生成元の像で割る。
 係数テンソルが零環になる場合も含めて、候補のperfectoid性と
@@ -468,7 +468,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidWittPushout
 
-/-! ## B4-5：Witt係数余積のmod pと標準射（旧 Perfectoidization/WittPresentation/PerfectoidWittPushoutModP.lean）
+/-! ## Witt係数余積のmod pと標準射
 
 係数テンソルにCharP pを持つ枝の具体的な同型と、左右の標準射の式。
 通常テンソルのmod pとの同型はさらに別工程。

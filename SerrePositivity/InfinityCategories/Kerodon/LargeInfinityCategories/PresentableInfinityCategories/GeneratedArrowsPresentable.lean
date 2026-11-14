@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageStrongSaturation
 
 /-!
@@ -64,3 +66,9 @@ lemma generatedArrowCategory_isPresentable
   exact hImage.of_equivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (eqToIso hcat))
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.4.14" (partial := direction) "仮定：presentable C と小生成な強飽和 S（HTT と一致、小生成性の定義の辺族を用いる）。結論：同じ S の全射準圏が presentable、従って accessible という (3)⇒(2)⇒(1)（一致）。accessible な任意の強飽和射圏から小生成族を回収する逆向きは結論しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable
+attribute [cite HTT "5.5.5.9" (partial := stronger-hyp) "仮定：presentable C と小生成飽和 S（Lean が強い：S は小さい辺族の強飽和生成閉包）。結論：同じ S の全射準圏の presentability（この場合の小生成性から表示可能性に一致）。任意の飽和生成閉包や逆向きの生成族回収は結論しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable

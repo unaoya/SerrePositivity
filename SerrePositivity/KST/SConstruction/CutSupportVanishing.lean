@@ -19,7 +19,7 @@ open scoped Simplicial
 /-- 左支持の図式の右切断は S_n C 自身の零対象。 -/
 lemma cutLeftSupport_rightCut_isZero (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     (v : (sConstruction n X.carrier) _⦋0⦌) (hv : (cutLeftSupport n k X).predicate v) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sMap X.carrier (cutCornerOrder k 1 1)).app (Opposite.op ⦋0⦌) v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sMap X.carrier (cutCornerOrder k 1 1)).app (Opposite.op ⦋0⦌) v) := by
   apply gappedVertex_isZero_of_pointwise
   intro a
   obtain ⟨b, rfl⟩ := nerveEquiv.symm.surjective a
@@ -28,12 +28,12 @@ lemma cutLeftSupport_rightCut_isZero (n : ℕ) (k : Fin (n + 1)) (X : StableMode
     rw [cutEndpoint_one_one]
     exact le_max_right _ _
   have he := sMap_evaluate_vertex (cutCornerOrder k 1 1) v (ComposableArrows.mk₀ b)
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr (hv ⟨arMap (cutCornerOrder k 1 1) b, hb⟩)
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr (hv ⟨arMap (cutCornerOrder k 1 1) b, hb⟩)
 
 /-- 右支持の図式の左切断は S_n C 自身の零対象。 -/
 lemma cutRightSupport_leftCut_isZero (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     (v : (sConstruction n X.carrier) _⦋0⦌) (hv : (cutRightSupport n k X).predicate v) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sMap X.carrier (cutCornerOrder k 0 0)).app (Opposite.op ⦋0⦌) v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sMap X.carrier (cutCornerOrder k 0 0)).app (Opposite.op ⦋0⦌) v) := by
   apply gappedVertex_isZero_of_pointwise
   intro a
   obtain ⟨b, rfl⟩ := nerveEquiv.symm.surjective a
@@ -42,6 +42,6 @@ lemma cutRightSupport_leftCut_isZero (n : ℕ) (k : Fin (n + 1)) (X : StableMode
     rw [cutEndpoint_zero_zero]
     exact min_le_right _ _
   have he := sMap_evaluate_vertex (cutCornerOrder k 0 0) v (ComposableArrows.mk₀ b)
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr (hv ⟨arMap (cutCornerOrder k 0 0) b, hb⟩)
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr (hv ⟨arMap (cutCornerOrder k 0 0) b, hb⟩)
 
 end SerrePositivity.KST.SConstruction

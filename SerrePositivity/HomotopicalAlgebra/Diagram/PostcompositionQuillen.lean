@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Quillen.CofibrantObjects
 public import Mathlib.CategoryTheory.Adjunction.Whiskering
@@ -74,3 +76,9 @@ lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R)
   exact Quillen.isCofibrant_obj ((Functor.whiskeringRight K C D).obj L) F
 
 end SerrePositivity.DiagramModel.Projective
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.8.6" (partial := component) "仮定：通常の Quillen adjunction L⊣R と小さい K、両値域は Mathlib locally presentable な cofibrantly generated 模型（HTT の projective adjunction 部分と一致）。結論：実際の projective models の間の postcomposition は左右 Quillen であり、その ordinary adjunction は whiskering で与えられる。injective と Quillen equivalence の保存はこの型には含まない。"] _root_.SerrePositivity.DiagramModel.Projective.postcompose_isLeftQuillen
+attribute [cite HTT "A.2.8.6" (partial := component) "仮定：通常の Quillen adjunction L⊣R と小さい K、両値域は Mathlib locally presentable な cofibrantly generated 模型（HTT の projective adjunction 部分と一致）。結論：実際の projective models の間の postcomposition は左右 Quillen であり、その ordinary adjunction は whiskering で与えられる。injective と Quillen equivalence の保存はこの型には含まない。"] _root_.SerrePositivity.DiagramModel.Projective.postcompose_isRightQuillen

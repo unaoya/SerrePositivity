@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitAttachedCocone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreCoconeLeg
 
@@ -74,3 +76,9 @@ def colimitAttachmentApexEdge (c : _root_.SerrePositivity.InfinityCategories.Ker
 
 end
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.3" (partial := component) "仮定：部分図式への包含と共通部分の余極限余錐、拡張図式の余極限余錐（Lean が弱い：後者には任意の余錐を許す）。結論：同じ制限余錐から誘導される、共通部分の頂点から拡張余錐の頂点への実際の辺を選ぶ（一致する成分。選択の空間の可縮性は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitAttachmentApexEdge
+attribute [cite HTT "4.4.2.3" (partial := component) "仮定：部分図式への包含と共通部分の余極限余錐、拡張図式の余極限余錐（Lean が弱い：後者には任意の余錐を許す）。結論：同じ制限余錐から誘導される、共通部分の頂点から拡張余錐の頂点への実際の辺を選ぶ（一致する成分。選択の空間の可縮性は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitAttachmentComparison_restrict

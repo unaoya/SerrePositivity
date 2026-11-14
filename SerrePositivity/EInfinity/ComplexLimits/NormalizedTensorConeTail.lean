@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeComponents
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 
 /-!
 概要：実 cone の始頂点を除く面は、元の frame 図式の同じ通常単体である。
@@ -36,7 +36,7 @@ lemma normalizedTensorConeData_tail {n : ℕ}
         (by rw [hb]; exact I.isGreatest_max' _) _)
       (by rw [Finset.card_image_of_injective _ (Fin.succ_injective _)]; exact hk) a.succ_ne_zero
     have hp := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toSimplexData
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback
         ((coneTailOrderHom n).monotone.functor ⋙ c ⋙
           normalizedTensorElementDiagram A X Y ⋙ complexToClosed A)
         (Fin.succOrderEmb (n + 1)).toOrderHom)

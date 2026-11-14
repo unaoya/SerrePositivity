@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarMaurerCartan
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarMaurerCartan
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StableHomotopyEquation
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.NormalizedProjection
 /-!

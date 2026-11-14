@@ -4,7 +4,7 @@ import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
-import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
@@ -12,7 +12,7 @@ import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource
 import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source
 import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
-import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
+import SerrePositivity.BhattScholze.Delta.DividedPower.Principal.PrincipalDP
 import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 import SerrePositivity.BhattScholze.Delta.Division.Family
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
@@ -25,7 +25,7 @@ import SerrePositivity.BhattScholze.Delta.Division.Source
 import SerrePositivity.BhattScholze.Andre.Envelope.Normalized
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt
 import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
-import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDP
+import SerrePositivity.CommutativeAlgebra.DividedPowers.RankOneDP
 import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 import SerrePositivity.BhattScholze.Delta.Division.Relations
 import Mathlib.Algebra.Ring.PUnit

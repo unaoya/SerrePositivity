@@ -53,7 +53,7 @@ lemma valuePullbackSquare_right : _root_.SerrePositivity.InfinityCategories.Kero
   BinaryProductCospanNormalized.square_right _ _ _ _ _ _ _ _ _ _
 
 /-- 同じ正方形の左下は、元の左端の同じ BF 表示。 -/
-lemma valuePullbackSquare_vertex00 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.valuePullbackSquare hF) 0 0 =
+lemma valuePullbackSquare_vertex00 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.valuePullbackSquare hF) 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (perfectInvariantSpectrum F (perfectStableVertex d.left d.left_complete)) :=
   NativeSquareRows.vertex00 _ _ (d.valuePullbackSquare_bottom hF)
 
@@ -91,7 +91,7 @@ lemma valuePullbackCospan_D : horn₂₂.ι₁₂ ≫ d.valuePullbackCospan hF =
     d.valuePullbackSquare_top]
 
 /-- 元の左端の BF 表示の頂点は、同じ元の不変量値の頂点そのもの。 -/
-lemma valuePullbackSquare_vertex_value : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.valuePullbackSquare hF) 0 0 =
+lemma valuePullbackSquare_vertex_value : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.valuePullbackSquare hF) 0 0 =
     F.app (Opposite.op ⦋0⦌) (perfectStableVertex d.left d.left_complete) :=
   (d.valuePullbackSquare_vertex00 hF).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _)
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaColimitFiniteProducts
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullSubcomplexCoconeLift
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullSubcomplexColimitReflection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FullSubcomplexCoconeLift
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FullSubcomplexColimitReflection
 
 /-!
 概要：P_Σ の元の sifted 図式の実際の余極限全余錐と、前層圏での同じ余錐を供給する。

@@ -35,11 +35,11 @@ lemma nerveCostructuredArrow_isPullback : IsPullback (nerveMap (CostructuredArro
 規約：元の添字 K を第一因子に置く。
 使われ方：元の左 Kan 比較射の同型性。 -/
 lemma nerveLeftKanShape_isPullback : IsPullback (nerveMap (CostructuredArrow.proj L c))
-    (nerveMap (CostructuredArrow.toOver L c) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso c).hom)
+    (nerveMap (CostructuredArrow.toOver L c) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso c).hom)
     (nerveMap L) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c)) := by
   exact ((nerveCostructuredArrow_isPullback L c).of_iso (Iso.refl _)
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso c) (Iso.refl _) (Iso.refl _)
-    (by simp) (by simp) (by simpa using (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection c).symm) (by simp)).flip
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso c) (Iso.refl _) (Iso.refl _)
+    (by simp) (by simp) (by simpa using (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso_projection c).symm) (by simp)).flip
 
 /-- 概要：通常の左 comma から native な左 Kan 添字への比較射は同型。
 方針：引き戻しの普遍同型と二つの射影で同定する。

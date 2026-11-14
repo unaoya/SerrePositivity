@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialSum
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.SimplicialSum
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
 
 /-!

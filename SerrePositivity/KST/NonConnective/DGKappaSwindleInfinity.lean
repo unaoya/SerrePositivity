@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGKappaSwindle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransVertex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedEdges
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGPretriangulatedFunctorExact
 
 /-!
 概要：同じ dg cone の厳密 swindle を、元の dg nerve 上の実関手同型として保持する。

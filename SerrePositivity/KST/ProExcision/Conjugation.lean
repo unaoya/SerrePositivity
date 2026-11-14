@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy
 public import Mathlib.Algebra.Group.Hom.Defs
@@ -93,3 +95,9 @@ def conjugationLinearizedHomotopy (u : H) :
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorHomotopy (conjugationNerveHomotopy u)
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Construction A.6"] _root_.SerrePositivity.KST.ProExcision.conjugationChainHomotopy
+attribute [cite KST "Construction A.6"] _root_.SerrePositivity.KST.ProExcision.inverseConjugation_naturality

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.DGOdotAlgebraRealization
 public import SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions
 public import SerrePositivity.DifferentialGraded.Verdier.Derived
@@ -15,7 +17,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (dgOdotAlgebra R d)
 local notation "I" => dgOdotQuotientInput R d
 local notation "Q" => DGOdotQuotientEnd R d
 local notation "T" => DGLaxQuotientEndInput.quotientObject (I)
@@ -65,3 +67,12 @@ lemma dgOdotAlgebraToQuotient_perfectDG_quasiEquivalence
   exact perfectDGExtension_quasiEquivalence R (B) (T) (dgOdotAlgebraToQuotient R d)
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Eq (4)" (partial := component) "仮定：可換基礎環上の指定 dg gluing の Milnor 正方形、Sp 値かつ filtered 余極限保存の局所化不変量（Lean が強い）。結論：実 resolved 商の冪等完備化を第 4 頂点とする Sp 引き戻しと、dg End の Morita 比較。任意の E₁ 環スペクトルについての自然な環の四辺と下部スペクトル A′⊗_A B の同定は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita
+attribute [cite LT "Eq (9)" (partial := component) "仮定：左右の小 perfect 模型の生成条件と指定 dg gluing（Lean が強い）。結論：指定 End から dg 商への Morita 同値。任意の E₁ 正方形で p(τ) が同値との比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita
+attribute [cite LT "Lemma 1.10" (partial := component) "仮定：線形 dg 模型、生成条件または Morita の証人（Lean が強い）。結論：特定の生成元の End と perfect 商の比較、Morita からの ∞ 圏同値。E₁ 環スペクトル全体の充満忠実な関手と本質像は得ない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita
+attribute [cite LT "Lemma 1.11" (partial := component) "仮定：左右の小 perfect 模型の生成条件と指定 dg gluing（Lean が強い）。結論：指定 End から dg 商への Morita 同値。任意の E₁ 正方形で p(τ) が同値との比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita
+attribute [cite LT "Thm 1.3" (partial := component) "仮定：可換基礎環上の指定 dg gluing の Milnor 正方形、Sp 値かつ filtered 余極限保存の局所化不変量（Lean が強い）。結論：実 resolved 商の冪等完備化を第 4 頂点とする Sp 引き戻しと、dg End の Morita 比較。任意の E₁ 環スペクトルについての自然な環の四辺と下部スペクトル A′⊗_A B の同定は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita

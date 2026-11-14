@@ -15,10 +15,10 @@ raw r/d 包の A 作用と prism 候補への導来源射、raw 根環の逐次�
 BS 著者版 Theorem 7.4 の根の包による別証明に使う、raw 根環の逐次完備化を扱う。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `RootEnvelope/PerfectPrism`。
@@ -26,7 +26,7 @@ BS 著者版 Theorem 7.4 の根の包による別証明に使う、raw 根環の
 
 universe u
 
-/-! ## raw r/d包の標準A作用と既存prism候補への実導来源射（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootSourceRawCoefficients.lean） -/
+/-! ## raw r/d包の標準A作用と既存prism候補への実導来源射 -/
 
 @[expose] public noncomputable section DeltaRootSourceRawCoefficients
 
@@ -131,7 +131,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceRawCoefficients
 
-/-! ## raw根環自身の実逐次完備化と元のA上の実対象の比較（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootRawCompletionRestriction.lean） -/
+/-! ## raw根環自身の実逐次完備化と元のA上の実対象の比較 -/
 
 @[expose] public noncomputable section DeltaRootRawCompletionRestriction
 
@@ -231,7 +231,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawCompletionRestriction
 
-/-! ## raw根環の実逐次完備化H0の二座標反射（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootRawCompletionReflection.lean） -/
+/-! ## raw根環の実逐次完備化H0の二座標反射 -/
 
 @[expose] public noncomputable section DeltaRootRawCompletionReflection
 
@@ -310,7 +310,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawCompletionReflection
 
-/-! ## raw根環の実逐次H0の反射環とPD完備化環（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootRawCompletedH0Ring.lean） -/
+/-! ## raw根環の実逐次H0の反射環とPD完備化環 -/
 
 @[expose] public noncomputable section DeltaRootRawCompletedH0Ring
 

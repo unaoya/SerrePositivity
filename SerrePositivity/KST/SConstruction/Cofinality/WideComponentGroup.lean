@@ -32,8 +32,8 @@ lemma completionWideObjectClass_zero_of_image (r : ℕ)
   let F := ((multiSEndofunctor r).obj ι).map f
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   let hF := multiSEndofunctor_map_isIdempotentCompletion r ι f hf
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
-  let x := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier).vertex
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
+  let x := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier).vertex
   let va : (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) _⦋0⦌ :=
     ⟨a.as.as, LocalizingInvariants.completionCofiberWide_vertex F.val hF a.as.as⟩
   let vz : (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) _⦋0⦌ :=

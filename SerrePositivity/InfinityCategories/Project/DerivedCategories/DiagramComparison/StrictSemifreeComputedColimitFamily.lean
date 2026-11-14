@@ -33,7 +33,7 @@ variable (A : Type u) [CommRing A]
 def strictSemifreeComputedCoconeFunctorMap :
     nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶
       (ihom (join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-        (Δ[0] : SSet.{u + 1}))).obj (derivedInfinityCategory A) :=
+        (Δ[0] : SSet.{u + 1}))).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   curry ((β_ (join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
     (Δ[0] : SSet.{u + 1})) (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).hom ≫
       strictSemifreeComputedDAJoinFamily A)
@@ -57,11 +57,11 @@ lemma strictSemifreeComputedCoconeFunctorMap_vertex
 def strictSemifreeComputedColimitFamily :
     nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⟶
       colimitCocones ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-        (derivedInfinityCategory A) := by
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) := by
   refine SSet.Subcomplex.lift (strictSemifreeComputedCoconeFunctorMap A) ?_
   rintro n s ⟨x, rfl⟩ α
   let I := (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)
-  let D := derivedInfinityCategory A
+  let D := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A
   let E := (ihom (join I (Δ[0] : SSet.{u + 1}))).obj D
   change InitialBoundaryLifting (coconeRestriction I D)
     (E.map α.op ((strictSemifreeComputedCoconeFunctorMap A).app n x))
@@ -82,7 +82,7 @@ lemma strictSemifreeComputedColimitFamily_inclusion :
     strictSemifreeComputedColimitFamily A ≫
       (relativeInitialVertices (coconeRestriction
         ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-          (derivedInfinityCategory A))).ι = strictSemifreeComputedCoconeFunctorMap A :=
+          (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι = strictSemifreeComputedCoconeFunctorMap A :=
   SSet.Subcomplex.lift_ι _ _
 
 /-- U34：部分圏への制限後も同じ共同評価を保つ。 -/
@@ -92,7 +92,7 @@ lemma strictSemifreeComputedColimitFamily_evaluation :
       uncurry (strictSemifreeComputedColimitFamily A ≫
         (relativeInitialVertices (coconeRestriction
           ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-            (derivedInfinityCategory A))).ι) = strictSemifreeComputedDAJoinFamily A := by
+            (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι) = strictSemifreeComputedDAJoinFamily A := by
   rw [strictSemifreeComputedColimitFamily_inclusion, strictSemifreeComputedCoconeFunctorMap,
     uncurry_curry, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
 
@@ -100,10 +100,10 @@ lemma strictSemifreeComputedColimitFamily_evaluation :
 lemma strictSemifreeComputedColimitFamily_projection :
     strictSemifreeComputedColimitFamily A ≫
       colimitCoconeProjection ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-        (derivedInfinityCategory A) = strictSemifreeDiagramFamily A SimplexCategoryᵒᵖ := by
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) = strictSemifreeDiagramFamily A SimplexCategoryᵒᵖ := by
   change strictSemifreeComputedColimitFamily A ≫ _ ≫
     coconeRestriction ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-      (derivedInfinityCategory A) = _
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) = _
   rw [strictSemifreeComputedColimitFamily_inclusion_assoc]
   apply uncurry_injective
   rw [coconeRestriction, uncurry_pre_app, strictSemifreeComputedCoconeFunctorMap, uncurry_curry,
@@ -129,7 +129,7 @@ private lemma specifiedCoconeFamily_eq_aux :
       strictSemifreeColimitFamily A SimplexCategoryᵒᵖ ≫
         (relativeInitialVertices (coconeRestriction
           ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-            (derivedInfinityCategory A))).ι := rfl
+            (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι := rfl
 
 /-- U37の定義計算を、証明を介して公開する。 -/
 lemma specifiedCoconeFamily_eq :
@@ -137,7 +137,7 @@ lemma specifiedCoconeFamily_eq :
       strictSemifreeColimitFamily A SimplexCategoryᵒᵖ ≫
         (relativeInitialVertices (coconeRestriction
           ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-            (derivedInfinityCategory A))).ι := by
+            (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι := by
   exact specifiedCoconeFamily_eq_aux A
 
 /-- U37：同じ比較を全余錐の関手単体集合へ送る。 -/
@@ -145,13 +145,13 @@ def strictSemifreeComputedCoconeFamilyIso :
     FunctorIso (strictSemifreeComputedColimitFamily A ≫
       (relativeInitialVertices (coconeRestriction
         ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-          (derivedInfinityCategory A))).ι)
+          (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι)
       (strictSemifreeCoconeFunctorFamily A SimplexCategoryᵒᵖ) :=
   by
   simpa only [specifiedCoconeFamily_eq] using
     (strictSemifreeComputedColimitFamilyIso A).postcomp
       (relativeInitialVertices (coconeRestriction
         ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-          (derivedInfinityCategory A))).ι
+          (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

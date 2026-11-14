@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentShapeCoconeGluing
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FibrationComponentTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentShapeCoconeGluing
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FibrationComponentTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeMappingRestriction
 
 /-!

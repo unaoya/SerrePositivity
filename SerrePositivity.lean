@@ -428,7 +428,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexComple
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionReflection
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConeAPI
-public import SerrePositivity.BhattScholze.Prism.Tensor.IteratedTensor
+public import SerrePositivity.BhattScholze.Perfectoidization.Tensor.IteratedTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Iteration
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KProjectiveProduct
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower

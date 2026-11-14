@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CartesianIntervalPostcomposition
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CartesianIntervalPostcomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.HomotopyPrism
 
 /-!
 概要：指定輸送の評価成分の前後合成に、元の Cartesian・coCartesian 辺の同値性を移す。

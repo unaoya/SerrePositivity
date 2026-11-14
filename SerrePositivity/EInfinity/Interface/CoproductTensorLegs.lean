@@ -41,9 +41,9 @@ def TensorCoproductLegCompatibility : Prop :=
     (ηy : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
         SSet.HomotopyCategory.mk y),
   ∃ (unitX : 𝟙_ (Complex S) ⟶
-        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val)
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val)
     (unitY : 𝟙_ (Complex S) ⟶
-        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
     NormalizedTensorUnit S E x ηx unitX ∧ NormalizedTensorUnit S E y ηy unitY ∧
     (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeLeftHom c) ≫
         (tensorComparisonAtCocone S E x y P c hv θ).hom =

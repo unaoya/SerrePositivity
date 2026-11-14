@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexParameterHom
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftTensor
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLiftTensor
 
 /-!
 # 小さいパラメータ写像空間の宇宙liftを大きい内部Homと同型で結ぶ

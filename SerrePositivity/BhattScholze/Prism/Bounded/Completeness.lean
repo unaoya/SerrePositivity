@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import Mathlib.Tactic.Ring
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
@@ -27,7 +29,7 @@ BS 著者版 Lemma 4.8（Prism/PerfectPrismHomLift）、有界 prism の tilt。
 
 universe u
 
-/-! ## André E1・E2：正則な生成元の全冪商の有界ねじれ（旧 Andre/Remark715/RegularPowerQuotientTorsion.lean）
+/-! ## 正則な生成元の全冪商の有界ねじれ
 
 ## 概要
 
@@ -50,7 +52,7 @@ a の正則性・素数性・δ 構造は不要。零冪商と N=0 も含む。
 
 @[expose] public noncomputable section RegularPowerQuotientTorsion
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 variable {B : Type u} [CommRing B]
 
 /-- 概要：一乗商でのねじれの有界指数 N は m 乗商で N*m となる。
@@ -109,15 +111,15 @@ theorem regular_power_quotient_torsion_bound (a d : B)
   obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective x
   have hy : d ^ m ∣ a ^ k * y := Ideal.mem_span_singleton.mp
     (Ideal.Quotient.eq_zero_iff_mem.mp (by simpa only [map_pow, map_mul] using hx))
-  have hz := regular_power_quotient_torsion_bound_dvd a d hd N hNdvd m k y hy
+  have hz := _root_.SerrePositivity.BhattScholze.regular_power_quotient_torsion_bound_dvd a d hd N hNdvd m k y hy
   simpa only [map_pow, map_mul] using
     Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton.mpr hz)
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end RegularPowerQuotientTorsion
 
-/-! ## André E1・E2：有界試験 prism の共通二元イデアルに沿う古典的完備性（旧 Andre/Remark715/BoundedPrismAdicComplete.lean）
+/-! ## 有界試験 prism の共通二元イデアルに沿う古典的完備性
 
 ## 概要
 
@@ -142,10 +144,10 @@ BS 著者版 Remark 7.15（著者版 p.62）の一般の有界試験 prism へ�
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
-namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+namespace SerrePositivity.BhattScholze
+open _root_.SerrePositivity.DerivedCompletion
 variable {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime]
-variable (Q : OrientedPrism p B)
+variable (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p B)
 variable (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
   (p : B ⧸ Q.ideal) ^ n * x = 0 → (p : B ⧸ Q.ideal) ^ N * x = 0)
 
@@ -177,7 +179,7 @@ theorem boundedPrism_generator_power_quotient_prime_complete (m : ℕ) :
       simpa only [map_natCast] using hx
     simpa only [map_natCast] using hN n x hx'
   simpa only [map_natCast] using
-    regular_power_quotient_torsion_bound (p : B) Q.generator Q.generator_regular N hN' m n x
+    _root_.SerrePositivity.BhattScholze.regular_power_quotient_torsion_bound (p : B) Q.generator Q.generator_regular N hN' m n x
       (by simpa only [map_natCast] using hx)
 
 include hB in
@@ -190,13 +192,13 @@ theorem boundedPrism_pair_isAdicComplete :
   let := Q.isAdicComplete_generator
   let : ∀ n : ℕ, IsAdicComplete (Ideal.span {(p : B)})
       (B ⧸ (Ideal.span {Q.generator}) ^ n) :=
-    boundedPrism_generator_power_quotient_prime_complete Q hB
+    _root_.SerrePositivity.BhattScholze.boundedPrism_generator_power_quotient_prime_complete Q hB
   have he : Ideal.span {Q.generator} ⊔ Ideal.span {(p : B)} =
       Ideal.span {(p : B), Q.generator} := by
     rw [← Ideal.span_union, Set.singleton_union]
     exact Ideal.span_pair_comm
   rw [← he]
-  exact isAdicComplete_sup_of_complete_quotients (Ideal.span {Q.generator}) (Ideal.span {(p : B)})
+  exact _root_.SerrePositivity.isAdicComplete_sup_of_complete_quotients (Ideal.span {Q.generator}) (Ideal.span {(p : B)})
 
 include hB in
 /-- 概要：有界 prism の商は p に沿って古典的完備。
@@ -215,7 +217,7 @@ include hB in
 規約：古典的 p 完備性や p 正則性は仮定しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の持上げた互換根列の rank 1 判定。 -/
 theorem boundedPrism_isHausdorff_prime : IsHausdorff (Ideal.span {(p : B)}) B := by
-  let := boundedPrism_pair_isAdicComplete Q hB
+  let := _root_.SerrePositivity.BhattScholze.boundedPrism_pair_isAdicComplete Q hB
   have hle : Ideal.span {(p : B)} ≤ Ideal.span {(p : B), Q.generator} := by
     apply Ideal.span_le.mpr
     intro x hx
@@ -227,11 +229,11 @@ theorem boundedPrism_isHausdorff_prime : IsHausdorff (Ideal.span {(p : B)}) B :=
   intro n
   exact (hx n).mono (Submodule.smul_mono_left (pow_le_pow_left' hle n))
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end BoundedPrismAdicComplete
 
-/-! ## André A1-a：有界 prism の台環の古典的 p 完備性（旧 Andre/Remark715/BoundedPrismPrimeComplete.lean）
+/-! ## André A1-a：有界 prism の台環の古典的 p 完備性
 
 ## 概要
 
@@ -254,7 +256,7 @@ p の正則性や台環の有界 p ねじれは仮定しない。基底射の存
 
 @[expose] public noncomputable section BoundedPrismPrimeComplete
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 
 /-- 概要：導来主元完備かつ主元進分離な環は古典的に主元進完備。
 方針：差分作用の全射性から前完備性を得て、分離性と合わせる。
@@ -262,11 +264,11 @@ namespace SerrePositivity.BhattScholze.Andre
 使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの準備。 -/
 theorem isAdicComplete_of_isModuleComplete_of_isHausdorff
     (R : Type u) [CommRing R] (a : R)
-    (h : DerivedCompletion.IsModuleComplete R a (ModuleCat.of R R))
+    (h : _root_.SerrePositivity.DerivedCompletion.IsModuleComplete R a (ModuleCat.of R R))
     [IsHausdorff (Ideal.span {a}) R] : IsAdicComplete (Ideal.span {a}) R := by
-  have hb := (DerivedCompletion.isModuleComplete_iff_recurrence_bijective
+  have hb := (_root_.SerrePositivity.DerivedCompletion.isModuleComplete_iff_recurrence_bijective
     R a (ModuleCat.of R R)).mp h
-  let := isPrecomplete_of_adicRecurrenceMap_surjective a hb.2
+  let := _root_.SerrePositivity.isPrecomplete_of_adicRecurrenceMap_surjective a hb.2
   exact ⟨⟩
 
 /-- 概要：有界 prism の台環は古典的に p 完備である。
@@ -274,18 +276,18 @@ theorem isAdicComplete_of_isModuleComplete_of_isHausdorff
 規約：標的の完全性・p 正則性・台環の有界 p ねじれは要求しない。
 使われ方：完全 prism から有界標的への入力射の構成。 -/
 theorem boundedPrism_isAdicComplete_prime
-    {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime] (Q : OrientedPrism p B)
+    {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime] (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
       (p : B ⧸ Q.ideal) ^ n * x = 0 → (p : B ⧸ Q.ideal) ^ N * x = 0) :
     IsAdicComplete (Ideal.span {(p : B)}) B := by
-  let := boundedPrism_isHausdorff_prime Q hB
-  exact isAdicComplete_of_isModuleComplete_of_isHausdorff B (p : B) Q.complete_p
+  let := _root_.SerrePositivity.BhattScholze.boundedPrism_isHausdorff_prime Q hB
+  exact _root_.SerrePositivity.BhattScholze.isAdicComplete_of_isModuleComplete_of_isHausdorff B (p : B) Q.complete_p
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end BoundedPrismPrimeComplete
 
-/-! ## André E1・E2：完全 prism の共通二元イデアルに沿う古典的完備性（旧 Andre/Remark715/PerfectPrismPairAdicComplete.lean）
+/-! ## 完全 prism の共通二元イデアルに沿う古典的完備性
 
 ## 概要
 
@@ -308,9 +310,9 @@ Perfection の完備商同型に必要な、台環の共通 (p,d) 完備性を�
 
 @[expose] public noncomputable section PerfectPrismPairAdicComplete
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 variable {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime]
-variable (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
+variable (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
 
 include hQ in
 /-- 概要：完全 prism の生成元の全冪商は元の p イデアルに沿って完備。
@@ -337,14 +339,18 @@ theorem perfectPrism_pair_isAdicComplete :
   let := Q.isAdicComplete_generator
   let : ∀ n : ℕ, IsAdicComplete (Ideal.span {(p : B)})
       (B ⧸ (Ideal.span {Q.generator}) ^ n) :=
-    perfectPrism_generator_power_quotient_prime_complete Q hQ
+    _root_.SerrePositivity.BhattScholze.perfectPrism_generator_power_quotient_prime_complete Q hQ
   have he : Ideal.span {Q.generator} ⊔ Ideal.span {(p : B)} =
       Ideal.span {(p : B), Q.generator} := by
     rw [← Ideal.span_union, Set.singleton_union]
     exact Ideal.span_pair_comm
   rw [← he]
-  exact isAdicComplete_sup_of_complete_quotients (Ideal.span {Q.generator}) (Ideal.span {(p : B)})
+  exact _root_.SerrePositivity.isAdicComplete_sup_of_complete_quotients (Ideal.span {Q.generator}) (Ideal.span {(p : B)})
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end PerfectPrismPairAdicComplete
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 3.7" (partial := special) "(1) と (2)（完全平坦な複体の離散性、通常の導来圏で、BS-W15 K4）、(3)（完全平坦な δ 代数から有界 prism、exists_boundedPrism_of_completelyFlat_deltaAlgebra）は本体。(4) は不要（D19）。向き付きの基底 ／ 11-11 更新（2） ／ 11-12 夜更新（ノート本文の更新時）"] _root_.SerrePositivity.BhattScholze.boundedPrism_pair_isAdicComplete
+attribute [cite BS19 "Lemma 3.8" (partial := special) "向き付きなので (1) の単項性は定義に含まれる。(2) は A/d の p 冪ねじれが p で消えること・完備性として証明済み。Thm 3.10・A4 Lemma 8.4 で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：isAdicComplete_p_of_perfect（完全 prism の古典 (p,I) 進完備性と結論が異なる。）；distinguished_quotient_isAdicComplete（Lemma 3.8 (2) の完備性は A 上。商の完備性は Theorem 3.10 の証明に現れる別の帰結。） ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.perfectPrism_pair_isAdicComplete

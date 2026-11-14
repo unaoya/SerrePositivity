@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "raw_self_id_relocation": "FAIL",
+  "typed_source_verified_companion": "PASS",
+  "changed_precedence": "FAIL",
+  "authored_descriptor_not_projected": true,
+  "steps": [
+    {
+      "side": "before",
+      "phase": "compile",
+      "rc": 0,
+      "seconds": 0.21962187439203262
+    },
+    {
+      "side": "before",
+      "phase": "capture",
+      "rc": 0,
+      "seconds": 0.2009309995919466
+    },
+    {
+      "side": "after",
+      "phase": "compile",
+      "rc": 0,
+      "seconds": 0.19427812471985817
+    },
+    {
+      "side": "after",
+      "phase": "capture",
+      "rc": 0,
+      "seconds": 0.2161965426057577
+    },
+    {
+      "side": "changed",
+      "phase": "compile",
+      "rc": 0,
+      "seconds": 0.24279162473976612
+    },
+    {
+      "side": "changed",
+      "phase": "capture",
+      "rc": 0,
+      "seconds": 0.22171999886631966
+    }
+  ],
+  "seconds": 4.259342500939965
+}

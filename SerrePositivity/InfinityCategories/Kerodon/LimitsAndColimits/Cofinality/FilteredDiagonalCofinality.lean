@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
@@ -8,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofin
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenANecessary
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConstantDiagram
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.DiagonalCommaWeakContractibility
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.DiagonalCommaWeakContractibility
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.KappaFilteredCoslices
@@ -66,3 +68,8 @@ lemma isRightCofinal_constantDiagram_of_kappaFiltered {κ : Cardinal.{u}} (hκ :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_sliceUnder_of_kappaFiltered hκ hK)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.1.22" (partial := direction) "仮定：正則 κ、κ-filtered 準圏 C、κ-small な単体集合 K（HTT の一方の条件と一致）。結論：同じ対角 C→Fun(K,C) が共終（Lean が弱い：filtered 性⇒全対角の共終性の向き）。原典の逆方向を構造として返す宣言はここでは確認していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_kappaFiltered

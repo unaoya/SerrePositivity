@@ -28,7 +28,7 @@ local instance d3DoubleLoopProductCategory :
 lemma d3ParameterSquare_corner_vertex
     (D : (Fin 2 × Fin 2)ᵒᵖ ⥤ PointedSimplicialSet.{u})
     (Y : PointedKanObject.{u}) (i j : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
       ((d3PointedKanParameterSquare D).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y))) i j =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((d3PointedKanIhom (D.obj (Opposite.op (i, j)))).obj Y) := by
   rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagram_vertex_evaluation]

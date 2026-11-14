@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronTriangleComparisons
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OctahedronFromComparisons
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PretriangulatedInstance
@@ -22,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 方針：四つの三角形の所属と二比較の七つの Arrow の照合、第三射の合成式を合わせる。
 規約：表示の違いを模型の存在定理で吸収する。使われ方：TR4 の代表上での完成。 -/
 lemma CofiberOctahedronDiagram.octahedronModel {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X} (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) {τ : (Δ[2] : SSet.{u}) ⟶ X}
+    {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X} (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) {τ : (Δ[2] : SSet.{u}) ⟶ X}
     (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram t τ) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OctahedronModel (Arrow.mk t.hoShortComplex.f)
       (Arrow.mk d.second.outerZeroTriangle.hoShortComplex.f) := by
@@ -42,3 +44,8 @@ lemma CofiberOctahedronDiagram.octahedronModel {X : SSet.{u}} [Quasicategory X] 
   exact congrArg Arrow.mk d.second.triangle_connecting_comp
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.16"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram.octahedronModel

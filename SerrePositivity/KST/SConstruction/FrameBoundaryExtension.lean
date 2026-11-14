@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialPrismBoundary
 
 /-! # 枠の図式の族の相対境界延長

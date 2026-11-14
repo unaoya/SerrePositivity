@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseLimits
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceLimitShapes
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.SpaceLimitShapes
 
 /-!
 概要：小さい形状での空間の極限の存在を、元の前層図式の極限と全評価へ移す。

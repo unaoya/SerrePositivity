@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberTriangleConnecting
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Pullbacks.FiberTriangleConnecting
 public import SerrePositivity.KST.Spectra.SphericalPathBoundary
 
 /-!

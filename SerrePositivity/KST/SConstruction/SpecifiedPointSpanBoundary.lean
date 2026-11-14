@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeKanOuterSpanFamilies
 public import SerrePositivity.KST.SConstruction.CoherentHomotopyComponentCalculus
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.FunctorIsoPointEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConstantFunctor
 
 /-! # 元の一点の指定外側三角形を関手空間の境界へ戻す

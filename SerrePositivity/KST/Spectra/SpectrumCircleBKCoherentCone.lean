@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKReflectedPoints
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedHomHolimComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConePointSection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConePointSection
 
 /-!
 概要：元の円 cotensor の恒等射の像から、固定図式上の実際の coherent な錐を構成する。

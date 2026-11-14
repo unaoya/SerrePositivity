@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPostcomposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionComponents
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedPostcompositionComponents
 
 /-!
 概要：元の複体射の閉 cochain との dg 合成を、同じ Hom 後合成へ回収する。

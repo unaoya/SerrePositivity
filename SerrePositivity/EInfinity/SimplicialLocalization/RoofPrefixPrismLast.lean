@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismFront
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentRightConeTransport
 
 /-!
 # 混合 coherent 錐の元の最後への Hom

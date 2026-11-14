@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalKernelEndpoint
 public import SerrePositivity.KST.Fibration.VerdierNativeControlledSquareIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：指定四有限端点の照合から、同じ実正規化四角柱を元の Verdier・商核四角形へ戻す。

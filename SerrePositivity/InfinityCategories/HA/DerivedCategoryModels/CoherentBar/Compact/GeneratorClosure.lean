@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.ProjectiveHomCriterion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaClosedCompactGeneratorCriterion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaClosedCompactGeneratorCriterion
 /-!
 概要：全 native 図式での代表 Hom の保存を、七入力の native κ-compact 性へ接続する。
 方針：同じ射影的代表で compact 性を判定し、既存の一般生成元判定を適用する。

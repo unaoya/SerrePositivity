@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGEndAlgebra
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaProjections
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraDerivedInfinity
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeSndQuasiIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorCommaProjections
+public import SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraDerivedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.ComplexMappingCoconeSndQuasiIso
 
 /-!
 概要：非可換 dg 代数の実経路代数と、両端への実代数射を構成する。
@@ -21,11 +21,11 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path
 variable (R : Type u) [CommRing R] (B : Mon (Complex R))
 
-abbrev identityFunctor : DGFunctor R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) :=
-  EnrichedFunctor.id (Complex R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
+abbrev identityFunctor : DGFunctor R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) :=
+  EnrichedFunctor.id (Complex R) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)
 
 abbrev ArrowCategory :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (identityFunctor R B)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (identityFunctor R B)
 
 def identityPoint : ArrowCategory R B where
   source := .star

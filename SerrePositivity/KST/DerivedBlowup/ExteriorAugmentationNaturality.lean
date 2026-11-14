@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.ExteriorQuotientAugmentation
 
 /-!
@@ -64,3 +66,8 @@ theorem exteriorKoszulAugmentation_quasiIso_of_quotient (d : M →ₗ[R] R)
   exact quasiIso_comp _ _
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 3.4" (partial := component) "仮定：係数環の有限列と Koszul の負次数消滅を要求（Lean が強い）。結論：外積 Koszul の商環への増大が準同型。正則列に沿う閉部分スキームの導来引き戻しを組み立てる前の局所比較（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exteriorKoszulAugmentation_quasiIso_of_quotient

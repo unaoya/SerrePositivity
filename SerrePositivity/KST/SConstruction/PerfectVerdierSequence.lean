@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.PerfectStableInfinity
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Completion
@@ -54,8 +56,8 @@ lemma inclusion_isFullyFaithful : _root_.SerrePositivity.InfinityCategories.Kero
 
 /-- 冪等完備化後の同じ右射も、元の包含の全対象を零に送る。 -/
 lemma projection_kills_inclusion (a : d.verdier.left.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((d.verdier.inclusion.hom ≫ d.projection.hom).app (Opposite.op ⦋0⦌) a) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((d.verdier.inclusion.hom ≫ d.verdier.projection.hom ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((d.verdier.inclusion.hom ≫ d.projection.hom).app (Opposite.op ⦋0⦌) a) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((d.verdier.inclusion.hom ≫ d.verdier.projection.hom ≫
     d.completion.hom).app (Opposite.op ⦋0⦌) a)
   rw [← Category.assoc]
   exact @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ d.completion.hom d.completion.isExact _
@@ -63,3 +65,8 @@ lemma projection_kills_inclusion (a : d.verdier.left.obj _⦋0⦌) :
 
 end PerfectVerdierSequence
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Def 1.2" (partial := special) "仮定：実 Verdier 商の完備化を提示し、標的は Sp、filtered 余極限保存も要求する（Lean が強い）。結論：Cat^perf での完全列とその像のファイバー条件。任意の安定標的を扱う Land–Tamme の定義より狭い（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.PerfectVerdierSequence

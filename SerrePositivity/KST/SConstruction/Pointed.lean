@@ -22,10 +22,10 @@ open scoped Simplicial
 方針：対角は零、四角形は恒等辺の押し出しとなる。
 規約：C は quasicategory、安定性は不要。使われ方：S_n の基点。 -/
 lemma isGapped_const (n : ℕ) {C : SSet.{u}} [Quasicategory C]
-    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : IsGapped (SSet.const z : arNerve n ⟶ C) := by
+    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : IsGapped (SSet.const z : arNerve n ⟶ C) := by
   constructor
   · intro j
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z 0)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z 0)
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
     exact hz
   · intro i j k l hij hjk hkl
@@ -37,7 +37,7 @@ lemma isGapped_const (n : ℕ) {C : SSet.{u}} [Quasicategory C]
 方針：定値図式の関手頂点を全部分複体に含める。
 規約：任意の零頂点 z に対して定義する。使われ方：基点の選択と零対象の存在。 -/
 def sConstructionZeroVertex (n : ℕ) {C : SSet.{u}} [Quasicategory C]
-    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : (sConstruction n C) _⦋0⦌ :=
+    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : (sConstruction n C) _⦋0⦌ :=
   ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const z : arNerve n ⟶ C), by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
@@ -51,11 +51,11 @@ def sConstructionZeroVertex (n : ℕ) {C : SSet.{u}} [Quasicategory C]
 方針：関手圏で点ごとに零対象であることを示し、全部分複体へ移す。
 規約：C は quasicategory。使われ方：全ての S_n の pointed 条件。 -/
 lemma sConstructionZeroVertex_isZero (n : ℕ) {C : SSet.{u}} [Quasicategory C]
-    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (sConstructionZeroVertex n z hz) := by
-  have ha : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const z : arNerve n ⟶ C)) := by
+    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (sConstructionZeroVertex n z hz) := by
+  have ha : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const z : arNerve n ⟶ C)) := by
     apply isZeroVertex_functorVertex_of_pointwise
     intro a
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z 0)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z 0)
     rwa [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
   exact ⟨isInitialVertex_fullSubcomplex_of_ambient _ _ ha.1,
     isTerminalVertex_fullSubcomplex_of_ambient _ _ ha.2⟩
@@ -64,7 +64,7 @@ lemma sConstructionZeroVertex_isZero (n : ℕ) {C : SSet.{u}} [Quasicategory C]
 方針：定値図式の前合成が定値図式に等しいことを使う。
 規約：同型でなく実際の頂点の等号。使われ方：K 空間の単体的な基点。 -/
 lemma sMap_zeroVertex {m n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    (θ : Fin (m + 1) →o Fin (n + 1)) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
+    (θ : Fin (m + 1) →o Fin (n + 1)) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) :
     (sMap C θ).app (Opposite.op ⦋0⦌) (sConstructionZeroVertex n z hz) =
       sConstructionZeroVertex m z hz := by
   apply Subtype.ext
@@ -76,16 +76,16 @@ lemma sMap_zeroVertex {m n : ℕ} {C : SSet.{u}} [Quasicategory C]
 方針：選んだ零対象の定値図式を使う。
 規約：安定性は不要。使われ方：反復 S• の基点。 -/
 instance sConstruction_hasZeroVertex (n : ℕ) (C : SSet.{u}) [Quasicategory C]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (sConstruction n C) where
-  exists_zero := ⟨sConstructionZeroVertex n (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C).vertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C).isZero,
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (sConstruction n C) where
+  exists_zero := ⟨sConstructionZeroVertex n (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C).vertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C).isZero,
     sConstructionZeroVertex_isZero n _ _⟩
 
 /-- 概要：S_0 の全ての頂点は零対象。
 方針：Ar[0] の唯一の対象は対角であり、関手圏の点ごとの零対象判定が適用できる。
 規約：C は quasicategory。使われ方：S_0 の可縮性。 -/
 lemma sConstructionZero_isZeroVertex (C : SSet.{u}) [Quasicategory C]
-    (v : (sConstruction 0 C) _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v := by
-  have ha : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v.val := by
+    (v : (sConstruction 0 C) _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v := by
+  have ha : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v.val := by
     have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
     rw [← he]
@@ -105,11 +105,11 @@ lemma sConstructionZero_isZeroVertex (C : SSet.{u}) [Quasicategory C]
 方針：零次元は零図式の存在、正次元は各頂点の終対象性で境界を充填する。
 規約：core を取る前の S_0 自体の主張。使われ方：単体的 K 空間の零段。 -/
 lemma sConstructionZero_isContractibleKan (C : SSet.{u}) [Quasicategory C]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (sConstruction 0 C) := by
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (sConstruction 0 C) := by
   intro n b
   cases n with
   | zero =>
-    exact ⟨SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (sConstruction 0 C)).vertex, boundary.hom_ext₀⟩
+    exact ⟨SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (sConstruction 0 C)).vertex, boundary.hom_ext₀⟩
   | succ n =>
     let v := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n (Fin.last (n + 1)) ≫ b)
     exact (sConstructionZero_isZeroVertex C v).2 n b
@@ -118,7 +118,7 @@ lemma sConstructionZero_isContractibleKan (C : SSet.{u}) [Quasicategory C]
 /-- 概要：S_0 は Kan 複体。
 方針：全境界の充填から従う。
 規約：C は零対象を持つ quasicategory。使われ方：K 空間の基点の零段。 -/
-instance sConstructionZero_kanComplex (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+instance sConstructionZero_kanComplex (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     KanComplex (sConstruction 0 C) := (sConstructionZero_isContractibleKan C).kanComplex
 
 /-- 概要：空の第一行の関手単体集合への射は一意。
@@ -141,7 +141,7 @@ lemma firstRowZero_hom_ext {A C : SSet.{u}}
 規約：C は零対象を持つ quasicategory、安定性は不要。
 使われ方：L1b の n=0 の完全な持ち上げ性。 -/
 instance firstRowRestriction_zero_trivialKanFibration (C : SSet.{u}) [Quasicategory C]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (firstRowRestriction 0 C) := by
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (firstRowRestriction 0 C) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
   constructor

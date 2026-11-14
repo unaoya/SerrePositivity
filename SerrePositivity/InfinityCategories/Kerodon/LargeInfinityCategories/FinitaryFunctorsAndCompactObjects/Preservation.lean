@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Definition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
 
@@ -57,3 +59,9 @@ lemma isKappaCompact_of_exists [Quasicategory C] {x : C _⦋0⦌}
   preservesKappaFilteredColimits_of_exists h
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.4.14" (partial := special) "仮定：κ-compact な対象 x の一点図式 Δ⁰→C（Lean が強い：任意の κ-small 図式でなく一点形状）。結論：同じ元の余スライス Cx/→C が κ-compact（この場合に一致）。元の全分類関手との自然同型と保存性の同型不変性による。一般の図式の余スライスの比較は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits.of_functorIso
+attribute [cite HTT "5.3.4.8" (partial := component) "仮定：準圏、正則 κ、左ファイブレーションと κ-連続な基底変換（HTT と一致）。結論：(1) 対象の compact 性とその余スライスの分類関手の compact 性、(2) κ-連続な基底変換による保存を与える（一致）。(3) の共変モデル構造の κ-small ホモトピー極限での閉性は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits.of_functorIso

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenFrameCoherent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinityVertices
 public import SerrePositivity.EInfinity.DGAlgebra.FrameComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.NerveULiftHom
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource
 

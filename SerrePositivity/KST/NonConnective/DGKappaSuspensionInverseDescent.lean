@@ -23,9 +23,9 @@ variable (R : Type u) [CommRing R] (C D : Type v)
   (M : DGKappaSuspensionMapData R C D I J)
   (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map M.cone))
 local instance inverseDescentConeStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D J)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R _
 local instance inverseDescentSourceStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R C I)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R _
 local instance inverseDescentQuotientStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKappaSuspensionInfinity R C I) :=
   dgKappaSuspensionInfinity_isStable R C I
 
@@ -53,7 +53,7 @@ include hr in
 /-- 逆像の実頂点を回収し、同じ元の perfect 集合の全対象を零化する。 -/
 theorem dgKappaSuspensionInverseSource_kills_generator
     (N : DGKappaCone R D J) (hN : N ∈ dgKappaConePerfectObjects R D J) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
       (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)) := by
   let x := hf.choose.inv.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)
   obtain ⟨L, hL⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective x
@@ -65,7 +65,7 @@ theorem dgKappaSuspensionInverseSource_kills_generator
   have hp := hr L ((dgKappaConePerfectObjects_iff_of_vertexIso R D J h).mpr hN)
   have hz := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFunctor_kills R (DGKappaCone R C I)
     (dgKappaConePerfectObjects R C I) ⟨L, hp⟩
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionProjection R C I).app (Opposite.op ⦋0⦌) x)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKappaSuspensionProjection R C I).app (Opposite.op ⦋0⦌) x)
   rw [← hL]
   exact hz
 
@@ -74,7 +74,7 @@ include hr in
 theorem dgKappaSuspensionInverseSource_kills :
     ∀ x ∈ Set.range ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D J)
       (dgKappaConePerfectObjects R D J)).app (Opposite.op ⦋0⦌)),
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
         (Opposite.op ⦋0⦌) x) := by
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionInverseSource R C D I J M hf) :=
     dgKappaSuspensionInverseSource_isExact R C D I J M hf

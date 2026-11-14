@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RestrictionConnectingNullhomotopy
 public import SerrePositivity.KST.Spectra.PointedZeroConnectingNaturality
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-!
 概要：制限の零次数接続写像を相対商からの実際の射の成分で表す。

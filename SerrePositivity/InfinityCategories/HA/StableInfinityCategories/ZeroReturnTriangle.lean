@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 
 /-! # 零頂点へ戻る合成二単体
@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 方針：終対象性で戻り辺を選び、零対象からの射の一意性を二単体へ持ち上げる。
 規約：値域は quasicategory、安定性は不要。使われ方：零始点の押し出しの延長。 -/
 lemma exists_zeroReturnTriangle {X : SSet.{u}} [Quasicategory X]
-    {z x : X _⦋0⦌} (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+    {z x : X _⦋0⦌} (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) z x) :
     ∃ τ : (Δ[2] : SSet.{u}) ⟶ X,
       stdSimplex.δ (2 : Fin 3) ≫ τ = SSet.yonedaEquiv.symm f.edge ∧

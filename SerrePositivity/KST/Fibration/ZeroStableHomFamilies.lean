@@ -21,7 +21,7 @@ def stableHomAmbient (A B : _root_.SerrePositivity.InfinityCategories.HA.StableI
 
 /-- Kan Hom の実頂点が、元の関手圏で零値関手を表すという条件。 -/
 def StableHomZeroVertex (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (v : (A ⟶[SSet.{u}] B) _⦋0⦌) : Prop :=
-  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) v)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌) v)
 
 /-- 元の零値部分複体からの Kan Hom の射は、全頂点で元の零値条件を保つ。 -/
 theorem zeroFunctorLocusToStableHom_zero (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u})
@@ -36,7 +36,7 @@ theorem zeroFunctorLocusToStableHom_zero (A B : _root_.SerrePositivity.InfinityC
   have hv := congrArg (fun f => f.app (Opposite.op ⦋0⦌) v) he
   change (stableHomAmbient A B).app (Opposite.op ⦋0⦌)
     ((zeroFunctorLocusToStableHom A B).app (Opposite.op ⦋0⦌) v) = v.val at hv
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableHomAmbient A B).app (Opposite.op ⦋0⦌)
     ((zeroFunctorLocusToStableHom A B).app (Opposite.op ⦋0⦌) v))
   exact hv.symm ▸ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
 
@@ -45,7 +45,7 @@ def zeroStableHomFamilyLift {T : SSet.{u}} {A B : _root_.SerrePositivity.Infinit
     (H : T ⟶ (A ⟶[SSet.{u}] B))
     (hH : ∀ v, StableHomZeroVertex A B (H.app (Opposite.op ⦋0⦌) v)) :
     T ⟶ zeroFunctorLocus A B :=
-  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (H ≫ stableHomAmbient A B) hH
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (H ≫ stableHomAmbient A B) hH
 
 /-- 元の Kan Hom へ戻すと、指定した全関手族そのものを厳密に回収する。 -/
 theorem zeroStableHomFamilyLift_recovery {T : SSet.{u}} {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}}
@@ -63,7 +63,7 @@ theorem zeroStableHomFamilyLift_recovery {T : SSet.{u}} {A B : _root_.SerrePosit
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A B : SSet.{u})).ι) ≫
             (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A B).ι) := by simp only [Category.assoc]
     _ = zeroStableHomFamilyLift H hH ≫
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom A.obj).obj B.obj) _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex).ι :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom A.obj).obj B.obj) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex).ι :=
       congrArg (zeroStableHomFamilyLift H hH ≫ ·) he
     _ = H ≫ stableHomAmbient A B := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
     _ = _ := (Category.assoc _ _ _).symm

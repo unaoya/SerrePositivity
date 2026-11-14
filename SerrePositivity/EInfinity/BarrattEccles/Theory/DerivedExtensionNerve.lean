@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CarrierScalarExtensionKFlat
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestrictionSource
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveH0Naturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.DGNerveH0Naturality
 
 /-!
 # 厳密な係数拡大の複体 dg nerve
@@ -39,7 +39,7 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 
 /-- 係数拡大をすべての複体に施した dg nerve の写像。 -/
 def complexExtensionNerve : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve S (Complex S) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve T (Complex T) :=
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f) ≫ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerveRestrictScalarsIso f (Complex T)).hom
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f) ≫ (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerveRestrictScalarsIso f (Complex T)).hom
 
 private lemma complexBaseChangeDG_map_ofHom {X Y : Complex S} (g : X ⟶ Y) :
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f |>.map X Y).f 0 (Cochain.ofHom g) =
@@ -80,10 +80,10 @@ private lemma complexBaseChangeDG_closedNerveHom {X Y : Complex S} (g : X ⟶ Y)
 
 /-- 閉零射の列の係数拡大は、通常の複体の項別係数拡大に一致する。 -/
 lemma complexClosedNerve_extension :
-    (nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion S (Complex S)) ≫
+    (nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S)) ≫
       complexExtensionNerve f =
     nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f) ≫ nerveMap (complexToClosed T) ≫
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion T (Complex T) := by
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext

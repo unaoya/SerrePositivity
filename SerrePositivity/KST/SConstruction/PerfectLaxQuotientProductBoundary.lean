@@ -49,7 +49,7 @@ def productCospanInputSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
 
 /-- 同じ転置後の全正方形も、実 Sp の引き戻し。 -/
 lemma productCospanInputSquare_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (d.productCospanInputSquare hF) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mp (d.normalizedProductSquare_isPullback hF)
+  (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_transpose _).mp (d.normalizedProductSquare_isPullback hF)
 
 /-- 同じ入力正方形の上辺は、元の完備化後の二脚の実積射。 -/
 lemma productCospanInputSquare_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ d.productCospanInputSquare hF =

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeQuasiIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeBiprodExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeBiprodExact
 public import Mathlib.Algebra.Homology.HomologySequenceLemmas
 
 /-!

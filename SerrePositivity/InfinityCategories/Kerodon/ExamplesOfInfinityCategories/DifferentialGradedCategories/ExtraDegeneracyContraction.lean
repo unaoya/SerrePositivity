@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.ExtraDegeneracy
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedSpace
 public import Mathlib.Tactic.Abel
@@ -51,3 +53,8 @@ lemma extraDegeneracy_fill_cycle {X : SimplicialObject.Augmented (ModuleCat.{u} 
   simpa only [hx, map_zero, add_zero] using he
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.7.2.12" (partial := component) "仮定：アーベル圏の単体的対象と、増大を持つ場合は指定した追加退化（Lean が強い：アーベル圏と指定した追加退化の場合）。結論：単体的対象と非負鎖複体の Dold–Kan 同値を与え、追加退化から増大への切断との合成を恒等に結ぶ単体的ホモトピー、および交代面微分の縮約式を与える（この仮定での HA の結論の一部に一致）。任意の鎖縮約から Δ−∞ への拡張を回復する逆向きは含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.extraDegeneracy_positive_boundary

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.LinearUnderlyingValueComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGCoherentClosedEdges
 /-!
 概要：native 基礎空間関手を同じ単位対象の Yoneda 評価として同定する。
 方針：共同 Hom の curry と指定頂点評価の厳密な合成式を使う。

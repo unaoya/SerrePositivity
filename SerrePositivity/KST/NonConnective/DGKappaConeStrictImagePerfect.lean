@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeStrictImageMorita
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleCompactEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGModuleCompactEquivalence
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!

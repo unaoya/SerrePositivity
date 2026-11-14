@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofTerminalEvaluation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RoofTerminalEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.RoofTerminalFiberCofinality
 
 /-!

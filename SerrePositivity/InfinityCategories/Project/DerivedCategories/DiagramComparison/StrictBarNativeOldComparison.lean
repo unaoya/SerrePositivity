@@ -67,7 +67,7 @@ lemma strictBarBianchiOld_eq (F : J ⥤ ModuleCategory A PUnit.{1}) {n : ℕ}
     (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
     dgCoherentBarBianchiOld A PUnit.{1} (smallStrictBarDiagram A F) s =
       closedNerveSimplex (A := A) (D := RightModule A PUnit.{1}) (strictBarOldChain A J F s) :=
-  (closedNerveSimplex_pullback (A := A) (D := RightModule A PUnit.{1}) (s.down ⋙ F) (Fin.last n).predAboveOrderHom).symm
+  (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback (A := A) (D := RightModule A PUnit.{1}) (s.down ⋙ F) (Fin.last n).predAboveOrderHom).symm
 
 /-- 最後の頂点以外の native 対象は、元の同じ旧閉零射列の対象。 -/
 lemma strictBarNativeOldObj (F : J ⥤ ModuleCategory A PUnit.{1}) {n : ℕ}

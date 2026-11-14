@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RightUnitVertices
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaUnitRepresentative
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CommaUnitRepresentative
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceIntervalVertices
 
 /-!

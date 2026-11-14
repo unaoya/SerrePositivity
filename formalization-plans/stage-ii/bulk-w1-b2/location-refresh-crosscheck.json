@@ -1,0 +1,330 @@
+{
+  "original_occurrences": 187,
+  "original_unique": 141,
+  "draft_unique": 187,
+  "shared_unique": 124,
+  "original_only": [
+    [
+      "",
+      "CategoryTheory.Functor.LaxMonoidal（comp のインスタンス）"
+    ],
+    [
+      "",
+      "CompleteLattice"
+    ],
+    [
+      "",
+      "Functor.const"
+    ],
+    [
+      "",
+      "IsCofinal"
+    ],
+    [
+      "",
+      "IsCoveringMap.liftHomotopy"
+    ],
+    [
+      "",
+      "IsLowerSet"
+    ],
+    [
+      "",
+      "NonemptyFinLinOrd"
+    ],
+    [
+      "",
+      "SSet.Truncated.Edge.CompStruct"
+    ],
+    [
+      "",
+      "SSet.sd"
+    ],
+    [
+      "",
+      "SSet（射 X ⟶ Y）"
+    ],
+    [
+      "",
+      "SimplexCategory.Truncated"
+    ],
+    [
+      "",
+      "SimplicialObject.Splitting"
+    ],
+    [
+      "",
+      "completeLatticeOfInf"
+    ],
+    [
+      "",
+      "記法 X _⦋n⦌"
+    ],
+    [
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "SimplicialObject.δ"
+    ],
+    [
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "SimplicialObject.σ"
+    ],
+    [
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+      "Nerve.cosk₂Iso"
+    ]
+  ],
+  "draft_only": [
+    [
+      "F1/FilteredExchange/CoherentTotalColimit.lean",
+      "再確認済み。QC の余極限（全空間の cocartesian 辺での局所化）は CatInfinity/・F1/Diagrams の局所化ファイルにもない。QC の余極限なし。𝒮 版（全空間が 𝒮 の余極限）は coherentDiagramTotalCocone_isColimit"
+    ],
+    [
+      "InfinityCategories/HomotopyLimits/SpaceHomotopyPushouts.lean",
+      "再確認済み：SerrePositivity に「ホモトピー押し出し正方形」の述語はない（二重写像円筒・単射脚の通常の押し出しの模型だけ）。（関連：𝒮 の中の homotopy 押し出し余錐 spaceHomotopyPushoutCocone"
+    ],
+    [
+      "KST/Comparison/ComponentSubcomplex.lean",
+      "再確認済み：summand への制限はない。（関連：成分の部分単体集合 componentSubcomplex"
+    ],
+    [
+      "KST/Comparison/SimplicialSumHomotopyPullbacks.lean",
+      "、逆向きの余積の版 simplicialSumReindex_homotopyPullback_of_fibrations"
+    ],
+    [
+      "KST/Comparison/SpanPushoutGluing.lean",
+      "再確認済み：Mather の第二立方体定理はない。SerrePositivity に「ホモトピー押し出し正方形」の述語はない（二重写像円筒・単射脚の通常の押し出しの模型だけ）。（関連：Segal Lemma 1.7 型の貼り合わせ spanPushout_vertex_homotopyPullback"
+    ],
+    [
+      "KST/Comparison/SubdivisionLastVertexMap.lean",
+      "再確認済み：λ_X: Sd(X) → X は定義（subdivisionLastVertexMap）だけで、弱同値性の宣言はない。（λ_X の定義 subdivisionLastVertexMap"
+    ],
+    [
+      "KST/ProExcision/EZUniversalBoundary.lean",
+      "再確認済み：KST/ProExcision に AW・shuffle（alexanderWhitney, shuffle, normalizedShuffle）はあるが、主張は逆向きの ezHomotopy・normalizedEZHomotopy（恒等 ≃ AW≫shuffle のホモトピー）だけ。shuffle≫AW＝恒等の等式は見つからない（ezComposite_zero"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/ExtraDegeneracy.lean",
+      "CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy.s_comp_δ₀"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+      "SSet.instQuasicategoryOfKanComplex"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+      "instance InnerFibration (terminal.from X)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "HomotopicL.refl/symm/trans"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "SSet.Truncated.Quasicategory₂ (fill21)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "instance Category (HomotopyCategory₂ A)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean",
+      "instance Quasicategory₂ (truncation 2 X)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean",
+      "instance Quasicategory₂ (truncation 2)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean",
+      "SimplexCategory.mk (⦋n⦌)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Basic.lean",
+      "HasSmallObjectArgument modelCategoryQuillen.J"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+      "HasSmallObjectArgument innerHornInclusions"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "SSet.instQuasicategoryObjIhom"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "instance InnerFibration ((ihom X).map p)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "instance InnerFibration ((pre i).app X)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "instance Quasicategory ((ihom A).obj X)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+      "instance Fibration ((MonoidalClosed.pre i).app X)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+      "instance Fibration ((ihom X).map p)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+      "instance KanComplex ((ihom A).obj X)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "X _⦋n⦌（単体）, X _⦋0⦌（頂点）"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean",
+      "Fibration / fibration_iff"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+      "instance KanComplex X.op"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean",
+      "nerve の Nonsingular インスタンス"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean",
+      "SSet.Finite (instance IsFinitelyPresentable)"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+      "SSet.yonedaEquiv.symm"
+    ],
+    [
+      "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "instance SSet.toTop.IsLeftAdjoint"
+    ],
+    [
+      "Mathlib/CategoryTheory/Bicategory/Basic.lean",
+      "CategoryTheory.Bicategory.leftUnitor"
+    ],
+    [
+      "Mathlib/CategoryTheory/Bicategory/Basic.lean",
+      "CategoryTheory.Bicategory.triangle"
+    ],
+    [
+      "Mathlib/CategoryTheory/Bicategory/Opposites.lean",
+      "CategoryTheory.Bicategory.Opposites（instance bicategory Bᵒᵖ）"
+    ],
+    [
+      "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+      "CategoryTheory.Pseudofunctor.Grothendieck.instIsFibered"
+    ],
+    [
+      "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean",
+      "instance IsFibered (CoGrothendieck.forget F)"
+    ],
+    [
+      "Mathlib/CategoryTheory/Functor/Flat.lean",
+      "instance (G : D ⥤ Type) [RepresentablyFlat F] [IsCofiltered G.Elements]"
+    ],
+    [
+      "Mathlib/CategoryTheory/IsConnected.lean",
+      "instance (Functor.const J).Full [IsConnected J]"
+    ],
+    [
+      "Mathlib/CategoryTheory/Limits/Indization/LocallySmall.lean",
+      "instance LocallySmall (FullSubcategory IsIndObject)"
+    ],
+    [
+      "Mathlib/CategoryTheory/Monoidal/Category.lean",
+      "CategoryTheory.MonoidalCategory.triangle"
+    ],
+    [
+      "Mathlib/CategoryTheory/Monoidal/Category.lean",
+      "CategoryTheory.MonoidalCategoryStruct (tensorUnit, 𝟙_)"
+    ],
+    [
+      "Mathlib/CategoryTheory/Monoidal/Category.lean",
+      "CategoryTheory.MonoidalCategoryStruct.leftUnitor"
+    ],
+    [
+      "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+      "CategoryTheory.MorphismProperty.of_isPushout"
+    ],
+    [
+      "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+      "instance EssentiallySmall P.FullSubcategory"
+    ],
+    [
+      "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+      "instance ObjectProperty.EssentiallySmall ⊤"
+    ],
+    [
+      "Mathlib/CategoryTheory/Presentable/Comma.lean",
+      "Over/Under の IsAccessibleCategory instance"
+    ],
+    [
+      "Mathlib/CategoryTheory/SingleObj.lean",
+      "MonCat.toCat (toCat_full, toCat_faithful)"
+    ],
+    [
+      "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+      "CategoryTheory.wellPowered_of_smallCategory"
+    ],
+    [
+      "Mathlib/GroupTheory/OreLocalization/OreSet.lean",
+      "OreLocalization.oreSetComm"
+    ],
+    [
+      "Mathlib/RingTheory/Unramified/Basic.lean",
+      "Algebra.FormallyUnramified.subsingleton_kaehlerDifferential"
+    ],
+    [
+      "Mathlib/SetTheory/Ordinal/Basic.lean",
+      "Ordinal.linearOrder (instance)"
+    ],
+    [
+      "Mathlib/Topology/Homotopy/HSpaces.lean",
+      "Path.instHSpace"
+    ],
+    [
+      "Mathlib/Topology/Separation/Basic.lean",
+      "WeaklyLocallyCompactSpace.locallyCompactSpace"
+    ],
+    [
+      "Mathlib/Topology/Separation/CompletelyRegular.lean",
+      "completelyRegularSpace_iff"
+    ],
+    [
+      "Mathlib/Topology/SmallInductiveDimension.lean",
+      "HasSmallInductiveDimensionLT"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Core/FullyFaithfulBaseChange.lean",
+      "再確認済み：n-faithful（n>0）はない。n=0 相当（充満忠実の基底変換）は IsFullyFaithful.pullback_snd"
+    ],
+    [
+      "SerrePositivity/KST/SchemeLemmas/SchemeBlowup.lean",
+      "決定 13：X̃ を affineBlowup I で定義しない。L7 の通常 blowup（blowup"
+    ],
+    [
+      "formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean",
+      "IsBoundedPrism"
+    ],
+    [
+      "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "crystallineBasePrism"
+    ],
+    [
+      "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "hodgeTate_of_deRham_cartier"
+    ],
+    [
+      "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "HodgeTateIsoStatement"
+    ],
+    [
+      "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "hodgeTateMap"
+    ]
+  ]
+}

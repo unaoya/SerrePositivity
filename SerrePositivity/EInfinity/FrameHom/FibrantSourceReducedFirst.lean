@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedComparison
 public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPostcompose
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowRightReplacementOfFirst
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrowRightReplacementOfFirst
 
 /-!
 概要：元の source frame から hammock への比較の第二分解入力を除く。

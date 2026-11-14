@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupplyComparison
 public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedTria
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGPretriangulatedTria
 
 /-!
 概要：同じ実評価 Morita 核と実供給 P を用いて、実小核の perfect 加群を代表対象へ戻す。

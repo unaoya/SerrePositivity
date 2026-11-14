@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedTransformationTriangle
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderNerve
 
 /-!

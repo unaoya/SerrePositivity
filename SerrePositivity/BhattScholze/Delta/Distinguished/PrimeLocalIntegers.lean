@@ -1,4 +1,5 @@
 module
+public meta import SerrePositivity.Util.Citation
 
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 public import Mathlib.RingTheory.Ideal.Int
@@ -56,7 +57,7 @@ abbrev PrimeLocalInt := Localization.AtPrime I
 
 /-- 概要：ℤ₍ₚ₎ 上の標準 δ 構造。
 方針：整数の標準 δ 構造を、Frobenius 安定な分母で局所化する。
-規約：BS 著者版 Lemma 2.15。
+規約：BS 著者版 Example 2.6 の初期 δ 環。
 使われ方：自由 δ 環と普遍 distinguished 環。 -/
 def primeLocalIntDelta : DeltaStructure p (PrimeLocalInt p) :=
   (integerDelta p).localization (I).primeCompl _ (integerDelta_stable p)
@@ -88,7 +89,7 @@ def primeLocalIntModPrimeEquiv :
 
 /-- 概要：ℤ₍ₚ₎ から p 局所な δ 環への標準 δ 射が一意。
 方針：整数の δ 射性は長さ二の Witt 切断の図式と整数の初期性から従う。
-規約：BS 著者版 Lemma 2.15。
+規約：BS 著者版 Example 2.6 の初期 δ 環。
 使われ方：自由 δ 環からの評価。 -/
 theorem existsUnique_primeLocalIntDeltaHom {A : Type*} [CommRing A] (D : DeltaStructure p A)
     (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A)) :
@@ -119,3 +120,6 @@ theorem existsUnique_primeLocalIntDeltaHom {A : Type*} [CommRing A] (D : DeltaSt
   exact ⟨g, hg.2, fun f hf => hu f ⟨Subsingleton.elim _ _, hf⟩⟩
 
 end SerrePositivity.BhattScholze
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 2.6" (partial := special) "最後の主張（p 冪零な δ 環は零環）と Z 上の δ 構造の一意性の形だけ。Z_(p)（Lean は p と互いに素な整数での局所化）が δ 環の始対象であることは公開の existsUnique_primeLocalIntDeltaHom（Ex 2.21 の構成で使う） ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：relativeFreeDeltaStructure_int_eq（Z 上の二構成の一致で、Z_(p) の始性や δ 構造の一意性を主張する型ではない。） ／ DOC1 照合：ok 1 件 ／ 11-12 夜更新（ノート本文の更新時）。ℤ 上の δ 構造の存在と一意性は非公開の補題だけ"] _root_.SerrePositivity.BhattScholze.existsUnique_primeLocalIntDeltaHom

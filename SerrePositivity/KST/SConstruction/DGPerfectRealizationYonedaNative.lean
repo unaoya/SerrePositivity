@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectRealization
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlying
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：元小模型の Yoneda 評価を同じ指定 realization の全比較に束ねる。

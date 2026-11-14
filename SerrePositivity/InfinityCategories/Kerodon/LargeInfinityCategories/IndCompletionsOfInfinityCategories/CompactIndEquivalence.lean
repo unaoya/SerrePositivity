@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndCompactRetraction
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.CompactIndComparisonCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractReflection
@@ -58,3 +60,8 @@ lemma compactIndEquivalence_hom (κ : Cardinal.{u}) [Fact κ.IsRegular] :
     (compactIndEquivalence (C := C) κ).hom = _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.idemToCompactInd κ C := rfl
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Lemma 2.20" (partial := component) "仮定：小準圏と冪等完備な標的（Lean は安定性を使わない）。結論：完備化への制限による関手圏の同値と、各対象での Idem(C) ≃ Indκ(C)^κ（原典の反射性の各圏での成分と κ=ω の式。Cat^ex 上の大域随伴は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndEquivalence

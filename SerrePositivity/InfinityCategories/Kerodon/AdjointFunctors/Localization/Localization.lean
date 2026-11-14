@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
@@ -105,3 +107,9 @@ def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop 
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (localizationPrecomposition F W hF E)
 
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization
+attribute [cite HA "1.3.4.15" (partial := stronger-hyp) "仮定：モデル圏の cofibrant 対象と弱同値、hammock の構成には関手的分解と指定フレーム（Lean が強い：一般の定義だけなら追加データは不要）。結論：その通常の nerve を弱同値で局所化して underlying ∞ 圏の具体模型を得る（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization

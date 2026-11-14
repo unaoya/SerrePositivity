@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanCanonical
 public import SerrePositivity.EInfinity.FrameHom.FrameAugmentationLimitLegs
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ConeLegRestriction
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.ConeLegRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightConstantFamily
 
 /-!

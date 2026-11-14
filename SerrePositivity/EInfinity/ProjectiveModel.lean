@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
@@ -417,3 +419,11 @@ lemma projectiveModelCategory_cofibrantlyGenerated :
     projectiveGeneratingTrivialCofibrations_rlp A⟩
 
 end SerrePositivity.EInfinity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.2.8" (partial := component) "仮定：任意可換環 R の非有界余鎖複体（Lean が強い：可換環の場合。次数の符号を反転して HA と比較する）。結論：実際の射影モデル構造を構成し、弱同値を擬同型、fibration を各次数全射と同定し、生成族の小対象引数も持つ（モデル構造と W・F の部分に一致）。左固有性と局所可呈示性を合わせた combinatorial 性の宣言は含まれない。ModelCategory は追加仮定でなく構成済み。"] _root_.SerrePositivity.EInfinity.projectiveModelCategory
+attribute [cite HA "7.1.2.8" (partial := component) "仮定：任意可換環 R の非有界余鎖複体（Lean が強い：可換環の場合。次数の符号を反転して HA と比較する）。結論：実際の射影モデル構造を構成し、弱同値を擬同型、fibration を各次数全射と同定し、生成族の小対象引数も持つ（モデル構造と W・F の部分に一致）。左固有性と局所可呈示性を合わせた combinatorial 性の宣言は含まれない。ModelCategory は追加仮定でなく構成済み。"] _root_.SerrePositivity.EInfinity.projectiveModelCategory_cofibrantlyGenerated
+attribute [cite HA "7.1.2.8" (partial := component) "仮定：任意可換環 R の非有界余鎖複体（Lean が強い：可換環の場合。次数の符号を反転して HA と比較する）。結論：実際の射影モデル構造を構成し、弱同値を擬同型、fibration を各次数全射と同定し、生成族の小対象引数も持つ（モデル構造と W・F の部分に一致）。左固有性と局所可呈示性を合わせた combinatorial 性の宣言は含まれない。ModelCategory は追加仮定でなく構成済み。"] _root_.SerrePositivity.EInfinity.projectiveModelCategory_fibrations
+attribute [cite HA "7.1.2.8" (partial := component) "仮定：任意可換環 R の非有界余鎖複体（Lean が強い：可換環の場合。次数の符号を反転して HA と比較する）。結論：実際の射影モデル構造を構成し、弱同値を擬同型、fibration を各次数全射と同定し、生成族の小対象引数も持つ（モデル構造と W・F の部分に一致）。左固有性と局所可呈示性を合わせた combinatorial 性の宣言は含まれない。ModelCategory は追加仮定でなく構成済み。"] _root_.SerrePositivity.EInfinity.projectiveModelCategory_weakEquivalences

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLiftFunctor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGUniverseLiftFunctor
 
 /-! # 対象宇宙の持ち上げと元の Small 性
 概要：対象ラベルの宇宙を上げても、元の対象の小ささは変わらない。

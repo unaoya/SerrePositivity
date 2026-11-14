@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
@@ -1600,3 +1602,13 @@ end SerrePositivity.DifferentialGraded
 end
 
 end SphereFreeKFlat
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.4.2.14" (partial := special) "仮定：dg 圏上の片側 dg 加群と通常圏の余極限（Lean は外側の代数を単位にした、複体値の釣合テンソルの場合に限る）。結論：左・右を固定した釣合テンソルがそれぞれ通常の余極限を保つ（この場合の各変数の保存に一致）。operadic 輸送と任意の両側加群は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BalancedTensor.leftTensorFunctor_preservesColimits
+attribute [cite HA "4.4.2.14" (partial := special) "仮定：dg 圏上の片側 dg 加群と通常圏の余極限（Lean は外側の代数を単位にした、複体値の釣合テンソルの場合に限る）。結論：左・右を固定した釣合テンソルがそれぞれ通常の余極限を保つ（この場合の各変数の保存に一致）。operadic 輸送と任意の両側加群は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BalancedTensor.rightTensorFunctor_preservesColimits
+attribute [cite HA "4.4.2.15" (partial := special) "仮定：dg 圏上の左右の dg 加群（Lean は外側が単位で、通常の余極限を取る場合に限る）。結論：複体値の釣合テンソルが各変数で通常の余極限を保つ（この場合に一致）。一般のモノイダル ∞ 圏の両側加群での保存は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BalancedTensor.leftTensorFunctor_preservesColimits
+attribute [cite HA "4.4.2.15" (partial := special) "仮定：dg 圏上の左右の dg 加群（Lean は外側が単位で、通常の余極限を取る場合に限る）。結論：複体値の釣合テンソルが各変数で通常の余極限を保つ（この場合に一致）。一般のモノイダル ∞ 圏の両側加群での保存は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BalancedTensor.rightTensorFunctor_preservesColimits
+attribute [cite HA "4.4.2.16" (partial := special) "仮定：dg 圏上の左右の dg 加群（Lean は作用圏を同じ dg 模型に取り、外側の代数を単位にした場合に限る）。結論：釣合テンソルが左右それぞれに関して通常の余極限を保つ（複体値の場合に一致）。異なる作用圏での ∞ 圏の余極限は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BalancedTensor.leftTensorFunctor_preservesColimits
+attribute [cite HA "4.4.2.16" (partial := special) "仮定：dg 圏上の左右の dg 加群（Lean は作用圏を同じ dg 模型に取り、外側の代数を単位にした場合に限る）。結論：釣合テンソルが左右それぞれに関して通常の余極限を保つ（複体値の場合に一致）。異なる作用圏での ∞ 圏の余極限は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BalancedTensor.rightTensorFunctor_preservesColimits

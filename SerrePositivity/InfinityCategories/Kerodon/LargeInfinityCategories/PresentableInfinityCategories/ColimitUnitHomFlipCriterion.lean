@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CoconeUnitHomUniversal
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FlipConstantFunctorHom
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ParameterUnitHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.UnitComparisons.ParameterUnitHom
 
 /-!
 概要：転置した Hom 公式を普遍余錐へ照合して Hom 全単射を得る。

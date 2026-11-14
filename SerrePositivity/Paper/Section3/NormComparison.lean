@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.PerfectComplex.Free.Euler
 public import SerrePositivity.LengthAlgebra.KoszulFormula
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
@@ -467,3 +469,11 @@ end b
 end SerrePositivity
 
 end Lemma3_5Part
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Eq (3.13)"] _root_.SerrePositivity.lemma_3_5b_lam
+attribute [cite Paper "Eq (3.14)"] _root_.SerrePositivity.lemma_3_5b_ord
+attribute [cite Paper "Proof step 3.5a"] _root_.SerrePositivity.lemma_3_5a
+attribute [cite Paper "Proof step 3.5b"] _root_.SerrePositivity.lemma_3_5b

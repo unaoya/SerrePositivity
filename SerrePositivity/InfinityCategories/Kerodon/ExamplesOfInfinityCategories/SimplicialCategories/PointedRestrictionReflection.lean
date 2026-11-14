@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentPointedRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentPointedRestriction
 
 /-!
 概要：元の coherent 図式の pointed な切断制限の同値性を、小さい全空間の制限へ反映する。

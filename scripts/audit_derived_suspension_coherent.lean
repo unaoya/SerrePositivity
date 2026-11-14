@@ -1,12 +1,12 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentSquareInput
 import Lean
 /-! 採用 B1 の作用・全四角形入力の全宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentSquareInput]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentActionInput,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentSquareInput]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

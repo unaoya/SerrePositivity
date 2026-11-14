@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CommonColimitAttachment
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeSpanCoconeGlue
 
@@ -80,3 +82,8 @@ lemma hasColimit_pushout_shape_of_pointSpan {A B C X : SSet.{u}} [Quasicategory 
   rwa [hd] at hf
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.2" (partial := stronger-hyp) "仮定：片側が単射な形状の押し出しと三つの制限図式の余極限（Lean が強い：標的のすべての三頂点 span に余極限を要求）。結論：元の図式の余極限が存在する（一致する向き。指定した span の押し出しと元の図式の余極限を同定する結論は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasColimit_pushout_shape_of_pointSpan

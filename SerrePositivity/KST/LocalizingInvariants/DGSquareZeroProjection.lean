@@ -22,10 +22,10 @@ variable {R : Type u} [CommRing R] (A : Mon (Complex R)) (M : Bimod A A)
 def projection : algebra A M ⟶ A :=
   Mon.Hom.mk' biprod.fst (by
     change (η[A.X] ≫ biprod.inl) ≫ biprod.fst = η[A.X]
-    rw [Category.assoc, biprod.inl_fst, Category.comp_id]) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_fst A M)
+    rw [Category.assoc, biprod.inl_fst, Category.comp_id]) (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_fst A M)
 
 def zeroSection : A ⟶ algebra A M :=
-  Mon.Hom.mk' biprod.inl rfl (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll A M).symm
+  Mon.Hom.mk' biprod.inl rfl (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll A M).symm
 
 lemma zeroSection_projection : zeroSection A M ≫ projection A M = 𝟙 A := by
   apply Mon.Hom.ext
@@ -44,6 +44,6 @@ def idealKernelFork_isLimit : IsLimit (idealKernelFork A M) :=
 
 lemma idealInclusion_square_zero :
     (idealInclusion A M ⊗ₘ idealInclusion A M) ≫ μ[(algebra A M).X] = 0 :=
-  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr A M
+  _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr A M
 
 end SerrePositivity.KST.LocalizingInvariants.SquareZero

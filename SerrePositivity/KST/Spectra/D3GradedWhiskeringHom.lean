@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3GradedWhiskeringNerve
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：指定豊穣変換の実現の前後合成を、関手空間の同じ実射の作用へ戻す。

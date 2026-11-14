@@ -31,7 +31,7 @@ lemma tammeArrowKernel_eq_exactKernel :
     tammeArrowKernel p q = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactKernel (exactArrowMap (exactLaxDifference p q)) := by
   ext v
   change (∀ i : Fin 2, _ ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) ↔
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((ihom (Δ[1] : SSet.{u})).map (laxDifference p q)).app (Opposite.op ⦋0⦌) v)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((ihom (Δ[1] : SSet.{u})).map (laxDifference p q)).app (Opposite.op ⦋0⦌) v)
   rw [_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowVertex_isZero_iff]
   apply forall_congr'
   intro i

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialHomEdgeCylinder
 public import
-  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeEdgeCosliceSectionComparison
+  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.RelativeEdgeCosliceSectionComparison
 
 /-!
 概要：元の Hom 比較で選んだ全辺族を、同じ終点と底の普遍相対切断の像へ照合する。

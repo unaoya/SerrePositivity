@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Cube
 public import Mathlib.GroupTheory.Perm.Sign
 
@@ -75,3 +77,8 @@ lemma cubeFlag_congr {T : Type u} {m : ℕ} {e f : Fin m ≃ T} (h : e = f) :
     cubeFlag e = cubeFlag f := congrArg cubeFlag h
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.1.16"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag

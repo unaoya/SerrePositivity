@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedActionEquivalences
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PinchedActionEquivalences
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedTransportFamily
 /-!
 概要：同じ単位と弱な全 pinched 族による判定を、指定した同型で両端輸送する。

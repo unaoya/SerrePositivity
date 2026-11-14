@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGHomGluingActions
 public import SerrePositivity.KST.SConstruction.DGStrictGluingFunctor
 public import SerrePositivity.KST.SConstruction.DGClosedComparisonElements
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ActionYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Functoriality.ActionYoneda
 
 /-! # Hom 双加群内の閉比較族の全次数自然性
 概要：元の標的内の閉比較を、同じ Hom gluing 双加群の自然な閉元へ移す。

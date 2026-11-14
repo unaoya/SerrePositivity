@@ -16,11 +16,11 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
 /-- 元の右代数の右加群用圏を、共通対象宇宙の同じ S に置く。 -/
 def dgOdotRightInput : PerfDGInput.{u, u + 1} R :=
-  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right)
+  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right)
 
 /-- 元の商 End 代数の右加群用圏を、同じ S に置く。 -/
 def dgOdotAlgebraInput : PerfDGInput.{u, u + 1} R :=
-  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d))
+  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (dgOdotAlgebra R d))
 
 /-- 元の実対角商を、同じ S に置く。 -/
 def dgOdotQuotientInputVertex : PerfDGInput.{u, u + 1} R :=

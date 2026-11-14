@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleComposition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterUnits
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedParameterUnits
 
 /-!
 概要：cotensor の整合写像空間の恒等射と、合成の圏の法則。

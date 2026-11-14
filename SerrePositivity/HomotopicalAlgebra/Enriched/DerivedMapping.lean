@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.PullbackHomSource
 public import SerrePositivity.HomotopicalAlgebra.Quillen.FibrantCriterion
@@ -90,3 +92,8 @@ lemma derivedHom_target_weakEquivalence (X : Cᵒᵖ) {Y Z : C} (f : Y ⟶ Z)
       (Opposite.op ((cofibrantSource cof).obj X.unop))) ((fibrantTarget fib).map f))
 
 end SerrePositivity.Enriched
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.3.1.8" (partial := component) "仮定：TensorCotensor SSet C と Quillen compatibility、ModelCategory SSet が標準 horn-RLP を fibrations とする（証明済み具体的 instance なし）。結論：X cofibrant,Y fibrant なら元の enriched mapping object は fibrant、標準 fibrations の下では Kan になるという最初の成分に一致。π0 Map(X,Y) と同じ hC の Hom の指定全単射はこの型に含まない。"] _root_.SerrePositivity.Enriched.mapping_isFibrant

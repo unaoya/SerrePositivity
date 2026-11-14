@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.EdgewiseParameterDiagram
 public import SerrePositivity.KST.Spectra.WeightedParameterJointNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedConeEndPrecomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedConeEndPrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralConeComparisonReflection
 
 /-!

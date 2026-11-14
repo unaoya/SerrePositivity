@@ -37,7 +37,7 @@ lemma rightHom_fst_isIso : IsIso (homPost (laxFst p q).hom (rightHom p q)) := by
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge ((arrow p q).app (Opposite.op ⦋0⦌) x)) = _ at hs
       rw [hs]
       have hz := fst_arrow_source_zero p q x
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map
         (laxFst p q).hom) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
           (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x) at hz
       rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowMap_evaluation] at hz

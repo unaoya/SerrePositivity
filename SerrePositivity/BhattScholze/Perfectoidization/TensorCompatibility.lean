@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
@@ -23,7 +25,7 @@ CLMST、Lemma 10.3。
 
 universe u
 
-/-! ## Ring-perfectoidization of a general tensor diagram（旧 Perfectoidization/PerfectoidizationTensorCompatibility.lean）
+/-! ## Ring-perfectoidization of a general tensor diagram
 
 This is the ring-valued pushout statement underlying BS 著者版 Proposition 8.13.
 The three specified perfectoidizations form a compatible diagram. Its
@@ -148,7 +150,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationTensorCompatibility
 
-/-! ## BS 著者版 Proposition 8.13 in the ring-valued reflection domain（旧 Perfectoidization/PerfectoidizationCompletedTensorCompatibility.lean）
+/-! ## BS 著者版 Proposition 8.13 in the ring-valued reflection domain
 
 For any compatible diagram of three specified ring-perfectoidizations, the
 original completed tensor of the perfectoid rings is discrete and perfectoid.
@@ -323,7 +325,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationCompletedTensorCompatibility
 
-/-! ## The ring form of BS 著者版 Proposition 8.13 for perfectoid base change（旧 Perfectoidization/Prop813PerfectoidBaseChange.lean）
+/-! ## The ring form of BS 著者版 Proposition 8.13 for perfectoid base change
 
 The base and new base are perfectoid. The original algebra is arbitrary once its
 ring-perfectoidization is specified. The map out of the original G2 completed
@@ -541,3 +543,9 @@ theorem exists_prop813BaseChange_of_semiperfectoid_quotient
 end SerrePositivity.BhattScholze
 
 end Prop813PerfectoidBaseChange
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 8.13" (partial := special) "本体は環版だけ（指定済みの環の perfectoid 化を仮定した完備テンソルの可換性、sorry 0、E3 に到達しない）。Cor 8.14 に要る導来版（Δ の対称モノイダル性経由）は drafts ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.exists_prop813BaseChange_of_perfectoid_quotient
+attribute [cite BS19 "Prop 8.13" (partial := special) "本体は環版だけ（指定済みの環の perfectoid 化を仮定した完備テンソルの可換性、sorry 0、E3 に到達しない）。Cor 8.14 に要る導来版（Δ の対称モノイダル性経由）は drafts ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.prop813CompletedTensorMap_isPerfectoidization

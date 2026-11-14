@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFDGKComparison
 public import SerrePositivity.KST.SConstruction.KSpectrumConnectivity
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-! # 同じ厳密 dg BF K の正段連結性と負次数消滅
 概要：厳密豊穣化した実 BF K も、連結 K の全負整数群消滅を満たす。

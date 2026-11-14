@@ -52,7 +52,7 @@ public import Mathlib.Order.Notation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.F1PointedAcyclicFibrationLifting
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PullbackKanSequence
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreePathSpace
 public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.MappingPathSpace
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
@@ -76,10 +76,7 @@ open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.SimplicialModel
 open scoped _root_.Simplicial
 
-namespace SerrePositivity.KST.Spectra
-end SerrePositivity.KST.Spectra
 namespace SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
-open _root_.SerrePositivity.KST.Spectra
 
 noncomputable section
 

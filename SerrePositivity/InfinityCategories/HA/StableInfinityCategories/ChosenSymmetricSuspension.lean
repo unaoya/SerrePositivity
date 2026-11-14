@@ -22,8 +22,8 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：既存の chosenSuspensionSquare とは別の補助的な選択。使われ方：二枝交換のループ表示。 -/
 def chosenSymmetricSuspensionSquare {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (x : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare x :=
-  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.symmetricSuspensionSquare (Classical.choice ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isTerminal.nonempty_edge x))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.symmetricSuspensionSquare (Classical.choice ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isTerminal.nonempty_edge x))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero
 
 /-- 概要：選んだ対称な suspension は転置しても入力 span が変わらない。
 方針：同じ辺を二度使う構成の span の等号を適用する。

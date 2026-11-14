@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FunctorHoEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NativeConeFamilyEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.NativeConeFamilyEvaluation
 
 /-!
 概要：同じ図式上の slice の比較辺を、頂点射と底の恒等性を保つ全錐の比較にする。

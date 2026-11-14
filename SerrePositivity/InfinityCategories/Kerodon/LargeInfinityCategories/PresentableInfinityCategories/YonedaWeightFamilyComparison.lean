@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.YonedaWeightLeftKan
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomWeightEvaluationFamily
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.HomWeightEvaluationFamily
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.F2PresentableSigmaHomWeightRestriction
 
 /-!

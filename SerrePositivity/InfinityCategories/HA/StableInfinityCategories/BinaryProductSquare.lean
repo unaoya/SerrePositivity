@@ -22,19 +22,19 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 lemma exists_zeroTargetPullbackSquare {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (x y : X _⦋0⦌) :
     ∃ R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X,
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1) ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 0 = x ∧
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1 = y ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 1) ∧ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 0 = x ∧
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1 = y ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R := by
   obtain ⟨R, hz, hRx, hRy, hR⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_zeroSourcePushoutSquare (X := X.op)
     (SSet.opObjEquiv.symm x) (SSet.opObjEquiv.symm y)
   let q := (SSet.opFunctorCompOpFunctorIso.app X).hom
-  refine ⟨_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R ≫ q, ?_, ?_, ?_, ?_⟩
-  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := X) (SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0))
+  refine ⟨_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R ≫ q, ?_, ?_, ?_, ?_⟩
+  · change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := X) (SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0))
     exact hz.unop
-  · change SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 0) = x
+  · change SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 0) = x
     exact (congrArg SSet.opObjEquiv hRx).trans (SSet.opObjEquiv.apply_symm_apply x)
-  · change SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1) = y
+  · change SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1) = y
     exact (congrArg SSet.opObjEquiv hRy).trans (SSet.opObjEquiv.apply_symm_apply y)
-  · exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R) q).1
-      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_dualSquare R).1 hR)
+  · exact (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R) q).1
+      ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_dualSquare R).1 hR)
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

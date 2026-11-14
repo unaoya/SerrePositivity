@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.BalancedTensor
 public import Mathlib.Tactic.CategoryTheory.Slice
 
@@ -890,3 +892,8 @@ end SerrePositivity.MonoidalBalancedTensor
 end
 
 end BalancedTensorMonoidal
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.4.3.12" (partial := special) "仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏（内部左加群の構成には組紐と可換モノイドも仮定）（Lean が強い：通常のモノイダル圏と指定した余等化子の存在）。結論：双圏の A の自己射圏は相対テンソルを積とするモノイダル圏となる（この仮定での HA の結論の一部に一致）。可換な場合は内部加群の平衡テンソルによる構造も構成済み。∞ オペラッドの比較は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.monoidalCategory

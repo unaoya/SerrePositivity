@@ -22,7 +22,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 規約：全パラメータを保持。使われ方：同じ全屋根の左脚。 -/
 lemma freeProbeRelativeElementUnderlyingAugmentation_arrow :
     let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (NerveColumn.augmentationIso (cofibrantAlgebraUnderlyingDerivedSource A)
       (freeProbeRelativeElementColumn A X B) (freeProbeRelativeElementAugmentation A X B)
       (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).hom =
@@ -36,7 +36,7 @@ lemma freeProbeRelativeElementUnderlyingAugmentation_arrow :
 規約：全パラメータを保持。使われ方：同じ全屋根の右脚。 -/
 lemma freeProbeRelativeElementUnderlyingEvaluation_arrow :
     let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (NerveColumn.hom (cofibrantAlgebraUnderlyingDerivedSource A)
       (freeProbeRelativeElementEvaluation A X B)) =
     Arrow.mk (T.map (ComplexLimits.complexOrdinaryDerivedNatTransHom A
@@ -50,7 +50,7 @@ lemma freeProbeRelativeElementUnderlyingEvaluation_arrow :
 規約：元の同じ全 K と両端表示を保持。使われ方：元の単位三角形への接合。 -/
 lemma freeProbeRelativeElementUnderlyingRoof_arrow :
     let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk ((NerveColumn.augmentationIso (cofibrantAlgebraUnderlyingDerivedSource A)
       (freeProbeRelativeElementColumn A X B) (freeProbeRelativeElementAugmentation A X B)
       (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
@@ -59,7 +59,7 @@ lemma freeProbeRelativeElementUnderlyingRoof_arrow :
     Arrow.mk (T.map (freeProbeElementUnderlyingRoof A X B.obj)) := by
   dsimp only
   let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have hp := freeProbeRelativeElementUnderlyingAugmentation_arrow A X B
   have hi := RoofPrefix.inv_arrow_eq _ _ hp
   have hi' : Arrow.mk (NerveColumn.augmentationIso (cofibrantAlgebraUnderlyingDerivedSource A)

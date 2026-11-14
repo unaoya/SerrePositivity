@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "math_base": "c5c4436c0",
+  "frozen_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+  "before_snapshot": "e381f75467755a84824a280ff429e52d4b6fb305",
+  "library_delta_from_math_base": [
+    "A\tSerrePositivity/Util/Citation.lean"
+  ],
+  "citation_sha256": "4e98efbbe8d023eae03da6a2c501820819c82874e1cab1d4d4b0dc252ceecb3e",
+  "policy": "Before-snapshot mathematical Lean equals frozen math main; only explicitly authorized new citation utility is added."
+}

@@ -72,18 +72,18 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalVertices
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionUniqueness
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplittingColimit
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofSliceTriangle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SourceEquivalencePrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RoofSliceTriangle
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.SourceEquivalencePrecomposition
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullSubcomplexRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulFunctorIsoCoherence
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NativeConeFamilyEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointHomActionComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.NativeConeFamilyEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PointHomActionComparison
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.LeftKanShape
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OverCanonicalCocone
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OverIso
+public import SerrePositivity.InfinityCategories.HTT.Section1_2_9.OverIso
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.RelativeComparisonInverse
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy01
 public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy02
 public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy03
@@ -334,13 +334,13 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.leftIntervalFatPrism_
 deprecated_alias _root_.SerrePositivity.InfinityCategories.F2.isLimitCone_map_pullbackCone_iff := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_map_pullbackCone_iff
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.squareBottomArrow_edge := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge
+deprecated_alias _root_.SerrePositivity.InfinityCategories.squareBottomArrow_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.squareLeftArrow_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.squareRightArrow_edge := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge
+deprecated_alias _root_.SerrePositivity.InfinityCategories.squareRightArrow_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.cofiberStableEdges_pullback_iff := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_pullback_iff
@@ -352,7 +352,7 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.cofiberStableEdges_pu
 deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.zero_source_of_right_invertible := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zero_source_of_right_invertible
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.square_homMk_comm := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.square_homMk_comm
+deprecated_alias _root_.SerrePositivity.InfinityCategories.square_homMk_comm := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.square_homMk_comm
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.squareTopArrow_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge
@@ -442,7 +442,7 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.F1B.nerveLeftKanShape
 deprecated_alias _root_.SerrePositivity.InfinityCategories.F1B.nerveOverIso_uncurry := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_uncurry
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection
+deprecated_alias _root_.SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection := _root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso_projection
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanFunctorEdgeUnflip_edge

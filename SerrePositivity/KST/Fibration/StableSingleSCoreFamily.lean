@@ -61,7 +61,7 @@ theorem stableSingleSCoreFamilyAction_inclusion {T : SSet.{u}}
 
 /-- 同じ零値後合成円柱の元の core S_n 作用は、包含後に元の全円柱を回収する。 -/
 theorem zeroEndPostcompCoreSAction_inclusion {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (n : SimplexCategoryᵒᵖ) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (n : SimplexCategoryᵒᵖ) :
     uncurry (zeroEndPostcompFamily F hF ≫
         ((stableMultiSCoreEnrichedDiagram 1).obj (fun _ => n)).map A C) ≫
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n.unop.len C.obj)).ι =

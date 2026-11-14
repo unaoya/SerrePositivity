@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPointCosliceTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentCosliceTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGPointCosliceTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGCoherentCosliceTransport
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ComparisonEquivalence
 /-!
 概要：同じ線形 Hom の coslice 比較を、dg nerve の実 coslice fiber へ渡す。

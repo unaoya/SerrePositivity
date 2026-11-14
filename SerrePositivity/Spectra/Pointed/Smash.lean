@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.Spectra.Pointed.Products
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Basic
 
@@ -145,3 +147,8 @@ noncomputable def smashFunctor : PointedObject C ⥤ PointedObject C ⥤ Pointed
     simp
 
 end SerrePositivity.PointedObject
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.5.1" (partial := component) "仮定：有限積・有限余極限を持つ圏の基点付き対象（Lean は Type の有限対象以外にも適用できる）。結論：積のうちいずれかの座標が基点となる部分を潰す smash の二関手（HA の基点付き集合上の構成に一致）。標準有限集合上の辞書式番号づけは型に含まれない。"] _root_.SerrePositivity.PointedObject.smashFunctor

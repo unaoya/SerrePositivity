@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SubdivisionSimplexCover
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SubdivisionSimplexCover
 
 /-!
 # horn の単体と細分の余面による表示

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedProductNativeCone
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanConeHomotopyTriangles
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanConeHomotopyTriangles
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.HomotopyVerticalRestriction
 
 /-!

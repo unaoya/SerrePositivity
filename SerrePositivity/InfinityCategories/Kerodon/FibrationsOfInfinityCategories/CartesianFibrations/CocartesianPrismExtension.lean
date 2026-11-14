@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PrismBaseDetection
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianEdgePullback
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianCoslice
@@ -127,3 +129,8 @@ lemma prism_exists_lift_of_cocartesian_firstEdge {E B : SSet.{u}}
   · rw [Category.assoc, pullback.condition, ← Category.assoc, hFq, Category.id_comp]
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.1.8" (partial := direction) "仮定：inner fibration p と p-cocartesian な指定最初の辺（順方向と一致）。結論：HornLifting との同値を介して prism_exists_lift_of_cocartesian_firstEdge を適用すると、原典の各 n≥1 の指定 prism extension を得る。逆向きはない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.prism_exists_lift_of_cocartesian_firstEdge

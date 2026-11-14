@@ -38,12 +38,12 @@ lemma cutLeftIntervalExtension_mem (n : ℕ) (k : Fin (n + 1)) (X : StableModel.
       change min a.val.down.val.2.val k.val = k.val
       exact min_eq_right (a.property.trans a.val.down.property)
   have he := sMap_evaluate_vertex (cutLeftIntervalRetraction n k) v (ComposableArrows.mk₀ a.val)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       ((arNerveMap (cutLeftIntervalRetraction n k)).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ a.val))).app (Opposite.op ⦋0⦌) v.val) := by
     rw [ha]
     exact sConstructionVertex_diagonal_isZero v (Fin.last k.val)
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr hz
 
 /-- Left 側の短い区間から支持部分圏への元の端点収縮による延長。 -/
 def cutLeftIntervalExtensionMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
@@ -96,12 +96,12 @@ lemma cutRightIntervalExtension_mem (n : ℕ) (k : Fin (n + 1)) (X : StableModel
       change a.val.down.val.2.val - k.val = 0
       exact Nat.sub_eq_zero_of_le a.property
   have he := sMap_evaluate_vertex (cutRightIntervalRetraction n k) v (ComposableArrows.mk₀ a.val)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       ((arNerveMap (cutRightIntervalRetraction n k)).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ a.val))).app (Opposite.op ⦋0⦌) v.val) := by
     rw [ha]
     exact sConstructionVertex_diagonal_isZero v ((0 : Fin (n - k.val + 1)))
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr hz
 
 /-- Right 側の短い区間から支持部分圏への元の端点収縮による延長。 -/
 def cutRightIntervalExtensionMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :

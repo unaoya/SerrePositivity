@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
 
 public import SerrePositivity.KST.Spectra.D3LoopedSectionComparison
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPresentation
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoCurryPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：全関手空間の curry 後の図式評価を、元の指定係数への制限へ戻す。

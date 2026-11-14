@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Spectra.OmegaTransitionNaturality
 
 /-!
@@ -87,3 +89,8 @@ def levelFunctor (k n : ℕ) : OmegaSpectrum.{u} ⥤ CommGrpCat.{u} where
 end
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.3.8" (partial := component) "仮定：Ω スペクトルの具体模型と自然数 k,n（Lean が強い：安定次数は全整数でなく指定レベルで測る）。結論：各レベルのアーベル群値のホモトピー群関手（Lean が弱い：全整数次数の安定群、レベルによらない比較と全群による同値の検出はこの型にない）。"] _root_.SerrePositivity.KST.Spectra.OmegaSpectrum.levelFunctor

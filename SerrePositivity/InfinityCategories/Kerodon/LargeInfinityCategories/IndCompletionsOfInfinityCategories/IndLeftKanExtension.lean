@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLocalKanColimits
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCommaCoconeColimit
 
@@ -29,3 +31,9 @@ lemma ind_exists_leftKanExtension (hD : _root_.SerrePositivity.InfinityCategorie
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanDiagram_hasColimit κ hD F₀)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension
+attribute [cite HTT "5.3.5.9" (partial := special) "仮定：余極限のクラスを κ-filtered な小形状に固定する（Lean が強い：任意のクラス S ではない）。結論：その閉包 Indκ からの左 Kan 延長の存在と、そのクラスの余極限保存による特徴づけ（この場合に一致）。一般の閉包への構成を主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension

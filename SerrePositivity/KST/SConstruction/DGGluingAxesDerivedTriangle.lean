@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaQuasiIso
 public import SerrePositivity.DifferentialGraded.Derived.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.TriangleThirdTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.TriangleThirdTransport
 
 /-! # 元の二軸代表の指定導来圏内の三角形
 概要：元の二軸代表と元の二射を、同じ加群導来圏の distinguished 三角形にする。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PathNaturality
 public import SerrePositivity.KST.Spectra.LoopZeroHomotopy
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopySquares
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopySquares
 
 /-!
 概要：loop の全自然数次数のホモトピー類の次数移動の自然性。

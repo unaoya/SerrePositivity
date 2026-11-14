@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.NonConnective.SequentialCoherentLift
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralHomHolimComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictNativeCocones
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ColimitExistenceTransfer
 
 /-!

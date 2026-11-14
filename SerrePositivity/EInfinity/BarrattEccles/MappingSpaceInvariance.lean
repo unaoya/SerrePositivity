@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpace
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SourceInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SourceInvariance
 
 /-!
 # E 代数の導来写像空間の始域・終域の不変性

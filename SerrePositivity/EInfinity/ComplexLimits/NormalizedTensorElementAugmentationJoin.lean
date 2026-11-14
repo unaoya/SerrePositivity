@@ -24,7 +24,7 @@ def normalizedTensorElementAugmentationJoin :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (nerve (normalizedTensorElementIndex A X Y)) (Δ[0] : SSet.{u + 1}) ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) :=
   FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) ≫
-    nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)
+    nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
 
 lemma normalizedTensorElementAugmentationJoin_inr :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve (normalizedTensorElementIndex A X Y)) (Δ[0] : SSet.{u + 1}) ≫
@@ -34,7 +34,7 @@ lemma normalizedTensorElementAugmentationJoin_inr :
   rw [SSet.yonedaEquiv_comp]
   simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint, normalizedTensorElementAugmentationCocone, normalizedTensorConePoint,
     Equiv.apply_symm_apply]
-  change (nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)).app
+  change (nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app
     (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).injective
   rfl
@@ -47,7 +47,7 @@ lemma normalizedTensorElementAugmentationJoin_restrict_simplex {n : ℕ}
         (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
           (normalizedTensorElementAugmentedColumn A X Y c ⋙ complexToClosed A)) := by
   have h := congrArg (fun f => f ≫ nerveMap (complexToClosed A) ≫
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)) (normalizedTensorElementAugmentedColumn_join A X Y c)
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)) (normalizedTensorElementAugmentedColumn_join A X Y c)
   simp only [Category.assoc, SSet.yonedaEquiv_symm_comp] at h
   exact h.symm
 
@@ -55,9 +55,9 @@ lemma normalizedTensorElementAugmentationJoin_prism :
     (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{u + 1})).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementAugmentationJoin A X Y =
       (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
-        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) := by
+        nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) := by
   have h := congrArg (fun f => f ≫ nerveMap (complexToClosed A) ≫
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A))
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A))
     (FrameHom.MixedNerve.coconePrism_eq_homotopy (normalizedTensorElementAugmentationCocone A X Y))
   simpa only [Category.assoc, normalizedTensorElementAugmentationJoin,
     normalizedTensorElementAugmentationCocone] using h

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "old_source_checkpoint": "1fb4a34bd131a96112f5322c01f63b11cc093d45",
+  "path": "scripts/refactor/layers.json",
+  "before_sha256": "379ebe7d058c26037207ce8f843bfbef0422e80ba75dacec7dbe9ebbe78c3f57",
+  "after_sha256": "f1c9b5b258dc572bfee7132a8d1e60679806eeb0b487c88b2f56ddb6c6c7429c",
+  "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingOverNaturality",
+  "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso",
+  "old_reason": "B2 proposal, inherited from the original main snapshot: the §7.4 mapping-space naturality proof uses normalized endpoint slice postcomposition and its isomorphism calculation stored in §9.3 (Tag 06FR). No Ind-specific premise is used. Preserve the literature placement; the import DAG remains acyclic. Coordinator review is pending.",
+  "new_reason": "B3 approved under bulk-b3-goal.md §2(2), inherited from the original main snapshot: the §7.4 mapping-space naturality proof uses normalized endpoint slice postcomposition and its isomorphism calculation stored in §9.3 (Tag 06FR). No Ind-specific premise is used. Preserve the literature placement; the import DAG remains acyclic. Approved by the coordinator and user for B3; retain this literature-placement exception.",
+  "all_json_rules_identical_except_this_reason": true,
+  "mathematical_sources_unchanged": true,
+  "authorized_by": "bulk-b3-goal.md §2(2), coordinator/user acceptance",
+  "recorded_at": "2026-11-14T08:36:41.891957",
+  "rechecked_at": "2026-11-14T08:38:59.593255",
+  "only_changed_critical_path": "scripts/refactor/layers.json",
+  "layer_violations_identical": true,
+  "strict_reverse_section_violations": 15,
+  "other_layer_violations": 0
+}

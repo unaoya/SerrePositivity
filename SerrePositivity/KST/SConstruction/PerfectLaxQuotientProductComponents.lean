@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductVertices
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-! # 実積へ移送した同じ全図式の四辺の自然性
 概要：全図式の移送から、指定した四成分と四辺の自然性をそのまま回収する。
@@ -22,8 +22,8 @@ variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
 /-- 同じ全図式の移送の自然変換の、元の四角における成分。 -/
-def productComponent (a b : Fin 2) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (d.universalValueSquare F) a b ⟶
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (d.productSquare hF) a b :=
+def productComponent (a b : Fin 2) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (d.universalValueSquare F) a b ⟶
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (d.productSquare hF) a b :=
   (d.productExtension hF).naturalTransformation.app
     (HomotopyCategory.mk (stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b))
 
@@ -39,32 +39,32 @@ lemma productComponent_arrow (a b : Fin 2) : Arrow.mk (d.productComponent hF a b
   exact arrow_mk_eqToHom_comp _ _
 
 /-- 元の底辺と移送後の底辺は、同じ全図式の自然性で可換する。 -/
-lemma productSquare_bottom_naturality : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.universalValueSquare F) ≫
+lemma productSquare_bottom_naturality : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.universalValueSquare F) ≫
     d.productComponent hF 1 0 = d.productComponent hF 0 0 ≫
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.productSquare hF) :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.productSquare hF) :=
   (d.productExtension hF).naturalTransformation.naturality
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 /-- 元の上辺と移送後の上辺は、同じ全図式の自然性で可換する。 -/
-lemma productSquare_top_naturality : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (d.universalValueSquare F) ≫
+lemma productSquare_top_naturality : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (d.universalValueSquare F) ≫
     d.productComponent hF 1 1 = d.productComponent hF 0 1 ≫
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (d.productSquare hF) :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (d.productSquare hF) :=
   (d.productExtension hF).naturalTransformation.naturality
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 /-- 元の左辺と移送後の左辺は、同じ全図式の自然性で可換する。 -/
-lemma productSquare_left_naturality : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.universalValueSquare F) ≫
+lemma productSquare_left_naturality : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.universalValueSquare F) ≫
     d.productComponent hF 0 1 = d.productComponent hF 0 0 ≫
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.productSquare hF) :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.productSquare hF) :=
   (d.productExtension hF).naturalTransformation.naturality
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 /-- 元の右辺と移送後の右辺は、同じ全図式の自然性で可換する。 -/
-lemma productSquare_right_naturality : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.universalValueSquare F) ≫
+lemma productSquare_right_naturality : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (d.universalValueSquare F) ≫
     d.productComponent hF 1 1 = d.productComponent hF 1 0 ≫
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.productSquare hF) :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (d.productSquare hF) :=
   (d.productExtension hF).naturalTransformation.naturality
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 end PerfectLaxQuotient
 end SerrePositivity.KST.SConstruction

@@ -165,7 +165,7 @@ lemma frameCofiberFamily_vertex {n : ℕ} {C : SSet.{u}}
 規約：零対象の性質を仮定せず頂点を同定する。使われ方：零角条件の移送。 -/
 lemma frameCofiberSquareAt_zero_corner {n : ℕ} {C : SSet.{u}}
     (F : frameNerve n ⟶ C) (a : FrameAr.{u} n) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (frameCofiberSquareAt a ≫ F) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (frameCofiberSquareAt a ≫ F) 0 1 =
       F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀
         (⟨arObj a.val.down.val.1 a.val.down.val.1 le_rfl, Or.inr rfl⟩ : FrameAr n)) := by
   apply congrArg (F.app (Opposite.op ⦋0⦌))

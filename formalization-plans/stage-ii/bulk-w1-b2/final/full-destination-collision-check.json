@@ -1,0 +1,7 @@
+{
+  "destinations": 6488,
+  "source_assignments": 6488,
+  "collisions": [],
+  "unplanned_overwrites": [],
+  "split_policy": "One source may have several destinations; each destination has exactly one original source owner."
+}

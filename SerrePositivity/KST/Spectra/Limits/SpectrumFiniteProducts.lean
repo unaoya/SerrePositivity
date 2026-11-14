@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
 public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 
 public import Mathlib.CategoryTheory.Limits.Constructions.FiniteProductsOfBinaryProducts
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpectrumPoint
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SpectrumPoint
 public import SerrePositivity.KST.Spectra.Limits.SpectrumPoint
 
 /-!

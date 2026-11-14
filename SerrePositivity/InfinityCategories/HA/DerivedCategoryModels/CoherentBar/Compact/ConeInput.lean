@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.GeneratorClosure
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaClosedProjectivePretriangulated
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaClosedProjectiveComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaClosedPerfectCover
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaClosedProjectivePretriangulated
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaClosedProjectiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaClosedPerfectCover
 /-!
 概要：選択済みの同じ代表系について、Hom 保存と covers から K-7 入力を組み立てる。
 方針：前三角性・射影性・全写像空間の充満忠実性・直和閉性は既存の実証拠を使う。

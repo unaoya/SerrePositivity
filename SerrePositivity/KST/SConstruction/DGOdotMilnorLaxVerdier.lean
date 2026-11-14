@@ -1,6 +1,8 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxModel
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SourceEquivalencePrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.SourceEquivalencePrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PrecompositionCriterion
 
@@ -69,9 +71,9 @@ lemma dgOdotMilnorLaxInclusion_fullyFaithful (h : _root_.SerrePositivity.Infinit
 規約：対象別の見かけの像だけで核を判定しない。使われ方：列条件の核欄。 -/
 lemma dgOdotMilnorLaxKernel (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
     (b : (dgOdotMilnorLaxCategory R d).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotMilnorLaxProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotMilnorLaxProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
       b ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (dgOdotMilnorLaxInclusion R d) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedProjection R d).hom.app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorResolvedProjection R d).hom.app (Opposite.op ⦋0⦌)
     ((E).inv.app (Opposite.op ⦋0⦌) b)) ↔ _
   rw [dgOdotMilnorNativeKernel R d h]
   constructor
@@ -108,7 +110,7 @@ lemma dgOdotMilnorLaxLocalization (h : _root_.SerrePositivity.InfinityCategories
       obtain ⟨s, z, hz, ⟨v⟩⟩ := ha
       have hm : (E).hom.app (Opposite.op ⦋1⦌) a ∈
           _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (dgOdotMilnorLaxInclusion R d)) := by
-        let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((E).hom.app (Opposite.op ⦋1⦌) a)) := {
+        let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((E).hom.app (Opposite.op ⦋1⦌) a)) := {
           toZeroTriangle := (s.map (E).hom).toZeroTriangle
           bottom_edge := (s.map (E).hom).bottom_edge
           isPushout := (s.map (E).hom).isPushout }
@@ -131,3 +133,9 @@ theorem dgOdotMilnorLax_isVerdier (h : _root_.SerrePositivity.InfinityCategories
     dgOdotMilnorLaxKernel R d h, dgOdotMilnorLaxLocalization R d h⟩
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Eq (10)" (partial := component) "仮定：指定された dg Milnor 正方形（Lean が強い）。結論：実 lax gluing と resolved 商の Verdier 列をその冪等完備化まで構成。任意の E₁ 環の主定理の列より狭い（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorLax_isVerdier
+attribute [cite LT "Lemma 1.7" (partial := component) "仮定：指定 dg Milnor 正方形（Lean が強い）。結論：その Perf の対角から native lax への写像の全写像空間での充満忠実性。一般の環スペクトルと RMod は対象外（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fullyFaithful

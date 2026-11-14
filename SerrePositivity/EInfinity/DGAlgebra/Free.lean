@@ -1,7 +1,9 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraDerivedInfinity
+public import SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraDerivedInfinity
 
 /-!
 # 一対象の自由 dg 圏からの自由 dg 代数
@@ -49,7 +51,7 @@ def generator (K : Complex R) : K ⟶ (freeObject K).X :=
 規約：元の標的モノイドの積を使う。
 使われ方：自由代数の普遍性の逆写像。 -/
 def lift (K : Complex R) (B : Mon (Complex R)) (f : K ⟶ B.X) : freeObject K ⟶ B :=
-  let F := FreeDGCategory.lift R PUnit.{1} (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (fun _ _ => K)
+  let F := FreeDGCategory.lift R PUnit.{1} (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (fun _ _ => K)
     (fun _ => .star) (fun _ _ => f)
   Mon.Hom.mk' (F.map .unit .unit) (F.map_id .unit) (F.map_comp .unit .unit .unit)
 
@@ -60,7 +62,7 @@ def lift (K : Complex R) (B : Mon (Complex R)) (f : K ⟶ B.X) : freeObject K �
 @[reassoc (attr := simp)]
 lemma generator_lift (K : Complex R) (B : Mon (Complex R)) (f : K ⟶ B.X) :
     generator K ≫ (lift K B f).hom = f :=
-  FreeDGCategory.lift_edge R PUnit.{1} (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (fun _ _ => K)
+  FreeDGCategory.lift_edge R PUnit.{1} (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (fun _ _ => K)
     (fun _ => .star) (fun _ _ => f) .unit .unit
 
 /-- 概要：自由代数射は元の生成辺で決まる。
@@ -154,3 +156,8 @@ lemma freeForgetAdjunction_unit (K : Complex R) :
   exact Category.comp_id _
 
 end SerrePositivity.EInfinity.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.3.15" (partial := component) "仮定：通常可換環 R の複体と厳密な結合的 dg 代数（Lean が強い：k=1 の通常圏の自由性の場合）。結論：tensor algebra による freeFunctor が忘却の左随伴となる（(1) の通常圏模型の自由性の部分に一致）。HA の局所化後の AlgEₖ との比較、全 k の自由性、(2) の反復 Bar と懸垂の同値は含まれない。"] _root_.SerrePositivity.EInfinity.DGAlgebra.freeForgetAdjunction

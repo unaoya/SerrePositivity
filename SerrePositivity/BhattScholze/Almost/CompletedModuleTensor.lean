@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionMonoidal
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.HeartFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeKProjective
 
 /-! # 完備導来テンソルの模型比較
 
@@ -33,7 +33,7 @@ set_option backward.isDefEq.respectTransparency false
 variable (R : Type u) [CommRing R]
 
 /-- 導来圏の半自由代表を指定する頂点。 -/
-abbrev DVertex := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌
+abbrev DVertex := (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌
 
 /-- 頂点の半自由複体のテンソルを導来 p 完備化して頂点に戻す。 -/
 def completedModuleTensor (p : ℕ) (A : Type u) [CommRing A] (X Y : DVertex A) : DVertex A :=
@@ -72,8 +72,8 @@ def completedTensorAlgebraVertexIso (p : ℕ) (S T : Type u)
     [CommRing S] [CommRing T] [Algebra R S] [Algebra R T] :
     (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≅
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
-        ⟨completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R S))
-          (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R T))⟩ := by
+        ⟨completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R S))
+          (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R T))⟩ := by
   let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R
   exact completedTensorResolutionIso R (p : R) (ModuleCat.of R S) (ModuleCat.of R T) ≪≫
     (e.counitIso.app _).symm

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFactorization
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 
 /-! # 元の標準 dg 対角の実 Perf 延長
 概要：元の小さい dg gluing への標準対角を、同じ実 Perf 延長で送る。

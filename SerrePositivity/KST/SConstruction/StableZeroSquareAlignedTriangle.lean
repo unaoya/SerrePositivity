@@ -41,7 +41,7 @@ def squareFrameLowerAlignedDiagonalHomotopy : SSet.Homotopy
 方針：同じ零対角上の一意性を元端点等号で輸送する。
 規約：元両二胞体と全下比較の類を保持。使われ方：同じ類を保つ代表修正。 -/
 lemma squareFrameLowerAlignedDiagonalHomotopy_class
-    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex f 0 1))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex f 0 1))) :
     SSet.Truncated.HomotopyCategory.homMk
         ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H 1)).map
           ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))) =
@@ -75,7 +75,7 @@ lemma squareFrameLowerAlignedDiagonalHomotopy_class
 方針：元の対角制限を同じ類の指定代表へ厳密に修正する。
 規約：元両二単体・元下全比較の類を同時保持。使われ方：元全四角形比較。 -/
 lemma exists_squareFrameAlignedLowerTriangle
-    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex f 0 1))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex f 0 1))) :
     ∃ J : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ g),
       (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ J.h =
           (squareFrameTriangleDiagonalHomotopy H 0).h ∧

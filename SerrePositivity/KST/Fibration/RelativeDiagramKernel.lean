@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 全頂点を零に送る関手は全ての実辺を可逆に写す。 -/
 lemma map_edge_invertible_of_zero {X Y : SSet.{u}} [Quasicategory Y]
-    (F : X ⟶ Y) (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x))
+    (F : X ⟶ Y) (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x))
     (s : X _⦋1⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s)) := by
   let f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s
@@ -32,7 +32,7 @@ lemma map_edge_invertible_of_zero {X Y : SSet.{u}} [Quasicategory Y]
 /-- 商で全成分が零になる場合、相対部分複体は全図式を保持する。 -/
 lemma relativeDiagram_eq_top_of_zero {B C X : SSet.{u}} [Quasicategory C]
     {J : Type v} (q : B ⟶ C) (ev : J → (X ⟶ B))
-    (hz : ∀ j x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((ev j ≫ q).app (Opposite.op ⦋0⦌) x)) :
+    (hz : ∀ j x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((ev j ≫ q).app (Opposite.op ⦋0⦌) x)) :
     relativeDiagram q ev = ⊤ := by
   apply top_unique
   intro n s _ j f

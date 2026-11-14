@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletonFiltrationMono
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CartesianSubfunctorColimit
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CartesianSubfunctorColimit
 
 /-!
 概要：単体集合の図式の各単体次数で、有限骨格を Type 値の部分図式として表示する。

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDP
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
-public import SerrePositivity.BhattScholze.Delta.DividedPower.Factorial
+public import SerrePositivity.CommutativeAlgebra.DividedPowers.RankOneDP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Principal.PrincipalDP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Coefficients.Factorial
 public import Mathlib.RingTheory.DividedPowers.SubDPIdeal
 public import Mathlib.Data.Nat.Choose.Lucas
 public import Mathlib.Algebra.Algebra.Bilinear
@@ -24,10 +24,10 @@ public import Mathlib.RingTheory.Ideal.Quotient.Operations
 素数次数シフト、素数冪の分冪生成元と切断変数からの全射、テンソル分解・有限切断段の評価と普遍性・単射性、可算切断表示 A[g₁,g₂,…]/(gᵢᵖ)、正次数商・正則元・p 局所環での分冪構造の降下、階乗部分環の mod p 分冪、一元分冪表示環の自由性と移送。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/PowerRootInput`、`PowerRootEnvelope/PrincipalDP`、`PowerRootEnvelope/Varpi`、`Variants/MonicRootedExtension`。
@@ -35,7 +35,7 @@ public import Mathlib.RingTheory.Ideal.Quotient.Operations
 
 universe u v w
 
-/-! ## André E1・E2：係数環同型に沿う一元分冪表示の移送（旧 Andre/Remark715/PrincipalDPRingEquiv.lean）
+/-! ## 係数環同型に沿う一元分冪表示の移送
 
 ## 概要
 
@@ -224,7 +224,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPRingEquiv
 
-/-! ## André E1・E2：p 局所・p 正則環の分冪構造の mod p 降下（旧 Andre/Remark715/PrimeDividedPowerQuotient.lean）
+/-! ## p 局所・p 正則環の分冪構造の mod p 降下
 
 ## 概要
 
@@ -344,7 +344,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrimeDividedPowerQuotient
 
-/-! ## André E1・E2：階乗部分環の正次数イデアルの実 mod p 分冪構造（旧 Andre/Remark715/FactorialModPrimeDividedPowers.lean）
+/-! ## 階乗部分環の正次数イデアルの実 mod p 分冪構造
 
 ## 概要
 
@@ -455,7 +455,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end FactorialModPrimeDividedPowers
 
-/-! ## André E1・E2：標数 p の一元分冪代数の素数次数シフト（旧 Andre/Remark715/DividedPowerPrimeShift.lean）
+/-! ## 標数 p の一元分冪代数の素数次数シフト
 
 ## 概要
 
@@ -610,7 +610,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeShift
 
-/-! ## André E1・E2：分冪代数の最初の切断変数と次数シフトによるテンソル分解（旧 Andre/Remark715/DividedPowerPrimeTensor.lean）
+/-! ## 分冪代数の最初の切断変数と次数シフトによるテンソル分解
 
 ## 概要
 
@@ -712,7 +712,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeTensor
 
-/-! ## André E1・E2：有限切断テンソル段の分冪評価（旧 Andre/Remark715/DividedPowerPrimeFiniteTensor.lean）
+/-! ## 有限切断テンソル段の分冪評価
 
 ## 概要
 
@@ -862,7 +862,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeFiniteTensor
 
-/-! ## André E1・E2：有限切断テンソル段の普遍性（旧 Andre/Remark715/DividedPowerPrimeFiniteUniversal.lean）
+/-! ## 有限切断テンソル段の普遍性
 
 ## 概要
 
@@ -956,7 +956,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeFiniteUniversal
 
-/-! ## André E1・E2：素数冪分冪生成元と切断変数からの全射（旧 Andre/Remark715/DividedPowerPrimeGenerators.lean）
+/-! ## 素数冪分冪生成元と切断変数からの全射
 
 ## 概要
 
@@ -1128,7 +1128,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeGenerators
 
-/-! ## André E1・E2：有限切断多項式表示の分冪評価の単射性（旧 Andre/Remark715/DividedPowerPrimeFinitePresentation.lean）
+/-! ## 有限切断多項式表示の分冪評価の単射性
 
 ## 概要
 
@@ -1272,7 +1272,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeFinitePresentation
 
-/-! ## André E1・E2：一元分冪代数の可算切断多項式表示（旧 Andre/Remark715/DividedPowerPrimePresentation.lean）
+/-! ## 一元分冪代数の可算切断多項式表示
 
 ## 概要
 
@@ -1406,7 +1406,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimePresentation
 
-/-! ## André E1・E2：可算切断表示の普遍射と素数冪生成元の外延性（旧 Andre/Remark715/DividedPowerPrimeUniversal.lean）
+/-! ## 可算切断表示の普遍射と素数冪生成元の外延性
 
 ## 概要
 
@@ -1494,7 +1494,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeUniversal
 
-/-! ## André E1：分冪表示環の実 p 乗商上の自由性（旧 Andre/Remark715/PrincipalDPFree.lean）
+/-! ## André E1：分冪表示環の実 p 乗商上の自由性
 
 ## 概要
 
@@ -1564,7 +1564,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPFree
 
-/-! ## André E1・E2：正次数商で正則な元による実分冪構造の降下（旧 Andre/Remark715/DividedPowerRegularQuotient.lean）
+/-! ## 正次数商で正則な元による実分冪構造の降下
 
 ## 概要
 
@@ -1640,7 +1640,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerRegularQuotient
 
-/-! ## André E1・E2：射影的な正次数商を使う任意係数元による分冪降下（旧 Andre/Remark715/DividedPowerProjectiveCoefficientQuotient.lean）
+/-! ## 射影的な正次数商を使う任意係数元による分冪降下
 
 ## 概要
 

@@ -41,10 +41,10 @@ theorem dgKInputSpectrum_positive_toPoint_of_zero (P : PerfDGInput.{u, v} A)
 /-- ν(P) の零性から、固定 K の同じ元の BF スペクトル頂点は Sp 内で零となる。 -/
 theorem dgKInputK_vertex_isZero_of_zero (P : PerfDGInput.{u, v} A)
     (hP : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue A P)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKInputK A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex P)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKInputK A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex P)) := by
   have h := spectrum_isZeroVertex_of_positive_toPoint (dgKInputSpectrum A P)
     (dgKInputSpectrum_positive_toPoint_of_zero A P hP)
-  exact (congrArg (fun z : Sp.{max (u + 1) v} _⦋0⦌ => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+  exact (congrArg (fun z : Sp.{max (u + 1) v} _⦋0⦌ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     (dgKInputK_vertex A P)).mpr h
 
 /-- 同じ固定 S 上の K は、ν が零とする元の全入力頂点を Sp の零頂点へ送る。 -/
@@ -58,12 +58,12 @@ theorem dgKInputK_preservesRelativeZero :
 
 /-- 元の相対 Verdier 四角形を固定 K で写した同じ実四角形の零角。 -/
 theorem dgRelativeK_zero_corner (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK A) 0 1) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK A) 0 1) :=
   dgKInputK_preservesRelativeZero A _ d.zero_corner
 
 /-- 元の相対 Verdier 四角形の K 像を、その同じ全四角形と零角を保つ三角形として保持。 -/
 def dgRelativeKZeroTriangle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{max (u + 1) v} where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{max (u + 1) v} where
   square := d.square ≫ dgKInputK A
   zero_corner := dgRelativeK_zero_corner A d
 

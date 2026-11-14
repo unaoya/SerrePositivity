@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGUniverseLift
 
 /-!
 概要：実完備化射を同じ Perf 評価で戻すと元 resolved 商の Yoneda を回収する。

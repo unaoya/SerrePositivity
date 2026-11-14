@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-11-14T08:01:22.290593",
+  "root_success": true,
+  "formal_audits_total": 106,
+  "formal_audits_success": 32,
+  "formal_audits_failed": 0,
+  "formal_audits_daytime_interrupted": [],
+  "formal_audits_remaining": 74,
+  "full_verify_success": false,
+  "preservation_modules": 10195,
+  "preservation_unexplained": 0,
+  "additional_withdrawals": [],
+  "baseline_mathematical_main": "c5c4436c0"
+}

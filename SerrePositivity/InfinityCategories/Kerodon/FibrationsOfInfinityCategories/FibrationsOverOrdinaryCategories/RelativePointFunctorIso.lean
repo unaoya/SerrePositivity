@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.PointFunctorEvaluation
 
 /-!
@@ -89,3 +91,8 @@ def relativePointFunctorIso {E B : SSet.{u}} (p : E ⟶ B)
       Category.comp_id, Category.id_comp]
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.4.6" (partial := component) "仮定：相対関手の始域が Δ0 で、底への写像が [1] を選ぶ（HA の T¹ の場合）。結論：一点上の相対関手空間の評価が指定ファイバーとの同型となる（評価による同型の成分に一致）。非単位的 A₁ のマーク条件が空になる同定は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.relativePointFunctorIso

@@ -100,7 +100,7 @@ lemma pastingOuterToRightShape_source :
 lemma pastingOuterToRightShape_target :
     ((stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge) ▷ (Δ[1] : SSet.{u})) ≫
       pastingOuterToRightShape = CartesianMonoidalCategory.snd Δ[0] Δ[1] ≫
-        SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) 1 1) := by
+        SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) 1 1) := by
   apply CartesianMonoidalCategory.hom_ext
   all_goals
     apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.stdSimplex_hom_ext_vertices
@@ -131,7 +131,7 @@ lemma pastingOuterToRightHomotopy_target {X : SSet.{u}}
     ((stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge) ▷ (Δ[1] : SSet.{u})) ≫
       (pastingOuterToRightHomotopy F).h =
         CartesianMonoidalCategory.snd Δ[0] Δ[1] ≫
-          SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 1) 1 1) := by
+          SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 1) 1 1) := by
   change _ ≫ (pastingOuterToRightShape ≫ F) = _
   rw [← Category.assoc, pastingOuterToRightShape_target, Category.assoc, SSet.const_comp]
   rfl

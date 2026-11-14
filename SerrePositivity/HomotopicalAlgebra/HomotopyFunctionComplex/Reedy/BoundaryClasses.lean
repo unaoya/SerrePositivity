@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting
@@ -55,3 +57,8 @@ lemma latchingEvaluation_mem_left [left.RespectsIso]
   exact (left.arrow_iso_iff (relativeLatchingRestrictionIso r g τ)).mp (hτ g)
 
 end SerrePositivity.Reedy
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.9.20" (partial := special) "仮定：自然数次数付き Reedy 圏、I が一対象の latching index 全体、I′ が空（Lean が強い特殊形）。結論：各相対 latching 射が left に属すれば latching colimit 間の実際の射が left に属す。left を cofibration または trivial cofibration として (a)(b) のこの特殊形に一致。任意の二つの sieve の相対 pushout 射は扱わない。"] _root_.SerrePositivity.Reedy.latchingEvaluation_mem_left

@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveReflectsQuasiEquivalence
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveReflectsQuasiEquivalence
 import Lean
 
 /-! 新二葉の全宣言を標準三公理で監査し、前三角な始域だけを仮定する公開型を照合する。 -/
@@ -6,8 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let targets := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedGradedShift,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveReflectsQuasiEquivalence]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGPretriangulatedGradedShift,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveReflectsQuasiEquivalence]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

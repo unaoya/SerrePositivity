@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RankLocus
-public import SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
+public import SerrePositivity.BhattScholze.Semiperfectoid.SurjectiveQuotientPerfectoidization
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 

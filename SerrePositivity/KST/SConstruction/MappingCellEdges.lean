@@ -26,7 +26,7 @@ def mappingEdgeRetarget {E : SSet.{u}} {a b a' b' : E _⦋0⦌}
 /-- 元の正方形の指定した水平辺。 -/
 def mappingSquareHorizontalEdge {E : SSet.{u}}
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) (b : Fin 2) :
-    E.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 0 b) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 1 b) :=
+    E.Edge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 0 b) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 1 b) :=
   SSet.Edge.ofTruncated ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
     (X := (truncation 2).obj (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm b))).map
       ((truncation 2).map Q))
@@ -34,7 +34,7 @@ def mappingSquareHorizontalEdge {E : SSet.{u}}
 /-- 元の正方形の指定した垂直辺。 -/
 def mappingSquareVerticalEdge {E : SSet.{u}}
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) (b : Fin 2) :
-    E.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q b 0) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q b 1) :=
+    E.Edge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q b 0) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q b 1) :=
   SSet.Edge.ofTruncated (((SSet.Truncated.Edge.id
     (X := (truncation 2).obj (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm b)).tensor
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map ((truncation 2).map Q))

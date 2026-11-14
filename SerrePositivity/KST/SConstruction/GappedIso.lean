@@ -40,12 +40,12 @@ lemma isGapped_iff_of_functorIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 /-- 概要：Ar 図式の関手圏の任意の零対象は gapped。
 方針：定値零関手との同型を使って gapped 条件を移す。
 規約：chosen zero への等号を仮定しない。使われ方：cofiber の零角の gapped 性。 -/
-lemma isGapped_of_functorVertex_isZero {n : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C]
-    (F : arNerve n ⟶ C) (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) : IsGapped F := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C
+lemma isGapped_of_functorVertex_isZero {n : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C]
+    (F : arNerve n ⟶ C) (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) : IsGapped F := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C
   let Z : arNerve n ⟶ C := SSet.const z.vertex
   have hZ := functor_const_isZeroVertex (A := arNerve n) z.vertex z.isZero
-  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso Z F := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroVertexIso ⟨_, hZ.1, hZ.2⟩ ⟨_, hF.1, hF.2⟩
+  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso Z F := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.zeroVertexIso ⟨_, hZ.1, hZ.2⟩ ⟨_, hF.1, hF.2⟩
   exact IsGapped.of_functorIso (isGapped_const n z.vertex z.isZero) e
 
 end SerrePositivity.KST.SConstruction

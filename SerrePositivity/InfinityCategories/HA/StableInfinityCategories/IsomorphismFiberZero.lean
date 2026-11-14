@@ -21,17 +21,17 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：安定性は不要。使われ方：fiber と cofiber の消滅判定の双対化。 -/
 def FiberSquare.opCofiber {X : SSet.{u}}
     {x y : X _⦋0⦌} {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (X := X.op) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp f) where
-  square := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (X := X.op) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp f) where
+  square := _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square
   zero_corner := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_vertex]
     exact s.zero_corner.op
   bottom_edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_bottomEdge, s.right_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_bottomEdge, s.right_edge]
     exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.reverseSimplex_edgeUnop (X := X) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp f)
-  isPushout := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_dualSquare s.square).1 s.isPullback
+  isPushout := (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_dualSquare s.square).1 s.isPullback
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (opCofiber)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (opCofiber)
 
 
 /-- 概要：指定された同型辺の任意の fiber は零である。
@@ -39,10 +39,10 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.Quasicateg
 規約：値域は quasicategory、安定性は不要。使われ方：fiber の消滅による判定の逆向き。 -/
 lemma FiberSquare.zero_of_homMk_isIso {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge f) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex s.fiber := by
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge f) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex s.fiber := by
   exact (s.opCofiber.zero_of_homMk_isIso hi.op).unop
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (zero_of_homMk_isIso)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (zero_of_homMk_isIso)
 
 
 /-- 概要：安定な場合、指定辺が同型であることと任意の選んだ fiber が零であることは同値。
@@ -50,10 +50,10 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.Quasicateg
 規約：fiber 四角形の選択は固定してもよい。使われ方：比較射の同型判定。 -/
 lemma FiberSquare.homMk_isIso_iff_zero {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     {x y : X _⦋0⦌} {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge f ↔ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex s.fiber :=
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge f ↔ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex s.fiber :=
   ⟨s.zero_of_homMk_isIso, s.homMk_isIso_of_zero⟩
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (homMk_isIso_iff_zero)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FiberSquare (homMk_isIso_iff_zero)
 
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

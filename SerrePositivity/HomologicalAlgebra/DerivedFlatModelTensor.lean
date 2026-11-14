@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorUnresolvedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
@@ -62,3 +64,8 @@ lemma moduleTensorCochain_model_homology_isZero_of_pure_flat
       ((moduleTensorCochainFunctor P.complex).obj M)).isZero_iff.mp ht
 
 end SerrePositivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.2.12" (partial := special) "仮定：通常の可換環 R と有界上導来対象、指定した射影模型（Lean が強い：通常環のこの導来模型の場合）。結論：全離散係数との模型テンソルが零次以外で消える条件から対象の離散性と H⁰ の平坦性を示し、逆に離散かつ平坦な H⁰ から同じ模型での消滅を示す（離散環上の平坦性のテンソル検査の部分に一致）。一般の環スペクトルの flat 述語との比較は含まれない。"] _root_.SerrePositivity.moduleTensorCochain_model_homology_isZero_of_pure_flat

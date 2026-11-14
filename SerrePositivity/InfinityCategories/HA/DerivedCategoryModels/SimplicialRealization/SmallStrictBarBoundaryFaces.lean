@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBoundarySum
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBlockCoefficients
 import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalValues
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarFaces
+import all SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarFaces
 
 /-!
 # 交代面境界の同じ先頭を保つ項

@@ -3,8 +3,8 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeFunctorLift
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeYoneda
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYoneda
 
 /-!
 概要：元 Hom gluing の実 cone の逆 shift と、その全像を保つ小さい dg 模型を構成する。

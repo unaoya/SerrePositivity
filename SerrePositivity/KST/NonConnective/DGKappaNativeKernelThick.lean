@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelYoneda
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGThickKernelNativeRetract
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientThickKernel
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGThickKernelNativeRetract
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.ResolvedDGQuotientThickKernel
 
 /-!
 概要：同じ実平坦商の零化対象は、D-9 の同じ実小核の本質像そのものである。
@@ -54,7 +54,7 @@ theorem dgKappaNativeKernel_image_iff (b : (_root_.SerrePositivity.InfinityCateg
 規約：固定 ν の完備化後の認証は主張しない。I の実例の存在も主張しない。
 使われ方：K-6 c5 の完備化前の連結 fibration の kernel 認証。 -/
 theorem dgKappaNativeProjection_zero_iff_kernelImage (b : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (B)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((q).app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((q).app (Opposite.op ⦋0⦌) b) ↔
       ∃ a : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (C)) _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((i).app (Opposite.op ⦋0⦌) a) b) := by
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
   constructor

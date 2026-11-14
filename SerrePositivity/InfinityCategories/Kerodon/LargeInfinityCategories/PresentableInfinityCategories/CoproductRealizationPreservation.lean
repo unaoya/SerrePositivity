@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.CoproductRealizationColimits
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalLeftKanColimitPreservation
 public import SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.SigmaFilteredGeometricDetection
@@ -85,3 +87,8 @@ lemma preservesSmallColimits_of_coproducts_geometricRealizations
   exact hbar
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.3.10" (partial := stronger-hyp) "仮定：小余積と幾何学的実現（Lean が強い：HA は有限余積で足りる）。結論：小余極限の存在と保存（Lean が強い：有限の場合を含む。Lean が弱い：n 圏での逆向きはこの型にない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallColimits_of_coproducts_geometricRealizations

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorPresheafModel
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorSmallColimits
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleReflectiveImage
@@ -77,3 +79,9 @@ lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K]
     (e.postcompose ((SSet.uliftFunctor.{u + 1, u}).obj K))
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.4.3" (partial := stronger-hyp) "仮定：小準圏 K と presentable な C（Lean が強い：C は accessible に加えて全小余極限を持つ。K も任意の単体集合でなく準圏）。結論：元の Fun(K,C) は presentable、従って accessible（この場合に一致）。任意の accessible C や非準圏形状への比較を追加していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable
+attribute [cite HTT "5.5.3.6" (partial := special) "仮定：presentable C と小準圏 K（Lean が強い：任意の小単体集合でなく準圏形状）。結論：元の Fun(K,C) が presentable（この形状の場合に一致）。非準圏形状の fibrant 模型との比較を仮定して一般化しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable

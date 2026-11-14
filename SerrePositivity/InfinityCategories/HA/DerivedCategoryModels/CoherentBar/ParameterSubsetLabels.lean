@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.SubsetPartialNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarSubsetCuts
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarSubsetCuts
 /-!
 概要：パラメーター部分単体の標準面を、元の集合の一点削除ラベルへ戻す。
 方針：単射な昇順列挙と既存の部分単体ラベルの自然性を使う。

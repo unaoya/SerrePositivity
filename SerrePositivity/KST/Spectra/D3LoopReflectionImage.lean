@@ -29,7 +29,7 @@ private lemma d3EqIso_normalized_post {A B C : SSet.{u}} {f g f' g' : A ⟶ B}
 
 section
 variable {A X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
-  [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y]
+  [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y]
   (sX : X ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) (hsX : sX ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 1 1 = 𝟙 X)
   (sY : Y ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Y) (hsY : sY ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Y 1 1 = 𝟙 Y)
   (H : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) (G : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Y) (f : X ⟶ Y)
@@ -37,7 +37,7 @@ variable {A X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).map f =
       G ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι)
 
-omit [Quasicategory X] [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y] in
+omit [Quasicategory X] [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y] in
 include hG in
 lemma d3LoopImageTranspose_target :
     (H ≫ d3LoopDiagramTranspose X) ≫
@@ -72,7 +72,7 @@ def d3LoopImageTransposeIso : _root_.SerrePositivity.InfinityCategories.Kerodon.
         (by simpa only [Category.comp_id, Category.assoc] using hG)
         (d3LoopImageTranspose_target H G f hG))
 
-omit [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y] in
+omit [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y] in
 lemma d3LoopImageTransposeIso_target_isEq :
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsFunctorEqIso ((d3LoopImageTransposeIso sX hsX H G f hG).postcomp
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Y 1 1)) := by
@@ -121,7 +121,7 @@ lemma d3LoopImageTransposeIso_target_isEq :
   rw [show (d3LoopImageTransposeIso sX hsX H G f hG).postcomp (ιY ≫ ev) = _ from hh]
   exact hn
 
-omit [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y] in
+omit [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y] in
 /-- 回収した実 loop 全図式比較の周囲の四角形は、元の指定比較の同じ後合成。 -/
 lemma d3LoopImageTransposeIso_projection :
     HEq ((d3LoopImageTransposeIso sX hsX H G f hG).postcomp

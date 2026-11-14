@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransWhisker
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransAlgebra
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransWhisker
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGStrictNatTransAlgebra
 
 /-!
 概要：元の厳密 dg 単位・余単位から、左随伴比較の全 Hom 自然性を構成する。

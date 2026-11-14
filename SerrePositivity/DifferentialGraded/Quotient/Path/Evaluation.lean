@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import SerrePositivity.DifferentialGraded.Quotient.Composition
 public import SerrePositivity.DifferentialGraded.Quotient.Scalar
@@ -1256,3 +1258,8 @@ end SerrePositivity.DifferentialGraded.DGQuotient
 end
 
 end EvaluationComposition
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Drinfeld "Construction §3.1"] _root_.SerrePositivity.DifferentialGraded.DGQuotient.differential_epsilonElement

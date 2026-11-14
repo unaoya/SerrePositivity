@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionWeak
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedRoofRefinements
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.DGClosedRoofRefinements
 
 /-!
 # 元の通常複体圏から既存 D(R) への実写像
@@ -32,8 +32,8 @@ lemma complexToClosed_map {X Y : Complex A} (f : X ⟶ Y) :
   change (complexClosedHomEquiv A X Y) ((complexClosedHomEquiv A X Y).symm f) = f
   exact Equiv.apply_symm_apply _ _
 
-def complexOrdinaryDerivedSource : nerve (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
-  nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) ≫
+def complexOrdinaryDerivedSource : nerve (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
+  nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) ≫
     complexSemifreeResolutionInfinity A
 
 lemma complexOrdinaryDerivedSource_map_weak {X Y : Complex A} (f : X ⟶ Y)

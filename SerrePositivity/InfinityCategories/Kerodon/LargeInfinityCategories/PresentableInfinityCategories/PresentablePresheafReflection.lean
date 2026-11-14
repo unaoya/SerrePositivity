@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndPresheafReflection
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalenceCalculus
@@ -51,3 +53,8 @@ lemma reflectiveIndModel_hasSmallColimits {κ : Cardinal.{u}} {A : SSet.{u}}
 
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.1.1" (partial := direction) "仮定：presentable な準圏 C（HTT と一致）。結論：小準圏 A の前層圏からの反映表示 L⊣R と R の充満忠実性、L の全小余極限保存を構成し、R も accessible（(1)⇒(5) に一致）。(2)(3) の全 κ-small compact 余極限や (4)(6) との全ての同値はこの宣言群にない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_presheafReflection

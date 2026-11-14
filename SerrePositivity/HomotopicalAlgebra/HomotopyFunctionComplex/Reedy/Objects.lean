@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
@@ -114,3 +116,13 @@ lemma relativeMatchingMap_snd [HasLimitsOfShape (MatchingIndex r j) C] [HasPullb
   simp [relativeMatchingMap]
 
 end SerrePositivity.Reedy
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.1.1" (partial := special) "仮定：通常圏、Reedy 添字圏と必要な極限・余極限（Lean が強い：通常圏の場合）。結論：latching・matching の評価関手を定義する（通常圏の単体添字に特殊化すると HA の対象の定義に一致）。一般の可呈示 ∞ 圏の構成は含まれない。"] _root_.SerrePositivity.Reedy.latchingEvaluation
+attribute [cite HA "7.2.1.1" (partial := special) "仮定：通常圏、Reedy 添字圏と必要な極限・余極限（Lean が強い：通常圏の場合）。結論：latching・matching の評価関手を定義する（通常圏の単体添字に特殊化すると HA の対象の定義に一致）。一般の可呈示 ∞ 圏の構成は含まれない。"] _root_.SerrePositivity.Reedy.matchingEvaluation
+attribute [cite HTT "A.2.9.7" (partial := stronger-hyp) "仮定：整列次数付き Reedy 圏と必要な極限・余極限（次数データが Lean で追加）。結論：非恒等直射の over 圏による colimit と非恒等逆射の under 圏による limit、および X(j) との標準射を構成する。二つの定義と射は原典に一致。"] _root_.SerrePositivity.Reedy.latchingComparison
+attribute [cite HTT "A.2.9.7" (partial := stronger-hyp) "仮定：整列次数付き Reedy 圏と必要な極限・余極限（次数データが Lean で追加）。結論：非恒等直射の over 圏による colimit と非恒等逆射の under 圏による limit、および X(j) との標準射を構成する。二つの定義と射は原典に一致。"] _root_.SerrePositivity.Reedy.latchingEvaluation
+attribute [cite HTT "A.2.9.7" (partial := stronger-hyp) "仮定：整列次数付き Reedy 圏と必要な極限・余極限（次数データが Lean で追加）。結論：非恒等直射の over 圏による colimit と非恒等逆射の under 圏による limit、および X(j) との標準射を構成する。二つの定義と射は原典に一致。"] _root_.SerrePositivity.Reedy.matchingComparison
+attribute [cite HTT "A.2.9.7" (partial := stronger-hyp) "仮定：整列次数付き Reedy 圏と必要な極限・余極限（次数データが Lean で追加）。結論：非恒等直射の over 圏による colimit と非恒等逆射の under 圏による limit、および X(j) との標準射を構成する。二つの定義と射は原典に一致。"] _root_.SerrePositivity.Reedy.matchingEvaluation

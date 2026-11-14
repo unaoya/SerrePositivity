@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSSetMaps
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeComposition
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeFamilyCoherence
 

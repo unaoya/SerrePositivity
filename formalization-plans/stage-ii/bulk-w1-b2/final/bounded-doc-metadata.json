@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "expected": 2,
+  "actual": 2,
+  "metadata_errors": 0,
+  "seconds": 6.524686248973012,
+  "records": [
+    {
+      "comment": "BM18 の経路 B（BS-W12）の B1〜B5 は本体。組み立て B6 は ⑥ の BS17 Thm 4.1 (i) 待ち ／ 11-10 更新",
+      "declaration": "SerrePositivity.BhattScholze.Perfectoidization.Derived.cechExact_of_milnorTensor",
+      "edition": "author version",
+      "key": "BS19",
+      "line": 70,
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+      "number": "Prop 8.10",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcCechMilnor.lean",
+      "relation": "component"
+    },
+    {
+      "comment": "BM18 の経路 B（BS-W12）の B1〜B5 は本体。組み立て B6 は ⑥ の BS17 Thm 4.1 (i) 待ち ／ 11-10 更新",
+      "declaration": "SerrePositivity.Cech.cechConerve_perfectRing",
+      "edition": "author version",
+      "key": "BS19",
+      "line": 29,
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectCech",
+      "number": "Prop 8.10",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectCech.lean",
+      "relation": "component"
+    }
+  ]
+}

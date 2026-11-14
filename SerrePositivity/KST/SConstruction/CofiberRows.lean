@@ -21,7 +21,7 @@ open scoped Simplicial
 規約：零角は (0,1)。使われ方：ZeroTriangle の構成。 -/
 lemma arSquare_cofiber_zero_corner {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C)
     (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (arSquare i j j k hij le_rfl hjk ≫ F) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (arSquare i j j k hij le_rfl hjk ≫ F) 0 1 =
       F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj j j le_rfl)) := by
   apply congrArg (F.app (Opposite.op ⦋0⦌))
   exact ComposableArrows.ext₀ rfl
@@ -30,7 +30,7 @@ lemma arSquare_cofiber_zero_corner {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C
 方針：零対角条件を cofiber 四角形の左上角へ移す。
 規約：i≤j≤k。使われ方：BGT Definition 7.1 の cofiber 列。 -/
 def gappedCofiberTriangle {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
-    (hF : IsGapped F) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C where
+    (hF : IsGapped F) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C where
   square := arSquare i j j k hij le_rfl hjk ≫ F
   zero_corner := by
     rw [arSquare_cofiber_zero_corner]
@@ -41,6 +41,6 @@ def gappedCofiberTriangle {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
 規約：退化三つ組も含む。使われ方：π₀ K と三角関係の比較。 -/
 lemma gappedCofiberTriangle_isCofiber {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
     (hF : IsGapped F) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (gappedCofiberTriangle hF i j k hij hjk) := hF.2 i j j k hij le_rfl hjk
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (gappedCofiberTriangle hF i j k hij hjk) := hF.2 i j j k hij le_rfl hjk
 
 end SerrePositivity.KST.SConstruction

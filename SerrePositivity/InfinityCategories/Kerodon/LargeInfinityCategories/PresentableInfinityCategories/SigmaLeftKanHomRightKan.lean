@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseRightKanCanonical
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanOppositeCanonicalLimits
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.UniverseRightKanCanonical
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.KanOppositeCanonicalLimits
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaLeftKanHomCanonical
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafHomWeights
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.PresheafHomWeights
 
 /-!
 概要：元の P_Σ 左 Kan 延長の全共同 Hom 族は、持ち上げた元の Yoneda の右 Kan 延長。

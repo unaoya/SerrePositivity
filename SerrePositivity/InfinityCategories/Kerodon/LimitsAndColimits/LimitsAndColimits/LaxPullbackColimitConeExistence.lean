@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackInputColimitCone
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ArrowColimitConeExistence
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PullbackColimitConeExistence
@@ -69,3 +71,8 @@ lemma exists_colimitCone_laxPullback_with_components {J A B C : SSet.{u}}
     rw [← Category.assoc, hcv, his]
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Lemma 8" (partial := component) "仮定：各射影に沿う余極限を脚が保つ設定と、安定性については完全な二脚（原典の (i)、(ii)、(iv) の仮定）。結論：lax 引き戻し上の余極限と射影による保存、両入力が冪等完備なら lax 引き戻しも冪等完備、さらに安定性と二つの射影の完全性（原典の (i)、(ii)、(iv) の lax 側）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_laxPullback_with_components

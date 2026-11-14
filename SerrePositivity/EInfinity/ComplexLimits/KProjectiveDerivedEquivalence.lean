@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveDerivedComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeKProjective
 
 /-!
 # 同じ K-projective 導来源と既存 D(R) の同値

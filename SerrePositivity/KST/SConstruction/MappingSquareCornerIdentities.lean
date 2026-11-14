@@ -21,20 +21,20 @@ open scoped Simplicial
 lemma mappingSquareVertical_shared_corner {E : SSet.{u}}
     {Q R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E} (a b : Fin 2)
     (h : pastingSquareVertical a ≫ Q = pastingSquareVertical a ≫ R) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q a b = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R a b := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q a b = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R a b := by
   exact congrArg (fun f => f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm b)) h
 
 /-- 共有する水平区間の、各指定端点の等号。 -/
 lemma mappingSquareHorizontal_shared_corner {E : SSet.{u}}
     {Q R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E} (a b : Fin 2)
     (h : pastingSquareHorizontal b ≫ Q = pastingSquareHorizontal b ≫ R) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q a b = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R a b := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q a b = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R a b := by
   exact congrArg (fun f => f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm a)) h
 
 /-- 元の定数垂直辺の、各指定端点の回収。 -/
 lemma mappingSquareVertical_constant_corner {E : SSet.{u}}
     {Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E} (a b : Fin 2) (v : E _⦋0⦌)
-    (h : pastingSquareVertical a ≫ Q = SSet.const v) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q a b = v := by
+    (h : pastingSquareVertical a ≫ Q = SSet.const v) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q a b = v := by
   have hh := congrArg (fun f => f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm b)) h
   have hc : (SSet.const v : (Δ[1] : SSet.{u}) ⟶ E).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm b) = v := by
@@ -46,7 +46,7 @@ lemma mappingSquareVertical_constant_corner {E : SSet.{u}}
 /-- 元の定数水平辺の、各指定端点の回収。 -/
 lemma mappingSquareHorizontal_constant_corner {E : SSet.{u}}
     {Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E} (a b : Fin 2) (v : E _⦋0⦌)
-    (h : pastingSquareHorizontal b ≫ Q = SSet.const v) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q a b = v := by
+    (h : pastingSquareHorizontal b ≫ Q = SSet.const v) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q a b = v := by
   have hh := congrArg (fun f => f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm a)) h
   have hc : (SSet.const v : (Δ[1] : SSet.{u}) ⟶ E).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm a) = v := by

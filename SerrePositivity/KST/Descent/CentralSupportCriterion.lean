@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Module.LocalizedModule.Basic
 public import Mathlib.RingTheory.Finiteness.Ideal
 public import Mathlib.CategoryTheory.Linear.LinearFunctor
@@ -117,3 +119,9 @@ theorem central_ideal_power_annihilation_iff (J : Ideal R) (hJ : J.FG) :
     exact ⟨n, hn (z ^ n) (Ideal.pow_mem_pow hz n)⟩
 
 end SerrePositivity.KST.Descent
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Proof step §3.1 support" (partial := stronger-hyp) "仮定：有限個の中心スカラーと対象。各局所化関手が自己準同型加群のスカラー局所化を与えると仮定（Lean が強い：加群上の局所化模型を明示）。結論：各局所化で対象が零であることと、一様な冪が恒等射を殺すことの同値（同じ判定）。"] _root_.SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation
+attribute [cite Paper "Proof step §4.5 support" (partial := stronger-hyp) "仮定：有限個の中心スカラーと対象。各局所化関手が自己準同型加群のスカラー局所化を与えると仮定（Lean が強い：加群上の局所化模型を明示）。結論：局所化で消える条件と恒等射の一様冪零の同値（同じ支持条件。4.6 の圏同値は含まない）。"] _root_.SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation

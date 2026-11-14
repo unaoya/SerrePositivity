@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedAdjunction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaLocalUnitTransportComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.CommaLocalUnitTransportComparison
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantHomFaithful
 
 /-!
@@ -24,7 +24,7 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma derivedFreeProbeUnitCommaTargetFiberArrow_hom
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     Truncated.HomotopyCategory.homMk
       (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.commaTargetFiberArrow (cAlgForgetDerived A) x (derivedFreeProbeVertex A x)
         (derivedFreeProbeUnitCommaTargetFiberVertex A x)).toTruncated =
@@ -46,14 +46,14 @@ lemma derivedFreeProbeUnitCommaTargetFiberArrow_hom
   exact he
 
 lemma unitIntervalMapAt_derivedFreeProbeUnitCommaTargetFiberVertex
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unitIntervalMapAt (derivedFreeProbeUnitCommaTargetFiberVertex A x) y =
       derivedFreeProbeUnitIntervalMap A x y := by
   rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unitIntervalMapAt, derivedFreeProbeUnitCommaTargetFiberArrow_hom]
   rfl
 
 def derivedFreeProbeUnitIntervalMap_transportIso
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (derivedFreeProbeUnitIntervalMap A x y)
       (derivedFreeProbeUnitCommaTransportMap A x y) := by
   simpa only [unitIntervalMapAt_derivedFreeProbeUnitCommaTargetFiberVertex,

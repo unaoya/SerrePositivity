@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SDoubleInclusion
 public import SerrePositivity.KST.SConstruction.SInterchangeStableIso
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SwapNaturality
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SwapNaturality
 
 /-! # 二重 S 交換の完全関手と添字制限に関する自然性
 概要：二重 S の厳密な交換同型は完全関手と両 Ar 添字の面・退化に関して自然。

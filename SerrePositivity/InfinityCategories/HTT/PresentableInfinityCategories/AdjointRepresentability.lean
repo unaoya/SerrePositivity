@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeAdjointFunctorCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableInversionLocality
 
@@ -36,3 +38,10 @@ lemma presentableContinuous_isRepresentable
     presheaf_representableInversionDetectsLocality hC F hF
 
 end SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.2.10" (partial := stronger-hyp) "仮定：presentable な始域と accessible な標的 D（Lean が強い：原典の局所小性だけより強いが、D の presentability は不要）。結論：元の F が右随伴を持つことと全小余極限保存の iff（この場合に一致）。必要な始域上の全連続前層の表現定理は presentableContinuous_isRepresentable で供給でき、未証明の比較仮定ではない。"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presentableContinuous_isRepresentable
+attribute [cite HTT "5.5.2.2"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presentableContinuous_isRepresentable
+attribute [cite HTT "5.5.2.8"] _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presentableContinuous_isRepresentable

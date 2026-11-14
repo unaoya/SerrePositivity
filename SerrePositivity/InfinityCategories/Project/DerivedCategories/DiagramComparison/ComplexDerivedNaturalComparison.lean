@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedQuasiIsomorphisms
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OrdinaryNatTransPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.OrdinaryNatTransPrism
 
 import all Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 
@@ -70,7 +70,7 @@ def complexDerivedNatTransIso (hη : ∀ X, QuasiIso (η.app X)) :
     exact congrArg (fun s => (complexDerivedEvaluation A).app (Opposite.op ⦋1⦌) s)
       (complexNatTransCylinder_vertical A η X)
   have h := @functorIsoOfEquivalenceHomotopy.{u + 1} (nerve C)
-    (derivedInfinityCategory A) (derivedInfinityCategoryQuasicategory A) H hv
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryQuasicategory A) H hv
   simpa only [H, ← Category.assoc, complexNatTransCylinder_endpoint] using! h
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

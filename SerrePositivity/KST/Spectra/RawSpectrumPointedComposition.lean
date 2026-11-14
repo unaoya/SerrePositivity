@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPointed
 public import SerrePositivity.KST.Spectra.SuspensionComposition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedMappingLaws
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.EnrichedMappingLaws
 
 /-!
 概要：元の整合写像空間の合成を、点つきパラメータの smash から構成する。

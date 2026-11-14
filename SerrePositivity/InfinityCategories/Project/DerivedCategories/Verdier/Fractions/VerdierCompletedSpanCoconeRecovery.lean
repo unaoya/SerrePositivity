@@ -66,7 +66,7 @@ structure VerdierCompletedSpanCoconeRecovery
   prefixDenominator_mem : prefixDenominator.edge ∈
     (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
   prefixDenominator_edge : prefixDenominator.edge =
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (terminalRefinementSquare single)).edge
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (terminalRefinementSquare single)).edge
   prefixDenominator_last : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := B.obj)
     (stdSimplex.obj₀Equiv.symm (Fin.last n))).app (Opposite.op ⦋1⦌) prefixDenominator.edge =
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.roofPointSliceVertexEdge (SSet.yonedaEquiv.symm

@@ -44,7 +44,7 @@ def complexOrdinaryDerivedSource_semifreeVertexIso (K : _root_.SerrePositivity.I
       (ComposableArrows.mk₀ (ForgetEnrichment.of (Complex A) K)) = _
     rw [nerveMap_app_mk₀]
     rfl
-  have h₁ : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).app (Opposite.op ⦋0⦌) z =
+  have h₁ : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).app (Opposite.op ⦋0⦌) z =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex K := by
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).injective
     rfl

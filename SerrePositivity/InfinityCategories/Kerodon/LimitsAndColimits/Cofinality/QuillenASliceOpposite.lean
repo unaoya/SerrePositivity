@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.WeakContractibleOpposite
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_4.WeakContractibleOpposite
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceOpposite
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRestrictionIso
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceTriangleFiber
@@ -74,7 +74,7 @@ lemma cofinalWeaklyContractible_slice_iff_op_coslice {A B : SSet.{u}} (f : A ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (pullback (SSet.opFunctor.map f)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm b)))) := by
   have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_isIso (cofinalSlicePullbackOpIso f b).hom
-  exact (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isWeaklyContractible_op_iff _).symm.trans
+  exact (_root_.SerrePositivity.InfinityCategories.HTT.Section5_1_4.isWeaklyContractible_op_iff _).symm.trans
     hi.isWeakHomotopyEquivalence.weaklyContractible_iff
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality

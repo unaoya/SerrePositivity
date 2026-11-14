@@ -1,0 +1,21 @@
+{
+  "fixed_math_base": "0e8c854208151bc054e15ba3ba183a931b630b1c",
+  "target_build_final_successful_groups": 75,
+  "target_build_final_successful_group_seconds": 9508.324361555278,
+  "target_build_modules": 9550,
+  "full_preservation_started": "2026-11-13T08:35:45.308563+09:00",
+  "full_preservation_finished": "2026-11-13T18:40:20.988797+09:00",
+  "full_preservation_wall_seconds_including_day_queue": 36275.680234,
+  "full_preservation_completed_lease_seconds": 29749.568701,
+  "full_preservation_queue_seconds": 6336.159085,
+  "full_preservation_leases": 54,
+  "day_new_rule_completed_leases": 63,
+  "day_new_rule_maximum_hold_seconds": 7100.513817,
+  "warning": "Final build group totals are process wall seconds, not a fresh clean build. Full-preservation wall includes the actual daytime queue and guard retries; capture scheduling changed from sequential to memory-guarded pairs. B3 root/all audits/verify are not measured here.",
+  "observed_sleep_seconds_in_full_preservation": 17574.0,
+  "full_preservation_wall_excluding_observed_sleep_seconds": 18701.680234,
+  "full_preservation_hold_excluding_observed_sleep_seconds": 12175.675893,
+  "maximum_raw_day_lease_seconds": 7100.513817,
+  "day_lease_maximum_excluding_observed_sleep_seconds": 241.152669,
+  "suspension_note": "OS sleep pauses the ordinary monotonic process timers. Raw wall-clock holds and OS-sleep-adjusted holds are both retained, without calling long suspended wall-clock holds 280 seconds."
+}

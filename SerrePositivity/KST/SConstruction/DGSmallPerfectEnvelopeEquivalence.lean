@@ -82,7 +82,7 @@ lemma dgSmallPerfectEnvelopeSmallInclusion_quasiEquivalence :
 /-- 同じ実 dg 包含から得る、元の全 Perf nerve との全写像空間の同値。 -/
 def dgSmallPerfectEnvelopeNerveEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (C)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R D)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (I)
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgQuasiEquivalenceNerveEquivalence (I)
     (dgSmallPerfectEnvelopeInclusion_quasiEquivalence R D J X)
 
 /-- 元の全 Perf の安定性を、指定延長像を保持する模型へ戻す。 -/

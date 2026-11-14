@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.SimplicialMatrixActions
 public import SerrePositivity.KST.ProExcision.Lemma416Equivariance
 public import SerrePositivity.KST.ProExcision.LemmaA4
@@ -39,3 +41,8 @@ def lemma416 (I : SimplicialIdealData.{u}) (a : I.ideal (op ⦋0⦌)) (n m : ℕ
   equivariant := simplicialLemma416Homotopy_equivariant I a n m
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 4.16" (partial := component) "仮定：単体イデアルまたは非単位的単体環の行列・列作用（原典と一致）。結論：同変な m 次までの定値ホモトピーを行列模型で与える。原典の一般線形群の係数つき鎖への全比較を含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.lemma416

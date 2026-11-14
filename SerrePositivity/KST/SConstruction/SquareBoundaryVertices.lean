@@ -45,7 +45,7 @@ lemma square_bottom_vertices {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ F = SSet.yonedaEquiv.symm f.edge) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0 = x ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = y := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0 = x ∧ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0 = y := by
   exact ⟨(ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).trans (yonedaEdge_source f),
     (ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))
@@ -56,7 +56,7 @@ lemma square_right_vertices {X : SSet.{u}} {x y : X _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F = SSet.yonedaEquiv.symm f.edge) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = x ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1 = y := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0 = x ∧ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 1 = y := by
   exact ⟨(ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).trans (yonedaEdge_source f),
     (ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋0⦌))

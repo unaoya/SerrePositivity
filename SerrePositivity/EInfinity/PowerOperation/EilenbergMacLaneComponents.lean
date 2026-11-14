@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneStageHomology
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneTruncation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModulePiZeroMoore
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ModulePiZeroMoore
 
 /-!
 # Γ の各段の連結成分と H⁰ の比較

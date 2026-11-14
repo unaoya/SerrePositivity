@@ -33,12 +33,12 @@ lemma cutLeftSupport_sMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
     · exact (cutEndpoint_zero_zero k a.val.down.val.2).trans
         (min_eq_right (a.property.trans a.val.down.property))
   have he := sMap_evaluate_vertex (cutCornerOrder k 0 0) v (ComposableArrows.mk₀ a.val)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       ((arNerveMap (cutCornerOrder k 0 0)).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a.val))).app
         (Opposite.op ⦋0⦌) v.val) := by
     rw [ha]
     exact sConstructionVertex_diagonal_isZero v k
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr hz
 
 /-- max による切断の右側の像は右支持条件を満たす。 -/
 lemma cutRightSupport_sMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
@@ -56,11 +56,11 @@ lemma cutRightSupport_sMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u})
         (max_eq_right (a.val.down.property.trans a.property))
     · exact (cutEndpoint_one_one k a.val.down.val.2).trans (max_eq_right a.property)
   have he := sMap_evaluate_vertex (cutCornerOrder k 1 1) v (ComposableArrows.mk₀ a.val)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       ((arNerveMap (cutCornerOrder k 1 1)).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a.val))).app
         (Opposite.op ⦋0⦌) v.val) := by
     rw [ha]
     exact sConstructionVertex_diagonal_isZero v k
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr hz
 
 end SerrePositivity.KST.SConstruction

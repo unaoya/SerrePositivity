@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.TerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanIdentityVertex
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeColimitReindex
@@ -72,3 +74,8 @@ lemma kanLeftLocalColimit_iff_restrict_identity {K C D E : SSet.{u}}
   kanIsRelativeColimitCone_iff_restrict_terminal U c _ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanIdentityVertex_isTerminal δ hδ k)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.1.7" (partial := stronger-hyp) "仮定：内ファイブレーション上の余錐と共終な添字変更（Lean が強い：添字変更は右アノダインな単射）。結論：同じ余錐の制限前後で相対余極限性が同値（一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne

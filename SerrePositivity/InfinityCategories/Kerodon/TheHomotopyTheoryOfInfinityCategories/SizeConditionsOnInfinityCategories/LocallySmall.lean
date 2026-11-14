@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafPresentable
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.PinchedHom
 
@@ -113,3 +115,11 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInf
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.4.2" (partial := component) "仮定：準圏（Lean が弱い：安定性は不要）。結論：presentable なら局所小で、余完備な Ind 模型による presentable 性の判定（Lean が弱い：小余積・hC の局所小性・単一の κ コンパクト生成対象という三条件の判定を与えない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall
+attribute [cite HTT "5.4.1.7" (partial := component) "仮定：準圏 C（HTT と一致）。結論：(1) 各二対象間の全 Hom が小 Kan 模型を持つ条件を局所小性と定義する（一致）。(2) 任意の小対象族が張る全部分準圏の本質的小性との一般の iff は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsLocallySmall
+attribute [cite HTT "5.4.1.8" (partial := component) "仮定：小準圏 D（HTT と一致）。結論：P(D) の局所小性（原典の最終文と一致）。一般の C,D についての冒頭の「CD is essentially small」は C=Set,D=Δ⁰ で成り立たず、証明末尾は locally small を述べる（source-notes 参照）。この候補はその冒頭の誤記を正しいとするものではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall
+attribute [cite HTT "5.4.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsAccessible.isLocallySmall

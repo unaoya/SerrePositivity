@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIso
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexFiberOpposite
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FibersBaseIso
+public import SerrePositivity.InfinityCategories.HTT.Section2_1_3.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FibersBaseIso
 
 /-!
 概要：相対関手空間の単体順序の反転は、反転した射影と図式の相対関手空間と同型。
@@ -32,7 +32,7 @@ def relativeFunctorOppositeIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) :
   let s := (ihom A.op).map (SSet.opFunctor.map p)
   have he : eE.hom ≫ s = r ≫ eB.hom :=
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeInternalHom.oppositeInternalHom_post A p).symm
-  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso ((ihom A).map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a) ≪≫
+  exact _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso ((ihom A).map p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a) ≪≫
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.vertexFiberBaseIso r eB b ≪≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.vertexFiberIsoOfTotalIso (r ≫ eB.hom) s eE he (eB.hom.app _ b) ≪≫
     eqToIso (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber s) (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeInternalHomIso_vertex a))

@@ -1,0 +1,1366 @@
+{
+  "completed_leases": 194,
+  "total_hold_seconds": 78309.620186,
+  "total_queue_seconds": 14045.755815999999,
+  "maximum_hold_seconds": 7100.513817,
+  "rows": [
+    {
+      "command": "gtimeout 580 python3 -B /tmp/bulk-w1-b2/test_citation.py",
+      "started": "2026-11-12T04:42:49.253158+00:00",
+      "finished": "2026-11-12T04:42:54.479015+00:00",
+      "hold_seconds": 5.225857,
+      "wait_seconds": 12.108245
+    },
+    {
+      "command": "gtimeout 580 zsh /tmp/bulk-w1-b2/check_citation.sh",
+      "started": "2026-11-12T04:43:55.199174+00:00",
+      "finished": "2026-11-12T04:44:09.442498+00:00",
+      "hold_seconds": 14.243324,
+      "wait_seconds": 0.049758
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/baseline_build.py",
+      "started": "2026-11-12T04:56:21.664339+00:00",
+      "finished": "2026-11-12T04:58:26.083610+00:00",
+      "hold_seconds": 124.419271,
+      "wait_seconds": 628.126188
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/snapshot_slot.py",
+      "started": "2026-11-12T05:02:35.433552+00:00",
+      "finished": "2026-11-12T05:09:09.504997+00:00",
+      "hold_seconds": 394.071445,
+      "wait_seconds": 36.229361
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/measure_small_slot.py",
+      "started": "2026-11-12T05:12:48.352799+00:00",
+      "finished": "2026-11-12T05:13:14.604899+00:00",
+      "hold_seconds": 26.2521,
+      "wait_seconds": 0.116695
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/snapshot_slot.py",
+      "started": "2026-11-12T05:14:40.133615+00:00",
+      "finished": "2026-11-12T05:22:43.032827+00:00",
+      "hold_seconds": 482.899212,
+      "wait_seconds": 0.050639
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/capture_slot.py",
+      "started": "2026-11-12T05:23:01.213181+00:00",
+      "finished": "2026-11-12T05:32:00.839187+00:00",
+      "hold_seconds": 539.626006,
+      "wait_seconds": 18.120428
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/snapshot_slot.py",
+      "started": "2026-11-12T05:32:15.000560+00:00",
+      "finished": "2026-11-12T05:41:33.612326+00:00",
+      "hold_seconds": 558.611766,
+      "wait_seconds": 14.110389
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/capture_slot.py",
+      "started": "2026-11-12T05:41:53.810396+00:00",
+      "finished": "2026-11-12T05:50:36.941835+00:00",
+      "hold_seconds": 523.131439,
+      "wait_seconds": 20.1427
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/snapshot_slot.py",
+      "started": "2026-11-12T05:50:37.041453+00:00",
+      "finished": "2026-11-12T05:59:19.228627+00:00",
+      "hold_seconds": 522.187174,
+      "wait_seconds": 0.048462
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/capture_slot.py",
+      "started": "2026-11-12T05:59:19.340174+00:00",
+      "finished": "2026-11-12T06:07:59.648830+00:00",
+      "hold_seconds": 520.308656,
+      "wait_seconds": 0.04879
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/snapshot_slot.py",
+      "started": "2026-11-12T06:09:12.069269+00:00",
+      "finished": "2026-11-12T06:11:25.874300+00:00",
+      "hold_seconds": 133.805031,
+      "wait_seconds": 72.366196
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/capture_slot.py",
+      "started": "2026-11-12T06:12:26.245252+00:00",
+      "finished": "2026-11-12T06:13:04.627256+00:00",
+      "hold_seconds": 38.382004,
+      "wait_seconds": 60.316037
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/capture_slot.py",
+      "started": "2026-11-12T06:13:36.874544+00:00",
+      "finished": "2026-11-12T06:13:37.145708+00:00",
+      "hold_seconds": 0.271164,
+      "wait_seconds": 32.193749
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 zsh /tmp/bulk-w1-b2/check_citation.sh",
+      "started": "2026-11-12T06:17:37.087890+00:00",
+      "finished": "2026-11-12T06:17:41.085886+00:00",
+      "hold_seconds": 3.997996,
+      "wait_seconds": 34.220745
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 zsh /tmp/bulk-w1-b2/check_citation.sh",
+      "started": "2026-11-12T06:20:38.750320+00:00",
+      "finished": "2026-11-12T06:20:54.018836+00:00",
+      "hold_seconds": 15.268516,
+      "wait_seconds": 0.049507
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/test_inspection.py",
+      "started": "2026-11-12T06:28:31.304192+00:00",
+      "finished": "2026-11-12T06:28:49.184510+00:00",
+      "hold_seconds": 17.880318,
+      "wait_seconds": 66.374663
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T06:29:04.453480+00:00",
+      "finished": "2026-11-12T06:37:16.557019+00:00",
+      "hold_seconds": 492.103539,
+      "wait_seconds": 0.047397
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T06:39:39.333473+00:00",
+      "finished": "2026-11-12T06:47:52.715813+00:00",
+      "hold_seconds": 493.38234,
+      "wait_seconds": 142.720629
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T06:49:43.359822+00:00",
+      "finished": "2026-11-12T06:57:56.871946+00:00",
+      "hold_seconds": 493.512124,
+      "wait_seconds": 110.583599
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T07:00:33.322460+00:00",
+      "finished": "2026-11-12T07:01:36.992810+00:00",
+      "hold_seconds": 63.67035,
+      "wait_seconds": 156.385609
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T07:04:29.281812+00:00",
+      "finished": "2026-11-12T07:12:41.327852+00:00",
+      "hold_seconds": 492.04604,
+      "wait_seconds": 82.221633
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T07:13:41.585374+00:00",
+      "finished": "2026-11-12T07:21:59.185510+00:00",
+      "hold_seconds": 497.600136,
+      "wait_seconds": 60.183345
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T07:24:13.727711+00:00",
+      "finished": "2026-11-12T07:28:37.897534+00:00",
+      "hold_seconds": 264.169823,
+      "wait_seconds": 134.472661
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/probe_slot.py",
+      "started": "2026-11-12T07:31:38.252613+00:00",
+      "finished": "2026-11-12T07:32:43.137548+00:00",
+      "hold_seconds": 64.884935,
+      "wait_seconds": 72.200092
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T07:42:58.812910+00:00",
+      "finished": "2026-11-12T07:52:06.236993+00:00",
+      "hold_seconds": 547.424083,
+      "wait_seconds": 64.190706
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T07:53:14.501054+00:00",
+      "finished": "2026-11-12T08:02:21.790446+00:00",
+      "hold_seconds": 547.289392,
+      "wait_seconds": 68.208369
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T08:06:00.574117+00:00",
+      "finished": "2026-11-12T08:15:07.853029+00:00",
+      "hold_seconds": 547.278912,
+      "wait_seconds": 218.724803
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T08:18:38.447590+00:00",
+      "finished": "2026-11-12T08:27:46.184240+00:00",
+      "hold_seconds": 547.73665,
+      "wait_seconds": 210.536375
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T08:29:24.490846+00:00",
+      "finished": "2026-11-12T08:38:31.731658+00:00",
+      "hold_seconds": 547.240812,
+      "wait_seconds": 98.251887
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T08:40:20.099071+00:00",
+      "finished": "2026-11-12T08:49:27.601221+00:00",
+      "hold_seconds": 547.50215,
+      "wait_seconds": 108.301928
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T08:50:17.831671+00:00",
+      "finished": "2026-11-12T08:59:25.698493+00:00",
+      "hold_seconds": 547.866822,
+      "wait_seconds": 50.175005
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T09:02:10.169655+00:00",
+      "finished": "2026-11-12T09:11:17.522092+00:00",
+      "hold_seconds": 547.352437,
+      "wait_seconds": 164.403822
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T09:12:55.849802+00:00",
+      "finished": "2026-11-12T09:22:03.747284+00:00",
+      "hold_seconds": 547.897482,
+      "wait_seconds": 98.260243
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T09:25:42.370348+00:00",
+      "finished": "2026-11-12T09:34:50.370621+00:00",
+      "hold_seconds": 548.000273,
+      "wait_seconds": 218.519757
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T09:38:49.024065+00:00",
+      "finished": "2026-11-12T09:39:32.555806+00:00",
+      "hold_seconds": 43.531741,
+      "wait_seconds": 238.591039
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T09:43:44.753588+00:00",
+      "finished": "2026-11-12T09:52:27.551035+00:00",
+      "hold_seconds": 522.797447,
+      "wait_seconds": 12.163635
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T10:00:47.480160+00:00",
+      "finished": "2026-11-12T10:09:55.407012+00:00",
+      "hold_seconds": 547.926852,
+      "wait_seconds": 12.091777
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T10:11:39.747371+00:00",
+      "finished": "2026-11-12T10:20:47.428664+00:00",
+      "hold_seconds": 547.681293,
+      "wait_seconds": 104.281463
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T10:23:42.003900+00:00",
+      "finished": "2026-11-12T10:30:23.965113+00:00",
+      "hold_seconds": 401.961213,
+      "wait_seconds": 174.5152
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/debug_vertex_namespace.py",
+      "started": "2026-11-12T10:33:26.257081+00:00",
+      "finished": "2026-11-12T10:33:40.357768+00:00",
+      "hold_seconds": 14.100687,
+      "wait_seconds": 4.070491
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T11:04:29.411093+00:00",
+      "finished": "2026-11-12T11:13:36.693516+00:00",
+      "hold_seconds": 547.282423,
+      "wait_seconds": 1670.958933
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T11:17:05.270746+00:00",
+      "finished": "2026-11-12T11:26:13.350519+00:00",
+      "hold_seconds": 548.079773,
+      "wait_seconds": 208.513249
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T11:28:15.703274+00:00",
+      "finished": "2026-11-12T11:37:23.077445+00:00",
+      "hold_seconds": 547.374171,
+      "wait_seconds": 122.29747
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T11:39:39.636635+00:00",
+      "finished": "2026-11-12T11:48:47.474304+00:00",
+      "hold_seconds": 547.837669,
+      "wait_seconds": 136.482683
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T11:55:16.455895+00:00",
+      "finished": "2026-11-12T12:04:23.936082+00:00",
+      "hold_seconds": 547.480187,
+      "wait_seconds": 388.926969
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T12:07:02.416461+00:00",
+      "finished": "2026-11-12T12:16:09.682439+00:00",
+      "hold_seconds": 547.265978,
+      "wait_seconds": 158.412245
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T12:18:22.166790+00:00",
+      "finished": "2026-11-12T12:27:29.969086+00:00",
+      "hold_seconds": 547.802296,
+      "wait_seconds": 132.4265
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T12:30:12.424870+00:00",
+      "finished": "2026-11-12T12:39:19.730516+00:00",
+      "hold_seconds": 547.305646,
+      "wait_seconds": 162.39235
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T12:40:46.029520+00:00",
+      "finished": "2026-11-12T12:49:53.748255+00:00",
+      "hold_seconds": 547.718735,
+      "wait_seconds": 86.228019
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T12:51:10.049253+00:00",
+      "finished": "2026-11-12T13:00:17.694350+00:00",
+      "hold_seconds": 547.645097,
+      "wait_seconds": 76.233047
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T13:05:22.542007+00:00",
+      "finished": "2026-11-12T13:14:29.760741+00:00",
+      "hold_seconds": 547.218734,
+      "wait_seconds": 304.791251
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T13:15:46.038979+00:00",
+      "finished": "2026-11-12T13:24:54.075345+00:00",
+      "hold_seconds": 548.036366,
+      "wait_seconds": 76.214636
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T13:32:01.127200+00:00",
+      "finished": "2026-11-12T13:41:08.999406+00:00",
+      "hold_seconds": 547.872206,
+      "wait_seconds": 426.986328
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/collect_additional_dependencies.py",
+      "started": "2026-11-12T13:48:49.326353+00:00",
+      "finished": "2026-11-12T13:48:53.287833+00:00",
+      "hold_seconds": 3.96148,
+      "wait_seconds": 0.053296
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 /tmp/bulk-w1-b2/collect_additional_dependencies.py",
+      "started": "2026-11-12T14:07:50.578851+00:00",
+      "finished": "2026-11-12T14:08:18.676487+00:00",
+      "hold_seconds": 28.097636,
+      "wait_seconds": 0.052263
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 /tmp/bulk-w1-b2/collect_additional_dependencies.py",
+      "started": "2026-11-12T14:08:56.444436+00:00",
+      "finished": "2026-11-12T14:09:10.851318+00:00",
+      "hold_seconds": 14.406882,
+      "wait_seconds": 0.050962
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 /tmp/bulk-w1-b2/collect_additional_dependencies.py",
+      "started": "2026-11-12T14:11:59.642618+00:00",
+      "finished": "2026-11-12T14:12:27.026261+00:00",
+      "hold_seconds": 27.383643,
+      "wait_seconds": 0.05308
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 /tmp/bulk-w1-b2/check_current_attribute_delta.py",
+      "started": "2026-11-12T14:23:18.387650+00:00",
+      "finished": "2026-11-12T14:23:39.990023+00:00",
+      "hold_seconds": 21.602373,
+      "wait_seconds": 0.051706
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T14:28:41.477445+00:00",
+      "finished": "2026-11-12T14:34:00.753346+00:00",
+      "hold_seconds": 319.275901,
+      "wait_seconds": 0.052638
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 /tmp/bulk-w1-b2/collect_additional_dependencies.py",
+      "started": "2026-11-12T14:35:33.878752+00:00",
+      "finished": "2026-11-12T14:36:17.225030+00:00",
+      "hold_seconds": 43.346278,
+      "wait_seconds": 0.053017
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 /tmp/bulk-w1-b2/collect_closure_and_br48.py",
+      "started": "2026-11-12T14:37:36.350867+00:00",
+      "finished": "2026-11-12T14:38:31.368778+00:00",
+      "hold_seconds": 55.017911,
+      "wait_seconds": 0.110132
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 scripts/refactor/klw1_namespace.py collect --root /tmp/bulk-w1-b2/capture-original --files /tmp/bulk-w1-b2/br48-files.json --output /tmp/bulk-w1-b2/br48-captures",
+      "started": "2026-11-12T14:39:55.272319+00:00",
+      "finished": "2026-11-12T14:46:15.824000+00:00",
+      "hold_seconds": 380.551681,
+      "wait_seconds": 0.053379
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T14:50:05.145100+00:00",
+      "finished": "2026-11-12T14:50:18.205691+00:00",
+      "hold_seconds": 13.060591,
+      "wait_seconds": 12.161807
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T14:51:24.493624+00:00",
+      "finished": "2026-11-12T14:53:01.787002+00:00",
+      "hold_seconds": 97.293378,
+      "wait_seconds": 0.051341
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T14:54:15.725922+00:00",
+      "finished": "2026-11-12T15:01:06.325985+00:00",
+      "hold_seconds": 410.600063,
+      "wait_seconds": 0.052221
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/measure_new_scope.py",
+      "started": "2026-11-12T15:05:48.009684+00:00",
+      "finished": "2026-11-12T15:11:38.066693+00:00",
+      "hold_seconds": 350.057009,
+      "wait_seconds": 0.050245
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/measure_new_scope.py",
+      "started": "2026-11-12T15:13:20.531311+00:00",
+      "finished": "2026-11-12T15:16:10.438365+00:00",
+      "hold_seconds": 169.907054,
+      "wait_seconds": 0.055328
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/measure_new_scope.py",
+      "started": "2026-11-12T15:17:43.657618+00:00",
+      "finished": "2026-11-12T15:23:09.446586+00:00",
+      "hold_seconds": 325.788968,
+      "wait_seconds": 0.052894
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T15:39:52.203825+00:00",
+      "finished": "2026-11-12T15:49:00.109494+00:00",
+      "hold_seconds": 547.905669,
+      "wait_seconds": 0.050778
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T15:49:00.246291+00:00",
+      "finished": "2026-11-12T15:55:17.305193+00:00",
+      "hold_seconds": 377.058902,
+      "wait_seconds": 0.051621
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T15:58:56.008413+00:00",
+      "finished": "2026-11-12T16:08:03.414673+00:00",
+      "hold_seconds": 547.40626,
+      "wait_seconds": 0.052566
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:08:03.523341+00:00",
+      "finished": "2026-11-12T16:17:03.984045+00:00",
+      "hold_seconds": 540.460704,
+      "wait_seconds": 0.049628
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:17:04.212636+00:00",
+      "finished": "2026-11-12T16:24:42.757134+00:00",
+      "hold_seconds": 458.544498,
+      "wait_seconds": 0.176416
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:27:18.603139+00:00",
+      "finished": "2026-11-12T16:36:26.639178+00:00",
+      "hold_seconds": 548.036039,
+      "wait_seconds": 0.049228
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:36:26.752862+00:00",
+      "finished": "2026-11-12T16:45:34.315471+00:00",
+      "hold_seconds": 547.562609,
+      "wait_seconds": 0.050587
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:45:34.417335+00:00",
+      "finished": "2026-11-12T16:45:59.180296+00:00",
+      "hold_seconds": 24.762961,
+      "wait_seconds": 0.04941
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:48:17.449583+00:00",
+      "finished": "2026-11-12T16:57:24.985803+00:00",
+      "hold_seconds": 547.53622,
+      "wait_seconds": 0.051152
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T16:57:25.091878+00:00",
+      "finished": "2026-11-12T17:06:32.411874+00:00",
+      "hold_seconds": 547.319996,
+      "wait_seconds": 0.050276
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:06:32.638942+00:00",
+      "finished": "2026-11-12T17:15:40.002939+00:00",
+      "hold_seconds": 547.363997,
+      "wait_seconds": 0.169893
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:15:40.114504+00:00",
+      "finished": "2026-11-12T17:15:43.643019+00:00",
+      "hold_seconds": 3.528515,
+      "wait_seconds": 0.051224
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:16:39.353981+00:00",
+      "finished": "2026-11-12T17:16:56.950172+00:00",
+      "hold_seconds": 17.596191,
+      "wait_seconds": 0.052067
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:19:32.539389+00:00",
+      "finished": "2026-11-12T17:20:19.475103+00:00",
+      "hold_seconds": 46.935714,
+      "wait_seconds": 0.053863
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:20:19.585032+00:00",
+      "finished": "2026-11-12T17:20:58.670625+00:00",
+      "hold_seconds": 39.085593,
+      "wait_seconds": 0.049933
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:20:58.787090+00:00",
+      "finished": "2026-11-12T17:21:37.811156+00:00",
+      "hold_seconds": 39.024066,
+      "wait_seconds": 0.050376
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:21:37.926911+00:00",
+      "finished": "2026-11-12T17:22:25.965102+00:00",
+      "hold_seconds": 48.038191,
+      "wait_seconds": 0.053787
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:22:26.069001+00:00",
+      "finished": "2026-11-12T17:23:04.194450+00:00",
+      "hold_seconds": 38.125449,
+      "wait_seconds": 0.050119
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:23:04.309067+00:00",
+      "finished": "2026-11-12T17:23:43.698684+00:00",
+      "hold_seconds": 39.389617,
+      "wait_seconds": 0.052412
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:23:43.812873+00:00",
+      "finished": "2026-11-12T17:24:23.350031+00:00",
+      "hold_seconds": 39.537158,
+      "wait_seconds": 0.054474
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:24:23.464849+00:00",
+      "finished": "2026-11-12T17:25:03.041808+00:00",
+      "hold_seconds": 39.576959,
+      "wait_seconds": 0.054042
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:25:03.155566+00:00",
+      "finished": "2026-11-12T17:33:58.662561+00:00",
+      "hold_seconds": 535.506995,
+      "wait_seconds": 0.051744
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:33:58.765364+00:00",
+      "finished": "2026-11-12T17:43:06.010426+00:00",
+      "hold_seconds": 547.245062,
+      "wait_seconds": 0.050827
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:43:06.113414+00:00",
+      "finished": "2026-11-12T17:43:11.950833+00:00",
+      "hold_seconds": 5.837419,
+      "wait_seconds": 0.050777
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:47:25.427966+00:00",
+      "finished": "2026-11-12T17:56:33.302235+00:00",
+      "hold_seconds": 547.874269,
+      "wait_seconds": 0.063537
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T17:56:33.409446+00:00",
+      "finished": "2026-11-12T18:05:41.243902+00:00",
+      "hold_seconds": 547.834456,
+      "wait_seconds": 0.052443
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T18:05:41.347872+00:00",
+      "finished": "2026-11-12T18:14:49.438774+00:00",
+      "hold_seconds": 548.090902,
+      "wait_seconds": 0.049194
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T18:14:49.550595+00:00",
+      "finished": "2026-11-12T18:23:41.707950+00:00",
+      "hold_seconds": 532.157355,
+      "wait_seconds": 0.049717
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T18:23:41.811497+00:00",
+      "finished": "2026-11-12T18:32:49.456976+00:00",
+      "hold_seconds": 547.645479,
+      "wait_seconds": 0.050193
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T18:32:49.558383+00:00",
+      "finished": "2026-11-12T18:41:56.708185+00:00",
+      "hold_seconds": 547.149802,
+      "wait_seconds": 0.049275
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T18:41:56.815879+00:00",
+      "finished": "2026-11-12T18:51:04.511667+00:00",
+      "hold_seconds": 547.695788,
+      "wait_seconds": 0.050585
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T18:51:04.616411+00:00",
+      "finished": "2026-11-12T19:00:12.315769+00:00",
+      "hold_seconds": 547.699358,
+      "wait_seconds": 0.051071
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:00:12.432526+00:00",
+      "finished": "2026-11-12T19:09:19.966009+00:00",
+      "hold_seconds": 547.533483,
+      "wait_seconds": 0.052459
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:09:20.080949+00:00",
+      "finished": "2026-11-12T19:18:27.461163+00:00",
+      "hold_seconds": 547.380214,
+      "wait_seconds": 0.055195
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:18:27.564988+00:00",
+      "finished": "2026-11-12T19:27:35.352977+00:00",
+      "hold_seconds": 547.787989,
+      "wait_seconds": 0.050484
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:27:35.461156+00:00",
+      "finished": "2026-11-12T19:36:42.813803+00:00",
+      "hold_seconds": 547.352647,
+      "wait_seconds": 0.055027
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:36:42.924897+00:00",
+      "finished": "2026-11-12T19:45:50.362702+00:00",
+      "hold_seconds": 547.437805,
+      "wait_seconds": 0.051897
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:45:50.476951+00:00",
+      "finished": "2026-11-12T19:54:58.197917+00:00",
+      "hold_seconds": 547.720966,
+      "wait_seconds": 0.052579
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T19:54:58.339705+00:00",
+      "finished": "2026-11-12T20:04:05.859635+00:00",
+      "hold_seconds": 547.51993,
+      "wait_seconds": 0.056181
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:04:05.994700+00:00",
+      "finished": "2026-11-12T20:13:13.254464+00:00",
+      "hold_seconds": 547.259764,
+      "wait_seconds": 0.053401
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:13:13.366706+00:00",
+      "finished": "2026-11-12T20:22:20.661583+00:00",
+      "hold_seconds": 547.294877,
+      "wait_seconds": 0.053715
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:22:20.772058+00:00",
+      "finished": "2026-11-12T20:31:28.322528+00:00",
+      "hold_seconds": 547.55047,
+      "wait_seconds": 0.050984
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:31:28.452302+00:00",
+      "finished": "2026-11-12T20:40:34.112596+00:00",
+      "hold_seconds": 545.660294,
+      "wait_seconds": 0.052628
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:40:34.229273+00:00",
+      "finished": "2026-11-12T20:49:41.508815+00:00",
+      "hold_seconds": 547.279542,
+      "wait_seconds": 0.054872
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:49:41.629080+00:00",
+      "finished": "2026-11-12T20:58:49.728633+00:00",
+      "hold_seconds": 548.099553,
+      "wait_seconds": 0.055671
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T20:58:49.853190+00:00",
+      "finished": "2026-11-12T21:07:38.963784+00:00",
+      "hold_seconds": 529.110594,
+      "wait_seconds": 0.052772
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T21:07:39.076880+00:00",
+      "finished": "2026-11-12T21:16:47.151730+00:00",
+      "hold_seconds": 548.07485,
+      "wait_seconds": 0.051713
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T21:16:47.271641+00:00",
+      "finished": "2026-11-12T21:25:56.752847+00:00",
+      "hold_seconds": 549.481206,
+      "wait_seconds": 0.05177
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T21:25:56.864460+00:00",
+      "finished": "2026-11-12T21:35:05.021635+00:00",
+      "hold_seconds": 548.157175,
+      "wait_seconds": 0.054171
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T21:35:05.142495+00:00",
+      "finished": "2026-11-12T21:44:13.526096+00:00",
+      "hold_seconds": 548.383601,
+      "wait_seconds": 0.054596
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T21:44:13.644521+00:00",
+      "finished": "2026-11-12T21:53:21.068925+00:00",
+      "hold_seconds": 547.424404,
+      "wait_seconds": 0.053607
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T21:53:21.181966+00:00",
+      "finished": "2026-11-12T22:02:29.128697+00:00",
+      "hold_seconds": 547.946731,
+      "wait_seconds": 0.054615
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T22:02:29.322133+00:00",
+      "finished": "2026-11-12T22:11:37.033959+00:00",
+      "hold_seconds": 547.711826,
+      "wait_seconds": 0.065476
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/build_preview_slot.py",
+      "started": "2026-11-12T22:11:37.149856+00:00",
+      "finished": "2026-11-12T22:18:21.902459+00:00",
+      "hold_seconds": 404.752603,
+      "wait_seconds": 0.053396
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/measure_replay_cache.py",
+      "started": "2026-11-12T22:18:26.568368+00:00",
+      "finished": "2026-11-12T22:24:24.288575+00:00",
+      "hold_seconds": 357.720207,
+      "wait_seconds": 0.056529
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/measure_replay_cache.py",
+      "started": "2026-11-12T22:24:24.416274+00:00",
+      "finished": "2026-11-12T22:24:42.643682+00:00",
+      "hold_seconds": 18.227408,
+      "wait_seconds": 0.053043
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/check_native_tag_metadata.py",
+      "started": "2026-11-12T22:24:42.879780+00:00",
+      "finished": "2026-11-12T22:27:26.739631+00:00",
+      "hold_seconds": 163.859851,
+      "wait_seconds": 0.177133
+    },
+    {
+      "command": "gtimeout --kill-after=5s 580 python3 -B /tmp/bulk-w1-b2/check_attribute_metadata.py",
+      "started": "2026-11-12T22:27:26.852056+00:00",
+      "finished": "2026-11-12T22:32:59.129974+00:00",
+      "hold_seconds": 332.277918,
+      "wait_seconds": 0.052543
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/check_bulk_aliases.py",
+      "started": "2026-11-12T22:38:24.167838+00:00",
+      "finished": "2026-11-12T22:44:32.168876+00:00",
+      "hold_seconds": 368.001038,
+      "wait_seconds": 14.124747
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/check_moved_audits.py",
+      "started": "2026-11-12T22:44:32.277750+00:00",
+      "finished": "2026-11-12T22:44:47.108738+00:00",
+      "hold_seconds": 14.830988,
+      "wait_seconds": 0.053371
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/check_moved_audits.py",
+      "started": "2026-11-12T22:48:20.982911+00:00",
+      "finished": "2026-11-12T22:49:08.179694+00:00",
+      "hold_seconds": 47.196783,
+      "wait_seconds": 0.05612
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/build_comparison_prerequisite.py",
+      "started": "2026-11-12T22:52:32.824885+00:00",
+      "finished": "2026-11-12T22:52:46.060561+00:00",
+      "hold_seconds": 13.235676,
+      "wait_seconds": 4.181244
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:01:40.213556+00:00",
+      "finished": "2026-11-12T23:02:05.546755+00:00",
+      "hold_seconds": 25.333199,
+      "wait_seconds": 0.052134
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/compile_private_snapshot.py",
+      "started": "2026-11-12T23:04:56.603581+00:00",
+      "finished": "2026-11-12T23:05:20.896435+00:00",
+      "hold_seconds": 24.292854,
+      "wait_seconds": 0.053959
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:05:42.180528+00:00",
+      "finished": "2026-11-12T23:07:55.344691+00:00",
+      "hold_seconds": 133.164163,
+      "wait_seconds": 6.078401
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/compile_private_snapshot.py",
+      "started": "2026-11-12T23:17:55.296897+00:00",
+      "finished": "2026-11-12T23:18:01.636103+00:00",
+      "hold_seconds": 6.339206,
+      "wait_seconds": 0.053231
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/compile_private_snapshot.py",
+      "started": "2026-11-12T23:20:27.384252+00:00",
+      "finished": "2026-11-12T23:20:34.478884+00:00",
+      "hold_seconds": 7.094632,
+      "wait_seconds": 34.22795
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/compile_private_snapshot.py",
+      "started": "2026-11-12T23:22:49.468716+00:00",
+      "finished": "2026-11-12T23:23:18.053029+00:00",
+      "hold_seconds": 28.584313,
+      "wait_seconds": 46.371018
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:24:02.525849+00:00",
+      "finished": "2026-11-12T23:24:36.329726+00:00",
+      "hold_seconds": 33.803877,
+      "wait_seconds": 28.173824
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:26:27.344861+00:00",
+      "finished": "2026-11-12T23:29:05.944147+00:00",
+      "hold_seconds": 158.599286,
+      "wait_seconds": 0.054232
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:35:45.281227+00:00",
+      "finished": "2026-11-12T23:38:51.509655+00:00",
+      "hold_seconds": 186.228428,
+      "wait_seconds": 10.104822
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:39:05.711536+00:00",
+      "finished": "2026-11-12T23:42:20.732420+00:00",
+      "hold_seconds": 195.020884,
+      "wait_seconds": 14.128334
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:43:49.253756+00:00",
+      "finished": "2026-11-12T23:47:03.882253+00:00",
+      "hold_seconds": 194.628497,
+      "wait_seconds": 88.464996
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:48:28.393523+00:00",
+      "finished": "2026-11-12T23:51:37.852486+00:00",
+      "hold_seconds": 189.458963,
+      "wait_seconds": 84.458038
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:52:40.268524+00:00",
+      "finished": "2026-11-12T23:56:05.433527+00:00",
+      "hold_seconds": 205.165003,
+      "wait_seconds": 62.361862
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-12T23:58:50.282287+00:00",
+      "finished": "2026-11-13T00:01:51.961065+00:00",
+      "hold_seconds": 181.678778,
+      "wait_seconds": 164.794193
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:03:50.635903+00:00",
+      "finished": "2026-11-13T00:07:16.132757+00:00",
+      "hold_seconds": 205.496854,
+      "wait_seconds": 118.623432
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:09:16.663633+00:00",
+      "finished": "2026-11-13T00:12:06.328882+00:00",
+      "hold_seconds": 169.665249,
+      "wait_seconds": 120.476917
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:16:53.071471+00:00",
+      "finished": "2026-11-13T00:19:53.144284+00:00",
+      "hold_seconds": 180.072813,
+      "wait_seconds": 286.685671
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:22:49.633626+00:00",
+      "finished": "2026-11-13T00:26:45.201679+00:00",
+      "hold_seconds": 235.568053,
+      "wait_seconds": 176.434959
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:28:07.478150+00:00",
+      "finished": "2026-11-13T00:32:05.818471+00:00",
+      "hold_seconds": 238.340321,
+      "wait_seconds": 82.219675
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:35:24.353774+00:00",
+      "finished": "2026-11-13T00:39:12.667338+00:00",
+      "hold_seconds": 228.313564,
+      "wait_seconds": 198.470523
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:39:58.883981+00:00",
+      "finished": "2026-11-13T00:43:47.472469+00:00",
+      "hold_seconds": 228.588488,
+      "wait_seconds": 46.159375
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:46:03.867001+00:00",
+      "finished": "2026-11-13T00:50:00.792465+00:00",
+      "hold_seconds": 236.925464,
+      "wait_seconds": 136.340537
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T00:54:59.530218+00:00",
+      "finished": "2026-11-13T00:58:39.041945+00:00",
+      "hold_seconds": 219.511727,
+      "wait_seconds": 298.681518
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:02:33.660440+00:00",
+      "finished": "2026-11-13T01:06:14.281637+00:00",
+      "hold_seconds": 220.621197,
+      "wait_seconds": 234.560483
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:09:10.772035+00:00",
+      "finished": "2026-11-13T01:12:51.820782+00:00",
+      "hold_seconds": 221.048747,
+      "wait_seconds": 176.42985
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:17:24.751793+00:00",
+      "finished": "2026-11-13T01:21:23.367195+00:00",
+      "hold_seconds": 238.615402,
+      "wait_seconds": 272.876806
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:21:59.626442+00:00",
+      "finished": "2026-11-13T01:25:57.244275+00:00",
+      "hold_seconds": 237.617833,
+      "wait_seconds": 36.203305
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:26:47.460568+00:00",
+      "finished": "2026-11-13T01:30:45.546946+00:00",
+      "hold_seconds": 238.086378,
+      "wait_seconds": 50.155053
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:32:31.894883+00:00",
+      "finished": "2026-11-13T01:36:30.639372+00:00",
+      "hold_seconds": 238.744489,
+      "wait_seconds": 106.285601
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:38:49.036591+00:00",
+      "finished": "2026-11-13T01:42:48.030093+00:00",
+      "hold_seconds": 238.993502,
+      "wait_seconds": 138.331123
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:43:46.261087+00:00",
+      "finished": "2026-11-13T01:47:45.816164+00:00",
+      "hold_seconds": 239.555077,
+      "wait_seconds": 58.170085
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T01:52:28.470918+00:00",
+      "finished": "2026-11-13T01:56:28.090071+00:00",
+      "hold_seconds": 239.619153,
+      "wait_seconds": 282.589812
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T02:04:11.244317+00:00",
+      "finished": "2026-11-13T02:07:53.482227+00:00",
+      "hold_seconds": 222.23791,
+      "wait_seconds": 463.094957
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T02:09:39.808736+00:00",
+      "finished": "2026-11-13T02:13:23.130314+00:00",
+      "hold_seconds": 223.321578,
+      "wait_seconds": 106.271719
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T02:15:05.428880+00:00",
+      "finished": "2026-11-13T03:46:20.418508+00:00",
+      "hold_seconds": 5474.989628,
+      "wait_seconds": 102.239792
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T03:46:36.579948+00:00",
+      "finished": "2026-11-13T03:50:15.520144+00:00",
+      "hold_seconds": 218.940196,
+      "wait_seconds": 16.091493
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T03:50:15.645920+00:00",
+      "finished": "2026-11-13T04:10:39.807877+00:00",
+      "hold_seconds": 1224.161957,
+      "wait_seconds": 0.054577
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T04:10:39.915069+00:00",
+      "finished": "2026-11-13T04:48:57.326158+00:00",
+      "hold_seconds": 2297.411089,
+      "wait_seconds": 0.053844
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T04:48:57.682147+00:00",
+      "finished": "2026-11-13T05:27:10.190378+00:00",
+      "hold_seconds": 2292.508231,
+      "wait_seconds": 0.188423
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T05:27:10.784643+00:00",
+      "finished": "2026-11-13T05:35:38.054415+00:00",
+      "hold_seconds": 507.269772,
+      "wait_seconds": 0.272599
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T05:35:38.402405+00:00",
+      "finished": "2026-11-13T07:33:58.916222+00:00",
+      "hold_seconds": 7100.513817,
+      "wait_seconds": 0.169492
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T07:35:35.226043+00:00",
+      "finished": "2026-11-13T07:39:35.482637+00:00",
+      "hold_seconds": 240.256594,
+      "wait_seconds": 96.246829
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T07:41:57.791222+00:00",
+      "finished": "2026-11-13T07:45:57.471607+00:00",
+      "hold_seconds": 239.680385,
+      "wait_seconds": 142.247556
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T07:46:57.686022+00:00",
+      "finished": "2026-11-13T07:50:32.721376+00:00",
+      "hold_seconds": 215.035354,
+      "wait_seconds": 60.150787
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T07:51:16.937366+00:00",
+      "finished": "2026-11-13T07:55:16.813154+00:00",
+      "hold_seconds": 239.875788,
+      "wait_seconds": 44.156383
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T07:56:53.097105+00:00",
+      "finished": "2026-11-13T08:00:46.222670+00:00",
+      "hold_seconds": 233.125565,
+      "wait_seconds": 96.217143
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:03:20.641435+00:00",
+      "finished": "2026-11-13T08:07:20.681491+00:00",
+      "hold_seconds": 240.040056,
+      "wait_seconds": 154.347949
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:09:49.062709+00:00",
+      "finished": "2026-11-13T08:13:48.918313+00:00",
+      "hold_seconds": 239.855604,
+      "wait_seconds": 148.315653
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:15:01.185265+00:00",
+      "finished": "2026-11-13T08:18:55.135820+00:00",
+      "hold_seconds": 233.950555,
+      "wait_seconds": 72.20488
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:25:24.062769+00:00",
+      "finished": "2026-11-13T08:29:17.075315+00:00",
+      "hold_seconds": 233.012546,
+      "wait_seconds": 388.869443
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:29:47.271956+00:00",
+      "finished": "2026-11-13T08:33:34.675312+00:00",
+      "hold_seconds": 227.403356,
+      "wait_seconds": 30.132698
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:36:45.131294+00:00",
+      "finished": "2026-11-13T08:40:46.283963+00:00",
+      "hold_seconds": 241.152669,
+      "wait_seconds": 190.401815
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:42:22.569926+00:00",
+      "finished": "2026-11-13T08:46:16.274953+00:00",
+      "hold_seconds": 233.705027,
+      "wait_seconds": 96.230943
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:48:02.569651+00:00",
+      "finished": "2026-11-13T08:51:47.387054+00:00",
+      "hold_seconds": 224.817403,
+      "wait_seconds": 106.233676
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:53:23.681981+00:00",
+      "finished": "2026-11-13T08:57:24.467451+00:00",
+      "hold_seconds": 240.78547,
+      "wait_seconds": 96.229693
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T08:57:48.624310+00:00",
+      "finished": "2026-11-13T09:01:39.874956+00:00",
+      "hold_seconds": 231.250646,
+      "wait_seconds": 24.081388
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:03:30.200950+00:00",
+      "finished": "2026-11-13T09:07:23.061797+00:00",
+      "hold_seconds": 232.860847,
+      "wait_seconds": 110.2617
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:08:13.280502+00:00",
+      "finished": "2026-11-13T09:12:14.239048+00:00",
+      "hold_seconds": 240.958546,
+      "wait_seconds": 50.152959
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:14:04.583108+00:00",
+      "finished": "2026-11-13T09:18:05.555315+00:00",
+      "hold_seconds": 240.972207,
+      "wait_seconds": 110.275472
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:21:02.029275+00:00",
+      "finished": "2026-11-13T09:24:55.839324+00:00",
+      "hold_seconds": 233.810049,
+      "wait_seconds": 176.4164
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:26:42.177759+00:00",
+      "finished": "2026-11-13T09:30:42.502639+00:00",
+      "hold_seconds": 240.32488,
+      "wait_seconds": 106.280242
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:31:28.716515+00:00",
+      "finished": "2026-11-13T09:35:27.049630+00:00",
+      "hold_seconds": 238.333115,
+      "wait_seconds": 46.153363
+    },
+    {
+      "command": "python3 -B /tmp/bulk-w1-b2/timed_bulk_slot.py /tmp/bulk-w1-b2/preserve_slot.py",
+      "started": "2026-11-13T09:36:35.337121+00:00",
+      "finished": "2026-11-13T09:40:21.008546+00:00",
+      "hold_seconds": 225.671425,
+      "wait_seconds": 68.213069
+    }
+  ]
+}

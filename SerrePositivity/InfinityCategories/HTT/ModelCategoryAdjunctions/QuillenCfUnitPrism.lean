@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfDerivedTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CartesianPrismComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CartesianPrismComparison
 
 /-!
 概要：元の左右導来関手の輸送を比較し、下段 cf nerve 上の自然な単位候補を構成する。
@@ -65,7 +65,7 @@ lemma quillenCfDerivedUnitPrism_exists :
         (HR.app (Opposite.op ⦋1⦌)
           (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{max u v})), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1))) ∧
       ((Δ[1] : SSet.{max u v}) ◁ ((boundary 1).ι ▷
-        SimplicialNerve (_root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.CofibrantFibrantObjects C))) ≫ J = _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.cartesianComparisonBoundary HL
+        SimplicialNerve (_root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.CofibrantFibrantObjects C))) ≫ J = _root_.SerrePositivity.InfinityCategories.HTT.Section2_4_1.cartesianComparisonBoundary HL
           (((Δ[1] : SSet.{max u v}) ◁ _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfLeftDerived R adj fibD e SC SD) ≫ HR) ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ J = HL ∧
       J ≫ _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfCollageProjection R = ((Δ[1] : SSet.{max u v}) ◁
