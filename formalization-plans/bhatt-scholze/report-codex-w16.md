@@ -8909,3 +8909,135 @@ L09a・L09の累計 **3,255行**、改訂MayのM14全体 **8,321行**。
 一方、三群の符号付き値の相殺 `hc`・`hv`・`hmix` は未完。
 `universalBoundaryPartner_neg_of_cases` はそれらを明示的な前提に取る貼り合わせの補題であり、
 最終のL09aやBFの作用の法則を閉じたとは扱わない。§119.16の有限符号計算へ続ける。
+
+### 119.18 展開した色列のcaesuraと区間の重み（C100・C101）
+
+m=0〜4、q=0〜4、色数1〜3の全ての語と切断で、展開した色列の後続の同色が
+「同じ区間の後続頂点、または元の語の後続の同色」の条件と一致することを点検した。
+各区間のそのような頂点数が `intervalLength` と一致することも点検してからLeanへ入る。
+元の語の全射性・隣接非退化性はこの二式には不要。
+
+```lean
+caesura_label_iff {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (i : Fin (m + 1)) (j : Fin (m + q + 1)) (hj : s.horizontal j = i) :
+  Surjection.Caesura (label s v) j ↔
+    j < (intervalPositions s i).max' (intervalPositions_nonempty s i) ∨ Surjection.Caesura v i
+interval_active_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (i : Fin (m + 1)) :
+  ((intervalPositions s i).filter (Surjection.Caesura (label s v))).card = intervalLength s v i
+```
+
+`Surjection.Word` は全射性だけでなく隣接非退化性も含む。展開色列には垂直辺で隣接反復が
+あるため、それをWordへ包んで既存のlastOccurrenceのAPIを流用することはしない。
+同じ色の後続を持つ位置の有限集合として直接扱う。
+
+### 119.19 展開色列の活動頂点の濃度（C102〜C105）
+
+§119.18の全頂点の点検と、m=0〜4、q=0〜4の全切断・色数1〜3の全射語の各色で、
+活動頂点数が出力次数に一致し、全活動頂点数が全出力次数になることを点検してから実装。
+`activeVertexPositions` は展開色列のcaesuraを選ぶ同じ有限集合の記法。
+
+```lean
+activeVertexPositions {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r) :
+  Finset (Fin (m + q + 1))
+active_fiber_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (i : Fin (m + 1)) :
+  ((activeVertexPositions s v).filter (fun j => s.horizontal j = i)).card = intervalLength s v i
+active_color_card_eq_sum {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (c : Fin r) :
+  ((activeVertexPositions s v).filter (fun j => label s v j = c)).card =
+    ∑ i ∈ Surjection.occurrences v c, intervalLength s v i
+active_color_card {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  ((activeVertexPositions s v.val).filter (fun j => label s v.val j = c)).card = outputDegree s v c
+activeVertexPositions_card {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) :
+  (activeVertexPositions s v.val).card = m + q + 1 - r
+```
+
+### 119.20 単調なfiberでまとめた逆転数（C106・C107）
+
+位置数・中間の位置数1〜4、色数1〜3の全ての弱単調写像・色付け・位置部分集合で、
+逆転数がfiberの濃度の積による重み付き逆転数になることを点検してからLeanへ入る。
+途中の写像の全射性や色付けの非退化性は要求しない。
+
+```lean
+inversion_condition_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (x y : Fin N) :
+  (x < y ∧ v (f y) < v (f x)) ↔ (f x < f y ∧ v (f y) < v (f x))
+positionInversionTerm_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (x y : Fin N) :
+  positionInversionTerm (v ∘ f) x y = if f x < f y ∧ v (f y) < v (f x) then 1 else 0
+positionInversionCount_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (s : Finset (Fin N)) :
+  positionInversionCount (v ∘ f) s =
+    ∑ i : Fin M, ∑ j : Fin M, if i < j ∧ v j < v i then
+      (s.filter (fun x => f x = i)).card * (s.filter (fun y => f y = j)).card else 0
+permutationExponent_eq_active_inversions {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) :
+  permutationExponent s v = positionInversionCount (label s v) (activeVertexPositions s v)
+```
+
+有限和のfiber分割の法則を二回使い、C102の活動頂点の濃度で `intervalLength` に戻す。
+
+### 119.21 実際の出力境界符号を活動頂点で読む型（C108〜C111）
+
+m=0〜4、q=0〜3、色数1〜3の全射・隣接非退化の語と全経路の各頂点で、
+先行同色数と小さい色の出力次数が活動頂点の数に一致することを点検。
+活動頂点を削除するとき、元のBF境界指数と次のC111の指数の偶奇が一致することを
+点検してからLeanへ入る。C110・C111は既存の `outputBoundarySign` を同じ添字で評価する法則。
+
+```lean
+vertexRank_eq_active_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+  vertexRank s v (label s v k) k =
+    ((activeVertexPositions s v).filter (fun j => j < k ∧ label s v j = label s v k)).card
+prefixOutputDegree_eq_active_card {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  (∑ b ∈ Finset.univ.filter (fun b : Fin r => b < c), outputDegree s v b) =
+    ((activeVertexPositions s v.val).filter (fun j => label s v.val j < c)).card
+outputBoundarySignAt {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (k : Fin (m + q + 1)) : ℤ
+outputBoundarySignAt_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) :
+  outputBoundarySignAt s v k = cutSign s v.val * (-1 : ℤ) ^
+    (((activeVertexPositions s v.val).filter (fun j => label s v.val j < label s v.val k)).card +
+    ((activeVertexPositions s v.val).filter (fun j => j < k ∧ label s v.val j = label s v.val k)).card)
+outputBoundarySignAt_of_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∈ activeVertexPositions s v.val) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    (-1 : ℤ) ^ positionInversionCount (label s v.val) ((activeVertexPositions s v.val).erase k) *
+    (-1 : ℤ) ^ ((activeVertexPositions s v.val).filter (fun j => j < k)).card
+```
+
+### 119.22 活動頂点の境界符号までの検証済み区切り
+
+次の五本、計 **379行**を検証した。
+`ColorSortingBoundarySigns` 57行、`ExpandedCaesuras` 76行、`ActiveVertexCounts` 78行、
+`WeightedVertexInversions` 82行、`ActiveBoundarySigns` 86行。
+接頭部は全て `SerrePositivity.EInfinity.SimplexCuts.`。次の登録候補一覧はこの五本。
+
+対象ビルド `lake build SerrePositivity.EInfinity.SimplexCuts.ActiveBoundarySigns` 成功
+（`/tmp/bsw16/m14-active-boundary-signs-01.log`）。
+専用監査 `/tmp/bsw16/audit-m14-active-boundary-signs.lean` は
+**5モジュール・52宣言・標準三公理のみ**。新規五本にsorry・追加公理0、Leanの警告なし。
+鍵の待ちは一枚の整理券にまとめ、監査が終わって鍵を返した。
+
+事前点検は、色順の境界符号25,710個の指定色付き部分集合、展開caesura347,822頂点、
+活動頂点の濃度26,881個の切断と色付け、単調なfiberの重み付き逆転数89,836例、
+実際のBF出力符号14,096活動頂点で一致した。
+Leanでは、既存の逆転数の削除公式、有限和のfiber分割、同じ面番号の先行同色数を使った。
+個々の補題は全て200行以下。既存の公開宣言・界面・BE作用・operadの法則は変更していない。
+
+L09a・L09の累計 **3,634行**、改訂MayのM14全体 **8,700行**。
+この再開後は20本・1,281行を検証済みとして保存した。
+3,000行の途中報告は済み、次は4,000行で停止せず報告する。
+半分の12,500行・外枠25,000行には未到達。
+
+ここまでで全添字の対合、固定点の実際の零、水平・垂直の有限同値、内部の指定面の列、
+活動頂点における実際の出力境界符号の共通化が閉じた。
+L09a全体の `hc`・`hv`・`hmix` の符号付き値の相殺はまだ未証明。
+次は、最後の非活動頂点の符号を直前同色の活動頂点へ運ぶ法則と、対応する残りの逆転集合の照合。
+その準備として、位置数1〜6・色数1〜3の全ての色列で、直前同色位置を持つ3,534位置の
+先行同色数が一だけ違い、その交代符号が反対になることを有限点検した。
+この準備の点検だけを、未実装の照合や最終相殺の証明として扱わない。
+mainの凍結を維持し、root・全体監査やM15・G12の作業は行っていない。
