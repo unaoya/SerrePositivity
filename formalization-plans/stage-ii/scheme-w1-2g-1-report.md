@@ -922,3 +922,41 @@ PullbackStageSurjectivity **77 行**、IntegralSurjectiveProperClosedModel **57 
 G1 共用部品込み本体 **5,747 行**、入口込み **5,853 行**。今回の継続では11モジュール780行＋入口11行を検証した。約12,000行の途中報告点・25,000行の外枠には未到達。平坦側の模型の図式と全射性の接続、元の X への基底上の因子化、C01 の整拡大・一般の始域との組立てが残る。A07・G2 は未完で、Rydh 3.10 の一般の場合や 2g-1 の完成とは報告しない。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+## A07：平坦側の模型の極限図式の分割（着手前の型）
+
+既定の図式の法則180〜450行の中で、まず `stageModelOverPointIso`・`stageModelOverCone`・`isLimit_stageModelOverCone` を作る。D,c,hc、段 i、r:T→D(i)、a:X→T、x:X→c.pt、IsPullback a x r(c.π.app i) に対し、Over.post D⋙Over.pullback r の実際の極限 cone を Over T の中で取り、頂点を元の a:X→T に保つ。`stageModelCone` はその忘却で、元の X を頂点に持つ。二つの射影との可換式と、各射影が c.π.app j の底変換であることも同時に供給する。同じ pullback の比較同型と既存の極限の法則で、親 ID は増やさない。後で Over.map β と Over.pullback g₀ を合成し、元の平坦被覆の空間を頂点に保つ。
+
+同じ図式の次の分割 `flatStageModelDiagram`・`flatStageModelCone`・`isLimit_flatStageModelCone` は、Over.post D⋙Over.pullback r⋙Over.map β⋙Over.pullback q の忘却で平坦側の図式を作る。q:Z→Y、β:T→Y と、元の X→T の Cartesian な模型比較を入力する。`flatStageModelPointIso`・`flatStageModelConeWithPoint`・`isLimit_flatStageModelConeWithPoint` は、元の写像 b:X→Y と a≫β=b があれば、頂点を元の pullback q b に保つ。`flatStageModelProjection` は各段 W_j→T_j、各遷移・極限 cone の射影はこの射に関して Cartesian。affine 遷移と qcqs 性も渡す。前記180〜450行の図式の法則の中で、新しい親項目は足さない。
+
+平坦側の図式の性質の法則：各 `flatStageModelProjection ... .app j` に q の平坦性・局所有限表示性・準コンパクト性・準分離性・affine 性を底変換で渡す。図式の遷移射は、元の D の遷移射が affine なら affine。各段の qcqs 性は D の各段の qcqs 性、r と q の準コンパクト性・準分離性から渡す。これらは前記の図式の法則180〜450行の中の性質の移送で、新しい親 ID は足さない。
+
+平坦側の全射性を図式の実際の成分へ渡す法則 `exists_surjective_component_of_cartesian_flat_model`（見込み40〜100行、前記の平坦模型の図式の束の中）：cofiltered な qc・affine 遷移の実際の極限 D,c,hc、図式 W、自然変換 q:W→D、全ての遷移の q の正方形が Cartesian、各 q_i が平坦・局所有限表示・準コンパクトとする。全射 x:X→c.pt と、各段に関して IsPullback(w_i,x,q_i,c.π.app i) があれば、ある段 j で実際の q_j が全射となる。既存の固定した射の全射性の有限段への移送を、同じ Cartesian な図式の成分と比較する法則。`surjective_component_of_cartesian_model_map` はその段より後の成分の全射性の底変換の法則。新しい親項目は足さない。
+
+次の適用の型：`exists_surjective_flat_stage_of_model` は上の実際の W_j→T_j の図式と元の pullback q b の全射性から、ある j:Over i で実際の射 `flatStageModelProjection ... .app j` が全射と返す。前記の成分の比較への適用で、親項目を増やさない。
+
+基底上の因子化の法則80〜220行の分割：`stageModelBaseMap` と `flatStageModelBaseMap` は D→const S を T_j・W_j の基底への射に運ぶ。`flatStageModelConeWithPoint_π_base` は元の基底への構造射との可換式。`exists_surjective_flat_stage_factor` は、S 上局所有限表示 f:V→S と、元の pullback q b から V への基底上の射 l∞ に対し、ある全射な平坦側の段 j の射 l:W_j→V を取り、実際の射影との合成が l∞ に一致し、l≫f がその段の構造射に一致することを同時に返す。全射となった段の後の図式へ制限してから、既存の `Scheme.exists_π_app_comp_eq_of_locallyOfFinitePresentation` を使う。新しいモデルの存在の入力や一致判定の公理を追加しない。
+
+### A07：平坦側の実際の図式と元の被覆を頂点に保つ極限
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| StageModelOverLimit | 98 | `stageModelOverPointIso`・`stageModelOverCone`・`isLimit_stageModelOverCone`：元の a:X→T を Over T の頂点に保つ比較同型・cone・実際の極限性 |
+| 同上 | 同上に含む | `stageModelOverCone_pt_hom`：Over の cone の構造射は元の a そのもの |
+| 同上 | 同上に含む | `stageModelCone`・`isLimit_stageModelCone`：忘却後も元の X を頂点に保つ実際の極限 cone |
+| 同上 | 同上に含む | `stageModelCone_π_snd`・`_π_fst`・`isPullback_stageModelCone_π`：模型 T と元の基底への可換式、各射影の Cartesian 性 |
+| FlatStageModelLimit | 139 | `flatStageModelDiagram`・`flatStageModelCone`・`isLimit_flatStageModelCone`：固定した射 q の係数移送・底変換による実際の W_j の図式と極限性 |
+| 同上 | 同上に含む | `flatStageModelPointIso`・`flatStageModelConeWithPoint`・`isLimit_flatStageModelConeWithPoint`：元の pullback q b を頂点に保つ同型・cone・極限性 |
+| 同上 | 同上に含む | `flatStageModelProjection`：各段の実際の射 W_j→T_j |
+| 同上 | 同上に含む | `isPullback_flatStageModelDiagram_map`・`flatStageModelConeWithPoint_π_fst`・`_π_snd`・`isPullback_flatStageModelConeWithPoint_π`：遷移と極限射影の Cartesian 性・二つの射影の可換式 |
+| FlatStageModelProperties | 80 | 八つの instance：各段の q_j に q の平坦性・局所有限表示性・準コンパクト性・準分離性・affine 性を渡す。図式の affine 遷移と各段の qcqs 性を渡す |
+| CartesianFlatModelSurjectivity | 45 | `surjective_component_of_cartesian_model_map`：全射な成分の後段も全射 |
+| 同上 | 同上に含む | `exists_surjective_component_of_cartesian_flat_model`：極限で全射な Cartesian な平坦模型の、ある実際の成分を全射にする |
+
+本体 **362 行**、入口 4 行。対象ビルドは直接の importer AlgebraicGeometry まで **4,896 ジョブ成功**、四モジュールの小監査は補助宣言込み **64 宣言・標準三公理のみ**。実際の図式・cone の IsLimit を構成し、模型の存在や忠実平坦性を追加仮定にしていない。q には固有性を仮定しない。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-flat-stage-model-batch-check-2.log`、`2g-flat-stage-model-native.log`、`2g-flat-stage-model-audit.log`。
+
+G1 共用部品込み本体 **6,109 行**、入口込み **6,219 行**。全射な平坦側の実際の段への適用と、元の X への基底上の因子化は下書き検証中で、この監査には含めない。A07・G2 は未完。
+
+一覧：済み 9／全体 14（うち追加 5）。
