@@ -12749,3 +12749,75 @@ def grothendieckWeightedNerveReplacementClassificationIso :
         ((continuousLeftFibrationReplacement (nerve I)).obj
           (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))).hom)
 ```
+
+## 200. R03f：元の単位を固定する相対Kan比較（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 19（うち追加 7）。R03fを追加、未証明。R03d・R02・R03も未完了。
+
+IS-W2 §19の「同じまとまりで一つの見込み1,500行以下」の枠で、次の独立の中間定理R03fを一覧に加える。Cat値図式の各fiberのnerveをKan化することと、そのGrothendieck射影の同じ底上のleft fibration置換を比較する相対版のgroupoid completionである。R03eは厳密な二模型の同型のみで、この相対Kan化を含まないため、既存の構成の法則として数えない。
+
+### 200.1 型
+
+共通の名前空間はGrothendieckWeightedNerveOverと同じ。`exInfinity`・`exInfinityUnit` はTheExInfinityFunctor、`IsPrecompositionEquivalence` はTheHomotopyTheoryOfInfinityCategories.Equivalenceの既存の宣言。
+
+```lean
+theorem exists_grothendieckKanCoefficientComparison
+    {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
+  let G := (F ⋙ nerveFunctor) ⋙ exInfinity
+  let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+  let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+  let η : F ⋙ nerveFunctor ⟶ G :=
+    Functor.whiskerLeft (F ⋙ nerveFunctor) exInfinityUnit
+  ∃ f : R.left ⟶ weightedNerve G,
+    f ≫ weightedNerveProjection G = R.hom ∧
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+      grothWeightedNerveForward F ≫ weightedNerveMap η ∧
+    IsPrecompositionEquivalence f
+```
+
+このPropの型は一時ファイルCheckISW2GrothKanLiftType.leanで確認済み（実ハンドル2743、終了0）。本体に未証明の定理や仮定として入れない。元の全空間の射・同じ底・指定された元の単位との等式を保持する。単なる分類像の存在より強い型であり、後で元の指定点への回収を追える形にする。R03dの固定始域比較との一致の型は変えない。
+
+### 200.2 見込みと経路
+
+置き場所は同じFibrationsOverOrdinaryCategories/GrothendieckKan*.lean。見込み900〜1,450行。元の係数の単位からの射と相対延長（約70〜150行）、bar/scaffoldと元のGrothendieck比較の照合（100〜200行）、同じ底上でfiberの全辺を可逆化する比較の検証（500〜750行）、全空間の前合成同値と元の単位の正規化を束ねる部分（150〜350行）を想定する。独立の中間定理としての上端1,450行であり、任意の細分で§19の枠を回避しない。半分の725行で止まらずに実測と残りを報告する。
+
+短縮の候補：元のnerve係数はquasicategoryであるため、`tautScaffold_isPrecompositionEquivalence_of_quasicategory` を使える。前の一般のweightedNerveMapのKan係数用判定との違いはここにある。R03eとこのscaffoldを介して元の射を保持し、各fiberのEx∞単位が全辺を可逆にすることを同じ底の比較として示す。全空間の通常の弱ホモトピー同値だけで相対版を代用しない。相対延長の存在の既存の法則はすでに個別検査を通ったが、それだけでは最後のIsPrecompositionEquivalenceは得られない。fiberごとの可逆化と同じ底上の比較を示す数学が残る。
+
+⑤aの欄、既存FramedLimit*・CAlgUnderlyingDerivedComparison、点つきKanのTot、[ModelCategory SSet]を追加・変更しない。R03fが閉じた後も、元の要素圏の反対・augmentationとの照合とR03dへの接続を別に検収する。
+
+## 201. 元の置換単位を固定したKan係数への相対延長（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 19（うち追加 7）。R03f・R03d・R02・R03は未完了。
+
+元の全Cat図式のnerveに同じEx∞単位を後合成し、R03eの前向き全写像とweightedNerveMapで、同じ底のKan係数への実射を構成した。元の射影との厳密な等式を確認し、既存のleft-anodyne単位に対する相対延長の定理で、その元の単位との合成が元の実射そのものである延長を得た。この存在と二つの等式は既存構成の法則であり、R03fの最後の前合成同値性はまだ証明していない。
+
+268は不足していた既存ContinuousLeftFibrationAnodyneの対象ビルド1,506 jobsまでは成功したが、その後の個別検査でOver対象の暗黙引数の推論に失敗した（実ハンドル95897・終了1）。対象を明示して個別検査16203・終了0を確認し、269で新規一本の対象ビルド1,866 jobs・終了0と小監査122本899宣言・標準三公理のみを確認した。実ハンドル94522の終了0を確認し、鍵返却済み。
+
+今回69行、累計122本・8,046行／外枠15,000。R03fは69行／見込み900〜1,450行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次はquasicategory値nerve係数のtaut scaffoldをR03eへ接続し、元の射を保つbar/scaffold比較を作る。
+
+### 201.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。各係数のKan性は同じEx∞の既存のinstanceにより明示した。
+
+#### GrothendieckKanCoefficientLift（69行）
+
+```lean
+abbrev grothendieckKanCoefficients : I ⥤ SSet.{u}
+
+def grothendieckKanCoefficientUnit : F ⋙ nerveFunctor ⟶ grothendieckKanCoefficients F
+
+def grothendieckKanCoefficientMap :
+    nerve (Grothendieck F) ⟶ weightedNerve (grothendieckKanCoefficients F)
+
+theorem grothendieckKanCoefficientMap_projection :
+    grothendieckKanCoefficientMap F ≫ weightedNerveProjection (grothendieckKanCoefficients F) =
+      nerveMap (Grothendieck.forget F)
+
+theorem exists_grothendieckKanCoefficientLift :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∃ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      f ≫ weightedNerveProjection (grothendieckKanCoefficients F) = R.hom ∧
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F
+```
