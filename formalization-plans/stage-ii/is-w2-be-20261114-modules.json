@@ -83,5 +83,7 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSectionsRecovery",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SectionFiberEvaluation",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedSectionsFiberTriangle",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberRecovery"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberRecovery",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanNativeFiberPoint",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanUniverseCoefficientPoint"
 ]

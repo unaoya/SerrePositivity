@@ -11490,3 +11490,69 @@ def strictBETotBKNativeSections_fiber_reconstruction
     (b : (nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ)) _⦋0⦌) :
     let H
 ```
+
+## 180. 元のBK指定点の係数への厳密な回収と宇宙変更・係数単位（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。R02/R03の標準脚・全錐族・極限性は未完了。
+
+§179.1の型のまま `bousfieldKanSectionsIso_nativeWeightedPoint_fiber` を証明した。元の指定BK点を切断模型に送り、元の次数のfiberで評価して元の係数へ戻した値は、元の自然変換の恒等射のBK零単体での値に**厳密に等しい**。Kan性・モデル構造の追加なし。
+
+証明は、元のliftとBK切断比較を合成した普遍評価の等式、零次のweighted nerveの初区間の係数計算、元のfiber同型による打ち消しに分割した。不透明なendを展開せず、元の普遍評価・パラメーター自然性・Yonedaの評価・直積の第一射影の法則を使った。
+
+さらに同じAsSmall.down・ULiftで宇宙変更した自然変換と、同じEx∞係数単位を合成した自然変換についても、fiberから回収した値が元の恒等射の値の指定像に等しいことを証明した。BE Totで用いた同じ `strictBETotUniversalBKExInfinityCone` に適用するための一般の係数移送則で、新しい係数・重み・単位を選んでいない。
+
+検証：246は一本の対象ビルド2,606 jobs・終了0、小監査86本602宣言。247は一本の対象ビルド3,376 jobs・終了0、小監査87本605宣言。標準三公理のみ。実ハンドル20536・21339の終了0を確認し、鍵は返却済み。個別検査で零次の係数計算を元の自然変換の型で保持し、AsSmallのup/downを明示してから対象ビルドを通した。sorry・独自公理0、計算上限の変更なし。
+
+二本164行追加、累計87本・5,546行。§179.1の元のfiber回収則は99行で、100〜250行の見込みを1〜151行下回った。宇宙変更と係数単位の評価則は別に65行。全て既存構成の評価・単位・係数移送の法則で、今回の追加の一覧項目は0。200行超の新規ファイルなし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+次は§179の共通の復元のfiberでの全三角形から、元のnative錐のfiberでの比較へ戻す。これはまだ元の標準脚の最終一致・全錐族・極限性の完成ではない。
+
+### 180.1 今回の法則の型
+
+#### BousfieldKanNativeFiberPoint（99行）
+
+```lean
+theorem bousfieldKanSectionsMap_lift_evaluation {A : SSet.{u}}
+    (η : bousfieldKanWeight I ⊗ (Functor.const I).obj A ⟶ H) :
+    (nerve I ◁ (weightedSectionsLift η ≫ bousfieldKanSectionsMap H)) ≫
+      simplicialSectionsEvaluation (weightedNerveProjection H) =
+        weightedNerveSectionFromTransform η
+
+theorem weightedNerveSectionFromTransform_zero_point
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    (weightedNerveSectionFromTransform
+      (fst (bousfieldKanWeight I) ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ s)).app
+        (Opposite.op ⦋0⦌) (nerveVertex i, SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) =
+    (weightedNerveConstantLift H i).app (Opposite.op ⦋0⦌)
+      ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i))))
+
+theorem bousfieldKanSectionsIso_nativeWeightedPoint_fiber
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((weightedNerveFiberIso H i).inv.app (Opposite.op ⦋0⦌))
+      ((simplicialSectionsFiberEvaluation (weightedNerveProjection H) (nerveVertex i)).app
+        (Opposite.op ⦋0⦌)
+        (((bousfieldKanSectionsIso H).hom.app (Opposite.op ⦋0⦌))
+          (nativeWeightedPoint I s))) =
+      (s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))
+```
+
+#### BousfieldKanUniverseCoefficientPoint（65行）
+
+```lean
+theorem bousfieldKanUniverseCone_identityVertex (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((bousfieldKanUniverseCone.{u,v} I s).app (AsSmall.up.obj i)).app (Opposite.op ⦋0⦌)
+      (nerveVertex (Over.mk (𝟙 (((AsSmall.up : I ⥤ AsSmall.{v} I).obj i))))) =
+        ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i))))
+
+theorem bousfieldKanUniverseExInfinityCone_identityVertex
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((bousfieldKanUniverseCone.{u,v} I s ≫ bousfieldKanExInfinityCoefficientUnit _ _).app
+      (AsSmall.up.obj i)).app (Opposite.op ⦋0⦌)
+        (nerveVertex (Over.mk (𝟙 (((AsSmall.up : I ⥤ AsSmall.{v} I).obj i))))) =
+      (exInfinityUnit.app ((SSet.uliftFunctor.{max u v,u}).obj (H.obj i))).app (Opposite.op ⦋0⦌)
+        (ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))
+
+theorem bousfieldKanUniverseExInfinityPoint_fiber
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    let H'
+```
