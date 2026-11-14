@@ -132,3 +132,43 @@ A06 の実際の出力は、Noether 環 R、局所有限型・準コンパクト
 一覧：済み 6／全体 12（うち追加 3）
 
 指示書の追記を受け、[帰着の事前照合と C01 の型つき一覧](scheme-w1-2g-bs17-reduction.md) を記録した。Lemma 2.12 の模型の被覆性は Thm. 2.4 の非 Noether affine 基底の細分を使うため、帰着だけで A07・C01 の依存は外れない。条件 (b) で C01.1〜C01.3（500〜1,500 行見込み）に進む。親子の ID を全体で二重計上しない。2g-1 の外枠は 25,000 行のまま。
+
+## A07 の次の小束：特殊化による像の全射性（着手前の型）
+
+一覧：済み 6／全体 12（うち追加 3）
+
+C01 の次に、既存の狭義変換の全射性の証明で Noether 性を使う箇所を分ける。この束は A07 内の既存の構成の法則・証明分割として全体 ID を増やさない。
+
+- `surjective_openImage_of_vCover_of_specializations`：任意のスキーム Y、v 被覆 f:X→Y、開 U、全ての y∈Y に対し U のある点 p から p⤳y があるとする。(f⁻¹U) の開包含が準コンパクトなら、そのスキーム論的像から Y への射は全射。既存の Noether 版の証明の、特殊化の選択後の部分を再利用する。
+- `surjective_openImage_of_vCover_affine_of_contains_minimalPrimes`：Y=Spec R、U が全ての極小素点を含むなら、上の全射性が成り立つ。Noether 性や R の被約性は不要。各素イデアルの下の極小素イデアルを選ぶ。
+
+この束は平坦な稠密開や模型を供給する定理ではない。それらの A07・G2 の残りを、この全射性だけで完成扱いにしない。見込み 60〜140 行。
+
+同じ A07 の小束で使う既存の開の選択の法則：`exists_compact_denseOpen_of_contains_minimalPrimes` は、Spec R の極小素点集合が準コンパクトで、開 V がそれを含むとき、V の内側の準コンパクトな稠密開 U で全極小素点を含むものを選ぶ。Mathlib の prespectral 空間の準コンパクト開の選択を再利用する。平坦性はこの法則の入力にも出力にも入れず、平坦な開を供給する A07 の残りと混同しない。
+
+## 2026-11-14：C01 と非 Noether の特殊化の小束
+
+一覧：済み 7／全体 12（うち追加 3）
+
+C01 内の一覧：済み 3／全体 3（うち追加 0）。数学の四ファイルの新規本体は **234 行**（C01 が 165 行、A07 の法則・分割が 69 行）、入口 4 行。G1 累計は本体 **971 行**、入口込み **999 行**。G0（入口込み 710 行）は別計上。約 12,000 行の途中報告点と 25,000 行の外枠には未到達。
+
+宣言と主張（四ファイルの明示的な宣言 10 本。法則・証明分割の本数で主項目を増やさない）：
+
+- `ResidueFieldProduct`：全素点の剰余体の積。
+- `reducedResidueProductMap`：各剰余体への標準射をまとめた環準同型。
+- `reducedResidueProductMap_injective`：被約環の標準射は単射。
+- `isIntegral_of_mul_self_eq`：冪等元は任意の基底環上整。X(X−1) のモニック多項式を使う。
+- `comap_integralClosure_productFields_isMinimal`：体の積の素点の、その積内の整閉包への縮約は極小素点。
+- `isCompact_minimalPrimes_integralClosure_productFields`：その整閉包の極小素点集合は準コンパクト。稠密像の極小素点の持ち上げで連続像の逆包含を証明。
+- `exists_integral_injective_reduced_compact_minimalPrimes`：C01 の要求どおりの被約な単射整拡大を同じ証人で供給。
+- `surjective_openImage_of_vCover_of_specializations`：開の点からの特殊化が基底全体を覆うとき、v 被覆の開部分のスキーム論的像は基底へ全射。
+- `surjective_openImage_of_vCover_affine_of_contains_minimalPrimes`：全極小素点を含む開から、同じ全射性を得る。Noether 性・被約性は不要。
+- `exists_compact_denseOpen_of_contains_minimalPrimes`：極小素点集合が準コンパクトなら、それを含む開の内側に、全極小素点を含む準コンパクトな稠密開を選べる。
+
+C01 は零環・空の積を含み、TIC 全体や絶対整閉性は主張しない。積全体が基底上整であるという誤った仮定を使わず、その中の整閉包を取った。新規の resource limit、sorry、追加公理は導入していない。全ファイル 200 行以下。
+
+対象 `CompactMinimalPrimeIntegralExtension` は 2,103 jobs、四ファイルを登録した直接の importer `SerrePositivity.AlgebraicGeometry` は **4,812 jobs 成功**。全プロジェクトの root ビルドと全体監査は今回行っていない。対象ログは `scheme-drafts/2g-c01-third-build.log` と `2g-c01-registered-check-2.log`。
+
+残り：A07 の平坦な稠密開の存在と Noether 段への降下・平坦化・整全射の近似、B01〜B04 の実際のモデル構成。今回の開の選択の法則は、平坦な開そのものの存在を証明してはいない。この区切りを停止点 2g-1 の完成とはしない。
+
+小さい監査は `scheme-drafts/audit-c01.lean` によって新規四モジュールを宣言元で抽出し、生成宣言を含む **12 宣言**を再帰的に検査して成功。許される依存は `propext`・`Classical.choice`・`Quot.sound` のみ。ログ `scheme-drafts/2g-c01-small-audit.log`。監査の初回のカウンタの型推論エラーは Nat の明示で直し、入口ビルド成功後に監査だけを再実行した。鍵は全て `--class impl --wait 3600`、同時の待ちは一つとした。
