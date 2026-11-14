@@ -19041,3 +19041,165 @@ L12a全体・L13以降を完成に数えず、一覧12/48（追加4）、goalは
 約25,000行で止まらず実測・残りを出し直す指定を維持する。
 完備化後のP⁰は§267・282の未供給箇所を残し、仮定を足して消していない。
 (c)が必要との判定には至っていない。3b-4a未受領のためTot九欄の実装は始めない。
+
+
+## 292. 同じ指定面の族から元の斉次実テンソルへの接続（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C451の等式を、元の各正規化生成元と右括弧テンソルへ適用する。
+以下は既存構成の法則・証明分割。新しい作用やテンソル模型を定義しない。
+ここで二段側は同じ指定面を合成して平坦に読んだ斉次テンソルである。
+実際の余代入の括弧替え・二つの係数移動を評価したとの主張にはしない。
+各証明200行以内の見込み。
+
+```lean
+lemma faceFamily_tensor_heq (A : Type u) [CommRing A] (S : SSet.{0}) {r q : ℕ}
+    (F G : Fin r → Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) (h : F = G)
+    (x : S _⦋q⦌) (a b : ℤ) (hab : a = b) :
+    HEq
+      (a • tensorValue (chains A S) r (fun i => (F i).1)
+        (fun i => gen A S (F i).1 (S.map (SimplexCategory.mkHom (F i).2).op x)))
+      (b • tensorValue (chains A S) r (fun i => (G i).1)
+        (fun i => gen A S (G i).1 (S.map (SimplexCategory.mkHom (G i).2).op x)))
+
+lemma positiveComposite_signedCutTensor_heq_nested
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) (x : S _⦋q⦌) :
+    HEq
+      ((Surjection.compositionSign u v k c.1 *
+        cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+        cutTensor A S c.2 (positiveCompositeCutWord u v k c.1) x)
+      (positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        tensorValue (chains A S) (m + (n + 1))
+          (fun a => (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1)
+          (fun a => gen A S
+            (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+            (S.map (SimplexCategory.mkHom
+              (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)))
+
+lemma gen_map_comp_faces (A : Type u) [CommRing A] (S : SSet.{0})
+    {a b q : ℕ} (f : Fin (b + 1) →o Fin (q + 1))
+    (g : Fin (a + 1) →o Fin (b + 1)) (x : S _⦋q⦌) :
+    gen A S a (S.map (SimplexCategory.mkHom (f.comp g)).op x) =
+      gen A S a (S.map (SimplexCategory.mkHom g).op
+        (S.map (SimplexCategory.mkHom f).op x))
+```
+
+第一はF=Gとa=bを消去する。第二は元のC451・C452を第一に渡すだけ。
+第三は同じ単体圏の射の合成とSの関手則を読む。
+異なる総次数の要素をHEqで記すのは既存 `tensorValue_heq_degree` と同じ証明上の型移送であり、
+ホモトピー圏への変更ではない。最終的な `compositeBalanceTerm` の共通次数へのeqToHomと
+実際の余代入の評価は別に残し、それらをこの型の仮定として隠さない。
+
+
+## 293. 元のappendIsoと余代入を同じ斉次ベクトルで評価する法則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§292の平坦な出力を、実際の余代入と照合する次の法則。
+既存 `IntervalCuts.coInsertionBlocks_apply` はKが任意なのでそのまま使える。
+一方、既存 `appendIso_tensorVectorAt` はinterval Aの面ベクトルに限られる。
+同じappendIsoを既存の `vectorTensorAt` で評価する法則を次の型で作る。
+既存構成の法則・証明分割で、新しい余代入・新しい作用・複体を定義しない。
+以下では `K C : Complex A`、`V := Σ d : ℕ, K.X (-(d : ℤ))`。
+各証明200行以内の見込み。
+
+```lean
+lemma vectorDegree_append (K : Complex A) (m n : ℕ) (f : Fin m → V) (g : Fin n → V) :
+    vectorDegree K (m + n) (Fin.append f g) = vectorDegree K m f + vectorDegree K n g
+
+lemma vectorTensorAt_arity_transport (K : Complex A) {m n : ℕ} (h : m = n)
+    (f : Fin m → V) (t : ℤ) (hf : -(vectorDegree K m f : ℤ) = t) :
+    (eqToHom (congrArg (power K) h)).f t (vectorTensorAt K m f t hf) =
+      vectorTensorAt K n (f ∘ Fin.cast h.symm) t (by subst n; exact hf)
+
+lemma appendIso_vectorTensor (K : Complex A) (m n : ℕ)
+    (f : Fin m → V) (g : Fin n → V) (t : ℤ)
+    (ht : -(vectorDegree K m f : ℤ) + -(vectorDegree K n g : ℤ) = t) :
+    (appendIso K m n).hom.f t
+      (ιTensorObj (power K m) (power K n)
+        (-(vectorDegree K m f : ℤ)) (-(vectorDegree K n g : ℤ)) t ht
+        (vectorTensor K m f ⊗ₜ[A] vectorTensor K n g)) =
+      vectorTensorAt K (m + n) (Fin.append f g) t
+        (by rw [vectorDegree_append]; omega)
+
+lemma appendIso_vectorTensorAt (K : Complex A) (m n : ℕ)
+    (f : Fin m → V) (g : Fin n → V) (r s t : ℤ)
+    (hr : -(vectorDegree K m f : ℤ) = r) (hs : -(vectorDegree K n g : ℤ) = s)
+    (ht : r + s = t) :
+    (appendIso K m n).hom.f t
+      (ιTensorObj (power K m) (power K n) r s t ht
+        (vectorTensorAt K m f r hr ⊗ₜ[A] vectorTensorAt K n g s hs)) =
+      vectorTensorAt K (m + n) (Fin.append f g) t
+        (by rw [vectorDegree_append]; omega)
+
+lemma appendIso_inv_vectorTensorAt (K : Complex A) (m n : ℕ)
+    (f : Fin m → V) (g : Fin n → V) (r s t : ℤ)
+    (hr : -(vectorDegree K m f : ℤ) = r) (hs : -(vectorDegree K n g : ℤ) = s)
+    (ht : r + s = t) :
+    (appendIso K m n).inv.f t
+      (vectorTensorAt K (m + n) (Fin.append f g) t
+        (by rw [vectorDegree_append]; omega)) =
+      ιTensorObj (power K m) (power K n) r s t ht
+        (vectorTensorAt K m f r hr ⊗ₜ[A] vectorTensorAt K n g s hs)
+
+lemma coInsertionBlocks_vector_apply (K C : Complex A) (s n t : ℕ)
+    (θ : C ⊗ K ⟶ power K n) (c q z : ℤ)
+    (f : Fin s → V) (g : Fin n → V) (h : Fin t → V)
+    (hz : c + (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) = z)
+    (a : C.X c) (y : K.X q) (hg : -(vectorDegree K n g : ℤ) = c + q)
+    (r : ℤ) (hθ : θ.f (c + q) (ιTensorObj C K c q (c + q) rfl (a ⊗ₜ[A] y)) =
+      r • vectorTensorAt K n g (c + q) hg) :
+    (IntervalCuts.coInsertionBlocks K C s n t θ).f z
+      (ιTensorObj C (power K s ⊗ (K ⊗ power K t))
+        c (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) z hz
+        (a ⊗ₜ[A] ιTensorObj (power K s) (K ⊗ power K t)
+          (-(vectorDegree K s f : ℤ)) (q + -(vectorDegree K t h : ℤ))
+          (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) rfl
+          (vectorTensor K s f ⊗ₜ[A] ιTensorObj K (power K t)
+            q (-(vectorDegree K t h : ℤ)) (q + -(vectorDegree K t h : ℤ)) rfl
+            (y ⊗ₜ[A] vectorTensor K t h)))) =
+      (c * -(vectorDegree K s f : ℤ)).negOnePow • (r •
+        vectorTensorAt K (s + (n + t)) (Fin.append f (Fin.append g h)) z
+          (by rw [vectorDegree_append, vectorDegree_append]; omega))
+```
+
+最初の二つは同じ有限和の分解と等式の消去。
+連結の順方向は `IntervalCuts.appendIso_tensorVector` と同じ帰納法で、
+既存 `vectorTensorAt_cons`・`vectorTensorAt_succ`、左単位子・結合子の評価を使う。
+逆方向はその同型の往復。最後は既存 `coInsertionBlocks_apply` で実際の交換符号を取り出し、
+同じappendIsoの評価を二回使う。係数の移動の符号を仮定や新しい規約に置き換えない。
+この後には出力族のprefixFamily・suffixFamilyへの再添字付けと、外側係数の移動の評価が残る。
+nullaryもまだこの正の語の比較で完了には数えない。
+
+
+## 294. 同じ指定面の族の斉次実テンソルへの移送：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§292の三つの型を実装した。`positiveComposite_signedCutTensor_heq_nested` は
+同じ面の合成で平坦に読んだ二段の斉次テンソルと、元の合成側の符号付きcutTensorを比較する。
+同じ総次数の型の移送をHEqで表すもので、ホモトピー圏の等式ではない。
+`gen_map_comp_faces` は元の単体圏の射の合成と関手則そのもの。
+実際の余代入の括弧替え・外側係数の移動の評価を、この比較で済んだとは数えない。
+
+`m14-composite-signed-tensors-01.log`：3,014 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-composite-signed-tensors.log`：
+**2モジュール・3宣言、標準三公理のみ**、sorry・独自公理0。
+終了コード0を確認し、鍵は返却した。全体ビルド・共有入口・共有監査・他レーンは変更なし。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| FaceFamilyTensors | 43 |
+| CompositeSignedTensors | 43 |
+| **計** | **86** |
+
+検証済みM14実測は**23,492行**、L12aは**8,285行**。
+§293のappendIsoの法則はこの取り込み点には含めず、対象ビルドで検証中。
+L12aの実際の余代入・共通次数・nullary、後続のL13以降は残る。
+一覧12/48（追加4）、goalはactive、外枠31,000行は据え置き。
