@@ -22540,3 +22540,160 @@ lemma nullaryNativeBalance_pairing {m d q : ℕ}
 mainは391b2a0d2のままで、3b-4a完成の取り込みはまだない。
 完備化の三案は§369の結論を維持する：(a)の項別平坦模型と全鎖primitiveの比較は未証明、
 (b)はperfect性だけで単位の全射を結論できず、(c)が不可欠とはまだ判定しない。
+
+## 377. 零出力の元の有限項を一項ずつ読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+零出力では外側の正次数基底は空。外側次数零では元の全空語分割と
+空作用の余単位一項（PUnit）、右側の元の全Cut 0 qを保持する。
+Cut 0 qは元のcard=0から唯一。和の等式だけで済ませず、この唯一Cutに対応させる。
+比較は§370の元の射の厳密な等式を、既存の全Cut展開と唯一性で一項へ戻す法則。
+新しい数学・IDは足さず、各証明200行以内。
+
+```lean
+abbrev NullaryZeroBalanceIndex (u : Surjection.BasisWord 1 0) (k : Fin 1) (q : ℕ) :=
+  (Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit) ⊕ Cut 0 q
+
+def nullaryZeroCompositeTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) {q : ℕ}
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit)
+    (x : S _⦋q⦌) : (power (chains A S) 0).X (-(q : ℤ))
+
+def nullaryZeroOuterTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) {q : ℕ}
+    (s : Cut 0 q) (x : S _⦋q⦌) : (power (chains A S) 0).X (-(q : ℤ))
+
+lemma nullaryZeroCompositeTerm_eq_outer (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) {q : ℕ}
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit)
+    (s : Cut 0 q) (x : S _⦋q⦌) :
+    nullaryZeroCompositeTerm A S u ν k c x = nullaryZeroOuterTerm A S u ν k s x
+```
+
+## 378. 零出力の全添字の対合（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の空語分割の一意性とcard=0のCutの一意性だけを使う。
+全ρ×PUnitと全Cut 0 qの同値で左右を交換する。係数環・単体に共通、
+元の一項ごとの比較は§377を使う。既存対合の法則と証明分割、各証明200行以内。
+
+```lean
+def nullaryZeroCutEquiv (u : Surjection.BasisWord 1 0) (k : Fin 1) (q : ℕ) :
+    (Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit) ≃ Cut 0 q
+
+def nullaryZeroBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) (q : ℕ)
+    (i : NullaryZeroBalanceIndex u k q) (x : S _⦋q⦌) : (power (chains A S) 0).X (-(q : ℤ))
+
+lemma nullaryZeroBalance_pairing (u : Surjection.BasisWord 1 0)
+    (ν : Surjection.BasisWord 0 0) (k : Fin 1) (q : ℕ) :
+    ∃ τ : Equiv.Perm (NullaryZeroBalanceIndex u k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryZeroBalanceTerm A S u ν k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryZeroBalanceTerm A S u ν k q (τ i) x =
+          -nullaryZeroBalanceTerm A S u ν k q i x)
+```
+
+## 379. L12aの元の全arity有限添字と共通次数の包装（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§112のCompositeBalanceIndex・compositeBalanceTerm・compositeBalance_pairingを、
+正の内側arity、空語の正出力、空語の零出力で包装する。
+空語の正次数とarity 1の外側正次数は基底が空なのでPEmpty。
+正の枝だけは元の計算済み整数次数から-(d+e+q)へeqToHomを使う。
+項・面・符号を変えず、同じ複体の等しい次数の移送。ホモトピー圏を使わない。
+新しい数学・IDは足さず、各証明200行以内。
+
+```lean
+def CompositeBalanceIndex {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) : Type
+
+instance compositeBalanceIndexFintype {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) : Fintype (CompositeBalanceIndex u v k q)
+
+def compositeBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) (i : CompositeBalanceIndex u v k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + n)).X (-((d + e + q : ℕ) : ℤ))
+
+lemma compositeBalance_pairing {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    ∃ τ : Equiv.Perm (CompositeBalanceIndex u v k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        compositeBalanceTerm A S u v k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        compositeBalanceTerm A S u v k q (τ i) x = -compositeBalanceTerm A S u v k q i x)
+```
+
+## 380. 完備化後P⁰の(a)(b)(c)：任意頂点の厳密表示と、指定Frobeniusの比較を分ける（紙のみ）
+
+一覧：済み 13／全体 48（うち追加 4）
+
+(a)の「同じnative頂点を厳密BE代数で表す」部分を、既存APIまで具体化した。
+BarrattEccles/CAlgVertexPresentation.leanの
+`cAlgVertexRepresentative A x : (operad A).Algebra` と
+`cAlgVertexRepresentativeIso A x : VertexIso (cAlgVertex A (cAlgVertexRepresentative A x)) x`
+が任意のCAlg_R頂点xに使える。CAlg.leanの`cAlgVertexEquiv`も、coherent nerveの
+零単体と元のcofibrant代数の対象の同値である。
+従って**完備化後の頂点に何らかの厳密BE表示がないこと**は障害ではない。
+mod pの後の指定頂点についても同じF_p上のAPIを使える。
+この表示だけから、各項を完備化した二重模型や指定Frobeniusの辺まで表せるとは言わない。
+
+§369の項別平坦なセル模型の最後のretractの義務には、既存の
+`Module.Flat.of_retract i r (r.comp i = LinearMap.id)`が直接使える。
+`cofibrantCarrierKFlat_of_cellStages`が使う同じ代数retractをcarrier、各次数へ写せば、
+最後のretractの平坦性はこの法則へ帰着する。
+なお各段階の平坦性から最終filtered余極限の各次数の平坦性への比較はまだ必要で、
+K平坦性の既存定理を項別平坦性として読み替えない。
+
+(a)で残る本質的な比較は、選んだ厳密表示に対してMayの値を定義できるかではなく、
+**元のcosimplicial/二重模型の指定Frobeniusが、完備化後にも同じ値を誘導するか**。
+ordinaryな項別完備化を使うなら、有限多重線形作用の連続延長と、
+全鎖での有限primitiveの恒等式（非cycleにはdaを含む誤差項）を検収する必要がある。
+完備化のcycleを単に未完備のcycleで近似できるとは仮定しない。
+L43bのclosed-inputの比較からこの全鎖の式が出るかは未証明であり、
+新しい数学の補題が必要と確定したら型つき一覧の規則で別途停止する。
+今回そのような追加補題のLeanを実装したものではない。
+
+(b)は§357のperfect環・半線形同型だけでは単位の全射性やTate項消滅を導けない、
+という結論のまま。actualなprismatic対象に必要な有界性・消滅の証明はまだない。
+(a)の指定辺との比較が不可能と示せたわけではないので、(c)が不可欠とは判定しない。
+(c)に至れば§32どおり止める。新しい仮定、G10の部品、界面・draftsの変更は加えていない。
+
+
+## 381. L12aの全arity対合が完了（検証済み、取り込み点）
+
+一覧：済み 13／全体 48（うち追加 4）
+
+`CompositeBalancePairing.compositeBalance_pairing`が§112の型を満たした。
+正の内側arity、空語の全正出力枝、零出力を全係数次数・全入力次数で含む。
+元の全分割・全Cutを保持し、退化零項も固定零項として含める。
+零出力は元のcard=0の唯一Cutと空作用の余単位の一項を対応させる。
+対合は全係数環・全単体に共通。共通整数次数へのeqToHomも負号・零を保つ。
+ホモトピー圏の等式への弱めはしていない。
+L12aだけを完了へ進め、L12・L14・L16などの別項目は未完了のまま。
+
+登録対象（全て SerrePositivity.EInfinity.SimplexCuts の下）：
+
+- NullaryZeroBalanceValues（78行）
+- NullaryZeroBalancePairing（72行）
+- CompositeBalanceTerms（69行）
+- CompositeBalancePairing（66行）
+
+今回285行、M14実測28,928行、L12a 13,721行、外枠31,000行まで2,072行。
+対象ビルド3292 jobs成功、追加警告0。
+小さい監査4モジュール78宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。鍵は各対象ビルド・監査の間だけ取り、返却済み。
+§376の登録対象9本は3b57d07e8。今回の4本と合わせて取り込み対象は13本。
+共有入口・共有監査の登録は触っていない。
+mainは391b2a0d2のまま。3b-4a完成の取り込みが入れば§33のTotへ切り替える。
+
+§314以降の完成見込みが外枠に収まらない懸念と、完備化後P⁰の未評価分を維持する。
+現在の実測は外枠内であり、次はL12の同じ有限和の相殺の包装へ進む。
