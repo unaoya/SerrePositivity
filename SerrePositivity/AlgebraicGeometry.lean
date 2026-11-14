@@ -1334,3 +1334,7 @@ public import SerrePositivity.AlgebraicGeometry.GenericFlatNoetherianModel
 public import SerrePositivity.AlgebraicGeometry.AffineTensorModelPullback
 public import SerrePositivity.AlgebraicGeometry.FiniteTypeIdealSheaf
 public import SerrePositivity.AlgebraicGeometry.FiniteIdealLocalizationApproximation
+
+public import SerrePositivity.AlgebraicGeometry.FiniteIdealMapApproximation
+
+public import SerrePositivity.AlgebraicGeometry.FiniteTypeIdealSheafLocality

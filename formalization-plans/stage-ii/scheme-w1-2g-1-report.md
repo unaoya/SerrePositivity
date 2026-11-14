@@ -503,3 +503,20 @@ C02 内の主三項目は済み **1／全体 3**（(ii) のみ）。(i) の大�
 次の C02.(i) のアフィン比較の法則：`exists_fg_subideal_map_contains_finset f I s hs` は任意の環準同型 f:A→B と有限集合 s⊆Ideal.map f I に対し、有限生成 J≤I で s⊆Ideal.map f J を得る。これは Stacks 01PF のアフィンでの有限選択を、生成イデアルへの所属の有限性で扱う分割で、局所化の仮定を要しない。見込み 60〜140 行。この法則を K.map_ideal と組み、アフィン基底上の有限個のアフィン開の切断を同じ有限生成イデアルへ含める。
 
 C02.(i) の有限型性の係数比較の法則：`isFiniteTypeIdealSheaf_of_fg_top` はアフィン X において K の全体切断イデアルの有限生成性から IsFiniteTypeIdealSheaf K を得る。`isFiniteTypeIdealSheaf_ofIdealTop` は有限生成な大域切断イデアルから作る既存の ofIdealTop の有限型性、`IsFiniteTypeIdealSheaf.sup` は有限和による安定性。原典 01TV のアフィン局所判定と 01PG の有限和の部分。いずれも既存の map_ideal・FG.map・FG.sup の法則で、見込み 40〜100 行。
+
+C02.(i) のアフィン部分の具体的な型：`exists_finiteType_subideal_containing_affine_sections_of_isAffine` はアフィン X、K、有限族のアフィン開 U_i と有限集合 s_i⊆K(U_i) から、J≤K、IsFiniteTypeIdealSheaf J、全 i で s_i⊆J(U_i) を得る。Stacks 01PF (28.23.2) のアフィン部分。全体の切断イデアルから U_i への map_ideal と有限選択を使い、有限個の部分イデアルを和にして equivOfIsAffine で戻す。見込み 60〜160 行。非アフィン基底への有限被覆の延長はまだ別に残る。
+
+C02.(i) の被覆による有限型性の法則：`isFiniteTypeIdealSheaf_of_affineCover` は X のアフィン開被覆 U_i と全 i での (K.ideal U_i).FG から IsFiniteTypeIdealSheaf K を得る。型は `∀ (U : ι → X.affineOpens), (⨆ i, (U i).1) = ⊤ → (∀ i, (K.ideal (U i)).FG) → IsFiniteTypeIdealSheaf K`。Stacks 01TV の有限型性の局所判定。V と U_i の交叉を基本開で細分し、既存の Submodule.of_localizationSpan' と map_ideal に帰着する（見込み 50〜150 行）。`IsFiniteTypeIdealSheaf.comap_openImmersion` は開埋め込み j:X→Y に沿う制限で有限型性を保存する。既存の ideal_comap_of_isOpenImmersion と切断環の同型による法則（見込み 20〜60 行）。
+
+### C02 の環準同型の有限選択と有限型性の係数移送：検証結果
+
+FiniteIdealMapApproximation（57 行）と FiniteTypeIdealSheafLocality（44 行）、本体計 **101 行**、入口 2 行を追加した。対象ビルドは直接の importer AlgebraicGeometry まで **4,841 ジョブ成功**、小監査は補助宣言を含め **5 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600` をビルドの間だけ取得した。新しい resource limit・sorry・追加公理はない。
+
+- `exists_fg_subideal_map_contains_finset`：任意の環準同型によるイデアルの像の有限集合を、有限生成部分イデアルの像に同時に含める。
+- `isFiniteTypeIdealSheaf_of_fg_top`：アフィン基底の全体切断イデアルの有限生成性から有限型イデアル層を得る。
+- `isFiniteTypeIdealSheaf_ofIdealTop`：有限生成な大域切断イデアルの既存の層への移送は有限型。
+- `IsFiniteTypeIdealSheaf.sup`：有限型イデアル層は二項和で保たれる。
+
+ログ：`2g-c02-map-locality-native.log`、`2g-c02-map-locality-audit.log`。G1 累計は本体 **2,782 行**、入口込み **2,838 行**。アフィンの有限族をまとめる次の補題は下書き検証成功、まだ本体ビルド・監査前。被覆の判定も検証前の作業木にあり、C02.(i) の大域延長の完成とは数えない。
+
+一覧：済み 7／全体 13（うち追加 4）。
