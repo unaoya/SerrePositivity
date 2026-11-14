@@ -7181,3 +7181,168 @@ theorem normalizedMooreMapInv_inclusion :
 鍵付き対象ビルド163は **6,114 jobs・終了コード0**（`/private/tmp/isw2-build163.log`）。新規四本だけの監査は **14宣言（1・4・8・1）、標準三公理のみ**。鍵 `--class impl --wait 3600` は一つの整理券で待ち、対象ビルドと小監査の間だけ保持し返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
 
 累計 **303モジュール・18,631行**、外枠まで1,369行。一覧 `/private/tmp/isw2-g10-threehundredthree-modules.txt`。未コミットは `NativeTotConeStandardLeg` と、その零次係数生成元の計算の分割 `LinearWeightZeroGenerator`。前者は既存 `reflectedBKFreeCone_generator_top` で同じ自由生成元の像へ戻す所まで確認し、後者の係数逆射の法則を証明中。これらは今回の検収・累計に含めない。C01の最終式、C02〜C07、D、停止点2a・2b、3b-4段0は未完。
+
+
+## 147. C01・C02・C03完了：同じ標準脚・D(A)のnative極限錐・指定頂点（2026-11-14）
+
+一覧：済み 24／全体 36（うち追加 1）。C01・C02・C03完了。C04〜C07・Dは未完であり、停止点2a・2bではない。
+
+### 147.1 証明と再利用
+
+C01は、同じweighted一次単体の比較を既存自由生成元評価へ戻し、係数逆射・Moore反転の零次包含則・元の零行・第0頂点への重み比較・自由単位重みの逆Yoneda評価を合成した。最後のcochainと閉零射の値は、既存 `complexClosedHomEquiv_cochain` と `complexToClosed_map` で照合した。計算上限に当たった深い書き換えは、等式を指定した前後合成へ分割して解消した。上限の引き上げなし。
+
+C02は既存 `dgModuleResolvedInfinity_isLimitCone_of_raw` をそのまま使い、前後の一点係数比較の同値で同じ全join錐を既存D(A)へ送った。`SemifreeRingEvaluationEquivalence` の最終版は既存 `SemifreePointComparison.semifreePointEvaluation_quasiEquivalence` の同じ評価の定義を再利用する薄い接続であり、準同値を作り直していない。C03は同じ後合成の頂点則で、元の積Totの指定半自由分解の頂点を保持する。
+
+### 147.2 型と登録対象
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightZeroGenerator`（89行）。
+
+```lean
+theorem normalizedLinearWeightDiagramIso_inv_zero_generator (W : J ⥤ SSet.{0})
+    (j : J) (s : (W.obj j) _⦋0⦌) :
+    let V := linearizedSimplicialWeight A W.flip
+    let N := (normalizedMooreComplex _).obj V
+    let e := N.extendXIso ComplexShape.embeddingDownNat (i := 0) (i' := (0 : ℤ)) rfl
+    ((inclusionOfMooreComplexMap V).f 0).app j
+      (e.hom.app j (((normalizedLinearWeightDiagramIso A W).inv.f 0).app j
+        (freeNegativeGenerator ((W ⋙ SSet.uliftFunctor.{u,0}).obj j) 0 (ULift.up s)))) =
+      CategoryTheory.Limits.Sigma.ι (fun _ : (W.obj j) _⦋0⦌ => ModuleCat.of A A) s (1 : A)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SemifreeRingEvaluationEquivalence`（35行）。
+
+```lean
+theorem semifreeRingEvaluationDG_quasiEquivalence :
+    QuasiEquivalence (semifreeRingEvaluationDG A)
+
+theorem semifreeRingEvaluationInfinity_isQCatEquivalence :
+    IsQCatEquivalence (semifreeRingEvaluationInfinity A)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeZeroRow`（44行）。
+
+```lean
+theorem normalizedBousfieldKanConeRepresentative_zero_row
+    (X : CosimplicialObject (Complex A)) :
+    let T := (productTotalFunctor A).obj X
+    let H := doubleOppositeDiagram ((homDiagramFunctor T).obj X)
+    (negativeChainRowIso (normalizedBousfieldKanWeight (A := A)) 0).inv ≫
+      (normalizedBousfieldKanConeRepresentative X).f 0 =
+    (normalizedBKStandardWeightMap A).f 0 ≫
+      ((freeUnitWeightEndNatIso A (Opposite.op ⦋0⦌)).inv.app H).f 0
+        (Cochain.ofHom (standardZeroLeg A X))
+
+```
+
+登録対象：`SerrePositivity.HomologicalAlgebra.FreeWeightEndInverseEvaluation`（43行）。
+
+```lean
+theorem freeUnitWeightEndNatIso_inv_generator (j i : J) (f : i ⟶ j)
+    (X : Jᵒᵖ ⥤ Complex A) (q : ℤ) (x : (X.obj (op j)).X q) :
+    ((((freeUnitWeightEndNatIso A j).inv.app X).f q x).app (op i))
+      (Sigma.ι (fun _ : i ⟶ j => ModuleCat.of A A) f (1 : A)) =
+    (X.map f.op).f q x
+
+```
+
+登録対象：`SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseExtendZero`（32行）。
+
+```lean
+theorem normalizedMooreReverse_extend_zero_inclusion (W : SimplicialObject C) :
+    let N := (normalizedMooreComplex C).obj W
+    let Nr := (normalizedMooreComplex C).obj (SimplicialObject.opFunctor.obj W)
+    (extendMap (normalizedMooreReverse.app W) ComplexShape.embeddingDownNat).f 0 ≫
+      (negativeChainRowIso N 0).hom ≫ (inclusionOfMooreComplexMap W).f 0 =
+    (negativeChainRowIso Nr 0).hom ≫
+      (inclusionOfMooreComplexMap (SimplicialObject.opFunctor.obj W)).f 0
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKStandardZeroGenerator`（41行）。
+
+```lean
+theorem barOverStandard_zero_generator (n : SimplexCategory) :
+    let j := op (op n)
+    (((barDoubleOppositeOverChainIso SimplexCategory (ModuleCat.of A A)).inv.f 0 ≫
+      ((alternatingFaceMapComplex _).map
+        (SimplicialRealization.barStandardWeightComparison (ModuleCat.of A A))).f 0).app j)
+      (Sigma.ι (fun _ : (bousfieldKanSetWeight.obj (op ⦋0⦌)).obj j => ModuleCat.of A A)
+        (nerveVertex (Over.mk (𝟙 n))) (1 : A)) =
+    Sigma.ι (fun _ : op n ⟶ op ⦋0⦌ => ModuleCat.of A A)
+      (SimplexCategory.const ⦋0⦌ n 0).op (1 : A)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKConeZeroRow`（88行）。
+
+```lean
+theorem reflectedBKCone_zero_generator (X : CosimplicialObject (Complex A))
+    (n : SimplexCategory) :
+    let j := Opposite.op (Opposite.op n)
+    let W := (SimplicialObject.opFunctor.obj bousfieldKanSetWeight).flip
+    let S := (W ⋙ SSet.uliftFunctor.{u,0}).obj j
+    (((((normalizedLinearWeightDiagramIso A W).inv ≫
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat) ≫ normalizedBousfieldKanConeRepresentative X).f 0).app j)
+      (freeNegativeGenerator S 0 (ULift.up (nerveVertex (Over.mk (𝟙 n))))) =
+    Cochain.ofHom (standardLeg A X n)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeStandardLeg`（81行）。
+
+```lean
+theorem nativeDGCone_standardLeg (X : CosimplicialObject (Complex A)) (n : SimplexCategory) :
+    (derivedConeLeg (nativeDGCone X) (ULift.up (nerveVertex (AsSmall.up.obj n)))).edge =
+      (dgClosedEdge A (Complex A)
+        ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map
+          (standardLeg A X n))).edge
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotIndex`（41行）。
+
+```lean
+def nativeTotIndexIso :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ≅
+      (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)
+
+def strictCosimplicialComplexNerve (X : CosimplicialObject (Complex A)) :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ nerve (Complex A)
+
+theorem nativeTotIndexIso_vertex (n : SimplexCategory) :
+    nativeTotIndexIso.{u}.hom.app (Opposite.op ⦋0⦌)
+      (ULift.up (nerveVertex (AsSmall.up.obj n))) = ULift.up (nerveVertex n)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotCone`（59行）。
+
+```lean
+def nativeDerivedDiagram (X : CosimplicialObject (Complex A)) :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶
+      derivedInfinityCategory A
+
+def nativeDerivedCone (X : CosimplicialObject (Complex A)) : JoinCone (nativeDerivedDiagram X)
+
+theorem nativeDerivedCone_isLimit (X : CosimplicialObject (Complex A)) :
+    IsLimitCone (nativeDerivedCone X)
+
+theorem nativeDerivedCone_vertex (X : CosimplicialObject (Complex A)) :
+    (nativeDerivedCone X).vertex =
+      (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
+        (Simplex.vertex ((productTotalFunctor A).obj X))
+
+```
+
+### 147.3 検収・実測・残り
+
+初回の係数二本だけのビルド165は5,020 jobs・終了コード0、3宣言・標準三公理のみ。その後に既存準同値の再利用へ整理した**最終版**の鍵付き対象ビルド166は **7,849 jobs・終了コード0**、今回十本だけの監査は **24宣言（1・2・1・1・1・5・1・1・4・7）、標準三公理のみ**。ログ `/private/tmp/isw2-build165.log`・`/private/tmp/isw2-build166.log`。鍵は一つの整理券で `--class impl --wait 3600`、対象ビルドと小監査の間だけ保持し返却済み。sorry・新公理0。既存宣言・⑤a・入口・公式監査・mainの変更なし、rootビルド・大きな監査なし。
+
+累計 **313モジュール・19,184行**、外枠まで816行。モジュール一覧 `/private/tmp/isw2-g10-threehundredthirteen-modules.txt`。
+
+C05の宇宙表記は§73.3の許可どおり、複体の対象宇宙u+1とHom宇宙uを分けた。`nerveMap X` は通常のMathlib版だと二つの圏の宇宙を同じに要求するため、そのままの表記を使わず、既存 `nerveAsSmallIso` と `resizedNerveMap (AsSmall.down ⋙ X)` で元のXの全単体を写す `strictCosimplicialComplexNerve` を明示した。元のXを別の図式へ置き換えるものではない。`nativeTotIndexIso` は同じAsSmallの逆と既存 `smallDiagramShapeIso` の合成で、指定次数の頂点の等式も厳密に保つ。C05の最終図式等式自体はまだ未完。
+
+未コミットの作業はC04の一般後合成則 `ConeLegPostcomposition`（個別検査済み）と `NativeDerivedTotLeg`（そのモジュールのビルド待ち）、C05の `ComplexStrictNerveComparison`（証明中）。C04〜C07が済んだ後に停止点2aをまとめ、同じ外枠の中でDへ進む。Dの型・範囲を弱めない。
