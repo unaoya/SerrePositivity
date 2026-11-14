@@ -9636,3 +9636,174 @@ L09a・L09の実測 **4,699行**、改訂MayのM14全体 **9,765行**。
 §121の残り見込みの「混合角」のうち、指定面の厳密な一致と一般の次数移送を進めた。
 `deletedCutTensor`内部の各因子をこの指定面の生成元へ実際に書き換え、
 全体の次数移送と符号を合わせる接続はまだ残る。L09aの完了には数えない。
+
+## 123. 混合角の実テンソルへ指定面を接続する（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは進捗あり：`1fc84640c`・`3f38e2eec`で対象ビルド・監査済みの実装と
+§121の再見積もりを保存した。作業木はクリーンで再開し、G10や新しい作用には入らない。
+以下は既存構成の次数移送・係数移送の法則として型を追加する。
+
+```lean
+tensorValue_cast_target_congr (A : Type u) [CommRing A]
+    (K : Complex A) (n : ℕ) (d e : Fin n → ℕ)
+    (h : d = e) (v : ∀ i, K.X (-(d i : ℤ))) (w : ∀ i, K.X (-(e i : ℤ)))
+    (hv : ∀ i, v i = (eqToHom (congrArg (fun t : ℤ => K.X t)
+      (congrArg (fun k : ℕ => -(k : ℤ)) (congrFun h i).symm))).hom (w i))
+    (z : ℤ) (hd : -(degreeSum n d : ℤ) = z) (he : -(degreeSum n e : ℤ) = z) :
+  (eqToHom (congrArg (fun t : ℤ => (power K n).X t) hd)).hom (tensorValue K n d v) =
+    (eqToHom (congrArg (fun t : ℤ => (power K n).X t) he)).hom (tensorValue K n e w)
+deletedCutTensor_eq_faces (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j : Fin (outputDegree s v a + 1)) (x : S _⦋q⦌)
+    (h : -(degreeSum r (Function.update (outputDegree s v) a
+      (outputDegree s v a - 1)) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+  deletedCutTensor A S s v a ha j x =
+    (eqToHom (congrArg (fun t : ℤ => (power (chains A S) r).X t) h)).hom
+      (tensorValue (chains A S) r
+        (Function.update (outputDegree s v) a (outputDegree s v a - 1))
+        (fun c => gen A S _ (S.map (deletedCutFace s v a ha j c).op x)))
+```
+
+### 123.1 元の削除テンソルの一致（C162・C163）
+
+C157の指定面、C158の生成元、C160の全体の次数移送を順に適用する、
+既存構成の貼り合わせの法則。単体圏の厳密な一致から始め、最後も元の加群の等式で述べる。
+
+```lean
+deletedCutTensor_eq_of_faces (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s t : Cut m q) (v : Surjection.Word r (m + 1)) (a b : Fin r)
+    (ha : 0 < outputDegree s v a) (hb : 0 < outputDegree t v b)
+    (ja : Fin (outputDegree s v a + 1)) (jb : Fin (outputDegree t v b + 1))
+    (he : Function.update (outputDegree s v) a (outputDegree s v a - 1) =
+      Function.update (outputDegree t v) b (outputDegree t v b - 1))
+    (hf : ∀ c, deletedCutFace s v a ha ja c =
+      eqToHom (congrArg SimplexCategory.mk (congrFun he c)) ≫ deletedCutFace t v b hb jb c)
+    (x : S _⦋q⦌) :
+  deletedCutTensor A S s v a ha ja x = deletedCutTensor A S t v b hb jb x
+deletedCutTensor_swapSteps (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc))
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc) (x : S _⦋q⦌) :
+  deletedCutTensor A S (s.swapSteps a b) v
+      (label (s.swapSteps a b) v.val b.castSucc) hn jn x =
+    deletedCutTensor A S s v (label s v.val b.castSucc) ho jo x
+```
+
+### 123.2 同じ符号付き境界項への適用（C164・C165）
+
+C164は同じ有限同値の逆の面番号を評価する法則、C165は既存の実テンソルの一致と
+既存の境界符号反転の貼り合わせ。新しい相殺の対合は作らない。
+
+```lean
+outputBoundarySign_eq_at_of_rank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) :
+  outputBoundarySign s v (label s v.val k) j = outputBoundarySignAt s v k
+outputBoundaryTerm_swapSteps_of_sign (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc))
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc)
+    (hs : outputBoundarySignAt (s.swapSteps a b) v b.castSucc =
+      -outputBoundarySignAt s v b.castSucc) (x : S _⦋q⦌) :
+  outputBoundaryTerm A S (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) jn x =
+    -outputBoundaryTerm A S s v (label s v.val b.castSucc) jo x
+```
+
+### 123.3 正次数の確認と両向きへの適用（C166・C167）
+
+C166は直前同色位置の既存の法則、C167は水平/垂直の向きでC147・C148とC165を使い分ける
+証明の分割。混合角の両側の元の出力境界項を、追加の正次数仮定なしに述べる。
+
+```lean
+outputDegree_pos_after_vertical {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin (m + q)) (ha : a ∉ s.val) :
+  0 < outputDegree s v (label s v.val a.succ)
+outputBoundaryTerm_swapSteps_mixed (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) (hc : a ∈ s.val ↔ b ∉ s.val)
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc) (x : S _⦋q⦌) :
+  outputBoundaryTerm A S (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) jn x =
+    -outputBoundaryTerm A S s v (label s v.val b.castSucc) jo x
+```
+
+### 123.4 構成済みの対合の混合角の分岐へ戻す（C168・C169）
+
+C168は既存の添字同値に沿う値の定義の評価、C169はC167を既存のMixedVertex分類と
+既存の全体の次数移送へ適用する証明の分割。
+C161の証明内で使う局所的なcastの法則は
+`hcast (M N : ModuleCat A) (hMN : M = N) (y : M) : HEq ((eqToHom hMN).hom y) y`。
+等式の帰納法で証明し、HEqは依存した型の処理にだけ使う。出力はすべて元の加群の等式。
+
+```lean
+universalBoundaryValue_output (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (s : Cut (r + d) q) (k : Fin (r + d + q + 1))
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+  universalBoundaryValue A S w q x (.inl ⟨s, k⟩) =
+    (eqToHom (congrArg (fun t : ℤ => (power (chains A S) (r + 1)).X t) h)).hom
+      (outputBoundaryTerm A S s (positiveWord w) (label s (positiveWord w).val k)
+        ((colorPositionEquiv s (positiveWord w)).symm k).2 x)
+universalBoundaryValue_mixed_neg (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (t : BoundaryVertexOfKind (r + d) q .mixed) :
+  universalBoundaryValue A S w q x (.inl (vertexCornerPerm (r + d) q t.val)) =
+    -universalBoundaryValue A S w q x (.inl t.val)
+```
+
+### 123.5 混合角の分岐の完了・検証・保存
+
+一覧：済み 8／全体 48（うち追加 4）
+
+次の五本、**316行**が対象ビルド・合同監査を通った。
+登録候補の接頭部は `SerrePositivity.EInfinity.SimplexCuts.`。
+
+- `DeletedFaceTensors`：75行
+- `CornerDeletedTensors`：66行
+- `CornerBoundaryTerms`：52行
+- `MixedCornerTerms`：61行
+- `MixedBoundaryValues`：62行
+
+対象ビルド `/tmp/bsw16/m14-mixed-boundary-values-04.log` は五本すべて成功、Leanの警告0。
+専用監査 `/tmp/bsw16/audit-m14-mixed-boundary-values.log` は
+**5モジュール・19宣言・標準三公理のみ**。新規五本のsorry・追加公理0、
+個々の補題200行以下。既存公開宣言・共通入口・共通監査は変更していない。
+
+独立の有限点検では、m=0〜4・q=0〜3・色数1〜3の全射非退化語と全混合角で
+**9,536組**の実際の出力境界符号・削除後の全色の列・正規化での零を確認した。
+そのうち**4,080組**は削除面の重複により正規化で零となる。
+Leanではこの有限点検を仮定せず、既存の指定面の厳密一致と次数移送の法則から証明した。
+
+`universalBoundaryValue_mixed_neg`は、L09aの三群の貼り合わせ
+`universalBoundaryPartner_neg_of_cases`の**hmixを、そのまま仮定なく供給する**。
+条件を弱めたり符号の仮定を追加したりしていない。
+L09a全体・L09は未完了で、残るのは水平のhc・垂直のhvと有限和から微分への包装。
+したがって一覧の完了件数はまだ増やさない。
+
+L09a・L09累計 **5,015行**、改訂MayのM14全体 **10,081行**。
+§121の混合角の180〜300行の見込みに対し、§122の131行と今回の316行で実測**447行**、
+差は**+147〜+267行**。指定面の一致だけでは元の`deletedCutTensor`内の依存した型の
+二段の移送を解消できず、因子ごとの生成元と全体の終域次数までを明示的に接続したため。
+新しい数学の追加ではなく同じ構成の照合だが、この行数も外枠に含める。
+混合角の残りは0行として、ほかの見込みを据え置いたM14完成見込みは
+**19,211〜26,521行**。上端は外枠25,000行を1,521行上回るリスクが残る。
+外枠の変更は仮定せず、水平の分岐へ続行する。
