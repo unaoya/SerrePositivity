@@ -2014,3 +2014,25 @@ G1・G2共用部品込み本体12,213行、入口込み12,422行。aa00383c7 の
 グラフ閉包の補題の入力である有限 affine 被覆と共通の開は、この後に実際の Noether 対象から供給する。閉包の各射影を各 affine チャートの閉包へ因子化し、チャート上の固有射を元の X への射に貼り合わせて固有全射を得るところ、有限個の成分から元の一般の対象へ戻すところも残る。このグラフ閉包を C06 や一般の固有模型の完成とは扱わない。C06 と B01〜B04 は未完で、2g-1 の停止点ではない。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 の実際の有限 affine 被覆と共通の開（着手前の型、見込み120〜280行）：`exists_finite_nonempty_affine_open_cover` は空でない準コンパクトなスキーム X について、正の n と Fin n の空でない affine 開の実際の被覆を返す。`finite_open_iInf_nonempty` は既約空間の有限個の空でない開の共通部分が空でないことを返す。`exists_dense_common_finite_affine_cover` は既約で準コンパクトな X の実際の有限 affine 被覆と、そのすべてに含まれる稠密で空でない開 W を返す。Mathlib の finiteSubcover が選ぶ点を使って各開の非空性を保ち、添字を Fin n に付け替える。C06 の 0200 の有限被覆を供給する証明分割で、被覆や共通の開を最終の Noether 対象の追加仮定にはしない。親項目を増やさない。
+
+
+C06 の実際の affine チャートへの C05 の適用（着手前の型、見込み80〜160行）：`exists_affine_scheme_immersion_proper_ambient` は任意の affine な X,S と局所有限型の f:X→S に対し、実際の固有な P→S、immersion X→P とその合成が f になる可換式を供給する。Γ(S)→Γ(X) の実際の有限型の環写像に C05 を適用し、両側の canonical な Spec との同型と自然性で元の実際の f へ戻す。C05 の既存の構成の係数・対象の移送として C06 内の分割で、親項目を増やさない。X,S の Noether 性や周辺の存在は追加しない。
+
+
+C06 の共通の開の像と各チャートへの制限の法則（着手前の型、見込み60〜140行）：`surjective_schemeImageInclusion_of_isDominant` は稠密な射の実際の像の包含が全射と返す。`surjective_denseOpenImageInclusion` は稠密な開 W の実際の像の包含の全射性。`isSchemeTheoreticallyDominant_open_lift` は準コンパクトな scheme-theoretically dominant な射を、その像を含む開へ持ち上げても scheme-theoretically dominant であることを返す。`isOpenImmersion_open_lift` は元の射が開包含ならこの持ち上げも開包含であること。既存の像と開の lift の Cartesian 正方形・平坦な底変換の法則として C06 内の分割で、親項目を増やさない。
+
+
+### C06：実際の有限 affine 被覆・稠密な共通の開と、各チャートの固有な周辺
+
+`FiniteDenseAffineCover`（75行）：`exists_finite_nonempty_affine_open_cover` は空でない準コンパクトなスキームの、Fin n の空でない affine 開による実際の有限被覆。`finite_open_iInf_nonempty` は既約空間の有限個の空でない開の共通部分の非空性。`exists_dense_common_finite_affine_cover` は準コンパクトな既約スキームの、すべてに含まれる稠密で空でない開 W を伴う実際の有限 affine 被覆を返す。
+
+`AffineSchemeProperAmbient`（40行）：`exists_affine_scheme_immersion_proper_ambient` は任意の affine スキーム間の局所有限型の射に対し、同じ実際の基底上の固有な周辺への immersion と構造射の可換式を供給する。全切断の環写像と canonical な Spec の同型の自然性で C05 の実際の構成を移した。
+
+本体115行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,998ジョブ成功。小監査4宣言（3・1）・標準三公理のみ。有限被覆の下書きでは添字の付け替えの関数と、Fin の共通部分の分解を明示して単独検証を完了し、チャートへの移送は最初の単独検証で成功。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-finite-dense-affine-cover-check-2.log`・`2g-finite-dense-affine-cover-native.log`・`2g-finite-dense-affine-cover-audit.log`・`2g-affine-scheme-proper-ambient-check.log`・`2g-affine-scheme-proper-ambient-native.log`・`2g-affine-scheme-proper-ambient-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体12,328行、入口込み12,539行。C06 は本体394行までで未完。実際の共通の開は供給済みだが、その scheme-theoretic な像に affine 被覆を引き、各チャートの閉包への射影を因子化し、元の X への固有全射を貼り合わせる接続はなお残る。C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
