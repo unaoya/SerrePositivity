@@ -155,3 +155,18 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 ### 次数付きの多項式作用への係数移送（着手前の型、G3 の内数）
 
 `reesDegreeOnePolynomialAlgebra I a` は有限な次数一族 a による実際の評価からの MvPolynomial 代数構造。`reesDegreeOnePolynomial_scalarTower` は R との塔、`reesDegreeOnePolynomial_finite` は評価が全射ならその多項式環上有限な加群であること。`reesDegreeOne_aeval_mem` は次数 d の斉次多項式の評価が reesGrade I d に入ること。`reesDegreeOnePolynomial_gradedSMul` はこの評価による SetLike.GradedSMul としての作用。単項式の次数と既存の graded な有限積の法則を使う。見込み100〜220行。これは 2f の射影入力へ実際の係数構造を合わせる法則で、新たな有限性の仮定を最終の主張に追加しない。
+
+
+## G3：実際の次数付き多項式作用と有限加群性
+
+`ReesDegreeOnePolynomialAction`（69行）：`reesDegreeOnePolynomialAlgebra` は選んだ次数一族による評価の代数構造。`reesDegreeOnePolynomial_scalarTower` は R との塔、`reesDegreeOnePolynomial_finite` は全射評価からの有限加群性。`reesDegreeOne_aeval_mem` は各斉次次数の保存、`reesDegreeOnePolynomial_gradedSMul` はその作用の次数付き性。生成族に依存する代数構造は型の letI で明示し、推論できない生成族を大域的な instance にしない。
+
+本体69行・入口1行。評価の代数構造と次数の自然数の式を明示して単独検証、ソース完全一致、対象・直接 importer のビルド5,076ジョブ、小監査7宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-rees-degree-one-polynomial-action-check-2.log`・`2g-rees-degree-one-polynomial-action-native.log`・`2g-rees-degree-one-polynomial-action-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体648行・入口込み658行、小監査42宣言・標準三公理のみ。G3 の標準開条件・有限ファイバー冪と G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### 標準開条件への接続（着手前の型、G3 の内数）
+
+`reesDegreeOneGradedHom I a` は実際の評価を GradedRingHom に束ねる。`exists_reesDegreeOne_homogeneous_lift` は評価が全射なら、各斉次元に同じ次数の多項式の原像を供給する（既存の decompose と graded map の可換性）。`reesDegreeOne_irrelevant_le_span` は irrelevant ideal が選んだ次数一元のイデアルで生成される条件を返す。`iSup_reesDegreeOne_basicOpen` はその標準開の被覆。見込み70〜160行。次数成分の比較と既存の Ideal.span_pow_eq_map_homogeneousSubmodule、Proj の基本開の被覆を使う。2f の入力の法則への接続で、被覆性を追加仮定にしない。
