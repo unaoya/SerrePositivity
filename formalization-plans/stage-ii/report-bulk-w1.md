@@ -1269,3 +1269,18 @@ R8-2はRingCompletion.leanへの既存の切り出しを再利用し、Setup・C
 R8-1に指示の範囲の衝突がある。§1はEInfinity→BSの2辺の解消を求めるが、§2の保護例外はTheoryInterfaceとそのimporter。もう一辺はEInfinity/Perfectoidization/ComparisonからDerived/Interfaceへのもので、ComparisonはTheoryInterfaceをimportしない。TheoryInterfaceだけを動かしても残る。CAlg_R版のComparison・Interface・DerivedCorollaryの3本（計255行）を削除せずBS/Perfectoidization/Interface/CAlgへ機械的に移す案を[具体的な表](bulk-b3prime/r8-1-scope-decision.json)にした。宣言の完全名・型・証明は保持し、旧モジュールの再公開stubで逆辺を再導入しない案。保護例外の承認前には適用しない。
 
 4つの必須の旧パス文字列について、稼働5枝のmainとの分岐点以降のLeanと未コミット/未追跡Leanを読み取りで調べた[下限の調査](bulk-b3prime/mandatory-impact-lower-bound.json)は0ファイル。これは全移動・全改名の最終影響件数ではない。30ファイル条件を満たしたとまだ扱わず、残りの表と影響の静的調査を続ける。
+
+
+### B3′ 段0・全表と準備への移行（11-14夜）
+
+一覧：済み 2／全体 22（うち追加 0）。基準mainは32d364b53。[22項目の表](bulk-b3prime/stage0-items.json)、[モジュール移動案](bulk-b3prime/module-map.proposed.json)、[所有元付き宣言名の案](bulk-b3prime/namespace-map.proposed.json)、[6切り出し先](bulk-b3prime/split-plan.proposed.json)を保存。71本の全体移動、公開ソース宣言1,861行のうち1,486改名。これは構文上の表であり、private・生成宣言を含むカーネル全表は元の環境のsnapshotで準備中に補完する。R7-3(a)のMonicRelation/Familyと(d)のPrismPresentationはmainに実装済みなので再移動しない。
+
+調整役の§5の承認により、CAlg_RのComparison・Interface・DerivedCorollaryも保護例外となった。[承認記録](bulk-b3prime/r8-1-scope-decision.json)を更新。削除せず名前・型・証明を保ってBS側へ移す。旧パスの再公開stubはEInfinityからBSへの逆辺を戻すため作らず、集約importを整理する。
+
+[静的な衝突検査](bulk-b3prime/stage0-target-collisions.json)は本体33,638ファイルの公開ソース宣言に対する行き先名衝突0、分割先パス衝突0。[直接importの解析](bulk-b3prime/stage0-import-closure.json)では変更所有元111、逆向きの閉包191モジュール。RootEnvelope三本・PerfectPrismDivisionComparison・PDivisionSource・TensorCompatibilityは現rootから到達しない。証明済みの別構成・終点として公開し、未使用という理由では削除しない。監査に移動済みの四本は再移動しない。
+
+[稼働6枝の文字列調査](bulk-b3prime/branch-impact-stage0.json)は合計2ファイル（⑥の過去のB4 JSON二本）、Lean 0、行き先パス衝突0。⑤a・⑤d・③二枝・⑥・Kerodon reviewを読み取りだけで調査。未コミット/未追跡と文書・データも対象にし、改名対象の完全名・旧モジュール/パスを検索した。単なる文字列調査であり意味上の参照の採取とは区別する。過去の表は履歴として残し、B4用に写像の合成を提供する。適用前に動いている枝を再走査する。承認範囲内かつ30ファイル以下なので停止せず隔離した準備へ進む。
+
+DivisionResidueの移動は暫定案。現在のファイルはNormalizedの有限塔・忠実平坦性に依存するため、丸ごとの移動だけではDelta→Andreの逆辺を作る。一般の依存の閉包を調べ、分離できなければその移動を取り下げて元に残す。文書の「旧パス」は現在0件。工程名の候補と引用の歴史の注記を分け、属性の意味や対応番号を機械的に消さない。
+
+[時間の見込み](bulk-b3prime/stage0-timing.json)：準備4〜12時間、適用と全検証3〜8時間（鍵待ちを除く、今回のプレビューは未実測）。以前のB3の実測はroot 689秒、verify（3ジョブ）2,968秒。全監査106本の実測合計も付表に保存した。今回の閉包が小さくてもroot・全監査・verifyは省略せず、最初のプレビューの実測で見直す。昼は280秒以内、夜30分以内・--wait 3600・bulk、全監査/verifyは夜。適用の直前に通知し、それまではBSの取り込みを止めない。

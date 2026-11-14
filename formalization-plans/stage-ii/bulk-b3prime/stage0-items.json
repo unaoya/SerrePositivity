@@ -1,0 +1,140 @@
+{
+  "baseline": "32d364b53",
+  "complete": 2,
+  "total": 22,
+  "additional": 0,
+  "items": [
+    {
+      "id": "B3P-01",
+      "ledger": "R8-2",
+      "status": "split",
+      "plan": "Ordinary categories and completion into RingCategories/RingInterface first; preserve nerve/cones in BS; reuse RingCompletion"
+    },
+    {
+      "id": "B3P-02",
+      "ledger": "R7-3(a)",
+      "status": "already-main",
+      "plan": "Generic MonicRelation and OrdinaryRoots Family imports already CA"
+    },
+    {
+      "id": "B3P-03",
+      "ledger": "R7-3(b)",
+      "status": "prepare",
+      "plan": "Generic IteratedPDH0 extraction; DivisionResidue requires Normalized dependency closure, provisional destination only; withdraw if unsupported"
+    },
+    {
+      "id": "B3P-04",
+      "ledger": "R7-3(c)",
+      "status": "prepare",
+      "plan": "PowerRootPolynomial to BS Semiperfectoid Quasiregular: Delta dependency excludes pure CA"
+    },
+    {
+      "id": "B3P-05",
+      "ledger": "R7-3(d)",
+      "status": "already-main",
+      "plan": "exists_boundedPerfectPrismPresentation already Prism/Perfectoid/PerfectoidPrismPresentation"
+    },
+    {
+      "id": "B3P-06",
+      "ledger": "R7-4",
+      "status": "prepare",
+      "plan": "Semiperfectoid grouped by mathematical topic; module moves, method namespaces retained"
+    },
+    {
+      "id": "B3P-07",
+      "ledger": "R7-5",
+      "status": "prepare",
+      "plan": "Normalize public Semiperfectoid names; kernel-generated/private completion required"
+    },
+    {
+      "id": "B3P-08",
+      "ledger": "R7-6(c)",
+      "status": "prepare",
+      "plan": "Publish six proved endpoints incl TensorCompatibility in root; existing four scripts/audit files stay"
+    },
+    {
+      "id": "B3P-09",
+      "ledger": "R7-7",
+      "status": "prepare",
+      "plan": "Classify engineering labels; historical citation-review comments not globally replaced"
+    },
+    {
+      "id": "B3P-10",
+      "ledger": "R8-1",
+      "status": "prepare",
+      "plan": "TheoryInterface and approved CAlg_R three files to BS; names preserved; aggregate imports corrected without reverse stubs"
+    },
+    {
+      "id": "B3P-11",
+      "ledger": "R8-3",
+      "status": "prepare",
+      "plan": "InitialLimit generic to Kerodon; InitialBridge to BS Interface"
+    },
+    {
+      "id": "B3P-12",
+      "ledger": "R8-4",
+      "status": "prepare",
+      "plan": "Remove obsolete Inputs wrapper and redirect finite consumer; selected E3 Inputs retained"
+    },
+    {
+      "id": "B3P-13",
+      "ledger": "R8-7",
+      "status": "prepare",
+      "plan": "Publish TensorCompatibility; validate root closure"
+    },
+    {
+      "id": "B3P-14",
+      "ledger": "R8-8",
+      "status": "prepare",
+      "plan": "RootAdjunction to Construction; retain mathematical content"
+    },
+    {
+      "id": "B3P-15",
+      "ledger": "R8-9",
+      "status": "prepare",
+      "plan": "Perfectoid FiniteProduct to Prism/Perfectoid"
+    },
+    {
+      "id": "B3P-16",
+      "ledger": "R10-3",
+      "status": "prepare",
+      "plan": "Almost namespace normalization; preserve distinct systems, only BR43 explicit leaf renames"
+    },
+    {
+      "id": "B3P-17",
+      "ledger": "R10-5(a)",
+      "status": "prepare",
+      "plan": "SupportedQuotient adjacent to Perfectoidization ExcisionTor"
+    },
+    {
+      "id": "B3P-18",
+      "ledger": "R10-5(b)",
+      "status": "prepare",
+      "plan": "Generic reduced power annihilator to CA"
+    },
+    {
+      "id": "B3P-19",
+      "ledger": "R10-5(d)",
+      "status": "prepare",
+      "plan": "Clarify CompletedTensor module docstring for §10 common core; no forced split"
+    },
+    {
+      "id": "B3P-20",
+      "ledger": "R10-5(f/g)",
+      "status": "prepare",
+      "plan": "IntegralClosureCompletion to Almost; IntegralApproximation to CA; E3-dependent existence remains Interface"
+    },
+    {
+      "id": "B3P-21",
+      "ledger": "R10-7",
+      "status": "prepare",
+      "plan": "Classify remaining Almost engineering labels and names"
+    },
+    {
+      "id": "B3P-22",
+      "ledger": "B3 residual",
+      "status": "prepare",
+      "plan": "Reconcile retained-and-deferred and BS 34 section edges; exclude R83/R21 and maintenance"
+    }
+  ]
+}

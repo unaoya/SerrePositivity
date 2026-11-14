@@ -1,0 +1,9 @@
+{
+  "whole_moves": 71,
+  "split_outputs": 6,
+  "public_source_rows": 1861,
+  "changed_public_source_names": 1486,
+  "path_collisions": [],
+  "source_name_collisions": {},
+  "note": "Existing unchanged declarations and compiler-generated names are checked against actual Lean environments during preparation; this is not a preservation result."
+}

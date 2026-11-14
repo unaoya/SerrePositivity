@@ -1,0 +1,574 @@
+{
+  "status": "stage0 source proposal; not applied",
+  "baseline": "32d364b53",
+  "rows": [
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/AbsolutelyIntegrallyClosedQuotient.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/AbsolutelyIntegrallyClosedQuotient.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/AinfClassicalMaps.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/AinfClassicalMaps.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CharacteristicP.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/CharacteristicP.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CharacteristicP",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.CharacteristicP",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CompatibleRoot.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/CompatibleRoot.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRoot",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CompatibleRootPerfectoid.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/CompatibleRootPerfectoid.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorFaithful.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorFaithful.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorFlat.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorFlat.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorRelationFaithful.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorRelationFaithful.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorRelationResidue.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorRelationResidue.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/Cor73PrismComparison.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Cor73PrismComparison.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/DiscreteDelta.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscreteDelta.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/DiscretePrism.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscretePrism.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/FiniteEnvelopeCompletion.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeCompletion.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/FiniteEnvelopeDiagram.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeDiagram.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/FiniteEnvelopeRawColimit.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeRawColimit.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/PDCompletionPrism.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/PDCompletionPrism.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/InitialPrismPerfection.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/InitialPrismPerfection.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PerfectEnvelopeInitial.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/PerfectEnvelopeInitial.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PerfectPrismDivision.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivision.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivision",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PerfectPrismDivisionComparison.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivisionComparison.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivisionComparison",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PerfectoidRelationEnvelope.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PerfectoidRelationEnvelope.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PerfectoidRelationEnvelopeFaithful.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PerfectoidRelationEnvelopeFaithful.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfectoidization.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Perfectoidization.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PrismInitialCompletion.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PrismInitialCompletion.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PrismInitialTransport.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PrismInitialTransport.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PrismRelationQuotient.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/PrismRelationQuotient.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/PrismRetract.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/PrismRetract.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/Product.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Product.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Product",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Product",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RawVariableEnvelope.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/RawVariableEnvelope.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RawVariableEnvelopeFaithful.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/RawVariableEnvelopeFaithful.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/PerfectPrism.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/PerfectPrism.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrism",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/RawCompletion.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/RawCompletion.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.RawCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/Source.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/Source.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyBase.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyBase.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyFractionBasis.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyFractionBasis.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyPerfectoid.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyPerfectoid.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyReindex.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyReindex.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilySparseBasis.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilySparseBasis.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationAinfEnvelope.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationAinfEnvelope.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationBounded.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationBounded.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedInitial.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletedInitial.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedSurjective.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletedSurjective.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletion.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletion.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCoordinates.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCoordinates.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationEnvelope.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationEnvelope.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationEnvelopeFaithful.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationEnvelopeFaithful.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteAmbient.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationFiniteAmbient.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteEnvelopeDiagram.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationFiniteEnvelopeDiagram.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationLift.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationLift.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationLiftInitial.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationLiftInitial.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationPerfection.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationPerfection.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationPolynomial.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationPolynomial.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationRawBasis.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationRawBasis.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationRawRegular.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationRawRegular.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationSubsetRaw.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationSubsetRaw.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/SurjectiveQuotientPerfectoidization.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/SurjectiveQuotientPerfectoidization.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.SurjectiveQuotientPerfectoidization",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.SurjectiveQuotientPerfectoidization",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity",
+      "item": "B3P-06",
+      "reason": "R7-4 item-based placement; no Cotangent directory"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+      "new_path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilies/PowerRootPolynomial.lean",
+      "old_module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial",
+      "item": "B3P-04",
+      "reason": "R7-3(c): keep delta-dependent implementation within BS; put beside current RootFamily users"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean",
+      "new_path": "SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
+      "item": "B3P-03",
+      "reason": "R7-3(b): generic residue declarations; collect exact Normalized dependency closure before preview"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/Derived.lean",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "item": "B3P-14",
+      "reason": "R8-8 or R8-3; split outgoing generic pieces first; E3-dependent existence remains on interface side (R10-5g)"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/Excision.lean",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "item": "B3P-14",
+      "reason": "R8-8 or R8-3; split outgoing generic pieces first; E3-dependent existence remains on interface side (R10-5g)"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence",
+      "item": "B3P-11",
+      "reason": "R8-8 or R8-3; split outgoing generic pieces first; E3-dependent existence remains on interface side (R10-5g)"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Construction/RootAdjunction.lean",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "item": "B3P-14",
+      "reason": "Ring-only root construction"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/TheoryInterface.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean",
+      "old_module": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+      "item": "B3P-10",
+      "reason": "R8-1; retain actual declaration namespace at this move"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/Comparison.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean",
+      "old_module": "SerrePositivity.EInfinity.Perfectoidization.Comparison",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Comparison",
+      "item": "B3P-10",
+      "reason": "Coordinator §5 exception: mechanical move, preserve all names, types and proofs; no deletion"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/Interface.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean",
+      "old_module": "SerrePositivity.EInfinity.Perfectoidization.Interface",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Definition",
+      "item": "B3P-10",
+      "reason": "Coordinator §5 exception: mechanical move, preserve all names, types and proofs; no deletion"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/DerivedCorollary.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean",
+      "old_module": "SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary",
+      "item": "B3P-10",
+      "reason": "Coordinator §5 exception: mechanical move, preserve all names, types and proofs; no deletion"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Perfectoid/FiniteProduct.lean",
+      "new_path": "SerrePositivity/BhattScholze/Prism/Perfectoid/FiniteProduct.lean",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoid.FiniteProduct",
+      "new_module": "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct",
+      "item": "B3P-14",
+      "reason": "R8-8 classical perfectoid input beside perfect-prism equivalence"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/Almost/SupportedQuotient.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean",
+      "old_module": "SerrePositivity.BhattScholze.Almost.SupportedQuotient",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient",
+      "item": "B3P-17",
+      "reason": "R10-5(a): beside ExcisionTor; keep E3-dependent use outside Almost"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
+      "new_path": "SerrePositivity/BhattScholze/Almost/IntegralClosureCompletion.lean",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "item": "B3P-20",
+      "reason": "R10-5(g): align with FiniteEtaleComparison for §10 input"
+    },
+    {
+      "old_path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralApproximation.lean",
+      "new_path": "SerrePositivity/CommutativeAlgebra/IntegralApproximation/FilteredAlgebra.lean",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "item": "B3P-20",
+      "reason": "R10-5(g): pure commutative algebra, use ring-only category interface"
+    }
+  ]
+}

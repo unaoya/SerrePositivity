@@ -1,0 +1,78 @@
+{
+  "status": "stage0 proposal; dependency closures and exact native ownership to be validated before application",
+  "rows": [
+    {
+      "item": "B3P-01",
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+      "new_path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingCategories.lean",
+      "declarations": [
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.A_R",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.ofAlgebra",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completeProperty",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.C_R",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completeInclusion",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidTargetProperty",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfUnder_u",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidTargetInclusion",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra"
+      ],
+      "names": "unchanged",
+      "note": "9 ordinary category declarations; two nerve abbreviations stay in interface"
+    },
+    {
+      "item": "B3P-01",
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+      "new_path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingInterface.lean",
+      "declarations": [
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRing_complete",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionLift_comp",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap_comp",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap_id",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap_comp_map",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.ringCompletionFunctor",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction_algebra",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension_algebra"
+      ],
+      "names": "unchanged",
+      "note": "Ordinary completion and target-equivalence algebra; retain all nerve and cone declarations in interface; reuse existing RingCompletion"
+    },
+    {
+      "item": "B3P-11",
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/InitialValueCone.lean",
+      "source_section": "InitialLimit",
+      "names": "preserve canonical names for first move; exact declaration ownership map completed by native v3b snapshot"
+    },
+    {
+      "item": "B3P-11",
+      "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
+      "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/InitialBridge.lean",
+      "source_section": "InitialBridge",
+      "names": "unchanged"
+    },
+    {
+      "item": "B3P-03",
+      "old_path": "SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean",
+      "new_path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/IteratedPDH0.lean",
+      "source_section": "IteratedPDH0Reflection",
+      "names": "move generic reflection comparison into DerivedCompletion; native snapshot fills generated/private rules"
+    },
+    {
+      "item": "B3P-18",
+      "old_path": "SerrePositivity/BhattScholze/Andre/Transfinite/Limit.lean",
+      "new_path": "SerrePositivity/CommutativeAlgebra/Reduced/PowerAnnihilator.lean",
+      "declarations": [
+        "SerrePositivity.BhattScholze.Andre.Transfinite.mul_eq_zero_of_pow_mul_eq_zero_of_reduced"
+      ],
+      "new_namespace": "SerrePositivity.CommutativeAlgebra"
+    }
+  ]
+}
