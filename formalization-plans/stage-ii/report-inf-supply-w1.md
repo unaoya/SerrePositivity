@@ -3992,3 +3992,208 @@ lemma leftClassificationSimplexIso_pullback_symm_heq_joint
 
 検証済み累計：110本・9,001行（直前105本・8,594行に、§51.1の235行と今回172行を追加）。
 全宣言200行未満。外枠20,800行の内側。
+
+### 51.3 貼り合わせへの残りの法則（検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+共役表示は対象ビルド成功。転置後の係数評価は、最初に二変数交換の向きを誤っていたため、
+一般の第一変数評価の法則へ分けて修正中。既存ファイルは変更していない。
+小監査は残りの対象ビルド後にまとめる。以下は既存構成の法則と証明分割のみ。
+各宣言200行未満、計算上限は不変。新しい数学的入力・ID項目の追加なし。
+
+#### FunctorIsoTransposeEvaluation（44行）
+
+```lean
+lemma functorIso_transpose_postcomp_heq_value {A I X : SSet.{u}}
+    {F G : A ⟶ (ihom I).obj X} (e : FunctorIso F G) (a : A _⦋0⦌) :
+    HEq (FunctorIso.postcomp e.transpose (evaluateFunctorAt (Y := X) a))
+      (functorIsoValue e a)
+
+```
+
+#### LeftClassificationBaseChangeConjugation（123行）
+
+```lean
+local instance baseChangeConjugation_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma isoTransThree_heq {L : Type v} [Category.{w} L]
+    {a₀ a₁ a₂ a₃ b₀ b₁ b₂ b₃ : L}
+    (e₁ : a₀ ≅ a₁) (e₂ : a₁ ≅ a₂) (e₃ : a₂ ≅ a₃)
+    (d₁ : b₀ ≅ b₁) (d₂ : b₁ ≅ b₂) (d₃ : b₂ ≅ b₃)
+    (h₀ : a₀ = b₀) (h₁ : a₁ = b₁) (h₂ : a₂ = b₂) (h₃ : a₃ = b₃)
+    (he₁ : HEq e₁ d₁) (he₂ : HEq e₂ d₂) (he₃ : HEq e₃ d₃) :
+    HEq (e₁ ≪≫ e₂ ≪≫ e₃) (d₁ ≪≫ d₂ ≪≫ d₃)
+
+lemma leftStraighteningInfinityDiagram_baseChangeIso_firstVertex_conjugation
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let t := U.map (nerveMap (transportSimplexFunctor k))
+    let evp := evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)
+    HEq ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        (U.map (transportSimplexFirstVertexMap D)))
+      ((leftClassificationSimplexIso p).precomp t ≪≫
+        diagramIsoCongr
+          (by rw [Category.assoc, transportSimplexSectionInfinity_joint_evaluate p])
+          (by rw [Category.assoc, leftFibrationBaseChange_evaluate p k,
+            transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+          (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso k).symm evp) ≪≫
+        (leftClassificationSimplexIso (pullback.snd p k)).symm)
+
+```
+
+#### SimplexSectionCompValue（75行）
+
+```lean
+private lemma diagramIsoCongr_postcomp_heq {A X Y : SSet.{u}}
+    {f g f' g' : A ⟶ X} (hf : f = f') (hg : g = g')
+    (e : FunctorIso f g) (q : X ⟶ Y) :
+    HEq (FunctorIso.postcomp (diagramIsoCongr hf hg e) q) (FunctorIso.postcomp e q)
+
+lemma simplexSectionCompIso_value_heq {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    HEq (FunctorIso.postcomp (simplexSectionCompIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+      (kanEnrichedRealizationValueIso
+        (sectionBaseChangeCompComparison k l (transportSimplexDomainFunctor T))
+        (sectionBaseChangeCompComparison_isQCatEquivalence k l (transportSimplexDomainFunctor T))
+        (leftFibrationObjectOf p))
+
+```
+
+#### SimplexSectionBaseChangeValuePasting（67行）
+
+```lean
+lemma simplexSectionBaseChange_value_pasting {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let evp := evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)
+    HEq (FunctorIso.postcomp (simplexSectionCompIso k l) evp ≪≫
+        FunctorIso.postcomp (simplexSectionFirstIso k l) evp ≪≫
+          FunctorIso.postcomp (simplexSectionSecondIso k l) evp)
+      (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso (l ≫ k)) evp)
+
+```
+
+#### FunctorHomPrecompositionLaws（54行）
+
+```lean
+lemma precomposeFunctorHom_eq_map {A B X : SSet.{u}}
+    (k : B ⟶ A) {f g : A ⟶ X} (α : FunctorHom f g) :
+    precomposeFunctorHom k α =
+      (hoFunctor.map ((pre k).app X)).toFunctor.map α
+
+lemma precomposeFunctorHom_comp {A B X : SSet.{u}} (k : B ⟶ A)
+    {f g h : A ⟶ X} (α : FunctorHom f g) (β : FunctorHom g h) :
+    precomposeFunctorHom k (α ≫ β) =
+      precomposeFunctorHom k α ≫ precomposeFunctorHom k β
+
+lemma precomposeFunctorHom_injective {A B X : SSet.{u}} [Quasicategory X]
+    (k : B ⟶ A)
+    (hk : Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful
+      ((pre k).app X))
+    {f g : A ⟶ X} (α β : FunctorHom f g)
+    (h : precomposeFunctorHom k α = precomposeFunctorHom k β) : α = β
+
+```
+
+#### HomClassificationIsoLaws（41行）
+
+```lean
+lemma leftClassificationHom_iso_hom_inv {E H B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (e : E ≅ H) (he : e.hom ≫ q = p) (hi : e.inv ≫ p = q) :
+    leftClassificationHom p q e.hom he ≫ leftClassificationHom q p e.inv hi = 𝟙 _
+
+lemma leftClassificationHom_iso_inv_hom {E H B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (e : E ≅ H) (he : e.hom ≫ q = p) (hi : e.inv ≫ p = q) :
+    leftClassificationHom q p e.inv hi ≫ leftClassificationHom p q e.hom he = 𝟙 _
+
+```
+
+
+### 51.4 補正因子の端点と二因子の評価（検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+転置の第一変数評価・補正因子の係数値・前合成の法則・係数での貼り合わせ・分類した
+同型と逆射の相殺はそれぞれ対象ビルドを通過。未検証だった単位の型の名前空間不足を直し、
+残るkernelの簡約は既存の一般評価の二段の適用へ局所化中。上限は変更していない。
+単位下書きは依然コミット対象外。
+
+以下も既存構成の法則のみ。新しいID項目ではない。各宣言200行未満。
+
+#### SimplexSectionCompNormalizedValue（62行）
+
+```lean
+local instance simplexCompNormalizedValue_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+lemma simplexSectionCompIso_value_normalized {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let q₀ := pullback.snd p (l ≫ k)
+    let q₁ := pullback.snd (pullback.snd p k) l
+    let evp := evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)
+    diagramIsoCongr
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p (l ≫ k),
+        transportSimplexSectionInfinity_joint_evaluate q₀])
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p k,
+        Category.assoc, leftFibrationBaseChange_evaluate (pullback.snd p k) l,
+        transportSimplexSectionInfinity_joint_evaluate q₁])
+      (FunctorIso.postcomp (simplexSectionCompIso k l) evp) =
+    kanEnrichedRealizationValueIso
+      (sectionBaseChangeCompComparison k l (transportSimplexDomainFunctor T))
+      (sectionBaseChangeCompComparison_isQCatEquivalence k l (transportSimplexDomainFunctor T))
+      (leftFibrationObjectOf p)
+
+```
+
+#### SimplexSectionBaseChangeFactorValues（82行）
+
+```lean
+local instance simplexFactorValues_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma diagramIsoCongr_postcomp_heq {A X Y : SSet.{u}}
+    {f g f' g' : A ⟶ X} (hf : f = f') (hg : g = g')
+    (e : FunctorIso f g) (q : X ⟶ Y) :
+    HEq (FunctorIso.postcomp (diagramIsoCongr hf hg e) q) (FunctorIso.postcomp e q)
+
+lemma simplexSectionFirstIso_value_heq {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    HEq (FunctorIso.postcomp (simplexSectionFirstIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+      (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u})
+          (leftFibrationInfinityVertex (pullback.snd p k))))
+
+lemma simplexSectionSecondIso_value {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    FunctorIso.postcomp (simplexSectionSecondIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)) =
+      FunctorIso.precomp
+        (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso k)
+          (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+        ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l)))
+
+```
+
+
+### 51.5 貼り合わせの法則群の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+八本の対象ビルド成功（5,513 jobs）。新しい環境から採った24宣言の小監査成功、
+標準三公理のみ。計算上限の変更なし。
+ログ：`/tmp/is-w1/pasting-law-verify/run-2.log`、`catalog-after.log`、`audit-after.log`。
+
+検証済み累計118本・9,549行（110本9,001行に八本548行を追加）。
+指定底変換の初頂点制限の共役表示、同じ全単体補正因子の係数値、
+二段の係数貼り合わせ、前合成の忠実性、分類した同型と逆射の相殺が通った。
+これらは既存構成の法則で、E01そのものの完成には数えない。
+
+次はこの同じ係数貼り合わせと分類像から、§46.2の指定底変換の合成式を初頂点制限で照合し、
+忠実性で降下する。元の型は維持し、指定同型を選び直さない。
+指定Yoneda単位の未検証下書きは作業木に残す。R3・R4には入らない。
