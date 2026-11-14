@@ -1937,3 +1937,20 @@ C05 の一般の有限型 affine の出口（着手前の型、見込み40〜100
 G1・G2共用部品込み本体11,839行、入口込み12,041行。C05 は本体215行までで未完。標準開への実際の immersion と係数上の可換式は下書き検証中で実測に含めない。C05・C06 と B01〜B04 は未完。
 
 一覧：済み11／全体17（うち追加8）。
+
+
+### C05 完了：一般の有限型 affine の固有な周辺への実際の immersion
+
+`PolynomialAffineProjImmersion`（60行）：`polynomialAffineToProj` は標準開の評価を Spec に移し、開包含と合成した実際の Proj への射。`isImmersion_polynomialAffineToProj` はその immersion 性。`polynomialAffineToProj_toSpec` は固有な構造射との合成が元の係数射の Spec である可換式。
+
+`AffineProperAmbient`（35行）：`exists_affine_immersion_proper_ambient` は任意の有限型 R-代数 A に対し、実際の P、固有な q:P→Spec R、immersion j:Spec A→P と、係数上の指定された可換式を無条件に供給する。元の係数環の Noether 性や周辺の存在は仮定しない。
+
+本体95行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,990ジョブ成功。小監査9宣言（8・1）・標準三公理のみ。immersion の下書きでは係数環の射と Spec の射の向き、射の外延性の止める位置、合成の括弧を明示して単独検証を完了し、一般の有限型 affine の出口は最初の単独検証で成功。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-polynomial-affine-proj-immersion-check-3.log`・`2g-polynomial-affine-proj-immersion-native.log`・`2g-polynomial-affine-proj-immersion-audit.log`・`2g-affine-proper-ambient-check.log`・`2g-affine-proper-ambient-native.log`・`2g-affine-proper-ambient-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+C05 全体は6モジュール、本体310行・入口6行、小監査合計41宣言・標準三公理のみ。最初の1,200〜2,400行の見込みより小さく閉じた。標準開と多項式環の同型全体を先に作らず、必要な向きの実際の全射と係数上の可換式で immersion を構成できたためで、C05 の当初の結論は弱めていない。
+
+G1・G2共用部品込み本体11,934行、入口込み12,138行。aa00383c7 の後は3モジュール、本体144行・入口3行、小監査合計15宣言・標準三公理のみ。C05 の実測を反映すると G2 の残りは C06 が1,800〜3,500行、B01・B02 の残り900〜2,000行、B03 が1,200〜2,500行、B04 が700〜1,400行、合計4,600〜9,400行。2g-1 全体は本体16,534〜21,334行の見込みに更新し、外枠25,000行は不変。約12,000行の途中報告を f185b6370 で先に出した後の更新である。C06 と B01〜B04 は未完で、2g-1 の停止点ではない。
+
+一覧：済み12／全体17（うち追加8）。
+
+C06 の閉包と局所の射の一致の法則（着手前の型、見込み150〜350行）：`isSchemeTheoreticallyDominant_toImage` は準コンパクトな f:X→Y の実際の `f.toImage:X→f.image` が scheme-theoretically dominant と返す。`ext_of_isSchemeTheoreticallyDominant_of_isSeparated` は scheme-theoretically dominant な ι:U→X 上で一致する、同じ分離的な Y→S 上の二射 f,g:X→Y が全体で一致することを返す。原典 [Stacks 01RH, 29.7.10](https://stacks.math.columbia.edu/tag/01RH)。C06 の画像の閉包と既存の射の貼り合わせの法則・証明分割で、親項目を増やさない。Mathlib に `IsSchemeTheoreticallyDominant` と `Hom.toImage_app_injective` があるので、この API を先に使い、射の照合に元の対象の被約性を要求しない経路を進める。上記の還元的な成分に戻す案は補助案として残すが、可能なら scheme-theoretic な閉包の法則を用いて原典の非被約な場合のまま貼り合わせる。
