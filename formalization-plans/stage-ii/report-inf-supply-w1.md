@@ -8375,3 +8375,40 @@ lemma bousfieldKanParameterRealization_map_anodyne
 `BousfieldKanRealizationAnodyne` 50行はその検証後にビルド予定。
 この2本は未検証として作業木に残し、今回の数学のコミットには含めない。
 E01の別経路の紙は§80.1のまま。停止点5aは未達。
+
+## §91 RR02(a)：実現後の標準単体の構造射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§90.2のBK end fibration保存性は2,188 jobsの対象ビルドと4宣言の小監査が成功。
+§90.3は同じ整理券一枚で検証待機中。
+その先の構造射には、既存の `SimplexNerve.standardTerminal_isIso` と
+`Quillen.weakEquivalences_iff_isIso_map` を使う。§89の `hA`, `hconst` の下で：
+
+```lean
+lemma bousfieldKanRealization_terminal_weakEquivalence (n : SimplexCategory) :
+  weakEquivalences C ((bousfieldKanParameterRealization K A).map
+    (SSet.stdSimplex.isTerminalObj₀.from (SSet.stdSimplex.obj n)))
+lemma bousfieldKanRealization_homotopicallyConstant
+    {n m : SimplexCategory} (f : n ⟶ m) :
+  weakEquivalences C ((SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A).map f)
+```
+
+収縮は作り直さず、Cの通常の局所化へ既存の収縮を移送する。
+この同定はRR02(a)のframe条件の証明の分割であり、実増大射の弱同値性とは区別する。
+
+### 91.1 検証済みの区切り
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanEndFibration` 57行、対象ビルド2,188 jobs成功、小監査4宣言、
+標準三公理のみ。ログ `/tmp/is-w1/bk-end-fibration/build-2.log`。
+計算上限変更なし。検証済み累計183本・14,155行。
+上限変更後のRR02(a)実測1,657行、(b)(c)新規0行。
+
+`BousfieldKanRealizationAnodyne` の session 79525 は生存確認済み、
+調整役の監査と先行レーンの鍵を一枚の整理券で待機中。
+ログ `/tmp/is-w1/bk-realization-anodyne/build.log`。
+`BousfieldKanRealizationConstant` はその後に検証する下書き。
+これら2本は未検証としてコミットに含めない。
+E01の別経路の紙は§80.1のまま。実増大射の弱同値性はまだ未証明。
