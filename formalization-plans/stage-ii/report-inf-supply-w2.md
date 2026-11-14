@@ -5885,3 +5885,66 @@ mainの `formalization-plans/stage-ii/lane-goals-2026-11-14.md` の共通規則�
 数える単位は§73のA01〜A12（12項目）、B01〜B08（8）、C01〜C07（7）、D01〜D08（8）、承認追加A05a（1）。A01の二宣言など同じ親IDの複数の宣言は一つの項目にまとめる。A01〜A12とA05a、B01が済み。B02の途中の評価・自然性・合成・貼り合わせの法則と証明分割は分母にも分子にも加えない。B02〜B08・C・Dの22項目は未完。
 
 外枠20,000行、実測16,026行（§127）、計算上限・既存宣言・⑤a・入口・公式監査・mainを変えない規則は維持する。次の対象ビルドから `--class impl --wait 3600` を明記する。
+
+## 129. B02の途中：指定重みの始域射へBK合成則を運ぶ
+
+一覧：済み 14／全体 36（うち追加 1）
+
+零延長した鎖複体からの斉次射の行表示が、同じ始域射による前合成と可換であることを証明した。これにより元のBK行の合成則とtensor符号消去則を任意の指定重み始域射へ運べる。右辺の錐代表も同じ始域射を前合成したもので、別の錐や同値を選んでいない。B02の指定係数比較・Moore反転を通すための既存自然性・合成則で、ID付き一覧の追加ではない。
+
+### 129.1 登録対象・行数・型
+
+`SerrePositivity.HomologicalAlgebra.ExtendedChainHomSourceMap`（28行）
+
+```lean
+theorem extendedChainHomRows_precomp (L K : ChainComplex C ℕ) (H : CochainComplex C ℤ)
+    (σ : L.extend ComplexShape.embeddingDownNat ⟶ K.extend ComplexShape.embeddingDownNat)
+    (q : ℤ) (z : Cochain (K.extend ComplexShape.embeddingDownNat) H q) (n : ℕ) :
+    extendedChainHomRows L H q ((Cochain.ofHom σ).comp z (zero_add q)) n =
+      (negativeChainRowIso L n).inv ≫ σ.f (-(n : ℤ)) ≫
+        (negativeChainRowIso K n).hom ≫ extendedChainHomRows K H q z n
+
+```
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSourceComposition`（65行）
+
+```lean
+theorem homToNormalizedBousfieldKan_rows_source_cone (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p) (n : ℕ) :
+    extendedChainHomRows L ((E).obj (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) p
+      ((Cochain.ofHom σ).comp ((homToNormalizedBousfieldKan P X).f p f) (zero_add p)) n =
+      ((n : ℤ) * p).negOnePow •
+        (extendedChainHomRows L
+          ((E).obj (doubleOppositeDiagram
+            ((homDiagramFunctor ((productTotalFunctor A).obj X)).obj X))) 0
+          ((Cochain.ofHom σ).comp
+            (Cochain.ofHom (normalizedBousfieldKanConeRepresentative X)) (zero_add 0)) n ≫
+          homDiagramDegreePrecompose X p (0 - n) (p - n) (by omega) f)
+
+theorem homToNormalizedBousfieldKan_tensor_source_row (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p) (n : ℕ)
+    (j : SimplexCategoryᵒᵖᵒᵖ) (x : (L.X n).obj j) :
+    let η := extendedChainHomRows L
+      ((E).obj (doubleOppositeDiagram
+        ((homDiagramFunctor ((productTotalFunctor A).obj X)).obj X))) 0
+      ((Cochain.ofHom σ).comp
+        (Cochain.ofHom (normalizedBousfieldKanConeRepresentative X)) (zero_add 0)) n
+    let χ := extendedChainHomRows L
+      ((E).obj (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) p
+      ((Cochain.ofHom σ).comp ((homToNormalizedBousfieldKan P X).f p f) (zero_add p)) n
+    ((-(n : ℤ)) * p).negOnePow • χ.app j x =
+      compose A (D := Complex A) (p := p) (q := 0 - n) (n := p - n)
+        (x := P) (y := (productTotalFunctor A).obj X)
+        (z := (doubleOppositeDiagram X).obj j) (η.app j x) f (by omega)
+
+```
+
+### 129.2 検収と残り
+
+コード **`9c2a7c160`**（新規2本93行）。結合個別検査 `/private/tmp/isw2-bk-source-composition-combined2.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build143.log` は **2,566 jobs・終了コード0**。新規分のみの監査 `/private/tmp/AuditISW2G10B02BKSourceComposition.lean` は **4宣言（1・3）、標準三公理のみ**。鍵は `--class impl --wait 3600` でビルド・監査の間だけ使用し返却済み。
+
+累計 **263モジュール・16,119行・2,235宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtythree-modules.txt`。外枠まで残り3,881行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、rootビルド・大きな監査なし。未検証下書きはない。
+
+B02の全体等式とB03〜B08・C・Dは未完。次はA12の実際の反転・係数重み移送のHom成分を、同じ二つの重み射の合成による前合成とAsSmall制限に明示的に分解する。
