@@ -6520,3 +6520,40 @@ explicit opens policy needed for a renamed namespace
 **main未取り込み、プレビュー未反映、B4未完了**。指示の「保留が出たら止まって報告」に従い、B4後の対象ビルド・監査はまだ実行していない。原ソースは `b4916a73d` のまま。修正版のopen方針／道具を受け取ったら、同じ移動前ソースとその索引で再プレビューし、未採取分を採取する。保留0と差分確認の後に mainを取り込み、importをmodule-mapで追従し、自分の新規モジュールの対象ビルド・小さい監査を行う。
 
 G10はB02未完、B03〜B08・C・Dも未完。累計278モジュール・17,116行・2,281宣言、外枠まで2,884行。B4が済んだ後に /goal を再開する。B4で計算上限・型・既存宣言・⑤a・入口・公式監査・mainの変更なし。新たなLean数学・構成の追加なし。
+
+
+## 137. B4完了：承認された恒等open、main取り込み、対象ビルド・小さい監査（2026-11-14 午後）
+
+一覧：済み 14／全体 36（うち追加 1）
+
+### 137.1 open の承認と全体照合
+
+調整役の11-14午後の指示（citation-attributes.md §14追記）に従い、二つの確認済み名前空間 `…Project.HomotopyDiagramComparison.CosimplicialHom` と `…Project.DerivedCategories.DiagramComparison` のopenを同名のまま保持した。配布された元の表は保存し、一時の表の `opens` に承認された二つの恒等方針だけを追加した。共有の道具・配布表の変更なし。再プレビューで§136の保留を解消した。
+
+main取り込み前の同じ枝ソースで、**全278本**（drafts除外）の参照採取・原ソースの全バイト一致検査・rewriteを完了。各回は `--class impl --wait 3600` と280秒の上限、一つの整理券。独立した8本ずつ四つの小組を一つの鍵の中で採取し、全ての小組が終了するのを待ってから次へ進めた。索引の漏れ・重複なし、全reviewは**保留0**。通常importの全トークンをmodule-mapと照合し、一致を確認した。
+
+### 137.2 差分と取り込み
+
+プレビュー差分は**7ファイル、7行の追加・7行の削除**、全てimport先の変更。宣言名・型・証明・openのソースは変更していない。
+
+| ファイルの末尾 | importの移動先 |
+| --- | --- |
+| DoldKanClosedPostcomposition | MappingAndStability/HomSpaces/DGStandardClosedPostcomposition |
+| ReflectedNormalizedBKSmallSections | WeightedCones/WeightedSectionsOpposite |
+| IntegerCoefficientFree | Tensor/DGSimplicialRingCoefficientComplex |
+| IntegerCoefficientTensorDegrees | Tensor/DGIntegerCoefficientTensor |
+| IntegerCoefficientTensorValues | Tensor/DGIntegerCoefficientTensor |
+| ProductSectionsHom | MappingSpaces/UniverseJoinSimplexShapes |
+| TruncatedDoldKanQuasiIso | LocalizationAndRoofs/PinchedChainMapQuasiIso |
+
+main **`2be485f04`** を枝に取り込んだ（merge **`8c65d0319`**、競合なし）。取り込み前に確定した差分だけを `git apply -p0` で反映し、取り込み後の278本全てが取り込み前の最終プレビューと一致することを検査した。取り込み後のソースへの古い索引の流用なし。`git diff --check` も成功。
+
+### 137.3 検収と受け渡し
+
+コード **`93227d091`**。自分の278モジュールを全て指定した鍵付き対象ビルドは **6,570 jobs・終了コード0**。新規モジュールだけを40本ずつ選ぶ小さい監査7組は **[321, 334, 298, 310, 379, 297, 180]、計2,119宣言、全て標準三公理のみ・終了コード0**。rootビルド・公式監査の変更／実行なし。鍵はビルドと監査の間だけ使用し返却済み。
+
+今回の2,119は、同じ全278本を分割して選んだ現在の監査の実測である。既報2,281は逐次の小監査の報告値を加算した累計であり、今回の値とは区別して記録する。278本の集合は従来のG10一覧と完全一致し、ソースはimport7行以外変えていない。過去の加算値との差の原因は今回の検査だけからは確定していない。以後の現在値には今回の全対象の実測を用いる。
+
+証跡は `formalization-plans/stage-ii/is-w2-b4-20261114/`：`approved-identity-opens.json`、`final-review.json`、`final-preview-summary.json`、`applied-preview.diff`、`build-and-audit.log.gz`、更新した `summary.json`。原ソース付きの索引全体と各採取ログは `/private/tmp/isw2-b4/` に保持。登録の照合用の全278モジュールは同フォルダの `files.json`（パスの拡張子を取り、スラッシュをピリオドに置換）である。入口・登録は調整役に委ねる。
+
+**B4は完了**。累計278モジュール・17,116行、外枠まで2,884行。sorry・新公理0、計算上限・型の弱化・ModelCategory SSetの追加・⑤aの変更なし。/goalのB02の残り（raw有限和からMoore制限と全単体的射への接続）に戻る。B03〜B08・C・D、停止点2a・2b、3b-4段0は未完。
