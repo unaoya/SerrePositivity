@@ -872,3 +872,31 @@ C03 と合成係数の底変換の接続 `exists_proper_closed_compositeStage_mo
 G1 共用部品込み本体 **5,310 行**、入口込み **5,410 行**。A07 の一般の基底への移送は未完：I04 の実際の図式へ係数因子化を渡し、C03 の固有閉部分模型の Cartesian 性、平坦側の模型、二つの全射性、元の X への因子化を同じ有限段でそろえる。G2 の一般の有限表示の固有模型を、この特殊な模型の証人で完成扱いにはしない。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+I04 の実際の整射の図式に渡す法則 `exists_proper_closed_integral_model` の型（見込み90〜220行）：整な R→B、有限型 ℤ-係数環 A、g:A→B、固有・局所有限表示 p:Y→Spec A、pullback(p,Spec.map g) 上の有限型 K から、ある実際の IntegralModelIndex R B の段 i、スキーム T、固有・局所有限表示 r:T→D(i)、a:K.subscheme→T、β:T→Y を得る。a と元の閉部分の構造射、r と I04 の実際の射影の正方形は Cartesian、a≫β=K.subschemeι≫fst を満たす。I03 の colimit の係数因子化、C03、合成係数の底変換の正方形の合成で、新しい親項目を足さない。ここでは模型の r の全射性はまだ結論にせず、検証済みの全射性の有限段への移送を後続で適用する。
+
+有限段の全射性の比較を実際の模型の射に渡す法則（見込み90〜180行）：`exists_surjective_proper_stage_model` と `exists_surjective_flat_stage_model` は、qcqs・affine 遷移の実際の極限 D,c,hc、全射 x:X→c.pt、ある段 i の模型 r:T→D(i)、a:X→T、IsPullback a x r(c.π.app i) を入力する。固有・局所有限表示の場合、または平坦・局所有限表示・準コンパクトの場合に、それぞれある j→i の実際の底変換 r_j を全射にし、a_j:X→pullback(r,D.map(j→i)) と同じ基底の射影に関する IsPullback、および a_j≫fst=a を同時に返す。新しい模型を仮定せず、既存の全射性の有限段への比較と pullback.lift、正方形の貼り合わせを合成する法則。周辺模型への写像は fst との合成でそのまま保持する。親 ID は増やさない。
+
+I04 上の全射な固有閉部分模型への接続 `exists_surjective_proper_closed_integral_model`（前記の整射への接続90〜220行の中）：`exists_proper_closed_integral_model` の仮定に元の K.subscheme→Spec B の全射性を加え、同じ実際の IntegralModelIndex のある段 i に、固有・局所有限表示・全射 r:T→D(i)、元の閉部分からの Cartesian な a、周辺模型への β と a≫β の可換式を得る。有限段の全射性の模型比較の法則を適用し、後段への実際の pullback の第一射影との合成で β を運ぶ。元の構造射・係数写像への忠実平坦性を追加せず、同じ模型の法則として進める。
+
+### A07：I04 の実際の有限・有限表示段への固有閉部分模型
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| CompositeStageBaseChangeLimit | 149 | `compositeStageBaseChangeDiagram`・`compositeStageBaseChangeCone`：因子化した係数写像による実際の底変換図式と cone |
+| 同上 | 同上に含む | `isLimit_compositeStageBaseChangeCone`：同じ cone の実際の極限性 |
+| 同上 | 同上に含む | `compositeStageBaseChangePointIso`・`compositeStageBaseChangeConeWithPoint`・`isLimit_compositeStageBaseChangeConeWithPoint`：選んだ閉イデアルの元の空間を頂点として保つ同型と極限性 |
+| 同上 | 同上に含む | `isPullback_compositeStageBaseChangeDiagram_map` と三つの型クラス入口：遷移射の Cartesian 性・affine 性、各段の qcqs 性 |
+| 同上 | 同上に含む | `compositeStageBaseChangeConeWithPoint_π_fst`・`_π_snd`・`isPullback_compositeStageBaseChangeConeWithPoint_π`：元の基底・周辺模型への射影の可換式と、同じ基底の射影の底変換であること |
+| ProperClosedCompositeStageModel | 63 | `exists_proper_closed_compositeStage_model`：C03 と上の正方形を貼り、元の構造射と Cartesian な固有・局所有限表示の閉部分模型と、周辺への可換式を得る |
+| IntegralModelCoefficientFactor | 44 | `exists_integral_model_stage_factor_of_finiteType_int`：係数写像を I03 の実際の有限・有限表示段に因子化する |
+| 同上 | 同上に含む | `exists_integral_model_spec_factor_of_finiteType_int`：同じ因子化を I04 の実際の Spec の射影の可換式へ移す |
+| IntegralProperClosedModel | 47 | `exists_proper_closed_integral_model`：I04 の実際の段の固有・局所有限表示模型 r と、元の閉部分からの Cartesian な a、周辺模型への β と可換式を実際に選ぶ |
+
+本体 **303 行**、入口 4 行。対象ビルドは直接の importer AlgebraicGeometry まで **4,890 ジョブ成功**、四モジュールの小監査は補助宣言込み **34 宣言・標準三公理のみ**。一般の固有・局所有限表示の周辺射を保ち、整射の単射性・忠実平坦性を仮定しない。模型の実際の底変換の型を cone の同型移送で保ち、有限型閉イデアルの型を別の空間に置き換えていない。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-composite-closed-model-batch-check-2.log`、`2g-integral-closed-model-native.log`、`2g-integral-closed-model-audit.log`。
+
+G1 共用部品込み本体 **5,613 行**、入口込み **5,717 行**。I04 上の全射な固有模型への接続、平坦側の模型、元の X への因子化を同じ段にそろえる接続は未完。A07・G2 は未完のまま。
+
+一覧：済み 9／全体 14（うち追加 5）。
