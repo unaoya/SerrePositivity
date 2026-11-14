@@ -23083,3 +23083,58 @@ mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
 次はL19以降のcosimplicial正規化。一般次元のBF余代数ができたことを、
 正規化cosimplicial代数の全関手やMayのtop計算の完成とは扱わない。
 完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決。
+
+## 395. L19の一般余単体的加群への特殊化（実装前の型）
+
+一覧：済み 20／全体 48（うち追加 4）
+
+正規化cosimplicial代数の加群忘却に使える一般性で置く。
+SimplexCuts.normalizedComponent（χ係数の作用成分）とは別の名前空間
+EInfinity.CosimplicialNormalizationを使う。
+次数0は全体、次数q+1は全σ_iの核の共通部分。
+微分は元の交代余面和そのもの。σ_iδ_jは二つの隣接項だけが恒等で、
+残りは入力のσの零へ戻す。二項の整数符号は反対。
+L19の既存cosimplicial恒等式・有限和・核の法則の証明分割で新しいIDなし。
+各証明200行以内。
+
+```lean
+def normalizedSubmodule (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (q : ℕ) → Submodule A (X.obj ⦋q⦌)
+def alternatingCofaces (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    X.obj ⦋q⦌ →ₗ[A] X.obj ⦋q + 1⦌
+lemma mem_normalized_succ (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : X.obj ⦋q + 1⦌) :
+    a ∈ normalizedSubmodule A X (q + 1) ↔ ∀ i : Fin (q + 1), (X.σ i) a = 0
+lemma coface_codegeneracy_zero_of_not_neighbors
+    (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) {q : ℕ}
+    (a : X.obj ⦋q⦌) (ha : a ∈ normalizedSubmodule A X q) (i : Fin (q + 1)) (j : Fin (q + 2))
+    (h₀ : j ≠ i.castSucc) (h₁ : j ≠ i.succ) : (X.σ i) ((X.δ j) a) = 0
+lemma normalized_d_mem_exact (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : normalizedSubmodule A X q) :
+    ∀ i : Fin (q + 1), (X.σ i) (alternatingCofaces A X q a.val) = 0
+lemma alternatingCofaces_mem (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : normalizedSubmodule A X q) :
+    alternatingCofaces A X q a.val ∈ normalizedSubmodule A X (q + 1)
+```
+
+## 396. L19の全codegeneracy核の微分保存（検証済み、取り込み点）
+
+一覧：済み 21／全体 48（うち追加 4）
+
+一般の余単体的A加群について、元の全σの核の共通部分を
+元の交代余面微分が保つことを証明した。
+次数零も含む。σ_iδ_jの隣接二項以外を同じ入力のσの零へ戻し、
+残る二つの恒等項を元の整数符号で相殺する。
+cosimplicial代数の加群忘却へ適用できる一般性で、有限次元性等の追加仮定なし。
+正規化の作用成分名と衝突しない別の名前空間CosimplicialNormalizationに置いた。
+
+登録対象：SerrePositivity.EInfinity.CosimplicialNormalization の下
+
+- Components（34行）
+- Differential（90行）
+
+今回124行、M14実測29,917行、外枠31,000行まで1,083行。
+対象ビルド1369 jobs成功、追加警告0。
+小さい監査2モジュール21宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は対象ビルド・監査の間だけ取り、返却済み。
+L20の同じ制限微分・包含・写像へ進む。
