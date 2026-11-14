@@ -31,3 +31,13 @@ Mathlib `CategoryTheory.Limits.Types.FilteredColimit.isColimitOf'` は、cocone 
 したがって、小さい模型の添字についてこの ReflectsColimitsOfShape を局所 instance にし、台の型の IsColimit から `isColimitOfReflects (forget CommRingCat)` で実際の環の cocone の IsColimit を得る。型で作った desc に対して環演算の保存をもう一度手作業で実装することは第一案にしない。
 
 これはソース照合に基づく実装案であり、この instance の合成と SmallModel を介する式はまだ Lean で検証していない。見込みは既報の I03 の 400〜1,000 行を維持する。I04 では、この環の colimit を Spec の逆極限へ渡し、各有限・有限表示段の有限性と、元の Spec の全射性から各段の全射性を実際の因子化で示す。G2 の一般の固有模型の構成を、ここで既に得たことにはしない。
+
+## I04 への接続の照合（紙のみ）
+
+Mathlib `GammaSpecAdjunction.lean` の `Spec.reflective : Reflective Scheme.Spec` と `ΓSpec.adjunction` を確認した。I03 の環の colimit を op に移した limit に対し、この右随伴の Spec の limit 保存を適用する。得られる射影は同じ模型の構造射の Spec.map であることを保持する。
+
+模型 C の R 上の有限性は `IsFinite.SpecMap_iff`、有限表示性は `LocallyOfFinitePresentation.SpecMap_iff` の環側へ渡す。有限射から固有性を得る既存の instance を使い、一般の固有射の近似をここで再実装しない。
+
+Spec B→Spec R の全射性を仮定した場合、各模型の射 C→ₐ[R]B とその R 線形性により、Spec B→Spec C→Spec R の合成が元の Spec B→Spec R である。合成の全射性から第二の射 Spec C→Spec R の全射性が従う。この段では R→B の忠実平坦性を仮定しない。
+
+この逆系は R 上の有限・有限表示の段の近似であり、R 自身を有限型 F_p や Noether 環へ移した模型ではない。G2 の一般の固有有限表示模型と、その固有性・全射性を同じ有限段へそろえる仕事を完了扱いにしない。`ProperSurjectivityApproximation.exists_surjective_pullback_snd_of_isLimit` も、既に与えられた Noether な固有模型への全射性の降下であり、模型そのものを作る宣言ではない。
