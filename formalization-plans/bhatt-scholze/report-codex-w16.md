@@ -22225,3 +22225,318 @@ audit-m14-cochain-composition-basis-all.logは3本12宣言。
 完成見込みの外枠超過の懸念と完備化の未評価分は維持する。
 
 mainは391b2a0d2のまま。3b-4a完成の取り込み後は§33のTotの9欄を先にする。
+
+
+## 371. 零項を固定点に残す同じ部分同値の交換（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+L12aの空語分岐では、零次出力の部分型だけを左側のCutと交換し、
+元の右側の正次数の零項を固定点として保持する。指定された同値eと逆以外は選ばない。
+一覧の有限対合を構成するための同じ交換とその法則であり、新しい数学・一覧IDではない。
+各証明200行以内。有限点検を先に行い、右の添字数0〜6の全部分集合とその全順序づけ
+2,372組・25,019要素について、二回で恒等・固定点の範囲・実整数項の相殺を確認した。
+
+```lean
+def matchedSubsetExchange (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) :
+    α ⊕ β → α ⊕ β
+  | Sum.inl a => Sum.inr (e a).val
+  | Sum.inr b => if h : P b then Sum.inl (e.symm ⟨b, h⟩) else Sum.inr b
+```
+
+```lean
+lemma matchedSubsetExchange_involutive (P : β → Prop) [DecidablePred P]
+    (e : α ≃ {b // P b}) : Function.Involutive (matchedSubsetExchange P e)
+```
+
+```lean
+def matchedSubsetPerm (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) :
+    Equiv.Perm (α ⊕ β)
+```
+
+```lean
+def matchedSubsetBalanceTerm {M : Type w} [AddCommGroup M] (F : α → M) (G : β → M) :
+    α ⊕ β → M
+  | Sum.inl a => F a
+  | Sum.inr b => -G b
+```
+
+```lean
+lemma matchedSubsetPerm_fixed_zero {M : Type w} [AddCommGroup M]
+    (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) (F : α → M) (G : β → M)
+    (hzero : ∀ b, ¬P b → G b = 0) (i : α ⊕ β) (hi : matchedSubsetPerm P e i = i) :
+    matchedSubsetBalanceTerm F G i = 0
+```
+
+```lean
+lemma matchedSubsetPerm_term_neg {M : Type w} [AddCommGroup M]
+    (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) (F : α → M) (G : β → M)
+    (hpair : ∀ a, F a = G (e a).val) (hzero : ∀ b, ¬P b → G b = 0) (i : α ⊕ β) :
+    matchedSubsetBalanceTerm F G (matchedSubsetPerm P e i) =
+      -matchedSubsetBalanceTerm F G i
+```
+
+hpair・hzeroはこの一般の包装の入力。実際の空語の対合へ適用するときは
+既に証明した元のCut対応・指定面・実際の余単位の値で供給し、結論へ仮定として残さない。
+
+
+## 372. 元の一点Cut対応と実際の空語作用による全添字の対合（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§371へ元のnullaryOutputCutEquivと実際のCut項を供給する。
+小さい全Cutと、大きい全Cut（正次数の零項も含む）の直和を保つ。
+対合は係数環・入力単体を選ぶ前に指定し、全係数環・全入力に共通に使う強い形。
+各証明200行以内、同じL12aの有限対応と既存構成の評価の包装。
+hpair・hzeroを最終の結論へ仮定として残さない。
+
+```lean
+def nullarySmallCutTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (w : Surjection.Word r (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) (t : Cut m q) : (power (chains A S) r).X z
+```
+
+```lean
+def nullaryOuterCutTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (ν : Surjection.BasisWord 0 0) (k : Fin (r + 1))
+    (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z)
+    (s : Cut (m + 1) q) : (power (chains A S) r).X z :=
+  cutSign s v.val •
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) r 0 k
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (r + 1)) 0 z z (zero_add z)
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up ν)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (r + 1) (cutGeneratorFamily A S s v x) z
+            (by rw [vectorDegree_cutGeneratorFamily]
+                have h : (m + 1) + q + 1 - (r + 1) = m + q + 1 - r
+```
+
+```lean
+def nullaryCanonicalBalancePerm {m q r : ℕ} (v : Surjection.Word r (m + 2))
+    (p : Fin (m + 2)) (k : Fin r) (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    Equiv.Perm (Cut m q ⊕ Cut (m + 1) q)
+```
+
+```lean
+def nullaryCanonicalBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (ν : Surjection.BasisWord 0 0) (k : Fin (r + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) :
+    Cut m q ⊕ Cut (m + 1) q → (power (chains A S) r).X z
+```
+
+```lean
+lemma nullarySmallCutTerm_eq_insert (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (ν : Surjection.BasisWord 0 0) (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i))
+    (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) (t : Cut m q) :
+    nullarySmallCutTerm A S w x z hz t =
+      nullaryOuterCutTerm A S v ν k x z hz (nullaryPointInsertCut t p)
+```
+
+```lean
+lemma nullaryOuterCutTerm_eq_zero_of_nonzero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (v : Surjection.Word (r + 1) (m + 2)) (ν : Surjection.BasisWord 0 0)
+    (k : Fin (r + 1)) (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z)
+    (s : Cut (m + 1) q) (hs : outputDegree s v k ≠ 0) :
+    nullaryOuterCutTerm A S v ν k x z hz s = 0
+```
+
+```lean
+lemma nullaryCanonicalBalance_pairing {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (ν : Surjection.BasisWord 0 0) (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) :
+    ∃ τ : Equiv.Perm (Cut m q ⊕ Cut (m + 1) q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌) (z : ℤ)
+        (hz : -((m + q + 1 - r : ℕ) : ℤ) = z),
+        nullaryCanonicalBalanceTerm A S v w ν k x z hz i = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌) (z : ℤ)
+        (hz : -((m + q + 1 - r : ℕ) : ℤ) = z),
+        nullaryCanonicalBalanceTerm A S v w ν k x z hz (τ i) =
+          -nullaryCanonicalBalanceTerm A S v w ν k x z hz i)
+```
+
+これは同じ語長の正規形での一出現・非退化raw語の包装。
+元の全OverlapPartitionの因子と元の語長へ移す包装、退化・零出力を合わせる全体の型はまだ残る。
+そのため、この節だけでL12a全体を完了扱いにしない。
+
+
+## 373. 元の全OverlapPartition因子と退化・反復の固定零項（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+左の全添字に元のOverlapPartition × Cutを保持し、合成符号と同じraw語の正規化を読む。
+右は元の外側語を等しい語長へ移した全Cutで、区間数の等式は(m+1)+d=(m+d)+1。
+これは元の右の全Cutの算術的な等式移送で、別のCutを選び直すものではない。
+元の右の全和との比較には既存sum_cutGenerator_terms_eq_mpとword_eq_mp_transを使える。
+反復出現では左の分割が存在せず、右の全項は正次数の空語作用で零となる。
+退化raw語の右の各項の零性も既存の全和の証明から取り出す。各証明200行以内。
+
+```lean
+def nullaryNativeOuterWord {m d : ℕ} (u : Surjection.BasisWord (m + 2) d) :
+    Surjection.Word (m + 2) ((m + d) + 2)
+```
+
+```lean
+lemma nullaryNativeOuterWord_count {m d : ℕ} (u : Surjection.BasisWord (m + 2) d)
+    (k : Fin (m + 2)) :
+    Surjection.occurrenceCount (nullaryNativeOuterWord u).val k = Surjection.occurrenceCount u.val k
+```
+
+```lean
+lemma overlap_eq_single_of_count_one {n l : ℕ} (hn : n = 1)
+    (ρ : Surjection.OverlapPartition n l) :
+    ρ = Eq.mp (congrArg (fun C => Surjection.OverlapPartition C l) hn.symm)
+      (Surjection.OverlapPartition.single l)
+```
+
+```lean
+abbrev NullaryNativeBalanceIndex {m d : ℕ} (u : Surjection.BasisWord (m + 2) d)
+    (k : Fin (m + 2)) (q : ℕ)
+```
+
+```lean
+def nullaryNativeCompositeTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ)
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × Cut (m + d) q)
+    (x : S _⦋q⦌) : (power (chains A S) (m + 1)).X (-((d + q : ℕ) : ℤ))
+```
+
+```lean
+def nullaryNativeOuterTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ) (s : Cut ((m + d) + 1) q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + 1)).X (-((d + q : ℕ) : ℤ))
+```
+
+```lean
+def nullaryNativeBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ) (i : NullaryNativeBalanceIndex u k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + 1)).X (-((d + q : ℕ) : ℤ))
+```
+
+```lean
+lemma nullaryOuterCutTerm_eq_zero_of_raw_degenerate
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hv : ∀ i, k.succAbove (w i) = v.val (p.succAbove i)) (hw : ¬Surjection.Nondegenerate w)
+    (ν : Surjection.BasisWord 0 0) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) (s : Cut (m + 1) q) :
+    nullaryOuterCutTerm A S v ν k x z hz s = 0
+```
+
+```lean
+lemma nullaryNativeBalanceTerm_eq_zero_of_count_ne_one
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ) (hcount : Surjection.occurrenceCount u.val k ≠ 1)
+    (i : NullaryNativeBalanceIndex u k q) (x : S _⦋q⦌) :
+    nullaryNativeBalanceTerm A S u ν k q i x = 0
+```
+
+この節は元の全添字・項・固定零項の入力の包装で、これだけで全分岐の対合を完了扱いにしない。
+新しい数学や一覧IDは追加しない。
+
+
+## 374. 元の全分割を保持する一出現・非退化対合（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§373の全添字に戻す。空語分割ρの一意性だけで左の分割因子を同値移送し、
+同じ一点Cut挿入同値へ合成する。元のcompositionSignは内側次数零の既存法則で1。
+これは既存の対合・係数移送の法則と証明分割で、新しい数学・一覧IDは足さない。
+各証明200行以内。正次数の右Cutも消去せず固定零項として残す。
+
+```lean
+def nullaryOverlapCutEquiv {c N q : ℕ} (ρ : Surjection.OverlapPartition c 0) :
+    (Surjection.OverlapPartition c 0 × Cut N q) ≃ Cut N q
+
+lemma nullaryNativeCompositeTerm_eq_small
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord (m + 1) d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ)
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × Cut (m + d) q)
+    (x : S _⦋q⦌) :
+    nullaryNativeCompositeTerm A S u ν k q c x =
+      nullarySmallCutTerm A S (positiveWord w) x (-((d + q : ℕ) : ℤ)) (by omega) c.2
+
+lemma nullaryNativeBalance_pairing_of_nondegenerate {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord (m + 1) d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ) :
+    ∃ τ : Equiv.Perm (NullaryNativeBalanceIndex u k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q (τ i) x =
+          -nullaryNativeBalanceTerm A S u ν k q i x)
+```
+
+## 375. 元の全空語添字の退化枝と正出力の包装（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§374の非退化対合が対象ビルドで通った。次は元の全ρ因子を保つ退化零項と、
+反復・退化・非退化の三分岐を同じ全添字へ包装する。
+元の零項の法則と既存対合の証明分割で、新しい構成・数学・IDは足さない。
+各証明200行以内。零出力と正の内側arityまで含むL12a全体の完成とはしない。
+
+```lean
+lemma nullaryNativeBalanceTerm_eq_zero_of_degenerate
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (hdeg : ¬Surjection.Nondegenerate (IntervalCuts.nullaryRawWord u ν k ρ))
+    (i : NullaryNativeBalanceIndex u k q) (x : S _⦋q⦌) :
+    nullaryNativeBalanceTerm A S u ν k q i x = 0
+
+lemma nullaryNativeBalance_pairing {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2)) :
+    ∃ τ : Equiv.Perm (NullaryNativeBalanceIndex u k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q (τ i) x =
+          -nullaryNativeBalanceTerm A S u ν k q i x)
+```
+
+## 376. 元の全空語添字の正出力対合（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§371〜375の9本を検証した。全ρ×全小Cutと全大Cutを保持し、非退化では
+元の一点Cut挿入で対応させ、反復・退化・正次数の選択因子の零項を固定点に残す。
+対合は係数環・単体に依存せず、全係数環・全入力で元の実テンソルの項が相殺する。
+元のcompositionSignは内側次数零の法則で計算し、退化raw語の項も消していない。
+零出力と全arityの有限添字の包装はまだ残る。L12aの完了を宣言しない。
+
+登録対象（全て SerrePositivity.EInfinity.SimplexCuts の下）：
+
+- MatchedSubsetPairing（87行）
+- NullaryCanonicalBalanceTerms（60行）
+- NullaryCanonicalBalanceValues（75行）
+- NullaryCanonicalBalancePairing（49行）
+- NullaryNativeInputData（45行）
+- NullaryNativeBalanceTerms（51行）
+- NullaryNativeZeroValues（64行）
+- NullaryNativeNondegeneratePairing（100行）
+- NullaryNativeBalancePairing（86行）
+
+今回617行、M14実測28,643行、L12a 13,436行、外枠31,000行まで2,357行。
+各証明200行以内。対象ビルド3083 jobs成功、追加警告0。
+小さい監査9モジュール84宣言・標準三公理のみ、sorry・追加公理0。
+最初のNativeInputDataの100字警告は改行して再ビルドで消した。
+共有鍵は各対象ビルド・監査の間だけ取得し、全て返却済み。
+
+完成見込みの外枠超過の懸念（§314以降）と完備化後P⁰の未評価分は残す。
+mainは391b2a0d2のままで、3b-4a完成の取り込みはまだない。
+完備化の三案は§369の結論を維持する：(a)の項別平坦模型と全鎖primitiveの比較は未証明、
+(b)はperfect性だけで単位の全射を結論できず、(c)が不可欠とはまだ判定しない。
