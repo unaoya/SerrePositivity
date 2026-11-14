@@ -164,5 +164,11 @@
       "new": "prismaticCohomology_baseChange' (E := E)",
       "line": 91
     }
-  ]
+  ],
+  "Theory_forwarding": {
+    "declaration": "wittPolynomial",
+    "caller": "psiBaseChange",
+    "edit": "wittPolynomial (E := E) p n",
+    "reason": "Forward the same Theory already used by polynomialDelta and psiBaseChange"
+  }
 }
