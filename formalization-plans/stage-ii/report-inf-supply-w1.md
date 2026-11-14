@@ -9255,3 +9255,39 @@ RR02(a)の収縮段。円柱射影を標準1単体の崩壊と零パラメータ
 (b)(c)新規0行。ログ：`/tmp/is-w1/terminal-weight-diagram/build-4.log`。
 終対象のある添字で、元の零重み射のframe実現の弱同値性を証明した。
 指定余錐への増大射の照合と、要素圏からOverへの比較は残る。
+
+### §104.4 元の余錐への増大射の照合（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def zeroWeightCoconeMap :
+  (functor K A).obj (ConstantWeightHom.weight K (SimplexCategory.mk 0)) ⟶ c.pt
+lemma zeroWeightCoconeMap_eq : zeroWeightCoconeMap A c =
+  (ConstantWeightRealization.iso K A (SimplexCategory.mk 0)).hom ≫ colimit.desc _ c
+lemma bousfieldKanAugmentation_factor : bousfieldKanAugmentation A c =
+  (functor K A).map (bousfieldKanZeroWeight K) ≫ zeroWeightCoconeMap A c
+lemma zeroWeightCoconeMap_isIso (hc : IsColimit c) : IsIso (zeroWeightCoconeMap A c)
+lemma bousfieldKanAugmentation_weakEquivalence_of_terminal
+  {t : K} (ht : IsTerminal t) (hc : IsColimit c) :
+  weakEquivalences C (bousfieldKanAugmentation A c)
+```
+
+最後の補題には§104.2と同じpointwise Reedy cofibrant・homotopically constant
+の入力を持つ。`c` は次数零の元の余錐。既存の指定実現随伴によって因子分解を照合し、
+終対象の場合の増大射を閉じる。要素圏からOverへの比較はこの後に残る。
+
+### §104.5 元の増大射までの検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§104.4の1本・70行と依存する3本の対象ビルド、および28宣言の監査を通した。
+標準三公理のみ、計算上限変更なし。
+検証済み累計211本・15,769行、上限変更後のRR02(a)3,271行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/terminal-weight-diagram/build-6.log`。
+
+終対象のある添字では、指定余極限余錐への元のBK増大射が弱同値であることまで
+照合した。余極限随伴の計算は `Adjunction.mk'_homEquiv` を使い、
+定義展開で一致することを仮定しない。
+RR02(a)の次の残りは、要素圏とOverの随伴の余単位による実現比較。
+終対象のあるOver側は今回の補題へつなぐ。要素圏自身に終対象があるとは主張しない。
