@@ -2198,3 +2198,17 @@ G1・G2共用部品込み本体13,129行、入口込み13,352行。C06 は本体
 一覧：済み12／全体17（うち追加8）。
 
 監査出力：`SerrePositivity.AlgebraicGeometry.IrreducibleNoetherianProperDomination: 2 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 2 declarations.`。
+
+
+C06 の一般の Noether 対象への出口（着手前の型、見込み160〜320行）：`exists_noetherian_proper_domination` は任意の Noether な X、affine な S、分離的局所有限型 f:X→S に対し、実際の固有全射 h:T→X、固有な q:P→S、開包含 t:T→P と t≫q=h≫f を返す。既存の nilpotent の情報を保つ既約成分の有限な族に既約な場合の構成を適用し、前記の有限直和で一つの射へまとめる。全射性は各点が元の成分に入ることと各成分での固有全射の全射性から得る。C06 の最初の型（固有な周辺を持つ Chow の形）の出口そのものであり、一般の固有模型 B01 の完成ではない。C06 内の最後の証明分割として親項目を増やさない。
+
+
+### C06：有限個の固有な周辺を持つ支配の、実際の直和
+
+`FiniteProperDominationUnion`（70行）：`isProper_coprod_desc` は二つの固有射の直和からの射の固有性。`exists_finite_proper_domination_union` は有限個の固有な周辺への開包含を持つ支配射を、一つの実際の支配射と各成分からの射・元の対象上の可換式へまとめる。空の族も空スキームとして扱う。
+
+本体70行・入口1行。最初の単独検証で成功、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,011ジョブ、小監査2宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-finite-proper-domination-union-check.log`・`2g-finite-proper-domination-union-native.log`・`2g-finite-proper-domination-union-audit.log`。
+
+G1・G2共用部品込み本体13,199行、入口込み13,423行。C06 は本体1,265行までで未完。元の一般の Noether 対象の既約成分からの接続は下書きで実測に含めない。C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。

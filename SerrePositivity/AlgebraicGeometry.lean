@@ -1519,3 +1519,5 @@ public import SerrePositivity.AlgebraicGeometry.DenseChartRestriction
 public import SerrePositivity.AlgebraicGeometry.ProperOpenChartGluing
 
 public import SerrePositivity.AlgebraicGeometry.IrreducibleNoetherianProperDomination
+
+public import SerrePositivity.AlgebraicGeometry.FiniteProperDominationUnion
