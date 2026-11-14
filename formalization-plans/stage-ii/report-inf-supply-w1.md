@@ -7269,3 +7269,111 @@ AsSmall・ulift・twisted-arrowの底の照合。点ごとの同値を自然な�
 加群版のstrict化だけではBE作用を回復できない、との切り分けを維持している。
 他枝のmerge・未取り込みコードのimport・R3のLean実装はしていない。
 R2の充満忠実性をR3の本質的全射性の代用にはしない。
+
+
+## 70 承認後の再開：RR02(a)の実射の構成
+
+一覧：済み 1／全体 13（うち追加 11）
+
+11-14夜のユーザー承認に従い、外枠を24,000行に更新する。
+約18,000行で一覧・(a)〜(c)の実測・E01の別経路の紙の進みを報告する。
+停止点5aで止まり、R3・R4は実装しない。goalはactiveに戻っている。
+
+(a)の実射は、既存のHomの要素圏と元のframeの全自然変換から作る。
+最初に指定の錐を固定する。これはRR02(a)の証明分割で、導来極限性を仮定しない。
+最終の検証済み型と証明は次のとおり。
+
+```lean
+/-- 元の添字のHomの要素圏。対象は実際の添字射、射はその前後合成の分解。 -/
+abbrev StrictDiagramArrowElements (d : StrictDiagramDirection) :=
+  (Functor.uncurry.obj (coyoneda (C := AsSmall.{u} (strictDiagramIndex d)))).Elements
+
+/-- 同じ添字射の始点と終点を、既存の二変数係数の底へ送る。 -/
+def strictDiagramArrowElementsBase (d : StrictDiagramDirection) :
+    StrictDiagramArrowElements.{u} d ⥤
+      AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) :=
+  Functor.Elements.π _ ⋙ CategoryTheory.Prod.swap _ _ ⋙ strictDiagramEndIndexFunctor d
+
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+  (X Y : StrictComplexDiagram A d)
+local instance arrowConeModel : HomotopicalAlgebra.ModelCategory (StrictComplexDiagram A d) :=
+  strictDiagramReedyModelCategory A d
+
+/-- 実際の添字射で評価した、同じframeの二変数係数。 -/
+def strictDiagramFrameArrowDiagram : StrictDiagramArrowElements.{u} d ⥤ SSet.{u} :=
+  strictDiagramArrowElementsBase d ⋙ strictDiagramEvaluatedValueKan A d X Y ⋙ kanObjectForget
+
+/-- 元の全自然変換を、指定した添字射に沿うHomへ送る実写像。 -/
+def strictDiagramFrameArrowLeg (t : StrictDiagramArrowElements.{u} d) :
+    strictDiagramFrameMapping A d X Y ⟶ (strictDiagramFrameArrowDiagram A d X Y).obj t where
+  app n := ↾fun f =>
+    ((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map t.val) ≫
+      f.app (AsSmall.down.obj t.obj.2)
+  naturality := by
+    intro n m θ
+    apply ConcreteCategory.hom_ext
+    intro f
+    symm
+    change ((strictDiagramSourceFrame A d X).obj.map θ.unop).app _ ≫
+        (((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map t.val) ≫
+          f.app _) =
+      ((strictDiagramSourceFrame A d X).obj.obj m.unop).map (AsSmall.down.map t.val) ≫
+        (((strictDiagramSourceFrame A d X).obj.map θ.unop).app _ ≫ f.app _)
+    rw [← Category.assoc, ← ((strictDiagramSourceFrame A d X).obj.map θ.unop).naturality,
+      Category.assoc]
+
+/-- 全ての前後合成の分解に対し、同じframeの成分は錐の自然性を満たす。 -/
+lemma strictDiagramFrameArrowLeg_naturality {t s : StrictDiagramArrowElements.{u} d}
+    (g : t ⟶ s) :
+    strictDiagramFrameArrowLeg A d X Y t ≫ (strictDiagramFrameArrowDiagram A d X Y).map g =
+      strictDiagramFrameArrowLeg A d X Y s := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  intro f
+  have hg : g.hom.1.unop ≫ t.val ≫ g.hom.2 = s.val := by
+    have h := g.map_val
+    change (g.hom.1.unop ≫ t.val) ≫ g.hom.2 = s.val at h
+    simpa only [Category.assoc] using h
+  have hh := congrArg (fun k => AsSmall.down.map k) hg
+  change AsSmall.down.map g.hom.1.unop ≫ AsSmall.down.map t.val ≫
+      AsSmall.down.map g.hom.2 = AsSmall.down.map s.val at hh
+  change ((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map g.hom.1.unop) ≫
+      (((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map t.val) ≫ f.app _) ≫
+        (strictDiagramFibrantTarget A d Y).map (AsSmall.down.map g.hom.2) =
+      ((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map s.val) ≫ f.app _
+  simp only [Category.assoc]
+  rw [← f.naturality]
+  have h := congrArg (fun k =>
+    ((strictDiagramSourceFrame A d X).obj.obj n.unop).map k ≫
+      f.app (AsSmall.down.obj s.obj.2)) hh
+  simpa only [CategoryTheory.Functor.op_obj, Opposite.unop_op,
+    CategoryTheory.Functor.map_comp, Category.assoc] using h
+
+/-- 元の全frame Homを頂点とする、Hom要素圏上の指定錐。 -/
+def strictDiagramFrameArrowCone : Cone (strictDiagramFrameArrowDiagram A d X Y) where
+  pt := strictDiagramFrameMapping A d X Y
+  π := { app := strictDiagramFrameArrowLeg A d X Y
+         naturality := by intro t s g; simpa using (strictDiagramFrameArrowLeg_naturality A d X Y g).symm }
+
+```
+
+### 70.1 検証と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFrameArrowCone` 93行：対象ビルド3,715 jobs成功、小監査12宣言成功、
+標準三公理のみ。ログ `/tmp/is-w1/frame-arrow-cone/build-5.log`。
+型クラスの指定、自然性の向き、反対関手の対象の計算を局所的に明示して検証した。
+計算上限は変更していない。既存のE01下書きは検証対象に含めていない。
+検証済み累計156本・12,591行、外枠24,000行まで11,409行。
+再開後のRR02(a)の実測は93行、(b)(c)の新規実装は0行。
+
+今回の錐は全単体の自然変換を元の添字射へ前合成して作っており、
+全ての前後合成の分解に対する自然性を証明した。π₀や頂点だけの錐ではない。
+次に `kanObjectConeOfUnderlying` と元の `bousfieldKanConeComparison` を使う。
+`kanCone_isLimit_of_bousfieldKanComparison` は実比較の弱同値性を入力に要求するため、
+その弱同値性をReedy条件から証明する工程は残す。
+Hom要素圏のnerveと既存twisted-arrow表示の照合もまだ必要である。
+RR02(a)の実射全体・同値性は未完了。E01の別経路は§69以前の紙の整理を維持し、
+直接の指定単位比較と未供給の単位普遍性には戻っていない。
