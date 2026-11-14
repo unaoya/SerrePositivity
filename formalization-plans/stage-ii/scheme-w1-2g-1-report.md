@@ -1882,3 +1882,19 @@ G2 の残りの見込みは以下。すべて追加する本体の行数で、�
 C05・C06 の弱い周辺空間の形は、一般の固有射の模型と最終の v 降下の主張を弱めない。[Stacks 081F](https://stacks.math.columbia.edu/tag/081F) の証明で用いるのは周辺の固有性と immersion であり、極限で閉埋め込みにした後 C04 で有限段へ降ろせることである。有限型 F_p の模型の供給と最終出力 `AugmentedRingCechExact` の型は変えない。
 
 一覧：済み11／全体17（うち追加8）。
+
+
+C05 の有限型 affine の多項式空間への閉埋め込み（着手前の型、見込み40〜120行）：`exists_affine_polynomial_closed_embedding` は有限型 R-代数 A に対し、有限集合 s⊆A と、実際の `j:Spec A→Spec (MvPolynomial s R)`、その閉埋め込み性、Spec R 上の構造射との可換式を返す。Mathlib の `Algebra.FiniteType.iff_quotient_mvPolynomial` の実際の全射を Spec に移し、係数の可換式を追う。C05 の標準開への immersion の前半で、C05 と別に親項目を増やさない。
+
+
+### C05：有限型 affine の実際の多項式空間への閉埋め込み
+
+`AffinePolynomialClosedEmbedding`（35行）：`exists_affine_polynomial_closed_embedding` は有限型 R-代数 A に対し、有限個の変数の多項式環の Spec への実際の閉埋め込みと、Spec R 上の構造射との可換式を返す。有限型代数の実際の全射を Spec に移し、係数射との可換性を明示した。
+
+本体35行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,985ジョブ成功。小監査1宣言・標準三公理のみ。最初の下書きの単独検証、公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-affine-polynomial-closed-embedding-check.log`・`2g-affine-polynomial-closed-embedding-native.log`・`2g-affine-polynomial-closed-embedding-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,659行、入口込み11,858行。C05 は本体35行までで、固有な周辺への immersion はまだ未完。C05・C06 と B01〜B04 は未完。
+
+一覧：済み11／全体17（うち追加8）。
+
+C05 の Proj の一標準開の環からの実際の全射（着手前の型、見込み80〜200行）：`polynomialChartEvaluation` は `MvPolynomial (Option ι) R` の none 変数を1、some i を `MvPolynomial ι R` の変数 i へ送る実際の環写像。`homogeneousPolynomialChartEvaluation` はその写像を none 変数の次数零斉次局所化へ延長する。`homogeneousPolynomialChartEvaluation_mk` は任意の斉次分数での値を分子の評価として計算し、`homogeneousPolynomialChartEvaluation_surjective` はこの環写像の全射性を返す。none が1になるため分母の冪が消え、定数と各変数の原像を実際に供給できる。標準開と多項式環の環同型の全体は、この段の immersion の構成には不要で、必要な向きの全射と係数との可換式を先に示す。C05 内の構成の証明分割で、親項目を増やさない。
