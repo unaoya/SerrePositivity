@@ -12896,3 +12896,41 @@ theorem anodyneExtensions_leftAnodyne_of_kanTarget
     {X Y : SSet.{u}} [KanComplex Y] (f : X ⟶ Y)
     (hf : SSet.anodyneExtensions f) : leftAnodyneExtensions f
 ```
+
+## 205. 元のEx∞単位のleft anodyne性への適用（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 20（うち追加 8）。R03f・R03d・R02・R03は未完了。
+
+R03f.1を元の同じexInfinityUnitと既存exInfinityUnit_anodyneへ適用し、その単位自身のleft anodyne性を得た。既存構成の性質の適用であり、一覧の新しい数学的定理には数えない。関手・単位の変更や別のKan模型への置き換えはしていない。
+
+272：新規一本の対象ビルド1,670 jobs・終了0、小監査125本907宣言・標準三公理のみ。実ハンドル72538の終了0を確認し、鍵返却済み。個別検査15355も終了0。今回23行、累計125本・8,189行／外枠15,000。R03f本体の作業は151行、独立のR03f.1は61行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 205.1 型
+
+#### ExInfinityUnitLeftAnodyne（23行）
+
+```lean
+theorem exInfinityUnit_leftAnodyne (X : SSet.{u}) :
+    leftAnodyneExtensions (exInfinityUnit.app X)
+```
+
+## 206. R03f.2：barが各成分のleft anodyne性を保つ（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2を追加、未証明。
+
+同じR03fのまとまりで、§19の見込み1,500行以下の枠により次の独立の中間定理を加える。全ての自然変換に対する一般のbarの保存定理であり、既存の単位の自然性の法則として処理しない。R03f.1のKan標的への判定とは異なる数学である。
+
+```lean
+theorem simplicialReplacementMap_leftAnodyne
+    {I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}
+    (η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) :
+  leftAnodyneExtensions (simplicialReplacementMap η)
+```
+
+名前空間はFibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories。`leftAnodyneExtensions` はTheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrationsの既存の性質。型は `/private/tmp/CheckISW2ReplacementLeftType.lean` のPropで確認した（実ハンドル31074・終了0）。未証明の宣言や仮定を本体に登録しない。
+
+見込み650〜1,200行。置き場所は一般の対角の道具がHomotopicalAlgebra/Simplicial/DiagonalLeftAnodyne.lean、bar固有がFibrationsOverOrdinaryCategories/SimplicialReplacementLeftAnodyne*.lean。一般の対角の相対持ち上げ80〜180行、barの行の余積表示と退化のlatchingの相対表示350〜650行、既存のsimplicialReplacementMapへの同定・全移送150〜300行を見込む。半分600行で実測と残りを報告する。独立のbarの保存定理の全体として見積もり、細分で§19の枠を回避しない。
+
+短い経路：既存DiagonalAnodyne.diagonal_map_anodyneは全ホーン用の射の性質を固定しているため、その結論をleft anodyneへ読み替えない。同じ対角の右随伴とrelativeMatchingArrowIsoの証明を、left fibrationと境界内部Homへ適用する。必要なleftAnodyneExtensions_pushoutObjObj_left/rightとleftFibration_pullbackObjObjπは既存のLeftAnodynePushoutProductにある。barの各行は元の基底射列で添字づけた係数の余積であり、BarRowsCoproductの既存の余積表示を再利用する。退化の分裂により相対latchingの非退化部分を係数の同じη.app iの余積へ同定し、left anodyne性を渡す。これをReedy持ち上げと対角の随伴で元の全写像へ戻す。
+
+R03f.2が得られれば、元の係数のEx∞単位に適用し、§202の同じscaffold正方形と§201の元の単位を固定した延長へ接続する。ただし、この時点ではR03fの延長の前合成同値性もR03dの両変数比較も未証明。元の指定点・固定始域の比較の一致という型を保って進める。
