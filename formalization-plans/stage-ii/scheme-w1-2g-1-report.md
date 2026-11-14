@@ -1797,3 +1797,24 @@ B02 の対角と Cartesian 比較の法則（着手前の型、見込み80〜200
 G1・G2共用部品込み本体11,332行、入口込み11,525行。B01〜B04 は未完。
 
 一覧：済み11／全体15（うち追加6）。
+
+
+B02 の二段の模型の底変換の閉埋め込み性（着手前の型、見込み80〜180行）：`exists_closedImmersion_flatStageProjection_of_isLimit` は qcqs な affine 遷移の基底図式と実際の極限、段の qcqs な r:T→D(i)、実際の Cartesian な比較 a:X→T・x:X→c.pt、β:T→Y、qcqs・局所有限型の q:Z→Y に対し、`pullback.snd q (a≫β)` が閉埋め込みなら、ある j→i の既存の `flatStageModelProjection D i r β q` が閉埋め込みと返す。実際の二段の底変換の極限と Cartesian 比較に前記の C04 の移送を適用する。対角を降ろす際、二重交叉を頂点に保ったまま使う法則・B02 内の証明分割で、親項目を増やさない。
+
+
+B02 の対角と実際の模型の閉埋め込み性の照合（着手前の型、見込み100〜250行）：`isClosedImmersion_diagonal_pullback_of_isSeparated` は Cartesian 比較 `h:IsPullback a p f g` について p が分離的なら、`diagonal f` を二重交叉の比較射で引いた実際の第二射影が閉埋め込みと返す。`isSeparated_of_closed_diagonal_stage` は `diagonal f` の、g に沿う二重交叉の模型への実際の底変換が閉埋め込みなら p が分離的と返す。二重交叉の比較同型と対角の Cartesian 正方形、閉埋め込み性の底変換の法則を組み合わせる。B02 内の対角・係数移送の法則で、親項目を増やさない。
+
+
+### B02：対角の Cartesian 比較と二段の実際の模型の閉埋め込み性の降下
+
+`CartesianDiagonalComparison`（52行）：`isPullback_diagonal_cartesianPullbackMap` は Cartesian な比較から誘導する二重交叉の比較射と二つの対角の正方形が Cartesian であることを返す。元の正方形の一意性で二つの射影の一致を示し、対角への実際の lift を構成した。
+
+`FlatStageClosedImmersionLimit`（52行）：`exists_closedImmersion_flatStageProjection_of_isLimit` は元の頂点を保つ二段の実際の底変換の極限での閉埋め込み性から、ある後段の既存の模型の射の閉埋め込み性を返す。基底への射と固定した射に qcqs 性を、固定した射に局所有限型性を仮定し、基底の Noether 性を要求しない。
+
+本体104行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,981ジョブ成功。小監査2宣言（各1）・標準三公理のみ。対角の下書きでは CommSq の構成と合成の括弧を明示して単独検証を完了し、二段の模型の下書きは最初の単独検証で成功。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-cartesian-diagonal-comparison-check-2.log`・`2g-flat-stage-closed-immersion-limit-check.log`・`2g-diagonal-flat-stage-comparison-native.log`・`2g-diagonal-flat-stage-comparison-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,436行、入口込み11,631行。B01〜B04 は未完。
+
+一覧：済み11／全体15（うち追加6）。
+
+B02 の分離性の降下の出口（着手前の型、見込み100〜250行）：`exists_isSeparated_pullback_of_isLimit` は qcqs なスキームの affine 遷移の cofiltered 図式 D と実際の極限 c,hc、段への qcqs な射 f について、極限での同じ f の底変換が分離的なら、ある j→i の同じ底変換も分離的と返す。対角を二重交叉の実際の模型へ移し、前記の二段の模型の閉埋め込み性の降下と Cartesian 比較から分離性へ戻す。[Stacks 01ZQ, 32.8.6](https://stacks.math.columbia.edu/tag/01ZQ) の C04 の対角への適用で、B02 内の証明分割。対角自体の局所有限型性を使うので f の局所有限型性や基底の Noether 性を追加しない。
