@@ -2564,3 +2564,17 @@ G1・G2共用部品込み本体14,881行、入口込み15,130行。8d7bacd9c の
 残るのは、有限型 F_p の被覆模型を実際の filtered な図式へまとめること、affine conerve の面・退化・増大写像の自然性と余極限の比較、および B02 の完成の整理。B02〜B04 は未完で、停止点 2g-1 ではない。全体の見込み約16,100〜19,200行、現在からの残り約1,200〜4,300行、外枠25,000行は維持。数学的な境界・型や範囲の変更は今回なし。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B03・B04 の図式の圏の実装分割（着手前の型、見込み180〜350行、前記500〜1,200行の内数）：まず同じ宇宙の Noether 係数環 k 上の一般化 `CoefficientVCoverModelCategory k g` を作る。g:R→ₐ[k] C に対して、有限型 k-代数の射 A→D と元の g への実際の可換な正方形の圏を取り、A→D の affine v 判定を満たす対象に制限する。両辺の環を Arrow の図式・元の環写像への cocone として保持し、その基底・始域の図式と自然な構造写像、同じ宇宙の小さい模型を供給する。素体への移送は係数の環同型による法則として行い、元の R,C の Noether 性を仮定しない。この実装の一般化で最終の主張と一覧は変えない。
+
+
+### B03・B04：被覆模型の両辺を保持する圏と cocone
+
+`CoefficientVCoverModelCategory`（100行）：`CoefficientVCoverModelCategory k g` は有限型 k-代数の affine v 被覆と元の g:R→ₐ[k] C への可換な正方形の圏。`coefficientVCoverModelArrowDiagram`・`coefficientVCoverModelArrowCocone` は元の環写像への実際の Arrow の図式と cocone を供給する。基底・始域の二図式・二 cocone、`coefficientVCoverModelMap`、同じ宇宙の小さい添字と Arrow の図式・cocone を供給した。filtered 性・余極限性はここでは未証明。
+
+本体100行・入口1行。定値関手との自然性を明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,038ジョブ、小監査16宣言・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-vcover-model-category-check-2.log`・`2g-coefficient-vcover-model-category-native.log`・`2g-coefficient-vcover-model-category-audit.log`。
+
+G1・G2共用部品込み本体14,981行、入口込み15,231行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

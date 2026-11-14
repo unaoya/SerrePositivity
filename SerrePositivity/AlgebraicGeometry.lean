@@ -1571,3 +1571,5 @@ public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelFiltered
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelColimit
 
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelSpec
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelCategory
