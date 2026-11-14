@@ -2301,3 +2301,26 @@ B01 の元の有限表示対象の模型・分離性の降下・C06・固有性�
 今回の区切り（9010ce12e の後）は4モジュール、本体270行＋入口4行、小監査合計13宣言・標準三公理のみ。G1・G2共用部品込み本体13,574行、入口込み13,804行。B02〜B04 は未完、停止点 2g-1 ではない。全射性を同じ係数段へそろえる接続は引き続き検証する。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B02 の有限個の模型の共通係数への移送（着手前の型、見込み160〜320行、既存の見込みの内数）：`exists_common_finitelyGenerated_coefficient_extension` は有限個の有限生成部分代数 Aᵢ⊆R から、それらを全て含む有限生成部分代数 B を返す。`exists_common_coefficient_scheme_models` は各 Aᵢ 上の実際の模型 pᵢ:Yᵢ→Spec Aᵢ と元の fᵢ:Xᵢ→Spec R の Cartesian 比較から、同じ B 上への実際の底変換模型と、両方の Cartesian 比較、元の比較射との可換式を供給する。模型の各性質はその実際の底変換により保存する。内部の入力模型は B01 と既存の一般の有限表示模型から供給し、模型の存在自体を最終の被覆模型の仮定に残さない。有限個の既存の模型の係数移送という法則として親項目を増やさない。
+
+
+### B03 に向けた平坦な証人の原典・既存構成の照合（紙）
+
+一般の平坦・有限表示射の平坦性を極限から降ろす原典は [Stacks 04AI](https://stacks.math.columbia.edu/tag/04AI)、代数版 [02JO](https://stacks.math.columbia.edu/tag/02JO)。後者の証明は [00R6](https://stacks.math.columbia.edu/tag/00R6) の局所近似と [00RC](https://stacks.math.columbia.edu/tag/00RC) の平坦 locus の開性も使う。今回の Mathlib の `RingTheory/Flat`・`AlgebraicGeometry/SpreadingOut`・極限関係と本レーンの検索では、この一般の降下を直接呼ぶ API を確認できなかった。有限表示な **代数** を基底上で有限表示な **加群** と取り違え、有限平坦加群の局所自由性だけでこの不足を閉じることはしない。
+
+一方、実際の A07 の構成を読み直すと、`exists_noether_flat_closed_refinement_model_compact_minimalPrimes` は有限型 ℤ-代数 A、固有・局所有限表示の Y₀→Spec A、固定した平坦・局所有限表示・準コンパクトな q₀:Z₀→Y₀ と、整拡大後の有限型の閉部分の実際の証人を返す。`AffineRingVCoverRefinement` はその同じ q₀ を `exists_fppf_proper_refinement_of_integral_closed_flat_model` に渡す。後者の最終の平坦射は定義上 `flatStageModelProjection` であり、ある実際の β:T→Y₀ に沿う q₀ の底変換である。従って G2 でこの **構成された証人そのもの** をモデル化するなら、任意の既存 fppf 射を後から平坦模型に取り替える一般定理は不要となる可能性がある。
+
+次の確認対象は、A07 の最終の証人から固定の有限型 ℤ 上の平坦模型と β を保持する出口を実際に供給できること、B01 の固有模型上で β と細分の射・式を同じ係数段へ因子化できること、既存の `exists_surjective_flat_stage_factor` で全射性も同じ段へそろえられること。平坦性は q₀ の実際の底変換として各段で保つ。元の v 被覆の存在判定や最終出力を弱めず、模型の存在を新しい仮定に残さない。これは既存の Rydh 3.10 の構成の証人を保持する接続として検討し、成功を仮定して B03 を完成扱いにしない。
+
+
+### B02：同じ係数段での固有性・全射性の実際の模型
+
+`ProperSurjectiveCoefficientModel`（69行）：`exists_proper_surjective_finitePresentation_coefficient_model` は Noether な k、任意の k-代数 R、一般の固有・全射・局所有限表示の f:X→Spec R から、同じ有限生成係数部分代数 A 上の固有・全射・局所有限表示の p:Y→Spec A と Cartesian 正方形を供給する。B01 の固有模型に既存の構成可能な像による全射性の降下を適用した。基底の忠実平坦性は要求しない。
+
+本体69行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,018ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-proper-surjective-coefficient-model-check.log`・`2g-proper-surjective-coefficient-model-native.log`・`2g-proper-surjective-coefficient-model-audit.log`。
+
+G1・G2共用部品込み本体13,643行、入口込み13,874行。有限個の細分の対象・射・可換式を同じ段へそろえる部分は下書きで、B02 は未完。B03・B04 も未完。
+
+一覧：済み14／全体17（うち追加8）。

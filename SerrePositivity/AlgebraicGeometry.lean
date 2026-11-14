@@ -1533,3 +1533,5 @@ public import SerrePositivity.AlgebraicGeometry.NoetherianProperLimitDescent
 public import SerrePositivity.AlgebraicGeometry.ProperFinitePresentationCoefficientModel
 
 public import SerrePositivity.AlgebraicGeometry.PrimeFieldProperCoefficientModel
+
+public import SerrePositivity.AlgebraicGeometry.ProperSurjectiveCoefficientModel
