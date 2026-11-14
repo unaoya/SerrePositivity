@@ -1844,3 +1844,47 @@ lemma freeHammockCoefficient_comp (X Y Z : C.category) :
 ```
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 10. B4：保留 2 件で停止（2026-11-14 昼）
+
+`citation-attributes.md` §14・`bulk-w1-b3/B4-README.md` と調整役の指示に従い、
+M15 の作業を区切って B4 を優先した。検証済みは `8593cc4b9` までコミット済み。
+基準 `c5c4436c0` からこの枝で追加・変更したコミット済み Lean の Git 差分は
+**30 ファイル**。未追跡の未検証下書き二つ（`FreeHammockCoefficientNerve.lean`、
+`LocalizationSourceNaturality.lean`）は原文を別保存して作業木に保持した。
+
+最初の採取は、Lake の依存の再ビルド要求で終了した。採取条件は外さず、
+要求された五つと、その上の枝固有モジュールの正規 Lake 成果物を整え、
+検証済み 30 モジュールの対象ビルドを通した。main の作業木には書き込んでいない。
+その後 `bulk_namespace.py collect` を `--class impl --wait 3600`、
+各組 `gtimeout --kill-after=3s 280` の下で 4 本・8 本・8 本に分けて実行し、
+**20 ファイルの採取が成功**した。各索引内の原文・保存した原文・作業木のソースの
+全バイト一致を再確認した。採取時の Lake options と脚本のハッシュも索引に残した。
+
+`bulk_namespace.py rewrite` の最初の 4 本・次の 8 本は保留 0。
+続く 8 本のプレビューでは、次の二つが保留になったため、**ここで B4 を止めた**。
+
+| ファイル | 行 | 保留になった open |
+| --- | --- | --- |
+| `EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean` | 27 | `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison` |
+| `EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean` | 23 | 同じ名前空間 |
+
+両方の理由は `explicit opens policy needed for a renamed namespace`。
+前者で採取された同名前空間の使用宣言は `complexClosedPresentation`、
+`complexClosedPresentation_ring_evaluation`、`complexDerivedEvaluation`、
+`semifreePointEquivalence`。後者は `semifreePointEquivalence`。
+この open の方針を調整役が確認する必要がある。こちらで保留を消す置換はしていない。
+
+main は **未取り込み**、プレビューのソースへの反映も **未実施**。
+残り 10 ファイルの採取と、取り込み後の対象ビルド・小さい監査は未実施で、
+B4 は完了していない。保存資料は
+[`b4-m15-2026-11-14/summary.json`](b4-m15-2026-11-14/summary.json)、
+[`review.json`](b4-m15-2026-11-14/review.json)、
+[`before-index.json.gz`](b4-m15-2026-11-14/before-index.json.gz)、
+[`checked-preview.diff.gz`](b4-m15-2026-11-14/checked-preview.diff.gz)。
+索引は取り込み前の原文に限って有効であり、取り込み後のソースには流用しない。
+
+M15 の一覧・型・ソースには B4 の変更をまだ加えていない。
+累計は検証済み新規 Lean 30 ファイル・2,819 行・160 宣言（private 3 を含む）。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
