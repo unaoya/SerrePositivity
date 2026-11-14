@@ -21079,3 +21079,319 @@ m14-nullary-coefficient-values-03.log（2,342 jobs）が成功し、対象警告
 並行する完備化の三案は§331に記した。(c)が必要との判定にはまだ至っていない。
 §314の完成見込みが外枠に収まらない懸念と完備化の未評価分は残し、
 完成を主張したり追加仮定で隠したりしていない。次は元の余単位の実際の二段値から再開する。
+
+## 340. 実際の空語作用の基底値をAW余単位へ戻す（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§337〜338を使い、同じ空語基底の全整数の作用を元のAW余単位へ戻す。
+以下は同じ構成の評価の法則で、各証明200行以内。新しい作用は定義しない。
+
+```lean
+lemma cochainAction_nullary_basis_apply (A : Type u) [CommRing A] (S : SSet.{0})
+    (v : Surjection.BasisWord 0 0) (t : ℤ) (y : (chains A S).X t) :
+    (cochainAction A S 0).f t
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 t t (zero_add t)
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] y)) =
+      (AlexanderWhitney.cochainCounit A S).f t y
+
+lemma cochainAction_nullary_basis_generator_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    (v : Surjection.BasisWord 0 0) (x : S _⦋0⦌) :
+    (cochainAction A S 0).f 0
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 0 0 rfl
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] gen A S 0 x)) =
+      (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv (1 : A)
+
+lemma cochainAction_nullary_basis_eq_zero_of_ne_zero (A : Type u) [CommRing A]
+    (S : SSet.{0}) (v : Surjection.BasisWord 0 0) (t : ℤ) (ht : t ≠ 0)
+    (y : (chains A S).X t) :
+    (cochainAction A S 0).f t
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 t t (zero_add t)
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] y)) = 0
+```
+
+最初はaugmentationの基底値一を左単位子の逆の式へ戻す。
+零次生成元は同じcochainCounit_generator_zero、零以外の次数は元のsingle複体の零対象で消す。
+指定した係数、同じ入力の全次数、同じ元の複体射を保持する。
+
+## 341. 元の出力族への実際の空語作用の代入（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+内側作用の値を仮定として残さず、§340の実際の値を既存の斉次テンソル評価へ渡す。
+以下は同じ射の評価の法則・証明分割で、各証明200行以内。
+零次のhxは選んだ因子が同じ零単体の生成元であるという値の等式。
+外側の全切断和へ適用するときは実際のface族から供給し、最終合成則の仮定に足さない。
+
+```lean
+lemma tensorCoInsertionAction_cochain_nullary_positive (A : Type u) [CommRing A]
+    (S : SSet.{0}) {m : ℕ} (v : Surjection.BasisWord 0 0) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (hpos : 0 < (f i).1) (z : ℤ)
+    (hz : 0 + (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ))) = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) m 0 i
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (m + 1)) 0
+        (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ))) z hz
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f _
+            (by have h := vectorDegree_family_blocks (chains A S) f i; omega))) = 0
+```
+
+零次の版は同じ左辺でhposを `x : S _⦋0⦌` と `hx : f i = ⟨0, gen A S 0 x⟩` に替え、
+右辺を次にする（これが Lean の同じ終域の型）：
+
+```lean
+vectorTensorAt (chains A S) (m + 0)
+  (insertionFamily f (fun j : Fin 0 => Fin.elim0 j) i) z
+  (by rw [vectorDegree_insertionFamily]
+      have hi : (f i).1 = 0 := congrArg Sigma.fst hx
+      change -(vectorDegree (chains A S) i.val (prefixFamily f i) + 0 +
+        vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℕ) = z
+      omega)
+```
+
+正次数はFin 0添字の空和を既存vector_sum_applyへ渡す。
+零次は同じvector_applyへ空の族と整数係数一を渡す。
+内側係数次数は零なので、元の二つのKoszul交換符号はここで一となる。
+
+
+## 342. 外側の実際の全切断和を内側の全arityで読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存iteratedCochainAction_basis_outer_cut_sumの証明は、外側の正arityの作用の
+全切断和と、内側の射への線形性だけを使う。内側の正arityを必要としないため、
+公開宣言を変更せず同じ法則を全arityの新しい名前で取り出す。各証明200行以内。
+
+```lean
+lemma iteratedCochainAction_basis_outer_cut_sum_all (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m n k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) (chains A S)
+        (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A n)
+          (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A n e).inv
+              (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x)) =
+      (-(d : ℤ) * -(e : ℤ)).negOnePow •
+        ∑ s : Cut (m + d) q, cutSign s (positiveWord u).val •
+          (tensorCoInsertionAction (chains A S) (Surjection.complex A n) m n k
+            (cochainAction A S n)).f z
+            (ιTensorObj (Surjection.complex A n) (power (chains A S) (m + 1))
+              (-(e : ℤ)) (-(d : ℤ) + -(q : ℤ)) z (by omega)
+              ((Surjection.complexXIso A n e).inv
+                (Surjection.basis A n e (ULift.up v)) ⊗ₜ[A]
+                vectorTensorAt (chains A S) (m + 1)
+                  (fun a => ⟨outputDegree s (positiveWord u) a,
+                    gen A S (outputDegree s (positiveWord u) a)
+                      (S.map (face s (positiveWord u) a).op x)⟩)
+                  (-(d : ℤ) + -(q : ℤ))
+                  (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+                      have hnat : m + d + q + 1 - (m + 1) = d + q
+```
+
+ここでは内側射の値を計算したとはしない。空語の場合の各項には§341の実際の評価を適用する。
+外側・内側の元の係数交換と全切断、全整数の同じ終域を保つ。
+
+
+## 343. 空語の零次評価のSigma入力を一般化する証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§341のhxを、依存する整数次数の下で直接書き換え続けない。
+同じ値の等式を持つ独立なSigma入力yへ一般化し、等式を消去して§340を適用する。
+次が局所的な証明分割の型（gは§341の空の族）。新しい数学・仮定・一覧IDはない。
+
+```lean
+∀ (y : Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+  (hy : y = ⟨0, gen A S 0 x⟩)
+  (hg : -(vectorDegree (chains A S) 0 g : ℤ) = 0 + -(y.1 : ℤ)),
+  (cochainAction A S 0).f (0 + -(y.1 : ℤ))
+    (ιTensorObj (Surjection.complex A 0) (chains A S) 0 (-(y.1 : ℤ))
+      (0 + -(y.1 : ℤ)) rfl
+      ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] y.2)) =
+    (1 : ℤ) • vectorTensorAt (chains A S) 0 g (0 + -(y.1 : ℤ)) hg
+```
+
+正次数の分岐では同じ整数次数 `0 + -((f i).1 : ℤ)` の零対象を直接使い、
+先に加算を消した別の次数へ変換する過程でgetColimitCoconeの内部を展開しない。
+
+
+## 344. 元の入力次数で読む空語代入の法則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+外側切断和の指定入力次数へ§341を適用するため、同じ全次数の等式を引数に明示する。
+既存vectorDegree_family_blocksで二つの入力次数が等しいことを示し、その等式を消去するだけ。
+各証明200行以内。正規化零項や空語の値の仮定を新たに足さない。
+
+```lean
+lemma tensorCoInsertionAction_cochain_nullary_positive_at (A : Type u) [CommRing A]
+    (S : SSet.{0}) {m : ℕ} (v : Surjection.BasisWord 0 0) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (hpos : 0 < (f i).1) (p z : ℤ)
+    (hp : -(vectorDegree (chains A S) (m + 1) f : ℤ) = p)
+    (hz : 0 + p = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) m 0 i
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (m + 1)) 0 p z hz
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f p hp)) = 0
+```
+
+```lean
+lemma tensorCoInsertionAction_cochain_nullary_zero_at (A : Type u) [CommRing A]
+    (S : SSet.{0}) {m : ℕ} (v : Surjection.BasisWord 0 0) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (x : S _⦋0⦌) (hx : f i = ⟨0, gen A S 0 x⟩) (p z : ℤ)
+    (hp : -(vectorDegree (chains A S) (m + 1) f : ℤ) = p)
+    (hz : 0 + p = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) m 0 i
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (m + 1)) 0 p z hz
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f p hp)) =
+      vectorTensorAt (chains A S) (m + 0)
+        (insertionFamily f (fun j : Fin 0 => Fin.elim0 j) i) z
+        (by rw [vectorDegree_insertionFamily]
+            have hi : (f i).1 = 0 := congrArg Sigma.fst hx
+            change -(vectorDegree (chains A S) i.val (prefixFamily f i) + 0 +
+              vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℕ) = z
+            have hf := vectorDegree_family_blocks (chains A S) f i
+            omega)
+```
+
+
+
+## 345. 削除色が複数出るときの実際の二段余作用の零性（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+全切断について指定色の出力次数零なら既存outputDegree_zero_occurrenceCountが一出現を与える。
+従って一出現でない分岐では全項が§344の正次数の零性で消える。各証明200行以内。
+同じ元の四つの射を合成した実際の二段余作用について、型は次。
+
+```lean
+lemma iteratedCochainAction_nullary_repeated_basis_eq_zero (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord 0 0)
+    (k : Fin (m + 1)) (hcount : Surjection.occurrenceCount u.val k ≠ 1) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(0 : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m 0 k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A 0) (chains A S)
+        (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A 0)
+          (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A 0 0).inv
+              (Surjection.basis A 0 0 (ULift.up v))) ⊗ₜ[A] gen A S q x)) = 0
+```
+
+positiveWordの語長の等式移送は既存positiveWord_occurrenceCountで比較する。
+空語合成の左辺も既存compositionOnWords_nullary_of_count_ne_oneで零となるので、
+最終の合成則のこの分岐には追加仮定や非零項だけへの制限を入れない。
+
+
+## 346. 反復出現の分岐の元の圏での実際の合成則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§345の実際の右辺の零性と、既存compositionOnWords_nullary_of_count_ne_oneを連結する。
+単に一方の零性を仮定する形でなく、元の係数合成を作用させた左辺と四射の右辺の等式を述べる。
+これはL12aの同じ合成則の分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_repeated_eq_iterated (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord 0 0)
+    (k : Fin (m + 1)) (hcount : Surjection.occurrenceCount u.val k ≠ 1) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(0 : ℤ) + -(q : ℤ) = z) :
+    (cochainAction A S (m + 0)).f z
+      (ιTensorObj (Surjection.complex A (m + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) z (by omega)
+        ((Surjection.complexXIso A (m + 0) d).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+    (iteratedCochainAction A S m 0 k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A 0) (chains A S)
+        (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A 0)
+          (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A 0 0).inv
+              (Surjection.basis A 0 0 (ULift.up v))) ⊗ₜ[A] gen A S q x))
+```
+
+## 347. 完備化後のP⁰の三案：(a)を完備部分圏の余極限として読む場合（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+A2/DerivedPrismaticCohomology.leanのprismCompleteReflection・prismCompletionUnitを読み直した。
+実際のdraftsはL ⊣ Iというnativeな反射の型を置いているが、その反射自体はまだsorryである。
+以下は**反射としての仕様からの形式的な検討**で、本体で証明済みの比較とはしない。
+
+(a)で「各項を完備化した模型」を取るとき、二つの余極限を区別する必要がある。
+
+- ambient CAlg_Aで項ごとの完備化の余極限を取る形は、完備化と実現の交換が必要。
+  §223の反例・不足はそのままで、項を完備化したというだけでは指定対象にならない。
+- 完備部分圏CompleteCAlgの中で余極限を取る形では、同じnative図式Mについて
+  L(colim_CAlg M) ≃ colim_CompleteCAlg(L ∘ M) となるのが左随伴の普遍性の筋。
+  同じ反射の単位から比較するので、選び直した頂点の単なる同型へ弱めない。
+  同じ図式のFrobeniusの辺を関手的に送れば、その指定辺の比較もこの形式論で追う対象となる。
+
+後者は完備化後の頂点を表す**候補の場所**を与えるが、M14のP⁰の比較までは与えない。
+忘却・mod p・π_nがこの完備部分圏の幾何学的実現をそのままambientな実現へ送るとは
+仮定できないためである。特にMayの演算を項ごとに比較しただけでπ_n上の等式を余極限へ
+移すことはできない。完備部分圏の余極限をambientな余極限と読み替えてこの穴を消さない。
+従って§331の実現後の項別平坦・K平坦な厳密模型と全鎖のprimitiveを検収する案とは
+別の形式的な切り方であり、後者の主要な義務を自動的に短縮するとは数えない。
+
+(b)の単位の全射性の反例は依然として有効で、この形式論は単位のπ_n全射性を証明しない。
+(c)については、完備部分圏での模型表示の形式論と演算の計算を分けた結果、
+現状の不足をcoherentなP⁰が不可避との判定へ飛躍させない。
+全鎖のprimitiveと指定対象・辺の比較、または実際のderived商での検出を閉じられないと
+判明した場合には§32どおり止める。反射や実現保存を新しい仮定としてA4へ足さない。
+この紙の節のためのLean・界面・drafts・G10の部品は作っていない。
+
+
+## 348. 実際の空語作用と反復出現分岐の合成則（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§340〜346を検証した。全整数の実際の空語基底の値を元のAW余単位へ戻し、
+同じ出力族の零次因子の消去・正次数の零性、内側の全arityの外側切断和まで得た。
+指定色が一出現でない分岐は全Cutで指定色の出力次数が正となるため実際の右辺が零。
+元の係数合成を作用させた左辺も零なので、同じ二つの実際の射の値が元の圏で一致した。
+退化項を捨てる仮定や、内側射の評価の仮定を最終の合成則へ残していない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|CochainNullaryValues|88|
+|CochainNullaryInsertion|105|
+|CochainNullaryInsertionDegrees|68|
+|IteratedOuterCutSumAll|56|
+|NullaryRepeatedCochainAction|63|
+|NullaryRepeatedComposition|48|
+
+今回428行。M14実測26,820行、L12a 11,613行、外枠31,000行まで4,180行。
+L12aは未完了。一出現の実際の合成値の全和の比較、零出力arity、
+全arityの同じ有限対応の包装が残る。完成見込みが外枠に収まらないという§314以降の注意は残す。
+
+対象ビルドm14-cochain-nullary-values-02.log（2,669 jobs）、
+m14-cochain-nullary-insertion-degrees-01.log（3,006 jobs）、
+m14-cochain-nullary-insertion-02.logのIteratedOuterCutSumAll（3,072 jobsの対象部分）、
+m14-nullary-repeated-composition-02.log（3,082 jobs）まで成功。対象の最終警告0。
+小監査audit-m14-nullary-repeated-composition.logは6本30宣言・標準三公理のみ、sorry・独自公理0。
+各ビルド・監査ごとに鍵を取り返却し、共有入口・監査・mainの作業木は変更していない。
+
+完備化後のP⁰の三案の追加の紙の比較は§347。反射の仕様からの完備部分圏の余極限表示と、
+Mayの演算をπ_nへ運ぶ義務を区別した。(c)が不可避との判定はまだ出していない。
