@@ -9994,3 +9994,126 @@ L09a・L09累計 **5,381行**、改訂MayのM14全体 **10,447行**。
 次の1,000行の区切りは約5,600行。12,500行の半分報告・25,000行の外枠には未到達。
 次は、同じ色列の次数移送で削除後の逆転符号を比較し、活動/最後の二つの係数公式を
 実際の水平境界符号へ適用する。共通入口・共通監査・界面の変更は行わない。
+
+## 125. 水平の実際の符号へ接続する（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは進捗あり：`46bd6230f`で混合角の実境界値の相殺、`5f9f9d382`で
+水平の二種類の削除係数の照合を対象ビルド・監査後に保存した。クリーンな作業木で再開。
+以下は同じ有限順序の次数移送・既存符号の照合・L09a内の有限な先行位置の分類。
+C181の事前点検は§124.5の27,644例、C182は§124.4・§124.6の両分岐を使う。
+
+```lean
+caesuraInversionCount_congr_length {N M r : ℕ} (h : N = M)
+    (v : Fin N → Fin r) (w : Fin M → Fin r) (he : ∀ i, v i = w (Fin.cast h i)) :
+  positionInversionCount v (caesuraPositions v) = positionInversionCount w (caesuraPositions w)
+erasedColorSign_eq_permutationSign {m q n q' r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) (t : Cut n q')
+    (w : Fin (n + 1) → Fin r) (h : m + q = n + q' + 1)
+    (he : ∀ i, Surjection.erase (label s v) k i = label t w (Fin.cast h i)) :
+  erasedColorSign (label s v) k = (-1 : ℤ) ^ permutationExponent t w
+previousOccurrences_of_horizontal_singleton {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin (m + 1)) (k : Fin (m + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (he : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  (Surjection.previousOccurrences v a).Nonempty
+signedDeletionCoefficient_horizontal {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Surjection.Word r (m + 2))
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  (-1 : ℤ) ^ positionExponent s v.val * Surjection.deletionCoefficient (label s v.val) k =
+    Surjection.deletionCoefficient v.val a *
+      (-1 : ℤ) ^ positionExponent t (Surjection.erase v.val a)
+```
+
+### 125.1 同じ小さい切断の実符号へ戻す（C183・C184）
+
+C180・C182を、元のC127の出力符号の式へ適用する既存構成の符号照合。
+内部の具体的な対応には、既存の水平削除座標公式とC174を使う。
+有効な削除語の実テンソル・無効な語の零はまだ主張しない。
+局所的な整数積の法則は`rearrange (P E D : ℤ) : P * E * D = E * (P * D)`。
+
+```lean
+outputBoundarySignAt_horizontal_of_coordinates {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) (hw : w.val = Surjection.erase v.val a)
+    (he : ∀ i, Surjection.erase (label s v.val) k i =
+      label t w.val (Fin.cast (by omega : m + 1 + q = m + q + 1) i)) :
+  outputBoundarySignAt s v k = Surjection.deletionCoefficient v.val a * cutSign t w.val
+outputBoundarySignAt_horizontalDeletion {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (a b : Fin (m + 1 + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ)) :
+  outputBoundarySignAt s v a.succ =
+    Surjection.deletionCoefficient v.val (s.horizontal a.succ) *
+      cutSign ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w.val
+```
+
+### 125.2 小さい切断の更新次数と指定面（C185・C186）
+
+既存の削除列の一致の長さと、単体圏の頂点列の単射性を使う既存構成の照合。
+混合角で使ったC152・C157を、区間数の異なる小さい切断との比較にも使える形で述べる。
+削除列の具体的な一致自体を新しい仮定として残してhcを証明したことにはしない。
+
+```lean
+deletedOutputDegree_eq_of_vertexLists {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c) :
+  Function.update (outputDegree s v) (label s v.val k)
+    (outputDegree s v (label s v.val k) - 1) = outputDegree t w
+deletedCutFace_eq_of_vertexLists {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (c : Fin r) :
+  deletedCutFace s v (label s v.val k) hd j c =
+    eqToHom (congrArg SimplexCategory.mk
+      (congrFun (deletedOutputDegree_eq_of_vertexLists s t v w k hd hl) c)) ≫ face t w c
+```
+
+### 125.3 約5,600行の区切り・B4前の検証済み保存
+
+一覧：済み 8／全体 48（うち追加 4）
+
+今回の四本 **214行**は対象ビルド成功、専用監査
+`/tmp/bsw16/audit-m14-horizontal-boundary-signs.log` も
+**4モジュール・14宣言・標準三公理のみ**で成功。Leanの警告0、sorry・追加公理0。
+登録候補の接頭部は `SerrePositivity.EInfinity.SimplexCuts.`。
+
+- `ErasedColorSignComparisons`：37行
+- `HorizontalDeletionCoefficients`：56行
+- `HorizontalBoundarySigns`：74行
+- `HorizontalDeletedFaces`：47行
+
+対象ビルドの最終ログは`m14-horizontal-deletion-coefficients-01.log`の後者の対象、
+`m14-horizontal-boundary-signs-01.log`、`m14-horizontal-deleted-faces-01.log`（`/tmp/bsw16/`）。
+L09a・L09実測 **5,595行**、改訂MayのM14全体 **10,661行**。
+約5,600行の1,000行区切りとして報告する。個々の補題は200行以下。
+
+内部の水平境界の**元の実符号**が、元の語の削除係数と小さい切断のcutSignに一致した。
+削除列が同じ場合の更新次数と指定面の厳密一致も閉じた。
+水平hcの実テンソルへの接続、両端、無効な削除語の零、垂直hvはまだ残る。
+§121・§123.5の全体見込みと外枠超過のリスクは、B4を理由に縮小した扱いにはしない。
+
+## 126. B4の追従を先に行う（11-14昼）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+調整役のB4指示を受領しM14の新しい実装より優先する。
+mainの`citation-attributes.md` §14と`bulk-w1-b3/B4-README.md`を読んだ。
+現在の四本の対象ビルドと監査を完了して先に保存し、main取り込み前のソースから採取する。
+基準はc5c4436c0、本体のみ・drafts除外。
+昼の採取は`--class impl --wait 3600`で組ごとに取り、280秒の実行上限で分ける。
+索引と原ソースを保持し、保留0と差分確認の後にmainを取り込む。
+取り込み後のソースには古い索引を適用しない。
