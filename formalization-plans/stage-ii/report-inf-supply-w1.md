@@ -3409,3 +3409,91 @@ private lemma simplexSectionBaseChange_heq {B D : SSet.{u}} (k : D ⟶ B) :
   HEq (transportSimplexSectionInfinity_baseChangeIso k)
     (relativeSectionDiagramInfinityBaseChangeIso k (transportSimplexDomainFunctor D))
 ```
+
+
+## 48. /goalの再開と係数作用の照合（11-14、途中）
+
+mainの `lane-goals-2026-11-14.md` の「共通の規則」「③-a」を読んだ。
+B4の連絡が来れば先にする。ビルドは `--class impl --wait 3600`、対象と小監査だけ。
+停止点5aまで続行し、R3・R4は実装しない。
+
+一覧：済み 0／全体 13（うち追加 11）
+
+数え方：今回のgoal対象は§44のE01〜E06（6）、RR01〜RR05（5）、R2d・R2e（2）。
+E・RRの11項目が§40からの追加分。既に完了したR2a・R2bや、構成の法則・証明分割は
+この13項目には重ねて数えない。§47の529行もE01の証明分割で、E01の完成とはしない。
+
+残る貼り合わせ射の照合のため、次の既存構成の法則を追加している。
+`KanEnrichedDiagramOrdinaryAction` の一般の実現の射作用の法則は対象ビルド成功
+（`/tmp/is-w1/kan-comparison-action-pair-2.log`）。
+表示の一致hを仮定したR2の完成版にはしない。実際の底上の射の場合の表示の一致を
+`RelativeSectionOrdinaryAction` で証明し、同じ自然変換を使う。
+係数対象への共同比較の辺の制限は、指定辺の円柱全体の式として照合中。
+型を以下に記す。未検証のものは本体の完成として数えない。
+
+### KanEnrichedDiagramOrdinaryAction
+
+```lean
+lemma KanEnrichedDiagram.realization_homMk_of_homEquiv
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
+    {X Y : C} (f : X ⟶ Y)
+    (η : D.evaluate X ⋙ kanObjectForget ⟶ D.evaluate Y ⋙ kanObjectForget)
+    (h : eHomEquiv SSet.{u} f ≫ D.toEnrichedFunctor.map X Y =
+      eHomEquiv SSet.{u} (kanDiagramHom (F
+```
+
+### KanEnrichedComparisonEvaluation
+
+```lean
+lemma KanEnrichedDiagramComparison.jointComparisonEdge_restrict
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
+    (η : KanEnrichedDiagramComparison D E) (X : C) :
+    ((pre (lift (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj (nerve J)))
+      (SSet.const (coherentNerveVertex X)))).app SpaceInfinity.{u}).app (Opposite.op ⦋1⦌)
+        η.jointComparisonEdge.edge =
+      (kanDiagramNaturalTransformationEdge
+        (F
+```
+
+### RelativeSectionOrdinaryAction
+
+```lean
+def relativeSectionPostTransformation
+    {E H B : SSet.{u}} (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ H) (hf : f ≫ q = p) {J : Type u} [Category.{u} J]
+    (A : Jᵒᵖ ⥤ Over B) :
+    (relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf p) ⋙ kanObjectForget ⟶
+      (relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf q) ⋙ kanObjectForget
+
+lemma relativeSectionPostTransformation_eHom
+    {E H B : SSet.{u}} (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ H) (hf : f ≫ q = p) {J : Type u} [Category.{u} J]
+    (A : Jᵒᵖ ⥤ Over B) :
+    eHomEquiv SSet.{u} (show leftFibrationObjectOf p ⟶ leftFibrationObjectOf q from
+        Over.homMk (U
+
+lemma relativeSectionRealization_homMk
+    {E H B : SSet.{u}} (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ H) (hf : f ≫ q = p) {J : Type u} [Category.{u} J]
+    (A : Jᵒᵖ ⥤ Over B) :
+    normalizedVertexHomMap (relativeSectionEnrichedDiagram A).realization
+      ((relativeSectionEnrichedDiagram A).realization_vertex (leftFibrationObjectOf p)).symm
+      ((relativeSectionEnrichedDiagram A).realization_vertex (leftFibrationObjectOf q)).symm
+      (Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated) =
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F
+```
+
+三本とも同じ共同実現・相対後合成の法則。独立の数学的な入力ではない。
+`RelativeSectionOrdinaryAction` の対象ビルドも成功
+（`/tmp/is-w1/coefficient-section-action-pair-5.log`）。
+`KanEnrichedComparisonEvaluation` は射の作用の計算中で、未検証。
+私的な `prism_transpose` は `functorFamilyPrism (transposeFunctorFamily F) = uncurry F`。
+三本とも現時点で200行未満。
+
+検証追記：二本（`KanEnrichedDiagramOrdinaryAction` 61行、
+`RelativeSectionOrdinaryAction` 124行）の対象ビルドと四宣言の小監査が通った。
+監査は標準三公理のみ（`/tmp/is-w1/coefficient-action-pair-8.log`）。
+係数制限の一本は未検証のまま作業木に残す。E01の完成とは数えない。
