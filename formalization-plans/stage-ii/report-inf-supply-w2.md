@@ -14152,3 +14152,46 @@ def strictBETotJointSourceTargetReplacementIso :
     FunctorIso (strictBETotJointSourceNativeCodomain A)
       (strictBETotJointSourceOriginalNativeCodomain A)
 ```
+
+## 227. 元の二つの全端点比較を元の二変数native入力へまとめる（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+既存functorHomTensorEquivとその合成則により、二つの全FunctorIsoの同じ順方向・逆方向を直積の二成分として戻し、直積値の全FunctorIsoにする法則を46行で記録した。順逆条件は元の二つの同型の順逆条件と元の二つの射影関手のmap_idへ帰着する。パラメーターの準圏性は要求せず、二つの元の同型を保持する。既存のh Funの直積分解を合成する法則であり、別の数学的な比較の存在を仮定していない。
+
+同じ元のnative pairingの底は、§225・§226の元の始域・標的の全図式の組に厳密に等しい。元の試験対象と元の標的の組は、元の全要素圏からの同じ射影でstrictBETotJointNativeHomInputを前合成したものに厳密に等しい。いずれも全写像の等式を示し、この二つの等式で上の積の同型を移送した。strictBETotJointSourceNativePairingBaseIsoは元の全pairingの底から元の二変数native入力の引き戻しへの全FunctorIsoである。BE固有の適用は60行。既存構成の同じ二つの端点比較・自然性・係数移送・合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+同じ底上の射への補正には既存pathCorrectedFunctorSquareを使えることを確認した。これは指定した元の底のFunctorIsoのpathと、元の成分へのexactComponentIso、およびそのpostcompが元の同型へ戻る等式を保持する。元の二つの端点の逆から作った同じ底の同型をこの既存の補正へ渡し、同じ底上のnative Homの全空間への射を作る。補正後の射の同値性、元の固定始域のroof比較との全FunctorIsoの等式はまだ残る。
+
+個別検査：二同型の積3906・終了0、二本を結合したBEの底の比較29830・終了0。304：必要な既存FunctorHomTensorのみの対象ビルド5,931 jobs・終了0（実ハンドル52371・終了0）。305：二本と直接importerの対象ビルド12,210 jobs・終了0、小監査172本1,217宣言・標準三公理のみ（実ハンドル34181・終了0）。対象とその依存のみで、rootビルドや公式の大監査は実行していない。鍵返却済み。
+
+今回46＋60＝106行、累計172本・11,083行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 227.1 型
+
+BE側の共通入力は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。
+
+#### FunctorIsoPairing（46行）
+
+```lean
+def functorIsoPair {T X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : T ⟶ X} {h k : T ⟶ Y} (e : FunctorIso f g) (d : FunctorIso h k) :
+    FunctorIso (lift f h) (lift g k)
+```
+
+#### StrictDiagramTotJointPairingBaseComparison（60行）
+
+```lean
+theorem strictBETotJointSourceNativePairingBase_eq_lift :
+    strictBETotJointSourceNativePairingBase A =
+      lift (strictBETotJointSourceNativeDomain A) (strictBETotJointSourceNativeCodomain A)
+
+theorem strictBETotJointSourceOriginalNativeEndpoints_eq :
+    lift (strictBETotJointSourceOriginalNativeDomain A)
+      (strictBETotJointSourceOriginalNativeCodomain A) =
+        nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A
+
+def strictBETotJointSourceNativePairingBaseIso :
+    FunctorIso (strictBETotJointSourceNativePairingBase A)
+      (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
+```

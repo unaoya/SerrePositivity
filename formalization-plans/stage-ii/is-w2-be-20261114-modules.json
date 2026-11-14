@@ -168,5 +168,7 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceParameters",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceAugmentationComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelWeakTransformation",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointTargetReplacement"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointTargetReplacement",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorIsoPairing",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison"
 ]
