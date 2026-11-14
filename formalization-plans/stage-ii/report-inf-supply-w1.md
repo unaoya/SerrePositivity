@@ -5838,3 +5838,84 @@ Leanの計算上限は変更しない。指定単位比較は局所インスタ�
 今回2本・132行、検証済み累計139本・11,111行。
 条件付きの可逆性の入力である標的単位の普遍性は未了。これでE01の型を弱めず、
 指定単位・分類正方形の比較からその入力を供給する。次は§55.19の対象検証。
+
+### 55.21 局所インスタンス導入の照合の検証結果
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.19 は `unit_heq_precomposeChosen` で kernel deterministic timeout、終了コード1。
+局所インスタンスの導入位置を揃えるだけでは閉じなかった。
+ログ：`/tmp/is-w1/unit-local-instance/build.log`。計算上限は不変。
+次は独立に準備した§55.15の分類正方形の局所展開を検証する。
+指定単位の比較は未検証のまま保持し、同じ失敗を再実行しない。
+
+### 55.22 分類正方形の局所展開の検証結果
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.15 は `squarePasting_of_laws` で kernel deterministic timeout、終了コード1。
+`leftClassificationSquareHom.eq_def` の局所展開だけでは一般代数則への代入を閉じられなかった。
+ログ：`/tmp/is-w1/square-local-equation/build.log`。計算上限は不変。
+次は既存 `functorHomBifunctorUnit` を `pp.explicit`・`pp.proofs` 付きで読み取り、
+元の射作用に渡される引数を確認する。検査は共有鍵の一枚の整理券で実行し、
+既存宣言や公開の主張は変更しない。ログ：`/tmp/is-w1/unit-definition-inspection/inspect.log`。
+
+### 55.23 分類正方形の代入を短い等式列へ分割（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`squarePasting_of_laws` の同じ型・三つの入力法則を保ち、
+` squarePastingNormalizedAlgebra ` の一括適用を、前合成の合成保存、
+結合則、`hv`、`huv`、`hpi` による短い等式列に分ける。
+元の分類正方形と同じ射の等式を結論し、新しい仮定や数学は足さない。
+計算上限は不変。現在の読み取り検査の終了後に検証する。
+
+### 55.24 コンパイル済み単位の引数確認と直接適用（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+読み取り検査は終了コード0。元の単位が `supplyHomWeightYonedaUnit_productQuasicategory` と
+局所の左fibration証明を使うことを確認した。生成された `_proof_*` 名は証明で参照しない。
+`unit_heq_precomposeChosen` の型を保ち、原単位だけを通常の `unfold` で展開して、
+`normalizedVertexHomMap_heq` と `kanFunctorHomCongr_heq` を直接つなぐ。
+`eq_def` の自動生成は使わず、`rawChosen_heq_precompose` 越しの適用を除く試行。
+現在の分類正方形の検証が終わったら `/tmp/is-w1/unit-direct-normalization/` で検証する。
+計算上限は不変。
+
+### 55.25 分類正方形の等式列による検証結果
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.23 は `squarePasting_of_laws` で kernel deterministic timeout、終了コード1。
+一括適用を等式列に変えても、同じ具体的な図式の照合が計算上限内に収まらなかった。
+ログ：`/tmp/is-w1/square-direct-calculation/build.log`。計算上限は不変。
+次は§55.24の指定単位への直接適用を検証する。
+
+### 55.26 分類正方形の抽象化境界の修正（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+同じ `squarePasting_of_laws` の型を保つ。前の `as_aux_lemma` 試行で問題となった
+`B₀ := bl.precomp (U.map k)` の別名を除き、逆射の法則でも
+`(bl.precomp (U.map k)).inv` を明示する。一般の代数則の適用を
+`as_aux_lemma` 内へ切り出し、別名の値との未指定の関係を一般化しない。
+型や入力法則は増やさず、計算上限は変更しない。現在の指定単位検証の後に検証する。
+
+### 55.27 指定単位への直接適用の検証結果
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.24 は `unit_heq_precomposeChosen` で kernel deterministic timeout、終了コード1。
+通常の展開と射作用則の直接適用でも未了。ログ：`/tmp/is-w1/unit-direct-normalization/build.log`。
+計算上限は不変。次に§55.26の分類正方形の抽象化境界を検証する。
+
+### 55.28 分類正方形の貼り合わせの検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.26 の対象ビルド成功（5,529 jobs）、新しい環境の28宣言の小監査成功、標準三公理のみ。
+公開の `leftClassificationSquareHom_pasting` は元の二つの正方形の合成と
+合成正方形の分類射そのものを全パラメータで比較する。追加の仮定はない。
+別名 `B₀` を除いた補助証明への切り出しで、計算上限を変えずに通った。
+ログ：`/tmp/is-w1/square-aux-boundary/build.log`。
+今回360行、検証済み累計140本・11,471行。E01の指定単位比較はまだ未了。
