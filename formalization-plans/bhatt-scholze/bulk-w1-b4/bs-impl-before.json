@@ -1,0 +1,437 @@
+{
+  "phase": "pre-merge source snapshot; complete collect/rewrite verified",
+  "baseline": "c5c4436c0",
+  "source_commit": "94c593fe000ed5111f89bb324a0dbe796f970af5",
+  "source_file_count": 106,
+  "files": [
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ActiveBoundarySigns.lean",
+      "sha256": "f72c35794df66dfc8b2a9c7820a440e33a77cf481798f7938da0639a17c3dce9"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ActiveVertexCounts.lean",
+      "sha256": "694a15fdfd02595ca0deb2e18b11d0b7d520ea615dcb5ec671f994326b685101"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/AdjacentColorDeletions.lean",
+      "sha256": "ef35a53d5ec0d997a4e521427c28a2b2a9216a297c89f9249b37714245bda5a5"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/Balanced.lean",
+      "sha256": "f2fe634127edcc74e92fe4725ea5cdf72132ae4da07b3a98eb35403ede2c1144"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryCancellationReduction.lean",
+      "sha256": "c7ff7eb47fc393e9ce8bcdd940dccffd561caeb023e005fbf33c6f122469442b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryEndpointPartition.lean",
+      "sha256": "2b852819ac415c22bb918bf1404dd0da6c5932be9fee1393fca82362b2f1696e"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryFaceTransfers.lean",
+      "sha256": "f09e1629708a070aebc79e202e5ea73a6d9951acc4078e3a194684f964c6200b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryFaces.lean",
+      "sha256": "de60f5ee5b5c57fbcbcf0118109a713356cdcbad5ad70677dcfb446f9b17587c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryFixedTerms.lean",
+      "sha256": "c6427279a832c41757d8d04443a249e3690fefbfa30cbfee01e6c4df9bef7e5d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryIndex.lean",
+      "sha256": "0ec38c1ae791adc98071fa3ae2313fafbce0d98f6c3fe15e2f80fcfa5a612519"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryKindExchange.lean",
+      "sha256": "eb2edb57b9abf085a0cfe5fab7086ccf979bde9b5eb5d30d9af503d9c6f02209"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryKindValues.lean",
+      "sha256": "b885ad836cd113dc49ca888e8b2d7e3478a44ffdc0972c91e8516c67eea4a0dd"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryKinds.lean",
+      "sha256": "7f1d842daa9d429b88c2ad3c250a0742e07eb63b9305dd42f083a0e7441a3985"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryPartition.lean",
+      "sha256": "d6d6fe82ef5aa51bb55b735c25ed9a53297638a7e240f174ff40fe96d6bb8f2e"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryPartnerFixedPoints.lean",
+      "sha256": "509121b3e41967db96a650be026d125c32a82e827b65f82e86f31dec31c7658e"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryPartnerValues.lean",
+      "sha256": "14a7d52bf7e4e0b5f3230252d60349be8668ea31155e925fef7b93229464b23b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryPositions.lean",
+      "sha256": "8246fdee389800c6281e8ed358ccb9f1672e2a4e00c633e4450a062dee489488"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryTerms.lean",
+      "sha256": "305c261be259e9bca1bcd514b9562a78ff11116d16fe646112c32c1de190a886"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/BoundaryVertexLists.lean",
+      "sha256": "9ee4cbc4160cbe5e67c0f5dd54f6c7a4ca0c9a161ae83a83a4c27b821b5a3c82"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CaesuraDeletionSums.lean",
+      "sha256": "33d0308f123c5769fa15eebdacaf793b718af112f4c9bd4f1ed464a9bc32c7ea"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CaesuraVertexDeletion.lean",
+      "sha256": "a4f5215f5a875d4bb53214c26e171f6d40f7e99f2fc876fb8592c8b044b605d9"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CollapsedFace.lean",
+      "sha256": "35064cf92bb154bde9e5d00bd36e4c2e9136e2850e0eff2d5f2b5fb0f5b5ae08"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ColorCaesuraCounts.lean",
+      "sha256": "3ab28b5889f619c6399d2b784eb46acfe6ceec6baee831c8bed1d0e6453dd7c4"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ColorIntervalDegrees.lean",
+      "sha256": "8e3c51ddd7a0fb7b689bcb85888b9ff10b39d9ca251acb681e28d57feb7b688d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ColorSortingBoundarySigns.lean",
+      "sha256": "7afe40ace6279b51c1596c50c3bbc814f0e0926fd2fe3bc4305587e81599e351"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerBoundarySigns.lean",
+      "sha256": "0872a601ac206db6bef87ef34b065847f7a6a9d5df1775056b319603fe313ad8"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerBoundaryTerms.lean",
+      "sha256": "85f7eb6cb1e84b4ba416dc0e6c4dbbc5dfed3ad22f5953064bd35bf18afdef9e"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerDeletedTensors.lean",
+      "sha256": "e97edafa7b3e9b1fea5036b4d0aa2c80cb21565fdb3372cc6209d99346788577"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerDeletionSigns.lean",
+      "sha256": "fd20e19cc84edbed15d5529b72d76c3a10454c070da6f60a0530ecd7403b9a24"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerEndpointCoordinates.lean",
+      "sha256": "7f02be081a45f736f9a985828b1214fce14ba3e568c2cef0f39c8fb6f82a5920"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerFixedPoints.lean",
+      "sha256": "7aa5471293ba9475337ca99cd720b3853d27a8d7693b37e3bc52192bc1c50f7f"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerIntervalMaxima.lean",
+      "sha256": "50122b4aecf81420b850d0dc13d77fd72214ab128d68d14c722307ec0df793fe"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerInvolution.lean",
+      "sha256": "670d5a2313815a09d426c7c41295b7c968a83283757da019a53b7f565f5e22e4"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerPositionExponent.lean",
+      "sha256": "7a1336bf2624cd6a9e8a97a1ba362d24816490220cde093c9345d6710ad75caf"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CornerTraces.lean",
+      "sha256": "21822a2ca329be86ed23d5bb1b3cd42cc111d8a34b54246ad2907411d5458440"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CutNaturality.lean",
+      "sha256": "ef719e80ccd5d279a94e241ba035e09dc713e8d6fe50ab0023f4d3b49fdf8e68"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/CutTensor.lean",
+      "sha256": "0cf98f5d0a7d0aa5d2e4134f925b4e8a87fa9a367b31170968a7d27e63d4be63"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DegenerateInput.lean",
+      "sha256": "34ac62836790ff9e1fddd398cedfa94148d5a3e85d16f70bf23c0545b1025f78"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DeletedCutFaces.lean",
+      "sha256": "06e73bad854826ff9a2c85134d39bf2b29261292e00f86d8757e4a28760f5868"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DeletedFaceTensors.lean",
+      "sha256": "22cd1b9e11868755b9646fbae5e3638a366a4873e3d024df0222e576c124b8eb"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DeletedFaceVertexLists.lean",
+      "sha256": "985238b58d102c1cd50729ec50401206747bea51be596b32c144be9a9abd465a"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DeletedIntervalMaxima.lean",
+      "sha256": "1f9103cba775209bbd4d55daef0efe02052e5de6e1591dd55a04fb0c62dd56a8"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DeletedOutputDegrees.lean",
+      "sha256": "c4d42623eef5c8668d9fd66d8371f13ff77138e18a117ef95a47d9c82c0db9f6"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/DeletedVertices.lean",
+      "sha256": "4e9192f59a024ff27e054c48fa180c51b85157bc3d5457d88450eb9ef94e0d0f"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ErasedBoundarySigns.lean",
+      "sha256": "6ef90724d1e81bacb64924e3300e2e0e2b27398ca593b9ea6dd539aca29b357d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ErasedCaesuraRanks.lean",
+      "sha256": "53ab60c6ca1fe1ed6cd8e23f68d8542558cf6bc7842959eeae09e3991ff12c87"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ErasedColorSignComparisons.lean",
+      "sha256": "693e43bc4af84ffee94e53dd17be3e759720f903cdd589bbfcd0b1244c70b08c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/Expanded.lean",
+      "sha256": "8d82fb81d846b749e89e45bef7eaf34634c7f5a44da17bce3317530dde4ba22a"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ExpandedCaesuraRanks.lean",
+      "sha256": "f86668789c7c9e7a31c23ecc649ba8117c00644d5160817b7f11376705654ec1"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/ExpandedCaesuras.lean",
+      "sha256": "f731be6e1903ec6e77dd951355d945c3bef7ea1985906b6e8a82833b715dbb72"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/FaceVertexLists.lean",
+      "sha256": "b8a375e309391b8448255f09e3585c1d5db09e08289201c68745da898b248061"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/Faces.lean",
+      "sha256": "438a4ef8780cb2db8e2c02317d153a6ac4e9ccda31c923b3bedacd562f9fb774"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/FiberRanks.lean",
+      "sha256": "5cc3a915ed389e79e0b7ce6d6bd2248abc72992cf7d573886716c67cc47cc5a2"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/GeneratorBoundary.lean",
+      "sha256": "880d1f44db5387f8b5747861835f62c735a025edffbcb0b539321dd9b37cd89a"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/GeneratorDegreeTransfers.lean",
+      "sha256": "dc9b13e4aae473932185a5332503462a63301edea512ad5c0cf459b6fe30936b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HomogeneousTensor.lean",
+      "sha256": "34c3925cadbac09c928dff235c05522917ee3662edaf685ef14df87b2a9babc4"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalActiveDeletionSigns.lean",
+      "sha256": "0c710a7c7fc73bf9d312d16a6f9468ae43aede7e79d3076da399bf1adc6c1553"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalBoundaryEquiv.lean",
+      "sha256": "2168d968423c68e9d1de4fa9774899c9b8f8291fa1079380a23bb4ee3fd4834d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalBoundarySigns.lean",
+      "sha256": "7941626da02a832f053c690cd38401afe03641e96424cfd4cccfbd05e1003727"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalDeletedFaces.lean",
+      "sha256": "398599da10a4fd081aec56584f112f0f2f84ed11aa66a641d494b059f484376e"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalDeletionCoefficients.lean",
+      "sha256": "5d1b10479a1f0348eeef103f217feaa280a5a21dfee3b0282714f1a29bb978a5"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalDeletionExponents.lean",
+      "sha256": "04a6fff2e3814e2d3cc0359965ebfb6069254e00eaec658e0b4243c5cfab0440"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalEndpointFaces.lean",
+      "sha256": "416f44bf44e5ac8a4780b0068234c5362e4e49718db6b2aea29fd93f2a0e1edf"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalFinalDeletionSigns.lean",
+      "sha256": "a1d4a0379d9a140f8ebf806e124ff486a2633ff1adace277a073155377106905"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalInteriorFaces.lean",
+      "sha256": "810e21e46c066d5aeb6c05105eee5c852a1390968e29654204fce0145c1d4ef5"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalPreviousVertices.lean",
+      "sha256": "85be89e8e3c0b5e29578e6f740df05bd7647c13eac03c263ca3f31a94fc51bc2"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalSingletons.lean",
+      "sha256": "7ebf03c09c157c787f444f66bcc6119fb25318dbd441a364e47176917778ad7d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/HorizontalVertexKinds.lean",
+      "sha256": "760a9522c3af9e087f3b6cc074ef3477e2b3d8f1f698fe85d78777e192973cad"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/InactiveColorDegrees.lean",
+      "sha256": "bc42f674f02286eb06b4ad74e03f9486e5514a8c87029c787fa11cb9bfae0a5a"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/IntervalCardinalities.lean",
+      "sha256": "aa70c403ee840b0372f247f15c6097da84526e5368cd36295276b4497cc03310"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/IntervalExtrema.lean",
+      "sha256": "4bf36c5b71ae1de52237ae35ec5d248c3a40ec26d62e6bbb526697f67f5c95d0"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/IntervalSingletons.lean",
+      "sha256": "6b6c53924d362e67dbe05246975a0baf770f51a1169c610596a73280203d8440"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/LowerPart.lean",
+      "sha256": "9480fc8d38886828378ba8e12073de439626e6363d5d0f6e8f08e28c6c39b610"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/MixedBoundaryValues.lean",
+      "sha256": "e38711b319724e82b8ffdaefa11532f51f60a1edb8556967caa3da2f2f239592"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/MixedCornerTerms.lean",
+      "sha256": "b96f7023d26dc45ed08c91809dfef4050a47fccaafae21d78ffe2c3558d8dc4b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/Normalization.lean",
+      "sha256": "526ac9434d300a30836940861d37a9d21819d086f7b291db15b5c54deb5be6df"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/NormalizedGenerators.lean",
+      "sha256": "219ba80af3a4df00c3bd4b5f3d63a6432f68867e9d1a0d3e2ec141fcd50191ab"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/OutputBoundaryTerms.lean",
+      "sha256": "8eab194e9f1d1b904aca7b84d7b3bb36eb52489858a4a8bc18390e6e79e34faf"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/Outputs.lean",
+      "sha256": "687810bd515fa10cc73df40307b0aa24bd1682fccb86054ad4eff2a7a3923fea"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/PrefixCaesuras.lean",
+      "sha256": "af459c47504f14f9a5ee5244ed2efbdf0aa9f45a9724a64195a9f743626a7038"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/PreviousBoundarySigns.lean",
+      "sha256": "9a7d6d6f36aac068341ba282a17e2a80f15719d7471733cc3939f84fb4804e00"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/PreviousVertexPositions.lean",
+      "sha256": "a7cf47a6a8e09450b34753fa9a78081fb4554f9342ac03c76abac703c7ea7ada"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/RawAction.lean",
+      "sha256": "615f564d99f7c27cac210b5e3469e54f7c68d1a6037a9ff1a53e1aa6d4b73140"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/SignedNaturality.lean",
+      "sha256": "6c5587603f203b190bb339fb49af8c62fef7255902fbf7f75614ed6f2cea0e67"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/SignedTerms.lean",
+      "sha256": "c73eef6354df6919cde25e92a0970aa5c1fa9a20ab78b87ecdedfafa52fc9288"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/Signs.lean",
+      "sha256": "c8b09ce56a843c794ac49581baac13eece32adbf3a5829c4d974134726773014"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/SingletonFiberSteps.lean",
+      "sha256": "eab09a5c936949ff0901b6a70380f509f631d5dcda93fff64581074e23ad409f"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/StraightTraceFaces.lean",
+      "sha256": "9974b434b88d75cb36f0b455eb28a2e6126aab0fb9e526ddd6f3c0b44bdd1ffd"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TensorNaturality.lean",
+      "sha256": "6ed320114f29cf5a3c3cf0eb756384f1b35595e6a43485306df318e1bd0b016d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalCoordinates.lean",
+      "sha256": "f199b555d58e43c2bf13d2938495af8493d09af2048f9c76f58fa95bc6426443"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalData.lean",
+      "sha256": "bbc739906cb2732b7a87470445bd6cd1dc0cdfa412b104b59de37a3619d541be"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalEndpoints.lean",
+      "sha256": "5112681c21f71376f7f55c175714cc55b65332a9c6e6488f58a0c1803f27cc00"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalEquiv.lean",
+      "sha256": "800c8bf5245315f95bff5ce300d9037f27b0d57e6842c474ad37e27c75acb1b9"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalExtension.lean",
+      "sha256": "fa06f331d7ec36919df63670ff4886b5f996928ac4799a073bfb2320e2b3b9c7"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalIntervalBounds.lean",
+      "sha256": "4958d185195459a09d36941b4f4010da741a0ce25cb6bb9719b673e8ffda4121"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalSignData.lean",
+      "sha256": "494bc7e11c05ba3784ec43dbb845d5ddc1a6a3b8fc993224681a8edcefd14e39"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalSuffix.lean",
+      "sha256": "1f4ecb0a31b9a0fecc47cf7278563ca16772b2766ed9280bbba058a6f56e8e6d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TerminalTrace.lean",
+      "sha256": "721ac1ee485b58dd395d6e6336f1d2d31b4f95b1c949e1a93d8f83fe95cc2e32"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/TopTerm.lean",
+      "sha256": "2f75776e38f76da06752bb7de5848e6940db1865f9bd7dc7f15efbe653c2f9f9"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/UniversalBoundaryPartner.lean",
+      "sha256": "3e81d74635771518d1050a49f9f808681552dab538872efc897fdcf511768e2b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/UniversalBoundaryValues.lean",
+      "sha256": "7c0ecf1162ef7e92ee155b92753ddcfdbccdefa66204512188a6d8bf4ccf3634"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/VertexErasure.lean",
+      "sha256": "f67c2ce18cff59ce69c4a267614e8f81b14b1178e669b33e5d0f5eb01de9010c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/VertexLists.lean",
+      "sha256": "37d67a177a66c4f151b8386e09a6cf4c7ac095bf28cfc3178a7ad211e630d099"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/VertexRanks.lean",
+      "sha256": "32182f3e6818bc61ea5a3c4bb77cabed9e3d6781884c64473cb0008e5df0623d"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/VerticalBoundaryEquiv.lean",
+      "sha256": "1eed2c685e3c8f46cb7ceae32b2ead07ab18e3ca39406e13975286cfb464378c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/SimplexCuts/WeightedVertexInversions.lean",
+      "sha256": "1f3af446ce595e31099495ddf7c3d7737801e473bb96c94ead1ea3fe1863ca67"
+    }
+  ],
+  "tables": {
+    "module-map.json": "b02daa7a9464250045d264456c9212390602359116bb4d830dff26008daa458b",
+    "namespace-rewrite-map.json": "67ba053988c420d4a43dc026da90b93dca531e393c94bcfce7ca420673bd9d87"
+  },
+  "local_evidence": "/tmp/bsw16/b4-20261114"
+}
