@@ -2261,3 +2261,14 @@ B01 の実際の固有係数模型への接続（着手前の型、見込み120�
 G1・G2共用部品込み本体13,391行、入口込み13,618行。B01〜B04 は未完。この二段の比較だけでは有限段での固有模型を供給したことにはしない。次は C04 による閉埋め込み性の降下と、実際の係数模型への適用。既存の `exists_surjective_proper_pullback_of_isLimit` 等は B02 の全射性に再利用し、新しく同じ証明を作らない。
 
 一覧：済み13／全体17（うち追加8）。
+
+
+### B01・B02：Noether な係数段の対象の、有限段への固有性の降下
+
+`NoetherianProperLimitDescent`（74行）：`exists_isProper_pullback_of_isLimit_of_noetherian_source` は affine 遷移の qcqs な基底図式とその実際の極限に対し、ある affine な段上の Noether な X の分離的局所有限型の f が極限で固有なら、ある後段の実際の底変換も固有と返す。C06 の実際の Chow の支配を取り、周辺への immersion の極限での閉埋め込み性を C04 で同じ二段の模型へ降ろし、元の射の固有性を得た。元の極限の環には Noether 性を要求しない。
+
+本体74行・入口1行。恒等射を含む二段の pullback の型の比較を、既存の Cartesian 比較で明示して単独検証を完了。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,015ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-noetherian-proper-limit-descent-check-2.log`・`2g-noetherian-proper-limit-descent-native.log`・`2g-noetherian-proper-limit-descent-audit.log`。
+
+G1・G2共用部品込み本体13,465行、入口込み13,693行。実際の一般の固有係数模型への適用は下書きで、B01〜B04 はまだ未完。この定理単独の Noether な段の条件を元の R の条件にすり替えない。
+
+一覧：済み13／全体17（うち追加8）。
