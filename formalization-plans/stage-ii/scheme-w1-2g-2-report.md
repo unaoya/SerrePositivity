@@ -185,3 +185,21 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 ### 2f の入力の同時供給（着手前の型、G3 の内数）
 
 `exists_rees_projective_cech_data I hI`：有限生成中心から n,a:Fin n→I と実際の評価の多項式代数構造を選び、IsScalarTower・GradedSMul・多項式環上の Module.Finite・その algebraMap の変数の像による irrelevant ideal の条件を同じ証人で返す（見込み30〜70行）。前の三モジュールの実際の構成を組み合わせるだけで、射影 Čech の仮定を追加しない。続いて schemeScalarMorphism と affineBlowupπ の一致、有限ファイバー冪の射影表示を照合する。
+
+
+## G3：2f の射影 Čech 入力の同時供給
+
+`ReesProjectiveCechInput`（37行）：`exists_rees_projective_cech_data` は有限生成中心から Fin n を添字とする次数一族と、その実際の評価による多項式代数構造・IsScalarTower・GradedSMul・Module.Finite・algebraMap の変数の像による irrelevant ideal の条件を同じ証人で返す。Noether 性と標準開の条件は追加仮定にしない。2f が使う Fin n の有限性・線形順序は既存の instance をそのまま利用できる。
+
+本体37行・入口1行。最初の単独検証、ソース完全一致、対象・直接 importer のビルド5,078ジョブ、小監査1宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-rees-projective-cech-input-check.log`・`2g-rees-projective-cech-input-native.log`・`2g-rees-projective-cech-input-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体750行・入口込み762行、小監査48宣言・標準三公理のみ。e33532643 の後は10モジュール632行＋入口10行、小監査38宣言。今回の区切りでは、全レベルの任意の底変換、nilimmersion の消去、Noether 基底・任意の affine 基底上のレベルの存在、Rees の実際の有限な次数一表示と 2f の係数条件まで到達した。G3 の構造射・有限ファイバー冪と G4〜G5 は未完。外枠16,000行、全体の見込み約5,500〜12,000行は不変。数学的な境界、型や最終の範囲の変更はない。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+### 次の構造射の比較（着手前の型、G3 の内数）
+
+- `schemeScalarMorphism_projectiveScalar`：一般の次数付き R-代数 G で、schemeScalarMorphism (Proj G) (projectiveScalarToGlobalSections G) は Proj.toSpecZero G と Spec.map (projectiveScalarToZero G) の合成に等しい（見込み40〜120行）。既存の Γ–Spec 随伴・Proj の構造射・分母1の大域スカラーの自然性を照合する法則。
+- Rees への特殊化：同じ schemeScalarMorphism が実際の affineBlowupπ I と等しい（見込み10〜30行）。reesZeroEquiv の逆と projectiveScalarToZero (reesGrade I) が同じ環準同型であることを使う。
+
+この比較の後、2d の affine 局所模型と 2f の実際の四角形を合わせ、有限ファイバー冪の Segre 表示へ進む。一般の固有射の四角形の完全性を追加仮定にしない。
