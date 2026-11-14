@@ -892,7 +892,9 @@ def semifreeUniversalCounit (P : SemifreeDGModules A D) (M : RightModule A D)
     DGUniversalCounit A (SemifreeDGModules A D) (RightModule A D) (semifreeInclusion A D) M
 
 lemma moduleResolution_vertex (M : RightModule A D) :
-    (moduleResolution A D).app (Opposite.op ⦋0⦌) (Simplex.vertex (A
+    (moduleResolution A D).app (Opposite.op ⦋0⦌) (Simplex.vertex (A := A) M) =
+      Simplex.vertex (A := A) (dgModuleOutputResolutionObject A (RightModule A D) D
+        (DGFunctor.id (RightModule A D)) M).replacement
 
 def moduleResolutionAdjunction :
     QCatAdjunction (N (semifreeInclusion A D)) (moduleResolution A D)
@@ -1453,10 +1455,11 @@ lemma strictRawModuleCartesianLift_underlying (f : X ⟶ Y)
   (strictRawModuleTotalForget A).map (strictRawModuleCartesianLift A f M) =
     𝟙 ((strictRawModuleUnderlying Y).obj M)
 
-lemma strictRawModuleCartesianLift_weak (f : X ⟶ Y) (hf : QuasiIso f.hom)
-  (M : strictRawModuleCategory A Y) :
-  (strictRawModuleTotalRelative A).weakEquivalences
-    (ULiftHom.up.map (strictRawModuleCartesianLift A f M))
+lemma strictRawModuleCartesianLift_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
+    (strictRawModuleTotalRelative A).weakEquivalences
+      ((ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleTotal A)).map
+        (strictRawModuleCartesianLift A f M))
 ```
 
 これは通常の Cartesian 性の法則で、native な cocartesian 性は依然別に証明する。
@@ -1623,7 +1626,8 @@ lemma strictRawModuleCartesianLift_underlying {X Y : (operad A).Algebra} (f : X 
 lemma strictRawModuleCartesianLift_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
     (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
     (strictRawModuleTotalRelative A).weakEquivalences
-      ((ULiftHom.up.{u,u+1,u+1} (C
+      ((ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleTotal A)).map
+        (strictRawModuleCartesianLift A f M))
 ```
 
 `SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean`（137 行・11 宣言）：
@@ -2321,7 +2325,7 @@ lemma moduleCartesianLiftEdge_projection {X Y : (operad A).Algebra} (f : X ⟶ Y
     ((moduleCartesianLiftEdge A f M).map (moduleTotalProjection A)).edge =
       (coherentNerveEdge (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
         ((algebraToCofibrantDKRelative A).functor.map
-          ((ULiftHom.up.{u,u+1,u+1} (C
+          ((ULiftHom.up.{u,u+1,u+1} (C := (operad A).Algebra)).map f)))).edge
 
 ```
 
@@ -2592,7 +2596,7 @@ lemma moduleInnerCartesianLiftEdge_projection {X Y : (operad A).Algebra} (f : X 
     ((moduleInnerCartesianLiftEdge A f M).map (moduleTotalInnerProjection A)).edge =
       (coherentNerveEdge (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
         ((algebraToCofibrantDKRelative A).functor.map
-          ((ULiftHom.up.{u,u+1,u+1} (C
+          ((ULiftHom.up.{u,u+1,u+1} (C := (operad A).Algebra)).map f)))).edge
 
 lemma moduleInnerCartesianLiftEdge_cartesian {X Y : (operad A).Algebra} (f : X ⟶ Y)
     (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
@@ -2989,3 +2993,404 @@ N01 について、指定された既存の二つの構成を先に読んだ。
 N01 は着手したが未完。追加した一次 ID は N01 一件だけ。
 
 **一覧：済み 9／全体 43（うち追加 1）**。
+
+
+## 21. N01 の実構成・照合の型（11-14）
+
+共通の文脈は `A : Type u`、`[CommRing A]`。一般の二ファイルではさらに
+`D : Type v`、`[DGCategory A D]`、`[Small.{u} D]` を使う。
+以下は承認済み N01 の実装とその生成射・自然性・貼り合わせ・持ち上げの証明分割。
+検証結果と最終の実測は本節末尾に記録する。
+
+### RawModuleGenerators
+
+```lean
+abbrev strictRawModuleFree (X : (operad A).Algebra) :
+    Complex A ⥤ strictRawModuleCategory A X
+
+def strictRawModuleFreeAdjunction (X : (operad A).Algebra) :
+    strictRawModuleFree A X ⊣ strictRawModuleUnderlying X
+
+def strictRawModuleGeneratingCofibrations (X : (operad A).Algebra) :
+    MorphismProperty (strictRawModuleCategory A X)
+
+def strictRawModuleGeneratingTrivialCofibrations (X : (operad A).Algebra) :
+    MorphismProperty (strictRawModuleCategory A X)
+
+lemma strictRawModuleQuasiIso_eq (X : (operad A).Algebra) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) =
+      (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (strictRawModuleUnderlying X)
+
+lemma strictRawModuleGeneratingCofibrations_rlp (X : (operad A).Algebra) :
+    (strictRawModuleGeneratingCofibrations A X).rlp =
+      ((projectiveFibrations A) ⊓ quasiIso (ModuleCat A) (.up ℤ)).inverseImage
+        (strictRawModuleUnderlying X)
+
+lemma strictRawModuleGeneratingTrivialCofibrations_rlp (X : (operad A).Algebra) :
+    (strictRawModuleGeneratingTrivialCofibrations A X).rlp =
+      (projectiveFibrations A).inverseImage (strictRawModuleUnderlying X)
+
+lemma strictRawModuleUnderlying_accessible (X : (operad A).Algebra)
+    (κ : Cardinal.{u}) [Fact κ.IsRegular] :
+    (strictRawModuleUnderlying X).IsCardinalAccessible κ
+
+lemma strictRawModuleFree_finitelyPresentable (X : (operad A).Algebra)
+    (K : Complex A) [IsFinitelyPresentable.{u} K] :
+    IsFinitelyPresentable.{u} ((strictRawModuleFree A X).obj K)
+
+lemma strictRawModuleFreeFamily_smallObjectArgument (X : (operad A).Algebra)
+    {ι : Type v} [Small.{u} ι] {K L : ι → Complex A}
+    (f : ∀ i, K i ⟶ L i) [∀ i, IsFinitelyPresentable.{u} (K i)] :
+    ((MorphismProperty.ofHoms f).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u}
+
+lemma strictRawModuleGeneratingCofibrations_smallObjectArgument (X : (operad A).Algebra) :
+    (strictRawModuleGeneratingCofibrations A X).HasSmallObjectArgument.{u}
+
+lemma strictRawModuleGeneratingTrivialCofibrations_smallObjectArgument
+    (X : (operad A).Algebra) :
+    (strictRawModuleGeneratingTrivialCofibrations A X).HasSmallObjectArgument.{u}
+```
+
+### RawModuleAcyclicity
+
+```lean
+lemma strictRawModuleBiprodInl_quasiIso (X : (operad A).Algebra)
+    (M K : strictRawModuleCategory A X)
+    (hK : moduleAcyclic A (dgAlgebraCategory A ((assocForget A).obj X)) K) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+      (moduleBiprodInl A _ M K)
+
+lemma strictRawModuleFibrations_llp_quasiIso (X : (operad A).Algebra)
+    {M N : strictRawModuleCategory A X} (f : M ⟶ N)
+    (hf : ((projectiveFibrations A).inverseImage (strictRawModuleUnderlying X)).llp f) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) f
+
+lemma strictRawModuleFreeCells_acyclic (X : (operad A).Algebra) :
+    MorphismProperty.transfiniteCompositions.{u}
+      (MorphismProperty.coproducts.{u}
+        (strictRawModuleGeneratingTrivialCofibrations A X)).pushouts ≤
+      moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+```
+
+### RawModuleModel
+
+```lean
+lemma strictRawModule_hasFiniteLimits (X : (operad A).Algebra) :
+    HasFiniteLimits (strictRawModuleCategory A X)
+
+lemma strictRawModule_hasFiniteColimits (X : (operad A).Algebra) :
+    HasFiniteColimits (strictRawModuleCategory A X)
+
+def strictRawModuleModelCategory (X : (operad A).Algebra) :
+    ModelCategory (strictRawModuleCategory A X)
+
+lemma strictRawModuleModelCategory_weakEquivalences (X : (operad A).Algebra) :
+    @weakEquivalences (strictRawModuleCategory A X) _
+      (strictRawModuleModelCategory A X).categoryWithWeakEquivalences =
+        moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+
+lemma strictRawModuleModelCategory_fibrations (X : (operad A).Algebra) :
+    @fibrations (strictRawModuleCategory A X) _
+      (strictRawModuleModelCategory A X).categoryWithFibrations =
+        (projectiveFibrations A).inverseImage (strictRawModuleUnderlying X)
+
+lemma strictRawModuleModelCategory_cofibrantlyGenerated (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
+      (strictRawModuleGeneratingCofibrations A X)
+      (strictRawModuleGeneratingTrivialCofibrations A X)
+
+lemma strictRawModuleModelCategory_allFibrant (X : (operad A).Algebra)
+    (M : strictRawModuleCategory A X) :
+    let := strictRawModuleModelCategory A X
+    IsFibrant M
+```
+
+### RawModuleCofibrancy
+
+```lean
+lemma strictRawModuleSemifree_strict_lift (X : (operad A).Algebra)
+    {P M N : strictRawModuleCategory A X}
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P)
+    (p : M ⟶ N) (hs : (projectiveFibrations A) ((strictRawModuleUnderlying X).map p))
+    (hq : moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) p) (g : P ⟶ N) :
+    ∃ l : P ⟶ M, l ≫ p = g
+
+lemma strictRawModuleModelCategory_semifreeCofibrant (X : (operad A).Algebra)
+    (P : SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X))) :
+    let := strictRawModuleModelCategory A X
+    IsCofibrant (ForgetEnrichment.of (Complex A) P.val)
+```
+
+### SemifreeGradedLifting
+
+```lean
+lemma moduleHom_post_pre_component {M N T U : ModuleCategory A D}
+    (i : M ⟶ N) (p : T ⟶ U) (q : ℤ)
+    (z : (N ⟶[Complex A] T).X q) :
+    (eHomWhiskerRight (Complex A) i U).f q
+      ((eHomWhiskerLeft (Complex A) N p).f q z) =
+    (eHomWhiskerLeft (Complex A) M p).f q
+      ((eHomWhiskerRight (Complex A) i T).f q z)
+
+lemma moduleGradedSplit_postcompose_lift {M N Q T U : ModuleCategory A D}
+    {i : M ⟶ N} {g : N ⟶ Q} (s : ModuleGradedSplit A D i g)
+    (p : T ⟶ U) (q : ℤ)
+    (hQ : Function.Surjective ((eHomWhiskerLeft (Complex A) Q p).f q))
+    (a : (M ⟶[Complex A] T).X q)
+    (z : (N ⟶[Complex A] U).X q)
+    (h : (eHomWhiskerLeft (Complex A) M p).f q a =
+      (eHomWhiskerRight (Complex A) i U).f q z) :
+    ∃ b : (N ⟶[Complex A] T).X q,
+      (eHomWhiskerLeft (Complex A) N p).f q b = z ∧
+      (eHomWhiskerRight (Complex A) i T).f q b = a
+```
+
+### SemifreeGradedProjectivity
+
+```lean
+lemma moduleHom_postcompose_surjective_of_iso {M N T U : ModuleCategory A D}
+    (e : M ≅ N) (p : T ⟶ U) (q : ℤ)
+    (hN : Function.Surjective ((eHomWhiskerLeft (Complex A) N p).f q)) :
+    Function.Surjective ((eHomWhiskerLeft (Complex A) M p).f q)
+
+lemma moduleSphereFreePresentation_postcompose_surjective {M T U : ModuleCategory A D}
+    (S : ModuleSphereFreePresentation A D M) (p : T ⟶ U)
+    (hp : moduleDegreewiseSurjective A D p) (q : ℤ) :
+    Function.Surjective ((eHomWhiskerLeft (Complex A) M p).f q)
+
+lemma moduleSemifreeFiltration_postcompose_surjective {M T U : ModuleCategory A D}
+    (F : ModuleSemifreeFiltration A D M) (p : T ⟶ U)
+    (hp : moduleDegreewiseSurjective A D p) (q : ℤ) :
+    Function.Surjective ((eHomWhiskerLeft (Complex A) M p).f q)
+```
+
+
+## 22. M10/C02 の次の接続：同じ実モデルへの frame の代入（11-14）
+
+N01 の次には、既存の一般の関手的分解・Reedy frame・全モデル圏の hammock 普遍性を
+同じ実加群モデルへ代入する。これらの一般の構成を作り直さず、ModelCategory や分解の
+存在を引数の仮定として残さない。次の五つは既存構成の特殊化・証明の分割で、一次 ID は
+追加しない。対象ビルドと監査の結果は本節の末尾へ追記する。
+
+`RawModuleFrameInput.lean`。文脈は `A : Type u`、`[CommRing A]`。
+
+```lean
+def strictRawModuleCofibrantFactorization (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    MorphismProperty.FunctorialFactorizationData (cofibrations (strictRawModuleCategory A X))
+      (trivialFibrations (strictRawModuleCategory A X))
+
+def strictRawModuleFibrantFactorization (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    MorphismProperty.FunctorialFactorizationData (trivialCofibrations (strictRawModuleCategory A X))
+      (fibrations (strictRawModuleCategory A X))
+
+def strictRawModuleSourceFrameFamily (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    CofibrantResolutionFamily (C := strictRawModuleCategory A X) simplex
+
+def strictRawModuleRightFrameFamily (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    CofibrantResolutionFamily (C := (strictRawModuleCategory A X)ᵒᵖ) simplex
+
+lemma strictRawModuleModelHammock_isLocalization (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    IsLocalization
+      (hammockLocalizationNerveMap
+        (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+          (strictRawModuleCategory A X)))
+      (weakNerveEdges
+        (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+          (strictRawModuleCategory A X)))
+```
+
+ここで既存 `modelRelativeCategory` は AsSmall 表示であり、§18 の源の ULiftHom 表示と
+定義上同じとはしない。同じ元の圏・同じ擬同型を保つ宇宙表示の比較が必要。
+さらに、この hammock の普遍性を得ても、§18 の通常源から半自由 dg nerve への
+`strictRawModuleSource` が局所化であることは未完のまま。同じ frame Hom と実 dg Hom、
+その全標的自然性と指定源の比較をつなぐ必要がある。
+M10 の全族の一般の辺・fiber の同定も、ここで終わったとは数えない。
+
+**一覧：済み 9／全体 43（うち追加 1）**。
+
+
+### 22.1 同じ通常圏の二つの宇宙表示の型
+
+`RawModuleRelativeModel.lean` は、既存の ULiftHom・AsSmall の圏同値を合成し、
+N01 の W の等式で両方向の相対関手を作る。元の通常圏の表示・弱同値検出の法則であり、
+一次 ID は追加しない。これだけで半自由 dg nerve への比較を済ませたとはしない。
+
+```lean
+def strictRawModuleUniverseEquivalence (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    (strictRawModuleRelativeCategory A X).category ≌
+      (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+        (strictRawModuleCategory A X)).category
+
+def strictRawModuleToModelRelative (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    strictRawModuleRelativeCategory A X ⟶
+      SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+        (strictRawModuleCategory A X)
+
+def strictRawModuleFromModelRelative (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+      (strictRawModuleCategory A X) ⟶ strictRawModuleRelativeCategory A X
+```
+
+
+### 22.2 元の通常加群 DK 源の全標的普遍性の型
+
+同じ宇宙表示の単位・余単位は同型であり、元の弱射でもある。
+これらを既存の `isLocalization_of_weakDeformation` と同じ hammock nerve の標的比較へ
+渡す実装を準備した。以下は元の通常圏の自由 DK 局所化の法則の証明分割で、一次 ID は
+追加しない。半自由標的への `strictRawModuleSource` の普遍性とは別の主張である。
+
+`RawModuleLocalizationUniversal.lean`、同じ `A : Type u`、`[CommRing A]`。
+
+```lean
+lemma strictRawModuleUniverseUnit_weak (X : (operad A).Algebra)
+    (M : (strictRawModuleRelativeCategory A X).category) :
+    (strictRawModuleRelativeCategory A X).weakEquivalences
+      ((strictRawModuleUniverseEquivalence A X).unitIso.inv.app M)
+
+lemma strictRawModuleUniverseCounit_weak (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    ∀ M : (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+        (strictRawModuleCategory A X)).category,
+      (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+        (strictRawModuleCategory A X)).weakEquivalences
+          ((strictRawModuleUniverseEquivalence A X).counitIso.hom.app M)
+
+lemma strictRawModuleHammockUniverse_isQCatEquivalence (X : (operad A).Algebra) :
+    let := strictRawModuleModelCategory A X
+    IsQCatEquivalence (relativeKanHammockNerve (strictRawModuleToModelRelative A X))
+
+lemma strictRawModuleHammock_isLocalization (X : (operad A).Algebra) :
+    IsLocalization (hammockLocalizationNerveMap (strictRawModuleRelativeCategory A X))
+      (weakNerveEdges (strictRawModuleRelativeCategory A X))
+
+lemma strictRawModuleLocalization_isLocalization (X : (operad A).Algebra) :
+    IsLocalization (localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
+      (weakNerveEdges (strictRawModuleRelativeCategory A X))
+```
+
+本小節の実装は、前の対象ビルドが共有鍵を待っている間に準備したもの。
+対象ビルド・小さい監査に通るまでは検証済みと数えない。
+
+**一覧：済み 9／全体 43（うち追加 1）**。
+
+
+
+### 22.3 実 dg Hom との接続で再利用できる部品（紙、未実装）
+
+通常源と dg nerve の比較で使う点ごとの Hom 加群も、作用から作り直す必要はない。
+`DifferentialGraded/Module/Basic.leftRepresentable` は共変 Hom の実 dg 関手である。
+そのため `D : Type v`、`[DGCategory A D]`、`K : Complex A`、
+`M : RightModule A D` に対して、次の既存の合成は型として同じ右加群を返す。
+
+```lean
+M.comp (leftRepresentable A K) : RightModule A D
+```
+
+点での値は `homComplex A K (M.obj x)`。高次の作用の符号は既存の
+`leftRepresentable_action` に保持されている。
+標準単体の複体を K に入れる候補では、既存の
+`AlexanderWhitney.simplexCochainComonFunctor` の台を再利用できる。
+`KST/LocalizingInvariants/DGAlgebraMultiplicativeSimplices` も同じ単体複体に対する
+内部 Hom の族を使っていることを読んだが、代数の乗法の構成を加群へコピーしない。
+
+この式だけでは、全単体を持つ選んだ right frame との比較、Reedy fibrancy、
+指定 coaugmentation の弱同値性、元の dg Hom との全標的自然性はまだ証明していない。
+N01 の実モデルを得た後に、既存の tensor/Hom の随伴・標準単体の分裂と照合する。
+本小節は再利用候補の紙の記録であり、検証済み Lean の追加ではない。
+
+
+## 23. A5 への受け渡しの補足：§18 と N01 の到達点から（11-14、紙）
+
+対象ビルドの共有鍵を待つ間に、`drafts/Shared/Descendable` と
+`drafts/A5/StrongDescent` を再読した。drafts は変更していない。
+§11 の完備反射・完備テンソル・Koszul の受け渡しに加え、今回の実装からの差を記録する。
+
+`StrongDescent.deltaRootEdge` は `polynomialRootArrow` の nerve の辺を
+`discreteDeltaFunctor` で送った辺である。通常圏の一辺を入力にしているが、型から得られる
+出力は native CAlg の辺であり、厳密 BE 代数射そのものは返さない。
+§18 の制限比較は厳密 BE 代数射に対する同じ全関手比較なので、この辺を代入するには
+M10 の全族の transport との接続が要る。BE 特殊化の方針を維持し、任意 E の輸送を作らない。
+
+§18 の `strictRawModuleSource_regular` と `strictRawModuleSource_underlyingIso` は、
+固定した厳密 BE 底について、同じ通常の源の正則加群を指定単位へ送り、同じ台の評価と
+全関手間で比較する法則である。これにより、N01 の通常モデルから出る入力の U・単位を
+照合する入口ができた。A5 の一般の `deltaRootEdge` の台・単位・fiber の coherence と、
+完備反射の単位・余単位は引き続き M10 および M36–M37 の実出力を使う。
+
+N01 の `strictRawModuleModelCategory_allFibrant` は、通常 dg 加群の projective モデルの
+終対象への射が次数ごとに全射、という fibrancy である。
+A5 で必要な `Derived.IsDerivedComplete A s` は完備反射の固定点の条件なので、
+前者から後者を得たことにはしない。実際、N01 の fibrancy の結論は全通常加群に対するもの。
+`Shared/Descendable.isDescendable_complete` の入力 `hB` と、
+`StrongDescent.rhom_baseChange_koszul_connection` の導来完備性の証明は、各々の型のまま残る。
+
+N01 の半自由 cofibrancy の照合は、元の `SemifreeDGModules` の対象を別の置換へ変えない。
+ただし、A5 の個別の Koszul 対象・fiber やその二乗が半自由・双対可能であることを、
+この照合の名前だけで供給したとはしない。M15 が返す一般の相対テンソル・RHom・完備版の
+法則を受け取り、A5 が個別の Koszul・Nakayama の証明を閉じる、という分担を維持する。
+
+本節は利用側の型の照合だけで、一次 ID の追加はない。
+N01 の最終対象ビルドと監査は待機中であり、完了数はまだ更新しない。
+
+**一覧：済み 9／全体 43（うち追加 1）**。
+
+
+## 24. N01 の完成・検証・実測（11-14）
+
+承認された N01 は、§19.2 の仕様のまま完成した。
+`strictRawModuleModelCategory` の引数は基礎可換環 A と厳密 BE 底 X であり、
+ModelCategory の存在を引数の instance として仮定しない。
+元の `moduleQuasiIso` と台の全整数次数全射に W/F を同定し、全対象の fibrancy と
+同じ `SemifreeDGModules` の対象の cofibrancy を、実構成したモデルで証明した。
+底 X の平坦性・cofibrancy や SSet のモデル構造の仮定は追加していない。
+
+先に指定された既存部品を確認した記録は §20。
+実装は構成済みの複体の `projectiveModelCategory`、元の自由評価随伴、
+評価ごとの実極限・余極限、`ModelGeneration.rightTransfer` を使用した。
+転送の非輪状性には既存の実自由 disk 被覆と直和射影の擬同型性を使い、
+半自由 cofibrancy には既存の全作用付き filtration・全 Hom の極限と擬同型性を使った。
+
+| 新規ファイル | 行数 | 公開宣言 |
+|---|---:|---:|
+| BE `Modules/RawModuleGenerators` | 176 | 12 |
+| BE `Modules/RawModuleAcyclicity` | 117 | 3 |
+| BE `Modules/RawModuleModel` | 129 | 7 |
+| BE `Modules/RawModuleCofibrancy` | 89 | 2 |
+| `Modules/SemifreeGradedLifting` | 65 | 2 |
+| `Modules/SemifreeGradedProjectivity` | 117 | 3 |
+| 合計 | **693** | **29** |
+
+200 行を超える補題はない。一次 ID は承認された N01 一件だけで、
+残りは同じ構成の生成射・持ち上げ・表示の等式・貼り合わせの法則と証明の分割。
+全 29 型を §21 に記載した。
+当初の見込み 1,000〜2,200 行より短くなったのは、§20 の既存の実部品を再利用したため。
+M15 の外枠 17,000 行は維持する。
+
+最終の通常対象ビルド `RawModuleCofibrancy:olean` は終了コード 0。
+その依存の生成射・非輪状性・実モデル・全次数の半自由持ち上げも通常対象として成功した。
+新規公開 29 宣言の `#print axioms` の実出力を宣言名と機械照合し、監査は終了コード 0。
+全て標準の `propext`・`Classical.choice`・`Quot.sound` の範囲内で、追加公理・sorryAx はない。
+自由加群と自由評価随伴の既存 HA 文献番号に付けた二件の属性も、各一件、
+HA 4.2.4.4 の component であることを環境から検査して成功した。
+N01 の原典の projective モデルの番号は、宣言 docstring の Keller Theorem 3.2 (1)。
+いずれも共有 impl 鍵、実行上限 280 秒の組で行った。
+
+監査まで済んだ累計は、新規 Lean **50 ファイル・4,972 行・255 宣言（private 3 を含む）**。
+M10 の続きの `RawModuleFrameInput` と `RawModuleRelativeModel` の対象ビルドは通ったが、
+`RawModuleLocalizationUniversal` に結果型の let の導入の修正が一箇所あり、修正後の対象ビルドと
+13 宣言の監査を待つ。これら三ファイルは今回の N01 コミットに含めず、作業木に残す。
+過去の報告の型転記で途中が切れていた四宣言も、§18 と同じ抽出の修正により完全な型へ補った。
+
+N01 を完了に数える。M10 の同じ通常源と半自由 native 模型の全比較、全族の一般の辺と fiber、
+M11 以降の相対テンソル・RHom・完備反射・完備テンソル、G12 は引き続き進める。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
