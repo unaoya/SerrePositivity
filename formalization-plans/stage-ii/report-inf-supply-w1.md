@@ -9344,3 +9344,113 @@ def overTransformationHomotopy (α : P ⟶ Q) (e : L) :
 なった。関手の結合則で転置の型を先に揃え、重みの型を局所的に明示して解消した。
 `Over` の比較は元の自然変換の成分の反対射を使い、既存のnerveホモトピーへ接続済み。
 残りは添字全体での自然性、係数移送を含む実現比較のホモトピー、元の増大射との照合。
+
+## §106 RR02(a)：余単位の円柱の添字自然性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の指定自然変換の移送の法則を、全添字に束ねるために証明する。
+
+```lean
+lemma nerveTransformationCylinder_congr (η : F ⟶ G) (η' : F' ⟶ G')
+  (hF : F = F') (hG : G = G')
+  (hη : η ≫ eqToHom hG = eqToHom hF ≫ η') :
+  (nerveNatTransHomotopy η).h = (nerveNatTransHomotopy η').h
+lemma overTransformationSource_map :
+  Over.map f.op ⋙ overTransformationSource α i =
+    overTransformationSource α j ⋙ Over.map (P.map f).op
+lemma overTransformationHomotopy_naturality :
+  (nerveMap (Over.map f.op) ▷ Δ[1]) ≫ (overTransformationHomotopy α i).h =
+    (overTransformationHomotopy α j).h ≫ nerveMap (Over.map (P.map f).op)
+```
+
+反対関手での方向は§105.1のまま。新しい自然性を仮定せず、αの自然性から出す。
+未検証。次にこの円柱を重みの自然変換へ束ね、指定実現随伴へ送る。
+
+### §106.1 重み全体の円柱と両端（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanTransformationCylinder (α : P ⟶ Q) :
+  (weightedParameterFunctor (bousfieldKanWeight Lᵒᵖ)).obj Δ[1] ⟶
+    P.op ⋙ bousfieldKanWeight Kᵒᵖ
+lemma bousfieldKanTransformationCylinder_zero :
+  terminalWeightEndpoint 0 ≫ bousfieldKanTransformationCylinder α =
+    bousfieldKanWeightPost Q.op ≫
+      Functor.whiskerRight (NatTrans.op α) (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanTransformationCylinder_one :
+  terminalWeightEndpoint 1 ≫ bousfieldKanTransformationCylinder α =
+    bousfieldKanWeightPost P.op
+```
+
+§106の自然性により束ねる。元の円柱の端点とnerveの合成保存だけで照合する。
+実現比較の二つの射が同じ局所化の射になることは、次にこの円柱を使って示す。
+
+### §106.2 指定添字変更に対する係数と重みの移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma reindexMap_dinaturality :
+  (functor L (P ⋙ A)).map (Functor.whiskerRight (NatTrans.op α) W) ≫
+      reindexMap P A W =
+    (map L (Functor.whiskerRight α A)).app (Q.op ⋙ W) ≫ reindexMap Q A W
+```
+
+既存の指定随伴の単位の添字自然性を、各成分で用いる法則。
+この等式によって§106.1の円柱の始端を、係数移送を含む実際の添字比較に戻す。
+
+### §106.3 円柱の実現の両端を元の比較射へ戻す（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanTransformationRealization :
+  (bousfieldKanParameterRealization L (P ⋙ A)).obj Δ[1] ⟶
+    (functor K A).obj (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanTransformationRealization_zero :
+  (functor L (P ⋙ A)).map (terminalWeightEndpoint 0) ≫
+    bousfieldKanTransformationRealization α A =
+      (map L (Functor.whiskerRight α A)).app (bousfieldKanWeight Lᵒᵖ) ≫
+        bousfieldKanReindexMap Q A
+lemma bousfieldKanTransformationRealization_one :
+  (functor L (P ⋙ A)).map (terminalWeightEndpoint 1) ≫
+    bousfieldKanTransformationRealization α A = bousfieldKanReindexMap P A
+```
+
+同じ円柱の実現に指定添字変更を合成する。両端は元の実射の等式であり、
+ここではまだ局所化で同じことを仮定しない。
+
+### §106.4 元の実現比較の局所化での一致（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanReindexMap_localization_naturality
+  (hA : ∀ l, reedyLeft simplex (cofibrations C) (initial.to ((P ⋙ A).obj l)))
+  (hconst : ∀ l, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+    weakEquivalences C (((P ⋙ A).obj l).map f)) :
+  (weakEquivalences C).Q.map (bousfieldKanReindexMap P A) =
+    (weakEquivalences C).Q.map
+      ((map L (Functor.whiskerRight α A)).app (bousfieldKanWeight Lᵒᵖ) ≫
+        bousfieldKanReindexMap Q A)
+```
+
+§104の円柱射影の弱同値性を、源のframe族 `P ⋙ A` に適用する。
+両端の実射の一致は§106.3の法則を用いる。
+RR02(a)の余単位による比較の証明の分割であり、自然性の仮定は追加しない。
+
+### §106.5 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+5本・258行の対象ビルドと15宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計218本・16,141行。
+上限変更後のRR02(a)は3,643行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/over-transform-naturality/build-7.log`。
+
+指定自然変換のOverへの移送について、添字自然性を証明して重み全体の円柱に束ねた。
+両端を係数移送を含む元の添字変更射へ照合し、通常の局所化で同じ射となる法則まで検証。
+次は要素圏とOverの随伴の余単位への適用と、指定増大射の比較。
+RR02(a)全体の弱同値性は未完。E01の別経路の紙は§95.1の不足が残る。
