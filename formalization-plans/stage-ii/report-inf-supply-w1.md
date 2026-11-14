@@ -6053,3 +6053,47 @@ BE 図式の局所化と `Fun(I_J, CAlg_A)` の比較を別に必要と明記し
 
 main の指示書末尾は §46 の貼り合わせ則の承認までで、§56.2 の本文分割案への
 承認はまだ確認できない。差分は未適用のまま、R3 の Lean も作っていない。
+
+
+## 57. 承認された G2 本文分割の検証（11-14 夕）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+調整役による §2.1 の例外承認に従い、§56.2 の差分を適用した。
+B4 は d46077f6e・§50.2 で完了済み。計算上限は変更していない。
+新規補助定義、元の単位、直接 importer `HomWeightUnitEvaluation`・
+`HomWeightYonedaLeftKan` の四本の対象ビルドは成功（5,443 jobs）。
+35宣言の小監査も標準三公理のみで成功した。
+
+旧本文を編集前に `/tmp/is-w1/unit-refactor-approved/original.lean` へ保存し、
+一時ファイル `BodyRfl.lean` に `oldFunctorHomBifunctorUnit` として複写した。
+元の局所 productQuasicategory instance を使い、次の一行で比較した。
+
+```lean
+example {A C : SSet.{u}} [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    functorHomBifunctorUnit F = oldFunctorHomBifunctorUnit F := by rfl
+```
+
+この example の kernel 検査が `deterministic timeout`（18行）で失敗、終了コード1。
+型の不一致が示されたわけではないが、要求された定義展開での一致の検証は未達。
+`validate.log` にビルド・小監査成功と rfl 失敗を記録した。
+条件4に従いこの経路を止め、計算上限を上げず再報告する。
+Lean 変更は作業木に置き、承認条件の全通過前にはコミットしない。
+公開型の v3b 比較は独立に採取中（`before.json` は変更前に採取済み）。
+
+
+### 57.1 保存比較の結果と再報告
+
+一覧：済み 0／全体 13（うち追加 11）
+
+変更後の v3b 採取も成功。公開24宣言の `type_hash`・種別・属性・公理は全一致。
+三モジュールの採取34宣言全体で追加・削除なし。本文ハッシュの差分は
+承認対象 `functorHomBifunctorUnit` のみ。
+`inf-supply-e01-refactor-validation/` に型の前後ハッシュ、比較結果、
+比較スクリプト、小監査結果、一時 rfl 検査のソース（`.lean.txt`）を保存した。
+
+承認条件2・3は通過、条件1の rfl は kernel timeout により未達。
+条件4に従い再報告して停止する。E01 の完成や保存検査全体の成功とはしない。
+新規補助定義28行と既存本文の +2/-3 は作業木に残す。
+検証済み数学の累計は従前141本・11,514行のまま（今回の条件未達分を含めない）。
+R3 の実装は行っていない。ビルド・採取のプロセスはすべて終了し、鍵を解放済み。
