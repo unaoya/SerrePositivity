@@ -745,3 +745,44 @@ B4用のimport表・所有元付き実名表・一行rewriteコマンド・各�
 資源設定の注意：VERIFY_MEMORY_GB=24はランナーの見積り予算であり、物理RSSの強制上限ではない。今回は1件（F1）の見積りが予算を超え、既存ランナーのoversize_aloneで単独実行された。F1単体の実測最大RSSは30,218,108,928バイト、自レーン全体の監視ピークは31079546880バイト（約31.1GB）。全体の32,000,000,000バイト強制上限内で完了し、監査の省略や大監査二本の同時実行はない。
 
 B4の具体的な一行コマンドと展開するJSONは[B4手順](bulk-w1-b3/B4-README.md)に記載した。全パス・実名・静的検査・原典の書誌確認と187件台帳の履歴も保存している。mainへの取り込みは調整役に委ねる。
+
+
+## 5∞-0 段 0：型つき一覧（11-14、枝 bulk/5inf-0）
+
+main `efa846fe8` から専用 worktree の枝を切った。主題は `bulk-5inf0.md` §2 の A01〜A07・B01〜B07 の14項目で固定する。B4の問い合わせを優先する。⑤aのShared/EInfinityPowerOperation・A4のP⁰、EInfinity/・InfinityCategories/・AlgebraicGeometry/には変更を入れない。ビルドは共有鍵 `--class bulk --wait 3600` を使い、昼は一束280秒以下、夜は30分以内。
+
+一覧：済み 0／全体 14（うち追加 0）。これは段0の計画で、型検査・削除・実装の完了報告ではない。
+
+### A：対象と宣言の扱い
+
+[全ソース台帳](bulk-5inf0/draft-source-inventory.json)には各宣言の場所・型のソース・sorry数・本体の同名候補を保存した。[集計](bulk-5inf0/draft-inventory-summary.json)の基準はA0〜A9直下40本、10,819行、コード中のsorry 705箇所。コメント・文字列を除外した静的採取で、Leanによる型照合の代わりではない。117件の同名候補は候補として記録し、型・仮定が異なるものを同一の定理として消さない。新しい結果の証明で穴を埋める作業は加えない。
+
+| ID | 対象（drafts/ 以下）と変更 | 消す宣言の計画 | 見込み行数 |
+| --- | --- | --- | --- |
+| A01 | A0全5本・A1全5本。古典的site、Čech、結晶・PD模型を現在の本体へ。一般のRΓ・CAlg・HT比較は未来の宣言として保持 | 同名76件の本体への置換を照合。内訳A0:24、CrystallineInput:11、CrystallineSite:18、DeRhamComparisonPoly:22、HodgeTateComparison:1。型が異なるものは削除から外し、古典的な芯だけを呼ぶ | 900–1,300 |
+| A02 | A3/DiscreteCase・LciAndQuasiregular。EInfinityTheoryを明示しD71〜73に追従。A1末尾のprismaticCohomology_lci_universalをA3へ移す | initial_of_retraction_idempotent・prismOver_isIdempotentCompleteの2件は本体の圏論へ。残る約26sorryの古典的な芯は既存のDiscreteDelta・DiscretePrism・LciEnvelope・RootRelationを使う。Δとの同定を消さない | 350–600 |
+| A03 | A2/AnimatedAlgebra（利用側A1・A7も確認）。本体CechAlexander/Comparison/PolynomialCategoryのPolyをimport | PolyとそのSmallCategory instanceの2宣言。polyNerveなど未来の構成は保持 | 30–70 |
+| A04 | A4全3・A5全6・A6全5・A7全4・A9全1。Theory界面・CAlg版・nonempty_e3_of_cAlg・ComparisonのIsDiscreteに追従。Not8.1はexists_boundedPerfectPrismPresentationを使用 | A7/isPCompleteVertexの1件をB07へ。ほかは一致を確認した古典的証明だけ差し替え、同名だけを根拠に削除しない。P⁰部分の変更0を検査 | 1,000–1,600 |
+| A05 | A8全4本。本体のAlmost・Perfectoidization/Derivedをimportし、未来のProp10.9・Thm10.11などを残す | 現在の台帳で同名39件。以前の「40件」との1件差は台帳の名前・local宣言も照合して確定。same-nameの39件も型検査前は削除確定ではない | 300–500 |
+| A06 | A0/BaseChange・A1/HodgeTateComparison、参照側A3。本体HasCochainCompleteTorAmplitudeへ | HasFiniteCompleteTorAmplitudeの2定義。係数とFin列・上界cを明示して呼ぶ。∞忘却関手との新しい比較定理を加えない | 130–220 |
+| A07 | 上記40本の冒頭・READMEの古い基準。保護されたファイル・P⁰は変更しない | 数学宣言の削除0。基準efa846fe8と今回の検査方法を明記。共有draft依存の検査結果も分ける | 60–100 |
+
+削除候補を実際に除く際は、元の型と本体の型・残存する参照先を確認する。新しい仮定を足して同じ定理と呼んだり、未来の未証明部分を単なる本体へのリンクに置き換えたりしない。draftの型検査は一時的なモジュール配置で本体とdraft間の実importを解決し、元のLake設定を引き継ぐ。共有draftに追加の構成が必要なら範囲外として止める。
+
+### B：追加する型と配置案
+
+以下は予定の型（名前解決・宇宙を含む最終のLean検査前）。`p` は素数、`P : OrientedPrism p A`、`Q : OrientedPrism p B`、`R` は `A ⧸ P.ideal` 代数、`κ : Cardinal.{u}` とする。
+
+- **B01（120–200行）**：`Prism/Basic/Category.lean` に `OrientedPrismCat p`（台 `CommRingCat.{u}` と `OrientedPrism p carrier`）を置き、`Category (OrientedPrismCat p)` のHomを既存 `OrientedPrism.Hom` にする。現在の本体と同じ向き付きprismの圏であり、一般の非単項Cartierイデアルのprismを作ったとは呼ばない。`Hom.IsFlat (f : Hom P Q) : Prop := letI := f.toRingHom.toAlgebra; IsCompletelyFlat (Ideal.span {(p : A), P.generator}) B`、`Hom.IsFaithfullyFlat` も同じイデアルの `IsCompletelyFaithfullyFlat`。siteの述語は `f.toHom.IsFaithfullyFlat` の略記へ。通常の平坦性へ取り替えない。
+- **B02（50–100行）**：`isBoundedPrism_of_perfect (hP : P.deltaStructure.IsPerfect) : IsBoundedPrism P`。既存の `distinguished_quotient_p_pow_torsion_killed_by_p` により上界1。任意の生成元について `isDistinguished_of_span_eq {d : A} (hd : Ideal.span {d} = P.ideal) : P.deltaStructure.IsDistinguished d`（既存の正則な生成元との単元倍の比較を用いる）。選択生成元については既存 `P.isDistinguished_generator` が完全性なしで証明済み。`ofDiscreteDelta P D η hη hreg hp hd : OrientedPrism p C` の向きは `η : A →+* C`、生成元は `η P.generator` で指示どおり。重複構成子を加えない。
+- **B03（250–450行）**：`Prismatic/Site/PrismOverSmall.lean` に `PrismOver.essentiallySmall : EssentiallySmall.{u} (PrismOver P R κ)` とinstance。cutoffの下限は本質的小ささ自体には不要（結晶siteと同じ）。`κ.out`の部分集合上に環・δ・prism・二つの脚を移し、誘導圏から本質的全射な充満忠実関手を作る。移送・その同型と法則は既存構成の法則としてこの項目に含む。CechAlexanderSmall・AffineCechSiteNerveの明示的なEssentiallySmall仮定を除く。
+- **B04（70–130行）**：`PerfectPrismOver := ObjectProperty.FullSubcategory (fun X : PrismOver P R κ => X.Q.deltaStructure.IsPerfect)`、`PerfectPrismaticSite := PerfectPrismOverᵒᵖ`。包含のop `ι : PerfectPrismaticSite ⥤ (PrismOver P R κ)ᵒᵖ` による `ι.inducedTopology (PrismOver.flatTopology hκ)`。Rem4.6の定義だけで、比較定理は加えない。
+- **B05（70–130行）**：`HasBoundedPTorsion (p : ℕ) (S : Type u) [CommRing S] : Prop := ∃ N : ℕ, ∀ n x, (p : S)^n*x=0 → (p : S)^N*x=0` を可換環論へ。`IsSemiperfectoid (p : ℕ) [Fact p.Prime] (S : Type u) [CommRing S] : Prop := IsModuleComplete S (p : S) (ModuleCat.of S S) ∧ ∃ (T : CommRingCat.{u}) (q : T →+* S), IsIntegralPerfectoid T p ∧ Function.Surjective q` をSemiperfectoid/Basicへ。使わない基底Rを引数にしない。基本補題はこれらの構成・射影と `IsBoundedPrism P ↔ HasBoundedPTorsion p (A ⧸ P.ideal)`。本体全体の展開形置換は行わない。
+- **B06（0行、5∞-3aへ）**：一般の結晶prismのProp6.2(b)・Cor5.5を含む `hodgeTate_iso_crystalline` と `deRhamComparison` の系は、一般の `hodgeTate_iso` 自身がA1/HodgeTateComparisonのsorryであり、本体の多項式結晶基底の特殊場合からは出ない。§2B6の明示的な延期を適用し、draftの一般形を維持する。本体で一般の比較を仮定した定理を完成品として追加しない。
+- **B07（70–150行）**：許可された一般の場所 `HomologicalAlgebra/DerivedInfinity/VertexPredicates.lean` を候補とし、`SerrePositivity.DerivedInfinity.IsConnectiveAt (R) (n : ℤ) (X : (derivedInfinityCategory R) _⦋0⦌) : Prop := ∀ i, n<i → Subsingleton (derivedInfinityHomology R i X)` と `IsPComplete (p) (R) (M) : Prop := DerivedCompletion.IsComplete R (p : R) ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩)` に実定義を移す。BS側の利用とdraftをこれに寄せ、衝突するdraft/DerivedGeneral/Truncation側の再定義も除く。禁止ディレクトリの参照は静的検索0件。変更前後の述語は同じ定義式であり数学的強化なし。実装境界・層の静的検査で配置も確認する。
+
+### 見込みと検査
+
+[行数予算](bulk-5inf0/stage0-estimate.json)は **3,400–5,550行**。Leanの追加行＋削除行で測り、draftsの書き換え・削除、宣言のdocstringを含める。非Leanの報告・台帳は別計数。本体だけの見込みではない。上端5,550≤6,000なので指示§3の条件付き承認で実装へ進む。外枠は **11,100行**。約2,775行に達した時点で実績と残りを報告し、外枠に届く前、または新しい構成・範囲外の数学が必要になれば止める。
+
+対象ビルドは小分けにし、Bの新規宣言を列挙した `assert_no_sorry` の小監査を別に用意する。BS段階II監査には新モジュールと明示的な必須名の登録案を報告する。draftsの既存sorryは本体の新規宣言の監査とは分離し、数の前後差と型検査の対象・未実行分を明記する。今回まだLeanの変更・ビルド・監査は0。
