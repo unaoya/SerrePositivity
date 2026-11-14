@@ -20,8 +20,8 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
 
 structure FiberDiagram where
-  triangle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u}
-  isFiber : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence triangle
+  triangle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u}
+  isFiber : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence triangle
 
 namespace FiberDiagram
 
@@ -57,23 +57,23 @@ def diagramFunctor : FiberDiagram.{u} ⥤
     simp only [CategoryTheory.Functor.map_comp, Category.assoc, Iso.hom_inv_id_assoc]
 
 def vertex (i j : Fin 2) : FiberDiagram.{u} ⥤ hoFunctor.obj Sp.{u} where
-  obj D := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex D.triangle.square i j
+  obj D := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex D.triangle.square i j
   map {D E} f := (diagramFunctor.map f).app
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) i j)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) i j)
   map_id D := by rw [diagramFunctor.map_id]; rfl
   map_comp f g := by rw [diagramFunctor.map_comp]; rfl
 
 def inclusion : vertex.{u} 0 0 ⟶ vertex 1 0 where
-  app D := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom D.triangle.square
+  app D := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom D.triangle.square
   naturality {_D _E} f :=
     ((diagramFunctor.map f).naturality
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))).symm
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))).symm
 
 def projection : vertex.{u} 1 0 ⟶ vertex 1 1 where
-  app D := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight D.triangle.square
+  app D := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight D.triangle.square
   naturality {_D _E} f :=
     ((diagramFunctor.map f).naturality
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))).symm
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))).symm
 
 end FiberDiagram
 end SerrePositivity.KST.LocalizingInvariants

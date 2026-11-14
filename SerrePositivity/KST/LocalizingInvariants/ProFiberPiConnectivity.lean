@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.ProGroupFiveTermZero
 public import SerrePositivity.KST.LocalizingInvariants.ProSpectrumPiConnectivity
 public import SerrePositivity.KST.LocalizingInvariants.ProFiberConnecting
@@ -59,3 +61,10 @@ lemma piProZero_iff_projection_piProEquivalence :
   exact forall_congr' (piConnective_iff_projection_connected D)
 
 end SerrePositivity.KST.LocalizingInvariants.ProFiberSequence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 4.6" (partial := component) "仮定：レベルのファイバー比較または既に与えたファイバー列（Lean が強い）。結論：比較がプロ同値であるという判定界面と、ファイバーのプロ連結度の群による比較。正方形の合成と実ホモトピー引き戻しの同値は供給しない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.piConnective_iff_projection_connected
+attribute [cite LT "Def 2.27" (partial := component) "仮定：自然数塔のレベル射とレベルごとのファイバー列（Lean が強い）。結論：整数次数での弱同値と連結度をプロ群で定義し、ファイバーの消滅と比較。任意の ∞ プロ圏の切断と弱引き戻しの一般定義はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.piConnective_iff_projection_connected
+attribute [cite LT "Rem 2.3" (partial := component) "仮定：レベルごとのファイバー列の塔と整数係数（Lean が強い）。結論：プロホモトピー群の完全性からファイバーと射の連結度を比較。Λ 係数の四角形の MV 列を直接与えない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.piConnective_iff_projection_connected

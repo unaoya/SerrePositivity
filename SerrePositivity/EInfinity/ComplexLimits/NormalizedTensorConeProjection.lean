@@ -20,7 +20,7 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 def normalizedTensorElementNerveDiagram :
     nerve (normalizedTensorElementIndex A X Y) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) :=
   nerveMap (normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) ≫
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
 
 lemma normalizedTensorElementNerveDiagram_app {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :

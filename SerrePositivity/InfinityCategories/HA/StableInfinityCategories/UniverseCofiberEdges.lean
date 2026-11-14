@@ -19,8 +19,8 @@ variable {X : SSet.{u}}
 
 /-- 指定実辺の cofiber 四角形を全ての単体を保持して持ち上げる。 -/
 def CofiberSquare.ulift {x y : X _⦋0⦌}
-    {f : Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f) where
+    {f : Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f) where
   toZeroTriangle := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle.ulift s.toZeroTriangle
   bottom_edge := by
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare s.square = _
@@ -28,15 +28,15 @@ def CofiberSquare.ulift {x y : X _⦋0⦌}
     exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge_yoneda f).symm
   isPushout := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.isPushoutSquare_iff_ulift s.square).mp s.isPushout
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (ulift)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (ulift)
 
 
 /-- 持ち上げた cofiber 四角形の終点は元の cofiber 頂点の ULift。 -/
 lemma CofiberSquare.ulift_cofiber {x y : X _⦋0⦌}
-    {f : Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
+    {f : Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
     s.ulift.cofiber = (ULift.up s.cofiber : ((SSet.uliftFunctor.{v, u}).obj X) _⦋0⦌) := rfl
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (ulift_cofiber)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquare (ulift_cofiber)
 
 
 /-- 実辺の指定 cofiber 分母条件は宇宙持ち上げで保存・反映される。 -/

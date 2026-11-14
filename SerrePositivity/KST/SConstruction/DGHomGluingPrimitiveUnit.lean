@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.PrimitiveComparison
 
 /-! # 元の gluing 単位の第三成分
 概要：元の閉単位の比較 cochain の零性を、同じ実単位元の値に戻す。

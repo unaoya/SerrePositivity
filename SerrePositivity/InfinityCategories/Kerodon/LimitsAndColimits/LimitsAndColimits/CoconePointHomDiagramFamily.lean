@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconePointFullHomFamily
 public import
-  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NormalizedCosliceRestrictionComposition
+  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.NormalizedCosliceRestrictionComposition
 
 /-!
 概要：native な余錐全図式の部分図式に、元の全 Hom の同じ族を制限する。

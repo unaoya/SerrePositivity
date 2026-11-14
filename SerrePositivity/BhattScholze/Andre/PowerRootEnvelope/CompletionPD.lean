@@ -17,10 +17,10 @@ raw 二重剰余と Frobenius、モニック入力の完備化剰余と pd 表�
 BS 著者版 Remark 7.15 の φ 引き戻しの計算に使う、無限根入力の完備化剰余と分冪表示を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPrism`、`PowerRootEnvelope/FrobeniusPullback`、`PowerRootEnvelope/Unconditional/Residue`、`Variants/Auxiliary`、`Variants/MonicRootedExtension`。
@@ -28,7 +28,7 @@ BS 著者版 Remark 7.15 の φ 引き戻しの計算に使う、無限根入力
 
 universe u v
 
-/-! ## André E1・E2：実無限根入力の raw 二重剰余と Frobenius（旧 Andre/Remark715/PowerRootPrismFrobeniusResidue.lean）
+/-! ## 実無限根入力の raw 二重剰余と Frobenius
 
 ## 概要
 
@@ -130,7 +130,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismFrobeniusResidue
 
-/-! ## André E1・E2：無限根モニック入力の実完備化剰余と pd 表示（旧 Andre/Remark715/PowerRootPrismMonicCompletionPD.lean）
+/-! ## 無限根モニック入力の実完備化剰余と pd 表示
 
 ## 概要
 
@@ -265,7 +265,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletionPD
 
-/-! ## André E1・E2：実完備化剰余と逆 Frobenius 係数入力の ϖ pd 表示（旧 Andre/Remark715/PowerRootPrismMonicVarpiPDComparison.lean）
+/-! ## 実完備化剰余と逆 Frobenius 係数入力の ϖ pd 表示
 
 ## 概要
 
@@ -386,7 +386,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicVarpiPDComparison
 
-/-! ## André E1・E2：実完備化の ϖ 剰余の自然な係数作用と忠実平坦性（旧 Andre/Remark715/PowerRootPrismMonicVarpiFlat.lean）
+/-! ## 実完備化の ϖ 剰余の自然な係数作用と忠実平坦性
 
 ## 概要
 
@@ -515,7 +515,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicVarpiFlat
 
-/-! ## André E1・E2：ϖ 係数の逆 Frobenius 入力を元の mod p 入力へ戻す（旧 Andre/Remark715/PowerRootVarpiPrimeFrobeniusPD.lean）
+/-! ## ϖ 係数の逆 Frobenius 入力を元の mod p 入力へ戻す
 
 ## 概要
 
@@ -651,7 +651,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootVarpiPrimeFrobeniusPD
 
-/-! ## André R1：mod p 入力の分冪構造の移行用 import（旧 Andre/Remark715/PowerRootPrimeFrobeniusPDEnvelope.lean）
+/-! ## André R1：mod p 入力の分冪構造の移行用 import
 
 ## 概要
 
@@ -671,7 +671,7 @@ end PowerRootVarpiPrimeFrobeniusPD
 既存の import 経路と係数比較を維持し、実 Frobenius 引戻しに無条件の分冪構造を適用する。
 -/
 
-/-! ## André E1・E2：無限根モニック入力の mod(p,d) 正則性（旧 Andre/Remark715/PowerRootMonicModPairRegular.lean）
+/-! ## 無限根モニック入力の mod(p,d) 正則性
 
 ## 概要
 
@@ -821,7 +821,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicModPairRegular
 
-/-! ## André R1：無限根モニック raw 包の有限段の条件付き正則対（旧 Andre/Remark715/PowerRootPrismMonicRawRegular.lean）
+/-! ## André R1：無限根モニック raw 包の有限段の条件付き正則対
 
 ## 概要
 

@@ -1,19 +1,22 @@
 module
+public import SerrePositivity.CommutativeAlgebra.DividedPowers.FactorialSubring
+public import SerrePositivity.CommutativeAlgebra.DividedPowers.FactorialCoefficients
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.Injectivity
 
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.PDivision
 public import SerrePositivity.BhattScholze.Delta.Division.Residue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import Mathlib.RingTheory.Polynomial.Quotient
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetKoszul
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivisionCompletion
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.PDivisionCompletion
 public import Mathlib.RingTheory.AdicCompletion.Basic
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Principal.PrincipalDP
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
 public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
-public import SerrePositivity.BhattScholze.Delta.DividedPower.Factorial
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Coefficients.Factorial
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 public import Mathlib.CategoryTheory.Functor.OfSequence
 public import SerrePositivity.HomologicalAlgebra.SequentialComplexColimits
@@ -27,10 +30,10 @@ public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 一元 p 除算の有限段の関係が非零因子で全有限 δ 関係商が p 正則であること、有限評価関係列の Koszul 分解と通常商との比較、生の包の p 正則性・A[1/p] への埋め込み・分冪構造（階乗の商と一致）・階乗生成部分環との同型・分冪表示環との A 代数同型 `deltaPDivisionRawPrincipalEquiv`、mod p と導来完備化の比較、逐次 Koszul 極限、二入力・二段の包の p 正則性。
 
 ## 方針
-原典の BS 著者版 Corollary 2.39 を r = 1 で、生の包そのものが p ねじれなしで pd 包と同型という原典の形で示す。二元の場合は r 元への一般化（ノート §2.5 の課題 T2-1・T2-2）の足がかり。
+原典の BS 著者版 Corollary 2.39 を r = 1 で、生の包そのものが p ねじれなしで pd 包と同型という原典の形で示す。二元の場合の計算も含む。一般の有限正則列は BS 著者版 Lemma 2.38 の系列で扱う。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/FamilyEvaluation`、`Envelope/PDivisionSource`、`Envelope/RootFamilyRaw`、`Envelope/RootResidueKoszul`、`PowerRootEnvelope/DeltaDivisionWitt`、`Variants/RootedExtension`。
@@ -38,7 +41,7 @@ public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 
 universe u v
 
-/-! ## 最初のδ像を加えたp除算関係商のp正則性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSecondRelationRegular.lean）
+/-! ## 最初のδ像を加えたp除算関係商のp正則性
 
 指定した一つの関係とその最初のδ像を扱う。全δ閉包への移行は別工程。
 -/
@@ -189,7 +192,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSecondRelationRegular
 
-/-! ## 一元p除算の全有限δ関係商のp正則性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteStageRegular.lean）
+/-! ## 一元p除算の全有限δ関係商のp正則性
 
 単元δ(p)と既存Witt正規化のghost単射を明示する。
 元族全体のCFF拡大・完備化後の平坦性とは区別する。
@@ -343,7 +346,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteStageRegular
 
-/-! ## 一元rawδ p除算包のp正則性と旧ねじれ除去商との比較（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionRawRegular.lean）
+/-! ## 一元rawδ p除算包のp正則性と旧ねじれ除去商との比較
 
 有限実関係商の正則性をδ閉包へ移す。単元δ(p)とghost単射を明示する。
 導来pushoutの離散性・完備化後のCFFとは区別する。
@@ -495,7 +498,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionRawRegular
 
-/-! ## raw一元δ p除算包のA[1/p]への具体的埋め込み（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionRawEmbedding.lean）
+/-! ## raw一元δ p除算包のA[1/p]への具体的埋め込み
 
 既存の標準δ評価とp局所化比較を使う。実際の像部分環との同型も供給する。
 分冪包との一致・完全忠実平坦性は別工程。
@@ -511,31 +514,6 @@ section General
 variable {σ : Type v} (D : DeltaStructure p A) (a : σ → A)
 local notation "B₀" => DeltaAdjoinDivision D (p : A) a
 local notation "Bₚ" => Localization.Away (p : B₀)
-
-/-- raw包がp正則なら、具体的δ評価B→A[1/p]は単射。 -/
-theorem deltaPDivisionToAway_injective_of_p_mul_injective
-    (hp : Function.Injective (fun x : B₀ ↦ (p : B₀) * x)) :
-    Function.Injective (deltaPDivisionToAway D a) := by
-  have hj : Function.Injective (algebraMap B₀ Bₚ) := by
-    intro x z hxz
-    have hzero : algebraMap B₀ Bₚ (x - z) = 0 := by rw [map_sub, hxz, sub_self]
-    obtain ⟨m, hm⟩ := (IsLocalization.map_eq_zero_iff
-      (Submonoid.powers (p : B₀)) Bₚ (x - z)).mp hzero
-    obtain ⟨N, hN⟩ := (Submonoid.mem_powers_iff (m : B₀) (p : B₀)).mp m.property
-    have hreg : IsLeftRegular (p : B₀) := by
-      intro t w htw
-      exact hp htw
-    apply sub_eq_zero.mp
-    apply hreg.pow N
-    change (p : B₀) ^ N * (x - z) = (p : B₀) ^ N * 0
-    rw [hN, hm, mul_zero]
-  intro x z hxz
-  apply hj
-  calc
-    algebraMap B₀ Bₚ x = deltaPDivisionAwayToAway D a (deltaPDivisionToAway D a x) :=
-      (RingHom.congr_fun (deltaPDivisionAwayToAway_comp_toAway D a) x).symm
-    _ = deltaPDivisionAwayToAway D a (deltaPDivisionToAway D a z) := congrArg _ hxz
-    _ = algebraMap B₀ Bₚ z := RingHom.congr_fun (deltaPDivisionAwayToAway_comp_toAway D a) z
 
 /-- 具体的δ評価の像部分環は局所化上のδ作用で安定。単射性は不要。 -/
 theorem deltaPDivisionToAway_range_delta_stable
@@ -615,7 +593,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionRawEmbedding
 
-/-! ## 正則一元raw包と具体的階乗生成部分環の標準同型（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFactorialEquiv.lean）
+/-! ## 正則一元raw包と具体的階乗生成部分環の標準同型
 
 単射性の中間仮定を明示する。導来pushout比較・分冪包普遍性は別工程。
 -/
@@ -671,7 +649,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFactorialEquiv
 
-/-! ## 正則raw δ p除算包と分冪表示環の実A代数同型（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionRawPrincipal.lean）
+/-! ## 正則raw δ p除算包と分冪表示環の実A代数同型
 
 既存の中間仮定を明示して通常環を比較する。導来pushout比較は含めない。
 -/
@@ -758,7 +736,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionRawPrincipal
 
-/-! ## 任意先行族のraw p除算へ一入力を追加する正則性帰納（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFamilyStep.lean） -/
+/-! ## 任意先行族のraw p除算へ一入力を追加する正則性帰納 -/
 
 @[expose] public noncomputable section DeltaPDivisionFamilyStep
 
@@ -827,7 +805,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFamilyStep
 
-/-! ## 二段のraw δ p除算包のp正則性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionTwoStep.lean）
+/-! ## 二段のraw δ p除算包のp正則性
 
 次の入力の係数商での正則性を用いて、一元除算のp正則性を二段へ延ばす。
 自由δ環のghost単射は各段で明示的に仮定する。
@@ -890,7 +868,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionTwoStep
 
-/-! ## 二入力の同時raw p除算包のp正則性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionPairRegular.lean）
+/-! ## 二入力の同時raw p除算包のp正則性
 
 二段除算との標準同型を通じてp正則性を移す。ghost単射は各段で仮定する。
 -/
@@ -974,7 +952,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionPairRegular
 
-/-! ## 実一元p除算関係の非零因子性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteRelationsRegular.lean）
+/-! ## 実一元p除算関係の非零因子性
 
 最高係数pの正則性と後続変数表示を用いる。mod pでの正則性だけからは結論しない。
 -/
@@ -1085,7 +1063,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteRelationsRegular
 
-/-! ## 実p除算の有限評価関係列のKoszul分解（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteEvaluationRegular.lean）
+/-! ## 実p除算の有限評価関係列のKoszul分解
 
 全prefixのイデアル一致を使い、実反復差関係列から評価関係列へ正則性を移す。
 -/
@@ -1171,7 +1149,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteEvaluationRegular
 
-/-! ## 実自由δ射に沿う有限源グラフ商のTor（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceFiniteTor.lean）
+/-! ## 実自由δ射に沿う有限源グラフ商のTor
 
 P=A{x}からL=A{z}、x↦p zへ基底変更した有限源商を、実評価関係Koszul複体で計算する。
 有限商を全源評価環Aと取り違えない。
@@ -1231,7 +1209,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceFiniteTor
 
-/-! ## rawφ除算包の分冪構造と既存の階乗分母（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionDividedPowers.lean）
+/-! ## rawφ除算包の分冪構造と既存の階乗分母
 
 正則一元入力の仮定を明示する。分冪包の普遍性・CFFは別工程。
 -/
@@ -1295,7 +1273,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionDividedPowers
 
-/-! ## 有限実p除算Koszul複体と通常商の正規化比較（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteKoszulComparison.lean）
+/-! ## 有限実p除算Koszul複体と通常商の正規化比較
 
 標準包含からのH⁰単位を標準商射へ送る同型を用いる。
 無限δ関係と導来δ基底変更の比較はここには含めない。
@@ -1383,7 +1361,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteKoszulComparison
 
-/-! ## 実有限p除算Koszul比較の段間自然性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteKoszulTransitions.lean）
+/-! ## 実有限p除算Koszul比較の段間自然性
 
 末尾への関係付加は実mappingConeの包含、商側は既存の標準因子射を用いる。
 -/
@@ -1454,7 +1432,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteKoszulTransitions
 
-/-! ## 実有限KoszulのH⁰図式と標準有限商図式（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteKoszulHomologyDiagram.lean）
+/-! ## 実有限KoszulのH⁰図式と標準有限商図式
 
 元ごとの標準単位で正規化した比較を、共通の自由環の加群圏における自然同型にする。
 -/
@@ -1526,7 +1504,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteKoszulHomologyDiagram
 
-/-! ## 実一元p除算Koszul図式の逐次極限（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSequentialKoszul.lean）
+/-! ## 実一元p除算Koszul図式の逐次極限
 
 ℤ次数の当該BS図式を転置し、既存の完全なcolim関手とホモロジー比較を使う。
 原典の導来δ基底変更と同定することは、ここではまだ主張しない。
@@ -1627,7 +1605,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSequentialKoszul
 
-/-! ## 通常有限関係商の逐次極限としてのraw δ包（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionFiniteQuotientColimit.lean）
+/-! ## 通常有限関係商の逐次極限としてのraw δ包
 
 実δ閉包が有限関係イデアルの上限である既存定理を使う。
 実標準商射で与えられる余錐の普遍性を、共通の自由環の加群圏で証明する。
@@ -1756,7 +1734,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionFiniteQuotientColimit
 
-/-! ## raw δ p除算包の元のA上の実mod p・導来完備化比較（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionRawRelativeModP.lean） -/
+/-! ## raw δ p除算包の元のA上の実mod p・導来完備化比較 -/
 
 @[expose] public noncomputable section DeltaPDivisionRawRelativeModP
 
@@ -1860,7 +1838,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionRawRelativeModP
 
-/-! ## raw包の実導来完備化のp還元ホモロジーと相対平坦性（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionRawResidueFlat.lean） -/
+/-! ## raw包の実導来完備化のp還元ホモロジーと相対平坦性 -/
 
 @[expose] public noncomputable section DeltaPDivisionRawResidueFlat
 
@@ -1947,7 +1925,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionRawResidueFlat
 
-/-! ## 正則な一元p除算の実導来完備化からの通常剰余射（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionResidueMap.lean）
+/-! ## 正則な一元p除算の実導来完備化からの通常剰余射
 
 元の係数射がp,yを消す場合を扱う。raw包のp正則性の仮定を明示して
 旧ねじれ除去商を経由し、実H⁰から環として延長する。
@@ -2083,7 +2061,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionResidueMap
 
-/-! ## raw δ包への実無限Koszul添加写像（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSequentialKoszulAugmentation.lean）
+/-! ## raw δ包への実無限Koszul添加写像
 
 実有限Koszul図式の圏論的colimitを用い、その実H⁰からraw δ包へ写す。
 原典の導来δpushout・導来完備化・CFFとの比較とは区別する。
@@ -2149,7 +2127,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSequentialKoszulAugmentation
 
-/-! ## 実無限Koszul比較の標準単位（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSequentialKoszulUnit.lean）
+/-! ## 実無限Koszul比較の標準単位
 
 圏論的colimitへの標準射を追い、H⁰比較を元の自由環の標準商射で正規化する。
 -/

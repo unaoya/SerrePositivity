@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SimplicialFunctionComplex
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 /-!

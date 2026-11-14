@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftAdjointCoconePreservation
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import Mathlib.Tactic.CrossRefAttribute
@@ -105,3 +107,12 @@ lemma hasSmallColimits_of_reflection {X Y : SSet.{u + 1}}
 
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.3.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCocone_isColimit_of_adjunction
+attribute [cite HTT "5.2.7.5" (partial := special) "仮定：充満包含への反射 r と、その周囲の圏での K 型余極限の存在（Lean が強い：右随伴を包含として指定した形）。結論：部分圏の任意の K 型図式を包含し、周囲の余極限を反射すれば元の図式の余極限となり、その存在を得る（この場合に一致）。K の準圏性や filtered 性は要求しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_reflection
+attribute [cite HTT "5.2.7.5" (partial := special) "仮定：充満包含への反射 r と、その周囲の圏での K 型余極限の存在（Lean が強い：右随伴を包含として指定した形）。結論：部分圏の任意の K 型図式を包含し、周囲の余極限を反射すれば元の図式の余極限となり、その存在を得る（この場合に一致）。K の準圏性や filtered 性は要求しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCocone_isColimit_of_adjunction
+attribute [cite HTT "5.4.7.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCocone_isColimit_of_adjunction
+attribute [cite HTT "5.5.1.2" (partial := direction) "仮定：accessible C と accessible D への反映 f⊣g、および元の L≃g∘f（HTT の (2) と一致）。結論：f は余極限を保存する左随伴として、g は右随伴として accessible で、その同じ合成 L も accessible（(2)⇒(3) に一致）。L の accessibility だけから像の accessibility を得る逆方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCocone_isColimit_of_adjunction

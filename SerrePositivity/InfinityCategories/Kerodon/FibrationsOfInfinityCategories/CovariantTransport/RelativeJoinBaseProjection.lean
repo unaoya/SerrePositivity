@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCylinder
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.MappingCylinderOverMono
 
@@ -93,3 +95,8 @@ noncomputable def relativeJoinCylinderComparisonOver {X Y : SSet.{u}} (f : X ⟶
   Over.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinCylinderComparison f) (relativeJoinCylinderComparison_baseProjection f)
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.2.2.1" (partial := special) "仮定：二つの単体集合が同じ底 S に写る（Lean が強い：右因子の構造射が S の恒等射）。結論：X×ₛS ≅ X によって円筒の零端は X に同一写像で貼られ、一端を X→S で貼る写像円筒となる。Lean はこの押し出しとその底への構造射を与える（一致する場合。任意の右因子は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.mappingCylinderBaseProjection

@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidPrismPresentation
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation
 public import SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial
-public import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeFaithful
+public import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.OfFaithfullyFlat
 public import Mathlib.RingTheory.RingHom.FaithfullyFlat
 

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.F1BFunctorCategoriesRelativeInitialExtension
 
@@ -116,3 +118,8 @@ lemma initialBoundaryLifting_ihom_of_pointwise {K X Y : SSet.{u}}
     exact hFp
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeInitial
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.2.1" (partial := stronger-hyp) "仮定：Cartesian ファイブレーションの切断が各繊維で始対象（Lean が強い：底と全空間を準圏とする）。結論：各繊維の始対象から相対始点境界充填を得て、内部 Hom の同じ境界充填を恒等底図式の繊維に制限すると、指定切断が切断準圏の始対象となる（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeInitial.initialBoundaryLifting_ihom_of_pointwise

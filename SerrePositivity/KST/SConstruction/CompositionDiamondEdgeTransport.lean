@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TriangleEdgeTransport
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleDiamondComposition
 
 /-! # 共通対角辺を固定する全三角形対の辺移送
 概要：四辺の端点固定円柱で二三角形を移送し、元の共通対角辺を全時刻固定する。

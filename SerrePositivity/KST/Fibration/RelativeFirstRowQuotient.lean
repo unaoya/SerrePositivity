@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeFirstRow
 public import SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.CoreEquivalence
+public import SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanAnodyneLocalization
 
 /-!

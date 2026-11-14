@@ -17,7 +17,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 
 lemma ExcisionSquareGrid.row_outer_zero_left {X : SSet.{u}}
     {R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} {z : X _⦋0⦌} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid R z) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.strip3Square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridRowStrip ≫ d.extension.full) 1 1) 0 1 = z := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.strip3Square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridRowStrip ≫ d.extension.full) 1 1) 0 1 = z := by
   let p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionGridSeedIndex.{u} :=
     ⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridCorePoint 0 2, by change (0 : ℕ) + 2 ≤ 2; decide⟩
   exact d.zero_seed_full (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p) (by
@@ -26,7 +26,7 @@ lemma ExcisionSquareGrid.row_outer_zero_left {X : SSet.{u}}
 
 lemma ExcisionSquareGrid.column_outer_zero_left {X : SSet.{u}}
     {R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} {z : X _⦋0⦌} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid R z) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.strip3Square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridColumnStrip ≫ d.extension.full) 1 1) 0 1 = z := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.strip3Square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridColumnStrip ≫ d.extension.full) 1 1) 0 1 = z := by
   let p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionGridSeedIndex.{u} :=
     ⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridCorePoint 2 0, by change (2 : ℕ) + 0 ≤ 2; decide⟩
   exact d.zero_seed_full (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p) (by
@@ -35,12 +35,12 @@ lemma ExcisionSquareGrid.column_outer_zero_left {X : SSet.{u}}
 
 def ExcisionSquareGrid.row_suspension {X : SSet.{u}} [Quasicategory X]
     {R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} {z : X _⦋0⦌} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid R z)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1) where
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1) where
   square := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.strip3Square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridRowStrip ≫ d.extension.full) 1 1
   zero_corner := by rw [d.row_outer_zero_left]; exact hz
   source_eq := d.row_outer_source
   other_zero := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (d.extension.full.app (Opposite.op ⦋0⦌)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (d.extension.full.app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridFirstNewZero.val))
     rw [d.extension.first_new_zero]
     exact hz
@@ -48,12 +48,12 @@ def ExcisionSquareGrid.row_suspension {X : SSet.{u}} [Quasicategory X]
 
 def ExcisionSquareGrid.column_suspension {X : SSet.{u}} [Quasicategory X]
     {R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} {z : X _⦋0⦌} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid R z)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 0) where
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 0) where
   square := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.strip3Square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridColumnStrip ≫ d.extension.full) 1 1
   zero_corner := by rw [d.column_outer_zero_left]; exact hz
   source_eq := d.column_outer_source
   other_zero := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (d.extension.full.app (Opposite.op ⦋0⦌)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (d.extension.full.app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridSecondNewZero.val))
     rw [d.extension.second_new_zero]
     exact hz
@@ -61,12 +61,12 @@ def ExcisionSquareGrid.column_suspension {X : SSet.{u}} [Quasicategory X]
 
 lemma ExcisionSquareGrid.row_suspension_vertex {X : SSet.{u}} [Quasicategory X]
     {R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} {z : X _⦋0⦌} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid R z)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : (d.row_suspension hz).vertex =
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : (d.row_suspension hz).vertex =
       d.extension.full.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridPoint32) := rfl
 
 lemma ExcisionSquareGrid.column_suspension_vertex {X : SSet.{u}} [Quasicategory X]
     {R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} {z : X _⦋0⦌} (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid R z)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : (d.column_suspension hz).vertex =
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : (d.column_suspension hz).vertex =
       d.extension.full.app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridTranspose _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridPoint32)) := rfl
 

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExactFunctorChoice
@@ -274,3 +276,8 @@ noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.S
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.mk.sizeOf_spec
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 2.12"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors

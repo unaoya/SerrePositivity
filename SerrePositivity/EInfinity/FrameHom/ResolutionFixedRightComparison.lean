@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCofinality
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.CostructuredArrowCofinality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CommaComparisons.ArrowSpanComma
 public import SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage
 
 /-!

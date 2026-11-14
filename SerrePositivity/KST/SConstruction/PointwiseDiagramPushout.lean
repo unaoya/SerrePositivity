@@ -96,7 +96,7 @@ lemma pointwiseDiagramPushout_span {B K C : SSet.{u}} [Quasicategory C] [_root_.
 規約：同型でなく厳密等号。使われ方：raw ρ への条件の輸送。 -/
 lemma pointwiseDiagramPushout_apex {B K C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (F : (horn 2 0 : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (pointwiseDiagramPushout F) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (pointwiseDiagramPushout F) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (pointwiseDiagramPushoutApex F) := by
   apply CategoryTheory.Functor.functorHom_ext
   intro e α
@@ -113,7 +113,7 @@ lemma pointwiseDiagramPushout_apex {B K C : SSet.{u}} [Quasicategory C] [_root_.
 規約：選択した同じ四角形の等号。使われ方：比較同型の apex。 -/
 lemma chosenDiagramPushout_apex {K D : SSet.{u}} [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
     (d : K ⟶ (ihom (horn 2 0 : SSet.{u})).obj D) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (chosenDiagramPushout d) 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (pointwisePushoutApex d) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (chosenDiagramPushout d) 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (pointwisePushoutApex d) := by
   apply CategoryTheory.Functor.functorHom_ext
   intro e α
   apply ConcreteCategory.hom_ext
@@ -157,8 +157,8 @@ def pointwiseDiagramPushoutApex_postcompIso {B K C D : SSet.{u}}
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at ea
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (((ihom K).map f).app (Opposite.op ⦋0⦌)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (chosenDiagramPushout (curry F)) 1 1))
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (pointwiseDiagramPushout (F ≫ f)) 1 1) at ea
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (chosenDiagramPushout (curry F)) 1 1))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (pointwiseDiagramPushout (F ≫ f)) 1 1) at ea
   rw [chosenDiagramPushout_apex, pointwiseDiagramPushout_apex] at ea
   exact ea
 

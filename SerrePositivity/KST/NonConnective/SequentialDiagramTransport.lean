@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialCofibrantColimit
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OrdinaryCoherentNatTransPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.OrdinaryCoherentNatTransPrism
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanDiagramColimitTransport
 
 /-!

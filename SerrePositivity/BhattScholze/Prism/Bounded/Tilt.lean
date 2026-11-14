@@ -25,7 +25,7 @@ BS 著者版 Lemma 4.8 の証明。旧 Andre/Remark715 から移した。
 
 universe u v
 
-/-! ## André E1・E2：共通の標数 p 完備商を介する互換根列の一意持上げ（旧 Andre/Remark715/CommonAdicCompatibleRoots.lean）
+/-! ## 共通の標数 p 完備商を介する互換根列の一意持上げ
 
 ## 概要
 
@@ -49,7 +49,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の prismatic 入力射の持上げ�
 
 @[expose] public noncomputable section CommonAdicCompatibleRoots
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 
 /-- 概要：乗法モノイド同型は互換根列のモノイド同型を誘導する。
 方針：全座標に同型と逆同型を作用させる。
@@ -86,7 +86,7 @@ def perfectionQuotientEquivOfCommonAdic : Perfection B p ≃* Perfection (B ⧸ 
     charP_of_injective_ringHom (f := e.symm.toRingHom) e.symm.injective p
   let eB := Perfection.quotientMulEquiv p I
   let eC := Perfection.quotientMulEquiv p K
-  let eD := perfectionCongrMulEquiv p e.toMulEquiv
+  let eD := _root_.SerrePositivity.BhattScholze.perfectionCongrMulEquiv p e.toMulEquiv
   let E := eB.trans (eD.symm.trans eC.symm)
   let q := Perfection.mapMonoidHom p (Ideal.Quotient.mk J : B →* B ⧸ J)
   have he (x : Perfection B p) : E x = q x := by
@@ -115,7 +115,7 @@ def perfectionQuotientEquivOfCommonAdic : Perfection B p ≃* Perfection (B ⧸ 
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の持上げの剰余値の検証。 -/
 theorem perfectionQuotientEquivOfCommonAdic_coeff (x : Perfection B p) (n : ℕ) :
     Perfection.coeffMonoidHom (B ⧸ J) p n
-      (perfectionQuotientEquivOfCommonAdic p I J hJI x) =
+      (_root_.SerrePositivity.BhattScholze.perfectionQuotientEquivOfCommonAdic p I J hJI x) =
         Ideal.Quotient.mk J (Perfection.coeffMonoidHom B p n x) := rfl
 
 include I hJI in
@@ -127,7 +127,7 @@ theorem existsUnique_compatiblePowerRootsLift_of_common_adic
     (ρ : ℕ → B ⧸ J) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) :
     ∃! σ : ℕ → B,
       (∀ n, σ (n + 1) ^ p = σ n) ∧ ∀ n, Ideal.Quotient.mk J (σ n) = ρ n := by
-  let e := perfectionQuotientEquivOfCommonAdic p I J hJI
+  let e := _root_.SerrePositivity.BhattScholze.perfectionQuotientEquivOfCommonAdic p I J hJI
   let y : Perfection (B ⧸ J) p := ⟨ρ, hρ⟩
   let x := e.symm y
   refine ⟨fun n => Perfection.coeffMonoidHom B p n x, ⟨?_, ?_⟩, ?_⟩
@@ -173,13 +173,13 @@ theorem existsUnique_compatiblePowerRootsLift_of_adic_ideals
   · let := hn
     let : CharP (B ⧸ I) p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr
       (by simpa only [map_natCast] using Ideal.Quotient.eq_zero_iff_mem.mpr hpI)
-    exact existsUnique_compatiblePowerRootsLift_of_common_adic p I J hJI ρ hρ
+    exact _root_.SerrePositivity.BhattScholze.existsUnique_compatiblePowerRootsLift_of_common_adic p I J hJI ρ hρ
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end CommonAdicCompatibleRoots
 
-/-! ## André E1・E2：完全試験 prism の剰余互換根列の一意持上げ（旧 Andre/Remark715/PerfectPrismCompatibleRootsLift.lean）
+/-! ## 完全試験 prism の剰余互換根列の一意持上げ
 
 ## 概要
 
@@ -203,9 +203,9 @@ BS 著者版 Remark 7.15（著者版 p.62）の絶対 prismatic 入力射の完�
 
 @[expose] public noncomputable section PerfectPrismCompatibleRootsLift
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 variable {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime]
-variable (Q : OrientedPrism p B)
+variable (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p B)
 
 /-- 概要：共通二元イデアルの prism 商での像は p 主イデアル。
 方針：商で生成元 d が零になることを二元生成イデアルの像へ代入する。
@@ -230,25 +230,25 @@ theorem existsUnique_perfectPrismCompatibleRootsLift
       (∀ n, σ (n + 1) ^ p = σ n) ∧ ∀ n, Ideal.Quotient.mk Q.ideal (σ n) = ρ n := by
   let I := Ideal.span {(p : B), Q.generator}
   let := Q.isAdicComplete_p_of_perfect hQ
-  let : IsAdicComplete I B := perfectPrism_pair_isAdicComplete Q hQ
+  let : IsAdicComplete I B := _root_.SerrePositivity.BhattScholze.perfectPrism_pair_isAdicComplete Q hQ
   let : IsAdicComplete (Ideal.span {(p : B ⧸ Q.ideal)}) (B ⧸ Q.ideal) :=
     hQ.distinguished_quotient_isAdicComplete (Q.isDistinguished_generator)
   let : IsAdicComplete (I.map (Ideal.Quotient.mk Q.ideal)) (B ⧸ Q.ideal) := by
-    rw [prism_pair_map_ideal_eq_prime]
+    rw [_root_.SerrePositivity.BhattScholze.prism_pair_map_ideal_eq_prime]
     infer_instance
   have hJI : Q.ideal ≤ I := by
     apply Ideal.span_le.mpr
     intro x hx
     rcases Set.mem_singleton_iff.mp hx with rfl
     exact Ideal.subset_span (by simp)
-  exact existsUnique_compatiblePowerRootsLift_of_adic_ideals p I Q.ideal hJI
+  exact _root_.SerrePositivity.BhattScholze.existsUnique_compatiblePowerRootsLift_of_adic_ideals p I Q.ideal hJI
     (Ideal.subset_span (by simp)) ρ hρ
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end PerfectPrismCompatibleRootsLift
 
-/-! ## André E1・E2：一般有界試験 prism の剰余互換根列の一意持上げ（旧 Andre/Remark715/BoundedPrismCompatibleRootsLift.lean）
+/-! ## 一般有界試験 prism の剰余互換根列の一意持上げ
 
 ## 概要
 
@@ -271,9 +271,9 @@ BS 著者版 Remark 7.15（著者版 p.62）の prismatic 入力射の持上げ�
 
 @[expose] public noncomputable section BoundedPrismCompatibleRootsLift
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 variable {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime]
-variable (Q : OrientedPrism p B)
+variable (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p B)
 
 /-- 概要：有界 prism 商の互換根列は台環内へ一意に持ち上がる。
 方針：台環の (p,d) 完備性と商の p 完備性を共通完備商の一般結果へ渡す。
@@ -286,25 +286,25 @@ theorem existsUnique_boundedPrismCompatibleRootsLift
     ∃! σ : ℕ → B,
       (∀ n, σ (n + 1) ^ p = σ n) ∧ ∀ n, Ideal.Quotient.mk Q.ideal (σ n) = ρ n := by
   let I := Ideal.span {(p : B), Q.generator}
-  let : IsAdicComplete I B := boundedPrism_pair_isAdicComplete Q hB
+  let : IsAdicComplete I B := _root_.SerrePositivity.BhattScholze.boundedPrism_pair_isAdicComplete Q hB
   let : IsAdicComplete (Ideal.span {(p : B ⧸ Q.ideal)}) (B ⧸ Q.ideal) :=
-    boundedPrism_quotient_isAdicComplete_prime Q hB
+    _root_.SerrePositivity.BhattScholze.boundedPrism_quotient_isAdicComplete_prime Q hB
   let : IsAdicComplete (I.map (Ideal.Quotient.mk Q.ideal)) (B ⧸ Q.ideal) := by
-    rw [prism_pair_map_ideal_eq_prime]
+    rw [_root_.SerrePositivity.BhattScholze.prism_pair_map_ideal_eq_prime]
     infer_instance
   have hJI : Q.ideal ≤ I := by
     apply Ideal.span_le.mpr
     intro x hx
     rcases Set.mem_singleton_iff.mp hx with rfl
     exact Ideal.subset_span (by simp)
-  exact existsUnique_compatiblePowerRootsLift_of_adic_ideals p I Q.ideal hJI
+  exact _root_.SerrePositivity.BhattScholze.existsUnique_compatiblePowerRootsLift_of_adic_ideals p I Q.ideal hJI
     (Ideal.subset_span (by simp)) ρ hρ
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end BoundedPrismCompatibleRootsLift
 
-/-! ## André A1-a：有界 prism の台環と商の tilt 比較（旧 Andre/Remark715/BoundedPrismTiltQuotient.lean）
+/-! ## André A1-a：有界 prism の台環と商の tilt 比較
 
 ## 概要
 
@@ -329,9 +329,9 @@ BS 著者版 Lemma 4.8（著者版 pp.38–39）の基底環射の構成への�
 
 @[expose] public noncomputable section BoundedPrismTiltQuotient
 
-namespace SerrePositivity.BhattScholze.Andre
+namespace SerrePositivity.BhattScholze
 variable {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime]
-variable (Q : OrientedPrism p B)
+variable (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p B)
 variable [Fact (¬ IsUnit (p : B))]
 variable [Fact (¬ IsUnit (p : B ⧸ Q.ideal))]
 
@@ -344,16 +344,16 @@ include hB in
 規約：台環と商での p 非可逆性を標数インスタンス用に明示する。
 使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の基底環射を tilt から構成する。 -/
 theorem boundedPrism_preTiltQuotient_bijective :
-    Function.Bijective (Perfection.map p (modPMap p (Ideal.Quotient.mk Q.ideal))) := by
+    Function.Bijective (Perfection.map p (_root_.SerrePositivity.modPMap p (Ideal.Quotient.mk Q.ideal))) := by
   let q := Ideal.Quotient.mk Q.ideal
-  let := boundedPrism_isAdicComplete_prime Q hB
-  let := boundedPrism_quotient_isAdicComplete_prime Q hB
+  let := _root_.SerrePositivity.BhattScholze.boundedPrism_isAdicComplete_prime Q hB
+  let := _root_.SerrePositivity.BhattScholze.boundedPrism_quotient_isAdicComplete_prime Q hB
   let eB := Perfection.quotientMulEquiv p (Ideal.span {(p : B)})
   let eC := Perfection.quotientMulEquiv p (Ideal.span {(p : B ⧸ Q.ideal)})
   let M := Perfection.mapMonoidHom p q.toMonoidHom
   have hM : Function.Bijective M := by
     have hex (y : Perfection (B ⧸ Q.ideal) p) : ∃! x : Perfection B p, M x = y := by
-      obtain ⟨σ, hσ, hu⟩ := existsUnique_boundedPrismCompatibleRootsLift Q hB
+      obtain ⟨σ, hσ, hu⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_boundedPrismCompatibleRootsLift Q hB
         (fun n => Perfection.coeffMonoidHom (B ⧸ Q.ideal) p n y)
         (fun n => Perfection.coeffMonoidHom_pow_p' y n)
       let x : Perfection B p := ⟨σ, hσ.1⟩
@@ -375,7 +375,7 @@ theorem boundedPrism_preTiltQuotient_bijective :
       obtain ⟨x, hx, _⟩ := hex y
       exact ⟨x, hx⟩
   have hcomm (x : Perfection B p) :
-      Perfection.map p (modPMap p q) (eB x) = eC (M x) := by
+      Perfection.map p (_root_.SerrePositivity.modPMap p q) (eB x) = eC (M x) := by
     apply Perfection.ext
     intro n
     rfl
@@ -397,17 +397,17 @@ theorem boundedPrism_preTiltQuotient_bijective :
 使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の完全係数の台環への持上げ。 -/
 def boundedPrism_preTiltQuotientEquiv : PreTilt B p ≃+* PreTilt (B ⧸ Q.ideal) p := by
   exact RingEquiv.ofBijective
-    (Perfection.map p (modPMap p (Ideal.Quotient.mk Q.ideal)))
-    (boundedPrism_preTiltQuotient_bijective Q hB)
+    (Perfection.map p (_root_.SerrePositivity.modPMap p (Ideal.Quotient.mk Q.ideal)))
+    (_root_.SerrePositivity.BhattScholze.boundedPrism_preTiltQuotient_bijective Q hB)
 
 /-- 概要：tilt 比較同型の各座標は標準 mod p 商射で与えられる。
 方針：全単射から作った環同型の順射の定義を展開する。
 規約：全ての根段 n で同じ標準商射を使う。
 使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の Fontaine 写像との可換図式。 -/
 theorem boundedPrism_preTiltQuotientEquiv_coeff (x : PreTilt B p) (n : ℕ) :
-    PreTilt.coeff n (boundedPrism_preTiltQuotientEquiv Q hB x) =
-      modPMap p (Ideal.Quotient.mk Q.ideal) (PreTilt.coeff n x) := rfl
+    PreTilt.coeff n (_root_.SerrePositivity.BhattScholze.boundedPrism_preTiltQuotientEquiv Q hB x) =
+      _root_.SerrePositivity.modPMap p (Ideal.Quotient.mk Q.ideal) (PreTilt.coeff n x) := rfl
 
-end SerrePositivity.BhattScholze.Andre
+end SerrePositivity.BhattScholze
 
 end BoundedPrismTiltQuotient

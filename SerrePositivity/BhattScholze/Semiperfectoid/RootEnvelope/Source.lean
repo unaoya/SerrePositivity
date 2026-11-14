@@ -7,7 +7,7 @@ public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import SerrePositivity.HomologicalAlgebra.DerivedRestrictionConservative
@@ -32,10 +32,10 @@ public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidiza
 有界深さの部分族図式の Tor 消滅、任意根族の全源 Tor 入力からの係数還元、商還元の純性と H⁰ の忠実平坦性、(p,d) 還元・逐次完備化後の還元、Tor 交換、根 δ 除算包の通常商の互換 p 冪根族、perfectoid 候補と基底射、直接 PD 完備化・δ 完全化との比較、生成元冪商の完備性、源の raw 比較・非正性・H⁰、完全 δ 環の rank-one 元の互換根列、根付き生成族による全射性とその降下。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `RootEnvelope/PerfectPrism`、`RootEnvelope/RawCompletion`。
@@ -43,7 +43,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidiza
 
 universe u v w z
 
-/-! ## 有界深さ有限部分族図式の実残余Tor消滅（旧 Semiperfectoid/RootEnvelope/BoundedSupport/DeltaDivisionBoundedSupportTor.lean） -/
+/-! ## 有界深さ有限部分族図式の実残余Tor消滅 -/
 
 @[expose] public noncomputable section DeltaDivisionBoundedSupportTor
 
@@ -138,7 +138,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionBoundedSupportTor
 
-/-! ## 任意根族の全源Tor入力から元の実係数還元への比較（旧 Semiperfectoid/RootEnvelope/BoundedSupport/DeltaRootBoundedSupportResidueDerived.lean） -/
+/-! ## 任意根族の全源Tor入力から元の実係数還元への比較 -/
 
 @[expose] public noncomputable section DeltaRootBoundedSupportResidueDerived
 
@@ -264,7 +264,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootBoundedSupportResidueDerived
 
-/-! ## 任意根族の実商還元の純粋性とH0忠実平坦性（旧 Semiperfectoid/RootEnvelope/BoundedSupport/DeltaRootBoundedSupportQuotientFlat.lean）
+/-! ## 任意根族の実商還元の純粋性とH0忠実平坦性
 
 有界深さ有限部分族図式のTor交換を明示入力とする。
 -/
@@ -517,7 +517,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootBoundedSupportQuotientFlat
 
-/-! ## 元の係数環上の実(p,d)還元とraw残余商（旧 Semiperfectoid/RootEnvelope/BoundedSupport/DeltaRootBoundedSupportPDResidue.lean）
+/-! ## 元の係数環上の実(p,d)還元とraw残余商
 
 任意根族（明示したTor交換入力の下）の実源商での比較を元の係数環へ渡す。一般Koszul還元や完備化後CFFは含まない。
 -/
@@ -621,7 +621,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootBoundedSupportPDResidue
 
-/-! ## 実根添加対象の逐次主元完備化後の(p,d)還元（旧 Semiperfectoid/RootEnvelope/BoundedSupport/DeltaRootBoundedSupportIteratedResidue.lean）
+/-! ## 実根添加対象の逐次主元完備化後の(p,d)還元
 
 既存の二つの主元完備化を逐次適用した具体的対象を扱う。
 原典の(p,d)完備化・環H0候補との比較や離散性は別工程である。
@@ -729,7 +729,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootBoundedSupportIteratedResidue
 
-/-! ## 任意根族の標準図式に対する無条件のTor交換（旧 Semiperfectoid/RootEnvelope/BoundedSupport/DeltaRootBoundedSupportTorInputs.lean） -/
+/-! ## 任意根族の標準図式に対する無条件のTor交換 -/
 
 @[expose] public noncomputable section DeltaRootBoundedSupportTorInputs
 
@@ -785,7 +785,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootBoundedSupportTorInputs
 
-/-! ## 具体的根添加候補の正則生成元冪商とp導来完備性（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootSourceGeneratorPowerReduction.lean）
+/-! ## 具体的根添加候補の正則生成元冪商とp導来完備性
 
 A/(dⁿ)への実導来基底変更を、元のAへ係数制限して扱う。
 商環上の完備性との係数環比較や離散性は別工程である。
@@ -869,7 +869,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceGeneratorPowerReduction
 
-/-! ## G8による生成元冪商上のp導来完備性（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootSourceGeneratorPowerComplete.lean）
+/-! ## G8による生成元冪商上のp導来完備性
 
 既証の係数制限後の完備性を、元の標準単位の図式と同型反映で商環へ戻す。
 -/
@@ -915,7 +915,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceGeneratorPowerComplete
 
-/-! ## 完全δ環のrank-one元の具体的互換p冪根列（旧 Semiperfectoid/RootEnvelope/PerfectDeltaRankOneRoots.lean） -/
+/-! ## 完全δ環のrank-one元の具体的互換p冪根列 -/
 
 @[expose] public noncomputable section PerfectDeltaRankOneRoots
 
@@ -971,7 +971,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaRankOneRoots
 
-/-! ## 根δ除算包の通常商における指定元の互換p冪根族（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootAdjoinCompatibleRoots.lean） -/
+/-! ## 根δ除算包の通常商における指定元の互換p冪根族 -/
 
 @[expose] public noncomputable section DeltaRootAdjoinCompatibleRoots
 
@@ -1032,7 +1032,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootAdjoinCompatibleRoots
 
-/-! ## 根δ除算包からの具体的なperfectoid候補（旧 Semiperfectoid/RootEnvelope/DeltaRootPerfectoidCandidate.lean）
+/-! ## 根δ除算包からの具体的なperfectoid候補
 
 既存のp進完備δ完全化と実PD完備化を使用する。標準基底射の完全忠実平坦性は
 この構成からは結論しない。商のpねじれ・零環を許す。
@@ -1193,7 +1193,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootPerfectoidCandidate
 
-/-! ## 根添加prism候補への基底射と標準商射（旧 Semiperfectoid/RootEnvelope/DeltaRootPrismBaseMap.lean）
+/-! ## 根添加prism候補への基底射と標準商射
 
 既存候補への具体的係数射をprism射に束ねる。平坦性は別工程である。
 -/
@@ -1268,7 +1268,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootPrismBaseMap
 
-/-! ## 既存根添加候補と直接PD完備化の標準環・商比較（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootDirectPDCompletionComparison.lean） -/
+/-! ## 既存根添加候補と直接PD完備化の標準環・商比較 -/
 
 @[expose] public noncomputable section DeltaRootDirectPDCompletionComparison
 
@@ -1389,7 +1389,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootDirectPDCompletionComparison
 
-/-! ## PD完備化済み根δ環のδ完全化と既存候補の標準比較（旧 Semiperfectoid/RootEnvelope/DeltaRootPDCompletedPerfectionComparison.lean） -/
+/-! ## PD完備化済み根δ環のδ完全化と既存候補の標準比較 -/
 
 @[expose] public noncomputable section DeltaRootPDCompletedPerfectionComparison
 
@@ -1548,7 +1548,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootPDCompletedPerfectionComparison
 
-/-! ## 元の実導来源からraw r/d包とその実完備化への比較射（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootSourceRawComparison.lean） -/
+/-! ## 元の実導来源からraw r/d包とその実完備化への比較射 -/
 
 @[expose] public noncomputable section DeltaRootSourceRawComparison
 
@@ -1678,7 +1678,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceRawComparison
 
-/-! ## 元の実根添加源の非正性と同じ係数制限augmentationのH0同型（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootSourceNonpositive.lean） -/
+/-! ## 元の実根添加源の非正性と同じ係数制限augmentationのH0同型 -/
 
 @[expose] public noncomputable section DeltaRootSourceNonpositive
 
@@ -1764,7 +1764,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceNonpositive
 
-/-! ## 元の実根添加源の逐次完備化と同じaugmentationのH0比較（旧 Semiperfectoid/RootEnvelope/Source/DeltaRootSourceCompletionH0.lean） -/
+/-! ## 元の実根添加源の逐次完備化と同じaugmentationのH0比較 -/
 
 @[expose] public noncomputable section DeltaRootSourceCompletionH0
 
@@ -1828,7 +1828,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceCompletionH0
 
-/-! ## B4-6：根付き生成族による全射商の全射性（旧 Semiperfectoid/RootEnvelope/RootedPresentationSurjectivity.lean）
+/-! ## 根付き生成族による全射商の全射性
 
 核の全元の根は要求せず、核を生成する族の初項の根を使う。
 これにより、根付き拡大の入力を元の核の生成族だけに制限できる。
@@ -1860,7 +1860,7 @@ end SerrePositivity.BhattScholze
 
 end RootedPresentationSurjectivity
 
-/-! ## B4-6：元の核の生成族の根だけを持つ拡大からの降下（旧 Semiperfectoid/RootEnvelope/RootedFamilyPerfectoidSurjectivityDescent.lean）
+/-! ## 元の核の生成族の根だけを持つ拡大からの降下
 
 底変換した核の全元の根や拡大の整代数的閉性を要求しない。
 任意の元の核の生成族の像に根を供給する、必要な拡大データを明示する。

@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ReflectiveLocality
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ReflectiveLocality
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.LocalEquivalences
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveLocalization
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality
@@ -134,3 +136,9 @@ lemma reflective_localEquivalences_eq (r : _root_.SerrePositivity.InfinityCatego
 
 end
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.4.2" (partial := component) "仮定：任意の準圏の指定反射 r（HTT と一致）。結論：反射の像とその反転辺に局所な対象の一致、および S-equivalence がちょうど反転辺である (1)(2)（一致）。(3) の一般の accessible C における三条件同値は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_isLocal_iff_invertedEdges
+attribute [cite HTT "5.5.4.2" (partial := component) "仮定：任意の準圏の指定反射 r（HTT と一致）。結論：反射の像とその反転辺に局所な対象の一致、および S-equivalence がちょうど反転辺である (1)(2)（一致）。(3) の一般の accessible C における三条件同値は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_localEquivalences_eq

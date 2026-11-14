@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingBimodule
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ActionElements
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Functoriality.ActionElements
 
 /-! # Hom gluing の実左右作用の全次数成分
 概要：同じ実 gluing の左右作用を、元の標的内の通常順合成へ照合する。

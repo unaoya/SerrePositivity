@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ArrowInterpolationCorner
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinAssociatorBoundary
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.LastJoinEvaluation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.LastJoinEvaluation
 
 /-!
 概要：補間領域の余錐を元の全円柱へ比較する実際の射。

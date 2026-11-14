@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import SerrePositivity.DifferentialGraded.Derived.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.EnrichedClosedWhiskering
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.EnrichedClosedWhiskering
 
 /-!
 概要：右 dg 加群の実可算直和の全 Hom chain map。

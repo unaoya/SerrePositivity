@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CartesianHomotopyExtension
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.CartesianHomotopyExtension
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.VertexDiscrete
 
 /-!

@@ -42,7 +42,7 @@ lemma dgOdotMilnorPerfectNullSquare_edges :
 方針：元の左辺の終点を読む。規約：任意の零圏への置換はしない。
 使われ方：固定 ν の零性判定。 -/
 lemma dgOdotMilnorPerfectNullSquare_zero_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorFlatKernelInput R d)) := by
   have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgOdotMilnorPerfectNullSquare R d)
   let le : (dgKInputInfinity.{u, u + 1} R).Edge
@@ -59,9 +59,9 @@ lemma dgOdotMilnorPerfectNullSquare_zero_vertex :
 使われ方：相対提示の零角条件を充足する。 -/
 lemma dgOdotMilnorPerfectNullSquare_zero :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R) 0 1)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R) 0 1)) := by
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject ((dgKInputNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1)))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1)))
   rw [dgOdotMilnorPerfectNullSquare_zero_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R _
 
@@ -70,7 +70,7 @@ lemma dgOdotMilnorPerfectNullSquare_zero :
 使われ方：Sp の完備化付き ofSquare の零角。 -/
 lemma dgOdotMilnorPerfectNullSquare_perfect_zero :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
   have h := dgOdotMilnorPerfectNullSquare_zero R d
   rw [← dgKInputPerfectNu_inclusion R] at h
   exact h

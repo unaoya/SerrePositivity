@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroHomotopy
 
 /-!
 概要：二つの実関手の間に、全頂点で零射を表す一つの全図式ホモトピーを構成する。
@@ -19,13 +19,13 @@ open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-variable {K X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+variable {K X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
 
 /-- 概要：元のパラメータ全体で定値な零関手。
 方針：定値零関手の終対象性と始対象性から得た二胞体を合成し、実代表を取る。
 規約：頂点ごとの辺の寄せ集めにせず、元の全図式と二端点を保持する。
 使われ方：Sp-7 の成分内の零分母を、wide 部分複体の実収縮へ接続する。 -/
-def constantZero : K ⟶ X := SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).vertex
+def constantZero : K ⟶ X := SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).vertex
 
 omit [Quasicategory X] in
 /-- 概要：定値零関手の各頂点は同じ零頂点。
@@ -33,8 +33,8 @@ omit [Quasicategory X] in
 規約：頂点ごとの辺の寄せ集めにせず、元の全図式と二端点を保持する。
 使われ方：Sp-7 の成分内の零分母を、wide 部分複体の実収縮へ接続する。 -/
 lemma constantZero_isZero (k : K _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((constantZero (K := K) (X := X)).app _ k) := by
-  simpa [constantZero] using (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((constantZero (K := K) (X := X)).app _ k) := by
+  simpa [constantZero] using (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero
 
 /-- 概要：元の二関手の間の、定値零関手を経る全二胞体。
 方針：定値零関手の終対象性と始対象性から得た二胞体を合成し、実代表を取る。

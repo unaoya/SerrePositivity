@@ -51,7 +51,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfin
 public import SerrePositivity.KST.Comparison.ExInfinityGrouplike
 public import SerrePositivity.KST.Comparison.ExInfinityBar
 public import SerrePositivity.KST.Comparison.KanBarRows
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.DoubleMappingCylinderMap
 public import SerrePositivity.KST.Comparison.SliceFiberPushouts
 public import SerrePositivity.KST.Comparison.CylinderBoundary
 public import SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence

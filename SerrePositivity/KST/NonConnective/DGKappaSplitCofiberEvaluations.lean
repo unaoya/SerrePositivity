@@ -43,7 +43,7 @@ theorem dgKappaSplitCofiberFamily_evaluate (i j : Fin 2) :
     (dgKappaSplitCofiberFamily R D I Z H ≫
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) =
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) i j) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) i j) := by
   rw [dgKappaSplitCofiberFamily_ι]
   exact transpose_evaluate _ _
 
@@ -70,7 +70,7 @@ theorem dgKappaSplitCofiberFamily_subobject :
         (_root_.SerrePositivity.DifferentialGraded.DGFunctor.id (A := R) (DGKappaCone R D I))) := by
   rw [dgKappaSplitCofiberFamily_evaluate]
   have hv := dgKappaSplitPerfFamilySquare_lower_vertex R D I Z 0
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 0 = _ at hv
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 0 0 = _ at hv
   rw [hv, dgKappaFullPerfFamilyMap_vertex]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _
 
@@ -83,7 +83,7 @@ theorem dgKappaSplitCofiberFamily_middle :
         (dgKappaSwindleSource R D I)) := by
   rw [dgKappaSplitCofiberFamily_evaluate]
   have hv := dgKappaSplitPerfFamilySquare_lower_vertex R D I Z 1
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 1 0 = _ at hv
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 1 0 = _ at hv
   rw [hv, dgKappaFullPerfFamilyMap_vertex]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _
 
@@ -96,7 +96,7 @@ theorem dgKappaSplitCofiberFamily_quotient :
         (dgKappaConeCountableSum R D I)) := by
   rw [dgKappaSplitCofiberFamily_evaluate]
   have hv := dgKappaSplitPerfFamilySquare_lower_vertex R D I Z 2
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 1 1 = _ at hv
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaSplitPerfFamilySquare R D I Z) 1 1 = _ at hv
   rw [hv, dgKappaFullPerfFamilyMap_vertex]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _
 

@@ -20,15 +20,15 @@ open scoped _root_.Simplicial
 lemma zeroTriangle_fiber_iff_cofiber_of_bicartesian_choices {X : SSet.{u}} [Quasicategory X]
     (hf : ∀ {x y : X _⦋0⦌}
       (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y),
-      ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s.square)
+      ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s.square)
     (hc : ∀ {x y : X _⦋0⦌}
       (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y),
-      ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s.square)
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t ↔ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t := by
+      ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s.square)
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t ↔ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t := by
   constructor
   · intro ht
     let f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ t.square))
-    let s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f := {
+    let s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f := {
       toZeroTriangle := t
       right_edge := (SSet.yonedaEquiv.symm_apply_apply _).symm
       isPullback := ht }
@@ -36,7 +36,7 @@ lemma zeroTriangle_fiber_iff_cofiber_of_bicartesian_choices {X : SSet.{u}} [Quas
     exact (r.isPushout_iff s).1 hr
   · intro ht
     let f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.square))
-    let s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f := {
+    let s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f := {
       toZeroTriangle := t
       bottom_edge := (SSet.yonedaEquiv.symm_apply_apply _).symm
       isPushout := ht }
@@ -44,13 +44,13 @@ lemma zeroTriangle_fiber_iff_cofiber_of_bicartesian_choices {X : SSet.{u}} [Quas
     exact (r.isPullback_iff s).1 hr
 
 /-- Pointed ∞ 圏の全ての辺が双カルテジアンな fiber/cofiber を持てば安定。 -/
-theorem isStable_of_bicartesian_choices {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+theorem isStable_of_bicartesian_choices {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (hf : ∀ {x y : X _⦋0⦌}
       (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y),
-      ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s.square)
+      ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s.square)
     (hc : ∀ {x y : X _⦋0⦌}
       (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y),
-      ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s.square) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X where
+      ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s.square) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X where
   toHasZeroVertex := inferInstance
   fiber_exists f := ⟨(hf f).choose⟩
   cofiber_exists f := ⟨(hc f).choose⟩

@@ -1,11 +1,13 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue
 public import SerrePositivity.BhattScholze.Andre.Variants.Auxiliary
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputUniversal
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
 
 /-!
@@ -16,10 +18,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
 BS 著者版 Remark 7.15 の包の記述に向けて、向きなし入力圏での始性と φ 引き戻しに関わる分冪包の普遍性を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 BS の集約、`PowerRootEnvelope/Audit`、`Variants/MonicRootedExtension`。
@@ -27,7 +29,7 @@ BS の集約、`PowerRootEnvelope/Audit`、`Variants/MonicRootedExtension`。
 
 universe u v
 
-/-! ## André E1・E2：原典係数上の実分冪値と切断変数（旧 Andre/Remark715/PerfectPrismVarpiNativePDFormula.lean）
+/-! ## 原典係数上の実分冪値と切断変数
 
 ## 概要
 
@@ -87,7 +89,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiNativePDFormula
 
-/-! ## André E1・E2：ϖ 還元した無限根実 pd 包の普遍性（旧 Andre/Remark715/PerfectPrismVarpiPDUniversalUnconditional.lean）
+/-! ## ϖ 還元した無限根実 pd 包の普遍性
 
 ## 概要
 
@@ -158,7 +160,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiPDUniversalUnconditional
 
-/-! ## André R1：ϖ 還元した PD 包の普遍性の移行（旧 Andre/Remark715/PerfectPrismVarpiPDUniversal.lean）
+/-! ## André R1：ϖ 還元した PD 包の普遍性の移行
 
 ## 概要
 
@@ -178,7 +180,7 @@ BS 著者版 Remark 7.15(1)（著者版 p.62）の元の係数消滅条件を持
 同じ標準商・係数消滅条件で原典の PD 包の普遍性を適用する。
 -/
 
-/-! ## André A1-a：正次数モニック入力に対する元の源 prism の初期性（旧 Andre/Remark715/PowerRootPrismMonicSourceInitiality.lean）
+/-! ## André A1-a：正次数モニック入力に対する元の源 prism の初期性
 
 ## 概要
 
@@ -333,7 +335,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicSourceInitiality
 
-/-! ## André A1-a：基底射を指定しない有界入力への源の普遍性（旧 Andre/Remark715/PowerRootPrismMonicAbsoluteUniversal.lean）
+/-! ## André A1-a：基底射を指定しない有界入力への源の普遍性
 
 ## 概要
 
@@ -419,7 +421,7 @@ theorem existsUnique_powerRootPrismMonicPrismHom_of_absolute_input
     let X := powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg
     ∃! G : OrientedPrism.Hom X.prism Q, G.quotientMap.comp X.input = η := by
   let X := powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg
-  obtain ⟨k, hk, _⟩ := existsUnique_perfectPrismHomLift_to_bounded W hW Q hB (η.comp cS)
+  obtain ⟨k, hk, _⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded W hW Q hB (η.comp cS)
   let := pdCompletionCommRing L p (jL dP)
   have hreg := powerRootPrismMonicRaw_pdCompletion_generator_regular_of_unconditional
     W hW f hf hdeg
@@ -430,7 +432,7 @@ theorem existsUnique_powerRootPrismMonicPrismHom_of_absolute_input
   refine ⟨G, hG.2, ?_⟩
   intro G' hG'
   have hb : G'.comp X.base = k := by
-    apply perfectPrismHom_ext_to_bounded_target W hW Q hB
+    apply _root_.SerrePositivity.BhattScholze.perfectPrismHom_ext_to_bounded_target W hW Q hB
     rw [OrientedPrism.Hom.quotientMap_comp, ← X.input_base,
       ← RingHom.comp_assoc, hG', hk]
   exact hu G' ⟨hb, hG'⟩
@@ -439,7 +441,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicAbsoluteUniversal
 
-/-! ## A1-f：向きなし入力圏での元の源の初期性（旧 Andre/Remark715/Unoriented/Initial.lean）
+/-! ## A1-f：向きなし入力圏での元の源の初期性
 
 ## 概要
 A1-a の正次数モニック源の初期性を向きなし入力圏へ移す。
@@ -486,7 +488,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end Initial
 
-/-! ## 元の André 源の向きなし入力圏での初期性（旧 Andre/Remark715/Unoriented/SourceInitiality.lean）
+/-! ## 元の André 源の向きなし入力圏での初期性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の源 H の初期性を固定完全基底上の向きなし入力圏へ移す。
@@ -596,7 +598,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SourceInitiality
 
-/-! ## André：固定完全基底上の向きなし入力圏（旧 Andre/Remark715/Unoriented.lean）
+/-! ## André：固定完全基底上の向きなし入力圏
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の向きなし入力圏と元の源の初期性を集約する。
@@ -611,7 +613,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の向きなし入力圏と元の源
 向きなしの有界試験対象と André 源の普遍性の照合の入口。
 -/
 
-/-! ## André E1・E2：元の初期源と原典の係数計算の合流（旧 Andre/Remark715/PowerRootPrismMonicCoefficientComparison.lean）
+/-! ## 元の初期源と原典の係数計算の合流
 
 ## 概要
 
@@ -696,3 +698,8 @@ theorem powerRootPrismMonicSource_initial_and_coefficient_comparison
 end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCoefficientComparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 7.15" (partial := special) "主張（R→S が mod p で ind-syntomic な被覆）は証明していない。使っているのは構成の部分：S=R⟨Y^{1/p^∞}⟩/(f(Y)) の prismatic envelope T と φ^*(T/ϖ) の pd 包の記述、cover 性（完全忠実平坦）で、これが Thm 7.14 の一段拡大になる。docstring の「BS Rem 7.15」引用（1,700 件超）はこの計算を指す ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：exists_monicRootPerfectoidExtension（Andre/Transfinite/Tower.lean:1172。型は R からの一段拡大の存在。原文が直接扱う方程式商 S から T への被覆や mod p ind-syntomic ） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiPDMorphism_of_unconditional

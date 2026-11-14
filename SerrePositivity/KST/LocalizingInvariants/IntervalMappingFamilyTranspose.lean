@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FunctorFiber
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InternalHomFlipVertices
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalIsoHomClass
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.IntervalIsoHomClass
 
 /-!
 概要：固定端点の区間写像空間の全族を、関手圏の固定端点写像空間へ移す。

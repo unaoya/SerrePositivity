@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorResolvedInput
 public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ContractingElementCriterion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ContractingElementCriterion
 
 /-!
 概要：resolved 商の実 thick 平坦核から固定 S 内の零化四角形を構成する。
@@ -67,7 +67,7 @@ lemma dgOdotMilnorFlatKernelImage_contractible (x : K) :
   apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isZeroVertex_iff_contractingElement _).mp
   have hx := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection_vertex_isZero_iff_thick
     R (DGOdotGluing R d) (P) x.val).2 x.property
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (j)).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (j)).app (Opposite.op ⦋0⦌)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x.val)) at hx
   rwa [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] at hx
 

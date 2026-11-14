@@ -36,7 +36,7 @@ lemma arOne_isFrame (a : Ar.{u} 1) : a.down.val.1 = 0 ∨ IsDiagonal a := by
 
 /-- 指定した同じ零頂点を両対角に持ち、中間頂点を厳密に回収する補完。 -/
 lemma exists_strictZeroSOneDiagram {C : SSet.{u}} [Quasicategory C]
-    (x z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
+    (x z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) :
     ∃ F : arNerve 1 ⟶ C, IsGapped F ∧
       F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj (0 : Fin 2) 1 (by decide))) = x ∧
       ∀ j : Fin 2, F.app (Opposite.op ⦋0⦌)
@@ -90,12 +90,12 @@ lemma arZero_hom_ext {C : SSet.{u}} (F G : arNerve 0 ⟶ C)
   rw [hs, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map, h]
 
 /-- 任意の対象は、両端が同じ元の object S₀ 頂点となる S₁ 辺で表される。 -/
-lemma exists_closedObjectSOne {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C]
+lemma exists_closedObjectSOne {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C]
     (x : C _⦋0⦌) : ∃ e : (objectSConstruction C) _⦋1⦌,
       (sOneComparison C).app (Opposite.op ⦋0⦌) e = x ∧
       (objectSConstruction C).δ 0 e = (objectSConstruction C).δ 1 e := by
   obtain ⟨F, hF, hx, hz⟩ := exists_strictZeroSOneDiagram x
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C).vertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C).isZero
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C).vertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C).isZero
   let e := gappedObjectVertex F hF
   refine ⟨e, ?_, ?_⟩
   · rw [sOneComparison_gappedDiagram_vertex, gappedDiagram_gappedObjectVertex]

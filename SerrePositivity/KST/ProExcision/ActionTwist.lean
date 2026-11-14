@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.ActionDescent
 
 @[expose] public noncomputable section
@@ -62,3 +64,8 @@ theorem simplicialActionProductTwist_localized_isIso (A : SimplicialMonoidAction
   exact (isIso_comp_right_iff _ _).mp hc
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma A.2" (partial := component) "仮定：群状単体モノイドの作用を持つ（原典と一致）。結論：ねじり (g,h)↦(g,g(h)) が anodyne 局所化で同型。Kan 模型を経た原典の弱同値との比較は別（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.simplicialActionProductTwist_localized_isIso

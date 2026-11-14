@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Logic.Small.Basic
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
@@ -552,3 +554,8 @@ end SerrePositivity.DifferentialGraded.DGFunctor
 end
 
 end QuasiIsoHomology
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.1.18"] _root_.SerrePositivity.DifferentialGraded.DGFunctor

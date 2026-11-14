@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.GroupoidCompletionKanComparison
 public import SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexFirstVertex

@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.HomologicalAlgebra.KoszulAlgebraTorComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulRestriction
 public import SerrePositivity.HomologicalAlgebra.FlatKoszulFiniteness
-public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation
+public import SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation
 
 /-!
 # Koszul 正則列の冪

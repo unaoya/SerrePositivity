@@ -20,7 +20,7 @@ variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 
 /-- 元の完備化後の商に対する普遍差も、同じ包含の全対象を零に送る。 -/
 lemma universalDifference_zero (x : d.left.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((d.inclusion.hom ≫ LaxUniversalDifference.lift p q d.sequence.projection) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((d.inclusion.hom ≫ LaxUniversalDifference.lift p q d.sequence.projection) ≫
       laxDifference (𝟙 d.sequence.right) (𝟙 d.sequence.right)).app (Opposite.op ⦋0⦌) x) := by
   have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp
     (LaxUniversalDifference.differenceIso p q d.sequence.projection) d.inclusion.hom

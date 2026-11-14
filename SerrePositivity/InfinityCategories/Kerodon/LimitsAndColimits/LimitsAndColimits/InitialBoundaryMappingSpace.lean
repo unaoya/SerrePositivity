@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeVertexFiberLifting
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceFiberDiagramChange
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.RelativeInitialEndpoint
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.RelativeInitialEndpoint
 
 /-!
 概要：相対始点境界充填から出る写像空間の制限の普遍性。

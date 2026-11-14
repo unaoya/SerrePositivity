@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.Spectra.CospanNerveHornIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LiftedShapeNerveIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.LiftedShapeNerveIso
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes
 
 /-!
 概要：通常の cospan の coherent な表示を二辺のホーン上で計算する。

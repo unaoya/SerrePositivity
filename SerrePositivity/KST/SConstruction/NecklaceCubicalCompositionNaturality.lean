@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalComposition
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalPostcomposition
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceWedgePostcomposition
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgePostcomposition
 
 /-! # 元の cubical 合成の入力自然性
 概要：全単体集合の写像は、元の mapping object 上の Day tensor 合成を保つ。

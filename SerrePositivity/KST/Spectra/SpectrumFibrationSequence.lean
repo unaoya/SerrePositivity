@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumBoundary
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.GroupExactTransfer
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.GroupExactTransfer
 
 /-!
 概要：段ごとの Kan fibration のスペクトルの fiber 列の整数次数長完全列。

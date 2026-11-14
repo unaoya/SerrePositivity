@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SCofiberPointwise
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SwapEvaluation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SwapEvaluation
 
 /-! # S 構成と cofiber 図式の交換比較
 概要：cofiber 値の gapped 図式を、gapped 図式を値とする cofiber 四角形へ送る。

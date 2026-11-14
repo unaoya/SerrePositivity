@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveDerivedSource
 public import SerrePositivity.EInfinity.ComplexLimits.CofibrantKProjective
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitProbeFunctor
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeKProjective
 
 /-!
 # 同じ probe と半自由標的の K-projective な値

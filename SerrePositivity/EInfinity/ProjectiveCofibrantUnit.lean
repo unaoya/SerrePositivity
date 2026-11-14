@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.ProjectiveModel
 public import SerrePositivity.EInfinity.Operad.CoalgebraInterval
 
@@ -108,3 +110,8 @@ lemma endpoint_false_cofibration (I : CoalgebraInterval ε) :
 end Operad.CoalgebraInterval
 
 end SerrePositivity.EInfinity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.2.11" (partial := component) "仮定：任意可換環 R の非有界複体と構成済み射影モデル構造（HA と一致）。結論：テンソル単位の cofibrancy と任意 cofibrant X による左テンソルの左 Quillen 性を示す（HA のモノイダル模型の結論の一部に一致）。任意の二つの cofibration の pushout-product 公理全体を登録した宣言は含まれない。"] _root_.SerrePositivity.EInfinity.projectiveCofibrant_unit

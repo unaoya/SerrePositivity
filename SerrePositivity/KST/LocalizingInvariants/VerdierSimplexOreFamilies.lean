@@ -123,20 +123,20 @@ lemma simplexOreSquare_cospan (v : (simplexOreDiagrams q n) _⦋0⦌) :
 
 /-- 右辺は指定した元の core 逆像の分母。 -/
 lemma simplexOreSquare_right_mem (v : (simplexOreDiagrams q n) _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (simplexOreSquare q n v)).edge ∈
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (simplexOreSquare q n v)).edge ∈
       (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
   have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex
     ((simplexOreProjection q n).app (Opposite.op ⦋0⦌) v)
   change SSet.yonedaEquiv (horn₂₂.ι₀₂ ≫ _) ∈ _ at hv
   rw [← simplexOreSquare_cospan, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc,
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge] at hv
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   exact hv
 
 /-- 全境界充填で得た同じ四角形の左辺も、元の strict core 逆像の分母。 -/
 lemma simplexOreSquare_left_mem {A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B}
     (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (v : (simplexOreDiagrams q n) _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (simplexOreSquare q n v)).edge ∈
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (simplexOreSquare q n v)).edge ∈
       (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) :=
   (relativeFirstRowSimplex_pullback_iff h n _ (simplexOreSquare_isPullback q n v)).mpr
     (simplexOreSquare_right_mem q n v)

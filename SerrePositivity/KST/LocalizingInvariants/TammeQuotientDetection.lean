@@ -36,10 +36,10 @@ lemma tammeQuotientMap_invertedEdges :
 /-- 核の対象は、商候補で選んだ零対象の像と同型になる。逆も元の差の像で検出できる。 -/
 lemma tammeQuotient_zeroImageIso_iff (x : (laxCategory p q).obj _⦋0⦌) :
     Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (laxCategory p q).obj).vertex)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (laxCategory p q).obj).vertex)
       ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x)) ↔
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (laxCategory p q).obj
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (laxCategory p q).obj
   have hz := laxDifference_preservesZero p q z.vertex z.isZero
   constructor
   · rintro ⟨e⟩
@@ -71,7 +71,7 @@ lemma tammeQuotient_zeroImageIso_iff (x : (laxCategory p q).obj _⦋0⦌) :
 
 lemma tammeQuotient_zeroImageIso_iff_essentialImage (x : (laxCategory p q).obj _⦋0⦌) :
     Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (laxCategory p q).obj).vertex)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (laxCategory p q).obj).vertex)
       ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x)) ↔
         x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q) :=
   (tammeQuotient_zeroImageIso_iff p q x).trans (laxDifference_kernel p q x)

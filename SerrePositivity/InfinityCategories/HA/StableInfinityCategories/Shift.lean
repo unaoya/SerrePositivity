@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionEquivalence
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.EquivalenceIntegerShift
 
@@ -37,3 +39,11 @@ def shiftNegOneLoopIso (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.
     (G' := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionEquivalence X) (shiftOneSuspensionIso X)
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.14" (partial := stronger-hyp) "仮定：安定準圏 X（Lean は IsStable を要求。HA の表現は点付き性・余ファイバー・懸垂同値）。結論：余ファイバー三角形と整数シフトを使う hX の三角圏構造（一致）。HA の形で仮定を与える入口は型にない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasShift_ho
+attribute [cite HA "1.1.2.7"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasShift_ho
+attribute [cite HA "1.1.2.7"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.shiftNegOneLoopIso
+attribute [cite HA "1.1.2.7"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.shiftOneSuspensionIso

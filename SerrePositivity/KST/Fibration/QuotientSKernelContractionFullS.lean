@@ -19,7 +19,7 @@ variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 
 /-- 指定 Verdier 列の同じ実包含・商の合成は、全関手圏で零値頂点を表す。 -/
 theorem verdierSequenceComposite_zero (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i.hom ≫ q.hom)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i.hom ≫ q.hom)) :=
   isZeroVertex_functorVertex_of_pointwise _ h.kills_inclusion
 
 /-- 元の商核四角形の上辺は、包含後に元の S_n の実合成を厳密に回収する。 -/

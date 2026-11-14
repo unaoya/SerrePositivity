@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Prism.Basic.UniversalOriented
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeComplex
@@ -336,3 +338,8 @@ theorem universalOrientedPrism_frobenius_isCompletelyFlat (p : ℕ) [Fact p.Prim
     (universalOrientedPrism_regular p).2 (residueMap_flat_completed G d hloc)
 
 end SerrePositivity.BhattScholze
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 3.4"] _root_.SerrePositivity.BhattScholze.universalOrientedPrism_frobenius_isCompletelyFlat

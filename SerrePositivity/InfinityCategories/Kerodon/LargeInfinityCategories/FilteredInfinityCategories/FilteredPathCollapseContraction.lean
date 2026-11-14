@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FilteredNullHomotopy
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.NullHomotopyRestriction
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.PathCollapseBase
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.PathCollapseBase
 
 /-!
 概要：指定部分 path 上で path 方向に定値な、filtered な底の共通収縮を選ぶ。

@@ -35,7 +35,7 @@ lemma inclusion_projection : SpectrumHo.hom (valueMap Φ i) ≫
     rw [← SpectrumHo.hom_comp, IsLocalizingInvariant.laxQuotientProductInclusion,
       Binary.lift_snd, SpectrumHo.hom_comp]
 
-lemma bottom_native_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
+lemma bottom_native_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalProductSquare.square hΦ p q i r h)) =
     Arrow.mk (SpectrumHo.hom
       (IsLocalizingInvariant.laxQuotientProductInclusion (Φ := Φ) p q i)) :=
   (bottom_arrow hΦ p q i r h).trans (congrArg Arrow.mk (inclusion_projection hΦ p q i))

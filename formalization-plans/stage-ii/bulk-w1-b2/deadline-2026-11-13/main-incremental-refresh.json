@@ -1,0 +1,2429 @@
+{
+  "validated_math_base": "0e8c854208151bc054e15ba3ba183a931b630b1c",
+  "latest_main": "6f380ca7a56f1463f9ebcc784a574d7cd8949177",
+  "files": 605,
+  "added": 599,
+  "modified": 6,
+  "rows": [
+    {
+      "status": "M",
+      "path": "SerrePositivity/AlgebraicGeometry.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/AffineLocalizingCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/AffineModuleCechDiagram.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/AffineModuleCechMap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/AffineModuleCechUnit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/AffineModuleLocalizedCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/AffineQuasicoherentStandardCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechAdditiveCoefficientComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechCoefficientExactness.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechDiagramTransport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechHomologyCycleCriterion.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechLocalizationCochains.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechLocalizationPi.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechLocalizedAwayRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechProductCoefficients.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechQuotientComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechRefinementCone.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechRefinementConeDouble.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechRefinementConeExactness.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechRefinementConeHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechRefinementConeMap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechTupleCarrier.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechTupleRefinementHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechTupleRefinementSupport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechTupleReindex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/CechZeroCochains.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/FrobeniusAdicQuotient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjCechDiagram.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjCechMaps.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjCechNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjCechScalarRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjFilteredHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjFrobeniusEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjRingMapSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjScalarNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalProjSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedOriginalScalarRingMap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/GradedScalarComponents.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ModuleCechScalarExtension.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechAcyclic.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechAugmentation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechDouble.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementConeExact.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechResolution.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechResolutionRows.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechResolutionZero.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechRestrictedCover.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechScalarRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/OpenCoverCechSplitIntersection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechFilteredCochains.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechFilteredComplex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechFilteredNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechFrobenius.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechFrobeniusAdic.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechSemilinearNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechSplitExact.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCechSplitVertex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveFilteredHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveFilteredHomologyNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveFilteredSubmodule.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveFrobeniusNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedAwayColimit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedAwayColimitValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedAwayIdeal.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedAwayIdealRange.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedColimit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedColimitGrading.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedColimitNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveGradedIdealProjection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveHomogeneousChartFractions.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveHomogeneousRingChartMap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedColimit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatChartColimit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatChartColimitComponent.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatChartColimitIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatChartColimitNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatChartColimitTarget.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatChartExact.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveNatGradedChartIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjAdicCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjAdicCechHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjAdicCechProjection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjCechComplexIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjCechFormalFunctions.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjClosedPullbackCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeCechEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeCechFiniteness.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeCechMaps.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeCechNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeFilteredHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeFrobeniusEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjNativeNatCechSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjRingMapSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjRingMapSectionsOfEq.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjScalarNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveProjScalarSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveRingQuotientGrading.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesAdicChartIdealRange.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesAdicClosedChartQuotient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesAdicIdealPiece.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesAdicNativeClosedCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesAdicNativeClosedCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesAdicNativeClosedProjection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesClosedCechFrobenius.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesClosedCechFrobeniusCompletion.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesClosedRingComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/ReesClosedRingNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAdicBaseChange.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffineBaseChangeNativeSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffineBaseChangeTensor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffineBaseChangeTensorLinear.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffineClosedBaseChangeSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffinePullbackSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffinePullbackSectionsNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeAffineSectionModule.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCechPreimage.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCechPullbackComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCechHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCechIndependence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCechScalarHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCechScalarIndependence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeFiniteCommonCover.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeFinitePrincipalRefinement.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeModuleAffineCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeModuleAffineCoverCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeModuleCechRefinement.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeModuleCechScalarRefinement.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeOpenCoverCechIntersections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeScalarMorphism.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeScalarMorphismSections.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureAffineCechPullbackComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCech.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechBaseChangeCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechBaseChangeIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechComparisonNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechFrobenius.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechNativeTensor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechPullback.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechPullbackComposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/AlgebraicGeometry/SchemeStructureCechRefinedPullback.lean"
+    },
+    {
+      "status": "M",
+      "path": "SerrePositivity/EInfinity.lean"
+    },
+    {
+      "status": "M",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/Assembly.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryInputActionEquality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoinvariantQuotientNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeCoefficientCompatibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfStrictComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardCoefficients.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardExt.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/InducedQuotientCompatibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/MayPowerOperation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/MayPowerOperationDiscrete.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/MayPowerOperationZero.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/NullaryEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/OrbitQuotientCompatibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductQuotientCompatibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/SourceQuotientNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardHopfInput.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardQuotientCompatibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardSourceComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardTensorSeparation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardUnitAction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorTargetCompatibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/UnitInputShuffle.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/WordQuotientTransport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/Interface/PowerOperation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/Interface/PrimeField.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/Interface/PrimeFieldMap.lean"
+    },
+    {
+      "status": "M",
+      "path": "SerrePositivity/EInfinity/Interface/Theory.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedAcyclicHomComplex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedAcyclicHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedCyclicCoefficients.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedCyclicSpectrum.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedLinearHomQuasiIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedProjectiveTensorInput.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedQuasiIsoCone.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ChainZeroClassNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CochainZeroCycleClass.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CofanZeroSupport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockEssentialSurjectivity.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockFullyFaithful.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockPinchedComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockProbeFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockProbeVertices.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockSource.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedCommonFrame.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofMaps.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofWeak.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeColumnHom.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementColumn.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementDerivedRoofComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementIndexComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementPinchedFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementReference.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementRoofMaps.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementSourceRoof.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementTransport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementWeak.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeNerveUp.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ConeFiberHomotopyComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ContractibleFiberComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ContractibleTotalConnecting.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CoproductZeroSupport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicCoefficientSeed.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicCoefficientSeedHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicMixedOrbit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitCoordinateSign.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitDiagonal.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitFiniteCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitFiniteSum.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitModel.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitResolutionCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicOrbitSummandCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicPeriodicRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicPositiveDifferentialCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicPositiveFiniteCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicPositiveOrbitDegreeIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicPositiveSpectrum.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionBoundedAcyclic.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionHomComplex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionHomNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionSingleHom.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionSingleHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTateComplex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTateResolution.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTateTensorTrivial.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTateTrivialHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTensorInput.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTensorMixedWords.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/CyclicTensorUnitComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/DGClosedHoComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/DGClosedHoFull.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneAdjointSuspension.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneCircle.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneCohomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneComponents.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneConeContractibility.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneConeFibration.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneConePullback.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneDerivedFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneDerivedHomologyIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneDerivedSourceComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneFibration.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneFiniteLimits.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaAdditivity.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaAxes.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaBilinearity.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaCohomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaComponents.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaPair.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaPairNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaSmash.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaSmashNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaUnit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaUnitClass.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaUnitPoint.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaWeakEquivalence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaZero.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneGammaZeroRepresentative.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneHammockFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneKan.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneLevels.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneLoopComponents.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneLoopProperties.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneLoopTrivialFibration.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneNativeDiagram.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneNativeHomologyIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneNativeWeak.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneNaturalVertex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneOmegaAllBasepoints.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneOmegaDimensionShift.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneOmegaSequence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneOmegaZeroReduction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLanePointedConeFiber.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLanePointedLimits.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLanePoints.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneProbePair.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneQuasiIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSemifreePiComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSequence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneShiftTransition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSmartZeroCycle.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSmashUnit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSpectrumCohomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSpectrumFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSpectrumHomologyIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSpectrumLevelNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSpectrumPiNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneStageCohomologyNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneStageHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneStageNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneStandardHom.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSuspension.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSuspensionNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneSuspensionUnit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneTrivialFibration.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneTruncation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneTruncationNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneUnitCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneUnitDeshift.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneUnitH0Value.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneUnitLoopVertex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneUnitVertexClass.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneVertexClass.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneVertexUnit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneZeroCohomologyMap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/FiniteBiproductCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/FullyFaithfulEquivalencePrecomposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/FullyFaithfulWeakRoofDetection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/KanSequenceReplacementFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/KanSequenceReplacementMaps.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/LinearHomComplexFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/LinearHomComplexPrecomposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/LinearHomConeComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/LinearHomConeDegrees.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayBaseFieldDClassAdditivity.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayBaseFieldNormCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayBaseFieldPrimitive.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayClosedCycles.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayClosedHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayClosedTensor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayCoefficientAction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayCoefficientNormTransfer.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayCoefficientPrimitive.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayColoredCyclic.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayColoredPermutation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayColoredValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayCyclicGroup.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayCyclicInputInvariant.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayCyclicNorm.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayDClassAdditivity.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayDClasses.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayDValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayFreeProbeHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayHomogeneousAction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayHomogeneousSwap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayHomologySourceComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayLocalizedPositive.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayLocalizedPowerZero.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayMixedInputNorm.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayMixedWordOrbits.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormBaseField.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormPolynomial.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormalization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormalizedClasses.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormalizedNaturalTransformation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormalizedSourceComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayNormalizedZero.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPiZeroSourceComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPowerZeroAdditivity.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPowerZeroClasses.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPowerZeroCycles.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPrimeFieldLocalization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPrimeFieldPositive.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPrimeFieldZeroSource.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayProbeCycles.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayProbeEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayPureMixedWords.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayRepeatedCycles.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayRepeatedInput.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayRepeatedPermutation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayRepeatedZeroInput.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayResolution.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayResolutionCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MaySphereHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayStrictNaturalTransformation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayUnitEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayWordAdjacent.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayZeroActionEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayZeroClassComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayZeroCoefficient.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayZeroHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayZeroIsoTransport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MayZeroOperation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ModuleConeCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/MooreZeroRepresentative.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/NatIsoFullEssentialDescent.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/NerveColumnConstantRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/NerveColumnRoofConjugation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/OmegaSequenceNative.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/OmegaSequenceReplacementFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/OmegaSpectrumHoFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/OmegaSpectrumNativeHoComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/OrdinaryNerveHoNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/OrdinaryNerveHomotopyFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/PointedConnectingComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/PointedContractibleConnecting.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/PointedFactorizationFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/PointedHomotopyIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/PointedNaturalIsoDetection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/PointedSmashUnitSeed.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ProjectivePowerSpectrum.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/RegularOrbitCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/RegularOrbitDifferential.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/RegularOrbitNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/RelativeComplexSpectrum.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/SemifreeClosedHoHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/ShortExactPullbackZero.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/TateCoefficientClass.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/TensorPowerHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/TensorPowerRepresentation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/TensorPowerRepresentationQuasiIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/TensorPowerUpperBound.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/TerminalKanHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/EInfinity/PowerOperation/UnitPrecompositionHomology.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/AugmentedChainFunctorComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/BarWeightEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/BarWeightEvaluationIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/BarWeightProjective.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/BarWeightRealizationNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/ChainTotalizationHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/CoendAdditive.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/FreePresheafFunctor.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/InitialNerveExtraDegeneracy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/LinearCoYoneda.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/LinearCoYonedaNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/LinearFreeWeight.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/LinearWeightGenerators.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/LinearWeightRealization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/ProjectiveFreePresheaf.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/SimplicialReplacement.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/SimplicialReplacementAugmentation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/SimplicialReplacementBoundary.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/StandardSimplexCoefficientContraction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/StandardSimplexWeight.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/TotalHorizontalHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/TotalHorizontalHomotopyComponents.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/TotalRowCochain.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/UnderChainEquiv.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/UnderNerveWeight.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/HomologicalAlgebra/UnsignedShiftCochain.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/ClosedMapCocone.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/ClosedMapCoconeCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/ClosedMapCoconeInitial.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/ClosedMapCoconeVertex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/PointHomSpaceVertexCycle.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/Retract/NativeVertexInclusion.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/Retract/VertexProjector.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/BarWeightComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/DirectSumTotal.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/FirstRowHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/LinearWeightTotalComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/NormalizedTotalComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/RealizationDegreeCofan.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/ReplacementAugmentation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/ReplacementTotalHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/ReplacementWeightComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/ShiftedCoproductDegreeCofan.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SignedShiftBlockComposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SignedShiftBlockValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarBlockCoefficients.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarBoundaryFaces.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarBoundarySum.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarColumns.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarDegreeCofan.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarDiagram.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarNormalizedComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarSignedColumns.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarThetaValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalClosed.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalColumns.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalComposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalDifferential.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalHomValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalIso.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarTotalValues.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SmallStrictBarUnshiftedBoundary.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/SourceVertexSimplex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StandardFaceHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StandardRowBoundary.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StandardRowCochain.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StandardRowDifferential.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StandardZeroLeg.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StrictSimplicialBarRealization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StrictSimplicialNativeColimit.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/StrictSimplicialVertexLeg.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/UnderSourceVertex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/ZeroRowInclusion.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SectionsLimitShapeValueComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SectionsLimitValueInverse.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightActualSectionsRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightBigRelativePrefix.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsInterval.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightEndpointRestrictionComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightEndpointShapeSquare.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightFixedEndpointEdgeComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightIntervalCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightLimitTailConeSquare.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightMappedSectionsEdge.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightOppositeCoefficientsNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightPointedCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightPointedInterval.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightPointedIntervalBase.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightRelativeUniverse.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsBigRelativeComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsEdgeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsLimitFactorization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsLimitTailShape.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsLimitValueComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsPrefixFactorization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsRelativeEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsRelativeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSpaceValueComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightUniverseValueNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightUnstraighteningEdgePrecomposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SieveTensorSectionsHomotopy.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SieveTensorSectionsNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SpaceTensorHomValueTailNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/IntervalConstantFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/IntervalPostcomposeIdentityFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/SpaceValueHomClass.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/CovariantCosliceFiberNormalization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointCosliceIsoTransportComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointSliceReversePinchedComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/KanDiagramOrdinaryEdgePrism.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/KanDiagramOrdinaryEdgeSimplex.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningRestrictedWitness.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorCompositionConstant.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorCompositionFixedTarget.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorOverUniverseNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorUniversePostNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallRelativePostNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransformationEdgeFiberValue.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransformationEdgeFiberValue.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransformationEdgeFiberValueComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/RelativeFunctorEvaluationPostcomposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/WeakContractibleContractionCospan.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/EquivalenceInverseSquare.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/FamilyEquivalenceReflection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/DetectingFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ReflectedRepresentableGenerators.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/LeftCofinalUniverseLift.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/NerveLeftQuillenA.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SmallDiagramShape.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/StrictDiagramEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/StrictDiagramParameter.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedCosliceBaseNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ColimitCoconeFamilyExtension.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CartesianSectionsRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CartesianSectionsRestrictionEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsHomActionEdgeComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsHomActionVertexComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsMapShapeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsMapTransportNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsValueEdgeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsValueShapeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceMapShapeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceRelativeShapeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceRestrictedRelative.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceShapeCoordinates.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CosliceEdgeTriangleFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CosliceEdgeTrianglePrism.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CosliceTransportIntervalComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CosliceTransportRightMappingComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/EdgeTrianglePrism.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/FixedApexConeEdgeComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/NormalizedSectionsValueShape.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/PointedIntervalTransportVertexComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RightFibrationEdgeComposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RightFibrationEdgeTriangle.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RightFibrationIntervalProjection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RightFibrationMappingNormalizedOverMap.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallSectionsComparisonEvaluation.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallSectionsShapeNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallUnstraighteningSectionsRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallUnstraighteningValueTransport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/UnstraighteningSectionsRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/PostcompositionIsoEquivalence.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/ConeCylinderShapeRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/ConeTransformationShapeRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SourceConstantShapeRestriction.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/CosliceInvertibleLegInitial.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CovariantRepresentableCosliceComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CovariantRepresentableValueNaturality.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CovariantRepresentableValueNormalization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRepresentableEdgeDetection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRepresentableHomDetection.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/RepresentableUnstraighteningEvaluationPost.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/ReversedRepresentableValueFactorization.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/ReversedRepresentableValueTransport.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/YonedaPresheafEvaluationPostcomposition.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/SemifreePointComparison.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/SmallShapeColimits.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/SpecifiedProjectiveCocone.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictSemifreeColimitFamily.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictSemifreeDiagram.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictSemifreeRealizationCocone.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictSimplicialDerivedCocone.lean"
+    },
+    {
+      "status": "M",
+      "path": "SerrePositivity/InfinityCategories/Project/Entrypoints/Derived.lean"
+    },
+    {
+      "status": "M",
+      "path": "SerrePositivity/InfinityCategories/Project/Entrypoints/F2.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/IntervalPostcompositionTriangle.lean"
+    },
+    {
+      "status": "A",
+      "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsUnstraighteningPostcomposition.lean"
+    }
+  ]
+}

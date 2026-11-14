@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeFunctor
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceTargetComparison
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.QuillenLeftFrameAugmentation
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.QuillenLeftFrameAugmentation
 
 /-!
 # 実自由忘却随伴の Hom 比較の同じ frame

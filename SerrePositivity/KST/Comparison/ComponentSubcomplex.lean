@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexComponents
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexComponents
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 
 /-!

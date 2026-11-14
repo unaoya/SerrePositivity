@@ -1,0 +1,17 @@
+{
+  "before_declaration_records": 140687,
+  "after_declaration_records": 140705,
+  "source_modules": 10195,
+  "statuses": {
+    "identity": 40507,
+    "compiler-inventory-only": 72445,
+    "module-moved": 27389,
+    "name-renamed": 346
+  },
+  "private_source_declarations": 11690,
+  "unmatched_authored": 0,
+  "unmatched_compiler_inventory": 72445,
+  "unpaired_after_inventory": 72463,
+  "sha256": "976f681e2bcd41b3b8935ad77f0c485b5f9715efa5cfab8046e877e532d9a313",
+  "pairing_policy": "Actual canonical owned names only; compiler-sharing groups retained separately, never ordinal-paired"
+}

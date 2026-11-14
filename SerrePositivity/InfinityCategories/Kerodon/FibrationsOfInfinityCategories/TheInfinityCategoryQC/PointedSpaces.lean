@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -89,3 +91,9 @@ instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity
   quasicategory_of_innerFibration pointedSpaceProjection
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.5" (partial := component) "仮定：準圏模型で空間の点を選ぶ（HA と一致）。結論：一点空間を始域とする coslice により pointed spaces を得る（Lean が弱い：有限余極限で生成される有限空間およびその pointed 部分圏をこの型で構成しない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaceInfinity
+attribute [cite HTT "3.3.2.8" (partial := stronger-hyp) "仮定：小さい left fibration p:X→S に加え S が準圏（Lean が強い）。結論：nativeLeftTransportRepresentation p の図式 S→SpaceInfinity の、pointSpaceVertex からの coslice の引戻しへ、底を厳密に保つ前合成同値がある（一致）。任意の単体的 S に対して同じ比較を同値とする型はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaceInfinity

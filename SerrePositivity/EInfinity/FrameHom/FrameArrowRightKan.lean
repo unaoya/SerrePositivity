@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CosliceHomotopyRealization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.CosliceHomotopyRealization
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 
 /-!

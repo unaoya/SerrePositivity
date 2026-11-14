@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSimplicialCodes
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSpacePresentation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallFamilyGeneratorTransport
@@ -64,3 +66,8 @@ lemma finiteSpaceReplacementDiagram_in_family (X : SSet.{u})
   exact exists_finiteSpaceGeneratorIso A.val.toSSet
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.7" (partial := special) "仮定：有限単体集合のコード（Lean が強い：HA の有限余極限で生成した空間全体に対する分類は要求しない）。結論：その空間模型のコンパクト性（Lean が弱い：冪等完備化によるコンパクト空間全体の記述と Wall 障害による判定がない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact

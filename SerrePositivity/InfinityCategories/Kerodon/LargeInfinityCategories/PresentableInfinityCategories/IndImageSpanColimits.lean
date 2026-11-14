@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageFiniteColimits
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanNerveIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.FiniteSpanNerveIso
 
 /-!
 概要：有限 poset の閉性を、元の標準 span ホーンの余極限へ移す。

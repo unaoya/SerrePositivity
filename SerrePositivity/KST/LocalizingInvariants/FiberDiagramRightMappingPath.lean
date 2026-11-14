@@ -35,7 +35,7 @@ lemma rightDiagonalMap_edge : (_root_.SerrePositivity.InfinityCategories.Kerodon
 
 lemma rightMap_edge (A : FiberDiagram.{u}) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (NativeFiber.rightMap A.triangle)).edge =
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow A.triangle.square).edge := SpectrumHo.edgeMap_edge _
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow A.triangle.square).edge := SpectrumHo.edgeMap_edge _
 
 def rightDifference := SpectrumMappingPrism.squareDifference
   (NativeFiber.rightMap D.triangle) (NativeFiber.rightMap E.triangle)

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCylinderExtension
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.StdSimplexFunctorRigidity
 
@@ -105,3 +107,8 @@ lemma relativeJoin_extension_of_prism_over_interval {X Y E : SSet.{u}}
     simpa only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinCylinderComparison_inr, pushout.inr_desc] using he
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.3.3" (partial := special) "仮定：写像円筒と区間上で圏同値な準圏の模型（Lean が強い：準圏間の写像に対する標準の相対結合を選ぶ）。結論：同じ区間への射影が余デカルトファイブレーション（一致する場合。任意の模型への移送は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinCylinderComparison_intervalProjection

@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-11-14T08:05:53.326314",
+  "pid": 13368,
+  "scheduled": "2026-11-14T23:00:00+09:00",
+  "deadline": "2026-11-15T08:00:00+09:00",
+  "tool_session_id": 48952,
+  "scripts_sha256": {
+    "second_night_driver.py": "067277bfcd06bddeeb46b51bd730b10967b37415b0cee58bad9cbc6be566b4b8",
+    "night_gates_v2.py": "c97f103f8fcbb02540bd7000dc16dbca1dcb5ef68028b838f9513f35eb5e7814",
+    "publish_second_night.py": "eb102189a808ee66b37e508ced3f526cb43e95d437c9feee0a2a95ed908f993c",
+    "live_budget_watch.py": "d98fc8210376dec26934e5a3c3ac24656a72f58ce4e9cb7ff298e29a19de78df",
+    "guard.py": "1d2acf44a476af733eede04b805f4e772dc3e9d14f7f9a420efca3a7d3bf548f",
+    "check_frozen_main.py": "2fecc70acd54cb922d29cfdb9fba85840caf143dfd0ea8e7688aa6b6486dd985",
+    "completion_audit.py": "e0082bb1aa3170429b7e3bfc52f50277af5974348b1116b4cb49a301b9d7a592",
+    "archive_preservation_evidence.py": "de507adfbcafee503ad4f2cf1c342aff53121ad4bd83d234ae028a2a7aa2b598"
+  },
+  "policy": "Daytime: timer only, no builds/audits/verify; one second-night batch; full audits and uncached unrestricted verify; all sources revalidated before execution; private aggregate decimal 32 GB and four heavy jobs limit."
+}

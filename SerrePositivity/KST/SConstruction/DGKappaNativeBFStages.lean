@@ -35,7 +35,7 @@ def dgKappaNativeBFStageSquare (r : ℕ) :
 方針：元四角形の頂点から回収する。
 規約：冪等完備化しない。使われ方：元 BF 頂点と元境界商の照合。 -/
 def dgKappaNativeBFVertexCategory (a b : Fin 2) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{max (u + 1) v} :=
-  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b)
 
 /-- 概要：同じ未完備四頂点の元の BF スペクトル。
 方針：既存の同じ kOmegaSpectrum を使用する。

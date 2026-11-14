@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 方針：同じ実提示の左辺の終点を使う。
 規約：零対象を選び直さない。使われ方：四対象の有限入力化。 -/
 lemma dgKappaNativeBF_zeroVertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square 0 1 =
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{max (u + 1) v} := by
   have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgKappaNativeVerdierDiagram.{u, v} R D I).square
   let ev := fun k : (Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
@@ -42,7 +42,7 @@ lemma dgKappaNativeBF_zeroVertex :
 規約：通常対象は C のまま。使われ方：元の四辺の型付け。 -/
 def dgKappaNativeBFFiniteObjectOfVertexEq (a b : Fin 2)
     (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{max (u + 1) v})
-    (h : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex C) :
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex C) :
     DGKappaNativeBFFiniteInput.{u, v} R D I :=
   ⟨C, ⟨(stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b),
     congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{max (u + 1) v}) x) h⟩⟩

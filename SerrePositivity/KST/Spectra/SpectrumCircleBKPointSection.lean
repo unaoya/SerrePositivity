@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKCoherentCone
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedConeEndPrecomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedConeEndPrecomposition
 
 /-!
 概要：円 cotensor の coherent 錐の元の切断を、反転 BK 点の weighted な評価へ戻す。

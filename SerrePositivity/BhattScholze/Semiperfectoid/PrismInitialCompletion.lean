@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
-public import SerrePositivity.BhattScholze.Prismatic.PrismOver
+public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOver
 public import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport
 import all SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionResidue
 import all SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor

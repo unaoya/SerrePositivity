@@ -1,6 +1,8 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseLimitExistence
 public import Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplex
 
@@ -106,7 +108,7 @@ def arSquare {n : ℕ} (i j k l : Fin (n + 1))
 規約：quasicategory 性や安定性と独立に述語を定義する。
 使われ方：BGT Definition 7.1 の S_n(C)。 -/
 def IsGapped {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) : Prop :=
-  (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+  (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
     (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧
   ∀ (i j k l : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l),
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F)
@@ -221,3 +223,11 @@ def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} 
   map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 7.1"] _root_.SerrePositivity.KST.SConstruction.IsGapped
+attribute [cite BGT "Def 7.1"] _root_.SerrePositivity.KST.SConstruction.gappedSubcomplex
+attribute [cite HA "1.2.2.2" (partial := special) "仮定：点付き準圏と有限全順序 [n]（Lean が強い：HA の I は任意の全順序）。結論：Ar の対角を零にし、順序付き三点の所定の正方形に押し出しを要求し、その充満部分複体を作る（有限の場合は一致）。"] _root_.SerrePositivity.KST.SConstruction.IsGapped
+attribute [cite HA "1.2.2.2" (partial := special) "仮定：点付き準圏と有限全順序 [n]（Lean が強い：HA の I は任意の全順序）。結論：Ar の対角を零にし、順序付き三点の所定の正方形に押し出しを要求し、その充満部分複体を作る（有限の場合は一致）。"] _root_.SerrePositivity.KST.SConstruction.sConstruction

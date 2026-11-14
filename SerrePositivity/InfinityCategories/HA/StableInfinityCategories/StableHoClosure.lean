@@ -38,9 +38,9 @@ instance stableHoClosure_isClosedUnderIsomorphisms (P : Set (X _⦋0⦌)) :
 /-- 指定対象条件は実零頂点を含む。 -/
 instance stableHoClosure_containsZero (P : Set (X _⦋0⦌)) :
     (stableHoClosure P).ContainsZero where
-  exists_zero := ⟨SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).vertex,
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero.isZeroHo,
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_zero (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero⟩
+  exists_zero := ⟨SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).vertex,
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero.isZeroHo,
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_zero (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero⟩
 
 /-- 三角形の後二対象が属すると、第一対象も属する。 -/
 instance stableHoClosure_isTriangulatedClosed₁ (P : Set (X _⦋0⦌)) :

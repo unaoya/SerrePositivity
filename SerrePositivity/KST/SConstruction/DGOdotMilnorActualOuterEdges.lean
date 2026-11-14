@@ -43,7 +43,7 @@ private lemma outerRight {X : SSet.{v}} (D : (Δ[2] ⊗ Δ[1] : SSet.{v}) ⟶ X)
     ((congrArg (fun f => stdSimplex.δ (1 : Fin 3) ≫ f) h).trans t.δ_one_yonedaEquiv_symm))
 private lemma zeroVertex {X : SSet.{v}} (F : (Δ[1] ⊗ Δ[1] : SSet.{v}) ⟶ X)
     {x z : X _⦋0⦌} (a : X.Edge x z)
-    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F = SSet.yonedaEquiv.symm a.edge) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1 = z := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F = SSet.yonedaEquiv.symm a.edge) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1 = z := by
   have hv := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target F
   rw [h, Equiv.apply_symm_apply, a.tgt_eq] at hv
   exact hv.symm
@@ -85,7 +85,7 @@ lemma dgOdotMilnorActualOuter_edges :
 方針：元左合成辺の終点を回収する。
 規約：元頂点の厳密等号。使われ方：外周の固定 ν 零角条件。 -/
 lemma dgOdotMilnorActualOuter_zero_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (O) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (VInput)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (O) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (VInput)) :=
   zeroVertex (O) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorKernelNullFactorInputMap R d ≫
     dgFixedNullLeft R (A := VInput))) (dgOdotMilnorActualOuter_edges R d).2.2.1
 
@@ -93,9 +93,9 @@ lemma dgOdotMilnorActualOuter_zero_vertex :
 方針：元全対象商に Sp 正本の零性を適用する。
 規約：元 V 零角を保持。使われ方：外周の零対角を使う全比較。 -/
 lemma dgOdotMilnorActualOuter_perfect_zero :
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((O) ≫ dgKInputPerfectNu R) 0 1)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((O) ≫ dgKInputPerfectNu R) 0 1)) := by
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (O) 0 1)))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (O) 0 1)))
   rw [dgOdotMilnorActualOuter_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R (VInput)
 

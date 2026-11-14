@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FiberwiseHomCartesianEdges
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.FiberwiseHomSpecialLifts
 
@@ -100,3 +102,8 @@ instance fiberwiseHomProjection_cartesianFibration {K C D : SSet.{u}}
         (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomInvertingEdge_of_diagram p b H hHi)
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "B.4.5" (partial := stronger-hyp) "仮定：π:Y→ZをcoCartesian fibration、φを自明な積束Y×D→Y、Dを準圏に限定（Leanが強い：coCartesian π・定数のfiber）。結論：πの各逆像からDへの写像を表す相対指数の射影はCartesian fibrationとなる（この定数束模型でのcategorical fibration保存の強い部分）。一般flat categorical π・任意categorical φの右Quillen性と、右随伴で選んだ依存積との全比較は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomProjection_cartesianFibration

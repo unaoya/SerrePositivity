@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashMonomorphisms
 public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 public import SerrePositivity.KST.Spectra.PullbackKanSequence
 

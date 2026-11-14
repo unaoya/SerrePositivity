@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePullbackPathLifting
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.EquivalenceLiftingInvertible
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativePathBoundary
@@ -38,3 +40,10 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplex
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "B.3.15" (partial := stronger-hyp) "仮定：A,B,Cは準圏、A→Bは圏同値、p:C→Bは全単射な前合成同値を持ち上げるEquivalenceLiftingを満たす（Leanが強い：A,Bの準圏性と操作的RLPを明記）。結論：同じpullback射A×B C→Cは前合成同値、従って圏同値（指定された引き戻し比較の結論に一致）。任意simplicial set A,Bおよびflat categorical fibrationの定義だけからの全比較は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.pullback_snd_isPrecompositionEquivalence_of_kanEquivalenceLifting
+attribute [cite HTT "2.4.4.5" (partial := stronger-hyp) "仮定：C,D,D′ は準圏、Cartesian p にさらに EquivalenceLifting p を明示して追加（Lean が強い）。結論：同じ pullback projection q′ は IsPrecompositionEquivalence、pullback の準圏性の下で IsQCatEquivalence に一致する。Cartesian 性から追加 lifting を導く比較は含めず、追加仮定の下だけを数える。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.pullback_snd_isPrecompositionEquivalence_of_kanEquivalenceLifting
+attribute [cite HTT "2.4.7.7" (partial := stronger-hyp) "仮定：元の bifibration p に EquivalenceLifting p、全空間の準圏性、積の base-change map の native QCatEquivalence を追加（Lean が強い）。結論：同じ X′→X は IsPrecompositionEquivalence となり、引戻しを含む両側の準圏性から IsQCatEquivalence を得る。bifibration と f,g の仮定だけからこれらの追加条件を導く部分は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.pullback_snd_isPrecompositionEquivalence_of_kanEquivalenceLifting

@@ -1,0 +1,10 @@
+{
+  "modules": [
+    "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroHomotopy",
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangleHoMap"
+  ],
+  "source_sha256": "e8c72e783245af6b3787c77d6c37fde84f83577a81bda7e92d607f19e094093b",
+  "seconds": 6.407674416899681,
+  "rc": 0,
+  "log": "/tmp/bulk-w1-b2/field-fix-build-v2.log"
+}

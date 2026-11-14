@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.EvaluationClosedNaturality
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.EvaluationVertexPiChart
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveH0Naturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.DGNerveH0Naturality
 /-!
 概要：元の任意の native 辺に沿う全基点評価チャートの自然性。
 方針：同じ辺の閉射を回収し、頂点再構成の等式を同時に輸送する。

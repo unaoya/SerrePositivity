@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/tmp/bulk-w1-b3/collect_pipeline.py"
+  ],
+  "cwd": "/tmp/bulk-w1-b3/before",
+  "rc": 0,
+  "reason": null,
+  "seconds": 2935.6019765418023,
+  "peak_process_tree_rss_bytes": 23600594944,
+  "threads": "4",
+  "started_local": "2026-11-13T23:36:43.101313",
+  "finished_local": "2026-11-14T00:25:38.740427"
+}

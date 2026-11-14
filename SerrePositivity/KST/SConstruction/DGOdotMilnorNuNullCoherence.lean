@@ -33,7 +33,7 @@ def dgOdotMilnorNuNullComposite : _root_.SerrePositivity.InfinityCategories.HA.S
 規約：元の実商辺を保持する。使われ方：零図式の全高次比較空間。 -/
 lemma dgOdotMilnorNuNullComposite_zero (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
     (x : (Src).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotMilnorNuNullComposite R d).hom.app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotMilnorNuNullComposite R d).hom.app (Opposite.op ⦋0⦌) x) := by
   have hz := (dgOdotMilnorNuPerfectSequence R d h).projection_kills_inclusion x
   have e := (dgOdotMilnorNuPerfectProjectionComparison R d h).precomp
     (dgOdotMilnorFlatKernelExactMap R d).hom
@@ -90,7 +90,7 @@ def dgOdotMilnorNuNullTopComposite : _root_.SerrePositivity.InfinityCategories.H
 方針：同じ零角の全零性と元の上辺の完全性を使う。
 規約：元の商延長を保持する。使われ方：二経路を同じ比較空間へ置く。 -/
 lemma dgOdotMilnorNuNullTopComposite_zero (x : (Src).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotMilnorNuNullTopComposite R d).hom.app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotMilnorNuNullTopComposite R d).hom.app (Opposite.op ⦋0⦌) x) := by
   haveI := (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap _ _ from dgKInputNuMap R
     (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).isExact
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero

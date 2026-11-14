@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.PrismOver
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOver
 public import SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta
 
 /-!
@@ -109,3 +111,11 @@ def homOfFrobenius {X Y : PrismOver P R κ}
   comm_sec := hsec
 
 end SerrePositivity.BhattScholze.Prismatic.PrismOver
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 7.7" (partial := component) "BS-W15 K5（11-11）：離散な場合の δ 構造の一意性、離散な prism と Frobenius からの射、p 正則な部分圏での始性は本体。導来 prismatic コホモロジー Δ_R/A との同一視（G10、∞ 側）は drafts の A3/DiscreteCase"] _root_.SerrePositivity.BhattScholze.OrientedPrism.homOfFrobenius
+attribute [cite BS19 "Lemma 7.7" (partial := component) "BS-W15 K5（11-11）：離散な場合の δ 構造の一意性、離散な prism と Frobenius からの射、p 正則な部分圏での始性は本体。導来 prismatic コホモロジー Δ_R/A との同一視（G10、∞ 側）は drafts の A3/DiscreteCase"] _root_.SerrePositivity.BhattScholze.OrientedPrism.ofDiscreteDelta
+attribute [cite BS19 "Lemma 7.7" (partial := component) "BS-W15 K5（11-11）：離散な場合の δ 構造の一意性、離散な prism と Frobenius からの射、p 正則な部分圏での始性は本体。導来 prismatic コホモロジー Δ_R/A との同一視（G10、∞ 側）は drafts の A3/DiscreteCase"] _root_.SerrePositivity.BhattScholze.OrientedPrism.ofDiscreteDelta_bounded
+attribute [cite BS19 "Lemma 7.7" (partial := component) "BS-W15 K5（11-11）：離散な場合の δ 構造の一意性、離散な prism と Frobenius からの射、p 正則な部分圏での始性は本体。導来 prismatic コホモロジー Δ_R/A との同一視（G10、∞ 側）は drafts の A3/DiscreteCase"] _root_.SerrePositivity.BhattScholze.Prismatic.PrismOver.homOfFrobenius

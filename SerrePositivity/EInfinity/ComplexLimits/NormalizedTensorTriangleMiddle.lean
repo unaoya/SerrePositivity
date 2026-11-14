@@ -32,7 +32,7 @@ lemma normalizedTensorElementEvaluatedColumn_closed_front {n : ℕ}
       (normalizedTensorElementEvaluatedColumn A X Y c ⋙ complexToClosed A)).pullback
       Fin.castSuccOrderEmb.toOrderHom =
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := by
-  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback]
+  rw [← _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback]
   exact congrArg (fun F => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (F ⋙ complexToClosed A))
     (normalizedTensorElementEvaluatedColumn_front A X Y c)
 

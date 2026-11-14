@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Localization.Basic
 
@@ -16,13 +18,13 @@ W₂ の元が単元 ⇔ 第 0 座標と第 1 ghost 成分が単元、を使っ�
 p ねじれを許す。
 
 ## 使われ方
-今は主定理の経路にない。BS 著者版 Example 2.21（A1）で使う予定。
+BS 著者版 Lemma 2.15 の局所化と Example 2.21 の普遍 distinguished δ 環に用いる。
 -/
 
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## Frobenius安定な乗法集合におけるδ局所化（旧 Delta/Extension/DeltaLocalization.lean）
+/-! ## Frobenius安定な乗法集合におけるδ局所化
 
 BS 著者版 Lemma 2.15。W₂切断と二成分の単元判定で、pねじれのある環も
 直接扱う。基底のp正則性を追加せず、Mathlibの局所化の普遍性を再利用する。
@@ -132,7 +134,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaLocalization
 
-/-! ## 任意の分母集合のFrobenius安定化（旧 Delta/Extension/DeltaLocalizationSaturation.lean）
+/-! ## 任意の分母集合のFrobenius安定化
 
 BS 著者版 Remark 2.16のT={S,φ(S),φ²(S),…}の代数的構成。
 Tでの局所化はSを単元に送るδ基底射について普遍である。
@@ -212,3 +214,12 @@ theorem existsUnique_saturatedLocalization_lift (D : DeltaStructure p R) (M : Su
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaLocalizationSaturation
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 2.15"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_localization
+attribute [cite BS19 "Lemma 2.15"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_localization_lift
+attribute [cite BS19 "Lemma 2.15"] _root_.SerrePositivity.BhattScholze.DeltaStructure.localization
+attribute [cite BS19 "Rem 2.16"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_saturatedLocalization_lift
+attribute [cite BS19 "Rem 2.16"] _root_.SerrePositivity.BhattScholze.DeltaStructure.frobeniusDenominators

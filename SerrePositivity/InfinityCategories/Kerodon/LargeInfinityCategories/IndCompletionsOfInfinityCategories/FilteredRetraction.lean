@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativeCosliceCoconeRetract
 
 /-!
@@ -36,3 +38,9 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfin
 
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.1.6" (partial := component) "仮定：compact な小 Kan 空間 X（HTT と一致）。結論：元の X は有限部分複体の Kan 置換の一つの項のホモトピー圏内 retract（有限単体集合を空間として読む最初の結論と一致）。有限部分複体の元の包含から作った余錐に同じ retract 判定を適用する。単連結の場合の有限模型との同値や Wall の障害による判定は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IsKappaCompact.retract_of_colimit
+attribute [cite HTT "5.4.3.4" (partial := stronger-hyp) "仮定：τ-filtered な米田図式の指定余極限 X（Lean が強い：原典の小ささ・Hom 上界のほか X 自身が τ-compact であることを仮定）。結論：元の X が同じ米田図式の一つの項の retract（結論は一致）。compact 性を原典の濃度条件から証明したとは数えていない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IsKappaCompact.retract_of_colimit

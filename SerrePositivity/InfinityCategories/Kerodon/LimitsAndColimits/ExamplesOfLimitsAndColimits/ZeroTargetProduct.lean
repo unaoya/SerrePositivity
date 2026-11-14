@@ -25,20 +25,20 @@ namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesO
 規約：値域は quasicategory、安定性は不要。使われ方：引き戻しの射影の同型判定。 -/
 def terminalTargetPullback_isBinaryProduct {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1)) :
-    IsLimit (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom R) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft R)) := by
-  have hz' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R) 0 0) := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_vertex]
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 1)) :
+    IsLimit (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom R) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft R)) := by
+  have hz' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R) 0 0) := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_vertex]
     exact hz.op_isInitialVertex
-  let hc := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R)
-    ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_dualSquare R).1 hR) hz'
+  let hc := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R)
+    ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_dualSquare R).1 hR) hz'
   have hm := mapIsColimitOfPreservesOfIsColimit (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyOppositeEquivalence X).functor
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R)) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R)) hc
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R)) hc
   change IsColimit (BinaryCofan.mk
     ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyOppositeEquivalence X).functor.map
-      (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R))))
+      (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R))))
     ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyOppositeEquivalence X).functor.map
-      (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R))))) at hm
+      (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R))))) at hm
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyOppositeEquivalence_map_homMk, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyOppositeEquivalence_map_homMk,
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.edgeUnop_dualSquare_right, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.edgeUnop_dualSquare_top] at hm
   exact BinaryCofan.IsColimit.unop hm
@@ -48,10 +48,10 @@ def terminalTargetPullback_isBinaryProduct {X : SSet.{u}} [Quasicategory X]
 規約：安定性や零射は不要。使われ方：cofiber が零である射の同型判定。 -/
 lemma isIso_squareHoBottom_of_pullback_terminal_top {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R)
-    (h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1))
-    (h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1)) : IsIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom R) :=
+    (h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1))
+    (h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 1)) : IsIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom R) :=
   (BinaryFan.isLimit_iff_isIso_fst h₀.isTerminalHo
-    (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom R) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft R))).1
+    (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom R) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft R))).1
       ⟨terminalTargetPullback_isBinaryProduct R hR h₁⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits

@@ -46,18 +46,18 @@ lemma connectingArrow_target : connectingArrow p q r ≫
 
 lemma fromC_connectingArrow_zeroTarget (c : C.obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroTargetArrow
     ((LaxInclusion.fromC p q ≫ connectingArrow p q r).app (Opposite.op ⦋0⦌) c) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromC p q ≫ connectingArrow p q r ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromC p q ≫ connectingArrow p q r ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) c)
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.connectingArrow_target]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (r.hom.app _ ((LaxInclusion.fromD p q).app _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (r.hom.app _ ((LaxInclusion.fromD p q).app _
     ((laxSnd p q).hom.app _ ((LaxInclusion.fromC p q).app _ c))))
   have hs : (laxSnd p q).hom.app (Opposite.op ⦋0⦌)
       ((LaxInclusion.fromC p q).app (Opposite.op ⦋0⦌) c) =
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).vertex := LaxInclusion.fromC_snd_vertex p q c
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).vertex := LaxInclusion.fromC_snd_vertex p q c
   rw [hs]
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := r.hom) _
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := LaxInclusion.fromD p q) _
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isZero)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).isZero)
 
 def fromCFirstSuspensionIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((LaxInclusion.fromC p q ≫ first p q r) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.map Q.obj)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeJoinEndpoints
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorIsoExtension
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_4.FunctorIsoExtension
 
 /-!
 概要：左指定自然変換の相対 join 表示の両端を元の図式に厳密化する。
@@ -28,7 +28,7 @@ namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtens
 abbrev LeftKanRelativeJoinRealization.Strictification {K C D : SSet.{u}} [Quasicategory D]
     {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)}
     (s : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanRelativeJoinRealization δ F₀ F β) :=
-  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorIsoExtension (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinEndpointInclusion δ) s.diagram
+  _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_4.FunctorIsoExtension (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinEndpointInclusion δ) s.diagram
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinEndpointDesc F₀ F) s.endpointsIso
 
 /-- 概要：任意の左指定自然変換の相対 join 表示は両端を同時に厳密化できる。
@@ -39,7 +39,7 @@ lemma LeftKanRelativeJoinRealization.strictification_nonempty {K C D : SSet.{u}}
     [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
     {β : SSet.Homotopy F₀ (δ ≫ F)} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanRelativeJoinRealization δ F₀ F β) :
     Nonempty s.Strictification :=
-  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorIsoExtension_nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinEndpointInclusion δ) s.diagram
+  _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_4.functorIsoExtension_nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinEndpointInclusion δ) s.diagram
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinEndpointDesc F₀ F) s.endpointsIso
 
 /-- 概要：厳密化した図式の左端は元の F₀ に厳密に等しい。

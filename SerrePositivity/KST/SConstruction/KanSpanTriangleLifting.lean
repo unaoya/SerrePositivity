@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanFibrationTriangleLifting
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.KanMappingSpanComposition
 
 /-! # 境界で指定した逆・合成三角形を保つ span の相対充填
 概要：span の第一辺の逆三角形と合成三角形を、指定した基底二単体のまま持ち上げる。

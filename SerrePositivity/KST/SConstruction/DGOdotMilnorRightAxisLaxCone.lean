@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisLaxValue
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.IdentityNativeConeComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.IdentityLaxArrowBaseCofiber
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.IdentityNativeConeComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.IdentityComparisons.IdentityLaxArrowBaseCofiber
 
 /-!
 概要：実右軸の同じ cone 差を、元 resolved 商値の絶対恒等 lax 差へ全比較する。
@@ -32,7 +32,7 @@ local notation "eT" => dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence R
 方針：元基底の前三角性を D 正本の native 安定性へ明示的に渡す。
 規約：新しい安定模型を選ばない。使われ方：同じ native cone 差の全比較。 -/
 lemma dgOdotMilnorRightAxisNativeStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (U)) :=
-  @_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _ (U) _ _
+  @_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R _ (U) _ _
     (dgOdotMilnorRightAxisBase_pretriangulated R d)
 
 /-- 概要：同じ実 native 基底の恒等 lax 矢印族の選択差。

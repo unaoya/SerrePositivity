@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierFractionComparisonResolution
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.GroupoidCompletionKanComparison
 
 /-!
 概要：完成分数の比較経路を保持したまま、元の実分数の全族へ戻す。

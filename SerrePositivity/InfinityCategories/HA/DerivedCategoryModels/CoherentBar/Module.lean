@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarMaurerCartanCriterion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarMaurerCartanCriterion
 public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 /-!
 概要：D の公開 MC 方程式から、元の coherent bar の実右 dg 加群を作る。

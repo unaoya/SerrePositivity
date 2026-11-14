@@ -23,7 +23,7 @@ structure DGOdotVerdierRectangleInput (h : DGOdotLaxVerdierInput R d) where
   image_eq : diagram ≫ dgKInputNu R =
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram
-  source_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
+  source_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
     _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)
 
 namespace DGOdotVerdierRectangleInput
@@ -54,7 +54,7 @@ lemma comparison_image : t.comparisonSquare ≫ dgKInputNu R =
 /-- 概要：比較四角形の左下頂点は元の dg 対角始域。
 方針：入力した同じ頂点等式を保持する。規約：ν 像での一致だけではない。
 使われ方：元の不変量値を極限錐の頂点にする。 -/
-lemma comparison_source : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.comparisonSquare 0 0 =
+lemma comparison_source : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.comparisonSquare 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d) := t.source_vertex
 
 /-- 概要：同じ包含辺の ν 像を保持する。方針：全四角形の像から制限する。
@@ -77,7 +77,7 @@ lemma comparison_isPullback {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
 使われ方：長方形の二つの fiber 列との接続。 -/
 lemma right_isFiber {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.fiberTriangle t.relativeRectangle.right) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hE.fiberTriangle t.relativeRectangle.right) :=
   hE.fiberTriangle_isFiber t.relativeRectangle.right
 
 /-- 概要：同じ比較四角形の実極限錐。方針：Sp 正本の pullback 錐を使う。

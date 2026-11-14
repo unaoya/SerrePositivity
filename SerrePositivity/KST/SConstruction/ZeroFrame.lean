@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FirstRow
 public import SerrePositivity.KST.SConstruction.FrameBoundaryExtension
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexPrescribedExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.VertexPrescribedExtension
 
 /-! # 第一行と零対角の枠
 概要：第一行に全ての対角を追加した順序部分を扱う。
@@ -116,7 +116,7 @@ lemma zeroFrame_extend_boundary {X : SSet.{u}} (n d : ℕ)
       ((framePositiveRow n : SSet.{u}) ◁ (boundary (d + 1)).ι) ≫ G)
     (hz : ∀ (x : (frameNerve n) _⦋0⦌), IsDiagonal (nerveEquiv x).val →
       ∀ v : (boundary (d + 1) : SSet.{u}) _⦋0⦌,
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v))) :
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v))) :
     ∃ F : frameNerve n ⊗ Δ[d + 1] ⟶ X,
       (frameNerve n ◁ (boundary (d + 1)).ι) ≫ F = H ∧
       ((framePositiveRow n).ι ▷ (Δ[d + 1] : SSet.{u})) ≫ F = G := by

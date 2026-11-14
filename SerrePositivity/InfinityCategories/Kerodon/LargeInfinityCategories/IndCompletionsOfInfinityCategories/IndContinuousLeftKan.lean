@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndDensityKanCoconeMap
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.EquivalentCoconeRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoconeValEquality
@@ -53,3 +55,9 @@ lemma indContinuous_isLeftKanExtension [Fact κ.IsRegular] [Quasicategory D]
     (indContinuous_canonicalColimits κ G · hG)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indContinuous_isLeftKanExtension
+attribute [cite HTT "5.3.5.9" (partial := special) "仮定：余極限のクラスを κ-filtered な小形状に固定する（Lean が強い：任意のクラス S ではない）。結論：その閉包 Indκ からの左 Kan 延長の存在と、そのクラスの余極限保存による特徴づけ（この場合に一致）。一般の閉包への構成を主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indContinuous_isLeftKanExtension

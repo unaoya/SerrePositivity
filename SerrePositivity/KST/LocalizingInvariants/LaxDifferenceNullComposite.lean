@@ -30,15 +30,15 @@ lemma laxDifferenceNullComposite : laxArrowHom p q ≫ laxDifferenceProjectionHo
     (0 : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom ((laxFst p q).hom ≫ p.hom) (laxDifference p q)) := by
   let a := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom
   let t := CofiberFamily.functorZeroTriangle E.obj a
-  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.comp_zero_of_arrowMk_eq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom t.square) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight t.square)
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.comp_zero_of_arrowMk_eq (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom t.square) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight t.square)
   · apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
     change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫
       diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares E.obj a)) = _
     rw [diagramFamilyTranspose_pre, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares_bottom]
     rfl
   · apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫
       diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares E.obj a)) = _
     rw [diagramFamilyTranspose_pre]

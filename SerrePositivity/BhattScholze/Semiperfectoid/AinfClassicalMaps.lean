@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.AinfClassical
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.AinfClassical
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 
 /-!
 # 固定 A_inf の剰余表示と標準持ち上げ
@@ -59,7 +59,7 @@ def ainfClassicalResidueAlgebra (S : Type u) [CommRing S] [Algebra R S] :
 /-- perfectoid 環の射を、その固定 A_inf の prism の射へ一意性を用いて持ち上げる。 -/
 def ainfClassicalMap (S : Type u) [CommRing S] (hS : IsIntegralPerfectoid S p) (f : R →+* S) :
     OrientedPrism.Hom (ainfClassicalPrism p R hR) (ainfClassicalPrism p S hS) :=
-  (Andre.existsUnique_perfectPrismHomLift_to_bounded (ainfClassicalPrism p R hR)
+  (_root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded (ainfClassicalPrism p R hR)
     (ainfClassicalPrism_perfect p R hR) (ainfClassicalPrism p S hS)
     (ainfClassicalPrism_bounded p S hS)
     ((ainfClassicalResidueEquiv p S hS).symm.toRingHom.comp
@@ -70,7 +70,7 @@ theorem ainfClassicalMap_quotient (S : Type u) [CommRing S] (hS : IsIntegralPerf
     (f : R →+* S) : (ainfClassicalMap p R hR S hS f).quotientMap =
       (ainfClassicalResidueEquiv p S hS).symm.toRingHom.comp
         (f.comp (ainfClassicalResidueEquiv p R hR).toRingHom) :=
-  (Andre.existsUnique_perfectPrismHomLift_to_bounded (ainfClassicalPrism p R hR)
+  (_root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded (ainfClassicalPrism p R hR)
     (ainfClassicalPrism_perfect p R hR) (ainfClassicalPrism p S hS)
     (ainfClassicalPrism_bounded p S hS) _).choose_spec.1
 

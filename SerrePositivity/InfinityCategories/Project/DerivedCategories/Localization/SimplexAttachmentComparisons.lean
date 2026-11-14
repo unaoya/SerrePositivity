@@ -3,8 +3,8 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.SimplexAttachmentFamilies
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.BoundaryEdgeLifting
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.BoundaryEdgeLifting
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes
 
 /-!
 概要：前段と次辺の指定比較を、両端と共有点の全経路を保持して全図式の比較へ延長する。

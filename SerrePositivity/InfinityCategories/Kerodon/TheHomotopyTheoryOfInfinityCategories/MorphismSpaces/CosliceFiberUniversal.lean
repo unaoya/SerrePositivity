@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CoslicePinchedIso
 
 /-!
@@ -116,3 +118,8 @@ def cosliceFiberHomEquiv (A X : SSet.{u}) (x y : X _⦋0⦌) :
   right_inv F := Subtype.ext (cosliceFiberUncurry_curry F.val F.property.1 F.property.2)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.1.5" (partial := special) "仮定：準圏の二つの図式（Lean が強い：二図式が一点の場合）。結論：結合で表したコスライス繊維と左右の写像空間を同値で比較する（Lean が弱い：両側が任意の図式の場合の二つの Kan 複体の比較は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.cosliceFiberHomEquiv

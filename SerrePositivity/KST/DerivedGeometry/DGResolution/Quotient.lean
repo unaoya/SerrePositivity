@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.PretriangulationTriangles
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
 
@@ -125,3 +127,8 @@ def perfectQuotientEquivalence (N : Set D) :
     (localKFlat A D (nullObjects A D N))
 
 end SerrePositivity.KST.DerivedGeometry.DGResolution
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Drinfeld "Construction §3.5"] _root_.SerrePositivity.KST.DerivedGeometry.DGResolution.quotientTriaEquivalence

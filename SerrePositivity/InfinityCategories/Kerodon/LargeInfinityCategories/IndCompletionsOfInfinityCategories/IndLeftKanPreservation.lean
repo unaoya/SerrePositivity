@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.WeightedIndClassificationImage
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndPreservationStrictReduction
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanUnitRecovery
@@ -52,3 +54,9 @@ lemma indLeftKanExtension_preservesSmallKappaFilteredColimits :
   exact strictClassifiedIndCocone_image_isColimit κ β hβ F hF
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits
+attribute [cite HTT "5.3.5.9" (partial := special) "仮定：余極限のクラスを κ-filtered な小形状に固定する（Lean が強い：任意のクラス S ではない）。結論：その閉包 Indκ からの左 Kan 延長の存在と、そのクラスの余極限保存による特徴づけ（この場合に一致）。一般の閉包への構成を主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits

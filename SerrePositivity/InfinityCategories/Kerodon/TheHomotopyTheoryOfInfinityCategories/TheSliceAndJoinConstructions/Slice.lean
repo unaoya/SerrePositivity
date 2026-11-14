@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -411,3 +413,12 @@ def sliceOverEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
     exact sliceOverUncurryApp_curry F.val F.property n.unop.len s
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.2.1" (partial := special) "仮定：単体集合の図式 p : K→X（Lean が強い：HA 2.2.2.2 の底 S が一点の場合）。結論：通常のスライス・余スライスへの写像と、p を延長する join の写像との自然な全単射（HA の絶対の場合の普遍性に一致）。一般の S 上の相対版は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverEquiv
+attribute [cite HTT "1.2.9.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverEquiv
+attribute [cite HTT "1.2.9.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver
+attribute [cite HTT "1.2.9.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverVertex
+attribute [cite HTT "1.2.9.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderVertex

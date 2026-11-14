@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactClassicalTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGModuleKappaCompactClassicalTransport
 
 /-!
 概要：元の cone 内の頂点同型は、同じ主導来 perfect 集合の所属を保存する。

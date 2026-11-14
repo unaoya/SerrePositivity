@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Functor
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorUnitHom
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
@@ -83,3 +85,9 @@ lemma cocartesianRelativeFunctorPredicate_comp {B : SSet.{u}} (a b c : Over B)
     ((cocartesianRelativeFunctorPredicate_vertex _ _ _ _).mp hw)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.1.3.7" (partial := component) "仮定：同じ底への二つの単体集合の射（Lean が弱い：operad 構造を仮定しない）。結論：p-余デカルト辺を q-余デカルト辺へ送る底上の写像が張る充満部分複体（HA の辺保存による条件と充満部分圏の構成に一致）。inert 保存や対称モノイダルの場合の同定は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.cocartesianRelativeFunctorPredicate_vertex
+attribute [cite HA "2.1.3.7" (partial := component) "仮定：同じ底への二つの単体集合の射（Lean が弱い：operad 構造を仮定しない）。結論：p-余デカルト辺を q-余デカルト辺へ送る底上の写像が張る充満部分複体（HA の辺保存による条件と充満部分圏の構成に一致）。inert 保存や対称モノイダルの場合の同定は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.cocartesianRelativeFunctorSpace

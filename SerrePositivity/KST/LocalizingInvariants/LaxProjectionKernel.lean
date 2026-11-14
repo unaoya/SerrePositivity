@@ -29,7 +29,7 @@ lemma fromD_snd_vertex (x : D.obj _⦋0⦌) :
   exact h
 
 lemma fst_kernel (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxFst p q).hom.app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxFst p q).hom.app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (exactFromD p q) := by
   constructor
   · intro hx
@@ -44,11 +44,11 @@ lemma fst_kernel (x : (laxCategory p q).obj _⦋0⦌) :
     exact ⟨d, ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeInitialVertexIso (laxSnd p q).hom _ _
       (fromD_initialBoundary p q d) hi e⟩⟩
   · rintro ⟨d, ⟨e⟩⟩
-    have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxFst p q).hom.app (Opposite.op ⦋0⦌)
+    have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxFst p q).hom.app (Opposite.op ⦋0⦌)
         ((fromD p q).app (Opposite.op ⦋0⦌) d)) := by
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst p.hom q.hom).app (Opposite.op ⦋0⦌) _)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst p.hom q.hom).app (Opposite.op ⦋0⦌) _)
       rw [fromD_fst_vertex]
-      exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero
+      exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero
     exact hz.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (laxFst p q).hom)
 
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion

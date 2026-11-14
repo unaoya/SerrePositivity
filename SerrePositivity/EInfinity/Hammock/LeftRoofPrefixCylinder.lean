@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveNatTransCylinder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.NerveNatTransCylinder
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints
 
 /-!

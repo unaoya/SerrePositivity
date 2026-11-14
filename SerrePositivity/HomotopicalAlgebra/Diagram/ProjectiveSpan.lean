@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Diagram.SpanCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveQuillen
 
@@ -38,3 +40,8 @@ lemma legs_cofibrations (D : K ⥤ C)
     SpanCofibrations.snd_cofibration _ hP h⟩
 
 end SerrePositivity.DiagramModel.ProjectiveSpan
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.8.12" (partial := direction) "仮定：walking span と同値な小さい K、Mathlib locally presentable な cofibrantly generated 抽象モデル圏（HTT の必要条件と一致）。結論：実際の projectively cofibrant diagram から root X の cofibrant 性と二つの legs の cofibration 性を得る。三条件から projective cofibrancy を構成する逆方向の型はない。"] _root_.SerrePositivity.DiagramModel.ProjectiveSpan.legs_cofibrations

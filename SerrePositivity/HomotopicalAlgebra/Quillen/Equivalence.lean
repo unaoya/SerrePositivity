@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction
 
 /-!
@@ -159,3 +161,8 @@ theorem derived_isEquivalence_of_mate_weakEquivalences
     exact derived_counit_isIso_of_weakEquivalence_mate QC QD adj α β fac.Z Y fac.p
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.5.1" (partial := direction) "仮定：抽象モデル圏 C,D の Quillen adjunction、元の weak-equivalence localizations と選んだ左右導来関手（HTT と一致）。結論：全 cofibrant X,fibrant Y の adjoint maps における weak equivalence の iff、すなわち条件 (3) から LF が equivalence、導来随伴により RF も equivalence となる方向は一致。導来同値から全 adjoint maps の判定へ戻す型はこの宣言にはなく、三条件全体の iff とは数えない。"] _root_.SerrePositivity.Quillen.derived_isEquivalence_of_mate_weakEquivalences

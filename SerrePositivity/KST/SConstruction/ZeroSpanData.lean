@@ -33,7 +33,7 @@ def zeroSpanDataProjection (C : SSet.{u}) : zeroSpanData C ⟶ (ihom (Δ[1] : SS
 /-- 概要：零脚の全選択の射影は trivial Kan fibration。
 方針：零対象への辺の始点射影の trivial Kan fibration を引き戻す。
 規約：零対象の存在だけが必要。使われ方：固定第一辺上の同型の構成。 -/
-instance zeroSpanDataProjection_trivialKanFibration (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+instance zeroSpanDataProjection_trivialKanFibration (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroSpanDataProjection C) := by
   dsimp only [zeroSpanDataProjection]
   infer_instance

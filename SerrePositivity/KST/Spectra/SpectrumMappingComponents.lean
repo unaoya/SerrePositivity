@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingWhitehead
 public import SerrePositivity.KST.Spectra.SpectrumLevelwiseInverse
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-!
 概要：BF 射の段ごとの π 同型から、実際のスペクトル写像空間での両側の逆条件を構成する。

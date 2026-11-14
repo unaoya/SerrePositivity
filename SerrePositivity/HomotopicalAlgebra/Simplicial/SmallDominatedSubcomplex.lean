@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SmallActionClosure
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-!

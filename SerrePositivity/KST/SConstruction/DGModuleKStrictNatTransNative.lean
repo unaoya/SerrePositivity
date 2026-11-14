@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：元全厳密比較の K(D) 同値成分を同じ native 全関手同型へ束ねる。

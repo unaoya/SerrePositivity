@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.TargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.LiftSpace
 public import Mathlib.CategoryTheory.LiftingProperties.Limits

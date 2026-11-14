@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 方針：最初の二射は短複体から取り、接続射を Σ から一回シフトへ移す。
 規約：Mathlib の Triangle を使う。使われ方：distinguished triangle の代表。 -/
 def cofiberTriangle {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) : Pretriangulated.Triangle (hoFunctor.obj X) :=
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) : Pretriangulated.Triangle (hoFunctor.obj X) :=
   Pretriangulated.Triangle.mk t.hoShortComplex.f t.hoShortComplex.g
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting t ht ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.shiftOneSuspensionIso X).inv.app t.hoShortComplex.X₁)
 
@@ -29,14 +29,14 @@ def cofiberTriangle {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.Inf
 方針：短複体の零合成を使う。規約：構成した三角形。
 使われ方：三角形の隣接零合成。 -/
 lemma cofiberTriangle_mor₁_comp_mor₂ {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     (cofiberTriangle t ht).mor₁ ≫ (cofiberTriangle t ht).mor₂ = 0 := t.hoShortComplex.zero
 
 /-- 概要：cofiber 三角形の第二射と第三射の合成は零。
 方針：Σ への接続射の零合成を一回シフトに移す。
 規約：構成した三角形。使われ方：三角形の隣接零合成。 -/
 lemma cofiberTriangle_mor₂_comp_mor₃ {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     (cofiberTriangle t ht).mor₂ ≫ (cofiberTriangle t ht).mor₃ = 0 := by
   change t.hoShortComplex.g ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting t ht ≫ _) = 0
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting_comp_eq_zero, zero_comp (C := hoFunctor.obj X)]
@@ -45,7 +45,7 @@ lemma cofiberTriangle_mor₂_comp_mor₃ {X : SSet.{u}} [Quasicategory X] [_root
 方針：一回シフトと Σ の自然同型の自然性で既存の零合成へ移す。
 規約：構成した整数シフト。使われ方：三角形の三つ目の隣接零合成。 -/
 lemma cofiberTriangle_mor₃_comp_shift_mor₁ {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     (cofiberTriangle t ht).mor₃ ≫ (shiftFunctor (hoFunctor.obj X) (1 : ℤ)).map
       (cofiberTriangle t ht).mor₁ = 0 := by
   change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting t ht ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.shiftOneSuspensionIso X).inv.app _) ≫
@@ -59,7 +59,7 @@ lemma cofiberTriangle_mor₃_comp_shift_mor₁ {X : SSet.{u}} [Quasicategory X] 
 規約：任意の h の可換正方形からの延長は別途必要。
 使われ方：cofiber 三角形の比較と TR3 の基礎。 -/
 def cofiberTriangleMapOfHomotopy {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence d)
+    (t d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence d)
     (H : SSet.Homotopy t.square d.square) : cofiberTriangle t ht ⟶ cofiberTriangle d hd := by
   let m := t.hoShortComplexMapOfHomotopy d H.h H.h₀ H.h₁
   refine {

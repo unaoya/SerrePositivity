@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.FunLike.Basic
@@ -105,3 +107,8 @@ lemma comparison_mono (X : SSet.{v}) (j : SimplexCategoryᵒᵖ) :
   exact hu.trans hw.symm
 
 end SerrePositivity.SimplicialLatching
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.9.8" (partial := component) "仮定：任意の単体集合 X と n（HTT と一致）。結論：実際の latchingComparison simplexOp n の Mono 性を得る（原典の明記する成分と一致）。像と退化単体集合の指定同型、および任意の単射 f に対する相対 latching 射の iff は含まない。"] _root_.SerrePositivity.SimplicialLatching.comparison_mono

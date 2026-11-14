@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import Mathlib.CategoryTheory.ObjectProperty.Retract
 public import Mathlib.CategoryTheory.Adjunction.Additive
@@ -947,3 +949,9 @@ end SerrePositivity.DifferentialGraded
 end
 
 end SmallEnhancement
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.4.2" (partial := component) "仮定：可換環上の小さい dg 圏と全通常導来加群（Lean が強い：この dg 導来模型の場合）。結論：通常の三角圏の compact 性と perfect 性の同値、代表加群のシフトの compact 性と零対象の検出を示す（HA の compact・perfect と生成の通常の部分に一致）。∞ filtered 余極限による compact 性と環スペクトルへの比較は含まれない。"] _root_.SerrePositivity.DifferentialGraded.moduleCompactGenerators_compact
+attribute [cite HA "7.2.4.2" (partial := component) "仮定：可換環上の小さい dg 圏と全通常導来加群（Lean が強い：この dg 導来模型の場合）。結論：通常の三角圏の compact 性と perfect 性の同値、代表加群のシフトの compact 性と零対象の検出を示す（HA の compact・perfect と生成の通常の部分に一致）。∞ filtered 余極限による compact 性と環スペクトルへの比較は含まれない。"] _root_.SerrePositivity.DifferentialGraded.moduleCompactGenerators_detect_zero

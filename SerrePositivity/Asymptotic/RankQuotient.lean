@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CategoryTheory.HomotopyProperty
 public import SerrePositivity.Asymptotic.SequenceComplex
 public import Mathlib.LinearAlgebra.Dimension.Constructions
@@ -536,3 +538,8 @@ theorem supportedRankQuotient_retract (Y : SequenceRankQuotient R s)
 end SerrePositivity.Asymptotic
 
 end SupportedRankQuotientPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Lemma 4.2"] _root_.SerrePositivity.Asymptotic.supportedRankQuotientInclusion

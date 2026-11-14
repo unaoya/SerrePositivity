@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
 public import SerrePositivity.DifferentialGraded.Resolution.Basic
 public import Mathlib.CategoryTheory.Functor.OfSequence
@@ -1217,3 +1219,8 @@ end SerrePositivity.DifferentialGraded.DGCategoryCellResolution
 end
 
 end CellComparisonQuasiEquivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Drinfeld "Construction §3.5"] _root_.SerrePositivity.DifferentialGraded.DGCategoryCellResolution.resolution

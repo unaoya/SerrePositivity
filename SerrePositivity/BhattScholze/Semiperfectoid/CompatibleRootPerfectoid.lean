@@ -24,7 +24,7 @@ CLMST の perfectoid イデアル（CommutativeAlgebra/PerfectoidIdealCompatible
 
 universe u
 
-/-! ## B4の商比較の共通部分（旧 Prism/Perfection/PerfectDeltaPDQuotientComparison.lean）
+/-! ## semiperfectoid 環の商比較の共通部分
 
 完全prism商への射が延長する完備な全射候補と、実PD完備化商を比較する。
 単項と任意根族で同じ比較証明を共有するためのBS専用補題。
@@ -127,7 +127,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaPDQuotientComparison
 
-/-! ## 一元添字の根族と既存の単一根商・完備化の比較（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootSingletonComparison.lean）
+/-! ## 一元添字の根族と既存の単一根商・完備化の比較
 
 元の単一根の台環と標準射を変更せず、イデアルの一致から比較する。
 根の関係式、素数性、完備性、perfectoid性はこの比較自体には要求しない。
@@ -229,7 +229,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootSingletonComparison
 
-/-! ## B4-3：古典的根イデアル商の完備化と実PD完備化商の比較（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootPDComparison.lean）
+/-! ## 古典的根イデアル商の完備化と実PD完備化商の比較
 
 具体的な標準射の図式と全射性から比較同型を証明する。
 古典的完備化と実導来完備化を無条件に同一視しない。
@@ -303,7 +303,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootPDComparison
 
-/-! ## B4-4：任意根族の完備化と実PD商の比較（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootFamilyPDComparison.lean） -/
+/-! ## 任意根族の完備化と実PD商の比較 -/
 
 @[expose] public noncomputable section CompatibleRootFamilyPDComparison
 
@@ -379,7 +379,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootFamilyPDComparison
 
-/-! ## B4-4：任意根族の商の完備化のperfectoid性（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootFamilyCompletionPerfectoid.lean）
+/-! ## 任意根族の商の完備化のperfectoid性
 
 tiltの根イデアル商のWitt環を実PD完備化し、標準射を両立させて古典的候補と比較する。
 Andréの引用・一般全射性・B5を使わない。
@@ -503,7 +503,7 @@ end SerrePositivity.BhattScholze
 
 end CompatibleRootFamilyCompletionPerfectoid
 
-/-! ## B4a：根付き単項商の完備化のperfectoid性（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootCompletionPerfectoid.lean）
+/-! ## B4a：根付き単項商の完備化のperfectoid性
 
 既存の単一根候補と標準射を保ち、一元添字の根族候補との比較からperfectoid性を得る。
 Andréの引用・一般全射性・B5を使わない。

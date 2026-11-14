@@ -1,7 +1,7 @@
 module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FundamentalNerveHomotopy
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.FundamentalNerveHomotopy
 public import Mathlib.CategoryTheory.Groupoid.FreeGroupoidOfCategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
 

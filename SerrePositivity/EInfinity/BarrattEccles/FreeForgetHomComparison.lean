@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomFrames
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ResolutionHomSourceRestriction
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MappingSpaces.ResolutionHomSourceRestriction
 
 /-!
 # 実自由忘却随伴の全二変数の Hom 比較射

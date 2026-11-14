@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfMixedHom
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.EnrichedAdjunctionHomComposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.UnitComparisons.EnrichedAdjunctionHomComposition
 
 /-!
 概要：元の LX→R_D(LX) の随伴像から cf 対応圏の左持ち上げ候補辺を構成する。

@@ -34,8 +34,8 @@ lemma continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted
 lemma continuousKanReplacement_isContractibleKan_of_sifted
     (K : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity K] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj K) := by
-  have := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isContractibleKan_terminal.{u}.kanComplex
+  have := _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.isContractibleKan_terminal.{u}.kanComplex
   have h := continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted K
-  exact h.isSimplicialHomotopyEquivalence.isContractibleKan_iff.mpr _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isContractibleKan_terminal
+  exact h.isSimplicialHomotopyEquivalence.isContractibleKan_iff.mpr _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.isContractibleKan_terminal
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories

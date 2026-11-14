@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.CoherentCoconeLegs
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictNativeCocones
 
 /-!
 概要：通常の余錐の native な表示の脚を元の通常の射と同定する。

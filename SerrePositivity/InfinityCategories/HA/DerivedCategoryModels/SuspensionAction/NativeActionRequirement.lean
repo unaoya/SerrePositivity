@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentActionInput
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.NativeIntervalIso
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.NativeEpsilonDiskObstruction
 

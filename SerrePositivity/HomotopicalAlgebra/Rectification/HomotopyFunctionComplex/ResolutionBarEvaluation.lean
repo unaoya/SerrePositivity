@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarFirstAction
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLift
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionBarEvaluation

@@ -64,12 +64,12 @@ variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
 /-- 同じ全図式を移した bottom 辺は、元の指定された値の射の類。 -/
-lemma productSquare_bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.productSquare hF)) =
+lemma productSquare_bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.productSquare hF)) =
     Arrow.mk (perfectInvariantSpectrumHom F d.inclusion
       d.left_complete d.middle_complete ≫ (hF.tammePerfectProjectionEquivalence p q
         d.c_complete d.d_complete).hom) := by
   have h := perfectMovedEdgeLeftId
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.productSquare hF))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.productSquare hF))
     (d.productComponent hF 0 0) (d.productComponent hF 1 0)
     (perfectInvariantHoArrow F d.inclusion
       d.left_complete d.middle_complete)
@@ -82,12 +82,12 @@ lemma productSquare_bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCate
   exact h
 
 /-- 同じ全図式を移した left 辺は、元の指定された値の射の類。 -/
-lemma productSquare_left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.productSquare hF)) =
+lemma productSquare_left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.productSquare hF)) =
     Arrow.mk (perfectInvariantSpectrumHom F (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.kernelMap p q d.inclusion
       d.sequence.projection)
       d.left_complete d.sequence.right_complete) := by
   have h := perfectMovedEdgeBothId
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.productSquare hF))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.productSquare hF))
     (d.productComponent hF 0 0) (d.productComponent hF 0 1)
     (perfectInvariantHoArrow F (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.kernelMap p q d.inclusion
       d.sequence.projection)
@@ -100,12 +100,12 @@ lemma productSquare_left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCatego
   exact h
 
 /-- 同じ全図式を移した top 辺は、元の指定された値の射の類。 -/
-lemma productSquare_top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (d.productSquare hF)) =
+lemma productSquare_top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (d.productSquare hF)) =
     Arrow.mk (SpectrumHo.hom (Binary.lift
       (𝟙 (perfectInvariantSpectrum F d.sequence.rightVertex))
       (𝟙 (perfectInvariantSpectrum F d.sequence.rightVertex)))) := by
   have h := perfectMovedEdgeLeftId
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (d.productSquare hF))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (d.productSquare hF))
     (d.productComponent hF 0 1) (d.productComponent hF 1 1)
     (perfectInvariantHoArrow F (IdentityLax.exactDiagonal d.sequence.right)
       d.sequence.right_complete (perfectLaxCategory_isIdempotentComplete (𝟙 d.sequence.right)
@@ -124,10 +124,10 @@ lemma productSquare_top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategor
   exact h.trans he
 
 /-- 同じ全図式を移した right 辺は、元の指定された値の射の類。 -/
-lemma productSquare_right_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.productSquare hF)) =
+lemma productSquare_right_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (d.productSquare hF)) =
     Arrow.mk (SpectrumHo.hom (d.productLegMap F)) := by
   have h := perfectMovedEdgeArrow
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (d.productSquare hF))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (d.universalValueSquare F)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (d.productSquare hF))
     (d.productComponent hF 1 0) (d.productComponent hF 1 1)
     (perfectInvariantHoArrow F (LaxUniversalDifference.exactLift p q d.sequence.projection)
       d.middle_complete (perfectLaxCategory_isIdempotentComplete (𝟙 d.sequence.right) (𝟙

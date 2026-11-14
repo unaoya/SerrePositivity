@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.NullHomotopyTransport
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceComposition
 
 /-!

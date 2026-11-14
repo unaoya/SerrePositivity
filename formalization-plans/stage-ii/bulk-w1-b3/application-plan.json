@@ -1,0 +1,9 @@
+{
+  "outputs": 8821,
+  "sources": 8777,
+  "deletions": 5322,
+  "collisions": [],
+  "frozen_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+  "bundle_sha256": "89b1bb8d09706cec1dfbd731bf7d0794a18a0d5d954f55fd22242d1585195a30",
+  "note": "Reconstructed against exact frozen sources; delta reference rewrites follow from original-environment compiler captures."
+}

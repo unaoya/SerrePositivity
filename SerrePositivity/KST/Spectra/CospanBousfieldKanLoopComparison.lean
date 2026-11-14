@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CospanBousfieldKanWeight
 public import SerrePositivity.KST.Spectra.CospanLoopWeightComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedSectionsOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedSectionsOpposite
 
 /-!
 概要：区間重みの end から、通常の cospan の元の BK end への比較を構成する。

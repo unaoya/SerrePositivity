@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionExtensionImage
 
 /-!
@@ -61,3 +63,11 @@ def idemYonedaUniversalEquivalence (C : SSet.{u}) [Quasicategory C]
   (idemYoneda_pre_isQCatEquivalence C E hE).choose
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Lemma 2.20" (partial := component) "仮定：小準圏と冪等完備な標的（Lean は安定性を使わない）。結論：完備化への制限による関手圏の同値と、各対象での Idem(C) ≃ Indκ(C)^κ（原典の反射性の各圏での成分と κ=ω の式。Cat^ex 上の大域随伴は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYonedaUniversalEquivalence
+attribute [cite BGT "Lemma 2.20" (partial := component) "仮定：小準圏と冪等完備な標的（Lean は安定性を使わない）。結論：完備化への制限による関手圏の同値と、各対象での Idem(C) ≃ Indκ(C)^κ（原典の反射性の各圏での成分と κ=ω の式。Cat^ex 上の大域随伴は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idempotentCompletionUniversalEquivalence
+attribute [cite HTT "5.1.4.9"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence
+attribute [cite HTT "5.3.6.9" (partial := special) "仮定：小準圏 C と冪等完備な準圏 E（Lean が強い：任意の大きさの C に対する別宇宙の構成はこの宣言で述べない）。結論：Idem(C) は同じ Yoneda の冪等完備化で、制限 Fun(Idem(C),E)→Fun(C,E) が全準圏同値（この場合の自由冪等完備化の普遍性と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_pre_isQCatEquivalence

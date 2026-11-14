@@ -1,0 +1,16 @@
+{
+  "command": [
+    "zsh",
+    "scripts/refactor/verify.sh"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+  "rc": 0,
+  "reason": null,
+  "seconds": 2968.372353332117,
+  "peak_process_tree_rss_bytes": 31010799616,
+  "peak_lean_or_snapshot_jobs": 3,
+  "threads": "3",
+  "heavy_job_limit": 3,
+  "started_local": "2026-11-14T09:33:23.094476",
+  "finished_local": "2026-11-14T10:22:51.348559"
+}

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.EdgeTerminalCocone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitExistenceTransfer
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeMappingSpace
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.EdgeCosliceIntervalMap
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.EdgeCosliceIntervalMap
 
 /-!
 概要：固定辺の終点への恒等余錐を、同じ指定終点の余錐空間の基点として保持する。

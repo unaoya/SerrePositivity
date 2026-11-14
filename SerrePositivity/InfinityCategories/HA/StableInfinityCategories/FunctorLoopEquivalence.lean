@@ -43,12 +43,12 @@ lemma functorLoopSection_loop_isQCatEquivalence {K X : SSet.{u}} [Quasicategory 
 規約：点ごとの cofiber の任意選択を自然な族と見なさない。
 使われ方：一般零角の比較に対する cofiber と回転の自然な族。 -/
 lemma functorCofiberSquare_nonempty_of_loopEquivalence (K : SSet.{u}) {X : SSet.{u}}
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits X]
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits X]
     (s : X ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) (hs : s ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 1 1 = 𝟙 X)
     (hΩ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (s ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 0 0))
     {x y : ((ihom K).obj X) _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) := by
   let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasZeroVertex_functorCategory K X
   let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteLimits_functorCategory K X
   exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberSquare_nonempty_of_loopEquivalence (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorLoopSection K s)

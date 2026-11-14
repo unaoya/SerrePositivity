@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftUnitCanonical
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorIsoExtension
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_4.FunctorIsoExtension
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -36,7 +36,7 @@ lemma exists_kanLeftCanonical_strictification {K C D : SSet.{u}}
   have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_unit_isIso δ hδ β hβ
   let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (δ ≫ F) F₀ :=
     (asIso (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy β))).symm
-  obtain ⟨s⟩ := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorIsoExtension_nonempty δ F F₀ e
+  obtain ⟨s⟩ := _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_4.functorIsoExtension_nonempty δ F F₀ e
   have hF := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_canonicalColimits_of_unit_isIso δ β hβ hi
   exact ⟨s.diagram, s.restriction, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonicalColimits_of_functorIso δ s.globalIso hF⟩
 

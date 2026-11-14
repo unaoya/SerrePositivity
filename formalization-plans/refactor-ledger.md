@@ -144,6 +144,7 @@ E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕�
 | §2 | Lemma 2.43・Cor 2.44 の離散版 | 中 | Prop 3.13 の一般形を形式化するとき（今は変数の場合で足りる） |
 | §2 | 後回し：Rem 2.40 の後半・Warning 2.41、Ex 2.20 (2)〜(4)、Lemma 2.11 の残り・Cor 2.12、Rem 2.13・2.7、Cor 2.31 の圏同値、Lemma 2.18 のエタール部分、Rem 2.22 | 中〜大 | 使う場所が出たとき |
 | §2 | 入れない：Rem 2.3（λ 環）、単体的な版（A2 の後）、Lemma 2.38 の無限列 | — | — |
+| E∞ | **coherent な Sp 値の P⁰**（DAG XIII Constr 2.2.6 の形）。D79 の改訂（11-13）で BS の経路から外した。土台は main に置く：`EInfinity/PowerOperation/`（178 本、D79 (ii) の V_{F_p}・π/H 比較 7,194 行と (iii) の鎖模型の部品 3,022 行、5a94b4d6c）。うち May 案が直接使うのは約 300〜450 行（BS-W16 報告 §96.6） | 大（残り 12,300〜22,100 行、§94） | HA の基盤の課題と一緒に（段階 II の後） |
 
 ### §3 prism（`research/bs-section-review/03-prism.md`）
 
@@ -212,6 +213,73 @@ E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕�
 | §6 | Prop 6.2（一般の有界向き付き基底、一般の r）・Thm 6.3（多項式の場合） | 中〜大 | 5∞-3a |
 | §5 | 後回し：Not 5.1 の ψ と \(R^{(1)}\)、一般の Thm 5.2、Lemma 5.4 の加群版、Thm 6.4 の一般の基底（D69 の後なら安い） | 小〜中 | 使う場所が出たとき |
 | §5・§6 | 入れない：Rem 5.3、Cor 5.5 の smooth な \(S\)（Lemma 4.21）、Thm 6.3 の étale 局所化 | — | — |
+
+### §7 semiperfectoid（`research/bs-section-review/07-semiperfectoid.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R7-1 drafts/A3 の古典部分は本体にある（約 26 の sorry）、A3 が EInfinityTheory に移っていない、A2 の `Poly` の衝突、A1 の `prismaticCohomology_lci_universal` を A3 へ | BR40 に追加 | **5∞-0** |
+| R7-2 (a) 忠実平坦版と並ぶ三段の系列（非忠実平坦版を一行の系に） | 新 BR51 | 保守（優先） |
+| R7-2 (b) 名前のない述語（有界 p 冪ねじれ 30 本・67 行、semiperfectoid） | — | 定義は **5∞-0**、展開形の置き換えは保守 |
+| R7-2 (c) `OrientedPrism.ofDeltaHom` は `ofDiscreteDelta` としてある | §8 の §3 の行 | §3 の補完の行を「`ofDiscreteDelta` の向きを確かめる」に読み替える |
+| R7-2 (d) A_inf の模型三つ | R3-5 | 残す |
+| R7-3 (a) KST → BS（`MonicRelation` を `CommutativeAlgebra/KoszulRegular` へ） | BR26′ に追加 | B3′ |
+| R7-3 (b)〜(d) §7.2 → André の内部（8 辺）、`PowerRootPolynomial`、`exists_boundedPerfectPrismPresentation` の置き場所 | BR41 に追加 | B3′ |
+| R7-4 配置案を項目ごとに（`Cotangent/` は空、Discrete・Lci・Quasiregular・Perfection・Surjectivity） | — | B3′ |
+| R7-5 名前空間 | BR48 | B3′ |
+| R7-6 (a)(b)(d) 閉包・葉・未使用 | — | 消さない |
+| R7-6 (c) root から届かない 9 本（RootEnvelope 3、PerfectPrismDivisionComparison、PDivisionSource、Audit 4） | BR8・BR14 | B3′ で判断（Audit 4 本は BR14 で scripts/ へ。残りは root に足すか archive か） |
+| R7-7 docstring（「（旧 パス）」571 か所ほか）、存在しないパス 9 件、`@[cite]` の注意（Rem 7.15 は `partial` か Thm 7.14 の証明として、Prop 7.11 は付けない） | BR25・BR34 | B3（引用の注意は今夜の B3 の属性付けに入れる）、残りは B3′ |
+| R7-8 設計書の古い記述（a3・a2・design-status・地図 7.1 の goal） | — | 調整役が直す（11-13）。7.1 の goal は地図の判断として保留 |
+
+### §8 perfection（`research/bs-section-review/08-perfection.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R8-1 E3 界面が三つの型（CAlg_R 版 3 本は使う側 0）、EInfinity → BS の逆向き 2 本 | BR26′ に追加、新 BR52 | B3′：TheoryInterface を BS へ移す。CAlg_R 版 3 本の削除は保守（BR8 の方針：削除は保守） |
+| R8-2 Derived/Interface の環の部分を切り出す（環の 7 本と §6 の 1 本の閉包から ∞ が消える） | BR50 と同じ回 | B3′（効果が大きいので B3′ の最初） |
+| R8-3 IntegralExistence を三つに分けてから動かす | — | B3′（今夜の B3 の案で丸ごと移すなら、移さずに残す） |
+| R8-4 同じ名前の宣言 | BR39 | `SerrePositivity/Inputs/Perfectoidization.lean` の削除は B3′、`BhattScholze.Inputs` の整理は 5∞-9（A9） |
+| R8-5 `comp_ringEquiv`／`precomp_ringEquiv` | BR21 に追加 | 保守（優先） |
+| R8-6 底変換の四つの構成、Witt の余積の模型（約 560 行を外せる見込み） | BR22 に追加 | 保守 |
+| R8-7 TensorCompatibility の公開、BR31 を狭める | BR23・BR31 | BR23 は B3′、BR31 は「導来版と Cor 8.14 から同じ主張が出ることを確かめる」に狭める |
+| R8-8 `Derived/` → `Interface/`、drafts の行き先の欄、Applications、FiniteProduct | BR48 | B3′ |
+| R8-9 docstring（工程ラベル 65 行、「（旧）」44 行、古い記述） | BR25・BR34 | B3′ の docstring の回 |
+| R8-10 drafts と本体の重なり・同名・古い記述 | BR40 に追加 | **5∞-0** |
+| R8-11 設計書の古い記述（a4・a6・a7・a9・design-status） | — | 調整役が直す（11-13） |
+| R8-12 閉包・葉・未使用 | — | 消さない（CAlg_R 版 3 本と R8-4 の 2 宣言は保守で削除） |
+| R8-13 原典の形との違い | — | 記録だけ（Inputs の docstring にある） |
+
+### §10 almost（`research/bs-section-review/10-almost.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R10-1 単項の `perfectoidIdeal` と一般の J の `perfectoidKernel` の二系統、一般形が CompletedTensor にある | 新 BR53 | 結ぶ補題と一般の J の系は **5∞-8c**。単項の側の重ねた証明（conormal 経由の冪等性約 240 行など）の整理は保守（優先） |
+| R10-2 BR24 の範囲（85 か所・12 ファイル、参照先が古い） | BR24 | 保守のまま、範囲を書き直した（この表を正とする） |
+| R10-3 名前の紛らわしさ | BR43 | B3′ の改名表 |
+| R10-4 drafts/A8 と本体の同名 40 | BR40 に追加 | **5∞-0** |
+| R10-5 (a) SupportedQuotient を ExcisionTor の隣へ | — | B3′ |
+| R10-5 (b) `mul_eq_zero_of_pow_mul_eq_zero_of_reduced` を CommutativeAlgebra へ | BR41 に追加 | B3′ |
+| R10-5 (c) `IsConnectiveAt`・`isPCompleteVertex`・CompletedModuleTensor を一般の場所へ | — | **5∞-0**（drafts と衝突する前に） |
+| R10-5 (d) §10 の芯が `Perfectoidization/CompletedTensor` にある | — | B3′ |
+| R10-5 (e) Lemma 10.12 の 36 本が root の外 | — | **閉**（11-13、調整役が root に足した） |
+| R10-5 (f)(g) 名前空間、B3 の配置案への意見 | BR48 | B3′ |
+| R10-6 閉包・葉・未使用 | — | 消さない |
+| R10-7 docstring（Lemma103:20 のノート参照を含む） | BR25・BR34 | B3（ノート参照は既存の 22 か所と同じ回）、残りは B3′ |
+| R10-8 設計書・地図の古い記述 | — | 調整役が直す（11-13）。second-half の 5∞-8 は直した |
+
+**B3′**（11-13 決定）：§7・§8・§10 の見直しで B3 に当たる移動・改名は、今夜の B3（B2 で固めた範囲）に入れず、二度目の一括の回 B3′ にまとめる。B2 の停止点の当日に範囲を広げると、B2 のやり直しになるため。B3′ は B4 の後、⑤∞ の段が新しいファイルを置き始める前を目安にする。
+
+### 補完への追加（§7・§8・§10）
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §7 | Prop 7.10 (ii) S′ の単位の p 完全忠実平坦性（W17 §16 の 3 点） | 700〜1,000 行 | 空いたとき（古典、∞ に依らない） |
+| §7 | 後回し：Prop 7.10 (iii)(iv) の一般の qrsp、Rem 7.15 の主張 | 中〜大 | 使う場所が出たとき |
+| §8 | 後回し：Ex 8.3 | 小 | 5∞-6 の後 |
+| §10 | Def 10.1 の J=(p) での等号、Rem 10.7 の冪等と ∀ g の系 | 小 | 5∞-8c と一緒に |
+| §10 | 後回し：Prop 10.2 の (R/J)_perfd 加群の圏との同値（D14・D66 を加群の段階でも保つか要確認）、Prop 10.4 の厚いイデアル、Rem 10.7 の平坦性、Thm 10.9 (c) | 小〜中 | 使う場所が出たとき |
+| §7・§8・§10 | 入れない：Prop 7.2・Cor 7.3 の Δ^init の部分（D37）、Prop 7.11・Ex 7.12・7.13（D38）、Def 8.7・Lemma 8.8 の一般形、Rem 8.9、Cor 8.11（D55）、Def 10.6・Prop 10.8・Thm 10.9 (d)(e)（D63）、Prop 10.4 の同値（D66）、Rem 10.10・10.13 | — | — |
 
 ## 9. 追記（2026-11-12 夜）：D79 で界面が KST を import した
 

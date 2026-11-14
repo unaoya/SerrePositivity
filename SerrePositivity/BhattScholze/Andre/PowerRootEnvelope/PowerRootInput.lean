@@ -18,10 +18,10 @@ public import SerrePositivity.BhattScholze.Prism.Bounded.Tilt
 BS 著者版 Remark 7.15 の方程式商を定め、入力射と mod p の分冪包を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPD`、`PowerRootEnvelope/CompletionPrism`、`PowerRootEnvelope/InputUniversal`、`PowerRootEnvelope/Unconditional/Localization`、`PowerRootEnvelope/Unconditional/Residue`、`PowerRootEnvelope/VarpiPD`、`Variants/Auxiliary`、`Variants/MonicRootedExtension`。
@@ -29,7 +29,7 @@ BS 著者版 Remark 7.15 の方程式商を定め、入力射と mod p の分冪
 
 universe u v
 
-/-! ## André E1・E2：無限 p 冪根環上のモニック入力の実 mod p 分冪包（旧 Andre/Remark715/PowerRootMonicModPrimePDEnvelope.lean）
+/-! ## 無限 p 冪根環上のモニック入力の実 mod p 分冪包
 
 ## 概要
 
@@ -202,7 +202,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicModPrimePDEnvelope
 
-/-! ## André E1・E2：無限 p 冪根多項式環上のモニック分冪表示環の自由性（旧 Andre/Remark715/PowerRootMonicPDFlat.lean）
+/-! ## 無限 p 冪根多項式環上のモニック分冪表示環の自由性
 
 ## 概要
 
@@ -281,7 +281,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicPDFlat
 
-/-! ## André E1・E2：係数 mod p 無限根環上の実分冪包（旧 Andre/Remark715/PowerRootCoefficientPDEnvelope.lean）
+/-! ## 係数 mod p 無限根環上の実分冪包
 
 ## 概要
 
@@ -461,7 +461,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCoefficientPDEnvelope
 
-/-! ## André E1・E2：正則係数元による無限根実分冪包の還元（旧 Andre/Remark715/PowerRootCoefficientPDRegularReduction.lean）
+/-! ## 正則係数元による無限根実分冪包の還元
 
 ## 概要
 
@@ -577,7 +577,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCoefficientPDRegularReduction
 
-/-! ## André E1・E2：Frobenius 二元商の無限根入力と ϖ 係数（旧 Andre/Remark715/PowerRootFrobeniusPairVarpiInput.lean）
+/-! ## Frobenius 二元商の無限根入力と ϖ 係数
 
 ## 概要
 
@@ -705,7 +705,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootFrobeniusPairVarpiInput
 
-/-! ## André E1・E2：モニック入力の実 pd 包の任意係数還元（旧 Andre/Remark715/PowerRootCoefficientPDProjectiveReduction.lean）
+/-! ## モニック入力の実 pd 包の任意係数還元
 
 ## 概要
 
@@ -786,7 +786,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCoefficientPDProjectiveReduction
 
-/-! ## André E1・E2：係数 Frobenius と指数 Frobenius の分離（旧 Andre/Remark715/PowerRootFrobeniusFactors.lean）
+/-! ## 係数 Frobenius と指数 Frobenius の分離
 
 ## 概要
 
@@ -997,7 +997,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootFrobeniusFactors
 
-/-! ## André E1・E2：具体的な無限根多項式環の普遍性（旧 Andre/Remark715/PowerRootPolynomialUniversal.lean）
+/-! ## 具体的な無限根多項式環の普遍性
 
 ## 概要
 
@@ -1103,7 +1103,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialUniversal
 
-/-! ## André E1・E2：無限根の方程式商の入力射（旧 Andre/Remark715/PowerRootEquationQuotient.lean）
+/-! ## 無限根の方程式商の入力射
 
 ## 概要
 
@@ -1227,7 +1227,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootEquationQuotient
 
-/-! ## André A1-a：方程式商の p 完備化の普遍性（旧 Andre/Remark715/PowerRootEquationCompletionUniversal.lean）
+/-! ## André A1-a：方程式商の p 完備化の普遍性
 
 ## 概要
 
@@ -1281,7 +1281,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootEquationCompletionUniversal
 
-/-! ## André A1-a：原典の順序による完備モニック入力環（旧 Andre/Remark715/PowerRootMonicCompletedInput.lean）
+/-! ## André A1-a：原典の順序による完備モニック入力環
 
 ## 概要
 
@@ -1355,7 +1355,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicCompletedInput
 
-/-! ## André A1-a：完備入力環からの環射の外延性（旧 Andre/Remark715/PowerRootMonicCompletedInputExt.lean）
+/-! ## André A1-a：完備入力環からの環射の外延性
 
 ## 概要
 
@@ -1404,7 +1404,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicCompletedInputExt
 
-/-! ## André E1・E2：rank 1 の互換根列による無限根 δ 射の普遍性（旧 Andre/Remark715/PowerRootPolynomialDeltaUniversal.lean）
+/-! ## rank 1 の互換根列による無限根 δ 射の普遍性
 
 ## 概要
 
@@ -1536,7 +1536,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialDeltaUniversal
 
-/-! ## André E1・E2：有界試験 prism の剰余根列からの無限根入力 δ 射（旧 Andre/Remark715/PowerRootPolynomialBoundedPrismLift.lean）
+/-! ## 有界試験 prism の剰余根列からの無限根入力 δ 射
 
 ## 概要
 
@@ -1582,8 +1582,8 @@ theorem existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots
       (powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
         g.comp (algebraMap R P) = k ∧
           ∀ n, Ideal.Quotient.mk Q.ideal (g (powerRootPolynomialVariable R p hp n)) = ρ n := by
-  let := boundedPrism_isHausdorff_prime Q hB
-  obtain ⟨σ, hσ, hσu⟩ := existsUnique_boundedPrismCompatibleRootsLift Q hB ρ hρ
+  let := _root_.SerrePositivity.BhattScholze.boundedPrism_isHausdorff_prime Q hB
+  obtain ⟨σ, hσ, hσu⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_boundedPrismCompatibleRootsLift Q hB ρ hρ
   obtain ⟨g, hg, hu⟩ := existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff p hpR D
     Q.deltaStructure k hk σ hσ.1
   refine ⟨g, ⟨hg.1, hg.2.1, ?_⟩, ?_⟩
@@ -1603,7 +1603,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPolynomialBoundedPrismLift
 
-/-! ## André E1・E2：完全試験 prism の剰余根列からの無限根入力 δ 射（旧 Andre/Remark715/PowerRootPolynomialPrismLift.lean）
+/-! ## 完全試験 prism の剰余根列からの無限根入力 δ 射
 
 ## 概要
 
@@ -1648,7 +1648,7 @@ theorem existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots
         g.comp (algebraMap R P) = k ∧
           ∀ n, Ideal.Quotient.mk Q.ideal (g (powerRootPolynomialVariable R p hp n)) = ρ n := by
   let := Q.isAdicComplete_p_of_perfect hQ
-  obtain ⟨σ, hσ, hσu⟩ := existsUnique_perfectPrismCompatibleRootsLift Q hQ ρ hρ
+  obtain ⟨σ, hσ, hσu⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismCompatibleRootsLift Q hQ ρ hρ
   obtain ⟨g, hg, hu⟩ := existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff p hpR D
     Q.deltaStructure k hk σ hσ.1
   refine ⟨g, ⟨hg.1, hg.2.1, ?_⟩, ?_⟩

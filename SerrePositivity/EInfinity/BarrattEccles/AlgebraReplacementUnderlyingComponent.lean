@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantForgetSourceComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorIsoEvaluationArrow
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.FunctorIsoEvaluationArrow
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponentArrow
 /-!
 概要：元の全代数の忘却比較の成分を、同じ置換 augmentation の導来像へ回収する。
@@ -73,7 +73,7 @@ lemma algebraCAlgSource_underlyingDerivedIso_component_arrow (B : (operad A).Alg
     (algebraCAlgReplacementNerve A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
   have hv := congrArg (fun v => (Arrow.mk
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (cAlgForgetDerived_sourceIso A).hom v) :
-      Arrow (hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))) (algebraCAlgReplacementNerve_vertex A B)
+      Arrow (hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)))) (algebraCAlgReplacementNerve_vertex A B)
   have hs' := (hs.trans hv).trans (cofibrantForgetOrdinaryVertexIso_hom_arrow A
     ((cofibrantAlgebraReplacement A).obj B)).symm
   rw [algebraCAlgSource_underlyingDerivedIso, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp]

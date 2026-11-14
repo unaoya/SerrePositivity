@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Group.WithOne.Defs
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 public import Mathlib.CategoryTheory.Category.ULift
@@ -98,3 +100,11 @@ instance splitShape_quasicategory : Quasicategory SplitShape.{u} :=
 def idemInclusion : IdemShape.{u} ⟶ SplitShape.{u} := nerveMap walkingInclusion.{u}
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.5.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IdemShape
+attribute [cite HTT "4.4.5.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplitShape
+attribute [cite HTT "4.4.5.3" (partial := component) "仮定：HTT の Idem（一致）。結論：恒等元と非恒等冪等元を持つ二元モノイドの一対象圏の神経として定義する（一致する成分。各次元の非退化単体の個数とこの性質による一意性は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IdemShape
+attribute [cite HTT "4.4.5.3" (partial := component) "仮定：HTT の Idem（一致）。結論：恒等元と非恒等冪等元を持つ二元モノイドの一対象圏の神経として定義する（一致する成分。各次元の非退化単体の個数とこの性質による一意性は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingIdem

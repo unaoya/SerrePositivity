@@ -20,7 +20,7 @@ open scoped _root_.Simplicial
 lemma squareTriangle_upper_corner (i : Fin 2) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{u} 0).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (if i = 0 then (0 : Fin 3) else 2)) =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) i i := by
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) i i := by
   fin_cases i <;> apply Prod.ext <;> decide
 
 /-- 上三角形を固定する正方形の射は両端角で恒等成分を持つ。 -/
@@ -31,7 +31,7 @@ lemma squareUpperConstantHomotopy_corner_arrow {X : SSet.{u}}
     (i : Fin 2) :
     Arrow.mk ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X i i).map
       (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))) =
-      Arrow.mk (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex F i i)) := by
+      Arrow.mk (𝟙 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex F i i)) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyEvaluation_fixed_map_arrow H (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0) hU
     (stdSimplex.obj₀Equiv.symm (if i = 0 then (0 : Fin 3) else 2))
   rw [squareTriangle_upper_corner] at h

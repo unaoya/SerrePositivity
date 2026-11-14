@@ -16,7 +16,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
 /-- 元の終域代数の右加群用圏を、同じ共通対象宇宙の固定 S に置く。 -/
 def dgOdotCornerInput : PerfDGInput.{u, u + 1} R :=
-  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.corner)
+  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.corner)
 
 /-- 元の ⊙ 比較射の全 Hom を保持する、固定 S 内の通常射。 -/
 def dgOdotTargetInputMap : dgOdotAlgebraInput R d ⟶ dgOdotCornerInput R d :=

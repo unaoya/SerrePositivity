@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderPairFunctor
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Products.EnrichedParameterCylinderPairFunctor
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-!

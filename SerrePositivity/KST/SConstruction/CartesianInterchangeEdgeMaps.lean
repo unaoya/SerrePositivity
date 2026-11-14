@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CartesianInterchangeDiamond
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CartesianInterchangeDiamond
 public import SerrePositivity.KST.SConstruction.MappingSquareCornerIdentities
 
 /-! # 実交換三角形対の四辺の全区間写像

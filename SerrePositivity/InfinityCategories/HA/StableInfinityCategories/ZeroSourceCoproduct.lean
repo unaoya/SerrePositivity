@@ -45,7 +45,7 @@ def binaryCofan_isColimit_of_edge_eq {X : SSet.{u}}
 使われ方：零始点の押し出しの二項余積性。 -/
 lemma squareBinaryCocone_isColimit {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBinaryCocone R) := by
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBinaryCocone R) := by
   let J := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.spanPointJoinIso.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan R
   let d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone J := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone R).restrict _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.spanPointJoinIso.hom
   have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone d :=
@@ -66,8 +66,8 @@ lemma squareBinaryCocone_isColimit {X : SSet.{u}} [Quasicategory X]
 規約：値域は quasicategory、安定性は不要。使われ方：余積の標準包含との照合。 -/
 def zeroSourcePushout_isBinaryCoproduct {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    IsColimit (BinaryCofan.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop R)) :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    IsColimit (BinaryCofan.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop R)) :=
   binaryCofan_isColimit_of_edge_eq _ _ _ _
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBinaryCocone_leg_left R) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBinaryCocone_leg_right R)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.binaryColimit_isColimit (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBinaryCocone R) (squareBinaryCocone_isColimit R hR hz))

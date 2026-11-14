@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorPentagon
 
 /-! # Monoidal structure on the standard bounded-above derived category -/
@@ -57,3 +59,8 @@ instance boundedAboveDerivedMonoidal : MonoidalCategory D where
   triangle X Y := boundedAboveDerivedTensor_triangle X Y
 
 end SerrePositivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.2.12" (partial := component) "仮定：可換環 R の通常の有界上導来圏（Lean が強い：有界上の通常圏の場合）。結論：既存の導来テンソルに単位・結合子を与え三角式と五角式を満たすモノイダル構造を構成する（導来テンソルのモノイダル構造の部分に一致）。全非有界 ∞ 圏上の対称モノイダル構造と cofibrant 局所化による一意性は含まれない。"] _root_.SerrePositivity.boundedAboveDerivedMonoidal

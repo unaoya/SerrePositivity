@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeSQuotient
 public import SerrePositivity.KST.SConstruction.FirstRowFibration
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SubcomplexInverseImageComparison
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SubcomplexInverseImageComparison
 
 /-!
 概要：元の相対 gapped S• の商比較を、同じ有限第一行の相対図式へ接続する。

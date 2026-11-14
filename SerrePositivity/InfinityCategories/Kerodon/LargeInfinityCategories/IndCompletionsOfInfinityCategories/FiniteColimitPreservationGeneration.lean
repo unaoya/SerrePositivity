@@ -1,8 +1,10 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservedPushoutShape
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PreservedColimitBasicShapes
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapeInduction
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapeInduction
 
 /-!
 概要：空図式と点 span の余極限保存から、全有限単体集合形状の保存を導く。
@@ -39,3 +41,9 @@ lemma hasPreservedColimit_finite_of_empty_pointSpan {X Y : SSet.{u}}
   exact h p
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.5" (partial := direction) "仮定：始対象と押し出しを保つ関手、始域の有限余極限（HTT の十分方向と一致。Lean では空図式と標準三頂点 span に保存される余極限を指定）。結論：任意の有限形状について余極限余錐の像は余極限（一致する方向。逆向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.hasPreservedColimit_finite_of_empty_pointSpan
+attribute [cite HTT "4.4.2.7" (partial := special) "仮定：始域の小余極限、押し出しと小余積の保存（Lean が強い：濃度 κ で切断せず固定宇宙で量化。空余積と押し出しの保存から全有限余極限の保存を得る）。結論：元の関手が固定宇宙内の全小余極限を保つ（一致する向きと範囲。任意の κ と逆向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.hasPreservedColimit_finite_of_empty_pointSpan

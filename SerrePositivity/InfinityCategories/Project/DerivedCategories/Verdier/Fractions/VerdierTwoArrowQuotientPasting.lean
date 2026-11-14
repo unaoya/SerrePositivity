@@ -43,8 +43,8 @@ lemma twoArrowLiftedFractionTriangle_last : stdSimplex.δ (0 : Fin 3) ≫
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.twoArrowLiftedFractionTriangle D L s r = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ s.lift := by
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.twoArrowLiftedFractionTriangle, stdSimplex.δ_comp_yonedaEquiv_symm]
   have h₀ : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.fractionSquarePoint F)).δ (0 : Fin 3) r.lift.triangle.simplex =
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s.lift).edge := r.lift.triangle.d₀
-  rw [h₀, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s.lift).edge := r.lift.triangle.d₀
+  rw [h₀, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   exact SSet.yonedaEquiv.symm_apply_apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ s.lift)
 
 /-- 元の全商四角形と同じ実右分数三角形を含む、指定合成三角柱。 -/

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.PolynomialPushoutBaseChange
 public import SerrePositivity.KST.DerivedBlowup.PolynomialKoszulKFlat
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
@@ -55,3 +57,15 @@ def polynomialKoszulDerivedBaseChangeIso {n : ℕ} (x : Fin n → MvPolynomial I
     (polynomialKoszulRestriction_kFlat x)
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def 3.1" (partial := component) "仮定：多項式基底の普遍チャートと有限列（Lean が強い）。結論：チャート上の古典的商表示と Koszul の底変換の同型。全導来スキームの正方形は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite KST "Eq (1.8)" (partial := component) "仮定：普遍多項式模型の指定チャートと有限列（Lean が強い）。結論：導来底変換の二種類の局所比較。通常・導来両側を含む全立方体は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite KST "Eq (3.1)" (partial := component) "仮定：多項式基底の普遍チャートと有限列（Lean が強い）。結論：チャート上の古典的商表示と Koszul の底変換の同型。全導来スキームの正方形は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite KST "Eq (3.2)" (partial := component) "仮定：係数環と多項式普遍模型の有限列（Lean が強い）。結論：導来底変換の Koszul 複体の比較。全導来スキームのブローアップ正方形の引き戻しは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite KST "Eq (5.11)" (partial := component) "仮定：通常ブローアップの整数冪、または指定された普遍 Koszul の底変換（Lean が強い）。結論：イデアルと冪の同型・局所 Koszul 比較。異なる冪列の有限射を導来ブローアップ間に構成する部分は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite KST "Lemma 3.6" (partial := component) "仮定：普遍多項式模型からの指定された底変換（Lean が強い）。結論：係数環・例外因子上の明示的比較は得るが、任意の二つの正則列表示に対する正方形と全厚化の独立性は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite LT "Eq (22)" (partial := component) "仮定：指定普遍多項式模型のチャートと係数環の有限列（Lean が強い）。結論：局所的な通常チャートと導来 Koszul の底変換を比較。全 qcqs スキームのブローアップ四角形は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso
+attribute [cite LT "Eq (23)" (partial := component) "仮定：指定普遍多項式模型のチャートと係数環の有限列（Lean が強い）。結論：局所的な通常チャートと導来 Koszul の底変換を比較。全 qcqs スキームのブローアップ四角形は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.polynomialKoszulDerivedBaseChangeIso

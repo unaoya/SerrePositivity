@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.VerdierOriginalCompositeNativeEdge
 public import SerrePositivity.KST.Fibration.FixedRestrictionFunctorPrism
 public import SerrePositivity.KST.Fibration.ZeroMiddleControlledTriangleInput
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-!
 概要：元の全長 Hom 比較を、直接端を固定する実 native Kan 四角形として保持する。

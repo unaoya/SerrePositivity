@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
@@ -1600,3 +1602,11 @@ end SerrePositivity.DifferentialGraded.BimoduleTensor
 end
 
 end BimoduleMiddleNaturality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.4.2.10" (partial := special) "仮定：通常の dg 両側加群の圏と固定した三つの dg 圏（Lean は dg の厳密な相対テンソルの模型に限る）。結論：中間の dg 圏で釣合テンソルを取る合成双関手を与える（固定端点での相対テンソル関手の成分に一致）。operadic 左 Kan 延長による一般の ∞ 圏での定義は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor
+attribute [cite HA "4.4.2.11" (partial := special) "仮定：固定した三つの dg 圏、または余等化子と必要なテンソル保存を持つ通常モノイダル圏の内部モノイド（Lean は通常の固定端点の場合に限る）。結論：中間で釣合テンソルを取り外側の両作用を持つ両側加群を与え、dg 模型では双関手となる（固定 A,B,C の成分に一致）。全代数が変動する ∞ 圏の関手は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor
+attribute [cite HA "4.4.2.12" (partial := special) "仮定：固定した三つの dg 圏（Lean は三つの作用圏を同じ dg 模型に取る場合に限る）。結論：二つの両側加群を中間でテンソルし、左と右の外端を持つ両側加群を与える（固定端点の関手の成分に一致）。異なる bitensored ∞ 圏と Tens の退縮は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor
+attribute [cite HA "4.4.2.13" (partial := special) "仮定：固定した三つの dg 圏（Lean は左右の作用圏が同じ dg 模型の場合に限る）。結論：右に置いた両側加群との相対テンソルを双関手として与える（同じ作用圏にした成分に一致）。異なる作用圏と逆側の Tens の退縮は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BimoduleTensor.composeFunctor

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedHomModule
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedChainMapComposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModuleSphereNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedHomModule
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedChainMapComposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.EnrichedFunctors.ModuleSphereNaturality
 /-!
 概要：元の Hom 鎖写像の pinched 空間への作用を単体的加群の射へ持ち上げる。
 方針：小さい線形単体への作用を、実 pinched 単体の座標同型で共役する。

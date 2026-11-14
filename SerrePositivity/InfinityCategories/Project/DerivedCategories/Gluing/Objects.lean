@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.CategoryTheory.Limits.Shapes.Biproducts
@@ -51,3 +53,8 @@ def dgGluingDifference :
     biprod.fst ≫ dgGluingLeftAction R C D M X Y
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KL "Construction §4.1"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject

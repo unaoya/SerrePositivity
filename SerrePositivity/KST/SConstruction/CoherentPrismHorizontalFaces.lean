@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentStringPrismChains
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CoherentStringPrismChains
 public import SerrePositivity.KST.SConstruction.CoherentOrdinaryPrismSlices
 
 /-! # 上下の合成列の水平面は元の全入力列

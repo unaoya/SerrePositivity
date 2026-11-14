@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：元 gluing cone の指定入力全比較を native 全関手同型へ接続する。

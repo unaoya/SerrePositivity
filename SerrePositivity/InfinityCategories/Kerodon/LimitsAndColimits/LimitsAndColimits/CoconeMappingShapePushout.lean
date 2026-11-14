@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceShapePushout
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.VertexFiberPullbackSquare
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.VertexFiberPullbackSquare
 
 /-!
 概要：形状の押し出し上の固定頂点の余錐空間を、部分余錐空間の引き戻しで表す。

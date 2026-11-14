@@ -16,10 +16,10 @@ public import Mathlib.Data.Finset.Prod
 BS 著者版 Proposition 3.13 の包の正則性に関わる、源グラフ商と評価環の Tor を計算する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/FamilyEvaluation`、`Envelope/JetRegularity`、`Envelope/PDivision`、`Envelope/PDivisionSource`、`Envelope/RootResidueKoszul`、`Envelope/RootSource`、`PowerRootEnvelope/Unconditional/Residue`、`RootEnvelope/Source`、`Variants/Auxiliary`。
@@ -27,7 +27,7 @@ BS 著者版 Proposition 3.13 の包の正則性に関わる、源グラフ商�
 
 universe u v
 
-/-! ## 源δ評価核の有限グラフKoszul分解（旧 Andre/RootedExtension/Division/DeltaDivisionSourceGraphKoszul.lean）
+/-! ## 源δ評価核の有限グラフKoszul分解
 
 任意の異なる有限δ座標を扱い、係数環のp正則性・ghost単射・完備性は要求しない。
 指数1の商表示は既存APIを用い、正則性はモニック一次式から示す。
@@ -74,7 +74,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceGraphKoszul
 
-/-! ## 一般除数・任意有限δ座標の源グラフ商のTor（旧 Andre/RootedExtension/Division/DeltaDivisionSourceFiniteTor.lean）
+/-! ## 一般除数・任意有限δ座標の源グラフ商のTor
 
 実自由δ射 x_s ↦ d z_s に沿う有限源商のTorを、終域の評価関係の
 Koszulホモロジーで計算する。全源評価環への移行は含まない。
@@ -126,7 +126,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceFiniteTor
 
-/-! ## 任意一元評価の源有限グラフ商の標準逐次極限（旧 Andre/RootedExtension/Division/DeltaDivisionSourceEvaluationColimit.lean）
+/-! ## 任意一元評価の源有限グラフ商の標準逐次極限
 
 源評価射βの核が有限グラフイデアルの上限であることから、実評価環Aへの標準余錐の普遍性を示す。
 Torとcolimitの交換はここでは仮定も結論もしない。
@@ -350,7 +350,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceEvaluationColimit
 
-/-! ## G7交換入力に相対的な任意一元評価環へのTor移送（旧 Andre/RootedExtension/Division/DeltaDivisionSourceEvaluationColimitTor.lean）
+/-! ## G7交換入力に相対的な任意一元評価環へのTor移送
 
 BSの具体的な有限グラフ商図式だけを扱う。
 標準PreservesColimit入力を公開型に保持し、共通G7のTor消滅補題を再利用する。
@@ -390,7 +390,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceEvaluationColimitTor
 
-/-! ## 任意根族の評価核の有限座標支持による検出（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionEvaluationFiniteSupport.lean） -/
+/-! ## 任意根族の評価核の有限座標支持による検出 -/
 
 @[expose] public noncomputable section DeltaDivisionEvaluationFiniteSupport
 
@@ -453,7 +453,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionEvaluationFiniteSupport
 
-/-! ## 任意根族の実評価環は有限座標商の加群余極限（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionEvaluationFiniteSupportColimit.lean） -/
+/-! ## 任意根族の実評価環は有限座標商の加群余極限 -/
 
 @[expose] public noncomputable section DeltaDivisionEvaluationFiniteSupportColimit
 
@@ -592,7 +592,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionEvaluationFiniteSupportColimit
 
-/-! ## 有限部分根族の有界δ深さによる実評価図式（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionBoundedSupportColimit.lean） -/
+/-! ## 有限部分根族の有界δ深さによる実評価図式 -/
 
 @[expose] public noncomputable section DeltaDivisionBoundedSupportColimit
 

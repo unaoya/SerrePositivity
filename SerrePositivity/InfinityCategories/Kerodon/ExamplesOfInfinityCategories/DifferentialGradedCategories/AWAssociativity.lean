@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWAssocTerms
 
 /-!
@@ -74,3 +76,8 @@ lemma awData_assoc {w x y z : D} {n : ℕ} (h : _root_.SerrePositivity.InfinityC
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWAssocTerms.awNestedRight_eq_left h g f J _ _ _ k hk
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.3.25" (partial := special) "仮定：dg 圏の写像複体に対する合成（Lean が強い：任意の多重加法関手の合成ではない）。結論：標準単体上の Alexander–Whitney による合成が三因子について結合的（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_assoc

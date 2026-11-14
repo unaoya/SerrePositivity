@@ -49,7 +49,7 @@ public import Mathlib.Order.Defs.PartialOrder
 public import Mathlib.Order.Notation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationEndpointExtension
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationBoundary
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanSimplexLastContraction
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.AcyclicKanLifting
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationIntervalLifting

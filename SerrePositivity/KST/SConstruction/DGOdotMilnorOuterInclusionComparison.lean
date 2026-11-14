@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterValueEquivalences
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceSquare
 public import SerrePositivity.KST.SConstruction.DGKNativeNuNaturality
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories LocalizingInvariants
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "B" => DGOdotGluing R d
 local notation "TA" => DGCategoryCellResolution.Source R (A)
 local notation "TB" => DGCategoryCellResolution.Source R (B)

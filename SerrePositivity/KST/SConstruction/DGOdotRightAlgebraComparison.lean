@@ -15,30 +15,30 @@ variable (R : Type u) [CommRing R]
 
 /-- 元の右加群用一対象圏から、その元の指定対象 End への全 Hom 恒等射。 -/
 def dgAlgebraToOriginalEnd (B : Mon (Complex R)) :
-    DGFunctor R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B)
-      (EndomorphismObject (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B)) where
+    DGFunctor R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B)
+      (EndomorphismObject (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B)) where
   obj _ := EndomorphismObject.point
   map _ _ := 𝟙 _
   map_id _ := by
-    change eId (Complex R) (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B) ≫ 𝟙 _ = _
+    change eId (Complex R) (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B) ≫ 𝟙 _ = _
     exact Category.comp_id _
   map_comp _ _ _ := by
-    change (eComp (Complex R) (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B)
-      (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star) (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star)) ≫ 𝟙 _ =
+    change (eComp (Complex R) (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B)
+      (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star) (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)) ≫ 𝟙 _ =
         (𝟙 _ ⊗ₘ 𝟙 _) ≫ eComp (Complex R)
-          (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B)
-          (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star) (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star)
+          (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B)
+          (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star) (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
     rw [id_tensorHom_id, Category.comp_id, Category.id_comp]
 
 /-- 元の End 射の反転代数化は、右加群用圏へ戻すと同じ全 Hom 射を回収する。 -/
 lemma dgAlgebraEndMap_realization (B : Mon (Complex R))
     (D : Type v) [DGCategory R D] (y : D)
     (F : DGFunctor R
-      (EndomorphismObject (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B))
+      (EndomorphismObject (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B))
       (EndomorphismObject y)) :
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R ((dgAlgebraRightEndIso R B (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star)).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R ((dgAlgebraRightEndIso R B (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)).hom ≫
       LocalizingInvariants.dgEndAlgebraMap R
-        (EndomorphismObject (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B))ᵒᵖ
+        (EndomorphismObject (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B))ᵒᵖ
         F.op (Opposite.op EndomorphismObject.point))).comp
       (dgOdotEndAlgebraOppositeInclusion R (EndomorphismObject y) EndomorphismObject.point) =
         (dgAlgebraToOriginalEnd R B).comp F := by

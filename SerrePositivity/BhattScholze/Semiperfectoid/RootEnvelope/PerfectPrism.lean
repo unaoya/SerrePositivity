@@ -1,7 +1,9 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
@@ -25,7 +27,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 André を使わない旧経路を保存したもの（2026-10-25 に主経路は原典どおり André 経由へ切り替えた）。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 BS の中には import 元がない（残した結果。`scripts/audit/bhatt_scholze.lean` が監査する）。
@@ -33,7 +35,7 @@ BS の中には import 元がない（残した結果。`scripts/audit/bhatt_sch
 
 universe u
 
-/-! ## 完全prism上の任意根族の実冪商に対するG9標準入力（旧 Semiperfectoid/RootEnvelope/BoundedSupport/PerfectPrismRootBoundedSupportPowerInputs.lean） -/
+/-! ## 完全prism上の任意根族の実冪商に対するG9標準入力 -/
 
 @[expose] public noncomputable section PerfectPrismRootBoundedSupportPowerInputs
 
@@ -136,7 +138,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootBoundedSupportPowerInputs
 
-/-! ## 完全prism上の任意根族の実生成元冪商の離散性（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootPowerDiscrete.lean） -/
+/-! ## 完全prism上の任意根族の実生成元冪商の離散性 -/
 
 @[expose] public noncomputable section PerfectPrismRootPowerDiscrete
 
@@ -192,7 +194,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootPowerDiscrete
 
-/-! ## 完全prism上の任意根族の元の実逐次源の離散性（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootSourceDiscrete.lean） -/
+/-! ## 完全prism上の任意根族の元の実逐次源の離散性 -/
 
 @[expose] public noncomputable section PerfectPrismRootSourceDiscrete
 
@@ -270,7 +272,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootSourceDiscrete
 
-/-! ## 完全prism上の任意根族の実PD完備化環の完全忠実平坦性（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootPDCompletelyFlat.lean） -/
+/-! ## 完全prism上の任意根族の実PD完備化環の完全忠実平坦性 -/
 
 @[expose] public noncomputable section PerfectPrismRootPDCompletelyFlat
 
@@ -367,7 +369,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootPDCompletelyFlat
 
-/-! ## 任意根族の実PD環から実δ完全化の離散性への具体的入力（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootPDPerfectionInputs.lean） -/
+/-! ## 任意根族の実PD環から実δ完全化の離散性への具体的入力 -/
 
 @[expose] public noncomputable section PerfectPrismRootPDPerfectionInputs
 
@@ -516,7 +518,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootPDPerfectionInputs
 
-/-! ## 既存根prism台環候補の標準係数射の完全忠実平坦性（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootPrismCompletelyFlat.lean） -/
+/-! ## 既存根prism台環候補の標準係数射の完全忠実平坦性 -/
 
 @[expose] public noncomputable section PerfectPrismRootPrismCompletelyFlat
 
@@ -653,7 +655,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootPrismCompletelyFlat
 
-/-! ## 根prism候補の実生成元商と標準perfectoid商の同定（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootQuotientReduction.lean） -/
+/-! ## 根prism候補の実生成元商と標準perfectoid商の同定 -/
 
 @[expose] public noncomputable section PerfectPrismRootQuotientReduction
 
@@ -734,7 +736,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootQuotientReduction
 
-/-! ## 任意根族のperfectoid候補の標準基底射のp完全忠実平坦性（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootPerfectoidCompletelyFlat.lean） -/
+/-! ## 任意根族のperfectoid候補の標準基底射のp完全忠実平坦性 -/
 
 @[expose] public noncomputable section PerfectPrismRootPerfectoidCompletelyFlat
 
@@ -881,7 +883,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootPerfectoidCompletelyFlat
 
-/-! ## 完全prism商の根付きp完全忠実平坦perfectoid拡大と全射性（旧 Semiperfectoid/RootEnvelope/PerfectPrismRootedPerfectoidExtension.lean） -/
+/-! ## 完全prism商の根付きp完全忠実平坦perfectoid拡大と全射性 -/
 
 @[expose] public noncomputable section PerfectPrismRootedPerfectoidExtension
 
@@ -961,7 +963,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootedPerfectoidExtension
 
-/-! ## B4：根の割り算包による別証明（旧 Semiperfectoid/RootEnvelope/RootEnvelopeSurjectivity.lean）
+/-! ## 根の割り算包による別証明
 
 ## 概要
 perfectoid 環の導来 p 完備な全射商の任意の perfectoid 化は全射（BS 著者版 Theorem 7.4）の、
@@ -1013,3 +1015,8 @@ theorem surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnve
 end SerrePositivity.BhattScholze
 
 end RootEnvelopeSurjectivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 7.4"] _root_.SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnvelope

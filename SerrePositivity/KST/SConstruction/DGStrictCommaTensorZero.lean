@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.TensorPrimitiveTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.TensorPrimitiveTransport
 
 /-! # 指定した比較零元の tensor 合成における保存
 概要：元の全比較 cochain を消す二つの実鎖写像は、tensor 合成後も同じ比較を零にする。

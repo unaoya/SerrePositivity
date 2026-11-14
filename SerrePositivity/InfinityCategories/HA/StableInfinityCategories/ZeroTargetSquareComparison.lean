@@ -21,11 +21,11 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：始点の表示の輸送を eqToHom で含める。使われ方：接続射の後の零合成。 -/
 lemma exists_squareToSuspension_zero_target {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)] (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
-    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0)) :
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0)) :
     ∃ q : (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) :
       hoFunctor.obj ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)) ⟶
         SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex s.square),
-      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map q = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom F ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map q = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom F ≫
         eqToHom (congrArg SSet.HomotopyCategory.mk s.source_eq.symm) ∧
           (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 1 1).map q = 0 := by
   obtain ⟨H, hH⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_squareRightToSuspensionLeft F s
@@ -35,22 +35,22 @@ lemma exists_squareToSuspension_zero_target {X : SSet.{u}} [Quasicategory X]
     (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp (snd (Δ[1] : SSet.{u}) Δ[1]) H))
   let c := SSet.Truncated.HomotopyCategory.homMk
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareHorizontalLeftHomotopy s.square))
-  let e : @Quiver.Hom (hoFunctor.obj X) _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex F 1 0) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0) :=
-    eqToHom (show _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex F 1 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0 from
+  let e : @Quiver.Hom (hoFunctor.obj X) _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex F 1 0) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 0 0) :=
+    eqToHom (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex F 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 0 0 from
       congrArg SSet.HomotopyCategory.mk s.source_eq.symm)
-  have ha : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map a = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom F :=
+  have ha : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map a = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom F :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareHorizontalRightHomotopy_source F
   have hb : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map b = e := by
     obtain ⟨hX, hY, hf⟩ := (Arrow.mk_eq_mk_iff _ _).mp
-      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnHomotopy_source_arrow H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0) hH)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnHomotopy_source_arrow H (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 0) hH)
     simpa only [b, e, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation, eqToHom_refl, Category.id_comp] using hf
-  have hc : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map c = 𝟙 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0) :=
+  have hc : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map c = 𝟙 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 0 0) :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareHorizontalLeftHomotopy_source s.square
   have hbzero : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 1 1).map b = 0 :=
     s.zero_corner.isZeroHo.eq_zero_of_tgt (C := hoFunctor.obj X) _
   refine ⟨a ≫ b ≫ c, ?_, ?_⟩
   · rw [Functor.map_comp, Functor.map_comp, ha, hb, hc]
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom F ≫ (e ≫ 𝟙 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0)) = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom F ≫ e
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom F ≫ (e ≫ 𝟙 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 0 0)) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom F ≫ e
     rw [Category.comp_id]
   · rw [Functor.map_comp, Functor.map_comp, hbzero, zero_comp (C := hoFunctor.obj X),
       comp_zero (C := hoFunctor.obj X)]

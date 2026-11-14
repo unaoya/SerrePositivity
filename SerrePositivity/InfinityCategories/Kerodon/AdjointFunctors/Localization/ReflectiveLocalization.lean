@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveLocalObjects
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Localization
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.RestrictedPrecomposition
@@ -123,3 +125,12 @@ lemma isLocalization : _root_.SerrePositivity.InfinityCategories.Kerodon.Adjoint
 
 end ReflectiveSubcategory
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.isLocalization
+attribute [cite HTT "5.2.7.12" (partial := special) "仮定：局所化が充満部分圏への反射 r として与えられ、任意の標的準圏 D を取る（Lean が強い：包含を右随伴として指定した形）。結論：元の全関手準圏で前合成が充満忠実で、本質像は反射が反転する全辺を反転する関手（この場合に一致）。明示的な逆と両往復の FunctorIso があり、core や関手の同値類の集合だけの普遍性ではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.isLocalization
+attribute [cite HTT "5.2.7.12" (partial := special) "仮定：局所化が充満部分圏への反射 r として与えられ、任意の標的準圏 D を取る（Lean が強い：包含を右随伴として指定した形）。結論：元の全関手準圏で前合成が充満忠実で、本質像は反射が反転する全辺を反転する関手（この場合に一致）。明示的な逆と両往復の FunctorIso があり、core や関手の同値類の集合だけの普遍性ではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.localizationPrecompositionEquivalence
+attribute [cite HTT "5.2.7.3" (partial := special) "仮定：充満包含への反射 r と任意の準圏 E（Lean が強い：右随伴が充満包含の形）。結論：r.reflector に沿う前合成は全関手圏で充満忠実で、その本質像は r.reflector が反転する全辺を反転する関手（この場合に一致）。明示的な QCatEquivalence が反転関手の全部分圏へ与えられる。一般の辺集合の局所化に右随伴があるという逆の主張は型に含めない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.isLocalization
+attribute [cite HTT "5.2.7.3" (partial := special) "仮定：充満包含への反射 r と任意の準圏 E（Lean が強い：右随伴が充満包含の形）。結論：r.reflector に沿う前合成は全関手圏で充満忠実で、その本質像は r.reflector が反転する全辺を反転する関手（この場合に一致）。明示的な QCatEquivalence が反転関手の全部分圏へ与えられる。一般の辺集合の局所化に右随伴があるという逆の主張は型に含めない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.localizationPrecompositionEquivalence

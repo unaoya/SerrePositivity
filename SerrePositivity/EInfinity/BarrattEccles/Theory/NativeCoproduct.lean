@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductNativeUniversal
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.BinaryDiscreteShape
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.BinaryDiscreteShape
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.ReindexSliceUnder
 
 /-!
 # 指定余積関手の native な余極限錐

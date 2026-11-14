@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialDependentProduct
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Products.SimplicialDependentProduct
 
 /-!
 概要：関数複体の境界定数単体と関係充填を座標ごとに構成する。

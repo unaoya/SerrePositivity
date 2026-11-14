@@ -39,9 +39,9 @@ structure SemiorthogonalDecomposition (A B T : _root_.SerrePositivity.InfinityCa
   rightInclusion_fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful rightInclusion.hom
   counit_isIso : IsIso rightAdjunction.counit
   kills_inclusion (a : A.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((inclusion.hom ≫ projection.hom).app (Opposite.op ⦋0⦌) a)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((inclusion.hom ≫ projection.hom).app (Opposite.op ⦋0⦌) a)
   generates_kernel (x : T.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) x) → x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage inclusion
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) x) → x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage inclusion
 
 attribute [instance] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition.counit_isIso
 
@@ -51,7 +51,7 @@ variable {A B T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 
 /-- 零化は包含の本質像全体に広がる。 -/
 lemma kernel (x : T.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (d.projection.hom.app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (d.projection.hom.app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage d.inclusion := by
   constructor
   · exact d.generates_kernel x

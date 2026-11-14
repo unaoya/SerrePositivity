@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomotopyIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.TriangleThirdTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.TriangleThirdTransport
 public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # 元の二軸射を保持する実 Yoneda distinguished 三角形

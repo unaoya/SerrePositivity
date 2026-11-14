@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FixedTerminalHomotopyStart
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FixedTerminalHomotopyStart
 
 /-!
 概要：正方形の初期側の時間辺と、空間方向の点への収縮を照合する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPointedFunctor
 public import SerrePositivity.KST.SConstruction.ExInfinitySuspensionTransformation
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationPrecompose
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationPrecompose
 
 /-! # 元の一次方向商上の全 dg 入力に自然な Ex∞ suspension 比較
 概要：同じ前向き比較を、厳密 dg 入力の元の全 Hom 上へ制限する。

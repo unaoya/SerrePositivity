@@ -44,8 +44,8 @@ theorem verdierFullSTransportedSquare_right_kernel :
 
 /-- 元の包含辺を厳密に保持するので、全四角柱の始端左下は同じ商核頂点。 -/
 theorem verdierFullSTransportedSquare_apex_kernel :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (verdierFullSTransportedSquare d) 0 0 =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (quotientSKernelInfinitySquare d.inclusion d.projection) 0 0 := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (verdierFullSTransportedSquare d) 0 0 =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (quotientSKernelInfinitySquare d.inclusion d.projection) 0 0 := by
   have h := congrArg (fun f : Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} =>
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}.δ 1 (SSet.yonedaEquiv f)) (verdierFullSTransportedSquare_bottom_kernel d)
   exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source _).symm.trans (h.trans (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source _))

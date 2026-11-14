@@ -25,8 +25,8 @@ def stableZeroSMap (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfin
 def stableZeroSPoint (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     (Functor.const SimplexCategoryᵒᵖ).obj (𝟙_ SSet.{u}) ⟶ simplicialSConstruction A.obj where
   app n := (SSet.unitHomEquiv _).symm
-    (sConstructionZeroVertex n.unop.len (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex A.obj).vertex
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex A.obj).isZero)
+    (sConstructionZeroVertex n.unop.len (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex A.obj).vertex
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex A.obj).isZero)
   naturality {n m} θ := by
     apply (SSet.unitHomEquiv _).injective
     simp only [Functor.const_obj_map]
@@ -39,8 +39,8 @@ def stableZeroSPoint (A : _root_.SerrePositivity.InfinityCategories.HA.StableInf
 /-- 元の各 S_n の零自己関手は、同じ零図式への定値射そのもの。 -/
 theorem stableZeroSMap_app_constant (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (n : SimplexCategoryᵒᵖ) :
     (stableZeroSMap A).app n = SSet.const
-      (sConstructionZeroVertex n.unop.len (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex A.obj).vertex
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex A.obj).isZero) := by
+      (sConstructionZeroVertex n.unop.len (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex A.obj).vertex
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex A.obj).isZero) := by
   apply (cancel_mono (gappedSubcomplex n.unop.len A.obj).ι).1
   change sPostcomp n.unop.len (stableZeroEndMap A).hom
     (exactMap_preservesSData (stableZeroEndMap A)) ≫ _ = _

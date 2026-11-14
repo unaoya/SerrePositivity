@@ -1,0 +1,5 @@
+{
+  "pid": 75897,
+  "waits_for_pipeline": 57976,
+  "scope": "Automatic idle sleep only until active B3 pipeline exits; deliberate sleep is not overridden"
+}

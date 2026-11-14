@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SpanFamilies
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalIsoHomClass
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.IntervalIsoHomClass
 
 /-!
 概要：元の一般 Verdier 商の分数比較の充満忠実性を、元の辺を保って検証する。

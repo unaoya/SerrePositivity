@@ -20,10 +20,10 @@ open scoped Simplicial
 方針：定値正方形は退化した押し出し。
 規約：源は任意、標的は quasicategory。使われ方：零 cofiber 関手の完全性。 -/
 lemma constantZero_preservesSConstructionData {A C : SSet.{u}} [Quasicategory C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) : PreservesSConstructionData (SSet.const z.vertex : A ⟶ C) := by
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) : PreservesSConstructionData (SSet.const z.vertex : A ⟶ C) := by
   constructor
   · intro a _
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z.vertex 0)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z.vertex 0)
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
     exact z.isZero
   · intro F _
@@ -65,7 +65,7 @@ lemma preservesSConstructionData_of_comp_trivialKanFibration {A E B : SSet.{u}}
 方針：入力の各端点での完全性を確認し、自明ファイブレーションで反映する。
 規約：C は安定な quasicategory。使われ方：McCarthy の λ と ι を gapped 図式に適用する。 -/
 lemma zeroCofiberFunctor_preservesSConstructionData {C : SSet.{u}}
-    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : Bool) :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : Bool) :
     PreservesSConstructionData (zeroCofiberFunctor z b) := by
   apply preservesSConstructionData_of_comp_trivialKanFibration (cofiberProjection C)
   apply preservesSConstructionData_functor_of_pointwise

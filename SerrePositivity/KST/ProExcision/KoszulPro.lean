@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.ExactSequence
 public import SerrePositivity.HomologicalAlgebra.LocalCohomology.KoszulComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
@@ -130,3 +132,9 @@ theorem koszulTensorHomologyTower_isProZero [IsNoetherianRing R]
     (powerKoszulInverseDiagram_negative_range_le_span_pow z n k q hq)
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Lemma 4.9"] _root_.SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero
+attribute [cite LT "Cor 2.34" (partial := component) "仮定：Noether 環と有限加群の冪 Koszul 塔、別に非正 dg 塔で Tor 比較を入力（Lean が強い）。結論：個別の Koszul 消滅と抽象 Tor 模型からの値のプロ同値。原典の pro-Tor 条件と K のプロ正方形を接続しない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.koszulTensorHomologyTower_isProZero

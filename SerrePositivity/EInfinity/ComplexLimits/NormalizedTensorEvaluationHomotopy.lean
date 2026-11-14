@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 def normalizedTensorEvaluationHomotopy :
     SSet.Homotopy (normalizedTensorElementNerveDiagram A X Y)
       (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) := by
-  let T := nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)
+  let T := nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
   refine _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget
     (HomotopyClasses.postHomotopy T
       (FrameHom.MixedNerve.homotopy (normalizedTensorElementEvaluation A X Y))) ?_ ?_

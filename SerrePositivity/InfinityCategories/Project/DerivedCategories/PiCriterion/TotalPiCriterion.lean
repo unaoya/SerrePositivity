@@ -39,9 +39,9 @@ variable {B : SSet.{u}}
 /-- 元の余錐比較の頂点射を表す、端点を固定した実際の辺。 -/
 def totalVertexComparisonEdge
     (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F).vertex c.vertex :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}.Edge (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F).vertex c.vertex :=
   SSet.Edge.ofTruncated (Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective
-    (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F).vertex c.vertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.totalVertexComparison F c)))
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F).vertex c.vertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.totalVertexComparison F c)))
 
 /-- 選んだ辺は元の余錐全体からの比較射を表す。 -/
 lemma totalVertexComparisonEdge_homMk
@@ -49,12 +49,12 @@ lemma totalVertexComparisonEdge_homMk
     SSet.Truncated.HomotopyCategory.homMk (totalVertexComparisonEdge F c).toTruncated =
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.totalVertexComparison F c :=
   Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective
-    (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F).vertex c.vertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.totalVertexComparison F c))
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F).vertex c.vertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.totalVertexComparison F c))
 
 /-- 全空間から候補頂点への同じ比較を Kan 射として読む。 -/
 def totalValueComparison
     (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F).vertex ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F).vertex ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject c.vertex :=
   _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.spaceInfinityEdgeValue (totalVertexComparisonEdge F c)
 

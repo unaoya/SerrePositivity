@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagramComparison
 public import SerrePositivity.KST.SConstruction.DGOdotVerdierRectangle
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：実 ν 像で認証した長方形と、K-S• の既存の厳密入力を接続する。
@@ -33,7 +33,7 @@ structure DGOdotVerdierRectangleComparisonInput (h : DGOdotLaxVerdierInput R d) 
   image : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputNu R)
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram boundary
-  source_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex rectangle.comparisonSquare 0 0 =
+  source_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex rectangle.comparisonSquare 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)
 
 /-- 厳密版へ輸送するための追加の実代表。ν 像の同型だけからは構成しない。 -/
@@ -47,8 +47,8 @@ structure DGOdotVerdierRectangleStrictTransport {h : DGOdotLaxVerdierInput R d}
   source : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso v.rectangle.diagram diagram boundary
   image_comparison : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (source.comparison.postcomp (dgKInputNu R))
     rfl image_eq = v.image.comparison
-  source_vertex_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex v.rectangle.comparisonSquare 0 0
+  source_vertex_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex v.rectangle.comparisonSquare 0 0
 
 namespace DGOdotVerdierRectangleComparisonInput
 variable {h : DGOdotLaxVerdierInput R d} (v : DGOdotVerdierRectangleComparisonInput h)
@@ -78,7 +78,7 @@ theorem toStrict_comparison_isPullback (t : DGOdotVerdierRectangleStrictTranspor
 
 /-- 輸送後も左端は元の dg 対角始域そのもの。 -/
 theorem toStrict_source (t : DGOdotVerdierRectangleStrictTransport v) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (v.toStrict t).comparisonSquare 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (v.toStrict t).comparisonSquare 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d) :=
   (v.toStrict t).comparison_source
 

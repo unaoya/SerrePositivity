@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRetractionFamily
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeCosliceFamilyHomotopy
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.RelativeCosliceFamilyHomotopy
 
 /-!
 概要：収縮に沿う定値な底を持つ全余錐族を、切断から戻した族と相対的に比較する。

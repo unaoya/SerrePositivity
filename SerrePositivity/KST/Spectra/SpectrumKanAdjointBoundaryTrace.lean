@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureIntervals
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointBoundaryStructure
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.ThreeEdgeTransport
 
 /-!
 概要：元の構造比較と段調整の三つの区間から、調整済み構造区間を二つの三角形つきで作る。

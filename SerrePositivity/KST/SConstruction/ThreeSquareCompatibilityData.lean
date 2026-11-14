@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.MappingSquareBoundaryData
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.KanMappingSpanComposition
 
 /-! # 三正方形と三指定三角形からの端点固定の合成比較
 概要：元の六セルの境界を使い、三つの適合辺を保持する実三角形を得る。

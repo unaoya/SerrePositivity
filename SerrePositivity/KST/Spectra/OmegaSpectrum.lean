@@ -1,7 +1,9 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Spectra.SuspensionLoop
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.TruncatedMapping
 
 /-!
@@ -109,3 +111,8 @@ end
 end OmegaSpectrum
 
 end SerrePositivity.KST.Spectra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.8" (partial := special) "仮定：標的は点付き Kan 空間（Lean が強い：有限極限を持つ一般の C ではない）。結論：Ω スペクトルとその coherent nerve（Lean が弱い：有限点付き空間からの縮約切除関手の充満部分圏との比較がない）。"] _root_.SerrePositivity.KST.Spectra.OmegaSpectrum

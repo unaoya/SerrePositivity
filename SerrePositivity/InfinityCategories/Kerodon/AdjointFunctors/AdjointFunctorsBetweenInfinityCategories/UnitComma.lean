@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.TransformationFamilies
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.InnerProductProjection
@@ -204,3 +206,8 @@ noncomputable def unitCommaSectionVertex {X Y : SSet.{u}} [Quasicategory X]
       (NatTrans.congr_app (unitCommaSection_source η) (Opposite.op ⦋0⦌)) x⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.7.12" (partial := component) "仮定：準圏間の G:Y→X（HTT と一致）。結論：unitCommaSource は同じ Fun(Δ1,X)×Fun({1},X)Y の始端射影であり、innerFibration と全ての指定終点の Cartesian lifts は CartesianFibration の構造を与える。また Y への像が可逆なら Cartesian。原典の最初の assertion と iff の十分方向に一致し、必要方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSource_innerFibration

@@ -40,8 +40,8 @@ theorem dgKappaNativeBFKLimitCone_isLimit : _root_.SerrePositivity.InfinityCateg
 方針：同じ未完備 BF 四角形と元の錐比較へ既存の判定を適用する。
 規約：有限 BF 供給命題に条件付き。固定 K の完備化後の引き戻し性は主張しない。
 使われ方：同じ実 cone の構造辺へ渡す元の実 fiber 比較。 -/
-def dgKappaNativeBFCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (dgKappaNativeBFSquare R D I hBF)) where
+def dgKappaNativeBFCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (dgKappaNativeBFSquare R D I hBF)) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgKappaNativeBFKLimitCone R D I hBF)
   zero_corner := by
     have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgKappaNativeBFKLimitCone R D I hBF) =
@@ -49,8 +49,8 @@ def dgKappaNativeBFCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategor
       rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_top]
       exact congrArg (fun q => q ≫ (dgKappaNativeBFSquare R D I hBF))
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_topEdge
-    have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgKappaNativeBFKLimitCone R D I hBF)) 0 1 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1 := by
+    have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgKappaNativeBFKLimitCone R D I hBF)) 0 1 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1 := by
       rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source, ht, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source]
     rw [hz]
     exact dgKappaNativeBFSquare_zero_corner R D I hBF
@@ -58,7 +58,7 @@ def dgKappaNativeBFCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategor
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_right]
     change horn₂₂.ι₀₂ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (dgKappaNativeBFSquare R D I hBF) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge]
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     exact (SSet.yonedaEquiv.symm_apply_apply
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaNativeBFSquare R D I hBF))).symm
   isPullback := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_isPullback _ (dgKappaNativeBFKLimitCone_isLimit R D I hBF)
@@ -127,7 +127,7 @@ theorem dgKappaNativeBFKLimitCone_spaceEvaluation_isLimit (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((dgKappaNativeBFKLimitCone R D I hBF).postcomp
       (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation n))) := by
   let s := dgKappaNativeBFCanonicalFiberSquare R D I hBF
-  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{max (u + 1) v} := ⟨s.square, s.zero_corner⟩
+  let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{max (u + 1) v} := ⟨s.square, s.zero_corner⟩
   have h := spectrumFiberSquare_spaceEvaluation_isPullback t s.isPullback n
   have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_map_pullbackCone_iff
     (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation n)) s.square).mpr h

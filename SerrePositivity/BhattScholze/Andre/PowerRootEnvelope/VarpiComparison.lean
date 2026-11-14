@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPrism
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.FrobeniusPD
@@ -20,10 +22,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional
 p と ϖ の完全平坦性、pd 表示環の係数テンソル底変換とそれが分冪射であること、R/p から R/ϖ への pd 底変換、正則性を足さない係数テンソルの分冪構造、二元完全平坦性、具体的候補・Hodge–Tate 係数の照合。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Audit`、`PowerRootEnvelope/Initiality`、`Variants/MonicRootedExtension`。
@@ -31,7 +33,7 @@ p と ϖ の完全平坦性、pd 表示環の係数テンソル底変換とそ�
 
 universe u
 
-/-! ## André E1・E2：元の無限根モニック実完備化の二元完全平坦性（旧 Andre/Remark715/Unconditional/PowerRootCompletionPairFlat.lean）
+/-! ## 元の無限根モニック実完備化の二元完全平坦性
 
 ## 概要
 
@@ -196,7 +198,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCompletionPairFlat
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：p と ϖ の完全平坦性の照合（旧 Andre/Remark715/VarpiComparison/Flatness.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：p と ϖ の完全平坦性の照合
 
 ## 概要
 主イデアル (ϖ^n)=(c) の下で c 完全平坦性と ϖ 完全平坦性を比較する。
@@ -557,7 +559,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end PDBaseChange
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：具体的候補の係数表記の照合（旧 Andre/Remark715/VarpiComparison/Candidate.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：具体的候補の係数表記の照合
 
 ## 概要
 元の自然な Hodge–Tate 候補 T について、p 完全忠実平坦性と R/ϖ 上の
@@ -720,7 +722,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end Candidate
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：正則性を追加しない係数テンソルの分冪構造（旧 Andre/Remark715/VarpiComparison/UnconditionalPD.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：正則性を追加しない係数テンソルの分冪構造
 
 ## 概要
 R/ϖ への通常テンソル底変換に分冪構造と自然な分冪射を与える。
@@ -845,7 +847,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end UnconditionalPD
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：無条件の Hodge–Tate 係数比較（旧 Andre/Remark715/VarpiComparison/UnconditionalCandidate.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：無条件の Hodge–Tate 係数比較
 
 ## 概要
 元の候補 T の p 完全忠実平坦性と自然な ϖ 商の忠実平坦性を照合する。
@@ -1040,7 +1042,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end PDCompatibility
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：R/p から R/ϖ への pd 底変換（旧 Andre/Remark715/VarpiComparison/PrimeReduction.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：R/p から R/ϖ への pd 底変換
 
 ## 概要
 実装の A/p 表示との比較とは別に、R/p 上の無限根 pd 表示を R/ϖ へ底変換する。
@@ -1164,3 +1166,9 @@ def primePDTensorVarpiEquiv {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p)
 end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end PrimeReduction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 7.15" (partial := special) "主張（R→S が mod p で ind-syntomic な被覆）は証明していない。使っているのは構成の部分：S=R⟨Y^{1/p^∞}⟩/(f(Y)) の prismatic envelope T と φ^*(T/ϖ) の pd 包の記述、cover 性（完全忠実平坦）で、これが Thm 7.14 の一段拡大になる。docstring の「BS Rem 7.15」引用（1,700 件超）はこの計算を指す ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：exists_monicRootPerfectoidExtension（Andre/Transfinite/Tower.lean:1172。型は R からの一段拡大の存在。原文が直接扱う方程式商 S から T への被覆や mod p ind-syntomic ） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_completelyFaithfullyFlat_iff
+attribute [cite BS19 "Rem 7.15" (partial := special) "主張（R→S が mod p で ind-syntomic な被覆）は証明していない。使っているのは構成の部分：S=R⟨Y^{1/p^∞}⟩/(f(Y)) の prismatic envelope T と φ^*(T/ϖ) の pd 包の記述、cover 性（完全忠実平坦）で、これが Thm 7.14 の一段拡大になる。docstring の「BS Rem 7.15」引用（1,700 件超）はこの計算を指す ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：exists_monicRootPerfectoidExtension（Andre/Transfinite/Tower.lean:1172。型は R からの一段拡大の存在。原文が直接扱う方程式商 S から T への被覆や mod p ind-syntomic ） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpi_isDPMorphism

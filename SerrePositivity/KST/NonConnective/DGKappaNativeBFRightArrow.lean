@@ -32,7 +32,7 @@ def dgKappaNativeBFSquareRightEdge : Sp.{max (u + 1) v}.Edge
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (dgKappaNativeResolvedCone R D I)))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I)))) :=
-  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (dgKappaNativeBFSquare R D I hBF))).ofEq
+  (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (dgKappaNativeBFSquare R D I hBF))).ofEq
     (dgKappaNativeBFSquare_middle R D I hBF) (dgKappaNativeBFSquare_target R D I hBF)
 
 /-- 概要：同じ Φ から読む実右辺は新 coherent BF 射の辺そのもの。
@@ -43,11 +43,11 @@ theorem dgKappaNativeBFSquareRightEdge_eq :
     dgKappaNativeBFSquareRightEdge R D I hBF =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFBoundary R D I hBF).right := by
   apply SSet.Edge.ext
-  change (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (dgKappaNativeBFSquare R D I hBF)).edge = _
+  change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (dgKappaNativeBFSquare R D I hBF)).edge = _
   have he := congrArg (fun F : (Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
       Sp.{max (u + 1) v} => SSet.yonedaEquiv F)
     (dgKappaNativeBFSquare_right R D I hBF)
-  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge _).trans (he.trans
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge _).trans (he.trans
     (SSet.yonedaEquiv.apply_symm_apply
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFBoundary R D I hBF).right).edge))
 

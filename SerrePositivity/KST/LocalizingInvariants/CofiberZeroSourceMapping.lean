@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveIsoTargetMapping
 public import SerrePositivity.KST.LocalizingInvariants.CofiberZeroSourceComparison
 
@@ -49,3 +51,9 @@ lemma cofiberZeroSourceMapping_equivalence
     (cofiberZeroSourceVertexIso X z hz)
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (8)"] _root_.SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceMapping_equivalence
+attribute [cite Tamme "Eq (8)"] _root_.SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceVertexIso

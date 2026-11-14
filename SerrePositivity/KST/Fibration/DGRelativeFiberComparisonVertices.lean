@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategorie
 /-- 比較元の錐頂点は、元の相対 K 四角形の K(D) 頂点そのもの。 -/
 theorem dgRelativeFiberComparison_source :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (d.square ≫ dgKInputK A)).vertex =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK A) 0 0 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK A) 0 0 := by
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_eq]
   change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[0] (horn 2 2) ≫
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫ (d.square ≫ dgKInputK A))) = _
@@ -38,7 +38,7 @@ theorem dgRelativeFiberComparison_target :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_sourceEvaluation
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (d.square ≫ dgKInputK A)))
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Sp.{max (u + 1) v})
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
       (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
         (dgRelativeKLimitCone A d)) = _ at h
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at h
@@ -46,7 +46,7 @@ theorem dgRelativeFiberComparison_target :
 
 /-- 元の K(D) から、元の零角と右辺を持つ実 fiber への同じ全一単体。 -/
 def dgRelativeFiberVertexComparison :
-    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK A) 0 0)
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK A) 0 0)
       (dgRelativeCanonicalFiberSquare A d).fiber :=
   (SSet.Edge.ofTruncated (dgRelativeFiberComparison A d)).ofEq
     (dgRelativeFiberComparison_source A d) (dgRelativeFiberComparison_target A d)

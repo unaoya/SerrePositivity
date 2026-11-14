@@ -8,7 +8,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilyRaw
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
@@ -21,10 +21,10 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 BS 著者版 Remark 7.15 の根付き拡大に使う、有限根族の包の係数還元と完全忠実平坦性を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/MonicCandidate`、`Perfection/DeltaAlgebra`。
@@ -32,7 +32,7 @@ BS 著者版 Remark 7.15 の根付き拡大に使う、有限根族の包の係�
 
 universe u
 
-/-! ## G7による有限根族の全源評価環への実残余Tor消滅の移送（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFamilySourceColimitTor.lean） -/
+/-! ## G7による有限根族の全源評価環への実残余Tor消滅の移送 -/
 
 @[expose] public noncomputable section DeltaRootFamilySourceColimitTor
 
@@ -113,7 +113,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilySourceColimitTor
 
-/-! ## 有限根族の実導来β拡大と既存raw残余商の標準比較（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFamilyResidueSourceDerived.lean） -/
+/-! ## 有限根族の実導来β拡大と既存raw残余商の標準比較 -/
 
 @[expose] public noncomputable section DeltaRootFamilyResidueSourceDerived
 
@@ -170,7 +170,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilyResidueSourceDerived
 
-/-! ## 根添加の係数側実導来還元とraw残余商の比較（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFamilySourceCoefficientResidue.lean）
+/-! ## 根添加の係数側実導来還元とraw残余商の比較
 
 既存三因子の実導来対象を使い、有限根族の実残余評価比較へ接続する。
 導来完備化やperfectionの後の完全忠実平坦性は含まない。
@@ -244,7 +244,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilySourceCoefficientResidue
 
-/-! ## 実商環上の根添加導来還元（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFamilySourceQuotientFlat.lean）
+/-! ## 実商環上の根添加導来還元
 
 (p,d)の通常商への実基底変更を扱う。Koszul還元との同一視や完備化後の
 有限根族について、実商係数環上の離散性と元のA/(p,d)上のH0忠実平坦性を証明する。
@@ -474,7 +474,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilySourceQuotientFlat
 
-/-! ## 元の係数環上の実(p,d)還元とraw残余商（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFamilySourcePDResidue.lean）
+/-! ## 元の係数環上の実(p,d)還元とraw残余商
 
 有限根族の実源商での比較を元の係数環へ渡す。一般Koszul還元や完備化後CFFは含まない。
 -/
@@ -566,7 +566,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilySourcePDResidue
 
-/-! ## 実根添加対象の逐次主元完備化後の(p,d)還元（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFamilySourceIteratedResidue.lean）
+/-! ## 実根添加対象の逐次主元完備化後の(p,d)還元
 
 既存の二つの主元完備化を逐次適用した具体的対象を扱う。
 原典の(p,d)完備化・環H0候補との比較や離散性は別工程である。
@@ -662,7 +662,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilySourceIteratedResidue
 
-/-! ## 完全prismから有限根族の実逐次完備化源への入力（旧 Andre/RootedExtension/PerfectPrismRootFamilySourceInputs.lean） -/
+/-! ## 完全prismから有限根族の実逐次完備化源への入力 -/
 
 @[expose] public noncomputable section PerfectPrismRootFamilySourceInputs
 
@@ -719,7 +719,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismRootFamilySourceInputs
 
-/-! ## G4による任意根族の外部ghost仮定の解消（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFamilyRegularGhost.lean） -/
+/-! ## G4による任意根族の外部ghost仮定の解消 -/
 
 @[expose] public noncomputable section DeltaRootFamilyRegularGhost
 
@@ -798,7 +798,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilyRegularGhost
 
-/-! ## 任意根族の実raw p除算包のp完全忠実平坦性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFamilyRawCompletelyFlat.lean） -/
+/-! ## 任意根族の実raw p除算包のp完全忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaRootFamilyRawCompletelyFlat
 

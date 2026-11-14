@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRetractTransfer
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Cubes.ParameterCube
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarChainFamily

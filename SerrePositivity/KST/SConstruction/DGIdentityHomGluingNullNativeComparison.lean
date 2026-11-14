@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullArrow
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.IdentityHomTargetDiagonal
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.HomSpaces.HomotopyRepresentations.IdentityHomTargetDiagonal
 
 /-!
 概要：V の元包含を元恒等対角と native 全関手同型で比較する。

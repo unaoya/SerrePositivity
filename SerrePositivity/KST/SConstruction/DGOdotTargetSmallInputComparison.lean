@@ -26,7 +26,7 @@ def dgOdotAlgebraSmallInputIso :
     ForgetEnrichment.of (Complex R) (dgOdotConeAlgebraSmallInputMap R d).down ≅
     ForgetEnrichment.of (Complex R) (dgOdotTargetAlgebraSmallInputMap R d).down :=
   dgUniverseLiftFunctorClosedIso R (DGOdotTargetSmallPerfect R d)
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d))
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (dgOdotAlgebra R d))
     (dgOdotConeAlgebraSmallFunctor R d) (dgOdotTargetAlgebraSmallFunctor R d)
     (fun _ => dgOdotTargetSmallPointIso R d) (dgOdotAlgebraSmallPointIso_naturality R d)
 

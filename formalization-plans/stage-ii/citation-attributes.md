@@ -26,7 +26,7 @@
 | KST | Kerz–Strunk–Tamme | 同上 |
 | BGT | Blumberg–Gepner–Tabuada | 同上 |
 | TT | Thomason–Trobaugh | 同上 |
-| BST13 | Bhatt–Schnell–Scholze | arXiv:1307.3763 |
+| BST13 | Bhatt–Schwede–Takagi, The weak ordinarity conjecture and F-singularities | arXiv:1307.3763v3 |
 | Rydh | Rydh, Submersions and effective descent | arXiv:0710.2488 |
 
 一覧は README の「Conventions」にも置き、文献が増えたら足す。
@@ -94,3 +94,29 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 - （11-12 夜、追加）§2 の見直し（`refactor-ledger.md` §7）：R2-1（BR41 の三つの importer の移し先）、R2-7（分冪代数を `CommutativeAlgebra/DividedPowers/` へ、`IsCompletelyRegularRel` を Delta へ）、R2-9 の docstring と、**ノートを引く docstring 22 か所を原典の番号に置き換える**（ユーザー方針）も B3 に含める。
 - （11-12 夜、追加）§3・§4 の見直し（`refactor-ledger.md` §7）：BR47（`IsBoundedPrism` を `Prism/Basic` へ）、R3-2（§3 → §7 の逆向き 5 importer）、R3-3（Prism/ の §3 でないものの置き場所、Thm 3.10 の芯 4 本を `Prism/Perfectoid/` へ）、BR48（`…Andre` の名前空間をそろえる。同じ回の改名表に入れられれば）、R4-4（Lemma 4.8 のファイルを `Prism/Perfectoid/` へ）、R4-6（Construction61Detection・Reflection を §6 へ、Cor 5.5 を §5 へ）、R3-6・R4-7 の docstring も B3 に含める。
 - （11-12 夜、追加）§5・§6 の見直し（`refactor-ledger.md` §7）：BR50（R5-3 (a) `arcPadicIntMap` を `HomologicalAlgebra/DerivedCompletion` へ、(b) `PDCechFrameHomotopy` の汎用の部品を `HomologicalAlgebra/Cosimplicial/Algebra` へ）、R5-3 (c)（§4 の名前で中身が §6.4 の 5 本を §6.4 の側へ）、R5-3 (d)（「Crystalline 204」を (a)〜(e) で分け直す、(e) は `CommutativeAlgebra/DividedPowers/`）、R5-3 (e)（名前空間 63 本、BR48 の改名表）、R5-5（docstring の工程ラベル 49 行・22 ファイル、BR25）。
+
+## 11. 追記（2026-11-13、調整役）：BST13 の著者名の訂正
+
+略号表の BST13 を **Bhatt–Schwede–Takagi, The weak ordinarity conjecture and F-singularities（arXiv:1307.3763v3）** に直した（「Bhatt–Schnell–Scholze」は誤り。ユーザーが原典で確認）。一括レーンの `research/bibliography.json` と報告の表（refactor/kerodon-layout の枝）も属性付けの前に直す。⑥ の docstring は略号 BST13 だけで著者名を書いていない（main・math/scheme とも確認済み）。⑥ の 2f は v3 の Lemma 3.9 の証明に沿い、Remark 3.10 の誤り（Rees の次数移動と環の作用の混同）を避けている。(2) の Stein 分解・Kollár の商を F4・F7 の核と像の評価で置き換える経路も原典の (2) と矛盾しない（ユーザー確認、11-13）。
+
+## 12. 追記（2026-11-13 17 時、調整役）：今夜の凍結は保留
+
+B2 の停止点の報告が 17 時の時点でまだない。今夜（11-13）にするか明晩（11-14）にずらすかは、まだ決めない（ユーザー）。一括レーンに B2 の今の状況（保存比較の残り、停止点までの見込み時刻）を聞いてから決める。各レーンには予告どおり 18 時までに検証済みをコミットしてもらう（凍結でなくても損はない）。B3 の範囲は B2 で固めたまま（§7・§8・§10 の分は B3′、`refactor-ledger.md` §7）。
+
+## 13. 追記（2026-11-13 23 時、調整役）：B3 を今夜から、二晩の /goal で
+
+B2 の停止点（bcafcf3b4）を受けて、ユーザー決定：今夜から一括レーンを動かす。一括レーンは独立に作業し、ビルドは共有の鍵とは別に自分で管理する。二晩分の指示を `bulk-b3-goal.md` に置き、Codex の /goal で途中の確認なしに進める。11-14 の朝の報告でその先を決める。基準の main は c5c4436c0。**凍結するのは main だけ**：調整役は B3 の取り込みまで main に取り込まない。他のレーンは自分の枝で作業・コミットを続け、B3 の取り込みの後に B4 で追従する（§9 の「夜はコミットを控える」はこの回は使わない）。
+
+## 14. 追記（2026-11-14 昼、調整役）：B3 の取り込みと凍結の解除、B4 の手順
+
+B3（refactor/kerodon-layout 26c116259、基準 c5c4436c0）を main に取り込んだ（16d6b4547）。root 31,251 ジョブを main で確認。`scripts/refactor/verify.sh` の実行権限が落ちていたので戻した（7a3640cb9）。**main の凍結を解除する**。
+
+B4（各レーンの追従）の手順（`bulk-w1-b3/B4-README.md` を各レーン向けに）：
+1. 自分の枝の検証済みをコミットする。未検証の下書きは作業木に残してよい。
+2. **main を取り込む前に**、基準 c5c4436c0 より後に自分の枝で追加・変更した Lean ファイル（drafts を除く）の JSON 配列を `$files` に作り、自分の worktree を `$old_tree` として `bulk_namespace.py collect` で参照を採取する（鍵は `--class impl`、昼は 3〜5 分の組に分ける）。
+3. `bulk_namespace.py rewrite --plan $tables/namespace-rewrite-map.json` でプレビューを作り、保留 0 と差分を確認する。
+4. `git merge main` をし、プレビューの差分を新しい配置へ反映する（import は `module-map.json` で、名前は書き換えの結果で）。古い索引を取り込み後のソースに流用しない。
+5. 自分の新しいモジュールの対象ビルドと小さい監査を通してコミットし、報告する。調整役がその枝を main に取り込む。
+順序：⑥ を先に（最大の枝）。ほかは並行でよい。⑤d（`math/bs-m15`）も同じ手順で行う（影響一覧には入っていない）。
+
+**追記（11-14 午後、調整役）：B4 の open の保留の方針（全レーン共通）**。親の名前空間の一部が B3 でファイルごとに別の名前空間へ分かれたため（例：`…Project.DerivedCategories`、`…Project.HomotopyDiagramComparison`）、その子の名前空間の open が「explicit opens policy needed」で保留になる。方針：**open した名前空間が main に同じ名前で残り、その open で使っている宣言がすべて同じ完全名で main にあるなら、open はそのまま残す**（保留を恒等として解消し、取り込み後の対象ビルドで確認する）。使っている宣言のどれかが main で見つからない（改名・移動された）ときは止まって報告する。確認済みの例：⑤d の `…DerivedCategories.DiagramComparison`（`semifreePointEquivalence`・`complexClosedPresentation`・`complexDerivedEvaluation` などは main の DiagramComparison/ に同じ完全名で残る）、③-b の `…HomotopyDiagramComparison.CosimplicialHom`（main の HomotopyDiagramComparison/CosimplicialHom/ に同じ名前空間で残る）。

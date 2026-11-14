@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FullSubcomplexMapping
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointwiseUnitComparison
 
@@ -82,3 +84,15 @@ def reflectionMappingEquivalence (x : X _⦋0⦌)
 
 end ReflectiveSubcategory
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.7.2" (partial := special) "仮定：頂点条件 P による充満部分準圏への反射 r（Lean が強い：右随伴が充満包含として与えられる場合）。結論：r.reflector が、充満忠実な右随伴である包含を持つ局所化関手（この場合に HTT の定義と一致）。任意の辺反転による IsLocalization は原典のこの狭い意味と区別し、その定義を代用しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory
+attribute [cite HTT "5.2.7.2" (partial := special) "仮定：頂点条件 P による充満部分準圏への反射 r（Lean が強い：右随伴が充満包含として与えられる場合）。結論：r.reflector が、充満忠実な右随伴である包含を持つ局所化関手（この場合に HTT の定義と一致）。任意の辺反転による IsLocalization は原典のこの狭い意味と区別し、その定義を代用しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.inclusion_fullyFaithful
+attribute [cite HTT "5.2.7.4" (partial := direction) "仮定：充満部分圏への反射で L は reflector と包含の合成（原典の (2) を満たす場合）。結論：同じ単位 α の αL と Lα の全自然同型、すなわち (3)（Lean が弱い：(2)⇒(3) の向き）。Lα は reflectedUnitIso を包含で後合成して得る。(3) だけから反射を構成する向きや三条件の同値は主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.localization
+attribute [cite HTT "5.2.7.6" (partial := special) "仮定：反射 r と対象 x、局所化射には同じ反射の単位成分を取る（Lean が強い：任意の指定射ではなく反射単位の場合）。結論：全 y∈P について MapC(rx,y)→MapC(x,y) の同値であり、この単位が P に関する局所化射（この場合に定義の条件と一致）。随伴の標準単位比較との同型もあり、無関係な写像空間の同値を選んだものではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.reflectionMappingEquivalence
+attribute [cite HTT "5.2.7.8" (partial := direction) "仮定：P の包含への左随伴が存在する（原典の (2)、Lean はそのデータ r を取る）。結論：同じ単位が各 x の局所化射を与える（Lean が弱い：(2)⇒(1) の向き）。写像空間の同値でその普遍性を与える。各対象ごとの局所化射から全左随伴を構成する逆方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.reflectionMappingEquivalence
+attribute [cite HTT "5.2.7.8" (partial := direction) "仮定：P の包含への左随伴が存在する（原典の (2)、Lean はそのデータ r を取る）。結論：同じ単位が各 x の局所化射を与える（Lean が弱い：(2)⇒(1) の向き）。写像空間の同値でその普遍性を与える。各対象ごとの局所化射から全左随伴を構成する逆方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.unit
+attribute [cite HTT "5.2.7.9"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsReflectiveSubcategory
+attribute [cite HTT "5.2.7.9"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory

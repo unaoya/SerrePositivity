@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactGeneratorPresentation
 
 /-!
@@ -42,3 +44,8 @@ lemma ind_isKappaCompact_iff_yoneda (hC : _root_.SerrePositivity.InfinityCategor
     exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_iff_of_iso e).mp (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.indYoneda_isKappaCompact κ y)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Prop 2.18" (partial := component) "仮定：小準圏、正則基数 κ、像との特徴づけには C の冪等完備性（Lean が強い：後者に冪等完備性を課す）。結論：Yoneda 像は κ コンパクトであり、冪等完備ならすべての κ コンパクト対象を与える。また C が安定なら Indκ(C) は安定（原典の二つの成分）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_isKappaCompact_iff_yoneda

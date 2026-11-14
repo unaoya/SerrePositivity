@@ -38,7 +38,7 @@ lemma rightRestriction_decomposition : rightRestriction.map f =
 
 lemma domainRight_edge : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge : (Δ[1] : SSet.{u + 1}) ⟶ _) =
     domainRight.{u}.edge := by
-  have he := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
+  have he := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
   rw [Category.comp_id] at he
   exact he.symm
 

@@ -1,0 +1,14 @@
+{
+  "passed": 9,
+  "cases": [
+    "read-only preflight",
+    "missing reviewed citation implementation rejected",
+    "collision rejected before mutation",
+    "temporary destination rejected before mutation",
+    "main apply refused",
+    "move and old-path shim share the original safely",
+    "stale original rejected",
+    "parent traversal rejected",
+    "symlink escape rejected"
+  ]
+}

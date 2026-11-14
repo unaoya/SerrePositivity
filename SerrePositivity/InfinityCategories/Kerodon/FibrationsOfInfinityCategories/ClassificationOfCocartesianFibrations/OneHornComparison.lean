@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StandardSimplexOriginal
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.HornOnePointIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.HornOnePointIso
 
 /-!
 概要：一次元境界のホーン側の元の native Hom を、同じ分類先 Hom と比較する。

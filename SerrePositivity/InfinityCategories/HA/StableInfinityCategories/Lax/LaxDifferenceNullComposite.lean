@@ -25,8 +25,8 @@ public import Mathlib.CategoryTheory.Opposites
 public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Combinatorics.Quiver.ReflQuiver
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamilyZeroTriangle
 
 /-!
@@ -62,13 +62,13 @@ lemma comp_zero_of_arrowMk_eq {T : Type*} [Category T] [HasZeroMorphisms T]
   exact h
 
 variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
-local instance laxDifferenceFunctorZero (A X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex ((ihom A).obj X) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.functorHasZeroVertex A X
+local instance laxDifferenceFunctorZero (A X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex ((ihom A).obj X) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.functorHasZeroVertex A X
 
 local instance laxDifferenceFunctorZeroMorphisms (A X : SSet.{u})
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] :
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] :
     HasZeroMorphisms ((ihom A).obj X).HomotopyCategory :=
-  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.hasZeroMorphisms_ho
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.hasZeroMorphisms_ho
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax
 

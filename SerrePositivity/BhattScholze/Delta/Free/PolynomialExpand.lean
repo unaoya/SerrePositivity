@@ -30,7 +30,7 @@ BS 著者版 Lemma 2.11 の Frobenius の平坦性に使う、多項式の指数
 @[expose] public noncomputable section
 universe u v
 
-/-! ## B4-6：多項式の指数の商と余り（旧 Delta/Free/PolynomialExponentDivMod.lean）
+/-! ## 多項式の指数の商と余り
 
 各変数の指数をnで割り、n未満の有限台指数と商指数に分解する。
 多項式のexpand射の加群基底を構成するためのBS専用計算。
@@ -78,7 +78,7 @@ end SerrePositivity.BhattScholze
 
 end PolynomialExponentDivMod
 
-/-! ## B4-6：expand射の単項式分解（旧 Delta/Free/PolynomialExpandDecomposition.lean）
+/-! ## expand射の単項式分解
 
 指数の商・余りの同値で係数を付け替え、Mathlibのcurryでまとめる。
 まだexpandを係数環とする自由加群の構造とは区別する。
@@ -121,7 +121,7 @@ end SerrePositivity.BhattScholze
 
 end PolynomialExpandDecomposition
 
-/-! ## B4-6：多項式expand射の自由性（旧 Delta/Free/PolynomialExpandFree.lean）
+/-! ## 多項式expand射の自由性
 
 Mathlibのexpand射によるスカラー作用を、標準ULift型で通常の係数加群と区別する。
 整数の自由δ環の混標数Frobeniusの平坦性とは別のmod p計算。

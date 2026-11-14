@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteSpaceGenerators
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
@@ -62,3 +64,9 @@ lemma space_isPresentable : _root_.SerrePositivity.InfinityCategories.HTT.Presen
   ⟨space_isKappaAccessible_aleph0.isAccessible, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.2.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.space_isKappaAccessible_aleph0
+attribute [cite HTT "5.5.1.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.space_isPresentable

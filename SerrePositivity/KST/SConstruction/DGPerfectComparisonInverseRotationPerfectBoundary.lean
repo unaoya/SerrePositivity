@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationPerfectInclusion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.SimplicialFunctors.FunctorHomEndpointTransport
 
 /-!
 概要：元二段全比較の負符号付き包含境界を同じ実 Perf 全関手間へ反映する。

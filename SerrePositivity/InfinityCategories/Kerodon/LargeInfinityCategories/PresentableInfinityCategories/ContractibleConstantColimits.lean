@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PointProjectionCofinality
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IdentityCocone
@@ -56,3 +58,8 @@ lemma constantJoinCocone_isColimit {K X : SSet.{u}} [Quasicategory X]
   constantJoinCocone_isColimit_of_pointCofinal (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointProjection_isRightCofinal hK) x
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.4.10" (partial := special) "仮定：準圏と弱可縮な単体集合、辺を同値に送る図式（Lean が強い：図式とその余錐を同じ頂点への定値写像とする）。結論：同じ定値余錐は余極限（一致する場合。任意の同値図式とその指定延長の判定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.constantJoinCocone_isColimit

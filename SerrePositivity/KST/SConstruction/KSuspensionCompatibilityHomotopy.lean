@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KSuspensionMappingTriangles
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.KanMappingSpanComposition
 public import SerrePositivity.KST.Spectra.PointedMappingHomotopy
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 

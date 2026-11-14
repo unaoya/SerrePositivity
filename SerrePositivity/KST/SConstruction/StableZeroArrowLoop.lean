@@ -111,7 +111,7 @@ private lemma fixedEndpointLoop_lift {X : SSet.{u}} {x y : X _⦋0⦌}
 方針：同じ類の両端固定代表を区間 Hom に戻し、零成分の一意性を使う。
 規約：元の全自己比較の類。使われ方：上下全比較の共有対角の一致。 -/
 lemma stableZeroArrowLoop_homMk_eq_id (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
-    (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
+    (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
     (e : SSet.Truncated.Edge
       (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow F).edge))

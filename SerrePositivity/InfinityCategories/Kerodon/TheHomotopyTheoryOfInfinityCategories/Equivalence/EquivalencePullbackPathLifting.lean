@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.RelativeEquivalencePathAt
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PullbackZigzag
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceAllLimits
@@ -87,3 +89,8 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplex
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.3.1.3" (partial := stronger-hyp) "仮定：Cartesian p:X→S と同値 e:T→S に加え X,S,T が準圏、relativeEquivalencePathMapAt p 1 が trivial Kan fibration（Lean が強い）。結論：pullback.snd e p が準圏同値で、引戻しの因子の標準交換を除き原典の写像と一致。任意の単体的基底で追加の相対 path 充填仮定を外す結論はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.pullback_snd_of_relativePath

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.IteratedPathContractible
 
 /-! # 反復した経路実現の境界図式
@@ -123,3 +125,8 @@ lemma iteratedPathRealizationBoundary_naturality (r : ℕ) {X Y : StableModel.{u
     iteratedPathBoundary_naturality]
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Rem 7.4" (partial := component) "仮定：安定準圏の模型（原典の安定な場合）。結論：各 Gap を段とする単体安定圏（原典の単体 ∞ 圏の成分）。"] _root_.SerrePositivity.KST.SConstruction.stableSConstructionDiagram

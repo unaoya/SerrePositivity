@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.MvPolynomial.CommRing
 public import Mathlib.Data.ZMod.Basic
@@ -13,7 +15,7 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 
 ## 概要
 ℤ[x_(s,n)] に φ(x_(s,n)) = x_(s,n)^p + p·x_(s,n+1) を与えて δ 構造を入れ、普遍性・表示・相対版との比較を示す。
-系として任意の δ 環で φ と δ が可換、すなわち φ は δ 射（勉強ノート第 2 章の命題 2.1.5 (4)、命題 2.1.11 (1)）。
+系として任意の δ 環で φ と δ が可換、すなわち φ は δ 射（BS 著者版 Remark 2.2・Lemma 2.11 に関わる自由 δ 環の計算）。
 整数上の標準 δ 構造を係数とする相対自由構成との比較を、BS 著者版 Example 2.6 と Lemma 2.11 に関わる係数計算として扱う。
 
 ## 方針
@@ -29,7 +31,7 @@ Frobenius の平坦性の計算（Free/FreeDeltaFrobeniusFlat）、δ 完全化�
 @[expose] public noncomputable section
 universe u v
 
-/-! ## 整数係数の自由δ環（旧 Delta/Free/FreeDeltaRing.lean）
+/-! ## 整数係数の自由δ環
 
 変数x_(s,n)を持つ整数多項式環にφ(x_(s,n))=x_(s,n)^p+p*x_(s,n+1)を与える。
 BS 著者版 Lemma 2.11の整数係数の構成。原典のZ_(p)係数への局所化と
@@ -116,7 +118,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaRing
 
-/-! ## 自由整数δ環の普遍性（旧 Delta/Free/FreeDeltaUniversal.lean）
+/-! ## 自由整数δ環の普遍性
 
 任意のδ環と生成元の指定から、δの反復像を座標へ評価する一意なδ射を構成する。
 BS 著者版 Lemma 2.11の整数係数の普遍性。pねじれを持つ終域も許す。
@@ -173,7 +175,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaUniversal
 
-/-! ## 自由δ環に関係式を課す普遍性（旧 Delta/Free/FreeDeltaPresentation.lean）
+/-! ## 自由δ環に関係式を課す普遍性
 
 自由整数δ環のイデアルIのδ閉包による商は、Iを零に送るδ射の普遍対象である。
 BS 著者版 Notation 2.8・BS 著者版 Example 2.10の生成元と関係式の代数的構成。
@@ -222,7 +224,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaPresentation
 
-/-! ## 相対自由構成と自由整数δ環の比較（旧 Delta/Free/RelativeFreeIntegerComparison.lean）
+/-! ## 相対自由構成と自由整数δ環の比較
 
 基底が整数環の場合、相対W₂切断によるδ構造と、前段のFrobenius持上げによる
 自由整数δ構造は一致する。二つの構成を互換なAPIとして利用するための比較。
@@ -248,7 +250,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeIntegerComparison
 
-/-! ## pねじれを許すFrobeniusのδ射性（旧 Delta/Basic/DeltaFrobeniusNaturality.lean）
+/-! ## pねじれを許すFrobeniusのδ射性
 
 自由整数δ環のp正則性で確認した恒等式を任意のδ環へ評価する。
 完全化の反復図式に追加のp正則性を要求しない。
@@ -288,3 +290,9 @@ theorem frobeniusLift_iterate_delta (D : DeltaStructure p A) (n : ℕ) (x : A) :
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaFrobeniusNaturality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 2.11" (partial := special) "係数は Z（原典は Z_(p)）、多項式環としての記述と普遍性。Frobenius は mod p で自由・忠実平坦、p 完全忠実平坦まで（「本当の忠実平坦性は述べない」）。Q{x} の主張は未 ／ DOC1 照合：ok 4 件"] _root_.SerrePositivity.BhattScholze.FreeDeltaRing
+attribute [cite BS19 "Lemma 2.11" (partial := special) "係数は Z（原典は Z_(p)）、多項式環としての記述と普遍性。Frobenius は mod p で自由・忠実平坦、p 完全忠実平坦まで（「本当の忠実平坦性は述べない」）。Q{x} の主張は未 ／ DOC1 照合：ok 4 件"] _root_.SerrePositivity.BhattScholze.existsUnique_freeDeltaHom

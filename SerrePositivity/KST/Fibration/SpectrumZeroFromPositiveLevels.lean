@@ -59,7 +59,7 @@ theorem spectrumPoint_homotopyGroup_subsingleton (j : ℤ) :
 /-- 全整数群が自明なら、元のスペクトル頂点は同じ一点スペクトルとの実同型により零。 -/
 theorem spectrum_isZeroVertex_of_homotopyGroup_subsingleton (X : OmegaSpectrum.{u})
     (hX : ∀ j : ℤ, Subsingleton (OmegaSpectrum.homotopyGroup X j)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) := by
   let f := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal.from X
   have hf : OmegaSpectrum.PiIsomorphism f := by
     intro j
@@ -75,7 +75,7 @@ theorem spectrum_isZeroVertex_of_homotopyGroup_subsingleton (X : OmegaSpectrum.{
 theorem spectrum_isZeroVertex_of_positive_toPoint (X : OmegaSpectrum.{u})
     (hX : ∀ r : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (toUnit (((X.level (r + 1)).space).right)))) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) :=
   spectrum_isZeroVertex_of_homotopyGroup_subsingleton X
     (spectrum_homotopyGroup_subsingleton_of_positive_toPoint X hX)
 

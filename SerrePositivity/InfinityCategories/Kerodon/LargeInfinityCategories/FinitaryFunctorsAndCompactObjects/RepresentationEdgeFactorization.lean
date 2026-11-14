@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.RepresentationPointFactorization
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportComponentEdgeLift
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.TransportComponentEdgeLift
 
 /-!
 概要：分類図式の指定余極限から、元の指定余錐脚を厳密に被覆する実際の辺を回収する。

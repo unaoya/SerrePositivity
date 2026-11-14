@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseJoinSimplexShapes
 /-!
 概要：標準単体付き余錐形状の宇宙同型は、元のパラメーターの全射で自然。
 方針：join の宇宙比較の自然性を、右因子の標準単体同型と合成する。

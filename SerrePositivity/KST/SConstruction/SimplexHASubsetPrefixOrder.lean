@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubset
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetInclusionOrder
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.SimplexSubsetInclusionOrder
 public import Mathlib.Data.Finset.Sort
 
 /-! # 元の任意部分集合を HA 頂点列と終点で読む

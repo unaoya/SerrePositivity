@@ -21,7 +21,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 元の実一点による pointed 条件。 -/
-instance d3PointedKanInfinity_hasZero : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex PointedKanInfinity.{u} :=
+instance d3PointedKanInfinity_hasZero : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex PointedKanInfinity.{u} :=
   ⟨⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex d3PointedKanPoint, d3PointedKanPoint_isZero⟩⟩
 
 /-- 元の単位同型を、構成済み実 loop 図式族の終点に厳密に接続する。 -/

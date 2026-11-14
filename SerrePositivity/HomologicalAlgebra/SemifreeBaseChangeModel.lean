@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.UnboundedSemifreeModel
 public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeComplex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeKProjective
 public import Mathlib.Algebra.Homology.DerivedCategory.KProjective
 
 /-!

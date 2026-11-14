@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraFreeGeneratorExt
 public import SerrePositivity.KST.LocalizingInvariants.CochainCycleCoverLift
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraExtensionInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGAlgebraExtensionInfinity
 public import SerrePositivity.DifferentialGraded.Resolution.Basic
 
 /-!
@@ -23,31 +23,31 @@ variable (R : Type u) [CommRing R] {B C : Mon (Complex R)} (p : C ⟶ B)
   (hs : ∀ n : ℤ, Function.Surjective (p.hom.f n)) (hq : QuasiIso p.hom)
 
 def initialCellLiftFunctor :
-    DGFunctor R (DGCategoryCycleCover.Source R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R C) :=
-  FreeDGCategory.lift R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R C)
-    (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) (fun _ ↦ .star)
+    DGFunctor R (DGCategoryCycleCover.Source R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R C) :=
+  FreeDGCategory.lift R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R C)
+    (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)) (fun _ ↦ .star)
     (fun _ _ ↦ cycleCoverLift p.hom hs hq)
 
 lemma initialCellLift_augmentation :
     (initialCellLiftFunctor R p hs hq).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraPointMap R p) =
-      DGCategoryCycleCover.augmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) := by
-  apply (FreeDGCategory.universalEquiv R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
-    (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B))).injective
+      DGCategoryCycleCover.augmentation R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) := by
+  apply (FreeDGCategory.universalEquiv R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)
+    (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B))).injective
   apply dgAlgebraGeneratorMap_ext
   intro x y
-  change FreeDGCategory.edgeInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
-      (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) x y ≫
+  change FreeDGCategory.edgeInclusion R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)
+      (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)) x y ≫
         ((initialCellLiftFunctor R p hs hq).map x y ≫ p.hom) =
-    FreeDGCategory.edgeInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
-      (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) x y ≫
-        (DGCategoryCycleCover.augmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)).map x y
+    FreeDGCategory.edgeInclusion R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)
+      (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)) x y ≫
+        (DGCategoryCycleCover.augmentation R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)).map x y
   rw [← Category.assoc]
-  change (FreeDGCategory.edgeInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)
-      (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) x y ≫
-        (FreeDGCategory.lift R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R C)
-          (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B)) (fun _ ↦ .star)
+  change (FreeDGCategory.edgeInclusion R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)
+      (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)) x y ≫
+        (FreeDGCategory.lift R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R C)
+          (DGCategoryCycleCover.edges R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B)) (fun _ ↦ .star)
           (fun _ _ ↦ cycleCoverLift p.hom hs hq)).map x y) ≫ p.hom = _
   rw [FreeDGCategory.lift_edge, cycleCoverLift_projection]
-  exact (DGCategoryCycleCover.edge_augmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) x y).symm
+  exact (DGCategoryCycleCover.edge_augmentation R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) x y).symm
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

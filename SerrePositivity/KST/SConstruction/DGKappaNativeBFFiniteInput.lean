@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFPointedStages
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentFullSubcategoryRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentFullSubcategoryRestriction
 
 /-!
 概要：同じ未完備 native 一四角形の頂点だけを持つ豊穣入力を固定する。

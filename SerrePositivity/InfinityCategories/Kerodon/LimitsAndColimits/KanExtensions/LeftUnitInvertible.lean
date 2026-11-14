@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeHomLeg
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftIdentityLeg
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftTransportComponents
@@ -88,3 +90,8 @@ lemma kanLeftKanExtension_unit_isIso {K C D : SSet.{u}}
     (kanLeftKanExtension_unit_component_isIso δ hδ β hβ k)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.3.8" (partial := stronger-hyp) "仮定：指定対象への写像空間の比較が同値である左 Kan 拡張（Lean が強い：δ が内ファイブレーションかつ全対象で充満忠実）。結論：同じ単位の指定成分がホモトピー圏で可逆（一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_unit_component_isIso

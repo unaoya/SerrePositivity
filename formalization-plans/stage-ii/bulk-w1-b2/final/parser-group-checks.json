@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "native_module_relocation": "PASS",
+  "native_changed_precedence": "FAIL as required",
+  "actual_split_copy": "PASS",
+  "changed_canonical_syntax": "FAIL as required",
+  "changed_parser_type": "FAIL as required",
+  "actual_split_before_math_records": 1164,
+  "actual_split_after_math_records": 1164,
+  "before_parser_descriptors": 729,
+  "after_parser_descriptors": 731,
+  "content_groups_before": 310,
+  "content_groups_after": 310
+}

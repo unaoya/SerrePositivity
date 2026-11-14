@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInfinity
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedInfinity
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.InfinityCategory
 public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 
 /-!
@@ -31,11 +31,11 @@ def semifreeRingEvaluationDG : DGFunctor A (_root_.SerrePositivity.InfinityCateg
   map_comp M N P := (moduleEvaluationDG A PUnit.{1} PUnit.unit).map_comp M.val N.val P.val
 
 def semifreeRingEvaluationInfinity :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory A PUnit.{1} ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory A PUnit.{1} ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (semifreeRingEvaluationDG A)
 
 def complexSemifreeResolutionInfinity :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
     semifreeRingEvaluationInfinity A
 

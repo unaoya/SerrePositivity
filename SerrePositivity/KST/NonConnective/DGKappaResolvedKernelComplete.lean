@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedPerfectComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectIdempotentCompleteGeneral
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectIdempotentCompleteGeneral
 
 /-!
 概要：同じ D-9 実小核の native nerve に、P の元の Perf の coherent 冪等完備性を移す。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
 public import SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomFamily
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRelative
 
 /-!
 概要：元の right frame 全比較の終端を同じ hammock 豊穣 Hom の実現へ同定する。

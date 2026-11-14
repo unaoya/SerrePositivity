@@ -1,12 +1,12 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeSquareReplacement
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGSuspensionNativeSquareReplacement
 import Lean
 /-! 元の全四角形を回収する相対延長：全宣言を三公理以内で監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.NativeDiagramFamilyReplacement,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeSquareReplacement]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.NativeDiagramFamilyReplacement,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGSuspensionNativeSquareReplacement]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

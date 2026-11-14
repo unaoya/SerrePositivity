@@ -5,7 +5,7 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveP
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.DiagramUniverseLift
 
 /-!
 # 中断した任意モデル源への一般化：NerveLargeParameter

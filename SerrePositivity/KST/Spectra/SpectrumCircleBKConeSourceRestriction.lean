@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKPointSection
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKNativeComparison
 public import
-  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConeSourceWeightedRestriction
+  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoherentConeSourceWeightedRestriction
 
 /-!
 概要：円 cotensor を頂点とする錐全体の Hom の族の制限は、元の反転 BK 比較族に一致する。

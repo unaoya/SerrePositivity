@@ -70,9 +70,9 @@ theorem verdierNullCompositeOriginalMap_lower (d : _root_.SerrePositivity.Infini
 
 /-- 元の合成頂点が表す完全射は、同じ全頂点で零値条件を満たす。 -/
 theorem verdierNullCompositeMap_zero (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
-    ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((verdierNullCompositeMap d j).hom.app (Opposite.op ⦋0⦌) x) := by
+    ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((verdierNullCompositeMap d j).hom.app (Opposite.op ⦋0⦌) x) := by
   have hv := verdierNullHomFamily_zero d j (ComposableArrows.mk₀ coherentTriangleFullPath)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierNullCompositeMap d j).hom) :=
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierNullCompositeMap d j).hom) :=
     stableHomAmbient_vertex (verdierNullCompositeVertex d j) ▸ hv
   intro x
   have h := isZeroVertex_evaluateFunctorAt hz x
@@ -80,7 +80,7 @@ theorem verdierNullCompositeMap_zero (d : _root_.SerrePositivity.InfinityCategor
 
 /-- 元の指定両端へ輸送した後にも、同じ合成完全射は全頂点を零対象へ送る。 -/
 theorem verdierNullCompositeOriginalMap_zero (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
-    ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((verdierNullCompositeOriginalMap d j).hom.app (Opposite.op ⦋0⦌) x) :=
+    ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((verdierNullCompositeOriginalMap d j).hom.app (Opposite.op ⦋0⦌) x) :=
   exactMapTransport_zero _ _ _ (verdierNullCompositeMap_zero d j)
 
 end SerrePositivity.KST.Fibration

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalizationValue
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ULiftRelativeLocalizationValue
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.DKMappingComponents
 

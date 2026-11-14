@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolutionLocalization
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.DGModuleResolutionLocalization
 
 /-!
 概要：準同型辺の公開集合から、同じ端点付き辺の閉零射の擬同型性を回収する。
@@ -36,7 +36,7 @@ lemma dgBarEdgeClosed_quasiIso_congr
 lemma dgBarEdgeClosed_quasiIso_of_mem
     {x y : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve R D) _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve R D)) x y)
-    (he : e.edge ∈ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D) :
+    (he : e.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D) :
     moduleQuasiIso R D (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e) := by
   obtain ⟨M, N, f, hf, h⟩ := he
   apply (dgBarEdgeClosed_quasiIso_congr R D e (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R (RightModule R D) f) h.symm).mpr

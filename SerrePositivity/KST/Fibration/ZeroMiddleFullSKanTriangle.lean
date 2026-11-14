@@ -27,7 +27,7 @@ variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategor
 include hZ in
 /-- 元の上側二胞体の第一短辺は、同じ指定零中間頂点への零値完全関手。 -/
 theorem zeroMiddleTriangle_first_zero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 2 s)).hom) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 2 s)).hom) :=
   isZeroVertex_functorVertex_of_pointwise _ (fun _ => hZ _)
 
 /-- 全 S• への中間対象変更は、同じ第一短辺の元の全 S• 実作用である。 -/

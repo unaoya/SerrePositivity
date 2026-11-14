@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierFiniteSpanRecovery
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.AnchoredFiniteFactorization
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.AnchoredFiniteFactorization
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneHomotopyExtension
 
 /-!

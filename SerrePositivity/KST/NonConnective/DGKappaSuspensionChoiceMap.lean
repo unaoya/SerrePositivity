@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I J : DGKappaConeInput R D κ)
   (P : DGKappaPerfectInput R D I) (Q : DGKappaPerfectInput R D J)
 local instance choiceConeStable (L : DGKappaConeInput R D κ) :
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D L)) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D L)) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R _
 local instance choiceKernelStable (L : DGKappaConeInput R D κ) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve R (DGKappaCone R D L) (dgKappaConePerfectObjects R D L)) :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R _ _
@@ -44,7 +44,7 @@ include P Q in
 theorem dgKappaSuspensionChoiceSource_kills :
     ∀ x ∈ Set.range ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I)
       (dgKappaConePerfectObjects R D I)).app (Opposite.op ⦋0⦌)),
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionChoiceSource R D I J).app (Opposite.op ⦋0⦌) x) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKappaSuspensionChoiceSource R D I J).app (Opposite.op ⦋0⦌) x) := by
   rintro _ ⟨z, rfl⟩
   have e := ((dgKappaConePerfectChoiceInclusionIso R D I J P Q).postcomp
     (dgKappaSuspensionProjection R D J)).app z

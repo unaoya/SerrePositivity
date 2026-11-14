@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredLifting
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FilteredLifting
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 
 /-!

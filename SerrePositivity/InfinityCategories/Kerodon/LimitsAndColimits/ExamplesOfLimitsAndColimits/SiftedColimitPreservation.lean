@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaPresheafSiftedColimits
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
@@ -64,3 +66,9 @@ lemma sigmaInclusion_preservesSmallSiftedColimits (C : SSet.{u}) :
   exact sigmaInclusion_map_isColimit D c hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.10" (partial := component) "仮定：有限余積を持つ小準圏 C（HTT と一致）。結論：元の包含の左随伴の存在、Yoneda の同じ因子化と有限余積保存、および PΣ の sifted 余極限閉性という (1) の反射部分・(2)・(4)（一致）。反射の accessibility、任意の随伴との (3) の iff、(6) の compact generation はこの組には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.sigmaInclusion_preservesSmallSiftedColimits
+attribute [cite HTT "5.5.8.14" (partial := direction) "仮定：有限余積を持つ小 C と PΣ(C) の対象 X（HTT と一致）。結論：実際の Ind(C) 値の全単体的図式と PΣ 内の実現 X が存在し、包含は実現を保つので元の P(C) 内でも同じ表示となる (1)⇒(2)（一致）。任意の P(C) 内の Ind 値表示から X の有限積保存を回収する逆向きはこの型の結論に含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.sigmaInclusion_preservesSmallSiftedColimits

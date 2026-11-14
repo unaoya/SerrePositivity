@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationTowerLimitCone
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.FibrationTowerLimitCone
 public import SerrePositivity.KST.Spectra.PointedSkeletalMappingTower
 public import SerrePositivity.KST.Spectra.TowerHomotopyComparison
 

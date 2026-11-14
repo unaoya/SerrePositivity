@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackAnodyneRestriction
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HigherHornEdgeCover
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.HigherHornEdgeCover
 
 /-!
 概要：三次元以上の内ホーンへの元の cocartesian Hom の制限は自明 Kan 同値。

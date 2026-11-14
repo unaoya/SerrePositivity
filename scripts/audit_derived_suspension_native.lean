@@ -1,11 +1,11 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeSquareModel
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGSuspensionNativeSquareModel
 import Lean
 /-! 未供給の全四角形・懸垂中間型の全宣言：許容三公理のみ。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeSquareModel]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGSuspensionNativeSquareModel]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

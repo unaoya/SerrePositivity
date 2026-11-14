@@ -30,7 +30,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 private theorem nativeBFCanonicalFiber_right :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgKappaNativeBFCanonicalFiberSquare R D I hBF).square =
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgKappaNativeBFSquare R D I hBF := by
-  rw [(dgKappaNativeBFCanonicalFiberSquare R D I hBF).right_edge, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  rw [(dgKappaNativeBFCanonicalFiberSquare R D I hBF).right_edge, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   exact SSet.yonedaEquiv.symm_apply_apply _
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
@@ -48,13 +48,13 @@ def dgKappaNativeBFConnectiveLoopSquare :
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I)))) where
   toZeroTriangle := (dgKappaNativeBFCanonicalFiberSquare R D I hBF).toZeroTriangle
   target_eq := by
-    have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFCanonicalFiberSquare R D I hBF).square 1 1 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 1 := by
+    have ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFCanonicalFiberSquare R D I hBF).square 1 1 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 1 := by
       rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target, nativeBFCanonicalFiber_right, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target]
     exact ht.trans (dgKappaNativeBFSquare_target R D I hBF)
   other_zero := by
-    have hs : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFCanonicalFiberSquare R D I hBF).square 1 0 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 0 := by
+    have hs : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFCanonicalFiberSquare R D I hBF).square 1 0 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 0 := by
       rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, nativeBFCanonicalFiber_right, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source]
     rw [hs, dgKappaNativeBFSquare_middle]
     exact dgKappaNativeResolvedConeK_isZeroVertex R D I hcofinal Z

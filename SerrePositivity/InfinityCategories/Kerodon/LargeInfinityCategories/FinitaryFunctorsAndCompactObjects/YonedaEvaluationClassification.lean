@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
@@ -68,3 +70,11 @@ def yonedaInfinityMap_evaluationIso {C : SSet.{u}} [Quasicategory C] (y : C _⦋
   exact yonedaEvaluation_universeIso y
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.5.2" (partial := special) "仮定：小さい単体集合 S と指定頂点（Lean が強い：S は準圏）。結論：同じ評価を分類する左ファイブレーションの全分類関手が、元の米田対象からの全共変 Hom と自然同型となる（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.yonedaEvaluation_classificationIso
+attribute [cite HTT "5.1.5.2" (partial := special) "仮定：小さい単体集合 S と指定頂点（Lean が強い：S は準圏）。結論：同じ評価を分類する左ファイブレーションの全分類関手が、元の米田対象からの全共変 Hom と自然同型となる（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.yonedaInfinityMap_evaluationIso
+attribute [cite HTT "5.1.6.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceUniverseDiagram
+attribute [cite HTT "5.1.6.8" (partial := component) "仮定：指定前層が元の米田像の retract（Lean が強い：S は準圏）。結論：同じ全共変 Hom は、準圏を形状とする任意の小余極限を保存する。米田評価と指定宇宙変更の同型、および retract の余極限判定で得る（(2) からの保存のうち準圏形状の部分に一致。任意の単体集合形状と (1)⇒(2) は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.yonedaInfinityMap_evaluationIso

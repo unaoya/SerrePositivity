@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSuspensionCanonicalMapData
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSuspensionCanonicalMapData
 import Lean
 /-! 固定 cell 比較の厳密則の全新規宣言：許容三公理のみ。 -/
 open Lean Elab Command in
@@ -7,7 +7,7 @@ run_cmd do
   let modules : Array Name := #[
     `SerrePositivity.DifferentialGraded.Resolution.Basic,
     `SerrePositivity.DifferentialGraded.Resolution.Cell,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSuspensionCanonicalMapData]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSuspensionCanonicalMapData]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

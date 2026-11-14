@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.RingTheory.ReesAlgebra
 public import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper
@@ -553,3 +555,8 @@ deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._pro
 
 @[deprecated (since := "2026-11-07")]
 deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_6
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (1.9)" (partial := component) "仮定：固定基底上の有限型スキーム、またはアフィン上の指定された通常ブローアップ（Lean が強い）。結論：抽象正方形の条件と通常例外因子の閉性。アフィン正則列中心の四角形として束ねた宣言は確認できない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalι_isClosedImmersion

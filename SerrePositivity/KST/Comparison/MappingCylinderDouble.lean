@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MappingCylinder
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.DoubleMappingCylinderDesc
 
 /-!
 # 二重写像円筒の二段階の pushout 表示

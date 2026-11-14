@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import Mathlib.Algebra.MonoidAlgebra.Module
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
@@ -16,7 +18,7 @@ public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 
 ## 概要
 自由整数 δ 環の mod p の Frobenius は自由で忠実平坦、Frobenius は p 完全忠実平坦。座標ごとの版
-（L/(p,z) → L/(p,φ(z)) の忠実平坦性、(p,φ(z)) の正則性）。勉強ノート第 2 章の命題 2.1.11 (2)。
+（L/(p,z) → L/(p,φ(z)) の忠実平坦性、(p,φ(z)) の正則性）。BS 著者版 Lemma 2.11 の Frobenius の忠実平坦性。
 
 ## 方針
 mod p では Frobenius が expand 写像 x ↦ x^p に一致し、各指数が p 未満の単項式を基底とする自由加群。
@@ -26,13 +28,13 @@ p 完全忠実平坦性は共通基盤の判定（源と終域が p 正則、mod
 本当の忠実平坦性は述べない。
 
 ## 使われ方
-今は監査だけが読む。BS 著者版 Lemma 2.36 (a)・BS 著者版 Corollary 2.44 で使う予定。
+自由 δ 環の Frobenius の比較と BS 著者版 Lemma 2.36・Corollary 2.44 に関わる分冪包の計算に用いる。
 -/
 
 @[expose] public noncomputable section
 universe u
 
-/-! ## B4-6：自由整数δ環のmod pの具体的表示（旧 Delta/Free/FreeDeltaModP.lean）
+/-! ## 自由整数δ環のmod pの具体的表示
 
 係数を素数体へ写す標準射の核を(p)と計算し、標準商同型を構成する。
 Frobeniusの平坦性への接続に使う。
@@ -99,7 +101,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaModP
 
-/-! ## B4-6：素数体係数の多項式Frobeniusの忠実平坦性（旧 Delta/Free/PrimePolynomialFrobeniusFlat.lean）
+/-! ## 素数体係数の多項式Frobeniusの忠実平坦性
 
 FrobeniusがMathlibのexpand射と一致することを証明して、既構成の単項式基底を使う。
 混標数の自由δ環のFrobeniusと完備化への接続は別工程。
@@ -146,7 +148,7 @@ end SerrePositivity.BhattScholze
 
 end PrimePolynomialFrobeniusFlat
 
-/-! ## B4-6：自由整数δ環の実際のmod p Frobeniusの自由性（旧 Delta/Free/FreeDeltaFrobeniusModPFlat.lean）
+/-! ## 自由整数δ環の実際のmod p Frobeniusの自由性
 
 標準商同型と素数体の単項式基底を半線形同値で接続する。
 混標数Frobeniusの完全平坦性をこの結果だけから推論しない。
@@ -242,7 +244,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaFrobeniusModPFlat
 
-/-! ## G3による自由整数δ環Frobeniusのp完全忠実平坦性（旧 Delta/Free/FreeDeltaFrobeniusCompletelyFlat.lean） -/
+/-! ## G3による自由整数δ環Frobeniusのp完全忠実平坦性 -/
 
 section FreeDeltaFrobeniusCompletelyFlat
 
@@ -346,7 +348,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaFrobeniusCompletelyFlat
 
-/-! ## 自由δ環Frobeniusの指定変数による実剰余射の忠実平坦性（旧 Delta/Free/FreeDeltaFrobeniusCoordinateResidueFlat.lean）
+/-! ## 自由δ環Frobeniusの指定変数による実剰余射の忠実平坦性
 
 対象はL/(p,z)→L/(p,φ(z))の通常射。完備化後の完全忠実平坦性は別工程。
 -/
@@ -474,7 +476,7 @@ end SerrePositivity.BhattScholze
 
 end FreeDeltaFrobeniusCoordinateResidueFlat
 
-/-! ## 自由δ Frobeniusの指定変数に沿う正則対（旧 Delta/Free/FreeDeltaFrobeniusCoordinateRegular.lean）
+/-! ## 自由δ Frobeniusの指定変数に沿う正則対
 
 自由整数δ環に限る入力。一般perfectoid環のp正則性は要求しない。
 通常の正則対と、完備化後の完全忠実平坦性は区別する。
@@ -591,3 +593,9 @@ theorem freeDeltaFrobeniusCoordinate_residue_torAlg_subsingleton
 end SerrePositivity.BhattScholze
 
 end FreeDeltaFrobeniusCoordinateRegular
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 2.11" (partial := special) "係数は Z（原典は Z_(p)）、多項式環としての記述と普遍性。Frobenius は mod p で自由・忠実平坦、p 完全忠実平坦まで（「本当の忠実平坦性は述べない」）。Q{x} の主張は未 ／ DOC1 照合：ok 4 件"] _root_.SerrePositivity.BhattScholze.freeDeltaFrobenius_isCompletelyFaithfullyFlat
+attribute [cite BS19 "Lemma 2.11" (partial := special) "係数は Z（原典は Z_(p)）、多項式環としての記述と普遍性。Frobenius は mod p で自由・忠実平坦、p 完全忠実平坦まで（「本当の忠実平坦性は述べない」）。Q{x} の主張は未 ／ DOC1 照合：ok 4 件"] _root_.SerrePositivity.BhattScholze.freeDeltaModPFrobenius_moduleFaithfullyFlat

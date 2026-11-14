@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceEdgeComposition
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.EdgeTransportPointLift
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.EdgeTransportPointLift
 
 /-! # 元の coslice fiber 点の輸送は、同じ点の矢印と底の辺の合成を表す
 

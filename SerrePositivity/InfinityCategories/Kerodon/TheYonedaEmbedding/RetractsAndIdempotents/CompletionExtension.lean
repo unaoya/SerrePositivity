@@ -1,9 +1,11 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.PresheafCompletionValues
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.PresheafDiagramRecovery
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningFunctorIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.GrothendieckConstruction.SmallUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：元の全部分圏の冪等完備化に沿って、冪等完備な標的への全関手を延長する。
@@ -45,3 +47,8 @@ lemma exists_extension_to_complete_of_full_inclusion {K C E : SSet.{u}}
   exact ⟨H, ⟨_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.functorIsoDown h₂⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.4.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_extension_to_complete_of_full_inclusion

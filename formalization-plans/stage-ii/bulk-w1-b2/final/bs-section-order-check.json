@@ -1,0 +1,601 @@
+{
+  "modules": 586,
+  "paper_section_reverse_edges": [
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.coefficientTensorLift",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "OrdinaryRootsの根の付加で係数テンソルの写像coefficientTensorLiftを使う。WittPushoutにある既存の係数射への依存を保持する案。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§7",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.map_mem_perfectoidIdeal",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.perfectoidIdeal",
+          "usages": 6
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "TorDescentでperfectoidIdealとその写像に関する包含を用いる。§10にまとめたイデアルの定義を重複して§7へ置かない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "from_section": "§7",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_aic_principal_cover",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "TorDescentでaic principal coverから得る既存のpower-torsion/Tor入力を用いる。新しい仮定・界面への置換は行わない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.integralPerfectoid_torCoefficientScalar_eq_zero_iff_completedBaseChangeTor",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidization_torCoefficientScalar_eq_zero_iff_baseChangedPerfectoidizationTor",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "TorDescentの係数Tor条件を完備底変換の条件へ読み替える二つの同値を用いる。§8の完備底変換の補題を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "to": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Existence.IntegralExistence",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.PerfectoidizationInterface.specified_disc",
+          "usages": 4
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "導来Excisionで積分perfectoid化の指定された離散性specified_discを参照する。存在の定義を§8側へ複製せず既存の§10の入力として残す案。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.perfectoidIdeal",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.quotientPerfectoidizationMap",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.quotientPerfectoidizationMap_mk",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "ExcisionでperfectoidIdealと商へのperfectoid化写像・その生成元の式を用いる。定義の所有元を§10に保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.perfectoidIdeal_le_ker_of_eq_zero",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "Excisionの核の包含にperfectoidIdeal_le_ker_of_eq_zeroを用いる。イデアルの一般的な被覆補題を既存の§10から参照する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.perfectoidIdeal_ker_coker_annihilated_of_isPullback",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "ExcisionComparisonでpullbackから得る核・余核のannihilationを用いる。PerfectoidIdeal/Coverの同一の補題を再利用する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "to": "SerrePositivity.BhattScholze.Almost.SupportedQuotient",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.exists_image_perfectoidization_almost_comparison",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidization_image_ker_coker_annihilated",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "ExcisionTorで像へのalmost比較と核・余核のannihilationを用いる。Almost/SupportedQuotientで構成した比較を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_iff_of_almost_comparison",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "ExcisionTorでalmost比較をpower-torsion/Tor入力へ移す同値を用いる。完備商の既存の補題を参照する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [],
+      "classification": "import visibility only; no direct reference in original compiler index",
+      "proposed_reason": "元のコンパイラ索引に直接の定数参照はない。見せ直し・推移的なinstance等の意味をこの移動だけで変更しないためimportを保持し、不要importの削除とは区別する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_aic_principal_cover",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "有限性比較のexcisionでaic principal coverのpower-torsion/Tor入力を用いる。PerfectoidIdeal/Torの既存の定理を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Site.PrismOver",
+      "from_section": "§3",
+      "to_section": "§3.12/4.1",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [],
+      "classification": "import visibility only; no direct reference in original compiler index",
+      "proposed_reason": "元のコンパイラ索引に直接の定数参照はない。PrismOverのimportによる可視性を維持する案であり、§3の表示だけを根拠にimportを削除しない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechPrismBaseChange",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.BaseChange.AffineEnvelopeBaseChangeCoefficients",
+      "from_section": "§4",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.exists_affineEnvelopeCoefficientBaseChange_equiv",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "affine Čech prismの底変換で係数の底変換同型の存在を用いる。§6の係数比較を既存の入力として利用する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetraction",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor.base_ker",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor.frame",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "結晶側のPD retractionでWittのPD多項式模型のframeとbase_kerを用いる。型の所有元とその仮定を保ち、新しい一般化は行わない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetractionSplit",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.pdTermCompletionUnitAlg",
+          "usages": 6
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "PD retractionの分裂でpdTermCompletionUnitAlgを用いる。§6.4の完備化の単位の代数射を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDDeltaFrobeniusEvaluation",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.exists_deltaStructure_of_pdPolynomial",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "PDのFrobenius評価で分冪多項式からδ構造を得る存在定理を用いる。既存のPDFrobeniusLiftの型を保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Envelopes.PDModelCompletionQuotient",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [],
+      "classification": "import visibility only; no direct reference in original compiler index",
+      "proposed_reason": "元のコンパイラ索引に直接の定数参照はない。完備化と商の模型の見せ直しを保持し、importの整理は別に判定する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawRingHomExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.factorial_regular",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "未完備環の射の外延性で階乗の正則性factorial_regularを用いる。現行の係数環・仮定における補題を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDTermRingHomExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.pdTermCompletionUnitAlg",
+          "usages": 3
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "PD項の環準同型の外延性でpdTermCompletionUnitAlgを用いる。完備化の単位への参照を保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystalline",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.exists_deltaStructure_of_pdPolynomial",
+          "usages": 3
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "結晶用PD包絡で分冪多項式からδ構造を得る存在定理を用いる。δ構造の新しい汎用界面を作らず既存の定理を使う。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystallineMaps",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDPrismMaps",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.isDPMorphism_primeSpan",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "結晶用PD包絡の射でprime-spanの分冪射条件isDPMorphism_primeSpanを用いる。WittPDPrismMapsの既存の条件・型を保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.exteriorZero_one",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "PD de Rhamのrow形式の外延性で外積の次数0の単位exteriorZero_oneを用いる。§6.4の置換構成の補助を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.d_vertex",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.rowModule",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "PD de Rhamのrow形式の外延性でrowModuleとd_vertexを用いる。既存のrowの加群・微分の定義を複製しない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.factorial_regular",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "分冪の未完備の連鎖律で階乗の正則性factorial_regularを用いる。現在の仮定を保つ既存の補題への参照として残す。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substitute",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substitute_copy",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "分冪の未完備の連鎖律で多項式代入substituteとコピーに関する式を用いる。§6.4に置いた係数付きの代入の定義を保持する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionJacobian",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.evalVertex",
+          "usages": 4
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "代入のJacobianの式でevalVertexを用いる。頂点での評価の定義を§6.4の既存の代入の構成から参照する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Site.CrystallineSmallCoverMaps",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.CrystallineBaseStructureRestriction",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crysBaseRestrictionSite",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "結晶siteの小さい被覆の射でcrysBaseRestrictionSiteを用いる。既存の基底制限siteを入力に取り、新しいsiteの型を作らない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCompletedFreeDelta",
+      "from_section": "§4.2",
+      "to_section": "§5",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crystallinePrincipalCompletionOfZero",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crystallinePrincipalCompletionOfZero_unit",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "HT側の完備Cartier形式でゼロからの結晶主完備化とその単位を用いる。結晶比較側にある同じ完備化の構成を入力として保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineGeneratorClasses",
+      "from_section": "§4.2",
+      "to_section": "§5",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crystallineChain_generators",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "HT-Cartierの組み立てでcrystallineChain_generatorsを用いる。結晶側で構成済みの生成元の類を同じ名前・型で読む。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.exists_perfectoidizationTensorBaseChange",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap_isPerfectoidization",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "根の包絡のSourceでperfectoid化のテンソル底変換、その写像と普遍性の三宣言を用いる。§8の底変換の構成を複製しない。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialAdicCompletionPerfectoid",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "根の族のperfectoid性でmonomialAdicCompletionPerfectoidを用いる。根の付加の完備化に関する既存の§8の入力を保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.exists_perfectoidizationTensorBaseChange",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap_isPerfectoidization",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "Surjectivityでperfectoid化のテンソル底変換、その写像と普遍性を用いる。§8の存在・写像の型を保つ。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.coefficientTensorLift",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.coefficientTensorLift_tmul",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "proposed_reason": "Surjectivityで係数テンソル射と純テンソル上の式を用いる。WittPushoutの同じ係数射を再利用する。",
+      "approval": "proposal at B2 stop-point; does not imply a five-tier violation"
+    }
+  ],
+  "unclassified_aggregate_or_inputs": [
+    "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface",
+    "SerrePositivity.BhattScholze.Perfectoid.FiniteProduct"
+  ],
+  "delta_to_later_sections": [],
+  "note": "Section order is an inventory, not a five-tier error rule; retain explicit mathematical dependencies with reasons.",
+  "classification_counts": {
+    "direct declaration reference": 31,
+    "import visibility only": 3
+  },
+  "reason_policy": "Reasons identify actual compiler-referenced declarations; no new generalization, interface or axiom is introduced. These are paper-section-order proposals, separate from the five-tier exception decision."
+}

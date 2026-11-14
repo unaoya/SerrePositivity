@@ -32,7 +32,7 @@ lemma multiSource_mem_wide (supply : StableWideCofinalitySupply.{u})
   intro θ
   let a := (((multiSEndofunctor r).obj ι).obj X).carrier.map θ.op s
   let q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a)
-  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (F.val.app (Opposite.op ⦋1⦌) a)) := {
+  let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (F.val.app (Opposite.op ⦋1⦌) a)) := {
     toZeroTriangle := (q.map F.val).toZeroTriangle
     bottom_edge := (q.map F.val).bottom_edge
     isPushout := (q.map F.val).isPushout }

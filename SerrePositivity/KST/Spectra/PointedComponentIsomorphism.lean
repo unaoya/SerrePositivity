@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-!
 概要：全基点 π_* 同型への後合成は点つき射の成分の等式を反映する。

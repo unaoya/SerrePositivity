@@ -1,9 +1,11 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.DGPointedQuotientEndZero
 public import SerrePositivity.KST.SConstruction.DGPointedQuotientEndExtension
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Category
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedZeroVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Category
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedZeroVertex
 
 /-! # 元の dg gluing の対角商と (0,b,0) の実 dg End
 概要：元の零対象・右対象・実対角関手を保持し、その対角像の商の指定 End を構成する。
@@ -25,7 +27,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [_root_.SerrePositivity.Differen
 structure DGLaxQuotientEndInput where
   diagonal : DGFunctor R P (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
   leftZero : C
-  leftZero_isZero : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex leftZero)
+  leftZero_isZero : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex leftZero)
   rightPoint : D
 
 namespace DGLaxQuotientEndInput
@@ -57,7 +59,7 @@ lemma point_comparison : d.point.gluing = 0 := rfl
 
 omit [Small.{u} D] in
 /-- 指定した同じ左成分は、元の dg nerve の零対象。 -/
-lemma point_left_isZero : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex d.point.left) :=
+lemma point_left_isZero : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex d.point.left) :=
   d.leftZero_isZero
 
 /-- 元の実対角像を消す、同じ dg gluing の Drinfeld 商の対象。 -/
@@ -85,9 +87,14 @@ lemma end_hom (x y : d.endObject) : _root_.SerrePositivity.DifferentialGraded.ho
 
 /-- 元の対角像は、同じ指定 ε により実商の dg nerve の零対象になる。 -/
 lemma diagonal_isZero (a : P) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R d.quotientObject)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R d.quotientObject)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (d.projection.obj (d.diagonal.obj a))) :=
   pointedDGQuotientDiagonal_isZero R d.diagonal a
 
 end DGLaxQuotientEndInput
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Construction §1 ⊙" (partial := component) "仮定：可換基礎環上の dg 圏、指定対角・左零・右代表（Lean が強い）。結論：(0,b,0) の dg 商での自己準同型とその dg 代数模型。一般の E₁ 環スペクトル版との比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endObject

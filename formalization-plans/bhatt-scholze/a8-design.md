@@ -9,9 +9,13 @@ Prop 8.13 と帰納法の仮定で (S/g_1)_perfd が連結、Lemma 10.5 で g_1-
 方針：E3 に要るのは Thm 10.11 と、そのための Thm 10.9 の **J-almost 連結性の部分だけ**（almost 有限射影性・不分岐性は不要）。
 その部分は、原典の証明の (1)(2)（Cor 8.12 で整な取り替え、Thm 7.14 で絶対整閉な基底、有限エタール被覆の Zariski 局所分裂、自明な被覆との比較）
 だけで示せ、(3)(4)（Σ_r Galois 閉包 [And18b, Lemma 1.9.2]、Prop 10.8 [And18b, Prop 1.9.1]、次数一定の開閉分解）は要らない（§3.2、決定項目 1）。
-Lemma 10.12 は古典的な可換環論の独立した単位（A8-3）。§10.1（Def 10.1、Prop 10.2、Lemma 10.3、Rem 10.7）は形式化済み（B5）。
-規約：S は離散（E3 の始域）。R は Not 8.1 の perfectoid 環。J-almost は既存の `IsAlmostZero`・`perfectoidIdeal`（Almost/）。Lean の名前は仮。ビルドしない。
+Lemma 10.12 は古典的な可換環論の独立した単位（A8-3）。§10.1（Def 10.1、Prop 10.2、Lemma 10.3、Rem 10.7）は形式化済み（B5）（11-13 追記：B5 は単項 g の場合。一般の J は BS-W13 の `perfectoidKernel`（Almost/AlmostConnectivity:38））。
+規約：S は離散（E3 の始域）。R は Not 8.1 の perfectoid 環。J-almost は既存の `IsAlmostZero`・`perfectoidIdeal`（Almost/。11-13：`perfectoidIdeal` は単項、一般の J の J_perfd は本体 `perfectoidKernel`）。Lean の名前は仮。ビルドしない。
 使われ方：E3 の `integral`。環の帰結 `exists_perfectoidization_of_integral`・`_of_finite` は界面から証明済み（`Perfectoidization/Derived/IntegralExistence`）。
+（11-13 追記）BS-W13（11-10、main 1d9eb11ee・1c36c06c3）で、perfd を使わない部品が本体に入った：Prop 10.4 の複体版・Lemma 10.5・J-almost の基本の一部（`BhattScholze/Almost/`
+の AlmostConnectivity・AlmostTensor・AlmostTensorForward・AlmostGenerators・CompletedModuleTensor）、G-A8-3′（`Almost/FiniteEtaleComparison`）、G-A8-3″・8〜11
+（`Perfectoidization/Derived/{IntegralClosureCompletion,PerfectoidFilteredColimit,IntegralApproximation,IntegralClosureApproximation}`）。G-A8-4・5・7 は BS-W10 作業 B、
+G-A8-6 は BS-W11。Thm 10.9 の J-almost 連結性と Thm 10.11 の組み立て、底変換での反映（C1′）は drafts/A8 のまま（接続の型は drafts/A8/W13AssemblyInputs）。§4 の表の「既存」の欄も参照。
 
 ## 0. 範囲と前提
 
@@ -29,9 +33,9 @@ Lemma 10.12 は古典的な可換環論の独立した単位（A8-3）。§10.1�
 
 | 原典 | 扱い | Lean の形（§2） | 既存・不足 | 単位 |
 | --- | --- | --- | --- | --- |
-| Prop 10.4 | 定理（必要な部分）：導来 p 完備な複体 M について、M が J-almost 零（全 H^i が J-almost 零）⇔ J_perfd ⊗̂^L_R M = 0 | `isAlmostZero_iff_completedTensor_isZero` | 加群版は既存（B5）。複体は truncation の帰納 | A8-1 |
-| Lemma 10.5 | 定理：p 完備な M が連結 ⇔ M ⊗̂^L R/J_perfd が連結かつ M が J-almost 連結 | `connective_iff_almost` | Prop 10.4、三角形 J_perfd ⊗̂ M → M → (R/J)_perfd ⊗̂ M | A8-1 |
-| J-almost の基本 | 定理：J-almost は √J で不変；J = (f_1..f_r) で J-almost ⇔ ∀i (f_i)-almost；忠実平坦な perfectoid の基底変換 R → R′ で反映（(JR′)_perfd = J_perfd R′） | `isAlmostZero_radical`、`isAlmostZero_iff_forall_gen`、`isAlmostZero_baseChange_iff` | Rem 10.7 の隣、Prop 8.13 | A8-1 |
+| Prop 10.4 | 定理（必要な部分）：導来 p 完備な複体 M について、M が J-almost 零（全 H^i が J-almost 零）⇔ J_perfd ⊗̂^L_R M = 0 | `isAlmostZero_iff_completedTensor_isZero` | 加群版は既存（B5）。複体は truncation の帰納。**11-13：済**（`isAlmostZero_iff_completedTensor_isZero`（Almost/AlmostTensorForward:394）、BS-W13） | A8-1 |
+| Lemma 10.5 | 定理：p 完備な M が連結 ⇔ M ⊗̂^L R/J_perfd が連結かつ M が J-almost 連結 | `connective_iff_almost` | Prop 10.4、三角形 J_perfd ⊗̂ M → M → (R/J)_perfd ⊗̂ M。**11-13：済**（`connective_iff_almost`（Almost/AlmostTensorForward:480）） | A8-1 |
+| J-almost の基本 | 定理：J-almost は √J で不変；J = (f_1..f_r) で J-almost ⇔ ∀i (f_i)-almost；忠実平坦な perfectoid の基底変換 R → R′ で反映（(JR′)_perfd = J_perfd R′） | `isAlmostZero_radical`、`isAlmostZero_iff_forall_gen`、`isAlmostZero_baseChange_iff` | Rem 10.7 の隣、Prop 8.13。11-13：根基と生成元は本体（`isAlmostZero_radical`（Almost/AlmostConnectivity:96）、`isAlmostZero_iff_forall_gen`（Almost/AlmostGenerators:155））、底変換での反映は drafts | A8-1 |
 | Thm 10.9（J-almost 連結性） | 定理（結論を弱め、証明を短縮）：S 有限 R 代数、S[1/f] が R[1/f] 上有限エタール（f ∈ J の各生成元）⇒ S_perfd は J-almost 連結 | `perfectoidization_almostConnective_of_finiteEtaleAway` | Thm 7.14、`finiteEtaleAway_exists_finite_cover`、Cor 8.12、G-A6-2、`perfectoidization_of_perfectoid` | A8-2 |
 | Thm 10.9（残り） | 不要（almost 有限射影・不分岐、V(J) の外の同型、Galois） | — | — | — |
 | Def 10.6、Prop 10.8 | 不要（決定項目 1） | — | — | — |
@@ -43,7 +47,7 @@ Lemma 10.12 は古典的な可換環論の独立した単位（A8-3）。§10.1�
 
 ### 2.1 J-almost（既存の上）と Lemma 10.5
 
-- J ⊂ R 導来 p 完備（E3 では有限生成）、J_perfd := ker(R → (R/J)_perfd)（既存 `perfectoidIdeal`、Thm 7.4 で全射）。M（D(R)、導来 p 完備）が
+- J ⊂ R 導来 p 完備（E3 では有限生成）、J_perfd := ker(R → (R/J)_perfd)（既存 `perfectoidIdeal`、Thm 7.4 で全射。11-13：一般の J は本体 `perfectoidKernel`（Almost/AlmostConnectivity:38）、全射は `quotientPerfdMap_surjective`（:100）。`perfectoidIdeal` は単項 g の版）。M（D(R)、導来 p 完備）が
   J-almost 連結 ⇔ H^i(M) が J-almost 零（∀ i > 0）。
 - `isAlmostZero_iff_completedTensor_isZero`（Prop 10.4 の必要部分）：加群版（既存 `perfectoidIdeal_completedTensor_isZero_of_isAlmostZero`・
   `_of_completedTensor_isZero`——**単項 g : R の版**。一般の J は K := J_perfd = ker(R → B)、B := (R/J)_perfd に対する補題として一般化し、一般の perfectoid 商の
@@ -181,19 +185,19 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
 
 | # | 内容 | 既存 | 使う箇所 |
 | --- | --- | --- | --- |
-| G-A8-1 | Prop 10.4 の複体版（truncation の帰納と極限・余極限。非有界版の内部補題：U : D_{p-comp}(B) → D_{p-comp}(R) の完全忠実性と極限・余極限保存、像の Postnikov 閉性。一般 J は K = ker(R → B) で、単項 `perfectoidIdeal` の API とは分ける）、Lemma 10.5。**系（W9-III-10）**：導来 p 完備な M について「M は J-almost 連結」⇔「K ⊗̂^L M は連結」（⇒ は Prop 10.4 で K ⊗̂ τ^{>0}M = 0、⇐ は三角形で i > 0 の H^i(M) が R/K 加群の H^i に一致）；よって **almost 連結な完備複体は完備 filtered 余極限で閉じる**（完備テンソルは完備余極限を保ち、連結な複体は完備 filtered 余極限で閉じる：通常の filtered 余極限は完全で LΛ_p は D^{≤0} を保つ） | 加群版は既存（B5） | A8-1、3.3 の 5 |
+| G-A8-1 | Prop 10.4 の複体版（truncation の帰納と極限・余極限。非有界版の内部補題：U : D_{p-comp}(B) → D_{p-comp}(R) の完全忠実性と極限・余極限保存、像の Postnikov 閉性。一般 J は K = ker(R → B) で、単項 `perfectoidIdeal` の API とは分ける）、Lemma 10.5。**系（W9-III-10）**：導来 p 完備な M について「M は J-almost 連結」⇔「K ⊗̂^L M は連結」（⇒ は Prop 10.4 で K ⊗̂ τ^{>0}M = 0、⇐ は三角形で i > 0 の H^i(M) が R/K 加群の H^i に一致）；よって **almost 連結な完備複体は完備 filtered 余極限で閉じる**（完備テンソルは完備余極限を保ち、連結な複体は完備 filtered 余極限で閉じる：通常の filtered 余極限は完全で LΛ_p は D^{≤0} を保つ） | 加群版は既存（B5）。**11-13：済**（`isAlmostZero_iff_completedTensor_isZero`・`isAlmostConnective_iff_completedTensor_connective`・`connective_iff_almost`（Almost/AlmostTensorForward:394・471・480）、BS-W13） | A8-1、3.3 の 5 |
 | G-A8-2 | J-almost の基本：√J 不変、生成元ごと（animated テンソル Q → π_0 Q = R/J → Prop 8.5 系 4 → Prop 8.13。離散商の等式ではない、W9-III-03）、忠実平坦な基底変換で反映 | Rem 10.7 の既存の隣 | A8-1、3.2 |
-| G-A8-3 | ~~有限 R 加群は導来 p 完備~~（**偽**、W9-III-01 の反例 R = ∏V、R/⊕V）。正：**有限表示** R 加群は導来 p 完備（既存 `isModuleComplete_of_finitePresentation`）；完備な加群の核・余核・有限積（既存 `ModuleClosure`）；主イデアル (g)・gS・gR^r は乗法写像の像 | `HomologicalAlgebra/DerivedCompletion/{FinitePresentationComplete,ModuleClosure}.lean` | 3.2 の 4、Cor 8.12 の前提 |
-| G-A8-3′ | 比較環 S′ の有限性（e_j s_a で生成、S → S′・R^r → S′ は整）と導来 p 完備性（R 被約で R̄ = R/ann(g) 完備、S′ ≅ g^N S′ ⊂ R̄^r）。W9-III-01 の修復計算（Codex 第 3 部で ○） | なし | 3.2 の 4 |
-| G-A8-3″ | 整写像 S → S′ が g の外で同型（S[1/g] ≅ S′[1/g]）なら `ArcOutside`（Frac(V) へ延長し、整閉性で V へ）。局所化の同型だけでは不成立（W9-III-02 の反例）。界面の「g 非零」を「g 可逆」に弱めない | なし（Mathlib `ValuationRing` の整閉性） | 3.2 の 4 |
-| G-A8-4 | 普遍同相（整・Spec 全射・radicial）の定義と、標数 p での判定（**核は nil イデアル**＝各元が冪零（`RingHom.ker f ≤ nilradical A`）、一様な冪零指数は要求しない；各 b ∈ B に或る n で b^{p^n} ∈ im f、n は b ごと）、底変換・合成・nil 核をもつ全射。有限表示（Lemma 10.12 の場合）なら核は有限生成なので nil ⇒ 冪零だが、一般の補題は nil で述べる（11-03、Codex の質問への回答。W9 第 3 部続き 2 §3.5 の「一様な指数は不要」と同じ） | なし（Mathlib に部分品？要確認） | Lemma 10.12、3.3 |
-| G-A8-5 | 完全 F_p 環から被約環への普遍同相は同型 | なし | 3.3 の 3・5 |
-| G-A8-6 | perfectoid 環上の有限エタール代数は perfectoid（S/p で相対 Frobenius 同型、W(S^♭) = W(R^♭) のエタール持ち上げ、ker θ_S = d） | なし（要確認：`Prism/Perfectoid` の隣） | 3.3 の 3 |
+| G-A8-3 | ~~有限 R 加群は導来 p 完備~~（**偽**、W9-III-01 の反例 R = ∏V、R/⊕V）。正：**有限表示** R 加群は導来 p 完備（既存 `isModuleComplete_of_finitePresentation`）；完備な加群の核・余核・有限積（既存 `ModuleClosure`）；主イデアル (g)・gS・gR^r は乗法写像の像 | `HomologicalAlgebra/DerivedCompletion/ModuleComplete/{Presentation,Closure}.lean`（`isModuleComplete_of_finitePresentation`、`isModuleComplete_ker`・`_coker`） | 3.2 の 4、Cor 8.12 の前提 |
+| G-A8-3′ | 比較環 S′ の有限性（e_j s_a で生成、S → S′・R^r → S′ は整）と導来 p 完備性（R 被約で R̄ = R/ann(g) 完備、S′ ≅ g^N S′ ⊂ R̄^r）。W9-III-01 の修復計算（Codex 第 3 部で ○） | なし。**11-13：済**（`trivialCoverComparison_finite`・`_integral`・`_localization_iso`・`_isModuleComplete`（Almost/FiniteEtaleComparison）、BS-W13） | 3.2 の 4 |
+| G-A8-3″ | 整写像 S → S′ が g の外で同型（S[1/g] ≅ S′[1/g]）なら `ArcOutside`（Frac(V) へ延長し、整閉性で V へ）。局所化の同型だけでは不成立（W9-III-02 の反例）。界面の「g 非零」を「g 可逆」に弱めない | なし（Mathlib `ValuationRing` の整閉性）。**11-13：済**（`arcOutside_of_integral_of_localization_iso`（Perfectoidization/Derived/IntegralClosureCompletion:47）、BS-W13） | 3.2 の 4 |
+| G-A8-4 | 普遍同相（整・Spec 全射・radicial）の定義と、標数 p での判定（**核は nil イデアル**＝各元が冪零（`RingHom.ker f ≤ nilradical A`）、一様な冪零指数は要求しない；各 b ∈ B に或る n で b^{p^n} ∈ im f、n は b ごと）、底変換・合成・nil 核をもつ全射。有限表示（Lemma 10.12 の場合）なら核は有限生成なので nil ⇒ 冪零だが、一般の補題は nil で述べる（11-03、Codex の質問への回答。W9 第 3 部続き 2 §3.5 の「一様な指数は不要」と同じ） | なし（Mathlib に部分品？要確認）。**11-13：済**（`IsUniversalHomeomorphism`・`isUniversalHomeomorphism_iff_charP`（CommutativeAlgebra/UniversalHomeomorphism/Basic:502）、BS-W10 作業 B） | Lemma 10.12、3.3 |
+| G-A8-5 | 完全 F_p 環から被約環への普遍同相は同型 | なし。**11-13：済**（`isUniversalHomeomorphism_bijective_of_perfect_reduced`（CommutativeAlgebra/UniversalHomeomorphism/Basic:528）） | 3.3 の 3・5 |
+| G-A8-6 | perfectoid 環上の有限エタール代数は perfectoid（S/p で相対 Frobenius 同型、W(S^♭) = W(R^♭) のエタール持ち上げ、ker θ_S = d） | なし（要確認：`Prism/Perfectoid` の隣）。**11-13：済**（`isIntegralPerfectoid_of_finiteEtale`（Perfectoidization/Derived/FiniteEtalePerfectoid:434）、BS-W11） | 3.3 の 3 |
 | G-A8-7 | 層別の底変換不変性（有限エタール・普遍同相・被約商）、全商環からの広げ（noetherian） | Mathlib（部分） | Lemma 10.12 |
-| G-A8-8 | perfectoid 環の p 完備化した filtered 余極限は perfectoid で、導来 p 完備化は離散（p^∞ ねじれは p で殺される、Lemma 2.34 (2)）。証明（Codex 第 3 部続き 2 で ○）：共通の基底（一つの対象 λ₀ を選び cofinal な λ₀/ へ）の完全 prism (B_λ, d) を取り（Thm 3.10・剛性で同じ d）、C = colim B_λ は完全 δ 環で p・d は非零因子、C/d = P；まず p 完備化（p ねじれなしで離散、φ^{-1} は p 進連続）、mod d の cofiber は完備化と可換で LΛ_p P = P̂ が離散なので完備化後も d は非零因子；次に d 完備化（Lemma 3.9 の順序）で離散な (p,d) 完備 D、D/d = P̂、φ は (p,d) と (p,d^p) の同値な位相の間の同型で D は完全 δ 環、(D,(d)) は完全 prism、Thm 3.10 で P̂ は perfectoid。W は任意の filtered 余極限と可換とは言わない。**使う場所は Thm 10.11 の最初の帰着（有限表示有限 S の連結性が済み Cor 8.14 で perfd が perfectoid と分かった後、一般の整代数へ戻す段）だけ**。§3.3 の 5 の A_λ の段では各 (A_λ)_perfd が perfectoid とはまだ分からないので使わず、G-A8-1 の系を使う（W9-III-10） | 要確認（`Prism/Perfectoid`） | 3.3 の 1 |
-| G-A8-9 | 整 R 代数は有限表示有限 R 代数の filtered 余極限 | Mathlib（`Algebra.FinitePresentation`、要確認） | 3.3 の 1 |
-| G-A8-10 | Thm 10.11 の整閉包 T と T̂ = completionRing T（W9-III-04）：S → T は整（S_red 経由、T ⊂ B）；S → T・S → T̂ は ArcOutside（S_red → W、Frac(W)、整閉性、W の p 完備性で T̂ へ）；T の p 冪ねじれは有界（B は R[1/g_1] 上平坦、Lemma 2.34 (2)）なので T̂ は離散で導来 p 完備化と一致；Cor 8.12 を S → T̂ に適用し e3Perfd(T) = T̂_perfd（D41）；商の比較は A6 §2.3 の自然同型。生の T の完備性は偽（収束列環の反例） | なし（`completionRing`、A6 の `homPresheaf_completionRing_iso`） | 3.3 の 5 |
-| G-A8-11 | 局所化を固定した有限表示有限近似（W9-III-06）：T への写像を備えた有限表示有限 R 代数 A_λ の filtered 系で A_λ[1/g_1] ≅ B、余極限 T。部分代数・単射性は要求しない | なし（Mathlib `Algebra.FinitePresentation`） | 3.3 の 5 |
+| G-A8-8 | perfectoid 環の p 完備化した filtered 余極限は perfectoid で、導来 p 完備化は離散（p^∞ ねじれは p で殺される、Lemma 2.34 (2)）。証明（Codex 第 3 部続き 2 で ○）：共通の基底（一つの対象 λ₀ を選び cofinal な λ₀/ へ）の完全 prism (B_λ, d) を取り（Thm 3.10・剛性で同じ d）、C = colim B_λ は完全 δ 環で p・d は非零因子、C/d = P；まず p 完備化（p ねじれなしで離散、φ^{-1} は p 進連続）、mod d の cofiber は完備化と可換で LΛ_p P = P̂ が離散なので完備化後も d は非零因子；次に d 完備化（Lemma 3.9 の順序）で離散な (p,d) 完備 D、D/d = P̂、φ は (p,d) と (p,d^p) の同値な位相の間の同型で D は完全 δ 環、(D,(d)) は完全 prism、Thm 3.10 で P̂ は perfectoid。W は任意の filtered 余極限と可換とは言わない。**使う場所は Thm 10.11 の最初の帰着（有限表示有限 S の連結性が済み Cor 8.14 で perfd が perfectoid と分かった後、一般の整代数へ戻す段）だけ**。§3.3 の 5 の A_λ の段では各 (A_λ)_perfd が perfectoid とはまだ分からないので使わず、G-A8-1 の系を使う（W9-III-10） | 要確認（`Prism/Perfectoid`）。**11-13：済**（`isIntegralPerfectoid_completedFilteredColimit`（Perfectoidization/Derived/PerfectoidFilteredColimit:98）、BS-W13） | 3.3 の 1 |
+| G-A8-9 | 整 R 代数は有限表示有限 R 代数の filtered 余極限 | Mathlib（`Algebra.FinitePresentation`、要確認）。**11-13：済**（`integral_isFilteredColimit_finitePresentation`（Perfectoidization/Derived/IntegralApproximation:275）、BS-W13） | 3.3 の 1 |
+| G-A8-10 | Thm 10.11 の整閉包 T と T̂ = completionRing T（W9-III-04）：S → T は整（S_red 経由、T ⊂ B）；S → T・S → T̂ は ArcOutside（S_red → W、Frac(W)、整閉性、W の p 完備性で T̂ へ）；T の p 冪ねじれは有界（B は R[1/g_1] 上平坦、Lemma 2.34 (2)）なので T̂ は離散で導来 p 完備化と一致；Cor 8.12 を S → T̂ に適用し e3Perfd(T) = T̂_perfd（D41）；商の比較は A6 §2.3 の自然同型。生の T の完備性は偽（収束列環の反例） | なし（`completionRing`、A6 の `homPresheaf_completionRing_iso`）。**11-13：済**（`integralClosureInLocalization_integral`・`_arcOutside`、`arcOutside_completionRing`、`integralClosureCompletion_isModuleComplete`（Perfectoidization/Derived/IntegralClosureCompletion:101・138・178・232）、BS-W13）。Cor 8.12 の適用は drafts | 3.3 の 5 |
+| G-A8-11 | 局所化を固定した有限表示有限近似（W9-III-06）：T への写像を備えた有限表示有限 R 代数 A_λ の filtered 系で A_λ[1/g_1] ≅ B、余極限 T。部分代数・単射性は要求しない | なし（Mathlib `Algebra.FinitePresentation`）。**11-13：済**（`integral_isFilteredColimit_finitePresentation_fixedLocalization`（Perfectoidization/Derived/IntegralApproximation:436）、`exists_finitePresentation_approximation_fixedLocalization`（IntegralClosureApproximation:41）、BS-W13） | 3.3 の 5 |
 
 ## 5. 原典との差
 
@@ -252,7 +256,7 @@ Lemma 10.12 の骨組みの引数に Z_(p) 代数の仮定を戻す（W9-III-07�
 3. 3.3 の 4：層別の条件の底変換（R → R_1 = (R/g_1)_perfd）での保存。Codex W9 第 3 部続き 1 で ○（先に底変換し最後に被約化、perfd は Q → π_0 → 系 4 の二段）。
 4. 3.3 の 5：T を、T への写像を備えた有限表示有限 A_λ の filtered 系（A_λ[1/g_1] ≅ B、部分代数・単射性は要求しない）で近似できること（G-A8-11）。Codex で ○（W9-III-06 で「有限生成部分代数」の説明を訂正）。
 5. 3.4 の 1：被約商の違いを普遍同相で吸収する箇所、(3) の細分。
-6. 3.3 の 1：perfectoid の p 完備化した filtered 余極限の perfectoid 性と導来完備化の離散性（G-A8-8）。Codex 未。
+6. 3.3 の 1：perfectoid の p 完備化した filtered 余極限の perfectoid 性と導来完備化の離散性（G-A8-8）。Codex 未。（11-13：済。BS-W13 で本体に証明、`Perfectoidization/Derived/PerfectoidFilteredColimit`）
 7. 3.3 の 5（W9-III-04 の修復、G-A8-10）：S → T の整性と ArcOutside、T → T̂ への ArcOutside の延長、T の有界 p ねじれと T̂ の離散性、Cor 8.12 の S → T̂ への適用と
    e3Perfd(T) = T̂_perfd、商 T̂/g_1T̂ の比較の自然同型。Codex 第 3 部続き 1 で局所的な接続は ○、A_λ からの filtered 余極限で T̂_perfd の almost 連結性へ移す
    全接続は続き 2 で ○（G-A8-8 ではなく G-A8-1 の系「almost 連結な完備複体は完備 filtered 余極限で閉じる」を使う、W9-III-10）。

@@ -15,8 +15,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 二射影が元の零対象と実押し出しの普遍性を共同で反映するという性質。 -/
 structure JointlyReflectsSData {P X A : SSet.{u}} (p : P ⟶ X) (q : P ⟶ A) : Prop where
-  zero (v : P _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (p.app (Opposite.op ⦋0⦌) v) →
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.app (Opposite.op ⦋0⦌) v) → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v
+  zero (v : P _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (p.app (Opposite.op ⦋0⦌) v) →
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.app (Opposite.op ⦋0⦌) v) → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v
   pushout (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ P) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (F ≫ p) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (F ≫ q) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F
 
@@ -48,9 +48,9 @@ lemma JointlyReflectsSData.ihom {P X A : StableModel.{u}} {p : P ⟶ X} {q : P �
     intro k
     have hp' := isZeroVertex_evaluateFunctorAt hp k
     have hq' := isZeroVertex_evaluateFunctorAt hq k
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((CategoryTheory.ihom K).map p.val ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((((CategoryTheory.ihom K).map p.val ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app _ v)) at hp'
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((CategoryTheory.ihom K).map q.val ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((((CategoryTheory.ihom K).map q.val ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app _ v)) at hq'
     rw [ihom_postcomp_evaluate] at hp' hq'
     exact h.zero _ hp' hq'

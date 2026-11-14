@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 方針：元の包含辺の始点を回収する。
 規約：元の実 S 面を保つ。使われ方：端点 Hom の始域照合。 -/
 lemma dgOdotMilnorPerfectNullSquare_source_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d) := by
   have hs := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (dgOdotMilnorPerfectNullSquare R d)
   let e : (dgKInputInfinity.{u, u + 1} R).Edge
@@ -35,7 +35,7 @@ lemma dgOdotMilnorPerfectNullSquare_source_vertex :
 方針：元の実商辺の終点を回収する。
 規約：完備化後の別入力へ置換しない。使われ方：端点 Hom の終域照合。 -/
 lemma dgOdotMilnorPerfectNullSquare_target_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorResolvedInput R d) := by
   have hs := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target (dgOdotMilnorPerfectNullSquare R d)
   let e : (dgKInputInfinity.{u, u + 1} R).Edge
@@ -70,13 +70,13 @@ lemma dgOdotMilnorNuNullTriangle_source (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuNullTriangle R d j).obj ⟨ULift.up (0 : Fin 3)⟩ =
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0) := by
     have hn' := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject ((dgKInputNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 0)) = _
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 0)) = _
   rw [dgOdotMilnorPerfectNullSquare_source_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
 
 /-- 概要：両二単体の終点は同じ元 resolved 商の固定 ν 値。
@@ -96,13 +96,13 @@ lemma dgOdotMilnorNuNullTriangle_target (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuNullTriangle R d j).obj ⟨ULift.up (2 : Fin 3)⟩ =
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 1 1) := by
     have hn' := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject ((dgKInputNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 1 1)) = _
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 1 1)) = _
   rw [dgOdotMilnorPerfectNullSquare_target_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
 
 /-- 概要：零角経由の元二単体の中間対象は同じ実全対象商の零安定圏。
@@ -120,7 +120,7 @@ lemma dgOdotMilnorNuNullTriangle_middle_zero :
           stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
     apply Prod.ext <;> apply SSet.stdSimplex.ext <;> intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuNullTriangle R d 0).obj ⟨ULift.up (1 : Fin 3)⟩ =
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1) := by
     have hn' := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm

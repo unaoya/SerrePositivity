@@ -25,10 +25,10 @@ public import Mathlib.Algebra.Polynomial.AlgebraMap
 BS 著者版 Remark 7.15 の包に関わる剰余比較を、追加の正則性を置かずに与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Audit`、`PowerRootEnvelope/Initiality`、`PowerRootEnvelope/Unconditional/FrobeniusPD`、`PowerRootEnvelope/Unconditional/Source`、`PowerRootEnvelope/VarpiComparison`、`Variants/MonicRootedExtension`。
@@ -36,7 +36,7 @@ BS 著者版 Remark 7.15 の包に関わる剰余比較を、追加の正則性�
 
 universe u v
 
-/-! ## André E1・E2：prism 商の p 正則性を使わないモニック pd 包（旧 Andre/Remark715/Unconditional/MonicPDEnvelope.lean）
+/-! ## prism 商の p 正則性を使わないモニック pd 包
 
 ## 概要
 
@@ -193,7 +193,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPDEnvelope
 
-/-! ## ϖ 持上げによる分冪還元の hpR 解消（旧 Andre/Remark715/Unconditional/VarpiPDReduction.lean）
+/-! ## ϖ 持上げによる分冪還元の hpR 解消
 
 ## 概要
 BS 著者版 Remark 7.15(1)（著者版 p.62）のモニック入力について、prism 商の p 正則性なしに分冪を降下する。
@@ -263,7 +263,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end VarpiPDReduction
 
-/-! ## hpR を使わない無限根モニック入力の実残余 Koszul 分解（旧 Andre/Remark715/Unconditional/PowerRootResidueKoszul.lean）
+/-! ## hpR を使わない無限根モニック入力の実残余 Koszul 分解
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の raw 包について、mod(p,d) の有限 δ 関係列は
@@ -419,7 +419,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootResidueKoszul
 
-/-! ## 元の無限根モニック残余源の無条件の導来評価比較（旧 Andre/Remark715/Unconditional/PowerRootResidueSource.lean）
+/-! ## 元の無限根モニック残余源の無条件の導来評価比較
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実残余自由 δ 源の導来評価は、
@@ -516,7 +516,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootResidueSource
 
-/-! ## 元の無限根入力の実係数還元の無条件比較（旧 Andre/Remark715/Unconditional/PowerRootCoefficientReduction.lean）
+/-! ## 元の無限根入力の実係数還元の無条件比較
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の自由 δ 源上の実導来還元を、同じ raw 残余商へ比較する。
@@ -620,7 +620,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCoefficientReduction
 
-/-! ## 元の無限根入力の実係数還元の無条件比較（旧 Andre/Remark715/Unconditional/PowerRootQuotientDerived.lean）
+/-! ## 元の無限根入力の実係数還元の無条件比較
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の自由 δ 源上の実導来還元を、同じ raw 残余商へ比較する。
@@ -877,7 +877,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootQuotientDerived
 
-/-! ## 元の A 係数における無限根源の実 (p,d) 還元（旧 Andre/Remark715/Unconditional/PowerRootAResidue.lean）
+/-! ## 元の A 係数における無限根源の実 (p,d) 還元
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の無限根モニック源について、
@@ -1053,7 +1053,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootAResidue
 
-/-! ## A1-d：無限根初期係数商と通常モニック商（旧 Andre/Remark715/Unconditional/InitialCoefficient/Comparison.lean）
+/-! ## A1-d：無限根初期係数商と通常モニック商
 
 ## 概要
 P/(p,dP,f(Y₀)) を A/(p,d) 上の通常モニック無限根商と比較する。
@@ -1224,7 +1224,7 @@ end SerrePositivity.BhattScholze.Andre.InitialCoefficient
 
 end Comparison
 
-/-! ## A1-d：元の係数商上の raw 残余商と実還元 H⁰ の忠実平坦性（旧 Andre/Remark715/Unconditional/InitialCoefficient/RawResidue.lean）
+/-! ## A1-d：元の係数商上の raw 残余商と実還元 H⁰ の忠実平坦性
 
 ## 概要
 初期係数商の通常モニック比較を一般の raw 残余商の忠実平坦性へ合成する。
@@ -1393,7 +1393,7 @@ end SerrePositivity.BhattScholze.Andre.InitialCoefficient
 
 end RawResidue
 
-/-! ## hpR の正則性計算における境界（旧 Andre/Remark715/Unconditional/RegularityBoundary.lean）
+/-! ## hpR の正則性計算における境界
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の生成元・ϖ 持上げの mod p 正則性は、
@@ -1481,7 +1481,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RegularityBoundary
 
-/-! ## 原典の R/ϖ における標数条件の自動供給（旧 Andre/Remark715/Unconditional/MonicPDFlat.lean）
+/-! ## 原典の R/ϖ における標数条件の自動供給
 
 ## 概要
 PowerRootMonicPDFlat の hpR は p 正則性ではなく p=0 を意味する。
@@ -1550,7 +1550,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPDFlat
 
-/-! ## 元の raw 包の最初の有限段の p 正則性（旧 Andre/Remark715/Unconditional/RawInitialRegular.lean）
+/-! ## 元の raw 包の最初の有限段の p 正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の無限根モニック入力について、深さ零の実関係商は p 正則。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.RelativeOverPre
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorPullbackRestriction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniversePullbacks
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniversePullbacks
 
 /-!
 概要：持ち上げた実際の相対 Hom 引き戻しの同値性を、元の宇宙へ反映する。

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerTensorBifunctor
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedStrictification
 public import Mathlib.Algebra.Homology.Linear
@@ -139,4 +141,8 @@ lemma normalizedStrictifiedTensor_eq_low
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 
+/-! Literature correspondences from the reviewed coverage tables. -/
 
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.3.21" (partial := special) "仮定：整数加群の非負鎖複体二つ（Lean が強い：一般の多重加法関手ではなく二変数テンソル）。結論：全次数の直和と符号付き微分によるテンソル複体、および鎖写像への作用（この特殊例の構成と一致。Lean が弱い：任意の多重加法関手への一括拡張は含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensor
+attribute [cite HA "1.2.3.21" (partial := special) "仮定：整数加群の非負鎖複体二つ（Lean が強い：一般の多重加法関手ではなく二変数テンソル）。結論：全次数の直和と符号付き微分によるテンソル複体、および鎖写像への作用（この特殊例の構成と一致。Lean が弱い：任意の多重加法関手への一括拡張は含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap

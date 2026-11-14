@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInIsoTerminal
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceInIsoTerminal
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
 public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 

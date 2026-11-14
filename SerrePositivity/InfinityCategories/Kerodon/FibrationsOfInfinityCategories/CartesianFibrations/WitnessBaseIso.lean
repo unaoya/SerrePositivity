@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SquareBaseIso
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SquareRepresentationRestriction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FibersBaseIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FibersBaseIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FullSubcomplexIso
 
 /-!

@@ -34,15 +34,15 @@ def mapOver : algebra A M ⟶ algebra B N := by
   refine Mon.Hom.mk' (biprod.map q.hom t) ?_ ?_
   · change (η[A.X] ≫ biprod.inl) ≫ biprod.map q.hom t = η[B.X] ≫ biprod.inl
     rw [Category.assoc, biprod.inl_map, ← Category.assoc, IsMonHom.one_hom]
-  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M ≫ biprod.map q.hom t =
-      (biprod.map q.hom t ⊗ₘ biprod.map q.hom t) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul B N
+  · change _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul A M ≫ biprod.map q.hom t =
+      (biprod.map q.hom t ⊗ₘ biprod.map q.hom t) ≫ _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul B N
     apply biprodTensor_hom_ext
     all_goals
-      simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr, zero_comp,
+      simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr, zero_comp,
         tensorHom_comp_tensorHom, biprod.inl_map, biprod.inr_map]
       try simp only [Category.assoc, biprod.inl_map, biprod.inr_map]
       rw [← tensorHom_comp_tensorHom]
-      simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr, comp_zero]
+      simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl, _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr, comp_zero]
     · simpa only [Category.assoc] using congrArg
         (fun t => t ≫ (biprod.inl : B.X ⟶ (algebra B N).X)) (IsMonHom.mul_hom q.hom)
     · rw [← Category.assoc, hl, Category.assoc]

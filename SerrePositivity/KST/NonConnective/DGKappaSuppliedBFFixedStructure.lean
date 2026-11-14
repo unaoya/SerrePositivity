@@ -62,7 +62,7 @@ def dgKappaSuppliedBFLoopTargetBackIso :=
 def dgKappaSuppliedBFLoopTargetBackEdge :
     Truncated.Edge (X := (truncation 2).obj Sp.{max (u + 1) v})
       ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1))
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1))
       ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
           (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))) :=

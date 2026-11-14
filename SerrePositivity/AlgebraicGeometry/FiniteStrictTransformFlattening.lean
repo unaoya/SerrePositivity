@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.AlgebraicGeometry.AffineStrictTransformFlatness
 public import SerrePositivity.AlgebraicGeometry.DensePrincipalOpen
 public import SerrePositivity.AlgebraicGeometry.GenericFlatness
@@ -124,3 +126,9 @@ theorem exists_admissible_flat_strictTransformπ_of_finite_of_isReduced
   exact ⟨t, ht, exists_admissible_flat_strictTransformπ_of_finite R B t ht hD⟩
 
 end SerrePositivity.AlgebraicGeometry
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Proof step §5.2 flattening" (partial := component) "仮定：有限射の場合の平坦化、または既に与えた二段の許容ブローアップ（Lean が強い）。結論：有限射からの精密化と許容ブローアップの支配。一般の固有射の Temkin による支配を供給しない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_finite
+attribute [cite LT "Proof step A.2 Step 3" (partial := component) "仮定：有限射、または既に与えられた二段の許容ブローアップ（Lean が強い）。結論：古典的な支配・平坦化の幾何の部品。切断型不変量に適用した引き戻しはない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_finite

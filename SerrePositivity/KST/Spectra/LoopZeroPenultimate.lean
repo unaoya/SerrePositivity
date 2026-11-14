@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ReverseBoundaryEdge
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.ReverseBoundaryEdge
 public import SerrePositivity.KST.Spectra.LoopZeroHomotopy
 public import SerrePositivity.KST.Spectra.MappingFiberPaths
 

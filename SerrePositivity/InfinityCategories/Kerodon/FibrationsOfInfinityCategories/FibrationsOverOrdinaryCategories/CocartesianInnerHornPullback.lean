@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SubcomplexInverseImageComparison
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SubcomplexInverseImageComparison
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianNerveHornPullback
 
@@ -57,3 +59,9 @@ lemma cocartesianFibration_innerHorn_pullback_isPrecompositionEquivalence
   exact hc
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.4.4.6" (partial := stronger-hyp) "仮定：標準単体と内ホーン、および単体への余デカルト・ファイブレーション（Lean が強い：指定の一辺だけでなく、射全体が余デカルト・ファイブレーション）。結論：内ホーン逆像の包含の前合成同値性と準圏間での準圏同値性（この場合に HA と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_innerHorn_preimage_isPrecompositionEquivalence
+attribute [cite HA "B.3.4" (partial := stronger-hyp) "仮定：p:X→∆2が全体でcoCartesian fibration（Leanが強い：各0頂点からmiddleへのcoCartesian liftだけでなく全辺のliftを仮定）。結論：inner horn Λ²₁の逆像包含は前合成同値、従ってcategorical equivalence（原典のflatnessの結論に一致）。原典の弱い片側lift仮定だけからの判定は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_innerHorn_pullback_isPrecompositionEquivalence

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceRefinementOneFace
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceWedgeFunctor
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgeFunctor
 
 /-! # 元の二 bead の連結から一 bead への標準一面
 概要：元の共有頂点を持つ二つの bead の実 refinement は、同じ共有頂点座標の標準一面。

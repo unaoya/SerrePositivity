@@ -28,14 +28,14 @@ variable {E : perfectStableInfinity.{u} ⟶ Sp.{u}} (hE : IsPerfectLocalizingInv
 
 /-- 元の射影の同じ値の切断を、実 fiber 四角形の右辺の切断へ移す。 -/
 def IsPerfectLocalizingInvariant.perfectFiberSection :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.sequenceFiberTriangle d).square 1 1 ⟶
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.sequenceFiberTriangle d).square 1 0 :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hE.sequenceFiberTriangle d).square 1 1 ⟶
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hE.sequenceFiberTriangle d).square 1 0 :=
   (hE.perfectFiberRightIso d).hom ≫ s ≫ (hE.perfectFiberMiddleIso d).inv
 
 include hs in
 /-- 移した同じ切断は、実四角形の右辺に対する切断。 -/
 lemma IsPerfectLocalizingInvariant.perfectFiberSection_section :
-    hE.perfectFiberSection d s ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (hE.sequenceFiberTriangle d).square = 𝟙 _ := by
+    hE.perfectFiberSection d s ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (hE.sequenceFiberTriangle d).square = 𝟙 _ := by
   apply (cancel_mono (hE.perfectFiberRightIso d).hom).mp
   erw [Category.assoc, ← hE.perfectFiber_right_naturality]
   erw [perfectFiberSection, Category.assoc, Category.assoc, Iso.inv_hom_id_assoc,
@@ -51,7 +51,7 @@ def IsPerfectLocalizingInvariant.perfectSplitLeftFactorIso :
 /-- 実積の右因子と、元の右端の不変量値との同じ比較。 -/
 def IsPerfectLocalizingInvariant.perfectSplitRightFactorIso :
     perfectInvariantHoObject E d.rightVertex ≅ SpectrumHo.obj
-      (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.sequenceFiberTriangle d).square 1 1)) :=
+      (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hE.sequenceFiberTriangle d).square 1 1)) :=
   (hE.perfectFiberRightIso d).symm ≪≫
     NativeSplit.baseIso (hE.sequenceFiberTriangle d) (hE.sequenceFiberTriangle_isFiber d)
 

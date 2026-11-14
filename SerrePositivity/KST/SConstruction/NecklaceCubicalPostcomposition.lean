@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklacePostcomposition
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklacePostcomposition
 
 /-! # cubical mapping object の入力写像
 概要：元の単体集合の写像を、全 necklace の余極限上の射へ送る。

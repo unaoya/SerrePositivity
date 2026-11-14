@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.OriginalInputLaxEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.OriginalInputLaxEquivalence
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCornerEvaluation
 
 /-!

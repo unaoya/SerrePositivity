@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 /-- 概要：元の左代数を S に置く。方針：右代数と同じ宇宙を使う。
 規約：実代数を置換しない。使われ方：元の lax pullback の左入力。 -/
 def dgOdotLeftInput : PerfDGInput.{u, u + 1} R :=
-  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+  dgKUniverseInput.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left)
 
 /-- 概要：元の下辺代数射を S に置く。方針：同じ dg 射を持ち上げる。
 規約：元の角入力を保持する。使われ方：lax pullback の第一脚。 -/
@@ -57,7 +57,7 @@ structure DGOdotLaxVerdierInput where
   projection_iso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (comparison.hom ≫ projection.hom)
     (dgOdotProjectionExactMap R d).hom
   kernel (b : (dgOdotPerfLaxCategory R d).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) b) ↔
       b ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap _ _ from
         ⟨(dgOdotDiagonalExactMap R d).hom ≫ comparison.hom, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _⟩)
   localization : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization projection.hom

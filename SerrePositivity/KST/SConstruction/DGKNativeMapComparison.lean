@@ -6,7 +6,7 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionComposition
 public import SerrePositivity.KST.SConstruction.DGStandardClosedComparisonIso
 public import SerrePositivity.KST.SConstruction.DGStandardFunctorIsoReflection
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLiftFunctor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGUniverseLiftFunctor
 
 /-!
 概要：同じ入力宇宙下降と dg 関手による実 Perf 延長の四角形を比較する。

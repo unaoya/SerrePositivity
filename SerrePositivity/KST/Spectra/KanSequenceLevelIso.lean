@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanSequenceCategory
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyIsomorphism
 
 /-!
 概要：段ごとの点つき同型による Kan 列の構造射と Ω 条件の移送。

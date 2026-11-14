@@ -58,7 +58,7 @@ structure VerdierRecoveredBoundaryComparison
   isInvertible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom J).obj ((ihom P).obj C.obj)) edge
   prefix_eq : ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom P).obj C.obj)).app
       (Opposite.op ⦋1⦌) edge.edge =
-    (((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
+    (((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
       ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))).edge)
   last_eq : ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app ((ihom P).obj C.obj)).app
       (Opposite.op ⦋1⦌) edge.edge =
@@ -72,7 +72,7 @@ lemma exists_verdierRecoveredBoundaryComparison
     Nonempty (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) := by
   let F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv P J C.obj (r.cylinder.homotopy.h ≫ (ihom J).map q.hom)
   let T := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv P J C.obj ((S.ι ▷ Δ[1]) ≫ U.whole)
-  let A₀ := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
+  let A₀ := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
     ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))
   let B₀ := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy r.boundaryFractionHomotopy).map
     ((truncation 2).map ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom).app ((ihom P).obj C.obj)))
@@ -91,7 +91,7 @@ lemma exists_verdierRecoveredBoundaryComparison
       SSet.comp_const, spanInternalHomFlip_const]
     rfl
   have hAs : ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)).app
-      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex r.cylinderSquare 0 0) =
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex r.cylinderSquare 0 0) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ F) := by
     rw [r.cylinderSquare_source]
     change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
@@ -100,7 +100,7 @@ lemma exists_verdierRecoveredBoundaryComparison
         (ihom P).map q.hom) = _
     rw [hFp]
   have hAt : ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)).app
-      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex r.cylinderSquare 0 1) =
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex r.cylinderSquare 0 1) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ T) := by
     rw [r.cylinderSquare_original]
     change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap P B.obj) ≫ (ihom P).map q.hom) = _

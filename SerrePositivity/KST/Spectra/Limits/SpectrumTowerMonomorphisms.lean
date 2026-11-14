@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashJointProjections
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashJointProjections
 
 /-!
 概要：塔の極限の懸垂構造射は元の構造射の単射性を保つ。

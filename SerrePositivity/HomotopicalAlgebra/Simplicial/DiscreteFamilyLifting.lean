@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.DiscreteFamily
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 
 /-!
