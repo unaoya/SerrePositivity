@@ -277,3 +277,18 @@ S01 は3モジュール136行＋入口3行、小監査21宣言・標準三公理
 ### S02 の実際の商の次数分解の法則（着手前の型、S02 の内数）
 
 `homogeneousIdealQuotientGrade_isInternal J G hJ`：同次イデアル J と GradedRing G から、既存の projectiveRingQuotientGrade J G の内部直和を返す。`homogeneousIdealQuotientGradedRing J G hJ` はその同じ商の GradedRing。既存の HilbertSerre.isInternal_quotientGrade と Submodule.Quotient.restrictScalarsEquiv を使い、既存の ReesClosedRingGrading の証明の一般の法則への分割として実装する（見込み40〜90行）。これを実際の Segre 座標写像の核へ適用する。既存の Rees の宣言の型は変更しない。
+
+
+## G3・S02：同次イデアルの実際の商の次数分解
+
+`HomogeneousIdealQuotientGrading`（51行）：`homogeneousIdealQuotientGrade_isInternal` は同次イデアルの実際の環の商で、既存の projectiveRingQuotientGrade が内部直和であること。`homogeneousIdealQuotientGradedRing` は同じ商の積と分解を合わせる。HilbertSerre の商加群の分解と係数制限の商の同型を再利用し、既存の Rees の宣言は変更しない。
+
+本体51行・入口1行。最初の単独検証、ソース完全一致、対象・直接 importer のビルド5,087ジョブ、小監査6宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-homogeneous-ideal-quotient-grading-check.log`・`2g-homogeneous-ideal-quotient-grading-native.log`・`2g-homogeneous-ideal-quotient-grading-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体1,021行・入口込み1,039行、小監査82宣言・標準三公理のみ。S02 の実際の座標環への適用、S03〜S04、G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### S02 の実際の Segre 座標環（着手前の型、S02 の内数）
+
+`SegreCoordinateRing a b := MvPolynomial (ι×κ) R / ker(segreCoordinateMap a b)`、`segreCoordinateGrade a b` はその実際の商の次数成分。`segreCoordinateGradedRing G a b ha` は証明した核の斉次性からの次数分解。`segreCoordinateProjection` は実際の商写像。多項式環上の有限加群性、Noether な R と有限添字のときの座標環の Noether 性、商の多項式作用の GradedSMul、射影の次数保存を供給する（見込み80〜170行）。変数は Type 0 の有限添字に置き、2f の入力を保持する。Proj の積との同型と標準開の比較をこの環の定義だけで完成扱いにしない。
