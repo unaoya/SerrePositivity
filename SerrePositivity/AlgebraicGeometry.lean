@@ -1607,3 +1607,5 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutModelFunctor
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelCategory
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelImages
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientModelFiltered

@@ -2771,3 +2771,17 @@ G1・G2共用部品込み本体15,855行、入口込み16,120行。75d018aa2 の
 G1・G2共用部品込み本体16,044行、入口込み16,311行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+全模型から同じ基底の有限表示 v 被覆への接続（着手前の型、見込み80〜160行、前記250〜650行の内数）：`exists_finitePresentation_baseChange_of_coefficient_square` は Noether な k 上の有限型な A,D、t:A→D、元の g:R→C への可換な正方形と元の g の v 判定から、実際の P=R⊗_A D を R 上有限表示の v 被覆として返す。D→P・P→C と三つの可換式も返す。A の Noether 性と有限表示性をここで構成し、元の R の Noether 性は要求しない。模型 P の v 判定は元の g からの合成の消去で供給する。
+
+
+### B03・B04：全模型の圏の filtered 性
+
+`CoefficientModelFiltered`（59行）：`coefficientModelCategory_cocone_objs` は二模型の基底の像の有限生成部分代数の和と、その g による像・始域の二像の和から、実際の共同後段と二つの射を返す。`coefficientModelCategory_cocone_maps` は標的の実際の像の模型で平行射を一致させる。全模型と同じ宇宙の `CoefficientModelIndex` に IsFiltered を供給した。元の R,C の Noether 性と v 判定は要求しない。
+
+本体59行・入口1行。部分代数の包含を型付きで明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,056ジョブ、小監査5宣言・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-model-filtered-check-2.log`・`2g-coefficient-model-filtered-native.log`・`2g-coefficient-model-filtered-audit.log`。
+
+G1・G2共用部品込み本体16,103行、入口込み16,371行。c857c0b03 の後は3モジュール248行＋入口3行、小監査38宣言・標準三公理のみ。全模型の filtered 性は閉じたが、被覆模型への実際の射・final 性と全図式の余極限、B02 の整理は残り、B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
