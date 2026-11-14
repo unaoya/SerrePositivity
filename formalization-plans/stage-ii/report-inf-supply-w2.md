@@ -12934,3 +12934,66 @@ theorem simplicialReplacementMap_leftAnodyne
 短い経路：既存DiagonalAnodyne.diagonal_map_anodyneは全ホーン用の射の性質を固定しているため、その結論をleft anodyneへ読み替えない。同じ対角の右随伴とrelativeMatchingArrowIsoの証明を、left fibrationと境界内部Homへ適用する。必要なleftAnodyneExtensions_pushoutObjObj_left/rightとleftFibration_pullbackObjObjπは既存のLeftAnodynePushoutProductにある。barの各行は元の基底射列で添字づけた係数の余積であり、BarRowsCoproductの既存の余積表示を再利用する。退化の分裂により相対latchingの非退化部分を係数の同じη.app iの余積へ同定し、left anodyne性を渡す。これをReedy持ち上げと対角の随伴で元の全写像へ戻す。
 
 R03f.2が得られれば、元の係数のEx∞単位に適用し、§202の同じscaffold正方形と§201の元の単位を固定した延長へ接続する。ただし、この時点ではR03fの延長の前合成同値性もR03dの両変数比較も未証明。元の指定点・固定始域の比較の一致という型を保って進める。
+
+## 207. R03f.2の対角の持ち上げと元のbarの行（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+前のターンではR03f.1とEx∞単位への適用が検証済みでコミットされていたため、進捗あり。開始時にcleanな作業木とd4bf795eeを確認した。今回は対角の右随伴の相対matching射を、既存の同じrelativeMatchingArrowIsoで境界内部Homへ同定し、left fibration性を移した。Reedyの持ち上げと元の対角の随伴により、Reedy left anodyneな射の対角そのものがleft anodyneであることを示した。
+
+barの各行は、元の基底射列σで添字づけた同じ係数F(σ(0))の単体集合として構成し、指定された同じ包含を持つ実際の余積であることを確認した。各行の任意の面・退化の写像は、元の基底射列の始点から新たな始点への射による係数の輸送で定義した。恒等射・合成則も元のIとFの関手則から示し、一つの二重単体集合の図式へ束ねた。BarRowsCoproductと同じ余積による考え方を使うが、一般のKerodon側からEInfinityへの依存を追加しないため、同じ宇宙の依存和で直接示した。
+
+273：対角の新規一本の対象ビルド1,635 jobs・終了0、小監査126本909宣言・標準三公理のみ（実ハンドル71484・終了0）。274：行の新規二本の対象ビルド1,172 jobs・終了0、小監査128本931宣言・標準三公理のみ（実ハンドル8005・終了0）。両方とも鍵返却済み。個別検査は10567・74674・68021の終了0を確認した。
+
+今回47＋71＋69＝187行、累計128本・8,376行／外枠15,000。R03f.2は187行／見込み650〜1,200行、まだ半分600行前。元のsimplicialReplacementMapへの対角の同定と、相対latchingが元の各η.app iのleft anodyne性を持つことが残る。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 207.1 型
+
+行の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`、固定した行ではさらに `(n : ℕ)`。
+
+#### DiagonalLeftAnodyne（47行）
+
+```lean
+theorem relativeMatching_leftFibrations {E B : SSet.{u}} (p : E ⟶ B)
+    (hp : leftFibrations p) (n : ℕ) :
+    leftFibrations (relativeMatchingMap simplexOp (Opposite.op (SimplexCategory.mk n))
+      (internalHomRight.map p))
+
+theorem diagonal_map_leftAnodyne {A B : SimplexCategoryᵒᵖ ⥤ SSet.{u}} (f : A ⟶ B)
+    (hf : reedyLeft simplexOp leftAnodyneExtensions f) :
+    leftAnodyneExtensions (diagonal.map f)
+```
+
+#### SimplicialReplacementRows（71行）
+
+```lean
+def simplicialReplacementRow : SSet.{u}
+
+def simplicialReplacementRowInclusion (σ : ComposableArrows I n) :
+    F.obj (σ.obj 0) ⟶ simplicialReplacementRow F n
+
+def simplicialReplacementRowCofan : Cofan (fun σ : ComposableArrows I n => F.obj (σ.obj 0))
+
+def simplicialReplacementRowDesc
+    (s : Cofan (fun σ : ComposableArrows I n => F.obj (σ.obj 0))) :
+    simplicialReplacementRow F n ⟶ s.pt
+
+def simplicialReplacementRowIsColimit : IsColimit (simplicialReplacementRowCofan F n)
+```
+
+#### SimplicialReplacementRowReindex（69行）
+
+```lean
+def simplicialReplacementRowReindex {m n : SimplexCategory} (α : m ⟶ n) :
+    simplicialReplacementRow F n.len ⟶ simplicialReplacementRow F m.len
+
+theorem simplicialReplacementRowReindex_id (n : SimplexCategory) :
+    simplicialReplacementRowReindex F (𝟙 n) = 𝟙 (simplicialReplacementRow F n.len)
+
+theorem simplicialReplacementRowReindex_comp {l m n : SimplexCategory}
+    (α : l ⟶ m) (β : m ⟶ n) :
+    simplicialReplacementRowReindex F (α ≫ β) =
+      simplicialReplacementRowReindex F β ≫ simplicialReplacementRowReindex F α
+
+def simplicialReplacementRows : SimplexCategoryᵒᵖ ⥤ SSet.{u}
+```
