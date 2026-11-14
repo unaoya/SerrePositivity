@@ -8648,3 +8648,49 @@ RR02(a)の当面の順序（自然性の検証 → 全次数の実増大射）�
 session 6391（ログ `/tmp/is-w1/bk-frame-augmentation/build.log`）を一枚の整理券で
 待機中、生存確認済み。今回のコミットには含めない。
 実増大射の弱同値性は未完、停止点5aにはまだ到達していない。
+
+## §96 RR02(a)：元の次数零の増大との照合（下書き）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+全次数の増大射の初回ビルドでは、第二射影自然性の後に定値重みの略記の一致だけが残った。
+`rfl` を追加し、session 8459 で再検証待機中（生存確認済み、整理券一枚）。
+ログ `/tmp/is-w1/bk-frame-augmentation/build-2.log`。
+待ち時間に、元の次数零の増大射と実際に一致する次の法則を準備した。
+
+```lean
+def bousfieldKanZeroParameterIso :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj
+    (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≅ bousfieldKanWeight Kᵒᵖ
+lemma bousfieldKanZeroParameterIso_weight :
+  (bousfieldKanZeroParameterIso K).hom ≫ bousfieldKanZeroWeight K =
+    snd (bousfieldKanWeight Kᵒᵖ) (ConstantWeightHom.weight K (SimplexCategory.mk 0))
+def bousfieldKanFrameZeroCocone :
+  Cocone (ConstantWeightHom.degree K A (SimplexCategory.mk 0))
+lemma bousfieldKanFrameAugmentation_zero :
+  (functor K A).map (bousfieldKanZeroParameterIso K).hom ≫
+      bousfieldKanAugmentation A (bousfieldKanFrameZeroCocone K A Q e) =
+    (bousfieldKanFrameAugmentation K A Q e).app (SimplexCategory.mk 0)
+```
+
+単位同型は `QuillenStandardFrame.zeroUnitIso` と右unitorの合成を再利用する。
+実増大射を選び直さず、同じ随伴で照合する既存構成の法則。IDは増やさない。
+この下書きは全次数の増大射の検証後に検証し、未検証のままコミットしない。
+
+### 96.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanFrameAugmentation | 78 | 2,798 jobs成功 | 8宣言、標準三公理のみ |
+| BousfieldKanFrameAugmentationZero | 60 | 2,805 jobs成功 | 4宣言、標準三公理のみ |
+
+ログ `/tmp/is-w1/bk-frame-augmentation/build-2.log`、
+`/tmp/is-w1/bk-frame-zero/build.log`。プロセス終了と小監査成功を確認。
+計算上限変更なし。今回138行、検証済み累計192本・14,611行。
+上限変更後のRR02(a)実測2,113行、(b)(c)新規0行。
+
+全次数の実増大射と、単位同型を介した元の次数零の実増大射との一致まで検証済み。
+これを同じ `strictDiagramFreeArrowAugmentation` へ適用し、元の実比較射への接続を続ける。
+実増大射の弱同値性は未完。E01別経路の紙は§95.1、停止点5aは未達。
