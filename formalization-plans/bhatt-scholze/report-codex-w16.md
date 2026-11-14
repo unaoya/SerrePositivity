@@ -20268,3 +20268,129 @@ L29以降は§177の粗い見込みを据え置き、未供給のものを完成
 外枠に届くとき、新しい構成/定理・範囲外が必要なとき、または完備化の(c)が必要と判明したときは
 検証済みを保存して報告し止める規則を維持する。現在は外枠まで実測5,998行ある。
 (c)の必要性は未判定。3b-4aがmainへ入ったら§33どおりTot九欄を優先する。
+
+
+## 315. 同じ総次数の実際の左右の基底値の接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§313の合成側と§312の二段側の実際の値を、同じ有限同値と全項の比較へ渡す。
+既存構成の次数移送・係数移送・有限和の再添字付けの法則。各証明200行以内。
+
+```lean
+lemma vectorTensorAt_target_transport (K : Complex A) (n : ℕ)
+    (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t u : ℤ)
+    (ht : -(vectorDegree K n f : ℤ) = t) (hu : -(vectorDegree K n f : ℤ) = u)
+    (htu : t = u) :
+    (eqToHom (congrArg (fun z : ℤ => (power K n).X z) htu)).hom
+      (vectorTensorAt K n f t ht) = vectorTensorAt K n f u hu
+
+lemma positiveCompositeCutTerm_eq_nested_tensor (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    positiveCompositeCutTerm A S u v k c x =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a => ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+            gen A S (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+              (S.map (SimplexCategory.mkHom
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((d + e + q : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum]
+              have hn : m + n + (d + e) + q + 1 - (m + (n + 1)) = d + e + q
+
+lemma cochainAction_composition_basis_eq_iterated (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    (cochainAction A S (m + (n + 1))).f (-((d + e + q : ℕ) : ℤ))
+      (ιTensorObj (Surjection.complex A (m + (n + 1))) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) (-((d + e + q : ℕ) : ℤ)) (by omega)
+        ((Surjection.complexXIso A (m + (n + 1)) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S m (n + 1) k).f (-((d + e + q : ℕ) : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A (n + 1)) (chains A S)
+          (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) (-((d + e + q : ℕ) : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A (n + 1))
+            (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 1) d).inv
+              (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A (n + 1) e).inv
+                (Surjection.basis A (n + 1) e (ULift.up v))) ⊗ₜ[A] gen A S q x))
+```
+
+最初は元のeqToHomの等式消去。第二は§303の同じ全項の等式を同じ全次数へ送る。
+第三は元の全合成切断和と全二段切断和を、同じpositiveCompositeNestedEquivのsum_compで読む。
+退化零項・全語次数・任意qを保持する。nullaryや全複体射の外延性をここで完成に数えない。
+
+
+## 316. nullaryの全単体次数の有限点検と零次元色の法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じCutを水平・垂直の経路で読み、一般qのnullaryの準備を有限点検した。
+`/tmp/bsw16/check-nullary-all-simplex-cuts.py`、語長1〜5・arity1〜3・q=0〜3、**9,794組**。
+削除色が複数回現れる5,402組では、その色の出力次数は常に正。
+出力次数零は2,617組（うち出力arity零の単位の場合1組）。
+残り2,616組で同じ一頂点を削除・復元し、全ての残り色の元の頂点列が一致した。
+削除語が退化する890組も保持し、両側の退化性を確認した。
+同じ2,616組で符号指数の整数値そのものが一致した。有限点検はLeanの全称証明ではない。
+
+一頂点削除の写像へ進む前に、零次元の指定色を元のCutで特定する法則を次の型で置く。
+既存構成の有限位置・濃度・次数の法則で、各証明200行以内の見込み。
+
+```lean
+lemma outputDegree_zero_occurrenceCount {m q r : ℕ} (s : Cut m q)
+    (w : Surjection.Word r (m + 1)) (k : Fin r) (h : outputDegree s w k = 0) :
+    Surjection.occurrenceCount w.val k = 1
+
+lemma outputDegree_zero_hi_eq_lo {m q r : ℕ} (s : Cut m q)
+    (w : Surjection.Word r (m + 1)) (k : Fin r) (h : outputDegree s w k = 0)
+    (p : Fin (m + 1)) (hp : w.val p = k) : hi s p = lo s p
+
+lemma outputDegree_zero_iff_unique_position_and_point {m q r : ℕ} (s : Cut m q)
+    (w : Surjection.Word r (m + 1)) (k : Fin r) :
+    outputDegree s w k = 0 ↔
+      ∃ p : Fin (m + 1), w.val p = k ∧
+        (∀ j : Fin (m + 1), w.val j = k → j = p) ∧ hi s p = lo s p
+```
+
+出現回数の法則は既存の色別順位区間の厳密な順序を使う。
+高さは同じ区間の位置集合が色別位置集合に含まれることと元のcard=hi-lo+1。
+最後は色別位置集合の濃度1と水平射影の全射性、逆向きは同じ集合の等式。
+削除の実際のCutの構成は、これらの法則の検証後に同じ元の座標で型を記録して進める。
+
+
+## 317. 正の実際の左右の基底値の厳密な一致：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§315を検証した。同じ元の係数合成をcochainActionに入れた値と、元の四射の二段余作用の値が、
+任意の可換環A・一般S・全語次数・任意q・実際の正規化生成元で一致した。
+同じpositiveCompositeNestedEquivと全項の比較を使う。退化項を除かず、
+元の圏の同じ加群成分の厳密な等式である。余代数の合成則を仮定していない。
+
+全次数の移送では終点と両端の次数証明を明示し、元のeqToHomを保持した。
+`m14-cochain-composition-basis-02.log`：3,228 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-cochain-composition-basis.log`：
+**3モジュール・12宣言、標準三公理のみ**、sorry・独自公理0。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+全ハンドルの終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| VectorTensorTargetTransport | 32 |
+| CompositeNativeTerms | 60 |
+| CochainCompositionBasis | 59 |
+| **計** | **151** |
+
+M14実測は**25,153行**、L12aは**9,946行**。
+§314の「正の枝の相殺を実際の左右の値へ戻す」80〜140行に対し151行で、上端より11行多い。
+同じ次数移送の法則とその型を明示した分で、別の数学の項目を加えてはいない。
+nullary・一般nの包装・全複体射への外延性はまだ残す。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+外枠31,000行と§314の完成見込みの超過リスクは据え置き、残る範囲を削らない。
+§316のnullaryの法則はこの取り込み点に数えず、対象ビルドで検証中。
