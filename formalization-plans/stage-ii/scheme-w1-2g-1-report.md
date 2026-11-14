@@ -986,3 +986,18 @@ C01 の被約化との合成の法則 `exists_integral_surjective_reduced_compac
 G1 共用部品込み本体 **6,305 行**、入口込み **6,419 行**。入力の模型を実際の C01 の整拡大・Noether 平坦模型の証人から供給し、一般の始域へ戻す A07 の組立てと G2 は未完。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 の一般の affine 基底・affine 始域の出口 `exists_fppf_proper_refinement_vCover_affineRing` の型（見込み120〜300行）：任意の可換環 R、有限表示 R-代数 C、Spec C→Spec R の v 判定から、固有・局所有限表示・全射 r:T→Spec R、平坦・局所有限表示・準コンパクト・全射 q:W→T、l:W→Spec C と l≫f=q≫r を返す。被約化と C01 で実際の整全射 B を選び、有限表示代数を tensor 底変換し、保持した Noether 平坦閉部分模型の証人を選んでから前の有限段の合成へ渡す。模型・平坦性を追加仮定にしない。これは既定の A07 の affine 始域の場合で、一般の始域への有限アフィン被覆の接続までは A07 を完了扱いにしない。親 ID は増やさない。
+
+### A07：整全射後の細分を元の基底へ戻す合成と、一般の基底の C01 への帰着
+
+IntegralClosedFlatRefinement **75 行**、CompactMinimalPrimeIntegralCover **47 行**、入口 2 行。
+
+- `exists_fppf_proper_refinement_of_integral_closed_flat_model`：実際の整全射後の有限型閉部分と平坦模型の証人、元の V→Spec R への基底上の射を、ある有限段の固有全射と fppf 射による実際の細分へ合成する。模型を入力とする接続であり、これだけを A07 の完成とはしない。
+- `exists_integral_surjective_reduced_compact_minimalPrimes`：任意の R を被約化して C01 を適用し、被約かつ極小素点集合が準コンパクトな B、整な R→B、Spec B→Spec R の全射性を実際に供給する。R→B の単射性は主張しない。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,902 ジョブ成功**、二モジュールの小監査は補助宣言込み **5 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-integral-closed-flat-refinement-check.log`、`2g-compact-minimal-integral-cover-check.log`、`2g-integral-refinement-assembly-native.log`、`2g-integral-refinement-assembly-audit.log`。
+
+G1 共用部品込み本体 **6,427 行**、入口込み **6,543 行**。A07 の affine 始域の出口は、これらの実際の証人を組み合わせる下書きを検証中で、この監査には含めない。一般の始域への接続と G2 も未完。
+
+一覧：済み 9／全体 14（うち追加 5）。
