@@ -2182,3 +2182,19 @@ C06 の既約な Noether 対象からの実際の Chow の固有全射（着手�
 G1・G2共用部品込み本体13,034行、入口込み13,256行。C06 は本体1,100行までで未完。実際の被覆模型とグラフ閉包の全入力を接続する定理は下書きで、この時点では元の対象への無条件の Chow の固有全射の完成とはしない。一般の対象への接続、固有性の降下と B01〜B04 は残る。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 の有限個の固有な周辺を持つ支配の直和（着手前の型、見込み180〜360行）：`isProper_coprod_desc` は固有な h₁:T₁→X、h₂:T₂→X の二項直和からの射が固有と返す。Mathlib の標的局所性の `coprodMap` で T₁⊔T₂→X⊔X を固有とし、有限な codiagonal X⊔X→X と合成する。`exists_finite_proper_domination_union` は Fin n の固有な hᵢ:Tᵢ→X、固有な qᵢ:Pᵢ→S、開包含 tᵢ:Tᵢ→Pᵢ と基底上の可換式から、実際の T,P と同じ性質の h,t,q、および各 Tᵢ→T と h との可換式を返す。空の族は空スキーム、後続は二項直和で組み立てる。有限直和と既存の構成の合成の法則として C06 の親項目を増やさない。一般の成分の有限族から、一つの固有全射を構成するために使う。
+
+
+### C06：既約な Noether 対象への実際の固有全射
+
+`IrreducibleNoetherianProperDomination`（95行）：`exists_dense_affine_cover_proper_domination` は実際の被覆模型から、元の対象への固有全射と、固有な周辺への開包含・基底上の可換式を返す。`exists_irreducible_noetherian_proper_domination` は任意の Noether な既約 X から内部の模型も実際に供給し、同じ出口を無条件に返す。元の f の固有性を仮定せず、分離性・局所有限型性と affine な基底を入力とする。
+
+本体95行・入口1行。最初の単独検証で成功、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,010ジョブ、小監査は終了状態0・標準三公理のみ。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-irreducible-noetherian-proper-domination-check.log`・`2g-irreducible-noetherian-proper-domination-native.log`・`2g-irreducible-noetherian-proper-domination-audit.log`。
+
+G1・G2共用部品込み本体13,129行、入口込み13,352行。C06 は本体1,195行までで未完。既約な場合の実際の固有全射は供給したが、有限個の成分から一般の Noether 対象への接続を済ませる前に C06 完成とはしない。一般の固有性の降下と B01〜B04 も残る。
+
+一覧：済み12／全体17（うち追加8）。
+
+監査出力：`SerrePositivity.AlgebraicGeometry.IrreducibleNoetherianProperDomination: 2 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 2 declarations.`。
