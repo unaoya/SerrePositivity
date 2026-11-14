@@ -900,3 +900,25 @@ I04 上の全射な固有閉部分模型への接続 `exists_surjective_proper_c
 G1 共用部品込み本体 **5,613 行**、入口込み **5,717 行**。I04 上の全射な固有模型への接続、平坦側の模型、元の X への因子化を同じ段にそろえる接続は未完。A07・G2 は未完のまま。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 の残りの有限段の選択順を明確にする：まず固有側を全射にした段 i と T_i,r_i,a,β_i を取る。次に Over i 上で T_j=pullback(D(j→i),r_i)、β_j=snd≫β_i、W_j=pullback(g₀,β_j) を実際に作る。g₀ は元の Noether 平坦模型の閉部分の射で、f₀:Spec C→Spec A が affine、i₀ が閉埋め込みなので g₀ も affine。したがって W_j→T_j は affine・平坦・局所有限表示で、両図式は qcqs な affine 遷移を持つ。元の T_B と W_B の頂点を同型で保った極限 cone を使い、平坦側の全射性をある後段へ降ろす（図式・Cartesian 性・極限性の法則、見込み180〜450行）。
+
+その全射な段より後の図式に制限してから、元の X_R への W_B の射を `Scheme.exists_π_app_comp_eq_of_locallyOfFinitePresentation` で降ろす（基底 Spec R 上の有限表示な射の因子化の法則、見込み80〜220行）。この既存 API は、段への因子化と **基底上の可換式そのもの**を同時に返すので、b≫f=q≫r のために別の一致判定を重ねる必要はない。さらに後の段で全射性は底変換により保たれ、各 I04 段→Spec R は元の整全射から全射である。有限・局所有限表示なその射と固有側を合成する（合成の法則、見込み60〜160行）。
+
+一般の A07 の始域を affine に限定しない。有限アフィン開被覆を有限積の Spec にまとめる際は Mathlib の `sigmaSpec`（有限族では同型）を使い、付値環の閉点の像を含むチャートへの因子化は `preimage_eq_top_of_closedPoint_mem` と `IsOpenImmersion.lift` を使う。元の有限表示 v 被覆への射を保持し、最後にその射へ合成する。これは有限アフィン被覆の細分の法則として進め、G0 の有限族・一射の橋の型を変えない。
+
+### A07：I04 のある段で全射な固有閉部分模型を取る
+
+PullbackStageSurjectivity **77 行**、IntegralSurjectiveProperClosedModel **57 行**、入口 2 行。
+
+- `exists_surjective_proper_stage_model`：固有・局所有限表示の模型の全射性が降りる段で、元の空間からの実際の射と Cartesian 性、前段の模型への第一射影の可換式を保持する。
+- `exists_surjective_flat_stage_model`：平坦・局所有限表示・準コンパクトの模型について、同じ実際の射・Cartesian 性・前段への可換式を保持する。
+- `exists_surjective_proper_closed_integral_model`：I04 の実際のある有限・有限表示段に、固有・局所有限表示・全射 r:T→D(i)、元の閉部分からの Cartesian な a、周辺模型への β と可換式を実際に選ぶ。元の K.subscheme→Spec B の全射性は、保持した閉包絡の証人から供給する。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,892 ジョブ成功**、二モジュールの小監査は private な証明分割を含め **5 宣言・標準三公理のみ**。原典の有限段への全射性の比較を、実際の模型と可換式へつなぐ法則として実装し、遷移射の忠実平坦性は要求しない。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-pullback-stage-surjectivity-check.log`、`2g-integral-surjective-model-batch-check.log`、`2g-surjective-integral-model-native.log`、`2g-surjective-integral-model-audit.log`。
+
+G1 共用部品込み本体 **5,747 行**、入口込み **5,853 行**。今回の継続では11モジュール780行＋入口11行を検証した。約12,000行の途中報告点・25,000行の外枠には未到達。平坦側の模型の図式と全射性の接続、元の X への基底上の因子化、C01 の整拡大・一般の始域との組立てが残る。A07・G2 は未完で、Rydh 3.10 の一般の場合や 2g-1 の完成とは報告しない。
+
+一覧：済み 9／全体 14（うち追加 5）。
