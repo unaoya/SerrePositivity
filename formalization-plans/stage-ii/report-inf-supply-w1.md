@@ -9698,3 +9698,66 @@ Over比較と増大射の合成を要素圏の同じ余錐の増大へ戻す法�
 残りは左随伴（評価）と実現の交換同型が増大射を保つこと、実評価の係数同型を
 通した次数零余錐の脚の一致。この二つを通して元の自由増大射の評価値と
 §108の弱同値な合成を同定する。RR02(a)全体は未完。
+
+## §110 RR02(a)：左随伴と実現の交換による増大射の保存
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def postZeroCocone :
+  Cocone (ConstantWeightHom.degree K (postFrames K A L) (SimplexCategory.mk 0))
+lemma zeroWeightCocone_post :
+  (ConstantWeightHom.homEquiv K (postFrames K A L) (SimplexCategory.mk 0)
+    (L.obj c.pt)).symm (postZeroCocone K A c (L := L)).ι ≫
+      (homPostIso K adj A).hom.app (L.obj c.pt) =
+    (ConstantWeightHom.homEquiv K A (SimplexCategory.mk 0) c.pt).symm c.ι ≫
+      (hom K A).map (adj.unit.app c.pt)
+lemma postIso_augmentation :
+  (postIso K adj A).hom.app (bousfieldKanWeight Kᵒᵖ) ≫
+    bousfieldKanAugmentation (postFrames K A L) (postZeroCocone K A c (L := L)) =
+      L.map (bousfieldKanAugmentation A c)
+```
+
+指定随伴 `adj : L ⊣ R` に対する既存の交換同型の法則。余錐の脚は `L.map` の像そのもの。
+零単体のYonedaと単位の自然性を使い、元の実現随伴の転置で照合する。未検証。
+
+### §110.1 表示同型の順方向での保存則（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma augmentation_frameIso (e : A ≅ B) (c : Cocone (ConstantWeightHom.degree K A 0)) :
+  ((family K).mapIso e).hom.app (bousfieldKanWeight Kᵒᵖ) ≫
+    bousfieldKanAugmentation B
+      ((Cocone.precompose (ConstantWeightRealization.degreeMap K e.inv 0)).obj c) =
+    bousfieldKanAugmentation A c
+lemma realizationIso_hom_augmentation :
+  (realizationIso F B (bousfieldKanWeight Kᵒᵖ)).hom ≫
+    (FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).map
+      (ElementsUnderProjection.weightIso F).inv ≫
+    bousfieldKanAugmentation (Functor.Elements.π F ⋙ B) (elementsZeroCocone F B c) =
+    bousfieldKanAugmentation (frames F B) c
+```
+
+`0` は `SimplexCategory.mk 0`。逆向きで検証済みの法則を、同じ同型の逆を
+前合成して順方向へ移す。同型・余錐・増大射の選択は変更しない。
+
+### §110.2 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+2本・143行の対象ビルドと6宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計230本・16,852行。
+上限変更後のRR02(a)は4,354行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/post-augmentation/build-4.log`。
+
+既存の `postIso` が元の余錐のBK増大射を保つ法則を検証した。
+また、frame同型および余積の要素圏表示同型について、実際に用いる順方向の
+増大射保存を検証済みの逆方向の法則から得た。
+
+次は `strictDiagramFreeEvaluationFramesIso` の逆で移した評価余錐と
+`strictDiagramFreeEvaluationElementsCocone` の各脚を照合する。
+各脚は、同じ余積挿入を元の自由frame増大に続けた射と、
+Overへの合成射を元のsource frameで送った射。これらの一致の後、
+今回の三つの表示同型の保存則を合成して元の自由増大射の評価値へ戻す。
+RR02(a)全体は未完。
