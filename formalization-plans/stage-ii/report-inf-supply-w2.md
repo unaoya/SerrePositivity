@@ -14534,3 +14534,21 @@ theorem strictBETotJointSourceNativeFiberMap_isWeakHomotopyEquivalence
 ### 234.4 紙：3b-3との境目を維持する
 
 Totのstrict入力の模型、同じHom分類、指定native錐とその極限性は③-bで閉じる。R05でstrict複体図式の局所化上へ全評価・全指定錐族を輸送する部分は③-aの3b-3の指定された比較を使う。実現側R09・R10も、図式ごとの余錐だけではなく③-aの全パラメータの余錐族とその輸送を使う。任意のcoherentなBE図式の厳密化は今回の実装に含めない。既存FramedLimit*とCAlgUnderlyingDerivedComparisonを作り直さず、無条件cAlgForgetDerived_mapJoinCone_isLimitの保存方向を使う。Uが極限を保存することからBE値の極限性を逆に推論しない。
+
+## 235. 外枠判断待ちの紙：既存APIの証明境界を確認（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。Lean追加なし、実測178本・11,564行のまま。前のターンは検証済み保存と再見積もりの進捗であり、検証待ちではない。現mainのIS-W2末尾も§19・外枠15,000行のままで、外枠変更の承認を確認できていない。
+
+次の既存ソースを読み、§234.3の経路のうち使える結論と不足を分けた。
+
+| 既存ソース（SerrePositivity以下） | 実際の結論 | 接続時の注意 |
+|---|---|---|
+| EInfinity/FrameHom/FrameLeftRoofPrecompose.lean：frameLeftRoofColimitMap_precompose | 指定された始域射・frame比較に沿うanodyneQ.map後の等式 | 生の二変数の自然変換として使わない。定理はinclude hαも要求する |
+| InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/VertexFiberPullback.lean：vertexFiberPullbackIso_hom_ι | fiber同型の順射を包含すると元の第一射影になる厳密な等式 | native total spaceの第一射影を元のcorrected pairingへ戻す際の指定された方向が使える |
+| EInfinity/FrameHom/RightFrameHomInfinityNormalization.lean：rightFrameTerminalHomIso_hom | 終端の実現比較、原本kanHammockHomInfinityIso、指定homInfinityTransportの順の合成に等しい | 比較二胞体c.triangleも同じ入力として保持する。零単体の共役式だけで全同型の等式を結論しない |
+| EInfinity/BarrattEccles/StrictDiagramTotProbeHomInfinityComparison.lean：strictBETotProbeFrameHomInfinityIso | 元のframe比較と、同じprobe源の頂点同型をco-Yonedaで写した全標的同型の合成 | 固定始域への最終制限をこの同じ合成へ合わせる必要がある |
+| InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/F1FibrationsLeftFibrationNerveComparison.lean：isPrecompositionEquivalence_of_leftFibration_nerve_fibers | 両射影がleft fibration、底を厳密に保つ全写像について、各対象の指定fiber射がQCat同値なら全射は前合成同値 | native fiber射の弱同値性が未完なのでまだ適用の前提が揃わない |
+
+従って再開時は、元のnative fiber射にvertexFiberPullbackIsoを合成し、包含後の厳密な等式で同じcorrected pairingへの制限を回収する所を最初の検査単位とする。その後、元の指定された底のpathを保持したまま、元のroofとterminal augmentationに沿う比較を組み立てる。anodyneQ上の既存の始域自然性だけで済むと仮定せず、固定始域の全標的同型の合成まで追跡する。この不足を解決したとの数学的主張も、新しい仮定付きのLean入口も追加していない。
+
+今回の紙の整理は§234で指定した代わりの作業。対象ビルド・監査の新しい実行は不要で、鍵は取得していない。外枠変更の質問は一件のまま維持し、重複して送らない。
