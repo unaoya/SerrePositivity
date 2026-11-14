@@ -14929,3 +14929,266 @@ L12a検証済み実測2,382+318=**2,700行**、M14は17,589+318=**17,907行**。
 他の行の見込みを据え置くとM14完成時**24,761〜30,321行**。
 上端に**5,321行の超過リスク**が残り、収まるとは扱わない。外枠・範囲の停止規則は維持する。
 §199の二本は未検証の組み立ての下書きで、上の実測・登録候補に含めない。
+
+## 201. C451の元の経路の座標と区間の所属（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+指定面の比較に、元の経路の水平位置pと高さcを持つ頂点を読む。
+元のcoordinate_sumからその位置番号はp+cであり、区間の最小/最大位置の間にあれば
+元のhorizontalの単調性で横座標p、同じcoordinate_sumで縦座標cが特定される。
+C451a・C451bは既存座標の所属の法則であり、別の経路や新しい構成は導入しない。
+型は次。個々の証明200行以内の見込み。
+
+```lean
+def coordinatePosition {m q : ℕ} (p : Fin (m + 1)) (c : Fin (q + 1)) : Fin (m + q + 1)
+
+lemma coordinates_of_interval {m q : ℕ} (s : Cut m q)
+    (p : Fin (m + 1)) (c : Fin (q + 1)) (hl : lo s p ≤ c.val) (hr : c.val ≤ hi s p) :
+    s.horizontal (coordinatePosition p c) = p ∧ s.vertical (coordinatePosition p c) = c
+
+lemma coordinatePosition_onPath_iff {m q : ℕ} (s : Cut m q)
+    (p : Fin (m + 1)) (c : Fin (q + 1)) :
+    (s.horizontal (coordinatePosition p c) = p ∧ s.vertical (coordinatePosition p c) = c) ↔
+      lo s p ≤ c.val ∧ c.val ≤ hi s p
+```
+
+有限点検：`/tmp/bsw16/check-cut-coordinate-interval.py`。
+幅・高さ0〜5の923経路、24,683組の座標について、元の経路の頂点の座標と両端の条件が一致した。
+これはLeanの全称証明とは別の点検。指定面の全比較C451そのものはまだ未完。
+
+## 202. C451の元の合成語のブロック両端（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の外側位置pに代入された部分語の最初・最後の位置は、既存の接頭長α(p)とα(p+1)-1。
+C393で定めた同じ外側切断の両端は、元の合成切断のこの二位置の両端と等しい。
+最初/最後の位置では既存lo_zero・hi_lastを使い、途中ではhi_eq_lo_succを使う。
+C451c・C451dの同じ座標の法則として次を実装する。個々の証明200行以内の見込み。
+
+```lean
+lemma compositePrefixLength_zero {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    compositePrefixLength u v k r 0 = 0
+
+def compositeFirstPosition {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) : Fin (m + n + (d + e) + 1)
+
+def compositeLastPosition {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) : Fin (m + n + (d + e) + 1)
+
+lemma positiveCompositeOuterCut_endpoints {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (p : Fin (m + d + 1)) :
+    lo (positiveCompositeOuterCut u v k c) p = lo c.2 (compositeFirstPosition u v k c.1 p) ∧
+      hi (positiveCompositeOuterCut u v k c) p = hi c.2 (compositeLastPosition u v k c.1 p)
+```
+
+元のブロック位置とその両端は§170・§176の21,939組の点検と同じもの。
+新しい経路を作らず、同じ位置番号を既存のCutで読むだけの記法・評価の法則。
+
+## 203. C451の元の色別列挙から指定面への移送（既存構成の法則）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+色別位置集合の順序を保つ同じ列挙の同値が元のverticalを保つとき、元のoutputDegreeと
+verticesの組も等しい。この既存構成の係数移送を一つの補題にまとめ、残り色と挿入色の
+両方で使う。有限順序列挙はorderIsoOfFinで、同じ有限順序の自己同型は既存StrictMono.eq_id
+で一致する。HEqは等しい次数で読むFinの添字の移送だけで、最終結論はSigma型の等式。
+C451hの証明分割として次を追加する。各証明200行以内の見込み。新しい模型は導入しない。
+
+```lean
+lemma finiteOrderIso_val {N M : ℕ} (e : Fin N ≃o Fin M) (i : Fin N) : (e i).val = i.val
+
+lemma orderHom_heq_of_values {N M Q : ℕ} (f : Fin N →o Fin Q) (g : Fin M →o Fin Q)
+    (h : N = M) (hv : ∀ i j, i.val = j.val → f i = g j) : HEq f g
+
+lemma faceData_eq_of_colorOrderIso {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1)) (a : Fin r) (b : Fin r')
+    (e : ↥(colorPositions s u.val a) ≃o ↥(colorPositions t v.val b))
+    (hv : ∀ x, s.vertical x.val = t.vertical (e x).val) :
+    (⟨outputDegree s u a, vertices s u a⟩ : Σ d : ℕ, Fin (d + 1) →o Fin (q + 1)) =
+      ⟨outputDegree t v b, vertices t v b⟩
+```
+
+この補題だけで合成切断の対応する色別位置集合の同値が供給されたとは扱わない。
+その元の位置・頂点の照合はC451の残りであり、同じ作用の法則の中で進める。
+
+## 204. C451の残り色の元の位置・頂点（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の指定色以外の位置は、一文字のまま同じ代入語へ残る。既存の
+substitute_prefix_length_at_non_slot・compositeBasisWord_outerPositionと、C410の語長移送を使う。
+その最初/最後の合成位置が同じになり、C451c・C451dとC451aから元の同じ頂点を読む。
+C451e〜C451gの法則・証明分割として次を追加する。各証明200行以内の見込み。
+型は次。有限点検は§199の12,233組の同じ残り色の全頂点列の一致。
+
+```lean
+lemma compositePrefixLength_at_non_slot {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    compositePrefixLength u v k r (p.val + 1) = compositePrefixLength u v k r p.val + 1
+
+lemma compositeFirstPosition_eq_last_of_non_slot {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    compositeFirstPosition u v k r p = compositeLastPosition u v k r p
+
+lemma positiveCompositeFirstPosition_label {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    (positiveCompositeCutWord u v k r).val (compositeFirstPosition u v k r p) =
+      BarrattEccles.remainingPosition m (n + 1) k ⟨(positiveWord u).val p, hp⟩
+
+lemma positiveCompositeRemainingVertex_coordinates {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) (h : Fin (q + 1))
+    (hl : lo (positiveCompositeOuterCut u v k c) p ≤ h.val)
+    (hr : h.val ≤ hi (positiveCompositeOuterCut u v k c) p) :
+    c.2.horizontal (coordinatePosition (compositeFirstPosition u v k c.1 p) h) =
+        compositeFirstPosition u v k c.1 p ∧
+      c.2.vertical (coordinatePosition (compositeFirstPosition u v k c.1 p) h) = h
+```
+
+## 205. C451の残り色の全位置・全頂点への接続（紙の型、未実装）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+次は既存remaining_count_substituteで元の残り色の出現回数を保ち、同じcompositeFirstPosition
+の狭義単調性と有限濃度から、残り色の全出現位置の順序同値を得る。
+その同じ二端点を保つ順序同値を、区間内の全頂点へ持ち上げる。各頂点はC451aの元の
+coordinatePositionで読み、逆は元の位置の順序同値の逆で読む。最後にC451hへ渡す。
+既存構成の法則・同じ指定面の比較の証明分割として型を次に記録する。
+ここは紙だけであり、証明済み・実測へ含めない。各証明200行以内の見込み。
+
+```lean
+lemma occurrences_card_eq_count {r l : ℕ} (v : Fin l → Fin r) (a : Fin r) :
+    (Surjection.occurrences v a).card = Surjection.occurrenceCount v a
+
+lemma compositeFirstPosition_strictMono {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    StrictMono (compositeFirstPosition u v k r)
+
+lemma positiveCompositeWord_remaining_count {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : {a : Fin (m + 1) // a ≠ k}) :
+    Surjection.occurrenceCount (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a) =
+      Surjection.occurrenceCount (positiveWord u).val a.val
+
+def remainingWordPositionOrderIso {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : {a : Fin (m + 1) // a ≠ k}) :
+    ↥(Surjection.occurrences (positiveWord u).val a.val) ≃o
+      ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a))
+
+def colorPathOrderIso {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1)) (a : Fin r) (b : Fin r')
+    (e : ↥(Surjection.occurrences u.val a) ≃o ↥(Surjection.occurrences v.val b))
+    (hl : ∀ p, lo s p.val = lo t (e p).val)
+    (hr : ∀ p, hi s p.val = hi t (e p).val) :
+    ↥(colorPositions s u.val a) ≃o ↥(colorPositions t v.val b)
+
+lemma colorPathOrderIso_vertical {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1)) (a : Fin r) (b : Fin r')
+    (e : ↥(Surjection.occurrences u.val a) ≃o ↥(Surjection.occurrences v.val b))
+    (hl : ∀ p, lo s p.val = lo t (e p).val)
+    (hr : ∀ p, hi s p.val = hi t (e p).val) (x : ↥(colorPositions s u.val a)) :
+    t.vertical (colorPathOrderIso s t u v a b e hl hr x).val = s.vertical x.val
+```
+
+occurrencesの濃度は元の昇順リストとoccurrencePositions_lengthから読む。
+compositeFirstPositionの順序はC388とC387から。有限回数の保存は元の符号や作用を触らない。
+区間内の持ち上げの単調性は、横座標が異なれば元の横座標の順序、同じなら元のverticalの
+順序とcoordinate_sumを使う。この一般の法則だけで挿入色の全頂点の比較を供給したとは扱わず、
+挿入色の部分語・元の順位の照合はC451の残りに保持する。
+
+## 206. L12a の指定面・符号の組み立てと元の座標：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§199・201〜204の8本401行を検証した。
+元の指定面の族、元の前方次数と二つの係数移動を持つ符号を組み立てた。
+元の二座標による頂点の所属、合成ブロックの両端、元の残り色の文字と同じ頂点の座標、
+同じ順序列挙から元の指定面への係数移送まで。C451全体・C452・C453はまだ未完。
+
+対象ビルド（全て成功・対象警告0）：
+`/tmp/bsw16/m14-nested-cut-coefficients-01.log`（2,888 jobs）、
+`/tmp/bsw16/m14-interval-vertex-coordinates-01.log`（1,135 jobs）、
+`/tmp/bsw16/m14-composite-outer-endpoints-02.log`（2,848 jobs）、
+`/tmp/bsw16/m14-face-data-order-transport-01.log`（1,129 jobs）、
+`/tmp/bsw16/m14-composite-remaining-vertices-01.log`（2,853 jobs）。
+ブロック両端の最初のビルドでは、区間のhiを局所名で隠していたためその局所名を改めた。
+数学の主張や既存の公開宣言は変えていない。
+
+小監査入力 `/tmp/bsw16/audit-m14-composite-face-coordinates.lean`、
+結果 `/tmp/bsw16/m14-composite-face-coordinates-audit.log`、
+**8モジュール・46宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+個別の証明200行超はない。各ビルドと監査で鍵を独立に取り、実行が終わったら返した。
+共有入口・共有監査・drafts・界面は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| CompositeFaceFamilies | 35 |
+| NestedCutCoefficients | 27 |
+| IntervalVertexCoordinates | 57 |
+| CompositeBlockPositions | 50 |
+| CompositeOuterEndpoints | 74 |
+| FaceDataOrderTransport | 56 |
+| CompositeRemainingPositions | 69 |
+| CompositeRemainingVertices | 33 |
+| **合計** | **401** |
+
+L12a検証済み実測2,700+401=**3,101行**、M14は17,907+401=**18,308行**。
+外枠25,000行まで**6,692行**。L12aは未完のため一覧は12/48のまま。
+§205は次の同じ指定面の比較の紙の型で、未実装。有限点検は§198〜199・201のとおりで、
+Leanの全称証明へ混ぜていない。
+
+## 207. C451の残りの見込みと外枠との照合
+
+一覧：済み 12／全体 48（うち追加 4）
+
+今回401行のうち27行は符号の組み立て、374行は指定面・実テンソルの比較の前段。
+指定面の比較は、元の出現位置を全頂点の順序同値へ持ち上げる法則も必要なため、
+§200の指定面と実テンソル400〜750行の見込みでは残りの接続が不足する。
+次の残りを分けて数え直す。既存法則の再利用による目安であり、完成済みとして控除しない。
+
+| 指定面・実テンソルの残り | 見込み |
+| --- | ---: |
+| 残り色の全出現位置・全頂点の順序同値とその面の評価（§205） | 160〜280 |
+| 挿入色の同じ部分語・元の順位・全頂点の比較 | 160〜280 |
+| 同じ出力次数・指定面から実テンソルと零項への接続 | 130〜240 |
+| **残り** | **450〜800** |
+| **この行の完成時（374行を含む）** | **824〜1,174** |
+
+他の行の見込みを据え置くと、符号の残り173〜323行、nullary250〜400行で、
+L12aの残り**873〜1,523行**、完成時**3,974〜4,624行**。
+M14全体の完成見込みは**25,185〜30,745行**で、下端でも外枠を185行上回る。
+外枠を緩めたり完了条件を縮めたりはしない。現在の実測は18,308行で、
+固定した同じ作用の法則の範囲内で進め、実装の外枠に届くときの停止規則を維持する。
+収まるとは主張しない。G10・M15・G12の部品は作らない。
