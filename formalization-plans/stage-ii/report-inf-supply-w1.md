@@ -9291,3 +9291,56 @@ lemma bousfieldKanAugmentation_weakEquivalence_of_terminal
 定義展開で一致することを仮定しない。
 RR02(a)の次の残りは、要素圏とOverの随伴の余単位による実現比較。
 終対象のあるOver側は今回の補題へつなぐ。要素圏自身に終対象があるとは主張しない。
+
+## §105 RR02(a)：指定添字変更の合成則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+要素圏とOverの随伴の移送に使う、既存の添字変更射の法則。
+
+```lean
+lemma reindexMap_id : reindexMap (𝟭 K) A W = 𝟙 _
+lemma reindexMap_comp :
+  reindexMap Q (P ⋙ A) (P.op ⋙ W) ≫ reindexMap P A W = reindexMap (Q ⋙ P) A W
+lemma bousfieldKanReindexMap_id : bousfieldKanReindexMap (𝟭 K) A = 𝟙 _
+lemma bousfieldKanReindexMap_comp :
+  bousfieldKanReindexMap Q (P ⋙ A) ≫ bousfieldKanReindexMap P A =
+    bousfieldKanReindexMap (Q ⋙ P) A
+```
+
+既存の指定随伴で転置して、`bousfieldKanWeightPost_comp` を使う。
+独立の弱同値の定理を追加するものではない。未検証。
+
+### §105.1 指定変換のOverへの移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def overTransformationSource (α : P ⟶ Q) (e : L) :
+  Over (Opposite.op e) ⥤ Over (Opposite.op (P.obj e)) :=
+  Over.post Q.op ⋙ Over.map (α.app e).op
+def overTransformation (α : P ⟶ Q) (e : L) :
+  overTransformationSource α e ⟶ Over.post P.op
+def overTransformationHomotopy (α : P ⟶ Q) (e : L) :
+  SSet.Homotopy (nerveMap (overTransformationSource α e))
+    (nerveMap (Over.post P.op (X := Opposite.op e)))
+```
+
+既存の指定自然変換のOverへの移送と、そのnerveの法則。
+反対圏のため `α : P → Q` は「Qのpostの後にαの反対射でmap」から
+「Pのpost」への比較になる。余単位の場合もこの方向を保つ。
+重み自身の自己収縮と取り違えない。実現後には係数の移送も合わせて照合する。
+
+### §105.2 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+2本・114行を対象ビルド（2,523 jobs）と9宣言の監査で検証。
+標準三公理のみ、計算上限変更なし。
+検証済み累計213本・15,883行、上限変更後のRR02(a)3,385行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/reindex-composition/build-5.log`。
+
+指定随伴の転置を定義展開だけで比較する方法では200,000 heartbeatsで時間切れに
+なった。関手の結合則で転置の型を先に揃え、重みの型を局所的に明示して解消した。
+`Over` の比較は元の自然変換の成分の反対射を使い、既存のnerveホモトピーへ接続済み。
+残りは添字全体での自然性、係数移送を含む実現比較のホモトピー、元の増大射との照合。
