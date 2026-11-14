@@ -13446,3 +13446,63 @@ theorem grothendieckKanCoefficientBarMap_leftAnodyne
     {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
     leftAnodyneExtensions (simplicialReplacementMap (grothendieckKanCoefficientUnit F))
 ```
+
+## 215. 元の比較射と指定単位を固定する延長のcofinal性（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 21（うち追加 9）。R03f・R03d・R02・R03は未完了。
+
+既存のRelativeFunctorOverEquivalence.relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalenceを、同じfiberと前合成で定義されたcofinalFunctorPreへ照合した。quasicategoryを標的とする元の前合成同値が、その同じ射のleft cofinal性の検査を満たすことを、定義の照合と既存のKan相対関手空間の同値の検出だけで得た。新しい数学的な検出条件を仮定していない。
+
+これを元のbar/scaffold正方形へ適用した。元のEx∞単位のbarの射のleft anodyne性、その後のKan係数のscaffoldの前合成同値性、元のCat係数からGrothendieck射列へのscaffoldの前合成同値性を、同じ厳密な正方形の等式と既存のleft cofinalな射の合成・消去則へ渡した。元のgrothendieckKanCoefficientMapそのもののleft cofinal性が得られた。さらに元の置換単位はleft anodyneなので、その同じ単位との合成が元の比較射に等しい任意の延長もleft cofinalとなる。元の比較の射や単位を取り替えていない。
+
+286：定義の照合一本の対象ビルド1,794 jobs・終了0、小監査148本1,019宣言・標準三公理のみ（実ハンドル97086・終了0）。287：元の比較と延長のcofinal性一本の対象ビルド2,492 jobs・終了0、小監査149本1,021宣言・標準三公理のみ（実ハンドル14853・終了0）。両方とも鍵返却済み。個別検査34355・14467の終了0を確認した。
+
+今回28＋57＝85行、累計149本・9,580行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。cofinal性だけから任意の射の前合成同値性を主張しない。残りは、同じ底上のleft fibration間の射としてその検出を行う部分である。
+
+### 215.1 型
+
+Grothendieck側の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### PrecompositionCofinality（28行）
+
+```lean
+theorem isLeftCofinal_of_precompositionEquivalence
+    {X Y : SSet.{u}} [Quasicategory Y] (f : X ⟶ Y) (hf : IsPrecompositionEquivalence f) :
+    IsLeftCofinal f
+```
+
+#### GrothendieckKanComparisonCofinality（57行）
+
+```lean
+theorem grothendieckKanCoefficientMap_isLeftCofinal :
+    IsLeftCofinal (grothendieckKanCoefficientMap F)
+
+theorem grothendieckKanCoefficientLift_isLeftCofinal :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∀ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F → IsLeftCofinal f
+```
+
+## 216. R03f.3：同じ底上のleft fibration間のcofinal射の検出（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 22（うち追加 10）。R03f.3を追加、未証明。
+
+§19の同じまとまり・一つの見込み1,500行以内の枠により、次の独立の中間定理を加える。任意のcofinal射が圏同値だと主張するものではない。同じ底への二つの射が両方ともleft fibrationであり、元の比較射がその底を厳密に保つことを型に持つ。
+
+```lean
+theorem isPrecompositionEquivalence_of_leftCofinal_overLeftFibrations
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (hc : IsLeftCofinal f) :
+  IsPrecompositionEquivalence f
+```
+
+このPropの型は `/private/tmp/CheckISW2CofinalLeftFibComparisonType.lean` で確認した（実ハンドル83289・終了0）。未証明の宣言や仮定を本体へ入れない。置き場所はKerodon/LimitsAndColimits/Cofinality/LeftFibrationComparison.leanなど、一般の同じ底上の検出の節とする。
+
+見込み250〜650行。既存IsLeftCofinal.restrictDiagramを任意の試験left fibrationと同じ底図式qへ適用すると、同じ底上の相対Homの前合成がホモトピー同値となる。試験標的pで恒等射を戻し、逆向きの実射を取る。試験標的qでの同じ前合成の忠実性を使い、二つの合成を同じ恒等射へ結ぶ。相対HomはKanなので、同じ底上の同値の二つの三角形として扱える。元の底がquasicategoryであるため、二つの全空間もquasicategoryである。相対Homから通常の関手空間への同じ包含で三角形を送り、既存の前合成同値のホモトピー逆の判定へ戻す。必要ならisPrecompositionEquivalence_of_homotopyInverseと、各頂点での垂直な辺の可逆性の既存の判定を使う。
+
+これは同じモデルのままcofinal性を前合成同値へ検出する数学的な部分であり、§215の定義の照合の法則として数えない。独立の定理として一つに見積もり、§19の枠を細分で回避しない。半分325行で実測と残りを報告する。
+
+R03f.3が証明できた後に限り、§201の元の単位を固定する延長へ、元の同じ射影の等式と§215のcofinal性を代入し、R03fの全空間の前合成同値を検収する。これがまだ未証明の間はR03f・R03d・native極限性を完了と扱わない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aの欄を変更しない。
