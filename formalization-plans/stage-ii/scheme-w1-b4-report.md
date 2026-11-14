@@ -46,3 +46,31 @@ SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean:30:
 採取器の失敗を解消した後、固定した取り込み前ソースで未完の採取を新しい出力先へ行い、全 289 本のプレビューを揃える。保留 0 と差分を確認してから main を取り込み、差分を適用する。その後、対象ビルドと小さい監査を通して B4 の完了を報告する。今回の 180 本の保留 0 を、全対象の保留 0 と読み替えない。
 
 数学の直前の検証は 122ac972c に記録済み（AlgebraicGeometry の対象ビルド 4,824 ジョブ成功、新しい IntegralModel 系 5 本の小監査 26 宣言・標準三公理）。これは取り込み前の検証であり、B4 後の検証ではない。B4 が済んでから、2g-1 の A07 内の I03（実際の filtered colimit）へ戻る。
+
+## 再開時の elaboration の整理（検証前の型つき一覧）
+
+2026-11-14。共有の道具に更新がないため、自レーンの定義の elaboration を、型を変えずに整理して同期採取で検証する。資源上限は変えない。
+
+- `projectivePerfCechH0Difference`：同じ定義一つについて `backward.isDefEq.respectTransparency true` を局所指定。同期採取で成功した。
+- `projectivePerfectAffineCechOpen_isAffine (i)`：`IsAffineOpen (projectiveProjCechOpen G i)`。元の定義内の局所証明を外へ出す。
+- `projectivePerfectAffineCechOpen_iSup hspan`：`(⨆ i, projectiveProjCechOpen G i) = ⊤`。同じ被覆性の局所証明を外へ出す。
+- `projectivePerfectNativeCechHomologyIso (q)`：既存の `projectivePerfectNativeCechComplexIso` に homologyFunctor.mapIso を適用した同型。元の定義の前半を分割する。
+- 既存の `projectivePerfectAffineCechHomologyIso` の型・名前を保ち、上の同型と同じ共通被覆比較を合成する。
+
+上の補助宣言は既存の比較の法則と証明分割で、2g-1 の主項目には追加しない。証明分割を検証するまでは Lean をコミットしない。
+
+一覧：済み 7／全体 12（うち追加 3）。
+
+追加の証明分割：`projectivePerfectAffineDiagonal : IsAffineHom (pullback.diagonal (terminal.from (Proj G)))` を既存の instance から証明し、同じファイルの比較で局所 instance として共有する。型クラスの巨大な証明項を比較の定義へ繰り返し埋め込まないための分割であり、仮定を追加しない。
+
+同じ比較の後半も `projectivePerfectCommonAffineCechHomologyIso hspan V hV hcV q` として分割する。型は標準開の Frobenius 係数の Čech H と V の同じ係数の Čech H の同型で、既存の共通被覆比較の適用そのもの。元の定義は前半と後半の合成を保つ。
+
+## 再開時の検証結果：一つ解消、一つ未解消
+
+`projectivePerfCechH0Difference` について、局所的に `backward.isDefEq.respectTransparency true` とする 1 行の変更だけを採用する。型・定義本体・名前に変更はない。同期 collect は既定の 200,000 heartbeats のまま成功し、その capture を使った rewrite は保留 0・差分 0。対象ビルド（SquareData と直接の importer SquareZero）は 3,379 ジョブ成功。この 2 モジュールの小さい監査は生成宣言を含む 48 宣言、標準三公理のみ。検証記録のハッシュは [verified-square-fix.json](scheme-w1-b4/verified-square-fix.json)。全体の採取・プレビュー確認済みは重複なしで 181／289 本になった。
+
+`ProjectivePerfectAffineCechComparison` は未解消。局所的な透明性設定、アフィン性・被覆性の証明の分割、対角のアフィン性の共有、比較の前半・後半の分割、合成の中間対象の明示を、いずれも上限を増やさず試した。分割した宣言は通るが、最終的な `projectivePerfectAffineCechHomologyIso` の同期採取は `abstract nested proofs` で 200,000 heartbeats に達する。最後の中間対象の明示と局所設定の試行も同じ位置で失敗した。
+
+試行した補助宣言は**全て本体から外した**。このファイルは元の 122ac972c のソースへ戻し、試行とログを `scheme-drafts/b4/` に保存した。既存の比較の型・定義的な振る舞いを、選択による別の構成へ置き換えることはしていない。共有の道具は変更していない。これから組 10〜14 の未実行部分を採取し、残る失敗の影響を切り分ける。main の取り込みは引き続き未実行。
+
+一覧：済み 7／全体 12（うち追加 3）。

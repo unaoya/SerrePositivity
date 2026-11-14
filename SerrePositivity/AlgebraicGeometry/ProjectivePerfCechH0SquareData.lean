@@ -56,6 +56,7 @@ def projectivePerfCechH0Pair :=
       (projectiveHomogeneousSectionAlgebra_primeCast (ι := ι) G p hR)
       (algebraMap R (projectiveHomogeneousSectionAlgebra (ι := ι) G)) (I ^ 1))
 
+set_option backward.isDefEq.respectTransparency true in
 /-- 閉厚化の Čech H⁰ への差写像。切断の実際の差を指定した比較で移したもの。 -/
 def projectivePerfCechH0Difference :
     projectivePerfCechH0 (ι := ι) G p hp hR hA ×
