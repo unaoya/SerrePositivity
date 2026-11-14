@@ -1571,3 +1571,18 @@ G1・G2共用部品込み本体10,281行、入口込み10,456行。一般の有�
 一覧：済み10／全体14（うち追加5）。
 
 一般の固有性の降下の原典の再照合（11-15、調査のみ）：[Stacks 081F](https://stacks.math.columbia.edu/tag/081F) は分離性を先に有限段へ移し、Chow の補題の固有全射と固有な射影的空間への immersion を用い、極限での閉埋め込み性を有限段へ移して固有性を得る。[0A0P](https://stacks.math.columbia.edu/tag/0A0P) は有限表示の対象の模型とこの固有性の降下を組み合わせる。[0202](https://stacks.math.columbia.edu/tag/0202) の有限表示対象から Noether 模型への帰着は、今作っている一般の有限表示対象の模型と分離性の降下を先に使うので、一般の固有性の降下を先取りしなければ循環しない。Noether 基底の Chow の構成の参照は [0200](https://stacks.math.columbia.edu/tag/0200)（EGA II 5.6.1(a)）。Mathlib には `ProjectiveSpectrum/Proper.lean` の `IsProper (Proj.toSpecZero 𝒜)` はあるが、`Chow`・`QuasiProjective`・`ProjectiveSpace` の供給の API は現行の AlgebraicGeometry 内の検索では見つからない。次の型付きの標準存在補題の一覧と見込みは、既存の affine チャート・Proj・閉包の材料を照合してから出す。この調査だけで新しい存在の親項目を追加・完了扱いにしない。
+
+
+### B01：一般の qcqs な局所有限表示対象の、実際の有限生成係数環上の模型
+
+`OpenAtlasGluedModel`（78行）：`atlasComparison` は元の被覆・チャート・重なりと具体的な段の局所射から模型全体の比較の入力を実際に構成する。`exists_glued_model` は六種の式を満たす後段の実際の貼り合わせ Y→B'、その局所有限表示性・準コンパクト性・準分離性、元の X との実際の Cartesian 比較を返す。有限性・affine 性は指定した証人から明示して供給する。
+
+`SchemeFinitePresentationCoefficientModel`（57行）：`exists_finitePresentation_coefficient_model` は Noether 係数環 k、任意の k-代数 R、qcqs・局所有限表示の f:X→Spec R に対し、有限生成 k-部分代数 A⊆R、実際の p:Y→Spec A、その局所有限表示性・準コンパクト性・準分離性、実際の a:X→Y と `IsPullback a f p (Spec.map (algebraMap A R))` を無条件に供給する。元の環 R の Noether 性、既存の模型・固有性・忠実平坦性を仮定しない。有限 affine アトラスから始め、三種の射と六種の式の共通係数段を取り、実際に貼り合わせる。係数包含について val と algebraMap の同じ射への照合も証明した。係数環 k の宇宙は R・X と独立のまま。既存の代数の係数模型のモジュールは変更していない。
+
+本体135行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,963ジョブ成功。二モジュールの小監査9宣言（8・1）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致と新規ファイルであることを確認済み。ログ `2g-finite-presentation-model-assembly-check-2.log`・`2g-finite-presentation-model-assembly-native.log`・`2g-finite-presentation-model-assembly-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ使用。
+
+今回の区切り（6ad58796d の後）は12モジュール、本体813行・入口12行、小監査合計187宣言・標準三公理のみ。G1・G2共用部品込み本体10,416行、入口込み10,593行。一般の有限表示対象の模型の分割は本体3,754行までで、無条件の出口まで検証済み。
+
+B01 の一般の対象の模型の部分は済んだが、一般の固有性を有限段へ降ろす部分、有限個の射・可換式と全射性をそろえる部分、v 被覆の実際の模型の図式と filtered 余極限・conerve との整合性が残る。B01〜B04 は未完、2g-1 の停止点ではない。次は上記の原典の照合を踏まえ、一般の固有性の降下の具体的な不足と型付きの標準存在補題の見込みを詰める。外枠25,000行は不変で、約12,000行の途中報告では残りの G2 の見込みを更新する。
+
+一覧：済み10／全体14（うち追加5）。
