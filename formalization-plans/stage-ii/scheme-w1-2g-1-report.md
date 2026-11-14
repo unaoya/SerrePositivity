@@ -1635,3 +1635,22 @@ C04(b) の affine な標的の場合（着手前の型、見込み50〜120行、
 今回の区切り（4013e532b の後）は4モジュール、本体204行・入口4行、小監査合計7宣言・標準三公理のみ。G1・G2共用部品込み本体10,620行、入口込み10,801行。C04 は本体204行まで検証。次は一般の標的の有限 affine 被覆で affine 性の降下をそろえ、07RH の有限生成代数の全射性と合わせて閉埋め込み性の一般の場合へ接続する。C04、B01〜B04 は未完。一般の固有性の降下と被覆模型・図式の整合性も残り、2g-1 の停止点ではない。外枠25,000行は不変、約12,000行で残りの G2 の見込みを更新する。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+C04(b) の一般の標的への接続（着手前の型、見込み150〜350行、C04 内）：`baseChangePairIso` は `(X×ₛT)×ₜ(V×ₛT) ≅ (X×ₛV)×ₛT` の実際の同型。`isAffine_restrictedSource_of_baseChangeAffine` は V が affine、T→S と X×ₛT→T が affine なら、実際の制限の源 `(X×ₛV)×ₛT` が affine と供給する。`exists_affineHom_pullback_of_isLimit` は qcqs な標的図式の任意の段への qcqs な射 f について、極限への底変換が affine な射なら、ある後の段への実際の底変換も affine な射と返す。標的の有限 affine 被覆の制限の源を既存の有限族の同じ段への供給でそろえ、同じ pullback の同型で元の射の局所性へ渡す。原典01ZNの C04 内の証明分割・既存の底変換と局所性の法則で、親項目は増やさない。
+
+
+C04(c) の有限生成元の原像を同じ段へ取る分割（着手前の型、見込み100〜250行）：`exists_surjective_stage_of_uniform_generators` は filtered な可換環の二つの図式 D,E と自然変換 τ、実際の余極限、余極限上の可換な全射を受け取る。ある段 i の有限個の元 s が、各後段 j において τⱼ の像と一緒に Eⱼ を部分環として生成するなら、ある j≥i の τⱼ は全射と返す。元の有限個の原像を D の余極限から段へ取り、E の余極限での像との一致も有限段へ移して一つの共通する射 i→j にそろえる。[Stacks 07RH, 10.168.4](https://stacks.math.columbia.edu/tag/07RH) の有限生成元による証明の部分。tensor の底変換に対する生成元と余極限の整合性はこの後に別途供給し、この補助入力を最終の模型の存在の仮定に追加しない。C04 内の証明分割で、親項目は増やさない。
+
+
+### C04(b)：一般の標的での射の affine 性の有限段への降下
+
+`BaseChangePairAffine`（35行）：`baseChangePairIso` は制限した源の底変換と底変換した二つの源の交叉の実際の同型。`isAffine_restrictedSource_of_baseChangeAffine` は、affine な標的開と極限での affine な射から、制限の源の実際の底変換の affine 性を返す。
+
+`AffineHomGeneralLimitDescent`（68行）：`exists_affineHom_pullback_of_isLimit` は qcqs な射について、一般の標的の極限での affine 性を、ある後の段の実際の底変換射の affine 性へ降ろす。標的の有限 affine 被覆を取り、源の制限を同じ段で affine にそろえ、実際の同型を使って元の射の局所性へ渡す。標的の Noether 性や遷移の忠実平坦性を仮定しない。
+
+本体103行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,969ジョブ成功。小監査8宣言（7・1）・標準三公理のみ。最初の単独モジュールのビルドで不足した Morphisms.Affine の import を明示し、同じソースから下書きの束を再生成して終了状態0を確認した後、対象ビルドと監査を完了した。ログ `2g-affine-general-limit-check-2.log`・`2g-affine-general-limit-native-2.log`・`2g-affine-general-limit-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。resource limit の変更なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ使用。
+
+G1・G2共用部品込み本体10,723行、入口込み10,906行。C04 は本体307行まで検証。一般の標的への affine 性の降下は済んだ。次の有限生成元による全射性の降下は未検証の下書きでこの実測に含めない。C04 の一般の閉埋め込み性、一般の固有性の降下と被覆模型・図式の整合性は残り、C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。

@@ -1466,3 +1466,5 @@ public import SerrePositivity.AlgebraicGeometry.ClopenLimitDescent
 public import SerrePositivity.AlgebraicGeometry.OpenImmersionClosedLimit
 public import SerrePositivity.AlgebraicGeometry.FiniteAffineCompositeStages
 public import SerrePositivity.AlgebraicGeometry.AffineHomLimitDescent
+public import SerrePositivity.AlgebraicGeometry.BaseChangePairAffine
+public import SerrePositivity.AlgebraicGeometry.AffineHomGeneralLimitDescent
