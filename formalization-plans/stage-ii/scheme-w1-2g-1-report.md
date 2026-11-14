@@ -426,3 +426,15 @@ G1 累計は本体 **2,265 行**、入口込み **2,312 行**。次は有限個�
 `e : R ⊗[A] S ≃ₐ[R] B` に対し、`affineTensorModelIso e : Spec B ≅ pullback (Spec(A→S)) (Spec(A→R))` を既存の pullbackSpecIso・Spec の同型・対称性の合成で作る。その `hom_fst` は `Spec(S→R⊗[A]S→B)`、`hom_snd` は元の `Spec(R→B)` と一致する。`isPullback_affineTensorModel e` で同じ実際の四辺の IsPullback を得る。既存の tensor 同型の Spec への係数移送と射影の法則であり、独立した模型の存在定理は追加しない。見込み 70〜140 行。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+### 共通係数環と有限個の一般自由開：検証結果
+
+`GenericFlatCommonCoefficients.lean` **86 行**、入口 1 行。下書き検証、本体と入口の対象ビルド **4,833 ジョブ成功**、小監査 **3 宣言・標準三公理のみ**、終了コード 0。ログは `scheme-drafts/2g-common-coefficients-check.log`、`2g-common-coefficients-native.log`、`2g-common-coefficients-audit.log`。共有鍵 `--class impl --wait 3600`、待ちは常に一つ。本体と小監査の束の後に実行した次の未検証の模型比較は、ℤ→A₀→T の scalar tower の instance 不足で停止した。この後続の下書きの失敗を、本体・小監査の成功と混同しない。模型比較は instance を明示して再検証へ回す。
+
+- `free_away_tensor_of_algHom`：基本開上の tensor の自由性を、同じ元を送る代数射に沿って移す。
+- `fg_finset_sup_subalgebra`：有限生成係数部分代数の有限 join は有限生成。
+- `exists_common_fg_subalgebra_generic_free_charts`：全極小素点を覆う一般自由基本開を有限個選び、一つの有限生成係数部分代数上で実現する。
+
+G1 累計は本体 **2,351 行**、入口込み **2,399 行**。既存の比較の法則・有限被覆の貼り合わせとして、主項目の数は不変。新しい resource limit・sorry・追加公理はない。実際の Noether 模型への tensor 比較と幾何の平坦開、および固有模型上の全射性の接続は、この時点ではまだ未完。
+
+一覧：済み 7／全体 12（うち追加 3）。
