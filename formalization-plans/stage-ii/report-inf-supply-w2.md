@@ -14195,3 +14195,105 @@ def strictBETotJointSourceNativePairingBaseIso :
     FunctorIso (strictBETotJointSourceNativePairingBase A)
       (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
 ```
+
+## 228. 指定された元の端点比較を保つ、同じ底上のnative Homへの実射（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§227の元の全端点比較の同じ逆を、元のnative pairingの射影へfunctorIsoOfEqで移送し、同じ底のFunctorIsoを指定した。これを既存pathCorrectedFunctorSquareへ渡した。twistedArrowProjectionのleft-fibration性と既存leftFibration_equivalenceLiftingだけを使い、元のpairingを同じ元の二変数native入力の上へ補正した。補正後の射影は元のnative入力の同じ全要素射影による引き戻しに厳密に等しい。
+
+補正後と元のpairingの比較には、指定pathから来る既存exactComponentIsoを使った。そのpostcompは、元の端点比較の逆自身を、同じ厳密な射影の等式のeqToIsoと合成したものに等しい。別の同型を選んだものではなく、この等式をstrictBETotJointSourceCorrectedPairingIso_postcompとして保持する。同じ正本Homの全空間を元のnative入力によるtwistedArrowProjectionのpullbackとして記し、補正後のpairingと元の全要素圏の射影をpullback.liftへ渡した。得られたstrictBETotJointSourceNativeHomMapは、元の全要素圏から同じ元の二変数の底上のnative Hom全空間への実際の全写像である。元の底への射影と補正後のpairingの回収の両方が厳密な等式として成立する。103行。
+
+既存の全端点比較、指定pathの相対持ち上げとpullbackの合成・自然性の法則の適用として記録し、独立の数学的な一覧項目は増やしていない。この全写像がcofinalか、元の置換からの延長が前合成同値かは、今回の存在やpathの等式から先取りしていない。元の固定始域のroof比較との全FunctorIsoの等式もR03dの残り。
+
+個別検査の最終版30336・終了0。306：必要な既存二モジュールのみの対象ビルド1,873 jobs・終了0（実ハンドル82144・終了0）。307：元の指定pathを保つ全写像の対象ビルド12,222 jobs・終了0、小監査173本1,236宣言・標準三公理のみ（実ハンドル30168・終了0）。鍵返却済み。§228までの累計173本・11,186行／外枠15,000。
+
+### 228.1 型
+
+共通入力は `(A : Type u) [CommRing A]`。元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使い、nativeな積の準圏性には既存quasicategory_tensorを適用する。
+
+#### StrictDiagramTotJointPairingCorrection（103行）
+
+```lean
+def strictBETotJointSourcePairingBasePathIso :
+    FunctorIso
+      (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
+      (strictBETotJointSourceNativePairing A ≫ twistedArrowProjection (CAlg_R A))
+
+def strictBETotJointSourcePairingCorrection :
+    PathCorrectedFunctorSquare (twistedArrowProjection (CAlg_R A))
+      (strictBETotJointSourceNativePairing A)
+      (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
+      (strictBETotJointSourcePairingBasePathIso A)
+
+def strictBETotJointSourceCorrectedPairing :
+    nerve (StrictBETotJointSourceElements A) ⟶ TwistedArrow (CAlg_R A)
+
+theorem strictBETotJointSourceCorrectedPairing_projection :
+    strictBETotJointSourceCorrectedPairing A ≫ twistedArrowProjection (CAlg_R A) =
+      nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A
+
+def strictBETotJointSourceCorrectedPairingIso :
+    FunctorIso (strictBETotJointSourceCorrectedPairing A) (strictBETotJointSourceNativePairing A)
+
+theorem strictBETotJointSourceCorrectedPairingIso_postcomp :
+    (strictBETotJointSourceCorrectedPairingIso A).postcomp (twistedArrowProjection (CAlg_R A)) =
+      eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A
+
+def strictBETotJointNativeHomTotalSpace : SSet.{u+1}
+
+def strictBETotJointNativeHomProjection :
+    strictBETotJointNativeHomTotalSpace A ⟶ nerve (strictBETotJointHomIndex A)
+
+def strictBETotJointSourceNativeHomMap :
+    nerve (StrictBETotJointSourceElements A) ⟶ strictBETotJointNativeHomTotalSpace A
+
+theorem strictBETotJointSourceNativeHomMap_projection :
+    strictBETotJointSourceNativeHomMap A ≫ strictBETotJointNativeHomProjection A =
+      nerveMap (strictBETotJointSourceElementsProjection A)
+
+theorem strictBETotJointSourceNativeHomMap_pairing :
+    strictBETotJointSourceNativeHomMap A ≫
+      pullback.fst (twistedArrowProjection (CAlg_R A)) (strictBETotJointNativeHomInput A) =
+        strictBETotJointSourceCorrectedPairing A
+```
+
+## 229. 元の置換単位を固定したnative Homへの延長と終域の全分類（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+同じ正本Hom全空間の射影のleft-fibration性を、元のtwistedArrowProjectionのleft-fibration性の同じpullbackとして記録した。元の全要素圏のnerveからのstrictBETotJointSourceNativeHomMapを、元の連続left-fibration置換の同じ単位に沿い、既存exists_relativeFunctorExtension_of_leftAnodyneで延長した。exists_strictBETotJointSourceNativeLiftは、元の同じ底への射影の厳密な等式と、元の同じ置換単位との合成がstrictBETotJointSourceNativeHomMapそのものに等しいという厳密な三角形を同時に要求する。別の全写像の存在に取り替えていない。
+
+また同じ正本Hom全空間のnative全分類を、元のstrictBETotJointNativeHomCoherentへつなぐ全FunctorIsoを付けた。既存leftStraighteningInfinityDiagram_baseChangeIsoを元のtwistedArrowProjectionと元の二変数native入力へ適用するだけであり、twistedArrowHomInfinityの定義そのものに戻る。延長と終域の比較を合わせて66行。既存の相対延長・単位・引き戻し・全分類の底変換の法則の適用として記録し、独立の数学的な一覧項目は増やしていない。
+
+これで、raw Homから元の全要素置換の全分類への比較、元のnative Homの全空間の分類から元のnative Hom図式への比較、そしてその間の元の単位を固定した実射が、同じ全二変数の底の上で揃った。ただし中間のこの実射の同値性は未証明。次は元の固定始域の同じ全roof比較を使い、この同じ実射の同値性と、合成した全FunctorIsoの元の固定始域比較との一致を検収する。任意の別の全同型の存在、pointwiseな比較だけ、またはcofinal性を未証明の仮定として置く形へ弱めない。R03d・R02・R03とnative極限性の完了は主張しない。
+
+個別検査：元の単位を固定する延長28513・終了0、終域の底変換比較を含む最終版49885・終了0。308：延長の最初の版の対象ビルド12,223 jobs・終了0、小監査174本1,240宣言・標準三公理のみ（実ハンドル93277・終了0）。309：終域の底変換比較を含む最終版の対象ビルド12,223 jobs・終了0、小監査174本1,245宣言・標準三公理のみ（実ハンドル26554・終了0）。対象とその依存のみで、rootビルドや公式の大監査は実行していない。鍵返却済み。
+
+§228・§229で今回103＋66＝169行、累計174本・11,252行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 229.1 型
+
+共通入力は `(A : Type u) [CommRing A]`。元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。strictBETotJointNativeHomProjection_leftFibrationは同じファイル内で局所instanceとして使う。
+
+#### StrictDiagramTotJointSourceNativeLift（66行）
+
+```lean
+lemma strictBETotJointNativeHomProjection_leftFibration :
+    LeftFibration (strictBETotJointNativeHomProjection A)
+
+theorem exists_strictBETotJointSourceNativeLift :
+    let P : Over (nerve (strictBETotJointHomIndex A)) :=
+      Over.mk (nerveMap (strictBETotJointSourceElementsProjection A))
+    let R := (continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj P
+    ∃ f : R.left ⟶ strictBETotJointNativeHomTotalSpace A,
+      f ≫ strictBETotJointNativeHomProjection A = R.hom ∧
+      ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app P).left ≫ f =
+        strictBETotJointSourceNativeHomMap A
+
+def strictBETotJointNativeHomClassificationIso :
+    FunctorIso (leftStraighteningInfinityDiagram (strictBETotJointNativeHomProjection A))
+      (strictBETotJointNativeHomCoherent A)
+```
