@@ -251,7 +251,7 @@ try:
         delay=2 if a.wait is None else min(2,max(0,a.wait-(now-started)))
         # Short sleep slices let signal cleanup run promptly.
         until=time.monotonic()+delay
-        while time.monotonic()<until and not interrupted: time.sleep(min(.1,until-time.monotonic()))
+        while time.monotonic()<until and not interrupted: time.sleep(max(0.0,min(.1,until-time.monotonic())))
     if interrupted: sys.exit(128+interrupted)
     child=subprocess.Popen(a.command,start_new_session=True)
     if interrupted: handle(interrupted,None)
