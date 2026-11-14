@@ -3596,9 +3596,68 @@ lemma sectionBaseChangeCompComparison_value_hom {E B D T : SSet.{u}}
 
 検証追記：三本の対象ビルドと三宣言の小監査が成功
 （`/tmp/is-w1/coefficient-value-3.log`、5,483 jobs、標準三公理のみ）。
-`SectionBaseChangeCompValueHom` は55行。検証済み累計は98本・8,185行。
+`SectionBaseChangeCompValueHom` は53行。検証済み累計は98本・8,183行。
 実現値の比較は標準引き戻し同型の逆射そのものへ接続できた。
 E01の残りは、この同じ値の法則を指定分類の初頂点制限へ渡し、
 承認済みの `leftStraightening_baseChange_pasting` を降下させる部分。
 
 一覧：済み 0／全体 13（うち追加 11）
+
+## 49. 指定比較の分類像と初頂点制限（11-14、途中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+三本の対象ビルドと四宣言の小監査が成功
+（`/tmp/is-w1/classified-restriction-3.log`、5,489 jobs、標準三公理のみ）。
+元の比較の値、同じ標準全空間射の分類Hom、指定底変換の初頂点制限を照合した。
+これらは既存の構成の法則で、E01の完成には数えない。
+型の展開が大きい箇所は合成の型とletを局所的に明示した。計算上限は変えていない。
+
+実測：`SectionBaseChangeCompValueNormalization` 59行、`SectionBaseChangeCompClassifiedHom` 70行、`LeftStraighteningBaseChangeRestrictionNormalization` 74行。
+計203行、3b-3の検証済み累計は101本・8,386行。
+各宣言は200行未満。
+
+### SectionBaseChangeCompValueNormalization
+
+```lean
+lemma sectionBaseChangeCompRealizationIso_value_heq {E B D T : SSet.{u}}
+    {J : Type u} [Category.{u} J] (p : E ⟶ B) [LeftFibration p]
+    (k : D ⟶ B) (l : T ⟶ D) (A : Jᵒᵖ ⥤ Over T) :
+    HEq (functorIsoValue (sectionBaseChangeCompRealizationIso k l A)
+        (leftFibrationInfinityVertex p))
+      (kanEnrichedRealizationValueIso (sectionBaseChangeCompComparison k l A)
+        (sectionBaseChangeCompComparison_isQCatEquivalence k l A) (leftFibrationObjectOf p))
+```
+
+### SectionBaseChangeCompClassifiedHom
+
+```lean
+lemma sectionBaseChangeCompComparison_classified_hom {E B D T : SSet.{u}}
+    [Quasicategory T] (p : E ⟶ B) [LeftFibration p]
+    (k : D ⟶ B) (l : T ⟶ D) :
+    let q₀
+```
+
+### LeftStraighteningBaseChangeRestrictionNormalization
+
+```lean
+private lemma two_mp_heq {α β γ : Sort v} (h₁ : α = β) (h₂ : β = γ) (x : α) :
+    HEq (Eq.mp h₂ (Eq.mp h₁ x)) x
+
+lemma leftStraighteningInfinityMap_baseChangeIso_heq_transpose {B D : SSet.{u}} (k : D ⟶ B) :
+    HEq (leftStraighteningInfinityMap_baseChangeIso k)
+      (leftStraighteningSectionJointDiagram_baseChangeIso k).transpose
+
+lemma leftStraighteningInfinityMap_baseChangeIso_firstVertex_heq {B D : SSet.{u}}
+    (k : D ⟶ B) :
+    HEq ((leftStraighteningInfinityMap_baseChangeIso k).postcomp
+      ((pre ((SSet.uliftFunctor.{u + 1, u}).map
+        (transportSimplexFirstVertexMap D))).app SpaceInfinity.{u}))
+      (straighteningBaseChangeRestrictionIso k).transpose
+```
+
+残りの接続：指定底変換の正規化した成分を内部Homで制限し、
+上の全対象の初頂点制限へ移す（既存の成分の後合成の法則を再利用）。
+その後、元の切断底変換の三因子の合成則で中間の制限同型を消去し、
+`leftStraightening_baseChange_pasting` を初頂点局所化から反映する。
+`NormalizedFunctorIsoComponentRestriction` の二法則を対象ビルド中。
