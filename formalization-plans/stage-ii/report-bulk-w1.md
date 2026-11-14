@@ -913,3 +913,10 @@ SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされ�
 一覧：済み 8／全体 14（うち追加 0）。Shared/EInfinityPowerOperationの旧open下の参照も、所有元つきKL/B3表を合成して確かめた。**54・55・70・80・128〜130・151・152・157行の10参照**を、同じ宣言の新しい完全名に機械的に置き換えた。元のopen・宣言名・束縛変数・証明の手順・仮定は維持し、変更箇所を[同じ台帳](bulk-5inf0/section5-protected-mechanical-edits.json)に追加。importの1行を含めて計11参照。A4のP⁰部分は一字も変更していない。Shared全体の型検査は前提待ちであり、この改名以外の修正は許可範囲に入れていない。
 
 [第20束](bulk-5inf0/draft-block20-validation.json)・[第21束](bulk-5inf0/draft-block21-validation.json)は同じ共有Totの最後の表示の等式で失敗、後続へ進んでいない。`simp`が圏同値・切断版のラッパーを一括で評価しないため、頂点のホモロジーの同じ定義を局所等式として示す形で第22束を検査する。成功は25本のまま。
+
+
+### 5∞-0 のdraft検査・第22〜23束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第22束](bulk-5inf0/draft-block22-validation.json)の局所等式は証明が終わっており、残った余分なrflだけで失敗した（検査したソースはその後の修正とは別署名）。[第23束](bulk-5inf0/draft-block23-validation.json)でShared/CosimplicialEInfinityと、改名だけを直した保護対象Shared/EInfinityPowerOperationの2本が成功。一度は27本の成功に到達したが、A2で本体のCosimplicialAlgebraとdraftの同名定義の衝突が判明した。本体HomologicalAlgebra.Cosimplicial.Algebraの型は同じ `CosimplicialObject (Under (CommRingCat.of A))` なので、draftの重複定義を外して本体を直接importした。共有Totの再検査・その依存の再検査を第24束で行い、旧成功はその間集計から外す（有効25本）。既存の全証明は維持しており、保護対象の型・証明の変更はない。
+
+B03の本質的小ささの本体補題はκの下限を仮定しないので、A2/DerivedPrismaticCohomology・A3/DiscreteCase・A5/PerfectSiteに残る古い追加引数を外して同じ本体補題を使った。前二者のうちA2とA5にあった濃度のsorry2個が不要になった。これらのdraft全体はまだ未検査で、成功に算入していない。
