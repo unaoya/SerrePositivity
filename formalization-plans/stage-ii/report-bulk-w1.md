@@ -1182,3 +1182,10 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 一覧：済み 11／全体 14（うち追加 0）。[第71束](bulk-5inf0/draft-block71-validation.json)でSheafOfSetsExcisionが成功。有効な成功は53／57本。補った同じpushoutの射、FiniteProductの補題、正しいPerfectoidizationInterface.completionLiftが通った。普通のホモトピー圏の6参照の台帳も全3ファイルで全体の検査が通った状態に更新。この検査済みソースをコミットする。
 
 次のExcisionは、既存のIsIso ηの証明をasIsoで探索する1箇所で失敗。元からある証明をhηと名前を付け、@asIsoへ直接渡す形で第72束に並んだ。主張・証明の未完了の数・引数は増やしていない。
+
+
+### 5∞-0 のdraft検査・第72束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第72束](bulk-5inf0/draft-block72-validation.json)でExcisionが成功。有効な成功は54／57本。同じIsIsoの証明をasIsoへ明示的に渡すことが通った。検査済みソースをコミットする。
+
+次のAlmostPurityConnectivityは本体へ移したtrivialCoverComparison_isModuleCompleteのdocstringとinclude hRだけが残った構文エラー1件。本体のAlmost/FiniteEtaleComparison.leanの所有元を示す通常の注記に替え、孤立したincludeは除いた。後続のarcOutside_of_integral_of_localization_isoに、本来不要なperfectoid基底の仮定を付けない。新しい仮定やsorryは追加しない。第73束へ並んだ。
