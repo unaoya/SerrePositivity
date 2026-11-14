@@ -920,3 +920,10 @@ SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされ�
 一覧：済み 8／全体 14（うち追加 0）。[第22束](bulk-5inf0/draft-block22-validation.json)の局所等式は証明が終わっており、残った余分なrflだけで失敗した（検査したソースはその後の修正とは別署名）。[第23束](bulk-5inf0/draft-block23-validation.json)でShared/CosimplicialEInfinityと、改名だけを直した保護対象Shared/EInfinityPowerOperationの2本が成功。一度は27本の成功に到達したが、A2で本体のCosimplicialAlgebraとdraftの同名定義の衝突が判明した。本体HomologicalAlgebra.Cosimplicial.Algebraの型は同じ `CosimplicialObject (Under (CommRingCat.of A))` なので、draftの重複定義を外して本体を直接importした。共有Totの再検査・その依存の再検査を第24束で行い、旧成功はその間集計から外す（有効25本）。既存の全証明は維持しており、保護対象の型・証明の変更はない。
 
 B03の本質的小ささの本体補題はκの下限を仮定しないので、A2/DerivedPrismaticCohomology・A3/DiscreteCase・A5/PerfectSiteに残る古い追加引数を外して同じ本体補題を使った。前二者のうちA2とA5にあった濃度のsorry2個が不要になった。これらのdraft全体はまだ未検査で、成功に算入していない。
+
+
+### 5∞-0 のdraft検査・第24束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第24束](bulk-5inf0/draft-block24-validation.json)で本体のCosimplicialAlgebraに揃えたShared/CosimplicialEInfinityが成功し、依存を更新したShared/EInfinityPowerOperationも成功。有効な成功は27本に戻った。共有Totの検査済みソースをコミットする。A2はimportを通過し、structurePresheafの不要なE引数、結果の型が未指定のpolyTestFrobenius、discreteEvaluationのカーネル時間切れ、逐次図式の1単体の添字の4種類が残った。後続はまだ成功に算入していない。
+
+全draftを本体の宣言名と静的に再照合し、残る同名候補はShared/DeRhamPolynomialのdeRhamCohomologyWedgeの1件のみだった。署名が同じことを確かめ、本体への一本化を次の検査で確認する。同名だけで数学的な等しさを主張するものではない。
