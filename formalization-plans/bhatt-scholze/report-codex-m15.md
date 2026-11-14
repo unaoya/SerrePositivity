@@ -1140,3 +1140,251 @@ lemma moduleResolutionAdjunction_counitHom :
       Truncated.HomotopyCategory.homMk
         (functorEdgeOfSimplicialHomotopy (dgModuleResolutionAugmentationHomotopy A D))
 ```
+
+## 6. M10 の厳密な相対圏の族への接続（11-14、着手前）
+
+main の `fb3dfd20e` までの文書（共通の /goal・一覧の進捗規則）を取り込んだ。
+B4 の実行指示はまだない。⑤d の M15→G12 の範囲で続行する。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+M01〜M09 の厳密底上の主出力は検証済み。M19 は一般の芯のみで未完。
+C01〜C03 に記載した既存構成の照合は法則の記録であり、一覧の全体には加算しない。
+全族や相対テンソルの主型は、孤立した比較や条件付き Setup で置き換えない。
+
+### 6.1 次の束の型（M10 の構成の分割）
+
+まず同じ dg 加群・同じ準同型を持つ通常の相対圏の fiber と実 restriction を作る。
+その恒等・合成の比較は、既存の加群制限の元の成分を保持する。
+これは M10 の局所化前の材料であり、native CAlg 上の cocartesian fibration が
+既に出来たとは数えない。高次の族と局所化・fiber 比較はこの後に接続する。
+新しい ID は追加しない。
+
+```lean
+-- A : Type u; [CommRing A]; X Y Z : (operad A).Algebra
+-- D_X := dgAlgebraCategory A ((assocForget A).obj X)
+abbrev strictRawModuleCategory (X : (operad A).Algebra) := ModuleCategory A D_X
+
+def strictRawModuleRelativeCategory (X : (operad A).Algebra) : RelativeCategory.{u+1}
+
+def strictRawModuleRestrict (f : X ⟶ Y) :
+  strictRawModuleCategory A Y ⥤ strictRawModuleCategory A X
+
+def strictRawModuleRestrictRelative (f : X ⟶ Y) :
+  strictRawModuleRelativeCategory A Y ⟶ strictRawModuleRelativeCategory A X
+
+def strictRawModuleRestrict_idIso (X : (operad A).Algebra) :
+  strictRawModuleRestrict (𝟙 X) ≅ 𝟭 (strictRawModuleCategory A X)
+
+def strictRawModuleRestrict_compIso (f : X ⟶ Y) (g : Y ⟶ Z) :
+  strictRawModuleRestrict g ⋙ strictRawModuleRestrict f ≅ strictRawModuleRestrict (f ≫ g)
+```
+
+単位・合成比較の成分の評価、自然性・結合・貼り合わせの法則は同じ束の法則として
+型を追記する。200 行を超える証明があれば行数も記録する。
+
+### 6.2 M10 の次の分割の型（着手前）
+
+前節の同じ単位・合成比較の貼り合わせを使って、通常の相対族の全圏と射影を作る。
+この型を含む擬関手の結合・左右単位の法則は、元の成分の評価によって照合する。
+
+```lean
+open scoped CategoryTheory.Bicategory
+-- A : Type u; [CommRing A]
+def strictRawModuleRestrictionPseudofunctor :
+  LocallyDiscrete ((operad A).Algebraᵒᵖ) ⥤ᵖ Cat.{u, u+1}
+abbrev strictRawModuleTotal :=
+  Pseudofunctor.CoGrothendieck (strictRawModuleRestrictionPseudofunctor A)
+def strictRawModuleProjection : strictRawModuleTotal A ⥤ (operad A).Algebra
+```
+
+この通常の Grothendieck 圏だけでは M10 の完成ではない。同じ相対圏の局所化と
+元の dg nerve fiber の全比較、native CAlg 上の高次 transport は依然必要。
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 6.3 同じ全圏の忘却・相対局所化の射影（着手前）
+
+```lean
+-- A : Type u; [CommRing A]
+def strictRawModuleTotalForget : strictRawModuleTotal A ⥤ Complex A
+-- 準同型は「底の BE 射が準同型、かつ同じ台の加群射が準同型」の同時条件。
+def strictRawModuleTotalRelative : RelativeCategory.{u+1}
+def strictRawModuleTotalProjectionRelative :
+  strictRawModuleTotalRelative A ⟶ algebraRelativeCategory A
+abbrev moduleTotalInfinity : SSet.{u+1}
+def moduleTotalProjection : moduleTotalInfinity A ⟶ CAlg_R A
+```
+
+相対局所化の射影は元の全単体を持つ実写像として作り、頂点の写像だけでは済ませない。
+ただし射影の cocartesian 性と fiber の同じ半自由 dg nerve との比較が残る限り、
+この写像だけを `ModuleFamily` の完成として数えない。
+
+### 6.4 実装の実測と追加法則の型
+
+| 新設ファイル | 行 | 宣言 |
+| --- | ---: | ---: |
+| `StrictRawModules.lean` | 118 | 10 |
+| `StrictRawCoherence.lean` | 125 | 6 |
+| `StrictRawFamily.lean` | 102 | 3 |
+| `TotalLocalization.lean` | 94 | 6 |
+
+新設 4 本・439 行・25 宣言。累積 **21 本・1,988 行・108 宣言**
+（private 3 を含む）。200 行を超える補題はない。型付き一覧に新しい ID を追加していない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+準同型を保つ元の制限、単位・合成比較の恒等成分、その逆成分と左右単位・結合の
+貼り合わせを検証した。この同じデータから擬関手と通常の全圏を構成した。
+全圏の台は元の複体で、準同型条件は底と台の二つの準同型類の逆像の交わり。
+局所化の射影の底は新しい代数模型ではなく、既存の cofibrant 置換を通した同じ CAlg_R。
+新設 4 モジュールの対象ビルドは PASS。公開 25 宣言の小監査も PASS、
+公理依存は全て `[propext, Classical.choice, Quot.sound]` のみ。
+指定の `scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- ...` の内側で実行した。
+最終対象ログは `/tmp/m15-total-localization3.log`（比較・全圏）と
+`/tmp/m15-total-localization4.log`（射影）、監査は `/tmp/m15-audit6-verified.log`。
+大きい監査・全体ビルドは行っていない。計算上限も引き上げていない。
+
+M10 の未完の部分は、局所化の射影の cocartesian 性（必要なら同じ底上の
+fibration 模型との比較も含む）、fiber の元の半自由 dg nerve との全比較、
+その比較の厳密な単位・忘却・拡大との整合性。ここを仮定の欄に置かない。
+M11〜M42 の残りと G12 はまだ完成していない。
+
+以下は今回の構成と法則の実装の型。`strictRawModuleRelativeCategory` は対象を変えず
+Hom だけを ULift し、元の準同型を down で引き戻す。
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+variable (A : Type u) [CommRing A]
+
+abbrev strictRawModuleCategory (X : (operad A).Algebra) :=
+  ModuleCategory A (dgAlgebraCategory A ((assocForget A).obj X))
+
+def strictRawModuleRelativeCategory (X : (operad A).Algebra) : RelativeCategory.{u+1}
+
+variable {A}
+
+def strictRawModuleRestrict {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictRawModuleCategory A Y ⥤ strictRawModuleCategory A X
+
+def strictRawModuleRestrictRelative {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictRawModuleRelativeCategory A Y ⟶ strictRawModuleRelativeCategory A X
+
+def strictRawModuleRestrict_idIso (X : (operad A).Algebra) :
+    strictRawModuleRestrict (𝟙 X) ≅ 𝟭 (strictRawModuleCategory A X)
+
+def strictRawModuleRestrict_compIso {X Y Z : (operad A).Algebra} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    strictRawModuleRestrict g ⋙ strictRawModuleRestrict f ≅ strictRawModuleRestrict (f ≫ g)
+
+def strictRawModuleUnderlying (X : (operad A).Algebra) : strictRawModuleCategory A X ⥤ Complex A
+
+lemma strictRawModuleHom_ext {X : (operad A).Algebra} {M T : strictRawModuleCategory A X}
+    {f g : M ⟶ T} (h : (strictRawModuleUnderlying X).map f = (strictRawModuleUnderlying X).map g) :
+    f = g
+
+lemma strictRawModuleRestrict_idIso_eval (X : (operad A).Algebra) (M : strictRawModuleCategory A X) :
+    (strictRawModuleUnderlying X).map ((strictRawModuleRestrict_idIso X).hom.app M) =
+      𝟙 ((strictRawModuleUnderlying X).obj M)
+
+lemma strictRawModuleRestrict_compIso_eval {X Y Z : (operad A).Algebra}
+    (f : X ⟶ Y) (g : Y ⟶ Z) (M : strictRawModuleCategory A Z) :
+    (strictRawModuleUnderlying X).map ((strictRawModuleRestrict_compIso f g).hom.app M) =
+      𝟙 ((strictRawModuleUnderlying Z).obj M)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory CategoryTheory.Functor
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+variable {A : Type u} [CommRing A]
+
+lemma strictRawModuleRestrict_eval {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    {M T : strictRawModuleCategory A Y} (g : M ⟶ T) :
+    (strictRawModuleUnderlying X).map ((strictRawModuleRestrict f).map g) =
+      (strictRawModuleUnderlying Y).map g
+
+lemma strictRawModuleRestrict_idIso_inv_eval (X : (operad A).Algebra)
+    (M : strictRawModuleCategory A X) :
+    (strictRawModuleUnderlying X).map ((strictRawModuleRestrict_idIso X).inv.app M) =
+      𝟙 ((strictRawModuleUnderlying X).obj M)
+
+lemma strictRawModuleRestrict_compIso_inv_eval {X Y Z : (operad A).Algebra}
+    (f : X ⟶ Y) (g : Y ⟶ Z) (M : strictRawModuleCategory A Z) :
+    (strictRawModuleUnderlying X).map ((strictRawModuleRestrict_compIso f g).inv.app M) =
+      𝟙 ((strictRawModuleUnderlying Z).obj M)
+
+lemma strictRawModuleRestrict_comp_assoc {W X Y Z : (operad A).Algebra}
+    (f : W ⟶ X) (g : X ⟶ Y) (h : Y ⟶ Z) :
+    isoWhiskerRight (strictRawModuleRestrict_compIso g h) (strictRawModuleRestrict f) ≪≫
+        strictRawModuleRestrict_compIso f (g ≫ h) =
+      Functor.associator (strictRawModuleRestrict h) (strictRawModuleRestrict g)
+          (strictRawModuleRestrict f) ≪≫
+        isoWhiskerLeft (strictRawModuleRestrict h) (strictRawModuleRestrict_compIso f g) ≪≫
+        strictRawModuleRestrict_compIso (f ≫ g) h ≪≫
+        eqToIso (congrArg (fun k => strictRawModuleRestrict k) (Category.assoc f g h))
+
+lemma strictRawModuleRestrict_comp_id {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictRawModuleRestrict_compIso f (𝟙 Y) ≪≫
+        eqToIso (congrArg (fun k => strictRawModuleRestrict k) (Category.comp_id f)) =
+      isoWhiskerRight (strictRawModuleRestrict_idIso Y) (strictRawModuleRestrict f) ≪≫
+        Functor.leftUnitor (strictRawModuleRestrict f)
+
+lemma strictRawModuleRestrict_id_comp {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictRawModuleRestrict_compIso (𝟙 X) f ≪≫
+        eqToIso (congrArg (fun k => strictRawModuleRestrict k) (Category.id_comp f)) =
+      isoWhiskerLeft (strictRawModuleRestrict f) (strictRawModuleRestrict_idIso X) ≪≫
+        Functor.rightUnitor (strictRawModuleRestrict f)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFamily.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory CategoryTheory.Bicategory
+open scoped CategoryTheory.Bicategory
+variable (A : Type u) [CommRing A]
+
+def strictRawModuleRestrictionPseudofunctor :
+    LocallyDiscrete ((operad A).Algebraᵒᵖ) ⥤ᵖ Cat.{u, u+1}
+
+abbrev strictRawModuleTotal := Pseudofunctor.CoGrothendieck
+  (strictRawModuleRestrictionPseudofunctor A)
+
+def strictRawModuleProjection : strictRawModuleTotal A ⥤ (operad A).Algebra
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+attribute [local implicit_reducible] strictRawModuleRestrictionPseudofunctor
+variable (A : Type u) [CommRing A]
+
+def strictRawModuleTotalForget : strictRawModuleTotal A ⥤ Complex A
+
+def strictRawModuleTotalRelative : RelativeCategory.{u+1}
+
+def strictRawModuleTotalProjectionRelative :
+    strictRawModuleTotalRelative A ⟶ algebraRelativeCategory A
+
+abbrev moduleTotalInfinity : SSet.{u+1}
+
+instance moduleTotalInfinity_quasicategory : Quasicategory (moduleTotalInfinity A)
+
+def moduleTotalProjection : moduleTotalInfinity A ⟶ CAlg_R A
+```
