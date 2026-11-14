@@ -6142,3 +6142,126 @@ theorem reflectedBKFreeHom_tensor_component_of_degree (P : Complex A)
 累計 **269モジュール・16,472行・2,256宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtynine-modules.txt`。外枠20,000行まで残り3,528行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
 
 B02はまだ未完。次は元の `reversedWeightPointwiseBousfieldKanCone X` を、同じ自由鎖随伴による `σ ≫ r` の像に厳密に同定する。§108の `normalizedLinearWeightHomEquiv_freeDiagram` を元の錐代表に適用し、係数重み同型の両逆を相殺する。これにより今回の右辺を実標準Homの最上位成分へ合わせる。その後、パラメータ側の§126、各切断の§127と全切断和、§125のMoore制限、指定自由随伴・uncurryを通して、元のB02の全単体的射の等式へ戻す。B03〜B08・C・D、G10後の3b-4段0は未完。
+
+## 132. B02の途中：元の反転BK錐入力の逆随伴と最上位成分
+
+一覧：済み 14／全体 36（うち追加 1）
+
+元の `reversedWeightPointwiseBousfieldKanCone X` が、指定係数重み同型の逆射と同じ反転錐代表の自由鎖随伴像であることを、既存の全図式の線形重みHom比較から証明した。自由随伴で逆に戻すと、同じ `σ ≫ normalizedBousfieldKanConeRepresentative X` の像となり、各点・各複体次数で実代表の成分に一致する。さらに元の反転錐入力を同じ標準DK同型で実標準Homへ戻した最上位成分を、同じ実代表の射影自由生成元の像に同定した。全次数（零次数を含む）の式で、錐入力・DK同型を選び直していない。
+
+パラメータ側では、指定持ち上げ標準単体Hom評価の後合成自然性とYonedaパラメータの単位評価を証明した。同じ元の射の全単体の像をそのまま与える。いずれもB02の既存構成の評価・自然性・合成則または同じ証明の分割で、ID付き項目の追加ではない。
+
+### 132.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeAdjunction`（113行）
+
+```lean
+theorem reversedWeightPointwiseBousfieldKanCone_freeAdjunction
+    (X : CosimplicialObject (Complex A)) :
+    reversedWeightPointwiseBousfieldKanCone X =
+      (freeNegativeChainsDiagramAdjunction A (SimplexCategoryᵒᵖᵒᵖ)).homEquiv
+        (V ⋙ SSet.uliftFunctor.{u,0})
+        (complexOfFunctorsToFunctorToComplex.obj (bousfieldKanConeHomDiagram X))
+        ((functorComplexExchangeUnitIso (SimplexCategoryᵒᵖᵒᵖ) (ModuleCat A) (.up ℤ)).hom.app
+            (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0})) ≫
+          complexOfFunctorsToFunctorToComplex.map
+            ((normalizedLinearWeightDiagramIso A V).inv ≫
+              reflectedBousfieldKanConeRepresentative X))
+
+theorem reflectedBousfieldKanConeRepresentative_source (X : CosimplicialObject (Complex A)) :
+    reflectedBousfieldKanConeRepresentative X =
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat ≫ normalizedBousfieldKanConeRepresentative X
+
+theorem reversedWeightPointwiseBousfieldKanCone_free_inverse
+    (X : CosimplicialObject (Complex A)) :
+    ((freeNegativeChainsDiagramAdjunction A (SimplexCategoryᵒᵖᵒᵖ)).homEquiv
+      (V ⋙ SSet.uliftFunctor.{u,0})
+      (complexOfFunctorsToFunctorToComplex.obj (bousfieldKanConeHomDiagram X))).symm
+      (reversedWeightPointwiseBousfieldKanCone X) =
+      (functorComplexExchangeUnitIso (SimplexCategoryᵒᵖᵒᵖ) (ModuleCat A) (.up ℤ)).hom.app
+          (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0})) ≫
+        complexOfFunctorsToFunctorToComplex.map
+          (((normalizedLinearWeightDiagramIso A V).inv ≫
+            extendMap (normalizedMooreReverse.app
+              (linearizedSimplicialWeight A bousfieldKanSetWeight))
+                ComplexShape.embeddingDownNat) ≫ normalizedBousfieldKanConeRepresentative X)
+
+theorem reversedWeightPointwiseBousfieldKanCone_free_inverse_app_f
+    (X : CosimplicialObject (Complex A)) (j : SimplexCategoryᵒᵖᵒᵖ) (i : ℤ) :
+    ((((freeNegativeChainsDiagramAdjunction A (SimplexCategoryᵒᵖᵒᵖ)).homEquiv
+      (V ⋙ SSet.uliftFunctor.{u,0})
+      (complexOfFunctorsToFunctorToComplex.obj (bousfieldKanConeHomDiagram X))).symm
+      (reversedWeightPointwiseBousfieldKanCone X)).app j).f i =
+      ((((normalizedLinearWeightDiagramIso A V).inv ≫
+        extendMap (normalizedMooreReverse.app
+          (linearizedSimplicialWeight A bousfieldKanSetWeight)) ComplexShape.embeddingDownNat) ≫
+          normalizedBousfieldKanConeRepresentative X).f i).app j
+
+theorem freeNegativeChainsDiagramAdjunction_symm_app {J : Type*} [Category* J]
+    (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
+    (f : W ⟶ Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A) (j : J) :
+    (((freeNegativeChainsDiagramAdjunction A J).homEquiv W Q).symm f).app j =
+      ((freeNegativeChainsAdjunction A).homEquiv (W.obj j) (Q.obj j)).symm (f.app j)
+
+theorem reversedWeightPointwiseBousfieldKanCone_point_inverse_f
+    (X : CosimplicialObject (Complex A)) (j : SimplexCategoryᵒᵖᵒᵖ) (i : ℤ) :
+    (((freeNegativeChainsAdjunction A).homEquiv
+      ((V ⋙ SSet.uliftFunctor.{u,0}).obj j)
+      ((complexOfFunctorsToFunctorToComplex.obj (bousfieldKanConeHomDiagram X)).obj j)).symm
+      ((reversedWeightPointwiseBousfieldKanCone X).app j)).f i =
+      ((((normalizedLinearWeightDiagramIso A V).inv ≫
+        extendMap (normalizedMooreReverse.app
+          (linearizedSimplicialWeight A bousfieldKanSetWeight)) ComplexShape.embeddingDownNat) ≫
+          normalizedBousfieldKanConeRepresentative X).f i).app j
+
+```
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation`（59行）
+
+```lean
+theorem reflectedBKFreeCone_generator_top (X : CosimplicialObject (Complex A))
+    (j : SimplexCategoryᵒᵖᵒᵖ) (n : ℕ)
+    (s : ((V ⋙ SSet.uliftFunctor.{u,0}).obj j).obj (Opposite.op ⦋n⦌)) :
+    let T := (productTotalFunctor A).obj X
+    let Q := (doubleOppositeDiagram X).obj j
+    let g := (reversedWeightPointwiseBousfieldKanCone X).app j ≫
+      (Functor.isoWhiskerRight (standardDoldKanModuleIso (R := A) (D := Complex A) T Q)
+        (forget (ModuleCat A))).inv
+    (((((normalizedLinearWeightDiagramIso A V).inv ≫
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat) ≫ normalizedBousfieldKanConeRepresentative X).f
+          (-(n : ℤ))).app j) (freeNegativeGenerator ((V ⋙ SSet.uliftFunctor.{u,0}).obj j) n s) =
+      standardTopEval (R := A) T Q n (g.app _ s)
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexParameterEvaluation`（48行）
+
+```lean
+theorem liftedStandardSimplexHomIso_postcomp {Z Z' : SSet.{u}} (f : Z ⟶ Z')
+    (n : SimplexCategory)
+    (t : (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n) ⟶ Z) :
+    (liftedStandardSimplexHomIso Z').hom.app (Opposite.op n) (t ≫ f) =
+      f.app (Opposite.op n) ((liftedStandardSimplexHomIso Z).hom.app (Opposite.op n) t)
+
+theorem liftedStandardSimplexHomIso_yoneda_apply (Z : SSet.{u}) (n : SimplexCategory)
+    (α : Z.obj (Opposite.op n)) :
+    (liftedStandardSimplexHomIso Z).hom.app (Opposite.op n)
+      (liftedStandardSimplexIso.{u}.hom.app n ≫ SSet.yonedaEquiv.symm α) = α
+
+theorem liftedStandardSimplexHomIso_yoneda_postcomp {Z Z' : SSet.{u}} (f : Z ⟶ Z')
+    (n : SimplexCategory) (α : Z.obj (Opposite.op n)) :
+    (liftedStandardSimplexHomIso Z').hom.app (Opposite.op n)
+      ((liftedStandardSimplexIso.{u}.hom.app n ≫ SSet.yonedaEquiv.symm α) ≫ f) =
+        f.app (Opposite.op n) α
+
+```
+
+### 132.2 検収と残り
+
+コード **`c5cb92cb3`**（新規3本220行）。錐の結合個別検査 `/private/tmp/isw2-reflected-bk-cone-top-combined2.log`、パラメータの個別検査 `/private/tmp/isw2-lifted-simplex-parameter2.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build146.log` は **4,695 jobs・終了コード0**。新規分のみの監査 `/private/tmp/AuditISW2G10B02FreeConeTop.lean` は **10宣言（6・1・3）、標準三公理のみ**。共有鍵は `--class impl --wait 3600` でビルド・監査の間だけ使用し返却済み。
+
+累計 **272モジュール・16,692行・2,266宣言**。一覧 `/private/tmp/isw2-g10-twohundredseventytwo-modules.txt`。外枠まで残り3,308行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
+
+B02の最終等式とB03〜B08・C・D、G10後の3b-4段0は未完。次はA09の実際のtensor逆射の成分へ、§131の実A12の成分式をAsSmall制限とともに代入する。錐側の今回の最上位評価とパラメータ側の§126・今回のYoneda評価を合わせ、§127の各切断条件と全切断和へ進む。
