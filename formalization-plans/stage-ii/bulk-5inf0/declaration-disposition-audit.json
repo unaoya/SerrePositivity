@@ -1,7 +1,7 @@
 {
   "status": "static name-disposition audit; final draft typechecks pending",
   "removed_names": 123,
-  "same_name_owners": 117,
+  "same_name_owners": 116,
   "explicit_other_replacements": 6,
   "unaccounted_removed_or_renamed": 0,
   "restored_unplanned_names": [
@@ -1332,13 +1332,19 @@
       "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
       "replacement": [
         {
+          "name": "SerrePositivity.BhattScholze.Prismatic.pdModelPolynomialFunctor",
+          "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean"
+        }
+      ],
+      "reason": "Original general coefficient-ring constructor restored under a new name; main candidate additionally requires γ, hp, hk, hreg. Its three pre-existing sorry obligations remain.",
+      "main_candidate_with_different_assumptions": [
+        {
           "name": "SerrePositivity.BhattScholze.Prismatic.pdPolynomialFunctor",
           "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Witt/Comparison/PDPolynomialFunctor.lean",
           "line": 204,
           "signature_source": "def _root_.SerrePositivity.BhattScholze.Prismatic.pdPolynomialFunctor :\n    Poly k ⥤ SimplexCategory ⥤ Under (CommRingCat.of k)"
         }
-      ],
-      "reason": "same-full-name owner in baseline inventory; declaration types checked by downstream drafts, not by this scan"
+      ]
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.polynomialZeroForm",
@@ -1612,6 +1618,16 @@
       "replacement_module": "SerrePositivity.CommutativeAlgebra.DeRham.CohomologyWedge",
       "same_signature": "{i j : Nat} : (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i+j)",
       "validation": "PASS block25 after direct canonical import and duplicate removal"
+    }
+  ],
+  "retained_renamed": 1,
+  "removed_declarations": 122,
+  "renamed_declarations": 1,
+  "restored_renamed": [
+    {
+      "old": "SerrePositivity.BhattScholze.Prismatic.pdPolynomialFunctor",
+      "new": "SerrePositivity.BhattScholze.Prismatic.pdModelPolynomialFunctor",
+      "reason": "different coefficient hypotheses on main candidate"
     }
   ]
 }

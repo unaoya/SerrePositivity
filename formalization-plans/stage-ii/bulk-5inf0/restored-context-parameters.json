@@ -52,6 +52,18 @@
       "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
       "parameter": "h₀ : IsBoundedPrism P₀",
       "authorization": "Coordinator approval 2026-11-14; see a3-boundedness-decision.json"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "parameter": "p : Nat on pdDeRhamCDGA; E : EInfinityTheory on CAlg realizations",
+      "reason": "Restore dropped p section variable; forward the same chosen Theory realization. formsCDGAFunctor is unchanged.",
+      "affected_declarations": [
+        "pdDeRhamCDGA",
+        "formsCAlg",
+        "formsCAlg_eq",
+        "pdDeRhamProjection_isInvertible",
+        "pdDeRhamFunctorIso"
+      ]
     }
   ]
 }

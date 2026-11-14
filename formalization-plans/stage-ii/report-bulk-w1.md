@@ -969,3 +969,14 @@ A1/HodgeTateMapは `import all …Prismatic.HodgeTateOneDerivative` の旧パス
 一覧：済み 8／全体 14（うち追加 0）。[全域の静的な同名候補](bulk-5inf0/all-main-draft-duplicate-candidates.json)は本体の32,937ファイルを走査して0件。前の対象ディレクトリ限定の検査を本体全域へ広げ、aliasも構文走査に含めた。構文上の名前の候補の検査であり、型の一致やLean環境による照合の代わりではない。`import all`を含め直した[所有元へのimport到達性](bulk-5inf0/section5-owner-import-reachability.json)も欠落0件だった。
 
 A3はソース上ではDiscreteCaseが23→13、LciAndQuasiregularが30→14、計53→27のsorry。環・生成元を変えず、26箇所を本体の既存の古典的な芯とその法則へ寄せた。A3全体の型検査は前提待ちなので、この数だけを根拠に完了とはしない。対応先の[一覧](bulk-5inf0/a3-classical-followup.json)と、意図した[文脈の引数](bulk-5inf0/restored-context-parameters.json)を保存した。
+
+
+### 5∞-0 のdraft検査・第29束とpd関手の型の相違（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第29束](bulk-5inf0/draft-block29-validation.json)でA1/HodgeTateMapが約32秒で成功し、有効な成功は29本。EInfinityTheoryを使うCAlg部分だけに同じ引数を渡し、古典部分の型は維持した。CrystallineInputは、落ちていたpのsection変数・Theory実現の引数・pd関手の本体版との仮定の違い・不透明な列の定義の照合が残った。
+
+**削除候補の訂正**：[元のpdPolynomialFunctor](bulk-5inf0/pd-functor-restoration.json)は任意の係数環kを受けるが、本体版にはγ・hp・hk・hregの追加仮定がある。同じ型ではなかったため、元の構成と既存の3つのsorryを `pdModelPolynomialFunctor` として復元し、CrystallineInput・CrystallineSite・DeRhamComparisonPolyの参照を直した。一般の型へ本体の強い仮定を黙って足さない。[全件台帳](bulk-5inf0/declaration-disposition-audit.json)は同名本体への置換116、別の置換6、旧型を保った改名1に訂正（旧名123件、削除122・改名1、未説明0）。
+
+formsCAlgは同じ厳密なformsCDGAFunctorを、選んだTheoryのcdga実現で読む形にした。旧Barratt–Eccles固有のformsBEFunctor・formsNerveは保持し、未証明のcdga構成を変えていない。pdDeRhamCDGAでsorryのため落ちたpも明示した。列と双複体の既存の定義の照合には、本体の3モジュールをimport allで読み、Mainのソースを変更しない。いずれも第31束で未検査。
+
+[第30束](bulk-5inf0/draft-block30-validation.json)は準備処理が元ソースのmap_compの抽出で失敗したため修正前のままになり、既に失敗した同じソースを検査器が除外してLean対象0件で終了した。成功として数えない。抽出を訂正して復元を適用してから、第31束を並べた。

@@ -1,0 +1,23 @@
+{
+  "status": "restored original constructor under a distinct name; validation pending",
+  "old": "SerrePositivity.BhattScholze.Prismatic.pdPolynomialFunctor",
+  "retained_as": "SerrePositivity.BhattScholze.Prismatic.pdModelPolynomialFunctor",
+  "original_existing_sorry_restored": 3,
+  "reason": "Main pdPolynomialFunctor needs γ, hp, hk, hreg; original draft quantifies over any coefficient ring and its old contract must be kept.",
+  "original_definition": "def pdPolynomialFunctor (k : Type u) [CommRing k] : Poly k ⥤ Cosimplicial.CosimplicialAlgebra k where\n  obj Q := pdModel p k Q.n\n  map f := by sorry -- 各 copy で f を代入、差の divided powers を保つ延長\n  map_id := by sorry -- pd 包の普遍性\n  map_comp := by sorry -- 同じ延長の一意性",
+  "reference_files": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "occurrences": 10
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
+      "occurrences": 4
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+      "occurrences": 1
+    }
+  ],
+  "theory_realization": "formsCDGAFunctor unchanged; formsCAlg uses the same chosen EInfinityTheory.ofCdga as the Tot comparison."
+}
