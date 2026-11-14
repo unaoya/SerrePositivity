@@ -46,7 +46,8 @@
           "name": "polynomialChangeEdge",
           "start": 4069
         }
-      ]
+      ],
+      "validation": "PASS block29, current source unchanged"
     },
     {
       "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
@@ -63,7 +64,8 @@
         "formsCAlg_eq",
         "pdDeRhamProjection_isInvertible",
         "pdDeRhamFunctorIso"
-      ]
+      ],
+      "validation": "PASS block35, current source unchanged"
     }
   ]
 }

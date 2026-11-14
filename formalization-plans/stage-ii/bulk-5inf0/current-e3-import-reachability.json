@@ -1,0 +1,10 @@
+{
+  "status": "static import graph only; include all draft staging dependencies and import all",
+  "targets": [
+    "SerrePositivity.Inputs.Perfectoidization",
+    "SerrePositivity.Inputs.PerfectoidizationInterface"
+  ],
+  "drafts_checked": 57,
+  "nodes_visited": 12938,
+  "paths": []
+}

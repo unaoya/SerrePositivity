@@ -980,3 +980,10 @@ A3はソース上ではDiscreteCaseが23→13、LciAndQuasiregularが30→14、�
 formsCAlgは同じ厳密なformsCDGAFunctorを、選んだTheoryのcdga実現で読む形にした。旧Barratt–Eccles固有のformsBEFunctor・formsNerveは保持し、未証明のcdga構成を変えていない。pdDeRhamCDGAでsorryのため落ちたpも明示した。列と双複体の既存の定義の照合には、本体の3モジュールをimport allで読み、Mainのソースを変更しない。いずれも第31束で未検査。
 
 [第30束](bulk-5inf0/draft-block30-validation.json)は準備処理が元ソースのmap_compの抽出で失敗したため修正前のままになり、既に失敗した同じソースを検査器が除外してLean対象0件で終了した。成功として数えない。抽出を訂正して復元を適用してから、第31束を並べた。
+
+
+### 5∞-0 のdraft検査・第31〜35束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。第31〜34束の診断を受け、不透明な列の定義の照合をprivateな法則の証明へ分け、同じ列の包含を等式で移送した。[第35束](bulk-5inf0/draft-block35-validation.json)でA1/CrystallineInputが約41秒で成功。有効な成功は30／57本。A1/HodgeTateMapも第29束の成功と現在のソースのSHAの一致を確認し、この2本をコミットする。定理の追加仮定・検査予算の引上げ・本体の変更はない。pdModelPolynomialFunctorは元の一般の型と既存の3つのsorryを保持する。残るHodgeTateComparison・CrystallineSiteは失敗として証跡を保存し、修正を続ける。
+
+READMEも現在の本体への追従・隔離した型検査の手順・保護対象の例外を反映した。型検査の成功は、残された将来のsorryの証明の完成とは区別する。
