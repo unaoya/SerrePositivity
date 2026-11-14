@@ -12520,3 +12520,41 @@ lemma positiveIntegerBilinear_d (A : Type u) [CommRing A] (S : SSet.{0})
 正次数の零性、C304・C305を使う。区間の零・−1以外の零性は一般Sへ適用しない。
 その後TensorProduct.ext・tensorLiftへ渡す。L10の固定した全体の型は§108のまま維持する。
 上の型はC303以外まだ紙のみで、完了数・検証済み行数へ含めない。
+
+## 139. 同じ正規化双線形族の微分の接続（L10、実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+§138.2の二つの既存線形像の記法とC304を実装する。C307・C308は、その同じ基底・
+正規化生成元での評価の法則。C307は既存normalizedComponent_gen、C308は同じ入力の
+線形合成の評価で、次数零も含む。C304はC303と検証済みL09だけで証明する。
+新しい生成性の数学や比較射を作らない。個々の補題200行以内。追加する評価の型は次。
+
+```lean
+lemma normalizedCoefficientBoundary_generator (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    normalizedCoefficientBoundary A S r d q (Surjection.basis A (r + 1) d (ULift.up w))
+        (AlexanderWhitney.generator A S q x) = cutSumCoefficientBoundary A S r d q w x
+
+lemma normalizedSimplexBoundary_generator (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    normalizedSimplexBoundary A S r d q (Surjection.basis A (r + 1) d (ULift.up w))
+        (AlexanderWhitney.generator A S q x) = cutSumSimplexBoundary A S w q x
+```
+
+二つの定義とC304の型は§138.2のまま。L10の全整数の組み立ては未完で、完了数へ足さない。
+
+### 139.1 C304・C307・C308 の検証・保存
+
+一覧：済み 10／全体 48（うち追加 4）
+
+対象ビルド成功（2,527 jobs）、小さい監査成功（1モジュール・40宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。NormalizedComponentDifferential.lean は77行。
+登録候補：`SerrePositivity.EInfinity.SimplexCuts.NormalizedComponentDifferential`。
+ビルドログ：`/tmp/bsw16/m14-normalized-component-differential-01.log`。
+監査入力：`/tmp/bsw16/audit-m14-normalized-component-differential.lean`、
+監査結果：`/tmp/bsw16/m14-normalized-component-differential-audit.log`。
+各鍵は終了・返却を確認。全整数のLeibniz則はまだ未完なのでL10を完了へ足さない。
+
+M14実測14,093+77=**14,170行**、L09a・L09の8,991行は不変。
+L10の実装済み補助は113行。外枠25,000行、残り10,830行。
