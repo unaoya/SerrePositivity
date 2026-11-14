@@ -5500,3 +5500,76 @@ lemma functorHomBifunctorUnit_heq_precompose_square {A C : SSet.{u}}
 検証ログ：`/tmp/is-w1/square-explicit-splits/`（`build.log`〜`build-7.log`）、
 `/tmp/is-w1/unit-staged-square/`（`build.log`〜`build-6.log`）、
 `/tmp/is-w1/unit-equation-inspection/`。整理券は一枚。
+
+### 55.1 E01 の点評価後の普遍性の接続（紙）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存の `kanLeftKanExtension_homUniversal` は K・C・D の準圏性を要求し、
+指定 β 自身の Hom 普遍性を結論する。E01 の K・C は元の準圏の宇宙変更なので
+この仮定を満たす。任意の候補 L の点評価について先につなぐ型は次のとおり。
+これは E01 の証明の分割で、別の任意の同型への置き換えはしない。
+
+```lean
+{A C : SSet.{u}} [Quasicategory A] [Quasicategory C]
+(F : A ⟶ C)
+{L : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ PresheafInfinity A}
+(β : SSet.Homotopy (yonedaInfinityMap A)
+  ((SSet.uliftFunctor.{u + 1, u}).map F ≫ L))
+(hβ : IsLeftKanExtension ((SSet.uliftFunctor.{u + 1, u}).map F)
+  (yonedaInfinityMap A) L β)
+(a : A _⦋0⦌) :
+IsLeftKanExtension ((SSet.uliftFunctor.{u + 1, u}).map F)
+  (yonedaInfinityMap A ≫ presheafInfinityEvaluation a)
+  (L ≫ presheafInfinityEvaluation a)
+  (kanLeftUnitPostcomp β (presheafInfinityEvaluation a))
+```
+
+`kanLeftTransportPostcomp` とその `cocone_val` の法則で、元の局所輸送を
+同じ評価へ写す。`presheafInfinity_evaluation_isColimit` の入力形状は
+小さい形状の ULift に固定されているため、任意の局所形状に直接適用してはならない。
+`leftKanShapeUniverseIso` に沿って元の局所余錐を再添字付けしてから適用し、
+同じ同型で戻す。局所輸送による判定に渡した後、上記の Hom 普遍性を使う。
+
+最後は `leftKanHomUniversalIso_hom_unique` に実際の比較射とその単位との両立を渡す。
+単に二つの値が同型であることから、指定比較の可逆性を結論しない。
+E02 の写像空間全体の普遍性は、この Hom 集合の普遍性だけで済ませず別途示す。
+
+### 55.2 形状同型による点評価保存の移送（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`PresheafEvaluationReindexedColimit.lean` に既存の再添字付けと点別余極限保存の法則を合成した。
+E01 の証明の分割。新しい独立の入力は加えない。対象検証の鍵は重複して取らず、
+現在の単位比較の検証が終わってから検証する。
+
+```lean
+lemma presheafEvaluation_isColimit_of_shapeIso {B A : SSet.{u}} {J : SSet.{u + 1}}
+    (e : (SSet.uliftFunctor.{u + 1, u}).obj B ≅ J)
+    {p : J ⟶ PresheafInfinity A} (c : JoinCocone p) (hc : IsColimitCone c)
+    (a : A _⦋0⦌) : IsColimitCone (mapJoinCocone (presheafInfinityEvaluation a) c)
+```
+
+指定単位の `eq_def` による試行（`unit-staged-square/build-6.log`）は、
+対象コンパイルが8分以上CPUを使用し続けたため、対象の子プロセスを照合して停止した。
+親 runner の終了コード1と鍵の解放を確認した後、`reindexed-colimit/` で
+形状同型による点評価保存の対象検証を一件だけ開始した。成功とは扱わない。
+
+§55.1 の型を `HomWeightLeftKanEvaluation.lean` に実装（未検証）。
+元の輸送を `kanLeftTransportPostcomp` で写し、`leftKanShapeUniverseIso` と
+§55.2 の移送則で同じ余錐の余極限性を戻す。対象検証の列を増やさず、順に検証する。
+
+検証順は、現在の `/tmp/is-w1/reindexed-colimit/` の終了と鍵の解放を確認後、
+`/tmp/is-w1/left-kan-evaluation/` の二本の対象ビルド・新しい環境での小監査。
+`leftKanShapeUniverseIso` の向きが小さい形状の ULift から実局所形状への向きであることを
+本体の宣言で確認した。次の整理券はまだ出していない。
+
+### 55.3 形状同型による評価保存の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`PresheafEvaluationReindexedColimit.lean` の対象ビルド成功（3,438 jobs）、
+新しい環境の1宣言の小監査成功、標準三公理のみ。計算上限は不変。
+今回45行、検証済み累計132本・10,729行。ログは `/tmp/is-w1/reindexed-colimit/`。
+この補題を用いる `HomWeightLeftKanEvaluation` の検証を、前の鍵の解放後に開始した。
+E01本体の指定比較射の可逆性は未了で、済み数には含めない。
