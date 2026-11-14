@@ -23509,3 +23509,51 @@ L43bの閉元での式を完備化へ延ばすには、非閉元でのda誤差�
 (c)したがって(a)(b)のAPIが未供給であることからcoherent P⁰の不可欠性を結論しない。
 ただし(a)(b)が実対象でともに使えず(c)が必要と分かった場合は、D79の前提に関わるため止めて報告する。
 追加仮定、界面の変更、G10の作り直しでこの穴を隠していない。
+
+
+## 406. 外枠停止後の紙：既存の恒等単体評価は複体射の比較でありL23の全斉次元の代用にはならない
+
+一覧：済み 24／全体 48（うち追加 4）
+
+再開時に作業木がclean、HEAD f84713578、main 391b2a0d2であることを確認した。
+mainの指示書§33は3b-4a完成後のTot九欄を先にする指示だが、確認したmainには
+まだその完成の受け渡しはない。外枠31,000行の変更もない。
+前ターンはL22の実装・監査・コミットで進捗。本ターンはLeanを増やさず既存APIを追加検収した。
+
+§404の調査に加え、以下の実在する比較を確認した。
+名前空間SerrePositivity.EInfinity.ComplexLimitsの既存型は、紙の略記Hでなく次の範囲。
+
+```lean
+normalizedSimplexHomEquiv (A : Type u) [CommRing A]
+    (H : Complex A) (n : SimplexCategory) :
+    ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n) ⟶ H) ≃
+      ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ SimplicialObject (ModuleCat A)).obj
+        (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).obj (Opposite.op n)
+```
+
+この既存同値の自然性は`normalizedSimplexHomEquiv_naturality`。
+またDiagramComparison.NormalizedSimplexFreeAdjunctionの
+`normalizedSimplexHomEquiv_freeAdjunction`は、同じ自由鎖随伴の像を
+`ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 n))`で評価した値との厳密な一致を供給する。
+従って「既存APIに恒等単体の指定評価が全くない」という理由で止めているのではない。
+
+重要な範囲差は、これらの入力が**複体射**で、smart切断の零次数にcycles条件を持つこと。
+L23の入力は内部Homを全積で等化した複体の**各整数次数の全元**であり、
+その元を閉元と仮定しない。L24でその同じ評価と微分の可換性を別に示す。
+複体射の同値をシフトして使うだけでは、閉条件のない斉次元への復元・逆写像まで供給しない。
+これを閉元だけに狭めるとL26の指定複体同型とL28の全係数の作用比較が未証明になる。
+
+したがってL23の残り450〜850行を、既存同値を一つ適用するだけとして414行以内へ
+下げられる根拠は今回も得られなかった。Leanの停止を維持する。
+これは新しい数学のIDの追加ではなく、既存同値を適用できる入力の検収である。
+
+G10後の紙の一覧についても同じ区別を保持する。L39のnativeな同値は
+実際のBF模型を指定頂点へ比較するもので、閉元のホモロジー比較から
+L26の元の全複体同型を逆に作る理由にはならない。
+Tot九欄のnative錐を先にする経路はBFを前提にせず§260どおり別途受け取る。
+完備化後P⁰についても、閉元の差が境界であるというL43bの型を、そのまま
+完備化前の全鎖に定義された連続primitiveの公式として扱わない。
+(a)のこの指定比較が未証明であることと(c)が不可欠であることは区別し、§380・§405の結論を保つ。
+
+今回は報告の紙のみ。M14実測30,586行、残り414行、一覧24/48のまま。
+ビルド・監査・鍵の取得、G10の部品、M15/G12、界面・draftsの変更はない。
