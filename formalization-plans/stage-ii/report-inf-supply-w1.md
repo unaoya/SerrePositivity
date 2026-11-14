@@ -7742,3 +7742,48 @@ def strictDiagramFreeEvaluationCounit :
 評価点での添字比較と、合成して戻す自然な比較射まで検証した。
 随伴の単位・三角恒等式、重みの移送と実現後の弱同値性は残る。
 RR02は未完で、一覧の完了数は変えない。
+
+## §77 RR02(a)：指定した添字比較の随伴
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `aa76c7f46` の検証済み128行を追加した進捗。
+§76の二つの関手と余単位をそのまま使い、単位と両三角恒等式を証明する。
+既存の構成の法則と§69.2(a)の証明分割であり、IDを追加しない。
+
+```lean
+def strictDiagramFreeEvaluationUnit :
+    𝟭 (Over k) ⟶ strictDiagramFreeEvaluationSection.{u} d k ⋙
+      strictDiagramFreeEvaluationToOver d k
+lemma strictDiagramFreeEvaluation_left_triangle :
+    Functor.whiskerRight (strictDiagramFreeEvaluationUnit.{u} d k)
+        (strictDiagramFreeEvaluationSection d k) ≫
+      (Functor.associator _ _ _).hom ≫
+      Functor.whiskerLeft (strictDiagramFreeEvaluationSection d k)
+        (strictDiagramFreeEvaluationCounit d k) =
+      𝟙 (𝟭 (Over k) ⋙ strictDiagramFreeEvaluationSection d k)
+lemma strictDiagramFreeEvaluation_right_triangle :
+    Functor.whiskerLeft (strictDiagramFreeEvaluationToOver.{u} d k)
+        (strictDiagramFreeEvaluationUnit d k) ≫
+      (Functor.associator _ _ _).inv ≫
+      Functor.whiskerRight (strictDiagramFreeEvaluationCounit d k)
+        (strictDiagramFreeEvaluationToOver d k) =
+      𝟙 (strictDiagramFreeEvaluationToOver d k ⋙ 𝟭 (Over k))
+def strictDiagramFreeEvaluationAdjunction :
+    strictDiagramFreeEvaluationSection.{u} d k ⊣ strictDiagramFreeEvaluationToOver d k
+```
+
+この随伴を既存の増大射と重みの移送へ接続する作業は残る。
+通常の随伴ができただけでRR02の弱同値性を結論しない。
+E01の別経路の紙は前節の状態を維持する。
+
+### 77.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeEvaluationAdjunction` 75行を検証した。対象ビルド3,762 jobs成功、
+小監査9宣言、標準三公理のみ。ログ：
+`/tmp/is-w1/free-evaluation-adjunction/build-2.log`。計算上限は変更していない。
+検証済み累計167本・13,378行、外枠24,000行まで10,622行。
+上限変更後のRR02(a)実測880行、(b)(c)新規0行。
+指定した随伴まで完了したが、重みの移送と実現後の弱同値性は未完。
