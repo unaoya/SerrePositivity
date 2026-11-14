@@ -89,3 +89,20 @@ Lemma 2.6 に必要な出口は `∃ n, ProperInductiveLevel n f`。原典の次
 - `ProperInductiveLevel.comp_nilimmersion`：有限表示・全射閉埋め込み i:Y→Z と f:X→Y のレベルnから f≫i のレベルn。既に選んだ nilimmersion に i を合成する法則。見込み25〜60行。
 - `ProperInductiveLevel.of_nilimmersion_baseChange`：上と任意の底変換、実際の細分からの消去を組み合わせ、f の i による底変換のレベルnから元の f のレベルnを得る。見込み10〜30行。
 - 被約化の供給の分割：既存の `Y.nilradical.subscheme` に IsReduced を与え、その包含の全射性・Noether 基底上の局所有限表示性を示す。既存の nilradical・subschemeCover を使う（見込み50〜160行）。これは G3 の既承認の nilimmersion の零段と存在証明の分割で、TIC や新しい模型の存在を追加しない。
+
+
+## G3：nilimmersion の合成・消去と実際の被約化
+
+`ProperInductiveLevelTransport`（57行）：`ProperInductiveLevel.of_isPullback` は Cartesian な正方形による移送。`ProperInductiveLevel.comp_nilimmersion` は既に選んだ有限表示 nilimmersion の合成。`ProperInductiveLevel.of_nilimmersion_baseChange` は nilimmersion 上の実際の底変換に得たレベルを元の射へ戻す。
+
+`SchemeNilradicalReduction`（49行）：`schemeNilradicalSubscheme_isReduced` は既存の nilradical の閉部分スキームの被約性。`schemeNilradicalSubscheme_surjective` はその包含の全射性。`schemeNilradicalSubscheme_locallyOfFinitePresentation` は Noether 基底上の局所有限表示性。アフィン被覆上の根基イデアルによる商と既存の被覆による貼り合わせを使い、新たな被約化のデータを仮定しない。
+
+本体106行・入口2行。依存する被覆添字を実際のアフィン開の型に明示して単独検証、ソース完全一致、対象二本・直接 importer のビルド5,072ジョブ、小監査6宣言（3・3）・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-proper-inductive-level-transport-check.log`・`2g-scheme-nilradical-reduction-check-3.log`・`2g-inductive-level-transport-reduction-native.log`・`2g-inductive-level-transport-reduction-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体377行・入口込み383行、小監査26宣言・標準三公理のみ。G3〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### Noether 基底上の存在の具体的な出口（着手前の型、G3 の内数）
+
+`exists_properInductiveLevel_noetherian`：任意の Noether スキーム Y、固有・全射・局所有限表示 f:X→Y に対し ∃n, ProperInductiveLevel n f（見込み120〜300行、必要なら比較を分割）。閉集合の整礎帰納の命題は「閉像が C である任意の閉部分スキーム Y→S と、その上の任意の固有全射のレベルの存在」。被約化は同じ閉像を保ち、2d が供給する中心の閉像は C の真部分集合。中心上の帰納仮定を正段の証人へ入れ、最後に nilimmersion の消去で戻す。空な基底はレベル0。これは前節の同じ存在の証明の具体化であり、有限 Krull 次元という仮定や新しい存在の公理を追加しない。G3 の射影表示と G4〜G5 は別途残る。
