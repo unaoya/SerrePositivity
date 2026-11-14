@@ -5764,3 +5764,114 @@ B02の全体等式とB03〜B08・C・Dは未完で、Dまでの目標は維持�
 4. 指定自由随伴とweighted uncurryの単射性で元の全単体的射へ戻し、既存の反転・添字移送の等式を使ってB02を閉じる。
 
 これらはB02の指定された二つの既存比較の照合の内訳であり、raw等式や最後の輸送を検証済みとは数えない。
+
+## 127. B02の途中：AW前面・後面の各切断と全切断和の照合
+
+指定`awFront`・`awBack`の単射性、全頂点の像、接頭・接尾集合の濃度を計算した。既存の単射引き戻しの評価則から、前面・後面の最上位成分を同じ接頭・接尾集合の成分に同定し、既存の異種等号の合成則で`awTerm`がこれらの通常順合成であることを証明した。
+
+各切断のtensor像がこの実合成と一致するという条件を置けば、§115のraw自由AWの全切断和と§124の実標準AWの逆随伴評価が一致する貼り合わせ則も証明した。**切断条件自体はまだ閉じていない**。これをB02の無条件の全体等式の代わりにはしない。すべて既存構成の評価・合成・貼り合わせの法則、または同じ照合の証明分割であり、新しい数学のまとまりは追加していない。
+
+### 127.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces`（152行）
+
+```lean
+theorem awFront_injective (n : ℕ) (c : Fin (n + 1)) :
+    Function.Injective (awFront n c).toOrderHom
+
+theorem awBack_injective (n : ℕ) (c : Fin (n + 1)) :
+    Function.Injective (awBack n c).toOrderHom
+
+theorem awFront_univ_image (n : ℕ) (c : Fin (n + 1)) :
+    (Finset.univ : Finset (Fin (c.val + 1))).image (awFront n c).toOrderHom =
+      Finset.univ.filter (· ≤ c)
+
+theorem awBack_univ_image (n : ℕ) (c : Fin (n + 1)) :
+    (Finset.univ : Finset (Fin (n - c.val + 1))).image (awBack n c).toOrderHom =
+      Finset.univ.filter (c ≤ ·)
+
+theorem awFront_filter_card (n : ℕ) (c : Fin (n + 1)) :
+    (Finset.univ.filter (· ≤ c)).card = c.val + 1
+
+theorem awBack_filter_card (n : ℕ) (c : Fin (n + 1)) :
+    (Finset.univ.filter (c ≤ ·)).card = n - c.val + 1
+
+theorem standardTopEval_awFront {n : ℕ} (f : StandardSimplex R x y n)
+    (c : Fin (n + 1)) :
+    standardTopEval (R := R) x y c.val (standardPullback (awFront n c).toOrderHom f) =
+      f.val.component (Finset.univ.filter (· ≤ c)) (-(c.val : ℤ))
+        (AWIndex.left_nonempty (Finset.mem_univ c))
+        (by rw [awFront_filter_card]; simp)
+
+theorem standardTopEval_awBack {n : ℕ} (f : StandardSimplex R x y n)
+    (c : Fin (n + 1)) :
+    standardTopEval (R := R) x y (n - c.val) (standardPullback (awBack n c).toOrderHom f) =
+      f.val.component (Finset.univ.filter (c ≤ ·)) (-((n - c.val : ℕ) : ℤ))
+        (AWIndex.right_nonempty (Finset.mem_univ c))
+        (by rw [awBack_filter_card]; simp)
+
+theorem awTerm_univ_top_faces {x y z : D} {n : ℕ}
+    (g : StandardSimplex R y z n) (f : StandardSimplex R x y n) (c : Fin (n + 1)) :
+    awTerm g.val f.val Finset.univ ⟨c, Finset.mem_univ c⟩ (-(n : ℤ)) (by simp) =
+      compose R (p := -((n - c.val : ℕ) : ℤ)) (q := -(c.val : ℤ)) (n := -(n : ℤ))
+        (standardTopEval (R := R) y z c.val (standardPullback (awFront n c).toOrderHom g))
+        (standardTopEval (R := R) x y (n - c.val)
+          (standardPullback (awBack n c).toOrderHom f))
+        (by have := c.isLt; omega)
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeAWStandardCutComparison`（76行）
+
+```lean
+theorem freeProductAW_standard_raw_value
+    (φ : simplicialRingCoefficient.{u} →+* A) (W Y : SSet.{u}) (x y z : D)
+    (g : W ⟶ standardHomSpace (R := A) y z)
+    (f : Y ⟶ standardHomSpace (R := A) x y)
+    (t : freeNegativeChains (A := A) W ⊗ freeNegativeChains (A := A) Y ⟶
+      homObject A D x z) (n : ℕ)
+    (w : W.obj (Opposite.op ⦋n⦌)) (a : Y.obj (Opposite.op ⦋n⦌))
+    (hcut : ∀ c : Fin (n + 1),
+      t.f (-(n : ℤ))
+        (ιTensorObj (freeNegativeChains (A := A) W) (freeNegativeChains (A := A) Y)
+          (-(c.val : ℤ)) (-((n - c.val : ℕ) : ℤ)) (-(n : ℤ))
+          (by have := awDegrees n c; omega)
+          (freeNegativeGenerator W c.val (W.map (awFront n c).op w) ⊗ₜ[A]
+            freeNegativeGenerator Y (n - c.val) (Y.map (awBack n c).op a))) =
+        compose A (p := -((n - c.val : ℕ) : ℤ)) (q := -(c.val : ℤ)) (n := -(n : ℤ))
+          (standardTopEval (R := A) y z c.val
+            (standardPullback (awFront n c).toOrderHom (g.app _ w)))
+          (standardTopEval (R := A) x y (n - c.val)
+            (standardPullback (awBack n c).toOrderHom (f.app _ a)))
+          (by have := c.isLt; omega)) :
+    let F := integerCoefficientExtension φ
+    let C := (normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace W)
+    let E := (normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace Y)
+    let h := (g ⊗ₘ f) ≫ (β_ _ _).hom ≫ standardComposition (R := A) x y z
+    t.f (-(n : ℤ))
+      ((F.map (alexanderWhitneyApp (linearizedSpace W) (linearizedSpace Y) n ≫
+        (chainIntegerTensorMap
+          (AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex (linearizedSpace W))
+          (AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex (linearizedSpace Y))).f n) ≫
+        (((F.mapHomologicalComplex (.down ℕ)).obj (chainIntegerTensor C E)).extendXIso
+          ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv ≫
+        (negativeMooreTensorCoefficientIso φ (linearizedSpace W) (linearizedSpace Y)).hom.f
+          (-(n : ℤ)) ≫
+        (tensorIso (integerCoefficientFreeChainsIso φ W)
+          (integerCoefficientFreeChainsIso φ Y)).hom.f (-(n : ℤ)))
+        (coefficientUnit φ (integerTensor ((linearizedSpace W).obj (Opposite.op ⦋n⦌))
+          ((linearizedSpace Y).obj (Opposite.op ⦋n⦌)))
+            (integerGenerator w ⊗ₜ[ℤ] integerGenerator a))) =
+      (((freeNegativeChainsAdjunction A).homEquiv (W ⊗ Y) (homObject A D x z)).symm
+        (h ≫ standardDoldKanSpaceMap x z)).f (-(n : ℤ))
+          (freeNegativeGenerator (W ⊗ Y) n (w, a))
+
+```
+
+### 127.2 検収と残り
+
+コード **`bb6f33eb2`**（新規2本228行）。結合個別検査 `/private/tmp/isw2-aw-standard-cut-combined.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build142.log` は **4,167 jobs・終了コード0**。新規分だけの監査 `/private/tmp/AuditISW2G10B02AWCuts.lean` は **16宣言（13・3）、標準三公理のみ**。鍵は返却済み。
+
+累計 **261モジュール・16,026行・2,231宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtyone-modules.txt`。外枠まで残り3,974行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。B02、B03〜B08・C・Dは未完。
+
+次は指定重み比較の逆射とMoore反転による前合成を、既存BK行のtensor合成則へ運ぶ。零延長した鎖複体の行表示の始域射自然性で同じ前合成を扱い、§120の実dg合成式を保持する。
