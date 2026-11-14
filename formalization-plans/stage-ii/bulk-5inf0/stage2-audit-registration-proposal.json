@@ -1,0 +1,15 @@
+{
+  "status": "proposal; not applied to formal audit",
+  "audit": "scripts/audit_bhatt_scholze_stage2.lean",
+  "add_to_module_selection": [
+    "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded",
+    "SerrePositivity.BhattScholze.Semiperfectoid.Basic",
+    "SerrePositivity.BhattScholze.Prism.Basic.Category",
+    "SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded",
+    "SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall",
+    "SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite",
+    "SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates"
+  ],
+  "local_audit": "formalization-plans/stage-ii/bulk-5inf0/audit.lean",
+  "coverage": "all declarations owned by every one of these seven modules; required public names checked separately"
+}

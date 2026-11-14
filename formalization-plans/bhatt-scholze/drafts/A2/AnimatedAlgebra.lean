@@ -1,6 +1,23 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.Derived.AnimatedAlgebra（仮。原典 Construction 7.6 の始域、SAG 25.1.1.1）
--- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.1、単位 A2-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.1、単位 A2-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedFunctorRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.OrderDiagrams
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaLeftKanExtension
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaLeftKanSiftedPreservation
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaSiftedGeneration
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaYonedaInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SiftedColimitPreservation
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
+public import SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.PolynomialCategory
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
@@ -9,9 +26,9 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.DiscreteComponentLabels
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinTensorDesc
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OppositeIso
+public import SerrePositivity.InfinityCategories.HTT.Section6_1_2.OppositeIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding
 public import Mathlib.Algebra.MvPolynomial.Basic
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 
@@ -54,20 +71,7 @@ variable (k : Type u) [CommRing k]
 
 /-! ## 多項式代数の圏 -/
 
-/-- 概要：有限生成多項式 k 代数の圏：対象は n : ℕ（k[X_1,…,X_n]）、射は k 代数の射。
-方針：対象を添字で持ち、射は `MvPolynomial (Fin n) k →ₐ[k] MvPolynomial (Fin m) k`。
-規約：小さい圏（Type u）。有限余積は n + m（テンソル積 ＝ 変数の併置）。
-使われ方：P_Σ の生成系、Čech–Alexander の R の範囲（A0 の `cechAlexanderAffine`）。 -/
-structure Poly (k : Type u) [CommRing k] : Type u where
-  n : ℕ
-
-instance : SmallCategory (Poly k) where
-  Hom P Q := MvPolynomial (Fin P.n) k →ₐ[k] MvPolynomial (Fin Q.n) k
-  id P := AlgHom.id k _
-  comp f g := g.comp f
-  id_comp := by intros; rfl
-  comp_id := by intros; rfl
-  assoc := by intros; rfl
+/-! 多項式代数の対象と射は本体の `Prismatic.Poly` を使う。 -/
 
 /-- 概要：多項式代数の有限余積 k[X_n] ⊗ k[X_m] = k[X_{n+m}]。
 方針：`MvPolynomial.sumAlgEquiv` と `Fin` の和。
@@ -94,7 +98,7 @@ abbrev polyNerve : SSet.{u} := nerve (Poly k)
 方針：F2 の `SigmaPresheafInfinity`。
 規約：SSet.{u+1}。quasicategory 性は F2 の instance。
 使われ方：Δ の始域。 -/
-abbrev AnimatedAlgebra : SSet.{u + 1} := SigmaPresheafInfinity (polyNerve k)
+abbrev AnimatedAlgebra : SSet.{u + 1} := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity (polyNerve k)
 
 /-- 概要：Yoneda j : N(Poly k) → P_Σ（持ち上げた形状から）。
 方針：F1 の Yoneda 埋め込み `PresheafInfinity` への射と、表現可能前層が有限余積を積へ送ること（HTT 5.5.8.10、F2 の `SigmaYonedaFiniteCoproducts`）で
@@ -103,45 +107,45 @@ abbrev AnimatedAlgebra : SSet.{u + 1} := SigmaPresheafInfinity (polyNerve k)
 使われ方：Δ_0 の始域、(1) の主張。
 Yoneda の因子化には F2 の `sigmaYonedaInfinityMap` を使う。 -/
 def polyYoneda : (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve k) ⟶ AnimatedAlgebra k :=
-  sigmaYonedaInfinityMap (polyNerve k)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYonedaInfinityMap (polyNerve k)
 
-theorem polyYoneda_fullyFaithful : IsFullyFaithful (polyYoneda k) :=
-  sigmaYonedaInfinityMap_isFullyFaithful _
+theorem polyYoneda_fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (polyYoneda k) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYonedaInfinityMap_isFullyFaithful _
 
 theorem polyNerve_finiteCoproducts (J : Type u) [Finite J]
-    (D : nerve (Discrete J) ⟶ (polyNerve k).op) : HasLimit D := by
+    (D : nerve (Discrete J) ⟶ (polyNerve k).op) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit D := by
   sorry -- 空族は変数 0、二項は polyCofan。有限族の余積錐を opposite の nerve に移す
 
 /-- P_Σ の小 sifted 余極限と、各頂点の多項式による sifted 表示。 -/
 theorem animatedAlgebra_siftedColimits :
-    HasSmallSiftedColimits (AnimatedAlgebra k) ∧ ∀ v : (AnimatedAlgebra k) _⦋0⦌,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits (AnimatedAlgebra k) ∧ ∀ v : (AnimatedAlgebra k) _⦋0⦌,
       ∃ (B : SSet.{u}) (D : B ⟶ polyNerve k)
-        (c : JoinCocone ((SSet.uliftFunctor.{u+1,u}).map D ≫ polyYoneda k)),
-        Quasicategory B ∧ IsSiftedInfinity B ∧ c.vertex = v ∧ IsColimitCone c :=
-  ⟨sigma_hasSmallSiftedColimits _, sigmaPresheaf_siftedPresentation _ (polyNerve_finiteCoproducts k)⟩
+        (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone ((SSet.uliftFunctor.{u+1,u}).map D ≫ polyYoneda k)),
+        Quasicategory B ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity B ∧ c.vertex = v ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.sigma_hasSmallSiftedColimits _, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaPresheaf_siftedPresentation _ (polyNerve_finiteCoproducts k)⟩
 
 /-- 概要：HTT 5.5.8.15：sifted 余極限をもつ ∞ 圏 𝒱 について、sifted 余極限を保つ関手 P_Σ → 𝒱 の制限 Fun^Σ(P_Σ, 𝒱) → Fun(N(Poly), 𝒱) は同値。
 方針：F2 の `SigmaLeftKanAllColimitPreservation`・`SigmaYonedaColimitPreservationCriterion`。
 規約：存在（左 Kan 延長）と一意性（sifted 余極限保存な延長は一意）を分けて述べる。
 使われ方：A2-2 の `derivedPrismaticCohomology` の定義と性質。 -/
 theorem exists_siftedExtension {V : SSet.{u + 1}} [Quasicategory V]
-    (hV : HasSmallSiftedColimits V)
+    (hV : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits V)
     (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ V) :
-    ∃ G : AnimatedAlgebra k ⟶ V, PreservesSmallSiftedColimits G ∧ Nonempty (FunctorIso (polyYoneda k ≫ G) F) := by
-  obtain ⟨G, β, hβ, e⟩ := sigma_exists_leftKanExtension_with_recovery (polyNerve_finiteCoproducts k) hV F
-  exact ⟨G, sigmaLeftKanExtension_preservesSmallSiftedColimits β hβ, e⟩
+    ∃ G : AnimatedAlgebra k ⟶ V, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits G ∧ Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (polyYoneda k ≫ G) F) := by
+  obtain ⟨G, β, hβ, e⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_exists_leftKanExtension_with_recovery (polyNerve_finiteCoproducts k) hV F
+  exact ⟨G, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaLeftKanExtension_preservesSmallSiftedColimits β hβ, e⟩
 
-theorem siftedRestriction_equivalence {V : SSet.{u+1}} [Quasicategory V] (hV : HasSmallSiftedColimits V) :
-    IsQCatEquivalence (sigmaSiftedContinuousRestriction (polyNerve k) V) :=
-  sigmaSiftedContinuousRestriction_isQCatEquivalence _ (polyNerve_finiteCoproducts k) V hV
+theorem siftedRestriction_equivalence {V : SSet.{u+1}} [Quasicategory V] (hV : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits V) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction (polyNerve k) V) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence _ (polyNerve_finiteCoproducts k) V hV
 
 /-- 多項式上の関手を指定された回収同型つきで延長する。 -/
-def siftedLan {V : SSet.{u+1}} [Quasicategory V] (hV : HasSmallSiftedColimits V)
+def siftedLan {V : SSet.{u+1}} [Quasicategory V] (hV : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits V)
     (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ V) := (exists_siftedExtension k hV F).choose
 
-def siftedLanIso {V : SSet.{u+1}} [Quasicategory V] (hV : HasSmallSiftedColimits V)
+def siftedLanIso {V : SSet.{u+1}} [Quasicategory V] (hV : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits V)
     (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ V) :
-    FunctorIso (polyYoneda k ≫ siftedLan k hV F) F :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (polyYoneda k ≫ siftedLan k hV F) F :=
   (exists_siftedExtension k hV F).choose_spec.2.some
 
 /-! ## 離散環の埋め込み -/
@@ -168,21 +172,21 @@ def discretePresheaf : Under (CommRingCat.of k) ⥤ ((Poly k)ᵒᵖ ⥤ Type u) 
 規約：—
 使われ方：`discreteToAnimated`。
 離散 Kan 複体を用いて同時評価の nerve をカリー化する。 -/
-def discreteSpaceFunctor : Type u ⥤ KanObject.{u} where
-  obj T := ⟨nerve (Discrete T), F2.Compact.discreteNerve_kanComplex T⟩
+def discreteSpaceFunctor : Type u ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} where
+  obj T := ⟨nerve (Discrete T), _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.discreteNerve_kanComplex T⟩
   map f := nerveMap (Discrete.functor (fun t => Discrete.mk (f t)))
   map_id := by sorry -- 離散 nerve のラベルで判定
   map_comp := by sorry -- ラベル写像の合成
 
 def setPresheafEvaluation :
-    nerve ((Poly k)ᵒᵖ ⥤ Type u) ⊗ (SSet.uliftFunctor.{u+1,u}).obj (nerve (Poly k)ᵒᵖ) ⟶ SpaceInfinity.{u} where
-  app n := ↾fun x => enrichedFunctorOfOrderDiagram
+    nerve ((Poly k)ᵒᵖ ⥤ Type u) ⊗ (SSet.uliftFunctor.{u+1,u}).obj (nerve (Poly k)ᵒᵖ) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} where
+  app n := ↾fun x => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram
     ((⟨ULift.down, fun _ _ h => h⟩ : ULift.{u} (Fin (n.unop.len + 1)) →o Fin (n.unop.len + 1)).toFunctor ⋙
-      (x.2.down.prod' x.1) ⋙ (uncurry.obj (evaluation (Poly k)ᵒᵖ (Type u))) ⋙ discreteSpaceFunctor)
+      (x.2.down.prod' x.1) ⋙ (_root_.CategoryTheory.Functor.uncurry.obj (evaluation (Poly k)ᵒᵖ (Type u))) ⋙ discreteSpaceFunctor)
   naturality := by sorry -- 二つの射列の同時制限は評価の射列の制限
 
-def discretePresheafEmbedding : nerve ((Poly k)ᵒᵖ ⥤ Type u) ⟶ PresheafInfinity (polyNerve k) :=
-  curryTensorRight ((𝟙 _ ⊗ₘ (SSet.uliftFunctor.{u+1,u}).map (F1B.nerveOppositeIso (Poly k)).inv) ≫
+def discretePresheafEmbedding : nerve ((Poly k)ᵒᵖ ⥤ Type u) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity (polyNerve k) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.curryTensorRight ((𝟙 _ ⊗ₘ (SSet.uliftFunctor.{u+1,u}).map (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso (Poly k)).inv) ≫
     setPresheafEvaluation k)
 
 /-- 概要：離散 k 代数の ∞ 圏（E3 の `algebraNerve k`）から animated 代数への埋め込み R ↦ (P ↦ Hom_k(P, R))。
@@ -191,7 +195,7 @@ def discretePresheafEmbedding : nerve ((Poly k)ᵒᵖ ⥤ Type u) ⟶ PresheafIn
 規約：E3 の `perfd` の始域はこの合成で Δ に接続する。
 使われ方：A4（S_perfd の定義域）、E3。 -/
 def discreteToAnimated : nerve (Under (CommRingCat.of k)) ⟶ AnimatedAlgebra k :=
-  sigmaPresheafInfinityLift (nerveMap (discretePresheaf k) ≫ discretePresheafEmbedding k) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaPresheafInfinityLift (nerveMap (discretePresheaf k) ≫ discretePresheafEmbedding k) (by
     sorry) -- Hom(∐ P_i,S) は Hom(P_i,S) の積、空族は一点
 
 /-- 概要：多項式代数 R = k[X_n] の離散埋め込みは Yoneda j(n) に一致。
@@ -199,20 +203,20 @@ def discreteToAnimated : nerve (Under (CommRingCat.of k)) ⟶ AnimatedAlgebra k 
 規約：同値（頂点の同型）で述べる。
 使われ方：(1) を離散 R へ移す、A0 の Δ との接続。 -/
 theorem discreteToAnimated_poly (n : ℕ) :
-    Nonempty (VertexIso ((discreteToAnimated k).app _ (nerveVertex ((polyAlgebras k).obj ⟨n⟩)))
-      ((polyYoneda k).app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k))))) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((discreteToAnimated k).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((polyAlgebras k).obj ⟨n⟩)))
+      ((polyYoneda k).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⟨n⟩ : Poly k))))) := by
   sorry -- P↦Hom(P,k[X₁,…,Xₙ]) は指定された表現可能前層
 
 /-- 概要：離散埋め込みは充満忠実。
 方針：Hom_k(k[X_n], R) = R^n の Yoneda 的な議論（P_Σ の射は生成系で決まる）。
 規約：—
 使われ方：Δ の離散 R での値が R だけで決まること。 -/
-theorem discreteToAnimated_fullyFaithful : IsFullyFaithful (discreteToAnimated k) := by
+theorem discreteToAnimated_fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (discreteToAnimated k) := by
   sorry -- 離散前層間の写像空間は離散。多項式演算を保つラベル写像は k 代数準同型
 
 /-- 0 切り捨ては離散な k 代数への反射、その単位は X→π₀X。 -/
 def animatedPiZeroAdjunction : Σ L : AnimatedAlgebra k ⟶ nerve (Under (CommRingCat.of k)),
-    QCatAdjunction L (discreteToAnimated k) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction L (discreteToAnimated k) := by
   sorry -- 各多項式で連結成分を取り、有限積保存な集合値前層を k 代数に戻す
 
 abbrev animatedPiZero := (animatedPiZeroAdjunction k).1
@@ -225,7 +229,7 @@ def animatedCAlgRealization : AnimatedAlgebra k ⟶ E.CAlg k :=
 
 /-- A4 が離散入力へ制限するときの始域の同定。 -/
 def discreteRealizationIso :
-    FunctorIso (discreteToAnimated k ≫ animatedCAlgRealization (E := E) k)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (discreteToAnimated k ≫ animatedCAlgRealization (E := E) k)
       (E.discrete k) := by
   sorry -- 多項式分解の実現。CAlg の sifted 余極限を底の複体で計算すると S[0] に戻り、
         -- 増大写像は S とその準同型に自然

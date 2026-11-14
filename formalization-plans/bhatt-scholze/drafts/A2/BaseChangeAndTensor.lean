@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.Derived.BaseChange（仮。原典 Construction 7.6 の (4)(5) と D32）
--- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.4、単位 A2-4。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.4、単位 A2-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
@@ -48,12 +48,8 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p
 /-! ## (4) 底変換 -/
 
 /-- 係数を g で送り、多項式準同型を各変数の像から延長する。 -/
-def polyScalarExtension {k k' : Type u} [CommRing k] [CommRing k'] (g : k →+* k') :
-    Poly k ⥤ Poly k' where
-  obj Q := ⟨Q.n⟩
-  map f := MvPolynomial.aeval (fun i => MvPolynomial.map g (f (MvPolynomial.X i)))
-  map_id := by sorry -- 各変数は自分自身に写る
-  map_comp := by sorry -- 係数の写像は多項式の代入と可換
+abbrev polyScalarExtension {k k' : Type u} [CommRing k] [CommRing k'] (g : k →+* k') :
+    Poly k ⥤ Poly k' := changePoly g
 
 def animatedScalarExtension {k k' : Type u} [CommRing k] [CommRing k'] (g : k →+* k') :=
   siftedLan k (animatedAlgebra_siftedColimits k').1
@@ -61,14 +57,14 @@ def animatedScalarExtension {k k' : Type u} [CommRing k] [CommRing k'] (g : k �
 
 def animatedScalarRestriction {k k' : Type u} [CommRing k] [CommRing k'] (g : k →+* k') :
     AnimatedAlgebra k' ⟶ AnimatedAlgebra k :=
-  sigmaPresheafInfinityLift (sigmaPresheafInfinityInclusion _ ≫
-    presheafInfinityRestriction (nerveMap (polyScalarExtension g))) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaPresheafInfinityLift (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaPresheafInfinityInclusion _ ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinityRestriction (nerveMap (polyScalarExtension g))) (by
       sorry) -- polyScalarExtension は変数の併置・空族を保存する
 
 /-- π₀ の反射を導来 p 完備な代数に制限する。単位は X → π₀X。 -/
 def completePiZeroReflection (k : Type u) [CommRing k] :
     Σ L : CompleteAnimatedAlgebra p k ⟶ nerve (PerfectoidizationInterface.C_R k p),
-      QCatAdjunction L (completeDiscreteToAnimated p k) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction L (completeDiscreteToAnimated p k) := by
   sorry -- animatedPiZeroAdjunction の制限。導来 p 完備な複体の各ホモロジー加群は導来 p 完備
 /-- 完備 R 代数から、P/d≃R で底を読み替えた Δ。A7 の animatedDelta の入口。 -/
 def deltaOverQuotientIso {R : Type u} [CommRing R] (e : A ⧸ P.ideal ≃+* R) :
@@ -93,14 +89,14 @@ def completedPrismBaseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A
 使われ方：A5、A7、A8。 -/
 def derivedPrismaticCohomology_baseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
     (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P') :
-    FunctorIso (derivedPrismaticCohomology (E := E) P hP ≫ completedPrismBaseChange (E := E) P P' f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (derivedPrismaticCohomology (E := E) P hP ≫ completedPrismBaseChange (E := E) P P' f)
       (animatedBaseChange P P' f ≫ derivedPrismaticCohomology (E := E) P' hP') := by
   sorry -- Cor 4.12 の多項式上の標準比較を siftedRestriction_equivalence に沿って延長
 
 /-- G-A2-10 の比較。完備底変換の単位、(4)、T ⊗_k k′ → T の乗法の順。 -/
 def perfectBaseComparison {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
     (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P') :
-    FunctorHom (animatedScalarRestriction f.quotientMap ≫ deltaUnderlying (E := E) P hP)
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (animatedScalarRestriction f.quotientMap ≫ deltaUnderlying (E := E) P hP)
       (deltaUnderlying (E := E) P' hP' ≫ cAlgRestrictScalars (E := E) f.toRingHom) := by
   sorry -- 要確認：ScalarRestriction へ。cAlgBaseChange_restrictScalars_adjunction の単位、
         -- derivedPrismaticCohomology_baseChange と animated な底変換の余単位の合成
@@ -109,8 +105,8 @@ theorem perfectBaseComparison_isIso {A' : Type u} [CommRing A'] (P' : OrientedPr
     (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P')
     (_ : P.deltaStructure.IsPerfect) (_ : P'.deltaStructure.IsPerfect)
     (T : PerfectoidizationInterface.A_R (A' ⧸ P'.ideal)) :
-    IsIso (functorHomEvaluate (perfectBaseComparison (E := E) P hP P' hP' f)
-      ((discreteToAnimated _).app _ (nerveVertex T))) := by
+    IsIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (perfectBaseComparison (E := E) P hP P' hP' f)
+      ((discreteToAnimated _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T))) := by
   sorry -- 完全 prism の商間では相対完備余接複体が零。HT の gr、exhaustive 性、導来 Nakayama
 
 /-! ## (5) sifted 余極限とテンソル -/
@@ -120,7 +116,7 @@ theorem perfectBaseComparison_isIso {A' : Type u} [CommRing A'] (P' : OrientedPr
 規約：𝒱 の sifted 余極限 ＝ CAlg_A の sifted 余極限の完備化。
 使われ方：(5)。 -/
 theorem derivedPrismaticCohomology_siftedColimit :
-    PreservesSmallSiftedColimits (derivedPrismaticCohomology (E := E) P hP) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits (derivedPrismaticCohomology (E := E) P hP) :=
   derivedPrismaticCohomology_preservesSifted (E := E) P hP
 
 /-- 概要：多項式代数の Künneth（Poly 上の (5)）：Δ_{P ⊗ P′} ≃ Δ_P ⊗̂ Δ_{P′}。
@@ -130,14 +126,20 @@ filtration は exhaustive・有限段、完備性。または Čech–Alexander 
 使われ方：(5) の一般へ。 -/
 def polyTensorCocone {k : Type u} [CommRing k] (n m : ℕ) :=
   let c := polyCofan k ⟨n⟩ ⟨m⟩
-  let D := binaryPointDiagram (nerveVertex (⟨n⟩ : Poly k)) (nerveVertex (⟨m⟩ : Poly k))
-  binaryCoconeOfEdges D (z := nerveVertex c.pt)
-    (by simpa [D, binaryPointDiagram, binaryPointLeft] using (nerve.edgeMk c.inl).toTruncated)
-    (by simpa [D, binaryPointDiagram, binaryPointRight] using (nerve.edgeMk c.inr).toTruncated)
+  let D := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⟨n⟩ : Poly k)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⟨m⟩ : Poly k))
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryCoconeOfEdges D (z := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c.pt)
+    (by
+      dsimp only [D, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft]
+      rw [CategoryTheory.Limits.coprod.inl_desc, Equiv.apply_symm_apply]
+      convert (nerve.edgeMk c.inl).toTruncated using 1 <;> rfl)
+    (by
+      dsimp only [D, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight]
+      rw [CategoryTheory.Limits.coprod.inr_desc, Equiv.apply_symm_apply]
+      convert (nerve.edgeMk c.inr).toTruncated using 1 <;> rfl)
 
 theorem prismaticCohomologyPoly_tensor (n m : ℕ) :
-    IsColimitCone (mapJoinCocone (prismaticCohomologyPolyFunctor (E := E) P hP)
-      (JoinCocone.ulift.{u,u+1} (polyTensorCocone (k := A ⧸ P.ideal) n m))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone (prismaticCohomologyPolyFunctor (E := E) P hP)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCocone.ulift.{u,u+1} (polyTensorCocone (k := A ⧸ P.ideal) n m))) := by
   sorry -- 標準の二つの変数包含を脚とする比較を HT の gr で検出。微分形式の Künneth と有限 filtration
 
 /-- 概要：(5)：Δ_{R ⊗^L_k R′} ≃ Δ_R ⊗̂ Δ_{R′}（𝒱 の余積）。すなわち Δ は対称モノイダル。
@@ -145,8 +147,8 @@ theorem prismaticCohomologyPoly_tensor (n m : ℕ) :
 規約：対称性・結合性の coherence は E∞ 代数の余積のもの。
 使われ方：Prop 8.13（A7）、Thm 10.11。 -/
 theorem derivedPrismaticCohomology_tensor (X Y : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌)
-    (c : JoinCocone (binaryPointDiagram X Y)) (hc : IsColimitCone c) :
-    IsColimitCone (mapJoinCocone (derivedPrismaticCohomology (E := E) P hP) c) := by
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram X Y)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone (derivedPrismaticCohomology (E := E) P hP) c) := by
   -- 証明の手順（D78、BS-W16 §28.2）：
   -- 1. 出力の E.coprodWith_cocone A (Δ X) (Δ Y) の普遍性で、同じ二脚を持つ
   --    Δ c.vertex への比較辺 q を作る。頂点ごとの任意の同型を選び直さない。
@@ -163,7 +165,7 @@ theorem derivedPrismaticCohomology_tensor (X Y : (AnimatedAlgebra (A ⧸ P.ideal
 
 /-- 空の余積も保つ。二項テンソルと合わせて有限余積の保存になる。 -/
 theorem derivedPrismaticCohomology_initial {X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌}
-    (hX : IsInitialVertex X) : IsInitialVertex ((derivedPrismaticCohomology (E := E) P hP).app _ X) := by
+    (hX : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex X) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex ((derivedPrismaticCohomology (E := E) P hP).app _ X) := by
   sorry -- 始対象は変数 0 の多項式。基底 prism がその site の始対象なので Δ_k=A
 
 /-! ## D32：導来 p 完備化不変性 -/
@@ -175,7 +177,7 @@ perfd の段で Prop 8.5 の系 4（a5-design §7.1）。
 使われ方：A7（Prop 8.13 の完備化）、A8（Thm 10.11 の filtered 余極限）。 -/
 theorem derivedPrismaticCohomology_completion_animated (X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌) :
     IsIso ((hoFunctor.map (derivedPrismaticCohomology (E := E) P hP)).toFunctor.map
-      (functorHomEvaluate (animatedCompletionUnit p (A ⧸ P.ideal)) X)) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (animatedCompletionUnit p (A ⧸ P.ideal)) X)) := by
   sorry -- X→LΛ_p X は導来 mod p^n で同値。完備相対余接複体の消滅から各 gr を比較し、
         -- 完備余極限と導来 Nakayama で同じ単位の Δ による像が可逆
 

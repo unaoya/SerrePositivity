@@ -1,0 +1,682 @@
+{
+  "mode": "exact qualified declaration identities only; no module-name inference; ambiguous identities excluded; opens/literals/declaration headers untouched",
+  "applied": [
+    {
+      "path": "A2/DerivedPrismaticCohomology.lean",
+      "source_sha256": "84cc2a0cc9e176f3ecfb8477b93fb4bab548d9854fb2aa654ef5f93d84746290",
+      "edits": [
+        {
+          "start": 6435,
+          "end": 6451,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 135
+        },
+        {
+          "start": 14258,
+          "end": 14293,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 259
+        },
+        {
+          "start": 16711,
+          "end": 16727,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 306
+        }
+      ]
+    },
+    {
+      "path": "A2/HodgeTateFiltration.lean",
+      "source_sha256": "00fdd93c5bb0fc57841708a3105d800369182e38582f246cb0126109fca508b9",
+      "edits": [
+        {
+          "start": 11497,
+          "end": 11532,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 224
+        },
+        {
+          "start": 11553,
+          "end": 11589,
+          "old": "F2.Presentable.postcomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom",
+          "line": 225
+        },
+        {
+          "start": 12531,
+          "end": 12567,
+          "old": "F2.Presentable.postcomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom",
+          "line": 242
+        },
+        {
+          "start": 14450,
+          "end": 14486,
+          "old": "F2.Presentable.postcomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom",
+          "line": 273
+        },
+        {
+          "start": 14512,
+          "end": 14548,
+          "old": "F2.Presentable.postcomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom",
+          "line": 274
+        },
+        {
+          "start": 14955,
+          "end": 14991,
+          "old": "F2.Presentable.postcomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom",
+          "line": 282
+        }
+      ]
+    },
+    {
+      "path": "A3/DiscreteCase.lean",
+      "source_sha256": "8cf2460a636d883d23de9dc92c43e4eb2fa3250b894c262e880001f19e353753",
+      "edits": [
+        {
+          "start": 14044,
+          "end": 14060,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 259
+        }
+      ]
+    },
+    {
+      "path": "A4/InterfaceFields.lean",
+      "source_sha256": "9d67cda6dbbd059f28fda5f9aecadcf365ade34eed9f55ee87cc43178bebae81",
+      "edits": [
+        {
+          "start": 7926,
+          "end": 7961,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 152
+        },
+        {
+          "start": 8345,
+          "end": 8380,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 160
+        }
+      ]
+    },
+    {
+      "path": "A4/Perfectoidization.lean",
+      "source_sha256": "4b40b6ea51d8855713330aac8f13edb5f4c6370c65c0ad79c8b6c28f59c1dfab",
+      "edits": [
+        {
+          "start": 10245,
+          "end": 10275,
+          "old": "HomotopyLimits.coconeVertexLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg",
+          "line": 191
+        },
+        {
+          "start": 20680,
+          "end": 20701,
+          "old": "F2.IsFilteredInfinity",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity",
+          "line": 364
+        }
+      ]
+    },
+    {
+      "path": "A5/PerfectSite.lean",
+      "source_sha256": "b3dc4fd7849225b4acb064e32997d48dffeb83e29db44f7072ed89e36aa30691",
+      "edits": [
+        {
+          "start": 17402,
+          "end": 17418,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 339
+        },
+        {
+          "start": 19541,
+          "end": 19571,
+          "old": "HomotopyLimits.coconeVertexLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg",
+          "line": 372
+        },
+        {
+          "start": 20368,
+          "end": 20384,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 383
+        }
+      ]
+    },
+    {
+      "path": "A5/SemiperfectoidCase.lean",
+      "source_sha256": "b63d3c7fc7ac3b589b3683c0b7f2c87ac2609681bcda2cbc3b33c33d510082a1",
+      "edits": [
+        {
+          "start": 21639,
+          "end": 21669,
+          "old": "HomotopyLimits.coconeVertexLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg",
+          "line": 390
+        }
+      ]
+    },
+    {
+      "path": "A5/WeaklyInitialAndDescent.lean",
+      "source_sha256": "0f76eb5a41fc0dc2a2245fb2f34d5a2aef3080c2d6958ec03f1cdcb9eb4a4357",
+      "edits": [
+        {
+          "start": 10314,
+          "end": 10335,
+          "old": "F2.IsFilteredInfinity",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity",
+          "line": 202
+        },
+        {
+          "start": 12819,
+          "end": 12840,
+          "old": "F2.IsFilteredInfinity",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity",
+          "line": 246
+        },
+        {
+          "start": 14706,
+          "end": 14722,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 282
+        }
+      ]
+    },
+    {
+      "path": "A6/ArcSheafProperty.lean",
+      "source_sha256": "9bfc059804a4ce2d61d53862ab00a4ea5899a23ad2618779756af1212a341aa4",
+      "edits": [
+        {
+          "start": 7884,
+          "end": 7897,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 149
+        },
+        {
+          "start": 9683,
+          "end": 9725,
+          "old": "F2.Ind.PreservesSmallKappaFilteredColimits",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits",
+          "line": 179
+        },
+        {
+          "start": 22885,
+          "end": 22898,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 423
+        }
+      ]
+    },
+    {
+      "path": "A6/ArcSite.lean",
+      "source_sha256": "2658a66e7747f6cfcbb5f71ab2a61c4b716b5db4603ea329232ddb014cd65652",
+      "edits": [
+        {
+          "start": 9666,
+          "end": 9679,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 183
+        }
+      ]
+    },
+    {
+      "path": "A6/SheafOfSetsExcision.lean",
+      "source_sha256": "dbe6b8a806c0411ccbb9a25e995c05d8f229203906a1806b8802205f612408ed",
+      "edits": [
+        {
+          "start": 6846,
+          "end": 6862,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 146
+        },
+        {
+          "start": 6987,
+          "end": 7003,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 147
+        },
+        {
+          "start": 8819,
+          "end": 8835,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 178
+        }
+      ]
+    },
+    {
+      "path": "A7/AnimatedDomain.lean",
+      "source_sha256": "5b4fdcafedefd4ffde64831edc5da8a255de3bb2d593183becd801f614d99cc4",
+      "edits": [
+        {
+          "start": 3322,
+          "end": 3365,
+          "old": "HomotopyLimits.PreservesSmallSiftedColimits",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "path": "A7/AnimatedPerfectoidization.lean",
+      "source_sha256": "93740d3b9159105fda3a57ae9c3bcdf7036bf8d598ebceca03e62213190adb6c",
+      "edits": [
+        {
+          "start": 4753,
+          "end": 4796,
+          "old": "HomotopyLimits.PreservesSmallSiftedColimits",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits",
+          "line": 102
+        },
+        {
+          "start": 8390,
+          "end": 8420,
+          "old": "HomotopyLimits.coconeVertexLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg",
+          "line": 165
+        }
+      ]
+    },
+    {
+      "path": "A7/UniversalProperty.lean",
+      "source_sha256": "beccbf2e6c0319e42c2f1a76471d95dbed813733e898884b6d869d4bb9bb414b",
+      "edits": [
+        {
+          "start": 7063,
+          "end": 7093,
+          "old": "HomotopyLimits.coconeVertexLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg",
+          "line": 124
+        },
+        {
+          "start": 7993,
+          "end": 8036,
+          "old": "HomotopyLimits.PreservesSmallSiftedColimits",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits",
+          "line": 142
+        },
+        {
+          "start": 8783,
+          "end": 8818,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 155
+        },
+        {
+          "start": 8927,
+          "end": 8963,
+          "old": "F2.Presentable.postcomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom",
+          "line": 157
+        },
+        {
+          "start": 9350,
+          "end": 9385,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 166
+        },
+        {
+          "start": 9582,
+          "end": 9617,
+          "old": "F2.Presentable.precomposeFunctorHom",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom",
+          "line": 168
+        }
+      ]
+    },
+    {
+      "path": "Shared/Descendable.lean",
+      "source_sha256": "ad16f1c351d94dcabe2db642530ec75f1ba320362c9efad8892774df7cb82802",
+      "edits": [
+        {
+          "start": 9353,
+          "end": 9366,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 175
+        },
+        {
+          "start": 9787,
+          "end": 9803,
+          "old": "F2.nativeConeLeg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg",
+          "line": 184
+        },
+        {
+          "start": 10015,
+          "end": 10035,
+          "old": "F1B.nerveCoconeEquiv",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv",
+          "line": 187
+        }
+      ]
+    },
+    {
+      "path": "Sheaves/SheafGenerators.lean",
+      "source_sha256": "b3a806fc19163a8fe243017c04200909b6e5663ee69006fe23ceeb364fcea215",
+      "edits": [
+        {
+          "start": 3881,
+          "end": 3905,
+          "old": "F1B.nerveQCatEquivalence",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveQCatEquivalence",
+          "line": 80
+        },
+        {
+          "start": 4049,
+          "end": 4104,
+          "old": "F2.Presentable.isLimitCone_iff_restrict_equivalentShape",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLimitCone_iff_restrict_equivalentShape",
+          "line": 83
+        },
+        {
+          "start": 4299,
+          "end": 4332,
+          "old": "F2.isLimitCone_iff_of_cone_val_eq",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_iff_of_cone_val_eq",
+          "line": 87
+        },
+        {
+          "start": 7998,
+          "end": 8026,
+          "old": "HomotopyLimits.IsLocalObject",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject",
+          "line": 152
+        },
+        {
+          "start": 8458,
+          "end": 8486,
+          "old": "HomotopyLimits.IsLocalObject",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject",
+          "line": 161
+        }
+      ]
+    },
+    {
+      "path": "Sheaves/SpaceValued.lean",
+      "source_sha256": "42aadafd7948afafa093dc125c8037c90e69b01d1ad999dbd59d7b04fe4bba6c",
+      "edits": [
+        {
+          "start": 9572,
+          "end": 9603,
+          "old": "HomotopyLimits.nerveOppositeIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso",
+          "line": 176
+        },
+        {
+          "start": 9625,
+          "end": 9656,
+          "old": "HomotopyLimits.uliftOppositeIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.uliftOppositeIso",
+          "line": 177
+        },
+        {
+          "start": 11501,
+          "end": 11522,
+          "old": "F1B.coconeReverseCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeReverseCone",
+          "line": 207
+        },
+        {
+          "start": 11859,
+          "end": 11880,
+          "old": "F1B.coconeReverseCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeReverseCone",
+          "line": 215
+        }
+      ]
+    },
+    {
+      "path": "Sheaves/GlobalSections.lean",
+      "source_sha256": "a11bceed917fe8d6ecd0ce687b9b6e6c16a261c7d514d9ab416440833d15b5a0",
+      "edits": [
+        {
+          "start": 4626,
+          "end": 4654,
+          "old": "HomotopyLimits.IsLocalObject",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject",
+          "line": 112
+        },
+        {
+          "start": 4801,
+          "end": 4837,
+          "old": "F2.Presentable.functor_isPresentable",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable",
+          "line": 115
+        },
+        {
+          "start": 4864,
+          "end": 4892,
+          "old": "HomotopyLimits.IsLocalObject",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject",
+          "line": 116
+        },
+        {
+          "start": 5048,
+          "end": 5109,
+          "old": "F2.Presentable.Localization.bousfield_isReflectiveSubcategory",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory",
+          "line": 121
+        }
+      ]
+    },
+    {
+      "path": "Sheaves/SetSections.lean",
+      "source_sha256": "0fbfb2454548ed093baff8cb9a498518138d0d7bc9c4c2a32760a388cee3d23e",
+      "edits": [
+        {
+          "start": 7804,
+          "end": 7817,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 152
+        },
+        {
+          "start": 8196,
+          "end": 8216,
+          "old": "F1B.nerveCone_vertex",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_vertex",
+          "line": 158
+        },
+        {
+          "start": 8492,
+          "end": 8522,
+          "old": "HomotopyLimits.nerveAsSmallIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso",
+          "line": 166
+        },
+        {
+          "start": 8767,
+          "end": 8797,
+          "old": "HomotopyLimits.nerveAsSmallIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso",
+          "line": 171
+        },
+        {
+          "start": 8926,
+          "end": 8963,
+          "old": "HomotopyLimits.nerveAsSmallIso_vertex",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso_vertex",
+          "line": 173
+        },
+        {
+          "start": 9804,
+          "end": 9817,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 191
+        },
+        {
+          "start": 10017,
+          "end": 10047,
+          "old": "HomotopyLimits.nerveAsSmallIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso",
+          "line": 194
+        },
+        {
+          "start": 10096,
+          "end": 10132,
+          "old": "F2.Idempotent.pointJoinNerve_hom_ext",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointJoinNerve_hom_ext",
+          "line": 196
+        },
+        {
+          "start": 10186,
+          "end": 10216,
+          "old": "HomotopyLimits.nerveAsSmallIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso",
+          "line": 198
+        },
+        {
+          "start": 10346,
+          "end": 10366,
+          "old": "F1B.nerveCone_vertex",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_vertex",
+          "line": 199
+        },
+        {
+          "start": 10537,
+          "end": 10550,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 205
+        },
+        {
+          "start": 10617,
+          "end": 10635,
+          "old": "F1B.coneLegSimplex",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneLegSimplex",
+          "line": 206
+        },
+        {
+          "start": 10702,
+          "end": 10719,
+          "old": "F1B.nerveCone_leg",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_leg",
+          "line": 207
+        },
+        {
+          "start": 11188,
+          "end": 11230,
+          "old": "F2.isLimitCone_restrict_iff_of_leftAnodyne",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.isLimitCone_restrict_iff_of_leftAnodyne",
+          "line": 218
+        },
+        {
+          "start": 11367,
+          "end": 11410,
+          "old": "F2.Idempotent.pointCone_isLimit_of_constant",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCone_isLimit_of_constant",
+          "line": 220
+        },
+        {
+          "start": 13574,
+          "end": 13587,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 263
+        },
+        {
+          "start": 13682,
+          "end": 13695,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 265
+        },
+        {
+          "start": 13821,
+          "end": 13834,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 267
+        },
+        {
+          "start": 13910,
+          "end": 13923,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 269
+        },
+        {
+          "start": 14009,
+          "end": 14050,
+          "old": "HomotopyLimits.ulift_restrictJoinCone_val",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ulift_restrictJoinCone_val",
+          "line": 271
+        },
+        {
+          "start": 14162,
+          "end": 14175,
+          "old": "F1B.nerveCone",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone",
+          "line": 273
+        },
+        {
+          "start": 14199,
+          "end": 14220,
+          "old": "F1B.nerveCone_whisker",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_whisker",
+          "line": 274
+        },
+        {
+          "start": 16000,
+          "end": 16033,
+          "old": "F2.isLimitCone_iff_of_cone_val_eq",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_iff_of_cone_val_eq",
+          "line": 308
+        },
+        {
+          "start": 16126,
+          "end": 16159,
+          "old": "F2.isLimitCone_iff_of_cone_val_eq",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_iff_of_cone_val_eq",
+          "line": 310
+        },
+        {
+          "start": 16317,
+          "end": 16341,
+          "old": "F1B.nerveQCatEquivalence",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveQCatEquivalence",
+          "line": 313
+        },
+        {
+          "start": 16429,
+          "end": 16484,
+          "old": "F2.Presentable.isLimitCone_iff_restrict_equivalentShape",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLimitCone_iff_restrict_equivalentShape",
+          "line": 315
+        },
+        {
+          "start": 16569,
+          "end": 16602,
+          "old": "F2.isLimitCone_iff_of_cone_val_eq",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_iff_of_cone_val_eq",
+          "line": 317
+        }
+      ]
+    }
+  ],
+  "deferred_paths": [],
+  "applied_files": 19,
+  "applied_references": 80
+}

@@ -1,0 +1,113 @@
+{
+  "base": "efa846fe8",
+  "existing_violations": [
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalConstantFamily",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SpaceValueHomClass",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointCosliceIsoTransportComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LeftFibrationPrismTransport"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverUniverseNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftCofinalUniverseLift",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CofinalUniverseLift"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CartesianSectionsRestrictionEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedStrictConeEvaluation"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PointedIntervalTransportVertexComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointedIntervalTransport"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingNormalizedOverMap",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallSectionsComparisonEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallUnstraighteningValueTransport",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.UnstraighteningValueTransport"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeCylinderShapeRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinComparisonNaturality"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostcompositionVertices"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreCoconeLeg"
+      ]
+    },
+    {
+      "kind": "reverse-section",
+      "path": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableUnstraighteningEvaluationPost",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition"
+      ]
+    }
+  ],
+  "new_violations": [],
+  "removed_violations": [],
+  "note": "Includes seven new library modules and root registrations; no exception added."
+}

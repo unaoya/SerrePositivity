@@ -1,0 +1,186 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A8/IntegralDiscreteness",
+      "exit_code": 0,
+      "seconds": 42.622566210106015
+    },
+    {
+      "draft": "A9/Assembly",
+      "exit_code": 1,
+      "seconds": 24.693760957568884
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
+      "source_sha256": "d0703235aad089d283c0203ba8077406a1cf506c75541a9f75423bb2bbff2401",
+      "staged_source_sha256": "5ec495aa75a577ae45b94a481d29b188b80fedb752d1ce45c3a5b2aa8f9c8b41",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A8/AlmostConnectivity",
+          "source_sha256": "070228e6e4165d30b9afb3b9c250fa4749d25e95ef9159c6f39769cacaba3cef",
+          "olean_sha256": "d44fc912cf2b016d6e8134bdc27282daab76cc2958b4c727dca485ee8fbefa95"
+        },
+        {
+          "draft": "A8/AlmostPurityConnectivity",
+          "source_sha256": "d948efdd73c50963970a0e3def08dcb5e1bf9b5a5daffdaa661b7f16cbc99df4",
+          "olean_sha256": "86d833d96068c86e3ac34c81763aca08cbac7efdaa4bc03cfac5de4b11da4144"
+        },
+        {
+          "draft": "A7/AnimatedPerfectoidization",
+          "source_sha256": "ff388902edf467d10f52dce13a1c97efa12762cb60d98a6d1d301b086da385b4",
+          "olean_sha256": "7108c85f1c31284bf4eb2caba24c1719b1f2510f5d2ac18f77c83b22847b69f5"
+        },
+        {
+          "draft": "A7/UniversalProperty",
+          "source_sha256": "69dae2708bc3328f4ffd490a3681d88cfea4b2acf1698174d9cf1141726a704b",
+          "olean_sha256": "21340169224c223fffc77c90900a7873fc2c755a55ff8f6375d8627a0aab3014"
+        },
+        {
+          "draft": "A5/PerfectSiteComparison",
+          "source_sha256": "5aeb9ae7cf91ee49ce7ebf1e0a699b697c8d380a871aa95f158cf2f9a27a8b00",
+          "olean_sha256": "53acc856c5e66478592f105bb91385d0175494635e8c61d0f5d030cb878624f3"
+        },
+        {
+          "draft": "A5/WeaklyInitialAndDescent",
+          "source_sha256": "331f4712f31380ee8822c1c46aa58e53c0ea8b56e838e7667589e85f9f6cbe3d",
+          "olean_sha256": "c56553ee1d4c2725a72edf46956d665e043fae499badaf50e9cdc3e5a632492d"
+        },
+        {
+          "draft": "A4/InterfaceFields",
+          "source_sha256": "af42ae216c00c8210022caf4ff3eadc8300fa6354e035c9de092675aaacd91f8",
+          "olean_sha256": "9935466637f9aa79071580741305f5a6124caa386b52b333ed0836686e06b2f9"
+        },
+        {
+          "draft": "A4/AfterComparison",
+          "source_sha256": "e082ad42795fd516915925d9540852e5366c8545b3d66f2ce4fc7b2dbdb8ce11",
+          "olean_sha256": "399270577bda20688124033ddfa533521fd3aec91c4d3d978160a2c7256ae420"
+        },
+        {
+          "draft": "A8/W13AssemblyInputs",
+          "source_sha256": "c4b451c02fc722914976223d891b02d7b79e9e7a2e73ceebf7bde0952256f2c0",
+          "olean_sha256": "8c6ba5de87732bf45fb133c2e564c6440d8712395db9fba81b48584d0f5cb097"
+        }
+      ],
+      "extra_public_imports": [
+        "A8/AlmostConnectivity",
+        "A8/AlmostPurityConnectivity",
+        "A7/AnimatedPerfectoidization",
+        "A7/UniversalProperty",
+        "A5/PerfectSiteComparison",
+        "A5/WeaklyInitialAndDescent",
+        "A4/InterfaceFields",
+        "A4/AfterComparison",
+        "A8/W13AssemblyInputs"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A8/IntegralDiscreteness.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A8/IntegralDiscreteness.lean"
+      ],
+      "lean_exit_code": 0,
+      "exit_code": 0,
+      "seconds": 39.09452895820141,
+      "status": "PASS",
+      "olean": "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A8/IntegralDiscreteness.olean",
+      "olean_sha256": "677309ec1fa70904e1a69ef30c5698e7c9b2dae144cb43140781a3e22e09d91e"
+    },
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean",
+      "source_sha256": "a539d8140bd3664d5b13f687c4707539233b93ab4b64dfa8609b64f11b4ad672",
+      "staged_source_sha256": "50527322da8107c3fc74b9ccb9634de96cb26d727567a18aee448052bed788e4",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A4/InterfaceFields",
+          "source_sha256": "af42ae216c00c8210022caf4ff3eadc8300fa6354e035c9de092675aaacd91f8",
+          "olean_sha256": "9935466637f9aa79071580741305f5a6124caa386b52b333ed0836686e06b2f9"
+        },
+        {
+          "draft": "A5/InterfaceLimitCone",
+          "source_sha256": "0e0be3d0dd1272b552e46e3ce2d9aeaf719bb20e32eb3e9283fd07612d654abd",
+          "olean_sha256": "4fb9f5abf67112c613571de33a574c1f83d12f416a3d357fd676c8368b956b51"
+        },
+        {
+          "draft": "A6/Excision",
+          "source_sha256": "5fe604db0ff25cdf1e5b11a37456856a20286cbece77ee0f9a2c9172bc447f45",
+          "olean_sha256": "55f982cd9825122bc8841846399a0b60b16d8c7e3e6d5914e06c4ba2eb179f3e"
+        },
+        {
+          "draft": "A7/UniversalProperty",
+          "source_sha256": "69dae2708bc3328f4ffd490a3681d88cfea4b2acf1698174d9cf1141726a704b",
+          "olean_sha256": "21340169224c223fffc77c90900a7873fc2c755a55ff8f6375d8627a0aab3014"
+        },
+        {
+          "draft": "A8/IntegralDiscreteness",
+          "source_sha256": "d0703235aad089d283c0203ba8077406a1cf506c75541a9f75423bb2bbff2401",
+          "olean_sha256": "677309ec1fa70904e1a69ef30c5698e7c9b2dae144cb43140781a3e22e09d91e"
+        }
+      ],
+      "extra_public_imports": [
+        "A4/InterfaceFields",
+        "A5/InterfaceLimitCone",
+        "A6/Excision",
+        "A7/UniversalProperty",
+        "A8/IntegralDiscreteness"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A9/Assembly.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A9/Assembly.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 21.277437459677458,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block74-A8-IntegralDiscreteness.log.gz",
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block74-A9-Assembly.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}

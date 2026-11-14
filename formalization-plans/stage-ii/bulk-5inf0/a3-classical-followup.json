@@ -1,0 +1,70 @@
+{
+  "status": "source prepared; full A3 validation pending",
+  "replacements": [
+    {
+      "declaration": "universalLciPrism.complete_p",
+      "main": "completedFreeDelta_complete_p"
+    },
+    {
+      "declaration": "universalLciPrism.complete_generator",
+      "main": "completedFreeDelta_complete_generator"
+    },
+    {
+      "declaration": "universalLciPrism.p_mem",
+      "main": "completedFreeDeltaBase_isDeltaHom.map_isDistinguished; IsDistinguished.p_mem_span"
+    },
+    {
+      "declaration": "universalLciPrism.generator_regular",
+      "main": "completedFreeDelta_generator_regular",
+      "authorization": "h₀ restoration approved by coordinator"
+    },
+    {
+      "declaration": "universalLciPrism_bounded",
+      "main": "completedFreeDelta_residue_bounded"
+    },
+    {
+      "declaration": "rootBase_perfectoid",
+      "main": "Semiperfectoid.rootFamilyBase_isIntegralPerfectoid",
+      "preserved": "rootBase definition unchanged; same principal completion ring"
+    },
+    {
+      "declaration": "toPerfectedPrism.ideal_le",
+      "main": "perfectDeltaPDPrism_generator",
+      "preserved": "same unit followed by deltaPerfectionOf; only ideal image law proved"
+    },
+    {
+      "declaration": "discretePrism.p_mem",
+      "main": "hD.map_isDistinguished; IsDistinguished.p_mem_span"
+    },
+    {
+      "declaration": "discreteHTAlgebra",
+      "main": "Ideal.span_le; Ideal.mem_span_singleton_self",
+      "preserved": "same Ideal.quotientMap; its ideal containment obligation only"
+    },
+    {
+      "declaration": "discretePrismOver.sec_comp",
+      "main": "Under.w; congrArg CommRingCat.Hom.hom",
+      "preserved": "same discreteHTArrow, no new HT comparison"
+    },
+    {
+      "declaration": "padicBaseAlgebra",
+      "main": "Perfectoidization.Derived.arcPadicIntMap; ULift.ringEquiv",
+      "preserved": "same PadicBase and same derived complete input"
+    },
+    {
+      "declaration": "lciClassifyingMap",
+      "main": "existsUnique_completedFreeDeltaHom",
+      "preserved": "same variable assignment and oriented prism map; generator compatibility implies ideal containment"
+    },
+    {
+      "declaration": "universalModDComparison (base ideal compatibility)",
+      "main": "Ideal.span_le; same chosen generator",
+      "preserved": "same envelope lift; variable ideal condition remains the original future obligation"
+    },
+    {
+      "declaration": "universalModDComparison (quotient ideal compatibility)",
+      "main": "IsPrismaticEnvelope.ideal_eq; ExistsUnique.choose_spec; RingHom.congr_fun",
+      "preserved": "same chosen ring map descends to the same quotient"
+    }
+  ]
+}

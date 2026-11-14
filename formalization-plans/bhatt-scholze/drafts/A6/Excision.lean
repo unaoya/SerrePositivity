@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.ExcisionDerived（仮。原典 Cor 8.12 と E3 の欄 excision）
--- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.3・§3.2 の 5・6、単位 A6-4。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.3・§3.2 の 5・6、単位 A6-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
@@ -25,7 +25,7 @@ S・T は完備なので `e3Perfd_of_complete`（A4-3）で S_perfd に読み替
 商は `completionRing` 経由の自然同型 F_U ≃ F_{completionRing U}、Γ(F_U, O) ≃ e3Perfd(U) で扱う。CAlg_R の引き戻しは U が反映（G-A5-16）。
 
 ## 使われ方
-`PerfectoidizationInterfaceCAlg.excision`（A9）。環の帰結は既存（`Perfectoidization/Derived/Excision`）。
+`TheoryPerfectoidizationInterface.excision`（A9）。環の帰結は既存（`Perfectoidization/Derived/Excision`）。
 -/
 
 @[expose] public section
@@ -62,7 +62,7 @@ abbrev elementStructure (κ : Cardinal.{u}) (U : A_R R) :=
 /-- ℤ に沿って制限すると元の圏への O の引き戻しになる。 -/
 def elementStructure_forget (κ : Cardinal.{u}) (U : A_R R) :
     let z : ArcZ.{u} →+* R := (Int.castRingHom R).comp ULift.ringEquiv.toRingHom
-    FunctorIso (elementStructure (E := E) p R κ U ≫ cAlgRestrictScalars (E := E) z)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (elementStructure (E := E) p R κ U ≫ cAlgRestrictScalars (E := E) z)
       ((SSet.uliftFunctor.{u+1,u}).map (nerveMap (Functor.Elements.π (homPresheaf p κ U.right))) ≫
         structurePresheaf (E := E) p κ) := by
   sorry -- cAlgRestrictScalars_algebraEmbedding で係数を戻すと arcIntegerAlgebras の構造射、
@@ -73,7 +73,7 @@ def elementStructure_forget (κ : Cardinal.{u}) (U : A_R R) :
 def arcElementSections (κ : Cardinal.{u}) : algebraNerve R ⟶ E.CAlg R :=
   let i := elementAlgebraNerve p R κ (ofAlgebra R R)
   Classical.choose (show ∃ G, ∃ α : SSet.Homotopy (i ≫ G) (i ≫ E.discrete R),
-    IsRightKanExtension i (i ≫ E.discrete R) G α from by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension i (i ≫ E.discrete R) G α from by
     sorry) -- 各 comma 圏は小さい元の圏と同値、CAlg_R での点ごとの極限から取る
 
 /-- 固定した κ で A5 と比較できる始域。必要な有限図式には共通の κ を取る。 -/
@@ -118,7 +118,7 @@ def markedTargetEquiv (κ : Cardinal.{u}) (U : A_R R) :
   exact (markTarget p R κ U).asEquivalence
 
 abbrev sectionLimit (κ : Cardinal.{u}) (U : A_R R) :=
-  HasLimit (Sheaves.sectionsOfDiagram (markedHom p R κ U) (markedStructure (E := E) p R κ))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (Sheaves.sectionsOfDiagram (markedHom p R κ U) (markedStructure (E := E) p R κ))
 
 abbrev markedSections (κ : Cardinal.{u}) (U : A_R R) (h : sectionLimit (E := E) p R κ U) :=
   Sheaves.sectionsOf (markedHom p R κ U) (markedStructure (E := E) p R κ) h
@@ -132,7 +132,7 @@ def sectionsOf_homSheaf_eq_perfectoidization (κ : Cardinal.{u})
     (T : Type u) [CommRing T] [Algebra R T]
     (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
     (hb : perfectSiteCutoff p R T ≤ κ) (h : sectionLimit (E := E) p R κ (ofAlgebra R T)) :
-    VertexIso (markedSections (E := E) p R κ (ofAlgebra R T) h) (perfectoidization (E := E) p R hR T hT) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (markedSections (E := E) p R κ (ofAlgebra R T) h) (perfectoidization (E := E) p R hR T hT) := by
   let U := ofAlgebra R T
   let F := markedHom p R κ U
   let O := markedStructure (E := E) p R κ
@@ -140,7 +140,7 @@ def sectionsOf_homSheaf_eq_perfectoidization (κ : Cardinal.{u})
   let Γ := perfectoidization_isLimit (E := E) p R hR T hT
   let c := Γ.choose
   let D := (SSet.uliftFunctor.{u+1,u}).map (nerveMap (e.functor ⋙ Functor.Elements.π F)) ≫ O
-  have hc : ∃ t : JoinCone D, IsLimitCone t ∧ t.vertex = c.vertex := by
+  have hc : ∃ t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone D, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t ∧ t.vertex = c.vertex := by
     sorry -- c は A5 の κ₀ 極限錐。共通の弱始対象と Čech 余積は κ₀≤κ に入り、
           -- 両錐の脚は R→T→P に沿う同じ射。D47 で c.vertex に極限錐を移す
   exact Sheaves.sectionsOf_eq_limit_elements F O h e hc.choose hc.choose_spec.1 ≪≫
@@ -204,8 +204,8 @@ theorem homPresheafPushout_localEquiv (κ : Cardinal.{u}) [Fact ((κ + Cardinal.
 theorem sections_homPushout_invertible (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
     {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
     (hφ : Sheaves.IsLocalEquivSet (arcTopologyPerfd p κ) (homPushoutComparison p R κ f I))
-    (hP : HasLimit (Sheaves.sectionsOfDiagram (homPushoutPresheaf p R κ f I) (structurePresheaf (E := E) p κ)))
-    (hS : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ S.right) (structurePresheaf (E := E) p κ))) :
+    (hP : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (Sheaves.sectionsOfDiagram (homPushoutPresheaf p R κ f I) (structurePresheaf (E := E) p κ)))
+    (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ S.right) (structurePresheaf (E := E) p κ))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       (Sheaves.sectionsOf_map (homPushoutComparison p R κ f I) (structurePresheaf (E := E) p κ) hP hS).toTruncated := by
   exact Sheaves.sections_localEquiv_iso (arcTopologyPerfd p κ) _ hφ _ (structurePresheaf_isArcSheaf (E := E) p κ) hP hS
@@ -231,30 +231,30 @@ def homPresheaf_completionRing_iso (κ : Cardinal.{u}) [Fact ((κ + Cardinal.ale
     (ringCompletionFunctor p).op ⋙ homSheafFunctor p κ ≅ homSheafFunctor p κ :=
   NatIso.ofComponents (fun U => by
     let η := homSheafMap p κ (completionUnit p U.unop)
-    haveI : IsIso η := by
+    have hη : IsIso η := by
       sorry -- 各 perfectoid 試験環は p 完備、各成分の逆は completionLift、completion_existsUnique
-    exact asIso η) (by
+    exact @asIso _ _ _ _ η hη) (by
       sorry) -- completionMap_comp から商射を含むすべての射で自然
 
 /-- 同一の κ で覆う離散入力に制限した Γ の自然比較。 -/
 def sectionsFunctorIsoE3 (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
     let i := nerveMap (arcInputProperty p R κ).ι
-    FunctorIso (i ≫ arcElementSections (E := E) p R κ) (i ≫ e3Perfd (E := E) p R hR) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (i ≫ arcElementSections (E := E) p R κ) (i ≫ e3Perfd (E := E) p R hR) := by
   sorry -- 右 Kan 拡張の脚は U→P。homPresheaf_completionRing_iso の単位は U に自然なので、
         -- 完備化後の Prop 8.5 の比較錐が四角形の全射・二単体について可換
 
 def sectionsOf_homSheaf_eq_e3Perfd (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
     (U : (arcInputProperty p R κ).FullSubcategory) (h : sectionLimit (E := E) p R κ U.obj) :
-    VertexIso (markedSections (E := E) p R κ U.obj h) ((e3Perfd (E := E) p R hR).app _ (nerveVertex U.obj)) := by
-  let e : VertexIso (markedSections (E := E) p R κ U.obj h) ((arcElementSections (E := E) p R κ).app _ (nerveVertex U.obj)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (markedSections (E := E) p R κ U.obj h) ((e3Perfd (E := E) p R hR).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U.obj)) := by
+  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (markedSections (E := E) p R κ U.obj h) ((arcElementSections (E := E) p R κ).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U.obj)) := by
     sorry -- markedTargetEquiv で sectionsOf の極限を同じ U→P の右 Kan 拡張の値に比較
-  exact e ≪≫ (sectionsFunctorIsoE3 (E := E) p R hR κ).app (nerveVertex U)
+  exact e ≪≫ (sectionsFunctorIsoE3 (E := E) p R hR κ).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)
 
 /-- R の構造射を忘れた切断は global な O の切断である。 -/
 def sections_forget_to_integers (κ : Cardinal.{u}) (U : A_R R)
-    (h : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ U.right) (structurePresheaf (E := E) p κ))) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ U.right) (structurePresheaf (E := E) p κ))) :
     let z : ArcZ.{u} →+* R := (Int.castRingHom R).comp ULift.ringEquiv.toRingHom
-    VertexIso ((arcElementSections (E := E) p R κ ≫ cAlgRestrictScalars (E := E) z).app _ (nerveVertex U))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((arcElementSections (E := E) p R κ ≫ cAlgRestrictScalars (E := E) z).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U))
       (Sheaves.sectionsOf (homPresheaf p κ U.right) (structurePresheaf (E := E) p κ) h) := by
   sorry -- elementStructure_forget は全脚を保つ。係数制限は右随伴なので元の圏の極限を保ち、
         -- 右 Kan 拡張の評価錐を sectionsOfCone に比較できる
@@ -267,7 +267,7 @@ theorem sections_excision_square (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph
     (hT : IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right))
     (hI : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I))
     (h : ArcOutside R p f I) (b : ExcisionBounds p R κ f I) :
-    IsPullbackSquare (quotientExcisionSquare R f I ≫ arcElementSections (E := E) p R κ) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (quotientExcisionSquare R f I ≫ arcElementSections (E := E) p R κ) := by
   have hφ := (homPresheafPushout_localEquiv p R κ f I hS hT hI h b).2
   sorry -- sections_homPushout_invertible に hφ を渡し、Γ(F_S,O) を Γ(P,O) に移す。
         -- 商射の脚は Mono。sectionsOf_pushout（引き戻しの述語）待ち。
@@ -283,7 +283,7 @@ theorem perfectoidization_excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.righ
     (hT : IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right))
     (hI : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I))
     (h : ArcOutside R p f I) :
-    IsPullbackSquare (quotientExcisionSquare R f I ≫ e3Perfd (E := E) p R hR) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (quotientExcisionSquare R f I ≫ e3Perfd (E := E) p R hR) := by
   sorry -- 四隅の完備化・A_inf(R) を含む κ で sections_excision_square を使う。
         -- sectionsOf_pushout（引き戻しの述語）待ち。sectionsFunctorIsoE3 を商の四角形に
         -- 前合成し、Γ の極限錐を e3Perfd の指定四辺・二単体へまとめて移す
@@ -291,14 +291,14 @@ theorem perfectoidization_excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.righ
 /-- 概要：E3 の `excision`：`IsPullbackSquare (ordinarySquare R f (quotientProjection R S I) (quotientProjection R T (I.map f.right.hom)) (quotientComparison R f I) (quotientSquare_commutes R f I) ≫ e3Perfd p R)`。
 方針：`perfectoidization_excision` を S・T（完備、`e3Perfd_of_complete`）と S/I（完備、`quotient_isModuleComplete`）に、T/IT は
 `homPresheaf_completionRing_iso`・`sectionsOf_homSheaf_eq_e3Perfd` で completionRing(T/IT) 経由に読み替え、四角形を自然変換として移す（W9-II-15）。
-規約：`PerfectoidizationInterfaceCAlg.excision` の型そのまま。
+規約：`TheoryPerfectoidizationInterface.excision` の型そのまま。
 使われ方：A9。 -/
 theorem e3Excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
     (hS : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right S.right))
     (hT : IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right))
     (hI : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I))
     (h : ArcOutside R p f I) :
-    IsPullbackSquare (ordinarySquare R f (quotientProjection R S I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R f (quotientProjection R S I)
       (quotientProjection R T (I.map f.right.hom)) (quotientComparison R f I)
       (quotientSquare_commutes R f I) ≫ e3Perfd (E := E) p R hR) :=
   perfectoidization_excision (E := E) p R hR f I hS hT hI h

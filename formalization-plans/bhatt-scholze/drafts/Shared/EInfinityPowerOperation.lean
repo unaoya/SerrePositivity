@@ -5,7 +5,7 @@ module
 public import SerrePositivity.EInfinity.Interface.PowerOperation
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.FieldTheory.Finite.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology
 -- 取り込み時の依存先：drafts/DerivedGeneral/ScalarRestriction.lean。
 -- 本ファイルは drafts/Shared/CosimplicialEInfinity.lean（余単体的可換環の Tot_{E∞}）を使う。
 
@@ -51,8 +51,8 @@ variable (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
 使われ方：P⁰ の定義域。 -/
 def homotopy (k : Type u) [CommRing k] (p : ℕ) (X : (E.CAlg k) _⦋0⦌) : ℤ → Type u
   | 0 => cAlgH0Ring (E := E) X
-  | .ofNat (n+1) => derivedInfinityHomology k (-((n+1 : ℕ) : ℤ)) ((E.forget k).app _ X)
-  | .negSucc n => derivedInfinityHomology k (-(Int.negSucc n)) ((E.forget k).app _ X)
+  | .ofNat (n+1) => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology k (-((n+1 : ℕ) : ℤ)) ((E.forget k).app _ X)
+  | .negSucc n => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology k (-(Int.negSucc n)) ((E.forget k).app _ X)
 
 instance homotopyZeroRing (X : (E.CAlg k) _⦋0⦌) : CommRing (homotopy (E := E) k p X 0) :=
   inferInstanceAs (CommRing (cAlgH0Ring (E := E) X))
@@ -67,7 +67,7 @@ def homotopyZeroRingEquiv (X : (E.CAlg k) _⦋0⦌) : homotopy (E := E) k p X 0 
   RingEquiv.refl _
 
 def homotopyCohomology (X : (E.CAlg k) _⦋0⦌) (n : ℤ) :
-    homotopy (E := E) k p X n ≃+ derivedInfinityHomology k (-n) ((E.forget k).app _ X) := by
+    homotopy (E := E) k p X n ≃+ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology k (-n) ((E.forget k).app _ X) := by
   match n with
   | 0 =>
     exact ((E.pi0_forget k).app (SSet.HomotopyCategory.mk X)).toLinearEquiv.toAddEquiv
@@ -77,7 +77,7 @@ def homotopyCohomology (X : (E.CAlg k) _⦋0⦌) (n : ℤ) :
 def homotopyMap {X Y : (E.CAlg k) _⦋0⦌} (f : SSet.Edge X Y) (n : ℤ) :
     homotopy (E := E) k p X n →+ homotopy (E := E) k p Y n :=
   (homotopyCohomology (E := E) k p Y n).symm.toAddMonoidHom.comp
-    ((derivedInfinityHomologyMap k (-n) (f.map (E.forget k)).toTruncated).hom.toAddMonoidHom.comp
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyMap k (-n) (f.map (E.forget k)).toTruncated).hom.toAddMonoidHom.comp
       (homotopyCohomology (E := E) k p X n).toAddMonoidHom)
 
 /-- 概要：冪作用 P⁰ : π_n(X) → π_n(X)（加法的、π_* 全体で定義）。
@@ -125,9 +125,9 @@ Sp 値の出力、および powerOperationZero_component の強い成分比較�
 -/
 
 /-- 係数の読み替えは Hⁱ の台の加法群を変えない。 -/
-def restrictHomologyAddEquiv (M : (derivedInfinityCategory k) _⦋0⦌) (i : ℤ) :
-    derivedInfinityHomology k i ((derivedInfinityRestrictScalars (E := E) (frobenius k p)).app _ M) ≃+
-      derivedInfinityHomology k i M := E.restrictD_homology (frobenius k p) i M
+def restrictHomologyAddEquiv (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory k) _⦋0⦌) (i : ℤ) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology k i ((derivedInfinityRestrictScalars (E := E) (frobenius k p)).app _ M) ≃+
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology k i M := E.restrictD_homology (frobenius k p) i M
 
 abbrev frobeniusRestriction := Under.map (CommRingCat.ofHom (frobenius k p))
 
@@ -148,13 +148,13 @@ def cosimplicialFrobenius (X : Cosimplicial.CosimplicialAlgebra k) :
 
 /-- 制限は右随伴なので Tot の指定された極限錐を保つ。 -/
 def totRestrictFrobeniusIso (X : Cosimplicial.CosimplicialAlgebra k) :
-    VertexIso (Cosimplicial.totEInfinity (E := E) k (X ⋙ frobeniusRestriction k p))
-      ((cAlgRestrictScalars (E := E) (frobenius k p)).app _ (Cosimplicial.totEInfinity (E := E) k X)) := (E.ofCosimplicial_restrict (frobenius k p)).app (nerveVertex X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (Cosimplicial.totEInfinity (E := E) k (X ⋙ frobeniusRestriction k p))
+      ((cAlgRestrictScalars (E := E) (frobenius k p)).app _ (Cosimplicial.totEInfinity (E := E) k X)) := (E.ofCosimplicial_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
 
 /-- 離散な可換 k 代数では、全整数次数で P⁰ が Frobenius を誘導する。
 素体の本欄から係数制限で運ぶ。Sp 値の辺の等式は主張しない。 -/
 theorem powerOperationZero_eq_frobenius_discrete (B : A_R k) (n : ℤ) :
-    let X := (E.discrete k).app _ (nerveVertex B)
+    let X := (E.discrete k).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
     let U := E.forget k
     let f := (nerve.edgeMk (discreteFrobenius k p B)).map (E.discrete k ≫ U)
     (E.powerOp0Over k p n).app (SSet.HomotopyCategory.mk X) =

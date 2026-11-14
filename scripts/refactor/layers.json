@@ -15713,7 +15713,9 @@
       "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SetWeightLimitTailConeSquare": "Comparison",
       "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SieveTensorSectionsNaturality": "Comparison",
       "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SetWeightEndpointShapeSquare": "Comparison",
-      "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SieveTensorSectionsHomotopy": "Comparison"
+      "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SieveTensorSectionsHomotopy": "Comparison",
+      "SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates": "Consumers",
+      "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded": "SharedFoundation"
     },
     "external_prefixes": [
       "Lean",

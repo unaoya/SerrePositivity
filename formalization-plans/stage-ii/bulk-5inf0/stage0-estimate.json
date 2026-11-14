@@ -1,0 +1,93 @@
+{
+  "base_main": "efa846fe81f40ac663cff5af62f55b901763d676",
+  "metric": "Lean source lines added plus removed; draft rewrites and declaration docstrings included; non-Lean reports and inventory excluded",
+  "lower": 3400,
+  "upper": 5550,
+  "outer_cap": 11100,
+  "items": [
+    {
+      "id": "A01",
+      "lower": 900,
+      "upper": 1300,
+      "state": "planned"
+    },
+    {
+      "id": "A02",
+      "lower": 350,
+      "upper": 600,
+      "state": "planned"
+    },
+    {
+      "id": "A03",
+      "lower": 30,
+      "upper": 70,
+      "state": "planned"
+    },
+    {
+      "id": "A04",
+      "lower": 1000,
+      "upper": 1600,
+      "state": "planned"
+    },
+    {
+      "id": "A05",
+      "lower": 300,
+      "upper": 500,
+      "state": "planned"
+    },
+    {
+      "id": "A06",
+      "lower": 130,
+      "upper": 220,
+      "state": "planned"
+    },
+    {
+      "id": "A07",
+      "lower": 60,
+      "upper": 100,
+      "state": "planned"
+    },
+    {
+      "id": "B01",
+      "lower": 120,
+      "upper": 200,
+      "state": "planned"
+    },
+    {
+      "id": "B02",
+      "lower": 50,
+      "upper": 100,
+      "state": "planned"
+    },
+    {
+      "id": "B03",
+      "lower": 250,
+      "upper": 450,
+      "state": "planned"
+    },
+    {
+      "id": "B04",
+      "lower": 70,
+      "upper": 130,
+      "state": "planned"
+    },
+    {
+      "id": "B05",
+      "lower": 70,
+      "upper": 130,
+      "state": "planned"
+    },
+    {
+      "id": "B06",
+      "lower": 0,
+      "upper": 0,
+      "state": "deferred_to_5inf-3a"
+    },
+    {
+      "id": "B07",
+      "lower": 70,
+      "upper": 150,
+      "state": "planned"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.WeaklyInitialAndDescent（仮。原典 Prop 8.5 の証明 (1)〜(3)）
--- 設計書：formalization-plans/bhatt-scholze/a5-design.md §3.1〜§3.3、単位 A5-4。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a5-design.md §3.1〜§3.3、単位 A5-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
@@ -48,13 +48,13 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 
 /-! ## (1) 弱始対象 -/
 
+include hR in
 /-- 概要：(ii) S̃ は semiperfectoid：S̃/p は semiperfect（各元が次の段で p 乗根をもつ）、p 完備な R 代数で mod p semiperfect なら perfectoid の商
 （G-A5-14、[BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ 全射、R ⊗̂ W(S̃^♭) は perfectoid）。
 方針：既存の θ（`fontaineTheta`）と完備テンソル。
 規約：A5-2 の `IsSemiperfectoid`。**perfectoid 基底 R は本質的**（W9-II-16）：ker θ の distinguished 元は R 由来。基底なしでは偽
 （S = ℤ_p の根添加は ℤ_p へ retraction をもつ）。A6 の Lemma 8.8 は前段 G-A6-11 で R₀ = ℤ_p[p^{1/p^∞}]^∧ 上へ移してから本定理を使う。
 使われ方：S̃_perfd の存在（Cor 7.3）、A5-2 の適用。 -/
-include hR in
 theorem rootClosure_isSemiperfectoid : IsSemiperfectoid p R (rootClosure p R S) := by
   sorry -- 完備性と mod p の根を使い、perfectoid 基底 R 上で θ の全射から商表示を作る
 
@@ -63,12 +63,12 @@ def algebraicCoverUnit (C : CommRingCat.{u}) :
     completionRing p C ⟶ completionRing p ((algebraicRootFunctor p).obj C) :=
   completionMap p (CommRingCat.ofHom (algebraicRootClosureUnit p C))
 
+include hR in
 /-- 概要：S = S_alg^∧（S_alg = colim_i S_i）の被覆 E(S_alg)^∧_p：p 完備忠実平坦、semiperfectoid（mod p の根、G-A5-14）、E(S_i)^∧_p の完備 filtered 余極限。
 E(S)^∧_p とは同一視しない。
 方針：各段の自由性と完備化。
 規約：—
 使われ方：§3.2 の右辺の可換性。 -/
-include hR in
 theorem algebraicRootCover_properties {J : Type u} [SmallCategory J] [IsFiltered J]
     (D : J ⥤ A_R R) :
     let D₀ := D ⋙ Under.forget (CommRingCat.of R)
@@ -76,14 +76,18 @@ theorem algebraicRootCover_properties {J : Type u} [SmallCategory J] [IsFiltered
     let j₀ : J := Classical.choice IsFiltered.nonempty
     let E := algebraicRootFunctor p
     let U := completionRing p (E.obj C)
+    letI : CommRing U := U.commRing
     letI := (algebraicCoverUnit p C).hom.toAlgebra
     letI : Algebra R U := ((algebraicCoverUnit p C).hom.comp ((completionUnit p C).hom.comp
       ((Limits.colimit.ι D₀ j₀).hom.comp
         (D.obj j₀).hom.hom))).toAlgebra
+    let D₁ := (D₀ ⋙ E) ⋙ ringCompletionFunctor p
+    let c₀ : Limits.Cocone (D₀ ⋙ E) := E.mapCocone (Limits.colimit.cocone D₀)
+    let c : Limits.Cocone D₁ := (ringCompletionFunctor p).mapCocone c₀
+    let f : Limits.colimit D₁ ⟶ U := Limits.colimit.desc D₁ c
     IsCompletelyFaithfullyFlat (Ideal.span {(p : completionRing p C)}) U ∧
       IsSemiperfectoid p R U ∧
-      IsIso (completionMap p (Limits.colimit.desc (D₀ ⋙ E ⋙ ringCompletionFunctor p)
-        ((ringCompletionFunctor p).mapCocone (E.mapCocone (Limits.colimit.cocone D₀)))) ≫
+      IsIso (completionMap p f ≫
         (completionUnitIso p U (completionRing_complete p _)).inv) := by
   classical
   sorry -- モニックな各段は自由で mod p に根があり、E は通常の filtered 余極限を保つ。
@@ -138,34 +142,36 @@ abbrev perfectResiduePresheaf :=
 規約：—
 使われ方：A5-1 の `perfectoidization_isLimit_u`。 -/
 theorem limit_perfUnder_eq_tot
-    (t : JoinCone (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S) ≫
-      theoryTargetDiagram (E := E) R p (ofAlgebra R S))) (ht : IsLimitCone t) :
-    ∃ c : JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S) ≫
+      theoryTargetDiagram (E := E) R p (ofAlgebra R S))) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) :
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- 要確認：S3 の大きい版待ち（W9-I-04）。isLimitCone_iff_restrict_cech_large の錐の延長
 
 theorem limit_perfectSite_eq_tot {E : SSet.{u+1}} [Quasicategory E]
     (F : Sheaves.Presheaf (perfectSite p R S hR) E)
-    (t : JoinCone (Sheaves.cechShape (perfectSite_cechNerveData p R hR S (weakPerfectSiteObj p R hR S)) ≫ F))
-    (ht : IsLimitCone t) :
-    ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex :=
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (Sheaves.cechShape (perfectSite_cechNerveData p R hR S (weakPerfectSiteObj p R hR S)) ≫ F))
+    (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) :
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone F, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = t.vertex :=
   Sheaves.exists_limitCone_of_cech (weakPerfectSiteObj_isWeaklyTerminal p R hR S) _ F t ht
 
 theorem limit_perfUnder_eq_limit_perfectSite
-    (t : JoinCone (perfectResiduePresheaf (E := E) p R hR S)) (ht : IsLimitCone t) :
-    ∃ c : JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (perfectResiduePresheaf (E := E) p R hR S)) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) :
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- D47：小さい極限を弱始対象の Čech 項に制限し、同じ余積の Ō 値を大きい版へ移送
 
+include hR in
 /-- 図式に整合する E 被覆の弱始対象。基底は完備化した C、Q(U) の構造射は
 C^∧ → E(C)^∧ → Q(E(C)^∧) の合成。 -/
-include hR in
 theorem algebraicCoverWeakTarget (C : A_R R) :
     let S₀ := completionRing p C.right
     let U := completionRing p ((algebraicRootFunctor p).obj C.right)
+    letI : CommRing U := U.commRing
     let j := algebraicCoverUnit p C.right
     letI : Algebra R U := (j.hom.comp ((completionUnit p C.right).hom.comp C.hom.hom)).toAlgebra
     ∃ h : IsSemiperfectoid p R U,
       Sheaves.IsWeaklyTerminalLarge (Opposite.op (show PerfUnder_u p S₀ from
-        ⟨Under.mk (j ≫ CommRingCat.ofHom (universalPerfectoidUnit p R U h)),
+        ⟨Under.mk (Y := CommRingCat.of (universalPerfectoidRing p R U h))
+          (j ≫ CommRingCat.ofHom (R := U) (universalPerfectoidUnit p R U h)),
          (universalPerfectoidUnit_isPerfectoidization p R U h).1⟩)) := by
   sorry -- E の各代数段へ mod p の根と p 除算の原像を選び、T の完備性で完備化を延長。
         -- E(C)^∧ は G-A5-14 で semiperfectoid、その Cor 7.3 の単位に沿って延長を降ろす
@@ -178,9 +184,9 @@ theorem algebraicCoverWeakTarget (C : A_R R) :
 使われ方：`limit_perfectSite_filteredColimit`。 -/
 theorem cech_independent_of_flatSemiperfectoidCover
     (U : PerfUnder_u p (CommRingCat.of S)) (hU : Sheaves.IsWeaklyTerminalLarge (Opposite.op U))
-    (t : JoinCone (largeCechShape p R hR S U ≫ theoryTargetDiagram (E := E) R p (ofAlgebra R S))) (ht : IsLimitCone t) :
-    ∃ c : JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex ∧
-      IsLimitCone (restrictJoinCone c (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S))) := by
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (largeCechShape p R hR S U ≫ theoryTargetDiagram (E := E) R p (ofAlgebra R S))) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) :
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = t.vertex ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone c (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S))) := by
   sorry -- U=Q(E(S_alg)^∧) では各段の延長と Cor 7.3 が hU を供給。U と S̃_perfd に S3 を順に適用
 
 /-! ## (2) filtered 余極限（左辺の可換性 `prismaticPerfection_filteredColimit` は A4/Perfectoidization へ移した。W9-III-14） -/
@@ -188,24 +194,24 @@ theorem cech_independent_of_flatSemiperfectoidCover
 
 /-- 極限錐の族をその頂点の族へ送る。 -/
 def cosimplicialTot {E : SSet.{u+1}} [Quasicategory E]
-    (h : ∀ X : cosimplicialShape.{u} ⟶ E, HasLimit X) :
+    (h : ∀ X : cosimplicialShape.{u} ⟶ E, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit X) :
     (ihom cosimplicialShape.{u}).obj E ⟶ E := by
-  let sec : { G : (ihom cosimplicialShape).obj E ⟶ limitCones cosimplicialShape E //
-      G ≫ limitConeProjection _ _ = 𝟙 _ } := by
+  let sec : { G : (ihom cosimplicialShape).obj E ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitCones cosimplicialShape E //
+      G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeProjection _ _ = 𝟙 _ } := by
     sorry -- 全図式が極限をもつので極限錐の射影は自明 Kan fibration、恒等射を持ち上げる
-  exact sec.val ≫ (relativeTerminalVertices (coneRestriction _ _)).ι ≫ coneApexEvaluation _ _
+  exact sec.val ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeTerminalVertices (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction _ _)).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.coneApexEvaluation _ _
 
 /-- 概要：G-A5-2：一様に coconnective な余単体的対象の Tot は filtered 余極限と可換（H^k(Tot X) = H^k(Tot_{≤k+1} X)、部分 Tot は有限極限）。
 方針：Tot の塔と coconnectivity。
 規約：D(A) の cohomological な添字。
 使われ方：右辺の可換性。 -/
-theorem tot_coconnective_filteredColimit {I : SSet.{u}} [Quasicategory I] [F2.IsFilteredInfinity I]
-    (D : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ (ihom cosimplicialShape).obj (derivedInfinityCategory R))
-    (c : JoinCocone D) (hc : IsColimitCone c) (b : ℤ)
+theorem tot_coconnective_filteredColimit {I : SSet.{u}} [Quasicategory I] [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity I]
+    (D : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ (ihom cosimplicialShape).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R))
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) (b : ℤ)
     (hb : ∀ i : I _⦋0⦌, ∀ n : SimplexCategory, Derived.IsCoconnectiveAt R b
-      ((D ≫ evaluateFunctorAt (ULift.up (nerveVertex n))).app _ (ULift.up i)))
-    (hlim : ∀ X : cosimplicialShape ⟶ derivedInfinityCategory R, HasLimit X) :
-    IsColimitCone (mapJoinCocone (cosimplicialTot hlim) c) := by
+      ((D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n))).app _ (ULift.up i)))
+    (hlim : ∀ X : cosimplicialShape ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit X) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone (cosimplicialTot hlim) c) := by
   sorry -- 各 H^k は下界 b に依存する有限の部分 Tot で安定し、有限極限は filtered 余極限と交換する
 
 /-- 完全試験環 B 上の O は A_inf(B)。構造射・射は有界完全 prism への一意な持ち上げ。 -/
@@ -227,14 +233,14 @@ def testPrisms : perfectTests p R ⥤ A_R (perfectPrismRing p R) where
 def perfectSiteSections :
     algebraNerve R ⟶ CompleteCAlg (E := E) (perfectPrism p R hR) :=
   let i := nerveMap (perfectoidTargetInclusion p (CommRingCat.of R))
-  let O := nerveMap (testPrisms p R hR) ≫ E.discrete _ ≫ reflectCompleteCAlg (E := E) (perfectPrism p R hR)
-  Classical.choose (show ∃ F, ∃ α : SSet.Homotopy (i ≫ F) O, IsRightKanExtension i O F α from by
+  let O := nerveMap (testPrisms p R hR) ≫ E.discrete _ ≫ _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived.reflectCompleteCAlg (E := E) (p := p) (perfectPrism p R hR)
+  Classical.choose (show ∃ F, ∃ α : SSet.Homotopy (i ≫ F) O, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension i O F α from by
     sorry) -- D47 の弱始対象の小さい Čech 図式で各大きい comma 圏に極限がある
 
 /-- S を固定すると右 Kan 拡張は O の完全 site 上の極限を与える。 -/
 def perfectSiteSectionsVertex :
-    let F := perfectSiteSections (E := E) p R hR ≫ completeCAlgInclusion (E := E) (perfectPrism p R hR)
-    VertexIso (F.app _ (nerveVertex (ofAlgebra R S)))
+    let F := perfectSiteSections (E := E) p R hR ≫ _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived.completeCAlgInclusion (E := E) (p := p) (perfectPrism p R hR)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra R S)))
       (Sheaves.globalSections (perfectStructurePresheaf (E := E) p R hR S) (perfectStructure_hasLimit (E := E) p R hR S)) := by
   sorry -- Ran の S での comma 圏は Perfd_{S/}。Lemma 4.8 と D47 の同じ Čech 項で O の極限を比較
 
@@ -243,9 +249,9 @@ def perfectSiteSectionsVertex :
 方針：上の三つ。紙 3（完備化と Tot の順序）、紙 3′。
 規約：—
 使われ方：有限生成への帰着。 -/
-theorem limit_perfectSite_filteredColimit {I : SSet.{u}} [Quasicategory I] [F2.IsFilteredInfinity I]
-    (D : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ algebraNerve R) (c : JoinCocone D) (hc : IsColimitCone c) :
-    IsColimitCone (mapJoinCocone (perfectSiteSections (E := E) p R hR) c) := by
+theorem limit_perfectSite_filteredColimit {I : SSet.{u}} [Quasicategory I] [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity I]
+    (D : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ algebraNerve R) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone (perfectSiteSections (E := E) p R hR) c) := by
   sorry -- E 被覆で各項の O は完全 prism、Ō はその mod d。G-A5-2 の後に Koszul 完備化を施す
 
 /-- 概要：π_0 S が位相的有限生成の S で比較写像が同値なら、すべての離散 S で同値。
@@ -276,16 +282,16 @@ def rootCoverShape (r : ℕ) (x : Fin r → S) : cosimplicialShape.{u} ⟶ algeb
 
 /-- S → S̃^• の増大を、全余単体写像とともに nerve の錐にする。 -/
 def rootCoverAugmentedCone (r : ℕ) (f : Fin r → S) :
-    { c : JoinCone (rootCoverShape p R S r f) // ∃ hv : c.vertex = nerveVertex (ofAlgebra R S),
+    { c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (rootCoverShape p R S r f) // ∃ hv : c.vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra R S),
       ∀ n : SimplexCategory,
         let a := (rootCoverArrow p R S r f).augmentedCechConerve.hom.app n
-        (F2.nativeConeLeg c (ULift.up (nerveVertex n))).edge =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n))).edge =
           (nerve.edgeMk (a ≫ (completionAlgebraUnit p R).app _)).edge } := by
   sorry -- 増大の自然変換を N(Δ) の左錐に延長。頂点は S、全脚は広い押し出しへの射と完備化単位の合成
 
+include hR in
 /-- 概要：各 S̃^n = (S̃^{⊗_S n+1})^∧（`rootCover`、RootAdjunction）は semiperfectoid（S/p の元は R/p 係数の x_i の多項式、G-A5-14）。
 規約：`IsSemiperfectoid`（SemiperfectoidCase）。 -/
-include hR in
 theorem rootCover_isSemiperfectoid (r : ℕ) (f : Fin r → S)
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
     (hf : Function.Surjective (polyEvaluation p R S r f hS)) (n : ℕ) :
@@ -301,8 +307,8 @@ theorem rootCover_isSemiperfectoid (r : ℕ) (f : Fin r → S)
 使われ方：`perfectionComparison_isIso_of_finiteType`。 -/
 theorem prismaticPerfection_rootCover_descent (r : ℕ) (f : Fin r → S)
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    let c := mapJoinCone (directPerfectionFunctor (E := E) p R hR) (rootCoverAugmentedCone p R S r f).val
-    IsLimitCone c ∧ Nonempty (VertexIso (prismaticPerfection (E := E) p R hR S hS) c.vertex) := by
+    let c := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (directPerfectionFunctor (E := E) p R hR) (rootCoverAugmentedCone p R S r f).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (prismaticPerfection (E := E) p R hR S hS) c.vertex) := by
   sorry -- prismaticPerfection_rootMap_descendable' と (5) で完備押し出しに移す。
         -- Shared の isDescendableOver_pushout、isDescendableOver_tot_equiv
 
@@ -330,9 +336,9 @@ lim_{Perfd_{S/}} B_{R′} ≃ Tot_n lim_{Perfd_{S̃^n/}} O。
 使われ方：`perfectionComparison_isIso_of_finiteType`。 -/
 theorem limit_perfectSite_rootCover_descent (r : ℕ) (f : Fin r → S)
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    let F := perfectSiteSections (E := E) p R hR ≫ completeCAlgInclusion (E := E) (perfectPrism p R hR)
-    let c := mapJoinCone F (rootCoverAugmentedCone p R S r f).val
-    IsLimitCone c ∧ c.vertex = F.app _ (nerveVertex (ofAlgebra R S)) := by
+    let F := perfectSiteSections (E := E) p R hR ≫ _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived.completeCAlgInclusion (E := E) (p := p) (perfectPrism p R hR)
+    let c := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone F (rootCoverAugmentedCone p R S r f).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra R S)) := by
   sorry -- 各 perfectoid 標的で左辺の降下を使い、L_n の始性で二つの極限を交換
 
 /-- 概要：π_0 S が位相的有限生成なら比較写像は同値：両辺の Tot の各項は semiperfectoid の場合（A5-2 `perfectoidization_semiperfectoid_iso` の

@@ -1,0 +1,110 @@
+{
+  "status": "PASS whole file block60",
+  "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+  "restored_from": "efa846fe8",
+  "restored_declarations": [
+    {
+      "old": "wittToSmall",
+      "new": "universalWittToPdModel",
+      "original_sorry": 1
+    },
+    {
+      "old": "wittToSmall_frame",
+      "new": "universalWittToPdModel_frame",
+      "original_sorry": 1
+    }
+  ],
+  "reason": "Main wittToSmall targets conditional pdPolynomialFunctor, whereas the original universal draft targets the retained general pdModelPolynomialFunctor. Do not replace the target or add a comparison hypothesis.",
+  "canonical_specializations": [
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "(universalWittPrismMap.{u} p).toRingHom",
+      "new": "psiRing (U.{u} p) (universalOrientedPrism_regular.{u} p).1"
+    },
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "(universalWittPrismMap p).toRingHom",
+      "new": "psiRing (U p) (universalOrientedPrism_regular p).1"
+    },
+    {
+      "old": "universalWittBigPDModel.{u} p",
+      "new": "universalWittPdFunctor.{u} p"
+    },
+    {
+      "old": "universalWittBigPDModel p",
+      "new": "universalWittPdFunctor p"
+    },
+    {
+      "old": "wittSmallFrame p",
+      "new": "universalWittSmallFrame p"
+    },
+    {
+      "old": "wittSmallFrame p",
+      "new": "universalWittSmallFrame p"
+    },
+    {
+      "old": "wittBigBridge p",
+      "new": "universalWittBigBridge p"
+    },
+    {
+      "old": "wittBigBridge p",
+      "new": "universalWittBigBridge p"
+    },
+    {
+      "old": "wittBigBridge p",
+      "new": "universalWittBigBridge p"
+    },
+    {
+      "old": "cechAlexanderFrame p",
+      "new": "universalAffineCechFrame p"
+    },
+    {
+      "old": "cechAlexanderFrame p",
+      "new": "universalAffineCechFrame p"
+    },
+    {
+      "old": "wittToSmall p",
+      "new": "universalWittToPdModel p"
+    },
+    {
+      "old": "wittToSmall p",
+      "new": "universalWittToPdModel p"
+    },
+    {
+      "old": "bigResidue p",
+      "new": "bigResidue (U p)"
+    },
+    {
+      "old": "wittPdIdeal p",
+      "new": "wittPdIdeal p (residueU p)"
+    },
+    {
+      "old": "pdModelBaseChange.{u} p n",
+      "new": "pdModelBaseChange.{u} p (WU p) (residueU p) n"
+    }
+  ],
+  "source_sha256": "c9af218a7a5e8adcc7f0c676e91394c17bb9ba0f472437c546795360ca0319b9",
+  "note": "Final psiRing calls use universalPrime_mul_injective, the explicit Function.Injective form of existing regularity. The historical replacement list records the preparation step."
+}

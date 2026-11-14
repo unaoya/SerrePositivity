@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.DiscreteCore（仮。原典 Cor 8.14 前半の芯）
--- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3・§5（配置、W9-II-24）、単位 A7-2。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3・§5（配置、W9-II-24）、単位 A7-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
@@ -18,7 +18,7 @@ W9-II-24 で A7/UniversalProperty.lean から切り出した。A5-2（semiperfec
 入力を A4・導来 Nakayama・完全 prism の商だけに限り、Prop 8.5・Cor 8.14 後半に依存しない独立ファイルにする。所有単位は A7-2 のまま。
 
 ## 規約
-S は導来 p 完備な R 代数（離散版。animated 版は `perfectoidizationAnimated` の制限で同じ主張）。`IsDiscrete`（EInfinity/Perfectoidization/Comparison）。
+S は導来 p 完備な R 代数（離散版。animated 版は `perfectoidizationAnimated` の制限で同じ主張）。`IsTheoryDiscrete`（EInfinity/Perfectoidization/TheoryInterface）。
 
 ## 使われ方
 A5-2 `perfectoidization_discrete_of_semiperfectoid`・`perfectoidization_isIntegralPerfectoid_of_semiperfectoid`、A7-2 `perfectoidization_isPerfectoidization_of_discrete`。
@@ -44,7 +44,7 @@ variable (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (Mod
 
 /-- 概要：S_perfd が離散なら Δ_{S/A,perf} も離散（d 進 Nakayama：d 完備で mod d が離散）。
 方針：DerivedGeneral/Truncation。
-規約：`IsDiscrete`。
+規約：`IsTheoryDiscrete`。
 使われ方：芯。 -/
 theorem prismaticPerfection_discrete_of_perfectoidization_discrete (h : IsTheoryDiscrete (E := E) R (perfectoidization (E := E) p R hR S hS)) :
     IsTheoryDiscrete (E := E) (perfectPrismRing p R) (prismaticPerfection (E := E) p R hR S hS) := by

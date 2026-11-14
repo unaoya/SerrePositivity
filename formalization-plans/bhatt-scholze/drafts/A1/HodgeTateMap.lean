@@ -1,13 +1,13 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.HodgeTateMap（仮。原典 §4.2 Construction 4.9・Lemma 4.10・Thm 4.11）
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCompletedMap
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative
-import all SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCompletedMap
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateOneDerivative
+import all SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateOneDerivative
 
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateBocksteinSquare
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineForms
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateBocksteinSquare
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineForms
 
 -- 本ファイルは drafts/A2/DerivedPrismaticCohomology.lean（Poly 上の RΓ まで）、drafts/A0/CechAlexander.lean（C^•、`cechAlexanderAffine`）、drafts/Shared/{CosimplicialCupProduct,DeRhamPolynomial}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う。
 
@@ -35,6 +35,8 @@ noncomputable section
 universe u
 open CategoryTheory SSet
 open scoped Simplicial
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
@@ -75,17 +77,17 @@ theorem betaSquareZero_of_line (_h₂ : Subsingleton (hodgeTateCohomology' P hP 
 規約：A0 の Lemma 4.20 の仮定を外した形。
 使われ方：Construction 7.6 の底変換（A2）。 -/
 abbrev polynomialDelta (P : OrientedPrism p A) (hP : IsBoundedPrism P) (r : ℕ) :=
-  (prismCompleteInclusion P).app _ (prismaticCohomologyCAlg P hP r)
+  (prismCompleteInclusion (E := E) P).app _ (prismaticCohomologyCAlg (E := E) P hP r)
 
 /-- 同じ変数を送る A0 の項ごとの射による Tot の比較。係数を先に延長してから P′ で完備化する。 -/
 def polynomialChangeEdge {A' : Type u} [CommRing A'] (P' : OrientedPrism p A') (hP' : IsBoundedPrism P')
     (f : OrientedPrism.Hom P P') :
-    SSet.Edge ((cAlgBaseChange f.toRingHom ≫ prismCompletion P').app _ (polynomialDelta P hP r))
-      (prismaticCohomologyCAlg P' hP' r) := by
+    SSet.Edge ((cAlgBaseChange (E := E) f.toRingHom ≫ prismCompletion (E := E) P').app _ (polynomialDelta (E := E) P hP r))
+      (prismaticCohomologyCAlg (E := E) P' hP' r) := by
   sorry -- cechAlexanderAffine_baseChange の標準脚に沿う Tot 射を係数拡大と完備反射の随伴で移す
 
 def PrismaticCohomologyBaseChangeStatement {A' : Type u} [CommRing A']
     (P' : OrientedPrism p A') (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P') : Prop :=
-  IsIso (HomotopyCategory.homMk (polynomialChangeEdge P hP r P' hP' f))
+  IsIso (HomotopyCategory.homMk (polynomialChangeEdge (E := E) P hP r P' hP' f))
 
 end SerrePositivity.BhattScholze.Prismatic

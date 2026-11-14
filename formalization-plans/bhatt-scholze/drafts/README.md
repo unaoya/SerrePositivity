@@ -1,7 +1,9 @@
-# drafts：BS の設計段階の Lean の骨組み（ビルドしない）
+# drafts：BS の設計段階の Lean の骨組み
 
-概要：E3 を消す道筋（stage2 の A 案）の設計段階で書く Lean の骨組み。主張の型と `sorry` の証明だけで、**ビルド・`lake env lean`・監査を
-一切行わない**（coordination.md §1 の BS の行、2026-11-02）。`SerrePositivity/` の外にあるので root からも監査からも届かない。
+概要：E3 を消す道筋の設計段階の Lean の骨組み。未証明の数学は `sorry` として残る。
+**5∞-0 の指示（main efa846fe8）により、今回変更した drafts は本体とdraft間の依存を解決した一時配置で型検査する。**
+従来の一律の「ビルドしない」はこの検査について読み替える。root・本体の監査の到達範囲には追加しない。
+保護された `Shared/EInfinityPowerOperation.lean` と A4 の P⁰ の部分は、§5の例外により import と改名済みの参照だけを追従する。主張・証明・型は保持する。
 方針：各ファイルは、将来置かれる場所のモジュール名を先頭のコメントに書く（例：`SerrePositivity.InfinityCategories.Sheaves.SheafCondition`）。
 import 行は現時点の main の名前で書く（基準コミットは下の表）。論文の層の整理（2a・2b）や ∞ の束で名前が変わったら、調整役から回る
 旧→新の対応表で直す（`scripts/move_module.py` が自動で直すこともある）。
@@ -10,7 +12,47 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 使われ方：中身を書く段階（暦に載せてから）で、該当するファイルを `SerrePositivity/` の下の決まった場所へ移し、単体の `lake build` で確かめる。
 設計書は [infinity-sheaves-design.md](../infinity-sheaves-design.md)・[a0-design.md](../a0-design.md)。
 
-| ディレクトリ | 将来の置き場所（調整役の決定、main d9254e8b0） | 設計書の単位 |
+## 5∞-0 の検査と本体への依存
+
+基準は main `efa846fe8`。本体へ寄せた宣言・型の補足・個別の検査結果は
+[報告](../../stage-ii/report-bulk-w1.md)と[全件台帳](../../stage-ii/bulk-5inf0/declaration-disposition-audit.json)に残す。
+`PASS` は元の Lake 設定を引き継いだ型検査の成功を表し、残る `sorry` の証明を表さない。
+
+5∞-0 の最終状態は57／57本が有効なPASS。ソース・依存・成果物の照合は
+[最終台帳](../../stage-ii/bulk-5inf0/draft-final-validation.json)、範囲と保護対象の確認は
+[完了記録](../../stage-ii/bulk-5inf0/completion.json)を参照。
+
+- `Poly` は本体の `Prismatic.Poly`、Tor 振幅は `HasCochainCompleteTorAmplitude` を使う。
+- prism の圏・本質的小ささ・完全 prism の site・有界 p 冪ねじれ・semiperfectoid・一般の連結性の述語は、本体の7モジュールを使う。
+- 同じ構成を持つ `CosimplicialAlgebra`・Čechデータ・de Rham のコホモロジー積も本体を直接使う。
+- `EInfinityTheory` は、そのデータを使う定義へ同じ引数を転送する。古典的な宣言へ一律には足さない。
+- `universalLciPrism P₀ h₀ r` の `h₀` は、sorry のため型から落ちていた有界性の section 変数を戻したもの（調整役承認）。環・δ構造・生成元は同じ。
+
+依存の順序は[一時配置の表](../../stage-ii/bulk-5inf0/draft-staging-plan.json)を使う。
+次は repository root からの個別検査の例。共有鍵は検査の間だけ取り、昼は280秒以内の束にする。
+
+```sh
+mkdir -p /tmp/bs-draft-check
+lake --no-build setup-file SerrePositivity/CommutativeAlgebra/Perfectoid/Defs.lean \
+  > /tmp/bs-draft-check/lake-setup.json
+zsh scripts/refactor/with_build_lock.sh --wait 3600 --class bulk -- \
+  gtimeout --kill-after=3s 280 python3 formalization-plans/stage-ii/bulk-5inf0/check_draft.py \
+  --root . --state /tmp/bs-draft-check --setup /tmp/bs-draft-check/lake-setup.json \
+  A2/AnimatedAlgebra
+```
+
+ほかのファイルでは表の依存先を先に検査し、対象の後ろにその名前を並べる。
+検査器はソース・依存・oleanの署名を照合し、古い成功を使い回さない。
+import の改名は KL-W1・B3 の module-map、宣言名は所有元つき namespace-rewrite-map に従う。
+`import all` も含めて処理し、モジュールのパスから名前空間を推測しない。
+本体の配置と層は `scripts/refactor/layers.json` に従い、以下の旧パスを現在の移動先として使わない。
+
+## 当初の置き場所の記録
+
+次の表と末尾の細かい順序は、11-03〜11-13の設計の履歴。
+取り込む段階では、本体の現在の節・主題別配置と調整役の指示に照合する。
+
+| ディレクトリ | 当初の見通し（main d9254e8b0 からの履歴） | 設計書の単位 |
 | --- | --- | --- |
 | `Sheaves/` | `SerrePositivity/InfinityCategories/Sheaves/`（層の順序 StablePresentable < Sheaves < ModelBridge。最初のファイルで `scripts/refactor/layers.json` に登録） | S1〜S6 |
 | `DerivedSheaves/` | `SerrePositivity/InfinityCategories/Derived/Sheaves/` | S7（D(A) への適用） |
@@ -27,7 +69,7 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 | ~~`A6/PerfectoidFiniteProduct`~~ | **本体に入った（11-04、BS-W10 作業 A、main cc67ea88e）**：`SerrePositivity/BhattScholze/Perfectoid/FiniteProduct.lean`。drafts からは削除 | G-A6-12 |
 | `A8/` | A8-1・A8-2 は `SerrePositivity/BhattScholze/Almost/`（既存の almost の隣）、A8-4 は `Perfectoidization/Derived/`（調整役了承、main 26f9f7fc5）。A8-3（Lemma 10.12）は `CommutativeAlgebra/UniversalHomeomorphism/`（普遍同相の一般論）と `CommutativeAlgebra/EtaleStratification/`（層別の本体）に、2a の後に新規ファイルだけで入れる（論文の層へ名前を予約）。独立した Codex の単位、担当は 2a の後。それまで drafts/A8/ のまま。**11-13 追記**：A8-3 は BS-W10 作業 B で本体に入り（main 4019014a1）、drafts/A8/Stratification は削除。BS-W13（main 1d9eb11ee・1c36c06c3）で A8-1 の Prop 10.4 複体版・Lemma 10.5 などは `BhattScholze/Almost/`（AlmostConnectivity・AlmostTensor・AlmostTensorForward・AlmostGenerators・CompletedModuleTensor・FiniteEtaleComparison）、A8-4 の部品は `Perfectoidization/Derived/`（IntegralClosureCompletion・PerfectoidFilteredColimit・IntegralApproximation・IntegralClosureApproximation）に入った。drafts/A8 に残るのは AlmostConnectivity（底変換での反映など）・AlmostPurityConnectivity・IntegralDiscreteness と、接続の型の W13AssemblyInputs | A8-1〜A8-4 |
 | `A9/` | `SerrePositivity/BhattScholze/Perfectoidization/Derived/`（組み立て）と Inputs/PerfectoidizationInterface.lean の証明の置き換え（中身の段階、暦に載せてから） | A9-1 |
-| `Sheaves/SetSections` | `SerrePositivity/InfinityCategories/Sheaves/SetSections`。S4・S8 共通の BS 側ラッパーと比較：指定錐版の切断、表現可能重み、篩の添字圏、`restrictionCone` との接続。F2 の一般 API の配置は変更しない。証明本文は未ビルド | S4・S8 |
+| `Sheaves/SetSections` | `SerrePositivity/InfinityCategories/Sheaves/SetSections`。S4・S8 共通の BS 側ラッパーと比較：指定錐版の切断、表現可能重み、篩の添字圏、`restrictionCone` との接続。F2 の一般 API の配置は変更しない。既存の未証明部分を保ち、一時配置で型検査する（5∞-0） | S4・S8 |
 | `Sheaves/SheafGenerators` | `SerrePositivity/InfinityCategories/Sheaves/Sheafification`（S4、M12a、BS）。11-05 新設：篩の元の圏と制限図式、Γ(h_U, F) → Γ(S, F) と `restrictionCone` の接続、検出族と生成辺 S ⊗ M → h_U ⊗ M、層化の存在（GlobalSections・SpaceValued から移した）。G8 の自然な別版（IF-G2）待ち | S4 |
 | `Sheaves/SpaceValued` | S8（調整役の決定、main 7b8b96286、infinity-foundation-plan.md の M12e）：(1) 空間の層化・(5) 局所性・(6) 元の圏上の極限は `InfinityCategories/Sheaves/SpaceValued/`、(2) 離散の層化＝1 圏・(3) 単射に沿う押し出しは `Sheaves/Discrete/`、(4) の一般部分（HTT 5.1.5.6 の極限保存延長、el(F) 上の極限）は M12b と同じ `F2/`。前提に G13（𝒮 の presentable 性）と S4 の非安定版。時期・担当は M12 と同じ。それまで drafts/Sheaves/ のまま | S8 |
 | `Shared/Descendable` | `SerrePositivity/EInfinity/Descendable/`（新設。CAlg と D(A) の両方を使う。調整役の決定、main 86acd98db、infinity-foundation-plan.md の M15）。E∞ を使わない thick ⊗-ideal・index・安定性の部分は Derived/ へ下ろしてよい。時期・担当は M14 と同じ（段 G、A5 の中身を書く段階）。それまで drafts/Shared/ のまま | G-A5-1 |
@@ -37,6 +79,7 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 
 | 基準コミット | 日付 | 内容 |
 | --- | --- | --- |
+| efa846fe8 | 2026-11-14 | 5∞-0 の基準。本体の宣言を使う形に整理し、Lake の設定を引き継いだ一時配置で型検査する |
 | 972bb7f53 | 2026-11-02 | 最初の骨組み（S1・S2）。InfinityCategories の名前はこの時点の main |
 | cc67ea88e | 2026-11-04 | BS-W10 作業 A：CompletedTensor から E3 依存を外し、有限直積を `BhattScholze/Perfectoid/FiniteProduct`（E3 非依存の直接証明、sorry なし）へ。drafts/A6/PerfectoidFiniteProduct を削除。drafts 111 起点から E3 に到達しない |
 | b2ef94226 | 2026-11-07 | A0 の区分 D（2b が main に入った後）：A0/FlatDescent（Lemma 3.7(2)(3)、Cor 3.12）・A0/BaseChange（Tor 振幅、Lemma 4.22、Lemma 4.20 の多項式代数の場合）を新設。HA/DerivedCompletion は 2b 後の main の名前 |
@@ -44,9 +87,9 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 
 ## ファイル順序（W9-III-08・09、2026-11-03）
 
-**E3 非依存の規則**：drafts と、それらが import する本体のモジュールから `Inputs/PerfectoidizationInterface` へ到達してはならない（Inputs の証明を Assembly に置き換えると循環する）。
-現行の本体では `Perfectoidization/CompletedTensor` → `Derived/IntegralExistence` → `Inputs` の経路があり（有限直積 `isIntegralPerfectoid_finPi` が E3 を使う）、
-A6/ArcSite・A6/ArcSheafProperty・A8/AlmostConnectivity（Lemma103 経由）がこれに当たる。2a 後に Fontaine の芯を E3 非依存のモジュールへ切り出す（a9-design §7、調整役へ依頼）。
+**E3 非依存の規則**：本体に移す際、drafts とその import 閉包から E3 の選択済みの証明へ戻る経路を作らない。
+5∞-0では57本とその一時配置の依存を静的に辿り、現在の `Inputs/Perfectoidization` と旧 `Inputs/PerfectoidizationInterface` への経路は0件だった
+（[検査の対象と結果](../../stage-ii/bulk-5inf0/current-e3-import-reachability.json)）。11-03時点の CompletedTensor などを通る経路の記述は履歴であり、現在の到達性の結果として使わない。
 
 **drafts 内の順序**（→ は「先に置く」。同じ A 番号でも定義を先行ファイルへ、後段の定理を後に）：
 0. ~~A6/PerfectoidFiniteProduct~~（本体 `BhattScholze/Perfectoid/FiniteProduct` に入った、11-04）

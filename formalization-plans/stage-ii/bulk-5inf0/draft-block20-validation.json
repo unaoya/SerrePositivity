@@ -1,0 +1,80 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "Shared/CosimplicialEInfinity",
+      "exit_code": 1,
+      "seconds": 30.016045792028308
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/Shared/CosimplicialEInfinity.lean",
+      "source_sha256": "7d9c08b726080fb1107e649549aa98f8ef5046f504b7e70f8e6ca177269e4c57",
+      "staged_source_sha256": "9c333427b2180babc24f60d37dc707f2731edfbd1db3b6ae48053870e9ac577e",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "Shared/CosimplicialCupProduct",
+          "source_sha256": "d16551507c9dafbb668eea69074458428dc4574267c32580eb4878d6c0a12faa",
+          "olean_sha256": "313f621c0f4f44bcc08496221d360ea190d93b390ead45ac6b3acfa885a577c6"
+        },
+        {
+          "draft": "Sheaves/CechConerveLimit",
+          "source_sha256": "55ede5dd931d4e954a5b657bad09af6c7d2e983ec4c419c74a5c14f702c60509",
+          "olean_sha256": "4c72a6c2c396f4f19ae4ac7617499b46c7d38150c21165cb257279783560df2a"
+        },
+        {
+          "draft": "Sheaves/CAlgValued",
+          "source_sha256": "735d4e8ff3cc059e1aa22446302a746b9df103cfd73b69b55c5ec9888651e717",
+          "olean_sha256": "bb0a21b1ba0ef9eb551a56509edd3e4c08ec956bcee7a50e26aa658ff82b263b"
+        },
+        {
+          "draft": "DerivedGeneral/ScalarRestriction",
+          "source_sha256": "b73e28284b96f5f1e7dca109e6b8d13459f463fbbc0fe168e86d717ac2f5bf9e",
+          "olean_sha256": "c5baf0469af06a9ae9890caa992c270fa7aaa11704ac079198f0d1c1e36b8256"
+        }
+      ],
+      "extra_public_imports": [
+        "Shared/CosimplicialCupProduct",
+        "Sheaves/CechConerveLimit",
+        "Sheaves/CAlgValued",
+        "DerivedGeneral/ScalarRestriction"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Shared/CosimplicialEInfinity.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Shared/CosimplicialEInfinity.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 26.59844833239913,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block20-Shared-CosimplicialEInfinity.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}
