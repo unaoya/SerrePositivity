@@ -1146,3 +1146,10 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 一覧：済み 11／全体 14（うち追加 0）。[第65束](bulk-5inf0/draft-block65-validation.json)でPerfectSiteComparison（約44秒）・ArcSite（約22秒）・AfterComparison（約23秒）が成功。有効な成功は49／57本。既存の完全性から有界性を渡すこと、animated関手の実際の依存、Sheaves側のČechデータへの修飾が通った。この3本の検査済みソースをコミットする。
 
 InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際に持つhRを同じ変数から転送する1箇所。後者はPrismaticのAnimatedAlgebra・polyYonedaの所有元と、通常のHomotopyCategory.homMkのAPIを直接使うようにする。selfTensorの後続のエラーはその未定義の脚の連鎖なので、先に脚を検査する。第66束へ並んだ。
+
+
+### 5∞-0 のdraft検査・第66束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第66束](bulk-5inf0/draft-block66-validation.json)でInterfaceLimitCone・UniversalPropertyが成功。有効な成功は51／57本。hRの転送と通常のホモトピー圏の脚の表示、Prismaticのanimated代数の参照が通った。検査済みソースをコミットする。改名した参照の所有モジュールの到達漏れも再確認して0。依存グラフは12,940頂点、旧E3入力への経路0だった。
+
+次のArcSheafPropertyは失敗。AsSmallから元の圏へ戻る同じ関手のnerveは、射の宇宙が違うので既存のresizedNerveMapで読む。完備化H⁰の環構造は既存のprincipalCompletionCommRingを明示する。商への射は同じf.right.homをIdeal.quotientMapへ正しい順序で渡す。二成分の関数は同じBoolによる場合分けをfunの構文で明示し、層化・大域切断の名前はSheavesの所有元に揃える。新しい数学的入力やsorryは追加せず、第67束で検査する。
