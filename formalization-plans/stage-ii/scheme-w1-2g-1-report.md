@@ -2503,3 +2503,16 @@ G1・G2共用部品込み本体14,412行、入口込み14,655行。現在の区�
 G1・G2共用部品込み本体14,499行、入口込み14,743行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B04：有限表示模型の共同後段と平行射の一致
+
+`FinitePresentationModelCocones`（51行）：`finitePresentationModelCategory_cocone_objs` は二つの実際の有限表示模型を、tensor 積による共通の有限表示模型へ送る。有限加群性を要求しない。
+
+`FinitePresentationModelCoequalizer`（60行）：`exists_finitePresentation_coequalizing_quotient` は有限型な源からの平行射が元の代数で一致するとき、有限個の代数生成元の差のイデアルによる有限表示な商模型で両射を一致させる。実際の全射な商写像、元の代数への射と可換式を返す。有限加群生成元で代用しない。
+
+本体111行・入口2行。両単独検証、ソース完全一致、二対象と直接 importer AlgebraicGeometry のビルド5,034ジョブ、小監査3宣言（2・1）・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-finite-presentation-model-cocones-check.log`・`2g-finite-presentation-model-coequalizer-check.log`・`2g-finite-presentation-model-cocones-native.log`・`2g-finite-presentation-model-cocones-audit.log`。
+
+G1・G2共用部品込み本体14,610行、入口込み14,856行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

@@ -1561,3 +1561,7 @@ public import SerrePositivity.AlgebraicGeometry.AffineVCoverTensorModel
 public import SerrePositivity.AlgebraicGeometry.PrimeFieldAffineVCoverCoefficientModel
 
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelCategory
+
+public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelCocones
+
+public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelCoequalizer
