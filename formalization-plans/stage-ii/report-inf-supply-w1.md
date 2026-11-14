@@ -6206,3 +6206,90 @@ end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
 その単位と元の γ との両立を依然示す必要がある。
 この点検だけで方向2を不可能と結論していないし、独立の普遍性証明を
 実装・検証したともしていない。未証明の両立式や hunit を E01 の仮定には追加しない。
+
+
+## 60. E01 の保留と独立項目への移行（11-14 夕、調整役指示）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+最後の試行 `functorHomBifunctorUnit_component` は58行で kernel deterministic timeout、
+終了コード1。ログ `/tmp/is-w1/unit-component-values/build.log`。プロセス終了・鍵解放済み。
+E01 の直接比較と一意性経路はここで保留し、計算上限を上げない。
+
+### 60.1 現行計画の依存表
+
+○＝E01なしで進める、△＝一部の構成のみ独立、×＝現行証明で間接依存。
+数学的に他の証明が不可能だという意味ではない。
+
+| ID | E01依存 | 先に進められる範囲／依存先 |
+| --- | --- | --- |
+| E01 | 保留 | 指定単位の直接比較を再試行しない |
+| E02 | × | 指定単位の Kan 普遍性を E01 から移す計画 |
+| E03 | × | E02 の全写像空間同値を使用 |
+| E04 | × | E03 の同じ比較を全族で照合 |
+| E05 | × | E03・E04 から元の射の同値性 |
+| E06 | △ | 射の定義・評価則は独立。同値性は E05 |
+| RR01 | ○ | 実 frame の評価から coherent end への射 |
+| RR02 | ○ | RR01、Reedy 充填と各値の比較 |
+| RR03 | ○ | RR01・RR02 と同じ right frame への移送 |
+| RR04 | ○ | RR03 と E06 の射の定義。E06 の同値性は不要 |
+| RR05 | × | E06 の同値性と RR03・RR04 |
+| R2d | × | RR05 の元の span の右脚の同値性 |
+| R2e | × | R2d から実評価の充満忠実性 |
+
+E06 の射を新規 `FunctorPinchedEndMap` で先に固定し、評価則を置く。
+これは §44 の E06 の構成部分であり、項目全体の完了数は増やさない。
+RR01 以降の比較もこの同じ射を使い、後から別の弱同値へ取り替えない。
+その後 RR01 → RR02 → RR03 → RR04 の順に進む。
+
+### 60.2 最初の独立な型（未検証）
+
+```lean
+def functorPinchedEndMap {A C : SSet.{u}} [Quasicategory C] (F G : A ⟶ C) :
+    pinchedHom (functorVertex F) (functorVertex G) ⟶
+      simplicialSections (functorEndProjection F G) :=
+  (pinchedHomLeftRightEquivalence (functorVertex F) (functorVertex G)).symm.hom ≫
+    twistedArrowIdentityHomTransport (functorVertex F) (functorVertex G) ≫
+      twistedFunctorHomToEndSections F G
+
+/-- 元の end 比較による切断の評価式を、同じ pinched 比較の全族へ制限する。 -/
+lemma functorPinchedEndMap_evaluation {A C : SSet.{u}} [Quasicategory C]
+    (F G : A ⟶ C) :
+    (TwistedArrow A ◁ functorPinchedEndMap F G) ≫
+      simplicialSectionsEvaluation (functorEndProjection F G) =
+    (TwistedArrow A ◁ ((pinchedHomLeftRightEquivalence
+      (functorVertex F) (functorVertex G)).symm.hom ≫
+        twistedArrowIdentityHomTransport (functorVertex F) (functorVertex G))) ≫
+      twistedFunctorHomEndEvaluation F G := by
+  simp only [functorPinchedEndMap, whiskerLeft_comp, Category.assoc,
+    twistedFunctorHomToEndSections_evaluation]
+
+```
+
+
+### 60.3 E06 の射の構成部分の検証
+
+一覧：済み 0／全体 13（うち追加 11）
+
+対象ビルド成功（5,422 jobs）、1モジュール6宣言の小監査成功、標準三公理のみ。
+ログ `/tmp/is-w1/pinched-end-map/`。新規 49 行。
+E01 に依存する新規 import はない。E06 の同値性は未了で、一覧の済み数は増やさない。
+RR01 の実 frame からの比較の入口を引き続き調べる。
+既存 `StrictDiagramPointFrameEndIso` の源は指定 source frame の全自然変換。
+`modelBifibrantSourceFramePinchedMap` は要素圏の nerve と bifibrant な両端点を入力に取るため、
+この射をそのまま RR01 と同じ型と見なさない。元の frame・端点・全族の移送を明示する必要がある。
+
+### 60.4 別経路の紙の調査（候補、未実装）
+
+Kerodon [Tag 03KC](https://kerodon.net/tag/03KC) を確認した。
+これは現在は retired subsection で、内容の大部分は Corollary 8.2.1.10 へ移ったとの注記がある。
+同節の Lemma 11.9.5.6 の筋は、twisted arrow 上の相対関手圏の Hom を、
+単体への制限と Kan fibration の塔で調べるものである。
+これは end 表示の指定比較そのものの定理ではなく、直接使えると断定しない。
+
+候補は、元の `twistedFunctorHomToEndSections F G` を局所化して、
+単体の上での比較と境界制限の相対充填から、同じ比較の全空間の同値性を得る経路。
+既存 `FiniteSubcomplexEndComparison` の制限図式・錐は再利用候補。
+まだ単体での全パラメーターの比較、境界制限の充填、極限での弱同値保存との接続が未確認。
+この経路で E05 が得られても、E01 の元の選んだ比較の可逆性への逆接続は別に必要であり、
+E01 の型を別の end 定理へ取り替えない。新しい独立の数学が必要なら実装前に報告する。
