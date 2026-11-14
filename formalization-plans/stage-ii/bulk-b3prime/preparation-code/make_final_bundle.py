@@ -29,6 +29,22 @@ for row in json.loads((W/'r82-consumers.json').read_text()):
 # The two §10 consumers need only the extracted elementary reduced-ring lemma.
 for m in ['SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison','SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion']:
  dest=modulemap.get(m,m);text=files[dest];old='public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit';assert text.count(old)==1,dest;files[dest]=text.replace(old,'public import SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator\npublic import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion'+('\npublic import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons' if m.endswith('.IntegralClosureCompletion') else ''))
+# Removing a broad derived interface also removes an accidental Mathlib
+# transitive import needed by this downstream valuation proof. Use its actual
+# original native defining module, not a replacement construction.
+m='SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension';line='public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure\n';assert line not in files[m];files[m]=files[m].replace('module\n','module\n'+line,1)
+# R7-3(b): use the actual already-extracted generic owners rather than the
+# Andre aggregate that happened to re-export them. Mathematical terms unchanged.
+for oldmod,replacements in {
+ 'SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidue':{'SerrePositivity.BhattScholze.Andre.Transfinite.Colimit':['SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition','SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlatPrincipalCompletion']},
+ 'SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidueFaithful':{'SerrePositivity.BhattScholze.Andre.Transfinite.Colimit':['SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition','SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlatPrincipalCompletion']},
+ 'SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase':{'SerrePositivity.BhattScholze.Andre.Transfinite.Colimit':['SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons']},
+ 'SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeRegular':{'SerrePositivity.BhattScholze.Andre.Envelope.RootSource':['SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0']}
+}.items():
+ m=modulemap.get(oldmod,oldmod);text=files[m]
+ for old,targets in replacements.items():
+  line='public import '+old;assert text.count(line)==1,(m,old);text=text.replace(line,'\n'.join('public import '+n for n in targets))
+ files[m]=text
 # BS-specific specializations belong in the BS aggregate, preserving all declaration names.
 einf='SerrePositivity.EInfinity';bs='SerrePositivity.BhattScholze';bs_special=[r['new_module'] for r in json.loads((D/'module-map.proposed.json').read_text())['rows'] if r['old_module'].startswith('SerrePositivity.EInfinity.Perfectoidization.')];removed=[]
 for n in bs_special:
@@ -42,6 +58,12 @@ audit.append({'kind':'BS-specific aggregate relocation','modules':bs_special,'re
 for row in json.loads((D/'stage0-import-closure.json').read_text())['publication_targets']:
  n=modulemap.get(row['module'],row['module']);line='public import '+n+'\n'
  if line not in files[bs]:files[bs]+='\n'+line
+# Comment-only approved scope outside the semantic reverse closure still needs
+# native before/after evidence and target builds. Do not invent semantic edits.
+for m in json.loads((W/'additional-doc-modules.json').read_text()):
+ assert m not in files,m
+ text=(R/(m.replace('.','/')+'.lean')).read_text();assert imports(text)==text,('uncollected semantic import edit',m)
+ files[m]=text
 # Preserve actual canonical namespaces of imported types. No new opens inferred from module paths.
 for m,text in files.items():
  p=out/(m.replace('.','/')+'.lean');p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)

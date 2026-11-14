@@ -17,8 +17,11 @@ def run(label,cmd):
  if r.returncode:raise SystemExit(r.returncode)
  return out/(label+'.log')
 for i,modules in enumerate(groups):
- receipt=out/f'{i:03}.json';signature=hashlib.sha256(json.dumps({m:hashlib.sha256((root/(m.replace('.','/')+'.lean')).read_bytes()).hexdigest() for m in modules},sort_keys=True).encode()).hexdigest()
- if receipt.exists():assert json.loads(receipt.read_text())['signature']==signature;continue
+ receipt=out/f'{i:03}.json';signature=hashlib.sha256(json.dumps({'source_modules':{m:hashlib.sha256((root/(m.replace('.','/')+'.lean')).read_bytes()).hexdigest() for m in modules},'side':side,'after_manifest_sha256':hashlib.sha256((W/'final-bundle/manifest.json').read_bytes()).hexdigest() if side=='after' else None,'plan_sha256':hashlib.sha256((W/'citation-baseline-plan.json').read_bytes()).hexdigest()},sort_keys=True).encode()).hexdigest()
+ if receipt.exists():
+  previous=json.loads(receipt.read_text())
+  if previous['signature']==signature:continue
+  receipt.rename(receipt.with_name(receipt.stem+'.stale-'+previous['signature'][:12]+'.json'))
  run(f'{i:03}-build',['lake','build',*modules]);probe=out/f'Probe{i:03}.lean';probe.write_text('import SerrePositivity.Util.Citation\n'+'\n'.join('import '+m for m in modules)+'\n'+'\n'.join('#cite_tags '+key for key in plan['keys'])+'\n');t=time.monotonic();log=run(f'{i:03}-query',[str(lean),'--json',str(probe)]);records=[]
  for line in log.read_text().splitlines():
   try:diagnostic=json.loads(line);record=json.loads(diagnostic['data'])

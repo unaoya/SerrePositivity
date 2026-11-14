@@ -1364,3 +1364,14 @@ R8-8の[draftsの行き先欄](bulk-b3prime/draft-header-plan.json)は現基準�
 現main 391b2a0d2までの[差分の文字列走査](bulk-b3prime/main-increment-impact.json)はコード273パス・今回の旧名/旧モジュール名への該当2ファイル（EInfinity集約、BS正式監査）・98箇所。BS本体の差分0。実適用直前に再確認し、EInfinity集約の新しいimportを残して追従する。[追加40本の層の案](bulk-b3prime/main-increment-tiers.json)はPortable4・Comparison2・Consumers34、未決定0・既存の層/例外変更0、検出は同じ逆順46件のみ。これはまだ枝にmainを取り込んだ結果ではなく、適用準備である。
 
 [最新のプレビューimportグラフ](bulk-b3prime/full-preview-import-graph.json)は、通常の本体31,768→31,774モジュール、欠落0・循環0・EInfinity→BSの直接/間接依存0・公開6本のroot到達を確認。元の全本体のgraphに実ソースの束を重ね、変更外のファイルがないことをgitの差とソースSHAで検査している。Archiveは層検査と同じく対象外。カーネルの全行の所有元表は[圧縮版](bulk-b3prime/before-kernel-disposition.json.gz)にした（比較内容は省略していない）。
+
+
+### B3′ 準備・文書の対象追加と八辺の扱い（11-15未明）
+
+一覧：済み 2／全体 22（うち追加 0）。移動・改名の依存閉包の外にも、承認範囲のコメント訂正が[9モジュール](bulk-b3prime/additional-doc-modules.json)あった。追加の元環境snapshotを共有鍵で採取し、全体を206モジュール・18,384カーネル行へ拡張（公開ソース名の欠落0）。参照採取176本は変更していない。これらも対象ビルドと同じ厳格なv3bへ含める。文書を含むソース束は216モジュール、importだけの四本を除く対象ビルドは212本。現在のソース版で40本が成功し、残りを検査中。別のソース版の成功と混ぜずhashで区別する。[状態とソースhash](bulk-b3prime/preparation-status-2026-11-15.json)。
+
+R7-3(b)の[八辺の台帳](bulk-b3prime/r7-3b-edge-ledger.json)は、基準で解消済み2、今回の解消予定5、維持1。完全平坦性・主元完備化の三本はB3ですでに一般の場所にある所有元へimportを付け替え、LciEnvelopeRegularは切り出したIteratedPDH0へ付け替える。LciEnvelopePresentationは、実際に使うdeltaAdjoinDivisionResidue_moduleFaithfullyFlatとNormalizedの構成がAndré側の根添加にも依存するため、この辺を残す。DivisionResidue全体のDeltaへの移動は取り下げ、独立した12宣言だけを抽出する。維持した辺を解消済みと数えない。
+
+環の界面の大きいimportを外した後、下流ArcValuationExtensionが推移的に得ていたAlgebraicClosureを失うことも対象ビルドで検出した。元の採取はMathlib.FieldTheory.IsAlgClosed.AlgebraicClosureのAlgebraicClosureを示すので、その実際の定義元を明示する。証明・型の変更はしない。
+
+今回の文書束は252コメントを訂正し、コメント以外のバイト列を保持した。分割されたファイルのmodule docstringと、他の分割先の節見出しが文脈に付いて残る箇所も、該当する部分の説明へ整理した。CompletedTensorには§8と§10で共有する芯を明記した。引用属性の理由文字列は変更していない。現ソースの正式なPython層検査は基準46・プレビュー46・新規0、通常の本体のimport欠落0・循環0・EInfinity→BS直接/間接0。実際の枝への適用と凍結の通知はまだ行っていない。

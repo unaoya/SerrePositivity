@@ -1,0 +1,762 @@
+{
+  "status": "isolated preview only; target builds pending, no preservation/citation/root/audit/verify completion claim",
+  "time_jst": "2026-11-15T00:44:51.579009+09:00",
+  "baseline": "32d364b53",
+  "source_manifest": {
+    "status": "generated complete source bundle only; not applied or validated",
+    "baseline": "32d364b53",
+    "files": {
+      "SerrePositivity": "3bcfee818e8b13be99e52d50bcdfefc6c288925dc9af44171114c4569990558d",
+      "SerrePositivity.BhattScholze": "4ff2743c18b3546f175b59e154098491992aade87bc0e2e9ce9564df1f93a3fc",
+      "SerrePositivity.BhattScholze.Almost.AlmostConnectivity": "53caf8f4f8929e08b726a46e019f1ed0625927b2004bdcc94a03f72f2cdf4684",
+      "SerrePositivity.BhattScholze.Almost.AlmostGenerators": "36ee1bfe34ee1242b88b6a4a9d2b6043b6293c0ec8c3d00d6a55709d5e350b22",
+      "SerrePositivity.BhattScholze.Almost.AlmostTensor": "c6ae2794ccf373cbe1cfcc55913faa73a1c8d377d25a43933c0fa3946fd6142c",
+      "SerrePositivity.BhattScholze.Almost.AlmostTensorForward": "fde6f8e3e29959e0640c37e0f3bca3840d5b7815b1cba03467cb90deb52f7d44",
+      "SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison": "88bc53d2f805a001beca4a77897cf21294e4cfe2b24bb7e6e72d9579af2323c4",
+      "SerrePositivity.BhattScholze.Almost.Lemma103": "a17fd626745b6cea06252a9bcdf365dc6078c8099ec79b5317c647bc25f5fdb8",
+      "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost": "492fcaa3b7fa48efc4303a339fd1c29204b9c6226feaf60388695e05c454d0ea",
+      "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient": "4c0a0c853c6ada572fc90edbb01148f3f75e765a3eac8fcbfd456f6366c2fdaf",
+      "SerrePositivity.BhattScholze.Andre.AndreFlatness": "92eb22146e12dba5f8a25b8578e8918da4a05bc50a9006e0cac0dff20f89b644",
+      "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue": "248484aeb3fc305d5842d5a80a260e0fe56369417e5a0e3531808940ba91731b",
+      "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation": "d501de0233e3dce4e9874005f9ee618509e3f8a673547f24c882434bfef2ca74",
+      "SerrePositivity.BhattScholze.Andre.Envelope.JetKoszul": "7f08d082f424af6c1bf91963ed382cc9b5d17ce03e978936ad1142b984eee390",
+      "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity": "12c5221f8344f6523e2e371fd6246e0a434855d10b53c6d02225e59edaba73ef",
+      "SerrePositivity.BhattScholze.Andre.Envelope.MonicCandidate": "c5c7617f0359a2eb4f20fb2b8c146b332a8bb0fdf0b9ef9ae6bc3ac190ca6b22",
+      "SerrePositivity.BhattScholze.Andre.Envelope.MonicSource": "0b6dce4c6a4391a2d2d7dc3a46e3777daa37823703470329f2a4e0ab7eaaff64",
+      "SerrePositivity.BhattScholze.Andre.Envelope.Normalized": "d832db1893471fa378248dc925aa823f6397248339d43964ca37d76ee1aac4af",
+      "SerrePositivity.BhattScholze.Andre.Envelope.NormalizedStep": "66d9eb838c85bc18171b5d9712a95c1d222a8874a41098fa3db0da15021841b9",
+      "SerrePositivity.BhattScholze.Andre.Envelope.PDivision": "d6dceda2160201a79aa9a182806011e6772e53ab0f50be3d4a4a786ec41d1f27",
+      "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource": "9681642cd850d59fb7a1bfa06a762c4a38a161f626825163690af5fafc3aa7db",
+      "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilyRaw": "9c30506ce4dea17e70c9e13ef014cdbab637c2360137440a8c461e0ec3b79be0",
+      "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource": "82a278532f437e63c6b261d7463671513ae5776128bf6ba86b5dea2b3197d92f",
+      "SerrePositivity.BhattScholze.Andre.Envelope.RootRelation": "932a5e5fac5f434887d5598c506e4a31ff73022db8b290a6c8c509593f23f42a",
+      "SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul": "40ef342376edf766c190ea0da37d86d4b57a929f1d550c81ca37a8078fa96585",
+      "SerrePositivity.BhattScholze.Andre.Envelope.RootSource": "65917d20cd481fc5d9392ffaab0fb2a804954d0617a9bdf1ce708ebbc26296eb",
+      "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation": "435b36e1c6fdcdf2ba4dce834879182e261e41e8875afe350b18b769d68ccf9a",
+      "SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra": "46466233213acb78e7b809d36d61839354e3a785437b7ce75daee8039550a3c6",
+      "SerrePositivity.BhattScholze.Andre.Perfection.PerfectPrismMonic": "c6b17f272d9d49eac8bec41aaf32802122488c050654028e02de0328456c800b",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPD": "8fde054bdb371afe2420a989e449eb5eccd43a250525a222256c956f668c106e",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPrism": "b40df2189d4edd83e45aacac8bbde9ec58a709b6dfa4dbc5c6d1923952aafe95",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivisionResidue": "7a079d2f92d4904580a09509632731e2e55dbfddd46a0320729c9d836e92e97a",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivisionWitt": "fe8e4950faffb121e0ff1af7105a8f6ca6a8deb6cfee2edd93506a5ec718c590",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.FrobeniusPullback": "ed5d830c18abc93598727f96f2fcc7903144ea7bcd8d2605bb20bd7bfa999539",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Initiality": "99a422b7f556c65be49c656fdfe1002e34b567a76f5aef3a4841530899c107ad",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputUniversal": "1088b07883b75e021b7f2468e4155417b9c043fea8e22c86c7e53b67f2979668",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PerfectionFaithful": "0fed2386fade1716d4fd3590747cc7169f57d7dcf8c126ca549c9d02a3f9e6d7",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput": "43b896a2b898ba1e71432bde295faea40e81ea2bddfeba549c8bda368b465055",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial": "f5116070d4fadb8d0bfe32fc0793d85fb115f7f204ab484f4d8d25f2feccbe7b",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalPair": "57c21571535ea5ac28291354c0f8ac21e288b4e57a2ed7dca0938ffad3e5a255",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.FrobeniusPD": "1de9ff4ecde6a0e03d9112062ad655e90c0cfa88e7d57a0bce52cdc6ac2720b7",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Localization": "a717761c46a1c66f77cad1e637ede2024928276ca9b5ec854f63eff1d1ed7061",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.RawRegular": "8941fd1d03e948a39d6867c3f40b3844367b29dee2320ddbbc2d55baa748934b",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue": "c980a59c1378bb15c2eac9af25f5bef7f3091609d8ad7c620ff8d9114760e620",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Source": "02ace330f2f693abb924e71167f574e248da2c04443e3679afd3a294e9f2b54f",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison": "1b157e23e15028b944af90952b6578cdf77db8539dee150a1c69f604db4705af",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiPD": "6988ab88b383e103c78bc7a483b259e8a6f7c6317389b54d01896250763f8525",
+      "SerrePositivity.BhattScholze.Andre.TorDescent": "da1948a41360cf3ea86e58f86660c647c95e1fb7af34f0ca747ce5ff60e90de9",
+      "SerrePositivity.BhattScholze.Andre.Transfinite.Limit": "89fabc2259452b152636127f6885c1442f83e206cc374bc66006bcf7032a0d3c",
+      "SerrePositivity.BhattScholze.Andre.Transfinite.Tower": "5fb722d895fab95e1b1d87c185c8b5e1e833cc2ab0dd55c13429f8d4bb9fc2ae",
+      "SerrePositivity.BhattScholze.Andre.Variants.ArbitraryFamily": "07bc1ada16c0b49785fbd4bda7f03399ea0792ddc2744d35fb631f3365bf50bd",
+      "SerrePositivity.BhattScholze.Andre.Variants.Auxiliary": "b4b48c30515cba0c464680ad7580f874d581a2ec46266163b660f00dec387990",
+      "SerrePositivity.BhattScholze.Andre.Variants.MonicRootedExtension": "40b9553b7cec588e3775bc38c2042df87b6b732792dbc7617e9214ce120e87e7",
+      "SerrePositivity.BhattScholze.Andre.Variants.RootedExtension": "20a1727ae5d5b5521ff830b8dd8c5d1d4fbbec4119bad53568d629f51f00ba21",
+      "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface": "e8c4fb3fd930ec7102e25644e38b6f6d3ebe427b703eac147e88bf7cf65b8e38",
+      "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra": "0d7b271c1439e321a548a5f718baad3d39b62d240f9298c1de829535561dc5dd",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralClosureApproximation": "d9a8ad513002ac011441f1b0ba4d0f7b4f073c2171184f0036d59668bad2f6f4",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit": "ebbb0c2482b20f4b3bcdd6cbf0b3a226998376ce604ad737292a738fa379b310",
+      "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion": "c1fe50ee6c4884fae4e96ad2b7c9dc13474b58ba75d4bf9f79d2a66b44668250",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid": "ae5bc4ba24b95889a092438b6a548b761d0c45ba2d4a5833a0460e0c0cb46c33",
+      "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct": "8c58ec804ed828f4d1601c44b0165426354d480420f4de0061b6e960bda45136",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic": "fa1e851bb2d5d65eadb12bd5478d45740d1d12de63d089bd04a7f140f8d6b3ee",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient": "8308e1fa226a33ba8d8bf1f8b984d7907668a6a65ea25fb21ac06d1acc0c994b",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover": "b6d84967b59012e51fc543e91274e72b3081fba0828d6e57a9043d14a73a44b0",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.Powers": "acddf97120bcd9f79641f9b61529138ae63231cbb1b6346825dbd0b1859d741e",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.Roots": "1a1512f9522aa13264e82e86fa57b03dae3c0461152f96a2b044e9dd03355f8e",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor": "c3d1780d91e110ff836e875e0f4f28f3e6211e52ac6c17e5816b5ac85545f357",
+      "SerrePositivity.BhattScholze.PerfectoidIdeal.TorCriteria": "8b184b2810a5d62e3b9cf743a5b9a53d8e8a078468c2688ba5689b81dbfc2b66",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap": "0a0ba283855c61f3ee0482d7bffa77fe6b78ec3d8d7c77a38dd2df10048b6ab9",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct": "1ecd8912e11f51fdc0f4ce1e67ead14cf0c1b748267d9bc300da20f128e3573d",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase": "9ed342038d9d62ba32501fe2da93620ad73a902219ae8c506e6dc286971ce089",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor": "64494f15dfeb29bc96fe8c7612a880ced897b862eba86fa8ca90830f3995262d",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap": "14721814e8ac8c1bc931462d072d791c3a09bc21a90125e2e475fcc8dc3375ed",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection": "7aa50f929df5bc849e27d457042223687800256afc5adde410871481531a2940",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor": "2f25e2e13d8f088d5e40b4b5a0621d04ba9c5b0ab6cac3857922586b176ba70f",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcCardinality": "83ca3483ef15cffccd0a64a28fcb57f1cea8813838568a9935f4b68fec435a22",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcSite": "610aedff2ccba45544e17812683cf5ce88f0eb6bb3c5a71f47b894f0b3be15c8",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion": "764a8ecf48fb69903641c73903b180812e210732432517fff990a63543933743",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension": "9d8ad2019874f5fd647ebbd117a8894f388ed8b81924abab0db5580fbe85642f",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor": "f220b2db38fee435b342e095a33f93a2c46124a197114d797e50cc2987302a63",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct": "7e4168430ea8ca80ac4c979ebf8a517663d73a2d0ff5eef860c17d951bd91929",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationTilt": "18bf81eb70e9c5ad331db33fb06d91f5d13baab1060ca359a02768714e8480a2",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationUntilt": "5ae4d4d2dc11d7edff9d9dca5f344848ee207dde520f726e54ee43701f581b06",
+      "SerrePositivity.BhattScholze.Perfectoidization.Cone": "cf5b329d510eb3eab37914123a67eb0a25a3dddc7081593d019e1508ba2469d9",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision": "d672117345e3986b7c24bec02ade5c18b3d244d3aeb88025c54262f15db6df9d",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence": "b9d84c4209170008bc012ebdf7cb03524d18d3b5641cef57cfe43abf2cf9661e",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived": "69834e40402f83332c4c9d1399b9f06954918b2da0d7ceb4e49355318af2e3bb",
+      "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction": "912ff4716822b7e8054782c82fe3c50c5ae3dc8f5185ee531b12d84ac50ab4dc",
+      "SerrePositivity.BhattScholze.Perfectoidization.Excision": "85bd4e52e211dc3aaf2c7bc8ea8119d7ab4004a91f4afb87cecd16169624989a",
+      "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison": "5c4ed4847e38fa31d0619236c25ba50ddd6ae8e7d2acf7ab21ff7b565e1f11a7",
+      "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor": "d48eca5a8bb4b43c1c54295cf01ebb22edf540608be4325a1c59cda5f8725c8c",
+      "SerrePositivity.BhattScholze.Perfectoidization.Finite": "d01ea2293d5c2ef504630fe0939a30a921a3d0b9482758d92e8f1b5e1ebdf5bc",
+      "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision": "06bf0520c153a514211b7f05cc86a78b83161c441a0753671494d4fe3f878083",
+      "SerrePositivity.BhattScholze.Perfectoidization.RootTower": "1da1b8fad7000e0e7c347e5a474de3fbeb05d83920ed1ec795d8237c455941bd",
+      "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility": "663ad00b3ca0514ee5e66b91d4d96f8579d26e262699728504e26f02536ad691",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient": "fab57d6e6dd40de547288afef2651514a2400c4c9751aec1a3c9f89237cc32ce",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps": "e89f8c5c3eceae5fb8b2fa6743106739244d6e2bcc8670cf39c09df35f989c3f",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Basic": "d2ea3dde8a0e78b3322c25ab422c3735537652503dc4c48d44249e398b819a33",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.CharacteristicP": "51e4d3841c5f94c2e542ea90392d75947da28d267f7c22bd4b5fe30d57f73ced",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRoot": "7af579b5b36e14cd938d1c6c4b0502637e0c10015bee1e804a62ac2590a4c5e0",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid": "efa136a114509b3ee0d5c7a74f04df6ec27e03e57130e1781b8ed12255849477",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful": "b977deb3ca7cb9b9e0456dab3638901b60c575ebe41f40275aa9491193a597d7",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat": "c602a507416c060c1b9459928ca4871ba4ca5bb768468d706bbefa464f04eb35",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful": "f091f0e1b62c3b918c49945ef9c5b6512a1dda4b1fd5e80fe0e3545bf22ca7f8",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue": "f5fae905c5b8c64227d80768f8a4b5b34a325d82cde037ab428be2cd88365ec0",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison": "edd71a4d31df69ff6199d6378ead53c62697cee07348a7165f2f912318a201f5",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta": "f640f6835009cd8a9bd7cc0cfa132845499f7dfe0ca6d16997c044f61c213818",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism": "226f2947e31cfd9a82e3b58b8205f239332d27ed99f4e47aff1db66c564288b9",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion": "9d9ec0d32756129f66e7a6b2f5e0f460bdeee8e78e299d88da28cfdcc4ae9ef9",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram": "cab55c4f3f42636bc3f10f536b0267829afe4789057c9e8835719406df1f6cf5",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit": "81c9ad58b0d51c3444f10706a0125dd8fb1bb961546dc37938e4d5760744f9be",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism": "d231826f46d2fcd35c9353c2be8bfc70eea4c0870a551ab67fdcbc43ab2be8c1",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection": "89c8a65c327b93bdbdb48d91695855de5741339858c374c7f7ae97e40b0019d5",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelope": "5011718f4a8259c6496fb63d79301cad7688cee517231bda4eb81de0fa5915b8",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCoefficient": "603e09ea336ae4f8b1381b006980a5e5a71e2cc0da663872aeb5eb2491136c5f",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidue": "8ca20dd987691ad9d4ff4928b759579248157663ad618feec0e9be95c691897c",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidueFaithful": "60d2300a6d34fd683237ed7d33c7ae6f9821d8451d8cb69d4b720fd6291bb370",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeConormal": "b2b2d11e8c007f06931371e1aeae55d3674e0e63ac46246085820504de96e5b8",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeDiscrete": "f1abba86746494615316c5dffd38daf4836ee2305d7cd352cd9cf1291e0e9c7c",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeExistence": "e63e6cbab27607785e6adcc8547795992d290b48af8570c500cb719f0ae99d8b",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful": "05412a69694fcce5945e42fb1f2df08db132817bf54e75cbce0386e799b85456",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInitial": "73e3ccb17f8fdb33fad898dc01b3bcc8daada4a05f4f8b2e1815e59fb52e6a27",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInvertP": "a424015269f59aef9dcb8429a1ff01de10dd89e7fdfd9318450cfa3e1f71c25c",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInvertPGenerators": "f0c6c38b0f2f730e05b82bc697409a1d22eba612213ba7ee7819aeed19d6ae7b",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeKoszul": "89244e39b66958890477048a138f7a58c530167b577337fcf9c082923b8c36fa",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopePresentation": "015b0ddc9bac08f065e4b2e4c6f489532eaec67949cbf7199d462a3359ecec09",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeReduction": "55e8e14ac20468575ee764f7f773494df320b46d3b64f9ebcdf7305b2e33d6e1",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeRegular": "065bee9db304323142248d2e4932ef022cbad9a55baa4077ca46f7a5df9e9975",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidue": "3406248b0ca6cd3f9e5f283d086921641934e49f501135c89c1cfc0669f2b7e0",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidueFaithful": "1c33be8a9254be0249f2da894af26c4a3146ff68c4b3331317938e70b333f867",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeTensorSwap": "a4af490022830df6374ba8ed9d3494a70182dbe87d837533afac72c49dc0bd9c",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeVariables": "b961667e0763e019361da4a3e957a0177994554c725fb7786513bf34600b5e57",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial": "3a845d46819c784d0c33a6e973fec2c5b9a94f15e75f9568ea2a0887491208bc",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivision": "ece082d214282fe141de5573ce0e650ba4f1230868664c78a886c337596122ca",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison": "65fce21f1a5d89a6537a3a12bea5241ec22c17d4ab3c3d5d5c04dc9a6e071f28",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope": "ac4b9c12819a3dee8cf164c788cf5a9a21e7599de6311b28d68e98b9c98692db",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful": "bea9fb14ed17616a6437134a1a1d32309b1d5d3af9031ca36f08b600de9c4889",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization": "45444a792e94fc83571d823439c80fdaf4032ca6f56a6f0232db6e761185e4ae",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion": "d83d27b09e877fc55c6c174e6d313f75f1614a084203aa9442b629113d79fb4c",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport": "d992aa440c8a0e47134be1b7dafb0b564292aa4d63a39767dce6d369c6549922",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient": "2079f8565736df3963d06c6bf12a92ee1443dc7f2375baa36aa0c98b12779715",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract": "39e19905e7390d2d12cafd4a05f530049a3e098978986b45870928b1047cce46",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Product": "fed0c40c814e3b8f505856e181321dff142289100e9e523f633d7ee00c52a502",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope": "4c2d233a13defa0fa45054e76629bddc197baf3c8e36433806761df05231283a",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful": "d1c7e2898cbdff9c0fa1f3cdc57af01ebe5e46d3d0d69b6cd498609ac67a0e1a",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism": "9a98acc4d812728b54098d80ed7f01f6366d717de5b472b213db6f40a61355cd",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion": "a4e3cee3e7a2aab6c8c3fe3aa11b4be1a22a82203b6b57b0d037403bc968635e",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source": "843da82d5c11fae79b32dd53fd1b4cb955742d4c6332384ae37336c0fc8d7dd9",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase": "34effc3d7c277c9429f1592ca35a88e0049ed52953a07b62b65af5a55b19cef5",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis": "74eb5c776bed4a7da9b4a05ec124819fdad006d719d0b3e77d8244ae970ed880",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid": "7aebce25830a22f0d5d08354ea42284ec3297afd9f18c8105b1708a8e431dda4",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex": "0558ce32446102c4aa89691230996ab4eacfe36f015f392e538b52908eb510f0",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis": "83373339102da9db0e9095b79905f54458b28ac7ba509bacf571c5a473cd5732",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope": "2525efb28bace6a4a40af16300430e6a4c3aa9c2b6b41725e56518b9074ecb09",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded": "ee03e8d78c179a7e063b715dc4cb95f2d27b6914693efb7cfbe57c094780cd42",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial": "61a6d22010bc6622e8e4578d44ece579ea52e7672d9499a3a43a9ea9c226d311",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective": "b0821ba0f0c9babcf7474cd52d9c389db16bd724825cebd5e7afa5c385a5f017",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion": "6d6558a515c4d630fc0c67e05420a7aef6d0f965fb22f6444e9544054852686e",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates": "a9fa7e75e10e02d8383742f741dda5f4f7ea4eacc0264e31cd4d4cc71a709a4f",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope": "2ca834ffa69969a9c5018a10f8008e0c0dc7ab8eda33d288e80e578b63d1fa09",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful": "358f01420839c553fa5a2cca679ea6ed286a94ad8728c07d7266d9a6345d2bf8",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient": "4c1279b30fd477d040af9832a9283f844575ad254e319fe5ef7e3155d80a5197",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram": "15d8809fd2fc5dce8bdcbad8e0cd5b512117441f214a6904b43785868cc637b2",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift": "17815413ba4133066f136fae1d522642cba7a9c678c8037919a92ad0e79efdd1",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial": "d0124f300d758c245fad7cf1d4b48ceb2393ef5a54019a171cebe6aa0e5b1194",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection": "8a9c94fd242201663b0d7782f30f24a7a65d7978f38a3abce1eda495b6818ea2",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial": "f485d957f70846c6fd9776a04a456e284252d7643d83ec0b87d884528aab2bf1",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis": "90315f898c4400fd2ad861e22d64dfe8559ab7831c2c3ec6b52838c96b535333",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular": "979eb206a6f057337990108dc203cd91daa3c6993f32088c45dd796c59fc0750",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw": "039ba1c77c7665fbabceae989ff4e50f71516cd01a01a1cfb74dc1960d49a955",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.SurjectiveQuotientPerfectoidization": "5b2639522591ba276a49783ee6282d6ec331d91c12fa58388796abb82254be38",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity": "66f24a0d86ccf85c7d9e1c5dde042cdaa52204268d35619a963f8208087d33fe",
+      "SerrePositivity.CLMST.Algebra": "d3d1562e13bd89df70cbaf323010f48e92558d7f8f26dcf1eec4f30018c1c8be",
+      "SerrePositivity.CLMST.AllModuleTorVanishing": "a7e4044a7ade4066829e73018f249c206e63fdb72aba6cd84735b6b6aade98e0",
+      "SerrePositivity.CLMST.CyclicLengthBound": "ffb6779c8d2990e5e0c1a852c36df8cf771b4f8764d1584421a4ad61c7ca79b0",
+      "SerrePositivity.CLMST.KoszulAnnihilation": "16a6e838b5a498f182de13801dc63126320625ece6ce8f09c2810eba2bb25421",
+      "SerrePositivity.CLMST.ParameterPowerLength": "1ad74835ae3b94b9eed7cb3c3e4f945f2ee04537c3b990bc744804fd269d9895",
+      "SerrePositivity.CLMST.ParameterQuotientLength": "b6e2357621c0b67ca2336935cc4c519486a251f1dad587d2bb903707ed749a1e",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Consequences": "550cddb24af29a4ff7bff28ec5ae856f4dc70e7b5a1f2b3984f0eff1cb9e5adf",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.ConstantRank": "a3995242968bdf7ecce4f7d4d0e6ff235329bd21a611147907b02e799032c75c",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.StandardSquare": "048a6354f7507a69964cc42d7e7b34303661dd6682d494b276fa9de6aee95660",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.Uniform": "f1f2506753a57d25207d236b656d196b026a2394b9e53328f7a1d82c25b19c71",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.GeneralRank": "162c48c9e464d364f9c85bffa1f3c902d51682854255ce18f98d9d870e965fad",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Proof": "8aed80e66b9b8106af30aeb8dadb7decd9741ca84d1d20c96a37e3ca9440418a",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.AIC": "b517127cd7af6d3c8d2e2a262b7b6fe7ce3baa54d150c2cb74d8cb2cd46b4e83",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.ClosedSides": "74848ecbede788c65bbf9502acefa27c8f9f5ff3cf27f233a4fcc831df6616cd",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.ComponentExcision": "bf78e6a35a4205a7e02926e4cae18de75a059758a7af7cc4950a8b8f23114321",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Diagram": "0b0c98f86c62852f84b1cca9cbc47f1a259077b17b4fa85517a29801075f22cc",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.TargetComparison": "f5f634826bfeb060d0f9fecf5055bde890c3a5cb54ff190899a04676d2bb1c47",
+      "SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Targets": "6837e78a8d82f6c40197fb911b61990f02356fae22e4e3a554457128d36cf54c",
+      "SerrePositivity.EInfinity": "c571f48130a6e0906cf15e97c249adb32297fdc293752286d0d71a380dec234a",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Comparison": "da2501203419d6930646e4fd08a5794ff35b06d83ddb7022c6288d620b953323",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary": "9c260318bd8d46bd55d38f4196b87106cd9c27ae02121b669f303955de3b1353",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Definition": "5d1453d99a81f4aaafc99be83e4c7c187625aa5ed9ec0f90ec7c05de3ad4cea6",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface": "8cbcecfd2b601798274df5bfec623b56353419585f2fe0309509db270211a6f0",
+      "SerrePositivity.Paper.Section2.LengthAlgebra": "cb0ac50fbdf35992885a3e0684fff1476bbf87e2d21fcfcb05c0eb1a16e0b0b0",
+      "SerrePositivity.Paper.Section2.LengthAlgebra.MixedChar": "1b800bd50acace7a3ba83de2c69ee26a27da76569f77b3d606c8e26f2de949e3",
+      "SerrePositivity.Paper.Section5.Reduction": "be1c5be980bfae911f980bcf3dde3f0bca1c30fecf28a4bcc468c4f50ef38933",
+      "SerrePositivity.Paper.Section5.Setup": "e9f07f688e7c8f46dba6087f076192ef5ad444d45c9b5ff4c8068f4e08ce59fc",
+      "SerrePositivity.Paper.Statement": "f95994cf1c45b915ea31e24014a20ab3e2d181c37fca4c4ef5a3d76a07406828",
+      "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue": "bfca86c320d617c4705249f68689c38462ce2084f952020778e121efec940139",
+      "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0": "553d7542d824cefff6ac1a5736f3fb9a792352e6541d3ac10943823eba198be8",
+      "SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator": "4382f6ab93b5fda20d180f3273936814dd10df6bcf1cbaa3b0f4c4fe454ab1c4",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone": "f6cb14b5f036b200507c3d9d1f67f8c5b6bc7942b25c456cda5e473d148005ce",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.InitialBridge": "32c6187b588ecd61ce68229035db77dd5cce05534b961180fdd0c8c4f0bd6974",
+      "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories": "e56e1a85fc8343644a48c58094dfe944f45020d821a8b7fdb01e56788f41d898",
+      "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface": "baebe1c8e160e7e787c16c7e0d96accb7887cc32c4f2ae96edcc232dbbbc7efc",
+      "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin": "26a28cf2cd3cae88d97774f29eb93a11ce6855205dc5db732cd21e6a677884bd",
+      "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family": "2be20781db30f904a6e82bf35640d4cff0c545e62c1284ba03131f8be2f1352a",
+      "SerrePositivity.BhattScholze.Andre.Perfection.PerfectDeltaResidue": "3ea8be0802dc1e6f558fabd0ddb9f2b7252d0e804985d07233ad5a16e5e57f8c",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion": "916f397acdc44037462a2683964f87f9f4da564b26c551ab9572f2ae4b1e4ec4",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime": "630da340afaca37a3e5aca26dee78dfabcd9a00fcbc1a390f0f9b4d95cb8334b",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory": "b3df0931eb6c948f374071e9d7d728b01decb29a358c92667aa5117f66ed1dac",
+      "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi": "83e804397f2dbc6e512855072a92912e7584d69a46ff11080d0aa8c02283ea04",
+      "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor": "4ad64bb4ae7b52ecba12fa4ad33c4100753efc187029391c9cf27118da68837e",
+      "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorComparison": "fc52d705dfe18923b49dc55d1de5023eb8c215f6ad70a09d5915bd0dbdbf633a"
+    },
+    "delete_paths": [
+      "SerrePositivity/BhattScholze/Almost/SupportedQuotient.lean",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+      "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralApproximation.lean",
+      "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
+      "SerrePositivity/BhattScholze/Perfectoid/FiniteProduct.lean",
+      "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+      "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
+      "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+      "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/AbsolutelyIntegrallyClosedQuotient.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/AinfClassicalMaps.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CharacteristicP.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CompatibleRoot.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CompatibleRootPerfectoid.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorFaithful.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorFlat.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorRelationFaithful.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/CompletedTensorRelationResidue.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/Cor73PrismComparison.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/DiscreteDelta.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/DiscretePrism.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/FiniteEnvelopeCompletion.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/FiniteEnvelopeDiagram.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/FiniteEnvelopeRawColimit.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/FiniteEnvelopes/PDCompletionPrism.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/InitialPrismPerfection.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PerfectEnvelopeInitial.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PerfectPrismDivision.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PerfectPrismDivisionComparison.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PerfectoidRelationEnvelope.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PerfectoidRelationEnvelopeFaithful.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/Perfectoidization.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PrismInitialCompletion.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PrismInitialTransport.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PrismRelationQuotient.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/PrismRetract.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/Product.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RawVariableEnvelope.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RawVariableEnvelopeFaithful.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/PerfectPrism.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/RawCompletion.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/Source.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyBase.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyFractionBasis.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyPerfectoid.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilyReindex.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilySparseBasis.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationAinfEnvelope.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationBounded.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedInitial.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedSurjective.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletion.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCoordinates.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationEnvelope.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationEnvelopeFaithful.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteAmbient.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteEnvelopeDiagram.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationLift.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationLiftInitial.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationPerfection.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationPolynomial.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationRawBasis.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationRawRegular.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationSubsetRaw.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/SurjectiveQuotientPerfectoidization.lean",
+      "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity.lean",
+      "SerrePositivity/EInfinity/Perfectoidization/Comparison.lean",
+      "SerrePositivity/EInfinity/Perfectoidization/DerivedCorollary.lean",
+      "SerrePositivity/EInfinity/Perfectoidization/Interface.lean",
+      "SerrePositivity/EInfinity/Perfectoidization/TheoryInterface.lean",
+      "SerrePositivity/Inputs/Perfectoidization.lean"
+    ],
+    "audit": [
+      {
+        "kind": "BS-specific aggregate relocation",
+        "modules": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+          "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Comparison",
+          "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Definition",
+          "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary"
+        ],
+        "removed_from_EInfinity": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+          "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary"
+        ]
+      }
+    ],
+    "protected_policy": "EInfinity changes only four approved BS specializations and aggregate imports; no existing InfinityCategories or AlgebraicGeometry Lean edits; new generic Cofinality file permitted.",
+    "comment_edits": [
+      {
+        "module": "SerrePositivity.BhattScholze.Almost.Lemma103",
+        "comments_changed": 1,
+        "before_sha256": "8375fa2a20e349323e807e2f67cdca70119c448ac8d5a901dd1fec7cc5ce28c0",
+        "after_sha256": "a17fd626745b6cea06252a9bcdf365dc6078c8099ec79b5317c647bc25f5fdb8"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost",
+        "comments_changed": 3,
+        "before_sha256": "f47265bc8857cf5e84b1aaeba451a565393a2e6d68901747bd673cb314e50c50",
+        "after_sha256": "492fcaa3b7fa48efc4303a339fd1c29204b9c6226feaf60388695e05c454d0ea"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient",
+        "comments_changed": 1,
+        "before_sha256": "a735ad26e06a4525f5ec733f60befc6b8e1b0d355c1214371218c5b8a56e3007",
+        "after_sha256": "4c0a0c853c6ada572fc90edbb01148f3f75e765a3eac8fcbfd456f6366c2fdaf"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.AndreFlatness",
+        "comments_changed": 1,
+        "before_sha256": "11bd54162103deb1898b725294a2616bbadcb475e4eeb24557053d6d5a050f9c",
+        "after_sha256": "92eb22146e12dba5f8a25b8578e8918da4a05bc50a9006e0cac0dff20f89b644"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Envelope.MonicCandidate",
+        "comments_changed": 3,
+        "before_sha256": "b2d6204fcf11a05999f15653726ca57a947fc2f7111aacb7a06805c772bac6dc",
+        "after_sha256": "c5c7617f0359a2eb4f20fb2b8c146b332a8bb0fdf0b9ef9ae6bc3ac190ca6b22"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Envelope.MonicSource",
+        "comments_changed": 14,
+        "before_sha256": "e0ba72e350c8def42c05b521ee735760b96516c20c72aa439570f8d9ac81a893",
+        "after_sha256": "0b6dce4c6a4391a2d2d7dc3a46e3777daa37823703470329f2a4e0ab7eaaff64"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource",
+        "comments_changed": 11,
+        "before_sha256": "afb6666b767bc43cd833e6d29e04686a8ddfcf8095839060e103471d32333410",
+        "after_sha256": "9681642cd850d59fb7a1bfa06a762c4a38a161f626825163690af5fafc3aa7db"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+        "comments_changed": 4,
+        "before_sha256": "6ef112f36b6621e7b459e42e1f47f1bb449e3932b12f7d0acf27844051257f05",
+        "after_sha256": "82a278532f437e63c6b261d7463671513ae5776128bf6ba86b5dea2b3197d92f"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
+        "comments_changed": 20,
+        "before_sha256": "b20e9615a38bd91187890f321f10f2bf353fd9974b41027550ec175429acc395",
+        "after_sha256": "65917d20cd481fc5d9392ffaab0fb2a804954d0617a9bdf1ce708ebbc26296eb"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+        "comments_changed": 2,
+        "before_sha256": "0a8304281683e879c3b58b9d37183f96d47cba6518c1e0e9e9fec03459189f95",
+        "after_sha256": "435b36e1c6fdcdf2ba4dce834879182e261e41e8875afe350b18b769d68ccf9a"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra",
+        "comments_changed": 7,
+        "before_sha256": "f08ff6008588c37e18a7eb3ff1c255d08aa8cfa3074530d87735a265c13e6c4b",
+        "after_sha256": "46466233213acb78e7b809d36d61839354e3a785437b7ce75daee8039550a3c6"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Perfection.PerfectPrismMonic",
+        "comments_changed": 3,
+        "before_sha256": "ac687609c86e8e1af4c5f0ff85462fd656a1bdd5d1b17d5ecfde65a4c91b6fd6",
+        "after_sha256": "c6b17f272d9d49eac8bec41aaf32802122488c050654028e02de0328456c800b"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPD",
+        "comments_changed": 2,
+        "before_sha256": "db5cc827081b4a81b17a776ca2983f1a9e01340eaf0b2e78de54ef13339f562b",
+        "after_sha256": "8fde054bdb371afe2420a989e449eb5eccd43a250525a222256c956f668c106e"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPrism",
+        "comments_changed": 8,
+        "before_sha256": "21c7cce82d937f7302f657146b8d45515ce5a0ed047430ca668ef5f6d81f68a9",
+        "after_sha256": "b40df2189d4edd83e45aacac8bbde9ec58a709b6dfa4dbc5c6d1923952aafe95"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.FrobeniusPullback",
+        "comments_changed": 2,
+        "before_sha256": "c1f34593d288fd06280bbbdc3669888e7521c19619bfb46c1d925260b1e4ff3b",
+        "after_sha256": "ed5d830c18abc93598727f96f2fcc7903144ea7bcd8d2605bb20bd7bfa999539"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Initiality",
+        "comments_changed": 13,
+        "before_sha256": "dc52c292249080f18bc7e8c5a96a2cda5371fc5506259fb1ef639a823c9c3464",
+        "after_sha256": "99a422b7f556c65be49c656fdfe1002e34b567a76f5aef3a4841530899c107ad"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputUniversal",
+        "comments_changed": 6,
+        "before_sha256": "3fabe18a679bce937a340be22837ac3b661321a9174dbc7ab67ea02f9920d4da",
+        "after_sha256": "1088b07883b75e021b7f2468e4155417b9c043fea8e22c86c7e53b67f2979668"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PerfectionFaithful",
+        "comments_changed": 1,
+        "before_sha256": "20efb166aea0599e2d800a89fc67eb6aeaf5366bd5c7bc35171ed2bccd9dab15",
+        "after_sha256": "0fed2386fade1716d4fd3590747cc7169f57d7dcf8c126ca549c9d02a3f9e6d7"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput",
+        "comments_changed": 3,
+        "before_sha256": "845dee76542a7737461248af472e87ec42c8b5c97b63679874b3b7f23bcfcbaa",
+        "after_sha256": "43b896a2b898ba1e71432bde295faea40e81ea2bddfeba549c8bda368b465055"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial",
+        "comments_changed": 1,
+        "before_sha256": "83b61752f873fff863918b1af7e3231e84a06db2d16beb2d65c1676d60b3ebec",
+        "after_sha256": "f5116070d4fadb8d0bfe32fc0793d85fb115f7f204ab484f4d8d25f2feccbe7b"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.FrobeniusPD",
+        "comments_changed": 1,
+        "before_sha256": "5645b55eae7b3acd9add2bd0de1d0c264339fac6042313a40358a9914cc36d1d",
+        "after_sha256": "1de9ff4ecde6a0e03d9112062ad655e90c0cfa88e7d57a0bce52cdc6ac2720b7"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue",
+        "comments_changed": 7,
+        "before_sha256": "8d737486627f510fe987ce09d1ac45e09d93f4b94dbb6728817791c08789aa22",
+        "after_sha256": "c980a59c1378bb15c2eac9af25f5bef7f3091609d8ad7c620ff8d9114760e620"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Source",
+        "comments_changed": 8,
+        "before_sha256": "c9f37047a9b3efb5b5c6293f94f9c9faeb5fed415b88ead58f859b3d2ed063df",
+        "after_sha256": "02ace330f2f693abb924e71167f574e248da2c04443e3679afd3a294e9f2b54f"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiPD",
+        "comments_changed": 1,
+        "before_sha256": "e150863debd07f1a842a2b610931173f9544360a8cab0a6a2db70035d5d62227",
+        "after_sha256": "6988ab88b383e103c78bc7a483b259e8a6f7c6317389b54d01896250763f8525"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Transfinite.Tower",
+        "comments_changed": 1,
+        "before_sha256": "f04c6dbdcac2ebec07dd511e373e7131f4b0ac92393f30a709eb6fe437ec653d",
+        "after_sha256": "5fb722d895fab95e1b1d87c185c8b5e1e833cc2ab0dd55c13429f8d4bb9fc2ae"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Variants.ArbitraryFamily",
+        "comments_changed": 12,
+        "before_sha256": "ee9c409b0e0a548309258bb3ce37020fdeb855e7688daef9057a85ceaad6b77d",
+        "after_sha256": "07bc1ada16c0b49785fbd4bda7f03399ea0792ddc2744d35fb631f3365bf50bd"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Variants.Auxiliary",
+        "comments_changed": 1,
+        "before_sha256": "b79227889caa13c18482f307c205aa66ae1fef90ac8390beae2ce5e9eb053051",
+        "after_sha256": "b4b48c30515cba0c464680ad7580f874d581a2ec46266163b660f00dec387990"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Variants.RootedExtension",
+        "comments_changed": 5,
+        "before_sha256": "27a6e7cf74709f519b88a002a221cff547e7291e8f362a1b696251ee59374ea6",
+        "after_sha256": "20a1727ae5d5b5521ff830b8dd8c5d1d4fbbec4119bad53568d629f51f00ba21"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface",
+        "comments_changed": 2,
+        "before_sha256": "9363f1b6a62517073cb8fab9726bfc85adf290db9aa9fcb016410109439a90cb",
+        "after_sha256": "e8c4fb3fd930ec7102e25644e38b6f6d3ebe427b703eac147e88bf7cf65b8e38"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase",
+        "comments_changed": 2,
+        "before_sha256": "65012cab1b43d77f3883538c3ff152e6665a06ea58fc80c7cf011872296af051",
+        "after_sha256": "9ed342038d9d62ba32501fe2da93620ad73a902219ae8c506e6dc286971ce089"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+        "comments_changed": 6,
+        "before_sha256": "b008568ca48c86034d7c888a835eb819eabf96437dc89baee39792ff286cfd44",
+        "after_sha256": "d672117345e3986b7c24bec02ade5c18b3d244d3aeb88025c54262f15db6df9d"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence",
+        "comments_changed": 2,
+        "before_sha256": "456ba064d15c20228223e3ee1d6e57fc61f2fe3b446a43a8f8fcbce6fdb4f674",
+        "after_sha256": "b9d84c4209170008bc012ebdf7cb03524d18d3b5641cef57cfe43abf2cf9661e"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+        "comments_changed": 13,
+        "before_sha256": "7714c6048afd393c897f5753ee621497dbe33e2aeb466b08420bb33b19e3ae9c",
+        "after_sha256": "69834e40402f83332c4c9d1399b9f06954918b2da0d7ceb4e49355318af2e3bb"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+        "comments_changed": 4,
+        "before_sha256": "3c0b51426fa308c57568cb6aafae8867d819a24798d87b210f2c3a7186f4c63e",
+        "after_sha256": "912ff4716822b7e8054782c82fe3c50c5ae3dc8f5185ee531b12d84ac50ab4dc"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+        "comments_changed": 7,
+        "before_sha256": "ae6baa88945ddf51de4ea245cc04fd73f76f05eab8010a35762fb4daa4ce4541",
+        "after_sha256": "85bd4e52e211dc3aaf2c7bc8ea8119d7ab4004a91f4afb87cecd16169624989a"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+        "comments_changed": 1,
+        "before_sha256": "e68e91cfde53d76fb4493902e69738339393186d4543c66fedc432facf7078fc",
+        "after_sha256": "d01ea2293d5c2ef504630fe0939a30a921a3d0b9482758d92e8f1b5e1ebdf5bc"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+        "comments_changed": 1,
+        "before_sha256": "f68534d30b11fa17c2077077402961f502ab6362e2670302b55a42ef7a9f44ea",
+        "after_sha256": "06bf0520c153a514211b7f05cc86a78b83161c441a0753671494d4fe3f878083"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility",
+        "comments_changed": 3,
+        "before_sha256": "ebda3fd25bbcd6c8dbb3534113f75d4cb71ce00c607eec0c4f0eabf49e9fba40",
+        "after_sha256": "663ad00b3ca0514ee5e66b91d4d96f8579d26e262699728504e26f02536ad691"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat",
+        "comments_changed": 2,
+        "before_sha256": "21096dc1a8d8c7fd2f58d737fecb646c6ebcba81d10456ea870a67487643bbfd",
+        "after_sha256": "c602a507416c060c1b9459928ca4871ba4ca5bb768468d706bbefa464f04eb35"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta",
+        "comments_changed": 1,
+        "before_sha256": "093eaa40c98c58acc212237c696679d48596e3639ac6d68a661c934a7832c208",
+        "after_sha256": "f640f6835009cd8a9bd7cc0cfa132845499f7dfe0ca6d16997c044f61c213818"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism",
+        "comments_changed": 2,
+        "before_sha256": "cdae36a0878b7866d20ebdda08905fa00e1b9ec983547dde61705c6b04e63300",
+        "after_sha256": "226f2947e31cfd9a82e3b58b8205f239332d27ed99f4e47aff1db66c564288b9"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeConormal",
+        "comments_changed": 7,
+        "before_sha256": "26f4fb33382eefb9e0a9606dad0d5d83171ba6d4ee241c7013b022d9929b2bfb",
+        "after_sha256": "b2b2d11e8c007f06931371e1aeae55d3674e0e63ac46246085820504de96e5b8"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeDiscrete",
+        "comments_changed": 1,
+        "before_sha256": "0929227d498629e2b3bf7e861eabbdc21542859aef9189441b1b06868a22a538",
+        "after_sha256": "f1abba86746494615316c5dffd38daf4836ee2305d7cd352cd9cf1291e0e9c7c"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeExistence",
+        "comments_changed": 2,
+        "before_sha256": "a5234cb1250dd3376a440d2a725799592ade2208dc0446352d7237e190a4b5ca",
+        "after_sha256": "e63e6cbab27607785e6adcc8547795992d290b48af8570c500cb719f0ae99d8b"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful",
+        "comments_changed": 2,
+        "before_sha256": "44276f9570897b3195d9aa9dc8b9ef2246693615ca0ed85aab58acaa5f6914af",
+        "after_sha256": "05412a69694fcce5945e42fb1f2df08db132817bf54e75cbce0386e799b85456"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInvertP",
+        "comments_changed": 6,
+        "before_sha256": "e5374b1966fdc34a9f10379e0e941b5fb112593db948b7586cdb62de53d3d7b0",
+        "after_sha256": "a424015269f59aef9dcb8429a1ff01de10dd89e7fdfd9318450cfa3e1f71c25c"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeInvertPGenerators",
+        "comments_changed": 3,
+        "before_sha256": "283d0e5203bc0ed8207fe76b6363c9b4e7402d81bf6766fa4291a722dfafd72f",
+        "after_sha256": "f0c6c38b0f2f730e05b82bc697409a1d22eba612213ba7ee7819aeed19d6ae7b"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeReduction",
+        "comments_changed": 1,
+        "before_sha256": "621d8b07b41a8a61add5124d23e9d361a4d8c3e940f4e54d864595edeead32c1",
+        "after_sha256": "55e8e14ac20468575ee764f7f773494df320b46d3b64f9ebcdf7305b2e33d6e1"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeVariables",
+        "comments_changed": 1,
+        "before_sha256": "bf7a5603665fd5f2098c4de78d5fb584a0dacc7350016e73b4b18a6a539209f3",
+        "after_sha256": "b961667e0763e019361da4a3e957a0177994554c725fb7786513bf34600b5e57"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract",
+        "comments_changed": 2,
+        "before_sha256": "2c77400480aac68ad632da2e18c08c7a4e82cd06233c24ee59cd3d5d47b0e549",
+        "after_sha256": "39e19905e7390d2d12cafd4a05f530049a3e098978986b45870928b1047cce46"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+        "comments_changed": 6,
+        "before_sha256": "7d26ca3d229a28d6a385169246923a809135ce138c9cd3968f013e0abe312446",
+        "after_sha256": "9a98acc4d812728b54098d80ed7f01f6366d717de5b472b213db6f40a61355cd"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+        "comments_changed": 1,
+        "before_sha256": "7591936fc18d47db78f2a69b4d08e620dac68162cce9fde8b5b8031cc6e9d3f4",
+        "after_sha256": "a4e3cee3e7a2aab6c8c3fe3aa11b4be1a22a82203b6b57b0d037403bc968635e"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+        "comments_changed": 1,
+        "before_sha256": "aff2e181f676ce20dd5ff329b07bda23bbdc8a477db238d71c96105d27773029",
+        "after_sha256": "843da82d5c11fae79b32dd53fd1b4cb955742d4c6332384ae37336c0fc8d7dd9"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded",
+        "comments_changed": 2,
+        "before_sha256": "c720c9024424b8115e2c0e89d0260ba836ab8b6ef82bc7b728a901ea1899e118",
+        "after_sha256": "ee03e8d78c179a7e063b715dc4cb95f2d27b6914693efb7cfbe57c094780cd42"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial",
+        "comments_changed": 1,
+        "before_sha256": "4de70e596d3150eee753865a3d2c668a065b0f88aaffc997d4c83d5b7be4002b",
+        "after_sha256": "61a6d22010bc6622e8e4578d44ece579ea52e7672d9499a3a43a9ea9c226d311"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope",
+        "comments_changed": 1,
+        "before_sha256": "ffc7b83c2b48307a57b9abe94d20ce24f0cfefb3b5aab19ffac2a6e372f66499",
+        "after_sha256": "2ca834ffa69969a9c5018a10f8008e0c0dc7ab8eda33d288e80e578b63d1fa09"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful",
+        "comments_changed": 1,
+        "before_sha256": "4851bd7bd390320467962a4a6c7622c02b06dd67dc1e4bc0b578c2b10a17f7e3",
+        "after_sha256": "358f01420839c553fa5a2cca679ea6ed286a94ad8728c07d7266d9a6345d2bf8"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial",
+        "comments_changed": 1,
+        "before_sha256": "59aca5633027546eb25c9afba63dbdb96e88b504e3f606f635f5ea6796fcfd0b",
+        "after_sha256": "d0124f300d758c245fad7cf1d4b48ceb2393ef5a54019a171cebe6aa0e5b1194"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection",
+        "comments_changed": 2,
+        "before_sha256": "0b48a197a56e185e93be90d4e6bef107378ab2625a3c379c325e6b98b0961fc0",
+        "after_sha256": "8a9c94fd242201663b0d7782f30f24a7a65d7978f38a3abce1eda495b6818ea2"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity",
+        "comments_changed": 1,
+        "before_sha256": "3d6e537505b4bf7cea3c1c6215aa4b5e709451ea16bf84ceae54f68e6d69a586",
+        "after_sha256": "66f24a0d86ccf85c7d9e1c5dde042cdaa52204268d35619a963f8208087d33fe"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+        "comments_changed": 1,
+        "before_sha256": "fe251c39ad1025928c3b701128dfccdfb9d90e6eda895828cbe7ab859740a5a5",
+        "after_sha256": "8cbcecfd2b601798274df5bfec623b56353419585f2fe0309509db270211a6f0"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
+        "comments_changed": 2,
+        "before_sha256": "6a9cff2e68e1f30d5541be08c82cd11c36c7ccf075ebfd9cf4b6bfc72b4acfb6",
+        "after_sha256": "f6cb14b5f036b200507c3d9d1f67f8c5b6bc7942b25c456cda5e473d148005ce"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.InitialBridge",
+        "comments_changed": 1,
+        "before_sha256": "6d93809850302b977cbf0acb7e1e32546abca3ac2cbd7f2071b8ad7499fe8285",
+        "after_sha256": "32c6187b588ecd61ce68229035db77dd5cce05534b961180fdd0c8c4f0bd6974"
+      },
+      {
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "comments_changed": 2,
+        "before_sha256": "ee299f41a06d8658e1dbabb5af4d770295332df12bbddf3d80355f3404d7a2ea",
+        "after_sha256": "e56e1a85fc8343644a48c58094dfe944f45020d821a8b7fdb01e56788f41d898"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin",
+        "comments_changed": 4,
+        "before_sha256": "1b357066e100191606c734521084a30b087617c3c4e88367988c0601a911751f",
+        "after_sha256": "26a28cf2cd3cae88d97774f29eb93a11ce6855205dc5db732cd21e6a677884bd"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family",
+        "comments_changed": 1,
+        "before_sha256": "11376ada36830567cd6925e0b2a97297f887ab99ad71874c9ef14df35b82c51a",
+        "after_sha256": "2be20781db30f904a6e82bf35640d4cff0c545e62c1284ba03131f8be2f1352a"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.Perfection.PerfectDeltaResidue",
+        "comments_changed": 1,
+        "before_sha256": "22a8415b56b2fa4652d2edd8fa67950f2e08f16b40d5a06c70dc493e86a41247",
+        "after_sha256": "3ea8be0802dc1e6f558fabd0ddb9f2b7252d0e804985d07233ad5a16e5e57f8c"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion",
+        "comments_changed": 3,
+        "before_sha256": "91b63f211a6dbde8a8c0873d3eb904f733d94c6333e8d3ca1e91769318fcd905",
+        "after_sha256": "916f397acdc44037462a2683964f87f9f4da564b26c551ab9572f2ae4b1e4ec4"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime",
+        "comments_changed": 1,
+        "before_sha256": "8e74195465b50008851bbad66542d55b04c28489b09db7619731964c9843d5ce",
+        "after_sha256": "630da340afaca37a3e5aca26dee78dfabcd9a00fcbc1a390f0f9b4d95cb8334b"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory",
+        "comments_changed": 2,
+        "before_sha256": "df301a00e110de27e71bf7793ab9d0dbe83daffbf9ae17b489ebe3353a9d2d0b",
+        "after_sha256": "b3df0931eb6c948f374071e9d7d728b01decb29a358c92667aa5117f66ed1dac"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi",
+        "comments_changed": 1,
+        "before_sha256": "6b07b9f99c0edfcd1d9152b4c453afc15c13b4698e8959c1b32efe32b8fd913a",
+        "after_sha256": "83e804397f2dbc6e512855072a92912e7584d69a46ff11080d0aa8c02283ea04"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor",
+        "comments_changed": 2,
+        "before_sha256": "f86e4db4ee8030027650c205630f925553f51fea660814d396662c3cf7666ec4",
+        "after_sha256": "4ad64bb4ae7b52ecba12fa4ad33c4100753efc187029391c9cf27118da68837e"
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorComparison",
+        "comments_changed": 1,
+        "before_sha256": "00e74cf2864f8385cec54ca0643a73b4e8ab475bf5b005f9aef5e3be75e26594",
+        "after_sha256": "fc52d705dfe18923b49dc55d1de5023eb8c215f6ad70a09d5915bd0dbdbf633a"
+      }
+    ]
+  },
+  "before_modules": 206,
+  "native_kernel_rows": 18384,
+  "semantic_reference_files": 176,
+  "target_modules": 212,
+  "current_generation_targets_passed": 80,
+  "note": "Further module references in prose are being checked; no actual branch Lean/scripts applied"
+}

@@ -5,6 +5,7 @@ def environment(root):
  env=dict(os.environ,LEAN_NUM_THREADS='1');raw=subprocess.check_output(['lake','env','printenv','LEAN_PATH'],cwd=root,text=True).strip().split(os.pathsep);paths=[str((Path(p) if Path(p).is_absolute() else root/p).resolve()) for p in raw];env['LEAN_PATH']=os.pathsep.join(paths);env['LEAN_SYSROOT']=subprocess.check_output(['lake','env','lean','--print-prefix'],cwd=root,text=True).strip();assert str(root/'.lake/build/lib/lean') in paths
  other=A if root==R else R;assert str(other/'.lake/build/lib/lean') not in paths
  return env
+assert hashlib.sha256(binary.read_bytes()).hexdigest()=='044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9','v3b binary differs from the unchanged established capture tool'
 oldenv=environment(R);newenv=environment(A)
 def after_modules(mods):
  result=set()

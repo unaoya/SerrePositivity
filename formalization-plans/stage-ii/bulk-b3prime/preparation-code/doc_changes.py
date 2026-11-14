@@ -14,6 +14,27 @@ def update(comment,path):
  elif '/Semiperfectoid/' in path:
   comment=re.sub(r'(?<![A-Za-z0-9_])E3(?![A-Za-z0-9_.-])','任意添字の包絡の構成',comment)
  comment=re.sub(r'\bexisting G2\s+principal','existing principal',comment);comment=re.sub(r'\bG2 comparison\b','completion comparison',comment);comment=re.sub(r'\bG2 completed\b','completed',comment)
+ # Remove stage IDs from headings; references use the mathematical construction.
+ comment=re.sub(r'(?m)(##+\s+(?:André\s+)?)(?:A1-[a-f]|R[1-5]|B[345](?:-[0-9]+)?)\s*：',r'\1',comment)
+ extra={'A1-a':'向き付き入力の源','A1-b':'分冪包','A1-c':'係数比較','A1-d':'実剰余の比較','A1-f':'向きなし入力の源','A5-3':'Lemma 8.6','A5-4':'semiperfectoid 被覆による降下','A6-1':'根添加','A1-5':'perfectoid 化の比較','G-A3-7':'p 反転後の分冪計算','B4-6':'冪根関係の比較'}
+ for old,new in sorted(extra.items(),key=lambda x:len(x[0]),reverse=True):comment=re.sub(r'(?<![\w])'+re.escape(old)+r'(?![\w])',lambda _:new,comment)
+ comment=comment.replace('G-A6-11：','')
+ comment=comment.replace('CLMST-D と KL-T','CLMST の降下と Tor 比較').replace('CLMST-D・KL-T','CLMST の降下・Tor 比較').replace('CLMST-D','CLMST の降下').replace('KL-T','CLMST の Tor 比較')
+ for old,new in [
+ ('chosen by B3 from quotients','chosen from quotients'),('actual B3 closed-side objects','actual quotient-perfectoidization closed-side objects'),('B3 の閉側','商 perfectoid 化による閉側'),
+ ('comparison is surjective by B4','comparison is surjective by the perfectoidization surjectivity theorem'),
+ ('主張は B4 と同じ。B4 本体は原典どおり André 経由','主張は BS 著者版 Theorem 7.4 と同じ。本体の証明は原典どおり André 経由'),
+ ('旧 B4 経路','任意添字のモニック族の経路'),('## B5 の公開入口','## perfectoid イデアルの almost 判定の公開入口'),('B5 の依存監査','perfectoid イデアルの依存監査'),
+ ('`Andre/MonicRelationRegularSequence`','`CommutativeAlgebra/KoszulRegular/MonicRelation`'),
+ ('既存の `AndreCompatibleRootsConditional` と `AndreSurjectivity` などに、','両立する根の選択と perfectoid 化の全射性などに、'),
+ ('`Semiperfectoid/AndreSurjectivity`','`Semiperfectoid/Surjectivity/Surjectivity`'),
+ ('`Semiperfectoid/RootEnvelope/RootEnvelopeSurjectivity`','`Semiperfectoid/Surjectivity/RootEnvelope/PerfectPrism`'),
+ ('`Semiperfectoid/SemiperfectoidSurjectivity`','`Semiperfectoid/Surjectivity/Surjectivity`'),
+ ('`Almost/PerfectoidIdealLemma103`','`Almost/Lemma103`'),
+ ('`Perfectoidization/Prop813PerfectoidBaseChange`','`Perfectoidization/CompletedBaseChange`'),
+ ('`Semiperfectoid/PerfectoidizationSurjectiveMap`','`Semiperfectoid/Surjectivity/Surjectivity`'),
+ ('`Inputs/SemiperfectoidSurjectivity`','`Semiperfectoid/Surjectivity/Surjectivity`'),
+ ('Lemma 8.6（Lemma 8.6）','Lemma 8.6'),('根添加（Lemma 8.8 の R₀ 上の根添加）','Lemma 8.8 の R₀ 上の根添加')]:comment=comment.replace(old,new)
  # Explicit stale descriptions identified by R8-9/R10-7; comments only.
  replacements={
  '冪零還元からの純性・平坦性の既存判定 冪零還元からの純性・平坦性の判定 へ':'冪零還元からの純性・平坦性の既存判定へ',

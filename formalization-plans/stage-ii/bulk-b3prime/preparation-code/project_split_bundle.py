@@ -4,6 +4,11 @@ R=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodo
 from lean_source import parse_source,add_import,doc_start
 from split_module import prepare,module_doc
 from prune_imports import replace_imports
+from doc_plan import comments
+def noncomments(source):
+ parts=[];at=0
+ for lo,hi in comments(source):parts.append(source[at:lo]);at=hi
+ parts.append(source[at:]);return "".join(parts)
 status=json.loads((W/'rewrite-status.json').read_text());migration=json.loads((W/'namespace-rewrite-plan.json').read_text());splits=json.loads((D/'split-plan.proposed.json').read_text())['rows'];name_rows=json.loads((D/'namespace-map.proposed.json').read_text())['rows'];snapshots={}
 for file in (W/'before').glob('group-*.json'):
  if not file.with_name(file.stem+'.complete.json').exists():continue
@@ -68,6 +73,26 @@ for oldpath in sorted({s['old_path'] for s in splits}):
  elif oldpath.endswith('/Transfinite/Limit.lean'):
   a=doc_start(text,text.index('theorem mul_eq_zero_of_pow_mul_eq_zero_of_reduced'));b=text.index('/--',text.index('theorem mul_eq_zero_of_pow_mul_eq_zero_of_reduced'));retained=project(text,edits,0,a)+project(text,edits,b,len(text));r=next(r for r in snap['declarations'] if r['name'] in selections[0]);deps=[dep for dep in r['used_modules'] if dep.startswith('Mathlib.')]+['Mathlib.Tactic.Ring'];extra[newmods[0]]=header(deps,'被約可換環の冪による消滅','u')+'@[expose] public noncomputable section\n\n'+project(text,edits,a,b)+'\nend\n';evidence['source_spans']=[[a,b]]
  else:raise ValueError(oldpath)
+ partition_before_docs={retainedmod:retained,**extra}
+ # Context commands can carry the preceding module-level section comment.
+ # Keep only the section description belonging to this partition; no Lean token changes.
+ if oldpath.endswith('/Derived/IntegralExistence.lean'):
+  retained=module_doc(retained,'# 整代数と有限代数の普遍 perfectoid 化の存在\n\n導来 perfectoid 化の界面から整代数の普遍環を取り出し、公開入口と完備化への比較を与える。始対象の一般計算と指定単位の比較は別の二つのモジュールに分離する。')
+  for n in [retainedmod,*newmods]:
+   source=retained if n==retainedmod else extra[n]
+   if not n.endswith('.InitialValueCone'):
+    source=re.sub(r'/\-! ## 始対象の値による指定極限錐の計算.*?\-/','',source,flags=re.S)
+   if n==retainedmod:retained=source
+   else:extra[n]=source
+ if oldpath.endswith('/Derived/Interface.lean'):
+  retained=module_doc(retained,'# 導来 perfectoid 化の指定界面\n\n通常の環の添字圏と完備化関手は環側の二つのモジュールから受け取り、導来対象・指定極限錐・単位・離散時の普遍性をまとめる。')
+  for n in [retainedmod,*newmods]:
+   source=retained if n==retainedmod else extra[n]
+   if not n.endswith('.RingCategories'):
+    source=re.sub(r'/\-! ## Perfectoid 化界面の通常の添字圏.*?\-/','',source,flags=re.S)
+   if n==retainedmod:retained=source
+   else:extra[n]=source
+ for n,source in {retainedmod:retained,**extra}.items():assert noncomments(source)==noncomments(partition_before_docs[n]),('partition doc update changed Lean tokens',n)
  for n in newmods:retained=add_import(retained,n)
  outputs[retainedmod]=retained;outputs.update(extra);records.append({'old_module':oldmod,'retained_module':retainedmod,'new_modules':newmods,'declarations':{n:sorted(v) for n,v in zip(newmods,selections)},**evidence})
 out=W/'split-bundle';out.mkdir(exist_ok=True)
