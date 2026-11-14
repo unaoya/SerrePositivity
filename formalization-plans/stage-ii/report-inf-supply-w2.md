@@ -14092,3 +14092,63 @@ def strictBETotJointSourceAugmentationDomainIso :
     FunctorIso (strictBETotJointSourceNativeDomain A)
       (strictBETotJointSourceOriginalNativeDomain A)
 ```
+
+## 226. 元の全標的置換単位の同じ逆による端点の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元のstrictBETotModelSourceが全弱自然変換を全FunctorIsoへ送る法則を41行で記録した。元の局所化の弱辺反転と既存nerveTransformationPostIsoをその同じ自然変換へ適用する。元の全自然変換を別の辺や成分に取り替えず、元のモデル源を保つ。§188の全augmentationで用いた同じ既存の反転手順を、一般の全自然変換に記す係数移送の法則である。
+
+元のrightFrameReplacementと元のrightFrameReplacementUnitを、同じAsSmallのモデル源の添字に記録した。各成分が元のモデル弱同値であることは、同じrightFrameReplacementUnit_trivialCofibrationの第二成分を使う。これを上の同じモデル源の全弱自然変換の反転へ渡し、全標的置換単位自身の全FunctorIsoを得た。元の全実射の標的の関手は、元の全標的射影へこの同じ置換を合成したものとrflで一致する。その同じ全標的単位の比較を元の全標的射影へ前合成し、逆を取ることで、実射の置換後の標的から元の標的への全FunctorIsoを得た。83行。
+
+§225の始域比較と今回の標的比較がそろったが、二つを同じ二変数のnativeな底の比較へまとめる部分と、その比較を元の全pairingの同じ底への射へ厳密化する部分はまだ残る。元の固定始域のroof比較との全FunctorIsoの等式と、同じ底上の比較の同値性も未証明。既存の全単位・弱辺反転・係数移送・合成の法則として記録し、独立の数学的な一覧項目は増やしていない。型に関する既存の仮定や範囲は弱めていない。
+
+個別検査：全弱自然変換の移送5039・終了0、二本を結合した最終の標的比較11777・終了0。303：対象ビルド10,712 jobs・終了0、小監査170本1,200宣言・標準三公理のみ（実ハンドル58672・終了0）。鍵返却済み。今回41＋83＝124行、累計170本・10,977行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 226.1 型
+
+共通入力は `(A : Type u) [CommRing A]`、元のmodelCategory Aを局所的に使う。全標的置換側は元のmappingCofibrantFactorization Aも局所的に使う。
+
+#### StrictDiagramTotModelWeakTransformation（41行）
+
+```lean
+def strictBETotModelWeakTransformationIso
+    {J : Type (u+1)} [SmallCategory J]
+    {F G : J ⥤ AsSmall.{u+1} (operad A).Algebra} (η : F ⟶ G)
+    (hη : ∀ j, weakEquivalences (operad A).Algebra (AsSmall.down.map (η.app j))) :
+    FunctorIso (nerveMap F ≫ strictBETotModelSource A) (nerveMap G ≫ strictBETotModelSource A)
+```
+
+#### StrictDiagramTotJointTargetReplacement（83行）
+
+```lean
+def strictBETotTargetReplacement :
+    AsSmall.{u+1} (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotTargetReplacementUnit :
+    𝟭 (AsSmall.{u+1} (operad A).Algebra) ⟶ strictBETotTargetReplacement A
+
+theorem strictBETotTargetReplacementUnit_weak (Y : AsSmall.{u+1} (operad A).Algebra) :
+    weakEquivalences (operad A).Algebra
+      (AsSmall.down.map ((strictBETotTargetReplacementUnit A).app Y))
+
+def strictBETotTargetReplacementNativeIso :
+    FunctorIso (strictBETotModelSource A)
+      (nerveMap (strictBETotTargetReplacement A) ≫ strictBETotModelSource A)
+
+theorem strictBETotJointSourceCodomain_replacement :
+    FrameHom.liftedSourceFrameArrowCodomain (strictBETotJointSourceFrame A)
+      (rightFrameReplacement (rightFrameFamily A)) =
+    strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A ⋙
+      strictBETotTargetReplacement A
+
+def strictBETotJointSourceNativeCodomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ CAlg_R A
+
+def strictBETotJointSourceOriginalNativeCodomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ CAlg_R A
+
+def strictBETotJointSourceTargetReplacementIso :
+    FunctorIso (strictBETotJointSourceNativeCodomain A)
+      (strictBETotJointSourceOriginalNativeCodomain A)
+```
