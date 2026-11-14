@@ -12459,3 +12459,39 @@ theorem exists_grothendieckWeightedNerveIso
 別途、全単体集合値図式Fについて、`Grothendieck (F ⋙ Functor.elementsFunctor)` の同じ底上の射影のcontinuousLeftFibrationReplacementを分類すると、元のFのEx∞のKan図式に全関手同型となる、という候補の型も一時ファイルで確認した。261で既存のContinuousLeftFibrationFilling一本を対象ビルド（1,503 jobs・終了0）してから `/private/tmp/CheckISW2ElementsLeftStraighteningType.lean` を通し、実ハンドル62729の終了0を確認した。この候補はまだ一覧に追加しておらず、証明も存在も主張しない。
 
 R03eだけで後半の相対Kan比較が済むとは扱わない。要素圏の反対と元のaugmentation、同じ底上のKan化、元の指定点の回収を、どの既存の全比較で示すかを別に確認する。必要な独立の中間定理があれば、同じく型と見込みで§19を判定する。R03dの元の全FunctorIsoと固定始域の同じ比較への一致という型は保つ。R03eの証明に進む。
+
+## 193. R03eの前向きprefixと元の最終対象の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未完了。
+
+元のGrothendieck射列の各初区間を、同じ最終基底への脚を持つCostructuredArrowの関手へ送った。各射の三角形は元の射列の合成則そのものであり、恒等射・合成も保持する。この関手に既存の `GrothendieckCommaTransport.transport` を後合成してfiberに値を持つprefixを得た。
+
+各対象が元の脚で元のfiber対象を送ったものとなる評価式と、prefixの最終対象が元の同じfiber対象そのものになる厳密な等式を確認した。前向きの指定点の正規化の最初の部分であり、weighted nerveの全係数の自然変換と同型の両往復はまだ作っていない。
+
+262：新規一本の対象ビルド1,168 jobs・終了0、小監査110本840宣言・標準三公理のみ。実ハンドル25109の終了0を確認し、鍵返却済み。sorry・独自公理0、計算上限変更なし。今回65行、累計110本・7,354行（外枠15,000）。R03eは65行／見込み500〜900行であり、まだ半分には達していない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次は同じ初区間の包含と既存transport_naturalityを使い、全prefixをsimplexPrefixWeightからの自然変換として束ねる。逆向きはweighted係数の最終対象と元の係数の自然性からGrothendieck射列を回収する。R03dとnative極限性は引き続き未完了。
+
+### 193.1 型（65行）
+
+共通の入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) {n : ℕ} (σ : ComposableArrows (Grothendieck F) n)`。PrefixIndexはF・σを使わない有限添字の包含。
+
+```lean
+def grothWeightedPrefixIndex (i : Fin (n+1)) (k : Fin (i.val+1)) : Fin (n+1)
+
+def grothWeightedPrefixArrow (i : Fin (n+1)) :
+    Fin (i.val+1) ⥤ CostructuredArrow (Grothendieck.forget F) (σ.obj i).base where
+  obj k
+
+def grothWeightedPrefixFiber (i : Fin (n+1)) : Fin (i.val+1) ⥤ F.obj (σ.obj i).base
+
+theorem grothWeightedPrefixFiber_obj (i : Fin (n+1)) (k : Fin (i.val+1)) :
+    (grothWeightedPrefixFiber F σ i).obj k =
+      (F.map ((σ.map (homOfLE
+        (show grothWeightedPrefixIndex i k ≤ i from Nat.le_of_lt_succ k.isLt))).base)).toFunctor.obj
+          (σ.obj (grothWeightedPrefixIndex i k)).fiber
+
+theorem grothWeightedPrefixFiber_last (i : Fin (n+1)) :
+    (grothWeightedPrefixFiber F σ i).obj (Fin.last i.val) = (σ.obj i).fiber
+
+```
