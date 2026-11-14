@@ -12295,3 +12295,135 @@ theorem twistedPairingSimplexMap_right_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
         by dsimp [twistedPairingRightIndex]; exact Nat.sub_le_sub_right hij _))))
 
 ```
+
+## 191. 同じtwisted arrowへの全写像と二射影、R03dの半分での実測（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03d・R02・R03は未完了。
+
+### 191.1 今回の検証済み
+
+元の長い射列が実際のedgewise重みの全順序射と厳密に両立することを証明し、`twistedPairingNerveMap` として一つの全単体写像にした。元の射の四角形を使うのは交差射の基点変更・再添字付けであり、面・退化をすべて含む。
+
+同じ射列の左右の標準区間への全制限も証明した。右は元の標的の射列、左は元の反変の始域の逆反転そのもの。同じnerve反転同型の逆の一般の評価則を合わせ、全写像の右射影がnerveMap B、左射影がnerveMap Aと同じnerveOppositeIso.invの合成であることを、**全写像の厳密な等式**として得た。元の両端の指定底を保つ `twistedPairingNerveMap_projection` が今回の終点。正本Hom∞への全FunctorIsoではまだない。
+
+259：TwistedPairingReindex・TwistedPairingNerve二本、対象ビルド1,559 jobs・終了0、小監査106本821宣言・標準三公理のみ。260：NerveOppositeEvaluation・TwistedPairingRestrictions・TwistedPairingProjections三本、対象ビルド1,572 jobs・終了0、小監査109本829宣言・標準三公理のみ。実ハンドル27277・63636の終了0を確認し、鍵を返却した。sorry・独自公理0、計算上限変更なし。
+
+今回五本375行（159＋48＋32＋69＋67）、累計109本・7,289行（外枠15,000）。R03dの§188以降の検証済みは877行で、§187の見込み950〜1,450行の半分を越えた。既存構成の係数移送・自然性の法則とR03dの証明の分割であり、追加の一覧項目は0。全五本200行以下。
+
+### 191.2 残りの見込みと、先に紙で確認する接続
+
+残りは、全要素圏上で作った同じ射を、全パラメーターを保ってKan係数の分類へ運び、元の固定始域の比較へ正規化すること。次の三点をソースで確認した。
+
+1. `leftStraighteningInfinityDiagram p` は `[LeftFibration p]` を要求する。全source frame Homの要素圏の射影にはこの仮定はないので、そのまま分類に代入できない。
+2. `sourceFrameElementsFamily` の元のaugmentationは `nerve (Elementsᵒᵖ)` からHomへ向かう。今回の全要素圏のfiberは `Elements` である。この反対の違いを同一視してaugmentationを使えない。Kan化・反転との全自然性を含む比較が必要。
+3. `weightedNerve F` は初区間の重み付き係数の族を持つ。全要素圏のnerveと定義上同じものではない。既存の `Thomason.map_isWeakHomotopyEquivalence` は全空間の弱同値であり、それだけでは同じ底上の全分類比較や指定点の正規化を証明しない。
+
+型の移送・BEへの適用・元の固定始域比較との正規化の残りは、比較の橋を本体の定理として参照できれば350〜550行の暫定見込み。一方、上の1〜3を結ぶ数学的な橋には別に700〜1,100行程度を見込むが、まだ同じ底上の必要な型を確定していない。橋も含めた同じ一まとまりの合計見込みは1,927〜2,527行となり、§187の950〜1,450行は小さかった。
+
+したがって、この線の新しいLeanはここでいったん増やさず、必要な橋の主張を紙で型にする。同じR03のまとまりの**独立した中間定理**として切り出すのが数学的に妥当で、その一つの見込みが1,500行以下なら、IS-W2 §19に従い型と見込みを一覧の追加として記録して進める。単に行数を分けるための補題の分割では、この規則を回避しない。1,500行を超える型、まとまりの外、⑤aの欄の型に関わるものが必要と分かった場合は、検証済みのこのコミットを取り込み点にして型と理由を報告する。
+
+この確認でG10へ戻ったり、R03dの型を点ごとのHom同値・π₀の自然性へ弱めたりしない。無条件のnative極限性を得たとは主張しない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 191.3 今回の型
+
+共通の入力は§190.1のI・C・A・B・h・hh・σ。再添字付けの入力αはSimplexCategory.mk m ⟶ SimplexCategory.mk n。
+
+#### TwistedPairingReindex（159行）
+
+```lean
+theorem twistedPairingLeftVertex_index {n : ℕ} (i : Fin (n+n+1+1)) (hi : i.val < n+1) :
+    edgewiseLeftVertex n (twistedPairingLeftIndex i hi) = i
+
+theorem twistedPairingRightVertex_index {n : ℕ} (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) :
+    edgewiseRightVertex n (twistedPairingRightIndex i hi) = i
+
+theorem twistedPairingReindex_left (i : Fin (m+m+1+1)) (hi : i.val < m+1) :
+    edgewiseWeightReindexOrderHom.{u} α i =
+      edgewiseLeftVertex n (α.toOrderHom (twistedPairingLeftIndex i hi))
+
+theorem twistedPairingReindex_right (i : Fin (m+m+1+1)) (hi : ¬ i.val < m+1) :
+    edgewiseWeightReindexOrderHom.{u} α i =
+      edgewiseRightVertex n (α.toOrderHom (twistedPairingRightIndex i hi))
+
+theorem twistedPairingReindex_leftIndex (i : Fin (m+m+1+1)) (hi : i.val < m+1)
+    (hbi : (edgewiseWeightReindexOrderHom.{u} α i).val < n+1) :
+    twistedPairingLeftIndex (edgewiseWeightReindexOrderHom.{u} α i) hbi =
+      α.toOrderHom (twistedPairingLeftIndex i hi)
+
+theorem twistedPairingReindex_rightIndex (i : Fin (m+m+1+1)) (hi : ¬ i.val < m+1)
+    (hbi : ¬ (edgewiseWeightReindexOrderHom.{u} α i).val < n+1) :
+    twistedPairingRightIndex (edgewiseWeightReindexOrderHom.{u} α i) hbi =
+      α.toOrderHom (twistedPairingRightIndex i hi)
+
+theorem twistedPairingThinMap_heq {D : Type u} [Category.{u} D] {N : ℕ}
+    (F : Fin N ⥤ D) {a b c d : Fin N} (ha : a = c) (hb : b = d)
+    {f : a ⟶ b} {g : c ⟶ d} : HEq (F.map f) (F.map g)
+
+theorem twistedPairingThinUnopMap_heq {D : Type u} [Category.{u} D] {N : ℕ}
+    (F : Fin N ⥤ Dᵒᵖ) {a b c d : Fin N} (ha : a = c) (hb : b = d)
+    {f : a ⟶ b} {g : c ⟶ d} : HEq (F.map f).unop (F.map g).unop
+
+theorem twistedPairingCross_heq {a b c d : Fin (n+1)} (ha : a = c) (hb : b = d) :
+    HEq (twistedPairingCross A B h σ a b) (twistedPairingCross A B h σ c d)
+
+theorem twistedPairingSimplex_reindex :
+    (edgewiseWeightReindexOrderHom.{u} α).monotone.functor ⋙ twistedPairingSimplex A B h σ =
+      twistedPairingSimplex A B h (α.toOrderHom.monotone.functor ⋙ σ)
+
+```
+
+#### TwistedPairingNerve（48行）
+
+```lean
+theorem twistedPairingWeightIso_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    edgewiseWeight.{u}.map α ≫ (edgewiseWeightIso n).hom =
+      (edgewiseWeightIso m).hom ≫ stdSimplex.map
+        (SimplexCategory.mkHom (edgewiseWeightReindexOrderHom.{u} α))
+
+def twistedPairingNerveMap : nerve I ⟶ TwistedArrow (nerve C) where
+  app n
+
+```
+
+#### NerveOppositeEvaluation（32行）
+
+```lean
+theorem nerveOppositeIso_inv_apply {n : ℕ} (σ : ComposableArrows Cᵒᵖ n) :
+    (nerveOppositeIso (C
+
+```
+
+#### TwistedPairingRestrictions（69行）
+
+```lean
+theorem twistedPairingLeftOrder_lt (n : ℕ) (i : Fin (n+1)) :
+    (joinLeftOrderHom n n i).val < n+1
+
+theorem twistedPairingLeftIndex_order (n : ℕ) (i : Fin (n+1))
+    (hi : (joinLeftOrderHom n n i).val < n+1) :
+    twistedPairingLeftIndex (joinLeftOrderHom n n i) hi = i.rev
+
+theorem twistedPairingSimplex_restrict_right :
+    (joinRightOrderHom n n).monotone.functor ⋙ twistedPairingSimplex A B h σ = σ ⋙ B
+
+theorem twistedPairingSimplex_restrict_left :
+    (joinLeftOrderHom n n).monotone.functor ⋙ twistedPairingSimplex A B h σ =
+      nerveUnreverseChain (σ ⋙ A)
+
+```
+
+#### TwistedPairingProjections（67行）
+
+```lean
+theorem twistedPairingNerveMap_right :
+    twistedPairingNerveMap A B h hh ≫ edgewiseRight (nerve C) = nerveMap B
+
+theorem twistedPairingNerveMap_left :
+    twistedPairingNerveMap A B h hh ≫ edgewiseLeft (nerve C) =
+      nerveMap A ≫ (nerveOppositeIso (C
+
+theorem twistedPairingNerveMap_projection :
+    twistedPairingNerveMap A B h hh ≫ twistedArrowProjection (nerve C) =
+      lift (nerveMap A ≫ (nerveOppositeIso (C
+
+```
