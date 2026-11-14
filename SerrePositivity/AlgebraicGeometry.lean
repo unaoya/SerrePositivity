@@ -1501,3 +1501,5 @@ public import SerrePositivity.AlgebraicGeometry.DenseImageOpenLifts
 public import SerrePositivity.AlgebraicGeometry.SchemeDenseAffineCoverModel
 
 public import SerrePositivity.AlgebraicGeometry.AffineCoverProperGraphClosure
+
+public import SerrePositivity.AlgebraicGeometry.DenseClosedFactor

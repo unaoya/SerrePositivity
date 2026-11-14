@@ -2082,3 +2082,19 @@ G1・G2共用部品込み本体12,522行、入口込み12,736行。C06 は本体
 一覧：済み12／全体17（うち追加8）。
 
 監査出力：`SerrePositivity.AlgebraicGeometry.AffineCoverProperGraphClosure: 1 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 1 declarations.`。
+
+
+C06 の実際のチャート像への射影とチャート上の固有射（着手前の型、見込み100〜220行）：`exists_proper_map_to_immersion_image` は稠密な j:W→Z、固有な p:Z→P、準コンパクトな immersion e:X→P、l:W→X と j≫p=l≫e から、e の実際の像への固有な a:Z→e.image と二つの可換式を供給する。`exists_proper_chart_open` は j が開包含なら、e.toImage に沿う実際の pullback V と、開包含 V→Z、固有射 V→X、共通の W から V への開包含と可換式を供給する。既存の因子化・像・底変換の法則を使う C06 内の分割で親項目を増やさない。この段階では元の対象への貼り合わせと固有性は残る。
+
+
+### C06：稠密な射上で決まる閉部分への実際の因子化
+
+`DenseClosedFactor`（53行）：`exists_closed_factor_of_schemeTheoreticallyDominant` は稠密な射上で閉部分を通る射の全体での実際の因子化と制限の一致を返す。`exists_proper_closed_factor_of_schemeTheoreticallyDominant` はその因子化の固有性も返す。閉包含の pullback の核が稠密な射の核以下になることから同型を得た。対象の被約性を要求しない。
+
+本体53行・入口1行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,002ジョブ、小監査の終了状態0を確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-dense-closed-factor-check.log`・`2g-dense-closed-factor-native.log`・`2g-dense-closed-factor-audit.log`。
+
+G1・G2共用部品込み本体12,575行、入口込み12,790行。C06 は本体641行までで未完。C06 のチャート上の固有射の供給と貼り合わせ、一般の対象への接続、B01〜B04 が残る。
+
+一覧：済み12／全体17（うち追加8）。
+
+監査出力：`SerrePositivity.AlgebraicGeometry.DenseClosedFactor: 2 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 2 declarations.`。
