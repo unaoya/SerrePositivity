@@ -8694,3 +8694,37 @@ lemma bousfieldKanFrameAugmentation_zero :
 全次数の実増大射と、単位同型を介した元の次数零の実増大射との一致まで検証済み。
 これを同じ `strictDiagramFreeArrowAugmentation` へ適用し、元の実比較射への接続を続ける。
 実増大射の弱同値性は未完。E01別経路の紙は§95.1、停止点5aは未達。
+
+## §97 RR02(a)：指定自由arrow frameへの増大射の適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `d2de4be8c` の138行の検証・コミットとして進捗。
+§96の全次数の実増大射と次数零の照合を、元の自由arrow余錐へ適用する。
+
+```lean
+def strictDiagramFreeArrowRealizedAugmentation (X : StrictComplexDiagram A d) :
+  strictDiagramFreeArrowRealizedFrame A d X ⟶ (strictDiagramSourceFrame A d X).obj
+def strictDiagramFreeArrowRealizedZeroIso (X : StrictComplexDiagram A d) :
+  (strictDiagramFreeArrowRealizedFrame A d X).obj (SimplexCategory.mk 0) ≅
+    strictDiagramFreeArrowRealization A d X
+lemma strictDiagramFreeArrowRealizedAugmentation_zero (X : StrictComplexDiagram A d) :
+  (strictDiagramFreeArrowRealizedZeroIso A d X).hom ≫
+      strictDiagramFreeArrowRealizationAugmentation A d X =
+    (strictDiagramFreeArrowRealizedAugmentation A d X).app (SimplexCategory.mk 0)
+```
+
+既存の指定余錐と同じ実現の単位同型を使うだけの適用で、IDは増やさない。
+弱同値性は未証明であり、元の増大射から別の弱同値へ置き換えない。
+
+### §97.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeArrowRealizedAugmentation` 53行を対象ビルド（3,837 jobs）し、
+小監査10宣言・標準三公理のみを確認。ログは
+`/tmp/is-w1/free-arrow-realized-augmentation/build.log`。プロセスは終了コード0。
+計算上限変更なし。検証済み累計193本・14,664行。
+上限変更後のRR02(a)実測2,166行、(b)(c)新規0行。
+指定自由arrow frameの全次数の実増大射と次数零の一致まで接続した。
+増大射の弱同値性は未完で、RR02の完了とは数えない。
