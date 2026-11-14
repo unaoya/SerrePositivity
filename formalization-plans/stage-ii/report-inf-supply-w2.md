@@ -8790,3 +8790,144 @@ D02の四本は **`d2387aae7`**（258行）。鍵付き対象ビルド199は **8
 その一つの錐に、既存 `complexOrdinaryDerivedNatTransIso` を `discreteTotalCochainNatIso.inv` に適用した全関手同型と、既存 `exists_limitCone_vertex_of_invertible` を使い、頂点を `functorVertex (nerveMap discreteCochainFunctor ≫ complexOrdinaryDerivedSource)` に厳密に固定する。これにより同じ頂点の全族とその評価錐を同時に選べる。関手圏の点ごとの極限の逆向きは既存 `isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits` を再利用し、評価した錐の極限性・頂点・全族の両境界・ホモロジー入口へ戻す。一般の頂点輸送・新しい厳密化・新しい模型圏構造を作らない。
 
 このための `DiscreteTotApexTransport` は92行の未検証草稿で累計外。mainの既存 `DerivedNatTransIso`・`LimitConeVertexTransport` の二本が冷たい依存なので、対象だけをビルド201で生成してから照合する。この段階ではD05〜D08の最終結果を主張しない。外枠の残りを追跡し、上限を超える工程が必要になったら検証済みを保存して報告する。
+
+
+## 160. 停止点2b：G10の完成（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。A01〜A12・A05a、B01〜B08、C01〜C07、D01〜D08が全て完了。停止点2aに加え、全図式射・全高次単体を持つ同じ指定Tot錐の全族、両境界、各図式での同じ全join射への厳密復元、離散入力の交代余面複体への頂点輸送と全族、整数次数への零延長を明記したホモロジー入口まで閉じた。
+
+取り込み用コードの最終点は **`39d5ccd32`**（D05・D06と頂点輸送 **`5e2448beb`**、D01・D03・D04 **`2d6662535`**、D02 **`d2387aae7`** を含む）。停止点2a後に登録する新規40本を `is-w2-stop2b-20261114-modules.json` に分けた。全G10累計は `is-w2-g10-20261114-modules.json`。入口・公式監査・mainへの取り込みは調整役に任せ、こちらでは変更していない。
+
+### 160.1 最後の四本の型
+
+共通：`A : Type u`、`[CommRing A]`。D08は既存 `HasDerivedCategory.standard` をlocal instanceとして使い、追加の仮定にしていない。一般のSSetの模型圏仮定なし。全て既存構成の自然性・単位・合成・係数移送・貼り合わせの法則と、承認済み一覧の証明分割。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteTotApexTransport`（93行）。
+
+```lean
+theorem discreteTotFunctorVertex_curry_fst {B D : SSet.{u+1}} (F : B ⟶ D) :
+    SSet.yonedaEquiv (curry (fst B (Δ[0] : SSet.{u+1}) ≫ F)) = functorVertex F
+
+theorem rawDiscreteTotFunctorCone_vertex :
+    (rawDiscreteTotFunctorCone A).vertex =
+      functorVertex (nerveMap (discreteTotalFunctor A) ≫ complexOrdinaryDerivedSource A)
+
+def discreteTotCochainDerivedIso :
+    FunctorIso (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A)
+      (nerveMap (discreteTotalFunctor A) ≫ complexOrdinaryDerivedSource A)
+
+theorem exists_discreteCochainFunctorCone :
+    ∃ c : JoinCone (rawDiscreteTotFunctorDiagram A), IsLimitCone c ∧
+      c.vertex = functorVertex (nerveMap (discreteCochainFunctor A) ≫
+        complexOrdinaryDerivedSource A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleCone`（96行）。
+
+```lean
+def discreteCochainFunctorCone : JoinCone (rawDiscreteTotFunctorDiagram A)
+
+theorem discreteCochainFunctorCone_isLimit : IsLimitCone (discreteCochainFunctorCone A)
+
+theorem discreteCochainFunctorCone_vertex :
+    (discreteCochainFunctorCone A).vertex =
+      functorVertex (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A)
+
+theorem rawDiscreteTotFunctorDiagram_at (M : CosimplicialObject (ModuleCat.{u} A)) :
+    evaluateFunctorDiagram (rawDiscreteTotFunctorDiagram A) (ComposableArrows.mk₀ M) =
+      strictCosimplicialModuleNerve A M ≫ discreteModuleSource A
+
+theorem discreteCochainFunctorCone_isPointwise :
+    IsPointwiseLimitCone (discreteCochainFunctorCone A)
+
+def cosimplicialModuleCone (M : CosimplicialObject (ModuleCat.{u} A)) :
+    JoinCone (strictCosimplicialModuleNerve A M ≫ discreteModuleSource A)
+
+theorem cosimplicialModuleCone_isLimit (M : CosimplicialObject (ModuleCat.{u} A)) :
+    IsLimitCone (cosimplicialModuleCone A M)
+
+theorem cosimplicialModuleCone_vertex (M : CosimplicialObject (ModuleCat.{u} A)) :
+    (cosimplicialModuleCone A M).vertex =
+      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((discreteCochainFunctor A).obj M))
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleConeFamily`（146行）。
+
+```lean
+theorem moduleConeCurry_evaluateAt {K D : SSet.{u+1}}
+    (H : nerve (CosimplicialObject (ModuleCat.{u} A)) ⊗ K ⟶ D)
+    (M : CosimplicialObject (ModuleCat.{u} A)) :
+    curry H ≫ evaluateFunctorAt (ComposableArrows.mk₀ M) =
+      lift (SSet.const (ComposableArrows.mk₀ M) : _ ⟶
+      nerve (CosimplicialObject (ModuleCat.{u} A))) (𝟙 K) ≫ H
+
+def cosimplicialModuleConeFamily :
+    join (Δ[0] : SSet.{u+1}) ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗
+      nerve (CosimplicialObject (ModuleCat.{u} A)) ⟶ derivedInfinityCategory A
+
+def discreteTotEvaluationFamily :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⊗
+      nerve (CosimplicialObject (ModuleCat.{u} A)) ⟶ derivedInfinityCategory A
+
+theorem cosimplicialModuleConeFamily_at_lift (M : CosimplicialObject (ModuleCat.{u} A)) :
+    lift (𝟙 _) (SSet.const (ComposableArrows.mk₀ M) : _ ⟶
+      nerve (CosimplicialObject (ModuleCat.{u} A))) ≫ cosimplicialModuleConeFamily A =
+      (cosimplicialModuleCone A M).val
+
+theorem cosimplicialModuleConeFamily_at (M : CosimplicialObject (ModuleCat.{u} A)) :
+    inv (fst (join (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory))) (Δ[0] : SSet.{u+1})) ≫
+      (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex M)) ≫ cosimplicialModuleConeFamily A =
+        (cosimplicialModuleCone A M).val
+
+theorem cosimplicialModuleConeFamily_boundaries :
+    (joinInl (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ 𝟙 _) ≫
+      cosimplicialModuleConeFamily A =
+        snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (ModuleCat.{u} A))) ≫
+          nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A ∧
+    (joinInr (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ 𝟙 _) ≫
+      cosimplicialModuleConeFamily A = discreteTotEvaluationFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleConeHomology`（45行）。
+
+```lean
+def cosimplicialModuleCone_homology (M : CosimplicialObject (ModuleCat.{u} A)) (i : ℤ) :
+    derivedInfinityHomology A i (cosimplicialModuleCone A M).vertex ≃ₗ[A]
+      ((discreteCochainFunctor A).obj M).homology i
+
+```
+
+### 160.2 最終検収
+
+- 201は再利用するmainの既存二本の生成のみ：5,714 jobs、終了コード0。新規監査の数には含めない。
+- 202：交代余面全頂点への輸送、8,153 jobs、終了コード0、新規一本6宣言・標準三公理のみ。
+- 203：D05・D06および既存 `StrictHomology` の生成、10,234 jobs、終了コード0。新規一本だけの小監査10宣言・標準三公理のみ。
+- 204：D07・D08、10,236 jobs、終了コード0。**停止点2a後の自レーン新規40モジュールをまとめて小監査し208宣言、標準三公理のみ**。これは全段階IIや全366本の今回の再監査ではない。A・B・Cと前段の依存は各報告の検証済み対象ビルド・監査を引き継ぐ。
+
+ログ `/private/tmp/isw2-build201.log`〜`204.log`、最終監査 `/private/tmp/AuditISW2G10DComplete.lean`。全ハンドルの終了コード0を確認済み、鍵返却済み。各回 `--class impl --wait 3600`、整理券一枚、一回1,700秒、対象ビルド・小監査の間だけ鍵を使用。root・大きい監査は流していない。`git diff --check`成功。sorry・独自公理0、計算・再帰上限の増加なし、既存宣言・⑤a・入口・公式監査・mainの変更なし。今回200行超のファイルなし。未検証のG10草稿を残さない。
+
+最終実測 **366モジュール・22,870行**。外枠23,000行内（残り **130行**）。
+
+### 160.3 §37.2・§72.2の四まとまり：見込みと実測の差
+
+実測は各まとまりを完了した報告の累計間の増分で、共通の前提計算・証明分割・docstring/importを含む。Aは両見積もりの時点で既に途中まであったので、同じ時点からA完了までを比較した。B〜DはそれぞれA・B・C完了時点からの増分。B4の配置・名前空間追従を含む最終ソースの数え直しは上記累計JSON。
+
+| まとまり | §37.2見込み | §72.2見込み | 完了実測と差 |
+| --- | ---: | ---: | --- |
+| A：正規化テンソル／積重み | 1,000〜1,600 | 400〜700 | §37の5,786→A完了12,781：6,995（+5,395〜+5,995）。§72の8,834→12,781：3,947（+3,247〜+3,547） |
+| B：指定豊穣Hom・native極限性 | 600〜900 | 600〜900 | 12,781→18,226：5,445（+4,545〜+4,845） |
+| C：標準脚・D(A)輸送 | 400〜700 | 400〜700 | 18,226→19,553：1,327（+627〜+927） |
+| D：全図式射・指定全錐族・離散入口 | 500〜900 | 500〜900 | 19,553→22,870：3,317（+2,417〜+2,817） |
+
+主な超過は抽象的な同値から自動では出ない、元のAW/Γ/Moore/豊穣合成の同じ射の照合と、全パラメータの厳密HA写像・元の全joinセルの復元。D後半の離散部分は、既存の関手圏の点ごとの極限判定と全自然同型に沿う頂点輸送を使い、全族を作り直す増分を抑えた。型・範囲を削る短縮はしていない。
+
+### 160.4 そのまま3b-4へ
+
+IS-W2 §18・更新後の/goalに従い、ここで承認待ちにせず、承認済み§152のR01〜R12（外枠15,000行）のTot側から進む。TotのR01〜R05・R11/R12のTot部分が停止点3b-4a、実現のR06〜R10が停止点3b-4b。その後に任意coherent BE図式の段0を報告して止まる。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aを変えず、無条件の `cAlgForgetDerived_mapJoinCone_isLimit` を使う。点つきKan Totは作らない。3b-4の実測はG10とは別に数える。
