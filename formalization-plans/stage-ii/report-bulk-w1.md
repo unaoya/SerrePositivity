@@ -1033,3 +1033,12 @@ DeRhamComparisonPolyの[23参照](bulk-5inf0/de-rham-universal-specialization-fo
 A3冒頭の[第40](bulk-5inf0/a3-prism-prefix-block40-validation.json)・[第41](bulk-5inf0/a3-prism-prefix-block41-validation.json)・[第42](bulk-5inf0/a3-prism-prefix-block42-validation.json)の部分検査も全体としては失敗。冒頭のopenが通常は後続draftのimportから継承する二つの名前空間を、部分検査には本体の二つのpublic importで明示した。原本の古典的な宣言の本文はそのまま。docstringがvariableに付いていた構文を定義へ付け直し、Typeの値を存在命題から直接casesで取り出していた箇所を、同じ存在一意性からClassical.chooseで取り出す形に修正した。第42束の残りは構成した射の局所定義を照合する1箇所。これも第43束で検査する。
 
 部分検査の型とaxiomsの出力では、universalLciPrismが実際にP₀・h₀・rを取り、universalLciPrismとその有界性の2宣言は標準3公理だけと確認できた。ただし部分ファイル全体は失敗であり、A3全体や全57本の成功には数えていない。後続のlciClassifyingMapがエラーで登録された段階のsorryAxも、その失敗としてログに残している。
+
+
+### 5∞-0 のdraft検査・第43束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第43束](bulk-5inf0/draft-block43-validation.json)でA2/HodgeTateFiltrationが約25秒で成功し、有効な成功は33／57本。有限変数は同じ有限集合のULiftで宇宙を合わせ、増大余錐の脚は同じ辺の端点の定義だけを照合した。loopは本体の既存の図式の同値の逆と評価の合成、入力の単位は同じpostcompositionの恒等・結合法則で記述する。検査済みのソースをコミットする。
+
+A3冒頭の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)も約33秒で成功。[生成した検査用ソース](bulk-5inf0/a3-prism-prefix-block43-source.txt.gz)とログを保存した。universalLciPrismの型はP₀・h₀・rを受け取り、universalLciPrism・universalLciPrism_bounded・lciClassifyingMapの[axioms](bulk-5inf0/a3-prism-prefix-audit.json)はすべてpropext・Classical.choice・Quot.soundだけ。環・δ構造・生成元の式を保った承認済みの変更が、既存の完成自由δ環の補題で通った。これはA3全体の成功とは分け、一覧の完了数にはまだ加えない。
+
+同じ束のDiscreteCaseとBaseChangeAndTensorは失敗。前者は同じ台環のFrobeniusを明示の環射型で読む照合、後者は多項式の係数変更・名前空間・神経の定数頂点の照合が残る。後者の係数変更は、本体の証明済みchangePolyを直接使う準備にした。第44束で再検査する。
