@@ -17610,3 +17610,372 @@ Tot九欄の新規行数をM14の未証明分から勝手に控除せず、別�
 
 この紙の準備はM14のP⁰の_totや完備化後のP⁰の完成ではない。
 M14は§259の実測20,940行・一覧12/48（追加4）から続ける。
+
+## 261. C452の残り色どうしの重み付き逆転和（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の区間長は§246で一致しているので、残り色どうしでは元の語の位置で直接比較できる。
+以下は同じ指定位置・指定重みの法則で、新しい作用や構成ではない。
+各証明200行以内の見込み。まず元の位置対、次に既存の全出現の順序同値で再添字付けする。
+
+```lean
+lemma positiveComposite_remaining_inversionTerm {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p p' : Fin (m + d + 1))
+    (hp : (positiveWord u).val p ≠ k) (hp' : (positiveWord u).val p' ≠ k) :
+    (if compositeFirstPosition u v k c.1 p < compositeFirstPosition u v k c.1 p' ∧
+        (positiveCompositeCutWord u v k c.1).val (compositeFirstPosition u v k c.1 p') <
+          (positiveCompositeCutWord u v k c.1).val (compositeFirstPosition u v k c.1 p) then
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+          (compositeFirstPosition u v k c.1 p) *
+        intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+          (compositeFirstPosition u v k c.1 p') else 0) =
+    (if p < p' ∧ (positiveWord u).val p' < (positiveWord u).val p then
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p *
+        intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p' else 0)
+
+lemma remainingWordPositionOrderIso_inversion_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a b : {a : Fin (m + 1) // a ≠ k}) :
+    (∑ p : ↥(Surjection.occurrences (positiveWord u).val a.val),
+      ∑ p' : ↥(Surjection.occurrences (positiveWord u).val b.val),
+      if p.val < p'.val ∧ (positiveWord u).val p'.val < (positiveWord u).val p.val then
+        intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p.val *
+          intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p'.val else 0) =
+    (∑ p : ↥(Surjection.occurrences (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ p' : ↥(Surjection.occurrences (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k b)),
+      if p.val < p'.val ∧ (positiveCompositeCutWord u v k c.1).val p'.val <
+          (positiveCompositeCutWord u v k c.1).val p.val then
+        intervalLength c.2 (positiveCompositeCutWord u v k c.1).val p.val *
+          intervalLength c.2 (positiveCompositeCutWord u v k c.1).val p'.val else 0)
+```
+
+有限点検：`check-remaining-weighted-inversions.py`、全12,233組。
+退化も含め、元の残り位置の全ての対について、位置順序・色順序と両区間長を
+掛けた0/1の重み付き寄与が一致した。
+証明の原料は `compositeFirstPosition_strictMono`、
+`positiveCompositeFirstPosition_label`、`IntervalCuts.remainingPosition_lt_iff`、
+`positiveComposite_remaining_intervalLength`、`remainingWordPositionOrderIso`。
+これをC452全体の完成として扱わない。
+
+## 262. C452の二つの活動集合を水平fiberで数える法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§261の残り色の和は元の語の区間長、§259の挿入色の和は活動頂点の対で表した。
+両者を結ぶため、既存 `positionInversionCount_comp_monotone` と同じ証明を、
+左右が別々の有限集合の場合で使う。既存の逆転寄与を再添字付けする法則で、
+新しい数や作用の定義ではない。型は次。証明200行以内の見込み。
+
+```lean
+lemma sum_positionInversionTerm_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (S T : Finset (Fin N)) :
+    (∑ x ∈ S, ∑ y ∈ T, IntervalCuts.positionInversionTerm (v ∘ f) x y) =
+      ∑ i : Fin M, ∑ j : Fin M, if i < j ∧ v j < v i then
+        (S.filter (fun x => f x = i)).card * (T.filter (fun y => f y = j)).card else 0
+```
+
+有限点検：長さ0〜3、水平値域1〜3、二色の全ラベル列、全ての二有限部分集合を
+独立に選んだ7,414例で一致した。単調写像に等しい値がある場合、
+逆転する色対は同じ水平fiber内にないことが、元の既存証明と同じ理由になる。
+左右を同じ集合に狭めたり、色順序の条件を省いたりしない。
+
+## 263. C452の色別の重み付き和と活動頂点の和を結ぶ法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§262は対象ビルドで成功した。次は同じ色の水平fiberの濃度を元のintervalLengthで読み、
+既存の色別の二つの表記を結ぶ。以下は既存の有限和・濃度の法則と証明分割であり、
+新しい構成や作用ではない。各証明200行以内の見込み。
+
+```lean
+lemma sum_ite_and_eq_filter {α β : Type*} (S : Finset α) (T : Finset β)
+    (P : α → Prop) (Q : β → Prop) [DecidablePred P] [DecidablePred Q]
+    (F : α → β → ℕ) :
+    (∑ x ∈ S, ∑ y ∈ T, if P x ∧ Q y then F x y else 0) =
+      ∑ x ∈ S.filter P, ∑ y ∈ T.filter Q, F x y
+
+lemma active_color_horizontal_fiber_card {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin r) (i : Fin (m + 1)) :
+    (((activeVertexPositions s v).filter (fun x => label s v x = a)).filter
+      (fun x => s.horizontal x = i)).card = if v i = a then intervalLength s v i else 0
+
+lemma weighted_color_inversion_sum_eq_active {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin r) :
+    (∑ i : ↥(Surjection.occurrences v a), ∑ j : ↥(Surjection.occurrences v b),
+      if i.val < j.val ∧ v j.val < v i.val then
+        intervalLength s v i.val * intervalLength s v j.val else 0) =
+    (∑ x : ↥(colorPositions s v a), ∑ y : ↥(colorPositions s v b),
+      if x.val ∈ activeVertexPositions s v ∧ y.val ∈ activeVertexPositions s v then
+        IntervalCuts.positionInversionTerm (label s v) x.val y.val else 0)
+```
+
+有限点検を先に行った：水平幅0〜3、垂直幅0〜2、全二色列（非全射も含む）、
+全経路と全色対の1,400例。色別fiberの濃度と、重み付き・活動頂点の両逆転和が一致。
+同じ色対の逆転が零になる場合や、同じ水平位置に複数頂点がある場合も含む。
+元の符号・区間長・活動性の定義は変えない。
+
+### 263.1 部分型の二重和の明示的な証明分割
+
+一覧：済み 12／全体 48（うち追加 4）
+
+条件式を含む二重和では、`sum_coe_sort`の暗黙の関数推論で進まなかったので、
+同じ `Finset.sum_subtype` を二回適用する形に分ける。新しい定理の内容はなく、
+有限和の同じ添字の表示の照合。型は次（証明200行以内）。
+
+```lean
+lemma sum_finset_subtype_pair {α β : Type*} (S : Finset α) (T : Finset β)
+    (F : α → β → ℕ) :
+    (∑ x : ↥S, ∑ y : ↥T, F x.val y.val) = ∑ x ∈ S, ∑ y ∈ T, F x y
+```
+
+## 264. C452の全色対の和を四つに分ける法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§263の色別の二つの逆転和の表記はビルドで一致した。
+全色対の和を残り色同士・残り→挿入・挿入→残り・挿入色同士へ分ける際は、
+新しい色の同値を作らず、既存 `operadInsertionEquiv` の有限和の法則を使う。
+型は次。各証明200行以内。
+
+```lean
+lemma sum_insertion_positions (m n : ℕ) (k : Fin (m + 1)) (F : Fin (m + n) → ℕ) :
+    (∑ a, F a) =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, F (BarrattEccles.remainingPosition m n k a)) +
+      ∑ b : Fin n, F (BarrattEccles.insertedPosition m n k b)
+
+lemma sum_insertion_position_pairs (m n : ℕ) (k : Fin (m + 1))
+    (F : Fin (m + n) → Fin (m + n) → ℕ) :
+    (∑ a, ∑ b, F a b) =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        F (BarrattEccles.remainingPosition m n k a) (BarrattEccles.remainingPosition m n k b)) +
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin n,
+        F (BarrattEccles.remainingPosition m n k a) (BarrattEccles.insertedPosition m n k b)) +
+      (∑ a : Fin n, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        F (BarrattEccles.insertedPosition m n k a) (BarrattEccles.remainingPosition m n k b)) +
+      (∑ a : Fin n, ∑ b : Fin n,
+        F (BarrattEccles.insertedPosition m n k a) (BarrattEccles.insertedPosition m n k b))
+```
+
+有限点検：m,n=0〜3の全kについて40例。零arityも含み、
+同じ残り色・挿入色の番号が全色を重複なく覆い、四つの対の和が元の二重和に一致した。
+C452へは正の内側arity n+1で適用する。
+
+## 265. C452の逆転指数を元の交差和へ帰着する法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§261と§263で同じ残り色の活動逆転和を移し、§264で全色対を分け、
+挿入色同士の和を§259で元の内側指数に戻す。新しい数学や構成でなく、
+ここまでに証明した有限和の接続。型は次。各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_remaining_active_inversion_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a b : {a : Fin (m + 1) // a ≠ k}) :
+    (∑ x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ y : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k b)),
+      if x.val ∈ activeVertexPositions c.2 (positiveCompositeCutWord u v k c.1).val ∧
+          y.val ∈ activeVertexPositions c.2 (positiveCompositeCutWord u v k c.1).val then
+        IntervalCuts.positionInversionTerm (label c.2 (positiveCompositeCutWord u v k c.1).val)
+          x.val y.val else 0) =
+    (∑ x : ↥(colorPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val a.val),
+      ∑ y : ↥(colorPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val b.val),
+      if x.val ∈ activeVertexPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val ∧
+          y.val ∈ activeVertexPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val
+        then IntervalCuts.positionInversionTerm
+          (label (positiveCompositeOuterCut u v k c) (positiveWord u).val) x.val y.val else 0)
+
+lemma positiveComposite_permutationExponent_color_decomposition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    let δ := positiveCompositeOuterCut u v k c
+    let ε := positiveCompositeInnerCut u v k c
+    let w := (positiveCompositeCutWord u v k c.1).val
+    let uPos := (positiveWord u).val
+    permutationExponent c.2 w =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        ∑ x : ↥(colorPositions δ uPos a.val), ∑ y : ↥(colorPositions δ uPos b.val),
+        if x.val ∈ activeVertexPositions δ uPos ∧ y.val ∈ activeVertexPositions δ uPos then
+          IntervalCuts.positionInversionTerm (label δ uPos) x.val y.val else 0) +
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin (n + 1),
+        ∑ x : ↥(colorPositions c.2 w (BarrattEccles.remainingPosition m (n + 1) k a)),
+        ∑ y : ↥(colorPositions c.2 w (BarrattEccles.insertedPosition m (n + 1) k b)),
+        if x.val ∈ activeVertexPositions c.2 w ∧ y.val ∈ activeVertexPositions c.2 w then
+          IntervalCuts.positionInversionTerm (label c.2 w) x.val y.val else 0) +
+      (∑ a : Fin (n + 1), ∑ b : {b : Fin (m + 1) // b ≠ k},
+        ∑ x : ↥(colorPositions c.2 w (BarrattEccles.insertedPosition m (n + 1) k a)),
+        ∑ y : ↥(colorPositions c.2 w (BarrattEccles.remainingPosition m (n + 1) k b)),
+        if x.val ∈ activeVertexPositions c.2 w ∧ y.val ∈ activeVertexPositions c.2 w then
+          IntervalCuts.positionInversionTerm (label c.2 w) x.val y.val else 0) +
+      permutationExponent ε (positiveWord v).val
+```
+
+§259・261・263・264の有限点検済みの同じ色番号・同じ寄与だけを用いる。
+この式の残り二つの交差和を、外側の指定色kとの和とg_iの補正へ戻すことが残る。
+位置指数の全和もまだ未証明であり、C452やL12aを完了には数えない。
+
+## 266. C452の交差項に使う連続区間の幅の和
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§265の合成逆転指数の分解が対象ビルドで成功した。
+交差項では、一つの挿入部分語の全区間長をまとめる必要がある。
+まず既存 `hi_eq_lo_succ` と `lo_le_hi` から、同じ連続区間の幾何学的な幅の和を
+元の両端へまとめる法則を示す。新しい構成ではなく既存の両端の貼り合わせの法則。
+型は次（証明200行以内の見込み）。
+
+```lean
+lemma sum_consecutive_intervalWidths {m q : ℕ} (s : Cut m q)
+    (a L : ℕ) (h : a + L < m + 1) :
+    (∑ z : Fin (L + 1), (hi s ⟨a + z.val, by have hz := z.isLt; omega⟩ -
+      lo s ⟨a + z.val, by have hz := z.isLt; omega⟩)) +
+      lo s ⟨a, by omega⟩ = hi s ⟨a + L, h⟩
+```
+
+有限点検：水平幅0〜4、垂直幅0〜3の全経路と全ての非空連続区間、1,344例。
+元のhi−loの和に元の最初のloを足すと、元の最後のhiに一致した。
+この幅の法則だけでcaesuraの個数やC452を証明済みにはしない。
+
+## 267. 完備化後のP⁰の紙の続き：(a)の台を項別完備化で表す候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§32の三案のうち、(a)の「完備化した項を使う」に関して、
+単にambientな実現と完備化を交換する§223.2の案とは別に、
+**実現後の鎖模型の項別完備化**を使う候補を整理する。
+ここも紙のみ。以下の未供給の構成を48本へ自己承認で追加してLeanに入ることはしない。
+
+### 267.1 台の完備化を計算する候補の前提を明示する
+
+Bを `perfectPrismRing/p` の実際のmod p係数、dを実際のprismの元の像とする。
+固定した係数の非零の枝はW(R♭)であり、B≅R♭の指定比較を供給すればBは完全でreduced。
+零環の枝も別途同じ比較で処理する。比較を証明せずBへPerfectRingインスタンスがあると
+扱ったり、dの正則性を仮定したりはしない。
+
+自分の推論：reducedな環ではd^r b=0 (r>0)から(db)^r=0、従ってdb=0。
+よってBのd冪ねじれはdで殺されるという一様な境界を持つ。
+[Stacks Lemma 15.95.1–2](https://stacks.math.columbia.edu/tag/0BKF)を再確認した。
+この有界性のもとでは、principalなKoszul塔と通常の商の塔が同じ導来完備化を計算する。
+これは一般のBや任意のdへ正則性なしで通常の商に置き換えてよい、という主張ではない。
+
+さらに、rawな対象を表す**項別に平坦かつK平坦な**B上の厳密BE代数Kを選べれば、
+K⊗^L_B B/d^rは項別の商K/d^rで計算できる。
+この商の塔は複体の各次数で全射だから、導来逆極限を項別の通常の逆極限で表す候補になる。
+ここで選ぶKは既に実現した複体の模型であり、二重模型の各項を完備化してから
+ambientな実現と交換したことにはしない。
+
+本体の `cofibrantCarrierKFlat` は実際に**K平坦性**の型であることを読み直した。
+その宣言だけで項別の平坦性まで証明済みとはしない。
+項別平坦な厳密BE代数模型を選ぶ際は、セルの次数付きの台とretractからその性質を供給し、
+同じraw対象・指定Frobeniusの辺との比較を保持する必要がある。
+
+### 267.2 連続な作用へ進める理由と、まだ残る穴
+
+厳密なB線形BE代数の有限arityの作用は、各入力のd進フィルトレーションに関して連続。
+p入力のMayの鎖の式は、各入力がd^r倍なら出力がd^{pr}倍になる。
+これは同じB線形のp入力作用からの推論で、完成したP⁰の自然性だけからの推論ではない。
+従って、項別完備化した複体へ同じ有限arityの作用・微分・operadの法則を
+連続に延ばす厳密な候補がある。
+ただし現在のκへの制限の後の模型を、理由なくB線形の模型だとはしない。
+
+ここから完成までは次が不足している。
+
+1. 項別完備化した厳密BE代数と、実際のnativeな `directPerfectionValue/p` の同じ比較。
+   台の複体の計算だけでCAlgの同じ反射・単位の比較も終えたとはしない。
+2. L44の二重模型から、上で選ぶKへ同じP⁰・同じFrobeniusを運ぶ比較。
+   K平坦な置き換えをしただけで、L44の明示的なprimitiveも移ったとは扱わない。
+3. P⁰と指定Frobeniusの差を与える**同じprimitiveの連続性**。
+   両辺の鎖の式が連続であることだけでは、ホモロジー上の等式を完備化へ移せない。
+   ここが(a)の候補でも消してはいけない主要な証明義務。
+4. Frobeniusはdをd^pへ送る半線形の辺であり、通常のB線形自己射としない。
+   フィルトレーションの添字の共終な変更と、指定されたnativeな辺まで追う。
+
+特に、denseなraw鎖でP⁰とFrobeniusがホモロジー上で一致するという理由だけで、
+完備化した鎖のホモロジーでも一致すると主張することはしない。
+continuousなprimitiveまたは商での同じ等式が要る。
+
+### 267.3 (a)(b)(c)の現在の比較
+
+(a)は上の項別完備化の模型を使えば、§223.2のambientな実現との交換を
+仮定しない別の構成候補になる。ただし(1)〜(4)は未供給で、完成済みではない。
+(b)の単位による全射性は依然として一般に成り立たず、§255のKoszul商での検出案も
+相対barとTotの比較の穴を残す。
+(c)については、(a)の連続なprimitiveと(b)の商での検出の両方が不可能とはまだ示していない。
+従ってcoherentなSp値P⁰が不可避という判定は、現段階では出さない。
+一方で、いずれかの候補が未証明であることを「May案で完備化も通った」とは報告しない。
+同じprimitive/商の比較がcoherentなP⁰なしには供給できないと判明したら、§32どおり止める。
+この節は承認済みの並行する紙の比較であり、新しい厳密完備化のLeanは書いていない。
+
+## 268. C452の残り色・四つの色対・同じ交差和への帰着：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§261〜266の**8モジュール410行**を検証した。
+残り色の元の重み付き逆転寄与・全出現位置の二重和、左右が別の活動集合の水平fiber、
+色別の重み付き和と同じ活動頂点の和の一致、同じ全色対の四つへの分解を証明した。
+これらを§259の内側指数と接続し、元の合成の `permutationExponent` を、
+**元の外側の残り色対の和＋同じ二方向の交差和＋元の内側指数**へ帰着した。
+また、次の交差項に使う連続区間の幾何学的な幅の和を元の両端へまとめた。
+既存の公開宣言・符号・型は変更していない。元の圏の同じ指定切断を比較している。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-remaining-inversion-sums-01.log`：2,863 jobs。
+- `m14-mixed-vertex-inversion-fibers-01.log`：1,169 jobs。
+- `m14-color-pair-weighted-inversions-04.log`：1,171 jobs。
+- `m14-insertion-color-sum-decomposition-01.log`：976 jobs。
+- `m14-composite-permutation-color-decomposition-02.log`：2,914 jobs。
+- `m14-consecutive-interval-widths-03.log`：2,208 jobs。
+
+途中、部分型の二重和の関数引数・同じlabel関数の等式・filterの集合等式を明示し、
+現行API名 `Finset.notMem_empty` と有限和の差の括弧を修正した。
+未使用simp引数を除去し、最終ソースの対象警告0。心拍数・再帰上限は増やしていない。
+
+小監査は今回の新規分だけを二回で検収：
+
+- `audit-m14-composite-permutation-colors.log`：7モジュール・17宣言。
+- `audit-m14-consecutive-interval-widths.log`：1モジュール・8宣言。
+
+合計**8モジュール・25宣言、標準三公理のみ**。sorry・独自公理0。
+各ハンドルの終了コード0、`git diff --check`成功。
+鍵は各一回の対象ビルド/小監査の間だけ使用し、終わるたびに返した。
+root・大きい監査・他レーン・共有入口・共有監査・drafts・界面・mainは変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| RemainingWeightedInversions | 39 |
+| RemainingInversionSums | 45 |
+| MixedVertexInversionFibers | 52 |
+| ColorPairWeightedInversions | 107 |
+| InsertionColorSumDecomposition | 40 |
+| CompositeRemainingActiveInversions | 43 |
+| CompositePermutationColorDecomposition | 47 |
+| ConsecutiveIntervalWidths | 37 |
+| **計** | **410** |
+
+M14実測は**21,350行**、L12aは**6,143行**。
+今回、残り色同士・挿入色同士を元の和へ戻したが、二つの交差和の補正と
+§253の位置指数の全和はまだ未証明であり、C452・L12aを完了には数えない。
+§245の残りC452上端323を、ここまでの実測増分1,268へ置き換えるだけの比較でも、
+他の旧見込みを据え置いた上端は**32,904行＋C452の未供給分**となる。
+これは確定行数や下界ではなく、古い工程見込みとの機械的比較。
+外枠31,000行に収まるとは主張せず、旧完成見込みを再利用しない。
+約25,000行での止まらない中間報告の指定は維持し、その時点で実測と残りを出し直す。
+§267の新しい完備化模型の候補の仕事を、無料の前提として控除していない。
+
+次は交差項で要る、同じ挿入部分語のcaesura数・区間長の和の法則。
+同じL12aの有限和・既存構成の法則として型を先に報告して進める。
+完備化後のP⁰の三案は§267に追加で整理したが、(c)が不可避との判定には至っていない。
+Totの九欄は§260の紙のまま、3b-4aの取り込み後にmain§33の順に切り替える。
+これは途中の取り込み点で、goalはactiveのまま。
