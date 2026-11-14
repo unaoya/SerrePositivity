@@ -14297,3 +14297,45 @@ def strictBETotJointNativeHomClassificationIso :
     FunctorIso (leftStraighteningInfinityDiagram (strictBETotJointNativeHomProjection A))
       (strictBETotJointNativeHomCoherent A)
 ```
+
+## 230. R03g：元のGrothendieck単位のfiber制限の弱同値判定（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 23（うち追加 11）。R03gを追加、未証明。
+
+IS-W2 §19の同じR01〜R03のまとまり・一つの見込み1,500行以内の枠により、元の単位のfiber制限の弱同値判定をR03gとして追加する。共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+```lean
+theorem grothendieckFiberUnit_isWeakHomotopyEquivalence (i : I) :
+  IsWeakHomotopyEquivalence (grothendieckFiberUnit F i)
+```
+
+採用する元のfiber包含を明記する。weightedNerveConstantLift (F ⋙ nerveFunctor) iに、元のstrictなgrothendieckWeightedNerveIso Fのinvを合成したものをgrothendieckFiberInclusion F iとする。この包含に元のcontinuousLeftFibrationReplacementUnitを合成し、同じ底の指定頂点のfiberへvertexFiberLiftした元の実写像がgrothendieckFiberUnit F iである。元の単位・比較・包含を保持し、弱同値になる別の写像の存在への変更はしない。後のroof比較との照合もこの明記した同じ包含と単位を通す。
+
+同じR03fの比較をそのfiberへ制限したgrothendieckFiberComparison F iとの合成が、元のgrothendieckKanCoefficientUnit Fのi成分と元のweightedNerveFiberMapの合成そのものに等しいことを、全単体の厳密な等式grothendieckFiberUnit_comparisonとして個別検査した（実ハンドル16869・終了0）。型だけの一時検査CheckGrothendieckFiberUnitWeakType.leanも終了0（7258）。R03gの証明はまだ仮定にも宣言にもしていない。
+
+見込み150〜350行。元のR03fの同じ比較は前合成同値なので、既存vertexFiberMap_isQCatEquivalence_of_precompositionEquivalenceで同じfiberの比較を同値と検出する。元のEx∞単位はanodyneで弱同値、元のweightedNerveFiberMapはstrictな同型である。上の全単体の厳密な等式を弱同値の合成・消去則へ渡して、元のgrothendieckFiberUnit自身の弱同値性を得る。新しい数学的なfiberの判定として一つに見積もり、既存の構成の法則だけとは数えない。半分175行で実測と残りを報告する。
+
+置き場所はKerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/GrothendieckFiberUnit.lean。R03gの後に、この同じfiberの単位と、元の同じnative Hom写像の合成を元の固定始域のroof比較へ照合する。R03gだけでnative Hom写像の同値性やR03dの全FunctorIsoの正規化が済んだとはしない。検証済み本体の累計は引き続き174本・11,252行／外枠15,000。今回の未検収のLeanは一時ファイル内である。
+
+### 230.1 同じ包含・単位と比較の型（個別検査済み、対象ビルド前）
+
+```lean
+abbrev grothendieckReplacement : Over (nerve I)
+
+def grothendieckFiberInclusion (i : I) : nerve (F.obj i) ⟶ nerve (Grothendieck F)
+
+theorem grothendieckFiberInclusion_projection (i : I) :
+    grothendieckFiberInclusion F i ≫ nerveMap (Grothendieck.forget F) = SSet.const (nerveVertex i)
+
+def grothendieckFiberUnit (i : I) :
+    nerve (F.obj i) ⟶ vertexFiber (grothendieckReplacement F).hom (nerveVertex i)
+
+def grothendieckFiberComparison (i : I) :
+    vertexFiber (grothendieckReplacement F).hom (nerveVertex i) ⟶
+      vertexFiber (weightedNerveProjection (grothendieckKanCoefficients F)) (nerveVertex i)
+
+theorem grothendieckFiberUnit_comparison (i : I) :
+    grothendieckFiberUnit F i ≫ grothendieckFiberComparison F i =
+      (grothendieckKanCoefficientUnit F).app i ≫
+        weightedNerveFiberMap (grothendieckKanCoefficients F) i
+```
