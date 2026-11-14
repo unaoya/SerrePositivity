@@ -1375,3 +1375,14 @@ R7-3(b)の[八辺の台帳](bulk-b3prime/r7-3b-edge-ledger.json)は、基準で�
 環の界面の大きいimportを外した後、下流ArcValuationExtensionが推移的に得ていたAlgebraicClosureを失うことも対象ビルドで検出した。元の採取はMathlib.FieldTheory.IsAlgClosed.AlgebraicClosureのAlgebraicClosureを示すので、その実際の定義元を明示する。証明・型の変更はしない。
 
 今回の文書束は252コメントを訂正し、コメント以外のバイト列を保持した。分割されたファイルのmodule docstringと、他の分割先の節見出しが文脈に付いて残る箇所も、該当する部分の説明へ整理した。CompletedTensorには§8と§10で共有する芯を明記した。引用属性の理由文字列は変更していない。現ソースの正式なPython層検査は基準46・プレビュー46・新規0、通常の本体のimport欠落0・循環0・EInfinity→BS直接/間接0。実際の枝への適用と凍結の通知はまだ行っていない。
+
+
+### B3′ 準備・最終プレビューの対象ビルドと保存比較による型の復元（11-15 01時台）
+
+一覧：済み 2／全体 22（うち追加 0）。省略された旧パスのコメントを全BSで調べ、閉包外の訂正を合計17本へ広げた。元環境snapshotは214モジュール・18,963カーネル行（公開ソース名の欠落0）。全体224モジュールのソース束について、importだけの四本を除く[220対象のビルド](bulk-b3prime/full-preview-target-complete.json)が全て成功した。原本と移動後のprivate名は前提9,637モジュール・元名5,231件で突き合わせ、通常のprivateの欠落0・衝突0・.ilean欠落0・notationの未対応0。共通スクリプトや比較器は変更していない。
+
+厳格なv3bの束009で、FiniteとConeの型・本体に24行の差分を検出した。旧wrapperだけが使っていたAlgebra.FinitePresentationのsection変数が、より弱い仮定の既存BS定理への直接呼出しでは未使用となり、定義の引数から落ちていたため。includeを置く案ではdefに保持されず、同じ差分が残ることも新しいsnapshotで確認した。そこでPerfectoidizationの定義の頭に**元の型と同じ引数列・順序・implicit性を明示**し、値は同じBS定理の選択のままとした。呼出し元も含む束009は、比較器を一切変えず型・本体の差分0でPASS。[復元の記録](bulk-b3prime/finite-fp-restoration.json)と[修正前二回・修正後の生snapshot](bulk-b3prime/finite-fp-restoration-evidence.tar.gz)を残した。24行を説明付きに分類して通したのではなく、実際に直して0とした。全体のv3bは引き続き検査中。
+
+引用・Kerodon/Stacksタグの実環境照合は、宣言名の接頭辞ではなく**実際の定義元モジュールがSerrePositivityであること**で対象を選ぶ。大域名前空間の拡張やprivate宣言を落とさず、元のカーネルの所有元表と同じprivate名規則で前後を比較する。まだ照合の成功とは扱わない。
+
+B4用に[drafts本文の文字列の影響](bulk-b3prime/draft-body-b4-impact.json)も採取した（28ファイル・50箇所、コメント・文字列を含む静的候補）。本文・import・型・証明は変更せず、A4のP⁰の保護を保つ。承認範囲の将来の置き場所の第一行18本とは区別して渡す。実際の枝のLean/scriptsへの適用と凍結の通知、root・正式全監査・full verifyは未実施。

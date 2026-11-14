@@ -10,7 +10,7 @@ for name in names.values():
  parts=name.split('.')
  new_namespaces.update('.'.join(parts[:i]) for i in range(1,len(parts)))
 for old,new in modulemap.items():
- for prefix in ['', 'SerrePositivity.', 'SerrePositivity.BhattScholze.']:
+ for prefix in ['', 'SerrePositivity.', 'SerrePositivity.BhattScholze.', 'SerrePositivity.BhattScholze.Perfectoidization.']:
   if prefix and not old.startswith(prefix):continue
   a=old[len(prefix):];b=new[len(prefix):] if prefix and new.startswith(prefix) else new.removeprefix('SerrePositivity.')
   if '.' not in a:continue

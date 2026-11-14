@@ -33,7 +33,10 @@ def assess(comparison):
   if change.get('change')=='removed' and change.get('name')=='SerrePositivity.Inputs.exists_perfectoidization_of_finite' and change.get('module')=='SerrePositivity.Inputs.Perfectoidization':explained.append({**change,'authorization':'R8-4 approved removal of wrapper whose proof is direct BS theorem; raw difference retained'})
   else:unexplained.append(change)
  return explained,unexplained
-for i,mods in enumerate(groups):
+# Prioritize a previously failing group for feedback, still require every group.
+order=sorted(range(len(groups)),key=lambda i: not ((p:=out/f'{i:03}'/'assessment.json').exists() and json.loads(p.read_text()).get('unexplained')))
+for i in order:
+ mods=groups[i]
  label=f'{i:03}';dest=out/label;dest.mkdir(exist_ok=True);done=dest/'assessment.json'
  if done.exists():
   previous=json.loads(done.read_text())

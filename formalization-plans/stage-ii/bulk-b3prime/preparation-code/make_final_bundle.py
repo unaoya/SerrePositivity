@@ -23,6 +23,13 @@ for m in closure:
  files[target]=text
 for m,sha in splitplan['files'].items():
  p=W/'split-bundle'/(m.replace('.','/')+'.lean');assert hashlib.sha256(p.read_bytes()).hexdigest()==sha;files[m]=p.read_text()
+# Preserve the exact original Finite parameter telescope. The compatibility
+# theorem was the only consumer of the finite-presentation section instance.
+# `include` does not force unused section hypotheses into definitions; give the
+# original full telescope explicitly, keeping the value and all argument order.
+m='SerrePositivity.BhattScholze.Perfectoidization.Finite';text=files[m];old='noncomputable def Perfectoidization : Type u :=';assert text.count(old)==1
+head='noncomputable def Perfectoidization (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]\n    [Module.Finite R S] [Algebra.FinitePresentation R S]\n    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) : Type u :='
+files[m]=text.replace(old,head)
 # Ring-only users must import the ordinary algebra interface, including newly moved CA owner.
 for row in json.loads((W/'r82-consumers.json').read_text()):
  m=row['path'][:-5].replace('/','.');dest=modulemap.get(m,m);text=files[dest];old='public import '+modulemap['SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface'];new='public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface';assert text.count(old)==1,(dest,old);files[dest]=text.replace(old,new)

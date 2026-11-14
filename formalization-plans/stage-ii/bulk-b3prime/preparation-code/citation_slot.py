@@ -26,7 +26,9 @@ for i,modules in enumerate(groups):
  for line in log.read_text().splitlines():
   try:diagnostic=json.loads(line);record=json.loads(diagnostic['data'])
   except (ValueError,KeyError,TypeError):continue
-  if isinstance(record,dict) and record.get('declaration','').startswith('SerrePositivity.'):records.append(record)
+  if isinstance(record,dict) and 'declaration' in record:
+   required={'key','number','declaration','module','relation','comment','edition','path','line'};assert required<=record.keys(),record
+   if record['module'].startswith('SerrePositivity.'):records.append(record)
  receipt.write_text(json.dumps({'modules':modules,'signature':signature,'seconds':time.monotonic()-t,'records':records},ensure_ascii=False));print(side,i,len(records),flush=True)
  if budget-(time.monotonic()-start)<40:raise SystemExit(75)
 summary={'side':side,'groups':len(groups),'application_owners':len(owners),'records_by_identity':{}};unique={};conflicts=[]
@@ -35,4 +37,5 @@ for i in range(len(groups)):
   key=json.dumps([r['key'],r['number'],r['declaration'],r['relation'],r['comment'],r['edition']],ensure_ascii=False);value={k:r[k] for k in ['key','number','declaration','module','relation','comment','edition','path','line']}
   if key in unique and unique[key]!=value:conflicts.append({'key':key,'before':unique[key],'after':value})
   unique[key]=value
+assert unique,'native citation decoder produced no project-owned records'
 summary.update(records=list(unique.values()),conflicts=conflicts);(out/'complete.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2));print(side,'complete',len(unique),'conflicts',len(conflicts),flush=True);raise SystemExit(bool(conflicts))
