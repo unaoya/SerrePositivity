@@ -6122,3 +6122,87 @@ E01 の指定単位比較へ戻る。未検証の三本は今回のコミット�
 `deterministic timeout`。ログ：`/tmp/is-w1/unit-shared-classification/build.log`。
 新規補助定義と G2 本文分割のビルド・型保存結果を覆すものではないが、
 単位比較が通ったとはしない。計算上限は不変、未検証ファイルは未コミット。
+
+
+## 59. 指定単位の値の特徴づけを分離する試行
+
+一覧：済み 0／全体 13（うち追加 11）
+
+調整役の方向1・3に従い、新規ファイルで値の式を一度だけ命題の等式にする。
+既存構成の法則であり、追加の独立した数学的仮定はない。未検証。
+
+```lean
+/-- 概要：共有した分類射を、元の分類射と係数同型の合成で特徴づける。
+方針：一度だけ定義の値を等式にする。規約：同じ分類射を使う。
+使われ方：指定単位の比較で定義を展開せず書き換える。 -/
+lemma homWeightJointClassificationHom_value {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    homWeightJointClassificationHom F =
+      leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+          (functorHomBifunctorDiagram_classificationIso F F).inv := by
+  rfl
+
+/-- 概要：指定単位を、共有分類射の未正規化の前合成像で特徴づける。
+方針：元の定義の値を一度だけ等式として取り出す。
+規約：別の単位を選ばない。使われ方：命題の書き換えによる指定単位比較。 -/
+lemma functorHomBifunctorUnit_value {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    functorHomBifunctorUnit F =
+      (hoFunctor.map ((pre (uliftTensorIso.{u, u + 1} A.op A).inv).app
+        SpaceInfinity.{u})).toFunctor.map (homWeightJointClassificationHom F) := by
+  rfl
+
+end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
+```
+
+### 59.1 全単位の値の等式の結果と成分の試行
+
+一覧：済み 0／全体 13（うち追加 11）
+
+全単位の値の等式（48行）の kernel timeout で終了コード1。分類射の値の補題には
+エラーなし（ファイル全体は未検証）。ログ `/tmp/is-w1/unit-propositional-values/build.log`。
+次は方向1・3に従い、同じ前合成像を def で固定し、頂点成分で比較する。
+
+```lean
+/-- 概要：指定分類射の未正規化の前合成像を固定する。
+方針：同じ関手の Hom 作用を使う。規約：指定分類射を変えない。
+使われ方：成分等式の右辺を固定して検査する。 -/
+def homWeightJointRawRestriction {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    FunctorHom (homInfinityJointEvaluation A)
+      ((uliftTensorIso.{u, u + 1} A.op A).inv ≫ functorHomBifunctorDiagram F F) :=
+  (hoFunctor.map ((pre (uliftTensorIso.{u, u + 1} A.op A).inv).app
+    SpaceInfinity.{u})).toFunctor.map (homWeightJointClassificationHom F)
+
+/-- 概要：指定単位の頂点成分を固定した前合成像の成分として特徴づける。
+方針：全射の等式ではなく成分の式を検査する。規約：元の単位を保持する。
+使われ方：全射の比較を成分の法則へ分解するための入力。 -/
+lemma functorHomBifunctorUnit_component {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    (x : ((SSet.uliftFunctor.{u + 1, u}).obj A.op ⊗
+      (SSet.uliftFunctor.{u + 1, u}).obj A) _⦋0⦌) :
+    functorHomEvaluate (functorHomBifunctorUnit F) x =
+      functorHomEvaluate (homWeightJointRawRestriction F) x := by
+  rfl
+
+end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
+```
+
+
+### 59.2 一意性経路の既存入力の点検（紙）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`leftKanHomUniversalIso_hom_unique δ α β hF hG σ hσ` は
+`hσ : leftKanHomMap δ α G σ = β` と、二つの指定単位の
+`LeftKanHomUniversal` を要求する。普遍性だけから任意の二つの単位が
+等しいという定理ではなく、単位を保つ比較射の一意性である。
+
+今回の `homWeightYonedaLeftKanComparison_evaluation_isIso_of_homUniversal`
+は既にこの一意性経路を使っているが、元の単位を評価した γ の
+`hunit : LeftKanHomUniversal (uliftFunctor.map F) γ` が未供給。
+`twistedSourceHomUnit_homUniversal` は幾何学的な別表示に対する普遍性を供給するため、
+その単位と元の γ との両立を依然示す必要がある。
+この点検だけで方向2を不可能と結論していないし、独立の普遍性証明を
+実装・検証したともしていない。未証明の両立式や hunit を E01 の仮定には追加しない。
