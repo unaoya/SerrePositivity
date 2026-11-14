@@ -1534,3 +1534,22 @@ B01 の元の対象との比較の後段への移送（着手前の型、見込�
 G1・G2共用部品込み本体9,940行、入口込み10,111行。一般の有限表示対象の模型の分割3,278行。構造射の可換式を保つ gluing の係数移送は供給済みで、具体的な六種の式への適用と全体の模型・元の対象との比較は検証中／未完。一般の固有性の降下と被覆模型も残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の貼り合わせの構造射と有限表示性の接続（着手前の型、見込み80〜200行）：`OpenTransitionCandidate.baseChangedToBase` は後段の実際の gluing datum の構造射を同じ基底へ貼り合わせ、`_ι` は全チャート上で選んだ構造射との一致。`locallyOfFinitePresentation_baseChangedToBase` は元のチャートの構造射の局所有限表示性を底変換・貼り合わせで供給する。`finitePresentation_baseChangedToBase` は有限個の affine チャートと後段の局所 Noether 基底から、貼り合わせた構造射の局所有限表示性・準コンパクト性・準分離性を供給する。後段の Noether 性は有限生成係数環から得る用途で、元の R の Noether 性は追加しない。既存の貼り合わせの構造射と局所性の法則で、親項目は増やさない。
+
+
+B01 の元のアトラスから貼り合わせた模型への比較（着手前の型、見込み200〜450行）：`OpenTransitionAtlasComparison C g` は、元の対象 X→T の開被覆・全射性、チャートから C.Uᵢ への Cartesian 比較、重なりから C.Vᵢⱼ への同じ係数基底上の Cartesian 比較、開包含・反転の可換式を保持する具体的な入力。`chartAt`・`pairAt` は係数射の因子化後の実際の比較、`pairAt_square` は後段の開包含との Cartesian 性、`pairAt_compat` は後段の反転との可換式。`gluedComparison` は元の X から後段の貼り合わせへの実際の射、`isPullback_gluedComparison` はこれと同じ構造射の Cartesian 性を返す。元の被覆と比較は供給済みのアトラス模型から取るもので、一般の模型の存在を入力に置き換えない。既存の局所比較・自然性・貼り合わせの法則で、親項目は増やさない。
+
+
+### B01：六種の具体的な式から後段の gluing と元の対象の比較への接続
+
+`OpenAtlasStageGluing`（95行）：`transitionCandidate` は具体的な段の局所射を gluing の係数移送の入力へ入れる。`projectedModelEquations_of_stageEquationsHold` は六種の有限族の各成分から模型への射影の式を取り出す。`baseChangedEquations_of_stageEquationsHold` は後段の実際の六種の式、`glueDataOfStageEquations` は後段の実際の Scheme.GlueData を返す。有限族の成分の簡約は Fin.succ と Fin.cases の零・後者の法則を明示した。
+
+`CartesianBaseChangeComparison`（81行）：`cartesianBaseChangeComparison` は元の Cartesian 比較を後の係数段へ移す。`_snd`・`_fst`（各 `_assoc`）は元の比較と基底座標への射影。`isPullback_cartesianBaseChangeComparison` は元の源を保つ Cartesian 性、`cartesianBaseChangeComparison_naturality` は元の源と模型間の射との自然性、`isPullback_cartesianBaseChangeComparison_square` は対応する後段の模型間の射との Cartesian 性。
+
+本体176行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,959ジョブ成功。二モジュールの小監査30宣言（19・11）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-atlas-gluing-comparisons-check-2.log`・`2g-atlas-gluing-comparisons-native.log`・`2g-atlas-gluing-comparisons-audit.log`。続けて検証した貼り合わせの構造射の下書きはチャート上の式の引数の推論で失敗したが、この二本の対象ビルド・監査はその前に成功。未検証下書きは本体・実測に含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ使用。
+
+G1・G2共用部品込み本体10,116行、入口込み10,289行。一般の有限表示対象の模型の分割3,454行。六種の具体的な式から後段の実際のgluing datumへの適用は済み、貼り合わせた構造射と全体の有限表示性・元の対象との全体のCartesian比較を検証中。一般の固有性の降下と被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
