@@ -17979,3 +17979,332 @@ M14実測は**21,350行**、L12aは**6,143行**。
 完備化後のP⁰の三案は§267に追加で整理したが、(c)が不可避との判定には至っていない。
 Totの九欄は§260の紙のまま、3b-4aの取り込み後にmain§33の順に切り替える。
 これは途中の取り込み点で、goalはactiveのまま。
+
+## 269. C452の挿入部分語の区切り数を数える法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§266の幾何学的な幅の和に、同じ部分語の区切り数を足す。
+まず既存lineRankの有限集合の濃度と、その連続区間での差の法則を使う。
+部分語の末尾の項を分ける有限和の表示も、同じ添字の証明分割として明示する。
+以下は既存の構成の法則であり、新しい演算・作用・定理のまとまりではない。
+各証明200行以内の見込み。
+
+```lean
+lemma lineRank_succ_at {n l : ℕ} (v : Fin l → Fin n) (j : Fin l) :
+    Surjection.lineRank v (j.val + 1) =
+      Surjection.lineRank v j.val + if Surjection.Caesura v j then 1 else 0
+
+lemma sum_consecutive_caesuraIndicators {n l : ℕ} (v : Fin l → Fin n)
+    (a L : ℕ) (h : a + L ≤ l) :
+    (∑ z : Fin L, if Surjection.Caesura v
+        ⟨a + z.val, by have hz := z.isLt; omega⟩ then 1 else 0 : ℕ) +
+      Surjection.lineRank v a = Surjection.lineRank v (a + L)
+
+lemma sum_fin_last {L : ℕ} (hL : 0 < L) (F : Fin L → ℕ) :
+    (∑ z, F z) = (∑ z : Fin (L - 1), F ⟨z.val, by have hz := z.isLt; omega⟩) +
+      F ⟨L - 1, by omega⟩
+```
+
+有限点検：長さ0〜6の全二色列、全ての開始位置と区間長の2,815例。
+一位置ごとの順位の増加、全区間の0/1区切り数と順位差、末尾を分けた和が一致した。
+空区間の和を零に保ち、部分語が一文字の場合も末尾の一項だけになる。
+
+## 270. C452の同じ部分語の区切り総数と元の成分次数
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§269を元の分割の開始位置と長さに適用し、部分語の内部の区切り数を
+同じ `segmentDegree` に戻す。元の末尾の区切りは、次の同色出現があることと同値。
+いずれも既存の位置と区切りの法則で、新しい構成や作用の法則のまとまりではない。
+型は次。各証明200行以内の見込み。
+
+```lean
+lemma positiveOccurrencePosition_caesura_iff {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    Surjection.Caesura (positiveWord u).val (positiveOccurrencePosition u k i) ↔
+      i.val + 1 < Surjection.occurrenceCount u.val k
+
+lemma positiveComposite_segment_caesura_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (r.val i).val, if Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) then 1 else 0 : ℕ) =
+      Surjection.segmentDegree v.val r i +
+        if Surjection.Caesura (positiveWord u).val (positiveOccurrencePosition u k i) then 1 else 0
+```
+
+有限点検：`check-segment-caesura-sum.py`、全12,233組。
+各元の部分語の区切りの総数が、元の内側の区切り数g_iと外側の元の区切りの和に一致。
+一文字の部分語、末尾に同じ内側位置を共有する部分語も含む。
+元の外側区切りの0/1を勝手にすべて1としない。
+
+## 271. C452の元の部分語の区間長の和を外側と成分次数へ戻す法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§269の幅と区切り数の有限和を、同じ元の部分語の両端で合わせる。
+既存 `positiveCompositeOuterCut_endpoints` に渡す位置が同じことも型にする。
+以下は既存の両端・有限和・同じ重みの法則で、構成の置き換えではない。
+各証明200行以内の見込み。
+
+```lean
+lemma sum_nonempty_consecutive_intervalWidths {m q : ℕ} (s : Cut m q)
+    (a L : ℕ) (hL : 0 < L) (h : a + L ≤ m + 1) :
+    (∑ z : Fin L, (hi s ⟨a + z.val, by have hz := z.isLt; omega⟩ -
+      lo s ⟨a + z.val, by have hz := z.isLt; omega⟩)) +
+      lo s ⟨a, by omega⟩ = hi s ⟨a + (L - 1), by omega⟩
+
+lemma positiveCompositeSegmentPosition_endpoints {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    positiveCompositeSegmentPosition u v k r i ⟨0, r.positive (by omega) i⟩ =
+        compositeFirstPosition u v k r (positiveOccurrencePosition u k i) ∧
+      positiveCompositeSegmentPosition u v k r i
+        ⟨(r.val i).val - 1, by have hp := r.positive (by omega) i; omega⟩ =
+        compositeLastPosition u v k r (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_segment_intervalWidth_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      (hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z) -
+        lo c.2 (positiveCompositeSegmentPosition u v k c.1 i z))) +
+      lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) =
+      hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_segment_intervalLength_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (positiveCompositeSegmentPosition u v k c.1 i z)) =
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val
+        (positiveOccurrencePosition u k i) + Surjection.segmentDegree v.val c.1 i
+```
+
+有限点検：`check-segment-interval-length-sum.py`、全12,233組。
+各部分語の幅の和と外側の両端、区間長の総和と元の外側区間長＋g_iが一致した。
+退化する切断、長さ1の部分語も含む。
+一般の非空長の幅の表示は§266の同じ法則の添字の表示を変えたもの。
+この法則から交差和のg_iの補正を出す有限和の接続はまだ別に残る。
+
+## 272. C452の残り位置と挿入部分語の交差寄与を戻す法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§271の全区間長の式はビルドで成功した。
+残り位置pと部分語iの位置zの前後は、元のpと指定色の第i出現の前後と同じ。
+色順序も残り色と挿入色の元の順序規則へ戻り、同じ交差寄与を読む。
+型は次。既存の指定位置と有限和の法則で、各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_remaining_segment_order {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (compositeFirstPosition u v k r p < positiveCompositeSegmentPosition u v k r i z ↔
+      p < positiveOccurrencePosition u k i) ∧
+    (positiveCompositeSegmentPosition u v k r i z < compositeFirstPosition u v k r p ↔
+      positiveOccurrencePosition u k i < p)
+
+lemma positiveComposite_remaining_segment_cross_inversionTerm {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k r).val
+        (compositeFirstPosition u v k r p) (positiveCompositeSegmentPosition u v k r i z) +
+      IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) (compositeFirstPosition u v k r p) =
+    IntervalCuts.positionInversionTerm (positiveWord u).val p (positiveOccurrencePosition u k i) +
+      IntervalCuts.positionInversionTerm (positiveWord u).val (positiveOccurrencePosition u k i) p
+
+lemma positiveComposite_segment_cross_intervalLength_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      (IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k c.1).val
+          (compositeFirstPosition u v k c.1 p) (positiveCompositeSegmentPosition u v k c.1 i z) +
+        IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k c.1).val
+          (positiveCompositeSegmentPosition u v k c.1 i z) (compositeFirstPosition u v k c.1 p)) *
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (compositeFirstPosition u v k c.1 p) *
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (positiveCompositeSegmentPosition u v k c.1 i z)) =
+    (IntervalCuts.positionInversionTerm (positiveWord u).val p (positiveOccurrencePosition u k i) +
+      IntervalCuts.positionInversionTerm (positiveWord u).val (positiveOccurrencePosition u k i) p) *
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p *
+      (intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val
+        (positiveOccurrencePosition u k i) + Surjection.segmentDegree v.val c.1 i)
+```
+
+有限点検：`check-remaining-segment-cross.py`、12,233組。
+全残り位置・全部分語の全相対位置で、両方向の位置順序と元の交差寄与が一致した。
+区間長の和は§271で同じ例を先に点検済み。この三つを用いて一部分語の交差和を畳む。
+全色・全位置の交差和の再添字付けと、B_i/Pとのmod 2の照合はまだ別に残る。
+
+## 273. C452の全合成位置の和を同じ既存の位置へ戻す法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存の `positiveCompositePosition_remaining_or_segment`、元の接頭位置の単射性、
+`positiveCompositeSegmentPosition_sigma_injective` を有限和に適用する。
+新しい分割・写像を公開定義せず、同じ二種類の位置の全和の法則だけを置く。
+型は次。証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ h, F h) =
+      (∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+        F (compositeFirstPosition u v k r p.val)) +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (positiveCompositeSegmentPosition u v k r i z)
+```
+
+有限点検：`check-composite-word-position-sum.py`、12,233組。
+元の残り位置と全挿入相対位置の像が、全合成位置を重複なく覆うことと、
+その上の試験的な自然数値の和の一致を点検した。
+既存の位置の全称的な分解・単射性を用いてLeanでは任意のFに示す。
+交差和と位置指数の有限和を同じ指定位置で分けるために使う。
+
+## 274. C452の全交差和への接続：次の既存の有限和の法則の型（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§265は活動頂点の色対、§272は元の語の位置ごとの重み付き交差を用いた。
+両者は§263で色対ごとには既に一致している。全色・全位置での接続では、
+以下の有限和の再添字付けを使う。新しい全体の経路同値や作用を作る必要はない。
+以下は次の工程の型で、まだ実装した宣言には数えていない。
+各証明200行以内の見込み。既存構成の法則と証明分割で一覧の項目数は増やさない。
+
+```lean
+lemma sum_occurrences {r l : ℕ} (w : Fin l → Fin r) (F : Fin l → ℕ) :
+    (∑ a : Fin r, ∑ h : ↥(Surjection.occurrences w a), F h.val) = ∑ h, F h
+
+lemma sum_non_slot_occurrences {r l : ℕ} (w : Fin l → Fin r) (k : Fin r)
+    (F : Fin l → ℕ) :
+    (∑ a : {a : Fin r // a ≠ k}, ∑ h : ↥(Surjection.occurrences w a.val), F h.val) =
+      ∑ h : {h : Fin l // w h ≠ k}, F h.val
+
+lemma positiveComposite_remaining_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k},
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)), F h.val) =
+      ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+        F (compositeFirstPosition u v k r p.val)
+
+lemma positiveComposite_inserted_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ b : Fin (n + 1),
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.insertedPosition m (n + 1) k b)), F h.val) =
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (positiveCompositeSegmentPosition u v k r i z)
+```
+
+有限点検：`check-composite-word-color-aggregates.py`、12,233組。
+残り色の全出現の和と元の残り位置の和、挿入色の全出現の和と全部分語の位置の和を
+同じラベル・同じ試験関数で比較した。
+
+証明の接続は次とする。
+
+1. `sum_occurrences` は既存のfiberwise sumと `Finset.sum_subtype`。
+   `sum_non_slot_occurrences` は定義域を w h≠k、値域をa≠kへ制限した同じfiberwise sum。
+2. 残り色の和は `remainingWordPositionOrderIso` で色ごとに元の出現へ戻し、
+   その後 `sum_non_slot_occurrences` を使う。
+3. 挿入色の和は、`sum_occurrences` と§264の色の二分解で全位置の和へ戻す。
+   残り色の和を(2)で同じ元の和へ戻し、§273の全位置の和の分解と比較し、
+   **同じ残り位置の和をNatの加法で消去**する。新しい挿入色の逆写像を選ばない。
+4. §265の二つの交差和は、まず§263で元の位置の重み付き和にし、
+   有限和を交換して(2)(3)で再添字付けする。その後§272で各部分語の相対位置zを畳む。
+
+これで元の交差和に現れるg_iの補正を露出させる。
+B_iとPのmod 2の照合、および§253の位置指数の全和の比較は依然として残る。
+§267の完備化後のP⁰の未供給の比較も、これら有限和の証明で閉じたとはしない。
+
+## 275. C452の部分語の区間長と一部分語の交差和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§269〜273の**9モジュール505行**を証明・検証した。
+既存lineRankの一位置の増加と連続区間の区切り数、元の外側出現の区切り判定、
+同じ部分語の区切り総数・ブロック両端・全区間幅を合わせた。
+これにより同じ部分語の全区間長を
+**元の外側区間長＋同じ内側成分次数g_i**へ戻した。
+残り位置と部分語内の位置の両向きの順序・色順序を元の外側の交差寄与へ戻し、
+一部分語にわたる重み付き交差和を、この区間長の式で畳むところまで接続した。
+全合成位置の和は、既存の全位置の分解・単射性で同じ残り位置と全部分語の位置の和へ戻した。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-consecutive-caesura-counts-03.log`：1,568 jobs。
+- `m14-composite-segment-interval-lengths-02.log`：2,885 jobs。
+- `m14-composite-segment-cross-sum-03.log`：2,920 jobs。
+- `m14-composite-word-position-sums-03.log`：2,874 jobs。
+
+途中の修正は、Finの移送前の型と値・加算の括弧を明示すること、
+依存する添字の証明を壊さずcongrArgで順位の等式を渡すこと、
+元の部分長の正性・必要な色順序のimport・書き換えの証明引数を明示すること、
+Sumの左右への評価と行長を直すこと。
+最終ソースの対象警告0。心拍数・再帰上限の増加なし。
+200行を超える証明・ファイルなし。既存の公開宣言・符号・仮定・界面は変更していない。
+
+小監査 `audit-m14-segment-cross-fold.log` は、今回の新規分だけの
+**9モジュール・65宣言、標準三公理のみ**。sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は一回の対象ビルド/小監査ごとに返した。
+整理券は一枚ずつ。常駐セッション・rootビルド・大きい監査は使っていない。
+`git diff --check`成功。他レーン・drafts・共有入口・共有監査・mainの作業木は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| ConsecutiveCaesuraCounts | 68 |
+| PositiveOccurrenceCaesuras | 44 |
+| CompositeSegmentCaesuraCounts | 61 |
+| CompositeSegmentIntervalWidths | 97 |
+| CompositeSegmentIntervalLengths | 32 |
+| RemainingSegmentOrder | 58 |
+| RemainingSegmentCrossInversions | 41 |
+| CompositeSegmentCrossSum | 42 |
+| CompositeWordPositionSums | 62 |
+| **計** | **505** |
+
+M14実測は**21,855行**、L12aは**6,648行**。
+一部分語の補正を閉じたが、全色・全位置の交差和へ戻す再添字付け、
+その補正のB_i/Pとのmod 2の照合、§253の位置指数の全和は未証明。
+§274は次の既存の有限和の法則の型と証明の筋だけで、まだ実装した宣言ではない。
+C452・L12a全体、実テンソル・nullary、L13以降を完了に数えない。
+一覧は12/48（追加4）のまま。goalはactive。
+
+外枠31,000行は変更しない。§268で報告した古い見込みの上端の超過リスクは残る。
+今回505行を足してC452の全和の未供給分を除いた機械的比較でも上端は33,409行となり、
+この古い見込みを完成の新しい見込みとして再利用しない。
+約25,000行で止まらず実測と残りを出し直す指定を維持する。
+完備化後のP⁰は§267の連続なprimitive・同じnative対象/辺との比較を未供給のまま残す。
+(c)が必要だという判定には至っておらず、そうなれば§32に従って止める。
+Tot九欄の紙の準備は§260。mainの3b-4aを受領後に§33の順へ切り替える。
