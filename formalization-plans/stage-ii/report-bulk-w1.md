@@ -889,3 +889,10 @@ SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされ�
 一覧：済み 8／全体 14（うち追加 0）。[第16束](bulk-5inf0/draft-block16-validation.json)は共有Totの評価比較1箇所で失敗、後続5本は依存待ちで未実行。Catの射のラッパーは解消したが、ホモトピー圏への写像とnerveの零単体の表示が残った。既存の定義で同じ対象であることを明示する修正を第17束で検査中。現在の有効な成功は23本のまま。失敗したソースはまだコミットしない。
 
 保護された前提 `Shared/EInfinityPowerOperation.lean` に、存在しない旧モジュール `SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology` のimportが残っていることを静的に確認した。A4の検査前提だが、指示§1の変更禁止に従いソースを維持している。⑤a側での追従またはimport・改名だけの例外の判断を依頼した。この保護対象を一時的な互換モジュールで隠して成功と数えることはしない。他の独立した検査を先に進める。
+
+
+### 5∞-0 の保護対象の例外（11-14午後、§5）
+
+一覧：済み 8／全体 14（うち追加 0）。調整役の§5の例外承認を受け、全draftのimportとB3の一意な完全名を対応表で再走査した。残りの機械的な変更は **Shared/EInfinityPowerOperation.lean:8 のimport 1行**：`…Project.DerivedCategories.Homology` → `…Project.DerivedCategories.MappingAndStability.HomSpaces.Homology`。変更の全行は[台帳](bulk-5inf0/section5-protected-mechanical-edits.json)に保存した。主張・型・証明とA4のP⁰部分は変更していない。保護されたSharedファイルの変更禁止の例外はこの1行のみで、まだ全体の型検査は未実行。前節の前提のimport欠落は解消した。
+
+第17束は共有Totのnerveの零単体の評価表示で失敗し、後続は未実行。[結果](bulk-5inf0/draft-block17-validation.json)を保存した。零単体の評価は定義上の等しさではなく `nerveMap_app_mk₀` の等式で揃える必要があるため、その等式を明示して第18束へ進めた。独立したArcRouteBと補助界面も同じ280秒以内の束に含めた。

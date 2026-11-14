@@ -5,7 +5,7 @@ module
 public import SerrePositivity.EInfinity.Interface.PowerOperation
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.FieldTheory.Finite.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology
 -- 取り込み時の依存先：drafts/DerivedGeneral/ScalarRestriction.lean。
 -- 本ファイルは drafts/Shared/CosimplicialEInfinity.lean（余単体的可換環の Tot_{E∞}）を使う。
 

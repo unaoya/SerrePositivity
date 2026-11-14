@@ -1,0 +1,19 @@
+{
+  "authorization": "bulk-5inf0.md §5; coordinator reply 2026-11-14 afternoon",
+  "rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/Shared/EInfinityPowerOperation.lean",
+      "edits": [
+        {
+          "start": 422,
+          "end": 491,
+          "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology",
+          "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology",
+          "line": 8,
+          "kind": "import"
+        }
+      ]
+    }
+  ],
+  "note": "All draft code scanned against B3 module-map and unique exact fully qualified names; no open policy or declaration headers changed."
+}
