@@ -6701,3 +6701,93 @@ theorem reflectedBKNormalizedSections_uncurry
 累計 **282モジュール・17,448行**、外枠まで2,552行。現在の全対象監査の基準は§137の278本・2,119宣言で、今回の新規分監査6宣言とは区別して記録する。モジュール一覧 `/private/tmp/isw2-g10-twohundredeightytwo-modules.txt`。計算上限・既存宣言・⑤a・入口・公式監査の変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証の下書きなし。
 
 B02全体の `gammaReflectedBKComparison_eq` はまだ未完。残りは、今回の全標準単体・各添字のuncurry等式を重み付き切断の全射の等式に戻し、元の反転end・small添字の指定同型・実Hom同型を通して同じnative比較へ運ぶこと。B03〜B08・C・D、停止点2a・2b、3b-4段0も未完。次はこの反転・添字の輸送を接続する。
+
+
+## 139. B02：全uncurry、指定反転end・small添字の評価と因数分解（2026-11-14 午後）
+
+一覧：済み 14／全体 36（うち追加 1）
+
+§138の全標準単体の式を、持ち上げた恒等単体で評価して元のuncurry全体の各成分の等式へ戻した。反転endについては既存の内部Hom反転評価、small添字については既存のend射影の制限則を使い、同じuncurryが指定の反転・制限を保つ式を得た。元の `gammaReflectedBKComparison` も、既存の因数分解と関手の合成則で同じ反転・AW・添字同型・実Hom同型の合成へ括り直した。新しい構成や数学の追加はなく、全てB02の既存構成の法則・証明分割。
+
+### 139.1 `WeightedSectionsReflectionEvaluation`（50行）
+
+```lean
+theorem weightedSectionsOppositeIso_uncurry (W H : I ⥤ SSet.{u}) {S : SSet.{u}}
+    (f : S ⟶ weightedSections W H) (i : I) :
+    (weightedSectionsUncurry
+      (SSet.opFunctor.map f ≫ (weightedSectionsOppositeIso W H).hom)).app i =
+    (opTensorIso (W.obj i) S).hom ≫ SSet.opFunctor.map ((weightedSectionsUncurry f).app i)
+
+theorem weightedSectionsReflectedIso_uncurry (W H : I ⥤ SSet.{u}) {S : SSet.{u}}
+    (f : S ⟶ weightedSections (W ⋙ SSet.opFunctor) H) (i : I) :
+    (weightedSectionsUncurry
+      (SSet.opFunctor.map f ≫ (weightedSectionsReflectedIso W H).hom)).app i =
+    ((diagramDoubleOppositeIso W).inv.app i ▷ S.op) ≫
+      (opTensorIso ((W ⋙ SSet.opFunctor).obj i) S).hom ≫
+        SSet.opFunctor.map ((weightedSectionsUncurry f).app i)
+
+```
+
+### 139.2 `SmallBKIndexSectionsEvaluation`（29行）
+
+```lean
+theorem smallBKIndexSectionsMap_uncurry {I J : Type u} [SmallCategory I] [SmallCategory J]
+    (F : J ⥤ I) (W H : I ⥤ SSet.{u}) {S : SSet.{u}}
+    (f : S ⟶ weightedSections W H) (j : J) :
+    (weightedSectionsUncurry (f ≫ smallBKIndexSectionsMap F W H)).app j =
+      (weightedSectionsUncurry f).app (F.obj j)
+
+```
+
+### 139.3 `ReflectedBKNormalizedSectionsMapEvaluation`（93行）
+
+```lean
+theorem reflectedBKNormalizedSections_uncurry_map
+    (φ : simplicialRingCoefficient.{u} →+* A) (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (j : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) :
+    let T := (productTotalFunctor A).obj X
+    let Q := (doubleOppositeDiagram X).obj (AsSmall.down.obj j)
+    let g := (reversedWeightPointwiseBousfieldKanCone X).app (AsSmall.down.obj j) ≫
+      (Functor.isoWhiskerRight (standardDoldKanModuleIso (R := A) (D := Complex A) T Q)
+        (forget (ModuleCat A))).inv
+    let Y := (homDiagramFunctor P).obj X
+    let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
+      (reflectedNormalizedBKSmallHomIso A Y).hom
+    let ψ := standardDoldKanSpaceMap P T ≫ (truncatedDoldKanFunctor A).map γ ≫
+      normalizedWeightSectionMap A (reflectedNormalizedBKSmallWeight A)
+        (normalizedBKSmallDiagram A Y) φ
+    (weightedSectionsUncurry ψ).app j =
+      (g ⊗ₘ 𝟙 (standardHomSpace (R := A) P T)) ≫ (β_ _ _).hom ≫
+        standardComposition (R := A) P T Q ≫ standardDoldKanSpaceMap P Q
+
+```
+
+### 139.4 `GammaReflectedBKComparisonFactor`（48行）
+
+```lean
+theorem gammaReflectedBKComparison_factor (P : Complex A)
+    (X : CosimplicialObject (Complex A)) :
+    let Y := (homDiagramFunctor P).obj X
+    let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
+      (reflectedNormalizedBKSmallHomIso A Y).hom
+    let ψ := standardDoldKanSpaceMap P ((productTotalFunctor A).obj X) ≫
+      (truncatedDoldKanFunctor A).map γ ≫
+        normalizedWeightSectionMap A (reflectedNormalizedBKSmallWeight A)
+          (normalizedBKSmallDiagram A Y) (normalizedBKCoefficientMap A)
+    gammaReflectedBKComparison X (ForgetEnrichment.of (Complex A) P) =
+      SSet.opFunctor.map ψ ≫
+        (weightedSectionsReflectedIso (normalizedBKSmallWeight A)
+          (normalizedBKSmallDiagram A Y ⋙ truncatedDoldKanFunctor A) ≪≫
+            normalizedBKOriginalSectionsIso A Y).hom ≫
+        (weightedSectionsFunctor (bousfieldKanWeight (AsSmall.{u} SimplexCategory))).map
+          (normalizedBKReflectedHomDiagramIso X P).hom
+
+```
+
+### 139.5 検収と残り
+
+コード **`bded7fe66`**。反転評価は、今回初めて読むB3移動済みの依存の古いキャッシュを更新した対象ビルド151で検査した（1,615 jobs、監査2宣言・標準三公理のみ、終了コード0）。small添字、全uncurry、因数分解もそれぞれ個別検査が終了コード0。その最終4本をまとめた鍵付き対象ビルド `/private/tmp/isw2-build152.log` は **6,548 jobs・終了コード0**、新規分だけの監査は **9宣言（2・1・1・5）、標準三公理のみ**。鍵は `--class impl --wait 3600`、検証の間だけ使用し返却済み。
+
+累計 **286モジュール・17,668行**、外枠まで2,332行。一覧 `/private/tmp/isw2-g10-twohundredeightysix-modules.txt`。sorry・新公理0。計算上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
+
+B02の全体等式はまだ未完。今回の評価則と因数分解を通して、元の `reflectedWeightedHomFamily` の同じ成分へ照合する最後の接続を進める。B03〜B08・C・D、停止点2a・2b、3b-4段0は未完。
