@@ -1455,3 +1455,24 @@ B01 の六種の具体的な式の入力への組立て（着手前の型、合�
 G1・G2共用部品込み本体9,248行、入口込み9,408行。一般の有限表示対象の模型の分割2,586行。具体的な六種の入力の組立ては下書き検証中。その適用とgluing datum の供給、全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の後の段での三重交叉の式への移送（着手前の型、見込み80〜180行）：`baseChangedOverlapTripleIso_hom_fstArrow`・`_hom_sndArrow` は、段の実際の三重交叉から固定三重交叉の底変換への具体的な同型を、固定三重交叉の二射影の底変換と合成すると、実際の段の三重交叉の第一・第二射影に等しいこと。これにより、有限個の等式の一致判定で得た固定模型間の合成の底変換の式を、後の段の実際の L の二つの gluing の式へ戻す。既存の同型・底変換・合成の法則で、親項目は増やさない。
+
+
+B01 のアトラスの六種の式を満たす具体的な係数段（着手前の型、見込み80〜200行）：`stageEquationsHold δ` は、六種の具体的な式の入力の全てが δ による実際の底変換射として一致すること。`exists_stageEquationsHold_of_fg` は、有限生成係数部分代数 A₁⊆R と、既に供給した三種の段の射に対して、実際の有限集合 s⊆R、Spec k[s]→Spec A₁、元の包含との因子化、全ての式の成立を同時に返す。`CartesianModelEquation.exists_coefficient_stage` に具体的な有限族を渡す既存の構成の適用で、一般の模型・式の存在の仮定を追加しない。親項目は増やさない。
+
+
+### B01：六種の具体的な式の有限族
+
+`OpenAtlasDiagonalEquations`（116行）：`diagonalRightEquation`・`diagonalLeftEquation` は対角の二側の逆、`reverseDiagonalEquation` は対角の反転の恒等、`reverseInverseEquation` は反転の逆の具体的な一致判定の入力。
+
+`OpenAtlasTripleEquations`（95行）：`tripleFstEquation`・`tripleSndEquation` は実際の段の三重交叉を源とする二つの gluing の式の具体的な入力。
+
+`OpenAtlasEquationFamily`（44行）：`atlasEquationFamily` は六種の式の証人を `(Fin 3 × I) ⊕ ((I × I) ⊕ (Fin 2 × I × I × I))` の有限族へ入れる。型の値の構成には `Fin.cases` を使う。
+
+本体255行・入口3行。直接 importer AlgebraicGeometry まで対象ビルド4,949ジョブ成功。小監査55宣言（33・19・3）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-atlas-equation-family-check-2.log`・`2g-atlas-equation-family-native.log`・`2g-atlas-equation-family-audit.log`。三重交叉の同型と二射影の可換式の次の下書きの検証も通ったが、まだ本体に公開しておらずこの実測には含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体9,503行、入口込み9,666行。一般の有限表示対象の模型の分割2,841行。六種の具体的な入力の有限族は供給済み。六種の式を満たす実際の係数段の出口と、その式を後の段の実際の三重交叉のgluingへ戻す接続は下書き検証中／検証待ち。gluing datum と全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
