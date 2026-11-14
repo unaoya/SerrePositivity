@@ -13082,3 +13082,77 @@ theorem simplicialReplacementRowPartMap_inclusion {F G : I ⥤ SSet.{u}} (η : F
     simplicialReplacementRowPartMap η n P ≫ (simplicialReplacementRowPart G n P).ι =
       (simplicialReplacementRowPart F n P).ι ≫ simplicialReplacementRowMap η n
 ```
+
+## 209. 実際のlatching余錐と元の全単体の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+元の外側のlatching図式の各脚は、真に低い次数からの基底射列の像を持つため、同じ行の退化部分に厳密に因子分解する。これらの全脚が元の作用素の合成則で自然な余錐となることを示し、実際のlatchingの余極限から同じ退化部分への比較射を得た。
+
+退化基底の既存の非退化表示は、元と同じ次数の全射が恒等射であることにより、真に低い次数の表示へできる。この同じ全射を元のlatchingの対象に戻した。係数は始点の同じ等式に沿って移送し、latchingの脚との合成でその逆の移送と打ち消される。これにより余錐の脚が退化行の元の各単体を係数も含めて厳密に回収することを示した。被覆性だけで余極限性を主張しない。
+
+277：latching余錐一本の対象ビルド1,646 jobs・終了0、小監査133本966宣言・標準三公理のみ（実ハンドル38799・終了0）。この回は夜の共有鍵の順番待ちを同じ一枚の整理券のまま待ち、終了まで確認した。278：表示とlatching対象一本の対象ビルド1,648 jobs・終了0、小監査134本974宣言・標準三公理のみ（実ハンドル7754・終了0）。279：全射性一本の対象ビルド1,649 jobs・終了0、小監査135本975宣言・標準三公理のみ（実ハンドル28495・終了0）。すべて鍵返却済み。個別検査82141・16898・69787の終了0を確認した。
+
+今回64＋50＋46＝160行、累計135本・8,758行／外枠15,000。R03f.2は569行／見込み650〜1,200行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は元の二つの表示を同じ非退化表示へ戻す一意性を使い、余錐の余極限性を示す。
+
+### 209.1 型
+
+共通入力は `{I : Type u} [SmallCategory I]`。余錐ではさらに `F : I ⥤ SSet.{u}` と `n : ℕ` を用いる。
+
+#### SimplicialReplacementRowLatchingCocone（64行）
+
+```lean
+def simplicialReplacementRowLatchingLeg (s : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    (simplicialReplacementRows F).obj s.obj.left ⟶ simplicialReplacementDegenerateRow F n
+
+theorem simplicialReplacementRowLatchingLeg_inclusion
+    (s : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    simplicialReplacementRowLatchingLeg F n s ≫ (simplicialReplacementDegenerateRow F n).ι =
+      (simplicialReplacementRows F).map s.obj.hom
+
+def simplicialReplacementRowLatchingCocone :
+    Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F)
+
+def simplicialReplacementLatchingToDegenerate :
+    colimit (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) ⟶
+      simplicialReplacementDegenerateRow F n
+
+theorem simplicialReplacementLatchingToDegenerate_fac
+    (s : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    colimit.ι (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) s ≫
+      simplicialReplacementLatchingToDegenerate F n = simplicialReplacementRowLatchingLeg F n s
+```
+
+#### SimplicialReplacementRowNormalization（50行）
+
+```lean
+theorem simplicialReplacement_degenerate_presentation {n : ℕ}
+    (σ : ComposableArrows I n) (hσ : σ ∈ (nerve I).degenerate n) :
+    ∃ (m : ℕ) (_ : m < n) (α : ⦋n⦌ ⟶ ⦋m⦌) (_ : Epi α)
+      (τ : (nerve I).nonDegenerate m), σ = (nerve I).map α.op τ
+
+def simplicialReplacementLatchingIndexOfEpi {m n : ℕ} (hm : m < n)
+    (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] : LatchingIndex simplexOp (Opposite.op ⦋n⦌)
+
+theorem simplicialReplacementLatchingIndexOfEpi_hom {m n : ℕ} (hm : m < n)
+    (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] :
+    (simplicialReplacementLatchingIndexOfEpi hm α).obj.hom = α.op
+```
+
+#### SimplicialReplacementRowLatchingSurjective（46行）
+
+```lean
+theorem simplicialReplacementRowLatching_jointly_surjective (q : SimplexCategoryᵒᵖ)
+    (s : (simplicialReplacementDegenerateRow F n : SSet.{u}).obj q) :
+    ∃ (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+      (x : ((simplicialReplacementRows F).obj j.obj.left).obj q),
+      (simplicialReplacementRowLatchingLeg F n j).app q x = s
+```
+
+## 210. R03f.2の半分での実測（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2は未完了。
+
+対象ビルド・小監査済み569行に、既存の非退化表示の次元・単体・全射の一意性を接続した個別検査済み38行を加えて607行となり、上端1,200行の半分600行に達した。38行の個別検査36596は終了0、対象ビルド・小監査280はまだ進行中であり、その分のLeanは未コミットに保つ。作業木を含む累計は8,796行／外枠15,000。
+
+残りは余錐の余極限性、相対latchingの退化・非退化による分離、成分のleft anodyne性と対角への束ね。残り350〜600行、完成時957〜1,207行程度を見込む。元の見込み650〜1,200行の上端付近だが、§19の中間定理一つの1,500行と外枠にはまだ達しない。元の全写像のleft anodyne性を目標のままに保ち、弱同値性や条件つきの判定へ弱めない。新しい型・まとまりの変更はない。
