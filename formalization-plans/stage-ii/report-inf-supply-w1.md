@@ -8768,3 +8768,53 @@ lemma bousfieldKanAugmentationHom_app (Y : C) (n : SimplexCategoryᵒᵖ)
 SSet値のcoendの定理であり、C値のframe実現へ直接適用しない。
 評価点での余積・要素圏による表示の比較と、収縮の移送が必要。
 この不足を型の仮定で置き換えず、RR02(a)の証明分割として続ける。
+
+## §99 RR02(a)：評価と実現の交換に使う後合成則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `8a3c5c491` の50行の証明・検証・コミットとして進捗。
+左随伴 `L ⊣ R` によるframe実現の後合成則を置く。
+既存の実現の法則であり、IDは増やさない。
+
+```lean
+abbrev postFrames (L : C ⥤ D) : K ⥤ SimplexCategory ⥤ D :=
+  A ⋙ (Functor.whiskeringRight SimplexCategory C D).obj L
+def homPostIso : hom K (postFrames K A L) ≅ R ⋙ hom K A
+def postIso : functor K A ⋙ L ≅ functor K (postFrames K A L)
+lemma postIso_unit (W : Kᵒᵖ ⥤ SSet) :
+  ((adjunction K A).comp adj).unit.app W ≫
+    (R ⋙ hom K A).map ((postIso K adj A).hom.app W) =
+  ((adjunction K (postFrames K A L)).ofNatIsoRight
+    (homPostIso K adj A)).unit.app W
+```
+
+`adjunctionHomIsoSameUniverse` と `Adjunction.leftAdjointUniq` を再利用する。
+同型の指定単位との式も保持し、後の増大射の照合に使う。
+
+追加する既存随伴の法則（同じID内）：
+
+```lean
+lemma postIso_homEquiv (W : Kᵒᵖ ⥤ SSet) (Y : D)
+    (f : (functor K (postFrames K A L)).obj W ⟶ Y) :
+  ((adjunction K A).comp adj).homEquiv W Y ((postIso K adj A).hom.app W ≫ f) =
+    (adjunction K (postFrames K A L)).homEquiv W Y f ≫
+      (homPostIso K adj A).hom.app Y
+```
+
+### §99.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`FrameWeightPostcomposition` 68行、対象ビルド2,148 jobs成功。
+追加の転置の式を含む小監査7宣言・標準三公理のみ。
+ログ `/tmp/is-w1/frame-weight-post/build-3.log`、終了コード0を確認。
+計算上限変更なし。検証済み累計195本・14,782行。
+上限変更後のRR02(a)実測2,284行、(b)(c)新規0行。
+
+評価関手の左随伴性には Mathlib の `evaluationAdjunctionLeft` を使える。
+今回の交換同型と転置の式により、元の図式の実現を評価した対象を、
+評価したframe族の実現へ、指定随伴を保って移せる。
+次に必要なのは自由評価の余積を要素圏へ移す比較であり、
+その後に添字の収縮を移して実増大射の弱同値性を証明する。
+RR02完了・停止点5aとは数えない。
