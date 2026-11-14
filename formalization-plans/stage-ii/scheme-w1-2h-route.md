@@ -168,3 +168,17 @@ B1 の `Cech/Filtered.lean` の `isCechExact_colimit` は、この左随伴性�
 4. 左辺の各遷移が、conerve の各次数の p 乗反復に一致することを示し、`P_* C(f)` と同定する。wide pushout の挿入写像との式で環準同型を一意に決める。この一致を定義的な一致と決めつけず、増大項と全次数で照合する。
 
 この整理で、面・退化・増大の互換性の大部分を関手性と自然同型から受け取れる。第 2・第 4 項の構造射の式が H02 の残る実装内容。独立した「有限テンソル積と filtered 余極限の交換定理」を追加して作る計画にはしない。既存の上端 5,000 行はまだ維持し、実装前のソース照合だけで見積もりを縮めない。
+
+## 8. C02 の境界での紙の追加照合（2026-11-14）
+
+§1〜§7 の C01 未供給・凍結中の記述は各時点の履歴である。現在は C01 と I01〜I04、一般平坦開を伴うアフィン Noether 模型と実際の Spec の図式の比較を検証済み（85507998e）。B4 も完了し、main の凍結は解除された。新しい境界は [C02 候補](scheme-w1-2g-1-fp-envelope-boundary.md) の有限表示の閉包絡の存在構成であり、ここでは Lean の実装を始めない。
+
+2g-1 の一覧：済み 7／全体 12（うち追加 3）。
+
+2h の一覧：済み 0／全体 4（うち追加 0）。
+
+利用側 A6/ArcSheafProperty.lean の cech_exact_of_vCover_perfect と、B1 Cech/Basic.lean の AugmentedRingCechExact・ringCechExact_iff_of_iso をソースで再照合した。B1 の完全性は増大の単射・第 0 次の完全性・全正次数の完全性を同時に持ち、ここを H⁰ の条件だけに替えない。H03 は H01・H02 の環の増大余単体対象の実際の同型を、この既存の同型不変性へ渡す。
+
+H04 の積について、Mathlib.FieldTheory.Perfect の instPerfectRingProd は ExpChar を仮定しているため、零環を含み得る積への入口としてそのまま使わない。各座標の p 乗の全単射性から、関数環の p 乗の単射性は funext と各座標の単射性、全射性は座標ごとの逆像の選択と funext で直接得られる。この法則は空の族でも成り立つ。p の像が零という式も座標ごとに保持し、ProjectiveLocalizedFrobenius.projectivePrimePowerRingHom p hp hz を使うので、積への CharP／ExpChar の追加仮定は不要。
+
+G0 の isAffineVCoverFamily_iff_pi は同じ RingHom.pi f と各 Pi.evalRingHom を使う。H04 の入口をこの既存の橋で一射へ渡し、その後の H01 の自然性も各射影に沿って同じ準同型で読む。利用側にある各 B_i の CharP・PerfectRing の仮定と、最終出力の Arrow.mk (CommRingCat.ofHom (RingHom.pi f)) の形は保つ。この段 0 の主項目を増やさず、2h の見込み 2,000〜5,000 行は維持する。
