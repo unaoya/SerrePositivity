@@ -1667,3 +1667,17 @@ G1・G2共用部品込み本体10,786行、入口込み10,970行。C04 は本体
 一覧：済み10／全体15（うち追加6）。
 
 C04(c) の pushout と生成元の接続（着手前の型、見込み80〜220行）：`closure_range_union_eq_top_of_isPushout` は可換環の実際の pushout の二つの構造射の像が環全体を生成することを返す。`closure_image_generators_eq_top_of_isPushout` は pushout の片方の環をその基底の像と元 s で生成できるとき、pushout の他方の構造射の像と s の像で pushout 環を生成できることを返す。07RH の底変換後の生成元の供給で、C04 内の証明分割。親項目を増やさず、生成条件を最終出力の追加仮定にはしない。
+
+
+C04(c) の有限型の入力からの出口（着手前の型、見込み60〜150行）：`exists_surjective_stage_of_finiteType_pushouts` は filtered な可換環の二図式 D,E と自然変換 τ、実際の余極限とそこでの可換な全射について、初期段 i の τᵢ が有限型、各 i→j の自然性の正方形が pushout なら、ある後段の τⱼ が全射と返す。有限型性から初期段の有限個の代数生成元を選び、前記の pushout の生成元の法則を用いて一様な生成条件を実際に供給する。原典07RHの環の底変換の形の出口で、C04 内の証明分割。スキームの affine な実際の極限の Γ の余極限と pushout との照合はなお別に接続する。
+
+
+### C04(c)：底変換の環の生成元を pushout の普遍性で供給
+
+`PushoutRingGenerators`（71行）：`closure_range_union_eq_top_of_isPushout` は可換環の pushout が二つの構造射の像で生成されることを返す。`closure_image_generators_eq_top_of_isPushout` は片方の環の基底上の生成元を pushout の他方の環上の生成元へ移す。二つの像を含む部分環への普遍射と、その包含との合成の恒等性から示した。
+
+本体71行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,971ジョブ成功。小監査2宣言・標準三公理のみ。単独束の終了状態0と公開前のソース完全一致を確認済み。最初の下書きでは ext が既に部分型の外へ進んでいたため不要な Subtype.ext を除き、再検証後に公開した。ログ `2g-pushout-ring-generators-check-2.log`・`2g-pushout-ring-generators-native.log`・`2g-pushout-ring-generators-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体10,857行、入口込み11,042行。C04 は本体441行まで検証。有限型と pushout の図式を入力とする全射性の出口は現在未検証の下書きで、この実測に含めない。C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。
