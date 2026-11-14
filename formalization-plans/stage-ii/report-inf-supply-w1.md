@@ -4721,3 +4721,293 @@ lemma leftClassificationHom_preserves_iso {E H B : SSet.{u}} [Quasicategory B]
 次は、標準引き戻し同型の分類の制限を同じ補正係数の逆の共役として回収し、
 二段の指定底変換の中間制限同型を相殺して初頂点制限の忠実性で降下する。
 指定単位の下書きの再検証は別ログへ分離しており、この成功の宣言数には含めない。
+
+## 53. 指定底変換の貼り合わせの降下（11-14、検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§46.2で承認された元のHomの型で、`leftStraightening_baseChange_pasting` まで書いた。
+まだビルド前で、依存する四本から対象ビルドを待っている。
+新しい比較・独立した構成を選ばず、同じ制限比較の三因子の相殺と初頂点制限の忠実性で降下する。
+
+第一の指定底変換の二段制限は対象ビルドを通過。標準比較の分類では、
+元の逆射の分類の自然性に順方向の分類を合成し、同じ係数補正の逆の共役を得る。
+直接底変換も同じ係数貼り合わせで共通の共役に揃える。
+未検証の単位下書きのkernelの簡約の問題とは別の部分であり、成功には混ぜない。
+
+検証済み累計は123本10,002行のまま。今回の五本は計508行、全部通ると128本10,510行。
+E01本体には指定単位の始点固定とKan普遍性への接続が残る。残りの新規行数の見込みは、
+E01 700〜1,400、E02〜E06 1,150〜1,950、RR01〜RR05 3,100〜4,950、R2d・R2e 500〜700。
+合計5,450〜9,000行で、今回が通った時点からの全体の見込みは
+15,960〜19,510行。外枠20,800行の内側で進める。
+
+以下はすべて既存構成の法則・証明分割（新しいID項目なし）。各宣言200行未満、計算上限不変。
+
+### LeftClassificationPullbackSimplexIso（101行）
+
+```lean
+local instance pullbackSimplexIso_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma isoPrecomp_hom {A D X : SSet.{u}} {f g : A ⟶ X}
+    (e : FunctorIso f g) (k : D ⟶ A) :
+    (e.precomp k).hom = precomposeFunctorHom k e.hom
+
+private lemma precomp_identity {A D X : SSet.{u}} (k : D ⟶ A) (f : A ⟶ X) :
+    precomposeFunctorHom k (𝟙 (HomotopyCategory.mk (functorVertex f))) = 𝟙 _
+
+lemma leftClassification_pullbackComparison_simplexIso {E B D T : SSet.{u}}
+    [Quasicategory T] (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let q₀ := pullback.snd p (l ≫ k)
+    let q₁ := pullback.snd (pullback.snd p k) l
+    let c := leftClassificationHom q₁ q₀ (pullbackLeftPullbackSndIso p k l).hom
+      (pullbackLeftPullbackSndIso_hom_snd p k l)
+    letI := leftClassificationHom_preserves_iso q₁ q₀ (pullbackLeftPullbackSndIso p k l)
+      (pullbackLeftPullbackSndIso_hom_snd p k l)
+      (pullbackLeftPullbackSndIso_inv_snd_snd p k l)
+    FunctorIso.precomp (asIso c)
+      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap T)) =
+      leftClassificationSimplexIso q₁ ≪≫ (simplexSectionCompositeCoefficient p k l).symm ≪≫
+        (leftClassificationSimplexIso q₀).symm
+
+```
+
+### LeftStraighteningSimplexWhisker（86行）
+
+```lean
+local instance simplexWhisker_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+lemma leftStraightening_baseChange_simplex_whisker
+    {E B D T : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let t := U.map (nerveMap (transportSimplexFunctor l))
+    let s := U.map (nerveMap (transportSimplexFunctor k))
+    diagramIsoCongr
+      (by
+        rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality l,
+          Category.assoc]
+        apply congrArg (fun z ↦ t ≫ z)
+        rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc])
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality l,
+        Category.assoc])
+      (((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp (U.map l)).precomp
+        (U.map (transportSimplexFirstVertexMap T))) =
+      ((leftClassificationSimplexIso p).precomp s).precomp t ≪≫
+        ((simplexSectionBaseChangeCoefficient p k).precomp t).symm ≪≫
+        ((leftClassificationSimplexIso (pullback.snd p k)).precomp t).symm
+
+```
+
+### LeftStraighteningSimplexComposite（97行）
+
+```lean
+local instance simplexComposite_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma conjugation_chain {L : Type v} [Category.{w} L]
+    {a₀ a₁ a₂ a₃ s₀ s₁ s₂ s₃ : L}
+    (r₀ : a₀ ≅ s₀) (r₁ : a₁ ≅ s₁) (r₂ : a₂ ≅ s₂) (r₃ : a₃ ≅ s₃)
+    (d₀ : s₁ ≅ s₀) (d₁ : s₂ ≅ s₁) (γ : s₃ ≅ s₂) :
+    (r₀ ≪≫ d₀.symm ≪≫ r₁.symm) ≪≫
+        (r₁ ≪≫ d₁.symm ≪≫ r₂.symm) ≪≫
+        (r₂ ≪≫ γ.symm ≪≫ r₃.symm) =
+      r₀ ≪≫ (γ ≪≫ d₁ ≪≫ d₀).symm ≪≫ r₃.symm
+
+lemma leftStraightening_baseChange_composite_simplex
+    {E B D T : SSet.{u}} [Quasicategory B] [Quasicategory D] [Quasicategory T]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let t := U.map (nerveMap (transportSimplexFunctor l))
+    let s := U.map (nerveMap (transportSimplexFunctor k))
+    let q₀ := pullback.snd p (l ≫ k)
+    let q₁ := pullback.snd (pullback.snd p k) l
+    let c := leftClassificationHom q₁ q₀ (pullbackLeftPullbackSndIso p k l).hom
+      (pullbackLeftPullbackSndIso_hom_snd p k l)
+    letI := leftClassificationHom_preserves_iso q₁ q₀ (pullbackLeftPullbackSndIso p k l)
+      (pullbackLeftPullbackSndIso_hom_snd p k l)
+      (pullbackLeftPullbackSndIso_inv_snd_snd p k l)
+    diagramIsoCongr
+      (by
+        rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality l,
+          Category.assoc]
+        apply congrArg (fun z ↦ t ≫ z)
+        rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc])
+      rfl
+      (FunctorIso.precomp
+        ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp (U.map l) ≪≫
+          leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd p k) l ≪≫ asIso c)
+        (U.map (transportSimplexFirstVertexMap T))) =
+      ((leftClassificationSimplexIso p).precomp s).precomp t ≪≫
+        (simplexSectionCompositeCoefficient p k l ≪≫
+          simplexSectionBaseChangeCoefficient (pullback.snd p k) l ≪≫
+          (simplexSectionBaseChangeCoefficient p k).precomp t).symm ≪≫
+        (leftClassificationSimplexIso q₀).symm
+
+```
+
+### LeftStraighteningSimplexDirect（126行）
+
+```lean
+local instance simplexDirect_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma isoSymm_heq {L : Type v} [Category.{w} L]
+    {a b a' b' : L} (e : a ≅ b) (e' : a' ≅ b')
+    (ha : a = a') (hb : b = b') (h : HEq e e') : HEq e.symm e'.symm
+
+private lemma isoThree_heq {L : Type v} [Category.{w} L]
+    {a₀ a₁ a₂ a₃ b₀ b₁ b₂ b₃ : L}
+    (e₁ : a₀ ≅ a₁) (e₂ : a₁ ≅ a₂) (e₃ : a₂ ≅ a₃)
+    (d₁ : b₀ ≅ b₁) (d₂ : b₁ ≅ b₂) (d₃ : b₂ ≅ b₃)
+    (h₀ : a₀ = b₀) (h₁ : a₁ = b₁) (h₂ : a₂ = b₂) (h₃ : a₃ = b₃)
+    (he₁ : HEq e₁ d₁) (he₂ : HEq e₂ d₂) (he₃ : HEq e₃ d₃) :
+    HEq (e₁ ≪≫ e₂ ≪≫ e₃) (d₁ ≪≫ d₂ ≪≫ d₃)
+
+lemma leftStraightening_baseChange_direct_simplex
+    {E B D T : SSet.{u}} [Quasicategory B] [Quasicategory T]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let t := U.map (nerveMap (transportSimplexFunctor l))
+    let s := U.map (nerveMap (transportSimplexFunctor k))
+    diagramIsoCongr
+      (by
+        rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality l,
+          Category.assoc]
+        apply congrArg (fun z ↦ t ≫ z)
+        rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc])
+      rfl
+      (FunctorIso.precomp
+        (diagramIsoCongr
+          (f' := U.map l ≫ (U.map k ≫ leftStraighteningInfinityDiagram p))
+          (by rw [Functor.map_comp, Category.assoc]) rfl
+          (leftStraighteningInfinityDiagram_baseChangeIso p (l ≫ k)))
+        (U.map (transportSimplexFirstVertexMap T))) =
+      ((leftClassificationSimplexIso p).precomp s).precomp t ≪≫
+        (simplexSectionCompositeCoefficient p k l ≪≫
+          simplexSectionBaseChangeCoefficient (pullback.snd p k) l ≪≫
+          (simplexSectionBaseChangeCoefficient p k).precomp t).symm ≪≫
+        (leftClassificationSimplexIso (pullback.snd p (l ≫ k))).symm
+
+```
+
+### LeftStraighteningBaseChangePasting（103行）
+
+```lean
+local instance straighteningPasting_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma isoPrecomp_hom {A D X : SSet.{u}} {f g : A ⟶ X}
+    (e : FunctorIso f g) (k : D ⟶ A) :
+    (e.precomp k).hom = precomposeFunctorHom k e.hom
+
+private lemma normalized_hom_heq {A X : SSet.{u}} {f g f' g' : A ⟶ X}
+    (hf : f = f') (hg : g = g') (e : FunctorIso f g) :
+    HEq (diagramIsoCongr hf hg e).hom e.hom
+
+lemma leftStraightening_baseChange_pasting_iso
+    {E B D T : SSet.{u}} [Quasicategory B] [Quasicategory D] [Quasicategory T]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let q₀ := pullback.snd p (l ≫ k)
+    let q₁ := pullback.snd (pullback.snd p k) l
+    let c := leftClassificationHom q₁ q₀ (pullbackLeftPullbackSndIso p k l).hom
+      (pullbackLeftPullbackSndIso_hom_snd p k l)
+    letI := leftClassificationHom_preserves_iso q₁ q₀ (pullbackLeftPullbackSndIso p k l)
+      (pullbackLeftPullbackSndIso_hom_snd p k l)
+      (pullbackLeftPullbackSndIso_inv_snd_snd p k l)
+    (leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map l) ≪≫
+      leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd p k) l ≪≫ asIso c =
+    diagramIsoCongr
+      (f' := (SSet.uliftFunctor.{u + 1, u}).map l ≫
+        ((SSet.uliftFunctor.{u + 1, u}).map k ≫ leftStraighteningInfinityDiagram p))
+      (by rw [Functor.map_comp, Category.assoc]) rfl
+      (leftStraighteningInfinityDiagram_baseChangeIso p (l ≫ k))
+
+lemma leftStraightening_baseChange_pasting
+    {E B D T : SSet.{u}} [Quasicategory B] [Quasicategory D] [Quasicategory T]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    HEq (precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map l)
+        (leftStraighteningInfinityDiagram_baseChangeIso p k).hom ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd p k) l).hom ≫
+      leftClassificationHom (pullback.snd (pullback.snd p k) l)
+        (pullback.snd p (l ≫ k)) (pullbackLeftPullbackSndIso p k l).hom
+        (pullbackLeftPullbackSndIso_hom_snd p k l))
+      (leftStraighteningInfinityDiagram_baseChangeIso p (l ≫ k)).hom
+
+```
+
+
+### 53.1 指定単位の点評価の分離と実持ち上げの合成（検証前）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+単位の点評価は、同じ指定単位の定義式を評価関手で写す部分へ分離した。
+積上の局所準圏証明を追加せず、元の一般評価則に明示した定義域・終域を渡す。
+旧正方形下書きから同じ公開名の未検証の宣言を除き、重複させない。
+実正方形の持ち上げの合成は、元の標準比較と二つの射影で計算する法則として書いた。
+どちらも検証前で、E01の完成や検証済み行数に含めない。
+
+#### HomWeightYonedaUnitPointEvaluation（71行）
+
+```lean
+private lemma homWeightUnit_eq_normalized_curry {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    homWeightYonedaUnit F =
+      SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanFunctorHomCongr
+        (U' := yonedaInfinityMap A)
+        (V' := (SSet.uliftFunctor.{u + 1, u}).map F ≫
+          Project.HomotopyDiagramComparison.presheafHomWeightDiagram F)
+        rfl (functorHomBifunctorDiagram_curry F F)
+        (curryFunctorHom (functorHomBifunctorUnit F))
+
+lemma homWeightYonedaUnit_evaluate_heq {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) (a : A _⦋0⦌) :
+    HEq ((hoFunctor.map ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj A)).map
+        (evaluateFunctorAt (Y := SpaceInfinity.{u})
+          (ULift.up (SSet.opObjEquiv.symm a))))).toFunctor.map (homWeightYonedaUnit F))
+      (precomposeFunctorHom
+        (lift (SSet.const (ULift.up (SSet.opObjEquiv.symm a)))
+          (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj A)))
+        (functorHomBifunctorUnit F))
+
+```
+
+#### ClassifiedSquareLiftPasting（46行）
+
+```lean
+lemma squareLift_pasting {A B C E H J : SSet.{u}}
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l) :
+    pullback.lift f p hf ≫
+      F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange
+        q (pullback.snd r l) (pullback.lift g q hg) (pullback.lift_snd _ _ _) k =
+    pullback.lift (f ≫ g) p (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]) ≫
+      (pullbackLeftPullbackSndIso r l k).inv
+
+```
+
+
+### 53.2 元の指定底変換の貼り合わせ則の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+五本の対象ビルド成功（5,526 jobs）。新しい環境の24宣言の小監査成功、標準三公理のみ。
+計算上限の変更なし。ログ：`/tmp/is-w1/native-simplex-bridges-verify/run-4.log`、
+`catalog-after.log`、`audit-after.log`。
+今回513行、検証済み累計128本・10,515行。
+
+§46.2で承認された `leftStraightening_baseChange_pasting` を元の型のまま証明した。
+全準圏の底B・D・Tを許し、指定底変換も標準反復引き戻し比較の分類射も置き換えていない。
+同じ二つの初頂点制限の共役を照合し、制限の充満忠実性で降下した。
+E01本体には指定単位の始点固定評価とKan普遍性への接続が残るため、一覧の済み数は増やさない。
+
+次は分離した指定単位の点評価と、実正方形の持ち上げの合成を検証し、
+既存の `twistedSourceHomUnit_homUniversal` との同じ射の照合へ進む。
+今回の実測を入れた残りの見込みは15,965〜19,515行（外枠20,800行）。
