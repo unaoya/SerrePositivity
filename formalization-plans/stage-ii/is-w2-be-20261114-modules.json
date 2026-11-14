@@ -56,5 +56,8 @@
   "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSectionPoints",
   "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointRestriction",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalBKProbeCone",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKSections"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKSections",
+  "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointMap",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCoefficientsComparison",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanUniverseWeight"
 ]

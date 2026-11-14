@@ -10804,3 +10804,123 @@ theorem strictBETotProbeConeBKMap_point (F : K ⥤ (operad A).Algebra) :
       (strictBETotUniversalProbeConePoint A K F) = strictBETotUniversalBKProbeConePoint A K F
 
 ```
+
+## 173. 全rightFrameHom係数と同じBK重みの宇宙移送（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。R02・R03は未完了。
+
+### 173.1 検証済みの到達点
+
+元の右frameの反対圏Homと全Hom∞比較の入口の `rightFrameHom` を、同じ二重反対添字Kᵒᵖᵒᵖの**全射に自然な同型**として束ねた。元の自然同型 `rightFrameHomOpIso` の各成分を使い、各添字で独立に逆を選んでいない。指定されたBK普遍錐を同じ係数同型の逆で全rightFrameHom図式へ送り、同じ零単体の輸送の等式を閉じた。元の係数同型で戻すと、自然変換全体として元のBK普遍錐に戻る。
+
+次のHom∞比較の入口は `rightFrameHammockKanDiagram` のphase0で、これは元のrightFrameHomの**宇宙持ち上げの後にEx∞を施した全図式**。単に同じKan複体だから定義的に等しいとは扱わない。また元の添字Kの宇宙uからmax(u,v)へのAsSmall変更が必要になるため、既存の0宇宙基底版の法則を、同じ明示的なover列のup・downで一般宇宙へ移した。
+
+新規 `BousfieldKanUniverseWeight` は、`bousfieldKanWeight (AsSmall.{v} J)` と `AsSmall.down ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}` の実同型を、元のdownを順射として指定する。単体・構造射・添字の作用を保持し、別の重みを選んでいない。一般になった宇宙変更の法則なのでKerodon/LimitsAndColimits/HomotopyLimitsAndColimits/へ置いた。既存の0宇宙版やG10のファイルは変更していない。
+
+### 173.2 検証・規模
+
+232は係数の同型・点の後合成の2本で **5,107 jobs・終了0、60モジュール397宣言**。233は一般宇宙の重み同型の1本で **1,242 jobs・終了0、新規全61モジュール408宣言・標準三公理のみ**。実ハンドル84787・79978の終了0・鍵返却を確認。ログ `/private/tmp/isw2-build232.log`・`233.log`、小監査 `/private/tmp/AuditISW2BKCells233.lean`。対象ビルドと小監査だけ、`--class impl --wait 3600`、同時整理券一枚。
+
+今回3本173行、各200行以下。3b-4の検証済み **61本・3,965行**。登録候補の同じJSONには一般のKerodonの1本も追加した。sorry・独自公理・計算上限の変更0。SSetモデルの仮定なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。既存構成の係数移送・自然性の法則の照合であり、新しい独立の数学の一覧への追加0。
+
+### 173.3 次の接続（未証明を明記）
+
+次に必要なのは、同じBK切断の宇宙変更を切断空間全体の同型へ移すこと。型の案を一時ファイル `/private/tmp/CheckBKUniverseSectionsType.lean` で検査し、終了0を確認した。これは型の検査だけで、この同型の証明を済みとは数えていない。
+
+```lean
+-- universe u v
+-- open CategoryTheory
+-- open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+
+def bousfieldKanUniverseSectionsIso (I : Type u) [SmallCategory I] (H : I ⥤ SSet.{u}) :
+    (SSet.uliftFunctor.{max u v,u}).obj (bousfieldKanHolim H) ≅
+      bousfieldKanHolim ((AsSmall.down : AsSmall.{v} I ⥤ I) ⋙ H ⋙
+        SSet.uliftFunctor.{max u v,u})
+```
+
+候補は、今回の同じBK重みの同型、既存の切断の `uliftSectionsIso`・`bousfieldKanSectionsIso`、またはULiftの全忠実性と元の転置の自然性を使う経路。実際の順射と元の指定点・標準脚の等式を保持して組み立てる。続くEx∞への係数の単位については、既存 `BousfieldKanHomotopyInvariance.bousfieldKanMap_homotopyEquivalence` がKan係数の成分ごとの同値から**同じ係数射が誘導するBK切断写像**のホモトピー同値を与える。ここを新しい係数不変性の定理で作り直す必要はない。
+
+その後、既存 `weightedNerveStraighteningUnitIso` と§165の全Hom∞比較を使い、同じ分類像・cosliceの切断へ移す。`fixedVertexConeSpaceEquiv` に戻す際は元の頂点を指定し、全族の両境界と、極限判定のa・ha・heの同じ頂点評価の等式を省略しない。まだnative join錐族を構成・検証したとは数えない。/goalはactiveのまま、次の同じ宇宙の切断の照合へ続ける。
+
+### 173.4 今回の法則の型
+
+#### NativeWeightedPointMap（28行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet CartesianMonoidalCategory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem nativeWeightedPoint_map {W F G : I ⥤ SSet.{u}} (s : W ⟶ F) (f : F ⟶ G) :
+    ((weightedSectionsMap W f).app (Opposite.op ⦋0⦌)) (nativeWeightedPoint I s) =
+      nativeWeightedPoint I (s ≫ f)
+
+```
+
+#### StrictDiagramTotProbeCoefficientsComparison（68行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory HomotopicalAlgebra Opposite SSet
+open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
+local instance strictBETotProbeCoefficientComparisonModel : ModelCategory (operad A).Algebra := modelCategory A
+
+def strictBETotProbeRightHomDiagram (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def strictBETotProbeCoefficientsIso (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    strictBETotProbeRightHomDiagram A K F Y ≅ strictBETotProbeCoefficients A K F Y
+
+def strictBETotUniversalBKRightHomCone (F : K ⥤ (operad A).Algebra) :
+    bousfieldKanWeight Kᵒᵖᵒᵖ ⟶
+      strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F)
+
+theorem strictBETotUniversalBKRightHomCone_back (F : K ⥤ (operad A).Algebra) :
+    strictBETotUniversalBKRightHomCone A K F ≫
+      (strictBETotProbeCoefficientsIso A K F ((framedLimitFunctor A K).obj F)).hom =
+        strictBETotUniversalBKProbeWeightedCone A K F
+
+def strictBETotUniversalBKRightHomPoint (F : K ⥤ (operad A).Algebra) :
+    (weightedSections (bousfieldKanWeight Kᵒᵖᵒᵖ)
+      (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F))) _⦋0⦌
+
+theorem strictBETotUniversalBKRightHomPoint_comparison (F : K ⥤ (operad A).Algebra) :
+    ((weightedSectionsMap (bousfieldKanWeight Kᵒᵖᵒᵖ)
+      (strictBETotProbeCoefficientsIso A K F ((framedLimitFunctor A K).obj F)).inv).app (op ⦋0⦌))
+        (strictBETotUniversalBKProbeConePoint A K F) = strictBETotUniversalBKRightHomPoint A K F
+
+```
+
+#### BousfieldKanUniverseWeight（77行）
+
+```lean
+universe u v
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open CategoryTheory
+variable (J : Type u) [SmallCategory J]
+
+def bousfieldKanUniverseOverLift (j : AsSmall.{v} J) :
+    Over ((AsSmall.down : AsSmall.{v} J ⥤ J).obj j) ⥤ Over j
+
+theorem bousfieldKanUniverseOverLift_down (j : AsSmall.{v} J) :
+    bousfieldKanUniverseOverLift J j ⋙ Over.post (AsSmall.down : AsSmall.{v} J ⥤ J) = 𝟭 _
+
+theorem bousfieldKanUniverseOverDown_lift (j : AsSmall.{v} J) :
+    Over.post (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanUniverseOverLift J j = 𝟭 _
+
+def bousfieldKanUniverseWeightDown : bousfieldKanWeight (AsSmall.{v} J) ⟶
+    (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}
+
+instance bousfieldKanUniverseWeightDown_isIso : IsIso (bousfieldKanUniverseWeightDown.{u,v} J)
+
+def bousfieldKanUniverseWeightIso : bousfieldKanWeight (AsSmall.{v} J) ≅
+    (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}
+
+```
