@@ -22754,3 +22754,55 @@ M14実測29,012行、L12a実測13,721行（今回L12の84行はL12aに重複計�
 今回のファイルのwc -lは84行、28,928+84=29,012行が正しい。
 完備化後P⁰の三案の紙の確認は§380。新しい仮定を足して隠していない。
 M14全体の完成見込みの外枠超過の懸念は残り、一覧の残項を完成扱いにしていない。
+
+## 384. L13：一般次数の一文字単位切断（実装前の型）
+
+一覧：済み 14／全体 48（うち追加 4）
+
+区間だけのUnitValuesは適用せず、同じ右単位子の値の補題だけを再利用する。
+任意のCut 0 qはcard=0で唯一、一色の非退化性は格子経路のvertex_injectiveから得る。
+fullColorVertices_eq_idと同じ順序列挙で指定面を恒等へ同定する。
+符号は位置が一つなので逆転・caesuraがなく1。各証明200行以内。
+既存構成の単位・指定面・係数移送の法則と証明分割で、新しいIDは足さない。
+
+```lean
+lemma unaryCut_faceData {q : ℕ} (s : Cut 0 q) (u : Surjection.Word 1 1) :
+    (⟨outputDegree s u 0, vertices s u 0⟩ : Σ d : ℕ, Fin (d + 1) →o Fin (q + 1)) =
+      ⟨q, OrderHom.id⟩
+lemma unaryCut_sign {q : ℕ} (s : Cut 0 q) (u : Surjection.Word 1 1) : cutSign s u.val = 1
+lemma unaryCut_generatorFamily (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ}
+    (s : Cut 0 q) (u : Surjection.Word 1 1) (x : S _⦋q⦌) :
+    cutGeneratorFamily A S s u x = fun _ => ⟨q, gen A S q x⟩
+lemma vectorTensorAt_one (A : Type u) [CommRing A] (K : Complex A)
+    (a : Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ) (h : -(a.1 : ℤ) = t) :
+    vectorTensorAt K 1 (fun _ => a) t (by simp [vectorDegree, degreeSum]; omega) =
+      (oneIso K).inv.f t ((eqToHom (congrArg K.X h)).hom a.2)
+lemma cutSum_unit (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ} (x : S _⦋q⦌) :
+    cutSum A S (Surjection.permutationWord (1 : Equiv.Perm (Fin 1))) x =
+      (oneIso (chains A S)).inv.f (-((0 + q : ℕ) : ℤ))
+        ((eqToHom (congrArg (chains A S).X
+          (by omega : -(q : ℤ) = -((0 + q : ℕ) : ℤ)))).hom (gen A S q x))
+```
+
+## 385. L13の全入力次数の単位Cut和（検証済み、取り込み点）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+元の唯一Cutの色別順序列挙を恒等面へ戻し、全単体の生成元を得た。
+同じ符号は1。一因子の斉次テンソルを一般の複体の右単位子の逆へ比較して、
+`UnaryCutUnit.cutSum_unit`を全qについて証明した。
+元のcutSumの整数次数-(0+q)と生成元の次数-qの等式移送を型に明示している。
+区間用の単位作用の完成定理は使わず、一般の複体の右単位子の値だけを再利用した。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- UnaryCutFaces（80行）
+- UnaryCutUnit（64行）
+
+今回144行、M14実測29,156行、外枠31,000行まで1,844行。
+対象ビルド2703 jobs成功、追加警告0。
+小さい監査2モジュール14宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。鍵は対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決で、新しい仮定を加えていない。
+L14の空語の実複体射の包装へ進む。
