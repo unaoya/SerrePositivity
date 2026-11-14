@@ -22697,3 +22697,60 @@ mainは391b2a0d2のまま。3b-4a完成の取り込みが入れば§33のTotへ�
 
 §314以降の完成見込みが外枠に収まらない懸念と、完備化後P⁰の未評価分を維持する。
 現在の実測は外枠内であり、次はL12の同じ有限和の相殺の包装へ進む。
+
+## 382. L12：同じ全有限和の相殺（実装前の型）
+
+一覧：済み 13／全体 48（うち追加 4）
+
+L12aの全対合と固定零項をFinset.sum_ninvolutionへ渡す。
+左右の和は元の直和添字の左・右で取り、反対側では零を補うだけ。
+左は合成側の正の項、右は二段側の項（balanceTermの負号を戻す）。
+新しい係数・面・添字や数学は作らない既存有限和の法則の包装。
+各証明200行以内。
+
+```lean
+def compositeBalanceIsLeft {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) (i : CompositeBalanceIndex u v k q) : Bool
+
+lemma sum_compositeBalanceTerm_eq_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) (x : S _⦋q⦌) :
+    ∑ i : CompositeBalanceIndex u v k q, compositeBalanceTerm A S u v k q i x = 0
+
+def compositeCutSum (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) {q : ℕ} (x : S _⦋q⦌) :
+    (power (chains A S) (m + n)).X (-((d + e + q : ℕ) : ℤ))
+def nestedCutSum (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) {q : ℕ} (x : S _⦋q⦌) :
+    (power (chains A S) (m + n)).X (-((d + e + q : ℕ) : ℤ))
+
+lemma cutSum_composite (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    compositeCutSum A S u v k x = nestedCutSum A S u v k x
+```
+
+## 383. L12：全arityの同じ有限Cut和の一致（検証済み、取り込み点）
+
+一覧：済み 14／全体 48（うち追加 4）
+
+`CompositeCutSumCancellation.cutSum_composite`が通った。
+L12aの全対合をそのまま使い、固定点は零、非固定点は反対符号として相殺する。
+合成側の全分割・Cutの項と二段側の全Cutの項を、元の直和の左右で選び、
+反対側へ零を補う表記で左右の有限和を定義した。既存の整数係数・指定面は変更していない。
+零出力・空語・退化項も含む全arity、全係数環、全入力次数での主張。
+全複体射への延長（L14/L16）やL13などは、この有限和の包装だけで完了扱いにしない。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts.CompositeCutSumCancellation（84行）。
+対象ビルド3293 jobs成功、追加警告0。
+小さい監査1モジュール18宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は対象ビルド・監査の間だけ取り、返却済み。
+
+M14実測29,012行、L12a実測13,721行（今回L12の84行はL12aに重複計上しない）。
+外枠31,000行まで1,988行。直前の会話中で29,019行と述べたのは加算の誤りで、
+今回のファイルのwc -lは84行、28,928+84=29,012行が正しい。
+完備化後P⁰の三案の紙の確認は§380。新しい仮定を足して隠していない。
+M14全体の完成見込みの外枠超過の懸念は残り、一覧の残項を完成扱いにしていない。
