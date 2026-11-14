@@ -1668,3 +1668,4 @@ public import SerrePositivity.AlgebraicGeometry.SegreCoordinateRing
 
 public import SerrePositivity.AlgebraicGeometry.SegreCoordinateStandardOpen
 public import SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneNormalization
+public import SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneSpecialization

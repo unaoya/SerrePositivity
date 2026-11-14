@@ -337,3 +337,17 @@ S02 完了。2g-2 本体1,162行・入口込み1,182行、小監査98宣言・�
 2g-2 本体1,222行・入口込み1,243行、小監査112宣言・標準三公理のみ。S03 の商との同型・Segre の二因子のチャート比較、S04 と有限冪、G4〜G5 は残る。全体の見込み約5,500〜12,000行、外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S03 の商との比較の分割（着手前、前記100〜250行の内数）：`homogeneousDegreeOneSpecialize G hf φ hφ : Away G f →+* C` は環写像 φ:A→+*C と hφ:φ f=1 から局所化の普遍性で作る。斉次分数における式と `specialize (normalize x)=φ x` を示し、商写像を φ に使う。これは前記の脱斉次化の逆写像の法則の分割。
+
+
+## G3・S03：斉次局所化の特殊化と正規化との合成
+
+`HomogeneousDegreeOneSpecialization`（64行）：`homogeneousDegreeOneSpecialize` は φ(f)=1 の下で実際の局所化の普遍性を制限した環写像。`homogeneousDegreeOneSpecialize_mk` は斉次分数の評価式。`homogeneousDegreeOneSpecialize_normalize` は正規化との合成が φ に等しいこと、`homogeneousDegreeOneSpecialize_normalize_self` は正規化自身に特殊化したときの恒等性。係数と二つの環の宇宙を分離。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,091ジョブ、小監査10宣言・標準三公理のみ、終了状態0。ログ `2g-degree-one-specialization-check-3.log`・`2g-degree-one-specialization-native.log`・`2g-degree-one-specialization-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は検証中だけ使用。
+
+2g-2 本体1,286行・入口込み1,308行、小監査122宣言・標準三公理のみ。商との同型・Segre チャート比較以降は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
