@@ -420,3 +420,9 @@ G1 累計は本体 **2,265 行**、入口込み **2,312 行**。次は有限個�
 一般自由開を幾何の平坦開へ読む既存比較の法則：`flat_restrict_iSup_of_flat_restrict f V h` は各開 V_i での平坦性を和の開へ貼り合わせる。`flat_restrict_iSup_basicOpen_of_free_tensor A S t hfree` は有限族 t に対し、各 away tensor の自由性から `Flat (Spec.map (algebraMap A S) ∣_ ⨆ i, PrimeSpectrum.basicOpen (t i))` を得る。既存の Spec の主開の比較・局所化と tensor の比較と、開上の平坦性の局所性の法則を使う。見込み 50〜100 行。
 
 幾何の指定開を添える比較の型：`exists_generic_flat_noetherian_model R B hmin` は同じ被約 R・有限表示代数 B と hmin に対し、既存の Noether 模型 A・S と実際の tensor 同型に、`U : (Spec A).Opens`、U の準コンパクト性、模型の射の U 上の平坦性を添える。`g = Spec(algebraMap A R)` に対し g⁻¹U が準コンパクトかつ稠密で全極小素点を含むことも返す。有限個の一般自由基本開を和にし、既存の平坦性の局所性と、一般点を含む開の稠密性を使う比較の法則。見込み 70〜150 行。ブローアップへの更なる底変換の稠密性までは主張しない。
+
+## 実際の tensor 模型からファイバー積の図式への比較（着手前の型）
+
+`e : R ⊗[A] S ≃ₐ[R] B` に対し、`affineTensorModelIso e : Spec B ≅ pullback (Spec(A→S)) (Spec(A→R))` を既存の pullbackSpecIso・Spec の同型・対称性の合成で作る。その `hom_fst` は `Spec(S→R⊗[A]S→B)`、`hom_snd` は元の `Spec(R→B)` と一致する。`isPullback_affineTensorModel e` で同じ実際の四辺の IsPullback を得る。既存の tensor 同型の Spec への係数移送と射影の法則であり、独立した模型の存在定理は追加しない。見込み 70〜140 行。
+
+一覧：済み 7／全体 12（うち追加 3）。

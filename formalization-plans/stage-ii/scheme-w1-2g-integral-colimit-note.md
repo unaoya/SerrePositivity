@@ -57,3 +57,5 @@ Spec B→Spec R の全射性を仮定した場合、各模型の射 C→ₐ[R]B 
 [Rydh, Proposition 3.7・Lemma 3.2](https://www.numdam.org/item/10.24033/bsmf.2588.pdf#page=17) の使用箇所では、必要な一般点の包含／全射性を実際の模型について供給する。候補は、元の基底上の実際のブローアップの像を含む有限表示の固有模型を、平坦射の像の開部分の中に取る方法、または Noether な有限段を増やしてその像の補閉集合を消す方法である。これらの模型の供給・有限段の空性の比較はまだ証明しておらず、このメモは原典の証明が誤りだという主張でもない。現在の一般自由開の係数移送と tensor の模型比較を先に完成させ、その後の A07 の型に必要な条件を明示してつなぐ。
 
 有限段へ像を移す既存 API の照合：Mathlib.AlgebraicGeometry.AffineTransitionLimit の `exists_map_eq_top D c hc U hU` は、cofiltered な逆系、アフィン遷移射、各段の CompactSpace、`c.π.app i ⁻¹ᵁ U = ⊤` から、`∃ j (a : j ⟶ i), D.map a ⁻¹ᵁ U = ⊤` を返す。同じファイルの `exists_mem_of_isClosed_of_nonempty`・そのプライム版は、互換な非空準コンパクト閉集合族の極限点を供給する。これらの判定は再実装しない。A07／G2 で残るのは、必要な固有模型の逆系と実際の IsLimit、射のアフィン性・準コンパクト性を供給し、この既存 API の仮定へ実際の写像を渡す接続である。
+
+底変換した逆系の極限比較には、Mathlib.CategoryTheory.Limits.Shapes.Pullback.Connected の `isLimitOfIsPullbackOfIsConnected` を再利用する。連結な添字 I、二つの図式 F,G、α:F→G、二つの cone cF,cG とその射 f、各 i における実際の IsPullback と IsLimit cG が入力で、IsLimit cF が出力である。したがって固定した有限表示模型の底変換の図式では、元の Spec の IsLimit と各射影の pullback square を保って渡せばよく、右随伴や Over の limit をもう一度手作業で証明しない。図式・cone と射影の実際の式の照合は別に必要。
