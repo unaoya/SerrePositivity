@@ -11417,3 +11417,76 @@ def strictBETotBKNativeSections_reconstruction
     (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
     let H
 ```
+
+## 179. 同じ全切断比較の各次数のfiberでの評価（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。R02/R03の標準脚・全錐族・極限性は未完了。
+
+元の普遍切断を底の指定頂点で制限し、同じ射影のfiberへ持ち上げる `simplicialSectionsFiberEvaluation` を構成した。充填性を仮定せず、元の底上の後合成とこの評価が厳密に可換であることを示した。既存の普遍評価とfiberへの持ち上げの評価・自然性の法則である。
+
+これにより、§178の同じ全切断三角形は各fiberの間の全単体的写像についても関手同型で可換となる。BEへの適用 `strictBETotBKNativeSections_fiber_reconstruction` では、元のBK係数・同じ元の図式・同じ頂点・同じ分類同型を指定した。元のBK切断の像を、native錐の切断へ送ってから共通の復元のfiberへ送る写像と、同じ元の指定分類変換を使って先に共通の復元へ送る写像を全次数で比較する。π₀・零単体だけの比較で代用していない。
+
+検証：244は二本の対象ビルド3,122 jobs・終了0、小監査84本580宣言。245はBEの一本の対象ビルド10,647 jobs・終了0、小監査85本599宣言。いずれも標準三公理のみ、実ハンドル15467・13905の終了0を確認し鍵は返却済み。個別検査で標準単体記法と結合済みの自然性を明示した後に対象ビルドを行った。sorry・独自公理0、計算上限の変更なし。
+
+今回三本177行、累計85本・5,382行。全て既存の評価・後合成・余単位の法則で、追加の一覧項目は0。各200行以下。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。これは標準脚そのものや全図式射のnative錐族・極限性の完了ではない。
+
+### 179.1 次の元の係数での照合
+
+weighted nerveのfiber同型で元の係数H.obj iへ戻し、同じBK重みの恒等射の零単体での評価と合わせる。次は元の構成の評価・単位則として以下を検査する（見込み100〜250行）。まだ証明・検証済みとは数えない。
+
+```lean
+universe u
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I] (H : I ⥤ SSet.{u})
+
+-- namespace SerrePositivity.EInfinity.HomotopyWeight
+-- 元の指定sの零単体を、元の同じ係数へ厳密に戻す。
+theorem bousfieldKanSectionsIso_nativeWeightedPoint_fiber
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((weightedNerveFiberIso H i).inv.app (Opposite.op ⦋0⦌))
+      ((simplicialSectionsFiberEvaluation (weightedNerveProjection H) (nerveVertex i)).app
+        (Opposite.op ⦋0⦌)
+        (((bousfieldKanSectionsIso H).hom.app (Opposite.op ⦋0⦌))
+          (nativeWeightedPoint I s))) =
+      (s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))
+```
+
+その後、BEの同じEx∞係数単位と指定BK重み比較へ特殊化し、元の標準脚への正規化を追う。ここでも、R03bの切断同値の逆の選択だけから全図式射の厳密な自然性が自動で出るとは主張しない。
+
+### 179.2 今回の法則の型
+
+#### SectionFiberEvaluation（48行）
+
+```lean
+def simplicialSectionsFiberEvaluation (p : E ⟶ B) (b : B _⦋0⦌) :
+    simplicialSections p ⟶ vertexFiber p b
+
+@[reassoc] theorem simplicialSectionsFiberEvaluation_ι (p : E ⟶ B) (b : B _⦋0⦌) :
+    simplicialSectionsFiberEvaluation p b ≫ vertexFiberι p b =
+      lift (SSet.const b) (𝟙 (simplicialSections p)) ≫ simplicialSectionsEvaluation p
+
+theorem simplicialSectionsFiberEvaluation_naturality
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    simplicialSectionsMap f hf ≫ simplicialSectionsFiberEvaluation q b =
+      simplicialSectionsFiberEvaluation p b ≫ vertexFiberMap p q f hf b
+```
+
+#### ClassifiedSectionsFiberTriangle（50行）
+
+```lean
+def classifiedLeftFibrationSectionsEquivalence_fiber_triangle (b : B _⦋0⦌) :
+    let r
+```
+
+#### StrictDiagramTotNativeFiberRecovery（79行）
+
+```lean
+def strictBETotBKNativeSections_fiber_reconstruction
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra)
+    (b : (nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ)) _⦋0⦌) :
+    let H
+```

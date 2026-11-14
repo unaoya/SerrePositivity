@@ -80,5 +80,8 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeConeAt",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationTransport",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedSectionsTriangle",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSectionsRecovery"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSectionsRecovery",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SectionFiberEvaluation",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedSectionsFiberTriangle",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberRecovery"
 ]
