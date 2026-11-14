@@ -7377,3 +7377,76 @@ def strictDiagramFrameArrowCone : Cone (strictDiagramFrameArrowDiagram A d X Y) 
 Hom要素圏のnerveと既存twisted-arrow表示の照合もまだ必要である。
 RR02(a)の実射全体・同値性は未完了。E01の別経路は§69以前の紙の整理を維持し、
 直接の指定単位比較と未供給の単位普遍性には戻っていない。
+
+## §71 RR02(a)：同じHom要素圏の錐の通常の極限性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§69.2(a)の証明分割。追加のIDは設けない。恒等射の対象、始点・終点からの分解、
+錐からwedgeへの制限、復元した射の全成分での法則を使う。
+通常の極限性から導来極限性を推論しない。
+
+以下は `StrictDiagramFrameArrowLimit.lean` の型。恒等射の対象・始点/終点の分解は
+`strictDiagramArrowIdentity`・`strictDiagramArrowFromSource`・
+`strictDiagramArrowFromTarget`。任意の射の分解を用い、恒等射での評価からwedgeを作る。
+
+```lean
+def strictDiagramFrameArrowWedge
+    (s : Cone (strictDiagramFrameArrowDiagram A d X Y)) :
+    Wedge (strictDiagramPointFrameMapping A d X Y)
+def strictDiagramFrameArrowLift
+    (s : Cone (strictDiagramFrameArrowDiagram A d X Y)) :
+    s.pt ⟶ strictDiagramFrameMapping A d X Y
+lemma strictDiagramFrameArrowLift_fac
+    (s : Cone (strictDiagramFrameArrowDiagram A d X Y))
+    (t : StrictDiagramArrowElements.{u} d) :
+    strictDiagramFrameArrowLift A d X Y s ≫
+      strictDiagramFrameArrowLeg A d X Y t = s.π.app t
+def strictDiagramFrameArrowIsLimit :
+    IsLimit (strictDiagramFrameArrowCone A d X Y)
+```
+
+次の `StrictDiagramFrameArrowComparison.lean` は既存の構成の適用と法則。
+Kan図式・錐への束縛と忘却、同じ通常の極限性、標準比較射と全添字射での評価を扱う。
+
+```lean
+def strictDiagramFrameArrowKanCone :
+    Cone (strictDiagramFrameArrowKanDiagram A d X Y)
+lemma strictDiagramFrameArrowKanCone_forget :
+    kanObjectForget.mapCone (strictDiagramFrameArrowKanCone A d X Y) =
+      strictDiagramFrameArrowCone A d X Y
+def strictDiagramFrameArrowKanIsLimit :
+    IsLimit (strictDiagramFrameArrowKanCone A d X Y)
+def strictDiagramFrameArrowComparison : strictDiagramFrameMapping A d X Y ⟶
+    bousfieldKanHolim (strictDiagramFrameArrowDiagram A d X Y)
+lemma strictDiagramFrameArrowComparison_evaluation (t : StrictDiagramArrowElements.{u} d) :
+    strictDiagramFrameArrowComparison A d X Y ≫
+      bousfieldKanEvaluation (strictDiagramFrameArrowDiagram A d X Y) t =
+        strictDiagramFrameArrowLeg A d X Y t
+```
+
+この比較射が弱同値であること、およびHom要素圏のnerveと既存twisted-arrow切断との照合は残る。
+E01の別経路については、有限部分の切断を極限へ移すだけでは弱同値性は出ないという
+§69の確認を維持する。元の指定単位の直接比較・未供給の単位普遍性は再試行していない。
+
+### 71.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFrameArrowLimit | 114 | 3,717 jobs成功 | 12宣言、標準三公理のみ |
+| StrictDiagramFrameArrowComparison | 53 | 3,752 jobs成功 | 6宣言、標準三公理のみ |
+
+ログは `/tmp/is-w1/frame-arrow-limit/build-10.log` と
+`/tmp/is-w1/frame-arrow-comparison/build-2.log`。全成分の型の正規化を局所化し、
+最後の変換を `convert` で明示した。計算上限は変更していない。
+既存の未検証のE01下書き4本は今回のビルド・コミットに含めていない。
+
+検証済み累計158本・12,758行（旧G2本文の分割は別計数）。外枠24,000行まで11,242行。
+上限変更後のRR02(a)実測は260行（§70の93行＋今回167行）、(b)(c)は新規0行。
+約18,000行の途中報告点にはまだ達していない。
+
+この束で通常の極限性と同じBousfield–Kan比較射・評価の法則までを検証した。
+RR02(a)の弱同値性とtwisted-arrow切断への照合は未完で、RR02は完了に数えない。
+次はこの同じ実射の弱同値性へ進む。R3・R4の実装は行っていない。
