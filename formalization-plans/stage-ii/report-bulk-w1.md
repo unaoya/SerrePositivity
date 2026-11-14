@@ -1117,6 +1117,13 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 
 ### 5∞-0 のdraft検査・第60束、A01完了（11-14夜）
 
-一覧：済み 11／全体 14（うち追加 0）。[第60束](bulk-5inf0/draft-block60-validation.json)でA1/DeRhamComparisonPoly全体が約34秒で成功。有効な成功は44／57本。rootFormsAugmentationの端点は、零単体の添字とnerveMapの評価の等式を明示し、形式関手の零単体はComposableArrows.ext₀で照合した。同じ辺の合成で、数学的な入力・仮定は追加していない。保持した二つの旧pd比較の型を含めてファイル全体が通った。検査済みソースをコミットする。A0・A1が全て通ったのでA01をPASSへ更新した。
+一覧：済み 11／全体 14（うち追加 0）。[第60束](bulk-5inf0/draft-block60-validation.json)でA1/DeRhamComparisonPoly全体が約41秒で成功。有効な成功は44／57本。rootFormsAugmentationの端点は、零単体の添字とnerveMapの評価の等式を明示し、形式関手の零単体はComposableArrows.ext₀で照合した。同じ辺の合成で、数学的な入力・仮定は追加していない。保持した二つの旧pd比較の型を含めてファイル全体が通った。検査済みソースをコミットする。A0・A1が全て通ったのでA01をPASSへ更新した。
 
 次のA5/StrongDescentは、削除済みのpairKoszulTowerへの古い参照で失敗した。既存のpowerKoszulTowerに同じ二つの座標を渡し、元のK(p,e)を第一冪の段として読む。D3の二切断のホモトピー圏の対象は既存のptから頂点を取る。元のRHomとKoszulの主張・仮定・sorryは増やさず、第61束で検査する。
+
+
+### 5∞-0 のdraft検査・第61束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第61束](bulk-5inf0/draft-block61-validation.json)でA5/StrongDescentが約40秒で成功。有効な成功は45／57本。同じK(p,e)を既存のpowerKoszulTowerの第一冪の段で読み、D3の対象のptを使う修正が通った。検査済みのソースをコミットする。直前の報告のde Rham比較の時間は生ログに合わせ約41秒に訂正した。
+
+次のWeaklyInitialAndDescentは失敗。includeとdocstringの順、完備化環の元のCommRing instance、完備CAlg包含・反射の名前とp引数を明示する。filtered余極限の指定比較は同じ式の中間のcoconeと射に型を付け、推論を分割して検査する。heartbeat上限は上げない。第62束に並んだ。
