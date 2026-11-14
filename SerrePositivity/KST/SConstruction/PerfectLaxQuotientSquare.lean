@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.CommutativeSquareRealization
 
 /-! # 元の二脚を持つ Cat^perf の実正方形
 概要：未完備な実商と完備化の入力から、元の四辺を固定した coherent 四角形を作る。

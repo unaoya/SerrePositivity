@@ -1,0 +1,19 @@
+{
+  "before_declaration_records": 134701,
+  "after_declaration_records": 134719,
+  "source_modules": 9518,
+  "statuses": {
+    "identity": 37917,
+    "compiler-inventory-only": 69018,
+    "module-moved": 27420,
+    "name-renamed": 346
+  },
+  "private_source_declarations": 11677,
+  "unmatched_authored": 0,
+  "unmatched_compiler_inventory": 69018,
+  "unpaired_after_inventory": 69036,
+  "sha256": "49887e1e532bcc32c4c7e9e8c2f9ef5f4e9ebb450b478b34efe35fde5c98e284",
+  "pairing_policy": "Actual canonical owned names only; compiler-sharing groups retained separately, never ordinal-paired",
+  "after_source_range_policy": "Actual V ranges, updated from the separately preserved 14-file V -> replay-tree comment-only supplement",
+  "doc_supplement_range_updates": 62
+}

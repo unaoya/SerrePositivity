@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafColimitLegNaturality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PresheafColimitLegNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaPresheafLegBottom
 
 /-!
@@ -46,7 +46,7 @@ lemma sigmaColimitLeg_representative_naturality :
       (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Discrete.mk j)))).toTruncated).toTruncated ≫
       homMk (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.presheafEvaluationComparisonApexEdge
         (r ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaPresheafInfinityInclusion C) q hq x₁) ≫
-      eqToHom (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone_vertex (G j))) := by
+      eqToHom (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone_vertex (G j))) := by
   have H := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.presheafColimitLeg_representative_naturality q hq c
     (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Discrete.mk j)))
   have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaPresheafCoconeBottomLeg_vertex r q c j

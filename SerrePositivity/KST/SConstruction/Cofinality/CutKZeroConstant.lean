@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：K₀ における定値制限の消滅。 -/
 lemma cofinalitySRestriction_constant_isZero {m n : ℕ} (X : StableModel.{u})
     (i : Fin (n + 1)) (v : (sStableModel n X).carrier _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((cofinalitySRestriction X
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((cofinalitySRestriction X
       (OrderHom.const (Fin (m + 1)) i)).val.app (Opposite.op ⦋0⦌) v) := by
   apply gappedVertex_isZero_of_pointwise
   intro a
@@ -37,7 +37,7 @@ lemma cofinalitySRestriction_constant_isZero {m n : ℕ} (X : StableModel.{u})
     apply Subtype.ext
     rfl
   rw [ha] at he
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr (sConstructionVertex_diagonal_isZero v i)
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr (sConstructionVertex_diagonal_isZero v i)
 
 /-- 概要：定値端点制限の三角圏 K₀ 作用は零。
 方針：対象生成元の像が実際に零対象であることを使う。

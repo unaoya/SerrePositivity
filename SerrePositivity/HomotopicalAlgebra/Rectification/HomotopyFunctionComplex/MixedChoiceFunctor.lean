@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FramedPreChoiceFunctor
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Pullbacks.FiberFunctor
 
 /-!
 # 中断した任意モデル源への一般化：MixedChoiceFunctor

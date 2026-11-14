@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalProductTest
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakMappingSpaces
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
@@ -58,3 +60,10 @@ lemma IsRightCofinal.isWeakHomotopyEquivalence {A B : SSet.{u}} {i : A ⟶ B}
     (hi (Z ⊗ B) (snd Z B))).mapPiZero_bijective
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.1.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence
+attribute [cite HTT "4.1.2.6" (partial := direction) "仮定：Kan 複体を終域とする射（Lean が弱い：終域に Kan 性を要求しない）。結論：同じ共終射は弱ホモトピー同値となる（Lean が弱い：Kan 終域での逆向きを含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence
+attribute [cite HTT "4.1.3.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence

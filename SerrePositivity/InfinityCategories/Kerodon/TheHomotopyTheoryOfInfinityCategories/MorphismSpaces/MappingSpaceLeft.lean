@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceRightKan
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -199,3 +201,9 @@ noncomputable def pinchedHomLeftPiZeroEquiv {X : SSet.{u}} [Quasicategory X]
       (homotopyCategoryOpHomEquiv x y).symm)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.2.2.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeft
+attribute [cite HTT "1.2.3.6"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homotopicL_edgeOp_iff

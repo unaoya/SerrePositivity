@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedKProjectiveDerivedHom
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeKProjectiveValues
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeTargetReplacement
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedActionEquivalences
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PinchedActionEquivalences
 
 /-!
 # 同じ probe の正規化 Hom と既存 D(R) の実 Hom の弱比較
@@ -31,7 +31,7 @@ def normalizedProbeDerivedHomMap (X Y : Complex A) :
     SSet.uliftFunctor.{u + 1, u}.obj
       (((normalizedProbeTensorHom A).obj (Opposite.op X)).obj
         (complexSemifreeResolutionValue A Y).val) ⟶
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
       ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (framedLimitKProjectiveProbe A X)))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A Y)) :=

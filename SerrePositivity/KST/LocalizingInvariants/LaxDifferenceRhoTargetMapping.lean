@@ -25,7 +25,7 @@ variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 lemma laxDifferenceRho_fst_vertex (y : E.obj _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst p.hom q.hom).app (Opposite.op ⦋0⦌)
       ((laxDifferenceRho p q v).app (Opposite.op ⦋0⦌) y) =
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).vertex :=
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).vertex :=
   LaxInclusion.fromD_fst_vertex p q (v.app (Opposite.op ⦋0⦌) y)
 
 lemma laxDifferenceRho_snd_vertex (y : E.obj _⦋0⦌) :
@@ -41,9 +41,9 @@ lemma laxDifferenceRho_fstMapping_equivalence (x : (laxCategory p q).obj _⦋0�
         ((laxDifferenceRho p q v).app (Opposite.op ⦋0⦌) y))) := by
   apply terminalTargetPinchedHomMap_equivalence
   · rw [laxDifferenceRho_fst_vertex]
-    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isTerminal
+    exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isTerminal
   · rw [laxDifferenceRho_fst_vertex]
-    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := p.hom) _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero).2
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := p.hom) _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero).2
 
 lemma laxDifferenceRho_sndMapping_equivalence (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom v)
     (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v) (x : (laxCategory p q).obj _⦋0⦌) (y : E.obj _⦋0⦌) :

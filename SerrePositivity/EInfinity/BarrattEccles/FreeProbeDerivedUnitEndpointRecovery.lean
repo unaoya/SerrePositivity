@@ -2,7 +2,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitVertex
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitRecoveryComponent
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeDerivedSourceVertex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ConstantRestrictionArrow
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.ConstantRestrictionArrow
 /-!
 概要：既存の標準導来単位成分を、元の複体単位の同じ端点へ回収する。
 方針：元の全単位回収式を評価し、既存の端点同型の二射を相殺する。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleUnderlyingCosliceTransport
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleUnderlyingCosliceTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpaceEdgeTransportValue
 /-!
 概要：始点固定 coslice の同じ fiber を、同じ native 基礎空間関手の値へ比較する。
 方針：始点固定 Tw の pointed 表示と、既存の全 fiber 同値を合成する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedTensorEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.ClosedTensorMappingUnit
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
 
 /-! # 左 smash パラメータと単位子の厳密豊穣自然性

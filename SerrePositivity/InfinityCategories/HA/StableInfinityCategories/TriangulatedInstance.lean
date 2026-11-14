@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OctahedronForMorphisms
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OctahedronModelTransport
 
@@ -23,3 +25,11 @@ instance isTriangulated_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositiv
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isTriangulated_of_octahedronModels (fun f g => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.octahedronModel_of_morphisms f g)
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.14" (partial := stronger-hyp) "仮定：安定準圏 X（Lean は IsStable を要求。HA の表現は点付き性・余ファイバー・懸垂同値）。結論：余ファイバー三角形と整数シフトを使う hX の三角圏構造（一致）。HA の形で仮定を与える入口は型にない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isTriangulated_ho
+attribute [cite HA "1.1.2.16"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isTriangulated_ho
+attribute [cite HA "1.2.1.4" (partial := component) "仮定：安定準圏 C（HA と一致）。結論：hC に三角圏構造があるため、HA と同じ hC 上の TStructure を取れる。C 内の対応する充満 ∞ 部分圏を一緒に定める型は採用した宣言にない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isTriangulated_ho
+attribute [cite HA "1.4.1.6" (partial := component) "仮定：前三角圏からアーベル圏への関手。反対圏に適用すれば反変（Lean が強い：一般の点付き準圏のホモトピー圏には前三角構造を仮定できない）。結論：三角を完全列に送る公理（Lean が弱い：集合値の次数族・suspension 同型と小余積を積にする公理を一組にした定義はない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isTriangulated_ho

@@ -1,0 +1,28 @@
+{
+  "reason": "Module and constant share a spelling but retain different post-move identities. Restore actual required declaration names, not module paths. No required check removed.",
+  "fixed_frozen_math_base": "c5c4436c0",
+  "before_source": "e381f75467755a84824a280ff429e52d4b6fb305",
+  "evidence": "declaration-names.jsonl.gz plus native formal audit missing-name error",
+  "fixes": [
+    {
+      "path": "scripts/audit_einfinity.lean",
+      "wrong_module_literal": "`SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialHammock",
+      "correct_declaration_literal": "`SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock",
+      "frozen_declaration_literal": "`SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock",
+      "old_owner": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock",
+      "actual_owner": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialHammock",
+      "expected_occurrences": 1,
+      "context": "e2RequiredBatch Array Lean.Name, consumed by env.contains; not the module-selector arrays"
+    },
+    {
+      "path": "scripts/audit_einfinity.lean",
+      "wrong_module_literal": "`SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.WeakThreeArrow",
+      "correct_declaration_literal": "`SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow",
+      "frozen_declaration_literal": "`SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow",
+      "old_owner": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow",
+      "actual_owner": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.WeakThreeArrow",
+      "expected_occurrences": 1,
+      "context": "e2RequiredBatch Array Lean.Name, consumed by env.contains; not the module-selector arrays"
+    }
+  ]
+}

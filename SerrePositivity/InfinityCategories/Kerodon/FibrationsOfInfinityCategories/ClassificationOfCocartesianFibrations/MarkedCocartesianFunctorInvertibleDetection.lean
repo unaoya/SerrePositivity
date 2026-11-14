@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.MarkedCocartesianFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionInvertibleDetection
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PreFiberKan
@@ -59,3 +61,8 @@ lemma markedCocartesianFunctorEvaluate_overPre {E B : SSet.{u}} (q : E ⟶ B)
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorOverPre_ι, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.evaluateFunctorAt_pre]
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.4.5" (partial := component) "仮定：マークを保つ相対関手空間と添字の指定頂点（Lean では Tⁿ の [1] を頂点として明示する）。結論：その頂点の底ファイバーへの評価を与える（忘却写像の成分に一致）。有限次数の非単位的 Aₙ の型は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.markedCocartesianFunctorEvaluate

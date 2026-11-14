@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowup
 public import SerrePositivity.AlgebraicGeometry.PowerNaturality
@@ -117,3 +119,11 @@ deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso._pr
 
 @[deprecated (since := "2026-11-07")]
 deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso.congr_simp
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (1.7)" (partial := component) "仮定：有限列の普遍チャート、または有限生成中心の正の冪の通常ブローアップ（Lean が強い）。結論：局所チャート同定と通常の冪比較を供給するが、原典の普遍正則列の厚化付きの全塔は含まない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso
+attribute [cite KST "Eq (5.10)"] _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso
+attribute [cite KST "Eq (5.11)" (partial := component) "仮定：通常ブローアップの整数冪、または指定された普遍 Koszul の底変換（Lean が強い）。結論：イデアルと冪の同型・局所 Koszul 比較。異なる冪列の有限射を導来ブローアップ間に構成する部分は含まない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso
+attribute [cite KST "Lemma 5.6" (partial := component) "仮定：有限生成の中心と正整数冪の通常ブローアップ（Lean が強い）。結論：通常ブローアップの冪比較を供給する。導来ブローアップの塔でのプロ K の対角比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso

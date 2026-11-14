@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardExtractFamily
 
 /-!
 # 抽出した三つの脚の元の列への回収

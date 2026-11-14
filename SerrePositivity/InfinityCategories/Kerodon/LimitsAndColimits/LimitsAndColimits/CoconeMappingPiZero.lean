@@ -8,9 +8,9 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Index
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeMappingSpace
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibrationInitialPiZero
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-! # 余極限余錐の固定終点空間と Hom
 
@@ -42,7 +42,7 @@ def coconeMappingSpacePiZeroEquiv {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ 
 規約：値域の仮定なし。使われ方：余錐空間の Hom の終域表示。 -/
 lemma pushoutCocone_vertex {X : SSet.{u}}
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone R).vertex = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 1 1 := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone R).vertex = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 1 1 := by
   have hL := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso_left.{u}
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 1 0).inv ≫
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap horn₂₀.ι₀₁ (𝟙 (Δ[0] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanCoconeSquareIso.hom) =
@@ -68,7 +68,7 @@ lemma pushoutCocone_vertex {X : SSet.{u}}
 def pushoutCoconeMappingSpacePiZeroEquiv {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R) (y : X _⦋0⦌) :
     SSet.π₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpace (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan R) y) ≃
-      ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 1 : hoFunctor.obj X) ⟶ SSet.HomotopyCategory.mk y) := by
+      ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 1 : hoFunctor.obj X) ⟶ SSet.HomotopyCategory.mk y) := by
   have h := coconeMappingSpacePiZeroEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone R) hR y
   rw [pushoutCocone_vertex] at h
   exact h

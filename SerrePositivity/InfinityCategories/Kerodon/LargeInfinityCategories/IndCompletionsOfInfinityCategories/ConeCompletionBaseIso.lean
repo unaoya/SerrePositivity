@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.YonedaConeFamily
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.FunctorCoconePointwiseCriterion
 
 /-!

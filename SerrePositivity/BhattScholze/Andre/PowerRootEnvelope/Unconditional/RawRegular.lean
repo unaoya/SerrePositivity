@@ -12,10 +12,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalPair
 BS 著者版 Corollary 2.39 と Remark 7.15 の包の比較に向けて、raw 包と主完備化の p 正則性を示す。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPrism`、`Variants/MonicRootedExtension`。
@@ -23,7 +23,7 @@ BS 著者版 Corollary 2.39 と Remark 7.15 の包の比較に向けて、raw �
 
 universe u
 
-/-! ## 元の無限根モニック raw 包の p 正則性（旧 Andre/Remark715/Unconditional/PowerRootRawPrimeRegular.lean）
+/-! ## 元の無限根モニック raw 包の p 正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の正次数モニック入力について、元の raw 包は p 正則。
@@ -122,7 +122,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootRawPrimeRegular
 
-/-! ## 全モニック入力の元の raw 包と通常 p 完備化の p 正則性（旧 Andre/Remark715/Unconditional/RawPrimeRegularAllMonic.lean）
+/-! ## 全モニック入力の元の raw 包と通常 p 完備化の p 正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の raw p 正則性から hpR を除く。
@@ -190,7 +190,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RawPrimeRegularAllMonic
 
-/-! ## 元の第一完備化の分母正則性（旧 Andre/Remark715/Unconditional/PrincipalSourceRegularity.lean）
+/-! ## 元の第一完備化の分母正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実 p 完備化の H⁰ で分母は正則。
@@ -262,7 +262,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalSourceRegularity
 
-/-! ## 元の第一完備化の H⁰ と raw の主完備化（旧 Andre/Remark715/Unconditional/RawPrincipalH0Comparison.lean）
+/-! ## 元の第一完備化の H⁰ と raw の主完備化
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実源の第一 p 完備化の H⁰ を、raw 主完備化へ比較する。
@@ -327,7 +327,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RawPrincipalH0Comparison
 
-/-! ## 元の通常 p 完備化の正則対から hpR を除く（旧 Andre/Remark715/Unconditional/RawPAdicPairRegular.lean）
+/-! ## 元の通常 p 完備化の正則対から hpR を除く
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の任意モニック入力について、元の通常 p 完備化で p と分母は正則。

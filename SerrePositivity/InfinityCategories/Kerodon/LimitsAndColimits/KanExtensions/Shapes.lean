@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
@@ -108,3 +110,9 @@ lemma leftKanCanonicalCocone_vertex {K C D : SSet.{u}} (δ : K ⟶ C) (F : C ⟶
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_fixed, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.2.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanShape
+attribute [cite HTT "4.3.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone

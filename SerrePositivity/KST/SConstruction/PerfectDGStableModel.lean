@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleClosedStability
 public import SerrePositivity.KST.SConstruction.DGApplication
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.DGQuasiEquivalenceNerve
 
 /-! # 射影的 perfect dg 加群と小さい代表系の実安定模型
 概要：Perf の全 dg enhancement と小さい代表系の native nerve を安定入力にする。
@@ -34,7 +34,7 @@ def perfectDGStableModel (S : Set D) : StableModel.{max (u + 1) v} :=
 def smallPerfectDGNerveEquivalence (S : Set D) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (SmallPerfectDGModuleOver A D S))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PerfectDGModuleOver A D S)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (smallPerfectDGModuleInclusion A D S)
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgQuasiEquivalenceNerveEquivalence (smallPerfectDGModuleInclusion A D S)
     (smallPerfectDGModuleInclusion_quasiEquivalence A D S)
 
 /-- 小さい代表系の nerve の安定性を全写像空間の同値で反映する。 -/

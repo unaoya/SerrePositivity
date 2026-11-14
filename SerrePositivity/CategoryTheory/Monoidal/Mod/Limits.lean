@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Monoidal.Mod
 public import Mathlib.CategoryTheory.Limits.Creates
 
@@ -344,3 +346,10 @@ end SerrePositivity.MonoidalModuleColimits
 end
 
 end ModuleColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.2.3.3" (partial := special) "仮定：通常のモノイダル圏の内部モノイドと小さい通常圏の加群図式（Lean は通常圏の自己作用に限る。スカラー制限は通常の環の場合）。結論：基礎圏の極限を内部加群の極限へ持ち上げ、忘却が極限を生成する。通常の環ではスカラー制限も極限を保つ（通常圏での各成分に一致）。一般の左テンソル ∞ 圏は含まれない。"] _root_.SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfShape
+attribute [cite HA "4.2.3.3" (partial := special) "仮定：通常のモノイダル圏の内部モノイドと小さい通常圏の加群図式（Lean は通常圏の自己作用に限る。スカラー制限は通常の環の場合）。結論：基礎圏の極限を内部加群の極限へ持ち上げ、忘却が極限を生成する。通常の環ではスカラー制限も極限を保つ（通常圏での各成分に一致）。一般の左テンソル ∞ 圏は含まれない。"] _root_.SerrePositivity.MonoidalModuleLimits.limitConeLiftsToLimit
+attribute [cite HA "4.2.3.5" (partial := special) "仮定：通常のモノイダル圏の内部モノイドと、左テンソルが添字の余極限を保つ通常圏の図式（Lean は通常圏の自己作用に限る）。結論：基礎圏の余極限を内部加群の余極限へ持ち上げる。通常の環ではアーベル群への忘却が余極限を保存・反映する（通常圏での二成分に一致）。一般の左テンソル ∞ 圏は含まれない。"] _root_.SerrePositivity.MonoidalModuleColimits.colimitCoconeLiftsToColimit

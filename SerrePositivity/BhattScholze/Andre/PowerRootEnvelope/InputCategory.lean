@@ -14,10 +14,10 @@ public import Mathlib.CategoryTheory.Equivalence
 BS 著者版 Remark 7.15 の根の包を受け取る、有界 prism の入力圏を定める。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Initiality`、`PowerRootEnvelope/InputUniversal`、`Variants/Auxiliary`。
@@ -25,7 +25,7 @@ BS 著者版 Remark 7.15 の根の包を受け取る、有界 prism の入力圏
 
 universe u
 
-/-! ## André A1-a：入力作用を持つ有界な向き付き prism の圏（旧 Andre/Remark715/BoundedPrismInputCategory.lean）
+/-! ## André A1-a：入力作用を持つ有界な向き付き prism の圏
 
 ## 概要
 
@@ -175,7 +175,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end BoundedPrismInputCategory
 
-/-! ## A1-f：固定基底上の向きなし有界入力 prism（旧 Andre/Remark715/Unoriented/Category.lean）
+/-! ## A1-f：固定基底上の向きなし有界入力 prism
 
 ## 概要
 イデアル J と δ 構造・基底射・入力作用を保持し、独立な生成元をデータとして持たない。

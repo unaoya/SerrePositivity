@@ -19,40 +19,40 @@ open DGCategoryCellResolution
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (B : Mon (Complex R))
 
-def cellStagePoint (n : ℕ) : (stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n).Objects := ⟨.star⟩
+def cellStagePoint (n : ℕ) : (stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n).Objects := ⟨.star⟩
 
 def cellStage (n : ℕ) : Mon (Complex R) :=
-  dgEndAlgebra R (stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n).Objects (cellStagePoint R B n)
+  dgEndAlgebra R (stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n).Objects (cellStagePoint R B n)
 
 def cellStageAugmentation (n : ℕ) : cellStage R B n ⟶ B :=
-  Mon.Hom.mk' (stageAugmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star)
-    ((stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n).map_id .star)
-    ((stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n).map_comp .star .star .star)
+  Mon.Hom.mk' (stageAugmentation R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star)
+    ((stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n).map_id .star)
+    ((stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n).map_comp .star .star .star)
 
 def cellStageTransition (n : ℕ) : cellStage R B n ⟶ cellStage R B (n + 1) :=
-  Mon.Hom.mk' (transition R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star)
-    ((stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n).transition_id .star)
-    ((stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n).transition_comp .star .star .star)
+  Mon.Hom.mk' (transition R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star)
+    ((stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n).transition_id .star)
+    ((stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n).transition_comp .star .star .star)
 
 def cellStageInclusion (n : ℕ) : cellStage R B n ⟶ cellResolution R B :=
-  Mon.Hom.mk' (stageInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star)
-    (candidateUnit_stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star)
-    (candidateComposition_stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star .star).symm
+  Mon.Hom.mk' (stageInclusion R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star)
+    (candidateUnit_stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star)
+    (candidateComposition_stage R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star .star).symm
 
 lemma cellStageTransition_augmentation (n : ℕ) :
     cellStageTransition R B n ≫ cellStageAugmentation R B (n + 1) =
       cellStageAugmentation R B n := by
   apply Mon.Hom.ext
-  exact transition_augmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star
+  exact transition_augmentation R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star
 
 lemma cellStageInclusion_augmentation (n : ℕ) :
     cellStageInclusion R B n ≫ cellAugmentation R B = cellStageAugmentation R B n := by
   apply Mon.Hom.ext
-  exact stageInclusion_augmentation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star
+  exact stageInclusion_augmentation R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star
 
 lemma cellStageTransition_inclusion (n : ℕ) :
     cellStageTransition R B n ≫ cellStageInclusion R B (n + 1) = cellStageInclusion R B n := by
   apply Mon.Hom.ext
-  exact transition_inclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star
+  exact transition_inclusion R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint R B) n .star .star
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorEvaluation
@@ -8,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialBoundaryIso
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeInitial
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeEvaluation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FunctorCoconeEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeFamily
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeInitialBoundary
@@ -73,3 +75,9 @@ lemma isColimitCone_of_pointwise {J K X : SSet.{u}} [Quasicategory X]
     (initialBoundaryLifting_coconeRestriction_of_pointwise c hc)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.2.2" (partial := special) "仮定：Cartesian ファイブレーションと切断準圏の図式が各繊維で余極限を持つ（Lean が強い：一定準圏を一点から引き戻した射影の場合）。結論：この切断準圏を底上の相対関手空間の同型で関手準圏に同定し、同じ図式の点ごとの余極限余錐の存在と、任意の余錐の余極限性の点ごとの判定を得る（一致する場合。一般の Cartesian ファイブレーションは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isColimitCone_of_pointwise
+attribute [cite HTT "5.1.2.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isColimitCone_of_pointwise

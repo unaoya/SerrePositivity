@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FunctorCompositionEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.InnerAnodyneEquivalence
 public import Mathlib.Tactic.CrossRefAttribute
@@ -149,3 +151,10 @@ lemma isPrecompositionEquivalence_iff_isQCatEquivalence {A B : SSet.{u}}
   ⟨IsPrecompositionEquivalence.isQCatEquivalence, IsQCatEquivalence.isPrecompositionEquivalence⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.4.4.6" (partial := stronger-hyp) "仮定：標準単体と内ホーン、および単体への余デカルト・ファイブレーション（Lean が強い：指定の一辺だけでなく、射全体が余デカルト・ファイブレーション）。結論：内ホーン逆像の包含の前合成同値性と準圏間での準圏同値性（この場合に HA と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence.isQCatEquivalence
+attribute [cite HTT "2.4.4.5" (partial := stronger-hyp) "仮定：C,D,D′ は準圏、Cartesian p にさらに EquivalenceLifting p を明示して追加（Lean が強い）。結論：同じ pullback projection q′ は IsPrecompositionEquivalence、pullback の準圏性の下で IsQCatEquivalence に一致する。Cartesian 性から追加 lifting を導く比較は含めず、追加仮定の下だけを数える。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence.isQCatEquivalence
+attribute [cite HTT "2.4.7.7" (partial := stronger-hyp) "仮定：元の bifibration p に EquivalenceLifting p、全空間の準圏性、積の base-change map の native QCatEquivalence を追加（Lean が強い）。結論：同じ X′→X は IsPrecompositionEquivalence となり、引戻しを含む両側の準圏性から IsQCatEquivalence を得る。bifibration と f,g の仮定だけからこれらの追加条件を導く部分は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence.isQCatEquivalence

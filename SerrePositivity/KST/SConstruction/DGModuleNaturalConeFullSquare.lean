@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleConePushout
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleConePushout
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FunctorLoopSquareCriterion
 
 /-!
@@ -68,21 +68,21 @@ lemma dgModuleNaturalConeFullSquare_lower :
 方針：同じ各点の元零加群を厳密回収し、点ごとの零対象判定を使う。
 規約：同じ元零角を保持。使われ方：全 cofiber 列。 -/
 lemma dgModuleNaturalConeFullSquare_zeroCorner :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgModuleNaturalConeFullSquare R D P F G η) 0 1) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgModuleNaturalConeFullSquare R D P F G η) 0 1) := by
   apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_of_pointwise_evaluation
   intro k
   obtain ⟨x, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective k
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgModuleNaturalConeFullSquare R D P F G η ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgModuleNaturalConeFullSquare R D P F G η ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)) 0 1)
   have he := dgModuleNaturalConeFullSquare_evaluation R D P F G η x
-  exact (congrArg (fun s => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s 0 1)) he).mpr
+  exact (congrArg (fun s => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s 0 1)) he).mpr
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeZeroTriangle R D (dgModuleNaturalConeArrow R D F G η x)).zero_corner
 
 /-- 概要：元両面を持つ同じ全関手 cone 四角形を零角付き図式として保持する。
 方針：同じ全四角形と実証した元零角を束ねる。
 規約：四角形を選び直さない。使われ方：逆回転の全 cofiber 図式比較。 -/
 def dgModuleNaturalConeFullZeroTriangle :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R P)).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D))) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R P)).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D))) :=
   ⟨dgModuleNaturalConeFullSquare R D P F G η,
     dgModuleNaturalConeFullSquare_zeroCorner R D P F G η⟩
 
@@ -90,7 +90,7 @@ def dgModuleNaturalConeFullZeroTriangle :
 方針：同じ全押し出し性を零角付き図式へ使う。
 規約：追加主仮定なし。使われ方：元逆回転と指定零化面の全比較。 -/
 lemma dgModuleNaturalConeFullZeroTriangle_isCofiber :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (dgModuleNaturalConeFullZeroTriangle R D P F G η) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (dgModuleNaturalConeFullZeroTriangle R D P F G η) :=
   dgModuleNaturalConeFullSquare_isPushout R D P F G η
 
 end SerrePositivity.KST.SConstruction

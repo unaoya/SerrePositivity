@@ -59,8 +59,8 @@ lemma cofiberTriangulatedClass_additivity (X : StableModel.{u})
     TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
       (SSet.HomotopyCategory.mk ((cofiberStableQuotient X).val.app _ v)) := by
   have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
-  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X.carrier := ⟨_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val, hv.1⟩
-  have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t := hv.2
+  let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X.carrier := ⟨_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val, hv.1⟩
+  have ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t := hv.2
   have hT : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht ∈ distTriang (hoFunctor.obj X.carrier) :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle_mem_cofiberDistinguishedTriangles t ht
   change TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
@@ -89,7 +89,7 @@ lemma objectTriangulatedClass_sTwo (X : StableModel.{u})
 /-- 元の零段からの退化辺の評価対象は零対象。 -/
 lemma sOneComparison_degenerate_isZero (X : StableModel.{u})
     (z : (objectSConstruction X.carrier) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sOneComparison X.carrier).app _ ((objectSConstruction X.carrier).σ 0 z)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sOneComparison X.carrier).app _ ((objectSConstruction X.carrier).σ 0 z)) := by
   let d := (objectSConstruction X.carrier).σ 0 z
   have he : gappedDiagram d = arNerveMap (SimplexCategory.σ (0 : Fin 1)).toOrderHom ≫
       gappedDiagram z := gappedDiagram_objectS_map (SimplexCategory.σ (0 : Fin 1)).op z

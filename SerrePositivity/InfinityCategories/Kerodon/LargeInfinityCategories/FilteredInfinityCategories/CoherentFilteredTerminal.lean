@@ -6,13 +6,13 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalTransport
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Vertices
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentFilteredTotalDetection
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalCocone
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredLeftFibrationContractibility
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpaceTerminalValues
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.SpaceTerminalValues
 
 /-!
 概要：一般 coherent filtered 図式の全ての値が終対象なら、元の余極限も終対象。
@@ -36,9 +36,9 @@ variable {B : SSet.{u}} [Quasicategory B] [_root_.SerrePositivity.InfinityCatego
 include hf
 
 /-- 全ての値が終対象なら、元の全空間余極限の頂点は終対象。 -/
-lemma coherentFilteredTotalVertex_isTerminal : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalVertex F) := by
+lemma coherentFilteredTotalVertex_isTerminal : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalVertex F) := by
   apply (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.spaceInfinity_isTerminal_iff_value_isContractibleKan _).mpr
-  rw [_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalVertex_object]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalVertex_object]
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentFilteredTotalKan_isContractibleKan F
   intro b
   exact (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.spaceInfinity_isTerminal_iff_value_isContractibleKan _).mp (hf b)
@@ -46,10 +46,10 @@ lemma coherentFilteredTotalVertex_isTerminal : _root_.SerrePositivity.InfinityCa
 /-- 全ての値が終対象なら、任意の元の余極限余錐の頂点も終対象。 -/
 lemma coherentFilteredColimitVertex_isTerminal (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex c.vertex := by
-  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F).vertex := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone_vertex]
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F).vertex := by
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone_vertex]
     exact coherentFilteredTotalVertex_isTerminal F hf
   exact ht.of_vertexIso
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitVertexIso (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F) c (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit F) hc)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitVertexIso (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F) c (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit F) hc)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories

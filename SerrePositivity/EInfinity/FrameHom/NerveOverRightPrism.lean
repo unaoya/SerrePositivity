@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.NerveCoconePrism
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinchedProjection
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.SliceEvaluationPinched
 
@@ -34,15 +34,15 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (Y : C) (T : I ⥤ Ove
 
 def nerveOverRightSliceMap : nerve I ⟶
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) :=
-  nerveMap T ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom ≫
+  nerveMap T ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q ≫
       (roofTargetSlicePointIso Y q).hom
 
 lemma nerveOverRightSliceMap_uncurry : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (nerveOverRightSliceMap Y T q) =
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone Y).whisker T)).val ≫ q := by
   have hpost := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_postcomp
-    (nerveMap T ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom) q
-  have hpre := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_precomp (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom (nerveMap T)
+    (nerveMap T ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom) q
+  have hpre := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_precomp (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom (nerveMap T)
   rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_uncurry, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCocone_whisker] at hpre
   simp only [nerveOverRightSliceMap, roofTargetSlicePointIso, ← Category.assoc]
   rw [sliceOverUncurry_pointTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Roof.roofTargetPoint q (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))]

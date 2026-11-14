@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.BarRowComparison
 public import SerrePositivity.KST.ProExcision.DiagonalFlip
 
@@ -74,3 +76,13 @@ def propA1ComparisonIso {D : Type v} [Category.{w} D]
   asIso (F.map (actionBarComparison A))
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (A.2)" (partial := component) "仮定：群状単体モノイドの作用と anodyne を反転する関手（Lean が強い：具体的な係数ホモロジーは別に入力）。結論：半直積 bar と作用付き bar の比較写像の局所化同型。原典の係数つき群ホモロジーの識別までは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.actionBarComparison_localized_isIso
+attribute [cite KST "Eq (A.2)" (partial := component) "仮定：群状単体モノイドの作用と anodyne を反転する関手（Lean が強い：具体的な係数ホモロジーは別に入力）。結論：半直積 bar と作用付き bar の比較写像の局所化同型。原典の係数つき群ホモロジーの識別までは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.actionBarComparison_map_isIso
+attribute [cite KST "Eq (A.3)" (partial := component) "仮定：群状単体モノイドの作用と anodyne を反転する関手（Lean が強い：具体的な係数ホモロジーは別に入力）。結論：半直積 bar と作用付き bar の比較写像の局所化同型。原典の係数つき群ホモロジーの識別までは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.actionBarComparison_localized_isIso
+attribute [cite KST "Eq (A.3)" (partial := component) "仮定：群状単体モノイドの作用と anodyne を反転する関手（Lean が強い：具体的な係数ホモロジーは別に入力）。結論：半直積 bar と作用付き bar の比較写像の局所化同型。原典の係数つき群ホモロジーの識別までは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.actionBarComparison_map_isIso
+attribute [cite KST "Prop A.1" (partial := component) "仮定：群状単体モノイドの作用と anodyne を反転する関手（Lean が強い：具体的な係数ホモロジーは別に入力）。結論：半直積 bar と作用付き bar の比較写像の局所化同型。原典の係数つき群ホモロジーの識別までは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.actionBarComparison_localized_isIso
+attribute [cite KST "Prop A.1" (partial := component) "仮定：群状単体モノイドの作用と anodyne を反転する関手（Lean が強い：具体的な係数ホモロジーは別に入力）。結論：半直積 bar と作用付き bar の比較写像の局所化同型。原典の係数つき群ホモロジーの識別までは含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.actionBarComparison_map_isIso

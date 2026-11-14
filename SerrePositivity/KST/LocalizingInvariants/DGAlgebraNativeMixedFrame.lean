@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeSourceFrame
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightFrame
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameComparison
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!

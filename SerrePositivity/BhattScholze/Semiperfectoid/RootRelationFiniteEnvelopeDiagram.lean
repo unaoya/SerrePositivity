@@ -4,7 +4,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbi
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw
 public import SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps
 public import SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient
-public import SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeDiagram
+public import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionUniformBound
 /-!
 # S′ の固定 A_inf 上の有限包絡全段

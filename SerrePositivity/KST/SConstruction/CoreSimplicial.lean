@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.FirstRowFibration
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoreKan
 public import Mathlib.CategoryTheory.Functor.Currying
@@ -54,14 +56,14 @@ instance simplicialCoreSConstruction_obj_kanComplex (C : SSet.{u}) [Quasicategor
 方針：core が全ての頂点を含むことを使う。
 規約：選んだ零対象 z を明示する。使われ方：実現の基点。 -/
 def coreSConstructionZeroVertex (n : ℕ) {C : SSet.{u}} [Quasicategory C]
-    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) : (coreSConstruction n C) _⦋0⦌ :=
+    (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) : (coreSConstruction n C) _⦋0⦌ :=
   ⟨sConstructionZeroVertex n z hz, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex _⟩
 
 /-- 概要：単体作用は core 内でも零図式の頂点を厳密に保つ。
 方針：core の包含後で S• の零頂点の自然性を使う。
 規約：頂点の厳密等号。使われ方：単体的な基点の整合性。 -/
 lemma coreSMap_zeroVertex {m n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    (θ : Fin (m + 1) →o Fin (n + 1)) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
+    (θ : Fin (m + 1) →o Fin (n + 1)) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z) :
     (coreSMap C θ).app (Opposite.op ⦋0⦌) (coreSConstructionZeroVertex n z hz) =
       coreSConstructionZeroVertex m z hz := by
   apply Subtype.ext
@@ -106,7 +108,14 @@ def kanCoreIso (X : SSet.{u}) [KanComplex X] : X ≅ (_root_.SerrePositivity.Inf
 方針：S_0 の可縮 Kan 性と、Kan 複体とその core の比較同型を使う。
 規約：安定性は不要。使われ方：実現の連結性と基点の選択独立性の基礎。 -/
 lemma coreSConstructionZero_isContractibleKan (C : SSet.{u}) [Quasicategory C]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (coreSConstruction 0 C) :=
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (coreSConstruction 0 C) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_of_iso (kanCoreIso (sConstruction 0 C)) (sConstructionZero_isContractibleKan C)
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Rem 7.4" (partial := component) "仮定：安定準圏の模型（原典の安定な場合）。結論：各 Gap を段とする単体安定圏（原典の単体 ∞ 圏の成分）。"] _root_.SerrePositivity.KST.SConstruction.simplicialCoreSConstruction
+attribute [cite HA "1.2.2.5" (partial := component) "仮定：点付き準圏の gapped 構成（HA の構成に対応）。結論：各 [n] の S 構成の core と、その双単体集合の対角を与える。注記の A∞ 環の加群から得る通常の K 理論との比較はこれらの型にない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.diagonalCoreSConstruction
+attribute [cite HA "1.2.2.5" (partial := component) "仮定：点付き準圏の gapped 構成（HA の構成に対応）。結論：各 [n] の S 構成の core と、その双単体集合の対角を与える。注記の A∞ 環の加群から得る通常の K 理論との比較はこれらの型にない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.simplicialCoreSConstruction

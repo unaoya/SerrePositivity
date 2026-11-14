@@ -59,7 +59,7 @@ theorem zeroFunctorFullSNativeKanFamily_core (A C : _root_.SerrePositivity.Infin
 
 /-- 同じ元の指定点では、元の全 S• 射の native 標的座標への実像を回収する。 -/
 theorem zeroFunctorFullSNativeKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSNativeKanFamily A C =
       curry' (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫
         (show (stableCoreSingleKanObject C).obj ⟶ ((stableMultiKanEnrichedFunctor 0).obj C).obj from

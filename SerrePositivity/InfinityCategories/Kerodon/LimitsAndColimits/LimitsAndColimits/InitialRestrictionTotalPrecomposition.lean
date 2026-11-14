@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialTotalEdgePrecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialRestrictionHomSquare
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointHomCospanIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PointHomCospanIso
 
 /-!
 概要：同じ底上の制限関手の像に、実際の比較辺を前置する初期 Hom 間の写像。

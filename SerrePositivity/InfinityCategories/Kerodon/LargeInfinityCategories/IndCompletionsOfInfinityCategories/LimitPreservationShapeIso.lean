@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.LimitPreservationOpposite
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ReindexSliceOver
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.ReindexSliceOver
 
 /-!
 概要：形状同型に沿い、元の関手による全極限錐の保存を輸送する。

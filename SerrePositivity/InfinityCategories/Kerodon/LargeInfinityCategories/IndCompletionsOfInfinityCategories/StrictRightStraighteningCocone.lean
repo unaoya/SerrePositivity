@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.StrictRightFibrationDiagramColimit
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.StrictRightStraighteningFiberDiagram
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictNativeCocones
 
 /-!
 概要：strict な right fibration 余極限の元の余錐を、同じ right straightening で前層へ写す。

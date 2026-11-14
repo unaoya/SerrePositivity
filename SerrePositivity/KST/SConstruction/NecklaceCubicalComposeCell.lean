@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalTensorComparison
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInWedge
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceInWedge
 
 /-! # 元の二つの necklace 生成射の cubical 合成
 概要：元の両生成射の Day tensor を、同じ K 内の wedge の生成射へ送る。

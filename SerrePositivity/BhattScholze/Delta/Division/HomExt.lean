@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivisionCompletion
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.PDivisionCompletion
 
 /-!
 # 古典的な完備 p 除算環からの δ 射の一意性

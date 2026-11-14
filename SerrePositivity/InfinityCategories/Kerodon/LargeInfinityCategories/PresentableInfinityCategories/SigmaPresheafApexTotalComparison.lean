@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaPresheafFamilyComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentInvertibleTotalKan
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.CoherentInvertibleTotalKan
 
 /-!
 概要：元の P_Σ 評価錐の頂点と反復積関手の同型を、元の余極限 Kan 模型へ移す。

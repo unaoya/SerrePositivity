@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def PreservesRelativeZeroCategories {S : SSet.{u + 1}}
     (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) (E : S ⟶ Spectra.Sp.{u}) : Prop :=
   ∀ a : S _⦋0⦌, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (ν.app (Opposite.op ⦋0⦌) a)) →
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (E.app (Opposite.op ⦋0⦌) a)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (E.app (Opposite.op ⦋0⦌) a)
 
 /-- ν の像が Verdier である S 内の四角形を、E が実 fiber 四角形へ送る条件。 -/
 structure IsRelativeLocalizingInvariant {S : SSet.{u + 1}}
@@ -40,12 +40,12 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategorie
   (hE : IsRelativeLocalizingInvariant ν E)
 
 /-- 元の S 内の四角形の値を、その零角を保って Sp の三角形とする。 -/
-def fiberTriangle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram ν) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Spectra.Sp.{u} where
+def fiberTriangle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram ν) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Spectra.Sp.{u} where
   square := d.square ≫ E
   zero_corner := hE.preservesZero _ d.zero_corner
 
 lemma fiberTriangle_isFiber (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram ν) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.fiberTriangle d) := hE.preservesVerdier d
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hE.fiberTriangle d) := hE.preservesVerdier d
 
 end IsRelativeLocalizingInvariant
 

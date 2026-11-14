@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitProbe
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameComparison
 
 /-!
 # 底の Kan 錐と忘却後の計算対象への導来 Hom

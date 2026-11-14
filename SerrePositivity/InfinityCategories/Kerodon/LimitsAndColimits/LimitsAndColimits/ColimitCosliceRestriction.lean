@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Coslice
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
@@ -8,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceMap
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.NestedCosliceIso
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.NestedCosliceIso
 
 /-! # 余極限余錐の下の coslice の制限
 
@@ -87,3 +89,8 @@ lemma isColimitCone_iff_colimitCosliceRestriction {K X : SSet.{u}} {p : K ⟶ X}
       Category.id_comp] using hp
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.2.7" (partial := special) "仮定：絶対余極限余錐（Lean が強い：パラメーター K と底 S が一点）。結論：錐頂点を含む図式から元の図式への余スライス制限が自明 Kan ファイブレーション（その場合の比較に一致）。パラメーターを持つ相対版は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitCosliceRestriction_trivialKanFibration

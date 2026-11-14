@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentFullSubcategoryRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentFullSubcategoryRestriction
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfCollageProjection
 
 /-!

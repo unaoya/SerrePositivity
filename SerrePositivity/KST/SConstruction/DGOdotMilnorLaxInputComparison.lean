@@ -14,10 +14,10 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d)
-local notation "C" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (DGOdotInput.source d)
+local notation "C" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left)
   (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top)
-local notation "D" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right)
+local notation "D" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right)
   (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.side)
 
 /-- 概要：元左代数の同じ対象宇宙を下げる射の実 Perf 延長同値。
@@ -25,14 +25,14 @@ local notation "D" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.In
 使われ方：固定 ν と元小 Perf 模型の比較の中間。 -/
 def dgOdotMilnorLeftPerfectDownEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (dgOdotLeftInput R d)))
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left))) := by
-  let F := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left))) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left)
   letI : (quasiEquivalencePerfectExtension R
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{0, u + 1} (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left))
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left) F).IsEquivalence :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{0, u + 1} (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left))
+      (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left) F).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence R _ _ F
-      (dgKUniverseLiftDown_quasiEquivalence R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left))).isEquivalence_functor
-  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+      (dgKUniverseLiftDown_quasiEquivalence R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left))).isEquivalence_functor
+  exact (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
     (perfectDGExtension R _ _ F) (perfectDGExtension_quasiEquivalence R _ _ F)).choose
 
 /-- 概要：元右代数の同じ対象宇宙を下げる射の実 Perf 延長同値。
@@ -40,14 +40,14 @@ def dgOdotMilnorLeftPerfectDownEquivalence : _root_.SerrePositivity.InfinityCate
 使われ方：固定 ν と元小 Perf 模型の比較の中間。 -/
 def dgOdotMilnorRightPerfectDownEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (dgOdotRightInput R d)))
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right))) := by
-  let F := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right))) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, 0, u + 1} R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right)
   letI : (quasiEquivalencePerfectExtension R
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{0, u + 1} (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right))
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right) F).IsEquivalence :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{0, u + 1} (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right))
+      (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right) F).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence R _ _ F
-      (dgKUniverseLiftDown_quasiEquivalence R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right))).isEquivalence_functor
-  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+      (dgKUniverseLiftDown_quasiEquivalence R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right))).isEquivalence_functor
+  exact (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
     (perfectDGExtension R _ _ F) (perfectDGExtension_quasiEquivalence R _ _ F)).choose
 
 /-- 概要：元左代数の固定 ν 値から同じ実 lax 第一因子への指定同値。
@@ -57,9 +57,9 @@ def dgOdotMilnorLaxLeftInputEquivalence : _root_.SerrePositivity.InfinityCategor
     (dgKInputStableValue R (dgOdotLeftInput R d)).obj (dgOdotMilnorLaxLeft R d).obj :=
   (((presentedPerfectDGQCatEvaluationEquivalence R (dgOdotLeftInput R d)).trans
     (dgOdotMilnorLeftPerfectDownEquivalence R d)).trans
-    (dgSmallPerfectEnvelopeNerveEquivalence R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+    (dgSmallPerfectEnvelopeNerveEquivalence R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left)
       (DGSmallPerfectBase R (A))
-      (dgSmallPerfectEnvelopeExtensionFamily R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left) Empty
+      (dgSmallPerfectEnvelopeExtensionFamily R (A) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.left) Empty
         (dgSmallPerfectBaseFamily R (A)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top))).symm).trans
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso
       (Functor.isoWhiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (C)) CategoryTheory.uliftFunctorTrivial ≪≫
@@ -72,9 +72,9 @@ def dgOdotMilnorLaxRightInputEquivalence : _root_.SerrePositivity.InfinityCatego
     (dgKInputStableValue R (dgOdotRightInput R d)).obj (dgOdotMilnorLaxRight R d).obj :=
   (((presentedPerfectDGQCatEvaluationEquivalence R (dgOdotRightInput R d)).trans
     (dgOdotMilnorRightPerfectDownEquivalence R d)).trans
-    (dgSmallPerfectEnvelopeNerveEquivalence R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right)
+    (dgSmallPerfectEnvelopeNerveEquivalence R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right)
       (DGSmallPerfectBase R (A))
-      (dgSmallPerfectEnvelopeExtensionFamily R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right) Empty
+      (dgSmallPerfectEnvelopeExtensionFamily R (A) (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.right) Empty
         (dgSmallPerfectBaseFamily R (A)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.side))).symm).trans
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso
       (Functor.isoWhiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (D)) CategoryTheory.uliftFunctorTrivial ≪≫

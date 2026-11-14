@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialSectionEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialSectionBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
@@ -118,3 +120,9 @@ lemma cocartesianSectionsEvaluate_isQCatEquivalence {A E B : SSet.{u}} [Quasicat
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration _
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.7.16"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_isQCatEquivalence
+attribute [cite HTT "5.5.3.14" (partial := special) "仮定：presentable fibration p:X→S（Lean が強い：小基底 S は始対象 s を持つ準圏）。結論：同じ全 coCartesian 切断準圏の s での評価が実ファイバー Xs との全準圏同値であるため、同じ切断準圏が presentable（この場合に一致）。一般の小 S の極限や、coCartesian 条件を課さない全切断へは拡張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_isQCatEquivalence

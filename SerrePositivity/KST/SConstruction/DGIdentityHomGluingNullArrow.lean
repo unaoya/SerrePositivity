@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullCriterion
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEdges
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGStableHomotopyEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedEdges
 
 /-!
 概要：元 cone が可縮な gluing 対象の元比較辺は可逆である。

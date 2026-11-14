@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicSource
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.BhattScholze.Delta.Division.Source
@@ -27,10 +27,10 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuo
 BS 著者版 Remark 7.15 の根の包に使う、無限根源の完備化と純性の比較を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPrism`、`PowerRootEnvelope/PerfectionFaithful`、`PowerRootEnvelope/Unconditional/FrobeniusPD`、`PowerRootEnvelope/Unconditional/RawRegular`、`PowerRootEnvelope/VarpiComparison`。
@@ -38,7 +38,7 @@ BS 著者版 Remark 7.15 の根の包に使う、無限根源の完備化と純�
 
 universe u
 
-/-! ## 元の無限根源の実逐次完備性（旧 Andre/Remark715/Unconditional/PowerRootSourceComplete.lean）
+/-! ## 元の無限根源の実逐次完備性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の A 上の無限根源を p,d の順に実導来完備化する。
@@ -231,7 +231,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootSourceComplete
 
-/-! ## 元の無限根源の純性と生成元の正則性（旧 Andre/Remark715/Unconditional/PowerRootSourcePurity.lean）
+/-! ## 元の無限根源の純性と生成元の正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実逐次完備化は次数零に集中し、生成元はその H⁰ に正則。
@@ -422,7 +422,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootSourcePurity
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/Remark715/Unconditional/PowerRootRawSourceComparison.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -654,7 +654,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootRawSourceComparison
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/Remark715/Unconditional/PowerRootSourceNonpositive.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -793,7 +793,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootSourceNonpositive
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/Remark715/Unconditional/PowerRootSourceCompletionH0.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -895,7 +895,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootSourceCompletionH0
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/Remark715/Unconditional/PowerRootRawCoefficients.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -987,7 +987,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootRawCoefficients
 
-/-! ## André E1・E2：モニック f/d 源と raw 包の実完備化比較（旧 Andre/Remark715/Unconditional/PowerRootRawCompletionRestriction.lean）
+/-! ## モニック f/d 源と raw 包の実完備化比較
 
 ## 概要
 
@@ -1128,7 +1128,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootRawCompletionRestriction
 
-/-! ## André E1・E2：モニック源の実 H⁰ と raw PD 完備化環の比較（旧 Andre/Remark715/Unconditional/PowerRootRawPDComparison.lean）
+/-! ## モニック源の実 H⁰ と raw PD 完備化環の比較
 
 ## 概要
 
@@ -1204,7 +1204,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootRawPDComparison
 
-/-! ## André E1・E2：有限モニック族の raw 実 PD 環の完全忠実平坦性（旧 Andre/Remark715/Unconditional/PowerRootRawPDCompletelyFlat.lean）
+/-! ## 有限モニック族の raw 実 PD 環の完全忠実平坦性
 
 ## 概要
 
@@ -1364,7 +1364,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootRawPDCompletelyFlat
 
-/-! ## 元の源の先行 p 還元と実完備化の p 正則性（旧 Andre/Remark715/Unconditional/PrimeReductionPurity.lean）
+/-! ## 元の源の先行 p 還元と実完備化の p 正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実逐次完備化を先に p で還元し、その純性を示す。
@@ -1690,7 +1690,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrimeReductionPurity
 
-/-! ## 元の raw 源の p 錐と d 完備化の純性（旧 Andre/Remark715/Unconditional/PowerRootRawPrimeConeCompletion.lean）
+/-! ## 元の raw 源の p 錐と d 完備化の純性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実源の先行 p 錐を d 完備化すると負次数は消える。

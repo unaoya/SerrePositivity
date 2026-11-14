@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomIsoFunctorLiftOfEq
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Category
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Category
 
 /-! # 元の代表加群 comma 表示から実 dg gluing への関手
 概要：元の comma 値関手を、指定した両成分と閉比較を持つ同じ gluing 対象へ移す。

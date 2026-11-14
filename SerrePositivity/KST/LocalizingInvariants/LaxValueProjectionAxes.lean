@@ -54,9 +54,9 @@ lemma laxValueProjectionHom_fromC :
     let F : C ⟶ D := (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxSnd p q
     have h := hΦ.valueMap_hom_zero_of_zero_values F (by
         intro c
-        change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
+        change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
         rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-        exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isZero)
+        exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).isZero)
     change (stableValueFunctor Φ).map
       ((LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ (laxSnd p q : laxCategory p q ⟶ D)) =
         0 at h
@@ -75,9 +75,9 @@ lemma laxValueProjectionHom_fromD :
     let F : D ⟶ C := (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxFst p q
     have h := hΦ.valueMap_hom_zero_of_zero_values F (by
         intro d
-        change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
+        change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
         rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-        exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero)
+        exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero)
     change (stableValueFunctor Φ).map
       ((LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ (laxFst p q : laxCategory p q ⟶ C)) =
         0 at h

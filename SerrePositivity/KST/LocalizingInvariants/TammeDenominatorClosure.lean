@@ -35,15 +35,15 @@ lemma tammeLocalizingEdges_stableClosure :
 
 lemma tammeLocalizingEdges_pushout_iff
     (s : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (laxCategory p q).obj) (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow s).edge ∈ tammeLocalizingEdges p q ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s).edge ∈ tammeLocalizingEdges p q := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow s).edge ∈ tammeLocalizingEdges p q ↔
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s).edge ∈ tammeLocalizingEdges p q := by
   simpa only [tammeLocalizingEdges_stableClosure] using
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_pushout_iff (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) s hs
 
 lemma tammeLocalizingEdges_pullback_iff
     (s : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (laxCategory p q).obj) (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow s).edge ∈ tammeLocalizingEdges p q ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s).edge ∈ tammeLocalizingEdges p q := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow s).edge ∈ tammeLocalizingEdges p q ↔
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow s).edge ∈ tammeLocalizingEdges p q := by
   simpa only [tammeLocalizingEdges_stableClosure] using
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_pullback_iff (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q)) s hs
 

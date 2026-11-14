@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionFixedCoherenceTypes
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSuspensionCanonicalMapData
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSuspensionCanonicalMapData
 
 /-!
 概要：固定 data の cone 作用の厳密則を、同じ実懸垂入力射の厳密則へ移す。

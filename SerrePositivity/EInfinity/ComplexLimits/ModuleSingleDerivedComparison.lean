@@ -41,7 +41,7 @@ lemma moduleResolutionDerivedSource_eq :
 def moduleSingleOrdinaryDerivedIso :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0) ≫
       complexOrdinaryDerivedSource A)
-      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) := by
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) := by
   have e := complexOrdinaryDerivedNatTransIso A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionAugmentation A)
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionAugmentation_quasiIso A)
   exact e.symm ≪≫ eqToIso

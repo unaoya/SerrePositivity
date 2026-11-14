@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianCancellation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianProductProjection
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.InvertibleCartesian
@@ -91,3 +93,9 @@ lemma cartesianComparison_first_isInvertible {E B : SSet.{u}} [Quasicategory B]
       rfl)).2 hi
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.1.9" (partial := component) "仮定：同じ底の辺・終点を持つ二つの Cartesian lifts と準圏の底（Lean が強い）。結論：同じ退化底三角形の比較を作り、その残る辺が invertible であると示すので「二つの lifts は equivalent」という明記された assertion に一致。全ての lifts の相対 slice での terminality は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianComparison_first_isInvertible
+attribute [cite HTT "2.4.1.9" (partial := component) "仮定：同じ底の辺・終点を持つ二つの Cartesian lifts と準圏の底（Lean が強い）。結論：同じ退化底三角形の比較を作り、その残る辺が invertible であると示すので「二つの lifts は equivalent」という明記された assertion に一致。全ての lifts の相対 slice での terminality は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_kanCartesianComparisonTriangle

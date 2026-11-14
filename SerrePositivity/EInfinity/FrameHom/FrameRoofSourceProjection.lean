@@ -24,7 +24,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E)
 
 lemma frameRoofMap_over : frameRoofMap A Y q ≫ pullback.fst _ _ =
-    nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom ≫
+    nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q := by
   rw [frameRoofMap, Category.assoc]
   change (roofSourceIso A Y).hom ≫ (pullback.lift _ _ _ ≫ pullback.fst _ _) = _
@@ -34,7 +34,7 @@ lemma frameRoofMap_over : frameRoofMap A Y q ≫ pullback.fst _ _ =
 
 def frameRoofRightSliceMap : nerve (CostructuredArrow A Y) ⟶
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) :=
-  nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso Y).hom ≫
+  nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q ≫
       (roofTargetSlicePointIso Y q).hom
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StronglySaturatedHom
+public import SerrePositivity.InfinityCategories.HTT.Section5_5_4.StronglySaturatedHom
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalHomOrdinary
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalSaturatedClosure
 
@@ -52,7 +52,7 @@ lemma stronglySaturated_eq_localEquivalences_of_localReplacements
   have hk : Truncated.HomotopyCategory.homMk f ≫ Truncated.HomotopyCategory.homMk sy =
       Truncated.HomotopyCategory.homMk k :=
     Truncated.HomotopyCategory.homMk_comp_homMk (Truncated.Edge.compStruct f sy)
-  let t : Truncated.Edge.CompStruct sx eg k := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.compStructOfHomotopyCategoryFac (hg.trans hk)
+  let t : Truncated.Edge.CompStruct sx eg k := _root_.SerrePositivity.InfinityCategories.HTT.Section5_5_4.compStructOfHomotopyCategoryFac (hg.trans hk)
   exact hS.2.2.2.2.2 (Truncated.Edge.compStruct f sy) hsy (hS.2.2.2.1 t hsx heg)
 
 /-- 生成閉包内の局所対象への置換の存在から、生成閉包と元の局所同値の一致を得る。 -/

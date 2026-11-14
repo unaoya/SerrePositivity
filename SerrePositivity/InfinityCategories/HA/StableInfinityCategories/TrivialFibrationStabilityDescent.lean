@@ -27,7 +27,7 @@ lemma isStable_target_of_trivialKanFibration (q : E ⟶ B) [_root_.SerrePositivi
     fiber_exists := ?_
     cofiber_exists := ?_
     fiber_iff_cofiber := ?_ }
-  · let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex E
+  · let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex E
     exact ⟨q.app (Opposite.op ⦋0⦌) z.vertex,
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q z.vertex).1 z.isZero⟩
   · intro x y f

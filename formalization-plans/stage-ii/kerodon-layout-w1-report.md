@@ -470,21 +470,23 @@ Lean の宣言参照索引に載らない監査・ドラフトをソースから
 
 ### レーン別の追従表
 
-2026-11-12 10:21:32 JST に再確認した。動いている 4 レーンの追跡済み・未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と main の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決される旧名も書き換える。継承した旧 import は取り込み側の改名に含まれる。[対象ファイルと参照行](kerodon-layout-stop-3/lane-imports.json)。
+2026-11-12 11:32:40 JST に再確認した。動いている 4 レーンの追跡済み・未追跡の Lean ソースを import 行のテキスト検索で調べた。本体は `SerrePositivity/` 以下に絞り、drafts を除外した。⑤a・⑥は各レーンが確定した検証済み一覧を使い、他は各 HEAD と main の merge base からの差分に作業木の変更を加えた。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は確定した本体の Lean ファイルで、推移的な import から解決される旧名も書き換える。継承した旧 import は取り込み側の改名に含まれる。[対象ファイルと参照行](kerodon-layout-stop-3/lane-imports.json)。
 
-HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の HEAD が main の祖先であることを確認した。これらの現在の収集対象は空。実装 4 レーンの枝固有の直接旧 import は 計 11 本だった。推移的な参照を確認するため、計 214 本を収集対象とする。
+HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の HEAD が main の祖先であることを確認した。これらの現在の収集対象は空。実装 4 レーンの枝固有の直接旧 import は 計 10 本だった。推移的な参照を確認するため、計 117 本を収集対象とする。
 
 `$handoff` は配布した `kerodon-layout-stop-3`、`$klw1` は KL-W1 の作業木。`$maps` は最終配置のコミットと同じ版の `kl-module-map.json`・`kl-namespace-map.json` を置いたディレクトリ（`$klw1/scripts/refactor/targets` でもよい）。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。その同じソースを入力にして、以下の一行で新しい出力先 `$preview` にプレビューを作る。`review.json` とソース差分を確認し、main の取り込みと書き換えを一緒に反映する。
 
 | レーン・枝 | 枝全体で旧 import があるファイル | 直すファイル（旧 import 行数） | 収集対象 | 書き換えの一行 |
 | --- | ---: | ---: | ---: | --- |
-| ⑤a `math/bs-impl` | 17,516 | 11（31 行） | [32](kerodon-layout-stop-3/bs-impl-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
-| ⑤b `math/bs-d68` | 17,507 | 0（0 行） | [52](kerodon-layout-stop-3/bs-d68-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
-| ⑤c `math/bs-classical` | 17,507 | 0（0 行） | [18](kerodon-layout-stop-3/bs-classical-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
-| ⑥ `math/scheme` | 17,507 | 0（0 行） | [112](kerodon-layout-stop-3/scheme-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤a `math/bs-impl` | 17,427 | 10（29 行） | [31](kerodon-layout-stop-3/bs-impl-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤b `math/inf-supply-b` | 0 | 0（0 行） | [0](kerodon-layout-stop-3/bs-d68-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤c `math/bs-classical` | 17,418 | 0（0 行） | [18](kerodon-layout-stop-3/bs-classical-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑥ `math/scheme` | 17,418 | 0（0 行） | [68](kerodon-layout-stop-3/scheme-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 | HA `research/ha-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 | HTT `research/htt-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 | K の地図 `research/k-maps` | — | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+
+drafts の import・名前は、調整役が改名表を使って文字列として追従させる。本体の collect には含めない。
 
 `kl-module-map.json` は import の改名、`kl-namespace-map.json` は宣言の改名と分割先の定義元を収める。旧名の互換モジュールを使う場合も import は改名表で更新する。ファイルが追加された場合はレーン側でそのパスを収集対象の JSON 配列に加え、改名前の成果物とソースで収集し直す。
 
@@ -663,3 +665,41 @@ docstring の項目 Tag 追記は 6,246 箇所、見出しの Tag は 3,638 箇�
 公開する改名表は 14,802 モジュール・58,365 宣言の対応で、二つの表のモジュール対応は全件一致する。並行枝の対象と一行コマンドは上の「レーン別の追従表」を更新した。新しいファイルを作り足した場合はその JSON 一覧に足し、取り込み前の同じソースから参照を採取して、最終版の `$maps/kl-namespace-map.json` でプレビューを作る。未移動メソッド等が保留された場合は、明示呼び出しまたは export を確認し、各レーンで対象ビルドを行う。
 
 ここで停止点 3 を提出し、調整役の確認を待つ。
+
+## 改名追従の道具の修正（2026-11-12）
+
+⑤c の `RootFamilySparseBasis.rootFamilySparseFractionCoordinates_smul` は、通常の Lake ModuleSetup では成功し、旧採取器の空の設定では失敗した。`maxSynthPendingDepth = 3` だけを補った同期採取でも成功したため、今回の再現の差をこの設定に絞れた。採取器は `lake --no-build setup-file` のファイル別 ModuleSetup から、オプション・package・import の可視性・プラグイン等を引き継ぐ。設定の取得に失敗したときは明示エラーにし、依存のビルドは事前に済ませる。同期スナップショットだけを意図的な上書きとして残す。
+
+修正途中の共有ヘルパーを⑥の実行中に変更し、`String` と `FilePath` の型推論、および `ProcessingT IO` への IO の持ち上げの二つのコンパイルエラーを混ぜた。共有版を確定版に戻し、修正・検証は隔離ディレクトリで行ってから公開した。修正版の collect は開始時にヘルパーを一度コピーして全ファイルで固定し、各 capture に `elaboration.collector_sha256`・Lake setup のハッシュ・引き継いだ設定を記録する。公開は検証済みファイルの原子的な置換で行った。
+
+⑤a の open は、未移動の宣言を持つ旧 `SimplicialLocalization`・`ComonadResolutionOperators` を保持し、移った宣言の参照は新しい完全名へ置く方針を採る。旧 `HomotopyLimits` も全体で保持し、参照がすべて移動済みの四つの利用モジュールだけ、不要な open を `module_opens` で削除する。移動先の名前空間を open に追加しない。`open scoped Simplicial` は Mathlib の `_root_.Simplicial` に固定する。明示的宇宙 `RelativeCategory.{u}` は Lean の `explicitUniv` 構文木の識別子部分だけを編集対象にし、`.{u}`・`.{max u 1}` 等の宇宙構文を保持する。
+
+| 対象 | 検証結果 | 再利用できる採取・プレビュー |
+| --- | --- | --- |
+| ⑤c 本体18本 | collect 18/18 成功、元の `756352681` とソース一致 | `/tmp/klw1-collect-fix/c18-index` |
+| ⑤a 本体31本 | collect 31/31 成功、rewrite 31/31・保留0。元の `36da456c0` とソース一致 | `/tmp/klw1-collect-fix/a31-index`・`/tmp/klw1-collect-fix/a31-preview` |
+| ⑥ 検証済み68本 | 全68本を新規採取し、`69ace8712` とソース一致。rewrite も68/68・保留0 | `/tmp/klw1-collect-fix/s68-index`・`/tmp/klw1-collect-fix/s68-preview` |
+
+全117本のソースに変更はなく、全 capture で同じヘルパー SHA と `maxSynthPendingDepth = 3` を確認した。⑥は17本ずつの採取を、全件のソース・版・範囲を再照合してから完全な68本の index にまとめた。共有鍵は `--wait 3600` で各採取の間だけ取得し、長い一回は580秒以内に区切った。実 Lean の四つの例を含む回帰検査28件がすべて成功した。[検証記録とソースのハッシュ](kerodon-layout-stop-3/collector-support-receipt.json)。
+
+配布する `*-files.json` は本体だけに絞り、⑤a は確定した31本、⑥は検証済み68本を採用した。`formalization-plans/bhatt-scholze/drafts/`・`scheme-drafts/` 等は含めない。drafts は調整役が文字列として追従させる。⑤b は改名追従を完了して `math/inf-supply-b` へ移行済みなので、旧配置の追従対象は空とする。起動済みの旧 collect と未完成 index を流用せず、修正版を新たに起動して新しい出力先で採取する。上記 index の再利用時も、入力ソースのバイト列の一致を確認する。
+
+## ⑤a 49本の追従：実在しない open の修正（2026-11-12）
+
+`report-codex-w16.md` §42 の再現入力（⑤a `5fe517e63`、`/tmp/bsw16/klw1-followup-49-8267/`）を使い、⑤aとは別の `/tmp/klw1-open-fix/validation` で修正・検証した。共有版は検証がすべて終わるまで変更していない。
+
+原因は採取器ではなく、改名表の `opens` にある二つの行き先だった。旧 `SerrePositivity.SimplicialModel` と `SerrePositivity.HomotopyFunctionComplex` は、未移動の AnodyneHomotopy・UniverseLift・ComonadSimplicialResolution・ComonadResolutionOperators を提供する名前空間である。それを配置先の `HA.ModelCategoryComparison`・`Project.HomotopyDiagramComparison.CosimplicialHom` へ置き換えていたが、これらの名前空間は利用側の import 環境には存在しない。二つの `opens` を旧名への恒等対応に直し、移った宣言の参照だけを完全な新名へ書き換える方針 (a) にした。新しい名前空間の open は追加しない。
+
+最初の対象ビルドで、`EnrichedPointPrecomposition` の同じ複数名前空間の open に、さらに `SerrePositivity.KST.Comparison` が残ることを確認した。このファイルの import からは当該名前空間が消え、使う宣言は移動済みの Ex∞ 等として完全名に書き換わっている。この一ファイルに限って `module_opens` で当該 operand を除く。他の利用側の KST.Comparison は保持する。複数 operand の一つが無効だと有効な SimplicialLocalization 等の open も失敗するため、localizationHom・kanLocalizationUnit 等の未解決が連鎖していた。
+
+| 確認 | 結果 |
+| --- | --- |
+| 同じ元ソース・採取済み参照で rewrite | 49 / 49本、`review.json = {}`、保留0。以前のプレビューとの差は8ファイル |
+| main の取り込み | 検証開始時の main `2e65c20b695158cc1f4bb34e7e330d3efd944cf5`。Interface/Theory の衝突は main の新名と⑤aの CoproductTensorLegs import・coproduct_tensor_legs 節を両方保持。他の変更も元ソースを基準に三方向で適用 |
+| 対象ビルド | 指定55本すべて成功、13,550ジョブ、終了コード0。最終回24.506秒 |
+| 回帰検査 | 30件成功（実 Lean の5例を含む）。配置先モジュール名と実際の名前空間が異なる例、旧 open の保持、単一利用側の不要 operand の除去、移動参照の完全名化をコンパイルまで検査 |
+| ⑤aの保護 | 元49本のソース、および index・MERGE_HEAD・ORIG_HEAD のハッシュが開始前後で一致。未コミット merge を操作していない |
+
+共有鍵は `--wait 3600 --class research` でテスト・対象ビルドの実行中だけ取得した。各ビルドには580秒の上限を付けた。共有の `klw1_namespace.py` と Lean ヘルパーの実行コードは変更不要で、配布改名表の open 方針と回帰テストを修正した。main の Lean や⑤aの作業木への編集は行っていない。
+
+[検証記録](kerodon-layout-stop-3/open-policy-support-receipt.json) に入力・版・ソースとログのハッシュを記録した。修正後の49本プレビューは `/tmp/klw1-open-fix/preview/`、旧プレビューとの差分は `/tmp/klw1-open-fix/preview-open-policy-fix.patch`、main 統合後の検証済みソースは `/tmp/klw1-open-fix/validation/`。既存の merge 済み作業木へ元ソース用のプレビューを丸ごと上書きせず、差分を確認して追従する。

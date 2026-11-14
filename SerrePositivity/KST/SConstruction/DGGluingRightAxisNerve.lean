@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisHom
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGUniverseNerveFullyFaithful
 
 /-! # 実右軸包含の dg nerve の充満忠実性
 概要：元の右軸包含は、共通宇宙の dg nerve の実写像空間上で充満忠実となる。

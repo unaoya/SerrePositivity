@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.FiniteColimitGeneration
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.PointConeSpanIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EmptyShapeExistence
@@ -30,3 +32,9 @@ lemma hasFiniteColimits_of_initial_pushouts {X : SSet.{u}} [Quasicategory X]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanHasColimit_iff_restrict_of_isIso p _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointConeSpanIso.inv).mpr (hs _)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.4" (partial := direction) "仮定：準圏に始対象とすべての span の余極限が存在する（HTT の十分方向と一致）。結論：任意の有限単体集合形状の図式に余極限が存在する（一致する方向。逆向きは同じ宣言に含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.hasFiniteColimits_of_initial_pushouts
+attribute [cite HTT "4.4.2.6" (partial := special) "仮定：小余積と押し出しが存在する（Lean が強い：任意の正則濃度の切断ではなく固定宇宙内の全小余積。空余積と押し出しから有限余極限を得て恒等関手に適用）。結論：同じ元の小図式に余極限が存在する（一致する場合。任意の κ による切断は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.hasFiniteColimits_of_initial_pushouts

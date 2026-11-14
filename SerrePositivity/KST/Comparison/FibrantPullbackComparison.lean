@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.HomotopyPullback
 public import SerrePositivity.KST.Comparison.FiberwisePullback
 
@@ -87,3 +89,8 @@ theorem isHomotopyPullback_of_fibration {P X Y Z : SSet.{u}}
 
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.3.3.13" (partial := special) "仮定：単体集合の引き戻し四角形と右辺が Kan ファイブレーション（Lean が強い：HA の categorical fibration を Kan に限定。底の Kan 性は不要）。結論：標準比較が anodyne 局所化で可逆なホモトピー引き戻し（頂点への引き戻しで HA の結論に一致）。"] _root_.SerrePositivity.KST.Comparison.isHomotopyPullback_of_fibration

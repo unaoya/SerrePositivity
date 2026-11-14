@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.Pullback
@@ -8,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalEquivalenceTriangles
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.LocalEquivalences
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalPushoutEquivalences
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowCoconePrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.ArrowCoconePrism
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -77,3 +79,11 @@ lemma localEquivalences_stronglySaturated {X : SSet.{max u v}} [Quasicategory X]
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.localEquivalences_compStruct_cancel_right W t
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.4.11"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.localEquivalences_stronglySaturated
+attribute [cite HTT "5.5.4.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes
+attribute [cite HTT "5.5.4.6" (partial := component) "仮定：全小余極限を持つ準圏と強飽和辺集合（HTT と一致）。結論：全可逆辺の包含と、同じホモトピー圏の射を表す同端点の辺の所属不変性（明示された二つの結論に一致）。一般の retract に対する閉性はこの宣言には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes
+attribute [cite HTT "5.5.5.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes

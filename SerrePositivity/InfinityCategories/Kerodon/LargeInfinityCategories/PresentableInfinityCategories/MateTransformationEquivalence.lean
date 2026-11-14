@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PairAdjointCondition
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PostcompositionAdjunction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.UnitComparisons.PostcompositionAdjunction
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.AdjunctionPinchedSpaces
 
 /-!

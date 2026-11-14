@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.RelativeFunctorInverse
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorFiberHom
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationFiberComparison
@@ -75,3 +77,9 @@ lemma leftFibration_isQCatEquivalence_iff_fibers
     exact ((leftFibration_precompositionEquivalence_iff_fibers p q f hf).mpr ef).isQCatEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.1.3.8" (partial := special) "仮定：準圏 O 上の写像 C→D と射影（Lean が強い：色の上の二つの射影に left fibration を要求）。結論：台の写像が準圏同値であることと各色のファイバーの写像が準圏同値であることの同値（この仮定の下で (2) と (3) に一致）。O-モノイダル関手の全空間の同値 (1) は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_isQCatEquivalence_iff_fibers
+attribute [cite HTT "4.1.1.7" (partial := special) "仮定：準圏の図式を共終写像で制限する（Lean が強い：元の添字単体集合も準圏）。結論：同じ余錐制限の全空間での同値を、射影との可換性と左ファイブレーションの繊維判定に代入し、各頂点の繊維上の同値を得る（HTT の同じ繊維射。任意の添字単体集合は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_isQCatEquivalence_iff_fibers

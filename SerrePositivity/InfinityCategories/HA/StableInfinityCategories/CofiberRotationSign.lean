@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationComparison
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionAmbientHom
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSwapSign
@@ -38,15 +40,15 @@ lemma SuspensionSquare.transpose_objIso_inv {x : X _⦋0⦌} (s : _root_.SerrePo
 /-- 概要：回転後の接続射は、指定懸垂の比較後には元の第一射の懸垂の負号。
 方針：二回の回転の比較を懸垂関手で計算し、転置した対象比較の負号を消す。
 規約：回転後の始点と元の中間対象の等号輸送を明記。使われ方：TR2 の第三射。 -/
-lemma CofiberRotationRectangle.connecting_eq_neg_suspension {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X}
+lemma CofiberRotationRectangle.connecting_eq_neg_suspension {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X}
     (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
     r.suspensionSquare.suspensionFunctorObjIso.hom ≫
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting r.rotatedZeroTriangle r.rotated_isCofiber ≫
         (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor X).map
           (eqToHom (congrArg SSet.HomotopyCategory.mk r.rotated_source)) =
-      -(_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor X).map (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom t.square) := by
+      -(_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor X).map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom t.square) := by
   let q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberRotationRectangle r.rotatedZeroTriangle r.rotated_isCofiber
-  let f := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom t.square ≫
+  let f := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom t.square ≫
     eqToHom (congrArg SSet.HomotopyCategory.mk r.rotated_source.symm)
   have hs : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map (r.suspensionComparison q) =
       eqToHom (congrArg SSet.HomotopyCategory.mk r.suspensionSquare.source_eq) ≫ f ≫
@@ -66,3 +68,8 @@ lemma CofiberRotationRectangle.connecting_eq_neg_suspension {t : _root_.SerrePos
 
 end
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.13"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle.connecting_eq_neg_suspension

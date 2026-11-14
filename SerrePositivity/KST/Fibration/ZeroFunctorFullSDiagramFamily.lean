@@ -73,13 +73,13 @@ theorem zeroFunctorFullSDiagramFamily_diagonal (A C : _root_.SerrePositivity.Inf
 
 /-- 指定した元の零値関手を、同じ全パラメータ空間の実点として保持する。 -/
 def zeroFunctorParameterPoint {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
     (𝟙_ SSet.{u}) ⟶ zeroFunctorLocus A C :=
-  (SSet.unitHomEquiv _).symm (fullSubcategoryVertex _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom) hF)
+  (SSet.unitHomEquiv _).symm (fullSubcategoryVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom) hF)
 
 /-- 完全関手空間への包含後も、指定した同じ完全関手の実点。 -/
 theorem zeroFunctorParameterPoint_toExact {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorLocusToExact A C = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv F := by
   apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A C).ι).1
   rw [Category.assoc, zeroFunctorLocusToExact_inclusion, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv_ι]
@@ -88,7 +88,7 @@ theorem zeroFunctorParameterPoint_toExact {A C : _root_.SerrePositivity.Infinity
 
 /-- 全族を元の実点に制限すると、同じ全 S_n 後合成を回収する。 -/
 theorem zeroFunctorFullSCoreFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (n : ℕ) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (n : ℕ) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSCoreFamily A C n =
       curry' (zeroFunctorSCoreMap F hF n) := by
   apply uncurry_injective
@@ -99,7 +99,7 @@ theorem zeroFunctorFullSCoreFamily_fixed {A C : _root_.SerrePositivity.InfinityC
 
 /-- 図式全体の全族も、指定点では同じ元の全 S• 自然変換そのもの。 -/
 theorem zeroFunctorFullSDiagramFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSDiagramFamily A C =
       eHomEquiv SSet (show
         (⟨simplicialSConstruction A.obj⟩ : SimplicialSSetDiagram.{u}) ⟶

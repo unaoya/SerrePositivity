@@ -39,15 +39,15 @@ def unitFiberIso : SpectrumHo.obj (homotopyFiber q) ≅
   exact asIso (SpectrumHo.hom (HomotopySquareGroups.unitFiberMap q))
 
 lemma unitSquareIso_apex : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (unitSquareIso q).hom
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
       Arrow.mk (unitFiberIso q).hom :=
   HomotopyFiberConeComparison.squareHom_apex _ _ _ _ _
 
 lemma unitSquareIso_inv_apex : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (unitSquareIso q).inv
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
       Arrow.mk (unitFiberIso q).inv := by
   let e := functorHomEvaluateIso (unitSquareIso q)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)
   have hi := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (unitFiberIso q).hom) (unitSquareIso_apex q)
   simp only [IsIso.Iso.inv_hom] at hi
   exact hi
@@ -68,12 +68,12 @@ def fiberArrowHom := SpectrumHo.hom (HomotopySquareGroups.replacedFiberMap p q a
   (unitFiberIso q).inv
 
 lemma squareHom_apex : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (squareHom p q a b γ)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
       Arrow.mk (fiberArrowHom p q a b γ) := by
   unfold squareHom
   rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp]
   have hs : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (strictSquareHom p q a b γ)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)) =
       Arrow.mk (SpectrumHo.hom (HomotopySquareGroups.replacedFiberMap p q a b γ)) :=
     HomotopyFiberConeComparison.squareHom_apex _ _ _ _ _
   exact arrow_mk_comp_congr hs (unitSquareIso_inv_apex q)

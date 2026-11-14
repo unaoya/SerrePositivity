@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialRestrictionUniversalCylinder
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.EvaluationFixedHomotopyTriangle
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowRightIdentityCancellation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.EvaluationFixedHomotopyTriangle
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ArrowRightIdentityCancellation
 
 /-!
 概要：普遍前置から作る円柱が、元の制限円柱と同じ射の類を与えることを証明する。

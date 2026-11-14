@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofin
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeEdgeCompatibility
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteCharacterization
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.DiscreteCharacterization
 public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
 public import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
@@ -29,7 +29,7 @@ CLMST Prop 2.4.7、有限直積、almost 比較、SerrePositivity/Inputs/Perfect
 
 universe u v w
 
-/-! ## 始対象の値による指定極限錐の計算（旧 PerfectoidizationInterface/InitialLimit.lean）
+/-! ## 始対象の値による指定極限錐の計算
 
 概要：二宇宙の cofinality を使い、始対象からの標準錐を極限錐にする。
 方針：一点図式の恒等錐の終対象性を外側ホーンで検証し、制限で反映する。
@@ -237,7 +237,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end InitialLimit
 
-/-! ## 指定された普遍 perfectoid 化と導来極限の比較（旧 PerfectoidizationInterface/InitialBridge.lean）
+/-! ## 指定された普遍 perfectoid 化と導来極限の比較
 
 概要：任意に与えた普遍単位を、同じ宇宙の標的圏の始対象として使う。
 方針：環の一意因子分解を始対象性へ移し、二宇宙版の cofinality で指定錐を比較する。
@@ -371,7 +371,7 @@ include ηC hC in
 /-- 指定普遍環が存在すれば、導来 perfectoid 化全体は離散である。 -/
 theorem specified_disc : Disc R (vertex R F.perfd S) := by
   have hJ : Disc R (vertex R (J R) (specifiedAlgebra p R S ηC hC)) :=
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex_disc ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (specifiedAlgebra p R S ηC hC))
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex_disc ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule R).obj (specifiedAlgebra p R S ηC hC))
   intro i hi
   exact (hJ i hi).of_iso ((HFunctor R i).mapIso (specifiedDerivedIso p R hR F S ηC hC))
 
@@ -405,7 +405,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end InitialBridge
 
-/-! ## 界面を引数とする整代数の perfectoid 化の存在（旧 PerfectoidizationInterface/IntegralExistence.lean）
+/-! ## 界面を引数とする整代数の perfectoid 化の存在
 
 概要：integral 欄の離散性に、離散時の環の普遍性を適用する。
 方針：指定された H⁰ の環と指定単位をそのまま存在の証人に取る。
@@ -437,7 +437,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end IntegralExistence
 
-/-! ## 整代数の普遍 perfectoid 化（界面から導出した定理）（旧 PerfectoidizationInterface/IntegralPerfectoidization.lean）
+/-! ## 整代数の普遍 perfectoid 化（界面から導出した定理）
 
 従来 BS 著者版 Theorem 1.17(1) を直接引用していた公開入口である。
 現在は導来 perfectoid 化界面の存在だけを引用し、integral と universal から導く。
@@ -475,7 +475,7 @@ end SerrePositivity.BhattScholze.Inputs
 
 end IntegralPerfectoidization
 
-/-! ## 整代数の原典入力から有限版と完備化版への接続（旧 PerfectoidizationInterface/FiniteIntegralExistence.lean）
+/-! ## 整代数の原典入力から有限版と完備化版への接続
 
 有限代数の整性を確認して原典の普遍 perfectoid 化を適用する。
 完備化の場合には、同じ目標環と写像の一意延長を用いて普遍性を移す。

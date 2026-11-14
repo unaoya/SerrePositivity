@@ -21,7 +21,7 @@ Tor の変数を交換し（`torModuleComm`）、剰余体が共通なので `T`
 
 ## 使われ方
 
-解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 2。
+Paper Theorem 2.5 の式 (2.4) の等標数部分で、高次 Koszul ホモロジーの消滅に用いるTor 長の評価。
 `R = k[[Z]]` と `z = Z^q` にとり、`D` のパラメータの冪の Koszul ホモロジーを、
 `q` によらない分解で計算できる `Tor_i^R(R/(Z^q), D)` に移す。
 -/

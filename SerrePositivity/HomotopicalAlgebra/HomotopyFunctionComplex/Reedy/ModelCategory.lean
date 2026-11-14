@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ObjectwiseTrivial
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Finite
@@ -77,3 +79,10 @@ def modelCategory (hinj : Function.Injective r.deg) (hsurj : Function.Surjective
   exact ModelCategory.mk' (J ⥤ C)
 
 end SerrePositivity.Reedy
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.9.19" (partial := component) "仮定：抽象モデル圏 A、必要な境界極限と余極限、自然数次数が全単射（Lean が強い特殊形）。結論：実際の Fun(J,A) に objectwise W と相対 latching/matching によるモデル構造を構成し、trivial cofibration/fibration の二交差式も得る。原文の (C)(F)(W)(WC) にこの特殊形で一致する。任意の整礎次数は含まず、末尾の fibration iff (WF) は trivial fibration に読み替えず一致部分から除外する。"] _root_.SerrePositivity.Reedy.modelCategory
+attribute [cite HTT "A.2.9.19" (partial := component) "仮定：抽象モデル圏 A、必要な境界極限と余極限、自然数次数が全単射（Lean が強い特殊形）。結論：実際の Fun(J,A) に objectwise W と相対 latching/matching によるモデル構造を構成し、trivial cofibration/fibration の二交差式も得る。原文の (C)(F)(W)(WC) にこの特殊形で一致する。任意の整礎次数は含まず、末尾の fibration iff (WF) は trivial fibration に読み替えず一致部分から除外する。"] _root_.SerrePositivity.Reedy.reedyLeft_trivialCofibrations_eq
+attribute [cite HTT "A.2.9.19" (partial := component) "仮定：抽象モデル圏 A、必要な境界極限と余極限、自然数次数が全単射（Lean が強い特殊形）。結論：実際の Fun(J,A) に objectwise W と相対 latching/matching によるモデル構造を構成し、trivial cofibration/fibration の二交差式も得る。原文の (C)(F)(W)(WC) にこの特殊形で一致する。任意の整礎次数は含まず、末尾の fibration iff (WF) は trivial fibration に読み替えず一致部分から除外する。"] _root_.SerrePositivity.Reedy.reedyRight_trivialFibrations_eq

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.FibrationAdjacentEndpoint
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberSimplexLifting
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Pullbacks.FiberSimplexLifting
 
 /-!
 概要：比較ホーンの終点の一致を、全空間でなく指定した fiber 内で証明する。

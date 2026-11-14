@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndArrowInterpolationUnderComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 /-!
 概要：指定下側変換を含む補間全族と、その元の旧部分への実余錐。
 方針：元の始点評価の等式で pullback へ束ね、全族の制限を二射影で回収する。

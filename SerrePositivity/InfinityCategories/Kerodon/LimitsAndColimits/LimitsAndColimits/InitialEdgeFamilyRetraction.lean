@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeEdgeFamilyRetraction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.RelativeEdgeFamilyRetraction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialDiagramHomotopyConstant
 
 /-!

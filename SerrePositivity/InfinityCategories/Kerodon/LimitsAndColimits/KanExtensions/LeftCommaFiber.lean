@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftComma
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexFiberPostIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.HTT.Section2_1_3.VertexFiberOpposite
 
 /-!
 概要：oriented fiber product の fiber を反転した関手の comma の fiber の反転として表示する。
@@ -29,7 +29,7 @@ namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtens
 def kanLeftCommaFiberIso {K C : SSet.{u}} (δ : K ⟶ C) (c : C _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (SSet.opFunctor.map δ) (SSet.opObjEquiv.symm c)).op ≅
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCommaProjection δ) c :=
-  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSource (SSet.opFunctor.map δ)) (SSet.opObjEquiv.symm c) ≪≫
+  _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSource (SSet.opFunctor.map δ)) (SSet.opObjEquiv.symm c) ≪≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.vertexFiberPostIso (SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSource (SSet.opFunctor.map δ)))
       (SSet.opFunctorCompOpFunctorIso.app C)
       (SSet.opObjEquiv.symm (SSet.opObjEquiv.symm c))

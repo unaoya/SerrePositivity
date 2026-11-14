@@ -64,7 +64,7 @@ lemma completionSourceWide_component_eq (r : ℕ) (ι : Fin r → SimplexCategor
     (x y : (((multiSEndofunctor r).obj ι).obj X).carrier _⦋0⦌) :
     SSet.π₀.mk ((completionCanonicalSourceToWide r ι f hf).app (Opposite.op ⦋0⦌) x) =
       SSet.π₀.mk ((completionCanonicalSourceToWide r ι f hf).app (Opposite.op ⦋0⦌) y) := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier
   obtain ⟨a, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective z.vertex x
     (z.isInitial.isInitialHo.to (HomotopyCategory.mk x))
   obtain ⟨b, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective z.vertex y

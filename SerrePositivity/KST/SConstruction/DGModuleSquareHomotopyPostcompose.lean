@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleSquarePostcomposeIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleSquarePostcomposeIso
 
 /-! # ホモトピー可逆な終点射による実四角形の移送
 概要：ホモトピー圏で可逆な同じ閉加群射で、実四角形の終点を移す。

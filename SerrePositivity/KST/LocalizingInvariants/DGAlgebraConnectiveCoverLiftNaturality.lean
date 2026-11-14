@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverLift
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraProHomology
 
@@ -41,3 +43,8 @@ lemma connectiveCoverInclusion_groups_isIso (E : Mon (Complex R)) (j : ℤ) (hj 
   exact CochainComplex.quasiIsoAt_ιTruncLE E.X 0 (-j) (by omega)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.3.13" (partial := component) "仮定：通常可換環上の厳密な非可換 dg 代数と厳密に非正次数の入力代数（Lean が強い：この dg 模型の厳密な射に限る）。結論：smart connective cover と包含を代数として構成し、非負ホモトピー次数の群の同型および厳密な連結入力からの射の一意な持ち上げを示す（存在・群の比較・通常 Hom の普遍性の部分に一致）。局所化後の全写像空間と一般 Eₖ 代数の包含の ∞ 右随伴は含まれない。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.connectiveCoverInclusion_groups_isIso

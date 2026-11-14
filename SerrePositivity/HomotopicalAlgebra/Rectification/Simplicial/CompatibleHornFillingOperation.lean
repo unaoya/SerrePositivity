@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CompatibleInputUnion
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeHornFillingOperation
 
 /-!

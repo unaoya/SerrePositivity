@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
 variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma fromC_unit_component_isIso (x : (laxCategory p q).obj _⦋0⦌)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌) x)) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌) x)) :
     IsIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (LaxInclusion.fromCAdjunction p q).unitHom x) := by
   let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (LaxInclusion.fromCAdjunction p q).unitHom
   let J := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H (laxFst p q).hom

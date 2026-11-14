@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientRestriction
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 # Barratt–Eccles の導来係数制限

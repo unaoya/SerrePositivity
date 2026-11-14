@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LeftIntervalEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
 public import Mathlib.Tactic.CrossRefAttribute
@@ -52,3 +54,13 @@ noncomputable def cosliceFiberRightMappingEquivalence {X : SSet.{u}} [Quasicateg
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).choose.symm
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.2.2.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence
+attribute [cite HTT "4.1.1.5" (partial := special) "仮定：準圏の二つの図式（Lean が強い：二図式が一点の場合）。結論：結合で表したコスライス繊維と左右の写像空間を同値で比較する（Lean が弱い：両側が任意の図式の場合の二つの Kan 複体の比較は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.cosliceFiberRightMappingEquivalence
+attribute [cite HTT "4.1.1.5" (partial := special) "仮定：準圏の二つの図式（Lean が強い：二図式が一点の場合）。結論：結合で表したコスライス繊維と左右の写像空間を同値で比較する（Lean が弱い：両側が任意の図式の場合の二つの Kan 複体の比較は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeftRightEquivalence
+attribute [cite HTT "4.2.1.7" (partial := special) "仮定：準圏 C の図式 p と頂点 v（Lean が強い：p が一点の包含）。結論：その一点の通常コスライスの繊維を左 pinched 模型で、太い方を両端固定の区間模型で表すと、同じ比較がホモトピー同値となる（一致する場合。一般の図式は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence
+attribute [cite HTT "4.2.1.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence
+attribute [cite HTT "4.2.4.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence

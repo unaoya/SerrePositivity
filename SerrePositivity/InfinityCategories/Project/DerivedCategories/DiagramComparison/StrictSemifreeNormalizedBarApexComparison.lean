@@ -44,7 +44,7 @@ lemma strictSemifreeRawDAApex_eq :
       (P ◁ joinInr I (Δ[0] : SSet.{u + 1})) ≫
         strictSemifreeReindexedRawDAJoinFamily A =
       nerveMap (strictSemifreeNormalizedProjectiveModule A) ≫
-        closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
           (projectivePointEquivalence A).hom := by
   have h := congrArg (fun f => f ≫ (projectivePointEquivalence A).hom)
     (strictSemifreeProjectiveApex A)
@@ -64,7 +64,7 @@ def strictSemifreeNormalizedBarApexIso :
   have ee : FunctorIso
       (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
       (nerveMap (strictSemifreeNormalizedProjectiveModule A) ≫
-        closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
           (projectivePointEquivalence A).hom) := by
     simpa only [← Category.assoc, hc] using! e
   let a := lift (𝟙 (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ)))

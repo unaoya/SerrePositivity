@@ -28,7 +28,7 @@ def levelPiCohomologyEquiv (M : Complex A) (r n : ℕ) :
         (Opposite.op (SimplexCategory.mk 0))) ≃*
       Multiplicative (M.homology ((r : ℤ) - ((n : ℤ) + 1))) :=
   (levelPiHomologyEquiv A M r n).trans
-    (additiveGroupToMultiplicativeEquiv
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
       (levelCohomologyIso A M r (n + 1)).toLinearEquiv.toAddEquiv)
 
 /-- 安定次数 j に合う正次数の段では、同じ比較の終域は H^{-j} となる。 -/
@@ -38,7 +38,7 @@ def levelPiCohomologyEquivAt (M : Complex A) (j : ℤ) (r n : ℕ)
       (0 : ((levelModuleFunctor A r).obj M).obj
         (Opposite.op (SimplexCategory.mk 0))) ≃* Multiplicative (M.homology (-j)) :=
   (levelPiCohomologyEquiv A M r n).trans
-    (additiveGroupToMultiplicativeEquiv
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
       (show M.homology ((r : ℤ) - ((n : ℤ) + 1)) ≅ M.homology (-j) from
         eqToIso (congrArg (fun i : ℤ => M.homology i) (by omega :
           (r : ℤ) - ((n : ℤ) + 1) = -j))).toLinearEquiv.toAddEquiv)

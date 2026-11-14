@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceNuRoof
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNativePerfect
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedQuasiEquivalenceForward
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGPretriangulatedQuasiEquivalenceForward
 
 /-!
 概要：増大屋根の同じ cell 始域・thick 平坦核の native 完備性を充足する。
@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "T" => DGCategoryCellResolution.Source R (A)
 local notation "B" => DGOdotGluing R d
 local notation "K" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernel R (B)

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.HomInfinityBifunctor
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaSourceBaseChange
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.SourceInitial
@@ -55,3 +57,8 @@ def covariantHomIsoOfCosliceEquivalence {B : SSet.{u}} [Quasicategory B]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityCounit F).symm ≪≫ e.symm ≪≫ covariantCosliceClassificationIso x
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.4.8" (partial := component) "仮定：準圏上の図式とその下の左ファイブレーション（HTT と一致）。結論：直線化で分類関手を作り、単点図式の場合は元の共変 Hom 関手との同型を与える（一致する内容。指定の H 豊穣ホモトピー圏での表示は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.covariantCosliceClassificationIso

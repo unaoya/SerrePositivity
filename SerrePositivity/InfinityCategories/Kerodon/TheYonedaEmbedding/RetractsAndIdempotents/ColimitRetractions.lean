@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Preservation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RelativeInitialRetracts
 public import Mathlib.Tactic.CrossRefAttribute
@@ -55,3 +57,10 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfin
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.6.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isColimitCone_of_functorRetraction
+attribute [cite HTT "5.1.6.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isColimitCone_of_functorRetraction
+attribute [cite HTT "5.1.6.8" (partial := component) "仮定：指定前層が元の米田像の retract（Lean が強い：S は準圏）。結論：同じ全共変 Hom は、準圏を形状とする任意の小余極限を保存する。米田評価と指定宇宙変更の同型、および retract の余極限判定で得る（(2) からの保存のうち準圏形状の部分に一致。任意の単体集合形状と (1)⇒(2) は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isColimitCone_of_functorRetraction

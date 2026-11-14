@@ -28,14 +28,14 @@ def rightFibrationOppositeFiberDiagramIso (F : I ⥤ _root_.SerrePositivity.Infi
     _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationFiberKanDiagram F b ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor ≅
       _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationOppositeFiberDiagram F (SSet.opObjEquiv.symm b) :=
   NatIso.ofComponents (fun i => {
-    hom := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b).hom
-    inv := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b).inv
-    hom_inv_id := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b).hom_inv_id
-    inv_hom_id := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b).inv_hom_id }) (by
+    hom := (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b).hom
+    inv := (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b).inv
+    hom_inv_id := (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b).hom_inv_id
+    inv_hom_id := (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b).inv_hom_id }) (by
     intro i j f
     change SSet.opFunctor.map ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationFiberDiagram F b).map f) ≫
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj j).val.hom b).hom =
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj j).val.hom b).hom =
+        (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b).hom ≫
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
             (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationFiberEvaluationEnriched (SSet.opObjEquiv.symm b))).map
               ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationOppositeOrdinary B).map (F.map f))
@@ -59,7 +59,7 @@ def strictRightStraighteningOriginalFiberDiagramIso (F : I ⥤ _root_.SerrePosit
     (F := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationFiberKanDiagram F b ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor, trivial⟩)
     (G := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationOppositeFiberDiagram F (SSet.opObjEquiv.symm b), trivial⟩)
     (Functor.whiskerRight e.hom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget)
-    (fun i => (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b)).isQCatEquivalence)
+    (fun i => (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b)).isQCatEquivalence)
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightStraighteningFiberDiagramIso F (SSet.opObjEquiv.symm b) ≪≫ he.symm
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories

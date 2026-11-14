@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimit
 public import SerrePositivity.EInfinity.ComplexLimits.Probe
 public import SerrePositivity.EInfinity.HomotopyWeight.FrameCones
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameDiagrams
 public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 

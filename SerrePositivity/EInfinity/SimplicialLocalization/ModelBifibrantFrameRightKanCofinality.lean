@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RelativeRoofComparisonCofinality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RelativeRoofComparisonCofinality
 
 /-!
 # 元の source frame 次数比較の実右 Kan cofinal 性

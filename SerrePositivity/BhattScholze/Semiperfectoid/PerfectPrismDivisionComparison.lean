@@ -23,7 +23,7 @@ J/d を割る構成の性質の確認。旧 Prism/Perfection から移した。
 
 universe u v w
 
-/-! ## 既に可除な完全p進完備δ環の除算候補からの復元（旧 Prism/Perfection/PCompletedDeltaDivisionRecovery.lean）
+/-! ## 既に可除な完全p進完備δ環の除算候補からの復元
 
 distinguished元dについて指定元族が既にdで割り切れる完全p進完備δ環では、
 p進完備δ除算候補への標準射が同型。実導来(p,d)完備化の反復とは区別する。
@@ -114,7 +114,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaDivisionRecovery
 
-/-! ## 同じ除算関係を候補環内で再添加した場合の復元（旧 Prism/Perfection/PCompletedDeltaDivisionRepeat.lean）
+/-! ## 同じ除算関係を候補環内で再添加した場合の復元
 
 任意のδ基底環からの具体的なp進完備δ除算候補に、同じ基底元族の像を再添加する。
 その標準射はδ環同型であり、mod d商の標準射とも両立する。
@@ -186,7 +186,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaDivisionRepeat
 
-/-! ## 異なる二つの除算元族の段階的添加と一括添加（旧 Prism/Perfection/PCompletedDeltaDivisionSequential.lean）
+/-! ## 異なる二つの除算元族の段階的添加と一括添加
 
 BS 著者版 Proposition 7.2のδ除算普遍性を、具体的な完全p進完備δ候補について使う。
 aを添加した候補にbの像を添加する二段構成と、a,bを一括添加する候補を比較する。
@@ -305,7 +305,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaDivisionSequential
 
-/-! ## 段階的除算添加の具体的なδ同型とmod d商同型（旧 Prism/Perfection/PCompletedDeltaDivisionSequentialEquiv.lean）
+/-! ## 段階的除算添加の具体的なδ同型とmod d商同型
 
 一意存在定理から具体的な同型を選び、標準基底射との両立を公開する。
 導来(p,d)完備化との比較やperfectoid化の存在は仮定しない。
@@ -385,7 +385,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaDivisionSequentialEquiv
 
-/-! ## 旧dねじれ除去とp進完備δ除算完全化の比較（旧 Prism/Perfection/PCompletedDeltaDivisionTorsion.lean）
+/-! ## 旧dねじれ除去とp進完備δ除算完全化の比較
 
 BS 著者版 Proposition 7.2の旧ねじれ除去商と、具体的なp進完備δ完全化を比較する。
 dがdistinguishedなら、除算添加環のp進完備δ完全化と、旧dねじれのδ閉包商を
@@ -505,7 +505,7 @@ end SerrePositivity.BhattScholze
 
 end PCompletedDeltaDivisionTorsion
 
-/-! ## 旧ねじれ除去前後の候補のmod d商と標準射の比較（旧 Prism/Perfection/PCompletedDeltaDivisionTorsionQuotient.lean）
+/-! ## 旧ねじれ除去前後の候補のmod d商と標準射の比較
 
 具体的なp進完備δ完全化の比較同型をmod d商へ誘導し、R/Jからの標準射を比較する。
 perfectoid性・IsPerfectoidization・原典の導来(p,d)完備化との同定は未結論。

@@ -1,0 +1,11 @@
+{
+  "detected_at": "2026-11-14T03:54:17.950184",
+  "frozen_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+  "actual_main": "40faa3892120211786cf463371a356c3fc9de6e1",
+  "changed_files": [
+    "formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md"
+  ],
+  "only_documentation": true,
+  "diff": "diff --git a/formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md b/formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md\nindex 5f87698de..a5957e313 100644\n--- a/formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md\n+++ b/formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md\n@@ -225,3 +225,9 @@ M14 の紙の確認（a49dbc171、報告 §62）で、界面の `powerOp0`（D(k\n 2. 止め方は型つきの補題の一覧：§110.2 (a) の残りの補題をすべて Lean の主張の型で書き出して報告し、止まらずに順に証明する。数え方は IS-W2 §14 と同じ。\n 3. 外枠は M14 全体で **25,000 行**（完成済みの May 4,128 行を含む）。約 12,500 行で止まらずに途中報告。\n 4. 未検証の 185 行は直してから検証、568 行は監査してからコミット。G10 の部品は作らない。\n+\n+## 28. 追記（2026-11-14 未明、調整役）：R01・R02 を一覧に、組合せの補題の枠\n+\n+報告 §113（0820a8b7a）を受けて。`cutLastVerticalEquiv`（R01）と `verticesList_lastVertical`（R02、§113.2 の型案。欠けた色を空のリストとして保ち、末尾の重複を `List.replicate` で）を、L09a の部分として一覧に足す。一般の切断の行（§110.2 (a) の第一の行）の中の補題で、新しいまとまりではない（③-b の A05a と同じ扱い）。\n+\n+あわせて枠を一つ足す：一覧の補題の証明に要る、**切断・shuffle 経路・色の fiber などの有限の組合せ的な分解・数え上げの補題**は、同じまとまりの中なら**一覧の補題ごとに 3 本まで**止まらずに足してよい（型を報告に書く）。前提計算の枠・照合の枠とは別に数える。BE の作用・operad の法則・Tot・界面に関わる新しい主張や、まとまりの外のものは、今までどおり止まって報告する。外枠 25,000 行は変えない。\n",
+  "policy": "bulk-b3-goal.md §5(b): root/full audits/verify not started; retain successful frozen-baseline results; no baseline assertion bypass"
+}

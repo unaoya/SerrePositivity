@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MapTransportCylinder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.MapTransportCylinder
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitAttachmentTransportIso
 
 /-!

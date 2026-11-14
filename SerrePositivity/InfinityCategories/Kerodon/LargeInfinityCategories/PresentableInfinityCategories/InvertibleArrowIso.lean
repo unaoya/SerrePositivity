@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMinimum
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StronglySaturatedHom
+public import SerrePositivity.InfinityCategories.HTT.Section5_5_4.StronglySaturatedHom
 
 /-!
 概要：元の可逆な辺は、射圏内でその始点の恒等射と全自然同型で結ばれる。

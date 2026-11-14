@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingIdentityCoefficient
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.LaxComparisonEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.LaxComparisonEquivalence
 
 /-!
 概要：恒等 Hom gluing の導来係数を元の導来 Yoneda に全単体で同定する。

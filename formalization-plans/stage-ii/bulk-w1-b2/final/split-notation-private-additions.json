@@ -1,0 +1,72 @@
+[
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Delta.CompleteRegularity.RelativeCompleteRegularity.0.SerrePositivity.BhattScholze.Prismatic.«_aux_SerrePositivity_BhattScholze_Delta_CompleteRegularity_RelativeCompleteRegularity___macroRules__private_SerrePositivity_BhattScholze_Delta_CompleteRegularity_RelativeCompleteRegularity_0_SerrePositivity_BhattScholze_Prismatic_termZ[_,_]_1»",
+    "module": "SerrePositivity.BhattScholze.Delta.CompleteRegularity.RelativeCompleteRegularity",
+    "source_line": 129,
+    "source": "local notation \"z[\" a \",\" x \"]\" => appendKoszulCoordinates (algebraMap _ _ ∘ a) x",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.Injectivity.0.SerrePositivity.BhattScholze._aux_SerrePositivity_BhattScholze_Delta_DividedPower_PDivision_Injectivity___macroRules__private_SerrePositivity_BhattScholze_Delta_DividedPower_PDivision_Injectivity_0_SerrePositivity_BhattScholze_termB₀_1",
+    "module": "SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.Injectivity",
+    "source_line": 71,
+    "source": "local notation \"B₀\" => DeltaAdjoinDivision D (p : A) a",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.Injectivity.0.SerrePositivity.BhattScholze._aux_SerrePositivity_BhattScholze_Delta_DividedPower_PDivision_Injectivity___macroRules__private_SerrePositivity_BhattScholze_Delta_DividedPower_PDivision_Injectivity_0_SerrePositivity_BhattScholze_termBₚ_1",
+    "module": "SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.Injectivity",
+    "source_line": 72,
+    "source": "local notation \"Bₚ\" => Localization.Away (p : B₀)",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termHZ_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 31,
+    "source": "local notation \"hZ\" => crystallineBaseBounded p",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termK_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 32,
+    "source": "local notation \"k\" => cartierBase p",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termT_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 33,
+    "source": "local notation \"T\" => formVars r",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termZ_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 30,
+    "source": "local notation \"Z\" => crystallineBasePrism p",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termΦ_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 34,
+    "source": "local notation \"Φ\" => finitePolynomialCartier p r",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termΨ_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 36,
+    "source": "local notation \"Ψ\" => crystallineChain p r",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  },
+  {
+    "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp.0.SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_HodgeTatePolynomialZp_0_SerrePositivity_BhattScholze_Prismatic_termη_1",
+    "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.HodgeTatePolynomialZp",
+    "source_line": 35,
+    "source": "local notation \"η\" => hodgeTateMap Z hZ r",
+    "classification": "Additional notation auxiliary from a reviewed source split; not an authored mathematical declaration."
+  }
+]

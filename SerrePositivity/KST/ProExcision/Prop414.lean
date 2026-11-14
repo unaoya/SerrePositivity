@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.ConstructionA5Equivariant
 public import SerrePositivity.KST.ProExcision.ConjugationEquivariance
 public import Mathlib.RingTheory.TwoSidedIdeal.Basic
@@ -137,3 +139,9 @@ lemma centralMultiplicationIdeal_map_mem {J : Type v} [NonUnitalRing J]
   exact ⟨f y, by rw [map_mul, hab]⟩
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (4.4)" (partial := component) "仮定：中心元と非単位的単体環の列、ホモロジー模型（Lean が強い）。結論：中心倍イデアルの自然性と列に関する零化。安定 GL(ℤ) のホモロジー像への作用の自明性までは得ない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.centralMultiplicationIdeal_map_mem
+attribute [cite KST "Prop 4.14" (partial := component) "仮定：中心元と非単位的単体環の列、ホモロジー模型（Lean が強い）。結論：中心倍イデアルの自然性と列に関する零化。安定 GL(ℤ) のホモロジー像への作用の自明性までは得ない（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.centralMultiplicationIdeal_map_mem

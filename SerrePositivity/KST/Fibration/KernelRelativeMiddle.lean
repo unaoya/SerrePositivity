@@ -26,18 +26,18 @@ lemma kernelRelativeCofiber_middle_mem {B C : _root_.SerrePositivity.InfinityCat
     (kernelClosedPredicate q).predicate
       ((cofiberStableMiddle (sInputModel B)).val.app (Opposite.op ⦋0⦌) w) := by
   let t := (vertexCofiberSquare w).toZeroTriangle
-  have h₀ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0)) :=
-    (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x))
+  have h₀ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0)) :=
+    (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x))
       (cofiberVertex_corner B w
         (stdSimplex.obj₀Equiv.symm 0, stdSimplex.obj₀Equiv.symm 0))).mp hw.1
-  have h₂ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 1)) :=
-    (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x))
+  have h₂ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 1)) :=
+    (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x))
       (cofiberVertex_corner B w
         (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1))).mp hw.2
   have hm := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangle.zero_middle_of_zero_source_cofiber
     (t.map q.hom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := q.hom)))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber (F := q.hom) t (vertexCofiberSquare w).isPushout) h₀ h₂
-  exact (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x))
+  exact (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x))
     (cofiberVertex_corner B w
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 0))).mpr hm
 

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
@@ -78,3 +80,10 @@ def weakDiagramEquiv (X : SSet.{u}) :
     exact Prod.ext (weakDesc_triangle _ _ _) (weakDesc_imagePoint _ _ _)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.5.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakShape
+attribute [cite HTT "4.4.5.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakRetractionDiagram
+attribute [cite HTT "4.4.5.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramEquiv

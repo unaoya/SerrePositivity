@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceCosliceProjectionColimits
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredPosetNerve
@@ -108,3 +110,9 @@ lemma sourceCosliceProjection_isKappaAccessibleFunctor {κ : Cardinal.{u}}
   exact (sourceCoslice_isColimitCone_iff_projection_kappaFiltered hκ x D c).mp hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.2.8" (partial := special) "仮定：準圏の余スライスの図式、join の右包含の共終性（Lean が強い：底 S が一点、図式形状を準圏とする）。結論：指定余錐の余極限性を元の準圏への射影で判定し、底の存在から余スライスの余極限を得る（この場合の (1) と (2) に一致）。底の任意の射に沿う相対版は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_hasColimit_of_rightCofinal
+attribute [cite HTT "5.4.5.14" (partial := special) "仮定：正則 τ と C の小 τ-filtered 余極限の存在（Lean が強い：固定図式を一点 x に限定）。結論：同じ Cx/ は小 τ-filtered 余極限を持つ（この場合に一致）。任意の小形状の p についての存在まではこの宣言で述べていない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_hasSmallKappaFilteredColimits

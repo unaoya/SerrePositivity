@@ -24,7 +24,7 @@ BS 著者版 Corollary 7.3 と Theorem 7.4 の標数 p の場合を、完全環�
 
 universe u
 
-/-! ## pが零である完全環のperfectoid性（旧 Prism/Perfectoid/CharacteristicPPerfectoid.lean）
+/-! ## pが零である完全環のperfectoid性
 
 N3の標数p商の候補に、既存のIsIntegralPerfectoidの四条件を供給する。
 一般strict p環のWitt復元や一般主イデアル商のperfection核は使わない。
@@ -87,7 +87,7 @@ end SerrePositivity.BhattScholze
 
 end CharacteristicPPerfectoid
 
-/-! ## 完全な標数p環の任意の商のperfectoid化（旧 Prism/Perfectoid/CharacteristicPQuotient.lean）
+/-! ## 完全な標数p環の任意の商のperfectoid化
 
 具体的な根基商R/√Jを使い、存在・IsPerfectoidization普遍性・全射性を分ける。
 混標数の一般B3/B4、導来完備化や既存の存在・全射性引用は使用しない。

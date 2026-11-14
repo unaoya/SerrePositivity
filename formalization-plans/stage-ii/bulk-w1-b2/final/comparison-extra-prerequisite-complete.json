@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "side": "preview",
+      "modules": [
+        "SerrePositivity.KST.DerivedBlowup.UniversalRegularSequence"
+      ],
+      "rc": 0,
+      "seconds": 9.527077332139015,
+      "source_signature": "f6fc624677ee87ff267c8888d1ac7f63e576df9f1129099b2f22e7346745ea58"
+    },
+    {
+      "side": "replay",
+      "modules": [
+        "SerrePositivity.KST.DerivedBlowup.UniversalRegularSequence"
+      ],
+      "rc": 0,
+      "seconds": 3.634432250633836,
+      "source_signature": "f6fc624677ee87ff267c8888d1ac7f63e576df9f1129099b2f22e7346745ea58"
+    }
+  ],
+  "reason": "Changed external consumer was in preservation coverage but outside the 9550 primary build roots; compile it explicitly before reading all actual private declarations."
+}

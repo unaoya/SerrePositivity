@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.StableOneDirectionPointedFunctor
 public import SerrePositivity.KST.SConstruction.StableBoundaryPointedFunctor
 public import SerrePositivity.KST.SConstruction.PointedSSetSuspensionFunctor
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-!
 概要：元の suspension 組み立てを同じ全族の厳密点つき変換に束ねる。

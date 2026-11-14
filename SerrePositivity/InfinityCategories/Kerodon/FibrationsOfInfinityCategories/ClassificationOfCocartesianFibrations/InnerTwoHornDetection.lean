@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FactorizationTriangle
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.Composition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornEdges
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.InnerTwoHornEdges
 
 /-!
 概要：二次内ホーン上で cocartesian 辺を保つ元の関手は、欠ける長辺も保つ。

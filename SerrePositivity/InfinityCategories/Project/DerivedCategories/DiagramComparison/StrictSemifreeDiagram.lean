@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictDiagramEvaluation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.InfinityCategory
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
+import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.InfinityCategory
+import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 
 /-!
 # 半自由複体の strict 図式の全評価
@@ -37,20 +37,20 @@ abbrev StrictSemifreeDiagram := J ⥤ ClosedCategory A (Semifree A)
 
 /-- 一つの strict 図式の全射列を、既存 D(A) の図式へ送る。 -/
 def strictSemifreeDiagram (F : StrictSemifreeDiagram A J) :
-    (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J) ⟶ derivedInfinityCategory A :=
+    (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   strictDiagramNerve J (ClosedCategory A (Semifree A)) F ≫
-    closedNerveInclusion A (Semifree A)
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)
 
 /-- strict 図式の全パラメーターと添字を同時に動かす、既存 D(A) 値の評価。 -/
 def strictSemifreeEvaluation :
     nerve (StrictSemifreeDiagram A J) ⊗ (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J) ⟶
-      derivedInfinityCategory A :=
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   strictDiagramEvaluation J (ClosedCategory A (Semifree A)) ≫
-    closedNerveInclusion A (Semifree A)
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)
 
 /-- 一つの図式の頂点は、元の半自由複体そのもの。 -/
 theorem strictSemifreeDiagram_vertex (F : StrictSemifreeDiagram A J) (j : J) :
-    derivedInfinityCategoryVertexEquiv A
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A
       ((strictSemifreeDiagram A J F).app (Opposite.op ⦋0⦌)
         (ULift.up (ComposableArrows.mk₀ j))) =
       ForgetEnrichment.to (Complex A) (F.obj j) := by
@@ -62,7 +62,7 @@ theorem strictSemifreeDiagram_vertex (F : StrictSemifreeDiagram A J) (j : J) :
 
 /-- 全評価でも、同じパラメーターの同じ頂点を保持する。 -/
 theorem strictSemifreeEvaluation_vertex (F : StrictSemifreeDiagram A J) (j : J) :
-    derivedInfinityCategoryVertexEquiv A
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A
       ((strictSemifreeEvaluation A J).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ F, ULift.up (ComposableArrows.mk₀ j))) =
       ForgetEnrichment.to (Complex A) (F.obj j) := by

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNativePerfect
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYonedaIdempotentCompletion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveUniverseLift
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYonedaIdempotentCompletion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveUniverseLift
 
 /-!
 概要：D-21 の実 Yoneda 完備化を同じ Milnor resolved 商と固定 ν 値へ特殊化する。
@@ -31,7 +31,7 @@ local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCatego
 def dgOdotMilnorResolvedLiftEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeResolvedQuotient R d).obj
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{u + 1, u + 1} (Q))) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+  (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp.{u, u + 1, u + 1} R (Q))
     (dgKUniverseLiftUp_quasiEquivalence R (Q))).choose
 
@@ -46,7 +46,7 @@ def dgOdotMilnorResolvedPerfectDownEquivalence : _root_.SerrePositivity.Infinity
       (Q) F).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence R _ _ F
       (dgKUniverseLiftDown_quasiEquivalence R (Q))).isEquivalence_functor
-  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+  exact (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
     (perfectDGExtension R _ _ F) (perfectDGExtension_quasiEquivalence R _ _ F)).choose
 
 /-- 概要：元商の実 Perf から同じ固定 ν 値への指定同値。

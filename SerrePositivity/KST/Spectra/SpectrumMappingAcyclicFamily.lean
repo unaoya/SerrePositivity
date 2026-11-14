@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingLaws
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativePointedHomLifting
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.RelativePointedHomLifting
 public import SerrePositivity.KST.Spectra.PushoutProductMonomorphism
 
 /-!

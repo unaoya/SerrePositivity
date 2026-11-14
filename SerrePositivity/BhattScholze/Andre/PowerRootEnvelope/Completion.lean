@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.RegularReduction
+public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionCoordinates
 
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
@@ -20,10 +22,10 @@ public import Mathlib.RingTheory.Regular.IsSMulRegular
 BS 著者版 Remark 7.15 の被覆の計算に使う、完備化の比較と完全平坦性の判定を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/DeltaDivisionResidue`、`PowerRootEnvelope/DeltaDivisionWitt`、`PowerRootEnvelope/PerfectionFaithful`、`PowerRootEnvelope/PowerRootInput`、`PowerRootEnvelope/VarpiComparison`、`Variants/Auxiliary`。
@@ -31,7 +33,7 @@ BS 著者版 Remark 7.15 の被覆の計算に使う、完備化の比較と完�
 
 universe u v
 
-/-! ## André E1・E2：正則主剰余から二元完全平坦性を戻す（旧 Andre/Remark715/CompletelyFlatRegularReduction.lean）
+/-! ## 正則主剰余から二元完全平坦性を戻す
 
 ## 概要
 
@@ -87,62 +89,11 @@ theorem scalarExtensionTorVanishing_of_completelyFlat
       map_smul' := fun _ _ => rfl }
   exact hz.of_iso (((Tor (ModuleCat R) i).mapIso e.toModuleIso).app M)
 
-/-- 概要：正則主剰余の a 完全平坦性は元の (a,d) 完全平坦性を与える。
-方針：d で消える試験加群に商作用を入れ、Tor 非輪状底変換で剰余の Tor 消滅を戻す。
-規約：基底と係数加群の d 正則性を明示する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全化前後の導来剰余比較。 -/
-theorem completelyFlat_pair_of_regular_principal_reduction
-    {R : Type u} [CommRing R] (a d : R) (hd : IsSMulRegular R d)
-    (M : ModuleCat.{u} R) (hMd : IsSMulRegular M d)
-    (hred : IsCompletelyFlat (Ideal.span {Ideal.Quotient.mk (Ideal.span {d}) a})
-      ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {d}))).obj M)) :
-    IsCompletelyFlat (Ideal.span {a, d}) M := by
-  let I : Ideal R := Ideal.span {d}
-  let q := Ideal.Quotient.mk I
-  let Mbar := (ModuleCat.extendScalars q).obj M
-  have hTor := scalarExtensionTorVanishing_principal_of_regular d hd M hMd
-  intro N _ _ hN
-  apply (isConcentratedInDegreeZero_derivedTensor_iff M N).mpr
-  intro i hi
-  have hId : I ≤ Ideal.span {a, d} := Ideal.span_mono (by simp)
-  have ht : Module.IsTorsionBySet R N (I : Set R) :=
-    fun {x} {r} => hN r (hId r.property) x
-  let := ht.module
-  let NQ := ModuleCat.of (R ⧸ I) N
-  have hspan : Ideal.span {q a} ≤ Module.annihilator (R ⧸ I) N := by
-    apply (Ideal.span_singleton_le_iff_mem _).mpr
-    apply Module.mem_annihilator.mpr
-    intro x
-    change a • x = 0
-    exact hN a (Ideal.subset_span (by simp)) x
-  have hNa : ∀ r ∈ Ideal.span {q a}, ∀ x : N, r • x = 0 :=
-    fun r hr x => Module.mem_annihilator.mp (hspan hr) x
-  have : Subsingleton (TorModule (R ⧸ I) i Mbar N) :=
-    (isConcentratedInDegreeZero_derivedTensor_iff Mbar N).mp (hred N hNa) i hi
-  have : Subsingleton (TorModule (R ⧸ I) i N Mbar) :=
-    (torModuleComm (R := R ⧸ I) i N Mbar).injective.subsingleton
-  have hzQ' : IsZero (((Tor (ModuleCat (R ⧸ I)) i).obj NQ).obj Mbar) :=
-    ModuleCat.isZero_of_subsingleton _
-  have hz := ((ModuleCat.restrictScalars q).map_isZero hzQ').of_iso
-    (torAcyclicBaseChangeIso q M hTor NQ i)
-  let e : (ModuleCat.restrictScalars q).obj NQ ≃ₗ[R] N :=
-    { toFun := fun x => x
-      invFun := fun x => x
-      left_inv := fun _ => rfl
-      right_inv := fun _ => rfl
-      map_add' := fun _ _ => rfl
-      map_smul' := fun _ _ => rfl }
-  have hz' : IsZero (((Tor (ModuleCat R) i).obj (ModuleCat.of R N)).obj M) :=
-    hz.of_iso (((Tor (ModuleCat R) i).mapIso e.toModuleIso).app M).symm
-  have : Subsingleton (TorModule R i N M) := ModuleCat.subsingleton_of_isZero hz'
-  have : Subsingleton (TorModule R i M N) := (torModuleComm (R := R) i M N).injective.subsingleton
-  infer_instance
-
 end SerrePositivity.BhattScholze.Andre
 
 end CompletelyFlatRegularReduction
 
-/-! ## André E1・E2：正則主環商から二元完全平坦性を戻す（旧 Andre/Remark715/CompletelyFlatRegularAlgebraReduction.lean）
+/-! ## 正則主環商から二元完全平坦性を戻す
 
 ## 概要
 
@@ -160,67 +111,6 @@ BS 著者版 Remark 7.15（著者版 p.62）の自然な実候補の導来剰余
 ## 使われ方
 
 自然な Hodge–Tate 候補の p 完全平坦性を元の実完備化の (p,d) 完全平坦性へ戻す。
--/
-
-@[expose] public noncomputable section CompletelyFlatRegularAlgebraReduction
-
-set_option backward.isDefEq.respectTransparency false
-set_option backward.defeqAttrib.useBackward true
-namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
-attribute [local instance] principalAdicQuotientAlgebra
-
-/-- 概要：標準主剰余スカラー拡大は代数の通常主環商と剰余基底上線形同型。
-方針：標準加群商への比較と通常主環商への比較を合成する。
-規約：正則性を必要としない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な剰余作用の照合。 -/
-def principalScalarExtensionAlgebraQuotientEquiv
-    {R : Type u} [CommRing R] (d : R) (S : Type u) [CommRing S] [Algebra R S] :
-    ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {d}))).obj (ModuleCat.of R S)) ≃ₗ[
-      R ⧸ Ideal.span {d}] (S ⧸ Ideal.span {algebraMap R S d}) :=
-  (quotientScalarExtensionEquiv (Ideal.span {d}) (ModuleCat.of R S)).trans
-    (principalAdicReductionEquiv d S)
-
-/-- 概要：正則な主環商の a 完全平坦性は元の代数の (a,d) 完全平坦性を与える。
-方針：通常主商を標準剰余スカラー拡大へ移して一般判定へ渡す。
-規約：通常主商の係数作用は標準商代数構造。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の導来剰余の入力。 -/
-theorem completelyFlat_pair_algebra_of_regular_reduction
-    {R : Type u} [CommRing R] (a d : R) (hd : IsSMulRegular R d)
-    (S : Type u) [CommRing S] [Algebra R S] (hSd : IsSMulRegular S (algebraMap R S d))
-    (hred : IsCompletelyFlat (Ideal.span {Ideal.Quotient.mk (Ideal.span {d}) a})
-      (S ⧸ Ideal.span {algebraMap R S d})) :
-    IsCompletelyFlat (Ideal.span {a, d}) S := by
-  have hMd : IsSMulRegular (ModuleCat.of R S) d := by
-    intro x y hxy
-    apply hSd
-    simpa only [Algebra.smul_def, Algebra.algebraMap_self, RingHom.id_apply] using hxy
-  have hM := isCompletelyFlat_of_linearEquiv _
-    (principalScalarExtensionAlgebraQuotientEquiv d S).symm hred
-  exact completelyFlat_pair_of_regular_principal_reduction a d hd (ModuleCat.of R S) hMd hM
-
-end SerrePositivity.BhattScholze.Andre
-
-end CompletelyFlatRegularAlgebraReduction
-
-/-! ## André E1・E2：二段の主剰余の忠実平坦性（旧 Andre/Remark715/CompletelyFaithfulPairReduction.lean）
-
-## 概要
-
-主剰余の完全忠実平坦性から元の二元剰余の忠実平坦性を得る。
-BS 著者版 Remark 7.15（著者版 p.62）の導来剰余 H⁰ の準備。
-
-## 方針
-
-標準スカラー拡大を二段に分け、二重主商の係数同型に沿って忠実平坦性を底変換する。
-
-## 規約
-
-本工程では正則性を使わず、通常の剰余加群だけを扱う。
-
-## 使われ方
-
-自然な H/d の p 完全忠実平坦性から H の (p,d) 剰余の忠実平坦性へ進む。
 -/
 
 @[expose] public noncomputable section CompletelyFaithfulPairReduction
@@ -288,7 +178,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end CompletelyFaithfulPairReduction
 
-/-! ## André E1・E2：座標を保つ環同型による実導来完備化の比較（旧 Andre/Remark715/PDCompletionCoordinateEquiv.lean）
+/-! ## 座標を保つ環同型による実導来完備化の比較
 
 ## 概要
 
@@ -308,167 +198,6 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw 比較を完備化へ通す�
 ## 使われ方
 
 raw δ 包の係数自己同型による比較を、指定生成元の完備化の比較へ延長する。
--/
-
-@[expose] public noncomputable section PDCompletionCoordinateEquiv
-
-set_option backward.isDefEq.respectTransparency false
-set_option backward.defeqAttrib.useBackward true
-namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
-variable {A B : Type u} [CommRing A] [CommRing B] (p : ℕ)
-
-/-- 概要：座標を保つ環射は実完備化 H⁰ 間の環射へ一意に延長する。
-方針：標的自身の p,d' 導来完備性を実 H⁰ の環普遍性へ渡す。
-規約：係数射の合成を固定し、d の正則性は要求しない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化比較の構成。 -/
-theorem existsUnique_pdCompletionCoordinateMap (g : A →+* B) (d : A) (d' : B)
-    (hd : g d = d') :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    ∃! F : PDCompletionH0 A p d →+* PDCompletionH0 B p d',
-      F.comp (pdCompletionUnit A p d) = (pdCompletionUnit B p d').comp g := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  apply existsUnique_pdCompletionRingHom A p d (PDCompletionH0 B p d')
-    ((pdCompletionUnit B p d').comp g) (pdCompletionH0_self_complete_p B p d')
-  simpa only [RingHom.comp_apply, hd] using pdCompletionH0_self_complete_d B p d'
-
-/-- 概要：指定座標を保つ環射から実完備化間の標準環射を選ぶ。
-方針：一意延長の存在から選択する。
-規約：既存の実 H⁰ の環構造を局所導入する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準完備化比較射。 -/
-def pdCompletionCoordinateMap (g : A →+* B) (d : A) (d' : B) (hd : g d = d') :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    PDCompletionH0 A p d →+* PDCompletionH0 B p d' := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  exact (existsUnique_pdCompletionCoordinateMap p g d d' hd).choose
-
-/-- 概要：完備化間の標準射は元の標準係数射と可換。
-方針：選んだ一意延長の仕様を使う。
-規約：環射の合成の等式として述べる。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用の保存。 -/
-theorem pdCompletionCoordinateMap_comp_unit
-    (g : A →+* B) (d : A) (d' : B) (hd : g d = d') :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    (pdCompletionCoordinateMap p g d d' hd).comp (pdCompletionUnit A p d) =
-      (pdCompletionUnit B p d').comp g := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  exact (existsUnique_pdCompletionCoordinateMap p g d d' hd).choose_spec.1
-
-/-- 概要：座標を保つ環同型は実導来完備化 H⁰ の環同型を誘導する。
-方針：順逆の一意延長を作り、逆合成を標準単位上の一意性で検証する。
-規約：古典的完備化や Noether 性に置き換えない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 同型の実完備化への延長。 -/
-def pdCompletionCoordinateEquiv (e : A ≃+* B) (d : A) (d' : B) (hd : e d = d') :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    PDCompletionH0 A p d ≃+* PDCompletionH0 B p d' := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  have hi : e.symm d' = d := by rw [← hd, RingEquiv.symm_apply_apply]
-  let F := pdCompletionCoordinateMap p e.toRingHom d d' hd
-  let G := pdCompletionCoordinateMap p e.symm.toRingHom d' d hi
-  have hF := pdCompletionCoordinateMap_comp_unit p e.toRingHom d d' hd
-  have hG := pdCompletionCoordinateMap_comp_unit p e.symm.toRingHom d' d hi
-  apply RingEquiv.ofRingHom F G
-  · apply pdCompletionRingHom_ext B p d' (PDCompletionH0 B p d') (pdCompletionUnit B p d')
-      (pdCompletionH0_self_complete_p B p d') (pdCompletionH0_self_complete_d B p d')
-    · change (F.comp G).comp (pdCompletionUnit B p d') = pdCompletionUnit B p d'
-      rw [RingHom.comp_assoc, hG, ← RingHom.comp_assoc, hF]
-      ext b
-      simp only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe, RingEquiv.coe_toRingHom,
-        RingEquiv.apply_symm_apply]
-    · exact RingHom.id_comp _
-  · apply pdCompletionRingHom_ext A p d (PDCompletionH0 A p d) (pdCompletionUnit A p d)
-      (pdCompletionH0_self_complete_p A p d) (pdCompletionH0_self_complete_d A p d)
-    · change (G.comp F).comp (pdCompletionUnit A p d) = pdCompletionUnit A p d
-      rw [RingHom.comp_assoc, hF, ← RingHom.comp_assoc, hG]
-      ext b
-      simp only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe, RingEquiv.coe_toRingHom,
-        RingEquiv.symm_apply_apply]
-    · exact RingHom.id_comp _
-
-/-- 概要：完備化比較同型は任意の元の標準完備化像を対応させる。
-方針：順射の標準単位との可換性を各元で評価する。
-規約：座標元だけでなく全ての係数元を扱う。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余係数の追跡。 -/
-theorem pdCompletionCoordinateEquiv_unit
-    (e : A ≃+* B) (d : A) (d' : B) (hd : e d = d') (b : A) :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    pdCompletionCoordinateEquiv p e d d' hd (pdCompletionUnit A p d b) =
-      pdCompletionUnit B p d' (e b) := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  exact RingHom.congr_fun (pdCompletionCoordinateMap_comp_unit p e.toRingHom d d' hd) b
-
-variable [Fact p.Prime]
-
-/-- 概要：座標を保つ δ 射の標準完備化延長は実 δ 射。
-方針：既存の実完備化の δ 普遍性に元の δ 射と座標の等式を供給する。
-規約：両側で既存の deltaPDCompletionStructure を使う。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw δ 比較の延長。 -/
-theorem pdCompletionCoordinateMap_isDeltaHom
-    (D : DeltaStructure p A) (E : DeltaStructure p B) (g : A →+* B)
-    (hg : D.IsDeltaHom E g) (d : A) (d' : B) (hd : g d = d') :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    (deltaPDCompletionStructure D d).IsDeltaHom (deltaPDCompletionStructure E d')
-      (pdCompletionCoordinateMap p g d d' hd) := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  have hcomplete : IsModuleComplete (PDCompletionH0 B p d')
-      (((pdCompletionUnit B p d').comp g) d)
-      (ModuleCat.of (PDCompletionH0 B p d') (PDCompletionH0 B p d')) := by
-    simpa only [RingHom.comp_apply, hd] using pdCompletionH0_self_complete_d B p d'
-  exact pdCompletionRingHom_isDeltaHom D d (deltaPDCompletionStructure E d')
-    ((pdCompletionUnit B p d').comp g) ((pdCompletionUnit_isDeltaHom E d').comp hg)
-    (pdCompletionH0_self_complete_p B p d') hcomplete
-    (pdCompletionCoordinateMap p g d d' hd) (pdCompletionCoordinateMap_comp_unit p g d d' hd)
-
-/-- 概要：座標を保つ δ 環同型の標準完備化同型は実 δ 射。
-方針：順射が標準完備化延長であることとその δ 互換性を使う。
-規約：環同型と座標の等式以外の正則性仮定を置かない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 比較の実完備化への移送。 -/
-theorem pdCompletionCoordinateEquiv_isDeltaHom
-    (D : DeltaStructure p A) (E : DeltaStructure p B) (e : A ≃+* B)
-    (he : D.IsDeltaHom E e.toRingHom) (d : A) (d' : B) (hd : e d = d') :
-    letI := pdCompletionCommRing A p d
-    letI := pdCompletionCommRing B p d'
-    (deltaPDCompletionStructure D d).IsDeltaHom (deltaPDCompletionStructure E d')
-      (pdCompletionCoordinateEquiv p e d d' hd).toRingHom := by
-  let := pdCompletionCommRing A p d
-  let := pdCompletionCommRing B p d'
-  exact pdCompletionCoordinateMap_isDeltaHom p D E e.toRingHom he d d' hd
-
-end SerrePositivity.BhattScholze.Andre
-
-end PDCompletionCoordinateEquiv
-
-/-! ## André E1・E2：両座標を殺す商と実導来完備化 H⁰（旧 Andre/Remark715/PDCompletionKilledCoordinates.lean）
-
-## 概要
-
-p,d を含むイデアル I に対し、実導来 (p,d) 完備化 H⁰ の I の像による商は A/I と環同型。
-BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余を具体的な未完備の剰余へ戻す比較。
-
-## 方針
-
-商では p,d が零なので、標準商射を実 H⁰ の環普遍性で延長する。
-係数からの逆射を作り、逆合成を商の普遍性と実完備化の一意性で確認する。
-
-## 規約
-
-実際の H⁰ と標準単位を用いる。p,d の正則性・Noether 性を仮定しない。
-
-## 使われ方
-
-Frobenius 側の実完備化の (p,d) 商を、raw 包の同じ剰余へ同定する。
 -/
 
 @[expose] public noncomputable section PDCompletionKilledCoordinates
@@ -650,7 +379,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PDCompletionKilledCoordinates
 
-/-! ## André E1・E2：実完備化の二元係数剰余と未完備の剰余（旧 Andre/Remark715/PDCompletionPairResidue.lean）
+/-! ## 実完備化の二元係数剰余と未完備の剰余
 
 ## 概要
 
@@ -719,7 +448,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PDCompletionPairResidue
 
-/-! ## André A1-a：p 完備化から完備環への環射（旧 Andre/Remark715/PrimeAdicCompletionUniversal.lean）
+/-! ## André A1-a：p 完備化から完備環への環射
 
 ## 概要
 
@@ -779,7 +508,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrimeAdicCompletionUniversal
 
-/-! ## André A1-a：全冪商で正則な入力による完備化の商（旧 Andre/Remark715/PrimeAdicCompletionPrincipalQuotient.lean）
+/-! ## André A1-a：全冪商で正則な入力による完備化の商
 
 ## 概要
 
@@ -904,7 +633,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrimeAdicCompletionPrincipalQuotient
 
-/-! ## André A1-a：全冪商で正則な主関係と p 完備化の交換（旧 Andre/Remark715/PrimeAdicCompletionQuotientExchange.lean）
+/-! ## André A1-a：全冪商で正則な主関係と p 完備化の交換
 
 ## 概要
 

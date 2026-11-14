@@ -69,7 +69,7 @@ lemma dgOdotTailKernelComparisonSquare_upper_edges :
 方針：元下辺の始点回収を使う。規約：同値な別頂点への置換はしない。
 使われ方：ActualRectangleInput の kernel_vertex への接続。 -/
 lemma dgOdotTailKernelComparisonSquare_kernel_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotTailKernelComparisonSquare R d upper diagonal) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotTailKernelComparisonSquare R d upper diagonal) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d) := by
   have hv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (dgOdotTailKernelComparisonSquare R d upper diagonal)
   rw [(dgOdotTailKernelComparisonSquare_lower_edges R d upper diagonal).1] at hv

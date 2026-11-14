@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratedWeakReflection
 
 /-! # Accessibility of a small generated right lifting class
@@ -77,3 +79,8 @@ lemma exists_accessible_right_lifting_class
     AccessibleRightClass.inclusion_isCardinalAccessible I κ⟩
 
 end SerrePositivity.Smith
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.6.8" (partial := stronger-hyp) "仮定：抽象モデル圏 C、Mathlib IsLocallyPresentable C と小さい生成 I,J の CofibrantlyGenerated（Lean の形式的仮定が強い）。結論：元の W の full arrow subcategory と inclusion が accessible、F=J.rlp と F∩W=I.rlp も同じ right-lifting-class theorem により accessible となり、原典の三結論に一致。HTT の可呈示性と生成の定義から入力を得る完全な比較は未供給。"] _root_.SerrePositivity.Smith.exists_accessible_right_lifting_class

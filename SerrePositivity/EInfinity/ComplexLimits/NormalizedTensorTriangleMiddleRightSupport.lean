@@ -26,7 +26,7 @@ lemma normalizedTensorTriangleBack_hom_of_ne {n : ℕ}
     (hk : k = 2 - (I.card : ℤ)) (hk0 : k ≠ 0) :
     (normalizedTensorTriangleBack A X Y c τ).hom I a b k hI ha hb hk = 0 := by
   unfold normalizedTensorTriangleBack
-  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback]
+  rw [← _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback]
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ k hk0
 
 lemma normalizedTensorTriangleData_homOrZero_back_zero {n : ℕ}

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TensorCoconeComponentCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_2.FunctorColimitConeExistence
 
 /-!
 概要：両端の余極限の存在から、両端評価の像も余極限である矢印圏の余極限錐を作る。
@@ -57,7 +57,7 @@ lemma exists_colimitCone_arrow_with_colimit_image {J C : SSet.{u}} [Quasicategor
     fin_cases i
     · exact h0
     · exact h1
-  obtain ⟨c, hc, hcp⟩ := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.exists_colimitCone_functor_of_pointwise r hp
+  obtain ⟨c, hc, hcp⟩ := _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_2.exists_colimitCone_functor_of_pointwise r hp
   exact ⟨c, hc, isColimitCone_arrowEndpointPair_of_pointwise c hcp⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC

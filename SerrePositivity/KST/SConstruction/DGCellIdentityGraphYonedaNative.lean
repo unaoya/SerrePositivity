@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGBimoduleResolvedMapInvertible
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGBimoduleResolvedMapInvertible
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 /-!
 概要：元 cell 増大の全 Hom 写像で元 Yoneda と恒等制限 graph を全比較する。
 方針：D 正本の対角制限射とその準同型判定を native 全関手射へ適用する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationKernel
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedClassicalComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedClassicalComparison
 
 /-!
 概要：P の元の全関手比較から、同じ実評価核の列の perfect 性を読む。

@@ -29,14 +29,14 @@ include hF in
 lemma IsPerfectLocalizingInvariant.perfectValue_zero_of_zero_values
     {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
     (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete A.obj) (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete B.obj)
-    (hf : ∀ a, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
+    (hf : ∀ a, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
     perfectInvariantHoArrow F f hA hB = 0 := by
   let G : A ⟶ B := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory) ≫ fromZeroCategory B
-  have hG : ∀ a, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (G.hom.app (Opposite.op ⦋0⦌) a) := by
+  have hG : ∀ a, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (G.hom.app (Opposite.op ⦋0⦌) a) := by
     intro a
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
     rw [throughZero_hom, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex B.obj).isZero
+    exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex B.obj).isZero
   have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f.hom G.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso _ _ hf hG
   have hz : IsZero (perfectInvariantHoObject F
       (perfectStableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} perfectZeroCategory_isIdempotentComplete)) :=
@@ -60,7 +60,7 @@ include hF in
 lemma IsPerfectLocalizingInvariant.perfectSpectrum_zero_of_zero_values
     {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
     (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete A.obj) (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete B.obj)
-    (hf : ∀ a, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
+    (hf : ∀ a, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
     perfectInvariantSpectrumHom F f hA hB = 0 := by
   rw [perfectInvariantSpectrumHom, hF.perfectValue_zero_of_zero_values f hA hB hf]
   exact perfectTransportedZero (SpectrumHo.spectrumIso _) (SpectrumHo.spectrumIso _)

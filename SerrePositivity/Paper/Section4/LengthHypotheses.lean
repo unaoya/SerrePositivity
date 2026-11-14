@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.LinearAlgebra.Dimension.Finite
 public import Mathlib.RingTheory.Spectrum.Prime.RingHom
@@ -171,3 +173,8 @@ end finite
 end SerrePositivity.Section4
 
 end LengthAlgebraRealizationPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Prop 4.5" (partial := component) "仮定：台付きランク商、A の正則パラメータと (4.1) の長さ条件（原典の正規化長側。Lean は有限性の引数を明示）。結論：商内の冪等元による直和因子も含む K₀ 類について、係数拡大後の正規化 Euler 評価は A の通常評価の階数倍（原典の正規化長側）。"] _root_.SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values

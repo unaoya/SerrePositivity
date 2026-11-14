@@ -45,14 +45,14 @@ lemma dgOdotMilnorRightAxisFullConeSquare_lower :
 方針：元全零角付き図式へ特殊化する。
 規約：同じ実零加群を使用。使われ方：元全 cofiber 列。 -/
 def dgOdotMilnorRightAxisFullConeZeroTriangle :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R (Q)))) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R (Q)))) :=
   dgModuleNaturalConeFullZeroTriangle R (Q) (P) (F) (G) (η)
 
 /-- 概要：元右軸比較の同じ全 cone 図式は実 cofiber 列。
 方針：元全 cofiber の証明を同じ入力に特殊化する。
 規約：追加主仮定なし。使われ方：元逆回転の全図式比較。 -/
 lemma dgOdotMilnorRightAxisFullConeZeroTriangle_isCofiber :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (dgOdotMilnorRightAxisFullConeZeroTriangle R d) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (dgOdotMilnorRightAxisFullConeZeroTriangle R d) :=
   dgModuleNaturalConeFullZeroTriangle_isCofiber R (Q) (P) (F) (G) (η)
 
 end SerrePositivity.KST.SConstruction

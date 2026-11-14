@@ -52,11 +52,11 @@ lemma kanInitialBoundaryLifting_of_fiber_map {E F B : SSet.{u}}
   have := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cartesianFibration_op_toCocartesianHornFibration q
   let hfop : SSet.opFunctor.map f ≫ SSet.opFunctor.map q = SSet.opFunctor.map p := by
     rw [← Functor.map_comp, hf]
-  let xop := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom.app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm x)
-  have hnat : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b).hom ≫
+  let xop := (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom.app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm x)
+  have hnat : (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertexFiberMap (SSet.opFunctor.map p) (SSet.opFunctor.map q)
         (SSet.opFunctor.map f) hfop (SSet.opObjEquiv.symm b) =
-      SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertexFiberMap p q f hf b) ≫ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso q b).hom := by
+      SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertexFiberMap p q f hf b) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso q b).hom := by
     apply SSet.hom_ext
     intro n
     apply ConcreteCategory.hom_ext
@@ -64,7 +64,7 @@ lemma kanInitialBoundaryLifting_of_fiber_map {E F B : SSet.{u}}
     apply Subtype.ext
     rfl
   have hxop := (kanInitialBoundaryLifting_op_terminal hx).map_iso
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso p b) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso q b) hnat
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso p b) (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso q b) hnat
   have hpresop (e : E.op _⦋1⦌)
       (he : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCocartesianEdge (SSet.opFunctor.map p) e) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCocartesianEdge (SSet.opFunctor.map q)

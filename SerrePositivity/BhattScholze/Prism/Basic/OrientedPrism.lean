@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
@@ -19,7 +21,7 @@ BS 著者版 Lemma 3.8 の完全 prism の性質に加え、p 進完備性を取
 p 正則性・完全性・有界性を仮定せずに BS 著者版 Lemma 2.24・Lemma 2.25 から出る。
 
 ## 規約
-一般の局所単項なイデアルは扱わない（ノート D5）。
+一般の局所単項なイデアルは扱わない（BS 著者版 Definition 3.2 の向き付きの場合）。
 
 ## 使われ方
 BS のすべての prism の議論の土台。射の剛性の続き（I ⊗ B ≅ J、商による同型判定）は `Prism/Basic/Rigidity`。
@@ -55,7 +57,7 @@ theorem IsDistinguished.p_mem_span_pow {D : DeltaStructure p A} {d : A}
   exact h
 
 /-- d,pがJacobson根基に属せば、distinguished性はp∈(d^p,φ(d))と同値（BS 著者版 Lemma 3.1 の主イデアルの場合と Lemma 2.25 の判定）。
-弱い包含の判定BS 著者版 Lemma 2.25と、主イデアルの強い包含を組み合わせる。 -/
+弱い包含の判定 BS 著者版 Lemma 2.25と、主イデアルの強い包含を組み合わせる。 -/
 theorem isDistinguished_iff_p_mem_span_pow (D : DeltaStructure p A) (d : A)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A)) :
@@ -378,3 +380,23 @@ def ofPerfectCompleteDistinguished (D : DeltaStructure p A) (hD : D.IsPerfect)
 end SerrePositivity.BhattScholze.OrientedPrism
 
 end PerfectOrientedPrism
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Def 1.1" (partial := special) "Def 3.2 の言い直し。本体は向き付き prism（I=(d) 主・d 正則・p と d で古典完備・p∈(d,φ(d))）だけ。一般の Cartier 因子 I は形式化していない（U3） ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism
+attribute [cite BS19 "Def 1.1" (partial := special) "Def 3.2 の言い直し。本体は向き付き prism（I=(d) 主・d 正則・p と d で古典完備・p∈(d,φ(d))）だけ。一般の Cartier 因子 I は形式化していない（U3） ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.ofDistinguished
+attribute [cite BS19 "Def 3.2" (partial := special) "向き付き prism（単項イデアルと生成元をデータに）に限る（D5・D19）。有界性の述語 IsBoundedPrism は本体（Prismatic/PrismOver） ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism
+attribute [cite BS19 "Def 3.2" (partial := special) "向き付き prism（単項イデアルと生成元をデータに）に限る（D5・D19）。有界性の述語 IsBoundedPrism は本体（Prismatic/PrismOver） ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom
+attribute [cite BS19 "Ex 1.3" (partial := special) "(1) 結晶 prism は本体（OrientedPrism.crystalline）。(2) 完全 prism ↔ perfectoid は Thm 3.10 の両向きを対象ごとに（圏同値としてではない）。Breuil–Kisin・q 型などの他の例は不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectPrismWittRecoveryEquiv（W(A/p) ≃ A を与える。R からの逆方向ではないので Example 1.3 (2) の候補から外す。Corol） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.crystalline
+attribute [cite BS19 "Ex 1.3" (partial := special) "(1) 結晶 prism は本体（OrientedPrism.crystalline）。(2) 完全 prism ↔ perfectoid は Thm 3.10 の両向きを対象ごとに（圏同値としてではない）。Breuil–Kisin・q 型などの他の例は不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectPrismWittRecoveryEquiv（W(A/p) ≃ A を与える。R からの逆方向ではないので Example 1.3 (2) の候補から外す。Corol） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff
+attribute [cite BS19 "Ex 3.3"] _root_.SerrePositivity.BhattScholze.OrientedPrism.crystalline
+attribute [cite BS19 "Ex 3.3"] _root_.SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff
+attribute [cite BS19 "Lemma 2.25"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span_pow
+attribute [cite BS19 "Lemma 3.1" (partial := special) "主イデアル（向き付き）の場合だけ。locally principal・Prop 3.1(3) の局所化は未（D5 で不要）。向き付き prism の定義と distinguished 性の同値として E3 経路の土台 ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.p_mem_span_pow
+attribute [cite BS19 "Lemma 3.1" (partial := special) "主イデアル（向き付き）の場合だけ。locally principal・Prop 3.1(3) の局所化は未（D5 で不要）。向き付き prism の定義と distinguished 性の同値として E3 経路の土台 ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span_pow
+attribute [cite BS19 "Lemma 3.1" (partial := special) "主イデアル（向き付き）の場合だけ。locally principal・Prop 3.1(3) の局所化は未（D5 で不要）。向き付き prism の定義と distinguished 性の同値として E3 経路の土台 ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.isDistinguished_generator
+attribute [cite BS19 "Lemma 3.5" (partial := special) "単項（向き付き）の場合。後半の逆（B[I]=0 なら (B,IB) は prism）は扱わない（T3-5）。PrismOver の Q.ideal=(d)B に使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：bijective_iff_quotientMap_bijective（本文のテンソル比較と像等式とは別の帰結。） ／ DOC1 照合：ok 3 件。後半の逆の「⇒」にあたる map_generator_mul_injective はある ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq
+attribute [cite BS19 "Lemma 3.8" (partial := special) "向き付きなので (1) の単項性は定義に含まれる。(2) は A/d の p 冪ねじれが p で消えること・完備性として証明済み。Thm 3.10・A4 Lemma 8.4 で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：isAdicComplete_p_of_perfect（完全 prism の古典 (p,I) 進完備性と結論が異なる。）；distinguished_quotient_isAdicComplete（Lemma 3.8 (2) の完備性は A 上。商の完備性は Theorem 3.10 の証明に現れる別の帰結。） ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.isDistinguished_generator
+attribute [cite BS19 "Lemma 3.8" (partial := special) "向き付きなので (1) の単項性は定義に含まれる。(2) は A/d の p 冪ねじれが p で消えること・完備性として証明済み。Thm 3.10・A4 Lemma 8.4 で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：isAdicComplete_p_of_perfect（完全 prism の古典 (p,I) 進完備性と結論が異なる。）；distinguished_quotient_isAdicComplete（Lemma 3.8 (2) の完備性は A 上。商の完備性は Theorem 3.10 の証明に現れる別の帰結。） ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.quotient_p_pow_torsion_killed_by_p
+attribute [cite BS19 "Prop 1.5" (partial := special) "原典は「(Proposition 3.5)」と書くが §3 の番号は Lemma 3.5（Rigidity of maps）。向き付き prism の射についてだけ ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq

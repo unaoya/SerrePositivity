@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.Cohere
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarMaurerCartan
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarMaurerCartan
 /-!
 概要：正規化実 bar を頂点とする元の coherent 図式の native 余錐を構成する。
 方針：全 HA 単体を終点固定 slice へ送り、既存の slice 普遍性で join 上へ束ねる。

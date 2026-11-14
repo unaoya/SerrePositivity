@@ -85,6 +85,8 @@ run_cmd do
     `SerrePositivity.KST.Descent.ZariskiCechLaw,
     `SerrePositivity.KST.Descent.ZariskiCoproductDescent]
   for entry in env.header.modules do
+    if (`SerrePositivity.Archive.KST.DescentConditional).isPrefixOf entry.module then
+      throwError "Main route imported archived conditional auxiliary module: {entry.module}"
     if forbidden.contains entry.module then
       throwError "Main route imported conditional auxiliary module: {entry.module}"
   let mut count : Nat := 0

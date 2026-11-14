@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareSideRecovery
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterZeroBoundary
 public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元 LT 絶対外周から実始域零化外面への指定三境界付き全図式比較を構成する。
@@ -47,7 +47,7 @@ def dgOdotMilnorOuterSquareDiagramIso : _root_.SerrePositivity.InfinityCategorie
       (congrArg Iso.symm (dgOdotMilnorOuterPerfectSquareComparison_right R d h))
   zero_eq := by
     apply perfectZeroPointFunctorIso_ext
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
       (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1))
     exact dgOdotMilnorSourceNullOuterSquare_perfect_zero R d
 end SerrePositivity.KST.SConstruction

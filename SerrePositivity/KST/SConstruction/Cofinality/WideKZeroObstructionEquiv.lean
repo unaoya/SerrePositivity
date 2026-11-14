@@ -65,7 +65,7 @@ def completionWideKZeroObstructionHom (r : ℕ) (ι : Fin r → SimplexCategory�
   toFun := completionWideKZeroObstruction r ι f
   map_zero' := completionKZeroVertexClass_zero_of_image r ι f _
     ((completionImageClosedPredicate r ι f hf).zero_mem
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).isZero)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier).isZero)
   map_add' a b := by
     obtain ⟨a, rfl⟩ := SSet.π₀.mk_surjective a
     obtain ⟨b, rfl⟩ := SSet.π₀.mk_surjective b

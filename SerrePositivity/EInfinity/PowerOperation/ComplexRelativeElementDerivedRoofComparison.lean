@@ -18,14 +18,14 @@ namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.FrameHom SerrePositivity.EInfinity.SimplicialLocalization
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 /-- 相対表示の augmentation の順射は、元の通常導来 augmentation の全制限。 -/
 lemma complexRelativeElementDerivedAugmentation_arrow :
     let I := normalizedTensorElementIndex A X Y
     let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
-      (derivedInfinityCategory A))).toFunctor
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (complexRelativeElementDerivedAugmentationIso A X Y).hom =
       Arrow.mk (T.map (normalizedTensorElementDerivedAugmentationIso A X Y).hom) := by
   have h₁ := congrArg Arrow.mk
@@ -39,13 +39,13 @@ lemma complexRelativeElementDerivedAugmentation_arrow :
 lemma complexRelativeElementDerivedRoof_arrow :
     let I := normalizedTensorElementIndex A X Y
     let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
-      (derivedInfinityCategory A))).toFunctor
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk ((complexRelativeElementDerivedAugmentationIso A X Y).inv ≫
       NerveColumn.hom (complexRelativeDerivedSource A) (complexRelativeElementEvaluation A X Y)) =
       Arrow.mk (T.map (normalizedTensorElementDerivedRoof A X Y)) := by
   let I := normalizedTensorElementIndex A X Y
   let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
-    (derivedInfinityCategory A))).toFunctor
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have hp := complexRelativeElementDerivedAugmentation_arrow A X Y
   have hi : Arrow.mk (complexRelativeElementDerivedAugmentationIso A X Y).inv =
       Arrow.mk (T.map (normalizedTensorElementDerivedAugmentationIso A X Y).inv) := by

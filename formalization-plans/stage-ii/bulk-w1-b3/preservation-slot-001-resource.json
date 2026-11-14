@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/tmp/bulk-w1-b3/preserve_slot.py"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+  "rc": 0,
+  "reason": null,
+  "seconds": 1639.7721618767828,
+  "peak_process_tree_rss_bytes": 12818694144,
+  "peak_lean_or_snapshot_jobs": 2,
+  "threads": "4",
+  "started_local": "2026-11-14T02:09:06.192769",
+  "finished_local": "2026-11-14T02:36:25.934106"
+}

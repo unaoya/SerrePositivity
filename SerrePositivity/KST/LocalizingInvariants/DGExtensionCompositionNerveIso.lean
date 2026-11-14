@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionIsoComponent
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：元の graph 延長の合成比較を、実 dg nerve の関手圏での同型へ移す。

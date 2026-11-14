@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.DGAlgebra.Free
 public import SerrePositivity.EInfinity.DGAlgebra.Colimits
 public import Mathlib.CategoryTheory.Monad.Monadicity
@@ -89,3 +91,8 @@ def forgetMonadic : MonadicRightAdjoint (Mon.forget (Complex R)) := by
   exact Monad.monadicOfCreatesGSplitCoequalizers freeForgetAdjunction
 
 end SerrePositivity.EInfinity.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.7.3.11" (partial := special) "仮定：可換環 R 上の通常の複体圏の厳密な結合 dg 代数（Lean が強い：通常の複体圏の厳密な dg 代数の場合）。結論：厳密な dg 代数から複体への忘却がモナド的となる（この仮定での HA の結論の一部に一致）。色を本質的全射に覆う一般の ∞ オペラッドの制限との比較は含まれない。"] _root_.SerrePositivity.EInfinity.DGAlgebra.forgetMonadic

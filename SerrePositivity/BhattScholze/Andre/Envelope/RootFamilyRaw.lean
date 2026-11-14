@@ -19,10 +19,10 @@ public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 BS 著者版 Corollary 2.39 と Remark 7.15 の包を根の族に沿って扱うため、raw 包の正則性と剰余を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/RootFamilySource`、`Envelope/RootResidueKoszul`、`Variants/RootedExtension`。
@@ -30,7 +30,7 @@ BS 著者版 Corollary 2.39 と Remark 7.15 の包を根の族に沿って扱う
 
 universe u v w
 
-/-! ## 独立根関係の任意有限族のraw p除算包のp正則性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFiniteRawRegular.lean） -/
+/-! ## 独立根関係の任意有限族のraw p除算包のp正則性 -/
 
 @[expose] public noncomputable section DeltaRootFiniteRawRegular
 
@@ -137,7 +137,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteRawRegular
 
-/-! ## 任意根関係族のraw p除算包のp正則性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFamilyRawRegular.lean） -/
+/-! ## 任意根関係族のraw p除算包のp正則性 -/
 
 @[expose] public noncomputable section DeltaRootFamilyRawRegular
 
@@ -182,7 +182,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilyRawRegular
 
-/-! ## Frobenius根関係の係数商のp²乗根表示と忠実平坦性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFrobeniusCoefficient.lean） -/
+/-! ## Frobenius根関係の係数商のp²乗根表示と忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaRootFrobeniusCoefficient
 
@@ -328,7 +328,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFrobeniusCoefficient
 
-/-! ## 根関係のraw p除算包の実mod p商の標準係数射と忠実平坦性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootRawModPFlat.lean） -/
+/-! ## 根関係のraw p除算包の実mod p商の標準係数射と忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaRootRawModPFlat
 
@@ -454,7 +454,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawModPFlat
 
-/-! ## 元の係数射に沿う根関係raw包の実mod p基底変更（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootRawCoefficientBaseChange.lean） -/
+/-! ## 元の係数射に沿う根関係raw包の実mod p基底変更 -/
 
 @[expose] public noncomputable section DeltaRootRawCoefficientBaseChange
 
@@ -551,7 +551,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawCoefficientBaseChange
 
-/-! ## 元の係数環上での根関係raw包の実p Koszul比較（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootRawRelativeModPKoszul.lean） -/
+/-! ## 元の係数環上での根関係raw包の実p Koszul比較 -/
 
 @[expose] public noncomputable section DeltaRootRawRelativeModPKoszul
 
@@ -661,7 +661,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawRelativeModPKoszul
 
-/-! ## 元のA→A/pに沿う根関係raw包の高次Tor消滅と実導来比較（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootRawRelativeDerivedModP.lean） -/
+/-! ## 元のA→A/pに沿う根関係raw包の高次Tor消滅と実導来比較 -/
 
 @[expose] public noncomputable section DeltaRootRawRelativeDerivedModP
 
@@ -755,7 +755,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawRelativeDerivedModP
 
-/-! ## 元のA上の根関係raw包の実導来完備化とmod p比較（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootRawRelativeCompletionModP.lean） -/
+/-! ## 元のA上の根関係raw包の実導来完備化とmod p比較 -/
 
 @[expose] public noncomputable section DeltaRootRawRelativeCompletionModP
 
@@ -835,7 +835,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRawRelativeCompletionModP
 
-/-! ## 任意根関係全族の実導来還元・完備化比較（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFamilyRelativeModP.lean） -/
+/-! ## 任意根関係全族の実導来還元・完備化比較 -/
 
 @[expose] public noncomputable section DeltaRootFamilyRelativeModP
 
@@ -969,7 +969,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFamilyRelativeModP
 
-/-! ## 任意根関係raw包の実導来完備化のmod pホモロジーと忠実平坦性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFamilyCompletedModPFlat.lean） -/
+/-! ## 任意根関係raw包の実導来完備化のmod pホモロジーと忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaRootFamilyCompletedModPFlat
 

@@ -107,7 +107,7 @@ lemma frameCofiberSpanFamily_zero {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶
           (arNerve n ◁ horn₂₀.ι₀₂) := by rfl
     rw [← Category.assoc, h, Category.assoc, arCofiberSpanMap_right]
   rw [← Category.assoc, he]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((CartesianMonoidalCategory.lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((CartesianMonoidalCategory.lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) ≫
     arCofiberZeroInputMap n) ≫ F).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   exact hF (ComposableArrows.mk₀

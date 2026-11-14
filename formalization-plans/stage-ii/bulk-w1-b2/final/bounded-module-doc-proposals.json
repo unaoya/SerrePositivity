@@ -1,0 +1,147 @@
+{
+  "scope": "14 BS files singled out by BR25; eight already have all four fields inline, six have concrete prose proposals. This is separate from the broad legacy R21 prose backlog.",
+  "count": 14,
+  "applied": false,
+  "rows": [
+    {
+      "before_module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Audit.InitialCoefficient",
+      "preview_module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+      "path": "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+      "file_sha256": "2b190f572e1e2fc48b31d557f65a23b1d34fbdd3b22d04c9ffea75984f3088b3",
+      "current_doc": " BS 著者版 Remark 7.15（著者版 p.62）：A1-d の公開宣言・正確な受渡し型・標準三公理の専用監査。 ",
+      "proposed_doc": "\n## 概要\n根の包絡の初期係数に関する公開宣言と、忠実平坦性の受け渡し型・公理依存を検査する。\n\n## 方針\n係数制限と導来還元H⁰の結論型を明示して既存の定理を適用し、生成宣言を含む依存を列挙する。\n\n## 規約\nBS著者版Remark 7.15。許す公理はpropext・Classical.choice・Quot.soundの三つとし、監査用定義は非公開に保つ。\n\n## 使われ方\nライブラリへimportせず、根の包絡の独立した監査として実行する。\n",
+      "decision": "Concrete module prose, based on existing docstring, variable block and audit checks",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Audit.VarpiComparison",
+      "preview_module": "scripts.audit.bs_power_root_envelope.VarpiComparison",
+      "path": "scripts/audit/bs_power_root_envelope/VarpiComparison.lean",
+      "file_sha256": "fa6e2828bd2647f7c337a74f2f630b22f11c3a847fe083bc7d195bb0ac3527f4",
+      "current_doc": " BS 著者版 Remark 7.15（著者版 p.62）：A1-c の全公開宣言と生成宣言の専用監査。 ",
+      "proposed_doc": "\n## 概要\n根の包絡における係数と生成元の変更、平坦性の比較に関する宣言を監査する。\n\n## 方針\n公開定理のsorry不在を検査し、対象モジュールの生成宣言まで公理依存を照会する。\n\n## 規約\nBS著者版Remark 7.15。許す公理はpropext・Classical.choice・Quot.soundの三つとする。\n\n## 使われ方\nライブラリへimportせず、生成元の比較の独立した監査として実行する。\n",
+      "decision": "Concrete module prose, based on existing docstring, variable block and audit checks",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechMilnor",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcCechMilnor.lean",
+      "file_sha256": "832844ea54d7ec9b089474b3e2233cc562f648872f4a877c9cb8039339685265",
+      "current_doc": "\n概要：Milnor 四角形での Čech 完全性の検出。\n方針：底変換後の増大複体とテンソル後の複体を比較し、次数ごとに Tor 消滅を使う。\n規約：三つの角は局所化、商、剰余体。平坦性は仮定しない。\n使われ方：BM18 Proposition 4.8 の証明 (5) の一点で交わる区間。\n",
+      "proposed_doc": "\n## 概要\nMilnor 四角形での Čech 完全性の検出。\n## 方針\n底変換後の増大複体とテンソル後の複体を比較し、次数ごとに Tor 消滅を使う。\n## 規約\n三つの角は局所化、商、剰余体。平坦性は仮定しない。\n## 使われ方\nBM18 Proposition 4.8 の証明 (5) の一点で交わる区間。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechOverlap.lean",
+      "file_sha256": "7fb19ae310e5353968a5302019ba95802cefc644f6b554eda241798764170cf5",
+      "current_doc": "\n概要：重なる二つの区間と交わりによる Čech 完全性の検出。\n方針：係数の短完全列を、Tor 消滅を使って増大 Čech 複体の各項でテンソルする。\n規約：区間の和を全スペクトルに正規化して述べる。\n使われ方：BM18 Proposition 4.8 の証明 (5) の図式 (6) を構造層に適用する。\n",
+      "proposed_doc": "\n## 概要\n重なる二つの区間と交わりによる Čech 完全性の検出。\n## 方針\n係数の短完全列を、Tor 消滅を使って増大 Čech 複体の各項でテンソルする。\n## 規約\n区間の和を全スペクトルに正規化して述べる。\n## 使われ方\nBM18 Proposition 4.8 の証明 (5) の図式 (6) を構造層に適用する。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechUltraproduct.lean",
+      "file_sha256": "c0af4f7191c033fd413126fae516723d313e9a2dd87a0be5b41ec42d66387950",
+      "current_doc": "\n概要：超積の族による増大 Čech 完全性の検出（BM18 Lemma 3.25）。\n方針：平坦局所化とホモロジーを交換し、元の零化イデアルを含む素点で検出する。\n規約：可換環の任意の積を基底とする。\n使われ方：絶対整閉付値環の積の上で構造層の Čech 完全性を検査する。\n",
+      "proposed_doc": "\n## 概要\n超積の族による増大 Čech 完全性の検出（BM18 Lemma 3.25）。\n## 方針\n平坦局所化とホモロジーを交換し、元の零化イデアルを含む素点で検出する。\n## 規約\n可換環の任意の積を基底とする。\n## 使われ方\n絶対整閉付値環の積の上で構造層の Čech 完全性を検査する。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcIntervalOverlap",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcIntervalOverlap.lean",
+      "file_sha256": "92435c13ca0935792ef2408fe63d67198826b6ce96e52d71a97f61b976284165",
+      "current_doc": "\n概要：重なる区間での係数の短完全列（BM18 Proposition 4.8 の証明の図式 (6)）。\n方針：上端での局所化と下端での商を、交わりの区間環で比較する。\n規約：局所化から区間環への制限は全射。差は加群の線形写像とする。\n使われ方：完全代数をテンソルし、重なりを持つ区間への制限で Čech 完全性を検出する。\n",
+      "proposed_doc": "\n## 概要\n重なる区間での係数の短完全列（BM18 Proposition 4.8 の証明の図式 (6)）。\n## 方針\n上端での局所化と下端での商を、交わりの区間環で比較する。\n## 規約\n局所化から区間環への制限は全射。差は加群の線形写像とする。\n## 使われ方\n完全代数をテンソルし、重なりを持つ区間への制限で Čech 完全性を検出する。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorDetection",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorDetection.lean",
+      "file_sha256": "7ac30d74fb84b048477765d3995d4f54f71c0fa70284e00f786073c1bb5f571f",
+      "current_doc": "\n概要：Milnor 四角形での余鎖複体の完全性の検出。\n方針：次数ごとの短完全列を複体の短完全列にしてホモロジー長完全列を使う。\n規約：係数加群を左からテンソルする。二つの中間係数は加群の直積を取る。\n使われ方：BM18 Proposition 4.8 の証明 (5) の構造層での完全性。\n",
+      "proposed_doc": "\n## 概要\nMilnor 四角形での余鎖複体の完全性の検出。\n## 方針\n次数ごとの短完全列を複体の短完全列にしてホモロジー長完全列を使う。\n## 規約\n係数加群を左からテンソルする。二つの中間係数は加群の直積を取る。\n## 使われ方\nBM18 Proposition 4.8 の証明 (5) の構造層での完全性。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorTensor",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean",
+      "file_sha256": "6a57abb18ffce1c9e4dca71a9db145eedf156010f87cfb62d9e5010c7e7a7588",
+      "current_doc": "\n概要：完全代数を係数とした付値環の Milnor 短完全列（BS17 Lemma 6.3）。\n方針：既存の Milnor 列を加群の列にし、Tor₁ の消滅とテンソルの右完全性を使う。\n規約：係数側は p が零の完全代数とし、零環も許す。\n使われ方：BM18 Lemma 4.4 の、完全環上の構造層での適用。\n",
+      "proposed_doc": "\n## 概要\n完全代数を係数とした付値環の Milnor 短完全列（BS17 Lemma 6.3）。\n## 方針\n既存の Milnor 列を加群の列にし、Tor₁ の消滅とテンソルの右完全性を使う。\n## 規約\n係数側は p が零の完全代数とし、零環も許す。\n## 使われ方\nBM18 Lemma 4.4 の、完全環上の構造層での適用。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectCech",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectCech",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectCech.lean",
+      "file_sha256": "c8a3b319c69e15ad33aa13126d0565a165d074c9a5316cfff37754d24c4a57e1",
+      "current_doc": "\n概要：完全標数 p 環の増大 Čech 余脈体の各項の完全性。\n方針：逆 Frobenius を広い押し出しの普遍性から作る。\n規約：通常の余脈体を使い、その項が零環になる場合も含める。\n使われ方：BM18 Proposition 4.8 の構造層の適用で各項に Tor 消滅を使う。\n",
+      "proposed_doc": "\n## 概要\n完全標数 p 環の増大 Čech 余脈体の各項の完全性。\n## 方針\n逆 Frobenius を広い押し出しの普遍性から作る。\n## 規約\n通常の余脈体を使い、その項が零環になる場合も含める。\n## 使われ方\nBM18 Proposition 4.8 の構造層の適用で各項に Tor 消滅を使う。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct",
+      "preview_module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationProduct.lean",
+      "file_sha256": "0d992b21adb7c900cbfc54071c4e284272aeb3e962aa59a0fbc9e7bf1496ffd5",
+      "current_doc": "\n概要：絶対整閉付値環の積による affine v 被覆（BM18 Proposition 3.30）。\n方針：素点ごとの固定した代数閉分数体へ付値を引き戻し、代表の積から持ち上げる。\n規約：添字・環は同じ宇宙。各代表の濃度は基底環の濃度と可算濃度の最大以下。\n使われ方：完全環上の arc 被覆の Čech 完全性を絶対整閉付値環へ帰着する。\n",
+      "proposed_doc": "\n## 概要\n絶対整閉付値環の積による affine v 被覆（BM18 Proposition 3.30）。\n## 方針\n素点ごとの固定した代数閉分数体へ付値を引き戻し、代表の積から持ち上げる。\n## 規約\n添字・環は同じ宇宙。各代表の濃度は基底環の濃度と可算濃度の最大以下。\n## 使われ方\n完全環上の arc 被覆の Čech 完全性を絶対整閉付値環へ帰着する。\n",
+      "decision": "Existing four fields: heading/newline formatting only",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Prismatic.BigCechAffineFrameQuasiIso",
+      "preview_module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+      "path": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Frames/BigCechAffineFrameQuasiIso.lean",
+      "file_sha256": "dc984e8f1aedcaa0a61c0af0d97eed433b1b3bcdc61f984517c33f1fe1258b07",
+      "current_doc": " # 有限 affine 枠と標準の大きい枠の擬同型\n\n両方の枠を同じ濃度上限に置き、混合頂点の余鎖ホモトピーを\n既存の Čech–Alexander の比較射に移す。\n",
+      "proposed_doc": "\n## 概要\n有限affine枠と標準の大きい枠とのČech–Alexander比較射の擬同型性を示す。\n\n## 方針\n両方の枠を同じ濃度上限に置き、混合頂点の余鎖ホモトピーを既存の比較射へ移す。\n\n## 規約\n有界な向き付きプリズムPと有限多項式枠Qを固定し、polyCutoffによる濃度上限を使う。\n\n## 使われ方\nČech–Alexander比較において有限affine枠と標準の大きい枠を比較する。\n",
+      "decision": "Concrete module prose, based on existing docstring, variable block and audit checks",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedSubstitution",
+      "preview_module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+      "path": "SerrePositivity/BhattScholze/Prismatic/Crystalline/PDDeRham/PDDeRhamCompletedSubstitution.lean",
+      "file_sha256": "16b907516b2f62a8209379f4f999c5be5056d45d265989cafff47fa877a3b23b",
+      "current_doc": " # 完備分冪係数の多項式代入\n\n未完備の代入を完備化し、単位の像で偏微分の連鎖律を照合する。\n",
+      "proposed_doc": "\n## 概要\n完備分冪係数に対する多項式代入と、偏微分の連鎖律を整える。\n\n## 方針\n未完備の代入を完備化し、完備化の単位の像で偏微分の等式を照合する。\n\n## 規約\n素数p、可換環kの分冪構造、p進完備性とp乗法の単射性を固定する。\n\n## 使われ方\n完備分冪係数の代入とde Rham微分の両立のために用いる。\n",
+      "decision": "Concrete module prose, based on existing docstring, variable block and audit checks",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionChainRule",
+      "preview_module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "path": "SerrePositivity/BhattScholze/Prismatic/Crystalline/PDDeRham/PDDeRhamSubstitutionChainRule.lean",
+      "file_sha256": "9bdf14303e33c87cde26fa305427b10063de25d2be627b402017f9434439a0c3",
+      "current_doc": " # 多項式代入に対する未完備の分冪偏微分の連鎖律\n\n二つの導分を平方零拡大への射として比較する。自由分冪の生成元では\n階乗を掛けると通常の冪になり、標的で階乗を消去できる。\n",
+      "proposed_doc": "\n## 概要\n多項式代入に対する未完備の分冪偏微分の連鎖律を示す。\n\n## 方針\n二つの導分を平方零拡大への射として比較し、自由分冪の生成元で階乗を掛け、標的で消去する。\n\n## 規約\n素数p、分冪構造、p進完備性とp乗法の単射性の仮定を明示し、未完備係数環で証明する。\n\n## 使われ方\n分冪de Rham複体で、多項式代入と微分の両立を検査する。\n",
+      "decision": "Concrete module prose, based on existing docstring, variable block and audit checks",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    },
+    {
+      "before_module": "SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeQuotient",
+      "preview_module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "path": "SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/PDRawBaseChangeQuotient.lean",
+      "file_sha256": "2954b161d0e9090a05ac86940b72e4821b2f2222f441a8f728d4591df0451e5e",
+      "current_doc": " # 有限冪商での分冪係数の底変換\n\n未完備模型の底変換同型を代数同型として読み、係数のイデアルの商へ移す。\n",
+      "proposed_doc": "\n## 概要\n有限段の分冪係数の底変換を、係数イデアルによる商へ移す。\n\n## 方針\n未完備模型の底変換同型を代数同型として読み、テンソル積と商の比較を使う。\n\n## 規約\n可換環のk代数lと有限段数r,nを固定し、テンソル積をl ⊗[k] RawKの順序で書く。\n\n## 使われ方\n有限段の分冪係数の模型を、係数環の商へ底変換する構成に用いる。\n",
+      "decision": "Concrete module prose, based on existing docstring, variable block and audit checks",
+      "status": "comment-only proposal; not applied to the mathematical preview or production; scope reviewed at the B2 stop-point"
+    }
+  ]
+}

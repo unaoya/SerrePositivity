@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.UnitCommaArrowNaturality
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.HomotopyVertexArrow
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyInvertibility
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaUnitComponent
 
 /-!

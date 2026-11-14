@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionReverse
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanPointHomActionIso
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeInternalHomEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseInternalHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniverseInternalHom
 
 /-!
 概要：反対の Kan 圏における一点 Hom の反転合成作用を内部 Hom の同型として表示する。

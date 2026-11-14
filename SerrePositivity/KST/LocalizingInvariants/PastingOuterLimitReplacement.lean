@@ -62,8 +62,8 @@ lemma exists_pasting_outer_limit_replacement {X : SSet.{u}} [Quasicategory X]
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_double]
   · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) 2 ≫ q)
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
-    exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_postcomp_isIso _ q).1
-      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_reverseGrid _).1 hg)
+    exact (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_postcomp_isIso _ q).1
+      ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_reverseGrid _).1 hg)
   · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) 1 ≫ q = _
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
     change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 1) ≫ q = _

@@ -1,0 +1,18 @@
+{
+  "source_rows": 9048,
+  "declaration_references": 2436,
+  "actions": {
+    "do-not-attach": 538,
+    "attach": 1884,
+    "hold": 14
+  },
+  "lean_checks": 2035,
+  "lookup_failures": 0,
+  "pending_queries": 0,
+  "ledger_actions": {
+    "record-only": 76,
+    "resolved-location": 29,
+    "hold-kerodon-review": 82
+  },
+  "unique_attributes": 1883
+}

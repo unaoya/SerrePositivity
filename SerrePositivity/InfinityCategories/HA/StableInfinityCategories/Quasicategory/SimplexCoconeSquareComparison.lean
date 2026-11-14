@@ -22,8 +22,8 @@ public import Mathlib.CategoryTheory.Opposites
 public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Combinatorics.Quiver.ReflQuiver
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-!
 分割で生成：docstring を書き直すこと
@@ -65,19 +65,19 @@ lemma spanSquare_homMk_comm_of_arrowMks {X : SSet.{u}}
     (g : Truncated.Edge (X := (truncation 2).obj X) x' y')
     (a : Truncated.Edge (X := (truncation 2).obj X) x x')
     (b : Truncated.Edge (X := (truncation 2).obj X) y y')
-    (hf : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow S)) =
+    (hf : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk f))
-    (hg : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow S)) =
+    (hg : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk g))
-    (ha : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow S)) =
+    (ha : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk a))
-    (hb : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow S)) =
+    (hb : Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk b)) :
     Truncated.HomotopyCategory.homMk f ≫ Truncated.HomotopyCategory.homMk b =
       Truncated.HomotopyCategory.homMk a ≫ Truncated.HomotopyCategory.homMk g := by
   apply (Arrow.mk_inj _ _).mp
   exact (spanCompArrowCongr hf hb).symm.trans
-    ((congrArg Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.square_homMk_comm S)).trans (spanCompArrowCongr ha hg))
+    ((congrArg Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.square_homMk_comm S)).trans (spanCompArrowCongr ha hg))
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 

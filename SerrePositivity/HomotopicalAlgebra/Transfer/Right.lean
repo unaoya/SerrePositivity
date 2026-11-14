@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Recognition
@@ -124,3 +126,14 @@ lemma rightTransfer_isLeftQuillen :
 end Consequences
 
 end SerrePositivity.ModelGeneration
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.3.3.15" (partial := stronger-hyp) "仮定：生成されたモデル圏、対象圏への随伴、有限極限・余極限、移送後の small-object 条件と acyclicity（Lean は両側加群の忘却にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与え、忘却を右 Quillen にする（この成分に一致）。両側加群の具体的 instance、左 Quillen 性と単体両立性は型に含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer
+attribute [cite HA "4.3.3.15" (partial := stronger-hyp) "仮定：生成されたモデル圏、対象圏への随伴、有限極限・余極限、移送後の small-object 条件と acyclicity（Lean は両側加群の忘却にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与え、忘却を右 Quillen にする（この成分に一致）。両側加群の具体的 instance、左 Quillen 性と単体両立性は型に含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer_fibrations
+attribute [cite HA "4.3.3.15" (partial := stronger-hyp) "仮定：生成されたモデル圏、対象圏への随伴、有限極限・余極限、移送後の small-object 条件と acyclicity（Lean は両側加群の忘却にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与え、忘却を右 Quillen にする（この成分に一致）。両側加群の具体的 instance、左 Quillen 性と単体両立性は型に含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer_isRightQuillen
+attribute [cite HA "4.3.3.15" (partial := stronger-hyp) "仮定：生成されたモデル圏、対象圏への随伴、有限極限・余極限、移送後の small-object 条件と acyclicity（Lean は両側加群の忘却にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与え、忘却を右 Quillen にする（この成分に一致）。両側加群の具体的 instance、左 Quillen 性と単体両立性は型に含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences
+attribute [cite HA "4.3.3.16" (partial := stronger-hyp) "仮定：生成されたモデル圏、随伴、対象圏の有限極限・余極限、移送後の small-object 条件と acyclicity（Lean はモナドの自由忘却随伴にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与える（条件付きで一致）。左 Quillen モナドから移送条件を満たす宣言は含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer
+attribute [cite HA "4.3.3.16" (partial := stronger-hyp) "仮定：生成されたモデル圏、随伴、対象圏の有限極限・余極限、移送後の small-object 条件と acyclicity（Lean はモナドの自由忘却随伴にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与える（条件付きで一致）。左 Quillen モナドから移送条件を満たす宣言は含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer_fibrations
+attribute [cite HA "4.3.3.16" (partial := stronger-hyp) "仮定：生成されたモデル圏、随伴、対象圏の有限極限・余極限、移送後の small-object 条件と acyclicity（Lean はモナドの自由忘却随伴にこれらの入力を要求する）。結論：右随伴で弱同値とファイブレーションを検出するモデル構造を与える（条件付きで一致）。左 Quillen モナドから移送条件を満たす宣言は含まれない。"] _root_.SerrePositivity.ModelGeneration.rightTransfer_weakEquivalences

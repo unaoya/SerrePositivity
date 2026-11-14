@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 規約：対角の始域を選び直さない。使われ方：具体的 Verdier 列の左端。 -/
 def dgOdotDiagonalSourceInput : PerfDGInput.{u, u + 1} R :=
   dgKUniverseInput.{u, u + 1, u + 1} R
-    (DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.source))
+    (DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.source))
 
 /-- 概要：元の実 gluing を S に置く。方針：同じ全 Hom を保持する。
 規約：lax pullback 同定は未供給。使われ方：具体的 Verdier 列の中央。 -/
@@ -60,7 +60,7 @@ abbrev dgOdotProjectionExactMap : _root_.SerrePositivity.InfinityCategories.HA.S
 structure DGOdotVerdierInput : Prop where
   fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (dgOdotDiagonalExactMap R d).hom
   kernel (b : (dgKInputStableValue R (dgOdotGluingInput R d)).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgOdotProjectionExactMap R d).hom.app (Opposite.op ⦋0⦌) b) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgOdotProjectionExactMap R d).hom.app (Opposite.op ⦋0⦌) b) ↔
       b ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (dgOdotDiagonalExactMap R d)
   localization : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (dgOdotProjectionExactMap R d).hom
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (dgOdotDiagonalExactMap R d)))

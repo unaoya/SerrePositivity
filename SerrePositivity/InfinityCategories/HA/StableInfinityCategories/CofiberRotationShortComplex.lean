@@ -37,14 +37,14 @@ lemma shortComplex_eq_of_arrow_eq {C : Type u} [Category.{v} C] [HasZeroMorphism
 方針：接続射との零合成を使う。
 規約：三対象は厳密に B・C・ΣA。使われ方：回転後の二射列の標準表示。 -/
 def cofiberTailShortComplex {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) : ShortComplex (hoFunctor.obj X) :=
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) : ShortComplex (hoFunctor.obj X) :=
   ShortComplex.mk t.hoShortComplex.g (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting t ht) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting_comp_eq_zero t ht)
 
 /-- 概要：元の第二射と指定 suspension への接続射の短複体は、回転後の列の像と等しい。
 方針：回転後の二射と接続射の Arrow の等号を短複体の等号にまとめる。
 規約：安定性は不要、入力に回転長方形を持つ。使われ方：標準 Σ への値域の輸送。 -/
 lemma CofiberRotationRectangle.hoShortComplex_eq_tail {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X} (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t)
+    [HasZeroMorphisms (hoFunctor.obj X)] {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X} (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t)
     (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
     r.rotatedZeroTriangle.hoShortComplex = ShortComplex.mk t.hoShortComplex.g
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnectingToSuspension t ht r.suspensionSquare)
@@ -55,7 +55,7 @@ lemma CofiberRotationRectangle.hoShortComplex_eq_tail {X : SSet.{u}} [Quasicateg
 方針：二射の等号で始点・中間対象を固定し、suspension 頂点の比較同型で最後を ΣA に移す。
 規約：三角形の第三射の符号はこの同型に含まれない。使われ方：回転後の二射列の cofiber 表示。 -/
 def CofiberRotationRectangle.tailShortComplexIso {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X} (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
+    {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X} (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
     r.rotatedZeroTriangle.hoShortComplex ≅ cofiberTailShortComplex t ht := by
   let S := ShortComplex.mk t.hoShortComplex.g
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnectingToSuspension t ht r.suspensionSquare)
@@ -72,8 +72,8 @@ def CofiberRotationRectangle.tailShortComplexIso {X : SSet.{u}} [Quasicategory X
 方針：回転長方形を選び、右側の列と標準 Σ への比較同型を取る。
 規約：完全な三角形の回転の負号は別途証明する。使われ方：TR2 の二射列の存在部分。 -/
 lemma exists_cofiberTailShortComplex {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
-    ∃ d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence d ∧
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
+    ∃ d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence d ∧
       Nonempty (d.hoShortComplex ≅ cofiberTailShortComplex t ht) := by
   let r := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberRotationRectangle t ht
   exact ⟨r.rotatedZeroTriangle, r.rotated_isCofiber, ⟨r.tailShortComplexIso ht⟩⟩

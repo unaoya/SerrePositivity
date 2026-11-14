@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalSectionHomotopy
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.ContractibleHomotopyRetract
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.WeakContractibility
+public import SerrePositivity.InfinityCategories.HTT.Section2_1_3.WeakContractibility
 
 /-!
 概要：底上の収縮を各頂点 fiber に制限する。
@@ -76,6 +76,6 @@ lemma CofinalSectionHomotopy.fiber_isContractibleKan {E B : SSet.{u}} {p : E ⟶
       (terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p b) ≫ SSet.const (d.fiberPoint b))
     rw [SSet.comp_const]
     exact d.fiberContraction b
-  · exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isContractibleKan_terminal
+  · exact _root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.isContractibleKan_terminal
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality

@@ -20,7 +20,7 @@ open scoped Simplicial
 /-- 概要：固定始点の入力矢印の θ は各頂点で可逆。
 方針：終点射影で元の右辺に写ることと充満忠実性による反映。
 規約：指定した持ち上げの辺そのものに対する判定。使われ方：cofiber 図式への反映。 -/
-lemma zeroSourceThetaInput_isInvertible {C : SSet.{u}} [Quasicategory C] (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C)
+lemma zeroSourceThetaInput_isInvertible {C : SSet.{u}} [Quasicategory C] (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C)
     (b : (zeroSourceCofibers z) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((zeroSourceThetaInput z).app (Opposite.op ⦋1⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant b 1))) := by
@@ -42,7 +42,7 @@ lemma zeroSourceThetaInput_isInvertible {C : SSet.{u}} [Quasicategory C] (z : _r
 方針：入力矢印での可逆性を cofiber 射影の充満忠実性で反映する。
 規約：比較の選択の可逆性を仮定しない。使われ方：可変時刻での gapped 性。 -/
 lemma zeroSourceTheta_isInvertible {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : (zeroSourceCofibers z) _⦋0⦌) :
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : (zeroSourceCofibers z) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((zeroSourceTheta z).app (Opposite.op ⦋1⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant b 1))) := by
   let s : ((Δ[1] : SSet.{u}) ⊗ zeroSourceCofibers z) _⦋1⦌ :=
@@ -58,7 +58,7 @@ lemma zeroSourceTheta_isInvertible {C : SSet.{u}} [Quasicategory C] [_root_.Serr
 /-- 概要：大域的な θ を第二因子を時刻とする単体ホモトピーにする。
 方針：二因子を交換して証明済みの両端を使う。
 規約：元の θ の全高次単体を保持。使われ方：Ar の可変時刻での評価。 -/
-def zeroSourceThetaHomotopy {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) :
+def zeroSourceThetaHomotopy {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) :
     SSet.Homotopy (zeroSourceCofibersι z) (zeroSourceCofibersCanonical z) where
   h := (β_ (zeroSourceCofibers z) (Δ[1] : SSet.{u})).hom ≫ zeroSourceTheta z
   h₀ := by
@@ -78,7 +78,7 @@ def zeroSourceThetaHomotopy {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositi
 方針：二因子の交換後の辺は元の θ の同じ辺。
 規約：全ての頂点を含む。使われ方：関手同型による gapped 性の輸送。 -/
 lemma zeroSourceThetaHomotopy_isInvertible {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : (zeroSourceCofibers z) _⦋0⦌) :
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : (zeroSourceCofibers z) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (zeroSourceThetaHomotopy z) b).toTruncated := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr ?_).2 (zeroSourceTheta_isInvertible z b)
   change (zeroSourceThetaHomotopy z).h.app (Opposite.op ⦋1⦌)
@@ -91,7 +91,7 @@ lemma zeroSourceThetaHomotopy_isInvertible {C : SSet.{u}} [Quasicategory C] [_ro
 方針：元の cofiber 図式との関手同型に沿って gapped 条件を移す。
 規約：入力空間の安定性は不要。使われ方：第二の θ の object S 値の単体。 -/
 lemma zeroSourceTheta_variableTime_isGapped {n : ℕ} {C : SSet.{u}}
-    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C)
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C)
     (F : arNerve n ⟶ zeroSourceCofibers z) (hF : IsGapped (F ≫ zeroSourceCofibersι z))
     (τ : arNerve n ⟶ (Δ[1] : SSet.{u})) :
     IsGapped (variableTimeImage (zeroSourceThetaHomotopy z) F τ) :=
@@ -102,7 +102,7 @@ lemma zeroSourceTheta_variableTime_isGapped {n : ℕ} {C : SSet.{u}}
 方針：グラフでの前合成と大域的な θ の subobject の固定。
 規約：時刻は Ar の任意の射。使われ方：左 fiber の条件。 -/
 lemma zeroSourceTheta_variableTime_source {A C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (F : A ⟶ zeroSourceCofibers z) (τ : A ⟶ (Δ[1] : SSet.{u})) :
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (F : A ⟶ zeroSourceCofibers z) (τ : A ⟶ (Δ[1] : SSet.{u})) :
     variableTimeImage (zeroSourceThetaHomotopy z) F τ ≫ cofiberProjection C ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const z.vertex := by
   change (lift F τ ≫ (β_ (zeroSourceCofibers z) (Δ[1] : SSet.{u})).hom ≫ zeroSourceTheta z) ≫

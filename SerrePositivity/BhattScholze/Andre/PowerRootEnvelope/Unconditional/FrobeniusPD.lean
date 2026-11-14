@@ -16,10 +16,10 @@ Hodge–Tate 商への導来還元、Frobenius テンソル上の pd 包、追�
 BS 著者版 Remark 7.15 の φ 引き戻しの計算に関わる、Frobenius テンソル上の分冪構造を構成する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/PerfectionFaithful`、`PowerRootEnvelope/VarpiComparison`、`Variants/MonicRootedExtension`。
@@ -27,7 +27,7 @@ BS 著者版 Remark 7.15 の φ 引き戻しの計算に関わる、Frobenius �
 
 universe u w
 
-/-! ## 元の Hodge–Tate 商への実導来還元（旧 Andre/Remark715/Unconditional/PowerRootHodgeTateReduction.lean）
+/-! ## 元の Hodge–Tate 商への実導来還元
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の H/dH と、その自然な係数作用を保つ還元比較。
@@ -330,7 +330,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootHodgeTateReduction
 
-/-! ## André E1・E2：自然な実 Frobenius テンソル上の実 pd 包（旧 Andre/Remark715/Unconditional/FrobeniusTensorPD.lean）
+/-! ## 自然な実 Frobenius テンソル上の実 pd 包
 
 ## 概要
 
@@ -480,7 +480,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end FrobeniusTensorPD
 
-/-! ## André E1・E2：追加正則性なしの実 Frobenius 引戻しの pd 普遍性（旧 Andre/Remark715/Unconditional/FullFrobeniusPD.lean）
+/-! ## 追加正則性なしの実 Frobenius 引戻しの pd 普遍性
 
 ## 概要
 

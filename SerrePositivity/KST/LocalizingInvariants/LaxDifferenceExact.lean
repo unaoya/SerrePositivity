@@ -40,7 +40,7 @@ instance laxDifference_isExact : _root_.SerrePositivity.InfinityCategories.Kerod
 def exactLaxDifference : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) E := ⟨laxDifference p q, inferInstance⟩
 
 lemma exactLaxDifference_kernel (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((exactLaxDifference p q).hom.app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((exactLaxDifference p q).hom.app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q) := laxDifference_kernel p q x
 
 end SerrePositivity.KST.LocalizingInvariants

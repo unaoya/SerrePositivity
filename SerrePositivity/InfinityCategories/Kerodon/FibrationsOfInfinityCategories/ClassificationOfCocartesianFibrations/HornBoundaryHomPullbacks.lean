@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.HornBoundaryOver
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.HornBoundaryOver
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.CellAttachmentPullbacks
 
 /-!

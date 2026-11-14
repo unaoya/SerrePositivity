@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CubeThreeNormalDetection
 public import SerrePositivity.KST.SConstruction.CubeMixedPathNormalization
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordSemanticQuotient
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CubeWordSemanticQuotient
 
 /-! # 全生成語の Serre 評価の意味による表示非依存性
 概要：同じ具体的な頂点関数を表す任意の語は、元の Serre 射でも厳密に一致する。

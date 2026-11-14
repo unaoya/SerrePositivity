@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.NormalizedValueCochains
 
 /-!
 概要：元を値とする正規化微分の係数に関する自然性。

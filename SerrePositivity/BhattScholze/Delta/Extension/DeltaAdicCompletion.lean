@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
 public import Mathlib.RingTheory.Ideal.Operations
@@ -29,7 +31,7 @@ BS 著者版 Corollary 7.3 の構成、完全化の p 進完備化、相対自�
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## δ とイデアル冪の評価（BS 著者版 Lemma 2.17 の連続性）（旧 Delta/Extension/DeltaAdicEstimate.lean）
+/-! ## δ とイデアル冪の評価（BS 著者版 Lemma 2.17 の連続性）
 
 ## 概要
 環射 f を第 0 座標とする W₂ への持ち上げの第 1 座標（相対 δ）の加法・乗法公式とイデアル冪の評価、
@@ -47,7 +49,7 @@ universe u v w
 
 section DeltaAdicEstimate
 
-/-! ## 環射に沿うW₂持上げの相対δ評価（旧 Delta/Free/RelativeDeltaEstimate.lean）
+/-! ## 環射に沿うW₂持上げの相対δ評価
 
 環射fを第0座標とするW₂持上げsの第1座標を、相対δとして扱う。
 通常δ構造や有限段の計算射を再定義せず、イデアル冪評価と通常剰余公式を共有する。
@@ -182,7 +184,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeDeltaEstimate
 
-/-! ## δ写像のイデアル冪に対する評価（旧 Delta/Extension/DeltaAdicEstimate.lean）
+/-! ## δ写像のイデアル冪に対する評価
 
 BS 著者版 Lemma 2.17の連続性に使う代数的評価。
 p∈Iならδ(I^{n+1})⊂I^nを証明する。有限生成性・p正則性・完備性は不要。
@@ -224,7 +226,7 @@ end DeltaAdicEstimate
 
 end DeltaAdicEstimate
 
-/-! ## δの有限I進商への降下（旧 Delta/Extension/DeltaAdicQuotient.lean）
+/-! ## δの有限I進商への降下
 
 p∈IのもとでδはR/I^{n+1}→R/I^nという集合の写像を定める。
 環射や各R/I^nのδ構造ではない。完備化の座標構成に使う。
@@ -261,7 +263,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaAdicQuotient
 
-/-! ## 古典的I進完備化上のδ写像の座標構成（旧 Delta/Extension/DeltaAdicExtension.lean）
+/-! ## 古典的I進完備化上のδ写像の座標構成
 
 MathlibのCauchy列・古典的完備化を使い、一段ずらしたδ列から写像を構成する。
 導来完備化との比較はこのモジュールの対象外。
@@ -329,7 +331,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaAdicExtension
 
-/-! ## 古典的I進完備化のδ構造（旧 Delta/Extension/DeltaAdicCompletion.lean）
+/-! ## 古典的I進完備化のδ構造
 
 BS 著者版 Lemma 2.17の存在部分。Mathlibの古典的完備化上に構成したδ写像が
 δ恒等式を満たすことを有限商の座標で確認する。導来完備化への置換ではない。
@@ -459,7 +461,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaAdicCompletion
 
-/-! ## 古典的完備化からのδ射の延長（旧 Delta/Extension/DeltaAdicLift.lean）
+/-! ## 古典的完備化からのδ射の延長
 
 有限生成I、p∈I、J進分離したδ終域への基底δ射を扱う。
 Mathlibの完備化・環射の持上げと共通評価核APIを再利用する。
@@ -587,3 +589,10 @@ theorem existsUnique_adicCompletion_lift (D : DeltaStructure p R) (E : DeltaStru
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaAdicLift
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 2.17"] _root_.SerrePositivity.BhattScholze.DeltaStructure.adicCompletion
+attribute [cite BS19 "Lemma 2.17"] _root_.SerrePositivity.BhattScholze.DeltaStructure.delta_mem_pow
+attribute [cite BS19 "Lemma 2.17"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_adicCompletion

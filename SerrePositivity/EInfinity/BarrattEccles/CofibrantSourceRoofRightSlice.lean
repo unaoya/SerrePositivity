@@ -65,7 +65,7 @@ lemma cofibrantSourceRoofProductCommaRightSlice :
         (SimplicialLocalization.hammockLocalizationNerveMap
           (cofibrantAlgebraRelativeCategory A)) b =
     nerveMap (cofibrantSourceRoofProductCommaRightOver A X Y b) ≫
-      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso
         (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))
@@ -80,7 +80,7 @@ lemma cofibrantSourceRoofProductCommaRightSlice :
   dsimp only [frameRoofRightSliceMap]
   have h := cofibrantSourceRoofProductCommaRightOver_nerve A X Y b
   simpa only [Category.assoc] using congrArg
-    (fun g => g ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso
+    (fun g => g ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso
       (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))

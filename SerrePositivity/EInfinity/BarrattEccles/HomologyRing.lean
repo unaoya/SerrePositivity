@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyAssociativity
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyUnit
 
@@ -76,3 +78,9 @@ lemma homologyCommRing_one (X : (operad A).Algebra) :
     (1 : X.carrier.homology 0) = homologyOne X := rfl
 
 end SerrePositivity.EInfinity.BarrattEccles
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.1.6" (partial := component) "仮定：可換環 R 上の実 Barratt–Eccles 代数（Lean が強い：この dg 模型の零次の場合）。結論：既存の加法群を台とする H⁰ に可換環構造を構成する（π₀ の可換性の部分に一致）。全次数の符号付き可換積と一般の Eₖ 環スペクトルの π との比較は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.homologyCommRing
+attribute [cite HA "7.5.1.2" (partial := component) "仮定：通常可換環 R 上の実 BE dg 代数（Lean が強い：この E∞ の模型の次数 0 の場合）。結論：H₀ の積が可換となる（原典の π₀ の元の左右作用の一致のうち次数 0 の結論に一致）。全 πₙ の左右作用および全 k≥2 の模型比較は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.homologyCommRing

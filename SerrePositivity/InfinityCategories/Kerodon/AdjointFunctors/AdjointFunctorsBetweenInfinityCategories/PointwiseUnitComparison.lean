@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantUnitFormula
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PinchedObjectNaturality
@@ -164,3 +166,10 @@ lemma QCatAdjunction.unitMappingSpaceCondition {X Y : SSet.{u}}
     (a.unitPinchedMapIso x y).symm).isSimplicialHomotopyEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.2.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitMappingSpaceCondition
+attribute [cite HTT "5.2.2.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitMappingSpaceCondition_iff_interval
+attribute [cite HTT "5.2.7.6" (partial := special) "仮定：反射 r と対象 x、局所化射には同じ反射の単位成分を取る（Lean が強い：任意の指定射ではなく反射単位の場合）。結論：全 y∈P について MapC(rx,y)→MapC(x,y) の同値であり、この単位が P に関する局所化射（この場合に定義の条件と一致）。随伴の標準単位比較との同型もあり、無関係な写像空間の同値を選んだものではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.unitPinchedMapIso

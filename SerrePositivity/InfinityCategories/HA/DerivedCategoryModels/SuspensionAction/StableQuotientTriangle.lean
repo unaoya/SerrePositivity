@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionProjectionNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientVerdierSequence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.ResolvedDGQuotientVerdierSequence
 
 /-!
 概要：固定 strict data の商射を、元の cone 射の ∞ 側の降下として同定する。
@@ -75,7 +75,7 @@ theorem dgSuspensionQuotientDescent_exists :
   apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGVerdierExactFunctor_extension_exists R (DGKappaCone R A IA)
     (dgKappaConePerfectObjects R A IA) F
   intro b
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionProjection R B IB).app _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((dgKappaSuspensionProjection R B IB).app _
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map d.cone).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex b.val)))
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex]
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFunctor_kills R (DGKappaCone R B IB)

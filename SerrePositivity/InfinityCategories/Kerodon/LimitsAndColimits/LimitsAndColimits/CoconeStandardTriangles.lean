@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeStandardUnitSquare
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalVertexHomotopy
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.IntervalVertexHomotopy
 
 /-!
 概要：標準余錐の単位正方形を、元の合成三角形の長辺の区間同型へ移す。

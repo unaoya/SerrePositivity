@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.NormalizedTargetHom
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarColumnAction
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Columns.DGCoherentBarColumnAction
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：正規化実 bar を頂点とする native 余錐の全単体成分を構成する。

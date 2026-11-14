@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceMapping
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveMappingAdjunction
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.AdjointVerdier
@@ -71,3 +73,14 @@ lemma laxDifference_quotient_universal (T : SSet.{u}) [Quasicategory T] :
   (laxDifference_isVerdier p q v a hv).universal T
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Lemma 1.12" (partial := component) "仮定：一方の脚に充満忠実な右随伴を持つ安定 lax の提示（Lean が強い）。結論：差関手の右随伴による局所化。Ind 上で p を一般に Bousfield 局所化とし cofib(is→id) を同定する主張は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifference_isLocalization
+attribute [cite Tamme "Cor 12" (partial := component) "仮定：安定圏の完全な二脚と右脚の充満忠実な右随伴（Lean は表示可能性を仮定しない）。結論：通常の引き戻しから lax 引き戻しを経て余ファイバー先に至る実 Verdier 列（原典の同じ四頂点での核と商。Pr^L の列としての記述は含まない）。"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier
+attribute [cite Tamme "Eq (11)" (partial := stronger-hyp) "仮定：小安定圏上ですでに引き戻しで右脚に充満忠実な右随伴がある（Lean が強い：右随伴を Ind 上から小圏へ制限できる場合）。結論：指定の通常の引き戻しから lax 引き戻しを経る完全列（原典と同じ核と商）。"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier
+attribute [cite Tamme "Eq (11)" (partial := stronger-hyp) "仮定：小安定圏上ですでに引き戻しで右脚に充満忠実な右随伴がある（Lean が強い：右随伴を Ind 上から小圏へ制限できる場合）。結論：指定の通常の引き戻しから lax 引き戻しを経る完全列（原典と同じ核と商）。"] _root_.SerrePositivity.KST.LocalizingInvariants.tammeVerdierSequence
+attribute [cite Tamme "Prop 11"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction
+attribute [cite Tamme "Thm 15" (partial := stronger-hyp) "仮定：小安定圏上ですでに引き戻しで右脚に充満忠実な右随伴がある（Lean が強い：右随伴を Ind 上から小圏へ制限できる場合）。結論：指定の通常の引き戻しから lax 引き戻しを経る完全列（原典と同じ核と商）。"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier
+attribute [cite Tamme "Thm 15" (partial := stronger-hyp) "仮定：小安定圏上ですでに引き戻しで右脚に充満忠実な右随伴がある（Lean が強い：右随伴を Ind 上から小圏へ制限できる場合）。結論：指定の通常の引き戻しから lax 引き戻しを経る完全列（原典と同じ核と商）。"] _root_.SerrePositivity.KST.LocalizingInvariants.tammeVerdierSequence

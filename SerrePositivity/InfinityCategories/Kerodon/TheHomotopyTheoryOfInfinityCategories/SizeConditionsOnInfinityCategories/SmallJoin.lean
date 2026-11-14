@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallJoinCover
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SmallJoinCover
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallSimplicialShapes
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallSubcomplexCovers
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SmallSubcomplexCovers
 
 /-!
 概要：正則 κ に対して κ-small な単体集合どうしの join は κ-small。

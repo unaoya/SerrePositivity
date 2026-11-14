@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.NumberTheory.Basic
 public import Mathlib.Logic.Function.Iterate
@@ -12,7 +14,7 @@ public import Mathlib.RingTheory.WittVector.Frobenius
 
 ## 概要
 ghost 座標が Frobenius 持ち上げの反復 φⁿ(a) になる Witt 係数の列を構成し、ghost 写像が単射のとき
-環準同型 A → W(A) を与える。低次の係数、自然性、Witt の Frobenius との両立。勉強ノート第 2 章の定義 2.1.13。
+環準同型 A → W(A) を与える。低次の係数、自然性、Witt の Frobenius との両立。BS 著者版 Remark 2.13。
 
 ## 方針
 可除性 p^{n+1} ∣ φ^{n+1}(a) − (…) から係数を一段ずつ選ぶ。係数列の存在は p ねじれがあっても成り立つ。
@@ -27,7 +29,7 @@ ghost 座標が Frobenius 持ち上げの反復 φⁿ(a) になる Witt 係数�
 @[expose] public noncomputable section
 universe u v
 
-/-! ## δFrobeniusのghost係数を一段延長する可除性（旧 Delta/Basic/DeltaWittGhostStep.lean）
+/-! ## δFrobeniusのghost係数を一段延長する可除性
 
 既存のp乗合同の可除性から、次のWitt ghost係数の存在を示す。
 -/
@@ -77,7 +79,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaWittGhostStep
 
-/-! ## δFrobeniusをghost座標に持つ全Witt係数の構成（旧 Delta/Basic/DeltaWittGhostCoefficients.lean）
+/-! ## δFrobeniusをghost座標に持つ全Witt係数の構成
 
 有限prefixの延長で既定係数を保存し、整合した対角列を作る。
 -/
@@ -179,7 +181,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaWittGhostCoefficients
 
-/-! ## 構成したWitt元と既存W₂断面の比較（旧 Delta/Basic/DeltaWittGhostLowCoefficients.lean）
+/-! ## 構成したWitt元と既存W₂断面の比較
 
 第1ghost公式とp乗算単射だけを用い、全ghost射の単射性は要求しない。
 -/
@@ -217,7 +219,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaWittGhostLowCoefficients
 
-/-! ## 第2Witt係数とδ二乗の三角形比較（旧 Delta/Basic/DeltaWittGhostCoefficientTwo.lean）
+/-! ## 第2Witt係数とδ二乗の三角形比較
 
 p乗算単射を使い、下位座標から決まる補正を分離する。
 -/
@@ -273,7 +275,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaWittGhostCoefficientTwo
 
-/-! ## ghost射単射下でのδからWittへの環射（旧 Delta/Basic/DeltaWittGhostRingHom.lean）
+/-! ## ghost射単射下でのδからWittへの環射
 
 全係数構成の環射性をghost射の単射性へ明示的に相対化する。
 -/
@@ -351,7 +353,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaWittGhostRingHom
 
-/-! ## δ射に関する構成済みWitt liftの自然性（旧 Delta/Basic/DeltaWittGhostNaturality.lean）
+/-! ## δ射に関する構成済みWitt liftの自然性
 
 終域のghost射の単射性だけで点ごとの比較を行う。
 -/
@@ -405,7 +407,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaWittGhostNaturality
 
-/-! ## 構成したWitt写像のFrobenius図式とδ方程式（旧 Delta/Basic/DeltaWittGhostFrobenius.lean）
+/-! ## 構成したWitt写像のFrobenius図式とδ方程式
 
 ghost成分の一段シフトを使い、δ構造を要求しない終域への係数射も扱う。
 -/
@@ -461,3 +463,11 @@ theorem deltaWittGhostVector_frobenius_formula_map {B : Type v} [CommRing B]
 end SerrePositivity.BhattScholze
 
 end DeltaWittGhostFrobenius
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.13"] _root_.SerrePositivity.BhattScholze.deltaWittGhostRingHom
+attribute [cite BS19 "Rem 2.13"] _root_.SerrePositivity.BhattScholze.deltaWittGhostRingHom_unique
+attribute [cite BS19 "Rem 2.13"] _root_.SerrePositivity.BhattScholze.deltaWittGhostVector_frobenius_formula
+attribute [cite BS19 "Rem 2.7" (partial := special) "通常のテンソル積（p 正則性なし、BS-W15）、有向余極限、完全 δ 環のテンソル、w_R : R → W(R)（ghost 単射かつ p ねじれなしのとき）。一般の極限・余極限、W が右随伴であることは未 ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.deltaWittGhostRingHom

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OrdinaryCoherentNatTransPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.OrdinaryCoherentNatTransPrism
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfReplacementNaturality
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfRightReplacement
 

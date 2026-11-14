@@ -20,20 +20,20 @@ open scoped Simplicial
 lemma closedSubcategory_cofiber_nonempty {X : StableModel.{u}} (P : ClosedStablePredicate X)
     {x y : (closedSubcategory P) _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj (closedSubcategory P)) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) := by
   let i := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P.predicate).ι
   let e := f.map ((truncation 2).map i)
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare e
   have hc := square_bottom_vertices e t.square t.bottom_edge
-  have h00 : P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0) := hc.1.symm ▸ closedSubcategory_vertex P x
-  have h10 : P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 0) := hc.2.symm ▸ closedSubcategory_vertex P y
+  have h00 : P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0) := hc.1.symm ▸ closedSubcategory_vertex P x
+  have h10 : P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0) := hc.2.symm ▸ closedSubcategory_vertex P y
   have h01 := P.zero_mem t.zero_corner
   have hv := square_vertices_of_corners P.predicate t.square h00 h10 h01
     (P.pushout_mem t.square t.isPushout h00 h10 h01)
   let D := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift P.predicate t.square hv
   have hDi : D ≫ i = t.square := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 0 1).val := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (D ≫ i) 0 1)
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 0 1).val := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (D ≫ i) 0 1)
     rw [hDi]
     exact t.zero_corner
   refine ⟨{
@@ -50,20 +50,20 @@ lemma closedSubcategory_cofiber_nonempty {X : StableModel.{u}} (P : ClosedStable
 lemma closedSubcategory_fiber_nonempty {X : StableModel.{u}} (P : ClosedStablePredicate X)
     {x y : (closedSubcategory P) _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj (closedSubcategory P)) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) := by
   let i := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P.predicate).ι
   let e := f.map ((truncation 2).map i)
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenFiberSquare e
   have hc := square_right_vertices e t.square t.right_edge
-  have h10 : P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 0) := hc.1.symm ▸ closedSubcategory_vertex P x
-  have h11 : P.predicate (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 1) := hc.2.symm ▸ closedSubcategory_vertex P y
+  have h10 : P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0) := hc.1.symm ▸ closedSubcategory_vertex P x
+  have h11 : P.predicate (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 1) := hc.2.symm ▸ closedSubcategory_vertex P y
   have h01 := P.zero_mem t.zero_corner
   have hv := square_vertices_of_corners P.predicate t.square
     (P.pullback_mem t.square t.isPullback h10 h01 h11) h10 h01 h11
   let D := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift P.predicate t.square hv
   have hDi : D ≫ i = t.square := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D 0 1).val := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (D ≫ i) 0 1)
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D 0 1).val := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (D ≫ i) 0 1)
     rw [hDi]
     exact t.zero_corner
   refine ⟨{
@@ -85,7 +85,7 @@ instance closedSubcategory_isStable {X : StableModel.{u}} (P : ClosedStablePredi
   cofiber_exists := closedSubcategory_cofiber_nonempty P
   fiber_iff_cofiber t := by
     let i := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P.predicate).ι
-    let T : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X.carrier := ⟨t.square ≫ i,
+    let T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X.carrier := ⟨t.square ≫ i,
       closedSubcategoryInclusion_preservesZero P _ t.zero_corner⟩
     constructor
     · intro ht

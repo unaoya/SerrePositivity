@@ -1,0 +1,13 @@
+{
+  "time": "2026-11-14T00:47:40.364494",
+  "completed_groups": 106,
+  "successful_groups": 106,
+  "groups": 298,
+  "built_with_prerequisites": 10600,
+  "all_with_prerequisites": 29776,
+  "built_requested_modules": 2959,
+  "requested_modules": 10227,
+  "failures": 0,
+  "peak_process_tree_rss_bytes": 8024981504,
+  "measured_max_lean_or_snapshot_jobs": 4
+}

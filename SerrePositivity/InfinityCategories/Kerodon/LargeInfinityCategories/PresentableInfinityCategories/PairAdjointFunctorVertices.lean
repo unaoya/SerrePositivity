@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PairFunctorVertexEvaluation
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.UniverseEdgeTransport
 
 /-!
 概要：構成した同じ反変関手の各頂点を元の右随伴と比較し、本質的全射性を証明する。

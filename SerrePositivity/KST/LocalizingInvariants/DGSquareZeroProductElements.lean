@@ -27,7 +27,7 @@ lemma mul_ll_apply (p q n : ℤ) (hn : p + q = n) (a : A.X.X p) (b : A.X.X q) :
     (biprod.inl : A.X ⟶ (algebra A M).X).f n
       (μ[A.X].f n (ιTensorObj A.X A.X p q n hn (a ⊗ₜ[R] b))) := by
   have h := congrArg (fun k => k.f n (ιTensorObj A.X A.X p q n hn (a ⊗ₜ[R] b)))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll A M)
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll A M)
   change μ[(algebra A M).X].f n ((biprod.inl ⊗ₘ biprod.inl : A.X ⊗ A.X ⟶
     (algebra A M).X ⊗ (algebra A M).X).f n
     (ιTensorObj A.X A.X p q n hn (a ⊗ₜ[R] b))) = _ at h
@@ -41,7 +41,7 @@ lemma mul_lr_apply (p q n : ℤ) (hn : p + q = n) (a : A.X.X p) (m : M.X.X q) :
     (biprod.inr : M.X ⟶ (algebra A M).X).f n
       (M.actLeft.f n (ιTensorObj A.X M.X p q n hn (a ⊗ₜ[R] m))) := by
   have h := congrArg (fun k => k.f n (ιTensorObj A.X M.X p q n hn (a ⊗ₜ[R] m)))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr A M)
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr A M)
   change μ[(algebra A M).X].f n ((biprod.inl ⊗ₘ biprod.inr : A.X ⊗ M.X ⟶
     (algebra A M).X ⊗ (algebra A M).X).f n
     (ιTensorObj A.X M.X p q n hn (a ⊗ₜ[R] m))) = _ at h
@@ -55,7 +55,7 @@ lemma mul_rl_apply (p q n : ℤ) (hn : p + q = n) (m : M.X.X p) (a : A.X.X q) :
     (biprod.inr : M.X ⟶ (algebra A M).X).f n
       (M.actRight.f n (ιTensorObj M.X A.X p q n hn (m ⊗ₜ[R] a))) := by
   have h := congrArg (fun k => k.f n (ιTensorObj M.X A.X p q n hn (m ⊗ₜ[R] a)))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl A M)
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl A M)
   change μ[(algebra A M).X].f n ((biprod.inr ⊗ₘ biprod.inl : M.X ⊗ A.X ⟶
     (algebra A M).X ⊗ (algebra A M).X).f n
     (ιTensorObj M.X A.X p q n hn (m ⊗ₜ[R] a))) = _ at h
@@ -67,7 +67,7 @@ lemma mul_rr_apply (p q n : ℤ) (hn : p + q = n) (m : M.X.X p) (m' : M.X.X q) :
       ((biprod.inr : M.X ⟶ (algebra A M).X).f p m ⊗ₜ[R]
         (biprod.inr : M.X ⟶ (algebra A M).X).f q m')) = 0 := by
   have h := congrArg (fun k => k.f n (ιTensorObj M.X M.X p q n hn (m ⊗ₜ[R] m')))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr A M)
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr A M)
   change μ[(algebra A M).X].f n ((biprod.inr ⊗ₘ biprod.inr : M.X ⊗ M.X ⟶
     (algebra A M).X ⊗ (algebra A M).X).f n
     (ιTensorObj M.X M.X p q n hn (m ⊗ₜ[R] m'))) = 0 at h

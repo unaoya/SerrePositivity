@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeSpanColimitTransfer
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.PushoutCommonExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.PushoutCommonExtension
 
 /-!
 概要：指定した部分余極限を、任意の図式に共通拡張として付加する。

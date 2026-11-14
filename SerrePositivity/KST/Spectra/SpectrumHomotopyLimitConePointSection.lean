@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitCoherentCone
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedConeEndPrecomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedConeEndPrecomposition
 
 /-!
 概要：構成した BF homotopy limit の coherent 錐の切断を、反転 end の元の点の評価へ戻す。

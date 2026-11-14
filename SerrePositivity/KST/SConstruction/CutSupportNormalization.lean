@@ -48,7 +48,7 @@ def cutLeftSupport_normalizationIso (n : ℕ) (k : Fin (n + 1)) (X : StableModel
     intro v
     have he := congrArg (fun f => f.app (Opposite.op ⦋0⦌) v)
       (cutComparison_pre_evaluation n k i 1 1)
-    exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr
+    exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr
       (cutLeftSupport_rightCut_isZero n k X v.val (closedSubcategory_vertex _ v)))
   have hs := cutComparison_pre_evaluation n k i 0 0
   have hm := cutComparison_pre_middle n k i
@@ -71,7 +71,7 @@ def cutRightSupport_normalizationIso (n : ℕ) (k : Fin (n + 1)) (X : StableMode
     intro v
     have he := congrArg (fun f => f.app (Opposite.op ⦋0⦌) v)
       (cutComparison_pre_evaluation n k i 0 0)
-    exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr
+    exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex he).mpr
       (cutRightSupport_leftCut_isZero n k X v.val (closedSubcategory_vertex _ v)))
   have hm := cutComparison_pre_middle n k i
   have hq := cutComparison_pre_evaluation n k i 1 1

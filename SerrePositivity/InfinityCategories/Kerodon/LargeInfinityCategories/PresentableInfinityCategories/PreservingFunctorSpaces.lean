@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.EquivalenceSmallLimits
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FullSubcomplexMapping
@@ -113,3 +115,13 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndC
 
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.6.1" (partial := stronger-hyp) "仮定：C,D が presentable（Lean が強い：原典の任意の準圏にこの仮定を追加）。結論：左右随伴の存在で頂点を選ぶ FunL(C,D),FunR(C,D) の全部分準圏（この場合に一致）。PrL は全小余極限保存、PrR は accessible かつ全小極限保存で定義され、二つの存在判定の同値により同じ頂点条件となる。core だけには制限していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrLFunctorSpace
+attribute [cite HTT "5.2.6.1" (partial := stronger-hyp) "仮定：C,D が presentable（Lean が強い：原典の任意の準圏にこの仮定を追加）。結論：左右随伴の存在で頂点を選ぶ FunL(C,D),FunR(C,D) の全部分準圏（この場合に一致）。PrL は全小余極限保存、PrR は accessible かつ全小極限保存で定義され、二つの存在判定の同値により同じ頂点条件となる。core だけには制限していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrRFunctorSpace
+attribute [cite HTT "5.5.3.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrLFunctorSpace
+attribute [cite HTT "5.5.3.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrRFunctorSpace
+attribute [cite HTT "5.5.3.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableInfinityObject
+attribute [cite HTT "6.3.1.4" (partial := stronger-hyp) "仮定：二つの幾何学的射とその左随伴（Lean が強い：左随伴が有限極限だけでなく全小極限を保存すると仮定）。結論：同じ左随伴の合成は全小極限を保存し、逆順の右随伴の合成と実際の ∞ 随伴を成すため、この場合の幾何学的射の合成は一致。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PreservesSmallLimits.comp

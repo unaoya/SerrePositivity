@@ -30,14 +30,14 @@ def sInputModel (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinity
 /-- 完全関手の核は、同型・零・実 pushout・実 pullback に閉じている。 -/
 def kernelClosedPredicate {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     ClosedStablePredicate (sInputModel B) where
-  predicate x := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x)
+  predicate x := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x)
   of_iso hx e := hx.of_vertexIso (e.map q.hom)
   zero_mem hz := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := q.hom) _ hz
   pushout_mem F hF h00 h10 h01 :=
-    (⟨F ≫ q.hom, h01⟩ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C.obj).zero_cofiber_of_zero_source_middle
+    (⟨F ≫ q.hom, h01⟩ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C.obj).zero_cofiber_of_zero_source_middle
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare q.hom F hF) h00 h10
   pullback_mem F hF h10 h01 h11 :=
-    (⟨F ≫ q.hom, h01⟩ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C.obj).zero_source_of_fiber_zero_middle_cofiber
+    (⟨F ≫ q.hom, h01⟩ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C.obj).zero_source_of_fiber_zero_middle_cofiber
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare q.hom F hF) h10 h11
 
 /-- Verdier 列では構成した閉じた条件が元の包含の本質像と一致する。 -/

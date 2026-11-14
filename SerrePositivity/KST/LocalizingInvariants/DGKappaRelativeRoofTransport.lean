@@ -32,10 +32,10 @@ structure DGKappaRelativeRoofComparisonInput where
   target : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{max (u + 1) v}
   boundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso (diagram.square ≫ dgKInputNu R) target.square
   image : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso (diagram.square ≫ dgKInputNu R) target.square boundary
-  left_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex kernel
-  middle_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 1 0 =
+  left_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex diagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex kernel
+  middle_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex diagram.square 1 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I)
-  right_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 1 1 =
+  right_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex diagram.square 1 1 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I)
   quotient : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ diagram.square =
     SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge

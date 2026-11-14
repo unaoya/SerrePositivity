@@ -2,8 +2,8 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.GroupoidCompletionKanComparison
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanFiniteFactorization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.ContinuousKanFiniteFactorization
 
 /-!
 概要：元の亜群化への任意の有限全族を、元の有限部分複体の亜群化へ下ろす。

@@ -27,7 +27,7 @@ André の一段の拡大の関係式計算（Division/Relations）、Witt 座�
 @[expose] public noncomputable section
 universe u v
 
-/-! ## 相対自由変数の任意有限初期段と後続段の分離（旧 Delta/Free/Finite/RelativeFreeFiniteVariableSplit.lean）
+/-! ## 相対自由変数の任意有限初期段と後続段の分離
 
 初期N段を係数多項式へ、残りを外側多項式へ送る標準同型。
 N=0と任意添字を含み、δ構造の保存や平坦性はこの同型だけから主張しない。
@@ -159,7 +159,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteVariableSplit
 
-/-! ## 相対自由δ計算の有限段表示（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaStep.lean）
+/-! ## 相対自由δ計算の有限段表示
 
 初期N+1段の多項式のδ像を初期N+2段で計算する。
 同じ有限段にδ構造を与えることは要求しない。
@@ -272,7 +272,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaStep
 
-/-! ## 有限次段の最高変数と初期変数の分離（旧 Delta/Free/Finite/RelativeFreeFiniteTopVariableSplit.lean）
+/-! ## 有限次段の最高変数と初期変数の分離
 
 最高段を外側変数、初期段を係数多項式へ送る標準同型。
 -/
@@ -361,7 +361,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteTopVariableSplit
 
-/-! ## 任意有限δ計算の加法・積とFrobenius公式（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaStepIdentities.lean）
+/-! ## 任意有限δ計算の加法・積とFrobenius公式
 
 既存のWitt係数公式を有限W₂計算射へ適用する。
 -/
@@ -466,7 +466,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaStepIdentities
 
-/-! ## 異なる有限段の間のδ計算のイデアル冪評価（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaAdicEstimate.lean）
+/-! ## 異なる有限段の間のδ計算のイデアル冪評価
 
 次段イデアルJと初期包含の逆像について、有限δ計算で失う冪を追う。
 -/
@@ -516,7 +516,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaAdicEstimate
 
-/-! ## 有限δ計算の全反復と誤差冪の損失（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaIterate.lean）
+/-! ## 有限δ計算の全反復と誤差冪の損失
 
 初期段を一段ずつ増やし、相対自由δ環の実際の反復と比較する。
 -/

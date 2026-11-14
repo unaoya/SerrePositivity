@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaCofiber
 public import SerrePositivity.KST.SConstruction.DGGluingClosedZero
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleSquareTopMiddleIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleSquareTopMiddleIso
 
 /-! # 全四角が元の代表加群である実二軸 cofiber
 概要：実 gluing 零対象の代表加群を零角に置き、元の二軸 cofiber 四角形を保つ。
@@ -47,9 +47,9 @@ def dgGluingAxesRepresentableCofiberSquare :
 
 /-- 同じ代表加群零角は、実 ∞ 圏の零頂点。 -/
 lemma dgGluingAxesRepresentableCofiberSquare_zero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
       (dgGluingAxesRepresentableCofiberSquare R C D M zc hc zd hd X) 0 1) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
     (dgGluingAxesRepresentableCofiberData R C D M zc hc zd hd X).square 0 1)
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.square_vertex01]
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isZeroVertex_of_closed_isZero _

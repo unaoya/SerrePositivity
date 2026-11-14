@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SquareTrianglePushout
 public import SerrePositivity.KST.Spectra.TriangleDiskFaces
 public import SerrePositivity.KST.Spectra.FibrationEdgeComposition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.ThreeEdgeTransport
 
 /-!
 概要：三辺輸送の二つの実三角形を同じ対角辺で貼り、四辺を保持する実正方形を作る。

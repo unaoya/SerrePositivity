@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Terminal
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeFamilyEquivalence
 
@@ -56,3 +58,9 @@ lemma nerve_hasLimit_iff :
     exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (limit.cone F), (nerveCone_isLimit_iff _).2 ⟨limit.isLimit F⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "7.3.3.1" (partial := special) "仮定：位相空間 X と C=N(D)、D は通常圏（Lean が強い特殊形）。結論：Opens(X)op⥤D の ordinary sheaf condition は全 covering sieve の指定錐の極限性。nerveFunctorCategoryIso と nerveCone_isLimit_iff により同じ図式を N(D) に移すと原典の定義に一致。一般の準圏 C の higher sheaf full subcategory は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_isLimit_iff
+attribute [cite HTT "7.3.3.2" (partial := special) "仮定：位相空間 X、C=N(D) の通常圏値の前層（Lean が強い特殊形）。結論：CategoryTheory.Presheaf.isSheaf_iff_isLimit は各被覆 sieve における F(U) の指定極限錐の iff であり、native nerve の極限比較により原典のこの場合と一致。一般の準圏値の sheaf condition の比較はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_isLimit_iff

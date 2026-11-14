@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedTensor
 public import Mathlib.CategoryTheory.Preadditive.FunctorCategory
 
@@ -87,3 +89,8 @@ def linearizedTensorHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y} (H : SSet.Homotopy
     rw [← Functor.map_comp, H.h₁]
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def A.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy

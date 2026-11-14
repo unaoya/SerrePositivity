@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianInnerHornPullback
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InnerAnodyneAdjointComparison
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.SSetPullbackAdjoint
@@ -89,3 +91,9 @@ lemma cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence
   exact hs
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "B.3.11" (partial := component) "仮定：p:X→SがcoCartesian fibration（HAの前半と一致）。結論：各2単体に引き戻したinner hornの逆像包含は前合成同値、従ってcategorical equivalence（coCartesianなpがflatという前半のflatnessの結論に一致）。Cartesian側の対称な主張とcategorical fibrationの全比較をこの行の宣言だけでは含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence
+attribute [cite HA "B.3.14" (partial := stronger-hyp) "仮定：pがcoCartesian fibrationで任意inner-anodyne A→Bと底への射を指定（Leanが強い：一般flat inner fibrationよりcoCartesianの場合に限定）。結論：その引き戻しの射が前合成同値、従ってcategorical equivalence（条件(1)にこの場合一致）。全inner fibrationに対する(1)⇔flatnessの一般のiffは含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exa
 
 public import SerrePositivity.KST.LocalizingInvariants.DiagramFamilyTranspose
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 
 /-!
 概要：元の cofiber 四角形の全族は関手圏内の零角四角形である。
@@ -27,10 +27,10 @@ variable (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCatego
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
 /-- 元の全族を一つの関手圏内の零角四角形として保持する。 -/
-def functorZeroTriangle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom A).obj X) where
+def functorZeroTriangle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((ihom A).obj X) where
   square := diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares X a)
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares X a)).app (Opposite.op ⦋0⦌) _)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.squares X a)).app (Opposite.op ⦋0⦌) _)
     rw [diagramFamilyTranspose_vertex]
     exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isInitialVertex_functorVertex_of_pointwise (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner X a)
       (fun x => (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner_zero X a x).1),
@@ -39,8 +39,8 @@ def functorZeroTriangle : _root_.SerrePositivity.InfinityCategories.Project.Quas
 
 /-- cofiber 全族の下辺と右辺の合成は h Fun で零。 -/
 lemma functorZeroTriangle_comp_zero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (functorZeroTriangle X a).square ≫
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (functorZeroTriangle X a).square = 0 :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (functorZeroTriangle X a).square ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (functorZeroTriangle X a).square = 0 :=
   (functorZeroTriangle X a).homMk_comp_eq_zero
 
 end CofiberFamily

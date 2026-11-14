@@ -19,7 +19,7 @@ public import Mathlib.CategoryTheory.Opposites
 public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Combinatorics.Quiver.ReflQuiver
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.PastingShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.PastingShapes
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeInvariant

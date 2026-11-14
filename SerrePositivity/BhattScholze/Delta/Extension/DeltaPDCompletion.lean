@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
@@ -27,7 +29,7 @@ BS 著者版 Corollary 7.3、prism の完全化、d で割る包の完備化。
 @[expose] public noncomputable section
 universe u
 
-/-! ## W₂の第0成分の核とFrobeniusでねじれた作用（旧 Delta/Extension/WittTwoModuleSequence.lean）
+/-! ## W₂の第0成分の核とFrobeniusでねじれた作用
 
 BS 著者版 Lemma 2.18の短完全列の具体的な加群部分。
 核を第1座標の加法群と同定し、基底作用がφによる作用になることを証明する。
@@ -142,7 +144,7 @@ end SerrePositivity.BhattScholze
 
 end WittTwoModuleSequence
 
-/-! ## W₂へのδ基底作用に関する実導来完備性（旧 Delta/Extension/WittTwoModuleComplete.lean）
+/-! ## W₂へのδ基底作用に関する実導来完備性
 
 具体的な第0成分の核を使い、終域のf(r),f(φ(r))完備性からW₂のr完備性を得る。
 (p,d)への適用ではφ(d)完備性を別途供給する必要がある。
@@ -224,7 +226,7 @@ end SerrePositivity.BhattScholze
 
 end WittTwoModuleComplete
 
-/-! ## δ基底像のFrobeniusに関する実導来完備性（旧 Delta/Extension/DeltaFrobeniusComplete.lean）
+/-! ## δ基底像のFrobeniusに関する実導来完備性
 
 W₂のねじれた作用に必要な、p,d完備からp,φ(d)完備への具体的接続。
 既存の実導来完備性の漸化式判定を使い、古典的完備性には置き換えない。
@@ -351,7 +353,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaFrobeniusComplete
 
-/-! ## p,d導来完備な終域へのW₂のδ基底作用（旧 Delta/Extension/WittTwoPDComplete.lean）
+/-! ## p,d導来完備な終域へのW₂のδ基底作用
 
 P2の接続。終域のφ(d)完備性はδ公式と既存の漸化式判定から証明して供給する。
 古典的完備性、p正則性、ねじれの有界性を追加しない。
@@ -377,7 +379,7 @@ end SerrePositivity.BhattScholze
 
 end WittTwoPDComplete
 
-/-! ## 実際の導来(p,d)完備化H⁰のBS側の作用の接続（旧 Delta/Extension/PDCompletionInterface.lean）
+/-! ## 実際の導来(p,d)完備化H⁰のBS側の作用の接続
 
 受領したF3の対象・環構造・標準射をそのまま使う。
 H⁰自身と試験環自身の作用に関する導来完備性を既存係数制限で接続する。
@@ -442,7 +444,7 @@ end SerrePositivity.BhattScholze
 
 end PDCompletionInterface
 
-/-! ## 実際の導来(p,d)完備化H⁰へのδ構造の一意延長（旧 Delta/Extension/DeltaPDCompletion.lean）
+/-! ## 実際の導来(p,d)完備化H⁰へのδ構造の一意延長
 
 BS 著者版 Lemma 2.18の完備化への適用部分。
 受領F3の環普遍性とW₂の実導来完備性から切断を延長する。
@@ -513,7 +515,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDCompletion
 
-/-! ## 実際の導来(p,d)完備化H⁰のδ普遍性（旧 Delta/Extension/DeltaPDCompletionUniversal.lean）
+/-! ## 実際の導来(p,d)完備化H⁰のδ普遍性
 
 任意のδ基底・pねじれを許す試験δ環について、実導来完備性を明示して一意延長する。
 prism性・perfectoid性・全射性はこの普遍性には含めない。
@@ -608,3 +610,9 @@ theorem deltaPDCompletionLift_comp_unit (D : DeltaStructure p A) (d : A)
 end SerrePositivity.BhattScholze
 
 end DeltaPDCompletionUniversal
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 2.18" (partial := special) "後半の「導来 (p,d) 完備化（H⁰）への δ 構造の延長」だけ。I 完全エタール代数（Elkik・van der Kallen）の部分は未・不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：existsUnique_deltaPDCompletionHom（完備化の射の普遍性。原文は構造の延長を述べるため補助として module docstring に置く。） ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.deltaPDCompletionStructure
+attribute [cite BS19 "Lemma 2.18" (partial := special) "後半の「導来 (p,d) 完備化（H⁰）への δ 構造の延長」だけ。I 完全エタール代数（Elkik・van der Kallen）の部分は未・不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：existsUnique_deltaPDCompletionHom（完備化の射の普遍性。原文は構造の延長を述べるため補助として module docstring に置く。） ／ DOC1 照合：ok 2 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_deltaPDCompletionStructure

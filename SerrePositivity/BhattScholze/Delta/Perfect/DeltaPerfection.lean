@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaColimit
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
@@ -17,7 +19,7 @@ Frobenius に沿う余極限による完全化 A_perf とその普遍性、完�
 各構成に逆 Frobenius を延ばし、普遍性で両合成が恒等射であることを示す。
 
 ## 規約
-逆極限側の完全化 lim_φ はない（A3 で要る）。
+ここでは BS 著者版 Remark 2.27 の左随伴を扱い、右随伴の逆極限は構成しない。
 
 ## 使われ方
 prism の完全化（BS 著者版 Lemma 3.9、Prism/Perfection）、André の ω₁ 反復。
@@ -26,7 +28,7 @@ prism の完全化（BS 著者版 Lemma 3.9、Prism/Perfection）、André の �
 @[expose] public noncomputable section
 universe u v
 
-/-! ## δ環のFrobenius余極限（旧 Delta/Perfect/DeltaPerfection.lean）
+/-! ## δ環のFrobenius余極限
 
 任意のδ環をFrobenius持上げの反復で完全化する代数的構成。
 Mathlibの環の有向余極限を再利用し、W₂切断を余極限へ移す。
@@ -137,7 +139,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPerfection
 
-/-! ## δ完全化の普遍性（旧 Delta/Perfect/DeltaPerfectionUniversal.lean）
+/-! ## δ完全化の普遍性
 
 具体的なFrobenius余極限から任意の完全δ環への基底δ射の一意な延長。
 完全化は余極限であり、Mathlibのtiltに使う逆極限Perfectionとは区別する。
@@ -238,7 +240,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPerfectionUniversal
 
-/-! ## 完全 δ 環の余極限の完全性（旧 Andre/Transfinite/PerfectDeltaColimit.lean）
+/-! ## 完全 δ 環の余極限の完全性
 
 BS 著者版 Lemma 3.9（著者版 pp.31–32）および BS 著者版 Theorem 7.14（p.61）の極限操作に用いる。
 既存の任意図式の δ 余極限構造について、各段の Frobenius 同型を余極限へ移す。
@@ -294,7 +296,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end PerfectDeltaColimit
 
-/-! ## 完全δ環の古典的p進完備化（旧 Prism/Perfection/PerfectDeltaPCompletion.lean）
+/-! ## 完全δ環の古典的p進完備化
 
 BS 著者版 Lemma 3.9のp進完備化段階に使うδ環の定理。
 逆Frobeniusを古典的完備化に延長し、射の外延性で両逆の等式を証明する。
@@ -358,7 +360,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end PerfectDeltaPCompletion
 
-/-! ## 完全δ環の実導来(p,d)完備化の完全性（旧 Prism/Perfection/PerfectDeltaPDCompletion.lean）
+/-! ## 完全δ環の実導来(p,d)完備化の完全性
 
 BS 著者版 Lemma 3.9の完全化後の計算。
 逆Frobeniusを実H⁰へ延長し、両合成を環普遍性から恒等射と判定する。
@@ -415,3 +417,10 @@ theorem deltaPDCompletionStructure_isPerfect (D : DeltaStructure p A) (hD : D.Is
 end SerrePositivity.BhattScholze
 
 end PerfectDeltaPDCompletion
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.27" (partial := special) "左随伴 colim_φ A とその普遍性・完備化での閉性だけ。右随伴 lim_φ A は未。後半の「Frobenius が p ねじれを消す」は Lemma 2.28 の torsion_calculation ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaPerfection
+attribute [cite BS19 "Rem 2.27" (partial := special) "左随伴 colim_φ A とその普遍性・完備化での閉性だけ。右随伴 lim_φ A は未。後半の「Frobenius が p ねじれを消す」は Lemma 2.28 の torsion_calculation ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.deltaPerfection_isPerfect
+attribute [cite BS19 "Rem 2.27" (partial := special) "左随伴 colim_φ A とその普遍性・完備化での閉性だけ。右随伴 lim_φ A は未。後半の「Frobenius が p ねじれを消す」は Lemma 2.28 の torsion_calculation ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_deltaPerfectionHom

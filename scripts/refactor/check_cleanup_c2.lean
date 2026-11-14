@@ -1,7 +1,7 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedFreeNativeFunctor
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceNativeAction
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceNativeFunctor
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceShiftAction
+import SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedFreeNativeFunctor
+import SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeAction
+import SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeFunctor
+import SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceShiftAction
 import Lean.Util.CollectAxioms
 
 -- C2: explicit local validation only; this file is not added to the formal audit manifest.
@@ -35,10 +35,10 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor,
-    `SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction,
-    `SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor,
-    `SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction
+    `SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedFreeNativeFunctor,
+    `SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeAction,
+    `SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeFunctor,
+    `SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceShiftAction
   ]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0

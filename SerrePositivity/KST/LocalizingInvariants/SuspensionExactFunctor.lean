@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.SuspensionExactFunctor
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTargetArrows
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroTargetArrows
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 
 /-!

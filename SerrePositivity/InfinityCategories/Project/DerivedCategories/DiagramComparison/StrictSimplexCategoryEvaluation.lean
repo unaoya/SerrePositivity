@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexCategory
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseJoinSimplexShapes
 
 /-!
 概要：固定次元の元の HA 単体の通常圏を、全 nerve と同じセル上で同時評価する。

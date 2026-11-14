@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree
 
 /-! # Reedy structures on downward closed full subcategories
@@ -90,3 +92,9 @@ abbrev upperReedy (a : α) : ReedyStructure
   fullSubcategory r (upperProperty r a) (fun f hf hx ↦ (r.le₁ f hf).trans hx)
 
 end SerrePositivity.Reedy
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.9.13" (partial := special) "仮定：整列次数を指定し、部分圏をその下方または閉切断に限定（Lean が強い特殊形）。結論：射類を制限した実際の ReedyStructure を構成する。この下方閉部分圏について原典の結論に一致するが、任意の good filtration に対する主張ではない。"] _root_.SerrePositivity.Reedy.lowerReedy
+attribute [cite HTT "A.2.9.13" (partial := special) "仮定：整列次数を指定し、部分圏をその下方または閉切断に限定（Lean が強い特殊形）。結論：射類を制限した実際の ReedyStructure を構成する。この下方閉部分圏について原典の結論に一致するが、任意の good filtration に対する主張ではない。"] _root_.SerrePositivity.Reedy.upperReedy

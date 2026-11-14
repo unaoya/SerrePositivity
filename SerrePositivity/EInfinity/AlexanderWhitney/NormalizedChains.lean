@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.AlexanderWhitney.NormalizationDescent
 public import SerrePositivity.EInfinity.BarrattEccles.Normalized
 
@@ -96,3 +98,8 @@ lemma generator_hom_ext (X : SSet.{0}) (n : ℕ) {Z : ModuleCat A}
   simpa only [← Category.assoc, hs, Category.id_comp] using he'
 
 end SerrePositivity.EInfinity.AlexanderWhitney
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.3.10" (partial := component) "仮定：単体集合と係数（HA の ℤ を取れる。own の正規化は小さい単体集合）。結論：自由加群の交代面写像複体と、own の退化を消去した正規化複体がある。HA の Moore 正規化と退化商の比較を採用した型は明示しない（Lean が弱い）。"] _root_.SerrePositivity.EInfinity.AlexanderWhitney.chains

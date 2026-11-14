@@ -20,8 +20,8 @@ open scoped Simplicial
 規約：任意の押し出しの保存との同値はここでは主張しない。
 使われ方：反復 S• の後合成の入力条件。 -/
 def PreservesCofiberData {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
-  (∀ z : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.app (Opposite.op ⦋0⦌) z)) ∧
-    (∀ t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (t.square ≫ f))
+  (∀ z : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (f.app (Opposite.op ⦋0⦌) z)) ∧
+    (∀ t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (t.square ≫ f))
 
 /-- 概要：全押し出しと零対象の保存は cofiber の保存条件を与える。
 方針：零角つき正方形に保存条件を制限する。
@@ -50,7 +50,7 @@ lemma PreservesCofiberData.comp {C D E : SSet.{u}} {f : C ⟶ D} {g : D ⟶ E}
   · intro z hz
     exact hg.1 _ (hf.1 z hz)
   · intro t ht
-    let T : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle D := ⟨t.square ≫ f, hf.1 _ t.zero_corner⟩
+    let T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle D := ⟨t.square ≫ f, hf.1 _ t.zero_corner⟩
     exact hg.2 T (hf.2 t ht)
 
 /-- 概要：零対象と cofiber を保つ射の後合成は全 gapped 条件を保存する。
@@ -64,7 +64,7 @@ lemma IsGapped.postcomp_of_cofiber {n : ℕ} {C D : SSet.{u}} [Quasicategory D]
   · intro i
     exact hf.1 _ (hF.1 i)
   · intro i j hij
-    let T : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C := ⟨arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F, hF.1 i⟩
+    let T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C := ⟨arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F, hF.1 i⟩
     exact hf.2 T (hF.2 0 i i j (Fin.zero_le _) le_rfl hij)
 
 /-- 概要：cofiber 保存条件から同じ全 gapped S_n の後合成を構成する。
@@ -112,11 +112,11 @@ lemma sPostcompCofiber_gapped_evaluate (n : ℕ) {C D : SSet.{u}} [Quasicategory
 方針：定値零図式の像を直接計算して全零対象へ移す。
 規約：chosen zero の一致は不要。使われ方：反復の零角。 -/
 lemma sPostcompCofiber_isZeroVertex {n : ℕ} {C D : SSet.{u}}
-    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] [Quasicategory D]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] [Quasicategory D]
     (f : C ⟶ D) (hf : PreservesCofiberData f)
-    {v : (sConstruction n C) _⦋0⦌} (hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) v) := by
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C
+    {v : (sConstruction n C) _⦋0⦌} (hv : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) v) := by
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C
   apply map_isZeroVertex_of_zero_image (sPostcompCofiber n f hf)
     (sConstructionZeroVertex n z.vertex z.isZero) (sConstructionZeroVertex_isZero n _ _) _ hv
   have he : (sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌)
@@ -138,14 +138,14 @@ lemma preservesCofiberData_sPostcompCofiber (n : ℕ) {C D : SSet.{u}}
     PreservesCofiberData (sPostcompCofiber n f hf) := by
   refine ⟨fun z hz => sPostcompCofiber_isZeroVertex f hf hz, ?_⟩
   intro t ht
-  let T : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle (sConstruction n D) :=
+  let T : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle (sConstruction n D) :=
     ⟨t.square ≫ sPostcompCofiber n f hf, sPostcompCofiber_isZeroVertex f hf t.zero_corner⟩
   apply (gappedInclusion_cofiber_iff_pointwise T).2
   intro a
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((t.square ≫ sPostcompCofiber n f hf) ≫
     (gappedSubcomplex n D).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a)
   rw [Category.assoc, sPostcompCofiber_gapped_evaluate, ← Category.assoc, ← Category.assoc]
-  let A : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle C := ⟨t.square ≫ (gappedSubcomplex n C).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a,
+  let A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C := ⟨t.square ≫ (gappedSubcomplex n C).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a,
     isZeroVertex_evaluateFunctorAt (gappedInclusion_isZeroVertex n t.zero_corner) a⟩
   exact hf.2 A ((gappedInclusion_cofiber_iff_pointwise t).1 ht a)
 

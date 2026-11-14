@@ -37,7 +37,7 @@ lemma nativeZeroEvaluationTriangleFamily_two (A : PointedSimplicialSet.{u}) :
 
 /-- 点ごとの四角形の左下は、逆射が選んだ入力の実際の BF cotensor。 -/
 lemma nativeCircleEvaluationSquare_source (z : Sp.{u} _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (nativeCircleEvaluationSquare z) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val) := by
   have hu := ConcreteCategory.congr_hom
@@ -62,7 +62,7 @@ lemma nativeCircleEvaluationSquare_source (z : Sp.{u} _⦋0⦌) :
 
 /-- 点ごとの四角形の右上は、逆射が選んだ元の BF 入力そのもの。 -/
 lemma nativeCircleEvaluationSquare_target (z : Sp.{u} _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (nativeCircleEvaluationSquare z) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (nativeCotensorInput PointedSimplicialSet.circle z).val := by
   have hu := ConcreteCategory.congr_hom
     (NatTrans.congr_app (nativeCircleEvaluationSquare_upper z) (Opposite.op ⦋0⦌))

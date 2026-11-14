@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.NormalizedValueCochains
 public import SerrePositivity.KST.Spectra.NormalizedCochainHomComparison
 
 /-!

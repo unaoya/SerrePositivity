@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomFrames
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FixedQuillenFrameComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.FixedQuillenFrameComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierDiagramModel
 
 /-!

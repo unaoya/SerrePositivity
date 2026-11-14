@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellPerfectExtensionNativeFamily
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleExtensionYonedaNerveIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGModuleExtensionYonedaNerveIso
 /-!
 概要：元 cell Yoneda の native 商延長を同じ商射影の Yoneda へ全比較する。
 方針：既存の全 Perf 比較族を元 Yoneda へ前合成し元代表延長比較を合成する。

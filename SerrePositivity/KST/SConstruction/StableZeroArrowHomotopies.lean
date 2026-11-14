@@ -18,7 +18,7 @@ open scoped Simplicial
 方針：元二比較同型の両端評価を照合し、零辺の比較一意性を使う。
 規約：同じ元ホモトピーの類。使われ方：共有零対角の全比較の照合。 -/
 lemma stableZeroArrowHomotopy_homMk_eq (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
-    (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
+    (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
     {g : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}}
     (H J : SSet.Homotopy (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow F).edge) g)
     (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
@@ -56,7 +56,7 @@ lemma stableZeroArrowHomotopy_homMk_eq (A B : _root_.SerrePositivity.InfinityCat
 方針：元辺との指定等号を使って前補題へ移す。
 規約：元の比較・元一単体を変更しない。使われ方：実四角形の共有対角。 -/
 lemma stableZeroSourceHomotopy_homMk_eq (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
-    (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
+    (hF : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
     {f g : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}}
     (hf : SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow F).edge = f) (H J : SSet.Homotopy f g)
     (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))

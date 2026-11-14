@@ -31,9 +31,9 @@ def fullSNativeCoreInclusion (A : _root_.SerrePositivity.InfinityCategories.HA.S
 def verdierFullSZeroCornerNativeKanMap (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     fullSRealizationKanObject d.left ⟶
       (stableMultiKanEnrichedFunctor 0).obj
-        (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1)) :=
+        (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1)) :=
   verdierFullSZeroCornerKanMap d ≫
-    (coreSingleKanIso (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1))).hom
+    (coreSingleKanIso (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1))).hom
 
 set_option maxHeartbeats 800000 in
 -- 元の native 対象と core S 座標を同時に照合するための展開に使用する。
@@ -43,7 +43,7 @@ theorem verdierFullSZeroCornerNativeKanMap_left (d : _root_.SerrePositivity.Infi
         verdierFullSZeroCornerNativeKanMap d =
       (show (stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left) ⟶
         (stableMultiKanEnrichedFunctor 0).obj
-          (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1)) from
+          (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1)) from
         _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map
           (stableExactInputMap (verdierLeftExactMap d)))) := by
   rw [fullSNativeCoreInclusion, verdierFullSZeroCornerNativeKanMap]
@@ -58,7 +58,7 @@ theorem verdierFullSZeroCornerNativeKanMap_left (d : _root_.SerrePositivity.Infi
 theorem verdierFullSZeroCornerNativeKanMap_top (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     verdierFullSZeroCornerNativeKanMap d ≫
         (show (stableMultiKanEnrichedFunctor 0).obj
-          (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1)) ⟶
+          (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1)) ⟶
             (stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right) from
           _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map
             (stableExactInputMap (verdierTopExactMap d)))) =
@@ -76,7 +76,7 @@ theorem verdierFullSZeroCornerNativeKanMap_top (d : _root_.SerrePositivity.Infin
 /-- 同じ指定比較の辺は、元の native 対象座標へ戻した後も可逆。 -/
 theorem verdierFullSZeroCornerNativeKanMap_isInvertible (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (verdierFullSZeroCornerNativeKanMap d)) := by
-  let Z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1)
+  let Z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1)
   let E : (stableCoreSingleKanObject Z).obj ≅ ((stableMultiKanEnrichedFunctor 0).obj Z).obj :=
     { hom := (coreSingleKanIso Z).hom
       inv := (coreSingleKanIso Z).inv

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBookMaps
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleBookMaps
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanReplacement
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceCells
 

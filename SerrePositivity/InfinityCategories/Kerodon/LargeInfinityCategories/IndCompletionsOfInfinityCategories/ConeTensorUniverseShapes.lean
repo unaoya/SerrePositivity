@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseJoinSimplexShapes
 
 /-!
 概要：小さい二つの形状の余錐積と、各因子を持ち上げた余錐積を実同型で比較する。

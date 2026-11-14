@@ -46,7 +46,7 @@ def ofSquare (d : PerfectVerdierSequence.{u})
       (perfectStableArrow d.verdier.inclusion d.left_complete d.middle_complete).edge)
     (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm
       (perfectStableArrow d.projection d.middle_complete d.right_complete).edge)
-    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ ν) 0 1))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ ν) 0 1))) :
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν where
   square := F
   image := {
@@ -87,7 +87,7 @@ def ofStableSquare (d : PerfectVerdierSequence.{u})
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.verdier.inclusion).edge)
     (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F ≫ ν ≫ perfectStableInfinityInclusion =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.projection).edge)
-    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ ν) 0 1))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F ≫ ν) 0 1))) :
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν := by
   apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram.ofSquare ν d F
   · apply (cancel_mono perfectStableInfinityInclusion).mp
@@ -101,15 +101,15 @@ def ofStableSquare (d : PerfectVerdierSequence.{u})
 /-- 元の源四角形の同じ零角は、固定した完備提示でも零安定圏を表す。 -/
 lemma zero_corner (d : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject
-      (ν.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1))) := by
-  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν) 0 1))
+      (ν.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1))) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν) 0 1))
   rw [d.image_eq]
   exact d.image.zero_corner
 
 /-- Cat^perf 不変量の元の制限値と同じ零角を持つ相対三角形。 -/
 def fiberTriangle {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle _root_.SerrePositivity.KST.Spectra.Sp.{u} where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle _root_.SerrePositivity.KST.Spectra.Sp.{u} where
   square := d.square ≫ ν ≫ E
   zero_corner := hE.preservesZero _ (d.zero_corner ν)
 
@@ -122,7 +122,7 @@ lemma isPullback {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.S
 
 lemma fiberTriangle_isFiber {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (d.fiberTriangle ν hE) := d.isPullback ν hE
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (d.fiberTriangle ν hE) := d.isPullback ν hE
 
 /-- 元の三指定境界を保つ全源四角形同型で、同じ不変量値の pullback を運ぶ。 -/
 lemma isPullback_of_sourceIso {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}

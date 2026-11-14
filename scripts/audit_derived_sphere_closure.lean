@@ -1,23 +1,23 @@
 import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureInput
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureSemifreeCovers
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureSemifreeCovers
 import Lean
 /-! sphere-only 模型の D-1 telescope 被覆の全宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosurePerfectCovers,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureComparison,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosurePerfectCovers,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureComparison,
     `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureConeInput,
     `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureInput,
 
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureFamily,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureOperations,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosurePretriangulated,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureImage,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureRetract,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureGradedExtension,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureSemifreeCovers]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureFamily,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureOperations,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosurePretriangulated,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureImage,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureRetract,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureGradedExtension,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureSemifreeCovers]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

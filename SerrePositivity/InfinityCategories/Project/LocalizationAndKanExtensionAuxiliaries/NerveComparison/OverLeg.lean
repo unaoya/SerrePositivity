@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OverIso
+public import SerrePositivity.InfinityCategories.HTT.Section1_2_9.OverIso
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeLegReverse
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SliceDiagramConeMap
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderCanonicalCone
@@ -30,7 +30,7 @@ variable {C : Type u} [Category.{u} C] (c : C)
 規約：元の Over の対象と構造射を保持する。
 使われ方：B5 の左 Kan の標準余錐の同定。 -/
 lemma nerveOverRawSliceIso_vertex (x : Over c) :
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverRawSliceIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x) =
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverRawSliceIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeReverseCone (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderSimplex (op c)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk x.hom.op))) := by
   rfl
@@ -40,15 +40,15 @@ lemma nerveOverRawSliceIso_vertex (x : Over c) :
 規約：元の Over の対象と構造射を保持する。
 使われ方：B5 の左 Kan の標準余錐の同定。 -/
 lemma nerveOverIso_vertex_val (x : Over c) :
-    ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)).val =
+    ((_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)).val =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u})) (stdSimplex.opIso ⦋0⦌).inv ≫
         (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeReverseCone (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderSimplex (op c)
-          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk x.hom.op)))).val ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnopIso C).hom := by
-  dsimp only [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso, Iso.trans_hom, asIso_hom]
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk x.hom.op)))).val ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveUnopIso C).hom := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso, Iso.trans_hom, asIso_hom]
   simp only [NatTrans.comp_app_apply]
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_cast_val]
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u})) (stdSimplex.opIso ⦋0⦌).inv ≫
-    ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverRawSliceIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)).val ≫ _ = _
+    ((_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverRawSliceIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)).val ≫ _ = _
   rw [nerveOverRawSliceIso_vertex]
   exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverBase_eq c
 
@@ -57,11 +57,11 @@ lemma nerveOverIso_vertex_val (x : Over c) :
 規約：元の Over の対象と構造射を保持する。
 使われ方：B5 の左 Kan の標準余錐の同定。 -/
 lemma nerveOverIso_leg (x : Over c) :
-    ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)).val.app (Opposite.op ⦋1⦌)
+    ((_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso c).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)).val.app (Opposite.op ⦋1⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.joinCoconeLegSimplex (stdSimplex.objEquiv.symm (𝟙 ⦋0⦌))) =
         ComposableArrows.mk₁ x.hom := by
   rw [nerveOverIso_vertex_val]
-  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnopIso C).hom.app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveUnopIso C).hom.app (Opposite.op ⦋1⦌)
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeReverseCone (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderSimplex (op c)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk x.hom.op)))).val.app (Opposite.op ⦋1⦌)
         ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u})) (stdSimplex.opIso ⦋0⦌).inv).app (Opposite.op ⦋1⦌)

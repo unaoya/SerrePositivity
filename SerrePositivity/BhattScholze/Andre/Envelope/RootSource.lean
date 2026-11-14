@@ -9,7 +9,7 @@ public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import Mathlib.LinearAlgebra.Finsupp.VectorSpace
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
@@ -23,10 +23,10 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Comple
 BS 著者版 Remark 7.15 の根の包を構成するため、根添加の源の導来還元と完備性を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/MonicSource`、`Envelope/RootFamilySource`、`Perfection/DeltaAlgebra`、`PowerRootEnvelope/Unconditional/Localization`、`PowerRootEnvelope/Unconditional/Source`、`RootEnvelope/PerfectPrism`、`RootEnvelope/RawCompletion`、`RootEnvelope/Source`、`Variants/RootedExtension`。
@@ -34,7 +34,7 @@ BS 著者版 Remark 7.15 の根の包を構成するため、根添加の源の�
 
 universe u
 
-/-! ## G7交換入力に相対的な根添加の実残余全源Tor（旧 Andre/RootedExtension/DeltaRoot/DeltaRootResidueSourceColimitTor.lean）
+/-! ## G7交換入力に相対的な根添加の実残余全源Tor
 
 任意有限δ深さで証明した消滅を、実評価環へ移す。
 G7の交換入力を保持し、実導来完備化後CFFや一般B4全射性は結論しない。
@@ -73,7 +73,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootResidueSourceColimitTor
 
-/-! ## G7入力に相対的な根添加の実残余導来評価比較（旧 Andre/RootedExtension/DeltaRoot/DeltaRootResidueSourceDerived.lean）
+/-! ## G7入力に相対的な根添加の実残余導来評価比較
 
 既存Tor対称性と標準導来添加写像を使う。係数側Koszul操作との比較や
 実導来完備化後CFFは別工程。
@@ -181,7 +181,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootResidueSourceDerived
 
-/-! ## 根添加の係数側実導来還元とraw残余商の比較（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceCoefficientResidue.lean）
+/-! ## 根添加の係数側実導来還元とraw残余商の比較
 
 既存三因子の実導来対象を使い、G7交換入力に相対的な残余評価比較へ接続する。
 導来完備化やperfectionの後の完全忠実平坦性は含まない。
@@ -271,7 +271,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceCoefficientResidue
 
-/-! ## 実商環上の根添加導来還元（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceQuotientDerived.lean）
+/-! ## 実商環上の根添加導来還元
 
 (p,d)の通常商への実基底変更を扱う。Koszul還元との同一視や完備化後の
 完全平坦性は主張せず、G7の具体的交換入力を明示して保持する。
@@ -456,7 +456,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceQuotientDerived
 
-/-! ## 実商還元のH0の元の係数商上の忠実平坦性（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceQuotientFlat.lean）
+/-! ## 実商還元のH0の元の係数商上の忠実平坦性
 
 通常(p,d)商への実導来基底変更を扱う。一般のKoszul還元と同一視しない。
 -/
@@ -582,7 +582,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceQuotientFlat
 
-/-! ## 根添加の実商還元とraw商の正規化導来同型（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceQuotientSingle.lean）
+/-! ## 根添加の実商還元とraw商の正規化導来同型
 
 既存の純対象比較を再利用し、実商環上のH0計算を導来対象の比較へ昇格する。
 -/
@@ -687,7 +687,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceQuotientSingle
 
-/-! ## 実根添加源の射影モデルの元の係数環への制限（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceCoefficientModels.lean）
+/-! ## 実根添加源の射影モデルの元の係数環への制限
 
 源の二重多項式構造を使う。任意の環射について射影性を保存するとは主張しない。
 -/
@@ -758,7 +758,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceCoefficientModels
 
-/-! ## 実源の通常加群の係数商比較（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceCoefficientSquare.lean）
+/-! ## 実源の通常加群の係数商比較
 
 既存の商加群・拡張イデアル・係数制限を使い、標準商像を保って比較する。
 -/
@@ -866,7 +866,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceCoefficientSquare
 
-/-! ## 元の(p,d)係数商への実根添加導来還元（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourcePDReduction.lean）
+/-! ## 元の(p,d)係数商への実根添加導来還元
 
 拡張イデアルと降下係数射を照合し、二つの実導来還元の比較を具体的な型へ特殊化する。
 -/
@@ -949,7 +949,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourcePDReduction
 
-/-! ## 元の係数環上の実(p,d)還元とraw残余商（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourcePDResidue.lean）
+/-! ## 元の係数環上の実(p,d)還元とraw残余商
 
 実源商でのG7相対的比較を元の係数環へ渡す。一般Koszul還元や完備化後CFFは含まない。
 -/
@@ -1053,7 +1053,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourcePDResidue
 
-/-! ## 実根添加対象の逐次主元完備化後の(p,d)還元（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceIteratedCompletionResidue.lean）
+/-! ## 実根添加対象の逐次主元完備化後の(p,d)還元
 
 既存の二つの主元完備化を逐次適用した具体的対象を扱う。
 原典の(p,d)完備化・環H0候補との比較や離散性は別工程である。
@@ -1179,7 +1179,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceIteratedCompletionResidue
 
-/-! ## 具体的逐次根添加対象の冪零剰余射による実還元（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourcePowerResidue.lean）
+/-! ## 具体的逐次根添加対象の冪零剰余射による実還元
 
 実A/(p,dⁿ)還元の後に実冪零剰余射を施した対象を計算する。
 A/(p,dⁿ)上の離散性・平坦性自体はG10の別工程である。
@@ -1269,7 +1269,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourcePowerResidue
 
-/-! ## 具体的根添加対象のG10標準冪零還元入力（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceCanonicalPowerResidue.lean）
+/-! ## 具体的根添加対象のG10標準冪零還元入力
 
 標準商環上での次数零集中とH0忠実平坦性を供給する。
 冪零厚化前の対象の離散性・平坦性はG10の別工程である。
@@ -1385,7 +1385,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceCanonicalPowerResidue
 
-/-! ## G4による具体的根添加源のghost単射入力（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceRegularGhost.lean）
+/-! ## G4による具体的根添加源のghost単射入力
 
 G10の標準還元の入口から独立のghost単射仮定を除く。
 G7の具体的colimit交換入力は明示して保持する。
@@ -1455,7 +1455,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSourceRegularGhost
 
-/-! ## BSの二つの実主元完備化H0と実PD H0の共有反射比較（旧 Andre/RootedExtension/IteratedPDH0Reflection.lean） -/
+/-! ## BSの二つの実主元完備化H0と実PD H0の共有反射比較 -/
 
 @[expose] public noncomputable section IteratedPDH0Reflection
 
@@ -1590,7 +1590,7 @@ end SerrePositivity.BhattScholze
 
 end IteratedPDH0Reflection
 
-/-! ## 具体的根添加逐次対象のp方向・d方向の導来完備性（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSourceIteratedCompletionComplete.lean） -/
+/-! ## 具体的根添加逐次対象のp方向・d方向の導来完備性 -/
 
 @[expose] public noncomputable section DeltaRootSourceIteratedCompletionComplete
 

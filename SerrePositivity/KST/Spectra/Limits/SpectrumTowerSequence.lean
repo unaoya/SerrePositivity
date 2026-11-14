@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LoopTowers
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.LoopTowers
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 
 /-!

@@ -39,7 +39,7 @@ def dgKappaSuppliedBFVertexComparison : Prop :=
 規約：旧 K 値と新 BF 模型を等号で同一視しない。
 使われ方：二頂点供給の始点比較を元の全錐へ戻す。 -/
 theorem dgKappaSuppliedBFSquare_source :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeCoherentBFSquare R D I) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 0)) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (dgKappaNativeCoherentBFSquare R D I)
@@ -57,7 +57,7 @@ theorem dgKappaSuppliedBFSquare_source :
 規約：旧 K 値と新 BF 模型を等号で同一視しない。
 使われ方：二頂点供給の終点比較を元の loop へ戻す。 -/
 theorem dgKappaSuppliedBFSquare_target :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 3)) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target (dgKappaNativeCoherentBFSquare R D I)
@@ -110,7 +110,7 @@ def dgKappaSuppliedBFSourceIso : _root_.SerrePositivity.InfinityCategories.Kerod
 def dgKappaSuppliedBFTargetIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) := by
   rw [dgKappaSuppliedBFSquare_target]
   exact dgKappaNativeBFSOAVertexIso R D I (dgKappaNativeBFFiniteNativeObject R D I 3)
 

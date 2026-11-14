@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SliceRoofCorner
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.SliceRoofCorner
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanFibrationTools
 
 /-!

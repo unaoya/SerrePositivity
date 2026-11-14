@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFWhiskerZeroEvaluation
 public import SerrePositivity.KST.SConstruction.ConstantDiamondEdgeComparison
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamondImages
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CompositionDiamondImages
 
 /-! # 生成第四辺と元の指定左 BF 辺の零段実比較
 概要：元の BF 三辺の零段定数性と同じ二三角形から、第四辺の零段比較を実構成する。

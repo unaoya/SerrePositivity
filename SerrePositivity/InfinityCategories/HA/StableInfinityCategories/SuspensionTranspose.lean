@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareTranspose
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionComparisonIso
 
@@ -34,11 +36,11 @@ def SuspensionSquare.transpose {X : SSet.{u}} {x : X _⦋0⦌}
     (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare x) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare x where
   square := (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ s.square
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 1 0)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 1 0)
     exact s.other_zero
   source_eq := s.source_eq
   other_zero := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 0 1)
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 0 1)
     exact s.zero_corner
   isPushout := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose s.square).1 s.isPushout
 
@@ -69,3 +71,8 @@ def SuspensionSquare.swapIso {X : SSet.{u}} [Quasicategory X]
   s.comparisonIso s.transpose
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.10" (partial := stronger-hyp) "仮定：安定準圏の懸垂正方形（Lean が強い：HA は点付きで余ファイバーを持てばよい）。結論：二つの零角の交換が懸垂上の負の恒等射になり、そこからの射への前合成は符号を反転する（一致する安定な場合）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare.swapIso

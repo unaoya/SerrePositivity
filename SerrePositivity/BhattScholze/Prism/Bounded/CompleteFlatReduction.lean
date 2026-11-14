@@ -1,9 +1,11 @@
 module
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlat.Definition
+import all SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlat.Definition
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
-public import SerrePositivity.BhattScholze.Prismatic.PrismOver
+public import SerrePositivity.BhattScholze.Prism.Basic.Bounded
 import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 
@@ -36,16 +38,6 @@ open CategoryTheory CategoryTheory.Limits HomologicalComplex DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 
 variable {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
-
-private def baseChangeCompositeIso (g : A →+* B) (h : B →+* C)
-    (X : DerivedCategory.Minus (ModuleCat.{u} A)) :
-    ((boundedAboveDerivedBaseChange h).obj ((boundedAboveDerivedBaseChange g).obj X)).obj ≅
-      ((boundedAboveDerivedBaseChange (h.comp g)).obj X).obj :=
-  boundedAboveDerivedBaseChangeModelIso h _
-      (boundedAboveDerivedBaseChangeModel g X) ≪≫
-    DerivedCategory.Q.mapIso (baseChangeCompIso g h (boundedAboveDerivedChosenModel X).complex) ≪≫
-    (boundedAboveDerivedBaseChangeModelIso (h.comp g) X
-      (boundedAboveDerivedChosenModel X)).symm
 
 private theorem pureFlat_of_all_model_tests (X : DerivedCategory.Minus (ModuleCat.{u} A))
     (P : BoundedAboveDerivedModel X.obj)
@@ -86,13 +78,6 @@ private theorem pureFlat_of_all_model_tests (X : DerivedCategory.Minus (ModuleCa
   have hz := ((boundedAboveDerivedTensorModuleTorNatIso N₀ n).app H).isZero_iff.mp htH
   have := ModuleCat.subsingleton_of_isZero hz
   exact (torModuleComm (R := A) n H N).injective.subsingleton
-
-/-- 上に有界な導来対象の完全平坦性。標準剰余の離散性と零次ホモロジーの平坦性で表す。 -/
-def IsDerivedCompletelyFlat (I : Ideal A) (X : DerivedCategory.Minus (ModuleCat.{u} A)) : Prop :=
-  let Y := ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj X).obj
-  (∀ i : ℤ, i ≠ 0 → IsZero
-    ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ I)) i).obj Y)) ∧
-    Module.Flat (A ⧸ I) ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ I)) 0).obj Y)
 
 private theorem pureFlat_of_kills_power (I : Ideal A)
     (X : DerivedCategory.Minus (ModuleCat.{u} A)) (hX : IsDerivedCompletelyFlat I X)
@@ -146,7 +131,7 @@ private theorem generatorPowerBounded (n : ℕ) :
     simpa only [map_natCast] using hN
   refine ⟨N * n, fun m x hx ↦ ?_⟩
   simpa only [map_natCast] using
-    Andre.regular_power_quotient_torsion_bound (p : A) P.generator P.generator_regular
+    _root_.SerrePositivity.BhattScholze.regular_power_quotient_torsion_bound (p : A) P.generator P.generator_regular
       N hN' n m x (by simpa only [map_natCast] using hx)
 
 include hP in

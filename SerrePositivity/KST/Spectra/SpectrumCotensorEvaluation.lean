@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorPointedComparison
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedUnits
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrengthPoint
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomTensorStrengthPoint
 public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices
 
 /-!

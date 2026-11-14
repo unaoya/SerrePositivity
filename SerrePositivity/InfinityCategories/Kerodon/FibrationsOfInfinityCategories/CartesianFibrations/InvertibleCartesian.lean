@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianEdge
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePiZero
@@ -136,3 +138,9 @@ lemma isInvertibleEdge_iff_isCocartesianEdge {X B : SSet.{u}} [Quasicategory X]
     fun h ↦ isInvertibleEdge_of_isCocartesianEdge p e h.1 h.2⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.3.3.29" (partial := stronger-hyp) "仮定：準圏間の inner fibration と同値辺の持ち上げ（Lean は可逆辺の持ち上げを直接入力。余デカルト持ち上げは底の辺が可逆なら可逆となる）。結論：単射な前合成同値に対する持ち上げ性（categorical fibration の結論に一致）。f-inert に可逆辺が含まれる operadic 条件は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isInvertibleEdge_of_isCocartesianEdge
+attribute [cite HTT "2.4.1.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isInvertibleEdge_iff_isCartesianEdge

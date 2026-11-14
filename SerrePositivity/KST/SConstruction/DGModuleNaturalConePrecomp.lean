@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleExtensionYonedaStrict
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleExtensionYonedaStrict
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransTransport
 
 /-!
 概要：元実 cone の全関手族を元入力への前合成で保持する。

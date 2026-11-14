@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSpan
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarDiagonalContraction
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftHomotopy
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLift.UniverseLiftHomotopy
 
 /-!
 # 相対bar比較spanの左脚を収縮する実ホモトピーを構成する

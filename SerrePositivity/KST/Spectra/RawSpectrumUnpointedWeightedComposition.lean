@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingCompositionLaws
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFunctor
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorExchangeEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedSectionsParameters
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomTensorExchangeEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedSectionsParameters
 
 /-!
 概要：元の raw Hom の合成による、通常の weighted end の全 Hom パラメータの作用。

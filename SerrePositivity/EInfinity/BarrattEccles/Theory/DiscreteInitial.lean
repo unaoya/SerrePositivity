@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.StableLimits
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.StableLimits
 public import SerrePositivity.EInfinity.Operad.AlgebraLift
 
 /-!

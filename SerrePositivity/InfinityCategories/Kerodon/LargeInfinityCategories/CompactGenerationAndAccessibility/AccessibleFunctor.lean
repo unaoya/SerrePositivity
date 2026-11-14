@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.Accessible
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoconeValEquality
 public import Mathlib.Tactic.CrossRefAttribute
@@ -70,3 +72,14 @@ lemma isAccessibleFunctor_id (C : SSet.{u + 1}) : IsAccessibleFunctor (𝟙 C) :
   ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, isKappaAccessibleFunctor_id _ C⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 2.19"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor
+attribute [cite HTT "5.4.2.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor
+attribute [cite HTT "5.4.2.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor
+attribute [cite HTT "5.4.2.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor.of_le
+attribute [cite HTT "5.4.2.6"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor
+attribute [cite HTT "5.4.7.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor
+attribute [cite HTT "5.5.1.2" (partial := direction) "仮定：accessible C と accessible D への反映 f⊣g、および元の L≃g∘f（HTT の (2) と一致）。結論：f は余極限を保存する左随伴として、g は右随伴として accessible で、その同じ合成 L も accessible（(2)⇒(3) に一致）。L の accessibility だけから像の accessibility を得る逆方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor.comp

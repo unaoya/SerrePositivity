@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexHABeadWord
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FunctorMapping
 
 /-! # 元の部分集合 bead 連結語の HA 成分値

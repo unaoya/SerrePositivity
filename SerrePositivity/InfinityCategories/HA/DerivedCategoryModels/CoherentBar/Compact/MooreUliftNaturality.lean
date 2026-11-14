@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.MooreUniverse
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MooreCyclesNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.EnrichedFunctors.MooreCyclesNaturality
 /-!
 概要：Moore 正規化と宇宙持ち上げの比較が、元の実加群射と可換することを示す。
 方針：全次数で元の単体への包含を合成して検査する。

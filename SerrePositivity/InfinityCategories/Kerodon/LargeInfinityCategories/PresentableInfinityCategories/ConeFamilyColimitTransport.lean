@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ConeFamilyStrictification
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.VertexConeIsoTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.VertexConeIsoTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentTotalColimit
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FunctorPointwiseColimitCriterion
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanDiagramColimitTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorColimitEvaluation
+public import SerrePositivity.InfinityCategories.HTT.Section5_1_2.FunctorColimitEvaluation
 
 /-!
 概要：共同 strictification の全錐族へ、元の点ごとの余極限を指定頂点のまま輸送する。
@@ -50,7 +50,7 @@ lemma coneFamilyStrictColimitCocone_pointwise (c : _root_.SerrePositivity.Infini
     (hc : _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.IsPointwiseColimitCone c) :
     _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.IsPointwiseColimitCone (coneFamilyStrictColimitCocone F c hc) := by
   intro k
-  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.isColimitCone_functor_evaluation_of_pointwise_exists _
+  exact _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_2.isColimitCone_functor_evaluation_of_pointwise_exists _
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.colimitCoconeOfFunctorIso_isColimit _ c (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isColimitCone_of_pointwise c hc))
     (fun k ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.evaluateFunctorDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictRealization F) k)) k

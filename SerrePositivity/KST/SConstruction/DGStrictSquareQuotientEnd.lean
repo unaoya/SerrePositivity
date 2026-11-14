@@ -41,7 +41,7 @@ lemma dgStrictSquareQuotientEnd_hom
 
 /-- 元の標準対角の像は、指定 ε により同じ実商の dg nerve 内で零対象となる。 -/
 lemma dgStrictSquareQuotient_diagonal_isZero (x : P) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex
       (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).quotientObject)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex
         ((dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).projection.obj

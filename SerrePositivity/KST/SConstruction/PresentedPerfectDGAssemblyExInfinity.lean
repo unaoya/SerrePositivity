@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAssemblyTransformation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSuspensionComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationReassociate
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationReassociate
 
 /-! # 元の suspension 組み立ての同じ Ex∞ 像
 概要：元の組み立てを同じ Ex∞ で写し、比較と合成できる厳密豊穣自然変換へ束ねる。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PastingComparisonHomotopy
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition
 
 /-! # 転置した長方形の左から外側への比較
 
@@ -23,7 +23,7 @@ lemma transposedPastingLeftToOuterShape_bottom (j : Fin 2) :
     ((stdSimplex.δ j.rev ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ▷ (Δ[1] : SSet.{u})) ≫
       (((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ▷ Δ[1]) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pastingLeftToOuterShape) =
     snd Δ[0] Δ[1] ≫ SSet.const
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫
         (stdSimplex.δ (2 : Fin 3) ▷ Δ[1])) j 0) := by
   apply CartesianMonoidalCategory.hom_ext
   all_goals
@@ -43,7 +43,7 @@ lemma transposedPastingLeftToOuterHomotopy_bottom {X : SSet.{u}}
       (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp (β_ (Δ[1] : SSet.{u}) Δ[1]).hom
         (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pastingLeftToOuterHomotopy F)).h =
     snd Δ[0] Δ[1] ≫ SSet.const
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) j 0) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) j 0) := by
   change _ ≫ (((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ▷ Δ[1]) ≫
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pastingLeftToOuterShape ≫ F)) = _
   rw [← Category.assoc ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ▷ Δ[1]),

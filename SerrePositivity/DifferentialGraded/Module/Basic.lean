@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
@@ -1442,3 +1444,9 @@ end SerrePositivity.DifferentialGraded
 end
 
 end Composition
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.6.3.2" (partial := component) "仮定：可換基礎環上の小さい dg 圏 D（Lean が強い：通常の dg 加群の対象に限る）。結論：D 上の左 dg 加群と Dᵒᵖ 上の右 dg 加群を互いに逆な変換で対応させる（この仮定での HA の結論の一部に一致）。BM の部分オペラッドと全加群単体集合の同型は含まれない。"] _root_.SerrePositivity.DifferentialGraded.LeftModule.toRightOpposite
+attribute [cite HA "4.6.3.2" (partial := component) "仮定：可換基礎環上の小さい dg 圏 D（Lean が強い：通常の dg 加群の対象に限る）。結論：D 上の左 dg 加群と Dᵒᵖ 上の右 dg 加群を互いに逆な変換で対応させる（この仮定での HA の結論の一部に一致）。BM の部分オペラッドと全加群単体集合の同型は含まれない。"] _root_.SerrePositivity.DifferentialGraded.leftModuleEquivRightOpposite

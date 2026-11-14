@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Almost.Lemma103
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChange
@@ -19,7 +21,7 @@ public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
 BS 著者版 Lemma 10.3 から conormal を消し、冪等性と拡大閉性を出す。
 
 ## 規約
-BS 著者版 Proposition 10.4 の全体は A8。
+BS 著者版 Proposition 10.4 の一般の almost 同型の主張全体は、このファイルの結論には含めない。
 
 ## 使われ方
 CLMST の almost Tor。
@@ -27,7 +29,7 @@ CLMST の almost Tor。
 
 universe u
 
-/-! ## perfectoid イデアルの mod pᴺ の像（旧 CLMST/Almost.lean）
+/-! ## perfectoid イデアルの mod pᴺ の像
 
 perfectoid イデアルを核の定義のまま `p^N` を法とした環へ写し（`perfectoidIdealMod`）、その零化条件と元の環の条件を商環の作用で比べる。局所化での零・同型の判定と、共通の p 冪の零化も与える。像イデアルの冪等性は下の BS 著者版 Remark 10.7 の節で示す。
 -/
@@ -108,7 +110,7 @@ end SerrePositivity.BhattScholze
 end PerfectoidIdealModPart
 
 
-/-! ## perfectoid 化の核の conormal の導来完備化（旧 Almost/PerfectoidIdealConormalCompletion.lean）
+/-! ## perfectoid 化の核の conormal の導来完備化
 
 ## 概要
 核 K の通常の conormal 加群 K/K² は p 作用が可逆であり、その導来 p 完備化は零である。
@@ -248,7 +250,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidIdealConormalCompletion
 
-/-! ## BS 著者版 Remark 10.7 の mod p 冪の冪等性（旧 Almost/PerfectoidIdealIdempotent.lean）
+/-! ## BS 著者版 Remark 10.7 の mod p 冪の冪等性
 
 ## 概要
 perfectoid 化の核 K の mod pⁿ 像は冪等である（BS 著者版 Remark 10.7、印刷 p.80）。
@@ -350,7 +352,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidIdealIdempotent
 
-/-! ## BS 著者版 Proposition 10.2 の導来完備 almost 零加群の拡大閉性（旧 Almost/PerfectoidAlmostExtension.lean）
+/-! ## BS 著者版 Proposition 10.2 の導来完備 almost 零加群の拡大閉性
 
 ## 概要
 perfectoid 化の核で零化される導来完備加群は拡大で閉じる（BS 著者版 Proposition 10.2、印刷 p.78）。
@@ -486,7 +488,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidAlmostExtension
 
-/-! ## B5 の公開入口（旧 Almost/PerfectoidAlmost.lean）
+/-! ## B5 の公開入口
 
 ## 概要
 BS 著者版 Lemma 10.3（印刷 pp.78–79）、BS 著者版 Remark 10.7（印刷 p.80）の冪等性、
@@ -532,3 +534,9 @@ theorem perfectoidAlmostModLocalization_eq (N : ℕ)
 end SerrePositivity.BhattScholze
 
 end PerfectoidAlmostModCategoryPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 10.2" (partial := special) "本体は単項 J=(g) の perfectoid 核で、導来完備加群の短完全拡大での閉性のみ（sorry 0）。核・余核での閉性と almost 圏 (R/J)_perfd 加群との同値は未。使用先は CLMST ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：completedTensor_isZero_of_shortExact（任意の元と加群についてテンソル後の零性を述べる一般補助。J-almost zero への適用は別の宣言。）；perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion（p 冪ねじれ加群の仮定から一般加群の高次 Tor の零化。Prop 10.2 の拡大閉性の宣言ではない。） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension
+attribute [cite BS19 "Rem 10.7" (partial := special) "本体の perfectoidIdealMod_idempotent（単項 J=(g) の perfectoid 化の核の mod pⁿ 像が冪等）は、原典 Rem 10.7 の一文「J_perfd,n は R/pⁿ の冪等イデアル」の J=(g) の場合（調整役が原典の全文で確認、11-07。前の「ずれの疑い」は誤り）。使用先は CLMST。Galois 条件の mod pⁿ 版の部分は E3 に不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectoidIdeal_conormal_completion_isZero（原文は mod p^n 像の冪等性等を述べる。conormal の主張は別で、Lemma 10.3 の応用。）；perfectoidIdeal_eq_square_sup_pow_mul（核 K について K=K²+p^nK。原文の mod p^n 像の冪等性を出す補助で、原文の結論は perfectoid） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent

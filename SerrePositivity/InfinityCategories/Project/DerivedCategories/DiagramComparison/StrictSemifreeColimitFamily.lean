@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeFamilies
 import all SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeFamilies
 import all SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeFamily
-import all SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.RelativeInitialVertices
+import all SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.RelativeInitialVertices
 
 /-!
 # strict 半自由図式の native な普遍余錐の全関手族
@@ -41,7 +41,7 @@ variable (A : Type u) [CommRing A] (J : Type) [SmallCategory J]
 def strictSemifreeDiagramFamily :
     nerve (StrictSemifreeDiagram A J) ⟶
       (ihom ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J))).obj
-        (derivedInfinityCategory A) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   curry ((β_ ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J))
     (nerve (StrictSemifreeDiagram A J))).hom ≫ strictSemifreeEvaluation A J)
 
@@ -49,7 +49,7 @@ def strictSemifreeDiagramFamily :
 def strictSemifreeColimitFamily :
     nerve (StrictSemifreeDiagram A J) ⟶
       colimitCocones ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J))
-        (derivedInfinityCategory A) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   (exists_colimitCoconeFamily (strictSemifreeDiagramFamily A J)
     (fun a => smallShape_hasColimit A (nerve J)
       ((functorVertexEquiv _ _).symm
@@ -59,7 +59,7 @@ def strictSemifreeColimitFamily :
 theorem strictSemifreeColimitFamily_projection :
     strictSemifreeColimitFamily A J ≫
       colimitCoconeProjection ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J))
-        (derivedInfinityCategory A) = strictSemifreeDiagramFamily A J :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) = strictSemifreeDiagramFamily A J :=
   (exists_colimitCoconeFamily (strictSemifreeDiagramFamily A J)
     (fun a => smallShape_hasColimit A (nerve J)
       ((functorVertexEquiv _ _).symm
@@ -69,33 +69,33 @@ theorem strictSemifreeColimitFamily_projection :
 def strictSemifreeCoconeFunctorFamily :
     nerve (StrictSemifreeDiagram A J) ⟶
       (ihom (join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) (Δ[0] : SSet.{u + 1}))).obj
-        (derivedInfinityCategory A) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   strictSemifreeColimitFamily A J ≫
     (relativeInitialVertices (coconeRestriction
-      ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) (derivedInfinityCategory A))).ι
+      ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι
 
 /-- 全余錐の族への包含後も、下方図式は同じ全評価の族と厳密に一致する。 -/
 theorem strictSemifreeCoconeFunctorFamily_restriction :
     strictSemifreeCoconeFunctorFamily A J ≫
       coconeRestriction ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J))
-        (derivedInfinityCategory A) = strictSemifreeDiagramFamily A J := by
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) = strictSemifreeDiagramFamily A J := by
   change strictSemifreeColimitFamily A J ≫
     ((relativeInitialVertices (coconeRestriction
-      ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) (derivedInfinityCategory A))).ι ≫
+      ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).ι ≫
       coconeRestriction ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J))
-        (derivedInfinityCategory A)) = _
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) = _
   exact strictSemifreeColimitFamily_projection A J
 
 /-- 全パラメーターと join の全単体を同時に評価する native な余錐の族。 -/
 def strictSemifreeJoinCoconeFamily :
     nerve (StrictSemifreeDiagram A J) ⊗
       join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) (Δ[0] : SSet.{u + 1}) ⟶
-        derivedInfinityCategory A :=
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   (β_ _ _).hom ≫ uncurry (strictSemifreeCoconeFunctorFamily A J)
 
 /-- 同じ join 余錐の族の apex を評価する全関手。実現複体との比較は別に行う。 -/
 def strictSemifreeNativeApexFamily :
-    nerve (StrictSemifreeDiagram A J) ⟶ derivedInfinityCategory A :=
+    nerve (StrictSemifreeDiagram A J) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   lift (𝟙 _) (SSet.stdSimplex.isTerminalObj₀.from _) ≫
     (nerve (StrictSemifreeDiagram A J) ◁
       joinInr ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) Δ[0]) ≫

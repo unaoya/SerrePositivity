@@ -47,7 +47,7 @@ lemma weakOreSquare_cospan (v : (weakOreDiagrams i) _⦋0⦌) :
     k.app (Opposite.op ⦋0⦌) v) hc
 
 lemma weakOreSquare_top_mem (v : (weakOreDiagrams i) _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (weakOreSquare i v)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (weakOreSquare i v)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i := by
   have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex ((weakOreProjection i).app (Opposite.op ⦋0⦌) v)
   change SSet.yonedaEquiv (horn₂₂.ι₁₂ ≫ _) ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i at hv
   rw [← weakOreSquare_cospan, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc,
@@ -56,7 +56,7 @@ lemma weakOreSquare_top_mem (v : (weakOreDiagrams i) _⦋0⦌) :
 
 lemma weakOreSquare_bottom_mem {C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
     (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (v : (weakOreDiagrams i) _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (weakOreSquare i v)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (weakOreSquare i v)).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i :=
   (weakEquivalences_pullback_bottom_top h _ (weakOreSquare_isPullback i v)).mpr
     (weakOreSquare_top_mem i v)
 

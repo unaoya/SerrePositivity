@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeTerminalExtension
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalVertexLifting
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorVertexCone
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamilyReadback
 
 /-!

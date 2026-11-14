@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Qua
 
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.AdjunctionOfOpposite
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalFunctorOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.IntervalFunctorOpposite
 
 /-!
 概要：可逆な余単位候補と、その右随伴像への元の写像空間比較から実随伴を得る。

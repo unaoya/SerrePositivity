@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoof
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorQuasiIsoFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CellDGResolutionNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.DGFunctorQuasiIsoFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.CellDGResolutionNerve
 
 /-!
 概要：元対角始域の cell 分解と同じ thick 平坦核の native 同値を構成する。
@@ -20,7 +20,7 @@ local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCatego
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnor_isDGPretriangulated R d
 local instance : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotQuotientInput R d).diagonal) :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeDiagonal_isExactFunctor R d
-local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "B" => DGOdotGluing R d
 local notation "δ" => DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d)
 local notation "P" => dgQuotientImage R (δ)

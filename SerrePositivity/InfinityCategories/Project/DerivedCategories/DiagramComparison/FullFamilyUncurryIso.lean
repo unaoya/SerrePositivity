@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoPair
 
 /-!
 概要：関手圏の全族同型を、元の二変数の共同評価の全族同型へ戻す。

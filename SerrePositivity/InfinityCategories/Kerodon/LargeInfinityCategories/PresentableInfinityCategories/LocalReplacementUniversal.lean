@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalCoconeInitial
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.EdgeTargetCocone
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.EdgeTargetCocone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeFamily
 
 /-!

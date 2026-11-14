@@ -21,7 +21,7 @@ Tor の長完全列で `Tor_i(N, F) = 0`（`i ≥ 1`）なので `Tor_i(N, M) �
 
 ## 使われ方
 
-解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 3。
+Paper Theorem 2.5 の式 (2.4) の等標数部分で、高次 Koszul ホモロジーの消滅に用いるTor の一様な零化。
 パラメータ Koszul 複体の高次ホモロジーを一様な元で消し、有限長の加群の中での評価に渡す。
 `M` の捩れのなさ・局所性・Noether 性は要求しない。
 -/

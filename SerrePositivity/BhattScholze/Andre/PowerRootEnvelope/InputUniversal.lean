@@ -12,10 +12,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
 BS 著者版 Proposition 3.13 の普遍性を、Remark 7.15 のモニック根の入力で扱う。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Initiality`、`PowerRootEnvelope/Unconditional/FrobeniusPD`、`Variants/MonicRootedExtension`。
@@ -23,7 +23,7 @@ BS 著者版 Proposition 3.13 の普遍性を、Remark 7.15 のモニック根�
 
 universe u
 
-/-! ## André A1-a：通常の入力環から H/d への標準射（旧 Andre/Remark715/PowerRootPrismMonicStandardEquationInput.lean）
+/-! ## André A1-a：通常の入力環から H/d への標準射
 
 ## 概要
 
@@ -151,7 +151,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicStandardEquationInput
 
-/-! ## André A1-a：完備入力環から H/d への標準射の接続（旧 Andre/Remark715/PowerRootPrismMonicStandardCompletedInput.lean）
+/-! ## André A1-a：完備入力環から H/d への標準射の接続
 
 ## 概要
 
@@ -285,7 +285,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicStandardCompletedInput
 
-/-! ## André A1-a：標準入力射を保つ実完備化の普遍性（旧 Andre/Remark715/PowerRootPrismMonicEquationInputSquare.lean）
+/-! ## André A1-a：標準入力射を保つ実完備化の普遍性
 
 ## 概要
 
@@ -453,7 +453,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicEquationInputSquare
 
-/-! ## André A1-a：原典の完備入力作用を保つ実完備化の普遍性（旧 Andre/Remark715/PowerRootPrismMonicOriginalInputSquare.lean）
+/-! ## André A1-a：原典の完備入力作用を保つ実完備化の普遍性
 
 ## 概要
 
@@ -546,7 +546,7 @@ theorem powerRootPrismMonicOriginalInputSquare_iff_roots
   dsimp only
   intro hT F hF
   let : IsAdicComplete (Ideal.span {(p : B ⧸ Q.ideal)}) (B ⧸ Q.ideal) :=
-    boundedPrism_quotient_isAdicComplete_prime Q hB
+    _root_.SerrePositivity.BhattScholze.boundedPrism_quotient_isAdicComplete_prime Q hB
   constructor
   · intro hs n
     have h := RingHom.congr_fun hs (lS (powerRootPolynomialVariable R p hp n))
@@ -606,7 +606,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicOriginalInputSquare
 
-/-! ## André A1-a：正則性を明示した源 prism の入力作用を保つ普遍性（旧 Andre/Remark715/PowerRootPrismMonicSourcePrismUniversal.lean）
+/-! ## André A1-a：正則性を明示した源 prism の入力作用を保つ普遍性
 
 ## 概要
 
@@ -827,7 +827,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicSourcePrismUniversal
 
-/-! ## André A1-a：元の H の入力作用を持つ対象と初期性（旧 Andre/Remark715/PowerRootPrismMonicEnvelopeInitial.lean）
+/-! ## André A1-a：元の H の入力作用を持つ対象と初期性
 
 ## 概要
 
@@ -1008,7 +1008,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicEnvelopeInitial
 
-/-! ## André E1・E2：完全試験 prism の剰余根データによる実完備化の普遍性（旧 Andre/Remark715/PowerRootPrismMonicResidueRootUniversal.lean）
+/-! ## 完全試験 prism の剰余根データによる実完備化の普遍性
 
 ## 概要
 

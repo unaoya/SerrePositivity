@@ -82,14 +82,14 @@ def cofiberStableQuotient (X : StableModel.{u}) : cofiberStableModel X ⟶ X :=
 /-- 概要：標準零 cofiber 関手を安定な入力間の完全関手にする。
 方針：既存の零対象と全押し出しの保存を添える。
 規約：false は λ、true は ι の cofiber 図式。使われ方：McCarthy の object S の関手。 -/
-def zeroCofiberStableFunctor (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) (b : Bool) :
+def zeroCofiberStableFunctor (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier) (b : Bool) :
     X ⟶ cofiberStableModel X :=
   ⟨zeroCofiberFunctor z b, (zeroCofiberFunctor_preservesSConstructionData z b).toCofiberData⟩
 
 /-- 概要：標準零 cofiber 関手の subobject は恒等または指定零対象。
 方針：正方形の零角の隣の評価の式。
 規約：全単体での厳密な等号。使われ方：McCarthy の fiber の基底の照合。 -/
-lemma zeroCofiberStableFunctor_subobject (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier)
+lemma zeroCofiberStableFunctor_subobject (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier)
     (b : Bool) : (zeroCofiberStableFunctor X z b).val ≫ (cofiberStableSubobject X).val =
       (if b then SSet.const z.vertex else 𝟙 X.carrier) := by
   change zeroCofiberFunctor z b ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
@@ -100,7 +100,7 @@ lemma zeroCofiberStableFunctor_subobject (X : StableModel.{u}) (z : _root_.Serre
 /-- 概要：ι 型の標準零 cofiber 関手の商は完全関手として恒等射。
 方針：商の厳密な評価公式を部分型の外延性で移す。
 規約：保存条件の証明の選択によらない。使われ方：McCarthy の fiber の射の厳密な切断。 -/
-lemma zeroCofiberStableFunctor_quotient (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) :
+lemma zeroCofiberStableFunctor_quotient (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier) :
     zeroCofiberStableFunctor X z true ≫ cofiberStableQuotient X = 𝟙 X :=
   Subtype.ext (zeroCofiberFunctor_quotient z true)
 

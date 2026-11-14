@@ -1,8 +1,10 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianOpposite
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CartesianInitialBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.CartesianInitialBoundary
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -64,3 +66,10 @@ lemma initialBoundaryLifting_of_isInitialVertex_fiber {E B : SSet.{u}}
   exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.initialBoundaryLifting_of_isInitialVertex_fiber_op p b x hx
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.4.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_of_isInitialVertex_fiber
+attribute [cite HTT "2.4.4.8"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_of_isInitialVertex_fiber
+attribute [cite HTT "5.1.2.1" (partial := stronger-hyp) "仮定：Cartesian ファイブレーションの切断が各繊維で始対象（Lean が強い：底と全空間を準圏とする）。結論：各繊維の始対象から相対始点境界充填を得て、内部 Hom の同じ境界充填を恒等底図式の繊維に制限すると、指定切断が切断準圏の始対象となる（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_of_isInitialVertex_fiber

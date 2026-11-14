@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SubcomplexInverseImageComparison
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SubcomplexInverseImageComparison
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ReplacementInnerHornPullback
 

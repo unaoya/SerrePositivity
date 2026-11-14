@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitCommaRecovery
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointHomFamilyInitiality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaUnitTransportComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.InitialFinalComparisons.PointHomFamilyInitiality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.CommaUnitTransportComparison
 
 /-!
 概要：同じ自由単位の comma 候補の始対象性を、その点からの普遍輸送へ還元する。
@@ -24,7 +24,7 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def derivedFreeProbeUnitCommaTargetFiberVertex
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection (cAlgForgetDerived A) x)
       (derivedFreeProbeVertex A x)) _⦋0⦌ :=
   ⟨derivedFreeProbeUnitCommaVertex A x, by
@@ -32,7 +32,7 @@ def derivedFreeProbeUnitCommaTargetFiberVertex
     exact derivedFreeProbeUnitCommaVertex_target A x⟩
 
 def derivedFreeProbeUnitCommaTransportMap
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection (cAlgForgetDerived A) x)
@@ -41,7 +41,7 @@ def derivedFreeProbeUnitCommaTransportMap
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberToInterval (cAlgForgetDerived A) x y
 
 lemma derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (h : ∀ y : (CAlg_R A) _⦋0⦌,
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (derivedFreeProbeUnitIntervalMap A x y)
         (derivedFreeProbeUnitCommaTransportMap A x y))) :

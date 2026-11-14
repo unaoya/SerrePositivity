@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.StronglySaturatedClosure
 
 /-!
@@ -61,3 +63,8 @@ lemma localObjectsSubcomplex_stronglySaturatedClosure (W : Set (X _⦋1⦌))
   exact propext (isLocalObject_stronglySaturatedClosure_iff W hX z)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.5.14" (partial := stronger-hyp) "仮定：presentable C と小生成飽和 S（Lean が強い：S は小さい辺族の強飽和生成閉包）。結論：各 X から同じ S 内の辺で S-local Y に写す置換（この場合に一致）。局所対象は元の族と強飽和閉包で同じであり、小族への局所性だけを未比較のまま渡さない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLocalObject_stronglySaturatedClosure_iff

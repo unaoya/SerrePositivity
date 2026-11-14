@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalTerminal
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklacePostcomposition
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklacePostcomposition
 
 /-! # 元の全単体作用素が区間 bead に誘導する射
 概要：面・退化を含む元の単体圏の全射を、同じ像区間の実 necklace 射へ送る。

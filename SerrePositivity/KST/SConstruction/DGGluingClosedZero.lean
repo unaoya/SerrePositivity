@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesArrows
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Zero
 
 /-! # 指定閉零二成分による実 gluing 零対象

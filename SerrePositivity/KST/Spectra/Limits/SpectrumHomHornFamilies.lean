@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Spectra.PostMappingFibration
 public import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativePointedHomLifting
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.RelativePointedHomLifting
 
 /-!
 概要：段ごとの fibration に沿って持ち上がるスペクトル写像の整合族。

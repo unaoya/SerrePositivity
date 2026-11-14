@@ -18,7 +18,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 方針：接続射の式を一回シフトとの比較の自然性で輸送する。
 規約：三角形の最初の二射の可換性は不要。使われ方：最後の第三射の合成式。 -/
 lemma cofiberTriangle_mor₃_naturality {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence d)
+    (t d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence d)
     (a : t.hoShortComplex.X₁ ⟶ d.hoShortComplex.X₁)
     (c : t.hoShortComplex.X₃ ⟶ d.hoShortComplex.X₃)
     (h : c ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting d hd = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting t ht ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor X).map a) :

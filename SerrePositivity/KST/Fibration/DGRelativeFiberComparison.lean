@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.DGRelativeZeroPreservation
 public import SerrePositivity.KST.Spectra.SpectrumFiberSquares
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NativeConeComparisonTriangles
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.NativeConeComparisonTriangles
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibrationInvertibleReflection
 
 /-! # 元の相対 K 四角形から、同じ cospan の実 fiber への比較
@@ -32,8 +32,8 @@ theorem dgRelativeKLimitCone_isLimit : _root_.SerrePositivity.InfinityCategories
   OmegaSpectrum.CoherentPullback.infinityCone_isLimit _
 
 /-- 元の零角と右辺を変えず、左下の頂点を実 fiber に置き換えた四角形。 -/
-def dgRelativeCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.square ≫ dgKInputK A)) where
+def dgRelativeCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (d.square ≫ dgKInputK A)) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgRelativeKLimitCone A d)
   zero_corner := by
     have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgRelativeKLimitCone A d) =
@@ -41,8 +41,8 @@ def dgRelativeCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.P
       rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_top]
       exact congrArg (fun q => q ≫ (d.square ≫ dgKInputK A))
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_topEdge
-    have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgRelativeKLimitCone A d)) 0 1 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK A) 0 1 := by
+    have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (dgRelativeKLimitCone A d)) 0 1 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK A) 0 1 := by
       rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source, ht, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source]
     rw [hz]
     exact dgRelativeK_zero_corner A d
@@ -50,7 +50,7 @@ def dgRelativeCanonicalFiberSquare : _root_.SerrePositivity.InfinityCategories.P
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_right]
     change horn₂₂.ι₀₂ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (d.square ≫ dgKInputK A) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge]
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     exact (SSet.yonedaEquiv.symm_apply_apply
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (d.square ≫ dgKInputK A))).symm
   isPullback := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_isPullback _ (dgRelativeKLimitCone_isLimit A d)

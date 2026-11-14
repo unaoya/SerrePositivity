@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroMixedBoundary
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.CommutativeSquareRealization
 
 /-!
 概要：元実／絶対上三角形の全 Hom を指定零角比較付きの同じ零 Hom 正方形に置く。

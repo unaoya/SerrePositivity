@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldStandardSourceComponents
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SpanPullbackIsomorphism
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Scaffold.ScaffoldBridgeHomPullbacks
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniversePullbacks
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniversePullbacks
 
 /-!
 概要：元の source pullback と同じ小さい同じ貼合せの native core pullback を同型で結ぶ。

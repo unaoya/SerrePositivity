@@ -21,7 +21,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の BF fiber 四角形を、その同じ固定 K 辺の表示で保持する。 -/
 def dgKInputFiberSquare {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK A)).toTruncated) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK A)).toTruncated) where
   square := (FiberModel.homotopyFiberSquare (dgKInputSpectrumMap A f)).square
   zero_corner := (FiberModel.homotopyFiberSquare (dgKInputSpectrumMap A f)).zero_corner
   right_edge := (FiberModel.homotopyFiberSquare (dgKInputSpectrumMap A f)).right_edge.trans
@@ -30,7 +30,7 @@ def dgKInputFiberSquare {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
 
 /-- 同じ Sp fiber 頂点の整数 π 群は、元の実 BF homotopy fiber の同じ群と同型。 -/
 def dgKInputFiberPiComparison {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) (j : ℤ) :
-    (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (dgKInputFiberSquare A f).square 0 0) ≅
+    (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (dgKInputFiberSquare A f).square 0 0) ≅
       CommGrpCat.of (OmegaSpectrum.homotopyGroup (dgKBFHomotopyFiber A f) j) :=
   (SpectrumHo.piFunctor j).mapIso (FiberModel.fiberObjectIso (dgKInputSpectrumMap A f)) ≪≫
     SpectrumHo.piComparison (dgKBFHomotopyFiber A f) j
@@ -43,7 +43,7 @@ theorem dgKInputFiberSquare_negative_subsingleton_of_verdier
       (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
     (j : ℤ) (hj : j < 0) :
     Subsingleton ((SpectrumHo.piFunctor j).obj
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (dgKInputFiberSquare A g).square 0 0)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (dgKInputFiberSquare A g).square 0 0)) := by
   have := dgKBFHomotopyFiber_negative_subsingleton_of_verdier A f g h j hj
   exact (dgKInputFiberPiComparison A g j).commGroupIsoToMulEquiv.injective.subsingleton
 

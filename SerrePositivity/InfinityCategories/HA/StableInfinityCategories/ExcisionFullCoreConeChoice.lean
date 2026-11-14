@@ -75,7 +75,7 @@ lemma excisionReplaceInitial_coreOuterCone_val {X : SSet.{u}}
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCorePuncturedToFull_projection,
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridSuspensionAt_source]
     simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCoreOuterCospanBoundary_projection]
-  have hQ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridSuspensionAt.{u} 0 0) 0 0 =
+  have hQ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridSuspensionAt.{u} 0 0) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridInitialPoint := by rfl
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionReplaceInitial_squareCone_val c _ b hb hQ]
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) b ≫ c.val = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCoreOuterCospanBoundary ≫ d.val

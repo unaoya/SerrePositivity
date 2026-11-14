@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitModuleEvaluation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleSquareData
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleTriangleComponents
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.TriangleExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleSquareData
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Triangles.DGModuleTriangleComponents
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.TriangleExt
 
 /-!
 概要：同じラベル作用の閉分裂四角形を、D-12 用の実加群二胞体として保持する。
@@ -55,7 +55,7 @@ theorem dgKappaSplitModule_zero_isZero (Z : DGKappaZeroInput R D I) :
 
 /-- D-12 に渡す元の零角は、同じ実右 dg 加群 nerve の零頂点。 -/
 theorem dgKappaSplitModule_zero_isZeroVertex (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve R (DGKappaCone R D I))
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve R (DGKappaCone R D I))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((dgKappaModuleLabelAction R D I X).obj (dgKappaZeroFunctor R D I Z))) :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isZeroVertex_of_closed_isZero _ (dgKappaSplitModule_zero_isZero R D I X Z)
 
@@ -128,7 +128,7 @@ theorem dgKappaSplitPerfPointwiseSquare_isPushout_of_input
 /-- 同じ点ごとの零三角形は、D-12 の明示入力の下で cofiber 列となる。 -/
 theorem dgKappaSplitPerfPointwiseZeroTriangle_isCofiber_of_input
     (H : DGKappaSplitCofiberInput R D I X) (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (dgKappaSplitPerfPointwiseZeroTriangle R D I X Z) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (dgKappaSplitPerfPointwiseZeroTriangle R D I X Z) :=
   dgKappaSplitPerfPointwiseSquare_isPushout_of_input R D I X H Z
 
 end SerrePositivity.KST.NonConnective

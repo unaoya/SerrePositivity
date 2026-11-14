@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberMapNaturality
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.GroupFiveLemma
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.GroupFiveLemma
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
 
 /-!

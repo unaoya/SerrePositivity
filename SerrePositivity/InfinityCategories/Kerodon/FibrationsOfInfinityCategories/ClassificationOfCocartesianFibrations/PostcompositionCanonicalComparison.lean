@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.QCatPostcompositionFiberComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PostcompositionDiagonalComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseLeftFibration
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniverseLeftFibration
 
 /-!
 概要：実際の cocartesian 輸送の後合成 fiber の標準対角比較を、追加仮定なしで同値と証明する。

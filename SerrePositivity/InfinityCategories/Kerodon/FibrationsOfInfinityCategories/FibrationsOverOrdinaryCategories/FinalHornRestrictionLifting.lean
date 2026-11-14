@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SkeletalLifting
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalExtension
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FinalHornProductBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FinalHornProductBoundary
 
 /-! # 最後の頂点による外側ホーンの相対充填
 

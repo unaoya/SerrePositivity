@@ -77,7 +77,7 @@ lemma hasColimit_binaryPointDiagram {X : SSet.{u}} [Quasicategory X] [_root_.Ser
       rw [coprod.inr_desc]
       apply SSet.yonedaEquiv.injective
       rw [hy', stdSimplex.yonedaEquiv_δ_comp]
-      have hv : X.δ 0 (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ R)) = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 1 := by
+      have hv : X.δ 0 (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ R)) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 1 := by
         rw [← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc, SSet.yonedaEquiv_comp]
         apply congrArg (fun a => R.app (Opposite.op ⦋0⦌) a)
         apply Prod.ext <;> decide

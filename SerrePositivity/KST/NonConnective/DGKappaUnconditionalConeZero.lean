@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaUnconditionalStageSupply
 public import SerrePositivity.KST.NonConnective.DGKappaSplitCofiberSupply
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaClosedProjectiveOperations
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaClosedProjectiveOperations
 
 /-!
 概要：同じ D-8 無条件 cone の実零所属を消費し、同じ cone の連結 K・固定 K の消滅を得る。
@@ -36,7 +36,7 @@ theorem dgKappaUnconditionalZeroInput :
 規約：I・Z・cofiber の存在を追加仮定に残さない。
 使われ方：同じ cone の連結 fibration から構造射を作る際の消滅。 -/
 theorem dgKappaUnconditionalConnectedK_isZeroVertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       (kOmegaSpectrum (presentedPerfectDGStableModel R
         (DGKappaCone R D (dgKappaSelectedConeInput R D κ hκ))))) :=
   dgKappaConnectedK_isZeroVertex R D (dgKappaSelectedConeInput R D κ hκ)
@@ -46,7 +46,7 @@ theorem dgKappaUnconditionalConnectedK_isZeroVertex :
 方針：同じ元の SOA 比較を使う既存の固定 K 消滅へ実零所属を代入する。
 規約：固定 dgKInputK を変えない。使われ方：K-7 の同じ実 cone の非負次数 fiber 比較。 -/
 theorem dgKappaUnconditionalFixedK_isZeroVertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R
       (dgKappaConeKInput R D (dgKappaSelectedConeInput R D κ hκ)))) :=
   dgKappaFixedK_isZeroVertex R D (dgKappaSelectedConeInput R D κ hκ)
     (dgKappaUnconditionalZeroInput R D κ hκ)
@@ -67,7 +67,7 @@ theorem dgSuspensionUnconditionalIteration_zeroInput
 使われ方：K-7 c5・d3 の連結 fibration による全段の実構造辺。 -/
 theorem dgSuspensionUnconditionalIteration_coneFixedK_isZeroVertex
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R
       (dgKappaConeKInput R (dgSuspensionUnconditionalIteration R κ hκ A n)
         (dgSuspensionIterationStage R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone))) :=
   dgKappaUnconditionalFixedK_isZeroVertex R (dgSuspensionUnconditionalIteration R κ hκ A n) κ hκ

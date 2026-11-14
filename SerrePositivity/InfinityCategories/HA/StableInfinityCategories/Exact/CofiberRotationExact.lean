@@ -21,7 +21,7 @@ public import Mathlib.CategoryTheory.Opposites
 public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Combinatorics.Quiver.ReflQuiver
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ExactFunctor

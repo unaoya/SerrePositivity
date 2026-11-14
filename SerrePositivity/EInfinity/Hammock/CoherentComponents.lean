@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomOrdinary
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePiZero
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLift.UniverseLiftPiZero
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!

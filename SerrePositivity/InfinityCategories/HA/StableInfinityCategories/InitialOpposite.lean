@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialOpposite
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.BoundaryOpposite
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.BoundaryOpposite
 
 /-! # 始対象と終対象の反転
 
@@ -20,11 +20,11 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 /-- 概要：零頂点を反転しても零頂点である。
 方針：始対象性と終対象性を交換する。
 規約：頂点は opObjEquiv で移す。使われ方：suspension と loop の双対性。 -/
-lemma IsZeroVertex.op {X : SSet.{u}} {x : X _⦋0⦌} (hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := X.op) (SSet.opObjEquiv.symm x) :=
+lemma IsZeroVertex.op {X : SSet.{u}} {x : X _⦋0⦌} (hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := X.op) (SSet.opObjEquiv.symm x) :=
   ⟨hx.2.op_isInitialVertex, hx.1.op_isTerminalVertex⟩
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (op)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex export _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroVertex (op)
 
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

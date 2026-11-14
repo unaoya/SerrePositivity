@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarCuts
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarCuts
 /-!
 概要：重複頂点より前の切断は、残りの tail の退化写像と厳密に可換する。
 方針：長さを加法表示した tail の順序写像を使い、二つの predAbove を各場合で比較する。

@@ -1,0 +1,14 @@
+{
+  "modules": [
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroTriangleHoMap",
+    "SerrePositivity.InfinityCategories.HTT.Section2_1_3.VertexFiberOpposite",
+    "SerrePositivity.InfinityCategories.HTT.Section2_1_3.WeakContractibility",
+    "SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence",
+    "SerrePositivity.InfinityCategories.HTT.Section5_1_4.WeakContractibleOpposite",
+    "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroHomotopy"
+  ],
+  "source_sha256": "394735d7dcc2d19efb57834b43a8c6de4b9abd123a039f92372686211dd8b3d4",
+  "seconds": 68.77017324976623,
+  "rc": 0,
+  "log": "/tmp/bulk-w1-b2/field-fix-build-v3.log"
+}

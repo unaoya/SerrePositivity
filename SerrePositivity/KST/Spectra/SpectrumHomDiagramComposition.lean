@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitHomHolim
 public import SerrePositivity.KST.Spectra.RawSpectrumUnpointedWeightedComposition
 public import SerrePositivity.KST.Spectra.WeightedParameterNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedConePrecomposition
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedConePrecomposition
 
 /-!
 概要：raw Hom の係数図式の同型は、元の豊穣 Hom の前合成作用を保つ。

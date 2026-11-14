@@ -4,7 +4,7 @@ public import SerrePositivity.KST.NonConnective.SequentialRelativeHomFibration
 public import SerrePositivity.KST.NonConnective.SequentialNativeHomLimit
 public import SerrePositivity.KST.NonConnective.SequentialTowerIndex
 public import SerrePositivity.KST.NonConnective.SequentialDiagramReplacement
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictNativeCocones
 
 /-!
 概要：相対 cofibrant な逐次 BF 列の実際の ∞ 余極限。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetImageFactorOrder
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexSubsetMap
 
 /-! # 元の部分集合写像の像への実単体的因子
 概要：元の部分集合の単体的写像を、同じ元の像部分集合の単体を通して分解する。

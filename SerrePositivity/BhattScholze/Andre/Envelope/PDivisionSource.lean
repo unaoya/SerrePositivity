@@ -19,7 +19,7 @@ public import SerrePositivity.BhattScholze.Delta.Division.Basic
 主定理には使われない。旧 B4 経路の部品のうち、BS 著者版 Corollary 2.39・BS 著者版 Corollary 2.44 の一般化に使える部分として残した（BS-W8）。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 BS の中には import 元がない（残した結果。`scripts/audit/bhatt_scholze.lean` が監査する）。
@@ -27,7 +27,7 @@ BS の中には import 元がない（残した結果。`scripts/audit/bhatt_sch
 
 universe u
 
-/-! ## G7の交換入力に相対的な全源評価環へのTor移送（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceColimitTor.lean）
+/-! ## G7の交換入力に相対的な全源評価環へのTor移送
 
 標準MathlibのPreservesColimitを明示的に受け取る。
 この入力自体を証明したり、G7を受領したりしたという主張ではない。
@@ -65,7 +65,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceColimitTor
 
-/-! ## 実自由δ射の通常テンソル積とraw δ包（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceTensor.lean）
+/-! ## 実自由δ射の通常テンソル積とraw δ包
 
 源Pと終域Lは同じ underlying 型だが、LのP代数構造はα:x↦p zによるもの。
 通常テンソル積の標準写像を保つ比較を構成し、導来テンソルの離散性とは区別する。
@@ -197,7 +197,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceTensor
 
-/-! ## 実自由δ射の通常テンソルと具体的分冪表示環（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourcePrincipal.lean）
+/-! ## 実自由δ射の通常テンソルと具体的分冪表示環
 
 自由δ射の導来テンソルの離散性は主張しない。A上の導来完備化と実p還元は別に明示する。
 -/
@@ -368,7 +368,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourcePrincipal
 
-/-! ## G7交換入力を明示した実自由δ射の導来分冪比較（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceDerivedPrincipal.lean）
+/-! ## G7交換入力を明示した実自由δ射の導来分冪比較
 
 PreservesColimitの仮定自体はここでは証明しない。G7の解消や無条件のB4完成とは区別する。
 -/
@@ -543,7 +543,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceDerivedPrincipal
 
-/-! ## 実通常テンソルのp正則性と旧ねじれ商の標準比較（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceTensorRegular.lean）
+/-! ## 実通常テンソルのp正則性と旧ねじれ商の標準比較
 
 raw包の既存正則性と標準比較同型を利用する。G7やCFFを仮定した結論ではない。
 -/
@@ -631,7 +631,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceTensorRegular
 
-/-! ## 実通常テンソル入力と既存δ除算候補の実導来完備化H⁰比較（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceTensorCompletion.lean）
+/-! ## 実通常テンソル入力と既存δ除算候補の実導来完備化H⁰比較
 
 同型な通常入力環を、既存の環としての完備化普遍性で比較する。
 G7・原典の導来δpushout比較・古典的完備化への置換は用いない。
@@ -812,7 +812,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceTensorCompletion
 
-/-! ## 実通常テンソルのδ構造と両因子の標準包含（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceTensorDelta.lean）
+/-! ## 実通常テンソルのδ構造と両因子の標準包含
 
 raw包のδ切断を標準比較同型とW₂写像で引き戻す。
 -/
@@ -890,7 +890,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDivisionSourceTensorDelta
 
-/-! ## 実通常テンソルの実導来完備化H⁰と標準比較のδ両立（旧 Andre/RootedExtension/Supplement/Division/DeltaPDivisionSourceTensorCompletionDelta.lean）
+/-! ## 実通常テンソルの実導来完備化H⁰と標準比較のδ両立
 
 実H⁰の既存δ延長と環射の普遍性を用いる。
 原典の導来δpushout比較・分冪包比較・CFFはここでは結論しない。

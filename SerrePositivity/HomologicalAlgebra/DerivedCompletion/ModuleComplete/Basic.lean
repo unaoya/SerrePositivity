@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Homology.DerivedCategory.Linear
 public import Mathlib.CategoryTheory.Shift.ShiftedHom
@@ -179,3 +181,8 @@ theorem isModuleComplete_quotient_span_pow (f : R) (N : ℕ) :
 end SerrePositivity.DerivedCompletion
 
 end ModulePart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.3.22" (partial := component) "仮定：通常の可換環 R と一元 a、通常の導来対象（Lean が強い：主元による局所化 R[1/a] の検査の場合）。結論：R[1/a][0] から全整数シフトの射が零となることを導来完備性として定義する（S-local な検査対象のこの部分に一致）。任意の全 S-local 対象への直交との同値はこの定義に含まれない。"] _root_.SerrePositivity.DerivedCompletion.IsComplete

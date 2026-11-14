@@ -36,8 +36,8 @@ instance boundaryKSpaceFunctor_kanComplex (X : StableModel.{u}) :
 def boundarySRealizationComparison (X : StableModel.{u}) :
     pointedSRealization X.carrier ⟶ (boundaryReducedRealizationFunctor 0).obj X :=
   boundaryReductionPointedMap 0 X
-    (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).vertex
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).isZero)
+    (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier).vertex
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier).isZero)
 
 /-- 概要：実現の点つき比較は Kan 置換後に全基点 π_* 同型。
 方針：商写像の局所化可逆性と L9 への接続を使う。

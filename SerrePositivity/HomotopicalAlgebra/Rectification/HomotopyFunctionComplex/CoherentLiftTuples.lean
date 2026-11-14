@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.VertexTuples
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.KanLiftCoherence
 
 /-!

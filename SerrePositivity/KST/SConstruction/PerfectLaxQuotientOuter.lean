@@ -44,10 +44,10 @@ lemma rawOuterSquare_left : _root_.SerrePositivity.InfinityCategories.Kerodon.Li
 
 /-- 外周の四角は、元の左端・lax 圏・完備化先と元の零圏。 -/
 lemma rawOuterSquare_vertices :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex d.left ∧
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (laxCategory p q) ∧
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 1 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex d.sequence.right ∧
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 0 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.rawOuterSquare 0 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex d.left ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.rawOuterSquare 1 0 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (laxCategory p q) ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.rawOuterSquare 1 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex d.sequence.right ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.rawOuterSquare 0 1 = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} := by
   constructor
   · have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source d.rawOuterSquare
     rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.inclusion).src_eq] at h
@@ -97,7 +97,7 @@ def outerDiagram : PerfectVerdierDiagram.{u} where
     rw [d.outerSquare_inclusion]
     exact d.rawOuterSquare_right
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.rawOuterSquare 0 1))
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.rawOuterSquare 0 1))
     rw [d.rawOuterSquare_vertices.2.2.2, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
     exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero
 

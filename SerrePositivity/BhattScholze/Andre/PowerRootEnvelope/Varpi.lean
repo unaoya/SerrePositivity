@@ -15,10 +15,10 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerP
 モニック入力の mod p 分冪包と分冪表示環の忠実平坦性、完全 prism 上の mod p 分冪包、完全 prism の生成元から ϖ（ϖᵖ と p が単元倍で等しい元）を選ぶこと、ϖ 商から p 商への Frobenius 同型と逆 Frobenius。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Completion`、`PowerRootEnvelope/CompletionPD`、`PowerRootEnvelope/DeltaDivisionResidue`、`PowerRootEnvelope/PowerRootInput`、`PowerRootEnvelope/VarpiPD`、`Variants/MonicRootedExtension`。
@@ -26,7 +26,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerP
 
 universe u v
 
-/-! ## André E1・E2：完全 prism の生成元から選ぶ ϖ（旧 Andre/Remark715/PerfectPrismVarpi.lean）
+/-! ## 完全 prism の生成元から選ぶ ϖ
 
 ## 概要
 
@@ -201,7 +201,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpi
 
-/-! ## André E1・E2：モニック入力の実 mod p 分冪包（旧 Andre/Remark715/MonicModPrimePDEnvelope.lean）
+/-! ## モニック入力の実 mod p 分冪包
 
 ## 概要
 
@@ -331,7 +331,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicModPrimePDEnvelope
 
-/-! ## André E1・E2：完全 prism 上のモニック入力の実 mod p 分冪包（旧 Andre/Remark715/PerfectPrismMonicModPrimePDEnvelope.lean）
+/-! ## 完全 prism 上のモニック入力の実 mod p 分冪包
 
 ## 概要
 
@@ -438,7 +438,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicModPrimePDEnvelope
 
-/-! ## André E1：モニック関係式の分冪表示環の忠実平坦性（旧 Andre/Remark715/MonicPDFlat.lean）
+/-! ## André E1：モニック関係式の分冪表示環の忠実平坦性
 
 ## 概要
 
@@ -533,7 +533,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPDFlat
 
-/-! ## André E1・E2：ϖ 商から p 商への具体的 Frobenius 同型（旧 Andre/Remark715/PerfectPrismVarpiFrobeniusQuotient.lean）
+/-! ## ϖ 商から p 商への具体的 Frobenius 同型
 
 ## 概要
 
@@ -633,7 +633,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiFrobeniusQuotient
 
-/-! ## André E1・E2：二元係数商から ϖ 商への逆 Frobenius（旧 Andre/Remark715/PerfectPrismFrobeniusPairToVarpi.lean）
+/-! ## 二元係数商から ϖ 商への逆 Frobenius
 
 ## 概要
 

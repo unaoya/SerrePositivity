@@ -61,8 +61,8 @@ instance relativeFirstRowSimplex_quasicategory (n : ℕ) :
 lemma relativeFirstRowSimplex_pullback_iff (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ)
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj B.obj)
     (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare Q) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ↔
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
   have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits B.obj := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteLimits_of_isStable B.obj
   rw [relativeFirstRowSimplex_mem_edge_iff h, relativeFirstRowSimplex_mem_edge_iff h]
   apply forall_congr'
@@ -78,7 +78,7 @@ lemma relativeFirstRowSimplex_exists_pullback (h : _root_.SerrePositivity.Infini
       (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)) :
     ∃ Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj B.obj,
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan Q = d ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare Q ∧
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
   have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits B.obj := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteLimits_of_isStable B.obj
   have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits ((ihom (Δ[n] : SSet.{u})).obj B.obj) :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteLimits_functorCategory _ _
@@ -89,9 +89,9 @@ lemma relativeFirstRowSimplex_exists_pullback (h : _root_.SerrePositivity.Infini
   refine ⟨Q, hQd, hQ, (relativeFirstRowSimplex_pullback_iff h n Q hQ).mpr ?_⟩
   have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ Q = horn₂₂.ι₀₂ ≫ d := by
     rw [← hQd, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge]
-  change (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q).edge ∈
+  change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q).edge ∈
     (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge, hr]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge, hr]
   exact hd
 
 end SerrePositivity.KST.LocalizingInvariants

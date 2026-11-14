@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PullbackSmallColimits
 
 /-!
@@ -41,3 +43,8 @@ lemma pullback_isPresentable_of_accessiblePullback
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_hasSmallColimits p q hp hE.hasSmallColimits hD.hasSmallColimits hpc hqc⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.3.12" (partial := special) "仮定：presentable な三準圏と全小余極限保存な両脚（Lean が強い：元の平方は一方が categorical lifting を持つ strict pullback）。結論：同じ引き戻しが presentable、元の引き戻しへの関手の全小余極限保存の成分判定（この模型で一致）。汎用 accessibility 命題の入力は実証済みの AccessiblePullback.pullback_isAccessible で供給できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isPresentable_of_accessiblePullback

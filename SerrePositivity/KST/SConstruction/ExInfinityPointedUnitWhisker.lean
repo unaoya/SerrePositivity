@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.ExInfinityPointedFamilies
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-! # 同じ Ex∞ 単位の標準点つき全 Hom 自然性
 概要：元の Ex∞ 単位は、標準点つき厳密豊穣関手の全 Hom に自然。

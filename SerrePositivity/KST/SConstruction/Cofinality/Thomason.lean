@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.Cofinality.KanPullbackSupply
 public import SerrePositivity.KST.Fibration.Relative.ClosedStableFiberUnconditional
 
@@ -29,3 +31,8 @@ theorem kSpectrumMap_cofinality
     (Fibration.closedStableFlagPostPullback _)
 
 end SerrePositivity.KST.SConstruction.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite AGH "Thm A.3.2" (partial := component) "仮定：冪等完備化を与える安定模型の完全関手（Karoubi 同値の特殊形）。結論：π₀K の単射（A.3.2 の単射の成分。部分群との全単射は別）。"] _root_.SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality

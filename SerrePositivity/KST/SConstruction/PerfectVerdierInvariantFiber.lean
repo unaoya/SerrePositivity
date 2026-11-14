@@ -18,35 +18,35 @@ variable {E : perfectStableInfinity.{u} ⟶ Sp.{u}} (hE : IsPerfectLocalizingInv
 
 /-- 任意の元の実提示列を、同じ coherent 四角形の像の三角形へ送る。 -/
 def IsPerfectLocalizingInvariant.sequenceFiberTriangle (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u} := hE.fiberTriangle d.presentation
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u} := hE.fiberTriangle d.presentation
 
 /-- 図式の存在を追加入力にせず、元の全提示列に実 fiber 列を得る。 -/
 lemma IsPerfectLocalizingInvariant.sequenceFiberTriangle_isFiber
-    (d : PerfectVerdierSequence.{u}) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.sequenceFiberTriangle d) :=
+    (d : PerfectVerdierSequence.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hE.sequenceFiberTriangle d) :=
   hE.fiberTriangle_isFiber d.presentation
 
 /-- 同じ実 fiber 列の左端は、元の左安定圏の同じ不変量値。 -/
 lemma IsPerfectLocalizingInvariant.sequenceFiberTriangle_left
     (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (hE.sequenceFiberTriangle d).square 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (hE.sequenceFiberTriangle d).square 0 0 =
       E.app (Opposite.op ⦋0⦌) d.leftVertex := by
-  change E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.presentation.square 0 0) = _
+  change E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.presentation.square 0 0) = _
   exact congrArg (fun x => E.app (Opposite.op ⦋0⦌) x) (perfectVerdierSquare_vertices d).1
 
 /-- 同じ実 fiber 列の中央は、元の中央安定圏の同じ不変量値。 -/
 lemma IsPerfectLocalizingInvariant.sequenceFiberTriangle_middle
     (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (hE.sequenceFiberTriangle d).square 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (hE.sequenceFiberTriangle d).square 1 0 =
       E.app (Opposite.op ⦋0⦌) d.middleVertex := by
-  change E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.presentation.square 1 0) = _
+  change E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.presentation.square 1 0) = _
   exact congrArg (fun x => E.app (Opposite.op ⦋0⦌) x) (perfectVerdierSquare_vertices d).2.1
 
 /-- 同じ実 fiber 列の右端は、商の冪等完備化の同じ不変量値。 -/
 lemma IsPerfectLocalizingInvariant.sequenceFiberTriangle_right
     (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (hE.sequenceFiberTriangle d).square 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (hE.sequenceFiberTriangle d).square 1 1 =
       E.app (Opposite.op ⦋0⦌) d.rightVertex := by
-  change E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.presentation.square 1 1) = _
+  change E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.presentation.square 1 1) = _
   exact congrArg (fun x => E.app (Opposite.op ⦋0⦌) x) (perfectVerdierSquare_vertices d).2.2
 
 /-- 値域の包含辺は、元の包含を表す同じ Cat^perf 辺の不変量による像。 -/

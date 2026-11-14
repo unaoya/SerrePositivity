@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.HomotopyOpposite
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareDuality
+public import SerrePositivity.InfinityCategories.HA.Section6_1_1.SquareDuality
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PastingSplitProjection
 
 /-! # 反対ホモトピー圏の比較と辺
@@ -38,7 +38,7 @@ lemma homotopyOppositeEquivalence_map_homMk {X : SSet.{u}} [Quasicategory X]
 規約：端点も同時に一致する。使われ方：二項積の第一射影。 -/
 lemma edgeUnop_dualSquare_right {X : SSet.{u}}
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeUnop (X := X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R)) = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow R := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeUnop (X := X) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R)) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow R := by
   apply SSet.Truncated.Edge.ext
   change R.app _ (_, _) = R.app _ (_, _)
   congr 1
@@ -49,7 +49,7 @@ lemma edgeUnop_dualSquare_right {X : SSet.{u}}
 規約：端点も同時に一致する。使われ方：二項積の第二射影。 -/
 lemma edgeUnop_dualSquare_top {X : SSet.{u}}
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeUnop (X := X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R)) = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow R := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edgeUnop (X := X) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R)) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow R := by
   apply SSet.Truncated.Edge.ext
   change R.app _ (_, _) = R.app _ (_, _)
   congr 1

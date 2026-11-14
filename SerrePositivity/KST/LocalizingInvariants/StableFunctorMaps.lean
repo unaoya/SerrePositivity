@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategories
 public import SerrePositivity.KST.SConstruction.FunctorCofiberPreservation
 
@@ -48,3 +50,9 @@ def exactFunctorEvaluation (K : SSet.{u}) (A : _root_.SerrePositivity.InfinityCa
     preservesCofiber := fun t ht => (SConstruction.functor_zeroTriangle_pushout_iff t).mp ht k }
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.3.1"] _root_.SerrePositivity.KST.LocalizingInvariants.stableFunctorCategory
+attribute [cite HA "1.2.2.9" (partial := component) "仮定：安定準圏と添字の nerve、またはアーベル圏のスペクトル対象。結論：N(Z) を始域とするフィルター付き対象の関手圏を取れ、別途スペクトル対象の系列はある。フィルター付き対象からその入力を作る接続が確認できなかった（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.stableFunctorCategory

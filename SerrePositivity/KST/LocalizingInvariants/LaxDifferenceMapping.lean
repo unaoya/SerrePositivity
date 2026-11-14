@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCompositeMapping
 public import SerrePositivity.KST.LocalizingInvariants.MappingFunctorIso
 
@@ -30,3 +32,8 @@ lemma laxDifferenceMapping_equivalence (a : _root_.SerrePositivity.InfinityCateg
     (laxDifferenceCompositeMapping_equivalence p q v a hv x y)
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (6)"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceMapping_equivalence

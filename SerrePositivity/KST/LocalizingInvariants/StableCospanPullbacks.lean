@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma dualSquare_topEdge {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare R = _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.reverseSimplex 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ R) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare R = _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.reverseSimplex 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ R) := by
   apply SSet.yonedaEquiv.injective
   rfl
 
@@ -58,10 +58,10 @@ lemma exists_stable_pullbackSquare_of_edges {X : SSet.{u}} [Quasicategory X] [_r
       _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan_right (X := X.op)] at h
     exact h
   let q := (SSet.opFunctorCompOpFunctorIso.app X).hom
-  refine ⟨_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare S ≫ q, ?_, ?_, ?_⟩
-  · exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare S) q).mp
-      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_dualSquare S).mp hP)
-  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_rightEdge, hb]
+  refine ⟨_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare S ≫ q, ?_, ?_, ?_⟩
+  · exact (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare S) q).mp
+      ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_dualSquare S).mp hP)
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_rightEdge, hb]
     exact reverse_edgeOp_unop f
   · rw [← Category.assoc, dualSquare_topEdge, hl]
     exact reverse_edgeOp_unop g

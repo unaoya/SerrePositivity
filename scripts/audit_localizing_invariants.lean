@@ -8,7 +8,7 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let oldAuditPrefix1 := `SerrePositivity.KST.LocalizingInvariants
-  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/bulk-kl-module-map.json")
   let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
   let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
     if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)

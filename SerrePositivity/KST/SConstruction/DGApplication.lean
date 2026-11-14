@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.StableModels
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedStability
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorExact
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.DGPretriangulatedStability
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGPretriangulatedFunctorExact
 
 /-! # 厳密 dg 入力の S 構成への接続
 概要：前三角 dg 圏と厳密 dg 関手を、安定な入力と完全な射へ送る。
@@ -31,7 +31,7 @@ variable (A : Type u) [CommRing A] (D E T : Type u)
 def dgStableModel : StableModel.{u} where
   carrier := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D
   quasicategory := inferInstance
-  stable := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated A D
+  stable := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated A D
 
 /-- 厳密 dg 関手が誘導する射は native nerve の射そのもの。 -/
 def dgStableMap (F : DGFunctor A D E) : dgStableModel A D ⟶ dgStableModel A E := by

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightPointJoinPrism
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialFixedContraction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.TerminalHomotopyAnodyne
@@ -95,3 +97,8 @@ lemma terminalPoint_rightAnodyne {B : SSet.{u}} {b : B _⦋0⦌}
   · simpa only [SSet.yonedaEquiv_symm_zero, SSet.comp_const] using hfix (Δ[0] : SSet.{u})
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.4.5" (partial := direction) "仮定：右ファイブレーションの全空間の指定頂点が終対象（HTT の (2) と一致）。結論：指定点の包含に沿う制限は、任意の右ファイブレーションへの底上の関手空間で自明 Kan ファイブレーションになり、反変同値になる（(2)⇒(3) が一致。他の向きと指定 η による判定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.terminalPoint_rightAnodyne

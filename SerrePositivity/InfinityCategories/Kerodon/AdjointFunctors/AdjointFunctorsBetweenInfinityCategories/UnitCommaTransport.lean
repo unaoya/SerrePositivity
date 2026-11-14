@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaArrowEndpoints
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaCartesianEdge
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Diagrams.CommaTransportFold
@@ -132,3 +134,8 @@ lemma exists_cartesian_unitComma_lift {X Y : SSet.{u}}
     exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr heq).2 hi
 
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.7.12" (partial := component) "仮定：準圏間の G:Y→X（HTT と一致）。結論：unitCommaSource は同じ Fun(Δ1,X)×Fun({1},X)Y の始端射影であり、innerFibration と全ての指定終点の Cartesian lifts は CartesianFibration の構造を与える。また Y への像が可逆なら Cartesian。原典の最初の assertion と iff の十分方向に一致し、必要方向は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.exists_cartesian_unitComma_lift

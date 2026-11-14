@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFIntegerComparison
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialOrdinaryMap
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialOrdinaryMap
 
 /-!
 概要：同じ有限 native 入力の通常射に、実 BF 四辺と全正段の作用を回収する。

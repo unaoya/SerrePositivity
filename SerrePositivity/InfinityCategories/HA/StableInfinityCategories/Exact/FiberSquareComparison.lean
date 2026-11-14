@@ -27,7 +27,7 @@ open _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison
 
 /-- 四角形全体の双対化は、元の二重反転の標準同型で戻る。 -/
 lemma dualSquare_double {X : SSet.{u}} (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare F) ≫ (SSet.opFunctorCompOpFunctorIso.app X).hom = F := by
+    _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare F) ≫ (SSet.opFunctorCompOpFunctorIso.app X).hom = F := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -47,20 +47,20 @@ lemma dualSquare_double {X : SSet.{u}} (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) 
 /-- 双対化は全図式の関手同型を保つ。 -/
 def dualFunctorIso {X : SSet.{u}} [Quasicategory X]
     {F G : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare F) (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare G) := by
-  let d := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1]))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare F) (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare G) := by
+  let d := _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1]))
   have h := e.op.precomp d
-  simpa only [d, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid, CategoryTheory.Functor.map_id,
+  simpa only [d, _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid, CategoryTheory.Functor.map_id,
     Category.comp_id, Category.assoc] using h
 
 /-- 同じ右辺を持つ二つの実 fiber 四角形は、全高次図式として同型。 -/
 lemma nonempty_functorIso {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
     {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) : Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso s.square t.square) := by
+    (s t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) : Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso s.square t.square) := by
   obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.nonempty_cofiberSquareFunctorIso s.opCofiber t.opCofiber
   have h := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualFunctorIso e).postcomp (SSet.opFunctorCompOpFunctorIso.app X).hom
-  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square) ≫ _)
-    (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare t.square) ≫ _) at h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square) ≫ _)
+    (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare t.square) ≫ _) at h
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualSquare_double, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualSquare_double] at h
   exact ⟨h⟩
 

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumQuotient
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumLocalization
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumBaseChange
@@ -416,3 +418,9 @@ theorem exists_finiteEtaleStratification {R S : Type u} [CommRing R] [CommRing S
       simpa only [map_natCast] using hu.map f
 
 end SerrePositivity.CommutativeAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 10.12"] _root_.SerrePositivity.CommutativeAlgebra.exists_finiteEtaleStratification
+attribute [cite BS19 "Lemma 10.12"] _root_.SerrePositivity.CommutativeAlgebra.exists_noetherian_finiteEtaleStratification

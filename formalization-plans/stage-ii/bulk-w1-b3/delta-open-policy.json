@@ -1,0 +1,10 @@
+{
+  "module": "SerrePositivity.EInfinity.Interface.Theory",
+  "mode": "only",
+  "old_namespace": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+  "new_namespace": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+  "members": [
+    "derivedInfinityCategory"
+  ],
+  "reason": "compiler-captured single restricted import; member actual destination namespace, no new visible names"
+}

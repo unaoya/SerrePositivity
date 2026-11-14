@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FullyFaithfulHomComparison
@@ -66,3 +68,8 @@ lemma isColimitCone_of_fullyFaithful_image {K C D : SSet.{u}}
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_iff_reverseCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone F c)).mp hc)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.2.13.7" (partial := component) "仮定：準圏間の fully faithful F と、像で余極限となる同じ余錐（原典の full inclusion の場合を含み、Lean が弱い）。結論：元の余錐は余極限なので、C 内の余極限が C′ に属せば C′ でも余極限という明記された帰結に一致。slice 全体の引戻し同一視は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_fullyFaithful_image

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PullbackColimitConeExistence
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.InitialTransport
@@ -110,3 +112,10 @@ lemma pullback_preservesSmallColimits_iff_components {C : SSet.{u + 1}}
     · simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone, Category.assoc] using hd K r c hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.5.5" (partial := stronger-hyp) "仮定：一方が categorical fibration である strict pullback、両側が小余完備で両脚が全小余極限保存（Lean が強い：原典の特定 K の存在・保存より強い）。結論：同じ引き戻しに全 K-余極限が存在し、その元の全余錐の余極限性は両射影での余極限性と同値（結論は一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_hasSmallColimits
+attribute [cite HTT "5.4.5.5" (partial := stronger-hyp) "仮定：一方が categorical fibration である strict pullback、両側が小余完備で両脚が全小余極限保存（Lean が強い：原典の特定 K の存在・保存より強い）。結論：同じ引き戻しに全 K-余極限が存在し、その元の全余錐の余極限性は両射影での余極限性と同値（結論は一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_isColimitCone_iff_components
+attribute [cite HTT "5.5.3.12" (partial := special) "仮定：presentable な三準圏と全小余極限保存な両脚（Lean が強い：元の平方は一方が categorical lifting を持つ strict pullback）。結論：同じ引き戻しが presentable、元の引き戻しへの関手の全小余極限保存の成分判定（この模型で一致）。汎用 accessibility 命題の入力は実証済みの AccessiblePullback.pullback_isAccessible で供給できる。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_preservesSmallColimits_iff_components

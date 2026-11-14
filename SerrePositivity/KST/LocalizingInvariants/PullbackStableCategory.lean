@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxArrowTransformation
 public import SerrePositivity.KST.LocalizingInvariants.FullStableExact
 public import SerrePositivity.KST.LocalizingInvariants.PullbackDifferenceVertices
@@ -70,3 +72,11 @@ lemma pullbackSnd_hom : (pullbackSnd p q).hom = _root_.SerrePositivity.InfinityC
   _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax_snd p.hom q.hom
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.4.2" (partial := component) "仮定：安定準圏間の完全関手の cospan（HA と一致）。結論：指定された引き戻し模型が安定で、両射影が完全。射影との合成が完全なら元の関手が完全という判定は採用した型にない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ordinaryPullback_isStable
+attribute [cite HA "1.1.4.2" (partial := component) "仮定：安定準圏間の完全関手の cospan（HA と一致）。結論：指定された引き戻し模型が安定で、両射影が完全。射影との合成が完全なら元の関手が完全という判定は採用した型にない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.pullbackFst
+attribute [cite HA "1.1.4.2" (partial := component) "仮定：安定準圏間の完全関手の cospan（HA と一致）。結論：指定された引き戻し模型が安定で、両射影が完全。射影との合成が完全なら元の関手が完全という判定は採用した型にない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.pullbackSnd
+attribute [cite HA "1.1.4.3" (partial := special) "仮定：二つの安定準圏（Lean が強い：任意の族でなく二項積を零 ∞ 圏への完全関手の引き戻しに特殊化）。結論：零 ∞ 圏上の引き戻しは安定。任意族の積の安定性と成分ごとの完全性の判定は型にない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.pullbackCategory

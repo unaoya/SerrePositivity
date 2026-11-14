@@ -32,13 +32,13 @@ def eilenbergMacLaneDerived_ordinarySourceIso :
 
 /-- 半自由閉零圏での同じ全比較。native D(A) の全射の π/H 自然性に使う。 -/
 def eilenbergMacLaneDerived_semifreeSourceIso :
-    FunctorIso (closedNerveInclusion A (Semifree A) ≫ eilenbergMacLaneDerived A)
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫ eilenbergMacLaneDerived A)
       (nerveMap (semifreeClosedToComplex A) ≫ eilenbergMacLaneOrdinaryNative A) := by
   have h₁ := FunctorIso.postcomp (semifreeClosedDerivedSourceIso A).symm
     (eilenbergMacLaneDerived A)
   have h₂ := (eilenbergMacLaneDerived_ordinarySourceIso A).precomp
     (nerveMap (semifreeClosedToComplex A))
-  have h₁' : FunctorIso (closedNerveInclusion A (Semifree A) ≫ eilenbergMacLaneDerived A)
+  have h₁' : FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫ eilenbergMacLaneDerived A)
       (nerveMap (semifreeClosedToComplex A) ≫
         (complexOrdinaryDerivedSource A ≫ eilenbergMacLaneDerived A)) := by
     simpa only [Category.assoc] using h₁

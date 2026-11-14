@@ -17,7 +17,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCate
   [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Y] (F : X ⟶ Y) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F]
 
 lemma cofiberLocalizingEdges_zeroKernel_eq_invertedEdges :
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x)} =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x)} =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges F := by
   apply Set.Subset.antisymm
   · exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.inverts_cofiberLocalizingEdges_of_kills F _ (fun _ h => h)
@@ -27,9 +27,9 @@ lemma cofiberLocalizingEdges_zeroKernel_eq_invertedEdges :
 
 lemma cofiberLocalizingEdges_eq_invertedEdges_of_kernel
     (P : Set (X _⦋0⦌))
-    (hP : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) ↔ x ∈ P) :
+    (hP : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) ↔ x ∈ P) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges P = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges F := by
-  have h : P = {x | _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x)} :=
+  have h : P = {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x)} :=
     Set.ext (fun x => (hP x).symm)
   rw [h]
   exact cofiberLocalizingEdges_zeroKernel_eq_invertedEdges F

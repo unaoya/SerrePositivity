@@ -3,7 +3,7 @@ module
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 public import Mathlib.Data.Quot
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexComponents
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexComponents
 public import Mathlib.Tactic.Abel
 
 /-!

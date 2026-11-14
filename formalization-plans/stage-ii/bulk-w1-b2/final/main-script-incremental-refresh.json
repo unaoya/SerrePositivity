@@ -1,0 +1,36 @@
+{
+  "validated_base": "0e8c854208151bc054e15ba3ba183a931b630b1c",
+  "latest_main": "6f380ca7a56f1463f9ebcc784a574d7cd8949177",
+  "files": 7,
+  "rows": [
+    {
+      "status": "M",
+      "path": "scripts/audit_bhatt_scholze_stage2.lean"
+    },
+    {
+      "status": "M",
+      "path": "scripts/audit_derived_infinity.lean"
+    },
+    {
+      "status": "M",
+      "path": "scripts/audit_infinity_f2.lean"
+    },
+    {
+      "status": "M",
+      "path": "scripts/refactor/klw1_collect_refs.lean"
+    },
+    {
+      "status": "M",
+      "path": "scripts/refactor/klw1_namespace.py"
+    },
+    {
+      "status": "M",
+      "path": "scripts/refactor/targets/kl-namespace-map.json"
+    },
+    {
+      "status": "M",
+      "path": "scripts/refactor/test_klw1_tools.py"
+    }
+  ],
+  "scope": "B3 fresh-main script/manifest follow-up; not part of fixed-base B2 builds"
+}

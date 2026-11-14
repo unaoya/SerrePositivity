@@ -37,7 +37,7 @@ lemma algebraCAlgReplacementNerve_forget :
     cofibrantAlgebraDKReplacement_comp_inclusion]
   rfl
 
-def algebraUnderlyingDerivedSource : nerve (operad A).Algebra ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+def algebraUnderlyingDerivedSource : nerve (operad A).Algebra ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   nerveMap (Operad.Algebra.forget (operad A)) ≫ ComplexLimits.complexOrdinaryDerivedSource A
 
 def algebraReplacementUnderlyingDerivedIso :

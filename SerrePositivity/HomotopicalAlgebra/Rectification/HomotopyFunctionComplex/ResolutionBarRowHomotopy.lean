@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarRowPresentations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSectionUnit
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftPadding
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLiftPadding
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterSquare
 
 /-!

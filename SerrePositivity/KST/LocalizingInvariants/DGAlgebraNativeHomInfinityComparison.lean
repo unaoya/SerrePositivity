@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameCoherentSource
 public import SerrePositivity.EInfinity.DGAlgebra.HomInfinityComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：元の実 AW 全標的図式を、指定した全擬同型局所化の共変 Hom と比較する。

@@ -40,9 +40,9 @@ private lemma uncurry_at_vertex {A B P : SSet.{u}} (F : P ⟶ (ihom A).obj B)
 
 /-- 零値の同じ完全関手は、全 S_n の全図式を元の零図式へ送る。 -/
 theorem zeroFunctor_sExactMap_values {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
-    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (n : ℕ)
+    (hF : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) (n : ℕ)
     (v : (sConstruction n A.obj) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((sExactMap n F).hom).app (Opposite.op ⦋0⦌) v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((sExactMap n F).hom).app (Opposite.op ⦋0⦌) v) := by
   rw [sConstruction_isZeroVertex_iff_components]
   intro a
   have he := congrArg (fun m : sConstruction n A.obj ⟶ C.obj => m.app (Opposite.op ⦋0⦌) v)
@@ -60,11 +60,11 @@ def zeroFunctorFullSAction (A C : _root_.SerrePositivity.InfinityCategories.HA.S
 /-- 同じ全作用の全頂点は、全 Ar 成分が零となる元の S_n 図式。 -/
 theorem zeroFunctorFullSAction_values (A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (n : ℕ)
     (v : (sConstruction n A.obj ⊗ zeroFunctorLocus A C) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((zeroFunctorFullSAction A C n).app (Opposite.op ⦋0⦌) v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((zeroFunctorFullSAction A C n).app (Opposite.op ⦋0⦌) v) := by
   rcases v with ⟨a, p⟩
   obtain ⟨F, hF⟩ := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv A C).surjective
     ((zeroFunctorLocusToExact A C).app (Opposite.op ⦋0⦌) p)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom) := by
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom) := by
     have he := congrArg (fun w => (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors A C).ι.app (Opposite.op ⦋0⦌) w) hF
     change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom = p.val at he
     exact he.symm ▸ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex p

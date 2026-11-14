@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import Mathlib.RingTheory.Nilpotent.Basic
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
@@ -34,7 +36,7 @@ Z_(p) 代数や p ∈ rad を仮定しない。BS 著者版 Corollary 2.31 は�
 @[expose] public noncomputable section
 universe u v
 
-/-! ## Frobenius持上げによるpねじれの消去（旧 Delta/Perfect/DeltaTorsion.lean）
+/-! ## Frobenius持上げによるpねじれの消去
 
 BS 著者版 Lemma 2.28の代数的証明。δ(p)≡1 mod pを用いるので、
 Z_(p)代数やpのJacobson根基への所属を仮定せず、任意のδ構造で証明する。
@@ -142,7 +144,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaTorsion
 
-/-! ## p冪根を持つ元のrank 1性（旧 Delta/Perfect/DeltaRankOne.lean）
+/-! ## p冪根を持つ元のrank 1性
 
 BS 著者版 Lemma 2.32。δの積公式を(pδ(x))で割った商で反復し、
 δ(x^p)がpδ(x)で割り切れることから一般δ環での可除性を証明する。
@@ -226,7 +228,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaRankOne
 
-/-! ## 完全δ環のmod pの完全性（旧 Delta/Perfect/PerfectDeltaModP.lean）
+/-! ## 完全δ環のmod pの完全性
 
 BS 著者版 Corollary 2.31の(1)から(2)の代数的部分。
 φが全単射ならA/(p)のp乗写像も全単射である。完備性はこの部分には不要。
@@ -272,7 +274,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end PerfectDeltaModP
 
-/-! ## 完全δ環のFrobenius同型とδ（旧 Delta/Perfect/PerfectDeltaFrobenius.lean）
+/-! ## 完全δ環のFrobenius同型とδ
 
 p正則なδ環のFrobeniusはδ射であり、完全δ環では逆Frobeniusもδ射となる。
 完全化に使うFrobeniusの反復図式をδ環の図式として扱うための補題。
@@ -333,7 +335,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end PerfectDeltaFrobenius
 
-/-! ## 完全な標数p環のWitt環のδ構造（旧 Delta/Perfect/WittDelta.lean）
+/-! ## 完全な標数p環のWitt環のδ構造
 
 BS 著者版 Corollary 2.31の(3)から(1)。MathlibのWitt Frobenius、
 p正則性・完備性を再利用して一意なδ構造を与える。圏同値全体はまだ構成しない。
@@ -404,7 +406,7 @@ end SerrePositivity.BhattScholze
 
 end WittDelta
 
-/-! ## 受領F4による完全p進完備δ環のWitt復元（旧 Delta/Perfect/PerfectDeltaWittRecovery.lean）
+/-! ## 受領F4による完全p進完備δ環のWitt復元
 
 零環を含む復元環同型と標準商図式を、完全δ構造からのp正則性に接続する。
 標準Witt δ構造との比較では剰余環のCharPを明示し、零環の一般復元と区別する。
@@ -477,7 +479,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaWittRecovery
 
-/-! ## Witt環のdistinguished元の係数判定（旧 Delta/Perfect/WittDistinguished.lean）
+/-! ## Witt環のdistinguished元の係数判定
 
 BS 著者版 Lemma 2.33の具体的なWitt環の場合。
 Teichmüller元はrank 1であり、標準δの第0係数は元の第1Witt係数に等しい。
@@ -565,3 +567,19 @@ theorem wittDeltaStructure_isDistinguished_iff_teichmuller_coefficient (d : Witt
 end SerrePositivity.BhattScholze
 
 end WittDistinguished
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Cor 2.31" (partial := special) "圏同値ではなく対象ごと（A ≅ W(A/p)、W(R) の δ 構造の一意性、環準同型が δ 射）と本体 docstring に明記 ／ DOC1 照合：ok 4 件。完全 p 完備 δ 環からの環準同型が δ 射であることの強い形は Prism/PerfectPrismHomLift の perfectSource_ringHom_isDeltaHom（終域は p 進分離でよい） ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.perfectRing_mod_p
+attribute [cite BS19 "Cor 2.31" (partial := special) "圏同値ではなく対象ごと（A ≅ W(A/p)、W(R) の δ 構造の一意性、環準同型が δ 射）と本体 docstring に明記 ／ DOC1 照合：ok 4 件。完全 p 完備 δ 環からの環準同型が δ 射であることの強い形は Prism/PerfectPrismHomLift の perfectSource_ringHom_isDeltaHom（終域は p 進分離でよい） ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_wittDeltaStructure
+attribute [cite BS19 "Cor 2.31" (partial := special) "圏同値ではなく対象ごと（A ≅ W(A/p)、W(R) の δ 構造の一意性、環準同型が δ 射）と本体 docstring に明記 ／ DOC1 照合：ok 4 件。完全 p 完備 δ 環からの環準同型が δ 射であることの強い形は Prism/PerfectPrismHomLift の perfectSource_ringHom_isDeltaHom（終域は p 進分離でよい） ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.perfectDeltaWittRecoveryEquiv
+attribute [cite BS19 "Cor 2.31" (partial := special) "圏同値ではなく対象ごと（A ≅ W(A/p)、W(R) の δ 構造の一意性、環準同型が δ 射）と本体 docstring に明記 ／ DOC1 照合：ok 4 件。完全 p 完備 δ 環からの環準同型が δ 射であることの強い形は Prism/PerfectPrismHomLift の perfectSource_ringHom_isDeltaHom（終域は p 進分離でよい） ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.wittDeltaStructure_ringHom_isDeltaHom_of_complete
+attribute [cite BS19 "Ex 2.6" (partial := special) "最後の主張（p 冪零な δ 環は零環）と Z 上の δ 構造の一意性の形だけ。Z_(p)（Lean は p と互いに素な整数での局所化）が δ 環の始対象であることは公開の existsUnique_primeLocalIntDeltaHom（Ex 2.21 の構成で使う） ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：relativeFreeDeltaStructure_int_eq（Z 上の二構成の一致で、Z_(p) の始性や δ 構造の一意性を主張する型ではない。） ／ DOC1 照合：ok 1 件 ／ 11-12 夜更新（ノート本文の更新時）。ℤ 上の δ 構造の存在と一意性は非公開の補題だけ"] _root_.SerrePositivity.BhattScholze.DeltaStructure.subsingleton_of_isNilpotent_p
+attribute [cite BS19 "Lemma 2.28"] _root_.SerrePositivity.BhattScholze.DeltaStructure.p_mul_injective_of_frobeniusLift_injective
+attribute [cite BS19 "Lemma 2.28"] _root_.SerrePositivity.BhattScholze.DeltaStructure.p_mul_injective_of_isReduced
+attribute [cite BS19 "Lemma 2.28"] _root_.SerrePositivity.BhattScholze.DeltaStructure.torsion_calculation
+attribute [cite BS19 "Lemma 2.32"] _root_.SerrePositivity.BhattScholze.DeltaStructure.delta_eq_zero_of_has_pow_roots
+attribute [cite BS19 "Lemma 2.32"] _root_.SerrePositivity.BhattScholze.DeltaStructure.pow_p_dvd_delta_pow
+attribute [cite BS19 "Lemma 2.33" (partial := special) "W(R) の Teichmüller 展開で述べる。Thm 3.10 の Witt 商計算（Prism/Perfectoid/WittQuotientTilt）に使用 ／ DOC1 照合：ok 2 件。本体は W(k) の標準 δ 構造の場合だけ（一般の完全 p 完備 A へは移していない） ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff
+attribute [cite BS19 "Lemma 2.33" (partial := special) "W(R) の Teichmüller 展開で述べる。Thm 3.10 の Witt 商計算（Prism/Perfectoid/WittQuotientTilt）に使用 ／ DOC1 照合：ok 2 件。本体は W(k) の標準 δ 構造の場合だけ（一般の完全 p 完備 A へは移していない） ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff_teichmuller_coefficient

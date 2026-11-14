@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectRealizationPerfectYoneda
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeValue
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.NativePerfectYonedaEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.NativePerfectYonedaEquivalence
 public import SerrePositivity.KST.SConstruction.FunctorIsoEquivalenceReflection
 
 /-!

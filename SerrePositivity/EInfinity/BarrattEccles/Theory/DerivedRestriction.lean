@@ -2,10 +2,10 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionRetract
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ScalarRestrictionNerve
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.ScalarRestrictionNerve
 
 /-!
 # Barratt–Eccles 実例で使う導来係数制限
@@ -44,12 +44,12 @@ variable {S T W : Type u} [CommRing S] [CommRing T] [CommRing W]
 /-- 全複体の dg nerve での項別係数制限。 -/
 def complexRestrictionNerve (f : S →+* T) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve T (Complex T) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve S (Complex S) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerveRestrictScalarsIso f (Complex T)).inv ≫
+  (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerveRestrictScalarsIso f (Complex T)).inv ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (ScalarExtension.restrictionComplexDGFunctor f)
 
 /-- 全複体で係数制限してから半自由解像を取る導来関手。 -/
 def barrattEcclesRestrictD (f : S →+* T) :
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory T ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S :=
+    _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory T ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S :=
   _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion ≫ complexRestrictionNerve f ≫ complexSemifreeResolutionInfinity S
 
 /-- 恒等環準同型での項別係数制限は恒等関手。 -/
@@ -88,7 +88,7 @@ lemma complexRestrictionNerve_comp (f : S →+* T) (g : T →+* W) :
 
 /-- 恒等環準同型の場合は半自由解像の既存の retract 比較。 -/
 def barrattEcclesRestrictD_id (S : Type u) [CommRing S] :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesRestrictD (RingHom.id S)) (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesRestrictD (RingHom.id S)) (𝟙 (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S)) := by
   simpa only [barrattEcclesRestrictD, complexRestrictionNerve_id, Category.id_comp] using
     complexSemifreeResolutionRetractIso S
 
@@ -143,7 +143,7 @@ def barrattEcclesRestrictD_comp (f : S →+* T) (g : T →+* W) :
   let H := complexSemifreeResolutionAugmentationHomotopy T
   let K := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H L
   let P := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp K (R ≫ Q)
-  have he (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory W) _⦋0⦌) :
+  have he (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory W) _⦋0⦌) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge P x).toTruncated := by
     let y := atVertex L x
     let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H y).toTruncated

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetSectionsNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OrdinaryNatTransPrism
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.OrdinaryNatTransPrism
 
 /-!
 概要：集合値の重みの射を、区間上の一つの要素の圏にまとめる。

@@ -3,9 +3,9 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrameBoundary
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalBoundaryExt
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalBoundaryPostcomposition
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.IntervalBoundaryExt
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.IntervalBoundaryPostcomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.CommutativeSquareRealization
 
 /-!
 概要：正方形の境界図式の四辺と、後合成・元の正方形への制限を保持する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.EmptySimplicialDomain
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.EmptySimplicialDomain
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Simplicial.FiniteHornUniverseIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.PointConeSpanIso
 

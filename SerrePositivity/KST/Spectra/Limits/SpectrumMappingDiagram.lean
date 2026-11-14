@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.StrictHomotopyLimits
 public import SerrePositivity.KST.Spectra.CoherentNerve
 public import Mathlib.CategoryTheory.Adjunction.Limits
@@ -155,3 +157,8 @@ lemma spectrumMappingStep_post (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
 end
 
 end SerrePositivity.InfinityCategories.HomotopyLimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.20" (partial := special) "仮定：点付き空間の Ω スペクトルと自然数 n（Lean が強い：一般の C と整数 n を扱わない）。結論：通常の圏での次数 n の点付き空間への評価（Lean が弱い：∞ 関手と有限点付き空間の Sⁿ での評価との同定はこの型にない）。"] _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor

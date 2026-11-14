@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSource
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofLocallyConstantPullback
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RoofLocallyConstantPullback
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationContractible
 
 /-!

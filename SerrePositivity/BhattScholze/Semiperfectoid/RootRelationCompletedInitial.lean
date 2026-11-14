@@ -1,9 +1,11 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram
 public import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion
 public import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion
-public import SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeCompletion
+public import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion
 import all SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
 /-!
 # S′ の実完備包絡と全有界標的への始性
@@ -98,3 +100,8 @@ theorem exists_rootRelationCompletedInitial (hR : IsIntegralPerfectoid R p) :
   exact hvx
 
 end SerrePositivity.BhattScholze.Semiperfectoid
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 7.10" (partial := component) "BS-W17 H5（11-12）：T（有限）と S′（任意添字）の古典的な部分は本体：固定 A_inf 上の有界な実包絡、全有界 prism への一意な射、S′ の完全化と Cor 7.3 の単位を保つ唯一の同型（停止点 4・5a・5）。S′ の単位の完全忠実平坦性は後回し（E3 は使わない）。Δ_R/A との同定（G10）は drafts ／ 11-12 節の見直し：S′ の部分は f_j=0 の場合（根の商）だけ"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_rootRelationCompletedInitial

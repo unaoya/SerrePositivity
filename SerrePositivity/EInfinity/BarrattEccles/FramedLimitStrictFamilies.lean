@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeClasses
 public import SerrePositivity.EInfinity.BarrattEccles.RightSimplicialCones
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameDiagrams
 
 /-!
 # 通常の錐の二つの族の混合 Hom 内での厳密な照合

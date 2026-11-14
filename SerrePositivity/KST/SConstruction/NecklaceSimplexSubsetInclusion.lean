@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetInclusionMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexSubsetInclusionMap
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubset
 
 /-! # 同じ元の両端を持つ部分集合 bead の実包含

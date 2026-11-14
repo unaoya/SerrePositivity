@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SectionsUnitRepresentation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.HomotopyConeRealization
 public import Mathlib.Tactic.CrossRefAttribute
@@ -39,3 +41,8 @@ lemma coherentDiagramSectionsCone_vertex :
   (coherentSectionsConeRealization F).vertex_eq
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.3.3.4" (partial := special) "仮定：任意の小さい K と p:K→SpaceInfinity に対し分類束 X を標準の smallLeftUnstraightening p に固定（Lean が強い特殊形）。結論：全切断の Kan 複体そのものを頂点とする錐が極限であり、原典のこの標準分類束の場合の式と一致。任意の分類束への全切断の輸送比較はこの型には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_vertex

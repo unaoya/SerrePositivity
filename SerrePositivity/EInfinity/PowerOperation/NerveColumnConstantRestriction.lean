@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ConstantRestrictionArrow
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.ConstantRestrictionArrow
 
 /-!
 # 同じ全関手同型の通常定値列での制限

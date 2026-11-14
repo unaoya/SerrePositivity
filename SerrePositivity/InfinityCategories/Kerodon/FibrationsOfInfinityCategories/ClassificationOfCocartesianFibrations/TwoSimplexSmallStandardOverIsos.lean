@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TwoSimplexCellCospan
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornOverPushout
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.InnerTwoHornOverPushout
 
 /-!
 概要：同じ二辺を標準単体で表示し、元の nerve セルと底上の同型で結ぶ。

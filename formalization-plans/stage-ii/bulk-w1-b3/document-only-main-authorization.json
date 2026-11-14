@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-11-14T07:12:28.760751",
+  "source": "11-14 coordinator answer in this thread",
+  "accepted_change": "a9dc71e46 -> 40faa3892, six Markdown lines",
+  "mathematical_baseline": "c5c4436c0",
+  "rule": "Documentation-only formalization-plans/ and research/ commits may advance main; merge optional, outside B3 bundle. Stop on any build/audit input change, including SerrePositivity/, scripts/, lakefile, lean-toolchain.",
+  "decision": "Continue root, all formal audits and full verify; retain resource and daytime limits."
+}

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.InnerFiber
@@ -12,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafRestrictionEquivalence
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeVertexFiber
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.OppositeVertexFiber
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic
 
 /-!
@@ -89,3 +91,10 @@ lemma isQCatEquivalence_of_rightFibration_fibers {E E' B : SSet.{u}}
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.oppositeVertexFiberIso q b)).isQCatEquivalence)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.2.3.3" (partial := direction) "仮定：同じ準圏 S 上の二つの右ファイブレーションと底上の f、各繊維の同値（Lean が強い：S と全空間の準圏性を指定）。結論：全空間の f は IsQCatEquivalence なので (a)⇒(c) の準圏の場合に一致。逆方向と contravariant equivalence (b) の model comparison は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.isQCatEquivalence_of_rightFibration_fibers
+attribute [cite HTT "2.4.4.4" (partial := special) "仮定：底上の射と各繊維の準圏同値（Lean が強い：二つの射影は右ファイブレーションで底は準圏）。結論：全空間の比較射は準圏同値（一致する特別な場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.isQCatEquivalence_of_rightFibration_fibers
+attribute [cite HTT "2.4.7.6" (partial := stronger-hyp) "仮定：元の二つの射影をさらに RightFibration とし、積の底と全空間を準圏に限定（Lean が強い）。結論：同じ底 S×T 上の f の各 vertexFiberMap の同値から f の IsQCatEquivalence を得る。原典の同じ結論はこの追加仮定下で直接得るが、任意 bifibration から RightFibration を導くとは主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.isQCatEquivalence_of_rightFibration_fibers

@@ -35,8 +35,8 @@ def gammaPiHomologyEquiv (M : Complex A) (n : ℕ) :
     KanHomotopyGroup (gammaPointed A M).right n (gammaPointed A M).basepoint ≃*
       Multiplicative ((M.truncLE' (ComplexShape.embeddingUpIntLE 0)).homology (n + 1)) := by
   have : SSet.KanComplex (moduleUnderlyingSSet (gammaModule A M)) := gammaUnderlyingKan A M
-  exact (modulePiMooreGroupEquiv (gammaModule A M) n).trans
-    (additiveGroupToMultiplicativeEquiv
+  exact (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv (gammaModule A M) n).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
       ((normalizedGammaHomologyIso A (n + 1)).app M).toLinearEquiv.toAddEquiv)
 
 lemma gammaPiHomologyEquiv_naturality {M N : Complex A} (f : M ⟶ N) (n : ℕ)
@@ -53,7 +53,7 @@ lemma gammaPiHomologyEquiv_naturality {M N : Complex A} (f : M ⟶ N) (n : ℕ)
     (((normalizedGammaHomologyIso A (n + 1)).app N).hom.hom
       (Multiplicative.toAdd z))) hπ
   have h₂ := congrArg (fun g => Multiplicative.ofAdd (g.hom
-    (Multiplicative.toAdd (modulePiMooreGroupEquiv (gammaModule A M) n a'))))
+    (Multiplicative.toAdd (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv (gammaModule A M) n a'))))
     ((normalizedGammaHomologyIso A (n + 1)).hom.naturality f)
   exact h₁.trans h₂
 
@@ -62,7 +62,7 @@ def gammaPiCohomologyEquiv (M : Complex A) (n : ℕ) :
     KanHomotopyGroup (gammaPointed A M).right n (gammaPointed A M).basepoint ≃*
       Multiplicative (M.homology (-((n + 1 : ℕ) : ℤ))) :=
   (gammaPiHomologyEquiv A M n).trans
-    (additiveGroupToMultiplicativeEquiv
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
       (smartTruncationHomologyIso A M (n + 1)).toLinearEquiv.toAddEquiv)
 
 lemma gammaPiCohomologyEquiv_naturality {M N : Complex A} (f : M ⟶ N) (n : ℕ)

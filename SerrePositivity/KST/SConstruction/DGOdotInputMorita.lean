@@ -22,11 +22,11 @@ local notation "m" => dgOdotQuotientInputMap R d
 lemma dgOdotQuotientInputMap_isMorita (hgen : DGOdotGeneratorConditions R d) :
     (quasiEquivalencePerfectExtension R (P) (Q) (m).down).IsEquivalence := by
   letI : (quasiEquivalencePerfectExtension R
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
+      (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
         (dgOdotAlgebraToQuotient R d)).IsEquivalence :=
     dgOdotAlgebraToQuotient_isMorita R d hgen
   exact dgKUniverseLiftFunctor_isMorita R
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
     (dgOdotAlgebraToQuotient R d)
 
 /-- 同じ ν 辺の元の完全射は、実安定 ∞ 圏の同値。 -/

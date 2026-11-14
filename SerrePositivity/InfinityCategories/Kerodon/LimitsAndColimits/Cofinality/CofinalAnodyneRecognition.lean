@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFibration
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFactorization
 public import Mathlib.Tactic.CrossRefAttribute
@@ -151,3 +153,10 @@ lemma rightAnodyneExtensions_iff_mono_and_isRightCofinal
     exact hi.rightAnodyneExtensions
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.1.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_rightAnodyne_of_mono
+attribute [cite HTT "4.1.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.rightAnodyneExtensions_iff_mono_and_isRightCofinal
+attribute [cite HTT "4.1.2.7" (partial := special) "仮定：共終射 f の押し出しで f または相手の射が単射（Lean が強い：f 自身が単射の場合）。結論：f の右アノダイン性を同じ押し出しに移し、右アノダイン射は共終という同じ判定から押し出された f の共終性を得る（一致する場合。相手側のみが単射の場合は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.rightAnodyneExtensions_iff_mono_and_isRightCofinal

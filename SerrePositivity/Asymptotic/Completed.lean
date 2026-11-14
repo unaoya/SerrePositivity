@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.Asymptotic.Karoubi
 public import SerrePositivity.Asymptotic.Euler
 public import SerrePositivity.CategoryTheory.IteratedCone
@@ -536,3 +538,9 @@ instance paperSupportedToKaroubi_inverse_isTriangulated :
 end SerrePositivity.Asymptotic
 
 end PaperRankQuotientPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Lemma 4.2"] _root_.SerrePositivity.Asymptotic.paperSupportedToKaroubi
+attribute [cite Paper "Lemma 4.2"] _root_.SerrePositivity.Asymptotic.paperSupportedToKaroubi_functor_isTriangulated

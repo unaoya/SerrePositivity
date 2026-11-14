@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeExtension
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ThinNerveExt
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.ThinNerveExt
 
 /-!
 # 有限順序単体の元の終点拡張

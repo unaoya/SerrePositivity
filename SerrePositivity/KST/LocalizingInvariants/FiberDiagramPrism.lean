@@ -31,7 +31,7 @@ lemma comparisonHomotopy_hom : Truncated.HomotopyCategory.homMk
   _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom f
 
 def comparisonEdge (i j : Fin 2) :
-    Sp.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D.triangle.square i j) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex E.triangle.square i j) :=
+    Sp.Edge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D.triangle.square i j) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex E.triangle.square i j) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (comparisonHomotopy f)
     (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
 

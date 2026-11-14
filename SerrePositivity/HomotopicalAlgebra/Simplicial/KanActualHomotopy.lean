@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanTwoHornLift
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.KanTwoHornLift
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CurriedHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 

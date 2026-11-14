@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 
@@ -99,3 +101,8 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplex
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.0.0.5" (partial := component) "仮定：単体集合の射（HTT と一致）。結論：自明・Kan・左または右・内ファイブレーション間の含意の一部（Lean が弱い：(co)Cartesian と圏論的ファイブレーションまで含む図および逆向きの反例を揃えていない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.fibration_leftFibration

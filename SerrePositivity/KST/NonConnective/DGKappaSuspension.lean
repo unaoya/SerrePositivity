@@ -58,7 +58,7 @@ theorem dgKappaSuspensionInfinity_isStable : _root_.SerrePositivity.InfinityCate
 
 /-- perfect 対象の実安定閉包から cone と懸垂への列は、同じ実 Verdier 列。 -/
 theorem dgKappaSuspension_isStableVerdierSequence :
-    let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
+    let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
     let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
     let := dgKappaSuspensionInfinity_isStable R D I
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsStableVerdierSequence

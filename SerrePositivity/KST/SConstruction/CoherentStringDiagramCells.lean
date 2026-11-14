@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentStringPathFlags
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CoherentStringPathFlags
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.MapSmallness
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.FunctorReindex
 

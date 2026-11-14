@@ -41,7 +41,7 @@ lemma commonLoopSquareInterval_target (X : OmegaSpectrum.{u}) :
 
 /-- 全四角形比較の始点辺は、同じ元の共通 BF 左脚に厳密一致。 -/
 lemma commonLoopSquareInterval_sourceEdge (X : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquareInterval X) 0 0) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (commonLoopSquareInterval X) 0 0) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (commonLoopInclusion X)).edge :=
   (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareIntervalFamily_sourceEdge (commonLoopConeEdge X)).trans
     (commonLoopConeEdge_projection X)

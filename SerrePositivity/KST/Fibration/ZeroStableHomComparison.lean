@@ -22,7 +22,7 @@ def zeroStableHomFamilyIso {T : SSet.{u}} {A B : _root_.SerrePositivity.Infinity
   let Z := zeroStableHomSpace A B
   have hc := zeroStableHomSpace_isContractibleKan A B
   let : KanComplex Z := hc.kanComplex
-  let : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Z :=
+  let : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Z :=
     ⟨⟨hc.nonempty.some, hc.isInitialVertex _, hc.isTerminalVertex _⟩⟩
   let F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (StableHomZeroVertex A B) H hH
   let L := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (StableHomZeroVertex A B) G hG

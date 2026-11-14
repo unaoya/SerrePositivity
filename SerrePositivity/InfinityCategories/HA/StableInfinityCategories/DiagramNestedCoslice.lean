@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.NestedCosliceIso
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.NestedCosliceIso
 
 /-! # 任意の図式の二重 coslice
 

@@ -31,10 +31,10 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionRef
 BS 著者版 Remark 7.15 の係数比較に使う、局所化の分母と冪ねじれを扱う。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Unconditional/RawRegular`、`PowerRootEnvelope/Unconditional/Residue`、`PowerRootEnvelope/Unconditional/Source`、`Variants/MonicRootedExtension`。
@@ -42,7 +42,7 @@ BS 著者版 Remark 7.15 の係数比較に使う、局所化の分母と冪ね�
 
 universe u v w
 
-/-! ## André E1・E2：raw 除算包上での Frobenius 成分の合成（旧 Andre/Remark715/PowerRootDivisionFrobeniusFactors.lean）
+/-! ## raw 除算包上での Frobenius 成分の合成
 
 ## 概要
 
@@ -111,7 +111,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootDivisionFrobeniusFactors
 
-/-! ## 自由な係数代数の実導来商正方形（旧 Andre/Remark715/Unconditional/FreeCoefficientSquare.lean）
+/-! ## 自由な係数代数の実導来商正方形
 
 ## 概要
 元の係数環 A 上自由な代数 S に対し、S 上の実導来対象の A/(I) 還元と
@@ -294,7 +294,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end FreeCoefficientSquare
 
-/-! ## 分子に 1 を含む元の raw δ 包の p 正則性（旧 Andre/Remark715/Unconditional/UnitNumeratorRawRegular.lean）
+/-! ## 分子に 1 を含む元の raw δ 包の p 正則性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の次数零モニック入力では、元の raw 包も p 正則。
@@ -376,7 +376,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end UnitNumeratorRawRegular
 
-/-! ## 係数を固定する実源作用の局所化（旧 Andre/Remark715/Unconditional/LocalizedScalarModule.lean）
+/-! ## 係数を固定する実源作用の局所化
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の実源の右因子を係数局所化へ運ぶ。
@@ -468,7 +468,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end LocalizedScalarModule
 
-/-! ## 実評価因子の係数局所化（旧 Andre/Remark715/Unconditional/LocalizedEvaluationModule.lean）
+/-! ## 実評価因子の係数局所化
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の実源の左評価因子を係数局所化へ運ぶ。
@@ -568,7 +568,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end LocalizedEvaluationModule
 
-/-! ## 単元分母での実源 δ 射の可逆性（旧 Andre/Remark715/Unconditional/SourceUnitDenominator.lean）
+/-! ## 単元分母での実源 δ 射の可逆性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の実源を、分母が単元となる係数環上で調べる。
@@ -809,7 +809,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SourceUnitDenominator
 
-/-! ## 実自由 δ 源の右因子と係数局所化の比較（旧 Andre/Remark715/Unconditional/LocalizedDeltaSourceTarget.lean）
+/-! ## 実自由 δ 源の右因子と係数局所化の比較
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の実源作用を、Frobenius 安定係数局所化へ運ぶ。
@@ -865,7 +865,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end LocalizedDeltaSourceTarget
 
-/-! ## 実自由 δ 源の左評価因子と係数局所化の比較（旧 Andre/Remark715/Unconditional/LocalizedDeltaSourceEvaluation.lean）
+/-! ## 実自由 δ 源の左評価因子と係数局所化の比較
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の実評価作用を、Frobenius 安定係数局所化へ運ぶ。
@@ -945,7 +945,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end LocalizedDeltaSourceEvaluation
 
-/-! ## 単元分母での元の二因子導来源の純性（旧 Andre/Remark715/Unconditional/SourceUnitPurity.lean）
+/-! ## 単元分母での元の二因子導来源の純性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の実源の分母可逆部分では、高次 Tor は消える。
@@ -1071,7 +1071,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SourceUnitPurity
 
-/-! ## 元の実二因子 δ 源の係数局所化（旧 Andre/Remark715/Unconditional/LocalizedDeltaSourceTensor.lean）
+/-! ## 元の実二因子 δ 源の係数局所化
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実導来源を、係数局所化上の実源へ比較する。
@@ -1147,7 +1147,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end LocalizedDeltaSourceTensor
 
-/-! ## 単元分母の実源と元の評価加群（旧 Andre/Remark715/Unconditional/SourceUnitSingle.lean）
+/-! ## 単元分母の実源と元の評価加群
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の分母可逆部分の実源を、元の評価加群へ比較する。
@@ -1248,7 +1248,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SourceUnitSingle
 
-/-! ## 元の実源の p 錐の局所化後の純性（旧 Andre/Remark715/Unconditional/LocalizedDeltaSourcePrimeCone.lean）
+/-! ## 元の実源の p 錐の局所化後の純性
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実 p 錐は、安定係数局所化後に次数零に集中する。
@@ -1311,7 +1311,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end LocalizedDeltaSourcePrimeCone
 
-/-! ## 完備化と冪ねじれによる負次数消滅の検出（旧 Andre/Remark715/Unconditional/CompletionTorsionDetection.lean）
+/-! ## 完備化と冪ねじれによる負次数消滅の検出
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の raw 源を、完備化と局所化から比較するための判定。
@@ -1470,7 +1470,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end CompletionTorsionDetection
 
-/-! ## 安定局所化の核と mod p の分母冪ねじれ（旧 Andre/Remark715/Unconditional/SaturatedLocalizationTorsion.lean）
+/-! ## 安定局所化の核と mod p の分母冪ねじれ
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の局所化側の消滅を、元の p 錐の分母冪ねじれへ移す。
@@ -1592,7 +1592,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SaturatedLocalizationTorsion
 
-/-! ## 元の実源の p 錐の分母冪ねじれ（旧 Andre/Remark715/Unconditional/SourcePrimeConeTorsion.lean）
+/-! ## 元の実源の p 錐の分母冪ねじれ
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の実源の p 錐の非零次ホモロジーは、分母冪ねじれ。
@@ -1649,7 +1649,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SourcePrimeConeTorsion
 
-/-! ## 元のスカラー錐と係数制限（旧 Andre/Remark715/Unconditional/ScalarConeRestriction.lean）
+/-! ## 元のスカラー錐と係数制限
 
 ## 概要
 BS 著者版 Remark 7.15（著者版 p.62）の元の源の p 錐の冪ねじれ性を、元の基底作用へ移す。

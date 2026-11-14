@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingShiftedConnecting
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingNativeTriangle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransHomotopyWhisker
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorTrianglePostcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStrictNatTransHomotopyWhisker
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorTrianglePostcomposition
 
 /-!
 概要：元 connecting の同じ実二単体を逆 shift し指定三辺を保持する。

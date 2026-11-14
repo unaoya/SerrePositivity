@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinLifting
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -57,3 +59,10 @@ lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}}
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion_leftHorn_innerAnodyne A₀ n i hn q hq) p
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.1.2.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion_innerAnodyne_of_leftAnodyne
+attribute [cite HTT "2.1.2.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion_innerAnodyne_of_rightAnodyne
+attribute [cite HTT "4.2.3.5" (partial := stronger-hyp) "仮定：二つの部分複体包含と右因子の弱ホモトピー同値（Lean が強い：右因子の包含が左アノダイン）。結論：同じ結合の押し出し隅は内アノダインで、右ファイブレーションも内ファイブレーションなので右アノダイン（Lean が強い：内アノダイン性まで与える）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion_innerAnodyne_of_leftAnodyne

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Simplicial.ReplacementEndCornerInner
 
 /-!
@@ -79,3 +81,8 @@ lemma trivialKanFibration_replacementSquareEndCorner {A B X Y : SSet.{u}}
     (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Simplicial.kanEquivalenceLifting_replacementSquareEndCorner u v p q h hp hq)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.4.6" (partial := stronger-hyp) "仮定：準圏間の Cartesian p にさらに EquivalenceLifting p を追加（Lean が強い）。結論：native QCatEquivalence⇒TrivialKanFibration と逆方向の二宣言で、同じ p の iff を得る。Cartesian 性から EquivalenceLifting を導く型はここでは得ていない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting

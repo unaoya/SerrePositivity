@@ -1,0 +1,10 @@
+{
+  "root_targets": 9535,
+  "local_closure": 28563,
+  "static_edges": 109186,
+  "missing_project_imports": [],
+  "cycles": [],
+  "layer_violations": [],
+  "new_exception_status": "pending coordinator review; see new-reverse-edge-proposal.json",
+  "source_sha256": "0dc2e9ec8bc0d33295be434e5574dfa30fa198e1eb106a74e86c055755ee910c"
+}

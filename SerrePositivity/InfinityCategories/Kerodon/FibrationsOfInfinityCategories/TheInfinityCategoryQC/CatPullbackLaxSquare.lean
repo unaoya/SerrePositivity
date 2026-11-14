@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatPullbackToLax
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
@@ -85,3 +87,8 @@ lemma catPullbackToLax_isPullback (p : A ⟶ C) (q : B ⟶ C) :
   IsPullback.of_isLimit (catPullbackLaxCone_isLimit p q)
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Rem 7"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax_isPullback

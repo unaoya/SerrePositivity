@@ -14,10 +14,10 @@ public import Mathlib.Data.List.Nodup
 下位関係商での次段関係の正則性、一元一般除算の全有限 δ 列の mod (p,d) Koszul 分解、有限根族の次段 Witt 関係・δ 次段関係の有限族の Koszul 分解、同段の部分集合の関係の追加、段の間の射の Koszul 擬同型・射影分解・スカラー塔・Tor。
 
 ## 方針
-BS 著者版 Corollary 2.44・BS 著者版 Proposition 3.13 の平坦性を Koszul 複体の帰納法で得る部分（ノート §2.6 の課題 T2-3 の材料）。
+BS 著者版 Corollary 2.44・BS 著者版 Proposition 3.13 の平坦性を Koszul 複体の帰納法で得る部分。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/FamilyEvaluation`、`Envelope/PDivision`、`Envelope/RootResidueKoszul`、`PowerRootEnvelope/DeltaDivisionResidue`、`PowerRootEnvelope/Unconditional/Residue`。
@@ -25,7 +25,7 @@ BS 著者版 Corollary 2.44・BS 著者版 Proposition 3.13 の平坦性を Kosz
 
 universe u
 
-/-! ## 元の相対自由δ環の具体的下位関係商における次段関係の正則性（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteJetRegularity.lean） -/
+/-! ## 元の相対自由δ環の具体的下位関係商における次段関係の正則性 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetRegularity
 
@@ -114,7 +114,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetRegularity
 
-/-! ## 一元一般除算の全有限δ列のmod(p,d)Koszul分解（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteResidueKoszul.lean）
+/-! ## 一元一般除算の全有限δ列のmod(p,d)Koszul分解
 
 初項の正則性と既存の初期・高段の正則性を合成する。
 通常のmod(p,d)商上の計算であり、実導来完備化後の平坦性は結論しない。
@@ -230,7 +230,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteResidueKoszul
 
-/-! ## 任意有限根族の次段Witt関係の実残余Koszul分解（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteWittFamilyKoszul.lean） -/
+/-! ## 任意有限根族の次段Witt関係の実残余Koszul分解 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteWittFamilyKoszul
 
@@ -326,7 +326,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteWittFamilyKoszul
 
-/-! ## 元のδ次段関係の任意有限族の実残余Koszul分解（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteJetFamilyKoszul.lean） -/
+/-! ## 元のδ次段関係の任意有限族の実残余Koszul分解 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetFamilyKoszul
 
@@ -417,7 +417,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetFamilyKoszul
 
-/-! ## 同段の任意部分集合のδ関係を追加した実商の比較（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteJetSubset.lean） -/
+/-! ## 同段の任意部分集合のδ関係を追加した実商の比較 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetSubset
 
@@ -577,7 +577,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetSubset
 
-/-! ## 元の同段δ関係の有限族の弱正則性と実Koszul分解（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteJetFamilyRegularity.lean） -/
+/-! ## 元の同段δ関係の有限族の弱正則性と実Koszul分解 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetFamilyRegularity
 
@@ -678,7 +678,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetFamilyRegularity
 
-/-! ## 元の有限δ関係の次段実商へのKoszul擬同型と射影分解（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteJetStepResolution.lean） -/
+/-! ## 元の有限δ関係の次段実商へのKoszul擬同型と射影分解 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetStepResolution
 
@@ -812,7 +812,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetStepResolution
 
-/-! ## 元のδ関係段間射と正規化段間射の標準比較（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteJetStepComparison.lean）
+/-! ## 元のδ関係段間射と正規化段間射の標準比較
 
 同じ初期N+2変数分離を両側へ使用し、後続変数を保つ係数変更を明示する。
 -/
@@ -930,7 +930,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetStepComparison
 
-/-! ## 元のδ段間射の標準係数射・スカラー塔と係数環上の平坦性（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteJetStepScalarTower.lean） -/
+/-! ## 元のδ段間射の標準係数射・スカラー塔と係数環上の平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetStepScalarTower
 
@@ -1078,7 +1078,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteJetStepScalarTower
 
-/-! ## 元のδ段間射の係数拡大加群に対する実Tor・Koszul計算（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteJetStepTor.lean） -/
+/-! ## 元のδ段間射の係数拡大加群に対する実Tor・Koszul計算 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteJetStepTor
 

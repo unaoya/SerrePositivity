@@ -47,8 +47,8 @@ lemma left_class : Truncated.HomotopyCategory.homMk
         (BinaryProductDiagonal.square_bottom a b f g hc S hS ht hr hl)
         (BinaryProductDiagonal.square_top a b f g hc S hS ht hr)).toTruncated := by
     apply Truncated.Edge.ext
-    change (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (BinaryProductCospan.square a b f g hc S hS ht hr hl)).edge =
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (BinaryProductDiagonal.square a b f g hc S hS ht hr)).edge
+    change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (BinaryProductCospan.square a b f g hc S hS ht hr hl)).edge =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow (BinaryProductDiagonal.square a b f g hc S hS ht hr)).edge
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge]
     apply congrArg SSet.yonedaEquiv
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare

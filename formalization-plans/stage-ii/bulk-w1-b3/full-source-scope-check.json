@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "original_lean_files": 33408,
+  "expected_final_lean_files": 33450,
+  "actual_lean_files": 33450,
+  "approved_initial_lean_outputs": 8814,
+  "indexed_frozen_main_rewrites": 686,
+  "missing": [],
+  "extra": [],
+  "different": [],
+  "input_bundle_sha256": "89b1bb8d09706cec1dfbd731bf7d0794a18a0d5d954f55fd22242d1585195a30",
+  "mechanical_audit_constant_name_corrections": 2,
+  "audit_correction_ledger_sha256": "c9766fc01f61faf33eb051a58bc647f65d3cd1f2491e3ab37d2b899fb3be4a98",
+  "audit_correction_helper_sha256": "50726f531364c21bf37be47c428d1549b52fb3a6e3ce168b5be9614a13e057e3",
+  "final_tree_sha256": "413cdd429ba307f597544a39e6d0b50b2c5988ddb561c276fe180f0b60cec5c1",
+  "policy": "Every tracked original Lean file, including nonbuild drafts, plus the authorized rebased bundle and exact compiler-indexed delta outputs; two explicitly recorded audit declaration-name corrections derived from frozen declaration identity; no unaccounted Lean addition, deletion or edit accepted."
+}

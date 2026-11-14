@@ -21,7 +21,7 @@ open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.SpectrumHo
 
 lemma piFunctor_subsingleton_of_isZero (x : hoFunctor.obj Sp.{u})
-    (hx : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := Sp.{u}) x.as.as) (j : ℤ) : Subsingleton ((piFunctor j).obj x) := by
+    (hx : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (X := Sp.{u}) x.as.as) (j : ℤ) : Subsingleton ((piFunctor j).obj x) := by
   have := Fibration.spectrumPoint_homotopyGroup_subsingleton.{u} j
   let e : x ≅ obj HomotopyLimits.spectrumPoint.{u} :=
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertexIso hx.2 pointZeroVertex.isTerminal

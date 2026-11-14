@@ -26,13 +26,13 @@ lemma laxDifferenceUnit_target_snd :
   rw [Category.assoc, laxDifferenceRho_snd]
 
 lemma laxDifferenceUnit_target_fst_zero (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((laxDifference p q ≫ laxDifferenceRho p q v) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((laxDifference p q ≫ laxDifferenceRho p q v) ≫
       (laxFst p q).hom).app (Opposite.op ⦋0⦌) x) := by
   rw [laxDifferenceRho, Category.assoc, Category.assoc, LaxInclusion.fromD_fst]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
     (v.app (Opposite.op ⦋0⦌) ((laxDifference p q).app (Opposite.op ⦋0⦌) x)))
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagram_const_vertex]
-  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C.obj).isZero
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C.obj).isZero
 
 /-- 元の第一射影から、同じ実終点の第一射影への自然な零枝。 -/
 def laxDifferenceUnitCHomotopy : SSet.Homotopy (laxFst p q).hom
@@ -68,7 +68,7 @@ def laxDifferenceUnitTargetArrowHomotopy : SSet.Homotopy
     (laxDifference p q ≫ laxDifferenceRho p q v)).rel
 
 lemma laxDifferenceUnit_target_fst_post_zero (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((laxDifference p q ≫ laxDifferenceRho p q v) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((((laxDifference p q ≫ laxDifferenceRho p q v) ≫
       (laxFst p q).hom) ≫ p.hom).app (Opposite.op ⦋0⦌) x) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := p.hom) _ (laxDifferenceUnit_target_fst_zero p q v x)
 

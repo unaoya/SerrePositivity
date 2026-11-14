@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionEvaluationLifting
 
 /-! # ホモトピー圏上の suspension 関手
@@ -92,3 +94,8 @@ def SuspensionSquare.suspensionFunctorObjIso {X : SSet.{u}} [Quasicategory X] [_
   exact hi
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.6"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor

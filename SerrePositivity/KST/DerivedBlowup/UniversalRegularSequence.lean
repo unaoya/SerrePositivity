@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.UniversalSplitCoordinates
-public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation
+public import SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation
 
 /-!
 概要：KST Def3.1・Lemma3.6 の普遍チャート関係族の有限弱正則性。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import Mathlib.RingTheory.Finiteness.Cardinality
 public import Mathlib.RingTheory.TensorProduct.Finite
@@ -101,3 +103,8 @@ lemma torAlg_isPowTorsion (i : ℕ) (V : Type u) [AddCommGroup V] [Module A V]
   exact torAlg_smul_eq_zero φ i V a (fun v ↦ @hn v ⟨a, ha⟩) x
 
 end SerrePositivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Lemma 4.4"] _root_.SerrePositivity.torAlg_isPowTorsion

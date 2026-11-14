@@ -1,0 +1,8 @@
+{
+  "file": "SerrePositivity/InfinityCategories/HTT/Section5_2_5/Adjunction.lean",
+  "old_syntax": "local instance (X Y : SSet.QCat.{u})",
+  "new_syntax": "local instance instCategoryHomQCat_serrePositivity_2 (X Y : SSet.QCat.{u})",
+  "old_kernel_name": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.instCategoryHomQCat_serrePositivity_2",
+  "intended_kernel_name": "SerrePositivity.InfinityCategories.HTT.Section5_2_5.instCategoryHomQCat_serrePositivity_2",
+  "reason": "The moved namespace changed the automatically chosen suffix. Name the same local instance explicitly to preserve the reviewed name map, with identical parameters, type, value, visibility and instance priority."
+}

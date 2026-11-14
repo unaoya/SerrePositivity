@@ -1,0 +1,20 @@
+{
+  "before_source_private_bindings": 11677,
+  "after_source_private_bindings": 11687,
+  "raw_kernel_rules": 17694,
+  "unchanged_external_private_roots": [
+    "Init",
+    "Lean",
+    "Std",
+    "Mathlib",
+    "Batteries",
+    "Aesop",
+    "Qq",
+    "ProofWidgets",
+    "LeanSearchClient",
+    "ImportGraph",
+    "Plausible"
+  ],
+  "missing_private_source_bindings": [],
+  "normalization": "Actual raw private kernel name -> intended/actual defining module + user name; public rules remain the reviewed v3b rules. Scope-specific normalization of private declaration rows avoids cross-module user-name collisions."
+}

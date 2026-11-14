@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPo
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryPointedFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionReducedComparison
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-! # 元の S₁ 境界商比較の厳密単体的自然変換
 概要：同じ前向きの境界商比較を、全 native dg 入力上の厳密豊穣自然変換へ束ねる。

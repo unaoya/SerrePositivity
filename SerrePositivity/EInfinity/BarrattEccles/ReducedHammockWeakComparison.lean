@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitWeakComparison
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowReducedWeakComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrowReducedWeakComparison
 
 /-!
 # 任意可換環の元の Map^h と reduced hammock の弱比較

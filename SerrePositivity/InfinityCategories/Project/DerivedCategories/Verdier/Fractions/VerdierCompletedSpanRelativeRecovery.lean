@@ -3,8 +3,8 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierSpanKanComparison
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPathSection
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeHomotopyConstantComposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.IntervalReplacementPathSection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeHomotopyConstantComposition
 
 /-!
 概要：元の完成分数の有限族を、指定実境界の輸送円柱を保って実分母族へ戻す。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.BhattScholze.Almost.AlmostTensor
 public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone
@@ -496,3 +498,10 @@ theorem connective_iff_almost
       ((isAlmostConnective_iff_completedTensor_connective p hR J hJ M hM).mp hK) hB
 
 end SerrePositivity.BhattScholze.Almost
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 10.5"] _root_.SerrePositivity.BhattScholze.Almost.connective_iff_almost
+attribute [cite BS19 "Lemma 10.5"] _root_.SerrePositivity.BhattScholze.Almost.isAlmostConnective_iff_completedTensor_connective
+attribute [cite BS19 "Prop 10.4" (partial := special) "一般の J で必要な同値（almost 零 ⇔ J_perfd との完備テンソルが 0）は証明済み。後半の圏同値は作らない（D66） ／ 11-10 更新"] _root_.SerrePositivity.BhattScholze.Almost.isAlmostZero_iff_completedTensor_isZero

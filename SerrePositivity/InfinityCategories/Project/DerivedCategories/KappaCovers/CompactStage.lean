@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactClassicalTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGModuleKappaCompactClassicalTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FilteredRetraction
 
 /-!

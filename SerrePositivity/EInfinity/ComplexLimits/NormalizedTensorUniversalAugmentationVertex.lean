@@ -1,7 +1,7 @@
 module
 public import
   SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementUniversalAugmentationLinear
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedClosedVertexNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedClosedVertexNaturality
 
 /-!
 概要：元の普遍 cochain の一点成分は、同じ実 augmentation で元の恒等 cochain に送られる。

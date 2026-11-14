@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FiberSquareHomotopyUniqueness
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberConeHomotopyUniqueness
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition
 
 /-!
 概要：pullback 四角形間の比較の類を、元の cospan の比較から一意に決定する。

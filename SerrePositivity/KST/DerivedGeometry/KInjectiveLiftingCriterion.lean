@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedGeometry.AcyclicMapAttachment
 public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
 public import Mathlib.Algebra.Homology.HomotopyCategory.KInjective
@@ -64,3 +66,9 @@ lemma isKInjective_of_rlp_mono_quasiIso (I : CochainComplex C ℤ)
   exact ⟨inferInstance, quasiIso_of_acyclic A _ _ hA (adjacentBiproductComplex_acyclic _)⟩
 
 end SerrePositivity.KST.DerivedGeometry
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.5.11" (partial := component) "仮定：非輪状な始域と K-injective な標的。右持ち上げ性から後者を得る（Lean が弱い：Grothendieck 性を要求しない。injective ModelCategory instance はない）。結論：全次数の Hom 複体の余サイクルは余境界（非輪状性に一致）。"] _root_.SerrePositivity.KST.DerivedGeometry.isKInjective_of_rlp_mono_quasiIso
+attribute [cite HA "1.3.5.6" (partial := stronger-hyp) "仮定：cochain 複体が下に有界、または無界複体がモノ準同型に対し右持ち上げ性を持つ（Lean が強い：fibrancy の同値は有界な場合）。結論：scoped な有界モデルの fibrant 性は各項の入射性と同値。無界の場合の持ち上げ性から K-injective 性も従う（Lean が弱い：無界モデルの instance は確認できない）。"] _root_.SerrePositivity.KST.DerivedGeometry.isKInjective_of_rlp_mono_quasiIso

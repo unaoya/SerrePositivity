@@ -1,0 +1,166 @@
+{
+  "status": "PASS",
+  "scope": "Comment-only supplement, V -> independent replay tree, after the full R -> V preservation; production untouched. Broad R21 legacy prose is excluded.",
+  "files": 14,
+  "builds": [
+    {
+      "path": "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+      "module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+      "before_sha256": "2b190f572e1e2fc48b31d557f65a23b1d34fbdd3b22d04c9ffea75984f3088b3",
+      "after_sha256": "6c081d9a6148768f960da43ee611c193d1ab8fbe9ada7e1466d489e06c2b7c69",
+      "before_public_olean_sha256": null,
+      "rc": 0,
+      "seconds": 13.151890249922872,
+      "after_public_olean_sha256": "dfa6a56efbb4e978a095f0d0adbd2ffc3d0acc571da9781b61730931f76db3f7",
+      "public_olean_unchanged": false
+    },
+    {
+      "path": "scripts/audit/bs_power_root_envelope/VarpiComparison.lean",
+      "module": "scripts.audit.bs_power_root_envelope.VarpiComparison",
+      "before_sha256": "fa6e2828bd2647f7c337a74f2f630b22f11c3a847fe083bc7d195bb0ac3527f4",
+      "after_sha256": "eb0560214b45eddc8ad8802ead397594c119c49781841344df5283c320e30d43",
+      "before_public_olean_sha256": null,
+      "rc": 0,
+      "seconds": 6.841540792956948,
+      "after_public_olean_sha256": "163c213c077243a88abf891e02bf2787b3895c86a95852d32c01e104361f5638",
+      "public_olean_unchanged": false
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcCechMilnor.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor",
+      "before_sha256": "832844ea54d7ec9b089474b3e2233cc562f648872f4a877c9cb8039339685265",
+      "after_sha256": "6e4d0a4698324522b59f463e15d9f501439354eee14c570639d1da28a495f3f7",
+      "before_public_olean_sha256": "a1bd0792bbb3b75da8b711f57825b99c0035e505c4a5dfeff7bc998936317c16",
+      "rc": 0,
+      "seconds": 12.945743292570114,
+      "after_public_olean_sha256": "a1bd0792bbb3b75da8b711f57825b99c0035e505c4a5dfeff7bc998936317c16",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechOverlap.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap",
+      "before_sha256": "7fb19ae310e5353968a5302019ba95802cefc644f6b554eda241798764170cf5",
+      "after_sha256": "19350729d09709bee7334083f1aaec68ad8f84b8c374f713175fda3ae0f9aa51",
+      "before_public_olean_sha256": "d955fd7c46bbb28a9a586905416ed935ab8f7fc078f08a7f747d23f22760b869",
+      "rc": 0,
+      "seconds": 9.634935708716512,
+      "after_public_olean_sha256": "d955fd7c46bbb28a9a586905416ed935ab8f7fc078f08a7f747d23f22760b869",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcCechUltraproduct.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+      "before_sha256": "c0af4f7191c033fd413126fae516723d313e9a2dd87a0be5b41ec42d66387950",
+      "after_sha256": "17b69fde582f2d760515cc8187978d3eadd15656df35e1ad480d5664b80baf26",
+      "before_public_olean_sha256": "a6959c7ba190c07becef9fc8360c0d3c22cf024478e1ec832353f113ad5ec692",
+      "rc": 0,
+      "seconds": 7.1949156653136015,
+      "after_public_olean_sha256": "a6959c7ba190c07becef9fc8360c0d3c22cf024478e1ec832353f113ad5ec692",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcIntervalOverlap.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+      "before_sha256": "92435c13ca0935792ef2408fe63d67198826b6ce96e52d71a97f61b976284165",
+      "after_sha256": "34cdd61912097ad7d2ba69e2b4a34972ad0390ae964118a9c22384e9c5174806",
+      "before_public_olean_sha256": "38076c17f491376644c35d0fe86ecb8669a8042844e5acf521436924d046d15f",
+      "rc": 0,
+      "seconds": 4.053824292495847,
+      "after_public_olean_sha256": "38076c17f491376644c35d0fe86ecb8669a8042844e5acf521436924d046d15f",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorDetection.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+      "before_sha256": "7ac30d74fb84b048477765d3995d4f54f71c0fa70284e00f786073c1bb5f571f",
+      "after_sha256": "91c9efe82c8ed20de5516d16b82c9569e5d79acba7ee51e47da66bed20988d0e",
+      "before_public_olean_sha256": "c5c820ce50ea13271432963abbbd34385643e60964e60a438494054d066c8724",
+      "rc": 0,
+      "seconds": 4.131470458582044,
+      "after_public_olean_sha256": "c5c820ce50ea13271432963abbbd34385643e60964e60a438494054d066c8724",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+      "before_sha256": "6a57abb18ffce1c9e4dca71a9db145eedf156010f87cfb62d9e5010c7e7a7588",
+      "after_sha256": "8f3bf4a9b335ac0428d637a2bbf67e7a215eedbc9d597b832f84d994359312ff",
+      "before_public_olean_sha256": "83c9761522605165cd283ee07768eba5126e74b4bdb3dc5b8e93b4497c1535c7",
+      "rc": 0,
+      "seconds": 4.222198955714703,
+      "after_public_olean_sha256": "83c9761522605165cd283ee07768eba5126e74b4bdb3dc5b8e93b4497c1535c7",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectCech.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectCech",
+      "before_sha256": "c8a3b319c69e15ad33aa13126d0565a165d074c9a5316cfff37754d24c4a57e1",
+      "after_sha256": "75303b23cb780d18120fd3044d0889c5ecbae2eb2d849928b9b784818436208e",
+      "before_public_olean_sha256": "4bb878579c942aac2af55c1b0a1a142f48da01ccc271298eac37031b1730d9ce",
+      "rc": 0,
+      "seconds": 4.039958333596587,
+      "after_public_olean_sha256": "4bb878579c942aac2af55c1b0a1a142f48da01ccc271298eac37031b1730d9ce",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationProduct.lean",
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+      "before_sha256": "0d992b21adb7c900cbfc54071c4e284272aeb3e962aa59a0fbc9e7bf1496ffd5",
+      "after_sha256": "9875b38d9c2ab1139a72c2880ad57394a8b83994a38194a0f53a12a3b0ec6081",
+      "before_public_olean_sha256": "714eb355fd14f8a8727dcd29d22f25a4b269feda9d094f8c4ec80b7acf9515ae",
+      "rc": 0,
+      "seconds": 7.632185500115156,
+      "after_public_olean_sha256": "714eb355fd14f8a8727dcd29d22f25a4b269feda9d094f8c4ec80b7acf9515ae",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Frames/BigCechAffineFrameQuasiIso.lean",
+      "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+      "before_sha256": "dc984e8f1aedcaa0a61c0af0d97eed433b1b3bcdc61f984517c33f1fe1258b07",
+      "after_sha256": "13e6ae92622a1223c2d30a70a682406b7dac3e14f63bfe1dda80ee0021437274",
+      "before_public_olean_sha256": "a49f64be08b914196b452e8e3019e094c087c3d1c1c4e4e29986742bcef50a35",
+      "rc": 0,
+      "seconds": 11.717176955193281,
+      "after_public_olean_sha256": "a49f64be08b914196b452e8e3019e094c087c3d1c1c4e4e29986742bcef50a35",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/Crystalline/PDDeRham/PDDeRhamCompletedSubstitution.lean",
+      "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+      "before_sha256": "16b907516b2f62a8209379f4f999c5be5056d45d265989cafff47fa877a3b23b",
+      "after_sha256": "ff0b28b2e5b2454cae704099b63204a87e00f79d366bfaf3151ece3d067ac5cc",
+      "before_public_olean_sha256": "98c2911992a094a03675ad82b85b535404dffcb26c097ad6a3693a3c5a1f821c",
+      "rc": 0,
+      "seconds": 14.622380167245865,
+      "after_public_olean_sha256": "98c2911992a094a03675ad82b85b535404dffcb26c097ad6a3693a3c5a1f821c",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/Crystalline/PDDeRham/PDDeRhamSubstitutionChainRule.lean",
+      "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "before_sha256": "9bdf14303e33c87cde26fa305427b10063de25d2be627b402017f9434439a0c3",
+      "after_sha256": "e6ce544833e54012307f039e2985407cff99c013f9b443d42b6973141ec35b4e",
+      "before_public_olean_sha256": "d0a2183da7bbf077fdc52e9ac1108c77efba6939a47036a79c1352222504010c",
+      "rc": 0,
+      "seconds": 5.96501474827528,
+      "after_public_olean_sha256": "d0a2183da7bbf077fdc52e9ac1108c77efba6939a47036a79c1352222504010c",
+      "public_olean_unchanged": true
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/PDRawBaseChangeQuotient.lean",
+      "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "before_sha256": "2954b161d0e9090a05ac86940b72e4821b2f2222f441a8f728d4591df0451e5e",
+      "after_sha256": "017bdd1f6eeee9712e19a5e0249cfb246110733b9fd98b4d81f0eef72510e88b",
+      "before_public_olean_sha256": "8caa37fdaf58556753e8e4f24b3c3e2abbe05718a53a1d8805289a3e45c16500",
+      "rc": 0,
+      "seconds": 8.295676166191697,
+      "after_public_olean_sha256": "8caa37fdaf58556753e8e4f24b3c3e2abbe05718a53a1d8805289a3e45c16500",
+      "public_olean_unchanged": true
+    }
+  ],
+  "before_count": 64,
+  "after_count": 64,
+  "unexplained_changes": 0,
+  "public_olean_unchanged": 12,
+  "finished": 1794559059.557175
+}
