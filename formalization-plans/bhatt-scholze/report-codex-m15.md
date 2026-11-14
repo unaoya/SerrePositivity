@@ -8608,3 +8608,64 @@ K の実 Hom 誘導射の完全忠実性はまだ証明していない。
 M10・M11 以降・G12 は未完であり、外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §58 元の全単体の閉零同型による対象表示の移送
+
+M10 の三相単体の評価に必要な対象表示の移送は、既存の inducedDGCategory・
+inducedDGEvaluation と dgFunctorClosedConjugate を使って構成した。
+元の単体を頂点番号のラベル上へ移し、同じ全 Hom 複体に対する既存の共役 dg 関手で送る。
+頂点番号から元の対象への写像の単射性を仮定しない。
+移送した実単体の全 HA 方程式は既存の dg 関手による単体の像の構成で保持する。
+全 cochain の値は、元の二つの閉零同型による全 Hom 複体の前後合成と一致する。
+
+これは既存構成の対象表示・係数移送の法則であり、新しい一次 ID は追加しない。
+全三相データの評価比較自体を仮定した構成でも、H⁰ の同型での移送でもない。
+
+`SimplexClosedTransport.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
+
+def simplexVertexLabels {n : ℕ} (s : Simplex A D n) :
+    letI := inducedDGCategory A s.obj
+    Simplex A (Fin (n + 1)) n
+
+def simplexClosedTransport {n : ℕ} (s : Simplex A D n) (b : Fin (n + 1) → D)
+    (e : ∀ i, ForgetEnrichment.of (Complex A) (s.obj i) ≅
+      ForgetEnrichment.of (Complex A) (b i)) : Simplex A D n
+
+lemma simplexClosedTransport_obj {n : ℕ} (s : Simplex A D n)
+    (b : Fin (n + 1) → D)
+    (e : ∀ i, ForgetEnrichment.of (Complex A) (s.obj i) ≅
+      ForgetEnrichment.of (Complex A) (b i)) (i : Fin (n + 1)) :
+    (simplexClosedTransport A D s b e).obj i = b i
+
+lemma simplexClosedTransport_hom {n : ℕ} (s : Simplex A D n)
+    (b : Fin (n + 1) → D)
+    (e : ∀ i, ForgetEnrichment.of (Complex A) (s.obj i) ≅
+      ForgetEnrichment.of (Complex A) (b i))
+    (I : Finset (Fin (n + 1))) (a c : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    (simplexClosedTransport A D s b e).hom I a c k hI ha hc hk =
+      (enrichedClosedIsoConjugation (Complex A) (e a) (e c)).f k
+        (s.hom I a c k hI ha hc hk)
+```
+
+### 58.1 検証と実測
+
+SimplexClosedTransport の対象ビルドと新規公開宣言四本の小さい監査は、
+同じ impl 鍵・待ち 3600 秒・gtimeout 280 秒で終了値 0。
+依存公理は propext・Classical.choice・Quot.sound のみ。新規引用属性・引用出力は 0 本。
+root ビルド・大きい監査・heartbeat 上限の変更はない。
+
+新規 Lean は一ファイル・70 行・明示宣言四本（private 0 本）。
+検証済み累計は 208 ファイル・16,097 行・明示宣言 726 本（private 21 本）。
+17,000 行の外枠まで残り 903 行。200 行を超える証明や一次 ID の追加はなく、
+既存 EInfinity ソースも変更していない。
+
+次は同じ三相データの対象・実 cochain を作り、この対象表示の移送を全評価で使う。
+全三角形・K の実 Hom 誘導射の完全忠実性、M10・M11 以降・G12 はまだ未完である。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
