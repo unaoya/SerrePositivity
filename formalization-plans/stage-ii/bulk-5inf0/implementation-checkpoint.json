@@ -1,0 +1,237 @@
+{
+  "status": "implementation in progress; not completion",
+  "completed_items": [],
+  "total_items": 14,
+  "additional_items": 0,
+  "source_changes": {
+    "added": 1080,
+    "removed": 1486,
+    "total": 2566,
+    "estimated_upper": 5550,
+    "halfway": 2775,
+    "outer_cap": 11100
+  },
+  "draft_sorry": {
+    "before": 705,
+    "current": 585,
+    "by_file": [
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean",
+        "before": 3,
+        "current": 3
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
+        "before": 20,
+        "current": 4
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
+        "before": 10,
+        "current": 7
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticEnvelope.lean",
+        "before": 2,
+        "current": 1
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean",
+        "before": 10,
+        "current": 4
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+        "before": 35,
+        "current": 21
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
+        "before": 45,
+        "current": 28
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+        "before": 59,
+        "current": 34
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean",
+        "before": 21,
+        "current": 19
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+        "before": 1,
+        "current": 1
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+        "before": 14,
+        "current": 14
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean",
+        "before": 11,
+        "current": 11
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A2/DerivedPrismaticCohomology.lean",
+        "before": 17,
+        "current": 17
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A2/HodgeTateFiltration.lean",
+        "before": 17,
+        "current": 17
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A3/DiscreteCase.lean",
+        "before": 23,
+        "current": 17
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+        "before": 30,
+        "current": 25
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A4/AfterComparison.lean",
+        "before": 3,
+        "current": 3
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean",
+        "before": 14,
+        "current": 14
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean",
+        "before": 26,
+        "current": 21
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/InterfaceLimitCone.lean",
+        "before": 5,
+        "current": 5
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean",
+        "before": 36,
+        "current": 36
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean",
+        "before": 11,
+        "current": 11
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/RootAdjunction.lean",
+        "before": 2,
+        "current": 2
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/SemiperfectoidCase.lean",
+        "before": 28,
+        "current": 28
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+        "before": 19,
+        "current": 19
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A5/WeaklyInitialAndDescent.lean",
+        "before": 28,
+        "current": 28
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean",
+        "before": 0,
+        "current": 0
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean",
+        "before": 54,
+        "current": 54
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcSite.lean",
+        "before": 12,
+        "current": 12
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A6/Excision.lean",
+        "before": 25,
+        "current": 25
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A6/SheafOfSetsExcision.lean",
+        "before": 24,
+        "current": 24
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedDomain.lean",
+        "before": 15,
+        "current": 15
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedPerfectoidization.lean",
+        "before": 22,
+        "current": 22
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A7/DiscreteCore.lean",
+        "before": 3,
+        "current": 3
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean",
+        "before": 17,
+        "current": 17
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
+        "before": 11,
+        "current": 5
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
+        "before": 12,
+        "current": 7
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
+        "before": 20,
+        "current": 11
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+        "before": 0,
+        "current": 0
+      },
+      {
+        "path": "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean",
+        "before": 0,
+        "current": 0
+      }
+    ]
+  },
+  "first_build": {
+    "status": "FAIL",
+    "exit_code": 1,
+    "passed": [
+      "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Basic"
+    ],
+    "errors": [
+      "Category: cross-universe argument for same-universe complete-flatness API",
+      "PerfectBounded: explicit unfolding of OrientedPrism.ideal required"
+    ],
+    "fixes_written": true,
+    "rerun_pending": true
+  },
+  "main_new_declarations_audit": "prepared; not run",
+  "draft_typecheck": "not run",
+  "B06": "authorized deferral to 5inf-3a; no general HT comparison claimed"
+}

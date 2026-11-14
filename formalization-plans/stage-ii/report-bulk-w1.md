@@ -786,3 +786,18 @@ main `efa846fe8` から専用 worktree の枝を切った。主題は `bulk-5inf
 [行数予算](bulk-5inf0/stage0-estimate.json)は **3,400–5,550行**。Leanの追加行＋削除行で測り、draftsの書き換え・削除、宣言のdocstringを含める。非Leanの報告・台帳は別計数。本体だけの見込みではない。上端5,550≤6,000なので指示§3の条件付き承認で実装へ進む。外枠は **11,100行**。約2,775行に達した時点で実績と残りを報告し、外枠に届く前、または新しい構成・範囲外の数学が必要になれば止める。
 
 対象ビルドは小分けにし、Bの新規宣言を列挙した `assert_no_sorry` の小監査を別に用意する。BS段階II監査には新モジュールと明示的な必須名の登録案を報告する。draftsの既存sorryは本体の新規宣言の監査とは分離し、数の前後差と型検査の対象・未実行分を明記する。今回まだLeanの変更・ビルド・監査は0。
+
+
+### 5∞-0 実装経過（11-14昼、型検査継続中）
+
+一覧：済み 0／全体 14（うち追加 0）。実装の完成ではない。
+
+Lean差分は追加1080・削除1486、合計2566行（半分の目安2,775行、外枠11,100行）。A0〜A9のコード中のsorryは705→585箇所。前後のファイル別計数と未実行の検査は[経過台帳](bulk-5inf0/implementation-checkpoint.json)に分けた。残りは主にdraft依存を解決した型検査と、その診断に基づく修正で、行数は未実測。上端の予算5,550行と外枠を維持して監視する。
+
+本体7モジュールの追加と直接利用側の修正を書いた。最初の対象ビルドでは有界p冪ねじれ・semiperfectoidの2モジュールが成功。Categoryは既存APIの宇宙条件、PerfectBoundedは定義の展開で失敗した。前者を同じ宇宙に揃え、後者ではP.idealを明示展開して再検査を並べている。[初回の生ログ](bulk-5inf0/initial-target-build.log.gz)を保持し、失敗を成功へ数えない。対象ビルド・小監査・draftsの型検査の全件成功はまだない。
+
+B07の実定義はDerivedInfinityの一般ファイルへ移し、既存の二つの公開名は同じ本体ファイルの互換略記として保持した。draftsでの二重の宣言は外した。旧名を使う別枝を不用意に壊す変更にはしない。B04の大きいsiteは `PerfectPrismaticSiteLarge` と呼び、draftが使う小さい模型 `PerfectPrismaticSite` と区別した。数学の条件は変えていない。
+
+A3は明示的なEInfinityTheory引数へ追従し、局所データの旧変数Eを先に改名した。一般のΔとの同定はdraftに保持し、通常のδテンソル・包絡同型からのδ構造・A_infの古典的な芯を本体へ寄せた。Notation8.1のA_infは本体のTheorem3.10に基づく構成を参照する。Tor振幅の二重定義は除き、本体のHasCochainCompleteTorAmplitudeを使う。A8の40件は39件の完全修飾名の一致と、同じ定義式で名前空間だけが異なるFiniteEtaleAwayの1件。局所instanceの登録も保持した。これらの書き換えは、draftsのLean検査が通るまで完了に数えない。
+
+本体とdraftsの68 importをB3のモジュール表で更新し、A0〜A9のimport先の欠落0を静的に確認した。基準台帳の生成器を別rootでも実行できるようにし、読み取りだけのmainから再生成した2表が保存済みの表と全件一致した。本体の層の静的検査は基準・変更側とも同じ15辺で、新しい違反・除外0（[差分](bulk-5inf0/initial-layer-comparison.json)）。最終状態で再検査する。禁止3ディレクトリ・Shared/EInfinityPowerOperationの変更0、A4のLemma8.4の保護節は基準と一致。正式BS監査の登録案は[7モジュールの表](bulk-5inf0/stage2-audit-registration-proposal.json)に置いた。

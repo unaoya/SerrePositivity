@@ -1,6 +1,6 @@
 from pathlib import Path
-import json,re,sys,hashlib,collections,subprocess
-R=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');W=Path('/tmp/bulk-5inf0');sys.path.insert(0,str(R/'scripts/refactor'));from layer_check import code_only
+import json,re,sys,hashlib,collections,subprocess,argparse
+parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[3]);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args();R=args.root.resolve();W=args.output;W.mkdir(parents=True,exist_ok=True);sys.path.insert(0,str(R/'scripts/refactor'));from layer_check import code_only
 DECL=re.compile(r'^(?:@\[[^\n]*?\]\s*)*(?P<mods>(?:(?:private|public|protected|noncomputable|unsafe|local|scoped)\s+)*)(?P<kind>def|abbrev|theorem|lemma|structure|class|instance|opaque|inductive)\b\s*(?P<name>[\w\u0080-\uffff][\w\u0080-\uffff\'.]*)?')
 def scan(path):
  text=path.read_text();mask=code_only(text);lines=mask.splitlines();original=text.splitlines();namespace='';stack=[];decls=[]
@@ -17,7 +17,7 @@ def scan(path):
   if not m:continue
   short=m['name'];full=None if short is None or (m['kind']=='instance' and short in ['where']) else short.removeprefix('_root_.') if short.startswith('_root_.') else '.'.join(filter(None,[namespace,short]));end=i+1
   while end<len(lines) and (not lines[end] or lines[end][0].isspace()):end+=1
-  block='\n'.join(original[i:end]);code='\n'.join(lines[i:end]);header=re.split(r':=|\bwhere\b',code,1)[0].strip();decls.append({'name':full,'leaf':short,'kind':m['kind'],'private':'private' in m['mods'].split(),'line':i+1,'lines':end-i,'signature_source':header,'sorry_tokens':len(re.findall(r'\bsorry\b',code))})
+  block='\n'.join(original[i:end]);code='\n'.join(lines[i:end]);header=re.split(r':=|\bwhere\b',code,maxsplit=1)[0].strip();decls.append({'name':full,'leaf':short,'kind':m['kind'],'private':'private' in m['mods'].split(),'line':i+1,'lines':end-i,'signature_source':header,'sorry_tokens':len(re.findall(r'\bsorry\b',code))})
  return {'path':str(path.relative_to(R)),'lines':len(original),'sha256':hashlib.sha256(text.encode()).hexdigest(),'sorry_tokens':len(re.findall(r'\bsorry\b',mask)),'declarations':decls}
 main={};leaf=collections.defaultdict(list)
 for root in ['BhattScholze','HomologicalAlgebra','CommutativeAlgebra','EInfinity/Interface','EInfinity/Perfectoidization']:
