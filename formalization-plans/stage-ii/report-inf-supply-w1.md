@@ -7687,3 +7687,58 @@ def strictDiagramFreeArrowAugmentationComponent (X : StrictComplexDiagram A d)
 増大射とそのHomが既存の錐の脚に一致することまで検証した。
 §75.1の添字比較、実現後の弱同値性、既存twisted-arrow切断への接続は未完。
 E01の別経路の紙は§71〜§74の状態を維持する。RR02の完了数は変えず、続ける。
+
+## §76 RR02(a)：評価点での実余積の添字比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `b2db3f11a` の検証済み104行を追加した進捗。
+§75.1の案を、§69.2(a)の証明分割として実装する。型は次のとおり。
+
+```lean
+def strictDiagramFreeEvaluationWeight (d : StrictDiagramDirection) (k : strictDiagramIndex d) :
+    (StrictDiagramArrowElements.{u} d)ᵒᵖ ⥤ Type
+abbrev StrictDiagramFreeEvaluationIndex (d : StrictDiagramDirection) (k : strictDiagramIndex d) :=
+    (strictDiagramFreeEvaluationWeight.{u} d k).Elements
+def strictDiagramFreeEvaluationToOver (d : StrictDiagramDirection) (k : strictDiagramIndex d) :
+    StrictDiagramFreeEvaluationIndex.{u} d k ⥤ Over k
+def strictDiagramFreeEvaluationSectionObj (d : StrictDiagramDirection) (k : strictDiagramIndex d)
+    (t : Over k) : StrictDiagramFreeEvaluationIndex.{u} d k
+def strictDiagramFreeEvaluationSection (d : StrictDiagramDirection) (k : strictDiagramIndex d) :
+    Over k ⥤ StrictDiagramFreeEvaluationIndex.{u} d k
+```
+
+合成への関手は、Hom要素圏の関係式と、その上の余積の添字の関係式の両方を使う。
+恒等射付きの関手も全射で構成し、対象の対応だけで済ませない。
+随伴と重みの実現への移送は次の接続として残る。E01の別経路の紙は前節の状態を維持する。
+
+同じ比較の余単位は次の型で作る。元の二本目の射を使い、恒等射付きの添字から戻す。
+既存の構成の法則の接続として扱い、IDを追加しない。
+
+```lean
+def strictDiagramFreeEvaluationCounitComponent (t : StrictDiagramFreeEvaluationIndex.{u} d k) :
+    (strictDiagramFreeEvaluationSection d k).obj ((strictDiagramFreeEvaluationToOver d k).obj t) ⟶ t
+def strictDiagramFreeEvaluationCounit :
+    strictDiagramFreeEvaluationToOver.{u} d k ⋙ strictDiagramFreeEvaluationSection d k ⟶
+      𝟭 (StrictDiagramFreeEvaluationIndex.{u} d k)
+```
+
+### 76.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFreeEvaluationIndex | 75 | 3,760 jobs成功 | 17宣言、標準三公理のみ |
+| StrictDiagramFreeEvaluationCounit | 53 | 3,761 jobs成功 | 8宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/free-evaluation-index/build-2.log`、
+`/tmp/is-w1/free-evaluation-counit/build-2.log`。
+合成則の単位射、縮小添字の表示を局所的な等式で明示して検証した。
+計算上限は変更していない。未検証のE01下書き4本は今回の対象外。
+
+検証済み累計166本・13,303行、外枠24,000行まで10,697行。
+上限変更後のRR02(a)実測805行、(b)(c)新規0行。
+評価点での添字比較と、合成して戻す自然な比較射まで検証した。
+随伴の単位・三角恒等式、重みの移送と実現後の弱同値性は残る。
+RR02は未完で、一覧の完了数は変えない。
