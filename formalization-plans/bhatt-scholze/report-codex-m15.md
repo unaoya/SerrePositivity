@@ -1888,3 +1888,158 @@ M15 の一覧・型・ソースには B4 の変更をまだ加えていない。
 累計は検証済み新規 Lean 30 ファイル・2,819 行・160 宣言（private 3 を含む）。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 11. B4 停止中の代替作業：A5 と M15 の実際の型の受け渡し（11-14、紙）
+
+main `efa846fe8` の改名表の SHA は §10 のものと同じで、
+`DiagramComparison` の明示的な open 方針はまだない。保留 2 件を維持し、
+main の取り込み・プレビュー反映・M15 の Lean は再開していない。
+`lane-goals-2026-11-14.md` の⑤dの代替作業に従って、A5 を読み取りだけで照合した。
+ここでいう drafts は全て `formalization-plans/bhatt-scholze/drafts/` 以下。
+読み取った次の七ファイルは、自分の枝と main の間で差分がないことも確認した。
+
+- `Shared/Descendable.lean`
+- `A5/StrongDescent.lean`、`A5/WeaklyInitialAndDescent.lean`
+- `A4/Perfectoidization.lean`、`A2/DerivedPrismaticCohomology.lean`
+- `DerivedGeneral/CompletionFunctor.lean`、`DerivedGeneral/Truncation.lean`
+
+以下は §1 の既存出力の接続条件と利用側の差の記録であり、
+新しい一次 ID・Lean 宣言・追加の仮定を導入したものではない。
+
+### 11.1 BE 中核で進める範囲と、現在の実装の境界
+
+本体の `BarrattEccles/Theory.lean:35` の `barrattEcclesCore.CAlg A` は
+実際の `CAlg_R A`、その忘却は `cAlgForgetDerived A` に固定されている。
+一方、`drafts/Shared/BarrattEcclesTheory.lean:28` の `barrattEcclesTheory` は
+作業用の `sorry` を含み、本体の `barrattEcclesTheoryOfRemaining` は G12 などの
+未供給欄を引数に取る。これを M15 の実装入力にすると、M15 の後に行う G12 を
+先に要求する依存になる。D80 の指定どおり M15 の本体は実 `CAlg_R A` と中核で作り、
+A5 の `E := barrattEcclesTheory` 特殊化は全界面の組み立て後の利用側の接続とする。
+任意 E への輸送を作る理由にはしない。
+
+現在の実出力の型は、厳密な BE 代数 `X Y : (operad A).Algebra` に対する
+`strictModuleInfinity A X`、`strictModuleUnderlying A X`、`strictModuleUnit A X`、
+`strictModuleExtend f`・`strictModuleRestrict f` とその随伴・同じ台の比較である。
+M10 の実射影には
+
+```lean
+moduleUnitSection_projectionIso A :
+  FunctorIso (moduleUnitSection A ≫ moduleTotalProjection A) (𝟙 (CAlg_R A))
+```
+
+を構成済み。しかしこの型は、任意の native な底 `R : (CAlg_R A) _⦋0⦌` の
+指定 fiber の相対テンソル・内部 Hom や、その fiber の単位を供給する型ではない。
+A5 の `deltaRootEdge` を厳密な一つの代数射の代表に取り替えて使う接続もまだない。
+M10・C02 が指定した同じ U・単位・随伴と高次単体を保持する全族を作る必要が残る。
+
+### 11.2 共通の厚さと Shared の厚さは定義上の等式ではない
+
+本体の `InfinityCategories/HA/StableInfinityCategories/Thick.lean:27` は
+零・同型・実 cofiber/fiber・ホモトピー圏の retract で閉じる `IsThick`。
+`EInfinity/Modules/ThickTensorIdeal.lean:25` はこれを拡張し、
+右からの `tensorWith M` の閉性を加える。
+Shared の同名構造（`Shared/Descendable.lean:59`）は、全ての有限単体集合 K の
+`JoinCocone` に対する有限余極限閉性、辺で表示した retract、shift、tensor を持つ。
+
+M19 の接続では、有限余極限閉性と cofiber/fiber 閉性の相互変換、
+`Nonempty (Retract (ho.mk x) (ho.mk y))` と二つの実辺・合成式の変換、
+同型で移した頂点の所属を保持する法則が必要。
+同じ名前であることや、生成閉包が双方とも述語の交わりであることだけでは、
+M22 の単位底特殊化の述語の一致にはならない。この互換の証明は未実装である。
+
+### 11.3 完備圏の単位：A 自身が完備でない離散底も残す
+
+`Shared/Descendable.lean:302` の `isDescendable_complete` は、s と B を受け、
+B の台の s 完備性だけを仮定する。底の環 A 自身の s 完備性は引数にない。
+その結論の `IsDescendableComplete` は、完備テンソルイデアルが
+**単位 A の完備化**を含むという定義（同ファイル:297）である。
+
+これに対し §1.5 の M39 は一般の底 R・終域 B の台の完備性を仮定する。
+従って R を離散底の単位 A に特殊化して M39 だけを当てる経路には、
+利用側にない A の完備性が余分に必要になる。
+§1.5 で約束した離散版全型の互換出力を保つには、M36・M37 の反射・テンソルの
+法則から「生成元と単位を反射した thick イデアル」へ移す接続も必要。
+Shared に A の完備性を追加して穴を埋めない。
+
+接続条件の模式的な型を §1.5 の記法で固定する（下の名前はまだ Lean 宣言ではない）：
+
+```lean
+-- C_R, one_R, U_R, moduleCompletion, inclusion は M10・M36 の出力。
+completeUnit R s : (completeModules R s) _⦋0⦌ :=
+  (moduleCompletion R s).app (Opposite.op ⦋0⦌) one_R
+
+FunctorIso
+  (moduleCompletion R s ≫ completeModulesInclusion R s ≫ U_R)
+  (U_R ≫ Derived.completion A s)
+
+FunctorIso (completeTensorWith R s (completeUnit R s))
+  (𝟙 (completeModules R s))
+```
+
+R の台が完備な場合に `completeUnit` の忘却と `one_R` を比較する。
+その仮定がない場合の単位は反射した単位として保持する。
+これは M36・M37 の同じ構成の単位・係数移送の法則であり、
+通常版と完備版の descendability の同値を定義にする変更ではない。
+
+### 11.4 A5 の Amitsur データは完備圏で組み立てる必要がある
+
+`A4/Perfectoidization.lean:344–349` の `directPerfectionFunctor` は
+`completePerfectionFunctor ≫ completeCAlgInclusion`。
+`A2/DerivedPrismaticCohomology.lean:66–70` の完備 CAlg は、
+忘却した台が p と prism の generator で完備である充満部分準圏。
+`A5/WeaklyInitialAndDescent.lean:302–307` の結論は、この包含後の同じ
+根被覆増大錐 c の `IsLimitCone c` を要求している。
+
+一方 `Shared/Descendable.lean:179–189` の `AmitsurData.term n` は、
+**通常の CAlg** における各段の `IsColimitCone` を要求する。
+完備テンソルで作った各段を包含で通常の CAlg に送っただけでは、この引数を得ない。
+包含の極限保存と余極限保存を混同しない。
+
+接続経路は M42 の `CompleteAmitsurData` を完備圏で構成し、
+その同じ増大・base・zero・leg・全 term を使って完備圏での極限性を得た後、
+包含の極限保存で A5 が表示する c の極限性へ送るものとして記録する。
+指定された root-cover の脚を別の Amitsur 図式に置き換えない。
+この経路のために A5 の降下述語を完備版へ接続する判断は利用側に残り、
+完備版の降下を通常版の `IsDescendableOver` の証明済み結果とは数えない。
+M41 も同様に、完備な射の圏で与えられた余錐の `IsColimitCone` をその圏で使う。
+通常の射の圏との比較は別途供給する。
+
+### 11.5 RHom の係数と零次評価の接続
+
+`A5/StrongDescent.lean:97` の `fiberSquareRHom f L` は
+`U_R RHom_R(F ⊗_R F, moduleFromBase R L)` の型を要求する。
+同ファイル:101 の `rootDual` の L は `moduleHeartVertex A (ModuleCat.of A A)`。
+これを `U_R RHom_R(F ⊗_R F, one_R)` と比較するためには、M34 の係数作用の単位則
+
+```lean
+-- §1.5 の記法。M34 の同じ係数作用の未実装の単位法則。
+VertexIso
+  ((moduleFromBase R).app (Opposite.op ⦋0⦌) (unitComplex A))
+  one_R
+```
+
+が要る。構成済みの `strictModuleUnitUnderlyingIso` は厳密底 X 上の
+正則加群の**台**を `complexDerivedEvaluation A X.carrier` と比較する型であり、
+この一般 R 加群の係数作用の単位則の代わりにはならない。
+
+`DerivedGeneral/Truncation.lean:53` の `IsConnectiveAt A (-1) x` は
+`∀ i, -1 < i → Subsingleton (derivedInfinityHomology A i x)`。
+M33 の加法的な零次 Hom 比較で i=0 の零性へ移し、
+M35 は指定された `fiberPowerMap f 2` の零性と接続する。
+Shared の `hasDescentIndexLEOver_two_of_rhom : True`（同ファイル:202）は
+この入力・出力を全く持たないため、呼び出し名があるだけでは API ではない。
+
+任意の離散 L を使う `squareZero_rhom_coconnective` と
+`rhom_baseChange_koszul_connection` の係数はそのまま保持する。
+双対可能な Koszul K での Hom–tensor 比較と、任意 L に対する比較を分ける。
+Koszul の計算、最高次の全射、Nakayama、(p,d) と
+(p,φ⁻¹(d)) の完備性を結ぶ A5 の個々の証明は A5 に残す。
+
+### 11.6 変更・検証の範囲
+
+今回変更したのはこの紙の報告だけ。drafts・Lean ソース・B4 の保存索引は変更していない。
+Lean の新しい対象ビルド・監査は実施していない。B4 の保留は引き続き 2 件。
+新規 Lean の実測は 30 ファイル・2,819 行・160 宣言のまま。
+M10 以降と RHom・完備反射・完備テンソルを完了に数えていない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
