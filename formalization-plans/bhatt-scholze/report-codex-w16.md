@@ -23337,3 +23337,175 @@ L22の新規は従来の140〜260行程度を入口とするが、未検証の�
 これを閉じても残りは356〜476行で、L23の従来見込み450〜850行は上端が収まらない。
 外枠は上げず、超えそうな所で検証済みをコミットして報告して止める。
 完備化後P⁰の三案と指定Frobeniusの未解決の比較は§380のまま維持する。
+
+## 401. L22の元の全積・二射・等化子（実装前の型）
+
+一覧：済み 23／全体 48（うち追加 4）
+
+元のCosimplicialAlgebra A（Under値）を保つ。各項の離散代数は既存のUnderの同値と
+既存discreteAlgebraFunctorを合成し、単体余代数はL18の同じ全BF作用を使う。
+P・Qは全次数と全単体射にわたる元の積。積の射影・等化子の包含を保持する。
+前後合成の自然性はconvolutionFunctorとconvolutionPreNatの既存の法則。
+等化子の射は同じ積の射をequalizer.liftする。恒等・合成は包含で判定する。
+既存構成の自然性・単位・合成・貼り合わせの法則の証明分割で新しい数学・IDなし。
+各証明200行以内。残り外枠616行。L23の評価・復元や台の同型はまだ含めない。
+
+以下はEInfinity.BergerFresse名前空間。CosimplicialAlgebraは元の同じ別名。
+
+```lean
+abbrev SimplexMorphismIndex := Σ q r : ℕ, (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌
+def discreteUnderFunctor (A : Type u) [CommRing A] :
+    Under (CommRingCat.of A) ⥤ (BarrattEccles.operad A).Algebra
+def simplexCoalgebraFunctor (A : Type u) [CommRing A] :
+    SimplexCategory ⥤ (BarrattEccles.operad A).Coalgebra
+
+def convolutionOnUnder (A : Type u) [CommRing A] (q : ℕ) :
+    Under (CommRingCat.of A) ⥤ (BarrattEccles.operad A).Algebra
+def convolutionAt (A : Type u) [CommRing A] (q r : ℕ) :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+
+def postAt (A : Type u) [CommRing A] {q r : ℕ} (α : (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌) :
+    convolutionAt A q q ⟶ convolutionAt A q r
+def preAt (A : Type u) [CommRing A] {q r : ℕ} (α : (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌) :
+    convolutionAt A r r ⟶ convolutionAt A q r
+
+def convolutionProductFunctor (A : Type u) [CommRing A] :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+def convolutionArrowProductFunctor (A : Type u) [CommRing A] :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+def convolutionProductProjection (A : Type u) [CommRing A] (q : ℕ) :
+    convolutionProductFunctor A ⟶ convolutionAt A q q
+
+def convolutionProductLift (A : Type u) [CommRing A] {ι : Type}
+    (F : CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra)
+    (G : ι → CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra) (φ : ∀ i, F ⟶ G i) :
+    F ⟶ Functor.pi' G ⋙ Limits.Pi.functor ι
+
+def post (A : Type u) [CommRing A] : convolutionProductFunctor A ⟶ convolutionArrowProductFunctor A
+def pre (A : Type u) [CommRing A] : convolutionProductFunctor A ⟶ convolutionArrowProductFunctor A
+lemma post_naturality (A : Type u) [CommRing A] {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
+    (convolutionProductFunctor A).map f ≫ (post A).app Y =
+      (post A).app X ≫ (convolutionArrowProductFunctor A).map f
+lemma pre_naturality (A : Type u) [CommRing A] {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
+    (convolutionProductFunctor A).map f ≫ (pre A).app Y =
+      (pre A).app X ≫ (convolutionArrowProductFunctor A).map f
+
+def bfNormalizedObj (A : Type u) [CommRing A] (X : CosimplicialAlgebra A) :
+    (BarrattEccles.operad A).Algebra
+def bfNormalizedMap (A : Type u) [CommRing A] {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
+    bfNormalizedObj A X ⟶ bfNormalizedObj A Y
+
+def bfNormalizedAlgebra (A : Type u) [CommRing A] :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+lemma bfNormalizedAlgebra_map_id (A : Type u) [CommRing A] (X : CosimplicialAlgebra A) :
+    bfNormalizedMap A (𝟙 X) = 𝟙 (bfNormalizedObj A X)
+lemma bfNormalizedAlgebra_map_comp (A : Type u) [CommRing A]
+    {X Y Z : CosimplicialAlgebra A} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    bfNormalizedMap A (f ≫ g) = bfNormalizedMap A f ≫ bfNormalizedMap A g
+```
+
+## 402. L22の半分の区切りと内部補助の型の整理（実装前）
+
+一覧：済み 23／全体 48（うち追加 4）
+
+下書き198行、ConvolutionDiagramの71行は対象ビルド成功。
+残る全積と等化子の包装は未検証で、L22は未完了。
+内部補助convolutionProductLiftの不要な一般添字ι・任意の積族Gで
+型クラス探索が時間切れになった。heartbeatsは上げず、元の全単体射の積専用の補助とする。
+L22の全入力X・全次数・全単体射の範囲、元の積・等化子は変更しない。
+この補助は新規・未コミットで、既存の公開宣言の型は変えない。
+
+```lean
+def convolutionProductLift (A : Type u) [CommRing A]
+    (F : CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra)
+    (φ : ∀ α : SimplexMorphismIndex, F ⟶ convolutionAt A α.1 α.2.1) :
+    F ⟶ convolutionArrowProductFunctor A
+```
+
+半分の見込みを再確認すると、図式71行と残る包装120〜160行程度で191〜231行。
+現在のM14の検証済み30,384行に足しても外枠31,000行の中。
+等化子の台の評価・復元は別のL23であり、この見込みに完成分として含めない。
+
+
+## 403. L22の元の全convolution等化子の全関手が完了（検証済み、取り込み点）
+
+一覧：済み 24／全体 48（うち追加 4）
+
+元のUnder値CosimplicialAlgebra Aを入力とし、全次数・全単体射の積の
+post/preを同じ射で等化するbfNormalizedAlgebraを作った。
+射は元の積の射を持ち上げ、恒等・合成は元の等化子の包含で判定した。
+対象ごとの等化子だけでなく全関手。ホモトピー圏への弱めはない。
+L23の評価・復元、L26の正規化複体との指定同型はまだ含まない。
+
+登録対象（全てSerrePositivity.EInfinity.BergerFresseの下）：
+
+- ConvolutionDiagram（71行）：Underの同じ離散代数、全単体の同じBE余代数、前後合成。
+- ProductDiagram（71行）：元の全積の関手、射影、前後合成の自然変換。
+- EqualizerFunctor（60行）：同じ等化子、同じ射、恒等・合成と全関手。
+
+追加202行。L22の見込み140〜260行の範囲内。
+M14実測30,586行、外枠31,000行まで414行。
+対象ビルド3746 jobs成功、追加警告0。
+小監査3モジュール31宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。対象ビルドと小監査の終了を確認し、鍵は返却済み。
+監査開始時に別の既存lake buildの通知はあったが、当レーンの常駐セッションではない。
+共有の入口・監査・他レーン・draftsは変更していない。
+
+検証ログ：
+`/tmp/bsw16/m14-bf-equalizer-functor-04.log`、
+`/tmp/bsw16/audit-m14-bf-equalizer-functor.log`。
+
+## 404. 外枠の停止：L23の指定評価・復元は残り414行に収まる見込みがない
+
+一覧：済み 24／全体 48（うち追加 4）
+
+次のL23の従来見込みは450〜850行（§121の表）。下端でも残り414行を36行超える。
+今回の既存APIの確認で、これを外枠内とする根拠は得られなかった。
+`weightEndHomComponentsEquiv`・`weightEndHomIso`は一般の積endの符号付きHom比較、
+`normalizedWeightHomEquiv`は正規化重みからの複体射のDold–Kan比較である。
+どちらも、今回のBF等化子の元を恒等q単体で読む指定評価と、その逆の
+全単体射に対する整合性をそのまま供給する定理ではない。
+
+L23では少なくとも、元の等化子の斉次元の具体化、指定次数係数つきの恒等単体での評価、
+退化で消えること、正規化元から単射上の値を復元すること、非単射上の零、
+全単体射の整合性、両合成の恒等、負次数の零を保持する必要がある。
+これらを未証明の同型や追加仮定に置き換えない。
+L24の微分符号・L25の自然性・L26の指定同型も別項目のままで、L22へ含めて完了とはしない。
+
+外枠31,000行を自分で上げず、検証済みL22を保存してこの線のLean実装を停止する。
+外枠停止はM14完成やG10待ちへの到達を意味しない。
+mainは確認時391b2a0d2で、§33の3b-4a完成の受け取りはまだない。
+後続の紙の準備は§405に記録する。
+
+## 405. 停止時の代わりの紙：G10後の一覧と完備化後P⁰の受け渡しを再確認
+
+一覧：済み 24／全体 48（うち追加 4）
+
+§112.4のL38〜L44・L43a/L43bの型案と§260のTot九欄を読み直した。
+これらは未型検査の紙であり、新しいLean実装や一覧IDは足していない。
+M15/G12は⑤dの範囲なので作業しない。
+
+L38〜L40では、nativeな極限性だけでなく、同じBF模型の頂点と錐、および全関手版の
+指定比較が必要。3b-4aのnative Totの完成は、BF模型との一致そのものを与えるとは限らない。
+L37の同じframeの検証とL26の指定台比較を飛ばさない。
+L39の指定Frobeniusの輸送は、全関手版の自然性を同じ厳密な自己射へ適用する手順であり、
+対象ごとのホモロジー同型を選んで自然性とする手順ではない。
+L40ではそれを既存のho(CAlg)上のMay演算の自然性と合わせる。
+
+L41は通常の群の余極限の普遍性。L42の仮定hπは、その同じ錐をΠへ写した錐の余極限性であり、
+ho(CAlg)の錐が余極限であることだけでは消せない。
+L43a/L43bの実現模型・有限primitive・係数微分の比較は、一般のnative実現の橋とは別の数学。
+実現の橋を受け取っただけでL43の差の境界が証明されたとはしない。
+Tot九欄はM14の48本とは別の一覧のまま。§33の受け取り後の優先順も§260のまま維持する。
+
+完備化後P⁰は§380の三案の結論を保持する。
+(a)任意頂点の厳密BE表示は既存cAlgVertexRepresentativeで取れるが、
+その表示が項別完備化の二重模型と同じ指定Frobeniusを表すことは未証明。
+L43bの閉元での式を完備化へ延ばすには、非閉元でのda誤差項も保持した式と、
+同じ作用・primitive・指定射の完備化との比較が要る。
+鎖の稠密性だけから閉元の稠密性やHの連続延長を仮定しない。
+(b)perfect性や半線形同型だけから完備化単位のπ上の全射・同型は導けない。
+§380の反例は一般の近道を排除するもので、actualなprismatic対象に対する反例とはしていない。
+(c)したがって(a)(b)のAPIが未供給であることからcoherent P⁰の不可欠性を結論しない。
+ただし(a)(b)が実対象でともに使えず(c)が必要と分かった場合は、D79の前提に関わるため止めて報告する。
+追加仮定、界面の変更、G10の作り直しでこの穴を隠していない。
