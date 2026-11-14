@@ -18308,3 +18308,325 @@ C452・L12a全体、実テンソル・nullary、L13以降を完了に数えな�
 完備化後のP⁰は§267の連続なprimitive・同じnative対象/辺との比較を未供給のまま残す。
 (c)が必要だという判定には至っておらず、そうなれば§32に従って止める。
 Tot九欄の紙の準備は§260。mainの3b-4aを受領後に§33の順へ切り替える。
+
+## 276. §274の全色・全位置の再添字付けを実装する
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンのab1d13fa5を基点に、§274の四つの型を同じ名前で実装する。
+追加の有限点検として、値域0〜3・語長0〜4の全有限語158例で、
+全色/指定色以外の全出現の和が元の全位置/指定色以外の和に一致した。
+空語・値域零の唯一の空の写像も含む。
+今回は§274の型を変更せず、任意の自然数値の関数Fについて証明する。
+まだビルド・監査の完了ではなく、検証後に実測・登録一覧を別に記録する。
+
+## 277. C452の二方向の交差和を同じ位置対へ戻す法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§274の四つの法則は対象ビルドで成功した。
+二つの変数に順に適用して、同じ元の残り位置と部分語の位置の対へ戻す。
+以下はその有限和の交換と接続の型で、新しい構成ではない。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_remaining_inserted_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin (n + 1),
+      ∑ p : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.insertedPosition m (n + 1) k b)), F p.val h.val) =
+    ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (compositeFirstPosition u v k r p.val) (positiveCompositeSegmentPosition u v k r i z)
+
+lemma positiveComposite_inserted_remaining_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ a : Fin (n + 1), ∑ b : {b : Fin (m + 1) // b ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.insertedPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k b)), F p.val h.val) =
+    ∑ h : {h : Fin (m + d + 1) // (positiveWord u).val h ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (positiveCompositeSegmentPosition u v k r i z) (compositeFirstPosition u v k r h.val)
+```
+
+有限点検：`check-composite-cross-word-position-sums.py`、12,233組。
+同じ二つの色の全出現の対と、元の残り位置・部分語位置の対の試験的二変数関数の和を
+両方向で比較した。Leanでは任意の自然数値二変数関数Fについて証明する。
+反対方向は和を交換して同じ前向きの再添字付けに適用し、別の逆写像を作らない。
+
+## 278. C452の全交差和を元の外側の位置の和へ畳む法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§277の両方向の再添字付けは対象ビルドで成功した。
+元の0/1の逆転寄与に区間長の積を掛ける表示を揃え、§272へ接続する。
+以下は既存の寄与・区間長・有限和の法則。各証明200行以内の見込み。
+
+```lean
+lemma weighted_word_inversionTerm_eq {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (p h : Fin (m + 1)) :
+    (if p < h ∧ w h < w p then intervalLength s w p * intervalLength s w h else 0) =
+    IntervalCuts.positionInversionTerm w p h * intervalLength s w p * intervalLength s w h
+
+lemma weighted_word_inversionPair_eq {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (p h : Fin (m + 1)) :
+    (if p < h ∧ w h < w p then intervalLength s w p * intervalLength s w h else 0) +
+      (if h < p ∧ w p < w h then intervalLength s w h * intervalLength s w p else 0) =
+    (IntervalCuts.positionInversionTerm w p h + IntervalCuts.positionInversionTerm w h p) *
+      intervalLength s w p * intervalLength s w h
+
+lemma positiveComposite_cross_intervalLength_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    let δ := positiveCompositeOuterCut u v k c
+    let w := (positiveCompositeCutWord u v k c.1).val
+    let uPos := (positiveWord u).val
+    (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin (n + 1),
+      ∑ p : ↥(Surjection.occurrences w (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences w (BarrattEccles.insertedPosition m (n + 1) k b)),
+      if p.val < h.val ∧ w h.val < w p.val then
+        intervalLength c.2 w p.val * intervalLength c.2 w h.val else 0) +
+    (∑ a : Fin (n + 1), ∑ b : {b : Fin (m + 1) // b ≠ k},
+      ∑ p : ↥(Surjection.occurrences w (BarrattEccles.insertedPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences w (BarrattEccles.remainingPosition m (n + 1) k b)),
+      if p.val < h.val ∧ w h.val < w p.val then
+        intervalLength c.2 w p.val * intervalLength c.2 w h.val else 0) =
+    ∑ p : {p : Fin (m + d + 1) // uPos p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k),
+      (IntervalCuts.positionInversionTerm uPos p.val (positiveOccurrencePosition u k i) +
+        IntervalCuts.positionInversionTerm uPos (positiveOccurrencePosition u k i) p.val) *
+        intervalLength δ uPos p.val *
+        (intervalLength δ uPos (positiveOccurrencePosition u k i) + Surjection.segmentDegree v.val c.1 i)
+```
+
+有限点検：二つの重み0〜3と二つの0/1寄与の全64例で、点ごとの積と因数分解を確認。
+さらに `check-composite-cross-interval-length-sum.py`、12,233組で、
+全色の二方向の重み付き交差和が、元の外側の位置とg_iによる右辺に一致した。
+退化する切断も含む。Leanでは既存の和の再添字付けと、同じ一部分語の和を使う。
+この式から全逆転指数のmod 2、位置指数の釣り合いまで済んだとは扱わない。
+
+## 279. C452の元の外側交差和に要る指定色の全出現の和
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§278の全交差和の右辺の外側区間長の部分を、元の外側逆転指数へ戻すため、
+既存の指定色の全出現をその元の番号で読む。元の語長の移送の法則も明示する。
+全色対の分解は§264のarity 1の既存の分解を用い、別の分割を作らない。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveOccurrencePosition_complete {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p = k) :
+    ∃ i : Fin (Surjection.occurrenceCount u.val k), positiveOccurrencePosition u k i = p
+
+lemma positiveWord_slot_position_sum {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) (F : Fin (m + d + 1) → ℕ) :
+    (∑ p : ↥(Surjection.occurrences (positiveWord u).val k), F p.val) =
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), F (positiveOccurrencePosition u k i)
+
+lemma sum_position_pairs_with_slot (m : ℕ) (k : Fin (m + 1))
+    (F : Fin (m + 1) → Fin (m + 1) → ℕ) :
+    (∑ a, ∑ b, F a b) =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k}, F a.val b.val) +
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, F a.val k) +
+      (∑ b : {b : Fin (m + 1) // b ≠ k}, F k b.val) + F k k
+```
+
+位置の有限点検は§270・274の全出現の列挙と同じもの、
+色対は§264のarity 1の同じ色番号の分解である。
+指定色同士の逆転寄与が零になることと合わせ、外側の交差和を元の指数へ戻す。
+``sum_position_pairs_with_slot``は任意のFに対して対角F k kも残し、
+一般の和でその項が零だという仮定は付けない。
+
+## 280. C452の元の外側の交差和と逆転指数を結ぶ有限和の法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§278の元の位置ごとの式に、外側の元の逆転指数を合わせる。
+既存の和を色のfiberでまとめ、指定色の出現だけを元の番号で読む。
+以下は既存の有限和の再添字付けと証明分割。各証明200行以内の見込み。
+
+```lean
+lemma permutationExponent_eq_sum_occurrence_pairs {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) :
+    permutationExponent s w =
+    ∑ a : Fin r, ∑ b : Fin r,
+      ∑ p : ↥(Surjection.occurrences w a), ∑ h : ↥(Surjection.occurrences w b),
+      if p.val < h.val ∧ w h.val < w p.val then
+        intervalLength s w p.val * intervalLength s w h.val else 0
+
+lemma positiveWord_remaining_slot_position_sum {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (F : Fin (m + d + 1) → Fin (m + d + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveWord u).val a.val),
+      ∑ h : ↥(Surjection.occurrences (positiveWord u).val k), F p.val h.val) =
+    ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), F p.val (positiveOccurrencePosition u k i)
+
+lemma positiveWord_slot_cross_position_sum {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (F : Fin (m + d + 1) → Fin (m + d + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveWord u).val a.val),
+      ∑ h : ↥(Surjection.occurrences (positiveWord u).val k), F p.val h.val) +
+    (∑ b : {b : Fin (m + 1) // b ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveWord u).val k),
+      ∑ h : ↥(Surjection.occurrences (positiveWord u).val b.val), F p.val h.val) =
+    ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k),
+        (F p.val (positiveOccurrencePosition u k i) + F (positiveOccurrencePosition u k i) p.val)
+```
+
+有限点検の原料は§276〜279の同じ全出現・元の番号・色対の分解。
+全和の交換と指定色の全出現の列挙だけを使い、対象ごとに別の出現を選ばない。
+対角の指定色同士の逆転は実際に零であることを元のラベルの等式から確認して用いる。
+
+## 281. C452の逆転指数の整数としての釣り合い（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+ここまでの同じ有限和を接続する。外側の元の逆転指数は、残り色同士と
+元の指定色との交差へ分かれる。合成の交差の外側区間長の部分をその和へ戻すと、
+成分次数g_iの補正が残る。型は次。既存の逆転指数と区間長の法則の接続で、
+新しい構成・作用ではない。各証明200行以内の見込み。
+
+```lean
+lemma positiveWord_permutationExponent_with_slot {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) (s : Cut (m + d) q) :
+    let w := (positiveWord u).val
+    permutationExponent s w =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        ∑ p : ↥(Surjection.occurrences w a.val), ∑ h : ↥(Surjection.occurrences w b.val),
+        if p.val < h.val ∧ w h.val < w p.val then
+          intervalLength s w p.val * intervalLength s w h.val else 0) +
+      ∑ p : {p : Fin (m + d + 1) // w p ≠ k},
+        ∑ i : Fin (Surjection.occurrenceCount u.val k),
+        (IntervalCuts.positionInversionTerm w p.val (positiveOccurrencePosition u k i) +
+          IntervalCuts.positionInversionTerm w (positiveOccurrencePosition u k i) p.val) *
+          intervalLength s w p.val * intervalLength s w (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_permutationExponent_cross_balance {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    let δ := positiveCompositeOuterCut u v k c
+    let ε := positiveCompositeInnerCut u v k c
+    let w := (positiveWord u).val
+    permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val =
+      permutationExponent δ w + permutationExponent ε (positiveWord v).val +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k),
+        Surjection.segmentDegree v.val c.1 i *
+        (∑ p : {p : Fin (m + d + 1) // w p ≠ k},
+          (IntervalCuts.positionInversionTerm w p.val (positiveOccurrencePosition u k i) +
+            IntervalCuts.positionInversionTerm w (positiveOccurrencePosition u k i) p.val) *
+            intervalLength δ w p.val)
+```
+
+有限点検：`check-composite-permutation-cross-balance.py`、12,233組。
+元の逆転指数は、mod 2だけでなくこの自然数の等式として一致した。
+対角の指定色同士の逆転は同じ色なので零、成分次数の補正は非負のまま残す。
+この等式の後に、括弧内の交差寄与をB_i/Pに照合するmod 2の仕事が残る。
+位置指数の釣り合いも未完であり、C452全体を完了には数えない。
+
+## 282. 完備化後のP⁰の紙の続き：実際のmod p係数の既存API
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§267.1で未供給として残した係数の比較について、実際の本体とMathlibの型を読み直した。
+Leanの新しい完備化の構成は書かず、次の既存の宣言まで確認した。
+
+- 本体 `BhattScholze/Prism/Perfectoid/AinfClassical.lean`、名前空間Semiperfectoidの
+  `ainfClassicalCoefficients_of_nonunit` は、固定した係数環がWittVector p (PreTilt R p)である式。
+  同じファイルの `ainfClassicalCoefficients_of_isUnit` と
+  `perfectoid_subsingleton_of_isUnit` は、pが単元の枝をRと零環へ戻す。
+- Mathlib `RingTheory/WittVector/Complete.lean` の `WittVector.quotientPEquiv` は、
+  完全な標数p環kに対するWittVector p kの(p)による商とkの環同型。
+  `quotientPEquiv_mk` は同じWitt代表元の像を第0係数で与える。
+- Mathlib `RingTheory/Perfection.lean` のPreTiltの定義と直後の三つのinstanceは、
+  実際のPreTiltのCommRing・CharP・PerfectRingを供給している。
+
+従って非単元の枝の**通常の係数環の商**については、上の固定した式を移送して
+`quotientPEquiv`を適用する筋が本体の既存APIから具体化した。
+これはBを任意のreducedな係数に取り替える仮定ではない。
+prismの元dのmod pの像も、同じ第0係数の像を追う必要がある。
+単元の枝は既存のSubsingletonの結論で処理し、除外しない。
+
+ただしこの環同型だけで、実際のCAlgの導来mod pとd進完備化の交換、
+同じnativeな `directPerfectionValue/p`、同じFrobeniusの辺までの比較を供給したとはしない。
+§267の項別に平坦な模型、連続なBE作用と同じprimitiveの移送も残る。
+§255の(b)の相対bar/Totの比較も別の未供給の工程である。
+(c)のcoherentなP⁰が不可避との結論には至っていない。
+新しい係数仮定・型の変更・完備化のLeanを追加していない。
+
+## 283. C452の逆転指数と交差補正の整数の釣り合い：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§274・276〜281の**12モジュール651行**を検証した。
+全色と全位置の同じ再添字付け、元の指定色の全出現の和、
+元の色対の二分解と同じ外側交差和を接続した。
+`positiveComposite_permutationExponent_cross_balance` により、元の合成逆転指数が
+**元の外側指数＋元の内側指数＋成分次数g_iと元の外側交差寄与による補正**と、
+自然数の等式として一致するところまで閉じた。
+非退化性や追加の模型の仮定を足さず、同じCut・区間長・元の指定位置を比較している。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-composite-word-color-sums-01.log`：2,885 jobs。
+- `m14-composite-cross-word-position-sums-01.log`：2,886 jobs（後続の対象で行長修正も検証）。
+- `m14-slot-occurrence-and-cross-sums-01.log` のPositiveOccurrenceSumsと
+  CompositeCrossIntervalLengthSumsの対象（全束のSlotColorPairSumsのimport不足は次で修正）。
+- `m14-outer-slot-cross-position-sums-01.log`：2,253 jobs（SlotColorPairSumsのimport修正済み）。
+- `m14-composite-permutation-cross-balance-02.log`：2,965 jobs。
+
+途中、既存のFinの一項の和のimport、行長と、語型に依存する書き換えをsimpへ直した。
+最終ソースの対象警告0。心拍数・再帰上限を増やしていない。
+200行を超える証明・ファイルなし。既存の公開宣言・界面・符号・仮定は変更していない。
+
+今回新規分だけの小監査 `audit-m14-permutation-cross-balance.log` は
+**12モジュール・25宣言、標準三公理のみ**。sorry・独自公理0。
+全ハンドルの終了コード0を確認し、`git diff --check`成功。
+鍵は一回の対象ビルド/小監査の間だけ取得し、整理券一枚ずつ、終わるたびに返した。
+常駐セッション・rootビルド・大きい監査・他レーン・共有入口・共有監査・drafts・mainの作業木は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| OccurrenceFiberSums | 57 |
+| CompositeRemainingWordPositionSums | 40 |
+| CompositeInsertedWordPositionSums | 34 |
+| CompositeCrossWordPositionSums | 84 |
+| WeightedWordInversionPairs | 35 |
+| CompositeCrossIntervalLengthSums | 76 |
+| PositiveOccurrenceSums | 50 |
+| SlotColorPairSums | 35 |
+| WordColorInversionSums | 48 |
+| SlotCrossWordPositionSums | 71 |
+| OuterPermutationSlotSum | 54 |
+| CompositePermutationCrossBalance | 67 |
+| **計** | **651** |
+
+M14実測は**22,506行**、L12aは**7,299行**。
+整数の逆転指数の補正まで閉じたが、括弧内の元の交差寄与とB_i/Pのmod 2の照合、
+§253の位置指数の全和はまだ未証明。C452全体・L12a全体・実テンソル・nullary・
+L13以降を完了に数えず、一覧12/48（追加4）のまま。goalはactive。
+外枠31,000行は変更せず、旧見込みの上端の超過リスクも解消したとは主張しない。
+約25,000行で止まらず実測と残りを出し直す指定を維持する。
+完備化後のP⁰の未供給の仕事も無料の前提へ置かない（§282）。
+(c)が必要と判明すれば§32に従って止める。Totの紙の準備は§260、3b-4aの受領後は§33の順へ切り替える。
+
+次は§281の補正の括弧を、元の外側の他色の先行活動頂点数B_iと
+元のprefixOutputDegreeのPへmod 2で照合する。
+既存の重み付き有限和と水平fiberの濃度を使い、同じ切断と元の出現位置で読む。
