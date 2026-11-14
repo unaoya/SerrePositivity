@@ -8982,3 +8982,177 @@ def realizationIso :
 余積frameの実際の実現と、要素圏上で制限重みを使った実際の実現との同型まで検証済み。
 次は元の自由arrow frameを評価した族への適用と、BK重みの添字比較・増大射との照合。
 実増大射の弱同値性は未完であり、RR02の完了・停止点5aとはしない。
+
+## §103 RR02(a)：元の自由frameの評価への適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `65cda48e4` の3本207行の検証・コミットとして進捗。
+指定した自由arrow frameを評価し、同じHom集合による余積frameへ照合する。
+既存の構成の同定でありIDは増やさない。
+
+```lean
+def strictDiagramFreeEvaluationBase (X : StrictComplexDiagram A d) :
+  (StrictDiagramArrowElements d)ᵒᵖ ⥤ SimplexCategory ⥤ Complex A
+def strictDiagramFreeEvaluationFramesIso (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) :
+  FrameWeightRealization.postFrames (StrictDiagramArrowElements d)ᵒᵖ
+    (strictDiagramFreeArrowFrame A d X)
+    ((CategoryTheory.evaluation (strictDiagramIndex d) (Complex A)).obj k) ≅
+  ElementsCopower.frames (strictDiagramFreeEvaluationWeight d k)
+    (strictDiagramFreeEvaluationBase A d X)
+```
+
+### §103.1 評価点での指定実現への接続（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の交換同型・frame同型・要素圏実現同型を合成する。
+
+```lean
+def strictDiagramFreeEvaluationRealizationIso (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) :
+  (strictDiagramFreeArrowRealization A d X).obj k ≅
+    (FrameWeightRealization.functor (StrictDiagramFreeEvaluationIndex d k)
+      (Functor.Elements.π (strictDiagramFreeEvaluationWeight d k) ⋙
+        strictDiagramFreeEvaluationBase A d X)).obj
+      ((Functor.Elements.π (strictDiagramFreeEvaluationWeight d k)).op ⋙
+        bousfieldKanWeight ((StrictDiagramArrowElements d)ᵒᵖ)ᵒᵖ)
+```
+
+元のBK重みの制限を保ち、要素圏のBK重みとの比較はこの同型の後に行う。
+
+### §103.2 BK重みの比較に使う厳密な添字同型（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+同じ待機プロセスを維持し、§100の持ち上げ構成の対象・単位の法則を書く。
+既存の比較の法則であり、IDは増やさない。
+
+```lean
+lemma lift_post_obj (t : Under e) :
+  (lift F e).obj ((Under.post (Functor.Elements.π F)).obj t) = t
+lemma post_lift_obj (t : Under e.obj) :
+  (Under.post (Functor.Elements.π F)).obj ((lift F e).obj t) = t
+lemma unit_eq_eqToHom (t : Under e) :
+  (unitComponent F e t).hom = eqToHom (lift_post_obj F e t).symm
+def catIso : Cat.of (Under e) ≅ Cat.of (Under e.obj)
+def nerveIso : nerve (Under e) ≅ nerve (Under e.obj)
+lemma nerveIso_hom : (nerveIso F e).hom =
+  nerveMap (Under.post (Functor.Elements.π F) (X := e))
+```
+
+圏同値だけから単体集合の同型を結論にせず、`Cat.isoOfEquiv` の厳密な等式を確認する。
+
+### §103.3 適用時の宇宙の照合
+
+一覧：済み 1／全体 13（うち追加 11）
+
+最初の対象ビルドで、元のHom添字が `Type 0`、一般のframe実現補題の添字が
+`Type u` という差を確認。既存宣言は変更せず、未検証の適用部分で
+`strictDiagramFreeEvaluationLiftedWeight d k :=
+  strictDiagramFreeEvaluationWeight d k ⋙ CategoryTheory.uliftFunctor.{u, 0}`
+を使う。frame同型の成分は恒等同型でなく `Sigma.reindex Equiv.ulift.symm` とする。
+§103.1の中間標的はこの持ち上げた要素圏へ変更する。
+これは既存の構成の宇宙・係数移送であり、最終のRR02の型は変更しない。
+元の要素圏への上下の移送と、増大射を保つことの照合は引き続き必要。
+
+### §103.4 元の要素圏への上下の移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+現在の同じ検証待ちを維持し、宇宙移送の法則を別ファイルへ書く。
+基底の対象・射を変えず、要素だけをULiftで上下する。
+
+```lean
+def down : (F ⋙ uliftFunctor.{t, u}).Elements ⥤ F.Elements
+def up : F.Elements ⥤ (F ⋙ uliftFunctor.{t, u}).Elements
+def equivalence : F.Elements ≌ (F ⋙ uliftFunctor.{t, u}).Elements
+def downProjectionIso :
+  down.{t} F ⋙ Functor.Elements.π F ≅ Functor.Elements.π (F ⋙ uliftFunctor.{t, u})
+def upProjectionIso :
+  up.{t} F ⋙ Functor.Elements.π (F ⋙ uliftFunctor.{t, u}) ≅ Functor.Elements.π F
+```
+
+`SimplicialCombinatorics/UniverseLiftElements` の単体圏版と同じ上下の移送を、
+今回の集合値の係数関手に使える形で置く。単体圏版は変更しない。
+
+追加の係数移送の法則（未検証、§103.3の `Sigma.reindex` の代わりに明示）：
+
+```lean
+def strictDiagramFreeEvaluationCopowerIso (I : Type) (V : Complex A) :
+  (∐ fun _ : I => V) ≅ ∐ fun _ : ULift.{u} I => V
+```
+
+成分は `Sigma.map' ULift.up` と `Sigma.map' ULift.down`。
+対象ビルドでは宇宙の照合を通り、添字変更の計算をこの明示形へ修正した。
+
+### §103.5 指定BK重みの同型への移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+待機中に、§103.2の法則をOverの反対圏表示へ移す部分を書く。
+既存の `bousfieldKanWeightPost` を順方向に保つ同定。
+
+```lean
+def overOpUnderIso {K : Type w} [SmallCategory K] (e : K) :
+  Cat.of (Over (Opposite.op e)) ≅ Cat.of ((Under e)ᵒᵖ)
+def overNerveIso : nerve (Over (Opposite.op e)) ≅ nerve (Over (Opposite.op e.obj))
+lemma overNerveIso_hom : (overNerveIso F e).hom =
+  nerveMap (Over.post (Functor.Elements.π F).op (X := Opposite.op e))
+def weightIso : bousfieldKanWeight F.Elementsᵒᵖ ≅
+  (Functor.Elements.π F).op ⋙ bousfieldKanWeight Kᵒᵖ
+lemma weightIso_hom : (weightIso F).hom =
+  bousfieldKanWeightPost (Functor.Elements.π F).op
+```
+
+未検証。一般の弱同値の実現による保存をここで仮定しない。
+
+### §103.6 元の射を追うための実現同型の評価式（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の余米田による実現同型の法則を追加する。
+
+```lean
+lemma realizationIso_inv_comp (Y : C)
+  (f : (FrameWeightRealization.functor K (frames F B)).obj W ⟶ Y) :
+  (realizationIso F B W).inv ≫ f = realizationHomEquiv F B W Y f
+```
+
+`Coyoneda.fullyFaithful.map_preimage` を任意の標的と射で評価する。
+既存の `ConstantWeightNaturality.iso_inv_comp` と同じ余米田の法則を、
+今回指定した異なる実現同型へ適用するもので、IDは増やさない。
+
+### §103.7 指定BK重みまでの合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の実現同型と重み同型の合成の法則を追加する。
+
+```lean
+def strictDiagramFreeEvaluationBousfieldKanIso (X : StrictComplexDiagram A d)
+    (k : strictDiagramIndex d) :
+    (strictDiagramFreeArrowRealization A d X).obj k ≅
+      (FrameWeightRealization.functor
+        (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements
+        (Functor.Elements.π (strictDiagramFreeEvaluationLiftedWeight d k) ⋙
+          strictDiagramFreeEvaluationBase A d X)).obj
+        (bousfieldKanWeight (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elementsᵒᵖ)
+```
+
+順方向は評価実現同型の後に `weightIso.symm` の実現を合成したもの。
+同じ対象を同型で書き直すだけで、増大射の弱同値性はここから主張しない。
+
+### §103.8 六本の検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§103〜§103.6の6本・329行を対象ビルド（3,815 jobs）と
+新規58宣言の監査で検証。標準三公理のみ、計算上限変更なし。
+検証済み累計206本・15,468行。上限変更後のRR02(a)は2,970行、
+(b)(c)新規0行。§103.7の合成1本はこの検証に含めず、次に検証する。
+ログ：`/tmp/is-w1/free-evaluation-frames/build-6.log`。
+
+修正は既存APIの `NatIso.isIso_of_isIso_app` による成分からの同型登録。
+RR02の増大射の弱同値性と元の比較射との一致は未完。
