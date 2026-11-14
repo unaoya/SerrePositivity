@@ -6109,3 +6109,16 @@ rfl の検査は kernel の時間切れのため外した（調整役の判断�
 新規 `HomWeightJointClassificationHom` 28行と既存単位の +2/-3 行を登録対象とする。
 新規モジュールを含む累計は142本・11,542行（既存G2本文の差分は別記）。
 E01 の指定単位比較へ戻る。未検証の三本は今回のコミットに含めない。
+
+
+## 58. 共有分類射を用いた E01 の再検証
+
+一覧：済み 0／全体 13（うち追加 11）
+
+本文分割のコミットは 744b65274。
+`chosenJointArrow` を同じ `homWeightJointClassificationHom` に付け替え、
+`unit_heq_precomposeChosen` で一般の `rawChosen_heq_precompose` を直接適用した。
+対象ビルドは終了コード1、同じ単位比較の kernel 検査（73行）が
+`deterministic timeout`。ログ：`/tmp/is-w1/unit-shared-classification/build.log`。
+新規補助定義と G2 本文分割のビルド・型保存結果を覆すものではないが、
+単位比較が通ったとはしない。計算上限は不変、未検証ファイルは未コミット。
