@@ -12997,3 +12997,88 @@ theorem simplicialReplacementRowReindex_comp {l m n : SimplexCategory}
 
 def simplicialReplacementRows : SimplexCategoryᵒᵖ ⥤ SSet.{u}
 ```
+
+## 208. 元の係数射・対角同型・退化部分の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+元の係数の自然変換を同じ基底射列の全行に適用し、全ての面・退化との可換性を元の自然性から示した。二重単体集合の対角は、同じ基底射列の係数のYoneda表示だけを変える全同型で元のsimplicial replacementと同定した。元の係数射の対角が、その全同型と指定されたsimplicialReplacementMapを通る同じ射に厳密に一致する等式も示した。
+
+任意の全射作用素が零を零へ送ることから、退化作用素の係数の輸送は同じ始点の等式に沿うeqToHomそのものとなる。各行の任意の基底部分集合を部分複体とし、基底の退化・非退化の二部分が交わらず元の行全体を覆うことを確認した。係数の自然変換は同じ部分を保ち、元の包含と厳密に可換する。この時点では実際の外側のlatchingとの同型性をまだ主張しない。
+
+275：三本の対象ビルド1,296 jobs・終了0、小監査131本947宣言・標準三公理のみ（実ハンドル97624・終了0）。276：部分複体一本の対象ビルド1,174 jobs・終了0、小監査132本956宣言・標準三公理のみ（実ハンドル27094・終了0）。両方とも鍵返却済み。個別検査82533・99836・13226・16512の終了0を確認した。
+
+今回47＋69＋42＋64＝222行、累計132本・8,598行／外枠15,000。R03f.2は409行／見込み650〜1,200行。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。sorry・独自公理0、計算上限変更なし。次は元のlatching図式を同じ退化部分への余錐として読み、その余極限性から相対latchingを非退化成分の同じ係数射へ分離する。
+
+### 208.1 型
+
+共通の入力は `{I : Type u} [SmallCategory I]`。係数は `F G : I ⥤ SSet.{u}`、その射は `η : F ⟶ G`。固定した行では `(n : ℕ)` を用いる。
+
+#### SimplicialReplacementRowMaps（47行）
+
+```lean
+def simplicialReplacementRowMap (n : ℕ) :
+    simplicialReplacementRow F n ⟶ simplicialReplacementRow G n
+
+theorem simplicialReplacementRowMap_reindex {m n : SimplexCategory} (α : m ⟶ n) :
+    simplicialReplacementRowReindex F α ≫ simplicialReplacementRowMap η m.len =
+      simplicialReplacementRowMap η n.len ≫ simplicialReplacementRowReindex G α
+
+def simplicialReplacementRowsMap : simplicialReplacementRows F ⟶ simplicialReplacementRows G
+```
+
+#### SimplicialReplacementDiagonal（69行）
+
+```lean
+def simplicialReplacementDiagonalHom (F : I ⥤ SSet.{u}) :
+    diagonal.obj (simplicialReplacementRows F) ⟶ simplicialReplacement F
+
+def simplicialReplacementDiagonalIso (F : I ⥤ SSet.{u}) :
+    diagonal.obj (simplicialReplacementRows F) ≅ simplicialReplacement F
+
+theorem simplicialReplacementDiagonalIso_naturality {F G : I ⥤ SSet.{u}} (η : F ⟶ G) :
+    diagonal.map (simplicialReplacementRowsMap η) ≫ (simplicialReplacementDiagonalIso G).hom =
+      (simplicialReplacementDiagonalIso F).hom ≫ simplicialReplacementMap η
+```
+
+#### SimplicialReplacementRowDegeneracies（42行）
+
+```lean
+theorem simplicialReplacement_epi_zero {m n : SimplexCategory} (α : m ⟶ n) [Epi α] :
+    α.toOrderHom 0 = 0
+
+theorem simplicialReplacement_epi_first {m n : SimplexCategory} (α : m ⟶ n) [Epi α]
+    (σ : ComposableArrows I n.len) :
+    (α.toOrderHom.monotone.functor ⋙ σ).obj 0 = σ.obj 0
+
+theorem simplicialReplacement_epi_coefficient {m n : SimplexCategory} (α : m ⟶ n) [Epi α]
+    (σ : ComposableArrows I n.len) :
+    F.map (σ.map (homOfLE (Fin.zero_le (α.toOrderHom 0)))) =
+      eqToHom (congrArg (fun i => F.obj (σ.obj i)) (simplicialReplacement_epi_zero α).symm)
+```
+
+#### SimplicialReplacementRowParts（64行）
+
+```lean
+def simplicialReplacementRowPart (F : I ⥤ SSet.{u}) (n : ℕ)
+    (P : Set (ComposableArrows I n)) : (simplicialReplacementRow F n).Subcomplex
+
+abbrev simplicialReplacementDegenerateRow (F : I ⥤ SSet.{u}) (n : ℕ)
+
+abbrev simplicialReplacementNondegenerateRow (F : I ⥤ SSet.{u}) (n : ℕ)
+
+theorem simplicialReplacementRowParts_sup (F : I ⥤ SSet.{u}) (n : ℕ) :
+    simplicialReplacementDegenerateRow F n ⊔ simplicialReplacementNondegenerateRow F n = ⊤
+
+theorem simplicialReplacementRowParts_inf (F : I ⥤ SSet.{u}) (n : ℕ) :
+    simplicialReplacementDegenerateRow F n ⊓ simplicialReplacementNondegenerateRow F n = ⊥
+
+def simplicialReplacementRowPartMap {F G : I ⥤ SSet.{u}} (η : F ⟶ G) (n : ℕ)
+    (P : Set (ComposableArrows I n)) :
+    (simplicialReplacementRowPart F n P : SSet.{u}) ⟶ simplicialReplacementRowPart G n P
+
+theorem simplicialReplacementRowPartMap_inclusion {F G : I ⥤ SSet.{u}} (η : F ⟶ G)
+    (n : ℕ) (P : Set (ComposableArrows I n)) :
+    simplicialReplacementRowPartMap η n P ≫ (simplicialReplacementRowPart G n P).ι =
+      (simplicialReplacementRowPart F n P).ι ≫ simplicialReplacementRowMap η n
+```
