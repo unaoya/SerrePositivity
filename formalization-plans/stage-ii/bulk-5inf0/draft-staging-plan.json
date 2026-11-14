@@ -85,7 +85,8 @@
       "A5/StrongDescent",
       "Sheaves/GlobalSections",
       "Sheaves/CechConerveLimit",
-      "A7/AnimatedDomain"
+      "A7/AnimatedDomain",
+      "A7/AnimatedPerfectoidization"
     ],
     "A5/SemiperfectoidCase": [
       "A5/PerfectSite",

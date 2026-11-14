@@ -1127,3 +1127,10 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 一覧：済み 11／全体 14（うち追加 0）。[第61束](bulk-5inf0/draft-block61-validation.json)でA5/StrongDescentが約40秒で成功。有効な成功は45／57本。同じK(p,e)を既存のpowerKoszulTowerの第一冪の段で読み、D3の対象のptを使う修正が通った。検査済みのソースをコミットする。直前の報告のde Rham比較の時間は生ログに合わせ約41秒に訂正した。
 
 次のWeaklyInitialAndDescentは失敗。includeとdocstringの順、完備化環の元のCommRing instance、完備CAlg包含・反射の名前とp引数を明示する。filtered余極限の指定比較は同じ式の中間のcoconeと射に型を付け、推論を分割して検査する。heartbeat上限は上げない。第62束に並んだ。
+
+
+### 5∞-0 のdraft検査・第62〜63束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第62束](bulk-5inf0/draft-block62-validation.json)の残る推論を分け、[第63束](bulk-5inf0/draft-block63-validation.json)でA5/WeaklyInitialAndDescentが成功。有効な成功は46／57本。二段のmapCoconeは一段ずつ同じ中間の錐に型を付け、弱始対象のUnder.mkには元の標的の環と射の始域Uを明示した。検査済みソースをコミットする。
+
+同じ束のPerfectSiteComparisonは検査中にこちらが後続修正を置いたためSTALE（無効）になった。成功には数えず、元の診断とソースが変わった事実を生ログごと保存した。今後、実行中の対象のソースは変えず、束が終わってから修正する。残る二つのanimated関手はA7/AnimatedPerfectoidizationが実際の所有元なので依存表にその1辺を追加（循環0、従来の順序は有効）。有界性は既存の完全性から渡す。ArcSiteの未修飾名は既存のSheavesの所有元をopenする。第64束で再検査する。
