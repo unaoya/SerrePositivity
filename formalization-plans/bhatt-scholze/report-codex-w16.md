@@ -19203,3 +19203,190 @@ nullaryもまだこの正の語の比較で完了には数えない。
 §293のappendIsoの法則はこの取り込み点には含めず、対象ビルドで検証中。
 L12aの実際の余代入・共通次数・nullary、後続のL13以降は残る。
 一覧12/48（追加4）、goalはactive、外枠31,000行は据え置き。
+
+
+## 295. 元の指定因子での余代入の斉次評価（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§293のブロック評価を元のtensorCoInsertionActionに戻す。
+既存のprefixFamily・suffixFamily・insertionFamilyとその同じ有限添字の法則は再利用する。
+残る型は下記。既存構成の次数・結合子・自然性の法則と証明分割で、各証明200行以内。
+ここではopen CategoryTheory MonoidalCategory HomologicalComplex、TensorPowers、
+DifferentialGraded、IntervalCutsの同名の族の記法、`{A : Type u} [CommRing A]`を用いる。
+
+```lean
+lemma vectorDegree_arity_transport (K : Complex A) {m n : ℕ} (h : m = n)
+    (f : Fin m → Σ d : ℕ, K.X (-(d : ℤ))) :
+    vectorDegree K n (f ∘ Fin.cast h.symm) = vectorDegree K m f
+
+lemma vectorDegree_family_blocks (K : Complex A) {m : ℕ}
+    (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ))) (i : Fin (m + 1)) :
+    vectorDegree K (m + 1) f = vectorDegree K i.val (prefixFamily f i) +
+      (f i).1 + vectorDegree K (m - i.val) (suffixFamily f i)
+
+lemma vectorDegree_insertionFamily (K : Complex A) {m n : ℕ}
+    (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (i : Fin (m + 1)) :
+    vectorDegree K (m + n) (insertionFamily f g i) =
+      vectorDegree K i.val (prefixFamily f i) + vectorDegree K n g +
+        vectorDegree K (m - i.val) (suffixFamily f i)
+
+lemma vectorTensorAt_family_blocks (K : Complex A) {m : ℕ}
+    (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ))) (i : Fin (m + 1))
+    (r : ℤ) (hr : -(vectorDegree K (m + 1) f : ℤ) = r) :
+    vectorTensorAt K (m + 1) f r hr =
+      (eqToHom (congrArg (power K)
+        (by omega : i.val + (m - i.val + 1) = m + 1))).f r
+        ((appendIso K i.val (m - i.val + 1)).hom.f r
+          (ιTensorObj (power K i.val) (power K (m - i.val + 1))
+            (-(vectorDegree K i.val (prefixFamily f i) : ℤ))
+            (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))
+            r (by have := vectorDegree_family_blocks K f i; omega)
+            (vectorTensor K i.val (prefixFamily f i) ⊗ₜ[A]
+              ιTensorObj K (power K (m - i.val))
+                (-((f i).1 : ℤ)) (-(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))
+                (-((f i).1 : ℤ) +
+                  -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ)) rfl
+                ((f i).2 ⊗ₜ[A] vectorTensor K (m - i.val) (suffixFamily f i)))))
+
+lemma tensorCoInsertionAction_vector_apply (K C : Complex A) (m n : ℕ) (i : Fin (m + 1))
+    (θ : C ⊗ K ⟶ power K n)
+    (c z : ℤ) (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (hz : c + (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))) = z)
+    (a : C.X c) (hg : -(vectorDegree K n g : ℤ) = c + -((f i).1 : ℤ))
+    (r : ℤ) (hθ : θ.f (c + -((f i).1 : ℤ))
+      (ιTensorObj C K c (-((f i).1 : ℤ))
+        (c + -((f i).1 : ℤ)) rfl (a ⊗ₜ[A] (f i).2)) =
+      r • vectorTensorAt K n g (c + -((f i).1 : ℤ)) hg) :
+    (tensorCoInsertionAction K C m n i θ).f z
+      (ιTensorObj C (power K (m + 1)) c
+        (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ)))
+        z hz (a ⊗ₜ[A] vectorTensorAt K (m + 1) f _ (by
+          have := vectorDegree_family_blocks K f i; omega))) =
+      (c * -(vectorDegree K i.val (prefixFamily f i) : ℤ)).negOnePow •
+        (r • vectorTensorAt K (m + n) (insertionFamily f g i) z (by
+          rw [vectorDegree_insertionFamily]; omega))
+```
+
+次数は元の連結式と等式消去。ブロック表示は元のappendIsoを二回評価する。
+余代入の評価は既存 `tensorCoInsertionAction_on_blocks` と§293の元の交換符号を使い、
+同じ有限添字の `family_eq_blocks`・`insertionFamily_eq_blocks` で元の出力順に戻す。
+この型には内側射θの一項の評価だけが仮定として露出し、
+新しいCAlgの作用やBFのoperad法則を仮定に足していない。
+L12aの適用では内側射の切断和を実際に展開する工程と外側係数移動がまだ要る。
+
+
+## 296. 完備化後のP⁰：有限原始元を使う案(a)の必要条件をさらに分ける（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§267・282の(a)(b)(c)の比較を、一覧L43bの指定有限原始元に照らして詰める。
+以下は紙の検討で、完備化の新しいLean・新しい仮定・界面変更は作らない。
+
+### 296.1 (a)に対して、連続性だけでなく閉元への適用を検収する
+
+L43bは、同じW係数・BF切断・外側shuffleの明示的な有限原始元を指定している。
+その式が閉元の選択に依存せず、全鎖の上の有限な多重線形式の対角評価として書ければ、
+同じB多重線形写像Tについてx-yがd^r倍なら
+T(x,…,x)-T(y,…,y)もd^r倍になる。望遠和の各項に差を一箇所ずつ置くためである。
+正規化スカラーはκにあり、新しいdの逆元を使わない。
+この同じ合同を有限和へ足すことで、固定次数での原始元の式のd進連続性を示す筋がある。
+これは原始元の存在だけを選ぶ場合には使えない。
+
+ただし、鎖の稠密性から閉元の稠密性は従わない。
+「rawな閉元で差が境界」「原始元の式は連続」の二つだけでも、完備化した全閉元にはまだ届かない。
+L43bの境界計算で閉条件によって消す項を保持し、全鎖aについて
+
+    d H(a) = May(a) - F(a) + （daを少なくとも一つ含む同じ有限展開）
+
+という同じ式をまず読む必要がある。係数微分・shuffle境界・BF切断境界を残すという
+元のL43bの規約は、この検収に対応する。誤差項がda=0で消えることだけでなく、
+その同じ多重線形式のd進合同を全鎖で確かめる。
+その全鎖の式を完備化へ延ばせれば、完備化した閉元に適用でき、
+rawな閉元の稠密性やπ_n上の完備化単位の全射性は要らない。
+これはまだL43bの実装・検収前であり、原始元の式が条件を満たすと断定しない。
+無限のshuffle展開を有限と読み替えず、固定次数の式が実際に定義済みの多重線形写像で
+あることと、完成した模型の同じBE作用との比較を確認する。
+
+さらに、項別の通常完備化をderived completionと比較するには、§267のとおり
+termwise-flatかつK-flatな厳密BE模型、係数の有界d-torsion、指定単位とFrobeniusの比較が要る。
+既存 `CellularCarrierKFlat` を調べ直したが、公開APIで直接得られるのはK平坦性であり、
+各次数の平坦性が無料で付くという宣言は見つかっていない。
+普通の完備化を直接 `directPerfectionValue` と定義し直してこの穴を消さない。
+
+### 296.2 (b)との違い
+
+(b)の完備化単位の全射・同型による消去は、§267の反例のため一般には使えない。
+coconnective性だけでπ_0の全射性は出ない。
+Koszul商への射影を使う別案でも、H⁰(K//d^r)にはH¹(K)のd^r-torsionが入り得るため、
+H⁰の普通の商だけへ勝手に置き換えない。指定射・Frobenius・同じ演算の比較が必要なまま。
+したがって(a)の全鎖の明示式が閉じる場合には、(b)の単位の全射という偽の一般原理を使わずに
+完備化後へ運べる可能性がある。
+
+### 296.3 (c)の判定
+
+現在は(a)の模型比較と全鎖の原始元の検収、(b)のderived商と指定射の比較が未供給である。
+それをcoherentなP⁰が必要との結論へ取り違えない。
+同じ式が全鎖で連続に延びず、指定完備化対象・Frobeniusとの比較も(a)(b)で作れないと
+判明した場合は、D79の前提に触れる(c)として§32どおり報告して止める。
+今はその判定には至っていない。仮定を足すことによる回避は行っていない。
+
+
+## 297. 同じappendIso・元の余代入の斉次評価：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§293・295の法則の型をすべて検証した。
+元のappendIsoの順方向・逆方向、同じ前方・指定因子・後方のブロック表示、
+実際の `IntervalCuts.coInsertionBlocks` と `tensorCoInsertionAction` の評価を証明した。
+任意の複体の同じ斉次因子の族を使う。元のparameterCrossから出る
+係数次数×前方次数のKoszul符号を保ち、同じ二つのappendIsoを評価して元の出力順へ戻した。
+内側射θの一項の評価はこの一般の法則の入力であり、BFの内側切断和の展開はまだ残す。
+
+既存のIntervalCutsの同名の区間の面ベクトルの法則と同じ帰納証明を、
+同じ右括弧テンソルへ適用した。新しいappendIsoや余代入は定義していない。
+最初に略記のinterval Aを残した箇所をKへ直し、補助ファイルのopenを
+そのimportに実在する宣言だけに絞った。連鎖した未解決名のエラーが消え、
+心拍数・再帰上限を増やさずに全対象が通った。元の公開宣言の型・定義は変更していない。
+全ファイル・各証明200行以内。空白の警告も修正し、最終対象警告0。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-vector-tensor-append-02.log`：2,252 jobs成功、連結の順逆を含む。
+- `m14-vector-co-insertion-02.log`：2,822 jobs成功、元のブロック余代入。
+- `m14-vector-co-insertion-action-03.log`：直接importerまで2,826 jobs成功、対象警告0。
+
+別の一回の鍵の `audit-m14-vector-co-insertion-action.log`：
+**5モジュール・45宣言、標準三公理のみ**、sorry・独自公理0。
+すべての終了コード0を確認し、鍵は対象ビルド/小監査の終了ごとに返した。
+編集・報告の間の鍵の保持、常駐セッション、rootビルド、大きい監査なし。
+main作業木・共有入口・共有監査・他レーン・drafts・界面は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| VectorTensorAppendTransport | 36 |
+| VectorTensorAppend | 128 |
+| VectorCoInsertionEvaluation | 59 |
+| VectorTensorFamilyBlocks | 90 |
+| VectorCoInsertionActionEvaluation | 87 |
+| **計** | **400** |
+
+M14実測は**23,892行**、L12aは**8,685行**。
+§291・294と合わせ、この作業分は新規16モジュール・901行、
+小監査は計92宣言、標準三公理のみ。
+C451・C452・C453と平坦な斉次テンソルの一致に加え、元の余代入の一項の評価まで進んだ。
+L12aの残りは内側切断和の実評価・外側係数の移動・共通次数・nullaryの接続である。
+L12a全体・L13以降は未完で、一覧12/48（追加4）、goalはactive。
+外枠31,000行まで実測7,108行。約25,000行での出し直しの報告は引き続き行う。
+既報の後続の残りの見込みを無料に減らさず、完成見込みの上端の超過リスクを残す。
+
+完備化後のP⁰は§296に紙で追記した。(a)ではL43bの有限原始元を全鎖上の式で検収する必要を
+追加で切り分け、閉元の稠密性を仮定しない。(b)の単位の全射の一般原理は使えず、
+derived商の比較の穴は残る。(c)が必要との結論にはまだ至っていない。
+G10の供給者側の部品は作らず、3b-4aがmainへ入ったら§33のTot九欄を優先する。
