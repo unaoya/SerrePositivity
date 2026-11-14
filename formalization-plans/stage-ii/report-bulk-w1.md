@@ -1310,3 +1310,10 @@ InitialLimitの行き先をLimitsAndColimits/から**Cofinality/InitialValueCone
 R8-4の互換wrapper一個は[削除・利用先変更の台帳](bulk-b3prime/redirects-and-deletions.json)へ独立に記録した。削除を改名と混ぜて比較の欠落を隠さない。Finiteとwrapper本体も参照採取に追加し、対象は187 snapshotモジュール・164意味上の参照ファイルとなった。
 
 改名のプレビューではnamespaceとopenを元のままに保ち、実際の使用を完全名へ書き換える。元環境の採取が済んだ19本はプレビューの保留0まで確認したが、改名後のビルドは未実行。宣言名の位置にLeanが同時に記録するLocalInfoは、同じ位置の自分のglobal binderと、宣言コマンド範囲またはネイティブのselection位置で照合できた場合だけ合成の情報として扱う。任意の用語位置の曖昧性は除外しない。この調整は隔離した準備用コードだけで、他レーンが使う共通の道具は変更していない。型・本体の保存比較による最終確認は別に必須とする。
+
+
+### B3′ 準備・基準にある層の未登録（11-14夜）
+
+一覧：済み 2／全体 22（うち追加 0）。移動前の基準32d364b53と、R8-2等だけのプレビューで既存の層検査を実行したところ、どちらも既存305モジュールのper-file tier未登録で停止した。[全件と直接import](bulk-b3prime/baseline-unclassified.json)を保存。DiagramComparison149・CosimplicialTotalization91・その他65。これらはgitに追跡された本体であり、作業用一時ファイルではない。例：BKStandardZeroGeneratorはmainの1599b1e50で入った。現mainのlayers.jsonも基準と同じで、未登録を補う新しい表はまだ取り込まれていない。
+
+この失敗を「層の違反0」と扱わず、任意のConsumers指定や例外で覆わない。調整役へ割当の根拠を照会する。その間も、元環境の採取と承認範囲のプレビュー準備は続ける。今回新設するInitialValueConeにはPortableを提案しているが、基準の305件を登録したとは主張しない。
