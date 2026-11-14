@@ -1,0 +1,45 @@
+{
+  "audits": [
+    {
+      "path": "scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean",
+      "source_sha256": "82a0926aaf1ea668e088aaa4462e254cafd835a387450e851cda058a38bf948f",
+      "lake_setup_sha256": "bc192aa5a742c0c911bc54d031faaf974459a29104f66d89ef233b6bd505b16c",
+      "rc": 0,
+      "seconds": 11.593091832473874,
+      "lake_standalone_module_name": "_unknown",
+      "verification_module_name": "scripts.audit.bs_power_root_envelope.VarpiComparisonUnconditional",
+      "lake_options_preserved": true
+    },
+    {
+      "path": "scripts/audit/bs_power_root_envelope/VarpiComparison.lean",
+      "source_sha256": "fa6e2828bd2647f7c337a74f2f630b22f11c3a847fe083bc7d195bb0ac3527f4",
+      "lake_setup_sha256": "fa8afa5cee36db8522c52369ec914608e4f13c4c4a314ba23ab06bb992148b4f",
+      "rc": 0,
+      "seconds": 6.307989584282041,
+      "lake_standalone_module_name": "_unknown",
+      "verification_module_name": "scripts.audit.bs_power_root_envelope.VarpiComparison",
+      "lake_options_preserved": true
+    },
+    {
+      "path": "scripts/audit/bs_power_root_envelope/Unoriented.lean",
+      "source_sha256": "2effe32760a7028f4ea005ff562c3bba34927940b6e42cde7e0dcc3603f83f52",
+      "lake_setup_sha256": "199c079708cff702b186cbd349960cf51ebd5a5b186cacaff1fae549463f9a53",
+      "rc": 0,
+      "seconds": 6.9892196245491505,
+      "lake_standalone_module_name": "_unknown",
+      "verification_module_name": "scripts.audit.bs_power_root_envelope.Unoriented",
+      "lake_options_preserved": true
+    },
+    {
+      "path": "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+      "source_sha256": "2b190f572e1e2fc48b31d557f65a23b1d34fbdd3b22d04c9ffea75984f3088b3",
+      "lake_setup_sha256": "475e92ebd2e713f7c5010eb82ad268306d5e901ad91821ed57d82856bc536e8e",
+      "rc": 0,
+      "seconds": 6.320743961259723,
+      "lake_standalone_module_name": "_unknown",
+      "verification_module_name": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+      "lake_options_preserved": true
+    }
+  ],
+  "scope": "four relocated destinations only; full B3 audits not run"
+}

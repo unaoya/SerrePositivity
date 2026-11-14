@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitRightHom
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomExchange
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyIsoPostcomp
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.HomotopyIsoPostcomp
 
 /-!
 概要：元の cofiber の指定右辺を C 随伴の単位へ送る関手同型。

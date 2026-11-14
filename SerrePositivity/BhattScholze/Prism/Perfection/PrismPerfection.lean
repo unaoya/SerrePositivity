@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
@@ -19,7 +21,7 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 完全化の普遍性（BS 著者版 Remark 2.27）と導来完備化の普遍性を合成する。
 
 ## 規約
-原典の形（prism の完全化が普遍な完全 prism）の一つの定理にはまとめていない（ノート BR28）。
+原典の形（prism の完全化が普遍な完全 prism）の一つの定理にはまとめていない（BS 著者版 Lemma 3.9 の普遍性）。
 
 ## 使われ方
 BS 著者版 Corollary 7.3 の構成、Theorem 3.10 の perfectoid 環の prism 表示、André。
@@ -28,7 +30,7 @@ PD 完備化の比較は旧 `Andre/RootedExtension` から移した。
 
 universe u
 
-/-! ## 完全δ環のdistinguished元による実完備化の完全prism（旧 Prism/Perfection/PerfectDeltaPDPrism.lean）
+/-! ## 完全δ環のdistinguished元による実完備化の完全prism
 
 実H⁰の完全δ性からp正則性を供給し、導来/古典的比較とBS 著者版 Lemma 2.34で
 生成元の正則性を証明する。F5で商のp完備性も供給する。
@@ -95,7 +97,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaPDPrism
 
-/-! ## 完全δ環の実PD完備化prismの普遍性（旧 Prism/Perfection/PerfectDeltaPDPrismUniversal.lean）
+/-! ## 完全δ環の実PD完備化prismの普遍性
 
 完全試験prismへの基底δ射でdがprismイデアルへ入る場合、唯一のprism射を得る。
 生成元の一致ではなく、イデアルの保存を用いる。
@@ -150,7 +152,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaPDPrismUniversal
 
-/-! ## 完全δ環の実PD完備化と完備なdistinguished商の比較（旧 Prism/Perfection/PerfectDeltaPDQuotientEquiv.lean）
+/-! ## 完全δ環の実PD完備化と完備なdistinguished商の比較
 
 標準商がp進完備なら、実完備化後の商と標準商は同型。
 古典的完備化への置換ではなく、実H⁰の環普遍性で比較する。
@@ -228,7 +230,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaPDQuotientEquiv
 
-/-! ## 二つの実δ完全化PD完備化環の、同じ完全試験環への普遍性（旧 Andre/RootedExtension/DeltaPerfectionPDCompletionUniversal.lean） -/
+/-! ## 二つの実δ完全化PD完備化環の、同じ完全試験環への普遍性 -/
 
 @[expose] public noncomputable section DeltaPerfectionPDCompletionUniversal
 
@@ -335,7 +337,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPerfectionPDCompletionUniversal
 
-/-! ## PD完備化を先に挟んだδ完全化の同じ試験環への普遍性（旧 Andre/RootedExtension/DeltaPDCompletionPerfectionUniversal.lean） -/
+/-! ## PD完備化を先に挟んだδ完全化の同じ試験環への普遍性 -/
 
 @[expose] public noncomputable section DeltaPDCompletionPerfectionUniversal
 
@@ -385,7 +387,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPDCompletionPerfectionUniversal
 
-/-! ## δ完全化の直接PD完備化と既存p先行候補の標準環同型（旧 Andre/RootedExtension/DeltaPerfectionPDCompletionComparison.lean） -/
+/-! ## δ完全化の直接PD完備化と既存p先行候補の標準環同型 -/
 
 @[expose] public noncomputable section DeltaPerfectionPDCompletionComparison
 
@@ -500,7 +502,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPerfectionPDCompletionComparison
 
-/-! ## PD完備化をδ完全化の前へ挟む手順との標準環同型（旧 Andre/RootedExtension/DeltaPDCompletionPerfectionComparison.lean） -/
+/-! ## PD完備化をδ完全化の前へ挟む手順との標準環同型 -/
 
 @[expose] public noncomputable section DeltaPDCompletionPerfectionComparison
 
@@ -695,3 +697,9 @@ theorem deltaPDCompletionPerfectionQuotientEquiv_comp_raw :
 end SerrePositivity.BhattScholze
 
 end DeltaPDCompletionPerfectionComparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 3.9" (partial := special) "向き付き prism の場合に原典の形の定理がある（BS-W17）：classicalPrismPerfection（δ 完全化の (p,d) 完備化 H⁰、完全・有界）と、完全 prism への射についての普遍性 existsUnique_classicalPrismPerfectionHom。源の完全性は仮定しない。部品（完全δ環＋distinguished 元の PD 完備化が完全 prism で普遍、完全化と完備化の順序比較）も本体。付随の主張は一つの定理には入っていない。p 進完備化した段での正則性などは PCompletedPerfection:124–145 に別の定理としてある。未完備の A_perf についての主張と、導来と古典的完備化の一致は本体にない。PCompleted 版は d 進完備性を仮定。A3/A5 の始完全 prism で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：deltaPDCompletionPerfectionEquiv（原文の古典完備化との一致や普遍性とは別の比較同型。module docstring の関連を残す。） ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_deltaPerfectionPDCompletionHom
+attribute [cite BS19 "Lemma 3.9" (partial := special) "向き付き prism の場合に原典の形の定理がある（BS-W17）：classicalPrismPerfection（δ 完全化の (p,d) 完備化 H⁰、完全・有界）と、完全 prism への射についての普遍性 existsUnique_classicalPrismPerfectionHom。源の完全性は仮定しない。部品（完全δ環＋distinguished 元の PD 完備化が完全 prism で普遍、完全化と完備化の順序比較）も本体。付随の主張は一つの定理には入っていない。p 進完備化した段での正則性などは PCompletedPerfection:124–145 に別の定理としてある。未完備の A_perf についての主張と、導来と古典的完備化の一致は本体にない。PCompleted 版は d 進完備性を仮定。A3/A5 の始完全 prism で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：deltaPDCompletionPerfectionEquiv（原文の古典完備化との一致や普遍性とは別の比較同型。module docstring の関連を残す。） ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_perfectDeltaPDPrismHom

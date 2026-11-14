@@ -51,8 +51,8 @@ def dgBarCompactLinearHomZeroBaseCohomologyEquiv (x y : D) (n : ℕ) :
   (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactLiftModulePiZeroBaseEquiv _ n).trans
     ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactLiftModulePiZeroBaseEquiv _ n).trans
       ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactOppositeModulePiZeroBaseEquiv _ n).trans
-        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.modulePiMooreGroupEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y) n).trans
-          (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.additiveGroupToMultiplicativeEquiv
+        ((_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y) n).trans
+          (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
             (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactStandardMooreCohomologyIso x y (n + 1)).toLinearEquiv.toAddEquiv))))
 
 lemma dgBarCompactLinearHomZeroBaseCohomologyEquiv_naturality

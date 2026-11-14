@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfEndpointFiber
 
 /-!
@@ -255,3 +257,9 @@ lemma quillenCfTopFiberIso_hom_ι :
 
 end
 end SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.4.6" (partial := stronger-hyp) "仮定：二つの単体模型圏と単体的 Quillen 随伴（Lean が強い：固定 tensor/cotensor、固定 SM7、Hom 随伴の合成互換、および関手的な両側の分解を明示入力）。結論：原典と同じ cf 対応の射影が Cartesian かつ coCartesian で、両端ファイバーが元の cf nerve と同型（この入力の下で一致）。具体例に使う ModelCategory instance なし：SSet の Kan–Quillen 入力は sorry に依存し、本行でそれを実在する instance としては数えない。"] _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfBottomFiberIso
+attribute [cite HTT "5.2.4.6" (partial := stronger-hyp) "仮定：二つの単体模型圏と単体的 Quillen 随伴（Lean が強い：固定 tensor/cotensor、固定 SM7、Hom 随伴の合成互換、および関手的な両側の分解を明示入力）。結論：原典と同じ cf 対応の射影が Cartesian かつ coCartesian で、両端ファイバーが元の cf nerve と同型（この入力の下で一致）。具体例に使う ModelCategory instance なし：SSet の Kan–Quillen 入力は sorry に依存し、本行でそれを実在する instance としては数えない。"] _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfTopFiberIso

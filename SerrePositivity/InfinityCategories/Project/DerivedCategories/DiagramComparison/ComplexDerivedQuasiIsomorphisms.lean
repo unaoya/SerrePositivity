@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedEvaluation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedEdges
 
 /-!
 概要：元の複体の実評価を、同じ擬同型辺の反転へ接続する。
@@ -46,14 +46,14 @@ lemma complexClosedPresentation_moduleQuasiIso {X Y : Complex A} (f : X ⟶ Y) [
 
 /-- 元の閉零射のnerve辺は、元の鎖写像のdg辺そのもの。 -/
 lemma complexClosedPresentation_nerve_edge {X Y : Complex A} (f : X ⟶ Y) :
-    (nerveMap (complexClosedPresentation A) ≫ closedNerveInclusion A (Complex A)).app
+    (nerveMap (complexClosedPresentation A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app
       (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f) =
       (dgClosedEdge A (Complex A) ((complexClosedPresentation A).map f)).edge := by
   apply (dgNerve.edgeEquiv A (Complex A)).injective
   change dgNerve.edgeEquiv A (Complex A)
-    ((closedNerveInclusion A (Complex A)).app _
+    ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app _
       ((nerveMap (complexClosedPresentation A)).app _ (ComposableArrows.mk₁ f))) = _
-  rw [closedNerveInclusion_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion_edge]
   change _ = Simplex.edgeEquiv
     ((Simplex.edgeEquiv (A := A) (D := Complex A)).symm
       ⟨pairObj X Y, closedHomEquiv A (Complex A) _ _ ((complexClosedPresentation A).map f)⟩)
@@ -76,7 +76,7 @@ lemma complexDerivedEvaluation_inverts_quasiIso {X Y : Complex A} (f : X ⟶ Y) 
     (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f))) (f := _) ?_).mpr h'
   change ((dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
     (semifreePointEquivalence A).hom).app (Opposite.op ⦋1⦌))
-      ((nerveMap (complexClosedPresentation A) ≫ closedNerveInclusion A (Complex A)).app (Opposite.op ⦋1⦌)
+      ((nerveMap (complexClosedPresentation A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋1⦌)
         (ComposableArrows.mk₁ f)) = _
   rw [complexClosedPresentation_nerve_edge]
   rfl

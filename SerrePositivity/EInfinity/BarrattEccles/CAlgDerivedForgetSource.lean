@@ -42,7 +42,7 @@ lemma cofibrantAlgebraForgetNerve_mk₁
   rfl
 
 def cofibrantAlgebraUnderlyingDerivedSource :
-    nerve (cofibrantAlgebraRelativeCategory A).category ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+    nerve (cofibrantAlgebraRelativeCategory A).category ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   cofibrantAlgebraForgetNerve A ≫ ComplexLimits.complexOrdinaryDerivedSource A
 
 lemma cofibrantAlgebraUnderlyingDerivedSource_map_weak

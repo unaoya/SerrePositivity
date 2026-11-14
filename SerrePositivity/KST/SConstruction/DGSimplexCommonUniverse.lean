@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveUniverseLift
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveUniverseLift
 
 /-! # 元の dg 二セルの共通宇宙への移送
 概要：独立宇宙の dg 単体の関手像は、合成・面と可換である。

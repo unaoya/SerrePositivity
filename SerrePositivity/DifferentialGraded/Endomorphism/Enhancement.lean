@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Endomorphism.Perfect
 public import Mathlib.CategoryTheory.Adjunction.Restrict
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
@@ -989,3 +991,10 @@ end SerrePositivity.DifferentialGraded
 end
 
 end Compatibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.8.5.8" (partial := stronger-hyp) "仮定：小さい dg 圏 D、その指定範囲の完全 dg 加群 E、E の thick 生成と全導来圏での compact generator 性（Lean が強い：通常の dg 導来圏に限り、これらの生成仮定を追加する）。結論：End(E) 上の加群の通常の導来圏から D 上の導来圏への同値を構成し、正則 End(E) 加群を E と同定する（この仮定での HA の結論の一部に一致）。一般の C-線型 ∞ 圏での六条件の同値は含まれない。"] _root_.SerrePositivity.DifferentialGraded.endomorphismDerivedEquivalence_ofCompactGenerator
+attribute [cite HA "7.1.2.1" (partial := stronger-hyp) "仮定：可換環 A、小さい dg 圏 D、指定した完全 dg 加群 E と thick 生成および導来圏の compact generator 性（Lean が強い：dg 加群の通常の導来圏と追加の thick 生成に限る）。結論：End(E) の dg 加群の導来圏と D の dg 加群の導来圏の同値を構成する（この仮定での認識定理の十分性の部分に一致）。任意の安定可呈示 ∞ 圏のスペクトル加群による表示と必要性は含まれない。"] _root_.SerrePositivity.DifferentialGraded.endomorphismDerivedEquivalence_ofCompactGenerator
+attribute [cite HA "7.1.2.3" (partial := stronger-hyp) "仮定：小さい dg 圏と指定した完全 compact generator E、追加の thick 生成（Lean が強い：通常の dg 導来圏の場合）。結論：表示に用いる代数を End(E) と明示し、正則加群の像を E と同定する（この仮定での HA の結論の一部に一致）。環スペクトルの自己準同型代数との比較は含まれない。"] _root_.SerrePositivity.DifferentialGraded.endomorphismDerivedEquivalence_ofCompactGenerator

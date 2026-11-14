@@ -31,7 +31,7 @@ theorem verdierSPostcomp_fullyFaithful :
 
 /-- 元の S_n(D) の全図式は、元の同じ S 商作用で零になる。 -/
 theorem verdierSPostcomp_image_isZero (a : (sConstruction n A.obj) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app (Opposite.op ⦋0⦌)
       ((sPostcomp n i.hom (exactMap_preservesSData i)).app (Opposite.op ⦋0⦌) a)) := by
   let k := (verdierSStageKernelEquivalence h n).hom.app (Opposite.op ⦋0⦌) a
   have hk := (sStageKernelPredicate_iff q n k.val).mp
@@ -39,12 +39,12 @@ theorem verdierSPostcomp_image_isZero (a : (sConstruction n A.obj) _⦋0⦌) :
   have he := congrArg (fun f : sConstruction n A.obj ⟶ sConstruction n B.obj =>
     f.app (Opposite.op ⦋0⦌) a) (verdierSStageKernelEquivalence_inclusion h n)
   exact (congrArg (fun z : (sConstruction n B.obj) _⦋0⦌ =>
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
       (Opposite.op ⦋0⦌) z)) he).mp hk
 
 /-- 同じ S 後合成の実核は、元の S_n(D) 包含の本質像と一致する。 -/
 theorem verdierSPostcomp_kernel (v : (sConstruction n B.obj) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((sPostcomp n q.hom (exactMap_preservesSData q)).app
       (Opposite.op ⦋0⦌) v) ↔
       ∃ a : (sConstruction n A.obj) _⦋0⦌,
         Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := sConstruction n B.obj)
@@ -71,7 +71,7 @@ theorem verdierSPostcomp_kernel (v : (sConstruction n B.obj) _⦋0⦌) :
 theorem relativeSConstruction_mem_edge_iff_cofiber_image
     {x y : (sConstruction n B.obj) _⦋0⦌}
     {f : Truncated.Edge (X := (truncation 2).obj (sConstruction n B.obj)) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
     f.edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
       ∃ a : (sConstruction n A.obj) _⦋0⦌,
         Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := sConstruction n B.obj)

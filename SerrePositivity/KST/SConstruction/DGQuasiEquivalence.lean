@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGApplication
 public import SerrePositivity.KST.SConstruction.MultiRealizationEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.DGQuasiEquivalenceNerve
 
 /-! # dg 準同値の全正有限反復 S 実現への接続
 概要：前三角 dg 圏の準同値を、完全な逆データと実現後の局所化同型へ送る。
@@ -24,7 +24,7 @@ variable (A : Type u) [CommRing A] (D E : Type u)
 /-- 指定した厳密 dg 準同値を順方向に保持する、完全な安定入力の同値。 -/
 def dgStableQuasiEquivalence (F : DGFunctor A D E) (hF : QuasiEquivalence F) :
     StableModelEquivalence (dgStableModel A D) (dgStableModel A E) := by
-  let e := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence F hF).choose
+  let e := (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence F hF).choose
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv :=
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨dgStableMap A D E F,

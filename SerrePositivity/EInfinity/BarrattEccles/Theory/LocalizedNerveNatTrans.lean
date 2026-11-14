@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransWhiskering
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransHomotopyComponent
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomPostcompPointwiseInvertible
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.SimplicialFunctors.FunctorHomPostcompPointwiseInvertible
 
 /-!
 # 通常の自然変換から局所化の比較二胞体へ

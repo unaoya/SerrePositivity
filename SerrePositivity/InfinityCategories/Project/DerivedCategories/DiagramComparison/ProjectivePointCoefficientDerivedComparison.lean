@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A]
 /-- U39の係数移送：元の一点加群の係数評価と指定一点模型の全族比較。 -/
 def projectivePointCoefficientDerivedIso :
     FunctorIso (nerveMap (projectivePointCoefficientComplex A) ≫ complexDerivedEvaluation A)
-      (closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
         (projectivePointEquivalence A).hom) := by
   have e := (complexDerivedEvaluation_projectiveRingIso A).precomp
     (nerveMap (projectivePointRingPresentation A))
@@ -36,12 +36,12 @@ def projectivePointCoefficientDerivedIso :
       nerveMap (projectiveRingComplexConstant A).onClosed =
         𝟙 (nerve (ClosedCategory A (ProjectiveDGModules A PUnit.{1}))) at hr
   have hr' : nerveMap (projectivePointRingPresentation A) ≫
-      closedNerveInclusion A (ProjectiveRingComplex A) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           (projectiveRingComplexConstant A) ≫ (projectivePointEquivalence A).hom =
-      closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
         (projectivePointEquivalence A).hom := by
-    rw [← Category.assoc (closedNerveInclusion A (ProjectiveRingComplex A))
+    rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A))
       (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
         (projectiveRingComplexConstant A)) _, closedNerveInclusion_dgFunctor,
       Category.assoc (nerveMap (projectiveRingComplexConstant A).onClosed),
@@ -51,7 +51,7 @@ def projectivePointCoefficientDerivedIso :
     (nerveMap (projectivePointRingPresentation A) ≫
       nerveMap (projectiveRingUnderlyingComplex A) ≫ complexDerivedEvaluation A)
     (nerveMap (projectivePointRingPresentation A) ≫
-      closedNerveInclusion A (ProjectiveRingComplex A) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveRingComplex A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           (projectiveRingComplexConstant A) ≫ (projectivePointEquivalence A).hom) at e
   rw [← Category.assoc _ (nerveMap (projectiveRingUnderlyingComplex A)) _, hl, hr'] at e

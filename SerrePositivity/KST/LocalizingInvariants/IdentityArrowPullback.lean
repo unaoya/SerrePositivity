@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ColumnPushout
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareDuality
+public import SerrePositivity.InfinityCategories.HA.Section6_1_1.SquareDuality
 
 /-!
 概要：矢印の恒等辺が表す実正方形は pullback である。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteNonpositiveInverseInduction
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveRoofValue
 
@@ -39,3 +41,8 @@ lemma postnikovFiniteMap_isProIso_of_connective (hL : InvertsConnectiveQuasiIsos
       (postnikov_isConnective R (B.obj m).obj cutoff) (postnikov_isConnective R (B.obj i).obj cutoff)⟩
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Lemma 2.28" (partial := component) "仮定：非正 dg 代数の自然数塔と連結準同型を反転する関手（Lean が強い）。結論：有界切断の各次数のプロ同型から切断値のプロ同型。一般のプロ加群・環の忘却関手の保存性は対象外（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovFiniteMap_isProIso_of_connective

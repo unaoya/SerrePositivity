@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaces
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -124,3 +126,8 @@ lemma leftUnstraighteningMap_isPullback {C D : SSet.{u + 1}}
   exact IsPullback.of_hasPullback _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection F
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.3.2.8" (partial := stronger-hyp) "仮定：小さい left fibration p:X→S に加え S が準圏（Lean が強い）。結論：nativeLeftTransportRepresentation p の図式 S→SpaceInfinity の、pointSpaceVertex からの coslice の引戻しへ、底を厳密に保つ前合成同値がある（一致）。任意の単体的 S に対して同じ比較を同値とする型はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningProjection

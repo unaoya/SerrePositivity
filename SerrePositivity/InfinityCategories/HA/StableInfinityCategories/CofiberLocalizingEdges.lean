@@ -19,7 +19,7 @@ open scoped _root_.Simplicial
 
 /-- 指定した実頂点と同型な cofiber を持つ実辺の集合。 -/
 def cofiberLocalizingEdges {X : SSet.{u}} (P : Set (X _⦋0⦌)) : Set (X _⦋1⦌) :=
-  {a | ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a),
+  {a | ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a),
     ∃ z ∈ P, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso s.cofiber z)}
 
 variable {X Y : SSet.{u}} [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Y]
@@ -27,7 +27,7 @@ variable (F : X ⟶ Y) [_root_.SerrePositivity.InfinityCategories.Kerodon.Limits
 
 /-- 完全関手は、零化する対象と同型な cofiber を持つ全ての辺を反転する。 -/
 lemma inverts_cofiberLocalizingEdges_of_kills
-    (h : ∀ z ∈ P, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) z)) :
+    (h : ∀ z ∈ P, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) z)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (cofiberLocalizingEdges P) := by
   rintro a ⟨s, z, hz, ⟨e⟩⟩
   apply (s.map_isInvertible_iff_zero F).2
@@ -36,14 +36,14 @@ lemma inverts_cofiberLocalizingEdges_of_kills
 /-- 安定始域では、cofiber 辺を全て反転する完全関手は指定対象を全て零化する。 -/
 lemma kills_of_inverts_cofiberLocalizingEdges [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (cofiberLocalizingEdges P)) :
-    ∀ z ∈ P, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) z) := by
+    ∀ z ∈ P, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) z) := by
   intro z hz
-  let q := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X
+  let q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X
   let f := Classical.choice (q.isInitial.nonempty_edge z)
   let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare f
   let e := s.cofiberIsoOfZeroSource q.isZero
   have hf : f.edge ∈ cofiberLocalizingEdges P := by
-    let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex f.edge) := {
+    let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex f.edge) := {
       toZeroTriangle := s.toZeroTriangle
       bottom_edge := s.bottom_edge
       isPushout := s.isPushout }
@@ -57,7 +57,7 @@ lemma kills_of_inverts_cofiberLocalizingEdges [Quasicategory X] [_root_.SerrePos
 /-- 導来対象の零化と cofiber 辺の反転は、完全関手について同値。 -/
 theorem inverts_cofiberLocalizingEdges_iff_kills [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (cofiberLocalizingEdges P) ↔
-      ∀ z ∈ P, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) z) :=
+      ∀ z ∈ P, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) z) :=
   ⟨kills_of_inverts_cofiberLocalizingEdges F P, inverts_cofiberLocalizingEdges_of_kills F P⟩
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

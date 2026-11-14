@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.SSetPullbackAdjoint
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalPullbackAnodyne
 
@@ -39,3 +41,9 @@ lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}}
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_rightAnodyne_of_isLeftAdjoint p f hf
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.2.15" (partial := special) "仮定：余デカルトファイブレーション p（Lean が強い：p が左ファイブレーションで、余デカルトファイブレーションの instance がある）。結論：同じ切片で右アノダイン射の引き戻しが右アノダインとなる（滑らかさの条件 (1) と一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_overPullback_rightAnodyne
+attribute [cite HTT "4.1.2.9" (partial := special) "仮定：単体集合の射 p（Lean が強い：p が左ファイブレーション）。結論：任意の右アノダイン射を p に沿って引き戻しても右アノダインとなる（原典が定義に使う条件 (1) と一致。任意の p に対する述語はない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_overPullback_rightAnodyne

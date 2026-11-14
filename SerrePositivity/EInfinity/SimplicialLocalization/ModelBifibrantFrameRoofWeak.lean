@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelBifibrantFrame
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRawRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.ModelBifibrantFrame
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRawRelative
 public import SerrePositivity.EInfinity.FrameHom.FrameFunctorImage
 public import SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedFirst
 

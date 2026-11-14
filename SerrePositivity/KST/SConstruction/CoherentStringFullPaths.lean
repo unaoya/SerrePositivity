@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentStringPathFlags
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CoherentStringPathFlags
 public import SerrePositivity.KST.SConstruction.CoherentArrowStringInitial
 public import SerrePositivity.KST.SConstruction.CoherentSimplexArrows
 

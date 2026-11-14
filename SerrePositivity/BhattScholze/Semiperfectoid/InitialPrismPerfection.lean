@@ -1,8 +1,9 @@
 module
+public meta import SerrePositivity.Util.Citation
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.ClassicalPrismPerfection
-public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidPrismPresentation
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 
 /-!
 # 初期 prism の完全化と perfectoid 化
@@ -78,7 +79,7 @@ theorem isPerfectoidization_of_perfectInitial (Q : OrientedPrism p B)
     intro x
     exact e.apply_symm_apply (s x)
   · intro l hl
-    obtain ⟨k, hk, _⟩ := Andre.existsUnique_perfectPrismHomLift_to_bounded Q hQ P hPb
+    obtain ⟨k, hk, _⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded Q hQ P hPb
       (e.symm.toRingHom.comp l)
     have hkg : k = g := by
       apply hgu
@@ -98,3 +99,6 @@ theorem classicalPrismPerfectionUnit_isPerfectoidization (Q : OrientedPrism p B)
     (classicalPrismPerfection_initial Q v hv)
 
 end SerrePositivity.BhattScholze.Semiperfectoid
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Prop 7.10" (partial := component) "BS-W17 H5（11-12）：T（有限）と S′（任意添字）の古典的な部分は本体：固定 A_inf 上の有界な実包絡、全有界 prism への一意な射、S′ の完全化と Cor 7.3 の単位を保つ唯一の同型（停止点 4・5a・5）。S′ の単位の完全忠実平坦性は後回し（E3 は使わない）。Δ_R/A との同定（G10）は drafts ／ 11-12 節の見直し：S′ の部分は f_j=0 の場合（根の商）だけ"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.classicalPrismPerfection_initial

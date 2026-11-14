@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open FullFaithfulAndEssentiallySurjectiveFunctors
@@ -25,7 +25,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 指定 sourceIso を持つ元の全複体比較の、証明済みの全圏同値。 -/
 def complexHammockDerivedEquivalence :
-    QCatEquivalence (complexHammockNerve A) (derivedInfinityCategory A) :=
+    QCatEquivalence (complexHammockNerve A) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   (isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
     (complexHammockDerivedComparison_fullyFaithful A)
     (complexHammockDerivedComparison_essentiallySurjective A)).choose
@@ -34,7 +34,7 @@ lemma complexHammockDerivedEquivalence_hom :
     (complexHammockDerivedEquivalence A).hom = complexHammockDerivedComparison A := rfl
 
 /-- 元の複体の実スペクトルを既存 D(A) へ降ろした native な V_A。 -/
-def eilenbergMacLaneDerived : derivedInfinityCategory A ⟶ KST.Spectra.Sp.{u} :=
+def eilenbergMacLaneDerived : _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ KST.Spectra.Sp.{u} :=
   (complexHammockDerivedEquivalence A).inv ≫ eilenbergMacLaneHammockFunctor A
 
 /-- V_A は元の全複体の同じスペクトル図式へ、全関手の同型で戻る。 -/

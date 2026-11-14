@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RepresentableReflection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.RepresentableReflection
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.StrictHomotopyLimits
 
 /-!

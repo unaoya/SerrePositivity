@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.GroupCompletionPathIdentity
 public import SerrePositivity.KST.Comparison.RegularBarHomotopyFiber
 public import SerrePositivity.KST.Comparison.AlternativeFiberCriterion
@@ -67,3 +69,10 @@ theorem monoidGroupCompletionMap_localized_isIso (M : SimplicialObject MonCat.{u
     (terminalIsTerminal.hom_ext _ _) (by simp)).mp hs
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.0.5" (partial := component) "仮定：群状単体モノイド M（HA の π₀ が群という条件の単体模型）。結論：M からその bar の Kan 置換のループ空間への標準写像が anodyne 局所化で同型となる（群状モノイドの delooping の成分に一致）。Moore ループの厳密積と通常ループとの比較は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso
+attribute [cite HA "5.2.6.10" (partial := component) "仮定：π₀ が群の厳密単体的モノイド M（Lean が強い：k=1 の厳密模型の場合）。結論：標準写像 M→Ω(BM の Kan 置換) は anodyne 局所化で同型となる（(3) の一回 Bar と loop の一方の逆比較に一致する部分）。全 E₁ 代数との模型比較、全充満性・本質像の分類、k>1 は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso
+attribute [cite HA "5.2.6.15" (partial := component) "仮定：空間の厳密単体的モノイド M で π₀ が群（Lean が強い：X=S、k=1 のこの模型）。結論：M→ΩBM が局所化で同型となる（Bar と Cobar の逆比較のうち単体的 monoid 側の部分に一致）。任意 ∞ トポス、全 k、Cobar の全関手の本質像・全充満性は含まれない。"] _root_.SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso

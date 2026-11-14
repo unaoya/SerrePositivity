@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Edges
 
@@ -84,3 +86,8 @@ noncomputable def cocartesianTransportObject {X B : SSet.{u}} (p : X ⟶ B)
   fun x ↦ (chooseCocartesianEdgeLift p e x).target
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "3.4.2.3" (partial := stronger-hyp) "仮定：単体集合の写像 p が余デカルトファイブレーション（Lean は HA の単位を持つ operadic fibration より強く、全ての底の辺で持ち上げがある場合に限る）。結論：指定の始点から底の辺への余デカルト持ち上げがある（semi-inert 辺に適用した結論は一致）。単位から semi-inert 辺だけの持ち上げを構成する部分は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.nonempty_cocartesianEdgeLift

@@ -60,7 +60,7 @@ def dgBarCompactStandardPiCohomologyEquiv (x y : D) (n : ℕ)
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleUnderlyingSSet (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)) n z ≃*
       Multiplicative ((_root_.SerrePositivity.DifferentialGraded.homObject R D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
   (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactModulePiHomologyEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y) n z).trans
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.additiveGroupToMultiplicativeEquiv
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
       (dgBarCompactStandardMooreCohomologyIso x y (n + 1)).toLinearEquiv.toAddEquiv)
 
 lemma dgBarCompactStandardPiCohomologyEquiv_naturality

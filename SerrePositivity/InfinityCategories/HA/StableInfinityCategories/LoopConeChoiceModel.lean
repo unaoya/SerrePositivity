@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopDiagramUniversalConeModel
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopConeSourceInitial
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeOpposite
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.VertexFiberMapIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.VertexFiberMapIso
 
 /-!
 概要：普遍錐の選択を忘れ、全零隅四角形の始対象を得る。
@@ -59,7 +59,7 @@ lemma loopConeChoiceIso_diagram (X : SSet.{u}) [Quasicategory X] :
   simp only [loopConeChoiceIso, asIso_hom, pullback.map, pullback.lift_fst, Category.comp_id]
 
 /-- 同じ固定頂点を保つ錐の比較 `loopConeChoiceFiber_hasInitial`。 -/
-lemma loopConeChoiceFiber_hasInitial {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+lemma loopConeChoiceFiber_hasInitial {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (s : X ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) (hs : s ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 1 1 = 𝟙 X)
     (hΩ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (s ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 0 0)) (x : X _⦋0⦌) :
     ∃ v : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber

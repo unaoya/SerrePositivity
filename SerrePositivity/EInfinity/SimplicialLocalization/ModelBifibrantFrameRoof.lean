@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelBifibrantFrameElements
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.ModelBifibrantFrameElements
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanShape
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSource
 

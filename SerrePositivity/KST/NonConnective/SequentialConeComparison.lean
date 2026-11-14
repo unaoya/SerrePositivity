@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialResizedDiagramIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentOppositeEdge
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentOppositeEdge
 
 /-!
 概要：厳密な BF 錐全体の比較を、指定された coherent 錐全体の関手同型へ写す。

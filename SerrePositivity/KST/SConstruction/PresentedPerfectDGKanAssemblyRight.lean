@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAssemblyExInfinity
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationComposition
 
 /-! # 元の Ex∞ 比較と組み立てを合成した隣接段の右脚
 概要：ΣEx∞U_r から同じ元の Ex∞B_(r+1) への実射を全 dg 入力に自然に束ねる。

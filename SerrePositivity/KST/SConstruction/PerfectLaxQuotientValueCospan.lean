@@ -91,13 +91,13 @@ lemma valueProductInclusion_projection :
       (he.trans (hc.symm.trans (d.valueProductInclusion_ho_snd F).symm))
 
 /-- 同じ移送正方形の下辺は、元の実 C・D 射対の包含を回収する。 -/
-lemma productSquare_bottom_native_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (d.productSquare hF)) =
+lemma productSquare_bottom_native_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (d.productSquare hF)) =
     Arrow.mk (SpectrumHo.hom (d.valueProductInclusion F)) :=
   (d.productSquare_bottom_arrow hF).trans
     (congrArg Arrow.mk (d.valueProductInclusion_projection hF))
 
 /-- 同じ移送正方形の左辺は、元の核の射の実 BF 表示の類。 -/
-lemma productSquare_left_native_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (d.productSquare hF)) =
+lemma productSquare_left_native_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (d.productSquare hF)) =
     Arrow.mk (SpectrumHo.hom (d.valueKernelMap F)) :=
   (d.productSquare_left_arrow hF).trans (congrArg Arrow.mk
     (perfectInvariantSpectrumMap_hom F

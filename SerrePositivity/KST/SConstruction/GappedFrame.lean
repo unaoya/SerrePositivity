@@ -37,7 +37,7 @@ lemma IsGapped.zeroFrameVertex {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C}
   let a := (nerveEquiv x).val
   have hx : x = ComposableArrows.mk₀ (nerveEquiv x) := (nerveEquiv.symm_apply_apply x).symm
   rw [hx]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
   have ha : a = arObj a.down.val.1 a.down.val.1 le_rfl := by
     apply ULift.ext
     apply Subtype.ext
@@ -100,7 +100,7 @@ def frameRowDiagramIso (n : ℕ) (C : SSet.{u}) :
 /-- 概要：零対角の枠から元の第一行への制限は trivial Kan fibration。
 方針：枠内の第一行への射影に添字の同型を合成する。
 規約：零対象の存在だけで成立する。使われ方：第一行の cofiber 補完との分離。 -/
-instance frameRowRestriction_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+instance frameRowRestriction_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (frameRowRestriction n C) := by
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroFrameProjection n C ≫ (frameRowDiagramIso n C).hom)
   exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem

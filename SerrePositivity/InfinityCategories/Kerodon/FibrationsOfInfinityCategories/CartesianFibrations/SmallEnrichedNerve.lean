@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallSimplicialSet
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentFullSubcategoryRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.CoherentFullSubcategoryRestriction
 
 /-! # 小さい対象集合を持つ、元の豊穣圏の coherent nerve の小ささ
 

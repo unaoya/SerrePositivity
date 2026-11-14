@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CompositionReplacementTetrahedron
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EnrichedHomotopy
 
 /-! # 元の豊穣比較辺を面に保持する coherent 合成三角形

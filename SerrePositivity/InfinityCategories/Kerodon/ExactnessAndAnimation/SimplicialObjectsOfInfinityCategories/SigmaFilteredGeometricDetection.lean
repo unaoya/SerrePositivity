@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ColimitComparisonDetection
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaGeometricIndGeneration
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaVertexDensity
@@ -109,3 +111,12 @@ lemma sigmaComparison_isIso_of_filtered_geometric
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.sigmaComparison_isIso_at_ind hF hG η hη _ (hInd n)
 
 end SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.17" (partial := direction) "仮定：全小余極限を持つ C から任意 D への sifted 余極限保存関手（HTT と一致）。結論：同じ関手は filtered 余極限と幾何学的実現を保つという必要方向（一致）。逆方向の既存の型は始域 PΣ の場合だけで、任意 C への主張を追加議論なしには結論しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.preservesSmallFiltered_of_sifted
+attribute [cite HTT "5.5.8.17" (partial := direction) "仮定：全小余極限を持つ C から任意 D への sifted 余極限保存関手（HTT と一致）。結論：同じ関手は filtered 余極限と幾何学的実現を保つという必要方向（一致）。逆方向の既存の型は始域 PΣ の場合だけで、任意 C への主張を追加議論なしには結論しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.preservesSmallGeometric_of_sifted
+attribute [cite HTT "5.5.8.18"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.PreservesSmallGeometricRealizations
+attribute [cite HTT "5.5.8.20" (partial := direction) "仮定：全小余極限を持つ C と対象 X の全 Hom が sifted 余極限を保つ（HTT と一致）。結論：同じ Hom の filtered 余極限・幾何学的実現保存、従って X は compact かつ projective という必要方向（一致）。任意 C の Hom に対する逆方向を始域 PΣ の特別な判定から補わない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.preservesSmallFiltered_of_sifted
+attribute [cite HTT "5.5.8.20" (partial := direction) "仮定：全小余極限を持つ C と対象 X の全 Hom が sifted 余極限を保つ（HTT と一致）。結論：同じ Hom の filtered 余極限・幾何学的実現保存、従って X は compact かつ projective という必要方向（一致）。任意 C の Hom に対する逆方向を始域 PΣ の特別な判定から補わない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.preservesSmallGeometric_of_sifted

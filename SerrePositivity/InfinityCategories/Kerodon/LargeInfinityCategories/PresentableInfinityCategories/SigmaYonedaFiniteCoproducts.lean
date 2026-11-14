@@ -1,10 +1,12 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaOppositeComma
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafSliceConeRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PresheafSliceConeRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ConeSectionBaseChange
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseConeRestriction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.DiscreteNerveOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.UniverseConeRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.DiscreteNerveOpposite
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.UliftCoconeReverse
 
 /-!
@@ -110,3 +112,8 @@ lemma sigmaYoneda_finiteCoproduct_isColimit {C : SSet.{u}} [Quasicategory C]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_iff_of_cone_val_eq _ _ hv).mp hσ
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.10" (partial := component) "仮定：有限余積を持つ小準圏 C（HTT と一致）。結論：元の包含の左随伴の存在、Yoneda の同じ因子化と有限余積保存、および PΣ の sifted 余極限閉性という (1) の反射部分・(2)・(4)（一致）。反射の accessibility、任意の随伴との (3) の iff、(6) の compact generation はこの組には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYoneda_finiteCoproduct_isColimit

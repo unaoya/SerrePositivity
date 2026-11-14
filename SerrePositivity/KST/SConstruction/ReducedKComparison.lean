@@ -31,12 +31,12 @@ def reducedSRealizationComparison (X : StableModel.{u}) :
     pointedSRealization X.carrier ⟶ (reducedMultiRealizationFunctor 0).obj X :=
   Under.homMk ((multiRealizationReductionNat 0).app X) (by
     have h := Under.w (diagonalReductionPointedMap (simplicialCoreSConstruction X.carrier)
-      (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).vertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).isZero))
+      (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier).vertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier).isZero))
     change (PointedSimplicialSet.ofVertex
       (simplicialDiagonalFunctor.obj (simplicialCoreSConstruction X.carrier))
       ((diagonalZeroColumn (simplicialCoreSConstruction X.carrier)).app (Opposite.op ⦋0⦌)
-        (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).vertex
-          (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).isZero))).hom ≫
+        (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier).vertex
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier).isZero))).hom ≫
         diagonalReductionQuotient (simplicialCoreSConstruction X.carrier) =
           (reducedDiagonal (simplicialCoreSConstruction X.carrier)).hom at h
     rw [diagonalZeroColumn_zero] at h

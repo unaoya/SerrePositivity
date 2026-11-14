@@ -152,7 +152,7 @@ lemma arTriple_isPushout_of_originSquares {n : ℕ} {C : SSet.{u}} [Quasicategor
 規約：C は quasicategory。使われ方：第一行からの復元で残る普遍性の正確な形。 -/
 lemma isGapped_iff_originSquares {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C) : IsGapped F ↔
-      (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+      (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧
       (∀ (i j : Fin (n + 1)) (hij : i ≤ j),
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare 0 i i j (Fin.zero_le _) le_rfl hij ≫ F)) := by
@@ -174,7 +174,7 @@ lemma isGapped_iff_arCofiberFamily_vertices {n : ℕ} {C : SSet.{u}} [Quasicateg
     have ha : a = ComposableArrows.mk₀ (nerveEquiv a) :=
       (nerveEquiv.symm_apply_apply a).symm
     rw [ha, arCofiberFamily_vertex]
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
       (arSquare 0 (nerveEquiv a).down.val.1 (nerveEquiv a).down.val.1
         (nerveEquiv a).down.val.2 (Fin.zero_le _) le_rfl (nerveEquiv a).down.property ≫ F) 0 1) ∧ _
     exact ⟨h.1 (nerveEquiv a).down.val.1,

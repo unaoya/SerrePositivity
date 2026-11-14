@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGTotalQuotientPerfectZero
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.DGTotalQuotientPerfectZero
 
 /-!
 概要：固定 dg 提示源の全対象商の実 ν 値が零圏であることを認証する。

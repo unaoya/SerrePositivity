@@ -28,7 +28,7 @@ public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Combinatorics.Quiver.ReflQuiver
 public import Mathlib.Logic.Equiv.Defs
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.PastingShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.PastingShapes
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.Pullback
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity

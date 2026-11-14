@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRealizedNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRestrictedInclusion
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperActualBoundary
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomTypedWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.FunctorHomTypedWhiskerAlgebra
 
 /-!
 概要：元始域上の実逆回転全評価比較を元包含・負符号付き長辺へ接続する。

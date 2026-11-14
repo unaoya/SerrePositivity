@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FiniteLimitExchangeInput
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FullCoconeLift
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteOppositeSSet
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteOppositeSSet
 
 /-!
 概要：明示した全有限交換の証拠から、compact 全部分圏の有限余極限を構成する。

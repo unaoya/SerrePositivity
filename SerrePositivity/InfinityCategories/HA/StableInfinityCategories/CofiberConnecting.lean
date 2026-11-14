@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSuspensionComparison
 
 /-! # Cofiber 列の接続射
@@ -21,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：元の四角形は押し出し。使われ方：接続射の具体的な定義。 -/
 def chosenCofiberSuspensionComparison {X : SSet.{u}} [Quasicategory X]
     (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F)
-    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0)) : SSet.Homotopy F s.square :=
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0)) : SSet.Homotopy F s.square :=
   Classical.choose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_cofiberSuspensionComparison F hF s)
 
 /-- 概要：選んだ比較ホモトピーは元の始点を全パラメーターで固定する。
@@ -29,10 +31,10 @@ def chosenCofiberSuspensionComparison {X : SSet.{u}} [Quasicategory X]
 規約：始点の射は厳密に定値。使われ方：接続射の選択の比較と自然性。 -/
 lemma chosenCofiberSuspensionComparison_source {X : SSet.{u}} [Quasicategory X]
     (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F)
-    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0)) :
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0)) :
     ((stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ▷ (Δ[1] : SSet.{u})) ≫
       (chosenCofiberSuspensionComparison F hF s).h =
-        CartesianMonoidalCategory.snd Δ[0] Δ[1] ≫ SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0) :=
+        CartesianMonoidalCategory.snd Δ[0] Δ[1] ≫ SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 0) :=
   Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_cofiberSuspensionComparison F hF s)
 
 /-- 概要：cofiber 列から指定した suspension 列への短複体の比較射。
@@ -40,8 +42,8 @@ lemma chosenCofiberSuspensionComparison_source {X : SSet.{u}} [Quasicategory X]
 規約：第一成分の始点固定条件も比較ホモトピーとして保持する。
 使われ方：第三成分で接続射を得る。 -/
 def cofiberSuspensionShortComplexMap {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t)
-    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0)) :
+    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t)
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0)) :
     t.hoShortComplex ⟶ s.toZeroTriangle.hoShortComplex :=
   let Q := chosenCofiberSuspensionComparison t.square ht s
   t.hoShortComplexMapOfHomotopy s.toZeroTriangle Q.h Q.h₀ Q.h₁
@@ -50,8 +52,8 @@ def cofiberSuspensionShortComplexMap {X : SSet.{u}} [Quasicategory X]
 方針：短複体の比較射の第三成分を取る。
 規約：Σ の関手の対象との比較は次の定義で行う。使われ方：接続射の零合成。 -/
 def cofiberConnectingToSuspension {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t)
-    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0)) :
+    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t)
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0)) :
     t.hoShortComplex.X₃ ⟶ SSet.HomotopyCategory.mk s.vertex :=
   (cofiberSuspensionShortComplexMap t ht s).τ₃
 
@@ -59,8 +61,8 @@ def cofiberConnectingToSuspension {X : SSet.{u}} [Quasicategory X]
 方針：短複体の比較射の可換性を使い、suspension の右下の零対象を通る合成へ移す。
 規約：任意の指定した suspension 四角形。使われ方：三角形の隣り合う射の零合成。 -/
 lemma cofiberConnectingToSuspension_comp_eq_zero {X : SSet.{u}} [Quasicategory X]
-    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t)
-    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0)) :
+    [HasZeroMorphisms (hoFunctor.obj X)] (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t)
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0)) :
     t.hoShortComplex.g ≫ cofiberConnectingToSuspension t ht s = 0 := by
   let m := cofiberSuspensionShortComplexMap t ht s
   change t.hoShortComplex.g ≫ m.τ₃ = 0
@@ -72,19 +74,25 @@ lemma cofiberConnectingToSuspension_comp_eq_zero {X : SSet.{u}} [Quasicategory X
 規約：接続射の選択独立性と三角圏の公理はまだ主張しない。
 使われ方：S4 の distinguished triangle の第三射。 -/
 def cofiberConnecting {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     t.hoShortComplex.X₃ ⟶ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor X).obj t.hoShortComplex.X₁ :=
-  let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenSuspensionSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0)
+  let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenSuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0)
   cofiberConnectingToSuspension t ht s ≫ s.suspensionFunctorObjIso.inv
 
 /-- 概要：cofiber 列の第二射の後に接続射を合成すると零。
 方針：指定 suspension への零合成を対象の比較同型で移す。
 規約：安定 ∞ 圏。使われ方：cofiber 三角形の零合成。 -/
 lemma cofiberConnecting_comp_eq_zero {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     t.hoShortComplex.g ≫ cofiberConnecting t ht = 0 := by
   change t.hoShortComplex.g ≫ (cofiberConnectingToSuspension t ht _ ≫ _) = 0
   rw [← Category.assoc, cofiberConnectingToSuspension_comp_eq_zero,
     zero_comp (C := hoFunctor.obj X)]
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.2.3" (partial := component) "仮定：安定準圏の一つの余ファイバー列（HA の隣接区間から作る列に適用可能）。結論：hC で余ファイバーから懸垂への境界射。すべての区間の境界をシフトでつないだ鎖複体と二乗零性は型に含まれない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnecting
+attribute [cite HA "1.4.1.8" (partial := component) "仮定：安定な場合の cofiber、および（反対圏に適用した）ホモロジー関手と前三角構造（Lean が強い：任意の点付き準圏で小余極限を持つ場合ではない）。結論：suspension への接続射と、区別三角の像が完全になること（Lean が弱い：HA の次数つきコホモロジー理論について長完全列を組み立てる型はない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberConnectingToSuspension

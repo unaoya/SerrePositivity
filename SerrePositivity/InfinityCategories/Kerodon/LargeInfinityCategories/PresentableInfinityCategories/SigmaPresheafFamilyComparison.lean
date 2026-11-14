@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaPresheafEvaluationCones
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyProductComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.FiniteFamilyProductComparison
 
 /-!
 概要：P_Σ の元の評価全錐を、元の有限関手族の積全錐へ比較する。

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Coherent
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
@@ -64,3 +66,8 @@ lemma perfectStableInfinityInclusion_vertex
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex C := rfl
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Notation 1.1" (partial := component) "仮定：小安定冪等完備圏を対象とする（原典と一致）。結論：Cat^perf の模型はある。任意の環スペクトル上の RMod とそのコンパクト対象・Ind の同定は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.perfectStableInfinity

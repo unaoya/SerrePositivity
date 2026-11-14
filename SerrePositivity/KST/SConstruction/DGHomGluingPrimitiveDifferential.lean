@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingActions
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.HomComplex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMinusOneCochainBoundary
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.HomSpaces.HomComplexes.Models.HomComplex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.ComplexHomotopies.ComplexMinusOneCochainBoundary
 
 /-! # 元の gluing 第三成分の全次数微分
 概要：mapping cocone の元の境界式を、同じ入力元の斉次等式に戻す。

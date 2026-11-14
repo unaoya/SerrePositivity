@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.StandardDoldKanZeroRawEvaluation
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorAugmentationRawIdentity
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedClosedStandardConstant
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedClosedStandardConstant
 
 /-!
 # 同じ正規化 augmentation と標準閉恒等辺の Γ 零次数像の一致

@@ -3,7 +3,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveDerivedComparis
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementParameterEquivalence
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDerivedPinchedRoofFamily
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedEndpointFamilyArrow
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.PinchedEndpointFamilyArrow
 /-!
 概要：元の K-projective 複体上の全要素屋根は実 D(R) の弱な pinched 族。
 方針：既存の充満忠実な導来源と全要素パラメータの反転性を合成する。

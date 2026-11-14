@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeSquare
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellResolvedGraphProjective
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHomTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.CellAttachments.DGCellResolvedGraphProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGStrictNatTransNerveHomTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransTransport
 
 /-!
 概要：保存済み graph 比較を同じ実 Perf 関手間の native 全関手射として保持する。

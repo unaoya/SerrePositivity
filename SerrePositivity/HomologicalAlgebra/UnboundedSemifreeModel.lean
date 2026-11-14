@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeResolution
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeResolution
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeBaseChange
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-!

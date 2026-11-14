@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Algebra.Subalgebra.Pi
 public import Mathlib.RingTheory.Finiteness.Cardinality
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit
@@ -294,3 +296,8 @@ theorem trivialCoverComparison_isModuleComplete (p : ℕ) [Fact p.Prime]
   exact complete_of_surjective_injective (p : R) q hq z hz hfree hm
 
 end SerrePositivity.BhattScholze.Almost
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Thm 10.9" (partial := component) "主イデアルへの帰着、分裂比較環、整閉包の完備化（BS-W13）。組み立ては A6・A7 待ち ／ 11-10 更新 ／ 11-12：integralClosureCompletion_isModuleComplete は Thm 10.11 の部品なので列から外した"] _root_.SerrePositivity.BhattScholze.Almost.trivialCoverComparison_localization_iso

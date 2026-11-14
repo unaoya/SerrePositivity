@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteKanReplacementCompact
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratorEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallSubcomplexFamilyColimit
@@ -121,3 +123,8 @@ lemma exists_finiteSpacePresentation (K : _root_.SerrePositivity.InfinityCategor
     (eqToIso (congrArg HomotopyCategory.mk hv) ≪≫ e.symm)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSpacePresentation
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.1.6" (partial := component) "仮定：compact な小 Kan 空間 X（HTT と一致）。結論：元の X は有限部分複体の Kan 置換の一つの項のホモトピー圏内 retract（有限単体集合を空間として読む最初の結論と一致）。有限部分複体の元の包含から作った余錐に同じ retract 判定を適用する。単連結の場合の有限模型との同値や Wall の障害による判定は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSpacePresentation.exists_finiteSpacePresentation

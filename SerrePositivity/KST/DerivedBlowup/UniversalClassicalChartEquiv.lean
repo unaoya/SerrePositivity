@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.UniversalClassicalCenter
 
 /-!
@@ -125,3 +127,13 @@ def universalClassicalChartEquiv (i : I) : UniversalClassicalChart i ≃+* Unive
     (universalClassicalToChart_comp_inverse i) (universalChartToClassical_comp_inverse i)
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def 3.1" (partial := component) "仮定：多項式基底の普遍チャートと有限列（Lean が強い）。結論：チャート上の古典的商表示と Koszul の底変換の同型。全導来スキームの正方形は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv
+attribute [cite KST "Eq (1.7)" (partial := component) "仮定：有限列の普遍チャート、または有限生成中心の正の冪の通常ブローアップ（Lean が強い）。結論：局所チャート同定と通常の冪比較を供給するが、原典の普遍正則列の厚化付きの全塔は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv
+attribute [cite KST "Eq (3.1)" (partial := component) "仮定：多項式基底の普遍チャートと有限列（Lean が強い）。結論：チャート上の古典的商表示と Koszul の底変換の同型。全導来スキームの正方形は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv
+attribute [cite KST "Lemma 3.5" (partial := component) "仮定：指定普遍チャートとその底変換（Lean が強い）。結論：例外因子の dg チャートの比較と古典チャートの表示。正則列を保つ射全般の通常ブローアップと全厚化の導来 Cartesian 性は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv
+attribute [cite LT "Eq (22)" (partial := component) "仮定：指定普遍多項式模型のチャートと係数環の有限列（Lean が強い）。結論：局所的な通常チャートと導来 Koszul の底変換を比較。全 qcqs スキームのブローアップ四角形は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv
+attribute [cite LT "Eq (23)" (partial := component) "仮定：指定普遍多項式模型のチャートと係数環の有限列（Lean が強い）。結論：局所的な通常チャートと導来 Koszul の底変換を比較。全 qcqs スキームのブローアップ四角形は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.universalClassicalChartEquiv

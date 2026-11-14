@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OverIso
+public import SerrePositivity.InfinityCategories.HTT.Section1_2_9.OverIso
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 
 /-!
@@ -28,9 +28,9 @@ variable (L : K ⥤ C) (c : C)
 def nerveLeftKanShapeMap :
     nerve (CostructuredArrow L c) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanShape (nerveMap L) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c) :=
   pullback.lift (nerveMap (CostructuredArrow.proj L c))
-    (nerveMap (CostructuredArrow.toOver L c) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso c).hom) (by
+    (nerveMap (CostructuredArrow.toOver L c) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso c).hom) (by
       rw [Category.assoc]
-      erw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection]
+      erw [_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso_projection]
       rfl)
 
 /-- 概要：左比較射は元の添字 K への射影を保つ。
@@ -46,7 +46,7 @@ lemma nerveLeftKanShapeMap_projection : nerveLeftKanShapeMap L c ≫
 規約：Over と native な slice の同型を使う。
 使われ方：局所余錐の辺の照合。 -/
 lemma nerveLeftKanShapeMap_over : nerveLeftKanShapeMap L c ≫ pullback.snd _ _ =
-    nerveMap (CostructuredArrow.toOver L c) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso c).hom :=
+    nerveMap (CostructuredArrow.toOver L c) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso c).hom :=
   pullback.lift_snd _ _ _
 
 /-- 概要：左比較射の局所図式は通常の comma 上の制限の nerve に等しい。

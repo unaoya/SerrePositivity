@@ -1,0 +1,277 @@
+module
+
+public import SerrePositivity.KST.Descent.TransferBaseChangeComposite
+public import SerrePositivity.Archive.KST.DescentConditional.TransferRankChartBaseChangeDescent
+public import SerrePositivity.Archive.KST.DescentConditional.TransferRankRefinementDescent
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechFunctorComparison
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechPresheafComparison
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechOver
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechOverRanks
+public import SerrePositivity.KST.Descent.FiniteZariskiBaseChange
+public import SerrePositivity.Archive.KST.DescentConditional.OverRankCharts
+public import SerrePositivity.Archive.KST.DescentConditional.TransferWeakCechDescent
+public import SerrePositivity.Archive.KST.DescentConditional.TransferRankChartDescent
+public import SerrePositivity.Archive.KST.DescentConditional.CechProductRestriction
+public import SerrePositivity.Archive.KST.DescentConditional.DisjointFamilyCechWeak
+public import SerrePositivity.KST.Descent.FiniteCoproductZariskiCover
+public import SerrePositivity.Archive.KST.DescentConditional.ZariskiCoproductDescent
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechMapLocality
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechLocalRanks
+public import SerrePositivity.Archive.KST.DescentConditional.FiniteFreeChartFamilyRanks
+public import SerrePositivity.Archive.KST.DescentConditional.DisjointFamilyCechGeometry
+public import SerrePositivity.Archive.KST.DescentConditional.FamilyCechDiagonalComparison
+public import SerrePositivity.KST.Descent.FiniteProductTensor
+public import SerrePositivity.Archive.KST.DescentConditional.CechFiniteProducts
+public import SerrePositivity.Archive.KST.DescentConditional.TerminalCechDescent
+public import SerrePositivity.Archive.KST.DescentConditional.EmptyZariskiDescent
+public import SerrePositivity.Archive.KST.DescentConditional.ConstantCechDescent
+public import SerrePositivity.Archive.KST.DescentConditional.FiniteFamilyCech
+public import SerrePositivity.Archive.KST.DescentConditional.FiniteFamilyCechFunctor
+public import SerrePositivity.Archive.KST.DescentConditional.ZariskiCechLaw
+public import SerrePositivity.Archive.KST.DescentConditional.CechLocalRanks
+public import SerrePositivity.Archive.KST.DescentConditional.PresheafWeakTransfer
+public import SerrePositivity.KST.Descent.FiniteZariskiCover
+public import SerrePositivity.Archive.KST.DescentConditional.FiniteFreeChartLocalRanks
+public import SerrePositivity.KST.Descent.LocalRankIsomorphisms
+public import SerrePositivity.KST.Descent.FiniteTypeCoproducts
+public import SerrePositivity.KST.Descent.FiniteCoproductPullbacks
+public import SerrePositivity.Archive.KST.DescentConditional.CechBaseLocality
+public import SerrePositivity.Archive.KST.DescentConditional.CechMapLocality
+public import SerrePositivity.Archive.KST.DescentConditional.CechWeakTransfer
+public import SerrePositivity.KST.Descent.TransferBaseChangeGeometry
+public import SerrePositivity.KST.Descent.TransferBaseChange
+public import SerrePositivity.Archive.KST.DescentConditional.TransferBaseChangeDescent
+public import SerrePositivity.Archive.KST.DescentConditional.MixedCechSpaceSwap
+public import SerrePositivity.Archive.KST.DescentConditional.CechRefinementDescent
+public import SerrePositivity.Archive.KST.DescentConditional.DoubleCechDescentReflection
+public import SerrePositivity.Archive.KST.DescentConditional.MixedCechSpaces
+public import SerrePositivity.Archive.KST.DescentConditional.CechBaseChangeSpaces
+public import SerrePositivity.Archive.KST.DescentConditional.TransferCechDescent
+public import SerrePositivity.Archive.KST.DescentConditional.CechReindexWeights
+public import SerrePositivity.Archive.KST.DescentConditional.CechReindexAugmentation
+public import SerrePositivity.Archive.KST.DescentConditional.CechReindexDescent
+public import SerrePositivity.Archive.KST.DescentConditional.SplitCechDescent
+public import SerrePositivity.Archive.KST.DescentConditional.InitialCechWeights
+public import SerrePositivity.Archive.KST.DescentConditional.InitialCechDescent
+public import SerrePositivity.Archive.KST.DescentConditional.SplitCechSpaceExtension
+public import SerrePositivity.Archive.KST.DescentConditional.SplitCechExtension
+public import SerrePositivity.Archive.KST.DescentConditional.BottomSimplex
+public import SerrePositivity.Archive.KST.DescentConditional.CechReindexLocalization
+public import SerrePositivity.Archive.KST.DescentConditional.CechAdjointReindex
+public import SerrePositivity.Archive.KST.DescentConditional.CechDescentRetract
+public import SerrePositivity.Archive.KST.DescentConditional.PresheafCechSpaces
+public import SerrePositivity.KST.Descent.Axioms
+public import SerrePositivity.KST.Descent.Transfer
+public import SerrePositivity.KST.Descent.RationalFixedPoints
+public import SerrePositivity.KST.Descent.PiComparison
+public import SerrePositivity.KST.Descent.DiagramTransfer
+public import SerrePositivity.KST.Descent.PresheafBaseChange
+public import SerrePositivity.KST.Descent.PresheafAugmentation
+public import SerrePositivity.KST.Descent.CechTransferRetract
+public import SerrePositivity.KST.Descent.InvariantExactness
+public import SerrePositivity.KST.Descent.PresheafAction
+public import SerrePositivity.KST.Descent.InvariantsHomology
+public import SerrePositivity.KST.Descent.SplitCech
+public import SerrePositivity.KST.Descent.NilpotentThickening
+public import SerrePositivity.KST.Descent.SchemeFacts
+public import SerrePositivity.KST.Descent.ClosedDimension
+public import SerrePositivity.KST.Descent.BlowupGeometry
+public import SerrePositivity.KST.Descent.FiniteFlatStrictTransform
+public import SerrePositivity.KST.Descent.MayerVietoris
+public import SerrePositivity.KST.Descent.SquareSequence
+public import SerrePositivity.KST.Descent.CoincidenceLocus
+public import SerrePositivity.KST.Descent.EquivariantMayerVietoris
+public import SerrePositivity.KST.Descent.PermutationRepresentation
+public import SerrePositivity.KST.Descent.InvariantProducts
+public import SerrePositivity.KST.Descent.SplitMayerVietoris
+public import SerrePositivity.KST.Descent.Theorem31
+public import SerrePositivity.KST.Descent.ReducedClosedSubscheme
+public import SerrePositivity.KST.Descent.CoincidenceCenter
+public import SerrePositivity.KST.Descent.ClosedCenterSquare
+public import SerrePositivity.KST.Descent.AffineReduction
+public import SerrePositivity.KST.Descent.ReductionFunctor
+public import SerrePositivity.KST.Descent.NoetherianReduction
+public import SerrePositivity.KST.Descent.FiniteTypeReduction
+public import SerrePositivity.KST.Descent.DescentNaturality
+public import SerrePositivity.KST.Descent.ReductionDescent
+public import SerrePositivity.KST.Descent.FiniteCoproduct
+public import SerrePositivity.KST.Descent.SectionOrbit
+public import SerrePositivity.KST.Descent.ClosedCoproduct
+public import SerrePositivity.KST.Descent.SectionCoincidence
+public import SerrePositivity.KST.Descent.CoproductRestriction
+public import SerrePositivity.KST.Descent.ClosedImmersionSquare
+public import SerrePositivity.KST.Descent.OrbitGeometry
+public import SerrePositivity.KST.Descent.OrbitAction
+public import SerrePositivity.KST.Descent.PullbackAction
+public import SerrePositivity.KST.Descent.FiniteTypeAction
+public import SerrePositivity.KST.Descent.ClosedPullbackAction
+public import SerrePositivity.KST.Descent.SquareAction
+public import SerrePositivity.KST.Descent.EquivariantOrbitGeometry
+public import SerrePositivity.KST.Descent.SquareSequenceAction
+public import SerrePositivity.KST.Descent.SquareMapSequence
+public import SerrePositivity.KST.Descent.BlowupSequenceData
+public import SerrePositivity.KST.Descent.IdentityCenterSquare
+public import SerrePositivity.KST.Descent.EquivariantSquareComparison
+public import SerrePositivity.KST.Descent.OrbitComparisonCube
+public import SerrePositivity.KST.Descent.OrbitCriterion
+public import SerrePositivity.KST.Descent.CopyComparison
+public import SerrePositivity.KST.Descent.OrbitCopies
+public import SerrePositivity.KST.Descent.CopyEvaluationLimit
+public import SerrePositivity.KST.Descent.OrbitCoproduct
+public import SerrePositivity.KST.Descent.FixedPullbackComparison
+public import SerrePositivity.KST.Descent.OrbitProductComparison
+public import SerrePositivity.KST.Descent.FiniteTypeUniversal
+public import SerrePositivity.KST.Descent.ExceptionalCopies
+public import SerrePositivity.KST.Descent.ExceptionalCopiesAction
+public import SerrePositivity.KST.Descent.OrbitDescentStep
+public import SerrePositivity.KST.Descent.NoetherianThickening
+public import SerrePositivity.KST.Descent.ThickeningDescent
+public import SerrePositivity.KST.Descent.ReducedSourceDescent
+public import SerrePositivity.KST.Descent.TranslatedSections
+public import SerrePositivity.KST.Descent.CommonGeometricPoints
+public import SerrePositivity.KST.Descent.GeometricFiberTransitivity
+public import SerrePositivity.KST.Descent.SpecAction
+public import SerrePositivity.KST.Descent.AffineOrbitCovering
+public import SerrePositivity.KST.Descent.TensorBaseChangeAction
+public import SerrePositivity.KST.Descent.GeometricBaseChange
+public import SerrePositivity.KST.Descent.ClosedCenterTransitivity
+public import SerrePositivity.KST.Descent.OrbitCenterInduction
+public import SerrePositivity.KST.Descent.ClosedCoverGeometry
+public import SerrePositivity.KST.Descent.ClosedCoverPullback
+public import SerrePositivity.KST.Descent.ClosedCoverAction
+public import SerrePositivity.KST.Descent.ClosedCoverDescent
+public import SerrePositivity.KST.Descent.IrreducibleComponents
+public import SerrePositivity.KST.Descent.DominatingComponent
+public import SerrePositivity.KST.Descent.ComponentFlatRefinement
+public import SerrePositivity.KST.Descent.GenericFiniteFlattening
+public import SerrePositivity.KST.Descent.AlgebraPureTransform
+public import SerrePositivity.KST.Descent.AffinePureTransform
+public import SerrePositivity.KST.Descent.AffineOpenPureTransform
+public import SerrePositivity.KST.Descent.GenericAffineFlattening
+public import SerrePositivity.KST.Descent.ImageOpenBaseChange
+public import SerrePositivity.KST.Descent.StrictTransformOpenCharts
+public import SerrePositivity.KST.Descent.BoundaryBlowupDensity
+public import SerrePositivity.KST.Descent.BoundaryFlatRefinement
+public import SerrePositivity.KST.Descent.StrictTransformTensorChart
+public import SerrePositivity.KST.Descent.OpenImageAmbientIso
+public import SerrePositivity.KST.Descent.StrictTransformTensorImage
+public import SerrePositivity.KST.Descent.StrictTransformChartModel
+public import SerrePositivity.KST.Descent.AffineTensorChartModel
+public import SerrePositivity.KST.Descent.AffinePresentation
+public import SerrePositivity.KST.Descent.AffineBlowupFlatness
+public import SerrePositivity.KST.Descent.AffineFiniteFlattening
+public import SerrePositivity.KST.Descent.AffineFlatRefinement
+public import SerrePositivity.KST.Descent.FiniteFlatRankCover
+public import SerrePositivity.KST.Descent.AffineBlowupRank
+public import SerrePositivity.KST.Descent.FiniteFlatTrivialization
+public import SerrePositivity.KST.Descent.FiniteFlatFreeCover
+public import SerrePositivity.KST.Descent.AffineFiniteFlatPresentation
+public import SerrePositivity.KST.Descent.FiniteFlatFreeCharts
+public import SerrePositivity.KST.Descent.FiniteFlatFiniteFreeCover
+public import SerrePositivity.KST.Descent.FiniteTypeFreeCharts
+public import SerrePositivity.KST.Descent.FreeChartBaseChange
+public import SerrePositivity.KST.Descent.RationalLift
+public import SerrePositivity.KST.Descent.IntegralComparison
+public import SerrePositivity.KST.Descent.MixedCech
+public import SerrePositivity.KST.Descent.MixedCechNaturality
+public import SerrePositivity.KST.Descent.MixedCechRefinement
+public import SerrePositivity.KST.Descent.FlatteningMixedCech
+public import SerrePositivity.KST.Descent.RestrictionBaseChange
+public import SerrePositivity.KST.Descent.BlowupBaseChange
+public import SerrePositivity.KST.Descent.BlowupBaseChangeCube
+public import SerrePositivity.KST.Descent.FiniteTypeBaseChangeFunctor
+public import SerrePositivity.KST.Descent.FiniteTypeBaseChangeComparison
+public import SerrePositivity.KST.Descent.BlowupBaseChangeFunctor
+public import SerrePositivity.KST.Descent.FiniteTypeMixedCech
+public import SerrePositivity.KST.Descent.FiniteTypeCechColumn
+public import SerrePositivity.KST.Descent.BlowupCechColumns
+public import SerrePositivity.KST.Descent.BlowupCechAugmented
+public import SerrePositivity.KST.Descent.ComponentSplit
+public import SerrePositivity.KST.Descent.ComponentRemainderCover
+public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
+public import SerrePositivity.KST.Descent.ClosedCoverIntersectionGeometry
+public import SerrePositivity.KST.Descent.BasicDescent
+public import SerrePositivity.KST.Descent.IntegralDescentStep
+public import SerrePositivity.KST.Descent.ComponentCount
+public import SerrePositivity.KST.Descent.SeparatedObjects
+public import SerrePositivity.KST.Descent.ReducedDescentStep
+public import SerrePositivity.KST.Descent.SectionedDescent
+public import SerrePositivity.KST.Descent.AffineSplitDescent
+public import SerrePositivity.KST.Descent.AffineBaseChangeDescent
+public import SerrePositivity.KST.Descent.AffineTensorSquare
+public import SerrePositivity.KST.Descent.FiniteTypeAffineTensorSquare
+public import SerrePositivity.KST.Descent.FiniteTypeLimits
+public import SerrePositivity.KST.Descent.FiniteTypeStrictTransform
+public import SerrePositivity.KST.Descent.FiniteTypeCech
+public import SerrePositivity.KST.Descent.EquivariantPullbackComparison
+public import SerrePositivity.KST.Descent.AffinePullbackDescent
+public import SerrePositivity.KST.Descent.FiniteTypeCechAction
+public import SerrePositivity.KST.Descent.FiniteTypeLimitPreservation
+public import SerrePositivity.KST.Descent.FiniteTypeCechGeometry
+public import SerrePositivity.KST.Descent.AffineFiniteDimension
+public import SerrePositivity.KST.Descent.CechFiniteDimension
+public import SerrePositivity.KST.Descent.SchemeActionTransport
+public import SerrePositivity.KST.Descent.AffineSchemeBaseChange
+public import SerrePositivity.KST.Descent.FiniteTypeAffineBaseChange
+public import SerrePositivity.KST.Descent.AffineCechDescent
+public import SerrePositivity.KST.Descent.CechPullback
+public import SerrePositivity.KST.Descent.CechBaseChange
+public import SerrePositivity.KST.Descent.CechBaseChangeOver
+public import SerrePositivity.KST.Descent.ObservedTransfer
+public import SerrePositivity.KST.Descent.DoubleCechGeometry
+public import SerrePositivity.KST.Descent.DoubleCechNaturality
+public import SerrePositivity.KST.Descent.CechHomotopyIndex
+public import SerrePositivity.KST.Descent.CechRefinementHomotopy
+public import SerrePositivity.KST.Descent.CechRefinementEquivalence
+
+public import SerrePositivity.KST.Descent.GeneralSchemeBaseChange
+public import SerrePositivity.KST.Descent.FiniteTypeGeneralBaseChange
+public import SerrePositivity.KST.Descent.GeneralFiniteDimension
+
+public import SerrePositivity.KST.Descent.GeneralSplitBaseChangeDescent
+public import SerrePositivity.KST.Descent.BlowupSeparated
+
+public import SerrePositivity.KST.Descent.CentralSupportCriterion
+public import SerrePositivity.KST.Descent.SupportAfterInversion
+public import SerrePositivity.KST.Descent.PerfectSupportInversion
+
+public import SerrePositivity.KST.Descent.CentralKernelIdentification
+public import SerrePositivity.KST.Descent.CentralKernelNaturality
+
+public import SerrePositivity.KST.Descent.WeightedCechFubini
+public import SerrePositivity.Archive.KST.DescentConditional.WeightedCechCofibrancy
+public import SerrePositivity.Archive.KST.DescentConditional.WeightedCechAugmentation
+
+public import SerrePositivity.Archive.KST.DescentConditional.WeightedCechDerivedComparison
+public import SerrePositivity.Archive.KST.DescentConditional.WeightedCechDerivedFubini
+
+public import SerrePositivity.Archive.KST.DescentConditional.CechFibrantDiagrams
+public import SerrePositivity.Archive.KST.DescentConditional.IteratedCechHomotopyCones
+public import SerrePositivity.Archive.KST.DescentConditional.DerivedCechFubini
+
+public import SerrePositivity.KST.Descent.WeightedCechConeCompatibility
+public import SerrePositivity.Archive.KST.DescentConditional.WeightedCechDerivedConeCompatibility
+
+public import SerrePositivity.Archive.KST.DescentConditional.AugmentedCechSpaces
+public import SerrePositivity.Archive.KST.DescentConditional.AugmentedCechWeightChange
+
+public import SerrePositivity.Archive.KST.DescentConditional.CechWeightAugmentationFubini
+
+public import SerrePositivity.Archive.KST.DescentConditional.AugmentedDerivedCechFubini
+
+public import SerrePositivity.Archive.KST.DescentConditional.AugmentedCechRows
+
+public import SerrePositivity.Archive.KST.DescentConditional.DoubleAugmentedCechSpaces
+public import SerrePositivity.Archive.KST.DescentConditional.CechDescentComparison
+public import SerrePositivity.Archive.KST.DescentConditional.DoubleCechDescent
+
+/-!
+## 概要
+§70–99 の模型圏に条件づけた結果を含む、従来の L8 補助結果の保存用集約。
+## 方針
+既存の全モジュールを変更せず保持する。主経路の集約とは分離する。
+## 規約
+正本 §13 決定 15。ここでの条件付き結果を主定理の完成には数えない。
+## 使われ方
+論文 補題 3.2・3.3 の比較用計算と、保存した結果の公理監査。
+-/

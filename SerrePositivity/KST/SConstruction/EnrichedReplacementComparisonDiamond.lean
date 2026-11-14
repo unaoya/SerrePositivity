@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.EnrichedReplacementEdgeFaces
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleDiamondComposition
 
 /-! # 保存した比較四面体から元の辺と復号辺を結ぶ実三角形対
 概要：元の豊穣比較辺と保存した合成面の復号辺を、同じ対角辺へ結ぶ実三角形対にする。

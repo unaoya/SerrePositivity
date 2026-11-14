@@ -22,18 +22,18 @@ open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 
 /-- 左標準軸の subobject は恒等完全関手。 -/
-lemma cofiberAxisLeft_subobject (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) :
+lemma cofiberAxisLeft_subobject (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier) :
     zeroCofiberStableFunctor X z false ≫ cofiberStableSubobject X = 𝟙 X :=
   Subtype.ext (zeroCofiberStableFunctor_subobject X z false)
 
 /-- 左標準軸の quotient は同じ指定零対象への定値完全関手。 -/
-lemma cofiberAxisLeft_quotient (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) :
+lemma cofiberAxisLeft_quotient (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier) :
     zeroCofiberStableFunctor X z false ≫ cofiberStableQuotient X = stableConstantZero X z := by
   apply Subtype.ext
   exact zeroCofiberFunctor_quotient z false
 
 /-- 両方の標準軸の middle は恒等完全関手。 -/
-lemma cofiberAxes_middle (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) (b : Bool) :
+lemma cofiberAxes_middle (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier) (b : Bool) :
     zeroCofiberStableFunctor X z b ≫ cofiberStableMiddle X = 𝟙 X := by
   apply Subtype.ext
   change zeroCofiberFunctor z b ≫
@@ -43,7 +43,7 @@ lemma cofiberAxes_middle (X : StableModel.{u}) (z : _root_.SerrePositivity.Infin
   cases b <;> rfl
 
 /-- 同じ零関手の一重境界商 Kan 模型への作用は正次数群上で零。 -/
-lemma singleBoundaryKanGroup_constantZero (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier)
+lemma singleBoundaryKanGroup_constantZero (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex X.carrier)
     (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
       ((boundaryKanRealizationFunctor 0).obj X).basepoint) :
     pointedGroupMap n ((boundaryKanRealizationFunctor 0).map (stableConstantZero X z)) a = 1 := by

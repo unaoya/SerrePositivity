@@ -6,8 +6,8 @@ public import Mathlib.CategoryTheory.Functor.OfSequence
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import Mathlib.Algebra.Category.ModuleCat.FilteredColimits
 public import Mathlib.CategoryTheory.Limits.Types.Filtered
-public import SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.BhattScholze.Andre.Perfection.PerfectDeltaResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource
 public import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
 public import SerrePositivity.HomologicalAlgebra.TorDimensionShift
@@ -38,7 +38,7 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 一般の δ 代数で述べるが、Frobenius 段の判定が `Envelope` の根添加源を経由するので Andre に置く（§3 の一般論として切り出すのは今後の候補）。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/MonicCandidate`、`Perfection/PerfectPrismMonic`、`PowerRootEnvelope/PerfectionFaithful`、`RootEnvelope/PerfectPrism`、`Variants/Auxiliary`、`Variants/RootedExtension`。
@@ -46,7 +46,7 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 universe u
 
-/-! ## δ環射から実Frobenius環段の正確な係数加群へ（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraFrobeniusStages.lean） -/
+/-! ## δ環射から実Frobenius環段の正確な係数加群へ -/
 
 @[expose] public noncomputable section DeltaAlgebraFrobeniusStages
 
@@ -134,7 +134,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraFrobeniusStages
 
-/-! ## 実Frobenius環段から既存δ完全化への正確なA線形余錐（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionCocone.lean） -/
+/-! ## 実Frobenius環段から既存δ完全化への正確なA線形余錐 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionCocone
 
@@ -282,7 +282,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionCocone
 
-/-! ## 実Frobenius係数剰余へのprism冪剰余判定の接続（旧 Andre/RootedExtension/PerfectDeltaPrismaticDerivedFlat.lean） -/
+/-! ## 実Frobenius係数剰余へのprism冪剰余判定の接続 -/
 
 @[expose] public noncomputable section PerfectDeltaPrismaticDerivedFlat
 
@@ -369,7 +369,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaPrismaticDerivedFlat
 
-/-! ## 実Frobeniusねじれ段の標準prism還元の次数消滅と忠実平坦性（旧 Andre/RootedExtension/PerfectDeltaFrobeniusStageFlat.lean） -/
+/-! ## 実Frobeniusねじれ段の標準prism還元の次数消滅と忠実平坦性 -/
 
 @[expose] public noncomputable section PerfectDeltaFrobeniusStageFlat
 
@@ -466,7 +466,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaFrobeniusStageFlat
 
-/-! ## 正確な係数作用を持つ実δ環段の標準還元判定（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraFrobeniusStageFlat.lean） -/
+/-! ## 正確な係数作用を持つ実δ環段の標準還元判定 -/
 
 @[expose] public noncomputable section DeltaAlgebraFrobeniusStageFlat
 
@@ -541,7 +541,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraFrobeniusStageFlat
 
-/-! ## 実δ完全化へのG7の適用（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionTor.lean） -/
+/-! ## 実δ完全化へのG7の適用 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionTor
 
@@ -601,7 +601,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionTor
 
-/-! ## 実δ完全化の標準剰余テンソルの平坦性（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionResidueFlat.lean） -/
+/-! ## 実δ完全化の標準剰余テンソルの平坦性 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionResidueFlat
 
@@ -669,7 +669,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionResidueFlat
 
-/-! ## 実Frobenius各段の標準剰余の単位と忠実性（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionResidueFaithful.lean） -/
+/-! ## 実Frobenius各段の標準剰余の単位と忠実性 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionResidueFaithful
 
@@ -808,7 +808,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionResidueFaithful
 
-/-! ## 実δ完全化の標準還元の次数零比較（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionResidue.lean） -/
+/-! ## 実δ完全化の標準還元の次数零比較 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionResidue
 
@@ -871,7 +871,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionResidue
 
-/-! ## 実δ完全化の逐次導来完備化の標準還元（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionCompletionResidue.lean） -/
+/-! ## 実δ完全化の逐次導来完備化の標準還元 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionCompletionResidue
 
@@ -951,7 +951,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionCompletionResidue
 
-/-! ## 完全prism上の実δ完全化逐次対象の完備性と還元入力（旧 Andre/RootedExtension/DeltaAlgebra/PerfectPrismDeltaAlgebraCompletionInputs.lean） -/
+/-! ## 完全prism上の実δ完全化逐次対象の完備性と還元入力 -/
 
 @[expose] public noncomputable section PerfectPrismDeltaAlgebraCompletionInputs
 
@@ -1033,7 +1033,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismDeltaAlgebraCompletionInputs
 
-/-! ## 実δ完全化逐次対象の生成元冪商のp導来完備性（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionPowerComplete.lean） -/
+/-! ## 実δ完全化逐次対象の生成元冪商のp導来完備性 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionPowerComplete
 
@@ -1093,7 +1093,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionPowerComplete
 
-/-! ## 実δ完全化逐次対象の生成元冪商上のG9入力（旧 Andre/RootedExtension/DeltaAlgebra/PerfectPrismDeltaAlgebraPowerInputs.lean） -/
+/-! ## 実δ完全化逐次対象の生成元冪商上のG9入力 -/
 
 @[expose] public noncomputable section PerfectPrismDeltaAlgebraPowerInputs
 
@@ -1182,7 +1182,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismDeltaAlgebraPowerInputs
 
-/-! ## 完全prism上の実δ完全化逐次対象の離散性（旧 Andre/RootedExtension/DeltaAlgebra/PerfectPrismDeltaAlgebraDiscrete.lean） -/
+/-! ## 完全prism上の実δ完全化逐次対象の離散性 -/
 
 @[expose] public noncomputable section PerfectPrismDeltaAlgebraDiscrete
 
@@ -1279,7 +1279,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismDeltaAlgebraDiscrete
 
-/-! ## 実δ完全化の逐次完備化と正確な係数制限の比較（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionCompletionRestriction.lean） -/
+/-! ## 実δ完全化の逐次完備化と正確な係数制限の比較 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionCompletionRestriction
 
@@ -1367,7 +1367,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionCompletionRestriction
 
-/-! ## 実δ完全化逐次対象から直接PD完備化H0への標準一意延長（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionPDCompletionMap.lean） -/
+/-! ## 実δ完全化逐次対象から直接PD完備化H0への標準一意延長 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionPDCompletionMap
 
@@ -1509,7 +1509,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionPDCompletionMap
 
-/-! ## 実δ完全化逐次H0から正確なPD係数加群への比較（旧 Andre/RootedExtension/DeltaAlgebra/DeltaAlgebraPerfectionPDH0Comparison.lean） -/
+/-! ## 実δ完全化逐次H0から正確なPD係数加群への比較 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionPDH0Comparison
 
@@ -1575,7 +1575,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionPDH0Comparison
 
-/-! ## 実δ完全化後のPD環の完全忠実平坦性（旧 Andre/RootedExtension/DeltaAlgebra/PerfectPrismDeltaAlgebraPDCompletelyFlat.lean） -/
+/-! ## 実δ完全化後のPD環の完全忠実平坦性 -/
 
 @[expose] public noncomputable section PerfectPrismDeltaAlgebraPDCompletelyFlat
 

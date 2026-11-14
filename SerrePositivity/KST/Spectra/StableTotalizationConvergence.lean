@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.StableTotalizationMilnorExactness
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOneMittagLeffler
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TowerLimOneMittagLeffler
 
 /-!
 概要：BF 整数次数の Milnor 比較の全単射性と lim¹ 消滅、Mittag–Leffler による収束。

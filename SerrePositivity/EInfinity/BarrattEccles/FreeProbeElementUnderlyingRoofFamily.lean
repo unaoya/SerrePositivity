@@ -24,7 +24,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 方針：既存の定値端点同型で元の屋根を輸送する。
 規約：元の全屋根を保持。使われ方：標準単位の全族三角形。 -/
 def freeProbeElementUnderlyingRoofFamily : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantFunctorHom
-    (nerve (freeProbeElementIndex A X B)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    (nerve (freeProbeElementIndex A X B)) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
     ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((freeProbeFunctor A).obj X).carrier))
     ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.carrier)) :=

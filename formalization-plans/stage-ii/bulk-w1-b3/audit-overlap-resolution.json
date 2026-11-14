@@ -1,0 +1,61 @@
+{
+  "path": "scripts/audit_derived_infinity.lean",
+  "conflict_groups": 9,
+  "rows": [
+    {
+      "left_sha256": "134ac86331eb7df2b16410f8bb308aa28dbe9ad344ead44d81c0052e3067172f",
+      "right_sha256": "bbcb111829ddbfeebaf01a7a40155d2b4fb6a44098a7216b728360b04b15f720",
+      "lines": 5,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "682d39bdacf63ee4f3e0deff44c6aa36df70c0c41455bf89c97dcb286af3d762",
+      "right_sha256": "b9373f1cb5acd511dc38ce3e289b3d5d0851204868148fbdbf1325e90662815a",
+      "lines": 7,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "0a36ff845337699384f4384470e14f170cf882bdb5ab488645316704a90c150d",
+      "right_sha256": "0d33eddc23e705000c0f913a8520cc08e8e17f3fa8b60f1ec8522ea8c78bc5ca",
+      "lines": 5,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "7f370a856e0938af9c4ec9eba52b511830a7ae72b6ee52bad5893e96fe92b506",
+      "right_sha256": "2df6ea364d2b0f85ded55cbfd7c88be60bbd1d2604a2237bd35f8eef3afa472b",
+      "lines": 9,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "9182089cc87d0f3817d6ac02db3c0317bfd39d5ffc3c2d0e682f1f110a9f7310",
+      "right_sha256": "3a0ba8a3df61bb7e15cdada66cce594c526bd963e9ec783865c2cd09f967ec46",
+      "lines": 9,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "40245511b181edf76e43b266360480a79c9fa1a1c2f8479060312b02f0fc9e0d",
+      "right_sha256": "1f4b48e2909067a84e39c99e0079259b6ed39ff23a3fdf01011fc789a900a2c6",
+      "lines": 22,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "0612b44d23810662c374ece4a04ad5a30e999b7454032b2e35592e85c920e593",
+      "right_sha256": "388fa97576ed142aa5822e58a06c3442f937405114a38f8f582de5f9f7bf26ba",
+      "lines": 12,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "efa919db60351c3256bdb81c8cbffdf683289e25954f12569203aed601394330",
+      "right_sha256": "399e907cbdbe9adca5a36d74c455c7fa6051fcd127819cb00a5494b573fb7352",
+      "lines": 1,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    },
+    {
+      "left_sha256": "45346139a0f16d9c844ea8870c5e6ab9ca6ce928d0d77b51434388febef4f688",
+      "right_sha256": "4a024593ff29d3e45293a387912d81fa97776f6b850c3096ffeca0cb2b671143",
+      "lines": 1,
+      "policy": "same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs"
+    }
+  ],
+  "note": "Import union from the initial frozen-main/B2 merge is retained outside these nine blocks."
+}

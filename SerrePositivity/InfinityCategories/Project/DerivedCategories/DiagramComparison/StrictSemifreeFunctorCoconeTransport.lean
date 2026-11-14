@@ -32,7 +32,7 @@ variable (A : Type u) [CommRing A]
 def strictSemifreeReindexedRawDAJoinFamily :
     nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⊗
       join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
-        (Δ[0] : SSet.{u + 1}) ⟶ derivedInfinityCategory A :=
+        (Δ[0] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁ (strictSemifreeJoinShapeIso A).hom) ≫
     strictSemifreeRawDAJoinFamily A
 
@@ -41,14 +41,14 @@ def strictSemifreeRawFunctorCoconeMap :
     join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
       (Δ[0] : SSet.{u + 1}) ⟶
       (ihom (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).obj
-        (derivedInfinityCategory A) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   curry (strictSemifreeReindexedRawDAJoinFamily A)
 
 /-- U31の分割：指定strict全図式も同じ標的関手圏へ入れる。 -/
 def strictSemifreeStrictFunctorDiagram :
     (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ) ⟶
       (ihom (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).obj
-        (derivedInfinityCategory A) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   curry (strictSemifreeEvaluation A SimplexCategoryᵒᵖ)
 
 /-- U31の同じ底の比較を関手圏へcurryしたもの。 -/
@@ -65,13 +65,13 @@ lemma exists_strictSemifreeTransportedFunctorCocone :
     ∃ g : join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
         (Δ[0] : SSet.{u + 1}) ⟶
         (ihom (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).obj
-          (derivedInfinityCategory A),
+          (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A),
       joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫ g =
         strictSemifreeStrictFunctorDiagram A ∧
       Nonempty (FunctorIso g (strictSemifreeRawFunctorCoconeMap A)) := by
   let K := (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)
   let X := (ihom (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).obj
-    (derivedInfinityCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
   let F : join K (Δ[0] : SSet.{u + 1}) ⟶ X := strictSemifreeRawFunctorCoconeMap A
   let q : K ⟶ X := strictSemifreeStrictFunctorDiagram A
   let p := coconeRestriction K X

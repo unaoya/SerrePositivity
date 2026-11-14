@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseHomotopyFaithful
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.UniverseHomotopyFaithful
 /-!
 概要：元の実頂点間のホモトピー圏 retract は任意の ULift 宇宙で同値な条件である。
 方針：公開済みのホモトピー圏の持ち上げ・降下関手へ両射と分裂式を送る。

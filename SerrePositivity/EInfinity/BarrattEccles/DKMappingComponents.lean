@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraMappingClasses
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ULiftRelativeLocalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanComponents
 
 /-!

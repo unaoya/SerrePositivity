@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ChosenColimitUnitSwap
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FlipUnitHomFormula
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ParameterUnitHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.UnitComparisons.ParameterUnitHom
 
 /-!
 概要：選んだ余極限単位の全 Hom 写像を普遍余錐の単位 Hom 写像へ移す。

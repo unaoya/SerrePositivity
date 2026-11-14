@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.NativeMappingVertexEdge
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.NativeTarget
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.DGSuspensionCoherentActionInput
 
 /-!
 概要：切替後の正本懸垂の native 商作用を、実入力射の端点固定辺と比較する。

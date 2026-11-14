@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDerivedForgetSource
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgLocalizationUniversal
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LocalizationExtension
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.LocalizationExtension
 
 /-!
 # 既存 CAlg_R から既存 D(R) への忘却 ∞ 関手
@@ -25,15 +25,15 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma cAlgForgetDerived_exists :
-    ∃ U : CAlg_R A ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A,
+    ∃ U : CAlg_R A ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A,
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource A ≫ U)
         (cofibrantAlgebraUnderlyingDerivedSource A)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource A)
     (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) (cAlgLocalizationSource_inverts A)
-    (cAlgLocalizationPrecomposition_isQCatEquivalence A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))
+    (cAlgLocalizationPrecomposition_isQCatEquivalence A (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
     (cofibrantAlgebraUnderlyingDerivedSource A) (cofibrantAlgebraUnderlyingDerivedSource_inverts A)
 
-def cAlgForgetDerived : CAlg_R A ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+def cAlgForgetDerived : CAlg_R A ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   Classical.choose (cAlgForgetDerived_exists A)
 
 def cAlgForgetDerived_sourceIso :

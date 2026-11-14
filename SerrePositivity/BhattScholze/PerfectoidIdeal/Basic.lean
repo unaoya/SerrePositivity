@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import Mathlib.RingTheory.FinitePresentation
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
@@ -163,3 +165,8 @@ def perfectoidIdealQuotientMap (g : R) :
 end SerrePositivity
 
 end PerfectoidIdealFunctorPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 1.13" (partial := special) "§10.1・Prop 10.2 の言い直し。本体は主イデアル (g) の J_perfd と Prop 10.2 の一部。有限生成 J の J-almost 基本は drafts/A8/AlmostConnectivity ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectoidIdeal_conormal_completion_isZero（序論が述べる核の自己テンソル同型から導く別の主張。Lemma 10.3 の応用として扱う。） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.perfectoidIdeal

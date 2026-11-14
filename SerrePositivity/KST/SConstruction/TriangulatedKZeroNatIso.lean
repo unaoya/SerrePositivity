@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.TriangulatedKZeroEquiv
 
 /-! # 三角圏 K₀ 比較の自然同型
@@ -76,3 +78,8 @@ def triangulatedKZeroPiZeroIso :
     exact h)
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Waldhausen "Thm §1.3" (partial := special) "仮定：安定準圏の実 K スペクトル（旧表の π₀K の安定準圏版）。結論：その π₀ とホモトピー三角圏の Grothendieck 群の自然同型（古典 wS• からの同定は別）。"] _root_.SerrePositivity.KST.SConstruction.triangulatedKZeroNatIso

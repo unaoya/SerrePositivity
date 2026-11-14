@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.OrdinalSimplexEdges
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.OrdinalSimplexEdges
 
 /-!
 概要：後ろ三頂点を同じ点に固定した元の三単体で、内辺が定値なら左辺と右辺の合成は外辺。

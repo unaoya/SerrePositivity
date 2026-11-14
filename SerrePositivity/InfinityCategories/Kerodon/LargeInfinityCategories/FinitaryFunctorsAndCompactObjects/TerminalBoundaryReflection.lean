@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeTerminalHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.RelativeTerminalHom
 
 /-!
 概要：相対終点境界充填を持つ元の二頂点の間では、元の射が辺の可逆性を反映する。

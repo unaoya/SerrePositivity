@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingHorn
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseHorns
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseHorns
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MappingPathNaturality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.MappingPathNaturality
 public import SerrePositivity.KST.Spectra.MappingPathSequence
 public import SerrePositivity.KST.Spectra.FiberOmegaSpectrum
 

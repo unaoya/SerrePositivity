@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNativeValue
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientThickLocalization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.ResolvedDGQuotientThickLocalization
 
 /-!
 概要：実 S 零化面と同じ thick 平坦核・cell gluing・resolved 商の native 列を固定する。
@@ -39,7 +39,7 @@ def dgOdotMilnorCellKernelCategory : _root_.SerrePositivity.InfinityCategories.H
 def dgOdotMilnorCellMiddleCategory : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u + 1} where
   obj := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (T)
   isQuasicategory := inferInstance
-  isStable := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (T)
+  isStable := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R (T)
 
 /-- 概要：同じ平坦核包含の完全射。
 方針：D の full 核包含の完全性を使用する。規約：元の包含そのもの。

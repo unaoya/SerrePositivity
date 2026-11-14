@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.Coslice
 
 /-!
@@ -144,3 +146,9 @@ lemma isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration {X Y : SSet.{
     isCocartesianEdge_of_relativeCosliceMap_trivialKanFibration e q⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.1.12" (partial := special) "仮定：弱可縮な添字の全辺を余デカルト辺に送る余錐（Lean が強い：添字が一点の場合に適用）。結論：相対余極限であることと、余錐の唯一の非退化辺が余デカルトであることが同値（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration
+attribute [cite HTT "4.3.1.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration

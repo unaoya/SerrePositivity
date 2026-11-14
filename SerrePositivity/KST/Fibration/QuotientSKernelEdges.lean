@@ -47,7 +47,7 @@ theorem quotientSKernelInfinitySquare_top :
 
 /-- 元の商核四角形の零角は、元の相対 S 核の実現の Ex∞ 値そのものである。 -/
 theorem quotientSKernelInfinitySquare_corner :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (quotientSKernelInfinitySquare i q) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (quotientSKernelInfinitySquare i q) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       (exInfinityClosedKanEnrichedFunctor.obj ⟨simplicialDiagonalFunctor.obj
         (relativeSimplicialSConstruction (i.hom ≫ q.hom))⟩) :=
   exInfinityCommSqInfinitySquare_corner (quotientSKernelRealizationSquare i q)

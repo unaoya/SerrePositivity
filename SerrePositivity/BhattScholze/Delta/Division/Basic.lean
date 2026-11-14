@@ -20,7 +20,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 この構成は BS 著者版 Proposition 3.13 の prismatic envelope と Proposition 7.2 の証明で使う。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Andre/Envelope/PDivision`、`Andre/Envelope/PDivisionSource`、`Andre/PowerRootEnvelope/DeltaDivisionResidue`、`Andre/PowerRootEnvelope/DeltaDivisionWitt`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Delta/DividedPower/PDivision`、`Delta/DividedPower/PDivisionCompletion`、`Delta/Division/Family`、`Delta/Division/Relations`、`Delta/Division/Residue`、`Semiperfectoid/PerfectPrismDivision`、`Semiperfectoid/PerfectPrismDivisionComparison`。
@@ -28,7 +28,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 universe u v w
 
-/-! ## δ環でのa_s/dの添加（旧 Delta/Division/DeltaAdjoinDivision.lean）
+/-! ## δ環でのa_s/dの添加
 
 相対自由δ環へd*x_s=a_sの関係式を課す。BS 著者版 Notation 2.8、
 BS 著者版 Proposition 7.2のJ/dのδ添加の代数的部分。d冪ねじれの除去、導来完備化、
@@ -116,7 +116,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivision
 
-/-! ## d冪ねじれのδ閉包による商（旧 Delta/Division/DeltaTorsionReduction.lean）
+/-! ## d冪ねじれのδ閉包による商
 
 BS 著者版 Proposition 7.2のB/B[d^∞]_δの代数的部分。
 通常のd冪ねじれはMathlibの局所化射の核として扱い、新しいねじれイデアルを重複定義しない。
@@ -172,7 +172,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaTorsionReduction
 
-/-! ## 正則なdの像へのδ除算の普遍性（旧 Delta/Division/DeltaDivisionUniversal.lean）
+/-! ## 正則なdの像へのδ除算の普遍性
 
 BS 著者版 Proposition 7.2の代数的な二段階。指定解族を公開定理の結論から除き、
 基底射・可除性・dの像の正則性から一意なδ射を得る。
@@ -274,7 +274,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionUniversal
 
-/-! ## p冪ねじれのδ安定性と除去商のp正則性（旧 Delta/Division/DeltaPTorsionReduction.lean）
+/-! ## p冪ねじれのδ安定性と除去商のp正則性
 
 p局所化への核を再利用する。新しいねじれイデアルは定義しない。
 完備化後の正則性は別工程。
@@ -346,7 +346,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaPTorsionReduction
 
-/-! ## δ除算商の古典的(p,d)完備化（旧 Delta/Division/DeltaDivisionClassicalCompletion.lean）
+/-! ## δ除算商の古典的(p,d)完備化
 
 BS 著者版 Proposition 7.2の代数的商に古典的完備化を適用する具体的な工程。
 導来完備化との比較、新dねじれの不存在、prismの存在は主張しない。
@@ -445,7 +445,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionClassicalCompletion
 
-/-! ## δ除算・旧ねじれ商・実導来(p,d)完備化の一段操作（旧 Delta/Division/DeltaDivisionPDCompletion.lean）
+/-! ## δ除算・旧ねじれ商・実導来(p,d)完備化の一段操作
 
 BS 著者版 Proposition 7.2の一段を、F3の実Koszul H⁰と証明済みδ延長に接続する。
 完備化後の新dねじれの不存在やprismの存在は結論しない。
@@ -576,7 +576,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionPDCompletion
 
-/-! ## 除算添加後のmod dへの商射（旧 Delta/Division/DeltaDivisionQuotient.lean）
+/-! ## 除算添加後のmod dへの商射
 
 BS 著者版 Proposition 7.2のR→Δ/dがSを経由する代数的な計算。
 Rの任意のイデアルJの全元をdで割る添加環と旧ねじれ除去商に対し、

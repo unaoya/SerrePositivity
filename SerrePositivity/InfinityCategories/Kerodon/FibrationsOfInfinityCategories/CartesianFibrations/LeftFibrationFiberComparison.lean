@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.F1FibrationsLeftFibrationNerveComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.F1FibrationsFiberComparisonBaseChange
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.PrecompositionSimplexLocality
@@ -87,3 +89,8 @@ lemma isQCatEquivalence_of_leftFibration_fibers
   (isPrecompositionEquivalence_of_leftFibration_fibers p q f hf h).isQCatEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "B.2.4" (partial := stronger-hyp) "仮定：X→S・Y→Sがleft fibrationであり全空間が準圏、fが底上で全頂点fiberの圏同値を誘導（Leanが強い：一般P-fiberedよりleft fibrationに限定）。結論：全空間のfは圏同値であり、この判定を∆1への引き戻しにも使える（(3′)から各辺上の圏同値(3)を得る方向のleft-fibrationの場合）。P-equivalenceとmarkedなhomotopy逆の全iffは含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isQCatEquivalence_of_leftFibration_fibers

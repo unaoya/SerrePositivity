@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyLeft
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyUnit
 public import SerrePositivity.KST.SConstruction.PointedEnrichedSpanFunctor
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationWhisker
 
 /-! # 元の Kan 隣接段 span 全体への厳密 dg 豊穣関手
 概要：同じ三つの値と左右の前向き実射を、全 span の標準 end に豊穣に束ねる。

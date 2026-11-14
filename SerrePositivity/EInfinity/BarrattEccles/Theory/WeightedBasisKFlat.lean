@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBasisEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeBasisEquivalence
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CellularWeights
 

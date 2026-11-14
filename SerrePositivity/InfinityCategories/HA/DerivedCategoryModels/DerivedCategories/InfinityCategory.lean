@@ -1,0 +1,109 @@
+module
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeSubcategory
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AugmentationCombinatorics
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.VertexIdentity
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundarySharedResiduals
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundaryUnknowns
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundaryComponents
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CospanCommonRhs
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CospanBoundaryTwoTailResidual
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CospanBoundaryZeroData
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CospanBoundaryAssembly
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CospanJoinCells
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SelectedFaceData
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SelectedFacesGluing
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.PullbackHomLift
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ZeroObject
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Checks
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DGNerveBasic
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Triangle
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Computations
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Quasicategory
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomotopyCategory
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedPiZero
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedLinearResidual
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedModuleObject
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedLinearEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedReconstructFaces
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedRhs
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedTermLinear
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedFront
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSecond
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedComponents
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedLinearReindex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FullSubcategory
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Residual
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ResidualExpansion
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HornEquation
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundarySolution
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundaryPrefixEquation
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundaryDEquations
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberBoundarySimplices
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FiberPullback
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.PullbackFiberComparison
+
+/-! # Semifree 複体の dg nerve
+
+概要：導来単体的集合とその零・一・二単体、quasicategory 性を与える。
+方針：N1 の公開同値を semifree dg 部分圏へ具体化する。
+規約：N2 の内部ホーン充填による quasicategory 性を用いる。
+使われ方：導来 ∞ 圏のホモトピー圏と安定性の比較の入口。
+-/
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
+open _root_.CategoryTheory _root_.SerrePositivity.DifferentialGraded
+open scoped _root_.Simplicial
+variable (S : Type u) [CommRing S]
+
+/-- 概要：semifree 複体の dg nerve としての導来単体的集合。
+方針：一般の dg nerve を充満 dg 部分圏に適用する。
+規約：対象宇宙は u+1。使われ方：導来 ∞ 圏の基礎データ。 -/
+def derivedInfinityCategory : SSet.{u + 1} := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S)
+
+/-- 概要：導来単体的集合の n 単体は semifree 複体間の dg nerve 単体。
+方針：定義を評価する。規約：cochain 規約。使われ方：単体の成分の計算。 -/
+theorem derivedInfinityCategory_obj (n : ℕ) :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S) _⦋n⦌ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S) n := rfl
+
+/-- 概要：零単体は semifree 複体と同値である。
+方針：N1 の頂点同値を適用する。規約：filtration の存在は命題。
+使われ方：導来単体的集合の対象の解釈。 -/
+def derivedInfinityCategoryVertexEquiv :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S) _⦋0⦌ ≃ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S)
+
+/-- 概要：一単体は二つの semifree 複体とその間の閉零射である。
+方針：N1 の辺同値を適用する。規約：射は Hom 複体の零 cycle。
+使われ方：導来単体的集合の射の解釈。 -/
+def derivedInfinityCategoryEdgeEquiv :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S) _⦋1⦌ ≃
+      Σ obj : Fin 2 → _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S,
+        zeroCycles (homObject S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S) (obj 0) (obj 1)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.edgeEquiv S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S)
+
+/-- 概要：二単体は三つの閉零射と合成を埋める次数 −1 のホモトピーである。
+方針：N1 の三角形同値を適用する。規約：微分は合成と第三辺の差。
+使われ方：導来単体的集合の合成とホモトピーの解釈。 -/
+def derivedInfinityCategoryTriangleEquiv :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S) _⦋2⦌ ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.TriangleData S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.triangleEquiv S (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree S)
+
+/-- 概要：semifree 複体の dg nerve は quasicategory である。
+方針：N2 の無条件の内部ホーン充填の instance を具体化する。
+規約：可換環以外の追加前提なし。使われ方：導来 ∞ 圏としての構造。 -/
+instance derivedInfinityCategoryQuasicategory : SSet.Quasicategory (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S) := by
+  unfold _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory
+  infer_instance
+
+end SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.5.8" (partial := special) "仮定：可換環の加群。通常の圏との比較には HasDerivedCategory（Lean が強い：一般の Grothendieck アーベル圏を扱わない）。結論：半自由複体の dg nerve とその h の通常の導来圏との同値（Lean が弱い：injective 模型の dg nerve と準圏での比較がない）。"] _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory

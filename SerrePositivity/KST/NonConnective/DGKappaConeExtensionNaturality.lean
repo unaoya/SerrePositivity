@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeExtensionDerivedComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedComposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedDerivedComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedComposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedDerivedComparison
 public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-!

@@ -95,7 +95,7 @@ lemma ArCofiberCompletion.diagram_zero_diagonal {A B C : SSet.{u}} [Quasicategor
     (c : ArCofiberCompletion n i a b)
     (hc : c.family ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) =
       b ≫ zeroFrameCofiberFamiliesMap n C) (v : B _⦋0⦌) (j : Fin (n + 1)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm
       (c.diagram.app (Opposite.op ⦋0⦌) v)).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj j j le_rfl))) := by
   let F := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm (c.diagram.app (Opposite.op ⦋0⦌) v)

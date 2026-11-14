@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyParameterPaths
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleCylinderPaths
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.DoubleCylinderPaths
 
 /-! # 自然性円筒内の具体的な三辺列
 概要：延長側・円筒横断・逆射側の指定した辺を同じ Kan パラメーター内へ移す。

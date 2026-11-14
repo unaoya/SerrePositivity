@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Bicartesian
 
@@ -23,17 +25,17 @@ namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesO
 方針：全ての零頂点の像の零性を要求する。
 規約：始終対象の選択には依存しない。使われ方：零角の図式の後合成。 -/
 def PreservesZeroVertices {X Y : SSet.{u}} (F : X ⟶ Y) : Prop :=
-  ∀ (x : X _⦋0⦌), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x)
+  ∀ (x : X _⦋0⦌), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x)
 
 /-- 概要：零頂点を保つ関手で零角の四角形を写す。
 方針：四角形を後合成し、零角の証明を写す。
 規約：角の位置を変えない。使われ方：fiber/cofiber 列の保存。 -/
-def ZeroTriangle.map {X Y : SSet.{u}} (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (F : X ⟶ Y)
-    (hF : PreservesZeroVertices F) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Y where
+def ZeroTriangle.map {X Y : SSet.{u}} (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (F : X ⟶ Y)
+    (hF : PreservesZeroVertices F) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Y where
   square := t.square ≫ F
   zero_corner := hF _ t.zero_corner
 
-with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ZeroTriangle (map)
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle export _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ZeroTriangle (map)
 
 
 /-- 概要：完全関手は零頂点と cofiber 列を保つ。
@@ -41,8 +43,8 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.Quasicateg
 規約：fiber 列の保存は安定性から導く。使われ方：完全関手の合成と三角構造。 -/
 class IsExactFunctor {X Y : SSet.{u}} (F : X ⟶ Y) : Prop where
   preservesZero : PreservesZeroVertices F
-  preservesCofiber (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (t.map F preservesZero)
+  preservesCofiber (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (t.map F preservesZero)
 
 /-- 概要：恒等関手は完全。
 方針：零頂点と列をそのまま保つ。
@@ -66,8 +68,8 @@ instance isExactFunctor_comp {X Y Z : SSet.{u}} (F : X ⟶ Y) (G : Y ⟶ Z)
 規約：追加の保存条件は不要。使われ方：完全性の双対表示。 -/
 lemma IsExactFunctor.preservesFiber {X Y : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (h : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (t.map F (IsExactFunctor.preservesZero (F := F))) :=
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (t.map F (IsExactFunctor.preservesZero (F := F))) :=
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pullback_of_pushout _
     (IsExactFunctor.preservesCofiber (F := F) t (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pushout_of_pullback t h))
 
@@ -76,7 +78,7 @@ lemma IsExactFunctor.preservesFiber {X Y : SSet.{u}} [Quasicategory X] [_root_.S
 規約：始域と終域は安定な quasicategory。使われ方：完全性の対称な判定。 -/
 lemma isExactFunctor_of_preservesFiber {X Y : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Y] (F : X ⟶ Y) (hF : PreservesZeroVertices F)
-    (h : ∀ t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (t.map F hF)) :
+    (h : ∀ t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (t.map F hF)) :
     IsExactFunctor F where
   preservesZero := hF
   preservesCofiber t ht :=
@@ -115,3 +117,14 @@ lemma IsExactFunctor.preservesPullbackSquare {X Y : SSet.{u}}
     (IsExactFunctor.preservesPushoutSquare F L (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pushout_of_pullback_square L hL))
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 2.12"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor
+attribute [cite HA "1.1.4.1" (partial := direction) "仮定：安定準圏の間の完全関手（HA の完全⇒左・右完全の向きに一致）。結論：任意の有限極限および押し出しを保存する。右完全性を有限余極限全体で述べ、三条件の全方向をまとめた型は未確認（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare
+attribute [cite HA "1.4.2.1" (partial := component) "仮定：零頂点を持つ準圏間の保存条件と、有限（余）極限を持つ場合の押し出し判定（Lean が強い：縮約性の標的は零対象を持つ場合、切除性の判定は始域に有限余極限と標的に有限極限を要求）。結論：零頂点保存と押し出しを引き戻しに送る条件が読める（Lean が弱い：三つの充満部分 ∞ 圏の構成はこの宣言に含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesZeroVertices
+attribute [cite HA "1.4.2.2" (partial := special) "仮定：両準圏が安定（Lean が強い：HA は始域のみ又は標的のみが安定な場合も述べる）。結論：完全関手が押し出し・引き戻しを保ち、零と fiber 列の保存から完全性が従う（Lean が弱い：片側だけが安定な場合を含めた左・右完全性との同値はこの型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare
+attribute [cite HA "1.4.2.2" (partial := special) "仮定：両準圏が安定（Lean が強い：HA は始域のみ又は標的のみが安定な場合も述べる）。結論：完全関手が押し出し・引き戻しを保ち、零と fiber 列の保存から完全性が従う（Lean が弱い：片側だけが安定な場合を含めた左・右完全性との同値はこの型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare
+attribute [cite HA "1.4.2.2" (partial := special) "仮定：両準圏が安定（Lean が強い：HA は始域のみ又は標的のみが安定な場合も述べる）。結論：完全関手が押し出し・引き戻しを保ち、零と fiber 列の保存から完全性が従う（Lean が弱い：片側だけが安定な場合を含めた左・右完全性との同値はこの型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_of_preservesFiber
+attribute [cite HA "6.3.3.8" (partial := stronger-hyp) "仮定：C,Dは安定準圏、Fは完全、K=∆0の一射のfiber図式を指定（Leanが強い：stable・exact・一点添字の場合）。結論：Fは指定fiber列をfiber列に送る（一射のtotal fiberを保つという結論の普遍錐の部分に一致）。任意有限Kのcanonical tfib比較写像と、その全図式の族の可逆性は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesFiber

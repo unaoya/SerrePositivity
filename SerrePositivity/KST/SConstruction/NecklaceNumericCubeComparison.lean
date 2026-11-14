@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceConcreteCube
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceBooleanFunctor
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceBooleanFunctor
 
 /-! # 元の部分集合関手と具体的立方体関手の頂点作用の自然な比較
 概要：元の全 necklace 射の具体的 cube 作用が同じ部分集合像を回収すると証明する。

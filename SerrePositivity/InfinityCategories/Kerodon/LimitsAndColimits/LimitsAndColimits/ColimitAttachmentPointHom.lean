@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointHomCospanIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PartialColimitApexSpan
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PointHomCospanIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.PartialColimitApexSpan
 
 /-!
 概要：部分余極限の左 Hom の cospan を、実際の付加比較辺の点 coslice の cospan と同型にする。

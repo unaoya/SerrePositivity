@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FixedSimplicialModelCompatibility
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.FixedSimplicialModelCompatibility
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenMapComparison
 public import SerrePositivity.HomotopicalAlgebra.Quillen.CofibrantObjects
 public import SerrePositivity.HomotopicalAlgebra.Quillen.FibrantCriterion

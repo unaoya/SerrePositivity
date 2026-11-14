@@ -1,12 +1,12 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedEvaluation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedPrecomposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedProjectiveComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSemifreeModules
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosedNerveFunctorNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedPrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedProjectiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.DGSemifreeModules
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.ClosedNerveFunctorNaturality
 
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
+import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.InfinityCategory
 
 /-!
 概要：全複体の評価を半自由複体の元の表示へ制限して比較する。
@@ -84,7 +84,7 @@ lemma semifreePointConstant_comp_evaluation :
 lemma semifreePointConstant_equivalence :
     SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
       (semifreePointConstant A) ≫ (semifreePointEquivalence A).hom =
-        𝟙 (derivedInfinityCategory A) := by
+        𝟙 (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) := by
   change SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
       (semifreePointConstant A) ≫
     SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
@@ -116,14 +116,14 @@ lemma semifreeUnderlyingComplex_presentation :
 def complexDerivedEvaluation_semifreeIso :
     FunctorIso
       (nerveMap (semifreeUnderlyingComplex A) ≫ complexDerivedEvaluation A)
-      (closedNerveInclusion A (Semifree A)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)) := by
   have e := ((semifreeComplexResolvedIso A).postcomp (semifreePointEquivalence A).hom).precomp
-    (closedNerveInclusion A (Semifree A))
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A))
   rw [Category.assoc, semifreePointConstant_equivalence] at e
-  dsimp only [derivedInfinityCategory] at e
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory] at e
   simp only [Category.comp_id] at e
   have he : nerveMap (semifreeUnderlyingComplex A) ≫ complexDerivedEvaluation A =
-      closedNerveInclusion A (Semifree A) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫
         SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
           (semifreeComplexInclusion A) ≫
             dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫

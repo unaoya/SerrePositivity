@@ -22,10 +22,10 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 BS 著者版 Corollary 2.39 と Proposition 3.13 の包に使う、自由 δ 射の評価源と係数商を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Andre/Envelope/DivisionResidue`、`Andre/Envelope/FamilyEvaluation`、`Andre/Envelope/MonicCandidate`、`Andre/Envelope/MonicSource`、`Andre/Envelope/PDivisionSource`、`Andre/Envelope/RootFamilyRaw`、`Andre/Envelope/RootFamilySource`、`Andre/Envelope/RootSource`、`Andre/Envelope/SourceEvaluation`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Andre/PowerRootEnvelope/Unconditional/Source`、`Andre/Variants/RootedExtension`、`Semiperfectoid/RootEnvelope/Source`。
@@ -33,7 +33,7 @@ BS 著者版 Corollary 2.39 と Proposition 3.13 の包に使う、自由 δ 射
 
 universe u v w
 
-/-! ## 実有限δ関係と自由δ射の有限評価関係（旧 Delta/Division/Relations/DeltaDivisionFiniteEvaluationRelations.lean）
+/-! ## 実有限δ関係と自由δ射の有限評価関係
 
 δ^n(u−v)とδ^n(u)−δ^n(v)は一般には等しくないが、全深さ≤Nで生成するイデアルは一致する。
 この通常イデアル比較だけで導来基底変更の同定を主張しない。
@@ -257,7 +257,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteEvaluationRelations
 
-/-! ## 自由δ射の評価源とraw δ包の核表示（旧 Delta/Division/Relations/DeltaDivisionEvaluationSource.lean）
+/-! ## 自由δ射の評価源とraw δ包の核表示
 
 源P=A{x_s}からx_s↦d z_sとx_s↦a_sの二つの実δ射を置く。
 座標グラフ核の像が、既存raw δ除算包の実定義イデアルとなることを証明する。
@@ -436,7 +436,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionEvaluationSource
 
-/-! ## 一般除数・任意元族の自由δ射が与える実代数構造（旧 Delta/Division/Relations/DeltaDivisionSourceAlgebras.lean） -/
+/-! ## 一般除数・任意元族の自由δ射が与える実代数構造 -/
 
 @[expose] public noncomputable section DeltaDivisionSourceAlgebras
 
@@ -471,7 +471,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceAlgebras
 
-/-! ## 実自由δ射の通常テンソル積とraw δ包（旧 Delta/Division/Relations/DeltaDivisionSourceTensor.lean）
+/-! ## 実自由δ射の通常テンソル積とraw δ包
 
 源Pと終域Lは同じ underlying 型だが、LのP代数構造はα:x↦d zによるもの。
 通常テンソル積の標準写像を保つ比較を構成し、導来テンソルの離散性とは区別する。
@@ -683,7 +683,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceTensor
 
-/-! ## 分母1の実raw δ包と源評価環（旧 Delta/Division/Relations/DeltaDivisionUnitDenominator.lean）
+/-! ## 分母1の実raw δ包と源評価環
 
 自由δ射x↦1·zは恒等射なので、そのraw包は実源評価環そのものとなる。
 標準商射・基底射・変数・δ構造との両立を保つ。
@@ -776,7 +776,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionUnitDenominator
 
-/-! ## 有限部分族から任意族raw包へのp正則性の移送（旧 Delta/Division/Relations/DeltaAdjoinDivisionFamilyRegular.lean） -/
+/-! ## 有限部分族から任意族raw包へのp正則性の移送 -/
 
 @[expose] public noncomputable section DeltaAdjoinDivisionFamilyRegular
 
@@ -842,7 +842,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionFamilyRegular
 
-/-! ## 任意有限根族の次段δ関係から実評価関係への移送（旧 Delta/Division/Relations/DeltaDivisionEvaluationFamilyStep.lean） -/
+/-! ## 任意有限根族の次段δ関係から実評価関係への移送 -/
 
 @[expose] public noncomputable section DeltaDivisionEvaluationFamilyStep
 
@@ -913,7 +913,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionEvaluationFamilyStep
 
-/-! ## 部分根族と補集合の自由δ変数の分離（旧 Delta/Division/Relations/RelativeFreeSubsetSplit.lean） -/
+/-! ## 部分根族と補集合の自由δ変数の分離 -/
 
 @[expose] public noncomputable section RelativeFreeSubsetSplit
 
@@ -1055,7 +1055,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeSubsetSplit
 
-/-! ## 自由δ射の両因子の係数商に沿うTor消滅（旧 Delta/Division/Relations/DeltaDivisionSourceCoefficientTor.lean）
+/-! ## 自由δ射の両因子の係数商に沿うTor消滅
 
 係数射の平坦性と具体的な係数上の式を共通のTor基底変更へ供給する。
 係数イデアルの正則性・完備性やG7は要求しない。
@@ -1190,7 +1190,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceCoefficientTor
 
-/-! ## 自由δ射の両因子を伴う実係数商基底変更（旧 Delta/Division/Relations/DeltaDivisionSourceCoefficientReduction.lean）
+/-! ## 自由δ射の両因子を伴う実係数商基底変更
 
 共通の実導来テンソル商比較へ、証明済みの両因子のTor消滅を供給する。
 残余環を係数側Koszul複体と同一視したり、完備化後CFFを結論したりしない。
@@ -1276,7 +1276,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceCoefficientReduction
 
-/-! ## 自由δ射の係数商への標準降下（旧 Delta/Division/Relations/DeltaDivisionSourceCoefficientMaps.lean）
+/-! ## 自由δ射の係数商への標準降下
 
 任意の係数イデアルを扱い、商のδ構造は要求しない。
 自由δ射の商への降下と標準自己射を区別する。
@@ -1374,7 +1374,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceCoefficientMaps
 
-/-! ## 実係数商還元の両因子と降下作用の明示（旧 Delta/Division/Relations/DeltaDivisionSourceCoefficientQuotients.lean）
+/-! ## 実係数商還元の両因子と降下作用の明示
 
 商イデアルの一致だけで作用を省略せず、βbar・αbarの作用を持つ標準商と比較する。
 -/
@@ -1479,7 +1479,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceCoefficientQuotients
 
-/-! ## 係数商還元を右因子へ移す実導来比較（旧 Delta/Division/Relations/DeltaDivisionSourceCoefficientRightFactor.lean）
+/-! ## 係数商還元を右因子へ移す実導来比較
 
 共通の結合子と右係数拡大比較を使い、証明済みのα因子のTor消滅を供給する。
 -/
@@ -1605,7 +1605,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionSourceCoefficientRightFactor
 
-/-! ## 実通常テンソルのδ構造と両因子の標準包含（旧 Delta/Division/Relations/DeltaDivisionSourceTensorDelta.lean）
+/-! ## 実通常テンソルのδ構造と両因子の標準包含
 
 raw包のδ切断を標準比較同型とW₂写像で引き戻す。
 -/

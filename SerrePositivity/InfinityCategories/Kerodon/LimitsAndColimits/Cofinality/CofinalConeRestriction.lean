@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LimitExistence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofSliceTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RoofSliceTransport
 /-!
 概要：left cofinal な任意の実写像による錐圏の制限が ∞ 圏の同値であることを証明する。
 方針：trivial Kan 後因子を同値な単射切断で処理し、left anodyne 前因子の制限と合成する。

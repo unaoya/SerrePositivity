@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.CategoryTheory.Idempotents.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
@@ -64,3 +66,9 @@ theorem initial_of_retraction_idempotent [IsIdempotentComplete C]
   simpa only [a, e, eqToHom_app] using initial_of_natural_legs X a hn
 
 end CategoryTheory
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 7.8"] _root_.CategoryTheory.initial_of_natural_legs
+attribute [cite BS19 "Lemma 7.8"] _root_.CategoryTheory.initial_of_retraction_idempotent

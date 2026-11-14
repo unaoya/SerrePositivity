@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.BarSegal
 public import SerrePositivity.KST.Comparison.RegularBarContraction
 
@@ -164,3 +166,8 @@ theorem regularActionCoordinate_whisker (T : MonCat.{u}) {n m : ℕ}
 
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.2.2.1" (partial := special) "仮定：通常のモノイド T の自分自身への正則作用（Lean は HA の X=T の場合に限る）。結論：作用圏の神経の n 単体を基底の n 単体と T の元の組に、基底の n 単体を n 個の T の元に同定する（n 単体の積座標に一致）。Lean は始点で座標を読み、HA の面・退化写像の式と一般の作用の特徴付けは含まれない。"] _root_.SerrePositivity.KST.Comparison.regularActionCoordinateEquiv

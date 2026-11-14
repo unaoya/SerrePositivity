@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InternalUncurryEdgeEvaluation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.InternalUncurryEdgeEvaluation
 public import SerrePositivity.KST.SConstruction.CofiberEndofunctor
 
 /-! # 二重 cofiber 図式の下辺の格子

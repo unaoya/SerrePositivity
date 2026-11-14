@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterKernelWitness
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightSquareComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelOuterSquareDiagramIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：同じ共通実長方形の外周を元 LT 絶対外周へ全比較する。
@@ -91,8 +91,8 @@ def dgOdotMilnorActualOuterKernelPerfectComparison : _root_.SerrePositivity.Infi
   let H := squareFrameHomotopyPostcomp
     (dgOdotMilnorActualOuterKernelFrameComparison R d) perfectStableInfinityInclusion
   have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((F) ≫ perfectStableInfinityInclusion) 0 1)) := by
-    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F) 0 1))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex ((F) ≫ perfectStableInfinityInclusion) 0 1)) := by
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (F) 0 1))
     exact dgOdotMilnorActualOuter_perfect_zero R d
   exact perfectStableInfinityInclusion_isFullyFaithful.preimageFunctorIso
     (stableZeroSquareComparison H hz)

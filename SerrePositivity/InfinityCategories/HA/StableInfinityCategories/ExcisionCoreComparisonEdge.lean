@@ -1,7 +1,9 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionCorePuncturedLimitCone
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionCoreCospanBoundary
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SliceSquareDiagramEvaluation
 
 /-!
@@ -46,3 +48,8 @@ def excisionCoreComparisonEdge {X : SSet.{u}} [Quasicategory X]
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCorePuncturedLimitCone_vertex] using h
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.15" (partial := component) "仮定：切除用格子を標的準圏に写し、入力面と外側面の極限錐を選ぶ（Lean が強い：HA の元の押し出しと縮約関手の代わりに拡張格子と錐を入力する）。結論：入力比較と θ の合成を照合し、suspension の比較辺の端点を元の θ と同定する（Lean が弱い：任意の τ について HA の合成と矢印 ∞ 圏の引き戻しを一組で返す型ではない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCoreComparisonEdge

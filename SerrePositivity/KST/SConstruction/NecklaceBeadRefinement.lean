@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalTerminal
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceBooleanMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceBooleanMap
 
 /-! # 元の全頂点を保つ一 bead への refinement 射
 概要：元の necklace を同じ全頂点の一 bead に含め、元の全単体と Bool 座標作用を回収。

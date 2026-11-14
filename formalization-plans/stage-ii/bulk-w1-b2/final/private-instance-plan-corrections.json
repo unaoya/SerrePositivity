@@ -1,0 +1,30 @@
+[
+  {
+    "table": "namespace-plan-field-reviewed.json",
+    "old_kernel_name": "_private.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory.0.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instFactIsRegularκ",
+    "previous_planned_name": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instFactIsRegularκ",
+    "corrected_name": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.instFactIsRegularκ",
+    "reason": "Anonymous instance follows the relocated enclosing namespace; explicit authored private names in the same file remain unchanged."
+  },
+  {
+    "table": "namespace-plan-field-reviewed.json",
+    "old_kernel_name": "_private.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory.0.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instSmallReps",
+    "previous_planned_name": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instSmallReps",
+    "corrected_name": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.instSmallReps",
+    "reason": "Anonymous instance follows the relocated enclosing namespace; explicit authored private names in the same file remain unchanged."
+  },
+  {
+    "table": "preservation-module-plan.json",
+    "old_kernel_name": "_private.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory.0.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instFactIsRegularκ",
+    "previous_planned_name": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instFactIsRegularκ",
+    "corrected_name": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.instFactIsRegularκ",
+    "reason": "Anonymous instance follows the relocated enclosing namespace; explicit authored private names in the same file remain unchanged."
+  },
+  {
+    "table": "preservation-module-plan.json",
+    "old_kernel_name": "_private.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory.0.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instSmallReps",
+    "previous_planned_name": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.instSmallReps",
+    "corrected_name": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.instSmallReps",
+    "reason": "Anonymous instance follows the relocated enclosing namespace; explicit authored private names in the same file remain unchanged."
+  }
+]

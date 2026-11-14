@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceHomotopyClasses
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpaceHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SpaceEdgeValue
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom
 
 /-!

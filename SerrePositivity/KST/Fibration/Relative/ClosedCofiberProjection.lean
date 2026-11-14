@@ -37,7 +37,7 @@ lemma closedCofiberProjection_predicate {B : StableModel.{u}} (P : ClosedStableP
   let s := vertexCofiberSquare (B := flagAmbient B) v
   have hv := cofiberProjection_vertex_simplex (flagAmbient B) v
   change arrowVertexSimplex ((cofiberProjection B.carrier).app (Opposite.op ⦋0⦌) v) =
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge at hv
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge at hv
   have hc : (cofiberStableQuotient B).val.app (Opposite.op ⦋0⦌) v = s.cofiber :=
     cofiberVertex_corner (flagAmbient B) v
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1)
@@ -46,7 +46,7 @@ lemma closedCofiberProjection_predicate {B : StableModel.{u}} (P : ClosedStableP
     change (True ∧ P.predicate ((cofiberStableQuotient B).val.app _ v)) ↔ _
     simpa only [true_and] using (congrArg P.predicate hc).to_iff
   have ha := closedArrowPredicate_iff P ((cofiberProjection B.carrier).app _ v)
-  have hs : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge ∈ closedStableEdges P ↔
+  have hs : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge ∈ closedStableEdges P ↔
       P.predicate s.cofiber := closedStableEdges_iff_cofiber (B := B) P s
   exact hp.trans (hs.symm.trans (((congrArg (· ∈ closedStableEdges P) hv).to_iff).symm.trans
     ha.symm))

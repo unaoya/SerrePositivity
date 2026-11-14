@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectIdempotentCompleteGeneral
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectIdempotentCompleteGeneral
 
 /-!
 概要：固定した厳密 dg 入力の ν 値の coherent 冪等完備性。

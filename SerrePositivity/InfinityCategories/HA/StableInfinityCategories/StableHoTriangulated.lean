@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableHoClosure
 
 /-! # 実安定閉包の三角的対象条件
@@ -60,3 +62,8 @@ instance stableHoClosure_isTriangulated (P : Set (X _⦋0⦌)) :
   isStableUnderShiftBy n := ⟨fun _ ha => stableHoClosure_shift P n ha⟩
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.3.3" (partial := stronger-hyp) "仮定：安定準圏の充満部分圏でファイバーにも閉じる、または hX の三角閉性（Lean が強い：HA は余ファイバーとシフトのみ）。結論：前者は充満部分圏の安定性、後者はシフト閉性。余ファイバーの逆シフトからファイバー閉性を導く判定は得られない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangulatedClosed_shift

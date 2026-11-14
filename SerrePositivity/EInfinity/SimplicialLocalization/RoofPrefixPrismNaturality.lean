@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismReindex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeReindex
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentRightConeReindex
 
 /-!
 # 元の混合 coherent 単体の全ての面と退化への自然性

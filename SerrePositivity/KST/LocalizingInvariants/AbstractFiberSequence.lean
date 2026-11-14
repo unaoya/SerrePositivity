@@ -22,12 +22,12 @@ variable {E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategor
 include hE
 
 /-- 任意抽象 Verdier 列の像の零角付き四角形。 -/
-def abstractFiberTriangle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u}) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Spectra.Sp.{u} :=
+def abstractFiberTriangle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Spectra.Sp.{u} :=
   hE.fiberTriangle (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d)
 
 /-- 提示の存在を仮定せず、全ての抽象 Verdier 列から実 fiber 列を得る。 -/
 lemma abstractFiberTriangle_isFiber (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.abstractFiberTriangle d) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence (hE.abstractFiberTriangle d) :=
   hE.fiberTriangle_isFiber (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d)
 
 /-- 下辺は元の完全包含の像の同じ一単体。 -/

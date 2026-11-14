@@ -18,10 +18,10 @@ Hodge–Tate 商の完備性と完全忠実平坦性、完備化の二元完全�
 BS 著者版 Remark 7.15 の被覆性に関わる、完全化と完全忠実平坦性の比較を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/VarpiComparison`、`Variants/MonicRootedExtension`。
@@ -29,7 +29,7 @@ BS 著者版 Remark 7.15 の被覆性に関わる、完全化と完全忠実平�
 
 universe u
 
-/-! ## André R1：Hodge–Tate 商の完全忠実平坦性の移行（旧 Andre/Remark715/PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat.lean）
+/-! ## André R1：Hodge–Tate 商の完全忠実平坦性の移行
 
 ## 概要
 
@@ -51,7 +51,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の候補を変更しない。
 既存の import 経路で無条件版を公開し、元の H の二元完全平坦性へ渡す。
 -/
 
-/-! ## André E1・E2：元の無限根モニック実完備化の二元完全平坦性（旧 Andre/Remark715/PowerRootPrismMonicCompletionPairFlat.lean）
+/-! ## 元の無限根モニック実完備化の二元完全平坦性
 
 ## 概要
 
@@ -210,7 +210,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletionPairFlat
 
-/-! ## André E1・E2：元の実完備化の二元剰余 H⁰ の忠実平坦性（旧 Andre/Remark715/PowerRootPrismMonicCompletionPairFaithful.lean）
+/-! ## 元の実完備化の二元剰余 H⁰ の忠実平坦性
 
 ## 概要
 
@@ -316,7 +316,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletionPairFaithful
 
-/-! ## André E1・E2：元の無限根モニック実候補の完全 δ 化と perfectoid 商（旧 Andre/Remark715/PowerRootPrismMonicCompletedPerfection.lean）
+/-! ## 元の無限根モニック実候補の完全 δ 化と perfectoid 商
 
 ## 概要
 
@@ -504,7 +504,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletedPerfection
 
-/-! ## André E1・E2：任意のモニック入力の Hodge–Tate 商の完備性（旧 Andre/Remark715/PowerRootPrismMonicHodgeTateComplete.lean）
+/-! ## 任意のモニック入力の Hodge–Tate 商の完備性
 
 ## 概要
 
@@ -564,7 +564,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicHodgeTateComplete
 
-/-! ## André E1・E2：元の実完備化を完全 δ 化した後の二元剰余（旧 Andre/Remark715/PowerRootPrismMonicPerfectionPairFaithful.lean）
+/-! ## 元の実完備化を完全 δ 化した後の二元剰余
 
 ## 概要
 
@@ -680,7 +680,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicPerfectionPairFaithful
 
-/-! ## André E1・E2：元の無限根候補の完全化後商の p 完全忠実平坦性（旧 Andre/Remark715/PowerRootPrismMonicPerfectionQuotientFaithful.lean）
+/-! ## 元の無限根候補の完全化後商の p 完全忠実平坦性
 
 ## 概要
 

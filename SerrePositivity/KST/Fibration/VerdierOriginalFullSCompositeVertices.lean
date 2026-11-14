@@ -71,7 +71,7 @@ theorem verdierOriginalFullSHomFamily_full (d : _root_.SerrePositivity.InfinityC
   have he : (zeroStableHomFamilyLift (verdierOriginalStableHomFamily d j)
       (verdierOriginalStableHomFamily_zero d j)).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ coherentTriangleFullPath) =
-      fullSubcategoryVertex _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierNullCompositeOriginalMap d j).hom)
+      fullSubcategoryVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierNullCompositeOriginalMap d j).hom)
         (isZeroVertex_functorVertex_of_pointwise _ (verdierNullCompositeOriginalMap_zero d j)) := by
     apply Subtype.ext
     change (stableHomAmbient d.left d.right).app (Opposite.op ⦋0⦌)

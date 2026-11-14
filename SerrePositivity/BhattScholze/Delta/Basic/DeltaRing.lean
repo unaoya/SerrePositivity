@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.RingTheory.WittVector.Truncated
 public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import Mathlib.Tactic.FinCases
@@ -11,7 +13,7 @@ public import Mathlib.Tactic.FinCases
 δ 構造を W₂ への環準同型切断として定義し（BS 著者版 Remark 2.4）、
 BS 著者版 Definition 2.1 の恒等式との同値、Frobenius 持ち上げとの対応（BS 著者版 Remark 2.2）、
 δ 射とその言い換えを与える。W₂ の関手性と単元判定、環同型による δ 構造の移送、δ 安定部分環への制限も含む。
-勉強ノート第 2 章の定義 2.1.1〜命題 2.1.5。
+BS 著者版 Definition 2.1・Remark 2.2・Remark 2.4。
 W₂ 切断での δ 射の判定と、Frobenius と可換な射の判定を、BS 著者版 Remark 2.4 と Remark 2.2 の構造の対応に付随する補題として扱う。
 
 ## 方針
@@ -27,7 +29,7 @@ BS のすべての δ 環の議論の土台。
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## δ環のW₂切断による表現（旧 Delta/Basic/DeltaRing.lean）
+/-! ## δ環のW₂切断による表現
 
 BS 著者版 Remark 2.4の切断を採用する。pねじれの消去を仮定せず、
 MathlibのWitt環を使ってδ構造とFrobenius持上げを表す。
@@ -254,7 +256,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRing
 
-/-! ## 長さ2のWitt環の係数写像（旧 Delta/Basic/WittTwoMap.lean）
+/-! ## 長さ2のWitt環の係数写像
 
 環準同型をW₂の各座標に適用する。δ切断の自然性や商構成で共通に使う。
 -/
@@ -286,7 +288,7 @@ end SerrePositivity.BhattScholze
 
 end WittTwoMap
 
-/-! ## 長さ2のWitt環の単元判定（旧 Delta/Basic/WittTwoUnits.lean）
+/-! ## 長さ2のWitt環の単元判定
 
 δ局所化のW₂切断を延長するためのBS専用補題。
 第0座標と第1ghost成分が単元なら、明示的な逆元を構成する。
@@ -332,7 +334,7 @@ end SerrePositivity.BhattScholze
 
 end WittTwoUnits
 
-/-! ## δの恒等式とW₂切断の対応（旧 Delta/Basic/DeltaIdentities.lean）
+/-! ## δの恒等式とW₂切断の対応
 
 BS 著者版 Definition 2.1の恒等式を満たす写像からBS 著者版 Remark 2.4の切断を構成する。
 加法補正項は共通Witt APIの整数係数多項式として扱い、pの正則性を要求しない。
@@ -409,7 +411,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaIdentities
 
-/-! ## δ射とW₂切断の自然性（旧 Delta/Basic/DeltaSectionNaturality.lean）
+/-! ## δ射とW₂切断の自然性
 
 δ射の条件をW₂切断の可換図式として表す。自由δ環からの写像を
 多項式環の普遍性で構成する際、pねじれのある終域も扱う。
@@ -446,7 +448,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaSectionNaturality
 
-/-! ## p正則な環のFrobenius持上げとδ構造（旧 Delta/Basic/DeltaFrobenius.lean）
+/-! ## p正則な環のFrobenius持上げとδ構造
 
 BS 著者版 Remark 2.2。mod pでFrobeniusと一致する環自己準同型から
 δ構造を構成し、一意性を証明する。pねじれのある環への逆向きは主張しない。
@@ -519,7 +521,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaFrobenius
 
-/-! ## 環同型によるδ構造の移送（旧 Delta/Basic/DeltaTransport.lean）
+/-! ## 環同型によるδ構造の移送
 
 W₂切断を環同型で共役し、元の環構造を変えずにδ構造を引き戻す。
 -/
@@ -559,7 +561,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaTransport
 
-/-! ## δ安定部分環へのδ構造の制限（旧 Delta/Basic/DeltaSubring.lean）
+/-! ## δ安定部分環へのδ構造の制限
 
 既存ofFunctionとWittベクトルの自然性を用いる。
 -/
@@ -615,3 +617,21 @@ theorem subring_unique (D : DeltaStructure p A) (S : Subring A)
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaSubring
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Def 2.1"] _root_.SerrePositivity.BhattScholze.DeltaStructure
+attribute [cite BS19 "Def 2.1"] _root_.SerrePositivity.BhattScholze.DeltaStructure.delta_add
+attribute [cite BS19 "Def 2.1"] _root_.SerrePositivity.BhattScholze.DeltaStructure.delta_mul
+attribute [cite BS19 "Def 2.1"] _root_.SerrePositivity.BhattScholze.DeltaStructure.ofFunction
+attribute [cite BS19 "Def 2.19"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.map_isDistinguished
+attribute [cite BS19 "Def 2.19"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished
+attribute [cite BS19 "Def 2.26"] _root_.SerrePositivity.BhattScholze.DeltaStructure.IsPerfect
+attribute [cite BS19 "Rem 1.2"] _root_.SerrePositivity.BhattScholze.DeltaStructure
+attribute [cite BS19 "Rem 1.2"] _root_.SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift
+attribute [cite BS19 "Rem 2.2"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_of_frobeniusLift
+attribute [cite BS19 "Rem 2.2"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_of_mod_p
+attribute [cite BS19 "Rem 2.2"] _root_.SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift
+attribute [cite BS19 "Rem 2.4"] _root_.SerrePositivity.BhattScholze.DeltaStructure
+attribute [cite BS19 "Rem 2.4"] _root_.SerrePositivity.BhattScholze.WittTwo

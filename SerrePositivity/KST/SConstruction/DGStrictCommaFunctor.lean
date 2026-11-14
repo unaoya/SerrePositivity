@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStrictCommaComposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaProjections
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorCommaProjections
 
 /-! # 全 Hom 上の閉比較から作る厳密 dg comma 関手
 概要：元の二関手と全 Hom 自然な閉比較を、実 comma 値 dg 関手へ束ねる。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
 public import Mathlib.CategoryTheory.LiftingProperties.PushoutProduct
 public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
@@ -100,3 +102,14 @@ lemma pullbackHom_weakEquivalence [HasQuillenPullbackHom (MonoidalClosed.interna
     inferInstance inferInstance h
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.8.12" (partial := component) "仮定：テンソルが Quillen 二関手で二本の射が余ファイブレーション（横射について HA と一致、比較四角形や対象の余ファイブラント性は要求しない）。結論：上段・下段に適用すると横の押し出し積が余ファイブレーションとなる部分に一致。縦射の弱同値性は型に含まれない。"] _root_.SerrePositivity.Quillen.pushoutProduct_cofibration
+attribute [cite HA "4.5.4.10" (partial := special) "仮定：Quillen テンソルを持つモデル圏で底の二つの余ファイブレーションまたは余ファイブラント対象（Lean が強い：添字圏は両方とも一点、対象については組紐付き閉の場合）。結論：押し出し積が余ファイブレーション、テンソル積が余ファイブラント（その場合に二つの結論が一致）。一般の二つの射影図式の外部積は型に含まれない。"] _root_.SerrePositivity.Quillen.pushoutProduct_cofibration
+attribute [cite HA "4.5.4.3" (partial := special) "仮定：モデル圏のテンソルが Quillen 二関手で、f が余ファイブレーション（HA の仮定の下で f を両入力とする）。結論：f□f が底で余ファイブレーション（n=2 で作用を忘れた主張に一致）。全ての n、自明性および Σₙ 射影余ファイブレーション性はこの型に含まれない。"] _root_.SerrePositivity.Quillen.pushoutProduct_cofibration
+attribute [cite HTT "A.3.1.2" (partial := component) "仮定：閉モノイダル構造を外から与え、さらに原典どおり単位の cofibrancy を指定（HTT と一致）。結論：tensor の Quillen 条件と単位の identity replacement による弱い unit axiom を得る。native MonoidalModelCategory という一つの class は閉性も単位 cofibrancy も要求せず、原典の三条件をそのまま束ねた定義ではない。tensor の Quillen 条件の成分と、元の強い単位条件から弱い条件への方向を記録する。"] _root_.SerrePositivity.Quillen.MonoidalModelCategory
+attribute [cite HTT "A.3.1.2" (partial := component) "仮定：閉モノイダル構造を外から与え、さらに原典どおり単位の cofibrancy を指定（HTT と一致）。結論：tensor の Quillen 条件と単位の identity replacement による弱い unit axiom を得る。native MonoidalModelCategory という一つの class は閉性も単位 cofibrancy も要求せず、原典の三条件をそのまま束ねた定義ではない。tensor の Quillen 条件の成分と、元の強い単位条件から弱い条件への方向を記録する。"] _root_.SerrePositivity.Quillen.unitAxiom_of_cofibrant_unit
+attribute [cite HTT "A.3.1.3"] _root_.SerrePositivity.Quillen.HasUnitAxiom
+attribute [cite HTT "A.3.1.3"] _root_.SerrePositivity.Quillen.UnitReplacementAxiom

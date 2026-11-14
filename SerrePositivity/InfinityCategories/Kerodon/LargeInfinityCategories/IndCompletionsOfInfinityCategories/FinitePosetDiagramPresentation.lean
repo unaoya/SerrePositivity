@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FinitePosetEvaluationCofinality
 
 /-!
@@ -47,3 +49,8 @@ lemma indFinitePoset_has_singleFilteredDiagramPresentation :
     (smallDiagramCommaEvaluation_finitePoset_isRightCofinal κ D)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.15" (partial := component) "仮定：小準圏 C、正則 κ、有限半順序 P と N(P)→Indκ(C) の図式（HTT と一致）。結論：同じ全図式自身が、小さい単一 κ-filtered な C 内の全図式の米田像の余極限表示を持つ（一致）。比較 Indκ(Fun(N(P),C))→Fun(N(P),Indκ(C)) の充満忠実性や準圏同値までは含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indFinitePoset_has_singleFilteredDiagramPresentation

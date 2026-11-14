@@ -31,17 +31,17 @@ attribute [local instance] stableHomAddCommMonoid
 規約：双積の可換モノイドの加法を使う。使われ方：任意の Hom への逆元の転送。 -/
 lemma exists_additiveInverse_of_zeroSourcePushout {X : SSet.{u}} [Quasicategory X]
     [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0))
-    (f : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0) :
-    ∃ g : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0, g + f = 0 := by
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0))
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0) :
+    ∃ g : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0, g + f = 0 := by
   let p := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductFst R hR hz.1
   let q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproductSnd R hR hz.1
   let r := p + q ≫ f
-  have hr : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R ≫ r = 𝟙 _ := by
+  have hr : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R ≫ r = 𝟙 _ := by
     rw [SemiadditiveOfBinaryBiproducts.comp_add, ← Category.assoc,
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproduct_right_fst, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourceCoproduct_right_snd, zero_comp, add_zero]
   let hp := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryProduct_of_retraction R hR hz r hr
-  let j := BinaryFan.IsLimit.lift hp 0 (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1))
+  let j := BinaryFan.IsLimit.lift hp 0 (𝟙 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1))
   have hjr : j ≫ r = 0 := BinaryFan.IsLimit.lift_fst hp _ _
   have hjq : j ≫ q = 𝟙 _ := BinaryFan.IsLimit.lift_snd hp _ _
   refine ⟨j ≫ p, ?_⟩
@@ -57,12 +57,12 @@ lemma exists_stableHom_additiveInverse {X : SSet.{u}} [Quasicategory X] [_root_.
   obtain ⟨x, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective A
   obtain ⟨y, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective B
   obtain ⟨R, hz, hy, hx, hR⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_zeroSourcePushoutSquare y x
-  have hp : ∀ f : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0,
-      ∃ g : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0, g + f = 0 :=
+  have hp : ∀ f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0,
+      ∃ g : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0, g + f = 0 :=
     exists_additiveInverse_of_zeroSourcePushout R hR hz
-  have ha : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1 = (SSet.HomotopyCategory.mk x : hoFunctor.obj X) :=
+  have ha : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1 = (SSet.HomotopyCategory.mk x : hoFunctor.obj X) :=
     congrArg (fun z => (SSet.HomotopyCategory.mk z : hoFunctor.obj X)) hx
-  have hb : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0 = (SSet.HomotopyCategory.mk y : hoFunctor.obj X) :=
+  have hb : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0 = (SSet.HomotopyCategory.mk y : hoFunctor.obj X) :=
     congrArg (fun z => (SSet.HomotopyCategory.mk z : hoFunctor.obj X)) hy
   rw [ha, hb] at hp
   exact hp f

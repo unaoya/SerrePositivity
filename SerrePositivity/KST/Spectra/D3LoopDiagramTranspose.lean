@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3LoopCanonicalSectionTransport
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SquareTransposeEvaluation
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareDuality
+public import SerrePositivity.InfinityCategories.HA.Section6_1_1.SquareDuality
 
 /-!
 概要：実 loop 図式の二つの零角の交換を、全 Hom・全単体を持つ転置作用にする。
@@ -37,7 +37,7 @@ lemma d3IsLoopDiagramVertex_transpose {X : SSet.{u}}
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (((pre (β_ (Δ[1] : SSet.{u}) Δ[1]).hom).app X).app _ v) := by
   dsimp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex] at hv ⊢
   rw [d3SquareDiagram_pre_transpose]
-  exact ⟨hv.2.1, hv.1, (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mp hv.2.2⟩
+  exact ⟨hv.2.1, hv.1, (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_transpose _).mp hv.2.2⟩
 
 /-- 二つの零角を交換する、実 loop 全図式上の全単体作用。 -/
 def d3LoopDiagramTranspose (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X :=

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaHomWeightRightKan
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.YonedaWeightFamilyComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RightKanRestrictionIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.RightKanRestrictionIso
 
 /-!
 概要：元の P_Σ 延長の全 Hom 族と、全自然変換空間族を同じ両変数で自然同型にする。

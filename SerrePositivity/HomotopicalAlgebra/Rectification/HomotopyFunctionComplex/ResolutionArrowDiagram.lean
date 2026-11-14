@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.ArrowContext
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedChoiceFunctor
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveFillerExtension
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctorReindex
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Pullbacks.FiberFunctorReindex
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveCoherentReindex
 
 /-!

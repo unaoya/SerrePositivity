@@ -21,7 +21,7 @@ open scoped Simplicial
 def IsZeroFrameVertex {n : ℕ} {C : SSet.{u}}
     (v : ((ihom (frameNerve n)).obj C) _⦋0⦌) : Prop :=
   ∀ x : (frameNerve n) _⦋0⦌, IsDiagonal (nerveEquiv x).val →
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt x).app (Opposite.op ⦋0⦌) v)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt x).app (Opposite.op ⦋0⦌) v)
 
 /-- 概要：零対角を持つ全ての枠の図式。
 方針：内部 Hom の全部分複体。
@@ -56,13 +56,13 @@ lemma diagonal_not_mem_framePositiveRow {n : ℕ} (x : (frameNerve.{u} n) _⦋0�
 /-- 概要：任意の第一行は零対角を持つ枠に延長できる。
 方針：既存頂点の像を保ち、対角に零対象を指定して混合端点延長を使う。
 規約：値域の quasicategory 性は不要。使われ方：零次元の持ち上げ。 -/
-lemma exists_zeroFrame_extension {C : SSet.{u}} [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] (n : ℕ)
+lemma exists_zeroFrame_extension {C : SSet.{u}} [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] (n : ℕ)
     (f : (framePositiveRow n : SSet.{u}) ⟶ C) :
     ∃ F : frameNerve n ⟶ C, (framePositiveRow n).ι ≫ F = f ∧
       ∀ x : (frameNerve n) _⦋0⦌, IsDiagonal (nerveEquiv x).val →
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) := by
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) x) := by
   classical
-  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex C
+  let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex C
   let x : (frameNerve n) _⦋0⦌ → C _⦋0⦌ := fun v ↦
     if h : v ∈ (framePositiveRow n).obj (Opposite.op ⦋0⦌) then
       f.app (Opposite.op ⦋0⦌) ⟨v, h⟩ else z.vertex
@@ -91,7 +91,7 @@ lemma exists_zeroFrame_extension {C : SSet.{u}} [_root_.SerrePositivity.Infinity
 方針：零次元は零頂点を指定した延長、正次元は枠の境界延長で充填する。
 規約：HasZeroVertex だけを要求し、cofiber 条件はまだ課さない。
 使われ方：第一行から gapped 図式を復元する第一段階。 -/
-instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] :
+instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex C] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (zeroFrameProjection n C) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro d
@@ -132,9 +132,9 @@ instance zeroFrameProjection_trivialKanFibration (n : ℕ) (C : SSet.{u}) [_root
       exact hh
     have hz (x : (frameNerve n) _⦋0⦌) (hd : IsDiagonal (nerveEquiv x).val)
         (v : (boundary (d + 1) : SSet.{u}) _⦋0⦌) :
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v)) := by
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v)) := by
       have hh := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) v) x hd
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((a.app (Opposite.op ⦋0⦌) v).val.app
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((a.app (Opposite.op ⦋0⦌) v).val.app
         (Opposite.op ⦋0⦌) (𝟙 _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 0)) at hh
       rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at hh
       exact hh

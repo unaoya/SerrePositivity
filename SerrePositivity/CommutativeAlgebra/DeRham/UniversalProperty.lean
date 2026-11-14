@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
 
@@ -478,3 +480,8 @@ public theorem exists_unique_dgHom (k : Type u) [CommRing k] (T : Type u)
     exact (gradedLift_wedge H η0 η1 hlin hsq a b).symm
 
 end SerrePositivity.DeRham
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Construction 4.9" (partial := special) "多項式代数の場合の Hodge–Tate 写像（BS-D68 停止点 3）。一般の R は不要 ／ 11-10 更新（2）"] _root_.SerrePositivity.DeRham.exists_unique_dgHom

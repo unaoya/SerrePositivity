@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfCollage
 
 /-!
@@ -82,3 +84,8 @@ def quillenCfCollageTopNerve (R : EnrichedFunctor SSet.{u} D C) :
 
 end
 end SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.7.11" (partial := special) "仮定：固定 SM7 を持つ単体モデル圏の二つの cofibrant-fibrant 対象（Lean が強い：入力数 1 に限る）。結論：二対象間の単体豊穣 Hom は Kan（HA の一入力の場合と一致。多入力 operad 全体の fibrancy は型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.cofibrantFibrantObjects_sHom_kanComplex

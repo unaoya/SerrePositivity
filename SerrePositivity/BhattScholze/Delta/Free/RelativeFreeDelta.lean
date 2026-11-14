@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.MvPolynomial.CommRing
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
@@ -13,7 +15,7 @@ public import Mathlib.Algebra.MvPolynomial.Equiv
 ## 概要
 多項式環に係数の δ と変数の δ の値を指定した δ 構造（変数を rank 1 にする補助構造を含む）、
 基底 δ 環 R 上の相対自由 δ 環 R{x_s} = R[x_(s,n)] とその普遍性、生成元と関係式による表示、変数の分割。
-勉強ノート第 2 章の命題 2.1.7・2.1.10。
+BS 著者版 Notation 2.8・Lemma 2.11 の相対版。
 
 ## 方針
 W₂ 切断を多項式環の普遍性で直接与える。p ねじれなしの議論を使わない。
@@ -28,7 +30,7 @@ W₂ 切断を多項式環の普遍性で直接与える。p ねじれなしの�
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## 変数のδ値を指定した多項式δ構造（旧 Delta/Free/PolynomialDelta.lean）
+/-! ## 変数のδ値を指定した多項式δ構造
 
 基底のW₂切断を係数に用い、変数を指定された二つのWitt座標へ送る。
 また、任意の多項式δ構造からの環射がδ射であることを係数と変数上で判定する。
@@ -151,7 +153,7 @@ end SerrePositivity.BhattScholze
 
 end PolynomialDelta
 
-/-! ## rank 1変数を持つ補助多項式δ構造（旧 Delta/Free/PolynomialRankOneDelta.lean）
+/-! ## rank 1変数を持つ補助多項式δ構造
 
 基底δ構造を係数に延長し、各変数のδを零とする。
 相対自由δ環の次座標へ移るδ構造とは区別する。
@@ -213,7 +215,7 @@ end SerrePositivity.BhattScholze
 
 end PolynomialRankOneDelta
 
-/-! ## 基底δ環上の相対自由δ環（旧 Delta/Free/RelativeFreeDelta.lean）
+/-! ## 基底δ環上の相対自由δ環
 
 基底のW₂切断を係数に用い、x_(s,n)を(x_(s,n),x_(s,n+1))へ送る切断を構成する。
 pねじれを持つ基底にも適用できる、BS 著者版 Notation 2.8・BS 著者版 Lemma 2.11の相対構成。
@@ -265,7 +267,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeDelta
 
-/-! ## 相対自由δ環の普遍性（旧 Delta/Free/RelativeFreeUniversal.lean）
+/-! ## 相対自由δ環の普遍性
 
 任意の基底δ射と生成元像の指定から、基底と両立する一意なδ射を構成する。
 基底・終域のpねじれを許す。BS 著者版 Notation 2.8のδ元の添加に用いる。
@@ -338,7 +340,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeUniversal
 
-/-! ## 基底δ環上の生成元と関係式（旧 Delta/Free/RelativeFreePresentation.lean）
+/-! ## 基底δ環上の生成元と関係式
 
 相対自由δ環のイデアルのδ閉包で割り、指定した関係式と基底δ射を満たす
 普遍δ射を構成する。BS 著者版 Notation 2.8・BS 著者版 Example 2.10の相対構成。
@@ -400,7 +402,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreePresentation
 
-/-! ## 相対自由δ環の初期変数と後続変数の分離（旧 Delta/Free/RelativeFreeVariableSplit.lean）
+/-! ## 相対自由δ環の初期変数と後続変数の分離
 
 台多項式環の同型。後続変数のδ段番号は一つ繰り下げる。
 δ構造の保存や商・完備化の平坦性をこの同型だけからは主張しない。
@@ -518,3 +520,10 @@ theorem relativeFreeVariableSplitAlgEquiv_successor (f : MvPolynomial (σ × ℕ
 end SerrePositivity.BhattScholze
 
 end RelativeFreeVariableSplit
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Notation 2.8"] _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing
+attribute [cite BS19 "Notation 2.8"] _root_.SerrePositivity.BhattScholze.existsUnique_relativeFreeDeltaHom
+attribute [cite BS19 "Notation 2.8"] _root_.SerrePositivity.BhattScholze.existsUnique_relativeFreePresentationHom

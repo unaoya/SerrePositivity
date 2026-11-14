@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTransFunctor
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveNatTransCylinder
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.NerveNatTransCylinder
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
 /-!
 概要：元の定値自然変換の全円柱を同じ成分辺の定値族へ同定する。

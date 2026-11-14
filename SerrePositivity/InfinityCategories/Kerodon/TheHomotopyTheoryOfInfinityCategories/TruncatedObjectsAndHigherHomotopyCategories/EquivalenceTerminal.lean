@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.HomotopyBoundaryExtension
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
@@ -121,3 +123,8 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotop
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.3.4.16" (partial := special) "仮定：ホモトピー同値な二つの Kan 複体、k=−2（Lean が強い特殊形）。結論：IsSimplicialHomotopyEquivalence.isContractibleKan_iff は可縮性を保存反映するので、原典の負二次の切断性の不変性に一致。一般の k の高次群の消滅の不変性は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsSimplicialHomotopyEquivalence.isContractibleKan_iff

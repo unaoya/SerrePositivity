@@ -17,10 +17,10 @@ universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (B : Mon (Complex R))
-  (J : Type v) [Small.{u} J] (X : J → PerfectDGModule R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B))
-local notation "D" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B
+  (J : Type v) [Small.{u} J] (X : J → PerfectDGModule R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B))
+local notation "D" => _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B
 local notation "C" => DGSmallPerfectEnvelope R (D) J X
-local notation "b" => (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B)
+local notation "b" => (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R B)
 local notation "Y" => dgSmallPerfectEnvelopeYoneda R (D) J X
 local notation "r" => dgSmallPerfectEnvelopeRepresentable R (D) J X (b)
 

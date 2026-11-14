@@ -1,0 +1,1307 @@
+{
+  "status": "PASS",
+  "before_count": 64,
+  "after_count": 64,
+  "parent_count": 64,
+  "changes": [],
+  "transient": {
+    "before": [
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termS_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUS_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUT_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termφ_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termF_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawS_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawT_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.eq_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.eq_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.splitter",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termŜ_1»",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT̂_1»",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termB_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termE_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termF_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termJ_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termU_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_model_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_toBig_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_prismSiteAlgebras_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawK_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawL_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2"
+    ],
+    "after": [
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termS_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUS_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUT_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termφ_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termF_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawS_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawT_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.eq_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.eq_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_1",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_2",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.splitter",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termŜ_1»",
+      "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT̂_1»",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termB_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termE_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termF_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termJ_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termU_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_model_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_toBig_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_prismSiteAlgebras_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawK_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawL_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+      "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2"
+    ]
+  },
+  "auxiliary_groups": {
+    "before": [
+      {
+        "parent": "A1dH0Target",
+        "module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+        "names": [
+          "A1dH0Target._proof_1",
+          "A1dH0Target._proof_2",
+          "A1dH0Target._proof_3",
+          "A1dH0Target._proof_4",
+          "A1dH0Target._proof_5"
+        ]
+      },
+      {
+        "parent": "A1dRawTarget",
+        "module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+        "names": [
+          "A1dRawTarget._proof_1",
+          "A1dRawTarget._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProductMap",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProductMap._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic",
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termB_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termE_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termF_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termJ_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termU_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_model_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_toBig_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_prismSiteAlgebras_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawK_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawL_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termS_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUS_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUT_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termφ_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termŜ_1»",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT̂_1»"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termF_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawS_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawT_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.splitter"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_3",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_4",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_5",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter.congr_simp",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter_leibniz",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter_leibniz._simp_1_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter_leibniz._simp_1_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore.congr_simp",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy._abel_1_8",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy._simp_1_6",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy._simp_1_7"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substituteCompleted",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substituteCompleted._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substituteCompleted.congr_simp"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.bigFrameAlgebraIso",
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.bigFrameAlgebraIso._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_10",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_2",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_3",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_4",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_5",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_6",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_7",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_8",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_9"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_2",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_3",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_4",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_5",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_6",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_7",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_8"
+        ]
+      }
+    ],
+    "after": [
+      {
+        "parent": "A1dH0Target",
+        "module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+        "names": [
+          "A1dH0Target._proof_1",
+          "A1dH0Target._proof_2",
+          "A1dH0Target._proof_3",
+          "A1dH0Target._proof_4",
+          "A1dH0Target._proof_5"
+        ]
+      },
+      {
+        "parent": "A1dRawTarget",
+        "module": "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+        "names": [
+          "A1dRawTarget._proof_1",
+          "A1dRawTarget._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.ValuationProbe._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.localizationToInterval._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.overlapModuleComplex._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_2",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_3",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochainFunctor._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorDetection",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorCochain_unitIso._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeField._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap._proof_1",
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeMap._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProductMap",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct",
+        "names": [
+          "SerrePositivity.BhattScholze.Perfectoidization.Derived.valuationProbeProductMap._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic",
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termB_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termE_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termF_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termJ_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___macroRules__private_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso_0_SerrePositivity_BhattScholze_Prismatic_termU_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_model_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_BigCechVertexFrame_toBig_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_CechAlexander_Frames_BigCechAffineFrameQuasiIso___unexpand_SerrePositivity_BhattScholze_Prismatic_prismSiteAlgebras_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawK_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient_0_SerrePositivity_BhattScholze_Prismatic_termRawL_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+          "SerrePositivity.BhattScholze.Prismatic._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_Comparison_PDRawBaseChangeQuotient___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termS_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUS_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termUT_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termφ_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_BhattScholze_Prismatic_pdTerm_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___unexpand_SerrePositivity_DerivedCompletion_principalCompletionRingCatUnit_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termŜ_1»",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«_aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamCompletedSubstitution_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termT̂_1»"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termF_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawS_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___macroRules__private_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule_0_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_termRawT_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_PDRawPolynomialSubstitution_substitute_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution._aux_SerrePositivity_BhattScholze_Prismatic_Crystalline_PDDeRham_PDDeRhamSubstitutionChainRule___unexpand_SerrePositivity_BhattScholze_Prismatic_pdRaw_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.eq_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.jacobian.match_1.splitter"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_3",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_4",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter._proof_5",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter.congr_simp",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter_leibniz",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter_leibniz._simp_1_2",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialAfter_leibniz._simp_1_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore.congr_simp",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partialBefore.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy._abel_1_8",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy._simp_1_6",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.partial_copy._simp_1_7"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substituteCompleted",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substituteCompleted._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substituteCompleted.congr_simp"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.bigFrameAlgebraIso",
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.bigFrameAlgebraIso._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_10",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_2",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_3",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_4",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_5",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_6",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_7",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_8",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_baseChangeAlgEquiv._proof_9"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv",
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "names": [
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_1",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_2",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_3",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_4",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_5",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_6",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_7",
+          "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients_quotientTensorEquiv._proof_8"
+        ]
+      }
+    ]
+  },
+  "parser_self_identity_companions": {
+    "policy": "Only native-typed private ParserDescr constants at verified notation commands; compare every distinct type/body/axiom/attribute payload per original source owner after replacing only its own literal Name. Repeated identical compiler descriptors caused by a reviewed split are recorded without ordinal pairing. Raw body hashes and inventories are retained.",
+    "before": [
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawT",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawT",
+        "source_line": 39,
+        "raw_body_hash": "4250066034275144351",
+        "parser_self_body_hash": "5676737205688103474",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "5676737205688103474",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termŜ»",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termŜ»",
+        "source_line": 31,
+        "raw_body_hash": "15302096136762389837",
+        "parser_self_body_hash": "8703510258870466396",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "8703510258870466396",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUT",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUT",
+        "source_line": 34,
+        "raw_body_hash": "788937610505466390",
+        "parser_self_body_hash": "15236474030174787123",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "15236474030174787123",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termRawL",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient.0.SerrePositivity.BhattScholze.Prismatic.termRawL",
+        "source_line": 25,
+        "raw_body_hash": "8513791016095402705",
+        "parser_self_body_hash": "1597102739089154027",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "1597102739089154027",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termB",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termB",
+        "source_line": 60,
+        "raw_body_hash": "12923961353097182067",
+        "parser_self_body_hash": "7567523169104453488",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "7567523169104453488",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termRawK",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient.0.SerrePositivity.BhattScholze.Prismatic.termRawK",
+        "source_line": 24,
+        "raw_body_hash": "18429074308349397734",
+        "parser_self_body_hash": "3051985558698872380",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "3051985558698872380",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawS",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawS",
+        "source_line": 38,
+        "raw_body_hash": "10375758732368403070",
+        "parser_self_body_hash": "11886491979781448220",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "11886491979781448220",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUS",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUS",
+        "source_line": 33,
+        "raw_body_hash": "17344190153009551502",
+        "parser_self_body_hash": "13905684863236040832",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "13905684863236040832",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termφ",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termφ",
+        "source_line": 35,
+        "raw_body_hash": "16049043851572878178",
+        "parser_self_body_hash": "2173581160222367854",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "2173581160222367854",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termF",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termF",
+        "source_line": 40,
+        "raw_body_hash": "248263347446952108",
+        "parser_self_body_hash": "13912148909553444772",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "13912148909553444772",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termJ",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termJ",
+        "source_line": 62,
+        "raw_body_hash": "2970153410601070845",
+        "parser_self_body_hash": "5141264264404732873",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "5141264264404732873",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termS",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termS",
+        "source_line": 29,
+        "raw_body_hash": "10634111780988095993",
+        "parser_self_body_hash": "9409536055318995453",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "9409536055318995453",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termT̂»",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termT̂»",
+        "source_line": 32,
+        "raw_body_hash": "3717531660608967937",
+        "parser_self_body_hash": "4771162297768212963",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "4771162297768212963",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termU",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termU",
+        "source_line": 57,
+        "raw_body_hash": "2576272562002273577",
+        "parser_self_body_hash": "16625735754729221298",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "16625735754729221298",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termF",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termF",
+        "source_line": 59,
+        "raw_body_hash": "2207228943635798015",
+        "parser_self_body_hash": "13912148909553444772",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "13912148909553444772",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termE",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termE",
+        "source_line": 58,
+        "raw_body_hash": "3092914063044043711",
+        "parser_self_body_hash": "17090232360923211143",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "17090232360923211143",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termT",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termT",
+        "source_line": 30,
+        "raw_body_hash": "13762123315271263478",
+        "parser_self_body_hash": "10711248203743301503",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "10711248203743301503",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawT",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawT",
+        "source_line": 47,
+        "raw_body_hash": "4250066034275144351",
+        "parser_self_body_hash": "5676737205688103474",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "5676737205688103474",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termŜ»",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termŜ»",
+        "source_line": 40,
+        "raw_body_hash": "15302096136762389837",
+        "parser_self_body_hash": "8703510258870466396",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "8703510258870466396",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUT",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUT",
+        "source_line": 43,
+        "raw_body_hash": "788937610505466390",
+        "parser_self_body_hash": "15236474030174787123",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "15236474030174787123",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termRawL",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient.0.SerrePositivity.BhattScholze.Prismatic.termRawL",
+        "source_line": 34,
+        "raw_body_hash": "8513791016095402705",
+        "parser_self_body_hash": "1597102739089154027",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "1597102739089154027",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termB",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termB",
+        "source_line": 68,
+        "raw_body_hash": "12923961353097182067",
+        "parser_self_body_hash": "7567523169104453488",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "7567523169104453488",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termRawK",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient.0.SerrePositivity.BhattScholze.Prismatic.termRawK",
+        "source_line": 33,
+        "raw_body_hash": "18429074308349397734",
+        "parser_self_body_hash": "3051985558698872380",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "3051985558698872380",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawS",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termRawS",
+        "source_line": 46,
+        "raw_body_hash": "10375758732368403070",
+        "parser_self_body_hash": "11886491979781448220",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "11886491979781448220",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUS",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termUS",
+        "source_line": 42,
+        "raw_body_hash": "17344190153009551502",
+        "parser_self_body_hash": "13905684863236040832",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "13905684863236040832",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termφ",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termφ",
+        "source_line": 44,
+        "raw_body_hash": "16049043851572878178",
+        "parser_self_body_hash": "2173581160222367854",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "2173581160222367854",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termF",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termF",
+        "source_line": 48,
+        "raw_body_hash": "248263347446952108",
+        "parser_self_body_hash": "13912148909553444772",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "13912148909553444772",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termJ",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termJ",
+        "source_line": 70,
+        "raw_body_hash": "2970153410601070845",
+        "parser_self_body_hash": "5141264264404732873",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "5141264264404732873",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termS",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termS",
+        "source_line": 38,
+        "raw_body_hash": "10634111780988095993",
+        "parser_self_body_hash": "9409536055318995453",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "9409536055318995453",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termT̂»",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.«termT̂»",
+        "source_line": 41,
+        "raw_body_hash": "3717531660608967937",
+        "parser_self_body_hash": "4771162297768212963",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "4771162297768212963",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termU",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termU",
+        "source_line": 65,
+        "raw_body_hash": "2576272562002273577",
+        "parser_self_body_hash": "16625735754729221298",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "16625735754729221298",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termF",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termF",
+        "source_line": 67,
+        "raw_body_hash": "2207228943635798015",
+        "parser_self_body_hash": "13912148909553444772",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "13912148909553444772",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso",
+        "name": "SerrePositivity.BhattScholze.Prismatic.termE",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechAffineFrameQuasiIso.0.SerrePositivity.BhattScholze.Prismatic.termE",
+        "source_line": 66,
+        "raw_body_hash": "3092914063044043711",
+        "parser_self_body_hash": "17090232360923211143",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "17090232360923211143",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      },
+      {
+        "module": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution",
+        "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termT",
+        "kernel_name": "_private.SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCompletedSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.termT",
+        "source_line": 39,
+        "raw_body_hash": "13762123315271263478",
+        "parser_self_body_hash": "10711248203743301503",
+        "content": {
+          "kind": "def",
+          "type_hash": "12178011198773279271",
+          "parser_self_body_hash": "10711248203743301503",
+          "axioms": [],
+          "attributes": {
+            "simp": false,
+            "reducibility": "Lean.ReducibilityStatus.semireducible",
+            "instance_priority": null,
+            "expose": true
+          }
+        }
+      }
+    ],
+    "before_content_groups": 17,
+    "after_content_groups": 17,
+    "differences": []
+  }
+}

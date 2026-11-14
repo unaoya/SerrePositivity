@@ -37,7 +37,7 @@ lemma exists_pushoutRectangle_of_zeroEnd {X : SSet.{u}} [Quasicategory X] [_root
     (L : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L)
     (τ : (Δ[2] : SSet.{u}) ⟶ X)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ L = stdSimplex.δ (2 : Fin 3) ≫ τ)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (τ.app (Opposite.op ⦋0⦌)
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (τ.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (2 : Fin 3)))) :
     ∃ F : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X,
       _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2 = L ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingBottomTriangle F = τ ∧

@@ -1,0 +1,27 @@
+{
+  "new_foundation_roots": [
+    "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition",
+    "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Identity",
+    "SerrePositivity.CommutativeAlgebra.CompletelyFlat.RegularReduction",
+    "SerrePositivity.CommutativeAlgebra.DividedPowers.FactorialCoefficients",
+    "SerrePositivity.CommutativeAlgebra.DividedPowers.FactorialSubring",
+    "SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation",
+    "SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers",
+    "SerrePositivity.CommutativeAlgebra.Polynomial.IndependentMonicQuotient",
+    "SerrePositivity.CommutativeAlgebra.Polynomial.MonicRelation",
+    "SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra.FrameHelpers",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlat.Definition",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlat.Discrete",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlatPrincipalCompletion",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PadicIntMap",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.PrincipalPairRegularity",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.RegularSwap",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionUniformBound",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCompletion"
+  ],
+  "closure_modules": 274,
+  "bs_dependencies": [],
+  "infinity_dependencies": [],
+  "source_sha256": "7fc0e51f18058b905c0734d2c0daca2de0a4501a5d5f0ec3f6fc38c0025438f4"
+}

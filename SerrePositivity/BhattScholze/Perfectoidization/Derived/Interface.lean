@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCompletion
 
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
@@ -6,8 +7,8 @@ public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HomotopyCategoryComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.HomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyNatTrans
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.Algebra.Homology.DerivedCategory.HomologySequence
@@ -21,17 +22,17 @@ public import Mathlib.RingTheory.KrullDimension.Basic
 public import Mathlib.RingTheory.Valuation.ValuationRing
 
 /-!
-# 導来 perfectoid 化の界面 E3 の型
+# 導来 perfectoid 化の構造と性質（BS 著者版 Definition 8.2）
 
 ## 概要
-添字圏、導来対象・辺・自然変換、導来完備化 H⁰ の包装、単位付き導来極限錐のデータ、excision 図式、界面 E3 の構造体。
+添字圏、導来対象・辺・自然変換、導来完備化 H⁰ の包装、単位付き導来極限錐のデータ、excision 図式、導来 perfectoid 化の構造体。
 
 ## 方針
 D(R) 上の導来 perfectoid 化の性質を欄として束ねる（BS 著者版 Definition 8.2、
 Proposition 8.5、Corollary 8.14、Theorem 10.11、Corollary 8.12）。
 
 ## 規約
-E3 の存在そのものは Inputs の唯一の sorry。
+導来 perfectoid 化の存在の入力は `Inputs` の入口で与える。
 
 ## 使われ方
 E3 から環の定理を導く橋（IntegralExistence・Excision）、EInfinity の CAlg 版。
@@ -39,7 +40,7 @@ E3 から環の定理を導く橋（IntegralExistence・Excision）、EInfinity 
 
 universe u
 
-/-! ## Perfectoid 化界面の通常の添字圏（旧 PerfectoidizationInterface/Setup.lean）
+/-! ## Perfectoid 化界面の通常の添字圏
 
 概要：同じ宇宙の可換代数、導来 p 完備な代数、perfectoid 標的の圏を定める。
 方針：可換環の under 圏と充満部分圏を用いる。
@@ -99,7 +100,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end Setup
 
-/-! ## 界面で用いる導来対象・辺・自然変換（旧 PerfectoidizationInterface/Derived.lean）
+/-! ## 界面で用いる導来対象・辺・自然変換
 
 概要：D5b の離散埋め込みと D3 の同値を界面の名前空間へ包装する。
 方針：頂点・辺を評価し、整数次数のコホモロジーを通常の導来圏で取る。
@@ -117,15 +118,15 @@ attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R]
 
 /-- D5b の離散可換代数の埋め込みを、同じ under 圏の始域で使う。 -/
-abbrev J : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding R
+abbrev J : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding R
 
 /-- 単体的関手の通常の代数における値。 -/
-def vertex (F : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) (S : A_R R) :
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌ := F.app _ (ComposableArrows.mk₀ S)
+def vertex (F : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) (S : A_R R) :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌ := F.app _ (ComposableArrows.mk₀ S)
 
 /-- 通常の代数の射を単体的関手で写した辺。 -/
-def edge (F : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) {S T : A_R R} (f : S ⟶ T) :
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R).Edge (vertex R F S) (vertex R F T) :=
+def edge (F : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) {S T : A_R R} (f : S ⟶ T) :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R).Edge (vertex R F S) (vertex R F T) :=
   (CategoryTheory.nerve.edgeMk f).map F
 
 /-- D3 経由の整数次数コホモロジー関手。 -/
@@ -133,21 +134,21 @@ def HFunctor (i : ℤ) : _root_.SerrePositivity.InfinityCategories.Project.Deriv
   (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor ⋙ DerivedCategory.homologyFunctor _ i
 
 /-- 導来頂点の i 次コホモロジー加群。 -/
-def H (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : ModuleCat.{u} R :=
+def H (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : ModuleCat.{u} R :=
   (HFunctor R i).obj ⟨x⟩
 
 /-- 導来辺がコホモロジー上に誘導する線形射。 -/
-def HMap (i : ℤ) {x y : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
-    (e : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R).Edge x y) : H R i x ⟶ H R i y :=
+def HMap (i : ℤ) {x y : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌}
+    (e : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R).Edge x y) : H R i x ⟶ H R i y :=
   (HFunctor R i).map (SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated)
 
 /-- D3 によるコホモロジーは、頂点の semifree 複体のコホモロジーに一致する。 -/
-def HIso (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) :
-    H R i x ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv R x).val.homology i :=
+def HIso (i : ℤ) (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) :
+    H R i x ≅ (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv R x).val.homology i :=
   (DerivedCategory.homologyFunctorFactorsh (ModuleCat R) i).app
       ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeHomotopyComparison R).obj ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityH0Equivalence R).functor.obj ⟨x⟩)) ≪≫
     (HomotopyCategory.homologyFunctorFactors (ModuleCat R) (.up ℤ) i).app
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv R x).val
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv R x).val
 
 /-- 離散埋め込みの零次コホモロジーは元の R 加群。 -/
 def JHZeroIso (S : A_R R) :
@@ -155,35 +156,35 @@ def JHZeroIso (S : A_R R) :
   HIso R 0 _ ≪≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbeddingHomologyZeroIso R S
 
 /-- 離散性は零次以外の全コホモロジーの消滅。 -/
-def Disc (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
+def Disc (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
   ∀ i : ℤ, i ≠ 0 → IsZero (H R i x)
 
 /-- 単体的自然変換。両端の等式もデータに含む。 -/
-abbrev NatInfinity (F G : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) := SSet.Homotopy F G
+abbrev NatInfinity (F G : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) := SSet.Homotopy F G
 
 /-- 自然変換の S における成分の辺。 -/
-def component {F G : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R}
+def component {F G : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R}
     (η : NatInfinity R F G) (S : A_R R) :
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R).Edge (vertex R F S) (vertex R G S) :=
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R).Edge (vertex R F S) (vertex R G S) :=
   (SSet.Edge.ofTruncated
     (((SSet.Truncated.Edge.id (X := (SSet.truncation 2).obj (algebraNerve R))
       (ComposableArrows.mk₀ S)).tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map
         ((SSet.truncation 2).map η.h))).ofEq
-    (congrArg (fun (f : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) =>
+    (congrArg (fun (f : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) =>
       f.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ S)) η.h₀)
-    (congrArg (fun (f : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) =>
+    (congrArg (fun (f : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) =>
       f.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ S)) η.h₁)
 
 /-- 指定された perfectoid 標的への離散 R 代数の図式。 -/
 def targetDiagram (p : ℕ) [Fact p.Prime] (S : A_R R) :
-    perfectoidTargetNerve p S.right ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R :=
+    perfectoidTargetNerve p S.right ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R :=
   nerveMap (targetAlgebra R p S) ≫ J R
 
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end Derived
 
-/-! ## 通常の代数への導来完備化 H⁰ の包装（旧 PerfectoidizationInterface/Completion.lean）
+/-! ## 通常の代数への導来完備化 H⁰ の包装
 
 概要：実際の一変数 Koszul 完備化 H⁰ を環の関手にする。
 方針：既存の単位と完備標的への環準同型の一意延長を用いる。
@@ -202,16 +203,6 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable (p : ℕ)
 
-/-- S の実際の導来 p 完備化の H⁰ 環。 -/
-def completionRing (S : CommRingCat.{u}) : CommRingCat.{u} := by
-  letI := principalCompletionCommRing S (p : S)
-  exact CommRingCat.of (PrincipalCompletionH0 S (p : S))
-
-/-- 元の Koszul 完備化単位を環の射として保持する。 -/
-def completionUnit (S : CommRingCat.{u}) : S ⟶ completionRing p S := by
-  letI := principalCompletionCommRing S (p : S)
-  exact CommRingCat.ofHom (principalCompletionUnitRingHom S (p : S))
-
 /-- 完備化 H⁰ の環自身も導来 p 完備である。 -/
 theorem completionRing_complete (S : CommRingCat.{u}) :
     IsModuleComplete (completionRing p S) (p : completionRing p S)
@@ -223,45 +214,11 @@ theorem completionRing_complete (S : CommRingCat.{u}) :
     (p : S) (completionRing p S)).mpr h
   simpa only [map_natCast] using h'
 
-/-- 離散標的の完備性を、指定された元の環準同型に沿って制限する。 -/
-theorem complete_along_map {S T : CommRingCat.{u}} (f : S ⟶ T)
-    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) :
-    letI := f.hom.toAlgebra; IsModuleComplete S (p : S) (ModuleCat.of S T) := by
-  letI := f.hom.toAlgebra
-  apply (isModuleComplete_algebraMap_iff S T (p : S) T).mp
-  simpa only [map_natCast] using hT
-
-/-- 完備な離散環への射は、指定された H⁰ 完備化単位に沿って一意に延長する。 -/
-theorem completion_existsUnique {S T : CommRingCat.{u}} (f : S ⟶ T)
-    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) :
-    ∃! g : completionRing p S ⟶ T, completionUnit p S ≫ g = f := by
-  letI := principalCompletionCommRing S (p : S)
-  obtain ⟨g, hg, hu⟩ := principalCompletion_existsUnique_ringHom S (p : S) T f.hom
-    (complete_along_map p f hT)
-  refine ⟨CommRingCat.ofHom g, ?_, ?_⟩
-  · exact CommRingCat.hom_ext hg
-  · intro k hk
-    apply CommRingCat.hom_ext
-    apply hu k.hom
-    exact congrArg (fun (q : S ⟶ T) => q.hom) hk
-
-/-- 完備標的への延長を選ぶ。 -/
-def completionLift {S T : CommRingCat.{u}} (f : S ⟶ T)
-    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) : completionRing p S ⟶ T :=
-  (completion_existsUnique p f hT).choose
-
 /-- 選んだ延長は元の単位との図式を満たす。 -/
 @[simp] theorem completionLift_comp {S T : CommRingCat.{u}} (f : S ⟶ T)
     (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) :
     completionUnit p S ≫ completionLift p f hT = f :=
   (completion_existsUnique p f hT).choose_spec.1
-
-/-- 完備標的への二射は、元の単位との合成で検出できる。 -/
-theorem completion_hom_ext {S T : CommRingCat.{u}}
-    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
-    {f g : completionRing p S ⟶ T}
-    (h : completionUnit p S ≫ f = completionUnit p S ≫ g) : f = g :=
-  (completion_existsUnique p (completionUnit p S ≫ f) hT).unique rfl h.symm
 
 /-- 環の射が誘導する H⁰ 完備化の射。 -/
 def completionMap {S T : CommRingCat.{u}} (f : S ⟶ T) :
@@ -457,7 +414,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end Completion
 
-/-! ## H⁰ の環構造と単位付き導来極限錐のデータ（旧 PerfectoidizationInterface/LimitData.lean）
+/-! ## H⁰ の環構造と単位付き導来極限錐のデータ
 
 概要：底の導来対象と無関係な環構造を許さず、辺と射影の乗法整合性を記録する。
 方針：通常の R 代数の関手と加群の比較同型を持ち、実際の join 錐の脚を照合する。
@@ -474,7 +431,7 @@ open scoped Simplicial
 variable (R : Type u) [CommRing R]
 
 /-- H⁰ の環・辺・単位を、底の導来加群のデータに結び付ける。 -/
-structure H0RingData (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+structure H0RingData (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)
     (η : NatInfinity R (J R) P) where
   /-- H⁰ の通常の R 代数の関手。 -/
   ringFunctor : A_R R ⥤ A_R R
@@ -508,7 +465,7 @@ theorem targetUnitMap_naturality (p : ℕ) [Fact p.Prime] (S : A_R R)
 
 /-- BS 著者版 Proposition 8.5 の特定の錐と、単位・環の射影との整合性。極限性は別の欄で受け取る。 -/
 structure BSLimitConeData (p : ℕ) [Fact p.Prime]
-    (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) (η : NatInfinity R (J R) P)
+    (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) (η : NatInfinity R (J R) P)
     (h0 : H0RingData R P η) (S : A_R R) where
   /-- Type u の標的だけを添字とする導来錐。 -/
   cone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (targetDiagram R p S)
@@ -528,7 +485,7 @@ structure BSLimitConeData (p : ℕ) [Fact p.Prime]
     (component R η S).edge
   /-- 実際の導来錐の脚を、両端を固定した辺として保持する。 -/
   projectionEdge : ∀ T : PerfUnder_u p S.right,
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R).Edge (vertex R P S) (vertex R (J R) ((targetAlgebra R p S).obj T))
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R).Edge (vertex R P S) (vertex R (J R) ((targetAlgebra R p S).obj T))
   /-- 脚は任意に添えた辺でなく、join 錐の実際の一単体。 -/
   projectionEdge_eq : ∀ T, (projectionEdge T).edge =
     cone.val.app _ (joinLegSimplex (ComposableArrows.mk₀ T))
@@ -549,7 +506,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end LimitData
 
-/-! ## 通常の商図式からの単体的 excision 四角形（旧 PerfectoidizationInterface/ExcisionDiagram.lean）
+/-! ## 通常の商図式からの単体的 excision 四角形
 
 概要：元の四辺とその可換性を、二つの二単体として同時に保持する。
 方針：通常の nerve の合成二単体を対角で貼り、単体的関手で写す。
@@ -618,15 +575,15 @@ theorem quotientSquare_commutes {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) 
   rfl
 
 /-- 通常の商による四角形を、可換性の二単体込みで P により写す。 -/
-def perfdSquare (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+def perfdSquare (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)
     {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
-    (Δ[1] : SSet.{u + 1}) ⊗ Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R :=
+    (Δ[1] : SSet.{u + 1}) ⊗ Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R :=
   ordinarySquare R f (quotientProjection R S I)
     (quotientProjection R T (I.map f.right.hom)) (quotientComparison R f I)
     (quotientSquare_commutes R f I) ≫ P
 
 /-- perfectoid 化の四角形の一方の二単体は、元の二つの商の射の像。 -/
-theorem perfdSquare_triangle_zero (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+theorem perfdSquare_triangle_zero (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)
     {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ perfdSquare R P f I =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₂
@@ -634,7 +591,7 @@ theorem perfdSquare_triangle_zero (P : algebraNerve R ⟶ _root_.SerrePositivity
   rw [perfdSquare, ← Category.assoc, ordinarySquare_triangle_zero]
 
 /-- もう一方の二単体は、元の f と右側の商射の像。 -/
-theorem perfdSquare_triangle_one (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R)
+theorem perfdSquare_triangle_one (P : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R)
     {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ perfdSquare R P f I =
       SSet.yonedaEquiv.symm (ComposableArrows.mk₂ f
@@ -652,7 +609,7 @@ end SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 end ExcisionDiagram
 
-/-! ## D(R) 上の perfectoid 化界面（E3）の型（旧 PerfectoidizationInterface/Interface.lean）
+/-! ## D(R) 上の perfectoid 化界面（E3）の型
 
 概要：原典の各性質を、その根拠を導出するためのデータとともに束ねる。
 方針：界面の型だけを宣言し、存在は主張しない。
@@ -671,7 +628,7 @@ open scoped Simplicial
 structure PerfectoidizationInterfaceE3 (R : Type u) [CommRing R]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) where
   /-- 通常の R 代数の perfectoid 化を底の導来対象として受け取る（BS 著者版 Definition 8.2 に対応する E3 の欄。Lemma 8.4 とあわせて引用）。 -/
-  perfd : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R
+  perfd : algebraNerve R ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R
   /-- 元の離散代数からのホモトピー整合的な単位。 -/
   unit : NatInfinity R (J R) perfd
   /-- H⁰ の環構造と、単位・射のコホモロジーとの整合性。 -/

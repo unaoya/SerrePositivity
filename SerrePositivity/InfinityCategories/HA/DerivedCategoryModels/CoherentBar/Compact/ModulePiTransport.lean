@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.PiTransportMap
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ModuleTranslationPi
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ModuleTranslationPi
 /-!
 概要：単体的加群の正次数 π の基点移送は、全ての指定道で同じ平行移動になる。
 方針：零基点の球面に区間の道を加える実円柱を構成する。

@@ -34,12 +34,12 @@ lemma pullbackSquare_cospan (p : (horn 2 2 : SSet.{u + 1}) ⟶ Sp.{u}) :
 /-- Sp の全ての指定された辺は fiber 四角形を持つ。 -/
 lemma sp_fiber_exists {x y : Sp.{u} _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj Sp.{u}) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) :=
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) :=
   _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_fiberSquare_of_cospan_limits CoherentPullback.hasLimit f
 
 /-- 元の辺を右辺として保持する、選択した実際の fiber 四角形。 -/
 def fiberSquare {x y : Sp.{u} _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj Sp.{u}) x y) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f :=
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj Sp.{u}) x y) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f :=
   Classical.choice (sp_fiber_exists f)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

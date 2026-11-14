@@ -13,7 +13,7 @@ CosliceBaseChangePreservation も同時 import し、局所 instance 名の衝�
 open Lean in
 run_cmd do
   let oldAuditPrefix1 := `SerrePositivity.InfinityCategories.F2.Presentable.Supply
-  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/bulk-kl-module-map.json")
   let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
   let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
     if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)

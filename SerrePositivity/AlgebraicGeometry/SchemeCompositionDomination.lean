@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BlowupOpenMap
 public import SerrePositivity.AlgebraicGeometry.AffineAdmissibleComposition
@@ -104,3 +106,11 @@ end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
 deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_admissible_composition_domination := _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Claim 5.3" (partial := component) "仮定：二段の許容ブローアップが与えられる（Lean が強い）。結論：一つの許容ブローアップで支配する幾何部分。通常ブローアップの (†) からの K の正方形の比較・帰結は含まない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination
+attribute [cite KST "Proof step §5.2 flattening" (partial := component) "仮定：有限射の場合の平坦化、または既に与えた二段の許容ブローアップ（Lean が強い）。結論：有限射からの精密化と許容ブローアップの支配。一般の固有射の Temkin による支配を供給しない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination
+attribute [cite KST "Prop 5.4" (partial := component) "仮定：二段の許容ブローアップが与えられる（Lean が強い）。結論：一つの許容ブローアップで支配する幾何部分。通常ブローアップの (†) からの K の正方形の比較・帰結は含まない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination
+attribute [cite LT "Proof step A.2 Step 3" (partial := component) "仮定：有限射、または既に与えられた二段の許容ブローアップ（Lean が強い）。結論：古典的な支配・平坦化の幾何の部品。切断型不変量に適用した引き戻しはない（Lean が弱い）。"] _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_composition_domination

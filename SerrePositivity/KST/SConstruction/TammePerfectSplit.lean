@@ -28,7 +28,7 @@ def IsPerfectLocalizingInvariant.tammeLeftFactorIso :
 /-- 実積の右因子と、元の C の不変量値の比較。 -/
 def IsPerfectLocalizingInvariant.tammeRightFactorIso :
     perfectInvariantHoObject F (perfectStableVertex C hC) ≅ SpectrumHo.obj
-      (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex
+      (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex
         (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD)).square 1 1)) :=
   hF.perfectSplitRightFactorIso (tammePerfectSequence p q hC hD)
 

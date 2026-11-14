@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFTripleInterchangeCells
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CartesianInterchangeDiamond
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CartesianInterchangeDiamond
 
 /-! # 元の前二射 BF 比較と最終射補正の実交換三角形対
 概要：元の全補正辺と BF 比較辺の段評価から、二順序の実交換三角形対を構成する。

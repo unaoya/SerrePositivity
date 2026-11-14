@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelOuterSquareDiagramIso
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerTriangleComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPerfectSquareDiagramIso
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoWhiskerCancellation
 
 /-!
 概要：LT 外周の同じ下二単体を厚核面へ運び、公開済みの厚核下二単体比較へ接続する。

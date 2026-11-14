@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.ProSpectrumIsoCriterion
 
 /-!
@@ -48,3 +50,8 @@ lemma IsPiProConnected.groupMap_isProIso {X Y : Tower.{u}} {f : LevelHom X Y} {n
   ProGroup.proIso_of_kernel_image (h.1 j hj) (h.2 j hj.le)
 
 end SerrePositivity.KST.LocalizingInvariants.ProSpectrum
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Def 2.27" (partial := component) "仮定：自然数塔のレベル射とレベルごとのファイバー列（Lean が強い）。結論：整数次数での弱同値と連結度をプロ群で定義し、ファイバーの消滅と比較。任意の ∞ プロ圏の切断と弱引き戻しの一般定義はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProConnected

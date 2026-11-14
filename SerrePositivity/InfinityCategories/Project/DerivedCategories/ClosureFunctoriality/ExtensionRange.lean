@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.StrictRange
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGProjectiveClosureProperty
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorShiftIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGProjectiveClosureProperty
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleFunctorShiftIso
 public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 
 /-!

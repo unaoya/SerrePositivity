@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentablePresheafAllSmallLimits
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorVertexConeReindex
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamilyReadback
 
 /-!

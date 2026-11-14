@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxTerminalBoundary
 public import SerrePositivity.KST.LocalizingInvariants.LaxInclusionExact
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction
@@ -24,7 +26,7 @@ variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCat
 
 lemma fromC_snd_vertex (x : C.obj _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌)
-      ((fromC p q).app (Opposite.op ⦋0⦌) x) = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).vertex := by
+      ((fromC p q).app (Opposite.op ⦋0⦌) x) = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).vertex := by
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (fromC_snd p q)
     (Opposite.op ⦋0⦌)) x
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌)
@@ -35,9 +37,9 @@ lemma fromC_terminalBoundary (x : C.obj _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting (laxFst p q).hom ((fromC p q).app (Opposite.op ⦋0⦌) x) := by
   apply lax_fst_terminalBoundary p.hom q.hom
   · rw [fromC_snd_vertex]
-    exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isTerminal
+    exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).isTerminal
   · rw [fromC_snd_vertex]
-    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := q.hom) _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex D.obj).isZero).2
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := q.hom) _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex D.obj).isZero).2
 
 def fromCAdjunction : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (laxFst p q).hom (fromC p q) :=
   adjunctionOfRelativeTerminalSection (fromC_fst p q) (fromC_terminalBoundary p q)
@@ -49,3 +51,8 @@ instance fromCAdjunction_counit_isIso : IsIso (fromCAdjunction p q).counit :=
   relativeTerminalSection_counit_isIso (fromC_fst p q) (fromC_terminalBoundary p q)
 
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Prop 10"] _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromCAdjunction

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfEvaluation
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FullColimitReflection
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.FullColimitReflection
 
 /-!
 概要：元の各 Perf ラベルの分裂を、同じ実右 dg 加群の cone へ接続する。
@@ -54,7 +54,7 @@ theorem dgKappaSplitModuleSquare_closed (Z : DGKappaZeroInput R D I) :
     dgKappaSplitModuleSquare R D I X Z =
       dgKappaSplitClosedSquare R D I Z ≫
         nerveMap (dgKappaModuleLabelAction R D I X).onClosed ≫
-          _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (RightModule R (DGKappaCone R D I)) := by
+          _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (RightModule R (DGKappaCone R D I)) := by
   dsimp only [dgKappaSplitModuleSquare]
   rw [dgKappaSplitPerfPointwiseSquare_closed]
   simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_dgFunctor]
@@ -64,7 +64,7 @@ theorem dgKappaSplitModuleSquare_closed (Z : DGKappaZeroInput R D I) :
     (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ)
   simpa only [Category.assoc, dgKappaPerfLabelFunctor, dgKappaModuleLabelAction] using
     congrArg (fun m => dgKappaSplitClosedSquare R D I Z ≫ m ≫
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (RightModule R (DGKappaCone R D I))) hc
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R (RightModule R (DGKappaCone R D I))) hc
 
 /-- 同じ閉注入と右射影の実加群での零合成。 -/
 theorem dgKappaSplitModule_head_tail :

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalCone
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftElements
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLiftElements
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarTotalEvaluation

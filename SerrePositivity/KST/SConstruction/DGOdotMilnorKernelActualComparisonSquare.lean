@@ -90,7 +90,7 @@ lemma dgOdotMilnorKernelActualComparisonSquare_edges :
 方針：K-S2 の元頂点回収を使用する。
 規約：ν 同値だけでなく頂点等号。使われ方：ActualRectangleInput.kernel_vertex。 -/
 lemma dgOdotMilnorKernelActualComparisonSquare_kernel_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorKernelActualComparisonSquare R d) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorKernelActualComparisonSquare R d) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d) :=
   dgOdotTailKernelComparisonSquare_kernel_vertex R d _ _
 

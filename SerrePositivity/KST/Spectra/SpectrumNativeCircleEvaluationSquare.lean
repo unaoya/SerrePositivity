@@ -95,7 +95,7 @@ lemma circleEvaluationFunctorSquare_zeroCorner (i : Fin 2) :
 
 /-- 四角形の非対角の二つの自己関手は、関手 quasicategory の実際の零対象。 -/
 lemma circleEvaluationFunctorSquare_zeroCorner_isZero (i : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (circleEvaluationFunctorSquare.{u}.app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (circleEvaluationFunctorSquare.{u}.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm i.rev)) := by
   have h := congrArg SSet.yonedaEquiv (circleEvaluationFunctorSquare_zeroCorner.{u} i)
   change circleEvaluationFunctorSquare.{u}.app (Opposite.op ⦋0⦌)

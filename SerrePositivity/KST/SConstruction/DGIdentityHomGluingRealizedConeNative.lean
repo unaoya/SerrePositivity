@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedCompa
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNative
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
 概要：元実 gluing cone の realization を元実像射の cone へ全比較する。

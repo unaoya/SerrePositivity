@@ -52,7 +52,7 @@ lemma normalizedTensorTriangleBack_hom_evaluation {n : ℕ}
     subst j
     exact normalizedTensorElementEvaluatedColumn_map_cast_last A X Y c a
   unfold normalizedTensorTriangleBack
-  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback]
+  rw [← _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback]
   change HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map
     (Γ.map (homOfLE ((coneTriangleBackIndex τ).monotone hab)))) k) _
   exact closedHom_heq A hx hy _ _

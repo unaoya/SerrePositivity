@@ -29,7 +29,7 @@ lemma weakStringKernelCofiber_vertex_val {B C : _root_.SerrePositivity.InfinityC
 /-- 元の退化辺に対する共通の実 cofiber 頂点は零である。 -/
 lemma weakStringCofiberVertex_degenerate_zero {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n : SimplexCategory} (γ : ⦋0⦌ ⟶ n) (v : (weakStringCategory q n) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (vertexCofiberSquare (B := B)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (vertexCofiberSquare (B := B)
       (weakStringCofiberVertex q (SimplexCategory.σ (0 : Fin 1) ≫ γ) v)).cofiber := by
   apply (weakStringCofiberVertex_zero_iff q _ v).2
   rw [op_comp, B.obj.map_comp]
@@ -39,11 +39,11 @@ lemma weakStringCofiberVertex_degenerate_zero {B C : _root_.SerrePositivity.Infi
 /-- 退化辺の共通 cofiber 完全関手は、核の全関手圏で実際に零対象である。 -/
 lemma weakStringKernelCofiber_degenerate_isZeroVertex {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {n : SimplexCategory} (γ : ⦋0⦌ ⟶ n) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (weakStringKernelCofiber q
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (weakStringKernelCofiber q
       (SimplexCategory.σ (0 : Fin 1) ≫ γ)).val) := by
   apply isZeroVertex_functorVertex_of_pointwise
   intro v
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex
       (((weakStringKernelCofiber q (SimplexCategory.σ (0 : Fin 1) ≫ γ)).val.app
         (Opposite.op ⦋0⦌) v).val) := by
     rw [weakStringKernelCofiber_vertex_val]

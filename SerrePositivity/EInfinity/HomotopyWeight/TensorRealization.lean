@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.FrameCones
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.StandardFrame
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.StandardFrame
 
 /-!
 # 重み付き frame の標準単体による実現

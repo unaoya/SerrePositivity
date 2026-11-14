@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlatPrincipalCompletion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition
+import all SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition
 
 public import SerrePositivity.CommutativeAlgebra.DirectLimit
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
@@ -42,7 +46,7 @@ p 完全平坦・完全忠実平坦な射の合成と有向余極限での保存
 原典が「超限反復」の一言で済ませる部分の中身。André 固有の対象は使わない。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `OrdinaryRoots/Family`、`Transfinite/Limit`、`Transfinite/Tower`、`Variants/Auxiliary`。
@@ -50,7 +54,7 @@ p 完全平坦・完全忠実平坦な射の合成と有向余極限での保存
 
 universe u v
 
-/-! ## 通常の忠実平坦性の環余極限による保存（旧 Andre/Transfinite/FaithfullyFlatColimit.lean）
+/-! ## 通常の忠実平坦性の環余極限による保存
 
 BS 著者版 Theorem 7.14（著者版 p.61）の極限段の忠実性に使う一般論。
 固定基底の代数の有向系を扱い、単位元を保つ遷移射であることを利用する。
@@ -169,7 +173,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end FaithfullyFlatColimit
 
-/-! ## BoundedCompletion（旧 Andre/Transfinite/BoundedCompletion.lean） -/
+/-! ## BoundedCompletion -/
 
 @[expose] public noncomputable section BoundedCompletion
 
@@ -180,351 +184,7 @@ set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable (R : Type u) [CommRing R] (a : R) (n : ℕ) (b : R)
-/-- ## 概要
-主元 b のイデアルが a の冪を含めば、a に沿う導来完備化の単位は R/(b) への導来底変換で同型になる。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-R/(b) の導来対象が a の冪で消えることを使い、元の完備化単位をその対象とテンソルする。
-導来底変換とテンソルの自然同型および制限スカラーの同型反映性を使う。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-theorem derivedCompletion_quotient_unit_isIso_of_power_mem
-    (hb : a ^ n ∈ Ideal.span {b}) (X : DerivedCategory.Minus (ModuleCat.{u} R)) :
-    IsIso ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {b}))).map
-      ((boundedAboveDerivedCompletionUnit R a).app X)) := by
-  let f := (boundedAboveDerivedCompletionUnit R a).app X
-  let Y := derivedBaseChangeScalarObject (Ideal.Quotient.mk (Ideal.span {b}))
-  have hz : (Ideal.Quotient.mk (Ideal.span {b})) (a ^ n) = 0 :=
-    (Ideal.Quotient.eq_zero_iff_mem).mpr hb
-  have hmod : a ^ n • 𝟙 (baseChangeScalarModule (Ideal.Quotient.mk (Ideal.span {b}))) = 0 := by
-    rw [← restrictedScalarMultiplication_algebraMap, hz]
-    simp [restrictedScalarMultiplication]
-  have hY : a ^ n • 𝟙 Y = 0 := by
-    apply InducedCategory.hom_ext
-    change a ^ n • 𝟙 ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj
-      (baseChangeScalarModule (Ideal.Quotient.mk (Ideal.span {b})))) = 0
-    have hs := congrArg (DerivedCategory.singleFunctor (ModuleCat R) 0).map hmod
-    simpa only [Functor.map_smul, CategoryTheory.Functor.map_id, Functor.map_zero] using hs
-  have hi : IsIso (f ▷ Y) := completionUnit_tensor_powerTorsion_isIso R a X Y n hY
-  have hn := BraidedCategory.braiding_naturality_right Y f
-  have hleft : IsIso (Y ◁ f) := by
-    have : IsIso ((Y ◁ f) ≫ (β_ Y _).hom) := by
-      rw [hn]
-      infer_instance
-    exact IsIso.of_isIso_comp_right _ (β_ Y _).hom
-  have hn' := boundedAboveDerivedBaseChangeTensorIso_naturality
-    (Ideal.Quotient.mk (Ideal.span {b})) f
-  have : IsIso ((boundedAboveDerivedRestrictScalars (Ideal.Quotient.mk (Ideal.span {b}))).map
-      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {b}))).map f) ≫
-        (boundedAboveDerivedBaseChangeTensorIso (Ideal.Quotient.mk (Ideal.span {b})) _).hom) := by
-    rw [hn']
-    exact inferInstanceAs (IsIso ((boundedAboveDerivedBaseChangeTensorIso
-      (Ideal.Quotient.mk (Ideal.span {b})) _).hom ≫ Y ◁ f))
-  have : IsIso ((boundedAboveDerivedRestrictScalars (Ideal.Quotient.mk (Ideal.span {b}))).map
-      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {b}))).map f)) :=
-    IsIso.of_isIso_comp_right _ (boundedAboveDerivedBaseChangeTensorIso
-      (Ideal.Quotient.mk (Ideal.span {b})) _).hom
-  exact isIso_of_reflects_iso _
-    (boundedAboveDerivedRestrictScalars (Ideal.Quotient.mk (Ideal.span {b})))
-
-
-/-- ## 概要
-係数環 R 自身の導来 a 進完備化を R/(a) に導来底変換すると、元の剰余環の離散対象と同型になる。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-前補題を n=1 に適用し、R 自身の射影性から通常の剰余対象へ移す。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-def completedUnitReductionIso :
-    (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a}))).obj
-      ((boundedAboveDerivedCompletionFunctor R a).obj
-        (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R))) ≅
-      boundedAboveDerivedSingleFunctor.obj
-        ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {a}))).obj
-          (ModuleCat.of R R)) := by
-  let X0 := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R)
-  let q1 := Ideal.Quotient.mk (Ideal.span {a})
-  have hTor : scalarExtensionTorVanishing q1 (ModuleCat.of R R) := by
-    intro k hk
-    obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hk)
-    exact isZero_Tor_succ_of_projective (ModuleCat.{u} R) (baseChangeScalarModule q1)
-      (ModuleCat.of R R) m
-  have hunit : IsIso ((boundedAboveDerivedBaseChange q1).map
-      ((boundedAboveDerivedCompletionUnit R a).app X0)) := by
-    exact derivedCompletion_quotient_unit_isIso_of_power_mem R a 1 a (by simp) X0
-  exact (asIso ((boundedAboveDerivedBaseChange q1).map
-      ((boundedAboveDerivedCompletionUnit R a).app X0))).symm ≪≫
-    boundedAboveDerivedBaseChangeModuleAugmentationIso q1 (ModuleCat.of R R) hTor
-
 variable (hbound : ∃ N : ℕ, ∀ n : ℕ, ∀ r : R, a ^ n * r = 0 → a ^ N * r = 0)
-include hbound in
-/-- ## 概要
-a 冪ねじれが有界な環では、R 自身の導来 a 進完備化は次数 0 に集中し、その零次ホモロジーの a 冪ねじれも有界である。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-実際の剰余への導来底変換が離散かつ平坦であることを示し、既存の有界ねじれ純性定理を適用する。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-theorem completedUnit_pure_bounded_torsion :
-    let X := (boundedAboveDerivedCompletionFunctor R a).obj
-      (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R))
-    X.obj.IsGE 0 ∧ X.obj.IsLE 0 ∧
-      ∃ N : ℕ, ∀ n : ℕ,
-        ∀ z : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj X.obj,
-          a ^ n • z = 0 → a ^ N • z = 0 := by
-  let X0 := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R)
-  let X := (boundedAboveDerivedCompletionFunctor R a).obj X0
-  let q1 := Ideal.Quotient.mk (Ideal.span {a})
-  let e := completedUnitReductionIso R a
-  have hPure : ∀ i : ℤ, i ≠ 0 → IsZero
-      ((DerivedCategory.homologyFunctor (ModuleCat (R ⧸ Ideal.span {a})) i).obj
-        ((boundedAboveDerivedBaseChange q1).obj X).obj) := by
-    intro i hi
-    exact (derivedSingleHomology_isZero _ i hi).of_iso
-      ((DerivedCategory.homologyFunctor (ModuleCat (R ⧸ Ideal.span {a})) i).mapIso
-        (DerivedCategory.Minus.ι.mapIso e))
-  have hFlat : Module.Flat (R ⧸ Ideal.span {a})
-      ((DerivedCategory.homologyFunctor (ModuleCat (R ⧸ Ideal.span {a})) 0).obj
-        ((boundedAboveDerivedBaseChange q1).obj X).obj) := by
-    let E := (DerivedCategory.homologyFunctor (ModuleCat (R ⧸ Ideal.span {a})) 0).mapIso
-      (DerivedCategory.Minus.ι.mapIso e) ≪≫
-      (DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat (R ⧸ Ideal.span {a})) 0).app _
-    let := q1.toAlgebra
-    have hf : Module.Flat (R ⧸ Ideal.span {a})
-        ((ModuleCat.extendScalars q1).obj (ModuleCat.of R R)) := by
-      exact Module.Flat.of_linearEquiv
-        (TensorProduct.AlgebraTensorModule.rid R (R ⧸ Ideal.span {a}) (R ⧸ Ideal.span {a}))
-    exact (Module.Flat.equiv_iff E.toLinearEquiv).mpr hf
-  exact derived_pure_bounded_torsion_of_complete_flat_reduction a X hPure hFlat
-    hbound (derivedComplexCompletionFunctor_isComplete R a X0.obj)
-
-include hbound in
-/-- ## 概要
-有界 a 冪ねじれの下で、実際の導来主イデアル完備化の零次ホモロジーは古典的に a 進完備である。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-前補題のねじれ境界を既存の主イデアル Koszul ホモロジーへ移し、導来完備性と有界ねじれから古典的完備性を得る。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-theorem principalCompletionH0_isAdicComplete_of_bounded_torsion :
-    IsAdicComplete (Ideal.span {a}) (PrincipalCompletionH0 R a) := by
-  let X0 := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R)
-  let X := (boundedAboveDerivedCompletionFunctor R a).obj X0
-  obtain ⟨_, _, N, hN⟩ := completedUnit_pure_bounded_torsion R a hbound
-  apply isAdicComplete_of_isModuleComplete_of_bounded_torsion R a _
-    (principalCompletionH0_isModuleComplete R a)
-  let eH := (principalCompletedUnitH0Iso R a).toLinearEquiv
-  change ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).obj X.obj) ≃ₗ[R]
-    PrincipalCompletionH0 R a at eH
-  refine ⟨N, ?_⟩
-  intro k x hx
-  apply eH.symm.injective
-  rw [map_smul, map_zero]
-  apply hN k
-  rw [← map_smul, hx, map_zero]
-
-
-/-- ## 概要
-有界 a 冪ねじれの下で、実際の導来完備化を既存の主イデアル完備化 H0 の離散対象と同定する。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-次数 0 集中から規格化されたホモロジー同型を使い、既存の H0 比較を合成する。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-def completedUnitPrincipalH0Iso :
-    (boundedAboveDerivedCompletionFunctor R a).obj
-      (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R)) ≅
-      boundedAboveDerivedSingleFunctor.obj (PrincipalCompletionH0 R a) := by
-  let X := (boundedAboveDerivedCompletionFunctor R a).obj
-    (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R R))
-  obtain ⟨hGE, hLE, _⟩ := completedUnit_pure_bounded_torsion R a hbound
-  let := hGE
-  let := hLE
-  exact ObjectProperty.isoMk _ (normalizedPureHomologyIso X.obj 0 ≪≫
-    (DerivedCategory.singleFunctor (ModuleCat R) 0).mapIso (principalCompletedUnitH0Iso R a))
-
-/-- ## 概要
-有界 a 冪ねじれの下で、主イデアル完備化 H0 の実導来剰余は元の環の通常剰余となる。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-H0 の離散対象を実導来完備化へ戻し、元の完備化単位に沿う導来剰余同型を合成する。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-def principalCompletionH0DerivedReductionIso :
-    (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a}))).obj
-      (boundedAboveDerivedSingleFunctor.obj (PrincipalCompletionH0 R a)) ≅
-      boundedAboveDerivedSingleFunctor.obj
-        ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {a}))).obj (ModuleCat.of R R)) :=
-  (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a}))).mapIso
-    (completedUnitPrincipalH0Iso R a hbound).symm ≪≫ completedUnitReductionIso R a
-
-/-- ## 概要
-主イデアル完備化 H0 の通常剰余を元の通常剰余と、R/(a) 線形に比較する。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-実導来剰余比較の零次ホモロジーを取り、通常の係数拡大との標準比較を両端で使う。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-def principalCompletionH0ReductionEquiv :
-    ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {a}))).obj
-      (PrincipalCompletionH0 R a)) ≃ₗ[R ⧸ Ideal.span {a}]
-      (ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {a}))).obj (ModuleCat.of R R) := by
-  let q1 := Ideal.Quotient.mk (Ideal.span {a})
-  exact ((boundedAboveDerivedBaseChangeModuleH0Iso q1).app (PrincipalCompletionH0 R a)).symm.trans
-    ((DerivedCategory.homologyFunctor (ModuleCat (R ⧸ Ideal.span {a})) 0).mapIso
-      (DerivedCategory.Minus.ι.mapIso (principalCompletionH0DerivedReductionIso R a hbound)) ≪≫
-      (DerivedCategory.singleFunctorCompHomologyFunctorIso
-        (ModuleCat (R ⧸ Ideal.span {a})) 0).app _)
-    |>.toLinearEquiv
-
-include hbound in
-/-- ## 概要
-有界 a 冪ねじれの下で、主イデアル完備化 H0 と R/(a) のすべての正次数 Tor は零となる。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-実際の導来剰余の離散性を、標準の負次数ホモロジーと Tor の比較で移す。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-theorem principalCompletionH0_scalarExtensionTorVanishing :
-    scalarExtensionTorVanishing (Ideal.Quotient.mk (Ideal.span {a}))
-    (PrincipalCompletionH0 R a) := by
-  intro k hk
-  let q1 := Ideal.Quotient.mk (Ideal.span {a})
-  have hz : IsZero ((DerivedCategory.homologyFunctor
-      (ModuleCat (R ⧸ Ideal.span {a})) (-(k : ℤ))).obj
-      ((boundedAboveDerivedBaseChange q1).obj
-        (boundedAboveDerivedSingleFunctor.obj (PrincipalCompletionH0 R a))).obj) :=
-    (derivedSingleHomology_isZero _ _ (by omega)).of_iso
-      ((DerivedCategory.homologyFunctor (ModuleCat (R ⧸ Ideal.span {a})) (-(k : ℤ))).mapIso
-        (DerivedCategory.Minus.ι.mapIso (principalCompletionH0DerivedReductionIso R a hbound)))
-  exact ((ModuleCat.restrictScalars q1).map_isZero hz).of_iso
-    ((boundedAboveDerivedBaseChangeModuleTorIso q1 k).app (PrincipalCompletionH0 R a)).symm
-
-include hbound in
-/-- ## 概要
-有界 a 冪ねじれの下で、主イデアル完備化 H0 は元の環上 a 完全忠実平坦である。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-剰余 Tor の消滅と、R/(a) 線形な通常剰余同型による忠実平坦性を、
-既存の完全平坦性判定に入力する。
-
-## 規約
-a は任意の環の元。a 正則性や Noether 性は仮定しない。
-
-## 使われ方
-通常完備化との代数同型によって、完備化の完全忠実平坦性を導く。
--/
-theorem principalCompletionH0_isCompletelyFaithfullyFlat :
-    IsCompletelyFaithfullyFlat (Ideal.span {a}) (PrincipalCompletionH0 R a) := by
-  let Q := R ⧸ Ideal.span {a}
-  let q1 := Ideal.Quotient.mk (Ideal.span {a})
-  let := q1.toAlgebra
-  let eR := TensorProduct.AlgebraTensorModule.rid R Q Q
-  have hfR : Module.FaithfullyFlat Q ((ModuleCat.extendScalars q1).obj (ModuleCat.of R R)) :=
-    Module.FaithfullyFlat.of_linearEquiv Q Q eR
-  let e := principalCompletionH0ReductionEquiv R a hbound
-  have hf : Module.FaithfullyFlat Q
-      ((ModuleCat.extendScalars q1).obj (PrincipalCompletionH0 R a)) :=
-    Module.FaithfullyFlat.of_linearEquiv Q _ e
-  have hc : IsCompletelyFlat (Ideal.span {a}) (PrincipalCompletionH0 R a) :=
-    isCompletelyFlat_of_acyclic_flat_reduction _ _
-      (principalCompletionH0_scalarExtensionTorVanishing R a hbound) hf.1
-  let et := (quotientScalarExtensionEquiv (Ideal.span {a}) (PrincipalCompletionH0 R a)).trans
-    (quotientTensorReductionEquiv (Ideal.span {a}) (PrincipalCompletionH0 R a)).symm
-  exact ⟨hc, Module.FaithfullyFlat.of_linearEquiv Q _ et.symm⟩
-
-
-/-- ## 概要
-有界 a 冪ねじれの下で、実主イデアル完備化の H0 と通常の a 進完備化は、元の R 作用を保つ代数同型を持つ。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
-
-## 方針
-古典的完備性を得た H0 へ通常完備化の普遍性を使う。逆射は実 H0 の普遍性から得て、
-二つの普遍性で両合成が恒等であることを検証する。
-
-## 規約
-a は任意の環の元である。a 正則性や Noether 性を仮定しない。
-通常完備化と実導来完備化の比較は証明により構成する。
-
-## 使われ方
-perfectoid 塔の余極限の有界 p ねじれから、完備化後の完全忠実平坦性を導く。
--/
-def boundedPrincipalCompletionAdicAlgEquiv :
-    letI := principalCompletionCommRing R a
-    letI := principalCompletionAlgebra R a
-    PrincipalCompletionH0 R a ≃ₐ[R] AdicCompletion (Ideal.span {a}) R := by
-  letI := principalCompletionCommRing R a
-  letI := principalCompletionAlgebra R a
-  let := principalCompletionH0_isAdicComplete_of_bounded_torsion R a hbound
-  let := AdicCompletion.isAdicComplete (R := R) (M := R)
-    (Submodule.fg_span (Set.toFinite ({a} : Set R)))
-  let i := adicCompletionToCompleteAlgebra R (Ideal.span {a})
-    (Submodule.fg_span (Set.toFinite _)) (PrincipalCompletionH0 R a)
-  let b := principalCompletionToAdic R a
-  have hbi : b.comp i = AlgHom.id R (AdicCompletion (Ideal.span {a}) R) :=
-    adicCompletion_algHom_ext R (Ideal.span {a}) (Submodule.fg_span (Set.toFinite _)) _ _ _
-  have hib : i.comp b = AlgHom.id R (PrincipalCompletionH0 R a) :=
-    (principalCompletion_existsUnique_algHom R a (PrincipalCompletionH0 R a)
-      (principalCompletionH0_isModuleComplete R a)).unique trivial trivial
-  exact AlgEquiv.ofAlgHom b i hbi hib
-
 include hbound in
 /-- ## 概要
 有界 a 冪ねじれを持つ環 R の通常 a 進完備化は、元の標準 R 作用に関して a 完全忠実平坦である。
@@ -551,7 +211,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end BoundedCompletion
 
-/-! ## 完全平坦・完全忠実平坦な環準同型の合成（旧 Andre/Transfinite/Composition.lean）
+/-! ## 完全平坦・完全忠実平坦な環準同型の合成
 
 BS 著者版 Theorem 7.14（著者版 p.61）の超限塔で、各後続段から初期環までの性質を保つための一般論。
 イデアルで消える任意の試験加群をスカラー拡大し、Tor と忠実性を二段階で検査する。
@@ -565,159 +225,6 @@ open scoped TensorProduct
 open TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
-/-- ## 概要
-スカラー制限で記述した二つの完全平坦写像の合成は完全平坦。
-BS 著者版 Theorem 7.14（著者版 p.61）の塔の後続段に用いる補助命題。
-
-## 方針
-試験加群の Tor 非輪状性から実際の底変換 Tor 比較を適用し、拡大後の試験加群には
-拡張イデアルが零として作用することを使う。
-
-## 規約
-元の合成環準同型の作用と、二段階のスカラー制限の作用を線形同型で明示的に比較する。
-
-## 使われ方
-toAlgebra を使う公開版の証明に使う。
--/
-private theorem completelyFlat_comp_restricted {R B C : Type u}
-    [CommRing R] [CommRing B] [CommRing C]
-    (φ : R →+* B) (ψ : B →+* C) (I : Ideal R)
-    (hB : IsCompletelyFlat I (baseChangeScalarModule φ))
-    (hC : IsCompletelyFlat (I.map φ) (baseChangeScalarModule ψ)) :
-    IsCompletelyFlat I (baseChangeScalarModule (ψ.comp φ)) := by
-  intro N _ _ hN
-  apply (isConcentratedInDegreeZero_derivedTensor_iff _ N).mpr
-  intro i hi
-  let N' := ModuleCat.of R N
-  have hTor : scalarExtensionTorVanishing φ N' := hB N hN
-  let M := (ModuleCat.extendScalars φ).obj N'
-  have hAnn : I.map φ ≤ Module.annihilator B M := by
-    apply Ideal.map_le_iff_le_comap.mpr
-    intro r hr
-    exact Module.mem_annihilator.mpr (scalarExtension_annihilated φ r N' (hN r hr))
-  have hMI : ∀ r ∈ I.map φ, ∀ x : M, r • x = 0 :=
-    fun r hr x ↦ Module.mem_annihilator.mp (hAnn hr) x
-  have hz := hC M hMI i hi
-  have hz' : IsZero (((Tor (ModuleCat B) i).obj (baseChangeScalarModule ψ)).obj M) := hz
-  have hzR := (ModuleCat.restrictScalars φ).map_isZero hz'
-  have he := torAcyclicBaseChangeIso φ N' hTor (baseChangeScalarModule ψ) i
-  have hzOriginal := hzR.of_iso he
-  let E : (baseChangeScalarModule (ψ.comp φ)) ≃ₗ[R]
-      ((ModuleCat.restrictScalars φ).obj (baseChangeScalarModule ψ)) :=
-    { toFun := fun x ↦ x
-      invFun := fun x ↦ x
-      left_inv := fun _ ↦ rfl
-      right_inv := fun _ ↦ rfl
-      map_add' := fun _ _ ↦ rfl
-      map_smul' := fun _ _ ↦ rfl }
-  have hzFinal := hzOriginal.of_iso (((Tor (ModuleCat R) i).mapIso E.toModuleIso).app N')
-  exact ModuleCat.subsingleton_of_isZero hzFinal
-
-/-- ## 概要
-I 完全平坦な R → B と IB 完全平坦な B → C の合成は I 完全平坦。
-BS 著者版 Theorem 7.14（著者版 p.61）の超限塔の後続段で使用する。
-
-## 方針
-試験加群の底変換と Tor 比較による補助命題を、元の環準同型の toAlgebra 作用で適用する。
-
-## 規約
-p 正則性・完備性・有限生成性を要求しない。拡張イデアルは I.map φ。
-
-## 使われ方
-各段から初期環への完全平坦性を、後続段へ合成して運ぶ。
--/
-theorem isCompletelyFlat_comp {R B C : Type u} [CommRing R] [CommRing B] [CommRing C]
-    (φ : R →+* B) (ψ : B →+* C) (I : Ideal R)
-    (hB : letI := φ.toAlgebra; IsCompletelyFlat I B)
-    (hC : letI := ψ.toAlgebra; IsCompletelyFlat (I.map φ) C) :
-    letI := (ψ.comp φ).toAlgebra; IsCompletelyFlat I C := by
-  exact completelyFlat_comp_restricted φ ψ I hB hC
-
-/-- ## 概要
-通常剰余テンソルが忠実平坦なら、I で消える試験加群の零性は元のテンソルで検出できる。
-BS 著者版 Theorem 7.14（著者版 p.61）の合成の忠実性に用いる一般補題。
-
-## 方針
-試験加群に R/I 作用を与え、通常テンソルの底変換消去同型を通して忠実平坦性を適用する。
-
-## 規約
-P 自身の完全平坦性や通常平坦性は不要。N は I の元すべてで消える。
-
-## 使われ方
-二段の拡大後に試験加群が零になれば、順に元へ戻して零性を検出する。
--/
-theorem subsingleton_of_annihilated_of_residueTensor {R : Type u} [CommRing R] (I : Ideal R)
-    (P : Type u) [AddCommGroup P] [Module R P]
-    (hP : Module.FaithfullyFlat (R ⧸ I) ((R ⧸ I) ⊗[R] P))
-    (N : Type u) [AddCommGroup N] [Module R N]
-    (hN : ∀ r ∈ I, ∀ x : N, r • x = 0)
-    (hTensor : Subsingleton (N ⊗[R] P)) : Subsingleton N := by
-  let hNt : Module.IsTorsionBySet R N (I : Set R) := fun {x} {r} ↦ hN r r.property x
-  let := hNt.module
-  have : IsScalarTower R (R ⧸ I) N := inferInstance
-  let := hP
-  let e := AlgebraTensorModule.cancelBaseChange R (R ⧸ I) (R ⧸ I) N P
-  have : Subsingleton (N ⊗[R ⧸ I] ((R ⧸ I) ⊗[R] P)) := e.injective.subsingleton
-  exact Module.FaithfullyFlat.rTensor_reflects_triviality (R ⧸ I) ((R ⧸ I) ⊗[R] P) N
-
-/-- ## 概要
-I 完全忠実平坦な R → B と IB 完全忠実平坦な B → C の合成は I 完全忠実平坦。
-BS 著者版 Theorem 7.14（著者版 p.61）の塔の後続段で使う。
-
-## 方針
-完全平坦性を Tor の底変換で合成し、通常剰余テンソルの平坦性を得る。
-忠実性は I で消える試験加群を二段階の忠実なテンソルで反映して証明する。
-
-## 規約
-I は任意。非零性・p 正則性・通常平坦性・完備性は不要。
-環の作用はすべて指定した環準同型の toAlgebra。
-
-## 使われ方
-初期環から各段への p 完全忠実平坦性を、後続写像との合成で保つ。
--/
-theorem isCompletelyFaithfullyFlat_comp {R B C : Type u} [CommRing R] [CommRing B] [CommRing C]
-    (φ : R →+* B) (ψ : B →+* C) (I : Ideal R)
-    (hB : letI := φ.toAlgebra; IsCompletelyFaithfullyFlat I B)
-    (hC : letI := ψ.toAlgebra; IsCompletelyFaithfullyFlat (I.map φ) C) :
-    letI := (ψ.comp φ).toAlgebra; IsCompletelyFaithfullyFlat I C := by
-  let := φ.toAlgebra
-  let := ψ.toAlgebra
-  let := (ψ.comp φ).toAlgebra
-  let : IsScalarTower R B C := IsScalarTower.of_algebraMap_eq' rfl
-  have hFlat : IsCompletelyFlat I C := completelyFlat_comp_restricted φ ψ I hB.1 hC.1
-  refine ⟨hFlat, ?_⟩
-  apply (Module.FaithfullyFlat.iff_flat_and_rTensor_reflects_triviality (R ⧸ I) _).mpr
-  refine ⟨flat_residueTensor_of_completelyFlat I C hFlat, ?_⟩
-  intro N _ _ hTensor
-  let _ : Module R N := Module.compHom N (Ideal.Quotient.mk I)
-  have : IsScalarTower R (R ⧸ I) N := IsScalarTower.of_algebraMap_smul (fun _ _ ↦ rfl)
-  let e0 := AlgebraTensorModule.cancelBaseChange R (R ⧸ I) (R ⧸ I) N C
-  have : Subsingleton (N ⊗[R ⧸ I] ((R ⧸ I) ⊗[R] C)) := hTensor
-  have hNC : Subsingleton (N ⊗[R] C) := e0.symm.injective.subsingleton
-  have : Subsingleton (C ⊗[R] N) := (TensorProduct.comm R C N).injective.subsingleton
-  let M := B ⊗[R] N
-  let e1 := (TensorProduct.comm B M C).trans
-    (AlgebraTensorModule.cancelBaseChange R B B C N)
-  have hMC : Subsingleton (M ⊗[B] C) := e1.injective.subsingleton
-  have hNI : ∀ r ∈ I, ∀ x : N, r • x = 0 := by
-    intro r hr x
-    change Ideal.Quotient.mk I r • x = 0
-    rw [Ideal.Quotient.eq_zero_iff_mem.mpr hr, zero_smul]
-  have hAnn : I.map φ ≤ Module.annihilator B M := by
-    apply Ideal.map_le_iff_le_comap.mpr
-    intro r hr
-    apply Module.mem_annihilator.mpr
-    intro x
-    induction x using TensorProduct.inductionOn with
-    | tmul b n =>
-      change (r • b) ⊗ₜ[R] n = 0
-      rw [TensorProduct.smul_tmul, hNI r hr, TensorProduct.tmul_zero]
-    | add x y hx hy => rw [smul_add, hx, hy, zero_add]
-  have hM : Subsingleton M := subsingleton_of_annihilated_of_residueTensor (I.map φ) C hC.2 M
-    (fun r hr x ↦ Module.mem_annihilator.mp (hAnn hr) x) hMC
-  have hNB : Subsingleton (N ⊗[R] B) := (TensorProduct.comm R N B).injective.subsingleton
-  exact subsingleton_of_annihilated_of_residueTensor I B hB.2 N hNI hNB
-
 /-- ## 概要
 自然数 p に関する完全忠実平坦な二つの環準同型の合成は p 完全忠実平坦。
 BS 著者版 Theorem 7.14（著者版 p.61）の後続段で step の出力を合成する入口。
@@ -744,7 +251,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end Composition
 
-/-! ## 完全平坦性の余極限による保存（旧 Andre/Transfinite/CompleteFlatColimit.lean）
+/-! ## 完全平坦性の余極限による保存
 
 BS 著者版 Theorem 7.14（著者版 p.61）の極限段に使う、固定基底上の完全平坦性の保存。
 Tor の対称性と正確な余極限との交換を使い、通常平坦性への置き換えは行わない。
@@ -919,7 +426,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end CompleteFlatColimit
 
-/-! ## 剰余テンソルの余極限比較と完全忠実平坦性の保存（旧 Andre/Transfinite/ResidueTensorColimit.lean）
+/-! ## 剰余テンソルの余極限比較と完全忠実平坦性の保存
 
 BS 著者版 Theorem 7.14（著者版 p.61）の極限段に用いる。固定基底の I 完全忠実平坦な代数の
 有向余極限が I 完全忠実平坦であることを、元の R/I 作用のまま証明する。
@@ -1164,7 +671,7 @@ end
 
 end ResidueTensorColimit
 
-/-! ## 非可算共終性の極限での可算データの降下（旧 Andre/Transfinite/CountableDescent.lean）
+/-! ## 非可算共終性の極限での可算データの降下
 
 BS 著者版 Theorem 7.14（著者版 p.61）の超限反復で使う。原典の一文を補うため、
 可算集合の上界という具体的な仮定を明示する。
@@ -1205,7 +712,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end CountableDescent
 
-/-! ## 非可算共終性をもつ有向余極限の p 進完備性（旧 Andre/Transfinite/CountableCompletion.lean）
+/-! ## 非可算共終性をもつ有向余極限の p 進完備性
 
 BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の極限段に必要な一般論。
 可算集合の上界と単射な遷移写像から、完備化を挟まず余極限の完備性を示す。
@@ -1320,7 +827,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end CountableCompletion
 
-/-! ## 完全忠実平坦な perfectoid 塔の非可算極限の完備性（旧 Andre/Transfinite/PerfectoidLimitCompleteness.lean）
+/-! ## 完全忠実平坦な perfectoid 塔の非可算極限の完備性
 
 BS 著者版 Theorem 7.14（著者版 p.61）。p ねじれを許す既存の単射性定理と
 可算データの降下を結び、極限環が自動的に p 進完備であることを示す。
@@ -1394,7 +901,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end PerfectoidLimitCompleteness
 
-/-! ## Distinguished 商の通常 p 進完備化の perfectoid 性（旧 Andre/Transfinite/PrismaticCompletion.lean）
+/-! ## Distinguished 商の通常 p 進完備化の perfectoid 性
 
 BS 著者版 Theorem 3.10（著者版 p.32）と BS 著者版 Theorem 7.14（p.61）の極限段に用いる補助命題。
 完全 δ 環の distinguished 商を通常に p 進完備化したものを、既存の実 PD 完備化の
@@ -1531,7 +1038,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end PrismaticCompletion
 
-/-! ## CompletionUniversal（旧 Andre/Transfinite/CompletionUniversal.lean） -/
+/-! ## CompletionUniversal -/
 
 @[expose] public noncomputable section CompletionUniversal
 
@@ -1614,7 +1121,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end CompletionUniversal
 
-/-! ## 有向余極限の mod p Frobenius（旧 Andre/Transfinite/ResidueFrobenius.lean）
+/-! ## 有向余極限の mod p Frobenius
 
 BS 著者版 Theorem 7.14（著者版 p.61）の極限段に必要な、剰余 Frobenius 全射性の保存。
 Fontaine 核の単項性や完備化による保存とは区別する。
@@ -1693,7 +1200,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end ResidueFrobenius
 
-/-! ## Perfectoid 塔の未完備余極限の Frobenius 核（旧 Andre/Transfinite/FrobeniusKernelColimit.lean）
+/-! ## Perfectoid 塔の未完備余極限の Frobenius 核
 
 BS 著者版 Theorem 7.14（著者版 p.61）の極限段に必要な代数的条件を保存する。
 原典で省略された極限操作の補助命題であり、Fontaine 核の単項性の判定を代用しない。

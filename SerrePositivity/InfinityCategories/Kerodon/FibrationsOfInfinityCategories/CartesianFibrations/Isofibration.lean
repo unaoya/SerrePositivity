@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.CompStructLifting
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.InvertibleCartesian
@@ -122,3 +124,8 @@ lemma cocartesianFibration_kanEquivalenceLifting {E B : SSet.{u}} [Quasicategory
     (cocartesianFibration_kanInvertibleTargetLifting p) i hm hi
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.1.8" (partial := stronger-hyp) "仮定：余デカルトファイブレーション上で底の余錐と制限の相対余極限を指定（Lean が強い：添字変更は圏同値な単射）。結論：指定した底の余錐に写る相対余極限の延長がある（Lean が強い：部分余錐も厳密に回収する）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_kanEquivalenceLifting

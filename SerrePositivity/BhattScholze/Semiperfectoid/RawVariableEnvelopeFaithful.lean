@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelopeCompletedResidueFaithful
+public import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidueFaithful
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful
 public import SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope
 

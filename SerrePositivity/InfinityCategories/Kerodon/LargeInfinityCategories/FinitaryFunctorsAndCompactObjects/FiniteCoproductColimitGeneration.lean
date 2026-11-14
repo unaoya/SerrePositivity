@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CountableStageKanComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CountableNerve
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialPreservedColimits
@@ -92,3 +94,10 @@ lemma preservesSmallColimits_of_coproducts_finite
   exact (hasPreservedColimit_of_coproducts_finite U hX hU hfin K F).map_isColimit c hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.4.1" (partial := component) "仮定：小余積と有限余極限の存在・保存、または小余積と幾何学的実現（Lean が強い：HA は安定性から有限余極限を使い小余積だけを条件とする）。結論：小余極限の存在・保存の判定（Lean が弱い：コンパクト性の有限部分余積による判定は型にない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite
+attribute [cite HTT "4.4.2.6" (partial := special) "仮定：小余積と押し出しが存在する（Lean が強い：任意の正則濃度の切断ではなく固定宇宙内の全小余積。空余積と押し出しから有限余極限を得て恒等関手に適用）。結論：同じ元の小図式に余極限が存在する（一致する場合。任意の κ による切断は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_of_coproducts_finite
+attribute [cite HTT "4.4.2.7" (partial := special) "仮定：始域の小余極限、押し出しと小余積の保存（Lean が強い：濃度 κ で切断せず固定宇宙で量化。空余積と押し出しの保存から全有限余極限の保存を得る）。結論：元の関手が固定宇宙内の全小余極限を保つ（一致する向きと範囲。任意の κ と逆向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite

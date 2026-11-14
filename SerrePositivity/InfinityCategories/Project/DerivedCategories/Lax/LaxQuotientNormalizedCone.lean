@@ -45,7 +45,7 @@ lemma cospan_D : horn₂₂.ι₁₂ ≫ _root_.SerrePositivity.InfinityCategori
 lemma cone_square : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientNormalizedCone.cone Φ p q i r h) = square Φ p q i r h := by
   simp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientNormalizedCone.cone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare, Iso.inv_hom_id_assoc]
 
-lemma square_source_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (square Φ p q i r h) 0 0 =
+lemma square_source_vertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (square Φ p q i r h) 0 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ A) := by
   have he := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (square Φ p q i r h)
   rw [square_bottom] at he

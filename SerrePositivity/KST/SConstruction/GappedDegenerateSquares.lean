@@ -79,7 +79,7 @@ lemma arSquare_isPushout_of_repeated_endpoints {n : ℕ} {C : SSet.{u}} [Quasica
 規約：C は quasicategory。使われ方：S_1 の第一行制限の零次元の存在。 -/
 lemma isGapped_one_of_zero_diagonal {C : SSet.{u}} [Quasicategory C]
     (F : arNerve 1 ⟶ C)
-    (hz : ∀ j : Fin 2, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+    (hz : ∀ j : Fin 2, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ (arObj j j le_rfl)))) : IsGapped F := by
   refine ⟨hz, ?_⟩
   intro i j k l hij hjk hkl

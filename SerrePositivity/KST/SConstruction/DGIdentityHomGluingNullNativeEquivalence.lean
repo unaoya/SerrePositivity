@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorFullyFaithful
 
 /-!
 概要：元恒等対角の始域と V の native nerve の指定同値を作る。

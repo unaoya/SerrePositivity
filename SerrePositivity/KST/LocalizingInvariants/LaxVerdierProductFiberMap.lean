@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxVerdierProductFiberLegs
 
 /-!
@@ -29,7 +31,7 @@ def laxQuotientProductInclusion : value Φ A ⟶ Binary.obj (value Φ C) (value 
 
 lemma laxQuotientProductFiber_bottom_map :
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberLeftIso hΦ) p q i r h).inv ≫
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
           ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom =
       SpectrumHo.hom (laxQuotientProductInclusion p q i) := by
   apply Binary.ho_hom_ext
@@ -43,11 +45,11 @@ lemma laxQuotientProductFiber_bottom_map :
 lemma laxQuotientProductFiber_right_map :
     ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom ≫
         SpectrumHo.hom ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r) =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
         ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberRightIso hΦ) p q i r h).hom := by
-  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (hΦ.laxQuotientProductFiberSquare p q i r h).square).edge =
+  have he : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (hΦ.laxQuotientProductFiberSquare p q i r h).square).edge =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r)).edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge,
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge,
       (hΦ.laxQuotientProductFiberSquare p q i r h).right_edge]
     exact SSet.yonedaEquiv.apply_symm_apply _
   exact (FiberModel.homMk_transport _ _
@@ -60,8 +62,14 @@ lemma laxQuotientProductInclusion_comp_map :
       SpectrumHo.hom ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) p q r) = 0 := by
   rw [← hΦ.laxQuotientProductFiber_bottom_map p q i r h, Category.assoc,
     Category.assoc, laxQuotientProductFiber_right_map]
-  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom _) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight _),
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom _) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight _),
     (hΦ.laxQuotientProductFiberSquare p q i r h).toZeroTriangle.homMk_comp_eq_zero,
     CategoryTheory.Limits.zero_comp, CategoryTheory.Limits.comp_zero]
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (15)" (partial := stronger-hyp) "仮定：小安定圏で同じ Verdier 列を与え、Sp 値の弱局所化型関手を取る（Lean が強い：Ind の切除性から得る列を直接入力）。結論：二つの脚の値の直和を中央とする実ファイバー列と、その包含・差の射の同定（原典の同じ射の Sp 版）。"] _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_bottom_map
+attribute [cite Tamme "Eq (15)" (partial := stronger-hyp) "仮定：小安定圏で同じ Verdier 列を与え、Sp 値の弱局所化型関手を取る（Lean が強い：Ind の切除性から得る列を直接入力）。結論：二つの脚の値の直和を中央とする実ファイバー列と、その包含・差の射の同定（原典の同じ射の Sp 版）。"] _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_right_map

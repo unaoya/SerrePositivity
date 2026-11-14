@@ -28,7 +28,7 @@ def tammeArrowQuotient : SSet.{u} :=
 instance tammeArrowQuotient_quasicategory : Quasicategory (tammeArrowQuotient p q) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory _ _
 
-instance tammeArrowQuotient_hasZeroVertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (tammeArrowQuotient p q) :=
+instance tammeArrowQuotient_hasZeroVertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (tammeArrowQuotient p q) :=
   edgeLocalization_hasZeroVertex _ _
 
 def tammeArrowQuotientMap : (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.stableArrowCategory (laxCategory p q)).obj ⟶

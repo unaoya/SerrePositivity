@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.CofiberRows
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pasting
 
@@ -144,7 +146,7 @@ lemma arSquares_isPushout_of_triples {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 規約：C は quasicategory。使われ方：第一行からの構成で確認すべき条件の削減。 -/
 lemma isGapped_iff_triples {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C) : IsGapped F ↔
-      (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+      (∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj i i le_rfl)))) ∧
       (∀ (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k),
         _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j j k hij le_rfl hjk ≫ F)) := by
@@ -155,3 +157,8 @@ lemma isGapped_iff_triples {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     exact ⟨hz, arSquares_isPushout_of_triples F ht⟩
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 7.1"] _root_.SerrePositivity.KST.SConstruction.isGapped_iff_triples

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.DiagramStructureLocalComparison
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapAlgebraPerfectComparison
 public import SerrePositivity.KST.DerivedBlowup.DiagramStructureCartesian
@@ -60,3 +62,9 @@ theorem derivedBlowupStructureModule_cartesianPerfect (a : I → R) :
   ⟨derivedBlowupStructureModule_cartesian R a, derivedBlowupStructureModule_locallyPerfect R a⟩
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def 2.7" (partial := component) "仮定：基底環・有限チャートの導来ブローアップ模型（Lean が強い）。結論：特定の構造加群が Cartesian かつ局所完全。一般の QCoh の双対化可能対象による Perf の定義より範囲が狭い（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.derivedBlowupStructureModule_cartesianPerfect
+attribute [cite KST "Lemma 3.9" (partial := component) "仮定：有限チャート上の指定された構造加群（Lean が強い）。結論：生成系に含まれる O が完全。捻った j₊O_E の全生成性と Perf(E) の生成性は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.derivedBlowupStructureModule_cartesianPerfect

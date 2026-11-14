@@ -118,6 +118,6 @@ lemma corePreimageProjection_isLeftCofinal_of_quotientConeRecovery
     exact exists_corePullback_finiteCone_of_quotientConeRecovery q h r
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceIdentityCone_isTerminalVertex c) a
   have : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity T.op := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_op_of_finiteCones T hcones
-  exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isWeaklyContractible_of_op (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity T.op)
+  exact _root_.SerrePositivity.InfinityCategories.HTT.Section5_1_4.isWeaklyContractible_of_op (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity T.op)
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -1,7 +1,7 @@
 module
 public import
   SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderPushoutNaturality
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-! # 同じ実円柱押し出しの両標的比較の厳密豊穣自然変換
 概要：同じ左右比較を、全厳密 dg 入力に関する豊穣自然変換へ束ねる。

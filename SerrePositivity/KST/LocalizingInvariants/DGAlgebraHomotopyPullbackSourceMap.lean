@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeMap
 
 /-!
 概要：cospan の左始域の実代数射から、経路を保つ homotopy pullback 模型の射を作る。

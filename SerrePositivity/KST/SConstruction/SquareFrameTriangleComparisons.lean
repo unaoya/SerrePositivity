@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SquareFrameTrianglePrisms
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyInvertibility
 
 /-!
 概要：元四境界比較から作った上下二単体比較の可逆性を証明する。

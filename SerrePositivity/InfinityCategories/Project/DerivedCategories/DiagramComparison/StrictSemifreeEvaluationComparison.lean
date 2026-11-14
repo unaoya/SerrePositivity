@@ -83,7 +83,7 @@ lemma strictSemifreeUnderlyingComplex_family :
 lemma strictSemifreeClosedFamily_inclusion :
     strictSemifreeClosedFamily A d ≫
       (ihom ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)))).map
-        (closedNerveInclusion A (Semifree A)) =
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)) =
       strictSemifreeDiagramFamily A (strictDiagramIndex d) := by
   rw [strictSemifreeClosedFamily, ← curry_natural_right]
   simp only [strictSemifreeDiagramFamily, strictSemifreeEvaluation, Category.assoc]

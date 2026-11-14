@@ -116,7 +116,7 @@ lemma firstRowRestriction_hasLiftingProperty_boundary (n r : ℕ) (C : SSet.{u})
 lemma exists_firstRowDiagramWithZeroDiagonal (n : ℕ) (C : SSet.{u})
     [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (p : firstRowNerve n ⟶ C) :
     ∃ F : arNerve n ⟶ C, firstRowInclusion n ≫ F = p ∧
-      ∀ j : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+      ∀ j : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ (arObj j j le_rfl))) := by
   let i : (⊥_ SSet.{u}) ⟶ (Δ[0] : SSet.{u}) := initial.to _
   let a : (⊥_ SSet.{u}) ⟶ sConstruction n C := initial.to _

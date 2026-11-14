@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveHomComposition
 public import SerrePositivity.KST.SConstruction.DGHomGluingConePrimitiveDifferential
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.CommaGradedUnits
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.CommaComparisons.CommaGradedUnits
 
 /-! # 実 cone Hom の元の三成分の合成保存
 概要：左右鎖写像と第三比較が元の gluing の通常順合成をどう写すかを照合する。

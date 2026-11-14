@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarGraded
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarGraded
 import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram
 
 /-!

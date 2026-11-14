@@ -25,37 +25,37 @@ namespace SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Retracts
 /-- 元の辺の反転に対する cofiber を、元の指定辺を右辺とする fiber に戻す。 -/
 def cofiberOpToFiber {X : SSet.{u}} {x y : X _⦋0⦌}
     {a : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (X := X.op) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a)) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare a where
-  square := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square ≫ (SSet.opFunctorCompOpFunctorIso.app X).hom
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (X := X.op) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a)) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare a where
+  square := _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square ≫ (SSet.opFunctorCompOpFunctorIso.app X).hom
   zero_corner := by
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 0 1))
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (SSet.opObjEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 0 1))
     exact s.zero_corner.unop
   right_edge := by
-    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare_rightEdge, s.bottom_edge]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare_rightEdge, s.bottom_edge]
     have hop : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.reverseSimplex 1 (SSet.yonedaEquiv.symm a.edge) =
         (SSet.yonedaEquiv (X := X.op)).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a).edge :=
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.reverseSimplex_edgeUnop (X := X) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a)
     rw [← hop]
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.reverseSimplex_double 1 _
-  isPullback := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square)
+  isPullback := (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square)
     (SSet.opFunctorCompOpFunctorIso.app X).hom).mp
-      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_dualSquare s.square).mp s.isPushout)
+      ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_dualSquare s.square).mp s.isPushout)
 
 /-- 元の反転 cofiber の引き戻し性は、元へ戻した同じ fiber の押し出し性となる。 -/
 lemma cofiberOpToFiber_isPushout {X : SSet.{u}} {x y : X _⦋0⦌}
     {a : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (X := X.op) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a)) (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s.square) :
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (X := X.op) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a)) (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare s.square) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (cofiberOpToFiber s).square :=
-  (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.dualSquare s.square)
+  (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPushoutSquare_iff_postcomp_isIso (_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.dualSquare s.square)
     (SSet.opFunctorCompOpFunctorIso.app X).hom).mp
-      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_dualSquare s.square).mp hs)
+      ((_root_.SerrePositivity.InfinityCategories.HA.Section6_1_1.isPullbackSquare_iff_dualSquare s.square).mp hs)
 
 /-- 安定な元の圏の任意の冪等完備化の全ての辺には、指定辺を保つ双普遍 fiber が存在。 -/
 lemma IsIdempotentCompletion.bicartesian_fiber_exists {C D : SSet.{u}}
     [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [Quasicategory D] (f : C ⟶ D)
     (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f) {x y : D _⦋0⦌}
     (a : SSet.Truncated.Edge (X := (truncation 2).obj D) x y) :
-    ∃ s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare a, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s.square := by
+    ∃ s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare a, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare s.square := by
   obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.bicartesian_cofiber_exists (SSet.opFunctor.map f)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op_general f hf) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp a)
   exact ⟨cofiberOpToFiber s, cofiberOpToFiber_isPushout s hs⟩

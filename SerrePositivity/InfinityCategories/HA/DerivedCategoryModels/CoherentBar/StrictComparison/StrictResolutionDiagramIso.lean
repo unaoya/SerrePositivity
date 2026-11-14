@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.DerivedBarDiagram
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.ResolvedCoherentHomology
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedRawFactor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedRawFactor
 
 /-!
 概要：正本の strict 導来図式を、全加群上の同じ分解を使う図式へ全関手同型で比較する。

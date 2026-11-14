@@ -19,21 +19,21 @@ variable {E : perfectStableInfinity.{u} ⟶ Sp.{u}} (hE : IsPerfectLocalizingInv
 
 /-- 実 fiber 図式の左端と同じ元の不変量値の対象の同型。 -/
 def IsPerfectLocalizingInvariant.perfectFiberLeftIso (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.sequenceFiberTriangle d).square 0 0 ≅
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hE.sequenceFiberTriangle d).square 0 0 ≅
       perfectInvariantHoObject E d.leftVertex :=
   eqToIso (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj Sp.{u}))
     (hE.sequenceFiberTriangle_left d))
 
 /-- 実 fiber 図式の中央と同じ元の不変量値の対象の同型。 -/
 def IsPerfectLocalizingInvariant.perfectFiberMiddleIso (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.sequenceFiberTriangle d).square 1 0 ≅
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hE.sequenceFiberTriangle d).square 1 0 ≅
       perfectInvariantHoObject E d.middleVertex :=
   eqToIso (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj Sp.{u}))
     (hE.sequenceFiberTriangle_middle d))
 
 /-- 実 fiber 図式の右端と同じ元の不変量値の対象の同型。 -/
 def IsPerfectLocalizingInvariant.perfectFiberRightIso (d : PerfectVerdierSequence.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hE.sequenceFiberTriangle d).square 1 1 ≅
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hE.sequenceFiberTriangle d).square 1 1 ≅
       perfectInvariantHoObject E d.rightVertex :=
   eqToIso (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj Sp.{u}))
     (hE.sequenceFiberTriangle_right d))
@@ -43,11 +43,11 @@ lemma IsPerfectLocalizingInvariant.perfectFiber_bottom_naturality
     (d : PerfectVerdierSequence.{u}) :
     (hE.perfectFiberLeftIso d).hom ≫
         perfectInvariantHoArrow E d.verdier.inclusion d.left_complete d.middle_complete =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (hE.sequenceFiberTriangle d).square ≫ (hE.perfectFiberMiddleIso d).hom := by
-  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (hE.sequenceFiberTriangle d).square).edge =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (hE.sequenceFiberTriangle d).square ≫ (hE.perfectFiberMiddleIso d).hom := by
+  have he : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (hE.sequenceFiberTriangle d).square).edge =
       ((perfectStableArrow d.verdier.inclusion d.left_complete d.middle_complete).map E).edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge, hE.sequenceFiberTriangle_bottom d, Equiv.apply_symm_apply]
-  exact (FiberModel.homMk_transport (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (hE.sequenceFiberTriangle d).square)
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge, hE.sequenceFiberTriangle_bottom d, Equiv.apply_symm_apply]
+  exact (FiberModel.homMk_transport (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (hE.sequenceFiberTriangle d).square)
     ((perfectStableArrow d.verdier.inclusion d.left_complete d.middle_complete).map E).toTruncated
     (hE.sequenceFiberTriangle_left d) (hE.sequenceFiberTriangle_middle d) he).symm
 
@@ -56,11 +56,11 @@ lemma IsPerfectLocalizingInvariant.perfectFiber_right_naturality
     (d : PerfectVerdierSequence.{u}) :
     (hE.perfectFiberMiddleIso d).hom ≫
         perfectInvariantHoArrow E d.projection d.middle_complete d.right_complete =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (hE.sequenceFiberTriangle d).square ≫ (hE.perfectFiberRightIso d).hom := by
-  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (hE.sequenceFiberTriangle d).square).edge =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (hE.sequenceFiberTriangle d).square ≫ (hE.perfectFiberRightIso d).hom := by
+  have he : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (hE.sequenceFiberTriangle d).square).edge =
       ((perfectStableArrow d.projection d.middle_complete d.right_complete).map E).edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge, hE.sequenceFiberTriangle_projection d, Equiv.apply_symm_apply]
-  exact (FiberModel.homMk_transport (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (hE.sequenceFiberTriangle d).square)
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge, hE.sequenceFiberTriangle_projection d, Equiv.apply_symm_apply]
+  exact (FiberModel.homMk_transport (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (hE.sequenceFiberTriangle d).square)
     ((perfectStableArrow d.projection d.middle_complete d.right_complete).map E).toTruncated
     (hE.sequenceFiberTriangle_middle d) (hE.sequenceFiberTriangle_right d) he).symm
 

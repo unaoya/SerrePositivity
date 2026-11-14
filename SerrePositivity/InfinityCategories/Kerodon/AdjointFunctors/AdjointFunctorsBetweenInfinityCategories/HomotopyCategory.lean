@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PointConstantHomEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantObjectNaturality
 public import Mathlib.Tactic.CrossRefAttribute
@@ -104,3 +106,8 @@ def QCatAdjunction.toHoAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicateg
             ((hoFunctor.map F).toFunctor.map f ≫ (a.hoVertexHomEquiv x.as.as y.as.as).symm g)
       rw [Equiv.apply_symm_apply, a.hoVertexHomEquiv_naturality_left, Equiv.apply_symm_apply] }
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.2.9" (partial := component) "仮定：準圏 C,D と ∞ 随伴 f⊣g（HTT と一致）。結論：同じ f,g が誘導する通常のホモトピー圏上の随伴（Lean が弱い：原典が要求する H 豊穣随伴の構造から豊穣を忘れた部分）。元の対象と二関手を変えず、全ての通常の射に関する自然性も型に含む。H 豊穣の自然同値を構造として出力する宣言はここでは確認していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.toHoAdjunction

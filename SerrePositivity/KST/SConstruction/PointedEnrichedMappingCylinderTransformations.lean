@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedEnrichedMappingCylinderNaturality
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-! # 同じ実写像円柱の比較を束ねた厳密豊穣自然変換
 概要：全 Hom に自然な元の円柱包含・標的包含・源比較・射影を自然変換に束ねる。

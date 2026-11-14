@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.GroupCompletion
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 
@@ -126,3 +128,8 @@ def regularBar (M : SimplicialObject MonCat.{u}) : SSet.{u} :=
   Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj (bisimplicialRegularBar M)
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.2.2.4" (partial := special) "仮定：通常のモノイド M（Lean は HA の集合の圏の場合に限る）。結論：M の正則左作用の圏から基底の単一対象圏への射影を与える（M の自己作用の成分に一致）。[n]↦[n+1] の移送による一般の左作用図式の構成は含まれない。"] _root_.SerrePositivity.KST.Comparison.regularActionProjection

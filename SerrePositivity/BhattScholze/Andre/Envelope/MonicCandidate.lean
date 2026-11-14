@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra
-public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation
+public import SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul
 public import Mathlib.RingTheory.Regular.Flat
 public import SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation
@@ -26,7 +26,7 @@ public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 原典は R̃ に BS 著者版 Proposition 7.11(2) を当てる。Lean は f/d 包を直接作り、Koszul 計算で平坦性を出す。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/MonicSource`、`Perfection/PerfectPrismMonic`、`PowerRootEnvelope/Unconditional/Residue`、`Variants/ArbitraryFamily`、`Variants/Auxiliary`、`Variants/MonicRootedExtension`、`Variants/RootedExtension`。
@@ -34,7 +34,7 @@ public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 universe u
 
-/-! ## André E1：任意関係族の δ 除算による perfectoid 候補（旧 Andre/DivisionPerfectoidCandidate.lean）
+/-! ## André E1：任意関係族の δ 除算による perfectoid 候補
 
 ## 概要
 
@@ -186,7 +186,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DivisionPerfectoidCandidate
 
-/-! ## André E1：多項式族の根方程式を保つ perfectoid 候補（旧 Andre/PolynomialPerfectoidCandidate.lean）
+/-! ## André E1：多項式族の根方程式を保つ perfectoid 候補
 
 ## 概要
 
@@ -318,7 +318,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PolynomialPerfectoidCandidate
 
-/-! ## André E1・E2：PD 先行 δ 完全化と多項式 prism 候補の標準比較（旧 Andre/MonicPrismaticCandidateComparison.lean）
+/-! ## PD 先行 δ 完全化と多項式 prism 候補の標準比較
 
 ## 概要
 
@@ -503,7 +503,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticCandidateComparison
 
-/-! ## André E1・E2：モニック族の最初の実 δ 剰余関係の Koszul 分解（旧 Andre/MonicPrismaticFirstResidueKoszul.lean）
+/-! ## モニック族の最初の実 δ 剰余関係の Koszul 分解
 
 ## 概要
 
@@ -619,7 +619,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticFirstResidueKoszul
 
-/-! ## André E1・E2：有限モニック族の全有限 δ 深さの残余 Koszul 分解（旧 Andre/MonicPrismaticFiniteResidueKoszul.lean）
+/-! ## 有限モニック族の全有限 δ 深さの残余 Koszul 分解
 
 ## 概要
 
@@ -744,7 +744,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticFiniteResidueKoszul
 
-/-! ## André E1・E2：有限モニック族の実残余導来評価比較（旧 Andre/MonicPrismaticSourceResidue.lean）
+/-! ## 有限モニック族の実残余導来評価比較
 
 ## 概要
 
@@ -864,7 +864,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticSourceResidue
 
-/-! ## André E1・E2：モニック族の係数側の実導来剰余比較（旧 Andre/MonicPrismaticCoefficientReduction.lean）
+/-! ## モニック族の係数側の実導来剰余比較
 
 ## 概要
 
@@ -973,7 +973,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticCoefficientReduction
 
-/-! ## André E1・E2：モニック族の実自由 δ 源商上の導来還元（旧 Andre/MonicPrismaticQuotientDerived.lean）
+/-! ## モニック族の実自由 δ 源商上の導来還元
 
 ## 概要
 
@@ -1239,7 +1239,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticQuotientDerived
 
-/-! ## André E1・E2：多項式 prism 候補の標準基底射（旧 Andre/MonicPrismaticPrismBaseMap.lean）
+/-! ## 多項式 prism 候補の標準基底射
 
 ## 概要
 

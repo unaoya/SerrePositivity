@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.ModulePiHomology
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.PinchedMooreNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexPinchedModel
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.ComplexPinchedModel
 /-!
 概要：実 pinched 空間の全基点の正次数 π を元の負次数コホモロジーへ同定する。
 方針：全基点の加法移送、既存の Moore 同型、単位 Hom 同型を順に用いる。
@@ -24,12 +24,12 @@ def dgBarCompactPinchedPiCohomologyEquiv (x y : D) (n : ℕ)
     (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom R D x y) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom R D x y) n z ≃*
       Multiplicative ((_root_.SerrePositivity.DifferentialGraded.homObject R D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
-  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.kanHomotopyGroupIsoEquiv (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomModuleForgetIso (S := R) x y).symm n z).trans
+  (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.kanHomotopyGroupIsoEquiv (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomModuleForgetIso (S := R) x y).symm n z).trans
     ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactModulePiHomologyEquiv (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomModule (S := R) x y) n
       ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomModuleForgetIso (S := R) x y).inv.app _ z)).trans
-        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.additiveGroupToMultiplicativeEquiv
+        ((_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
           (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomMooreHomologyIso x y (n + 1)).toLinearEquiv.toAddEquiv).trans
-            (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.additiveGroupToMultiplicativeEquiv (ULift.moduleEquiv (R := R)).toAddEquiv)))
+            (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv (ULift.moduleEquiv (R := R)).toAddEquiv)))
 
 /-- 任意複体の実単位 Hom 模型の全基点を、元の複体の H^{-n-1} へ同定する。 -/
 def dgBarCompactComplexPinchedPiCohomologyEquiv (K : Complex R) (n : ℕ)
@@ -38,7 +38,7 @@ def dgBarCompactComplexPinchedPiCohomologyEquiv (K : Complex R) (n : ℕ)
       Multiplicative (K.homology (-((n + 1 : ℕ) : ℤ))) :=
   (dgBarCompactPinchedPiCohomologyEquiv (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexPinchedSource K)
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexPinchedTarget K) n z).trans
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.additiveGroupToMultiplicativeEquiv
+      (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.additiveGroupToMultiplicativeEquiv
         ((HomologicalComplex.homologyFunctor _ _ (-((n + 1 : ℕ) : ℤ))).mapIso
           (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexUnitHomIso K).symm).toLinearEquiv.toAddEquiv)
 

@@ -29,7 +29,7 @@ CLMST の Tor 比較。
 
 universe u
 
-/-! ## Almost kernel support for perfectoidizations of actual surjections（旧 Almost/PerfectoidizationSupportedQuotientKernel.lean）
+/-! ## Almost kernel support for perfectoidizations of actual surjections
 
 André's existing BS 著者版 Theorem 7.14 supplies an injective AIC perfectoid test extension.
 The common proof then applies to the actual functorial comparison. The
@@ -127,7 +127,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationSupportedQuotientKernel
 
-/-! ## Original scalar actions on the kernel and cokernel of the actual comparison（旧 Almost/PerfectoidizationSupportedQuotientLinear.lean）
+/-! ## Original scalar actions on the kernel and cokernel of the actual comparison
 
 This is the linear-map interface for Tor comparison and derived-cone descent.
 The original algebra structures over R are retained throughout.
@@ -176,7 +176,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationSupportedQuotientLinear
 
-/-! ## The actual supported quotient onto the image of a finite comparison（旧 Almost/PerfectoidizationImageComparison.lean）
+/-! ## The actual supported quotient onto the image of a finite comparison
 
 This constructs the surjective part of a modification comparison. It does not
 assume or assert almost invariance of the remaining injective inclusion.

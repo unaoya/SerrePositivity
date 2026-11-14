@@ -4,7 +4,7 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionC
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorLatchingValues
 public import Mathlib.AlgebraicTopology.SimplexCategory.Rev
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ReversedDegeneracies
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.ReversedDegeneracies
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarFreeResolutionDegeneracyValues

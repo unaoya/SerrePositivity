@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTrans
 public import SerrePositivity.DifferentialGraded.Module.Functor
 public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements

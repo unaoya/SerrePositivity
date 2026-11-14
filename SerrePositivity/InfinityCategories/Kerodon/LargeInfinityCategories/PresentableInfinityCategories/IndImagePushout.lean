@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowPushoutFamily
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutComparisonCorners
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeMappingPiZero
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseHorns
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseHorns
 
 /-!
 概要：同じ実 Ind 像の元の辺クラスは、元の任意の pushout で保存される。

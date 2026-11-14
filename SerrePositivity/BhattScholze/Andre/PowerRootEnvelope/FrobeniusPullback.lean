@@ -12,10 +12,10 @@ public import SerrePositivity.BhattScholze.Andre.Variants.RootedExtension
 Hodge–Tate ϖ 剰余の係数 Frobenius 底変換と無限根作用、Frobenius テンソル上の代数作用と PD 入力、A 全体の Frobenius 引戻しの pd 表示と普遍性。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/Unconditional/FrobeniusPD`、`Variants/MonicRootedExtension`。
@@ -23,7 +23,7 @@ Hodge–Tate ϖ 剰余の係数 Frobenius 底変換と無限根作用、Frobeniu
 
 universe u w
 
-/-! ## André E1・E2：実 Hodge–Tate ϖ 剰余の係数 Frobenius 底変換（旧 Andre/Remark715/PowerRootPrismMonicFrobeniusBaseChange.lean）
+/-! ## 実 Hodge–Tate ϖ 剰余の係数 Frobenius 底変換
 
 ## 概要
 
@@ -152,7 +152,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicFrobeniusBaseChange
 
-/-! ## André E1・E2：実 Frobenius 底変換の自然な無限根作用（旧 Andre/Remark715/PowerRootPrismMonicFrobeniusRootAction.lean）
+/-! ## 実 Frobenius 底変換の自然な無限根作用
 
 ## 概要
 
@@ -293,7 +293,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicFrobeniusRootAction
 
-/-! ## André E1・E2：実 Frobenius テンソル上の無限根環の自然な代数作用（旧 Andre/Remark715/PowerRootPrismMonicFrobeniusTensorAlgebra.lean）
+/-! ## 実 Frobenius テンソル上の無限根環の自然な代数作用
 
 ## 概要
 
@@ -489,7 +489,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicFrobeniusTensorAlgebra
 
-/-! ## André R1：自然な Frobenius テンソルの PD 入力とイデアル（旧 Andre/Remark715/PowerRootPrismMonicFrobeniusTensorPD.lean）
+/-! ## André R1：自然な Frobenius テンソルの PD 入力とイデアル
 
 ## 概要
 
@@ -592,7 +592,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicFrobeniusTensorPD
 
-/-! ## André E1・E2：A 全体の Frobenius 引戻しと実 pd 表示（旧 Andre/Remark715/PowerRootPrismMonicFullFrobeniusPullback.lean）
+/-! ## A 全体の Frobenius 引戻しと実 pd 表示
 
 ## 概要
 
@@ -773,7 +773,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicFullFrobeniusPullback
 
-/-! ## André R1：A 全体の Frobenius 引戻しの PD 入力とイデアル（旧 Andre/Remark715/PowerRootPrismMonicFullFrobeniusPD.lean）
+/-! ## André R1：A 全体の Frobenius 引戻しの PD 入力とイデアル
 
 ## 概要
 
@@ -980,7 +980,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicFullFrobeniusPD
 
-/-! ## André E1・E2：追加正則性なしの実 Frobenius 引戻しの pd 普遍性（旧 Andre/Remark715/PowerRootPrismMonicFullFrobeniusPDOfMonic.lean）
+/-! ## 追加正則性なしの実 Frobenius 引戻しの pd 普遍性
 
 ## 概要
 

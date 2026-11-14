@@ -71,7 +71,7 @@ lemma boundary_prefix_eq :
   change ((ihom (Δ[n] : SSet.{u})).map ((pre (SSet.ι₀ : S.toSSet ⟶ P)).app C.obj)).app
       (Opposite.op ⦋1⦌)
       (((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)).app (Opposite.op ⦋1⦌)
-        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow r.cylinderSquare).edge) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow r.cylinderSquare).edge) =
     ((ihom (Δ[n] : SSet.{u})).map ((pre S.ι).app C.obj)).app (Opposite.op ⦋1⦌)
       (((ihom (Δ[n] : SSet.{u})).map (q.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap K C.obj)).app
         (Opposite.op ⦋1⦌) c.denominator.edge)

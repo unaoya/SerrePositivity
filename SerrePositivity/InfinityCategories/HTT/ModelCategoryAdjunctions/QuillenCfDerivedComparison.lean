@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfLeftOrdinaryComparison
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfRightOrdinaryComparison
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfDerivedLimits
@@ -74,3 +76,10 @@ lemma quillenCfDerivedAdjunctionWithComparisons_exists :
 
 end
 end SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.4.26" (partial := stronger-hyp) "仮定：二つの単体モデル圏と豊穣の随伴・pushout-product・関手的置換（Lean が強い：一般の組合せ的モデル圏間の左 Quillen 関手より限定。モデル圏 instance が必要）。結論：cf nerve 間に誘導される左導来関手が左随伴（Lean が弱い：全ての組合せ的模型の局所化との同定は型にない）。"] _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfDerivedAdjunctionWithComparisons_exists
+attribute [cite HA "1.3.4.27" (partial := stronger-hyp) "仮定：単体モデル圏間の豊穣 Quillen 随伴に関手的置換を与える（Lean が強い：一般の組合せ的モデル圏を直接扱わず、モデル圏 instance が必要）。結論：右導来関手と随伴の存在、および通常の置換から作った関手との比較（制限した模型で一致）。"] _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfDerivedAdjunctionWithComparisons_exists
+attribute [cite HTT "5.2.4.7" (partial := stronger-hyp) "仮定：単体的 Quillen 随伴（Lean が強い：固定 SM7・合成互換と両側の関手的分解を指定し、ModelCategory instance なしの具体例を残す）。結論：同じ cf nerve 間の左右導来関手、標準単位を持つ全 ∞ 随伴、および通常の cf 置換関手の nerve との FunctorIso（置換を用いた本文の導来関手の比較に一致）。本行では SSet の未証明 Kan–Quillen 入力を instance の証拠としない。"] _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfDerivedAdjunctionWithComparisons_exists

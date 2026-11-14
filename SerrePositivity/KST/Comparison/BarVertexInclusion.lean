@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.NerveLoopMultiplication
 public import SerrePositivity.KST.Comparison.GroupCompletion
 
@@ -94,3 +96,8 @@ theorem monoidVertexNerveMap_edge (M : SimplicialObject MonCat.{u})
   exact (monoidEdgeSimplex_map (M.map (SimplexCategory.const ⦋1⦌ ⦋0⦌ 0).op) a).trans hr.symm
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.2.4" (partial := component) "仮定：通常のモノイド T を定値単体モノイドとする（HA の通常モノイドの場合）。結論：bar が SingleObj T の nerve に同型で、その n 単体と n 個の T の元の列が全単射になる（分類空間の構成と Segal 写像の成分に一致）。任意の単体集合からのモノイド再構成は含まれない。"] _root_.SerrePositivity.KST.Comparison.constantMonoidBarIso

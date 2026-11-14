@@ -5,7 +5,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
 public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
 public import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraLocalization
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ULiftRelativeLocalization
 public import Mathlib.AlgebraicTopology.ModelCategory.FundamentalLemma
 
 /-!
@@ -116,9 +116,9 @@ lemma cAlgLocalizationSource_map_reflects_weak
   have hn := NatIso.naturality_2 η.symm a
   have hc : IsIso ((η.app _).inv ≫ (hoMap (L ≫ U)).map a ≫ (η.app _).hom) := inferInstance
   have hg : IsIso ((hoMap G).map a) := hn ▸ hc
-  have hg' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+  have hg' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
       ((nerve.edgeMk φ).map (complexOrdinaryDerivedSource A)).toTruncated := by
-    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
       (e := ((nerve.edgeMk f).map G).toTruncated) ?_).mp hg
     change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
       ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)) =
@@ -131,7 +131,7 @@ set_option maxHeartbeats 800000 in
 -- CAlg_R の頂点を DK の対象で表示し直す二つの端点の型検査に既定値を超える。
 /-- HA §3.2.2 の忘却関手は、可逆な辺を反映する。 -/
 lemma cAlgForgetDerived_conservative {x y : (CAlg_R A) _⦋0⦌}
-    (e : SSet.Edge x y) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    (e : SSet.Edge x y) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
       (e.map (cAlgForgetDerived A)).toTruncated) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) e.toTruncated := by
   obtain ⟨X, rfl⟩ := (cAlgVertexEquiv A).surjective x

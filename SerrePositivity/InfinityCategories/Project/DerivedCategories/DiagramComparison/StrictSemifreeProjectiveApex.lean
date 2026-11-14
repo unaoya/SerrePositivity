@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeNormalizedProjectiveModule
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictClosedVertexEvaluation
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRawDAFamily
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosedNerveFunctorNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.ClosedNerveFunctorNaturality
 
 /-!
 概要：元のnative全余錐族の射影的apexを、同じ正規化barの全関手と照合する。
@@ -36,7 +36,7 @@ lemma strictSemifreeProjectiveApex :
             (strictSemifreePointUnderlyingFunctor A)
             (strictSemifreePointUnderlyingFunctor_projective A) =
       nerveMap (strictSemifreeNormalizedProjectiveModule A) ≫
-        closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) := by
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) := by
   dsimp only
   apply (cancel_mono
     (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
@@ -77,7 +77,7 @@ lemma strictSemifreeProjectiveApex :
   have hc := strictClosedVertexEvaluation A (𝟭 (ModuleCategory A PUnit.{1}))
   change lift (𝟙 _) (SSet.stdSimplex.isTerminalObj₀.from _) ≫
     strictSimplexFunctorEvaluation A (RightModule A PUnit.{1})
-      (strictBarClosedVertexFunctor A) = closedNerveInclusion A (RightModule A PUnit.{1}) at hc
+      (strictBarClosedVertexFunctor A) = _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (RightModule A PUnit.{1}) at hc
   rw [lift_whiskerRight_assoc, ← hc, comp_lift_assoc, Category.comp_id]
   congr 1
 

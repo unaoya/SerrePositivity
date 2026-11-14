@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidPrismPresentation
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation
 public import SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial
 

@@ -1,0 +1,20 @@
+{
+  "status": "Full source module multiset unchanged",
+  "before_groups": 211,
+  "after_groups": 156,
+  "modules": 9518,
+  "batched_uncaptured_singletons": 59,
+  "batch_sizes": [
+    16,
+    16,
+    16,
+    11
+  ],
+  "reused_identical_audit_labels": {
+    "207": "152",
+    "208": "153",
+    "209": "154",
+    "210": "155"
+  },
+  "note": "Existing completed first148 groups stay at exactly the same indices. Final publication uses active signed leaves only."
+}

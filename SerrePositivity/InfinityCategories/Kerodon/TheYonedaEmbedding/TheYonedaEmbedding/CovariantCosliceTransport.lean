@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.CovariantCosliceClassification
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointCoslicePostIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniversePointCoslice
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.UniversePointCoslice
 
 /-!
 概要：大きい底の表示上で作った表現可能な全空間比較を、小さい底の分類へ戻す。

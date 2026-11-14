@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonLeftEdges
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SquareBoundaryComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SquareBoundaryComposition
 
 /-!
 概要：元の比較 Hom 正方形の三つの隅を零頂点、残る隅を左右で共通に表示する。

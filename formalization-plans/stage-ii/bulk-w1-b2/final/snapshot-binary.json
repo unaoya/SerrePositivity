@@ -1,0 +1,34 @@
+{
+  "link_profile": "interpreter-rdynamic-v1",
+  "verification_source_sha256": "575132b4cb0e80feb0ec5c8fdc1a3662af0c6a3c1b69094ffb76bfa1de5f0d89",
+  "binary_sha256": "044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9",
+  "steps": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--root=/tmp/bulk-w1-b2/private-snapshot",
+        "-c",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot.c",
+        "/tmp/bulk-w1-b2/private-snapshot/Snapshot.lean"
+      ],
+      "rc": 0,
+      "seconds": 6.982018498703837
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "leanc",
+        "-O3",
+        "-rdynamic",
+        "-o",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot.c"
+      ],
+      "rc": 0,
+      "seconds": 6.193500252440572
+    }
+  ]
+}

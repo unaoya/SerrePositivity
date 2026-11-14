@@ -20,7 +20,7 @@ open scoped Simplicial
 方針：subobject の等号で共通始点を照合して pushout の普遍性を使う。
 規約：元の cofiber 図式 E と動かす添字を全て保持する。使われ方：ρ の実際の入力。 -/
 def mcCarthySpan {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A) : (horn 2 0 : SSet.{u}) ⊗ arNerve n ⟶ cofiberDiagrams C :=
@@ -33,7 +33,7 @@ def mcCarthySpan {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePosit
 方針：二枝の貼り合わせの第一制限。
 規約：全高次単体での等号。使われ方：ρ の上辺の照合。 -/
 lemma mcCarthySpan_upper {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A) :
@@ -44,7 +44,7 @@ lemma mcCarthySpan_upper {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.Se
 方針：二枝の貼り合わせの第二制限。
 規約：全高次単体での等号。使われ方：ρ の左辺の照合。 -/
 lemma mcCarthySpan_left {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A) :
@@ -55,7 +55,7 @@ lemma mcCarthySpan_left {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.Ser
 方針：二枝で prism の前合成の式を確認する。
 規約：左 fiber の等号の証明の選択によらない。使われ方：ρ の面・退化の自然性。 -/
 lemma mcCarthySpan_pre {l n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) (E : arNerve n ⟶ cofiberDiagrams C)
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A) (σ : Fin (l + 1) →o Fin (n + 1))
@@ -73,7 +73,7 @@ lemma mcCarthySpan_pre {l n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.Se
 方針：標準恒等 cofiber の入力の始点が恒等関手である式を使う。
 規約：射の厳密な等号。使われ方：ρ の subobject を μ に一致させる正規化。 -/
 lemma mcCarthyLambdaMu_source {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) :
     mcCarthyLambdaMu z A α τ ≫ cofiberProjection C ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = mcCarthyArMotion α τ ≫ A := by
@@ -85,7 +85,7 @@ lemma mcCarthyLambdaMu_source {n m : ℕ} {C : SSet.{u}} [Quasicategory C]
 方針：λ→μ は一定であり、左 fiber 条件で左辺の始点が λ となる。
 規約：標準形状の厳密な等号。使われ方：ρ の恒等射側の端点。 -/
 lemma mcCarthySpan_timeZero {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C) (α : Fin (n + 1) →o Fin (m + 1))
     (E : arNerve n ⟶ cofiberDiagrams C)
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A) :

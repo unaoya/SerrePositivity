@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaEvaluatedTransportEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostcompositionLaws
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostHomCriterion
@@ -79,3 +81,8 @@ lemma yonedaInfinityMap_isFullyFaithful (C : SSet.{u}) [Quasicategory C] :
   exact (yonedaInfinityMap_pinchedHomMap_isQCatEquivalence x y).isSimplicialHomotopyEquivalence
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.3.1" (partial := special) "仮定：小さい単体集合 K（Lean が強い：K は準圏）。結論：同じ空間値前層準圏への米田写像が写像空間上で充満忠実（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isFullyFaithful

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleFrontMap
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleRightMaps
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorEvaluationHomotopy
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyTriangleClasses
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.HomotopyTriangleClasses
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceIntervalComparison
 /-! 概要：元の大域評価三角形は全関手圏内で同じ全族の合成を与える。
 方針：元の全三辺を持つ二単体族を curry する。

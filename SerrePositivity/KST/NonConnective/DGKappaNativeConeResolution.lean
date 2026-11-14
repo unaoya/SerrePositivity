@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeCofinality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CellDGResolutionNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.CellDGResolutionNerve
 
 /-!
 概要：同じ cone の完備化前の K 零性を、D-9 の同じ実平坦源へ戻す。
@@ -42,7 +42,7 @@ def dgKappaNativeResolvedCone : StableModel.{max (u + 1) v} where
   carrier := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
   stable := by
     let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-    exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R
       (DGCategoryCellResolution.Source R (DGKappaCone R D I))
 
 /-- 概要：同じ実平坦源と元の cone の Yoneda 始域は、元の増大を順方向に含む同値。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.CommaPrimitiveActions
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Functoriality.CommaPrimitiveActions
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.PrimitiveComparison
 
 /-! # 元の gluing 三成分と同じ comma 表示の斉次回収
 概要：元の左右成分と第三成分を、構成済みの実 Hom 同型で厳密に回収する。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteImage
 
 /-!
@@ -26,7 +28,7 @@ def cAlgUnderlyingHomologyIso (B : (operad A).Algebra) (i : ℤ) :
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A i
       ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) (cAlgVertex A B)) ≅ B.carrier.homology i := by
   let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory
-    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).mapIso
+    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).mapIso
       (cAlgForgetDerived_valueVertexIso A B)
   have h := cAlgForgetDerivedValueAugmentation_quasiIso A B
   have e' := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyIso A i (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (cAlgForgetDerivedValue A B))
@@ -68,3 +70,8 @@ lemma cAlgVertex_underlyingDisc (B : (operad A).Algebra)
   · exact B.carrier.exactAt_of_isLE 0 i hi
 
 end SerrePositivity.EInfinity.BarrattEccles
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.3.17" (partial := component) "仮定：可換環 R 上の実 Barratt–Eccles 代数とその CAlg_R 頂点（Lean が強い：この模型と離散性の場合）。結論：底の導来像が離散であることと台の全非零次数のホモロジー消滅が同値となる（基礎対象による離散性の部分に一致）。代数の ∞ 写像空間の零切断性と一般 k の比較は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.cAlgVertex_underlyingDisc_iff

@@ -22,8 +22,8 @@ variable (A : Type u) [CommRing A] {I : Type (u + 1)} [Category.{u} I]
 方針：元の等式による後合成を Arrow の標準則で除去する。
 規約：元の図式と値を保持。使われ方：自由源比較の端点表示の照合。 -/
 lemma complexDiagramDerivedVertexIso_comp_arrow (H : I ⥤ Complex A) (i : I)
-    {z : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A).obj (Opposite.op ⦋0⦌)}
-    (f : (HomotopyCategory.mk z : hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶ HomotopyCategory.mk
+    {z : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A).obj (Opposite.op ⦋0⦌)}
+    (f : (HomotopyCategory.mk z : hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶ HomotopyCategory.mk
       ((nerveMap H ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))) :
     Arrow.mk (f ≫ (complexDiagramDerivedVertexIso A H i).hom) = Arrow.mk f := by
   dsimp only [complexDiagramDerivedVertexIso]

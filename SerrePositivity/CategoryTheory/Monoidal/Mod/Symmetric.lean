@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.Monoidal
 public import Mathlib.Tactic.CategoryTheory.Slice
 
@@ -305,3 +307,9 @@ end SerrePositivity.MonoidalBalancedTensor
 end
 
 end BalancedTensorSymmetric
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.4.3.13" (partial := special) "仮定：通常の対称閉モノイダル圏の可換内部モノイドと、内部 Hom と平衡テンソルを作る等化子・余等化子および保存条件（Lean が強い：通常の対称閉モノイダル圏と指定した等化子・余等化子）。結論：平衡テンソルは内部 Hom の左随伴なので通常圏の余極限を保存し、組紐によってもう一方の変数でも保存する（この仮定での HA の結論の一部に一致）。一般の幾何学的実現は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.symmetricCategory
+attribute [cite HA "4.5.2.1" (partial := special) "仮定：通常の対称モノイダル圏の可換内部モノイド A と必要な余等化子およびテンソルによる保存条件（Lean が強い：通常圏に限る）。結論：内部左加群に組紐から右作用を入れ、その作用で平衡化した相対テンソルを積とする対称モノイダル構造を構成する（この仮定での HA の結論の一部に一致）。(1) の通常圏の場合と (2) のテンソル公式に対応し、∞ オペラッド間のモノイダル比較は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.symmetricCategory

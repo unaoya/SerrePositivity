@@ -69,7 +69,7 @@ def dgKappaResolvedConeKVertexIso :
 
 /-- 元の同じ平坦 cone の固定 K も、同じ増大を介して実 Sp の零頂点。 -/
 theorem dgKappaResolvedConeK_isZeroVertex (Z : DGKappaZeroInput R D I) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaResolvedConeKInput R D I))) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaResolvedConeKInput R D I))) :=
   (dgKappaFixedK_isZeroVertex R D I Z).of_vertexIso (dgKappaResolvedConeKVertexIso R D I).symm
 
 end SerrePositivity.KST.NonConnective

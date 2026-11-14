@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 public import Mathlib.CategoryTheory.Adjunction.Parametrized
 public import Mathlib.CategoryTheory.Monoidal.CoherenceLemmas
@@ -319,3 +321,8 @@ end EnrichedRepresentability
 end SerrePositivity.Enriched
 
 end EnrichedRepresentability
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.3.1.5"] _root_.SerrePositivity.Enriched.TensorCotensor

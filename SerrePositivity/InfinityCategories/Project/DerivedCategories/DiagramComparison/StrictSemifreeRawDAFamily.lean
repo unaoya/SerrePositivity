@@ -27,7 +27,7 @@ def strictSemifreeRawDAJoinFamily :
     nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ⊗
       join ((SSet.uliftFunctor.{u + 1, u}).obj
         ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ)))
-        (Δ[0] : SSet.{u + 1}) ⟶ derivedInfinityCategory A :=
+        (Δ[0] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
     (strictSemifreePointUnderlyingFunctor A)
     (strictSemifreePointUnderlyingFunctor_projective A) ≫ (projectivePointEquivalence A).hom

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.UniversePointSlice
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniversePullbacks
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniversePullbacks
 
 /-!
 概要：元の左 Kan 添字の持ち上げと、持ち上げた同じ射・点の左 Kan 添字の厳密な同型。

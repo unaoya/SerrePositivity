@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LeftPrism
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 
@@ -110,3 +112,8 @@ lemma leftFibration_lift_prism {A X B : SSet.{u}} (p : X ⟶ B) [_root_.SerrePos
       pullback.lift_snd] using h
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.1.2.10" (partial := direction) "仮定：左ファイブレーション p（元の iff の順方向の仮定と一致）。結論：指定 interval source の relativeEdgeSource p が TrivialKanFibration となるので順方向に一致。逆向きはない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.relativeEdgeSource_trivialKanFibration

@@ -1,0 +1,63 @@
+{
+  "outputs": 8823,
+  "deletions": 5322,
+  "changed_original_sources": 7,
+  "three_way_outputs": [
+    {
+      "source": "SerrePositivity.lean",
+      "target": "SerrePositivity.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": false
+    },
+    {
+      "source": "SerrePositivity/EInfinity.lean",
+      "target": "SerrePositivity/EInfinity.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": false
+    },
+    {
+      "source": "SerrePositivity/EInfinity/Interface/Theory.lean",
+      "target": "SerrePositivity/EInfinity/Interface/Theory.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": false
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/Entrypoints/Derived.lean",
+      "target": "SerrePositivity/InfinityCategories/Project/Entrypoints/Derived.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": false
+    },
+    {
+      "source": "scripts/audit_bhatt_scholze_stage2.lean",
+      "target": "scripts/audit_bhatt_scholze_stage2.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": false
+    },
+    {
+      "source": "scripts/audit_derived_infinity.lean",
+      "target": "scripts/audit_derived_infinity.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": true
+    },
+    {
+      "source": "scripts/audit_infinity_f2.lean",
+      "target": "scripts/audit_infinity_f2.lean",
+      "mode": "three-way frozen-main rebase",
+      "conflict": false
+    }
+  ],
+  "conflicts": [],
+  "scope_exception": {
+    "IntegralExistence": {
+      "from": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Existence.IntegralExistence",
+      "kept": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence"
+    }
+  },
+  "integral_citation_lines": [],
+  "resolved_conflicts": [
+    {
+      "path": "scripts/audit_derived_infinity.lean",
+      "policy": "Union both import blocks, rename exact modules, retain all frozen-main imports"
+    }
+  ]
+}

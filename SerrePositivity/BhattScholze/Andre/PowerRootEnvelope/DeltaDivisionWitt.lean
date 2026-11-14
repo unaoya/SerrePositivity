@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision.PDivision
 public import Mathlib.RingTheory.WittVector.DiscreteValuationRing
 public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
@@ -18,10 +18,10 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 BS 著者版 Remark 7.15 のモニック根の包に使う、δ 除算包の係数比較と Witt 座標での普遍性を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/CompletionPrism`、`PowerRootEnvelope/DeltaDivisionResidue`、`PowerRootEnvelope/PowerRootPolynomial`、`Variants/Auxiliary`、`Variants/MonicRootedExtension`。
@@ -29,7 +29,7 @@ BS 著者版 Remark 7.15 のモニック根の包に使う、δ 除算包の係�
 
 universe u v
 
-/-! ## André E1・E2：係数 δ 自己同型による raw 除算包の比較（旧 Andre/Remark715/DeltaDivisionCoefficientAut.lean）
+/-! ## 係数 δ 自己同型による raw 除算包の比較
 
 ## 概要
 
@@ -169,7 +169,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionCoefficientAut
 
-/-! ## André E1・E2：raw 係数 δ 比較の実導来完備化への延長（旧 Andre/Remark715/DeltaDivisionCoefficientPDCompletion.lean）
+/-! ## raw 係数 δ 比較の実導来完備化への延長
 
 ## 概要
 
@@ -261,7 +261,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionCoefficientPDCompletion
 
-/-! ## André E1・E2：任意の Witt 解から raw δ 除算包への通常環射（旧 Andre/Remark715/DeltaDivisionWittEvaluation.lean）
+/-! ## 任意の Witt 解から raw δ 除算包への通常環射
 
 ## 概要
 
@@ -566,7 +566,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionWittEvaluation
 
-/-! ## André E1・E2：raw 二元剰余の Witt 普遍性（旧 Andre/Remark715/DeltaDivisionPairResidueWitt.lean）
+/-! ## raw 二元剰余の Witt 普遍性
 
 ## 概要
 
@@ -727,7 +727,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionPairResidueWitt
 
-/-! ## André E1・E2：Witt 方程式の distinguished 分母の正規化（旧 Andre/Remark715/DistinguishedWittDenominator.lean）
+/-! ## Witt 方程式の distinguished 分母の正規化
 
 ## 概要
 
@@ -829,7 +829,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DistinguishedWittDenominator
 
-/-! ## André E1・E2：分母正規化単元の零環を含む自然性（旧 Andre/Remark715/DistinguishedWittDenominatorNaturality.lean）
+/-! ## 分母正規化単元の零環を含む自然性
 
 ## 概要
 
@@ -956,7 +956,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DistinguishedWittDenominatorNaturality
 
-/-! ## André E1・E2：Frobenius 分母の raw 剰余と p 除算剰余（旧 Andre/Remark715/DeltaDivisionFrobeniusPResidueEquiv.lean）
+/-! ## Frobenius 分母の raw 剰余と p 除算剰余
 
 ## 概要
 
@@ -1174,7 +1174,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFrobeniusPResidueEquiv
 
-/-! ## André E1・E2：raw p 除算包の係数商と主 pd 表示（旧 Andre/Remark715/DeltaPDivisionIdealPDComparison.lean）
+/-! ## raw p 除算包の係数商と主 pd 表示
 
 ## 概要
 
@@ -1289,7 +1289,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaPDivisionIdealPDComparison
 
-/-! ## André E1・E2：有限 δ 関係商の mod p と最高変数の正則性（旧 Andre/Remark715/DeltaDivisionFiniteModPrimeTail.lean）
+/-! ## 有限 δ 関係商の mod p と最高変数の正則性
 
 ## 概要
 
@@ -1388,7 +1388,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionFiniteModPrimeTail
 
-/-! ## André E1・E2：元の raw δ 割り算包の実完備化の普遍性（旧 Andre/Remark715/RawDeltaDivisionPDUniversal.lean）
+/-! ## 元の raw δ 割り算包の実完備化の普遍性
 
 ## 概要
 
@@ -1456,7 +1456,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RawDeltaDivisionPDUniversal
 
-/-! ## André E1・E2：正則な実 raw 完備化と旧ねじれ除去後の実完備化（旧 Andre/Remark715/RawDeltaDivisionPDTorsionComparison.lean）
+/-! ## 正則な実 raw 完備化と旧ねじれ除去後の実完備化
 
 ## 概要
 

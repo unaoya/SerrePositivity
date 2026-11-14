@@ -1,0 +1,15 @@
+{
+  "module": "SerrePositivity.HomologicalAlgebra.FlatBaseChange",
+  "classification": "SharedFoundation",
+  "remove_implementation_prefix": true,
+  "reason": "Four generic flat base-change/Koszul homology statements on arbitrary commutative rings; its imports are TorBaseChange, Koszul.Basic and Mathlib.RingTheory.Flat.Stability. The complete new foundation closure has no BS or infinity-category modules.",
+  "status": "proposal for coordinator review; no production layer config changed",
+  "retired_implementation_edges": [
+    {
+      "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.Localization",
+      "to": "SerrePositivity.HomologicalAlgebra.FlatBaseChange",
+      "reason": "\u6bd4\u8f03\u3067\u4f7f\u3046\u5b9f\u88c5\u306e\u5ba3\u8a00 SerrePositivity.flatBaseChangeHomologyEquiv \u3092\u63d0\u4f9b\u3059\u308b\u3002"
+    }
+  ],
+  "retirement_reason": "SharedFoundation classification makes the formerly approved implementation boundary unnecessary; remove the stale exception rather than count it as an active exception."
+}

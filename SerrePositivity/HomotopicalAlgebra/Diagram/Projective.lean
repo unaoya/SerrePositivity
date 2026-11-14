@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.EvaluationFamily
 
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
@@ -109,3 +111,11 @@ lemma modelCategory_generated :
     (free K) (evaluation K) (adjunction K) I J (freeCells_acyclic K I J)
 
 end SerrePositivity.DiagramModel.Projective
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.8.2" (partial := component) "仮定：K が小さい、抽象モデル圏 A が Mathlib locally presentable で小さい生成 I,J を持つ（形式的仮定の比較は A.2.6.1 参照）。結論：同じ Fun(K,A) に objectwise W,F と生成された projective cofibrations の ModelCategory を構成し、小さい generators も出力する。projective の結論は一致するが injective model の存在は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.modelCategory
+attribute [cite HTT "A.2.8.2" (partial := component) "仮定：K が小さい、抽象モデル圏 A が Mathlib locally presentable で小さい生成 I,J を持つ（形式的仮定の比較は A.2.6.1 参照）。結論：同じ Fun(K,A) に objectwise W,F と生成された projective cofibrations の ModelCategory を構成し、小さい generators も出力する。projective の結論は一致するが injective model の存在は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.modelCategory_fibrations
+attribute [cite HTT "A.2.8.2" (partial := component) "仮定：K が小さい、抽象モデル圏 A が Mathlib locally presentable で小さい生成 I,J を持つ（形式的仮定の比較は A.2.6.1 参照）。結論：同じ Fun(K,A) に objectwise W,F と生成された projective cofibrations の ModelCategory を構成し、小さい generators も出力する。projective の結論は一致するが injective model の存在は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.modelCategory_generated
+attribute [cite HTT "A.2.8.2" (partial := component) "仮定：K が小さい、抽象モデル圏 A が Mathlib locally presentable で小さい生成 I,J を持つ（形式的仮定の比較は A.2.6.1 参照）。結論：同じ Fun(K,A) に objectwise W,F と生成された projective cofibrations の ModelCategory を構成し、小さい generators も出力する。projective の結論は一致するが injective model の存在は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.modelCategory_weakEquivalences

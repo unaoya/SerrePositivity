@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPo
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryPointedFunctor
 public import SerrePositivity.KST.SConstruction.PointedSSetSuspensionFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAssemblyFamilies
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformation
 
 /-! # 元の suspension 組み立ての厳密単体的自然変換
 概要：元の同じ組み立てを、全厳密 dg 入力上の点つき豊穣自然変換へ束ねる。

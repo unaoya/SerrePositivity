@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafDensityEvaluationColimit
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits
 
@@ -33,3 +35,9 @@ lemma presheafDensityPresentation :
   ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafDensityCocone F, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafDensityCocone_vertex F, presheafDensityCocone_isColimit F⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.5.5" (partial := direction) "仮定：P(S) から任意の準圏への関手が小余極限を保つ（Lean が強い：S は準圏）。結論：同じ密度余錐の像が余極限なので、元の米田制限に沿う全標準局所余錐が余極限となり、恒等単位の左 Kan 条件を満たす（(1) の保存から Kan への方向が一致。逆向きと (2) の存在は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafDensityCocone_isColimit
+attribute [cite HTT "5.1.5.8" (partial := special) "仮定：小さい単体集合 S（Lean が強い：S は準圏）。結論：任意の元の前層は、頂点が元の米田像である小さい元の圏上の図式の余極限として表示される（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafDensityPresentation

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SliceOverCoconeProjection
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SliceOverCoconeFromColimit
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InitialObjectsInSlices
@@ -81,3 +83,9 @@ lemma sliceOver_isColimitCone_iff_projection {K X : SSet.{u}} [Quasicategory X]
   · exact sliceOver_isColimitCone_of_projection x c
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.2.13.8" (partial := special) "仮定：準圏 C と図式 p（Lean が強い：スライスを定める q の始域 T が一点）。結論：底の余極限余錐を厳密に持ち上げ、与えた余錐が余極限かを射影で検出する（Lean が弱い：任意の T のスライスは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_sliceOver_colimitCone_with_projection
+attribute [cite HTT "1.2.13.8" (partial := special) "仮定：準圏 C と図式 p（Lean が強い：スライスを定める q の始域 T が一点）。結論：底の余極限余錐を厳密に持ち上げ、与えた余錐が余極限かを射影で検出する（Lean が弱い：任意の T のスライスは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_isColimitCone_iff_projection

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CategoryTheory.Simplex.Prefix
 public import SerrePositivity.CategoryTheory.Simplex.Naturality
 public import Mathlib.AlgebraicTopology.ExtraDegeneracy
@@ -84,3 +86,8 @@ def intervalMap : A.left ⊗ SimplexPrefix.interval ⟶ A.left where
     exact (types_congr_hom h ((extra ed).app n x.1)).symm
 
 end SerrePositivity.SimplicialModel.ExtraDegeneracyInterval
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.7.2.9" (partial := component) "仮定：通常の集合値の増大単体的対象と追加退化（Lean が強い：集合値の増大単体的対象と指定した追加退化の場合）。結論：非負次数における shift への自然写像を構成し、追加退化と零番目の面との合成が恒等となる（分裂から section を得る向きの非負次数の成分）。増大対象全体の section との同値と逆向きは含まれない。"] _root_.SerrePositivity.SimplicialModel.ExtraDegeneracyInterval.extra

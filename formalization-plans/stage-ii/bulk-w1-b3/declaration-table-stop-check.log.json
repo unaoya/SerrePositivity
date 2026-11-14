@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/tmp/bulk-w1-b3/make_declaration_table.py"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+  "rc": 0,
+  "reason": null,
+  "seconds": 206.80803975090384,
+  "peak_process_tree_rss_bytes": 6483820544,
+  "peak_lean_or_snapshot_jobs": 0,
+  "threads": "4",
+  "started_local": "2026-11-14T03:54:04.421446",
+  "finished_local": "2026-11-14T03:57:31.235865"
+}

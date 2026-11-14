@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 public import Mathlib.CategoryTheory.Functor.OfSequence
@@ -1465,3 +1467,11 @@ end SerrePositivity.DifferentialGraded
 end
 
 end RingKaroubiFactors
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.4.2" (partial := component) "仮定：可換環上の小さい dg 圏と全通常導来加群（Lean が強い：この dg 導来模型の場合）。結論：通常の三角圏の compact 性と perfect 性の同値、代表加群のシフトの compact 性と零対象の検出を示す（HA の compact・perfect と生成の通常の部分に一致）。∞ filtered 余極限による compact 性と環スペクトルへの比較は含まれない。"] _root_.SerrePositivity.DifferentialGraded.moduleCompact_iff_perfect
+attribute [cite HA "7.2.4.4" (partial := component) "仮定：可換環上の小さい dg 圏の通常導来対象（Lean が強い：この dg 導来模型の場合）。結論：perfect 性と通常の compact 性を同値にする（(1) と (2) の通常の部分に一致）。M∨⊗R− による ∞ 写像空間の表現と双対の perfect 性は含まれない。"] _root_.SerrePositivity.DifferentialGraded.moduleCompact_iff_perfect
+attribute [cite KST "Prop 2.9" (partial := component) "仮定：可換基礎環上の dg 加群圏で半自由模型の条件を用いる（Lean が強い）。結論：アフィンに類似する dg 加群でコンパクト性と完全性の同値。通常スキーム一般での TT との比較や qcqs の QCoh の生成性は別（Lean が弱い）。"] _root_.SerrePositivity.DifferentialGraded.moduleCompact_iff_perfect
+attribute [cite KST "Rem 2.8" (partial := component) "仮定：可換基礎環上の dg 加群圏で半自由模型の条件を用いる（Lean が強い）。結論：アフィンに類似する dg 加群でコンパクト性と完全性の同値。通常スキーム一般での TT との比較や qcqs の QCoh の生成性は別（Lean が弱い）。"] _root_.SerrePositivity.DifferentialGraded.moduleCompact_iff_perfect

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesComplex
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 
 /-! # 元の二軸短複体の Yoneda 円錐比較
 概要：元の右軸射の代表加群円錐から、同じ左軸の代表加群への比較射を作る。

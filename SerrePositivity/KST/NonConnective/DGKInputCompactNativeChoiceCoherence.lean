@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeComparison
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：Ind I-2 e の同じ生成順射に対する逆射選択を全 native 入力で整合的に比較する。

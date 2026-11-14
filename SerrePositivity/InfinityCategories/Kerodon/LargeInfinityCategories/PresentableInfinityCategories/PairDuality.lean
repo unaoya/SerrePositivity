@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PairHomFamilyFullyFaithful
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PairAdjointFunctorMeaning
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseFullyFaithful
@@ -75,3 +77,9 @@ def presentableAdjointFunctorEquivalence_adjunction {C D : _root_.SerrePositivit
   _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pairRightAdjointFunctorAdjunction v
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.6.2" (partial := stronger-hyp) "仮定：C,D が presentable（Lean が強い：任意の準圏の場合は含まない）。結論：FunL(C,D) と FunR(D,C)op の全準圏の同値で、同値の順方向の各値は元の左関手の右随伴（この場合に一致）。PrL/PrR の頂点条件と随伴存在の同値も併用する。非可逆な自然変換と全高次単体を保持し、右随伴の対象ごとの選択だけでは代用しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableAdjointFunctorEquivalence
+attribute [cite HTT "5.2.6.2" (partial := stronger-hyp) "仮定：C,D が presentable（Lean が強い：任意の準圏の場合は含まない）。結論：FunL(C,D) と FunR(D,C)op の全準圏の同値で、同値の順方向の各値は元の左関手の右随伴（この場合に一致）。PrL/PrR の頂点条件と随伴存在の同値も併用する。非可逆な自然変換と全高次単体を保持し、右随伴の対象ごとの選択だけでは代用しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableAdjointFunctorEquivalence_adjunction

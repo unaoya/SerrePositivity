@@ -33,10 +33,10 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 BS 著者版 Theorem 7.14 の証明に使う、モニック族に根を添加した perfectoid 拡大を構成する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/FrobeniusPullback`、`PowerRootEnvelope/PerfectionFaithful`、`Variants/MonicRootedExtension`。
@@ -44,7 +44,7 @@ BS 著者版 Theorem 7.14 の証明に使う、モニック族に根を添加し
 
 universe u v w
 
-/-! ## André E1・E2：任意 raw δ 割り算包の実完備化先行完全化と既存完全 prism 候補（旧 Andre/Variants/RawDivisionPDPerfectionComparison.lean）
+/-! ## 任意 raw δ 割り算包の実完備化先行完全化と既存完全 prism 候補
 
 ## 概要
 
@@ -260,7 +260,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RawDivisionPDPerfectionComparison
 
-/-! ## André E1・E2：係数環全体の自己同型に沿う実引戻し（旧 Andre/Variants/AutomorphismTensorPullback.lean）
+/-! ## 係数環全体の自己同型に沿う実引戻し
 
 ## 概要
 
@@ -360,7 +360,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end AutomorphismTensorPullback
 
-/-! ## André E1・E2：完全 prism 商上の任意モニック族の根付き拡大（旧 Andre/Variants/ArbitraryPerfectPrismMonicRootedExtension.lean）
+/-! ## 完全 prism 商上の任意モニック族の根付き拡大
 
 ## 概要
 
@@ -428,7 +428,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end ArbitraryPerfectPrismMonicRootedExtension
 
-/-! ## André E1・E2：先行関係の冪と係数商の後のモニック正則性（旧 Andre/Variants/MonicFamilyPowerResidue.lean）
+/-! ## 先行関係の冪と係数商の後のモニック正則性
 
 ## 概要
 
@@ -556,7 +556,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicFamilyPowerResidue
 
-/-! ## André E1：一元モニック関係の raw δ p 除算包の p 正則性（旧 Andre/Variants/MonicRawPDivision.lean）
+/-! ## André E1：一元モニック関係の raw δ p 除算包の p 正則性
 
 ## 概要
 
@@ -642,7 +642,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRawPDivision
 
-/-! ## André E1・E2：任意モニック族の raw δ p 除算包の p 正則性（旧 Andre/Variants/MonicFamilyRawRegular.lean）
+/-! ## 任意モニック族の raw δ p 除算包の p 正則性
 
 ## 概要
 
@@ -783,7 +783,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicFamilyRawRegular
 
-/-! ## André E1・E2：モニック族の raw φ/p 包の実 mod p 商の忠実平坦性（旧 Andre/Variants/MonicRawModPFlat.lean）
+/-! ## モニック族の raw φ/p 包の実 mod p 商の忠実平坦性
 
 ## 概要
 
@@ -953,7 +953,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRawModPFlat
 
-/-! ## André E1・E2：任意モニック族の補助 raw φ/p 包の p 完全忠実平坦性（旧 Andre/Variants/MonicRawCompletelyFlat.lean）
+/-! ## 任意モニック族の補助 raw φ/p 包の p 完全忠実平坦性
 
 ## 概要
 
@@ -1111,7 +1111,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRawCompletelyFlat
 
-/-! ## André E1・E2：補助 raw 包の実導来 p 剰余（旧 Andre/Variants/MonicRawDerivedReduction.lean）
+/-! ## 補助 raw 包の実導来 p 剰余
 
 ## 概要
 
@@ -1236,7 +1236,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRawDerivedReduction
 
-/-! ## André E1・E2：補助 raw 包の δ 完全化の忠実平坦剰余（旧 Andre/Variants/MonicRawPerfectionFlat.lean）
+/-! ## 補助 raw 包の δ 完全化の忠実平坦剰余
 
 ## 概要
 
@@ -1374,7 +1374,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRawPerfectionFlat
 
-/-! ## André E1・E2：補助 raw 包の p 進完備 δ 完全化の忠実平坦性（旧 Andre/Variants/MonicRawPCompletionFlat.lean）
+/-! ## 補助 raw 包の p 進完備 δ 完全化の忠実平坦性
 
 ## 概要
 
@@ -1548,7 +1548,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRawPCompletionFlat
 
-/-! ## André E1・E2：任意の整 perfectoid 基底上のモニック根付き拡大（旧 Andre/Variants/MonicRootedPerfectoidExtension.lean）
+/-! ## 任意の整 perfectoid 基底上のモニック根付き拡大
 
 ## 概要
 

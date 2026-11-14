@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePostcompArrow
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftNull
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorCone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleFunctorCone
 
 /-!
 概要：元実 cone の左包含像を同じ realization の全自然な指定入力にする。

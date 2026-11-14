@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGGluingHomCoconeModel
 public import SerrePositivity.KST.SConstruction.DGGluingAxesArrows
 public import SerrePositivity.KST.SConstruction.MappingCoconeBiprodCofiber
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Postcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Postcomposition
 
 /-! # 元の左軸射と二成分 cocone の第一射影
 概要：元の左軸射の全 Hom 後合成を、同じ左 Hom 射影に厳密に照合する。

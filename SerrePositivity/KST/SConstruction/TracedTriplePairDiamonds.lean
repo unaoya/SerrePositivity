@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedTripleCorrectionPathFaces
 public import SerrePositivity.KST.SConstruction.TriangleTwoEdgeData
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TriangleDiamondComposition
 
 /-! # 元の前後二射の四面を交換面と同じ端点の二 diamond へ束ねる
 概要：前後二射の段面と二部分面を、同じ交換二辺に沿う実 diamond として回収する。

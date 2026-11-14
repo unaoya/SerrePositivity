@@ -33,8 +33,8 @@ def exactMapTransportFunctorIso {A B A' B' : _root_.SerrePositivity.InfinityCate
 /-- 元の全頂点の零値条件は、同じ対象座標の輸送でも保たれる。 -/
 theorem exactMapTransport_zero {A B A' B' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (hA : A = A') (hB : B = B') (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)
-    (hf : ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) x)) :
-    ∀ x, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((exactMapTransport hA hB f).hom.app (Opposite.op ⦋0⦌) x) := by
+    (hf : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) x)) :
+    ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((exactMapTransport hA hB f).hom.app (Opposite.op ⦋0⦌) x) := by
   cases hA
   cases hB
   exact hf

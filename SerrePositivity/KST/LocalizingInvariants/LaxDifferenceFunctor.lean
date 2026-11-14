@@ -38,9 +38,9 @@ def laxDifferenceVertexIso (x : (laxCategory p q).obj _⦋0⦌) :
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberSquareComparisonIso (laxDifferenceFunctorSquare p q x) (laxDifferenceSquare p q x)
 
 lemma laxDifference_zero_iff (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) ↔
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsLaxEquivalenceVertex p.hom q.hom x := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber E.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom)).app _ x) ↔ _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber E.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom)).app _ x) ↔ _
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber_vertex]
   exact (laxDifferenceFunctorSquare p q x).homMk_isIso_iff_zero.symm
 
@@ -49,13 +49,13 @@ lemma laxDifference_preservesZero : _root_.SerrePositivity.InfinityCategories.Ke
   exact (laxDifference_zero_iff p q x).2 ((laxEquivalenceVertex_stable p q).zero x hx)
 
 lemma laxDifference_kills_pullback (x : (pullbackCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((pullbackInclusion p q).hom ≫ laxDifference p q).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((pullbackInclusion p q).hom ≫ laxDifference p q).app
       (Opposite.op ⦋0⦌) x) :=
   (laxDifference_zero_iff p q _).2 (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax_vertex p.hom q.hom x)
 
 /-- 差の実関手の核は元の完全包含の本質像と一致する。 -/
 lemma laxDifference_kernel (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) ↔
       x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q) := by
   constructor
   · intro hx

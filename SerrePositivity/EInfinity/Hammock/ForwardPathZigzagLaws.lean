@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ForwardPathZigzag
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ForwardPathZigzag
 
 /-!
 # forward 射列からの縦射の恒等と合成

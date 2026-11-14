@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 
 public import SerrePositivity.KST.Spectra.PointedZeroMapping
 public import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
@@ -88,13 +88,13 @@ lemma point_isInitialVertex : _root_.SerrePositivity.InfinityCategories.Kerodon.
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ulift_isContractibleKan_of_isTerminal _ (pointMapping_isTerminal X))
 
 /-- Sp 内の具体的な零頂点。 -/
-def pointZeroVertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex Sp.{u} where
+def pointZeroVertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex Sp.{u} where
   vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint
   isInitial := _root_.SerrePositivity.KST.Spectra.OmegaSpectrum.point_isInitialVertex
   isTerminal := _root_.SerrePositivity.KST.Spectra.OmegaSpectrum.point_isTerminalVertex
 
 /-- 元の Sp は零対象を持つ。 -/
-instance sp_hasZeroVertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Sp.{u} :=
+instance sp_hasZeroVertex : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Sp.{u} :=
   ⟨⟨pointZeroVertex.vertex, pointZeroVertex.isInitial, pointZeroVertex.isTerminal⟩⟩
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingShiftedLeftAx
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRestrictedAxes
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationModuleInput
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecomp
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransTransport
 
 /-!
 概要：元実逆回転全比較と実 cone 全入力を元始域へ回収する。

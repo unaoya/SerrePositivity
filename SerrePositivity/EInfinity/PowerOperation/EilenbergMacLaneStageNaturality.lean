@@ -32,13 +32,13 @@ lemma levelPiHomologyEquiv_naturality (f : M ⟶ N) (r n : ℕ)
     (HomologicalComplex.homologyMap ((levelChainFunctor A r).map f) (n + 1)).hom
       (levelPiHomologyEquiv A M r n a) := by
   change ((normalizedLevelHomologyIso A r (n + 1)).app N).hom.hom
-    (modulePiMooreGroupEquiv ((levelModuleFunctor A r).obj N) n
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv ((levelModuleFunctor A r).obj N) n
       (KanHomotopyGroup.map
         (moduleUnderlyingSSetMap ((levelModuleFunctor A r).map f))
         (moduleUnderlyingSSetMap_zero ((levelModuleFunctor A r).map f)) a)) = _
   rw [modulePiMooreGroupEquiv_naturality]
   exact congrArg (fun g => g.hom
-    (modulePiMooreGroupEquiv ((levelModuleFunctor A r).obj M) n a))
+    (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv ((levelModuleFunctor A r).obj M) n a))
     ((normalizedLevelHomologyIso A r (n + 1)).hom.naturality f)
 
 end SerrePositivity.EInfinity.PowerOperation

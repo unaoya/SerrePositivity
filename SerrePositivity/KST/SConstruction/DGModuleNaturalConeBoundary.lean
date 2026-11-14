@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeRightRestriction
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTrans
 
 /-!
 概要：実 cone の標準右包含を、全次数自然な同じ dg 関手間の変換として保持する。

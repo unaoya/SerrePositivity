@@ -23,7 +23,7 @@ lemma complexConstantClosedNerveSimplex (n : ℕ) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X := by
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).injective
     rfl
-  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback
+  have h := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback
     ((Functor.const (Fin 1)).obj X ⋙ complexToClosed A)
     (OrderHom.const (Fin (n + 1)) (0 : Fin 1))
   rw [h0] at h

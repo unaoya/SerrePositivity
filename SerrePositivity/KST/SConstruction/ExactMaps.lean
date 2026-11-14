@@ -20,7 +20,7 @@ open scoped Simplicial
 方針：頂点と実際の正方形の普遍性をそれぞれ量化する。
 規約：h 圏の押し出しに置き換えない。使われ方：gapped 図式の後合成。 -/
 def PreservesSConstructionData {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
-  (∀ z : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (f.app (Opposite.op ⦋0⦌) z)) ∧
+  (∀ z : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (f.app (Opposite.op ⦋0⦌) z)) ∧
     (∀ F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ C,
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (F ≫ f))
 

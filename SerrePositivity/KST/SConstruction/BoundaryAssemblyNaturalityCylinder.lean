@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityFamilies
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.DoubleMappingCylinderDesc
 
 /-! # 随伴構造射の自然性の二重写像円筒
 概要：延長側と逆射側の合成族を一つの実際のパラメーター空間へ貼る。

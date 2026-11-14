@@ -31,7 +31,7 @@ lemma strictModuleFamily_evaluation_factor {C : Type (u + 1)} [Category.{u} C]
     (nerve C ◁ (smallDiagramShapeIso.{u} (nerve J)).hom) ≫
       (nerveMap T ▷ (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)) ≫
       strictDiagramEvaluation J (ModuleCategory A PUnit.{1}) ≫
-      closedNerveInclusion A (RightModule A PUnit.{1}) := by
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (RightModule A PUnit.{1}) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext

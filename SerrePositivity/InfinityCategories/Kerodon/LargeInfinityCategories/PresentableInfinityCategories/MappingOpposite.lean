@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalFunctorOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.IntervalFunctorOpposite
 
 /-!
 概要：元の関手の指定二対象間の写像空間比較は、反転しても同じ同値性を持つ。

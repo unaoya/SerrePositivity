@@ -1,0 +1,18 @@
+{
+  "rows": 9048,
+  "unique_row_ids": 9048,
+  "row_actions": {
+    "do-not-attach": 6734,
+    "attach": 897,
+    "mixed": 57,
+    "hold-kerodon-review": 831,
+    "keep-native-existing": 520,
+    "hold": 9
+  },
+  "reference_records": 2387,
+  "reference_actions": {
+    "do-not-attach": 537,
+    "attach": 1835,
+    "hold": 15
+  }
+}

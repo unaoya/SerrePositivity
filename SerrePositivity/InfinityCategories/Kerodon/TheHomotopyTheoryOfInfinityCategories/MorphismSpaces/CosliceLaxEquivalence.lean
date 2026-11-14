@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Coslice
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoin
@@ -19,10 +21,10 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.VertexFiber
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CosliceFixedDiagramIso
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.LaxCoslice
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.LaxCosliceNaturality
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.LaxCosliceUncurry
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.LaxCosliceUniversal
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.LaxCoslice
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.LaxCosliceNaturality
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.LaxCosliceUncurry
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.LaxCosliceUniversal
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # Coslice と太い coslice の比較同値
@@ -155,3 +157,8 @@ lemma isQCatEquivalence_cosliceLaxMap {K X : SSet.{u}} [Quasicategory X] (p : K 
 
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.2.1.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_cosliceLaxMap

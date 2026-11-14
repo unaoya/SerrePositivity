@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.Asymptotic.Completed
 public import SerrePositivity.CategoryTheory.ScalarSupport
 public import SerrePositivity.Asymptotic.RankQuotient
@@ -1161,3 +1163,15 @@ theorem paperOrdinaryEulerK0_smul
 end SerrePositivity.Asymptotic
 
 end OrdinaryTwistEvaluationPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Paper "Eq (4.2)" (partial := component) "仮定：厳密有界自由列で表された対象と恒等射を殺す共通のパラメータ冪（持ち上げの部分で一致）。結論：通常・係数拡大それぞれの Koszul 後の長さと二項係数による等式（式の一様台つき持ち上げ上の数値部分）。"] _root_.SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_formula
+attribute [cite Paper "Eq (4.2)" (partial := component) "仮定：厳密有界自由列で表された対象と恒等射を殺す共通のパラメータ冪（持ち上げの部分で一致）。結論：通常・係数拡大それぞれの Koszul 後の長さと二項係数による等式（式の一様台つき持ち上げ上の数値部分）。"] _root_.SerrePositivity.Asymptotic.paperRankBetti_koszul_formula
+attribute [cite Paper "Proof step §4.5 G-action" (partial := component) "仮定：有限群の T への A 線型作用と T 上の支持付きランク商（原典のスカラー捻り）。結論：スカラー捻りが支持付きランク商の K₀ 上で群作用を与え、生成元で捻りと一致（原典の作用の K₀ 成分）。"] _root_.SerrePositivity.Asymptotic.paperK0_smul_mk
+attribute [cite Paper "Proof step §4.5 G-action" (partial := component) "仮定：有限群の T への A 線型作用と T 上の支持付きランク商（原典のスカラー捻り）。結論：スカラー捻りが支持付きランク商の K₀ 上で群作用を与え、生成元で捻りと一致（原典の作用の K₀ 成分）。"] _root_.SerrePositivity.Asymptotic.paperTwistK0_mul
+attribute [cite Paper "Prop 4.3" (partial := component) "仮定：パラメータ冪の Koszul 長さと有限性、支持付きランク商の対象（同じ支持条件の実現）。結論：各次数の実数長さの非負性と K₀ での Euler 評価（原典の数値的結論。長さ零で割った二つのアーベル圏へのホモロジー関手は含まない）。"] _root_.SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg
+attribute [cite Paper "Prop 4.3" (partial := component) "仮定：パラメータ冪の Koszul 長さと有限性、支持付きランク商の対象（同じ支持条件の実現）。結論：各次数の実数長さの非負性と K₀ での Euler 評価（原典の数値的結論。長さ零で割った二つのアーベル圏へのホモロジー関手は含まない）。"] _root_.SerrePositivity.Asymptotic.paperBaseChangeEulerK0_mk
+attribute [cite Paper "Prop 4.3" (partial := component) "仮定：パラメータ冪の Koszul 長さと有限性、支持付きランク商の対象（同じ支持条件の実現）。結論：各次数の実数長さの非負性と K₀ での Euler 評価（原典の数値的結論。長さ零で割った二つのアーベル圏へのホモロジー関手は含まない）。"] _root_.SerrePositivity.Asymptotic.paperRankBetti_nonneg
+attribute [cite Paper "Prop 4.3" (partial := component) "仮定：パラメータ冪の Koszul 長さと有限性、支持付きランク商の対象（同じ支持条件の実現）。結論：各次数の実数長さの非負性と K₀ での Euler 評価（原典の数値的結論。長さ零で割った二つのアーベル圏へのホモロジー関手は含まない）。"] _root_.SerrePositivity.Asymptotic.paperRankEulerK0_mk

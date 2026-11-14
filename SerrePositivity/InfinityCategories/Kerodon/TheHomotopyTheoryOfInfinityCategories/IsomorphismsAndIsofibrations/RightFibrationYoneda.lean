@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorRestrictionFiber
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorInitialEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.F1BFibrationsRightAnodyneTensor
@@ -101,3 +103,10 @@ def rightFibrationYonedaEquivalence
   exact (rightFibrationSlicePointEvaluate_isQCatEquivalence p b).choose
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.1.23" (partial := component) "仮定：right fibration λ′ と固定した底の二関手 α・β（Lean が強い：θ の底の一点を固定した fiber の場合）。結論：M から M′ への底を固定した相対関手空間が Kan となる（θ の各 strict fiber に対応する結論の部分に一致）。底の関手も動かす θ 自体の Kan fibration 性と全 CPair の Hom の構成は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.relativeFunctorSpace_kanComplex_of_rightFibration
+attribute [cite HTT "2.2.3.4" (partial := special) "仮定：右ファイブレーション Y→S、任意の X→S、底の包含を S′=空に限定（Lean が強い特殊形）。結論：relativeFunctorSpace は Kan 複体、したがって空図式の一意な相対 Hom（終対象）への restriction は Kan fibration。この特殊形に一致し、任意 S′ の restriction criterion は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.relativeFunctorSpace_kanComplex_of_rightFibration
+attribute [cite HTT "4.4.4.5" (partial := direction) "仮定：右ファイブレーションの全空間の指定頂点が終対象（HTT の (2) と一致）。結論：指定点の包含に沿う制限は、任意の右ファイブレーションへの底上の関手空間で自明 Kan ファイブレーションになり、反変同値になる（(2)⇒(3) が一致。他の向きと指定 η による判定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.relativeFunctorPre_trivialKanFibration_of_rightAnodyne

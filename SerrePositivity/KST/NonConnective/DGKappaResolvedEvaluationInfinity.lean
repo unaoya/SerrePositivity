@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationMorita
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectKernelMoritaInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGPerfectKernelMoritaInfinity
 public import SerrePositivity.KST.NonConnective.DGKInputDerivedCompactGeneration
 
 /-!

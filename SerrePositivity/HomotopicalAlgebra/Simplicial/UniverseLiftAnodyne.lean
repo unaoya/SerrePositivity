@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLift
 
 /-!
 # 宇宙liftはモデル構造を仮定せずanodyne射を保つ

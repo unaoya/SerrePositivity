@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaNativeKernelThick
 public import SerrePositivity.KST.NonConnective.DGKappaNativeConeResolution
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuotientLocalization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.DGQuotients.DGQuotientLocalization
 public import SerrePositivity.KST.LocalizingInvariants.VerdierPresentation
 
 /-!

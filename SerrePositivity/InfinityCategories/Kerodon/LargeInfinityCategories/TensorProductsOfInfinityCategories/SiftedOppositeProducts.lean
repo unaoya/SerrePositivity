@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OppositeDiagramReturn
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.BinaryDiscreteShape
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.BinaryDiscreteShape
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedCoproductCriterion
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorVertexConeReindex
 
 /-!
 概要：元の全有限積の存在から、反対 ∞ 圏の sifted 性を得る。

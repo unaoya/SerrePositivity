@@ -29,7 +29,7 @@ lemma functorPullbackComparison_diagonal_isInvertible {X : SSet.{u}} [Quasicateg
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparisonEdge Q c hc).edge))) := by
   let e := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparisonEdge Q c hc
   let F := uncurry (SSet.yonedaEquiv.symm e.edge)
-  have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow F) :=
+  have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow F) :=
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_functorEdge_edge e)).mpr
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparison_component_isInvertible Q c hc _ hQ)
   have hv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_functorEdge_vertex e
@@ -39,11 +39,11 @@ lemma functorPullbackComparison_diagonal_isInvertible {X : SSet.{u}} [Quasicateg
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isEquivalencePathVertex_limitVertex c
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparison_target_pointwise Q c hc _)
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparison_target_pointwise Q c hc _) hp
-  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow F) := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr ht).mpr hg
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow F) := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr ht).mpr hg
   change IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagonalArrow F))
   rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftTop_homMk_diagonal]
-  have : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow F)) := hl
-  have : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow F)) := hr
+  have : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow F)) := hl
+  have : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow F)) := hr
   infer_instance
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

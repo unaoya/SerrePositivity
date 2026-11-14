@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 
 /-!
@@ -41,3 +43,8 @@ def discreteCAlgEmbedding_forgetIso :
     (algebraCAlgSource_forgetIso A).precomp (nerveMap (discreteAlgebraFunctor A))
 
 end SerrePositivity.EInfinity.BarrattEccles
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.3.18" (partial := component) "仮定：可換環 R 上の構成済み実 CAlg_R と HasDerivedCategory（Lean が強い：Barratt–Eccles の dg 模型と通常環上の可換代数の場合）。結論：離散な基礎導来像を持つ頂点が通常の可換 R 代数の離散埋め込みの本質像にあることを同値で判定し、忘却後の離散入力を同定する（本質像の対象についての部分に一致）。埋め込みの全充満性、π₀ の環値関手による圏同値、一般 k の結論は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.discreteCAlgEmbedding_forgetIso

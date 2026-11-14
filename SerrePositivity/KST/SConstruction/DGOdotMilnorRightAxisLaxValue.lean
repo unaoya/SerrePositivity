@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisBaseValue
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNullNativeValue
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.IdentityLaxArrowBase
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.IdentityHomTargetDiagonal
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.IdentityComparisons.IdentityLaxArrowBase
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.HomSpaces.HomotopyRepresentations.IdentityHomTargetDiagonal
 public import SerrePositivity.KST.SConstruction.FunctorIsoEquivalenceReflection
 
 /-!

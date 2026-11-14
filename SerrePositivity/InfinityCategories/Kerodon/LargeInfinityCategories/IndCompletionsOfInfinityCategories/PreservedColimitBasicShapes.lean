@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PreservedColimitRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.TerminalShapeColimit
 
@@ -55,3 +57,8 @@ lemma hasPreservedColimit_of_terminalShapeVertex {K X Y : SSet.{u}}
   exact hasPreservedColimit_pointDiagram U _
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.9" (partial := special) "仮定：左ファイブレーションと弱可縮な図式形状（Lean が強い：形状に終頂点がある場合。関手には左ファイブレーション性を要求しない）。結論：同じ余極限余錐の像が余極限となる（(1) の保存方向が一致する場合。反映と底の指定余錐の持ち上げ (2) は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.hasPreservedColimit_of_terminalShapeVertex

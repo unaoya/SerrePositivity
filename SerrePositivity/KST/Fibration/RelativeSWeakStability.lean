@@ -51,8 +51,8 @@ theorem relativeSConstruction_twoOfThree (τ : Δ[2] ⟶ sConstruction n B.obj) 
 /-- 元の S_n の実押し出しに沿う、相対辺条件の保存・反映。 -/
 theorem relativeSConstruction_pushout_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstruction n B.obj)
     (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
   rw [relativeSConstruction_mem_edge_iff h, relativeSConstruction_mem_edge_iff h]
   apply forall_congr'
   intro a
@@ -62,8 +62,8 @@ theorem relativeSConstruction_pushout_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstruction
 /-- 元の S_n の実引き戻しに沿う、相対辺条件の保存・反映。 -/
 theorem relativeSConstruction_pullback_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstruction n B.obj)
     (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare L) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
   rw [relativeSConstruction_mem_edge_iff h, relativeSConstruction_mem_edge_iff h]
   apply forall_congr'
   intro a
@@ -71,14 +71,14 @@ theorem relativeSConstruction_pullback_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstructio
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare (sComponentEvaluation B.obj n a) L hL)
 
 /-- 元の二つの cofiber 図式間の同じホモトピーに対する、相対 S_n 辺の拡大安定性。 -/
-theorem relativeSConstruction_extension (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle (sConstruction n B.obj))
-    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence d)
+theorem relativeSConstruction_extension (t d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle (sConstruction n B.obj))
+    (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence d)
     (H : SSet.Homotopy t.square d.square)
-    (h₀ : (componentEdge H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 0 0)).edge ∈
+    (h₀ : (componentEdge H (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 0 0)).edge ∈
       (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌))
-    (h₂ : (componentEdge H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 1)).edge ∈
+    (h₂ : (componentEdge H (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 1)).edge ∈
       (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌)) :
-    (componentEdge H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 0)).edge ∈
+    (componentEdge H (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 0)).edge ∈
       (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
   apply (relativeSConstruction_mem_edge_iff h n _).mpr
   intro a

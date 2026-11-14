@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceConverse
 
 /-!
@@ -112,3 +114,8 @@ lemma relativeCosliceMap_trivialKanFibration_of_rightAnodyne {K X Y : SSet.{u}}
     (fun n ↦ relativeCosliceMap_lift_of_rightAnodyne p q (boundary n) K₀ hK)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.1.2.5" (partial := component) "仮定：内ファイブレーションと右アノダイン包含（HTT と一致する第一の場合）。結論：相対コスライスの比較射は自明 Kan ファイブレーション（Lean が弱い：左ファイブレーションと全アノダイン包含の第二の場合は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeCosliceMap_trivialKanFibration_of_rightAnodyne

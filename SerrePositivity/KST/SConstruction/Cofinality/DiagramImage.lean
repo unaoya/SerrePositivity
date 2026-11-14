@@ -30,10 +30,10 @@ lemma isGapped_of_fullyFaithful_image {n : ℕ} {X Y : StableModel.{u}}
     (hF : IsGapped (F ≫ f.val)) : IsGapped F := by
   constructor
   · intro i
-    let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
+    let z := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier
     have hz := f.property.1 z.vertex z.isZero
     have hi := hF.1 i
-    let e := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroVertexIso ⟨_, hz.1, hz.2⟩ ⟨_, hi.1, hi.2⟩
+    let e := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.zeroVertexIso ⟨_, hz.1, hz.2⟩ ⟨_, hi.1, hi.2⟩
     exact z.isZero.of_vertexIso (hf.preimageVertexIso e)
   · intro i j k l hij hjk hkl
     apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_fullyFaithful_image f.val hf

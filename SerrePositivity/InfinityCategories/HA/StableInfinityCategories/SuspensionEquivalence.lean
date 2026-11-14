@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Suspension
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Loop
 
@@ -123,3 +125,9 @@ def loopSuspensionCounitIso (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositi
   (suspensionEquivalence X).counitIso
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.15" (partial := direction) "仮定：安定準圏、または点付き準圏と有限極限および指定ループ同値（逆向きは HA の懸垂・余ファイバー条件の双対）。結論：安定性から懸垂同値を得る。逆向きはループ版の安定性判定であり、懸垂版の入力から直接 IsStable を返す型は確認できない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionQCatEquivalence
+attribute [cite HA "1.4.2.27" (partial := component) "仮定：点付き準圏に有限極限と選択 loop を置く場合、または既に安定な場合（HA と一致する方向別の仮定）。結論：loop 同値から安定性、安定性から互いに逆な suspension と loop、loop 同値から対応する suspension 同値（Lean が弱い：有限余極限と suspension 同値だけを入力する安定性の逆方向はこれらの型に現れない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionQCatEquivalence

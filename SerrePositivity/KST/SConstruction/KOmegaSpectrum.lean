@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.BoundaryOmegaSpectrum
 public import SerrePositivity.KST.SConstruction.KSpaceSequence
 public import SerrePositivity.KST.SConstruction.MultiStageConnected
@@ -53,3 +55,9 @@ lemma kSpaceSpectrumComparison_piIsomorphism (X : StableModel.{u}) :
     _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kSpaceSpectrumComparison X).right := kSpaceBoundaryComparison_piIsomorphism X
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Def 7.5" (partial := special) "仮定：安定準圏と完全写像を束ねた StableModel（Lean が強い：安定準圏に限る）。結論：各 Gap の反復から core と実現を取り、構造写像を持つ連結 K の Ω スペクトルを作る（安定な入力についての同じ反復 S 構成）。"] _root_.SerrePositivity.KST.SConstruction.kKanSequence_omegaCondition
+attribute [cite BGT "Def 7.5" (partial := special) "仮定：安定準圏と完全写像を束ねた StableModel（Lean が強い：安定準圏に限る）。結論：各 Gap の反復から core と実現を取り、構造写像を持つ連結 K の Ω スペクトルを作る（安定な入力についての同じ反復 S 構成）。"] _root_.SerrePositivity.KST.SConstruction.kOmegaSpectrum

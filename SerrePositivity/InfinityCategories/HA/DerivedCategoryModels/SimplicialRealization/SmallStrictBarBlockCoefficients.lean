@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarFaceDifferential
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarFaceDifferential
 import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarCoefficients
-import all SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+import all SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Columns.DGCoherentBarCoefficients
+import all SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 
 /-!
 # 小さい strict bar の同じ一次 shift ブロックの係数

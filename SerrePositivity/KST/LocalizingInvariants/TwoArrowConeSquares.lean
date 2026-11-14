@@ -132,9 +132,9 @@ lemma twoArrowConeSquares_shared : _root_.SerrePositivity.InfinityCategories.Ker
     conePairSquare_left, conePairSquare_bottom, twoArrow_fraction_source]
 
 /-- 前段への実四角形の底辺は、同じ元の始点への実錐脚そのもの。 -/
-lemma twoArrowDenominatorSquare_bottom_edge : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow
+lemma twoArrowDenominatorSquare_bottom_edge : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow
     (twoArrowDenominatorSquare c)).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c twoArrowAttachedSource).edge := by
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge, twoArrowDenominatorSquare, conePairSquare_bottom,
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge, twoArrowDenominatorSquare, conePairSquare_bottom,
     SSet.yonedaEquiv_comp, twoArrow_original_source]
   rfl
 
@@ -208,8 +208,8 @@ lemma exists_verdierTwoArrowNativeRoof {A B C : _root_.SerrePositivity.InfinityC
     ∃ S T : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ B.obj,
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ S = D ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ T = L ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ S = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ T ∧
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow S).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i ∧
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow S).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow S).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i ∧
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow S).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i := by
   obtain ⟨s, r, d, _, s₀, hs₀, hw⟩ :=
     exists_verdierTwoArrowCosliceNormalization h D L F hb ht
   refine ⟨twoArrowDenominatorSquare d, twoArrowNumeratorSquare d,

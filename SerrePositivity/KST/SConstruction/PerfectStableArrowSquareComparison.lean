@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKPerfectNuEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ArrowIsoFromCommutingEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ArrowIsoFromCommutingEdges
 
 /-!
 概要：完全射の全自然な可換比較を、Cat^perf 内の区間図式全体の比較へ運ぶ。

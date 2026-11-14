@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Comparison.MonoidTranslations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
@@ -35,3 +37,8 @@ theorem grouplikeTranslation_localized_isIso (M : SimplicialObject MonCat.{u})
       (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)) a).isIso_hom
 
 end SerrePositivity.KST.Comparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.6.4" (partial := component) "仮定：厳密単体的モノイド M の π₀ の全成分が単元（Lean が強い：厳密模型と π₀ による条件を指定）。結論：π₀ に誘導乗法を保つ群構造が付き、各頂点の左平行移動は anodyne 局所化で可逆となる（原典の π₀ の群性と左平行移動の同値という部分に一致）。全 E₁ 空間の shear 判定の両方向と右側は含まれない。"] _root_.SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso

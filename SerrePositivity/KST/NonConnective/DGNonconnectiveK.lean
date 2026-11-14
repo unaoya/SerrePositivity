@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.NonConnective.DGSuspensionThomasonComparison
 public import SerrePositivity.KST.NonConnective.SequentialCandidatePi
 
@@ -107,3 +109,8 @@ def dgNonconnectiveKConnectiveComparison : dgKInputSpectrum R A ⟶ dgNonconnect
   dgNonconnectiveKInjection R κ hκ A 0
 
 end SerrePositivity.KST.NonConnective
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def 2.11" (partial := component) "仮定：指定 dg 入力と κ 懸垂の逐次図式（Lean が強い）。結論：非連結 K の対象別候補を構成。任意の導来スキームの Perf(X) からの自然な評価は別（Lean が弱い）。"] _root_.SerrePositivity.KST.NonConnective.dgNonconnectiveK

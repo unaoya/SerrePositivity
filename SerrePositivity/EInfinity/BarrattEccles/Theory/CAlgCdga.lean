@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientMonoidAction
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteDerivedComparison
 public import SerrePositivity.EInfinity.Interface.StrictInputs
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 import all SerrePositivity.EInfinity.Interface.StrictInputs
 
 /-!

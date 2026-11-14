@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndTriangle
 public import SerrePositivity.KST.SConstruction.DGClosedZeroHom
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleConeSquare
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleConeSquare
 
 /-!
 概要：元 cone の全 end 零化面に同じ零角を貼り、全 dg 関手圏内の実四角形を構成する。

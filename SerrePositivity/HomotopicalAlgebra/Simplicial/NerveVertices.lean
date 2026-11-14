@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.VertexTuples
 
 /-!
 # 圏のnerveにその頂点部分単体集合を含める射を構成する

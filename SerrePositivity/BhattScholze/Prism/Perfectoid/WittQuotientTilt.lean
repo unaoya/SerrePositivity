@@ -24,7 +24,7 @@ BS 著者版 Theorem 3.10（Prism/Perfectoid/WittQuotientPerfectoid）。
 
 universe u v
 
-/-! ## 完全δ環の商におけるmod p Frobenius全射性（旧 Prism/Perfectoid/PerfectDeltaQuotientFrobenius.lean）
+/-! ## 完全δ環の商におけるmod p Frobenius全射性
 
 BS 著者版 Theorem 3.10の逆向きの最初の計算。
 完備性やFontaine核の単項性を仮定せず、perfectoid性全体は結論しない。
@@ -63,7 +63,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end PerfectDeltaQuotientFrobenius
 
-/-! ## distinguished Witt商のp乗根と単元係数（旧 Prism/Perfectoid/WittDistinguishedQuotient.lean）
+/-! ## distinguished Witt商のp乗根と単元係数
 
 BS 著者版 Lemma 2.33・BS 著者版 Theorem 3.10の具体的なWitt商の計算。
 商の完備性とFontaine核の単項性はまだ結論しない。
@@ -137,7 +137,7 @@ end SerrePositivity.BhattScholze
 
 end WittDistinguishedQuotient
 
-/-! ## Witt商のmod pと係数環の商（旧 Prism/Perfectoid/WittQuotientModP.lean）
+/-! ## Witt商のmod pと係数環の商
 
 任意のWitt元dについて(W(k)/(d))/(p)≃k/(d₀)を構成する。
 標準商射上の式を明示し、distinguished性や完備性は要求しない。
@@ -178,7 +178,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientModP
 
-/-! ## Witt商mod pのFrobenius核の生成元（旧 Prism/Perfectoid/WittQuotientFrobeniusKernel.lean）
+/-! ## Witt商mod pのFrobenius核の生成元
 
 係数環の完全性でd₀のp乗根aを選び、W(k)/(d)/pのp乗零化元が[a]の像で
 生成されることを証明する。Fontaine核の同定やperfectoid性は別工程。
@@ -252,7 +252,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientFrobeniusKernel
 
-/-! ## Witt商への係数射とtilt持上げ（旧 Prism/Perfectoid/WittQuotientTiltMap.lean）
+/-! ## Witt商への係数射とtilt持上げ
 
 S=W(k)/(d)のmod p係数射を、既存Perfection.liftでtiltへ持ち上げる。
 untiltの式にはSの古典的p進完備性とpの非可逆性を明示的に仮定する。
@@ -339,7 +339,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientTiltMap
 
-/-! ## 一般のWitt主イデアル商のtilt射影核（旧 Prism/Perfectoid/WittQuotientTiltKernel.lean）
+/-! ## 一般のWitt主イデアル商のtilt射影核
 
 受領F6をmod p商同型に沿って移す。第0係数の正則性は仮定しない。
 p非単元の枝を扱い、商の零環にはCharP pを無条件に供給しない。
@@ -391,7 +391,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientTiltKernel
 
-/-! ## 第0Witt係数が正則な商のtilt射影核（旧 Prism/Perfectoid/WittQuotientTiltKernelRegular.lean）
+/-! ## 第0Witt係数が正則な商のtilt射影核
 
 kでd₀が非零因子という仮定を明示する。一般のpねじれを持つWitt商へ
 この仮定を無条件に適用しない。互換商の列は共通PerfectionPrincipalKernelを使う。
@@ -476,7 +476,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientTiltKernelRegular
 
-/-! ## 完備な係数環からWitt商tiltへの全射性（旧 Prism/Perfectoid/WittQuotientTiltSurjective.lean）
+/-! ## 完備な係数環からWitt商tiltへの全射性
 
 F6の核計算と、tiltの座標からの分離性を使う。
 Witt商のp正則性やFontaine核の単項性を仮定しない。

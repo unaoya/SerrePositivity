@@ -20,17 +20,17 @@ def verdierUpperTriangle (d : _root_.SerrePositivity.InfinityCategories.HA.Stabl
 
 /-- 元の上側二単体の初頂点は、元の四角形の同じ初頂点を表す安定圏。 -/
 theorem verdierUpperTriangle_source (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
-    (verdierUpperTriangle d).obj ⟨ULift.up 0⟩ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 0) :=
+    (verdierUpperTriangle d).obj ⟨ULift.up 0⟩ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 0) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMap_simplex_obj d.square (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0)) ⟨ULift.up 0⟩
 
 /-- 元の上側二単体の中間頂点は、指定した元の零角を表す安定圏。 -/
 theorem verdierUpperTriangle_middle (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
-    (verdierUpperTriangle d).obj ⟨ULift.up 1⟩ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 1) :=
+    (verdierUpperTriangle d).obj ⟨ULift.up 1⟩ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 1) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMap_simplex_obj d.square (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0)) ⟨ULift.up 1⟩
 
 /-- 元の上側二単体の終頂点は、元の四角形の同じ終頂点を表す安定圏。 -/
 theorem verdierUpperTriangle_target (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
-    (verdierUpperTriangle d).obj ⟨ULift.up 2⟩ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 1 1) :=
+    (verdierUpperTriangle d).obj ⟨ULift.up 2⟩ = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 1 1) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMap_simplex_obj d.square (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0)) ⟨ULift.up 2⟩
 
 /-- 指定 Verdier 四角形の同じ上側二単体の中間安定圏は全対象が零。 -/

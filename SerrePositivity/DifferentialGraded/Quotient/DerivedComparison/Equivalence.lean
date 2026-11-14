@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles
 public import SerrePositivity.DifferentialGraded.Verdier.Derived
@@ -1464,3 +1466,8 @@ end SerrePositivity.DifferentialGraded.DGQuotient
 end
 
 end DerivedComparisonCanonical
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Drinfeld "Thm 3.4" (partial := component) "仮定：片側に関する局所 K 平坦性を課した dg 商（原典の平坦性側の設定）。結論：前三角・導来三角模型での Verdier 商との同値（原典の同値の対応部分）。"] _root_.SerrePositivity.DifferentialGraded.DGQuotient.localQuotientTriaEquivalence

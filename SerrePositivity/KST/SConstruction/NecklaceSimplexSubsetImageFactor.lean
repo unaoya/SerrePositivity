@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetImageFactorMap
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetAt
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklacePostcomposition
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklacePostcomposition
 
 /-! # 元の任意の単調写像の像部分集合 necklace 因子
 概要：元の部分集合 augmentation の後合成を、元の像部分集合 bead を通して分解する。

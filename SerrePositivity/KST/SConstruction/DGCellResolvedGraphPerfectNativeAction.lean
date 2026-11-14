@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectNerveArrow
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleDerivedFunctor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomWhiskerMapTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleDerivedFunctor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.SimplicialFunctors.FunctorHomWhiskerMapTransport
 
 /-!
 概要：同じ Perf 比較射の native 導来延長作用を元 graph 比較の作用と全体で照合する。

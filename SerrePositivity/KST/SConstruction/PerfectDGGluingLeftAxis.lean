@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGGluingLeftAxisNerve
 public import SerrePositivity.KST.SConstruction.PerfectDGFullyFaithful
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFactorization
 public import SerrePositivity.KST.SConstruction.DGUniverseQuasiFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Size
 
 /-! # 元の左軸包含の実 Perf 延長
 概要：同じ (c,0,0) の左軸包含を実 Perf へ延長し、全 Hom 準同型と左射影比較を得る。

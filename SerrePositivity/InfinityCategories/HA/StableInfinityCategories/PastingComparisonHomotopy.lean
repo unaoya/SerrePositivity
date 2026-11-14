@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.SimplexVertexDetection
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.PastingShapes
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.PastingShapes
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.StdSimplexProductMap
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyEvaluationPath
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyEvaluationPath
 
 /-! # 左四角形から外側四角形への比較
 
@@ -84,7 +84,7 @@ def pastingLeftToOuterHomotopy {X : SSet.{u}}
 lemma pastingLeftToOuterShape_source :
     ((stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ▷ (Δ[1] : SSet.{u})) ≫
       pastingLeftToOuterShape = snd Δ[0] Δ[1] ≫
-        SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u})) 0 0) := by
+        SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u})) 0 0) := by
   apply CartesianMonoidalCategory.hom_ext
   all_goals
     apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.stdSimplex_hom_ext_vertices
@@ -118,7 +118,7 @@ lemma pastingLeftToOuterHomotopy_source {X : SSet.{u}}
     (F : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
     ((stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ▷ (Δ[1] : SSet.{u})) ≫
       (pastingLeftToOuterHomotopy F).h =
-        snd Δ[0] Δ[1] ≫ SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) 0 0) := by
+        snd Δ[0] Δ[1] ≫ SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) 0 0) := by
   change _ ≫ (pastingLeftToOuterShape ≫ F) = _
   rw [← Category.assoc, pastingLeftToOuterShape_source, Category.assoc, SSet.const_comp]
   rfl

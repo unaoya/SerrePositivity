@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -100,3 +102,8 @@ lemma terminal_rlp (X : SSet.{v}) :
   exact h
 
 end SerrePositivity.SimplicialModel.AnodyneKanReplacement
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.0.0.6"] _root_.SerrePositivity.SimplicialModel.AnodyneKanReplacement.factorization

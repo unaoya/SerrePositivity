@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceFiberDiagramChange
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftUnstraighteningFiberIso
@@ -93,3 +95,8 @@ lemma isFullyFaithful_iff_cosliceComparisonOver {C D : SSet.{u}}
   exact (forall_congr' (cosliceComparisonOver_precompositionEquivalence_iff G)).symm
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.5.1" (partial := special) "仮定：fully faithful な準圏間の G、K を一点の図式 x に限定（Lean が強い特殊形）。結論：cosliceComparisonOver_fiber_equivalence_iff の右辺は fully faithfulness の同じ pinchedHomMap の同値であるため、指定 coslice-fiber comparison は同値。両 fiber は Kan なので原典のこの homotopy-equivalence assertion に一致する。一般の K は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cosliceComparisonOver_fiber_equivalence_iff

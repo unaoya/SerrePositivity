@@ -31,7 +31,7 @@ theorem dgRelativeKLimitCone_evaluation_isLimit (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((dgRelativeKLimitCone A d).postcomp
       (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation n))) := by
   let s := dgRelativeCanonicalFiberSquare A d
-  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{max (u + 1) v} := ⟨s.square, s.zero_corner⟩
+  let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{max (u + 1) v} := ⟨s.square, s.zero_corner⟩
   have h := spectrumFiberSquare_evaluation_isPullback t s.isPullback n
   have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_map_pullbackCone_iff
     (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumKanEvaluation n)) s.square).mpr h

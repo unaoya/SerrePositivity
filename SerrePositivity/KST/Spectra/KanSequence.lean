@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
 public import SerrePositivity.KST.Spectra.PointedFactorization
 
@@ -100,3 +102,9 @@ theorem OmegaSpectrum.toKanSequence_omega (X : OmegaSpectrum.{u}) :
     X.toKanSequence.OmegaCondition := X.omega_condition
 
 end SerrePositivity.KST.Spectra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.1.11" (partial := stronger-hyp) "仮定：点付き Kan 空間の列と Ω 条件、構造射のモノ性（Lean が強い：一般の点付き ∞ 圏のコホモロジーの表現対象を扱わない）。結論：選んだ loop 同値から具体的な Ω スペクトル（Lean が弱い：δⁿ から同値を誘導しコホモロジー理論を表現する比較がない）。"] _root_.SerrePositivity.KST.Spectra.KanSequence.OmegaCondition
+attribute [cite HA "1.4.1.11" (partial := stronger-hyp) "仮定：点付き Kan 空間の列と Ω 条件、構造射のモノ性（Lean が強い：一般の点付き ∞ 圏のコホモロジーの表現対象を扱わない）。結論：選んだ loop 同値から具体的な Ω スペクトル（Lean が弱い：δⁿ から同値を誘導しコホモロジー理論を表現する比較がない）。"] _root_.SerrePositivity.KST.Spectra.KanSequence.toOmegaSpectrum

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Localization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Reconstruction
 public import SerrePositivity.HomologicalAlgebra.CoaugmentedReflection
@@ -381,3 +383,9 @@ def derivedComplexCompletionReductionNatIso (a : R) (n : ℕ) :
 end SerrePositivity.DerivedCompletion
 
 end DerivedKoszulReductionPart
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.2.3.23" (partial := component) "仮定：通常可換環 R と一元 a の全通常導来圏（Lean が強い：主元完備化の通常の導来模型）。結論：完備対象の充満部分圏への反映を左随伴として構成し、その完全三角形の保存を示す（反映の存在と完全性の部分に一致）。任意斉次 Ore 集合の ∞ t 構造、torsion との同値、指定ファイバー列全体は含まれない。"] _root_.SerrePositivity.DerivedCompletion.completeReflectorAdjunction
+attribute [cite HA "7.2.3.23" (partial := component) "仮定：通常可換環 R と一元 a の全通常導来圏（Lean が強い：主元完備化の通常の導来模型）。結論：完備対象の充満部分圏への反映を左随伴として構成し、その完全三角形の保存を示す（反映の存在と完全性の部分に一致）。任意斉次 Ore 集合の ∞ t 構造、torsion との同値、指定ファイバー列全体は含まれない。"] _root_.SerrePositivity.DerivedCompletion.completeReflector_isTriangulated

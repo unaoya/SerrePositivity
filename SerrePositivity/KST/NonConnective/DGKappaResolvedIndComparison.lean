@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputIndMorita
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativePComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaNativePComparison
 
 /-!
 概要：D-8 の同じ実小核と元の固定 ν 値の評価 Morita／P 比較を、同じ Indω へ延長する。

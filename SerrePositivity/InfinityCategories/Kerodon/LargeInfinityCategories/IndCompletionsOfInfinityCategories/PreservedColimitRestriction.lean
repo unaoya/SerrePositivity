@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.NativeKanColimitTransfer
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.NativeCoconePreservationTransport
 
@@ -59,3 +61,9 @@ lemma HasPreservedColimit.map_isColimit {K X Y : SSet.{u}}
   exact hGd.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitConeIso d c hd hc) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderPostcomp p G))
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.5" (partial := direction) "仮定：始対象と押し出しを保つ関手、始域の有限余極限（HTT の十分方向と一致。Lean では空図式と標準三頂点 span に保存される余極限を指定）。結論：任意の有限形状について余極限余錐の像は余極限（一致する方向。逆向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.HasPreservedColimit.map_isColimit
+attribute [cite HTT "4.4.2.9" (partial := special) "仮定：左ファイブレーションと弱可縮な図式形状（Lean が強い：形状に終頂点がある場合。関手には左ファイブレーション性を要求しない）。結論：同じ余極限余錐の像が余極限となる（(1) の保存方向が一致する場合。反映と底の指定余錐の持ち上げ (2) は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.HasPreservedColimit.map_isColimit

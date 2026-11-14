@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMonoidal
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalPostcomposition
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInPoint
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceInPoint
 
 /-! # 元の一点 necklace による cubical mapping object の単位射
 概要：元の Day 単位を、一点 necklace の生成射で cubical 余極限へ送る。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFunctorSpace
 public import Mathlib.CategoryTheory.Monoidal.Braided.PushoutObjObj
 public import Mathlib.Tactic.CrossRefAttribute
@@ -189,3 +191,8 @@ lemma cofinalTrivialKanFibration_relativeHom_of_rightAnodyne {A D E B : SSet.{u}
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration.mem (p := p))
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.1.2.1" (partial := special) "仮定：Cartesian p と任意の K（Lean が強い：p を right fibration に限定）。結論：同じ ihom K による pK が right、従って Cartesian fibration となり一致。この場合は p と pK の全辺が Cartesian なので点ごとの iff も両辺が成立する。一般の Cartesian fibration の指数は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalIhom_map_rightFibration

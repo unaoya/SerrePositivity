@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.NormalizedTargetProjection
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.LastPostcomposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarBianchiEquation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Bianchi.DGCoherentBarBianchiEquation
 /-!
 概要：正規化実 bar を最後の対象とする余錐の単体データを構成する。
 方針：D の Bianchi データの最後への全成分を、実正規化射影で後合成する。

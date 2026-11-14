@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallLimitFamilyPreservation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.KappaFilteredUniverse
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.HomConeFamily
@@ -61,3 +63,8 @@ lemma isKappaCompact_smallQuasicategoryColimit_universe
   exact h
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.4.15" (partial := special) "仮定：正則 κ、既存の余極限と各頂点の κ-compact 性（Lean が強い：形状は有限単体集合、または非可算 κ の κ-small 準圏）。結論：同じ指定余極限頂点が κ-compact（これらの場合に一致）。有限形状は任意の有限単体集合を含み、一般 κ-small 単体集合への拡張は主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe

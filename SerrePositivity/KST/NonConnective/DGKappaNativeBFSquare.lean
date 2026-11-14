@@ -121,7 +121,7 @@ theorem dgKappaNativeBF_spaceEvaluation_isPullback (r : ℕ)
 規約：元の実核の K 値を保持する。
 使われ方：実 fiber 比較の始点の厳密照合。 -/
 theorem dgKappaNativeBFSquare_source :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
         (stableCategoryModel (dgKappaNativeKernelCategory R D I))) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source (dgKappaNativeBFSquare R D I hBF)
@@ -137,7 +137,7 @@ theorem dgKappaNativeBFSquare_source :
 規約：元の cell 分解源の K 値を保持する。
 使われ方：同じ cone の K 零性の代入。 -/
 theorem dgKappaNativeBFSquare_middle :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum (dgKappaNativeResolvedCone R D I)) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_target (dgKappaNativeBFSquare R D I hBF)
   rw [dgKappaNativeBFSquare_bottom] at h
@@ -152,7 +152,7 @@ theorem dgKappaNativeBFSquare_middle :
 規約：Perf 完備化後の値へ置き換えない。
 使われ方：同じ未完備実商の loop と固定 K の間の接続。 -/
 theorem dgKappaNativeBFSquare_target :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaNativeBFSquare R D I hBF) 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
         (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target (dgKappaNativeBFSquare R D I hBF)

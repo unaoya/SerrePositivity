@@ -22,7 +22,7 @@ open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries
 open FunctorCategories
-open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
 variable (A : Type u) [CommRing A]
 
 /-- 同じ複体の Hom だけを上げた表示から、元の相対圏への全関手。 -/
@@ -49,12 +49,12 @@ lemma complexRelativeColumnHom_arrow {I : Type (u + 1)} [Category.{u} I]
     Arrow.mk (NerveColumn.hom (complexRelativeDerivedSource A)
       (Functor.whiskerRight (MixedNerve.liftedNatTrans a) (complexHomLiftToRelative A))) =
       Arrow.mk ((hoFunctor.map ((pre (MixedNerve.down I)).app
-        (derivedInfinityCategory A))).toFunctor.map (complexOrdinaryDerivedNatTransHom A a)) := by
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor.map (complexOrdinaryDerivedNatTransHom A a)) := by
   have h₁ := congrArg Arrow.mk
     (NerveColumn.hom_whiskerRight (complexHomLiftToRelative A)
       (complexRelativeDerivedSource A) (MixedNerve.liftedNatTrans a)).symm
   have h₂ := congrArg (fun F : nerve (ULiftHom.{u + 1} (Complex A)) ⟶
-      derivedInfinityCategory A => Arrow.mk (NerveColumn.hom F (MixedNerve.liftedNatTrans a)))
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A => Arrow.mk (NerveColumn.hom F (MixedNerve.liftedNatTrans a)))
     (complexRelativeDerivedSource_onHomLift A)
   exact h₁.trans (h₂.trans
     (MixedNerve.liftedHom_postcomp_arrow I a (complexOrdinaryDerivedSource A)))

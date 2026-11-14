@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberRotationAdjunction
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact
@@ -51,3 +53,8 @@ def adjunction : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFuncto
   (bottomAdjunction X).comp (rightAdjunction X)
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberRotation
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.1.7" (partial := stronger-hyp) "仮定：安定準圏 X（Lean が強い：HA は点付き性のみで射ごとの余ファイバーが存在する場合を含む）。結論：余ファイバー正方形から底辺への射は自明 Kan fibration で切断を持つ。安定な場合の結論と一致し、余ファイバーが一部しかない場合は扱わない。"] _root_.SerrePositivity.KST.LocalizingInvariants.CofiberRotation.bottomSection

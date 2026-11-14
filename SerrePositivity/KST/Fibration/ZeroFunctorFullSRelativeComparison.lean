@@ -29,7 +29,7 @@ theorem zeroStableHomFamilyLift_restriction {A C : _root_.SerrePositivity.Infini
     (hg : ∀ v, StableHomZeroVertex A C (g.app (Opposite.op ⦋0⦌) v))
     (hfg : i ≫ f = i ≫ g) :
     i ≫ zeroStableHomFamilyLift f hf = i ≫ zeroStableHomFamilyLift g hg := by
-  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom A.obj).obj C.obj) _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom A.obj).obj C.obj) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex).ι).1
   rw [Category.assoc, zeroStableHomFamilyLift, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι,
     Category.assoc, zeroStableHomFamilyLift, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι,
     ← Category.assoc, ← Category.assoc, hfg]

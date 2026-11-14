@@ -1,12 +1,14 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedConeSectionEquivalence
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.LeftFibration
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningRepresentation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.UniversalCoherentReconstructionComponents
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSSetMaps
 
 /-!
 概要：twisted arrow の実際の分類図式から、空間値 Hom 関手と Yoneda 写像を構成する。
@@ -62,3 +64,9 @@ lemma yonedaInfinityMap_vertex {C : SSet.{u}} [Quasicategory C] (c : C _⦋0⦌)
   exact h
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "5.2.1.11" (partial := stronger-hyp) "仮定：準圏 C と、本体が Tw の射影を straighten して選んだ分類図式 χ（Lean が強い：この指定 χ の場合。HA と左右双対の規約）。結論：χ の共同評価を curry した写像が構成済み Yoneda 写像であり、uncurry の等式が成立する（この選択での HA の比較の部分に一致）。任意の別の分類図式 χ に対する比較の独立性は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity
+attribute [cite HA "5.2.1.11" (partial := stronger-hyp) "仮定：準圏 C と、本体が Tw の射影を straighten して選んだ分類図式 χ（Lean が強い：この指定 χ の場合。HA と左右双対の規約）。結論：χ の共同評価を curry した写像が構成済み Yoneda 写像であり、uncurry の等式が成立する（この選択での HA の比較の部分に一致）。任意の別の分類図式 χ に対する比較の独立性は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_uncurry

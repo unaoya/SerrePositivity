@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.DoubleConeEndEdgeIndex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSimplexComponentExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGSimplexComponentExt
 
 /-!
 概要：元の二重 cone の先端と終端を結ぶ実辺を、同じ恒等射の通常単体へ同定する。

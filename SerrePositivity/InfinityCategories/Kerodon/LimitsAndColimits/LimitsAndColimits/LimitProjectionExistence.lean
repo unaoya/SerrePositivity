@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamilies
 
 /-!
@@ -56,3 +58,8 @@ lemma limitConeProjection_trivialKanFibration {K X : SSet.{u}} [Quasicategory X]
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeTerminalProjection_hasLiftingProperty_boundary (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction K X) n
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.7.9" (partial := component) "仮定：C が各 K-極限または K-余極限を持つ準圏（HTT と一致。Lean は C の accessibility を不要とする）。結論：元の極限・余極限図式の全部分準圏から Fun(K,C) への実際の制限が trivial Kan fibration、従って準圏同値（原典中の同値の結論に一致）。包含の accessibility、ひいては accessible subcategory という結論全体は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeProjection_trivialKanFibration

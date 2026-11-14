@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCat
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InnerFibration
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaInfinityConstruction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafHomWeights
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.PresheafHomWeights
 
 /-!
 分割で生成：docstring を書き直すこと

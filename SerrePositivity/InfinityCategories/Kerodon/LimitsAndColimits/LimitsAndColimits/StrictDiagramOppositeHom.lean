@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.StrictDiagramMappingSpace
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeInternalHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.OppositeInternalHom
 
 /-!
 概要：strict な図式の全変換空間の反転を、反転した二図式間の全変換空間へ写す。

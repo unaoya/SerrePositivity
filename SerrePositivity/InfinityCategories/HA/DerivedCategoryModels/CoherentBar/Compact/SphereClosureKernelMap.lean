@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKMap
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedRelativeRoof
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGPretriangulatedFunctorExact
 public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.SphereConeData
 
@@ -53,9 +53,9 @@ lemma dgKappaSuspensionMap_preservesKernel :
         (M.resolved.obj x) := by
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R E J)
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R
     (_root_.SerrePositivity.DifferentialGraded.DGCategoryCellResolution.Source R (DGKappaCone R D I))
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R
     (_root_.SerrePositivity.DifferentialGraded.DGCategoryCellResolution.Source R (DGKappaCone R E J))
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPretriangulatedFunctor_isExactFunctor R _ _ M.resolved
   intro x hx

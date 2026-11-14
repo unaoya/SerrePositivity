@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 public import Mathlib.Order.SuccPred.Nat
@@ -75,3 +77,10 @@ def simplex : ReedyStructure simplexInverse simplexDirect ℕ where
 abbrev simplexOp : ReedyStructure simplexDirect.op simplexInverse.op ℕ := simplex.op
 
 end SerrePositivity.Reedy
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.9.5"] _root_.SerrePositivity.Reedy.simplex
+attribute [cite HTT "A.2.9.5"] _root_.SerrePositivity.Reedy.simplexDirect
+attribute [cite HTT "A.2.9.5"] _root_.SerrePositivity.Reedy.simplexInverse

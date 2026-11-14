@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.OuterHornDuality
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -85,3 +87,10 @@ lemma kanComplex_iff_isGroupoid (X : SSet.{u}) [Quasicategory X] :
     exact kanComplex_of_isGroupoid X
 
 end SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "3.3.1.5" (partial := component) "仮定：準圏のホモトピー圏が亜群（Lean は Ext の全辺が同値であることを既知とする）。結論：その準圏が Kan 複体となる（Ext が亜群と分かった後の結論に一致）。色の準圏の Kan 性から Ext の全辺の同値性を導く部分は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_of_isGroupoid
+attribute [cite HTT "1.2.5.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_iff_isGroupoid
+attribute [cite HTT "2.1.3.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_iff_isGroupoid

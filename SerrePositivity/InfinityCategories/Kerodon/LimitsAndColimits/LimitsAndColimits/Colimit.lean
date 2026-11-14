@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeEquiv
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.F1BNerveComparisonLimit
 public import Mathlib.CategoryTheory.Limits.Opposites
@@ -69,3 +71,10 @@ lemma nerve_hasColimit_iff :
       (nerveCocone_isColimit_iff _).2 ⟨colimit.isColimit F⟩⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.1.1" (partial := special) "仮定：各部分図式に余極限が存在する（Lean が強い：標的と各添字は通常の圏の神経。離散圏上の Grothendieck 構成を添字の非交和に取る）。結論：全図式の余極限余錐と部分余極限を頂点とする離散図式の余極限余錐を相互に移す（一致する場合。任意の準圏・単体集合形状は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCocone_isColimit_iff
+attribute [cite HTT "4.4.3.2" (partial := special) "仮定：余等化子と小余積が存在する（Lean が強い：通常の圏の神経を標的に、添字も固定宇宙の通常の圏の神経に限る）。結論：通常の圏で全小余極限を得て、同じ図式の神経の余極限存在へ移せる（一致する向きと範囲。任意の単体集合形状、濃度 κ による切断と逆向きは含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerve_hasColimit_iff
+attribute [cite HTT "5.1.5.7" (partial := special) "仮定：準圏の充満部分圏（Lean が強い：通常の圏の神経と通常圏の神経を形状とする図式）。結論：同じ部分圏内の図式の任意の余極限余錐の頂点が再びその部分圏に属するという閉性を定める（一致する場合。任意の単体集合形状は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCocone_isColimit_iff

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.OrdinaryNerveHomotopyFunctor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedRoofRefinements
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.DGClosedRoofRefinements
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomotopyCategory
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyCategoryBridge
 
@@ -28,7 +28,7 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
 
 def dgClosedHoFunctor : ClosedCategory A D ⥤ hoFunctor.obj (dgNerve A D) :=
   ordinaryNerveHomotopyFunctor (ClosedCategory A D) ⋙
-    (hoFunctor.map (closedNerveInclusion A D)).toFunctor
+    (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A D)).toFunctor
 
 def dgNativeHoH0Equivalence : hoFunctor.obj (dgNerve A D) ≌
     DifferentialGraded.HomotopyCategory A D :=
@@ -41,8 +41,8 @@ lemma dgClosedHoFunctor_comp_H0 :
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   change (toH0 A D).map
     ((pathToEdgeHomotopyCategory ((truncation 2).obj (dgNerve A D))).map
-      (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (closedNerveInclusion A D)))) = _
-  let e := ((nerve.edgeMk f).map (closedNerveInclusion A D)).toTruncated
+      (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A D)))) = _
+  let e := ((nerve.edgeMk f).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A D)).toTruncated
   have hp : (pathToEdgeHomotopyCategory ((truncation 2).obj (dgNerve A D))).map
       (SSet.Truncated.HomotopyCategory.homMk e) = SSet.Truncated.HomotopyCategory₂.homMk e :=
     SSet.Truncated.HomotopyCategory.lift_map_homMk _ _ _ _ e

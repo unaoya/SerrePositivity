@@ -23,17 +23,17 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma derivedFreeProbeUnitCommaVertex_isInitial
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) :=
   derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso A x
     (freeProbeUnitTransportCondition A x)
 
 lemma cAlgForgetDerived_rightAdjoint_exists :
-    ∃ F : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A,
+    ∃ F : _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A,
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction F (cAlgForgetDerived A)) :=
   cAlgForgetDerived_rightAdjoint_exists_of_transport A (freeProbeUnitTransportCondition A)
 
-def cAlgFreeDerived : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A :=
+def cAlgFreeDerived : _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A ⟶ CAlg_R A :=
   cAlgFreeDerivedOfTransport A (freeProbeUnitTransportCondition A)
 
 def cAlgFreeForgetDerivedAdjunction :
@@ -41,7 +41,7 @@ def cAlgFreeForgetDerivedAdjunction :
   cAlgFreeForgetDerivedAdjunctionOfTransport A (freeProbeUnitTransportCondition A)
 
 def derivedFreeProbeUnitCommaAdjunctionIso
-    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x)
       (derivedFreeProbeUnitCommaVertex A x)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunction A).unitHom x) :=

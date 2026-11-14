@@ -40,11 +40,11 @@ lemma WideStageData.vertex_mem {X Y : StableModel.{u}} (f : X ⟶ Y)
     have h := SSet.Truncated.HomotopyCategory.homMk_id
       (V := (truncation 2).obj Y.carrier) y
     exact h.symm ▸ (inferInstance : IsIso (𝟙 (HomotopyCategory.mk y : hoFunctor.obj Y.carrier)))
-  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.edge) := {
+  let t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.edge) := {
     toZeroTriangle := s.toZeroTriangle
     bottom_edge := s.bottom_edge
     isPushout := s.isPushout }
-  let x := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
+  let x := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X.carrier
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.val := stableModelHom_exact f
   have hz := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := f.val) x.vertex x.isZero
   have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso t.cofiber (f.val.app (Opposite.op ⦋0⦌) x.vertex) :=
