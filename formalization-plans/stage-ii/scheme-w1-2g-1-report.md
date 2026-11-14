@@ -2324,3 +2324,20 @@ B02 の有限個の模型の共通係数への移送（着手前の型、見込�
 G1・G2共用部品込み本体13,643行、入口込み13,874行。有限個の細分の対象・射・可換式を同じ段へそろえる部分は下書きで、B02 は未完。B03・B04 も未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B03 の固定の平坦模型の証人を保持する接続（着手前の型、見込み180〜360行）：`exists_proper_flat_model_witness_of_integral_closed_model` は A07 の `exists_fppf_proper_refinement_of_integral_closed_flat_model` と同じ実際の入力（有限型 ℤ 上の固有模型・固定の平坦射 q₀:Z₀→Y₀・整全射後の有限型閉部分・元の射への細分の射と式）に対し、実際の固有・全射・局所有限表示の r:T→Spec R と β:T→Y₀、q₀ の **実際の** β に沿う底変換の全射性、そこから元の対象への射と基底上の可換式を返す。最終の `flatStageModelProjection` を標準の pullback に同型で戻し、元から使った q₀ を隠さず保持する。`AffineRingVCoverRefinement` の一般の v 被覆からその入力自体を供給する部分にもこの出口を接続するまで、一般の被覆模型の存在は未完とする。A07 の既存の構成の証明分割と同型の法則で、親項目を増やさない。
+
+
+B03 の一般の有限表示 affine v 被覆からの平坦模型の証人（着手前の型、見込み180〜360行、前記の既存の構成の証人の内数）：`exists_flat_model_refinement_witness_vCover_affineRing` は任意の R-有限表示代数 C の affine v 被覆 Spec C→Spec R から、有限型 ℤ-代数 A、実際の固有・局所有限表示の p₀:Y₀→Spec A、固定の平坦・局所有限表示・qcqs な q₀:Z₀→Y₀、実際の固有全射 r:T→Spec R と β:T→Y₀ を供給し、q₀ の β に沿う実際の底変換が全射であることと、そこから Spec C への細分の射・可換式を保持する。A07 の一般基底の証明と同じ選択を使い、末尾を上記の証人を保持する出口に変える。元の R の Noether 性を要求しない。G2 の有限型 F_p の v 被覆模型まで完成したと扱わず、既存の G1 の構成の証明分割として親項目を増やさない。
+
+
+### B02：有限個の実際の模型の、共通の有限生成係数環への移送
+
+`CommonCoefficientSchemeModels`（70行）：`exists_common_finitelyGenerated_coefficient_extension` は有限個の有限生成部分代数を全て含む有限生成部分代数を構成。`exists_common_coefficient_scheme_models` は各入力模型から同じ係数環上の実際の底変換模型を作り、両方の Cartesian 比較と元の比較射の可換式を保つ。模型の性質の保存は実際の底変換の正方形を使える形で返す。
+
+本体70行・入口1行。定義上の係数写像の一致で余分だった手順を除いて単独検証を完了。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,019ジョブ、小監査2宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-common-coefficient-scheme-models-check-2.log`・`2g-common-coefficient-scheme-models-native.log`・`2g-common-coefficient-scheme-models-audit.log`。
+
+G1・G2共用部品込み本体13,713行、入口込み13,945行。細分の有限個の射と可換式への接続、構成された平坦模型の証人の供給・有限型 F_p の被覆模型と filtered 整合性は残る。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

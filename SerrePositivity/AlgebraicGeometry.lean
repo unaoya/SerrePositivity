@@ -1535,3 +1535,5 @@ public import SerrePositivity.AlgebraicGeometry.ProperFinitePresentationCoeffici
 public import SerrePositivity.AlgebraicGeometry.PrimeFieldProperCoefficientModel
 
 public import SerrePositivity.AlgebraicGeometry.ProperSurjectiveCoefficientModel
+
+public import SerrePositivity.AlgebraicGeometry.CommonCoefficientSchemeModels
