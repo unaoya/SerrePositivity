@@ -18978,3 +18978,66 @@ M14実測は**22,991行**、L12aは**7,784行**。
 (c)が必要との判定には至っておらず、その判定なら§32どおり止める。
 Tot九欄の段0は§260。3b-4aを受領したらmain§33の順へ切り替える。
 次は§289の型の法則を同じ指定辺・同じ順位で証明する。
+
+
+## 291. C452：位置指数の釣り合いと元の整数係数の厳密な一致、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§289の七つの型をすべて実装し、§253の位置指数の釣り合い、§243の全指数のmod 2、
+§199の `positiveCompositeCutCoefficient_eq_nested` へ接続した。
+同じcompositionSignとcutSignの積が、元の二段切断の整数係数そのものに一致する。
+元の非退化性の仮定は保持し、指数の合同を追加仮定にはしていない。
+ホモトピー圏や別の符号規約への変更はない。
+
+証明は同じ内部辺の所属を既存 `segmentEdgeOwner_unique` で指定し、
+`positiveCompositeInnerCut_rank_mem`・`positiveCompositeInnerCut_vertices` の元の順位を使う。
+同じ区間内の先行他色の集合の等式でB_iへ戻し、各内部位置の高さの等式を区切りの有無で
+重み付けして足した。内部区切り数は `sum_internal_caesuraIndicators` で同じ成分次数へ戻した。
+その釣り合いと証明済みの逆転指数の合同・合成指数の補和・成分次数の総和を合わせ、
+元の `positiveCompositeCutCoefficient_eq_nested_of_modeq` に追加の合同仮定なしで渡した。
+
+有限点検は§289の全12,233組を使用。Leanは有限点検に依存しない全称証明。
+語の略記に存在しないtoWord射影を一度使ったため既存のWordそのものへ直した。
+部分語長の正値性を明示し、有限和の引数名とPropの移送を現行APIに合わせた。
+高さの最終照合は同じCutの定義展開だけを許す透明性設定で閉じた。
+心拍数・再帰上限を増やしていない。証明・ファイル200行超なし。
+最終ソースの対象警告0。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-position-helpers-01.log`：語長の区切り・順位の移送。
+- `m14-position-helpers-02.log`：辺の和、内部区切り数、内部位置の和、2,239 jobs成功。
+- `m14-inner-height-balance-03.log`：同じ内部辺の高さの釣り合い。
+- `m14-position-exponent-balance-01.log`：内側位置指数の再添字付け。
+- `m14-composite-cut-coefficient-01.log`：警告の改行修正を含む最終三本、3,009 jobs成功。
+
+途中の失敗を含むログの個別成功行と、最終対象ビルドの終了コード0を確認した。
+新規分だけの別の小監査 `audit-m14-composite-cut-coefficient.log` は
+**9モジュール・44宣言、標準三公理のみ**。sorry・独自公理0。
+鍵は一回の対象ビルドまたは一回の小監査の間だけ使用して返した。整理券は一枚ずつ。
+既存の公開宣言・界面・drafts・main作業木・共有入口・共有監査は変更していない。
+rootビルド・大きい監査・常駐セッションなし。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| WordCaesuraLengthTransport | 35 |
+| PositionExponentEdgeSum | 32 |
+| InternalCaesuraIndicators | 30 |
+| OverlapInternalPositionSums | 59 |
+| CompositeInternalHeightBalance | 74 |
+| CompositeInnerPositionExponent | 42 |
+| CompositePositionExponentBalance | 70 |
+| CompositeCutExponentModeq | 47 |
+| CompositeCutCoefficient | 26 |
+| **計** | **415** |
+
+M14実測は**23,406行**、L12aは**8,199行**。
+C451・C452・C453の数値・指定面の比較は閉じたが、同じ実テンソルとnullaryへの接続は残る。
+L12a全体・L13以降を完成に数えず、一覧12/48（追加4）、goalはactiveのまま。
+外枠31,000行まで実測の残り7,594行。完成見込みの上端が外枠を超えるリスクは残る。
+約25,000行で止まらず実測・残りを出し直す指定を維持する。
+完備化後のP⁰は§267・282の未供給箇所を残し、仮定を足して消していない。
+(c)が必要との判定には至っていない。3b-4a未受領のためTot九欄の実装は始めない。
