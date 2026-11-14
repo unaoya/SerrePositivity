@@ -45,5 +45,12 @@
   "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSections",
   "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightRestriction",
   "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornFactorization",
-  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornWeakFactorization"
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornWeakFactorization",
+  "SerrePositivity.EInfinity.HomotopyWeight.WeightedSourceHomotopy",
+  "SerrePositivity.EInfinity.HomotopyWeight.WeightIntervalBoundary",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightTensorLifting",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveBoundaryContraction",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightComparison",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanComparisonValues",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotWeightComparison"
 ]

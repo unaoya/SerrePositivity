@@ -10415,3 +10415,250 @@ theorem projectiveHornFactorization_p_boundary_rlp {V W : I ⥤ SSet.{u}} (j : V
     SSet.modelCategoryQuillen.I.rlp ((projectiveHornFactorization I j).p.app i)
 
 ```
+
+## 171. R03a・R03a.1 の完了：同じ一つの重み比較（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。済みはR01・R03a・R03a.1。R02・R03の指定native錐族・極限性は未完了であり、この重み比較をもって完成とは数えない。
+
+### 171.1 一覧の型のまま閉じた内容
+
+**R03a.1** `weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant` は§168の一般の型のまま証明した。元の射影cofibrantな二重み間の成分ごとの弱同値から、全Kan係数図式への元の制限写像の実際の単体的ホモトピー同値を得る。標的重みがKanでない場合も含む。
+
+まず同じ区間パラメーターを持つ全重みの自然変換を、普遍評価に前合成して元の切断空間の区間ホモトピーへ転置し、両端点が元の制限写像に厳密に一致することを示した。境界右類の射の切断を元の標的重みのcofibrancyで取り、始域重みのcofibrancyで区間境界を持ち上げることにより、同じ全重みの区間収縮を作った。これが右射の制限の実際のホモトピー逆を与える。
+
+各値がKanな標的への自由ホーン分解では、前段の射影anodyneな制限とこの境界右類の制限を合成した。一般の標的は、元の標的の終射の自由ホーン分解によるKan置換を使う。元の比較をその左射へ合成して前のKan標的の場合に適用し、Kanな切断空間での二対三則で元の制限へ戻った。一般の非Kan標的へのfibrationを無条件にtrivialと扱っていない。
+
+**R03a** `exists_strictBETotWeightComparison` は§166で承認された型のまま閉じた。元のBK重みの各値が元のover圏の終対象によって弱可縮であることと、指定された一点比較の境界右類から、**選んだ同じjの全成分が弱同値**であることを示した。これと両方の重みの元の射影cofibrancyをR03a.1へ代入した。
+
+存在するjは `strictBETotWeightComparison := bkFramedWeightComparison (AsSmall SimplexCategory)` として一つに固定した。係数H・その全射ごとに選び直さない。元のW・二重反対添字・重みの制限の向きは保持した。高次自然性やnative錐の構成を、この存在主張だけで代用しない。
+
+### 171.2 最終検証
+
+227は区間転置・両端点の1本で **1,622 jobs・終了0、48モジュール347宣言**。228は区間境界・テンソル持ち上げ・切断収縮・一般比較の4本で **2,708 jobs・終了0、52モジュール362宣言**。229は元のjの各値の比較とBE指定比較の2本で **2,772 jobs・終了0、新規全54モジュール368宣言・標準三公理のみ**。実ハンドル34287・45990・89120の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build227.log`〜`229.log`、最終小監査 `/private/tmp/AuditISW2BKCells229.lean`。
+
+一時合併の検査では他のimportが収縮補題を補っていたため、各値の比較を独立に検査して不足した `MonoRightLiftingContraction` の直接importを明示した。最終229は各実モジュールを独立にビルドしてから全新規の小監査を実行した。sorry・独自公理・計算上限の変更0。SSet/図式圏のModelCategory仮定なし。`--class impl --wait 3600`、同時整理券一枚、鍵はビルド・小監査の間だけ。
+
+### 171.3 見込みと実測
+
+今回7本631行、各200行以下。3b-4の検証済みは **54モジュール・3,536行**。登録候補はBE用JSONへ追記し、入口・公式監査の登録は行っていない。
+
+| 追加項目 | 見込み | 実測 | 差 |
+| --- | ---: | ---: | ---: |
+| R03aのBK細胞・指定比較と最終特殊化 | 550〜1,150 | 1,186 | 上端+36（約3%） |
+| R03a.1の一般の重みHom不変性 | 900〜1,400 | 839 | 下端−61 |
+| 合計 | 1,450〜2,550 | 2,025 | 範囲内 |
+
+R03aの細胞分解が当初の見込みより大きくなった一方、Hom不変性は既存の二変数随伴輸送・Kan Whitehead・元のホーン小対象性を再利用できたため短く閉じた。R03a.1は§19の1,500行以下の追加の枠を満たした。§170の全体見込み約8,500〜12,700行、外枠15,000行は維持する。
+
+次はR02・R03の元の普遍重み付き錐の点を、同じ全Hom∞比較・R03aを通して指定native錐へ接続する。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。停止点3b-4aにはまだ届いていない。/goalはactiveのまま、そのまま続ける。
+
+### 171.4 今回の証明分割・法則の型
+
+R03a・R03a.1以外の独立の新しい数学の追加は0。
+
+#### WeightedSourceHomotopy（145行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def weightedSourceHomotopySection {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W) (H : I ⥤ SSet.{u}) :
+    V ⊗ (Functor.const I).obj (weightedSections W H ⊗ (Δ[1] : SSet.{u})) ⟶ H
+
+def weightedSourceHomotopyMap {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W) (H : I ⥤ SSet.{u}) :
+    weightedSections W H ⊗ (Δ[1] : SSet.{u}) ⟶ weightedSections V H
+
+def weightIntervalZero (V : I ⥤ SSet.{u}) :
+    V ⟶ V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u})
+
+def weightIntervalOne (V : I ⥤ SSet.{u}) :
+    V ⟶ V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u})
+
+theorem weightedSourceHomotopyMap_zero {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (f : V ⟶ W) (h : weightIntervalZero I V ≫ T = f) (H : I ⥤ SSet.{u}) :
+    SSet.ι₀ ≫ weightedSourceHomotopyMap I T H = weightedSectionsPre f H
+
+theorem weightedSourceHomotopyMap_one {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (f : V ⟶ W) (h : weightIntervalOne I V ≫ T = f) (H : I ⥤ SSet.{u}) :
+    SSet.ι₁ ≫ weightedSourceHomotopyMap I T H = weightedSectionsPre f H
+
+def weightedSectionsPreHomotopy {V W : I ⥤ SSet.{u}} {f g : V ⟶ W}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (h₀ : weightIntervalZero I V ≫ T = f) (h₁ : weightIntervalOne I V ≫ T = g)
+    (H : I ⥤ SSet.{u}) : SSet.Homotopy (weightedSectionsPre f H) (weightedSectionsPre g H)
+
+```
+
+#### WeightIntervalBoundary（92行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.SimplicialModel.LargeParameterHomotopy
+open scoped Simplicial
+
+theorem weight_boundaryMap_naturality {X Y E F : SSet.{u}} (r : X ⟶ Y) (t : E ⟶ F)
+    (a b : X ⟶ E) (c d : Y ⟶ F) (ha : r ≫ c = a ≫ t) (hb : r ≫ d = b ≫ t) :
+    (r ▷ (∂Δ[1] : SSet.{u})) ≫ boundaryMap c d = boundaryMap a b ≫ t
+
+theorem weight_boundaryMap_comp {X E B : SSet.{u}} (a b : X ⟶ E) (p : E ⟶ B)
+    (h : a ≫ p = b ≫ p) :
+    boundaryMap a b ≫ p = fst X (∂Δ[1] : SSet.{u}) ≫ b ≫ p
+
+def weightIntervalBoundary {V W : I ⥤ SSet.{u}} (f g : V ⟶ W) :
+    V ⊗ (Functor.const I).obj (∂Δ[1] : SSet.{u}) ⟶ W
+
+theorem weightIntervalBoundary_lift_zero {V W : I ⥤ SSet.{u}} (f g : V ⟶ W)
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (h : (V ◁ (Functor.const I).map ∂Δ[1].ι) ≫ T = weightIntervalBoundary I f g) :
+    weightIntervalZero I V ≫ T = f
+
+theorem weightIntervalBoundary_lift_one {V W : I ⥤ SSet.{u}} (f g : V ⟶ W)
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (h : (V ◁ (Functor.const I).map ∂Δ[1].ι) ≫ T = weightIntervalBoundary I f g) :
+    weightIntervalOne I V ≫ T = g
+
+```
+
+#### ProjectiveWeightTensorLifting（48行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.PointwiseAdjunction
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveWeight_tensor_lifting (W : I ⥤ SSet.{u})
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    {A B : SSet.{u}} (f : A ⟶ B) [Mono f] {F G : I ⥤ SSet.{u}} (p : F ⟶ G)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i)) :
+    HasLiftingProperty ((weightedParameterFunctor W).map f) p
+
+```
+
+#### ProjectiveBoundaryContraction（78行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.SimplicialModel.LargeParameterHomotopy
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def weightIntervalProjection (V : I ⥤ SSet.{u}) :
+    V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V
+
+theorem exists_projectiveBoundary_section {V W : I ⥤ SSet.{u}} (p : V ⟶ W)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i))
+    (hW : (boundaries I).rlp.llp (initial.to W)) : ∃ s : W ⟶ V, s ≫ p = 𝟙 W
+
+theorem exists_projectiveBoundary_contraction {V W : I ⥤ SSet.{u}} (p : V ⟶ W)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i))
+    (hV : (boundaries I).rlp.llp (initial.to V)) (s : W ⟶ V) (hs : s ≫ p = 𝟙 W) :
+    ∃ T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V,
+      weightIntervalZero I V ≫ T = p ≫ s ∧ weightIntervalOne I V ≫ T = 𝟙 V
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projectiveBoundary
+    {V W : I ⥤ SSet.{u}} (p : V ⟶ W)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i))
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W)) (H : I ⥤ SSet.{u}) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre p H)
+
+```
+
+#### ProjectiveWeightComparison（74行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet HomotopicalAlgebra
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHornReplacement_kan (W : I ⥤ SSet.{u}) (i : I) :
+    SSet.KanComplex ((projectiveHornFactorization I (terminal.from W)).Z.obj i)
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant_kan_target
+    (V W : I ⥤ SSet.{u}) (f : V ⟶ W)
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hf : ∀ i, IsWeakHomotopyEquivalence (f.app i))
+    (hWK : ∀ i, SSet.KanComplex (W.obj i))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre f H)
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant
+    (V W : I ⥤ SSet.{u}) (f : V ⟶ W)
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hf : ∀ i, IsWeakHomotopyEquivalence (f.app i))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre f H)
+
+```
+
+#### BousfieldKanComparisonValues（53行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+
+theorem bousfieldKanWeight_isWeaklyContractible (I : Type u) [SmallCategory I] (i : I) :
+    IsWeaklyContractible ((bousfieldKanWeight I).obj i)
+
+theorem framedLimitWeightComparison_weak (i : Jᵒᵖᵒᵖ) :
+    IsWeakHomotopyEquivalence ((framedLimitWeightComparison J).app i)
+
+theorem bkFramedWeightComparison_weak (i : Jᵒᵖᵒᵖ) :
+    IsWeakHomotopyEquivalence ((bkFramedWeightComparison J).app i)
+
+```
+
+#### StrictDiagramTotWeightComparison（41行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+abbrev strictBETotWeightComparison :=
+  HomotopyWeight.bkFramedWeightComparison (AsSmall.{u} SimplexCategory)
+
+theorem strictBETotWeightComparison_homotopyEquivalence
+    (H : ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⥤ SSet.{u})
+    (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre strictBETotWeightComparison H)
+
+theorem exists_strictBETotWeightComparison :
+    ∃ j : bousfieldKanWeight ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⟶
+        HomotopyWeight.framedLimitWeight (AsSmall.{u} SimplexCategory),
+      ∀ (H : ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⥤ SSet.{u}),
+        (∀ i, SSet.KanComplex (H.obj i)) →
+          IsSimplicialHomotopyEquivalence (weightedSectionsPre j H)
+
+```
