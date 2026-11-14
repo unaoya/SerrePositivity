@@ -125,3 +125,23 @@ Rees の成分と自然性の証明を分離し、レコードの暗黙引数を
 Proj 側の小さい合成関数の版（retry-affine-8）は、Rees の依存が stale であるため `lake --no-build setup-file` の段で終了した。この版を再び heartbeat 失敗したとは扱わない。Rees のビルドが済んだので、Proj 側の依存を含む対象ビルドを通してから、新しい出力先 retry-affine-9 で同期 collect をやり直す。未検証の Proj の変更はまだコミットしない。main は未取り込み。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+Proj の合成関数の版は対象ビルド 3,280 ジョブ成功後も、同期 collect では最後の定義の `abstract nested proofs` で 200,000 heartbeats に達した（retry-affine-9）。未検証のその補助関数を本体から外し、元の定義で Iso.trans の C・X・Y・Z をすべて明示する案を検証する。元の二つの同型、型、名前、資源上限は変えない。この案には新しい補助宣言はない。
+
+Iso.trans の三対象を全て明示した版も、同じ定義の同期 `abstract nested proofs` で上限に達した（retry-affine-10）。続いて Mathlib `IsAffineOpen {X : Scheme} (U : X.Opens)` の X の推論を避け、元の定義の hV と hU で `X := Proj G` を明示した版を検証する。引数は元から Proj G の開集合で、仮定を強める変更ではない。補助宣言は増やさない。
+
+IsAffineOpen の X の明示だけでも上限に達した（retry-affine-11）。次の証明分割では、既存の三つの対象を `projectivePerfectFixedCechH q`（固定した複体）、`projectivePerfectNativeCechH q`（同じ標準開の構造層）、`projectivePerfectCoverCechH V q`（比較先の有限被覆）として共有する。いずれも ModuleCat ℤ の既存の Čech H の対象の別名で、追加の数学的主張ではない。前に分割して検証した native の比較と共通被覆の比較の戻り型にもこの対象の別名を使い、公開する元の比較の型を保ったまま合成する。全て同じ構成の型と証明の分割で、主項目の数は変えない。
+
+## 取り込み前の全対象の検証完了：289／289 本
+
+三つの Čech H の対象を名前で共有し、前半・後半の比較の戻り型も同じ対象で共有した版で、最後の Proj の同期 collect が成功した（retry-affine-12）。公開する元の比較の型は保持する。追加は既存の対象と比較の型・証明の分割のみ。新しい数学的仮定や、選択で別の比較を作る構成は導入しない。
+
+この Proj モジュールの通常ビルドは 3,280 ジョブ成功、小監査は生成宣言を含む 17 宣言・標準三公理のみ、終了コード 0。[検証記録](scheme-w1-b4/verified-affine-compact.json)。
+
+全 289 本の完全な capture を、標準の schema・module・原ソース全バイト一致の検査で再集約した。採取器は全て同じ一版。不足 0。本来の全 289 本の一覧で公式 rewrite を再実行し、**保留 0、改名によるソース差分 0 本／0 行**を確認した。参照 257,809 件、commands 2,298 件。[全体の取り込み前集計](scheme-w1-b4/full-before-summary.json)。最初から対象の JSON に含まれていたファイルだけで、下書きは含めない。
+
+改名とは別に、同期 elaboration を既定の上限で通すために変更した自レーンの Lean は三本。122ac972c との比較で、SquareData は +1/-0 行、ProjectivePerfectAffineCechComparison は +73/-10 行、ReesClosedCechThickeningFrobenius は +53/-34 行。型の共有、既存の証明の分割、局所の透明性設定であり、既存の名前・数学的仮定は保持した。三本の import は元と一致し、他の 286 本も全バイト一致のままなので、最初の通常 import の module-map 照合で該当 0 だったことも変わらない。
+
+この検証済みの Proj の変更をコミットしてから main を取り込む。取り込み後のソースに古い索引で rewrite しない。全体のプレビュー差分が 0 なので、取り込み後に旧ソースを丸ごとコピーする操作も行わない。取り込み後の対象ビルドと小監査はまだ未実行で、B4 の最終完了はそこで報告する。
+
+一覧：済み 7／全体 12（うち追加 3）。

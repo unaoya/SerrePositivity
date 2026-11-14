@@ -330,7 +330,7 @@
       "log_sha256": "b931dc02773bfec3ef0328f78ff9546581afc33fbac202ffd0abbda2669db40d"
     }
   ],
-  "latest_status": "288_file_previews_verified_affine_wrapper_pending_native_build",
+  "latest_status": "all_289_captures_and_previews_verified_before_main_merge",
   "current_source_sha256": {
     "SerrePositivity/AlgebraicGeometry.lean": "898eec23baad5523f20e9a1359704ed98767cdcf4056db946f99e651e5291bb3",
     "SerrePositivity/AlgebraicGeometry/AffineBaseChangeCechVanishing.lean": "8f6b04cd79417840541e9037bb919feb0172a1ee85adf925fa739a765f3490ca",
@@ -529,7 +529,7 @@
     "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechSquareKernelComparison.lean": "faabd8c0d95765643e6abe688d707ae144e185faddbed48cbf88f35a4d107f73",
     "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechSquareLowDegree.lean": "2341b5f1cbbd5788a355a03e962007ca484c36ec27263bbeed964936b0035cc2",
     "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechSquarePositive.lean": "01be15a003e4184744f1b7aa8838c9e0ecad814e4e88282df78ccccbfd507647",
-    "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean": "3023249876aaee37a4d64d5b244282a9655d8cf9dd8b978043789c66ff855b82",
+    "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean": "c30fdb5383461d15ffce84e4c606402620e4f72d6f9c981a74c8f9bbbe25a02c",
     "SerrePositivity/AlgebraicGeometry/ProjectivePerfectCartesianSquare.lean": "bc6984973e00a79ec5d326cc8ae75dac0bd6ed95011bec23b9d5930fd9e3f41d",
     "SerrePositivity/AlgebraicGeometry/ProjectivePerfectCartesianSquareEdges.lean": "ab22c60e1688f26602886ac5870537b5e43f9d9d6c0c0fe78839b2ca72bd0324",
     "SerrePositivity/AlgebraicGeometry/ProjectivePerfectNativeCechComparison.lean": "aebfeab84da40d67c3f3ddff9c5a96b52535ade940e2865afcb76c18b7b35cf5",
@@ -622,11 +622,9 @@
     "SerrePositivity/AlgebraicGeometry/ValuativeOpenImageSurjective.lean": "a1e04a54148a67a3a45656ffb5917e92cbf5025a722d609289451fe8fc8db2f3",
     "SerrePositivity/AlgebraicGeometry/ValuativeStrictTransformSurjective.lean": "7897390844518131fbddf2d564dceea76fbd0c718b1572390a9bf03a4eb86d77"
   },
-  "verified_preview_files": 288,
+  "verified_preview_files": 289,
   "resolved_failure": "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechH0SquareData.lean",
-  "remaining_failed_sources": [
-    "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean"
-  ],
-  "latest_summary": "covered-summary.json",
+  "remaining_failed_sources": [],
+  "latest_summary": "full-before-summary.json",
   "latest_verified_delta": "verified-rees-split.json"
 }
