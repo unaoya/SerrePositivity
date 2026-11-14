@@ -4197,3 +4197,387 @@ lemma simplexSectionSecondIso_value {E B D T : SSet.{u}}
 次はこの同じ係数貼り合わせと分類像から、§46.2の指定底変換の合成式を初頂点制限で照合し、
 忠実性で降下する。元の型は維持し、指定同型を選び直さない。
 指定Yoneda単位の未検証下書きは作業木に残す。R3・R4には入らない。
+
+### 51.6 正規化の逆・三因子の法則と単位の簡約（検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+端点正規化の逆同型・三因子の合成の法則を明示した。二段前合成は既存の
+`Project/QuasicategoryAuxiliaries/MappingSpaces/FunctorIsoWhiskerCancellation.lean` の
+`functorIso_precomp_precomp` を使い、作り直さない。
+単位の下書きはkernelの既定上限に引き続き達したため、具体的な関手空間の射作用の前に
+一般の圏の射作用の異種等式へ分けて再検証中。上限変更はない。
+以下の型は既存構成の法則・証明分割で、新しいID項目には数えない。
+いずれも200行未満。単位のLeanは未検証のままコミットしない。
+
+#### DiagramIsoNormalizationAlgebra（44行、検証中）
+
+```lean
+lemma diagramIsoCongr_symm {A X : SSet.{u}} {f g f' g' : A ⟶ X}
+    (hf : f = f') (hg : g = g') (e : FunctorIso f g) :
+    diagramIsoCongr hg hf e.symm = (diagramIsoCongr hf hg e).symm
+
+lemma diagramIsoCongr_trans_three {A X : SSet.{u}}
+    {f₀ f₁ f₂ f₃ g₀ g₁ g₂ g₃ : A ⟶ X}
+    (h₀ : f₀ = g₀) (h₁ : f₁ = g₁) (h₂ : f₂ = g₂) (h₃ : f₃ = g₃)
+    (e₁ : FunctorIso f₀ f₁) (e₂ : FunctorIso f₁ f₂) (e₃ : FunctorIso f₂ f₃) :
+    diagramIsoCongr h₀ h₃ (e₁ ≪≫ e₂ ≪≫ e₃) =
+      diagramIsoCongr h₀ h₁ e₁ ≪≫ diagramIsoCongr h₁ h₂ e₂ ≪≫ diagramIsoCongr h₂ h₃ e₃
+
+```
+
+#### HomWeightYonedaUnitSquare（114行、検証中）
+
+```lean
+private lemma precomposeFunctorHom_eq_map {A B X : SSet.{u}}
+    (k : B ⟶ A) {f g : A ⟶ X} (α : FunctorHom f g) :
+    precomposeFunctorHom k α =
+      (hoFunctor.map ((pre k).app X)).toFunctor.map α
+
+private lemma curryEvaluation_of_heq {A B X : SSet.{u}}
+    {f g : A ⊗ B ⟶ X} {f' g' : B ⟶ (ihom A).obj X}
+    (α : FunctorHom f' g') (β : FunctorHom f g)
+    (hf : f' = curry f) (hg : g' = curry g) (h : HEq α (curryFunctorHom β))
+    (a : A _⦋0⦌) :
+    HEq ((hoFunctor.map ((ihom B).map (evaluateFunctorAt (Y := X) a))).toFunctor.map α)
+      (precomposeFunctorHom (lift (SSet.const a) (𝟙 B)) β)
+
+local instance unitSquareAProduct : Quasicategory (A.op ⊗ A) := quasicategory_of_innerFibration (fst A.op A)
+local instance unitSquareCProduct : Quasicategory (C.op ⊗ C) := quasicategory_of_innerFibration (fst C.op C)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+    leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+        (functorHomBifunctorDiagram_classificationIso F F).inv =
+      leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F)
+
+local instance unitSquareCProduct : Quasicategory (C.op ⊗ C) := quasicategory_of_innerFibration (fst C.op C)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+    leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+        (functorHomBifunctorDiagram_classificationIso F F).inv =
+      leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+    leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+        (functorHomBifunctorDiagram_classificationIso F F).inv =
+      leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F)
+
+lemma functorHomBifunctorUnit_eq_square (F : A ⟶ C) :
+    functorHomBifunctorUnit F =
+      precomposeFunctorHom (uliftTensorIso A.op A).inv
+        (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+          (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+          (twistedArrowProjection_naturality F))
+
+private lemma functorMapHom_heq {L : Type v} {M : Type v'}
+    [Category.{w} L] [Category.{w'} M] (H : L ⥤ M)
+    {x y x' y' : L} (hx : x = x') (hy : y = y')
+    {α : x ⟶ y} {β : x' ⟶ y'} (h : HEq α β) : HEq (H.map α) (H.map β)
+
+private lemma homWeightUnit_evaluate_curry_heq (F : A ⟶ C) (a : A _⦋0⦌) :
+    HEq ((hoFunctor.map ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj A)).map
+        (evaluateFunctorAt (Y := SpaceInfinity.{u})
+          (ULift.up (SSet.opObjEquiv.symm a))))).toFunctor.map (homWeightYonedaUnit F))
+      ((hoFunctor.map ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj A)).map
+        (evaluateFunctorAt (Y := SpaceInfinity.{u})
+          (ULift.up (SSet.opObjEquiv.symm a))))).toFunctor.map
+            (curryFunctorHom (functorHomBifunctorUnit F)))
+
+lemma homWeightYonedaUnit_evaluate_heq (F : A ⟶ C) (a : A _⦋0⦌) :
+    HEq ((hoFunctor.map ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj A)).map
+        (evaluateFunctorAt (Y := SpaceInfinity.{u})
+          (ULift.up (SSet.opObjEquiv.symm a))))).toFunctor.map (homWeightYonedaUnit F))
+      (precomposeFunctorHom
+        (lift (SSet.const (ULift.up (SSet.opObjEquiv.symm a)))
+          (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj A)))
+        (functorHomBifunctorUnit F))
+
+```
+
+
+### 51.7 四端点での係数貼り合わせ（検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+元の同じ三因子を四つの対象別切断図式の端点へ正規化する法則を書いた。
+`DiagramIsoNormalizationAlgebra` にも、同じ値の二表示の正規化が一致する法則を追加。
+二本の対象ビルド・小監査を一枚の整理券で待っている。
+ログ：`/tmp/is-w1/coefficient-normalization-verify/run.log`。検証済み累計は118本9,549行のまま。
+単位下書きの最新の再分割も含め、以下は既存構成の法則・証明分割の型。
+計算上限は不変、全宣言200行未満。いずれも未検証のLeanはコミットしない。
+
+#### DiagramIsoNormalizationAlgebra（56行、現時点の型）
+
+```lean
+lemma diagramIsoCongr_symm {A X : SSet.{u}} {f g f' g' : A ⟶ X}
+    (hf : f = f') (hg : g = g') (e : FunctorIso f g) :
+    diagramIsoCongr hg hf e.symm = (diagramIsoCongr hf hg e).symm
+
+lemma diagramIsoCongr_trans_three {A X : SSet.{u}}
+    {f₀ f₁ f₂ f₃ g₀ g₁ g₂ g₃ : A ⟶ X}
+    (h₀ : f₀ = g₀) (h₁ : f₁ = g₁) (h₂ : f₂ = g₂) (h₃ : f₃ = g₃)
+    (e₁ : FunctorIso f₀ f₁) (e₂ : FunctorIso f₁ f₂) (e₃ : FunctorIso f₂ f₃) :
+    diagramIsoCongr h₀ h₃ (e₁ ≪≫ e₂ ≪≫ e₃) =
+      diagramIsoCongr h₀ h₁ e₁ ≪≫ diagramIsoCongr h₁ h₂ e₂ ≪≫ diagramIsoCongr h₂ h₃ e₃
+
+lemma diagramIsoCongr_eq_of_heq {A X : SSet.{u}}
+    {f g f' g' h k : A ⟶ X} (hf : f = h) (hg : g = k)
+    (hf' : f' = h) (hg' : g' = k)
+    (e : FunctorIso f g) (e' : FunctorIso f' g') (he : HEq e e') :
+    diagramIsoCongr hf hg e = diagramIsoCongr hf' hg' e'
+
+```
+
+#### SimplexSectionCoefficientPasting（104行、現時点の型）
+
+```lean
+local instance coefficientPasting_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma normalizedTriple_heq {A X : SSet.{u}}
+    {f₀ f₁ f₂ f₃ f₄ g₀ g₁ g₂ g₃ g₄ : A ⟶ X}
+    (e₁ : FunctorIso f₀ f₁) (e₂ : FunctorIso f₁ f₂) (e₃ : FunctorIso f₂ f₃)
+    (d : FunctorIso f₀ f₄) (h : HEq (e₁ ≪≫ e₂ ≪≫ e₃) d)
+    (h₀ : f₀ = g₀) (h₁ : f₁ = g₁) (h₂ : f₂ = g₂)
+    (h₃ : f₃ = g₃) (h₄ : f₄ = g₄) :
+    HEq (diagramIsoCongr h₀ h₁ e₁ ≪≫ diagramIsoCongr h₁ h₂ e₂ ≪≫
+        diagramIsoCongr h₂ h₃ e₃) (diagramIsoCongr h₀ h₄ d)
+
+lemma simplexSectionCoefficient_pasting {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let t := U.map (nerveMap (transportSimplexFunctor l))
+    let s := U.map (nerveMap (transportSimplexFunctor k))
+    let q₀ := pullback.snd p (l ≫ k)
+    let q₁ := pullback.snd (pullback.snd p k) l
+    let evp := evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)
+    let S₀ := kanDiagramCoherentNerve
+      ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor T)).evaluate
+        (leftFibrationObjectOf q₀))
+    let S₁ := kanDiagramCoherentNerve
+      ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor T)).evaluate
+        (leftFibrationObjectOf q₁))
+    let S₂ := t ≫ kanDiagramCoherentNerve
+      ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).evaluate
+        (leftFibrationObjectOf (pullback.snd p k)))
+    let S₃ := t ≫ (s ≫ kanDiagramCoherentNerve
+      ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+        (leftFibrationObjectOf p)))
+    let γ := diagramIsoCongr (f' := S₀) (g' := S₁)
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p (l ≫ k),
+        transportSimplexSectionInfinity_joint_evaluate q₀])
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p k, Category.assoc,
+        leftFibrationBaseChange_evaluate (pullback.snd p k) l,
+        transportSimplexSectionInfinity_joint_evaluate q₁])
+      (FunctorIso.postcomp (simplexSectionCompIso k l) evp)
+    let δ₁ := diagramIsoCongr (f' := S₁) (g' := S₂)
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p k, Category.assoc,
+        leftFibrationBaseChange_evaluate (pullback.snd p k) l,
+        transportSimplexSectionInfinity_joint_evaluate q₁])
+      (by rw [Category.assoc, Category.assoc, leftFibrationBaseChange_evaluate p k,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+      (FunctorIso.postcomp (simplexSectionFirstIso k l) evp)
+    let δ₂ := diagramIsoCongr (f' := S₂) (g' := S₃)
+      (by rw [Category.assoc, Category.assoc, leftFibrationBaseChange_evaluate p k,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+      (by rw [Category.assoc, Category.assoc, transportSimplexSectionInfinity_joint_evaluate p])
+      (FunctorIso.postcomp (simplexSectionSecondIso k l) evp)
+    let δ := diagramIsoCongr (f' := S₀)
+      (g' := U.map (nerveMap (transportSimplexFunctor (l ≫ k))) ≫
+        kanDiagramCoherentNerve
+          ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+            (leftFibrationObjectOf p)))
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p (l ≫ k),
+        transportSimplexSectionInfinity_joint_evaluate q₀])
+      (by rw [Category.assoc, transportSimplexSectionInfinity_joint_evaluate p])
+      (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso (l ≫ k)) evp)
+    HEq (γ ≪≫ δ₁ ≪≫ δ₂) δ
+
+```
+
+#### HomWeightYonedaUnitSquare（121行、現時点の型）
+
+```lean
+variable {A C : SSet.{u}} [Quasicategory A] [Quasicategory C]
+
+private lemma precomposeFunctorHom_eq_map {A B X : SSet.{u}}
+    (k : B ⟶ A) {f g : A ⟶ X} (α : FunctorHom f g) :
+    precomposeFunctorHom k α =
+      (hoFunctor.map ((pre k).app X)).toFunctor.map α
+
+private lemma curryEvaluation_of_heq {A B X : SSet.{u}}
+    {f g : A ⊗ B ⟶ X} {f' g' : B ⟶ (ihom A).obj X}
+    (α : FunctorHom f' g') (β : FunctorHom f g)
+    (hf : f' = curry f) (hg : g' = curry g) (h : HEq α (curryFunctorHom β))
+    (a : A _⦋0⦌) :
+    HEq ((hoFunctor.map ((ihom B).map (evaluateFunctorAt (Y := X) a))).toFunctor.map α)
+      (precomposeFunctorHom (lift (SSet.const a) (𝟙 B)) β)
+
+local instance unitSquareAProduct : Quasicategory (A.op ⊗ A) := quasicategory_of_innerFibration (fst A.op A)
+local instance unitSquareCProduct : Quasicategory (C.op ⊗ C) := quasicategory_of_innerFibration (fst C.op C)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+    leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+        (functorHomBifunctorDiagram_classificationIso F F).inv =
+      leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F)
+
+local instance unitSquareCProduct : Quasicategory (C.op ⊗ C) := quasicategory_of_innerFibration (fst C.op C)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+    leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+        (functorHomBifunctorDiagram_classificationIso F F).inv =
+      leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+    leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+        (functorHomBifunctorDiagram_classificationIso F F).inv =
+      leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F)
+
+private lemma functorHomUnit_heq_map (F : A ⟶ C) :
+    HEq (functorHomBifunctorUnit F)
+      ((hoFunctor.map ((pre (uliftTensorIso A.op A).inv).app SpaceInfinity.{u})).toFunctor.map
+        (leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+          (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+            (functorHomBifunctorDiagram_classificationIso F F).inv))
+
+lemma functorHomBifunctorUnit_eq_square (F : A ⟶ C) :
+    functorHomBifunctorUnit F =
+      precomposeFunctorHom (uliftTensorIso A.op A).inv
+        (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+          (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+          (twistedArrowProjection_naturality F))
+
+private lemma homWeightUnit_eq_normalized_curry (F : A ⟶ C) :
+    homWeightYonedaUnit F =
+      SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanFunctorHomCongr
+        (U' := yonedaInfinityMap A)
+        (V' := (SSet.uliftFunctor.{u + 1, u}).map F ≫
+          SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.presheafHomWeightDiagram F)
+        rfl (functorHomBifunctorDiagram_curry F F)
+        (curryFunctorHom (functorHomBifunctorUnit F))
+
+lemma homWeightYonedaUnit_evaluate_heq (F : A ⟶ C) (a : A _⦋0⦌) :
+    HEq ((hoFunctor.map ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj A)).map
+        (evaluateFunctorAt (Y := SpaceInfinity.{u})
+          (ULift.up (SSet.opObjEquiv.symm a))))).toFunctor.map (homWeightYonedaUnit F))
+      (precomposeFunctorHom
+        (lift (SSet.const (ULift.up (SSet.opObjEquiv.symm a)))
+          (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj A)))
+        (functorHomBifunctorUnit F))
+
+```
+
+
+### 51.8 四端点の正規化の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+二本の対象ビルド成功（5,505 jobs）。新しい環境の11宣言の小監査成功、標準三公理のみ。
+計算上限は不変。ログ：`/tmp/is-w1/coefficient-normalization-verify/`。
+今回160行、検証済み累計120本・9,709行。E01本体の完成には数えない。
+
+#### SimplexSectionCoefficientValues（99行、検証前の型）
+
+既存係数評価の略記・法則のみ。新しい比較同型の選択や独立した構成はない。
+
+```lean
+local instance coefficientValues_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+abbrev simplexSectionValue {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory B)) ⟶ SpaceInfinity.{u}
+
+def simplexSectionBaseChangeCoefficient {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    FunctorIso (simplexSectionValue (pullback.snd p k))
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k)) ≫
+        simplexSectionValue p)
+
+def simplexSectionCompositeCoefficient {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    FunctorIso (simplexSectionValue (pullback.snd p (l ≫ k)))
+      (simplexSectionValue (pullback.snd (pullback.snd p k) l))
+
+lemma simplexSectionBaseChangeCoefficient_heq {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq (simplexSectionBaseChangeCoefficient p k)
+      (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso k)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+
+lemma leftStraightening_baseChange_firstVertex_coefficient
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D)))
+      ((leftClassificationSimplexIso p).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k))) ≪≫
+        (simplexSectionBaseChangeCoefficient p k).symm ≪≫
+        (leftClassificationSimplexIso (pullback.snd p k)).symm)
+
+```
+
+#### SimplexSectionCoefficientComposition（109行、検証前の型）
+
+既存係数評価の略記・法則のみ。新しい比較同型の選択や独立した構成はない。
+
+```lean
+local instance coefficientComposition_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+lemma simplexSectionFirstCoefficient_normalized {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    diagramIsoCongr
+      (f' := simplexSectionValue (pullback.snd (pullback.snd p k) l))
+      (g' := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l)) ≫
+        simplexSectionValue (pullback.snd p k))
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p k, Category.assoc,
+        leftFibrationBaseChange_evaluate (pullback.snd p k) l,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd (pullback.snd p k) l)])
+      (by rw [Category.assoc, Category.assoc, leftFibrationBaseChange_evaluate p k,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+      (FunctorIso.postcomp (simplexSectionFirstIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p))) =
+      simplexSectionBaseChangeCoefficient (pullback.snd p k) l
+
+lemma simplexSectionSecondCoefficient_normalized {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let t := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l))
+    let s := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k))
+    diagramIsoCongr
+      (f' := t ≫ simplexSectionValue (pullback.snd p k))
+      (g' := t ≫ (s ≫ simplexSectionValue p))
+      (by rw [Category.assoc, Category.assoc, leftFibrationBaseChange_evaluate p k,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+      (by rw [Category.assoc, Category.assoc, transportSimplexSectionInfinity_joint_evaluate p])
+      (FunctorIso.postcomp (simplexSectionSecondIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p))) =
+      (simplexSectionBaseChangeCoefficient p k).precomp t
+
+lemma simplexSectionBaseChangeCoefficient_pasting {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    HEq (simplexSectionCompositeCoefficient p k l ≪≫
+        simplexSectionBaseChangeCoefficient (pullback.snd p k) l ≪≫
+        (simplexSectionBaseChangeCoefficient p k).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l))))
+      (simplexSectionBaseChangeCoefficient p (l ≫ k))
+
+```
+
