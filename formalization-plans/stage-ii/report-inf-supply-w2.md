@@ -9212,3 +9212,144 @@ theorem strictBETotProbeFrameHomRight_equivalence (F : K ⥤ (operad A).Algebra)
 整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ保持し返却済み。ログ`/private/tmp/isw2-build208.log`・`211.log`、最終監査`/private/tmp/AuditISW2BEFrameComplete.lean`。main・入口・公式監査・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparisonの変更なし。
 
 3b-4の検証済み **10モジュール・592行**（外枠15,000行）。登録候補は `is-w2-be-20261114-modules.json`。200行超の新規ファイルなし。承認待ちの停止ではなく検証済みの保存点で、/goalの続きへ進む。
+
+
+## 163. 同じ全strict BE図式の評価・頂点・forgetの局所化（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R05の局所化上の源と三つの全関手の因子化を証明分割。R02〜R05の最終結論が済んだとは数えない。
+
+### 163.1 R05の源と、同じ全strict図式の保持
+
+§152の `TotBE`・`ForgetStrictBEInfinity` の源を、元のstrict BE図式のnerveと、その同じobjectwise擬同型の辺集合の `edgeLocalization` とする。元の全図式の評価・元のframedLimitFunctorによる全頂点・同じforgetを、既存局所化の全関手圏の普遍性で延長した。それぞれ元の全strict図式の全射列との指定FunctorIsoを保持する。BE値の任意coherent図式の厳密化や評価比較の同値を主張しない。
+
+forgetの入力は元の `AsSmall.{u} Δ` の図式を指定 `AsSmall.up` でΔへ引き戻し、元の `Operad.Algebra.forget` を後合成するもの。図式の各射は元の同じ成分の `.hom` に厳密に等しい。このobjectwise擬同型は加群図式の既存指定局所化で反転される。R05の `ForgetStrictBEInfinity` の全因子化までを実装し、最終の `TotBE ≫ U` と `ForgetStrictBEInfinity ≫ TotDA` の比較はR02〜R04の同じ全錐の照合から続ける。
+
+### 163.2 検証済みの型
+
+共通：`A : Type u`、`[CommRing A]`。次は各ファイルの変数とopenの下で読む。
+
+`StrictDiagramTotLocalization`（50行）：
+
+```lean
+abbrev StrictBETotDiagramNerve : SSet.{u+1}
+
+def strictBETotDiagramWeakEdges : Set ((StrictBETotDiagramNerve A) _⦋1⦌)
+
+theorem strictBETotDiagramWeakEdges_mk₁
+    {F G : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    ComposableArrows.mk₁ f ∈ strictBETotDiagramWeakEdges A ↔
+      ∀ j, QuasiIso (f.app j).hom
+
+def StrictBETotDiagramInfinity : SSet.{u+1}
+
+instance strictBETotDiagramInfinity_quasicategory :
+    Quasicategory (StrictBETotDiagramInfinity A)
+
+def strictBETotDiagramLocalization :
+    StrictBETotDiagramNerve A ⟶ StrictBETotDiagramInfinity A
+
+theorem strictBETotDiagramLocalization_isLocalization :
+    IsLocalization (strictBETotDiagramLocalization A) (strictBETotDiagramWeakEdges A)
+```
+
+`StrictDiagramTotEvaluationLocalization`（94行）：
+
+```lean
+def strictBETotDiagramFamily : StrictBETotDiagramNerve A ⟶
+    (ihom ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))).obj
+      (CAlg_R A) := curry (strictBECosimplicialEvaluation A)
+
+/-- 点での全評価は元の同じ通常評価のnerveに一致。 -/
+theorem strictBETotDiagramFamily_evaluation (j : AsSmall.{u} SimplexCategory) :
+    strictBETotDiagramFamily A ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ j)) =
+      nerveMap ((CategoryTheory.evaluation (AsSmall.{u} SimplexCategory)
+        (operad A).Algebra).obj j) ≫ algebraCAlgSource A
+
+theorem strictBETotDiagramFamily_evaluation (j : AsSmall.{u} SimplexCategory) :
+    strictBETotDiagramFamily A ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ j)) =
+      nerveMap ((CategoryTheory.evaluation (AsSmall.{u} SimplexCategory)
+        (operad A).Algebra).obj j) ≫ algebraCAlgSource A
+
+theorem strictBETotDiagramFamily_inverts :
+    InvertsEdges (strictBETotDiagramFamily A) (strictBETotDiagramWeakEdges A)
+
+theorem exists_strictBETotLocalizedEvaluation :
+    ∃ ev : StrictBETotDiagramInfinity A ⟶
+        (ihom ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))).obj
+          (CAlg_R A),
+      Nonempty (FunctorIso (strictBETotDiagramLocalization A ≫ ev)
+        (strictBETotDiagramFamily A))
+
+def strictBETotLocalizedEvaluation : StrictBETotDiagramInfinity A ⟶
+    (ihom ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))).obj
+      (CAlg_R A) := (exists_strictBETotLocalizedEvaluation A).choose
+
+/-- 延長の指定全同型は元の全strict評価を保持する。 -/
+def strictBETotLocalizedEvaluation_factor :
+    FunctorIso (strictBETotDiagramLocalization A ≫ strictBETotLocalizedEvaluation A)
+      (strictBETotDiagramFamily A)
+
+def strictBETotLocalizedEvaluation_factor :
+    FunctorIso (strictBETotDiagramLocalization A ≫ strictBETotLocalizedEvaluation A)
+      (strictBETotDiagramFamily A)
+```
+
+`StrictDiagramTotVertexLocalization`（57行）：
+
+```lean
+theorem strictBETotVertex_inverts :
+    InvertsEdges (strictBETotVertex A) (strictBETotDiagramWeakEdges A)
+
+theorem exists_strictBETotLocalizedVertex :
+    ∃ V : StrictBETotDiagramInfinity A ⟶ CAlg_R A,
+      Nonempty (FunctorIso (strictBETotDiagramLocalization A ≫ V) (strictBETotVertex A))
+
+def strictBETotLocalizedVertex : StrictBETotDiagramInfinity A ⟶ CAlg_R A
+```
+
+`StrictDiagramTotUnderlyingLocalization`（86行）：
+
+```lean
+def strictBETotForgetDiagram :
+    (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⥤
+      StrictComplexDiagram A .cosimplicial
+
+theorem strictBETotForgetDiagram_map
+    {F G : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra} (f : F ⟶ G)
+    (j : SimplexCategory) :
+    ((strictBETotForgetDiagram A).map f).app j = (f.app (AsSmall.up.obj j)).hom := rfl
+
+/-- 元の全BE図式から、同じ加群図式の指定局所化への写像。 -/
+def strictBETotForgetDiagramSource :
+    StrictBETotDiagramNerve A ⟶ StrictDiagramInfinity A .cosimplicial
+
+def strictBETotForgetDiagramSource :
+    StrictBETotDiagramNerve A ⟶ StrictDiagramInfinity A .cosimplicial
+
+theorem strictBETotForgetDiagramSource_inverts :
+    InvertsEdges (strictBETotForgetDiagramSource A) (strictBETotDiagramWeakEdges A)
+
+theorem exists_strictBETotLocalizedForget :
+    ∃ U : StrictBETotDiagramInfinity A ⟶ StrictDiagramInfinity A .cosimplicial,
+      Nonempty (FunctorIso (strictBETotDiagramLocalization A ≫ U)
+        (strictBETotForgetDiagramSource A))
+
+def strictBETotLocalizedForget :
+    StrictBETotDiagramInfinity A ⟶ StrictDiagramInfinity A .cosimplicial
+
+def strictBETotLocalizedForget_factor :
+    FunctorIso (strictBETotDiagramLocalization A ≫ strictBETotLocalizedForget A)
+      (strictBETotForgetDiagramSource A)
+```
+
+### 163.3 検収・残り
+
+対象ビルド212：最初の三本 **9,489 jobs・終了0**、BE新規全13本の小監査 **90（2・7・3・9・10・4・10・6・7・6・13・8・5）宣言・標準三公理のみ**。その前の個別検査では `nerve.edgeMk` の像と `edgeOfSimplex` の表示を明示して照合した。計算上限は増やしていない。
+
+213はforgetの輸送で `InvertsEdges` の暗黙引数名を誤り失敗、検収成功とは数えない。`a` に修正し、既存の反転命題を `IsInvertibleEdge` の同じ辺として明示。個別検査の終了0後、最終214は **9,492 jobs・終了0**、BE新規全14本の小監査 **99（2・7・3・9・10・4・10・6・7・6・13・8・5・9）宣言・標準三公理のみ**。実ハンドル51046・93720の終了0を確認、鍵返却済み。sorry・独自公理0。
+
+整理券は同時に一枚だけ、`--class impl --wait 3600`、対象ビルド・小監査の間だけ保持。ログ`/private/tmp/isw2-build212.log`・`214.log`、小監査`/private/tmp/AuditISW2BEUnderlyingLocalization.lean`。公式監査・入口・main・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparisonは変更していない。
+
+3b-4の検証済み **14モジュール・879行**、外枠15,000行まで14121行。新規200行超のファイルなし。登録候補を同じBE用JSONに追記。G10の366本とは分ける。
+
+次はR02〜R03の核心へ戻る。同じ実frameのHom比較と重み付き錐空間の同型は§162で検証済みだが、これだけで元のCAlg図式上の指定native全錐とその極限性は得ていない。全族の錐を独立な点ごとの錐から自然だと仮定したり、通常局所化の随伴の余単位をnativeな全錐の代用にしたりしない。元の実frameの標準射を持つ全錐を構成し、同じ制限射との等式を追跡する。今回の局所化の因子化はこの構成後のR05へ再利用する。保存点であり、承認待ち・外枠・新規数学による停止ではない。/goalはactiveのまま。
