@@ -140,3 +140,18 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 - `reesDegreeOneLinearMap I`：中心イデアル I から Rees 代数への次数一の R-線形写像。既存の reesDegreeOne を線形射として扱う法則。
 - `exists_rees_finite_degreeOne_generators I hI`：有限生成イデアル I に対し、ある n と a:Fin n→I が存在し、reesDegreeOne I ∘a が Rees 代数を R 上生成する。有限生成加群の有限族と、既存の rees_adjoin_degreeOne を使う。
 - `exists_rees_degreeOne_polynomial_surjective I hI`：同じ n,a による MvPolynomial (Fin n) R→ₐ[R] reesAlgebra I の評価が全射。元の生成元は次数一で、有限な添字は Type 0 に置く。これを次数付きの作用・有限加群性・irrelevant ideal の標準開条件へ渡す。最初の三項の見込み100〜240行。G3 の既承認の Rees の射影表示の分割で、全体の外枠は変えない。
+
+
+## G3：Rees 代数の有限な次数一表示
+
+`ReesFiniteDegreeOnePresentation`（67行）：`reesDegreeOneLinearMap`・その apply の式は既存の次数一元の線形性。`exists_rees_finite_degreeOne_generators` は有限生成中心から Fin n を添字とする次数一の代数生成族を供給。`exists_rees_degreeOne_polynomial_surjective` は同じ族の MvPolynomial の実際の評価の全射性。Noether 性は不要で、空の生成族・零環を除外しない。
+
+本体67行・入口1行。最初の単独検証、ソース完全一致、対象・直接 importer のビルド5,075ジョブ、小監査7宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-rees-finite-degree-one-presentation-check.log`・`2g-rees-finite-degree-one-presentation-native.log`・`2g-rees-finite-degree-one-presentation-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体579行・入口込み588行、小監査35宣言・標準三公理のみ。G3 の次数付きの作用・標準開条件・有限ファイバー冪と G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### 次数付きの多項式作用への係数移送（着手前の型、G3 の内数）
+
+`reesDegreeOnePolynomialAlgebra I a` は有限な次数一族 a による実際の評価からの MvPolynomial 代数構造。`reesDegreeOnePolynomial_scalarTower` は R との塔、`reesDegreeOnePolynomial_finite` は評価が全射ならその多項式環上有限な加群であること。`reesDegreeOne_aeval_mem` は次数 d の斉次多項式の評価が reesGrade I d に入ること。`reesDegreeOnePolynomial_gradedSMul` はこの評価による SetLike.GradedSMul としての作用。単項式の次数と既存の graded な有限積の法則を使う。見込み100〜220行。これは 2f の射影入力へ実際の係数構造を合わせる法則で、新たな有限性の仮定を最終の主張に追加しない。
