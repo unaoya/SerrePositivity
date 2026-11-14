@@ -96,5 +96,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveOppositeConstant",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomRestriction",
   "SerrePositivity.EInfinity.FrameHom.RightMixedBifunctor",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointFirstSpan"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointFirstSpan",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveTransformationInversion",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointAugmentation"
 ]

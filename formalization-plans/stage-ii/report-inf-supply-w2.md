@@ -12071,3 +12071,64 @@ theorem exists_strictBETotJointHomComparison (A : Type u) [CommRing A] :
 短い経路を先に試す。source frameのaugmentationを全始域と全次数の自然変換として同じ局所化へ送り、弱辺を全関手圏で反転する。その同じ逆と元の射から、両端を変数とする一つの表示された比較を作り、分類に送る。固定始域では既存のframe・Yoneda・同じ局所化二胞体に戻ることを照合する。`FrameLeftRoofPrecompose` の各射の局所化内の等式だけを、全高次の自然性の証明として使わない。
 
 まとまり外の定理、1,500行を超える見込み、⑤aの欄の型への変更が必要と分かった場合は、検証済みをコミットして報告する。今回は同じR03のまとまりで上端1,450行なので、承認を待たずR03dの証明へ進む。
+
+## 188. 全始域・全次数の同じaugmentationの一つの逆（R03dの前半、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未完了。
+
+同じ関手的source frameのaugmentationを、全始域と全source次数の積添字でuncurryし、元のprobe比較自然変換と合成した。同じCAlgの指定モデル源へ送った全円柱について、全ての成分の辺の可逆性から円柱自身を全関手圏で反転した。逆を対象・次数ごとに選んでいない。
+
+共通部分はKerodon 4.8の `NerveTransformationInversion` に置いた。既存のnerve円柱と既存の指定辺の点ごとの反転判定を合成した、通常の自然変換の係数移送・反転の法則である。BEの各成分の弱同値性は、元の解消のaugmentationと元のprobe比較の合成則から従う。局所化の反転辺の集合と指定された辺の型は、同じ一単体の一致で合わせた。
+
+### 188.1 検証と実測
+
+256：新規二本の対象ビルド10,628 jobs・終了0、小監査100本754宣言・標準三公理のみ。実ハンドル21505の終了0を確認し、鍵を返却した。sorry・独自公理0、計算上限変更なし。今回143行、累計100本・6,555行（外枠15,000）。R03dの残るjoint表示と分類・固定始域との正規化はまだ証明していない。
+
+この二本はR03dの既存の自然変換・反転則であり、新しい一覧項目は増やさない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 188.2 型
+
+#### NerveTransformationInversion（52行）
+
+```lean
+def nerveTransformationPostHomotopy : SSet.Homotopy (nerveMap F ≫ L) (nerveMap G ≫ L)
+
+def nerveTransformationPostIso
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    FunctorIso (nerveMap F ≫ L) (nerveMap G ≫ L)
+
+theorem nerveTransformationPostIso_hom
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    (nerveTransformationPostIso η L hη).hom =
+      SSet.Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (nerveTransformationPostHomotopy η L))
+
+```
+
+#### StrictDiagramTotJointAugmentation（91行）
+
+```lean
+abbrev strictBETotJointSourceFrameIndex
+
+def strictBETotJointSourceFrameEvaluation :
+    strictBETotJointSourceFrameIndex A ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotJointSourceFrameConstant :
+    strictBETotJointSourceFrameIndex A ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotJointSourceFrameAugmentation :
+    strictBETotJointSourceFrameEvaluation A ⟶ strictBETotJointSourceFrameConstant A
+
+theorem strictBETotJointSourceFrameAugmentation_weak (P : strictBETotJointSourceFrameIndex A) :
+    weakEquivalences (operad A).Algebra
+      (AsSmall.down.map ((strictBETotJointSourceFrameAugmentation A).app P))
+
+theorem strictBETotJointSourceFrameAugmentation_inverted (P : strictBETotJointSourceFrameIndex A) :
+    IsInvertibleEdge ((nerve.edgeMk ((strictBETotJointSourceFrameAugmentation A).app P)).map
+      (strictBETotModelSource A)).toTruncated
+
+def strictBETotJointSourceFrameAugmentationIso :
+    FunctorIso (nerveMap (strictBETotJointSourceFrameEvaluation A) ≫ strictBETotModelSource A)
+      (nerveMap (strictBETotJointSourceFrameConstant A) ≫ strictBETotModelSource A)
+
+```
