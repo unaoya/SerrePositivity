@@ -2834,3 +2834,19 @@ G1・G2共用部品込み本体16,452行、入口込み16,724行。全模型の�
 G1・G2共用部品込み本体16,521行、入口込み16,794行。全模型から被覆模型への実際の射は閉じた。filtered/final の一般論への適用、素体への移送と B02 の整理は残り、B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B04 の conerve の自然な比較（着手前の型、見込み40〜100行、前記150〜400行の内数）：小さい被覆模型の Arrow の実際の図式に `CosimplicialObject.augmentedCechConerve` を適用した増大余単体環の図式と cocone を作る。既存の conerve の左随伴性で IsColimit を移し、元の環写像の conerve との自然な同型を返す。増大余単体対象全体の同型なので面・退化・増大写像と同時に可換。B1 の二重複体・完全性の議論は作り直さず、最終の AugmentedRingCechExact の型を変更しない。
+
+
+### B03・B04：被覆模型の final 性・実際の余極限と各段の性質
+
+`CoefficientVCoverModelFinal`（50行）：`isFiltered_coefficientVCoverModelCategory`・`coefficientVCoverModelInclusion_final` は、任意の全模型から実際の被覆模型への射を使う filtered 性・final 性。`isFiltered_coefficientVCoverModelIndex` は同じ宇宙の小さい添字の filtered 性。`coefficientVCoverModelArrowCoconeIsColimit`・`coefficientVCoverModelSmallArrowCoconeIsColimit` は元の g を頂点とする実際の被覆模型の余極限。
+
+`CoefficientVCoverModelStages`（79行）：実際の小さい図式の両環に係数代数構造・有限型性・Noether 性を供給し、`coefficientVCoverModelSmallArrow_vCover`・`coefficientVCoverModelSmallArrow_comp_algebraMap`・`coefficientVCoverModelSmallArrow_finitePresentation` は各段の被覆性・係数との可換性・有限表示性。元の R,C の Noether 性、元の g の有限表示性は要求しない。
+
+本体129行・入口2行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,063ジョブ、小監査21宣言（5・16）・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は各検証中だけ `--class impl --wait 3600`。ログ `2g-coefficient-vcover-model-final-check-2.log`・`2g-coefficient-vcover-model-stages-check.log`・`2g-coefficient-vcover-model-final-stages-native.log`・`2g-coefficient-vcover-model-final-stages-audit.log`。
+
+G1・G2共用部品込み本体16,650行、入口込み16,925行。素体への移送と conerve の自然な比較、B02 の出口の照合は残り、B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

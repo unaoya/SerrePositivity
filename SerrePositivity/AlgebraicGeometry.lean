@@ -1619,3 +1619,7 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientModelColimit
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelRingCoverMap
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelRefinement
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelFinal
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelStages
