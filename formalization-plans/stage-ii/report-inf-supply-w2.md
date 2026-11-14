@@ -8574,3 +8574,120 @@ theorem nativeTotJoinFamily_at (X : CosimplicialObject (Complex A)) :
 検証済み累計 **353モジュール・21,754行**、外枠23,000行まで **1,246行**。累計JSONを今回の六本で更新。
 
 次は同じ族を元の添字同型と既存の半自由出力分解へ後合成し、D01の型、D03の指定点制限、D02の両境界を閉じる。D04は既検証の同じ頂点辺の式へ接続する。D05〜D08、BEのTot先行・実現・任意coherent図式の紙の整理まで目標を保持して継続する。
+
+
+## 158. D01・D03・D04完了、D02の両境界の照合（2026-11-14）
+
+一覧：済み 31／全体 36（うち追加 1）。D01の全導来錐族、D03の元の同じ全指定錐への点制限、D04の図式射の像が対象ビルド・監査まで完了。D02は左境界と右境界の同じセルの照合までで、両境界の最終結論は未完。D05〜D08とBEの範囲を保持する。
+
+D03は§151のとおり、標準零単体の第一射影の逆 `inv (fst J Δ[0])` を使う。紙の `ρ_.inv` はモノイダル単位PUnitの型なので、標準零単体との同型を含むこの表示にした。同様にD02左境界の紙の `λ_.hom` は標準零単体を左因子に持つ第二射影 `snd Δ[0] B` に固定。元の点・全パラメータ・全高次単体・既存の型は変えていない。
+
+### 158.1 型と登録候補
+
+共通：`A : Type u`、`[CommRing A]`。閉零頂点の二法則はmainの既存R6の計算を複体の場合へ同じ式で特殊化したもの。その他も既存構成の単位・合成・自然性・係数移送・貼り合わせの法則と一覧の証明分割。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeFamily`（102行）。
+
+```lean
+def derivedTotConeFamily :
+    join (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗
+        nerve (CosimplicialObject (Complex A)) ⟶ derivedInfinityCategory A
+
+theorem derivedTotConeFamily_at_lift (X : CosimplicialObject (Complex A)) :
+    lift (𝟙 (join (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory))))
+      (SSet.const (ComposableArrows.mk₀ X)) ≫ derivedTotConeFamily A =
+        (strictDerivedTotCone X).val
+
+theorem derivedTotConeFamily_at (X : CosimplicialObject (Complex A)) :
+    inv (fst (join (Δ[0] : SSet.{u+1})
+      ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory))) (Δ[0] : SSet.{u+1})) ≫
+      (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex X)) ≫
+        derivedTotConeFamily A = (strictDerivedTotCone X).val
+
+theorem derivedTotConeFamily_map {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    (derivedTotVertexFamily A).app (Opposite.op ⦋1⦌) (nerve.edgeMk f).edge =
+      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+        (nerve.edgeMk ((productTotalFunctor A).map f)).edge
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotClosedVertexEvaluation`（94行）。
+
+```lean
+lemma nativeTotClosedVertex_pullback_hom (M : ClosedCategory A (Complex A)) {n : ℕ}
+    (α : Fin (n + 1) →o Fin 1) (T : Finset (Fin (n + 1)))
+    (a b : Fin (n + 1)) (k : ℤ) (hT : 2 ≤ T.card)
+    (ha : a = T.min' (Index.nonempty hT)) (hb : b = T.max' (Index.nonempty hT))
+    (hk : k = 2 - (T.card : ℤ)) :
+    ((closedNerveSimplex (A := A) (D := Complex A)
+      ((Functor.const (Fin 1)).obj M)).pullback α).hom T a b k hT ha hb hk =
+        closedNerveHom (𝟙 M) k
+
+lemma nativeTotClosedVertexEvaluation (G : C ⥤ ClosedCategory A (Complex A)) :
+    lift (𝟙 (nerve C)) (SSet.stdSimplex.isTerminalObj₀.from (nerve C)) ≫
+      strictSimplexFunctorEvaluation A (Complex A)
+        (G ⋙ nativeTotClosedVertexFunctor A) =
+      nerveMap G ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
+
+theorem nativeTotClosedVertexEvaluation_full (G : C ⥤ ClosedCategory A (Complex A)) :
+    strictSimplexFunctorEvaluation A (Complex A) (G ⋙ nativeTotClosedVertexFunctor A) =
+      fst (nerve C) (Δ[0] : SSet.{u+1}) ≫ nerveMap G ≫
+        _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotConeLeftBoundary`（77行）。
+
+```lean
+theorem nativeTotApexFamily_derived :
+    nativeTotApexFamily A ≫ complexSemifreeResolutionInfinity A =
+      fst (nerve (CosimplicialObject (Complex A))) (Δ[0] : SSet.{u+1}) ≫
+        derivedTotVertexFamily A
+
+theorem derivedTotConeFamily_left :
+    (joinInl (Δ[0] : SSet.{u+1})
+        ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ
+      𝟙 (nerve (CosimplicialObject (Complex A)))) ≫ derivedTotConeFamily A =
+      snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (Complex A))) ≫
+        derivedTotVertexFamily A
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotWeightedTailFamily`（99行）。
+
+```lean
+def nativeTotTailCellFunctor {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    CosimplicialObject (Complex A) ⥤ StrictSimplexCategory A (Complex A) n
+
+theorem nativeTotWeightedCell_tail (X : CosimplicialObject (Complex A)) {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    ((nativeTotWeightedCellFunctor A σ).obj X).val.pullback
+        (SimplexCategory.δ (0 : Fin (n+2))).toOrderHom = ((nativeTotTailCellFunctor A σ).obj X).val
+
+theorem nativeTotWeightedCellFunctor_tail {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    nativeTotWeightedCellFunctor A σ ⋙
+        strictSimplexPullbackFunctor A (Complex A) (SimplexCategory.δ (0 : Fin (n+2))).toOrderHom =
+      nativeTotTailCellFunctor A σ
+
+theorem nativeTotWeightedCellFamily_tail {n : ℕ}
+    (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
+    (nerve (CosimplicialObject (Complex A)) ◁
+      joinInr (Δ[0] : SSet.{u+1}) (Δ[n] : SSet.{u+1})) ≫
+        nativeTotWeightedCellFamily A σ =
+      strictSimplexFunctorEvaluation A (Complex A) (nativeTotTailCellFunctor A σ)
+
+```
+
+### 158.2 検収と実測
+
+D01・D03・D04は **`2d6662535`**、左境界は **`9ad43eac1`**、右境界セルは **`13c3e3040`**。鍵付き対象ビルド196・197・198はそれぞれ **8,123・8,125・6,535 jobs、終了コード0**。各新規分だけの小監査は **5・5（3・2）・7宣言**、標準三公理のみ。ログ `/private/tmp/isw2-build196.log`〜`198.log`。各ハンドル終了コード0を確認、整理券一枚、`--class impl --wait 3600`、ビルド・小監査中だけ鍵を保持し返却済み。全体の新しい累計監査ではない。
+
+sorry・新公理0、計算・再帰上限を増やさず、既存宣言・⑤a・入口・公式監査・mainは変更していない。今回も200行超のファイルなし。
+
+検証済み累計 **357モジュール・22,126行**、外枠23,000行まで **874行**。登録候補JSONも同じ四本を追加。
+
+次はD02右境界の対角評価を元の評価関手の全nerveと同定する。現在の `NativeTotTailCellEvaluation` は未検証草稿であり、累計に含めない。続いて両境界、離散の頂点輸送と全族・ホモロジー入口へ進む。
