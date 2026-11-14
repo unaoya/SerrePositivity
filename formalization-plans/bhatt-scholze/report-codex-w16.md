@@ -22975,3 +22975,111 @@ lemma coaction_natural (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) 
 mainは391b2a0d2のまま。3b-4a完成の取り込みはまだない。
 次はL17の同変性・単位を実複体射へ延長し、L18の同じTRによる制限へ進む。
 M14全体や完備化後P⁰の比較を完成扱いにしていない。完備化三案は§380の状態を維持する。
+
+## 392. L17の同変性と単位の実複体射への延長（実装前の型）
+
+一覧：済み 18／全体 48（うち追加 4）
+
+同変性はL11と二入力外延性を使い、零arityの置換は唯一性で恒等へ戻す。
+係数の負次数のrenameは既存complexRename_neg_hom_applyをそのまま使う。
+単位はL13の同じ唯一Cut・指定面・一因子テンソルの計算を、入力の元の次数-qで読み、
+左単位子とcomplexUnitの既存の値の公式で実複体射へ延長する。
+既存構成の係数移送・単位・等変性・線形延長の法則と証明分割で、新しい数学・IDなし。
+各証明200行以内。
+
+```lean
+lemma complexRename_basis_inv (A : Type u) [CommRing A] {n d : ℕ}
+    (σ : Equiv.Perm (Fin n)) (v : Surjection.BasisWord n d) :
+    (Surjection.complexRename A n σ).f (-(d : ℤ))
+      ((Surjection.complexXIso A n d).inv (Surjection.basis A n d (ULift.up v))) =
+        (Surjection.complexXIso A n d).inv
+          (Surjection.basis A n d (ULift.up (Surjection.Word.rename σ v)))
+lemma cochainAction_permutation (A : Type u) [CommRing A] (S : SSet.{0})
+    (n : ℕ) (σ : Equiv.Perm (Fin n)) :
+    (Surjection.complexRename A n σ ▷ chains A S) ≫ cochainAction A S n =
+      cochainAction A S n ≫ (permutationAction (chains A S) n σ).asIso.hom
+lemma cochainAction_equivariance (A : Type u) [CommRing A] (S : SSet.{0})
+    (n : ℕ) (σ : Equiv.Perm (Fin n)) :
+    ((Surjection.sequence A).map (FiniteBijection.permutation n σ) ▷ chains A S) ≫ cochainAction A S n =
+      cochainAction A S n ≫ (permutationAction (chains A S) n σ).asIso.hom
+
+lemma cochainAction_unit_generator (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ} (x : S _⦋q⦌) :
+    (cochainAction A S 1).f (-(q : ℤ))
+      (ιTensorObj (Surjection.complex A 1) (chains A S) 0 (-(q : ℤ)) (-(q : ℤ)) (zero_add _)
+        ((Surjection.complexXIso A 1 0).inv (Surjection.unitElement A) ⊗ₜ[A] gen A S q x)) =
+      (oneIso (chains A S)).inv.f (-(q : ℤ)) (gen A S q x)
+lemma cochainAction_unit_inv (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (λ_ (chains A S)).inv ≫ (Surjection.complexUnit A ▷ chains A S) ≫ cochainAction A S 1 =
+      (oneIso (chains A S)).inv
+lemma cochainAction_unit (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (Surjection.complexUnit A ▷ chains A S) ≫ cochainAction A S 1 ≫ (oneIso (chains A S)).hom =
+      (λ_ (chains A S)).hom
+```
+
+## 393. L18の同じTRによる全単体集合の余代数（実装前の型）
+
+一覧：済み 18／全体 48（うち追加 4）
+
+証明済みの全arityの単位・同変性・部分合成則を既存Coalgebraの欄へ束ねる。
+底の複体と射は元のnormalizedFunctorのまま、L15から余代数射を作る。
+Eへの制限は既存restrictCoalgebraObj/Map/Functorと元のTableReduction.operadMapを使う。
+新しい作用・模型を選ばない同じ構成の貼り合わせの包装。各証明200行以内。
+
+```lean
+def surjectionCoalgebra (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (Surjection.operad A).Coalgebra
+def surjectionCoalgebraMap (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) :
+    surjectionCoalgebra A S ⟶ surjectionCoalgebra A T
+def surjectionCoalgebraFunctor (A : Type u) [CommRing A] :
+    SSet.{0} ⥤ (Surjection.operad A).Coalgebra
+
+def barrattEcclesCoalgebra (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (BarrattEccles.operad A).Coalgebra
+def barrattEcclesCoalgebraMap (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) :
+    barrattEcclesCoalgebra A S ⟶ barrattEcclesCoalgebra A T
+def barrattEcclesCoalgebraFunctor (A : Type u) [CommRing A] :
+    SSet.{0} ⥤ (BarrattEccles.operad A).Coalgebra
+lemma barrattEcclesCoalgebra_coaction (A : Type u) [CommRing A] (S : SSet.{0}) (n : ℕ) :
+    (barrattEcclesCoalgebra A S).coaction n =
+      ((TableReduction.operadMap A).map.app (FiniteBijection.of n) ▷ chains A S) ≫
+        cochainAction A S n
+lemma barrattEcclesCoalgebraMap_hom (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) :
+    (barrattEcclesCoalgebraMap A f).hom = (BarrattEccles.normalizedFunctor A).map f
+```
+
+§393のL18の射の保存式は、同じ既存CoalgebraHom.commの指定欄として明示する。
+新しい主張ではなく、構成した射の欄を取り出す法則。
+
+```lean
+lemma barrattEcclesCoalgebraMap_comm (A : Type u) [CommRing A] {S T : SSet.{0}}
+    (f : S ⟶ T) (n : ℕ) :
+    ((BarrattEccles.operad A).arity n ◁ (BarrattEccles.normalizedFunctor A).map f) ≫
+        (barrattEcclesCoalgebra A T).coaction n =
+      (barrattEcclesCoalgebra A S).coaction n ≫
+        TensorPowers.map ((BarrattEccles.normalizedFunctor A).map f) n
+```
+
+## 394. L17・L18：元の全単体集合のBF余代数関手（検証済み、取り込み点）
+
+一覧：済み 20／全体 48（うち追加 4）
+
+L17の全整数複体射の単位と同変性、L18のχ余代数とTRによるE余代数の関手が通った。
+入力の単体次元・語次数・arityの制限はない。零arityは唯一の置換を恒等へ戻す。
+単位は元の一文字語の唯一Cutを全単体で評価し、正整数次数の元は元の零延長で零とした。
+対称列の指定置換、指定のcomplexUnit、同じTableReduction.operadMapを使用している。
+底の複体・写像はnormalizedFunctorのものをそのまま保持し、作用の式と射の保存式を明示した。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- CochainPermutation（66行）
+- CochainUnit（91行）
+- Coalgebra（80行）
+
+今回237行、M14実測29,793行、外枠31,000行まで1,207行。
+対象ビルド3359 jobs成功、追加警告0。
+小さい監査3モジュール22宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+次はL19以降のcosimplicial正規化。一般次元のBF余代数ができたことを、
+正規化cosimplicial代数の全関手やMayのtop計算の完成とは扱わない。
+完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決。
