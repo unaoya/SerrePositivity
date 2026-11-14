@@ -326,3 +326,14 @@ S02 完了。2g-2 本体1,162行・入口込み1,182行、小監査98宣言・�
 ### S03 の脱斉次化の法則への分割（着手前の型、S03 の内数）
 
 次数一の f∈G1 に対し、次数 n の x を x/f^n に送る加法写像 `G n →+ HomogeneousLocalization.Away G f` を作り、直和の普遍性で `A →+* HomogeneousLocalization.Away G f` に束ねる。次数一の f は 1 に移る。続いて、この正規化と局所化の普遍性から `A / Ideal.span {f-1} ≃+* HomogeneousLocalization.Away G f`、係数環に関する整合性を供給する（最初の正規化40〜100行、商との比較100〜250行）。これは標準開比較の分割で、新たな最終仮定や平坦性は加えない。零環・零の分母も許す。Mathlib の斉次局所化・DirectSum の環の普遍性を再利用する。
+
+
+## G3・S03：次数一の分母への脱斉次化
+
+`HomogeneousDegreeOneNormalization`（60行）：`homogeneousDegreeOneNormalizePiece` は次数 n の x を x/f^n に送る加法写像。`homogeneousDegreeOneNormalize` は DirectSum の普遍性で束ねた実際の環写像。`homogeneousDegreeOneNormalize_of_mem` は斉次元の評価式、`homogeneousDegreeOneNormalize_self` は f が 1 に移る式。次数一生成・非零な分母・平坦性を仮定しない。係数環と加群の宇宙を分けたまま実装。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,090ジョブ、小監査14宣言・標準三公理のみ、終了状態0。ログ `2g-degree-one-normalization-check-3.log`・`2g-degree-one-normalization-native.log`・`2g-degree-one-normalization-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は検証中だけ使用。
+
+2g-2 本体1,222行・入口込み1,243行、小監査112宣言・標準三公理のみ。S03 の商との同型・Segre の二因子のチャート比較、S04 と有限冪、G4〜G5 は残る。全体の見込み約5,500〜12,000行、外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
