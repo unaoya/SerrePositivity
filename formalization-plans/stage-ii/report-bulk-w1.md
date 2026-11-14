@@ -1072,3 +1072,10 @@ A3/LciAndQuasiregular・A4/InterfaceFields・A7/AnimatedPerfectoidizationは失�
 [項目別状態](bulk-5inf0/item-status.json)のA02をPASSに更新。またA0/BaseChange・A1/HodgeTateComparisonの二つの振幅の定義を本体HasCochainCompleteTorAmplitudeへ寄せたことと、利用側A3の型検査がそろったためA06もPASSにした。残る項目はA01・A04・A05・A07。
 
 InterfaceFieldsは完備化単位の同じ辺の端点の補助定義自体は通り、公開された定義の本文から使うためその補助定義も公開する1箇所が残った。数学的な構成や仮定を増やすものではない。第51束で確認する。新たに実行できたDeRhamComparisonPolyは失敗で、普遍基底に特殊化した本体の引数・実際の所有元の依存・評価の照合を続ける。
+
+
+### 5∞-0 のdraft検査・第51束（11-14夕方）
+
+一覧：済み 10／全体 14（うち追加 0）。[第51束](bulk-5inf0/draft-block51-validation.json)でA4/InterfaceFieldsが約40秒、A7/AnimatedPerfectoidizationが約25秒で成功。有効な成功は40／57本。完備化単位の同じnerveの辺は端点を明示する補助定義へ分け、公開される界面から使える公開範囲にした。新しい数学的構成ではなく、以前の式の型の照合の分割である。A7の有界性は既存のperfectPrism_boundedを渡し、脚は通常のホモトピー圏の表示へ揃えた。補ったInterfaceFieldsへの依存も実際の型検査で通った。この2本の検査済みソースをコミットする。
+
+同じ束のPerfectSiteとAlmostConnectivityは失敗。PerfectSiteは元の余積の反復を同じNat.recで明示し、脚も同じ依存再帰で書く。構成する対象・射・未証明の法則は変えない。AlmostConnectivityはD3の二切断のホモトピー圏の対象のptから同じ頂点を読む。第52束で検査する。
