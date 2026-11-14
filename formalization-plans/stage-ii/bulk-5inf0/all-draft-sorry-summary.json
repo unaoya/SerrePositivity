@@ -1,9 +1,9 @@
 {
-  "scope": "all nonprotected drafts, including unchanged auxiliary inputs",
+  "scope": "all nonprotected drafts, including auxiliary inputs; section 5 protected import reported separately",
   "files": 56,
-  "changed_files": 55,
+  "changed_files": 56,
   "baseline_sorry": 819,
-  "current_sorry": 698,
+  "current_sorry": 694,
   "rows": [
     {
       "draft": "A0/BaseChange.lean",
@@ -272,8 +272,8 @@
     {
       "draft": "Shared/BarrattEcclesTheory.lean",
       "baseline_sorry": 21,
-      "current_sorry": 21,
-      "source_changed": false
+      "current_sorry": 17,
+      "source_changed": true
     },
     {
       "draft": "Shared/CosimplicialCupProduct.lean",
