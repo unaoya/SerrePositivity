@@ -17380,3 +17380,119 @@ M14実測は**20,707行**、L12a実測は**5,500行**。
 実テンソル・nullaryと、その後のL13以降を完成済みとして控除していない。
 G10・M15・G12・drafts・界面・共有入口は変更していない。
 これは同じL12aの途中の取り込み点であり、goalはactiveのまま継続する。
+
+## 257. C452の挿入色同士の逆転対の移送（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§254の二つの順序反映は対象ビルドで成功した。
+次に同じ色別同値の下で、活動的な逆転対の寄与と二重有限和を照合する。
+新しい経路・作用・同値を定義するものではなく、既存の指定同値の法則。
+以下で `γ=c.2`、`ε=positiveCompositeInnerCut u v k c`、
+`w=(positiveCompositeCutWord u v k c.1).val`、`v₊=(positiveWord v).val`、
+`ι b=BarrattEccles.insertedPosition m (n+1) k b`、
+`E b=insertedColorPathOrderIso u v k c b` と略記する。
+`x` と `y` はそれぞれ `↥(colorPositions γ w (ι b))` と同じ `b'` の型。
+
+```lean
+lemma insertedColorPathOrderIso_active_inversionTerm ... (b b' : Fin (n + 1))
+    (x : ↥(colorPositions γ w (ι b))) (y : ↥(colorPositions γ w (ι b'))) :
+    (if x.val ∈ activeVertexPositions γ w ∧ y.val ∈ activeVertexPositions γ w then
+      IntervalCuts.positionInversionTerm (label γ w) x.val y.val else 0) =
+    (if (E b x).val ∈ activeVertexPositions ε v₊ ∧
+        (E b' y).val ∈ activeVertexPositions ε v₊ then
+      IntervalCuts.positionInversionTerm (label ε v₊) (E b x).val (E b' y).val else 0)
+
+lemma insertedColorPathOrderIso_active_inversion_sum ... (b b' : Fin (n + 1)) :
+    (∑ x : ↥(colorPositions γ w (ι b)), ∑ y : ↥(colorPositions γ w (ι b')),
+      if x.val ∈ activeVertexPositions γ w ∧ y.val ∈ activeVertexPositions γ w then
+        IntervalCuts.positionInversionTerm (label γ w) x.val y.val else 0) =
+    (∑ x : ↥(colorPositions ε v₊ b), ∑ y : ↥(colorPositions ε v₊ b'),
+      if x.val ∈ activeVertexPositions ε v₊ ∧ y.val ∈ activeVertexPositions ε v₊ then
+        IntervalCuts.positionInversionTerm (label ε v₊) x.val y.val else 0)
+```
+
+有限点検を先に行った：`check-inserted-inversion-pairs.py`、全12,233組。
+各元の挿入頂点対で、活動性・位置順序・色順序を含む0/1の寄与が一致した。
+証明は§250の活動性、§254の順序、挿入色番号の共通の平行移動、
+既存の `Fintype.sum_equiv` による二重和の再添字付けを用いる。各証明200行以内の見込み。
+
+mainの指示書§33も確認した。3b-4aの取り込み後はTotの群を先にし、
+その段0は待つ間に紙で準備する。G10の部品を自分で作ることはしない。
+
+## 258. C452の色別逆転和を元の指数へ接続する法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§257の二重和のビルドは成功した。これを元の内側の逆転指数へ結ぶため、
+既存の有限和を色のfiberでまとめる二つの法則を使う。
+以下は新しい逆転数の定義ではなく、同じ `positionInversionCount` の式の変形である。
+
+```lean
+lemma sum_colorPositions {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (f : Fin (m + q + 1) → ℕ) :
+    (∑ a : Fin r, ∑ x : ↥(colorPositions s v a), f x.val) = ∑ x, f x
+
+lemma positionInversionCount_eq_sum_color_pairs {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) :
+    IntervalCuts.positionInversionCount (label s v) (activeVertexPositions s v) =
+    ∑ a : Fin r, ∑ b : Fin r,
+      ∑ x : ↥(colorPositions s v a), ∑ y : ↥(colorPositions s v b),
+      if x.val ∈ activeVertexPositions s v ∧ y.val ∈ activeVertexPositions s v then
+        IntervalCuts.positionInversionTerm (label s v) x.val y.val else 0
+```
+
+§257の略記で、最後の接続の型は次のとおり。
+
+```lean
+lemma positiveComposite_inserted_inversion_sum ... :
+    (∑ b : Fin (n + 1), ∑ b' : Fin (n + 1),
+      ∑ x : ↥(colorPositions γ w (ι b)), ∑ y : ↥(colorPositions γ w (ι b')),
+      if x.val ∈ activeVertexPositions γ w ∧ y.val ∈ activeVertexPositions γ w then
+        IntervalCuts.positionInversionTerm (label γ w) x.val y.val else 0) =
+    permutationExponent ε v₊
+```
+
+有限点検：`check-inserted-inversion-sum.py`、12,233組。
+元の全挿入色対の寄与の総和が、同じ内側の全活動頂点の逆転数に一致した。
+既存のfiberwise sum、部分型の有限和、和の交換、§257と
+`permutationExponent_eq_active_inversions`で証明する。各証明200行以内の見込み。
+
+## 259. C452の全挿入色の逆転和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§254・257〜258の法則を、新規4モジュール233行で証明した。
+異なる挿入色を含む元の全頂点対の順序反映、活動逆転対の寄与と色別二重和の一致、
+同じ逆転数の色のfiberによる分解を通し、全挿入色同士の逆転和が
+**元の内側切断の `permutationExponent`** に一致するところまで接続した。
+退化しないという追加仮定を使わず、同じ指定切断・色別同値・逆転数を比較している。
+
+対象ビルドは `m14-inserted-cross-order-01.log`（2,895 jobs）、
+`m14-color-inversion-sums-01.log` の挿入色二重和の対象（2,897 jobs中の当該一本）、
+最終 `m14-composite-inserted-inversion-sum-01.log`（2,898 jobs）が成功。
+途中、if内の命題の書き換えをsimpにし、有限和の交換則のimportと関数引数を明示した。
+最終ソースの対象警告0。心拍数・再帰上限は増やしていない。
+
+小監査 `audit-m14-inserted-inversion-sums.log` は
+**4モジュール・12宣言、標準三公理のみ**。sorry・独自公理0。
+`git diff --check`成功。各ビルド・監査で鍵を一回ずつ取り、終了してから返した。
+他レーン・共有入口・共有監査・drafts・界面・mainの作業木は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| InsertedColorCrossOrder | 56 |
+| InsertedColorInversions | 73 |
+| ColorInversionSums | 67 |
+| CompositeInsertedInversionSum | 37 |
+| **計** | **233** |
+
+M14実測は**20,940行**、L12aは**5,733行**。
+C452の全指数比較は未完。残り色同士と交差項の逆転和、§253の位置指数の全和が残る。
+C452やL12a全体を完了には数えず、一覧12/48（追加4）のまま。
+§256の外枠超過リスクも解消したとは主張しない。
+完備化後のP⁰の比較は§223・255の未供給の比較を残しており、
+(c)のcoherentなP⁰が不可避という新しい結論には至っていない。
+次も同じL12aの法則を進め、main§33のTotの段0は紙で準備する。
