@@ -1258,3 +1258,32 @@ B01 の三種の射の同時降下の入力の分割（着手前の型、見込�
 G1・G2共用部品込み本体7,989行、入口込み8,131行。一般の有限表示対象の模型の分割1,327行。次のアトラスへの適用・元の射・有限族の組立ては未検証の下書きでこの実測に含めない。遷移の等式と貼り合わせ、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の実際の係数段への接続（着手前の型、見込み100〜240行）：`CartesianModelArrow.comparisonAt` は元の源から段の源模型への実際の pullback lift。`comparisonAt_eq_coneProjection` はこれが既存の Cartesian cone の射影と一致する法則。`exists_coefficient_stage` は有限生成係数部分代数 A と有限族の具体的な入力に対し、実際の有限集合 s⊆R、Spec k[s]→Spec A、元の包含との因子化、全ての段の射を同時に返す。各射は Spec k[s] 上にあり、元の源からの実際の比較との合成が元の射に一致する。三種の射の同時降下を抽象的な極限の入力だけに留めず具体的な係数段へ渡す既存の因子化・有限族の法則で、親項目は増やさない。
+
+
+### B01：三重交叉と元の三種の射の有限族への組立て
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| OpenAtlasTripleModels | 63 | `tripleComparison`：元の三重交叉から模型の三重交叉への実際の比較 |
+| 同上 | 同上に含む | `isPullback_tripleComparison`：チャート上で Cartesian |
+| 同上 | 同上に含む | `isPullback_tripleComparison_toBase`：係数基底上でも Cartesian |
+| 同上 | 同上に含む | `finitePresentation_triple`：模型の三重交叉は係数基底上 qcqs・局所有限表示 |
+| OpenAtlasOriginalArrows | 72 | `diagonalArrow`：元の対角の逆から固定した重なりの模型への射 |
+| 同上 | 同上に含む | `diagonalArrow_toBase`：同じ係数基底上の可換式 |
+| 同上 | 同上に含む | `reverseArrow`：元の二重交叉の反転を固定した逆向きの重なりの模型へ渡す射 |
+| 同上 | 同上に含む | `reverseArrow_toBase`：同じ係数基底上の可換式 |
+| 同上 | 同上に含む | `tripleNextPair`：元の三重交叉から次の二重交叉への実際の pullback lift |
+| 同上 | 同上に含む | `tripleArrow`：元の三重交叉から固定した次の重なりの模型への射 |
+| 同上 | 同上に含む | `tripleArrow_toBase`：同じ係数基底上の可換式 |
+| CartesianModelArrow | 58 | `CartesianModelArrow`：具体的な Cartesian 源模型・固定標的・元の射とその可換式の入力 |
+| 同上 | 同上に含む | `exists_common_stage`：有限族の入力を同じ段の実際の両模型間の射へ降ろす |
+| OpenAtlasArrowFamily | 76 | `atlasArrowFamily`：対角の逆・反転・三重交叉の三種の射の有限和の入力を実際に供給 |
+
+本体269行・入口4行。直接 importer AlgebraicGeometry まで対象ビルド4,932ジョブ成功。小監査65宣言（5・17・29・14）・標準三公理のみ。下書きの束も終了状態0で、公開前に四本と検証束の完全一致を確認した。ログ `2g-atlas-transition-inputs-check-3.log`・`2g-atlas-transition-inputs-native.log`・`2g-atlas-transition-inputs-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵は `--class impl --wait 3600`、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体8,258行、入口込み8,404行。一般の有限表示対象の模型の分割1,596行。実際の三種の射と有限族の入力は供給できた。有限個の式を同じ段で成立させる部分、貼り合わせ、一般の固有性の降下と被覆模型は残り、B01〜B04は未完。次の具体的な係数段への接続は未検証下書きでこの実測に含めない。
+
+一覧：済み10／全体14（うち追加5）。
