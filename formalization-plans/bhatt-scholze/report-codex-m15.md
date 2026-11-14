@@ -8518,3 +8518,93 @@ TensorFrameAugmentationEvaluation の対象ビルドと新規公開宣言一本�
 全三相単体の比較はまだ残る。M10・M11 以降・G12 は未完であり、目標を縮めない。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §57 指定収縮と元の AW 余単位、全要素屋根の左脚の一致
+
+複体側の指定された単体鎖収縮の順射は、元の AW augmentation と厳密に一致する。
+single₀ への鎖写像を零次で比較し、全頂点に対する値を使った。
+具体的には、P∞ の次数零は恒等であり、正規化生成元を Moore 包含で送ると
+元の自由生成元になる。その後の追加退化の augmentation と一点上の自由加群の同型は
+その生成元を 1 に送る。指定された実射を別のホモトピー同値に置き換えていない。
+
+同じ等式を元の次数延長と single の同型に沿って送り、指定コチェイン収縮の順射も
+元の AW コチェイン余単位に一致することを証明した。これを §56 の評価式に合成し、
+元の加群 frame augmentation と複体側の指定 augmentation が、
+同じ符号付き frame 同型を通して可換になることを示した。
+さらに元の全要素図式の同型を通して、元の augmentation 自然変換の可換式を束ねた。
+§55 の評価自然変換の可換式と合わせ、同じ元の全評価屋根の両脚の比較が通った。
+
+これらは同じ構成の係数移送・自然性・貼り合わせの法則であり、一次 ID の追加はない。
+以下は今回の全宣言の型である。
+
+`RawModuleTensorElementAugmentationEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementEvaluationDiagramIso_augmentation
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    (strictRawModuleTensorElementEvaluationDiagramIso A X P Q x).hom ≫
+      CategoryTheory.Functor.whiskerRight
+        (strictRawModuleTensorElementAugmentation A X P Q) (moduleEvaluation A _ x) ≫
+      (Functor.constComp (strictRawModuleTensorElementIndex A X P Q)
+        ((strictRawModuleProbeFunctor A X).obj P) (moduleEvaluation A _ x)).hom =
+      CategoryTheory.Functor.whiskerLeft
+        (strictRawModuleTensorElementEvaluationIndex A X P Q x)
+        (normalizedTensorElementAugmentation A
+          ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+          ((moduleEvaluation A _ x).obj Q))
+```
+
+`NormalizedAugmentationComparison.lean`：
+
+```lean
+variable (A : Type u) [CommRing A]
+
+lemma normalizedSimplexChainContraction_hom_counit (n : SimplexCategory) :
+    (normalizedSimplexChainContraction A n).hom = counit A (SSet.stdSimplex.obj n)
+
+lemma normalizedSimplexCochainContraction_hom_counit (n : SimplexCategory) :
+    (normalizedSimplexCochainContraction A n).hom =
+      cochainCounit A (SSet.stdSimplex.obj n)
+```
+
+`TensorFrameOriginalAugmentation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleTensorEvaluationFrameIso_original_augmentation (P : ModuleCategory A D) (x : D)
+    (n : SimplexCategory) :
+    (moduleTensorEvaluationFrameIso A D P x).hom.app n ≫
+      (moduleEvaluation A D x).map ((moduleTensorSimplicesAugmentation A D P).app n) =
+    (normalizedSimplexTensorAugmentation A ((moduleEvaluation A D x).obj P)).app n
+```
+
+
+### 57.1 検証と実測
+
+NormalizedAugmentationComparison と RawModuleTensorElementAugmentationEvaluation の
+対象ビルドは終了値 0 で成功した。新規公開宣言四本は二本ずつの小さい監査に分け、
+いずれも終了値 0。依存公理は propext・Classical.choice・Quot.sound の範囲であり、
+新規引用属性・引用出力は 0 本。すべて impl 鍵・待ち 3600 秒・gtimeout 280 秒で行った。
+root ビルド・大きい監査・heartbeat の上限変更はない。
+
+新規 Lean は三ファイル・149 行・明示宣言四本（private 0 本）。
+所有ソース全体を再計数した累計は 207 ファイル・16,027 行・明示宣言 722 本
+（private 21 本）。外枠 17,000 行まで残り 973 行。
+200 行を超える証明や一次 ID の追加、既存 EInfinity ソースの変更はない。
+
+次の全単体比較で必要な閉零同型による対象表示の移送は、既存の
+DifferentialGraded/Functor/DGClosedIsoConjugation.lean の dgFunctorClosedConjugate と
+DifferentialGraded/Functor/Closed.lean の inducedDGFunctorClosedConjugate が
+全 Hom 複体・単位・合成を保持して実装していることを確認した。
+この既存の部品の利用を先に調べ、全三相データの比較へ進む。
+
+今回、同じ元の全屋根の両脚を比較したが、全三相単体・三角形の一致と
+K の実 Hom 誘導射の完全忠実性はまだ証明していない。
+M10・M11 以降・G12 は未完であり、外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
