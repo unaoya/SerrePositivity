@@ -1468,3 +1468,4 @@ public import SerrePositivity.AlgebraicGeometry.FiniteAffineCompositeStages
 public import SerrePositivity.AlgebraicGeometry.AffineHomLimitDescent
 public import SerrePositivity.AlgebraicGeometry.BaseChangePairAffine
 public import SerrePositivity.AlgebraicGeometry.AffineHomGeneralLimitDescent
+public import SerrePositivity.AlgebraicGeometry.FiniteGeneratorSurjectivityLimit
