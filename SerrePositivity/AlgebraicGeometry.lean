@@ -1629,3 +1629,5 @@ public import SerrePositivity.AlgebraicGeometry.PrimeFieldVCoverFilteredModel
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverCechColimit
 
 public import SerrePositivity.AlgebraicGeometry.ProperInductiveLevel
+
+public import SerrePositivity.AlgebraicGeometry.ProperInductiveLevelZeroBaseChange
