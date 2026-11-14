@@ -173,5 +173,6 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingCorrection",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeLift",
-  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit"
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberUnit"
 ]

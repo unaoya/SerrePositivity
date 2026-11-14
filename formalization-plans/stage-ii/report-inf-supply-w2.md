@@ -14384,3 +14384,50 @@ theorem grothendieckFiberComparison_isQCatEquivalence (i : I) :
 theorem grothendieckFiberUnit_isWeakHomotopyEquivalence (i : I) :
     IsWeakHomotopyEquivalence (grothendieckFiberUnit F i)
 ```
+
+## 232. R03gを元の全要素圏の同じfiber単位へ係数移送する（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は未完了。
+
+元のstrictなGrothendieck表示から元の全要素圏への順写像を、§231の同じ指定fiber包含へ合成した。元の全要素射影への射影は同じ頂点で定値となる。この同じ包含に元の全要素圏の置換単位を合成し、同じ指定fiberへの実写像simplicialElementsFiberUnitを取った。
+
+§221の同じ二つの表示の元の置換比較をそのfiberへ制限し、その同じ比較の前合成同値性からfiberの同値性を得た。元の全要素の単位のfiber制限とこの同じfiber比較の合成は、R03gの元のGrothendieck単位のfiber制限そのものに厳密に等しい。等式は、元の置換単位の自然性、元の同じ全要素とGrothendieck表示の厳密な往復、およびfiberの包含後の射の計算だけで示した。この等式と弱同値の消去則で、R03gを元のsimplicialElementsFiberUnit自身の弱同値性へ移した。100行。
+
+R03gの同じ元の写像を既存の厳密な係数表示と元の単位の自然性で移送する法則として記録し、独立の数学的な一覧項目は増やしていない。元のfiber包含は定義で明記し、写像を別の同値の存在へ変更していない。次は元のnative Hom写像と元の単位を固定する延長を、その同じfiber包含へ制限する厳密な三角形を追跡する。元のnative Hom写像のfiber制限の弱同値性と、元の固定始域のroof比較との全同型の一致はまだ残る。
+
+個別検査の最終版86234・終了0。311：対象ビルド3,420 jobs・終了0、小監査176本1,271宣言・標準三公理のみ（実ハンドル97632・終了0）。鍵返却済み。今回100行、累計176本・11,463行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 232.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。fiberのKan性は既存のleft-fibrationのfiberのKan性を局所instanceとして使う。
+
+#### SimplicialElementsFiberUnit（100行）
+
+```lean
+abbrev simplicialElementsReplacement : Over (nerve I)
+
+def simplicialElementsFiberInclusion (i : I) :
+    nerve ((simplicialElementsCatDiagram F).obj i) ⟶ nerve (SimplicialTotalElements F)
+
+theorem simplicialElementsFiberInclusion_projection (i : I) :
+    simplicialElementsFiberInclusion F i ≫ nerveMap (simplicialTotalElementsProjection F) =
+      SSet.const (nerveVertex i)
+
+def simplicialElementsFiberUnit (i : I) :
+    nerve ((simplicialElementsCatDiagram F).obj i) ⟶
+      vertexFiber (simplicialElementsReplacement F).hom (nerveVertex i)
+
+def simplicialElementsFiberComparison (i : I) :
+    vertexFiber (simplicialElementsReplacement F).hom (nerveVertex i) ⟶
+      vertexFiber (grothendieckReplacement (simplicialElementsCatDiagram F)).hom (nerveVertex i)
+
+theorem simplicialElementsFiberUnit_comparison (i : I) :
+    simplicialElementsFiberUnit F i ≫ simplicialElementsFiberComparison F i =
+      grothendieckFiberUnit (simplicialElementsCatDiagram F) i
+
+theorem simplicialElementsFiberComparison_isQCatEquivalence (i : I) :
+    IsQCatEquivalence (simplicialElementsFiberComparison F i)
+
+theorem simplicialElementsFiberUnit_isWeakHomotopyEquivalence (i : I) :
+    IsWeakHomotopyEquivalence (simplicialElementsFiberUnit F i)
+```
