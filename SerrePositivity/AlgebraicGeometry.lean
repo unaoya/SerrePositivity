@@ -1549,3 +1549,5 @@ public import SerrePositivity.AlgebraicGeometry.IntegerModelStageFactor
 public import SerrePositivity.AlgebraicGeometry.IntegerFlatRefinementStage
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientSpecBaseNaturality
+
+public import SerrePositivity.AlgebraicGeometry.IntegerFlatRefinementCoefficientModel

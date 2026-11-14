@@ -2428,3 +2428,14 @@ G1・G2共用部品込み本体14,105行、入口込み14,343行。実際の共�
 一覧：済み14／全体17（うち追加8）。
 
 監査出力：`SerrePositivity.AlgebraicGeometry.CoefficientSpecBaseNaturality: 3 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 3 declarations.`。
+
+
+### B02・B03：固有全射と平坦な細分の実際の共通係数模型
+
+`IntegerFlatRefinementCoefficientModel`（76行）：`exists_integer_flat_refinement_coefficient_model` は B01 の固有全射模型を実際に供給し、固定の整数平坦模型と細分の射を同じ有限生成係数段へ降ろす。固有性・全射性・平坦性・局所有限表示・可換式と元の対象との Cartesian 比較を保持する。元の環の Noether 性や忠実平坦性は要求しない。
+
+本体76行・入口1行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,027ジョブ、小監査1宣言・標準三公理のみ、すべて終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-integer-flat-refinement-coefficient-model-check.log`・`2g-integer-flat-refinement-coefficient-model-native.log`・`2g-integer-flat-refinement-coefficient-model-audit.log`。
+
+G1・G2共用部品込み本体14,181行、入口込み14,420行。B02〜B04 は未完。次は平坦全射の v 判定と、有限表示 affine v 被覆の実際の係数模型へ接続する。
+
+一覧：済み14／全体17（うち追加8）。
