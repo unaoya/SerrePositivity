@@ -1175,3 +1175,10 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 ### 5∞-0 のdraft検査・第70束と名前空間の訂正（11-14夜）
 
 一覧：済み 11／全体 14（うち追加 0）。[第70束](bulk-5inf0/draft-block70-validation.json)は、こちらがcompletionLiftの所有元をファイル配置からDerivedCompletionと誤って判断した1件で失敗。RingCompletion.leanのnamespaceを実際に確認し、正しいBhattScholze.PerfectoidizationInterface.completionLiftに訂正した。直前の節の「本来のDerivedCompletion.completionLift」は誤りで、ここで撤回・訂正する。第71束に並んだ。成功は52／57本のまま。
+
+
+### 5∞-0 のdraft検査・第71束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第71束](bulk-5inf0/draft-block71-validation.json)でSheafOfSetsExcisionが成功。有効な成功は53／57本。補った同じpushoutの射、FiniteProductの補題、正しいPerfectoidizationInterface.completionLiftが通った。普通のホモトピー圏の6参照の台帳も全3ファイルで全体の検査が通った状態に更新。この検査済みソースをコミットする。
+
+次のExcisionは、既存のIsIso ηの証明をasIsoで探索する1箇所で失敗。元からある証明をhηと名前を付け、@asIsoへ直接渡す形で第72束に並んだ。主張・証明の未完了の数・引数は増やしていない。

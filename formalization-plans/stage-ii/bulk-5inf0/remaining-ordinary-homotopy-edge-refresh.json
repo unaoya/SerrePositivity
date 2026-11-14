@@ -15,6 +15,6 @@
     "path": "formalization-plans/bhatt-scholze/drafts/A6/SheafOfSetsExcision.lean",
     "references": 2,
     "reason": "Same edges occur with VertexIso/FunctorHom or native cone legs in the ordinary homotopy category; align the representation.",
-    "status": "pending whole-file validation"
+    "status": "PASS whole-file check block71"
   }
 ]
