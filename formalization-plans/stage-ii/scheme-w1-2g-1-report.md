@@ -1390,3 +1390,17 @@ B01 の実際の三重交叉の比較の法則（着手前の型、見込み100�
 G1・G2共用部品込み本体8,759行、入口込み8,913行。一般の有限表示対象の模型の分割2,097行。三重交叉の比較は未検証下書きでこの実測に含めない。三重交叉の式の極限での照合、六種の有限個の式の共通段への移送、gluing datum と全体の模型、一般の固有性の降下、被覆模型は残る。B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の三重交叉の射の自然性と六種の式の最後の二つ（着手前の型、見込み120〜300行）：`stageReverse_toChart_after_comparison` は元の反転の比較を段の開包含と合成すると元の第二射影とチャート比較になる式。`stageTriple_naturality` は元の三重交叉からの比較と降ろした L の可換式。`stageTriple_fst_after_comparison` は `L ≫ δ = fst ≫ t ≫ δ`、`stageTriple_snd_after_comparison` は `L ≫ t ≫ δ = snd ≫ t ≫ δ` が元の三重交叉の比較の後で成立すること。実際の三重交叉の同型で移送した L を用い、gluing datum の二つの式の極限側の入力を供給する自然性・合成の法則。親項目は増やさない。
+
+
+### B01：元の三重交叉から段の実際の交叉への比較
+
+`OpenAtlasTripleComparisonAt`（72行）：`tripleComparisonAt` は元の三重交叉から段の実際の交叉への lift、`tripleComparisonAt_fst`・`_snd`（各 `_assoc`）は二射影の可換式、`tripleComparisonAt_iso` はこの比較と具体的な同型の合成が有限族の源の段への比較に一致する式。
+
+本体72行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,941ジョブ成功。小監査15宣言・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-atlas-triple-comparison-at-check.log`・`2g-atlas-triple-comparison-at-native.log`・`2g-atlas-triple-comparison-at-audit.log`。続けて検証した三重交叉の自然性の下書きは書換えの照合で失敗したが、このモジュールの対象ビルド・監査はその前に成功。未検証の下書きは本体・実測に含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体8,831行、入口込み8,986行。一般の有限表示対象の模型の分割2,169行。三重交叉の gluing の二つの式の極限での照合は下書き検証中。六種の有限個の式の共通段への具体的な移送とgluing、全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。

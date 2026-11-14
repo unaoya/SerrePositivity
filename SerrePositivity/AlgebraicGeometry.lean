@@ -1439,3 +1439,4 @@ public import SerrePositivity.AlgebraicGeometry.ModelArrowStageNaturality
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasStageArrows
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasReverseNaturality
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasDiagonalNaturality
+public import SerrePositivity.AlgebraicGeometry.OpenAtlasTripleComparisonAt
