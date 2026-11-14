@@ -1,5 +1,5 @@
 {
-  "phase": "before main merge; collection pending",
+  "phase": "pre-merge source snapshot; complete collect/rewrite verified",
   "baseline": "c5c4436c0",
   "source_commit": "94c593fe000ed5111f89bb324a0dbe796f970af5",
   "source_file_count": 106,
