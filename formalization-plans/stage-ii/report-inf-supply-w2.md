@@ -12873,3 +12873,26 @@ theorem anodyneExtensions_leftAnodyne_of_kanTarget
 置き場所はKerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/AnodyneKanTarget.leanを想定する。同名の既存ファイルはない。見込み150〜300行。左ホーンの持ち上げによって、Kan基底上のleft fibrationの全空間もKanであることを既存のkanComplex_of_leftHornFillersに渡せる。一般の持ち上げ問題をY上へ引き戻すと、その射影はKan複体間のleft fibrationであり、既存leftFibration_fibration_of_kanComplexから全ホーンを持ち上げる。hfのanodyne性でその引き戻した射影への持ち上げを得て、元の問題へ戻す。これをleftHornInclusions.rlp.llpとして束ねる。モデル構造の仮定は使わない。
 
 この補題が得られてもbarが係数のleft anodyne射をどのように保つかの検証と、元のR03fの前合成同値性は残る。R03f.1だけをもってR03fまたはR03dの完成とは扱わない。R03f.1の実測は独立に記録し、外枠15,000行にも含める。次はこの型の証明に進む。
+
+## 204. R03f.1完了：Kan標的へのanodyne射はleft anodyne（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 20（うち追加 8）。R03f.1完了。R03f・R03d・R02・R03は未完了。
+
+Kan基底上のleft fibrationについて、基底の左ホーンをKan性で充填し、その充填をleft fibrationで持ち上げた。既存kanComplex_of_leftHornFillersにより全空間もKanとなる。次に任意のleft fibrationへの元の持ち上げ問題をKan標的へ引き戻し、その射影の全ホーン持ち上げ性へanodyne性を適用して元へ戻した。元の射そのものがleftHornInclusions.rlp.llpに属することを証明した。
+
+271：新規一本の対象ビルド1,608 jobs・終了0、小監査124本906宣言・標準三公理のみ。実ハンドル74994の終了0を確認し、鍵返却済み。個別検査66431も終了0。今回61行、累計124本・8,166行／外枠15,000。R03f.1は見込み150〜300行に対して61行（上端との差−239行）。既存のkanComplex_of_leftHornFillersとleftFibration_fibration_of_kanComplexで短縮できた。R03f本体の128行とは独立に記録する。
+
+SSet.modelCategoryQuillenのスコープは、fibrationを全ホーンの右持ち上げ性として読むためにだけ用いる。[ModelCategory SSet]は追加していない。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は同じEx∞単位のleft anodyne性へ適用し、bar上への移送を検討する。
+
+### 204.1 型
+
+#### AnodyneKanTarget（61行）
+
+```lean
+theorem leftFibration_total_kanComplex {E B : SSet.{u}} [KanComplex B]
+    (p : E ⟶ B) [LeftFibration p] : KanComplex E
+
+theorem anodyneExtensions_leftAnodyne_of_kanTarget
+    {X Y : SSet.{u}} [KanComplex Y] (f : X ⟶ Y)
+    (hf : SSet.anodyneExtensions f) : leftAnodyneExtensions f
+```
