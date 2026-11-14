@@ -1,0 +1,176 @@
+{
+  "status": "stopped_on_review",
+  "basis": "c5c4436c0",
+  "old_head": "8593cc4b9a4ba46bf6f248bfe35a5c73ef74b44b",
+  "main_seen": "efa846fe81f40ac663cff5af62f55b901763d676",
+  "main_merged": false,
+  "source_rewrite_applied": false,
+  "scope_count": 30,
+  "captured_count": 20,
+  "captured_refs": 12598,
+  "pending_count": 2,
+  "remaining_files": [
+    "SerrePositivity/EInfinity/Modules/DGGraphNerveAdjunction.lean",
+    "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean",
+    "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientLaws.lean",
+    "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+    "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+    "SerrePositivity/EInfinity/Modules/ThickTensorIdeal.lean",
+    "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+    "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean"
+  ],
+  "preserved_untracked_drafts": [
+    "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientNerve.lean",
+    "SerrePositivity/EInfinity/Modules/LocalizationSourceNaturality.lean"
+  ],
+  "collected": [
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraModelComparison.lean",
+      "refs": 100,
+      "commands": 7,
+      "source_sha256": "822f8adc584bffc9a0e260bb38530b76fe7ccc7b16d0bef04135f9dbdde92f74"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraRoundTripComparison.lean",
+      "refs": 280,
+      "commands": 15,
+      "source_sha256": "20eb65bb150d06fb5c5ba5d810d84dae9ab5b0bbaf202c735ebccc4339fb64d8"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+      "refs": 1324,
+      "commands": 22,
+      "source_sha256": "29c4dbc499dad6d5f98bca61e503ab65d422345dab761217d36616ccb21f3eb0"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+      "refs": 1004,
+      "commands": 12,
+      "source_sha256": "43b2f06f8c94e2f53f63290e6a30e343eec03382aa31178b37f7423a859faac8"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictAdjunction.lean",
+      "refs": 114,
+      "commands": 10,
+      "source_sha256": "c280aa5f490084627a5498dcc2d5038ed92e2c81e1b5ef23e5eb1c579c1f493f"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+      "refs": 405,
+      "commands": 15,
+      "source_sha256": "801fc3a645e20e6e2b4ad3218b9382f7f531384a86b21beaf1f78e6976a92a7a"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+      "refs": 429,
+      "commands": 19,
+      "source_sha256": "93e7479254d3c4feb0fc3a88d1b760122a95b961a328aa8ba06cd2681ea4f4d2"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+      "refs": 373,
+      "commands": 9,
+      "source_sha256": "a353f5770c28c3b1975d5390afd0d3c92404e9ab65c2166dac63cc1cb739a973"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+      "refs": 847,
+      "commands": 6,
+      "source_sha256": "fc26329ecb0deb9334ea2490f7bd004cb14ea7d3492b4443eff454a702011ef8"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFamily.lean",
+      "refs": 292,
+      "commands": 20,
+      "source_sha256": "fb8b632c892cc8f7e0234446486d2182e4bedb010a3e9dd9750d339964ab598b"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+      "refs": 470,
+      "commands": 18,
+      "source_sha256": "a96e6160262f57528da481ac01fd2dcb51e91ddb3634732e5fbfc911d6f84a1e"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+      "refs": 549,
+      "commands": 18,
+      "source_sha256": "2986e845922074e65e9081fea7f4b55c3f06b61a86dba657a670fb237a8b63e0"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+      "refs": 506,
+      "commands": 23,
+      "source_sha256": "04718cc2c25ba0ec64bd81d607a559fe220a49ee1da595dfad570d78f2643b26"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRestrictionComparison.lean",
+      "refs": 1139,
+      "commands": 13,
+      "source_sha256": "52de8633592cbcbf18e46792f25113ea32c0dfba0717ab6086d5f8d94ec64be4"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean",
+      "refs": 1487,
+      "commands": 13,
+      "source_sha256": "149eb0929a40624b649e93178b674a0bb2c975bdf582698db29613d8dafc7d65"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean",
+      "refs": 1233,
+      "commands": 10,
+      "source_sha256": "2b1460bb9a83baf7ecbb662b3965c74bf6d22bf55f17b2f11bb1be4f0ef2f4d4"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictWeakRestriction.lean",
+      "refs": 218,
+      "commands": 13,
+      "source_sha256": "a034627ce8b760e17a5ebbf72e7faae2f3b4beb5473840b90a9280642de5a3cf"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+      "refs": 281,
+      "commands": 22,
+      "source_sha256": "4179cb597bd834871a07f4239b95eea4fd7494e929b646a8fd52df8a6d42327a"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/Modules/DGCounitRecovery.lean",
+      "refs": 151,
+      "commands": 8,
+      "source_sha256": "8c15eccc96dea94df6ef3c483d3196128e12d0aede3202773dbfae0ebba467c1"
+    },
+    {
+      "file": "SerrePositivity/EInfinity/Modules/DGGraphCounit.lean",
+      "refs": 1396,
+      "commands": 9,
+      "source_sha256": "19c89766a156adbe754c763ef57d2e2fba933caf535ed22f0db72189a78db548"
+    }
+  ],
+  "table_sha256": {
+    "module-map.json": "b02daa7a9464250045d264456c9212390602359116bb4d830dff26008daa458b",
+    "namespace-rewrite-map.json": "67ba053988c420d4a43dc026da90b93dca531e393c94bcfce7ca420673bd9d87"
+  },
+  "pre_merge_project_build": "PASS for all 30 committed own Lean modules",
+  "capture_policy": "impl lease; per group gtimeout 280 seconds; original source bytes checked",
+  "review_groups": {
+    "preview-00": {},
+    "preview-next-01": {},
+    "preview-next-02": {
+      "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean": [
+        {
+          "start": 1279,
+          "stop": 1357,
+          "reason": "explicit opens policy needed for a renamed namespace"
+        }
+      ],
+      "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean": [
+        {
+          "start": 949,
+          "stop": 1027,
+          "reason": "explicit opens policy needed for a renamed namespace"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean",
+    "start": 1279,
+    "stop": 1357,
+    "reason": "explicit opens policy needed for a renamed namespace",
+    "line": 27,
+    "source": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean",
+    "start": 949,
+    "stop": 1027,
+    "reason": "explicit opens policy needed for a renamed namespace",
+    "line": 23,
+    "source": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison"
+  }
+]
