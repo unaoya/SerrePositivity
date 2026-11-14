@@ -1829,3 +1829,16 @@ B02 の分離性の降下の出口（着手前の型、見込み100〜250行）�
 G1・G2共用部品込み本体11,490行、入口込み11,686行。分離性の降下の最後の接続は下書きの検証中で実測に含めない。B01〜B04 は未完。
 
 一覧：済み11／全体15（うち追加6）。
+
+
+### B02：qcqs な射の分離性の有限段への降下
+
+`SeparatedLimitDescent`（64行）：`exists_isSeparated_pullback_of_isLimit` は qcqs な affine 遷移の基底図式と実際の極限、段への qcqs な射 f について、極限での同じ底変換の分離性から、ある後段の底変換の分離性を返す。元の射に局所有限型性を要求せず、対角の局所有限型性を恒等射への section から供給した。実際の二重交叉を頂点に保つ模型に閉埋め込み性の降下を適用し、対角と Cartesian 比較の法則で分離性へ戻す。
+
+本体64行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,983ジョブ成功。小監査1宣言・標準三公理のみ。最初の下書きの単独検証、公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-separated-limit-descent-check.log`・`2g-separated-limit-descent-native.log`・`2g-separated-limit-descent-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+5c362ecfe の後の今回の区切りは5モジュール、本体263行・入口5行、小監査合計7宣言・標準三公理のみ。G1・G2共用部品込み本体11,554行、入口込み11,751行。一般の固有性の降下・被覆模型・図式の整合性はなお残り、B01〜B04 は未完。
+
+一覧：済み11／全体15（うち追加6）。
+
+B01 の分離的な有限表示対象の模型への接続（着手前の型、見込み100〜250行）：`exists_separated_finitePresentation_coefficient_model` は Noether 係数環 k、任意の k-代数 R、qcqs・局所有限表示かつ分離的な f:X→Spec R に対し、有限生成 k-部分代数 A⊆R、実際の qcqs・局所有限表示かつ分離的な p:Y→Spec A、実際の a:X→Y と係数包含による `IsPullback a f p (Spec.map (algebraMap A R))` を無条件に供給する。既存の一般の有限表示対象の模型と係数の実際の極限、分離性の有限段への降下を組み合わせる。[Stacks 0202](https://stacks.math.columbia.edu/tag/0202) の Noether 模型への帰着で使う B01 内の分割で、一般の固有性の模型をこの分離性だけで完了とは扱わない。

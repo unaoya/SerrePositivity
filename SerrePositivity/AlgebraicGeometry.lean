@@ -1481,3 +1481,4 @@ public import SerrePositivity.AlgebraicGeometry.CartesianClosedImmersionLimit
 public import SerrePositivity.AlgebraicGeometry.CartesianDiagonalComparison
 public import SerrePositivity.AlgebraicGeometry.FlatStageClosedImmersionLimit
 public import SerrePositivity.AlgebraicGeometry.DiagonalClosedBaseChange
+public import SerrePositivity.AlgebraicGeometry.SeparatedLimitDescent
