@@ -21877,3 +21877,351 @@ reducedなperfect係数とH¹の半線形同型だけではTate項は消えな�
 §314以降の完成見込みの外枠超過の懸念と、完備化の未評価分も残す。
 
 mainは391b2a0d2のまま。§33の3b-4a完成が取り込まれたらTotの9欄へ先に切り替える。
+
+
+## 361. 実際の退化raw語の二段作用の零項を保つ（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+退化分岐の実際の右辺を全Cutごとに零とするための既存構成の評価の法則。
+元の一点削除のCutが非退化なら削除raw語も非退化となる既存の法則を使う。
+指定出力次数零ではその対偶で元のテンソルが零、正次数では実際の空語作用が零となる。
+raw語を基底にする仮定や、非零項だけへの制限はしない。各証明200行以内。
+§316の有限点検を再実行し、全9,794 Cut・退化削除890・両逆2,616を再確認した。
+
+```lean
+lemma not_nondegenerate_of_nullary_raw_degenerate {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w i) = v.val (p.succAbove i))
+    (hw : ¬Surjection.Nondegenerate w) : ¬Nondegenerate s v.val
+```
+
+```lean
+lemma vectorTensorAt_cutGeneratorFamily_eq_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌)
+    (h : ¬Nondegenerate s v.val) (z : ℤ)
+    (hz : -(vectorDegree (chains A S) r (cutGeneratorFamily A S s v x) : ℤ) = z) :
+    vectorTensorAt (chains A S) r (cutGeneratorFamily A S s v x) z hz = 0
+```
+
+```lean
+lemma sum_nullary_cochain_cut_terms_of_raw_degenerate
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hv : ∀ i, k.succAbove (w i) = v.val (p.succAbove i))
+    (hw : ¬Surjection.Nondegenerate w) (ν : Surjection.BasisWord 0 0)
+    (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) :
+    (∑ s : Cut (m + 1) q, cutSign s v.val •
+      (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) r 0 k
+        (cochainAction A S 0)).f z
+        (ιTensorObj (Surjection.complex A 0) (power (chains A S) (r + 1)) 0 z z (zero_add z)
+          ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up ν)) ⊗ₜ[A]
+            vectorTensorAt (chains A S) (r + 1) (cutGeneratorFamily A S s v x) z
+              (by rw [vectorDegree_cutGeneratorFamily]
+                  have h : (m + 1) + q + 1 - (r + 1) = m + q + 1 - r
+```
+
+```lean
+lemma raw_nondegenerate_cast_iff {r l l' : ℕ} (h : l = l') (w : Fin l → Fin r) :
+    Surjection.Nondegenerate (fun i : Fin l' => w (Fin.cast h.symm i)) ↔
+      Surjection.Nondegenerate w
+```
+
+```lean
+lemma nullaryRawWord_cast_erase_value {m d N : ℕ} (hN : m + d = N + 1)
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (N + 1)) :
+    let V := Eq.mp (congrArg (fun L => Surjection.Word (m + 1) L)
+      (by omega : (m + 1) + d = N + 2)) u
+    let P : Fin (N + 2) := Fin.cast (by omega) p
+    k.succAbove (IntervalCuts.nullaryRawWord u ν k ρ (Fin.cast hN.symm i)) =
+      V.val (P.succAbove i)
+```
+
+
+
+## 362. 実際の退化raw空語合成の元の圏での合成則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§361の全和の零性を元のraw語へ戻す。左辺は既存の同じ係数合成の退化零性を使う。
+語長とCut添字の移送は§355〜359の同じものを使い、非退化基底を選ばない。
+L12aの同じ合成則の退化分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_degenerate_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (hdeg : ¬Surjection.Nondegenerate (IntervalCuts.nullaryRawWord u ν k ρ))
+    (x : S _⦋q⦌) :
+    (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+退化性以外の仮定を増やさず、内側射の値や全和の零性を結論の前提にしない。
+正の出力arityの全入力単体・全次数で、元の同じ二つの射の値の等式を述べる。
+
+
+## 363. 正の出力arityの実際の空語合成の全分岐を合わせる（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じ元の係数合成と二段作用に、反復出現・一出現の退化・非退化の全分岐を合わせる。
+一出現の分割ρはcountの等式から既存single 0を同じ型へ運ぶ。
+非退化分岐の基底wは実際のraw語・既存の全射性・その非退化性で構成する。
+L12aの同じ合成則の証明分割で、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_positive_output_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (x : S _⦋q⦌) :
+    (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+ρ・raw語の基底・退化条件・内側射の評価などの仮定を最終主張に残さない。
+零出力arityと全体の有限対応の包装は、これで済んだとはしない。
+
+
+## 364. 退化分岐の二つの零性を元の値で型付けする証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§362の二つの零性をcalcの未指定の元で推論させず、同じ元の左辺・右辺で先に型付けする。
+新しい数学や追加仮定ではなく、次の局所的な証明分割。各証明200行以内。
+
+```lean
+  have hL : (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) = 0
+
+  have hR : (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x)) = 0
+```
+
+
+## 365. 零出力arityの零単体の同じ境界値（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+零出力arity・係数次数零・入力零単体を元の唯一のCutで評価する。
+§316の空出力の特別な一例に対応する。Cut 0 0の元はcard=0から元の空集合のみ。
+符号は元の指数で一、選んだ零次因子は既存faceData_generator_zeroと実際の空語作用へ渡す。
+左右とも同じsingleObjXSelfの逆で単位元一を読む。L12aの境界分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_output_zero_degree_zero
+    (A : Type u) [CommRing A] (S : SSet.{0}) (u : Surjection.BasisWord 1 0)
+    (ν : Surjection.BasisWord 0 0) (x : S _⦋0⦌) :
+    (cochainAction A S 0).f 0
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 0 0 rfl
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.compositionOnWords A u ν 0) ⊗ₜ[A] gen A S 0 x)) =
+      (iteratedCochainAction A S 0 0 0).f 0
+        (ιTensorObj (Surjection.complex A 1 ⊗ Surjection.complex A 0) (chains A S) 0 0 0 rfl
+          (ιTensorObj (Surjection.complex A 1) (Surjection.complex A 0) 0 0 0 rfl
+            ((Surjection.complexXIso A 1 0).inv
+              (Surjection.basis A 1 0 (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S 0 x))
+```
+
+
+## 366. 零出力arityの元の合成則を全次数で読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+外側arity一の正次数基底は既存IsEmptyで除く。係数次数零の入力正次数は
+同じsingle複体の零対象性で左右とも零となり、零単体だけを§365の同じ値へ戻す。
+新しい作用を作らず、L12aの同じ全整数の合成則の分岐を閉じる。各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_zero_output_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {d q : ℕ}
+    (u : Surjection.BasisWord 1 d) (ν : Surjection.BasisWord 0 0) (k : Fin 1)
+    (x : S _⦋q⦌) :
+    (cochainAction A S 0).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A 0) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A 0 d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S 0 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A 1 ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A 1) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A 1 d).inv
+              (Surjection.basis A 1 d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+
+## 367. 全arity・全係数次数の元のBF合成則の基底値（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+正の内側arityの既存の全Cut比較と、空語の全分岐の実際の射の等式を合わせる。
+零arityの正次数基底は既存IsEmpty。出力arity零も§366で含める。
+L12aからL12への同じ合成則の証明分割で、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_basis_eq_iterated_all
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (cochainAction A S (m + n)).f z
+      (ιTensorObj (Surjection.complex A (m + n)) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) z (by omega)
+        ((Surjection.complexXIso A (m + n) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S m n k).f z
+        (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) (chains A S)
+          (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z (by omega)
+          (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A n)
+            (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 1) d).inv
+              (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A n e).inv
+                (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x))
+```
+
+基底値を全arityで合わせても、元の全有限添字の対合と全複体射の等式まで
+完成したとはしない。それらの包装を引き続き残す。
+
+
+## 368. 零次の唯一Cutを指定して和を読む証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§365でdefaultの選択へ依存しないよう、同じ `s : Cut 0 0 := ⟨∅, rfl⟩` を指定し、
+`∀ t : Cut 0 0, t = s` を元のcard=0から供給してFinset.sum_eq_single sを使う。
+位置の和の添字もFin 1として型付けし、同じ元の符号指数を計算する。
+新しいCut・写像・数学を作らない既存構成の法則の証明分割で、各証明200行以内。
+
+## 369. 完備化後のP⁰の三案：(a)の項別平坦な模型の既存の入口を確認（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§296・331の(a)で残した項別平坦な厳密BE模型について、既存のセル段階の基底を読み直した。
+以下は新しいLeanを実装したとの報告ではなく、既存の宣言からどこを再利用できるかの確認。
+
+### 369.1 本体で既に供給されているもの
+
+EInfinity/BarrattEccles/Theory/CellStageGradedBasis.leanには次がある。
+
+- `Operad.cellStageErasedFreeIso`：実際のセル段階を、元の生成球の余積上の自由代数と微分を忘れた同型で比較する。
+- `Operad.cellStageSchurDegreeIso`：同じcarrierの各次数を元のSchur自由代数の次数へ比較する。
+- `BarrattEccles.cellStageWordBasis c hX j i`：始対象からの実際の相対セル複体の各段階j・各次数iについて、carrier上のModule.Basisを与える。
+
+従って**各段階の各次数**には、同じ基底をModule.Free.of_basisへ渡し、Module.Flat.of_freeを使う筋が既にある。
+ArityKFlat.leanの`complexArity_kFlat`が、この二つのMathlib APIを同じ順に使っていることも確認した。
+従来の「cofibrantCarrierKFlatだけから項別平坦性は出ない」という注意は維持するが、
+項別平坦性への入口が未構成の自由な台の推測だけ、という扱いにはしない。
+同じ元のセル段階の**明示的な基底**が既に本体にある。
+
+### 369.2 actualな完備化模型まで残る比較
+
+各段階の基底があることと、欲しいnative頂点を表す最終cell模型が項別平坦であることは分ける。
+`cofibrantCarrierKFlat_of_cellStages`では、小対象分解の最後のcarrierを
+`isColimitOfPreserves U t'.isColimit`で台の複体の余極限へ比較し、最後にretractへ戻している。
+項別平坦性には同じ最後の余極限の次数ごとの比較、または生成元の全体での基底の比較が要る。
+各段階のModule.Basisだけを最終頂点のModule.Basisと読み替えない。
+一般のcofibrant模型を使うなら、retractを各次数の平坦性へ移す義務も残る。
+
+(a)では任意の模型の自由性を主張するより、同じraw対象へのセル置換を選び、
+既存K平坦性とこの各次数の基底からの項別平坦性をそろえる経路が具体的な候補となる。
+ただし、その置換が同じnativeなraw対象を表すこと、元のFrobeniusの辺と完備化単位を表すことは
+別の比較である。これを既存のK平坦性だけで証明済みとはしない。
+その後の同じBE作用の連続延長と、全鎖の有限primitiveの検収も§331のまま残る。
+
+### 369.3 (b)(c)との比較
+
+(b)では§357のとおりperfect性や半線形同型だけから単位の全射性・Tate項消滅を結論できない。
+今回の入口は(a)の模型の選択を具体化するもので、この偽の消去を使わない。
+一方、nativeな指定対象・辺と全鎖のprimitiveの比較はまだ供給していないため、
+May案が完備化後にも通ったとの主張はしない。(a)(b)のactualな比較が両方不可能と
+判明したわけでもないので、(c)への判定はまだ出さない。
+新しい仮定・完備化のLean・界面・drafts・G10の部品は追加していない。
+
+
+## 370. 退化・零出力・全arityの実際の合成則の基底値（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§361〜368を検証した。元の退化raw語の全切断和の零性を、同じ係数合成と
+実際の二段作用の等式へ接続し、正の出力arityの全分岐を合わせた。
+零出力arityでは元の空のCutを指定して零単体の値を読み、残る正次数は同じsingle複体の
+零対象または存在しない基底で処理した。
+
+CochainCompositionBasisAllで、全arity・全内外係数次数・全入力単体に対する
+元の二つの複体射の基底値が厳密に一致する。内側・出力の零arity、退化raw語の零項も含む。
+全複体射への外延性と、一覧が要求する元の全有限添字の対合の包装はまだ残る。
+そのためL12a・L12を完了扱いにはせず、一覧IDの済み数も増やさない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|DegenerateCutGeneratorFamilies|48|
+|NullaryDegenerateCutSums|57|
+|NullaryRawLengthValues|40|
+|NullaryDegenerateComposition|115|
+|NullaryPositiveOutputComposition|54|
+|NullaryZeroOutputValue|102|
+|NullaryZeroOutputComposition|55|
+|CochainCompositionBasisAll|58|
+
+今回529行、M14実測28,026行、L12a 12,819行、外枠31,000行まで2,974行。
+対象ビルドm14-nullary-degenerate-cut-sums-01.log（3,058 jobs）、
+m14-nullary-positive-output-composition-01.log（3,124 jobs）、
+m14-cochain-composition-basis-all-03.log（3,278 jobs）まで成功、対象最終警告0。
+小監査audit-m14-nullary-positive-output-composition.logは5本26宣言、
+audit-m14-cochain-composition-basis-all.logは3本12宣言。
+全て標準三公理のみ、sorry・独自公理0。各回で鍵を取り返却。
+共有入口・共有監査・mainの作業木・既存の公開宣言は変更していない。
+
+完備化後のP⁰の三案の並行する紙の確認は§369。既存cellStageWordBasisが
+各セル段階・各次数の基底を与えることを確認し、(a)での項別平坦性への入口を具体化した。
+最後の余極限・retract・nativeな対象と辺・全鎖のprimitiveの比較はまだ残る。
+(b)の単位全射性・Tate消滅を追加仮定として使わず、(c)への判定もまだ出していない。
+完成見込みの外枠超過の懸念と完備化の未評価分は維持する。
+
+mainは391b2a0d2のまま。3b-4a完成の取り込み後は§33のTotの9欄を先にする。
