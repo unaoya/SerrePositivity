@@ -2098,3 +2098,20 @@ G1・G2共用部品込み本体12,575行、入口込み12,790行。C06 は本体
 一覧：済み12／全体17（うち追加8）。
 
 監査出力：`SerrePositivity.AlgebraicGeometry.DenseClosedFactor: 2 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 2 declarations.`。
+
+
+上記 `exists_proper_chart_open` の下書きの型を、共通の開 j の準コンパクト性（実際の入力では始域の Noether 性から供給）と、返る w の scheme-theoretic な稠密性を含めて明記する。この稠密性は既存の開への lift の Cartesian 比較で保たれる法則から得る。最終の C06 の主張には仮定を追加せず、既存の実際の共通の開に適用する。
+
+
+C06 の共通の稠密な開による射の貼り合わせ（着手前の型、見込み120〜280行）：`isSchemeTheoreticallyDominant_of_open_factor` は準コンパクトで稠密な j:W→Z を開包含 b:V→Z に因子化した w:W→V が稠密であることを返す。`exists_glued_map_of_common_dense_open` は同じ基底 S 上の開被覆と分離的な Y→S、各被覆上の射が同じ scheme-theoretically 稠密な共通の開で一致するとき、実際の貼り合わせと各制限の可換式を返す。被覆の重なりにも同じ共通の開が稠密に持ち上がることと、既存の分離的な標的への射の一致を用いる。Stacks 01RH の既存の一意性を使う貼り合わせの法則として C06 の親項目を増やさない。
+
+
+### C06：実際のチャート像への固有な射影と、チャート上の固有射
+
+`ProperChartOpen`（67行）：`exists_proper_map_to_immersion_image` は共通の稠密な開で指定されたチャートの実際の像へ、固有な射影を因子化する。`exists_proper_chart_open` はその像のチャートに沿う実際の pullback を取り、チャート上の固有射・グラフ閉包への開包含・共通の開の稠密な開包含と可換式を返す。
+
+本体67行・入口1行。稠密性を保つ版の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,003ジョブ、小監査2宣言・標準三公理のみ、すべて終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-proper-chart-open-check-2.log`・`2g-proper-chart-open-native.log`・`2g-proper-chart-open-audit.log`。
+
+G1・G2共用部品込み本体12,642行、入口込み12,858行。C06 は本体708行までで未完。各チャート上の固有射は供給したが、貼り合わせた射の固有性・全射性と一般の対象への接続はなお残る。C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
