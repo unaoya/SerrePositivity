@@ -17496,3 +17496,117 @@ C452やL12a全体を完了には数えず、一覧12/48（追加4）のまま。
 完備化後のP⁰の比較は§223・255の未供給の比較を残しており、
 (c)のcoherentなP⁰が不可避という新しい結論には至っていない。
 次も同じL12aの法則を進め、main§33のTotの段0は紙で準備する。
+
+## 260. main §33 の Tot 九欄：段0の型案と受け取りの条件（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+mainの指示書§33を確認した。3b-4aの取り込み後、M14を区切ってTotの群を先にする。
+この節はその待ち時間の紙の準備で、TotのLean・界面・Assemblyは変更していない。
+M14の48本と、以下のTotの九欄の一覧は別であり、M14の完了数に足さない。
+
+### 260.1 型案：既存欄を同じBEの実例で埋める
+
+紙の略記として、`CA S := CAlg_R S`、`U S := cAlgForgetDerived S`、
+`D S := discreteCAlgUnderEmbedding S`、`CD S := barrattEcclesOfCdga S`、
+`res f := barrattEcclesRestrict f`、`Q S := ComplexLimits.complexOrdinaryDerivedSource S`とする。
+`FunctorIso`・`nativeConeLeg`・`nerveVertex`・`simplicialHomotopyVertexEdge`は、
+Interface/Theory.leanと同じKerodonの宣言。`Complex`・`CosimplicialRingAlgebra`・
+`CosimplicialCDGA`・`TotalizationCone`・`cosimplicialNerve`も同じInterfaceの宣言。
+以下は略記を展開してから型検査する紙の型で、検証済みのLeanとは主張しない。
+
+```lean
+-- T01
+ def barrattEcclesOfCosimplicial (S : Type u) [CommRing S] :
+     nerve (CosimplicialRingAlgebra S) ⟶ CA S
+-- T02
+ def barrattEcclesOfCosimplicial_forget (S : Type u) [CommRing S] :
+     FunctorIso (barrattEcclesOfCosimplicial S ≫ U S)
+       (nerveMap (cosimplicialCochains S) ≫ Q S)
+-- T03
+ def barrattEcclesOfCosimplicial_cone (S : Type u) [CommRing S]
+     (X : CosimplicialRingAlgebra S) :
+     TotalizationCone (cosimplicialNerve X ≫ D S)
+       (atVertex (barrattEcclesOfCosimplicial S) (nerveVertex X))
+-- T04
+ def barrattEcclesOfCosimplicial_restrict {S T : Type u} [CommRing S] [CommRing T]
+     (f : S →+* T) :
+     FunctorIso
+       (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj
+         (restrictRingAlgebra f)) ≫ barrattEcclesOfCosimplicial S)
+       (barrattEcclesOfCosimplicial T ≫ res f)
+-- T05
+ def barrattEcclesOfCosimplicialCdga (S : Type u) [CommRing S] :
+     nerve (CosimplicialCDGA S) ⟶ CA S
+-- T06
+ def barrattEcclesOfCosimplicialCdga_cone (S : Type u) [CommRing S]
+     (X : CosimplicialCDGA S) :
+     TotalizationCone (cosimplicialNerve X ≫ CD S)
+       (atVertex (barrattEcclesOfCosimplicialCdga S) (nerveVertex X))
+-- T07
+ def barrattEcclesOfCosimplicialCdga_discrete (S : Type u) [CommRing S] :
+     FunctorIso
+       (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA S)) ≫
+         barrattEcclesOfCosimplicialCdga S) (barrattEcclesOfCosimplicial S)
+-- T08
+ def barrattEcclesOfCosimplicialCdga_evalZero (S : Type u) [CommRing S] :
+     SSet.Homotopy (barrattEcclesOfCosimplicialCdga S)
+       (nerveMap ((evaluation SimplexCategory (CommMon (Complex S))).obj ⦋0⦌) ≫ CD S)
+-- T09
+ theorem barrattEcclesOfCosimplicialCdga_evalZero_leg (S : Type u) [CommRing S]
+     (X : CosimplicialCDGA S) :
+     (simplicialHomotopyVertexEdge (barrattEcclesOfCosimplicialCdga_evalZero S)
+       (nerveVertex X)).edge =
+     (nativeConeLeg (barrattEcclesOfCosimplicialCdga_cone S X).val
+       (ULift.up (nerveVertex (⦋0⦌ : SimplexCategory)))).edge
+```
+
+T08は評価0への変換であり、Functors全体の同型を要求する欄ではない。
+T09は同じ錐の脚の等式であって、無関係な評価射を新たに選ぶ欄ではない。
+T03・T06は任意の同値な頂点でなく、T01・T05の指定頂点と一致する証明を保持する。
+
+### 260.2 受け取るものと使う順序
+
+③-bのmain上の報告§152・160を読んだ。
+3b-4aのR01〜R05・R11/R12のTot部分には、元のBEの計算関手、全図式射の錐族、
+そのnative極限性、Uを通した全錐族の比較、離散・係数変更への制限が含まれる予定。
+G10の完成だけをもってこれらのBEの全族も供給済みとはしない。
+
+実装順序は T05/T06 → T08/T09 → T01/T03 → T02/T07/T04 を候補とする。
+厳密cdgaからBEの既存 `barrattEcclesOfCdga` への全関手を前合成し、
+3b-4aの同じnative錐族を引き戻す。
+離散代数は同じcdgaの埋め込みに制限する。
+T02はR11の離散比較とG10の `cosimplicialModuleConeFamily`・
+`cosimplicialModuleCone_homology` の全族比較で、同じ `cosimplicialCochains` の
+複体との比較を保持して作る。対象ごとのホモロジー同型だけで全FunctorIsoとしない。
+
+`cAlgForgetDerived_mapJoinCone_isLimit`は無条件で本体にあることを再確認した。
+ただし「Uが極限を保存する」だけから元のBEの錐が極限だとは逆向きに推論しない。
+元の極限性はR03から受け取り、そのU像の検収に既存の保存定理を使う。
+T04/T07/T09は全図式射と指定境界・脚の比較を必要とする。
+G10・BEのnative橋を自分で作らず、BFの作用をこの九欄の前提にしない。
+
+### 260.3 置き場所と暫定の規模
+
+新規実例ファイルは `EInfinity/BarrattEccles/Theory/` の下を候補とする。
+③-bの `StrictDiagramTotalizationComparison*` 等そのものは触らない。
+受け渡しで型の穴があれば、界面を変えたり仮定を足したりせず報告する。
+共通入口・監査登録は調整役。Assemblyへの供給は九欄の検証後にする。
+
+| まとまり | 既存・供給予定の原料 | 新規見込み |
+| --- | --- | ---: |
+| T05/T06 | R01〜R03、既存ofCdga、同じ全錐族 | 300〜550 |
+| T08/T09 | R02の評価0と同じ脚・全パラメータ | 200〜400 |
+| T01/T03 | 既存discreteCDGA・ofCdga_discrete、離散制限 | 150〜300 |
+| T02/T07 | R04/R11、G10離散全族、同じコチェイン比較 | 350〜650 |
+| T04 | R12の係数変更と指定錐族 | 200〜400 |
+| Assembly・小監査前の照合・import | 既存欄を保つ包装 | 100〜200 |
+| **計** | 3b-4aの上記全族を受領する前提 | **1,300〜2,500** |
+
+これは前提を無償に自己供給する見積もりではなく、3b-4aの完成した型を受け取った後の
+包装の暫定見積もり。2倍の規則なら外枠5,000行、見込みの半分の1,250行で途中報告。
+受け渡しの実際の宣言名・型が確定したらその対応表を先に更新する。
+Tot九欄の新規行数をM14の未証明分から勝手に控除せず、別に記録する。
+
+この紙の準備はM14のP⁰の_totや完備化後のP⁰の完成ではない。
+M14は§259の実測20,940行・一覧12/48（追加4）から続ける。
