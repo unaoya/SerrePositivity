@@ -9037,3 +9037,178 @@ def strictBECosimplicialUnderlyingEvaluationIso :
 3b-4の検証済みは **3モジュール・151行**、外枠15,000行まで14,849行。登録候補は別の `is-w2-be-20261114-modules.json` に記録し、G10の366本・22,870行と混ぜない。200行超のファイルなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。
 
 次はR02の元のframe計算対象と全図式評価の間のnative全錐族、およびR03の実right-frame Homとpinched Homの同じ制限の比較を接続する。今回のU源比較だけでR04の加群Totとの最終同型が済んだとは数えない。承認待ち・範囲変更・規模による停止ではなく、検証済みの保存点。Tot先行・実現・任意coherent BE図式の段0までの/goalはactiveのまま保持する。
+
+
+## 162. 同じBE frameの全Hom比較・重み付き錐空間（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R03の実frame比較の準備。R02・R03のnative全錐・極限性を完了とは数えない。
+
+### 162.1 今回の型（既存構成の法則）
+
+共通：`A : Type u`、`[CommRing A]`、`K : Type u`、`[SmallCategory K]`。局所の模型構造は既存 `modelCategory A`。新しい模型構造・重み・置換を作らない。以下の型は各ファイルの同じ変数・openの下で読む。
+
+`StrictDiagramTotModelSource`（100行）：
+
+```lean
+def strictBETotModelNerveIso :
+    nerve (modelRelativeCategory (operad A).Algebra).category ≅
+      nerve (allAlgebraRelativeCategory A).category
+
+theorem strictBETotModelNerveIso_weakEdges :
+    (strictBETotModelNerveIso A).inv.app (Opposite.op ⦋1⦌) ''
+      weakNerveEdges (allAlgebraRelativeCategory A) =
+        weakNerveEdges (modelRelativeCategory (operad A).Algebra)
+
+def strictBETotModelSource :
+    nerve (modelRelativeCategory (operad A).Algebra).category ⟶ CAlg_R A
+
+theorem strictBETotModelSource_isLocalization :
+    IsLocalization (strictBETotModelSource A)
+      (weakNerveEdges (modelRelativeCategory (operad A).Algebra))
+
+theorem strictBETotModelSource_vertex (X : (operad A).Algebra) :
+    (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)) =
+      (algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)
+```
+
+`StrictDiagramTotRightFrameComparison`（41行）：
+
+```lean
+def strictBETotRightFramePinchedEquivalence
+    (X : (operad A).Algebra) [IsCofibrant X] (Y : (operad A).Algebra) :
+    QCatEquivalence
+      ((SSet.uliftFunctor.{u+1,u}).obj ((rightFrameHom (rightFrameFamily A) X).obj Y))
+      (pinchedHom ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))
+```
+
+`StrictDiagramTotRightFrameCoherent`（41行）：
+
+```lean
+def strictBETotRightFrameCoherentComparison
+    (X : (operad A).Algebra) [IsCofibrant X] :
+    (FunctorIso
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject X) (rightFrameFamily A) 0)
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject X) (rightFrameFamily A) 6)) ×
+      FrameHom.CoherentLocalizationComparison
+        (SimplicialLocalization.hammockLocalizationNerveMap
+          (modelRelativeCategory (operad A).Algebra)) (strictBETotModelSource A)
+```
+
+`StrictDiagramTotTensorFrame`（75行）：
+
+```lean
+def strictBETotTensorWeights : SimplexCategory ⥤ (Kᵒᵖᵒᵖ ⥤ SSet.{u})
+
+def strictBETotTensorFrameFamily :
+    (K ⥤ (operad A).Algebra)ᵒᵖ ⥤ SimplexCategory ⥤ (operad A).Algebraᵒᵖ
+
+theorem strictBETotTensorFrameFamily_obj (F : K ⥤ (operad A).Algebra) :
+    (strictBETotTensorFrameFamily A K).obj (op F) =
+      HomotopyWeight.tensorFrame Kᵒᵖ (HomotopyWeight.framedLimitWeight K)
+        (rightFrameDiagram A K F) := rfl
+
+/-- 同じ標準零単体の単位則は、全図式射に自然な零次同型を与える。 -/
+def strictBETotTensorFrameZeroIso :
+    strictBETotTensorFrameFamily A K ⋙
+      (evaluation SimplexCategory (operad A).Algebraᵒᵖ).obj ⦋0⦌ ≅
+        framedLimitOpFunctor A K
+
+def strictBETotTensorFrameZeroIso :
+    strictBETotTensorFrameFamily A K ⋙
+      (evaluation SimplexCategory (operad A).Algebraᵒᵖ).obj ⦋0⦌ ≅
+        framedLimitOpFunctor A K
+
+def strictBETotTensorFrameAugmentation :
+    strictBETotTensorFrameFamily A K ⟶
+      framedLimitOpFunctor A K ⋙ Functor.const SimplexCategory
+```
+
+`StrictDiagramTotTensorFrameProperties`（61行）：
+
+```lean
+theorem strictBETotTensorFrame_reedyCofibrant (F : K ⥤ (operad A).Algebra) :
+    reedyLeft simplex (cofibrations (operad A).Algebraᵒᵖ)
+      (initial.to ((strictBETotTensorFrameFamily A K).obj (op F)))
+
+theorem strictBETotTensorFrame_homotopicallyConstant (F : K ⥤ (operad A).Algebra)
+    {n m : SimplexCategory} (α : n ⟶ m) :
+    weakEquivalences (operad A).Algebraᵒᵖ
+      (((strictBETotTensorFrameFamily A K).obj (op F)).map α)
+
+theorem strictBETotTensorFrameAugmentation_weak
+    (F : K ⥤ (operad A).Algebra) (n : SimplexCategory) :
+    weakEquivalences (operad A).Algebraᵒᵖ
+      (((strictBETotTensorFrameAugmentation A K).app (op F)).app n)
+
+def strictBETotTensorFrameConeIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    ((SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
+      ((strictBETotTensorFrameFamily A K).obj (op F))).obj (op (framedLimitProbe A Y))) ≅
+        (framedLimitConeSpace A K Y).obj F
+```
+
+`StrictDiagramTotFrameHomComparison`（73行）：
+
+```lean
+abbrev strictBETotFrameCommonFamily
+
+def strictBETotFrameHomLeft :
+    FrameOverFunctor.hom (FrameOverFunctor.resolution (rightFrameFamily A)
+      (framedLimitOpFunctor A K)) ⟶ FrameOverFunctor.hom (strictBETotFrameCommonFamily A K)
+
+def strictBETotFrameHomRight :
+    FrameOverFunctor.hom (strictBETotTensorFrameFamily A K) ⟶
+      FrameOverFunctor.hom (strictBETotFrameCommonFamily A K)
+
+theorem strictBETotFrameHomLeft_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) [IsCofibrant Y] :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomLeft A K).app (op (op F))).app (op Y))
+
+theorem strictBETotFrameHomRight_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) [IsCofibrant Y] :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomRight A K).app (op (op F))).app (op Y))
+```
+
+`StrictDiagramTotProbeFrameComparison`（50行）：
+
+```lean
+def strictBETotFrameHomLeftSourceIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    ((FrameOverFunctor.hom (FrameOverFunctor.resolution (rightFrameFamily A)
+      (framedLimitOpFunctor A K))).obj (op (op F))).obj (op Y) ≅
+      ((rightFrameHom (rightFrameFamily A) Y).obj ((framedLimitFunctor A K).obj F))
+
+theorem strictBETotProbeFrameHomLeft_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomLeft A K).app (op (op F))).app (op (framedLimitProbe A Y)))
+
+theorem strictBETotProbeFrameHomRight_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomRight A K).app (op (op F))).app (op (framedLimitProbe A Y)))
+```
+
+### 162.2 同じものの比較と未完了の境界
+
+`AsSmall` のmodelRelativeCategoryと、既存のULiftHomによるallAlgebraRelativeCategoryのnerve同型を、同じ対象・射から構成。その逆像の弱辺集合を照合し、既存の全代数の局所化を前合成して同じmodelSourceを得る。既存のmodelRightFramePinchedEquivalence・全targetについてのmodelRightFrameCoherentComparisonへその源を渡す。
+
+同じframedLimitWeightとrightFrameDiagramを実現する全関手を標準単体で評価。零次同型による増大写像・Reedy cofibrant・homotopically constant・増大の弱同値性は既存tensorFrameの法則。`tensorFrameHomIso`は元のframedLimitConeSpaceとの**全単体集合の同型**。計算対象のright frameとこのtensor frameの共通frameを、既存FrameOverFunctorで取る。左右の比較は元の同じ任意probeで無条件に単体的ホモトピー同値。rightFrameHomへの源の同定は`rightFrameHomOpIso`であり、定義的等式で代用しない。
+
+これはπ₀だけの比較ではないが、指定native錐の全制限との最終照合は未完了。元の指定頂点・脚・全単体の錐とnative極限性を次に接続する。既存通常局所化の随伴だけからnative普遍性を結論しない。
+
+### 162.3 検収
+
+モデル源・pinched比較の二本はコード`bad328231`、対象ビルド208 **9,817 jobs・終了0**、二本の小監査**19（9・10）宣言・標準三公理のみ**。207・209は既存の必要依存だけの対象ビルドで、それぞれ9,730・2,423 jobs・終了0。
+
+210は四本の対象ビルド自体は成功したが、合併監査で自動生成された局所instance名の衝突を検出したため、検収成功とは数えない。未コミットの五本の局所instanceに個別の名前を与え、既存検証済み宣言は変更せず修正。最終211は五本の対象ビルド **9,835 jobs・終了0**、BE新規全10本の小監査 **64（2・7・3・9・10・4・10・6・7・6）宣言・標準三公理のみ**。実ハンドル8092の終了0を確認。sorry・独自公理0。計算上限の変更なし。
+
+整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ保持し返却済み。ログ`/private/tmp/isw2-build208.log`・`211.log`、最終監査`/private/tmp/AuditISW2BEFrameComplete.lean`。main・入口・公式監査・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparisonの変更なし。
+
+3b-4の検証済み **10モジュール・592行**（外枠15,000行）。登録候補は `is-w2-be-20261114-modules.json`。200行超の新規ファイルなし。承認待ちの停止ではなく検証済みの保存点で、/goalの続きへ進む。

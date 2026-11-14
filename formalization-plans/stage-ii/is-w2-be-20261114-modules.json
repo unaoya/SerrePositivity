@@ -1,5 +1,12 @@
 [
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationInput",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingSource"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingSource",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSource",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameCoherent",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrame",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrameProperties",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeFrameComparison"
 ]
