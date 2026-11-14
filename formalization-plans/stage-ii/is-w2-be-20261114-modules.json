@@ -161,5 +161,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.NerveHomUniverseIso",
   "SerrePositivity.EInfinity.FrameHom.TotalElementsNativeClassification",
   "SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameElements",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceElements"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceElements",
+  "SerrePositivity.EInfinity.FrameHom.LiftedSourceFramePairing",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourcePairing"
 ]

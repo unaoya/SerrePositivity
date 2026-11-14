@@ -13957,3 +13957,70 @@ def strictBETotJointRawSourceElementsClassificationIso :
         ((continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj
           (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).hom)
 ```
+
+## 224. 同じ全source-frame実射のnative twisted pairingと厳密な両端（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§223で回収した同じ全実射の始域・標的をAsSmallの同じ宇宙へ持ち上げ、任意の全要素の射における同じ反変・共変の四角形を元のsourceFrameArrowValue_naturalityで検証した。元の射の全pairingに既存twistedPairingNerveMapを適用した。同じpairingの二射影は元の始域・標的の全nerve写像そのものであり、既存の全射影式を適用して厳密な等式を得た。64行。
+
+これをBEの同じ元の全source-frame実射へ適用し、元のstrictBETotModelSourceのedgewiseSubdivisionMapを合成した。得られたstrictBETotJointSourceNativePairingは、同じ全要素圏のnerveからTwistedArrow (CAlg_R A)への全単体に自然な写像である。元の始域・標的を同じモデル源へ送った二変数の底への厳密な射影式を、既存twistedArrowProjection_naturalityと元の全pairingの射影式を合成して得た。BE固有の適用は60行。模型の中身を新しく使う構成ではなく、既存の同じモデル源とtwisted pairingの全自然性・係数移送の法則の適用であり、独立の数学的な一覧項目は増やしていない。
+
+このpairingの始域端点は元のsource-frameの各次数の対象であり、まだ元の試験対象Xへ変更していない。§188の元の全augmentationの同じ逆を全要素のパラメーターへ引き戻し、その端点の変更を行う。元の両変数のnative入力への厳密化と元の固定始域のroof比較との等式は、R03dの残りとして保つ。今回のpairingの存在と厳密な射影式だけからR03dやnative極限性の完了を主張しない。
+
+個別検査：元の全pairing5427・終了0、BEへの適用を二本結合した検査1985・終了0。301：対象ビルド10,708 jobs・終了0、小監査165本1,166宣言・標準三公理のみ（実ハンドル18475・終了0）。対象とその依存のみで、rootビルドや公式の大監査は実行していない。鍵返却済み。
+
+今回64＋60＝124行、累計165本・10,681行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 224.1 型
+
+一般側の共通入力は `{C : Type u} [Category.{v} C] (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)`。BE側は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。
+
+#### LiftedSourceFramePairing（64行）
+
+```lean
+def liftedSourceFrameArrowDomain :
+    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ (AsSmall.{max u v} C)ᵒᵖ
+
+def liftedSourceFrameArrowCodomain :
+    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ AsSmall.{max u v} C
+
+def liftedSourceFrameArrowValue
+    (X : SimplicialTotalElements (liftedSourceFrameCoefficients Q R)) :
+    ((liftedSourceFrameArrowDomain Q R).obj X).unop ⟶
+      (liftedSourceFrameArrowCodomain Q R).obj X
+
+theorem liftedSourceFrameArrowValue_naturality
+    {X Y : SimplicialTotalElements (liftedSourceFrameCoefficients Q R)} (f : X ⟶ Y) :
+    ((liftedSourceFrameArrowDomain Q R).map f).unop ≫ liftedSourceFrameArrowValue Q R X ≫
+      (liftedSourceFrameArrowCodomain Q R).map f = liftedSourceFrameArrowValue Q R Y
+
+def liftedSourceFramePairing :
+    nerve (SimplicialTotalElements (liftedSourceFrameCoefficients Q R)) ⟶
+      TwistedArrow (nerve (AsSmall.{max u v} C))
+
+theorem liftedSourceFramePairing_projection :
+    liftedSourceFramePairing Q R ≫ twistedArrowProjection (nerve (AsSmall.{max u v} C)) =
+      CartesianMonoidalCategory.lift
+        (nerveMap (liftedSourceFrameArrowDomain Q R) ≫
+          (nerveOppositeIso (C := AsSmall.{max u v} C)).inv)
+        (nerveMap (liftedSourceFrameArrowCodomain Q R))
+```
+
+#### StrictDiagramTotJointSourcePairing（60行）
+
+```lean
+def strictBETotJointSourcePairing :
+    nerve (StrictBETotJointSourceElements A) ⟶
+      TwistedArrow (nerve (AsSmall.{u+1} (operad A).Algebra))
+
+def strictBETotJointSourceNativePairing :
+    nerve (StrictBETotJointSourceElements A) ⟶ TwistedArrow (CAlg_R A)
+
+def strictBETotJointSourceNativePairingBase :
+    nerve (StrictBETotJointSourceElements A) ⟶ (CAlg_R A).op ⊗ CAlg_R A
+
+theorem strictBETotJointSourceNativePairing_projection :
+    strictBETotJointSourceNativePairing A ≫ twistedArrowProjection (CAlg_R A) =
+      strictBETotJointSourceNativePairingBase A
+```
