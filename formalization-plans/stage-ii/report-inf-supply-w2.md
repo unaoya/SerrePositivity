@@ -12724,3 +12724,28 @@ theorem grothendieckWeightedNerveReplacementIso_unit :
         ((continuousLeftFibrationReplacementUnit (nerve I)).app
           (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))).left
 ```
+
+## 199. 底上の同じ置換同型を全分類へ運ぶ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 18（うち追加 6）。R03d・R02・R03は未完了。
+
+前のターンはR03eの完成とOver・置換単位の照合まで進んだため、進捗あり。今回は作業木がcleanであることとコミット4baf71306を確認して継続した。既存の `leftClassification_overIso` を、検証済みの同じ底上の二つの置換同型に適用した。比較は底全体のFunctorIsoであり、fiberごとの同型による代用ではない。同型保存の既存の法則で、一覧の中間の定理の追加ではない。
+
+267：新規一本の対象ビルド3,125 jobs・終了0、小監査121本892宣言・標準三公理のみ。実ハンドル26874の終了0を確認し、鍵返却済み。個別検査は実ハンドル40480の終了0。今回36行、累計121本・7,977行／外枠15,000。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次に必要なCat値図式の相対Kan比較の分類側の候補を一時ファイル `/private/tmp/CheckISW2CatLeftStraighteningType.lean` のPropとして確認した（実ハンドル60059・終了0）。元の置換単位と元の前向きweighted mapの厳密な等式も保持する、より強い全空間の比較の候補は `/private/tmp/CheckISW2GrothKanLiftType.lean` のPropとして確認した（実ハンドル2743・終了0）。いずれもこの時点では未証明で一覧に追加せず、仮定として使わない。まず既存のleft-anodyne単位に沿う相対延長を使い、元の比較を保持する全空間の射を構成する。射の存在だけでは前合成同値性は得られないことを区別する。
+
+### 199.1 型（共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`）
+
+#### GrothendieckWeightedNerveClassification（36行）
+
+```lean
+def grothendieckWeightedNerveReplacementClassificationIso :
+    FunctorIso
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))).hom)
+```
