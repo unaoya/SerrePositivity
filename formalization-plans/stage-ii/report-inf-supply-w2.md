@@ -10226,3 +10226,192 @@ theorem bkFramedWeightComparison_point :
 今回345行、各200行以下。3b-4の検証済みは **40本・2,503行**。R03aの細胞と比較射の構成は累計1,092行で、当初の細胞の見込み300〜700行に対し約1.6倍。元の骨格への全自然な輸送と既存押し出しの四つの射の等式を明示する行数が増えた。Hom不変性は§168の中間定理R03a.1（900〜1,400行）として別に見積もった。全外枠15,000行にはまだ十分余地がある。
 
 次の自由ホーン・相対テンソル・native切断のKan性の新規下書きは個別検査中。この検証済み5本のコミットには含めない。元の重み・既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査は変更していない。/goalはactiveのまま、Hom不変性へ続ける。
+
+## 170. R03a.1前半の検証と見込みの半分での途中報告（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 14（うち追加 2）。R03aとR03a.1は未完了。
+
+### 170.1 到達点・検証
+
+自由ホーンの生成族の小対象性と各値の右類を作った。その全生成左類が、各値でanodyneとなることも、既存の余積・押し出し・逐次合成・レトラクトの法則から証明した。自由ホーンの射とパラメーターの単射の相対テンソルは、各値のKan fibrationを持ち上げる。これを同じweightedCornerと元のcurry・uncurryへ転置し、**射影anodyneな重み制限は、各値がKanな係数についてtrivial Kan fibration**となることを示した。射影cofibrantな両重みでは、元の切断空間がKanであることも証明し、実際の単体的ホモトピー同値まで閉じた。
+
+重みの元の射の自由ホーン分解について、左射の各値のanodyne性、中間重みの射影cofibrancy、右射の各値のfibration性・弱同値性を閉じた。**標的の各値がKanの場合**には、右射は各値で境界右持ち上げ性を持つ。この補助で一般の非Kan標的を代用しない。一般の比較への復帰には、両方の重みのホーン置換と同じ指定比較の分解を使う。
+
+225は先行5本で **1,721 jobs・終了0、新規全45本325宣言**。226は分解の2本で **2,612 jobs・終了0、新規全47本334宣言・標準三公理のみ**。実ハンドル76288・48784の終了0・鍵返却を確認済み。ログ `/private/tmp/isw2-build225.log`・`226.log`、小監査 `/private/tmp/AuditISW2BKCells226.lean`。対象のみ、同時整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ鍵を保持。
+
+### 170.2 実測と残りの再見込み（止まらず継続）
+
+今回7本402行、各200行以下。3b-4の検証済みは **47本・2,905行**。初期§152.4の合計5,700〜9,800行の下端の半分2,850行を超えたので、早めに共通規則の途中報告を残す。R03aの細胞と一つの比較射の構成1,092行に対し、R03a.1は現時点402行（見込み900〜1,400行）。重みの同じ区間ホモトピーを元の切断制限へ運ぶ下書きは個別検査中で、検証済みの行数には含めていない。
+
+残りの見込み：R03a.1の切断・区間ホモトピーと分解の最終接続500〜850行、R03aの指定jへの特殊化・可縮性の照合100〜250行、R02〜R03の元のnative錐族と普遍性への最後の接続700〜1,200行、R04〜R05は1,000〜1,800行、実現R06〜R10は2,800〜4,800行、R11〜R12は500〜900行。合計の残り5,600〜9,800行、全体約8,500〜12,700行で、外枠15,000行を維持する。native錐への接続はまだ未実測のため幅を残す。一般のHom不変性をR03a.1へ分けた分で、初期のR01〜R03の1,400〜2,300行は上振れしている。
+
+ここで止まらず、検証済みを保存してR03a.1の残りへ進む。型・範囲・既存の模型・⑤aの欄を弱めていない。SSet/図式圏のModelCategory仮定・sorry・独自公理・計算上限の変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査は変更していない。
+
+### 170.3 証明分割・法則の型
+
+全てR03a.1の証明分割または既存構成の法則。追加の一覧項目は§168以外0。
+
+#### ProjectiveHornGenerators（36行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits
+variable (K : Type u) [SmallCategory K]
+
+abbrev horns : MorphismProperty (K ⥤ SSet.{u})
+
+instance horns_smallObjectArgument : (horns K).HasSmallObjectArgument.{u}
+
+theorem horns_rlp : (horns K).rlp =
+    ModelGeneration.EvaluationFamily.detected (evaluation K) SSet.modelCategoryQuillen.J.rlp
+
+```
+
+#### ProjectiveHornValues（62行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet
+variable (K : Type u) [SmallCategory K]
+
+theorem free_horn_anodyne (k l : K) {X Y : SSet.{u}} (f : X ⟶ Y)
+    (hf : SSet.modelCategoryQuillen.J f) : SSet.anodyneExtensions (((free K k).map f).app l)
+
+theorem horns_evaluation_le (l : K) :
+    horns K ≤ SSet.anodyneExtensions.inverseImage (evaluation K l)
+
+theorem anodyne_relativeCells_le :
+    Quillen.relativeCells.{u} SSet.anodyneExtensions ≤ SSet.anodyneExtensions
+
+theorem projectiveHorn_anodyne {F G : K ⥤ SSet.{u}} (f : F ⟶ G)
+    (hf : (horns K).rlp.llp f) (l : K) : SSet.anodyneExtensions (f.app l)
+
+```
+
+#### ProjectiveHornCorner（50行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.PointwiseAdjunction
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHorn_corner_lifting {V W F G : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : (horns I).rlp.llp j) {A B : SSet.{u}} (f : A ⟶ B) [Mono f]
+    (p : F ⟶ G) (hp : ∀ i, Fibration (p.app i)) :
+    HasLiftingProperty (weightedCorner j f).ι p
+
+```
+
+#### NativeWeightedSections（52行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I] (W : I ⥤ SSet.{u})
+
+def coneSpaceParameterIso : WeightedCones.tensorDiagram I W ≅ weightedParameterFunctor W
+
+def coneSpaceNativeSectionsIso : WeightedCones.coneSpace I W ≅ weightedSectionsFunctor W
+
+theorem weightedSections_kanComplex_of_projective_cofibrant
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    SSet.KanComplex (weightedSections W H)
+
+```
+
+#### ProjectiveWeightRestriction（89行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+open scoped Simplicial SSet.modelCategoryQuillen
+variable {I : Type u} [SmallCategory I]
+
+theorem weightedSectionsPre_trivialKanFibration_of_corner_extensions
+    {W W' H : I ⥤ SSet.{u}} (j : W ⟶ W')
+    (hcorner : ∀ n, ∀ a : (weightedCorner j (boundary n).ι).pt ⟶ H,
+      ∃ b : W' ⊗ (Functor.const I).obj (Δ[n] : SSet.{u}) ⟶ H,
+        (weightedCorner j (boundary n).ι).ι ≫ b = a) :
+    TrivialKanFibration (weightedSectionsPre j H)
+
+theorem weightedSectionsPre_trivialKanFibration_of_projectiveHorn
+    {V W H : I ⥤ SSet.{u}} (j : V ⟶ W) (hj : (horns I).rlp.llp j)
+    (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    TrivialKanFibration (weightedSectionsPre j H)
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projectiveHorn
+    {V W H : I ⥤ SSet.{u}} (j : V ⟶ W) (hj : (horns I).rlp.llp j)
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence
+      (weightedSectionsPre j H)
+
+```
+
+#### ProjectiveHornFactorization（55行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet HomotopicalAlgebra
+open scoped SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHorn_cofibration {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : (horns I).rlp.llp j) : (boundaries I).rlp.llp j
+
+def projectiveHornFactorization {V W : I ⥤ SSet.{u}} (j : V ⟶ W) :
+    MorphismProperty.MapFactorizationData (horns I).rlp.llp (horns I).rlp j
+
+theorem projectiveHornFactorization_i_anodyne {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
+    SSet.anodyneExtensions ((projectiveHornFactorization I j).i.app i)
+
+theorem projectiveHornFactorization_p_fibration {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
+    Fibration ((projectiveHornFactorization I j).p.app i)
+
+theorem projectiveHornFactorization_cofibrant {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hV : (boundaries I).rlp.llp (initial.to V)) :
+    (boundaries I).rlp.llp (initial.to (projectiveHornFactorization I j).Z)
+
+```
+
+#### ProjectiveHornWeakFactorization（58行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet HomotopicalAlgebra
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+open scoped SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHornFactorization_i_weak {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
+    IsWeakHomotopyEquivalence ((projectiveHornFactorization I j).i.app i)
+
+theorem projectiveHornFactorization_p_weak {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : ∀ i, IsWeakHomotopyEquivalence (j.app i)) (i : I) :
+    IsWeakHomotopyEquivalence ((projectiveHornFactorization I j).p.app i)
+
+theorem projectiveHornFactorization_p_boundary_rlp {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : ∀ i, IsWeakHomotopyEquivalence (j.app i))
+    (hW : ∀ i, SSet.KanComplex (W.obj i)) (i : I) :
+    SSet.modelCategoryQuillen.I.rlp ((projectiveHornFactorization I j).p.app i)
+
+```

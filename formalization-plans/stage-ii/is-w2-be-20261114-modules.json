@@ -38,5 +38,12 @@
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellEvaluation",
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanSkeletonPushout",
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCofibrant",
-  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanChosenComparison"
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanChosenComparison",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornGenerators",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornValues",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornCorner",
+  "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSections",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightRestriction",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornFactorization",
+  "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornWeakFactorization"
 ]
