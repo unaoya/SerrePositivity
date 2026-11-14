@@ -1596,5 +1596,22 @@
       ],
       "reason": "A06; explicitly requested canonical Tor-amplitude predicate"
     }
+  ],
+  "scope": "A0-A9 original table; separate shared supplement below",
+  "shared_supplement": [
+    {
+      "name": "SerrePositivity.Cosimplicial.CosimplicialAlgebra",
+      "draft": "formalization-plans/bhatt-scholze/drafts/Shared/CosimplicialEInfinity.lean",
+      "replacement_module": "SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra",
+      "same_signature": "(A : Type u) [CommRing A] := CosimplicialObject (Under (CommRingCat.of A))",
+      "validation": "PASS block24 after direct import and duplicate removal"
+    },
+    {
+      "name": "SerrePositivity.DeRham.deRhamCohomologyWedge",
+      "draft": "formalization-plans/bhatt-scholze/drafts/Shared/DeRhamPolynomial.lean",
+      "replacement_module": "SerrePositivity.CommutativeAlgebra.DeRham.CohomologyWedge",
+      "same_signature": "{i j : Nat} : (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i+j)",
+      "validation": "pending block25; main constructs the intended exterior product on homology"
+    }
   ]
 }

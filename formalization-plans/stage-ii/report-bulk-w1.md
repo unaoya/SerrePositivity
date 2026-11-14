@@ -927,3 +927,10 @@ B03の本質的小ささの本体補題はκの下限を仮定しないので、
 一覧：済み 8／全体 14（うち追加 0）。[第24束](bulk-5inf0/draft-block24-validation.json)で本体のCosimplicialAlgebraに揃えたShared/CosimplicialEInfinityが成功し、依存を更新したShared/EInfinityPowerOperationも成功。有効な成功は27本に戻った。共有Totの検査済みソースをコミットする。A2はimportを通過し、structurePresheafの不要なE引数、結果の型が未指定のpolyTestFrobenius、discreteEvaluationのカーネル時間切れ、逐次図式の1単体の添字の4種類が残った。後続はまだ成功に算入していない。
 
 全draftを本体の宣言名と静的に再照合し、残る同名候補はShared/DeRhamPolynomialのdeRhamCohomologyWedgeの1件のみだった。署名が同じことを確かめ、本体への一本化を次の検査で確認する。同名だけで数学的な等しさを主張するものではない。
+
+
+### 5∞-0 の全件台帳の補足（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[削除・置換台帳](bulk-5inf0/declaration-disposition-audit.json)に共有部分の2件を別表として追加した。A0〜A9の削除123名の表はそのままにし、共有のCosimplicialAlgebraとdeRhamCohomologyWedgeを混ぜて数えない。後者は第25束の検査待ち。対象の本体ディレクトリを再走査した[同名候補](bulk-5inf0/current-draft-duplicate-candidates.json)は0件（構文による候補の検査であり、型検査ではない）。[所有元へのimport到達性](bulk-5inf0/section5-owner-import-reachability.json)も保護対象を含め欠落0件。
+
+[保護対象の再構成](bulk-5inf0/section5-protected-reconstruction.json)では、基準efa846fe8に台帳の11置換だけを適用した結果が現在のSharedファイルと完全に一致し、A4のP⁰部分も基準と完全に一致した。許可された改名以外の変更はない。
