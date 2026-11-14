@@ -2703,3 +2703,14 @@ G1・G2共用部品込み本体15,606行、入口込み15,867行。B02〜B04 は
 G1・G2共用部品込み本体15,669行、入口込み15,931行。75d018aa2 の後は13モジュール788行＋入口13行、小監査99宣言・標準三公理のみ。残る模型の遷移の関手、全模型の実際の共通後段・cofinal 性と余極限、conerve の自然性、B02 の完成の整理を含め、全体の見込みを約17,000〜20,000行、現在からの残り約1,300〜4,300行へ更新する。有限型模型を単に各々選ぶことと整合する全図式を区別し、後者の見込みを確保した。外枠25,000行は不変。B02〜B04 は未完で停止点ではない。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B03・B04：実際の環の射による模型の遷移と一致判定
+
+`CoefficientVCoverRingMorphisms`（49行）：`coefficientVCoverModelHomMkOfRingHoms` は両辺の実際の環の射と係数・三つの正方形の可換式から模型の圏の射を作る。`coefficientVCoverModelHom_ext` は模型の圏の射を両辺の環の射で一致判定する。
+
+本体49行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,051ジョブ、小監査7宣言・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-vcover-ring-morphisms-check.log`・`2g-coefficient-vcover-ring-morphisms-native.log`・`2g-coefficient-vcover-ring-morphisms-audit.log`。
+
+G1・G2共用部品込み本体15,718行、入口込み15,981行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

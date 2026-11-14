@@ -1597,3 +1597,5 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutFiniteType
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverRingModel
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutVCoverModel
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverRingMorphisms
