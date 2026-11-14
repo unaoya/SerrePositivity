@@ -4760,3 +4760,147 @@ M10 完了には数えない。M10 の一般の native な辺・fiber と全族�
 G12 の元の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 40. M10 の同じ普遍 dg Hom 族と全要素列の再添字（11-14）
+
+§39 の全評価屋根に対して、元の tensor/Hom 同型の係数を保つ全普遍評価族を具体化する。
+元の frame 射を Yoneda 同値で同じ代表可能族へ送り、§36 の同じ二変数 Dold–Kan 同型を
+後合成する。標的射との後合成則、全単体作用素との再添字則を保持し、元の恒等射を
+代入した普遍族の評価式と全作用素自然性を得る。
+
+その普遍族を、同じ反対要素圏の全通常単体列の終端パラメータで前合成する。
+元の評価自然変換の終端成分との合成式を保持する。
+再添字は終端を変える作用素も含み、列の元の末尾射による dg Hom の作用と厳密に整合する。
+frame の係数加群を半自由と仮定せず、元の全通常 dg 加群圏内で構成する。
+
+本節は M10 の既存 tensor/Hom 構成の自然性・係数移送・恒等・合成則と証明の分割であり、
+一次 ID は追加しない。全宣言の型は以下のとおり。
+
+`TensorHomUniversal.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+def moduleTensorHomRepresentable (P N : ModuleCategory A D) (n : SimplexCategory)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) :
+    stdSimplex.obj n ⟶ (cosimplicialHom ((moduleTensorSimplicesFunctor A D).obj P)).obj N
+
+lemma moduleTensorHomRepresentable_postcomp (P : ModuleCategory A D)
+    {N N' : ModuleCategory A D} (n : SimplexCategory)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) (h : N ⟶ N') :
+    moduleTensorHomRepresentable A D P N n g ≫
+      (cosimplicialHom ((moduleTensorSimplicesFunctor A D).obj P)).map h =
+        moduleTensorHomRepresentable A D P N' n (g ≫ h)
+
+lemma moduleTensorHomRepresentable_reindex (P N : ModuleCategory A D)
+    {n m : SimplexCategory} (f : n ⟶ m)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj m ⟶ N) :
+    stdSimplex.map f ≫ moduleTensorHomRepresentable A D P N m g =
+      moduleTensorHomRepresentable A D P N n
+        (((moduleTensorSimplicesFunctor A D).obj P).map f ≫ g)
+
+def moduleTensorHomDoldKanSimplex (P N : ModuleCategory A D) (n : SimplexCategory)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) :
+    stdSimplex.obj n ⟶ ((moduleDoldKanHomBifunctor A D).obj (op P)).obj N
+
+lemma moduleTensorHomDoldKanSimplex_postcomp (P : ModuleCategory A D)
+    {N N' : ModuleCategory A D} (n : SimplexCategory)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) (h : N ⟶ N') :
+    moduleTensorHomDoldKanSimplex A D P N n g ≫
+      ((moduleDoldKanHomBifunctor A D).obj (op P)).map h =
+        moduleTensorHomDoldKanSimplex A D P N' n (g ≫ h)
+
+lemma moduleTensorHomDoldKanSimplex_reindex (P N : ModuleCategory A D)
+    {n m : SimplexCategory} (f : n ⟶ m)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj m ⟶ N) :
+    stdSimplex.map f ≫ moduleTensorHomDoldKanSimplex A D P N m g =
+      moduleTensorHomDoldKanSimplex A D P N n
+        (((moduleTensorSimplicesFunctor A D).obj P).map f ≫ g)
+
+def moduleTensorUniversalDoldKanSimplex (P : ModuleCategory A D) (n : SimplexCategory) :
+    stdSimplex.obj n ⟶ ((moduleDoldKanHomBifunctor A D).obj (op P)).obj
+      (((moduleTensorSimplicesFunctor A D).obj P).obj n)
+
+lemma moduleTensorUniversalDoldKanSimplex_evaluation (P N : ModuleCategory A D)
+    (n : SimplexCategory) (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) :
+    moduleTensorUniversalDoldKanSimplex A D P n ≫
+      ((moduleDoldKanHomBifunctor A D).obj (op P)).map g =
+        moduleTensorHomDoldKanSimplex A D P N n g
+
+lemma moduleTensorUniversalDoldKanSimplex_naturality (P : ModuleCategory A D)
+    {n m : SimplexCategory} (f : n ⟶ m) :
+    stdSimplex.map f ≫ moduleTensorUniversalDoldKanSimplex A D P m =
+      moduleTensorUniversalDoldKanSimplex A D P n ≫
+        ((moduleDoldKanHomBifunctor A D).obj (op P)).map
+          (((moduleTensorSimplicesFunctor A D).obj P).map f)
+```
+
+`RawModuleTensorElementUniversal.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+abbrev strictRawModuleTensorElementTerminalParameter {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    ⦋n⦌ ⟶ (strictRawModuleTensorElementDegree A X P Q).obj (c.obj (Fin.last n))
+
+def strictRawModuleTensorElementUniversalFamily {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    SSet.stdSimplex.obj ⦋n⦌ ⟶
+      ((strictRawModuleProbeDoldKanHom A X).obj (op P)).obj
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (Fin.last n)))
+
+lemma strictRawModuleTensorElementUniversalFamily_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorElementUniversalFamily A X P Q c ≫
+      ((strictRawModuleProbeDoldKanHom A X).obj (op P)).map
+        ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n))) =
+    SSet.stdSimplex.map (strictRawModuleTensorElementTerminalParameter A X P Q c) ≫
+      moduleTensorHomDoldKanSimplex A (dgAlgebraCategory A ((assocForget A).obj X))
+        ((strictRawModuleProbeFunctor A X).obj P) Q
+        ((strictRawModuleTensorElementDegree A X P Q).obj (c.obj (Fin.last n)))
+        ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n)))
+
+lemma strictRawModuleTensorElementUniversalFamily_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    SSet.stdSimplex.map θ ≫ strictRawModuleTensorElementUniversalFamily A X P Q c =
+      strictRawModuleTensorElementUniversalFamily A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) ≫
+      ((strictRawModuleProbeDoldKanHom A X).obj (op P)).map
+        ((strictRawModuleTensorElementDiagram A X P Q).map
+          (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))
+```
+
+対象ビルド・小さい監査の結果と実測は §40.1 に記録した。
+ここでは全高次の普遍評価とその自然性を保持するが、元の dg nerve の全 cone/prism 方程式、
+§39 の同じ屋根との比較、同じ K の実 Hom 誘導射の同値性・完全忠実性は未完である。
+M10 の一般の native な辺・fiber と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 40.1 検証と実測
+
+TensorHomUniversal・RawModuleTensorElementUniversal の通常の対象ビルドは成功した。
+新しい公開宣言 13 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は二ファイル、それぞれ 128・96 行、計 224 行、公開宣言 13 本。
+§39.1 の累計に加え、検証済み累計は 79 ファイル・8,019 行・明示宣言 421 本
+（private 4 本）。200 行を超える証明はない。一次 ID は追加していない。
+
+同じ tensor/Hom 二関手の元の射からの全代表可能族、全後合成・再添字、
+恒等射による普遍族と全評価、同じ全要素列の終端パラメータによる前合成、
+終端を変える作用素も含む再添字式まで検証した。
+次はこの同じ全族を元の全通常 dg 加群の pinched Hom の線形成分へ送り、
+元の dg nerve 内の全 cone/prism と同じ実評価屋根を照合する。
+既存の `doldKanHomPinchedIso`・任意 Hom 鎖写像への自然性・
+`SimplexTerminalParameter.reindex` と一般の単射方程式移送を使う。
+ComplexLimits の既存ファイルは読み取りだけに留め、既存の構成を置き換えない。
+
+同じ K の実 Hom 誘導射の全高次照合・同値性・完全忠実性、M10 の一般の native な辺・fiber と
+全族は未完。M11 以降と G12 の元の目標を維持し、約 8,500 行での途中見積りを予定する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
