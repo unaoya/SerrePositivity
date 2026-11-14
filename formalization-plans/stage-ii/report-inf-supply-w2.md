@@ -6037,3 +6037,108 @@ theorem freeLinearWeightDiagramIso_inverse_precomp
 累計 **266モジュール・16,272行・2,243宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtysix-modules.txt`。外枠20,000行まで残り3,728行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、rootビルド・大きな監査なし。未検証下書きはない。
 
 B02は引き続き未完。次は、今回明示した同じ始域射を§129の行合成則へ代入し、自由重みの点ごとのMoore・延長・図式交換を通して、§127の各切断条件を閉じる。パラメータ側は§126の実標準Hom最上位評価、実AW側は§127の前面・後面の式を使う。その後、raw成分等式を§125のMoore制限と§122の指定自由随伴・uncurryへ渡し、反転・添字輸送後の全単体的射のB02等式へ戻す。B03〜B08・C・Dは未完、3b-4段0はG10完成後に出す。
+
+## 131. B02の途中：実A12の自由重みの任意の元でのtensor合成式
+
+一覧：済み 14／全体 36（うち追加 1）
+
+A12の実際の逆係数重み射とMoore反転を合成した同じ始域射を、§129のBK行の合成則へ代入した。指定自由重み同型の逆射で元を戻し、負次数項同型と自由重み同型の両逆を相殺することにより、**自由重みの任意の元**についてtensor符号が消えて元の錐代表との実dg合成となることを示した。したがってAW切断の射影自由生成元を直接代入できる。
+
+閉零次cochainの点ごとの成分を異種等号で評価し、右辺を元の実複体射 `σ ≫ normalizedBousfieldKanConeRepresentative X` の成分に直した。さらに終次数を任意の `r`、条件 `p-n=r` で合わせた版を別名に置いた。型を弱めず、同じ自由重み成分式を分割したもの。
+
+指定同型の両逆を直接使う計算を採用したため、点ごとのMoore比較を更に展開する補助ファイルは最終ソースに加えていない。成分の型移送とAW合成則への適用では、計算上限を上げず、対象・全次数を明記し、共通の閉零次成分評価と終次数の輸送を別宣言に分けて検査した。いずれも既存構成の評価・合成則または同じ証明の分割であり、ID付き項目の追加ではない。
+
+### 131.1 登録対象・行数・型
+
+`SerrePositivity.HomologicalAlgebra.ExtendedChainHomIsoEvaluation`（32行）
+
+```lean
+theorem extendedChainHomRows_iso_evaluation (L : ChainComplex C ℕ)
+    (P H : CochainComplex C ℤ) (e : L.extend ComplexShape.embeddingDownNat ≅ P)
+    (q : ℤ) (z : Cochain P H q) (n : ℕ) :
+    e.inv.f (-(n : ℤ)) ≫ (negativeChainRowIso L n).hom ≫
+      extendedChainHomRows L H q
+        ((Cochain.ofHom e.hom).comp z (zero_add q)) n =
+      z.v (-(n : ℤ)) (q - n) (by omega)
+
+```
+
+`SerrePositivity.HomologicalAlgebra.CochainOfHomPointEvaluation`（34行）
+
+```lean
+theorem cochainOfHom_v_app_heq {F G : CochainComplex (J ⥤ ModuleCat A) ℤ}
+    (a : F ⟶ G) (i j : ℤ) (h : i + 0 = j) (k : J) (x : (F.X i).obj k) :
+    HEq (((Cochain.ofHom a).v i j h).app k x) ((a.f i).app k x)
+
+theorem cochainOfHom_comp_v_app_heq {F G H : CochainComplex (J ⥤ ModuleCat A) ℤ}
+    (a : F ⟶ G) (b : G ⟶ H) (i j : ℤ) (h : i + 0 = j) (k : J)
+    (x : (F.X i).obj k) :
+    HEq ((((Cochain.ofHom a).comp (Cochain.ofHom b) (zero_add 0)).v i j h).app k x)
+      (((a ≫ b).f i).app k x)
+
+```
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorRow`（134行）
+
+```lean
+theorem reflectedBKFreeHom_tensor_row (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p) (n : ℕ)
+    (j : SimplexCategoryᵒᵖᵒᵖ)
+    (w : (((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0}))).X (-(n : ℤ))).obj j) :
+    let σ := (normalizedLinearWeightDiagramIso A V).inv ≫
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat
+    let η := (Cochain.ofHom σ).comp
+      (Cochain.ofHom (normalizedBousfieldKanConeRepresentative X)) (zero_add 0)
+    let χ := (Cochain.ofHom σ).comp ((homToNormalizedBousfieldKan P X).f p f) (zero_add p)
+    ((-(n : ℤ)) * p).negOnePow • ((χ.v (-(n : ℤ)) (p - n) (by omega)).app j) w =
+      compose A (D := Complex A) (p := p) (q := 0 - n) (n := p - n)
+        (x := P) (y := (productTotalFunctor A).obj X)
+        (z := (doubleOppositeDiagram X).obj j)
+        (((η.v (-(n : ℤ)) (0 - n) (by omega)).app j) w) f (by omega)
+
+theorem reflectedBKFreeHom_tensor_component (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ) (n : ℕ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p)
+    (j : SimplexCategoryᵒᵖᵒᵖ)
+    (w : (((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0}))).X (-(n : ℤ))).obj j) :
+    let σ := (normalizedLinearWeightDiagramIso A V).inv ≫
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat
+    let χ := (Cochain.ofHom σ).comp ((homToNormalizedBousfieldKan P X).f p f) (zero_add p)
+    ((-(n : ℤ)) * p).negOnePow • ((χ.v (-(n : ℤ)) (p - n) (by omega)).app j) w =
+      compose A (D := Complex A) (p := p) (q := -(n : ℤ)) (n := p - n)
+        (x := P) (y := (productTotalFunctor A).obj X)
+        (z := (doubleOppositeDiagram X).obj j)
+        ((((σ ≫ normalizedBousfieldKanConeRepresentative X).f (-(n : ℤ))).app j) w)
+        f (by omega)
+
+theorem reflectedBKFreeHom_tensor_component_of_degree (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ) (n : ℕ) (r : ℤ) (hr : p - n = r)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p)
+    (j : SimplexCategoryᵒᵖᵒᵖ)
+    (w : (((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (freeNegativeChainsDiagram (A := A) (V ⋙ SSet.uliftFunctor.{u,0}))).X (-(n : ℤ))).obj j) :
+    let σ := (normalizedLinearWeightDiagramIso A V).inv ≫
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat
+    let χ := (Cochain.ofHom σ).comp ((homToNormalizedBousfieldKan P X).f p f) (zero_add p)
+    ((-(n : ℤ)) * p).negOnePow • ((χ.v (-(n : ℤ)) r (by omega)).app j) w =
+      compose A (D := Complex A) (p := p) (q := -(n : ℤ)) (n := r)
+        (x := P) (y := (productTotalFunctor A).obj X)
+        (z := (doubleOppositeDiagram X).obj j)
+        ((((σ ≫ normalizedBousfieldKanConeRepresentative X).f (-(n : ℤ))).app j) w)
+        f (by omega)
+
+```
+
+### 131.2 検収と残り
+
+コード **`6d7d1217b`**（新規3本200行）。最終ソースの結合個別検査 `/private/tmp/isw2-reflected-bk-free-tensor-iso-combined5.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build145.log` は **4,563 jobs・終了コード0**。新規分のみの監査 `/private/tmp/AuditISW2G10B02FreeTensorRow.lean` は **13宣言（2・2・9）、標準三公理のみ**。共有鍵は `--class impl --wait 3600` でビルド・監査の間だけ使用し返却済み。
+
+累計 **269モジュール・16,472行・2,256宣言**。一覧 `/private/tmp/isw2-g10-twohundredsixtynine-modules.txt`。外枠20,000行まで残り3,528行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
+
+B02はまだ未完。次は元の `reversedWeightPointwiseBousfieldKanCone X` を、同じ自由鎖随伴による `σ ≫ r` の像に厳密に同定する。§108の `normalizedLinearWeightHomEquiv_freeDiagram` を元の錐代表に適用し、係数重み同型の両逆を相殺する。これにより今回の右辺を実標準Homの最上位成分へ合わせる。その後、パラメータ側の§126、各切断の§127と全切断和、§125のMoore制限、指定自由随伴・uncurryを通して、元のB02の全単体的射の等式へ戻す。B03〜B08・C・D、G10後の3b-4段0は未完。
