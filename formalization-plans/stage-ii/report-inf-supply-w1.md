@@ -6635,3 +6635,101 @@ RR02〜RR05・E02〜E05・R2d・R2e は未了。
 通常 end の Kan 性だけで RR02 を済ませない。
 §57.2 からの追加を含む検証済み累計は149本・12,009行（既存G2本文 +2/-3 は別記）。
 外枠20,800行まで8,791行。次は RR02 の相対充填・各値の比較の接続を進める。
+
+
+## 64 RR02：指定frameの相対充填
+
+一覧：済み 1／全体 13（うち追加 11）
+
+RR02 の証明分割として、既存の `cosimplicialHom_fibration` と
+`boundary_lifting_of_reedyCofibrant` を、指定した同じ source frame に適用する。
+新しい ID は付けない。E01 は使用しない。型は次のとおり（局所モデルは
+`strictDiagramReedyModelCategory A d`、SSet は既存の Quillen モデル）。
+
+```lean
+/-- 指定frameのHomは、Reedy標的のfibrationをKan fibrationへ送る。 -/
+lemma strictDiagramSourceFrameHom_fibration (X : StrictComplexDiagram A d)
+    {Y Z : StrictComplexDiagram A d} (p : Y ⟶ Z) [Fibration p] :
+    Fibration ((CosimplicialHom.cosimplicialHom
+      (strictDiagramSourceFrame A d X).obj).map p) :=
+  HomotopyFunctionComplex.cosimplicialHom_fibration _
+    (strictDiagramSourceFrame A d X).cofibrant
+    (strictDiagramSourceFrame A d X).homotopicallyConstant p
+
+/-- Reedy自明fibrationに対して、指定frameのHomは全境界の相対充填を持つ。 -/
+lemma strictDiagramSourceFrameHom_boundary_lifting (X : StrictComplexDiagram A d)
+    {Y Z : StrictComplexDiagram A d} (p : Y ⟶ Z)
+    [Fibration p] [WeakEquivalence p] (n : ℕ) :
+    HasLiftingProperty (SSet.boundary.{u} n).ι
+      ((CosimplicialHom.cosimplicialHom (strictDiagramSourceFrame A d X).obj).map p) :=
+  HomotopyFunctionComplex.boundary_lifting_of_reedyCofibrant _ n
+    (strictDiagramSourceFrame A d X).cofibrant p
+
+```
+
+この相対充填だけでは、coherent end への射の弱同値性を結論しない。
+残りは値の比較の全添字での整合性と、同じ RR01 射への照合。
+一般化を中断した `OrdinaryBarHomSections` は split epi のみを供給するため、
+今回の弱同値性の代用には使わない。
+
+### 64.1 全添字の増大射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+値の比較には `FrameOverFunctor` の既存の共通frameを使う。
+その前提となる指定増大射の全添字の族と弱同値性を、同じ増大射の成分から取り出す。
+RR02 の証明分割であり、頂点ごとの無関係な同値の選択ではない。
+
+```lean
+/-- 元の指定増大射を全添字で評価した、自然な余単体的増大射の族。 -/
+def strictDiagramEvaluatedAugmentation (X : StrictComplexDiagram A d) :
+    strictDiagramEvaluatedSourceFrames A d X ⟶ X ⋙ Functor.const SimplexCategory where
+  app j :=
+    { app n := ((strictDiagramSourceFrame A d X).augmentation.app n).app j
+      naturality := by
+        intro n m f
+        exact congrArg (fun a => a.app j)
+          ((strictDiagramSourceFrame A d X).augmentation.naturality f) }
+  naturality := by
+    intro i j f
+    apply NatTrans.ext
+    funext n
+    exact ((strictDiagramSourceFrame A d X).augmentation.app n).naturality f
+
+/-- 全ての添字と余単体次数で、同じ増大射は擬同型である。 -/
+lemma strictDiagramEvaluatedAugmentation_weak (X : StrictComplexDiagram A d)
+    (j : strictDiagramIndex d) (n : SimplexCategory) :
+    weakEquivalences (Complex A)
+      (((strictDiagramEvaluatedAugmentation A d X).app j).app n) := by
+  have h := (strictDiagramSourceFrame A d X).augmentation_weakEquivalence n
+  cases d <;> exact h j
+
+```
+
+### 64.2 検証と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+- `StrictDiagramFrameRelativeLifting` 43行：対象ビルド2,677 jobs、小監査4宣言成功。
+- `StrictDiagramEvaluatedAugmentation` 46行：対象ビルド2,677 jobs、小監査9宣言成功。
+  初回は図式圏の局所モデル instance の不足で失敗し、指定済みの
+  `strictDiagramReedyModelCategory` を明示して再検証した。
+- 両方とも標準三公理のみ。計算上限は変更せず、鍵はビルドと小監査の間のみ。
+  ログ `/tmp/is-w1/frame-relative-lifting/build.log`、
+  `/tmp/is-w1/evaluated-augmentation/build-2.log`。
+- 検証済み累計151本・12,098行（既存G2本文 +2/-3 は別記）。外枠まで8,702行。
+
+次の接続には既存 `FrameOverFunctor` に
+`H := X`、`P := strictDiagramEvaluatedSourceFrames A d X`、
+`a := strictDiagramEvaluatedAugmentation A d X` を入れる。
+`fixedFrameOverFunctor_homLeft_homotopyEquivalence` と
+`fixedFrameOverFunctor_homRight_homotopyEquivalence` は、全添字に自然な
+同じ比較の成分でのホモトピー同値を供給する。任意の SSet モデルを仮定する
+旧 `homLeft_weakEquivalence` 版は使わない。
+これで得る値の比較だけから通常endの弱同値不変性を仮定してはならない。
+Reedyの相対充填からcoherent切断への比較を証明し、§63の同じ実射へ照合する部分は残る。
+
+E01 別経路の紙の確認：`FiniteSubcomplexEndComparison` は元の実比較を保つ
+錐の射を供給するが、有限部分での弱同値性も逆極限の弱同値保存も主張しない。
+したがって制限図式があることを E01/E05 の証明の代用にはしない。
+指定単位の直接比較と、未供給の単位の普遍性による一意性の経路は再試行していない。
