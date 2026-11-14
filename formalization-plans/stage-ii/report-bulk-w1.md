@@ -1056,3 +1056,10 @@ BaseChangeAndTensorは、係数変更を本体のchangePolyへ寄せたことと
 一覧：済み 8／全体 14（うち追加 0）。[第45束](bulk-5inf0/draft-block45-validation.json)・[第46束](bulk-5inf0/draft-block46-validation.json)の端点の診断を受け、余積の包含とYonedaの評価を順に書き換え、同じ神経の辺の始域・終域を定義上の等式で揃えた。[第47束](bulk-5inf0/draft-block47-validation.json)でA2/BaseChangeAndTensorが約39秒で成功。有効な成功は35／57本。この検査済みソースをコミットする。係数変更は本体のchangePolyを直接使い、重複していたmap_id・map_compのsorry2個を除いた。数学的な入力・仮定は追加していない。
 
 同じ束のA4/PerfectoidizationとA3/LciAndQuasiregularは失敗。A3は同じloopを検査済みのformShift S 1で読み、普遍prism射の補題の実際の所有元の名前に合わせる。A4は保護されたP⁰節の外だけで、反復の構文・1単体の添字・pと有界性の引数・ホモトピー圏の表示を合わせる。A4の完備包含・反射・単位はA2の同じ界面を直接使う準備にした。包含は具体的で、反射の存在はA2側の従来の未証明入力のまま一つに集約する。反射の存在を新しく証明したとは扱わない。第48束で検査する。P⁰の保護領域は変更前後で同一と確認した。
+
+
+### 5∞-0 のdraft検査・第48束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第48束](bulk-5inf0/draft-block48-validation.json)でA4/Perfectoidizationが約41秒、A7/DiscreteCoreが約25秒で成功。有効な成功は37／57本。A4の本体への集約・明示の引数と塔の1単体・通常のホモトピー圏の表示が通った。P⁰の保護領域は基準efa846fe8とバイト単位で同一と再確認。この2本の検査済みソースをコミットする。
+
+A3/LciAndQuasiregular・A4/InterfaceFields・A7/AnimatedPerfectoidizationは失敗。A3は、同じPD完備化環のinstanceと構造射の生成元の法則を明示し、A1から移した最後のlciの定理の元のA・P・hPの文脈を復元する。直前のh₀の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)の範囲はハッシュも同一のまま。InterfaceFieldsは通常のホモトピー圏の表示とnerveMapの零単体の評価を明示する。A7は既に使うperfectoidizationFunctorの所有元がInterfaceFieldsであるため[依存表](bulk-5inf0/draft-staging-plan.json)にその1辺を補った（57頂点、循環0、既存の順序は有効）。A7の残る変更は既存の有界性を渡し、通常のホモトピー圏の脚に揃えるもの。第49束で検査する。

@@ -185,7 +185,8 @@
       "A2/BaseChangeAndTensor",
       "A4/Perfectoidization",
       "DerivedGeneral/CompletionFunctor",
-      "A7/AnimatedDomain"
+      "A7/AnimatedDomain",
+      "A4/InterfaceFields"
     ],
     "A7/AnimatedDomain": [
       "A2/AnimatedAlgebra",
@@ -397,5 +398,13 @@
     "A8/IntegralDiscreteness",
     "A9/Assembly"
   ],
-  "note": "Preamble comments plus explicit README edges; not a proof of imported declaration sufficiency. Protected input may be read/typechecked, never edited."
+  "note": "Preamble comments plus explicit README edges; not a proof of imported declaration sufficiency. Protected input may be read/typechecked, never edited.",
+  "dependency_corrections": [
+    {
+      "consumer": "A7/AnimatedPerfectoidization",
+      "dependency": "A4/InterfaceFields",
+      "reason": "Uses perfectoidizationFunctor declared in InterfaceFields; diagnosed in block48. The existing topological order remains valid.",
+      "cycle_check": "PASS"
+    }
+  ]
 }

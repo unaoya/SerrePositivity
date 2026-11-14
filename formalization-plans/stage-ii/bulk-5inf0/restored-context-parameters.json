@@ -76,6 +76,13 @@
       ],
       "reason": "Restore originally declared section variables omitted by sorry bodies; explicitly bind them. Coordinator authorization 2026-11-14 applies.",
       "validation": "PASS block38, current source unchanged"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+      "declaration": "prismaticCohomology_lci_universal",
+      "parameters": "A : Type u, CommRing A, P : OrientedPrism p A, hP : IsBoundedPrism P",
+      "reason": "Retain the existing A1 theorem context when moving it after the closed Lci section. No mathematical hypothesis is added.",
+      "validation": "pending block49"
     }
   ]
 }
