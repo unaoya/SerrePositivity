@@ -1722,3 +1722,20 @@ C04(d) の二段の底変換の法則（着手前の型、見込み40〜100行�
 G1・G2共用部品込み本体11,036行、入口込み11,224行。C04 は本体620行まで検証。一般の標的の有限 affine 被覆上での降下と貼り合わせ、一般の固有性の降下、被覆模型・図式の整合性は残り、C04 と B01〜B04 は未完。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+C04(d) の一つの affine な標的への制限（着手前の型、見込み80〜200行）：`exists_closedImmersion_restricted_stage` は affine 遷移の cofiltered な基底図式 D と実際の極限、段 i への affine・局所有限型の射 f、affine な源 V を持つ射 r:V→D(i) について、f の極限への底変換が閉埋め込みなら、ある j→i で `pullback.fst (pullback.snd (D.map j.hom) r ≫ r) f` が閉埋め込みと返す。V の底変換の図式と f のさらに先の底変換の実際の極限・自然変換を既存の flatStageModel の構成で供給し、上記の affine Cartesian な極限の補題を適用する。C04 内の証明分割で、r に開包含や f に固有性・Noether 性を仮定せず、有限被覆の各制限に用いる。
+
+
+C04(d) の有限個の制限の共通段（着手前の型、見込み30〜80行）：`exists_finite_closedImmersion_restricted_stage` は有限個の affine な源 Vₐ と rₐ:Vₐ→D(i) に対し、前記の制限の射すべてが同じ j→i で閉埋め込みとなることを返す。各制限の段を cofiltered 性でそろえ、閉埋め込み性を実際の Cartesian な遷移に沿って保つ。既存の構成の有限族・底変換の法則で、親項目を増やさない。
+
+
+### C04(d)：制限の底変換の実際の比較と閉埋め込み性の移送
+
+`ClosedPullbackComposite`（39行）：`pullbackCompositeMap` は合成に沿う実際の底変換から一段目の底変換への射。`isPullback_pullbackCompositeMap` はその射と第二射影の正方形の Cartesian 性。`isClosedImmersion_pullback_snd_of_composite` は指定された合成への底変換で閉埋め込み性を保つ法則。
+
+本体39行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,975ジョブ成功。小監査5宣言・標準三公理のみ。単独束の終了状態0と公開前のソース完全一致を確認済み。下書きで section の証明だけに現れる合成の因子・等式を include し、既存の底変換の法則の向きに合わせて検証した。ログ `2g-closed-pullback-composite-check-3.log`・`2g-closed-pullback-composite-native.log`・`2g-closed-pullback-composite-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,075行、入口込み11,264行。C04 は本体659行まで検証。有限 affine 制限と共通段の下書きは未検証で実測に含めない。一般の閉埋め込み性と固有性の降下、被覆模型・図式の整合性は残り、C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。

@@ -1473,3 +1473,4 @@ public import SerrePositivity.AlgebraicGeometry.PushoutRingGenerators
 public import SerrePositivity.AlgebraicGeometry.FiniteTypePushoutSurjectivityLimit
 public import SerrePositivity.AlgebraicGeometry.AffineCartesianClosedLimit
 public import SerrePositivity.AlgebraicGeometry.AffineClosedPullbackLimit
+public import SerrePositivity.AlgebraicGeometry.ClosedPullbackComposite
