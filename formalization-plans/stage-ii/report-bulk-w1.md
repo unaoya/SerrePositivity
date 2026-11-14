@@ -1008,3 +1008,12 @@ CrystallineSiteは元からあったR̄という結合文字つきの識別子�
 一覧：済み 8／全体 14（うち追加 0）。[第38束](bulk-5inf0/draft-block38-validation.json)でA1/CrystallineSiteが約46秒で成功し、有効な成功は32／57本。本体のpdCechNerveの変数の宇宙に合わせ、有限変数をULiftで持ち上げ、変数の対応はj↦j.downと明示した。hp・hgenを意図した引数に戻した型も通った。検査済みのソースをコミットする。
 
 更新後の本体全域の同名候補0、import allを含む所有元への到達の欠落0、57本から旧E3入力への経路0（閉包12,938モジュール）をPythonで再確認した。HodgeTateFiltrationは、旧loopFunctorが通常のホモトピー圏の関手だったため、同じ既存のloopDiagramTargetEquivalenceの逆射と左下の評価を合成する∞関手へ参照を合わせる。ほかはYonedaの定数の法則・letのスコープ・合成の括弧の明示で修正し、第39束で検査する。新しいloopの存在定理・仮定・sorryは加えない。
+
+
+### 第39束の待ち時間中の後続の準備（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[全57本の状態](bulk-5inf0/draft-validation-after38.json)を第38束時点で保存した。成功32、修正後の再検査待ち1、未実行24。成功行には現在のソース・成果物のSHAを付け、元の古い形式のreceiptに成果物のSHAがなかったものはその区別も残した。A4のP⁰の保護領域は基準とバイト単位で同一と再確認。
+
+DeRhamComparisonPolyの[23参照](bulk-5inf0/de-rham-universal-specialization-followup.json)は、本体のUniversalWittComparisonの既存の普遍基底の特殊化へ合わせる準備をした。正則性・完備性はその本体版の中で証明済みのものを使い、draftへ強い仮定を足さない。ほかに[所有元が確定した5参照](bulk-5inf0/remaining-unqualified-reference-refresh.json)を完全名へ直した。これらのソースは前提待ちで未検査のため、まだコミットも成功への算入もしていない。変更量はこの時点で追加・削除計約5,200行、外枠11,100行。
+
+一時の束の実行器は、同じ走査内の依存署名の判定を再利用するだけのメモ化を加え、各Lean実行の前には全判定を取り直す。検査器本体と署名の一致条件、280秒の外側の打切りは維持。共有鍵の要求は同時に1本だけで、待ち時間を検査時間や成功に数えない。
