@@ -11775,3 +11775,85 @@ theorem strictBETotNativeConeAt_isLimit_of_sourceRestriction
         coneSectionRestriction (strictBETotNativeConeAt A F) (coherentNerveVertex X))) :
     IsLimitCone (strictBETotNativeConeAt A F)
 ```
+
+## 184. 元のright frame Homの全始域作用と普遍BK錐の射での正規化（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R03のhe・無条件の極限性、R02の全錐族は未完了。
+
+既存のcoyonedaを同じright frame図式へwhiskeringすることで、`rightFrameHomBifunctor` を二変数の全関手としてまとめた。固定始域での値は元のrightFrameHomそのもの。始域の作用は既存 `MixedFrame.rightSourceMap` の前合成そのものであり、元のrightFrameHomUnitもこの始域の作用について厳密に自然である。
+
+BEでは既存probe関手を前合成し、元のraw Hom係数とweighted Hom係数を全始域で束ねた。元の `strictBETotProbeCoefficientsIso` は全始域の自然同型としても両立する。元のprobe・frame・係数・射を変更していない。
+
+さらに元の射 f : Y → Tot(F) による同じ普遍BK錐の始域作用を、元のweighted Hom同値の同じ射 `framedLimitProbeComparison A Y ≫ f` の像へ正規化した。`strictBETotBKProbeArrowCone_comparison` は元の重み・添字図式間の**自然変換の厳密な等式**。係数同型の始域自然性、既存weightedCotensorHomEquiv_precomp、既存probe比較自然変換の自然性を合成した。新しい数学の項目ではなく、既存構成の係数移送・単位・前合成の法則である。
+
+### 184.1 検証と実測
+
+250：再利用する既存MixedFrameSource一本の依存ビルド1,723 jobs・終了0。251：新規二本と既存FramedLimitComparisonの依存を対象ビルドして5,113 jobs・終了0、小監査92本673宣言。252：普遍BK錐の始域正規化一本を対象ビルドして5,114 jobs・終了0、小監査93本678宣言。全て標準三公理のみ、実ハンドル43038・47206・83040の終了0を確認し、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。
+
+新規三本178行、累計93本・6,023行（外枠15,000）。各200行以下。既存構成の全係数の表示と自然性・単位則なので、追加の一覧項目は0。既存FramedLimit*はimportで使うだけで変更していない。CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainも変更していない。
+
+個別検査では未ビルドの既存API依存を250・251でビルドし、probe自然変換の成分を一般の対象で先に照合した。計算対象の不透明なendを展開して計算上限を上げる方法は取っていない。
+
+### 184.2 まだ必要なcoherentな接続
+
+ここで示したのは元の通常圏の**全始域関手と厳密な自然変換の法則**であり、固定始域ごとの全Hom∞比較を始域にも自然とした結果ではない。nativeな標準族aの制限と元のweighted Hom同値を結ぶheには、同じ単位で正規化された両変数の比較か、それと同等な全パラメーターの評価則が必要である。
+
+次の紙の確認では、今回の二変数raw Hom関手を同じAsSmall・ULift・Ex∞でKan図式にした全coherent入力と、同じCAlg源の二変数 `twistedArrowHomInfinity` の入力を同じ底で揃える。固定始域の制限が既存 `strictBETotProbeFrameHomInfinityIso` とどう一致するかも型に含めて検討する。点ごとのHom同値やπ₀の自然性だけで、全joint比較やheを閉じたと主張しない。新しい中間定理が要ると分かった段階で、§19に従い実際の型と1,500行以内かどうかの見込みを記録する。
+
+### 184.3 今回の既存構成の法則の型
+
+#### RightFrameHomBifunctor（56行）
+
+```lean
+def rightFrameHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+theorem rightFrameHomBifunctor_obj (X : C) :
+    (rightFrameHomBifunctor r).obj (Opposite.op X) = rightFrameHom r X
+
+theorem rightFrameHomBifunctor_map {X Y : C} (f : X ⟶ Y) :
+    (rightFrameHomBifunctor r).map f.op =
+      Functor.whiskerLeft (rightFrameDiagram r) (MixedFrame.rightSourceMap f)
+
+def ordinaryHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+theorem rightFrameHomUnit_source {X Y : C} (f : X ⟶ Y) :
+    ordinaryHomBifunctor.map f.op ≫ rightFrameHomUnit r X =
+      rightFrameHomUnit r Y ≫ (rightFrameHomBifunctor r).map f.op
+```
+
+#### StrictDiagramTotProbeSourceFunctor（60行）
+
+```lean
+def strictBETotProbeRightHomBifunctor :
+    (operad A).Algebraᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u}
+
+def strictBETotProbeRightHomSourceFunctor (F : K ⥤ (operad A).Algebra) :
+    (operad A).Algebraᵒᵖ ⥤ Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+theorem strictBETotProbeRightHomSourceFunctor_obj (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    (strictBETotProbeRightHomSourceFunctor A K F).obj (Opposite.op Y) =
+      strictBETotProbeRightHomDiagram A K F Y
+
+def strictBETotProbeCoefficientsSourceFunctor (F : K ⥤ (operad A).Algebra) :
+    (operad A).Algebraᵒᵖ ⥤ Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def strictBETotProbeCoefficientsSourceIso (F : K ⥤ (operad A).Algebra) :
+    strictBETotProbeRightHomSourceFunctor A K F ≅ strictBETotProbeCoefficientsSourceFunctor A K F
+```
+
+#### StrictDiagramTotUniversalSourceNaturality（62行）
+
+```lean
+def strictBETotBKProbeArrowCone (F : K ⥤ (operad A).Algebra)
+    {Y : (operad A).Algebra} (f : Y ⟶ (framedLimitFunctor A K).obj F) :
+    SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight
+      Kᵒᵖᵒᵖ ⟶ strictBETotProbeRightHomDiagram A K F Y
+
+theorem strictBETotBKProbeArrowCone_comparison (F : K ⥤ (operad A).Algebra)
+    {Y : (operad A).Algebra} (f : Y ⟶ (framedLimitFunctor A K).obj F) :
+    strictBETotBKProbeArrowCone A K F f ≫ (strictBETotProbeCoefficientsIso A K F Y).hom =
+      HomotopyWeight.bkFramedWeightComparison K ≫
+        weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) (framedLimitProbe A Y)
+          (framedLimitProbeComparison A Y ≫ f)
+```
