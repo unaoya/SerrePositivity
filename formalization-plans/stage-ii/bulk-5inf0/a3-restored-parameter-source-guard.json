@@ -1,0 +1,23 @@
+{
+  "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+  "base": "efa846fe8",
+  "authorization": "Coordinator reply 2026-11-14: restore h₀ dropped by sorry, and same cases in other drafts; report each",
+  "data_fields": [
+    {
+      "field": "deltaStructure",
+      "unchanged": true,
+      "source": "completedFreeDeltaStructure P₀ (ULift.{u} (Fin r))"
+    },
+    {
+      "field": "generator",
+      "unchanged": true,
+      "source": "completedFreeDeltaBase P₀ (ULift.{u} (Fin r)) P₀.generator"
+    }
+  ],
+  "regularity": "completedFreeDelta_generator_regular P₀ h₀ (ULift.{u} (Fin r))",
+  "status": "source audit PASS; whole A3 typecheck waiting for predecessor drafts",
+  "current_constructor_call_occurrences": 16,
+  "original_calls_retargeted": 14,
+  "extra_current_occurrences": "Two occurrences in the expanded proof of lciClassifyingMap (the constructed Hom and its generator compatibility); these are existing-law proof steps, not additional definitions.",
+  "ring_definition_unchanged": true
+}

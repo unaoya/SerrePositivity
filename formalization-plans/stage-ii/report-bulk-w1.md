@@ -996,3 +996,8 @@ READMEも現在の本体への追従・隔離した型検査の手順・保護�
 [現在のソース上のsorry](bulk-5inf0/all-draft-sorry-summary.json)は、保護されたSharedを除く56本で819→679、A0〜A9は705→572。未検査の変更を含むため完成の数とはしない。Leanの追加・削除の計は5,137行（第36束後の測定）、外枠11,100行。
 
 CrystallineSiteは元からあったR̄という結合文字つきの識別子をコードだけRbarに直し、本文の表記は維持。0宇宙の添字圏のnerveは同じ関手の射列ごとの合成で持ち上げた。sorryのため落ちていたhp・hgenも[引数の台帳](bulk-5inf0/restored-context-parameters.json)に加え、承認された規則で意図した型に戻す。これとHodgeTateFiltrationは未成功で、続く束で検査する。
+
+
+### A3 の意図した引数の復元の保存確認（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[ソースの保存確認](bulk-5inf0/a3-restored-parameter-source-guard.json)で、環の略記・δ構造・生成元の式が基準efa846fe8と同一であることを確認した。事前に一覧にした14参照へh₀を渡している。現ソースには、既存の普遍性を用いるlciClassifyingMapの証明に明示したHomとその生成元の法則の2出現を加えて16出現ある。正則性は承認どおりcompletedFreeDelta_generator_regularから得る。全A3の型検査は前提待ちなので、まだ成功には加えない。
