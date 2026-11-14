@@ -10267,3 +10267,139 @@ C189の局所法則は`step {M N P : ModuleCat A} (hMN : M = N) (hNP : N = P) (y
 新規82行、L09a・L09 5,677行、M14 10,743行。sorry・追加公理0。
 登録候補：`SerrePositivity.EInfinity.SimplexCuts.DeletedSmallCutTensors`。
 一覧：済み 8／全体 48（うち追加 4）。
+
+## 128. 内部の水平面の元の実テンソル（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C190–C192は既存C89・C184・C189の係数移送と貼り合わせの法則。
+新しい組合せ分解はなく、有限点検済みのC89の削除列をそのまま各色へ写す。
+次数等式`h`を明示して共通次数の指定移送を固定し、ホモトピー圏へは移らない。
+型は次のとおり。いずれも200行以内。
+
+```lean
+lemma deletedVerticesList_horizontalDeletion {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (a b : Fin (m + 1 + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Fin (m + 1) → Fin r) (hw : w = Surjection.erase v (s.horizontal a.succ))
+    (c : Fin r) :
+    deletedVerticesList s v a.succ c =
+      verticesList ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w c
+
+lemma deletedCutTensor_horizontalDeletion {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌)
+    (h : -((m + q + 1 - r : ℕ) : ℤ) = -((m + 1 + q + 1 - r : ℕ) : ℤ) + 1) :
+    deletedCutTensor A S s v (label s v.val a.succ) hd j x =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensorAt A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+
+lemma signedDeletedCutTensor_horizontalDeletion {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌)
+    (h : -((m + q + 1 - r : ℕ) : ℤ) = -((m + 1 + q + 1 - r : ℕ) : ℤ) + 1) :
+    outputBoundarySignAt s v a.succ • deletedCutTensor A S s v (label s v.val a.succ) hd j x =
+      Surjection.deletionCoefficient v.val (s.horizontal a.succ) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 128.1 元の境界項への貼り合わせ
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C193–C194も既存構成の次数移送・貼り合わせの法則。C193は既存`Surjection.Word.arity_le_length`と整数計算だけ。
+C194はC192とC164を合わせ、正の出力次数`hd`を明示した内部面について元の境界項を照合する。
+水平の端点・無効な削除語・零出力次数の扱いはなお残り、全hcの完了とは扱わない。
+
+```lean
+lemma horizontalDeletion_degree_eq {m q r : ℕ} (w : Surjection.Word r (m + 1)) :
+    -((m + q + 1 - r : ℕ) : ℤ) = -((m + 1 + q + 1 - r : ℕ) : ℤ) + 1
+
+lemma outputBoundaryTerm_horizontalDeletion {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val a.succ) j x =
+      Surjection.deletionCoefficient v.val (s.horizontal a.succ) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 128.2 正次数の前提の供給
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C195はC150の削除リストの長さとC149の既存の長さの式から従う算術の法則。
+C196はC190・C194・C195の貼り合わせで、出力の正次数を外部の仮定として残さない。
+無効な削除語と端点はなお別の残作業。いずれも200行以内。
+
+```lean
+lemma outputDegree_pos_of_deleted_vertexLists {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c) :
+    0 < outputDegree s v (label s v.val k)
+
+lemma outputBoundaryTerm_horizontalDeletion_valid {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val a.succ) j x =
+      Surjection.deletionCoefficient v.val (s.horizontal a.succ) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 128.3 検証と取り込み候補
+
+一覧：済み 8／全体 48（うち追加 4）
+
+次の3モジュール、計166行を対象ビルドと小さい監査で検証した。
+接頭部は`SerrePositivity.EInfinity.SimplexCuts.`。共通入口・共通監査には触っていない。
+
+- `HorizontalDeletedTensors`：69行（C190–C192）。
+- `HorizontalBoundaryTerms`：48行（C193–C194）。
+- `HorizontalValidTerms`：49行（C195–C196）。
+
+最終対象ビルドは`/tmp/bsw16/m14-horizontal-valid-terms-02.log`、
+**2,271 jobs成功・警告0**。最初の型検査でC194の次数等式の引数の省略が解決されず、
+既に証明済みのC193を明示して修正した。次のビルドで出た`if_pos`の非推奨警告は
+`ite_eq_left`へ直し、最終ビルドで解消を確認した。
+監査は別の一回の鍵で`/tmp/bsw16/audit-m14-horizontal-valid-terms.lean`を実行し、
+**3モジュール・10宣言・標準三公理のみ**で成功（`m14-horizontal-valid-terms-audit.log`）。
+先の一モジュール監査では内部に生成された補助も含め4宣言を確認し、
+最後は上の3モジュールすべてを明示して改めて監査した。
+各ビルド・監査で整理券は一枚、鍵は実行中だけで、終了と返却を確認した。
+sorry・追加公理0、`git diff --check`成功。
+
+§127の82行と合わせ、B4後の追加は248行。L09a・L09累計 **5,843行**、
+改訂MayのM14全体 **10,909行**。次のL09a・L09の1,000行区切りは約6,600行、
+M14半分の12,500行と外枠25,000行には未到達。
+
+有効な削除語を持つ内部水平面について、正次数の仮定を供給した上で元の境界項を
+小さい切断の指定項へ接続した。等式は元の加群のもので、ホモトピー圏へ弱めていない。
+残りは水平の両端・無効な削除語の零・全添字の貼り合わせ、垂直hvと全相殺。
+L09a・L09全体を閉じたとは扱わず、§121・§123.5の規模リスクも据え置く。
+
+B4取り込み点は595254e10の106本のまま。B4後の新規4モジュールは§127・§128に
+別途登録候補を記したので、B4の106本の監査に含まれるとは扱わない。
