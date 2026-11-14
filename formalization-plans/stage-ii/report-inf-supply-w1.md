@@ -5973,3 +5973,60 @@ lemma leftClassificationSquareHom_pullback {A B H : SSet.{u}}
 計算上限は不変。ログ：`/tmp/is-w1/classified-pullback-square/build-2.log`。
 今回43行、検証済み累計141本・11,514行。E01本体は未了。
 次は§55.32の指定単位比較を検証する。
+
+
+## 56. E01 の指定単位：本文の分割案への判断依頼（未適用）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+### 56.1 検証結果と停止理由
+
+§55.32 は終了コード1。`unit_heq_precomposeChosen` の kernel 検査で
+`deterministic timeout`（75行）、その後の unknown constant はこの失敗に伴うもの。
+ログは `/tmp/is-w1/unit-generalized-arrow/build.log`。一般化した分類射を元の
+指定単位へ戻す境界が未解決であり、E01 を完成とはしない。
+計算上限は変更していない。検証済みは aafc59d54 までの141本・11,514行。
+未検証の三本は作業木に残し、コミットしない。
+
+既存の G2 定義を分割する次案は指示書 §2.1 の
+「G1・G2 の既存の宣言の本文・型・名前は変えない（どうしても要るときは止めて報告）」
+に当たるため、ここでこの経路の実装を止めて判断を依頼する。
+数学的な不可能性を示したという意味ではなく、これまでの局所化だけでは
+元の指定単位への検査が通らなかったという計算上の根拠である。
+
+### 56.2 具体的な未適用差分
+
+`inf-supply-e01-refactor-proposal.patch` に二ファイルの差分を保存した。
+新規 `HomWeightJointClassificationHom.lean` に元の内部の分類射 α を
+`homWeightJointClassificationHom` として切り出し、
+`HomWeightYonedaUnit.lean` の `functorHomBifunctorUnit` 内の α の右辺だけを
+その名前へ置き換える。元の名前・公開型・局所 instance・最終の前合成の射作用は保持する案。
+補助定義は元の三つの import だけに依り、元の単位を import する循環は作らない。
+補助定義の積の準圏と LeftFibration の instance 引数は元の呼び出し側で供給する。
+完全な型と右辺は patch に記載した。新たな数学的存在主張を追加する案ではない。
+
+これは未適用・未検証の提案であり、定義的等しさや kernel 検査の改善を
+検証済みとは主張しない。承認後は新規補助定義、元の単位、直接 importer
+`HomWeightUnitEvaluation`・`HomWeightYonedaLeftKan`、今回の単位比較を順に対象検証し、
+宣言の小監査を行う。入口 `F2PresentableSupplyAll` は登録用なので変更しない。
+この分割でも通らなければ結果を記録し、計算上限や数学的入力を強めず再報告する。
+
+### 56.3 R3 の利用側の照合材料（紙のみ）
+
+- 本体 `CAlgUnderlyingDerivedComparison.algebraCAlgSource_underlyingDerivedIso` は
+  `FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A)
+  (algebraUnderlyingDerivedSource A)`。これは普通の BE 代数圏からの同じ全関手の比較で、
+  任意の coherent 図式に strict な BE 表示があるという存在結論ではない。
+- drafts `Shared/CosimplicialEInfinity.totEInfinity_isLimitCone` は入力が
+  `(X : CosimplicialAlgebra A)`。この型だけなら strict な図式の評価と指定錐の比較が
+  対象であり、任意の coherent 図式の strict 化は入力に現れない。
+- 本体 `PreservesSmallSiftedColimits F` の定義は、任意の sifted な小さい I、
+  任意の `D : ulift I ⟶ X`、指定余錐 c に量化する。
+  drafts `A2/DerivedPrismaticCohomology.derivedPrismaticCohomology_preservesSifted`
+  もこの性質を結論にしている。strict な図式のみに限定した保存ではこの型を満たさない。
+  ⑤a の 5a-4 が別の一般的帰着を使うか、任意の coherent 図式を strict 化するかは
+  利用側の判断が必要。加群版 R3 だけで BE 作用の strict 表示を得たとはしない。
+- ③-b §38.2 の3の照合は既存 §40.3 の整理を維持する。
+  現在のローカルおよび main の `report-inf-supply-w2.md` は §21 までで、
+  §38.2 の原文は今回再確認できていない。この点を新たに検証済みとはしない。
+  R3 の Lean は作らない。
