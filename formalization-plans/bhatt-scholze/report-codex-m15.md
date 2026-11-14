@@ -9299,3 +9299,372 @@ A5 の Lemma 8.6 の descendability 判定・RHom・完備版・降下を完成�
 この紙の照合後も M15・G12 の元の目標は未完で、外枠の指示待ちである。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+## §66 BS-M15 §6：厳密表示の調査結果（11-15、紙のみ）
+
+**結論：四つの利用対象すべてが、現在の宣言から厳密 BE 図式の像として与えられる、とは確認できない。**
+通常の環の射・図式には厳密な BE の像を作る既存経路がある。しかし A5 が使うのは
+それらに prismatic コホモロジー、Frobenius の余極限、完備化を施した辺・図式であり、
+その全関手を同じ厳密 BE 図式の像と結ぶ比較は、現在の指定データに含まれていない。
+AmitsurData はそもそも任意の native な増大図式を入力する構造体である。
+これは厳密表示の数学的不可能性を述べる結論ではなく、現時点の供給・証明の境界である。
+
+調査基準は自枝 7f6cf9595 と main 530cc801e（BS-M15 §6）である。
+⑤a の worktree（HEAD 0a1a56e13）と③-b の worktree（HEAD 57705f223）は読み取りだけ行った。
+main の §6 は git show で読み、merge はしていない。Lean・drafts・他レーンのファイルは変更しない。
+宣言の形は最新 main の drafts も git show で再確認した。以下の行番号は自枝の参照時の番号で、
+main では名前空間整理等で移動している。宣言名を照合の主キーとする。
+main では perfectPrism の係数・prism が Semiperfectoid.ainfClassical* を使い、
+completeCAlgInclusion は prismCompleteInclusion の略記になっている。
+これは係数と包含の供給の更新であり、以下の使用図式の StrictPresentation の供給ではない。
+以下の型は**紙上の出力仕様**であり、新しい Lean 宣言・instance を追加した記録ではない。
+
+### 66.1 「像として与えられる」の検収条件
+
+略記を固定する。
+
+```lean
+Alg := (operad A).Algebra
+B   := CAlg_R A
+q   := algebraCAlgSource A       -- nerve Alg ⟶ B、既存
+C X := strictModuleInfinity A X -- 既存、X : Alg
+```
+
+一つの strict な環射を見つけるだけでなく、次の全図式の比較を必要とする。
+
+```lean
+-- K は通常の小さい圏。universe の up/down は指定添字比較を入れて読む。
+StrictPresentation (D : nerve K ⟶ B) :=
+  Σ F : K ⥤ Alg, FunctorIso (nerveMap F ≫ q) D
+
+-- 一辺は K = WalkingArrow。比較は Δ[1] 上の全関手の同型。
+-- f.edge と (nerve.edgeMk g).map q の両端も、この同じ比較の成分で結ぶ。
+```
+
+頂点別の VertexIso だけではこの出力に達しない。rootCover では K の増大を含む
+WithInitial K 上の全関手を比較し、元の vertex・全脚を同じ比較で移送する。
+Amitsur では AugmentedSimplexCategory 全体、Frobenius では ℕ の全図式と
+指定遷移辺を比較する。添字の up/down 同型もその比較に含める。
+元の余極限・極限性を使う場合には、その同じ増大錐・余錐の比較がさらに必要である。
+
+### 66.2 四つの利用対象の出所と判定
+
+| 対象 | drafts の実際の構成 | 確認できる厳密な入力 | prismatic な BE 出力の判定 |
+|---|---|---|---|
+| deltaRootEdge | A5/StrongDescent:53 polynomialRootArrow を :57 deltaRootEdge で discreteDeltaFunctor に送る | polyAlgebraToRoot の通常環射から Under の射を作る形。Under の可換性の証明は draft の sorry | **未供給**。使用する一辺への制限の StrictPresentation は、その宣言に含まれない |
+| perfRootEdge | StrongDescent:60。上と同じ通常環射を directPerfectionFunctor へ送る | 同じ入力の通常射 | **未供給**。completePerfectionFunctor・Frobenius 塔・完備化の厳密図式と全比較がない |
+| AmitsurData.diagram | Shared/Descendable:179 の diagram フィールド。任意の増大形状から E.CAlg A への写像 | 厳密表示はフィールドで要求されていない | **一般には入力として与えられていない**。A5 に使う一つの実図式について別途全比較が必要 |
+| rootCover の錐 | A5/WeaklyInitialAndDescent:266 rootCoverArrow、:270 rootCoverCech、:273 rootCoverShape、:278 rootCoverAugmentedCone、:304 directPerfectionFunctor による mapJoinCone | 完備化した通常の環の cosimplicial 図式の形。shape の自然性と全増大錐は draft の sorry | **入力の環図式の形は厳密**。A5 が結論で使う prismatic な錐の厳密表示は未供給 |
+
+「draft の sorry」はその箇所が現在検証済みでないことを示す。通常環の型で書かれたデータと、
+証明済みの厳密 BE 出力を同一視しない。
+
+### 66.3 既存本体が実際に与える経路
+
+DiscreteAlgebra.lean:33 の discreteAlgebraFunctor は
+CommAlgCat A ⥤ Alg という**実際の通常関手**である。
+CAlgDiscreteEmbedding.lean:27 の discreteCAlgEmbedding は定義どおり
+nerveMap (discreteAlgebraFunctor A) ≫ q。
+CAlgDiscreteDerivedComparison.lean:26 の discreteCAlgUnderEmbedding はさらに
+commAlgCatEquivUnder の逆関手の nerve を前合成する。
+Theory.lean:35 の barrattEcclesCore.discrete は、この同じ Under 版である。
+従って、与えられた通常の A 代数図式 D₀ : K ⥤ Under (CommRingCat.of A) については、
+
+```lean
+F₀ := D₀ ⋙ (commAlgCatEquivUnder (CommRingCat.of A)).inverse ⋙ discreteAlgebraFunctor A
+nerveMap F₀ ≫ q
+```
+
+が指定された離散 BE 図式を表す。rootCover の係数を A = perfectPrismRing p R にするときは、
+元の R 代数構造に perfectPrismTheta : A →+* R を前合成してこの経路を使える。
+これで rootCover の**離散代数としての**図式や
+prismatic site の構造環の図式を扱える。Δ や Δ_perf の図式とは異なる。
+
+A4/Perfectoidization:128 の discreteDeltaFunctor は、係数環の同定の nerve の後で
+A2 の derivedPrismaticCohomologyDiscrete と completeCAlgInclusion を合成する。
+A2/DerivedPrismaticCohomology:271 の離散版は discreteToAnimated ≫ derivedPrismaticCohomology。
+:226 の導来版は、∞ 圏の siftedLan で選んだ拡張である。
+PolyDeltaData は ∞ 関手、obj_eq と評価の比較を持つが、通常関手 Poly ⥤ Alg と
+その像との全 FunctorIso をフィールドに持たない。
+多項式値についての :140 prismaticCohomologyCAlg_eq_totEInfinity も VertexIso の存在であり、
+discreteDeltaFunctor 全体の StrictPresentation ではない。
+
+A4:348 の directPerfectionFunctor は :344 completePerfectionFunctor に
+completeCAlgInclusion を後合成する。completePerfectionFunctor 自体は draft の sorry で、
+関手圏での Frobenius 塔の余極限と反射を要求している。
+restrictionSequence:111 も native な後続辺を指定して高次合成を選ぶ構成であり、
+通常関手 ℕ ⥤ Alg の宣言ではない。A2 の frobeniusExtension:253 も native な関手圏の辺。
+従って、Frobenius の頂点を一つずつ厳密表示しても perfRootEdge の全比較はまだ得られない。
+
+### 66.4 既存の比較・Tot が解決する部分と残る部分
+
+CAlgAlgebraSource.lean の q は既存の cofibrant 置換と cAlgLocalizationSource の合成である。
+CAlgCoefficientSourceComparison.lean の cAlgLocalizationSource_algebraIso と
+algebraCAlgSource_descendIso は、源ですでに構成した関手の比較を降ろす部品として使える。
+任意の D : nerve K ⟶ B に通常関手 F : K ⥤ Alg を割り当てる出力ではない。
+
+③-b の StrictDiagramTotalizationComparison.lean の strictBETotVertex と
+StrictDiagramTotNativeConeAt.lean の strictBETotNativeConeAt も読んだ。
+入力は F : AsSmall SimplexCategory ⥤ Alg であり、同じ framedLimitFunctor の対象と
+その指定 native 錐を出す。これは**厳密図式をすでに持つ場合**の有用な再利用先である。
+A2 の Kan 延長や A4 の完備余極限の全関手を、そのような F の像へ戻す宣言ではない。
+⑤a の May 系列の部分構成も A2/A4 の上記全関手比較を供給する宣言としては確認できなかった。
+他レーンの未マージの構成は、現在の自枝の検証済み依存としては数えない。
+
+### 66.5 厳密ルートを選ぶなら先に必要な証人
+
+使用する図式について次の証人を**構成して証明する**必要がある。
+仮定の欄に足して M15 の完了にしない。A_R R 全体の ∞ 関手を一つの通常関手へ
+厳密化する出力は十分条件だが、今回の特殊な定理のための最小条件ではない。
+
+```lean
+-- P0: 使用する一辺ごとの表示。I₁ := Fin 2 の通常の順序圏。
+-- Eδ n, Eperf n は N(I₁)≅Δ[1] で元の二辺を引き戻した同じ図式。
+Fdelta (n : ℕ) : I₁ ⥤ Alg
+edelta (n : ℕ) : FunctorIso (nerveMap (Fdelta n) ≫ q) (Eδ n)
+Fperf (n : ℕ) : I₁ ⥤ Alg
+eperf (n : ℕ) : FunctorIso (nerveMap (Fperf n) ≫ q) (Eperf n)
+-- BE は barrattEcclesTheory に固定する紙上の略記。
+
+-- P1: A5 で実際に使用する Amitsur 図式 d_use の増大までの表示。
+Fam : AugmentedSimplexCategory ⥤ Alg
+eam : FunctorIso (nerveMap Fam ≫ q) d_use.diagram
+-- d_use.base, zero, leg, term を同じ比較で移送。
+
+-- P2: 指定 rootCover の全増大錐の表示。
+Fcover : WithInitial SimplexCategory ⥤ Alg
+ecover : FunctorIso (nerveMap Fcover ≫ q) rootCoverAugmentedPrismaticDiagram
+-- 右辺は directPerfectionFunctor で送った元の rootCoverAugmentedCone の全写像。
+
+-- P3: 同じ指定 Frobenius Arrow 列の全表示。
+Fseq : (ℕ × I₁) ⥤ Alg
+eSeq : FunctorIso (nerveMap Fseq ≫ q) uncurriedSpecifiedFrobeniusArrowSequence
+-- 同じ cAlgRestrictScalars、指定遷移辺と余極限余錐を比較する。
+```
+
+加えて、A5 の一変数から多変数への帰着と底変換で**使う**有限図式を、同じ辺と
+その同じ合成で表示する。個々の辺の表示だけから、その正方形・高次の全図式の表示へは進めない。
+一般の AmitsurData 全体、すべての通常形状の図式の厳密化は要求しない。
+
+q の係数環は perfectPrismRing p R。添字 up/down と join/WithInitial の既存比較を挿入する。
+現在の named な構成からはこの使用図式の証人を取り出せない。
+その供給を先に行うなら、以下 §67 の条件付き厳密ルートを選択できる。
+それを供給しない場合、§68 の M10 全族ルートが一般の入口を満たす案である。
+
+## §67 厳密表示が供給される場合の残り：型つきの条件付き案
+
+この節は §66.5 の証人が供給された場合に限る。現在その条件が成立したとは報告しない。
+新しい ID を実装一覧へ追加したり、Lean 再開の承認と扱ったりしない。
+略記 C_X := strictModuleInfinity A X、U_X := strictModuleUnderlying A X、
+1_X := strictModuleUnit A X。X,Y,Z は Alg、g : X ⟶ Y は厳密射。
+以下は §1 の M11–M42 を厳密な底・厳密な射へ制限した出力型である。
+実際に示す適用は §66.5 の辺・正方形・増大図式・Frobenius 列とその必要な係数変更とする。
+
+### 67.1 一般の定義と特殊な適用の分離
+
+原典どおり、任意の安定対称モノイダル ∞ 圏 C で
+Desc_C(B) := thickTensorIdealGenerated C tensorWith B one_C を定義する。
+strict な場合だけを定義に組み込むのではなく、この一般定義を C_X に適用する。
+一般 native な R の全族 R ↦ Mod_R をこれで構成したとは言わない。
+全 R・全 f の IsDescendableOver の解釈まで先に求めるなら、定義の一般性だけでは M10 を省略できない。
+A5 の指定辺に対する解釈には §66.5 の全比較と、それに沿う同じ単位・fiber・tensor の比較を要求する。
+
+```lean
+-- 一般定義。tensorWith と one は C の実対称モノイダル構造から取る。
+Desc_C (B : V C) : Prop := thickTensorIdealGenerated C tensorWith B one_C
+-- 厳密底での指定辺の解釈。Y を g に沿って X-加群へ制限する。
+DescS (g : X ⟶ Y) : Prop := Desc_(C_X) (strictRestrict g (one_Y))
+IdxS (g : X ⟶ Y) (n : ℕ) : Prop := IsZeroHom (epsilonS g n)
+-- epsilonS は以下で実際に構成する指数射。ホモロジーの数値で定義しない。
+```
+
+### 67.2 出力型の一覧（各行は元の M 項目の制限）
+
+| 元の項目 | 厳密ルートで構成・証明する型 |
+|---|---|
+| M11–M14 | tensorS X : C_X ⊗ C_X ⟶ C_X とその実 SymmetricModuleTensor 構造、単位 1_X、全結合子・対称性・両単位子、∀M, IsExactFunctor (tensorSWith X M) |
+| M15 | strictExtend g の実対称モノイダル構造、指定された導来 pushout 正方形 Q の像に対する全関手底変換同型 |
+| M16–M18 | unitS g : Edge 1_X ((strictRestrict g).app _ 1_Y)、FS g : V C_X、同じ unitS の fiber 錐の極限性、powerS g n : V C_X、epsilonS g n : Hom_(h C_X) (powerS g n) 1_X、単位底での元の fiber・冪・射との同定 |
+| M19–M22 | 共通 IsThick と同じ tensorS での一般定義、DescS g ↔ ∃n, IdxS g n、単位底特殊化 |
+| M23–M27 | 指定導来 pushout の辺での DescS/IdxS の保存、厳密合成 g≫h に対する保存、使用する二辺の相対テンソルの保存 |
+| M28–M30 | strict な増大図式 Dbar : AugmentedSimplexCategory ⥤ Alg の像について moduleAmitsurS Dbar M : augmentedShape ⟶ C_X、IdxS g n → IsLimitCone (moduleAmitsurSAug Dbar M)、同じ d.aug の IsLimitCone |
+| M31–M33 | rhomS X : C_Xᵒᵖ ⊗ C_X ⟶ C_X、QCatAdjunction (tensorSWith X M) (rhomSWith X M)、Hom_(h C_X) M N ≃+ H⁰(U_X(rhomSObj X M N)) |
+| M34–M35 | fromBaseS X : D(A) ⟶ C_X、fiberSquareRHomS g L := U_X(rhomSObj X (powerS g 2) (fromBaseS X L))、DLE(-1)(fiberSquareRHomS g (unitComplex A)) → IdxS g 2 |
+| M36–M39 | completeS X s、completionS X s と包含への実 QCatAdjunction、完備 tensor/単位の実対称構造、完備圏の厚いテンソルイデアルによる定義・指数判定、台が完備な指定辺の通常指数から完備指数への保存 |
+| M40–M41 | 同じ厳密 ℕ×WalkingArrow 図式の像と指定余極限錐 c に対する (∀j, IdxS g_j n) → IdxS g_colim (2*n)、完備 Arrow 圏の同じ錐での完備版 |
+| M42 | 使用する完備な増大図式の同じ全脚を持つ錐について DescCompS g → IsLimitCone (moduleAmitsurCompSAug Dbar M)、M=1_X の元の CAlg 錐との比較 |
+
+補足の型を明示する。
+
+```lean
+-- fromBaseS は A 上の係数の拡大。L の平坦性は要求しない。
+fiberSquareRHomS (g : X ⟶ Y) (L : V (derivedInfinityCategory A)) :
+  V (derivedInfinityCategory A)
+
+-- s : Finset A。completeS は U_X の台が s 完備な頂点の充満部分準圏。
+completionS X s : C_X ⟶ completeS X s
+QCatAdjunction (completionS X s) (completeSInclusion X s)
+completeTensorS X s M N := completionS X s (tensorSObj X M.val N.val)
+
+-- 二相の strict な正方形でも通常の pushout で済ませない。
+-- hQ は q の像が指定された導来 pushout 錐であることの検証対象。
+(hQ : IsColimitCone (mapJoinCocone q strictPushoutCocone)) →
+  IdxS g n → IdxS gBaseChanged n
+```
+
+tensorS は単なる結合的 dg 代数 assocForget X の普通のテンソルではない。
+X の E∞ 構造に由来する相対対称モノイダル構造と全高次の比較を作る必要がある。
+任意の可換環上の BE 代数を strict 可換 dg 代数に置換する前提は入れない。
+単位・拡大・U・指数射の向きは §1 と同じものを保つ。
+相対内部 Hom・完備反射を存在する instance として引数に置く出力にはしない。
+個々の Koszul・Nakayama の証明は A5 に残す。
+
+### 67.3 補正つきの見込み（追加 Lean 行、条件付き）
+
+旧 §42 の残り見積りを「素の作業量」の基準に取り、型付きの全係数・単位・余単位・
+native な辺・Hom end の照合、完備反射の実構成を別途加重する。
+§69 の実測に従い、一律の無補正値や完成済み N01 の再加算は使わない。
+
+| 残りの束 | 素の基準 | 今回の係数（下端／上端） | 補正後 |
+|---|---:|---:|---:|
+| M11–M15 相対対称 tensor・底変換 | 1,800–2,800 | 2.5／4 | 4,500–11,200 |
+| M16–M20 fiber・指数射・thick の接続 | 450–850 | 2／3 | 900–2,550 |
+| M21–M27 指数判定・保存 | 900–1,500 | 2.5／4 | 2,250–6,000 |
+| M28–M30 同じ Amitsur 塔・無限 Tot | 600–1,000 | 3／5 | 1,800–5,000 |
+| M31–M35 全 RHom・評価・二乗指数判定 | 500–800 | 2.5／4 | 1,250–3,200 |
+| M36–M42 実完備反射・完備 tensor・完備降下 | 700–1,200 | 3／5 | 2,100–6,000 |
+| A5 の指定辺・図式との全比較の使用 | 300–700 | 2／3 | 600–2,100 |
+| **合計** | **5,250–8,850** | | **13,400–36,050** |
+
+これは §66.5 の厳密表示が**すでに証明されている場合**の追加量であり、その証人を作る費用は含まない。
+現状でこの値だけを外枠に足して strict ルートが実行可能とは結論しない。
+現在値との合計は 30,336–52,986 行、計画上の丸めは **31,000–53,000 行**。
+余分な native 全族を省ける可能性はあるが、相対 tensor・RHom・完備化自体の実構成は残る。
+厳密表示の橋の費用は、A2/A4 の実模型が供給される前にはこの区間に押し込めない。
+
+## §68 厳密表示が供給されない現状での M10 全族の残り
+
+これは元の M10 の**検収束への分割**であり、新しい一次 ID の追加ではない。
+略記 L_X := localizationNerve (strictRawModuleRelativeCategory A X)、K_X := strictRawModuleComparison A X、
+T₀ := moduleTotalInfinity A、p₀ := moduleTotalProjection A、
+b_X := q.app _ (nerveVertex X)。
+Fib π b は Δ[0] の頂点 b に沿う π の strict pullback。π が実 cocartesian fibration である模型で使う。
+source・unit・U の比較には、元の resolution と指定成分を使う。
+
+### 68.1 型つきの未完検収一覧
+
+```lean
+-- F1: 元の実三相データを閉じる。I_XPQ は元の全 frame 要素圏。
+triangle_XPQ : (Δ[2] ⊗ nerve I_XPQ) ⟶ dgNerve A (RightModule A D_X)
+-- 全 i : Fin 3 の標準面 face i : Δ[1] ⟶ Δ[2] について
+(face i ⊗ₘ 𝟙 _) ≫ triangle_XPQ = specifiedTriangleBoundary_XPQ i
+-- 指定三面は元の cone 円柱、元の評価円柱、元の pinched 族の interval 表示。
+-- 全面・退化の自然性と同じ実 .h を保つ。全三相 HA の証明を構成に含む。
+
+-- F2: 同じ K_X の全 Hom 誘導射の同値性と圏同値。
+∀ P Q, IsSimplicialHomotopyEquivalence (strictRawModuleProbeComparisonPinchedMap A X P Q)
+IsFullyFaithful K_X
+IsQCatEquivalence K_X
+-- 最初の P,Q は元の probe。全頂点への ES と Hom の全自然な移送も証明する。
+
+-- F3: 局所化後の元の固定底を全圏の指定 fiber と同定する。
+-- κ_X は既存の固定底包含から同じ全圏へ誘導する写像。
+κ_X : L_X ⟶ Fib π b_X
+IsQCatEquivalence κ_X
+-- K_X と κ_X の両比較で同じ元の正則加群と U_X を同定する。
+
+-- F4: 生の p₀ がそのまま inner fibration とは仮定せず、必要なら実際に模型を作る。
+moduleNativeFamily :
+  Σ (T : SSet.{u+1}), { π : T ⟶ B // CocartesianFibration π }
+qTotal : T₀ ⟶ moduleNativeFamily.1
+IsQCatEquivalence qTotal
+FunctorIso (qTotal ≫ moduleNativeFamily.2.val) p₀
+-- 単にこの構造を引数の Setup/instance にしない。
+
+-- F5: 元の全厳密射と全比較を底の局所化へ降ろす。
+transport_π ((nerve.edgeMk g).map q) : Fib π b_X ⟶ Fib π b_Y
+FunctorIso (κ_X ≫ transport_π ((nerve.edgeMk g).map q)) (extendLocal g ≫ κ_Y)
+-- extendLocal は同じ L_X→L_Y の derived 拡大。K を通すと既存 strictExtend g。
+-- 擬同型の底では transport が実同値。全 Δ[n] 上の合成・退化の比較を構成する。
+
+-- F6: 元の全族を指定 fiber の表示と U・単位付きで検収する。
+e_X : Fib π b_X ⟶ C_X
+IsQCatEquivalence e_X
+FunctorIso (κ_X ≫ e_X) K_X
+FunctorIso (transport_π ((nerve.edgeMk g).map q) ≫ e_Y) (e_X ≫ strictExtend g)
+-- さらに family 上の U の全関手、指定単位、単位・余単位の元の成分の比較。
+```
+
+ここで transport_π は cocartesian lift の実構成による全輸送であり、h 上の一射の選択ではない。
+strictRawModuleRestrictionPseudofunctor、strictRawModuleTotal、strictRawModuleTotalRelative と p₀ は
+既存。通常の cartesian lift や projection があることだけから、F3–F5 の ∞ 局所化後の
+fiber・cocartesian 性は結論しない。既存の一般の cocartesian 分類・fiber・局所化の部品を
+先に照合して使う。③系の一般理論を⑤dで作り直す費用は、下の見積りの基準外であり、
+追加の一般定理が必要と判明したら別に止まって報告する。
+
+### 68.2 M10 の補正つき見込み（現在からの追加量）
+
+| 検収束 | 現在の実装から残る素の作業量 | 補正係数（下端／上端） | 補正後 |
+|---|---:|---:|---:|
+| F1 全三角形・残る係数移送と全自然性 | 1,200–2,000 | 2.5／3 | 3,000–6,000 |
+| F2 同じ K の Hom 射・完全忠実性 | 600–1,000 | 2.5／3 | 1,500–3,000 |
+| F3 局所化後の全圏の指定 fiber | 500–900 | 3／3 | 1,500–2,700 |
+| F4 実 cocartesian 模型と元の全圏との比較 | 900–1,500 | 3／4 | 2,700–6,000 |
+| F5 底の局所化、全輸送・合成・高次単体 | 800–1,400 | 3／4 | 2,400–5,600 |
+| F6 同じ U・正則加群・全族の最終照合 | 300–600 | 2.5／3 | 750–1,800 |
+| **M10 残り合計** | **4,300–7,400** | | **11,850–25,100** |
+
+計画の丸めは **M10 だけで追加 12,000–25,500 行**。
+現在の 16,936 行を合わせると 28,786–42,036 行、丸めて **29,000–42,500 行**。
+これは M10 が閉じるまでの量であり、M11–M42 と G12 を含まない。
+§42 の M10 残り 1,500–3,000 行は撤回し、この区間へ更新する。
+F1 で既存複体側の全 triangle を再利用できても、F3–F6 の全族の検収は別に残る。
+
+## §69 数字の補正の根拠・範囲・判断材料
+
+1. §5.1 で M01–M09 の主出力が済んだ時点は 1,549 行。
+   以後 §63.1 までに 16,936−1,549 = **15,387 行**を追加した。
+   この中に追加 N01 の **693 行**を含む。N01 を除いても **14,694 行**で、
+   M10 の経路はまだ完了していない。旧 M06–M10 全体の上端 1,800 行に対しても約 **8.16 倍**ある。
+   これは M06–M10 の個別の正確な費用比ではなく、旧上端の規模判断が外れた下限を示す比較である。
+2. §42 の 8,500 行時点で M10 の残りを 1,500–3,000 行とした後、さらに
+   **8,436 行**を使っても全族は未完だった。旧上端の **2.812 倍超**が実際に必要となった。
+   この事実から、今後の全高次・Hom end・局所化後の fiber の未経験部分を係数 1 のままにしない。
+3. ただし全費用に一律 8.16 倍は掛けない。N01 は既存の実モデル転送の再利用により
+   旧 1,000–2,200 行に対して 693 行で済み、しかも完成済みなので再加算しない。
+   既に通った全三角形の普通二相・pinched 評価・単体の共役なども残量に二重計上しない。
+4. §67 は比較的局所的な fiber・thick を 2–3、相対 tensor・指数・RHom を 2.5–4、
+   まだ実構成していない無限塔・完備反射を 3–5 として積算した。
+   §68 の未知の全族・局所化後 fiber は旧上端の外れを踏まえて概ね 3–4、
+   既存の明示 triangle・K の比較の残りは 2.5–3 とした。
+   これらは形式的な定理や統計的な保証区間ではなく、作業計画のための補正・留保である。
+5. M10 全族ルートの後にも §67 と同じ実相対 tensor・指数・RHom・完備版が残る。
+   概算の単純和は **追加 25,250–61,150 行**、現在分込み **42,186–78,086 行**。
+   計画上は **追加 26,000–62,000 行、総量 43,000–79,000 行**程度を判断材料とする。
+   strict 使用図式の比較費用を native 適用の比較へ読み替えた粗い全体幅であり、
+   承認済みの外枠や「この上端で必ず完成する」という約束にはしない。
+   特に一般理論の不足を発見した場合や、A2/A4 の境界が変わる場合は見直す。
+
+判断の分岐は次のとおりである。
+
+- A2/A4 から §66.5 の**全関手・全増大の厳密表示**を供給できるなら、M10 の全族を後回しにして
+  §67 の厳密ルートを採る余地がある。その場合も一般の厚いテンソルイデアルの定義を保つ。
+- 現在の宣言のままでは、その厳密表示を入力として取り出せない。
+  §68 の M10 全族ルートを続けるか、使用図式だけの厳密表示を A2/A4 の作業として先に追加するかを
+  調整役が選ぶ必要がある。点ごとの模型の選択だけで strict ルートに切り替えない。
+- strict 図式の限界に閉じた既存 G10 の部品を、一般の図式の厳密化定理として使わない。
+  A5 の個々の Koszul・Nakayama の証明はこのどちらの見積りにも含めず、担当を維持する。
+
+## §70 紙の検収・今回の差分
+
+BS-M15 §6 の三点に対し、§66 が入力の出所と厳密性の判定、§67 が条件が成立した場合の
+残りの型と見込み、§68–§69 が現状で必要な M10 全族の型と補正つき見込みである。
+AmitsurData の任意入力と A5 の特定の実図式を分け、draft の sorry と検証済み本体の経路を区別した。
+「厳密表示がない」という調査結果を、数学的な厳密化不可能性や新しい仮定として使わない。
+
+変更は本報告の追記だけ。Lean・drafts・main・他レーンのファイルは変更せず、
+ビルド・監査・鍵の取得は行っていない。紙上の型はコンパイル済みと表示しない。
+検証済み Lean は前回の **222 ファイル・16,936 行・762 明示宣言（private 23）**のまま。
+M15 の Lean 停止を維持し、外枠・範囲の決定を待つ。G12 は開始していない。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
