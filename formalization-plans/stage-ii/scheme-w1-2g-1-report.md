@@ -2578,3 +2578,17 @@ B03・B04 の図式の圏の実装分割（着手前の型、見込み180〜350�
 G1・G2共用部品込み本体14,981行、入口込み15,231行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B03・B04 の被覆模型の始域を係数段で動かす法則（着手前の型、見込み60〜140行、前記500〜1,200行の内数）：filtered な実際の環の図式 F、係数環 A から各段への自然変換 α、元の cocone c と構造射 β:A→c.pt の可換式、固定の f:A→B から、各段の実際の pushout の図式・元の pushout への cocone・その IsColimit を返す。各段の Fⱼ からの射は自然変換で、cocone は pushout の両挿入と可換。Mathlib の `Under.liftCocone`・`Under.isColimitLiftCocone`・`Under.pushout` の左随伴性と forget の filtered 余極限保存を使い、tensor の余極限を別に作り直さない。
+
+
+### B03・B04：実際の被覆模型と可換な射の登録
+
+`CoefficientVCoverModelObjects`（59行）：`coefficientVCoverModelObj` は有限型 k-代数の v 被覆と元の写像への可換な正方形を、実際の模型の対象にする。`coefficientVCoverModelHomMk` は基底・始域の二つの代数写像と三つの可換式から模型の射を作る。恒等模型により模型の圏の Nonempty を供給する。filtered 性はまだ結論しない。
+
+本体59行・入口1行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,039ジョブ、小監査7宣言・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-vcover-model-objects-check-2.log`・`2g-coefficient-vcover-model-objects-native.log`・`2g-coefficient-vcover-model-objects-audit.log`。
+
+G1・G2共用部品込み本体15,040行、入口込み15,291行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
