@@ -1509,3 +1509,5 @@ public import SerrePositivity.AlgebraicGeometry.ProperChartOpen
 public import SerrePositivity.AlgebraicGeometry.CommonDenseOpenGluing
 
 public import SerrePositivity.AlgebraicGeometry.SchemeOpenUnionCover
+
+public import SerrePositivity.AlgebraicGeometry.OpenUnionGluedMap

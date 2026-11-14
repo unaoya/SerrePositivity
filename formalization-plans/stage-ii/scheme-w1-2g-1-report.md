@@ -2147,3 +2147,17 @@ G1・G2共用部品込み本体12,763行、入口込み12,981行。C06 は本体
 一覧：済み12／全体17（うち追加8）。
 
 監査出力：`SerrePositivity.AlgebraicGeometry.SchemeOpenUnionCover: 5 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 5 declarations.`。
+
+
+C06 の貼り合わせた射のチャート上の比較（着手前の型、見込み180〜380行）：`restrict_eq_of_common_dense_chart` は T→X とチャート U⊆X、同じ基底 S 上の射 T→P・U→P、分離的な P→S、準コンパクトで稠密な j:W→T と W→U が指定された可換式を満たすとき、T→P の a⁻¹(U) への制限が (a∣U)≫(U→P) と一致することを返す。`range_chart_eq_preimage_of_dense_comparison` は、この比較とチャート上の開部分の範囲の指定から、その開部分が貼り合わせた射の U の逆像と一致することを返す。共通の開の lift・分離的な標的への射の一致・開包含の単射性という既存の法則の接続として C06 の親項目を増やさない。
+
+
+### C06：実際の開部分の和への、基底上の射の貼り合わせ
+
+`OpenUnionGluedMap`（67行）：`exists_open_union_glued_map` は実際の像の和への各成分の開包含、共通の稠密な開の開包含と稠密性、元の対象への貼り合わせと各成分・共通の開・基底上の可換式、各点が成分から来ることを返す。内部の被覆を存在仮定にはしない。
+
+本体67行・入口1行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,006ジョブ成功、小監査1宣言・標準三公理のみの passed 出力を確認。監査プロセスの handle は既に消えており、再起動していない。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-open-union-glued-map-check-2.log`・`2g-open-union-glued-map-native.log`・`2g-open-union-glued-map-audit.log`。
+
+G1・G2共用部品込み本体12,830行、入口込み13,049行。C06 は本体896行までで未完。チャートの範囲の逆像との一致と固有性・全射性、一般の対象への接続、B01〜B04 は残る。
+
+一覧：済み12／全体17（うち追加8）。
