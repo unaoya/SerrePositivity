@@ -7337,3 +7337,481 @@ private の新規宣言は 0 本。§48.1 の累計に加え、検証済み累�
 まだ未完である。M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §51 同じ二重 cone の全自然性と slice 普遍評価の大域三角形
+
+§50 の同じ実二重 cone を、退化を含む全単体作用素に対して自然にした。
+終端を避ける成分は元の前面の全等式から回収し、終端を含む成分は
+選択した集合上の単射と非単射で分ける。作用素全体の単射性は要求しない。
+非単射の場合、終端の二点辺は潰れないので部分集合の要素数が二以外であり、
+元の非零次数の閉 augmentation 成分と同じ零を両側で比較する。
+型移送は元の対象の等式と異種等号を明記して行う。
+
+同じ二重 cone の先端と終端を結ぶ実一単体は、元の probe の恒等閉射の
+定値通常単体と厳密に一致する。これを使い、同じ終端上の slice における
+最初の頂点を元の恒等錐そのものへ同定し、元の全要素圏の nerve 上で
+同じ slice 図式・二重 join・全区間 prism を構成する。
+その前面・終端・全元単体への制限と元の全 cone への射影を保持する。
+
+同じ slice 図式の普遍評価から全ホモトピーを構成し、実写像 h が
+元の rightMappingSpacePrism と同じ sliceOverUncurry による写像である式を残す。
+全 prism の始端が元の恒等錐、終端が同じ全 slice 図式、射影が元の cone prism
+である式を使い、全関手圏で元の cone 族と同じ slice 評価族の合成が恒等となる
+三角形を実装した。点ごとの射の類の一致だけには置き換えない。
+
+この時点の評価族は、元の通常 augmentation 円柱との一致をまだ主張しない。
+同じ元の導来源への後合成、元の全 augmentation 逆との比較と
+元の評価屋根、K の Hom 誘導射の同値性・完全忠実性、指定 fiber・native な全族は
+まだ未完である。M10 の同じ既存構成の自然性・係数移送・合成の法則と
+証明分割であり、一次 ID は追加しない。
+対象ビルドと新規公開宣言の小さい監査は §51.1 のとおり成功した。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+`RawModuleTensorDoubleConeEndEdge.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeSimplex_end_edge {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeEndEdgeOrderHom n) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex ((Functor.const (Fin 2)).obj ((strictRawModuleProbeFunctor A X).obj P))
+```
+
+`RawModuleTensorDoubleConeFrontMap.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeSimplex_obj_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 3)) :
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).obj (doubleConeOrderHom θ i) =
+      (strictRawModuleTensorDoubleConeSimplex A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).obj i
+
+lemma strictRawModuleTensorDoubleConeSimplex_pullback_front {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    ((strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeOrderHom θ)).pullback
+      Fin.castSuccOrderEmb.toOrderHom =
+      (strictRawModuleTensorDoubleConeSimplex A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).pullback
+        Fin.castSuccOrderEmb.toOrderHom
+```
+
+`RawModuleTensorDoubleConeJoin.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorDoubleConeJoin :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q))) Δ[0] ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+
+lemma strictRawModuleTensorDoubleConeJoin_inl :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q))) Δ[0] ≫
+      strictRawModuleTensorDoubleConeJoin A X P Q = strictRawModuleTensorConeJoin A X P Q
+
+lemma strictRawModuleTensorDoubleConeJoin_inr :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q))) Δ[0] ≫
+      strictRawModuleTensorDoubleConeJoin A X P Q = strictRawModuleTensorConePoint A X P
+
+lemma strictRawModuleTensorDoubleConeJoin_endpoints :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q)))
+      (𝟙 Δ[0]) ≫ strictRawModuleTensorDoubleConeJoin A X P Q =
+      SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)))
+
+lemma strictRawModuleTensorDoubleConeJoin_restrict_simplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm c)) (𝟙 Δ[0]) ≫
+      strictRawModuleTensorDoubleConeJoin A X P Q =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).hom (𝟙 Δ[0]) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫
+          (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))))).symm
+            (strictRawModuleTensorDoubleConeSimplex A X P Q c)
+```
+
+`RawModuleTensorDoubleConeMap.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeData_pullback_map {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).toSimplexData.pullback (doubleConeOrderHom θ) =
+      (strictRawModuleTensorDoubleConeSimplex A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).toSimplexData
+
+lemma strictRawModuleTensorDoubleConeSimplex_pullback_map {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeOrderHom θ) =
+      strictRawModuleTensorDoubleConeSimplex A X P Q ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
+```
+
+`RawModuleTensorDoubleConeOverDiagram.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorIdentityOverPoint_vertex :
+    (strictRawModuleTensorIdentityOverPoint A X P).app (Opposite.op ⦋0⦌)
+      (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)))
+
+def strictRawModuleTensorDoubleConeOverDiagram : nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)
+
+lemma strictRawModuleTensorDoubleConeOverJoin_inr :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q)) ≫
+      strictRawModuleTensorDoubleConeOverJoin A X P Q = strictRawModuleTensorDoubleConeOverDiagram A X P Q
+
+lemma strictRawModuleTensorDoubleConeOverDiagram_projection :
+    strictRawModuleTensorDoubleConeOverDiagram A X P Q ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (strictRawModuleTensorConePoint A X P) =
+        strictRawModuleTensorElementNerveDiagram A X P Q
+```
+
+`RawModuleTensorDoubleConeOverFirst.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeOverSimplex_first_vertex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)).map
+      (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op
+      (strictRawModuleTensorDoubleConeOverSimplex A X P Q c) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)))
+```
+
+`RawModuleTensorDoubleConeOverJoin.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorDoubleConeOverJoin :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q)) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)
+
+lemma strictRawModuleTensorDoubleConeOverJoin_inl :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[0] : SSet.{u + 1}) (nerve (strictRawModuleTensorElementIndex A X P Q)) ≫
+      strictRawModuleTensorDoubleConeOverJoin A X P Q = strictRawModuleTensorIdentityOverPoint A X P
+
+lemma strictRawModuleTensorDoubleConeOverJoin_restrict_simplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm c) ≫
+      strictRawModuleTensorDoubleConeOverJoin A X P Q =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).hom ≫
+        (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P))).symm
+          (strictRawModuleTensorDoubleConeOverSimplex A X P Q c)
+```
+
+`RawModuleTensorDoubleConeOverNaturality.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeOverSimplex_naturality {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    strictRawModuleTensorDoubleConeOverSimplex A X P Q ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)).map
+        (SimplexCategory.mkHom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom)).op
+        (strictRawModuleTensorDoubleConeOverSimplex A X P Q c)
+
+lemma strictRawModuleTensorDoubleConeOverSimplex_projection {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (strictRawModuleTensorConePoint A X P)).app (Opposite.op ⦋n + 1⦌)
+      (strictRawModuleTensorDoubleConeOverSimplex A X P Q c) = strictRawModuleTensorConeSimplex A X P Q c
+```
+
+`RawModuleTensorDoubleConeOverProjection.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeOverJoin_projection :
+    strictRawModuleTensorDoubleConeOverJoin A X P Q ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (strictRawModuleTensorConePoint A X P) = strictRawModuleTensorConeJoin A X P Q
+```
+
+`RawModuleTensorDoubleConeOverSimplex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeSimplex_last_vertex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).map
+      (SimplexCategory.const ⦋0⦌ ⦋n + 2⦌ (Fin.last (n + 2))).op
+      (strictRawModuleTensorDoubleConeSimplex A X P Q c) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+
+def strictRawModuleTensorDoubleConeOverSimplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)) _⦋n + 1⦌
+```
+
+`RawModuleTensorDoubleConeSliceEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma sliceEvaluationEndpointZero {K T : SSet.{u + 1}} (z : T _⦋0⦌)
+    (a : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm z))
+    (f : K ⟶ T)
+    (ha : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm z) = f) :
+    SSet.ι₀ (X := K) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy z) a).h = f
+
+private lemma sliceEvaluationEndpointOne {K T : SSet.{u + 1}} (z : T _⦋0⦌)
+    (a : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm z)) :
+    SSet.ι₁ (X := K) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy z) a).h = SSet.const z
+
+def strictRawModuleTensorDoubleConeSliceEvaluationHomotopy :
+    SSet.Homotopy (strictRawModuleTensorElementNerveDiagram A X P Q)
+      (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))))
+
+lemma strictRawModuleTensorDoubleConeSliceEvaluationHomotopy_h :
+    (strictRawModuleTensorDoubleConeSliceEvaluationHomotopy A X P Q).h =
+      (β_ (nerve (strictRawModuleTensorElementIndex A X P Q)) (Δ[1] : SSet.{u + 1})).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (strictRawModuleTensorDoubleConeOverDiagram A X P Q)
+
+def strictRawModuleTensorDoubleConeSliceEvaluationHom :
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (strictRawModuleTensorElementNerveDiagram A X P Q)
+      (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))))
+```
+
+`RawModuleTensorDoubleConeSlicePrism.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorDoubleConeSlicePrism : (Δ[1] : SSet.{u + 1}) ⊗
+    nerve (strictRawModuleTensorElementIndex A X P Q) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)
+
+lemma strictRawModuleTensorDoubleConeSlicePrism_zero :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve (strictRawModuleTensorElementIndex A X P Q)) ≫
+      strictRawModuleTensorDoubleConeSlicePrism A X P Q =
+      SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))))
+
+lemma strictRawModuleTensorDoubleConeSlicePrism_one :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve (strictRawModuleTensorElementIndex A X P Q)) ≫
+      strictRawModuleTensorDoubleConeSlicePrism A X P Q = strictRawModuleTensorDoubleConeOverDiagram A X P Q
+```
+
+`RawModuleTensorDoubleConeSlicePrismProjection.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeSlicePrism_projection :
+    strictRawModuleTensorDoubleConeSlicePrism A X P Q ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (strictRawModuleTensorConePoint A X P) = strictRawModuleTensorConePrism A X P Q
+```
+
+`RawModuleTensorDoubleConeSliceTriangle.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma sliceTriangleFromPrism {K T : SSet.{u + 1}} (z : T _⦋0⦌)
+    {f : K ⟶ T} (l : SSet.Homotopy (SSet.const z) f)
+    (t : SSet.Homotopy f (SSet.const z))
+    (a : K ⟶ sliceOver (SSet.yonedaEquiv.symm z))
+    (p : (Δ[1] : SSet.{u + 1}) ⊗ K ⟶ sliceOver (SSet.yonedaEquiv.symm z))
+    (hb : prismEndpoint 0 K ≫ p = SSet.const (sliceIdentityCone z))
+    (ht : prismEndpoint 1 K ≫ p = a)
+    (hl : (β_ K (Δ[1] : SSet.{u + 1})).hom ≫ p ≫
+      sliceOverProjection (SSet.yonedaEquiv.symm z) = l.h)
+    (he : t.h = (β_ K (Δ[1] : SSet.{u + 1})).hom ≫ rightMappingSpacePrism K ≫
+      sliceOverUncurry a) :
+    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy l) ≫
+      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy t) =
+      𝟙 (SSet.HomotopyCategory.mk (functorVertex (SSet.const (X := K) z)))
+
+lemma strictRawModuleTensorDoubleConeSliceEvaluation_triangle :
+    strictRawModuleTensorConeFamilyHom A X P Q ≫ strictRawModuleTensorDoubleConeSliceEvaluationHom A X P Q =
+      𝟙 (SSet.HomotopyCategory.mk
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const (X := nerve (strictRawModuleTensorElementIndex A X P Q))
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))))))
+```
+
+`RawModuleTensorDoubleConeTerminalInjOn.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeSimplex_pullback_hom_terminal_injOn {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 3))) (a b : Fin (m + 3)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (m + 2))
+    (hi : Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))) :
+    HEq (((strictRawModuleTensorDoubleConeSimplex A X P Q c).toSimplexData.pullback
+      (doubleConeOrderHom θ)).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorDoubleConeSimplex A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom I a b k hI ha hb hk)
+```
+
+`RawModuleTensorDoubleConeTerminalNoninjective.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorDoubleConeSimplex_pullback_hom_terminal_not_inj {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 3))) (a b : Fin (m + 3)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (m + 2))
+    (hn : ¬Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))) :
+    HEq (((strictRawModuleTensorDoubleConeSimplex A X P Q c).toSimplexData.pullback
+      (doubleConeOrderHom θ)).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorDoubleConeSimplex A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom I a b k hI ha hb hk)
+```
+
+`RawModuleTensorDoubleConeTerminalValue.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeAugmentationClosed_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 2)) (k : ℤ) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q c (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom i)) k)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q
+          ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) i) k)
+
+lemma strictRawModuleTensorDoubleConeTerminalValue_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 3)) (k : ℤ) (hi : i ≠ Fin.last (m + 2)) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q c
+        ((Fin.last (n + 1)).predAboveOrderHom (doubleConeOrderHom θ i))) k)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q
+          ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
+          ((Fin.last (m + 1)).predAboveOrderHom i)) k)
+```
+
+`RawModuleTensorDoubleConeUnderOverMap.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorDoubleConeUnderOverMap : nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder (strictRawModuleTensorIdentityOverPoint A X P)
+
+lemma strictRawModuleTensorDoubleConeUnderOverMap_app {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorDoubleConeUnderOverMap A X P Q).app (Opposite.op ⦋n⦌) c =
+      strictRawModuleTensorDoubleConeUnderOverSimplex A X P Q c
+```
+
+`RawModuleTensorDoubleConeUnderOverSimplex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorIdentityOverPoint : (Δ[0] : SSet.{u + 1}) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (strictRawModuleTensorConePoint A X P)
+
+lemma strictRawModuleTensorIdentityOverPoint_projection :
+    strictRawModuleTensorIdentityOverPoint A X P ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (strictRawModuleTensorConePoint A X P) =
+      strictRawModuleTensorConePoint A X P
+
+def strictRawModuleTensorDoubleConeUnderOverSimplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder (strictRawModuleTensorIdentityOverPoint A X P)) _⦋n⦌
+```
+
+`ConstantClosedSimplex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+  (M : ModuleCategory A D)
+
+lemma moduleConstantClosedNerveSimplex (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
+      ((Functor.const (Fin (n + 1))).obj M) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex
+      (ForgetEnrichment.to (Complex A) M)).pullback (OrderHom.const _ (0 : Fin 1))
+
+lemma moduleConstantClosedNerveSimplex_yoneda (n : ℕ) :
+    (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (RightModule A D))).symm
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
+        ((Functor.const (Fin (n + 1))).obj M)) =
+    SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A D)).symm
+      (ForgetEnrichment.to (Complex A) M))
+```
+
+`FrontComponentComparison.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleSimplexData_hom_heq_of_front_eq {m : ℕ} (s t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (RightModule A D) (m + 1))
+    (hfront : s.pullback Fin.castSuccOrderEmb.toOrderHom =
+      t.pullback Fin.castSuccOrderEmb.toOrderHom)
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b ≠ Fin.last (m + 1)) :
+    HEq (s.hom I a b k hI ha hb hk) (t.hom I a b k hI ha hb hk)
+```
+
+
+### 51.1 検証と実測
+
+RawModuleTensorDoubleConeSliceTriangle の通常の対象ビルドは成功した。
+新規二十一ファイルの公開宣言 43 本の依存公理監査も成功し、すべて
+propext・Classical.choice・Quot.sound の範囲である。引用属性の新規追加はなく、
+引用出力は 0 本。impl 鍵・待ち 3600 秒・gtimeout 280 秒の同じ一つの実行で
+対象ビルドと小さい監査を行い、プロセスの終了値 0 を確認した。
+root ビルドや大きい監査は実行していない。
+
+新規 Lean は 21 ファイル・1,194 行・明示宣言 46 本（private 3 本）。
+§50.1 の累計に加え、検証済み累計は 183 ファイル・14,556 行・
+明示宣言 657 本（private 12 本）。現作業木の M15 所有ソースも再計数し、
+同じ値と確認した。17,000 行の外枠まで残り 2,444 行。
+今回、200 行を超える証明はない。一次 ID は追加していない。
+
+元の全単体作用素の自然性、元の恒等閉辺との全一単体の一致、
+同じ全 slice 図式・二重 join と全区間 prism の両端・射影・全元単体への制限、
+普遍評価の元の全ホモトピーの実写像 h、その同じ評価族と元の cone 族の
+全関手圏における合成三角形まで検証した。
+端点と三角形の証明は一般の SSet における同じ既存の式へ分割し、
+元の具体的な実 prism と端点・射影の法則を代入した。
+実ホモトピー写像を別のものに取り替えず、200,000 heartbeat の既定上限も増やしていない。
+
+生成操作の初回は、自動承認レビューが⑤aの既存ファイルの書換えと判定して拒否した。
+処理は実行されていない。既存ファイルの差分ゼロを確認したうえで、
+読み取り元と新規書込み先を分離し、存在しない新規 Modules ファイルだけを
+出力先とする処理で作成した。作成の前後とコミット前に保護対象の差分ゼロを確認した。
+既存の EInfinity Lean ファイルへの変更はない。
+
+次は、同じ全 slice 評価族を元の通常 augmentation 円柱に全パラメータで照合し、
+同じ元の導来源へ後合成する。元の全 augmentation 逆・評価屋根、
+元の K の全 Hom 誘導射の同値性・完全忠実性、指定 fiber・native な辺と全族は
+まだ未完である。M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
