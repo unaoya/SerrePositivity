@@ -7,6 +7,9 @@
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotEvaluationLocalization.lean",
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotFrameHomComparison.lean",
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotFrameHomInfinity.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointFirstSpan.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointHomInput.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointHomRestriction.lean",
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotLocalization.lean",
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotModelSource.lean",
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotModelSourceComparison.lean",
@@ -42,6 +45,7 @@
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotalizationComparison.lean",
   "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotalizationInput.lean",
   "SerrePositivity/EInfinity/FrameHom/RightFrameHomBifunctor.lean",
+  "SerrePositivity/EInfinity/FrameHom/RightMixedBifunctor.lean",
   "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellAttachment.lean",
   "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellCoproduct.lean",
   "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellEvaluation.lean",
@@ -91,5 +95,6 @@
   "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedSectionsUniverseComparison.lean",
   "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedSectionsUniverseHomEquiv.lean",
   "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedSectionsUniverseIso.lean",
-  "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedSectionsUniversePoints.lean"
+  "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedSectionsUniversePoints.lean",
+  "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/NerveOppositeConstant.lean"
 ]
