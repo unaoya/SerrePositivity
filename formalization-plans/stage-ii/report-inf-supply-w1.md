@@ -3493,7 +3493,112 @@ lemma relativeSectionRealization_homMk
 私的な `prism_transpose` は `functorFamilyPrism (transposeFunctorFamily F) = uncurry F`。
 三本とも現時点で200行未満。
 
-検証追記：二本（`KanEnrichedDiagramOrdinaryAction` 61行、
-`RelativeSectionOrdinaryAction` 124行）の対象ビルドと四宣言の小監査が通った。
+検証追記：二本（`KanEnrichedDiagramOrdinaryAction` 60行、
+`RelativeSectionOrdinaryAction` 110行）の対象ビルドと四宣言の小監査が通った。
 監査は標準三公理のみ（`/tmp/is-w1/coefficient-action-pair-8.log`）。
 係数制限の一本は未検証のまま作業木に残す。E01の完成とは数えない。
+
+### 48.1 係数制限の検証（続報）
+
+`KanEnrichedComparisonEvaluation` の対象ビルドが通った
+（`/tmp/is-w1/coefficient-section-action-pair-20.log`、5,472 jobs）。
+主張は上記 `jointComparisonEdge_restrict` のまま。元の一単体の全パラメーターでの等式。
+定値係数の対角評価・同じ豊穣関手の表示変更・内部Homの後合成の定値単体という、
+既存の構成の法則で証明を分割した。計算上限は変更していない。
+次は指定実現値同型の射の照合（`kanEnrichedRealizationValueIso_hom`）。
+
+一覧：済み 0／全体 13（うち追加 11）
+
+### 48.2 実現値同型の射と法則の型
+
+`kanEnrichedRealizationValueIso_hom` の対象ビルド成功
+（`/tmp/is-w1/coefficient-value-1.log`、2,865 jobs）。
+係数制限の一本244行と実現値の一本64行、計308行を検証した。
+3b-3の検証済み累計は97本・8,130行。いずれもE01への法則・証明分割である。
+以下の各宣言は200行未満（ファイル全体の行数とは区別）。
+
+一覧：済み 0／全体 13（うち追加 11）
+
+追加の法則・証明分割の型（§48冒頭の係数制限の主張は同じ）：
+
+#### KanEnrichedComparisonEvaluation
+
+```lean
+private lemma coefficient_diagonal_constant
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
+    (X : C) {n : ℕ} (σ : (nerve J) _⦋n⦌) :
+    diagonalKanDiagramEvaluation (kanDiagramSimplexBase σ)
+      ((Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+        (coherentNerveVertex X) n).comp SSet D.toEnrichedFunctor) =
+      enrichedFunctorOfOrderDiagram (kanDiagramSimplexBase σ ⋙ D.evaluate X)
+
+private lemma enriched_map_app_heq {I : Type u} [LinearOrder I]
+    {F G : EnrichedFunctor SSet.{u} (SimplicialThickening I) KanObject.{u}}
+    (h : F = G) (i j : SimplicialThickening I) (d : SimplexCategoryᵒᵖ)
+    (P : (SimplicialCategory.sHom i j).obj d) :
+    HEq ((F.map i j).app d P) ((G.map i j).app d P)
+
+private lemma post_constant {A B C : SSet.{u}} (f : A ⟶ B) (g : B ⟶ C)
+    (d : SimplexCategoryᵒᵖ) :
+    ((ihom A).map g).app d
+      (Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+        (functorVertex f) d.unop.len) =
+      Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+        (functorVertex (f ≫ g)) d.unop.len
+
+private lemma prism_transpose {A I X : SSet.{u}} (F : A ⟶ (ihom I).obj X) :
+    functorFamilyPrism (transposeFunctorFamily F) = uncurry F
+
+lemma KanEnrichedDiagramComparison.jointComparisonEdge_restrict
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
+    (η : KanEnrichedDiagramComparison D E) (X : C) :
+    ((pre (lift (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj (nerve J)))
+      (SSet.const (coherentNerveVertex X)))).app SpaceInfinity.{u}).app (Opposite.op ⦋1⦌)
+        η.jointComparisonEdge.edge =
+      (kanDiagramNaturalTransformationEdge
+        (F
+```
+
+#### KanEnrichedRealizationValueHom
+
+```lean
+lemma kanEnrichedRealizationValueIso_hom
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
+    (η : KanEnrichedDiagramComparison D E)
+    (hη : ∀ j (X : C), IsQCatEquivalence
+      (X
+```
+
+#### SectionBaseChangeCompValueHom
+
+```lean
+lemma sectionBaseChangeCompComparison_value_hom {E B D T : SSet.{u}}
+    {J : Type u} [Category.{u} J] (p : E ⟶ B) [LeftFibration p]
+    (k : D ⟶ B) (l : T ⟶ D) (A : Jᵒᵖ ⥤ Over T) :
+    (kanEnrichedRealizationValueIso (sectionBaseChangeCompComparison k l A)
+      (sectionBaseChangeCompComparison_isQCatEquivalence k l A) (leftFibrationObjectOf p)).hom =
+      normalizedVertexHomMap (relativeSectionEnrichedDiagram A).realization
+        ((relativeSectionEnrichedDiagram A).realization_vertex
+          (leftFibrationObjectOf (pullback.snd p (l ≫ k)))).symm
+        ((relativeSectionEnrichedDiagram A).realization_vertex
+          (leftFibrationObjectOf (pullback.snd (pullback.snd p k) l))).symm
+        (Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge
+          (pullback.snd p (l ≫ k)) (pullback.snd (pullback.snd p k) l)
+          (pullbackLeftPullbackSndIso p k l).inv
+          (pullbackLeftPullbackSndIso_inv_snd_snd p k l)).toTruncated)
+```
+
+最後の `SectionBaseChangeCompValueHom` は対象ビルド待ち。新しい数学的入力ではなく、
+元の反復引き戻し比較の成分と相対後合成の同じ射を照合する適用の法則。
+
+検証追記：三本の対象ビルドと三宣言の小監査が成功
+（`/tmp/is-w1/coefficient-value-3.log`、5,483 jobs、標準三公理のみ）。
+`SectionBaseChangeCompValueHom` は55行。検証済み累計は98本・8,185行。
+実現値の比較は標準引き戻し同型の逆射そのものへ接続できた。
+E01の残りは、この同じ値の法則を指定分類の初頂点制限へ渡し、
+承認済みの `leftStraightening_baseChange_pasting` を降下させる部分。
+
+一覧：済み 0／全体 13（うち追加 11）
