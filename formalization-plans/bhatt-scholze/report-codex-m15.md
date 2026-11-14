@@ -3604,3 +3604,105 @@ K の完全忠実性へ向けた部品として対象ビルド・小さい監査
 M11 以降と G12 の本来の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 28. M10 の同じ cotensor の係数反変性と全 simplicial 族（11-14）
+
+前の goal ターンは §25–§27 の通常 DK 源の普遍性・全比較・cotensor の法則を
+対象ビルドと小さい監査まで通した進捗。今回は既存の cochain 合成の結合則を使い、
+同じ `homPrecompose` が cotensor の全 dg 作用と可換することを照合した。
+係数の前合成は全加群射に自然であり、単位・逆順の合成の法則を満たす。
+
+その反変関手に、既存の `SSet.stdSimplex ⋙ BarrattEccles.normalizedFunctor A` を代入し、
+面・退化・全加群射を持つ同じ simplicial 加群の全族を構成した。
+点ごとの値と全作用は元の AW 正規化複体からの内部 Hom の前後合成に一致する。
+同じ通常 Hom の後合成で全標的の写像単体集合も束ねる。
+
+いずれも既存の cotensor の係数移送・合成・自然性・評価・貼り合わせの法則と
+証明の分割で、一次 ID は追加しない。
+文脈は `A : Type u`、`[CommRing A]`。
+加群の箇所はさらに `D : Type v`、`[DGCategory A D]`、`[Small.{u} D]`。
+
+### CotensorScalar
+
+```lean
+lemma homCovariantDG_precomposition {K L : Complex A} (f : K ⟶ L) (P Q : Complex A) :
+    (homCovariantDG A L).map P Q ≫ homPostcompose _ (homPrecompose f Q) =
+      (homCovariantDG A K).map P Q ≫ homPrecompose (homPrecompose f P) _
+
+lemma moduleCotensorPre_naturality {K L : Complex A} (f : K ⟶ L)
+    (M : ModuleCategory A D) (x y : Dᵒᵖ) :
+    (dgModuleCotensor A D L (ForgetEnrichment.to (Complex A) M)).map x y ≫
+      homPostcompose _ (homPrecompose f ((ForgetEnrichment.to (Complex A) M).obj y)) =
+    (dgModuleCotensor A D K (ForgetEnrichment.to (Complex A) M)).map x y ≫
+      homPrecompose (homPrecompose f ((ForgetEnrichment.to (Complex A) M).obj x)) _
+
+def moduleCotensorPreMap {K L : Complex A} (f : K ⟶ L) (M : ModuleCategory A D) :
+    moduleCotensor A D L M ⟶ moduleCotensor A D K M
+
+lemma moduleCotensorPreMap_eval {K L : Complex A} (f : K ⟶ L) (M : ModuleCategory A D)
+    (x : D) :
+    (moduleEvaluation A D x).map (moduleCotensorPreMap A D f M) =
+      homPrecompose f ((moduleEvaluation A D x).obj M)
+
+def moduleCotensorPreNat {K L : Complex A} (f : K ⟶ L) :
+    moduleCotensorFunctor A D L ⟶ moduleCotensorFunctor A D K
+
+def moduleCotensorScalarFunctor : (Complex A)ᵒᵖ ⥤ (ModuleCategory A D ⥤ ModuleCategory A D)
+```
+
+### CotensorSimplices
+
+```lean
+def moduleCotensorSimplexFamily :
+    SimplexCategoryᵒᵖ ⥤ (ModuleCategory A D ⥤ ModuleCategory A D)
+
+def moduleCotensorSimplicesFunctor :
+    ModuleCategory A D ⥤ (SimplexCategoryᵒᵖ ⥤ ModuleCategory A D)
+
+abbrev moduleCotensorSimplices (M : ModuleCategory A D) :
+    SimplexCategoryᵒᵖ ⥤ ModuleCategory A D
+
+lemma moduleCotensorSimplices_obj_eval (M : ModuleCategory A D)
+    (n : SimplexCategoryᵒᵖ) (x : D) :
+    (moduleEvaluation A D x).obj ((moduleCotensorSimplices A D M).obj n) =
+      homComplex A (SerrePositivity.EInfinity.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n.unop))
+        ((moduleEvaluation A D x).obj M)
+
+lemma moduleCotensorSimplices_map_eval (M : ModuleCategory A D)
+    {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) (x : D) :
+    (moduleEvaluation A D x).map ((moduleCotensorSimplices A D M).map f) =
+      homPrecompose
+        (SerrePositivity.EInfinity.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map f.unop))
+        ((moduleEvaluation A D x).obj M)
+
+lemma moduleCotensorSimplicesFunctor_map_eval {M N : ModuleCategory A D} (g : M ⟶ N)
+    (n : SimplexCategoryᵒᵖ) (x : D) :
+    (moduleEvaluation A D x).map (((moduleCotensorSimplicesFunctor A D).map g).app n) =
+      homPostcompose
+        (SerrePositivity.EInfinity.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n.unop))
+        ((moduleEvaluation A D x).map g)
+
+def moduleCotensorMappingSimplices (P M : ModuleCategory A D) : SSet.{u}
+
+def moduleCotensorMappingFunctor (P : ModuleCategory A D) :
+    ModuleCategory A D ⥤ SSet.{u}
+```
+
+
+対象ビルドは成功した。小さい依存公理監査と最終実測は本節の末尾に追記する。
+この simplicial 族の Reedy fibrancy、同じ coaugmentation の弱同値性、選んだモデル frame
+との比較、K の完全忠実性はまだ未完。元の全族と M11 以降・G12 の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+### §28.1 検証と実測
+
+CotensorScalar と CotensorSimplices の通常の対象ビルドは成功した。
+同じ impl 鍵の下で新しい公開宣言 14 本の依存公理を監査し、すべて
+propext・Classical.choice・Quot.sound の範囲であることを確認した。
+新規 Lean は本節の 2 ファイル 223 行を加え、累計 58 ファイル・5,784 行・
+明示宣言 299 本（private 3 本）。200 行を超える証明はない。
+Reedy fibrancy と単位 cotensor の同定、K の完全忠実性は引き続き未完。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
