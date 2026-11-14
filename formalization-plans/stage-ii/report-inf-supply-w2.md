@@ -7055,3 +7055,71 @@ A完了の§101（12,781行）からB完了までの増分は **5,445行**。§7
 | 合計 | 900〜1,600 | **1,800〜3,200** | 完成見込み20,026〜21,426行 |
 
 単純にBの倍率をC・Dへ掛けるのは過大にもなり得る。Bで作ったHomの照合と全パラメータの評価則を再利用できる分を引いて上表としたが、現外枠に収まる保証はない。指定一覧のCの証明を進め、計算上限・型・範囲は弱めず、外枠到達または一覧外の新しい数学が必要と判明した時点で検証済みを保存して停止する。追加の第五のまとまりは現時点で要求しない。
+
+
+## 145. C01の途中：同じ錐の実際の脚と指定weighted評価（2026-11-14）
+
+一覧：済み 21／全体 36（うち追加 1）。C01の最終等式は未完。以下は既存構成の評価・単位・係数移送・自然性の法則と、C01の証明分割。新しいまとまり・新しい数学の項目は加えない。
+
+### 145.1 型と置き場所
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.JoinConeSectionLeg`（34行）。
+
+```lean
+theorem joinCone_section_leg {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (v : K _⦋0⦌) (z : X _⦋0⦌) (h : c.vertex = z) :
+    (derivedConeLeg c v).edge = SSet.yonedaEquiv
+      ((joinStdSimplexIso 0 0).inv ≫
+        (((coherentConeCosliceSection c ≫ eqToHom (congrArg
+          (fun w => sliceUnder (SSet.yonedaEquiv.symm w)) h)).app
+          (Opposite.op ⦋0⦌) v).val))
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointEvaluation`（46行）。
+
+```lean
+theorem uliftPointEvaluation (K E Q : SSet.{u})
+    (p : (Δ[0] : SSet.{u}) ⟶ E) (f : K ⊗ E ⟶ Q) (σ : K _⦋0⦌) :
+    let U
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSectionVertex`（77行）。
+
+```lean
+theorem nativeTotCone_cosliceSection_vertex (X : CosimplicialObject (Complex A))
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋0⦌) :
+    let I
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegEvaluation`（57行）。
+
+```lean
+theorem nativeDGCone_leg_weighted (X : CosimplicialObject (Complex A))
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋0⦌) :
+    let I
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardLeg`（34行）。
+
+```lean
+def standardLeg (X : CosimplicialObject (Complex A)) (n : SimplexCategory) :
+    (productTotalFunctor A).obj X ⟶ X.obj n
+
+theorem standardLeg_naturality {X Y : CosimplicialObject (Complex A)}
+    (f : X ⟶ Y) (n : SimplexCategory) :
+    (productTotalFunctor A).map f ≫ standardLeg A Y n =
+      standardLeg A X n ≫ f.app n
+
+```
+
+### 145.2 検収と残り
+
+鍵付き対象ビルド161は **1,800 jobs・終了コード0**、`JoinConeSectionLeg` の新規分だけの監査は **1宣言、標準三公理のみ**。対象ビルド162は **6,109 jobs・終了コード0**、他の四本の新規分だけの監査は **7宣言（1・1・1・4）、標準三公理のみ**。ログ `/private/tmp/isw2-build161.log`・`/private/tmp/isw2-build162.log`。鍵 `--class impl --wait 3600` は一つの整理券で待ち、ビルドと監査の間だけ保持し返却済み。
+
+累計 **299モジュール・18,474行**、外枠まで1,526行。一覧 `/private/tmp/isw2-g10-twohundredninetynine-modules.txt`。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
+
+残るC01の最終成分は、`standardTopEval` による元の反転BK入力の恒等射頂点での評価と、第0頂点を通る標準脚の閉零射の値との等式に絞れた。既存 `reflectedBKFreeCone_generator_top` で同じ自由生成元の評価へ戻せることを個別検査した。未コミットの作業は、一次coherent単体の比較への簡約 `NativeTotConeLegSimplex`、Moore反転の第0項の単位則 `NormalizedMooreReverseZero`、Hom–Totの零行評価 `HomTotalZeroRow`、最終の `NativeTotConeStandardLeg`。前二者は個別検査済み、後二者は検査・証明中であり、今回の検収・累計には含めない。
