@@ -9853,3 +9853,70 @@ RR02(a)の証明の分割。BKのHom表示を通した指定cone比較との照�
 その射の弱同値性を全余単体次数へ移した。さらに指定fibrant標的への
 実Homの前合成そのもののホモトピー同値性を、既存の固定Quillen類の定理から得た。
 RR02(a)の最後の指定BK比較との一致、および(b)(c)は引き続き未完。
+
+## §112 RR02(a)：指定Hom同型と錐比較の照合（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanAugmentationHom_cone
+    (π : (Functor.const Kᵒᵖ).obj ((cosimplicialHom Q).obj Y) ⟶ (hom K A).obj Y)
+    (hπ : ∀ k, π.app k = (cosimplicialHomMap (e.app k.unop)).app Y) :
+  (cosimplicialHomMap (bousfieldKanFrameAugmentation K A Q e)).app Y ≫
+      (bousfieldKanRealizationHomIso K A).hom.app Y =
+    weightedConeComparison (bousfieldKanWeight Kᵒᵖ)
+      (⟨(cosimplicialHom Q).obj Y, π⟩ : Cone ((hom K A).obj Y))
+```
+
+指定増大射・Hom同型の既存の全単体の式を、同じ脚を持つ錐比較として書き直す法則。
+随伴の転置を全単体で照合し、第二射影とYonedaの自然性だけを使う。
+
+### §112.1 元のarrow錐への適用（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeArrowConeHom_eq :
+  (cosimplicialHomMap (strictDiagramFreeArrowRealizedAugmentation A d X)).app
+      (strictDiagramFibrantTarget A d Y) ≫
+    (bousfieldKanRealizationHomIso _ (strictDiagramFreeArrowFrame A d X)).hom.app
+      (strictDiagramFibrantTarget A d Y) ≫
+    (weightedSectionsFunctor (bousfieldKanWeight (StrictDiagramArrowElements d))).map
+      (strictDiagramFreeArrowHomNatIso A d X Y).hom =
+    strictDiagramFrameArrowComparison A d X Y
+```
+
+§112を実係数に適用する法則。既存の `strictDiagramFreeArrowAugmentation_hom` と
+`weightedConeComparison_naturality` によって、元のarrow錐を回収する。
+
+### §112.2 検証結果と二重反対圏の係数移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§112の一般保存則は対象ビルド・2宣言の監査が成功（標準三公理のみ）。
+1本・67行。検証済み累計235本・17,177行、上限変更後のRR02(a)は4,679行。
+ログ：`/tmp/is-w1/augmentation-cone-hom/build-8.log`。
+
+§112.1の下書きは未検証のまま。失敗の理由は、一般frame実現のHomが
+`(StrictDiagramArrowElements d)ᵒᵖᵒᵖ` 上にあるのに対し、元のarrow錐のHomは
+`StrictDiagramArrowElements d` 上にあること。同じ型とみなすことはしない。
+次に、標準の `opOp`・`unopUnop` に沿う既存の再添字の保存則を明示する。
+
+使用する既存の構成は `Enriched.FunctorCategory.precompEnrichedHom'` と
+`bousfieldKanWeightPost`。後者の各成分は `Over.post` のnerveで、二重反対圏では
+指定した厳密な逆を持つ。重みと係数の両方をこの同じ同型で移す。
+必要な法則の型の形は次（`H : Iᵒᵖᵒᵖ ⥤ SSet`、`c : Cone H`）。
+
+```lean
+-- 既存の再添字写像の、二重反対圏での可逆性と錐比較保存
+IsIso (Enriched.FunctorCategory.precompEnrichedHom' SSet (opOp I)
+  (bousfieldKanOpOpWeightIso I).symm (Iso.refl H'))
+-- H' = opOp I ⋙ H; bousfieldKanOpOpWeightIsoは同じweightPostのasIso
+bousfieldKanConeComparison c ≫ bousfieldKanOpOpComparison H =
+  bousfieldKanConeComparison (c.whisker (opOp I))
+```
+
+表示中の `bousfieldKanOpOpComparison` は、上の既存の再添字写像の略記。
+独立の新しい比較を選ばず、成分と逆の合成を検査する係数移送の法則として進める。
+その後、§112.1の型にはこの再添字を挿入して、元の指定比較への一致を証明する。
+RR02(a)全体、(b)(c)、E01は未完。R3・R4には着手していない。
