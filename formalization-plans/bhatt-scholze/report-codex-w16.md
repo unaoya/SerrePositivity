@@ -21540,3 +21540,340 @@ m14-nullary-point-signed-tensors-02.log（2,920 jobs）は成功、対象警告0
 mainはこの時点で391b2a0d2のままで、§33の3b-4a完成の取り込みはまだない。
 取り込まれたら指示どおりM14を区切ってTotの9欄を先にする（段0は§260）。
 完備化後のP⁰の三案は§347の比較を維持し、(c)への判定はまだ出していない。
+
+## 353. 一出現の零次出力の全Cutの同値と全有限和（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の元の挿入・削除を、実際の零次出力という部分型へ包装する。
+指定色が一出現のとき、出力次数零と同じ区間が一点であることは既存§316の両方向の式。
+以下はL12aの同じ有限対応と再添字の法則。新しい対応を選び直さない。各証明200行以内。
+実装前に§316の有限点検を再実行した：全9,794 Cut、零次出力2,617、非空な残り位置の
+両逆と指数の完全一致2,616、退化削除890を確認（空の出力の特別な一例は別途残る）。
+
+```lean
+lemma outputDegree_zero_iff_point_of_unique {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (p : Fin (m + 2)) (k : Fin r)
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    outputDegree s v k = 0 ↔ hi s p = lo s p
+
+def nullaryOutputCutEquiv (m q r : ℕ) (v : Surjection.Word r (m + 2))
+    (p : Fin (m + 2)) (k : Fin r) (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    Cut m q ≃ {s : Cut (m + 1) q // outputDegree s v k = 0}
+
+lemma sum_nullaryOutputCuts {M : Type*} [AddCommMonoid M] {m q r : ℕ}
+    (v : Surjection.Word r (m + 2)) (p : Fin (m + 2)) (k : Fin r)
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (F : Cut m q → M) (G : Cut (m + 1) q → M)
+    (hpair : ∀ t, F t = G (nullaryPointInsertCut t p))
+    (hzero : ∀ s, outputDegree s v k ≠ 0 → G s = 0) :
+    ∑ t, F t = ∑ s, G s
+```
+
+同値の順方向は元のnullaryPointInsertCut、逆は元のnullaryPointEraseCut。
+和は実際の零次出力の部分型とその補集合に分け、補集合の全項を零として保持する。
+hpair・hzeroは再添字の一般法則の入力で、実際の合成則へ仮定として残すものではない。
+
+
+## 354. 全Cut再添字に元の実際の空語作用の値を入れる（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存cutTensorの入力族にcutGeneratorFamilyという記法を付ける。新しい作用・数学的構成ではない。
+§353のhpair・hzeroを、元の符号・面の族の等式と、§344の実際の空語作用の値で供給する。
+実際の全和の結論には内側射の評価を仮定として残さない。各証明200行以内。
+原典BF §2.2.6、同じ全整数の終域・全Cut・退化零項を保つ。型は次。
+
+```lean
+def cutGeneratorFamily (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    Fin r → Σ d : ℕ, (chains A S).X (-(d : ℤ)) :=
+  fun a => ⟨outputDegree s v a,
+    gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩
+
+```
+
+```lean
+lemma vectorDegree_cutGeneratorFamily (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    vectorDegree (chains A S) r (cutGeneratorFamily A S s v x) = m + q + 1 - r
+```
+
+```lean
+lemma sum_nullary_cochain_cut_terms (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (v : Surjection.Word (r + 1) (m + 2))
+    (w : Surjection.Word r (m + 1)) (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i))
+    (ν : Surjection.BasisWord 0 0) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) :
+    (∑ t : Cut m q, cutSign t w.val •
+      vectorTensorAt (chains A S) r (cutGeneratorFamily A S t w x) z
+        (by rw [vectorDegree_cutGeneratorFamily]; exact hz)) =
+      ∑ s : Cut (m + 1) q, cutSign s v.val •
+        (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) r 0 k
+          (cochainAction A S 0)).f z
+          (ιTensorObj (Surjection.complex A 0) (power (chains A S) (r + 1)) 0 z z (zero_add z)
+            ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up ν)) ⊗ₜ[A]
+              vectorTensorAt (chains A S) (r + 1) (cutGeneratorFamily A S s v x) z
+                (by rw [vectorDegree_cutGeneratorFamily]
+                    have h : (m + 1) + q + 1 - (r + 1) = m + q + 1 - r
+```
+
+
+
+## 355. 元のraw合成語の正規化と同じ語長の移送（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+実際のraw合成語を表す基底または退化零項を、元の係数合成と照合する。
+語長と削除位置の移送は同じFinite添字の値で比較する。新しい語や射を選ばない。
+ρのcount_eq_one_of_emptyから一出現性を得るため、一出現の条件を余分に仮定しない。
+各証明200行以内、同じ既存構成の値と添字の法則。以下の型のW・Vは実際のWordの等式移送。
+
+```lean
+lemma succAbove_val_eq_of_vals {l l' : ℕ} (p : Fin (l + 1)) (p' : Fin (l' + 1))
+    (i : Fin l) (i' : Fin l') (hp : p.val = p'.val) (hi : i.val = i'.val) :
+    (p.succAbove i).val = (p'.succAbove i').val
+```
+
+```lean
+lemma word_eq_mp_unique {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (p : Fin l) (k : Fin r) (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val (Fin.cast h p) = k ∧
+      ∀ j, (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val j = k →
+        j = Fin.cast h p
+```
+
+```lean
+lemma nullaryRawWord_eq_mp_erase_value {m d N : ℕ} (hN : m + d = N + 1)
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord m d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (N + 1)) :
+    let V := Eq.mp (congrArg (fun L => Surjection.Word (m + 1) L)
+      (by omega : (m + 1) + d = N + 2)) u
+    let W := Eq.mp (congrArg (fun L => Surjection.Word m L) hN) w
+    let P : Fin (N + 2) := Fin.cast (by omega) p
+    k.succAbove (W.val i) = V.val (P.succAbove i)
+```
+
+```lean
+lemma compositionOnWords_nullary_eq_basis_of_raw (A : Type u) [CommRing A] {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord m d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ) :
+    Surjection.compositionOnWords A u ν k = Surjection.basis A m d (ULift.up w)
+```
+
+```lean
+lemma compositionOnWords_nullary_eq_zero_of_raw_degenerate (A : Type u) [CommRing A] {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (h : ¬Surjection.Nondegenerate (IntervalCuts.nullaryRawWord u ν k ρ)) :
+    Surjection.compositionOnWords A u ν k = 0
+```
+
+
+
+## 356. 元の唯一出現位置と全和の型の移送（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+実際の係数合成から一出現位置を供給し、切断区間数の算術的な等式によって
+同じ全和を移す。別の位置や頂点を選び直す同値ではなく、元のWordとCutの等式移送だけ。
+Tは元の同じ複体射の値を代入できる任意の関数で、この型の移送に線形性は要らない。
+各証明200行以内、既存構成の法則・証明分割。
+
+```lean
+lemma unique_position_of_occurrenceCount_one {r l : ℕ} (w : Fin l → Fin r) (k : Fin r)
+    (h : Surjection.occurrenceCount w k = 1) :
+    ∃ p : Fin l, w p = k ∧ ∀ j, w j = k → j = p
+```
+
+```lean
+lemma word_eq_mp_trans {r l l' l'' : ℕ} (h : l = l') (h' : l' = l'')
+    (w : Surjection.Word r l) :
+    Eq.mp (congrArg (fun L => Surjection.Word r L) h')
+      (Eq.mp (congrArg (fun L => Surjection.Word r L) h) w) =
+      Eq.mp (congrArg (fun L => Surjection.Word r L) (h.trans h')) w
+```
+
+```lean
+lemma sum_cutGenerator_terms_eq_mp (A : Type u) [CommRing A] (S : SSet.{0})
+    {M : Type v} [AddCommGroup M] {m n q r : ℕ} (h : m = n)
+    (w : Surjection.Word r (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z)
+    (T : (power (chains A S) r).X z → M) :
+    (∑ s : Cut m q, cutSign s w.val • T
+      (vectorTensorAt (chains A S) r (cutGeneratorFamily A S s w x) z
+        (by rw [vectorDegree_cutGeneratorFamily]; exact hz))) =
+      ∑ s : Cut n q,
+        cutSign s (Eq.mp (congrArg (fun L => Surjection.Word r (L + 1)) h) w).val • T
+          (vectorTensorAt (chains A S) r
+            (cutGeneratorFamily A S s
+              (Eq.mp (congrArg (fun L => Surjection.Word r (L + 1)) h) w) x) z
+            (by rw [vectorDegree_cutGeneratorFamily]; rw [← h]; exact hz))
+```
+
+
+## 357. 完備化後のP⁰の三案：(b)でperfect性や半線形同型だけから消去しない（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§347の続き。(b)の単位・torsionの条件を、actualなraw対象で期待するperfect性と区別する。
+以下は自分の明示的な環・加群の計算であり、A4の実際の対象に余分な条件を足すものではない。
+新しいLean・界面・drafts・G10の部品は作らない。
+
+### 357.1 (b) perfectな離散環でも完備化単位のπ_0全射性は出ない
+
+B = F_p[t^{1/p^∞}]、d=tとする。Bは多項式環F_p[t^{1/p^e}]の単射的な和で、
+Frobeniusはその上で同型。各非零元のtの最小指数は有限だから、Bはt進分離的。
+tは非零因子で、B/t^nの商の塔は全射。従ってこの離散な例の導来t完備化は
+同じ商の逆極限で計算できる（正則なprincipal Koszul商を使う）。
+
+逆極限には互換な元 a_n = Σ_{j=0}^{n-1} t^j mod t^n がある。
+その値aは(1-t)a=1を満たすが、Bの元の像ではない。
+もし像ならt進分離性によってBで(1-t)b=1となる。
+bはある有限段F_p[t^{1/p^e}]の多項式で、u=t^{1/p^e}と書けば
+(1-u^{p^e})b(u)=1となり、多項式の次数から不可能。
+
+さらにF(t^nB)=t^{pn}Bで、逆Frobeniusも添字を共終に変えれば連続。
+この例では完備化後もFrobeniusは同型となるが、単位はπ_0全射でない。
+従ってrawのπ_0のperfect性を確認しても、そのことだけで§216の単位のEpiを供給しない。
+これは単なるcoconnective性の反例を、perfect性もある場合へ絞り直した点検。
+
+### 357.2 (b) reducedなperfect係数と半線形同型だけではH¹のTate項も消えない
+
+同じBに対してM = B[1/t]/Bを加群として考える。
+x_n = t^{-n}+BはM[t^n]の非零元で、t x_{n+1}=x_n。
+従ってT_t(M)=lim_n M[t^n]には非零の互換な元(x_n)がある。
+BがreducedなためB自身のt冪ねじれが有界であることと、Mのねじれが有界であることは別。
+
+MのFrobenius半線形な加法同型Fから、固定の商の添字で読む写像は
+
+    M[t^n] → M[t^n],  x ↦ t^{(p-1)n} F(x)
+
+となる。この式ではt^nを掛けるとt^{pn}F(x)=F(t^n x)=0。
+塔との互換性もt·t^{(p-1)(n+1)}F(x_{n+1}) = t^{(p-1)n}F(t x_{n+1})で直接読める。
+上の元ではt^{(p-1)n}F(t^{-n}+B)=t^{-n}+Bなので、非零の互換な元は残る。
+従ってrawなH¹の半線形Frobeniusが同型であるという条件だけで、
+§223.3のTate項を零としてはいけない。
+
+この加群をA4のH¹だと同定したり、これに同じBE作用・May P⁰を供給したりはしていない。
+これは加群と半線形写像の条件だけからtorsion消滅を結論できないという点検で、
+A4やMay案の反例ではない。実際のA4のH¹に別の有界性を証明できるかは未確定。
+
+### 357.3 (a)(c)との比較
+
+(a)の同じ全鎖の有限primitiveを完備化へ延ばす案は、上の単位の全射性やTate消滅を使わない。
+指定したnative対象・Frobeniusへの比較と全鎖の式の検収は依然として未供給。
+(b)でactualなderived商の同じ演算を比較する案も残すが、一般論から得られない有界性を
+証明済みの条件として持ち込まない。
+(a)(b)のactualな比較が両方不可能と判明したわけではないため、(c)とはまだ判定しない。
+判明したときは§32どおり止めて報告する。外枠の完成見込みの未評価分もそのまま残す。
+
+
+## 358. 実際の非退化raw空語合成を全Cut和へ接続する（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§354の元の全和と§355〜356の同じ語長・係数の移送を接続する。
+ρから一出現性と元の唯一位置を供給し、wの値は実際のnullaryRawWordそのものと指定する。
+wの非退化性はこの分岐の条件で、退化分岐は零項として別途残す。
+これはL12aの同じ合成則の非退化分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_nondegenerate_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord (m + 1) d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ)
+    (x : S _⦋q⦌) :
+    (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+全Cutの再添字の入力hpair・hzero、内側射の評価、唯一位置の存在などを最終主張の仮定に追加しない。
+同じ元の係数合成を作用させた左辺と、同じ四射の実際の右辺を比較する。
+
+## 359. 同じ和の依存するWordの等式を運ぶ証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§358の語長の二重移送hwordを、vectorTensorAtの次数の証明の中へ直接rwしない。
+同じ和を独立なWord引数の関数Fとして先に型付けし、congrArg F hwordを使う。
+これは元の和の値と等式移送の証明分割で、新しい数学・写像の選択・一覧IDではない。
+
+```lean
+let F (a : Surjection.Word (m + 2) ((m + d) + 2)) :
+    (power (chains A S) ((m + 1) + 0)).X z :=
+  ∑ s : Cut ((m + d) + 1) q, cutSign s a.val •
+    T (vectorTensorAt (chains A S) (m + 2) (cutGeneratorFamily A S s a x) z
+      (by rw [vectorDegree_cutGeneratorFamily]; dsimp only [z]; omega))
+```
+
+既存sum_cutGenerator_terms_eq_mpの右辺をFの同じ引数への適用として読む。
+その後にcongrArg F hwordを合成するので、固定した語に依存する次数の証明を
+別の語へ無理に書き換えるmotiveを作らない。各証明200行以内。
+
+
+## 360. 一出現の実際の全和と非退化raw空語合成則（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§353〜359を検証した。元の一点挿入・削除を実際の零次出力の全Cut同値へ包装し、
+零となる補集合の全項を保持した再添字を得た。対応条件と零性を元の符号・面・実際の
+空語作用の値で供給し、小さい全切断和と実際の空語代入の全和が一致した。
+
+実際のnullaryRawWordを表す非退化基底の分岐については、元の係数合成を作用させた左辺と
+同じ四射からなる二段作用の右辺の元の圏での一致まで接続した（全入力単体・全次数）。
+一出現位置や内側作用の値、Cut再添字の対応条件・零性は結論の追加仮定に残していない。
+基底wの値は実際のraw合成語そのものと指定しており、別の語へ置き換えていない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|NullaryOutputCutEquiv|39|
+|NullaryOutputCutSums|40|
+|CutGeneratorFamilies|35|
+|NullaryCochainCutSums|83|
+|NullaryWordLengths|57|
+|NullaryCoefficientWords|40|
+|NullaryCutIndexTransport|62|
+|NullaryNondegenerateComposition|98|
+
+今回454行、M14実測27,497行、L12a 12,290行、外枠31,000行まで3,503行。
+L12aは未完了。実際の退化raw合成語の右辺の零性、零出力arity、
+全arityの同じ有限対応とその包装が残る。新しい一覧IDは追加していない。
+
+対象ビルドはm14-nullary-output-cut-sums-01.log（2,278 jobs）、
+m14-nullary-cochain-cut-sums-02.log（3,065 jobs）、
+m14-nullary-word-lengths-01.log（2,856 jobs）、
+m14-nullary-cut-index-transport-01.log（2,232 jobs）、
+m14-nullary-nondegenerate-composition-02.log（3,116 jobs）まで成功、対象警告0。
+小監査はaudit-m14-nullary-cochain-cut-sums.log（4本13宣言）、
+audit-m14-nullary-word-lengths.log（2本11宣言）、
+audit-m14-nullary-cut-index-transport.log（1本5宣言）、
+audit-m14-nullary-nondegenerate-composition.log（1本10宣言）。
+すべて標準三公理のみ、sorry・独自公理0。
+ビルド・監査ごとに鍵を取り返却した。共有入口・共有監査・mainの作業木は変更していない。
+
+並行する完備化後のP⁰の三案は§357。perfectなrawのπ_0でも完備化単位は一般に全射でなく、
+reducedなperfect係数とH¹の半線形同型だけではTate項は消えないことを具体的に点検した。
+この加群の点検をA4のBE模型やP⁰の反例とは扱わない。(a)(b)のactualな比較は未供給で、
+(c)が不可避との判定はまだない。追加仮定で消去していない。
+§314以降の完成見込みの外枠超過の懸念と、完備化の未評価分も残す。
+
+mainは391b2a0d2のまま。§33の3b-4a完成が取り込まれたらTotの9欄へ先に切り替える。
