@@ -9633,3 +9633,62 @@ def strictBETotDiagramProbeHomInfinityIso
 sorry・独自公理0。計算上限の変更なし。`--class impl --wait 3600`、同時整理券一枚、ビルド・小監査の間だけ鍵を保持。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
 
 3b-4の検証済み **25モジュール・1411行**（今回314行、共通二本を含む。外枠15,000行）。新規200行超のファイルなし。登録候補は同じBE用JSONへ追記。R02・R03のnative錐・極限性を完成とは数えず、次の接続は重み付きframe錐とnative切断の間の比較。/goalはactive。
+
+## 166. 一覧外の数学：選んだ一点重みとnative切断のBK重みの比較（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。検証済みコードは `98df07409`（§165、25本・1,411行、166宣言、標準三公理のみ）。R02・R03の残りの経路で、以下の数学的補題が必要になったため報告する。Leanの新しい証明・公理・仮定は追加していない。
+
+### 166.1 必要になった追加の型：R03a案
+
+`J := AsSmall.{u} SimplexCategory`、`I := Jᵒᵖᵒᵖ`。元のBE計算対象は選ばれた `HomotopyWeight.framedLimitWeight J` を使う。一方、既存のnative切断との比較は `bousfieldKanWeight I`（各値 `N(I/i)`）を使う。この二つを定義的に同じだと扱えない。必要なのは、同じ一つの重みの射による制限が、全Kan係数図式についてホモトピー同値になること。
+
+追加を提案する主張の型は次のとおり（`J`・`I`は略記せず展開）：
+
+```lean
+-- universe u
+-- open CategoryTheory
+-- open SerrePositivity.EInfinity
+-- open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+-- open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+theorem exists_strictBETotWeightComparison :
+    ∃ j : bousfieldKanWeight ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⟶
+        HomotopyWeight.framedLimitWeight (AsSmall.{u} SimplexCategory),
+      ∀ (H : ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⥤ SSet.{u}),
+        (∀ i, SSet.KanComplex (H.obj i)) →
+          IsSimplicialHomotopyEquivalence (weightedSectionsPre j H)
+```
+
+向きは `j : BK → W` から `sections(W,H) → sections(BK,H)`。一つの `j` を全Hに使うので、元の係数図式の射に関する自然性は既存 `weightedSectionsPre` の法則で保持できる。元のframe・重み・計算対象は変更せず、重み比較を通して元の普遍錐をnative切断へ送る。`[ModelCategory SSet]` は型に足さない。
+
+型そのものは `/private/tmp/CheckISW2WeightComparisonStatement.lean` に同じPropとして記述し、個別検査の**終了0**を確認した（ログ `/private/tmp/checkISW2WeightComparisonStatement2.log`）。これは定理の証明ではなく、型の検査だけである。本体には追加していない。
+
+### 166.2 なぜ既存構成の法則だけとは数えなかったか
+
+- `HomotopyWeight.weight_cofibrant`・`framedLimitWeight_cofibrant` は選んだ小対象分解の重みの射影cofibrancyを証明する。別の具体的な重み `bousfieldKanWeight` の射影cofibrancyや、その重みとのHom空間の比較はそのままでは得られない。
+- `weightedSectionsPre_homotopyEquivalence_of_extensions` は、**全ての成分ごとのanodyneな自然変換に対する延長性**を係数図式に要求する。今回の入力の各値がKanであるだけでは、その強い延長性を代入できない。
+- `coneSpace_kanComplex`・`coneSpace_map_boundary_rlp` は、固定した射影cofibrant重みに対する係数方向の法則である。異なる二つの重みを比較する今回の型の証明にはなっていない。
+- `YonedaHomotopyWeight`・抽象projective図式モデルの入口は値圏のModelCategory等を仮定する。これをSSetに無条件に代入したり、禁止された `[ModelCategory SSet]` を足したりしない。
+- §165の全Hom∞比較は元の正本Hom関手まで接続したが、二つの重みの違いを消す定理ではない。通常局所化の随伴・π₀の同値・忘却Uの極限保存で、この重み比較を代用しない。
+
+このため、随伴単位や全自然性の表示を分割した§164〜165とは異なり、R03aは新しい数学的補題として扱う。§152の一覧は既存frame Homとnative切断の橋を使う所で、この二つの具体的な重みのHom不変性を独立に洗い出していなかった。
+
+### 166.3 証明の見込みと配置
+
+候補の経路は、まず指定されたBK重みについて自由境界による細胞分解を示すこと。次数nの鎖 `i₀ → … → iₙ → i` を、最後の射 `iₙ → i` に関して自由な図式として扱い、非退化な鎖の境界の付加から射影cofibrancyを得る。その中で使う型は次：
+
+```lean
+-- open CategoryTheory Limits
+(HomotopyWeight.boundaries ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ)).rlp.llp
+  (initial.to (bousfieldKanWeight ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ)))
+```
+
+このPropの型も `/private/tmp/CheckISW2BKWeightStatement.lean` で検査済み。次に既存 `comparison_rlp` を用いて `BK → W` を一つ持ち上げ、両方の重みの射影cofibrancyと各値の可縮性を使って、全Kan係数図式への制限のHom不変性を証明する。この部分もモデル構造を仮定せず、自由境界・ホーンの持ち上げとして書く必要がある。
+
+置き場所の案：共通の細胞・持ち上げの部分は新規 `HomotopicalAlgebra/Diagram/`、指定Δ・二重反対・選んだWへの特殊化は新規 `EInfinity/HomotopyWeight/`。既存のFramedLimit*・⑤a・入口・公式監査は変えない。見込みは細胞の部分300〜700行、重みのHom不変性と指定比較250〜450行、計550〜1,150行。現時点の1,411行と合わせても外枠15,000行には届かないが、行数でなく型つき一覧の停止規則による判断である。
+
+### 166.4 停止の理由と現在地
+
+IS-W2 §18.2が参照する `coordination.md` §2の明文は、**「止まって報告するのは、新しい構成・新しい定理（既存の構成の法則でないもの）、まとまりの外のもの、外枠に届くときだけ」**。今回は新しい数学的補題R03aの追加の判断が必要と解した。検証済みの全25本は先にコミットし、対象ビルド218・小監査166宣言の終了0、鍵の返却、作業木に未検証のLean変更がないことを確認してから、この紙の報告を保存した。
+
+**R03aを型つき一覧に追加して進めるか、別の既存の橋を指定してもらう所で当該Lean作業を止める。** R02・R03・R04以降を完成とは数えない。停止点3b-4aにはまだ届いていない。外枠・型・既存界面は変更しない。/goalの全範囲は保持し、complete・paused・blockedには変更していない。
