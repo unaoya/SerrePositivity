@@ -5728,3 +5728,103 @@ lemma kanLeftUnitPostcomp_hom {K C D E : SSet.{u}} {δ : K ⟶ C}
 §55.11 の対象ビルド成功（5,453 jobs）、新しい環境の1宣言の小監査成功、
 標準三公理のみ。計算上限は不変。ログ：`/tmp/is-w1/left-unit-postcomp-hom/build-2.log`。
 今回45行、検証済み累計137本・10,979行。E01本体は未了。
+
+### 55.14 標準の点評価単位への接続（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.9・55.11 と指定左 Kan 保存則を接続する証明の分割。
+元の比較射と元の単位を保持し、普遍性の仮定を追加しない。
+
+```lean
+lemma homWeightYonedaLeftKanComparison_native_evaluation_fac {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    {L : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ PresheafInfinity A}
+    (β : SSet.Homotopy (yonedaInfinityMap A)
+      ((SSet.uliftFunctor.{u + 1, u}).map F ≫ L))
+    (hβ : IsLeftKanExtension ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (yonedaInfinityMap A) L β) (a : A _⦋0⦌) :
+    HEq (leftKanHomMap ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (kanLeftUnitPostcomp β (presheafInfinityEvaluation a))))
+      (presheafHomWeightDiagram F ≫ presheafInfinityEvaluation a)
+      (postcomposeFunctorHom (presheafInfinityEvaluation a)
+        (homWeightYonedaLeftKanComparison F β hβ)))
+      (postcomposeFunctorHom (presheafInfinityEvaluation a) (homWeightYonedaUnit F))
+
+lemma homWeightLeftKan_evaluation_homUniversal {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    {L : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ PresheafInfinity A}
+    (β : SSet.Homotopy (yonedaInfinityMap A)
+      ((SSet.uliftFunctor.{u + 1, u}).map F ≫ L))
+    (hβ : IsLeftKanExtension ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (yonedaInfinityMap A) L β) (a : A _⦋0⦌) :
+    LeftKanHomUniversal ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (kanLeftUnitPostcomp β (presheafInfinityEvaluation a))))
+
+```
+現在の指定単位比較の検証終了後、同じ一枚の整理券で対象検証する。
+
+### 55.15 分類正方形の合成式の局所展開（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55 の `squarePasting_of_laws` の型を保ち、`change` の前で
+`leftClassificationSquareHom.eq_def` だけを展開する。
+一般の射の合成則へ渡すときの巨大な定義的等式を、定義の等式による書き換えに分離する。
+補題の追加や計算上限の変更はない。現在の単位比較と§55.14の後に検証する。
+
+### 55.16 指定単位の局所展開の実行診断
+
+一覧：済み 0／全体 13（うち追加 11）
+
+同じ対象Leanプロセス（PID 29873、session 97267）の生存を確認。
+1秒の読み取りサンプリングでは `Environment.realizeConst` の
+`replayConsts_replayKernel` → `environment::add_theorem` → `type_checker::is_def_eq`
+が時間を使っていた。ログ：`/tmp/is-w1/unit-equation-full-window/lean-sample.txt`。
+これは成功・失敗の判定ではない。既定の1700秒枠の終了を待ち、途中で再起動しない。
+新しい数学的入力や計算上限の変更はない。
+
+### 55.17 点評価した同じ比較の一意性への接続（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+E01の証明分割。標的単位の普遍性を入力として明示し、後で§55の
+指定単位・分類正方形の照合から供給する。この条件付き補題でE01を済みとしない。
+
+```lean
+lemma homWeightYonedaLeftKanComparison_evaluation_isIso_of_homUniversal
+    {A C : SSet.{u}} [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    {L : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ PresheafInfinity A}
+    (β : SSet.Homotopy (yonedaInfinityMap A)
+      ((SSet.uliftFunctor.{u + 1, u}).map F ≫ L))
+    (hβ : IsLeftKanExtension ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (yonedaInfinityMap A) L β) (a : A _⦋0⦌)
+    (hunit : LeftKanHomUniversal ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (kanFunctorHomCongr rfl (Category.assoc _ _ _)
+        (postcomposeFunctorHom (presheafInfinityEvaluation a) (homWeightYonedaUnit F)))) :
+    IsIso (postcomposeFunctorHom (presheafInfinityEvaluation a)
+      (homWeightYonedaLeftKanComparison F β hβ))
+```
+
+### 55.18 指定単位の定義展開の時間切れ
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.12 の検証は1700秒で終了コード124。親runnerと対象Lean（PID 29873）の終了を確認した。
+対象モジュールの成功・小監査完了の記録はなく、未検証として保持する。
+ログ：`/tmp/is-w1/unit-equation-full-window/build.log`。
+単なる観測時間切れではなく、`gtimeout` による対象検証の終了である。
+同じ試行をそのまま再起動せず、§55.14・55.17の二本を先に対象検証する。
+Leanの計算上限は変更しない。指定単位比較は局所インスタンスの導入位置の照合を次の候補とする。
+
+### 55.19 指定単位の局所インスタンス導入の照合（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55の `chosenJointArrow` 内に、原定義 `functorHomBifunctorUnit` と同じ
+`have : LeftFibration (functorHomBifunctorProjection F F) := inferInstance` を置く。
+主張の型は変えず、同じ分類射のインスタンス導入位置だけを揃える。
+時間切れになった `eq_def` の自動生成は除き、元の小さな射作用則を適用する。
+現在の二本の検証後に `/tmp/is-w1/unit-local-instance/` で検証する。
