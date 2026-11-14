@@ -1158,3 +1158,46 @@ G1・G2共用部品込み本体 **7,396 行**、入口込み **7,529 行**。一
 共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-atlas-gluing-batch-check-3.log`、`2g-atlas-gluing-native.log`、`2g-atlas-gluing-audit.log`。
 
 一覧：済み 10／全体 14（うち追加 5）。
+
+
+B01 の降ろした開から実際の重なりの比較への接続（着手前の型、見込み40〜100行）：a:X→Y、元の開埋め込み u:U→X、模型の開 V⊆Y と a⁻¹V=u.opensRange に対し、`openModelComparison` は実際の U→V を IsOpenImmersion.lift で作る。`openModelComparison_fac` は基底への可換式、`isPullback_openModelComparison` は同じ比較の Cartesian 性。有限個の開の模型から、前記の貼り合わせの二重交叉の入力を実際に供給する法則で、親項目は増やさない。
+
+
+B01 の有限アトラスの全重なりを同じ段へそろえる法則（着手前の型、見込み100〜240行）：`isCompact_atlas_overlap` は元の準分離空間 X の準コンパクトな開被覆の二重交叉の開が準コンパクトであることを供給する。`exists_finite_atlas_opens_model_of_isLimit` は、同じ cofiltered 添字の有限個のチャート図式 Dᵢ と、その各極限上の有限個の準コンパクト開について、一つの共通段と全ての開の模型を同時に返す。`exists_finite_atlas_open_equalities_of_isLimit` は全チャート上の有限個の開の等式を一つの後の段へ移す。既存の有限族の開の模型を、有限個のチャートに沿ってさらに移す法則で、親項目は増やさない。元の重なりの準コンパクト性は仮定に置き換えない。
+
+
+B01 の実際のアトラスと二重交叉の開の模型の組立て（着手前の型、見込み200〜450行）：`OpenAtlasModelData k U j f` は、一つの有限生成 k-部分代数 A⊆R、全チャートの affine な qcqs 局所有限表示模型 Uᵢ⁰→Spec A、元の Uᵢ との実際の Cartesian な比較、二重交叉の模型の開 Vᵢⱼ⊆Uᵢ⁰ と、その逆像が元の Uᵢ∩Uⱼ である等式を保持する具体的な証人。`exists_openAtlasModel_of_common_affine_models` は、既に供給した共通係数環 A₀ 上の全 affine チャートの模型から、この証人を実際に構成する。有限生成部分代数の具体的な係数図式への因子化、元のチャートを頂点に保つ極限、全重なりの開を同じ有限段へ降ろす法則を使う。共通 affine 模型の入力は既存の `exists_finite_affine_atlas_coefficient_model` が無条件に供給するもので、一般の模型の存在を仮定で置き換える出口ではない。重なりの遷移・逆・cocycle の有限段への供給は次に残す。B01 の既定の存在の証明の分割で、親項目は増やさない。
+
+同じ実際の模型の組立ての出口 `exists_finite_openAtlasModel`（上記200〜450行の分割の中）：Noether 係数環 k、任意の k-代数 R、局所有限表示・準コンパクト・準分離な f:X→Spec R に対し、有限 affine 開被覆 𝒰 と、実際の `OpenAtlasModelData k 𝒰.X 𝒰.f f` を返す。既存の無条件の共通 affine 模型を前記の構成に渡す。R の Noether 性や既存の模型の存在は仮定しない。全体の模型の存在には、重なりの遷移・逆・cocycle を同じ段へ降ろす部分が依然残る。
+
+
+次の遷移の降下で使う有限表示性：k が Noether なら、選んだ有限生成 A₀ と全模型 Uᵢ⁰ は Noether。重なりの模型 Vᵢⱼ⁰ はその開なので、Spec A₀ 上 qcqs・局所有限表示である。このため、元の二重交叉から Vⱼᵢ⁰ への反転の射を、固定した局所有限表示の対象への射としてそのまま降ろせる（模型のチャートへの射だけを降ろしてから像の包含を別に処理する必要はない）。三重交叉の模型は Vᵢⱼ⁰×[Uᵢ⁰]Vᵢₖ⁰ とし、元の三重交叉との Cartesian な比較は二重交叉の比較の貼り合わせで作る。元の三重交叉から Vⱼₖ⁰ への射も同じ既存の有限個の射の降下に渡す。対角の逆・tᵢⱼ・Lᵢⱼₖ を同じ段で取り、基底上の可換式を保持するので、固定した元の模型の射影への有限個の等式を降ろすだけで、段の射そのものの逆・恒等射・三重交叉の式を証明できる。これは既定の gluing datum の有限段への供給の紙の具体化で、一般の固有性の降下を代用するものではない。
+
+
+同じアトラス模型の法則（着手前の型、見込み80〜180行）：`OpenAtlasModelData.isNoetherian_coefficients` と `isNoetherian_obj` は k の Noether 性から係数環 A と全模型チャートの Noether 性を供給する。`overlapComparison` は元の二重交叉から模型の重なりへの実際の射を、逆像の開の等式から作る。`isPullback_overlapComparison` と `isPullback_overlapComparison_toBase` はそのチャート上・係数基底上の Cartesian 性。`finitePresentation_overlap` は模型の全重なりが Spec A 上 qcqs・局所有限表示であることを供給し、遷移・逆・三重交叉の射を固定した有限表示の対象へ直接降ろす入力になる。既存の Noether 性・開包含・底変換・合成の法則で、親項目は増やさない。
+
+
+### B01：元のチャートを保つ実際の係数図式と開の比較への接続
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| CoefficientSubalgebraFactor | 31 | `exists_coefficient_spec_factor_of_fg`：有限生成係数部分代数への構造射を、具体的な係数図式の実際の段で同じ包含のまま因子化 |
+| CartesianCompositeStageLimit | 54 | `cartesianCompositeStageCone`：元の Cartesian なチャート X を頂点に保つ、合成係数の底変換図式の cone |
+| 同上 | 同上に含む | `isLimit_cartesianCompositeStageCone`：同じ cone の実際の極限性 |
+| 同上 | 同上に含む | `cartesianCompositeStageCone_π_snd` と `_assoc`：模型への射影との合成は元の比較射 |
+| 同上 | 同上に含む | `cartesianCompositeStageCone_π_fst` と `_assoc`：基底への射影との合成は元の構造射と基底図式の射影の合成 |
+| 同上 | 同上に含む | `isPullback_cartesianCompositeStageCone_π`：各射影は同じ基底の射影の底変換 |
+| OpenTransitionTripleLift | 42 | `openTransitionTripleLift`：三重交叉の開への像の包含から実際の射 L を lift で作る |
+| 同上 | 同上に含む | `openTransitionTripleLift_fac` と `_assoc`：同じ三重交叉の射の可換式 |
+| 同上 | 同上に含む | `openTransitionGlueDataOfRange`：実際の lift を有限個の逆・cocycle の式と合わせ Scheme.GlueData にする |
+| OpenModelComparison | 44 | `openModelComparison`：元の開と降ろした開の逆像の等式から、実際の比較射を lift で作る |
+| 同上 | 同上に含む | `openModelComparison_fac` と `_assoc`：元の射と同じ可換式 |
+| 同上 | 同上に含む | `isPullback_openModelComparison`：この実際の開の比較は Cartesian |
+
+本体 **171 行**、入口 4 行。直接 importer AlgebraicGeometry まで対象ビルド **4,923 ジョブ成功**。四モジュールの小監査は補助宣言込み **23 宣言・標準三公理のみ**（内訳1・10・6・6）。最初の単独ビルドで不足した Restrict の import を明示し、同じ対象ビルドと監査を完了した。実際の cone の IsLimit と pullback 比較の可換式を保ち、忠実平坦性や元の環の Noether 性を追加仮定にしていない。
+
+G1・G2共用部品込み本体 **7,567 行**、入口込み **7,704 行**。一般の有限表示対象の模型の分割は **905 行**まで検証。全チャートと重なりの開の模型の実際の供給は下書き検証中で、この監査には含めない。重なりの遷移・逆・cocycle、一般の固有性の降下と被覆模型は未完で、B01〜B04 は未完。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-coefficient-atlas-connection-check-2.log`、`2g-coefficient-atlas-connection-native-2.log`、`2g-coefficient-atlas-connection-audit.log`。
+
+一覧：済み 10／全体 14（うち追加 5）。
