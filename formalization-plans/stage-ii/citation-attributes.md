@@ -118,3 +118,5 @@ B4（各レーンの追従）の手順（`bulk-w1-b3/B4-README.md` を各レー�
 4. `git merge main` をし、プレビューの差分を新しい配置へ反映する（import は `module-map.json` で、名前は書き換えの結果で）。古い索引を取り込み後のソースに流用しない。
 5. 自分の新しいモジュールの対象ビルドと小さい監査を通してコミットし、報告する。調整役がその枝を main に取り込む。
 順序：⑥ を先に（最大の枝）。ほかは並行でよい。⑤d（`math/bs-m15`）も同じ手順で行う（影響一覧には入っていない）。
+
+**追記（11-14 午後、調整役）：B4 の open の保留の方針（全レーン共通）**。親の名前空間の一部が B3 でファイルごとに別の名前空間へ分かれたため（例：`…Project.DerivedCategories`、`…Project.HomotopyDiagramComparison`）、その子の名前空間の open が「explicit opens policy needed」で保留になる。方針：**open した名前空間が main に同じ名前で残り、その open で使っている宣言がすべて同じ完全名で main にあるなら、open はそのまま残す**（保留を恒等として解消し、取り込み後の対象ビルドで確認する）。使っている宣言のどれかが main で見つからない（改名・移動された）ときは止まって報告する。確認済みの例：⑤d の `…DerivedCategories.DiagramComparison`（`semifreePointEquivalence`・`complexClosedPresentation`・`complexDerivedEvaluation` などは main の DiagramComparison/ に同じ完全名で残る）、③-b の `…HomotopyDiagramComparison.CosimplicialHom`（main の HomotopyDiagramComparison/CosimplicialHom/ に同じ名前空間で残る）。
