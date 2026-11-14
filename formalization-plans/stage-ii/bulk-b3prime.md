@@ -33,3 +33,7 @@
 ## 4. 報告
 
 `report-bulk-w1.md` に節を足して自分の枝にコミットする。区切りごとに「一覧：済み n／全体 m（うち追加 k）」（§1 の項目を ID にする）。
+
+## 5. 追記（2026-11-14 夜、調整役）：R8-1 の保護例外を広げる
+
+`bulk-b3prime/r8-1-scope-decision.json`（1d8e96aab）を受けて。EInfinity → BS の二本目の辺を解くため、`EInfinity/Perfectoidization` の CAlg_R 版の三本（Comparison・Interface・DerivedCorollary、計 255 行）も保護の例外に含め、**削除せずに BS の側へ機械的に移す**（宣言名・型・証明を保つ、保存比較で未説明 0）。削除は保守のまま（R8-1）。⑤a・⑤d の枝が三本を使っていれば B4 の影響一覧に入れる。
