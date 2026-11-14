@@ -1780,3 +1780,20 @@ C04 全体は15モジュール、本体875行・入口15行。最初の見込み
 C04 の完了を一般の固有性の降下や B01 の完了とは扱わない。B01〜B04 は未完。次は対角への適用による分離性の降下と、一般の固有性を降ろすための Chow の供給の接続を進める。原典の再照合：[081F](https://stacks.math.columbia.edu/tag/081F) で使うのは、固有全射の源が固有な周辺スキームへ immersion を持つことである。[0200](https://stacks.math.columbia.edu/tag/0200) の構成では標準 affine 埋め込み・閉包・有限積の固有な周辺空間・局所の射の貼り合わせを使う。[0202](https://stacks.math.columbia.edu/tag/0202) の非 Noether への移送は、有限表示対象の模型と分離性の降下を先に用いるため、固有性の降下を仮定しなければ循環しない。Chow 自体の型付きの存在補題の追加と見込みは、実際の Proj の標準開・immersion・像の API を照合して記録する。一般の固有射をブローアップの模型だけへ狭めない。
 
 一覧：済み11／全体15（うち追加6）。
+
+
+B02 の閉埋め込み性の Cartesian な図式への移送（着手前の型、見込み50〜120行）：`exists_closedImmersion_stage_of_cartesian_limit` は qcqs な affine 遷移の基底図式 D と実際の極限 c,hc、自然変換 τ:E→D、段 i の qcqs・局所有限型の射 τᵢ について、実際の閉埋め込み φ:Y→c.pt と `IsPullback a φ τᵢ (c.π.app i)`、後段の自然性の Cartesian 正方形があれば、ある j→i で τⱼ が閉埋め込みと返す。C04 の実際の pullback の出口を指定された Cartesian 比較の同型で移す法則で、B02 内の証明分割。模型や閉埋め込み性を追加仮定にした B01 の代用とはしない。
+
+
+B02 の対角と Cartesian 比較の法則（着手前の型、見込み80〜200行）：`isPullback_diagonal_cartesianPullbackMap` は `IsPullback a p f g` に対し、`pullback.diagonal p`、a、同じ比較を二つ使う `cartesianPullbackMap p p f f g a a h h`、`pullback.diagonal f` の正方形が Cartesian であることを返す。二つの射影を比較し、元の Cartesian 正方形の一意性で対角への lift を作る。Stacks 01ZQ の分離性の降下で用いる対角の底変換の法則で、B02 内の証明分割・既存の有限極限の法則として親項目を増やさない。
+
+
+### B02：閉埋め込み性の降下を指定された Cartesian な図式へ移す
+
+`CartesianClosedImmersionLimit`（41行）：`exists_closedImmersion_stage_of_cartesian_limit` は、qcqs・局所有限型の初期の射を持つ Cartesian な自然変換について、極限での指定された Cartesian な閉埋め込みから、ある後段の射の閉埋め込み性を返す。実際の二つの正方形を pullback と比較する同型で C04 の出口を移した。
+
+本体41行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,979ジョブ成功。小監査1宣言・標準三公理のみ。最初の下書きの単独検証、公開前のソース完全一致、対象ビルドと監査を終了状態0で完了。ログ `2g-cartesian-closed-immersion-limit-check.log`・`2g-cartesian-closed-immersion-limit-native.log`・`2g-cartesian-closed-immersion-limit-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,332行、入口込み11,525行。B01〜B04 は未完。
+
+一覧：済み11／全体15（うち追加6）。
