@@ -1475,3 +1475,4 @@ public import SerrePositivity.AlgebraicGeometry.AffineCartesianClosedLimit
 public import SerrePositivity.AlgebraicGeometry.AffineClosedPullbackLimit
 public import SerrePositivity.AlgebraicGeometry.ClosedPullbackComposite
 public import SerrePositivity.AlgebraicGeometry.AffineRestrictionClosedLimit
+public import SerrePositivity.AlgebraicGeometry.AffineHomClosedLimitDescent

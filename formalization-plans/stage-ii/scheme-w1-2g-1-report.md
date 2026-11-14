@@ -1753,3 +1753,17 @@ C04(d) の有限被覆での貼り合わせ（着手前の型、見込み100〜2
 G1・G2共用部品込み本体11,153行、入口込み11,343行。C04 は本体737行まで検証。一般の標的での閉埋め込み性の貼り合わせは現在下書きで実測に含めない。一般の固有性の降下、被覆模型・図式の整合性も残り、C04 と B01〜B04 は未完。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+C04 の一般の qcqs な射への最後の接続（着手前の型、見込み100〜250行）：`isClosedImmersion_pullback_snd_composite_iff` は h≫g=b に対し、f の b による実際の底変換の閉埋め込み性と、f の g による底変換をさらに h で引いた閉埋め込み性の同値を返す。`exists_closedImmersion_pullback_of_isLimit` は qcqs なスキームの affine 遷移の cofiltered 図式 D、実際の極限 c,hc、段 i への qcqs・局所有限型の射 f に対し、極限の実際の底変換が閉埋め込みなら、ある j→i の同じ底変換が閉埋め込みと返す。まず一般の affine 性の降下を使い、その段以降の図式へ移して上記の有限被覆の出口を適用し、二段の底変換の同値で元の射へ戻す。01ZP の C04 の出口で、固有性・Noether 性や模型の存在を追加仮定にしない。
+
+
+### C04(d)：一般の標的での affine な射の閉埋め込み性の降下
+
+`AffineHomClosedLimitDescent`（67行）：`isClosedImmersion_baseChange_restriction` は合成の底変換を二段の実際の pullback へ移し、閉埋め込み性を保つ。`exists_closedImmersion_pullback_of_isLimit_of_isAffineHom` は affine・局所有限型の射について、極限の閉埋め込み性を一般の標的のある後段へ降ろす。有限 affine 被覆の制限の共通段を取り、実際の比較同型と標的での局所性で貼り合わせた。
+
+本体67行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,977ジョブ成功。小監査3宣言・標準三公理のみ。最初の下書きの単独検証、公開前のソース完全一致、対象ビルドと監査を終了状態0で完了。ログ `2g-affine-hom-closed-limit-descent-check.log`・`2g-affine-hom-closed-limit-descent-native.log`・`2g-affine-hom-closed-limit-descent-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,220行、入口込み11,411行。C04 は本体804行まで検証。一般の qcqs な射への最後の接続は現在下書きで実測に含めない。一般の固有性の降下、被覆模型・図式の整合性も残り、C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。
