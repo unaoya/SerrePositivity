@@ -1653,3 +1653,5 @@ public import SerrePositivity.AlgebraicGeometry.ReesDegreeOneStandardOpen
 public import SerrePositivity.AlgebraicGeometry.ReesProjectiveCechInput
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveScalarStructureMorphism
+
+public import SerrePositivity.AlgebraicGeometry.ReesScalarStructureMorphism

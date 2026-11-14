@@ -216,3 +216,29 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 2g-2 本体795行・入口込み808行、小監査50宣言・標準三公理のみ。G3 の Rees への構造射の特殊化・有限ファイバー冪と G4〜G5 は未完。外枠16,000行、全体の見込み約5,500〜12,000行は不変。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+構造射の照合の追加の法則の分割（着手前の型、前記の内数）：`projectiveCechStructureMap G : Proj G→Spec R` は schemeScalarMorphism (Proj G) (projectiveScalarToGlobalSections G) という同じ合成を一般の G で名前付けする（見込み15〜35行）。Rees に特殊化する際、構造層の環の同一性を巨大な具体的な型で再推論せず、この一般の合成と証明をそのまま特殊化する。`projectiveCechStructureMap_eq` は前の一般の比較の適用。Rees の射との等式の内容を変えず、上限は上げない。
+
+
+## G3：Rees の実際の構造射への特殊化
+
+`ReesScalarStructureMorphism`（39行）：`projectiveCechStructureMap` は schemeScalarMorphism と projectiveScalarToGlobalSections の同じ合成を一般の G の下で名前付けしたもの。`projectiveCechStructureMap_eq` は前の一般の比較。`schemeScalarMorphism_rees` はこの定義上同じ射と affineBlowupπ の一致。
+
+本体39行・入口1行。具体的な構造層の型の再推論で出た elaboration timeout は、一般の合成と証明をそのまま特殊化する分割で解消。局所的な次数分解の固定だけの案は未検証下書きで置き換えた。単独検証、ソース完全一致、対象・直接 importer のビルド5,080ジョブ、小監査5宣言・標準三公理のみ、終了状態0。上限の引き上げ・追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-rees-scalar-structure-morphism-check-3.log`・`2g-rees-scalar-structure-morphism-native.log`・`2g-rees-scalar-structure-morphism-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体834行・入口込み848行、小監査55宣言・標準三公理のみ。今回の区切りは2モジュール84行＋入口2行、小監査7宣言。G3 の有限ファイバー冪と G4〜G5 は未完。外枠16,000行、全体の見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+## G3：有限ファイバー冪の Segre 表示の分割（着手前の型）
+
+[Stacks 01WD（Segre embedding）](https://stacks.math.columbia.edu/tag/01WD) の座標積と標準開の組を照合した。以下は、その座標の計算を一般の有限な次数一表示の商へ組み立てる本実装の分割で、同 Tag が一般の次数付き商の場合の以下の全 API を直接供給しているという意味ではない。一般の射影的射のカテゴリー全体や線束の普遍性は新設しない。
+
+- S01（見込み120〜300行）：`segreCoordinateMap a b : MvPolynomial (ι×κ) R→ₐ[R] B⊗[R]A`。変数 (i,j) は b j⊗a i。左因子 A の次数を B に底変換した grading の下で graded な射に束ねる。Mathlib GradedAlgebra.TensorProduct の baseChange は平坦性不要。まず一般の次数一評価の次数保存と、この座標写像の係数・変数の式を供給する。
+- S02（150〜450行）：座標写像の核の斉次性、実際の商 S=R[Z]/ker とその次数分解・多項式環上の有限加群性・irrelevant ideal の条件。同じ多項式環の商なので次数一の有限表示を保持する。既存の HilbertSerre.isInternal_quotientGrade を使い、一般の二重次数付き環の理論を追加しない。
+- S03（600〜1,400行）：各対 (i,j) について S_(Zij) の次数零の環と A_(ai)⊗[R]B_(bj) の同型、および重なりの局所化への自然性。分子分母を同じ次数へそろえる計算を使い、非零な分母・非自明な局所化を仮定しない。
+- S04（500〜1,200行）：この標準開の組による Proj S と Proj A×_{Spec R}Proj B の実際の同型、構造射と二射影の式。既存のアフィン pullback の tensor 比較と開被覆の貼り合わせを使う。
+- 有限冪への適用（150〜350行）：S01〜S04 を反復し、正の有限ファイバー冪に同じ有限な次数一表示と基底上の同型を供給する。増大次数の基底そのものは別扱いで、不要な Proj 表示を要求しない。中心への底変換と構造射の式を保持する。
+
+これらは既承認の G3 の Rees・Segre・有限ファイバー冪の射影表示の分割。残りのこの部分は約1,520〜3,700行、G3〜G5 の全体は約5,500〜12,000行・外枠16,000行を維持する。一般の固有射のコホモロジー有限性・Stein 分解を追加せず、2f の射影 Čech 版に実際の入力を供給する。
