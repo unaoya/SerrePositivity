@@ -896,3 +896,8 @@ SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされ�
 一覧：済み 8／全体 14（うち追加 0）。調整役の§5の例外承認を受け、全draftのimportとB3の一意な完全名を対応表で再走査した。残りの機械的な変更は **Shared/EInfinityPowerOperation.lean:8 のimport 1行**：`…Project.DerivedCategories.Homology` → `…Project.DerivedCategories.MappingAndStability.HomSpaces.Homology`。変更の全行は[台帳](bulk-5inf0/section5-protected-mechanical-edits.json)に保存した。主張・型・証明とA4のP⁰部分は変更していない。保護されたSharedファイルの変更禁止の例外はこの1行のみで、まだ全体の型検査は未実行。前節の前提のimport欠落は解消した。
 
 第17束は共有Totのnerveの零単体の評価表示で失敗し、後続は未実行。[結果](bulk-5inf0/draft-block17-validation.json)を保存した。零単体の評価は定義上の等しさではなく `nerveMap_app_mk₀` の等式で揃える必要があるため、その等式を明示して第18束へ進めた。独立したArcRouteBと補助界面も同じ280秒以内の束に含めた。
+
+
+### 5∞-0 のdraft検査・第18束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第18束](bulk-5inf0/draft-block18-validation.json)でArcRouteBが成功し、有効な成功は24本。ArcRouteBの型・既存の証明を変えず、B3で移った3モジュールのimport追従をコミットする。補助のShared/BarrattEcclesTheoryは本体の組み立て関数が供給済みのP⁰四欄をまだ引数に渡していて失敗した。重複する4引数だけを外し、残る十七欄を維持する修正を第19束で検査する（本体EInfinityの変更はない）。共有Totは零単体の評価の等式を明示したことで同型の合成まで通り、最後の二つのホモトピー圏の表示の展開が残った。既存のbridgeと頂点ホモロジーの定義を展開する修正を同じ束に入れた。まだ成功とは数えない。
