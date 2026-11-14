@@ -6483,3 +6483,40 @@ theorem productChainsCoefficient_generator_value (X Y : SSet.{u}) (r : ℕ)
 ### 135.3 検収
 
 コード `76453fce1`。鍵付き対象ビルド149は4,015 jobs・終了コード0。新規分だけの監査は7宣言（3・4）、標準三公理のみ。累計278モジュール・17,116行・2,281宣言。個別結合検査も警告のみで完了。計算上限の変更、sorry・新公理、既存宣言の変更なし。B02は未完。B4の指示を優先し、原ソースを保存して改名前の参照採取に移る。
+
+
+## 136. B4：採取後の open 方針の保留で停止（2026-11-14 昼）
+
+一覧：済み 14／全体 36（うち追加 1）
+
+### 136.1 固定した原ソースと採取
+
+B4の指示を優先。検証済み2本を `76453fce1`、型・検収を `b4916a73d` にコミットしてから、mainを取り込む前の自worktreeで参照を採取した。基準 `c5c4436c0` 以後の追加・変更Lean（drafts除外）は **278本**。作業木はクリーンで、未検証Lean下書きなし。原ソースを `/private/tmp/isw2-b4/original-sources.tar.gz`、対象全体を同ディレクトリの `files.json` に保存した。
+
+mainの `bulk_namespace.py collect/rewrite` と B3配布表を使った。鍵は `--class impl --wait 3600`、各採取組は `gtimeout --kill-after=3s 280` で制限。最初の8本ずつ二組、その後は独立した8本ずつ四組を一つの鍵の中で採取。索引と原ソースの全バイト一致の検査を維持。整理券は常に一つ。採取順だけを入れ替え、全278本の集合が一致することを検査した。
+
+**48本の採取が完了**（`before-00`〜`before-05`、全て `files.json` あり）。プレビューは最初の二組16本が保留0・ソース差分0。その次の8本のプレビューで下記1件の保留が出たため、ドライバは終了コード1で停止した。後続の採取や残りのプレビューには進んでいない。鍵は返却済み。最初の逐次ドライバは二組目の採取完了後、停止状態から終了して組単位のドライバに切り替えた。このドライバ切り替えの終了137と、保留による終了1は区別している。
+
+### 136.2 保留の内容
+
+対象：`SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorDoldKan.lean` **20行**（UTF-8 byte 1131〜1215）。
+
+```lean
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+```
+
+`review.json` の理由：
+
+```text
+explicit opens policy needed for a renamed namespace
+```
+
+採取したopenは単純open、解決先は上記と同じ完全名の一つ。配布表の全体 `opens` およびこのモジュールの `module_opens` には、この名前の方針がない。一方、配布表には既存モジュール `SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneStandardHom` に限った同じopenを同名のまま保つ方針が既にある。新規利用側へ同じ方針を使ってよいかを自分で推定せず、指示どおり停止した。共有の道具・配布表・Leanソースの手修正はしていない。
+
+再現資料を `formalization-plans/stage-ii/is-w2-b4-20261114/` に保存した：対象全体 `files.json`、保留 `review.json`、該当ファイルの採取元込み索引 `blocked-before-index.json.gz`、固定コミット・件数・配布表ハッシュ等 `summary.json`。他の索引・プレビュー・各採取ログは `/private/tmp/isw2-b4/` に保持している。
+
+### 136.3 再開条件と現在地
+
+**main未取り込み、プレビュー未反映、B4未完了**。指示の「保留が出たら止まって報告」に従い、B4後の対象ビルド・監査はまだ実行していない。原ソースは `b4916a73d` のまま。修正版のopen方針／道具を受け取ったら、同じ移動前ソースとその索引で再プレビューし、未採取分を採取する。保留0と差分確認の後に mainを取り込み、importをmodule-mapで追従し、自分の新規モジュールの対象ビルド・小さい監査を行う。
+
+G10はB02未完、B03〜B08・C・Dも未完。累計278モジュール・17,116行・2,281宣言、外枠まで2,884行。B4が済んだ後に /goal を再開する。B4で計算上限・型・既存宣言・⑤a・入口・公式監査・mainの変更なし。新たなLean数学・構成の追加なし。

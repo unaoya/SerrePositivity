@@ -1,0 +1,9 @@
+{
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorDoldKan.lean": [
+    {
+      "start": 1131,
+      "stop": 1215,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ]
+}

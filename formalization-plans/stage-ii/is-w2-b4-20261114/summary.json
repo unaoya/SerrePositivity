@@ -1,0 +1,32 @@
+{
+  "branch": "math/inf-supply-b",
+  "before_head": "b4916a73d1b292da0002d2a00ff69399c348a1f9",
+  "base": "c5c4436c0",
+  "requested_main": "16d6b4547",
+  "total_files": 278,
+  "captured_files": 48,
+  "rewritten_files_checked": 24,
+  "pending_files": 1,
+  "main_merged": false,
+  "lean_sources_changed_by_b4": false,
+  "complete_batches": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "rewrite_checked_batches": [
+    0,
+    1,
+    2
+  ],
+  "pending_batch": 2,
+  "source_archive": "/private/tmp/isw2-b4/original-sources.tar.gz",
+  "artifacts": "/private/tmp/isw2-b4",
+  "plan_sha256": "67ba053988c420d4a43dc026da90b93dca531e393c94bcfce7ca420673bd9d87",
+  "module_map_sha256": "b02daa7a9464250045d264456c9212390602359116bb4d830dff26008daa458b",
+  "driver_exit": 1,
+  "reason": "explicit opens policy needed for a renamed namespace"
+}
