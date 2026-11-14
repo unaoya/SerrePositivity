@@ -5919,3 +5919,57 @@ Leanの計算上限は変更しない。指定単位比較は局所インスタ�
 別名 `B₀` を除いた補助証明への切り出しで、計算上限を変えずに通った。
 ログ：`/tmp/is-w1/square-aux-boundary/build.log`。
 今回360行、検証済み累計140本・11,471行。E01の指定単位比較はまだ未了。
+
+### 55.29 指定単位の正規化を補助証明へ切り出す（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`unit_heq_precomposeChosen` の型を維持し、原定義の通常の展開と
+一般の射作用則の直接適用の間に `as_aux_lemma` の境界を置く。
+§55.28で成功した分割方針を適用し、kernelの一回の検査に展開と合成の両方を集中させない。
+新しい数学や仮定は追加せず、計算上限も変えない。
+
+### 55.30 標準引き戻し正方形の分類（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存構成の恒等射の計算法則。元の底変換同型の逆射を同定し、
+始点固定の貼り合わせ式へ使う。新しい構成は作らない。
+
+```lean
+lemma leftClassificationSquareHom_pullback {A B H : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] (p : H ⟶ B) [LeftFibration p]
+    (k : A ⟶ B) :
+    leftClassificationSquareHom (pullback.snd p k) p k
+      (pullback.fst p k) (pullback.condition (f := p) (g := k)) =
+      (leftStraighteningInfinityDiagram_baseChangeIso p k).inv
+```
+
+### 55.31 指定単位の補助証明分割の検証結果
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.29 は `as_aux_lemma` の生成した補助証明内で kernel deterministic timeout、終了コード1。
+原単位の展開との境界を置くだけでは未了。ログ：`/tmp/is-w1/unit-aux-normalization/build.log`。
+次は§55.30の標準引き戻し正方形を検証する。単位側は、重い分類射を
+両辺で共通の変数へ一般化してから射作用則を適用する分割を次の候補とする。
+
+### 55.32 指定単位の共通分類射を変数化（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`unit_heq_precomposeChosen` の公開前提・型を変更せず、原単位と二つの補助定義を
+通常展開した後、両辺の同じ分類射と底変換逆射の合成を `generalize` でαに置く。
+その後、一般の射作用則を `as_aux_lemma` 内で適用する。
+αを独立の数学的入力として主張に残さず、元の式への代入をLeanに検査させる。
+計算上限は不変。現在の標準引き戻し正方形の検証後に検証する。
+
+### 55.33 標準引き戻し正方形の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.30 の対象ビルド成功（4,102 jobs）、1宣言の小監査成功、標準三公理のみ。
+射の恒等性に伴う射影等式も `simp only` で同時に簡約した。
+計算上限は不変。ログ：`/tmp/is-w1/classified-pullback-square/build-2.log`。
+今回43行、検証済み累計141本・11,514行。E01本体は未了。
+次は§55.32の指定単位比較を検証する。
