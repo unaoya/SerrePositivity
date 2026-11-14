@@ -1,8 +1,8 @@
 {
   "status": "static name-disposition audit; final draft typechecks pending",
   "removed_names": 123,
-  "same_name_owners": 116,
-  "explicit_other_replacements": 6,
+  "same_name_owners": 113,
+  "explicit_other_replacements": 7,
   "unaccounted_removed_or_renamed": 0,
   "restored_unplanned_names": [
     "SerrePositivity.BhattScholze.Almost.isAlmostConnective_completedFilteredColimit",
@@ -853,13 +853,11 @@
       "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
       "replacement": [
         {
-          "name": "SerrePositivity.BhattScholze.Prismatic.cechAlexanderFrame",
-          "path": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Frames/BigCechFrameComparison.lean",
-          "line": 200,
-          "signature_source": "def cechAlexanderFrame (Q : Poly C) (X : ∀ n, AffineEnvelopeTerm P Q.n n κ)\n    (Y : ∀ (Q' : Poly C) n, BigCechTerm P Q' n) :\n    polyCosimplicialAlgebraOfAffineTerms P X ⟶ (bigCechAlexanderOfTerms P Y).obj Q"
+          "name": "SerrePositivity.BhattScholze.Prismatic.affineCechAlexanderFrame",
+          "path": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Frames/BigCechFrameComparison.lean"
         }
       ],
-      "reason": "same-full-name owner in baseline inventory; declaration types checked by downstream drafts, not by this scan"
+      "reason": "The existing canonical affine-term specialization matches the old universal draft call; main cechAlexanderFrame itself also takes explicit families of terms."
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.cechAlexanderObj",
@@ -1557,26 +1555,22 @@
       "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
       "replacement": [
         {
-          "name": "SerrePositivity.BhattScholze.Prismatic.wittToSmall",
-          "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Witt/WittToSmall.lean",
-          "line": 283,
-          "signature_source": "def _root_.SerrePositivity.BhattScholze.Prismatic.wittToSmall :\n    wittBigPdModel P hpC hlocal ⟶\n      pdPolynomialFunctor p γC (Ideal.mem_span_singleton_self (p : C)) hk hpC ⋙\n      (Functor.whiskeringRight _ _ _).obj resW"
+          "name": "SerrePositivity.BhattScholze.Prismatic.universalWittToPdModel",
+          "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean"
         }
       ],
-      "reason": "same-full-name owner in baseline inventory; declaration types checked by downstream drafts, not by this scan"
+      "reason": "Retained original universal target to the general pdModelPolynomialFunctor with its original unproved body; the main conditional pdPolynomialFunctor target is a different type."
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.wittToSmall_frame",
       "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
       "replacement": [
         {
-          "name": "SerrePositivity.BhattScholze.Prismatic.wittToSmall_frame",
-          "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Witt/WittToSmallFrame.lean",
-          "line": 207,
-          "signature_source": "theorem _root_.SerrePositivity.BhattScholze.Prismatic.wittToSmall_frame :\n    wittSmallFrame P hpC hlocal Q hk ≫ (wittToSmall P hpC hlocal hk).app Q ≫\n      Functor.whiskerRight (eqToHom (show\n        (pdPolynomialFunctor p γC (Ideal.mem_span_singleton_self (p : C)) hk hpC).obj Q =\n          pdModel p C Q.n from by rfl)) resW =\n      @pdModelBaseChange _ W C _ _ (wZero p C).toAlgebra Q.n"
+          "name": "SerrePositivity.BhattScholze.Prismatic.universalWittToPdModel_frame",
+          "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean"
         }
       ],
-      "reason": "same-full-name owner in baseline inventory; declaration types checked by downstream drafts, not by this scan"
+      "reason": "Retained original universal target to the general pdModelPolynomialFunctor with its original unproved body; the main conditional pdPolynomialFunctor target is a different type."
     },
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.zariskiTopology",
@@ -1620,14 +1614,24 @@
       "validation": "PASS block25 after direct canonical import and duplicate removal"
     }
   ],
-  "retained_renamed": 1,
-  "removed_declarations": 122,
-  "renamed_declarations": 1,
+  "retained_renamed": 3,
+  "removed_declarations": 120,
+  "renamed_declarations": 3,
   "restored_renamed": [
     {
       "old": "SerrePositivity.BhattScholze.Prismatic.pdPolynomialFunctor",
       "new": "SerrePositivity.BhattScholze.Prismatic.pdModelPolynomialFunctor",
       "reason": "different coefficient hypotheses on main candidate"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Prismatic.wittToSmall",
+      "new": "SerrePositivity.BhattScholze.Prismatic.universalWittToPdModel",
+      "reason": "different target functor on main candidate; retain original contract"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Prismatic.wittToSmall_frame",
+      "new": "SerrePositivity.BhattScholze.Prismatic.universalWittToPdModel_frame",
+      "reason": "different target functor on main candidate; retain original contract"
     }
   ]
 }

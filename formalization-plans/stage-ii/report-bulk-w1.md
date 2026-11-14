@@ -1086,3 +1086,16 @@ InterfaceFieldsは完備化単位の同じ辺の端点の補助定義自体は�
 一覧：済み 10／全体 14（うち追加 0）。[第52束](bulk-5inf0/draft-block52-validation.json)でA5/PerfectSiteが約39秒、A8/AlmostConnectivityが約22秒で成功。有効な成功は42／57本。前者は元の有限余積の反復と指定された脚をNat.recで明示し、後者はD3の二切断のホモトピー圏の対象のptから同じ頂点を読んだ。通常のホモトピー圏の脚への照合も通った。この2本の検査済みソースをコミットする。
 
 SemiperfectoidCaseは第52束で失敗し、有界性の既存の証明・includeとdocstringの配置・公開された値の選択で使う存在定理の公開範囲・ホモトピー圏の表示を合わせた。[第53束](bulk-5inf0/draft-block53-validation.json)ではそれらが通り、根の変数の改名を商へ降ろすIdeal.quotientMapₐの引数の推論1箇所が残った。係数環・両イデアル・同じ改名写像を明示して第54束で検査する。元の未証明の理想への包含の主張を変えず、新しい仮定やsorryは追加していない。
+
+
+### 5∞-0 のdraft検査・第54〜55束と型の違う対応の訂正（11-14 19時台）
+
+一覧：済み 10／全体 14（うち追加 0）。[第54束](bulk-5inf0/draft-block54-validation.json)でA5/SemiperfectoidCaseが約42秒で成功。有効な成功は43／57本。根の改名の商の射は同じ係数・イデアル・写像を名前つき引数で明示した。検査済みのソースをコミットする。
+
+DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contract-retention.json)：本体wittToSmallの終域はγ・hp・hk・hregを持つ条件付きpdPolynomialFunctor、元の普遍基底のdraftの終域は保持した一般pdModelPolynomialFunctorであり、同じ型ではなかった。元からあるwittToSmallとwittToSmall_frameを、それぞれuniversalWittToPdModel・universalWittToPdModel_frameとして元の2つのsorryとともに保持する。新しい比較仮定や証明済みという扱いは加えない。cechAlexanderFrameは本体の低水準の関数そのものではなく、既存のaffineCechAlexanderFrameへ特殊化する。[全件台帳](bulk-5inf0/declaration-disposition-audit.json)は113の同名所有元・7の別名への置換・3の旧型を保った改名、計123、削除120・改名3・未説明0に訂正した。
+
+そのほかの普遍基底の正則性・完備性は既存の証明を渡して本体へ特殊化する。theoryFormsCAlg等の実際の所有元はCrystallineSiteなので[依存表](bulk-5inf0/draft-staging-plan.json)にその1辺を追加（循環0、既存の順序は有効）。未定義だった零形式の旧名は、既存の零形式・完備化単位・複体延長の同型の同じ合成を型を付けて読む準備にした。まだ全体は未検査。
+
+[第55束](bulk-5inf0/draft-block55-validation.json)はpublic import allというこちらの書式ミスで本文の前に失敗。public importとimport allを分け、第56束に並んだ。残る普通のホモトピー圏と辺の表示の[6参照](bulk-5inf0/remaining-ordinary-homotopy-edge-refresh.json)も、VertexIso・FunctorHomと組み合わせている同じ辺を揃える準備だけをし、未検査と明記した。
+
+現在のLeanの追加・削除の計は5,426行。段0の当初の見込み上端5,550行に近づいているが、外枠11,100行の内側である。残る項目はA01・A04・A05・A07で、新しい数学の項目は追加していない。

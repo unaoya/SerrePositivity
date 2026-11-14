@@ -302,7 +302,8 @@
       "A3/LciAndQuasiregular",
       "A5/RootAdjunction",
       "A0/CechAlexander",
-      "A2/DerivedPrismaticCohomology"
+      "A2/DerivedPrismaticCohomology",
+      "A1/CrystallineSite"
     ],
     "DerivedGeneral/ScalarRestriction": [
       "DerivedGeneral/CompletionFunctor"
@@ -405,6 +406,12 @@
       "dependency": "A4/InterfaceFields",
       "reason": "Uses perfectoidizationFunctor declared in InterfaceFields; diagnosed in block48. The existing topological order remains valid.",
       "cycle_check": "PASS"
+    },
+    {
+      "consumer": "A1/DeRhamComparisonPoly",
+      "dependency": "A1/CrystallineSite",
+      "reason": "Uses theoryFormsCAlg, theoryFormsVertex and theoryPdDeRhamFunctorIso declared in CrystallineSite; diagnosed block50.",
+      "cycle_check": "PASS; existing topological order valid"
     }
   ]
 }
