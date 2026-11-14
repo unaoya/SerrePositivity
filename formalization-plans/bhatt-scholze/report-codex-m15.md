@@ -6520,3 +6520,280 @@ M10 の指定 fiber・一般の native な辺と全族、M11 以降と G12 の�
 17,000 行の外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 48. M10 の同じ解像度による全 cone 像と元の恒等 augmentation 像（11-14）
+
+§47 の同じ全区間族を、既存の同じ `moduleResolution` で後合成した。
+元の ULiftHom 表示・同じ dg 源の全合成式によって、全通常図式の像を
+`strictRawModuleDiagramSource` と厳密に一致させる。元の通常源の指定頂点の式も保持し、
+同じ定値端点へ等式で移送する。この移送の前後で実ホモトピー写像は元の全写像の後合成
+そのものであることを別の等式として保持し、全関手圏の同じ射を構成した。
+
+元の全 augmentation の自然性を Yoneda 同値で評価し、普遍 Hom 族の augmentation 像を
+元の零次像の定値族へ戻す。同じ Dold–Kan と pinched Hom の座標を使う。
+その零次像は次の同じ元のデータで較正する。
+
+- 既存の `moduleParamUncurry_closed` と逆転置の単射性から、単位パラメータに関する元の
+  閉射の転置式を回収する。元の左単位比較の転置は同じ恒等閉射の単位パラメータとなる。
+- 元の全 augmentation の転置は、同じ AW 余単位の後の元の恒等閉射である。
+  AW 余単位と既存の単体収縮の順射の一致、同じ零次生成元での値を使って、
+  転置の零次直接値を元の恒等閉 cochain へ戻す。
+- 同じ Γ 零次直接評価の単射性と、標準恒等頂点の同じ直接評価を比較して、
+  元の augmentation Γ 頂点を同じ標準恒等頂点へ一致させる。
+  同じ標準/Γ/pinched 比較で送ると、元の恒等閉 pinched 辺を回収する。
+
+これは smart 切断の**元の閉零元の一致**であり、H⁰ の商の一致で代用していない。
+別の単位・自己同型・解像度を選んでいない。
+同じ全要素列の終端パラメータでこの全恒等族を前合成し、元の全普遍族と
+同じ augmentation の合成が、全次数で元の恒等閉辺の定値族になることを保持した。
+同じ恒等単体で評価した各実 pinched 単体の式も保持する。
+
+本節は M10 の同じ構成の単位・余単位・自然性・係数移送・同じ写像の貼り合わせと
+証明の分割であり、一次 ID は追加しない。
+この実係数の恒等式を、大域 cone と元の通常 augmentation 円柱の**全合成三角形**へ
+接続する段は引き続き必要。全係数の恒等式だけからその全三角形を宣言していない。
+全宣言の型は以下のとおり。
+
+`TensorAugmentationFamily.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleTensorHomRepresentable_augmentation (P : ModuleCategory A D) (n : SimplexCategory) :
+    moduleTensorHomRepresentable A D P P n ((moduleTensorSimplicesAugmentation A D P).app n) =
+      SSet.const ((moduleTensorSimplicesAugmentation A D P).app ⦋0⦌)
+
+def moduleTensorAugmentationDoldKanVertex (P : ModuleCategory A D) :
+    (((moduleDoldKanHomBifunctor A D).obj (op P)).obj P) _⦋0⦌
+
+lemma moduleTensorHomDoldKanSimplex_augmentation (P : ModuleCategory A D) (n : SimplexCategory) :
+    moduleTensorHomDoldKanSimplex A D P P n ((moduleTensorSimplicesAugmentation A D P).app n) =
+      SSet.const (moduleTensorAugmentationDoldKanVertex A D P)
+
+private lemma tensorUlift_map_const {K L : SSet.{u}} (z : L _⦋0⦌) :
+    SSet.uliftFunctor.{max (u + 1) v, u}.map (SSet.const (X := K) z) =
+      SSet.const (ULift.up z)
+
+def moduleTensorAugmentationPinchedVertex (P : ModuleCategory A D) :
+    (PinchedHom.pinchedHom A (RightModule A D)
+      (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P)) _⦋0⦌
+
+lemma moduleTensorHomPinchedSimplex_augmentation (P : ModuleCategory A D) (n : SimplexCategory) :
+    moduleTensorHomPinchedSimplex A D P P n ((moduleTensorSimplicesAugmentation A D P).app n) =
+      SSet.const (moduleTensorAugmentationPinchedVertex A D P)
+
+lemma moduleTensorUniversalPinchedSimplex_augmentation (P : ModuleCategory A D)
+    (n : SimplexCategory) :
+    moduleTensorUniversalPinchedSimplex A D P n ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) P
+        ((moduleTensorSimplicesAugmentation A D P).app n)) =
+    SSet.const (moduleTensorAugmentationPinchedVertex A D P)
+```
+
+`TensorAugmentationCurry.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleParamCurry_closed {M N : ModuleCategory A D} (f : M ⟶ N) :
+    moduleParamCurry A D ((moduleTensorUnitIso A D (ForgetEnrichment.to (Complex A) M)).hom ≫ f) =
+      ForgetEnrichment.homTo (Complex A) (C := RightModule A D) (X := M) (Y := N) f
+
+lemma moduleParamCurry_unit (P : ModuleCategory A D) :
+    moduleParamCurry A D (moduleTensorUnitIso A D (ForgetEnrichment.to (Complex A) P)).hom =
+      ForgetEnrichment.homTo (Complex A) (C := RightModule A D) (X := P) (Y := P) (𝟙 P)
+
+lemma moduleTensorAugmentation_curry (P : ModuleCategory A D) (n : SimplexCategory) :
+    moduleParamCurry A D ((moduleTensorSimplicesAugmentation A D P).app n) =
+      AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ≫
+        ForgetEnrichment.homTo (Complex A) (C := RightModule A D) (X := P) (Y := P) (𝟙 P)
+
+lemma moduleTensorAugmentation_curry_zero (P : ModuleCategory A D) :
+    (moduleParamCurry A D ((moduleTensorSimplicesAugmentation A D P).app ⦋0⦌)).f 0
+      (normalizedSimplexZeroGenerator A) =
+    (closedHomEquiv A (RightModule A D) P P (𝟙 P)).val
+
+lemma moduleTensorAugmentation_gamma_zero_raw (P : ModuleCategory A D) :
+    truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      embeddingDownNat_eq_upIntLE_zero rfl
+      (moduleHom A D (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))
+      ((gammaDegreeZeroIso ((moduleHom A D (ForgetEnrichment.to (Complex A) P)
+        (ForgetEnrichment.to (Complex A) P)).truncLE'
+          (ComplexShape.embeddingUpIntLE 0))).hom (moduleTensorAugmentationDoldKanVertex A D P)) =
+    (closedHomEquiv A (RightModule A D) P P (𝟙 P)).val
+```
+
+`TensorAugmentationIdentity.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+def moduleIdentityDoldKanVertex (P : ModuleCategory A D) :
+    (((moduleDoldKanHomBifunctor A D).obj (op P)).obj P) _⦋0⦌
+
+lemma moduleIdentityDoldKanVertex_raw (P : ModuleCategory A D) :
+    truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      embeddingDownNat_eq_upIntLE_zero rfl
+      (moduleHom A D (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))
+      ((gammaDegreeZeroIso (connectiveHomComplex (R := A) (D := RightModule A D)
+        (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))).hom
+          (moduleIdentityDoldKanVertex A D P)) =
+    (closedHomEquiv A (RightModule A D) P P (𝟙 P)).val
+
+lemma moduleTensorAugmentation_gamma_zero_eq (P : ModuleCategory A D) :
+    moduleTensorAugmentationDoldKanVertex A D P = moduleIdentityDoldKanVertex A D P
+
+lemma moduleIdentityDoldKanVertex_pinched (P : ModuleCategory A D) :
+    (moduleDoldKanPinchedIso A D P P).hom.app (op ⦋0⦌) (ULift.up (moduleIdentityDoldKanVertex A D P)) =
+      pinchedClosedVertex A (RightModule A D) (𝟙 P)
+
+lemma moduleTensorAugmentationVertex_identity (P : ModuleCategory A D) :
+    moduleTensorAugmentationPinchedVertex A D P =
+      pinchedClosedVertex A (RightModule A D) (𝟙 P)
+
+lemma moduleTensorUniversalPinchedSimplex_augmentation_identity (P : ModuleCategory A D)
+    (n : SimplexCategory) :
+    moduleTensorUniversalPinchedSimplex A D P n ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) P
+        ((moduleTensorSimplicesAugmentation A D P).app n)) =
+    SSet.const (pinchedClosedVertex A (RightModule A D) (𝟙 P))
+```
+
+`RawModuleTensorConeSource.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+private lemma coneHomotopyTransport_h {K T : SSet.{u + 1}} {f g f' g' : K ⟶ T}
+    (hf : f = f') (hg : g = g') (H : SSet.Homotopy f g) :
+    ((congrArg₂ (fun a b => SSet.Homotopy a b) hf hg).mp H).h = H.h
+
+def strictRawModuleTensorConeMappedHomotopy {C : SSet.{u + 1}}
+    (F : dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) ⟶ C) :
+    SSet.Homotopy
+      (SSet.const (F.app (op ⦋0⦌)
+        ((dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm
+          (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)))))
+      (strictRawModuleTensorElementNerveDiagram A X P Q ≫ F)
+
+lemma strictRawModuleTensorConeMappedHomotopy_h {C : SSet.{u + 1}}
+    (F : dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) ⟶ C) :
+    (strictRawModuleTensorConeMappedHomotopy A X P Q F).h =
+      (strictRawModuleTensorConeHomotopy A X P Q).h ≫ F
+
+lemma strictRawModuleTensorElementNerveDiagram_source :
+    strictRawModuleTensorElementNerveDiagram A X P Q ≫
+      moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)) =
+    strictRawModuleDiagramSource A X (strictRawModuleTensorElementDiagram A X P Q)
+
+lemma strictRawModuleTensorConeSource_vertex :
+    (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X))).app (op ⦋0⦌)
+      ((dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm
+        (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))) =
+    (strictRawModuleSource A X).app (op ⦋0⦌)
+      (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X)).obj
+        ((strictRawModuleProbeFunctor A X).obj P)))
+
+def strictRawModuleTensorConeSourceHomotopy :
+    SSet.Homotopy
+      (SSet.const ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X)).obj
+          ((strictRawModuleProbeFunctor A X).obj P)))))
+      (strictRawModuleDiagramSource A X (strictRawModuleTensorElementDiagram A X P Q))
+
+lemma strictRawModuleTensorConeSourceHomotopy_h :
+    (strictRawModuleTensorConeSourceHomotopy A X P Q).h =
+      (strictRawModuleTensorConeHomotopy A X P Q).h ≫
+        moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X))
+
+def strictRawModuleTensorConeSourceFamilyHom :
+    FunctorHom
+      (SSet.const ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X)).obj
+          ((strictRawModuleProbeFunctor A X).obj P)))))
+      (strictRawModuleDiagramSource A X (strictRawModuleTensorElementDiagram A X P Q))
+```
+
+`RawModuleTensorConeAugmentation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementPinchedFamily_augmentation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorElementPinchedFamily A X P Q c ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+        ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (Fin.last n)))) =
+    SSet.const (moduleTensorAugmentationPinchedVertex A
+      (dgAlgebraCategory A ((assocForget A).obj X)) ((strictRawModuleProbeFunctor A X).obj P))
+
+lemma strictRawModuleTensorElementPinchedSimplex_augmentation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (Fin.last n))))).app
+        (op ⦋n⦌) (strictRawModuleTensorElementPinchedSimplex A X P Q c) =
+    (PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))).map
+        (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).op
+      (moduleTensorAugmentationPinchedVertex A (dgAlgebraCategory A ((assocForget A).obj X))
+        ((strictRawModuleProbeFunctor A X).obj P))
+
+lemma strictRawModuleTensorElementPinchedFamily_augmentation_identity {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorElementPinchedFamily A X P Q c ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+        ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (Fin.last n)))) =
+    SSet.const (pinchedClosedVertex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (𝟙 ((strictRawModuleProbeFunctor A X).obj P)))
+
+lemma strictRawModuleTensorElementPinchedSimplex_augmentation_identity {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (Fin.last n))))).app
+        (op ⦋n⦌) (strictRawModuleTensorElementPinchedSimplex A X P Q c) =
+    (PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))).map
+        (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).op
+      (pinchedClosedVertex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+        (𝟙 ((strictRawModuleProbeFunctor A X).obj P)))
+```
+
+通常の対象ビルドは成功した。小さい監査の確定結果と実測は §48.1 に記録した。
+同じ全実評価屋根・K の Hom 誘導射との全高次照合、その同値性・完全忠実性、
+M10 の指定 fiber・一般の native な辺と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 48.1 検証と実測
+
+TensorAugmentationFamily・TensorAugmentationCurry・TensorAugmentationIdentity・
+RawModuleTensorConeSource・RawModuleTensorConeAugmentation の通常の対象ビルドは成功した。
+新しい公開宣言 28 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は五ファイル、上記順で 95・89・116・131・108 行、計 539 行、
+明示宣言 30 本（private 2 本）。§47.1 の累計に加え、検証済み累計は
+140 ファイル・12,119 行・明示宣言 564 本（private 9 本）。
+現作業木の M15 所有ソースの合計も同じ 140 ファイル・12,119 行と確認した。
+200 行を超える証明はない。一次 ID は追加していない。
+
+同じ全 cone の元の導来源への後合成・全図式の等式・指定端点・実ホモトピー写像の保持、
+同じ普遍 Hom 族の全 augmentation 像の定値化、元の単位パラメータ閉射と転置の式、
+同じ零次生成元と Γ の単射な直接評価による元の恒等閉辺への較正、
+元の全要素列・全次数の同じ恒等定数族と全実単体の式まで検証した。
+元の augmentation 像を任意の自己同型として置く代用はしていない。
+
+次は、同じ恒等係数を使う全二重 cone と元の通常 augmentation 円柱を比較し、
+同じ全関手圏における合成三角形と全 augmentation 逆の一致を閉じる。
+この同じ全三角形を仮定として追加せずに構成する。
+同じ全実評価屋根・元の K の Hom 誘導射への全高次照合、その同値性・完全忠実性、
+指定 fiber・一般の native な辺と全族はまだ未完。
+M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
