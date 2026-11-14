@@ -12063,3 +12063,76 @@ L10〜L28の次元によらないconvolution・χ/TR・符号の再利用の筋�
 上側は外枠を **3,165行** 超えるリスクが残る。外枠の追加承認とは扱わない。
 現在の実測は外枠に届いておらず、指示どおり止まらずL09の残りへ進む。
 G10の部品、M15・G12は作らない。
+
+## 135. L09の残る係数微分の同じ実生成元の型（実装前）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§134はee5887388で検証・保存済み。次は既存の元の線形削除微分を使い、
+非全射・退化な削除を同じく零とした係数境界の和へ接続する。
+`Surjection.differential_basis`・`differentialOnWord`・`generator`の実際の定義を確認した。
+まず自然な語長のままC284・C285を示し、C286〜C290の等式移送の法則を使って
+`positiveWord`が使う同じ添字と語へ戻す。これらは既存構成の基底上の法則・照合で、
+新しい数学・作用・微分を作らない。L09の型は弱めない。
+
+```lean
+-- C284：元の生成元か零の評価を、同じcutSumか零として読む。
+lemma rawComponent_generator (A : Type u) [CommRing A] (S : SSet.{0}) {r d q : ℕ}
+    (v : Fin ((r + 1) + d) → Fin (r + 1)) (x : S _⦋q⦌) :
+    rawComponent A S r d q (Surjection.generator A v) (ModuleCat.freeMk (ULift.up x)) =
+      if hv : Function.Surjective v ∧ Surjection.Nondegenerate v then
+        cutSum A S (⟨v, hv⟩ : Surjection.BasisWord (r + 1) d) x
+      else 0
+
+-- C285：同じ実基底の元の線形削除微分をrawComponentで評価する。
+lemma rawComponent_differential_basis (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (w : Surjection.BasisWord (r + 1) (d + 1)) (x : S _⦋q⦌) :
+    rawComponent A S r d q
+        (Surjection.differential A (r + 1) d
+          (Surjection.basis A (r + 1) (d + 1) (ULift.up w)))
+        (ModuleCat.freeMk (ULift.up x)) =
+      ∑ i : Fin ((r + 1) + (d + 1)), Surjection.deletionCoefficient w.val i •
+        rawComponent A S r d q (Surjection.generator A (Surjection.erase w.val i))
+          (ModuleCat.freeMk (ULift.up x))
+
+-- C286：同じ語長の等式移送を、値の有限添字の移送で読む。
+lemma word_cast_val {r ℓ ℓ' : ℕ} (h : ℓ = ℓ') (v : Surjection.Word r ℓ) :
+    (Eq.mp (congrArg (Surjection.Word r) h) v).val =
+      fun i : Fin ℓ' => v.val (Fin.cast h.symm i)
+
+-- C287：既存削除係数は、同じ語長と指定位置の等式移送を保つ。
+lemma deletionCoefficient_cast_length {r ℓ ℓ' : ℕ} (h : ℓ = ℓ')
+    (v : Fin ℓ → Fin r) (a : Fin ℓ) :
+    Surjection.deletionCoefficient (fun i : Fin ℓ' => v (Fin.cast h.symm i)) (Fin.cast h a) =
+      Surjection.deletionCoefficient v a
+
+-- C288：既存の文字削除は、同じ語長と指定位置の等式移送を保つ。
+lemma erase_cast_length {r ℓ ℓ' : ℕ} (h : ℓ = ℓ')
+    (v : Fin (ℓ + 1) → Fin r) (a : Fin (ℓ + 1)) :
+    Surjection.erase
+        (fun i : Fin (ℓ' + 1) => v (Fin.cast (congrArg (fun n : ℕ => n + 1) h.symm) i))
+        (Fin.cast (congrArg (fun n : ℕ => n + 1) h) a) =
+      fun i : Fin ℓ' => Surjection.erase v a (Fin.cast h.symm i)
+
+-- C289：同じ語長の等式移送は、元と同じ有効な語の判定を保つ。
+lemma word_valid_cast_length {r ℓ ℓ' : ℕ} (h : ℓ = ℓ') (v : Fin ℓ → Fin r) :
+    (Function.Surjective v ∧ Surjection.Nondegenerate v) ↔
+      (Function.Surjective (fun i : Fin ℓ' => v (Fin.cast h.symm i)) ∧
+        Surjection.Nondegenerate (fun i : Fin ℓ' => v (Fin.cast h.symm i)))
+
+-- C290：同じ語を元の係数加群の自然な語長へ移してから評価する。
+lemma rawComponent_generator_cast_length (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q ℓ : ℕ} (h : ℓ = (r + 1) + d) (v : Fin ℓ → Fin (r + 1)) (x : S _⦋q⦌) :
+    rawComponent A S r d q
+        (Surjection.generator A (fun i : Fin ((r + 1) + d) => v (Fin.cast h.symm i)))
+        (ModuleCat.freeMk (ULift.up x)) =
+      if hv : Function.Surjective v ∧ Surjection.Nondegenerate v then
+        cutSum A S (Eq.mp (congrArg (Surjection.Word (r + 1)) h) ⟨v, hv⟩) x
+      else 0
+```
+
+C284は元のgeneratorの二分岐とrawComponent_value、C285は元のdifferential_basisと
+線形性、C286〜C289はhの等式の除去、C290はhを除去してC284を適用する。
+Finの添字替えは既存finCongrの和の保存を使い、追加の有限な対応は構成しない。
+その後、coefficientBoundaryTerm_succ_eqの同じ負号・同じ切断の有限和・同じ次数移送を
+上の元の線形微分へ照合する。上の型は現時点では紙のみで、実装・検証済み行数へは数えない。
