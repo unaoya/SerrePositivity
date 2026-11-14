@@ -6361,3 +6361,135 @@ RR01 の次の接続は、同じ source frame と
 同じ両脚の anodyne 局所化での可逆性を得る。
 その後の実際の単体集合の射への回収と元の評価の端点への輸送はまだ未了であり、
 RR01 全体を完成とはしない。
+
+
+## 62. RR01：同じ両 frame の共同比較
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§61の次の接続。既存の混合 Hom 構成の適用と両脚の係数移送であり、
+独立の新しい弱同値定理は作らない。元の射を固定した型は次のとおり（未検証）。
+anodyne 局所化での可逆性だけで coherent end との同値が済んだとはしない。
+
+```lean
+/-- 元の source frame と、同じ fibrant target の right frame の混合 Hom。 -/
+def strictDiagramMixedFrame (X Y : StrictComplexDiagram A d) : SSet.{u} :=
+  (EInfinity.FrameHom.MixedFrame.mixedFunctor (strictDiagramSourceFrame A d X).obj).obj
+    ((rightFrameDiagram (strictDiagramRightFrameFamily A d)).obj
+      (strictDiagramFibrantTarget A d Y))
+
+/-- 元の source frame Hom から、同じ right augmentation の後合成による射。 -/
+def strictDiagramMixedFrameLeft (X Y : StrictComplexDiagram A d) :
+    strictDiagramFrameMapping A d X Y ⟶ strictDiagramMixedFrame A d X Y :=
+  EInfinity.FrameHom.MixedFrame.leftComparison (strictDiagramSourceFrame A d X).obj
+    ((rightFrameUnit (strictDiagramRightFrameFamily A d)).app
+      (strictDiagramFibrantTarget A d Y))
+
+/-- 同じ零次の対象からの right Hom を、零次への増大射で前合成する。 -/
+def strictDiagramMixedFrameRight (X Y : StrictComplexDiagram A d) :
+    (strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
+      (strictDiagramFibrantTarget A d Y) ⟶ strictDiagramMixedFrame A d X Y :=
+  EInfinity.FrameHom.MixedFrame.rightComparison (strictDiagramSourceFrame A d X).obj
+    (strictDiagramSourceFrameZeroAugmentation A d X)
+    ((rightFrameDiagram (strictDiagramRightFrameFamily A d)).obj
+      (strictDiagramFibrantTarget A d Y))
+
+/-- 左脚は元の標的の fibrancy と既存の left frame 比較により局所化で可逆。 -/
+lemma strictDiagramMixedFrameLeft_isIso (X Y : StrictComplexDiagram A d) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (strictDiagramMixedFrameLeft A d X Y)) := by
+  haveI := strictDiagramFibrantTarget_isFibrant A d Y
+  apply leftComparison_isIso (strictDiagramSourceFrame A d X).obj
+    (strictDiagramSourceFrame A d X).cofibrant
+    ((rightFrameUnit (strictDiagramRightFrameFamily A d)).app
+      (strictDiagramFibrantTarget A d Y))
+    (rightFrameDiagram_isFibrant (strictDiagramRightFrameFamily A d)
+      (strictDiagramFibrantTarget A d Y))
+  intro n
+  exact (rightFrameUnit_trivialCofibration (strictDiagramRightFrameFamily A d)
+    (strictDiagramFibrantTarget A d Y) n).2
+
+/-- 右脚は同じ零次の cofibrancy と両 frame の Reedy 条件により局所化で可逆。 -/
+lemma strictDiagramMixedFrameRight_isIso (X Y : StrictComplexDiagram A d) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (strictDiagramMixedFrameRight A d X Y)) := by
+  haveI := strictDiagramSourceFrameZero_isCofibrant A d X
+  apply rightComparison_isIso (strictDiagramSourceFrame A d X).obj
+    (strictDiagramSourceFrame A d X).cofibrant
+    (strictDiagramSourceFrameZeroAugmentation A d X)
+    (strictDiagramSourceFrameZeroAugmentation_weak A d X)
+  change SerrePositivity.Reedy.reedyLeft SerrePositivity.Reedy.simplex
+    (cofibrations (StrictComplexDiagram A d)ᵒᵖ)
+    (initial.to ((strictDiagramRightFrameFamily A d).obj.obj
+      (op (strictDiagramFibrantTarget A d Y))))
+  exact (strictDiagramRightFrameFamily A d).cofibrant _
+```
+
+### 62.1 共同比較の検証と Kan 置換への接続
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`StrictDiagramMixedFrame` 78行、対象ビルド9,499 jobs成功、10宣言の小監査成功、
+標準三公理のみ。ログ `/tmp/is-w1/mixed-frame/build.log`。
+次の型は同じ二つの実射と既存の Kan 置換による比較（未検証）。
+
+```lean
+/-- 左脚を同じ混合 Hom の Kan 置換へ送った元の射。 -/
+def strictDiagramMixedKanLeft (X Y : StrictComplexDiagram A d) :
+    strictDiagramFrameMapping A d X Y ⟶ exInfinity.obj (strictDiagramMixedFrame A d X Y) :=
+  strictDiagramMixedFrameLeft A d X Y ≫ exInfinityUnit.app _
+
+/-- 右脚を同じ混合 Hom の Kan 置換へ送った元の射。 -/
+def strictDiagramMixedKanRight (X Y : StrictComplexDiagram A d) :
+    (strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
+      (strictDiagramFibrantTarget A d Y) ⟶ exInfinity.obj (strictDiagramMixedFrame A d X Y) :=
+  strictDiagramMixedFrameRight A d X Y ≫ exInfinityUnit.app _
+
+private lemma mixedUnitWeak (X Y : StrictComplexDiagram A d) :
+    IsWeakHomotopyEquivalence (exInfinityUnit.app (strictDiagramMixedFrame A d X Y)) :=
+  EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+
+/-- 元の左脚は Kan 置換後も弱同値。 -/
+lemma strictDiagramMixedKanLeft_weak (X Y : StrictComplexDiagram A d) :
+    IsWeakHomotopyEquivalence (strictDiagramMixedKanLeft A d X Y) :=
+  (EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (strictDiagramMixedFrameLeft_isIso A d X Y)).comp (mixedUnitWeak A d X Y)
+
+/-- 元の右脚は Kan 置換後も弱同値。 -/
+lemma strictDiagramMixedKanRight_weak (X Y : StrictComplexDiagram A d) :
+    IsWeakHomotopyEquivalence (strictDiagramMixedKanRight A d X Y) :=
+  (EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (strictDiagramMixedFrameRight_isIso A d X Y)).comp (mixedUnitWeak A d X Y)
+
+/-- 同じ二つの Kan Hom の比較。逆の選択はこの同じ右脚に固定する。 -/
+def strictDiagramSourceRightFrameEquivalence (X Y : StrictComplexDiagram A d) :
+    QCatEquivalence (strictDiagramFrameMapping A d X Y)
+      ((strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
+        (strictDiagramFibrantTarget A d Y)) := by
+  haveI := strictDiagramFrameMapping_kanComplex A d X Y
+  haveI := strictDiagramSourceFrameZero_isCofibrant A d X
+  haveI := Project.ModelCategoryComparison.rightFrameHom_kanComplex
+    (strictDiagramRightFrameFamily A d) (strictDiagramSourceFrameZero A d X)
+      (strictDiagramFibrantTarget A d Y)
+  exact (strictDiagramMixedKanLeft_weak A d X Y).isSimplicialHomotopyEquivalence.isQCatEquivalence.choose.trans
+    (strictDiagramMixedKanRight_weak A d X Y).isSimplicialHomotopyEquivalence.isQCatEquivalence.choose.symm
+```
+
+
+### 62.2 検証済み区切り：同じ実 frame Hom の比較同値
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`StrictDiagramMixedFrameEquivalence` 80行。対象ビルド成功（9,500 jobs）、
+16宣言の小監査成功、標準三公理のみ。
+ログ `/tmp/is-w1/mixed-frame-equivalence/build-2.log`。
+初回は比較同値の型に必要な Kan instance が宣言後の証明内にしかなかったため失敗。
+既存の Kan 性を宣言前の名前付き local instance に置き、上限不変で通した。
+§62.1 の78行と合わせて二本158行・26宣言を今回コミットする。
+
+`strictDiagramSourceRightFrameEquivalence` は、同じ二つの実 Hom 空間の QCatEquivalence。
+両脚の順射を固定し、同じ共通 Kan 標的への右脚の逆を選んでいる。
+RR01 の end 切断への比較、RR04 の元の評価との全族の照合はまだ未了。
+次はこの比較を宇宙移送し、既存 `strictDiagramRightFramePinchedEquivalence` と
+元の増大射・fibrant 置換の端点同型を介して、指定評価と `functorPinchedEndMap` へ接続する。
+選んだ比較の三角形のホモトピーは捨てずに保持する。
+E01 の保留・R3 を実装しない方針は不変。
