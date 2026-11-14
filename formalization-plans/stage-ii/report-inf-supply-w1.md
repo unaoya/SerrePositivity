@@ -7831,3 +7831,100 @@ lemma strictDiagramFreeEvaluationCoefficientAugmentation_section (t : Over k) :
 nerve の right cofinal 性だけでは、このレーンの指定された実現射との一致は出ない。
 その重みの移送と弱同値性を引き続きRR02(a)で閉じる。
 E01の別経路の紙は前節の状態を維持し、未供給の単位の普遍性は仮定しない。
+
+## §79 RR02(a)：指定添字比較の高次 cofinal 性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§78の main の既存判定を再利用し、OverをAsSmallへ移して指定随伴を合成する。
+この適用はRR02(a)の証明分割。一般のcofinal定理を新造しない。
+
+```lean
+def strictDiagramFreeEvaluationSmallToOver :
+    StrictDiagramFreeEvaluationIndex.{u} d k ⥤ AsSmall.{u} (Over k) :=
+  strictDiagramFreeEvaluationToOver d k ⋙ AsSmall.up
+def strictDiagramFreeEvaluationSmallAdjunction :
+    AsSmall.down ⋙ strictDiagramFreeEvaluationSection.{u} d k ⊣
+      strictDiagramFreeEvaluationSmallToOver d k
+lemma strictDiagramFreeEvaluation_nerve_isRightCofinal :
+    IsRightCofinal (nerveMap (strictDiagramFreeEvaluationSmallToOver.{u} d k))
+```
+
+各StructuredArrowの始対象は新しい選択でなく、この指定随伴の単位を使う。
+元の係数・増大射を保つ移送と、指定実現射の弱同値性への接続は引き続き必要。
+
+### 79.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeEvaluationCofinality` 40行、対象ビルド4,071 jobs成功、
+小監査3宣言・標準三公理のみ。ログ：`/tmp/is-w1/free-evaluation-cofinality/build.log`。
+検証済み169本・13,470行。上限変更後のRR02(a)実測972行、(b)(c)新規0行。
+
+## §80 RR02(a)：既存の重み実現の添字変更の法則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `FrameWeightRealization.adjunction` の単位を制限し、同じ随伴で転置して
+添字変更射を固定する。既存の実現の係数移送の法則であり、弱同値性の新定理ではない。
+`P : L ⥤ K`、`A : K ⥤ SimplexCategory ⥤ C`、両添字は同じ小宇宙とする。
+
+```lean
+def homReindexIso :
+    hom K A ⋙ (Functor.whiskeringLeft Lᵒᵖ Kᵒᵖ SSet).obj P.op ≅ hom L (P ⋙ A)
+def reindexMap (W : Kᵒᵖ ⥤ SSet) :
+    (functor L (P ⋙ A)).obj (P.op ⋙ W) ⟶ (functor K A).obj W
+lemma reindexMap_homEquiv (W : Kᵒᵖ ⥤ SSet) :
+    (adjunction L (P ⋙ A)).homEquiv _ _ (reindexMap P A W) =
+      Functor.whiskerLeft P.op ((adjunction K A).unit.app W) ≫
+        (homReindexIso P A).hom.app ((functor K A).obj W)
+lemma reindexMap_homEquiv_comp (W : Kᵒᵖ ⥤ SSet) (Y : C)
+    (f : (functor K A).obj W ⟶ Y) :
+    (adjunction L (P ⋙ A)).homEquiv _ Y (reindexMap P A W ≫ f) =
+      Functor.whiskerLeft P.op ((adjunction K A).homEquiv W Y f) ≫
+        (homReindexIso P A).hom.app Y
+```
+
+これは制限した重みの実現射である。Bousfield–Kan重み自体の添字変更と同一視せず、
+その比較射をさらに接続する必要がある。
+
+最初の4項目は対象ビルド2,146 jobs・小監査5宣言（標準三公理のみ）が通った。
+さらに、重み全体の自然性を単位の自然性から追加し、再検証する。
+
+```lean
+lemma reindexMap_naturality {W W' : Kᵒᵖ ⥤ SSet} (f : W ⟶ W') :
+    (functor L (P ⋙ A)).map (Functor.whiskerLeft P.op f) ≫ reindexMap P A W' =
+      reindexMap P A W ≫ (functor K A).map f
+def reindexTransformation :
+    (Functor.whiskeringLeft Lᵒᵖ Kᵒᵖ SSet).obj P.op ⋙ functor L (P ⋙ A) ⟶ functor K A
+```
+
+### 80.1 次の重みの照合（紙）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`reindexMap` の始域は制限重みの実現である。必要な次の法則は
+`bousfieldKanWeight Lᵒᵖ ⟶ P.op ⋙ bousfieldKanWeight Kᵒᵖ` で、
+成分は `nerveMap (Over.post (X := l) P.op)`。
+元の `Over.map` と `Over.post` の合成は、`P.map_comp` による等式で照合する。
+この重み射を `functor L (P ⋙ A)` で写し、`reindexMap` に前合成するのが
+実際のBousfield–Kan重みの添字変更射である。制限重みをBK重みそのものとしない。
+
+E01別経路の紙の再確認：`FiniteSubcomplexEndComparison` には、実射の自然変換、
+両側の制限錐、その間の錐の射まではある。両錐の `IsLimit` と有限部分での弱同値性、
+その逆極限での保存はまだ供給されていない。特に有限部分複体が準圏であるとは
+仮定できないため、有限準圏だけの定理でこの経路を閉じない。
+指定単位の直接比較を再実行せず、また単位の普遍性を仮定していない。
+
+### 80.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`FrameWeightReindexing` の全72行（全重みの自然性を含む）を再検証した。
+対象ビルド2,146 jobs成功、小監査8宣言・標準三公理のみ。
+ログ：`/tmp/is-w1/frame-weight-reindexing/build-2.log`。計算上限は変更していない。
+今回の検証済みは§79の40行と合わせ112行、11宣言。
+累計170本・13,542行、外枠24,000行まで10,458行。
+上限変更後のRR02(a)実測1,044行、(b)(c)新規0行。
+RR02(a)の実現後の弱同値性、(b)(c)、E01の別経路は未完で、停止点5aには未到達。
+未検証のE01下書き4本はコミット対象外。次は§80.1のBK重みの比較を接続する。
