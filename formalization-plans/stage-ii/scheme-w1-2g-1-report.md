@@ -745,3 +745,17 @@ FiniteIdealColimitModel **53 行**、入口 1 行を追加。`exists_fg_ideal_mo
 C03 内は **1／3 完了**（(i)）。(ii) の後段での等式と (iii) のスキーム上の有限型イデアル層の降下は未完。G1 の共用部品込み累計は本体 **4,236 行**、入口込み **4,318 行**。A07 の一般の基底と G2 は未完。
 
 一覧：済み 8／全体 14（うち追加 5）。
+
+C03.(iii) の実装の分割（全体の型・見込みは維持）：有限アフィン被覆の生成元を環の colimit から同じ段へ戻す。その段の K.map π の有限型部分イデアルに、C02 の `exists_finiteType_subideal_containing_affine_sections` で生成元を同時に含める。map/comap の随伴の単位・余単位とアフィン被覆上の包含の判定で、pullback が元の K に一致することを示す。この存在の構成には局所イデアルの重なりの等式の降下を重ねて作らない。C03.(ii) の等式の有限段への降下は、模型の比較の法則としてそのまま供給する。
+
+分割の型 `exists_finiteType_ideal_model_of_affine_generators`：qcqs Y と affine f:X→Y、有限アフィン被覆 U_i、K:X.IdealSheafData に対し、K.map f の各 U_i の有限集合 s_i が pullback 上の K を生成すれば、Y 上の有限型 J で J.comap f=K が存在する。これは C02 の有限個の生成元の包含と随伴の合成であり、新しい親項目は足さない。
+
+### C03.(ii)：環の colimit の所属・包含・等式を同じ後段へ移す
+
+FiniteIdealColimitMembership **96 行**、FiniteIdealColimitEquality **99 行**、入口 2 行。上記の所属の二宣言・有限集合の所属・有限生成イデアルの包含・同じ段および異なる段の等式の六宣言と、係数移送の二法則を実装。忠実平坦性・遷移射の単射性・Noether 性を要求しない。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,870 ジョブ成功**。新二モジュールの小監査は補助宣言込み **11 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-c03-equality-batch-check-2.log`、`2g-c03-colimit-equality-native.log`、`2g-c03-colimit-equality-audit.log`。
+
+C03 内は **2／3 完了**（(i)・(ii)）。(iii) のスキーム上の有限型イデアル層の降下は未完。G1 共用部品込み本体 **4,431 行**、入口込み **4,515 行**。A07 の一般の基底と G2 は未完。
+
+一覧：済み 8／全体 14（うち追加 5）。
