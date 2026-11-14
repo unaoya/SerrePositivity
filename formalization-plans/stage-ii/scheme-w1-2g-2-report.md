@@ -292,3 +292,20 @@ S01 は3モジュール136行＋入口3行、小監査21宣言・標準三公理
 ### S02 の実際の Segre 座標環（着手前の型、S02 の内数）
 
 `SegreCoordinateRing a b := MvPolynomial (ι×κ) R / ker(segreCoordinateMap a b)`、`segreCoordinateGrade a b` はその実際の商の次数成分。`segreCoordinateGradedRing G a b ha` は証明した核の斉次性からの次数分解。`segreCoordinateProjection` は実際の商写像。多項式環上の有限加群性、Noether な R と有限添字のときの座標環の Noether 性、商の多項式作用の GradedSMul、射影の次数保存を供給する（見込み80〜170行）。変数は Type 0 の有限添字に置き、2f の入力を保持する。Proj の積との同型と標準開の比較をこの環の定義だけで完成扱いにしない。
+
+
+## G3・S02：実際の Segre 座標環とその次数分解・有限性
+
+`SegreCoordinateRing`（68行）：`SegreCoordinateRing` は実際の座標写像の核による多項式環の商。`segreCoordinateGrade` はその既存の商の次数成分。`segreCoordinateProjection`・`segreCoordinateProjection_surjective` は実際の商写像と全射性。`segreCoordinateRing_finite` は同じ多項式環上の有限加群性。`segreCoordinateRing_noetherian` は Noether 基底と有限添字からの Noether 性。`segreCoordinateProjection_preservesPiece` は射影の次数保存、`segreCoordinateGradedSMul` は既存の商の次数付き作用、`segreCoordinateGradedRing` は証明した核の斉次性からの実際の次数分解。最後の構成の引数順は a,b,G,ha。
+
+本体68行・入口1行。係数環を明示し、有限変数多項式環と商の Noether 性の専用 import を供給して単独検証、ソース完全一致、対象・直接 importer のビルド5,088ジョブ、小監査12宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-segre-coordinate-ring-check-4.log`・`2g-segre-coordinate-ring-native.log`・`2g-segre-coordinate-ring-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体1,089行・入口込み1,108行、小監査94宣言・標準三公理のみ。834e6b8d5 の後は7モジュール339行＋入口7行、小監査46宣言。S01 完了、S02 は実際の商の次数分解まで到達したが、標準開条件と 2f の入力の同時供給は残る。S03〜S04 と有限冪、G4〜G5 も未完。全体の見込み約5,500〜12,000行、外枠16,000行は不変。root・下流全ビルド・全体監査は実行していない。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+### S02 の標準開条件の残り（着手前の型、S02 の内数）
+
+`segreCoordinate_irrelevant_le_span a b G ha`：上の同じ GradedRing を局所供給した下で、irrelevant ideal は商写像の変数の像で生成される。商の次数成分の定義から同次数の原像を取り、既存の Ideal.span_pow_eq_map_homogeneousSubmodule の法則に渡す（見込み30〜70行）。`iSup_segreCoordinate_basicOpen` はこの有限な標準開の被覆。次いで 2f に必要な多項式作用・有限性・標準開条件を同じ商と次数分解で束ねる（20〜50行）。
+
+S03 の二因子には、実際の次数一評価が全射な表示を使う。最初の Rees と、以後のこの多項式環の商は、いずれもその全射表示を既に持つ。単に多項式環上有限な加群であるという条件だけから、A0=R や全射評価を仮定してはならない。標準開の同型はこの実際の商と全射表示に沿って構成する。
