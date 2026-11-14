@@ -1589,3 +1589,9 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutDiagram
 public import SerrePositivity.AlgebraicGeometry.FilteredRingSameStageEquality
 
 public import SerrePositivity.AlgebraicGeometry.FilteredRingArrowFactor
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutArrowFactor
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutFiniteType
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverRingModel

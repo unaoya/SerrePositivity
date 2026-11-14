@@ -2668,3 +2668,24 @@ G1・G2共用部品込み本体15,373行、入口込み15,630行。B02〜B04 は
 G1・G2共用部品込み本体15,464行、入口込み15,722行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+実際の環の射からの模型の登録（着手前の型、見込み50〜110行、B03・B04 の係数移送の法則）：`coefficientVCoverModelObjOfRingHoms` は二環への k 構造写像とその有限型性、模型の環の射と v 判定、元の R,C への射と係数・正方形の可換式から、実際の被覆模型の圏の対象を返す。構造写像の `toAlgebra` と既存の模型の登録を使い、段の環の表示を変更しない。
+
+
+各後段の実際の被覆模型への登録（着手前の型、見込み100〜220行、B03・B04 の既存の係数移送の法則）：`coefficientPushoutVCoverModel` は有限型 κ:k→A、有限型な v 被覆 A→S、実際の tensor 模型 R⊗_A S≃_R T、元の g:R→ₐ[k] C へ向かう T→C と可換式から、各係数段の実際の有限型被覆模型を `CoefficientVCoverModelCategory k g` の対象として返す。前記の両環の有限型性、被覆性、三つの係数可換式を同じ環の射でそろえて登録する。後で旧模型の射を登録し、実際の共通後段へ進む。この各段の登録だけで filtered 性を結論しない。
+
+
+### B03・B04：具体的な係数段での正方形と有限型被覆模型への入口
+
+`CoefficientPushoutArrowFactor`（68行）：`exists_coefficientPushout_arrow_factor` は Noether な k 上有限型な旧模型の二射と可換式を、実際の係数部分代数と pushout の同じ段へ因子化する。係数 κ・元の二射への合成式・正方形の可換式を同時に返す。
+
+`CoefficientPushoutFiniteType`（37行）：`coefficientPushoutRootMap_finiteType`・`coefficientPushout_base_source_finiteType` は有限型 κ の後でも、各段の基底と始域の両構造射が有限型であること。
+
+`CoefficientVCoverRingModel`（37行）：`coefficientVCoverModelObjOfRingHoms` は、実際の二つの k 構造写像・有限型性・被覆性・係数と正方形の可換式から、環と構造射を変更せず被覆模型の圏へ対象を登録する。
+
+本体142行・入口3行。各最初の単独検証、ソース完全一致、三対象と直接 importer AlgebraicGeometry のビルド5,049ジョブ、小監査7宣言（1・2・4）・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-pushout-arrow-factor-check.log`・`2g-coefficient-pushout-finite-type-check.log`・`2g-coefficient-vcover-ring-model-check.log`・`2g-coefficient-pushout-arrow-model-native.log`・`2g-coefficient-pushout-arrow-model-audit.log`。
+
+G1・G2共用部品込み本体15,606行、入口込み15,867行。B02〜B04 は未完。75d018aa2 の後は12モジュール725行＋入口12行、小監査70宣言・標準三公理のみ。
+
+一覧：済み14／全体17（うち追加8）。
