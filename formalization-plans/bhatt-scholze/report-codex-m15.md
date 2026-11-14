@@ -3527,3 +3527,80 @@ M10 の完了数は更新しない。
 次は §22.3 の既存共変 Hom の合成を使い、実 frame と元の dg Hom の比較を進める。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 27. M10 の Hom 比較の部品：同じ点ごとの cotensor 関手（11-14）
+
+§22.3 の既存部品をさらに確認すると、`Complexes/Cone.homCovariantDG` が
+同じ `leftRepresentable` を複体の共変 Hom の実 dg 関手として公開している。
+全次数の作用と、同じ閉零射が元の Hom 後合成に一致することも既に証明されている。
+これを同じ加群 dg 関手に後合成し、元の加群射は点ごとの `homPostcompose` で送る。
+既存の enriched 前後合成の交換を使い、全作用の自然性と通常関手の単位・合成を照合する。
+
+以下は既存の合成・閉零射・評価の法則の分割で、一次 ID は追加しない。
+文脈は `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]`。
+閉零圏の箇所ではさらに `[Small.{u} D]`。
+
+`Modules/CotensorPointwise.lean` の型：
+
+```lean
+def dgModuleCotensor (K : Complex A) (M : RightModule A D) : RightModule A D
+
+abbrev moduleCotensor (K : Complex A) (M : ModuleCategory A D) : ModuleCategory A D
+
+lemma moduleCotensor_eval (K : Complex A) (M : ModuleCategory A D) (x : D) :
+    (moduleEvaluation A D x).obj (moduleCotensor A D K M) =
+      homComplex A K ((moduleEvaluation A D x).obj M)
+
+lemma moduleCotensorMap_naturality (K : Complex A) {M N : ModuleCategory A D}
+    (f : M ⟶ N) (x y : Dᵒᵖ) :
+    (dgModuleCotensor A D K (ForgetEnrichment.to (Complex A) M)).map x y ≫
+      homPostcompose _ (homPostcompose K ((moduleEvaluation A D y.unop).map f)) =
+    (dgModuleCotensor A D K (ForgetEnrichment.to (Complex A) N)).map x y ≫
+      homPrecompose (homPostcompose K ((moduleEvaluation A D x.unop).map f)) _
+
+def moduleCotensorMap (K : Complex A) {M N : ModuleCategory A D} (f : M ⟶ N) :
+    moduleCotensor A D K M ⟶ moduleCotensor A D K N
+
+lemma moduleCotensorMap_eval (K : Complex A) {M N : ModuleCategory A D}
+    (f : M ⟶ N) (x : D) :
+    (moduleEvaluation A D x).map (moduleCotensorMap A D K f) =
+      homPostcompose K ((moduleEvaluation A D x).map f)
+
+def moduleCotensorFunctor (K : Complex A) : ModuleCategory A D ⥤ ModuleCategory A D
+
+lemma moduleCotensorFunctor_evaluation (K : Complex A) (x : D) :
+    moduleCotensorFunctor A D K ⋙ moduleEvaluation A D x =
+      moduleEvaluation A D x ⋙ (eHomFunctor (Complex A) (Complex A)).obj (op K)
+```
+
+この時点で標準単体を入れた全 simplicial frame の Reedy fibrancy や coaugmentation の
+弱同値性まで主張するものではない。元の dg Hom とモデル frame Hom の比較、
+K の完全忠実性へ向けた部品として対象ビルド・小さい監査を行う。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 27.1 対象ビルド・小さい監査と次の接続
+
+`CotensorPointwise:olean` の通常対象ビルドは終了コード 0。
+8 宣言の `#print axioms` は、宣言名と実出力を機械照合して監査も終了コード 0。
+全て標準の `propext`・`Classical.choice`・`Quot.sound` の範囲内で、追加公理・sorryAx はない。
+共有 impl 鍵、実行上限 280 秒の組で行った。
+
+評価の対象と元の dg 関手の対象は定義上同じだが、`rw` の照合では表示を揃える必要が
+あったため、自然性の二つの交換式の型を明示した。単位則にも同じ定義上の等式を補った。
+全て §27 の型のままであり、対象の射影性や底の平坦性を仮定していない。
+新規 1 ファイル **130 行・8 公開宣言**。200 行を超える補題はない。
+
+監査まで済んだ累計は、新規 Lean **56 ファイル・5,561 行・285 宣言（private 3 を含む）**。
+この goal ターンで完成したものは、元の通常 DK 源の普遍性、指定半自由模型への全比較と
+全厳密制限との比較、同じ Hom の合成による cotensor 関手の法則。
+§25・§26.1 と本小節は具体的な検証済みの進捗であり、M10 全体の完了ではない。
+
+続きは、標準単体を係数とするこの cotensor の反変作用・全 simplicial 族を照合し、
+選んだ実 right frame と同じ dg Hom の比較へ進む。
+比較関手 K の完全忠実性、同じ全族の一般の native 辺と fiber の同定、
+M11 以降と G12 の本来の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
