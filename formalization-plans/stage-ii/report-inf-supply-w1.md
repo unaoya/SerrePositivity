@@ -7787,3 +7787,47 @@ E01の別経路の紙は前節の状態を維持する。
 検証済み累計167本・13,378行、外枠24,000行まで10,622行。
 上限変更後のRR02(a)実測880行、(b)(c)新規0行。
 指定した随伴まで完了したが、重みの移送と実現後の弱同値性は未完。
+
+## §78 RR02(a)：添字比較での係数と増大射の保存
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§77の随伴は `4cccee625` にコミット済み。次は既存の忘却と図式の合成を固定し、
+余単位が係数に恒等射で作用すること、増大射の自然性と切断での一致を照合する。
+既存の構成の法則とRR02(a)の証明分割であり、IDを追加しない。
+
+```lean
+def strictDiagramFreeEvaluationCoefficients :
+    StrictDiagramFreeEvaluationIndex.{u} d k ⥤ C :=
+  strictDiagramFreeEvaluationToOver d k ⋙ Over.forget k ⋙ V
+lemma strictDiagramFreeEvaluationCoefficients_counit
+    (t : StrictDiagramFreeEvaluationIndex.{u} d k) :
+    (strictDiagramFreeEvaluationCoefficients d k V).map
+        (strictDiagramFreeEvaluationCounitComponent d k t) =
+      𝟙 ((strictDiagramFreeEvaluationCoefficients d k V).obj t)
+def strictDiagramFreeEvaluationCoefficientAugmentation :
+    strictDiagramFreeEvaluationCoefficients.{u} d k V ⟶
+      (Functor.const (StrictDiagramFreeEvaluationIndex.{u} d k)).obj (V.obj k)
+lemma strictDiagramFreeEvaluationCoefficientAugmentation_section (t : Over k) :
+    (strictDiagramFreeEvaluationCoefficientAugmentation.{u} d k V).app
+        ((strictDiagramFreeEvaluationSection d k).obj t) = V.map t.hom
+```
+
+### 78.1 検証・実測と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeEvaluationCoefficients` 52行、対象ビルド3,763 jobs成功、
+小監査5宣言・標準三公理のみ。ログ：
+`/tmp/is-w1/free-evaluation-coefficients/build.log`。計算上限は変更していない。
+検証済み累計168本・13,430行、外枠24,000行まで10,570行。
+上限変更後のRR02(a)実測932行、(b)(c)新規0行。
+
+次はこの指定係数の添字比較を重みの実現に接続する。main の
+`Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SiftedSimplexCategory`
+に `nerveMap_isRightCofinal_of_weaklyContractible_comma` があり、
+指定随伴からの StructuredArrow の始対象と合わせる候補である。
+この定理は同じ宇宙の圏を要求するので、Over の小さい宇宙を合わせる必要がある。
+nerve の right cofinal 性だけでは、このレーンの指定された実現射との一致は出ない。
+その重みの移送と弱同値性を引き続きRR02(a)で閉じる。
+E01の別経路の紙は前節の状態を維持し、未供給の単位の普遍性は仮定しない。
