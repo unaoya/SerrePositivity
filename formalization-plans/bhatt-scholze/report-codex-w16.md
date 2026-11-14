@@ -20761,3 +20761,253 @@ lemma cutSign_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
 m14-nullary-point-signs-02.log（2,313 jobs）は成功。未使用simp引数は修正し対象警告0。
 小監査 audit-m14-nullary-point-signs.log は6本14宣言・標準三公理のみ、sorry・独自公理0。
 ビルドと監査は各回で鍵を返却。共有の入口・監査は変更していない。
+
+## 329. 残り色を元の順序で番号づけ直す法則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+nullaryの出力arityへ戻すとき、色の順序単射で元の符号と頂点列を比較する。
+削除色kの補集合にはFin.succAboveOrderEmb kを使う。
+まず以下を一般の順序単射の既存構成の法則として切り出す（各証明200行以内）。
+有限点検：色数1〜3、移し先は4まで、長さ1〜4の全raw語と全昇順の色埋め込み940組で、
+全caesuraと全色対の狭義順序が保存されることを確認した。
+
+```lean
+lemma caesura_comp_injective {l r R : ℕ} (v : Fin l → Fin r) (φ : Fin r → Fin R)
+    (hφ : Function.Injective φ) (i : Fin l) :
+    Surjection.Caesura (φ ∘ v) i ↔ Surjection.Caesura v i
+
+lemma intervalLength_comp_injective {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : Function.Injective φ)
+    (i : Fin (m + 1)) : intervalLength s (φ ∘ v) i = intervalLength s v i
+
+lemma cutSign_comp_strictMono {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : StrictMono φ) :
+    cutSign s (φ ∘ v) = cutSign s v
+
+lemma verticesList_comp_injective {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : Function.Injective φ)
+    (c : Fin r) : verticesList s (φ ∘ v) (φ c) = verticesList s v c
+```
+
+区切りは同色の単射性、逆転指数はhφ.lt_iff_lt、頂点列は元のcolorPositionsの等式だけを使う。
+Surjection.Wordの全射性を、色数を増やすこの補助に要求しない。
+
+## 330. 実際の空語合成の位置と色を同じ削除へ戻す（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§329の色の埋め込みと実際のnullaryRawWordをつなぐため、既存の二つの位置の表示を比較する。
+新しい有限対応を選ばず、元のcompositeOuterPositionの狭義単調性と有限自己順序単射の一意性を使う。
+削除色が一度だけ出る場合の型を明示する。各証明200行以内。
+
+```lean
+lemma succAbove_remainingPosition_nullary (m : ℕ) (k : Fin (m + 1))
+    (a : {j : Fin (m + 1) // j ≠ k}) :
+    k.succAbove (BarrattEccles.remainingPosition m 0 k a) = a.val
+
+lemma compositeOuterPosition_nullary_erase {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (m + d))
+    (hne : u.val (Fin.cast (by omega : m + d + 1 = m + 1 + d)
+      ((Fin.cast (by omega : m + 1 + d = m + d + 1) p).succAbove i)) ≠ k) :
+    IntervalCuts.compositeOuterPosition u v k r
+      (Fin.cast (by omega : m + d + 1 = m + 1 + d)
+        ((Fin.cast (by omega : m + 1 + d = m + d + 1) p).succAbove i)) hne = i
+```
+
+hneqは残る位置が削除色でないことの証明で、huから証明する同じ命題。
+それを別の数学的な条件として最終定理へ足さない。
+残り全位置を元の順序でcompositeOuterPositionへ送り、同じFin(m+d)の自己順序単射を得る。
+既存StrictMono.apply_eqからその写像は各iを固定する。色はremainingPositionの元の番号公式を読むだけ。
+
+## 331. 完備化後のP⁰の三案：有限arityで延ばす作用とprimitiveを分ける（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§267・282・296の続き。A4の定義を読み直したが、directPerfectionValueは依然として
+実際の反射prismCAlgCompletionを施した頂点であり、普通の完備化した複体を定義として
+差し替えることはできない。仮定・drafts・界面・完備化のLeanは追加していない。
+
+### 331.1 (a) 有限arityの作用の連続延長に必要な一様性
+
+項別平坦かつK平坦な厳密B線形BE模型Kが得られた場合を検収する。
+固定したarity、operad次数、入力の各次数に対する作用はB多重線形写像である。
+入力x_iとy_iがそれぞれd^rを法として一致するなら、有限の望遠和
+
+    T(x_1,…,x_s)-T(y_1,…,y_s)
+      = Σ_i T(y_1,…,y_{i-1},x_i-y_i,x_{i+1},…,x_s)
+
+の各項はd^r倍。この合同の指数は入力元に依存しない。
+同じd進完備化の普遍性を各固定次数で使えば、有限個の入力の積上で同じ作用を延ばす候補となる。
+operadの鎖の入力は有限の線形結合なので、operad全体の無限和を完備化の外で足す必要はない。
+元の作用の単位・置換・合成・微分の有限の恒等式も、同じ合同と分離性で検収する筋がある。
+ただしこれは候補の証明の筋であり、必要な厳密BE完備化の構成・分離性・nativeな比較の
+新定理を48本の「法則」として自己承認して実装したという意味ではない。
+
+P⁰そのものはB線形である必要はない。p入力の対角評価ではb倍がb^p倍になる。
+元のFrobeniusのd↦d^pも、商の添字r↦prの共終な変更として記録する。
+B線形自己射であるとの追加条件を置いて一致させない。
+
+### 331.2 (a) primitiveの延長では「閉元だけ」の恒等式は不足
+
+上の有限多重線形の合同は、L43bの同じ明示的原始元が**全鎖の有限式**であり、
+微分にdaを含む項を残した恒等式まで供給する場合に適用する。
+閉元ごとに境界の逆像を選んだ関数へは適用できない。
+また、完成した鎖の任意の閉元をrawな閉元の極限と仮定しない。
+全鎖の式を延ばしてから閉条件を入れる必要があるという§296の穴は残る。
+元のnativeなFrobeniusの辺をこの同じ模型の射で表す比較も未供給。
+作用を延ばせることと、その比較が同じ辺を表すことを分けて検収する。
+
+### 331.3 (b) 単位での消去が代わりに使えるか
+
+κ[t]→κ[[t]]のπ_0での非全射性は変わらず、coconnective性だけでの単位の消去はできない。
+商の塔への射による検出は別案だが、Tor由来の元とlim¹を扱う§223.3の義務が残る。
+特に(a)の作用の連続性だけから、π_nを逆極限と交換したり、商での同じP⁰の比較を
+無料で得たりはしない。この案に追加のtorsion消滅仮定を足さない。
+
+### 331.4 (c) coherentなP⁰が必要と判明したか
+
+今確認できる不足は、(a)の模型と指定辺の比較および全鎖のprimitiveの検収、
+(b)の実際のderived商での同じ演算・同じFrobeniusの比較である。
+有限arityの連続延長の筋はcoherentなSp値P⁰を前提としていないので、
+現時点では両案が不可能との結論や(c)への移行は出さない。
+全鎖の式が作れない／指定対象と辺へ比較できないと分かった時点では、§32どおり止める。
+これらの未実装分は§314の完成見込みの数値にも未計上で、外枠に収まると見込んで隠さない。
+
+## 332. 実際の空語のraw合成語の値を同じ削除色へ戻す（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§330の元の位置の等式を、同じnullaryRawWord_outerPositionへ適用する。
+以下は既存構成の値の法則で、証明200行以内。huから残る位置の色≠kを証明し、
+§330のhneを最終主張の仮定として残さない。
+
+```lean
+lemma nullaryRawWord_erase_value {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (m + d)) :
+    k.succAbove (IntervalCuts.nullaryRawWord u v k r i) =
+      u.val (Fin.cast (by omega : m + d + 1 = m + 1 + d)
+        ((Fin.cast (by omega : m + 1 + d = m + d + 1) p).succAbove i))
+```
+
+符号の照合には§329の順序単射の法則を使う。
+compositeOuterPositionの式を結果の添字iの下へ依存するまま書き換えず、
+同じraw語へ評価する合同の等式を通してから元の色の値を読む。
+
+## 333. 削除後の実際の色づけへ移す符号と全頂点列（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§327・329を同じ残り色の族へ適用する。hvは§332で実際のnullaryRawWordに対して
+証明した色の値の等式に対応する条件で、任意の別の族の選択を結論にしない。
+型のサイズを保つためraw語の長さの自然数をここではm+2と書く。
+各証明200行以内、同じ既存構成の値と符号の照合法則。
+
+```lean
+lemma nullaryPointEraseCut_cutSign_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin (r + 1)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hpoint : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p)
+    (hv : ∀ i, k.succAbove (w i) = v (p.succAbove i)) :
+    cutSign (nullaryPointEraseCut s p) w = cutSign s v
+
+lemma nullaryPointEraseCut_verticesList_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin (r + 1)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w i) = v (p.succAbove i)) (c : Fin r) :
+    verticesList (nullaryPointEraseCut s p) w c = verticesList s v (k.succAbove c)
+```
+
+元の圏の値の等式であり、符号も全頂点列も新しい選択へ変えない。
+
+## 334. 一点削除の前後の正規化零項（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の正規化零項を保つため、同じ削除座標によるpairの単射性を両方向へ移す。
+これはL12aの既存の非退化性の定義を同じ有限集合の削除で読む法則。各証明200行以内。
+有限点検は§316の元の全切断の退化判定と、§325のraw語の一点削除に対応する。
+
+```lean
+lemma nondegenerate_iff_horizontal_deleted_coordinates {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Fin (m + 2) → Fin r)
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j)
+    (hu : ∀ j, v j = v a → j = a) :
+    Nondegenerate t (Surjection.erase v a) ↔ Nondegenerate s v
+
+lemma nullaryPointEraseCut_nondegenerate_iff {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2)) (hpoint : hi s p = lo s p)
+    (hu : ∀ j, v j = v p → j = p) :
+    Nondegenerate (nullaryPointEraseCut s p) (Surjection.erase v p) ↔ Nondegenerate s v
+```
+
+元のpairの削除位置以外はhh・hvで同じ削除後のpairへ対応する。
+削除頂点の色が残るpairの色と一致すればhuによってa.succAboveの値がaとなり矛盾する。
+従って正規化で零となる場合も含めた同値を得る。
+
+## 335. 残り色の番号を詰め直した正規化零項（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§334の同値を、実際の色の番号を詰め直した語へ適用するための既存構成の法則。
+§329と同じ単射を使い、各証明200行以内。新しい非退化性を定義しない。
+
+```lean
+lemma nondegenerate_comp_injective {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : Function.Injective φ) :
+    Nondegenerate s (φ ∘ v) ↔ Nondegenerate s v
+
+lemma nullaryPointEraseCut_nondegenerate_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin (r + 1)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hpoint : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p)
+    (hv : ∀ i, k.succAbove (w i) = v (p.succAbove i)) :
+    Nondegenerate (nullaryPointEraseCut s p) w ↔ Nondegenerate s v
+```
+
+最初はpairの第一成分だけへの単射の合成。後者はその同値を元のFin.succAboveへ適用し、
+hvで同じ削除語へ戻して§334を使うだけ。
+
+
+## 336. 実際の空語合成の位置・色・元の正規化零項（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§329〜335の型を検証した。実際のnullaryRawWordとcompositeOuterPositionを使い、
+同じ一出現を削除する位置の厳密な一致、元の順序で詰めた残り色の値、
+同じ全頂点列と元の整数符号、元の正規化零項の両方向の同値までつながった。
+実際の余単位を作用の四つの射へ通す計算と全arityの包装はまだ残り、L12a完了とはしない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|OrderedColorEmbeddings|47|
+|NullaryRawPositions|72|
+|NullaryRawValues|44|
+|NullaryPointRelabel|50|
+|HorizontalDeletionNondegenerate|63|
+|NullaryPointNormalization|31|
+|NullaryPointRelabelNormalization|45|
+
+今回352行、M14実測26,308行、L12a 11,101行、外枠31,000行まで4,692行。
+対象ビルドはm14-ordered-color-embeddings-03.log（1,140 jobs）、
+m14-nullary-raw-positions-03.log（2,802 jobs）、m14-nullary-raw-values-01.log（2,803 jobs）、
+m14-nullary-point-relabel-01.log（2,316 jobs）、
+m14-nullary-point-normalization-01.log（2,309 jobs）、
+m14-nullary-point-relabel-normalization-02.log（2,310 jobs）まで成功、対象警告0。
+小監査audit-m14-nullary-relabel-normalization-02.logは7本31宣言・標準三公理のみ、sorry・独自公理0。
+それぞれ有限の一回のビルド・監査ごとに鍵を取り返却した。共有入口・監査の変更なし。
+
+完備化後のP⁰の三案の追加の紙の検討は§331。
+(a)の固定arity・次数の有限多重線形式の合同と、全鎖のprimitiveの延長を区別した。
+指定native対象とFrobeniusの比較は未証明。(b)の単位の全射性は依然として一般に偽。
+両方が不可能と判明した(c)とはまだ判定していない。追加仮定で穴を隠していない。
