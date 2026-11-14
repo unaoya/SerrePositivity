@@ -987,3 +987,12 @@ formsCAlgは同じ厳密なformsCDGAFunctorを、選んだTheoryのcdga実現で
 一覧：済み 8／全体 14（うち追加 0）。第31〜34束の診断を受け、不透明な列の定義の照合をprivateな法則の証明へ分け、同じ列の包含を等式で移送した。[第35束](bulk-5inf0/draft-block35-validation.json)でA1/CrystallineInputが約41秒で成功。有効な成功は30／57本。A1/HodgeTateMapも第29束の成功と現在のソースのSHAの一致を確認し、この2本をコミットする。定理の追加仮定・検査予算の引上げ・本体の変更はない。pdModelPolynomialFunctorは元の一般の型と既存の3つのsorryを保持する。残るHodgeTateComparison・CrystallineSiteは失敗として証跡を保存し、修正を続ける。
 
 READMEも現在の本体への追従・隔離した型検査の手順・保護対象の例外を反映した。型検査の成功は、残された将来のsorryの証明の完成とは区別する。
+
+
+### 5∞-0 のdraft検査・第36〜37束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第37束](bulk-5inf0/draft-block37-validation.json)でA1/HodgeTateComparisonが約26秒で成功し、有効な成功は31／57本。普遍prismの宇宙を標的と揃え、本体のKoszulホモロジーの作用のinstanceと、その台の加群を区別して同じ底変換の型を記述した。Eとpの既存の引数も渡した。成功したソースをコミットする。
+
+[現在のソース上のsorry](bulk-5inf0/all-draft-sorry-summary.json)は、保護されたSharedを除く56本で819→679、A0〜A9は705→572。未検査の変更を含むため完成の数とはしない。Leanの追加・削除の計は5,137行（第36束後の測定）、外枠11,100行。
+
+CrystallineSiteは元からあったR̄という結合文字つきの識別子をコードだけRbarに直し、本文の表記は維持。0宇宙の添字圏のnerveは同じ関手の射列ごとの合成で持ち上げた。sorryのため落ちていたhp・hgenも[引数の台帳](bulk-5inf0/restored-context-parameters.json)に加え、承認された規則で意図した型に戻す。これとHodgeTateFiltrationは未成功で、続く束で検査する。
