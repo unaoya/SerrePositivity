@@ -839,3 +839,12 @@ A07の冒頭の更新はA0〜A9の40本だけに限定せず、保護対象を�
 再現用[check_draft.py](bulk-5inf0/check_draft.py)をこの束の実行に使った。元のimportとLakeのoptionsを引き継ぎ、draftの前提だけを隔離配置へpublic importする。ソース・一時配置・olean・前提の署名を記録する。依存が後から変わった成功記録は使わない。S1の利用側3本の次の束と、完備化の利用側を、返却後に一つだけ並べ直した。
 
 削除前後の全宣言名の照合で、機械的な削除範囲が隣の未重複のdraft補題2本（isAlmostConnective_completedFilteredColimit、perfectoidization_quotient_connective_of_ih）まで広がっていたことを検出した。両方の元の主張・未証明本文を復元した。CrystallineSiteでも空になったCrysOverの名前空間とcutoff変数の境界が残り、RΓ側3宣言の名前が変わっていたため、元の外側のscopeと明示的κを復元した。これらは未コミットのdraft修正の段階で見つかったもので、検査済みとしては数えていない。sorryの静的数は復元前584から増えるので、次の再集計値で更新する。
+
+
+### 5∞-0 の削除範囲の再照合（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。[削除・置換の全件台帳](bulk-5inf0/declaration-disposition-audit.json)を作り直した。A0〜A9の名前つき宣言は1080→957、削除123名＝同名の本体の候補117名＋指示に沿った別名の置換6名。予定外の削除・改名0、新しい名前0。2本の未重複補題とRΓの3名の復元後に照合した。sorryは **705→586**。前節の584は復元前の静的数であり、この値に更新する。
+
+[旧ルート名の追従台帳](bulk-5inf0/root-reference-refresh.json)を追加。単体集合の固有名は所有元つき対応表に合わせ、一般的なHasLimit・HasColimitは使用箇所を確かめたものだけを直す。型検査で残ったIsPresentableの曖昧さは、元から指定されているHTTの定義への完全修飾で解消する修正とした。Čech形状はΔのnerveがSSet.{0}にあることを反映し、同じrightOpのnerve写像を単体ごとに書いた。圏同値のunit/counit・錐の表示・端点移送の法則の証明も既存APIへ追従中で、新しい数学的な仮定は加えていない。端点移送の局所補題は `∀ {x x' y : E₀} (h : x = x') (e : Edge x y), ((h ▸ e).toTruncated).edge = e.toTruncated.edge` で、既存の構成の法則の証明分割（未検査、一覧の追加項目ではない）。
+
+現在のLean差分は追加1829・削除2135、合計3964行、外枠11,100行。禁止3ディレクトリと保護されたSharedファイルの差分0、`git diff --check`も成功。第8束は通常のbulk整理券で待機しており、成功に算入していない。
