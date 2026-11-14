@@ -1134,3 +1134,8 @@ DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contr
 一覧：済み 11／全体 14（うち追加 0）。[第62束](bulk-5inf0/draft-block62-validation.json)の残る推論を分け、[第63束](bulk-5inf0/draft-block63-validation.json)でA5/WeaklyInitialAndDescentが成功。有効な成功は46／57本。二段のmapCoconeは一段ずつ同じ中間の錐に型を付け、弱始対象のUnder.mkには元の標的の環と射の始域Uを明示した。検査済みソースをコミットする。
 
 同じ束のPerfectSiteComparisonは検査中にこちらが後続修正を置いたためSTALE（無効）になった。成功には数えず、元の診断とソースが変わった事実を生ログごと保存した。今後、実行中の対象のソースは変えず、束が終わってから修正する。残る二つのanimated関手はA7/AnimatedPerfectoidizationが実際の所有元なので依存表にその1辺を追加（循環0、従来の順序は有効）。有界性は既存の完全性から渡す。ArcSiteの未修飾名は既存のSheavesの所有元をopenする。第64束で再検査する。
+
+
+### 5∞-0 のdraft検査・第64束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第64束](bulk-5inf0/draft-block64-validation.json)はPerfectSiteComparisonの既存の有界性補題のimport漏れ1件、ArcSiteのIsWeaklyTerminal・CechNerveDataの二つの所有元の曖昧さで失敗。有界性補題の実際の所有モジュールPerfectBoundedをimportし、二つのČechの名前は元の意図どおりSheaves側に修飾して第65束へ並んだ。実行中の対象は変更していない。
