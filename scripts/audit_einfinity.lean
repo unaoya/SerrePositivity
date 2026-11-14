@@ -1,4 +1,8 @@
 import SerrePositivity.EInfinity
+import SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Comparison
+import SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Definition
+import SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary
+import SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface
 import Lean.Util.CollectAxioms
 import Mathlib.Tactic.Ring
 

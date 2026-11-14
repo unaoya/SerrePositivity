@@ -1443,3 +1443,14 @@ B4の採取候補を枝の最新HEADと未コミットの本体を読むだけ�
 全監査を字句走査し、旧短名とBhattScholze.…の省略名も[五ファイル・111箇所の表](bulk-b3prime/audit-short-name-plan.json)へ追加した。元の所有元が一意の名前を、B4のネイティブ照合済み完全名で置換する。新しいopenは作らず、受渡し型の引数・仮定・式・axiom許可・判定条件は保持。従来の12本の追従と重なるため、変更した正式監査は合計14本となる。本体のLeanと保存比較の結果は変更していない。
 
 [正式106監査の全名・省略名の再走査](bulk-b3prime/audit-name-coverage.json)は残候補0。これは静的検査であり、全監査成功の代わりにはしない。最新の監査ソースのhashで正式監査をやり直す。適用のreceiptにも監査だけの追加を明記し、全ソースのhash guardを維持した。
+
+
+### B3′ 正式46監査成功・EInfinity監査の明示import（11-15 03:25以降）
+
+一覧：済み 2／全体 22（うち追加 0）。正式監査は46／106本まで成功。47本目のaudit_einfinityは、以前EInfinity集約経由で得ていたBS界面の宣言が見つからず停止した。CAlg_R三本とTheoryInterfaceの宣言は名前を変えずにBSへ移しているため、改名表の非恒等行だけの走査では捕捉できなかった。[元のエラーログ](bulk-b3prime/audit-einfinity-original-import-failure.tar.gz)を残した。
+
+同監査の先頭に、移動後の実際の所有元であるTheoryInterface、CAlg/Comparison・Definition・DerivedCorollaryの四importを追加。必要名配列、検査の述語、exampleの型、axiom許可は変更0。ライブラリのEInfinity→BSの辺は復活させず、BS界面も検査する専用監査の依存を明示した。正式監査の変更は合計15本。
+
+[先行46本の入力一致の証跡](bulk-b3prime/audit-input-equivalence.json)を作った。各監査のソースSHA、本体全体・Root・Lake/toolchain・refactor道具・bibliographyのgit tree/blob、適用した非監査ソースはc2bf2a4fbと同一。原receiptは書き換えず、46本の原SHAも保存。FSを読む先行五つのarea監査は、いずれもモジュール名から導くSerrePositivityのソースだけを読み、他の監査スクリプトを入力にしていない。残り41本にも他の監査への依存はない。専用orchestratorの再開条件を本体/設定の指紋と各監査の個別SHAに分け、同一入力の既済46本を保持して47本目から再開した。比較器・publicなverify・採取器は変更0。最後のfull verifyではキャッシュ結果を使わず106本すべてを新規実行する。
+
+[監査のモジュール集合の照合](bulk-b3prime/audit-module-scope-coverage.json)は69本・欠落0。[属性の保存場所](bulk-b3prime/actual-citation-location-check.json)も2,564件・1,099ファイルで有効、すべて作業枝内の相対パス。R7-3(b)の[実際の八辺](bulk-b3prime/r7-3b-actual-edge-ledger.json)は基準解消2・今回解消5・維持1で、予定だけでなく実importと所有元を確認した。

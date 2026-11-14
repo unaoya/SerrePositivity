@@ -12,15 +12,28 @@ def lease(label,cmd,jobs,threads):
  result=json.loads(log.with_suffix('.log.json').read_text());assert p.returncode==0 and result['rc']==0 and result['reason'] is None,(label,result);return result
 if not (W/'all-audit-prerequisites-complete.json').exists():
  record=lease('prerequisites',['lake','build',*targets],8,3);(W/'all-audit-prerequisites-complete.json').write_text(json.dumps(record,indent=2));print('formal audit prerequisites PASS',flush=True)
-application=json.loads((W/'actual-application.json').read_text());source_signature=hashlib.sha256(json.dumps(application['paths_written'],sort_keys=True).encode()).hexdigest()
+application=json.loads((W/'actual-application.json').read_text())
+sys.path.insert(0,str(W));from audit_input_scope import inputs
+math_inputs,source_signature=inputs(application)
+equivalence=json.loads((W/'audit-input-equivalence.json').read_text()) if (W/'audit-input-equivalence.json').exists() else {}
+equivalence_sha256=hashlib.sha256((W/'audit-input-equivalence.json').read_bytes()).hexdigest() if equivalence else None
+resumed_legacy=[]
 def check_inputs():
- for path,sha in application['paths_written'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==sha,('source changed after application',path)
+  assert inputs(application)[1]==source_signature,'mathematical inputs changed'
+  for path,sha in application['paths_written'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==sha,('source changed after application',path)
 results=[]
 for i,path in enumerate(paths):
  check_inputs()
  sha=hashlib.sha256((R/path).read_bytes()).hexdigest();receipt=out/f'{i:03}.json'
  if receipt.exists():
   old=json.loads(receipt.read_text())
-  if old['source_sha256']==sha and old.get('source_signature')==source_signature and old['rc']==0 and old['reason'] is None:results.append(old);continue
+  legacy=equivalence.get('valid_legacy_receipts',{}).get(path,{})
+  equivalent=(equivalence.get('math_input_signature')==source_signature and
+              legacy.get('receipt_sha256')==hashlib.sha256(receipt.read_bytes()).hexdigest() and
+              legacy.get('source_sha256')==sha and legacy.get('legacy_source_signature')==old.get('source_signature'))
+  if old['source_sha256']==sha and (old.get('source_signature')==source_signature or equivalent) and old['rc']==0 and old['reason'] is None:
+   if equivalent:
+    old={**old,'unchanged_math_inputs_equivalence_sha256':equivalence_sha256};resumed_legacy.append(path)
+   results.append(old);continue
  record={'path':path,'source_sha256':sha,'source_signature':source_signature,**lease(f'{i:03}',['lake','env','lean',path],1,1)};receipt.write_text(json.dumps(record,indent=2));results.append(record);(W/'all-audits-progress.json').write_text(json.dumps(results,indent=2));print('formal audit',i+1,len(paths),path,'PASS',round(record['seconds'],1),flush=True)
-summary={'count':len(paths),'success':len(results),'failed':[],'results':results,'strictly_serial':True,'one_shared_ticket_per_audit':True,'source_signature':source_signature,'time':time.time()};assert len(results)==len(paths) and all(r['rc']==0 and r['reason'] is None for r in results);(W/'all-audits-complete.json').write_text(json.dumps(summary,indent=2));print('ALL FORMAL AUDITS PASS',flush=True)
+summary={'count':len(paths),'success':len(results),'failed':[],'results':results,'strictly_serial':True,'one_shared_ticket_per_audit':True,'source_signature':source_signature,'math_inputs':math_inputs,'resumed_legacy_audits':resumed_legacy,'input_equivalence_sha256':equivalence_sha256,'time':time.time()};assert len(results)==len(paths) and all(r['rc']==0 and r['reason'] is None for r in results);(W/'all-audits-complete.json').write_text(json.dumps(summary,indent=2));print('ALL FORMAL AUDITS PASS',flush=True)

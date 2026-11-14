@@ -259,7 +259,8 @@
     "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean": "1b22b910972e2e8f72d408cd12fde4a86b12641cc3e756fce76107a2503972ad",
     "scripts/refactor/layers.json": "dfd1e2e1c34a7cdbba5d4c98c532d799be8eaefe4dd61587c8e747ca8fe514e1",
     "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean": "42804816e2be71a03b9c4fdf54086dfdeb454288988d86862ca1d914ee8d4e1b",
-    "scripts/audit_andre_initial_coefficient.lean": "8b929afd76c95bc15a9671aff33c8280415e13081900dbf476071376ce24f54f"
+    "scripts/audit_andre_initial_coefficient.lean": "8b929afd76c95bc15a9671aff33c8280415e13081900dbf476071376ce24f54f",
+    "scripts/audit_einfinity.lean": "abb5ddc488eabbca1d53ecfcf11922a38f775378b6dd5f8d4acb580a99029225"
   },
   "delete_paths": [
     "SerrePositivity/BhattScholze/Almost/SupportedQuotient.lean",
@@ -2861,7 +2862,7 @@
   },
   "existing_tiers_changed": 0,
   "exceptions_changed": 0,
-  "formal_audits_changed": 14,
+  "formal_audits_changed": 15,
   "time": 1794675523.4666722,
   "post_application_header_fix": {
     "path": "SerrePositivity/BhattScholze.lean",
@@ -2920,5 +2921,11 @@
         "after_sha256": "efd30b2b473d6e17de46c73826884a654c3d58d867d12d54978d802ebb5e9bc9"
       }
     ]
+  },
+  "post_application_einfinity_audit_imports": {
+    "path": "scripts/audit_einfinity.lean",
+    "before_sha256": "6fce44c2f2771091c47ee0ff63629dd943fda73c2620e5856ec8bad652a6d2da",
+    "after_sha256": "abb5ddc488eabbca1d53ecfcf11922a38f775378b6dd5f8d4acb580a99029225",
+    "policy": "Restore original BS fixture declaration availability by importing their four actual moved defining modules; no required-name list, predicate, example type, or axiom allowance changed."
   }
 }

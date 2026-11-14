@@ -4622,6 +4622,14 @@
       "after_sha256": "df6a02e73f99f0af5f240d93a390b4a25f07d5abebc82e3142c99d20a05c3016",
       "module_scope_transport": [],
       "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
+    },
+    {
+      "path": "scripts/audit_einfinity.lean",
+      "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
+      "before_sha256": "6fce44c2f2771091c47ee0ff63629dd943fda73c2620e5856ec8bad652a6d2da",
+      "after_sha256": "abb5ddc488eabbca1d53ecfcf11922a38f775378b6dd5f8d4acb580a99029225",
+      "module_scope_transport": [],
+      "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
     }
   ],
   "status": "isolated audit followup preview only; actual application and formal execution pending"

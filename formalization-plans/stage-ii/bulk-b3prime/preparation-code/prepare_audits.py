@@ -28,6 +28,10 @@ for path in paths:
 
  for i,body in enumerate(protected):text=text.replace('__B3PRIME_AUDIT_MODULE_SET_'+str(i)+'__',body)
  for i,body in enumerate(imports):text=text.replace('__B3PRIME_AUDIT_IMPORT_'+str(i)+'__',body)
+ if path=='scripts/audit_einfinity.lean':
+  moved_einf={row['new_module'] for row in json.loads((W/'B4/public-owner-map.json').read_text())['rows'] if row['old_module'].startswith('SerrePositivity.EInfinity.Perfectoidization.')}
+  assert len(moved_einf)==4,moved_einf
+  text=text.replace('import SerrePositivity.EInfinity\n','import SerrePositivity.EInfinity\n'+''.join('import '+m+'\n' for m in sorted(moved_einf)),1)
  if text!=original:
   p=out/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text);records.append({'path':path,'source_main':main,'before_sha256':hashlib.sha256(original.encode()).hexdigest(),'after_sha256':hashlib.sha256(text.encode()).hexdigest(),'module_scope_transport':sets,'logic_policy':'Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage.'})
 summary={'source_main':main,'discovered_formal_audits':len(paths),'changed':records,'status':'isolated audit followup preview only; actual application and formal execution pending'};(out/'manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2));print('formal audits',len(paths),'followup changed',len(records),'module-set transports',sum(len(r['module_scope_transport']) for r in records))
