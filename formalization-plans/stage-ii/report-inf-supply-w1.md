@@ -9529,3 +9529,104 @@ RR02(a)の承認済み比較の証明の分割。通常の局所化で両側の�
 `ElementsUniverseLift.equivalence` を合成し、持ち上げた要素圏から
 `AsSmall (Over k)` への指定比較へ適用する。係数は元の評価source frameを使う。
 RR02(a)全体は未完であり、元の自由実現の増大射への接続を残す。
+
+## §108 RR02(a)：実際の評価点の要素圏への適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の小さいOverへの随伴とULiftの同値を合成する。
+
+```lean
+def strictDiagramFreeEvaluationLiftedToOver :
+  (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements ⥤ AsSmall.{u} (Over k)
+def strictDiagramFreeEvaluationLiftedSection :
+  AsSmall.{u} (Over k) ⥤ (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements
+def strictDiagramFreeEvaluationLiftedAdjunction :
+  strictDiagramFreeEvaluationLiftedSection d k ⊣ strictDiagramFreeEvaluationLiftedToOver d k
+def strictDiagramFreeEvaluationOverFrames (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) : AsSmall.{u} (Over k) ⥤ SimplexCategory ⥤ Complex A
+def strictDiagramFreeEvaluationOverCoefficientsIso :
+  strictDiagramFreeEvaluationLiftedToOver d k ⋙ strictDiagramFreeEvaluationOverFrames A d X k ≅
+    Functor.Elements.π (strictDiagramFreeEvaluationLiftedWeight d k) ⋙
+      strictDiagramFreeEvaluationBase A d X
+lemma strictDiagramFreeEvaluationOverFrames_cofibrant :
+  Reedy.reedyLeft Reedy.simplex (cofibrations (Complex A))
+    (initial.to ((strictDiagramFreeEvaluationOverFrames A d X k).obj t))
+lemma strictDiagramFreeEvaluationOverFrames_homotopicallyConstant :
+  weakEquivalences (Complex A) (((strictDiagramFreeEvaluationOverFrames A d X k).obj t).map f)
+```
+
+係数の同型は同じ始点の評価。Reedy条件と構造射の弱同値性は既存の評価frameから供給。
+未検証。これらを§107の指定右随伴の比較へ入力する。
+
+### §108.1 元の自由実現の評価からOver実現への弱同値（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def strictDiagramFreeEvaluationOverComparison (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) :
+  (strictDiagramFreeArrowRealization A d X).obj k ⟶
+    (FrameWeightRealization.functor (AsSmall.{u} (Over k))
+      (strictDiagramFreeEvaluationOverFrames A d X k)).obj
+      (bousfieldKanWeight (AsSmall.{u} (Over k))ᵒᵖ)
+lemma strictDiagramFreeEvaluationOverComparison_weakEquivalence :
+  weakEquivalences (Complex A) (strictDiagramFreeEvaluationOverComparison A d X k)
+```
+
+比較は§103の評価同型、§108の係数同型の逆、指定右随伴によるBK比較の順に合成。
+この比較とOverの元の増大射の合成が、自由実現の元の増大射の評価値に一致することは
+次に照合する。弱同値だけで元の射との同一性を省略しない。
+
+### §108.2 Overの元の増大射（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def strictDiagramFreeEvaluationOverTerminal (k : strictDiagramIndex d) :
+  IsTerminal (AsSmall.up.obj (Over.mk (𝟙 k)) : AsSmall.{u} (Over k))
+def strictDiagramFreeEvaluationOverCocone :
+  Cocone (ConstantWeightHom.degree (AsSmall.{u} (Over k))
+    (strictDiagramFreeEvaluationOverFrames A d X k) (SimplexCategory.mk 0))
+def strictDiagramFreeEvaluationOverAugmentation :
+  (FrameWeightRealization.functor (AsSmall.{u} (Over k))
+    (strictDiagramFreeEvaluationOverFrames A d X k)).obj
+    (bousfieldKanWeight (AsSmall.{u} (Over k))ᵒᵖ) ⟶
+      (strictDiagramEvaluatedSourceFrame A d X k).obj (SimplexCategory.mk 0)
+lemma strictDiagramFreeEvaluationOverAugmentation_weakEquivalence :
+  weakEquivalences (Complex A) (strictDiagramFreeEvaluationOverAugmentation A d X k)
+```
+
+既存の恒等射の終対象性と、終対象を持つ図式の標準余極限余錐を用いる。
+弱同値性は§104の元の増大射の補題をそのまま適用する。
+
+### §108.3 係数移送と元の増大射の法則（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanAugmentation_frame_naturality :
+  (map K a).app (bousfieldKanWeight Kᵒᵖ) ≫ bousfieldKanAugmentation B c =
+    bousfieldKanAugmentation A
+      ((Cocone.precompose (ConstantWeightRealization.degreeMap K a (SimplexCategory.mk 0))).obj c)
+```
+
+既存のframe実現随伴と零重みのYoneda表示の自然性を使う。
+§108の係数同型を通した元の増大射を照合するための法則。
+
+### §108.4 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+5本・262行の対象ビルドと33宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計226本・16,568行。
+上限変更後のRR02(a)は4,070行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/evaluation-over/build-6.log`。
+
+元の自由実現を評価した対象からOver実現への指定比較の弱同値性、
+Overの元の増大射の弱同値性を、それぞれ実係数で検証した。
+係数移送とBK増大射の可換性も、元の余錐を保つ法則として検証済み。
+
+残りは両射の合成と自由実現の元の増大射の評価値の一致。
+§103の評価同型・要素圏の余積表示の同型が増大射を保つことを、
+指定随伴の転置で照合する。弱同値な別の射でRR02(a)を代用しない。
