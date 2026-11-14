@@ -6030,3 +6030,26 @@ lemma leftClassificationSquareHom_pullback {A B H : SSet.{u}}
   現在のローカルおよび main の `report-inf-supply-w2.md` は §21 までで、
   §38.2 の原文は今回再確認できていない。この点を新たに検証済みとはしない。
   R3 の Lean は作らない。
+
+
+### 56.4 利用側原文の所在と再照合
+
+一覧：済み 0／全体 13（うち追加 11）
+
+③-b の専用 worktree `../SerrePositivity-bs-d68` の
+`formalization-plans/stage-ii/report-inf-supply-w2.md` に §38.1〜§38.4 があることを
+読み取りだけで確認した（当該ファイルの最終コミット fe5555f64）。
+他枝を merge せず、未取り込みコードを import していない。
+§56.3 の「今回再確認できていない」は、この読み取りで解消した。
+
+§38.2 の1・2は strict BE 図式の模型計算と、同じ実 U への全自然変換の比較。
+3 は任意の coherent BE 図式への拡張で、加群版の strict 化だけでは足りず、
+BE 図式の局所化と `Fun(I_J, CAlg_A)` の比較を別に必要と明記している。
+§38.3 の `EInfinityTheory.ofCosimplicial_forget` への制限は
+余単体環代数を離散 BE 代数へ送った図式に固定されている。
+したがって、strict 入力に固定された供給を先行できることと、任意の coherent 入力までの
+一般化が必要な利用者を分けて判断する材料になる。R2 の充満忠実性を
+本質的全射性・任意の coherent 図式の strict 表示の存在の代用とはしない。
+
+main の指示書末尾は §46 の貼り合わせ則の承認までで、§56.2 の本文分割案への
+承認はまだ確認できない。差分は未適用のまま、R3 の Lean も作っていない。
