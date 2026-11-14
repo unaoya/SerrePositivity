@@ -759,3 +759,17 @@ FiniteIdealColimitMembership **96 行**、FiniteIdealColimitEquality **99 行**�
 C03 内は **2／3 完了**（(i)・(ii)）。(iii) のスキーム上の有限型イデアル層の降下は未完。G1 共用部品込み本体 **4,431 行**、入口込み **4,515 行**。A07 の一般の基底と G2 は未完。
 
 一覧：済み 8／全体 14（うち追加 5）。
+
+C03.(iii) の環からアフィン開への移送の分割：`exists_fg_ideal_family_model_of_isColimit` は同じ filtered な添字を持つ有限個の環の図式の有限生成イデアルを、一つの共通段へ移す。`exists_fg_ideal_family_model_of_affineOpen_limit` は、ある段 i の有限個のアフィン開 U_a に対し、極限の逆像の全体切断上の有限生成イデアル K_a を、ある j:Over i の各 D(j→i)⁻¹U_a の全体切断上の有限生成イデアル L_a の像として同時に表示する。実際の opensCone の IsLimit と Γ による colimit の保存を使う。これらは (iii) の証明の分割で、新しい親項目を足さない。
+
+係数移送の法則 `ideal_model_resLE_top_comparison`：f:X→Y、U⊆Y、V⊆f⁻¹U と L⊆Γ(U,⊤)、K⊆Γ(X,V) に対し、制限射の appTop での L の像が K.map(topIso.inv) なら、L.map(topIso.hom) の f.appLE での像は K。これは制限射の appTop と topIso の合成の比較で、平坦性を使わない。
+
+### C03.(iii) の局所模型と有限型部分イデアルへの接続
+
+FiniteTypeIdealAffineGeneratorModel **61 行**、FiniteIdealColimitFamilyModel **37 行**、AffineOpenLimitIdealModel **41 行**、入口 3 行。`exists_finiteType_ideal_model_of_affine_ideal_models` は有限アフィン被覆上の有限生成な局所イデアルの像が K に一致する場合を、K.map f の有限型部分イデアルへ渡す。前述の有限族の模型と opensCone の三分割と合わせ **4 宣言**。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,873 ジョブ成功**、三モジュールの小監査は **4 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-c03-geometry-batch-check-2.log`、`2g-c03-local-model-native.log`、`2g-c03-local-model-audit.log`。
+
+G1 共用部品込み本体 **4,570 行**、入口込み **4,657 行**。C03.(iii) の一般の降下の出口は下書き検証中で未完。
+
+一覧：済み 8／全体 14（うち追加 5）。
