@@ -15953,3 +15953,98 @@ Mayの18,614行をさらに機械的に控除することはできない。
 この紙の比較は、完備化後のP⁰の照合を完了した報告ではない。
 未供給の比較や新しい完備化定理を48本へ自己承認で追加せず、L12aの既存の証明を進める。
 (c)が必要と分かったという停止報告でもない。
+
+## 224. C451hの挿入色への係数移送（既存の法則の証明分割）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+次に挿入色の頂点を、外側の指定面ρを通して元の単体へ読む。
+§203の同じ順序列挙の法則をρ付きに述べ直す。新しい作用や同値の構成ではない。
+全頂点の順序同値そのものはまだ仮定であり、供給済みとしない。
+証明は200行以内、元の次数のSigmaの等式を保つ。
+
+```lean
+lemma faceData_comp_eq_of_colorOrderIso {m m' q q' r r' : ℕ}
+    (s : Cut m q) (t : Cut m' q')
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1))
+    (a : Fin r) (b : Fin r') (ρ : Fin (q' + 1) →o Fin (q + 1))
+    (e : ↥(colorPositions s u.val a) ≃o ↥(colorPositions t v.val b))
+    (hv : ∀ x, s.vertical x.val = ρ (t.vertical (e x).val)) :
+    (⟨outputDegree s u a, vertices s u a⟩ : Σ d : ℕ, Fin (d + 1) →o Fin (q + 1)) =
+      ⟨outputDegree t v b, ρ.comp (vertices t v b)⟩
+```
+
+有限点検は§220の12,233組で既に同じ内側面・外側面の合成を全ての色で比較済み。
+この一般の移送の法則だけで、挿入色の順序同値やC451全体が完成したとは扱わない。
+
+
+## 225. C451の元の挿入部分語の位置（既存の語長移送）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+`IntervalCuts.compositeSegmentPosition`とその`_value`が既に一般の重なる分割である。
+新しい位置の選択をせず、その同じ値をpositiveCompositeCutWordの語長で読む。
+C451の同じ指定面の照合の法則として型を記録する。各証明200行以内。
+
+```lean
+def positiveCompositeSegmentPosition {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    Fin (m + n + (d + e) + 1)
+
+lemma positiveCompositeSegmentPosition_val {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (positiveCompositeSegmentPosition u v k r i z).val =
+      compositePrefixLength u v k r (Surjection.occurrenceAt u.val k i).val + z.val
+
+lemma positiveCompositeSegmentPosition_label {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (positiveCompositeCutWord u v k r).val (positiveCompositeSegmentPosition u v k r i z) =
+      BarrattEccles.insertedPosition m (n + 1) k
+        (v.val ⟨r.start i + z.val, by
+          have h := r.start_add_length_le i; have hz := z.isLt; omega⟩)
+```
+
+実装前の有限点検：`/tmp/bsw16/check-composite-segment-positions.py`。
+12,233組・非退化3,745組で、部分語の全相対位置について、元の外側位置・内側位置・
+挿入ラベルが同じことを確認した。元の脚・色の順序・符号は変えない。
+この位置の法則を示しただけでは、内側Cutの全頂点の順序同値はまだ供給していない。
+
+## 226. 挿入色の比較の前段：検証済み・取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§224・225の2本96行を検証した。既存の全頂点の順序列挙を外側の指定面との合成へ
+適用する法則と、既存の挿入部分語の全位置・同じ挿入ラベルの語長移送まで。
+挿入色の全頂点の順序同値・指定面の比較そのものは未完で、仮定を追加して閉じていない。
+
+対象ビルド：`/tmp/bsw16/m14-composite-segment-positions-01.log`、
+2,849 jobs、成功・対象Lean警告0。
+小さい監査：`/tmp/bsw16/audit-m14-inserted-face-transports.log`、
+**2モジュール・10宣言、標準三公理のみ**。
+対象ビルドと監査は別々に鍵を取得し、終了時に返した。
+`git diff --check`成功。新しいsorry・公理なし。
+
+調整役への追加の登録対象：
+
+- `SerrePositivity.EInfinity.SimplexCuts.FaceDataCompositionTransport`（42行）
+- `SerrePositivity.EInfinity.SimplexCuts.CompositeSegmentPositions`（54行）
+
+今回§222と合わせて**7本402行**、対象の小監査は合わせて**37宣言**。
+M14実測**18,710行**、L12a実測**3,503行**。
+一覧は12/48（追加4）のまま。次は同じ元の挿入部分語の位置と内側Cutの順位を接続し、
+挿入色の全頂点の順序同値をC451hへ渡す。B4はやり直さず、mainや他レーンのファイルは触っていない。
+
+旧§219の停止理由は§32によって解消され、実際の証明作業は再開済み。
+ただし本ターンの`get_goal`が返したUI上のstatusは依然`blocked`だった。
+利用可能な`update_goal`の引数はcomplete/blocked/pausedのみで再開操作はなく、
+`create_goal`で未完の目標を置き換えることも契約上できないため、statusをactiveへ更新できていない。
+完了や別のblockedを設定することでこの差を隠さない。これは数学的な再停止判断ではない。
