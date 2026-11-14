@@ -2736,3 +2736,25 @@ G1・G2共用部品込み本体15,718行、入口込み15,981行。B02〜B04 は
 G1・G2共用部品込み本体15,791行、入口込み16,055行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+全模型の圏の filtered 性を閉じる次の型つき分割（B03・B04 の内数）：
+
+- 見込み220〜500行：`CoefficientModelCategory k g` は v 判定を課す前の、有限型 k-代数の射と元の g への正方形の圏（既存の `coefficientVCoverModelProperty` の ambient な CostructuredArrow）。実際の対象・射の登録と、各対象の基底・始域の像を使う後段を作る。二対象には両像の有限生成部分代数の和を使い、平行射は元の R,C への写像の像に移せば同じになる。Mathlib の `Subalgebra.FG.map` と有限生成部分代数の和を使い、finite-colimit の一般論を新しく実装しない。
+- 見込み250〜650行：任意の全模型 X から被覆模型 Y への実際の射を供給する。直前の紙の P=R⊗_{A₀}D₀、実際の被覆係数模型、`exists_coefficientPushout_arrow_factor`、`coefficientVCoverModelHomMkOfRingHoms` を組み合わせる。被覆模型の存在・v 判定を追加仮定にしない。これを既存の Mathlib の full/faithful な functor の filtered 性・final 性の API に渡す。
+- 見込み150〜400行：元の R,C の各元を有限変数の模型で表示し、二元の像の一致は上記の像の模型で一致させる。実際の環と Arrow の cocone の IsColimit、同じ宇宙の小さい被覆模型による IsColimit を返し、conerve は既存の左随伴性による自然な比較へ渡す。
+
+この分割は全模型の共同後段・一致・余極限を具体化するもので、一般の元の射を有限表示に狭めない。部分の以前の500〜1,200行の見込みは、抽象的な関手構成への分割も含めて更新対象とし、全体の約17,000〜20,000行・外枠25,000行を優先する。
+
+
+### B03・B04：実際の係数段の被覆模型と遷移の関手
+
+`CoefficientPushoutModelFunctor`（64行）：`coefficientPushoutVCoverModelFunctor` は、固定した実際の tensor 模型と元の環写像への射から、係数部分代数の添字の各段・各遷移を実際の有限型被覆模型へ送る関手。`coefficientPushoutVCoverModelMap` はその模型間の実際の射。一般の二環図式の関手構成への適用に分割し、恒等・合成と元の正方形の可換性を保持した。
+
+本体64行・入口1行。分割後の最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,053ジョブ、小監査7宣言・標準三公理のみ、終了状態0。既定の kernel 上限を維持し、追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。ログ `2g-coefficient-pushout-model-functor-check-2.log`・`2g-coefficient-pushout-model-functor-native.log`・`2g-coefficient-pushout-model-functor-audit.log`。
+
+G1・G2共用部品込み本体15,855行、入口込み16,120行。75d018aa2 の後は16モジュール974行＋入口16行、小監査152宣言・標準三公理のみ。各段と遷移の実際の関手まで到達。一般の元の射の全模型から被覆模型への実際の射、全模型の filtered 性・余極限と B02 の完成の整理は残り、B02〜B04 は未完。conerve の比較は確認済みの B1 の左随伴性と filtered 移送の API を再利用する。
+
+全体の見込み約17,000〜20,000行、現在からの残り約1,100〜4,200行、外枠25,000行は維持。今回に数学的な境界・型や範囲の変更なし。停止点 2g-1 ではない。
+
+一覧：済み14／全体17（うち追加8）。
