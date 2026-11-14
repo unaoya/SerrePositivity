@@ -6797,3 +6797,543 @@ RawModuleTensorConeSource・RawModuleTensorConeAugmentation の通常の対象�
 M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §49 同じ全 cone の元の augmentation と全次数の厳密な両立
+
+§48 の全 pinched 族の恒等像を同じ全線形表示へ送り、任意の有限部分集合の
+成分の augmentation 像を回収した。二点以上の部分集合では元の非単射 pullback
+成分が零となり、一点では元の恒等閉辺の cochain をそのまま回収する。
+同じ選択列の最後から元の最大点への型移送と後合成を両立させた。
+
+同じ元の全 cone の各対象の augmentation は、先端では元の恒等射、通常の
+対象では元の frame augmentation である。各成分の擬同型性と全単体作用素の
+再添字式を確認する。混合成分は元の符号つき選択 cochain の像であり、
+通常の零次辺は元の augmentation の自然性で照合する。この二つを合わせ、
+任意の有限部分集合 I、元の端点 a,b と整数次数 k に対して、
+augmentation と元の cone の斉次成分の合成が同じ始点 augmentation の
+closedNerveHom となる式を実装した。
+
+この同じ条件の記録が ModuleSimplexAugmentation であり、
+strictRawModuleTensorConeSimplexAugmentation は元の cone 単体に同じ実射と
+今回の全合成則を代入して作る。右 cone の存在や全三角形を仮定する記録ではない。
+各成分の元の加群擬同型性も同じ既存の各成分の証明から回収する。
+
+以下は M10 の既存構成の係数移送・自然性・合成の法則と証明の分割であり、
+新しい一次 ID は追加しない。全二重 cone、元の通常 augmentation 円柱との
+比較と全関手圏での三角形そのものはここではまだ主張しない。
+対象ビルドと新規公開宣言の小さい監査は §50.1 のとおり成功した。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+`SimplexAugmentation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+structure ModuleSimplexAugmentation {n : ℕ} (s : Simplex A (RightModule A D) n)
+    (M : ModuleCategory A D) where
+  app : ∀ i, ForgetEnrichment.of (Complex A) (s.obj i) ⟶ M
+  hom_naturality : ∀ (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ)
+      (hI : 2 ≤ I.card) (ha : a = I.min' (Index.nonempty hI))
+      (hb : b = I.max' (Index.nonempty hI)) (hk : k = 2 - (I.card : ℤ)),
+      compose A (closedHomEquiv A (RightModule A D) _ _ (app b)).val
+        (s.hom I a b k hI ha hb hk) (add_zero k) = closedNerveHom (app a) k
+
+def ModuleSimplexAugmentation.cycle {n : ℕ} {s : Simplex A (RightModule A D) n}
+    {M : ModuleCategory A D} (η : ModuleSimplexAugmentation A D s M) (i : Fin (n + 1)) :
+    zeroCycles (homObject A (RightModule A D) (s.obj i) (ForgetEnrichment.to (Complex A) M))
+
+lemma ModuleSimplexAugmentation.cycle_closed {n : ℕ} {s : Simplex A (RightModule A D) n}
+    {M : ModuleCategory A D} (η : ModuleSimplexAugmentation A D s M) (i : Fin (n + 1)) :
+    differential A (ModuleSimplexAugmentation.cycle A D η i).val = 0
+```
+
+`RawModuleTensorLinearAugmentation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementLinear_augmentation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (E := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (x := ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)) (x' := ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+        ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (Fin.last n))))
+      (strictRawModuleTensorElementLinear A X P Q c) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex.pullback (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).toOrderHom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (𝟙 ((strictRawModuleProbeFunctor A X).obj P))))
+
+lemma strictRawModuleTensorElementLinear_augmentation_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : 2 ≤ J.card) (hk : k = 1 - (J.card : ℤ)) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (Fin.last n)))).f k
+      ((strictRawModuleTensorElementLinear A X P Q c).val.component J k
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ) hk) = 0
+```
+
+`RawModuleTensorLinearAugmentationVertex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementLinear_augmentation_vertex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (hJ : J.Nonempty) (hc : J.card = 1) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementAugmentation A X P Q).app
+      (c.obj (Fin.last n)))).f 0
+      ((strictRawModuleTensorElementLinear A X P Q c).val.component J 0 hJ (by omega)) =
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (𝟙 ((strictRawModuleProbeFunctor A X).obj P))).val
+```
+
+`RawModuleTensorSelectedAugmentation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_augmentation_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hc : 2 ≤ J.card) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (J.max' hJ)))).f k
+      (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk) = 0
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_augmentation_smul_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hc : 2 ≤ J.card) (r : ℤˣ) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (J.max' hJ)))).f k
+      (r • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk) = 0
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_augmentation_compose_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hc : 2 ≤ J.card) (r : ℤˣ) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (J.max' hJ)))).val
+      (r • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk) (add_zero k) = 0
+```
+
+`RawModuleTensorSelectedAugmentationVertex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_augmentation_vertex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (hJ : J.Nonempty) (hc : J.card = 1) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (J.max' hJ)))).f 0
+      (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J 0 hJ (by omega)) =
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (𝟙 ((strictRawModuleProbeFunctor A X).obj P))).val
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_augmentation_compose_vertex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (hJ : J.Nonempty) (hc : J.card = 1) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ ((strictRawModuleTensorElementAugmentation A X P Q).app (c.obj (J.max' hJ)))).val
+      (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J 0 hJ (by omega)) (add_zero 0) =
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (𝟙 ((strictRawModuleProbeFunctor A X).obj P))).val
+```
+
+`RawModuleTensorConeAugmentationAt.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorConeAugmentationAt {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 2)) :
+    ForgetEnrichment.of (Complex A) ((strictRawModuleTensorConeData A X P Q c).obj i) ⟶ ((strictRawModuleProbeFunctor A X).obj P)
+
+lemma strictRawModuleTensorConeAugmentationAt_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorConeAugmentationAt A X P Q c 0 = 𝟙 ((strictRawModuleProbeFunctor A X).obj P)
+
+lemma strictRawModuleTensorConeAugmentationAt_succ {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 1)) :
+    strictRawModuleTensorConeAugmentationAt A X P Q c i.succ =
+      (strictRawModuleTensorElementAugmentation A X P Q).app (c.obj i)
+
+lemma strictRawModuleTensorConeAugmentationAt_postcompose_mixed {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
+    HEq ((eHomWhiskerLeft (Complex A) (ForgetEnrichment.of (Complex A) ((strictRawModuleTensorConeData A X P Q c).obj a))
+      (strictRawModuleTensorConeAugmentationAt A X P Q c b)).f k
+        ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk))
+      ((eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementAugmentation A X P Q).app
+        (c.obj ((withoutFirst I).max' (withoutFirst_nonempty hI h0))))).f k
+        (k.negOnePow • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (withoutFirst I) k
+          (withoutFirst_nonempty hI h0) (by have := card_withoutFirst I h0; omega)))
+
+lemma strictRawModuleTensorConeAugmentationAt_quasiIso {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 2)) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) (strictRawModuleTensorConeAugmentationAt A X P Q c i)
+
+lemma strictRawModuleTensorConeAugmentationAt_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 2)) :
+    HEq (strictRawModuleTensorConeAugmentationAt A X P Q c (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom i))
+      (strictRawModuleTensorConeAugmentationAt A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) i)
+```
+
+`RawModuleTensorConeAugmentationPositive.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeAugmentationAt_compose_of_card_ge_three {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c b)).val
+      ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk) (add_zero k) = 0
+```
+
+`RawModuleTensorConeAugmentationEdge.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeAugmentationAt_compose_mixed_pair {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
+    HEq (compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c b)).val
+      ((strictRawModuleTensorConeData A X P Q c).hom I a b 0 hI ha hb hk) (add_zero 0))
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (𝟙 ((strictRawModuleProbeFunctor A X).obj P))).val
+```
+
+`RawModuleTensorConeAugmentationOrdinary.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeAugmentationAt_compose_ordinary_pair {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c b)).val
+      ((strictRawModuleTensorConeData A X P Q c).hom I a b 0 hI ha hb hk) (add_zero 0) =
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c a)).val
+```
+
+`RawModuleTensorConeAugmentationCompatibility.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeAugmentationAt_compose_pair {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : (0 : ℤ) = 2 - (I.card : ℤ)) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c b)).val
+      ((strictRawModuleTensorConeData A X P Q c).hom I a b 0 hI ha hb hk) (add_zero 0) =
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c a)).val
+
+lemma strictRawModuleTensorConeAugmentationAt_compose {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (strictRawModuleTensorConeAugmentationAt A X P Q c b)).val
+      ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk) (add_zero k) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q c a) k
+```
+
+`RawModuleTensorConeSimplexAugmentation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorConeSimplexAugmentation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    ModuleSimplexAugmentation A (dgAlgebraCategory A ((assocForget A).obj X))
+      (strictRawModuleTensorConeSimplex A X P Q c) ((strictRawModuleProbeFunctor A X).obj P)
+
+lemma strictRawModuleTensorConeSimplexAugmentation_app_weak {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 2)) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+      ((strictRawModuleTensorConeSimplexAugmentation A X P Q c).app i)
+```
+
+
+## §50 同じ実 augmentation による全加群二重 cone 単体
+
+§49 の同じ全合成則を入力にして、同じ dg 加群単体へ指定終端を追加する
+実右 cone の全 HA 方程式を実装した。前面には元の単体をそのまま使い、
+終端への成分には元の閉 augmentation を使う。終端を含まない集合は
+元の前面の HA 方程式へ戻し、終端を含む集合では閉性と同じ全合成則により
+各内部項の削除項・合成項を相殺する。任意の有限部分集合と整数次数を保つ。
+
+strictRawModuleTensorDoubleConeSimplex は、§49 の元の全 cone 単体と実 augmentation
+を同じ右 cone へ代入した実単体である。前面が元の cone 単体であり、
+終端が同じ元の probe である式まで実装した。右 cone や全 HA 方程式を
+存在仮定として置いていない。任意の E への輸送も追加しない。
+
+これは M10 の同じ全三角形に用いる既存の cone 構成と、その前面・終端の法則の
+証明分割であり、一次 ID は追加しない。全二重 cone の全単体作用素に対する
+自然性、slice での全 prism と元の通常 augmentation 円柱との比較、
+同じ導来源への後合成による全三角形、元の augmentation 逆と評価屋根の照合は
+まだ未完である。§49 と合わせた対象ビルド・新規公開宣言だけの監査は、
+§50.1 のとおり同じ一つの impl 整理券で成功した。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+`RightConeClosed.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_differential_last {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    differential A ((moduleRightConeData A D η).hom I a b k hI ha hb hk) = 0
+```
+
+`RightConeComponents.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_hom_ordinary {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b ≠ Fin.last (n + 1)) :
+    HEq ((moduleRightConeData A D η).hom I a b k hI ha hb hk)
+      ((s.toSimplexData.pullback (Fin.last n).predAboveOrderHom).hom I a b k hI ha hb hk)
+
+lemma moduleRightConeData_hom_last {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    HEq ((moduleRightConeData A D η).hom I a b k hI ha hb hk)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (η.app ((Fin.last n).predAboveOrderHom a)) k)
+```
+
+`RightConeData.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+def moduleRightConeObj {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n) (M : ModuleCategory A D)
+    (i : Fin (n + 2)) : RightModule A D
+
+lemma moduleRightConeObj_last {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n) (M : ModuleCategory A D) :
+    moduleRightConeObj A D s M (Fin.last (n + 1)) = (ForgetEnrichment.to (Complex A) M)
+
+lemma moduleRightConeObj_ne_last {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n) (M : ModuleCategory A D)
+    (i : Fin (n + 2)) (hi : i ≠ Fin.last (n + 1)) :
+    moduleRightConeObj A D s M i = s.obj ((Fin.last n).predAboveOrderHom i)
+
+lemma moduleRightConeObj_castSucc {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n) (M : ModuleCategory A D)
+    (i : Fin (n + 1)) : moduleRightConeObj A D s M i.castSucc = s.obj i
+
+def moduleRightConeData {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (RightModule A D) (n + 1)
+```
+
+`RightConeFront.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_front {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) :
+    (moduleRightConeData A D η).pullback Fin.castSuccOrderEmb.toOrderHom = s.toSimplexData
+```
+
+`RightConeFrontEquation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_equation_without_last {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) (I : Finset (Fin (n + 2)))
+    (hl : Fin.last (n + 1) ∉ I) : (moduleRightConeData A D η).Equation I
+```
+
+`RightConeNaturality.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeIndex_recover {n : ℕ} (i : Fin (n + 2))
+    (hi : i ≠ Fin.last (n + 1)) :
+    ((Fin.last n).predAboveOrderHom i).castSucc = i
+
+lemma moduleRightConeIndex_injOn {n : ℕ} (I : Finset (Fin (n + 2)))
+    (b : Fin (n + 2)) (hI : 2 ≤ I.card) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hbl : b ≠ Fin.last (n + 1)) :
+    Set.InjOn (Fin.last n).predAboveOrderHom (I : Set (Fin (n + 2)))
+
+lemma moduleRightConeData_front_compose {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b ≠ Fin.last (n + 1)) :
+    compose A (closedHomEquiv A (RightModule A D) _ _ (η.app ((Fin.last n).predAboveOrderHom b))).val
+      ((s.toSimplexData.pullback (Fin.last n).predAboveOrderHom).hom I a b k hI ha hb hk)
+      (add_zero k) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (η.app ((Fin.last n).predAboveOrderHom a)) k
+```
+
+`RightConeSimplex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_equation_last {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) (I : Finset (Fin (n + 2)))
+    (hl : Fin.last (n + 1) ∈ I) : (moduleRightConeData A D η).Equation I
+
+def moduleRightConeSimplex {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) (n + 1)
+
+lemma moduleRightConeSimplex_data {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) :
+    (moduleRightConeSimplex A D η).toSimplexData = moduleRightConeData A D η
+
+lemma moduleRightConeSimplex_front {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M) :
+    (moduleRightConeSimplex A D η).pullback Fin.castSuccOrderEmb.toOrderHom = s
+```
+
+`RightConeTerminalComposition.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_terminal_compose {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1))
+    (j : Fin (n + 2)) (hj : j ∈ I) (haj : a < j) (hjb : j < b)
+    (hrc : (I.filter (j ≤ ·)).card = 2) :
+    HEq (compose A
+      ((moduleRightConeData A D η).hom (I.filter (j ≤ ·)) j b
+        (2 - ((I.filter (j ≤ ·)).card : ℤ))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_two hj (by rw [hb]; exact I.max'_mem _) hjb)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max (by rw [hb]; exact I.isGreatest_max' _) hjb.le _)
+        rfl)
+      ((moduleRightConeData A D η).hom (I.filter (· ≤ j)) a j
+        (2 - ((I.filter (· ≤ j)).card : ℤ)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_two (by rw [ha]; exact I.min'_mem _) hj haj)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min (by rw [ha]; exact I.isLeast_min' _) haj.le _) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) rfl)
+      (show (2 - ((I.filter (· ≤ j)).card : ℤ)) +
+        (2 - ((I.filter (j ≤ ·)).card : ℤ)) = k + 1 by
+          have := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card hj; omega))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (η.app ((Fin.last n).predAboveOrderHom a))
+        (2 - ((I.filter (· ≤ j)).card : ℤ)))
+```
+
+`RightConeTerminalTerm.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_term_last {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1))
+    (j : Fin (n + 2)) (hj : j ∈ I) (haj : a < j) (hjb : j < b) :
+    (moduleRightConeData A D η).term I a b k hI ha hb hk j hj haj hjb = 0
+```
+
+`RightConeTerminalZero.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleRightConeData_hom_last_zero {n : ℕ}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A D) n} {M : ModuleCategory A D}
+    (η : ModuleSimplexAugmentation A D s M)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) (hk0 : k ≠ 0) :
+    (moduleRightConeData A D η).hom I a b k hI ha hb hk = 0
+```
+
+`RawModuleTensorDoubleConeSimplex.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorDoubleConeSimplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (n + 2)
+
+lemma strictRawModuleTensorDoubleConeSimplex_front {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback Fin.castSuccOrderEmb.toOrderHom =
+      strictRawModuleTensorConeSimplex A X P Q c
+
+lemma strictRawModuleTensorDoubleConeSimplex_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).obj (Fin.last (n + 2)) =
+      ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+```
+
+
+### 50.1 検証と実測
+
+RawModuleTensorDoubleConeSimplex の通常の対象ビルドは成功した。
+この対象が §49・§50 の新しい全二十二ファイルを import する。
+新規公開宣言 47 本の依存公理監査も成功し、すべて
+propext・Classical.choice・Quot.sound の範囲である。
+引用属性の新規追加はなく、引用出力は 0 本。impl 鍵・待ち 3600 秒、
+gtimeout 280 秒の同じ一つの実行で対象ビルドと小さい監査を行い、
+プロセスの終了値 0 を確認した。root ビルドや大きい監査は実行していない。
+
+| 区分 | 新規 Lean ファイル | 行数 | 明示宣言 |
+| --- | ---: | ---: | ---: |
+| §49 の全 augmentation・型の記録と実代入 | 11 | 664 | 24 |
+| §50 の右 cone・同じ実二重 cone | 11 | 579 | 23 |
+| 今回の追加 | 22 | 1,243 | 47 |
+
+private の新規宣言は 0 本。§48.1 の累計に加え、検証済み累計は
+162 ファイル・13,362 行・明示宣言 611 本（private 9 本）。
+現作業木の M15 所有ソースを再計数し、同じ値と確認した。
+17,000 行の外枠まで残り 3,638 行である。
+今回、200 行を超える証明はない。一次 ID は追加していない。
+
+元の実 augmentation の全次数の合成則と各成分の擬同型性、
+全再添字の各成分の移送、元の実 cone 単体への同じデータの代入、
+同じ右 cone の全 HA 方程式・前面の厳密な一致、
+同じ実二重 cone の前面と元の終端まで検証した。
+通常辺の証明では、依存する式全体への始点の置換を有限添字の帰納法へ変更し、
+全次数のまとめでは、Hom end を展開する書き換えを元の等式の直接の合成へ変更した。
+200,000 heartbeat の既定上限は増やしていない。
+
+次は、この同じ全二重 cone の全単体作用素に対する自然性、
+元の全 slice prism と同じ通常 augmentation 円柱との比較を作る。
+同じ導来源へ後合成した全三角形、元の全 augmentation 逆・評価屋根との一致、
+元の K の全 Hom 誘導射の照合・同値性・完全忠実性、指定 fiber と native な辺・全族は
+まだ未完である。M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
