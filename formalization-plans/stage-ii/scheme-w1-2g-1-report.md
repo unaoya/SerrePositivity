@@ -1119,3 +1119,42 @@ G1・G2共用部品込み本体 **7,157 行**、入口込み **7,287 行**。一
 一般の固有模型の B01 と、同じ段での固有性・全射性 B02、被覆模型の実際の filtered 図式 B03・B04 は引き続き未完。固有性の有限段への移送081Fと、一般の固有射の近似0A0Pの型を維持する。
 
 一覧：済み 10／全体 14（うち追加 5）。
+
+
+B01 の貼り合わせの Cartesian 比較の法則（着手前の型、見込み120〜300行）：D:Scheme.GlueData、元の X の同じ添字 D.J による開被覆 Uᵢ→X、局所比較 aᵢ:Uᵢ→D.U i と、元の二重交叉 Uᵢ×ₓUⱼ→D.V(i,j) を入力する。二重交叉の第一射影・aᵢ・D.f i j の正方形が Cartesian、第二射影は D.t i j と両立するとき、`gluingAtlasMap` は実際の X→D.glued を作る。`gluingAtlasMap_preimage_opensRange` は D の各チャートの逆像が元の開そのもの、`isPullback_gluingAtlasMap_chart` は元の各開包含との正方形の Cartesian 性を返す。さらに元の f:X→T、g:T→S、D の構造射 pᵢ:D.U i→S について各 aᵢ が基底上 Cartesian なら、`isPullback_gluingAtlasMap_toBase` は全体の正方形も Cartesian と返す。既存の gluing・開包含・pullback の法則で、親項目を増やさない。二重交叉の模型の存在とこれらの入力を実際の有限段から供給する部分は別に残す。
+
+
+B01 の gluing datum の有限個の法則への分割（着手前の型、見込み150〜400行）：Uᵢ、Vᵢⱼ、開埋め込み fᵢⱼ:Vᵢⱼ→Uᵢ、対角 fᵢᵢ の同型性、tᵢⱼ:Vᵢⱼ→Vⱼᵢ と tᵢᵢ=id、tᵢⱼ≫tⱼᵢ=id を入力する。三重交叉 Cᵢⱼₖ=Vᵢⱼ×[Uᵢ]Vᵢₖ から Vⱼₖ への Lᵢⱼₖ があり、L≫fⱼₖ=pr₁≫tᵢⱼ≫fⱼᵢ と、L≫tⱼₖ≫fₖⱼ=pr₂≫tᵢₖ≫fₖᵢ が成立するとき、`openTransitionGlueData` は実際の Scheme.GlueData を作る。`openTransitionTripleMap` は (L,pr₁≫tᵢⱼ) の pullback lift で、`openTransitionTripleMap_cycle` はその三重の合成が恒等射であることを、二つの射影と開埋め込みの mono 性で証明する。既存の gluing の構造を、同じ有限段へ降ろせる有限個の射と等式から組み立てる法則で、親項目は増やさない。
+
+
+B01 の実際の係数図式への接続の法則（着手前の型、見込み100〜220行）：`exists_coefficient_spec_factor_of_fg` は A⊆R が k 上有限生成なら、具体的な係数図式のある段 s と Spec(k[s])→Spec A、元の Spec R の射影との合成が同じ包含 Spec R→Spec A に一致することを返す。`cartesianCompositeStageCone` は、元のチャート X から模型 Y と Spec R への実際の Cartesian な比較を入力し、既存の合成係数の底変換図式の極限 cone の頂点を元の X そのものに保つ。実際の IsLimit・二つの射影の可換式・各射影の Cartesian 性も返す。係数模型・底変換・比較同型の法則で、親項目は増やさない。これにより元のチャートの重なりの開を、既存の有限個の開の降下へ直接渡す。
+
+
+同じ三重交叉の構成の法則（見込み40〜100行）：`openTransitionTripleLift` は、pr₁≫tᵢⱼ≫fⱼᵢ の像が fⱼₖ の像に入るという有限個の開の包含から、IsOpenImmersion.lift で実際の Lᵢⱼₖ を作る。`openTransitionTripleLift_fac` はその可換式、`openTransitionGlueDataOfRange` はこの実際の lift を前記の gluing datum の構成へ渡す。三重交叉の射の存在を別入力にせず、有限段で満たす開の包含へ帰着する法則で、親項目は増やさない。
+
+
+### B01：貼り合わせの実際の Cartesian 比較と有限個の式からの gluing datum
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| AtlasGluingMap | 95 | `gluingAtlasCover`：模型 D と同じ添字で元の X の実際の開被覆を保持 |
+| 同上 | 同上に含む | `gluingAtlasMap_compat`：二重交叉の模型の可換式から局所比較の貼り合わせ条件を得る |
+| 同上 | 同上に含む | `gluingAtlasMap`：元の局所比較を貼り合わせた実際の X→D.glued |
+| 同上 | 同上に含む | `gluingAtlasMap_ι` と生成した `_assoc`：各元の開で指定した比較射に一致 |
+| 同上 | 同上に含む | `gluingAtlasMap_preimage_range`：各模型チャートの像の逆像は元の対応する開の像そのもの |
+| 同上 | 同上に含む | `gluingAtlasMap_preimage_opensRange`：同じ逆像の等式をスキームの開として保持 |
+| 同上 | 同上に含む | `isPullback_gluingAtlasMap_chart`：元の各開包含と模型のチャートの比較は Cartesian |
+| AtlasGluingBaseChange | 49 | `isPullback_gluingAtlasMap_toBase`：各チャートの基底上の Cartesian な比較から、貼り合わせ全体の実際の IsPullback を得る |
+| OpenTransitionGlueData | 95 | `openTransitionTripleMap`：三重交叉の射を二つの実際の射の pullback lift として作る |
+| 同上 | 同上に含む | `openTransitionTripleMap_fst` と `_assoc`：第一射影は指定した L |
+| 同上 | 同上に含む | `openTransitionTripleMap_snd` と `_assoc`：第二射影は pr₁≫tᵢⱼ |
+| 同上 | 同上に含む | `openTransitionTripleMap_cycle`：遷移の逆と三重交叉上の式から、実際の triple map の三重合成が恒等射と示す |
+| 同上 | 同上に含む | `openTransitionGlueData`：有限個の射・対角・逆・三重交叉上の式から実際の Scheme.GlueData を構成 |
+
+本体 **239 行**、入口 3 行。直接 importer AlgebraicGeometry までの対象ビルド **4,919 ジョブ成功**。三モジュールの小監査は補助宣言込み **27 宣言・標準三公理のみ**（内訳11・1・15）。元の開の逆像は、元の二重交叉と模型の二重交叉の Cartesian 性から点の持ち上げを使って証明した。全体の Cartesian 比較を追加仮定にしていない。ここで入力している実際の重なりの模型・有限個の法則を有限段で成立させる存在の部分は次に残る。
+
+G1・G2共用部品込み本体 **7,396 行**、入口込み **7,529 行**。一般の有限表示対象の係数模型の分割は **734 行**まで検証。B01〜B04 は未完、2g-1 の停止点ではない。約12,000行の途中報告点・25,000行の外枠には未到達。200行を超える宣言はない。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-atlas-gluing-batch-check-3.log`、`2g-atlas-gluing-native.log`、`2g-atlas-gluing-audit.log`。
+
+一覧：済み 10／全体 14（うち追加 5）。
