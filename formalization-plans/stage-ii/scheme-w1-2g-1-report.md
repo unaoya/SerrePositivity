@@ -1708,3 +1708,17 @@ C04(c) の固定した affine な射への適用（着手前の型、見込み80
 G1・G2共用部品込み本体10,967行、入口込み11,154行。C04 は本体551行まで検証。固定した affine な射の底変換への適用は未検証の下書きとして作業木に置き、実測に含めない。一般の閉埋め込み性と固有性の降下、被覆模型・図式の整合性は残り、C04 と B01〜B04 は未完。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+C04(d) の二段の底変換の法則（着手前の型、見込み40〜100行）：`pullbackCompositeMap` は f:X→S、g:T→S、h:V→T と h≫g=b に対し、実際の `pullback f b → pullback f g` を作る。`isPullback_pullbackCompositeMap` はこの射と二つの第二射影・h の正方形が Cartesian であることを返す。`isClosedImmersion_pullback_snd_of_composite` は f の g による底変換が閉埋め込みなら、合成 b による底変換も閉埋め込みと返す。有限 affine 被覆での極限の制限に使う既存の底変換の法則で、親項目を増やさない。
+
+
+### C04(c)：固定した affine な射の実際の底変換の閉埋め込み性の降下
+
+`AffineClosedPullbackLimit`（69行）：`compositeStageBaseProjection` は実際の底変換図式の第一射影を自然変換に束ねる。`exists_closedImmersion_pullback_of_isLimit_of_affine` は affine なスキームの cofiltered 図式の段への affine な源からの局所有限型の射について、極限での実際の底変換の閉埋め込み性を、ある後段での同じ底変換へ降ろす。元の頂点を保つ実際の極限と Cartesian 正方形、pullback の比較同型を使う。
+
+本体69行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,974ジョブ成功。小監査4宣言・標準三公理のみ。単独 module のビルドに必要な cofiltered 図式の連結性の局所 instance を明示し、同じソースから下書きの単独検証・対象ビルド・小監査を終了状態0で完了した。恒等射の合成を消す箇所では、依存する pullback の型を既存の比較同型で照合した。公開ソース・下書き・検証束の完全一致を確認済み。ログ `2g-affine-closed-pullback-limit-check-4.log`・`2g-affine-closed-pullback-limit-native-2.log`・`2g-affine-closed-pullback-limit-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,036行、入口込み11,224行。C04 は本体620行まで検証。一般の標的の有限 affine 被覆上での降下と貼り合わせ、一般の固有性の降下、被覆模型・図式の整合性は残り、C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。
