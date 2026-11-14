@@ -1623,3 +1623,7 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelRefinement
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelFinal
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelStages
+
+public import SerrePositivity.AlgebraicGeometry.PrimeFieldVCoverFilteredModel
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverCechColimit

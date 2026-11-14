@@ -2850,3 +2850,18 @@ B04 の conerve の自然な比較（着手前の型、見込み40〜100行、�
 G1・G2共用部品込み本体16,650行、入口込み16,925行。素体への移送と conerve の自然な比較、B02 の出口の照合は残り、B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+B04 の比較の法則の分割：`coefficientVCoverModelCechDiagram_hasColimit` は Mathlib の comma 圏と定値関手の余極限のインスタンスを、この実際の conerve 図式に渡す（見込み10〜30行）。増大余単体圏の定義を型で明示し、余極限の存在を新たな仮定にしない。
+
+
+### B03・B04：有限型 F_p の被覆模型と増大 Čech 図式全体の比較
+
+`PrimeFieldVCoverFilteredModel`（71行）：`exists_primeField_vCover_filtered_model` は任意の F_p-代数 R、環 C、affine v 被覆 f:R→C を、同じ宇宙の小さい filtered な実際の環写像の図式と元の f を頂点とする cocone の余極限に表す。各段の両環は有限型 F_p かつ Noether、射は F_p と可換な有限表示 v 被覆。ULift による宇宙の移送を行い、零環を許し、元の R の Noether 性や元の f の有限表示性を要求しない。
+
+`CoefficientVCoverCechColimit`（55行）：`coefficientVCoverModelCechDiagram`・`coefficientVCoverModelCechCocone` は実際の増大 Čech conerve 図式と元の conerve を頂点とする cocone。`coefficientVCoverModelCechDiagram_hasColimit` は既存の comma-colimit の供給。`coefficientVCoverModelCechCoconeIsColimit` は conerve の既存の左随伴性による余極限保存。`coefficientVCoverModelCechComparison` は面・退化・増大写像を同時に保つ、増大余単体環の圏での比較同型。B1 の完全性の定理は再実装していない。
+
+本体126行・入口2行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,066ジョブ、小監査12宣言（4・8）・標準三公理のみ、終了状態0。Čech 比較の最初の失敗は不要な未ビルドの HA import を直接使う Mathlib の conerve に絞り、増大余単体圏の comma-colimit を明示して解消。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は各検証中だけ `--class impl --wait 3600`。ログ `2g-prime-field-vcover-filtered-model-check.log`・`2g-coefficient-vcover-cech-colimit-check-4.log`・`2g-prime-field-vcover-cech-native.log`・`2g-prime-field-vcover-cech-audit.log`。
+
+G1・G2共用部品込み本体16,776行、入口込み17,053行。B02〜B04 の出口の照合と停止点のまとめは次の記録で行う。
+
+一覧：済み14／全体17（うち追加8）。
