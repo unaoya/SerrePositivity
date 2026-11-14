@@ -14,6 +14,26 @@ def update(comment,path):
  elif '/Semiperfectoid/' in path:
   comment=re.sub(r'(?<![A-Za-z0-9_])E3(?![A-Za-z0-9_.-])','任意添字の包絡の構成',comment)
  comment=re.sub(r'\bexisting G2\s+principal','existing principal',comment);comment=re.sub(r'\bG2 comparison\b','completion comparison',comment);comment=re.sub(r'\bG2 completed\b','completed',comment)
+ # Explicit stale descriptions identified by R8-9/R10-7; comments only.
+ replacements={
+ '冪零還元からの純性・平坦性の既存判定 冪零還元からの純性・平坦性の判定 へ':'冪零還元からの純性・平坦性の既存判定へ',
+ '導来 perfectoid 化の界面 界面':'導来 perfectoid 化の界面',
+ '導来 perfectoid 化の界面 の':'導来 perfectoid 化の界面の',
+ '導来 perfectoid 化の界面 から':'導来 perfectoid 化の界面から',
+ '整代数の離散性と普遍性 の界面依存版。旧 Inputs の置換は別工程。':'整代数の離散性と普遍性を界面の存在から導く公開入口。',
+ '環の excision の比較′。旧二入力の置換と CLMST への付け替えは別工程。':'指定普遍環から環の excision を導く。',
+ 'PerfectoidizationInterface/Excision':'Perfectoidization/Interface/Excision',
+ 'CLMST の `finiteComparison_excision`（Prop 2.4.7 の証明）は同じ述語の別証明で、論文側の統合で一本にする。':'比較写像の Tor 消滅を CLMST の Prop 2.4.7 と Prop 2.4.9(a) へ渡す。',
+ '導来版は A7（原典どおりなら Δ の対称モノイダル性から）。':'ここでは環の比較を述べる。E∞ 代数の版は Δ の対称モノイダル性を用いる別の構成である。',
+ '旧 `CommutativeAlgebra/Perfectoidization`（BS の存在定理を使うので 2a で BS の下へ移した）。入口 `Inputs/Perfectoidization` の扱いは BS セッションと調整する。':'BhattScholze の整代数の存在定理を直接使い、普遍環とその単位を選ぶ。',
+ '`Inputs.exists_perfectoidization_of_finite`':'`SerrePositivity.BhattScholze.exists_perfectoidization_of_finite`',
+ '`Inputs/Perfectoidization.lean` と `Inputs/ArcExcision.lean` が界面を取り出し、':'`Perfectoidization/Interface/IntegralExistence.lean` と `Perfectoidization/Interface/Excision.lean` が界面を取り出し、',
+ 'almost 比較、SerrePositivity/Inputs/Perfectoidization。':'almost 比較、有限代数の perfectoid 化の選択。',
+ 'Corollary 8.11、Corollary 8.12（p.69）':'Corollary 8.12（p.69）',
+ 'BS 著者版 Proposition 8.10 の arc 降下から BS 著者版 Corollary 8.11、BS 著者版 Corollary 8.12 の E∞-S 代数の引き戻しへ進み、':'BS 著者版 Proposition 8.10 の arc 降下と Corollary 8.12 の E∞-S 代数の引き戻しから、',
+ '（計画 §8.2.2 では持ち上げの def に直す候補）':'（一意存在から選んだ比較データ）'
+ }
+ for old,new in replacements.items():comment=comment.replace(old,new)
  return comment
 rows=[]
 for root in ['Semiperfectoid','Andre','Perfectoidization','Almost','PerfectoidIdeal','IntegralPerfectoidization']:

@@ -17,6 +17,7 @@ for m in closure:
  if p in status['files']:
   row=status['files'][p];text=(W/'rewritten'/row['target']).read_text();assert hashlib.sha256(text.encode()).hexdigest()==row['preview_sha256']
  else:text=imports((R/p).read_text())
+ text=imports(text)
  if target in splitplan['files']:text=(W/'split-bundle'/(target.replace('.','/')+'.lean')).read_text();assert hashlib.sha256(text.encode()).hexdigest()==splitplan['files'][target]
  if target!=m:deleted.add(p)
  files[target]=text
@@ -27,7 +28,7 @@ for row in json.loads((W/'r82-consumers.json').read_text()):
  m=row['path'][:-5].replace('/','.');dest=modulemap.get(m,m);text=files[dest];old='public import '+modulemap['SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface'];new='public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface';assert text.count(old)==1,(dest,old);files[dest]=text.replace(old,new)
 # The two §10 consumers need only the extracted elementary reduced-ring lemma.
 for m in ['SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison','SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion']:
- dest=modulemap.get(m,m);text=files[dest];old='public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit';assert text.count(old)==1,dest;files[dest]=text.replace(old,'public import SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator')
+ dest=modulemap.get(m,m);text=files[dest];old='public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit';assert text.count(old)==1,dest;files[dest]=text.replace(old,'public import SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator\npublic import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion'+('\npublic import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons' if m.endswith('.IntegralClosureCompletion') else ''))
 # BS-specific specializations belong in the BS aggregate, preserving all declaration names.
 einf='SerrePositivity.EInfinity';bs='SerrePositivity.BhattScholze';bs_special=[r['new_module'] for r in json.loads((D/'module-map.proposed.json').read_text())['rows'] if r['old_module'].startswith('SerrePositivity.EInfinity.Perfectoidization.')];removed=[]
 for n in bs_special:
