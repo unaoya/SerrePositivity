@@ -2145,3 +2145,91 @@ main 取り込み前に残り 10 ファイルを、指定共有鍵の下で 280 
 その阻害は解消した。M15・G12 自体の完成とは区別し、ここから M15 の続きへ戻る。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 14. M15 再開：同じ自由局所化の全係数自然性（11-14）
+
+B4 は §13・`735c38752` で完了したので、保持していた下書き二つの検証へ戻る。
+M10 の同じ相対局所化の係数移送の法則として、既存の自由 hammock の全 Hom 作用を
+豊穣関手・同じ Kan 化・全 coherent nerve へ束ねる。
+元の左右比較の可換正方形を全 nerve の等式にし、同じ augmentation の逆の
+既存の選択を通して、局所化の源の写像との全関手間の自然性を回収する。
+全単体を保持し、頂点ごとの同型の族だけにはしない。
+
+以下が今回検証する実際の型。新しい一次 ID は追加せず、既存の係数移送・自然性・
+貼り合わせの証明の分割として扱う。共通文脈は `C D : RelativeCategory.{u}`、`F : C ⟶ D`。
+
+`SerrePositivity/EInfinity/Modules/FreeHammockCoefficientNerve.lean`：
+
+```lean
+def freeHammockCoefficientEnriched :
+    EnrichedFunctor SSet.{u} (FreeHammockObjects C) (FreeHammockObjects D)
+
+def kanFreeHammockCoefficientFunctor :
+    EnrichedFunctor SSet.{u} (KanFreeHammockCategory C) (KanFreeHammockCategory D)
+
+def kanFreeHammockCoefficientNerve : kanFreeHammockNerve C ⟶ kanFreeHammockNerve D
+
+lemma kanFreeHammockCoefficient_augmentation :
+    (kanFreeHammockCoefficientFunctor F).comp SSet (kanFreeHammockAugmentationFunctor D) =
+      (kanFreeHammockAugmentationFunctor C).comp SSet (relativeKanHammockFunctor F)
+
+lemma kanFreeHammockCoefficient_comparison :
+    (kanFreeHammockCoefficientFunctor F).comp SSet (kanFreeHammockComparisonFunctor D) =
+      (kanFreeHammockComparisonFunctor C).comp SSet (kanLocalizationEnrichedMap F)
+
+lemma kanFreeHammockCoefficientNerve_augmentation :
+    kanFreeHammockCoefficientNerve F ≫ kanFreeHammockAugmentationNerve D =
+      kanFreeHammockAugmentationNerve C ≫ relativeKanHammockNerve F
+
+lemma kanFreeHammockCoefficientNerve_comparison :
+    kanFreeHammockCoefficientNerve F ≫ kanFreeHammockComparisonNerve D =
+      kanFreeHammockComparisonNerve C ≫ localizationNerveMap F
+```
+
+`SerrePositivity/EInfinity/Modules/LocalizationSourceNaturality.lean`：
+
+```lean
+def kanHammockLocalizationCoefficientIso :
+    FunctorIso (relativeKanHammockNerve F ≫ (kanHammockLocalizationEquivalence D).hom)
+      ((kanHammockLocalizationEquivalence C).hom ≫ localizationNerveMap F)
+
+def localizationNerveSourceNaturalityIso :
+    FunctorIso (localizationNerveSourceMap C ≫ localizationNerveMap F)
+      (nerveMap F.functor ≫ localizationNerveSourceMap D)
+```
+
+文献属性は、coherent nerve の作用を HTT Definition 1.1.5.5 の `component`、
+同じ全関手間の比較を HTT §1.2.7 の `component` として、各宣言に対応範囲を記す。
+Definition 1.1.5.5 の原文は [HTT 原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf)
+で確認した。一般の局所化の普遍性をこれらの宣言で証明したという属性にはしない。
+
+この自然性ができても、指定弱自然変換の成分の辺との全照合、
+半自由 native fiber の比較と全族の native cocartesian 性は引き続き必要。
+M10 の完了には数えていない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 14.1 検証済みの結果と実測
+
+二つのモジュールの正規 Lake 対象ビルドが、指定の共有鍵の下で通過した。
+同じ自由局所化の Kan 豊穣係数関手、左右の全 nerve 正方形、
+`kanHammockLocalizationCoefficientIso` と `localizationNerveSourceNaturalityIso` を
+全て実際の型で構成できた。型指定・宇宙指定を明示し、元の全 Hom 写像は保持した。
+
+公開 9 宣言の `#print axioms` と、その同じ 9 宣言の文献属性の環境検査を、
+別の共有鍵の組で行い、終了コード 0。実出力の宣言名集合・件数が一致し、
+依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+`sorryAx`・追加公理はない。全 9 件に HTT の `component` 属性が一件ずつ登録され、
+番号は 7 件が `1.1.5.5`、2 件が `1.2.7` と確認した。
+
+今回の追加は新規 Lean 2 ファイル・181 行・9 宣言（公開）。
+`FreeHammockCoefficientNerve.lean` が 110 行・7 宣言、
+`LocalizationSourceNaturality.lean` が 71 行・2 宣言。
+200 行を超える補題はない。
+累計は新規 Lean **32 ファイル・3,000 行・169 宣言（private 3 を含む）**。
+既存構成の係数移送・自然性・貼り合わせの法則の分割なので一次 ID の追加はない。
+
+B4 追従は §13 で完了済み。M15 は再開しているが、M10 の native fiber・
+cocartesian 性、相対テンソル、RHom・完備反射・完備テンソルと G12 は引き続き未完。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
