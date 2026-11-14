@@ -1537,3 +1537,5 @@ public import SerrePositivity.AlgebraicGeometry.PrimeFieldProperCoefficientModel
 public import SerrePositivity.AlgebraicGeometry.ProperSurjectiveCoefficientModel
 
 public import SerrePositivity.AlgebraicGeometry.CommonCoefficientSchemeModels
+
+public import SerrePositivity.AlgebraicGeometry.IntegralClosedFlatModelWitness

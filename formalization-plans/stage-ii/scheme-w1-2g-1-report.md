@@ -2341,3 +2341,22 @@ B03 の一般の有限表示 affine v 被覆からの平坦模型の証人（着
 G1・G2共用部品込み本体13,713行、入口込み13,945行。細分の有限個の射と可換式への接続、構成された平坦模型の証人の供給・有限型 F_p の被覆模型と filtered 整合性は残る。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+固定の平坦模型の証人の後の、B02・B03 の接続の型（着手前、見込み350〜800行、既存の見込みの内数）：まず有限型 ℤ-代数 A と局所有限表示 p:Y→Spec A について `terminal.from Y` が局所有限表示であることを示す（基底の整数環は必要なら ULift ℤ を使い、スキームの宇宙を保つ）。この既存の係数移送・合成の法則により、B01 で得た固有模型の実際の極限から β:T→Y₀ を有限係数段へ因子化できる。そこで固定の q₀ の底変換を取り、既存の `exists_surjective_flat_stage_factor` を使って、全射性と元の有限表示対象への細分の射・基底上の可換式を同じ後段へそろえる。各段の平坦性は最初から固定した q₀ の底変換なので保たれる。
+
+この経路が閉じれば、一般の平坦射を任意の模型へ降ろす新しい定理を仮定する必要がなく、G1 の同じ構成で選んだ証人を使う。元の affine v 被覆から固定の q₀ を供給すること、β の因子化と l の因子化を同じ係数段で実際に実装すること、元の模型の射が v 被覆になること、最後に必要な filtered 図式と全ての面・退化・増大写像との比較を閉じることはなお完成条件である。最終の `AugmentedRingCechExact` の型を変更しない。
+
+
+B03 の上記の整数係数の法則を、`locallyOfFinitePresentation_to_terminal_of_integer_model` として実装する（着手前、見込み60〜140行、前記350〜800行の内数）：有限型 ℤ-代数 A と局所有限表示 p:Y→Spec A から `LocallyOfFinitePresentation (terminal.from Y)` を返す。`FiniteTypeIntRingColimitFactor` と同じ ULift ℤ・有限型から有限表示への係数移送を使い、終対象との canonical な同型で構造射を照合する。Y の固有性や元の R の Noether 性は不要。既存の係数移送と合成の法則として親項目を増やさない。
+
+
+### B03：G1 の最後の整全射の接続で、固定の平坦模型を保持
+
+`IntegralClosedFlatModelWitness`（84行）：`exists_proper_flat_model_witness_of_integral_closed_model` は既存の G1 と同じ実際の入力・同じ有限段を使い、固定の q₀ に沿う標準の pullback、その全射性、固有全射 r:T→Spec R、β:T→Y₀、元の対象への射と可換式を保持する。二段の模型の射影を単なる Flat の証明に隠さず、q₀ の実際の底変換として返す。
+
+本体84行・入口1行。pullback の実際の型と同型の可換式を明示して単独検証を完了。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,020ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-integral-closed-flat-model-witness-check-2.log`・`2g-integral-closed-flat-model-witness-native.log`・`2g-integral-closed-flat-model-witness-audit.log`。
+
+G1・G2共用部品込み本体13,797行、入口込み14,030行。一般の affine v 被覆から固定の平坦模型の入力そのものを供給する接続は下書きで、B03 の完成とはしない。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
