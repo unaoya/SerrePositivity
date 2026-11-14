@@ -787,3 +787,11 @@ IdealModelRestrictionComparison **41 行**、FiniteTypeIdealLimitModel **66 行*
 C03 は **3／3 完了**。C03 本体は **494 行**、入口 8 行、計 **502 行**（当初見込み1,300〜3,400行内）。C02 の部分イデアルの延長を共用して縮めた。C03 各束の小監査は計 **20 宣言・標準三公理のみ**。G1 共用部品込み本体 **4,677 行**、入口込み **4,766 行**。2g-1 の12,000行の途中報告点・25,000行の外枠には未到達。A07 の一般の基底と G2 は未完で、細分の周辺模型・因子化・全射性を同じ段へ移す接続を続ける。一般の Rydh 3.10 の完成とは呼ばない。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 の周辺模型への接続の次の型つきの法則（見込み 100〜260 行）：`stageBaseChangeDiagram D i p : Over i→Scheme` は p:Y→D(i) を各段へ実際に底変換する図式。`stageBaseChangeCone` の頂点は pullback(c.π.app i)p。`isLimit_stageBaseChangeCone` は cofiltered な元の実際の IsLimit から底変換後の実際の IsLimit を得る。`isPullback_stageBaseChangeDiagram_map` は遷移射と第一射影の Cartesian 性。遷移射の affine 性、各段の準コンパクト性・準分離性を元の図式と p の準コンパクト性・準分離性から渡す。Over.pullback の連結極限の保存と底変換の法則であり、新しい親の存在項目は足さない。C03 をこの周辺図式に適用し、整拡大後の閉包絡を有限段に降ろす用途。
+
+C03 の閉部分スキームへの比較を検証：FinitePresentationClosedLimitModel **33 行**、入口 1 行。上記 `exists_finitePresentation_closed_model_of_isLimit` が実際の底変換同型と第一射影の可換式まで返す。対象ビルドは直接の importer AlgebraicGeometry まで **4,876 ジョブ成功**、小監査 **1 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-c03-closed-model-check.log`、`2g-c03-closed-model-native.log`、`2g-c03-closed-model-audit.log`。
+
+この追加の比較を含め C03 関連は本体527行＋入口9行、G1 共用部品込み本体 **4,710 行**、入口込み **4,800 行**。A07・G2 は未完のまま。
+
+一覧：済み 9／全体 14（うち追加 5）。
