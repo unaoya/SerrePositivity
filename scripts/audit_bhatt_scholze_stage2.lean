@@ -1130,6 +1130,13 @@ import SerrePositivity.EInfinity.Modules.RelativeCylinderLaws
 import SerrePositivity.EInfinity.Modules.RelativeLocalizationEquivalence
 import SerrePositivity.EInfinity.Modules.RelativeNaturalComparison
 import SerrePositivity.EInfinity.Modules.ThickTensorIdeal
+import SerrePositivity.BhattScholze.Prism.Basic.Category
+import SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded
+import SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite
+import SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall
+import SerrePositivity.BhattScholze.Semiperfectoid.Basic
+import SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded
+import SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates
 
 /-!
 概要：段階 II で BS の drafts から本体へ移したモジュールを公理監査する。
@@ -2271,7 +2278,14 @@ run_cmd do
     `SerrePositivity.EInfinity.Modules.RelativeCylinderLaws,
     `SerrePositivity.EInfinity.Modules.RelativeLocalizationEquivalence,
     `SerrePositivity.EInfinity.Modules.RelativeNaturalComparison,
-    `SerrePositivity.EInfinity.Modules.ThickTensorIdeal]
+    `SerrePositivity.EInfinity.Modules.ThickTensorIdeal,
+    `SerrePositivity.BhattScholze.Prism.Basic.Category,
+    `SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded,
+    `SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite,
+    `SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Basic,
+    `SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded,
+    `SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates]
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
