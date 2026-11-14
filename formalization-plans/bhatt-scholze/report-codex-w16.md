@@ -23239,3 +23239,101 @@ L21をこの範囲で閉じても残り外枠は322〜572行。
 外枠は自分では上げず、次の接続が超えそうな所で検証済みをコミットして停止する。
 L22以降やMayのtop計算、完備化後P⁰の未評価分を消した見積もりにはしない。
 完備化の三案の比較は§380のまま。指定Frobeniusとの比較は未解決で、仮定を追加していない。
+
+## 399. L21の同じDold–Kan射影の反対圏移送（実装前の型）
+
+一覧：済み 22／全体 48（うち追加 4）
+
+§398.1の経路を型に落とす。同じ余単体的対象を反対圏のsimplicial対象で読み、
+既存PInftyとhomotopyPInftyToIdを運ぶ。指定した全σ核と包含は変更しない。
+σ_comp_PInftyで像が核に入ること、degeneraciesVanish_iff_QInfty_f_compと
+PInfty_f_add_QInfty_fで核上の恒等性を判定する。
+全てL21の既存射影の係数移送・法則・貼り合わせの証明分割。新しいIDは足さない。
+各証明200行以内。残り外枠872行、L21の見込み300〜550行。
+
+```lean
+def dualSimplicial (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    SimplicialObject ((ModuleCat A)ᵒᵖ)
+def dualAlternatingIso (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    ((AlgebraicTopology.alternatingFaceMapComplex ((ModuleCat A)ᵒᵖ)).obj (dualSimplicial A X)).unop ≅
+      (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X
+
+def cofaceProjectorNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X ⟶
+      (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X
+lemma cofaceProjectorNat_f (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    (cofaceProjectorNat A X).f q =
+      ((AlgebraicTopology.DoldKan.PInfty (X := dualSimplicial A X)).f q).unop
+def cofaceProjectorNat_homotopy (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    Homotopy (cofaceProjectorNat A X) (𝟙 _)
+
+lemma cofaceProjectorNat_mem (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : X.obj ⦋q⦌) : (cofaceProjectorNat A X).f q a ∈ normalizedSubmodule A X q
+lemma cofaceProjectorNat_normalized (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : normalizedSubmodule A X q) : (cofaceProjectorNat A X).f q a.val = a.val
+
+def normalizationRetractionNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X ⟶ normalizedCochainNat A X
+lemma normInclusionNat_retraction (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    normInclusionNat A X ≫ normalizationRetractionNat A X = 𝟙 _
+lemma normalizationRetractionNat_inclusion (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    normalizationRetractionNat A X ≫ normInclusionNat A X = cofaceProjectorNat A X
+
+def normalizationHomotopyEquivNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    HomotopyEquiv (normalizedCochainNat A X)
+      ((AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X)
+def normalizationHomotopyEquiv (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    HomotopyEquiv ((normalizedCochainFunctor A).obj X) ((unnormalizedCochainFunctor A).obj X)
+lemma normalizationHomotopyEquiv_hom (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (normalizationHomotopyEquiv A X).hom = normInclusion A X
+```
+
+## 400. L21の指定正規化包含のホモトピー逆（検証済み、取り込み点）
+
+一覧：済み 23／全体 48（うち追加 4）
+
+`normalizationHomotopyEquiv`を全整数の同じ複体について構成した。
+`normalizationHomotopyEquiv_hom`はrflで、homはL20の元のnormInclusionそのもの。
+別の比較射への変更や、擬同型の存在だけへの弱めはしていない。
+
+同じ対象を反対圏のsimplicial対象で読み、既存PInftyとhomotopyPInftyToIdを移した。
+σ_comp_PInftyから像が全σの核に入ることを示し、
+degeneraciesVanish_iff_QInfty_f_compとPInfty+QInfty=1から同じ核上の恒等性を得た。
+その射影を元の核へ制限して逆射を作り、包含との一方の合成は厳密な恒等、
+もう一方は元の同じ射影と厳密に一致。既存ホモトピーを後者へ接続した。
+自然数複体から既存Homotopy.extendで同じembeddingUpNatの零延長へ送っている。
+一般余単体的A加群の全次数の主張で、有界性・有限次元性などの追加仮定なし。
+新しい収縮やG10・native Totの部品は作っていない。
+
+登録対象：SerrePositivity.EInfinity.CosimplicialNormalization の下
+
+- DualProjector（75行）
+- ProjectorKernels（64行）
+- NatHomotopyEquiv（74行）
+- IntegerHomotopyEquiv（43行）
+
+今回256行、M14実測30,384行、外枠31,000行まで616行。
+見込み300〜550行との差は44〜294行減。既存の退化消滅の同値とP+Qの恒等式を直接使い、
+新しい射影・ホモトピーの再構成を省けた分。
+対象ビルド1936 jobs成功、追加警告0。
+小さい監査4モジュール30宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+
+### 400.1 L22の入力の確認と次の外枠
+
+次はL22のconvolutionの等化子の関手性。元の
+SerrePositivity.Cosimplicial.CosimplicialAlgebra Aは
+`CosimplicialObject (Under (CommRingCat.of A))`であることを確認した。
+CommAlgCat値だけへ範囲を変更しない。各項の離散BE代数には、既存の
+`(commAlgCatEquivUnder (CommRingCat.of A)).inverse`の後に
+BarrattEccles.discreteAlgebraFunctor Aを用いる経路が既に本体にある。
+
+P・Qの元の全次数の積には、Functor.pi'とLimits.Pi.functorを組み合わせれば
+対象ごとの積と同じ射を保った関手を作れる。
+後合成には既存convolutionFunctor、前合成の自然性にはconvolutionPreNatが使える。
+L22の新規は従来の140〜260行程度を入口とするが、未検証の見込みであり、
+全等化子や評価・復元ができたとはしていない。
+これを閉じても残りは356〜476行で、L23の従来見込み450〜850行は上端が収まらない。
+外枠は上げず、超えそうな所で検証済みをコミットして報告して止める。
+完備化後P⁰の三案と指定Frobeniusの未解決の比較は§380のまま維持する。
