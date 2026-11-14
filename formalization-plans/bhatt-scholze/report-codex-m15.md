@@ -994,3 +994,149 @@ def strictModuleUnitUnderlyingIso (X : (operad A).Algebra) :
       ((complexDerivedEvaluation A).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ X.carrier))
 ```
+
+## 5. 同じ忘却・弱同値の逆・厚さの照合・指定余単位（11-14）
+
+§4 の実装と報告を `fce55c7b8` に保存した後、既存構成の法則を続行した。
+coordination.md §2 の新しい数え方を適用する。新しい数学的な主出力を
+M01〜M42 の外に増やしていない。200 行を超える補題はない。
+
+### 5.1 検証した追加分と実測
+
+| 新設ファイル | 行 | 宣言 | 対応 |
+| --- | ---: | ---: | --- |
+| `StrictWeakRestriction.lean` | 45 | 2 | M09：同じ拡大・制限を両向きとする弱同値の比較 |
+| `StrictUnderlyingRestriction.lean` | 83 | 2 | M05/M06：指定制限と同じ台の忘却の全関手比較 |
+| `ThickClosureLaws.lean` | 73 | 4 | M19：既存の安定閉包＋retract と共通の厚さの照合 |
+| `DGCounitRecovery.lean` | 47 | 2 | M07：元の全余単位ホモトピーの回収 |
+
+追加 4 本・248 行・10 宣言。累積は **17 本・1,549 行・83 宣言**
+（private 3 を含む）。M15 の外枠 17,000 行、途中報告点 8,500 行には未到達。
+
+`strictModuleWeakEquivalence` は既に証明した拡大の弱同値不変性を、
+同じ native な右随伴の一意性で元の `strictModuleRestrict` へ移したもの。
+これで同じ二関手を両向きに持つ準圏同値を得た。
+`strictModuleRestrict_underlyingIso` は対象ごとの比較ではなく、指定制限の後の
+忘却と元の忘却の **全関手同型**。一対象の全 Hom 上での評価の等式と、§4 の
+指定解像度・台の全関手比較から構成する。M05/M06 の同じ台の接続を進めた。
+
+厚さについては、共通の `IsThick` が既存の `StableVertexClosure` での閉性と
+ホモトピー圏の retract 閉性に同値であることを示した（HA §1.1.3、HTT §4.4.5）。
+既存の安定閉包から同じ厚い閉包への包含と、厚い条件に対する閉包の恒等則も証明した。
+K の R53 側のファイル自体は変更していない。
+
+二つの native 随伴の余単位について、頂点成分だけでなく、元の graph 余単位・
+指定解像度の augmentation の **全ホモトピーの類との等式**を追加した。
+これで随伴構成で指定した余単位の回収を明示した。
+
+M10 の高次単体を含む全族と C02、M11 以降の相対テンソル、指定単位辺・fiber・指数、
+降下・RHom・完備反射・完備テンソルと A5 の BE 特殊化は引き続き未完。
+M08 の孤立した比較や今回の弱同値の逆だけで、M10 完了とは数えていない。
+
+### 5.2 対象検証
+
+追加 4 モジュールの対象ビルドと公開 10 宣言の小監査を、全て指定の
+`scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- ...` の内側で行った。
+最初の 8 宣言は `/tmp/m15-restriction-thick-audit.log`、余単位の 2 宣言は
+`/tmp/m15-counit-audit.log`。全て PASS。公理依存は全 10 宣言とも
+`[propext, Classical.choice, Quot.sound]` のみ。
+大きい監査・全体ビルド・計算上限の引き上げは行っていない。
+⑤a の既存ファイルと界面を変更せず、このレーンの新設ファイルに限った。
+
+### 5.3 追加した型
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictWeakRestriction.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+variable {A : Type u} [CommRing A]
+
+def strictModuleWeakEquivalence {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) : QCatEquivalence (strictModuleInfinity A X) (strictModuleInfinity A Y)
+
+theorem strictModuleRestrict_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) : IsQCatEquivalence (strictModuleRestrict f)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.Modules
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+variable {A : Type u} [CommRing A]
+
+lemma strictRestriction_evaluation {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    (dgModuleRestriction A _ _ (dgAlgebraMap A ((assocForget A).map f)).op).comp
+      (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
+        (Opposite.op DGAlgebraPoint.star)) =
+      moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj Y))
+        (Opposite.op DGAlgebraPoint.star)
+
+def strictModuleRestrict_underlyingIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    FunctorIso (strictModuleRestrict f ≫ strictModuleUnderlying A X)
+      (strictModuleUnderlying A Y)
+```
+
+`SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped Simplicial
+variable (C : SSet.{u}) [Quasicategory C] [IsStable C]
+
+lemma IsThick.stableClosure {P : C _⦋0⦌ → Prop} (hP : IsThick C P)
+    {x : C _⦋0⦌} (hx : StableVertexClosure {y | P y} x) : P x
+
+lemma isThick_iff_stableClosure_retract (P : C _⦋0⦌ → Prop) :
+    IsThick C P ↔
+      (∀ x, StableVertexClosure {y | P y} x → P x) ∧
+      (∀ x y, Nonempty (Retract (HomotopyCategory.mk x) (HomotopyCategory.mk y)) → P y → P x)
+
+lemma stableVertexClosure_le_thickClosure (P : C _⦋0⦌ → Prop) {x}
+    (hx : StableVertexClosure {y | P y} x) : thickClosure C P x
+
+lemma thickClosure_eq_self (P : C _⦋0⦌ → Prop) (hP : IsThick C P) :
+    thickClosure C P = P
+```
+
+`SerrePositivity/EInfinity/Modules/DGCounitRecovery.lean`：
+
+```lean
+universe u v
+namespace SerrePositivity.EInfinity.Modules
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+variable (A : Type u) [CommRing A] (D E : Type v)
+  [DGCategory A D] [Small.{u} D] [DGCategory A E] [Small.{u} E]
+
+lemma graphRawAdjunction_counitHom (F : DGFunctor A D E) :
+    (graphRawAdjunction A D E F).counitHom =
+      Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (graphCounitHomotopy A D E F))
+
+omit [DGCategory A E] [Small.{u} E] in
+
+lemma moduleResolutionAdjunction_counitHom :
+    (moduleResolutionAdjunction A D).counitHom =
+      Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (dgModuleResolutionAugmentationHomotopy A D))
+```
