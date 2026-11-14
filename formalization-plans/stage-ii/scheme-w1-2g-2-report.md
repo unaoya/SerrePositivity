@@ -170,3 +170,18 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 ### 標準開条件への接続（着手前の型、G3 の内数）
 
 `reesDegreeOneGradedHom I a` は実際の評価を GradedRingHom に束ねる。`exists_reesDegreeOne_homogeneous_lift` は評価が全射なら、各斉次元に同じ次数の多項式の原像を供給する（既存の decompose と graded map の可換性）。`reesDegreeOne_irrelevant_le_span` は irrelevant ideal が選んだ次数一元のイデアルで生成される条件を返す。`iSup_reesDegreeOne_basicOpen` はその標準開の被覆。見込み70〜160行。次数成分の比較と既存の Ideal.span_pow_eq_map_homogeneousSubmodule、Proj の基本開の被覆を使う。2f の入力の法則への接続で、被覆性を追加仮定にしない。
+
+
+## G3：斉次原像・irrelevant ideal・標準開の被覆
+
+`ReesDegreeOneStandardOpen`（65行）：`reesDegreeOneGradedHom` は実際の評価の graded な環準同型。`exists_reesDegreeOne_homogeneous_lift` は全射評価の各斉次元への同次数の原像。`reesDegreeOne_irrelevant_le_span` は選んだ次数一元が irrelevant ideal を生成する条件。`iSup_reesDegreeOne_basicOpen` はその標準開が実際の Rees Proj を被覆すること。斉次次数の比較は既存の graded map と decompose の可換性を使用。
+
+本体65行・入口1行。Mathlib が局所登録を要求する MvPolynomial.gradedAlgebra を明示して単独検証。最初の欠けた instance に由来する elaboration timeout は上限を上げずこの登録で解消。ソース完全一致、対象・直接 importer のビルド5,077ジョブ、小監査5宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-rees-degree-one-standard-open-check-2.log`・`2g-rees-degree-one-standard-open-native.log`・`2g-rees-degree-one-standard-open-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体713行・入口込み724行、小監査47宣言・標準三公理のみ。G3 の有限ファイバー冪・構造射の比較と G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### 2f の入力の同時供給（着手前の型、G3 の内数）
+
+`exists_rees_projective_cech_data I hI`：有限生成中心から n,a:Fin n→I と実際の評価の多項式代数構造を選び、IsScalarTower・GradedSMul・多項式環上の Module.Finite・その algebraMap の変数の像による irrelevant ideal の条件を同じ証人で返す（見込み30〜70行）。前の三モジュールの実際の構成を組み合わせるだけで、射影 Čech の仮定を追加しない。続いて schemeScalarMorphism と affineBlowupπ の一致、有限ファイバー冪の射影表示を照合する。
