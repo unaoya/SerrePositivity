@@ -1439,3 +1439,19 @@ B01 の六種の式の有限族の入力（着手前の型、見込み80〜200�
 G1・G2共用部品込み本体9,064行、入口込み9,222行。一般の有限表示対象の模型の分割2,402行。有限個の式の一般の同時移送は供給済みで、段の実際の対象の性質・有限族の入力の組立てへの適用は下書き検証中。六種の式をそろえたgluing datum と全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の六種の具体的な式の入力への組立て（着手前の型、合計見込み300〜700行）：`diagonalRightEquation` は源・標的を段のチャートとして `dᵢ ≫ δᵢᵢ = id`、`diagonalLeftEquation` は段の対角の重なり上で `δᵢᵢ ≫ dᵢ = id`、`reverseDiagonalEquation` は同じ重なり上で `tᵢᵢ = id`、`reverseInverseEquation` は段の重なり上で `tᵢⱼ ≫ tⱼᵢ = id` をそれぞれ `CartesianModelEquation b` の具体的な値へ入れる。`tripleFstEquation`・`tripleSndEquation` は源を段の実際の三重交叉、標的をそれぞれチャート j・k とする前記二つの gluing の式。`atlasEquationFamily` はこれらを `(Fin 3 × I) ⊕ ((I × I) ⊕ (Fin 2 × I × I × I))` の有限族へ入れる。源の Cartesian 比較・qcqs 性、標的の局所有限表示性、極限での一致は全て既存の検証済みの法則から実際に供給し、式の存在を追加仮定にしない。既定の有限個の式の入力の組立てと証明分割で、親項目は増やさない。
+
+
+### B01：六種の式の源模型の性質と具体的な同時一致判定の入力
+
+`OpenAtlasStageProperties`（113行）：`isPullback_pairComparisonAt` は元の重なりと段の重なりの Cartesian 比較、`isPullback_tripleComparisonAt` は元の三重交叉と段の実際の三重交叉の Cartesian 比較、`finitePresentation_stageChart`・`finitePresentation_stagePair`・`finitePresentation_stageTriple` は段のチャート・重なり・実際の三重交叉の qcqs な局所有限表示性。
+
+`CartesianModelEquation`（71行）：`CartesianModelEquation` は具体的な源・標的・Cartesian 比較・二射・元の比較の後の一致・有限表示性の入力、`exists_coefficient_stage` はその有限族の全ての式を、実際の有限生成係数部分代数の同じ段へ移す。
+
+本体184行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,946ジョブ成功。小監査37宣言（5・32）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-atlas-stage-equation-inputs-check.log`・`2g-atlas-stage-equation-inputs-native.log`・`2g-atlas-stage-equation-inputs-audit.log`。続けて検証した対角・反転の四種の入力の下書きも成功したが、まだ本体に公開していないためこの実測には含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体9,248行、入口込み9,408行。一般の有限表示対象の模型の分割2,586行。具体的な六種の入力の組立ては下書き検証中。その適用とgluing datum の供給、全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
