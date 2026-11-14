@@ -22806,3 +22806,117 @@ lemma cutSum_unit (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ} (x : S _⦋
 mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
 完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決で、新しい仮定を加えていない。
 L14の空語の実複体射の包装へ進む。
+
+## 386. L14の空語余作用の指定射との一致（実装前の型）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+零arityのcomponentは既にnullaryActionから定義されている。
+元のtensorLiftの斉次成分とTensorProductの外延性で同じ複体射へ戻し、
+左単位子の自然性だけで係数augmentation⊗AW余単位の式に直す。
+既存構成の法則の証明分割で新しいIDなし、各証明200行以内。
+L14の合成則の全複体射への延長は別に残す。
+
+```lean
+lemma cochainAction_nullary_eq (A : Type u) [CommRing A] (S : SSet.{0}) :
+    cochainAction A S 0 = nullaryAction A S
+lemma coaction_nullary (A : Type u) [CommRing A] (S : SSet.{0}) :
+    cochainAction A S 0 =
+      (nullaryCoefficientAugmentation A ⊗ₘ AlexanderWhitney.cochainCounit A S) ≫
+        (λ_ (𝟙_ (Complex A))).hom
+```
+
+## 387. L14/L16の全整数外延性（実装前の型）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+既存triple_extを二つのχの元の語基底と、一般Sの正規化生成元へ特殊化する。
+区間に限定した外延性は使わず、複体の正次数は元の零延長から除く。
+同じ線形写像の基底外延性・貼り合わせの法則と証明分割で、新しい数学・IDは足さない。
+各証明200行以内。wordPairSimplexInputは元の二つのιTensorObjの値の記法だけ。
+
+```lean
+lemma chains_generator_linear_ext (A : Type u) [CommRing A] (S : SSet.{0}) (q : ℕ)
+    {M : Type u} [AddCommGroup M] [Module A M]
+    {f g : (chains A S).X (-(q : ℤ)) →ₗ[A] M}
+    (h : ∀ x : S _⦋q⦌, f (gen A S q x) = g (gen A S q x)) : f = g
+lemma coefficient_simplex_linear_ext (A : Type u) [CommRing A] (S : SSet.{0}) (m n d e q : ℕ)
+    {M : Type u} [AddCommGroup M] [Module A M]
+    {f g : ((Surjection.complex A m).X (-(d : ℤ)) ⊗[A]
+      (Surjection.complex A n).X (-(e : ℤ))) ⊗[A] (chains A S).X (-(q : ℤ)) →ₗ[A] M}
+    (h : ∀ (u : Surjection.BasisWord m d) (v : Surjection.BasisWord n e) (x : S _⦋q⦌),
+      f (((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A]
+        (Surjection.complexXIso A n e).inv (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x) =
+      g (((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A]
+        (Surjection.complexXIso A n e).inv (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x)) : f = g
+
+def wordPairSimplexInput (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord m d) (v : Surjection.BasisWord n e) (x : S _⦋q⦌) :
+    ((Surjection.complex A m ⊗ Surjection.complex A n) ⊗ chains A S).X
+      (-(d : ℤ) + -(e : ℤ) + -(q : ℤ))
+lemma coefficient_simplex_hom_ext (A : Type u) [CommRing A] (S : SSet.{0}) (m n : ℕ)
+    {K : Complex A} {f g : (Surjection.complex A m ⊗ Surjection.complex A n) ⊗ chains A S ⟶ K}
+    (h : ∀ (d e q : ℕ) (u : Surjection.BasisWord m d) (v : Surjection.BasisWord n e) (x : S _⦋q⦌),
+      f.f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ)) (wordPairSimplexInput A S u v x) =
+        g.f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ)) (wordPairSimplexInput A S u v x)) : f = g
+```
+
+## 388. L14/L16の同じ元の複体射の部分合成則（実装前の型）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+§370の全arity基底値を§387の全整数外延性で延長する。
+左辺の同じ複体合成の値はwhiskerRight_applyとcomplexPartialComposition_neg_tmul、
+partialComposition_basisだけで元のcompositionOnWordsへ戻す。
+中間整数次数-(d+e)と-d-eの照合は同じιTensorObjの等式移送で、作用・係数を変えない。
+既存構成の係数移送・合成則と証明分割で新しい数学・IDなし、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_input (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    ((Surjection.complexPartialComposition A m n k ▷ chains A S) ≫
+      cochainAction A S (m + n)).f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ))
+        (wordPairSimplexInput A S u v x) =
+    (cochainAction A S (m + n)).f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A (m + n)) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(e : ℤ) + -(q : ℤ)) (by omega)
+        ((Surjection.complexXIso A (m + n) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x))
+lemma coaction_comp_all (A : Type u) [CommRing A] (S : SSet.{0}) (m n : ℕ) (k : Fin (m + 1)) :
+    (Surjection.complexPartialComposition A m n k ▷ chains A S) ≫ cochainAction A S (m + n) =
+      iteratedCochainAction A S m n k
+lemma coaction_comp_nullary (A : Type u) [CommRing A] (S : SSet.{0}) (m : ℕ) (k : Fin (m + 1)) :
+    (Surjection.complexPartialComposition A m 0 k ▷ chains A S) ≫ cochainAction A S m =
+      iteratedCochainAction A S m 0 k
+```
+
+
+§386の第1型は既存の`CochainNullaryAction.cochainAction_zero_eq_nullaryAction`と同じである。
+最終実装ではその既存宣言を直接再利用し、重複する新しい別名は追加しない。
+新規NullaryActionLawには指定されたaugmentation⊗余単位の式の包装だけを残した。
+
+## 389. L14・L16：全arityの元の実複体射の合成則（検証済み、取り込み点）
+
+一覧：済み 17／全体 48（うち追加 4）
+
+`coaction_comp_all`で、空語を含む全arityの元の複体射の部分合成則を示した。
+基底値の一致だけでなく、正の整数次数の元は元の零延長で零、
+非正整数次数は二語基底と任意次元の正規化生成元で判定する全射の外延性を通している。
+`coaction_comp_nullary`と指定augmentation⊗AW余単位の`coaction_nullary`も含む。
+L14とL16を完了へ進める。L15は次に残る。L12aの行数には重複計上しない。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- NullaryActionLaw（29行）
+- SimplexGeneratorLinearExt（61行）
+- SimplexTripleGeneratorExt（83行）
+- CochainCompositionInput（61行）
+- CochainCompositionLaws（36行）
+
+今回270行、M14実測29,426行、外枠31,000行まで1,574行。
+対象ビルド3287 jobs成功、追加警告0。
+小さい監査5モジュール32宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。3b-4a完成の取り込みはまだない。
+完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決で、新しい仮定なし。
