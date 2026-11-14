@@ -7123,3 +7123,61 @@ theorem standardLeg_naturality {X Y : CosimplicialObject (Complex A)}
 累計 **299モジュール・18,474行**、外枠まで1,526行。一覧 `/private/tmp/isw2-g10-twohundredninetynine-modules.txt`。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
 
 残るC01の最終成分は、`standardTopEval` による元の反転BK入力の恒等射頂点での評価と、第0頂点を通る標準脚の閉零射の値との等式に絞れた。既存 `reflectedBKFreeCone_generator_top` で同じ自由生成元の評価へ戻せることを個別検査した。未コミットの作業は、一次coherent単体の比較への簡約 `NativeTotConeLegSimplex`、Moore反転の第0項の単位則 `NormalizedMooreReverseZero`、Hom–Totの零行評価 `HomTotalZeroRow`、最終の `NativeTotConeStandardLeg`。前二者は個別検査済み、後二者は検査・証明中であり、今回の検収・累計には含めない。
+
+
+## 146. C01の途中：同じ一次単体と零次の単位・係数移送則（2026-11-14）
+
+一覧：済み 21／全体 36（うち追加 1）。C01は未完。今回の四本はC01の証明分割と既存構成の法則のみ。計算上限を上げず、添字の等式の消去・既存の両逆則を局所的に分けて証明した。
+
+### 146.1 型
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegSimplex`（48行）。
+
+```lean
+theorem nativeDGCone_leg_simplex (X : CosimplicialObject (Complex A))
+    (σ : (nerve (AsSmall.{u} SimplexCategory)) _⦋0⦌) :
+    let I := AsSmall.{u} SimplexCategory
+    let F := liftedClosedDiagram X
+    let z := ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)
+    let φ := liftedEnrichedBousfieldKanCone X
+    let s := (weightedNerveSectionFromTransform
+      (CartesianMonoidalCategory.fst (bousfieldKanWeight I)
+        ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ φ)).app (Opposite.op ⦋0⦌)
+          (σ, SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))
+    (derivedConeLeg (nativeDGCone X) (ULift.up σ)).edge =
+      (coherentComparison (R := A) (D := Complex A)).app (Opposite.op ⦋1⦌)
+        (weightedConeSimplex F z s.2)
+```
+
+登録対象：`SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseZero`（34行）。
+
+```lean
+theorem normalizedMooreReverse_zero_inclusion (W : SimplicialObject C) :
+    (normalizedMooreReverse.app W).f 0 ≫ (inclusionOfMooreComplexMap W).f 0 =
+      (inclusionOfMooreComplexMap (SimplicialObject.opFunctor.obj W)).f 0
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalZeroRow`（43行）。
+
+```lean
+theorem homTotalComponent_zero_ofHom (P : Complex A) (X : CosimplicialObject (Complex A))
+    (f : P ⟶ (productTotalFunctor A).obj X) :
+    homTotalComponent P X 0 0 (Cochain.ofHom f) =
+      Cochain.ofHom (f ≫ standardZeroLeg A X)
+```
+
+登録対象：`SerrePositivity.HomologicalAlgebra.NormalizedMooreInverseInclusion`（32行）。
+
+```lean
+theorem normalizedMooreMapInv_inclusion :
+    normalizedMooreMapInv F X ≫
+      (F.mapHomologicalComplex (.down ℕ)).map (inclusionOfMooreComplexMap X) =
+    inclusionOfMooreComplexMap (X ⋙ F) ≫
+      (alternatingFaceMapComplexCompMapHomologicalComplexIso F).inv.app X
+```
+
+### 146.2 検収と残り
+
+鍵付き対象ビルド163は **6,114 jobs・終了コード0**（`/private/tmp/isw2-build163.log`）。新規四本だけの監査は **14宣言（1・4・8・1）、標準三公理のみ**。鍵 `--class impl --wait 3600` は一つの整理券で待ち、対象ビルドと小監査の間だけ保持し返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
+
+累計 **303モジュール・18,631行**、外枠まで1,369行。一覧 `/private/tmp/isw2-g10-threehundredthree-modules.txt`。未コミットは `NativeTotConeStandardLeg` と、その零次係数生成元の計算の分割 `LinearWeightZeroGenerator`。前者は既存 `reflectedBKFreeCone_generator_top` で同じ自由生成元の像へ戻す所まで確認し、後者の係数逆射の法則を証明中。これらは今回の検収・累計に含めない。C01の最終式、C02〜C07、D、停止点2a・2b、3b-4段0は未完。
