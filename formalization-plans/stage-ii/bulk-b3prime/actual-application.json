@@ -234,11 +234,11 @@
     "scripts/audit_bhatt_scholze_andre_conditional.lean": "8aa6357ef0879c0767976ba03e1beea5adf46c61de79de39a29a5dff8fead504",
     "scripts/audit_bhatt_scholze_arc_excision.lean": "399c4a88b1121efc03efaf72ac797c2d63bdd3647075e21b4ab95190ca72aebb",
     "scripts/audit_bhatt_scholze_b4.lean": "3ab7365943931bc823270c4d30a6baeae5f84853500d1ee9e5df849400b48320",
-    "scripts/audit_bhatt_scholze_b5.lean": "100c6205491964c5b0ceb0318b6949d8fd2cac4375f6e2af2b3faf6062c4460b",
-    "scripts/audit_bhatt_scholze_refactoring.lean": "47925fbd0c1f8f1a8b8f088bf6db59eebea749a95ec8e5877da8ef7fea1cce24",
+    "scripts/audit_bhatt_scholze_b5.lean": "efd30b2b473d6e17de46c73826884a654c3d58d867d12d54978d802ebb5e9bc9",
+    "scripts/audit_bhatt_scholze_refactoring.lean": "9a6f51303cd26f32e18a0ff555a817a9da6654bebd187e7855ba04a17e27c3b6",
     "scripts/audit_bhatt_scholze_stage2.lean": "04eddbf2349ac86653aee23b357d15421408fb0514b12aa38e16444f6f317653",
     "scripts/audit_clmst.lean": "b7d82abd6b5e5678e875aca6497a517c437a54e3dae8b2259e8975d953380934",
-    "scripts/audit_clmst_b3.lean": "8585fb2e2ecb720d3a82a0801f8bcbdcd141dbb1b6d03adb74d3ee210a60d9d9",
+    "scripts/audit_clmst_b3.lean": "df6a02e73f99f0af5f240d93a390b4a25f07d5abebc82e3142c99d20a05c3016",
     "formalization-plans/bhatt-scholze/drafts/A4/AfterComparison.lean": "b285804b39f1e86179abec89777ae64585e9c99e35fe07781570b91ce110f4a1",
     "formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean": "871fabdfa699ef464136b3f5892afce60c4dfe6d2a7abac1d6c13a08d8d60d67",
     "formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean": "291b21276a515551076c2687178dc9ffb39b5068cfa1b0eec399dcbc6234c688",
@@ -257,7 +257,9 @@
     "formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean": "f1cf4f5b70ffb99d1d6589459cf57ba9b7e0be482b352e5fd6cb134d880a0a17",
     "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean": "dda05a036beb7582733e4a407d57e204ce1b21b268339a96f4c10ecb76d980f3",
     "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean": "1b22b910972e2e8f72d408cd12fde4a86b12641cc3e756fce76107a2503972ad",
-    "scripts/refactor/layers.json": "dfd1e2e1c34a7cdbba5d4c98c532d799be8eaefe4dd61587c8e747ca8fe514e1"
+    "scripts/refactor/layers.json": "dfd1e2e1c34a7cdbba5d4c98c532d799be8eaefe4dd61587c8e747ca8fe514e1",
+    "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean": "42804816e2be71a03b9c4fdf54086dfdeb454288988d86862ca1d914ee8d4e1b",
+    "scripts/audit_andre_initial_coefficient.lean": "8b929afd76c95bc15a9671aff33c8280415e13081900dbf476071376ce24f54f"
   },
   "delete_paths": [
     "SerrePositivity/BhattScholze/Almost/SupportedQuotient.lean",
@@ -2859,7 +2861,7 @@
   },
   "existing_tiers_changed": 0,
   "exceptions_changed": 0,
-  "formal_audits_changed": 12,
+  "formal_audits_changed": 14,
   "time": 1794675523.4666722,
   "post_application_header_fix": {
     "path": "SerrePositivity/BhattScholze.lean",
@@ -2879,5 +2881,44 @@
       "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility"
     ],
     "time": 1794675877.059505
+  },
+  "post_application_audit_shortnames": {
+    "changes": [
+      {
+        "path": "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+        "before_sha256": "6c081d9a6148768f960da43ee611c193d1ab8fbe9ada7e1466d489e06c2b7c69",
+        "after_sha256": "42804816e2be71a03b9c4fdf54086dfdeb454288988d86862ca1d914ee8d4e1b"
+      },
+      {
+        "path": "scripts/audit_andre_initial_coefficient.lean",
+        "before_sha256": "8229f9a0fd1cf403a8157ae66edc3c477051c77efa505ee08402207f805a130f",
+        "after_sha256": "8b929afd76c95bc15a9671aff33c8280415e13081900dbf476071376ce24f54f"
+      },
+      {
+        "path": "scripts/audit_bhatt_scholze_b5.lean",
+        "before_sha256": "100c6205491964c5b0ceb0318b6949d8fd2cac4375f6e2af2b3faf6062c4460b",
+        "after_sha256": "ca25a6d7b776afee325f03a57f812fc12f3db2f9f552d34f24e4f89c88b40ee5"
+      },
+      {
+        "path": "scripts/audit_bhatt_scholze_refactoring.lean",
+        "before_sha256": "47925fbd0c1f8f1a8b8f088bf6db59eebea749a95ec8e5877da8ef7fea1cce24",
+        "after_sha256": "9a6f51303cd26f32e18a0ff555a817a9da6654bebd187e7855ba04a17e27c3b6"
+      },
+      {
+        "path": "scripts/audit_clmst_b3.lean",
+        "before_sha256": "8585fb2e2ecb720d3a82a0801f8bcbdcd141dbb1b6d03adb74d3ee210a60d9d9",
+        "after_sha256": "df6a02e73f99f0af5f240d93a390b4a25f07d5abebc82e3142c99d20a05c3016"
+      }
+    ],
+    "plan": "audit-short-name-plan.json",
+    "logic_unchanged": true,
+    "reason": "Original short constants remained in explicit audit target types. Exact original owner/new native constants used; no generated open or target/predicate weakening.",
+    "qualified_suffix_changes": [
+      {
+        "path": "scripts/audit_bhatt_scholze_b5.lean",
+        "before_sha256": "ca25a6d7b776afee325f03a57f812fc12f3db2f9f552d34f24e4f89c88b40ee5",
+        "after_sha256": "efd30b2b473d6e17de46c73826884a654c3d58d867d12d54978d802ebb5e9bc9"
+      }
+    ]
   }
 }

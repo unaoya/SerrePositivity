@@ -366,6 +366,14 @@
       "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
     },
     {
+      "path": "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+      "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
+      "before_sha256": "6c081d9a6148768f960da43ee611c193d1ab8fbe9ada7e1466d489e06c2b7c69",
+      "after_sha256": "42804816e2be71a03b9c4fdf54086dfdeb454288988d86862ca1d914ee8d4e1b",
+      "module_scope_transport": [],
+      "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
+    },
+    {
       "path": "scripts/audit/shared.lean",
       "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
       "before_sha256": "f75f2d1ee26da13e4f6736c58ea1337c6fd60465fee4d0ce28368442026204d0",
@@ -1736,6 +1744,14 @@
       "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
     },
     {
+      "path": "scripts/audit_andre_initial_coefficient.lean",
+      "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
+      "before_sha256": "8229f9a0fd1cf403a8157ae66edc3c477051c77efa505ee08402207f805a130f",
+      "after_sha256": "8b929afd76c95bc15a9671aff33c8280415e13081900dbf476071376ce24f54f",
+      "module_scope_transport": [],
+      "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
+    },
+    {
       "path": "scripts/audit_axioms.lean",
       "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
       "before_sha256": "8dbff24f128fef65d7aed984ed9f38812a8a734a9e32cdb1d874c528c8e55fff",
@@ -1779,7 +1795,7 @@
       "path": "scripts/audit_bhatt_scholze_b5.lean",
       "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
       "before_sha256": "933c21f708445d7f6b279139fd1640fa064476ff654f39012a9ccf0ff73870bf",
-      "after_sha256": "100c6205491964c5b0ceb0318b6949d8fd2cac4375f6e2af2b3faf6062c4460b",
+      "after_sha256": "efd30b2b473d6e17de46c73826884a654c3d58d867d12d54978d802ebb5e9bc9",
       "module_scope_transport": [],
       "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
     },
@@ -1787,7 +1803,7 @@
       "path": "scripts/audit_bhatt_scholze_refactoring.lean",
       "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
       "before_sha256": "ddc76440af48c89f48bd60019fcd1f54b56509ce3c0267791ea9b7e137291e3d",
-      "after_sha256": "47925fbd0c1f8f1a8b8f088bf6db59eebea749a95ec8e5877da8ef7fea1cce24",
+      "after_sha256": "9a6f51303cd26f32e18a0ff555a817a9da6654bebd187e7855ba04a17e27c3b6",
       "module_scope_transport": [],
       "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
     },
@@ -4603,7 +4619,7 @@
       "path": "scripts/audit_clmst_b3.lean",
       "source_main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
       "before_sha256": "f03f2e51af8e17d302852a7ccde3ce1c1dbc326a69cb97249219cee4e67185ba",
-      "after_sha256": "8585fb2e2ecb720d3a82a0801f8bcbdcd141dbb1b6d03adb74d3ee210a60d9d9",
+      "after_sha256": "df6a02e73f99f0af5f240d93a390b4a25f07d5abebc82e3142c99d20a05c3016",
       "module_scope_transport": [],
       "logic_policy": "Only declaration/import identifiers and module membership transported; no predicate, axiom allowlist, traversal, or failure condition changed. Extracted owners added to preserve original coverage."
     }

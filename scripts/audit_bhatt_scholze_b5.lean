@@ -108,17 +108,17 @@ example
     (h₁ : DerivedCompletion.IsModuleComplete R (p : R) S.X₁)
     (h₂ : DerivedCompletion.IsModuleComplete R (p : R) S.X₂)
     (h₃ : DerivedCompletion.IsModuleComplete R (p : R) S.X₃)
-    (hX₁ : Almost.IsAlmostZero (perfectoidIdeal R p hR g) S.X₁)
-    (hX₃ : Almost.IsAlmostZero (perfectoidIdeal R p hR g) S.X₃) :
-    Almost.IsAlmostZero (perfectoidIdeal R p hR g) S.X₂ :=
-  BhattScholze.perfectoidIdeal_isAlmostZero_extension R p hR g S hS h₁ h₂ h₃ hX₁ hX₃
+    (hX₁ : Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₁)
+    (hX₃ : Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₃) :
+    Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₂ :=
+  _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension R p hR g S hS h₁ h₂ h₃ hX₁ hX₃
 
 -- BasicSetup へ渡す mod p^N 冪等性も、同じ略記・等式の型で検査する。
 example (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R) (N : ℕ) :
-    BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N :=
-  BhattScholze.perfectoidIdealMod_idempotent R p hR g N
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N :=
+  _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g N
 
 assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid
 #print axioms SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid

@@ -14,6 +14,18 @@ for path in paths:
  def imp(match):
   old=match[1];new=modules.get(old,surrogate if old==deleted else old);marker='__B3PRIME_AUDIT_IMPORT_'+str(len(imports))+'__';imports.append(match[0][:-len(old)]+new);return marker
  text=import_rx.sub(imp,text);text=name_rx.sub(lambda m:names[m[0]],text)
+
+ short=json.loads((W/'audit-short-name-plan.json').read_text())['files'].get(path,{})
+ if short:
+  import sys
+  sys.path.insert(0,str(R/'scripts/refactor'))
+  from layer_check import code_only
+  clean=code_only(text);edits=[]
+  for leaf,row in short.items():
+   for match in re.finditer(r"(?<![\w.])"+re.escape(leaf)+r"(?![\w'])",clean):
+    edits.append((match.start(),match.end(),'_root_.'+row['new']))
+  for start,end,new_name in sorted(edits,reverse=True):text=text[:start]+new_name+text[end:]
+
  for i,body in enumerate(protected):text=text.replace('__B3PRIME_AUDIT_MODULE_SET_'+str(i)+'__',body)
  for i,body in enumerate(imports):text=text.replace('__B3PRIME_AUDIT_IMPORT_'+str(i)+'__',body)
  if text!=original:

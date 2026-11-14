@@ -1434,3 +1434,12 @@ B4の採取候補を枝の最新HEADと未コミットの本体を読むだけ�
 [本体の範囲の検査](bulk-b3prime/actual-source-scope-check.json)はmain391b2a0d2との差で309の本体・scripts・draftsパス。承認束の255書込みと71削除の内側に収まり、準備時と同じ17パスはmainと同じバイト列である。全適用ソースのSHA一致、範囲外変更0。比較器・採取器・verify本体は変更0。
 
 [正式監査の全inventory](bulk-b3prime/all-audit-inventory.json)は106本でmanifestと完全一致。前提のビルドは36,526 jobs、31.1秒で成功（[記録](bulk-b3prime/all-audit-prerequisites-complete.json)）。監査本体を一本ずつ開始した。[完了条件の検査](bulk-b3prime/completion-audit.json)は12／14で、未完了は正式全監査とfull verifyのみ。これらを省いて完成扱いにはしない。
+
+
+### B3′ 正式監査で検出した短名の追従（11-15 02:31以降）
+
+一覧：済み 2／全体 22（うち追加 0）。先行のadamsとBS全体の正式監査は成功。3本目のInitialCoefficientで、監査用の受渡し型に残ったPowerRootPolynomial・powerRootPolynomialDeltaの旧短名がunknown identifierとなった。[失敗と修正確認の生ログ](bulk-b3prime/formal-audit-initial-failure-and-confirmation.tar.gz)を保存し、二箇所を所有元付きの新しい完全名へ直した。同じ監査は16.6秒で成功、185生成宣言を含め標準三公理のみという結論も同じ。
+
+全監査を字句走査し、旧短名とBhattScholze.…の省略名も[五ファイル・111箇所の表](bulk-b3prime/audit-short-name-plan.json)へ追加した。元の所有元が一意の名前を、B4のネイティブ照合済み完全名で置換する。新しいopenは作らず、受渡し型の引数・仮定・式・axiom許可・判定条件は保持。従来の12本の追従と重なるため、変更した正式監査は合計14本となる。本体のLeanと保存比較の結果は変更していない。
+
+[正式106監査の全名・省略名の再走査](bulk-b3prime/audit-name-coverage.json)は残候補0。これは静的検査であり、全監査成功の代わりにはしない。最新の監査ソースのhashで正式監査をやり直す。適用のreceiptにも監査だけの追加を明記し、全ソースのhash guardを維持した。
