@@ -7450,3 +7450,75 @@ E01の別経路については、有限部分の切断を極限へ移すだけ�
 この束で通常の極限性と同じBousfield–Kan比較射・評価の法則までを検証した。
 RR02(a)の弱同値性とtwisted-arrow切断への照合は未完で、RR02は完了に数えない。
 次はこの同じ実射の弱同値性へ進む。R3・R4の実装は行っていない。
+
+## §72 RR02(a)：自由・評価随伴による実係数の表示
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `807e0d662` の検証済み167行を追加した進捗。
+今回は§69.2(a)の証明分割として、元の二変数Homを図式圏の中のframeからのHomで表示する。
+既存の `evaluationLeftAdjoint`・`evaluationAdjunctionRight` と
+`adjunctionHomIsoSameUniverse` を適用し、随伴を再構成しない。
+
+```lean
+def strictDiagramFreeAt (j : strictDiagramIndex d) :
+    Complex A ⥤ StrictComplexDiagram A d
+def strictDiagramFreeAtAdjunction (j : strictDiagramIndex d) :
+    strictDiagramFreeAt A d j ⊣ (CategoryTheory.evaluation _ _).obj j
+lemma strictDiagramFreeAt_isLeftQuillen (j : strictDiagramIndex d) :
+    Quillen.IsLeftQuillen (strictDiagramFreeAt A d j)
+def strictDiagramFreeValueFrame (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) : SimplexCategory ⥤ StrictComplexDiagram A d
+def strictDiagramFreeValueHomIso (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) :
+    CosimplicialHom.cosimplicialHom (strictDiagramFreeValueFrame A d X i j) ≅
+      (CategoryTheory.evaluation _ _).obj j ⋙
+        CosimplicialHom.cosimplicialHom (strictDiagramEvaluatedSourceFrame A d X i)
+def strictDiagramFreeArrowHomIso (X Y : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (CosimplicialHom.cosimplicialHom (strictDiagramFreeValueFrame A d X
+      (AsSmall.down.obj t.obj.1.unop) (AsSmall.down.obj t.obj.2))).obj
+        (strictDiagramFibrantTarget A d Y) ≅
+      (strictDiagramFrameArrowDiagram A d X Y).obj t
+```
+
+確認した接続上の注意：`bousfieldKanConeComparison_homotopyEquivalence_of_extensions`
+は任意のobjectwise anodyne自然変換に沿う図式全体の延長性を要求する。
+各値のKan性や通常の極限性だけではこの入力は出ない。
+また `SmallHomYonedaWeight.map_weightComparison_weakEquivalence` の `hzero` は
+添字圏全体でのprojective cofibrancyであり、各値のcofibrancyではない。
+どちらも未証明の入力を仮定に足してRR02を閉じることはしない。
+
+次の接続は、この自由frameの全添字射の作用、重みの実現と元のframeの比較である。
+今回のHom同型は全標的に自然だが、自由frameのHom要素圏全体での関手への束縛はまだ含まない。
+E01の別経路は§71の紙の状態を維持する。
+
+同じ証明分割で、`StrictDiagramFreeValueFrameConditions.lean` に次の保存則の適用を置く。
+ここでも全添字族のprojective cofibrancyを各値の条件で代用しない。
+
+```lean
+lemma strictDiagramFreeValueFrame_cofibrant (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) :
+    Reedy.reedyLeft Reedy.simplex (cofibrations (StrictComplexDiagram A d))
+      (initial.to (strictDiagramFreeValueFrame A d X i j))
+lemma strictDiagramFreeValueFrame_homotopicallyConstant (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) {m n : SimplexCategory} (f : m ⟶ n) :
+    weakEquivalences (StrictComplexDiagram A d)
+      ((strictDiagramFreeValueFrame A d X i j).map f)
+```
+
+### 72.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFreeValueFrame | 68 | 3,754 jobs成功 | 11宣言、標準三公理のみ |
+| StrictDiagramFreeValueFrameConditions | 50 | 3,755 jobs成功 | 8宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/free-value-frame/build-2.log`、
+`/tmp/is-w1/free-value-conditions/build.log`。必要な余積の既存インスタンスを明示し、
+計算上限を変更せずに通した。未検証のE01下書きは対象外。
+検証済み累計160本・12,876行。外枠24,000行まで11,124行。
+上限変更後のRR02(a)実測は378行、(b)(c)新規0行。
+RR02全体は未完。実比較の弱同値性を、条件を加えずに証明する作業を続ける。
