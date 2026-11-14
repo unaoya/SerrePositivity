@@ -12170,3 +12170,128 @@ theorem sourceFrameArrowValue_naturality {s t : SourceFrameArrowElements Q R} (f
       (sourceFrameArrowCodomain Q R).map f = sourceFrameArrowValue Q R t
 
 ```
+
+## 190. 指定された射列の長い単体と交差射の全自然性（R03d、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未完了。
+
+全要素圏の反変・共変の両端と元の射から、同じ「始域の逆順・零番の射・標的の順序」の長い通常nerveの単体を作った。恒等射と合成を元の両端の関手と圏の合成則で確認した。左右の型の移送はeqToHomによる同じ共役として明示し、元の射を保持する異種等式も証明した。新しい充填・逆・頂点ごとの同値は選んでいない。
+
+元の可換四角形を仮定すると、対角の交差射は元の射であり、基点を零番以外へ移しても同じ交差射になる。この等式から交差射の任意の順序射による再添字付けの厳密な自然性を得た。面・退化の両方を含む。両半分の対象の座標も元の同じedgewiseの座標で照合した。
+
+258：三本の対象ビルド1,556 jobs・終了0、小監査104本808宣言・標準三公理のみ。実ハンドル36320の終了0を確認し、鍵返却済み。sorry・独自公理0、計算上限変更なし。今回294行（151＋50＋93）、累計104本・6,914行（外枠15,000）。R03dの§188以降の検証済みは502行。既存構成の合成・自然性・係数移送則なので一覧項目の追加は0。
+
+射列全体を実際のedgewise重みの再添字付けと照合する `TwistedPairingReindex` は個別検査中で、今回のコミットと検証済みの数には含めない。R03dの全FunctorIso、固定始域の既存比較との一致、he、R03の無条件の極限性はまだ未完了。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 190.1 共通の入力と既存構成の法則の型
+
+以下でI・Cは同じ宇宙の小圏、A : I ⥤ Cᵒᵖ、B : I ⥤ C、h : ∀ i, (A.obj i).unop ⟶ B.obj i。hhは元の可換四角形 `∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j`。σ : Fin (n+1) ⥤ I。CrossNaturalityの三つの補題はhhを明示的な入力に持つ。
+
+#### TwistedPairingSimplex（151行）
+
+```lean
+def twistedPairingLeftIndex {n : ℕ} (i : Fin (n+n+1+1)) (hi : i.val < n+1) : Fin (n+1)
+
+def twistedPairingRightIndex {n : ℕ} (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) : Fin (n+1)
+
+def twistedPairingCross (a b : Fin (n+1)) :
+    (A.obj (σ.obj a)).unop ⟶ B.obj (σ.obj b)
+
+theorem twistedPairingCross_left (a b c : Fin (n+1)) (hab : b ≤ a) :
+    (A.map (σ.map (homOfLE hab))).unop ≫ twistedPairingCross A B h σ b c =
+      twistedPairingCross A B h σ a c
+
+theorem twistedPairingCross_right (a b c : Fin (n+1)) (hbc : b ≤ c) :
+    twistedPairingCross A B h σ a b ≫ B.map (σ.map (homOfLE hbc)) =
+      twistedPairingCross A B h σ a c
+
+def twistedPairingSimplexObj (i : Fin (n+n+1+1)) : C
+
+theorem twistedPairingSimplexObj_left (i : Fin (n+n+1+1)) (hi : i.val < n+1) :
+    twistedPairingSimplexObj A B σ i = (A.obj (σ.obj (twistedPairingLeftIndex i hi))).unop
+
+theorem twistedPairingSimplexObj_right (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) :
+    twistedPairingSimplexObj A B σ i = B.obj (σ.obj (twistedPairingRightIndex i hi))
+
+theorem twistedPairingTransport_comp {X Y Z U V W : C} (p : X = U) (q : Y = V) (r : Z = W)
+    {f : U ⟶ V} {g : V ⟶ W} {k : U ⟶ W} (hk : k = f ≫ g) :
+    eqToHom p ≫ k ≫ eqToHom r.symm =
+      (eqToHom p ≫ f ≫ eqToHom q.symm) ≫ (eqToHom q ≫ g ≫ eqToHom r.symm)
+
+theorem twistedPairingTransport_heq {X Y U V : C} (p : X = U) (q : Y = V) (f : U ⟶ V) :
+    HEq (eqToHom p ≫ f ≫ eqToHom q.symm) f
+
+def twistedPairingSimplexMap (i j : Fin (n+n+1+1)) (hij : i ≤ j) :
+    twistedPairingSimplexObj A B σ i ⟶ twistedPairingSimplexObj A B σ j
+
+theorem twistedPairingSimplexMap_id (i : Fin (n+n+1+1)) :
+    twistedPairingSimplexMap A B h σ i i le_rfl = 𝟙 _
+
+theorem twistedPairingSimplexMap_comp (i j k : Fin (n+n+1+1))
+    (hij : i ≤ j) (hjk : j ≤ k) :
+    twistedPairingSimplexMap A B h σ i k (hij.trans hjk) =
+      twistedPairingSimplexMap A B h σ i j hij ≫ twistedPairingSimplexMap A B h σ j k hjk
+
+def twistedPairingSimplex : Fin (n+n+1+1) ⥤ C where
+  obj
+
+```
+
+#### TwistedPairingCrossNaturality（50行）
+
+```lean
+theorem twistedPairingCross_diagonal (i : Fin (n+1)) :
+    twistedPairingCross A B h σ i i = h (σ.obj i)
+
+theorem twistedPairingCross_changeBase (p a b : Fin (n+1)) (hpa : p ≤ a) (hpb : p ≤ b) :
+    twistedPairingCross A B h σ a b =
+      (A.map (σ.map (homOfLE hpa))).unop ≫ h (σ.obj p) ≫ B.map (σ.map (homOfLE hpb))
+
+theorem twistedPairingCross_reindex {m : ℕ} (α : Fin (m+1) →o Fin (n+1))
+    (a b : Fin (m+1)) :
+    twistedPairingCross A B h (α.monotone.functor ⋙ σ) a b =
+      twistedPairingCross A B h σ (α a) (α b)
+
+```
+
+#### TwistedPairingCoordinates（93行）
+
+```lean
+theorem twistedPairingLeftVertex_lt (n : ℕ) (i : Fin (n+1)) :
+    (edgewiseLeftVertex n i).val < n+1
+
+theorem twistedPairingRightVertex_not_lt (n : ℕ) (i : Fin (n+1)) :
+    ¬ (edgewiseRightVertex n i).val < n+1
+
+theorem twistedPairingLeftIndex_vertex (n : ℕ) (i : Fin (n+1))
+    (hi : (edgewiseLeftVertex n i).val < n+1) :
+    twistedPairingLeftIndex (edgewiseLeftVertex n i) hi = i
+
+theorem twistedPairingRightIndex_vertex (n : ℕ) (i : Fin (n+1))
+    (hi : ¬ (edgewiseRightVertex n i).val < n+1) :
+    twistedPairingRightIndex (edgewiseRightVertex n i) hi = i
+
+theorem twistedPairingSimplex_obj_left (i : Fin (n+1)) :
+    (twistedPairingSimplex A B h σ).obj (edgewiseLeftVertex n i) = (A.obj (σ.obj i)).unop
+
+theorem twistedPairingSimplex_obj_right (i : Fin (n+1)) :
+    (twistedPairingSimplex A B h σ).obj (edgewiseRightVertex n i) = B.obj (σ.obj i)
+
+theorem twistedPairingSimplexMap_left_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
+    (hi : i.val < n+1) (hj : j.val < n+1) :
+    HEq (twistedPairingSimplexMap A B h σ i j hij)
+      (A.map (σ.map (homOfLE (show twistedPairingLeftIndex j hj ≤ twistedPairingLeftIndex i hi
+        by dsimp [twistedPairingLeftIndex]; exact Nat.sub_le_sub_left hij _)))).unop
+
+theorem twistedPairingSimplexMap_cross_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
+    (hi : i.val < n+1) (hj : ¬ j.val < n+1) :
+    HEq (twistedPairingSimplexMap A B h σ i j hij)
+      (twistedPairingCross A B h σ (twistedPairingLeftIndex i hi) (twistedPairingRightIndex j hj))
+
+theorem twistedPairingSimplexMap_right_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
+    (hi : ¬ i.val < n+1) (hj : ¬ j.val < n+1) :
+    HEq (twistedPairingSimplexMap A B h σ i j hij)
+      (B.map (σ.map (homOfLE (show twistedPairingRightIndex i hi ≤ twistedPairingRightIndex j hj
+        by dsimp [twistedPairingRightIndex]; exact Nat.sub_le_sub_right hij _))))
+
+```

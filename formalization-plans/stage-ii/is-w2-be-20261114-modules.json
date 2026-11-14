@@ -99,5 +99,8 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointFirstSpan",
   "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveTransformationInversion",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointAugmentation",
-  "SerrePositivity.EInfinity.FrameHom.SourceFrameArrowElements"
+  "SerrePositivity.EInfinity.FrameHom.SourceFrameArrowElements",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingSimplex",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingCrossNaturality",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingCoordinates"
 ]
