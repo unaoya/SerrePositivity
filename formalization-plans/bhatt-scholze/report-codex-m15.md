@@ -1812,3 +1812,35 @@ M11 以降、RHom・完備反射・完備テンソルも引き続き未完。
 大きい監査や全体ビルドは実施していない。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 9. 同じ自由局所化の係数移送の単位・合成則と B4（11-14）
+
+M10 の指定局所化辺との照合に向け、既存の自由 hammock の係数写像について、
+各自由次数の固定端点の写像との一致・空語の単位・全連結合成の保存を証明した。
+対象ビルドは指定共有鍵の下で通過。新規 Lean 1 ファイル・78 行・3 宣言、
+累計は 30 ファイル・2,819 行・160 宣言（private 3 を含む）。
+一次 ID は増やさず、既存の係数移送の法則として扱う。
+全 nerve の係数作用と源の自然性の二ファイルは未検証の下書きで、まだ実測に含めない。
+
+着手中、main の `citation-attributes.md` §14（ab311d2d1）で B4 の手順が公開された。
+⑤d も同じ手順の対象と明記されているため、M10 の Lean を区切って B4 を優先する。
+取り込み前のソースと参照の採取・保留 0 のプレビューを先に行い、main の取り込み後に
+対象ビルドと小さい監査を行う。未検証の下書きは保持する。
+
+```lean
+lemma freeHammockCoefficient_fixedColimitMap (X Y : C.category) (n : SimplexCategoryᵒᵖ) :
+    (freeHammockMap F X Y).app n =
+      Hammock.Relative.fixedColimitMap ((freeResolutionMap F).app n)
+        (freeResolutionMap_object F n X) (freeResolutionMap_object F n Y)
+
+lemma freeHammockCoefficient_unit (X : C.category) :
+    freeHammockDiagonalUnit C X ≫ freeHammockDiagonalMap F X X =
+      freeHammockDiagonalUnit D (F.functor.obj X)
+
+lemma freeHammockCoefficient_comp (X Y Z : C.category) :
+    freeHammockDiagonalComposition C X Y Z ≫ freeHammockDiagonalMap F X Z =
+      (freeHammockDiagonalMap F X Y ⊗ₘ freeHammockDiagonalMap F Y Z) ≫
+        freeHammockDiagonalComposition D (F.functor.obj X) (F.functor.obj Y) (F.functor.obj Z)
+```
+
+**一覧：済み 9／全体 42（うち追加 0）**。
