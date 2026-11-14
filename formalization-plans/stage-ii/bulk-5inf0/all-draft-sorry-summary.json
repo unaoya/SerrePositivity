@@ -3,7 +3,7 @@
   "files": 56,
   "changed_files": 56,
   "baseline_sorry": 819,
-  "current_sorry": 694,
+  "current_sorry": 691,
   "rows": [
     {
       "draft": "A0/BaseChange.lean",
@@ -86,7 +86,7 @@
     {
       "draft": "A2/DerivedPrismaticCohomology.lean",
       "baseline_sorry": 17,
-      "current_sorry": 17,
+      "current_sorry": 16,
       "source_changed": true
     },
     {
@@ -134,7 +134,7 @@
     {
       "draft": "A5/PerfectSite.lean",
       "baseline_sorry": 36,
-      "current_sorry": 36,
+      "current_sorry": 35,
       "source_changed": true
     },
     {
@@ -290,7 +290,7 @@
     {
       "draft": "Shared/DeRhamPolynomial.lean",
       "baseline_sorry": 2,
-      "current_sorry": 2,
+      "current_sorry": 1,
       "source_changed": true
     },
     {

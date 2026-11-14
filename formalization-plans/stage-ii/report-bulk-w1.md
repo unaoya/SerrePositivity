@@ -934,3 +934,10 @@ B03の本質的小ささの本体補題はκの下限を仮定しないので、
 一覧：済み 8／全体 14（うち追加 0）。[削除・置換台帳](bulk-5inf0/declaration-disposition-audit.json)に共有部分の2件を別表として追加した。A0〜A9の削除123名の表はそのままにし、共有のCosimplicialAlgebraとdeRhamCohomologyWedgeを混ぜて数えない。後者は第25束の検査待ち。対象の本体ディレクトリを再走査した[同名候補](bulk-5inf0/current-draft-duplicate-candidates.json)は0件（構文による候補の検査であり、型検査ではない）。[所有元へのimport到達性](bulk-5inf0/section5-owner-import-reachability.json)も保護対象を含め欠落0件。
 
 [保護対象の再構成](bulk-5inf0/section5-protected-reconstruction.json)では、基準efa846fe8に台帳の11置換だけを適用した結果が現在のSharedファイルと完全に一致し、A4のP⁰部分も基準と完全に一致した。許可された改名以外の変更はない。
+
+
+### 5∞-0 のdraft検査・第25束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第25束](bulk-5inf0/draft-block25-validation.json)でShared/DeRhamPolynomialが成功。本体のdeRhamCohomologyWedgeを直接使う型で通ったため、共有の2件の重複を外したことを全件台帳にも反映し、検査済みソースをコミットする。有効な成功は27本。全56本のsorryは **819→691**、A0〜A9は **705→584**（本質的小ささの濃度の未証明2個が本体の証明に置き換わった分を含む）。復元した未重複補題2個は保持している。
+
+A2は280秒の束の残り時間内に完了せず、外側のgtimeoutで打切り（exit124）。成功にも通常の型エラーにも数えない。完了したde Rhamの署名つき記録とA2の未完了ログを別に保存し、鍵は上限で返した。局所の有限の検査予算を増やす方法では時間内に終わらなかったため、通常の予算に戻し、7つの中間の関手・辺の既存の結果型を明示する修正を第26束で検査する。仮定・数学的な入力・未証明本文は増やしていない。

@@ -5,6 +5,7 @@ module
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty
+public import SerrePositivity.CommutativeAlgebra.DeRham.CohomologyWedge
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
@@ -42,13 +43,7 @@ namespace SerrePositivity.DeRham
 
 variable (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T]
 
-/-- 概要：de Rham cohomology の積 H^i × H^j → H^{i+j}（外積から）。
-方針：`deRhamD_wedge` により外積は余輪体 × 余輪体を余輪体へ、余境界 × 余輪体を余境界へ送る。
-規約：11-07 追加。
-使われ方：A1/CrystallineInput の Cartier 同型の乗法性、段 4・6。 -/
-def deRhamCohomologyWedge {i j : ℕ} :
-    (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i + j) :=
-  sorry -- 外積を余輪体の代表で取り、deRhamD_wedge で well-defined
+-- deRhamCohomologyWedge は同じ型の本体 CommutativeAlgebra.DeRham.CohomologyWedge を使う。
 
 /-! ## p 完備化 -/
 

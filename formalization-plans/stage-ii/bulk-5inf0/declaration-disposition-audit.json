@@ -1611,7 +1611,7 @@
       "draft": "formalization-plans/bhatt-scholze/drafts/Shared/DeRhamPolynomial.lean",
       "replacement_module": "SerrePositivity.CommutativeAlgebra.DeRham.CohomologyWedge",
       "same_signature": "{i j : Nat} : (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i+j)",
-      "validation": "pending block25; main constructs the intended exterior product on homology"
+      "validation": "PASS block25 after direct canonical import and duplicate removal"
     }
   ]
 }
