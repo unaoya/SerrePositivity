@@ -12412,3 +12412,111 @@ L09a・L09の残りは0。次は固定した一覧のL10へ進む。
 上側が外枠を **3,097行** 超えるリスクは残る。未実装部分から実測なしに控除しない。
 現在の実測は外枠に届いていないため、指示どおり止まらずL10へ進む。
 G10の部品、M15・G12は作らない。B4は595254e10で完了済みのまま。
+
+## 138. L10への接続：既存の基底と正規化生成元の外延性（実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+L09の検証済み7本はd5a28b42fへ保存した。次は固定したL10の全整数Leibnizへ進む。
+まずC303は既存のSurjection.basis.extとAlexanderWhitney.generator_hom_extを
+同じ双線形族へ適用する構成の法則。新しい生成性の定理は作らない。
+arityはnで零も許すが、χ・入力複体・微分の組み立ては固定した§108のとおりにする。
+この法則だけでL10完了とは数えない。局所heは元の二つのLinearMapをModuleCat.ofHomで
+見た射の等式で、最後に元の線形写像へ戻す。個々の補題200行以内。型を記録して実装する。
+
+```lean
+lemma normalized_bilinear_ext (S : SSet.{0}) {n d q : ℕ} {M : ModuleCat A}
+    (f g : Surjection.degreeModule A n d →ₗ[A] (AlexanderWhitney.chains A S).X q →ₗ[A] M)
+    (h : ∀ (w : Surjection.BasisWord n d) (x : S _⦋q⦌),
+      f (Surjection.basis A n d (ULift.up w)) (AlexanderWhitney.generator A S q x) =
+        g (Surjection.basis A n d (ULift.up w)) (AlexanderWhitney.generator A S q x)) :
+    f = g
+```
+
+C303の実装では出力Mの宇宙を `{M : ModuleCat.{u} A}` と明示する。
+既存generator_hom_extとL10の実際の終域のテンソル冪は、どちらもAと同じ宇宙uの
+ModuleCatを使う。省略した宇宙が新しい変数として推論されるのを防ぐためで、
+L10の固定した型・係数環・入力・終域を変更するものではない。
+
+### 138.1 C303の検証・保存
+
+一覧：済み 10／全体 48（うち追加 4）
+
+C303の対象ビルド **成功、2,320 jobs**。専用の小さい監査は
+**1モジュール・1宣言・標準三公理のみ**。sorry・追加公理0、Lean警告0。
+`NormalizedBilinearExt.lean` は36行。未登録の新規モジュール候補として追加する
+（`SerrePositivity.EInfinity.SimplexCuts.NormalizedBilinearExt`）。
+L09の7本とは別のL10の補助であり、L10完了とは数えない。
+
+ログ：`/tmp/bsw16/m14-normalized-bilinear-ext-02.log`、
+監査：`/tmp/bsw16/audit-m14-normalized-bilinear-ext.lean`、
+結果：`/tmp/bsw16/m14-normalized-bilinear-ext-audit.log`。
+鍵はビルド・監査ごとに取り、終了を確認して返却した。
+
+M14の実測は14,057+36=**14,093行**、L09a・L09の最終実測8,991行は不変。
+L10の実装済み補助は36行。外枠25,000行は変更せず、残り枠は **10,907行**。
+次のL10の束の見込みを出す際、この36行を未実装部分へ重ねて加算しない。
+
+### 138.2 L10の残る成分と法則の型（紙のみ）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+既存normalizedComponentと元の二つの微分の合成を、同じ双線形族の値として読む。
+以下二つはその線形像の記法であり、係数微分・入力微分を別のものへ変更しない。
+C304はC303で元の基底・正規化生成元へ帰着し、L09を適用する。
+
+```lean
+def normalizedCoefficientBoundary (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ) :
+    (d q : ℕ) → Surjection.degreeModule A (r + 1) d →ₗ[A]
+      (AlexanderWhitney.chains A S).X q →ₗ[A]
+        (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+def normalizedSimplexBoundary (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ) :
+    (d q : ℕ) → Surjection.degreeModule A (r + 1) d →ₗ[A]
+      (AlexanderWhitney.chains A S).X q →ₗ[A]
+        (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+-- C304：同じ非負次数の双線形族の微分の法則。
+lemma normalizedComponent_d (A : Type u) [CommRing A] (S : SSet.{0}) (r d q : ℕ) :
+    (normalizedComponent A S r d q).compr₂
+        ((power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+          (-((d + q : ℕ) : ℤ) + 1)).hom =
+      normalizedCoefficientBoundary A S r d q +
+        (-1 : ℤ) ^ d • normalizedSimplexBoundary A S r d q
+```
+
+前者はd=0で零、d+1で元のSurjection.differentialをnormalizedComponentの係数側へ前置し、
+共通次数へ移す。後者はq=0で零、q+1で元の正規化鎖のdを入力側へ前置して共通次数へ移す。
+これらの生成元の値は、検証済みL09の右辺の二つの線形像そのもの。
+
+次に、既存positiveComponentを両入力の非正整数次数へ等式移送で延長し、正次数は零とする。
+これは§108.2で固定した整数次数のcomponentを組み立てる補助で、新しい作用の選択ではない。
+正arityの補助の型は次。arity零の扱いは固定した§108.3・L14の規約を維持する。
+
+```lean
+def positiveIntegerBilinear (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ)
+    (i j t : ℤ) (h : i + j = t) :
+    (Surjection.complex A (r + 1)).X i →ₗ[A] (chains A S).X j →ₗ[A]
+      (power (chains A S) (r + 1)).X t
+
+-- C305：元の負自然数次数では、同じ既存positiveComponentを復元。
+lemma positiveIntegerBilinear_neg (A : Type u) [CommRing A] (S : SSet.{0}) (r d q : ℕ) :
+    positiveIntegerBilinear A S r (-(d : ℤ)) (-(q : ℤ)) (-((d + q : ℕ) : ℤ)) (by omega) =
+      positiveComponent A S r d q
+
+-- C306：同じ正arityの全整数双線形成分のLeibniz則。
+lemma positiveIntegerBilinear_d (A : Type u) [CommRing A] (S : SSet.{0})
+    (r : ℕ) (i j : ℤ) (a : (Surjection.complex A (r + 1)).X i) (b : (chains A S).X j) :
+    (power (chains A S) (r + 1)).d (i + j) (i + j + 1)
+        (positiveIntegerBilinear A S r i j (i + j) rfl a b) =
+      positiveIntegerBilinear A S r (i + 1) j (i + j + 1) (by omega)
+        ((Surjection.complex A (r + 1)).d i (i + 1) a) b +
+      i.negOnePow • positiveIntegerBilinear A S r i (j + 1) (i + j + 1) (by omega) a
+        ((chains A S).d j (j + 1) b)
+```
+
+整数の非正分岐ではd=(-i).toNat・q=(-j).toNatとし、既存positiveComponentの前後を
+同じ次数のeqToHomで移す。C306は§136.4の次元によらないχの微分比較、chains_d_neg、
+正次数の零性、C304・C305を使う。区間の零・−1以外の零性は一般Sへ適用しない。
+その後TensorProduct.ext・tensorLiftへ渡す。L10の固定した全体の型は§108のまま維持する。
+上の型はC303以外まだ紙のみで、完了数・検証済み行数へ含めない。
