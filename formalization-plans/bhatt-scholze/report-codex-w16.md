@@ -10218,3 +10218,52 @@ rootビルド・共通入口・共通監査への登録は調整役の持ち分�
 
 B4で自レーンのLeanの差分は0なので、L09a・L09 **5,595行**、M14 **10,661行**の計数は不変。
 B4の検収報告後、承認待ちを挟まず/goalの水平hcの実テンソルの接続へ戻る。
+
+## 127. B4完了後：小さい切断の実テンソルへ戻す（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+B4完了は **595254e10** に保存した。取り込み済みmainの環境で/goalへ戻る。
+以下はC185・C186の同じ削除列の一致を、元の`cutTensor`と`cutTensorAt`へ接続する
+既存構成の次数移送・貼り合わせの法則。新しい作用・錐・ホモトピーは作らない。
+C188・C189の`h`は型を合わせる次数の等式で、C187と既存の全出力次数の式から導ける。
+具体的な水平の削除列の一致は、別に既存C89から供給する。未供給のままhcを閉じたとは扱わない。
+
+```lean
+degreeSum_deleted_small_cut {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c) :
+  degreeSum r (outputDegree t w) + 1 = m + q + 1 - r
+deletedCutTensor_eq_small_cutTensor (A : Type u) [CommRing A] {m n q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -(degreeSum r (outputDegree t w) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+  deletedCutTensor A S s v (label s v.val k) hd j x =
+    (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom (cutTensor A S t w x)
+deletedCutTensor_eq_small_cutTensorAt (A : Type u) [CommRing A] {m n q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -((n + q + 1 - r : ℕ) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+  deletedCutTensor A S s v (label s v.val k) hd j x =
+    (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom (cutTensorAt A S t w x)
+```
+
+C189の局所法則は`step {M N P : ModuleCat A} (hMN : M = N) (hNP : N = P) (y : M) :
+(eqToHom hNP).hom ((eqToHom hMN).hom y) = (eqToHom (hMN.trans hNP)).hom y`。
+等式の帰納法だけを使う。
+
+### 127.1 検証
+
+対象ビルド成功（2,189 jobs）。別の一回の鍵で専用監査も成功、1モジュール・3宣言・標準三公理のみ。
+新規82行、L09a・L09 5,677行、M14 10,743行。sorry・追加公理0。
+登録候補：`SerrePositivity.EInfinity.SimplexCuts.DeletedSmallCutTensors`。
+一覧：済み 8／全体 48（うち追加 4）。
