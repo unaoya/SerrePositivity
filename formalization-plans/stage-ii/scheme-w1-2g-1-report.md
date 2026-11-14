@@ -418,3 +418,5 @@ G1 累計は本体 **2,265 行**、入口込み **2,312 行**。次は有限個�
 次の既存模型との係数比較の型：`exists_generic_free_noetherian_model R B hmin` は、被約 R、有限表示 R-代数 B、極小素点集合の準コンパクト性から、ℤ 上有限型の Noether 環 A、有限表示 A-代数 S、実際の `R ⊗[A] S ≃ₐ[R] B` と有限族 `t : Fin n → A` を返す。各 `Localization.Away (t i) ⊗[A] S` は自由で、R へ移した基本開は全極小素点を覆う。既存の有限表示 Noether 模型の係数を共通部分代数へ移し、tensor cancelBaseChange で同型と自由性を輸送する係数比較。見込み 60〜140 行。一般の固有模型や任意の指定開の降下そのものをこの型へ置き換えない。
 
 一般自由開を幾何の平坦開へ読む既存比較の法則：`flat_restrict_iSup_of_flat_restrict f V h` は各開 V_i での平坦性を和の開へ貼り合わせる。`flat_restrict_iSup_basicOpen_of_free_tensor A S t hfree` は有限族 t に対し、各 away tensor の自由性から `Flat (Spec.map (algebraMap A S) ∣_ ⨆ i, PrimeSpectrum.basicOpen (t i))` を得る。既存の Spec の主開の比較・局所化と tensor の比較と、開上の平坦性の局所性の法則を使う。見込み 50〜100 行。
+
+幾何の指定開を添える比較の型：`exists_generic_flat_noetherian_model R B hmin` は同じ被約 R・有限表示代数 B と hmin に対し、既存の Noether 模型 A・S と実際の tensor 同型に、`U : (Spec A).Opens`、U の準コンパクト性、模型の射の U 上の平坦性を添える。`g = Spec(algebraMap A R)` に対し g⁻¹U が準コンパクトかつ稠密で全極小素点を含むことも返す。有限個の一般自由基本開を和にし、既存の平坦性の局所性と、一般点を含む開の稠密性を使う比較の法則。見込み 70〜150 行。ブローアップへの更なる底変換の稠密性までは主張しない。
