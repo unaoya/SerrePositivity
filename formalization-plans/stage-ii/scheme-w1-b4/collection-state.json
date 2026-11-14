@@ -330,7 +330,7 @@
       "log_sha256": "b931dc02773bfec3ef0328f78ff9546581afc33fbac202ffd0abbda2669db40d"
     }
   ],
-  "latest_status": "all_289_captures_and_previews_verified_before_main_merge",
+  "latest_status": "B4_complete",
   "current_source_sha256": {
     "SerrePositivity/AlgebraicGeometry.lean": "898eec23baad5523f20e9a1359704ed98767cdcf4056db946f99e651e5291bb3",
     "SerrePositivity/AlgebraicGeometry/AffineBaseChangeCechVanishing.lean": "8f6b04cd79417840541e9037bb919feb0172a1ee85adf925fa739a765f3490ca",
@@ -625,6 +625,7 @@
   "verified_preview_files": 289,
   "resolved_failure": "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechH0SquareData.lean",
   "remaining_failed_sources": [],
-  "latest_summary": "full-before-summary.json",
-  "latest_verified_delta": "verified-rees-split.json"
+  "latest_summary": "after-merge-summary.json",
+  "latest_verified_delta": "verified-rees-split.json",
+  "main_merge_commit": "b31ed2d0ecc9764610060fbfa239ac80d39caa4f"
 }
