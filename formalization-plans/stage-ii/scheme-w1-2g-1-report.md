@@ -172,3 +172,41 @@ C01 は零環・空の積を含み、TIC 全体や絶対整閉性は主張しな
 残り：A07 の平坦な稠密開の存在と Noether 段への降下・平坦化・整全射の近似、B01〜B04 の実際のモデル構成。今回の開の選択の法則は、平坦な開そのものの存在を証明してはいない。この区切りを停止点 2g-1 の完成とはしない。
 
 小さい監査は `scheme-drafts/audit-c01.lean` によって新規四モジュールを宣言元で抽出し、生成宣言を含む **12 宣言**を再帰的に検査して成功。許される依存は `propext`・`Classical.choice`・`Quot.sound` のみ。ログ `scheme-drafts/2g-c01-small-audit.log`。監査の初回のカウンタの型推論エラーは Nat の明示で直し、入口ビルド成功後に監査だけを再実行した。鍵は全て `--class impl --wait 3600`、同時の待ちは一つとした。
+
+## A07 の次の小束：極小素点の近傍での有限関係の消去（着手前の型）
+
+一覧：済み 7／全体 12（うち追加 3）
+
+A07 の平坦な稠密開の供給に使う既存の局所化・有限生成の法則の接続。主項目を追加計上しない。見込み 100〜250 行。
+
+- `exists_annihilator_notMem_minimalPrime`：R は被約、p は極小素イデアル、x∈p。このとき s∉p かつ s*x=0 となる s がある。極小素点での局所化が体になる Mathlib の API と、局所化での零判定を使う。
+- `exists_common_annihilator_finset_minimalPrime`：p に含まれる有限集合に対して、p の外の同じ s が全要素を消す。
+- `exists_common_annihilator_fg_minimalPrime`：有限生成イデアル J≤p に対して、p の外の同じ s が J 全体を消す。
+
+使い方の案：有限表示模型の係数の Noether な部分環から極小素点の剰余体への核は有限生成なので、その有限個の関係を基本開で同時に消す。模型の整域商に対する既存の一般平坦性を、その基本開へ底変換する。模型そのものの構成や可換図式は別に供給する必要があり、この消去の法則だけで A07 が完成したとはしない。
+
+同じ小束の係数移送：`exists_away_quotient_factor_of_minimalPrime` は、環準同型 f:S→R、R は被約、p は R の極小素点、(p.comap f).FG に対して、s∉p と l:S/(p.comap f)→Localization.Away s を返し、`l.comp (Ideal.Quotient.mk _) = (algebraMap R _).comp f` を満たす。Noether な S では FG は自動。これは有限個の係数の関係を同時に消した後の実際の商の普遍性による移送で、被覆モデルの存在を仮定に移すものではない。追加見込み 40〜100 行。
+
+## A07 のアフィン局所の模型の接続（着手前の型）
+
+一覧：済み 7／全体 12（うち追加 3）
+
+`exists_finitePresentation_noetherian_model`：有限表示 R-代数 S に対し、ℤ 上有限型の Noether 環 R₀、R₀→R、有限表示 R₀-代数 S₀、実際の R-代数同型 `R ⊗[R₀] S₀ ≃ₐ[R] S` を返す。係数環の包含は Mathlib の `Algebra.Presentation.Core`、模型と同型は `ModelOfHasCoeffs`・`tensorModelOfHasCoeffsEquiv` を再利用する。見込み 40〜150 行。
+
+これは A07 の既存の有限表示対象のアフィン局所モデルの具体化。固有スキームの貼り合わせと固有性・全射性の同時降下までを完成したものではなく、G2 の B01〜B04 を完了扱いにしない。
+
+## 2026-11-14：有限関係の消去と実際の Noether 模型の検証
+
+一覧：済み 7／全体 12（うち追加 3）
+
+上の着手前の五宣言を検証した。新規本体 **137 行**（65・37・35 行の三ファイル）、入口 3 行、G1 累計は本体 **1,108 行**、入口込み **1,139 行**。全ファイル 200 行以下。
+
+- `exists_annihilator_notMem_minimalPrime`：被約環の極小素点で零となる関係を、その素点の外の元で消す。
+- `exists_common_annihilator_finset_minimalPrime`：有限個の関係の共通の消去元。
+- `exists_common_annihilator_fg_minimalPrime`：有限生成イデアル全体の共通の消去元。
+- `exists_away_quotient_factor_of_minimalPrime`：係数環の縮約素イデアルによる商から、実際の基本開の環への射と可換式。係数環と基底環の宇宙を別に取る。
+- `exists_finitePresentation_noetherian_model`：ℤ 上有限型 Noether 環、有限表示代数の模型、元の代数との実際のテンソル積同型。Mathlib の Core を再利用。
+
+対象ビルドは順に 2,239・2,240・1,982 jobs 成功。登録後の直接の importer `SerrePositivity.AlgebraicGeometry` は **4,815 jobs 成功**。新規三モジュールだけの小さい監査は **5 宣言・標準三公理のみ**で成功。ログは `scheme-drafts/2g-a07-minimal-relations-build.log`、`2g-a07-quotient-factor-build.log`、`2g-a07-noetherian-model-build.log`、`2g-a07-model-registered-check.log`。共有鍵は `--class impl --wait 3600`、待ちは一つ。root ビルドと大きい監査は行っていない。
+
+A07 と G2 は未完。Noether 模型は affine な有限表示代数の模型であり、有限アフィン開被覆の重なりの貼り合わせ、固有性、全射性、filtered な被覆模型を一括して供給したという意味ではない。次は整域商上の一般自由性の開を実際の基底へ引き戻す係数・局所化の比較を組む。
