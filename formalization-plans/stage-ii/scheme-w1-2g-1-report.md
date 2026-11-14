@@ -2450,3 +2450,32 @@ G1・G2共用部品込み本体14,181行、入口込み14,420行。B02〜B04 は
 G1・G2共用部品込み本体14,242行、入口込み14,482行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B03 の係数模型の底変換と有限型 F_p への移送（着手前の型、見込み80〜180行、B03 の法則）：
+
+- `isSchemeVCover_affineTensorModel`：同じ宇宙の A,R,S と実際の R⊗_A S≃_R C、Spec S→Spec A の v 判定から、Spec C→Spec R の v 判定。既存の実際の Cartesian 正方形と G0 の底変換による。
+- `exists_primeField_affineVCover_coefficient_model`：任意の F_p-代数 R、有限表示 R-代数 C と元の v 判定から、実際の有限生成 F_p-部分代数 B、有限表示 B-代数 C₀、F_p 上の代数構造と scalar tower・両環の有限型性、模型の v 判定、R⊗_B C₀≃_R C を同時に返す。F_p の構造は与えられたものを保ち、零環を除外しない。
+
+元の一般の射に対する filtered な模型図式は、これらの一段の模型とは区別して B03・B04 に残す。
+
+
+B03・B04 の一般の元の射へ戻す近似の分割（着手前の型、見込み450〜850行、既存の B04 の内数）：
+
+- `FinitePresentationModelCategory R C`：有限表示 R-代数 D と実際の D→ₐ[R] C を対象にし、C 上で可換な代数写像を射にする。G1 の整模型の圏と同じ小さい模型への移送を使うが、有限加群・整性の条件は課さない。
+- 共同後段は tensor 積、平行射の一致は有限個の代数生成元の差で生成する有限型イデアルによる商で供給し、実際の filtered 性を証明する。
+- 元の C への cocone の共同全射性は一変数多項式、同じ像の一致は差一つの商で示し、実際の環の IsColimit と Spec の IsLimit を返す。元の C の有限型性・有限表示性は仮定しない。
+- 元の Spec C→Spec R の v 判定があれば、各段 D→C と合成からの消去により、同じ基底 R 上の Spec D→Spec R が v 被覆となる。この段階で係数基底を変えない。係数環の有限型 F_p 模型はこの後に構成する。
+
+この分割だけで有限型 F_p の被覆模型の全図式や conerve の比較が完成したとは数えない。
+
+
+### B03：有限表示 affine v 被覆の実際の被覆係数模型
+
+`AffineVCoverCoefficientModel`（98行）：`exists_affineVCover_finitePresentation_coefficient_model` は任意の Noether な係数環 k、任意の k-代数 R と有限表示 R-代数 C、元の affine v 判定から、有限生成 k-部分代数 B、Noether 性、実際の有限表示 B-代数 C₀、模型の v 判定と R⊗_B C₀≃_R C を構成する。固定の整数平坦模型の実際の細分を同じ係数段へ降ろし、固有全射・平坦全射の合成からの消去で模型の v 判定を得た。元の R の Noether 性・忠実平坦性、模型の存在や v 判定を追加仮定にしていない。
+
+本体98行・入口1行。スカラー制限した部分代数と tensor の環構造の表示を明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,029ジョブ、小監査4宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-affine-vcover-coefficient-model-check-7.log`・`2g-affine-vcover-coefficient-model-native.log`・`2g-affine-vcover-coefficient-model-audit.log`。
+
+G1・G2共用部品込み本体14,340行、入口込み14,581行。有限表示側の一段の実際の被覆模型まで到達した。一般の元の射の近似・有限型 F_p 模型の filtered 図式・conerve の整合性を含む B03・B04 と B02 のまとめはなお未完で、停止点 2g-1 ではない。
+
+一覧：済み14／全体17（うち追加8）。
