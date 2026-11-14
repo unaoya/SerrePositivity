@@ -15742,3 +15742,98 @@ M14の完了を意味せず、目標・範囲・外枠を縮めない。
 数学実測**18,308行**、一覧**12/48（追加4）**は不変。
 本ターンはこの報告だけを保存する。Lean・drafts・界面・共有入口・mainには変更せず、
 ビルド・監査・共有鍵の取得も行わない。
+
+## 220. §32承認による再開（11-14夜）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+ユーザー承認のmain 81a3a3b31（W16 §32）をmath/bs-implへfast-forwardで取り込んだ。
+§208・§219の外枠による停止条件は、この明示の承認で解消された。
+外枠は**31,000行**へ変更、約**25,000行**で止まらず途中報告。
+型つき一覧48本と数え方・G10の部品を作らない規則は維持する。
+開始時実測18,308行、L12a3,101行、未検証のLeanはなし。
+
+§205の残り色の全位置・全頂点の順序同値から実装を再開する。
+完備化後のP⁰については§32の三案(a)(b)(c)を別に紙で比較し、仮定で隠さない。
+(c)が必要と判明したときはD79の判断に関わるため止まって報告する。
+G10・M15・G12・drafts・界面・他レーンのファイルには触れない。
+
+§205の最初の有限比較を実装前に点検した。
+`/tmp/bsw16/check-remaining-word-positions.py`：12,233組の元の合成切断の点検へ、
+全ブロックの最初の位置の狭義順序と、残り色の全出現位置・濃度の一致を加え、全例で一致。
+これはLeanの全称証明とは別の点検。型は§205のままで、同じ既存構成の法則・証明分割。
+
+## 221. C451の既存区間移送の証明分割（§205の続き）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+`colorPathOrderIso`を、同じ指定二座標の写像・その座標の法則・狭義単調性へ分割する。
+新しい作用や定理の追加ではなく、§205の同じ既存構成の法則。各証明200行以内。
+以下の共通変数のもとでの補助の型を記録する。
+
+```lean
+variable {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+  (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1))
+  (a : Fin r) (b : Fin r')
+  (e : ↥(Surjection.occurrences u.val a) ≃o ↥(Surjection.occurrences v.val b))
+  (hl : ∀ p, lo s p.val = lo t (e p).val)
+  (hr : ∀ p, hi s p.val = hi t (e p).val)
+
+def colorPathMap (x : ↥(colorPositions s u.val a)) : ↥(colorPositions t v.val b)
+
+lemma colorPathMap_coordinates (x : ↥(colorPositions s u.val a)) :
+  t.horizontal (colorPathMap s t u v a b e hl hr x).val =
+    (e ⟨s.horizontal x.val, Finset.mem_filter.mpr
+      ⟨Finset.mem_univ _, (Finset.mem_filter.mp x.property).2⟩⟩).val ∧
+  t.vertical (colorPathMap s t u v a b e hl hr x).val = s.vertical x.val
+
+lemma colorPathMap_strictMono : StrictMono (colorPathMap s t u v a b e hl hr)
+```
+
+これをC451hへ渡す残り色の同じ指定面の比較の型は次。
+元のSigmaの等式であり、ホモトピー圏へ弱めない。退化した切断にも適用する。
+
+```lean
+lemma positiveComposite_remaining_face {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a : {a : Fin (m + 1) // a ≠ k}) :
+    (⟨outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) a.val,
+       vertices (positiveCompositeOuterCut u v k c) (positiveWord u) a.val⟩ :
+        Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) =
+      ⟨outputDegree c.2 (positiveCompositeCutWord u v k c.1)
+          (BarrattEccles.remainingPosition m (n + 1) k a),
+       vertices c.2 (positiveCompositeCutWord u v k c.1)
+          (BarrattEccles.remainingPosition m (n + 1) k a)⟩
+```
+
+元の同じブロックの最初＝最後（non-slot）、同じ両端、§205の出現位置の順序同値、
+上の全頂点の順序同値、`faceData_eq_of_colorOrderIso`を順に使う。
+挿入色・符号・L12a全体が閉じたとは扱わない。
+
+## 222. §205の残り色の比較：検証済み・取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+新しい5本306行を検証した。全出現位置の順序同値を、同じ区間の両端を使って全頂点へ
+持ち上げ、元のSigma型の中で残り色の指定面を厳密に照合した。非退化性は仮定しない。
+新しい公理・sorryなし。既存の公開宣言・界面・drafts・共有入口は変えていない。
+
+対象ビルド：`m14-remaining-word-positions-01.log`（2,859 jobs）、
+`m14-remaining-color-faces-01.log`（2,863 jobs）、ともに成功・対象警告0。
+`ColorPathTransport`の最初の二回は簡約とsubtypeの所属証明の明示で修正し、最後のビルドで検証した。
+小さい監査：`/tmp/bsw16/audit-m14-remaining-color-faces.log`、
+**5モジュール・27宣言、標準三公理のみ**。鍵はビルド・監査ごとに取得し、終了時に返した。
+
+調整役が登録すべきモジュール（共通接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+- OccurrenceCardinalities（25行）
+- CompositeFirstPositionOrder（31行）
+- RemainingWordPositions（65行）
+- ColorPathTransport（140行）
+- RemainingColorFaces（45行）
+
+M14実測**18,614行**、L12a実測**3,407行**。一覧の完了は12/48のまま。
+§207の残り色の160〜280行に対し実測306行（上端から26行増）。
+他の行を据え置いた完成見込みは**25,331〜30,771行**で、31,000行の外枠内だが余裕は小さい。
+挿入色・符号・nullary・後段を完成済みとして控除していない。
