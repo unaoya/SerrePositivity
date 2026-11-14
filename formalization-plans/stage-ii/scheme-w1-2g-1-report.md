@@ -501,3 +501,5 @@ C02 内の主三項目は済み **1／全体 3**（(ii) のみ）。(i) の大�
 一覧：済み 7／全体 13（うち追加 4）。
 
 次の C02.(i) のアフィン比較の法則：`exists_fg_subideal_map_contains_finset f I s hs` は任意の環準同型 f:A→B と有限集合 s⊆Ideal.map f I に対し、有限生成 J≤I で s⊆Ideal.map f J を得る。これは Stacks 01PF のアフィンでの有限選択を、生成イデアルへの所属の有限性で扱う分割で、局所化の仮定を要しない。見込み 60〜140 行。この法則を K.map_ideal と組み、アフィン基底上の有限個のアフィン開の切断を同じ有限生成イデアルへ含める。
+
+C02.(i) の有限型性の係数比較の法則：`isFiniteTypeIdealSheaf_of_fg_top` はアフィン X において K の全体切断イデアルの有限生成性から IsFiniteTypeIdealSheaf K を得る。`isFiniteTypeIdealSheaf_ofIdealTop` は有限生成な大域切断イデアルから作る既存の ofIdealTop の有限型性、`IsFiniteTypeIdealSheaf.sup` は有限和による安定性。原典 01TV のアフィン局所判定と 01PG の有限和の部分。いずれも既存の map_ideal・FG.map・FG.sup の法則で、見込み 40〜100 行。
