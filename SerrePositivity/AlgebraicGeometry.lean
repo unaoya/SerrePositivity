@@ -1555,3 +1555,7 @@ public import SerrePositivity.AlgebraicGeometry.IntegerFlatRefinementCoefficient
 public import SerrePositivity.AlgebraicGeometry.SchemeVCoverFlatSurjective
 
 public import SerrePositivity.AlgebraicGeometry.AffineVCoverCoefficientModel
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverTensorModel
+
+public import SerrePositivity.AlgebraicGeometry.PrimeFieldAffineVCoverCoefficientModel

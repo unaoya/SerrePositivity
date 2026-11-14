@@ -2479,3 +2479,16 @@ B03・B04 の一般の元の射へ戻す近似の分割（着手前の型、見�
 G1・G2共用部品込み本体14,340行、入口込み14,581行。有限表示側の一段の実際の被覆模型まで到達した。一般の元の射の近似・有限型 F_p 模型の filtered 図式・conerve の整合性を含む B03・B04 と B02 のまとめはなお未完で、停止点 2g-1 ではない。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B03・B04：tensor 底変換と有限型 F_p への実際の移送
+
+`AffineVCoverTensorModel`（27行）：`isSchemeVCover_affineTensorModel` は指定した実際の tensor 同型の Cartesian 比較から、模型の v 判定を任意の底変換後へ移す。平坦性は要求しない。
+
+`PrimeFieldAffineVCoverCoefficientModel`（45行）：`exists_primeField_affineVCover_coefficient_model` は有限表示 affine v 被覆から、両環とも有限型 F_p の実際の被覆模型を返す。始域の F_p 構造・scalar tower、模型の有限表示性・v 判定と元の tensor 同型を同時に保持する。零環を除外しない。
+
+本体72行・入口2行。両単独検証、ソース完全一致、二対象と直接 importer AlgebraicGeometry のビルド5,031ジョブ、小監査2宣言（各1）・標準三公理のみ、すべて終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-affine-vcover-tensor-model-check.log`・`2g-prime-field-affine-vcover-coefficient-model-check.log`・`2g-affine-vcover-model-transfer-native.log`・`2g-affine-vcover-model-transfer-audit.log`。
+
+G1・G2共用部品込み本体14,412行、入口込み14,655行。現在の区切り（8d7bacd9c の後）は5モジュール307行＋入口5行、小監査計8宣言・標準三公理のみ。B02〜B04 は未完で停止点 2g-1 ではない。全体の見込み約16,100〜19,200行、残り約1,700〜4,800行、外枠25,000行は維持。
+
+一覧：済み14／全体17（うち追加8）。
