@@ -1,0 +1,31 @@
+{
+  "status": "prepared-only-not-started",
+  "authorization_required": "One uncached full-gate verify ticket longer than30min; requested max60min. No answer received.",
+  "lock": {
+    "class": "bulk",
+    "wait": 3600,
+    "proposed_ticket_limit_seconds": 3500,
+    "night_only": true
+  },
+  "env": {
+    "VERIFY_JOBS": "4",
+    "VERIFY_MEMORY_GB": "28",
+    "VERIFY_CACHE": "0"
+  },
+  "actual_guard": {
+    "max_process_tree_rss_bytes": 32000000000,
+    "max_heavy_jobs": 4,
+    "night_end": "08:00 JST"
+  },
+  "policy": "28GB scheduler reservation budget leaves headroom under actual32GB guard. Same full106 audits, root, prerequisites, sorry closure; no test hooks, unchanged public verifier/comparator. New run starts from the beginning, not a non-gate cached resume.",
+  "prior_failure": {
+    "audit_progress": "104/106",
+    "seconds": 1691.1652,
+    "peak_process_tree_rss_bytes": 32190054400,
+    "reason": "memory budget32GB"
+  },
+  "cache_alternative": {
+    "adopted": false,
+    "reason": "VERIFY_CACHE=1 is officially non-gate; no such verify run executed. Original cache restored."
+  }
+}
