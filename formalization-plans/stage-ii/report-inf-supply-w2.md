@@ -12821,3 +12821,55 @@ theorem exists_grothendieckKanCoefficientLift :
       ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
         grothendieckKanCoefficientMap F
 ```
+
+## 202. 元のbar/scaffoldとKan係数への射の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 19（うち追加 7）。R03f・R03d・R02・R03は未完了。
+
+元のCat図式のnerve係数にtaut scaffoldを取り、R03eの同じ逆射を後合成して、barから元のGrothendieck射列への全空間の射を得た。同じ基底への射影を保ち、元のKan係数への実射との合成は、barの元の係数単位の自然変換の後にKan係数のtaut scaffoldを続けた射と厳密に一致する。quasicategory係数用の既存のscaffold定理から、この元のbar→Grothendieck射列の射自身の前合成同値性も得た。Kan性を非Kanなnerve係数へ仮定していない。
+
+270：新規一本の対象ビルド2,389 jobs・終了0、小監査123本904宣言・標準三公理のみ。実ハンドル89697の終了0を確認し、鍵返却済み。個別検査66223も終了0。今回59行、累計123本・8,105行／外枠15,000。R03fは128行／見込み900〜1,450行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りは、係数のEx∞単位のbar上の相対的な性質から、元の単位を固定する延長の前合成同値性を得る部分である。対象ごとの通常の弱同値から全空間の圏同値を直接主張しない。
+
+### 202.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### GrothendieckKanScaffold（59行）
+
+```lean
+def grothendieckNerveScaffold :
+    simplicialReplacement (F ⋙ nerveFunctor) ⟶ nerve (Grothendieck F)
+
+theorem grothendieckNerveScaffold_projection :
+    grothendieckNerveScaffold F ≫ nerveMap (Grothendieck.forget F) =
+      simplicialReplacementProjection (F ⋙ nerveFunctor)
+
+theorem grothendieckNerveScaffold_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (grothendieckNerveScaffold F)
+
+theorem grothendieckNerveScaffold_kanCoefficientMap :
+    grothendieckNerveScaffold F ≫ grothendieckKanCoefficientMap F =
+      simplicialReplacementMap (grothendieckKanCoefficientUnit F) ≫
+        tautScaffold (grothendieckKanCoefficients F)
+```
+
+## 203. R03f.1：Kan標的へのanodyne射のleft anodyne性（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 20（うち追加 8）。R03f.1を追加、未証明。
+
+§19の同じまとまり・見込み1,500行以下の枠で、次の一般補題をR03f.1として加える。R03fのEx∞単位の相対的な持ち上げ性に使う数学的な中間定理であり、既存構成の自然性の法則と混同しない。
+
+```lean
+theorem anodyneExtensions_leftAnodyne_of_kanTarget
+    {X Y : SSet.{u}} [KanComplex Y] (f : X ⟶ Y)
+    (hf : SSet.anodyneExtensions f) :
+  leftAnodyneExtensions f
+```
+
+`leftAnodyneExtensions` はTheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrationsの既存の定義。このPropの型は一時ファイルCheckISW2AnodyneKanTargetLeftType.leanで確認済み（実ハンドル37011・終了0）。未証明の宣言や仮定として本体に入れない。
+
+置き場所はKerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/AnodyneKanTarget.leanを想定する。同名の既存ファイルはない。見込み150〜300行。左ホーンの持ち上げによって、Kan基底上のleft fibrationの全空間もKanであることを既存のkanComplex_of_leftHornFillersに渡せる。一般の持ち上げ問題をY上へ引き戻すと、その射影はKan複体間のleft fibrationであり、既存leftFibration_fibration_of_kanComplexから全ホーンを持ち上げる。hfのanodyne性でその引き戻した射影への持ち上げを得て、元の問題へ戻す。これをleftHornInclusions.rlp.llpとして束ねる。モデル構造の仮定は使わない。
+
+この補題が得られてもbarが係数のleft anodyne射をどのように保つかの検証と、元のR03fの前合成同値性は残る。R03f.1だけをもってR03fまたはR03dの完成とは扱わない。R03f.1の実測は独立に記録し、外枠15,000行にも含める。次はこの型の証明に進む。
