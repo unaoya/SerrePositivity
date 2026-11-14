@@ -13243,3 +13243,120 @@ L11を残りの見込みから除いて更新する。
 残るL12aなどの数学を完成済みとして控除していない。
 次は固定したL12aの二段切断と一段切断の有限項の対応。
 G10の部品、M15・G12には触れない。B4は595254e10で完了済みのまま。
+
+## 157. L12a の入口：元の合成側の添字と項（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+L11は6d7768d43へ保存した。次は§112.2の固定したL12aの全体（nullaryを含む）へ進む。
+まず内側arityがn+1の枝で、既存OverlapPartitionと合成基底語の切断をそのまま直積にする。
+外側語の長さはm+1+d、合成語の長さはm+(n+1)+(d+e)。切断区間の数
+m+n+(d+e)+1へ等式移送するだけで、色や合成語は変えない。
+compositeBasisWord_listとC345の同じ語長の移送の法則で、指定した元のリストとの一致を保持する。
+
+合成側の値は元のcompositionSign倍の元のcutTerm。全次数−(d+e+q)へ同じ等式で移す。
+退化した面も添字から除外せず、C347で元の正規化生成元により零になる値として保持する。
+これは§112のCompositeBalanceIndexの合成側の正arityの枝を構成するもので、
+新しい数学を一覧へ足すものではない。nullary・二段側・対応・符号・実テンソルの比較は未完。
+型は次。
+
+```lean
+abbrev PositiveCompositeCutIndex {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (_v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ)
+
+def positiveCompositeCutWord {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Surjection.Word (m + (n + 1)) ((m + n + (d + e)) + 1)
+
+lemma word_eq_mp_ofFn {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l) :
+    List.ofFn (Eq.mp (congrArg (fun k => Surjection.Word r k) h) v).val =
+      List.ofFn v.val
+
+lemma positiveCompositeCutWord_list {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    List.ofFn (positiveCompositeCutWord u v k r).val = Surjection.compositeWord u v k r
+
+def positiveCompositeCutTerm {m n d e q : ℕ} (S : SSet.{0})
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + (n + 1))).X (-((d + e + q : ℕ) : ℤ))
+
+lemma positiveCompositeCutTerm_eq_zero {m n d e q : ℕ} (S : SSet.{0})
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌)
+    (h : ¬Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    positiveCompositeCutTerm A S u v k c x = 0
+```
+
+各証明200行以内。この枝の型検査だけでL12aの全称主張を完了として数えない。
+L12a全体の1,400〜2,400行の見込みを保持し、半分に達した時点で実測と残りを報告する。
+
+## 158. L12a の合成側の最初の枝の検証・保存
+
+一覧：済み 12／全体 48（うち追加 4）
+
+PositiveCompositeCuts.lean の対象ビルド成功（2,190 jobs）、
+小さい監査成功（1モジュール・24宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。監査には添字PositiveCompositeCutIndexのFintypeを
+全パラメータで合成するexampleも含め、単に「有限のはず」とは扱わなかった。
+C346で残った語長の算術は、元の長さの等式をomegaで明示して閉じた。
+語の値・順序・符号は変えない。各証明200行以内。
+
+登録候補：`SerrePositivity.EInfinity.SimplexCuts.PositiveCompositeCuts`。
+実測78行。M14は15,207+78=**15,285行**、外枠25,000行の残り9,715行。
+L12aの実装済み前段78行であり、対応・二段側・nullary・符号・実テンソルの比較は未完。
+一覧の完了数を増やさない。
+L12a全体の1,400〜2,400行の見込みにこの78行を含め、後で重複加算しない。
+§156.1の全体の22,611〜28,521行の見込みと上端超過リスクを保持する。
+
+ログ：`/tmp/bsw16/m14-positive-composite-cuts-02.log`。
+監査入力：`/tmp/bsw16/audit-m14-positive-composite-cuts.lean`、
+結果：`/tmp/bsw16/m14-positive-composite-cuts-audit.log`。
+ビルド・監査ごとに鍵を取り、終了・返却を確認した。
+
+## 159. 次のL12aの有限対応の原型の点検（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+正の内側arityで、合成語の位置には「元の外側の位置」を付ける。
+代入色の位置だけは、分割のstartからの内側位置も付ける。
+合成切断の各頂点を（外側位置、元の単体頂点）へ写し、隣り合う同一点をまとめると
+元の外側切断になる。その外側切断の代入色の頂点だけを、元の順序で順位付けする。
+元の合成切断の代入色部分を（内側位置、この順位）へ写すと、内側切断になる。
+重なる分割の隣の部分語は端点の内側位置を共有するため、外側の別の出現へ移る所も
+内側切断の縦の一歩になる。
+
+この写像の原型をPythonで点検した。外側の位置数1〜4、非空な全代入位置マスク、
+内側長1〜4、入力次元0〜3。分割は元の正の部分長と総和の条件を全列挙し、
+切断は全shuffle経路を列挙した。退化項の添字を除いていない。
+**416条件・21,939組で、得られた外側/内側切断が正しい経路であり、単射・全射を確認した。**
+スクリプト：`/tmp/bsw16/check-composite-cut-projection.py`、
+結果：`/tmp/bsw16/check-composite-cut-projection.log`。
+これは有限点検であってLeanの全称証明ではない。色マスクは語より一般の位置マスクで
+点検したが、色・compositionSign・実テンソルの値を比較したとは扱わない。
+
+対応の次の型案（未実装）は次。L12aの同じ添字の対応の証明の分割であり、
+別の数学のまとまりとして追加するものではない。
+
+```lean
+abbrev PositiveNestedCutIndex {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (_v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ) :=
+  Σ s : Cut (m + d) q, Cut (n + e) (outputDegree s (positiveWord u) k)
+
+-- 正の内側arityの同じ全有限添字を対応させる構成案：
+positiveCompositeNestedEquiv {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ) :
+  PositiveCompositeCutIndex u v k q ≃ PositiveNestedCutIndex u v k q
+```
+
+逆向きでは、外側の各代入色の出現に属する内側切断の横ステップをまとめる。
+その最初/最後の内側位置から部分長を読み、共有端点と全横ステップ数により
+既存OverlapPartitionの条件を示す。外側の他の色の経路を挟んで合成切断を復元する。
+この幾何学的対応だけでcompositionSign・cutSign・指定面・実テンソルの比較が
+閉じたとは数えない。nullaryも別に残る。
+
+退化入力については既存`DegenerateInput.lean`の`cutTensor_degenerate`が
+項ごとの零を供給することを確認した。したがって二段側の退化した元の面を扱う際、
+単に和全体の相殺を仮定しない。この補題を使える形への指定面の比較も残る。
