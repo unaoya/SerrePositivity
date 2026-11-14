@@ -1431,3 +1431,4 @@ public import SerrePositivity.AlgebraicGeometry.OpenAtlasTripleModels
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasOriginalArrows
 public import SerrePositivity.AlgebraicGeometry.CartesianModelArrow
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasArrowFamily
+public import SerrePositivity.AlgebraicGeometry.CoefficientArrowStage

@@ -1287,3 +1287,17 @@ B01 の実際の係数段への接続（着手前の型、見込み100〜240行�
 G1・G2共用部品込み本体8,258行、入口込み8,404行。一般の有限表示対象の模型の分割1,596行。実際の三種の射と有限族の入力は供給できた。有限個の式を同じ段で成立させる部分、貼り合わせ、一般の固有性の降下と被覆模型は残り、B01〜B04は未完。次の具体的な係数段への接続は未検証下書きでこの実測に含めない。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の段の開包含と有限個の式の移送（着手前の型、合計見込み120〜300行）：`baseChangedOverlapMap γ p q` は Spec の段の底変換の二つの模型間の実際の射、`isPullback_baseChangedOverlapMap` はこれが q の底変換であること、`isOpenImmersion_baseChangedOverlapMap` は開包含を保存する法則。`exists_finite_stage_pullback_equalities_of_isLimit` は有限個の段の二つの射について、基底座標が同じで固定模型への射影が極限で一致するなら、一つの後の段で実際の射そのものが全て一致することを返す。固定模型への既存の有限個の一致判定と pullback の二射影による一意性の法則で、射影の単射性・忠実平坦性を仮定しない。逆・恒等射・cocycle の有限個の式に使う。親項目は増やさない。
+
+
+### B01：実際の有限生成係数部分代数の同じ段への接続
+
+`CoefficientArrowStage`（74行）：`CartesianModelArrow.comparisonAt` は元の源から段の底変換模型への実際の比較、`comparisonAt_eq_coneProjection` はこれが元の源を保つ cone の射影と一致すること、`exists_coefficient_stage` は有限族の射の実際の有限生成係数部分代数の共通段と全射を、基底座標・元の比較との合成式付きで供給する。係数段の射に忠実平坦性は要求しない。
+
+本体74行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,933ジョブ成功。小監査6宣言・標準三公理のみ。単独束の終了状態0・公開前のソース完全一致を確認済み。ログ `2g-coefficient-arrow-stage-check.log`・`2g-coefficient-arrow-stage-native.log`・`2g-coefficient-arrow-stage-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体8,332行、入口込み8,479行。一般の有限表示対象の模型の分割1,670行。次の段の開包含・有限個の式の移送は未検証下書きでこの実測に含めない。有限個の逆・cocycle の式を同じ段へそろえた gluing datum の供給、全体の模型、一般の固有性の降下、被覆模型が残る。B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
