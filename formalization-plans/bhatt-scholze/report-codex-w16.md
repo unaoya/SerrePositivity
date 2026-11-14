@@ -23138,3 +23138,104 @@ cosimplicial代数の加群忘却へ適用できる一般性で、有限次元�
 小さい監査2モジュール21宣言・標準三公理のみ、sorry・追加公理0。
 各証明200行以内。共有鍵は対象ビルド・監査の間だけ取り、返却済み。
 L20の同じ制限微分・包含・写像へ進む。
+
+## 397. L20の同じ制限微分・包含・自然性（実装前の型）
+
+一覧：済み 21／全体 48（うち追加 4）
+
+元の交代余面複体の二乗零を使い、L19の核への制限を自然数コチェイン複体へ束ねる。
+射は同じf.appの制限、包含は元の部分加群のsubtype。最後はembeddingUpNatによる
+既存の零延長関手へ送る。G10・実現・native Totの部品は作らない。
+既存構成の制限・微分・自然性・貼り合わせの法則と証明分割で新しいIDなし。
+各証明200行以内。
+
+```lean
+lemma alternatingCofaces_eq_objD_hom (A : Type u) [CommRing A]
+    (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    alternatingCofaces A X q = (AlgebraicTopology.AlternatingCofaceMapComplex.objD X q).hom
+def normalizedDifferential (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    ModuleCat.of A (normalizedSubmodule A X q) ⟶ ModuleCat.of A (normalizedSubmodule A X (q + 1))
+lemma normalizedDifferential_squared (A : Type u) [CommRing A]
+    (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    normalizedDifferential A X q ≫ normalizedDifferential A X (q + 1) = 0
+
+def normalizedCochainNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    CochainComplex (ModuleCat A) ℕ
+def normInclusionNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    normalizedCochainNat A X ⟶ (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X
+lemma normalized_map_mem (A : Type u) [CommRing A] {X Y : CosimplicialObject (ModuleCat A)}
+    (f : X ⟶ Y) (q : ℕ) (a : normalizedSubmodule A X q) :
+    (f.app ⦋q⦌) a.val ∈ normalizedSubmodule A Y q
+
+def normalizedMapNat (A : Type u) [CommRing A] {X Y : CosimplicialObject (ModuleCat A)} (f : X ⟶ Y) :
+    normalizedCochainNat A X ⟶ normalizedCochainNat A Y
+def normalizedCochainNatFunctor (A : Type u) [CommRing A] :
+    CosimplicialObject (ModuleCat A) ⥤ CochainComplex (ModuleCat A) ℕ
+def normalizationInclusionNat (A : Type u) [CommRing A] :
+    normalizedCochainNatFunctor A ⟶ AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)
+
+def normalizedCochainFunctor (A : Type u) [CommRing A] :
+    CosimplicialObject (ModuleCat A) ⥤ Complex A
+def unnormalizedCochainFunctor (A : Type u) [CommRing A] :
+    CosimplicialObject (ModuleCat A) ⥤ Complex A
+def normalizationInclusion (A : Type u) [CommRing A] :
+    normalizedCochainFunctor A ⟶ unnormalizedCochainFunctor A
+def normInclusion (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (normalizedCochainFunctor A).obj X ⟶ (unnormalizedCochainFunctor A).obj X
+lemma normInclusion_d (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (i j : ℤ) :
+    ((normalizedCochainFunctor A).obj X).d i j ≫ (normInclusion A X).f j =
+      (normInclusion A X).f i ≫ ((unnormalizedCochainFunctor A).obj X).d i j
+lemma normInclusion_naturality (A : Type u) [CommRing A]
+    {X Y : CosimplicialObject (ModuleCat A)} (f : X ⟶ Y) :
+    (normalizedCochainFunctor A).map f ≫ normInclusion A Y =
+      normInclusion A X ≫ (unnormalizedCochainFunctor A).map f
+```
+
+§397の整数零延長の次数比較も、既存extendXIsoの指定同型として取り出す。
+
+```lean
+def normalizedCochainXIso (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    ((normalizedCochainFunctor A).obj X).X (q : ℤ) ≅ ModuleCat.of A (normalizedSubmodule A X q)
+```
+
+## 398. L20の全整数正規化複体と指定包含（検証済み、取り込み点）
+
+一覧：済み 22／全体 48（うち追加 4）
+
+L19の元の核への制限微分を自然数コチェイン複体に束ね、
+二乗零は元の交代余面複体のd_squaredから判定した。
+全余単体的写像の各項を同じ核へ制限して関手にし、元のsubtypeの包含を自然変換にした。
+これらを既存embeddingUpNatの零延長関手へ送り、全整数での微分との可換性と自然性を得た。
+整数非負次数と元の全codegeneracy核の指定比較も既存extendXIsoで明示した。
+一般余単体的A加群の構成なので、cosimplicial代数の加群忘却へ適用できる。
+指定包含のホモトピー逆（L21）、代数作用やnative Totは完成扱いにしない。
+
+登録対象：SerrePositivity.EInfinity.CosimplicialNormalization の下
+
+- NatComplex（63行）
+- NatFunctor（91行）
+- IntegerComplex（57行）
+
+今回211行、M14実測30,128行、外枠31,000行まで872行。
+対象ビルド1920 jobs成功、追加警告0。
+小さい監査3モジュール31宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+
+### 398.1 L21への既存APIの入口と残りの外枠
+
+MathlibのDoldKan.Degeneracies.leanにはσ_comp_PInftyと
+`degeneraciesVanish_iff_QInfty_f_comp`、PInfty.leanにはPInfty_f_add_QInfty_fがある。
+HomotopyEquivalence.leanの`homotopyPInftyToId`を、同じcosimplicial対象を
+反対圏で見たsimplicial対象へ適用できる。
+Homotopy.unopとEmbedding/ExtendHomotopy.leanのHomotopy.extendも既存。
+従ってL21では新しい収縮を作らず、同じPInftyの反対圏による移送を試す。
+移した射影が全σの核に入ること、核で恒等であること、
+同じ指定包含との合成が元の射影であることの接続はまだ未実装。
+
+この接続と指定ホモトピー逆の包装を新規300〜550行程度と暫定見積もりする。
+L21をこの範囲で閉じても残り外枠は322〜572行。
+§314のL22〜26の未供給の評価・復元の下端900行だけでもそこに収まらない。
+外枠は自分では上げず、次の接続が超えそうな所で検証済みをコミットして停止する。
+L22以降やMayのtop計算、完備化後P⁰の未評価分を消した見積もりにはしない。
+完備化の三案の比較は§380のまま。指定Frobeniusとの比較は未解決で、仮定を追加していない。
