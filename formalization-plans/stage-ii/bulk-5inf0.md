@@ -44,3 +44,7 @@
 ## 4. 報告
 
 `report-bulk-w1.md` に節を足して自分の枝にコミットする。区切りごとに一覧の進み、drafts の sorry の数の増減、本体に足した宣言、ビルドと監査の結果。
+
+## 5. 追記（2026-11-14 午後、調整役）：drafts の import・改名の追従
+
+B3・B4 は drafts を対象から外したので、drafts の古い import・名前は誰も追従していない。5∞-0 の範囲に **drafts 全体の import と B3 の改名への追従**を入れる（`bulk-w1-b3` の module-map・namespace-rewrite-map を使う、数学は変えない）。**例外**：⑤a の持ち分の `drafts/Shared/EInfinityPowerOperation.lean`・`drafts/A4` の P⁰ の部分も、**import 行と改名された完全名の機械的な書き換えだけ**はしてよい（例：存在しない `…Project.DerivedCategories.Homology` の import）。主張・証明・型は触らない。変えた行は報告に書き、⑤a に知らせる。
