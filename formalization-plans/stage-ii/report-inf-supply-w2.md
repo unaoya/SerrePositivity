@@ -12132,3 +12132,41 @@ def strictBETotJointSourceFrameAugmentationIso :
       (nerveMap (strictBETotJointSourceFrameConstant A) ≫ strictBETotModelSource A)
 
 ```
+
+## 189. 元の全source frame射の要素圏と両端の四角形（R03d、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未完了。
+
+既存のresolutionHomを二度uncurryし、全始域・全標的・全単体次数のHom係数の要素圏を取った。元の各射の始域を反変な関手、標的を共変な関手として記録した。要素圏の全射について、同じ実際の射が与える可換四角形を証明した。始域のframeの自然性と元の要素圏のmap_valの合成であり、新しい比較射やframeは選んでいない。
+
+257：新規一本の対象ビルド1,126 jobs・終了0、小監査101本761宣言・標準三公理のみ。実ハンドル35588の終了0を確認し、鍵を返却済み。sorry・独自公理0、計算上限変更なし。今回65行、累計101本・6,620行（外枠15,000）。R03dに関係する§188以降の検証済みは208行。
+
+この要素圏は元の係数の表示と自然性の法則なので、新しい一覧項目には数えない。R03dの残りは、同じ全要素圏と同じaugmentationの大域的な逆から正本Hom∞への比較を作り、分類と固定始域の既存比較との一致を示すこと。始域が反変なので、今回の四角形を通常の二つの共変関手の自然変換として扱わない。点ごとのroofのホモトピーだけで全高次自然性を済ませることもしない。
+
+次は同じ両端を持つ全要素の射をtwisted arrowへ送る全写像を組み立てる。厳密なtwisted arrowの同型全体を新たに作る必要があるとはまだ判断していない。まず既存のedgewise重みの標準単体表示と元の可換四角形で必要な写像を作る短い経路を試す。R03dの型と§187の見込みの範囲で進め、追加の中間定理が必要な場合は§19の枠に従って型と見込みを記録する。
+
+既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 189.1 既存構成の表示・自然性の型（65行）
+
+```lean
+def sourceFrameArrowCoefficients :
+    ((Cᵒᵖ × C) × SimplexCategoryᵒᵖ) ⥤ Type v
+
+abbrev SourceFrameArrowElements
+
+def sourceFrameArrowParameters : SourceFrameArrowElements Q R ⥤
+    ((Cᵒᵖ × C) × SimplexCategoryᵒᵖ)
+
+def sourceFrameArrowDomain : SourceFrameArrowElements Q R ⥤ Cᵒᵖ
+
+def sourceFrameArrowCodomain : SourceFrameArrowElements Q R ⥤ C
+
+def sourceFrameArrowValue (s : SourceFrameArrowElements Q R) :
+    ((sourceFrameArrowDomain Q R).obj s).unop ⟶ (sourceFrameArrowCodomain Q R).obj s
+
+theorem sourceFrameArrowValue_naturality {s t : SourceFrameArrowElements Q R} (f : s ⟶ t) :
+    ((sourceFrameArrowDomain Q R).map f).unop ≫ sourceFrameArrowValue Q R s ≫
+      (sourceFrameArrowCodomain Q R).map f = sourceFrameArrowValue Q R t
+
+```

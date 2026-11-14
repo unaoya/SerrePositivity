@@ -98,5 +98,6 @@
   "SerrePositivity.EInfinity.FrameHom.RightMixedBifunctor",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointFirstSpan",
   "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveTransformationInversion",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointAugmentation"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointAugmentation",
+  "SerrePositivity.EInfinity.FrameHom.SourceFrameArrowElements"
 ]
