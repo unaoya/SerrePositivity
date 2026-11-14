@@ -5153,3 +5153,350 @@ E01本体の普遍性への接続は未了で、済み数には含めない。
 
 正方形側の二本は全ゴールを閉じた後のkernelの確認で既定上限に達した。
 検証済みに混ぜず、不透明な証明分割へ局所化して続ける。
+
+## 55. 指定単位の正方形表示と合成則の検査の局所化
+
+一覧：済み 0／全体 13（うち追加 11）
+
+B4 は §50 で完了済み。E01 の元の指定単位の係数移送を継続中。
+計算上限は不変。局所 let を自動で一般化せず、既存の構成の法則と証明分割の型を明示する。
+新しい独立の数学的な主張は足さず、元の単位と底変換を保持する。
+
+正方形の合成則は全ゴールを閉じても、まとめの kernel 検査で既定上限に達した。
+引き戻し同型の逆射、前合成の一般則、同次の正規化、最後の異種等式への移送を分け、
+持ち上げの分類を型付きの補助定義で共有した。現在は三つの法則を引数に取る証明と、
+その法則を一つずつ代入する段階に分けた。個別の法則の検査が先へ進んでも、
+モジュールの対象ビルドはまだ成功していないため検証済みには加えない。
+
+指定単位側は一般の正規化比較を通過し、元の定義との比較に kernel の上限が残る。
+同じ明示的な定義を経由する分割でも上限に達したため、深い定義的等式の再計算を
+Lean の単純な展開方程式 `eq_def` による書き換えへ置き換える。
+Lean 4.35.0-rc4 の `Lean/Meta/Eqns.lean` と `Meta/Tactic/Unfold.lean` を読んだ。
+`Meta.getEqnsFor?` による細分化された方程式の読み取り採取は4分を超えたため、
+対象の子プロセスだけを終了した（終了143）。同じ整理券の runner は次の対象検証へ進んだ。
+生成された `_proof_*`・`_aux_*` の名前をソースから参照しない。
+
+未検証の Lean は作業木に残す。以下は現在の全型。全補題とも200行以下。
+検証済み累計は131本・10,684行。R2 の残りの見込みは §53 の5,450〜9,000行の範囲で、
+全体の上端は約19,700行。外枠20,800行は維持する。R3・R4のLeanには進まない。
+
+### ClassifiedSquareHomPasting（下書き 362行）
+
+```lean
+local instance squareHomPasting_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma isoPrecomp_hom {A D X : SSet.{u}} {f g : A ⟶ X}
+    (e : FunctorIso f g) (k : D ⟶ A) :
+    (e.precomp k).hom = precomposeFunctorHom k e.hom
+
+private lemma precomp_inv {A D X : SSet.{u}} {f g : A ⟶ X}
+    (e : FunctorIso f g) (k : D ⟶ A) :
+    precomposeFunctorHom k e.inv = (e.precomp k).inv
+
+private lemma classifiedHom_map_eq {E H B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    {f g : E ⟶ H} (hf : f ≫ q = p) (hg : g ≫ q = p) (h : f = g) :
+    leftClassificationHom p q f hf = leftClassificationHom p q g hg
+
+private lemma normalized_inverse_comp_heq {A X : SSet.{u}}
+    {f g f' h : A ⟶ X} (hf : f = f') (e : FunctorIso f g) (w : FunctorHom h g) :
+    HEq (w ≫ (diagramIsoCongr hf rfl e).inv) (w ≫ e.inv)
+
+private lemma squarePastingAlgebra {L : Type v} [Category.{w} L]
+    {X Y Z W V Q T : L} (u : X ⟶ Y) (bq : Z ≅ Y) (v : Z ⟶ W)
+    (s : Y ⟶ V) (bn : W ≅ V) (B₀ : T ≅ W) (w : X ⟶ Q) (a' : Q ⟶ V) (N : T ≅ Q)
+    (hv : bq.inv ≫ v = s ≫ bn.inv) (huv : u ≫ s = w ≫ a')
+    (hpi : a' ≫ bn.inv ≫ B₀.inv = N.inv) :
+    (u ≫ bq.inv) ≫ (v ≫ B₀.inv) = w ≫ N.inv
+
+private lemma precomp_comp_inv {A D X : SSet.{u}} {f g h : A ⟶ X}
+    (k : D ⟶ A) (α : FunctorHom f g) (e : FunctorIso h g) :
+    precomposeFunctorHom k (α ≫ e.inv) = precomposeFunctorHom k α ≫ (e.precomp k).inv
+
+private lemma squarePastingNormalizedAlgebra {A B X : SSet.{u}} (k : A ⟶ B)
+    {V T H : B ⟶ X} {P Q R S : A ⟶ X}
+    (u : FunctorHom P Q) (bq : FunctorIso (k ≫ V) Q)
+    (v : FunctorHom V H) (e : FunctorIso T H)
+    (s : FunctorHom Q R) (bn : FunctorIso (k ≫ H) R)
+    (w : FunctorHom P S) (a' : FunctorHom S R) (N : FunctorIso (k ≫ T) S)
+    (hv : bq.inv ≫ precomposeFunctorHom k v = s ≫ bn.inv)
+    (huv : u ≫ s = w ≫ a')
+    (hpi : a' ≫ bn.inv ≫ (e.precomp k).inv = N.inv) :
+    (u ≫ bq.inv) ≫ precomposeFunctorHom k (v ≫ e.inv) = w ≫ N.inv
+
+private lemma squareNaturalityInverse {L : Type v} [Category.{w} L]
+    {Z Y W V : L} (bq : Z ≅ Y) (bn : W ≅ V) (v : Z ⟶ W) (s : Y ⟶ V)
+    (h : v ≫ bn.hom = bq.hom ≫ s) : bq.inv ≫ v = s ≫ bn.inv
+
+private lemma inverseThree {L : Type v} [Category.{w} L]
+    {T W V Q : L} (B₀ : T ≅ W) (bn : W ≅ V) (a : V ⟶ Q) [IsIso a]
+    (N : T ≅ Q) (a' : Q ⟶ V) (ha : a ≫ a' = 𝟙 _)
+    (h : B₀ ≪≫ bn ≪≫ asIso a = N) : a' ≫ bn.inv ≫ B₀.inv = N.inv
+
+private def squareLiftClassify {A B E H : SSet.{u}} [Quasicategory A]
+    (p : E ⟶ A) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (k : A ⟶ B) (f : E ⟶ H) (hf : f ≫ q = p ≫ k) :
+    FunctorHom (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram (pullback.snd q k))
+
+private def baseChangedSquareLiftClassify {A B C H J : SSet.{u}} [Quasicategory A]
+    (q : H ⟶ B) (r : J ⟶ C) [LeftFibration q] [LeftFibration r]
+    (l : B ⟶ C) (g : H ⟶ J) (hg : g ≫ r = q ≫ l) (k : A ⟶ B) :
+    FunctorHom (leftStraighteningInfinityDiagram (pullback.snd q k))
+      (leftStraighteningInfinityDiagram (pullback.snd (pullback.snd r l) k))
+
+private lemma classifiedSquareLift_pasting {A B C E H J : SSet.{u}}
+    [Quasicategory A] (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k) (g : H ⟶ J) (hg : g ≫ r = q ≫ l) :
+    leftClassificationHom p (pullback.snd q k) (pullback.lift f p hf) (pullback.lift_snd _ _ _) ≫
+      leftClassificationHom (pullback.snd q k) (pullback.snd (pullback.snd r l) k)
+        (F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange
+          q (pullback.snd r l) (pullback.lift g q hg) (pullback.lift_snd _ _ _) k)
+        (F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange_projection _ _ _ _ _) =
+    leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      leftClassificationHom (pullback.snd r (k ≫ l)) (pullback.snd (pullback.snd r l) k)
+        (pullbackLeftPullbackSndIso r l k).inv (pullbackLeftPullbackSndIso_inv_snd_snd r l k)
+
+private lemma squarePastingInverse {A B C J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (r : J ⟶ C) [LeftFibration r] (k : A ⟶ B) (l : B ⟶ C) :
+    leftClassificationHom (pullback.snd r (k ≫ l)) (pullback.snd (pullback.snd r l) k)
+        (pullbackLeftPullbackSndIso r l k).inv (pullbackLeftPullbackSndIso_inv_snd_snd r l k) ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd r l) k).inv ≫
+      ((leftStraighteningInfinityDiagram_baseChangeIso r l).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map k)).inv =
+    (diagramIsoCongr
+      (f' := (SSet.uliftFunctor.{u + 1, u}).map k ≫
+        ((SSet.uliftFunctor.{u + 1, u}).map l ≫ leftStraighteningInfinityDiagram r))
+      (by rw [Functor.map_comp, Category.assoc]) rfl
+      (leftStraighteningInfinityDiagram_baseChangeIso r (k ≫ l))).inv
+
+private lemma squareLiftNaturalityInverse {A B C H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (q : H ⟶ B) (r : J ⟶ C) [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C) (g : H ⟶ J) (hg : g ≫ r = q ≫ l) :
+    (leftStraighteningInfinityDiagram_baseChangeIso q k).inv ≫
+      precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+        (squareLiftClassify q r l g hg) =
+    baseChangedSquareLiftClassify q r l g hg k ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd r l) k).inv
+
+private lemma squarePasting_of_laws {A B C E H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l)
+    (hv0 : (leftStraighteningInfinityDiagram_baseChangeIso q k).inv ≫
+      precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+        (squareLiftClassify q r l g hg) =
+    baseChangedSquareLiftClassify q r l g hg k ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd r l) k).inv)
+    (huv0 : leftClassificationHom p (pullback.snd q k) (pullback.lift f p hf) (pullback.lift_snd _ _ _) ≫
+      leftClassificationHom (pullback.snd q k) (pullback.snd (pullback.snd r l) k)
+        (F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange
+          q (pullback.snd r l) (pullback.lift g q hg) (pullback.lift_snd _ _ _) k)
+        (F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange_projection _ _ _ _ _) =
+    leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      leftClassificationHom (pullback.snd r (k ≫ l)) (pullback.snd (pullback.snd r l) k)
+        (pullbackLeftPullbackSndIso r l k).inv (pullbackLeftPullbackSndIso_inv_snd_snd r l k))
+    (hpi0 : leftClassificationHom (pullback.snd r (k ≫ l)) (pullback.snd (pullback.snd r l) k)
+        (pullbackLeftPullbackSndIso r l k).inv (pullbackLeftPullbackSndIso_inv_snd_snd r l k) ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd r l) k).inv ≫
+      ((leftStraighteningInfinityDiagram_baseChangeIso r l).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map k)).inv =
+    (diagramIsoCongr
+      (f' := (SSet.uliftFunctor.{u + 1, u}).map k ≫
+        ((SSet.uliftFunctor.{u + 1, u}).map l ≫ leftStraighteningInfinityDiagram r))
+      (by rw [Functor.map_comp, Category.assoc]) rfl
+      (leftStraighteningInfinityDiagram_baseChangeIso r (k ≫ l))).inv) :
+    leftClassificationSquareHom p q k f hf ≫
+        precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+          (leftClassificationSquareHom q r l g hg) =
+      leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p
+          (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      (diagramIsoCongr
+        (f' := (SSet.uliftFunctor.{u + 1, u}).map k ≫
+          ((SSet.uliftFunctor.{u + 1, u}).map l ≫ leftStraighteningInfinityDiagram r))
+        (by rw [Functor.map_comp, Category.assoc]) rfl
+        (leftStraighteningInfinityDiagram_baseChangeIso r (k ≫ l))).inv
+
+private lemma squarePasting_with_inverse {A B C E H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l)
+    (hv0 : (leftStraighteningInfinityDiagram_baseChangeIso q k).inv ≫
+      precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+        (squareLiftClassify q r l g hg) =
+    baseChangedSquareLiftClassify q r l g hg k ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd r l) k).inv)
+    (huv0 : leftClassificationHom p (pullback.snd q k) (pullback.lift f p hf) (pullback.lift_snd _ _ _) ≫
+      leftClassificationHom (pullback.snd q k) (pullback.snd (pullback.snd r l) k)
+        (F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange
+          q (pullback.snd r l) (pullback.lift g q hg) (pullback.lift_snd _ _ _) k)
+        (F1FibrationsFiberComparisonBaseChange.fiberComparisonBaseChange_projection _ _ _ _ _) =
+    leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      leftClassificationHom (pullback.snd r (k ≫ l)) (pullback.snd (pullback.snd r l) k)
+        (pullbackLeftPullbackSndIso r l k).inv (pullbackLeftPullbackSndIso_inv_snd_snd r l k)) :
+    leftClassificationSquareHom p q k f hf ≫
+        precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+          (leftClassificationSquareHom q r l g hg) =
+      leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p
+          (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      (diagramIsoCongr
+        (f' := (SSet.uliftFunctor.{u + 1, u}).map k ≫
+          ((SSet.uliftFunctor.{u + 1, u}).map l ≫ leftStraighteningInfinityDiagram r))
+        (by rw [Functor.map_comp, Category.assoc]) rfl
+        (leftStraighteningInfinityDiagram_baseChangeIso r (k ≫ l))).inv
+
+private lemma squarePasting_with_composition {A B C E H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l)
+    (hv0 : (leftStraighteningInfinityDiagram_baseChangeIso q k).inv ≫
+      precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+        (squareLiftClassify q r l g hg) =
+    baseChangedSquareLiftClassify q r l g hg k ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd r l) k).inv) :
+    leftClassificationSquareHom p q k f hf ≫
+        precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+          (leftClassificationSquareHom q r l g hg) =
+      leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p
+          (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      (diagramIsoCongr
+        (f' := (SSet.uliftFunctor.{u + 1, u}).map k ≫
+          ((SSet.uliftFunctor.{u + 1, u}).map l ≫ leftStraighteningInfinityDiagram r))
+        (by rw [Functor.map_comp, Category.assoc]) rfl
+        (leftStraighteningInfinityDiagram_baseChangeIso r (k ≫ l))).inv
+
+private lemma squarePasting_normalized {A B C E H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l) :
+    leftClassificationSquareHom p q k f hf ≫
+        precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+          (leftClassificationSquareHom q r l g hg) =
+      leftClassificationHom p (pullback.snd r (k ≫ l))
+        (pullback.lift (f ≫ g) p
+          (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+        (pullback.lift_snd _ _ _) ≫
+      (diagramIsoCongr
+        (f' := (SSet.uliftFunctor.{u + 1, u}).map k ≫
+          ((SSet.uliftFunctor.{u + 1, u}).map l ≫ leftStraighteningInfinityDiagram r))
+        (by rw [Functor.map_comp, Category.assoc]) rfl
+        (leftStraighteningInfinityDiagram_baseChangeIso r (k ≫ l))).inv
+
+lemma leftClassificationSquareHom_pasting {A B C E H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l) :
+    HEq (leftClassificationSquareHom p q k f hf ≫
+        precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+          (leftClassificationSquareHom q r l g hg))
+      (leftClassificationSquareHom p r (k ≫ l) (f ≫ g)
+        (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+
+```
+
+### HomWeightYonedaUnitSquareNormalized（下書き 130行）
+
+```lean
+local instance normalizedSquareProduct {A : SSet.{u}} [Quasicategory A] :
+    Quasicategory (A.op ⊗ A) := supplyHomWeightYonedaUnit_productQuasicategory (A := A)
+
+private def chosenJointArrow {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)
+
+private def chosenJointArrow {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)
+
+private def canonicalSquareArrow {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)
+
+private def chosenJointPrecompose {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    (α : FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)) :
+    FunctorHom (homInfinityJointEvaluation A)
+      ((uliftTensorIso.{u, u + 1} A.op A).inv ≫ functorHomBifunctorDiagram F F)
+
+private def chosenJointRaw {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    (α : FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)) :
+    FunctorHom (homInfinityJointEvaluation A)
+      ((uliftTensorIso.{u, u + 1} A.op A).inv ≫ functorHomBifunctorDiagram F F)
+
+private lemma rawChosen_heq_precompose {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    (α : FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)) :
+    HEq (chosenJointRaw F α) (chosenJointPrecompose F α)
+
+private lemma unit_heq_precomposeChosen {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    HEq (functorHomBifunctorUnit F) (chosenJointPrecompose F (chosenJointArrow F))
+
+private lemma chosenArrow_eq_square {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    chosenJointArrow F = canonicalSquareArrow F
+
+private lemma precompose_heq_of_heq {A B X : SSet.{u}} (k : B ⟶ A)
+    {f g f' g' : A ⟶ X} (α : FunctorHom f g) (β : FunctorHom f' g')
+    (hf : f = f') (hg : g = g') (h : HEq α β) :
+    HEq (precomposeFunctorHom k α) (precomposeFunctorHom k β)
+
+private lemma canonicalSquare_heq {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    HEq (canonicalSquareArrow F)
+      (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F))
+
+private lemma chosenJointPrecompose_heq {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    (α : FunctorHom (twistedArrowHomInfinity A) (functorHomBifunctorDiagram F F)) :
+    HEq (chosenJointPrecompose F α)
+      (precomposeFunctorHom (uliftTensorIso.{u, u + 1} A.op A).inv α)
+
+lemma functorHomBifunctorUnit_heq_precompose_square {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    HEq (functorHomBifunctorUnit F)
+      (precomposeFunctorHom (uliftTensorIso.{u, u + 1} A.op A).inv
+        (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+          (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+          (twistedArrowProjection_naturality F)))
+
+```
+
+検証ログ：`/tmp/is-w1/square-explicit-splits/`（`build.log`〜`build-7.log`）、
+`/tmp/is-w1/unit-staged-square/`（`build.log`〜`build-6.log`）、
+`/tmp/is-w1/unit-equation-inspection/`。整理券は一枚。
