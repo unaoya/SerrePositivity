@@ -10403,3 +10403,243 @@ L09a・L09全体を閉じたとは扱わず、§121・§123.5の規模リスク�
 
 B4取り込み点は595254e10の106本のまま。B4後の新規4モジュールは§127・§128に
 別途登録候補を記したので、B4の106本の監査に含まれるとは扱わない。
+
+## 129. 水平な両端の指定座標を共通の比較へ移す（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンはB4と内部面の実境界項を検証・コミットした進捗。B4後の作業木から続行。
+ここでは既存の`ShuffleFirstFace`・`ShuffleLastFace`の水平削除の座標公式を使う。
+新たな作用や定理を導入せず、既存C173の右端の特徴付けと削除列の定義への貼り合わせを行う。
+両端の座標・hi・削除列は、先にPythonでm,q=0〜3、3色の任意の語について
+**20,862例**を確認した（`/tmp/bsw16/check-horizontal-endpoint-transport.py`）。
+
+### 129.1 指定座標からの移送法則（C197・C198）
+
+C197は既存C174の証明を、既に供給された水平・垂直座標に依存する形で使う。
+局所型は`hne : j ≠ k`と、Fin.cast二回が元の`l`へ戻る等式`hc`。
+C198は同じ二座標を削除列の定義へ写すだけ。両方200行以内。
+
+```lean
+lemma hi_eq_of_horizontal_deleted_coordinates {m q : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j)
+    (i : Fin (m + 1)) : hi t i = hi s (a.succAbove i)
+
+lemma deletedTrace_eq_of_horizontal_coordinates {m q r : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Fin (m + 2) → Fin r) (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2))
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j) :
+    deletedTrace s v k = List.ofFn (fun j : Fin (m + q + 1) =>
+      (Surjection.erase v a (t.horizontal j), t.vertical j))
+```
+
+### 129.2 同じ境界項の貼り合わせと両端（C199–C201）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C199はC183の符号・C189の実テンソル・C195の正次数へ、C197・C198の指定座標を供給する法則。
+C200・C201は既存の始端・終端の座標公式を代入する。同じ二つの構成の照合で、
+作用の新しい法則やホモトピーを作らない。個々の補題は200行以内。
+局所の`hl`は全色の削除列の等式、`hd`は正次数、`hs`はC183の符号等式。
+`hc`は二回のFin.castの消去、`hk`は末尾の辺の終点がFin.lastである等式、
+`he`は末尾の辺の標準添字と指定`a`の等式、`hH`は既存の水平端点の判定である。
+
+```lean
+lemma outputBoundaryTerm_horizontal_of_coordinates {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hsingle : ∀ l, s.horizontal l = a → l = k)
+    (hw : w.val = Surjection.erase v.val a)
+    (hh : ∀ l : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) =
+        a.succAbove (t.horizontal l))
+    (hv : ∀ l : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) = t.vertical l)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x =
+      Surjection.deletionCoefficient v.val a •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom (cutTerm A S t w x)
+
+lemma outputBoundaryTerm_horizontal_first {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (h₀ : (0 : Fin (m + 1 + q)) ∈ s.val)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val 0)
+    (j : Fin (outputDegree s v (label s v.val 0) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val 0) 0) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val 0) j x =
+      Surjection.deletionCoefficient v.val 0 •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q 0).symm ⟨s, h₀⟩) w x)
+
+lemma outputBoundaryTerm_horizontal_last {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (a : Fin (m + 1 + q)) (ha : a ∈ s.val)
+    (hlast : a.val + 1 = m + 1 + q)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (Fin.last (m + 1)))
+    (j : Fin (outputDegree s v (label s v.val (Fin.last (m + 1 + q))) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val (Fin.last (m + 1 + q)))
+      (Fin.last (m + 1 + q))) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val (Fin.last (m + 1 + q))) j x =
+      Surjection.deletionCoefficient v.val (Fin.last (m + 1)) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 129.3 削除しない因子の正規化による消滅（C202–C204）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存構成の法則の証明分割。C202は既存`faces_mono_iff`の順方向を一色だけに制限し、
+同じfiberの順序同型の逆で二頂点を読む。C203は既存`gen_map_of_not_mono`と
+`tensorValue_eq_zero`を、`deletedCutTensor`の削除しない因子に適用。C204は符号を戻す。
+新しい非退化性の定理や作用を仮定せず、既存の消滅をそのまま使用する。各補題200行以内。
+局所型は色のfiberへの所属`hci`・`hcj`、同じ順序同型の逆の評価`hei`・`hej`、
+元の面の値の等式`hval`と単射性からの添字の等式`heq`（既存`faces_mono_iff`と同型の分割）。
+
+```lean
+lemma face_not_mono_of_repeated_color {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) (i j : Fin (m + q + 1))
+    (hi : label s v.val i = c) (hj : label s v.val j = c)
+    (hne : i ≠ j) (hv : s.vertical i = s.vertical j) : ¬Mono (face s v c)
+
+lemma deletedCutTensor_eq_zero_of_other_face {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j : Fin (outputDegree s v a + 1)) (c : Fin r) (hc : c ≠ a)
+    (hm : ¬Mono (face s v c)) (x : S _⦋q⦌) :
+    deletedCutTensor A S s v a ha j x = 0
+
+lemma outputBoundaryTerm_eq_zero_of_other_face {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s v a + 1))
+    (c : Fin r) (hc : c ≠ a) (hm : ¬Mono (face s v c)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v a j x = 0
+```
+
+### 129.4 非全射な削除語の零（C205・C206）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+L09a内の有限なfiberの計算。先にPythonでm=1〜4、q=0〜3、arity=1〜3の全非退化全射語を
+点検し、非全射な削除の次数零 **2,616例**、退化な削除の別の色の重複 **2,440例**で一致を確認した
+（`/tmp/bsw16/check-horizontal-invalid-deletions.py`）。
+まず前者を既存`Surjection.erase_surjective_iff`とC56の水平fiberの特徴付けへ戻す。
+C205の局所型`hu : ∀ i, v.val i = v.val (s.horizontal k) → i = s.horizontal k`、
+`hc : colorPositions s v.val (label s v.val k) = {k}`。C206は次数零の定義への貼り合わせ。
+各補題200行以内。後者の退化な削除への適用はまだ閉じたとは数えない。
+
+```lean
+lemma outputDegree_zero_horizontal_of_not_surjective {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) (hk : HorizontalVertex s k)
+    (hns : ¬Function.Surjective (Surjection.erase v.val (s.horizontal k))) :
+    outputDegree s v (label s v.val k) = 0
+
+lemma outputBoundaryTerm_horizontal_not_surjective {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) (hk : HorizontalVertex s k)
+    (hns : ¬Function.Surjective (Surjection.erase v.val (s.horizontal k)))
+    (j : Fin (outputDegree s v (label s v.val k) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x = 0
+```
+
+### 129.5 退化した削除の元の二位置（C207）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+上の2,440例の点検で使った有限な位置の計算をLeanにする。
+非退化な語で新しく隣接同色が生じるのは、消した位置をちょうど挟むときだけ。
+既存`Surjection.succAbove_val_eq`の二分岐と元の語の隣接非退化性を使う。
+局所型は削除後の隣接同色対`hij`・`he`、元での隣接の否定`hskip`、
+`hleft : i.val + 1 = a.val ∧ j.val = a.val`。200行以内。
+
+```lean
+lemma erased_word_degenerate_neighbors {m r : ℕ} (v : Surjection.Word r (m + 2))
+    (a : Fin (m + 2)) (h : ¬Surjection.Nondegenerate (Surjection.erase v.val a)) :
+    ∃ i j : Fin (m + 2), i.val + 1 = a.val ∧ a.val + 1 = j.val ∧ v.val i = v.val j
+```
+
+### 129.6 残る同色の二頂点と、無効な削除全体の零（C208–C210）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C208は上の2,440例で先に点検した有限な水平隣接辺の計算。
+C207から元の区間の両隣`i,j`を取り、水平座標の端点の公式により`0 < k.val < m+1+q`。
+その前後の辺`l,e`を読む既存`step_of_mem`で、削除しない別の色の同じ頂点を二つ得る。
+C202へ適用するだけで、BEの新しい作用・operad法則を導入しない。
+C209は既存の正規化の消滅C204への貼り合わせ、C210は非全射と退化の二場合の貼り合わせ。
+個々の補題200行以内。局所型は内部性`hk0`・`hkN`、辺の終始点`hl : l.succ=k`・
+`he : e.castSucc=k`、水平座標の一致`hi : s.horizontal l.castSucc=i`・
+`hj : s.horizontal e.succ=j`、異なる二頂点`hne : l.castSucc ≠ e.succ`。
+
+```lean
+lemma other_face_not_mono_horizontal_degenerate {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (k : Fin (m + 1 + q + 1)) (hk : HorizontalVertex s k)
+    (hdeg : ¬Surjection.Nondegenerate (Surjection.erase v.val (s.horizontal k))) :
+    ∃ c : Fin r, c ≠ label s v.val k ∧ ¬Mono (face s v c)
+
+lemma outputBoundaryTerm_horizontal_degenerate {m q r : ℕ} (S : SSet.{0}) (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (k : Fin (m + 1 + q + 1)) (hk : HorizontalVertex s k)
+    (hdeg : ¬Surjection.Nondegenerate (Surjection.erase v.val (s.horizontal k)))
+    (j : Fin (outputDegree s v (label s v.val k) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x = 0
+
+lemma outputBoundaryTerm_horizontal_invalid {m q r : ℕ} (S : SSet.{0}) (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (k : Fin (m + 1 + q + 1)) (hk : HorizontalVertex s k)
+    (hinvalid : ¬(Function.Surjective (Surjection.erase v.val (s.horizontal k)) ∧
+      Surjection.Nondegenerate (Surjection.erase v.val (s.horizontal k))))
+    (j : Fin (outputDegree s v (label s v.val k) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x = 0
+```
+
+### 129.7 検証・実測と次の接続
+
+一覧：済み 8／全体 48（うち追加 4）
+
+今回の新規6モジュールは、対象ビルドと専用の小さい監査で検証した。
+登録候補の接頭部は`SerrePositivity.EInfinity.SimplexCuts.`。
+
+| モジュール | 実測 | 内容 |
+| --- | ---: | --- |
+| `HorizontalDeletionCoordinates` | 61行 | 指定座標から右端・削除列への移送 |
+| `HorizontalEndpointTerms` | 127行 | 同じ実境界項の比較と水平な両端 |
+| `OtherFaceZeroTerms` | 66行 | 削除しない色の非単射な面による正規化の消滅 |
+| `NonSurjectiveZeroTerms` | 53行 | 非全射な削除で次数零・元の境界項零 |
+| `DegenerateDeletionNeighbors` | 35行 | 退化した削除の元の両隣の二位置 |
+| `DegenerateHorizontalTerms` | 96行 | 別の色の重複から退化な削除・無効な削除の境界項零 |
+| **合計** | **438行** | |
+
+最終対象ビルドは`/tmp/bsw16/m14-horizontal-invalid-terms-03.log`、
+**2,288 jobs成功・Lean警告0**。
+初期の型検査では、端点判定の明示import、letの展開、存在命題の表示、
+Fin.zero・Fin.lastの値を算術へ明示する処理を修正した。
+余分な`rfl`・非推奨名・100字を超える行も直した。
+主張の型を弱めたり、非単射性やテンソルの消滅を未証明の前提に足したりしていない。
+
+別の一回の鍵で`/tmp/bsw16/audit-m14-horizontal-endpoint-invalid.lean`を実行し、
+**6モジュール・59宣言・標準三公理のみ**で成功した
+（`/tmp/bsw16/m14-horizontal-endpoint-invalid-audit.log`）。
+全6モジュールを明示し、各モジュールの宣言数が0でないことも検査した。
+新規本体のsorry・追加公理0、`git diff --check`成功。
+共通入口・共通監査の登録、rootビルドは調整役の持ち分として実行していない。
+各実行は`--class impl --wait 3600`、整理券は一枚、
+ビルドまたは監査の終了後に鍵を返却し、待ち時間・編集・報告中には鍵を持っていない。
+
+L09a・L09累計 **6,281行**、改訂MayのM14全体 **11,347行**。
+次の1,000行区切りは約6,600行、M14の半分報告は12,500行、外枠は25,000行のまま。
+§121・§123.5の完成見込みと上端超過のリスクを、今回の局所的な完了で縮小した扱いにはしない。
+
+これで有効な水平削除の内部・始端・終端の元の実境界項、および非全射・隣接退化による
+無効な水平削除の元の境界項零がそろった。すべて元の加群の等式である。
+次は既存`horizontalBoundaryFaceEquiv`／`horizontalBoundaryAllEquiv`の
+指定された語の位置・小さい切断との照合を行い、実際の全水平添字のhcへ接続する。
+垂直hv、全相殺とL09a・L09全体は未完。G10や他レーンのファイルには触っていない。
