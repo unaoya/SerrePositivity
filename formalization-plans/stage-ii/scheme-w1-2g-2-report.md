@@ -391,3 +391,18 @@ S03 の係数の法則の分割（着手前、S03 の内数、40〜90行）：�
 2g-2 本体1,450行・入口込み1,475行、小監査152宣言・標準三公理のみ。S03〜S04 と有限冪、G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3・S03：Segre 標準開から二因子の標準開のテンソル積への写像
+
+`SegreNormalizedCoordinates`（90行）：`segreCoordinateDescend` は実際の座標写像の後の任意の代数写像を同じ核の商へ降ろす。`segreCoordinateDescend_projection` は商写像との一致。`segreNormalizedCoordinateMap` は二因子の正規化のテンソル積を降ろした写像、`segreNormalizedCoordinateMap_X` は座標の式、`segreNormalizedCoordinateMap_denominator` は選んだ分母の像が 1 となる式。`segreCoordinate_denominator_mem` は同じ商の次数一への所属。`segreStandardOpenToTensor` は実際の Segre 標準開から二因子の標準開のテンソル積への代数写像。平坦性・次数一生成はこの順方向には不要。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,095ジョブ、小監査16宣言・標準三公理のみ、終了状態0。ログ `2g-segre-normalized-coordinates-check-2.log`・`2g-segre-normalized-coordinates-native.log`・`2g-segre-normalized-coordinates-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は検証中だけ使用。
+
+2g-2 本体1,540行・入口込み1,566行、小監査168宣言・標準三公理のみ。S03 の順方向に到達したが、逆写像・互いの逆・重なりの自然性は残る。S04・有限冪と G4〜G5 も未完。見込み約5,500〜12,000行・外枠16,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### S03：逆向きの写像の法則への分割（着手前の型、S03 の内数）
+
+次数 d の斉次多項式 F について、同じ元 c をすべての変数に掛けた評価は `c^d * aeval x F` に等しい（40〜80行）。これを列・行の Segre 座標評価に使い、元の次数一評価の核が同次であることから、列・行の評価が同じ Segre 座標環へ降りることを示す（80〜180行）。元の次数一評価が全射なら A,B からの実際の代数写像を得る。選んだ座標で正規化し、A_(ai),B_(bj) から Segre 標準開へ特殊化してテンソル積の写像を作る（80〜150行）。その後に座標と斉次分数で互いの逆を照合する。斉次な核・全射性の条件は実際の Rees と座標環の商が持つ条件であり、新しい最終仮定ではない。
