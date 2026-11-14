@@ -1706,3 +1706,109 @@ lemma localizationNerveMap_isQCatEquivalence_of_weak_comparisons
 ```
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 8. M10 の同じ底の弱比較を全関手間へ移す分割（11-14）
+
+§7 の二つの係数関手について、同じ弱自然変換の通常の円筒を局所化する。
+円筒の指定弱射は元の圏への射影の逆像であり、射影の逆候補には零端点を使う。
+元の弱縮約と厳密な端点・射影の合成則から、同じ射影の局所化が同値になる。
+その全関手単体集合の同型を同じ円筒関手で後合成して、
+元の二つの局所化関手間の `FunctorIso` を得る。
+これは既存の相対局所化の自然性・係数移送・単位・余単位の法則の証明の分割。
+新しい一次 ID は追加しない。
+
+元の `cofibrantDKComparison` と `algebraDKComparison` に適用して、
+順方向・逆方向とも元の相対関手のままの `QCatEquivalence` を組み立てる。
+同じ正則加群の実関手と射影の合成から恒等への全関手間の可逆比較も得る。
+各頂点でのこの比較と元の指定弱辺の比較は引き続き照合し、
+半自由 native fiber との比較・native cocartesian 性も残す。
+したがって M10 は未完了である。
+
+以下に追加する法則の実際の型を記録する。`C D : RelativeCategory.{u}`、
+`F G : C ⟶ D`、BE 適用では `A : Type u` と `[CommRing A]` を共通文脈とする。
+
+`SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean`（89 行・7 宣言）：
+
+```lean
+def relativeCylinder : RelativeCategory.{u}
+
+def relativeCylinderProjection : relativeCylinder C ⟶ C
+
+def relativeCylinderEndpoint (i : Fin 2) : C ⟶ relativeCylinder C
+
+lemma relativeCylinderEndpoint_projection (i : Fin 2) :
+    relativeCylinderEndpoint C i ≫ relativeCylinderProjection C = 𝟙 C
+
+def relativeCylinderContraction :
+    (relativeCylinderProjection C).functor ⋙ (relativeCylinderEndpoint C 0).functor ⟶
+      𝟭 (relativeCylinder C).category
+
+lemma relativeCylinderContraction_weak (X : (relativeCylinder C).category) :
+    (relativeCylinder C).weakEquivalences ((relativeCylinderContraction C).app X)
+
+lemma relativeCylinderProjection_isQCatEquivalence :
+    IsQCatEquivalence (localizationNerveMap (relativeCylinderProjection C))
+```
+
+`SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean`（103 行・5 宣言）：
+
+```lean
+def relativeCylinderEndpointIso :
+    FunctorIso (localizationNerveMap (relativeCylinderEndpoint C 0))
+      (localizationNerveMap (relativeCylinderEndpoint C 1))
+
+def relativeNaturalCylinder (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) : relativeCylinder C ⟶ D
+
+lemma relativeNaturalCylinder_zero (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) :
+    relativeCylinderEndpoint C 0 ≫ relativeNaturalCylinder η hη = F
+
+lemma relativeNaturalCylinder_one (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) :
+    relativeCylinderEndpoint C 1 ≫ relativeNaturalCylinder η hη = G
+
+def localizationNerveMapIsoOfWeakNatTrans (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) :
+    FunctorIso (localizationNerveMap F) (localizationNerveMap G)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraRoundTripComparison.lean`（70 行・4 宣言）：
+
+```lean
+def cAlgModelRoundTripIso :
+    FunctorIso (localizationNerveMap (cofibrantToAlgebraDKRelative A) ≫
+      localizationNerveMap (algebraToCofibrantDKRelative A)) (𝟙 (CAlg_R A))
+
+def algebraModelRoundTripIso :
+    FunctorIso (localizationNerveMap (algebraToCofibrantDKRelative A) ≫
+      localizationNerveMap (cofibrantToAlgebraDKRelative A))
+      (𝟙 (localizationNerve (algebraRelativeCategory A)))
+
+def cAlgAlgebraModelEquivalence :
+    QCatEquivalence (CAlg_R A) (localizationNerve (algebraRelativeCategory A))
+
+def moduleUnitSection_projectionIso :
+    FunctorIso (moduleUnitSection A ≫ moduleTotalProjection A) (𝟙 (CAlg_R A))
+```
+
+### 8.1 実測と対象ビルド
+
+§8 の追加は新規 Lean 3 ファイル・262 行・16 宣言。
+累計は新規 Lean 29 ファイル・2,741 行・157 宣言（private 3 を含む）。
+200 行を超える補題はない。一次 ID の追加はなく、M10 の同じ構成の法則の分割として扱う。
+円筒の法則、同じ弱自然変換の局所化比較、BE 底の往復比較の三ファイルを
+指定された共有鍵の下で対象ビルドし、全て通過した。
+
+残る境界は、得た全関手比較の指定頂点での辺との照合、
+同じ台・単位・随伴を保持した半自由 native fiber の比較と全族の native cocartesian 性。
+M11 以降、RHom・完備反射・完備テンソルも引き続き未完。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+今回の公開 16 宣言の小さい公理監査も、指定の共有鍵の下で通過した。
+`#print axioms` の実出力は 16 件で、依存公理は
+`propext`・`Classical.choice`・`Quot.sound` のみ。`sorryAx`・追加公理はない。
+大きい監査や全体ビルドは実施していない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
