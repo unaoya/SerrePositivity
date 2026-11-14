@@ -8965,3 +8965,97 @@ K の実 Hom 誘導射の完全忠実性もまだ残る。
 M10・M11 以降・G12 は未完であり、目標と外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §62 元の実 pinched 単体と三相 pinched 分岐の全評価
+
+§61 の元の大域族の等式を各全単体列で評価し、元の実 pinched 単体の等式と、
+同じ全線形表示の等式を回収した。全線形表示は全有限部分集合・全整数次数の
+係数の族であり、零次元・H⁰ の比較には落としていない。
+
+さらに既存の dgFunctorPinchedChainMap_val を使い、元の Hom 鎖写像で送った実単体の値が
+同じ dg 評価関手で送った元の実単体に一致することを回収した。
+同じ三相の単調作用素の引き戻し自然性を合成し、三相 pinched 分岐の全データの
+dg 評価は複体側の同じ指定分岐の全データに厳密に一致することを証明した。
+退化を含む全単調作用素と全 cochain を保持する。
+既存構成の評価・係数移送・自然性の法則であり、一次 ID は追加しない。
+
+`RawModuleTensorElementPinchedEvaluationValues.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementPinchedMap_evaluation_app {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    pinchedHomChainMapSimplex (moduleHomπ A _
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A) Q) x)
+      ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c) =
+    (normalizedTensorElementPinchedMap A
+      ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+      ((moduleEvaluation A _ x).obj Q)).app (op ⦋n⦌)
+      (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x)
+
+lemma strictRawModuleTensorElementPinchedMap_linear_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    pinchedLinearSimplexMap (moduleHomπ A _
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A) Q) x)
+      (PinchedHom.toLinearSimplex
+        ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c)) =
+    PinchedHom.toLinearSimplex ((normalizedTensorElementPinchedMap A
+      ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+      ((moduleEvaluation A _ x).obj Q)).app (op ⦋n⦌)
+      (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x))
+```
+
+`RawModuleTensorTrianglePinchedEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementPinchedMap_simplex_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c).val.map
+      (moduleEvaluationDG A _ x) =
+    ((normalizedTensorElementPinchedMap A
+      ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+      ((moduleEvaluation A _ x).obj Q)).app (op ⦋n⦌)
+      (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x)).val
+
+lemma strictRawModuleTensorTrianglePinched_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    (strictRawModuleTensorTrianglePinched A X P Q c τ).toSimplexData.map
+      (moduleEvaluationDG A _ x) =
+    (normalizedTensorTrianglePinched A
+      ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+      ((moduleEvaluation A _ x).obj Q)
+      (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x) τ).toSimplexData
+```
+
+
+### 62.1 検証と実測
+
+RawModuleTensorElementPinchedEvaluationValues と RawModuleTensorTrianglePinchedEvaluation の
+対象ビルドは終了値 0 で成功した。新規公開宣言四本の小さい監査も終了値 0。
+依存公理は propext・Classical.choice・Quot.sound の範囲で、引用属性の新規追加・引用出力は 0 本。
+impl 鍵・待ち 3600 秒・gtimeout 280 秒で対象だけを実行した。
+大きい監査・root ビルド・heartbeat 上限の変更はない。
+
+新規 Lean は二ファイル・131 行・明示宣言四本（private 0 本）。
+所有ソース全体を再計数した累計は 218 ファイル・16,697 行・明示宣言 751 本
+（private 22 本）。外枠 17,000 行まで残り 303 行。
+200 行を超える証明や一次 ID の追加、既存 EInfinity ソースの変更はない。
+
+三相 pinched 分岐の全評価は通ったが、三相データ全体・cone 側の係数移送、
+全三角形の自然性と K の実 Hom 誘導射の完全忠実性はまだ残る。
+M10・M11 以降・G12 は未完として、外枠を維持して進める。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
