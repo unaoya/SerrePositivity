@@ -11111,3 +11111,225 @@ L10以後の既存部分の再利用は§121.3・§121.4のまま、未実装部
 上端は外枠25,000行より **2,150行高い**。外枠を変更した扱いにはせず、
 同じ型一覧の中で続ける。旧coherent経路10,216行は保持し、改訂Mayに二重計上しない。
 G10・③-bの橋そのもの、M15・G12のLeanは作っていない。
+
+## 131. 垂直の実際の削除係数を入力符号へ接続する（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは水平hcと垂直C226〜C229を検証・コミットした進捗。
+枝a1dabccd9とクリーンな作業木を確認して続行。M14実測12,010行、
+12,500行の半分報告まで490行である。B4は完了済み。
+
+### 131.1 同色の直前の位置と、両端を含む垂直頂点（C230〜C233）
+
+同じL09aの有限計算と既存の削除係数の法則。実装前に
+`/tmp/bsw16/check-adjacent-deletion-coefficients.py`で任意の語の隣接同色対を
+**6,678例** 点検した。垂直頂点の係数の14,942例の点検も§130で先に済ませてある。
+C230は直前の出現集合の最大が隣接位置になることと既存C135を使う。
+C231は既存の垂直辺の判定、C232は既存C170の接頭順位、C233は既存の正次数の法則へ戻す。
+新しい作用や構成は作らない。各補題200行以内。
+局所型`hprev : previousVertex v b hp = a`、`hf`は既存の最終出現の削除係数の等式、
+`hr`は既存C135の隣接順位の式。C231の`he`は指定辺の始端または終端の一致、
+C232の`hcolor`は同じ垂直辺の両端の色の一致。
+
+```lean
+lemma deletionCoefficient_eq_rank_of_adjacent {N r : ℕ} (v : Fin N → Fin r)
+    (a b : Fin N) (hab : b.val = a.val + 1) (hcolor : v a = v b) :
+    Surjection.deletionCoefficient v b = (-1 : ℤ) ^ Surjection.caesuraRank v b
+
+lemma vertical_vertex_active_or_incoming {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical) :
+    Surjection.Caesura (label s v) k ∨
+      ∃ e : Fin (m + (q + 1)), e.succ = k ∧ e ∉ s.val
+
+lemma deletionCoefficient_vertical {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical) :
+    Surjection.deletionCoefficient (label s v) k =
+      (-1 : ℤ) ^ ((s.vertical k).val + Surjection.caesuraRank v (s.horizontal k))
+
+lemma outputDegree_pos_vertical {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical) :
+    0 < outputDegree s v (label s v.val k)
+```
+
+### 131.2 元の語の次数と入力面番号への実符号の比較（C234〜C236）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存構成の符号の法則の貼り合わせ。C234は既存`Word.card_caesuras`と有限集合の
+接頭/末尾の分割を使い、濃度の新しい定理は作らない。C235はC229とC234の
+自然数の加法の等式。実装前に`/tmp/bsw16/check-vertical-exponent-balance.py`で
+**14,942例** の指数の整数としての完全な等式を点検した。
+C236は既存C127・C180とC232を合わせ、C235で同じ入力面の符号へ戻す。
+座標`hh`・`hv`は、既存C90と端点/全添字の式から後で供給する。未供給のままhv全体の完了とは扱わない。
+個々の補題200行以内。局所型`hcard : (caesuraPositions v.val).card = m+1-r`、
+`hp`はC229の位置指数の式、`hc`はC234の区切り数の式、
+`hperm`はC180による同じ削除色列の逆転符号の一致。
+
+```lean
+lemma caesuraRank_add_tail_card {m r : ℕ} (v : Surjection.Word r (m + 1))
+    (a : Fin (m + 1)) :
+    Surjection.caesuraRank v.val a +
+      ((caesuraPositions v.val).filter (fun i => a ≤ i)).card = m + 1 - r
+
+lemma positionExponent_plus_vertical_rank {m q r : ℕ} (s : Cut m (q + 1)) (t : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) :
+    positionExponent s v.val +
+        ((s.vertical k).val + Surjection.caesuraRank v.val (s.horizontal k)) =
+      (m + 1 - r + (s.vertical k).val) + positionExponent t v.val
+
+lemma outputBoundarySignAt_vertical_of_coordinates {m q r : ℕ} (s : Cut m (q + 1)) (t : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) :
+    outputBoundarySignAt s v k =
+      (-1 : ℤ) ^ (m + 1 - r + (s.vertical k).val) * cutSign t v.val
+```
+
+### 131.3 入力の単体射を合成した指定面（C237〜C239）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C230〜C236の対象ビルドが成功。次は既存C185・C186と同じ次数・指定面の照合を、
+入力射`g`の像の色列へ使う。既存の公開宣言は変更せず、新しい名前で足す。
+C237は既存の単体射の合成とList.mapの法則、C238は既存C150・C151とList.length_map、
+C239は既存C156・C40と同じ頂点列の単射性を使う。新しい構成やホモトピーは作らない。
+実装前に`/tmp/bsw16/check-vertical-mapped-vertices.py`で
+実際の垂直削除の各色の列と入力面による像の列を **76,407例** 点検した。
+個々の補題200行以内。局所型`hsrc`はC238の次数の族の等式を一色で評価したもの。
+
+```lean
+lemma simplexVertexList_postcomp {n q q' : ℕ}
+    (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌) (g : (⦋q⦌ : SimplexCategory) ⟶ ⦋q'⦌) :
+    simplexVertexList (f ≫ g) = (simplexVertexList f).map g.toOrderHom
+
+lemma deletedOutputDegree_eq_of_mapped_vertexLists {m n q q' r : ℕ}
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom) :
+    Function.update (outputDegree s v) (label s v.val k)
+      (outputDegree s v (label s v.val k) - 1) = outputDegree t w
+
+lemma deletedCutFace_eq_of_mapped_vertexLists {m n q q' r : ℕ}
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (c : Fin r) :
+    deletedCutFace s v (label s v.val k) hd j c =
+      eqToHom (congrArg SimplexCategory.mk
+        (congrFun (deletedOutputDegree_eq_of_mapped_vertexLists s t v w k hd g hl) c)) ≫
+          (face t w c ≫ g)
+```
+
+### 131.4 入力射を合成した実テンソル（C240・C241）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C237〜C239の対象ビルド成功。C240・C241は既存C188・C189の同じ次数移送に、
+C239の指定面と既存の関手の合成則を代入する法則。新しい構成は足さない。
+個々の補題は200行以内。以下は実装する宣言の型（証明は省略）。
+
+```lean
+lemma deletedCutTensor_eq_mapped_cutTensor {m n q q' r : ℕ} (S : SSet.{0})
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -(degreeSum r (outputDegree t w) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+    deletedCutTensor A S s v (label s v.val k) hd j x =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensor A S t w (S.map g.op x))
+
+lemma deletedCutTensor_eq_mapped_cutTensorAt {m n q q' r : ℕ} (S : SSet.{0})
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -((n + q' + 1 - r : ℕ) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+    deletedCutTensor A S s v (label s v.val k) hd j x =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensorAt A S t w (S.map g.op x))
+
+```
+
+### 131.5 同じ入力面による各色の列の像（C242・C243）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C240・C241のビルド成功。既存C90の座標と`selectColor_map`の法則を各色へ適用する。
+§131.3の76,407例の点検に含まれる。既存構成の係数移送であり、個々の補題200行以内。
+
+```lean
+lemma deletedVerticesList_vertical_of_coordinates {m q r : ℕ}
+    (s : Cut m (q + 1)) (t : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + (q + 1) + 1))
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) (c : Fin r) :
+    deletedVerticesList s v k c =
+      (verticesList t v c).map (s.vertical k).succAbove
+
+lemma deletedVerticesList_vertical_interior {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + (q + 1)))
+    (hab : b.val = a.val + 1) (ha : a ∉ s.val) (hb : b ∉ s.val) (c : Fin r) :
+    deletedVerticesList s v a.succ c =
+      (verticesList ((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩) v c).map
+        (s.vertical a.succ).succAbove
+
+```
+
+### 131.6 検証・実測・次の接続
+
+一覧：済み 8／全体 48（うち追加 4）
+
+新規5本・339行。各モジュールの対象ビルドは成功し、Leanの警告0。
+小さい独立監査は **5モジュール・24宣言・標準三公理のみ** で成功。
+新規5本にsorry・追加公理0。既存の公開宣言・界面・共通入口・共通監査は変更していない。
+`git diff --check`成功。鍵は各対象ビルド・各監査の間だけ取り、終了後返却。
+
+| 登録候補（すべて `SerrePositivity.EInfinity.SimplexCuts.` 以下） | 行数 | 対象ビルド |
+| --- | ---: | --- |
+| VerticalDeletionCoefficients | 92 | 成功、2,234 jobs |
+| VerticalBoundarySigns | 64 | 成功、2,274 jobs |
+| MappedDeletedFaces | 58 | 成功、2,185 jobs |
+| MappedDeletedTensors | 76 | 成功、2,189 jobs |
+| VerticalMappedVertices | 49 | 成功、2,039 jobs |
+
+ログは `/tmp/bsw16/m14-vertical-deletion-coefficients-01.log`、
+`m14-vertical-boundary-signs-01.log`、`m14-mapped-deleted-faces-02.log`、
+`m14-mapped-deleted-tensors-01.log`、`m14-vertical-mapped-vertices-01.log`。
+監査ソースは `/tmp/bsw16/audit-m14-vertical-mapped.lean`、
+結果は `/tmp/bsw16/m14-vertical-mapped-audit.log`。
+C237の初回ビルドは単体射の合成の定義展開の一行が不足して失敗した。
+`rfl`で補い、2回目の対象ビルド成功を検収結果とする。
+
+L09a・L09累計は **7,283行**（6,944+339）、M14全体は **12,349行**。
+12,500行の途中報告まで151行、L09a・L09の次の約7,600行の区切りまで317行。
+§130.12の完成見込み20,440〜27,150行の上側は依然として外枠25,000行を超える。
+この見込みを上限の承認とは扱わず、次の途中報告で残りを出し直す。
+
+今回閉じたのは垂直の実符号と、入力射の像の色列から元の圏での実テンソルへ戻す法則。
+C242・C243は実際の内部削除に適用済み。一方、端点と全垂直添字への適用、
+実境界項の符号付き等式、`universalBoundaryValue_vertical_neg` の組み立ては残る。
+L09a全体を完了とは数えない。次は端点を含む同じ座標の供給と、C236・C241の接続。
+B4は595254e10で完了済みのまま。/goalは継続中。
