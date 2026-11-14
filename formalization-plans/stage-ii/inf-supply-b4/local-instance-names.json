@@ -1,0 +1,206 @@
+[
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+    "line": 22,
+    "new_name": "isw1StrictDiagramCofibrantVerticesLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+    "line": 23,
+    "new_name": "isw1StrictDiagramCofibrantVerticesLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 22,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 23,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 25,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal3",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 27,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal4",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 28,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal5",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 29,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal6",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 31,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal7",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 32,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal8",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+    "line": 34,
+    "new_name": "isw1StrictDiagramEvaluationFramesLocal9",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+    "line": 19,
+    "new_name": "isw1StrictDiagramFrameSectionsLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+    "line": 22,
+    "new_name": "isw1StrictDiagramFunctorialFramesLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+    "line": 24,
+    "new_name": "isw1StrictDiagramFunctorialFramesLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+    "line": 81,
+    "new_name": "isw1StrictDiagramFunctorialFramesLocal3",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+    "line": 82,
+    "new_name": "isw1StrictDiagramFunctorialFramesLocal4",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+    "line": 26,
+    "new_name": "isw1StrictDiagramLocalizedVerticesLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+    "line": 27,
+    "new_name": "isw1StrictDiagramLocalizedVerticesLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+    "line": 27,
+    "new_name": "isw1StrictDiagramMappingSpanLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+    "line": 28,
+    "new_name": "isw1StrictDiagramMappingSpanLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+    "line": 30,
+    "new_name": "isw1StrictDiagramMappingSpanLocal3",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+    "line": 33,
+    "new_name": "isw1StrictDiagramMappingSpanLocal4",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+    "line": 28,
+    "new_name": "isw1StrictDiagramModelLocalizationLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+    "line": 23,
+    "new_name": "isw1StrictDiagramReedyMappingModelLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+    "line": 25,
+    "new_name": "isw1StrictDiagramReedyMappingModelLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+    "line": 36,
+    "new_name": "isw1StrictDiagramReedyMappingModelLocal3",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+    "line": 39,
+    "new_name": "isw1StrictDiagramReedyMappingModelLocal4",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 24,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal1",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 26,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal2",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 28,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal3",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 30,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal4",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 31,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal5",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 33,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal6",
+    "old_header": "local instance "
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+    "line": 47,
+    "new_name": "isw1StrictDiagramRightFrameComparisonLocal7",
+    "old_header": "local instance "
+  }
+]

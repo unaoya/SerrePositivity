@@ -1,0 +1,12 @@
+{
+  "algorithm": "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)",
+  "public_declarations": 24,
+  "missing": [],
+  "changed": [],
+  "added": [],
+  "removed": [],
+  "body_changes": [
+    "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomBifunctorUnit"
+  ],
+  "success": true
+}

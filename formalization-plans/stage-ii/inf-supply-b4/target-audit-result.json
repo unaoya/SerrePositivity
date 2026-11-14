@@ -1,0 +1,12 @@
+{
+  "modules": 29,
+  "declarations": 208,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "success": true,
+  "source": "fresh environment after target build; no pre-merge index reuse",
+  "heartbeat_limit": "unchanged; one command per declaration"
+}
