@@ -19654,3 +19654,171 @@ rootビルド・大きい監査・常駐セッションなし。`git diff --chec
 L12a全体は未完、一覧12/48（追加4）、goalはactiveのまま。
 完備化後のP⁰は§296の検収箇所を保持する。(c)が必要との判定には至っていない。
 3b-4aはまだmain未受領なので、Tot九欄の実装は始めていない。
+
+
+## 303. 共通次数の比較を符号なし・退化零項へ分ける（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§301の証明は中間の型を明示して通った。次に符号を付ける前の同じテンソルの等式を
+証明分割として取り出し、退化時は元のcutTensor_eq_zeroで消す。
+以下は同じ指定面・同じ零項の既存構成の法則で、独立の数学の項目ではない。
+各証明200行以内。§301の非退化版の型は変えず、この二つを追加する。
+
+```lean
+lemma positiveComposite_cutTensorAt_eq_nested (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x =
+      vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a =>
+            ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+              gen A S
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+                (S.map (SimplexCategory.mkHom
+                  (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum])
+
+lemma positiveComposite_signedCutTerm_eq_nested_all (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    (Surjection.compositionSign u v k c.1 *
+      cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+      cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a =>
+            ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+              gen A S
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+                (S.map (SimplexCategory.mkHom
+                  (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum])
+```
+
+符号なしの等式はC451だけを使い、非退化性は不要。
+非退化時は元のC452、退化時は同じcutTensorAtの零と符号なしの等式を使う。
+退化した項に整数係数そのものの一致を強制しない。
+
+
+## 304. 正の全有限添字の符号付き相殺への接続（次の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§303の全切断の比較を、既存positiveCompositeNestedEquivの両側で読む。
+これは§112のL12aの正の内側arityの枝であり、一般のnullaryの枝は別に残す。
+次の名前はまだ実装・型検査していない。各証明200行以内の見込み。
+実際の合成側の係数と元の二段側の係数を使い、値を対応から逆算して定義しない。
+
+```lean
+lemma positiveNested_degreeSum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    degreeSum (m + (n + 1)) (fun a => (positiveNestedFaceFamily u v k c a).1) =
+      m + n + (d + e) + q + 1 - (m + (n + 1))
+
+def positiveCompositeBalancePerm {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    Equiv.Perm (PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) :=
+  (Equiv.sumCongr (positiveCompositeNestedEquiv u v k q)
+    (positiveCompositeNestedEquiv u v k q).symm).trans (Equiv.sumComm _ _)
+
+lemma positiveCompositeBalancePerm_involutive {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    Function.Involutive (positiveCompositeBalancePerm u v k q)
+
+lemma positiveCompositeBalancePerm_ne {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ)
+    (i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) :
+    positiveCompositeBalancePerm u v k q i ≠ i
+
+def positiveCompositeBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ)
+    (i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + (n + 1))).X
+      (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ)) :=
+  match i with
+  | Sum.inl c => (Surjection.compositionSign u v k c.1 *
+      cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+      cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x
+  | Sum.inr c => -(positiveNestedCutCoefficient u v k c •
+      vectorTensorAt (chains A S) (m + (n + 1))
+        (fun a => ⟨(positiveNestedFaceFamily u v k c a).1,
+          gen A S (positiveNestedFaceFamily u v k c a).1
+            (S.map (SimplexCategory.mkHom (positiveNestedFaceFamily u v k c a).2).op x)⟩)
+        (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+        (by rw [vectorDegree, positiveNested_degreeSum]))
+
+lemma positiveCompositeBalancePerm_neg (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ)
+    (i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) (x : S _⦋q⦌) :
+    positiveCompositeBalanceTerm A S u v k q (positiveCompositeBalancePerm u v k q i) x =
+      -positiveCompositeBalanceTerm A S u v k q i x
+
+lemma sum_positiveCompositeBalanceTerm_eq_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) (x : S _⦋q⦌) :
+    ∑ i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q,
+      positiveCompositeBalanceTerm A S u v k q i x = 0
+```
+
+次数和は既存の同値の全射性で§301の次数和を任意の二段切断へ運ぶ。
+対合は同じ有限同値と逆の交換だけで、固定点はSumの両枝の違いにより存在しない。
+項の比較は§303の全切断の比較と同じ同値の往復を使う。
+最後はL09で使った既存Finset.sum_ninvolutionと同じ相殺則。
+零項・退化語・退化面は除外せず保持する。
+
+この正の枝の相殺を、nullaryを含むL12a全体の完成とは数えない。
+また二段側の指数に含まれるd*eの係数交換を実際の外側合成射で評価する工程は別に残す。
+§300の内側の実評価と合わせて元の合成射へ戻してからL12/L12aに適用する。
+
+
+## 305. 元の共通整数次数での全切断の項の厳密な一致：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§301・303を検証した。符号なしの同じcutTensorAtの等式は全ての切断で成立する。
+元のC452を使う非退化の場合と、元のcutTensor_eq_zeroを使う退化の場合に分け、
+`positiveComposite_signedCutTerm_eq_nested_all` で零項も保持した全項の等式へ接続した。
+両辺は元の圏の同じ加群成分であり、ホモトピー圏の等式ではない。
+退化項の整数係数そのものに等式を要求していない。
+
+`m14-composite-signed-terms-02.log`で中間の型を明示した比較が通った。
+さらに同じ符号なしの比較を証明分割として取り出し、
+`m14-composite-signed-terms-all-02.log`で直接importerまで3,020 jobs成功、対象警告0。
+初回の型推論が心拍数上限に達したが、型を明示し、元の比較を分割して閉じた。
+心拍数・再帰上限は増やしていない。各証明・ファイル200行以内。
+
+別の一回の鍵の `audit-m14-composite-signed-terms-all.log`：
+**3モジュール・8宣言、標準三公理のみ**、sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| CompositeTensorAtComparison | 71 |
+| CompositeSignedTerms | 43 |
+| CompositeSignedTermsAll | 45 |
+| **計** | **159** |
+
+検証済みM14実測は**24,432行**、L12aは**9,225行**。
+外枠31,000行まで実測6,568行。約25,000行での残りの見込みの出し直しを維持する。
+§304の正の全有限添字の相殺はこの取り込み点には数えず、対象ビルドで検証中。
+外側係数移動の実評価とnullary・後続のL13以降も未完。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+完備化後のP⁰の未供給箇所は§296のまま保持し、(c)との判定はまだしていない。
