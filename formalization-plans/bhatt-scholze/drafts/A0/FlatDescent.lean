@@ -1,15 +1,17 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.FlatDescent（仮。原典 §3 Lemma 3.7(2)(3)・Cor 3.12）
 -- 一般の D(A) の述語 `IsCompletelyFlatObject` は SerrePositivity.InfinityCategories.Derived（M13 の隣）へ移す候補。
--- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.6、単位 A0-3b・A0-3d。基準コミット b2ef94226。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.6、単位 A0-3b・A0-3d。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.Prismatic.Site.FlatCover
+public import SerrePositivity.BhattScholze.Prismatic.Site.FlatTopologyPushout
 
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs
@@ -53,6 +55,7 @@ A2 の `prismaticCohomologyCAlg`（(d) の CAlg 版）、A5 の G-A5-5（完全 
 
 @[expose] public section
 noncomputable section
+attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
@@ -67,9 +70,9 @@ namespace SerrePositivity.InfinityCategories.Derived
 規約：「I 冪ねじれ」は各元が I の或る冪で消えること。加群の版は本体の `IsCompletelyFlat`（Tor の消滅）で、
 離散な M ではこれと一致する（中身の段階で比較の補題を置く）。cohomological な添字（`IsConnectiveAt 0 ∧ IsCoconnectiveAt 0`）。
 使われ方：Lemma 3.7(2)、Cor 3.12 (a) の押し出しの平坦性。 -/
-def IsCompletelyFlatObject {A : Type u} [CommRing A] (I : Ideal A) (M : (derivedInfinityCategory A) _⦋0⦌) : Prop :=
+def IsCompletelyFlatObject {A : Type u} [CommRing A] (I : Ideal A) (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) : Prop :=
   ∀ N : ModuleCat.{u} A, (∀ x : N, ∃ n : ℕ, ∀ a ∈ I ^ n, a • x = 0) →
-    let Y := (tensorWith M).app _ ((discreteModuleEmbedding A).app _ (nerveVertex N))
+    let Y := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith M).app _ ((discreteModuleEmbedding A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex N))
     IsConnectiveAt A 0 Y ∧ IsCoconnectiveAt A 0 Y
 
 end SerrePositivity.InfinityCategories.Derived
@@ -83,6 +86,7 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p
 
 /-! ## Lemma 3.7(2)(3) -/
 
+open Classical in
 /-- 概要：Lemma 3.7(2)：有界 prism (A,(d)) 上の導来 (p,d) 完備で (p,d) 完全平坦な M ∈ D(A) は離散（H^i = 0、i ≠ 0）で、
 H⁰(M) は古典的に (p,d) 完備、dⁿ ねじれがなく、H⁰(M)/dⁿ の p 冪ねじれは有界。
 方針：原典の証明。M ⊗^L A/dⁿ ≃ M/dⁿM が離散で有界 p 冪ねじれ（[BMS19, Lemma 4.7]、A/dⁿ の有界性は A/d の有界性の d 進 dévissage）、
@@ -90,12 +94,11 @@ H⁰(M) は古典的に (p,d) 完備、dⁿ ねじれがなく、H⁰(M)/dⁿ �
 自由加群の完備化の場合は a0-design §5.1 の 1 で検証済み。
 規約：原典の一般形（基底は向き付き、D19）。導来完備性は仮定（§規約）。
 使われ方：Cor 3.12 (a)（押し出しが有界 prism）、Lemma 3.7(3)、Prop 3.13(1)。 -/
-open Classical in
 theorem isDiscrete_of_completelyFlat_boundedPrism (hP : IsBoundedPrism P)
-    (M : (derivedInfinityCategory A) _⦋0⦌)
+    (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (hc : Derived.IsDerivedComplete A {(p : A), P.generator} M)
     (hM : Derived.IsCompletelyFlatObject (Ideal.span {(p : A), P.generator}) M) :
-    let H := derivedInfinityHomology A 0 M
+    let H := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A 0 M
     Derived.IsConnectiveAt A 0 M ∧ Derived.IsCoconnectiveAt A 0 M ∧
       IsAdicComplete (Ideal.span {(p : A), P.generator}) H ∧
       (∀ (n : ℕ) (x : H), P.generator ^ n • x = 0 → x = 0) ∧
@@ -128,33 +131,6 @@ namespace PrismOver
 
 variable {P R} {κ : Cardinal.{u}}
 
-/-- 概要：Cor 3.12 (a) の一：同型は忠実平坦（被覆）。
-方針：環同型は (p,d) 完全忠実平坦。
-規約：原典の「automatic」。
-使われ方：`flatTopology_refine` の被覆族が `Coverage` をなすこと。 -/
-theorem isFaithfullyFlat_of_isIso {X Y : PrismOver P R κ} (f : X ⟶ Y) [IsIso f] : IsFaithfullyFlat f := by
-  sorry -- 環同型に沿う加群は自由で階数 1
-
-/-- 概要：Cor 3.12 (a) の二：忠実平坦な射の合成は忠実平坦。
-方針：完全忠実平坦性の合成（mod (p,d) の忠実平坦性の合成と、Tor の消滅の推移）。
-規約：原典の「automatic」。
-使われ方：同上。 -/
-theorem IsFaithfullyFlat.comp {X Y Z : PrismOver P R κ} {f : X ⟶ Y} {g : Y ⟶ Z}
-    (hf : IsFaithfullyFlat f) (hg : IsFaithfullyFlat g) : IsFaithfullyFlat (f ≫ g) := by
-  sorry -- mod (p,d) の忠実平坦の合成と、完全平坦性の推移（derivedTensor の結合）
-
-/-- 概要：Cor 3.12 (a) の三：忠実平坦な f : X → Y と任意の g : X → X′ について、押し出し Y′ が (R/A)_Δ（環の側）に存在し、
-X′ → Y′ は忠実平坦。
-方針：Y′ := (B_{X′} ⊗^L_{B_X} B_Y)^∧（導来 (p,d) 完備化）。B_{X′} 上 (p,d) 完全忠実平坦なので、`exists_boundedPrism_of_completelyFlat`
-（Lemma 3.7(2)(3)）で離散な有界 prism。R → B_{Y′}/d は X′ から。押し出しの普遍性は完備テンソルの普遍性。濃度は ≤ κ^{ℵ₀} = κ。
-規約：κ は `IsAdmissibleCutoff`（W9-I-11）。固定基底の site の場合（原典は全有界 prism の圏）。
-使われ方：`flatTopology_refine`、(c) の Čech 脈体の項（完備テンソル冪）。 -/
-theorem exists_isPushout_isFaithfullyFlat (hκ : IsAdmissibleCutoff P R κ)
-    {X Y X' : PrismOver P R κ} (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (g : X ⟶ X') :
-    ∃ (Y' : PrismOver P R κ) (f' : X' ⟶ Y') (g' : Y ⟶ Y'), IsPushout f g g' f' ∧ IsFaithfullyFlat f' := by
-  sorry -- A0-3d。完備テンソル（HA/DerivedCompletion の CompletedBaseChange*、BS/Perfectoidization/CompletedTensor）と
-        -- exists_boundedPrism_of_completelyFlat。普遍性は δ 構造の完備テンソルへの延長の一意性
-
 end PrismOver
 
 /-! ## Cor 3.12 (b)〜(e)：O_Δ と Ō_Δ は層で、高次コホモロジーが消える -/
@@ -186,7 +162,7 @@ Kos(B_X; pⁿ, dⁿ) → Kos(B_Y^{⊗̂•}; pⁿ, dⁿ) は単体的可換環�
 使われ方：(d)。 -/
 theorem structurePresheafDerived_isLimit_singleton (hκ : IsAdmissibleCutoff P R κ)
     {X Y : PrismOverSmall P R κ} (f : X ⟶ Y) (hf : PrismOverSmall.IsFaithfullyFlat P R κ f) :
-    IsLimitCone (restrictionCone (structurePresheafDerived P R κ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Sheaves.restrictionCone (structurePresheafDerived P R κ)
       (Sieve.generate (Presieve.singleton f.op))) := by
   sorry -- A0-3d。篩の制限図式から f の Čech 脈体への余終性（S3 の型）、有限段の Amitsur と Milnor 列
 
@@ -203,9 +179,9 @@ theorem structurePresheafDerived_isSheaf (hκ : IsAdmissibleCutoff P R κ) :
 規約：新しい前層の定義を足さず、既存の O_Δ と基盤の ⊗^L で書く。B/dB との一致は定理（中身の段階）。
 使われ方：(d) の Ō 版、Not 4.16 の Ō_{R/A}（`hodgeTateCohomology`）との比較。 -/
 abbrev reducedStructurePresheafDerived :
-    Sheaves.Presheaf (PrismaticSite P R κ) (derivedInfinityCategory A) :=
+    Sheaves.Presheaf (PrismaticSite P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   structurePresheafDerived P R κ ≫
-    tensorWith ((Derived.discreteModuleEmbedding A).app _ (nerveVertex (ModuleCat.of A (A ⧸ P.ideal))))
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith ((Derived.discreteModuleEmbedding A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ModuleCat.of A (A ⧸ P.ideal))))
 
 /-- 概要：Cor 3.12 (d) の Ō_Δ 版：D(A) 値の Ō_Δ は平坦位相の ∞ 層。
 方針：A/d は完全複体（Kos(A; d)、d 正則）なので `tensorWith (A/d)` は極限錐を保つ（有限極限＝cofiber で書ける）。(d) から。
@@ -220,10 +196,10 @@ theorem reducedStructurePresheafDerived_isSheaf (hκ : IsAdmissibleCutoff P R κ
 規約：Čech 層の RΓ（D17）。古典的な層コホモロジーとの一致（hypersheaf）は述べない。
 使われ方：`prismaticCohomology_eq_cechAlexanderTot`（CechAlexander）。 -/
 theorem prismaticCohomology_isLimit (hκ : IsAdmissibleCutoff P R κ)
-    (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A)) :
-    ∃ c : JoinCone (structurePresheafDerived P R κ),
-      IsLimitCone c ∧ c.vertex = prismaticCohomology P R κ hJ hE :=
-  derivedGlobalSections_of_isSheaf (flatTopology P R κ) hJ hE (structurePresheafDerived_isSheaf P R κ hκ)
+    (hJ : _root_.SerrePositivity.InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) :
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (structurePresheafDerived P R κ),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = prismaticCohomology P R κ hJ hE :=
+  _root_.SerrePositivity.InfinityCategories.Sheaves.derivedGlobalSections_of_isSheaf (flatTopology P R κ) hJ hE (structurePresheafDerived_isSheaf P R κ hκ)
 
 end SerrePositivity.BhattScholze.Prismatic

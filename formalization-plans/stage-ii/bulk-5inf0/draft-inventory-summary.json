@@ -1,0 +1,291 @@
+{
+  "base_main": "efa846fe81f40ac663cff5af62f55b901763d676",
+  "scope": "A0-A9 only; syntactic source inventory, candidates are not automatic deletion decisions",
+  "files": 40,
+  "source_lines": 10819,
+  "sorry_tokens": 705,
+  "named_declarations": 1080,
+  "same_full_name_candidates": 117,
+  "file_rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean",
+      "lines": 147,
+      "decls": 4,
+      "sorry": 3,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
+      "lines": 319,
+      "decls": 24,
+      "sorry": 20,
+      "same_full_name": 19
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
+      "lines": 229,
+      "decls": 13,
+      "sorry": 10,
+      "same_full_name": 3
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticEnvelope.lean",
+      "lines": 113,
+      "decls": 6,
+      "sorry": 2,
+      "same_full_name": 1
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean",
+      "lines": 234,
+      "decls": 18,
+      "sorry": 10,
+      "same_full_name": 1
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "lines": 472,
+      "decls": 40,
+      "sorry": 35,
+      "same_full_name": 11
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
+      "lines": 698,
+      "decls": 52,
+      "sorry": 45,
+      "same_full_name": 18
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+      "lines": 513,
+      "decls": 77,
+      "sorry": 59,
+      "same_full_name": 22
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean",
+      "lines": 370,
+      "decls": 61,
+      "sorry": 21,
+      "same_full_name": 1
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "lines": 91,
+      "decls": 6,
+      "sorry": 1,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+      "lines": 233,
+      "decls": 29,
+      "sorry": 14,
+      "same_full_name": 1
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean",
+      "lines": 182,
+      "decls": 16,
+      "sorry": 11,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A2/DerivedPrismaticCohomology.lean",
+      "lines": 338,
+      "decls": 48,
+      "sorry": 17,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A2/HodgeTateFiltration.lean",
+      "lines": 285,
+      "decls": 38,
+      "sorry": 17,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A3/DiscreteCase.lean",
+      "lines": 312,
+      "decls": 34,
+      "sorry": 23,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+      "lines": 490,
+      "decls": 65,
+      "sorry": 30,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/AfterComparison.lean",
+      "lines": 84,
+      "decls": 4,
+      "sorry": 3,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean",
+      "lines": 238,
+      "decls": 22,
+      "sorry": 14,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean",
+      "lines": 370,
+      "decls": 45,
+      "sorry": 26,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/InterfaceLimitCone.lean",
+      "lines": 78,
+      "decls": 5,
+      "sorry": 5,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean",
+      "lines": 417,
+      "decls": 48,
+      "sorry": 36,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean",
+      "lines": 195,
+      "decls": 15,
+      "sorry": 11,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/RootAdjunction.lean",
+      "lines": 57,
+      "decls": 2,
+      "sorry": 2,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/SemiperfectoidCase.lean",
+      "lines": 449,
+      "decls": 47,
+      "sorry": 28,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+      "lines": 270,
+      "decls": 28,
+      "sorry": 19,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/WeaklyInitialAndDescent.lean",
+      "lines": 349,
+      "decls": 33,
+      "sorry": 28,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean",
+      "lines": 211,
+      "decls": 13,
+      "sorry": 0,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean",
+      "lines": 494,
+      "decls": 50,
+      "sorry": 54,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcSite.lean",
+      "lines": 227,
+      "decls": 17,
+      "sorry": 12,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/Excision.lean",
+      "lines": 306,
+      "decls": 30,
+      "sorry": 25,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/SheafOfSetsExcision.lean",
+      "lines": 327,
+      "decls": 40,
+      "sorry": 24,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedDomain.lean",
+      "lines": 176,
+      "decls": 19,
+      "sorry": 15,
+      "same_full_name": 1
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedPerfectoidization.lean",
+      "lines": 278,
+      "decls": 37,
+      "sorry": 22,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/DiscreteCore.lean",
+      "lines": 75,
+      "decls": 3,
+      "sorry": 3,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean",
+      "lines": 229,
+      "decls": 24,
+      "sorry": 17,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
+      "lines": 216,
+      "decls": 23,
+      "sorry": 11,
+      "same_full_name": 14
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
+      "lines": 219,
+      "decls": 21,
+      "sorry": 12,
+      "same_full_name": 10
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
+      "lines": 337,
+      "decls": 33,
+      "sorry": 20,
+      "same_full_name": 15
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "lines": 127,
+      "decls": 1,
+      "sorry": 0,
+      "same_full_name": 0
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean",
+      "lines": 64,
+      "decls": 3,
+      "sorry": 0,
+      "same_full_name": 0
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.Envelope（仮。原典 Prop 3.13・Ex 3.14・Def 2.42）
--- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.5、単位 A0-3a・A0-3c（定義と、変数の場合の存在の主張）。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.5、単位 A0-3a・A0-3c（定義と、変数の場合の存在の主張）。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.Delta.CompleteRegularity.RelativeCompleteRegularity
 
-public import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaFlat
-public import SerrePositivity.BhattScholze.Prismatic.Envelope
+public import SerrePositivity.BhattScholze.Prismatic.Envelopes.CompletedFreeDeltaFlat
+public import SerrePositivity.BhattScholze.Prismatic.Envelopes.Envelope
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
@@ -49,15 +50,6 @@ open SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A)
 
 /-! ## 相対的な完全正則列（Def 2.42） -/
-
-/-- 概要：B の元の列 x が A に相対的に (p,d) 完全正則：Kos(A; p, d) → Kos(B; p, d, x) が平坦（原典 Def 2.42）。
-方針：連結な環の射の平坦性（HA 7.2.2.10）をホモロジーで：H₀ = B/(p,d,x) が A/(p,d) 上平坦で、すべての i で
-H_i(Kos(A; p,d)) ⊗_{A/(p,d)} B/(p,d,x) → H_i(Kos(B; p,d,x)) が同型（設計書 D20、2026-11-02 訂正。以前の「正次数の消滅」は基底 (Z_p,(p)) の H₁ = F_p で破綻、Codex W9-I-01）。
-規約：B は導来 (p,d) 完備な A 代数。
-使われ方：Prop 3.13 の仮定（本書では Ex 3.14 の場合だけ使う）。
-要確認：Koszul 複体のホモロジーの基盤の名前（HA/Koszul*）。 -/
-def IsCompletelyRegularRel {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) : Prop :=
-  sorry -- B/(p,d,x) が A/(p,d) 上平坦 ∧ ∀ i, H_i(Kos(A;p,d)) ⊗_{A/(p,d)} B/(p,d,x) ≅ H_i(Kos(B;p,d,x))（自然な射が同型）
 
 /-- A′⊗_A T を A′ の (p,d′) で完備化した H⁰。 -/
 def envelopeBaseChangeRing {A' T : Type u} [CommRing A'] [CommRing T] [Algebra A A'] [Algebra A T]

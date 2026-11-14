@@ -1,14 +1,14 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Animated（仮。原典 Def 8.2 の定義域どおりの版、Construction 7.6 (5) の相対版、Prop 8.13）
--- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.1・§2.2、単位 A7-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.1・§2.2、単位 A7-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Hom
 public import Mathlib.CategoryTheory.Elements
--- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,BaseChangeAndTensor}.lean、drafts/A4/Perfectoidization.lean、
+-- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,BaseChangeAndTensor}.lean、drafts/A4/{Perfectoidization,InterfaceFields}.lean、
 -- drafts/DerivedGeneral/CompletionFunctor.lean、drafts/A7/AnimatedDomain.lean（G-A7-1。W9-II-24 で切り出し）を import する。
 
 /-!
@@ -50,7 +50,7 @@ abbrev TensorSpan (E : SSet.{u+1}) := (horn 2 0 : SSet.{u+1}) ⟶ E
 
 /-- 左脚 0→1 と右脚 0→2 を保つ押し出し余錐。 -/
 abbrev TensorCocone {E : SSet.{u+1}} (D : TensorSpan E) :=
-  { c : JoinCocone D // IsColimitCone c }
+  { c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D // _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c }
 
 def animatedPushout (D : TensorSpan (AnimatedAlgebra R)) : TensorCocone D := by
   sorry -- P_Σ(Poly_R) の余極限。二つの構造射はこの余錐の脚
@@ -72,7 +72,7 @@ def barLabels : (SSet.uliftFunctor.{u+1,0}).obj (nerve (Δ[1] : SSet.{0}).Elemen
     if stdSimplex.objEquiv e.val = SimplexCategory.const _ _ 1 then 2 else 0
   exact Classical.choose (show ∃ L : (SSet.uliftFunctor.{u+1,0}).obj (nerve (Δ[1] : SSet.{0}).Elements) ⟶
       (horn 2 0 : SSet.{u+1}), ∀ e,
-      (L.app _ (ULift.up (nerveVertex e))).val = stdSimplex.obj₀Equiv.symm (label e) from by
+      (L.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex e))).val = stdSimplex.obj₀Equiv.symm (label e) from by
     sorry) -- label の鎖は常に 0→1 または 0→2 の辺に含まれ、頂点で単体を決める
 
 abbrev barProjection := (SSet.uliftFunctor.{u+1,0}).map
@@ -82,27 +82,27 @@ abbrev barProjection := (SSet.uliftFunctor.{u+1,0}).map
 S₁ ⊗ S₃^⊗n ⊗ S₂、面は両端の作用または fold、退化は単位の挿入。 -/
 def twoSidedBar (D : TensorSpan (AnimatedAlgebra R)) :
     (SSet.uliftFunctor.{u+1,0}).obj (nerve (SimplexCategoryᵒᵖ)) ⟶ AnimatedAlgebra R :=
-  Classical.choose (show ∃ B, ∃ η : FunctorHom (barLabels ≫ D) (barProjection ≫ B),
-    IsLeftKanExtensionHom barProjection (barLabels ≫ D) B η from by
+  Classical.choose (show ∃ B, ∃ η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (barLabels ≫ D) (barProjection ≫ B),
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsLeftKanExtensionHom barProjection (barLabels ≫ D) B η from by
     sorry) -- 有限余積で点ごとに構成する。射は同じ添字の写像に沿う
 
 theorem relativeTensor_eq_bar (D : TensorSpan (AnimatedAlgebra R)) :
-    ∃ c : JoinCocone (twoSidedBar R D), IsColimitCone c ∧ c.vertex = relativeTensor R D := by
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (twoSidedBar R D), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c ∧ c.vertex = relativeTensor R D := by
   sorry -- 相対テンソルの二脚から標準増大を作る。bar の幾何学的実現はこの押し出し
 
 /-- 押し出し余錐をそのまま送って余極限となる条件。 -/
 def PreservesTensorSpans {E V : SSet.{u+1}} (F : E ⟶ V) : Prop :=
-  ∀ (D : TensorSpan E) (c : TensorCocone D), IsColimitCone (mapJoinCocone F c.1)
+  ∀ (D : TensorSpan E) (c : TensorCocone D), _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone F c.1)
 
 /-- 概要：sifted 余極限と絶対テンソル（余積）を保つ関手は相対テンソルを保つ。
 方針：bar 構成の各項が絶対テンソルで、実現が sifted 余極限。
 規約：—
 使われ方：Δ、colim_φ、完備化、⊗ A/d。 -/
 theorem preservesRelativeTensor_of_siftedAndTensor {E V : SSet.{u+1}} [Quasicategory E] [Quasicategory V]
-    (F : E ⟶ V) (hs : HomotopyLimits.PreservesSmallSiftedColimits F)
-    (hex : ∀ x y : E _⦋0⦌, HasColimit (binaryPointDiagram x y))
-    (ht : ∀ (x y : E _⦋0⦌) (c : JoinCocone (binaryPointDiagram x y)),
-      IsColimitCone c → IsColimitCone (mapJoinCocone F c)) : PreservesTensorSpans F := by
+    (F : E ⟶ V) (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits F)
+    (hex : ∀ x y : E _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y))
+    (ht : ∀ (x y : E _⦋0⦌) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y)),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone F c)) : PreservesTensorSpans F := by
   sorry -- 有限非空余積で二側 bar の各項を送り、Δᵒᵖ の sifted 実現を hs で送る
 
 /-- R ≃ A/d による animated 基底の同定は polyYoneda からの sifted 延長。 -/
@@ -111,7 +111,7 @@ def animatedDelta (hR : IsIntegralPerfectoid R p) :
   let P := perfectPrism p R hR
   let change : AnimatedAlgebra R ⟶ AnimatedAlgebra (perfectPrismRing p R ⧸ P.ideal) := by
     sorry -- 要確認：A2 の基底同型に沿う移送。perfectPrism_quotientEquiv の制限
-  exact animatedCompleteInclusion p R ≫ change ≫ derivedPrismaticCohomology (E := E) P
+  exact animatedCompleteInclusion p R ≫ change ≫ derivedPrismaticCohomology (E := E) P (hP := perfectPrism_bounded p R hR)
 
 /-- 概要：Construction 7.6 (5) の相対版：Δ_{S_1 ⊗̂_{S_3} S_2} ≃ Δ_{S_1} ⊗̂_{Δ_{S_3}} Δ_{S_2}（CAlg_A の相対テンソルの完備化）。
 方針：A2-4 `derivedPrismaticCohomology_tensor`・`derivedPrismaticCohomology_siftedColimit`、`preservesRelativeTensor_of_siftedAndTensor`、D32 で完備化を通す。
@@ -127,21 +127,21 @@ theorem derivedPrismaticCohomology_relativeTensor (hR : IsIntegralPerfectoid R p
 def animatedDeltaFrobenius (hR : IsIntegralPerfectoid R p) :
     let H := animatedDelta (E := E) p R hR ≫ completeCAlgInclusion (E := E) (p := p) (perfectPrism p R hR)
     ((ihom (CompleteAnimatedAlgebra p R)).obj (E.CAlg (perfectPrismRing p R))).Edge
-      (functorVertex H) (functorVertex (H ≫ cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift)) := by
   sorry -- 要確認：A2 の derivedPrismaticFrobenius の animated 自然変換。離散成分は A4 の discreteDeltaFrobenius
 
 /-- 関手圏で τ を正に反復する。頂点は関手、後続辺は τⁿ(φ)。 -/
 def frobeniusFunctorTower {E V : SSet.{u+1}} [Quasicategory V]
     (τ : V ⟶ V) (H : E ⟶ V)
-    (φ : ((ihom E).obj V).Edge (functorVertex H) (functorVertex (H ≫ τ))) :
+    (φ : ((ihom E).obj V).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ τ))) :
     frobeniusTowerShape.{u} ⟶ (ihom E).obj V :=
-  restrictionSequence ((ihom E).map τ) (x := functorVertex H) φ
+  restrictionSequence ((ihom E).map τ) (x := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) φ
 
 def frobeniusFunctorColimit {E V : SSet.{u+1}} [Quasicategory V]
     (τ : V ⟶ V) (H : E ⟶ V)
-    (φ : ((ihom E).obj V).Edge (functorVertex H) (functorVertex (H ≫ τ)))
-    (hc : HasColimit (frobeniusFunctorTower τ H φ)) : E ⟶ V :=
-  (functorVertexEquiv E V).symm hc.choose.vertex
+    (φ : ((ihom E).obj V).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ τ)))
+    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit (frobeniusFunctorTower τ H φ)) : E ⟶ V :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv E V).symm hc.choose.vertex
 
 abbrev animatedDeltaUnderlying (hR : IsIntegralPerfectoid R p) :=
   animatedDelta (E := E) p R hR ≫ completeCAlgInclusion (E := E) (p := p) (perfectPrism p R hR)
@@ -150,7 +150,7 @@ abbrev animatedTower (hR : IsIntegralPerfectoid R p) :=
   frobeniusFunctorTower (cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift)
     (animatedDeltaUnderlying (E := E) p R hR) (animatedDeltaFrobenius (E := E) p R hR)
 
-theorem animatedTower_hasColimit (hR : IsIntegralPerfectoid R p) : HasColimit (animatedTower (E := E) p R hR) := by
+theorem animatedTower_hasColimit (hR : IsIntegralPerfectoid R p) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit (animatedTower (E := E) p R hR) := by
   sorry -- G-A4-2：関手圏の点ごとの sequential 余極限
 
 def animatedFrobeniusColimit (hR : IsIntegralPerfectoid R p) :
@@ -160,10 +160,10 @@ def animatedFrobeniusColimit (hR : IsIntegralPerfectoid R p) :
 
 /-- 関手圏で選んだ余極限の第0脚。始点と終点だけを頂点表示に移す。 -/
 def animatedTowerLeg (hR : IsIntegralPerfectoid R p) :
-    FunctorHom (animatedDeltaUnderlying (E := E) p R hR) (animatedFrobeniusColimit (E := E) p R hR) := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (animatedDeltaUnderlying (E := E) p R hR) (animatedFrobeniusColimit (E := E) p R hR) := by
   let c := (animatedTower_hasColimit (E := E) p R hR).choose
-  let l := HomotopyLimits.coconeVertexLeg c (ULift.up (nerveVertex (0 : ℕ)))
-  exact eqToHom (by sorry) ≫ SSet.Truncated.HomotopyCategory₂.homMk l.toTruncated ≫
+  let l := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg c (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (0 : ℕ)))
+  exact eqToHom (by sorry) ≫ SSet.Truncated.HomotopyCategory.homMk l.toTruncated ≫
     eqToHom (by sorry) -- 塔の第0頂点と functorVertexEquiv の往復
 
 /-- 概要：Δ_{S/A,perf} : CompleteAnimatedAlgebra R ⟶ CAlg_A：A2-2 の Δ の制限の Frobenius の塔の余極限の (p,d) 完備化（A4-1 の構成を関手の段で）。
@@ -187,7 +187,7 @@ def perfectoidizationAnimated (hR : IsIntegralPerfectoid R p) :
 規約：E3 の欄 `e3Perfd` はこれにより変わらない。
 使われ方：E3、A5。 -/
 def perfectoidizationAnimated_discrete (hR : IsIntegralPerfectoid R p) :
-    FunctorIso (completeDiscreteToAnimated p R ≫ perfectoidizationAnimated (E := E) p R hR)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (completeDiscreteToAnimated p R ≫ perfectoidizationAnimated (E := E) p R hR)
       (nerveMap (PerfectoidizationInterface.completeInclusion R p) ≫ perfectoidizationFunctor (E := E) p R hR) := by
   sorry -- discreteDeltaFrobenius は同じ塔の離散成分。余極限、reflectCompleteCAlg、modPrismFunctor の自然性
 
@@ -199,9 +199,9 @@ def perfectoidizationAnimated_discrete (hR : IsIntegralPerfectoid R p) :
 使われ方：Prop 8.13。 -/
 theorem frobeniusColimit_relativeTensor {E V : SSet.{u+1}} [Quasicategory V]
     (τ : V ⟶ V) (hτ : PreservesTensorSpans τ) (H : E ⟶ V)
-    (φ : ((ihom E).obj V).Edge (functorVertex H) (functorVertex (H ≫ τ)))
-    (hseq : ∀ D : frobeniusTowerShape.{u} ⟶ V, HasColimit D)
-    (hcol : HasColimit (frobeniusFunctorTower τ H φ)) (hH : PreservesTensorSpans H) :
+    (φ : ((ihom E).obj V).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ τ)))
+    (hseq : ∀ D : frobeniusTowerShape.{u} ⟶ V, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit D)
+    (hcol : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit (frobeniusFunctorTower τ H φ)) (hH : PreservesTensorSpans H) :
     PreservesTensorSpans (frobeniusFunctorColimit τ H φ hcol) := by
   sorry -- 各段の押し出しを τ が保ち、点ごとの余極限を交換。有限個の塔には ℕ→ℕ^r の共終な対角を使う。
         -- 完全 prism では τ=Res_{φ_A} は自己同値で、完備圏にも restrictFrobeniusCompletion で移る
@@ -226,11 +226,11 @@ theorem completion_relativeTensor {A : Type u} [CommRing A] (P : OrientedPrism p
   sorry -- 反射は左随伴。押し出しの標的は (p,d) 完備な圏
 
 abbrev CompletePCAlg : SSet.{u+1} :=
-  fullSubcomplexOnVertices (E.CAlg R) (fun x => isPCompleteVertex p R ((E.forget R).app _ x))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (E.CAlg R) (fun x => isPCompleteVertex p R ((E.forget R).app _ x))
 
 def completeModD (hR : IsIntegralPerfectoid R p) :
     CompleteCAlg (E := E) (perfectPrism p R hR) ⟶ CompletePCAlg (E := E) p R :=
-  fullSubcomplexLift _ (completeCAlgInclusion (E := E) (p := p) (perfectPrism p R hR) ≫ modPrismFunctor (E := E) p R hR)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (completeCAlgInclusion (E := E) (p := p) (perfectPrism p R hR) ≫ modPrismFunctor (E := E) p R hR)
     (by sorry) -- 完備な代数の mod d の底は cofib(d) で p 完備
 
 theorem modD_relativeTensor (hR : IsIntegralPerfectoid R p) :
@@ -242,7 +242,7 @@ def perfdComplete (hR : IsIntegralPerfectoid R p) :
   animatedFrobeniusColimit (E := E) p R hR ≫ reflectCompleteCAlg (E := E) (p := p) (perfectPrism p R hR) ≫ completeModD (E := E) p R hR
 
 theorem perfdComplete_forget (hR : IsIntegralPerfectoid R p) :
-    perfdComplete (E := E) p R hR ≫ (fullSubcomplexOnVertices (E.CAlg R)
+    perfdComplete (E := E) p R hR ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (E.CAlg R)
       (fun x => isPCompleteVertex p R ((E.forget R).app _ x))).ι =
         perfectoidizationAnimated (E := E) p R hR := by
   rfl -- fullSubcomplexLift の証明成分を忘れる
@@ -261,17 +261,17 @@ def perfectoidization_relativeTensorMap (hR : IsIntegralPerfectoid R p) (D : Ten
     (CompletePCAlg (E := E) p R).Edge (perfdTensorPushout (E := E) p R hR D).1.vertex
       (F.app _ (completeAnimatedPushout p R D).1.vertex) := by
   let c := (perfdTensorPushout (E := E) p R hR D).1
-  let d := mapJoinCocone (perfdComplete (E := E) p R hR) (completeAnimatedPushout p R D).1
-  let comparison : (sliceUnder (D ≫ perfdComplete (E := E) p R hR)).Edge c d := by
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone (perfdComplete (E := E) p R hR) (completeAnimatedPushout p R D).1
+  let comparison : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder (D ≫ perfdComplete (E := E) p R hR)).Edge c d := by
     sorry -- c は余錐の圏で始対象。両脚・中央の整合を保つ辺
-  exact comparison.map (sliceUnderProjection _)
+  exact comparison.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection _)
 
 /-- 概要：Prop 8.13：比較射は同値（任意の導来 p 完備な animated S_1 ← S_3 → S_2）。
 方針：`derivedPrismaticCohomology_relativeTensor` に `frobeniusColimit_relativeTensor`・`completion_relativeTensor`・`modD_relativeTensor` を当てる。
 規約：原典の形。E3 で使うのは S_1 = S_2 = S_perfd、S_3 = S（離散）。
 使われ方：Cor 8.14、Thm 10.11、BR31。 -/
 theorem perfectoidization_relativeTensor (hR : IsIntegralPerfectoid R p) (D : TensorSpan (CompleteAnimatedAlgebra p R)) :
-    IsInvertibleEdge (perfectoidization_relativeTensorMap (E := E) p R hR D).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectoidization_relativeTensorMap (E := E) p R hR D).toTruncated := by
   sorry -- Δ の完備押し出しに完備圏で frobeniusColimit_relativeTensor を適用。
         -- 反射が余極限を保つので raw な塔を最後に完備化した値に一致し、modD_relativeTensor で結ぶ
 

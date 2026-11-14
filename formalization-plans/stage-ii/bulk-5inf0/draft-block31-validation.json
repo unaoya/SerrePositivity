@@ -1,0 +1,86 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A1/CrystallineInput",
+      "exit_code": 1,
+      "seconds": 36.325230211019516
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "source_sha256": "4cf3eb92f1e5a9af61e1f24a326a3b8ada392a6be369882ef85f664ce9818bc5",
+      "staged_source_sha256": "79db517ec034c69ecabe539ebc45df51371cdab7f70aa7ea3385079ac99dd078",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A1/HodgeTateMap",
+          "source_sha256": "724853b5168a88a1f063cc2c8f90efa04acbaa33fa8a9d8a801146fbf62cceae",
+          "olean_sha256": "9d830bb2222dd34f8794151af3cf153bc8a9f53ddf04c2ed3c6bf586d04f2716"
+        },
+        {
+          "draft": "A0/PrismaticEnvelope",
+          "source_sha256": "4554fa839247f896d0708a7d610d188361c75dbecc2c22c95ddfa7e36d36457e",
+          "olean_sha256": "fb1f2d2e387ce37470135123182d1d5dfe574b992227031bf5829439168e0f77"
+        },
+        {
+          "draft": "Shared/DeRhamPolynomial",
+          "source_sha256": "3fe5ad6a0f914c40c6fdbf1d36cb8bcd324bee34ead925fae5e9503b4d70f5a0",
+          "olean_sha256": "5e67cb35414061cae444f14b7a486ad939a34c680ddc31ec2140ef9609dbfc63"
+        },
+        {
+          "draft": "Shared/CosimplicialCupProduct",
+          "source_sha256": "d16551507c9dafbb668eea69074458428dc4574267c32580eb4878d6c0a12faa",
+          "olean_sha256": "313f621c0f4f44bcc08496221d360ea190d93b390ead45ac6b3acfa885a577c6"
+        },
+        {
+          "draft": "Shared/CosimplicialEInfinity",
+          "source_sha256": "2b54fa066d464aa2ce4d8ed8a28b571994a20075ffe9cb287493ce318de9227f",
+          "olean_sha256": "96b55d060bad88cb479d526ef84dcc733157459161e3b6622ce606d639fc5870"
+        }
+      ],
+      "extra_public_imports": [
+        "A1/HodgeTateMap",
+        "A0/PrismaticEnvelope",
+        "Shared/DeRhamPolynomial",
+        "Shared/CosimplicialCupProduct",
+        "Shared/CosimplicialEInfinity"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A1/CrystallineInput.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A1/CrystallineInput.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 32.94124554283917,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block31-A1-CrystallineInput.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}

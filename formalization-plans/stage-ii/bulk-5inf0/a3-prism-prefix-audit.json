@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "three classical declarations in the source prefix only, not whole A3",
+  "validation": "a3-prism-prefix-block43-validation.json",
+  "declarations": [
+    {
+      "name": "SerrePositivity.BhattScholze.Prismatic.universalLciPrism",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "SerrePositivity.BhattScholze.Prismatic.universalLciPrism_bounded",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "SerrePositivity.BhattScholze.Prismatic.lciClassifyingMap",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ]
+}

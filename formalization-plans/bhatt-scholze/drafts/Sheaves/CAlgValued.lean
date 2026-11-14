@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.CAlgValued（層 Sheaves。ただし CAlg_R は EInfinity にあるので、EInfinity の上か Sheaves の E の実例として）
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-11、a2-design.md §2.2・G-A2-4。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-11、a2-design.md §2.2・G-A2-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
@@ -46,15 +46,15 @@ variable {𝒞 : Type u} [SmallCategory 𝒞] (J : GrothendieckTopology 𝒞) (A
 方針：`cAlgForgetDerived A` で後合成。
 規約：—
 使われ方：層条件の比較。 -/
-def forgetPresheaf (F : Presheaf 𝒞 (E.CAlg A)) : Presheaf 𝒞 (derivedInfinityCategory A) :=
+def forgetPresheaf (F : Presheaf 𝒞 (E.CAlg A)) : Presheaf 𝒞 (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   F ≫ E.forget A
 
 /-- 概要：U は極限錐を保つ（HA 3.2.2.5。EInfinity の既存定理）。
 方針：`cAlgForgetDerived_mapJoinCone_isLimit_of_transport`。
 規約：FreeProbeDerivedFreeForget の系が transport の証人を供給する。
 使われ方：層 ⇒ 忘却像が層。 -/
-theorem forget_isLimitCone {K : SSet.{u + 1}} {D : K ⟶ E.CAlg A} (c : JoinCone D) (hc : IsLimitCone c) :
-    IsLimitCone (c.postcomp (E.forget A)) := E.forget_preservesLimits A c hc
+theorem forget_isLimitCone {K : SSet.{u + 1}} {D : K ⟶ E.CAlg A} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (c.postcomp (E.forget A)) := E.forget_preservesLimits A c hc
 
 /-- 概要：U は保存的：E∞ 代数の射で下の D(A) の射が可逆なら可逆。
 方針：Barratt–Eccles 代数の弱同値は下の複体の擬同型（モデル圏の定義）。
@@ -62,21 +62,21 @@ theorem forget_isLimitCone {K : SSet.{u + 1}} {D : K ⟶ E.CAlg A} (c : JoinCone
 使われ方：極限錐の反映。
 要確認：EInfinity に同じ主張があるか（`AlgebraRelativeComparisons` 付近）。 -/
 theorem forget_conservative {x y : (E.CAlg A) _⦋0⦌} (e : SSet.Edge x y)
-    (he : IsInvertibleEdge (e.map (E.forget A)).toTruncated) : IsInvertibleEdge e.toTruncated := E.forget_conservative A e
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (e.map (E.forget A)).toTruncated) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated := E.forget_conservative A e he
 
 /-- 概要：CAlg_A に極限が存在すれば、U は極限錐を反映する（保存的 ＋ 保存）。
 方針：標準：極限錐との比較射が U で同値になり、保存性で同値。
 規約：極限の存在は G12（presentable）から。
 使われ方：CAlg_A 値の層条件 ⇔ D(A) 値の層条件。 -/
-theorem forget_reflects_isLimitCone (hA : IsPresentable (E.CAlg A)) {K : SSet.{u + 1}} {D : K ⟶ E.CAlg A}
-    (c : JoinCone D) (hc : IsLimitCone (c.postcomp (E.forget A))) : IsLimitCone c := by
+theorem forget_reflects_isLimitCone (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A)) {K : SSet.{u + 1}} {D : K ⟶ E.CAlg A}
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (c.postcomp (E.forget A))) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c := by
   sorry
 
 /-- 概要：CAlg_A 値前層が J 層 ⇔ その忘却像が J 層。
 方針：層条件は極限錐の条件。U が極限錐を保ち反映。
 規約：CAlg_A の presentable 性を仮定。
 使われ方：Cor 3.12 を D(A) 値で示して CAlg_A 値へ移す。 -/
-theorem isSheaf_iff_forget (hA : IsPresentable (E.CAlg A)) (F : Presheaf 𝒞 (E.CAlg A)) :
+theorem isSheaf_iff_forget (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A)) (F : Presheaf 𝒞 (E.CAlg A)) :
     IsSheaf J F ↔ IsSheaf J (forgetPresheaf (E := E) A F) := by
   sorry
 
@@ -86,7 +86,7 @@ theorem isSheaf_iff_forget (hA : IsPresentable (E.CAlg A)) (F : Presheaf 𝒞 (E
 使われ方：RΓ_CAlg。
 W9-I-05：U が極限を保つことから出るのは層条件の保存・反映まで。**層化と U の両立**（CAlg 値の単位の U 像が D(A) 値の局所同値であること）は別の一般補題
 （S4 の非安定版、M12e の前提）で、ここでは主張だけ置く（`forget_sheafify`）。既に層である前層（O_Δ）については極限保存だけで比較が取れる。 -/
-theorem sheafification_exists_cAlg (hA : IsPresentable (E.CAlg A)) : Sheafification J (E.CAlg A) := by
+theorem sheafification_exists_cAlg (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A)) : Sheafification J (E.CAlg A) := by
   obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J hA
   exact sheafification_of_generatingEdges J hA edges hW
 
@@ -94,7 +94,7 @@ theorem sheafification_exists_cAlg (hA : IsPresentable (E.CAlg A)) : Sheafificat
 方針：S2 の `derivedGlobalSections` を E = CAlg_A で。
 規約：—
 使われ方：A2 の Δ_0。 -/
-def derivedGlobalSectionsCAlg (hJ : Sheafification J (E.CAlg A)) (hA : IsPresentable (E.CAlg A))
+def derivedGlobalSectionsCAlg (hJ : Sheafification J (E.CAlg A)) (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A))
     (F : Presheaf 𝒞 (E.CAlg A)) : (E.CAlg A) _⦋0⦌ :=
   derivedGlobalSections J hJ hA F
 
@@ -102,15 +102,15 @@ def derivedGlobalSectionsCAlg (hJ : Sheafification J (E.CAlg A)) (hA : IsPresent
 方針：U は極限錐を保ち、層化と両立（層の忘却像は層、単位の忘却像は D(A) 値の層化の単位に同値）。
 規約：同値は D(A) の可逆な辺。
 使われ方：A0 の D(A) 値の Δ と A2 の CAlg 値の Δ の一致。 -/
-def forget_sheafify (hJ : Sheafification J (E.CAlg A)) (hJ' : Sheafification J (derivedInfinityCategory A))
+def forget_sheafify (hJ : Sheafification J (E.CAlg A)) (hJ' : Sheafification J (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
     (F : Presheaf 𝒞 (E.CAlg A)) :
-    FunctorIso (sheafify J hJ' (forgetPresheaf (E := E) A (sheafify J hJ F)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (sheafify J hJ' (forgetPresheaf (E := E) A (sheafify J hJ F)))
       (sheafify J hJ' (forgetPresheaf (E := E) A F)) := by
   sorry -- S4：CAlg 値の単位の忘却は D(A) 値の局所同値。忘却した層は既に層
 
-def forget_derivedGlobalSections (hJ : Sheafification J (E.CAlg A)) (hJ' : Sheafification J (derivedInfinityCategory A))
-    (hA : IsPresentable (E.CAlg A)) (hD : IsPresentable (derivedInfinityCategory A)) (F : Presheaf 𝒞 (E.CAlg A)) :
-    VertexIso ((E.forget A).app _ (derivedGlobalSectionsCAlg (E := E) J A hJ hA F))
+def forget_derivedGlobalSections (hJ : Sheafification J (E.CAlg A)) (hJ' : Sheafification J (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A)) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) (F : Presheaf 𝒞 (E.CAlg A)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((E.forget A).app _ (derivedGlobalSectionsCAlg (E := E) J A hJ hA F))
       (derivedGlobalSections J hJ' hD (forgetPresheaf (E := E) A F)) := by
   sorry -- 忘却は極限を保つ。forget_sheafify と層の単位で二つの極限錐を比較
 

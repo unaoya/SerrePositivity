@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.AfterComparison（仮。Prop 8.5 の後に置く A4 の補足：D41 の直接の式との一致、Example 8.3）
--- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.1 D41・Ex 8.3、単位 A4-3・A4-4。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.1 D41・Ex 8.3、単位 A4-3・A4-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
@@ -48,7 +48,7 @@ Prop 8.5 の系 4（A5-1 `perfectoidization_piZero`）で (LΛ_p S)_perfd ≃ (�
 使われ方：A6（Prop 8.10：任意の離散 S に対する arc 層としての記述）、A8。 -/
 theorem e3Perfd_eq_direct (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S] :
     let U := ofAlgebra R S
-    Nonempty (VertexIso ((e3Perfd (E := E) p R hR).app _ (nerveVertex U))
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((e3Perfd (E := E) p R hR).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U))
       ((modPrismFunctor (E := E) p R hR).app _ (directPerfectionValue (E := E) p R hR U))) := by
   sorry -- D32 で LΛ_p S へ、Prop 8.5 系4で π₀ LΛ_p S へ移す。完備化 H⁰ と導来完備化を区別
 
@@ -77,8 +77,8 @@ theorem perfectoidization_charP (hR : IsIntegralPerfectoid R p) (hpR : (p : R) =
     (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
     let hpS : (p : S) = 0 := by simpa using congrArg (algebraMap R S) hpR
-    Nonempty (VertexIso (perfectoidization (E := E) p R hR S hS)
-      ((E.discrete R).app _ (nerveVertex (completedCharPPerfection p R S hpS)))) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (perfectoidization (E := E) p R hR S hS)
+      ((E.discrete R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (completedCharPPerfection p R S hpS)))) := by
   sorry -- Prop 8.5 の基底独立性と HT 比較。正次数の graded piece 上で Frobenius は零
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

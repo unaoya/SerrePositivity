@@ -1,4 +1,4 @@
--- BS-W16 段 4。未供給の十八欄の作業用。BS の drafts からは import しない。
+-- BS-W16 段 4。未供給の十七欄の作業用。BS の drafts からは import しない。
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.Assembly
@@ -43,10 +43,6 @@ def barrattEcclesTheory : EInfinityTheory.{u} :=
     (toSpectra := by sorry) -- D79：V。まず F_p の実例を構成する。
     (toSpectra_restrict := by sorry) -- 係数を忘れる同じ Sp の比較
     (toSpectra_homologyIso := by sorry) -- 同じ V の自然な π/H 比較
-    (powerOp0 := by sorry) -- M14、DAG XIII Construction 2.2.6
-    (powerOp0_zero := by sorry) -- 零次の Frobenius
-    (powerOp0_pos := by sorry) -- 正次数の消滅
-    (powerOp0_discrete := by sorry) -- 離散入力での比較
     (powerOp0_tot := by sorry) -- 同じ Tot に対する比較
 
 end SerrePositivity.EInfinity.BarrattEccles

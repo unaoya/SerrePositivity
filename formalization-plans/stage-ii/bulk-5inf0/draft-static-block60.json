@@ -1,0 +1,29 @@
+{
+  "drafts": 57,
+  "current_sorry": 684,
+  "protected_shared_unchanged_since_approved_mechanical_edits": true,
+  "protected_A4_P0_byte_identical_to_baseline": true,
+  "forbidden_directory_changes": 0,
+  "static_main_duplicate_candidates": {
+    "status": "syntactic exact-name candidates only, not semantic equality proof",
+    "scope": "all SerrePositivity source, including aliases; all 57 draft source files",
+    "main_files_scanned": 32937,
+    "rows": []
+  },
+  "e3_import_graph": {
+    "status": "static import graph only; include all draft staging dependencies and import all",
+    "targets": [
+      "SerrePositivity.Inputs.Perfectoidization",
+      "SerrePositivity.Inputs.PerfectoidizationInterface"
+    ],
+    "drafts_checked": 57,
+    "nodes_visited": 12939,
+    "paths": []
+  },
+  "status": "static checks only; 14 whole-draft checks still pending",
+  "A0_A9_sorry": {
+    "before": 705,
+    "current": 569,
+    "per_file_increases": 0
+  }
+}

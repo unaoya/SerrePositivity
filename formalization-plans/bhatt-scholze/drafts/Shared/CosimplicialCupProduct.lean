@@ -1,5 +1,5 @@
 -- 将来の置き場所：共有層（HomologicalAlgebra/Cosimplicial/CupProduct など。調整役と相談）。BS 固有ではない。
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity

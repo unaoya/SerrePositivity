@@ -1,6 +1,21 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.DeRhamComparisonPoly（仮。原典 Thm 6.4 の多項式・mod p の場合）
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md §9、単位 A1-5。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md §9、単位 A1-5。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.UniversalWittComparison
+import all SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.UniversalWittComparison
+import all SerrePositivity.CommutativeAlgebra.DeRham.CompletedDifferential
+public import SerrePositivity.BhattScholze.Prismatic.CechAlexander.Envelopes.BigCechAffineEnvelope
+public import SerrePositivity.BhattScholze.Prismatic.CechAlexander.Frames.BigCechFrameComparison
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineForms
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.BigPDModel
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Envelopes.PDModelBaseChange
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittBigBridge
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittBigCrystalline
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittCrystallinePrism
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDBase
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittSmallFrame
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittToSmall
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittToSmallFrame
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
@@ -51,11 +66,11 @@ variable (p : ℕ) [Fact p.Prime]
 
 /-- p 完備 CAlg への反射。底の D(k) で完備性を判定する。 -/
 def primeCompleteAlg (k : Type u) [CommRing k] :=
-  fullSubcomplexOnVertices (E.CAlg k) (fun X => completeAt (p : k) ((E.forget k).app _ X))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (E.CAlg k) (fun X => completeAt (p : k) ((E.forget k).app _ X))
 instance (k : Type u) [CommRing k] : Quasicategory (primeCompleteAlg (E := E) p k : SSet) :=
-  fullSubcomplexOnVertices_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory _ _
 def primeAlgReflection (k : Type u) [CommRing k] :
-    Σ L : E.CAlg k ⟶ (primeCompleteAlg (E := E) p k : SSet), QCatAdjunction L (primeCompleteAlg (E := E) p k).ι := by
+    Σ L : E.CAlg k ⟶ (primeCompleteAlg (E := E) p k : SSet), _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction L (primeCompleteAlg (E := E) p k).ι := by
   sorry -- 要確認：G-A2-9 の主元 p に対する CAlg 完備反射
 abbrev primeAlgCompletion (k : Type u) [CommRing k] := (primeAlgReflection (E := E) p k).1 ≫ (primeCompleteAlg (E := E) p k).ι
 abbrev completeChange {k l : Type u} [CommRing k] [CommRing l] (g : k →+* l) :=
@@ -66,41 +81,59 @@ abbrev residueU := universalOrientedPrismRing.{u} p ⧸ (U p).ideal
 abbrev qU := Ideal.Quotient.mk (U.{u} p).ideal
 abbrev WU := WittVector p (residueU.{u} p)
 
-def psiRing : universalOrientedPrismRing.{u} p →+* WU p :=
-  WittVector.frobenius.comp ((WittVector.map (qU p)).comp
-    (deltaWittGhostRingHom (U p).deltaStructure (by sorry))) -- A₀ は p 正則なので ghostMap は単射
+local instance : IsAdicComplete (Ideal.span {(p : residueU.{u} p)}) (residueU.{u} p) := (universalOrientedResidue_complete.{u} p)
+local instance : Algebra (WU.{u} p) (residueU.{u} p) := (wZero p (residueU p)).toAlgebra
 
-def wittCrystallinePrism : OrientedPrism p (WU.{u} p) := by
-  let hp : Function.Injective (fun x : WU.{u} p => (p : WU p)*x) := by sorry -- C=A₀/d₀ は p 正則
-  let D := (DeltaStructure.existsUnique_of_mod_p hp WittVector.frobenius
-    (by sorry)).exists.choose -- Witt Frobenius は mod p で p 乗
-  letI : IsAdicComplete (Ideal.span {(p : WU.{u} p)}) _ := by sorry -- C の p 完備性から Witt 座標で取る
-  exact OrientedPrism.crystalline D hp
+/-- p 完備な普遍剰余環では p と互いに素な整数は単元。 -/
+theorem universalResidue_natCast_unit (m : ℕ) (hm : ¬p ∣ m) :
+    IsUnit (m : residueU.{u} p) := by
+  have hcop := (Fact.out : p.Prime).coprime_iff_not_dvd.mpr hm
+  have he : IsCoprime (p : residueU.{u} p) (m : residueU.{u} p) := by
+    simpa only [map_natCast] using hcop.isCoprime.map (Int.castRingHom (residueU.{u} p))
+  obtain ⟨a, b, h⟩ := he
+  have hmem : b * (m : residueU.{u} p) - 1 ∈ Ideal.jacobson (⊥ : Ideal (residueU.{u} p)) := by
+    have h' : b * (m : residueU.{u} p) - 1 = -(a * (p : residueU.{u} p)) := by rw [← h]; ring
+    rw [h']
+    apply (Ideal.jacobson (⊥ : Ideal (residueU.{u} p))).neg_mem
+    apply Ideal.mul_mem_left
+    exact IsAdicComplete.le_jacobson_bot (Ideal.span {(p : residueU.{u} p)})
+      (Ideal.mem_span_singleton_self _)
+  exact isUnit_of_mul_isUnit_right (Ideal.isUnit_of_sub_one_mem_jacobson_bot _ hmem)
 
-def psiPrism : OrientedPrism.Hom (U.{u} p) (wittCrystallinePrism p) where
-  toRingHom := psiRing p
-  map_delta := by sorry -- Witt の標準射と F は Frobenius と可換、標的は p 正則
-  ideal_le := by sorry -- can(d₀) の第 0 成分は零、V の像に F を作用させると p の倍数
-abbrev wZero : WU.{u} p →+* residueU p := WittVector.constantCoeff
-theorem wZero_psi : (wZero.{u} p).comp (psiRing p) = (qU p).comp (U p).deltaStructure.frobeniusLift := by
-  sorry -- deltaWittGhostRingHom_frobenius_comp と constantCoeff の合成則
+/-- 普遍 prism の既存の正則性を乗法の単射性として読む。 -/
+theorem universalPrime_mul_injective :
+    Function.Injective (fun x : universalOrientedPrismRing.{u} p => (p : universalOrientedPrismRing.{u} p) * x) := by
+  simpa only [IsSMulRegular, smul_eq_mul] using (universalOrientedPrism_regular.{u} p).1
 
-abbrev wittPdIdeal := RingHom.ker ((Ideal.Quotient.mk (Ideal.span {(p : residueU.{u} p)})).comp (wZero p))
-def wittPdStructure : DividedPowers (wittPdIdeal.{u} p) := by
-  sorry -- Thm 6.4 の J。V(W(C)) と p の標準 divided powers は共通部分で一致
+/-- BS 著者版 Theorem 6.4 の普遍基底に本体の大きいpd模型を特殊化する。 -/
+abbrev universalWittPdFunctor := wittBigPdModel (U.{u} p) (universalOrientedPrism_mod_generator_p_regular.{u} p) (universalResidue_natCast_unit.{u} p)
+
+/-- BS 著者版 Theorem 6.4 の有限枠の本体の比較を普遍基底へ特殊化する。 -/
+abbrev universalWittSmallFrame (Q : Poly (residueU.{u} p)) :=
+  wittSmallFrame (U.{u} p) (universalOrientedPrism_mod_generator_p_regular.{u} p) (universalResidue_natCast_unit.{u} p) Q (universalOrientedResidue_complete.{u} p)
+
+/-- BS 著者版 Theorem 6.4 の本体の結晶の橋を普遍基底へ特殊化する。 -/
+abbrev universalWittBigBridge := wittBigBridge (U.{u} p) (universalPrime_mul_injective.{u} p) (universalOrientedPrism_mod_generator_p_regular.{u} p) (universalResidue_natCast_unit.{u} p) (universalOrientedPrism_bounded (p := p))
+
+/-- BS 著者版 Construction 4.18 の有限枠から大きい枠への既存の比較。 -/
+abbrev universalAffineCechFrame (Q : Poly (residueU.{u} p)) :=
+  affineCechAlexanderFrame (P := (U.{u} p)) (universalOrientedPrism_bounded (p := p)) Q
 
 abbrev universalTwist :=
   polyUnderlying (E := E) (U.{u} p) (universalOrientedPrism_bounded (p := p)) ≫
     completeChange (E := E) p ((qU p).comp (U p).deltaStructure.frobeniusLift)
 
-abbrev wittPrismBounded := crystallineBounded p (wittCrystallinePrism.{u} p) rfl
-abbrev wittPolynomial (n : ℕ) := polynomialDelta (wittCrystallinePrism.{u} p) (wittPrismBounded p) n
+@[no_expose] def wittPrismBounded : IsBoundedPrism (universalWittCrystallinePrism.{u} p) := by
+  unfold universalWittCrystallinePrism
+  apply crystallineBounded p _
+  simp only [wittCrystallinePrism, OrientedPrism.crystalline_generator]
+abbrev wittPolynomial (n : ℕ) := polynomialDelta (E := E) (universalWittCrystallinePrism.{u} p) (wittPrismBounded p) n
 
-def psiBaseChange (n : ℕ) : VertexIso
+def psiBaseChange (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     ((polyUnderlying (E := E) (U p) (universalOrientedPrism_bounded (p := p)) ≫
-      completeChange (E := E) p (psiRing p)).app _ (polyPoint (residueU.{u} p) n)) (wittPolynomial p n) := by
-  have hc := prismaticCohomology_baseChange' (U p) (universalOrientedPrism_bounded (p := p)) n
-    (wittCrystallinePrism p) (wittPrismBounded p) (psiPrism p)
+      completeChange (E := E) p (psiRing (U p) (universalPrime_mul_injective.{u} p))).app _ (polyPoint (residueU.{u} p) n)) (wittPolynomial (E := E) p n) := by
+  have hc := prismaticCohomology_baseChange' (E := E) (U p) (universalOrientedPrism_bounded (p := p)) n
+    (universalWittCrystallinePrism p) (wittPrismBounded p) (universalWittPrismMap p)
   sorry -- hc による標準同型。W の (p,p) 完備化を p 完備化と同定し polyDeltaData.obj_eq で移送
 
 /-! ## D69 の厳密に関手的な模型と zigzag（a1-design §10.5、11-07）
@@ -115,24 +148,8 @@ C = A₀/d₀（`residueU`）、W = W(C)（`WU`）、J = ker(W → C/p)（`wittP
 規約：関手 ∞ 圏の同型。
 使われ方：`bigZigzagIso` の段 0（q ∘ φ = w₀ ∘ ψ、`wZero_psi`）。 -/
 def completeChange_comp {k l m : Type u} [CommRing k] [CommRing l] [CommRing m] (g : k →+* l) (h : l →+* m) :
-    FunctorIso (completeChange (E := E) p g ≫ completeChange (E := E) p h) (completeChange (E := E) p (h.comp g)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (completeChange (E := E) p g ≫ completeChange (E := E) p h) (completeChange (E := E) p (h.comp g)) := by
   sorry -- cAlgBaseChange の合成（随伴の合成）と、primeAlgCompletion の後の底変換の完備化は元の完備底変換
-
-/-- 概要：大きい Čech–Alexander 模型 Q ↦ C_big(Q)^•（A₀ 上、B₀ = A₀{x_{q,i} | q ∈ Q^∧}^∧ の prismatic envelope、BS 著者版 Construction 4.18）を
-Poly(C) 上の厳密な関手に。
-方針：対象は A0 の `cechAlexander`（R = Q^∧、envelope の存在は `hasEnvelopes_of_polynomial`）を `prismSiteAlgebras` で余単体的 A₀ 代数に。
-射 f : Q → Q′ は f̂ : Q^∧ → Q′^∧ による添字の写像 x_{(q,i)} ↦ x_{(f̂ q, i)} の envelope の lift。**envelope は選択して置くが、射は普遍性の
-lift で一意**なので map_id・map_comp は厳密に成り立つ（対象の選択は関手性を壊さない）。
-規約：cutoff は各 Q の `polyCutoff`（関手の値は A₀ 代数なので cutoff の違いは見えない）。
-使われ方：`polyUnderlying_iso_bigCech`、`wittBigBridge`。 -/
-def bigCechAlexander : Poly (residueU.{u} p) ⥤ Cosimplicial.CosimplicialAlgebra (universalOrientedPrismRing.{u} p) where
-  obj Q := cechAlexander (U p) (polyCompletion (U p) Q.n)
-      (hasEnvelopes_of_polynomial (U p) (polyCompletion (U p) Q.n) (universalOrientedPrism_bounded (p := p))
-        (Fin Q.n) ⟨AlgEquiv.refl⟩)
-      (polyCutoff (U p) Q.n) le_rfl ⋙ prismSiteAlgebras (U p) _ _
-  map f := by sorry -- 各項で x_{(q,i)} ↦ x_{(f̂ q, i)}（f̂ は f の p 完備化）の envelope の lift。θ と可換は lift の一意性
-  map_id := by sorry -- lift の一意性
-  map_comp := by sorry -- lift の一意性
 
 /-- 概要：A₀ 上の Δ_0（A2 の `polyUnderlying`）は大きい Čech–Alexander 模型の Tot_{E∞} と関手 ∞ 圏で同型（BS 著者版 Construction 4.18 ＋ 脚注 10 を
 Q について自然に）。
@@ -143,68 +160,23 @@ Shared の `derivedGlobalSectionsCAlg_eq_totEInfinity`：site の RΓ の錐を 
 規約：**要相談**：A2 の `PolyDeltaData` にこの同型を欄として持たせるか（今は val・obj_eq・map_eval だけ）。
 使われ方：`bigZigzagIso` の段 1。 -/
 def polyUnderlying_iso_bigCech :
-    FunctorIso (polyUnderlying (E := E) (U.{u} p) (universalOrientedPrism_bounded (p := p)))
-      (Cosimplicial.strictShapeNerve (bigCechAlexander p) ≫ Cosimplicial.totEInfinityFunctor (E := E) _) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (polyUnderlying (E := E) (U.{u} p) (universalOrientedPrism_bounded (p := p)))
+      (Cosimplicial.strictShapeNerve (bigCechAlexander (U p) (universalOrientedPrism_bounded (p := p))) ≫ Cosimplicial.totEInfinityFunctor (E := E) _) := by
   sorry -- A2 の polyDeltaData を大きい模型から頂点の差し替えで作り、その差し替えの同型（要相談：A2 側の欄）
 
-/-- 大きい枠の剰余 Q^∧/p（W 代数の構造は w₀ と C → Q^∧）。 -/
-abbrev bigResidue (Q : Poly (residueU.{u} p)) :=
-  polyCompletion (U.{u} p) Q.n ⧸ Ideal.span {(p : polyCompletion (U.{u} p) Q.n)}
-instance bigResidueAlgebra (Q : Poly (residueU.{u} p)) : Algebra (WU.{u} p) (bigResidue p Q) :=
-  ((Ideal.Quotient.mk _).comp ((algebraMap (residueU p) (polyCompletion (U p) Q.n)).comp (wZero p))).toAlgebra
-
-theorem p_mem_wittPdIdeal : (p : WU.{u} p) ∈ wittPdIdeal p := by
-  sorry -- w₀(p) = p は C/p で零
-theorem wittPdIdeal_le_bigResidue (Q : Poly (residueU.{u} p)) :
-    wittPdIdeal p ≤ RingHom.ker (algebraMap (WU.{u} p) (bigResidue p Q)) := by
-  sorry -- J = w₀⁻¹(pC) は Q^∧/p で零
-
-/-- 概要：W 上の大きい J つき pd Čech 模型 Q ↦ D_W(Q)^•：枠 W[x_q | q ∈ Q^∧] → Q^∧/p（x_q ↦ q mod p、係数は w₀）の
-J つき pd Čech 脈体（`pdCechNerve`、(J, γ) = (`wittPdIdeal`, `wittPdStructure`)）。原典 Thm 6.4 の証明の RΓ_crys((Q/p)/W) の模型を Q について厳密に。
-方針：f : Q → Q′ は x_{(q,i)} ↦ x_{(f̂ q, i)}（係数は W のまま、持ち上げの選択がない）の pd 包の lift。関手性は lift の一意性。
-規約：添字は `bigCechAlexander` と同じ Q^∧ の台集合（`wittBigBridge` が添字ごとに書ける）。
-使われ方：`wittBigBridge`、`wittToSmall`。 -/
-def wittBigPdModel : Poly (residueU.{u} p) ⥤ Cosimplicial.CosimplicialAlgebra (WU.{u} p) where
-  obj Q := pdCechNerve p (wittPdStructure p) (p_mem_wittPdIdeal p) (wittPdIdeal_le_bigResidue p Q)
-    (S := polyCompletion (U p) Q.n) (Ideal.Quotient.mk _)
-  map f := by sorry -- 各項で x_{(q,i)} ↦ x_{(f̂ q, i)} の pd 包の lift（R̄ の射 Q^∧/p → Q′^∧/p と両立）
-  map_id := by sorry -- lift の一意性
-  map_comp := by sorry -- lift の一意性
-
-/-- 概要：D_W(Q)^n は結晶 prism：p ねじれなし・p 完備で、W[x] の δ 構造（δ(x) = 0）が一意に延びる。
-方針：p ねじれなしは小さい枠との比較（D_W(Q)^n ≅ D_W^{small,n} ⊗̂ pd 多項式、`pdCechNerveMap_quasiIso` の証明の変数変換）と W(C) の p ねじれなし
-（C = A₀/d₀ は p ねじれなし）。δ は BS 著者版 Lemma 2.38 の議論：z ∈ K̄ なら φ(z) = p((p−1)! γ_p(z) + δ(z))、φ(γ_n z) = φ(z)^n/n! が D に入る。
-規約：生成元は p。
-使われ方：`wittBigBridge`（envelope の普遍性の標的）。 -/
-def wittBigCrystalline (Q : Poly (residueU.{u} p)) (n : SimplexCategory) :
-    { P : OrientedPrism p (((wittBigPdModel p).obj Q).obj n).right // P.generator = p } := by
-  sorry -- p ねじれなし（小さい枠との比較）と Lemma 2.38 型の δ の延長
-
-/-- 概要：結晶の橋（原典 Thm 6.4 の ψ による底変換と Thm 5.2 の比較写像を一つに、大きい模型の上で厳密に自然に）：
-余単体的 A₀ 代数の射 C_big(Q)^• → ψ_* D_W(Q)^•、x_{(q,i)} ↦ φ(x_{(q,i)}) = x_{(q,i)}^p、A₀ → W は ψ。
-方針：D_W(Q)^n は `wittBigCrystalline` で (A₀,(d₀)) 上の prism（ψ(d₀) ∈ pW）、B₀^n → D_W(Q)^n は自由 δ 環の普遍性の δ 射、
-J₀ ↦ pD（z ∈ K̄ なら φ(z) ∈ pD）なので envelope の lift。Q^∧ → D/p（q ↦ x_q^p）で (Q^∧/A₀)_Δ の対象の射。θ・f との可換は lift の一意性。
-規約：右辺は `restrictCosimplicial ψ`。原典の比較写像（b ↦ φ(b)）と同じ類を与える（site の対象の射なので Tot の上では選び方によらない、§10.5 の 3）。
-使われ方：`bigZigzagIso` の段 2。 -/
-def wittBigBridge : bigCechAlexander.{u} p ⟶ wittBigPdModel p ⋙ Cosimplicial.restrictCosimplicial (psiRing p) := by
-  sorry -- 各 (Q, n) で envelope の lift（x ↦ φ(x)、基底 ψ）。自然性は lift の一意性
-
-/-- 概要：W → C に沿う先：大きい模型から C 上の小さい模型への厳密な自然変換 D_W(Q)^• → (w₀)_* D_0(Q)^•（D_0 = `pdModel C n`）。
-x_{(q,i)} ↦ q^{(i)}（q ∈ Q^∧ = C⟨X⟩ の copy i）、W → C は w₀。
-方針：w₀ は pd 射 (J, γ) → (pC + 差, 標準)（`wZero_isDPMorphism`）、枠の射は R̄ = Q^∧/p 上で両立するので pd 包の lift。
-Q → Q′ との可換は lift の一意性（右辺の `pdPolynomialFunctor C` は C 係数のまま代入するので厳密）。
-規約：§10.5 の 4 の「Ω^*_{Q/C} へつなぐ写像」：第 0 項 D_W(Q)^0 → C⟨X⟩ = Q^∧ が設計の候補（pd 包 → Q、C の (p) の標準 divided powers）
-そのもので、de Rham 側は C 上の小さい模型で行う（大きい枠の pd 形式は使わない）。
-使われ方：`bigZigzagIso` の段 3。 -/
-def wittToSmall : wittBigPdModel.{u} p ⟶
-    pdPolynomialFunctor p (residueU p) ⋙ Cosimplicial.restrictCosimplicial (wZero p) := by
+/-- BS 著者版 Theorem 6.4 の普遍基底の大きい模型から一般pd関手への自然変換。 -/
+def universalWittToPdModel : universalWittPdFunctor.{u} p ⟶
+    pdModelPolynomialFunctor p (residueU p) ⋙ Cosimplicial.restrictCosimplicial (wZero p (residueU p)) := by
   sorry -- 各 (Q, n) で pd 包の lift（x_{(q,i)} ↦ copy i の q、基底 w₀）。自然性は lift の一意性
 
-/-- C の (p) の標準 divided powers（C は p ねじれなし：γ_n(px) = p^n x^n / n!）。 -/
-def residuePdStructure : DividedPowers (Ideal.span {(p : residueU.{u} p)}) := by
-  sorry -- p^n/n! ∈ pℤ_(p)（n ≥ 1）と C の p ねじれなし
-theorem wZero_isDPMorphism : DividedPowers.IsDPMorphism (wittPdStructure.{u} p) (residuePdStructure p) (wZero p) := by
-  sorry -- w₀(V x) = 0 と γ_n(V x) = p^{n−1}/n! V(x^n)、w₀(γ_n(p)) = p^n/n!
+/-- BS 著者版 Theorem 6.4 の有限枠における一般pd関手への射の両立。 -/
+theorem universalWittToPdModel_frame (Q : Poly (residueU.{u} p)) :
+    universalWittSmallFrame p Q ≫ (universalWittToPdModel p).app Q = pdModelBaseChange p (WU p) (residueU p) Q.n := by
+  sorry -- pd 包の lift の一意性：X_j ↦ x_{X_j} ↦ X_j
+
+theorem wittPdIdeal_le_bigResidue (Q : Poly (residueU.{u} p)) :
+    wittPdIdeal p (residueU p) ≤ RingHom.ker (algebraMap (WU.{u} p) (bigResidue (U p) Q)) := by
+  sorry -- J = w₀⁻¹(pC) は Q^∧/p で零
 
 /-- 概要：完備係数変換と Tot の随伴の転置：厳密な自然変換 α : F ⟶ G ⋙ g_*（F は k 上、G は l 上）から、関手 ∞ 圏の辺
 （completeChange g ∘ Tot_k ∘ F ⟹ Tot_l ∘ G）を実際のホモトピーとして。
@@ -233,8 +205,8 @@ theorem baseChangeTotHomotopy_vertex {k l : Type u} [CommRing k] [CommRing l] (g
     {F : 𝒞 ⥤ Cosimplicial.CosimplicialAlgebra k} {G : 𝒞 ⥤ Cosimplicial.CosimplicialAlgebra l}
     (α : F ⟶ G ⋙ Cosimplicial.restrictCosimplicial g)
     (hG : ∀ c : 𝒞, completeAt (p : l) ((E.forget l).app _ (Cosimplicial.totEInfinity (E := E) l (G.obj c)))) (c : 𝒞) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (baseChangeTotHomotopy (E := E) p g α hG) (ULift.up (nerveVertex c))).toTruncated ↔
-      IsInvertibleEdge (baseChangeTotEdge (E := E) p g (α.app c) (hG c)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (baseChangeTotHomotopy (E := E) p g α hG) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))).toTruncated ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (baseChangeTotEdge (E := E) p g (α.app c) (hG c)).toTruncated := by
   sorry -- strictNatTransHomotopy の頂点の辺は nerve.edgeMk (α.app c)、転置は頂点ごとに同じ式
 
 /-- 概要：転置は厳密な射について自然：a : X → X′、b : Y → Y′ と α・α′ が α ≫ g_* b = a ≫ α′ を満たせば、ホモトピー圏で
@@ -256,7 +228,7 @@ theorem baseChangeTotEdge_natural {k l : Type u} [CommRing k] [CommRing l] (g : 
   sorry -- totEInfinity_map の関手性（h を nerve の 2 単体に）と余単位の自然性
 
 theorem wittBigPdModel_complete (Q : Poly (residueU.{u} p)) :
-    completeAt (p : WU.{u} p) ((E.forget _).app _ (Cosimplicial.totEInfinity (E := E) _ ((wittBigPdModel p).obj Q))) := by
+    completeAt (p : WU.{u} p) ((E.forget _).app _ (Cosimplicial.totEInfinity (E := E) _ ((universalWittPdFunctor p).obj Q))) := by
   sorry -- 各項は p 完備（IsCompletedPDEnvelope.complete）、Δ 上の極限は完備性を保つ
 theorem pdModel_complete (k : Type u) [CommRing k] (hk : IsAdicComplete (Ideal.span {(p : k)}) k) (r : ℕ) :
     completeAt (p : k) ((E.forget k).app _ (Cosimplicial.totEInfinity (E := E) k (pdModel p k r))) := by
@@ -264,21 +236,13 @@ theorem pdModel_complete (k : Type u) [CommRing k] (hk : IsAdicComplete (Ideal.s
 
 /-! ### 各対象での可逆性（小さい模型の結果を「表示によらない」で移す、§10.5 の 5） -/
 
-/-- 概要：各対象 Q での小さい Čech–Alexander 模型（Rem 4.19、A2 の `polyCosimplicialAlgebra`）から大きい模型への枠の射（X_j ↦ x_{X_j}）。
-選択なしに取れるが Q について自然ではない（各対象での比較だけに使う）。 -/
-def cechAlexanderFrame (Q : Poly (residueU.{u} p)) :
-    polyCosimplicialAlgebra (U p) (universalOrientedPrism_bounded (p := p)) Q.n ⟶ (bigCechAlexander p).obj Q := by
-  sorry -- 各項で X_j^{(i)} ↦ x_{(X_j, i)} の envelope の lift
 theorem cechAlexanderFrame_isInvertible (Q : Poly (residueU.{u} p)) :
-    IsInvertibleEdge (Cosimplicial.totEInfinity_map (E := E) _ (cechAlexanderFrame p Q)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (Cosimplicial.totEInfinity_map (E := E) _ (universalAffineCechFrame p Q)).toTruncated := by
   sorry -- 両方とも Δ_{Q^∧/A₀} の Čech 脈体（A2 の prismaticCohomologyCAlg_eq_totEInfinity と A0 の
         -- prismaticCohomology_eq_cechAlexanderTot）。枠の射は site の対象の射なので制限の錐と両立し、Tot の上で可逆
 
-/-- 小さい枠 W[X] → 大きい枠（X_j ↦ x_{X_j}）。`pdModel_iso_pdCechNerve` と `pdCechNerveMap`（R̄ の同一視 (W/J)[X] ≅ Q^∧/p を挟む）。 -/
-def wittSmallFrame (Q : Poly (residueU.{u} p)) : pdModel p (WU.{u} p) Q.n ⟶ (wittBigPdModel p).obj Q := by
-  sorry -- pdModel_iso_pdCechNerve（k = W、J、γ）と pdCechNerveMap（φ(j) = x_{X_j}）、(W/J)[X] ≅ (C/p)[X] ≅ Q^∧/p
 theorem wittSmallFrame_isInvertible (Q : Poly (residueU.{u} p)) :
-    IsInvertibleEdge (Cosimplicial.totEInfinity_map (E := E) _ (wittSmallFrame p Q)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (Cosimplicial.totEInfinity_map (E := E) _ (universalWittSmallFrame p Q)).toTruncated := by
   sorry -- pdCechNerveMap_quasiIso（どちらの枠も Q^∧/p を覆う、W は p 完備）と totEInfinity_map_isInvertible
 
 /-- 概要：小さい模型での結晶の橋 C_small(n)^• → ψ_* pdModel(W, n)^•（X ↦ X^p、A₀ → W は ψ）。
@@ -289,7 +253,7 @@ theorem wittSmallFrame_isInvertible (Q : Poly (residueU.{u} p)) :
 使われ方：`wittSmallBridge_isInvertible`、`wittBridge_frame_comm`。 -/
 def wittSmallBridge (n : ℕ) :
     polyCosimplicialAlgebra (U.{u} p) (universalOrientedPrism_bounded (p := p)) n ⟶
-      (Cosimplicial.restrictCosimplicial (psiRing p)).obj (pdModel p (WU p) n) := by
+      (Cosimplicial.restrictCosimplicial (psiRing (U p) (universalPrime_mul_injective.{u} p))).obj (pdModel p (WU p) n) := by
   sorry -- 各項で envelope の lift（δ 射 X ↦ X^p、基底 ψ）
 
 /-- 概要：小さい模型の原典 Thm 6.4 の核心（ψ に沿う底変換 ＋ Thm 5.2 β）：転置した辺 completeChange ψ (Tot C_small(n)) → Tot pdModel(W, n) は可逆。
@@ -301,44 +265,36 @@ W 上の Thm 5.2：A1/CrystallineSite の `crystallineComparison_polynomial`（(
 規約：Frobenius との両立は使わない。
 使われ方：`wittBigBridge_isInvertible`。 -/
 theorem wittSmallBridge_isInvertible (n : ℕ) :
-    IsInvertibleEdge (baseChangeTotEdge (E := E) p (psiRing p) (wittSmallBridge.{u} p n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (baseChangeTotEdge (E := E) p (psiRing (U p) (universalPrime_mul_injective.{u} p)) (wittSmallBridge.{u} p n)
       (pdModel_complete (E := E) p (WU p) (by sorry) n)).toTruncated := by
   sorry -- psiBaseChange・cechAlexanderAffine_baseChange・crystallineComparison_polynomial（(W, J)）・frobeniusPdBridge_tot・
         -- pdModel_iso_pdCechNerve（W の p 完備性の sorry は wittCrystallinePrism と同じ根拠）
 
 theorem wittBridge_frame_comm (Q : Poly (residueU.{u} p)) :
-    wittSmallBridge p Q.n ≫ (Cosimplicial.restrictCosimplicial (psiRing p)).map (wittSmallFrame p Q) =
-      cechAlexanderFrame p Q ≫ (wittBigBridge p).app Q := by
+    wittSmallBridge p Q.n ≫ (Cosimplicial.restrictCosimplicial (psiRing (U p) (universalPrime_mul_injective.{u} p))).map (universalWittSmallFrame p Q) =
+      universalAffineCechFrame p Q ≫ (universalWittBigBridge p).app Q := by
   sorry -- envelope の lift の一意性：両辺とも X_j^{(i)} ↦ φ(x_{(X_j,i)}) = x_{(X_j,i)}^p の δ 射
 
 /-- 概要：段 2 の成分は可逆。
 方針：`baseChangeTotEdge_natural`（`wittBridge_frame_comm`）の四角形で、`cechAlexanderFrame_isInvertible`（の完備係数変換）・
 `wittSmallBridge_isInvertible`・`wittSmallFrame_isInvertible` から 2-out-of-3。 -/
 theorem wittBigBridge_isInvertible (Q : Poly (residueU.{u} p)) :
-    IsInvertibleEdge (baseChangeTotEdge (E := E) p (psiRing p) ((wittBigBridge p).app Q) (wittBigPdModel_complete (E := E) p Q)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (baseChangeTotEdge (E := E) p (psiRing (U p) (universalPrime_mul_injective.{u} p)) ((universalWittBigBridge p).app Q) (wittBigPdModel_complete (E := E) p Q)).toTruncated := by
   sorry -- 四角形と 2-out-of-3
 
-/-- 小さい模型の係数変換 pdModel(W, n) → (w₀)_* pdModel(C, n)（係数 w₀、X ↦ X）。 -/
-def pdModelBaseChange (n : ℕ) :
-    pdModel p (WU.{u} p) n ⟶ (Cosimplicial.restrictCosimplicial (wZero p)).obj (pdModel p (residueU p) n) := by
-  sorry -- 各項で pdRaw の係数変換を完備化
 /-- 概要：小さい模型の係数変換は Tot で可逆（完備底変換と Tot が可換）。
 方針：W 上と C 上の de Rham 比較（`pdDeRhamFunctorIso` の成分）は係数変換と厳密に両立し、Ω̂^•_{W⟨X⟩} ⊗̂_W C ≅ Ω̂^•_{C⟨X⟩}（各次数有限自由、有界）。 -/
 theorem pdModelBaseChange_isInvertible (n : ℕ) :
-    IsInvertibleEdge (baseChangeTotEdge (E := E) p (wZero p) (pdModelBaseChange.{u} p n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (baseChangeTotEdge (E := E) p (wZero p (residueU p)) (pdModelBaseChange.{u} p (WU p) (residueU p) n)
       (pdModel_complete (E := E) p (residueU p) (by sorry) n)).toTruncated := by
   sorry -- de Rham の span（行 0・列 0 の射影）は係数変換と可換、有界で有限自由な Ω の完備底変換
         -- （C の p 完備性の sorry は C = A₀/d₀ が有界 prism の剰余であることから）
-
-theorem wittToSmall_frame (Q : Poly (residueU.{u} p)) :
-    wittSmallFrame p Q ≫ (wittToSmall p).app Q = pdModelBaseChange p Q.n := by
-  sorry -- pd 包の lift の一意性：X_j ↦ x_{X_j} ↦ X_j
 
 /-- 概要：段 3 の成分は可逆。
 方針：`baseChangeTotEdge_natural`（a = `wittSmallFrame`、b = 𝟙、`wittToSmall_frame`）で `pdModelBaseChange_isInvertible` と
 `wittSmallFrame_isInvertible` から 2-out-of-3。 -/
 theorem wittToSmall_isInvertible (Q : Poly (residueU.{u} p)) :
-    IsInvertibleEdge (baseChangeTotEdge (E := E) p (wZero p) ((wittToSmall p).app Q)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (baseChangeTotEdge (E := E) p (wZero p (residueU p)) ((universalWittToPdModel p).app Q)
       (pdModel_complete (E := E) p (residueU p) (by sorry) Q.n)).toTruncated := by
   sorry -- 四角形と 2-out-of-3
 
@@ -353,35 +309,35 @@ theorem wittToSmall_isInvertible (Q : Poly (residueU.{u} p)) :
 4. `pdDeRhamFunctorIso`（k = C）。
 規約：∞ 関手の合成の結合は `functorIsoOfEq` で調整。
 使われ方：`wittComposite`、`deRham_iso_polynomial_universal`。 -/
-def bigZigzagIso : FunctorIso (universalTwist.{u} (E := E) p) (theoryFormsCAlg (E := E) p (residueU p)) := by
+def bigZigzagIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (universalTwist.{u} (E := E) p) (theoryFormsCAlg (E := E) p (residueU p)) := by
   let hU := universalOrientedPrism_bounded (p := p)
   let Δ0 := polyUnderlying (E := E) (U.{u} p) hU
-  let cψ := completeChange (E := E) p (psiRing.{u} p)
-  let cw := completeChange (E := E) p (wZero.{u} p)
-  let SA := Cosimplicial.strictShapeNerve (bigCechAlexander.{u} p)
-  let SD := Cosimplicial.strictShapeNerve (wittBigPdModel.{u} p)
-  let S0 := Cosimplicial.strictShapeNerve (pdPolynomialFunctor p (residueU.{u} p))
+  let cψ := completeChange (E := E) p (psiRing (U.{u} p) (universalPrime_mul_injective.{u} p))
+  let cw := completeChange (E := E) p (wZero.{u} p (residueU p))
+  let SA := Cosimplicial.strictShapeNerve (bigCechAlexander (U.{u} p) (universalOrientedPrism_bounded (p := p)))
+  let SD := Cosimplicial.strictShapeNerve (universalWittPdFunctor.{u} p)
+  let S0 := Cosimplicial.strictShapeNerve (pdModelPolynomialFunctor p (residueU.{u} p))
   let TA := Cosimplicial.totEInfinityFunctor (E := E) (universalOrientedPrismRing.{u} p)
   let TW := Cosimplicial.totEInfinityFunctor (E := E) (WU.{u} p)
   let TC := Cosimplicial.totEInfinityFunctor (E := E) (residueU.{u} p)
   -- 段 0
-  let e0 : FunctorIso (universalTwist (E := E) p) (Δ0 ≫ cψ ≫ cw) :=
-    functorIsoOfEq ((completeChange_comp (E := E) p (psiRing p) (wZero p)).symm.precomp Δ0) (by rw [wZero_psi]) rfl
+  let e0 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (universalTwist (E := E) p) (Δ0 ≫ cψ ≫ cw) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (completeChange_comp (E := E) p (psiRing (U p) (universalPrime_mul_injective.{u} p)) (wZero p (residueU p))).symm Δ0) (by dsimp only [universalTwist, Δ0]; rw [wZero_psi]) rfl
   -- 段 1
-  let e1 : FunctorIso (Δ0 ≫ cψ ≫ cw) (SA ≫ TA ≫ cψ ≫ cw) :=
-    functorIsoOfEq ((polyUnderlying_iso_bigCech (E := E) p).postcomp (cψ ≫ cw)) rfl (by simp only [Category.assoc])
+  let e1 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Δ0 ≫ cψ ≫ cw) (SA ≫ TA ≫ cψ ≫ cw) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((polyUnderlying_iso_bigCech (E := E) p).postcomp (cψ ≫ cw)) rfl (by simp only [SA, TA, SD, TW, S0, TC, cψ, cw, Category.assoc])
   -- 段 2
-  let e2 : FunctorIso (SA ≫ TA ≫ cψ ≫ cw) (SD ≫ TW ≫ cw) :=
-    functorIsoOfEq ((functorIsoOfPointwiseInvertibleHomotopy
-        (baseChangeTotHomotopy (E := E) p (psiRing p) (wittBigBridge p) (wittBigPdModel_complete (E := E) p)) (by
+  let e2 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SA ≫ TA ≫ cψ ≫ cw) (SD ≫ TW ≫ cw) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy
+        (baseChangeTotHomotopy (E := E) p (psiRing (U p) (universalPrime_mul_injective.{u} p)) (universalWittBigBridge p) (wittBigPdModel_complete (E := E) p)) (by
           sorry)).postcomp cw) -- 頂点 ULift.up (nerveVertex Q) で baseChangeTotHomotopy_vertex と wittBigBridge_isInvertible
-      (by simp only [Category.assoc]) (by simp only [Category.assoc])
+      (by simp only [SA, TA, SD, TW, S0, TC, cψ, cw, Category.assoc]) (by simp only [SA, TA, SD, TW, S0, TC, cψ, cw, Category.assoc])
   -- 段 3
-  let e3 : FunctorIso (SD ≫ TW ≫ cw) (S0 ≫ TC) :=
-    functorIsoOfEq (functorIsoOfPointwiseInvertibleHomotopy
-        (baseChangeTotHomotopy (E := E) p (wZero p) (wittToSmall p) (fun Q => pdModel_complete (E := E) p (residueU p) (by sorry) Q.n)) (by
+  let e3 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SD ≫ TW ≫ cw) (S0 ≫ TC) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy
+        (baseChangeTotHomotopy (E := E) p (wZero p (residueU p)) (universalWittToPdModel p) (fun Q => pdModel_complete (E := E) p (residueU p) (by sorry) Q.n)) (by
           sorry)) -- 頂点で baseChangeTotHomotopy_vertex と wittToSmall_isInvertible。C の p 完備性は上と同じ
-      (by simp only [Category.assoc]) rfl
+      (by simp only [SA, TA, SD, TW, S0, TC, cψ, cw, Category.assoc]) rfl
   -- 段 4
   exact e0 ≪≫ e1 ≪≫ e2 ≪≫ e3 ≪≫ theoryPdDeRhamFunctorIso (E := E) p (residueU p)
 
@@ -397,7 +353,7 @@ def wittComposite (n : ℕ) := (bigZigzagIso.{u} (E := E) p).app (polyPoint _ n)
 規約：`FunctorIso` は Fun(N(Poly), CAlg) のホモトピー圏の同型。高次の整合性は厳密な関手・自然変換の nerve から来る（§10.4 の (i)〜(iii)）。
 使われ方：`transferWittComparison`。 -/
 def deRham_iso_polynomial_universal :
-    { e : FunctorIso (universalTwist.{u} (E := E) p) (theoryFormsCAlg (E := E) p (residueU p)) //
+    { e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (universalTwist.{u} (E := E) p) (theoryFormsCAlg (E := E) p (residueU p)) //
       ∀ n, e.app (polyPoint _ n) = wittComposite (E := E) p n } :=
   ⟨bigZigzagIso (E := E) p, fun _ => rfl⟩
 
@@ -412,17 +368,17 @@ abbrev reducedPolyForms := changePolyNerve (Ideal.Quotient.mk (Ideal.span {(p : 
 /-- A₀ で既に構成した射を d₀↦d に沿って移す。 -/
 abbrev residueToModP := (Ideal.Quotient.mk (Ideal.span {(p : A ⧸ P.ideal)})).comp (orientationMap P).quotientMap
 
-def universalDeltaChange (n : ℕ) : VertexIso ((reducedPolyDelta (E := E) p P hP).app _ (polyPoint _ n))
+def universalDeltaChange (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((reducedPolyDelta (E := E) p P hP).app _ (polyPoint _ n))
     ((completeChange (E := E) p (residueToModP p P)).app _ ((universalTwist (E := E) p).app _ (polyPoint _ n))) := by
   sorry -- 分類射による polynomialChangeEdge は Cor 4.12 で可逆。
         -- δ 射と φ の両立、完備底変換の結合則でその逆を取る
-def universalFormsChange (n : ℕ) : VertexIso
+def universalFormsChange (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     ((completeChange (E := E) p (residueToModP p P)).app _ (theoryFormsVertex (E := E) p (residueU p) n))
     ((reducedPolyForms (E := E) p P).app _ (polyPoint _ n)) := by
   sorry -- 有限自由な連続形式の底変換。座標とその微分を同じ座標へ送る
 
 def transferWittComparison (hperf : P.deltaStructure.IsPerfect) :
-    { e : FunctorIso (reducedPolyDelta (E := E) p P hP) (reducedPolyForms (E := E) p P) // ∀ n : ℕ,
+    { e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (reducedPolyDelta (E := E) p P hP) (reducedPolyForms (E := E) p P) // ∀ n : ℕ,
       e.app (polyPoint _ n) = universalDeltaChange (E := E) p P hP n ≪≫
         ((deRham_iso_polynomial_universal (E := E) p).val.app (polyPoint _ n)).map (completeChange (E := E) p (residueToModP p P)) ≪≫
         universalFormsChange (E := E) p P n } := by
@@ -430,7 +386,7 @@ def transferWittComparison (hperf : P.deltaStructure.IsPerfect) :
         -- J つき比較の自然性により各成分が多項式射と可換
 
 def deRham_iso_polynomial_modP (hperf : P.deltaStructure.IsPerfect) :
-    FunctorIso (reducedPolyDelta (E := E) p P hP) (reducedPolyForms (E := E) p P) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (reducedPolyDelta (E := E) p P hP) (reducedPolyForms (E := E) p P) :=
   (transferWittComparison (E := E) p P hP hperf).val
 
 abbrev rootSource (C : Type u) [CommRing C] := theoryFormsVertex (E := E) p C 1
@@ -452,31 +408,54 @@ def rootDegreeZeroMap (n : ℕ) :
 
 abbrev singleRootTarget (n : ℕ) := (SerrePositivity.EInfinity.discreteCDGA _).obj (rootTargetAlgebra p P n)
 
-def polynomialZeroForm (C : Type u) [CommRing C] (n : ℕ) :
-    MvPolynomial (Fin n) C →+ (formComplex p C n).X 0 := by
-  sorry -- Ω⁰=多項式環を ULift の変数に rename、completedFormsUnit と extendXIso で次数零へ
 def singleTargetZeroIso (n : ℕ) :
     (singleRootTarget p P n).X.X 0 ≃+ (rootStrictTarget p P n) := by
   sorry -- HomologicalComplex.singleObjXSelf の底の加法同型
+
+/-- BS 著者版 Theorem 6.4 の零次の多項式を、既存の零形式・完備化単位・複体延長の同型で読む。 -/
+@[no_expose] def polynomialZeroFormInComplex (k : Type u) [CommRing k] (n : ℕ) (a : MvPolynomial (Fin n) k) :
+    (formsCDGA p k n).X.X 0 := by
+  let K := DeRham.completedDeRhamComplex k (formVars.{u} n) p
+  let a' := MvPolynomial.rename (fun i : Fin n => (ULift.up i : formVars.{u} n)) a
+  let ω := DeRham.completedFormsUnit k (formVars.{u} n) p 0
+    (DeRham.formsZeroEquiv k (formVars.{u} n) a')
+  let e := K.extendXIso ComplexShape.embeddingUpNat (i := 0) (i' := (0 : ℤ)) rfl
+  change (K.extend ComplexShape.embeddingUpNat).X (0 : ℤ)
+  exact e.inv.hom (show K.X 0 from ω)
 
 def cdgaAugmentation (n : ℕ) :
     let C := modPrime p (A ⧸ P.ideal)
     { f : formsCDGA p C n ⟶ singleRootTarget p P n //
       ∀ a : MvPolynomial (Fin n) C, singleTargetZeroIso p P n
-        (f.hom.hom.f 0 (polynomialZeroForm p C n a)) = rootDegreeZeroMap p P n a } := by
+        (f.hom.hom.f 0 (polynomialZeroFormInComplex p C n a)) = rootDegreeZeroMap p P n a } := by
   sorry -- 次数零は rootDegreeZeroMap（p=0）、正次数では標的が零。
         -- 単位・外積・微分に両立する CommMon の射を作る
 
 def rootFormsAugmentation (n : ℕ) :
     SSet.Edge (theoryFormsVertex (E := E) p (modPrime p (A ⧸ P.ideal)) n)
-      ((E.discrete _).app _ (nerveVertex (rootTargetAlgebra p P n))) := by
+      ((E.discrete _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (rootTargetAlgebra p P n))) := by
   let C := modPrime p (A ⧸ P.ideal)
   let B := rootTargetAlgebra p P n
   let e := (nerve.edgeMk (cdgaAugmentation p P n).val).map (E.ofCdga C)
-  let i := (E.ofCdga_discrete C).app (nerveVertex B)
-  let a := Classical.choose (homotopyCategory_homMk_surjective _ _
-    (SSet.HomotopyCategory.homMk e ≫ i.hom))
-  exact SSet.Edge.mk a.edge a.src_eq a.tgt_eq
+  let i := (E.ofCdga_discrete C).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
+  have hn : (nerveMap (discreteCDGA C) ≫ E.ofCdga C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B) =
+      (E.ofCdga C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((discreteCDGA C).obj B)) := by
+    exact congrArg ((E.ofCdga C).app (Opposite.op ⦋0⦌)) (nerveMap_app_mk₀ (discreteCDGA C) B)
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+      ((E.ofCdga C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((discreteCDGA C).obj B)))
+      ((E.discrete C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)) := by
+    simpa only [hn] using i
+  let a := Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _
+    (SSet.HomotopyCategory.homMk e ≫ hi.hom))
+  have hs : theoryFormsVertex (E := E) p C n =
+      (E.ofCdga C).app (Opposite.op ⦋0⦌) (nerveEquiv.symm (formsCDGA p C n)) := by
+    change (E.ofCdga C).app (Opposite.op ⦋0⦌)
+      ((Cosimplicial.strictShapeNerve (formsCDGAFunctor p C)).app (Opposite.op ⦋0⦌) (polyPoint C n)) = _
+    apply congrArg ((E.ofCdga C).app (Opposite.op ⦋0⦌))
+    apply ComposableArrows.ext₀
+    rfl
+  exact SSet.Edge.mk a.edge (by rw [hs]; exact a.src_eq)
+    (by convert a.tgt_eq using 1 <;> rfl)
 
 def rootArrow (n : ℕ) : ofAlgebra (A ⧸ P.ideal) (polyAlgebra p (A ⧸ P.ideal) n) ⟶
     ofAlgebra (A ⧸ P.ideal) (polyRootAlgebra p (A ⧸ P.ideal) n) :=
@@ -486,28 +465,20 @@ abbrev rootDeltaEdge (n : ℕ) := (nerve.edgeMk (rootArrow p P n)).map
 
 /-- 完備離散入力 T での値を polyUnderlying の多項式頂点に移送する。 -/
 def completedPolynomialRecovery (n : ℕ) :
-    VertexIso ((derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P ≫
-      completeChange (E := E) p (twistedReduction p P)).app _ (nerveVertex (ofAlgebra _ (polyAlgebra p (A ⧸ P.ideal) n))))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P ≫
+      completeChange (E := E) p (twistedReduction p P)).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra _ (polyAlgebra p (A ⧸ P.ideal) n))))
       ((reducedPolyDelta (E := E) p P hP).app _ (polyPoint _ n)) := by
   sorry -- A2 の polyRecovery、離散多項式の p 完備化は有界ねじれで次数零、D32
 
 theorem deRham_iso_rootAlgebra_modP (hperf : P.deltaStructure.IsPerfect) (n : ℕ) :
     let g := rootFormsAugmentation (E := E) p P n
     let e := completedPolynomialRecovery (E := E) p P hP n ≪≫ (deRham_iso_polynomial_modP (E := E) p P hP hperf).app (polyPoint _ n)
-    ∃ e∞ : VertexIso ((derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P ≫
-        completeChange (E := E) p (twistedReduction p P)).app _ (nerveVertex (ofAlgebra _ (polyRootAlgebra p (A ⧸ P.ideal) n))))
-        ((E.discrete _).app _ (nerveVertex (rootTargetAlgebra p P n))),
-      HomotopyCategory.homMk (rootDeltaEdge (E := E) p P hP n) ≫ e∞.hom = e.hom ≫ HomotopyCategory.homMk g := by
+    ∃ eInf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P ≫
+        completeChange (E := E) p (twistedReduction p P)).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra _ (polyRootAlgebra p (A ⧸ P.ideal) n))))
+        ((E.discrete _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (rootTargetAlgebra p P n))),
+      HomotopyCategory.homMk (rootDeltaEdge (E := E) p P hP n) ≫ eInf.hom = e.hom ≫ HomotopyCategory.homMk g := by
   sorry -- X_j↦X_j^p の列の完備 filtered 余極限。mod p で正次数の形式の遷移は零、
         -- 次数零は T∞/p。最初の余極限脚で可換式を得る
 
-/-! A3 は A2 の底変換を使うため、普遍例への特殊化は A1 の最終ファイルに置く。 -/
-theorem prismaticCohomology_lci_universal {r : ℕ} (f : Fin r → A)
-    (hf : IsKoszulRegularModGenerator P f) (hb : BoundedPTorsion p (lciQuotient P f)) :
-    let R := lciQuotient P f
-    let h := lci_isDiscretePrismatic P hP f hf hb
-    ∃ t : InitialDelta P hP R h, IsLciEnvelope P f (discretePrism P hP R h t.D t.base) (discreteBase P hP R) := by
-  obtain ⟨g, hg, _⟩ := universalOrientedPrism_hom P
-  exact prismaticCohomology_lci_eq_envelope P hP f (U p) (universalOrientedPrism_bounded (p := p)) g hg hf hb
 
 end SerrePositivity.BhattScholze.Prismatic

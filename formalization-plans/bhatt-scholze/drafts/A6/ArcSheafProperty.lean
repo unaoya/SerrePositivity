@@ -1,12 +1,13 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSheafProperty（仮。原典 Prop 8.10 の affine 版と三つの引用）
--- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.2・§3.1、単位 A6-2。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.2・§3.1、単位 A6-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 -- 引用 3 件の `sorry` 定理（G-A6-1a・1b・1c）は drafts/ の間は問題なし。SerrePositivity/ に入れるときは scripts/make_area_audits.py の許可一覧の更新を調整役に依頼する（main 7b8b96286）。
 module
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps
 
 public import SerrePositivity.EInfinity.Interface.Theory
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationUntilt
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativeFilteredPreservation
@@ -67,6 +68,7 @@ variable (p : ℕ) [Fact p.Prime] (κ : Cardinal.{u})
 
 open SerrePositivity.InfinityCategories SerrePositivity.BhattScholze.PerfectoidizationInterface
 open SerrePositivity.DerivedCompletion
+open SerrePositivity.InfinityCategories.Sheaves
 
 /-- 指定した階数の付値環で試す有限族。W とその整域構造を同じ証人として保持する。 -/
 def ValuativeCoverFamily (rank : CommRingCat.{u} → Prop)
@@ -139,15 +141,15 @@ def fpFamilyCone {ι : Type u} {A : A_R (ArcFp.{u} p)} {B : ι → A_R (ArcFp.{u
 def IsFpSheafFor
     (test : ∀ {A : Type u} [CommRing A] {ι : Type u} [Finite ι]
       (B : ι → Type u) [∀ i, CommRing (B i)], (∀ i, A →+* B i) → Prop)
-    (F : algebraNerve (ArcFp.{u} p) ⟶ derivedInfinityCategory ArcZ.{u}) : Prop :=
+    (F : algebraNerve (ArcFp.{u} p) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory ArcZ.{u}) : Prop :=
   ∀ (ι : Type u) [Finite ι] (A : A_R (ArcFp.{u} p)) (B : ι → A_R (ArcFp.{u} p))
     (f : ∀ i, A ⟶ B i), test (fun i => ((B i).right : Type u)) (fun i => (f i).right.hom) →
     let I := (fpFamilyFactor p f).FullSubcategory
     let C := A_R (ArcFp.{u} p)
     let c := (AsSmall.up : C ⥤ AsSmall.{u + 1} C).mapCone
       ((fpFamilyCone p f).whisker (AsSmall.down : AsSmall.{u + 1} I ⥤ I))
-    IsLimitCone ((F1B.nerveCone c).postcomp
-      (nerveMap (AsSmall.down : AsSmall.{u + 1} C ⥤ C) ≫ F))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone c).postcomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap (AsSmall.down : AsSmall.{u + 1} C ⥤ C) ≫ F))
 
 /-- V, V_𝔭, V/𝔭, κ(𝔭) の標準四角形。すべて同じ F_p 代数構造の下で取る。 -/
 def fpValuationSquare (V : A_R (ArcFp.{u} p)) (P : Ideal V.right) [P.IsPrime] :
@@ -175,15 +177,15 @@ affine 版（D59）の根拠：v 層は有限 affine 開被覆の降下を満た
 Tot の filtered 余極限との交換（BM18 v4 p.4 Thm 1.7、p.17 Ex 3.6(1)、p.25 Thm 4.1）。
 使われ方：G-A6-1。 -/
 theorem arcSheaf_of_vSheaf_of_valuationSquares
-    (F : algebraNerve (ArcFp.{u} p) ⟶ derivedInfinityCategory ArcZ.{u})
-    (hfin : F2.Ind.PreservesSmallKappaFilteredColimits Cardinal.aleph0 F)
+    (F : algebraNerve (ArcFp.{u} p) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory ArcZ.{u})
+    (hfin : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits Cardinal.aleph0 F)
     (hco : ∀ A : A_R (ArcFp.{u} p), SerrePositivity.InfinityCategories.Derived.IsCoconnectiveAt ArcZ.{u} 0
-      (F.app (Opposite.op ⦋0⦌) (nerveVertex A))) :
+      (F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex A))) :
     IsFpSheafFor p (@IsArcCoverFamilyCharP) F ↔
       IsFpSheafFor p (@IsVCoverFamily) F ∧
         ∀ (V : A_R (ArcFp.{u} p)) [IsDomain V.right] [ValuationRing V.right]
           [IsAlgClosed (FractionRing V.right)] (P : Ideal V.right) [P.IsPrime],
-          IsPullbackSquare (fpValuationSquare p V P ≫ F) := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (fpValuationSquare p V P ≫ F) := by
   sorry -- [BM18, Thm 1.7]
 
 /-- 概要：G-A6-1：完全 F_p 代数の有限族の arc 被覆 {A → B_i} について 0 → A → ∏B_i → ∏B_i ⊗_A B_j → ⋯ が完全。
@@ -236,9 +238,11 @@ theorem completedTensor_tilt (R S S' : Type u) [CommRing R] [CommRing S] [CommRi
     (a : tiltRing p R) (ha : IsTiltGenerator p R a) :
     letI := (tiltMap p (algebraMap R S)).hom.toAlgebra
     letI := (tiltMap p (algebraMap R S')).hom.toAlgebra
+    let T := (tiltRing p S : Type u) ⊗[(tiltRing p R : Type u)] (tiltRing p S' : Type u)
+    let b : T := algebraMap (tiltRing p R : Type u) T a
+    letI := principalCompletionCommRing T b
     Nonempty ((tiltRing p (completionRing p (CommRingCat.of (S ⊗[R] S'))) : Type u) ≃+*
-      PrincipalCompletionH0 ((tiltRing p S : Type u) ⊗[(tiltRing p R : Type u)] (tiltRing p S' : Type u))
-        (algebraMap (tiltRing p R : Type u) _ a)) := by
+      PrincipalCompletionH0 T b) := by
   sorry -- 非零：Fontaine 表示と完備テンソルの芯。零環：両辺零
 
 /-- 増大項を含む全次数で完全 F_p 代数。p = 0 の形は零環にも適用できる。 -/
@@ -279,7 +283,7 @@ def augmentedOverBase (B : CosimplicialObject.Augmented CommRingCat.{u}) :
 /-- A 上の各環における d の像で割る。射は構造射との可換性による商への降下。 -/
 def quotientByBaseElement (A : CommRingCat.{u}) (d : A) : Under A ⥤ CommRingCat.{u} where
   obj T := CommRingCat.of (T.right ⧸ Ideal.span {T.hom.hom d})
-  map {T U} f := CommRingCat.ofHom ((Ideal.span {U.hom.hom d}).quotientMap f.right.hom
+  map {T U} f := CommRingCat.ofHom (Ideal.quotientMap (Ideal.span {U.hom.hom d}) f.right.hom
     (by sorry)) -- Under.w によって生成元の像が一致
   map_id := by sorry -- 商写像の全射性
   map_comp := by sorry -- 商写像の全射性
@@ -310,14 +314,15 @@ theorem modD_exact_of_regular (B : CosimplicialObject.Augmented CommRingCat.{u})
 
 /-- 二成分を同一の有限添字で表す。 -/
 def tiltArcTarget (R S : Type u) [CommRing R] [CommRing S] (a : tiltRing p R) :
-    ULift.{u} Bool → CommRingCat.{u}
-  | ⟨false⟩ => tiltRing p S
-  | ⟨true⟩ => CommRingCat.of (Localization.Away a)
+    ULift.{u} Bool → CommRingCat.{u} := fun i =>
+  Bool.rec (tiltRing p S) (CommRingCat.of (Localization.Away a)) i.down
 
-def tiltArcArrow {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (a : tiltRing p R) :
-    ∀ i, (tiltRing p R : Type u) →+* tiltArcTarget p R S a i
-  | ⟨false⟩ => (tiltMap p f).hom
-  | ⟨true⟩ => algebraMap _ (Localization.Away a)
+def tiltArcArrow {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (a : tiltRing p R)
+    (i : ULift.{u} Bool) : (tiltRing p R : Type u) →+* tiltArcTarget p R S a i := by
+  obtain ⟨b⟩ := i
+  cases b
+  · exact (tiltMap p f).hom
+  · exact algebraMap _ (Localization.Away a)
 
 /-- 概要：{R^♭ → S^♭, R^♭ → R^♭[1/a]}（a := d mod p）は完全 F_p 代数の arc 被覆族（`IsArcCoverFamilyCharP`、階数 ≤ 1 で試す。R → S が perfectoid の arc 被覆のとき）。
 方針（W9-II-21 で分岐を補記）：R^♭ → V。V → V_perf は整・局所・単射で忠実平坦なので V は完全としてよい。(i) a が単元なら第二成分。(ii) V 階数 1、a 非零非単元なら
@@ -339,12 +344,17 @@ def arcPrincipalH0 {A : CommRingCat.{u}} (a : A) (T : Under A) : CommRingCat.{u}
   letI := principalCompletionCommRing T.right (T.hom.hom a)
   exact CommRingCat.of (PrincipalCompletionH0 T.right (T.hom.hom a))
 
-def arcPrincipalUnit {A : CommRingCat.{u}} (a : A) (T : Under A) : T.right ⟶ arcPrincipalH0 a T :=
-  CommRingCat.ofHom (principalCompletionUnitRingHom T.right (T.hom.hom a))
+def arcPrincipalUnit {A : CommRingCat.{u}} (a : A) (T : Under A) : T.right ⟶ arcPrincipalH0 a T := by
+  letI := principalCompletionCommRing T.right (T.hom.hom a)
+  exact CommRingCat.ofHom (principalCompletionUnitRingHom T.right (T.hom.hom a))
 
 def arcPrincipalFunctor {A : CommRingCat.{u}} (a : A) : Under A ⥤ CommRingCat.{u} where
   obj := arcPrincipalH0 a
-  map {T U} f := CommRingCat.ofHom (Classical.choose
+  map {T U} f := by
+    letI := principalCompletionCommRing T.right (T.hom.hom a)
+    letI := principalCompletionCommRing U.right (U.hom.hom a)
+    exact CommRingCat.ofHom (R := PrincipalCompletionH0 T.right (T.hom.hom a))
+      (S := arcPrincipalH0 a U) (Classical.choose
     (principalCompletion_existsUnique_ringHom T.right (T.hom.hom a) (arcPrincipalH0 a U)
       (f.right ≫ arcPrincipalUnit a U).hom
       (by sorry))) -- U の完備化は a の像について完備。Under.w で T の作用に制限
@@ -419,8 +429,8 @@ def PreservesFiniteRingProductsOnPerfd {E : SSet.{u + 1}} [Quasicategory E]
     (F : Sheaves.Presheaf (AffPerfd p κ)ᵒᵖ E) : Prop :=
   ∀ (ι : Type u) [Finite ι] (B : ι → AffPerfd p κ) (c : Fan B),
     Nonempty (IsLimit ((affPerfdInclusion p κ).mapCone c)) →
-      IsLimitCone ((JoinCone.ulift.{u, u + 1}
-        (F1B.nerveCone ((opOp (AffPerfd p κ)).mapCone c))).postcomp F)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u, u + 1}
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone ((opOp (AffPerfd p κ)).mapCone c))).postcomp F)
 
 theorem structurePresheaf_preservesFiniteRingProducts
     [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
@@ -487,7 +497,7 @@ theorem perfectoidization_eq_arcCohomology
       (unopUnop (ArcPerfdUnder p κ S) ⋙ arcSliceAlgebras p κ R S r)
     ∃ e : SSet.Edge (perfectoidizationCone (E := E) p R (Under.mk r)).vertex
       (derivedGlobalSections (arcPerfdSliceTopology p κ S) hJ hE O),
-      IsInvertibleEdge e.toTruncated := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated := by
   sorry -- S は p 完備なので A5 の指定錐の頂点は S_perfd。perfectoidization_isLimit の κ 版と
         -- structurePresheaf_isArcSheaf の slice への制限、S2 の derivedGlobalSections_of_isSheaf で両極限を比較
 

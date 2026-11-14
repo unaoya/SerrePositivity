@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall
 
 
 public meta import SerrePositivity.Util.Citation
@@ -29,7 +30,6 @@ open CategoryTheory CategoryTheory.Limits
 open scoped Simplicial
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A)
 variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R] (κ : Cardinal.{u})
-variable [EssentiallySmall.{u} (PrismOver P R κ)]
 
 /-- 概要：標準余積を持つ任意の site の余単体的対象を小さい Čech データへ送る。
 方針：圏同値による標準余積の移送を使う。

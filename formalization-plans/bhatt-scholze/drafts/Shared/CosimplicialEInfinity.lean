@@ -1,10 +1,11 @@
 -- 将来の置き場所：EInfinity の上（余単体的可換環の Tot の E∞ 構造。BS 固有ではない。調整役と相談）
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-11、a2-design.md §2.2。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-11、a2-design.md §2.2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
+public import SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra
 public import Mathlib.Algebra.Homology.Embedding.ExtendHomology
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
@@ -52,11 +53,7 @@ attribute [local instance] HasDerivedCategory.standard
 
 variable (A : Type u) [CommRing A]
 
-/-- 概要：余単体的可換 A 代数（各項が A 代数で構造射が A 代数の射）。
-方針：`CosimplicialObject (Under (CommRingCat.of A))` または `CosimplicialObject CommRingCat` ＋ A からの射。
-規約：—
-使われ方：Tot_{E∞} の入力。 -/
-abbrev CosimplicialAlgebra := CosimplicialObject (Under (CommRingCat.of A))
+-- CosimplicialAlgebra は同じ型の本体 HomologicalAlgebra.Cosimplicial.Algebra を使う。
 
 /-- 概要：BS 著者版 Construction 7.6 の余単体的可換環の Tot。
 方針：EInfinityTheory が供給する実現関手を用いる。
@@ -65,7 +62,7 @@ abbrev CosimplicialAlgebra := CosimplicialObject (Under (CommRingCat.of A))
 def totEInfinityFunctor : nerve (CosimplicialAlgebra A) ⟶ E.CAlg A := E.ofCosimplicial A
 
 abbrev totEInfinity (X : CosimplicialAlgebra A) :=
-  (totEInfinityFunctor (E := E) A).app _ (nerveVertex X)
+  (totEInfinityFunctor (E := E) A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
 
 /-- 小さい Δ の nerve だけを持ち上げ、各項を離散 E∞ 代数に送る。 -/
 def totDiagram (X : CosimplicialAlgebra A) :
@@ -76,17 +73,41 @@ def totDiagram (X : CosimplicialAlgebra A) :
 規約：D(A) の同値。
 使われ方：A0 の D(A) 値の Tot との一致。 -/
 def totEInfinity_forget (X : CosimplicialAlgebra A) (i : ℕ) :
-    derivedInfinityHomology A (i : ℤ) ((E.forget A).app _ (totEInfinity (E := E) A X)) ≅
-      ((AlgebraicTopology.alternatingCofaceMapComplex _).obj (X ⋙ discreteAlgebraModule A)).homology i := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A (i : ℤ) ((E.forget A).app _ (totEInfinity (E := E) A X)) ≅
+      ((AlgebraicTopology.alternatingCofaceMapComplex _).obj (X ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A)).homology i := by
   let K := (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj
-    (X ⋙ discreteAlgebraModule A)
-  exact (cohomologyOnHo A (i : ℤ)).mapIso ((E.ofCosimplicial_forget A).app (nerveVertex X)) ≪≫
-    (E.strictToD_homologyIso A (i : ℤ)).app ((cosimplicialCochains A).obj X) ≪≫
-    K.extendHomologyIso ComplexShape.embeddingUpNat (j := i) (j' := (i : ℤ)) rfl
+    (X ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A)
+  have hstrict := (E.strictToD_homologyIso A (i : ℤ)).app ((cosimplicialCochains A).obj X)
+  simp only [Functor.comp_obj, ordinaryToHoNerve, hoMap, SSet.hoFunctor_map,
+    Functor.toCatHom_toFunctor, SSet.mapHomotopyCategory_obj_mk, nerveEquiv, Equiv.symm] at hstrict
+  change (cohomologyOnHo A (i : ℤ)).obj
+    (HomotopyCategory.mk ((E.strictToD A).app _
+      (ComposableArrows.mk₀ ((cosimplicialCochains A).obj X)))) ≅ _ at hstrict
+  have hforget := (cohomologyOnHo A (i : ℤ)).mapIso
+    ((E.ofCosimplicial_forget A).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+  simp only [SSet.comp_app, types_comp_apply, ConcreteCategory.comp_apply, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex,
+    nerveMap_app_mk₀] at hforget
+  change _ ≅ (cohomologyOnHo A (i : ℤ)).obj
+    (HomotopyCategory.mk ((E.strictToD A).app _
+      ((nerveMap (cosimplicialCochains A)).app _ (ComposableArrows.mk₀ X)))) at hforget
+  rw [nerveMap_app_mk₀] at hforget
+  change (cohomologyOnHo A (i : ℤ)).obj
+    (HomotopyCategory.mk ((E.forget A).app _ ((E.ofCosimplicial A).app _
+      (ComposableArrows.mk₀ X)))) ≅ _ at hforget
+  have hpoint (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+      (cohomologyOnHo A (i : ℤ)).obj (HomotopyCategory.mk x) =
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A (i : ℤ) x := by
+    change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor A (i : ℤ)).obj _ =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor A (i : ℤ)).obj _
+    congr 1 <;> rfl
+  simpa only [totEInfinity, totEInfinityFunctor, hpoint,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex] using
+    (hforget ≪≫ hstrict ≪≫
+      K.extendHomologyIso ComplexShape.embeddingUpNat (j := i) (j' := (i : ℤ)) rfl)
 
 /-- A 線形な比較を、cup に使うコホモロジーの加法群に移す。 -/
 def totEInfinity_forget_cohomology (X : CosimplicialAlgebra A) (i : ℕ) :
-    derivedInfinityHomology A (i : ℤ) ((E.forget A).app _ (totEInfinity (E := E) A X)) ≃+
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A (i : ℤ) ((E.forget A).app _ (totEInfinity (E := E) A X)) ≃+
       cohomology (X ⋙ Under.forget _) i := by
   refine (totEInfinity_forget (E := E) A X i).toLinearEquiv.toAddEquiv.trans
     (AddEquiv.trans ?_ (cohomologyEquivHomology (X ⋙ Under.forget _) i).symm)
@@ -94,7 +115,7 @@ def totEInfinity_forget_cohomology (X : CosimplicialAlgebra A) (i : ℕ) :
 
 /-- 交代余面複体は次数零から始まる。 -/
 theorem totEInfinity_forget_negative (X : CosimplicialAlgebra A) (i : ℤ) (hi : i < 0) :
-    Limits.IsZero (derivedInfinityHomology A i ((E.forget A).app _ (totEInfinity (E := E) A X))) := by
+    Limits.IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A i ((E.forget A).app _ (totEInfinity (E := E) A X))) := by
   sorry -- ofCosimplicial_forget と strictToD_homologyIso で零延長複体に移す
 
 /-- 概要：Tot_{E∞} の H^* の環構造は cup 積（Shared/CosimplicialCupProduct）に一致。
@@ -108,12 +129,12 @@ theorem totEInfinity_cohomologyRing (X : CosimplicialAlgebra A) : True := by tri
 規約：錐は CAlg_A の JoinCone。
 使われ方：CAlg 値の脚注 10。 -/
 def totEInfinityCone (X : CosimplicialAlgebra A) :
-    {c : JoinCone (totDiagram (E := E) A X) // c.vertex = totEInfinity (E := E) A X} := by
+    {c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (totDiagram (E := E) A X) // c.vertex = totEInfinity (E := E) A X} := by
   let c := E.ofCosimplicial_cone A X
   exact ⟨c.val, c.property.1⟩
 
 theorem totEInfinity_isLimitCone (X : CosimplicialAlgebra A) :
-    IsLimitCone (totEInfinityCone (E := E) A X).val := (E.ofCosimplicial_cone A X).property.2
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (totEInfinityCone (E := E) A X).val := (E.ofCosimplicial_cone A X).property.2
 
 /-- 概要：余単体的 A 代数の射 X → Y は Tot_{E∞} の E∞ 代数の射を誘導し、関手的。
 方針：構成の自然性。
@@ -129,8 +150,8 @@ def totEInfinity_map {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
 使われ方：A1-5 の各対象での可逆性（`wittBigBridge_isInvertible` など）。 -/
 theorem totEInfinity_map_isInvertible {X Y : CosimplicialAlgebra A} (f : X ⟶ Y)
     (hf : QuasiIso ((AlgebraicTopology.alternatingCofaceMapComplex _).map
-      (Functor.whiskerRight f (discreteAlgebraModule A)))) :
-    IsInvertibleEdge (totEInfinity_map (E := E) A f).toTruncated := by
+      (Functor.whiskerRight f (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A)))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (totEInfinity_map (E := E) A f).toTruncated := by
   sorry -- E.forget_conservative。E.strictToD_homologyIso と E.ofCosimplicial_forget の自然性で
         -- 全次数のホモロジーの射が同型。零延長で QuasiIso を保つ
 
@@ -139,10 +160,10 @@ theorem totEInfinity_map_isInvertible {X Y : CosimplicialAlgebra A} (f : X ⟶ Y
 規約：O は層（Cor 3.12 の CAlg 版、`isSheaf_iff_forget`）。
 使われ方：A2 の Δ_0 の CAlg 値 ＝ Čech–Alexander 模型の Tot_{E∞}。 -/
 def derivedGlobalSectionsCAlg_eq_totEInfinity {𝒟 : Type u} [SmallCategory 𝒟]
-    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (E.CAlg A)) (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A))
-    (O : 𝒟ᵒᵖ ⥤ Under (CommRingCat.of A)) (hO : IsSheaf J (ringPresheafToCAlg (E := E) A O))
-    (U : 𝒟) (hU : IsWeaklyTerminal U) (d : CechNerveData U) :
-    VertexIso (derivedGlobalSectionsCAlg (E := E) J A hJ hA (ringPresheafToCAlg (E := E) A O))
+    (J : GrothendieckTopology 𝒟) (hJ : _root_.SerrePositivity.InfinityCategories.Sheaves.Sheafification J (E.CAlg A)) (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A))
+    (O : 𝒟ᵒᵖ ⥤ Under (CommRingCat.of A)) (hO : _root_.SerrePositivity.InfinityCategories.Sheaves.IsSheaf J (_root_.SerrePositivity.InfinityCategories.Sheaves.ringPresheafToCAlg (E := E) A O))
+    (U : 𝒟) (hU : _root_.SerrePositivity.InfinityCategories.Sheaves.IsWeaklyTerminal U) (d : _root_.SerrePositivity.InfinityCategories.Sheaves.CechNerveData U) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Sheaves.derivedGlobalSectionsCAlg (E := E) J A hJ hA (_root_.SerrePositivity.InfinityCategories.Sheaves.ringPresheafToCAlg (E := E) A O))
       (totEInfinity (E := E) A (d.obj.rightOp ⋙ O)) := by
   sorry -- S2 の層の RΓ と S3 で d に制限した錐を totEInfinity_isLimitCone と比較
 
@@ -189,8 +210,16 @@ def strictNatTransHomotopy {F G : 𝒞 ⥤ 𝒟} (α : F ⟶ G) :
 def homotopyPostcomp {X Y Z : SSet.{u+1}} {f g : X ⟶ Y} (H : SSet.Homotopy f g) (T : Y ⟶ Z) :
     SSet.Homotopy (f ≫ T) (g ≫ T) where
   h := H.h ≫ T
-  h₀ := by sorry -- ι₀ ≫ H.h ≫ T = f ≫ T（H.h₀ と結合律）
-  h₁ := by sorry -- ι₁ ≫ H.h ≫ T = g ≫ T（H.h₁ と結合律）
+  h₀ := by
+    change SSet.ι₀ ≫ (H.h ≫ T) = f ≫ T
+    simpa only [Category.assoc] using congrArg (fun k => k ≫ T) H.h₀
+  h₁ := by
+    change SSet.ι₁ ≫ (H.h ≫ T) = g ≫ T
+    simpa only [Category.assoc] using congrArg (fun k => k ≫ T) H.h₁
+  rel := by
+    apply NatTrans.ext
+    funext n
+    exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property)
 
 /-- 概要：厳密な自然変換 α : F ⟶ G と ∞ 関手 T : N𝒟 → X について、各成分の像 T(α_c) が可逆なら関手 ∞ 圏の同型
 strictShapeNerve F ≫ T ≅ strictShapeNerve G ≫ T（a1-design §10.5 の (ii)＋(iii)）。
@@ -200,9 +229,9 @@ strictShapeNerve F ≫ T ≅ strictShapeNerve G ≫ T（a1-design §10.5 の (ii
 使われ方：A1-5 の段 5・6（`smallFrame`・`pdDeRhamProjection` の比較）。 -/
 def strictNatTransFunctorIso {X : SSet.{u+1}} [Quasicategory X] {F G : 𝒞 ⥤ 𝒟} (α : F ⟶ G)
     (T : nerve 𝒟 ⟶ X)
-    (hα : ∀ c : 𝒞, IsInvertibleEdge ((nerve.edgeMk (α.app c)).map T).toTruncated) :
-    FunctorIso (strictShapeNerve F ≫ T) (strictShapeNerve G ≫ T) :=
-  functorIsoOfPointwiseInvertibleHomotopy (homotopyPostcomp (strictNatTransHomotopy α) T) (by
+    (hα : ∀ c : 𝒞, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (α.app c)).map T).toTruncated) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (strictShapeNerve F ≫ T) (strictShapeNerve G ≫ T) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy (homotopyPostcomp (strictNatTransHomotopy α) T) (by
     sorry) -- 頂点 ULift.up (nerveVertex c) での辺は (nerve.edgeMk (α.app c)).map T。hα c で可逆
 
 end StrictNatTrans
@@ -242,7 +271,7 @@ def totCDGAFunctor : nerve (CosimplicialCDGA A) ⟶ E.CAlg A := E.ofCosimplicial
 規約：関手 ∞ 圏の同型。
 使われ方：A1-5 の段 6（`pdDeRhamFunctorIso`）。 -/
 def totCDGA_discrete :
-    FunctorIso (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA A)) ≫ totCDGAFunctor (E := E) A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA A)) ≫ totCDGAFunctor (E := E) A)
       (totEInfinityFunctor (E := E) A) := E.ofCosimplicialCdga_discrete A
 
 /-- 概要：Tot から第 0 項への射影：cdga の Tot から [0] での値への自然な辺（CAlg_A の Δ 上の極限錐の [0] の脚）。
@@ -259,8 +288,8 @@ def totCDGA_evalZero :
 規約：仮定は全ての θ について `QuasiIso`。
 使われ方：A1-5 の段 6（pd Poincaré `pdPoincare_column` の一般の k 版から）。 -/
 theorem totCDGA_evalZero_isInvertible (X : CosimplicialCDGA A)
-    (hX : ∀ {m n : SimplexCategory} (θ : m ⟶ n), QuasiIso (X.map θ).hom) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (totCDGA_evalZero (E := E) A) (nerveVertex X)).toTruncated := by
+    (hX : ∀ {m n : SimplexCategory} (θ : m ⟶ n), QuasiIso (X.map θ).hom.hom) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (totCDGA_evalZero (E := E) A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).toTruncated := by
   sorry -- 定数図式との比較（全ての余面が H で同じ同型）。E_1 の列 n ≥ 1 は完全、列 0 だけが残る
 
 end CosimplicialCDGA
@@ -280,7 +309,7 @@ abbrev restrictCosimplicial {A B : Type u} [CommRing A] [CommRing B] (g : A →+
 規約：関手 ∞ 圏の同型。DerivedGeneral/ScalarRestriction の `cAlgRestrictScalars`。
 使われ方：A1-5 の `baseChangeTotHomotopy`（随伴の転置）。 -/
 def totEInfinity_restrict {A B : Type u} [CommRing A] [CommRing B] (g : A →+* B) :
-    FunctorIso (nerveMap (restrictCosimplicial g) ≫ totEInfinityFunctor (E := E) A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (restrictCosimplicial g) ≫ totEInfinityFunctor (E := E) A)
       (totEInfinityFunctor (E := E) B ≫ SerrePositivity.InfinityCategories.cAlgRestrictScalars (E := E) g) := E.ofCosimplicial_restrict g
 
 end SerrePositivity.Cosimplicial

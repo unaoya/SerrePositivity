@@ -745,3 +745,516 @@ B4用のimport表・所有元付き実名表・一行rewriteコマンド・各�
 資源設定の注意：VERIFY_MEMORY_GB=24はランナーの見積り予算であり、物理RSSの強制上限ではない。今回は1件（F1）の見積りが予算を超え、既存ランナーのoversize_aloneで単独実行された。F1単体の実測最大RSSは30,218,108,928バイト、自レーン全体の監視ピークは31079546880バイト（約31.1GB）。全体の32,000,000,000バイト強制上限内で完了し、監査の省略や大監査二本の同時実行はない。
 
 B4の具体的な一行コマンドと展開するJSONは[B4手順](bulk-w1-b3/B4-README.md)に記載した。全パス・実名・静的検査・原典の書誌確認と187件台帳の履歴も保存している。mainへの取り込みは調整役に委ねる。
+
+
+## 5∞-0 段 0：型つき一覧（11-14、枝 bulk/5inf-0）
+
+main `efa846fe8` から専用 worktree の枝を切った。主題は `bulk-5inf0.md` §2 の A01〜A07・B01〜B07 の14項目で固定する。B4の問い合わせを優先する。⑤aのShared/EInfinityPowerOperation・A4のP⁰、EInfinity/・InfinityCategories/・AlgebraicGeometry/には変更を入れない。ビルドは共有鍵 `--class bulk --wait 3600` を使い、昼は一束280秒以下、夜は30分以内。
+
+一覧：済み 0／全体 14（うち追加 0）。これは段0の計画で、型検査・削除・実装の完了報告ではない。
+
+### A：対象と宣言の扱い
+
+[全ソース台帳](bulk-5inf0/draft-source-inventory.json)には各宣言の場所・型のソース・sorry数・本体の同名候補を保存した。[集計](bulk-5inf0/draft-inventory-summary.json)の基準はA0〜A9直下40本、10,819行、コード中のsorry 705箇所。コメント・文字列を除外した静的採取で、Leanによる型照合の代わりではない。117件の同名候補は候補として記録し、型・仮定が異なるものを同一の定理として消さない。新しい結果の証明で穴を埋める作業は加えない。
+
+| ID | 対象（drafts/ 以下）と変更 | 消す宣言の計画 | 見込み行数 |
+| --- | --- | --- | --- |
+| A01 | A0全5本・A1全5本。古典的site、Čech、結晶・PD模型を現在の本体へ。一般のRΓ・CAlg・HT比較は未来の宣言として保持 | 同名76件の本体への置換を照合。内訳A0:24、CrystallineInput:11、CrystallineSite:18、DeRhamComparisonPoly:22、HodgeTateComparison:1。型が異なるものは削除から外し、古典的な芯だけを呼ぶ | 900–1,300 |
+| A02 | A3/DiscreteCase・LciAndQuasiregular。EInfinityTheoryを明示しD71〜73に追従。A1末尾のprismaticCohomology_lci_universalをA3へ移す | initial_of_retraction_idempotent・prismOver_isIdempotentCompleteの2件は本体の圏論へ。残る約26sorryの古典的な芯は既存のDiscreteDelta・DiscretePrism・LciEnvelope・RootRelationを使う。Δとの同定を消さない | 350–600 |
+| A03 | A2/AnimatedAlgebra（利用側A1・A7も確認）。本体CechAlexander/Comparison/PolynomialCategoryのPolyをimport | PolyとそのSmallCategory instanceの2宣言。polyNerveなど未来の構成は保持 | 30–70 |
+| A04 | A4全3・A5全6・A6全5・A7全4・A9全1。Theory界面・CAlg版・nonempty_e3_of_cAlg・ComparisonのIsDiscreteに追従。Not8.1はexists_boundedPerfectPrismPresentationを使用 | A7/isPCompleteVertexの1件をB07へ。ほかは一致を確認した古典的証明だけ差し替え、同名だけを根拠に削除しない。P⁰部分の変更0を検査 | 1,000–1,600 |
+| A05 | A8全4本。本体のAlmost・Perfectoidization/Derivedをimportし、未来のProp10.9・Thm10.11などを残す | 現在の台帳で同名39件。以前の「40件」との1件差は台帳の名前・local宣言も照合して確定。same-nameの39件も型検査前は削除確定ではない | 300–500 |
+| A06 | A0/BaseChange・A1/HodgeTateComparison、参照側A3。本体HasCochainCompleteTorAmplitudeへ | HasFiniteCompleteTorAmplitudeの2定義。係数とFin列・上界cを明示して呼ぶ。∞忘却関手との新しい比較定理を加えない | 130–220 |
+| A07 | 上記40本の冒頭・READMEの古い基準。保護されたファイル・P⁰は変更しない | 数学宣言の削除0。基準efa846fe8と今回の検査方法を明記。共有draft依存の検査結果も分ける | 60–100 |
+
+削除候補を実際に除く際は、元の型と本体の型・残存する参照先を確認する。新しい仮定を足して同じ定理と呼んだり、未来の未証明部分を単なる本体へのリンクに置き換えたりしない。draftの型検査は一時的なモジュール配置で本体とdraft間の実importを解決し、元のLake設定を引き継ぐ。共有draftに追加の構成が必要なら範囲外として止める。
+
+### B：追加する型と配置案
+
+以下は予定の型（名前解決・宇宙を含む最終のLean検査前）。`p` は素数、`P : OrientedPrism p A`、`Q : OrientedPrism p B`、`R` は `A ⧸ P.ideal` 代数、`κ : Cardinal.{u}` とする。
+
+- **B01（120–200行）**：`Prism/Basic/Category.lean` に `OrientedPrismCat p`（台 `CommRingCat.{u}` と `OrientedPrism p carrier`）を置き、`Category (OrientedPrismCat p)` のHomを既存 `OrientedPrism.Hom` にする。現在の本体と同じ向き付きprismの圏であり、一般の非単項Cartierイデアルのprismを作ったとは呼ばない。`Hom.IsFlat (f : Hom P Q) : Prop := letI := f.toRingHom.toAlgebra; IsCompletelyFlat (Ideal.span {(p : A), P.generator}) B`、`Hom.IsFaithfullyFlat` も同じイデアルの `IsCompletelyFaithfullyFlat`。siteの述語は `f.toHom.IsFaithfullyFlat` の略記へ。通常の平坦性へ取り替えない。
+- **B02（50–100行）**：`isBoundedPrism_of_perfect (hP : P.deltaStructure.IsPerfect) : IsBoundedPrism P`。既存の `distinguished_quotient_p_pow_torsion_killed_by_p` により上界1。任意の生成元について `isDistinguished_of_span_eq {d : A} (hd : Ideal.span {d} = P.ideal) : P.deltaStructure.IsDistinguished d`（既存の正則な生成元との単元倍の比較を用いる）。選択生成元については既存 `P.isDistinguished_generator` が完全性なしで証明済み。`ofDiscreteDelta P D η hη hreg hp hd : OrientedPrism p C` の向きは `η : A →+* C`、生成元は `η P.generator` で指示どおり。重複構成子を加えない。
+- **B03（250–450行）**：`Prismatic/Site/PrismOverSmall.lean` に `PrismOver.essentiallySmall : EssentiallySmall.{u} (PrismOver P R κ)` とinstance。cutoffの下限は本質的小ささ自体には不要（結晶siteと同じ）。`κ.out`の部分集合上に環・δ・prism・二つの脚を移し、誘導圏から本質的全射な充満忠実関手を作る。移送・その同型と法則は既存構成の法則としてこの項目に含む。CechAlexanderSmall・AffineCechSiteNerveの明示的なEssentiallySmall仮定を除く。
+- **B04（70–130行）**：`PerfectPrismOver := ObjectProperty.FullSubcategory (fun X : PrismOver P R κ => X.Q.deltaStructure.IsPerfect)`、`PerfectPrismaticSite := PerfectPrismOverᵒᵖ`。包含のop `ι : PerfectPrismaticSite ⥤ (PrismOver P R κ)ᵒᵖ` による `ι.inducedTopology (PrismOver.flatTopology hκ)`。Rem4.6の定義だけで、比較定理は加えない。
+- **B05（70–130行）**：`HasBoundedPTorsion (p : ℕ) (S : Type u) [CommRing S] : Prop := ∃ N : ℕ, ∀ n x, (p : S)^n*x=0 → (p : S)^N*x=0` を可換環論へ。`IsSemiperfectoid (p : ℕ) [Fact p.Prime] (S : Type u) [CommRing S] : Prop := IsModuleComplete S (p : S) (ModuleCat.of S S) ∧ ∃ (T : CommRingCat.{u}) (q : T →+* S), IsIntegralPerfectoid T p ∧ Function.Surjective q` をSemiperfectoid/Basicへ。使わない基底Rを引数にしない。基本補題はこれらの構成・射影と `IsBoundedPrism P ↔ HasBoundedPTorsion p (A ⧸ P.ideal)`。本体全体の展開形置換は行わない。
+- **B06（0行、5∞-3aへ）**：一般の結晶prismのProp6.2(b)・Cor5.5を含む `hodgeTate_iso_crystalline` と `deRhamComparison` の系は、一般の `hodgeTate_iso` 自身がA1/HodgeTateComparisonのsorryであり、本体の多項式結晶基底の特殊場合からは出ない。§2B6の明示的な延期を適用し、draftの一般形を維持する。本体で一般の比較を仮定した定理を完成品として追加しない。
+- **B07（70–150行）**：許可された一般の場所 `HomologicalAlgebra/DerivedInfinity/VertexPredicates.lean` を候補とし、`SerrePositivity.DerivedInfinity.IsConnectiveAt (R) (n : ℤ) (X : (derivedInfinityCategory R) _⦋0⦌) : Prop := ∀ i, n<i → Subsingleton (derivedInfinityHomology R i X)` と `IsPComplete (p) (R) (M) : Prop := DerivedCompletion.IsComplete R (p : R) ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩)` に実定義を移す。BS側の利用とdraftをこれに寄せ、衝突するdraft/DerivedGeneral/Truncation側の再定義も除く。禁止ディレクトリの参照は静的検索0件。変更前後の述語は同じ定義式であり数学的強化なし。実装境界・層の静的検査で配置も確認する。
+
+### 見込みと検査
+
+[行数予算](bulk-5inf0/stage0-estimate.json)は **3,400–5,550行**。Leanの追加行＋削除行で測り、draftsの書き換え・削除、宣言のdocstringを含める。非Leanの報告・台帳は別計数。本体だけの見込みではない。上端5,550≤6,000なので指示§3の条件付き承認で実装へ進む。外枠は **11,100行**。約2,775行に達した時点で実績と残りを報告し、外枠に届く前、または新しい構成・範囲外の数学が必要になれば止める。
+
+対象ビルドは小分けにし、Bの新規宣言を列挙した `assert_no_sorry` の小監査を別に用意する。BS段階II監査には新モジュールと明示的な必須名の登録案を報告する。draftsの既存sorryは本体の新規宣言の監査とは分離し、数の前後差と型検査の対象・未実行分を明記する。今回まだLeanの変更・ビルド・監査は0。
+
+
+### 5∞-0 実装経過（11-14昼、型検査継続中）
+
+一覧：済み 0／全体 14（うち追加 0）。実装の完成ではない。
+
+Lean差分は追加1080・削除1486、合計2566行（半分の目安2,775行、外枠11,100行）。A0〜A9のコード中のsorryは705→585箇所。前後のファイル別計数と未実行の検査は[経過台帳](bulk-5inf0/implementation-checkpoint.json)に分けた。残りは主にdraft依存を解決した型検査と、その診断に基づく修正で、行数は未実測。上端の予算5,550行と外枠を維持して監視する。
+
+本体7モジュールの追加と直接利用側の修正を書いた。最初の対象ビルドでは有界p冪ねじれ・semiperfectoidの2モジュールが成功。Categoryは既存APIの宇宙条件、PerfectBoundedは定義の展開で失敗した。前者を同じ宇宙に揃え、後者ではP.idealを明示展開して再検査を並べている。[初回の生ログ](bulk-5inf0/initial-target-build.log.gz)を保持し、失敗を成功へ数えない。対象ビルド・小監査・draftsの型検査の全件成功はまだない。
+
+B07の実定義はDerivedInfinityの一般ファイルへ移し、既存の二つの公開名は同じ本体ファイルの互換略記として保持した。draftsでの二重の宣言は外した。旧名を使う別枝を不用意に壊す変更にはしない。B04の大きいsiteは `PerfectPrismaticSiteLarge` と呼び、draftが使う小さい模型 `PerfectPrismaticSite` と区別した。数学の条件は変えていない。
+
+A3は明示的なEInfinityTheory引数へ追従し、局所データの旧変数Eを先に改名した。一般のΔとの同定はdraftに保持し、通常のδテンソル・包絡同型からのδ構造・A_infの古典的な芯を本体へ寄せた。Notation8.1のA_infは本体のTheorem3.10に基づく構成を参照する。Tor振幅の二重定義は除き、本体のHasCochainCompleteTorAmplitudeを使う。A8の40件は39件の完全修飾名の一致と、同じ定義式で名前空間だけが異なるFiniteEtaleAwayの1件。局所instanceの登録も保持した。これらの書き換えは、draftsのLean検査が通るまで完了に数えない。
+
+本体とdraftsの68 importをB3のモジュール表で更新し、A0〜A9のimport先の欠落0を静的に確認した。基準台帳の生成器を別rootでも実行できるようにし、読み取りだけのmainから再生成した2表が保存済みの表と全件一致した。本体の層の静的検査は基準・変更側とも同じ15辺で、新しい違反・除外0（[差分](bulk-5inf0/initial-layer-comparison.json)）。最終状態で再検査する。禁止3ディレクトリ・Shared/EInfinityPowerOperationの変更0、A4のLemma8.4の保護節は基準と一致。正式BS監査の登録案は[7モジュールの表](bulk-5inf0/stage2-audit-registration-proposal.json)に置いた。
+
+
+### 5∞-0 本体の小項目と A03 の検査完了（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。内訳はB01〜B05・B07の6件、A03の1件、指示§2B6で許可されたB06の移管1件。B06の一般の結晶比較を証明したという意味ではない。[項目別状態](bulk-5inf0/item-status.json)の残りA01・A02・A04・A05・A06・A07を続ける。5∞-0全体の完成ではない。
+
+本体の新規7モジュールと直接の利用側・Notation8.1の前提、13対象の `lake build` が4,821ジョブで成功。小監査は7モジュールに定義された全99宣言・必須11名を調べ、標準三公理のみで成功した。カウンタの型注釈を直す前の監査スクリプトの失敗も保存した。監査対象を減らしていない。[本体の検査結果とソース・olean署名](bulk-5inf0/core-validation.json)を根拠とする。本体の新規Leanにsorryを追加していない。
+
+A2/AnimatedAlgebraはファイル全体の型検査が成功し、同じソースから隔離したモジュールのoleanも生成できた。draftの既存の未証明部分は残る。Notation8.1の切り出しも現在の本体をimportして成功した。基盤SheafConditionは、古い名前への参照を順に直している段階で、成功に含めていない。型検査はLakeの実設定（maxSynthPendingDepth=3など）をJSONから引き継ぎ、本体やdraftsの検査条件を緩めていない。
+
+B03ではPrismOver.essentiallySmallを濃度の下限なしに証明し、二つの利用側のEssentiallySmall仮定を外した。環同型の移送・有界性の移送と圏同値は同じ小監査で確認した。B02の有界性は、既存のprism上のねじれ評価を直接使う。B01の平坦性は既存の完全平坦性APIに合わせ同じ宇宙で定義し、siteの述語は略記になった。B04の大きい完全siteと誘導位相、B05の二述語、B07の二述語と旧名の互換略記も同じ検査に入っている。5段の層の新しい違反0、基準から存在する節順序15辺は全く同じ集合（[比較](bulk-5inf0/core-layer-comparison.json)）。既存の例外は増やしていない。
+
+中間の行数は追加1,198・削除1,569、合計2,767行（段0の上端5,550行の半分付近）。残りはdraft依存の整理とAPI追従の型検査で、修正量は暫定2,000〜4,000行。累計が当初上端を越える可能性はあるが、外枠11,100行を変更しない。新しい数学の構成や範囲外の作業が必要になった場合は止めて報告する。
+
+A07の冒頭の更新はA0〜A9の40本だけに限定せず、保護対象を除く全56本のdraftを対象にした。Shared/EInfinityPowerOperationの全体とA4の保護節は維持している。基盤を含むimport先の欠落は静的に0件。ここでコミットするLeanは検査済みの本体・利用側・A2と小監査で、未検査のdraftsの修正は引き続き作業木で検査する。
+
+
+### 共有鍵の待機ループの競合修正（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。S1の次の検査は鍵の取得前に待機ループの例外で止まり、Leanは未実行だった。期限の判定とsleepの引数計算の間に時刻が進むと負の待機時間になっていた。待機時間を0以上に制限するだけの修正とし、整理券の順序・鍵の規則は変更していない。実際のループを境界時刻で動かす回帰テストは旧版で1件失敗、修正後は4件成功。`zsh -n`も成功。修正は独立コミットにし、他レーンへの配布は調整役に委ねる。
+
+
+### 5∞-0 の静的追従と検査順（11-14昼、検査継続）
+
+一覧：済み 8／全体 14（うち追加 0）。[厳密な宣言名の追従台帳](bulk-5inf0/qualified-reference-refresh.json)は19本80箇所。所有元つきの対応表にある宣言名だけを使い、曖昧な名前・open・文字列・宣言の見出しは自動変更していない。保護節とShared/EInfinityPowerOperationは変更していない。A8の削除済みStratificationへの記述と直接importも本体に揃えた。
+
+[A0〜A9の静的集計](bulk-5inf0/current-draft-inventory-summary.json)は40本、sorry 584（基準705）、本体と完全修飾名が重なる候補0（基準117）。型の同一性や全件のLean成功をこの集計だけで主張しない。現在のLean差分は追加1285・削除1650、合計2935行。外枠11,100行と、残り2,000〜4,000行の暫定見込みは変更しない。
+
+[隔離配置の依存案](bulk-5inf0/draft-staging-plan.json)は57本231辺、循環0。冒頭の依存コメントとREADMEの順序を根拠とする案で、型検査中に不足があれば修正する。保護された1本と変更しない補助ファイルも前提の点として含む。型検査は元のソースを一時ライブラリに複製し、指定したdraftのpublic importだけを足す。本体のrootにdraftを追加しない。ソースと依存の署名を保持する再現用スクリプトを用意し、次の束で実行検証する。現在は鍵の取得前で、S1の再検査はまだ未実行。
+
+
+### 5∞-0 のdraft検査・第7束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。通常のbulk整理券で、鍵を取得してから280秒以内の束を実行し、返却した。Sheaves/SheafCondition、DerivedGeneral/CompletionFunctor、Shared/CosimplicialCupProduct、A5/RootAdjunction、A8/W13AssemblyInputsの5本が成功。先のA2/AnimatedAlgebraと合わせ、全体のLean型検査が通ったdraftは6本。既存のsorryを解消済みという意味ではない。Sheaves/SetSections・GlobalSections・CechConerveLimitの3本は失敗として記録し、型検査の範囲を減らさず修正を続ける。[全8本の検査記録](bulk-5inf0/draft-block07-validation.json)と各生ログを保存した。
+
+再現用[check_draft.py](bulk-5inf0/check_draft.py)をこの束の実行に使った。元のimportとLakeのoptionsを引き継ぎ、draftの前提だけを隔離配置へpublic importする。ソース・一時配置・olean・前提の署名を記録する。依存が後から変わった成功記録は使わない。S1の利用側3本の次の束と、完備化の利用側を、返却後に一つだけ並べ直した。
+
+削除前後の全宣言名の照合で、機械的な削除範囲が隣の未重複のdraft補題2本（isAlmostConnective_completedFilteredColimit、perfectoidization_quotient_connective_of_ih）まで広がっていたことを検出した。両方の元の主張・未証明本文を復元した。CrystallineSiteでも空になったCrysOverの名前空間とcutoff変数の境界が残り、RΓ側3宣言の名前が変わっていたため、元の外側のscopeと明示的κを復元した。これらは未コミットのdraft修正の段階で見つかったもので、検査済みとしては数えていない。sorryの静的数は復元前584から増えるので、次の再集計値で更新する。
+
+
+### 5∞-0 の削除範囲の再照合（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。[削除・置換の全件台帳](bulk-5inf0/declaration-disposition-audit.json)を作り直した。A0〜A9の名前つき宣言は1080→957、削除123名＝同名の本体の候補117名＋指示に沿った別名の置換6名。予定外の削除・改名0、新しい名前0。2本の未重複補題とRΓの3名の復元後に照合した。sorryは **705→586**。前節の584は復元前の静的数であり、この値に更新する。
+
+[旧ルート名の追従台帳](bulk-5inf0/root-reference-refresh.json)を追加。単体集合の固有名は所有元つき対応表に合わせ、一般的なHasLimit・HasColimitは使用箇所を確かめたものだけを直す。型検査で残ったIsPresentableの曖昧さは、元から指定されているHTTの定義への完全修飾で解消する修正とした。Čech形状はΔのnerveがSSet.{0}にあることを反映し、同じrightOpのnerve写像を単体ごとに書いた。圏同値のunit/counit・錐の表示・端点移送の法則の証明も既存APIへ追従中で、新しい数学的な仮定は加えていない。端点移送の局所補題は `∀ {x x' y : E₀} (h : x = x') (e : Edge x y), ((h ▸ e).toTruncated).edge = e.toTruncated.edge` で、既存の構成の法則の証明分割（未検査、一覧の追加項目ではない）。
+
+現在のLean差分は追加1829・削除2135、合計3964行、外枠11,100行。禁止3ディレクトリと保護されたSharedファイルの差分0、`git diff --check`も成功。第8束は通常のbulk整理券で待機しており、成功に算入していない。
+
+
+### 5∞-0 のdraft検査・第8〜9束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第8束はGlobalSections・CechConerveLimitの2本が成功、第9束はScalarRestriction・Truncation・AnimatedDomainの3本が成功。全体の型検査が通ったdraftは計11本。既存の未証明部分は維持する。成功した5本をこの区切りでコミットする。[第8束](bulk-5inf0/draft-block08-validation.json)・[第9束](bulk-5inf0/draft-block09-validation.json)の全対象と各回の署名・成否を保持した。個別ログは再実行で更新するため、第9束の生ログをこの時点で保存した。鍵は各束の終了時に返却し、一束は280秒以内とした。
+
+係数制限は旧sifted名の完全修飾、Truncationは旧pt射影3箇所をMathlibのHomotopyCategory.objEquivへ、AnimatedDomainは既存の評価環射・R線形性と離散埋め込みの合成の定義展開を直したもの。いずれも新しい数学的仮定・構成を追加していない。SetSectionsは第8〜9束で同じ旧版の診断が残り、第9束の採取後に入った最新修正はまだ検査前（署名が異なる）で、成功には算入していない。
+
+次の前線はPrismaticSite・Shared/DeRhamPolynomial・Shared/Descendable。前者はCoverage.coverings・旧∞圏名、後二者は名前空間と旧pt射影の診断。A2で3宣言の所有元がimportの閉包に入っていなかったので、現在のソースから確かめた2モジュールを直接importした。古い対応表のmodule欄にはその後の分割前のパスが残るため、所有元の確認は現行ソースで行った。再検査した所有元の到達性は欠落0（型検査そのものではない）。
+
+
+### 5∞-0 のdraft検査・第10〜11束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第10束はPrismaticSite・Shared/DeRhamPolynomial・Shared/Descendable・PrismaticEnvelopeの4本、第11束はSetSections・A0/W15K1/AuditK1の2本が成功。全体の型検査が通ったdraftは計17本（最後の補助監査ファイルを含む）。この6本もソース署名を照合してコミットする。[第10束](bulk-5inf0/draft-block10-validation.json)・[第11束](bulk-5inf0/draft-block11-validation.json)に、失敗と依存待ちの未実行分を含めて記録した。置き換わった個別ログは置き換わったことを記録し、別の回のログを誤って添付しない。各束の終了時に鍵を返し、一束280秒以内を維持した。
+
+SetSectionsでは篩の元の圏とOverの充満部分圏の反対圏の同値、そのunit/counit、表現可能な指定錐、端点を移した同じ辺の可逆性の法則が通った。追加の数学的仮定は使わず、既存の構成の法則の証明と定義展開を直した。PrismaticSiteはCoverage.coverings、移動済みD(A)の正式名へ追従。未証明の `prismaticCohomologyFrobenius` は、既存の係数制限APIに合わせ `E : EInfinityTheory` を明示引数に取り、`Edge Δ ((E.restrictD φ).app _ Δ)` を返す型とした（その本体のsorryは保持、ほかのRΓ定義にEを加えていない）。共有de Rhamはdraftの既存の完備化と離散埋め込みの名前空間を明示した。旧pt射影の残り8箇所も標準のobjEquivに揃え、うちdescendabilityの4箇所はここで型検査が通った。
+
+次の前線はFlatDescentとSheafGenerators・SpaceValued。局所instance、docstringのコマンド上の位置、presentabilityの完全修飾、既存の補助定義の公開範囲とprojectionの参照を修正し、第12束を通常のbulk整理券で一つだけ並べた。CAlgValued・CosimplicialEInfinity・CechAlexander・BaseChangeは、前提が成功した順に検査する。
+
+
+### 5∞-0 のdraft検査・第12〜14束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第12束でFlatDescent・SheafGenerators、第13束でSpaceValued・CAlgValuedが成功。第14束でCechConerveLimitとCAlgValuedを依存更新後に再検査し、CechAlexanderも成功。現在のソース・前提・oleanの署名で数える有効な成功は22本。依存を変更した古い成功を除く[集計器](bulk-5inf0/summarize_drafts.py)を追加した。[第12束](bulk-5inf0/draft-block12-validation.json)・[第13束](bulk-5inf0/draft-block13-validation.json)・[第14束](bulk-5inf0/draft-block14-validation.json)を保存。各束は通常のbulk整理券・280秒以内で、終了時に鍵を返した。
+
+Čechの問題は、同名の本体宣言が返すCategoryTheory.CechNerveDataと、draftの別構造体Sheaves.CechNerveDataの違いだった。両者のobj・proj・isLimit・proj_mapと弱終性の定義を比較し、完全に同じ内容であることを確かめた。新しい構造の移送は作らず、draft側の2宣言を本体へのabbrevに一本化した。既存の名前を残し、本体のČechデータをそのまま使う。変更したCechConerveLimitと利用側CAlgValuedを再検査して成功し、CechAlexanderも本体の引数順に合わせて成功した。
+
+SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされたラッパーから使えるようにした（型・元のsorry本文は同じ）。押し出し境界の反射律とprojectionの正式名、層の名前空間、presentabilityの曖昧さ、局所instance・docstringの位置も修正した。ここでコミットする6本はいずれも現在の署名で検査済み。共有Totの評価とBaseChangeの残りを修正し、第15束で検査する。
+
+
+### 5∞-0 のdraft検査・第15束と全体のsorry（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第15束でA0/BaseChangeが成功し、現在の署名での有効な成功は23本。[第15束](bulk-5inf0/draft-block15-validation.json)を保存し、BaseChangeをコミットする。残る前提はShared/CosimplicialEInfinityの評価比較1箇所。ホモトピー後合成の端点・空の相対条件、cdgaの忘却、層の名前空間は同じ検査で通った。評価の比較にはCatの射のtoFunctorとTypeの合成の公開評価補題を追加し、第16束に並べている。新しい数学的仮定や未証明本文は足していない。
+
+[保護対象以外の全体の集計](bulk-5inf0/all-draft-sorry-summary.json)は56本中55本が変更、sorryは **819→698**。A0〜A9の40本だけの値は **705→586**。全体の値と部分の値を区別する。現在のLean差分は追加2217・削除2486、合計4703行（外枠11,100行）。残りの見込み2,000〜4,000行は暫定のままで、外枠は増やさない。
+
+
+### 5∞-0 の第16束と保護された前提（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。[第16束](bulk-5inf0/draft-block16-validation.json)は共有Totの評価比較1箇所で失敗、後続5本は依存待ちで未実行。Catの射のラッパーは解消したが、ホモトピー圏への写像とnerveの零単体の表示が残った。既存の定義で同じ対象であることを明示する修正を第17束で検査中。現在の有効な成功は23本のまま。失敗したソースはまだコミットしない。
+
+保護された前提 `Shared/EInfinityPowerOperation.lean` に、存在しない旧モジュール `SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology` のimportが残っていることを静的に確認した。A4の検査前提だが、指示§1の変更禁止に従いソースを維持している。⑤a側での追従またはimport・改名だけの例外の判断を依頼した。この保護対象を一時的な互換モジュールで隠して成功と数えることはしない。他の独立した検査を先に進める。
+
+
+### 5∞-0 の保護対象の例外（11-14午後、§5）
+
+一覧：済み 8／全体 14（うち追加 0）。調整役の§5の例外承認を受け、全draftのimportとB3の一意な完全名を対応表で再走査した。残りの機械的な変更は **Shared/EInfinityPowerOperation.lean:8 のimport 1行**：`…Project.DerivedCategories.Homology` → `…Project.DerivedCategories.MappingAndStability.HomSpaces.Homology`。変更の全行は[台帳](bulk-5inf0/section5-protected-mechanical-edits.json)に保存した。主張・型・証明とA4のP⁰部分は変更していない。保護されたSharedファイルの変更禁止の例外はこの1行のみで、まだ全体の型検査は未実行。前節の前提のimport欠落は解消した。
+
+第17束は共有Totのnerveの零単体の評価表示で失敗し、後続は未実行。[結果](bulk-5inf0/draft-block17-validation.json)を保存した。零単体の評価は定義上の等しさではなく `nerveMap_app_mk₀` の等式で揃える必要があるため、その等式を明示して第18束へ進めた。独立したArcRouteBと補助界面も同じ280秒以内の束に含めた。
+
+
+### 5∞-0 のdraft検査・第18束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第18束](bulk-5inf0/draft-block18-validation.json)でArcRouteBが成功し、有効な成功は24本。ArcRouteBの型・既存の証明を変えず、B3で移った3モジュールのimport追従をコミットする。補助のShared/BarrattEcclesTheoryは本体の組み立て関数が供給済みのP⁰四欄をまだ引数に渡していて失敗した。重複する4引数だけを外し、残る十七欄を維持する修正を第19束で検査する（本体EInfinityの変更はない）。共有Totは零単体の評価の等式を明示したことで同型の合成まで通り、最後の二つのホモトピー圏の表示の展開が残った。既存のbridgeと頂点ホモロジーの定義を展開する修正を同じ束に入れた。まだ成功とは数えない。
+
+
+### 5∞-0 のdraft検査・第19束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第19束](bulk-5inf0/draft-block19-validation.json)で補助のShared/BarrattEcclesTheoryが成功。有効な成功は25本。既に本体が供給するP⁰・零次・正次数・離散比較の4引数を外しただけで、残る十七欄は維持した。新しい実例を無条件に作る変更ではない。この検査済みソースをコミットする。保護対象以外の56本は全部が変更され、sorryは **819→694**（4欄の重複の削除を反映）。保護されたSharedの1行のimport追従は、この56本の外で別に記録している。共有Totの最終比較はEquivalence.mkのinverseを明示展開する必要が残り、第20束で検査中。
+
+
+### 5∞-0 の保護対象の完全名（11-14午後、§5）
+
+一覧：済み 8／全体 14（うち追加 0）。Shared/EInfinityPowerOperationの旧open下の参照も、所有元つきKL/B3表を合成して確かめた。**54・55・70・80・128〜130・151・152・157行の10参照**を、同じ宣言の新しい完全名に機械的に置き換えた。元のopen・宣言名・束縛変数・証明の手順・仮定は維持し、変更箇所を[同じ台帳](bulk-5inf0/section5-protected-mechanical-edits.json)に追加。importの1行を含めて計11参照。A4のP⁰部分は一字も変更していない。Shared全体の型検査は前提待ちであり、この改名以外の修正は許可範囲に入れていない。
+
+[第20束](bulk-5inf0/draft-block20-validation.json)・[第21束](bulk-5inf0/draft-block21-validation.json)は同じ共有Totの最後の表示の等式で失敗、後続へ進んでいない。`simp`が圏同値・切断版のラッパーを一括で評価しないため、頂点のホモロジーの同じ定義を局所等式として示す形で第22束を検査する。成功は25本のまま。
+
+
+### 5∞-0 のdraft検査・第22〜23束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第22束](bulk-5inf0/draft-block22-validation.json)の局所等式は証明が終わっており、残った余分なrflだけで失敗した（検査したソースはその後の修正とは別署名）。[第23束](bulk-5inf0/draft-block23-validation.json)でShared/CosimplicialEInfinityと、改名だけを直した保護対象Shared/EInfinityPowerOperationの2本が成功。一度は27本の成功に到達したが、A2で本体のCosimplicialAlgebraとdraftの同名定義の衝突が判明した。本体HomologicalAlgebra.Cosimplicial.Algebraの型は同じ `CosimplicialObject (Under (CommRingCat.of A))` なので、draftの重複定義を外して本体を直接importした。共有Totの再検査・その依存の再検査を第24束で行い、旧成功はその間集計から外す（有効25本）。既存の全証明は維持しており、保護対象の型・証明の変更はない。
+
+B03の本質的小ささの本体補題はκの下限を仮定しないので、A2/DerivedPrismaticCohomology・A3/DiscreteCase・A5/PerfectSiteに残る古い追加引数を外して同じ本体補題を使った。前二者のうちA2とA5にあった濃度のsorry2個が不要になった。これらのdraft全体はまだ未検査で、成功に算入していない。
+
+
+### 5∞-0 のdraft検査・第24束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第24束](bulk-5inf0/draft-block24-validation.json)で本体のCosimplicialAlgebraに揃えたShared/CosimplicialEInfinityが成功し、依存を更新したShared/EInfinityPowerOperationも成功。有効な成功は27本に戻った。共有Totの検査済みソースをコミットする。A2はimportを通過し、structurePresheafの不要なE引数、結果の型が未指定のpolyTestFrobenius、discreteEvaluationのカーネル時間切れ、逐次図式の1単体の添字の4種類が残った。後続はまだ成功に算入していない。
+
+全draftを本体の宣言名と静的に再照合し、残る同名候補はShared/DeRhamPolynomialのdeRhamCohomologyWedgeの1件のみだった。署名が同じことを確かめ、本体への一本化を次の検査で確認する。同名だけで数学的な等しさを主張するものではない。
+
+
+### 5∞-0 の全件台帳の補足（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[削除・置換台帳](bulk-5inf0/declaration-disposition-audit.json)に共有部分の2件を別表として追加した。A0〜A9の削除123名の表はそのままにし、共有のCosimplicialAlgebraとdeRhamCohomologyWedgeを混ぜて数えない。後者は第25束の検査待ち。対象の本体ディレクトリを再走査した[同名候補](bulk-5inf0/current-draft-duplicate-candidates.json)は0件（構文による候補の検査であり、型検査ではない）。[所有元へのimport到達性](bulk-5inf0/section5-owner-import-reachability.json)も保護対象を含め欠落0件。
+
+[保護対象の再構成](bulk-5inf0/section5-protected-reconstruction.json)では、基準efa846fe8に台帳の11置換だけを適用した結果が現在のSharedファイルと完全に一致し、A4のP⁰部分も基準と完全に一致した。許可された改名以外の変更はない。
+
+
+### 5∞-0 のdraft検査・第25束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第25束](bulk-5inf0/draft-block25-validation.json)でShared/DeRhamPolynomialが成功。本体のdeRhamCohomologyWedgeを直接使う型で通ったため、共有の2件の重複を外したことを全件台帳にも反映し、検査済みソースをコミットする。有効な成功は27本。全56本のsorryは **819→691**、A0〜A9は **705→584**（本質的小ささの濃度の未証明2個が本体の証明に置き換わった分を含む）。復元した未重複補題2個は保持している。
+
+A2は280秒の束の残り時間内に完了せず、外側のgtimeoutで打切り（exit124）。成功にも通常の型エラーにも数えない。完了したde Rhamの署名つき記録とA2の未完了ログを別に保存し、鍵は上限で返した。局所の有限の検査予算を増やす方法では時間内に終わらなかったため、通常の予算に戻し、7つの中間の関手・辺の既存の結果型を明示する修正を第26束で検査する。仮定・数学的な入力・未証明本文は増やしていない。
+
+
+### 5∞-0 のdraft検査・第26束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第26束](bulk-5inf0/draft-block26-validation.json)は約110秒で終了し、鍵を返却。A2の通常の型エラーは解消し、`discreteFrobeniusComponent` のカーネル時間切れ1原因と、その定数が登録されないことによる下流エラーが残った。辺を関手の頂点で評価した端点を、評価後の頂点へ揃える計算に集中している。
+
+既存の `evaluateFunctorAt_functorVertex` から始端・終端の等式を作り、同じ辺のmapをその等式で移送する形に分割した。新しいFrobenius・仮定・数学的入力は作らず、既存の構成の端点の法則だけを明示した。通常の検査予算で第27束を検査中。有効な成功は27本のまま。
+
+
+### 5∞-0 のdraft検査・第27〜28束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第27束](bulk-5inf0/draft-block27-validation.json)ではカーネル時間切れが消え、約39秒で端点のTypeの合成の評価2箇所に絞られた。同じ合成を定義から評価して[第28束](bulk-5inf0/draft-block28-validation.json)でA2/DerivedPrismaticCohomologyが約33秒で成功。有効な成功は28本。この検査済みソースをコミットする。有限の検査予算を増やすオプションは残していない。既存の辺の評価の始端・終端を公開補題で揃え、同じmapを等式で移送したもの。新しいFrobeniusや仮定は導入していない。siftedの述語2参照も[所有元の完全名](bulk-5inf0/a2-sifted-predicate-reference-refresh.json)へ追従して通った。
+
+A1/HodgeTateMapは `import all …Prismatic.HodgeTateOneDerivative` の旧パスが1行残っていて失敗。静的import解析が `import all` を拾っていなかったため、前の「import欠落0」はこの構文を除く範囲での値だった。全draftのimportをこの構文も含めて再走査し、[残る1行](bulk-5inf0/import-all-reference-refresh.json)をB3表の正しいパスへ直した。importの種類は維持。第29束でA1と後続を検査する。
+
+
+### 5∞-0 のA3のsection変数の復元（11-14午後、調整役承認）
+
+一覧：済み 8／全体 14（うち追加 0）。`universalLciPrism` のsection変数h₀がsorryのため型から落ちていることを確認。調整役よりD4-03・D4-06と同じ「意図した型に戻す」扱いとして承認を得た。[型と全参照の台帳](bulk-5inf0/a3-boundedness-decision.json)のとおり、`universalLciPrism P₀ h₀ r` として14参照を追従し、それでh₀が必要になるlciClassifyingMap・lciMapの呼出し3箇所にも同じ引数を明示した。環・δ構造・生成元のソースは同一で、正則性を既存のcompletedFreeDelta_generator_regularから証明する。p完備性・生成元完備性・pのイデアルへの所属・剰余の有界性の4欄も、追加の仮定を入れずに本体へ寄せた。A3全体は前提待ちで未検査なので、まだ成功に算入していない。
+
+同じ理由で型から落ちているsection変数は、調整役の承認に従い同じ扱いで戻し、今後も一覧に残す。新しい数学的な入力を追加する変更はこの扱いに混ぜない。
+
+
+### 5∞-0 の本体全域での同名確認（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[全域の静的な同名候補](bulk-5inf0/all-main-draft-duplicate-candidates.json)は本体の32,937ファイルを走査して0件。前の対象ディレクトリ限定の検査を本体全域へ広げ、aliasも構文走査に含めた。構文上の名前の候補の検査であり、型の一致やLean環境による照合の代わりではない。`import all`を含め直した[所有元へのimport到達性](bulk-5inf0/section5-owner-import-reachability.json)も欠落0件だった。
+
+A3はソース上ではDiscreteCaseが23→13、LciAndQuasiregularが30→14、計53→27のsorry。環・生成元を変えず、26箇所を本体の既存の古典的な芯とその法則へ寄せた。A3全体の型検査は前提待ちなので、この数だけを根拠に完了とはしない。対応先の[一覧](bulk-5inf0/a3-classical-followup.json)と、意図した[文脈の引数](bulk-5inf0/restored-context-parameters.json)を保存した。
+
+
+### 5∞-0 のdraft検査・第29束とpd関手の型の相違（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第29束](bulk-5inf0/draft-block29-validation.json)でA1/HodgeTateMapが約32秒で成功し、有効な成功は29本。EInfinityTheoryを使うCAlg部分だけに同じ引数を渡し、古典部分の型は維持した。CrystallineInputは、落ちていたpのsection変数・Theory実現の引数・pd関手の本体版との仮定の違い・不透明な列の定義の照合が残った。
+
+**削除候補の訂正**：[元のpdPolynomialFunctor](bulk-5inf0/pd-functor-restoration.json)は任意の係数環kを受けるが、本体版にはγ・hp・hk・hregの追加仮定がある。同じ型ではなかったため、元の構成と既存の3つのsorryを `pdModelPolynomialFunctor` として復元し、CrystallineInput・CrystallineSite・DeRhamComparisonPolyの参照を直した。一般の型へ本体の強い仮定を黙って足さない。[全件台帳](bulk-5inf0/declaration-disposition-audit.json)は同名本体への置換116、別の置換6、旧型を保った改名1に訂正（旧名123件、削除122・改名1、未説明0）。
+
+formsCAlgは同じ厳密なformsCDGAFunctorを、選んだTheoryのcdga実現で読む形にした。旧Barratt–Eccles固有のformsBEFunctor・formsNerveは保持し、未証明のcdga構成を変えていない。pdDeRhamCDGAでsorryのため落ちたpも明示した。列と双複体の既存の定義の照合には、本体の3モジュールをimport allで読み、Mainのソースを変更しない。いずれも第31束で未検査。
+
+[第30束](bulk-5inf0/draft-block30-validation.json)は準備処理が元ソースのmap_compの抽出で失敗したため修正前のままになり、既に失敗した同じソースを検査器が除外してLean対象0件で終了した。成功として数えない。抽出を訂正して復元を適用してから、第31束を並べた。
+
+
+### 5∞-0 のdraft検査・第31〜35束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。第31〜34束の診断を受け、不透明な列の定義の照合をprivateな法則の証明へ分け、同じ列の包含を等式で移送した。[第35束](bulk-5inf0/draft-block35-validation.json)でA1/CrystallineInputが約41秒で成功。有効な成功は30／57本。A1/HodgeTateMapも第29束の成功と現在のソースのSHAの一致を確認し、この2本をコミットする。定理の追加仮定・検査予算の引上げ・本体の変更はない。pdModelPolynomialFunctorは元の一般の型と既存の3つのsorryを保持する。残るHodgeTateComparison・CrystallineSiteは失敗として証跡を保存し、修正を続ける。
+
+READMEも現在の本体への追従・隔離した型検査の手順・保護対象の例外を反映した。型検査の成功は、残された将来のsorryの証明の完成とは区別する。
+
+
+### 5∞-0 のdraft検査・第36〜37束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第37束](bulk-5inf0/draft-block37-validation.json)でA1/HodgeTateComparisonが約26秒で成功し、有効な成功は31／57本。普遍prismの宇宙を標的と揃え、本体のKoszulホモロジーの作用のinstanceと、その台の加群を区別して同じ底変換の型を記述した。Eとpの既存の引数も渡した。成功したソースをコミットする。
+
+[現在のソース上のsorry](bulk-5inf0/all-draft-sorry-summary.json)は、保護されたSharedを除く56本で819→679、A0〜A9は705→572。未検査の変更を含むため完成の数とはしない。Leanの追加・削除の計は5,137行（第36束後の測定）、外枠11,100行。
+
+CrystallineSiteは元からあったR̄という結合文字つきの識別子をコードだけRbarに直し、本文の表記は維持。0宇宙の添字圏のnerveは同じ関手の射列ごとの合成で持ち上げた。sorryのため落ちていたhp・hgenも[引数の台帳](bulk-5inf0/restored-context-parameters.json)に加え、承認された規則で意図した型に戻す。これとHodgeTateFiltrationは未成功で、続く束で検査する。
+
+
+### A3 の意図した引数の復元の保存確認（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[ソースの保存確認](bulk-5inf0/a3-restored-parameter-source-guard.json)で、環の略記・δ構造・生成元の式が基準efa846fe8と同一であることを確認した。事前に一覧にした14参照へh₀を渡している。現ソースには、既存の普遍性を用いるlciClassifyingMapの証明に明示したHomとその生成元の法則の2出現を加えて16出現ある。正則性は承認どおりcompletedFreeDelta_generator_regularから得る。全A3の型検査は前提待ちなので、まだ成功には加えない。
+
+
+### 5∞-0 のdraft検査・第38束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第38束](bulk-5inf0/draft-block38-validation.json)でA1/CrystallineSiteが約46秒で成功し、有効な成功は32／57本。本体のpdCechNerveの変数の宇宙に合わせ、有限変数をULiftで持ち上げ、変数の対応はj↦j.downと明示した。hp・hgenを意図した引数に戻した型も通った。検査済みのソースをコミットする。
+
+更新後の本体全域の同名候補0、import allを含む所有元への到達の欠落0、57本から旧E3入力への経路0（閉包12,938モジュール）をPythonで再確認した。HodgeTateFiltrationは、旧loopFunctorが通常のホモトピー圏の関手だったため、同じ既存のloopDiagramTargetEquivalenceの逆射と左下の評価を合成する∞関手へ参照を合わせる。ほかはYonedaの定数の法則・letのスコープ・合成の括弧の明示で修正し、第39束で検査する。新しいloopの存在定理・仮定・sorryは加えない。
+
+
+### 第39束の待ち時間中の後続の準備（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[全57本の状態](bulk-5inf0/draft-validation-after38.json)を第38束時点で保存した。成功32、修正後の再検査待ち1、未実行24。成功行には現在のソース・成果物のSHAを付け、元の古い形式のreceiptに成果物のSHAがなかったものはその区別も残した。A4のP⁰の保護領域は基準とバイト単位で同一と再確認。
+
+DeRhamComparisonPolyの[23参照](bulk-5inf0/de-rham-universal-specialization-followup.json)は、本体のUniversalWittComparisonの既存の普遍基底の特殊化へ合わせる準備をした。正則性・完備性はその本体版の中で証明済みのものを使い、draftへ強い仮定を足さない。ほかに[所有元が確定した5参照](bulk-5inf0/remaining-unqualified-reference-refresh.json)を完全名へ直した。これらのソースは前提待ちで未検査のため、まだコミットも成功への算入もしていない。変更量はこの時点で追加・削除計約5,200行、外枠11,100行。
+
+一時の束の実行器は、同じ走査内の依存署名の判定を再利用するだけのメモ化を加え、各Lean実行の前には全判定を取り直す。検査器本体と署名の一致条件、280秒の外側の打切りは維持。共有鍵の要求は同時に1本だけで、待ち時間を検査時間や成功に数えない。
+
+
+### 5∞-0 のdraft検査・第39束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第39束](bulk-5inf0/draft-block39-validation.json)は約48秒でHodgeTateFiltrationが失敗。通常のホモトピー圏のloop関手と∞関手の違い・letのスコープのエラーは解消し、augmentationの始端のYonedaの評価の照合が1箇所残る。こちらの書換え処理が見出しの名前つき引数の`:=`を定義本文の区切りと誤認し、見出しを切った構文ミスもあったため、見出しを明示して訂正した。失敗として保存し、成功は32／57本のまま。
+
+第40束は同じ280秒の鍵の範囲で、A3冒頭のprismとlciClassifyingMapまでを現ソースからそのまま抽出する検査も先に行う。これは承認されたh₀の復元と既存の古典的な法則の証明の部分検査であり、A3全体や57本の成功件数へは加えない。原本のLake設定を引き継ぎ、検査中のソースの一致を確認し、型とaxiomsの出力を別の記録に残す。
+
+
+### 5∞-0 のdraft検査・第40〜42束とA3冒頭（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第40束](bulk-5inf0/draft-block40-validation.json)・[第41束](bulk-5inf0/draft-block41-validation.json)・[第42束](bulk-5inf0/draft-block42-validation.json)はいずれもHodgeTateFiltrationが失敗で、成功は32／57本のまま。第40束で壊れた見出しと合成の時間切れは解消し、augmentationの始端の、二切断の添字0を通常の添字0として照合する1箇所が残った。構成子と包含関手の定義を順に明示し、第43束で再検査する。
+
+A3冒頭の[第40](bulk-5inf0/a3-prism-prefix-block40-validation.json)・[第41](bulk-5inf0/a3-prism-prefix-block41-validation.json)・[第42](bulk-5inf0/a3-prism-prefix-block42-validation.json)の部分検査も全体としては失敗。冒頭のopenが通常は後続draftのimportから継承する二つの名前空間を、部分検査には本体の二つのpublic importで明示した。原本の古典的な宣言の本文はそのまま。docstringがvariableに付いていた構文を定義へ付け直し、Typeの値を存在命題から直接casesで取り出していた箇所を、同じ存在一意性からClassical.chooseで取り出す形に修正した。第42束の残りは構成した射の局所定義を照合する1箇所。これも第43束で検査する。
+
+部分検査の型とaxiomsの出力では、universalLciPrismが実際にP₀・h₀・rを取り、universalLciPrismとその有界性の2宣言は標準3公理だけと確認できた。ただし部分ファイル全体は失敗であり、A3全体や全57本の成功には数えていない。後続のlciClassifyingMapがエラーで登録された段階のsorryAxも、その失敗としてログに残している。
+
+
+### 5∞-0 のdraft検査・第43束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第43束](bulk-5inf0/draft-block43-validation.json)でA2/HodgeTateFiltrationが約25秒で成功し、有効な成功は33／57本。有限変数は同じ有限集合のULiftで宇宙を合わせ、増大余錐の脚は同じ辺の端点の定義だけを照合した。loopは本体の既存の図式の同値の逆と評価の合成、入力の単位は同じpostcompositionの恒等・結合法則で記述する。検査済みのソースをコミットする。
+
+A3冒頭の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)も約33秒で成功。[生成した検査用ソース](bulk-5inf0/a3-prism-prefix-block43-source.txt.gz)とログを保存した。universalLciPrismの型はP₀・h₀・rを受け取り、universalLciPrism・universalLciPrism_bounded・lciClassifyingMapの[axioms](bulk-5inf0/a3-prism-prefix-audit.json)はすべてpropext・Classical.choice・Quot.soundだけ。環・δ構造・生成元の式を保った承認済みの変更が、既存の完成自由δ環の補題で通った。これはA3全体の成功とは分け、一覧の完了数にはまだ加えない。
+
+同じ束のDiscreteCaseとBaseChangeAndTensorは失敗。前者は同じ台環のFrobeniusを明示の環射型で読む照合、後者は多項式の係数変更・名前空間・神経の定数頂点の照合が残る。後者の係数変更は、本体の証明済みchangePolyを直接使う準備にした。第44束で再検査する。
+
+
+### 5∞-0 のdraft検査・第44束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第44束](bulk-5inf0/draft-block44-validation.json)でA3/DiscreteCaseが約41秒で成功し、有効な成功は34／57本。Frobeniusの制限先のUnder対象は同じC.rightと明示し、零次Frobeniusを同じ台環の環自己準同型という結果型で記述した。環・射・将来のmod p比較の主張は変えず、本体へ寄せた古典的な法則の証明も通った。検査済みのソースをコミットする。
+
+BaseChangeAndTensorは、係数変更を本体のchangePolyへ寄せたこととPΣの完全名の追従は通り、神経の端点の照合2箇所が残った。nerveEquivとYonedaの逆の評価を明示し、第45束で検査する。鍵は各束の終わりに返し、次は同時に1本だけ並んでいる。
+
+
+### 5∞-0 のdraft検査・第45〜47束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第45束](bulk-5inf0/draft-block45-validation.json)・[第46束](bulk-5inf0/draft-block46-validation.json)の端点の診断を受け、余積の包含とYonedaの評価を順に書き換え、同じ神経の辺の始域・終域を定義上の等式で揃えた。[第47束](bulk-5inf0/draft-block47-validation.json)でA2/BaseChangeAndTensorが約39秒で成功。有効な成功は35／57本。この検査済みソースをコミットする。係数変更は本体のchangePolyを直接使い、重複していたmap_id・map_compのsorry2個を除いた。数学的な入力・仮定は追加していない。
+
+同じ束のA4/PerfectoidizationとA3/LciAndQuasiregularは失敗。A3は同じloopを検査済みのformShift S 1で読み、普遍prism射の補題の実際の所有元の名前に合わせる。A4は保護されたP⁰節の外だけで、反復の構文・1単体の添字・pと有界性の引数・ホモトピー圏の表示を合わせる。A4の完備包含・反射・単位はA2の同じ界面を直接使う準備にした。包含は具体的で、反射の存在はA2側の従来の未証明入力のまま一つに集約する。反射の存在を新しく証明したとは扱わない。第48束で検査する。P⁰の保護領域は変更前後で同一と確認した。
+
+
+### 5∞-0 のdraft検査・第48束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第48束](bulk-5inf0/draft-block48-validation.json)でA4/Perfectoidizationが約41秒、A7/DiscreteCoreが約25秒で成功。有効な成功は37／57本。A4の本体への集約・明示の引数と塔の1単体・通常のホモトピー圏の表示が通った。P⁰の保護領域は基準efa846fe8とバイト単位で同一と再確認。この2本の検査済みソースをコミットする。
+
+A3/LciAndQuasiregular・A4/InterfaceFields・A7/AnimatedPerfectoidizationは失敗。A3は、同じPD完備化環のinstanceと構造射の生成元の法則を明示し、A1から移した最後のlciの定理の元のA・P・hPの文脈を復元する。直前のh₀の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)の範囲はハッシュも同一のまま。InterfaceFieldsは通常のホモトピー圏の表示とnerveMapの零単体の評価を明示する。A7は既に使うperfectoidizationFunctorの所有元がInterfaceFieldsであるため[依存表](bulk-5inf0/draft-staging-plan.json)にその1辺を補った（57頂点、循環0、既存の順序は有効）。A7の残る変更は既存の有界性を渡し、通常のホモトピー圏の脚に揃えるもの。第49束で検査する。
+
+
+### 5∞-0 のdraft検査・第49〜50束、A02・A06完了（11-14夕方）
+
+一覧：済み 10／全体 14（うち追加 0）。[第49束](bulk-5inf0/draft-block49-validation.json)の残る診断を直し、[第50束](bulk-5inf0/draft-block50-validation.json)でA3/LciAndQuasiregular全体が約48秒で成功。有効な成功は38／57本。承認されたuniversalLciPrism P₀ h₀ rの型と参照、普遍射、完全化したprismの同じ台環のinstance、最後に移したlciの系まで通った。A3の2本のsorryは53→27で、26箇所を既存の古典的な本体とその法則に寄せた。未証明の∞比較などは元の主張のまま残す。環・δ構造・生成元の式は保存。[引数の台帳](bulk-5inf0/restored-context-parameters.json)の全行も全ファイルの検査で通っている。
+
+[項目別状態](bulk-5inf0/item-status.json)のA02をPASSに更新。またA0/BaseChange・A1/HodgeTateComparisonの二つの振幅の定義を本体HasCochainCompleteTorAmplitudeへ寄せたことと、利用側A3の型検査がそろったためA06もPASSにした。残る項目はA01・A04・A05・A07。
+
+InterfaceFieldsは完備化単位の同じ辺の端点の補助定義自体は通り、公開された定義の本文から使うためその補助定義も公開する1箇所が残った。数学的な構成や仮定を増やすものではない。第51束で確認する。新たに実行できたDeRhamComparisonPolyは失敗で、普遍基底に特殊化した本体の引数・実際の所有元の依存・評価の照合を続ける。
+
+
+### 5∞-0 のdraft検査・第51束（11-14夕方）
+
+一覧：済み 10／全体 14（うち追加 0）。[第51束](bulk-5inf0/draft-block51-validation.json)でA4/InterfaceFieldsが約40秒、A7/AnimatedPerfectoidizationが約25秒で成功。有効な成功は40／57本。完備化単位の同じnerveの辺は端点を明示する補助定義へ分け、公開される界面から使える公開範囲にした。新しい数学的構成ではなく、以前の式の型の照合の分割である。A7の有界性は既存のperfectPrism_boundedを渡し、脚は通常のホモトピー圏の表示へ揃えた。補ったInterfaceFieldsへの依存も実際の型検査で通った。この2本の検査済みソースをコミットする。
+
+同じ束のPerfectSiteとAlmostConnectivityは失敗。PerfectSiteは元の余積の反復を同じNat.recで明示し、脚も同じ依存再帰で書く。構成する対象・射・未証明の法則は変えない。AlmostConnectivityはD3の二切断のホモトピー圏の対象のptから同じ頂点を読む。第52束で検査する。
+
+
+### 5∞-0 のdraft検査・第52〜53束（11-14夜）
+
+一覧：済み 10／全体 14（うち追加 0）。[第52束](bulk-5inf0/draft-block52-validation.json)でA5/PerfectSiteが約39秒、A8/AlmostConnectivityが約22秒で成功。有効な成功は42／57本。前者は元の有限余積の反復と指定された脚をNat.recで明示し、後者はD3の二切断のホモトピー圏の対象のptから同じ頂点を読んだ。通常のホモトピー圏の脚への照合も通った。この2本の検査済みソースをコミットする。
+
+SemiperfectoidCaseは第52束で失敗し、有界性の既存の証明・includeとdocstringの配置・公開された値の選択で使う存在定理の公開範囲・ホモトピー圏の表示を合わせた。[第53束](bulk-5inf0/draft-block53-validation.json)ではそれらが通り、根の変数の改名を商へ降ろすIdeal.quotientMapₐの引数の推論1箇所が残った。係数環・両イデアル・同じ改名写像を明示して第54束で検査する。元の未証明の理想への包含の主張を変えず、新しい仮定やsorryは追加していない。
+
+
+### 5∞-0 のdraft検査・第54〜55束と型の違う対応の訂正（11-14 19時台）
+
+一覧：済み 10／全体 14（うち追加 0）。[第54束](bulk-5inf0/draft-block54-validation.json)でA5/SemiperfectoidCaseが約42秒で成功。有効な成功は43／57本。根の改名の商の射は同じ係数・イデアル・写像を名前つき引数で明示した。検査済みのソースをコミットする。
+
+DeRhamComparisonPolyの[型の相違の台帳](bulk-5inf0/de-rham-original-contract-retention.json)：本体wittToSmallの終域はγ・hp・hk・hregを持つ条件付きpdPolynomialFunctor、元の普遍基底のdraftの終域は保持した一般pdModelPolynomialFunctorであり、同じ型ではなかった。元からあるwittToSmallとwittToSmall_frameを、それぞれuniversalWittToPdModel・universalWittToPdModel_frameとして元の2つのsorryとともに保持する。新しい比較仮定や証明済みという扱いは加えない。cechAlexanderFrameは本体の低水準の関数そのものではなく、既存のaffineCechAlexanderFrameへ特殊化する。[全件台帳](bulk-5inf0/declaration-disposition-audit.json)は113の同名所有元・7の別名への置換・3の旧型を保った改名、計123、削除120・改名3・未説明0に訂正した。
+
+そのほかの普遍基底の正則性・完備性は既存の証明を渡して本体へ特殊化する。theoryFormsCAlg等の実際の所有元はCrystallineSiteなので[依存表](bulk-5inf0/draft-staging-plan.json)にその1辺を追加（循環0、既存の順序は有効）。未定義だった零形式の旧名は、既存の零形式・完備化単位・複体延長の同型の同じ合成を型を付けて読む準備にした。まだ全体は未検査。
+
+[第55束](bulk-5inf0/draft-block55-validation.json)はpublic import allというこちらの書式ミスで本文の前に失敗。public importとimport allを分け、第56束に並んだ。残る普通のホモトピー圏と辺の表示の[6参照](bulk-5inf0/remaining-ordinary-homotopy-edge-refresh.json)も、VertexIso・FunctorHomと組み合わせている同じ辺を揃える準備だけをし、未検査と明記した。
+
+現在のLeanの追加・削除の計は5,426行。段0の当初の見込み上端5,550行に近づいているが、外枠11,100行の内側である。残る項目はA01・A04・A05・A07で、新しい数学の項目は追加していない。
+
+
+### 5∞-0 のdraft検査・第56〜57束（11-14夜）
+
+一覧：済み 10／全体 14（うち追加 0）。[第56束](bulk-5inf0/draft-block56-validation.json)の診断を分け、第57束で普遍prismの正則性を乗法の単射性として明示し、p完備剰余環でpと互いに素な整数が単元になる既存の証明を同じ引数で記した。本体の非公開名を直接使うのをやめた。零次形式は既存の完備形式・複体延長の同型で読み、非公開の定義を展開する範囲だけno_exposeとした。関手の合成の等式は局所的な略記を明示して結合律で揃えた。新しい比較仮定・数学の項目・sorryは加えていない。
+
+[第57束](bulk-5inf0/draft-block57-validation.json)で、これらとzigzagの部分は通った。ファイル全体はrootFormsAugmentationの二つの端点の照合で失敗。nerveの零単体の評価と同じ形式関手の頂点を定義上の等式で揃え、第58束で再検査する。有効な成功は43／57本のまま。Leanの追加・削除は5,460行で外枠11,100行の内側。
+
+
+### 5∞-0 のdraft検査・第58〜59束と静的な再確認（11-14夜）
+
+一覧：済み 10／全体 14（うち追加 0）。[第58束](bulk-5inf0/draft-block58-validation.json)と[第59束](bulk-5inf0/draft-block59-validation.json)でもrootFormsAugmentationの端点の照合が残った。第60束では零単体の添字を明示し、nerveMap_app_mk₀の等式をcongrArgで渡す形で確認する。他の部分は第57束と同様に通り、未説明の失敗を成功には数えていない。
+
+[静的再確認](bulk-5inf0/draft-static-block60.json)：本体32,937ファイルと全57draftsの公開名の重複候補0。draftsとその前提のimportグラフ12,939頂点で、旧Inputs.Perfectoidization・Inputs.PerfectoidizationInterfaceへの経路0。A0〜A9のコード中のsorryは705→569、ファイルごとの増加0（未検査のソースも含むので完成の数値ではない）。全57本の現在のsorryは684。A4のP⁰節は基準とバイト単位で一致し、Sharedの保護ファイルのハッシュは承認済み11箇所の機械的変更の後と一致。変更禁止3ディレクトリの差分0。
+
+
+### 5∞-0 のdraft検査・第60束、A01完了（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第60束](bulk-5inf0/draft-block60-validation.json)でA1/DeRhamComparisonPoly全体が約41秒で成功。有効な成功は44／57本。rootFormsAugmentationの端点は、零単体の添字とnerveMapの評価の等式を明示し、形式関手の零単体はComposableArrows.ext₀で照合した。同じ辺の合成で、数学的な入力・仮定は追加していない。保持した二つの旧pd比較の型を含めてファイル全体が通った。検査済みソースをコミットする。A0・A1が全て通ったのでA01をPASSへ更新した。
+
+次のA5/StrongDescentは、削除済みのpairKoszulTowerへの古い参照で失敗した。既存のpowerKoszulTowerに同じ二つの座標を渡し、元のK(p,e)を第一冪の段として読む。D3の二切断のホモトピー圏の対象は既存のptから頂点を取る。元のRHomとKoszulの主張・仮定・sorryは増やさず、第61束で検査する。
+
+
+### 5∞-0 のdraft検査・第61束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第61束](bulk-5inf0/draft-block61-validation.json)でA5/StrongDescentが約40秒で成功。有効な成功は45／57本。同じK(p,e)を既存のpowerKoszulTowerの第一冪の段で読み、D3の対象のptを使う修正が通った。検査済みのソースをコミットする。直前の報告のde Rham比較の時間は生ログに合わせ約41秒に訂正した。
+
+次のWeaklyInitialAndDescentは失敗。includeとdocstringの順、完備化環の元のCommRing instance、完備CAlg包含・反射の名前とp引数を明示する。filtered余極限の指定比較は同じ式の中間のcoconeと射に型を付け、推論を分割して検査する。heartbeat上限は上げない。第62束に並んだ。
+
+
+### 5∞-0 のdraft検査・第62〜63束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第62束](bulk-5inf0/draft-block62-validation.json)の残る推論を分け、[第63束](bulk-5inf0/draft-block63-validation.json)でA5/WeaklyInitialAndDescentが成功。有効な成功は46／57本。二段のmapCoconeは一段ずつ同じ中間の錐に型を付け、弱始対象のUnder.mkには元の標的の環と射の始域Uを明示した。検査済みソースをコミットする。
+
+同じ束のPerfectSiteComparisonは検査中にこちらが後続修正を置いたためSTALE（無効）になった。成功には数えず、元の診断とソースが変わった事実を生ログごと保存した。今後、実行中の対象のソースは変えず、束が終わってから修正する。残る二つのanimated関手はA7/AnimatedPerfectoidizationが実際の所有元なので依存表にその1辺を追加（循環0、従来の順序は有効）。有界性は既存の完全性から渡す。ArcSiteの未修飾名は既存のSheavesの所有元をopenする。第64束で再検査する。
+
+
+### 5∞-0 のdraft検査・第64束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第64束](bulk-5inf0/draft-block64-validation.json)はPerfectSiteComparisonの既存の有界性補題のimport漏れ1件、ArcSiteのIsWeaklyTerminal・CechNerveDataの二つの所有元の曖昧さで失敗。有界性補題の実際の所有モジュールPerfectBoundedをimportし、二つのČechの名前は元の意図どおりSheaves側に修飾して第65束へ並んだ。実行中の対象は変更していない。
+
+
+### 5∞-0 のdraft検査・第65束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第65束](bulk-5inf0/draft-block65-validation.json)でPerfectSiteComparison（約44秒）・ArcSite（約22秒）・AfterComparison（約23秒）が成功。有効な成功は49／57本。既存の完全性から有界性を渡すこと、animated関手の実際の依存、Sheaves側のČechデータへの修飾が通った。この3本の検査済みソースをコミットする。
+
+InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際に持つhRを同じ変数から転送する1箇所。後者はPrismaticのAnimatedAlgebra・polyYonedaの所有元と、通常のHomotopyCategory.homMkのAPIを直接使うようにする。selfTensorの後続のエラーはその未定義の脚の連鎖なので、先に脚を検査する。第66束へ並んだ。
+
+
+### 5∞-0 のdraft検査・第66束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第66束](bulk-5inf0/draft-block66-validation.json)でInterfaceLimitCone・UniversalPropertyが成功。有効な成功は51／57本。hRの転送と通常のホモトピー圏の脚の表示、Prismaticのanimated代数の参照が通った。検査済みソースをコミットする。改名した参照の所有モジュールの到達漏れも再確認して0。依存グラフは12,940頂点、旧E3入力への経路0だった。
+
+次のArcSheafPropertyは失敗。AsSmallから元の圏へ戻る同じ関手のnerveは、射の宇宙が違うので既存のresizedNerveMapで読む。完備化H⁰の環構造は既存のprincipalCompletionCommRingを明示する。商への射は同じf.right.homをIdeal.quotientMapへ正しい順序で渡す。二成分の関数は同じBoolによる場合分けをfunの構文で明示し、層化・大域切断の名前はSheavesの所有元に揃える。新しい数学的入力やsorryは追加せず、第67束で検査する。
+
+
+### 5∞-0 のdraft検査・第67束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第67束](bulk-5inf0/draft-block67-validation.json)でArcSheafPropertyの宇宙を調整したnerve、完備化H⁰の環構造、商写像、Sheavesの参照は通った。残るのは二成分の関数のパターン構文2件。同じfalse側・true側をBool.recとcasesで記し、第68束へ並んだ。有効な成功は51／57本のまま。
+
+
+### 5∞-0 のdraft検査・第68束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第68束](bulk-5inf0/draft-block68-validation.json)でArcSheafProperty全体が成功。有効な成功は52／57本。二成分の同じ定義のBool.rec・casesへの表示と、元の完備化H⁰の環構造の明示が通った。検査済みソースをコミットする。
+
+次のSheafOfSetsExcisionはpushout.descの未指定の二本の射の推論とisIntegralPerfectoid_prodのimport漏れで失敗。同じpushoutの二本を名前つき引数で渡し、乗法・剰余への射の始域・終域を明示する。積の補題は本体のPerfectoid.FiniteProductを直接importする。第69束で検査する。Leanの追加・削除は第68束前で5,556行、当初の見込み上端5,550行を6行超えたが、承認された外枠11,100行には達していない。新しい数学の項目は追加0。
+
+
+### 5∞-0 のdraft検査・第69束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第69束](bulk-5inf0/draft-block69-validation.json)でSheafOfSetsExcisionのpushoutの指定と積の補題のimportは通った。残るのはcompletionLiftが別の名前空間のものに解決された1件。本来のDerivedCompletion.completionLiftを完全名で指定して第70束で検査する。有効な成功は52／57本のまま。
+
+
+### 5∞-0 のdraft検査・第70束と名前空間の訂正（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第70束](bulk-5inf0/draft-block70-validation.json)は、こちらがcompletionLiftの所有元をファイル配置からDerivedCompletionと誤って判断した1件で失敗。RingCompletion.leanのnamespaceを実際に確認し、正しいBhattScholze.PerfectoidizationInterface.completionLiftに訂正した。直前の節の「本来のDerivedCompletion.completionLift」は誤りで、ここで撤回・訂正する。第71束に並んだ。成功は52／57本のまま。
+
+
+### 5∞-0 のdraft検査・第71束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第71束](bulk-5inf0/draft-block71-validation.json)でSheafOfSetsExcisionが成功。有効な成功は53／57本。補った同じpushoutの射、FiniteProductの補題、正しいPerfectoidizationInterface.completionLiftが通った。普通のホモトピー圏の6参照の台帳も全3ファイルで全体の検査が通った状態に更新。この検査済みソースをコミットする。
+
+次のExcisionは、既存のIsIso ηの証明をasIsoで探索する1箇所で失敗。元からある証明をhηと名前を付け、@asIsoへ直接渡す形で第72束に並んだ。主張・証明の未完了の数・引数は増やしていない。
+
+
+### 5∞-0 のdraft検査・第72束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第72束](bulk-5inf0/draft-block72-validation.json)でExcisionが成功。有効な成功は54／57本。同じIsIsoの証明をasIsoへ明示的に渡すことが通った。検査済みソースをコミットする。
+
+次のAlmostPurityConnectivityは本体へ移したtrivialCoverComparison_isModuleCompleteのdocstringとinclude hRだけが残った構文エラー1件。本体のAlmost/FiniteEtaleComparison.leanの所有元を示す通常の注記に替え、孤立したincludeは除いた。後続のarcOutside_of_integral_of_localization_isoに、本来不要なperfectoid基底の仮定を付けない。新しい仮定やsorryは追加しない。第73束へ並んだ。
+
+
+### 5∞-0 のdraft検査・第73束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第73束](bulk-5inf0/draft-block73-validation.json)でAlmostPurityConnectivityが成功。有効な成功は55／57本。本体への参照、D3の対象のpt、孤立していた移動済み宣言の注記の整理が通った。検査済みソースをコミットする。
+
+次のIntegralDiscretenessはquotientTensorを呼ぶ2箇所で失敗。本体Almost/AlmostTensor.leanの変数宣言を確認し、同じRは暗黙引数なので(R := R)と明示して渡す。型の内容・仮定は変えず、第74束に並んだ。残るのはこの1本とA9/Assembly。
+
+
+### 5∞-0 のdraft検査・第74束、A05完了（11-14夜）
+
+一覧：済み 12／全体 14（うち追加 0）。[第74束](bulk-5inf0/draft-block74-validation.json)でIntegralDiscretenessが成功。有効な成功は56／57本。同じRをquotientTensorの暗黙引数として渡すことが通った。A8の全件が揃ったためA05をPASSへ更新し、本体の40対応の台帳も全体の型検査済みにした。この検査済みソースをコミットする。
+
+最後のAssemblyは失敗。構造の各欄へ同じhRを名前付き引数で渡し、PerfectoidizationInterfaceE3の実際の名前空間PerfectoidizationInterfaceを開く。既存のTheoryからE3への還元を使う方針はそのまま。界面の型・主張・仮定は変更しない。第75束で検査する。残る項目はA04・A07。
+
+
+### 5∞-0 停止点・完了報告（11-14夜）
+
+一覧：済み 14／全体 14（うち追加 0）。[第75束](bulk-5inf0/draft-block75-validation.json)でAssemblyが成功し、[最終照合](bulk-5inf0/draft-final-validation.json)は**57／57本が有効なPASS、失敗0・期限切れ0**。元のLake設定（maxSynthPendingDepth=3等）を継承し、一時配置の依存12,944頂点と、draft間234辺の順序を明示した。構造の八欄は同じhRを渡し、TheoryからE3への既存の還元で組み立てた。rootの選択済みE3入力にはdraftsから戻らない。共有鍵は各束280秒以内で取得・返却し、現在は持っていない。
+
+本体7モジュールと直接利用側を含む13対象のビルド、小監査（所有する99宣言、必要な11名）は既にPASSで、その13ソースのハッシュが最終状態と一致することを再確認した。小監査は標準のpropext・Classical.choice・Quot.soundだけ。正式BS監査への[登録案](bulk-5inf0/stage2-audit-registration-proposal.json)は案のまま。5∞-0の指示は対象ビルドと小監査であり、この枝の変更後のroot全体ビルド・full verifyを通したとは扱わない。
+
+[完了記録](bulk-5inf0/completion.json)：本体とdraftsの公開名の重複候補0（本体32,937ファイルを走査）、旧E3入力へのimport経路0。層の検査は基準と同じ15辺で追加0・例外追加0。[層の差分](bulk-5inf0/final-layer-comparison.json)と[全出力](bulk-5inf0/layers-final.json.gz)を保存。変更禁止のEInfinity/・InfinityCategories/・AlgebraicGeometry/は差分0。Sharedの保護ファイルは承認済み11箇所の機械的追従後と同一、A4のP⁰節は基準とバイト単位で一致する。
+
+[宣言の全件台帳](bulk-5inf0/declaration-disposition-audit.json)は123対応（同名所有元113・別名置換7・旧型を保持した改名3）、削除120・改名3・未説明0。型が異なった一般pd模型と普遍Witt比較は元の未証明の主張を保ち、強い仮定への置き換えで消していない。承認されたuniversalLciPrismのh₀と、同じ理由の[引数の復元](bulk-5inf0/restored-context-parameters.json)は全ファイルの型検査で通った。環・δ構造・生成元は[保存の確認](bulk-5inf0/a3-restored-parameter-source-guard.json)どおり。
+
+[ソースのsorry](bulk-5inf0/all-draft-sorry-summary.json)は全57本で827→684（143減、ファイル別の増加0）。従来の変更対象56本の系列では819→676、A0〜A9は705→569。残るsorryは⑤∞で証明する元の数学であり、今回それを証明したとは主張しない。B06の一般の結晶比較は§2B6の明示の許容に従い5∞-3aへ回した。
+
+Lean差分は追加2,791・削除2,800、計5,591行。当初見込み上端5,550行を超えたが、承認された外枠11,100行の内側。追加の数学項目は0。A07は古い基準の記載をefa846fe8へ更新し、元から基準の記載のない補助ファイルには書き足さず、保護ファイルは許された機械的追従だけに留めた。READMEの旧配置は履歴と明示した。
+
+保護されたShared/EInfinityPowerOperationには既存のdocstring linterのwarningが残り、本文にerrorという語を含むが診断の重大度はwarning、Leanの終了コードは0である。保護範囲の文章を変えてこの警告を消すことはしていない。
+
+これを5∞-0の単独取り込み用の停止点とする。取り込みは調整役に委ね、指示どおり続いてB5の段0（属性からの地図生成の紙の設計）へ進む。
+
+
+### B5 段0・属性からの地図生成の案（11-14夜、紙のみ）
+
+5∞-0の停止点は16e125f58。ここからはB5の段0。Lean・本体の表・scriptsは変更せず、鍵も取っていない。[入力の全件棚卸し](bulk-b5/stage0-inventory.json)と[型付きの作業表](bulk-b5/stage0-plan.json)を保存した。B5一覧：済み 0／全体 6（うち追加 0）。段0の設計は済み、以下6項目の実装は未着手。
+
+**既存の入口。** Util/Citation.leanの#cite_tags KEYは既に1対応1JSONを出す（key・number・edition・relation・comment・declaration・module・path・line）。#cite_tags!は型も出す。citationExtは永続環境拡張、Kerodon・StacksはMathlibのnative属性を同じ出力へ載せる。新しい属性の実装を作り直さない。#cite_checkは元の環境にある定数を調べるだけで再解釈しないので、必要な候補の型・axioms・ModelCategory SSetの印の再確認に使える。
+
+**入力の規模（CSVの行数、対応済み件数ではない）。** HTT 1,730、HA 2,866、BS 211、K 208、Kerodon 3,553、計8,568行。Kは別に5文献のitems.csvとothers.csv 47行を持つ。Kerodonのitem-tags.csvは6,613行で、一項目一Tagとは限らない。レビューはHTT・HA・Kerodonの28ファイル。略号の登録は25 KEY。B3の保存記録は1,883組・14群で欠落/余分/相違/metadata errorが0だが、これは当時の照合であり、新しいB5の環境抽出件数として使わない。
+
+| ID | 出すものと合格条件 | 見込み行数 |
+| --- | --- | --- |
+| B5-01 | 入力と番号の対応表：旧表の手判断の列と機械生成の列を分ける。番号・略号・版・Tagの対応を既存レビューから固定。 | 100–180 |
+| B5-02 | 環境からの抽出：既存#cite_tagsのJSONを所有モジュールごとに抽出し、原Lake設定・終了コード・ソース/oleanの署名を記録。 | 200–350 |
+| B5-03 | 対応の照合と保留台帳：exact/partial4種/nativeを保存し、未対応・複数対応・旧187件・新規7モジュールを診断に残す。 | 180–300 |
+| B5-04 | 地図の生成：5族の項目と宣言の両向きJSON/Markdown索引。MathlibとArchive、公開範囲、nullの行を区別。 | 180–300 |
+| B5-05 | 検査と再現性：重複import、別名、nativeタグ、部分対応、失敗・古い成果物、曖昧な番号、改名後の場所を検査。 | 150–250 |
+| B5-06 | 更新手順と配布：生成物と入力のハッシュ、差分の確認、各レーンの新規属性の扱い、再生成手順を文書化。 | 80–150 |
+
+**元の判断と生成する情報。** title・kind・goal・status・reason・confidence・版と文献番号の判断は既存レビューの入力として残す。宣言の完全名・所有モジュール・現在の場所と行・属性のrelation/commentは実環境から生成する。属性があることを「証明済み」や「完全な対応」と同一視しない。partialはspecial/direction/stronger-hyp/componentと理由をそのまま保持する。native出力のrelationはnativeであり、exactへ自動変換しない。own/both/mathlibの判断は確認済みの対応表と結ぶ。未確認のnative対応は診断へ出す。
+
+番号を文字列の先頭だけで切り落とさない。例えばBS表の1.1行にはDef 3.2の言い直しとの注記がある。文献の番号・表の安定ID・kindの対応はB3のレビュー済み判断から作り、単なる数字の一致で結ばない。Kの「論文」「9人論文」などもbibliographyのKEYとの明示の対応表を使い、題名の類似から推測しない。Kerodonは番号とTagの両方向を保存する。
+
+**抽出の範囲と手順案。** 対象はrootの現役の閉包、対応表の所有モジュール、現役の属性を持つモジュールの和。rootを一度importするだけではroot外の対応を落とすので、所有モジュールごとの小さい一時Leanを生成し、Util.Citationとそのモジュールをimportして#cite_tagsを呼ぶ。採取した環境のモジュールと、宣言の定義の所有モジュールは別の列にする。別モジュールから既存宣言へ属性を付ける場合もあるので、所有元が採取元と違うという理由で捨てない。全採取レコードのimport重複を(key,edition,number,declaration,relation,comment)でまとめ、同じ(key,edition,number,declaration)に異なるrelation/commentがある場合はconflictとして報告する。異なる別名は同じ宣言へ勝手に潰さない。LeanのJSON診断のinfoの中の完全なレコードだけを読む（警告本文の波括弧を拾わない）。終了コード非0・欠落モジュール・ソース/olean/設定の期限切れは抽出失敗とし、空の成功として扱わない。
+
+Mathlibの対応は外部のものとして保持し、宣言の所有元をSerrePositivityへ付け替えない。必要なMathlibのTagを別モジュールで付けている場合は、その適用元も抽出対象へ足す（Mathlib全体を一律にimportしない）。pathはmodule名から推測して確定せず、実際のsource rootで解決・照合する。rangeがない場合はnullのまま診断へ出す。Archive、scripts、drafts、ModelCategory SSetを満たせないものは現役の対応に混ぜず、除外理由付きの台帳へ残す。Mathlibタグを自前宣言へ移すこともしない。
+
+**保留の取り扱い。** 旧187件は元のcoverage-location-refresh台帳とB3の最終判断を対応元付きで突き合わせて再計数する。187件が今も全部未解決、または全部解決したとは仮定しない。名前の末尾だけで再結合しない。5∞-0の新規7モジュールはciteの記載0で、監査対象は99宣言。99全部を新たな文献対応と扱わず、原典の項目を記した主宣言だけを候補台帳に挙げ、型・範囲の判断が未確定なら保留にする。B5の地図生成のついでに無承認で属性を付け足さない。
+
+**出力案。** research/generated-citation-maps/<KEY>/にitems.json・declarations.json・index.md、共通にmanifest.json・unmatched.json・excluded.jsonを置く。5族をまず対象とし、他KEYは宣言索引までで、新しい文献の項目表は作らない。既存items.csvを属性だけから上書きせず、手判断のカタログと生成された参照のviewを分ける。元の「名前 @ パス:行」はB3の根拠の履歴として残し、現在の参照としては環境の値を使う。逆引きは宣言→文献項目と項目→宣言の双方を生成する。
+
+**検査案。** 2回生成の同一性、同じ依存の複数import、複数の文献対応、別名、partial4種とnativeの保持、Mathlib所有元、privateとrange=null、曖昧な番号、旧187件の照合、改名後の場所、失敗や古い成果物が空成功にならないことを小さいfixtureで確認する。最後にB3の受理済み対応と新抽出を集合比較し、説明のない欠落・余分0にする。新規候補や未対応は除外して数を合わせず、件数と理由を出す。
+
+見込みは手書き890〜1,530行（道具・意味のあるfixture検査・文書。生成物と一時Leanは除く）、0.5〜1.5日。環境抽出は今回未実行なので所要時間は未実測。最初の50所有モジュールで壁時計・最大メモリを測り、残りの数から時間を見直す。待ち時間を除いた見込みと鍵待ちを分ける。一晩で済むとはまだ約束しない。実行時は--wait 3600・bulk、昼は280秒以内、夜は30分以内、所有モジュールごとのreceiptを保存して再開可能にする。
+
+B5段0はここで止める。B5の実装、既存地図の置き換え、追加の属性付け、B3′の移動・改名には進んでいない。

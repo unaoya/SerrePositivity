@@ -1,0 +1,177 @@
+{
+  "FunctorIso": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/Equivalence.lean",
+      "line": 39
+    }
+  ],
+  "HasLimit": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean",
+      "line": 58
+    }
+  ],
+  "IsSiftedInfinity": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SiftedInfinity.lean",
+      "line": 24
+    }
+  ],
+  "KanObject": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/TheInfinityCategoryQC/CatInfinity.lean",
+      "line": 58
+    }
+  ],
+  "PreservesSmallSiftedColimits": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/SiftedColimitPreservation.lean",
+      "line": 28
+    }
+  ],
+  "sigmaPresheaf_siftedPresentation": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaPresheaf_siftedPresentation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SigmaSiftedGeneration.lean",
+      "line": 49
+    }
+  ],
+  "sigmaSiftedContinuousRestriction_isQCatEquivalence": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SigmaRestrictionEquivalence.lean",
+      "line": 64
+    }
+  ],
+  "IsFullyFaithful": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithful.lean",
+      "line": 30
+    }
+  ],
+  "sigma_hasSmallSiftedColimits": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.sigma_hasSmallSiftedColimits",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/SiftedColimitPreservation.lean",
+      "line": 46
+    }
+  ],
+  "sigmaPresheafInfinityLift": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaPresheafInfinityLift",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SigmaPresheafInfinity.lean",
+      "line": 82
+    }
+  ],
+  "enrichedFunctorOfOrderDiagram": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/OrderDiagrams.lean",
+      "line": 79
+    }
+  ],
+  "sigmaLeftKanExtension_preservesSmallSiftedColimits": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaLeftKanExtension_preservesSmallSiftedColimits",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SigmaLeftKanSiftedPreservation.lean",
+      "line": 33
+    }
+  ],
+  "VertexIso": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/Equivalence.lean",
+      "line": 47
+    }
+  ],
+  "SigmaPresheafInfinity": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SigmaPresheafInfinity.lean",
+      "line": 44
+    }
+  ],
+  "JoinCocone": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/Cocone.lean",
+      "line": 26
+    }
+  ],
+  "curryTensorRight": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.curryTensorRight",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/FatJoinTensorDesc.lean",
+      "line": 26
+    }
+  ],
+  "sigmaYonedaInfinityMap_isFullyFaithful": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYonedaInfinityMap_isFullyFaithful",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SigmaYonedaInfinity.lean",
+      "line": 58
+    }
+  ],
+  "IsQCatEquivalence": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/Equivalence.lean",
+      "line": 78
+    }
+  ],
+  "PresheafInfinity": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafInfinity.lean",
+      "line": 28
+    }
+  ],
+  "IsColimitCone": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/Cocone.lean",
+      "line": 45
+    }
+  ],
+  "SpaceInfinity": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/TheInfinityCategoryQC/CatInfinity.lean",
+      "line": 113
+    }
+  ],
+  "sigmaYonedaInfinityMap": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYonedaInfinityMap",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SigmaYonedaInfinity.lean",
+      "line": 45
+    }
+  ],
+  "HasSmallSiftedColimits": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/SiftedColimitPreservation.lean",
+      "line": 34
+    }
+  ],
+  "QCatAdjunction": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/Adjunction.lean",
+      "line": 44
+    }
+  ],
+  "sigma_exists_leftKanExtension_with_recovery": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_exists_leftKanExtension_with_recovery",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SigmaLeftKanExtension.lean",
+      "line": 78
+    }
+  ]
+}

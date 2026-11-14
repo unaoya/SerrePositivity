@@ -1,11 +1,12 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.SheafCondition（層 Sheaves、StablePresentable < Sheaves < ModelBridge）
--- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1・§3、単位 S1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1・§3、単位 S1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalMap
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cone
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 public import Mathlib.CategoryTheory.Sites.Coherent.ExtensiveSheaves
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.Comma.Over.Basic
@@ -86,7 +87,7 @@ def sieveCone {U : 𝒞} (S : Sieve U) : Cone (sieveDiagram S) where
         intro x y f
         change 𝟙 (Opposite.op U) ≫ y.unop.obj.hom.op =
           x.unop.obj.hom.op ≫ f.unop.hom.left.op
-        rw [Category.id_comp, ← Quiver.Hom.op_comp, Over.w f.unop.hom] }
+        rw [Category.id_comp, ← _root_.CategoryTheory.op_comp, Over.w f.unop.hom] }
 
 /-- 概要：前層 F の篩 S 上への制限図式。
 方針：篩の圏の nerve を持ち上げ、`nerveMap (sieveDiagram S)` を F に前合成する。
@@ -101,23 +102,23 @@ def restriction (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U) :
 規約：頂点は元の頂点の持ち上げ。
 使われ方：1 圏の錐の nerve（SSet.{u}）を E（SSet.{u+1}）上の錐にするため。
 実装は Core/UniverseLimits の既存の錐の持ち上げ。 -/
-abbrev JoinCone.ulift {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
-    JoinCone ((SSet.uliftFunctor.{u + 1, u}).map p) :=
+abbrev _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.ulift {K X : SSet.{u}} {p : K ⟶ X} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone ((SSet.uliftFunctor.{u + 1, u}).map p) :=
   SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u,u+1} c
 
 /-- 概要：F(U) を頂点とする、F の S 上の制限図式の錐。
 方針：1 圏の錐 `sieveCone S` を `F1B.nerveCone` で nerve の join 錐にし、持ち上げてから F で後合成する。
 規約：脚は F(f)。頂点は F(op U)。
 使われ方：層条件はこの錐の極限性。 -/
-def restrictionCone (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U) : JoinCone (restriction F S) :=
-  ((F1B.nerveCone (sieveCone S)).ulift).postcomp F
+def restrictionCone (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (restriction F S) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (sieveCone S)).ulift).postcomp F
 
 /-- 概要：E 値前層 F が位相 J の層である（HTT 6.2.2.6 の E 値版）。
 方針：すべての被覆篩 S ∈ J U について `restrictionCone F S` が極限錐。
 規約：Čech 層。hypersheaf ではない（モジュールの規約を参照）。E に極限の存在は仮定しない。
 使われ方：層化の像、Γ の定義域、Cor 3.12(d)。 -/
 def IsSheaf (J : GrothendieckTopology 𝒞) (F : Presheaf 𝒞 E) : Prop :=
-  ∀ (U : 𝒞) (S : Sieve U), S ∈ J U → IsLimitCone (restrictionCone F S)
+  ∀ (U : 𝒞) (S : Sieve U), S ∈ J U → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (restrictionCone F S)
 
 /-- 概要：粗い位相の層は細かい位相でも…ではなく、細かい位相の層は粗い位相の層である。
 方針：被覆篩の包含。
@@ -142,13 +143,13 @@ lemma isSheaf_bot (F : Presheaf 𝒞 E) : IsSheaf ⊥ F := by
 theorem isSheaf_toGrothendieck_iff (K : Coverage 𝒞) (F : Presheaf 𝒞 E) :
     IsSheaf K.toGrothendieck F ↔
       ∀ (U : 𝒞) (R : Presieve U), R ∈ K.coverings U →
-        IsLimitCone (restrictionCone F (Sieve.generate R)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (restrictionCone F (Sieve.generate R)) := by
   sorry -- HTT 6.2.2 系の一般論（生成系での降下で十分）
 
 /-- 有限積の指定された錐を F で送ったものが極限錐。空族を含む。 -/
 def PreservesFiniteProductsOnSite (F : Presheaf 𝒞 E) : Prop :=
   ∀ (ι : Type u) [Finite ι] (B : ι → 𝒞ᵒᵖ) (c : Fan B), Nonempty (IsLimit c) →
-    IsLimitCone (mapJoinCone F (SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u,u+1} (F1B.nerveCone c)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone F (SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u,u+1} (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone c)))
 
 /-- S1-E。有限余積が普遍かつ非交叉な site での extensive 位相の層判定。 -/
 theorem isSheaf_extensive_iff_preservesFiniteProducts {E : SSet.{u+1}} [Quasicategory E]

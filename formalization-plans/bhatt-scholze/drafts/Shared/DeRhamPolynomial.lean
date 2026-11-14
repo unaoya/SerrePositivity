@@ -1,10 +1,11 @@
 -- 将来の置き場所：共有層（CommutativeAlgebra/DeRham/Polynomial など。調整役と相談）。BS 固有ではない。
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1、G-A1-9、D26。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1、G-A1-9、D26。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty
+public import SerrePositivity.CommutativeAlgebra.DeRham.CohomologyWedge
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
@@ -42,13 +43,7 @@ namespace SerrePositivity.DeRham
 
 variable (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T]
 
-/-- 概要：de Rham cohomology の積 H^i × H^j → H^{i+j}（外積から）。
-方針：`deRhamD_wedge` により外積は余輪体 × 余輪体を余輪体へ、余境界 × 余輪体を余境界へ送る。
-規約：11-07 追加。
-使われ方：A1/CrystallineInput の Cartier 同型の乗法性、段 4・6。 -/
-def deRhamCohomologyWedge {i j : ℕ} :
-    (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i + j) :=
-  sorry -- 外積を余輪体の代表で取り、deRhamD_wedge で well-defined
+-- deRhamCohomologyWedge は同じ型の本体 CommutativeAlgebra.DeRham.CohomologyWedge を使う。
 
 /-! ## p 完備化 -/
 
@@ -69,9 +64,9 @@ open SerrePositivity.InfinityCategories
 使われ方：A1-1・A1-3（Ω̂）、A2 HodgeTateFiltration の gr との比較。 -/
 def completedForms_eq_derivedCompletion_of_boundedTorsion (p i : ℕ)
     (hk : ∃ N : ℕ, ∀ (n : ℕ) (x : k), (p : k)^n * x = 0 → (p : k)^N * x = 0) :
-    VertexIso ((completion k {(p : k)}).app _ ((discreteModuleEmbedding k).app _
-      (nerveVertex (ModuleCat.of k (forms k T i)))))
-      ((discreteModuleEmbedding k).app _ (nerveVertex (ModuleCat.of k (completedForms k T p i)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.InfinityCategories.Derived.completion k {(p : k)}).app _ ((_root_.SerrePositivity.InfinityCategories.Derived.discreteModuleEmbedding k).app _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ModuleCat.of k (forms k T i)))))
+      ((_root_.SerrePositivity.InfinityCategories.Derived.discreteModuleEmbedding k).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ModuleCat.of k (completedForms k T p i)))) := by
   sorry -- 多項式形式は多項式環上有限自由。係数のねじれの一様な上界により導来完備化は次数零
 
 end SerrePositivity.DeRham

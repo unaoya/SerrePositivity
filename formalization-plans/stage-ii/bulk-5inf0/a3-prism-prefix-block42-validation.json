@@ -1,0 +1,39 @@
+{
+  "status": "FAIL",
+  "scope": "exact current source prefix through lciClassifyingMap only, not whole A3",
+  "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+  "source_sha256": "33fca76549351ce9399d120b4ba82dfd472cdcaf138e4123eb71756bac221041",
+  "prefix_sha256": "02aa285c7d7ee6e1fff3758c881d9bacf6a83001b845aa0a368c9687b14ed883",
+  "staged_sha256": "132094d0ae876117716cdac1cb0b1be627143bda1b6f440b4c8080affd7655bb",
+  "source_unchanged": true,
+  "extra_public_imports": [
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.Assembly",
+    "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface"
+  ],
+  "extra_import_reason": "Supply the namespaces normally inherited from later draft predecessors; the extracted classical declarations are unchanged.",
+  "options": {
+    "maxSynthPendingDepth": 3,
+    "pp.unicode.fun": true,
+    "relaxedAutoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.header": false
+  },
+  "command": [
+    "lake",
+    "env",
+    "env",
+    "LEAN_PATH=/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+    "lean",
+    "-DmaxSynthPendingDepth=3",
+    "-Dpp.unicode.fun=true",
+    "-DrelaxedAutoImplicit=false",
+    "-Dweak.linter.mathlibStandardSet=true",
+    "-Dweak.linter.style.header=false",
+    "--root=/tmp/bulk-5inf0/validation",
+    "-o",
+    "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A3/PrismPrefix.olean",
+    "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A3/PrismPrefix.lean"
+  ],
+  "exit_code": 1,
+  "seconds": 33.554380083456635
+}

@@ -1,9 +1,9 @@
 -- 1 圏の arc site と Lemma 8.8 の affine 版は本体の ArcSite に移した。
--- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.1・§10、単位 A6-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.1・§10、単位 A6-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcSite
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 -- W9-III-08（致命・配置）：現行の CompletedTensor は IntegralExistence 経由で消去対象の Inputs/PerfectoidizationInterface を import する。2a の取り込み後に
@@ -19,7 +19,7 @@ public import Mathlib.NumberTheory.Padics.PadicIntegers
 public import Mathlib.Algebra.Ring.ULift
 public import Mathlib.Algebra.MvPolynomial.Basic
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 -- 相対 Čech の部分は drafts/Sheaves/{SheafCondition,CechConerveLimit}.lean の S1・S3 を import する。
 -- 本ファイルは drafts/A5/RootAdjunction.lean（`rootClosure`・`rootClosure_extends`）、drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure_isSemiperfectoid`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、
 -- drafts/A0/PrismaticSite.lean（`cutoff`）を import する（W9-III-14 で所在を RootAdjunction に揃えた）。
@@ -61,6 +61,7 @@ variable (p : ℕ) [Fact p.Prime] (κ : Cardinal.{u})
 section ArcCech
 
 open SerrePositivity.InfinityCategories
+open SerrePositivity.InfinityCategories.Sheaves
 open SSet
 
 /-- 小さい模型の射 f が一点族として arc 被覆である条件。 -/
@@ -81,7 +82,7 @@ def arcSieveGenerator {R S : AffCompl p κ} (f : R ⟶ S) : sieveCategory (arcSi
   ⟨Over.mk f.op, Sieve.le_generate (arcSinglePresieve p κ f) _ _ (Presieve.ofArrows.mk ())⟩
 
 theorem arcSieveGenerator_weaklyTerminal {R S : AffCompl p κ} (f : R ⟶ S) :
-    IsWeaklyTerminal (arcSieveGenerator p κ f) := by
+    Sheaves.IsWeaklyTerminal (arcSieveGenerator p κ f) := by
   sorry -- Q の各射の f.op による因子分解が、𝒟 の U への射を与える
 
 -- §2.1 の cutoff。有限の相対テンソルと可算完備化の台を模型内に収める。
@@ -90,7 +91,7 @@ variable [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
 /-- 𝒟 での U の有限冪を相対完備テンソル冪で実現する Čech データ。
 各次数の射影、Fan の IsLimit、射影と単体的構造射の整合を含む。 -/
 def arcSieveCechData {R S : AffCompl p κ} (f : R ⟶ S) :
-    CechNerveData (arcSieveGenerator p κ f) := by
+    Sheaves.CechNerveData (arcSieveGenerator p κ f) := by
   have hbound := hκ.out
   sorry -- R 上の (n+1) 重テンソルの completionRing とその射影は Q の対象で、完備化の普遍性から積を与える
 
@@ -105,8 +106,8 @@ def arcSieveCechData {R S : AffCompl p κ} (f : R ⟶ S) :
 theorem isSheaf_generateSieve_iff_cech {R S : AffCompl p κ} (f : R ⟶ S)
     (hf : IsSingletonArcCover p κ f) {E : SSet.{u + 1}} [Quasicategory E]
     (F : Presheaf (AffCompl p κ)ᵒᵖ E) :
-    IsLimitCone (restrictionCone F (arcSingleSieve p κ f)) ↔
-      IsLimitCone (restrictJoinCone (restrictionCone F (arcSingleSieve p κ f))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (restrictionCone F (arcSingleSieve p κ f)) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone (restrictionCone F (arcSingleSieve p κ f))
         (cechShape (arcSieveCechData p κ f))) := by
   sorry -- restriction F Q とその錐に、U の弱終性と相対 Čech データで S3 の isLimitCone_iff_restrict_cech を適用
 
@@ -178,9 +179,9 @@ theorem arcTopology_eq_sup :
 def PreservesFiniteRingProducts {E : SSet.{u + 1}} [Quasicategory E]
     (F : Presheaf (AffCompl p κ)ᵒᵖ E) : Prop :=
   ∀ (ι : Type u) [Finite ι] (B : ι → AffCompl p κ) (c : Limits.Fan B),
-    Nonempty (Limits.IsLimit c) → IsLimitCone
+    Nonempty (Limits.IsLimit c) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone
       ((SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u, u + 1}
-        (F1B.nerveCone ((opOp (AffCompl p κ)).mapCone c))).postcomp F)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone ((opOp (AffCompl p κ)).mapCone c))).postcomp F)
 
 /-- 概要：S1 の一般補題（**基盤待ち**、S1-E）：extensive coverage の層 ⇔ 有限積を保つ（Mathlib `isSheaf_iff_preservesFiniteProducts` の ∞ 版、
 `FinitaryPreExtensive` な site で）。
@@ -201,7 +202,7 @@ theorem isSheaf_arc_iff_cech {E : SSet.{u + 1}} [Quasicategory E] (F : Presheaf 
     IsSheaf (arcTopology p κ) F ↔
       PreservesFiniteRingProducts p κ F ∧
         ∀ {R S : AffCompl p κ} (f : R ⟶ S), IsSingletonArcCover p κ f →
-          IsLimitCone (restrictJoinCone (restrictionCone F (arcSingleSieve p κ f))
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone (restrictionCone F (arcSingleSieve p κ f))
             (cechShape (arcSieveCechData p κ f))) := by
   sorry -- arcTopology_eq_sup、⊔ の層条件、isSheaf_extensive_iff_preservesFiniteProducts、isSheaf_toGrothendieck_iff、isSheaf_generateSieve_iff_cech
 

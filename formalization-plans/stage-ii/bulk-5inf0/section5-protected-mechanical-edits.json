@@ -1,0 +1,108 @@
+{
+  "authorization": "bulk-5inf0.md §5; coordinator reply 2026-11-14 afternoon",
+  "rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/Shared/EInfinityPowerOperation.lean",
+      "edits": [
+        {
+          "start": 422,
+          "end": 491,
+          "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology",
+          "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology",
+          "line": 8,
+          "kind": "import"
+        }
+      ]
+    }
+  ],
+  "note": "Import plus exact declaration renames only. Unqualified references resolve through the original open SerrePositivity.InfinityCategories; authoritative owned KL/B3 maps are composed. No local binders, declaration headers, open statements or proof terms are changed.",
+  "resolved_open_references": [
+    {
+      "path": "Shared/EInfinityPowerOperation.lean",
+      "source_sha256": "55a0ce4ee221852045154d9672105995df3156973738e95588b1ab4340ee13f1",
+      "edits": [
+        {
+          "start": 1944,
+          "end": 1967,
+          "old": "derivedInfinityHomology",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityHomology",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology",
+          "line": 54
+        },
+        {
+          "start": 2030,
+          "end": 2053,
+          "old": "derivedInfinityHomology",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityHomology",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology",
+          "line": 55
+        },
+        {
+          "start": 2749,
+          "end": 2772,
+          "old": "derivedInfinityHomology",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityHomology",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology",
+          "line": 70
+        },
+        {
+          "start": 3208,
+          "end": 3234,
+          "old": "derivedInfinityHomologyMap",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityHomologyMap",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyMap",
+          "line": 80
+        },
+        {
+          "start": 5360,
+          "end": 5383,
+          "old": "derivedInfinityCategory",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityCategory",
+          "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+          "line": 128
+        },
+        {
+          "start": 5407,
+          "end": 5430,
+          "old": "derivedInfinityHomology",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityHomology",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology",
+          "line": 129
+        },
+        {
+          "start": 5512,
+          "end": 5535,
+          "old": "derivedInfinityHomology",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.derivedInfinityHomology",
+          "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology",
+          "line": 130
+        },
+        {
+          "start": 6380,
+          "end": 6389,
+          "old": "VertexIso",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.VertexIso",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso",
+          "line": 151
+        },
+        {
+          "start": 6614,
+          "end": 6625,
+          "old": "nerveVertex",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+          "line": 152
+        },
+        {
+          "start": 6817,
+          "end": 6828,
+          "old": "nerveVertex",
+          "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+          "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+          "line": 157
+        }
+      ],
+      "updated_sha256": "56d43529a0b0b6c3e123a57abe7a9fd84f1308c96a567a9ea4b135e4f4c424ce"
+    }
+  ]
+}

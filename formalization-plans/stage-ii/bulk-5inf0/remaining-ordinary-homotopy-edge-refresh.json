@@ -1,0 +1,20 @@
+[
+  {
+    "path": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+    "references": 2,
+    "reason": "Same edges occur with VertexIso/FunctorHom or native cone legs in the ordinary homotopy category; align the representation.",
+    "status": "PASS whole-file check (StrongDescent block61; UniversalProperty block66)"
+  },
+  {
+    "path": "formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean",
+    "references": 2,
+    "reason": "Same edges occur with VertexIso/FunctorHom or native cone legs in the ordinary homotopy category; align the representation.",
+    "status": "PASS whole-file check (StrongDescent block61; UniversalProperty block66)"
+  },
+  {
+    "path": "formalization-plans/bhatt-scholze/drafts/A6/SheafOfSetsExcision.lean",
+    "references": 2,
+    "reason": "Same edges occur with VertexIso/FunctorHom or native cone legs in the ordinary homotopy category; align the representation.",
+    "status": "PASS whole-file check block71"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "status": "FAIL",
+  "scope": "exact current source prefix through lciClassifyingMap only, not whole A3",
+  "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+  "source_sha256": "60935b325b12c20139dc880b188a15614a3aa59954cc68f5cef7ac13c0685a41",
+  "prefix_sha256": "cd82f221563b7e8e4aca15ead2fc48452e0852e53e5a79e1e258e810dc4d1191",
+  "staged_sha256": "0c30d3251323643031f9b31109ca11e43df627201e03cca4b221f8f222aadb69",
+  "source_unchanged": true,
+  "options": {
+    "maxSynthPendingDepth": 3,
+    "pp.unicode.fun": true,
+    "relaxedAutoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.header": false
+  },
+  "command": [
+    "lake",
+    "env",
+    "env",
+    "LEAN_PATH=/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+    "lean",
+    "-DmaxSynthPendingDepth=3",
+    "-Dpp.unicode.fun=true",
+    "-DrelaxedAutoImplicit=false",
+    "-Dweak.linter.mathlibStandardSet=true",
+    "-Dweak.linter.style.header=false",
+    "--root=/tmp/bulk-5inf0/validation",
+    "-o",
+    "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A3/PrismPrefix.olean",
+    "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A3/PrismPrefix.lean"
+  ],
+  "exit_code": 1,
+  "seconds": 36.249271251261234
+}

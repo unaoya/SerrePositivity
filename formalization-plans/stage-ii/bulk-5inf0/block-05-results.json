@@ -1,0 +1,17 @@
+[
+  {
+    "step": "small-audit",
+    "exit_code": 0,
+    "seconds": 25.563727166503668
+  },
+  {
+    "step": "stage-A2",
+    "exit_code": 1,
+    "seconds": 17.682877335697412
+  },
+  {
+    "step": "foundation-S1",
+    "exit_code": 1,
+    "seconds": 8.402658374980092
+  }
+]

@@ -1,0 +1,345 @@
+{
+  "changes": [
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Envelopes.AffineEnvelopeConstruction"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.AffinePolynomial",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffinePolynomial"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticEnvelope.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaFlat",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Envelopes.CompletedFreeDeltaFlat"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticEnvelope.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.Envelope",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Envelopes.Envelope"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.PrismOver",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Site.PrismOver"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCohomology"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.PDModelReduction",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDModelReduction"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.FinitePolynomialCartier"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.FrobeniusCechComparison"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallineBase",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBase"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCoordinates"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBridgePushout"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDIntegral"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineExtraModel"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.PDCompletedCech",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDCompletedCech"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallineBridge",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBridge"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.CrystallinePDModel"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineModel"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/CrystallineSite.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverCompleteTor",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.CrystallineCover.CrystallineCoverCompleteTor"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateCompletedMap",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCompletedMap"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateOneDerivative"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateBocksteinSquare",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateBocksteinSquare"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineForms",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineForms"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OppositeIso",
+      "new_import": "SerrePositivity.InfinityCategories.HTT.Section6_1_2.OppositeIso"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/DerivedPrismaticCohomology.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction",
+      "new_import": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Envelopes.AffineEnvelopeConstruction"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/DerivedPrismaticCohomology.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSquareHom"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/HodgeTateFiltration.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful",
+      "new_import": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.HeartFullyFaithful"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/HodgeTateFiltration.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Stability",
+      "new_import": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.Stability"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A2/HodgeTateFiltration.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSquareHom"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift",
+      "new_import": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift",
+      "new_import": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean",
+      "old_import": "SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift",
+      "new_import": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A5/RootAdjunction.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcCardinality"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful",
+      "new_import": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.HeartFullyFaithful"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationUntilt"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcSite.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcSite"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcSite.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension",
+      "new_import": "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationExtension"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A6/ArcSite.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedDomain.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.HomotopyCategoryComparison",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.HomotopyCategoryComparison"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedDomain.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedPerfectoidization.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes",
+      "new_import": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/AlmostConnectivity.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful",
+      "new_import": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.HeartFullyFaithful"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
+      "old_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.FiberTriangle",
+      "new_import": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.FiberTriangle"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid",
+      "new_import": "SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid",
+      "new_import": "SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureCompletion",
+      "new_import": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureApproximation",
+      "new_import": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralClosureApproximation"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralApproximation",
+      "new_import": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation"
+    },
+    {
+      "file": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "old_import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectoidFilteredColimit",
+      "new_import": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit"
+    }
+  ],
+  "remaining_missing_imports": []
+}
