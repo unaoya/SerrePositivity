@@ -68,9 +68,11 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 | [9.7（Tag 06ZD）](https://kerodon.net/tag/06ZD) | Tensor Products of ∞-Categories | [`Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/`](Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/) |
 | [10.1（Tag 04QJ）](https://kerodon.net/tag/04QJ) | Simplicial Objects of ∞-Categories | [`Kerodon/ExactnessAndAnimation/SimplicialObjectsOfInfinityCategories/`](Kerodon/ExactnessAndAnimation/SimplicialObjectsOfInfinityCategories/) |
 
-改名は [モジュール対応表](../../scripts/refactor/targets/kl-module-map.json) と
+KL-W1 時点の改名は [モジュール対応表](../../scripts/refactor/targets/kl-module-map.json) と
 [宣言対応表](../../scripts/refactor/targets/kl-namespace-map.json) を参照。
 並行する枝の追従手順は [KL-W1 の報告](../../formalization-plans/stage-ii/kerodon-layout-w1-report.md) にある。
+
+今回の Project・BhattScholze の整理に追従する枝は、[B3 後の B4 資料](../../formalization-plans/stage-ii/bulk-w1-b3/B4-README.md) にある新しいモジュール表・所有元付きの実名表と、各枝の対象ファイル一覧を使う。移動前の環境で参照を採取してから main を取り込む。
 
 ## Project の主題分けと文献の属性
 

@@ -7,7 +7,7 @@
 - `Prismatic/CechAlexander/`：frame、envelope、複体と Čech–Alexander 比較。
 - `Prismatic/HodgeTate/`：Hodge–Tate 比較、係数、Witt、基底変換。
 - `Semiperfectoid/Lci/`：Example 7.9 の lci 構成。ほかの semiperfectoid の基礎は親ディレクトリに残す。
-- `Perfectoidization/Arc/`：arc site、付値環、Milnor、descent。積分的 perfectoidization の §10 の構成は `IntegralPerfectoidization/` の近似・完備化・存在・有限étaleへ分ける。
+- `Perfectoidization/Arc/`：arc site、付値環、Milnor、descent。積分的 perfectoidization の §10 の構成の多くは `IntegralPerfectoidization/` の近似・完備化・存在・有限étaleへ分ける。`IntegralExistence` は `Perfectoidization/Derived/IntegralExistence.lean` に残し、分割と移動は B3′ で扱う。
 
 節をまたぐファイルは主な構成の下に一度だけ置き、ほかの節による利用は同じ宣言への引用で表す。ディレクトリ分けだけの移動では既存の公開名前空間を保つ。これは引用を数学的な完全対応へ格上げする操作ではない。元の部分対応・保留を引き継ぐ。
 
