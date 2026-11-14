@@ -6557,3 +6557,147 @@ main **`2be485f04`** を枝に取り込んだ（merge **`8c65d0319`**、競合�
 証跡は `formalization-plans/stage-ii/is-w2-b4-20261114/`：`approved-identity-opens.json`、`final-review.json`、`final-preview-summary.json`、`applied-preview.diff`、`build-and-audit.log.gz`、更新した `summary.json`。原ソース付きの索引全体と各採取ログは `/private/tmp/isw2-b4/` に保持。登録の照合用の全278モジュールは同フォルダの `files.json`（パスの拡張子を取り、スラッシュをピリオドに置換）である。入口・登録は調整役に委ねる。
 
 **B4は完了**。累計278モジュール・17,116行、外枠まで2,884行。sorry・新公理0、計算上限・型の弱化・ModelCategory SSetの追加・⑤aの変更なし。/goalのB02の残り（raw有限和からMoore制限と全単体的射への接続）に戻る。B03〜B08・C・D、停止点2a・2b、3b-4段0は未完。
+
+
+## 138. B02：実AW前合成と全標準単体のuncurryの照合（2026-11-14 午後）
+
+一覧：済み 14／全体 36（うち追加 1）
+
+B4完了後に /goal を再開。同じraw生成元、Moore射影、指定係数同型を通して、実A09逆射のAW前合成を元の実豊穣合成の逆自由随伴そのものへ同定した。さらに同じ自由随伴とuncurryで、全標準単体パラメータの各添字成分を元の豊穣合成へ戻した。各切断の照合を仮定には残さず、§134の実際の切断等式を代入している。
+
+今回の6宣言はB02の既存構成の法則と証明分割であり、新しい構成・新しい数学の追加ではない。逆射の値の検査は、同じ同型の順方向の全射性で値を表し、順方向uncurry則から戻す形に分割した。elaboration・kernelとも既定の計算上限を維持した。
+
+### 138.1 `FreeProductAWRawCriterion`（81行）
+
+```lean
+theorem freeProductAlexanderWhitney_f_eq_of_raw (X Y : SSet.{u}) (n : ℕ)
+    (T : ModuleCat A)
+    (t : (freeNegativeChains (A := A) X ⊗ freeNegativeChains (A := A) Y).X
+      (-(n : ℤ)) ⟶ T)
+    (h : (freeNegativeChains (A := A) (X ⊗ Y)).X (-(n : ℤ)) ⟶ T)
+    (hraw : ∀ x : X.obj (Opposite.op ⦋n⦌), ∀ y : Y.obj (Opposite.op ⦋n⦌),
+      ((integerCoefficientExtension φ).map
+        ((alexanderWhitney (linearizedSpace X) (linearizedSpace Y)).f n ≫
+          (chainIntegerTensorMap (PInftyToNormalizedMooreComplex (linearizedSpace X))
+            (PInftyToNormalizedMooreComplex (linearizedSpace Y))).f n) ≫
+        ((((integerCoefficientExtension φ).mapHomologicalComplex (.down ℕ)).obj
+          (chainIntegerTensor ((normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace X))
+            ((normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace Y)))).extendXIso
+              ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv ≫
+        (negativeMooreTensorCoefficientIso φ (linearizedSpace X) (linearizedSpace Y)).hom.f
+          (-(n : ℤ)) ≫
+        (tensorIso (integerCoefficientFreeChainsIso φ X)
+          (integerCoefficientFreeChainsIso φ Y)).hom.f (-(n : ℤ)) ≫ t)
+        (coefficientUnit φ (integerTensor ((linearizedSpace X).obj (Opposite.op ⦋n⦌))
+          ((linearizedSpace Y).obj (Opposite.op ⦋n⦌)))
+            (integerGenerator x ⊗ₜ[ℤ] integerGenerator y)) =
+      h (freeNegativeGenerator (X ⊗ Y) n (x, y))) :
+    (freeProductAlexanderWhitney φ X Y).f (-(n : ℤ)) ≫ t = h
+
+```
+
+### 138.2 `ReflectedBKFreeTensorAW`（94行）
+
+```lean
+theorem reflectedBKFreeTensor_inverse_AW
+    (φ : simplicialRingCoefficient.{u} →+* A) (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (m : SimplexCategory)
+    (α : (standardHomSpace (R := A) P ((productTotalFunctor A).obj X)).obj (Opposite.op m))
+    (j : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) :
+    let T := (productTotalFunctor A).obj X
+    let Q := (doubleOppositeDiagram X).obj (AsSmall.down.obj j)
+    let S := (reflectedNormalizedBKSmallWeight A).obj j
+    let B := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)
+    let g := (reversedWeightPointwiseBousfieldKanCone X).app (AsSmall.down.obj j) ≫
+      (Functor.isoWhiskerRight (standardDoldKanModuleIso (R := A) (D := Complex A) T Q)
+        (forget (ModuleCat A))).inv
+    let f := liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm α
+    let Y := (homDiagramFunctor P).obj X
+    let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
+      (reflectedNormalizedBKSmallHomIso A Y).hom
+    let t := (freeTensorDiagramHomIso A (normalizedBKSmallDiagram A Y)
+      (reflectedNormalizedBKSmallWeight A)).inv.app (Opposite.op m)
+        (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
+          ((standardDoldKanSpaceMap (R := A) P T).app (Opposite.op m) α))
+    freeProductAlexanderWhitney φ S B ≫ t.app j =
+      ((freeNegativeChainsAdjunction A).homEquiv (S ⊗ B) (homObject A (Complex A) P Q)).symm
+        ((g ⊗ₘ f) ≫ (β_ _ _).hom ≫ standardComposition (R := A) P T Q ≫
+          standardDoldKanSpaceMap P Q)
+
+```
+
+### 138.3 `NormalizedWeightSectionInverseEvaluation`（81行）
+
+```lean
+theorem freeNegativeChainsDiagramAdjunction_hom_symm_app
+    (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
+    (f : freeNegativeChainsDiagram (A := A) W ⟶ Q) (j : J) :
+    ((freeNegativeChainsAdjunction A).homEquiv (W.obj j) (Q.obj j)).symm
+      ((((freeNegativeChainsDiagramAdjunction A J).homEquiv W Q) f).app j) = f.app j
+
+theorem normalizedWeightSectionMap_hom_uncurry_inverse_app
+    (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
+    (φ : simplicialRingCoefficient.{u} →+* A) (m : SimplexCategory)
+    (f : (freeTensorFrame A W (liftedStandardSimplexParameter J)).obj m ⟶ Q) (j : J) :
+    ((freeNegativeChainsAdjunction A).homEquiv
+      (W.obj j ⊗ (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) (Q.obj j)).symm
+      ((weightedSectionsUncurry
+        (liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm
+          ((normalizedWeightSectionMap A W Q φ).app (Opposite.op m)
+            ((freeTensorDiagramHomIso A Q W).hom.app (Opposite.op m) f)))).app j) =
+    freeProductAlexanderWhitney φ (W.obj j)
+      ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) ≫ f.app j
+
+theorem normalizedWeightSectionMap_uncurry_inverse_app
+    (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
+    (φ : simplicialRingCoefficient.{u} →+* A) (m : SimplexCategory)
+    (β : ((truncatedDoldKanFunctor A).obj (linearHomComplex A
+      ((functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj
+        (freeNegativeChainsDiagram (A := A) W))
+      ((functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj Q))).obj (Opposite.op m)) (j : J) :
+    ((freeNegativeChainsAdjunction A).homEquiv
+      (W.obj j ⊗ (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) (Q.obj j)).symm
+      ((weightedSectionsUncurry
+        (liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm
+          ((normalizedWeightSectionMap A W Q φ).app (Opposite.op m) β))).app j) =
+    freeProductAlexanderWhitney φ (W.obj j)
+      ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) ≫
+        ((freeTensorDiagramHomIso A Q W).inv.app (Opposite.op m) β).app j
+
+```
+
+### 138.4 `ReflectedBKNormalizedSectionsUncurry`（76行）
+
+```lean
+theorem reflectedBKNormalizedSections_uncurry
+    (φ : simplicialRingCoefficient.{u} →+* A) (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (m : SimplexCategory)
+    (α : (standardHomSpace (R := A) P ((productTotalFunctor A).obj X)).obj (Opposite.op m))
+    (j : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) :
+    let T := (productTotalFunctor A).obj X
+    let Q := (doubleOppositeDiagram X).obj (AsSmall.down.obj j)
+    let g := (reversedWeightPointwiseBousfieldKanCone X).app (AsSmall.down.obj j) ≫
+      (Functor.isoWhiskerRight (standardDoldKanModuleIso (R := A) (D := Complex A) T Q)
+        (forget (ModuleCat A))).inv
+    let f := liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm α
+    let Y := (homDiagramFunctor P).obj X
+    let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
+      (reflectedNormalizedBKSmallHomIso A Y).hom
+    (weightedSectionsUncurry
+      (liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm
+        ((normalizedWeightSectionMap A (reflectedNormalizedBKSmallWeight A)
+          (normalizedBKSmallDiagram A Y) φ).app (Opposite.op m)
+            (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
+              ((standardDoldKanSpaceMap (R := A) P T).app (Opposite.op m) α))))).app j =
+      (g ⊗ₘ f) ≫ (β_ _ _).hom ≫ standardComposition (R := A) P T Q ≫
+        standardDoldKanSpaceMap P Q
+
+```
+
+### 138.5 検収と残り
+
+コード **`c6df9240b`**。個別の結合検査 `/private/tmp/isw2-reflected-uncurry-combined7.log` は終了コード0。不要な未使用letを除いた最終4モジュールの鍵付き対象ビルド `/private/tmp/isw2-build150.log` は **4,740 jobs・終了コード0**。新規分のみの監査は **6宣言（1・1・3・1）、標準三公理のみ**。鍵は `--class impl --wait 3600`、ビルドと監査の間だけ使用し返却済み。
+
+累計 **282モジュール・17,448行**、外枠まで2,552行。現在の全対象監査の基準は§137の278本・2,119宣言で、今回の新規分監査6宣言とは区別して記録する。モジュール一覧 `/private/tmp/isw2-g10-twohundredeightytwo-modules.txt`。計算上限・既存宣言・⑤a・入口・公式監査の変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証の下書きなし。
+
+B02全体の `gammaReflectedBKComparison_eq` はまだ未完。残りは、今回の全標準単体・各添字のuncurry等式を重み付き切断の全射の等式に戻し、元の反転end・small添字の指定同型・実Hom同型を通して同じnative比較へ運ぶこと。B03〜B08・C・D、停止点2a・2b、3b-4段0も未完。次はこの反転・添字の輸送を接続する。
