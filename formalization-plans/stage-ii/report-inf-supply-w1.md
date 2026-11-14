@@ -9761,3 +9761,95 @@ lemma realizationIso_hom_augmentation :
 Overへの合成射を元のsource frameで送った射。これらの一致の後、
 今回の三つの表示同型の保存則を合成して元の自由増大射の評価値へ戻す。
 RR02(a)全体は未完。
+
+## §111 RR02(a)：実係数での余錐の脚の照合
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def strictDiagramFreeEvaluationPostCocone := postZeroCocone _ _ _ (L := evaluationAt k)
+def strictDiagramFreeEvaluationCopowerCocone :=
+  (Cocone.precompose (degreeMap _ (strictDiagramFreeEvaluationFramesIso A d X k).inv 0)).obj
+    (strictDiagramFreeEvaluationPostCocone A d X k)
+lemma strictDiagramFreeEvaluationOverTerminal_from_left :
+  (AsSmall.down.map ((strictDiagramFreeEvaluationOverTerminal d k).from t)).left =
+    (AsSmall.down.obj t).hom
+lemma strictDiagramFreeEvaluationCopowerCocone_leg :
+  (ElementsCopower.elementsZeroCocone (strictDiagramFreeEvaluationLiftedWeight d k)
+    (strictDiagramFreeEvaluationBase A d X) (strictDiagramFreeEvaluationCopowerCocone A d X k)).ι.app e =
+    ((strictDiagramSourceFrame A d X).obj.obj 0).map (AsSmall.down.map e.obj.unop.val ≫ e.val.down)
+lemma strictDiagramFreeEvaluationElementsCocone_leg :
+  (strictDiagramFreeEvaluationElementsCocone A d X k).ι.app e =
+    ((strictDiagramSourceFrame A d X).obj.obj 0).map (AsSmall.down.map e.obj.unop.val ≫ e.val.down)
+```
+
+`evaluationAt k`・`0` は上記の評価関手・`SimplexCategory.mk 0`の略記。
+元の余錐の脚を保存する法則。余積の挿入とOverの終対象の一意性だけを用いる。未検証。
+
+### §111.1 元の自由増大射の評価と弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeEvaluationElementsAugmentation_eq :
+  strictDiagramFreeEvaluationElementsAugmentation A d X k =
+    bousfieldKanAugmentation _ (ElementsCopower.elementsZeroCocone _ _
+      (strictDiagramFreeEvaluationCopowerCocone A d X k))
+lemma strictDiagramFreeEvaluationOverComparison_augmentation_eq :
+  strictDiagramFreeEvaluationOverComparison A d X k ≫
+    strictDiagramFreeEvaluationOverAugmentation A d X k =
+      (strictDiagramFreeArrowRealizationAugmentation A d X).app k
+lemma strictDiagramFreeArrowRealizationAugmentation_app_weak :
+  weakEquivalences (Complex A) ((strictDiagramFreeArrowRealizationAugmentation A d X).app k)
+lemma strictDiagramFreeArrowRealizationAugmentation_weak :
+  weakEquivalences (StrictComplexDiagram A d) (strictDiagramFreeArrowRealizationAugmentation A d X)
+```
+
+脚の一致から指定随伴で増大射を同定し、§110の三つの表示同型の保存則を合成。
+最後は元のReedyモデルのobjectwise弱同値の定義を使う。
+RR02(a)の元の増大射の部分であり、写像空間の最終比較はまだこの後に残る。
+
+### §111.2 全次数への移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeArrowRealizedAugmentation_zero_weak :
+  weakEquivalences (StrictComplexDiagram A d)
+    ((strictDiagramFreeArrowRealizedAugmentation A d X).app (SimplexCategory.mk 0))
+lemma strictDiagramFreeArrowRealizedAugmentation_weak (n : SimplexCategory) :
+  weakEquivalences (StrictComplexDiagram A d)
+    ((strictDiagramFreeArrowRealizedAugmentation A d X).app n)
+```
+
+次数零の既存の同型と、増大射の自然性および両frameの構造射の弱同値性を合成する。
+RR02(a)の証明の分割であり、新しい構成は加えない。
+
+### §111.3 実Homへの前合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeArrowAugmentationHom_equivalence :
+  IsSimplicialHomotopyEquivalence
+    ((cosimplicialHomMap (strictDiagramFreeArrowRealizedAugmentation A d X)).app
+      (strictDiagramFibrantTarget A d Y))
+```
+
+既存の `frameHomMap_homotopyEquivalence` に、元の増大射・両frameのReedy cofibrancy・
+構造射の弱同値性・§111.2を直接渡す。SSetのモデル構造は仮定しない。
+RR02(a)の証明の分割。BKのHom表示を通した指定cone比較との照合は次。
+
+### §111.4 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+4本・258行、27宣言の対象ビルドと小さい監査が成功。標準三公理のみ。
+計算上限の変更なし。検証済み累計234本・17,110行、
+上限変更後のRR02(a)は4,612行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/evaluation-cocone-legs/build-5.log`。
+
+§111〜§111.3を検証済みに更新。元の自由増大射の評価値をOver比較の合成と同定し、
+その射の弱同値性を全余単体次数へ移した。さらに指定fibrant標的への
+実Homの前合成そのもののホモトピー同値性を、既存の固定Quillen類の定理から得た。
+RR02(a)の最後の指定BK比較との一致、および(b)(c)は引き続き未完。
