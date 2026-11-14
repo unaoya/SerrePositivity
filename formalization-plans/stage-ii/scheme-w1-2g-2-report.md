@@ -262,3 +262,18 @@ S01 の最初の実装の型（着手前、上記の内数）：`degreeOne_aeval
 ### S01 の底変換 grading と S02 の核の法則（着手前の型、前記の内数）
 
 `segreLeftTensorGrade G n := (G n).baseChange B` に Mathlib の GradedAlgebra.baseChange を供給する。`segreLeftTensorGrade_algebraMap_zero` は R の係数がその次数零に入ること。`segreGradedCoordinateMap G a b ha` は a_i∈G1 なら実際の segreCoordinateMap をこの grading への GradedRingHom に束ねる（b の次数はこの左 grading には不要）。`segreCoordinateMap_kernel_homogeneous` は同じ写像の核の斉次性。既存の homogeneous ideal の comap を使い、次数分解と写像の可換性を再証明しない。見込み70〜150行。添字の DecidableEq は標準の grading のために明示し、最終の有限添字 Fin n では既存のものを使う。
+
+
+## G3・S01：底変換 grading と Segre 座標の核の斉次性
+
+`SegreGradedCoordinates`（59行）：`segreLeftTensorGrade` とその GradedRing は Mathlib の任意の底変換の grading。`segreLeftTensorGrade_algebraMap_zero` は元の係数の次数零。`segreGradedCoordinateMap` は実際の座標評価の graded な射、`segreGradedCoordinateMap_toRingHom` は元の環写像との一致。`segreCoordinateMap_kernel_homogeneous` は homogeneous ideal の comap を使う核の斉次性。平坦性・右の座標の次数は不要。添字の DecidableEq も Mathlib のこの grading には不要であることを検証し、仮定から除いた。
+
+本体59行・入口1行。単独検証、ソース完全一致、対象・直接 importer のビルド5,086ジョブ、小監査15宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-segre-graded-coordinates-check-2.log`・`2g-segre-graded-coordinates-native.log`・`2g-segre-graded-coordinates-audit.log`。鍵は検証中だけ使用。
+
+S01 は3モジュール136行＋入口3行、小監査21宣言・標準三公理のみで完了し、S02 の核の斉次性まで供給した。2g-2 本体970行・入口込み987行、小監査76宣言・標準三公理のみ。G3 の商の次数分解・標準開の比較・有限冪と G4〜G5 は未完。今回 834e6b8d5 の後は5モジュール220行＋入口5行、小監査28宣言。全体の見込み約5,500〜12,000行、外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+### S02 の実際の商の次数分解の法則（着手前の型、S02 の内数）
+
+`homogeneousIdealQuotientGrade_isInternal J G hJ`：同次イデアル J と GradedRing G から、既存の projectiveRingQuotientGrade J G の内部直和を返す。`homogeneousIdealQuotientGradedRing J G hJ` はその同じ商の GradedRing。既存の HilbertSerre.isInternal_quotientGrade と Submodule.Quotient.restrictScalarsEquiv を使い、既存の ReesClosedRingGrading の証明の一般の法則への分割として実装する（見込み40〜90行）。これを実際の Segre 座標写像の核へ適用する。既存の Rees の宣言の型は変更しない。

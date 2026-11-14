@@ -1659,3 +1659,5 @@ public import SerrePositivity.AlgebraicGeometry.ReesScalarStructureMorphism
 public import SerrePositivity.AlgebraicGeometry.DegreeOneGradedEvaluation
 
 public import SerrePositivity.AlgebraicGeometry.SegreCoordinates
+
+public import SerrePositivity.AlgebraicGeometry.SegreGradedCoordinates
