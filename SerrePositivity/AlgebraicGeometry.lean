@@ -1425,3 +1425,5 @@ public import SerrePositivity.AlgebraicGeometry.OpenModelComparison
 public import SerrePositivity.AlgebraicGeometry.FiniteAtlasOpenModels
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasModelData
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasModelProperties
+public import SerrePositivity.AlgebraicGeometry.FiniteCompositeStageMaps
+public import SerrePositivity.AlgebraicGeometry.CartesianPullbackComparison

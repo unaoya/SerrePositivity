@@ -1237,3 +1237,24 @@ G1・G2共用部品込み本体 **7,850 行**、入口込み **7,990 行**。一
 共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-open-atlas-models-batch-check-4.log`、`2g-open-atlas-models-native.log`、`2g-open-atlas-models-audit.log`。
 
 一覧：済み 10／全体 14（うち追加 5）。
+
+
+同じ三重交叉の比較のアトラス模型への適用（着手前の型、見込み80〜180行）：`OpenAtlasModelData.tripleComparison` は元の三重交叉 (Uᵢ×ₓUⱼ)×[Uᵢ](Uᵢ×ₓUₖ) から模型の三重交叉 Vᵢⱼ⁰×[Uᵢ⁰]Vᵢₖ⁰ への実際の射。`isPullback_tripleComparison` と `isPullback_tripleComparison_toBase` はチャート上・係数基底上の Cartesian 性、`finitePresentation_triple` は模型の三重交叉が係数基底上 qcqs・局所有限表示であること。既存の二重交叉の比較とファイバー積の法則の適用で、親項目は増やさない。
+
+
+B01 の元の有限個の射の明示（着手前の型、見込み100〜220行）：`OpenAtlasModelData.diagonalArrow` は Uᵢ→Uᵢ×ₓUᵢ→Vᵢᵢ⁰、`reverseArrow` は Uᵢ×ₓUⱼ の反転を経由する Vⱼᵢ⁰ への射、`tripleArrow` は元の三重交叉から Uⱼ×ₓUₖ を経由する Vⱼₖ⁰ への射。それぞれ `_toBase` で元の係数基底への構造射との可換式を証明する。三種の射を固定した有限表示の模型へ実際に渡し、有限個の射の降下に必要な入力を供給する既存の対角・反転・pullback の法則。親項目は増やさない。
+
+
+B01 の三種の射の同時降下の入力の分割（着手前の型、見込み120〜280行）：`CartesianModelArrow g` は、同じ係数射 g:T→S に対する源の実際の Cartesian 模型・固定した有限表示の標的・元の基底上の射をまとめる入力の型。`CartesianModelArrow.exists_common_stage` は有限族のこの具体的な入力を前記の有限個の射の降下へ渡し、一つの共通段の実際の両模型の間の射を供給する。`OpenAtlasModelData.atlasArrowFamily` は添字 I⊕((I×I)⊕(I×I×I)) の各成分を、対角の逆・反転・三重交叉の具体的な射の入力として実際に構成する。模型・可換式・有限表示性の証人は全て既存の m の法則から供給し、未証明の模型の存在を入力に増やさない。既存の有限個の射の入力の整理と組立ての法則で、親項目は増やさない。
+
+
+### B01：有限個の実際の段の射と三重交叉の Cartesian 比較
+
+- `FiniteCompositeStageMaps`（69行）：`compositeStageStructureMap` は各段の固定係数基底への自然変換、`exists_finite_compositeStage_maps_of_isLimit` は有限個の元の射を一つの段の実際の底変換模型間の射へ降ろし、基底座標と元の射への射影の可換式を保持する。
+- `CartesianPullbackComparison`（70行）：`cartesianPullbackMap` は二つの Cartesian な比較から交叉の比較を作る。`cartesianPullbackLift` とその `_map`・`_base`（各 `_assoc` を含む）は実際の普遍 lift と射影の式。`isPullback_cartesianPullbackMap` はその比較の Cartesian 性。
+
+本体139行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,928ジョブ成功。小監査17宣言（5・12）・標準三公理のみ。単独束の Lean 検証も終了状態0。ログ `2g-transition-comparison-check.log`・`2g-transition-comparison-native.log`・`2g-transition-comparison-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵は `--class impl --wait 3600`、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体7,989行、入口込み8,131行。一般の有限表示対象の模型の分割1,327行。次のアトラスへの適用・元の射・有限族の組立ては未検証の下書きでこの実測に含めない。遷移の等式と貼り合わせ、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
