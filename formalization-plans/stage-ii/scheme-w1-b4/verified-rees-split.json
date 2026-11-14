@@ -1,0 +1,22 @@
+{
+  "source": "SerrePositivity/AlgebraicGeometry/ReesClosedCechThickeningFrobenius.lean",
+  "source_sha256": "dc2ca11b5217b202f4788fcd74a36f929f93841d6497cb1743fa7352a0319de1",
+  "original_sha256": "4df609ce0256082627a2b80ae80e60d1eb4d65050219547fdea1a10651c05110",
+  "component_and_naturality_bodies_moved_verbatim_ignoring_indentation": true,
+  "capture": "scheme-drafts/b4/index-retry-rees-split-2",
+  "preview": {
+    "batch": "retry-rees-split-2",
+    "files": 1,
+    "review_paths": 0,
+    "changed_files": []
+  },
+  "build_jobs": 3058,
+  "audit_declarations": 17,
+  "axioms": "standard three only",
+  "extra_rfl_comparison": "kernel timeout; not counted as a passed check",
+  "log_sha256": {
+    "collect-retry-rees-split-2.log": "83a60755e2d60d25d6a57d5e16bf3ed045bdff82fd396fb3dd16bb1ee2ede2de",
+    "build-rees-split.log": "69069e8e1db2619796a79789c70172c5e31acf4b9152be18eda1ed406b8d320e",
+    "audit-rees-split-only.log": "f7bc28cee5757b09bf8684597d45d480dc91276773249d5e6c500f7aacdf036e"
+  }
+}

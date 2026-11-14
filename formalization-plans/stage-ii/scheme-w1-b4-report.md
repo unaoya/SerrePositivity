@@ -97,3 +97,31 @@ main の観測値は依然 `efa846fe8`。main の取り込み、取り込み後�
 B4 の全 289 本が揃い、main 取り込みと対象ビルド・小監査が済んでから 2g-1 の A07 内 I03 へ戻る。2g 全体は未完了で、目標・外枠・停止点を変更しない。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+## 再検証：Rees 側の既存の自然変換の証明分割（検証前）
+
+2026-11-14。main 2be485f04 の追記は未変更の子名前空間の open の扱いであり、今回の同期 heartbeat 超過を解消する道具の変更はなかった。Rees 側も局所的な透明性設定だけでは同じ `abstract nested proofs` で失敗したため、その試行は戻す。
+
+既存の自然変換を次の形で分割して検証する。新しい構成・主張や仮定を足さず、主項目の数は変えない。D を厚さ n・次数 d の既存の図式、E を厚さ p^e*n・次数 p^e*d の図式、φ を同じ反復 Frobenius と書く。
+
+- `reesClosedChartThickeningFrobeniusApp (n e d T) : D.obj T ⟶ (E ⋙ ModuleCat.restrictScalars φ).obj T`：元の app フィールドを分離する。
+- `reesClosedChartThickeningFrobeniusApp_naturality (h : T ⟶ U)`：`D.map h ≫ app U = app T ≫ (E ⋙ restrictScalars φ).map h`。元の自然性の証明をそのまま分離する。
+- 既存の `reesClosedChartThickeningFrobeniusNatTrans` の型・名前を保ち、上の成分と証明で同じレコードを構成する。
+
+一覧：済み 7／全体 12（うち追加 3）。
+
+同じ比較の合成の別の分割案（検証前）：`projectivePerfectCechIsoTrans {X Y Z : ModuleCat.{u} ℤ} (a : X ≅ Y) (b : Y ≅ Z) : X ≅ Z := Iso.trans a b` を使い、既存の同型の合成を一つの名前で共有する。通常の Iso.trans と定義的に同じで、新しい比較や選択を導入しない。元の `projectivePerfectAffineCechHomologyIso` の型を保ち、同じ二つの同型をこの関数で合成して同期採取する。
+
+## 再検証の成果：Rees 側を解消、288／289 本へ
+
+Rees の成分と自然性の証明を分離し、レコードの暗黙引数を元と同じ指定に直した版で、既定の 200,000 heartbeats の同期 collect が成功した。単独の rewrite も保留 0・差分 0。成分と自然性の本文は字下げを除いて元と同一であることを照合した。
+
+対象ビルド（ReesClosedCechThickeningFrobenius と直接の importer ReesClosedCechThickeningNaturality）は 3,058 ジョブ成功。この二モジュールの小監査は 17 宣言・標準三公理のみで、終了コード 0。記録は [verified-rees-split.json](scheme-w1-b4/verified-rees-split.json)。既存の型・名前は保持し、追加は元の app フィールドを分離した定義と、その自然性の証明だけ。
+
+追加で試した、元の写像との rfl の比較例はカーネルの deterministic timeout になった。比較例とそのログを診断用に残し、成功とは数えない。公理監査はこの追加例から切り離して再実行し、終了コード 0 を確認した。新しい成分の本文と元の app の本文の直接照合、及び元の自然性の証明との直接照合はどちらも一致した。
+
+確認済みは、前の 287 本とこの Rees の一つのプレビューを合わせて 288／289 本。前の covered-summary.json は 287 本のまま保存し、今回の一つの追加を上の検証記録で区別する。全体の再集約は残る Proj 側が揃ってから行う。
+
+Proj 側の小さい合成関数の版（retry-affine-8）は、Rees の依存が stale であるため `lake --no-build setup-file` の段で終了した。この版を再び heartbeat 失敗したとは扱わない。Rees のビルドが済んだので、Proj 側の依存を含む対象ビルドを通してから、新しい出力先 retry-affine-9 で同期 collect をやり直す。未検証の Proj の変更はまだコミットしない。main は未取り込み。
+
+一覧：済み 7／全体 12（うち追加 3）。

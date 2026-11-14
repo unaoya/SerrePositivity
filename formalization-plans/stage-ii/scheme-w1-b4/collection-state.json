@@ -330,7 +330,7 @@
       "log_sha256": "b931dc02773bfec3ef0328f78ff9546581afc33fbac202ffd0abbda2669db40d"
     }
   ],
-  "latest_status": "287_validated_before_merge_two_sync_collection_failures",
+  "latest_status": "288_file_previews_verified_affine_wrapper_pending_native_build",
   "current_source_sha256": {
     "SerrePositivity/AlgebraicGeometry.lean": "898eec23baad5523f20e9a1359704ed98767cdcf4056db946f99e651e5291bb3",
     "SerrePositivity/AlgebraicGeometry/AffineBaseChangeCechVanishing.lean": "8f6b04cd79417840541e9037bb919feb0172a1ee85adf925fa739a765f3490ca",
@@ -546,7 +546,7 @@
     "SerrePositivity/AlgebraicGeometry/ReesClosedCechIntFrobeniusBounds.lean": "d558dd5e7c93d5f6703e2fcc762beaaebbf9c1e6c70e3de4414b2c4ce397b3a9",
     "SerrePositivity/AlgebraicGeometry/ReesClosedCechIntMaps.lean": "79df003f0b78aa14f8ad7581cd539aecc67b23727b6409a598bfc880acfd4052",
     "SerrePositivity/AlgebraicGeometry/ReesClosedCechIntThickening.lean": "a7389b33802d51b267e0d70ec763238fad63071dd6942fc75a96315b9c48ee47",
-    "SerrePositivity/AlgebraicGeometry/ReesClosedCechThickeningFrobenius.lean": "4df609ce0256082627a2b80ae80e60d1eb4d65050219547fdea1a10651c05110",
+    "SerrePositivity/AlgebraicGeometry/ReesClosedCechThickeningFrobenius.lean": "dc2ca11b5217b202f4788fcd74a36f929f93841d6497cb1743fa7352a0319de1",
     "SerrePositivity/AlgebraicGeometry/ReesClosedCechThickeningNaturality.lean": "78c729b661918d80db09f597a70ff2feeded8bae591adabe955aaf28e8fa5658",
     "SerrePositivity/AlgebraicGeometry/ReesClosedChartThickeningFrobenius.lean": "78aa8ff6ac449bdcc0ebd6a864a6c90dd59493b1c272e8a1795e6d03f6038d84",
     "SerrePositivity/AlgebraicGeometry/ReesClosedFrobeniusFunctor.lean": "0defdef96ee54a7de0cae762d027063cf24dcc4491c44b3f3673c8ed5171a833",
@@ -622,11 +622,11 @@
     "SerrePositivity/AlgebraicGeometry/ValuativeOpenImageSurjective.lean": "a1e04a54148a67a3a45656ffb5917e92cbf5025a722d609289451fe8fc8db2f3",
     "SerrePositivity/AlgebraicGeometry/ValuativeStrictTransformSurjective.lean": "7897390844518131fbddf2d564dceea76fbd0c718b1572390a9bf03a4eb86d77"
   },
-  "verified_preview_files": 287,
+  "verified_preview_files": 288,
   "resolved_failure": "SerrePositivity/AlgebraicGeometry/ProjectivePerfCechH0SquareData.lean",
   "remaining_failed_sources": [
-    "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean",
-    "SerrePositivity/AlgebraicGeometry/ReesClosedCechThickeningFrobenius.lean"
+    "SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean"
   ],
-  "latest_summary": "covered-summary.json"
+  "latest_summary": "covered-summary.json",
+  "latest_verified_delta": "verified-rees-split.json"
 }
