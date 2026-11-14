@@ -6977,3 +6977,42 @@ theorem reflectedWeightedHomComparison_point_precomposition
 累計 **291モジュール・18,029行**、外枠まで1,971行。一覧 `/private/tmp/isw2-g10-twohundredninetyone-modules.txt`。sorry・新公理0。計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
 
 B06の元の制限の等式は未完。点のYoneda表示には既存 `uliftYonedaMap` がそのまま使えることを確認した。残りは、点を固定したend作用と指定weighted評価をULift直積同型で照合し、同じ相対uncurryの式を戻す接続。B07・B08、C・D、停止点2a・2b、3b-4段0も未完。
+
+
+## 143. B06：元の指定族の制限の厳密な等式（2026-11-14）
+
+一覧：済み 19／全体 36（うち追加 1）。B06 を完了。B07・B08、C01〜C07、D01〜D08 は未完。
+
+### 143.1 証明と型
+
+`UliftPointTensorEvaluation`（58行）は既存構成の単位・係数移送則。新しい数学のまとまりは追加しない。第0単体への二つの射影の逆則と、その各次数の一意性で証明した。`NativeTotConeRestriction`（79行）は、元の錐の相対uncurryと同じend作用の点評価を照合し、相対uncurryの単射性でB06へ戻す。既存 `uliftYonedaMap` を使い、錐・脚・全高次単体を取り換えていない。
+
+```lean
+theorem uliftPointTensorEvaluation (K E Q S : SSet.{u})
+    (p : (Δ[0] : SSet.{u}) ⟶ E) (f : K ⊗ E ⟶ Q) :
+    let U := SSet.uliftFunctor.{v,u}
+    let e := (uliftStdSimplexIso.{u,v} 0).inv ≫ U.map p
+    let s := inv (fst (U.obj K) (Δ[0] : SSet.{max u v})) ≫
+      (U.obj K ◁ e) ≫ (uliftTensorIso K E).inv ≫ U.map f
+    s ▷ U.obj S =
+      (U.obj K ◁ U.map (inv (snd (Δ[0] : SSet.{u}) S) ≫ (p ⊗ₘ 𝟙 S))) ≫
+        (uliftTensorIso K (E ⊗ S)).inv ≫
+          U.map ((α_ K E S).inv ≫ (f ▷ S)) ≫ (uliftTensorIso Q S).hom
+
+theorem nativeTotConeFamilyLift_restriction
+    (X : CosimplicialObject (Complex A)) (x : ClosedCategory A (Complex A)) :
+    nativeTotConeFamilyLift X x ≫
+      coneSectionRestriction (nativeCoherentCone X) (coherentNerveVertex x) =
+    (SSet.uliftFunctor.{u+1,u}).map
+      (reflectedWeightedHomComparison (liftedClosedDiagram X)
+        (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+        (liftedEnrichedBousfieldKanCone X) x) ≫
+      reflectedHomHolimConeComparison (liftedClosedDiagram X) x
+
+```
+
+### 143.2 検収と残り
+
+鍵付き対象ビルド `/private/tmp/isw2-build158.log` は **6,109 jobs・終了コード0**。今回の二本だけの監査は **2宣言（1・1）、標準三公理のみ**。鍵は `--class impl --wait 3600`、対象ビルドと監査の間だけ保持し返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。
+
+累計 **293モジュール・18,166行**、外枠まで1,834行。モジュール一覧 `/private/tmp/isw2-g10-twohundredninetythree-modules.txt`。B07・B08の接続を新規 `NativeTotConeLimit` に準備中（未検証・未コミット）。Bの完了後にC・Dを再見積もりする。
