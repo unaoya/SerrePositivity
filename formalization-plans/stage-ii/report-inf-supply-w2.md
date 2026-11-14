@@ -6840,3 +6840,37 @@ theorem reflectedBKComparison_equivalence (X : CosimplicialObject (Complex A))
 累計 **288モジュール・17,790行**、外枠まで2,210行。一覧 `/private/tmp/isw2-g10-twohundredeightyeight-modules.txt`。sorry・新公理0。既存宣言・⑤a・入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
 
 A01〜A12・A05a・B01〜B03が完了。B04〜B08（指定native切断の族、同じ頂点／制限の照合、極限性）へ進む。Bの残りが済んだ時点で指示どおりC・Dを再見積もりする。C01〜C07・D01〜D08、停止点2a・2b、3b-4段0は未完。これはG10全体の完成報告ではない。
+
+
+## 141. B04・B05完了：元のTot錐全体上の全Homの族と指定頂点評価（2026-11-14 午後）
+
+一覧：済み 18／全体 36（うち追加 1）
+
+B04の `nativeTotConeFamilyLift` は、元の `nativeCoherentCone X` 全体上の標準coslice切断から、既存の `coherentConeSourceFamily` により構成した。B05の頂点評価は既存の同じ族の評価則へ特殊化し、元の `nativeCoherentCone_vertex X` で正規化した。元の錐・頂点・全Homパラメータ・高次単体を保つ、型つき一覧B04・B05の実装である。制限の式B06は引き続き別に照合する。
+
+### 141.1 型（`NativeTotConeFamilyLift`、47行）
+
+```lean
+def nativeTotConeFamilyLift (X : CosimplicialObject (Complex A))
+    (x : ClosedCategory A (Complex A)) :
+    (SSet.uliftFunctor.{u+1,u}).obj (SimplicialCategory.sHom x
+      (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))).op ⟶
+        coherentConeSectionSpace (nativeCoherentCone X).val (coherentNerveVertex x)
+
+theorem nativeTotConeFamilyLift_apex (X : CosimplicialObject (Complex A))
+    (x : ClosedCategory A (Complex A)) :
+    nativeTotConeFamilyLift X x ≫ coherentConeApexEvaluation (nativeCoherentCone X)
+      (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+      (nativeCoherentCone_vertex X) x =
+    coherentCosliceFiberComparison x
+      (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+
+```
+
+### 141.2 検収と残り
+
+コード **81185bce8**。今回初めて使う既存 `CoherentConeSourceApex` のoleanが未作成だったため、依存を含む鍵付き対象ビルドで検査した。`/private/tmp/isw2-build154.log` は **6,090 jobs・終了コード0**、新規モジュールのみの監査は **12宣言・標準三公理のみ**。鍵は `--class impl --wait 3600`、ビルドと監査の間だけ使用し返却済み。
+
+累計 **289モジュール・17,837行**、外枠まで2,163行。一覧 `/private/tmp/isw2-g10-twohundredeightynine-modules.txt`。sorry・新公理0、ModelCategory SSetの追加なし、計算上限・既存宣言・⑤a・入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
+
+B06（同じ族の制限と既存の全BK→native比較との厳密な一致）、B07・B08が残る。既存の `fixedVertexConeSpaceEquiv_cosliceSection`、`coherentConeSourceFamily_restriction_weighted`、`weightedConeEndPrecomposition_evaluation` を使って、元のweightedな錐の点を同じcosliceの前合成へ戻す経路を進める。Bの完了後にC・Dを再見積もりする。C・D、停止点2a・2b、3b-4段0は未完。
