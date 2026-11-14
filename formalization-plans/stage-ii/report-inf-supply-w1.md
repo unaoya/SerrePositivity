@@ -9172,3 +9172,86 @@ RR02の増大射の弱同値性と元の比較射との一致は未完。
 指定重みの収縮をframe実現に移す段を閉じる。
 E01の別経路の紙は§95.1のまま：有限単体集合の制限錐の極限性と、
 その逆極限に対する相対fibrationの照合は未供給。
+
+## §104 RR02(a)：指定重みの収縮を実現へ移す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§69.2(a)の証明の分割。既存の `terminalWeightHomotopy` と自然性を
+重みの自然変換に束ねる法則を先に書く。新しい収縮を選ばない。
+
+```lean
+def terminalZeroWeightSection (ht : IsTerminal t) :
+  ConstantWeightHom.weight K (SimplexCategory.mk 0) ⟶ bousfieldKanWeight Kᵒᵖ
+lemma terminalZeroWeightSection_comp :
+  terminalZeroWeightSection ht ≫ bousfieldKanZeroWeight K = 𝟙 _
+def terminalWeightCylinder (ht : IsTerminal t) :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj Δ[1] ⟶
+    bousfieldKanWeight Kᵒᵖ
+def terminalWeightEndpoint (ε : Fin 2) :
+  bousfieldKanWeight Kᵒᵖ ⟶
+    (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj Δ[1]
+lemma terminalWeightEndpoint_zero :
+  terminalWeightEndpoint 0 ≫ terminalWeightCylinder ht =
+    bousfieldKanZeroWeight K ≫ terminalZeroWeightSection ht
+lemma terminalWeightEndpoint_one :
+  terminalWeightEndpoint 1 ≫ terminalWeightCylinder ht = 𝟙 _
+```
+
+続く実現段は、既存の `bousfieldKanRealization_terminal_weakEquivalence`
+で円柱の射影を通常の局所化で可逆にし、両端を同一視する。
+これにより零重みへの指定射の実現を弱同値とし、次数零の通常の余極限と
+終対象の値を同定する。元の増大射との照合は別に行う。
+
+### §104.1 収縮を局所化に送る法則（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def terminalWeightProjection :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj Δ[1] ⟶ bousfieldKanWeight Kᵒᵖ
+lemma terminalWeightEndpoint_projection (ε : Fin 2) :
+  terminalWeightEndpoint ε ≫ terminalWeightProjection = 𝟙 _
+lemma terminalWeightEndpoint_map_eq
+  [IsIso (F.map (terminalWeightProjection (K := K)))] :
+  F.map (terminalWeightEndpoint 0) = F.map (terminalWeightEndpoint 1)
+def terminalZeroWeightMapIso (ht : IsTerminal t)
+  [IsIso (F.map (terminalWeightProjection (K := K)))] :
+  F.obj (bousfieldKanWeight Kᵒᵖ) ≅
+    F.obj (ConstantWeightHom.weight K (SimplexCategory.mk 0))
+```
+
+最後の同型の順方向は `F.map (bousfieldKanZeroWeight K)` そのもの。
+仮定付きでRR02を閉じるのではなく、次にFを実現と通常の局所化の合成とし、
+既に検証した円柱の射影の弱同値性からこの `IsIso` を供給する。
+
+### §104.2 同じ零重み射の実現の弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma terminalWeightProjection_realization_weakEquivalence
+  (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+  (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+    weakEquivalences C ((A.obj k).map f)) :
+  weakEquivalences C ((functor K A).map (terminalWeightProjection (K := K)))
+lemma bousfieldKanZeroWeight_realization_weakEquivalence
+  (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+  (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+    weakEquivalences C ((A.obj k).map f)) {t : K} (ht : IsTerminal t) :
+  weakEquivalences C ((functor K A).map (bousfieldKanZeroWeight K))
+```
+
+RR02(a)の収縮段。円柱射影を標準1単体の崩壊と零パラメータの単位同型に分け、
+既存の弱同値性を適用する。SSetの完全なモデル構造は使わない。
+
+### §104.3 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+3本・189行を対象ビルド（2,878 jobs）と21宣言の監査で検証。
+標準三公理のみ、計算上限変更なし。
+検証済み累計210本・15,699行、上限変更後のRR02(a)3,201行、
+(b)(c)新規0行。ログ：`/tmp/is-w1/terminal-weight-diagram/build-4.log`。
+終対象のある添字で、元の零重み射のframe実現の弱同値性を証明した。
+指定余錐への増大射の照合と、要素圏からOverへの比較は残る。
