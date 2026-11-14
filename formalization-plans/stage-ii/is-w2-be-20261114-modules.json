@@ -163,5 +163,8 @@
   "SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameElements",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceElements",
   "SerrePositivity.EInfinity.FrameHom.LiftedSourceFramePairing",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourcePairing"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourcePairing",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveOppositeInverseNaturality",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceParameters",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceAugmentationComparison"
 ]

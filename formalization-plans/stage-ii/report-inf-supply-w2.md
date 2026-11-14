@@ -14024,3 +14024,71 @@ theorem strictBETotJointSourceNativePairing_projection :
     strictBETotJointSourceNativePairing A ≫ twistedArrowProjection (CAlg_R A) =
       strictBETotJointSourceNativePairingBase A
 ```
+
+## 225. 元の全augmentationの同じ比較を全実射の始域へ引き戻す（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元のnerve反転同型の逆の自然性を、元の順写像の自然性と同じ二つの逆を合成する法則として30行で記録した（reassoc生成の同じ末尾付きの等式を含む）。元の全実射の始域と単体次数を、§188の全augmentationの反対添字へ送る同じ関手を53行で記録した。その添字への評価の引き戻しは元の実射の始域そのものでrfl、定値端の引き戻しは元の試験対象の射影へ戻り、元の定値図式の恒等射の合成則で示した。頂点の同一視だけではなく、全関手の等式である。
+
+同じ反対添字のnerveと元のnerve反転同型の逆を、元の全augmentationのFunctorIsoのopへの前合成に使った。両端は同じ評価・定値の全関手の等式と反転同型の全自然性で、それぞれ元の実射の始域と元の試験対象のnativeな反変の全図式へ厳密に戻る。strictBETotJointSourceAugmentationDomainIsoは元の一つの全augmentationの比較をそのまま引き戻したものであり、逆を各対象や各単体で独立に選ばない。端点比較の適用は89行。既存構成の自然性・単位・反転・係数移送・合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+この同型の逆を元の全pairingへ作用させ、元の試験対象を始域とする同じ正本Hom∞の全比較へ戻す部分はまだ残る。またpairingの標的は元のright-frame置換後なので、元の全標的置換単位の同じ逆による端点比較も必要。元の固定始域のroof比較との全FunctorIsoの等式と、同じ底上のnative Homへの比較の同値性は未証明であり、R03d・R02・R03の完了とは扱わない。
+
+個別検査：反転同型の逆の自然性33516・終了0、元の全augmentationの添字と両端55221・終了0、三本を結合した最終の端点比較79466・終了0。302：対象ビルド10,713 jobs・終了0、小監査168本1,183宣言・標準三公理のみ（実ハンドル77879・終了0）。鍵返却済み。今回30＋53＋89＝172行、累計168本・10,853行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 225.1 型
+
+BE側の共通入力は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。反転同型の逆の自然性にはreassoc生成の同じ末尾付きの等式もある。
+
+#### NerveOppositeInverseNaturality（30行）
+
+```lean
+theorem nerveOppositeIso_inv_naturality
+    {C D : Type u} [SmallCategory C] [SmallCategory D] (F : C ⥤ D) :
+    nerveMap F.op ≫ (nerveOppositeIso (C := D)).inv =
+      (nerveOppositeIso (C := C)).inv ≫ SSet.opFunctor.map (nerveMap F)
+```
+
+#### StrictDiagramTotJointSourceParameters（53行）
+
+```lean
+def strictBETotJointSourceParameterIndex :
+    StrictBETotJointSourceElements A ⥤ (strictBETotJointSourceFrameIndex A)ᵒᵖ
+
+theorem strictBETotJointSourceParameterIndex_evaluation :
+    strictBETotJointSourceParameterIndex A ⋙ (strictBETotJointSourceFrameEvaluation A).op =
+      FrameHom.liftedSourceFrameArrowDomain (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A))
+
+theorem strictBETotJointSourceParameterIndex_constant :
+    strictBETotJointSourceParameterIndex A ⋙ (strictBETotJointSourceFrameConstant A).op =
+      strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomSourceIndex A
+```
+
+#### StrictDiagramTotJointSourceAugmentationComparison（89行）
+
+```lean
+def strictBETotJointSourceNativeDomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ (CAlg_R A).op
+
+def strictBETotJointSourceOriginalNativeDomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ (CAlg_R A).op
+
+def strictBETotJointSourceAugmentationInput :
+    nerve (StrictBETotJointSourceElements A) ⟶ (nerve (strictBETotJointSourceFrameIndex A)).op
+
+theorem strictBETotJointSourceAugmentationInput_evaluation :
+    strictBETotJointSourceAugmentationInput A ≫
+      SSet.opFunctor.map (nerveMap (strictBETotJointSourceFrameEvaluation A) ≫
+        strictBETotModelSource A) = strictBETotJointSourceNativeDomain A
+
+theorem strictBETotJointSourceAugmentationInput_constant :
+    strictBETotJointSourceAugmentationInput A ≫
+      SSet.opFunctor.map (nerveMap (strictBETotJointSourceFrameConstant A) ≫
+        strictBETotModelSource A) = strictBETotJointSourceOriginalNativeDomain A
+
+def strictBETotJointSourceAugmentationDomainIso :
+    FunctorIso (strictBETotJointSourceNativeDomain A)
+      (strictBETotJointSourceOriginalNativeDomain A)
+```
