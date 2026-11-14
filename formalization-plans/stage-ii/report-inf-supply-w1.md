@@ -7578,3 +7578,62 @@ RR02の弱同値性はまだ結論していない。E01の別経路の紙は§71
 
 この束は全添字射で作用する自由frameの族まで。実係数との全族の同型と、
 重みの実現の弱同値性は残る。RR02の完了数は変えず、R3・R4は実装しない。
+
+## §74 RR02(a)：自由frameのHomと実係数の自然同型
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `871060df6` の検証済み128行を追加した進捗。
+§69.2(a)の証明分割として、§73の全族から取るHomと実係数を同定する。
+各値の随伴同型は§72を再利用する。自然性は余積の挿入、前合成、元の図式射の自然性で示す。
+
+```lean
+def strictDiagramFreeArrowHom (X Y : StrictComplexDiagram A d) :
+    StrictDiagramArrowElements.{u} d ⥤ SSet.{u}
+lemma strictDiagramFreeArrowHomIso_naturality (X Y : StrictComplexDiagram A d)
+    {t s : StrictDiagramArrowElements.{u} d} (g : t ⟶ s) :
+    (strictDiagramFreeArrowHom A d X Y).map g ≫ (strictDiagramFreeArrowHomIso A d X Y s).hom =
+      (strictDiagramFreeArrowHomIso A d X Y t).hom ≫
+        (strictDiagramFrameArrowDiagram A d X Y).map g
+def strictDiagramFreeArrowHomNatIso (X Y : StrictComplexDiagram A d) :
+    strictDiagramFreeArrowHom A d X Y ≅ strictDiagramFrameArrowDiagram A d X Y
+```
+
+実比較の弱同値性を仮定に追加せず、同じ図式と同じ写像の照合を進める。
+E01の別経路の紙は§71〜§73の確認を維持する。
+
+### 74.1 次の接続の型（紙）
+
+RR02(a)の同じ実比較を保つため、次に自由frameの全族から元のsource frameへの増大射を作る。
+次の型は未実装であり、検証済み宣言に数えない。
+
+```lean
+def strictDiagramFreeArrowAugmentation (X : StrictComplexDiagram A d) :
+    strictDiagramFreeArrowFrame A d X ⟶
+      (Functor.const (StrictDiagramArrowElements.{u} d)ᵒᵖ).obj
+        (strictDiagramSourceFrame A d X).obj
+lemma strictDiagramFreeArrowAugmentation_hom (X Y : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (CosimplicialHom.cosimplicialHomMap
+      ((strictDiagramFreeArrowAugmentation A d X).app (Opposite.op t))).app
+        (strictDiagramFibrantTarget A d Y) ≫
+      (strictDiagramFreeArrowHomIso A d X Y t).hom =
+        strictDiagramFrameArrowLeg A d X Y t
+```
+
+各余積の挿入に対し、元の添字射との合成をsource frameに作用させる。
+この増大射が重みの実現後に弱同値となる証明は別に必要で、増大射の存在だけで済ませない。
+
+### 74.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeArrowHom.lean` 67行、対象ビルド3,758 jobs成功。
+小監査15宣言は標準三公理のみ。ログ `/tmp/is-w1/free-arrow-hom/build-3.log`。
+余積の添字と被加数を明示し、評価frameの表示を局所正規化して通した。
+計算上限は変更していない。未検証のE01下書き4本は今回の対象外。
+
+検証済み累計163本・13,071行。外枠24,000行まで10,929行。
+上限変更後のRR02(a)実測573行、(b)(c)新規0行。
+実係数との同型は全添字射に自然であり、値だけの同型ではない。
+増大射と、重みの実現の弱同値性は残る。RR02を完了に数えず、続ける。
