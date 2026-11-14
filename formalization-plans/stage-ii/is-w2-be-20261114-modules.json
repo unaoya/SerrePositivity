@@ -176,5 +176,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit",
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberUnit",
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberMap",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiber"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiber",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPairing",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPath"
 ]

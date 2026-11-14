@@ -14552,3 +14552,81 @@ Totのstrict入力の模型、同じHom分類、指定native錐とその極限�
 従って再開時は、元のnative fiber射にvertexFiberPullbackIsoを合成し、包含後の厳密な等式で同じcorrected pairingへの制限を回収する所を最初の検査単位とする。その後、元の指定された底のpathを保持したまま、元のroofとterminal augmentationに沿う比較を組み立てる。anodyneQ上の既存の始域自然性だけで済むと仮定せず、固定始域の全標的同型の合成まで追跡する。この不足を解決したとの数学的主張も、新しい仮定付きのLean入口も追加していない。
 
 今回の紙の整理は§234で指定した代わりの作業。対象ビルド・監査の新しい実行は不要で、鍵は取得していない。外枠変更の質問は一件のまま維持し、重複して送らない。
+
+## 236. §20の承認による再開：同じnative fiber射と同じcorrected pairing（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+ユーザーはIS-W2 §20として外枠22,000行を承認した。/goalの範囲と型は維持し、Tot側R03d・R02〜R05とR11/R12のTot部分を先に閉じて停止点3b-4a、その後は止める指示がなければ実現側へ進む。§19の中間定理の枠も維持する。判断待ちを解いてLeanを再開した。
+
+最初の検査単位は§235のとおり。元のstrictBETotJointSourceNativeFiberMapに、同じnative Hom入力によるvertexFiberPullbackIsoの順射を合成する。包含後の等式は、既存のvertexFiberPullbackIso_hom_ι、元のfiberLiftの包含後の等式、元のnative Hom写像の第一射影の等式を順に合成する。これにより元の同じcorrected pairingへの制限を回収する。既存のpullback・fiber・合成則の照合であり、追加の数学項目としては数えない。native fiber射の弱同値性はこの段では主張しない。
+
+### 236.1 型（既存構成の合成則、共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceNativeFiberPairing（66行）
+
+```lean
+def strictBETotJointSourceNativeTwistedFiberMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) ⟶
+      vertexFiber (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P))
+
+theorem strictBETotJointSourceNativeFiberMap_ι (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceNativeFiberMap A P ≫
+      vertexFiberι (strictBETotJointNativeHomProjection A) (nerveVertex P) =
+        simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+          strictBETotJointSourceNativeHomMap A
+
+theorem strictBETotJointSourceNativeTwistedFiberMap_ι (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceNativeTwistedFiberMap A P ≫
+      vertexFiberι (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P)) =
+      simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceCorrectedPairing A
+```
+
+## 237. 同じfiber制限による指定pathの保持（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+元のstrictBETotJointSourceCorrectedPairingIsoそのものを同じfiber包含へ前合成する。その射影は、元の指定されたstrictBETotJointSourcePairingBasePathIsoと厳密な射影等式の同じ合成を、同じfiber包含へ前合成したものに等しい。既存functorIso_precomp_postcompと元の全同型の射影等式だけによる全同型の合成則であり、新しい数学の項目を増やさない。native fiber射の弱同値性やR03dの最終等式が済んだとは扱わない。
+
+### 237.1 型（共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceNativeFiberPath（56行）
+
+```lean
+def strictBETotJointSourceFiberPairingIso (P : strictBETotJointHomIndex A) :
+    FunctorIso
+      (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceCorrectedPairing A)
+      (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceNativePairing A)
+
+theorem strictBETotJointSourceFiberPairingIso_postcomp (P : strictBETotJointHomIndex A) :
+    (strictBETotJointSourceFiberPairingIso A P).postcomp
+      (twistedArrowProjection (CAlg_R A)) =
+      FunctorIso.precomp (eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A)
+            (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P)
+```
+
+## 238. 再開の最初の検査単位の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は引き続き未完了。
+
+§236・§237の二本を検証した。元のnative fiber射へ同じvertexFiberPullbackIsoを合成し、包含後に同じ元のcorrected pairingへの制限を厳密に回収する。さらに、そのcorrected pairingと元のpairingの同じ全同型を同じfiber包含へ制限し、射影が元の指定pathをそのまま制限したものと全同型として等しいことを確認した。native fiber射自身の弱同値性、同じ延長の全同値性、固定始域の元の全FunctorIsoへの最終正規化はまだ残る。
+
+検査経過：最初の個別検査では単体記法のscopeとfiberLiftの包含後の簡約を直した。二度目の等式ではpullback.sndと元のnative射影の定義展開を明示した。最終個別検査9358は終了0。313の対象ビルドは12,228 jobsで成功したが、一時監査の先頭で私がimportをmoduleより前に置いて構文エラーを起こした。314ではその先頭を修正し既存交換則の依存も生成したが、合成同型へのprecompの型推論が失敗した。FunctorIso.precompを明示した最終個別検査64620は終了0。
+
+最終315：鍵付き対象ビルド12,233 jobs、小監査180本・1,291宣言、標準三公理のみ。実ハンドル90235・終了0、鍵返却済み。コマンドはwith_build_lock.sh --class impl --wait 3600と1700秒のguardを使用し、一度に一枚の整理券のみ。rootビルドや公式監査の登録は行っていない。既存依存を含む対象ビルドである。名前空間の長いopen行についてstyle警告はあるが、エラーはない。
+
+今回122行（66行・56行）、累計180本・11,686行／承認済み外枠22,000行、残り10,314行。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainを変更していない。追加する数学の一覧項目は増やさず、既存のfiber・pullback・全同型の合成則として型を§236・§237に記載した。
+
+登録候補（調整役の取り込み時用、今回はこちらで登録しない）：
+
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPairing
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPath
+
+次は§234.3・§235のとおり、同じnative fiber射を元の固定始域のroof比較と照合し、その実射自身の弱同値性へ接続する。Tot側の停止点3b-4aはまだ未到達であり、この検収を停止点の完成とはしない。
