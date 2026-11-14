@@ -2128,3 +2128,22 @@ G1・G2共用部品込み本体12,642行、入口込み12,858行。C06 は本体
 残りの主要な接続は、(1) 実際のチャート上の開部分の和に今回の貼り合わせを適用、(2) 元の各 affine 開の逆像が指定した開部分に一致することから貼り合わせた射の固有性・全射性、(3) 有限個の既約成分から一般の Noether 対象へ戻すこと、(4) Chow の供給を使った一般の固有性の有限段への降下、(5) B01〜B04 の一般の被覆模型と図式の整合性。2g-1 全体の見込み16,534〜21,334行・外枠25,000行は据え置き、現在からの残りは概算3,800〜8,600行。C06 の条件付きの内部構成を Chow の固有全射や一般の固有模型の完成とは扱わない。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 の実際の開部分の和の被覆と貼り合わせ（着手前の型、見込み160〜360行）：`schemeOpenUnionCover` は開包含 bᵢ:Vᵢ→Z の任意の族から、実際の開 U=⋃ range(bᵢ) の被覆を、元の Vᵢ を被覆の成分として構成する。`exists_open_union_glued_map` は同じ基底 S 上の射 Vᵢ→Y が共通の稠密な開 W 上で一致するなら、U→Y と W→U、各成分から U への開包含、全ての指定された可換式を返す。Y→S は分離的、W→Z は準コンパクトで稠密、添字は空でないものとする（C06 では正の Fin n から供給する）。既存の開部分の和・lift・貼り合わせの法則の適用として C06 の親項目を増やさない。
+
+
+C06 のチャート像の pullback の範囲の比較（着手前の型、見込み100〜220行）：`range_pullback_toImage` は e:X→P の実際の像への a:Z→e.image に対し、pullback(a,e.toImage)→Z の像が (a≫e.imageι)⁻¹(range e) に一致することを返す。`exists_proper_chart_open_range` は前記の実際のチャート上の固有射を、この範囲の一致も含めて供給する。閉包含の単射性と既存の pullback の範囲の法則による比較として C06 の親項目を増やさない。これにより、貼り合わせた射の各 affine 開の逆像を特定する際に、存在だけの局所射を仮定したままにしない。
+
+
+### C06：元の成分を持つ、実際の開部分の和の被覆
+
+`SchemeOpenUnionCover`（52行）：`range_subset_open_union` は各開包含の像が像の和に含まれること。`schemeOpenUnionCover` は像の和の実際のスキームを、元の成分そのものによって被覆する。`schemeOpenUnionCover_fac` は各成分の射を元の開包含に戻す可換式。
+
+本体52行・入口1行。被覆の所属条件の名前空間を明示して単独検証を完了し、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,005ジョブ、小監査を終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-scheme-open-union-cover-check-2.log`・`2g-scheme-open-union-cover-native.log`・`2g-scheme-open-union-cover-audit.log`。
+
+G1・G2共用部品込み本体12,763行、入口込み12,981行。C06 は本体829行までで未完。開部分の和への実際の貼り合わせと各 affine 開の逆像の一致は下書きで、実測に含めない。C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
+
+監査出力：`SerrePositivity.AlgebraicGeometry.SchemeOpenUnionCover: 5 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 5 declarations.`。
