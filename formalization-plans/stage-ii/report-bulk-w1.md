@@ -906,3 +906,10 @@ SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされ�
 ### 5∞-0 のdraft検査・第19束（11-14午後）
 
 一覧：済み 8／全体 14（うち追加 0）。[第19束](bulk-5inf0/draft-block19-validation.json)で補助のShared/BarrattEcclesTheoryが成功。有効な成功は25本。既に本体が供給するP⁰・零次・正次数・離散比較の4引数を外しただけで、残る十七欄は維持した。新しい実例を無条件に作る変更ではない。この検査済みソースをコミットする。保護対象以外の56本は全部が変更され、sorryは **819→694**（4欄の重複の削除を反映）。保護されたSharedの1行のimport追従は、この56本の外で別に記録している。共有Totの最終比較はEquivalence.mkのinverseを明示展開する必要が残り、第20束で検査中。
+
+
+### 5∞-0 の保護対象の完全名（11-14午後、§5）
+
+一覧：済み 8／全体 14（うち追加 0）。Shared/EInfinityPowerOperationの旧open下の参照も、所有元つきKL/B3表を合成して確かめた。**54・55・70・80・128〜130・151・152・157行の10参照**を、同じ宣言の新しい完全名に機械的に置き換えた。元のopen・宣言名・束縛変数・証明の手順・仮定は維持し、変更箇所を[同じ台帳](bulk-5inf0/section5-protected-mechanical-edits.json)に追加。importの1行を含めて計11参照。A4のP⁰部分は一字も変更していない。Shared全体の型検査は前提待ちであり、この改名以外の修正は許可範囲に入れていない。
+
+[第20束](bulk-5inf0/draft-block20-validation.json)・[第21束](bulk-5inf0/draft-block21-validation.json)は同じ共有Totの最後の表示の等式で失敗、後続へ進んでいない。`simp`が圏同値・切断版のラッパーを一括で評価しないため、頂点のホモロジーの同じ定義を局所等式として示す形で第22束を検査する。成功は25本のまま。
