@@ -8854,3 +8854,114 @@ impl 鍵・待ち 3600 秒・gtimeout 280 秒で対象だけを実行した。
 M10・M11 以降・G12 の元の目標は維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §61 元の全終端パラメータ族・大域 pinched 族の実評価
+
+同じ全 frame Hom の評価と、元の Dold–Kan・pinched 座標の可換式を証明した。
+元の主 Hom end の評価鎖写像に、既存の任意 Hom 鎖写像への自然性を適用する。
+BE の底の対象型は Type 0 なので、元の全加群 dg 圏と複体 dg 圏の宇宙表示を
+同じ u+1 に保った。係数環・実 Hom 鎖写像の端点を明示する。
+
+元の全要素圏の評価関手を同じ全 nerve の写像にし、元の全終端パラメータ族と
+全 Hom 評価が可換であることを証明した。元の終端作用素における自然性の式を
+元の最終評価射で評価する。全自然変換の等式であり、点ごとの射の類の比較ではない。
+
+これらを合成し、元の大域 pinched 族を主 Hom end で評価すると、同じ評価要素圏関手を
+通した複体側の元の大域 pinched 族に厳密に一致することを証明した。
+全パラメータ・全次数・全作用素を保持する。三相データの pinched 成分の比較に使う。
+既存構成の評価・自然性・貼り合わせの法則であり、一次 ID は追加しない。
+
+具体的な評価自然変換の自然性証明の展開が既定 heartbeat に達したため、
+同じ式を任意の単体集合の自然変換についての private 補題へ分割した。
+診断用の一時ログは除去済みであり、上限を増やしていない。
+以下は private の証明分割も含む今回の全宣言の型である。
+
+`RawModuleTensorElementParameterEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorEvaluationHomMap
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    (((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q) ⟶
+      (cosimplicialHom (normalizedSimplexTensor A
+        ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P)))).obj
+        ((moduleEvaluation A _ x).obj Q)
+
+def strictRawModuleTensorElementEvaluationIndexNerveMap
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
+      nerve (normalizedTensorElementIndex A
+        ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+        ((moduleEvaluation A _ x).obj Q))
+
+private lemma sset_naturality_apply {F G : SSet.{u}} (α : F ⟶ G)
+    {n m : SimplexCategory} (θ : n ⟶ m) (g : F.obj (op m)) :
+    α.app (op n) (F.map θ.op g) = G.map θ.op (α.app (op m) g)
+
+lemma strictRawModuleTensorElementParameterMap_evaluation
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    strictRawModuleTensorElementParameterMap A X P Q ≫
+      SSet.uliftFunctor.{u + 1, u}.map
+        (strictRawModuleTensorEvaluationHomMap A X P Q x) =
+    strictRawModuleTensorElementEvaluationIndexNerveMap A X P Q x ≫
+      normalizedTensorElementParameterMap A
+        ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+        ((moduleEvaluation A _ x).obj Q)
+```
+
+`RawModuleTensorElementPinchedEvaluationMap.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementPinchedMap_evaluation
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    strictRawModuleTensorElementPinchedMap A X P Q ≫
+      pinchedHomChainMap (moduleHomπ A _
+        (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+        (ForgetEnrichment.to (Complex A) Q) x) =
+    strictRawModuleTensorElementEvaluationIndexNerveMap A X P Q x ≫
+      normalizedTensorElementPinchedMap A
+        ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+        ((moduleEvaluation A _ x).obj Q)
+```
+
+`TensorPinchedEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type) [DGCategory A D] [Small.{u} D]
+
+lemma moduleTensorHomPinchedIso_evaluation (P Q : ModuleCategory A D) (x : D) :
+    SSet.uliftFunctor.{u + 1, u}.map (moduleTensorEvaluationHomMap A D P Q x) ≫
+      (normalizedTensorPinchedIso A ((moduleEvaluation A D x).obj P)
+        ((moduleEvaluation A D x).obj Q)).hom =
+    SSet.uliftFunctor.{u + 1, u}.map (moduleTensorHomDoldKanIso A D P Q).hom ≫
+      (moduleDoldKanPinchedIso A D P Q).hom ≫
+        pinchedHomChainMap (moduleHomπ A D (ForgetEnrichment.to (Complex A) P)
+          (ForgetEnrichment.to (Complex A) Q) x)
+```
+
+
+### 61.1 検証と実測
+
+TensorPinchedEvaluation と RawModuleTensorElementPinchedEvaluationMap の対象ビルドは
+終了値 0 で成功した。新規公開宣言五本の小さい監査も終了値 0。
+依存公理は propext・Classical.choice・Quot.sound のみで、引用属性の新規追加・引用出力は 0 本。
+impl 鍵・待ち 3600 秒・gtimeout 280 秒で対象だけを実行した。
+root ビルド・大きい監査・heartbeat 上限の変更はない。
+
+新規 Lean は三ファイル・180 行・明示宣言六本（private 一本）。
+所有ソース全体を再計数した累計は 216 ファイル・16,566 行・明示宣言 747 本
+（private 22 本）。17,000 行の外枠まで残り 434 行。
+200 行を超える証明や一次 ID の追加はなく、既存 EInfinity ソースの変更もない。
+
+元の大域 pinched 族の評価は全写像として通ったが、元の三相データ全体の評価の一致は
+未証明である。cone 成分の係数移送と前後の同型の比較、全三角形の自然性と
+K の実 Hom 誘導射の完全忠実性もまだ残る。
+M10・M11 以降・G12 は未完であり、目標と外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
