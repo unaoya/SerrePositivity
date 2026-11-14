@@ -21011,3 +21011,71 @@ m14-nullary-point-relabel-normalization-02.log（2,310 jobs）まで成功、対
 (a)の固定arity・次数の有限多重線形式の合同と、全鎖のprimitiveの延長を区別した。
 指定native対象とFrobeniusの比較は未証明。(b)の単位の全射性は依然として一般に偽。
 両方が不可能と判明した(c)とはまだ判定していない。追加仮定で穴を隠していない。
+
+## 337. 零arityの実際の作用を元の余単位へ戻す（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+nullaryの二段余作用を計算する前に、全整数のcomponentから作った実際のcochainActionの
+零arityが、定義で指定した元のnullaryActionと同じ複体射であることを取り出す。
+これはcomponentの定義とtensorLiftの斉次成分を読む既存構成の法則で、各証明200行以内。
+
+```lean
+lemma cochainAction_zero_eq_nullaryAction (A : Type u) [CommRing A] (S : SSet.{0}) :
+    cochainAction A S 0 = nullaryAction A S
+```
+
+同じ直和の全整数の斉次成分で比較し、元のcurryされた加群テンソル射へ戻す。
+ホモトピー圏へ移さず、実際の複体射の等式で使う。
+
+## 338. 同じ空語係数の零次augmentationの値（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元のAW余単位へ通す係数の値を取り出す。次数延長の指定比較と、
+元のChainComplex.toSingle₀Equivの零次成分の法則だけを使う。各証明200行以内。
+
+```lean
+lemma nullaryCoefficientAugmentation_zero_apply (A : Type u) [CommRing A]
+    (w : Surjection.degreeModule A 0 0) :
+    (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom
+      ((nullaryCoefficientAugmentation A).f 0 ((Surjection.complexXIso A 0 0).inv w)) =
+      Surjection.zeroAugmentation A 0 w
+
+lemma nullaryCoefficientAugmentation_basis_zero (A : Type u) [CommRing A]
+    (v : Surjection.BasisWord 0 0) :
+    (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom
+      ((nullaryCoefficientAugmentation A).f 0 ((Surjection.complexXIso A 0 0).inv
+        (Surjection.basis A 0 0 (ULift.up v)))) = (1 : A)
+```
+
+複体の台の選び直しや係数のaugmentationの変更は行わない。
+
+## 339. 零arityの実際の複体射と空語係数の値（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§337〜338の3法則を検証した。全整数のtensorLiftの零arityは元のnullaryActionと
+同じ複体射であり、指定次数延長とsingleの比較で元の空語係数のaugmentation値を読む。
+元の圏での厳密な等式を使い、ホモトピー圏へ弱めていない。
+
+登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）：
+
+|モジュール|行数|
+|---|---:|
+|CochainNullaryAction|36|
+|NullaryCoefficientValues|48|
+
+今回84行。M14実測26,392行、L12a 11,185行、外枠31,000行まで4,608行。
+L12aは未完了で、実際のnullaryの余単位の二段適用の値・全有限和・全arityの包装が残る。
+一覧の法則の証明分割であり、新しいIDは追加していない。
+
+対象ビルドm14-cochain-nullary-action-01.log（2,612 jobs）、
+m14-nullary-coefficient-values-03.log（2,342 jobs）が成功し、対象警告0。
+小監査audit-m14-cochain-nullary-values.logは2本4宣言・標準三公理のみ、sorry・独自公理0。
+ビルド・監査ごとに鍵を取り返却。mainの作業木・共有入口・共有監査は変更していない。
+§325以降の登録候補は計24本、今回の検証はすべて各対象と小監査だけで行った。
+
+並行する完備化の三案は§331に記した。(c)が必要との判定にはまだ至っていない。
+§314の完成見込みが外枠に収まらない懸念と完備化の未評価分は残し、
+完成を主張したり追加仮定で隠したりしていない。次は元の余単位の実際の二段値から再開する。
