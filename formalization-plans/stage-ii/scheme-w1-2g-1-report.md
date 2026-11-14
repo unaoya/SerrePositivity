@@ -1898,3 +1898,22 @@ G1・G2共用部品込み本体11,659行、入口込み11,858行。C05 は本体
 一覧：済み11／全体17（うち追加8）。
 
 C05 の Proj の一標準開の環からの実際の全射（着手前の型、見込み80〜200行）：`polynomialChartEvaluation` は `MvPolynomial (Option ι) R` の none 変数を1、some i を `MvPolynomial ι R` の変数 i へ送る実際の環写像。`homogeneousPolynomialChartEvaluation` はその写像を none 変数の次数零斉次局所化へ延長する。`homogeneousPolynomialChartEvaluation_mk` は任意の斉次分数での値を分子の評価として計算し、`homogeneousPolynomialChartEvaluation_surjective` はこの環写像の全射性を返す。none が1になるため分母の冪が消え、定数と各変数の原像を実際に供給できる。標準開と多項式環の環同型の全体は、この段の immersion の構成には不要で、必要な向きの全射と係数との可換式を先に示す。C05 内の構成の証明分割で、親項目を増やさない。
+
+
+C05 の Proj の次数零の基底の照合（着手前の型、見込み60〜160行）：`polynomialGradeZeroMap` は係数を定数多項式として次数零成分へ送る実際の環写像。`polynomialGradeZeroEquiv` は R と `MvPolynomial.homogeneousSubmodule ι R 0` の環同型で、係数 r を C r へ送る。次数零の斉次多項式が定数であることを使い、Proj の固有な構造射の標的 Spec(次数零成分) を実際の Spec R へ戻す。C05 内の係数移送の法則で、親項目を増やさない。
+
+
+C05 の評価と次数零の係数の可換式（着手前の型、見込み10〜40行）：`homogeneousPolynomialChartEvaluation_fromZero` は係数 r の次数零の定数多項式を `fromZeroRingHom` で斉次局所化へ送り、前記の評価を適用すると、多項式環の同じ定数 C r に戻ることを返す。C05 の既存の係数移送の法則として本体へ加え、親項目を増やさない。
+
+
+### C05：Proj の一標準開の評価の全射性と次数零の係数環の同型
+
+`HomogeneousPolynomialChartEvaluation`（87行）：`polynomialChartEvaluation` は none 変数を1、some i を変数 i へ送る実際の環写像。`homogeneousPolynomialChartEvaluation` はその写像を none 変数の次数零斉次局所化へ延長する。`homogeneousPolynomialChartEvaluation_mk` は任意の斉次分数で分母が消え分子の評価になること、`homogeneousPolynomialChartEvaluation_surjective` は定数・変数の実際の原像による全射性、`homogeneousPolynomialChartEvaluation_fromZero` は次数零の係数の射との可換式を返す。
+
+`PolynomialGradeZeroEquiv`（44行）：`polynomialGradeZeroMap` は係数の定数多項式としての次数零成分への実際の環写像。`polynomialGradeZeroEquiv` はこの射による R と次数零成分の環同型。`polynomialGradeZeroEquiv_apply` は指定した定数多項式への一致。
+
+本体131行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,987ジョブ成功。小監査25宣言（8・17）・標準三公理のみ。多項式の次数の gradedAlgebra を局所 instance に指定し、斉次分数の grading と証人、次数零成分の全射性の目標を明示して単独検証を完了した。評価の証人の照合には局所の backward.isDefEq.respectTransparency=false を使用し、resource limit は変更していない。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-homogeneous-polynomial-chart-evaluation-check-5.log`・`2g-polynomial-grade-zero-equiv-check-3.log`・`2g-polynomial-chart-grade-zero-native.log`・`2g-polynomial-chart-grade-zero-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,790行、入口込み11,991行。5c362ecfe の後の今回の区切りは9モジュール、本体499行・入口9行、小監査合計34宣言・標準三公理のみ。約12,000行の途中報告は f185b6370 に記録済みで、全体の見込み17,424〜23,424行、外枠25,000行は不変。C05 は本体166行までで未完。次は標準開の環の全射を実際の Spec の閉埋め込みに移し、標準開包含と合成して Proj への immersion を作り、次数零の環同型で固有な構造射を Spec R 上へ戻す。C05・C06 と B01〜B04 は未完で、2g-1 の停止点ではない。
+
+一覧：済み11／全体17（うち追加8）。
