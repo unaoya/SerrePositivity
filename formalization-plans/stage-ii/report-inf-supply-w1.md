@@ -8818,3 +8818,40 @@ lemma postIso_homEquiv (W : Kᵒᵖ ⥤ SSet) (Y : D)
 次に必要なのは自由評価の余積を要素圏へ移す比較であり、
 その後に添字の収縮を移して実増大射の弱同値性を証明する。
 RR02完了・停止点5aとは数えない。
+
+## §100 RR02(a)：自由評価の要素圏での始点固定の比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `e11dab081` の68行の証明・検証・コミットとして進捗。
+`F : K ⥤ Type w` の要素圏の射影について、固定始点のUnder圏を比較する。
+RR02(a)の自由評価の要素圏への展開に使う証明分割で、IDは増やさない。
+
+```lean
+def liftObj (t : Under e.obj) : Under e
+def lift : Under e.obj ⥤ Under e
+def unitComponent (t : Under e) :
+  t ≅ (lift F e).obj ((Under.post (Functor.Elements.π F)).obj t)
+def equivalence : Under e ≌ Under e.obj
+```
+
+関手部分は指定した `Under.post (Functor.Elements.π F)`。
+持ち上げの終点の要素は `F.map t.hom e.val` であり、任意の逆を選ばない。
+BK重みの照合には反対圏のOver表示への移送も必要で、今回はその前の添字比較。
+
+### §100.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`ElementsUnderProjection` 67行、対象ビルド693 jobs成功。
+小監査14宣言・標準三公理のみ。ログ `/tmp/is-w1/elements-under/build-2.log`、
+終了コード0を確認。計算上限変更なし。
+検証済み累計196本・14,849行。上限変更後のRR02(a)実測2,351行、(b)(c)新規0行。
+
+指定射影のUnder関手の同値までを検証した。
+この同値だけでC値の実現や元の増大射の弱同値性を結論にはしない。
+次の比較は、`F : K ⥤ Type w`、`B : K ⥤ SimplexCategory ⥤ C` に対し、
+`k ↦ ∐ (_ : F.obj k), B.obj k` を重み `W` で実現したものと、
+`F.Elements` 上の `π ⋙ B` を重み `π.op ⋙ W` で実現したものの同型。
+各余積の挿入によるHomの同値を、指定随伴へ渡す方針。
+BK重みの場合は今回の固定始点の比較を反対圏のOverへ移す必要がある。
