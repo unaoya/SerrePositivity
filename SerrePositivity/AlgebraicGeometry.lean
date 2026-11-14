@@ -1617,3 +1617,5 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientSquareBaseChange
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelColimit
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelRingCoverMap
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelRefinement

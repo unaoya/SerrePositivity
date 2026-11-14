@@ -2817,3 +2817,20 @@ G1・G2共用部品込み本体16,239行、入口込み16,509行。B02〜B04 は
 G1・G2共用部品込み本体16,452行、入口込み16,724行。全模型の実際の余極限は閉じた。被覆模型への実際の射・final 性による被覆模型側の余極限、素体への移送と B02 の整理は残り、B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+小さい被覆模型の各段の性質（着手前の型、見込み80〜180行、B03・B04 の係数移送の法則）：両辺の実際の環に模型の k-代数構造と有限型性を供給し、各段の affine v 判定、Noether 性（k が Noether）、構造射の有限表示性を示す。元の g の有限表示性は要求しない。一般の k 上の有限型な代数写像の有限表示性を小さい補題に分け、両辺の Noether 性を仮定せず有限型性から得る。
+
+
+有限型 F_p の実際の被覆模型による余極限への出口（着手前の型、見込み100〜240行、B03・B04 の素体への係数移送）：`exists_primeField_vCover_filtered_model` は任意の F_p-代数 R、任意の環 C と f:R→C の affine v 判定から、同じ宇宙の実際の小さい filtered な環写像の図式・元の f を頂点とする cocone・IsColimit を返す。各段の両環は有限型 F_p かつ Noether、射は有限表示の v 被覆で、F_p の構造と可換。係数環を一度 ULift F_p に取り、環同型で F_p の構造を戻す。零環を許し、exact な CharP p を要求しない。
+
+
+### B03・B04：任意の全模型から被覆模型への実際の射
+
+`CoefficientVCoverModelRefinement`（69行）：`exists_coefficientModel_to_vCover` は Noether な k 上の任意の affine v 被覆 g:R→ₐ[k] C と任意の全模型 X から、実際の有限型被覆模型 Y と X→Y.obj を構成する。P=R⊗_A D の有限表示 v 被覆をここで構成し、実際の被覆係数模型を供給して、旧正方形を同じ段へ因子化する。元の g の有限表示性・元の R の Noether 性・模型の存在や v 判定を追加仮定にしない。
+
+本体69行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,061ジョブ、小監査3宣言・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-vcover-model-refinement-check.log`・`2g-coefficient-vcover-model-refinement-native.log`・`2g-coefficient-vcover-model-refinement-audit.log`。
+
+G1・G2共用部品込み本体16,521行、入口込み16,794行。全模型から被覆模型への実際の射は閉じた。filtered/final の一般論への適用、素体への移送と B02 の整理は残り、B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
