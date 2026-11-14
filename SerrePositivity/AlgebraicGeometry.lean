@@ -1476,3 +1476,4 @@ public import SerrePositivity.AlgebraicGeometry.AffineClosedPullbackLimit
 public import SerrePositivity.AlgebraicGeometry.ClosedPullbackComposite
 public import SerrePositivity.AlgebraicGeometry.AffineRestrictionClosedLimit
 public import SerrePositivity.AlgebraicGeometry.AffineHomClosedLimitDescent
+public import SerrePositivity.AlgebraicGeometry.ClosedImmersionLimitDescent
