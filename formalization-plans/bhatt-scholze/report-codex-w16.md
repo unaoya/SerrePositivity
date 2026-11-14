@@ -14160,3 +14160,174 @@ L12a検証済み実測**1,378行**、M14**16,585行**、外枠まで**8,415行**
 登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
 `ColorHeightRanks`、`ColorHeightVertices`、`CompositeInnerEdges`、`CompositeHeightBounds`。
 §178の2本はこの時点で未検証の下書き。上の実測・登録候補に含めない。
+
+## 180. L12a の元の内側切断への順方向の接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既に報告した正の枝の対応の順方向を、元の高さと色別順位で組み立てる。
+高さが所属区間内にあるC413からcolorHeightRankを読み、同じ所属ならC401、
+後の所属ならC355で単調性を得る。元のcutOfHeightsへそのまま渡す。
+C414〜C417は固定したL12aの対応の証明分割・同じ座標の法則として追加する。
+型は次。各証明200行以内の見込み。全対応・符号・nullaryはまだ未完。
+
+```lean
+def positiveCompositeInnerHeights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Fin (n + e) →o Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1)
+
+def positiveCompositeInnerCut {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Cut (n + e) (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k)
+
+lemma positiveCompositeInnerCut_heights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    cutHeights (positiveCompositeInnerCut u v k c) a = positiveCompositeInnerHeights u v k c a
+
+lemma positiveCompositeInnerCut_vertices {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+        (cutHeights (positiveCompositeInnerCut u v k c) a) =
+      cutHeights c.2 (compositeInnerEdge u v k c.1 a)
+
+def positiveCompositeNestedMap {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) : PositiveCompositeCutIndex u v k q → PositiveNestedCutIndex u v k q
+
+lemma positiveCompositeNestedMap_outer {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    (positiveCompositeNestedMap u v k c).1 = positiveCompositeOuterCut u v k c
+```
+
+この順方向の高さは§175の有限点検のepsilonの水平辺の高さそのもの。
+点検には退化項を除かない21,939組が含まれる。有限点検を全称証明とは数えない。
+
+## 181. L12a の同じ復元分割の開始位置（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆復元に使う既存positiveNestedPartitionについて、部分長だけでなく開始位置も元の端点に
+一致することを読む。overlapOfIntervalsの同じ共有端点条件とstart_nextに自然数帰納法を
+使う法則であり、新しい分割を選ばない。C418〜C420を同じ構成の法則として追加する。
+各証明200行以内の見込み。有限点検は既存§165の21,939組の端点復元と同じもの。
+型は次。
+
+```lean
+lemma overlapOfIntervals_start {t L : ℕ} (ht : 0 < t) (a b : Fin t → ℕ)
+    (hab : ∀ j, a j ≤ b j) (hb : ∀ j, b j < L)
+    (hfirst : ∀ j, j.val = 0 → a j = 0)
+    (hlast : ∀ j, j.val + 1 = t → b j + 1 = L)
+    (hnext : ∀ i j, i.val + 1 = j.val → b i = a j) (j : Fin t) :
+    (overlapOfIntervals ht a b hab hb hfirst hlast hnext).start j = a j
+
+lemma overlap_eq_mp_start {t t' L : ℕ} (h : t = t') (r : Surjection.OverlapPartition t L)
+    (i : Fin t') (j : Fin t) (hij : i.val = j.val) :
+    (Eq.mp (congrArg (fun k => Surjection.OverlapPartition k L) h) r).start i = r.start j
+
+lemma positiveNestedPartition_start {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveNestedCutIndex u v k q) (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val) :
+    (positiveNestedPartition u v k c).start i = nestedSegmentStart c.1 (positiveWord u) k c.2 j
+```
+
+## 182. L12a の元の水平辺と方向を交換した区間（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆復元で、内側の水平辺の高さが同じ色別区間に属する条件を、復元分割の始点・終点で読む。
+元の水平辺の直前・直後の二頂点は高さが同じで横座標が一だけ増える。
+既存exchange_horizontal・exchange_vertical・lo/hiの単調性と端点の評価を使う。
+C421〜C422を同じCutの座標・所属の法則として追加する。新しい経路模型は作らない。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma cutHeights_exchange_bounds {m q : ℕ} (s : Cut m q) (a : Fin m) (y : Fin (q + 1)) :
+    (lo s.exchange y ≤ a.val ↔ y.val ≤ (cutHeights s a).val) ∧
+      (a.val < hi s.exchange y ↔ (cutHeights s a).val ≤ y.val)
+
+lemma cutHeights_mem_interval {m q : ℕ} (s : Cut m q) (a : Fin m)
+    (first last : Fin (q + 1)) :
+    (first ≤ cutHeights s a ∧ cutHeights s a ≤ last) ↔
+      lo s.exchange first ≤ a.val ∧ a.val < hi s.exchange last
+```
+
+有限点検：`/tmp/bsw16/check-cut-height-exchange.py`、923経路、19,931箇所。
+高さ・方向交換の両方の同値を、幅や高さが零の場合も含め確認した。
+
+## 183. L12a の逆復元における同じ順位の所属（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C376・C420とC422を合わせ、復元分割の内部の辺の高さが、元の同じ色別順位の区間に
+属することを読む。C423・C424は同じ端点・頂点の法則。
+また同じ語長移送が元の出現位置の列挙を保つことをC425・C426で明示する。
+いずれも同じ有限構成の法則・証明分割として追加し、各証明200行以内の見込み。
+型は次。finiteの読み方は§165・§182の点検と同じもの。
+
+```lean
+lemma positiveNestedPartition_height_interval {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val)
+    (a : Fin (n + e)) (hl : (positiveNestedPartition u v k c).start i ≤ a.val)
+    (hr : a.val + 1 < (positiveNestedPartition u v k c).start i +
+      ((positiveNestedPartition u v k c).val i).val) :
+    colorOccurrenceFirst c.1 (positiveWord u) k j ≤ cutHeights c.2 a ∧
+      cutHeights c.2 a ≤ colorOccurrenceLast c.1 (positiveWord u) k j
+
+lemma vertices_bounds_on_colorInterval {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1))
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    lo s p ≤ (vertices s v a j).val ∧ (vertices s v a j).val ≤ hi s p
+
+lemma word_eq_mp_occurrenceAt {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (a : Fin r)
+    (i : Fin (Surjection.occurrenceCount
+      (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val a))
+    (j : Fin (Surjection.occurrenceCount v.val a)) (hij : i.val = j.val) :
+    (Surjection.occurrenceAt (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val a i).val =
+      (Surjection.occurrenceAt v.val a j).val
+
+lemma positiveOccurrencePosition_eq {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val) :
+    positiveOccurrencePosition u k i = Surjection.occurrenceAt (positiveWord u).val k j
+```
+
+## 184. L12a の順方向と同じ復元分割の座標：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§178・180〜182の7本380行を検証した。
+順方向は任意の正arity・全ての合成切断に対する写像として定義され、
+同じ色別verticesで読む高さの厳密な一致まで証明した。
+復元した同じ分割の開始位置と、方向を交換した元のCutによる高さの所属の同値も証明した。
+全対応・逆の等式・符号・実テンソル・nullaryの完成とは数えない。
+
+対象ビルド：`/tmp/bsw16/m14-composite-inner-height-bounds-01.log`（2,852 jobs）、
+`/tmp/bsw16/m14-composite-nested-map-02.log`（2,856 jobs）、
+`/tmp/bsw16/m14-recovered-partition-starts-01.log`（2,254 jobs）、
+`/tmp/bsw16/m14-cut-height-exchange-01.log`（2,215 jobs）、全て成功・対象警告0。
+小監査：`/tmp/bsw16/audit-m14-composite-nested-map.lean`、
+結果 `/tmp/bsw16/m14-composite-nested-map-audit.log`、
+**7モジュール・36宣言、標準三公理のみ**。sorry・新規公理0。
+各ビルドと監査で鍵を独立に取り、実行終了後に返した。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+`PositiveOccurrencePosition`45行、`CompositeInnerHeightBounds`51行、
+`CompositeInnerHeights`50行、`CompositeNestedMap`60行、`OverlapIntervalStarts`43行、
+`RecoveredPartitionStarts`36行、`CutHeightExchange`95行。
+既存の公開宣言・界面・共有入口は変更していない。
+
+L12a検証済み実測1,378+380=**1,758行**、M14は16,585+380=**16,965行**。
+外枠25,000行まで**8,035行**。§177の残りの表のうち順方向の接続の実測は206行で、
+見込み150〜250行内。174行は同じ逆復元の始点・交換座標の法則。
+逆の写像自体や両方向の等式はまだ未完。§177の超過リスクは解消したとは扱わない。
+§183の2本はまだ未検証で、上の実測・登録候補に含めない。
