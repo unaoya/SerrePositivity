@@ -1619,3 +1619,19 @@ C04(b) の有限個の affine な源の同じ段への供給（着手前の型�
 G1・G2共用部品込み本体10,530行、入口込み10,709行。C04 は本体114行まで検証、一般の場合の affine 性・代数的全射性の降下と貼り合わせは未完。有限個の affine な源を同じ段へそろえる次の法則は下書きで、この実測に含めない。一般の固有性の降下、実際の被覆模型と図式の整合性も残り、B01〜B04 と C04 は未完。2g-1 の停止点ではない。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+C04(b) の affine な標的の場合（着手前の型、見込み50〜120行、C04 の分割内）：`exists_affineHom_pullback_of_isLimit_of_affine` は、affine な段 D(i) への qcqs な射 f について、極限への底変換が affine な射なら、ある後の段への実際の底変換も affine な射になると返す。極限の基底と源を affine とし、前記の affine な源の同じ段への供給を使う。一般の標的は有限 affine 被覆上でこれを用いる。原典01ZNの同じ証明の分割で、親項目は増やさない。
+
+
+### C04(b)：affine な極限の源の共通段と affine な標的の場合の射の affine 性の降下
+
+`FiniteAffineCompositeStages`（52行）：`exists_affine_compositeStage_of_isLimit` は元の源を保つ底変換の実際の極限に Mathlib の01Z6を適用し、ある後の段の源の affine 性を供給する。`exists_finite_affine_compositeStage_of_isLimit` は有限個の源を同じ段へそろえ、affine な遷移に沿って affine 性を保つ。射と頂点の affine 性の証人を明示した。
+
+`AffineHomLimitDescent`（38行）：`exists_affineHom_pullback_of_isLimit_of_affine` は、affine な標的の段への qcqs な射の極限での affine 性を、ある後の段の実際の底変換射の affine 性へ降ろす。極限の基底の affine 性は実際の極限射影の affine 性から得る。
+
+本体90行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,967ジョブ成功。小監査5宣言（3・2）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致と新規ファイルであることを確認済み。ログ `2g-affine-hom-limit-descent-check-2.log`・`2g-affine-hom-limit-descent-native.log`・`2g-affine-hom-limit-descent-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。resource limit の変更なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ使用。
+
+今回の区切り（4013e532b の後）は4モジュール、本体204行・入口4行、小監査合計7宣言・標準三公理のみ。G1・G2共用部品込み本体10,620行、入口込み10,801行。C04 は本体204行まで検証。次は一般の標的の有限 affine 被覆で affine 性の降下をそろえ、07RH の有限生成代数の全射性と合わせて閉埋め込み性の一般の場合へ接続する。C04、B01〜B04 は未完。一般の固有性の降下と被覆模型・図式の整合性も残り、2g-1 の停止点ではない。外枠25,000行は不変、約12,000行で残りの G2 の見込みを更新する。
+
+一覧：済み10／全体15（うち追加6）。
