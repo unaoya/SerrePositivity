@@ -6318,3 +6318,84 @@ theorem reflectedBKFreeTensor_inverse_component (P : Complex A)
 累計 **273モジュール・16,782行・2,269宣言**。一覧 `/private/tmp/isw2-g10-twohundredseventythree-modules.txt`。外枠まで残り3,218行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
 
 次は自由生成元の前面・後面をこの式に代入し、§132の錐の最上位評価、§126・§132のパラメータ評価、§127のAW各切断成分を合わせる。B02の全体等式とB03〜B08・C・D、G10後の3b-4段0は未完。
+
+## 134. B02の途中：実比較射のAW各切断条件を無条件に閉じる
+
+一覧：済み 14／全体 36（うち追加 1）
+
+元の実標準Hom単体のDK像をA12の指定複体射のΓ像へ送り、A09の実tensor逆射で戻したものについて、**任意の切断点の前面・後面の射影自由生成元の値が、同じ実標準AWの切断項に一致**することを証明した。重みの全単体、元の実標準Homの全標準単体パラメータ、全切断点を含み、切断条件を仮定していない。
+
+実標準Homへの元の射の自然性を前面・後面で評価する法則と、元の実標準Hom単体のDK像の逆正規化Hom同値を全生成元で評価する法則に分割した。§133の無条件のtensor成分、§132の錐の最上位成分、§127の標準AW切断の式を合成して、以前の貼り合わせ則の各切断条件を今回の実射について閉じた。既存構成の評価・自然性・合成則または同じ証明の分割で、ID付き項目の追加ではない。
+
+### 134.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality`（29行）
+
+```lean
+theorem standardHomParameter_map {S : SSet.{u}}
+    (f : S ⟶ standardHomSpace (R := A) x y) {m n : SimplexCategory}
+    (θ : m ⟶ n) (s : S.obj (Opposite.op n)) :
+    f.app (Opposite.op m) (S.map θ.op s) =
+      standardPullback θ.toOrderHom (f.app (Opposite.op n) s)
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation`（42行）
+
+```lean
+theorem normalizedSimplexHomEquiv_native_generator (x y : D) (m : SimplexCategory)
+    (α : (standardHomSpace (R := A) x y).obj (Opposite.op m)) (n : ℕ)
+    (s : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)).obj
+      (Opposite.op ⦋n⦌)) :
+    ((normalizedSimplexHomEquiv A (homObject A D x y) m).symm
+      ((standardDoldKanSpaceMap x y).app (Opposite.op m) α)).f (-(n : ℤ))
+        (freeNegativeGenerator
+          ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) n s) =
+      standardTopEval (R := A) x y n
+        (((liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm α).app
+          (Opposite.op ⦋n⦌)) s)
+
+```
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorCut`（85行）
+
+```lean
+theorem reflectedBKFreeTensor_inverse_cut (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (m : SimplexCategory)
+    (α : (standardHomSpace (R := A) P ((productTotalFunctor A).obj X)).obj (Opposite.op m))
+    (j : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) (N : ℕ) (c : Fin (N + 1))
+    (s : ((reflectedNormalizedBKSmallWeight A).obj j).obj (Opposite.op ⦋N⦌))
+    (a : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)).obj
+      (Opposite.op ⦋N⦌)) :
+    let T := (productTotalFunctor A).obj X
+    let Q := (doubleOppositeDiagram X).obj (AsSmall.down.obj j)
+    let S := (reflectedNormalizedBKSmallWeight A).obj j
+    let B := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)
+    let g := (reversedWeightPointwiseBousfieldKanCone X).app (AsSmall.down.obj j) ≫
+      (Functor.isoWhiskerRight (standardDoldKanModuleIso (R := A) (D := Complex A) T Q)
+        (forget (ModuleCat A))).inv
+    let f := liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm α
+    let Y := (homDiagramFunctor P).obj X
+    let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
+      (reflectedNormalizedBKSmallHomIso A Y).hom
+    let t := (freeTensorDiagramHomIso A (normalizedBKSmallDiagram A Y)
+      (reflectedNormalizedBKSmallWeight A)).inv.app (Opposite.op m)
+        (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
+          ((standardDoldKanSpaceMap (R := A) P T).app (Opposite.op m) α))
+    (t.app j).f (-(N : ℤ)) (ιTensorObj (freeNegativeChains (A := A) S)
+      (freeNegativeChains (A := A) B) (-(c.val : ℤ)) (-((N - c.val : ℕ) : ℤ)) (-(N : ℤ))
+      (by have := awDegrees N c; omega)
+      (freeNegativeGenerator S c.val (S.map (awFront N c).op s) ⊗ₜ[A]
+        freeNegativeGenerator B (N - c.val) (B.map (awBack N c).op a))) =
+      awTerm (g.app _ s).val (f.app _ a).val Finset.univ ⟨c, Finset.mem_univ c⟩
+        (-(N : ℤ)) (by simp)
+
+```
+
+### 134.2 検収と残り
+
+コード **`f39770010`**（新規3本156行）。結合個別検査 `/private/tmp/isw2-reflected-bk-cut-combined.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build148.log` は **4,725 jobs・終了コード0**。新規分のみの監査 `/private/tmp/AuditISW2G10B02TensorCut.lean` は **5宣言（1・1・3）、標準三公理のみ**。共有鍵は `--class impl --wait 3600` でビルド・監査の間だけ使用し返却済み。
+
+累計 **276モジュール・16,938行・2,274宣言**。一覧 `/private/tmp/isw2-g10-twohundredseventysix-modules.txt`。外枠まで残り3,062行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
+
+B02の全体等式は引き続き未完。残る主接続は、各切断の有限和をraw係数写像の等式にまとめ、係数移送した積の自由化比較が同じMoore射影生成元を保つ式を使って、§125のMoore包含による制限へ渡すこと。その後に同じ自由随伴・uncurryで全単体的射を戻し、反転・添字の指定輸送を合わせる。B03〜B08・C・DとG10後の3b-4段0は未完。
