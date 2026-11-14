@@ -11556,3 +11556,110 @@ theorem bousfieldKanUniverseExInfinityPoint_fiber
     (s : bousfieldKanWeight I ⟶ H) (i : I) :
     let H'
 ```
+
+## 181. 元のfiberへ戻す全切断比較 R03c の追加（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 16（うち追加 4）。
+
+IS-W2 §19の、同じまとまり・中間定理一つの見込み1,500行以下の枠で、R02〜R03の中間項目 **R03c** を追加する。§179の三角形は共通の復元のfiberを標的とする。元のnative錐のfiberで同じ脚を比較するため、この共通の復元をfiberの同値で消し、元の切断比較の各次数での作用を保つ。
+
+```lean
+universe u
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+
+-- 元の射影の切断・fiberの既存Kan性を局所インスタンスにする。
+theorem exists_classifiedFibrationFiberComparison
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (η : FunctorIso (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram q)) (b : B _⦋0⦌) :
+    ∃ e : QCatEquivalence (vertexFiber p b) (vertexFiber q b),
+      Nonempty (FunctorIso
+        ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+          simplicialSectionsFiberEvaluation q b)
+        (simplicialSectionsFiberEvaluation p b ≫ e.hom))
+```
+
+見込み140〜280行：元の二本の復元のfiber同値の合成40〜80行、§179の全三角形を同じ同値の逆で後合成して余単位で消す40〜80行、BEへの特殊化と同じBK指定点の像の照合60〜120行。既存 `CartesianFibrations.vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence` を使う。fibersが同値であるだけで終わらず、元の全切断比較との同じ四角形を型に含める。新しいBE模型・重み・係数・strictificationや⑤aの欄の型に触れない。
+
+この項目を足してそのまま証明へ進む。全図式射の錐族や極限性を完成とは数えない。見込みが1,500行を超える場合・別のまとまりが必要な場合・外枠15,000行に届く場合は、検証済みを保存して報告する。
+
+## 182. R03c完了：元のnative錐のfiberと元のraw BK係数の指定点（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。済みはR01・R03a・R03a.1・R03b・R03c。R02/R03の標準脚・全錐族・極限性は未完了。
+
+§181の型のまま `exists_classifiedFibrationFiberComparison` を証明した。同じ分類変換を使用する共通の復元への二本の実写像を各fiberで同値にし、一方の逆で戻した。元の切断比較の全三角形も同じ逆で後合成し、余単位で消して、元の二つのfiberの同値と**元の全切断比較の同じ四角形**を得た。fiberが同値であるだけで終わらせていない。
+
+BEでは、元のweighted nerveのfiber同型を合成して、元のBK係数から同じ元の図式・頂点のnative錐のfiberへの `strictBETotNativeFiberEquivalence` を得た。全切断比較との四角形、同じ普遍BK指定点の像も照合した。さらに§180の係数移送の評価則を使い、このnative錐のfiberの指定点と、元のraw BK係数の恒等射での値をULift・Ex∞単位で送った指定像との `VertexIso` を得た。
+
+最後の点の比較は `VertexIso` であり、元の二つの零単体が文字どおり等しいと主張していない。一方、§180の係数回収と宇宙変更・単位の値の計算は厳密な等式である。両者を区別する。これを元の標準脚の最終同定や全図式射の錐族、同じ錐の極限性の完了と数えない。
+
+### 182.1 検証と実測
+
+一般形とBEへの適用を合わせて二本224行。§181の140〜280行の見込みの範囲内（下端より84行増、上端より56行減）。個別検査の後、248で二本の対象ビルド10,651 jobs・終了0、小監査89本651宣言・標準三公理のみ。実ハンドル39993の終了0を確認し、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。累計89本・5,770行、外枠15,000行。各200行以下。
+
+追加の一覧項目は§181のR03cだけで、ここに含まれるfiber同値の合成・余単位の四角形・同じBK点での評価・raw係数への正規化はその証明分割または既存構成の法則。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+### 182.2 次の接続の注意
+
+元のnative錐の脚を、元のraw frame Homと指定BK重み比較の評価へ戻す接続が具体化した。次は既存のframeから正本Homへの単位の正規化と、元の指定weighted普遍錐の評価に合わせる。元の一点重みへの比較とBK比較の可換式だけから、全ての零次の選択が文字どおり同じだとは推論しない。
+
+極限判定のa・haは、既存 `Project.HomotopyDiagramComparison.coherentConeSourceFamily` と `coherentConeSourceFamily_evaluation` が、同じ錐・同じ頂点について候補を与える。CAlgの既存のcoherent nerve表示との照合はこれからであり、ここでは特殊化済みとは数えない。残るheは、この同じ族の制限写像と元のweighted Hom比較の同値性を結ぶこと。固定した始域ごとの全標的のHom比較を、始域にも自然な全比較と自動的に読み替えない。必要な始域の作用・元のframeの単位との両立を既存APIから明示して進める。
+
+### 182.3 今回の型
+
+#### ClassifiedFibrationFiberComparison（80行）
+
+```lean
+def classifiedFibrationFiberEquivalence (b : B _⦋0⦌) :
+    QCatEquivalence (vertexFiber p b) (vertexFiber q b)
+
+def classifiedFibrationFiberEquivalence_sectionsIso (b : B _⦋0⦌) :
+    FunctorIso
+      ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+        simplicialSectionsFiberEvaluation q b)
+      (simplicialSectionsFiberEvaluation p b ≫ (classifiedFibrationFiberEquivalence p q η b).hom)
+
+theorem exists_classifiedFibrationFiberComparison (b : B _⦋0⦌) :
+    ∃ e : QCatEquivalence (vertexFiber p b) (vertexFiber q b),
+      Nonempty (FunctorIso
+        ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+          simplicialSectionsFiberEvaluation q b)
+        (simplicialSectionsFiberEvaluation p b ≫ e.hom))
+```
+
+#### StrictDiagramTotNativeFiberComparison（144行）
+
+```lean
+def strictBETotNativeFiberEquivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    QCatEquivalence ((strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget).obj i)
+      (vertexFiber (coherentConeProjection (strictBETotUniverseSourceDiagram A K F)
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))) (nerveVertex i))
+
+def strictBETotNativeFiberEquivalence_sectionsIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    let H
+
+def strictBETotNativeFiberEquivalence_universalPointIso
+    (F : K ⥤ (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    VertexIso
+      ((simplicialSectionsFiberEvaluation _ (nerveVertex i)).app (Opposite.op ⦋0⦌)
+        (((coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+            (nerveVertex ((framedLimitFunctor A K).obj F)))).inv.app (Opposite.op ⦋0⦌))
+              (strictBETotUniverseNativeConePoint A K F)))
+      (((strictBETotNativeFiberEquivalence A K F ((framedLimitFunctor A K).obj F) i).hom.app
+        (Opposite.op ⦋0⦌)) (((strictBETotUniversalBKExInfinityCone A K F).app i).app
+          (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))
+
+def strictBETotNativeFiberEquivalence_rawPointIso
+    (F : K ⥤ (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
+    let Y
+```
