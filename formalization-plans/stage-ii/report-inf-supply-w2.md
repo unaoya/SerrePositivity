@@ -13788,3 +13788,59 @@ theorem continuousLeftFibrationReplacement_map_isPrecompositionEquivalence
     (f : X ⟶ Y) (hf : IsPrecompositionEquivalence f.left) :
     IsPrecompositionEquivalence ((continuousLeftFibrationReplacement B).map f).left
 ```
+
+## 221. 元の全要素圏の置換単位を保つnative全分類への接続（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§220の同じ圏同値の逆方向のnerveを、同じ底nerve I上のOverの射にした。元の射そのものの前合成同値性は既存nerveQCatEquivalenceに同じ圏同値を渡して得た。次に元のcontinuousLeftFibrationReplacementでこの同じOverの射を送り、元の二つの置換単位との厳密な正方形を、その同じ単位の自然性から得た。§220の置換の移送則と既存leftClassification_of_precompositionEquivalenceを適用し、全要素圏の元の置換のnative分類と同じGrothendieck表示の元の置換のnative分類を、底全体のFunctorIsoで比較した。
+
+これにR03fから得た同じGrothendieck係数の全分類単位を合成した。得られたsimplicialElementsNativeClassificationUnitIsoの始域は、各要素圏のHomを持ち上げた同じCat図式から来るgrothendieckKanCoefficientDiagramであり、終域は元の全二重添字の要素圏の元の置換のnativeな全分類である。元のFそのもののKan化と厳密に同じとは主張していない。Homの宇宙持ち上げを既存の全nerve同型で外し、§219の反対要素nerveの同じaugmentationへつなぐ照合は、次の接続として残す。
+
+同じ底上の圏同値・nerve・置換・分類移送・R03fの既存の構成を合成したものであり、独立の数学的な一覧項目は増やしていない。元の固定始域のroof比較との全FunctorIsoの等式は、依然R03dの残り。元の全augmentationの逆を使ったtwisted pairingと、この同じ全要素分類の単位を同じ底上で照合してから、その制限を元の固定始域比較へ戻す必要がある。各fiberの同値や底全体のFunctorIsoの存在だけで、その正規化の等式まで証明した扱いにはしない。
+
+個別検査の最終版8707・終了0。298：対象ビルド3,336 jobs・終了0、小監査159本1,115宣言・標準三公理のみ（実ハンドル40611・終了0）。鍵返却済み。今回90行、累計159本・10,317行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 221.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。
+
+#### SimplicialElementsClassification（90行）
+
+```lean
+def simplicialElementsGrothendieckOverMap :
+    Over.mk (nerveMap (simplicialTotalElementsProjection F)) ⟶
+      Over.mk (nerveMap (Grothendieck.forget (simplicialElementsCatDiagram F)))
+
+theorem simplicialElementsGrothendieckOverMap_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (simplicialElementsGrothendieckOverMap F).left
+
+def simplicialElementsGrothendieckReplacementMap
+
+theorem simplicialElementsGrothendieckReplacementMap_unit :
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).left ≫
+        (simplicialElementsGrothendieckReplacementMap F).left =
+      (simplicialElementsGrothendieckOverMap F).left ≫
+        ((continuousLeftFibrationReplacementUnit (nerve I)).app
+          (Over.mk (nerveMap (Grothendieck.forget (simplicialElementsCatDiagram F))))).left
+
+theorem simplicialElementsGrothendieckReplacementMap_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (simplicialElementsGrothendieckReplacementMap F).left
+
+def simplicialElementsGrothendieckReplacementClassificationIso :
+    FunctorIso
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget (simplicialElementsCatDiagram F))))).hom)
+
+def simplicialElementsNativeClassificationUnitIso :
+    FunctorIso
+      (kanDiagramCoherentNerve (grothendieckKanCoefficientDiagram (simplicialElementsCatDiagram F)))
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
+```
