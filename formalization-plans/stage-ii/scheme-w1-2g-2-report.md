@@ -309,3 +309,20 @@ S01 は3モジュール136行＋入口3行、小監査21宣言・標準三公理
 `segreCoordinate_irrelevant_le_span a b G ha`：上の同じ GradedRing を局所供給した下で、irrelevant ideal は商写像の変数の像で生成される。商の次数成分の定義から同次数の原像を取り、既存の Ideal.span_pow_eq_map_homogeneousSubmodule の法則に渡す（見込み30〜70行）。`iSup_segreCoordinate_basicOpen` はこの有限な標準開の被覆。次いで 2f に必要な多項式作用・有限性・標準開条件を同じ商と次数分解で束ねる（20〜50行）。
 
 S03 の二因子には、実際の次数一評価が全射な表示を使う。最初の Rees と、以後のこの多項式環の商は、いずれもその全射表示を既に持つ。単に多項式環上有限な加群であるという条件だけから、A0=R や全射評価を仮定してはならない。標準開の同型はこの実際の商と全射表示に沿って構成する。
+
+S02 の同じ商写像の法則の追加の分割（着手前、前記の内数）：`segreCoordinate_aeval` は商写像が変数の像による実際の評価と等しいこと。`segreCoordinate_projective_cech_data` は同じ次数分解の下で IsScalarTower・GradedSMul・Module.Finite と algebraMap の変数の像による irrelevant ideal の条件を同時に返す。標準開の存在を仮定にせず、前記の商と全射性から導く。
+
+
+## G3・S02：Segre 座標環の標準開被覆と Čech 入力
+
+`SegreCoordinateStandardOpen`（73行）：`segreCoordinate_aeval` は商写像と変数の像による評価の一致。`segreCoordinate_irrelevant_le_span` は実際の同次数の原像から irrelevant ideal の生成条件を導く。`iSup_segreCoordinate_basicOpen` はその標準開の被覆、`segreCoordinate_projective_cech_data` は同じ商の作用・有限性・標準開条件の同時供給。
+
+単独検証は初回成功、ソース完全一致。対象と直接 importer のビルド5,089ジョブ、小監査4宣言・標準三公理のみ、終了状態0。ログ `2g-segre-coordinate-standard-open-check.log`・`2g-segre-coordinate-standard-open-native.log`・`2g-segre-coordinate-standard-open-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は検証中だけ使用。
+
+S02 完了。2g-2 本体1,162行・入口込み1,182行、小監査98宣言・標準三公理のみ。S03〜S04・有限冪、G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+### S03 の脱斉次化の法則への分割（着手前の型、S03 の内数）
+
+次数一の f∈G1 に対し、次数 n の x を x/f^n に送る加法写像 `G n →+ HomogeneousLocalization.Away G f` を作り、直和の普遍性で `A →+* HomogeneousLocalization.Away G f` に束ねる。次数一の f は 1 に移る。続いて、この正規化と局所化の普遍性から `A / Ideal.span {f-1} ≃+* HomogeneousLocalization.Away G f`、係数環に関する整合性を供給する（最初の正規化40〜100行、商との比較100〜250行）。これは標準開比較の分割で、新たな最終仮定や平坦性は加えない。零環・零の分母も許す。Mathlib の斉次局所化・DirectSum の環の普遍性を再利用する。
