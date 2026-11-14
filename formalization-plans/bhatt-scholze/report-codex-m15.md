@@ -8151,3 +8151,145 @@ root ビルドや大きい監査は実行していない。
 M11 以降と G12 の元の目標も未完である。17,000 行の外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §53 元の全 pinched 族と全選択係数の評価
+
+M10 の同じ元の加群 frame Hom の要素圏から、終端 augmentation と同じ二変数
+Dold–Kan・pinched 同型を通る大域写像を作った。標準単体の恒等射での値は
+元の frame 射そのものであり、その元の pinched 族の評価と厳密に一致する。
+選択した最大点での cochain を元の評価で送ると、同じ大域 pinched 単体の
+全有限部分集合・全整数次数の成分になる。符号を伴う斉次合成の式も照合した。
+点の射の類や H⁰ の比較に置き換えていない。
+
+加えて、元の Hom end の外延性により、加群の dg 単体データの各対象での評価が
+全 HA 方程式を満たすなら元のデータも同じ方程式を満たすことを証明した。
+これは M10 の既存の構成の評価法則・証明の分割であり、新しい一次 ID は足さない。
+以下は今回の全宣言の型である。
+
+`RawModuleTensorElementParameter.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementLiftMap : strictRawModuleTensorElementIndex A X P Q ⥤
+    ULiftHom.{u + 1} (((((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q).Elements)ᵒᵖ)
+
+def strictRawModuleTensorElementLiftNerveMap : nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
+    nerve (ULiftHom.{u + 1} (((((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q).Elements)ᵒᵖ))
+
+def strictRawModuleTensorElementParameterMap : nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
+    SSet.uliftFunctor.{u + 1, u}.obj (((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q)
+
+def strictRawModuleTensorPinchedIso :
+    SSet.uliftFunctor.{u + 1, u}.obj (((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q) ≅
+      PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+        (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+        (ForgetEnrichment.to (Complex A) Q)
+
+def strictRawModuleTensorElementPinchedMap : nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
+    PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A) Q)
+
+lemma strictRawModuleTensorElementParameterMap_app {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorElementParameterMap A X P Q).app (op ⦋n⦌) c =
+      ULift.up (((strictRawModuleProbeTensorFrame A X).obj P).map
+        (strictRawModuleTensorElementTerminalParameter A X P Q c) ≫
+          (strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n)))
+
+lemma strictRawModuleTensorHomPinchedSimplex_id_eval (n : ℕ)
+    (g : ((strictRawModuleProbeTensorFrame A X).obj P).obj ⦋n⦌ ⟶ Q) :
+    (moduleTensorHomPinchedSimplex A (dgAlgebraCategory A ((assocForget A).obj X))
+      ((strictRawModuleProbeFunctor A X).obj P) Q ⦋n⦌ g).app (op ⦋n⦌)
+      (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋n⦌))) =
+      (strictRawModuleTensorPinchedIso A X P Q).hom.app (op ⦋n⦌) (ULift.up g)
+```
+
+`RawModuleTensorElementPinchedEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementPinchedMap_app {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c =
+    (pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n))))).app (op ⦋n⦌)
+      (strictRawModuleTensorElementPinchedSimplex A X P Q c)
+```
+
+`RawModuleTensorSelectedEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (J.max' hJ)))).f k
+      (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk) =
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n)))).f k
+      ((strictRawModuleTensorElementLinear A X P Q c).val.component J k hJ hk)
+
+lemma strictRawModuleTensorElementLinear_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (E := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (x := ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)) (x' := ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+        ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n))))
+      (strictRawModuleTensorElementLinear A X P Q c) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex ((strictRawModuleTensorElementPinchedMap A X P Q).app (Opposite.op ⦋n⦌) c)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_evaluation_pinched {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (J.max' hJ)))).f k
+      (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex
+      ((strictRawModuleTensorElementPinchedMap A X P Q).app (Opposite.op ⦋n⦌) c)).val.component
+        J k hJ hk
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_evaluation_compose {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (r : ℤˣ) :
+    compose A (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (J.max' hJ)))).val
+      (r • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk) (add_zero k) =
+    r • (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex
+      ((strictRawModuleTensorElementPinchedMap A X P Q).app (Opposite.op ⦋n⦌) c)).val.component
+        J k hJ hk
+```
+
+`SimplexEquationEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleSimplexData_equation_of_evaluation {n : ℕ}
+    (s : SimplexData A (RightModule A D) n) (I : Finset (Fin (n + 1)))
+    (h : ∀ x : D, (s.map (moduleEvaluationDG A D x)).Equation I) : s.Equation I
+```
+
+
+### 53.1 検証と実測
+
+RawModuleTensorSelectedEvaluation と SimplexEquationEvaluation の対象ビルドは成功した
+（終了値 0）。新規公開宣言 13 本の小さい依存公理監査も終了値 0 で成功し、
+依存公理は propext・Classical.choice・Quot.sound のみ。新規引用属性はなく、
+引用出力は 0 本。いずれも impl 鍵・待ち 3600 秒・gtimeout 280 秒で実行した。
+大きい監査や root ビルドはしていない。
+
+新規 Lean は 4 ファイル・244 行・明示宣言 13 本（private 0 本）。
+所有ソースの累計は 198 ファイル・15,556 行・明示宣言 706 本（private 21 本）。
+17,000 行の外枠まで残り 1,444 行。200 行を超える証明はなく、一次 ID の追加はない。
+既存 EInfinity ソースの変更はない。既定 heartbeat 上限も増やしていない。
+
+この評価式だけでは元の三相全三角形と K の実 Hom 誘導射の比較は完了しない。
+M10 の完全忠実性・指定 fiber・native な辺と全族、M11 以降および G12 は未完である。
+次は同じ全三相データの評価比較を進める。外枠は維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
