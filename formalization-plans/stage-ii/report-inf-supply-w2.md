@@ -7792,3 +7792,129 @@ R06は「通常colimの台が通常colim」という事実のみで導来実現�
 99行の残枠では、次のD01の全join族と各点の厳密照合の束を収められない所まで来た。`coordination.md` §2（62〜65行の規模上限・型つき一覧・代わりの紙の作業）とIS-W2 §16の外枠に従い、**検証済みをコミットした上で、この線の追加Leanをここで区切る**。新しい第五のまとまり・範囲の縮小・新しい模型圏仮定を要求しているのではなく、承認済みDの同じ型の工程が残る。数を使い切るための補題追加はしない。
 
 代わりの紙の作業として§152に、3b-4の§38.2の1・2について、既存部品、全関手・同じ指定錐族の型案、③-aの3b-3を使う場所、規模の案を残した。BEの新規Leanや点つきKanのTotは開始していない。この紙をG10や3b-4の検証済み完成と数えない。再開箇所は上表のD01の全族への自然性の輸送であり、B4やB・Cの再実装ではない。
+
+
+## 154. 再開：D01の指定複体代表から点ごとの実Γまでの全自然性（2026-11-14）
+
+一覧：済み 28／全体 36（うち追加 1）。D01〜D08の最終結論は未完であり、今回の法則・証明分割をIDの完了数へ加えない。前ターンは停止点2aとD補助の検証・コミットという進捗。mainの `d7b418962` を作業枝へfast-forwardで取り込み、IS-W2 §17・§18と /goal 更新を読んで再開した。旧20,000行の停止は解除、G10の外枠は **23,000行**。G10後の3b-4はTot側を先に、外枠15,000行、停止点3b-4a・3b-4bの後に任意coherent BE図式の段0まで進む指示を保持する。
+
+### 154.1 型と登録候補
+
+同じ閉零射によるHom図式の前合成を構成済みの行合成則に特殊化し、元の指定BK錐代表の図式方向と頂点方向の自然性を一致させた。その等式を既存 `normalizedLinearWeightHomEquiv_postcomp` と `pointwiseTruncationGammaIso` の全自然性で移した。新しい比較・点・錐を選び直さず、Moore反転と再反転も元のもの。新しい数学のまとまりではなくD01の既存構成の自然性・合成・係数移送の法則。
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeSourceNaturality`（98行）。
+
+```lean
+def bousfieldKanHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    doubleOppositeDiagram ((homDiagramFunctor Q).obj X) ⟶
+      doubleOppositeDiagram ((homDiagramFunctor P).obj X) where
+  app j := homPrecompose f (X.obj ((opOpEquivalence SimplexCategory).functor.obj j))
+  naturality i j a
+
+def normalizedBKConeSourceMap {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) :
+    (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (doubleOppositeDiagram ((homDiagramFunctor Q).obj X)) ⟶
+    (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+      (doubleOppositeDiagram ((homDiagramFunctor P).obj X))
+
+theorem normalizedBKConeSourceMap_f {P Q : Complex A} (f : P ⟶ Q)
+    (X : CosimplicialObject (Complex A)) (q : ℤ) :
+    (normalizedBKConeSourceMap f X).f q =
+      homDiagramDegreePrecompose X 0 q q (zero_add q) (Cochain.ofHom f)
+
+theorem normalizedBousfieldKanRepresentative_precompose {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (f : P ⟶ Q)
+    (g : Q ⟶ (productTotalFunctor A).obj X) :
+    normalizedBousfieldKanRepresentative Q X g ≫ normalizedBKConeSourceMap f X =
+      normalizedBousfieldKanRepresentative P X (f ≫ g)
+
+theorem normalizedBousfieldKanConeRepresentative_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    normalizedBousfieldKanConeRepresentative X ≫
+        normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f =
+      normalizedBousfieldKanConeRepresentative Y ≫
+        normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSetConeNaturality`（86行）。
+
+```lean
+def bousfieldKanSetHomFunctor :
+    CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ ⥤
+      SimplicialObject (SimplexCategoryᵒᵖᵒᵖ ⥤ Type u)
+
+theorem normalizedBousfieldKanSetCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    normalizedBousfieldKanSetCone X ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f) =
+      normalizedBousfieldKanSetCone Y ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y)
+
+theorem reflectedBousfieldKanConeRepresentative_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reflectedBousfieldKanConeRepresentative X ≫
+        normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f =
+      reflectedBousfieldKanConeRepresentative Y ≫
+        normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y
+
+theorem reflectedBousfieldKanSetCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reflectedBousfieldKanSetCone X ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f) =
+      reflectedBousfieldKanSetCone Y ≫
+        (bousfieldKanSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y)
+
+```
+
+登録候補：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.PointwiseBKConeNaturality`（107行）。
+
+```lean
+def pointwiseBKSetHomFunctor :
+    CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ ⥤
+      SimplexCategoryᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def pointwiseBKSetHomComparison
+    (H : CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ)
+
+theorem pointwiseBKSetHomComparison_naturality
+    {H H' : CochainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℤ} (f : H ⟶ H') :
+    (flipFunctor SimplexCategoryᵒᵖ SimplexCategoryᵒᵖᵒᵖ (Type u)).map
+        ((bousfieldKanSetHomFunctor A).map f) ≫ pointwiseBKSetHomComparison A H' =
+      pointwiseBKSetHomComparison A H ≫ (pointwiseBKSetHomFunctor A).map f
+
+theorem reversedWeightPointwiseBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reversedWeightPointwiseBousfieldKanCone X ≫
+        (pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f) =
+      reversedWeightPointwiseBousfieldKanCone Y ≫
+        (pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y)
+
+theorem reflectedPointwiseBousfieldKanCone_dinaturality
+    {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
+    reflectedPointwiseBousfieldKanCone X ≫
+        Functor.whiskerRight ((pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeTargetMap ((productTotalFunctor A).obj X) f))
+          SimplicialObject.opFunctor =
+      reflectedPointwiseBousfieldKanCone Y ≫
+        Functor.whiskerRight ((pointwiseBKSetHomFunctor A).map
+          (normalizedBKConeSourceMap ((productTotalFunctor A).map f) Y))
+          SimplicialObject.opFunctor
+
+```
+
+`pointwiseBKSetHomComparison A H` の推論された型は、`(flipFunctor Δᵒᵖ Δᵒᵖᵒᵖ (Type u)).obj ((bousfieldKanSetHomFunctor A).obj H) ⟶ (pointwiseBKSetHomFunctor A).obj H`。上の紙の表示で型を省いた場合もこの全図式射を意味し、各点のHomの元だけの主張ではない。
+
+### 154.2 検収と継続箇所
+
+コード **`00613f0ed`**。鍵付き対象ビルド175・176・177はそれぞれ **2,759・2,772・2,785 jobs、終了コード0**。各新規一本だけの小監査は **9・8・10宣言、いずれも標準三公理のみ**（合計27は今回三本だけの数字）。ログ `/private/tmp/isw2-build175.log`〜`177.log`。各回 `--class impl --wait 3600`、整理券一枚、対象ビルド・小監査の間だけ保持して返却済み。sorry・新公理0、計算上限の増加、既存宣言、⑤a、入口・公式監査・mainへの変更なし。200行超のファイルなし。
+
+累計 **329モジュール・20,192行**、外枠まで **2,808行**。累計一覧は `is-w2-g10-20261114-modules.json`。D01の全錐族はまだ構成していない。次は同じΓ比較と実豊穣Homの前合成を照合する `DoldKanClosedPrecomposition`（未検証の草稿）と、その比較による同じBK錐の自然性の移送。D02〜D08と3b-4の範囲を削らず継続する。
