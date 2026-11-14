@@ -1476,3 +1476,23 @@ B01 のアトラスの六種の式を満たす具体的な係数段（着手前�
 G1・G2共用部品込み本体9,503行、入口込み9,666行。一般の有限表示対象の模型の分割2,841行。六種の具体的な入力の有限族は供給済み。六種の式を満たす実際の係数段の出口と、その式を後の段の実際の三重交叉のgluingへ戻す接続は下書き検証中／検証待ち。gluing datum と全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+次の後段での gluing の接続の紙：現在の段の重なりの構造射 qᵢⱼ は δᵢⱼ≫pᵢ に等しいが、選んだ構造射そのものを保つ。後段の重なりは `pullback δ qᵢⱼ`、開包含は `baseChangedModelArrow δ qᵢⱼ pᵢ δᵢⱼ hδ` として構成する（構造射を等しい式に置き換えた別の pullback だけを使って済ませない）。`isPullback_baseChangedModelArrow` は任意の模型間の基底上の射の底変換の Cartesian 性を供給する。二つのこの Cartesian 正方形を `cartesianPullbackMap` で交叉し、チャートの pullback と貼り合わせると、段の実際の三重交叉と固定した三重交叉の底変換の同型になる。この一般形の同型の二射影の可換式から、六種の底変換射の式を `openTransitionGlueData` の式へ戻す。前記の合成が文字通り構造射となる場合の射影の法則と同じ普遍性である。
+
+この接続の着手前の型と見込み：`isPullback_baseChangedModelArrow` と `baseChangedModelTripleComparison`・`isPullback_baseChangedModelTripleComparison`・`baseChangedModelTripleIso`・その `_hom_fstArrow`／`_hom_sndArrow` は、任意の p:U→S、q:V→S、r:W→S、a:V→U、c:W→U と `a≫p=q`・`c≫p=r` を受け取り、実際の底変換射の交叉の比較・Cartesian 性・同型・二射影の可換式を供給する（既存の底変換・同型の法則、見込み120〜300行）。次の `baseChangedOpenTransitionGlueData` は、現在の段のチャート・開包含・対角の候補・反転・三重交叉の射と基底上の可換式、指定した後段での六種の底変換射の等式から、後段の実際の `Scheme.GlueData` を構成する（既存の貼り合わせ構成の係数移送、見込み250〜600行）。二側の逆の式から対角の開包含の IsIso、合成則から反転の逆・対角、三重交叉の同型の二射影の式から二つの gluing の式を供給し、既存の `openTransitionGlueData` に渡す。いずれも既存構成の法則と B01 の証明分割で、親項目を増やさない。
+
+
+### B01：三重交叉の二射影と六種の式の具体的な共通係数段
+
+`BaseChangedOverlapTripleProjections`（41行）：`baseChangedOverlapTripleIso_hom_fstArrow`・`_hom_sndArrow`（各 `_assoc`）は具体的な三重交叉の同型と、固定三重交叉の二射影の底変換射の合成が、段の実際の交叉の二射影に等しいこと。対象と直接 importer AlgebraicGeometry のビルド4,950ジョブ成功、小監査5宣言・標準三公理のみ。ログ `2g-triple-projections-check.log`・`2g-triple-projections-native.log`・`2g-triple-projections-audit.log`。
+
+`OpenAtlasEquationStage`（59行）：`stageEquationsHold` は六種の式の後段の実際の底変換射としての同時の成立、`exists_stageEquationsHold_of_fg` は実際の有限生成係数部分代数の一つの後段、元の包含との因子化、六種の式の同時の成立を返す。対象と直接 importer AlgebraicGeometry のビルド4,951ジョブ成功、小監査8宣言・標準三公理のみ。ログ `2g-atlas-equation-stage-check.log`・`2g-atlas-equation-stage-native.log`・`2g-atlas-equation-stage-audit.log`。
+
+この二本は本体100行・入口2行。単独束の終了状態0、公開前のソース完全一致を確認済み。六種の式の三モジュールの入口登録も合わせてコミットし、全てを import した同じ入口の対象ビルドが成功した。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ取得。
+
+今回の区切り（f73d0070d の後）は12モジュール、本体921行・入口12行、小監査合計150宣言・標準三公理のみ。G1・G2共用部品込み本体9,603行、入口込み9,768行。一般の有限表示対象の模型の分割2,941行。実際の段の三種の射から六種の式の具体的な有限族を組み立て、全ての式を同時に満たす実際の後の係数段を取る出口まで検証した。
+
+次は上記の一般形の底変換の Cartesian 比較・三重交叉の同型と二射影を使い、六種の式を `Scheme.GlueData` の式へ戻し、実際の有限表示対象の模型の貼り合わせと元の対象との Cartesian 比較へ接続する。その後、一般の固有性の降下と被覆模型を続ける。B01〜B04は未完、2g-1の停止点ではない。外枠25,000行は不変、約12,000行で G2 の残りの規模の見込みを更新する。
+
+一覧：済み10／全体14（うち追加5）。
