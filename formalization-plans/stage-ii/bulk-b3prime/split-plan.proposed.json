@@ -14,10 +14,17 @@
         "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidTargetProperty",
         "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfUnder_u",
         "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidTargetInclusion",
-        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra"
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap_naturality",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientSquare_commutes",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside"
       ],
       "names": "unchanged",
-      "note": "9 ordinary category declarations; two nerve abbreviations stay in interface"
+      "note": "16 ordinary category, target-unit, quotient and valuation-extension declarations; nerves and simplicial squares stay in BS"
     },
     {
       "item": "B3P-01",
@@ -73,6 +80,27 @@
         "SerrePositivity.BhattScholze.Andre.Transfinite.mul_eq_zero_of_pow_mul_eq_zero_of_reduced"
       ],
       "new_namespace": "SerrePositivity.CommutativeAlgebra"
+    },
+    {
+      "item": "B3P-03",
+      "old_path": "SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean",
+      "new_path": "SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean",
+      "declarations": [
+        "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueIdeal",
+        "SerrePositivity.BhattScholze.DeltaAdjoinDivisionResidue",
+        "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueIdeal_eq_map",
+        "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueSupEquiv",
+        "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueSupEquiv_mk",
+        "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueSupEquiv_coeff",
+        "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTargetAlgebra",
+        "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTargetAlgebra_algebraMap",
+        "SerrePositivity.BhattScholze.deltaDivisionSourceTensor_residueIdeal_map",
+        "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTensorEquiv",
+        "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTensorEquiv_tmul",
+        "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTensorAlgEquiv"
+      ],
+      "names": "unchanged",
+      "note": "Extract raw delta residue and tensor presentation only. Retain Normalized-dependent flatness/regularity in Andre, avoiding new Delta->Andre reverse edges."
     }
   ]
 }

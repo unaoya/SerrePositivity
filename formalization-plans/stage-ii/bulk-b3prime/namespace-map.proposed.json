@@ -370,70 +370,6 @@
       "kind": "theorem"
     },
     {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueDirectLimitEquiv",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueDirectLimitEquiv",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 107,
-      "kind": "def"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueDirectLimitEquiv_coeff",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueDirectLimitEquiv_coeff",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 113,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseMap",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseMap",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 121,
-      "kind": "def"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseMap_mk",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseMap_mk",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 127,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseAlgebra",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseAlgebra",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 136,
-      "kind": "def"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueDirectLimitAlgEquiv",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueDirectLimitAlgEquiv",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 141,
-      "kind": "def"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_moduleFaithfullyFlat",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_moduleFaithfullyFlat",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 154,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_moduleFlat",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_moduleFlat",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 165,
-      "kind": "theorem"
-    },
-    {
       "old": "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTargetAlgebra",
       "new": "SerrePositivity.BhattScholze.deltaDivisionSourceResidueTargetAlgebra",
       "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
@@ -480,46 +416,6 @@
       "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
       "source_line": 264,
       "kind": "def"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_isSMulRegular",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_isSMulRegular",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 295,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionPResidueIdeal_eq",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionPResidueIdeal_eq",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 320,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionPQuotientResidueEquiv",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionPQuotientResidueEquiv",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 328,
-      "kind": "def"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionPQuotientResidueEquiv_mk",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionPQuotientResidueEquiv_mk",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 335,
-      "kind": "theorem"
-    },
-    {
-      "old": "SerrePositivity.BhattScholze.deltaAdjoinDivisionModP_next_isSMulRegular",
-      "new": "SerrePositivity.BhattScholze.deltaAdjoinDivisionModP_next_isSMulRegular",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "source_line": 342,
-      "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteResidueFamilyList",
@@ -6675,17 +6571,17 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.deltaRootSourceIteratedPDCompletion_isComplete_p",
-      "new": "SerrePositivity.DerivedCompletion.deltaRootSourceIteratedPDCompletion_isComplete_p",
+      "new": "SerrePositivity.BhattScholze.Andre.deltaRootSourceIteratedPDCompletion_isComplete_p",
       "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
-      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
       "source_line": 1605,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.deltaRootSourceIteratedPDCompletion_isComplete_d",
-      "new": "SerrePositivity.DerivedCompletion.deltaRootSourceIteratedPDCompletion_isComplete_d",
+      "new": "SerrePositivity.BhattScholze.Andre.deltaRootSourceIteratedPDCompletion_isComplete_d",
       "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
-      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
       "source_line": 1632,
       "kind": "theorem"
     },
@@ -9181,7 +9077,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 456,
       "kind": "def"
     },
@@ -9189,7 +9085,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap_naturality",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap_naturality",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 460,
       "kind": "theorem"
     },
@@ -9229,7 +9125,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 553,
       "kind": "def"
     },
@@ -9237,7 +9133,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 557,
       "kind": "def"
     },
@@ -9245,7 +9141,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 561,
       "kind": "def"
     },
@@ -9253,7 +9149,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientSquare_commutes",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientSquare_commutes",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 570,
       "kind": "theorem"
     },
@@ -9285,7 +9181,7 @@
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside",
       "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
-      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "new_module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
       "source_line": 602,
       "kind": "def"
     },

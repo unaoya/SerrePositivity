@@ -1,0 +1,592 @@
+{
+  "status": "PASS",
+  "before_count": 64,
+  "after_count": 64,
+  "parent_count": 64,
+  "changes": [],
+  "transient": {
+    "before": [
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionLift.congr_simp"
+    ],
+    "after": [
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionLift.congr_simp",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra.eq_1"
+    ]
+  },
+  "auxiliary_groups": {
+    "before": [
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData._sizeOf_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData._sizeOf_inst",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.casesOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.cone",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.ctorIdx",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk._flat_ctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.inj",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.injEq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.sizeOf_spec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.noConfusionType",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.overSource",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.overSource_unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projectionEdge",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projectionEdge_eq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection_compat",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection_naturality",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection_unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.rec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.recOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.sourceCone",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.source_legs",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.source_vertex",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.vertex_eq"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData._sizeOf_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData._sizeOf_inst",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.casesOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.ctorIdx",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.map_compat",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk._flat_ctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.inj",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.injEq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.sizeOf_spec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.moduleIso",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.noConfusionType",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.rec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.recOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.ringFunctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.unit_compat"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.HFunctor",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HFunctor._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.JHZeroIso",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.JHZeroIso._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3._sizeOf_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3._sizeOf_inst",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.casesOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.ctorIdx",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.excision",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.h0",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.integral",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.limitCone",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.limit_isLimit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk._flat_ctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.inj",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.injEq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.sizeOf_spec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.noConfusionType",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.perfd",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.rec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.recOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.universal"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionExtendCone",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionExtendCone.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor._proof_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRestrictCone",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRestrictCone.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_4",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_5"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso._simp_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.component",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.component._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.component._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.component._proof_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.joinLegSimplex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.joinLegSimplex._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfdSquare",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfdSquare.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetDiagram",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetDiagram.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_4",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_5",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction._proof_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap._proof_1"
+        ]
+      }
+    ],
+    "after": [
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData._sizeOf_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData._sizeOf_inst",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.casesOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.cone",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.ctorIdx",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk._flat_ctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.inj",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.injEq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.mk.sizeOf_spec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.noConfusionType",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.overSource",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.overSource_unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projectionEdge",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projectionEdge_eq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection_compat",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection_naturality",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.projection_unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.rec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.recOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.sourceCone",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.source_legs",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.source_vertex",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.BSLimitConeData.vertex_eq"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData._sizeOf_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData._sizeOf_inst",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.casesOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.ctorIdx",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.map_compat",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk._flat_ctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.inj",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.injEq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.mk.sizeOf_spec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.moduleIso",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.noConfusionType",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.rec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.recOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.ringFunctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData.unit_compat"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.HFunctor",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HFunctor._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.HIso._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.JHZeroIso",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.JHZeroIso._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3._sizeOf_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3._sizeOf_inst",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.casesOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.ctorIdx",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.excision",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.h0",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.integral",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.limitCone",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.limit_isLimit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk._flat_ctor",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.inj",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.injEq",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.mk.sizeOf_spec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.noConfusion",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.noConfusionType",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.perfd",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.rec",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.recOn",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.unit",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.universal"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionExtendCone",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionExtendCone.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor._proof_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRestrictCone",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRestrictCone.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_4",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence._proof_5"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso._simp_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.component",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.component._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.component._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.component._proof_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.joinLegSimplex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.joinLegSimplex._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare._proof_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfdSquare",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfdSquare.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison._proof_4"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection._proof_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone_vertex",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.restrictCone_vertex._simp_1_2"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetDiagram",
+        "module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetDiagram.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_3",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_4",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension._proof_5",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension.eq_1"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction._proof_1",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction._proof_2",
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction._proof_3"
+        ]
+      },
+      {
+        "parent": "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap",
+        "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "names": [
+          "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap._proof_1"
+        ]
+      }
+    ]
+  },
+  "parser_self_identity_companions": {
+    "policy": "Only native-typed private ParserDescr constants at verified notation commands; compare every distinct type/body/axiom/attribute payload per original source owner after replacing only its own literal Name. Repeated identical compiler descriptors caused by a reviewed split are recorded without ordinal pairing. Raw body hashes and inventories are retained.",
+    "before": [],
+    "after": [],
+    "before_content_groups": 0,
+    "after_content_groups": 0,
+    "differences": []
+  }
+}

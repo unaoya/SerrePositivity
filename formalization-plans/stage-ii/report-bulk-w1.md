@@ -1284,3 +1284,18 @@ R8-1に指示の範囲の衝突がある。§1はEInfinity→BSの2辺の解消�
 DivisionResidueの移動は暫定案。現在のファイルはNormalizedの有限塔・忠実平坦性に依存するため、丸ごとの移動だけではDelta→Andreの逆辺を作る。一般の依存の閉包を調べ、分離できなければその移動を取り下げて元に残す。文書の「旧パス」は現在0件。工程名の候補と引用の歴史の注記を分け、属性の意味や対応番号を機械的に消さない。
 
 [時間の見込み](bulk-b3prime/stage0-timing.json)：準備4〜12時間、適用と全検証3〜8時間（鍵待ちを除く、今回のプレビューは未実測）。以前のB3の実測はroot 689秒、verify（3ジョブ）2,968秒。全監査106本の実測合計も付表に保存した。今回の閉包が小さくてもroot・全監査・verifyは省略せず、最初のプレビューの実測で見直す。昼は280秒以内、夜30分以内・--wait 3600・bulk、全監査/verifyは夜。適用の直前に通知し、それまではBSの取り込みを止めない。
+
+
+### B3′ 準備・R8-2の分割プレビュー（11-14夜、未適用）
+
+一覧：済み 2／全体 22（うち追加 0）。隔離worktree /tmp/bulk-b3prime-previewを作り、packagesは既存を参照、buildはcopy-on-writeの独立したコピーにした。他レーン・main・この枝の本体Leanは変更していない。R8-2を最初に実行した[プレビュー](bulk-b3prime/r82-preview/preview.patch)は、元の64宣言をBS側32・通常の圏16・通常の完備化16へ三分割する。元からHomologicalAlgebraにあるRingCompletionは再利用し、nerve・単体的四角形・指定錐はBS側に残す。
+
+対象3モジュールはビルド成功。[保存比較](bulk-b3prime/r82-preview/r82-comparison.json)はv3bの64親宣言で欠落・余分・未説明0（生のsnapshotは184→185カーネル行。生成行の取り扱いはB3と同じ既存比較器）。型・本体・公理・カーネル属性を検査し、比較器やsnapshotの規則は弱めていない。元の宣言のコマンドはバイト単位で保存。所有元の写像と原snapshotの圧縮版、ハッシュは[manifest](bulk-b3prime/r82-preview/manifest.json)に保存した。
+
+最初の25宣言だけの分割も未説明0だったが、通常の商図式とArcOutsideを使う環側に古い依存が残ったため7宣言を加えた。その初回比較で11差分を検出し、Mathlib.Combinatorics.Quiver.ReflQuiverのimport不足によるquiver instanceの違いと特定。元のinstanceを供給するimportを加え、最終比較で0に直した。初回の差分を許容して通したのではない。
+
+直接利用する環の5本はimport一行だけをRingInterfaceへ替えた。RootAdjunction・IntegralClosureCompletion・IntegralApproximation・PerfectoidFilteredColimit・ArcPerfectoidBaseで、その和の静的閉包334モジュールにInfinityCategoriesは0本。これら5本の対象ビルドと172親宣言の保存比較も成功したが、最後のMathlib import修正後の環境で再照合するため次の鍵の塊へ入れた。この再照合が済むまで最終receiptは保留とする。
+
+全体の準備は187モジュールの元環境snapshot、162本の参照採取を再開可能な束で進めている。importだけの集約4本には所有宣言がないことを静的に確認し、importとroot検査で扱う。参照採取は既存bulk_collectを使い、Lakeの元のsetupを継承する。共有鍵は一回ずつ、昼270秒・夜1,650秒、--wait 3600。
+
+依存の閉包の調査で、DivisionResidue全体の移動は撤回し、独立な剰余・テンソル表示12宣言の切り出しへ変更した。[残す理由](bulk-b3prime/retentions.json)：平坦性・正則性がNormalizedとOrdinaryRoots/Adjoinの有限塔に依存し、全体移動はDelta→Andreを新設するため。残るLciEnvelopePresentationからその平坦性への辺を解消したとは扱わない。更新後の案は全体移動70本・切り出し先7本、公開ソース表1,848行（改名1,486）。またRootSourceの一般の反射比較は1460〜1591行の節だけを対象とし、その後の具体的δ根添加の完備性は一般のファイルへ混ぜない。

@@ -467,14 +467,6 @@
       "reason": "R7-3(c): keep delta-dependent implementation within BS; put beside current RootFamily users"
     },
     {
-      "old_path": "SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean",
-      "new_path": "SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean",
-      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
-      "new_module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
-      "item": "B3P-03",
-      "reason": "R7-3(b): generic residue declarations; collect exact Normalized dependency closure before preview"
-    },
-    {
       "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
       "new_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/Derived.lean",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",

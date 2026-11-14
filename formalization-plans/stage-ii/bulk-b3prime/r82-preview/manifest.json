@@ -1,0 +1,67 @@
+{
+  "baseline": "32d364b53",
+  "status": "isolated R8-2 split build and v3b passed; consumer final post-import-repair recheck pending; not applied",
+  "snapshot_binary_sha256": "044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9",
+  "partition": {
+    "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface": 32,
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories": 16,
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface": 16
+  },
+  "source_paths": [
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralApproximation.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/PerfectoidFilteredColimit.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+    "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingCategories.lean",
+    "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingInterface.lean"
+  ],
+  "artifacts": [
+    {
+      "file": "r82-before.json.gz",
+      "uncompressed_sha256": "c233040906ce85ddb3b22b277d89bd7c4cc65775aaff406c1a153015964f1cba",
+      "bytes": 864780
+    },
+    {
+      "file": "r82-after.json.gz",
+      "uncompressed_sha256": "db563ff2315969360a59319cab7597349f2e7866f5621bade3a129440a7d0fae",
+      "bytes": 890615
+    },
+    {
+      "file": "r82-module-plan.json",
+      "uncompressed_sha256": "283b78cb4bf139e0cebfd6298ce704d2495faecb62bb97f7aea8e44da4269513",
+      "bytes": 5051
+    },
+    {
+      "file": "r82-name-map.json",
+      "uncompressed_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "file": "r82-comparison.json",
+      "uncompressed_sha256": "d87c84eb5a5f82259cce511878dd12b7a985c8eb9ae40fcf539cfd26f06910e9",
+      "bytes": 36209
+    },
+    {
+      "file": "r82-before-receipt.json",
+      "uncompressed_sha256": "a58d3be2a0fbf408b0eac7cdeb7130e8b78d6da79f44fbcef0c275f6773390ec",
+      "bytes": 679
+    },
+    {
+      "file": "r82-after-receipt.json",
+      "uncompressed_sha256": "e63d6c379cdf4904b6dfc60f0df22f968d3cd6d51e1dde00553c277fec5ee83e",
+      "bytes": 875
+    },
+    {
+      "file": "r82-consumers.json",
+      "uncompressed_sha256": "c55d1cbeb1b08928b75c482e08953d8e6111eb638edc0c4458cb1cecab777bba",
+      "bytes": 1577
+    },
+    {
+      "file": "r82-five-import-closure.json",
+      "uncompressed_sha256": "621af88d924c0de6cd8e5df74ecdfeaf6aa01fa243dbd23ffd1a79d45a17d790",
+      "bytes": 556
+    }
+  ]
+}
