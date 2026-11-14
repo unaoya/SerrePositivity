@@ -14339,3 +14339,48 @@ theorem grothendieckFiberUnit_comparison (i : I) :
       (grothendieckKanCoefficientUnit F).app i ≫
         weightedNerveFiberMap (grothendieckKanCoefficients F) i
 ```
+
+## 231. R03g完了：同じ元のGrothendieck単位の指定fiber制限は弱同値（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03gを完了。R03d・R02・R03は未完了。
+
+R03gを111行で閉じた（見込み150〜350行、上端との差−239行）。元のstrictなgrothendieckWeightedNerveIsoのinvを通した同じ定値fiberの包含に、元の置換単位を合成し、指定fiberへの元の実写像grothendieckFiberUnitを取った。同じR03fの全比較からのfiber比較grothendieckFiberComparisonは、既存の前合成同値のfiberへの制限によって同値となる。
+
+元の単位のfiber制限とこの同じfiber比較の合成は、元のEx∞係数単位と元のweightedNerveFiberMapの合成そのものに厳密に等しい。この等式は元の全単位の厳密な三角形、元のstrict同型の逆条件、weightedNerveConstantLift_mapの全自然性だけで示した。元のEx∞単位はanodyneであり、既存homotopyEquivalence_pre_of_anodyneとπ₀の全単射で弱同値と検査できる。元のweightedNerveFiberMapはstrictな同型である。弱同値の合成と同じfiber比較の消去により、元のgrothendieckFiberUnit自身の弱同値性が得られた。充填性や弱同値性を新しい仮定として追加していない。途中報告点175行に達する前に全証明が閉じた。
+
+個別検査の最終版59023・終了0。310：対象ビルド3,412 jobs・終了0、小監査175本1,258宣言・標準三公理のみ（実ハンドル51386・終了0）。鍵返却済み。今回111行、累計175本・11,363行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次は§220・§221の同じ全要素圏とGrothendieck表示の厳密な係数移送と元の置換単位の自然性を使い、この同じfiber単位の弱同値を元の全要素圏のfiberへ戻す。その後に、元の同じnative Hom写像を合成した写像と元の固定始域のroof比較を照合する。R03gだけでnative Hom写像の同値性やR03dの全FunctorIsoの正規化が済んだとはしない。
+
+### 231.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。fiberのKan性は既存のleft-fibrationのfiberのKan性と元のEx∞係数のKan性を局所instanceとして使う。
+
+#### GrothendieckFiberUnit（111行）
+
+```lean
+abbrev grothendieckReplacement : Over (nerve I)
+
+def grothendieckFiberInclusion (i : I) : nerve (F.obj i) ⟶ nerve (Grothendieck F)
+
+theorem grothendieckFiberInclusion_projection (i : I) :
+    grothendieckFiberInclusion F i ≫ nerveMap (Grothendieck.forget F) = SSet.const (nerveVertex i)
+
+def grothendieckFiberUnit (i : I) :
+    nerve (F.obj i) ⟶ vertexFiber (grothendieckReplacement F).hom (nerveVertex i)
+
+def grothendieckFiberComparison (i : I) :
+    vertexFiber (grothendieckReplacement F).hom (nerveVertex i) ⟶
+      vertexFiber (weightedNerveProjection (grothendieckKanCoefficients F)) (nerveVertex i)
+
+theorem grothendieckFiberUnit_comparison (i : I) :
+    grothendieckFiberUnit F i ≫ grothendieckFiberComparison F i =
+      (grothendieckKanCoefficientUnit F).app i ≫
+        weightedNerveFiberMap (grothendieckKanCoefficients F) i
+
+theorem grothendieckFiberComparison_isQCatEquivalence (i : I) :
+    IsQCatEquivalence (grothendieckFiberComparison F i)
+
+theorem grothendieckFiberUnit_isWeakHomotopyEquivalence (i : I) :
+    IsWeakHomotopyEquivalence (grothendieckFiberUnit F i)
+```
