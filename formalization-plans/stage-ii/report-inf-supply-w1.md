@@ -8412,3 +8412,52 @@ lemma bousfieldKanRealization_homotopicallyConstant
 `BousfieldKanRealizationConstant` はその後に検証する下書き。
 これら2本は未検証としてコミットに含めない。
 E01の別経路の紙は§80.1のまま。実増大射の弱同値性はまだ未証明。
+
+## §92 RR02(a)：同じ自由arrow frameへの適用（検証待ち）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§91.1以降の検証は session 79525 の同じ整理券で待機中、生存確認済み。
+既存の `strictDiagramFreeValueFrame_cofibrant` と
+`strictDiagramFreeValueFrame_homotopicallyConstant` をそのまま使う適用を書いた。
+
+```lean
+def strictDiagramFreeArrowRealizedFrame (X : StrictComplexDiagram A d) :
+  SimplexCategory ⥤ StrictComplexDiagram A d :=
+  SSet.stdSimplex ⋙ bousfieldKanParameterRealization
+    (StrictDiagramArrowElements d)ᵒᵖ (strictDiagramFreeArrowFrame A d X)
+lemma strictDiagramFreeArrowRealizedFrame_cofibrant (X : StrictComplexDiagram A d) :
+  Reedy.reedyLeft Reedy.simplex (cofibrations (StrictComplexDiagram A d))
+    (initial.to (strictDiagramFreeArrowRealizedFrame A d X))
+lemma strictDiagramFreeArrowRealizedFrame_homotopicallyConstant
+    (X : StrictComplexDiagram A d) {n m : SimplexCategory} (f : n ⟶ m) :
+  weakEquivalences (StrictComplexDiagram A d)
+    ((strictDiagramFreeArrowRealizedFrame A d X).map f)
+```
+
+§88で固定した実現に標準単体を代入するだけで、frameの選択は変えない。
+これはRR02(a)の証明の分割。検証順は§90.3 → §91 → この適用。
+実増大射の弱同値性と元のframe Hom比較との一致は引き続き必要。
+
+### 92.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanRealizationAnodyne | 50 | 2,802 jobs成功 | 2宣言、標準三公理のみ |
+| BousfieldKanRealizationConstant | 56 | 下行と合わせて3,832 jobs成功 | 下行と合わせて9宣言、標準三公理のみ |
+| StrictDiagramFreeArrowRealizedFrame | 58 | 同上 | 同上 |
+
+ログ：`/tmp/is-w1/bk-realization-anodyne/build.log`、
+`/tmp/is-w1/bk-realized-frame-batch/build.log`。いずれもプロセス終了と監査成功を確認。
+計算上限変更なし。今回164行、検証済み累計186本・14,319行。
+上限変更後のRR02(a)実測1,821行、(b)(c)新規0行。
+
+これで、同じBK実現により得た自由arrowの余単体対象についてReedy cofibrancyと
+全構造射の弱同値性が本体で検証された。SSetモデル存在入力は使っていない。
+実増大射の弱同値性、実frame HomとBK endの同一視、RR02(b)(c)はまだ未完。
+後者のHom同一視には既存の `CosimplicialHom.adjunctionHomIso` と
+`QuillenStandardFrame.homIso` が使える。`WeightedFrameHomNaturality` の
+別の重み実現をそのまま同一視せず、§88の指定随伴へ適用する。
+E01の別経路の紙は§80.1のまま。停止点5aにはまだ到達していない。
