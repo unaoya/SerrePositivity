@@ -836,3 +836,39 @@ ConstructibleCompactness **43 行**、ProperFinitePresentationSurjectivityLimit 
 G1 共用部品込み本体 **4,967 行**、入口込み **5,062 行**。未検証の `FiniteTypeClosedEnvelopeWitness` は作業木の scheme-drafts に置き、コミットには含めない。次は、細分の構成で選んだ Noether 周辺模型と有限型閉イデアルの証人を保持し、整射の有限表示段の図式・今回の二つの全射性の比較・元の X への因子化を同じ段へそろえる。A07 の一般の基底と G2 は未完。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 の証人の保持の法則 `exists_closedEnvelope_refinement_witness_of_flat_closedRestriction` の型：既存の `exists_fppf_closedEnvelope_refinement_of_flat_closedRestriction` と同じ p,f,hf,i,U の仮定から、Y 上の有限型 J と、J.subschemeι≫p の全射性、pullback.snd(i≫f)(J.subschemeι) の全射性を返す。同じ閉包絡と二つの全射性の証明を使い、固有・平坦・局所有限表示の性質は既存の合成・底変換から渡す。見込み60〜120行、前記の証人を返す補助出口150〜450行の中。旧宣言の型・名前は変えない。
+
+A07 の模型の証人を返す法則 `exists_flat_model_closed_refinement_witness` の型：既存の `exists_fppf_proper_refinement_of_flat_model` と同じ実際の tensor pullback hX と p₀,i₀,U₀ の仮定から、pullback(p₀,g) 上の有限型 J、J.subschemeι≫pullback.snd p₀g の全射性、Noether 側の平坦射 i₀≫pullback.snd f₀p₀ の底変換を J.subschemeι でさらに引いた射の全射性、元の X への実際の射 b と b≫x=q≫J.subschemeι≫pullback.snd p₀g を返す。同じ底変換と閉包絡の構成の証人を保持する分割（見込み90〜160行、証人を返す束150〜450行の中）。元の出口の型・名前は変えない。
+
+係数の因子化の法則の実装名は `exists_ringHom_factor_of_finiteType_int`。filtered な F:J→CommRingCat.{u}、実際の cocone c と IsColimit、有限型 ℤ-代数 A:Type u、g:A→c.pt に対し、∃j,g₀:A→F(j), g=(c.ι.app j).hom.comp g₀ を返す。前記60〜180行の分割の型そのままで、ULift ℤ と環同型の有限型性・Noether 性の移送を使う。
+
+証人を保持した compact minimal primes の出口 `exists_noether_flat_closed_refinement_model_compact_minimalPrimes`：被約 R、極小素点集合準コンパクト、有限表示 R-代数 B の affine v 判定から、有限型 ℤ-係数環 A（Noether）、有限表示 A-代数 C、固有・局所有限表示 p₀:Y₀→Spec A、Noether 平坦化の閉部分 i₀:Z₀→Spec C×Spec A Y₀（g₀=i₀≫snd は平坦・局所有限表示・準コンパクト）、pullback(p₀,Spec R→Spec A) 上の有限型 J を実際に選ぶ。J の構造射 r と、g₀ を底変換して J で引いた q は全射で、元の Spec B への b と b≫(Spec B→Spec R)=q≫r を返す。元の compact minimal primes の細分の構成で選んだ証人を保持する分割（見込み100〜180行、証人の束150〜450行の中）。元の出口の名前・型は保つ。
+
+A07 の因子化した係数写像を持つ底変換図式の法則（見込み140〜300行）：i∈J、γ:D(i)→S、p:Y→S に対し、`compositeStageBaseChangeDiagram` は j:Over i を pullback(D.map j.hom≫γ)p に送る。`compositeStageBaseChangeCone` の頂点は pullback(c.π.app i≫γ)p で、元の IsLimit からこの cone の IsLimit を得る。さらに g:c.pt→S と h:c.π.app i≫γ=g があれば、`compositeStageBaseChangePointIso` で元の構成の pullback p g をその頂点と同型にし、同じ頂点 pullback p g を持つ実際の極限 cone に移す。閉イデアルの型を別の空間へ置き換えず C03 を適用するため、cone を同型で移す。遷移射の Cartesian 性・affine 性と qcqs 性は前の StageBaseChangeLimit と同じ底変換・極限の法則で渡す。親 ID は増やさない。
+
+合成係数の cone の法則には、`compositeStageBaseChangeConeWithPoint_π_fst`・`_π_snd`（元の基底への射影と周辺模型への射影の可換式）、`isPullback_compositeStageBaseChangeConeWithPoint_π`（各射影が元の図式の射影の実際の底変換）を含める。これにより、C03 の閉部分の pullback 比較と貼り合わせて、閉部分の構造射も元の基底の同じ射影の底変換と示す。
+
+C03 と合成係数の底変換の接続 `exists_proper_closed_compositeStage_model` の型（見込み70〜160行）：同じ D,c,hc、γ:D(i)→S、固有・局所有限表示 p:Y→S、g:c.pt→S、c.π.app i≫γ=g、pullback p g 上の有限型 K から、ある j:Over i の閉部分 L、固有・局所有限表示 r_j=L.subschemeι≫fst、元の閉部分からの a:K.subscheme→L.subscheme を取り出す。a と K.subschemeι≫snd、r_j と c.π.app j.left の正方形は Cartesian、a と周辺模型 Y への射は可換。C03 と二つの底変換正方形の貼り合わせの法則で、新しい親の存在項目は足さない。これで固有側の全射性の有限段への移送に、同じ r_j の模型を渡す。
+
+係数の因子化の I04 へのアダプター（前記60〜180行の中）：`exists_integral_model_stage_factor_of_finiteType_int` は整な R→B、有限型 ℤ-代数 A、g:A→B を入力し、I01〜I04 の実際の IntegralModelIndex R B のある i と g₀:A→(integralModelSmallDiagram R B)(i)、g=(integralModelSmallCocone R B).ι(i)∘g₀ を返す。`exists_integral_model_spec_factor_of_finiteType_int` はその同じ因子化を、実際の Spec の極限 cone の射影と γ:D(i)→Spec A の合成が Spec.map g と一致する形で返す。新しい模型の存在を入力に加えず、I03 の実際の IsColimit と反変 Spec の合成の法則を使う。
+
+### A07：Noether 平坦模型・閉包絡の証人の保持と係数の因子化
+
+下書きの一式の検証後、個別の五モジュールと直接の importer AlgebraicGeometry の対象ビルド **4,886 ジョブ成功**、小監査 **5 宣言・標準三公理のみ**。
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| FiniteTypeClosedEnvelopeWitness | 37 | `exists_finiteType_closedEnvelope`：C02 の同じ閉包絡の有限型イデアルの証人を保持する |
+| ClosedEnvelopeRefinementWitness | 70 | `exists_closedEnvelope_refinement_witness_of_flat_closedRestriction`：有限型閉包絡と固有側・平坦側の全射性を保持する |
+| FlatModelClosedRefinementWitness | 87 | `exists_flat_model_closed_refinement_witness`：実際の底変換上の有限型 J と、二つの全射性、元の X への b と可換式を返す |
+| CompactMinimalPrimeClosedRefinementModel | 99 | `exists_noether_flat_closed_refinement_model_compact_minimalPrimes`：被約・極小素点集合準コンパクトな場合に、有限型 ℤ-係数環・Noether 平坦模型・底変換上の有限型 J・二つの全射性・元の射への因子化を実際に選ぶ |
+| FiniteTypeIntRingColimitFactor | 50 | `exists_ringHom_factor_of_finiteType_int`：有限型 ℤ-係数環から実際の環の filtered colimit への射を一段へ因子化する |
+
+本体 **343 行**、入口 5 行。証人を保持する四モジュールは293行（150〜450行の見込み内）、係数の因子化は50行（60〜180行の見込み内）。旧宣言の型・名前は変更していない。係数のファイルの個別ビルドで ℤ の Noether 性の明示 import 不足を検出し、`Mathlib.RingTheory.Int.Basic` を加えて個別ビルドを通した。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-closed-model-witness-batch-check-2.log`、`2g-closed-model-witness-native-2.log`、`2g-closed-model-witness-audit.log`。合成係数の底変換図式の下書きはこの監査に含めない。
+
+G1 共用部品込み本体 **5,310 行**、入口込み **5,410 行**。A07 の一般の基底への移送は未完：I04 の実際の図式へ係数因子化を渡し、C03 の固有閉部分模型の Cartesian 性、平坦側の模型、二つの全射性、元の X への因子化を同じ有限段でそろえる。G2 の一般の有限表示の固有模型を、この特殊な模型の証人で完成扱いにはしない。
+
+一覧：済み 9／全体 14（うち追加 5）。
