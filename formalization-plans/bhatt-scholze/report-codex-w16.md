@@ -14331,3 +14331,400 @@ L12a検証済み実測1,378+380=**1,758行**、M14は16,585+380=**16,965行**。
 見込み150〜250行内。174行は同じ逆復元の始点・交換座標の法則。
 逆の写像自体や両方向の等式はまだ未完。§177の超過リスクは解消したとは扱わない。
 §183の2本はまだ未検証で、上の実測・登録候補に含めない。
+
+## 185. L12a の逆復元に使う元の全水平辺の列挙（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆の合成切断の高さは、元の外側境界辺と元の内側内部辺の位置を合わせて指定する。
+両者の本数の和は合成語の水平辺数に等しい。元の出現位置pに属する内側辺は、
+外側境界iに対してp≤iなら先、i<pなら後にある。C387〜388と元の部分長の評価だけで示せる。
+したがって二つの位置写像の和は単射で、同じ有限濃度から全単射となる。
+C427〜C429は、§159の固定した同じ有限対応を組み立てる証明分割として追加する。
+型は次。各証明200行以内の見込み。新しい作用・定理・別の切断模型は導入しない。
+
+```lean
+lemma compositeInnerOuterEdge_order {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : Fin (n + e)) (i : Fin (m + d)) :
+    ((Surjection.occurrenceAt u.val k
+        (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val)).val ≤ i.val →
+      compositeInnerEdge u v k r a < compositeOuterEdge u v k r i) ∧
+    (i.val < (Surjection.occurrenceAt u.val k
+        (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val)).val →
+      compositeOuterEdge u v k r i < compositeInnerEdge u v k r a)
+
+def compositeEdgeSum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Fin (m + d) ⊕ Fin (n + e) → Fin (m + n + (d + e))
+
+lemma compositeEdgeSum_injective {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Function.Injective (compositeEdgeSum u v k r)
+
+lemma compositeEdgeSum_bijective {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Function.Bijective (compositeEdgeSum u v k r)
+```
+
+有限点検：`/tmp/bsw16/check-composite-joint-edges.py`、416条件・21,939組。
+両種の辺が重複なく全水平辺を埋め、混合した順序が上の不等式どおりであることを点検した。
+さらに外側境界の高さと、内側高さを同じ外側verticesで読む値から元の全高さが戻ることも確認。
+この最後の復元はまだLeanで証明済みとして数えない。
+
+## 186. L12a の逆方向の同じ内側高さの上下界（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C423の順位区間の所属をC424の元のverticesの上下界へ渡す。
+元の正の語長移送の位置はC426で一致させる。C430は既存lo/hiの隣接端点の法則。
+C431は同じ復元分割の内部辺についての指定面の評価の法則。
+どちらも固定したL12aの逆復元の証明分割として追加し、各証明200行以内の見込み。
+型は次。新しい作用・比較対象は導入しない。
+
+```lean
+lemma hi_le_lo_of_lt {m q : ℕ} (s : Cut m q) (i j : Fin (m + 1)) (hij : i < j) :
+    hi s i ≤ lo s j
+
+lemma positiveNestedInnerHeight_bounds {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (a : Fin (n + e)) :
+    lo c.1 (positiveOccurrencePosition u k
+        (segmentEdgeOwner (positiveNestedPartition u v k c)
+          (Surjection.occurrenceCount_pos u k) a.val)) ≤
+        (vertices c.1 (positiveWord u) k (cutHeights c.2 a)).val ∧
+      (vertices c.1 (positiveWord u) k (cutHeights c.2 a)).val ≤
+        hi c.1 (positiveOccurrencePosition u k
+          (segmentEdgeOwner (positiveNestedPartition u v k c)
+            (Surjection.occurrenceCount_pos u k) a.val))
+```
+
+有限点検は§185の21,939組に含まれる同じ外側区間・内側高さの照合。
+
+## 187. L12a の逆の合成切断を同じ全辺の高さから読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C429の全単射の逆で同じ水平辺を読み、外側境界では元の外側高さ、内側辺では
+元の内側高さを同じverticesで読む値を使う。同種の辺は既存単調性、異種の辺は
+C427とC430〜431で単調性を得る。元のcutOfHeightsから逆の合成切断を作る。
+C432〜C434は§159の同じ有限対応の逆方向の証明分割として追加する。
+各証明200行以内の見込み。新しい作用・別の模型は作らない。
+
+```lean
+def compositeEdgeEquiv {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    (Fin (m + d) ⊕ Fin (n + e)) ≃ Fin (m + n + (d + e))
+
+def positiveNestedEdgeHeight {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    Fin (m + d) ⊕ Fin (n + e) → Fin (q + 1)
+
+lemma positiveNestedEdgeHeight_mono {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (x y : Fin (m + d) ⊕ Fin (n + e))
+    (h : compositeEdgeSum u v k (positiveNestedPartition u v k c) x ≤
+      compositeEdgeSum u v k (positiveNestedPartition u v k c) y) :
+    positiveNestedEdgeHeight u v k c x ≤ positiveNestedEdgeHeight u v k c y
+
+def positiveNestedCompositeHeights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    Fin (m + n + (d + e)) →o Fin (q + 1)
+
+lemma positiveNestedCompositeHeights_apply {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (z : Fin (m + d) ⊕ Fin (n + e)) :
+    positiveNestedCompositeHeights u v k c
+        (compositeEdgeSum u v k (positiveNestedPartition u v k c) z) =
+      positiveNestedEdgeHeight u v k c z
+
+def positiveNestedCompositeMap {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) : PositiveNestedCutIndex u v k q → PositiveCompositeCutIndex u v k q
+
+lemma positiveNestedCompositeMap_heights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (z : Fin (m + d) ⊕ Fin (n + e)) :
+    cutHeights (positiveNestedCompositeMap u v k c).2
+        (compositeEdgeSum u v k (positiveNestedPartition u v k c) z) =
+      positiveNestedEdgeHeight u v k c z
+```
+
+有限点検は§185。単調性と両方向の逆の等式・符号は、この紙の案で証明済みと数えない。
+
+## 188. L12a の元の外側切断の復元と同じ順位への戻し（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆方向で指定した外側境界の高さから、元の外側Cutがそのまま戻ることをC393・C434と
+cutHeightsの単射性で読む。また区間内の順位をverticesで読みcolorHeightRankで戻すと
+同じ順位になることをC404で読む。C435〜C436は同じ対応の逆の等式の証明分割・法則。
+各証明200行以内の見込み。全対応・符号・nullaryはまだ未完。
+型は次。有限点検は§185の同じ対応。
+
+```lean
+lemma positiveNestedCompositeMap_outerCut {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    positiveCompositeOuterCut u v k (positiveNestedCompositeMap u v k c) = c.1
+
+lemma colorHeightRank_vertices {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    colorHeightRank s v a p hp (vertices s v a j).val
+        (vertices_bounds_on_colorInterval s v a p j hj).1
+        (vertices_bounds_on_colorInterval s v a p j hj).2 = j
+```
+
+## 189. L12a の元の内側順位を同じ区間で戻す接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C423の順位区間の所属をC426で元の出現位置へ移すC437と、その同じ順位をC436で
+復元するC438を追加する。既存構成の所属・係数移送の法則と逆の等式の証明分割。
+各証明200行以内の見込み。元の高さや頂点写像は選び直さない。
+型は次。有限点検は§185の同じ全対応の21,939組。
+
+```lean
+lemma positiveNestedInnerRank_mem {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (a : Fin (n + e)) :
+    cutHeights c.2 a ∈ colorIntervalRanks c.1 (positiveWord u) k
+      (positiveOccurrencePosition u k
+        (segmentEdgeOwner (positiveNestedPartition u v k c)
+          (Surjection.occurrenceCount_pos u k) a.val))
+
+lemma positiveNestedInnerRank_recover {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (a : Fin (n + e)) :
+    colorHeightRank c.1 (positiveWord u) k
+        (positiveOccurrencePosition u k
+          (segmentEdgeOwner (positiveNestedPartition u v k c)
+            (Surjection.occurrenceCount_pos u k) a.val))
+        (positiveOccurrencePosition_value u k _)
+        (vertices c.1 (positiveWord u) k (cutHeights c.2 a)).val
+        (positiveNestedInnerHeight_bounds u v k c a).1
+        (positiveNestedInnerHeight_bounds u v k c a).2 = cutHeights c.2 a
+```
+
+## 190. L12a の同じ二段切断への右逆の等式（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+外側Cutの等式C435が出力次数の等式を与える。C439は、この等しい次数で読んだ
+元の二つのCutの高さが同じなら同じCutであることを読む、次数移送だけの法則。
+C440で内側切断の高さの自然数値を既存定義から読み、C435・C434・C438を合わせる。
+C441の結論はSigma型の元の二段切断そのものの厳密な等式。HEqは等しい出力次数を
+持つ同じCutの添字の移送のためだけに使い、ホモトピー圏へ結論を弱めない。
+C439〜C441を同じ構成の次数移送・逆の等式の証明分割として追加する。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma cutHeights_heq {m q q' : ℕ} (s : Cut m q) (t : Cut m q') (h : q = q')
+    (hs : ∀ i, (cutHeights s i).val = (cutHeights t i).val) : HEq s t
+
+lemma positiveCompositeInnerCut_height_val {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    (cutHeights (positiveCompositeInnerCut u v k c) a).val =
+      (colorIntervalFirst (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k
+            (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val))
+          (positiveOccurrencePosition_value u k _)).val +
+        ((cutHeights c.2 (compositeInnerEdge u v k c.1 a)).val -
+          lo (positiveCompositeOuterCut u v k c)
+            (positiveOccurrencePosition u k
+              (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val)))
+
+lemma positiveCompositeNestedMap_rightInverse {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) :
+    Function.RightInverse (positiveNestedCompositeMap u v k (q := q))
+      (positiveCompositeNestedMap u v k)
+```
+
+有限点検は§185の同じ対応。左逆・符号・実テンソル・nullaryは未完。
+
+## 191. L12a の左逆に使う同じ辺の所属番号の比較（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の部分語iと辺の所属番号の比較を、元のstart・終了位置の不等式へ移す。
+C442〜C443は既存のmax'とstart_mono・boundary_monoの評価の法則として追加する。
+左逆で元の部分語の両端を復元する同じ有限比較の証明分割で、新しい作用は含まない。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma le_segmentEdgeOwner_iff {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (i : Fin t) :
+    i ≤ segmentEdgeOwner r ht p ↔ r.start i ≤ p
+
+lemma segmentEdgeOwner_le_iff {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (hp : p + 1 < L) (i : Fin t) :
+    segmentEdgeOwner r ht p ≤ i ↔ p + 1 < r.start i + (r.val i).val
+```
+
+有限点検：`/tmp/bsw16/check-segment-edge-owner-order.py`、799辺、1,552箇所の位置の読み。
+有効な全水平辺について全ての部分番号との両同値を確認した。
+
+## 192. L12a の左逆への残る接続（紙の型、未実装）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+右逆の検証待ちの間に、左逆側の残る同じ有限列挙の法則を型に落とした。
+C444〜C450はL12aの同じ構成の法則と証明分割。新しい数学の項目は足さない。
+以下は紙だけであり、証明済みや行数実測には含めない。
+
+```lean
+-- C444：同じ区間の最初の順位との比較。
+lemma colorIntervalFirst_le_rank_iff {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    colorIntervalFirst s v a p' hp' ≤ j ↔ p' ≤ p
+
+-- C445：同じ区間の最後の順位との比較。
+lemma rank_le_colorIntervalLast_iff {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    j ≤ colorIntervalLast s v a p' hp' ↔ p ≤ p'
+
+-- C446：順方向の内側高さは同じ所属出現の順位区間内。
+lemma positiveCompositeInnerCut_rank_mem {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    cutHeights (positiveCompositeInnerCut u v k c) a ∈
+      colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+        (positiveOccurrencePosition u k
+          (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val))
+
+-- C447：同じ順位の上下の比較を元の部分語の両端で読む。
+lemma positiveCompositeInnerCut_rank_bounds_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a : Fin (n + e)) (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (colorIntervalFirst (positiveCompositeOuterCut u v k c) (positiveWord u) k
+        (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i) ≤
+        cutHeights (positiveCompositeInnerCut u v k c) a ↔ c.1.start i ≤ a.val) ∧
+    (cutHeights (positiveCompositeInnerCut u v k c) a ≤
+        colorIntervalLast (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i) ↔
+      a.val + 1 < c.1.start i + (c.1.val i).val)
+
+-- C448：有限の全ての辺との同じ比較は、その同じ端点を特定する。
+lemma nat_eq_of_fin_le_iff {m : ℕ} (x y : ℕ) (hx : x ≤ m) (hy : y ≤ m)
+    (h : ∀ a : Fin m, x ≤ a.val ↔ y ≤ a.val) : x = y
+
+-- C449：同じ交換経路の始点・終点の復元から元の部分長を得る。
+lemma positiveCompositeNestedMap_partition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positiveNestedPartition u v k (positiveCompositeNestedMap u v k c) = c.1
+
+-- C450：同じ全辺の指定高さによる元の合成切断の復元。
+lemma positiveCompositeNestedMap_leftInverse {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) :
+    Function.LeftInverse (positiveNestedCompositeMap u v k (q := q))
+      (positiveCompositeNestedMap u v k)
+```
+
+C444・C445は既存C355の同じ区間間の狭義順序とmin'/max'の法則から、
+C446はC400・C415から、C447はC444〜C446とC442・C443から示す。
+C448はx<yなら元の有限辺a=x、y<xならa=yを選ぶ有限比較の法則。
+C449ではC421にC447を渡し、元の開始位置・終了位置と交換経路の両端の等式を得る。
+終了位置の比較a<endはa≥endの否定なので、同じC448を使う。両端は内側の幅以下。
+C420・C376とC426で同じ出現番号へ戻し、元のOverlapPartitionの部分長を得る。
+C450ではC449を合わせ、C429の全辺の各像でC393・C416・C434の高さの等式を使い、
+元のCutの単射な座標C381で閉じる。個別の証明が200行を超えたら行数も報告する。
+有限点検は§185の同じ全対応。これで符号・実テンソル・nullaryが閉じたとは扱わない。
+
+## 193. L12a の逆方向・右逆の厳密な等式：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§183・185〜191の13本624行を検証した。
+元の外側境界と内側内部辺の全単射、元の二段切断からの逆の合成切断、
+同じ指定高さの保持、元の外側Cutへの復元、二段切断そのものへの右逆の等式まで。
+右逆の結論はFunction.RightInverseの元のSigma型の等式であり、ホモトピー圏の等式ではない。
+HEqを使うのは等しい出力次数の添字の移送だけ。
+左逆・符号・実テンソル・nullaryは未完で、L12aを完了に数えない。
+
+対象ビルド：
+`/tmp/bsw16/m14-nested-height-interval-01.log`（2,260 jobs）、
+`/tmp/bsw16/m14-composite-edge-enumeration-01.log`（2,807 jobs）、
+`/tmp/bsw16/m14-nested-composite-map-01.log`（2,864 jobs）、
+`/tmp/bsw16/m14-nested-composite-outer-inverse-01.log`（2,869 jobs）、
+`/tmp/bsw16/m14-nested-cut-right-inverse-03.log`（2,877 jobs）、全て成功・対象警告0。
+右逆の最初の二回は同じSigmaの射影をrewriteに明示する調整が必要だった。
+同じCutと同じ復元分割の射影表記をchangeでそろえ、数学の主張を変更せずに閉じた。
+
+小監査入力 `/tmp/bsw16/audit-m14-nested-cut-right-inverse.lean`、
+結果 `/tmp/bsw16/m14-nested-cut-right-inverse-audit.log`、
+**13モジュール・43宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+各ビルド・監査は独立の鍵を取り、実行が終わったら返した。常駐セッションは使っていない。
+既存の公開宣言・界面・共有入口・共有監査は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| NestedPartitionHeightInterval | 46 |
+| PositiveOccurrenceComparison | 36 |
+| CompositeMixedEdgeOrder | 55 |
+| CompositeEdgeEnumeration | 59 |
+| NestedInnerHeightBounds | 57 |
+| NestedCompositeEdgeHeights | 71 |
+| NestedCompositeMap | 63 |
+| NestedCompositeOuterCut | 27 |
+| ColorHeightRankInverse | 30 |
+| NestedInnerRankRecovery | 51 |
+| CutHeightTransport | 25 |
+| NestedCutRightInverse | 55 |
+| SegmentEdgeOwnerOrder | 49 |
+
+L12a検証済み実測1,758+624=**2,382行**、M14は16,965+624=**17,589行**。
+外枠25,000行まで**7,411行**。個別の証明200行超はない。
+§192は次の左逆の紙の型で、まだ実装・証明済みとして数えない。
+
+## 194. L12a の逆復元の実測差と残り
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§177の各行との接続を重複なく数える。
+順方向の高さ・単調性・写像は206行で見込み150〜250行内。
+逆復元は§184の始点・交換座標174行に、今回の同じ順位・出現位置・辺の列挙・
+高さ・逆写像の387行を合わせた**561行**で、見込み300〜550行の上端を**11行超過**。
+今回の残り237行は右逆と左逆への所属比較の前段で、見込み300〜500行の行に属する。
+両方向の逆の等式は、右逆を閉じたが左逆が残る。
+
+| L12a の残り | 見込み |
+| --- | ---: |
+| §192の左逆の接続 | 200〜350 |
+| 同じcompositionSign・cutSignの照合 | 200〜350 |
+| 同じ指定面・実テンソル・零項の照合 | 400〜750 |
+| nullaryの元の有限添字と項の接続 | 250〜400 |
+| **残り** | **1,050〜1,850** |
+| **L12a完成時（2,382行を含む）** | **3,432〜4,232** |
+
+§177の他の行の見込みを据え置くとM14完成時は**24,643〜30,353行**。
+外枠25,000行への上端の超過リスクは**5,353行**であり、収まるとは扱わない。
+実測は17,589行で外枠にはまだ届いていない。既存構成の法則・証明分割は型を報告して
+続け、新しい数学・まとまりの外・外枠に届くときに止まる規則を維持する。
+G10・M15・G12は作らない。B4は595254e10で完了済みのまま。
