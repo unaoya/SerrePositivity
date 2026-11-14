@@ -21,16 +21,16 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : CategoryTheory.Limits.HasCoproducts.{u} (DifferentialGraded.Complex A) :=
+local instance isw1StrictDiagramRightFrameComparisonLocal1 : CategoryTheory.Limits.HasCoproducts.{u} (DifferentialGraded.Complex A) :=
   fun _ => HomologicalComplex.instHasColimitsOfShape
-local instance : CategoryTheory.Limits.HasCoproducts.{0} (DifferentialGraded.Complex A) :=
+local instance isw1StrictDiagramRightFrameComparisonLocal2 : CategoryTheory.Limits.HasCoproducts.{0} (DifferentialGraded.Complex A) :=
   fun _ => HomologicalComplex.instHasColimitsOfShape
-local instance : CategoryTheory.Limits.HasInitial (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramRightFrameComparisonLocal3 : CategoryTheory.Limits.HasInitial (StrictComplexDiagram A d) :=
   (CategoryTheory.Limits.isZero_zero (StrictComplexDiagram A d)).isInitial.hasInitial
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
-local instance : CategoryTheory.Limits.HasTerminal (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramRightFrameComparisonLocal4 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramRightFrameComparisonLocal5 : CategoryTheory.Limits.HasTerminal (StrictComplexDiagram A d) :=
   (CategoryTheory.Limits.isZero_zero (StrictComplexDiagram A d)).isTerminal.hasTerminal
-local instance : (cofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
+local instance isw1StrictDiagramRightFrameComparisonLocal6 : (cofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
     (trivialFibrations (StrictComplexDiagram A d)) :=
   strictDiagramReedy_cof_hasFunctorialFactorization A d
 
@@ -44,7 +44,7 @@ def strictDiagramRightFrameMapping (X : StrictComplexDiagram A d) :
     StrictComplexDiagram A d ⥤ SSet.{u} :=
   rightFrameHom (strictDiagramRightFrameFamily A d) X
 
-local instance (X Y : StrictComplexDiagram A d) [IsCofibrant X] :
+local instance isw1StrictDiagramRightFrameComparisonLocal7 (X Y : StrictComplexDiagram A d) [IsCofibrant X] :
     SSet.KanComplex ((strictDiagramRightFrameMapping A d X).obj Y) :=
   rightFrameHom_kanComplex (strictDiagramRightFrameFamily A d) X Y
 

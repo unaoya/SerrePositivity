@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFunctorialFrames
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRelative
 public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LocalizationSourceIso
 
@@ -25,7 +25,7 @@ open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColim
 open SerrePositivity.EInfinity.SimplicialLocalization
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : HomotopicalAlgebra.ModelCategory (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramModelLocalizationLocal1 : HomotopicalAlgebra.ModelCategory (StrictComplexDiagram A d) :=
   strictDiagramReedyModelCategory A d
 
 /-- 元の全図式を同じAsSmall表示へ包む通常関手。 -/

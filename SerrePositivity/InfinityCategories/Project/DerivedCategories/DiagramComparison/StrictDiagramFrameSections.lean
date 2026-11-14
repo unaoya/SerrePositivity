@@ -16,7 +16,7 @@ open CategoryTheory HomotopicalAlgebra SSet
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramFrameSectionsLocal1 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
 
 /-- 同じright frameの各単体を、元のstrict図式として読む。 -/
 abbrev strictDiagramFrame (Y : StrictComplexDiagram A d) :

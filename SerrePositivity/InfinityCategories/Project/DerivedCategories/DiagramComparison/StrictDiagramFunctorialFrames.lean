@@ -19,9 +19,9 @@ open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
 
-local instance : HasProducts.{u} (Complex A) := fun _ =>
+local instance isw1StrictDiagramFunctorialFramesLocal1 : HasProducts.{u} (Complex A) := fun _ =>
   HomologicalComplex.instHasLimitsOfShape
-local instance : HasProducts.{0} (Complex A) := fun _ =>
+local instance isw1StrictDiagramFunctorialFramesLocal2 : HasProducts.{0} (Complex A) := fun _ =>
   HomologicalComplex.instHasLimitsOfShape
 
 /-- Hovey §5.2のReedy構成に、元の複体の第一関手的分解を入力する。 -/
@@ -78,8 +78,8 @@ lemma strictDiagramReedy_fib_hasFunctorialFactorization :
     exact Reedy.FunctorFactorizationSequence.hasFunctorialFactorization Reedy.simplex
       (fun _ _ h => SimplexCategory.ext h) (fun n => ⟨SimplexCategory.mk n, rfl⟩)
 
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
-local instance : HasTerminal (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramFunctorialFramesLocal3 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramFunctorialFramesLocal4 : HasTerminal (StrictComplexDiagram A d) :=
   (isZero_zero (StrictComplexDiagram A d)).isTerminal.hasTerminal
 
 /-- 元の図式圏の第一関手的分解の実データ。 -/

@@ -20,9 +20,9 @@ open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
 
-local instance : HasProducts.{u} (Complex A) := fun _ =>
+local instance isw1StrictDiagramReedyMappingModelLocal1 : HasProducts.{u} (Complex A) := fun _ =>
   HomologicalComplex.instHasLimitsOfShape
-local instance : HasProducts.{0} (Complex A) := fun _ =>
+local instance isw1StrictDiagramReedyMappingModelLocal2 : HasProducts.{0} (Complex A) := fun _ =>
   HomologicalComplex.instHasLimitsOfShape
 
 /-- Hovey §5.2のReedyモデルを元のΔ・Δᵒᵖ図式圏で使う。 -/
@@ -33,10 +33,10 @@ def strictDiagramReedyModelCategory : ModelCategory (StrictComplexDiagram A d) :
   | simplicial => exact Reedy.simplexOpModelCategory (Complex A)
   | cosimplicial => exact Reedy.simplexModelCategory (Complex A)
 
-local instance : ModelCategory (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramReedyMappingModelLocal3 : ModelCategory (StrictComplexDiagram A d) :=
   strictDiagramReedyModelCategory A d
 
-local instance : HasTerminal (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramReedyMappingModelLocal4 : HasTerminal (StrictComplexDiagram A d) :=
   (isZero_zero (StrictComplexDiagram A d)).isTerminal.hasTerminal
 
 /-- Reedyモデルの弱同値は、局所化で指定した同じobjectwise擬同型である。 -/

@@ -1,0 +1,243 @@
+{
+  "files": 29,
+  "changed_files": 6,
+  "added": 6,
+  "removed": 6,
+  "pending": 0,
+  "only_import_changes": true,
+  "collector_sha256": "45da217652c32acf13f15578fce8264ad7c3dba1caac67895bd2c6b5f5dcfeb8",
+  "rows": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ComplexDerivedHammockSource.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "97ccab25c021946d644f3536579eff4a1055c8c0b20158aa9e84c9fc6e4d4a6a",
+      "after_sha256": "97ccab25c021946d644f3536579eff4a1055c8c0b20158aa9e84c9fc6e4d4a6a"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "c5d285c002478b991e10d3f5c21d6a63fc4da4650f330529b013e5ca584ba356",
+      "after_sha256": "c5d285c002478b991e10d3f5c21d6a63fc4da4650f330529b013e5ca584ba356"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "c908099a31a1e071913e49fbfb97b6fc065080fc5475b85fff287e5d036bbbba",
+      "after_sha256": "c908099a31a1e071913e49fbfb97b6fc065080fc5475b85fff287e5d036bbbba"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "90967a27b1888422c7ae21e27ba2d20ab0bb12b9e9ea8523836af60b1703a589",
+      "after_sha256": "90967a27b1888422c7ae21e27ba2d20ab0bb12b9e9ea8523836af60b1703a589"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "1e88da02516797f41af594d731ec3fd09c7ba2d1ecfb2b72ba00c5fcbc67c79c",
+      "after_sha256": "1e88da02516797f41af594d731ec3fd09c7ba2d1ecfb2b72ba00c5fcbc67c79c"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "e8c948d7eb4ca58b5cbd579f8ca3db2dabbed3420386ab54d7a7b52ab6d01165",
+      "after_sha256": "e8c948d7eb4ca58b5cbd579f8ca3db2dabbed3420386ab54d7a7b52ab6d01165"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+      "changed": true,
+      "added": 1,
+      "removed": 1,
+      "before_sha256": "b6179020957ff8f19eabe7d58bf37f825785600f5bba2a510c61e3acff7c6e18",
+      "after_sha256": "027a49b3471b63c93d291aefdfddc06ad65879e6be93710801b67d81222e449f"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+      "changed": true,
+      "added": 1,
+      "removed": 1,
+      "before_sha256": "02a94e6423eb42d1f5f700e710ff87b7ca5c7918d045d197b9e0d2b9ae2d7c48",
+      "after_sha256": "3d6cf06fd8e23bb6a8730261b9313bb48e20023de0ca04985a7742d9c1ed2773"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoTransposeValue.lean",
+      "changed": true,
+      "added": 1,
+      "removed": 1,
+      "before_sha256": "82bd134c1777574aae693a861f9415df1c1544b9e36dc9e7e292dbe0e3575482",
+      "after_sha256": "7961baed4c53e751a43a8a94aaafc03d1550d815912af4f1a782eb52f40031af"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationBaseChangeRestrictionValue.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "db6f1b0eca2a384204e8480ba376dc4dd25d5f51264b8a29128778d50fa2a113",
+      "after_sha256": "db6f1b0eca2a384204e8480ba376dc4dd25d5f51264b8a29128778d50fa2a113"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationSimplexRestriction.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "75c55505836dc906a81f01dfa5e09b7dca80eb00a86b86ca124c8b65b4575af2",
+      "after_sha256": "75c55505836dc906a81f01dfa5e09b7dca80eb00a86b86ca124c8b65b4575af2"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangeRestrictionNormalization.lean",
+      "changed": true,
+      "added": 1,
+      "removed": 1,
+      "before_sha256": "95a26a02771ec6d758bf7c2c029c896dffa55cd4f619604aaf8b848670bda1d9",
+      "after_sha256": "072d2dafc02db77fa4ec27f8c3c12d7f4e19ad7f0689933a355db3f032e5a9db"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramPointFrameEnd.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "e9411523c31b43ae124b872260b4664e1205ee26e7d5ca2ca138ca25017d7b2d",
+      "after_sha256": "e9411523c31b43ae124b872260b4664e1205ee26e7d5ca2ca138ca25017d7b2d"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "3feeff05dda814c7e15a56fc4ae39c5d567ae3221db065c1e4dfc3489378b2d9",
+      "after_sha256": "3feeff05dda814c7e15a56fc4ae39c5d567ae3221db065c1e4dfc3489378b2d9"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "4258a3ea5a1bc27a409f7a4c44be8dea9d24feff3ad9fd7d6fd53a159a58edcb",
+      "after_sha256": "4258a3ea5a1bc27a409f7a4c44be8dea9d24feff3ad9fd7d6fd53a159a58edcb"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeSectionOrdinaryAction.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "14a334b8a6fec23d86639cae7fd85ec97f0b6f8b7a25efe0dd8c9e38191a0a50",
+      "after_sha256": "14a334b8a6fec23d86639cae7fd85ec97f0b6f8b7a25efe0dd8c9e38191a0a50"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionBaseChangeCompClassifiedHom.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "f6bb33aff32241ee018484e4b54a7b1acb0323aea416ed3302d7ea2c7e1f2c93",
+      "after_sha256": "f6bb33aff32241ee018484e4b54a7b1acb0323aea416ed3302d7ea2c7e1f2c93"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionBaseChangeCompValueHom.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "f62c53486dd39cbfc7b296e5c2bd7eb2bd74f7abd718e67aa6c0bf2b8dd69a72",
+      "after_sha256": "f62c53486dd39cbfc7b296e5c2bd7eb2bd74f7abd718e67aa6c0bf2b8dd69a72"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionBaseChangeCompValueNormalization.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "bf6ac6ede98f5f5e3cdc19bba37535998a4080aece81d66527bcd696aea54649",
+      "after_sha256": "bf6ac6ede98f5f5e3cdc19bba37535998a4080aece81d66527bcd696aea54649"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionDiagramBaseChangePasting.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "9d647398f5af394bb8bac803338ce2ff6522269310cadf660292fedb0636eed0",
+      "after_sha256": "9d647398f5af394bb8bac803338ce2ff6522269310cadf660292fedb0636eed0"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionBaseChangePasting.lean",
+      "changed": true,
+      "added": 1,
+      "removed": 1,
+      "before_sha256": "c897a8e1228331f069385cc9da92460e6b94b482d1d7c22cdbfa02943065c5e1",
+      "after_sha256": "d589cc64e6a3a3452a9e665709130ff64051e73b814026ec283b2c843238e383"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionComposite.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "c90bd03ab92957559b9abb25dfefe96aea08437d7e882a5f6b8ccaa8c4cac172",
+      "after_sha256": "c90bd03ab92957559b9abb25dfefe96aea08437d7e882a5f6b8ccaa8c4cac172"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonEvaluation.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "e3bf06028b07fdfa78556dcea4eb56cb1d35ae33d1cce68dd2d5e264db3d4fc5",
+      "after_sha256": "e3bf06028b07fdfa78556dcea4eb56cb1d35ae33d1cce68dd2d5e264db3d4fc5"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramOrdinaryAction.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "d34119cd171551e1ab8e8698f48722bf6cf3f08761e989856b915e056e54896e",
+      "after_sha256": "d34119cd171551e1ab8e8698f48722bf6cf3f08761e989856b915e056e54896e"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValueHom.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "97d9d108258b265e7b75468f58048437f7a05ce0dbe5db3862958385ea3f5935",
+      "after_sha256": "97d9d108258b265e7b75468f58048437f7a05ce0dbe5db3862958385ea3f5935"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/NormalizedFunctorIsoComponentRestriction.lean",
+      "changed": true,
+      "added": 1,
+      "removed": 1,
+      "before_sha256": "b8c65f7c2f5b9e2bace42a26d89026770d0a13765a50135e55981d2dd1a24229",
+      "after_sha256": "63fc1a9683f27d3a4a98181ac6f0b8bf7c86ecdab4da661da0557717a3e1b763"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/InternalHomSwapEvaluationRight.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "1bf88afd7cae1fbe373e038d93fa79727916b48e03f92ebaa808ea60e7aeecf1",
+      "after_sha256": "1bf88afd7cae1fbe373e038d93fa79727916b48e03f92ebaa808ea60e7aeecf1"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/TransposeFunctorIsoRestriction.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "44c1347e5560392d3cd31383b2afe121b2695a3b5a18a7618af405e1c6b0a8af",
+      "after_sha256": "44c1347e5560392d3cd31383b2afe121b2695a3b5a18a7618af405e1c6b0a8af"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaSourcePullback.lean",
+      "changed": false,
+      "added": 0,
+      "removed": 0,
+      "before_sha256": "57916b0f0154bd3371b6e68a91da26ecb6ef0bbee22093034d126195b57c0d63",
+      "after_sha256": "57916b0f0154bd3371b6e68a91da26ecb6ef0bbee22093034d126195b57c0d63"
+    }
+  ]
+}

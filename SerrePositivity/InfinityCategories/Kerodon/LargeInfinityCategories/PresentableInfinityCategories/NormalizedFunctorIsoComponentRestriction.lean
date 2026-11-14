@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedHomNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPost
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoComponentPost
 
 /-!
 概要：指定成分の正規化と内部Homの制限の整合性。

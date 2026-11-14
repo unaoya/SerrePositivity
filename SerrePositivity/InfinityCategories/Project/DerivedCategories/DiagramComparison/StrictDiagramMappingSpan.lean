@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCofibrantVertices
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFactorization
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentPinchedTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.CoherentPinchedTransport
 
 /-!
 概要：元の局所化の任意二頂点に対し、実frameを源とする全写像空間のspanを作る。
@@ -24,13 +24,13 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
-local instance : CategoryTheory.Limits.HasInitial (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramMappingSpanLocal1 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramMappingSpanLocal2 : CategoryTheory.Limits.HasInitial (StrictComplexDiagram A d) :=
   (CategoryTheory.Limits.isZero_zero (StrictComplexDiagram A d)).isInitial.hasInitial
-local instance (x : (StrictDiagramInfinity A d) _⦋0⦌) :
+local instance isw1StrictDiagramMappingSpanLocal3 (x : (StrictDiagramInfinity A d) _⦋0⦌) :
     IsCofibrant (strictDiagramCofibrantVertex A d x) :=
   strictDiagramCofibrantVertex_isCofibrant A d x
-local instance (x y : (StrictDiagramInfinity A d) _⦋0⦌) :
+local instance isw1StrictDiagramMappingSpanLocal4 (x y : (StrictDiagramInfinity A d) _⦋0⦌) :
     SSet.KanComplex ((strictDiagramRightFrameMapping A d
       (strictDiagramCofibrantVertex A d x)).obj (strictDiagramCofibrantVertex A d y)) :=
   rightFrameHom_kanComplex (strictDiagramRightFrameFamily A d) _ _

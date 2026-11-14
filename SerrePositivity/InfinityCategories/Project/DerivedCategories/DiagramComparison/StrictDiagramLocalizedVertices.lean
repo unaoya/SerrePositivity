@@ -23,8 +23,8 @@ open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOf
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
-local instance : (cofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
+local instance isw1StrictDiagramLocalizedVerticesLocal1 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramLocalizedVerticesLocal2 : (cofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
     (trivialFibrations (StrictComplexDiagram A d)) :=
   strictDiagramReedy_cof_hasFunctorialFactorization A d
 

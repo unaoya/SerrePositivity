@@ -19,19 +19,19 @@ open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
-local instance : HasLimitsOfSize.{0, 0} (Complex A) :=
+local instance isw1StrictDiagramEvaluationFramesLocal1 : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance isw1StrictDiagramEvaluationFramesLocal2 : HasLimitsOfSize.{0, 0} (Complex A) :=
   ⟨fun _ _ => HomologicalComplex.instHasLimitsOfShape⟩
-local instance : HasColimitsOfSize.{0, 0} (Complex A) :=
+local instance isw1StrictDiagramEvaluationFramesLocal3 : HasColimitsOfSize.{0, 0} (Complex A) :=
   ⟨fun _ _ => HomologicalComplex.instHasColimitsOfShape⟩
-local instance : HasInitial (Complex A) := (isZero_zero (Complex A)).isInitial.hasInitial
-local instance : HasTerminal (Complex A) := (isZero_zero (Complex A)).isTerminal.hasTerminal
-local instance : HasInitial (SimplexCategory ⥤ Complex A) :=
+local instance isw1StrictDiagramEvaluationFramesLocal4 : HasInitial (Complex A) := (isZero_zero (Complex A)).isInitial.hasInitial
+local instance isw1StrictDiagramEvaluationFramesLocal5 : HasTerminal (Complex A) := (isZero_zero (Complex A)).isTerminal.hasTerminal
+local instance isw1StrictDiagramEvaluationFramesLocal6 : HasInitial (SimplexCategory ⥤ Complex A) :=
   (isZero_zero (SimplexCategory ⥤ Complex A)).isInitial.hasInitial
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
-local instance : HasInitial (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramEvaluationFramesLocal7 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramEvaluationFramesLocal8 : HasInitial (StrictComplexDiagram A d) :=
   (isZero_zero (StrictComplexDiagram A d)).isInitial.hasInitial
-local instance : HasTerminal (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramEvaluationFramesLocal9 : HasTerminal (StrictComplexDiagram A d) :=
   (isZero_zero (StrictComplexDiagram A d)).isTerminal.hasTerminal
 
 /-- Hovey §5.2のReedy射の成分則により、元の評価は両Quillen条件を満たす。 -/

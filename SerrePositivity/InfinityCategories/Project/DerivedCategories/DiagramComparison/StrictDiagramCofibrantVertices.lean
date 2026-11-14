@@ -19,8 +19,8 @@ open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOf
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
-local instance : CategoryTheory.Limits.HasInitial (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramCofibrantVerticesLocal1 : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
+local instance isw1StrictDiagramCofibrantVerticesLocal2 : CategoryTheory.Limits.HasInitial (StrictComplexDiagram A d) :=
   (CategoryTheory.Limits.isZero_zero (StrictComplexDiagram A d)).isInitial.hasInitial
 
 /-- 任意の局所化頂点は、同じcofibrant図式の像と同型である。 -/
