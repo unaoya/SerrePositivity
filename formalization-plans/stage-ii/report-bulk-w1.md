@@ -1258,3 +1258,14 @@ Mathlibの対応は外部のものとして保持し、宣言の所有元をSerr
 見込みは手書き890〜1,530行（道具・意味のあるfixture検査・文書。生成物と一時Leanは除く）、0.5〜1.5日。環境抽出は今回未実行なので所要時間は未実測。最初の50所有モジュールで壁時計・最大メモリを測り、残りの数から時間を見直す。待ち時間を除いた見込みと鍵待ちを分ける。一晩で済むとはまだ約束しない。実行時は--wait 3600・bulk、昼は280秒以内、夜は30分以内、所有モジュールごとのreceiptを保存して再開可能にする。
 
 B5段0はここで止める。B5の実装、既存地図の置き換え、追加の属性付け、B3′の移動・改名には進んでいない。
+
+
+### B3′ 着手・範囲の確認（11-14夜）
+
+一覧：済み 0／全体 22（うち追加 0）。main 32d364b53からbulk/b3primeを切った。22項目はR8-2を先頭に、R7-3(a)(b)(c)(d)・R7-4・R7-5・R7-6(c)・R7-7、R8-1・R8-3・R8-4・R8-7・R8-8・R8-9、R10-3・R10-5(a)(b)(d)(f/g)・R10-7、B3残りの照合を数える。段0の表を作成中で、Lean・既存scripts・他レーンの作業木は変更していない。ビルド・適用も未実行。
+
+R8-2はRingCompletion.leanへの既存の切り出しを再利用し、Setup・Completionの環の部品と、nerve・指定錐の部品を区別する。Completion節全体を環のファイルへ移すと∞の依存を残すため、一律の節単位では分けない。
+
+R8-1に指示の範囲の衝突がある。§1はEInfinity→BSの2辺の解消を求めるが、§2の保護例外はTheoryInterfaceとそのimporter。もう一辺はEInfinity/Perfectoidization/ComparisonからDerived/Interfaceへのもので、ComparisonはTheoryInterfaceをimportしない。TheoryInterfaceだけを動かしても残る。CAlg_R版のComparison・Interface・DerivedCorollaryの3本（計255行）を削除せずBS/Perfectoidization/Interface/CAlgへ機械的に移す案を[具体的な表](bulk-b3prime/r8-1-scope-decision.json)にした。宣言の完全名・型・証明は保持し、旧モジュールの再公開stubで逆辺を再導入しない案。保護例外の承認前には適用しない。
+
+4つの必須の旧パス文字列について、稼働5枝のmainとの分岐点以降のLeanと未コミット/未追跡Leanを読み取りで調べた[下限の調査](bulk-b3prime/mandatory-impact-lower-bound.json)は0ファイル。これは全移動・全改名の最終影響件数ではない。30ファイル条件を満たしたとまだ扱わず、残りの表と影響の静的調査を続ける。
