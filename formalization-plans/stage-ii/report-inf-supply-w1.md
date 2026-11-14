@@ -8236,3 +8236,48 @@ RR02(a)の証明の分割であり、増大射の弱同値性を主張するも�
 単体パラメータ付き実現とそのReedy cofibrancyまで検証済み。
 実増大射の弱同値性、全frameへの比較、RR02(b)(c)は引き続き未完。
 E01の別経路の紙は§80.1のまま。停止点5aにはまだ到達していない。
+
+## §89 RR02(a)：同じ実現随伴のKan値
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `bbdd69331` の検証済み112行の追加。
+既存のhorn tensor判定とBK endのKan性を、固定した実現随伴へ接続する。
+
+```lean
+lemma bousfieldKanParameterHom_kanComplex
+    (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+    (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+      weakEquivalences C ((A.obj k).map f))
+    (Y : C) [IsFibrant Y] :
+  SSet.KanComplex
+    ((hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)).obj Y)
+```
+
+RR02(a)の証明の分割。これは標的がfibrantなときの写像空間の判定であり、
+任意のfibrationの保存性や実増大射の弱同値性はまだ示していない。
+一般の係数fibrationからweighted nerveの全空間のfibrationを直ちに得る補題は、
+今回の検索では見つからなかった。自明fibrationの場合と混同しない。
+
+### 89.1 検証・実測と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanRealizationMappingKan` は38行。対象ビルド2,796 jobs成功、
+小監査1宣言、標準三公理のみ。ログ `/tmp/is-w1/bk-mapping-kan/build.log`。
+計算上限変更なし。検証済み累計180本・14,024行。
+上限変更後のRR02(a)実測1,526行、(b)(c)新規0行。
+
+次の接続では、fibrant標的でのKan性だけから一般のfibration保存性を推論しない。
+BK重みの検証済み射影的LLPと、単体集合のtensor・内部Homの相対持ち上げを
+組み合わせる経路を調べる。必要なのは次の同じ右随伴における保存性である。
+
+```lean
+-- 目標。まだ証明済みではない。hA, hconst は§89のまま。
+lemma bousfieldKanParameterHom_fibration
+    {Y Z : C} (p : Y ⟶ Z) [Fibration p] :
+  Fibration ((hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)).map p)
+```
+
+それを随伴の持ち上げ同値へ入れる際にも、SSetのモデル構造は入力にしない。
+実増大射の弱同値性・全frameへの比較は未完。E01の紙は§80.1から変更なし。
