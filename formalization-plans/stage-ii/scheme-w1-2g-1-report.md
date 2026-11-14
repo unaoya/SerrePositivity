@@ -381,3 +381,16 @@ G1 本体の累計は **2,133 行**、入口込み **2,178 行**（G0 の入口�
 後続の接続の型案：固定した Noether 係数模型 A₀・S₀ と、R の各極小素点に対する上の有限生成部分代数・整域商の一般自由開を使い、有限生成 A₀-部分代数 T と t:T を選び、`Module.Free (Localization.Away t) (Localization.Away t ⊗[A₀] S₀)` を実現する。極小素点集合の準コンパクト性で有限個を選び、部分代数の有限 join へ運ぶ。T 上の指定開はその有限個の基本開の和で、R への逆像が全極小素点を含む。T 上の有限表示模型に対して、その指定開での平坦性と実際の tensor 底変換同型を保つ。係数移送と有限被覆の貼り合わせの接続として見込み 600〜1,800 行。一般の固有射の模型 B01 を、これだけで完了扱いにはしない。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+次の係数移送の具体的な型：`exists_fg_subalgebra_free_basicOpen_at_minimalPrime` は、同じ宇宙の可換環 A・R・S、Noether 環 A、被約 A-代数 R、有限型 A-代数 S と p∈minimalPrimes R に対して、`∃ T : Subalgebra A R, T.FG ∧ ∃ t : T, ↑t ∉ p ∧ Module.Free (Localization.Away t) (Localization.Away t ⊗[A] S)` を返す。上の商への因子化を T 上で実現し、整域商の一般自由性を同じ tensor cancelBaseChange で戻す。既存の一般自由性の係数移送を、有限生成部分代数にも保存する法則。見込み 80〜180 行。
+
+### 有限生成係数部分代数への商の因子化：検証結果
+
+`GenericFlatNoetherianCoefficients.lean` **51 行**、入口 1 行。下書き検証、本体と入口の対象ビルド **4,831 ジョブ成功**、小監査 **3 宣言・標準三公理のみ**、終了コード 0。ログは `scheme-drafts/2g-coefficient-factor-check.log`、`2g-coefficient-factor-native.log`、`2g-coefficient-factor-audit.log`。共有鍵 `--class impl --wait 3600` を使用し、同時の待ちは一つ。新しい resource limit・sorry・追加公理はない。
+
+- `quotientToAwayOfAnnihilator`（private）：共通消去元の反転により、係数射を指定イデアルの商経由にする。
+- `exists_fg_subalgebra_quotient_localization_factor`：極小素点の消去元を adjoin した有限生成部分代数 T の局所化で、縮約イデアルによる商からの射と実際の可換式を得る。
+
+G1 累計は本体 **2,184 行**、入口込み **2,230 行**。次の一般自由開を同じ T 上で実現する下書きは未検証。一般平坦開を伴う Noether 模型の有限個の貼り合わせ、A07 と G2 の完成は未達。
+
+一覧：済み 7／全体 12（うち追加 3）。
