@@ -8855,3 +8855,43 @@ BK重みの照合には反対圏のOver表示への移送も必要で、今回�
 `F.Elements` 上の `π ⋙ B` を重み `π.op ⋙ W` で実現したものの同型。
 各余積の挿入によるHomの同値を、指定随伴へ渡す方針。
 BK重みの場合は今回の固定始点の比較を反対圏のOverへ移す必要がある。
+
+## §101 RR02(a)：余積の挿入による要素圏の余錐の比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `2eebbc3b3` の67行の検証・コミットとして進捗。
+RR02(a)の要素圏への展開の証明分割として、次の通常の余錐の同値を実装する。
+IDは増やさない。これを導来比較の完成とは扱わない。
+
+```lean
+def diagram : K ⥤ C -- k ↦ ∐ (_ : F.obj k), B.obj k
+def toElements (Y : C) (a : diagram F B ⟶ (Functor.const K).obj Y) :
+  Functor.Elements.π F ⋙ B ⟶ (Functor.const F.Elements).obj Y
+def fromElements (Y : C)
+  (a : Functor.Elements.π F ⋙ B ⟶ (Functor.const F.Elements).obj Y) :
+  diagram F B ⟶ (Functor.const K).obj Y
+def homEquiv (Y : C) :
+  (diagram F B ⟶ (Functor.const K).obj Y) ≃
+    (Functor.Elements.π F ⋙ B ⟶ (Functor.const F.Elements).obj Y)
+lemma homEquiv_naturality {Y Z : C} (f : Y ⟶ Z)
+  (a : diagram F B ⟶ (Functor.const K).obj Y) :
+  homEquiv F B Z (a ≫ (Functor.const K).map f) =
+    homEquiv F B Y a ≫ (Functor.const F.Elements).map f
+```
+
+### §101.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`ElementsCopower` 83行、対象ビルド694 jobs成功。
+小監査16宣言・標準三公理のみ。ログ `/tmp/is-w1/elements-copower/build.log`、
+終了コード0を確認。計算上限変更なし。
+検証済み累計197本・14,932行。上限変更後のRR02(a)実測2,434行、(b)(c)新規0行。
+
+各余積への制限と再構成、全添字射での自然性、両逆、標的の後合成との両立まで検証済み。
+次はこの余積図式を `K × SimplexCategory` 上で取り、`Functor.curry.obj` によって
+frame族へ戻す。重み `W` の各単体の射を余積の各挿入に制限し、
+`π.op ⋙ W ⟶ hom _ (π ⋙ B) Y` との同値を作る。
+逆向きは同じ単体ごとの `Sigma.desc`。指定実現随伴を介して実現の同型へ移す。
+通常の余錐の同値だけでRR02(a)の弱同値性が終わったとはしない。
