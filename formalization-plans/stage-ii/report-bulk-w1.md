@@ -948,3 +948,10 @@ A2は280秒の束の残り時間内に完了せず、外側のgtimeoutで打切�
 一覧：済み 8／全体 14（うち追加 0）。[第26束](bulk-5inf0/draft-block26-validation.json)は約110秒で終了し、鍵を返却。A2の通常の型エラーは解消し、`discreteFrobeniusComponent` のカーネル時間切れ1原因と、その定数が登録されないことによる下流エラーが残った。辺を関手の頂点で評価した端点を、評価後の頂点へ揃える計算に集中している。
 
 既存の `evaluateFunctorAt_functorVertex` から始端・終端の等式を作り、同じ辺のmapをその等式で移送する形に分割した。新しいFrobenius・仮定・数学的入力は作らず、既存の構成の端点の法則だけを明示した。通常の検査予算で第27束を検査中。有効な成功は27本のまま。
+
+
+### 5∞-0 のdraft検査・第27〜28束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第27束](bulk-5inf0/draft-block27-validation.json)ではカーネル時間切れが消え、約39秒で端点のTypeの合成の評価2箇所に絞られた。同じ合成を定義から評価して[第28束](bulk-5inf0/draft-block28-validation.json)でA2/DerivedPrismaticCohomologyが約33秒で成功。有効な成功は28本。この検査済みソースをコミットする。有限の検査予算を増やすオプションは残していない。既存の辺の評価の始端・終端を公開補題で揃え、同じmapを等式で移送したもの。新しいFrobeniusや仮定は導入していない。siftedの述語2参照も[所有元の完全名](bulk-5inf0/a2-sifted-predicate-reference-refresh.json)へ追従して通った。
+
+A1/HodgeTateMapは `import all …Prismatic.HodgeTateOneDerivative` の旧パスが1行残っていて失敗。静的import解析が `import all` を拾っていなかったため、前の「import欠落0」はこの構文を除く範囲での値だった。全draftのimportをこの構文も含めて再走査し、[残る1行](bulk-5inf0/import-all-reference-refresh.json)をB3表の正しいパスへ直した。importの種類は維持。第29束でA1と後続を検査する。

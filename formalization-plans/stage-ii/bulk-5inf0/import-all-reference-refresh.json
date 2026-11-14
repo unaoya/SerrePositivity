@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean",
+      "edits": [
+        {
+          "start": 417,
+          "end": 478,
+          "old": "SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative",
+          "new": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateOneDerivative",
+          "line": 7
+        }
+      ]
+    }
+  ],
+  "note": "Include import all in static import matching; preserve import kind."
+}
