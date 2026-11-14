@@ -13573,3 +13573,169 @@ C361の依存した長さの書き換えは、同じ長さの等式からの不�
 外枠25,000行の残り9,315行。L12aの1,400〜2,400行の見込みに478行を含め、
 あとで独立の新規として重ねて数えない。L12aの対応・復元・符号・実テンソル・nullaryは
 まだ未完で、一覧の完了数は増やさない。G10の部品は作らない。
+
+## 165. L12a の二段切断から既存OverlapPartitionへの復元（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§164の五本を0a46b3af2へ保存した。次は§159の逆向きの分割のデータを作る。
+内側切断をexchangeし、元の外側出現の最初/最後の順位でlo・hiを評価する。
+C369〜C373は既存の端点の単調性・共有端点の法則をそこへ渡すもの。
+C374はその部分長の自然数の望遠和。overlapOfIntervalsは、この長さ・総和を
+元のOverlapPartitionの欄へ渡すだけで、元の定義・正規化を変えない。
+
+Pythonの正の枝の416条件・21,939組について、射影後の二段切断の各外側出現から
+読む内側の最初/最後の位置の差+1が、元の重なる分割の部分長に戻ることを確認した。
+結果：`/tmp/bsw16/check-nested-partition-recovery.log`、
+スクリプト：`/tmp/bsw16/check-nested-partition-recovery.py`。
+Leanではまず、二段切断から読む値が分割の条件を満たすことを証明する。
+射影した合成側から元の分割へ戻る全称等式は、まだこの検査だけでは証明されない。
+型は次。固定したL12aの同じ分割の復元と有限計算の証明分割として数える。
+
+```lean
+def nestedSegmentStart {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a))
+    (j : Fin (Surjection.occurrenceCount v.val a)) : ℕ
+
+def nestedSegmentEnd {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a))
+    (j : Fin (Surjection.occurrenceCount v.val a)) : ℕ
+
+lemma nestedSegmentStart_le_end {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    nestedSegmentStart s v a t j ≤ nestedSegmentEnd s v a t j
+
+lemma nestedSegmentEnd_le {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    nestedSegmentEnd s v a t j ≤ l
+
+lemma nestedSegmentStart_zero {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a))
+    (hj : j.val = 0) : nestedSegmentStart s v a t j = 0
+
+lemma nestedSegmentEnd_last {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a))
+    (hj : j.val + 1 = Surjection.occurrenceCount v.val a) : nestedSegmentEnd s v a t j = l
+
+lemma nestedSegmentEnd_eq_start {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a))
+    (j j' : Fin (Surjection.occurrenceCount v.val a)) (hj : j.val + 1 = j'.val) :
+    nestedSegmentEnd s v a t j = nestedSegmentStart s v a t j'
+
+lemma intervalLengths_sum (t L : ℕ) (a b : Fin (t + 1) → ℕ)
+    (hab : ∀ j, a j ≤ b j) (hfirst : a 0 = 0) (hlast : b (Fin.last t) + 1 = L)
+    (hnext : ∀ i : Fin t, b i.castSucc = a i.succ) :
+    (∑ j : Fin (t + 1), (b j - a j + 1)) + 1 = L + (t + 1)
+
+def overlapOfIntervals {t L : ℕ} (ht : 0 < t) (a b : Fin t → ℕ)
+    (hab : ∀ j, a j ≤ b j) (hb : ∀ j, b j < L)
+    (hfirst : ∀ j, j.val = 0 → a j = 0)
+    (hlast : ∀ j, j.val + 1 = t → b j + 1 = L)
+    (hnext : ∀ i j, i.val + 1 = j.val → b i = a j) : Surjection.OverlapPartition t L
+
+def positiveNestedPartition {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveNestedCutIndex u v k q) :
+    Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)
+```
+
+個々の証明200行以内。positiveNestedPartitionは語長・出現数の元の等式で移した
+既存OverlapPartitionの値であり、新しい合成や符号を選ぶものではない。
+合成切断自体の復元、両向きの一致、符号、実テンソル、nullaryは引き続き未完。
+
+## 166. L12a の復元した部分長の値の法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C374の望遠和と既存OverlapPartitionへの欄の供給は型検査が進んでいる。
+C371ではFinの零の自然数値をFin.val_zeroで明示して簡約する。
+次に元の出現数の移送で部分長の値が変わらないC375、復元した部分長の指定式C376を示す。
+これにより単に「何らかの分割が存在する」とせず、読む部分長そのものを保持する。
+型は次。既存の分割の係数移送・同じ構成の評価の法則として数える。
+
+```lean
+lemma overlap_eq_mp_val {t t' L : ℕ} (h : t = t') (r : Surjection.OverlapPartition t L)
+    (i : Fin t') (j : Fin t) (hij : i.val = j.val) :
+    ((Eq.mp (congrArg (fun k => Surjection.OverlapPartition k L) h) r).val i).val =
+      (r.val j).val
+
+lemma positiveNestedPartition_length {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveNestedCutIndex u v k q) (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val) :
+    ((positiveNestedPartition u v k c).val i).val =
+      nestedSegmentEnd c.1 (positiveWord u) k c.2 j -
+        nestedSegmentStart c.1 (positiveWord u) k c.2 j + 1
+```
+
+C375は出現数の等式で置換して同じ番号を合わせるだけ。
+C376はpositiveNestedPartitionとoverlapOfIntervalsの元の定義を評価する。
+各証明200行以内。射影から元の分割へ戻る全称等式や合成切断の復元はまだ別に残る。
+
+## 167. L12a の同じOverlapPartitionの復元の検証・保存
+
+一覧：済み 12／全体 48（うち追加 4）
+
+対象ビルド成功（2,252 jobs）、小さい監査成功（4モジュール・27宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。監査末尾の#checkでpositiveNestedPartitionとその部分長の
+全称型も確認した。二段切断の実際の両端の差に一を足した値で、既存の重なる分割を作った。
+部分長の正値・上界・共有端点・総和を実際の同じ端点から供給し、
+元の出現数への移送でも値が変わらないC375・C376を証明した。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| NestedSegmentBounds | 74 |
+| OverlapIntervals | 53 |
+| RecoveredNestedPartition | 34 |
+| RecoveredPartitionValues | 36 |
+
+四本は`RecoveredPartitionValues`からすべてimportされる。
+前の五本（§164）と合成側の一本文字列（§158）もL12aの登録候補のまま。
+共通入口・共通監査は変更していない。
+
+ログ：`/tmp/bsw16/m14-recovered-partition-values-01.log`。
+監査入力：`/tmp/bsw16/audit-m14-recovered-partition-values.lean`、
+結果：`/tmp/bsw16/m14-recovered-partition-values-audit.log`。
+鍵はビルド・監査ごとに取り、終了・返却を確認した。個々の証明200行以内。
+
+今回197行。L12aの前段は478+197=**675行**、M14は15,685+197=**15,882行**。
+外枠25,000行の残り**9,118行**。L12a全体の1,400〜2,400行の目安に675行を含める。
+この目安を検証済みの完成予測としては扱わず、半分の1,200行に達した時点で
+実測と未実装の対応・符号・実テンソル・nullaryの見込みを出し直す。
+正の枝の合成切断の復元と両向きの一致もまだ未完。L12aを完了へ数えない。
+
+## 168. 次のL12a：同じ切断の水平辺の高さによる復元（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§159の射影/復元は元の経路の座標だけで行う。実装では新しい経路の型へ移らず、
+Cut m qの元の水平辺の第i位置がi+その高さであることを使って、
+同じ有限な水平辺集合を組み立てる方法を次に試す。
+高さは元のhi s i.castSuccをFin(q+1)で読める。単調性は検証済みC351。
+元の水平辺の昇順列挙は既存orderEmbOfFinであり、その第i番より前の水平辺数はi。
+この濃度と元のcoordinate_sumから位置=i+高さを示せる。
+
+有限点検はm,qが0〜5の全923経路。水平辺の高さの族が単調であること、
+各水平辺の位置がi+高さ_iであること、全単調な高さの族を過不足なく得ることを確認した。
+スクリプト：`/tmp/bsw16/check-cut-heights.py`、
+結果：`/tmp/bsw16/check-cut-heights.log`。
+これは既存Cutの座標の法則の点検で、Leanの全称証明ではない。
+
+次の型案（未実装）は、同じCutを組み立てるL12aの証明分割として使う。
+新しいコチェイン模型・余作用・∞の構成へ置き換えない。
+
+```lean
+cutHeights {m q : ℕ} (s : Cut m q) : Fin m →o Fin (q + 1)
+cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) : Cut m q
+cutHeights_cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) :
+  cutHeights (cutOfHeights h) = h
+cutOfHeights_cutHeights {m q : ℕ} (s : Cut m q) :
+  cutOfHeights (cutHeights s) = s
+```
+
+cutOfHeightsは元のShufflePathの有限集合の構成子へ、位置i+h_iの像を渡すだけとする。
+その像がm点であることは単調性からの狭義単調な位置写像で示す。
+元の集合との一致・座標保存を別に証明し、射影/逆写像の双方の経路の一致へ使う。
+この紙の案や有限点検を、L12aの対応・符号・実テンソルの証明済み部分へ数えない。
