@@ -7169,3 +7169,103 @@ RR01の元の大きい底とは、後で宇宙移送と底の比較を照合す�
 係数の包装を増やしてRR02の完成とせず、次は
 `strictDiagramFrameMapping A d X Y ⟶ strictDiagramEvaluatedFrameEnd A d X Y`
 の実射と同値性の証明を進める。
+
+
+## 69 RR02の芯の再見積もり：外枠による中間停止
+
+一覧：済み 1／全体 13（うち追加 11）
+
+### 69.1 点検結果
+
+§68.1の「残りのRR02は1,400〜2,200行」は、§44の値を据え置いた暫定値だった。
+芯の実装に入るため既存の型を再点検した結果、この上端を維持する根拠が不足していた。
+今回は新しいLeanを書かず、未了の比較を以下の三群へ分解して見積もり直した。
+
+- `DiagramModel.MappingLimit` は通常の極限の厳密な同型で、標的は一定図式。
+  Reedy図式の二変数の導来endの普遍性は結論にない。
+- `Reedy.BoundaryHom.isLimit`・`comparison` はlatching余極限とmatching極限の移送。
+  これは各境界の計算には使えるが、coherent endの比較射とその相対充填を供給しない。
+- `FrameWeightedLimit.comparison_weakEquivalence` は既存の重み付きHomと
+  HomotopyLimit模型の比較。QuillenのSSetモデルを具体的に入れることは可能だが、
+  同じReedy frame Homをその重み付きHomへ同定する部分と、元のRR01射への照合は別。
+- `OrdinaryBarRelativeHomDescent` はword模型の選択空間の境界充填であり、
+  原典の任意のcoherent図式の厳密化や、今回の導来end比較そのものの定理ではない。
+
+§65〜68で完成した係数の比較・移送は再利用する。これらは以下の芯の代わりにはならない。
+E01の保留を、RR02に充満忠実性やend比較の同値性を仮定として足すことで回避しない。
+
+### 69.2 型つきの残り（紙、未実装）
+
+以下の名前は新規宣言案。RR02の証明分割であり、新たなIDは付けていない。
+`A : Type u`、`[CommRing A]`、`d : StrictDiagramDirection`、
+`X Y : StrictComplexDiagram A d`、`U := SSet.uliftFunctor.{u+1,u}`。
+指定の二図式は `FX := strictDiagramEvaluatedDiagram A d X`、同様に `FY` とする。
+証明済みの型としては扱わない。
+
+```lean
+-- (a) 元のframe Homから、固定した評価係数のcoherent endへの実射。
+def strictDiagramFrameDerivedEndMap :
+    strictDiagramFrameMapping A d X Y ⟶ strictDiagramEvaluatedFrameEnd A d X Y
+
+lemma strictDiagramFrameDerivedEndMap_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramFrameDerivedEndMap A d X Y)
+
+-- (b) 標準値frameのendから、D(A)の実際のHom係数のendへの実射。
+def strictDiagramStandardEndToDerived :
+    U.obj (strictDiagramStandardFrameEnd A d X Y) ⟶
+      simplicialSections (functorEndProjection FX FY)
+
+lemma strictDiagramStandardEndToDerived_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramStandardEndToDerived A d X Y)
+
+-- (c) 上の構成を、RR01で固定した同じ実射へ全族で照合する。
+def strictDiagramFrameDerivedEndComparisonIso :
+    FunctorIso
+      (U.map (strictDiagramFrameDerivedEndMap A d X Y) ≫
+        U.map (strictDiagramFrameEndCoefficientComparison A d X Y) ≫
+        strictDiagramStandardEndToDerived A d X Y)
+      (strictDiagramFrameEndComparison A d X Y)
+```
+
+(a)は実射の組み立て、Reedyの各境界への相対充填、全次数への接続。
+(b)は既存の複体HammockとD(A)の比較を全二変数の係数の射として使う部分と、
+AsSmall・ulift・twisted-arrowの底の照合。点ごとの同値を自然な族と仮定しない。
+(c)は同じ source frame・fibrant target・`strictDiagramDerivedEvaluation_factor` に戻す部分。
+この同型を省いて別の弱同値な射をRR01の射の代わりにしない。
+
+### 69.3 見積もりと停止
+
+| RR02の未了部分 | 残りの見込み（行） |
+| --- | ---: |
+| (a) Reedy frameから導来endへの実射と相対充填 | 900〜1,500 |
+| (b) D(A)の実Hom係数・宇宙と底の比較 | 500〜900 |
+| (c) 元のRR01射への全族の照合 | 500〜900 |
+| RR02の残り合計 | 1,900〜3,300 |
+| RR02以外の残り（§68.1を維持） | 3,400〜5,750 |
+| 残り合計 | 5,300〜9,050 |
+| 検証済み12,498行を含むR2完成まで | 17,798〜21,548 |
+
+上端が外枠20,800行を748行超える。行数は証明済みの下限ではなく実装見込みだが、
+「超える見込みで停止」の規則はこの状況に適用される。
+`inf-supply-w1.md`の外枠と`lane-goals-2026-11-14.md`共通規則に従い、ここでLeanの追加を停止。
+検証済みはすべて `60a4d843f` までコミット済み。未検証E01の四本は従来どおり作業木に残す。
+今回ビルド・鍵取得はしていない。R2は未完了、停止点5aには達していない。
+範囲を弱めたりR3を実装したりせず、規模または証明経路の判断を待つ。
+
+### 69.4 代わりの紙の作業：R3の利用側を再確認
+
+一覧：済み 1／全体 13（うち追加 11）
+
+現在の本体・draftsの型を読み直し、§56.3〜56.4の境目が変わらないことを確認した。
+
+| 利用側 | 現在の入力・結論 | R3の判断材料 |
+| --- | --- | --- |
+| `EInfinity/BarrattEccles/CAlgUnderlyingDerivedComparison.algebraCAlgSource_underlyingDerivedIso` | `FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A) (algebraUnderlyingDerivedSource A)` | strict BE源の実忘却との比較。任意coherent BE図式のstrict表示の存在ではない |
+| drafts `Shared/CosimplicialEInfinity.totEInfinity_isLimitCone` | `(X : CosimplicialAlgebra A)` を入力し同じ `totEInfinityCone` の極限性 | この利用箇所はstrict入力。全coherent入力の本質的全射性を直接には要求しない |
+| drafts `A2/DerivedPrismaticCohomology.derivedPrismaticCohomology_preservesSifted` | `PreservesSmallSiftedColimits ...` | 本体の定義は任意の `D : ulift I ⟶ X` と指定余錐を量化する。strict入力だけの保存性では足りない |
+
+③-b専用worktreeの報告§38.2〜38.3も読み取りのみで再確認。
+1・2はstrict BE図式と同じ実Uの比較、3は任意coherent BE図式への拡張であり、
+加群版のstrict化だけではBE作用を回復できない、との切り分けを維持している。
+他枝のmerge・未取り込みコードのimport・R3のLean実装はしていない。
+R2の充満忠実性をR3の本質的全射性の代用にはしない。
