@@ -13506,3 +13506,55 @@ theorem isPrecompositionEquivalence_of_leftCofinal_overLeftFibrations
 これは同じモデルのままcofinal性を前合成同値へ検出する数学的な部分であり、§215の定義の照合の法則として数えない。独立の定理として一つに見積もり、§19の枠を細分で回避しない。半分325行で実測と残りを報告する。
 
 R03f.3が証明できた後に限り、§201の元の単位を固定する延長へ、元の同じ射影の等式と§215のcofinal性を代入し、R03fの全空間の前合成同値を検収する。これがまだ未証明の間はR03f・R03d・native極限性を完了と扱わない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aの欄を変更しない。
+
+## 217. R03f.3とR03fの完了：同じ底と指定単位を保つ比較（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03f.3・R03fを完了。R03d・R02・R03とnative極限性は未完了。
+
+R03f.3は74行で閉じた（見込み250〜650行、上端との差−576行）。相対Homの前合成を既存のcofinal性の検査へ定義どおり照合し、Kan空間の同値に戻した。試験標的pで恒等射を戻して元の底上の逆向きの射gを取り、単位の同型を得る。この同型を通常の関手空間へ忘れる前に、元の底上の後合成relativeFunctorPostでqへの相対Homへ送った。そこで同じ前合成の充満忠実性から余単位を戻す。最後に二つの相対Homの包含で通常のFunctorIsoへ送り、既存のQCatEquivalenceと前合成同値の判定へ渡した。一般のcofinalな射を同値と扱わず、同じ底上の二つのleft fibrationという仮定を使っている。新しいホモトピーの構成や計算上限の引き上げは不要だった。325行の途中報告点に達する前に全証明が閉じた。
+
+元のgrothendieckKanCoefficientLiftへこの検出を適用し、同じ元の射影と置換単位を固定する任意の延長が前合成同値であることを示した。exists_grothendieckKanCoefficientComparisonは§200のR03fの型どおり、元の比較射を延長し、二つの厳密な等式と元の射自身の前合成同値性を同時に持つ。grothendieckKanCoefficientMapは元のgrothWeightedNerveForwardと元のEx∞係数単位のweightedNerveMapの合成を定義に持ち、取り替えていない。
+
+個別検査LeftFibrationComparison（実ハンドル93403）とGrothendieckKanCoefficientComparison（47447）は終了0。288：検出補題の対象ビルド2,208 jobs・終了0、小監査150本1,023宣言・標準三公理のみ（実ハンドル92698・終了0）。289：元の比較と検出補題の対象ビルド2,636 jobs・終了0、小監査151本1,025宣言・標準三公理のみ（実ハンドル67835・終了0）。鍵は返却済み。今回74＋50＝124行、累計151本・9,704行／外枠15,000。証明のコミットは893ee7a94。
+
+sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は同じ比較を既存のleftClassification_of_precompositionEquivalenceへ渡し、底全体の分類比較を組み立てる。R03dで要求される元の固定始域比較との等式と、native極限性を先取りして完了としない。
+
+### 217.1 型
+
+補助の相対前合成の照合とR03f.3の適用は既存構成の法則・適用であり、別の数学的な一覧項目は増やしていない。Grothendieck側の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### LeftFibrationComparison（74行）
+
+```lean
+lemma IsLeftCofinal.relativeFunctorOverPre_isQCatEquivalence
+    {T E F B : SSet.{u}} (r : T ⟶ B) [LeftFibration r]
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p)
+    (hc : IsLeftCofinal f) :
+    IsQCatEquivalence (relativeFunctorOverPre r (show Over.mk p ⟶ Over.mk q from Over.homMk f hf))
+
+theorem isPrecompositionEquivalence_of_leftCofinal_overLeftFibrations
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (hc : IsLeftCofinal f) :
+    IsPrecompositionEquivalence f
+```
+
+#### GrothendieckKanCoefficientComparison（50行）
+
+```lean
+theorem grothendieckKanCoefficientLift_isPrecompositionEquivalence :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∀ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      f ≫ weightedNerveProjection (grothendieckKanCoefficients F) = R.hom →
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F → IsPrecompositionEquivalence f
+
+theorem exists_grothendieckKanCoefficientComparison :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∃ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      f ≫ weightedNerveProjection (grothendieckKanCoefficients F) = R.hom ∧
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F ∧ IsPrecompositionEquivalence f
+```
