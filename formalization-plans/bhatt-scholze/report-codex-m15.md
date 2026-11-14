@@ -5301,3 +5301,124 @@ RawModuleTensorConeData の通常の対象ビルドは成功した。
 M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 44. M10 の同じ cone の通常成分と全二点の HA 方程式（11-14）
+
+§43 の同じ生データの通常成分・混合成分を、元の通常単体と符号つき選択 cochain へ戻す
+異種等号を保持する。始点を除く面の全成分を同じ通常単体へ照合し、既存の一般の
+`SimplexData.equation_image_of_pullback` によって、始点を含まない**任意の有限部分集合**の
+全 HA 方程式を元のデータへ戻す。
+
+一点を選ぶ元の最上位 cochain は、同じ線形単体の微分方程式から閉零元である。
+元の最大元への型の移送は同じ微分と整合する。その閉性を元の混合辺へ移し、
+通常の辺は元の面で検証することで、同じ cone データの**全ての二点集合**の HA 方程式を得る。
+次数が零になることは元の濃度二の条件から導く。
+
+これは M10 の同じ構成の成分式・通常成分との貼り合わせ・係数移送と証明の分割である。
+一次 ID は追加しない。先端を含む三点以上の集合の方程式、全 cone/prism の全作用素自然性、
+元の屋根と K の Hom 射の全高次比較はまだ未完。
+全宣言の型は以下のとおり。
+
+`RawModuleTensorConeComponents`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_hom_ordinary {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
+    HEq ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorConeOrdinarySimplex A X P Q c).toSimplexData.hom I a b k hI ha hb hk)
+
+lemma strictRawModuleTensorConeData_hom_mixed {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
+    HEq ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk)
+      (k.negOnePow • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (withoutFirst I) k
+        (withoutFirst_nonempty hI h0) (by have := card_withoutFirst I h0; omega))
+```
+
+`RawModuleTensorConeTail`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_tail {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorConeData A X P Q c).pullback (Fin.succOrderEmb (n + 1)).toOrderHom =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
+      (c ⋙ strictRawModuleTensorElementDiagram A X P Q)).toSimplexData
+```
+
+`RawModuleTensorConeTailEquation`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_equation_without_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (h0 : (0 : Fin (n + 2)) ∉ I) :
+    (strictRawModuleTensorConeData A X P Q c).Equation I
+```
+
+`RawModuleTensorSelectedClosed`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementSelectedCochain_closed {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (hJ : J.Nonempty) (hc : J.card = 1) :
+    differential A (strictRawModuleTensorElementSelectedCochain A X P Q c J 0 hJ (by omega)) = 0
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_closed {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (hJ : J.Nonempty) (hc : J.card = 1) :
+    differential A (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J 0 hJ (by omega)) =
+      0
+```
+
+`RawModuleTensorConePairEquation`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_equation_pair {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (hc : I.card = 2) :
+    (strictRawModuleTensorConeData A X P Q c).Equation I
+```
+
+対象ビルドと小さい監査の確定結果・実測は §44.1 に記録した。
+M10 の完全忠実性・指定 fiber・一般の native な辺と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 44.1 検証と実測
+
+RawModuleTensorConeComponents・RawModuleTensorConeTail・RawModuleTensorConeTailEquation・
+RawModuleTensorSelectedClosed・RawModuleTensorConePairEquation の通常の対象ビルドは成功した。
+新しい公開宣言 7 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は五ファイル、それぞれ 45・51・35・55・55 行、計 241 行、公開宣言 7 本。
+§43.1 の累計に加え、検証済み累計は 89 ファイル・8,860 行・明示宣言 459 本
+（private 4 本）。200 行を超える証明はない。一次 ID は追加していない。
+
+元の接合データの両成分の式、始点を除く面の全成分一致、始点を含まない任意集合の方程式、
+一点選択 cochain の閉性と元の型移送、全二点集合の方程式まで検証した。
+残る正次混合成分・全 cone/prism・同じ屋根と K の Hom 射への照合、完全忠実性、
+指定 fiber・一般の native な辺と全族、M11 以降と G12 の元の目標は未完。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
