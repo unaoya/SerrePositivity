@@ -3761,3 +3761,141 @@ CotensorCounit の通常の対象ビルドは成功し、新しい公開宣言 5
 200 行を超える証明はない。単位則の実装は次節で検証する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 30. M10 の同じ cotensor の単位則（11-14）
+
+単位複体からの全次数 Hom は、その唯一の生成元での評価により元の複体と線形同値。
+既存の single 複体からの cochain 微分の式を使い、これを実複体同型へ組み立てる。
+全次数の dg Hom 作用と可換する式を照合し、同じ主 Hom end による加群同型へ持ち上げる。
+元の全加群射への自然性も同じ後合成の評価で確認する。
+既存の cotensor の単位・自然性の法則と証明の分割で、一次 ID は追加しない。
+文脈は `A : Type u`、`[CommRing A]`。
+加群ではさらに `D : Type v`、`[DGCategory A D]`、`[Small.{u} D]`。
+
+```lean
+def cotensorUnitDegreeEquiv (K : Complex A) (p : ℤ) :
+    (homComplex A (𝟙_ (Complex A)) K).X p ≃ₗ[A] K.X p
+
+def cotensorUnitComplexIso (K : Complex A) :
+    homComplex A (𝟙_ (Complex A)) K ≅ K
+
+lemma cotensorUnitComplexIso_naturality (P Q : Complex A) :
+    (homCovariantDG A (𝟙_ (Complex A))).map P Q ≫
+        homPostcompose _ (cotensorUnitComplexIso A Q).hom =
+      homPrecompose (cotensorUnitComplexIso A P).hom Q
+
+lemma cotensorUnitComplexIso_postcompose {P Q : Complex A} (f : P ⟶ Q) :
+    homPostcompose (𝟙_ (Complex A)) f ≫ (cotensorUnitComplexIso A Q).hom =
+      (cotensorUnitComplexIso A P).hom ≫ f
+
+def moduleCotensorUnitIsoObj (M : ModuleCategory A D) :
+    moduleCotensor A D (𝟙_ (Complex A)) M ≅ M
+
+lemma moduleCotensorUnitIsoObj_hom_eval (M : ModuleCategory A D) (x : D) :
+    (moduleEvaluation A D x).map (moduleCotensorUnitIsoObj A D M).hom =
+      (cotensorUnitComplexIso A ((moduleEvaluation A D x).obj M)).hom
+
+def moduleCotensorUnitIso : moduleCotensorFunctor A D (𝟙_ (Complex A)) ≅
+    𝟭 (ModuleCategory A D)
+```
+
+検証結果は §32.2 に記録した。Reedy fibrancy と K の完全忠実性は引き続き未完。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 31. M10 の元の加群からの coaugmentation（11-14）
+
+§30 の単位自然同型の逆と §29 の余単位自然変換を貼り合わせ、
+元の加群 M の定数図式から同じ全単体族への比較を作る。
+全加群射の自然性は同じ自然変換の合成に含まれる。
+各次数の射自身の式を回収し、同じ単位同型と余単位の擬同型性から
+元の全評価で擬同型となることを確認する。
+これは既存の cotensor の単位・余単位・貼り合わせの法則と証明の分割であり、
+一次 ID は追加しない。Reedy fibrancy と K の完全忠実性は引き続き未完。
+文脈は A : Type u、[CommRing A]、D : Type v、[DGCategory A D]、[Small.{u} D]。
+
+```lean
+def moduleCotensorCoaugmentationFamily :
+    Functor.const SimplexCategoryᵒᵖ ⟶ moduleCotensorSimplicesFunctor A D
+
+lemma moduleCotensorCoaugmentationFamily_app (M : ModuleCategory A D)
+    (n : SimplexCategoryᵒᵖ) :
+    ((moduleCotensorCoaugmentationFamily A D).app M).app n =
+      (moduleCotensorUnitIsoObj A D M).inv ≫ (moduleCotensorCounitNat A D M).app n
+
+lemma moduleCotensorCoaugmentationFamily_weak (M : ModuleCategory A D)
+    (n : SimplexCategoryᵒᵖ) :
+    moduleQuasiIso A D (((moduleCotensorCoaugmentationFamily A D).app M).app n)
+```
+
+検証結果は §32.2 に記録した。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 32. M10 の同じ半自由 Hom の Quillen 条件（11-14）
+
+N01 の厳密な持ち上げで使った同じ実半自由 filtration の全次数 Hom の全射性と、
+既存の半自由 Hom の擬同型保存を、同じ全 Hom 関手の右 Quillen 条件へ束ねる。
+両モデル構造は構成済みの実モデルであり、モデル構造を引数に置かない。
+同じ正規化単体を使う source frame 側にも利用できる入力である。
+これは既存の Hom の係数移送の法則と M10 の証明の分割で、一次 ID は追加しない。
+右 Quillen 条件だけで K の完全忠実性や元の全族の完成を主張しない。
+文脈は A : Type u、[CommRing A]。
+
+```lean
+lemma strictRawModuleSemifree_hom_fibration (X : (operad A).Algebra)
+    {P M N : strictRawModuleCategory A X}
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P)
+    (p : M ⟶ N) (hp : projectiveFibrations A ((strictRawModuleUnderlying X).map p)) :
+    projectiveFibrations A (eHomWhiskerLeft (Complex A) P p)
+
+lemma strictRawModuleSemifree_hom_isRightQuillen (X : (operad A).Algebra)
+    (P : strictRawModuleCategory A X)
+    (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P) :
+    letI := strictRawModuleModelCategory A X
+    letI := projectiveModelCategory A
+    SerrePositivity.Quillen.IsRightQuillen
+      ((eHomFunctor (Complex A) (strictRawModuleCategory A X)).obj (op P))
+```
+
+検証結果は §32.2 に記録した。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+### 32.1 同じ source frame に向けた既存の随伴の部品（紙）
+
+`DifferentialGraded/Module/Hom/HomotopyAndOperations.tensorModuleFunctor` は、固定した
+元の加群 P に対する `Complex A ⥤ ModuleCategory A D` を既に構成している。
+`Module/Hom/ColimitsAndRightHom.moduleParamCurry` と `TensorFree.moduleParamUncurry` は
+同じ二つの Hom 集合の間を往復し、`moduleParamUncurry_curry`・
+`moduleParamCurry_uncurry` が両逆を証明している。係数射の自然性は
+`moduleParamUncurry_precomp`、固定加群変数の自然性は
+`moduleParamUncurry_naturality_source` にある。
+
+したがって §32 の同じ Hom 関手の右 Quillen 条件は、これらの既存の転置の法則を
+随伴へ束ねた後、`leftQuillen_frame_reedyCofibrant` と既存の
+`ComplexLimits.normalizedSimplex_reedyCofibrant` に接続する候補となる。
+元の加群への随伴と同じ frame Hom の比較はまだ実装していない。この紙の候補を
+Reedy 条件や K の完全忠実性の証明として数えない。
+
+
+### 32.2 §30–§32 の検証・実測
+
+CotensorUnit、CotensorCoaugmentation、RawModuleHomQuillen の通常の対象ビルドは
+すべて成功した。新しい公開宣言 12 本の依存公理監査も成功し、使用する公理は
+propext・Classical.choice・Quot.sound のみ。指定の impl 鍵で、一回 280 秒の塊を
+使った。大きい監査・root ビルドはこのレーンでは実行していない。
+
+新規 Lean の今回の三ファイルはそれぞれ 148・57・67 行、計 272 行、公開宣言 12 本。
+§29.1 の累計に加え、検証済み累計は 62 ファイル・6,158 行・明示宣言 316 本
+（private 3 本）。200 行を超える証明はない。一次 ID の追加はない。
+
+同じ単位 cotensor と元の加群の自然同型、元の加群を始域とする全単体の比較と
+その各次数の擬同型性までが検証済みになった。Reedy 条件とモデル frame Hom から
+元の dg Hom への全標的自然な比較、K の完全忠実性、M10 の一般の native な辺・fiber
+と全族の完成は残る。M11 以降と G12 の目標も維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
