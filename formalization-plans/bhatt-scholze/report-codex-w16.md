@@ -22920,3 +22920,58 @@ L14とL16を完了へ進める。L15は次に残る。L12aの行数には重複�
 各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
 mainは391b2a0d2のまま。3b-4a完成の取り込みはまだない。
 完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決で、新しい仮定なし。
+
+## 390. L15の全複体射の自然性（実装前の型）
+
+一覧：済み 17／全体 48（うち追加 4）
+
+同じ基底外延性の二入力版を作り、L05のcutTerm_mapを全Cut和へ、
+その後実際のcochainActionへ延長する。零arityは同じ空語augmentationと
+既存cochainCounit_natural、左単位子の自然性だけを使う。
+既存の自然性・線形延長・貼り合わせの法則の証明分割で、新しい数学・IDは足さない。
+各証明200行以内。
+
+```lean
+lemma coefficient_simplex_pair_hom_ext (A : Type u) [CommRing A] (S : SSet.{0}) (m : ℕ)
+    {K : Complex A} {f g : Surjection.complex A m ⊗ chains A S ⟶ K}
+    (h : ∀ (d q : ℕ) (u : Surjection.BasisWord m d) (x : S _⦋q⦌),
+      f.f (-((d + q : ℕ) : ℤ))
+        (ιTensorObj (Surjection.complex A m) (chains A S) (-(d : ℤ)) (-(q : ℤ))
+          (-((d + q : ℕ) : ℤ)) (by omega)
+          ((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A] gen A S q x)) =
+      g.f (-((d + q : ℕ) : ℤ))
+        (ιTensorObj (Surjection.complex A m) (chains A S) (-(d : ℤ)) (-(q : ℤ))
+          (-((d + q : ℕ) : ℤ)) (by omega)
+          ((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A] gen A S q x))) : f = g
+lemma cutSum_map (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T)
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (TensorPowers.map ((BarrattEccles.normalizedFunctor A).map f) (r + 1)).f (-((d + q : ℕ) : ℤ))
+      (cutSum A S u x) = cutSum A T u (f.app _ x)
+lemma coaction_natural (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) (r : ℕ) :
+    (Surjection.complex A r ◁ (BarrattEccles.normalizedFunctor A).map f) ≫ cochainAction A T r =
+      cochainAction A S r ≫ TensorPowers.map ((BarrattEccles.normalizedFunctor A).map f) r
+```
+
+## 391. L15：全arityの元の複体射の自然性（検証済み、取り込み点）
+
+一覧：済み 18／全体 48（うち追加 4）
+
+`CochainNaturality.coaction_natural`を全arityについて証明した。
+正arityは元の全Cut項の自然性を全Cut和へ戻し、元の語基底と任意次元の
+正規化単体生成元の外延性で全係数・全複体射へ延長した。
+零arityは構成済みの空語作用と既存のAW余単位の自然性を使い、
+左右のテンソル作用の交換と左単位子の自然性だけで同じ指定射へ戻した。
+正整数次数の元は元の零延長で零。有限次元性・有界性の仮定は追加していない。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- SimplexPairGeneratorExt（75行）
+- CochainNaturality（55行）
+
+今回130行、M14実測29,556行、外枠31,000行まで1,444行。
+対象ビルド3010 jobs成功、追加警告0。
+小さい監査2モジュール11宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。鍵は対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。3b-4a完成の取り込みはまだない。
+次はL17の同変性・単位を実複体射へ延長し、L18の同じTRによる制限へ進む。
+M14全体や完備化後P⁰の比較を完成扱いにしていない。完備化三案は§380の状態を維持する。
