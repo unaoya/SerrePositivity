@@ -830,3 +830,12 @@ A07の冒頭の更新はA0〜A9の40本だけに限定せず、保護対象を�
 [A0〜A9の静的集計](bulk-5inf0/current-draft-inventory-summary.json)は40本、sorry 584（基準705）、本体と完全修飾名が重なる候補0（基準117）。型の同一性や全件のLean成功をこの集計だけで主張しない。現在のLean差分は追加1285・削除1650、合計2935行。外枠11,100行と、残り2,000〜4,000行の暫定見込みは変更しない。
 
 [隔離配置の依存案](bulk-5inf0/draft-staging-plan.json)は57本231辺、循環0。冒頭の依存コメントとREADMEの順序を根拠とする案で、型検査中に不足があれば修正する。保護された1本と変更しない補助ファイルも前提の点として含む。型検査は元のソースを一時ライブラリに複製し、指定したdraftのpublic importだけを足す。本体のrootにdraftを追加しない。ソースと依存の署名を保持する再現用スクリプトを用意し、次の束で実行検証する。現在は鍵の取得前で、S1の再検査はまだ未実行。
+
+
+### 5∞-0 のdraft検査・第7束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。通常のbulk整理券で、鍵を取得してから280秒以内の束を実行し、返却した。Sheaves/SheafCondition、DerivedGeneral/CompletionFunctor、Shared/CosimplicialCupProduct、A5/RootAdjunction、A8/W13AssemblyInputsの5本が成功。先のA2/AnimatedAlgebraと合わせ、全体のLean型検査が通ったdraftは6本。既存のsorryを解消済みという意味ではない。Sheaves/SetSections・GlobalSections・CechConerveLimitの3本は失敗として記録し、型検査の範囲を減らさず修正を続ける。[全8本の検査記録](bulk-5inf0/draft-block07-validation.json)と各生ログを保存した。
+
+再現用[check_draft.py](bulk-5inf0/check_draft.py)をこの束の実行に使った。元のimportとLakeのoptionsを引き継ぎ、draftの前提だけを隔離配置へpublic importする。ソース・一時配置・olean・前提の署名を記録する。依存が後から変わった成功記録は使わない。S1の利用側3本の次の束と、完備化の利用側を、返却後に一つだけ並べ直した。
+
+削除前後の全宣言名の照合で、機械的な削除範囲が隣の未重複のdraft補題2本（isAlmostConnective_completedFilteredColimit、perfectoidization_quotient_connective_of_ih）まで広がっていたことを検出した。両方の元の主張・未証明本文を復元した。CrystallineSiteでも空になったCrysOverの名前空間とcutoff変数の境界が残り、RΓ側3宣言の名前が変わっていたため、元の外側のscopeと明示的κを復元した。これらは未コミットのdraft修正の段階で見つかったもので、検査済みとしては数えていない。sorryの静的数は復元前584から増えるので、次の再集計値で更新する。
