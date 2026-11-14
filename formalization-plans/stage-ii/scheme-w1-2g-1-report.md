@@ -1,6 +1,6 @@
 # SC-W1 2g-1：幾何の供給の実装記録
 
-2026-11-14。承認された Rydh 3.10 経路。外枠 **25,000 行**、約 **12,000 行**で止まらず途中報告。G1・G2 の完成後に停止点 2g-1 を報告し、G3 へ進む。このファイルは現時点では途中記録で、完成報告ではない。main は凍結中、自分の枝 math/scheme だけで作業する。
+2026-11-14。承認された Rydh 3.10 経路。外枠 **25,000 行**、約 **12,000 行**で止まらず途中報告。G1・G2 の完成後に停止点 2g-1 を報告し、G3 へ進む。このファイルは現時点では途中記録で、完成報告ではない。B4 の指示で main の凍結は解除され、追従を完了した。数学の作業とコミットは worktree SerrePositivity-scheme・枝 math/scheme で行う。
 
 ## G1 の最初の束：型つき一覧（着手前）
 
@@ -341,3 +341,32 @@ I04 の検証待ちの間に、固有射用の既存構成の法則を有限型�
 一覧：済み 7／全体 12（うち追加 3）。
 
 同じ法則の次の合成：`exists_admissible_flat_strictTransformπ_of_finiteType` は Noether 基底 S 上の局所有限型・準コンパクト射 f と `Flat (f ∣_ U)` から、`∃ J, centerComplement J = U ∧ Flat (strictTransformπ f U J)` を返す。既存の固有射版で用いた初期中心・正則主境界の有限被覆・局所平坦化・中心の貼り合わせ・合成の共通細分を、上記有限型版の法則で接続する。既存構成の合成の法則として追加計上しない。見込み 90〜160 行、直前の三法則と合わせて 230〜420 行。原典が必要とする指定開 U を一つの主開へ狭めない。検証前は下書きに置く。
+
+## I04 と有限型射の閉包・中心の法則：検証結果
+
+新規四モジュールは計 **339 行**（I04 88 行、有限型版三本 63・104・84 行）、入口 import 4 行。package と同じ設定の下書き検証の後、本体と直接の importer の入口 `SerrePositivity.AlgebraicGeometry` を対象ビルドし、**4,830 ジョブ成功**。小監査は四モジュールを全て読み込み、生成宣言を含む **15 宣言、標準三公理のみ**、終了コード 0。共有鍵は `--class impl --wait 3600`、同時の待ちは一つ、ビルドと監査の束は 30 分以内。新しい resource limit・sorry・追加公理はない。長い行と letI の style 警告は残っているが、数学的な未解決の goal はない。
+
+ログは `scheme-drafts/2g-i04-combined-check-3.log`（下書き）、`2g-i04-native-build.log`（本体と入口）、`2g-i04-small-audit.log`（小監査）。下書きの前二回のエラーは、SpecMap_iff の引数・透明性・模型の元の R-代数構造の明示で解消した。取り込み前後の refactor 用の古い索引は使っていない。
+
+### 宣言と主張（一行ずつ）
+
+- `integralModelSpecDiagram`：有限・有限表示 R-代数の小さい filtered 図式の Spec の逆系。
+- `integralModelSpecCone`：点を実際の Spec B、射影を各模型の構造射の Spec とする cone。
+- `integralModelSpecConeIsLimit`：B が R 上整なら、この実際の cone は極限。
+- `integralModelSpecBaseMap`：各模型の元の R-代数構造による Spec R への射。
+- `integralModelSpecBaseMap_isFinite`：この基底への射は有限（固有性は Mathlib の有限射からの instance へ接続する）。
+- `integralModelSpecBaseMap_locallyOfFinitePresentation`：同じ基底への射は局所有限表示。
+- `integralModelSpecCone_projection`：各射影は、既存の環の cocone の同じ脚の Spec.map。
+- `integralModelSpecCone_projection_comp`：射影と各段の基底への射の合成は、元の R→B の Spec.map。
+- `integralModelSpecBaseMap_surjective`：元の Spec B→Spec R が全射なら、各段の Spec→Spec R も全射。忠実平坦性は仮定しない。
+- `hasFlatOpenClosure_comp_iff_of_finiteType`：有限型・準コンパクト射の閉包の平坦性を、二段と一段の底変換で比較する。
+- `HasFlatOpenClosure.comp_of_dominant_of_finiteType`：境界がスキーム論的稠密な支配射に沿って、同じ閉包の平坦性を保つ。
+- `exists_admissible_flat_strictTransformπ_of_affine_local_of_finiteType`：有限型射を平坦化する有限個のアフィン局所中心を、一つの基底中心へ貼り合わせる。
+- `finiteType_flat_restrict_pullback_snd_of_flat`（private）：平坦な制限を底変換した射の対応する制限も平坦。
+- `exists_admissible_flat_strictTransformπ_of_finiteType`：Noether 基底上の有限型・準コンパクト射について、指定した平坦開 U を保つ一つの許容中心で狭義変換を平坦化する。
+
+I04 を完了し、整射近似内の一覧は **済み 4／全体 4（うち追加 0）**。有限型版の三モジュールは既存構成の合成則・貼り合わせとその証明分割であり、主項目を追加計上しない。既存の固有射用の宣言の名前・型は変更していない。
+
+G1 本体の累計は **2,133 行**、入口込み **2,178 行**（G0 の入口込み 710 行は別計）。25,000 行の外枠と約 12,000 行での途中報告を維持する。今回の法則は一般の指定開を保つ Noether 段での平坦化を供給するが、有限表示スキームとその準コンパクト開・平坦性を同じ Noether 模型へ降ろす構成、ならびに G2 の一般の固有有限表示模型そのものは未完。A07 と B01〜B04 を完了扱いにしない。
+
+一覧：済み 7／全体 12（うち追加 3）。
