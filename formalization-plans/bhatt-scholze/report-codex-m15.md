@@ -8293,3 +8293,48 @@ M10 の完全忠実性・指定 fiber・native な辺と全族、M11 以降お�
 次は同じ全三相データの評価比較を進める。外枠は維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §54 同じ加群対象族上の全単体の評価による外延性
+
+§53 の全 HA 方程式の反映に続き、同じ加群対象族上の全単体データの等式を
+各対象での評価から戻す法則を作った。元の加群対象族の等式を明示的な入力とする。
+評価先の複体だけから加群の作用を同定する仮定は置かない。対象の同一視の後に、
+元の Hom end の各斉次成分に外延性を適用する。実 dg 単体についても同じ法則を束ねた。
+これらは M10 の評価・貼り合わせの証明の分割であり、一次 ID は増やさない。
+
+`SimplexEvaluationExt.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleSimplexData_ext_of_evaluation {n : ℕ}
+    (s t : SimplexData A (RightModule A D) n) (ho : s.obj = t.obj)
+    (h : ∀ x : D, s.map (moduleEvaluationDG A D x) =
+      t.map (moduleEvaluationDG A D x)) : s = t
+
+lemma moduleSimplex_ext_of_evaluation {n : ℕ}
+    (s t : Simplex A (RightModule A D) n) (ho : s.obj = t.obj)
+    (h : ∀ x : D, s.toSimplexData.map (moduleEvaluationDG A D x) =
+      t.toSimplexData.map (moduleEvaluationDG A D x)) : s = t
+```
+
+
+### 54.1 検証と実測
+
+SimplexEvaluationExt の対象ビルドは終了値 0 で成功した。
+新規公開宣言二本の小さい監査も終了値 0 で成功し、依存公理は
+propext・Classical.choice・Quot.sound の範囲。引用属性の追加はなく引用出力は 0 本。
+いずれも impl 鍵・待ち 3600 秒・gtimeout 280 秒の対象だけの実行である。
+大きい監査や root ビルドは行っていない。
+
+新規 Lean は一ファイル・52 行・明示宣言二本（private 0 本）。
+所有ソースを再計数した累計は 199 ファイル・15,608 行・明示宣言 708 本
+（private 21 本）。外枠 17,000 行まで残り 1,392 行。
+200 行を超える証明や一次 ID の追加はない。既存 EInfinity ソースの変更もない。
+
+全評価から全 cochain の等式と HA 方程式を戻す道具は通ったが、
+元の三相データの全評価比較自体はまだ残る。M10、M11 以降、G12 は未完である。
+次は元の frame 評価と既存の複体側の同じ三相データを比較する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
