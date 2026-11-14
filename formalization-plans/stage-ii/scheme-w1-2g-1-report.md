@@ -960,3 +960,29 @@ G1 共用部品込み本体 **5,747 行**、入口込み **5,853 行**。今回�
 G1 共用部品込み本体 **6,109 行**、入口込み **6,219 行**。全射な平坦側の実際の段への適用と、元の X への基底上の因子化は下書き検証中で、この監査には含めない。A07・G2 は未完。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+I04 の基底への写像の自然性の法則（既定の基底への合成60〜160行の分割）：`integralModelSpecBaseMap_naturality` は任意の遷移 f:j→k に対し D.map f≫baseMap k=baseMap j を示す。`integralModelSpecBaseNatTrans` は同じ構造射の D→const(Spec R) の自然変換、`integralModelSpecCone_base` は各 cone の射影との合成が元の Spec B→Spec R に一致する法則。模型の射が R-代数準同型であることと I04 の既存の射影の可換式を使い、因子化 API に同じ基底を渡す。親 ID は増やさない。
+
+同じ有限段での細分の合成 `exists_fppf_proper_refinement_of_integral_closed_flat_model` の型（既定の基底への合成60〜160行の分割）：整な R→B で Spec B→Spec R が全射、有限型 ℤ-係数環 A、g:A→B、固有・局所有限表示 p:Y→Spec A、平坦・局所有限表示・準コンパクト・準分離 q:Z→Y、pullback(p,Spec g) 上の有限型 K を入力する。元の閉部分の構造射と q をその閉部分で引いた射が全射、元の V→Spec R（局所有限表示）への基底上の射があるとき、有限段の固有全射と fppf 射による V→Spec R の細分を返す。前の実際の模型・全射性・因子化の法則を合成し、I04 の有限・局所有限表示な基底への全射と固有側を合成する。ここで模型を追加仮定にした A07 の完成とはせず、入力は保持した Noether 平坦模型の証人から後続で実際に供給する。親 ID は増やさない。
+
+C01 の被約化との合成の法則 `exists_integral_surjective_reduced_compact_minimalPrimes` の型（見込み60〜180行）：任意の可換環 R に対し、被約な B と g:R→B を実際に取り、g が整、Spec B→Spec R が全射、B の極小素点集合が準コンパクトであることを同時に返す。R_red へ C01 の既存の単射整拡大を適用し、nilradical による商と合成する。g の単射性は主張せず、I01〜I04 は非単射の整射にも適用できる。既存の被約化・C01 の構成の合成で、新しい親項目は足さない。
+
+### A07：全射な平坦模型の同じ段での基底上の因子化
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| FlatStageModelSurjective | 37 | `exists_surjective_flat_stage_of_model`：元の被覆が全射なら、ある段の実際の W_j→T_j が全射 |
+| FlatStageModelBase | 49 | `stageModelBaseMap`・`flatStageModelBaseMap`：実際の模型の図式を元の S の上の図式へ運ぶ |
+| 同上 | 同上に含む | `flatStageModelConeWithPoint_π_base`：元の被覆の構造射と cone の各射影の基底上の可換式 |
+| FlatStageModelFactorization | 66 | `exists_surjective_flat_stage_factor`：ある全射な平坦側の実際の段で、元の S 上の射を因子化し、射影との合成と S 上の可換式を同時に保持する |
+| IntegralModelBaseNaturality | 44 | `integralModelSpecBaseMap_naturality`：I04 の基底への構造射は全ての遷移と可換 |
+| 同上 | 同上に含む | `integralModelSpecBaseNatTrans`：I04 の実際の図式を Spec R 上の自然変換にまとめる |
+| 同上 | 同上に含む | `integralModelSpecCone_base`：各射影と基底への構造射の合成は元の Spec B→Spec R |
+
+本体 **196 行**、入口 4 行。対象ビルドは直接の importer AlgebraicGeometry まで **4,900 ジョブ成功**、四モジュールの小監査は補助宣言込み **13 宣言・標準三公理のみ**。既存の `Scheme.exists_π_app_comp_eq_of_locallyOfFinitePresentation` を全射な段の Over に適用し、元の射の因子化と基底上の可換式を同じ段で得た。忠実平坦性・新しい模型の存在・可換式の一致判定を仮定に足していない。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-flat-stage-factor-batch-check-3.log`、`2g-flat-stage-factor-native.log`、`2g-flat-stage-factor-audit.log`。整全射の有限段と合成する IntegralClosedFlatRefinement は下書き検証のみで、今回の監査には含めない。
+
+G1 共用部品込み本体 **6,305 行**、入口込み **6,419 行**。入力の模型を実際の C01 の整拡大・Noether 平坦模型の証人から供給し、一般の始域へ戻す A07 の組立てと G2 は未完。
+
+一覧：済み 9／全体 14（うち追加 5）。
