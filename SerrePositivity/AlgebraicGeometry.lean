@@ -1676,3 +1676,4 @@ public import SerrePositivity.AlgebraicGeometry.SegreNormalizedCoordinates
 public import SerrePositivity.AlgebraicGeometry.HomogeneousEvaluationScaling
 public import SerrePositivity.AlgebraicGeometry.SegreColumnEvaluation
 public import SerrePositivity.AlgebraicGeometry.SegreColumnDescent
+public import SerrePositivity.AlgebraicGeometry.SegreRowDescent

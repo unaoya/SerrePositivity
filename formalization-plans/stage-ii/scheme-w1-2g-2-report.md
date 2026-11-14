@@ -439,3 +439,16 @@ S03 の係数の法則の分割（着手前、S03 の内数、40〜90行）：�
 2g-2 本体1,688行・入口込み1,717行、小監査178宣言・標準三公理のみ。今回 de7b09089 の後は5モジュール285行＋入口5行、小監査34宣言。S03 の行側・逆写像の組立てと互いの逆・重なりの自然性、S04 と有限冪、G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3・S03：テンソル積の交換による行側の評価と降下
+
+`SegreRowDescent`（83行）：`segreCoordinateMap_row` は交換同型で列の斉次評価を使う行側の式。`segreCoordinateProjection_row_zero` は斉次関係式が消える式。`segreRowPolynomialMap`・`segreRowPolynomialMap_kernel_le` は全関係式の降下。`segreRowFromFactor` は全射表示からの因子 B の代数写像、`segreRowFromFactor_generator` は生成元の像。平坦性を仮定しない。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,099ジョブ、小監査8宣言・標準三公理のみ、終了状態0。ログ `2g-segre-row-descent-check-2.log`・`2g-segre-row-descent-native.log`・`2g-segre-row-descent-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。
+
+2g-2 本体1,771行・入口込み1,801行、小監査186宣言・標準三公理のみ。S03 の行・列の因子写像に到達したが、正規化したチャートの逆写像と互いの逆・重なりの自然性は未完。S04・有限冪、G4〜G5 も未完。見込み約5,500〜12,000行・外枠16,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+S03 の逆の法則の追加の分割（着手前、S03 の内数、30〜80行）：実際の座標写像の核から `Z_kj * Z_il = Z_kl * Z_ij` を同じ商で示す。選んだ Zij による正規化の後に `normalize Z_kj * normalize Z_il = normalize Z_kl` を得る。次数一正規化の全射性は、任意の斉次分数 x/f^n が normalize x である既存の式の帰結として使う。
