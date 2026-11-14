@@ -2050,3 +2050,19 @@ C06 の scheme-theoretic に稠密な実際の affine 被覆模型（着手前�
 G1・G2共用部品込み本体12,377行、入口込み12,589行。C06 は本体443行までで未完。Noether な元の対象からの scheme-theoretic に稠密な affine 被覆模型の組立ては下書きで実測に含めない。C06 と B01〜B04 は未完。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 の実際の被覆模型からのグラフ閉包（着手前の型、見込み120〜280行）：`exists_affine_cover_proper_graph_closure` は `D : SchemeDenseAffineCoverModel X` と affine な S への局所有限型の f:X→S に対し、実際の有限族 Pᵢ→S と immersion eᵢ:D.chartᵢ→Pᵢ、実際の固有な Z→S、共通の開 D.common の Z への scheme-theoretically dominant な開包含、Z から各 Pᵢ への固有な射影と全ての基底・チャートの可換式を返す。既存の実際の affine 周辺と有限グラフ閉包を合成する C06 の構成の分割である。D の存在は前記の定理で Noether な既約 X から実際に供給する。チャート像への因子化・貼り合わせを済ませる前に C06 完成とはしない。親項目は増やさない。
+
+
+### C06：元の対象からの scheme-theoretically 稠密な affine 被覆模型
+
+`SchemeDenseAffineCoverModel`（90行）：`SchemeDenseAffineCoverModel X` は元の X への閉全射と、共通の scheme-theoretically 稠密な開を持つ有限 affine 被覆を束ねる内部データ。`exists_schemeDense_affine_cover_model` は任意の Noether な既約 X からこれを無条件に供給する。
+
+本体90行・入口1行。公開モジュールでは共通の開の準コンパクト性を明示し、対象と直接 importer AlgebraicGeometry のビルド5,000ジョブ成功（終了状態0）。小監査は標準三公理のみ（件数は下記）。ログ `2g-scheme-dense-affine-cover-model-native-2.log`・`2g-scheme-dense-affine-cover-model-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。
+
+G1・G2共用部品込み本体12,467行、入口込み12,680行。C06 は本体533行までで未完。実際のチャートからのグラフ閉包の接続、各チャート像への因子化・貼り合わせ・一般の成分からの接続が残る。C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
+
+監査出力：`SerrePositivity.AlgebraicGeometry.SchemeDenseAffineCoverModel: 37 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 37 declarations.`。
