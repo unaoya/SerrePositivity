@@ -2541,3 +2541,26 @@ G1・G2共用部品込み本体14,658行、入口込み14,905行。B02〜B04 は
 G1・G2共用部品込み本体14,765行、入口込み15,013行。B02〜B04 は未完。同じ基底上の有限表示近似の余極限性までで、有限型 F_p の被覆模型の全図式とは区別する。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B03・B04 の有限型 F_p の被覆模型を一つの図式に束ねる次の分割（着手前の型、見込み500〜1,200行、元の B03・B04 の内数）：
+
+- `PrimeFieldVCoverModelCategory p R C`：両環が有限型 F_p である射 A→D、その v 判定、元の R→C への実際の可換な環の正方形を対象とし、元の正方形上で可換な二つの係数写像を射とする。模型の始域の写像だけでなく基底側の写像を保持する。
+- 有限個の元の模型と射・等式を含む共通の後段は、まず同じ基底 R 上の有限表示模型にまとめ、その v 判定を合成の消去で得る。検証済みの実際の被覆係数模型を供給した後、有限表示対象の射と等式を十分後の係数段へ移して、元の模型からの可換な写像をそろえる。各段の v 判定は実際の底変換で保持する。元の基底の Noether 性や模型の v 判定を追加仮定にしない。
+- 同じ宇宙の小さい模型への移送、実際の filtered 性、基底・始域それぞれの構造 cocone の `IsColimit` を返す。一般の元の射を戻すときも、有限表示性を元の射の仮定にはしない。
+- affine conerve の各項への移送では、面・退化・増大写像の自然性を実際の環の射として示す。各段の単なる存在だけで filtered な図式の完成とは述べない。
+
+今回供給した同じ基底上の有限表示近似と有限型 F_p の一段の被覆模型はこの分割の入力。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` と、それを使う側の型を変えない。
+
+
+### B03・B04：同じ基底上の有限表示模型の Spec 極限と v 判定
+
+`FinitePresentationModelSpec`（116行）：`finitePresentationModelSpecDiagram`・`finitePresentationModelSpecCone`・`finitePresentationModelSpecConeIsLimit` は任意の代数の実際の Spec を同じ基底上の有限表示模型の逆極限として供給する。`finitePresentationModelSpecBaseMap` とその局所有限表示性、`finitePresentationModelSpecCone_projection_comp` は元の構造射を保持する。`finitePresentationModelSpecBaseMap_vCover` は元の affine v 判定から、同じ基底上の各段の v 判定を合成の消去で得る。`finitePresentationModelSpecBaseMap_naturality`・`finitePresentationModelSpecBaseNatTrans`・`finitePresentationModelSpecCone_base` は全ての遷移と cone が元の基底上で可換であること。元の代数の有限表示性・Noether 性は要求しない。
+
+本体116行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,037ジョブ、小監査14宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-finite-presentation-model-spec-check.log`・`2g-finite-presentation-model-spec-native.log`・`2g-finite-presentation-model-spec-audit.log`。
+
+G1・G2共用部品込み本体14,881行、入口込み15,130行。8d7bacd9c の後は11モジュール、本体776行＋入口11行、小監査計52宣言・標準三公理のみ。このうち同じ基底上の有限表示近似は6モジュール469行＋入口6行。有限型 F_p の一段の被覆模型と、一般の元の射への同じ基底での近似・各段の v 判定の接続まで検証した。
+
+残るのは、有限型 F_p の被覆模型を実際の filtered な図式へまとめること、affine conerve の面・退化・増大写像の自然性と余極限の比較、および B02 の完成の整理。B02〜B04 は未完で、停止点 2g-1 ではない。全体の見込み約16,100〜19,200行、現在からの残り約1,200〜4,300行、外枠25,000行は維持。数学的な境界・型や範囲の変更は今回なし。
+
+一覧：済み14／全体17（うち追加8）。

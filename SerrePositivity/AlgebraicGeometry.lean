@@ -1569,3 +1569,5 @@ public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelCoequaliz
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelFiltered
 
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelColimit
+
+public import SerrePositivity.AlgebraicGeometry.FinitePresentationModelSpec
