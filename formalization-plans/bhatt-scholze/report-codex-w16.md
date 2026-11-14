@@ -13692,7 +13692,7 @@ sorry・追加公理0、Lean警告0。監査末尾の#checkでpositiveNestedPart
 | RecoveredPartitionValues | 36 |
 
 四本は`RecoveredPartitionValues`からすべてimportされる。
-前の五本（§164）と合成側の一本文字列（§158）もL12aの登録候補のまま。
+前の五本（§164）と合成側の一本（§158）もL12aの登録候補のまま。
 共通入口・共通監査は変更していない。
 
 ログ：`/tmp/bsw16/m14-recovered-partition-values-01.log`。
@@ -13739,3 +13739,229 @@ cutOfHeightsは元のShufflePathの有限集合の構成子へ、位置i+h_iの�
 その像がm点であることは単調性からの狭義単調な位置写像で示す。
 元の集合との一致・座標保存を別に証明し、射影/逆写像の双方の経路の一致へ使う。
 この紙の案や有限点検を、L12aの対応・符号・実テンソルの証明済み部分へ数えない。
+
+## 169. L12a の同じ水平辺の高さと元の経路の一致（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンはc6c95c4caまでの復元を検証・保存した進捗。作業木は清潔な同コミットから再開。
+§168の923経路の有限点検に対応する法則を実装する。
+C377は既存orderEmbOfFinの第i位置より前の濃度。C378・C380は元の水平/垂直座標、
+C379は元のcoordinate_sumからの辺番号=i+高さ、C381は同じ水平辺集合の一意性。
+
+cutOfHeightsは、L12aの逆向きで必要な元のCutを作る実装分割である。
+新しい経路模型へ移らず、既存ShufflePathの有限集合の構成子へ同じ辺番号の像を渡す。
+C383〜C386で元の昇順列挙と高さを保ち、元の経路へ戻ることを示す。
+これらの型は次。既存構成の座標の法則・L12aの有限対応の証明分割として数える。
+
+```lean
+lemma card_filter_lt_orderEmbOfFin {α : Type*} [LinearOrder α] (s : Finset α)
+    {n : ℕ} (h : s.card = n) (i : Fin n) :
+    (s.filter (fun x => x < s.orderEmbOfFin h i)).card = i.val
+
+abbrev cutHorizontalEdge {m q : ℕ} (s : Cut m q) (i : Fin m) : Fin (m + q)
+
+def cutHeights {m q : ℕ} (s : Cut m q) : Fin m →o Fin (q + 1)
+
+lemma horizontal_before_cutHorizontalEdge {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    s.horizontal (cutHorizontalEdge s i).castSucc = i.castSucc
+
+lemma vertical_before_cutHorizontalEdge {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    (s.vertical (cutHorizontalEdge s i).castSucc).val = (cutHeights s i).val
+
+lemma cutHorizontalEdge_val {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    (cutHorizontalEdge s i).val = i.val + (cutHeights s i).val
+
+lemma cutHeights_injective {m q : ℕ} : Function.Injective (@cutHeights m q)
+
+def heightPosition {m q : ℕ} (h : Fin m →o Fin (q + 1)) (i : Fin m) : Fin (m + q)
+
+lemma heightPosition_strictMono {m q : ℕ} (h : Fin m →o Fin (q + 1)) :
+    StrictMono (heightPosition h)
+
+def cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) : Cut m q
+
+lemma cutHorizontalEdge_cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) (i : Fin m) :
+    cutHorizontalEdge (cutOfHeights h) i = heightPosition h i
+
+lemma cutHeights_cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) :
+    cutHeights (cutOfHeights h) = h
+
+lemma cutOfHeights_cutHeights {m q : ℕ} (s : Cut m q) :
+    cutOfHeights (cutHeights s) = s
+```
+
+各証明200行以内。これは経路の復元の座標の接続であり、合成/二段切断の全対応、
+その符号・実テンソル・nullaryの証明が完成したとは数えない。
+
+## 170. L12a の合成切断からの元の外側切断（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§169の高さと元の経路の両向きの一致まで2,210 jobsの対象ビルドに成功、Lean警告0。
+次に、元の代入済み接頭語長を使い、外側の第i水平辺の合成語内での位置を
+接頭長(i+1)-1として読む。C387〜C389は既存substitute_prefix_length_mono、
+非指定色/指定色の一文字での増分、compositeWord_lengthから得る。
+正の内側語では全部分語が非空なので、全境界は正しい有限位置にあり、順序を保つ。
+C390・C391はその同じ位置の評価と厳密な順序。
+
+この境界位置で元の合成切断の高さを読み、cutOfHeightsへ渡して元の外側Cutを作る。
+C393でその元の境界の高さを保持する。コチェイン・合成・符号の定義は変更しない。
+§159の射影の原型に、この境界位置の高さとの一致も加えて点検した。
+**416条件・21,939組で一致**。
+スクリプト：`/tmp/bsw16/check-composite-outer-heights.py`、
+結果：`/tmp/bsw16/check-composite-outer-heights.log`。
+型は次。固定したL12aの元の経路の射影を組み立てる証明分割として数える。
+
+```lean
+abbrev compositePrefixLength {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) (b : ℕ) : ℕ
+
+lemma compositePrefixLength_monotone {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Monotone (compositePrefixLength u v k r)
+
+lemma compositePrefixLength_step {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin ((m + 1) + d)) :
+    compositePrefixLength u v k r p.val + 1 ≤ compositePrefixLength u v k r (p.val + 1)
+
+lemma compositePrefixLength_full {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    compositePrefixLength u v k r ((m + 1) + d) = m + (n + 1) + (d + e)
+
+def compositeOuterEdge {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (m + d)) : Fin (m + n + (d + e))
+
+lemma compositeOuterEdge_strictMono {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    StrictMono (compositeOuterEdge u v k r)
+
+def positiveCompositeOuterCut {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveCompositeCutIndex u v k q) : Cut (m + d) q
+
+lemma positiveCompositeOuterCut_heights {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveCompositeCutIndex u v k q) (i : Fin (m + d)) :
+    cutHeights (positiveCompositeOuterCut u v k c) i =
+      cutHeights c.2 (compositeOuterEdge u v k c.1 i)
+```
+
+各証明200行以内。内側切断の射影・合成切断の逆復元・両向きの一致・符号・
+実テンソル・nullaryは未完。有限点検をLeanの全称証明としては数えない。
+
+## 171. L12a の元の分割における内側水平辺の所属（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§170の外側切断と指定境界の高さの一致まで対象ビルドに成功した。
+接頭長の型の長い行は改行してから次の束で検証し直す。
+次に内側の第p水平辺を含む分割部分を、元の開始位置がp以下の最後の部分として読む。
+共有端点そのものは複数の部分語に属しても、その次へ進む同じ水平辺の所属は一意。
+元のstart・start_next・last_end・boundary_monoを使う法則であり、分割を作り直さない。
+
+自然数p全体で元の有限候補のmax'を読むが、辺の上界・一意性はp+1<Lを明示して述べる。
+実際の内側のFinの辺番号へ適用するとき、この条件はその元の有限上界から供給する。
+有限点検は語長1〜5・部分数1〜5の全ての正の重なる部分長について行った。
+正確な辺数と読んだ位置数は `/tmp/bsw16/check-segment-edge-owner.log` に記録した。
+スクリプト：`/tmp/bsw16/check-segment-edge-owner.py`。
+型は次。固定したL12aの同じ有限対応の内部の所属・単調性・一意性の法則として数える。
+
+```lean
+def segmentEdgeCandidates {t L : ℕ} (r : Surjection.OverlapPartition t L) (p : ℕ) :
+    Finset (Fin t)
+
+lemma segmentEdgeCandidates_nonempty {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) : (segmentEdgeCandidates r p).Nonempty
+
+def segmentEdgeOwner {t L : ℕ} (r : Surjection.OverlapPartition t L) (ht : 0 < t) (p : ℕ) :
+    Fin t
+
+lemma segmentEdgeOwner_start_le {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) : r.start (segmentEdgeOwner r ht p) ≤ p
+
+lemma segmentEdgeOwner_end_gt {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (hp : p + 1 < L) :
+    p + 1 < r.start (segmentEdgeOwner r ht p) + (r.val (segmentEdgeOwner r ht p)).val
+
+lemma segmentEdgeOwner_monotone {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) : Monotone (segmentEdgeOwner r ht)
+
+lemma segmentEdgeOwner_unique {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (hp : p + 1 < L) (j : Fin t)
+    (hleft : r.start j ≤ p) (hright : p + 1 < r.start j + (r.val j).val) :
+    segmentEdgeOwner r ht p = j
+```
+
+各証明200行以内。この所属だけで内側切断や全対応の完成とは数えない。
+
+## 172. L12a の色別順位と同じ区間の高さ（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+内側射影の高さを作るため、元の一つの区間内の高さを、同じ色の頂点列の順位へ移す。
+既存のcolorIntervalRanks_card・colorIntervalRanks_eq_Icc・intervalPositions_cardから、
+順位の幅と元の区間の高さの幅が一致する。その同じ幅を使って順位を読む。
+L12aの既存の有限列挙の評価・証明分割であり、新しい作用や対応を導入するものではない。
+C399〜C402を次の型で追加する（各証明200行以内の見込み）。
+
+```lean
+lemma colorIntervalRank_width {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    (colorIntervalLast s v a p hp).val - (colorIntervalFirst s v a p hp).val =
+      hi s p - lo s p
+
+def colorHeightRank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p) : Fin (outputDegree s v a + 1)
+
+lemma colorHeightRank_mem {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p) :
+    colorHeightRank s v a p hp h hl hr ∈ colorIntervalRanks s v a p
+
+lemma colorHeightRank_monotone {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h h' : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p)
+    (hl' : lo s p ≤ h') (hr' : h' ≤ hi s p) (hh : h ≤ h') :
+    colorHeightRank s v a p hp h hl hr ≤ colorHeightRank s v a p hp h' hl' hr'
+
+lemma colorHeightRank_endpoints {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    colorHeightRank s v a p hp (lo s p) le_rfl (lo_le_hi s p) =
+        colorIntervalFirst s v a p hp ∧
+      colorHeightRank s v a p hp (hi s p) (lo_le_hi s p) le_rfl =
+        colorIntervalLast s v a p hp
+```
+
+有限点検：`/tmp/bsw16/check-color-height-ranks.py`。884組の語と切断、5,410箇所の高さで、
+幅の一致と、上の順位が同じ元の水平位置・高さを読むことを確認した。
+有限点検は全称証明の代わりには数えない。内側切断・逆復元・符号・nullaryは未完。
+
+## 173. L12a の外側射影と辺の所属：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§169〜171の6モジュール、387行を検証した。
+対象ビルド：`/tmp/bsw16/m14-composite-outer-and-owner-01.log`、2,847 jobs、成功・対象警告0。
+小監査：`/tmp/bsw16/audit-m14-composite-outer-and-owner.lean`、
+結果 `/tmp/bsw16/m14-composite-outer-and-owner-audit.log`、**6モジュール・61宣言、標準三公理のみ**。
+sorry・新規公理は0。既存の公開宣言・界面・共有入口は変更していない。
+
+登録候補（すべて `SerrePositivity.EInfinity.SimplexCuts.` の下）：
+`OrderedPrefixCard`、`CutHeights`、`CutOfHeights`、`CompositePrefixLengths`、
+`CompositeOuterCut`、`SegmentEdgeOwner`。
+元のCutの高さとの相互復元、元の合成語の接頭長、外側切断と指定境界の一致、
+内側水平辺の所属の一意性まで。L12a全体の対応・符号・実テンソル・nullaryは未完。
+
+L12a検証済み実測は675+387=**1,062行**、M14は15,882+387=**16,269行**。
+外枠25,000行まで**8,731行**。L12aの1,200行の途中報告点はまだ踏んでいない。
+§172のColorHeightRanksはこの時点では未検証の下書きで、上の実測・登録候補に含めない。
