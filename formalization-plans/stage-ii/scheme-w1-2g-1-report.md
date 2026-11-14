@@ -614,3 +614,31 @@ G1 累計は本体 **2,941 行**、入口込み **3,000 行**。C02.(i) の非�
 C02 の本体は先の基礎を含め **1,027 行**、入口 20 行で、当初の 1,500〜4,000 行の見込みの上端内。G1 累計は本体 **3,622 行**、入口込み **3,694 行**。A07 は未完：閉包が平坦射の像の開 V に含まれることと閉包の全射性を、特殊化・v 判定により接続し、整全射の有限表示段との細分へ渡す。G2 の一般の固有有限表示モデルも未完。C02 の閉包絡の完成を A07 や一般の平坦化の完成とは呼ばない。
 
 一覧：済み 8／全体 13（うち追加 4）。
+
+## A07 続行：閉包と v 判定の特殊化の接続の法則
+
+C02 の完了コミットは 24dcb59d9。次の法則は既定の A07 の Z⊆V と全射性の接続の分割で、独立な存在項目を追加しない。
+
+- `exists_specialization_from_compactOpen_closure`：qcqs スキーム Y、準コンパクト開 U、y∈closure U に対し、u∈U、u⤳y を得る。Rydh Proposition 3.7 の閉包の特殊化の部分。既存の構成可能位相のコンパクト性（Mathlib、Stacks 0901）を使い、U と y の準コンパクト開近傍の有限交叉性から選ぶ。見込み 80〜200 行。
+- `mem_range_comp_of_vCover_specialization`：v 判定を満たす f:X→Y、閉埋め込み i:Z→X、f⁻¹U⊆range i、u∈U、u⤳y から y∈range(i≫f)。既存の liftsSpecializations と閉像の特殊化による安定性の法則。見込み 30〜80 行。
+- `closure_subset_range_comp_of_vCover_closedRestriction`：上に qcqs Y と U の準コンパクト性を加え、closure U⊆range(i≫f) を得る。前の二つを合成する法則（見込み 10〜30 行）。
+
+一覧：済み 8／全体 13（うち追加 4）。
+
+A07 の全射性の法則：`surjective_of_isProper_of_denseRange` は固有射 f の稠密像から全射性を得る。`surjective_imageι_comp_of_denseRange` は準コンパクト j:X→Y、固有 p:Y→S、DenseRange(j≫p) から、実際のスキーム論的像の構造射 j.imageι≫p の全射性を得る。Rydh Proposition 3.7 の固有閉像による法則で、既存の toImage_imageι と固有射の閉像を使う（見込み 30〜90 行）。新しい存在項目としては数えない。
+
+A07 の閉包絡と平坦被覆の接続：`exists_fppf_closedEnvelope_refinement_of_flat_closedRestriction` の入力は p:Y→Spec R 固有・局所有限表示、v 判定を満たす f:X→Y、閉埋め込み i:Z→X、g=i≫f が平坦・局所有限表示・準コンパクト、準コンパクト開 U⊆Y、f⁻¹U⊆range i、DenseRange(U.ι≫p)。結論は T,W、固有・局所有限表示・全射 r:T→Spec R、平坦・局所有限表示・準コンパクト・全射 q:W→T、a:W→X と a≫f≫p=q≫r。C02 の実際の J.subscheme を T とし、W は g の底変換。Rydh Proposition 3.7 の閉包・閉包絡・平坦像による既存の構成の接続（見込み 80〜220 行）。この条件付きの図式の接続だけで A07 の一般の細分の完成とはしない。入力となる Noether 模型とその実際の閉部分への適用、整全射の有限表示段との移送は別に残る。
+
+### A07 の閉包・特殊化・固有閉像：検証結果
+
+CompactOpenSpecialization（58 行）、VCoverClosedRestrictionSpecializations（42 行）、ProperClosedImageSurjectivity（40 行）、計 **140 行**と入口 3 行。対象ビルドは直接の importer AlgebraicGeometry まで **4,861 ジョブ成功**。三モジュールの小監査は補助宣言込み **6 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログは `2g-closed-restriction-check-3.log`、`2g-closed-restriction-native.log`、`2g-closed-restriction-audit.log`。
+
+- `exists_specialization_from_compactOpen_closure`：qcqs スキームの準コンパクト開の閉包の各点を、その開の点の特殊化として選ぶ。
+- `mem_range_comp_of_vCover_specialization`：v 判定の特殊化の持ち上げと閉像の安定性で、指定開の点の特殊化を閉部分の像へ入れる。
+- `closure_subset_range_comp_of_vCover_closedRestriction`：指定開の逆像を含む閉部分は、その開の閉包の全点を v 判定で覆う。
+- `surjective_of_isProper_of_denseRange`：稠密像を持つ固有射は全射。
+- `surjective_imageι_comp_of_denseRange`：合成の像が稠密なら、固有な構造射を持つ実際のスキーム論的像は基底へ全射。
+
+この閉包の特殊化の補題は Noether 性を要求せず、U が基底全体で稠密であるとも仮定しない。生のブローアップの底変換上で U が稠密だという誤った主張を使わない。G1 累計は本体 **3,762 行**、入口込み **3,837 行**。C02 と合わせる図式の接続は引き続き下書き検証中で、A07 自体は未完。
+
+一覧：済み 8／全体 13（うち追加 4）。
