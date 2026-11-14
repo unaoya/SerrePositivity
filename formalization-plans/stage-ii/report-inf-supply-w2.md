@@ -13178,3 +13178,108 @@ theorem simplicialReplacement_common_nondegenerate_presentation {X : SSet.{u}} {
     (h : X.map α.op τ = X.map β.op υ) :
     ∃ (γ : ⦋k⦌ ⟶ ⦋m⦌) (_ : Epi γ), β ≫ γ = α ∧ X.map γ.op τ = υ
 ```
+
+## 212. 元のlatching余錐の余極限性と同じ退化部分の同型（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+前のターンは共通の非退化表示まで検証・コミット済みで進捗あり。開始時にcleanな作業木とe36070d9eを確認した。元の退化作用素が分裂単射であることと、同じ全射表示へ元の係数を回収する法則を示した。共通表示の全射を元のlatchingの射とし、その作用素で元の係数の単体を厳密に回収した。
+
+任意の余錐の二つの表示を、同じ非退化基底表示へ係数ごと戻した。その退化作用素の単射性から、元の係数を含む同じ二つの単体が一致する。余錐の自然性により、任意の余錐で元の二表示の値が同じことを示した。元の被覆する脚から各単体の値を取り、この一致を使って自然な降下射・全脚での一致・一意性を構成した。元のlatching余錐のIsColimitと、実際のlatchingの余極限から同じ退化部分への全同型が得られた。
+
+281：二本の対象ビルド1,652 jobs・終了0、小監査138本983宣言・標準三公理のみ（実ハンドル73674・終了0）。282：余錐の値と余極限の二本の対象ビルド1,654 jobs・終了0、小監査140本997宣言・標準三公理のみ（実ハンドル72177・終了0）。両方とも鍵返却済み。個別検査6095・87431・35572・30108の終了0を確認した。
+
+今回49＋46＋70＋97＝262行、累計140本・9,058行／外枠15,000。R03f.2は869行。現状の残りは境界付きの各係数の持ち上げを行全体へ束ねる部分、元の相対latchingへの適用と対角への移送で300〜450行、完成時1,169〜1,319行程度と再見積もりする。当初の上端1,200行より増える可能性があるが、§19の中間定理一つ1,500行以内の見込みである。外枠も保持する。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りの短い経路は、相対latchingの大きな射の同型を別に作り直す代わりに、元の相対latchingの持ち上げ問題を直接解く方法である。退化基底成分では指定されたlatching境界の値を保持し、それ以外の成分では元のη.app iのleft anodyne性で持ち上げ、元の余積から行全体へ降下する。境界の制限と両脚が厳密に一致することを検収し、元の相対latching射のleft anodyne性へ戻す。R03f.2の型・範囲を変えず、条件つきの判定へ弱めない。
+
+### 212.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。余錐の法則ではさらに `(n : ℕ)` を用いる。`c` は元のlatching図式の任意の余錐。
+
+#### SimplicialReplacementRowEpiLifts（49行）
+
+```lean
+theorem simplicialReplacementRowReindex_mono {m n : SimplexCategory} (α : m ⟶ n) [Epi α] :
+    Mono (simplicialReplacementRowReindex F α)
+
+theorem simplicialReplacementRowReindex_lift {m n : SimplexCategory} (α : m ⟶ n) [Epi α]
+    (τ : ComposableArrows I n.len) (q : SimplexCategoryᵒᵖ)
+    (x : (simplicialReplacementRow F m.len).obj q)
+    (h : (nerve I).map α.op τ = x.1) :
+    ∃ y : (F.obj (τ.obj 0)).obj q,
+      (simplicialReplacementRowReindex F α).app q ⟨τ,y⟩ = x
+```
+
+#### SimplicialReplacementRowLatchingRefinement（46行）
+
+```lean
+def simplicialReplacementLatchingRefinement (hm : m < n) (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α]
+    (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) (γ : j.obj.left.unop ⟶ ⦋m⦌)
+    (h : j.obj.hom.unop ≫ γ = α) : simplicialReplacementLatchingIndexOfEpi hm α ⟶ j
+
+theorem simplicialReplacementRowLatching_refine (q : SimplexCategoryᵒᵖ)
+    (hm : m < n) (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] (τ : (nerve I).nonDegenerate m)
+    (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q)
+    (h : (nerve I).map α.op τ =
+      (((simplicialReplacementRows F).map j.obj.hom).app q x).1) :
+    ∃ (f : simplicialReplacementLatchingIndexOfEpi hm α ⟶ j)
+      (y : (F.obj (τ.val.obj 0)).obj q),
+      ((simplicialReplacementRows F).map f.hom.left).app q ⟨τ.val,y⟩ = x
+```
+
+#### SimplicialReplacementRowLatchingValues（70行）
+
+```lean
+theorem simplicialReplacementRowLatching_value_map
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) {j k : LatchingIndex simplexOp (Opposite.op ⦋n⦌)} (f : j ⟶ k)
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q)
+    (y : ((simplicialReplacementRows F).obj k.obj.left).obj q)
+    (h : ((simplicialReplacementRows F).map f.hom.left).app q x = y) :
+    (c.ι.app j).app q x = (c.ι.app k).app q y
+
+theorem simplicialReplacementRowLatching_values_eq
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (j k : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q)
+    (y : ((simplicialReplacementRows F).obj k.obj.left).obj q)
+    (h : (simplicialReplacementRowLatchingLeg F n j).app q x =
+      (simplicialReplacementRowLatchingLeg F n k).app q y) :
+    (c.ι.app j).app q x = (c.ι.app k).app q y
+```
+
+#### SimplicialReplacementRowLatchingColimit（97行）
+
+```lean
+theorem simplicialReplacementRowLatching_exists_value
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (s : (simplicialReplacementDegenerateRow F n : SSet.{u}).obj q) :
+    ∃ v : c.pt.obj q, ∀ (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+      (x : ((simplicialReplacementRows F).obj j.obj.left).obj q),
+      (simplicialReplacementRowLatchingLeg F n j).app q x = s → (c.ι.app j).app q x = v
+
+def simplicialReplacementRowLatchingValue
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (s : (simplicialReplacementDegenerateRow F n : SSet.{u}).obj q) :
+    c.pt.obj q
+
+theorem simplicialReplacementRowLatchingValue_fac
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q) :
+    simplicialReplacementRowLatchingValue F n c q
+      ((simplicialReplacementRowLatchingLeg F n j).app q x) = (c.ι.app j).app q x
+
+def simplicialReplacementRowLatchingDesc
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F)) :
+    (simplicialReplacementDegenerateRow F n : SSet.{u}) ⟶ c.pt
+
+def simplicialReplacementRowLatchingIsColimit :
+    IsColimit (simplicialReplacementRowLatchingCocone F n)
+
+def simplicialReplacementRowLatchingIso :
+    colimit (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) ≅
+      simplicialReplacementDegenerateRow F n
+```
