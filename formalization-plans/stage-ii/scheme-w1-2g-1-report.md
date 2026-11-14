@@ -1404,3 +1404,17 @@ B01 の三重交叉の射の自然性と六種の式の最後の二つ（着手�
 G1・G2共用部品込み本体8,831行、入口込み8,986行。一般の有限表示対象の模型の分割2,169行。三重交叉の gluing の二つの式の極限での照合は下書き検証中。六種の有限個の式の共通段への具体的な移送とgluing、全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の実際の段の射の合成則と有限個の等式の移送（着手前の型、合計見込み120〜300行）：`baseChangedModelArrow γ p q l hl` は固定模型間の基底上の射を、実際の二つの底変換模型間の射へ移す。`_fst`・`_snd` は二射影の可換式、`_id`・`_comp` は恒等・合成則、`_eq_iff` は二射の一致が固定模型への射影の一致と同値であること。`exists_finite_compositeStage_equalities_of_isLimit` は、有限個の Cartesian 源模型と固定した有限表示の標的への二射が元の極限で一致するなら、一つの後の係数段で底変換した実際の二射が全て一致すること。既存の有限個の一致判定を、元の源を保つ実際の Cartesian cone へ適用する合成・係数移送の法則。親項目は増やさない。
+
+
+### B01：元の極限での三重交叉の自然性と二つの gluing の式
+
+`OpenAtlasTripleNaturality`（106行）：`stageReverse_toChart_after_comparison`（`_assoc` を含む）は反転の比較を開包含と合成した式、`stageTriple_naturality` は元の三重交叉の射と段の L の自然性、`stageTriple_fst_after_comparison` は `L ≫ δ = fst ≫ t ≫ δ`、`stageTriple_snd_after_comparison` は `L ≫ t ≫ δ = snd ≫ t ≫ δ` が元の実際の三重交叉の比較の後で成立すること。
+
+本体106行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,942ジョブ成功。小監査7宣言・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-atlas-triple-naturality-check-2.log`・`2g-atlas-triple-naturality-native.log`・`2g-atlas-triple-naturality-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体8,937行、入口込み9,093行。一般の有限表示対象の模型の分割2,275行。六種の式の元の極限上の入力はそろった。実際の後の共通段への同時移送は下書き検証前で、この実測に含めない。その適用・gluing datum と全体の模型、一般の固有性の降下、被覆模型は残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
