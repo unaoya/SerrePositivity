@@ -7384,3 +7384,63 @@ theorem nativeDerivedCone_standardLeg (X : CosimplicialObject (Complex A)) (n : 
 累計 **315モジュール・19,247行**、外枠まで753行。一覧 `/private/tmp/isw2-g10-threehundredfifteen-modules.txt`。
 
 C05は、同じ閉零圏のstrict nerveからcoherent比較を通した射と、既存 `closedNerveInclusion` との全単体の等式を `ComplexStrictNerveComparison` に分割して証明中。対象の一致は確認できており、閉零射と高次零成分の照合が残る。新しい図式や比較を選ぶものではない。未コミットの下書きはこの一本だけ。停止点2a・2bと3b-4段0は未完。
+
+
+## 149. C05完了：元のstrict図式の全単体の厳密等式（2026-11-14）
+
+一覧：済み 26／全体 36（うち追加 1）。C01〜C05完了、C06・C07とDは未完。
+
+### 149.1 型と登録対象
+
+既存構成の評価・単位則とC05の証明分割。新しい図式・比較を選ばず、同じstrict Homの定数単体の正次元成分が零であることを、既存の旗の和に項別に適用した。低次では同じ閉零射を評価する。計算上限の増加なし。各ファイルは200行以内。
+
+登録対象：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardConstantTopEvaluation`（65行）。
+
+```lean
+theorem standardTopEval_constant_pos (z : (standardHomSpace (R := R) x y) _⦋0⦌)
+    (m : ℕ) (hm : 0 < m) :
+    standardTopEval x y m (PinchedHom.constant z m) = 0
+
+theorem standardTopEval_constant_zero (z : (standardHomSpace (R := R) x y) _⦋0⦌) :
+    standardTopEval x y 0 (PinchedHom.constant z 0) =
+      (standardZeroEquiv (R := R) x y z).val
+
+theorem standardZeroEquiv_homEquiv (x y : ClosedCategory R D) (f : x ⟶ y) :
+    standardZeroEquiv (R := R) (D := D) x y
+      (SimplicialCategory.homEquiv' x y f) = closedHomEquiv R D x y f
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictCubeEvaluation`（35行）。
+
+```lean
+theorem coherentCubeComponent_orderDiagram_pos {J : Type u} [LinearOrder J]
+    (F : J ⥤ ClosedCategory R D) {a b : J} (hab : a < b)
+    (S : Finset (Set.Ioo a b)) (hS : 0 < S.card) :
+    coherentCubeComponent (enrichedFunctorOfOrderDiagram F) hab S = 0
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexStrictNerveComparison`（71行）。
+
+```lean
+theorem complexClosedNerve_coherentComparison :
+    nerveToCoherent (ClosedCategory A (Complex A)) ≫
+      coherentComparison (R := A) (D := Complex A) = closedNerveInclusion A (Complex A)
+
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedDiagramEq`（41行）。
+
+```lean
+theorem nativeDerivedDiagram_eq (X : CosimplicialObject (Complex A)) :
+    nativeDerivedDiagram X = nativeTotIndexIso.hom ≫ strictCosimplicialComplexNerve X ≫
+      complexOrdinaryDerivedSource A
+
+```
+
+### 149.2 検収と残り
+
+コード `5674cfded`。鍵付き対象ビルド168・169・170はそれぞれ **3,755・3,944・7,836 jobs、すべて終了コード0**。新規四本だけの分割監査は **3 + 2 + 1 = 6宣言、標準三公理のみ**（各ログ `/private/tmp/isw2-build168.log`〜`170.log`）。一つの整理券ずつ `--class impl --wait 3600`、ビルドと小監査の間だけ保持し返却済み。sorry・新公理0、既存宣言・⑤a・入口・公式監査・mainの変更なし。
+
+累計 **319モジュール・19,459行**、外枠まで541行。一覧 `/private/tmp/isw2-g10-threehundrednineteen-modules.txt`。C06・C07は同じslice制限の同型と底図式の等式消去で証明中。Dは未着手。外枠と型つき一覧の規則を維持する。
