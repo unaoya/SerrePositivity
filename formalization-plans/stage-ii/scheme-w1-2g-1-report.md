@@ -1818,3 +1818,14 @@ G1・G2共用部品込み本体11,436行、入口込み11,631行。B01〜B04 は
 一覧：済み11／全体15（うち追加6）。
 
 B02 の分離性の降下の出口（着手前の型、見込み100〜250行）：`exists_isSeparated_pullback_of_isLimit` は qcqs なスキームの affine 遷移の cofiltered 図式 D と実際の極限 c,hc、段への qcqs な射 f について、極限での同じ f の底変換が分離的なら、ある j→i の同じ底変換も分離的と返す。対角を二重交叉の実際の模型へ移し、前記の二段の模型の閉埋め込み性の降下と Cartesian 比較から分離性へ戻す。[Stacks 01ZQ, 32.8.6](https://stacks.math.columbia.edu/tag/01ZQ) の C04 の対角への適用で、B02 内の証明分割。対角自体の局所有限型性を使うので f の局所有限型性や基底の Noether 性を追加しない。
+
+
+### B02：対角の実際の底変換と Cartesian な模型の分離性の照合
+
+`DiagonalClosedBaseChange`（54行）：`isClosedImmersion_diagonal_pullback_of_isSeparated` は Cartesian な模型の分離性から元の対角の二重交叉への実際の底変換の閉埋め込み性を返す。`isSeparated_of_closed_diagonal_stage` は二重交叉の実際の模型への対角の底変換の閉埋め込み性から模型の分離性を返す。対角と二重交叉の Cartesian 比較、二重交叉と底変換との実際の比較同型を使う。
+
+本体54行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,982ジョブ成功。小監査3宣言・標準三公理のみ。下書きでは証明にだけ現れる Cartesian 比較を include し、二重交叉の比較射の略記を明示して単独検証を完了。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-diagonal-closed-base-change-check-3.log`・`2g-diagonal-closed-base-change-native.log`・`2g-diagonal-closed-base-change-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,490行、入口込み11,686行。分離性の降下の最後の接続は下書きの検証中で実測に含めない。B01〜B04 は未完。
+
+一覧：済み11／全体15（うち追加6）。
