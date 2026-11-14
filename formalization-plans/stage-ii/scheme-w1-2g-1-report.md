@@ -1373,3 +1373,20 @@ G1・G2共用部品込み本体8,603行、入口込み8,755行。一般の有限
 今回の区切り（4935bcfff の後）は13モジュール、本体832行・入口13行、小監査合計142宣言・標準三公理のみ。G1・G2共用部品込み本体8,682行、入口込み8,835行。一般の有限表示対象の模型の分割2,020行。B01〜B04は未完で、2g-1の停止点ではない。次は対角の逆と三重交叉の式の元の極限での照合、有限個の六種の式を後の共通段へそろえる適用、gluing datum の供給と全体の模型への接続。その後に一般の固有性の降下と被覆模型を続ける。外枠25,000行は不変、約12,000行で残りのG2の見込みを改めて報告する。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+B01 の対角の逆の式の分割（着手前の型、見込み80〜220行）：`originalDiagonal` は Uᵢ→Uᵢ×ₓUᵢ の実際の対角、`originalDiagonal_fst_inverse` は元の開包含の mono 性による二側の逆の式。`stageDiagonal_naturality` は元の対角と段の対角の候補の比較の可換式。`stageDiagonal_right_inverse_after_comparison` と `stageDiagonal_left_inverse_after_comparison` は、元のチャート／重なりからの比較の後で、対角の候補と段の開包含がそれぞれ恒等射になること。六種の式のうち最初の二つの極限側の入力で、既存の対角・比較の自然性・mono 性の法則。親項目は増やさない。
+
+
+B01 の実際の三重交叉の比較の法則（着手前の型、見込み100〜240行）：`tripleComparisonAt` は元の三重交叉から段の重なり同士の実際の pullback への lift。`tripleComparisonAt_fst`・`_snd` は二射影の可換式。`tripleComparisonAt_iso` はこれと段の三重交叉の同型の合成が、有限族の源の実際の段への比較と一致すること。この式で、降ろした L の自然性を、抽象的な源の底変換ではなく gluing datum の実際の三重交叉で使える。既存の比較・二射影・同型の係数移送の法則で、親項目は増やさない。
+
+
+### B01：元の極限での対角の自然性と二側の逆
+
+`OpenAtlasDiagonalNaturality`（77行）：`originalDiagonal` は元のチャートの実際の対角、`originalDiagonal_fst_inverse` は第一射影との二側の逆の式、`stageDiagonal_naturality` は元の対角と段の候補の可換式、`stageDiagonal_right_inverse_after_comparison` は元のチャートの比較の後での右逆の式、`stageDiagonal_left_inverse_after_comparison` は元の重なりの比較の後での左逆の式。
+
+本体77行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,940ジョブ成功。小監査9宣言・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-atlas-diagonal-naturality-check.log`・`2g-atlas-diagonal-naturality-native.log`・`2g-atlas-diagonal-naturality-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体8,759行、入口込み8,913行。一般の有限表示対象の模型の分割2,097行。三重交叉の比較は未検証下書きでこの実測に含めない。三重交叉の式の極限での照合、六種の有限個の式の共通段への移送、gluing datum と全体の模型、一般の固有性の降下、被覆模型は残る。B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
