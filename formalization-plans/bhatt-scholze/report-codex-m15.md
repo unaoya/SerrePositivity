@@ -2233,3 +2233,130 @@ B4 追従は §13 で完了済み。M15 は再開しているが、M10 の nativ
 cocartesian 性、相対テンソル、RHom・完備反射・完備テンソルと G12 は引き続き未完。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+## 15. M10 の指定生成射と係数作用の照合（11-14、着手）
+
+§14 の全係数自然性を元の指定弱辺に接続するため、既存の同じ係数作用について、
+自由解像の零次の一文字の射、hammock の指定零単体・点、Kan 化した同じ射、
+coherent nerve の実一単体の保存を照合する。
+新しい模型や対象ごとの別の辺を選ばず、元の射 f と同じ二端点を保持する。
+M10 の既存構成の係数移送・自然性の法則の分割で、一次 ID の追加はない。
+
+`EInfinity/Modules/LocalizationArrowCoefficients.lean` の今回の型を記録する。
+共通文脈は `C D : RelativeCategory.{u}`、`F : C ⟶ D`、`X Y : C.category`。
+
+```lean
+lemma freeResolutionArrowZero_coefficient (f : X ⟶ Y) :
+    eqToHom (freeResolutionMap_object F (op ⦋0⦌) X).symm ≫
+      ((freeResolutionMap F).app (op ⦋0⦌)).functor.map (freeResolutionArrowZero C f) ≫
+        eqToHom (freeResolutionMap_object F (op ⦋0⦌) Y) =
+      freeResolutionArrowZero D (F.functor.map f)
+
+lemma freeHammockArrowZero_coefficient (f : X ⟶ Y) :
+    (freeHammockDiagonalMap F X Y).app (op ⦋0⦌) (freeHammockArrowZero C f) =
+      freeHammockArrowZero D (F.functor.map f)
+
+lemma freeHammockArrowPoint_coefficient (f : X ⟶ Y) :
+    freeHammockArrowPoint C f ≫ freeHammockDiagonalMap F X Y =
+      freeHammockArrowPoint D (F.functor.map f)
+
+lemma localizationArrowPoint_coefficient (f : X ⟶ Y) :
+    localizationArrowPoint C f ≫ localizationHomMap F X Y =
+      localizationArrowPoint D (F.functor.map f)
+
+lemma kanLocalizationStrictHom_coefficient (f : X ⟶ Y) :
+    (kanLocalizationFunctor F).map (kanLocalizationStrictHom C f) =
+      kanLocalizationStrictHom D (F.functor.map f)
+
+lemma kanFreeHammockStrictHom_coefficient (f : X ⟶ Y) :
+    (kanFreeHammockCoefficientFunctor F).forget.map (kanFreeHammockStrictHom C f) =
+      kanFreeHammockStrictHom D (F.functor.map f)
+
+lemma localizationStrictEdge_coefficient (f : X ⟶ Y) :
+    ((coherentNerveEdge (kanLocalizationStrictHom C f)).map (localizationNerveMap F)).edge =
+      (coherentNerveEdge (kanLocalizationStrictHom D (F.functor.map f))).edge
+
+lemma freeHammockStrictEdge_coefficient (f : X ⟶ Y) :
+    ((coherentNerveEdge (kanFreeHammockStrictHom C f)).map (kanFreeHammockCoefficientNerve F)).edge =
+      (coherentNerveEdge (kanFreeHammockStrictHom D (F.functor.map f))).edge
+```
+
+この辺の保存の後には、既存の `SourceHom.localizationStrictSourceIso_naturality` を
+使って、元の弱射の反転と同じ native 辺を接続する。
+これらはまだ半自由 native fiber の同定や全族の cocartesian 性を供給していない。
+検証済みの一覧の数は据え置く。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 15.1 指定弱射の実辺と BE の同じ標準 lift（検証中）
+
+`LocalizationStrictWeak.lean` は、既存の源の反転性を
+`localizationStrictSourceIso_naturality` の四角形で共役し、元の指定射から作った
+同じ辺そのものの可逆性を示す。共通文脈は `C : RelativeCategory.{u}`。
+
+```lean
+lemma localizationStrictEdge_invertible_of_weak {X Y : C.category}
+    (f : X ⟶ Y) (hf : C.weakEquivalences f) :
+    IsInvertibleEdge (coherentNerveEdge (kanLocalizationStrictHom C f)).toTruncated
+```
+
+`BarrattEccles/Modules/NativeCartesianWeak.lean` では、同じ標準 lift の局所化辺と
+底への射影を指定する。共通文脈は `A : Type u`、`[CommRing A]`。
+
+```lean
+def moduleTotalVertex (M : strictRawModuleTotal A) : (moduleTotalInfinity A) _⦋0⦌
+
+def moduleCartesianLiftEdge {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    SSet.Edge (moduleTotalVertex A
+      ((strictRawModuleFiberInclusion A X).obj ((strictRawModuleRestrict f).obj M)))
+      (moduleTotalVertex A ((strictRawModuleFiberInclusion A Y).obj M))
+
+lemma moduleCartesianLiftEdge_invertible {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) (M : strictRawModuleCategory A Y) :
+    IsInvertibleEdge (moduleCartesianLiftEdge A f M).toTruncated
+
+lemma moduleCartesianLiftEdge_projection {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (M : strictRawModuleCategory A Y) :
+    ((moduleCartesianLiftEdge A f M).map (moduleTotalProjection A)).edge =
+      (coherentNerveEdge (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+        ((algebraToCofibrantDKRelative A).functor.map
+          ((ULiftHom.up.{u,u+1,u+1} (C
+
+```
+
+可逆性の文献番号は、[HTT 原典](https://www.math.ias.edu/~lurie/papers/HTT.pdf)
+§1.2.4 の「同じ辺の像がホモトピー圏で同型」という定義に対応させる。
+Proposition 1.2.4.3 の外側 horn の持ち上げによる判定そのものを証明したとはしない。
+BE の底が弱同値の場合の標準 lift に適用し、別の可逆辺へ取り替えない。
+これらも M10 の指定射・係数作用・反転の法則の分割で、追加の一次 ID はない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 15.2 検証済みの結果と実測
+
+三つの新規モジュールの正規 Lake 対象ビルドが、指定の共有鍵の下で通過した。
+自由解像の零次から実一単体までの指定生成射の保存、同じ弱射の指定辺の可逆性、
+BE の元の標準 lift の実局所化辺と射影先の指定辺との等式が得られた。
+切り詰め写像の元の準圏を明示し、源の選択逆を含む型照合に限って
+`LocalizationStrictWeak` の一補題の `maxHeartbeats` を局所的に 800,000 とした。
+
+今回の公開 13 宣言の `#print axioms` と文献属性の環境検査も、別の共有鍵で
+終了コード 0。実出力は同じ 13 宣言と 13 属性に一致する。
+依存公理は `propext`・`Classical.choice`・`Quot.sound` のみで、
+`sorryAx`・追加公理はない。文献属性は全て HTT の `component` で一件ずつ、
+11 件が `1.1.5.5`、弱辺反転の 2 件が `1.2.4` と各宣言について確認した。
+
+追加は新規 Lean **3 ファイル・286 行・13 宣言（公開）**。
+`LocalizationArrowCoefficients.lean` が 139 行・8 宣言、
+`LocalizationStrictWeak.lean` が 68 行・1 宣言、
+`NativeCartesianWeak.lean` が 79 行・4 宣言。
+200 行を超える補題はない。
+累計は新規 Lean **35 ファイル・3,286 行・182 宣言（private 3 を含む）**。
+既存構成の係数移送・反転・指定射の照合の法則の分割で、一次 ID の追加はない。
+
+B4 は §13 で完了済み。M10 の全関手比較と指定弱自然変換の成分の辺の照合、
+半自由 native fiber の同定と全族の native cocartesian 性は引き続き必要。
+今回の可逆性だけで M10 を完了とは数えない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
