@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolutionLocalization
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounitInterval
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.IntervalEndpointTransport
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.DGModuleResolutionLocalization
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGUniversalCounitInterval
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.IntervalEndpointTransport
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CounitMappingAdjunction
 
 /-!
@@ -87,7 +87,7 @@ lemma moduleResolution_vertex (M : RightModule A D) :
 規約：全関手圏での随伴。使われ方：graph 随伴と解像度付き制限の比較。 -/
 def moduleResolutionAdjunction :
     QCatAdjunction (N (semifreeInclusion A D)) (moduleResolution A D) := by
-  apply qcatAdjunctionOfCounitIntervalCondition (dgModuleResolutionAugmentationHomotopy A D)
+  apply qcatAdjunctionOfCounitIntervalCondition (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleResolutionAugmentationHomotopy A D)
   intro x y
   obtain ⟨P, rfl⟩ := (Simplex.vertexEquiv (A := A) (D := SemifreeDGModules A D)).symm.surjective x
   obtain ⟨M, rfl⟩ := (Simplex.vertexEquiv (A := A) (D := RightModule A D)).symm.surjective y
@@ -96,7 +96,7 @@ def moduleResolutionAdjunction :
   exact intervalFunctorPostcompose_equivalence_of_endpoint
     (N (semifreeInclusion A D)) (Simplex.vertex (A := A) P)
     ((moduleResolution A D).app (Opposite.op ⦋0⦌) (Simplex.vertex (A := A) M)) (Simplex.vertex (A := A) Q.replacement)
-    (simplicialHomotopyVertexEdge (dgModuleResolutionAugmentationHomotopy A D) (Simplex.vertex (A := A) M))
+    (simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleResolutionAugmentationHomotopy A D) (Simplex.vertex (A := A) M))
     (SSet.Edge.ofTruncated (dgClosedEdge A (RightModule A D) Q.augmentation))
     (moduleResolution_vertex A D M)
     (dgFunctorNerve_vertex (semifreeInclusion A D) P)

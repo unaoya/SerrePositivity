@@ -1,0 +1,787 @@
+[
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraModelComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.cAlgToAlgebraLocalization_isQCatEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraModelComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.algebraLocalizationToCAlg_isQCatEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraModelComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleUnitSection_projection_isQCatEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraRoundTripComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.cAlgModelRoundTripIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraRoundTripComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.algebraModelRoundTripIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraRoundTripComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.cAlgAlgebraModelEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AlgebraRoundTripComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleUnitSection_projectionIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardOperation"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardBinary"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardOperation_one"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardOperation_composite"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardBinary_assoc"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardBinary_one_mul"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardBinary_mul_one"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardOperation_map"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.associativeAlgebra"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.associativeAlgebraMap"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.assocForget"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/AssociativeForget.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.assocForget_forget"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardSimplex"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.simplexEquiv_standardSimplex"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardCoefficientCycle"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardCoefficient"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardCoefficient_unit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardCoefficient_zero_apply"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.shuffleSimplex_standard"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.shuffleBilinear_standard"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StandardCoefficient.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.standardCoefficient_composite"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictAdjunction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleAdjointRestrict"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictAdjunction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleGraphAdjunction"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.algebraMap_id"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.algebraMap_comp"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleRestrict_idIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleRestrict_compIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleExtend_idIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleExtend_compIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "abbrev",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleInfinity"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "theorem",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleInfinity_isStable"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleUnderlyingDG"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleUnderlying"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleUnit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleExtend"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleRestrict"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "theorem",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleExtend_isExactFunctor"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictModules.lean",
+    "kind": "theorem",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleExtend_weak"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+    "kind": "instance",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleProjection_isFibered"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleCartesianLift"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleCartesianLift_isStronglyCartesian"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleCartesianLift_underlying"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleCartesianLift_weak"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_eval"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_idIso_inv_eval"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_compIso_inv_eval"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_comp_assoc"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_comp_id"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCoherence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_id_comp"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFamily.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrictionPseudofunctor"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFamily.lean",
+    "kind": "abbrev",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleTotal"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFamily.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleProjection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberInclusion"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberInclusion_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberInclusion_forget"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberInclusionRelative"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberBaseRelative"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleFiberInclusionRelative_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleRawFiberInclusion"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleRawFiberInclusion_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "abbrev",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleCategory"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRelativeCategory"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrictRelative"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_idIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_compIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleUnderlying"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleHom_ext"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_idIso_eval"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawModules.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_compIso_eval"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleTotal_hom_ext"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawRegularObject"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawRegularObject_underlying"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawRegularMap"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawRegularMap_underlying"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleUnitSection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleUnitSection_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleUnitSectionRelative"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleUnitSectionRelative_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleUnitSection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleUnitSection_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRestrictionComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleRestrictionComparison"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRestrictionComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleAdjunction"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRestrictionComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleAdjunction_unitHom"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.constant_evaluation_closed"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleResolvedUnderlyingIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleUnitUnderlyingIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRestriction_evaluation"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingRestriction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleRestrict_underlyingIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictWeakRestriction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleWeakEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictWeakRestriction.lean",
+    "kind": "theorem",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictModuleRestrict_weak"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleTotalForget"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleTotalRelative"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.strictRawModuleTotalProjectionRelative"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+    "kind": "abbrev",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleTotalInfinity"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+    "kind": "instance",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleTotalInfinity_quasicategory"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.BarrattEccles.moduleTotalProjection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGCounitRecovery.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.graphRawAdjunction_counitHom"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGCounitRecovery.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.moduleResolutionAdjunction_counitHom"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGGraphCounit.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.moduleGradedShiftWitness"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGGraphCounit.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.graphCounit_homotopy_bijective"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGGraphCounit.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.graphUniversalCounit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGGraphNerveAdjunction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.graphCounitHomotopy"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGGraphNerveAdjunction.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.graphCounitHomotopy_vertex_edge"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGGraphNerveAdjunction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.graphRawAdjunction"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "kind": "abbrev",
+    "declaration": "SerrePositivity.EInfinity.Modules.semifreeInclusion"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "kind": "abbrev",
+    "declaration": "SerrePositivity.EInfinity.Modules.moduleResolution"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.semifreeCounitColumn_eq"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.semifreeUniversalCounit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.moduleResolution_vertex"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.moduleResolutionAdjunction"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.restrictionCompRawIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.restrictionIdRawIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.resolvedRestriction"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.resolvedRestriction_compIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.resolvedRestriction_idIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.freeHammockCoefficient_fixedColimitMap"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.freeHammockCoefficient_unit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.freeHammockCoefficient_comp"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinder"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderProjection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderEndpoint"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderEndpoint_projection"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderContraction"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderContraction_weak"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeCylinderLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderProjection_isQCatEquivalence"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.localizationHomMap_weak_of_hammock"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.localizationNerveMap_fullyFaithful_of_hammock"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.localizationNerveMap_essentiallySurjective_of_counit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.localizationNerveMap_isQCatEquivalence_of_hammock_counit"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.localizationNerveMap_isQCatEquivalence_of_weak_comparisons"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeCylinderEndpointIso"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeNaturalCylinder"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeNaturalCylinder_zero"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.relativeNaturalCylinder_one"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.localizationNerveMapIsoOfWeakNatTrans"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/ThickTensorIdeal.lean",
+    "kind": "structure",
+    "declaration": "SerrePositivity.EInfinity.Modules.IsThickTensorIdeal"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/ThickTensorIdeal.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.EInfinity.Modules.thickTensorIdealGenerated"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/ThickTensorIdeal.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.generated_isThickTensorIdeal"
+  },
+  {
+    "file": "SerrePositivity/EInfinity/Modules/ThickTensorIdeal.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.EInfinity.Modules.mem_generated"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+    "kind": "structure",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsThick"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+    "kind": "def",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.thickClosure"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.subset_thickClosure"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.thickClosure_isThick"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.thickClosure_le_iff"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsThick.stableClosure"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isThick_iff_stableClosure_retract"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableVertexClosure_le_thickClosure"
+  },
+  {
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean",
+    "kind": "lemma",
+    "declaration": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.thickClosure_eq_self"
+  }
+]

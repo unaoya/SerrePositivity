@@ -27,17 +27,17 @@ open scoped Simplicial
 structure IsThick (C : SSet.{u}) [Quasicategory C] [IsStable C]
     (P : C _⦋0⦌ → Prop) : Prop where
   /-- 零対象を含む（HA §1.1.3）。 -/
-  zero {x} : IsZeroVertex x → P x
+  zero {x} : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x → P x
   /-- 同型で閉じる（HA §1.1.3）。 -/
   iso {x y} : VertexIso x y → P x → P y
   /-- 実 cofiber 列の始域と中間項から終域へ閉じる（HA §1.1.3）。 -/
-  cofiber (t : ZeroTriangle C) : IsCofiberSequence t →
-    P (squareVertex t.square 0 0) → P (squareVertex t.square 1 0) →
-      P (squareVertex t.square 1 1)
+  cofiber (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t →
+    P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0) → P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0) →
+      P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 1)
   /-- 実 fiber 列の中間項と終域から始域へ閉じる（HA §1.1.3）。 -/
-  fiber (t : ZeroTriangle C) : IsFiberSequence t →
-    P (squareVertex t.square 1 0) → P (squareVertex t.square 1 1) →
-      P (squareVertex t.square 0 0)
+  fiber (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle C) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t →
+    P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0) → P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 1) →
+      P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0)
   /-- ホモトピー圏での retract に閉じる（HTT §4.4.5）。 -/
   retract {x y} : Nonempty (Retract (HomotopyCategory.mk x) (HomotopyCategory.mk y)) →
     P y → P x

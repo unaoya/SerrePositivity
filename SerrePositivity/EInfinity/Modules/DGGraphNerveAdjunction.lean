@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.Modules.DGGraphCounit
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCounitHomNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransVertex
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.IntervalEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGStrictNatTransVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.IntervalEndpointTransport
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CounitMappingAdjunction
 
 /-!

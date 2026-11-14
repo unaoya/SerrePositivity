@@ -29,7 +29,7 @@ variable (A : Type u) [CommRing A]
 /-- 概要：同じ dg 代数射の恒等則（HA §4.2.3）。
 方針：一対象の全 Hom 上で照合。規約：同じ carrier。使われ方：制限の恒等比較。 -/
 lemma algebraMap_id (B : Mon (Complex A)) :
-    dgAlgebraMap A (𝟙 B) = DGFunctor.id (dgAlgebraCategory A B) := by
+    dgAlgebraMap A (𝟙 B) = DGFunctor.id (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A B) := by
   rw [dgAlgebraMap, ← DGFunctor.op_id]
   congr 1
 

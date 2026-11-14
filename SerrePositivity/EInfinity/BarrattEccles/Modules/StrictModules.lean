@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.AssociativeForget
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraMoritaInfinity
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGAlgebraMoritaInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedInfinity
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreePointComparison
 
 /-!
@@ -31,32 +31,32 @@ variable (A : Type u) [CommRing A]
 方針：同じ carrier の dg 代数に半自由加群の dg nerve を適用。
 規約：H⁰ に切り下げない。使われ方：一般底上の加群族の fiber。 -/
 abbrev strictModuleInfinity (X : (operad A).Algebra) : SSet.{u+1} :=
-  dgAlgebraDerivedInfinityCategory A ((assocForget A).obj X)
+  _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraDerivedInfinityCategory A ((assocForget A).obj X)
 
 /-- 概要：厳密底上の右加群準圏は安定（HA §4.2.3）。
 方針：既存の dg 代数上の安定性を適用。
 規約：係数環上の平坦性不要。使われ方：fiber と thick 閉包。 -/
 theorem strictModuleInfinity_isStable (X : (operad A).Algebra) :
     SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (strictModuleInfinity A X) :=
-  dgAlgebraDerivedInfinityCategory_isStable A ((assocForget A).obj X)
+  _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraDerivedInfinityCategory_isStable A ((assocForget A).obj X)
 
 /-- 概要：加群を唯一の対象で評価し、A 上の加群として読む dg 関手（HA §4.2.1）。
 方針：半自由加群の全包含・dg 評価・一点定数加群を合成。
 規約：評価値の射影性は主張しない。使われ方：解像度付きの台の忘却。 -/
 def strictModuleUnderlyingDG (X : (operad A).Algebra) :
-    DGFunctor A (SemifreeDGAlgebraModules A ((assocForget A).obj X))
+    DGFunctor A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.SemifreeDGAlgebraModules A ((assocForget A).obj X))
       (RightModule A PUnit.{1}) :=
   ((dgFullSubcategoryInclusion A
-    (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
-    (dgModuleSemifreeProperty A (dgAlgebraCategory A ((assocForget A).obj X)))).comp
-    (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
-      (Opposite.op (DGAlgebraPoint.star)))).comp (ringConstantDG A)
+    (RightModule A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)))
+    (dgModuleSemifreeProperty A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)))).comp
+    (moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
+      (Opposite.op (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)))).comp (ringConstantDG A)
 
 /-- 概要：同じ台を D(A) に送る実 ∞ 関手（HA §4.2.1）。
 方針：dg 評価の出力を全関手的に解像し、一点半自由模型を既存 D(A) へ送る。
 規約：対象ごとの解像度だけで済ませない。使われ方：単位と fiber の台の比較。 -/
 def strictModuleUnderlying (X : (operad A).Algebra) :
-    strictModuleInfinity A X ⟶ derivedInfinityCategory A :=
+    strictModuleInfinity A X ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   dgModuleResolvedInfinity A _ PUnit.{1} (strictModuleUnderlyingDG A X) ≫
     (DiagramComparison.semifreePointEquivalence A).hom
 
@@ -65,10 +65,10 @@ def strictModuleUnderlying (X : (operad A).Algebra) :
 規約：同じ dg 代数の正則加群。使われ方：相対テンソルの単位の比較。 -/
 def strictModuleUnit (X : (operad A).Algebra) : (strictModuleInfinity A X) _⦋0⦌ :=
   (dgModuleResolvedInfinity A
-    (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
-    (dgAlgebraCategory A ((assocForget A).obj X))
+    (RightModule A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)))
+    (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
     (DGFunctor.id _)).app _
-      (Simplex.vertex (representable A (Opposite.op (DGAlgebraPoint.star))))
+      (Simplex.vertex (representable A (Opposite.op (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star))))
 
 variable {A}
 /-- 概要：全厳密 BE 射に沿う拡大（HA §4.2.3）。
@@ -84,10 +84,10 @@ def strictModuleExtend {X Y : (operad A).Algebra} (f : X ⟶ Y) :
 使われ方：native な拡大・制限随伴の右側。 -/
 def strictModuleRestrict {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     strictModuleInfinity A Y ⟶ strictModuleInfinity A X :=
-  dgModuleResolvedInfinity A _ (dgAlgebraCategory A ((assocForget A).obj X))
+  dgModuleResolvedInfinity A _ (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
     ((dgFullSubcategoryInclusion A
-      (RightModule A (dgAlgebraCategory A ((assocForget A).obj Y)))
-      (dgModuleSemifreeProperty A (dgAlgebraCategory A ((assocForget A).obj Y)))).comp
+      (RightModule A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj Y)))
+      (dgModuleSemifreeProperty A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj Y)))).comp
       (dgModuleRestriction A _ _ (dgAlgebraMap A ((assocForget A).map f)).op))
 
 /-- 概要：厳密射の拡大は完全（HA §4.2.3）。

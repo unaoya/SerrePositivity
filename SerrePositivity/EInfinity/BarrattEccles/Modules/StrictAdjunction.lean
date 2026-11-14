@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictModules
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKernelAdjunction
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKernelGraphComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.KernelComparisons.DGKernelAdjunction
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.KernelComparisons.DGKernelGraphComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.UnitTransport
 
 /-!

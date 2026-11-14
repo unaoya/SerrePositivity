@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounitInterval
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGUniversalCounitInterval
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 

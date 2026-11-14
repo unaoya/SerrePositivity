@@ -40,7 +40,7 @@ omit [DGCategory A E] [Small.{u} E] in
 lemma moduleResolutionAdjunction_counitHom :
     (moduleResolutionAdjunction A D).counitHom =
       Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (dgModuleResolutionAugmentationHomotopy A D)) := by
+        (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleResolutionAugmentationHomotopy A D)) := by
   unfold moduleResolutionAdjunction
   exact qcatAdjunctionOfCounitIntervalCondition_counitHom _ _
 

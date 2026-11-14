@@ -28,14 +28,14 @@ variable (A : Type u) [CommRing A]
 方針：同じ carrier の一対象 dg 圏の加群を取る。
 規約：半自由性を要求しない。使われ方：局所化前の fiber。 -/
 abbrev strictRawModuleCategory (X : (operad A).Algebra) :=
-  ModuleCategory A (dgAlgebraCategory A ((assocForget A).obj X))
+  ModuleCategory A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
 
 /-- 概要：同じ加群と準同型を持つ相対圏（HA §4.2.3）。
 方針：objectwise 準同型の既存の乗法性を使う。
 規約：元の加群を対象に持つ。使われ方：全族の相対局所化。 -/
 def strictRawModuleRelativeCategory (X : (operad A).Algebra) : RelativeCategory.{u+1} where
   category := Cat.of (ULiftHom.{u+1} (strictRawModuleCategory A X))
-  weakEquivalences := (moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))).inverseImage
+  weakEquivalences := (moduleQuasiIso A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))).inverseImage
     (ULiftHom.down.{u, u+1, u+1} (C := strictRawModuleCategory A X))
   isMultiplicative := inferInstance
 
@@ -78,7 +78,7 @@ def strictRawModuleRestrict_compIso {X Y Z : (operad A).Algebra} (f : X ⟶ Y) (
 方針：一対象 dg 圏の唯一点で評価する。
 規約：元の複体。使われ方：相対族の coherence の検証。 -/
 def strictRawModuleUnderlying (X : (operad A).Algebra) : strictRawModuleCategory A X ⥤ Complex A :=
-  moduleEvaluation A _ (Opposite.op DGAlgebraPoint.star)
+  moduleEvaluation A _ (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
 
 /-- 概要：唯一点の評価は加群射を検出する（HA §4.2.1）。
 方針：全評価による元の加群射の外延性を、一対象で使う。
@@ -88,7 +88,7 @@ lemma strictRawModuleHom_ext {X : (operad A).Algebra} {M T : strictRawModuleCate
     f = g := by
   apply moduleMorphism_ext
   intro x
-  have hx : x = Opposite.op DGAlgebraPoint.star := Subsingleton.elim _ _
+  have hx : x = Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star := Subsingleton.elim _ _
   subst x
   exact h
 

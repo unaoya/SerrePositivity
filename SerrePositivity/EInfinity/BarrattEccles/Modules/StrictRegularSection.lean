@@ -44,8 +44,8 @@ lemma strictRawModuleTotal_hom_ext {M T : strictRawModuleTotal A} {f g : M ⟶ T
 def strictRawRegularObject (X : (operad A).Algebra) : strictRawModuleTotal A where
   base := X
   fiber := ForgetEnrichment.of (Complex A)
-    (C := RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
-    (representable A (Opposite.op DGAlgebraPoint.star))
+    (C := RightModule A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)))
+    (representable A (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star))
 
 /-- 概要：同じ正則加群の台は元の BE carrier（HA §4.2.1）。
 方針：唯一点の表現可能加群を評価する。
@@ -60,7 +60,7 @@ def strictRawRegularMap {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     strictRawRegularObject A X ⟶ strictRawRegularObject A Y where
   base := f
   fiber := representableRestrictionMap A _ _ (dgAlgebraMap A ((assocForget A).map f))
-    (Opposite.op DGAlgebraPoint.star)
+    (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
 
 /-- 概要：同じ正則加群間の射の台は元の代数射（HA §4.2.3）。
 方針：元の表現可能制限比較の評価公式を使う。

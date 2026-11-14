@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictModules
 public import SerrePositivity.EInfinity.Modules.DGResolutionAdjunction
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedComposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedComposition
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedQuasiIsomorphisms
 
 /-!
@@ -47,13 +47,13 @@ lemma constant_evaluation_closed {P Q : Complex A}
 規約：同じ D(A)・同じ一点比較。使われ方：正則加群の台の指定比較。 -/
 def strictModuleResolvedUnderlyingIso (X : (operad A).Algebra) :
     FunctorIso
-      (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)) ≫ strictModuleUnderlying A X)
-      (N (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
-        (Opposite.op DGAlgebraPoint.star)) ≫
+      (moduleResolution A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)) ≫ strictModuleUnderlying A X)
+      (N (moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
+        (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)) ≫
         dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
           (semifreePointEquivalence A).hom) := by
-  let D := dgAlgebraCategory A ((assocForget A).obj X)
-  let V := moduleEvaluationDG A D (Opposite.op DGAlgebraPoint.star)
+  let D := _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)
+  let V := moduleEvaluationDG A D (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
   let H := V.comp (ringConstantDG A)
   have e := dgModuleResolvedInfinity_compositionIso A (RightModule A D) D PUnit.{1}
     (DGFunctor.id (RightModule A D)) H (fun T => by
@@ -62,7 +62,7 @@ def strictModuleResolvedUnderlyingIso (X : (operad A).Algebra) :
       change QuasiIso ((moduleEvaluation A PUnit.{1} PUnit.unit).map
         ((ringConstantDG A).onClosed.map (V.onClosed.map T.augmentation)))
       rw [constant_evaluation_closed]
-      exact T.quasiIso (Opposite.op DGAlgebraPoint.star))
+      exact T.quasiIso (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star))
   have hid : (DGFunctor.id (RightModule A D)).comp H = H := by
     apply EnrichedFunctor.ext (Complex A) (fun _ => rfl)
     intro x y
@@ -80,23 +80,23 @@ def strictModuleUnitUnderlyingIso (X : (operad A).Algebra) :
     VertexIso ((strictModuleUnderlying A X).app (Opposite.op ⦋0⦌) (strictModuleUnit A X))
       ((complexDerivedEvaluation A).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ X.carrier)) := by
-  let M := representable A (Opposite.op (DGAlgebraPoint.star (R := A)
+  let M := representable A (Opposite.op (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star (R := A)
     (B := (assocForget A).obj X)))
   have e := (strictModuleResolvedUnderlyingIso A X).toNatIso.app
     (HomotopyCategory.mk (Simplex.vertex M))
   have hv := dgFunctorNerve_vertex
-    (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
-      (Opposite.op DGAlgebraPoint.star)) M
-  change VertexIso (X := derivedInfinityCategory A)
-    ((moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)) ≫ strictModuleUnderlying A X).app
+    (moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
+      (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)) M
+  change VertexIso (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
+    ((moduleResolution A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)) ≫ strictModuleUnderlying A X).app
       (Opposite.op ⦋0⦌) (Simplex.vertex M))
-    ((N (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
-      (Opposite.op DGAlgebraPoint.star)) ≫
+    ((N (moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
+      (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)) ≫
         dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
           (semifreePointEquivalence A).hom).app (Opposite.op ⦋0⦌) (Simplex.vertex M)) at e
   change VertexIso ((strictModuleUnderlying A X).app (Opposite.op ⦋0⦌) (strictModuleUnit A X)) _ at e
-  rw [show (N (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
-      (Opposite.op DGAlgebraPoint.star)) ≫
+  rw [show (N (moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
+      (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)) ≫
         dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
           (semifreePointEquivalence A).hom).app (Opposite.op ⦋0⦌) (Simplex.vertex M) =
       (dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
@@ -105,13 +105,13 @@ def strictModuleUnitUnderlyingIso (X : (operad A).Algebra) :
     change _ = _
     rw [NatTrans.comp_app, types_comp_apply, hv]
     rfl] at e
-  have hc : (nerveMap (complexClosedPresentation A) ≫ closedNerveInclusion A (Complex A)).app
+  have hc : (nerveMap (complexClosedPresentation A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app
       (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X.carrier) = Simplex.vertex X.carrier := by
     apply (Simplex.vertexEquiv (A := A) (D := Complex A)).injective
     rfl
   change VertexIso _ ((dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
     (semifreePointEquivalence A).hom).app (Opposite.op ⦋0⦌)
-      ((nerveMap (complexClosedPresentation A) ≫ closedNerveInclusion A (Complex A)).app
+      ((nerveMap (complexClosedPresentation A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app
         (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X.carrier)))
   rw [hc]
   exact e

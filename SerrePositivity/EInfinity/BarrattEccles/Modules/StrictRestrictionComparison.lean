@@ -3,8 +3,8 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictAdjunction
 public import SerrePositivity.EInfinity.Modules.DGGraphNerveAdjunction
 public import SerrePositivity.EInfinity.Modules.DGResolutionAdjunction
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleDerivedUnderlyingIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedRawFactor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleDerivedUnderlyingIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedRawFactor
 
 /-!
 # 同じ厳密 BE 制限と graph 右随伴の全関手比較
@@ -36,8 +36,8 @@ variable {A : Type u} [CommRing A]
 使われ方：同じ制限を持つ native な拡大・制限随伴。 -/
 def strictModuleRestrictionComparison {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     FunctorIso (strictModuleAdjointRestrict f) (strictModuleRestrict f) := by
-  let D := dgAlgebraCategory A ((assocForget A).obj X)
-  let E := dgAlgebraCategory A ((assocForget A).obj Y)
+  let D := _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)
+  let E := _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj Y)
   let F := dgAlgebraMap A ((assocForget A).map f)
   let ID := semifreeInclusion A D
   let IE := semifreeInclusion A E

@@ -80,7 +80,7 @@ def strictRawModuleFiberInclusionRelative (X : (operad A).Algebra) :
     · change ((HomologicalComplex.quasiIso (ModuleCat A) (.up ℤ)).inverseImage
         (strictRawModuleFiberInclusion A X ⋙ strictRawModuleTotalForget A)) f.down
       rw [strictRawModuleFiberInclusion_forget]
-      exact hf (Opposite.op DGAlgebraPoint.star)
+      exact hf (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
 
 /-- 概要：固定底の相対定数関手（HA §4.2.3）。
 方針：全ての射を同じ底の恒等射へ送る。

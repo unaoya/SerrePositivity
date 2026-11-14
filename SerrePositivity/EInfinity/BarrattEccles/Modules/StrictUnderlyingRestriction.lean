@@ -30,10 +30,10 @@ variable {A : Type u} [CommRing A]
 規約：全 Hom の等式。使われ方：台の忘却の全関手比較。 -/
 lemma strictRestriction_evaluation {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     (dgModuleRestriction A _ _ (dgAlgebraMap A ((assocForget A).map f)).op).comp
-      (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
-        (Opposite.op DGAlgebraPoint.star)) =
-      moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj Y))
-        (Opposite.op DGAlgebraPoint.star) := by
+      (moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X))
+        (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)) =
+      moduleEvaluationDG A (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj Y))
+        (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star) := by
   refine EnrichedFunctor.ext (Complex A) ?_ ?_
   · intro M
     rfl
@@ -49,12 +49,12 @@ lemma strictRestriction_evaluation {X Y : (operad A).Algebra} (f : X ⟶ Y) :
 def strictModuleRestrict_underlyingIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     FunctorIso (strictModuleRestrict f ≫ strictModuleUnderlying A X)
       (strictModuleUnderlying A Y) := by
-  let D := dgAlgebraCategory A ((assocForget A).obj X)
-  let E := dgAlgebraCategory A ((assocForget A).obj Y)
+  let D := _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj X)
+  let E := _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory A ((assocForget A).obj Y)
   let I := semifreeInclusion A E
   let R := dgModuleRestriction A D E (dgAlgebraMap A ((assocForget A).map f)).op
-  let VD := moduleEvaluationDG A D (Opposite.op DGAlgebraPoint.star)
-  let VE := moduleEvaluationDG A E (Opposite.op DGAlgebraPoint.star)
+  let VD := moduleEvaluationDG A D (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
+  let VE := moduleEvaluationDG A E (Opposite.op _root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint.star)
   let Q := dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
     (semifreePointEquivalence A).hom
   have raw : FunctorIso (strictModuleRestrict f) (N I ≫ N R ≫ moduleResolution A D) := by
