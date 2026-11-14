@@ -241,3 +241,53 @@ A07 の一般平坦性の有限開被覆への貼り合わせ（着手前の型�
 対象ビルドは `GenericFreeAtMinimalPrime` が **2,359 jobs**、`CompactGenericFlatnessAffine` が **2,986 jobs**、`CompactGenericFlatness` が **2,987 jobs** 成功。直接の importer `SerrePositivity.AlgebraicGeometry` は **4,819 jobs 成功**。新規四モジュールのみの小さい監査は **6 宣言、標準三公理のみ**で成功。ログは `scheme-drafts/2g-a07-generic-minimal-build-3.log`、`2g-a07-compact-generic-flatness-build.log`、`2g-a07-compact-generic-flatness-scheme-build-3.log`、`2g-a07-compact-generic-registered-check.log`。共有鍵は全て `--class impl --wait 3600`、待ちは一つ。
 
 残りの主項目は **5 件**（A07 と B01〜B04）。A07 では今得た平坦な準コンパクト稠密開と射を共通の Noether 段へ移すこと、中心を構成して戻すこと、整全射の有限表示近似と細分の有限段への降下が残る。G2 のスキーム模型の構成は未完。この束は一般平坦性の入口であり、一般基底の fppf–proper 細分の完成ではない。約 12,000 行の時点で C01・A07・G2 を合わせて再見積もりする指示は維持する。
+
+## A07 の整全射の近似：着手前の型つき小一覧
+
+一覧：済み 7／全体 12（うち追加 3）
+
+[Stacks 09YZ](https://stacks.math.columbia.edu/tag/09YZ) の整射の有限・有限表示な近似の affine 部分を作る。これは A07 の予定済みの整全射の近似であり、独立の外枠を増やさない。下の子 ID は親 A07 と二重に全体計上しない。
+
+整射近似内の一覧：済み 0／全体 4（うち追加 0）
+
+| 子 ID | 型・出口 | 見込み（新規行） |
+| --- | --- | ---: |
+| I01 | R-代数 B の有限個の整元 bᵢ に対し、有限かつ有限表示の R-代数 C と g:C→ₐ[R]B で全 bᵢ が g の像に入るものを供給。有限 R-代数 B 全体には同じ性質を持つ C からの全射を得る | 150〜450 |
+| I02 | B への射つき有限・有限表示 R-代数の、小さい表示による添字圏を構成し filtered を証明。二対象にはテンソル積、平行射には有限個の生成元の像の差による商を使う | 400〜1,000 |
+| I03 | B が R 上整なら、この filtered 図式の実際の環の cocone が IsColimit であることを示す。元の表示と有限段での一致判定を保持 | 400〜1,000 |
+| I04 | Spec の逆系と実際の極限比較へ移し、整全射の場合は各有限・有限表示段を全射にそろえる | 150〜400 |
+| 合計 | A07 の細分の有限段への移送自体は別の残り | **1,100〜2,850** |
+
+I01 の最初の型：`exists_finite_finitePresentation_model_of_integral_family` は、R,B:Type u、可換環、Algebra R B、n:ℕ、b:Fin n→B、各 bᵢ の整性に対し、C:Type u、CommRing C、Algebra R C、Module.Finite R C、Algebra.FinitePresentation R C、g:C→ₐ[R]B と全 bᵢ の像への所属を返す。単なる有限生成部分代数では有限表示性が保証されないため、モニック多項式の根を順に加える。
+
+その有限代数版 `exists_finite_finitePresentation_surjective_model` は、Module.Finite R B から上の C と全射な g を返す。有限個の加群生成元を I01 の像へ入れ、線形写像の像が全体となることを示す。いずれも元の係数環の Noether 性は要求しない。
+
+I02 の最初の定義と法則の型：`IntegralModelCategory R B` は `FGAlgCat R` から `CommAlgCat R` への包含の B への costructured arrow のうち、始域が有限・有限表示である充満部分圏。`integralModelObj` は実際の有限・有限表示代数 C と C→ₐ[R]B をその対象へ入れる。`integralModelHomMk` は B と可換な代数準同型から模型の射を作る。`integralModelDiagram` と `integralModelCocone` は実際の環の図式と B への cocone。Mathlib の FGAlgCat の essential smallness と structured arrow の smallness を再利用し、`IntegralModelIndex R B : Type u` と small diagram・cocone へ移す。filtered 性はこの定義の段ではまだ主張しない。
+
+I02 の二対象の法則の型：`integralModelCategory_cocone_objs` は任意の模型 X,Y から、共通の模型 Z と X→Z・Y→Z を返す。始域のテンソル積に、B への二射から誘導される射を入れる。有限表示性は有限表示の baseChange と trans、有限性はテンソル積での有限性を使う。これは先に記録した I02 の filtered 性のうち二対象の条件を分割したもの。
+
+I02 の平行射の法則の型：`exists_finite_finitePresentation_coequalizing_quotient` は有限 R-代数 C、有限かつ有限表示の R-代数 D、f,g:C→ₐ[R]D、h:D→ₐ[R]B、h.comp f=h.comp g から、有限・有限表示の商 Q、全射 q:D→ₐ[R]Q、h':Q→ₐ[R]B、h'.comp q=h と q.comp f=q.comp g を返す。有限個の加群生成元の像の差で有限生成イデアルを作り、商と線形写像の生成元上の外延性を使う。I02 の filtered 性の二つ目の条件の証明分割であり、別の主項目には計上しない。
+
+I02 の filtered 性への組立て：`integralModelCategory_cocone_maps` は模型の平行射 f,g:X→Y を、B への可換式と上の有限生成商で等しくする。模型の圏とその `SmallModel` に `IsFiltered` を入れる。既存の category の同値による filtered 性の移送を再利用する。
+
+## 2026-11-14：B4 前の検証済み区切り（整射近似 I01・I02）
+
+一覧：済み 7／全体 12（うち追加 3）
+
+整射近似内の一覧：済み 2／全体 4（うち追加 0）。I01 の有限個の整元の有限・有限表示模型と有限代数への全射、I02 の模型の圏・同じ宇宙の添字・実際の環の cocone・filtered 性までを検証した。I03 の IsColimit と I04 の Spec への極限比較は未完。
+
+追加は五ファイル **309 行**、入口 5 行。G1 累計は本体 **1,684 行**、入口込み **1,724 行**（G0 別計上）。全ファイル 200 行以下。
+
+- `exists_finite_finitePresentation_model_of_integral_family`：有限個の整元を有限・有限表示代数の像で同時に表示する。
+- `exists_finite_finitePresentation_surjective_model`：有限代数へ有限・有限表示代数からの全射を供給。
+- `integralModelFGInclusion`・`integralModelProperty`・`IntegralModelCategory`：B への射を持つ有限・有限表示模型の圏。
+- 二つの有限性 instance と essential smallness の instance：対象の性質を射の構成に使い、既存の FGAlgCat と costructured arrow の結果から小ささを得る。
+- `integralModelObj`・`integralModelHomMk`：実際の代数と射・可換式から模型の対象と射を作る。
+- 非空性の instance：基底環自体を模型にする。
+- `integralModelDiagram`・`integralModelCocone`：実際の可換環の図式と B への cocone。
+- `IntegralModelIndex`・`integralModelSmallDiagram`・`integralModelSmallCocone`：同じ宇宙の小さい模型への移送。
+- private `finitePresentation_tensor_integralModel`・`integralModelCategory_cocone_objs`：二対象をテンソル積の模型へ送る。
+- `exists_finite_finitePresentation_coequalizing_quotient`：有限個の加群生成元の像の差を消す有限生成イデアルの商と、実際の可換式。
+- `integralModelCategory_cocone_maps` と二つの IsFiltered instance：模型と小さい添字の filtered 性。
+
+入口 `SerrePositivity.AlgebraicGeometry` は **4,824 jobs 成功**、新規五モジュールの小さい監査は生成宣言を含む **26 宣言、標準三公理のみ**で成功。ログ `scheme-drafts/2g-pre-b4-registered-check.log`。新しい resource limit・sorry・追加公理はない。B4 の指示を受けたので、この区切りをコミットし、原ソースの collect/rewrite を優先する。
