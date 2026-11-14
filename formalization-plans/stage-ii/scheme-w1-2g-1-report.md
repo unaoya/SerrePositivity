@@ -1057,3 +1057,65 @@ G1・G2共用部品込み本体 **6,771 行**、入口込み **6,894 行**。G2 
 `exists_finitePresentation_scheme_coefficient_model` の型案：Noether 係数環 k、k-代数 R、f:X→Spec R が局所有限表示・準コンパクト・準分離なら、有限生成 k-部分代数 A⊆R、p:Y→Spec A が局所有限表示・準コンパクト・準分離、a:X→Y が存在し、元の f と Spec R→Spec A を含む正方形が IsPullback。Noether 性は A の有限生成から供給し、元の R には要求しない。原典は Stacks 01ZM (1)、この分割の見込み **1,800〜3,600行**（前記の係数模型109行を含む）。B01 に含めていた一般の対象の降下の分割で、新しい親項目は増やさない。
 
 紙の順序：有限アフィン被覆の模型を共通係数環へそろえる。重なりの準コンパクトな開を有限個の基本開で表示し、その元・有限個の射・等式を後の同じ係数部分代数へ移す。既存の局所有限表示の射の因子化・有限型の射の一致判定を使い、gluing datum とその余極限を作り、元の X との実際の pullback 比較を得る。固有性はこの構成だけでは結論にしない。固有性の有限段への移送081Fと一般の固有射の模型0A0Pの未完部分を保持する。Chowを経由する依存の実装量は引き続き照合し、4,000行を超える新しい標準存在補題が要ると判明した時点では指示どおり報告する。
+
+
+B01 の有限段を取る既定の係数模型の分割（見込み120〜300行）：`coefficientSubalgebraDiagram k R` は添字 Finset R の各 s を k[ s ]⊆R に送り、遷移を実際の包含とする。`coefficientSubalgebraCocone` は頂点 R・構造射は包含、`coefficientSubalgebraCoconeIsColimit` はその実際の filtered colimit 性を返す。各段は k 上有限型、k が Noether なら Noether。`coefficientSpecDiagram`・`coefficientSpecCone`・`coefficientSpecConeIsLimit` は同じ包含の Spec による実際の極限。有限表示対象の模型と後の段への射を、この具体的な図式にそろえる。01ZM の係数環の directed union の分割で、B01 の親 ID は増やさない。
+
+
+B01 の貼り合わせの法則の分割（見込み80〜180行）：`glueDataToBase` は D:Scheme.GlueData と pᵢ:D.U i→S、重なり上の可換式から実際の D.glued→S を作る。`glueDataToBase_ι` は各チャートで pᵢ に一致する式、`locallyOfFinitePresentation_glueDataToBase` は各 pᵢ の局所有限表示性から貼り合わせた射の局所有限表示性を返す。有限な affine Noether チャートの glue data なら貼り合わせは Noether であり、QC・QS 性も供給する。既存の gluing の構造射・局所性の法則で、新しい親項目は増やさない。模型の gluing datum の存在自体は別に残す。
+
+
+B01 の重なりの開の有限族への移送（見込み70〜170行）：`exists_finite_opens_model_of_isLimit` は qcqs な affine 遷移の実際の極限 D,c,hc と有限個の準コンパクト開 Uₐ⊆c.pt に対し、一つの段 i と全ての準コンパクト開 Vₐ⊆D(i)、c.πᵢ⁻¹Vₐ=Uₐ を返す。`exists_finite_open_equalities_of_isLimit` は一つの段の有限個の準コンパクト開の対 Uₐ,Vₐ が極限で等しいなら、一つの後の段への射 f で全ての逆像が等しいと返す。Stacks 01Z4 の既存の単独の開の模型・等式判定を、有限 cone・wide cospan に沿って移す法則。重なりの開と有限個の貼り合わせの等式を同じ係数段へそろえるためで、親項目は増やさない。
+
+
+B01 の元の対象の有限アトラスの分割（見込み80〜180行）：`exists_finite_affine_presentation_atlas` は f:X→Spec R が局所有限表示・準コンパクトなら、有限個の可換環 Bᵢ、有限表示な構造射 R→Bᵢ、開埋め込み kᵢ:Spec Bᵢ→X、kᵢ≫f=Spec(R→Bᵢ)、全射な有限族を返す。有限アフィン開被覆と元の構造射の同じ Spec の逆像を保持する法則。Noether 性・v 判定は仮定しない。有限族の係数模型の入力を元のスキームから実際に供給する。
+
+
+B01・B02 で共用する有限個の射・等式の同じ段への移送（見込み80〜200行）：`exists_finite_stage_maps_of_isLimit` は共通の cofiltered 添字 J を持つ有限個の qcqs・affine 遷移図式 Dₐ と実際の極限 cₐ、S 上局所有限表示の Xₐ、基底上の射 cₐ.pt→Xₐ に対し、一つの j と全ての段での射 Dₐ(j)→Xₐ、その実際の射影との合成式と基底上の可換式を返す。`exists_finite_stage_equalities_of_isLimit` は同じ段の有限個の射の等式が極限で成立するとき、一つの共通する後の段で成立することを返す。既存の単独の射の因子化・一致判定を有限 cone・wide cospan へ移す法則で、親項目は増やさない。
+
+
+B01 の元の有限アトラスと共通係数模型の組立て（見込み50〜130行）：`exists_finite_affine_atlas_coefficient_model` は Noether 係数環 k、k-代数 R、f:X→Spec R が局所有限表示・準コンパクトなら、一つの k 上有限生成部分代数 A⊆R、元の有限表示 affine アトラス Spec Bᵢ→X と、その全チャートの有限表示 A-代数 Cᵢ・実際の Cartesian な比較 Spec Bᵢ→Spec Cᵢ を同時に返す。原典01ZM (1)の有限アトラスの係数移送で、既存の有限アトラスと有限族の係数模型の組立て。親項目は増やさない。重なりと gluing datum の存在は次に残す。
+
+
+### G2：有限アトラス・重なりの有限段・貼り合わせの法則の束
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| CoefficientSubalgebraDiagram | 65 | `coefficientSubalgebraDiagram`：Finset R を添字とし、実際の k[s]⊆R と包含からなる図式 |
+| 同上 | 同上に含む | `coefficientSubalgebraCocone`：元の R と同じ包含からなる実際の cocone |
+| 同上 | 同上に含む | `coefficientSubalgebraDiagram_algebra`：各段の実際の k-代数構造 |
+| 同上 | 同上に含む | `coefficientSubalgebraDiagram_finiteType`：各段は k 上有限型 |
+| 同上 | 同上に含む | `coefficientSubalgebraDiagram_noetherian`：k が Noether なら各段も Noether |
+| 同上 | 同上に含む | `coefficientSubalgebraCoconeIsColimit`：元の R が同じ包含の実際の filtered colimit |
+| CoefficientSpecLimit | 38 | `coefficientSpecDiagram`：同じ係数包含の Spec の逆系 |
+| 同上 | 同上に含む | `coefficientSpecCone`：元の Spec R と同じ係数包含の Spec からなる cone |
+| 同上 | 同上に含む | `coefficientSpecConeIsLimit`：同じ cone の実際の極限性 |
+| 同上 | 同上に含む | `coefficientSpecCone_projection`：各射影は選んだ係数包含の Spec そのもの |
+| FiniteOpenModels | 53 | `exists_finite_opens_model_of_isLimit`：有限個の準コンパクト開を、一つの段の準コンパクト開から同時に復元 |
+| 同上 | 同上に含む | `exists_finite_open_equalities_of_isLimit`：極限で等しい有限個の準コンパクト開の対を、一つの後の段で同時に等しくする |
+| FiniteStageMorphisms | 64 | `exists_finite_stage_maps_of_isLimit`：共通添字を持つ有限個の極限から局所有限表示の対象への基底上の射を、実際の合成式を保ち一つの段へ降ろす |
+| 同上 | 同上に含む | `exists_finite_stage_equalities_of_isLimit`：有限個の射の極限での等式を、一つの共通する後の段へ降ろす |
+| FinitePresentationGluingBase | 62 | `glueDataToBase`：glue data のチャート上の可換な基底への射を、貼り合わせの実際の構造射にする |
+| 同上 | 同上に含む | `glueDataToBase_ι` と生成した `_assoc`：各チャートで元の構造射に一致 |
+| 同上 | 同上に含む | `locallyOfFinitePresentation_glueDataToBase`：チャート上の局所有限表示性を構造射へ渡す |
+| 同上 | 同上に含む | `isNoetherian_glueData_of_finite_affine`：有限 affine Noether チャートの貼り合わせは Noether |
+| 同上 | 同上に含む | `finitePresentation_glueDataToBase_of_noetherian_charts`：同じ有限チャートの局所有限表示射から、qcqs な局所有限表示の構造射を得る |
+| FiniteAffinePresentationAtlas | 59 | `exists_finite_affine_presentation_atlas`：元の有限表示対象の実際の有限アフィンアトラス、有限表示環写像、同じ構造射との可換式・共同全射性 |
+| FiniteAffineAtlasCoefficientModel | 45 | `exists_finite_affine_atlas_coefficient_model`：元の全チャートの有限表示代数の模型を、同じ有限生成 k-部分代数 A⊆R 上で取り、各チャートの実際の Cartesian な比較を供給 |
+
+本体 **386 行**、入口 7 行。対象ビルドは直接 importer AlgebraicGeometry まで **4,916 ジョブ成功**。七モジュールの小監査は補助宣言込み **44 宣言・標準三公理のみ**（内訳18・5・4・4・10・2・1）。実際の IsColimit・IsLimit を構成し、単なる存在するはずの模型を入力にしていない。個々の宣言に200行を超えるものはない。係数環 k の宇宙は独立で、元の R の Noether 性・近似の遷移の忠実平坦性・元の射の v 判定を要求しない。既存宣言の型は変更していない。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-coefficient-descent-batch-check-4.log`、`2g-coefficient-descent-native.log`、`2g-coefficient-descent-audit.log`。
+
+G1・G2共用部品込み本体 **7,157 行**、入口込み **7,287 行**。一般の有限表示対象の係数模型の分割は、前の係数模型109行と今回386行を合わせて **495 行**。その全体の1,800〜3,600行の見込みは変えず、以下の重なり・gluing datum・元の対象との Cartesian 比較が残る。**B01 は未完で、2g-1 の停止点ではない。** 約12,000行の途中報告点・25,000行の外枠には未到達。
+
+次の接続の紙の順序：
+
+1. 一つの共通する係数環上の全チャートの模型を、具体的な係数部分代数の図式の後の段へ底変換する。元の X の準分離性から、各重なりは準コンパクトな開である。
+2. 重なりの開を各チャートの模型の一つの後の段へ降ろす。重なりの同型とその逆は、模型のチャートへの有限個の射として降ろす。必要な開への因子化と三重の重なりの開の等式を、同じ後の段でそろえる。各段が Noether なので、この段の準コンパクト性は元の R から要求せずに供給できる。
+3. 逆写像との合成・恒等射・cocycle の有限個の等式を同じ後の段で成立させ、実際の Scheme.GlueData を作る。貼り合わせの構造射の有限表示性は今回の法則へ渡す。
+4. 元の有限アフィン開被覆と同じ重なりを用い、貼り合わせの底変換と元の X の比較を作り、チャート上の Cartesian な比較から全体の IsPullback を示す。比較を仮定に置き換えない。
+
+一般の固有模型の B01 と、同じ段での固有性・全射性 B02、被覆模型の実際の filtered 図式 B03・B04 は引き続き未完。固有性の有限段への移送081Fと、一般の固有射の近似0A0Pの型を維持する。
+
+一覧：済み 10／全体 14（うち追加 5）。
