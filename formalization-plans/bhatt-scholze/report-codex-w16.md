@@ -16826,3 +16826,557 @@ M14完成時の比較は**26,639〜31,959行**。
 この二つのAPIだけで符号の指数の照合を供給したとは扱わない。
 G10・M15・G12・drafts・界面・共有入口・mainは変更していない。
 これは同じL12aの途中の取り込み点であり、goalはactiveのまま継続する。
+
+
+## 246. C452の残り色の区切りと区間重み（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは35d3d044bでC451・C453を検証・監査・保存した進捗。
+作業木が空で同じ枝にいることを確認し、元のC452へ進む。
+§243の指数の比較のうち、残り色のCaesuraとintervalLengthを、
+既に証明した全出現位置の順序同値と元のCutの両端で読む。
+既存の符号の定義は変えず、法則の証明分割として次の型を記録する。
+各証明200行以内の見込み。
+
+```lean
+lemma caesura_iff_of_occurrenceOrderIso {r r' l l' : ℕ}
+    (v : Fin l → Fin r) (w : Fin l' → Fin r') (a : Fin r) (b : Fin r')
+    (e : ↥(Surjection.occurrences v a) ≃o ↥(Surjection.occurrences w b))
+    (p : ↥(Surjection.occurrences v a)) :
+    Surjection.Caesura w (e p).val ↔ Surjection.Caesura v p.val
+
+lemma positiveComposite_remaining_caesura_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (compositeFirstPosition u v k r p) ↔ Surjection.Caesura (positiveWord u).val p
+
+lemma positiveComposite_remaining_intervalLength {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (compositeFirstPosition u v k c.1 p) =
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p
+```
+
+有限点検：`/tmp/bsw16/check-remaining-caesura-weights.py`。
+元の12,233組（非退化3,745組を含む）に、全残り色の全位置の元の区切りと、
+各元の合成CutのintervalLengthが同じ外側のintervalLengthと一致することを追加して点検した。
+非退化な場合だけの弱い主張にはしていない。
+C452全体、挿入色の区切り、positionExponentやpermutationExponentの和の比較はまだ未完。
+
+
+## 247. C452の挿入部分語の順序と共有端点の区切り（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の合成位置を部分語番号と相対位置の辞書式順序で読み、
+内側語の位置が真に進む場合と、元の共有端点として重なる場合を分ける。
+共有端点が次の部分語にも現れる場合は、既存C453の同じラベルの二位置をそのまま使う。
+新しい符号や分割を構成するのではなく、C452の元の区切りの法則の証明分割である。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentPosition_lt_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i j : Fin (Surjection.occurrenceCount u.val k))
+    (z : Fin (r.val i).val) (w : Fin (r.val j).val) :
+    positiveCompositeSegmentPosition u v k r i z < positiveCompositeSegmentPosition u v k r j w ↔
+      i < j ∨ (i = j ∧ z.val < w.val)
+
+lemma positiveCompositeSegment_future_inner_order {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i j : Fin (Surjection.occurrenceCount u.val k))
+    (z : Fin (r.val i).val) (w : Fin (r.val j).val)
+    (h : positiveCompositeSegmentPosition u v k r i z <
+      positiveCompositeSegmentPosition u v k r j w) :
+    r.start i + z.val < r.start j + w.val ∨
+      (r.start i + z.val = r.start j + w.val ∧
+        z.val + 1 = (r.val i).val ∧ i.val + 1 < Surjection.occurrenceCount u.val k)
+
+def segmentInnerWordPosition {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (i : Fin t) (z : Fin (r.val i).val) : Fin L
+
+lemma positiveCompositeSegment_boundary_caesura {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val)
+    (hz : z.val + 1 = (r.val i).val) (hi : i.val + 1 < Surjection.occurrenceCount u.val k) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+      (positiveCompositeSegmentPosition u v k r i z)
+```
+
+有限点検：`/tmp/bsw16/check-inserted-caesura-order.py`。
+全12,233組の元の全挿入部分語の全位置対について、合成位置の順序と内側位置の順序、
+共有端点の条件を先に照合した。元の挿入色のCaesuraの候補式も全例で点検したが、
+一般のiffのLeanの証明はまだ別に要る。
+
+
+## 248. C452の挿入色の区切りの元の全条件（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の内側語に後の同色位置がある場合、その位置の直前の辺の所属部分語を使い、
+同じラベルの後の合成位置を得る。
+逆に後の合成位置は§230で同じ挿入部分語の位置へ分解し、§247の内側位置の順序で
+真に後の内側位置か共有端点の重複かを特定する。
+既存のCaesuraの定義と元の位置・分割の法則の証明分割であり、各証明200行以内。
+
+```lean
+lemma positiveCompositeSegment_caesura_of_inner {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val)
+    (h : Surjection.Caesura v.val (segmentInnerWordPosition r i z)) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+      (positiveCompositeSegmentPosition u v k r i z)
+
+lemma positiveComposite_inserted_caesura_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) ↔
+      Surjection.Caesura v.val (segmentInnerWordPosition r i z) ∨
+        (z.val + 1 = (r.val i).val ∧ i.val + 1 < Surjection.occurrenceCount u.val k)
+```
+
+有限点検は§247の`check-inserted-caesura-order.py`（全12,233組、非退化3,745組）。
+共有端点で元の内側語に区切りがない場合も合成語に区切りが増えることを、候補式に含めた。
+この元のiffを、区切りを定義し直したり非退化な場合だけの比較にしたりはしない。
+
+
+## 249. C452の元の末尾・内部の重みと整数係数への移送（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の最後の部分語の末尾には後の位置がないので、区切りがない。
+これで§248の二条件を、部分語の末尾と内部に分けた同じ0/1重みの式へ移す。
+また、§243のmod 2の指数の比較が供給された場合にだけ、同じ元の整数係数へ戻す法則を分割する。
+指数の比較の仮定を露出させた係数移送であり、未証明の§243やC452全体を完成扱いしない。
+各証明200行以内の見込み。
+
+```lean
+lemma not_caesura_last_segment_end {t L N : ℕ} (v : Fin L → Fin N)
+    (r : Surjection.OverlapPartition t L) (i : Fin t) (z : Fin (r.val i).val)
+    (hz : z.val + 1 = (r.val i).val) (hi : i.val + 1 = t) :
+    ¬ Surjection.Caesura v (segmentInnerWordPosition r i z)
+
+lemma positiveComposite_inserted_end_caesura_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val)
+    (hz : z.val + 1 = (r.val i).val) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) ↔
+      i.val + 1 < Surjection.occurrenceCount u.val k
+
+lemma positiveComposite_inserted_caesura_split_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) ↔
+      if z.val + 1 = (r.val i).val then i.val + 1 < Surjection.occurrenceCount u.val k
+      else Surjection.Caesura v.val (segmentInnerWordPosition r i z)
+
+lemma positiveComposite_inserted_caesura_indicator {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (if Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) then 1 else 0 : ℕ) =
+      if z.val + 1 = (r.val i).val then
+        (if i.val + 1 < Surjection.occurrenceCount u.val k then 1 else 0)
+      else (if Surjection.Caesura v.val (segmentInnerWordPosition r i z) then 1 else 0)
+
+lemma positiveComposite_inserted_intervalLength_formula {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val) :
+    intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (positiveCompositeSegmentPosition u v k c.1 i z) =
+      (hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z) -
+        lo c.2 (positiveCompositeSegmentPosition u v k c.1 i z)) +
+      (if z.val + 1 = (c.1.val i).val then
+        (if i.val + 1 < Surjection.occurrenceCount u.val k then 1 else 0)
+      else (if Surjection.Caesura v.val (segmentInnerWordPosition c.1 i z) then 1 else 0))
+
+lemma positiveCompositeCutCoefficient_eq_nested_of_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nat.ModEq 2
+      (Surjection.compositionExponent u v k c.1 +
+        (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val +
+          positionExponent c.2 (positiveCompositeCutWord u v k c.1).val))
+      ((d * e + e * positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c)) +
+        (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+          positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val) +
+        (permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+          positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val))) :
+    Surjection.compositionSign u v k c.1 * cutSign c.2 (positiveCompositeCutWord u v k c.1).val =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c)
+```
+
+末尾・内部の式の有限点検：`/tmp/bsw16/check-inserted-caesura-boundary.py`（全12,233組）。
+最後の部分語の末尾を含め、元のCaesuraの式と一致することを先に確認した。
+整数係数の移送は既存の`neg_one_pow_eq_pow_mod_two`と`pow_add`だけを使う。
+新しい界面の欄や、A4/L12aへ追加する仮定ではない。
+
+
+## 250. C452の既存の活動頂点の移送（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存`permutationExponent_eq_active_inversions`は、元のintervalLengthの重み付き逆転指数を
+展開した活動頂点の逆転数へ移す。ここで新しく活動頂点を定義せず、
+§246の全出現位置の順序同値によるCaesuraの法則を、展開した元の色列へ適用する。
+C451で構成した同じ挿入色の順序同値が、元の活動頂点を保つことを読む。
+既存構成の同じ順序・色別fiberの移送の法則で、各証明200行以内。
+
+```lean
+lemma colorOrderIso_active_iff {m m' q q' r r' : ℕ} (s : Cut m q) (t : Cut m' q')
+    (v : Fin (m + 1) → Fin r) (w : Fin (m' + 1) → Fin r') (a : Fin r) (b : Fin r')
+    (e : ↥(colorPositions s v a) ≃o ↥(colorPositions t w b))
+    (x : ↥(colorPositions s v a)) :
+    (e x).val ∈ activeVertexPositions t w ↔ x.val ∈ activeVertexPositions s v
+
+lemma insertedColorPathOrderIso_active_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b))) :
+    (insertedColorPathOrderIso u v k c b x).val ∈
+        activeVertexPositions (positiveCompositeInnerCut u v k c) (positiveWord v).val ↔
+      x.val ∈ activeVertexPositions c.2 (positiveCompositeCutWord u v k c.1).val
+```
+
+有限点検：`/tmp/bsw16/check-inserted-active-vertices.py`、全12,233組。
+展開色列のCaesuraを元の経路番号で直接計算し、同じ挿入色の内側経路番号の
+展開Caesuraと一致することを先に確認した。
+この活動頂点の保存だけで二つの逆転指数の全和やC452の完成を主張しない。
+
+
+## 251. C452の元の順位・他色の活動頂点・区切り順位の橋（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存C170 `caesuraRank_label`とC108の面番号の活動頂点数の式を再利用する。
+同じ元の色別位置までの活動頂点を、その色と他色へ分けて数えるだけの法則。
+新しい活動頂点の定義や新しい作用は作らない。200行以内の見込み。
+
+```lean
+lemma colorRank_add_other_active_prefix {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1))
+    (j : Fin (outputDegree s v a + 1)) (hm : j ∈ colorIntervalRanks s v a p) :
+    j.val + ((activeVertexPositions s v.val).filter (fun z =>
+      z < colorPositionEquiv s v ⟨a, j⟩ ∧ label s v.val z ≠ a)).card =
+      (vertices s v a j).val + Surjection.caesuraRank v.val p
+```
+
+有限点検：`/tmp/bsw16/check-color-rank-active-prefix.py`（全12,233組）。
+同じ元の外側経路の全頂点で、色別順位＋先行他色の活動頂点数＝高さ＋元の語の区切り順位を
+直接計算して先に確認した。位置指数と逆転指数の比較へ渡すための法則であり、
+この橋だけでC452全体のmod 2の等式を完成したとは扱わない。
+
+
+## 252. C452の同じ外側区間内の先行他色の集合（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§251の他色の先行活動頂点は、元の同じ水平区間内では高さを変えても変わらない。
+二つの位置の間の全頂点の水平座標は元の単調性から同じであり、そのラベルはaなので、
+他色の位置が二つの位置を跨ぐことはない。元のfiberの法則の証明分割で200行以内。
+
+```lean
+lemma other_active_prefix_eq_on_interval {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin r) (p : Fin (m + 1)) (hp : v p = a)
+    (x y : Fin (m + q + 1)) (hx : s.horizontal x = p) (hy : s.horizontal y = p) :
+    (activeVertexPositions s v).filter (fun z => z < x ∧ label s v z ≠ a) =
+      (activeVertexPositions s v).filter (fun z => z < y ∧ label s v z ≠ a)
+```
+
+有限点検：`/tmp/bsw16/check-other-active-prefix-constant.py`（全12,233組）。
+同じ元の外側区間の全頂点で、他色の先行活動頂点の番号の集合そのものが一致することを
+先に確認した。濃度だけの一致へ弱めない。
+
+
+## 253. C452の二つの指数の全和への分解（法則の型と紙の接続）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§251の順位の橋と元の成分次数の総和を使い、符号の比較を元の二つの指数へ分け直す。
+まず既存`sum_segmentDegree`と`lineRank_last`で閉じる補和の法則は次。
+零arityの内側語も含む元の合成指数を変更しない法則で、200行以内の見込み。
+
+```lean
+lemma compositionExponent_add_prefixRanks {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) (n + e)) :
+    Surjection.compositionExponent u v k r +
+        ∑ i, Surjection.segmentDegree v.val r i *
+          Surjection.caesuraRank u.val (Surjection.occurrenceAt u.val k i) = d * e
+```
+
+残る二つの全和の型は次の候補として具体化する。以下は紙だけで、
+既存の有限集合の濃度の記法をB_iとして置くものであり、新しい演算や界面の欄を作らない。
+`positiveCompositeOtherActivePrefix`の位置は既存の色別の最初の順位である。
+
+```lean
+def positiveCompositeOtherActivePrefix {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) : ℕ :=
+  let δ := positiveCompositeOuterCut u v k c
+  let j := colorIntervalFirst δ (positiveWord u) k (positiveOccurrencePosition u k i)
+    (positiveOccurrencePosition_value u k i)
+  ((activeVertexPositions δ (positiveWord u).val).filter (fun z =>
+    z < colorPositionEquiv δ (positiveWord u) ⟨k, j⟩ ∧ label δ (positiveWord u).val z ≠ k)).card
+
+lemma positiveComposite_positionExponent_balance {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+  positionExponent c.2 (positiveCompositeCutWord u v k c.1).val +
+    (∑ i, Surjection.segmentDegree v.val c.1 i *
+      Surjection.caesuraRank u.val (Surjection.occurrenceAt u.val k i)) =
+  positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+    positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+    (∑ i, Surjection.segmentDegree v.val c.1 i * positiveCompositeOtherActivePrefix u v k c i)
+
+lemma positiveComposite_permutationExponent_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+  Nat.ModEq 2 (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val)
+    (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+      permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+      (∑ i, Surjection.segmentDegree v.val c.1 i *
+        (positiveCompositeOtherActivePrefix u v k c i +
+          positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c))))
+```
+
+位置指数では、合成語の共有端点の項が元の外側の区切りの項へ戻り、
+内側の区切りの各位置では§251の順位の橋を使う。
+逆転指数では既存`permutationExponent_eq_active_inversions`を使い、
+挿入色同士、残り色同士、異なる種類の対へ元の有限和を分ける。
+§250は挿入色の活動頂点の移送に、§246は残り色の区間重みに使える。
+この説明を、未供給の有限和の比較の証明済み扱いにはしない。
+
+有限点検：`/tmp/bsw16/check-composition-exponent-decomposition.py`。
+全12,233組で補和・位置指数の等式・逆転指数のmod 2・全符号のmod 2を比較し、
+失敗は全て0。非退化3,745組だけに絞らず点検したが、上の主張の型では元のC452の
+非退化性の仮定を保持した。有限点検はLeanの全称証明ではない。
+二つの全和の法則と補和から、同じB_iの和をmod 2で二回消し、成分次数の総和eを使えば
+§243の元の指数の比較へ接続する。ここは残るLeanの仕事である。
+
+## 254. C452の異なる挿入色の順序の照合（次の法則の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§253の逆転指数の比較では、C451の色ごとの順序同値を異なる色の対でも比較する必要がある。
+新しい全色の経路や別の指定同値を作る前に、既存の同じ内側頂点の
+`positiveCompositeSegmentInnerVertex_strict_order`と
+`positiveCompositeSegmentInnerVertex_eq_of_same_source`を使って、次の法則を示せる。
+真に逆の順序ならstrict_orderに矛盾し、元の位置が等しければeq_of_same_sourceで像も等しい。
+既存の同じ順序・指定頂点の反映の法則で、各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentInnerVertex_lt_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (y : Fin (m + n + (d + e) + q + 1))
+    (hy : c.2.horizontal y = positiveCompositeSegmentPosition u v k c.1 j w) :
+    positiveCompositeSegmentInnerVertex u v k c i z x hx <
+      positiveCompositeSegmentInnerVertex u v k c j w y hy ↔ x < y
+
+lemma insertedColorPathOrderIso_cross_lt_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b b' : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)))
+    (y : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b'))) :
+    (insertedColorPathOrderIso u v k c b x).val <
+      (insertedColorPathOrderIso u v k c b' y).val ↔ x.val < y.val
+```
+
+有限点検：`/tmp/bsw16/check-inserted-cross-order.py`、全12,233組。
+異なる色も含む元の全挿入頂点対について、元の経路番号の順序が内側番号の順序と
+同値であることを点検した。ここはまだ紙で、同じ型のLeanの証明は次の工程。
+§250の活動頂点の保存と合わせ、挿入色同士の逆転の対を元の色別同値で数えるために使う。
+新しい全体の経路同値の構成を必須とはしない。
+
+## 255. 完備化後のP⁰の紙の続き：Koszul商の模型による検出候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§223の(b)の候補を、普通の商A/d^rが完全であるという仮定を入れずに具体化する。
+以下は紙の候補であり、nativeな同じ指定辺までの比較を証明済みとした報告ではない。
+L12aとは独立の紙の作業で、界面・drafts・新しい完備化のLeanは変更していない。
+
+### 255.1 (a)について追加で確認した点
+
+導来完備化は有限Koszulとのテンソルの逆極限で表せる。
+また固定した複体とのRHomとして表すこともできる。
+出典：[Stacks Lemma 15.93.10・15.93.18](https://stacks.math.columbia.edu/tag/091N)。
+この記述から、**台の導来圏では**完備化と極限の可換性を使う候補がある。
+これは反射が左随伴であることだけからの主張ではなく、RHom/有限Koszulの表示からの推論。
+ただし外側の単体的実現との可換性にはならず、§223.2のambientな実現の障害は残る。
+完備圏の余極限へ置き換えてL44を適用済みとはしない。
+
+### 255.2 (b)の商の模型：正則性を仮定しない候補
+
+記法は§223のK・Y・d・κ=F_pのまま。
+各r>0に対し、κ[t]→A/pをt↦d^r、κ[t]→κをt↦0とする。
+rawなCAlg対象から
+
+`Q_r := X_raw ⊗^L_{κ[t]} κ`
+
+という**導来**pushoutを作れば、台はK//d^rという二項Koszul商になる候補である。
+κ[t]上のκは有限の二項自由解像度を持つので、dがA/pの非零因子であることは要らない。
+通常のA/d^rとのテンソルへ勝手に置き換えない。
+
+原料の二重模型が各項で通常のκ[t]代数なら、相対的な二-sided barの各項は通常のκ代数で、
+その面・退化・増大は積と単位から作れる。各項のFrobeniusはt↦t^pの同じ平方と両立する。
+このbarで導来商を表し、L44の同じsimplicial-cosimplicial模型へ渡すのが具体的な候補。
+有限Koszulの台とのテンソルはdualizableな係数とのテンソルなので、台のTotの比較を
+任意の非完全な通常の商とのテンソルの比較へ一般化する必要もない。
+これらは構成の筋であって、同じnativeなCAlg対象と辺の同定まで得たという主張ではない。
+
+実際に型を再読した本体の宣言は
+`BarrattEccles.barrattEcclesBaseChange_forget`（CAlgExtensionForgetKFlat.lean）。
+これは任意のfに対する**関手全体の**台の係数拡大との比較で、追加のK平坦性の仮定はない。
+一方、`BarrattEccles.strictBarFunctor`・`strictBarUnderlyingExtraDegeneracy`は
+自由・忘却随伴のbarであり、上の相対的なテンソルのbarそのものの完成宣言ではない。
+名前だけを理由に、そのbarと同じ模型が供給済みとはしない。
+
+### 255.3 この候補に必要な比較を露出させる
+
+必要な仕事は次である。
+
+1. Q_rを上の相対barの同じ二重模型で表すこと。台が元のK//d^rである比較を保持する。
+2. t↦t^pによる同じFrobeniusの辺が、相対barの項ごとのa↦a^pと一致すること。
+   これは指定されたFrobeniusの辺の構成であり、P⁰をcoherentな自然変換へ強める要求ではない。
+3. barの実現、有限Koszulの台とのTotの交換、同じnativeな指定錐への比較。
+   `baseChange_forget`だけでこの全部が自動で出るとはしない。G10/3b-4の未供給の橋は作らない。
+4. 実際の完備化後のYとmod pのprincipal completionの比較。
+   perfectPrismRingは零環の枝とW(R♭)の枝を持つ固定した本体の係数であり、
+   必要なpのKoszul/mod p比較を、この実際の係数について供給する。
+   pやdの正則性を追加仮定としてA4へ入れて隠さない。
+5. §223.3のpro-zero・lim¹の計算と、YからQ_rへのΠ_0の射が共同で単射であること。
+
+(1)〜(4)が供給されれば、各Q_rでL44によりP⁰と同じFrobeniusを比較し、
+(5)とho(CAlg)上の自然性でYのΠ_0で比較する、という候補が具体化する。
+Π_n (n>0)の消滅は、rawのcoconnective性とH^0のreduced性を用いる§223.3の完備化の計算で
+別に扱う。全Π_nの上で完備化単位が全射だという仮定は使わない。
+
+この候補は、§223で不足として残した「各Koszul商での同じFrobeniusの照合」への筋である。
+native比較や新しい相対barの構成が48本の既存の受け渡しに含まれるかはまだ照合が要る。
+新しい構成を自己承認で一覧へ足して実装することはしない。
+それでも、通常の商の正則性を仮定するかcoherentなP⁰へ戻るかの二択だとはまだ言えない。
+(c)が不可避という判定は現段階では出しておらず、その判定になれば§32どおり止めて報告する。
+
+### 255.4 barとTotの比較で省いてはいけない工程
+
+κ[t]上のκが完全であることは、**導来テンソル関手**とTotの可換性の理由であり、
+二-sided barの各項とTotが項ごとに可換であるという理由ではない。
+barの各項に現れるκ[t]のテンソル冪は、κ上では無限階数になり得る。
+従って、二つの実現方向を対角へまとめてL44の模型へ渡す途中の比較は自動ではない。
+
+具体的に残る候補は、相対barの加群解像度とκ[t]上の二項自由Koszul解像度の比較を保ち、
+同じcosimplicialな係数に自然な鎖比較・ホモトピーを通して、
+実現とTotを組み合わせた実際の台を有限Koszul模型へ照合すること。
+その比較が元のnativeなbarの増大の像を表すことと、同じFrobeniusの辺も追う必要がある。
+これは未検証の必要工程であり、既存`strictBarFunctor`や`baseChange_forget`の名前だけで
+供給されたとは扱わない。(b)の候補を完成した証明へ昇格させず、(1)〜(3)の不足へ明示して残す。
+
+## 256. C452の区切り・活動頂点・指数の補和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§246〜253の12本**625行**を検証・監査した。
+残り色の元の区切り・区間長、挿入色の元の区切りの全条件と末尾/内部の判定、
+その0/1重みとintervalLengthの式、同じ活動頂点の移送、
+色別順位と先行他色数の和の式、同じ区間内の先行他色の集合の不変性、
+元のcompositionExponentと接頭区切りの重み付き和の補和までを証明した。
+
+`positiveCompositeCutCoefficient_eq_nested_of_modeq`は、元の指数の比較が与えられた場合の
+整数係数への移送だけを証明した。肝心の§243のmod 2の比較はまだ供給しておらず、
+元のC452の無条件の完成には数えない。§253の二つの全和の型と§254は紙のまま。
+C451・C453は前ターンで閉じたが、L12a全体は未完で一覧12/48（追加4）のまま。
+
+対象ビルド（全て成功）：
+
+- `m14-remaining-caesura-weights-01.log`（2,861 jobs）。
+- `m14-segment-caesura-order-01.log`（2,874 jobs）。
+- `m14-inserted-caesura-02.log`（2,878 jobs）。
+- `m14-caesura-boundary-and-modeq-01.log`（2,909 jobs、整数係数移送）。
+- `m14-caesura-weights-and-active-transport-01.log`（2,901 jobs、区切りの非推奨名修正後）。
+- `m14-color-rank-active-prefix-02.log`（2,214 jobs、未使用simp引数修正後）。
+- `m14-composition-exponent-complement-01.log`（1,572 jobs）。
+
+途中では元の有限位置の記法`segmentInnerWordPosition`の展開を明示し、
+非推奨のif_pos/if_negを現行名ite_eq_left/ite_eq_rightへ直した。
+最終ソースの対象Lean警告0。既存の公開宣言・符号規約・型は変更していない。
+
+小監査は2回に分け、新しく検証した分だけを対象にした。
+
+- `audit-m14-caesura-sign-transport.log`：11モジュール・52宣言。
+- `audit-m14-composition-exponent-complement.log`：1モジュール・2宣言。
+
+合計**12モジュール・54宣言、標準三公理のみ**。
+新しいsorry・公理なし。鍵はビルド・監査の間だけ一回ずつ取得し、終了時に返した。
+待ちの整理券は一枚。大きい監査・rootビルド・mainの作業木での作業はしていない。
+
+調整役への登録対象（共通接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| OccurrenceCaesuraTransport | 39 |
+| RemainingCaesuraWeights | 43 |
+| SegmentPositionOrder | 70 |
+| SegmentWordPositions | 20 |
+| SegmentBoundaryCaesura | 42 |
+| SegmentCaesuraFromInner | 57 |
+| InsertedCaesura | 44 |
+| InsertedCaesuraBoundaryWeights | 98 |
+| CompositeSignModEqTransport | 48 |
+| ColorOrderActiveTransport | 37 |
+| ColorRankActivePrefix | 85 |
+| CompositionExponentComplement | 42 |
+| **合計** | **625** |
+
+M14実測は**20,707行**、L12a実測は**5,500行**。
+旧§245のC452の残り173〜323行に対し、今回既に625行を使い、全和の比較が残る。
+従って旧26,639〜31,959行を新しい完成見込みとして使わない。
+他行の旧上端を据え置き、C452の旧上端323を今回625へ置き換える機械的な比較だけでも
+**32,261行＋C452の未供給の全和の分**となる。
+これは工程見込みの比較で、確定行数や数学的な下界ではないが、上端の超過リスクは増えている。
+外枠**31,000行は変更しない**し、収まるとも主張しない。
+実測と残りを分け、§32の約25,000行の中間報告で全和の実装分を含めて出し直す。
+完備化後のP⁰の候補の不足（§255）も、無料で供給済みの前提や別枠の完成分へ置かない。
+
+次は§254の異なる挿入色の順序の比較、既存の活動頂点の逆転数の有限和、
+§253の位置指数・逆転指数の二つの全和の比較を同じ元の構成の法則として進める。
+実テンソル・nullaryと、その後のL13以降を完成済みとして控除していない。
+G10・M15・G12・drafts・界面・共有入口は変更していない。
+これは同じL12aの途中の取り込み点であり、goalはactiveのまま継続する。
