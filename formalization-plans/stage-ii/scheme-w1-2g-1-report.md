@@ -394,3 +394,23 @@ G1 本体の累計は **2,133 行**、入口込み **2,178 行**（G0 の入口�
 G1 累計は本体 **2,184 行**、入口込み **2,230 行**。次の一般自由開を同じ T 上で実現する下書きは未検証。一般平坦開を伴う Noether 模型の有限個の貼り合わせ、A07 と G2 の完成は未達。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+## A07：有限個の一般自由開の係数を共通にする法則（着手前）
+
+- `free_away_tensor_of_algHom f b`：A-代数射 f:B→C に対し、`Module.Free (Localization.Away b) (Localization.Away b ⊗[A] S)` なら、同じ式の B,b を C,f(b) へ移した自由性が成り立つ。既存の局所化の mapₐ と tensor の係数移送。
+- `fg_finset_sup_subalgebra T h s`：全 T_i が有限生成なら、有限 join `s.sup T` も有限生成。既存の FG.sup の反復。
+- `exists_common_fg_subalgebra_generic_free_charts A R S hmin`：Noether A、被約 A-代数 R、有限型 A-代数 S、R の極小素点集合の準コンパクト性から、有限生成部分代数 T と有限族 `t : Fin n → T` を得る。各 `Localization.Away (t i) ⊗[A] S` はその局所化上自由で、R 上の基本開 D(t_i) は全極小素点を覆う。直前の局所的な一般自由開を有限 join へ運ぶ、有限被覆の貼り合わせの法則。
+
+この束は既存の係数移送・有限被覆の貼り合わせの法則で主項目を増やさない。見込み 100〜240 行。T⊗[A]S の実際の Noether 模型と元の有限表示代数との比較は、この束の後に既存の tensor 同型と組む。
+
+一覧：済み 7／全体 12（うち追加 3）。
+
+### 一般自由開の有限生成係数部分代数への移送：検証結果
+
+`GenericFlatCoefficientFreeChart.lean` **81 行**、入口 1 行。下書き検証、本体と入口の対象ビルド **4,832 ジョブ成功**、小監査 **1 宣言・標準三公理のみ**、終了コード 0。最初の下書きの有限型性の底変換 instance の不足は Mathlib.RingTheory.FiniteStability の import で解決した。ログは `scheme-drafts/2g-coefficient-free-chart-check-2.log`、`2g-coefficient-free-chart-native.log`、`2g-coefficient-free-chart-audit.log`。共有鍵 `--class impl --wait 3600`、待ちは一つ。新しい resource limit・sorry・追加公理はない。
+
+- `exists_fg_subalgebra_free_basicOpen_at_minimalPrime`：既存の Noether 係数環 A と有限型 A-代数 S に対し、被約 A-代数 R の各極小素点の一般自由開を、R の有限生成 A-部分代数 T 上で実現する。基本開の元を R へ移した像は指定した極小素点を避ける。
+
+G1 累計は本体 **2,265 行**、入口込み **2,312 行**。次は有限個の開を共通係数部分代数へ運び、実際の Noether 模型と tensor 比較をまとめる。A07 と B01〜B04 は未完。
+
+一覧：済み 7／全体 12（うち追加 3）。
