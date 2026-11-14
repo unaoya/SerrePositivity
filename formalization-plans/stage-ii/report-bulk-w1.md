@@ -1079,3 +1079,10 @@ InterfaceFieldsは完備化単位の同じ辺の端点の補助定義自体は�
 一覧：済み 10／全体 14（うち追加 0）。[第51束](bulk-5inf0/draft-block51-validation.json)でA4/InterfaceFieldsが約40秒、A7/AnimatedPerfectoidizationが約25秒で成功。有効な成功は40／57本。完備化単位の同じnerveの辺は端点を明示する補助定義へ分け、公開される界面から使える公開範囲にした。新しい数学的構成ではなく、以前の式の型の照合の分割である。A7の有界性は既存のperfectPrism_boundedを渡し、脚は通常のホモトピー圏の表示へ揃えた。補ったInterfaceFieldsへの依存も実際の型検査で通った。この2本の検査済みソースをコミットする。
 
 同じ束のPerfectSiteとAlmostConnectivityは失敗。PerfectSiteは元の余積の反復を同じNat.recで明示し、脚も同じ依存再帰で書く。構成する対象・射・未証明の法則は変えない。AlmostConnectivityはD3の二切断のホモトピー圏の対象のptから同じ頂点を読む。第52束で検査する。
+
+
+### 5∞-0 のdraft検査・第52〜53束（11-14夜）
+
+一覧：済み 10／全体 14（うち追加 0）。[第52束](bulk-5inf0/draft-block52-validation.json)でA5/PerfectSiteが約39秒、A8/AlmostConnectivityが約22秒で成功。有効な成功は42／57本。前者は元の有限余積の反復と指定された脚をNat.recで明示し、後者はD3の二切断のホモトピー圏の対象のptから同じ頂点を読んだ。通常のホモトピー圏の脚への照合も通った。この2本の検査済みソースをコミットする。
+
+SemiperfectoidCaseは第52束で失敗し、有界性の既存の証明・includeとdocstringの配置・公開された値の選択で使う存在定理の公開範囲・ホモトピー圏の表示を合わせた。[第53束](bulk-5inf0/draft-block53-validation.json)ではそれらが通り、根の変数の改名を商へ降ろすIdeal.quotientMapₐの引数の推論1箇所が残った。係数環・両イデアル・同じ改名写像を明示して第54束で検査する。元の未証明の理想への包含の主張を変えず、新しい仮定やsorryは追加していない。
