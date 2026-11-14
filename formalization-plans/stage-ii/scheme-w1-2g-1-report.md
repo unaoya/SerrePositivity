@@ -1328,3 +1328,31 @@ B01 の段の射の自然性と実際の三種の射の読出し（着手前の�
 G1・G2共用部品込み本体8,485行、入口込み8,635行。一般の有限表示対象の模型の分割1,823行。逆・cocycle の有限個の式の具体的な適用、gluing datum と全体の模型、一般の固有性の降下、被覆模型は残る。B01〜B04は未完。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+同じ自然性の型の補足：`CartesianModelArrow.isPullback_comparisonAt` は `IsPullback (comparisonAt b γ h) base (pullback.fst γ sourceMap) b`。元の Cartesian 正方形と段の pullback 正方形の右側の消去で供給する。既存の比較の法則で前記100〜250行の束に含め、親項目は増やさない。
+
+次の有限個の式の入力（着手前の型、自然性の分割の見込み100〜300行）：`pairComparisonAt` は元の二重交叉から段の重なりへの実際の比較。`pairComparisonAt_toChart` はこの射と段の開包含の合成が元の第一射影と段のチャート比較の合成に等しいこと。`stageReverse_naturality` は元の反転と段の反転の比較の可換式。`stageReverse_inverse_after_comparison` と `stageReverse_diagonal_after_comparison` は、元の二重交叉からの比較の後で反転の逆・対角の式が成立すること。有限個の式の後の段への一致判定の極限側の入力で、模型の存在の追加仮定ではない。親項目は増やさない。
+
+有限個の式を同じ後の段へそろえる時の源・標的を固定する：現在の段のチャートを Pᵢ、重なりを Wᵢⱼ、開包含を δᵢⱼ、対角の逆の候補を dᵢ、反転を tᵢⱼ、三重交叉の射を Lᵢⱼₖ とする。必要な式は (1) `dᵢ ≫ δᵢᵢ = 𝟙 Pᵢ`、(2) `δᵢᵢ ≫ dᵢ = 𝟙 Wᵢᵢ`、(3) `tᵢᵢ = 𝟙 Wᵢᵢ`、(4) `tᵢⱼ ≫ tⱼᵢ = 𝟙 Wᵢⱼ`、(5) `Lᵢⱼₖ ≫ δⱼₖ = pullback.fst δᵢⱼ δᵢₖ ≫ tᵢⱼ ≫ δⱼᵢ`、(6) `Lᵢⱼₖ ≫ tⱼₖ ≫ δₖⱼ = pullback.snd δᵢⱼ δᵢₖ ≫ tᵢₖ ≫ δₖᵢ`。源は順に Pᵢ・Wᵢᵢ・Wᵢᵢ・Wᵢⱼ・三重交叉・三重交叉、標的はそれぞれ Pᵢ・Wᵢᵢ・Wᵢᵢ・Wᵢⱼ・Pⱼ・Pₖ。全て現在の有限表示の模型であり、後の係数段の図式の極限は元の同じ対象。固定した現在の標的への射影で有限個の一致を後の段へ降ろし、基底座標と二射影で実際の段の射の等式へ戻す。式を満たした段で既存の `openTransitionGlueData` と `isPullback_gluingAtlasMap_toBase` へ渡す。
+
+
+### B01：比較の自然性と段の三種の射
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| ModelArrowStageNaturality | 44 | `CartesianModelArrow.targetLiftAt`：元の射と基底座標の段の標的への lift |
+| 同上 | 同上に含む | `isPullback_comparisonAt`：段の源模型への比較は Cartesian |
+| 同上 | 同上に含む | `comparisonAt_map`：固定模型への射影の可換式を段の標的への実際の射の自然性へ戻す |
+| OpenAtlasStageArrows | 74 | `stageDiagonal`：有限族の段の射から取り出す対角の逆の候補 |
+| 同上 | 同上に含む | `stageReverse`：有限族の段の射から取り出す反転 |
+| 同上 | 同上に含む | `stageTriple`：具体的な三重交叉の底変換同型で移した次の重なりへの射 |
+| 同上 | 同上に含む | `stageDiagonal_toBase`：対角の逆の候補の段の基底上の可換式 |
+| 同上 | 同上に含む | `stageReverse_toBase`：反転の段の基底上の可換式 |
+| 同上 | 同上に含む | `stageTriple_toBase`：三重交叉の移送後の段の基底上の可換式 |
+
+本体118行・入口2行。直接 importer AlgebraicGeometry まで対象ビルド4,938ジョブ成功。小監査20宣言（7・13）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-model-stage-arrows-check-2.log`・`2g-model-stage-arrows-native.log`・`2g-model-stage-arrows-audit.log`。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。
+
+G1・G2共用部品込み本体8,603行、入口込み8,755行。一般の有限表示対象の模型の分割1,941行。次の反転の自然性と極限での逆・対角の式は未検証下書きでこの実測に含めない。有限個の式の具体的な共通段への移送、gluing datum と全体の模型、一般の固有性の降下、被覆模型は未完。B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。

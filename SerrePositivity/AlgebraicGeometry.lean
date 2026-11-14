@@ -1435,3 +1435,5 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientArrowStage
 public import SerrePositivity.AlgebraicGeometry.BaseChangedOverlapMap
 public import SerrePositivity.AlgebraicGeometry.FiniteStagePullbackEqualities
 public import SerrePositivity.AlgebraicGeometry.BaseChangedOverlapTriple
+public import SerrePositivity.AlgebraicGeometry.ModelArrowStageNaturality
+public import SerrePositivity.AlgebraicGeometry.OpenAtlasStageArrows
