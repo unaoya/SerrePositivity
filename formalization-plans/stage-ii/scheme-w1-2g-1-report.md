@@ -1954,3 +1954,17 @@ G1・G2共用部品込み本体11,934行、入口込み12,138行。aa00383c7 の
 一覧：済み12／全体17（うち追加8）。
 
 C06 の閉包と局所の射の一致の法則（着手前の型、見込み150〜350行）：`isSchemeTheoreticallyDominant_toImage` は準コンパクトな f:X→Y の実際の `f.toImage:X→f.image` が scheme-theoretically dominant と返す。`ext_of_isSchemeTheoreticallyDominant_of_isSeparated` は scheme-theoretically dominant な ι:U→X 上で一致する、同じ分離的な Y→S 上の二射 f,g:X→Y が全体で一致することを返す。原典 [Stacks 01RH, 29.7.10](https://stacks.math.columbia.edu/tag/01RH)。C06 の画像の閉包と既存の射の貼り合わせの法則・証明分割で、親項目を増やさない。Mathlib に `IsSchemeTheoreticallyDominant` と `Hom.toImage_app_injective` があるので、この API を先に使い、射の照合に元の対象の被約性を要求しない経路を進める。上記の還元的な成分に戻す案は補助案として残すが、可能なら scheme-theoretic な閉包の法則を用いて原典の非被約な場合のまま貼り合わせる。
+
+
+C06 の有限個の既存の成分への接続（着手前の型、見込み80〜180行）：`noetherianComponentIndex` は Noether スキーム X の既約成分の添字、`noetherianComponentIndex_finite` はその有限性（Mathlib の Stacks 0BA8）。`noetherianComponentScheme` と `noetherianComponentInclusion` は既存の `Scheme.irreducibleComponent` と包含を束ねる。各成分の包含の閉埋め込み性・各成分の Noether 性と既約性・包含の族の全射性を返す。既存の成分の構成の有限族と法則として C06 内の分割で、親項目を増やさない。既存の成分は元の nilpotent の情報を保つため、被約な成分へ勝手に置き換えず、次の閉包と射の照合には scheme-theoretic な法則を用いる。
+
+
+### C06：像への射の scheme-theoretic な稠密性と、分離的な標的への射の一致
+
+`SchemeImageDominance`（60行）：`isSchemeTheoreticallyDominant_toImage` は準コンパクトな射の実際のスキーム論的像への射の kernel が0であることを、像の affine 被覆上の切断の単射性から返す。`ext_of_isSchemeTheoreticallyDominant_of_isSeparated` は scheme-theoretically dominant な射上で一致する、同じ分離的な標的への二射の全体での一致を返す。閉じた等化子の kernel を0にして同型とするので、元の対象の被約性を仮定しない。
+
+本体60行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,991ジョブ成功。小監査3宣言・標準三公理のみ。下書きでは環写像の単射と核の既存補題の引数を明示して単独検証を完了。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-scheme-image-dominance-check-2.log`・`2g-scheme-image-dominance-native.log`・`2g-scheme-image-dominance-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,994行、入口込み12,199行。C06 は本体60行までで未完。一般の Chow の固有全射、一般の固有性の降下、被覆模型・図式の整合性はまだ残り、C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
