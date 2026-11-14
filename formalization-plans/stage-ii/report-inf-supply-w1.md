@@ -3931,3 +3931,64 @@ lemma transportSimplexSectionInfinity_joint_evaluate {E B : SSet.{u}}
           (leftFibrationObjectOf p))
 
 ```
+
+### 51.2 三因子の第一・第三因子の正規化
+
+一覧：済み 0／全体 13（うち追加 11）
+
+二本の対象ビルド成功（5,470 jobs）。新しい環境の小監査は6宣言、標準三公理のみ。
+計算上限は不変。ログ：`/tmp/is-w1/restriction-factor-verify/`。
+既存構成の係数移送と逆・前後合成の法則のみで、新しい数学的入力はない。
+E01は未完了で、次は指定底変換の同じ三因子全体の共役表示と貼り合わせへ進む。
+
+#### LeftClassificationRestrictionFactorValues（59行）
+
+```lean
+lemma leftClassificationSimplexIso_precomp_heq_joint
+    {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    {K : SSet.{u + 1}}
+    (t : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory B))) :
+    HEq (FunctorIso.postcomp
+        ((leftStraighteningSectionJointDiagram_restrictIso B).precomp t)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+      (FunctorIso.precomp (leftClassificationSimplexIso p) t)
+
+```
+
+#### LeftClassificationRestrictionPullbackValue（113行）
+
+```lean
+local instance restrictionPullbackValue_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+lemma leftFibrationBaseChange_evaluate {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u} ≫
+        evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p) =
+      evaluateFunctorAt (Y := SpaceInfinity.{u})
+        (leftFibrationInfinityVertex (pullback.snd p k))
+
+lemma leftClassificationSimplexIso_pullback_heq_joint
+    {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq (FunctorIso.postcomp
+        (FunctorIso.postcomp (leftStraighteningSectionJointDiagram_restrictIso D)
+          ((pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}))
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+      (leftClassificationSimplexIso (pullback.snd p k))
+
+private lemma isoSymm_heq {L : Type v} [Category.{w} L]
+    {a b a' b' : L} (e : a ≅ b) (e' : a' ≅ b')
+    (ha : a = a') (hb : b = b') (h : HEq e e') : HEq e.symm e'.symm
+
+lemma leftClassificationSimplexIso_pullback_symm_heq_joint
+    {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq (FunctorIso.postcomp
+        (FunctorIso.postcomp (leftStraighteningSectionJointDiagram_restrictIso D)
+          ((pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})).symm
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+      (leftClassificationSimplexIso (pullback.snd p k)).symm
+
+```
+
+検証済み累計：110本・9,001行（直前105本・8,594行に、§51.1の235行と今回172行を追加）。
+全宣言200行未満。外枠20,800行の内側。
