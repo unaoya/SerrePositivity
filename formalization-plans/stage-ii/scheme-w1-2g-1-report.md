@@ -795,3 +795,28 @@ C03 の閉部分スキームへの比較を検証：FinitePresentationClosedLimi
 この追加の比較を含め C03 関連は本体527行＋入口9行、G1 共用部品込み本体 **4,710 行**、入口込み **4,800 行**。A07・G2 は未完のまま。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 の実際の周辺模型と C03 の合成の法則 `exists_proper_closed_baseChange_model_of_isLimit` の型（見込み 50〜140 行）：同じ qcqs・affine 遷移の極限と固定段 i、固有・局所有限表示 p:Y→D(i)、pullback(c.π.app i)p 上の有限型 K に対し、ある j:Over i の実際の底変換空間上の有限型 L が存在する。L の閉包含から D(j.left) への構造射は固有・局所有限表示で、K.subscheme は L の閉部分スキームの実際の底変換と同型になる。閉部分の型と同じ射の固有性・有限表示性をそろえる、C03 と底変換の法則の合成。全射性の降下や元の X への因子化はこの出口に含めず、後続の接続で処理する。
+
+## A07 の有限段での全射性の比較：次の型（着手前）
+
+次の二つは、既存の全射性の判定と模型の底変換の法則の接続として進める。独立の親項目は増やさない。原典は [Stacks 32.8.15, Tag 081C](https://stacks.math.columbia.edu/tag/081C)、構成可能な像は Mathlib の `Scheme.Hom.isConstructible_image`（054J）。見込みは合わせて120〜400行。
+
+- `exists_surjective_proper_pullback_of_isLimit`：qcqs・affine 遷移の実際の cofiltered 極限 D,c,hc、ある段 i への固有・局所有限表示 p:Y→D(i) に対し、pullback.snd p(c.π.app i) が全射なら、ある j→i で pullback.snd p(D.map(j→i)) が全射。既存の `exists_surjective_pullback_snd_of_isLimit` の Noether 段という仮定を変えず、新しい宣言で、像の補開が構成可能ゆえ準コンパクトであることを使う。忠実平坦な遷移射を仮定しない。
+- `exists_surjective_flat_pullback_of_isLimit`：同じ極限と、ある段 i への平坦・局所有限表示・準コンパクト p:Y→D(i) に対し、極限への底変換が全射なら、ある j→i への同じ底変換が全射。平坦・局所有限表示の射の像が開であることと `exists_map_eq_top` を使う。これは fppf 側の全射性の有限段への移送。
+
+この二つで固有側と平坦側の全射性を降ろした後、共通の後段へ運ぶことと、元の有限表示アフィン X への射の因子化・可換式をそろえる。因子化には既存の `Scheme.exists_π_app_comp_eq_of_locallyOfFinitePresentation` を使い、同じ有限表示の射の降下を作り直さない。
+
+一覧：済み 9／全体 14（うち追加 5）。
+
+全射性の比較の位相の分割 `isCompact_of_isConstructible_scheme`：qcqs X の構成可能集合 s は準コンパクト。既存の構成可能位相のコンパクト性（0901）から、構成可能位相での閉集合の連続像として比較する法則。`exists_surjective_proper_pullback_of_isLimit` では Mathlib の Chevalley（054J）の構成可能な像の補集合にこの法則を使い、既存の `exists_preimage_eq_bot_of_isLimit` へ渡す。見込みは直前の二つの全射性の比較120〜400行の中。
+
+### A07：周辺模型の底変換図式と有限表示の閉部分の模型
+
+StageBaseChangeLimit **83 行**、ProperClosedBaseChangeLimitModel **46 行**、入口 2 行。前述の `stageBaseChangeDiagram`・`stageBaseChangeCone`・`isLimit_stageBaseChangeCone`・`isPullback_stageBaseChangeDiagram_map` と、遷移射の affine 性・各段の準コンパクト性・準分離性を検証。`exists_proper_closed_baseChange_model_of_isLimit` は、元の極限への底変換上の有限型閉部分を、ある段で固有・局所有限表示の構造射を持つ実際の閉部分の模型へ移す。一般の qcqs な図式と固有・局所有限表示の周辺射の型を保ち、遷移射の忠実平坦性は仮定しない。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,878 ジョブ成功**、二モジュールの小監査は補助宣言込み **11 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-stage-basechange-batch-check-3.log`、`2g-stage-basechange-native.log`、`2g-stage-basechange-audit.log`。
+
+G1 共用部品込み本体 **4,839 行**、入口込み **4,931 行**。一般の A07 の模型の全射性・因子化を同じ段へそろえる接続、G2 の一般の模型は未完。
+
+一覧：済み 9／全体 14（うち追加 5）。
