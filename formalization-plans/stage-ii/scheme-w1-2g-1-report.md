@@ -2516,3 +2516,17 @@ G1・G2共用部品込み本体14,499行、入口込み14,743行。B02〜B04 は
 G1・G2共用部品込み本体14,610行、入口込み14,856行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B04 の Spec 近似の基底上の自然性（着手前の型、見込み30〜70行、上記450〜850行の内数）：`finitePresentationModelSpecBaseMap_naturality` は全ての模型の遷移と R への構造射の可換式、`finitePresentationModelSpecBaseNatTrans` は Spec R への自然変換、`finitePresentationModelSpecCone_base` は元の Spec C の cone と構造射の可換式。既存の代数写像の係数可換性の法則として、親項目を増やさない。
+
+
+### B04：有限表示模型の圏の実際の filtered 性
+
+`FinitePresentationModelFiltered`（48行）：`finitePresentationModelCategory_cocone_maps` は元の代数上で一致する平行射を実際の有限表示商模型で一致させる。共同後段と合わせて模型の圏と同じ宇宙の小さい模型の両方に `IsFiltered` を供給する。元の代数の有限型性・整性は要求しない。
+
+本体48行・入口1行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,035ジョブ、小監査3宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-finite-presentation-model-filtered-check.log`・`2g-finite-presentation-model-filtered-native.log`・`2g-finite-presentation-model-filtered-audit.log`。
+
+G1・G2共用部品込み本体14,658行、入口込み14,905行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
