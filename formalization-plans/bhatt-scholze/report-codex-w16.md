@@ -20394,3 +20394,84 @@ nullary・一般nの包装・全複体射への外延性はまだ残す。
 L12a全体は未完、一覧12/48（追加4）、goalはactive。
 外枠31,000行と§314の完成見込みの超過リスクは据え置き、残る範囲を削らない。
 §316のnullaryの法則はこの取り込み点に数えず、対象ビルドで検証中。
+
+
+## 318. nullaryの一頂点削除・挿入は既存の水平辺の同値で読む（次の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§316の有限点検を辺集合にも拡張した。同じ全9,794組のうち、非空出力の一頂点削除2,616組で、
+以下の削除辺番号・挿入辺位置が一致し、元の水平辺集合を厳密に復元した。
+削除点が始点・終点の場合も含めた。新しい経路の模型は作らず、
+既存 `BarrattEccles.horizontalInsertionEquiv` と元の `cutHorizontalEdge` を使う。
+次はL12aの同じ有限対応の定義の記法と法則の型。まだ実装・型検査済みには数えない。
+各証明200行以内の見込み。
+
+```lean
+def nullaryPointEraseCut {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2)) : Cut m q :=
+  let i : Fin (m + 1) := ⟨min p.val m, by have h := Nat.min_le_right p.val m; omega⟩
+  (BarrattEccles.horizontalInsertionEquiv m q (cutHorizontalEdge s i)).symm
+    ⟨s, s.val.orderEmbOfFin_mem s.property i⟩
+
+def nullaryPointInsertionEdge {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    Fin (m + 1 + q) :=
+  if hzero : p.val = 0 then ⟨0, by omega⟩
+  else if htop : p.val = m + 1 then ⟨m + q, by omega⟩
+  else
+    let i : Fin m := ⟨p.val - 1, by have hp := p.isLt; omega⟩
+    ⟨(cutHorizontalEdge t i).val + 1, by have hb := (cutHorizontalEdge t i).isLt; omega⟩
+
+def nullaryPointInsertCut {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) : Cut (m + 1) q :=
+  (BarrattEccles.horizontalInsertionEquiv m q (nullaryPointInsertionEdge t p) t).val
+
+lemma nullaryPointInsertCut_hi_eq_lo {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    hi (nullaryPointInsertCut t p) p = lo (nullaryPointInsertCut t p) p
+
+lemma nullaryPointEraseCut_insert {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    nullaryPointEraseCut (nullaryPointInsertCut t p) p = t
+
+lemma nullaryPointInsertCut_erase {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2))
+    (h : hi s p = lo s p) :
+    nullaryPointInsertCut (nullaryPointEraseCut s p) p = s
+
+def nullaryPointCutEquiv (m q : ℕ) (p : Fin (m + 2)) :
+    Cut m q ≃ {s : Cut (m + 1) q // hi s p = lo s p}
+```
+
+削除する水平辺の番号はmin(p,m)。内部では一頂点の直後の辺、終端では直前の辺を削る。
+挿入位置は始点で0、終点でm+q、内部では元の直前の水平辺の直後。
+この同じ辺集合を読む点検は成功したが、Leanの逆性・hi/loの全称証明はまだ供給していない。
+区間の色の削除と残りの頂点列・元のcutSignへの適用は、この同値の後の法則として型を記す。
+出力arity零はこのCutの型の外なので、元のnullaryAction・AW余単位の枝で別に扱い、捨てない。
+
+
+## 319. nullaryの零次元色の三法則：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§316の三つの法則を実装した。元の色の出力次数が零なら、語の出現は一回だけであり、
+指定された区間のhiとloは一致する。逆に唯一の出現の同じ一頂点なら出力次数は零。
+同じ色別位置集合と同じ水平射影を使い、退化性を追加仮定にしていない。
+依存するFinの型を書き換える代わりに、元の順位と零次数を数値として比較した。
+
+`m14-nullary-zero-color-02.log`：1,142 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-nullary-zero-color.log`：
+**1モジュール・11宣言、標準三公理のみ**、sorry・独自公理0。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+有限点検は§316・318の全9,794組で別に記録し、Leanの全称証明と混同しない。
+終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象：`SerrePositivity.EInfinity.SimplexCuts.NullaryZeroColor`、**80行**。
+M14実測は**25,233行**、L12aは**10,026行**。
+§312・313・317・319のこの作業分は計10モジュール・641行、
+小監査は計70宣言、標準三公理のみ。
+§318の一頂点の有限対応は紙の型のままであり、実装や逆性の証明済みへ数えない。
+nullaryの全対応・実余単位の評価・一般nの包装、後続の全複体射などは未完。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+
+約25,000行の途中報告と完成見込みは§314。外枠31,000行は変更しない。
+既知の工程の見込みでも外枠超過のリスクがあり、完備化後のP⁰はその数字にまだ含まれない。
+完備化の(a)(b)の未供給の比較を仮定に足さず、(c)が必要と判明した場合の停止規則を保持する。
+3b-4aのmain取り込みは未受領のまま。次は§318の同じ水平辺の挿入/削除による有限対応。
