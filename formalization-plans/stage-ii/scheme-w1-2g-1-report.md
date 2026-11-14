@@ -2801,3 +2801,19 @@ G1・G2共用部品込み本体16,103行、入口込み16,371行。c857c0b03 の
 G1・G2共用部品込み本体16,239行、入口込み16,509行。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+全模型から被覆模型への実際の射の供給（着手前の型、見込み100〜220行、前記250〜650行の内数）：`exists_coefficientModel_to_vCover` は Noether な k、任意の k-代数 R,C と g:R→ₐ[k] C の affine v 判定、任意の全模型 X から、実際の被覆模型 Y と X→Y.obj を構成する。上記の P の有限表示 v 被覆、実際の被覆係数模型、同じ段への正方形の因子化、被覆模型の関手の対象を組み合わせる。元の g の有限表示性・元の R の Noether 性は要求しない。
+
+
+### B03・B04：全模型の実際の余極限と環の射による被覆模型への移送
+
+`CoefficientModelColimit`（159行）：小さい全模型の基底・始域の各元の表示と、像の模型での二元の一致判定を供給する。`coefficientModelSmallBaseCoconeIsColimit`・`coefficientModelSmallSourceCoconeIsColimit` は両環の実際の filtered 余極限。`coefficientModelSmallArrowCoconeIsColimit`・`coefficientModelArrowCoconeIsColimit` は Mathlib の両射影による余極限反映を使い、元の環写像を同じ Arrow の cocone の余極限として返す。
+
+`CoefficientModelRingCoverMap`（54行）：`coefficientModelHomMkOfRingHoms` は全模型の実際の環の二射と係数・三つの可換式から模型の射を作る。`coefficientModelHomToRingCoverModel` は実際の環表示で登録した被覆模型への射を返す。
+
+本体213行・入口2行。各最初の単独検証、ソース完全一致、二対象と直接 importer AlgebraicGeometry のビルド5,060ジョブ、小監査23宣言（16・7）・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-model-colimit-check.log`・`2g-coefficient-model-ring-cover-map-check.log`・`2g-coefficient-model-colimit-map-native.log`・`2g-coefficient-model-colimit-map-audit.log`。
+
+G1・G2共用部品込み本体16,452行、入口込み16,724行。全模型の実際の余極限は閉じた。被覆模型への実際の射・final 性による被覆模型側の余極限、素体への移送と B02 の整理は残り、B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

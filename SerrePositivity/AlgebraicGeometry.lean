@@ -1613,3 +1613,7 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientModelFiltered
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelDiagram
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientSquareBaseChange
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientModelColimit
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientModelRingCoverMap
