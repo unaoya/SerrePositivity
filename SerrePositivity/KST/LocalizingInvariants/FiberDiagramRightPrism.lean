@@ -20,12 +20,12 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.FiberDiagram
 
-def domainRight := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
+def domainRight := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
 
 variable {D E : FiberDiagram.{u}} (f : D ⟶ E)
 
-def rightDiagonal : Sp.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D.triangle.square 1 0)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex E.triangle.square 1 1) := by
+def rightDiagonal : Sp.Edge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex D.triangle.square 1 0)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex E.triangle.square 1 1) := by
   let e := domainRight.{u}.tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge
   let e' := e.map ((truncation 2).map (comparisonHomotopy f).h)
   refine SSet.Edge.mk e'.edge ?_ ?_
@@ -46,11 +46,11 @@ lemma rightUpper_two : Sp.δ 2 (rightUpper f) = (comparisonEdge f 1 0).edge := b
     (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 0) from domainRight.src_eq]
   rfl
 
-lemma rightUpper_zero : Sp.δ 0 (rightUpper f) = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow E.triangle.square).edge := by
+lemma rightUpper_zero : Sp.δ 0 (rightUpper f) = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow E.triangle.square).edge := by
   rw [rightUpper, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.homotopyEdgeTriangleUpper_zero]
   rfl
 
-lemma rightLower_two : Sp.δ 2 (rightLower f) = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow D.triangle.square).edge := by
+lemma rightLower_two : Sp.δ 2 (rightLower f) = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow D.triangle.square).edge := by
   rw [rightLower, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.homotopyEdgeTriangleLower_two]
   rfl
 

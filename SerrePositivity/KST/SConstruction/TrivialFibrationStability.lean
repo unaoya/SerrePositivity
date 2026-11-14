@@ -34,12 +34,12 @@ lemma squareBottomEdge_mono : Mono (_root_.SerrePositivity.InfinityCategories.Ke
 方針：切断で標的の零頂点を持ち上げ、零対象性の反映を使う。
 規約：両端は quasicategory。使われ方：安定性の零対象条件。 -/
 lemma hasZeroVertex_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex B] (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q] : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex E := by
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex B] (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex E := by
   obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section q
-  let z := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex B).vertex
+  let z := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex B).vertex
   have he := ConcreteCategory.congr_hom (NatTrans.congr_app hs (Opposite.op ⦋0⦌)) z
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.app (Opposite.op ⦋0⦌) (s.app (Opposite.op ⦋0⦌) z)) :=
-    he.symm ▸ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex B).isZero
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.app (Opposite.op ⦋0⦌) (s.app (Opposite.op ⦋0⦌) z)) :=
+    he.symm ▸ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex B).isZero
   exact ⟨⟨_, (isZeroVertex_iff_of_trivialKanFibration q _).2 hz⟩⟩
 
 /-- 概要：指定された辺の fiber 正方形を trivial Kan fibration に沿って持ち上げる。
@@ -48,7 +48,7 @@ lemma hasZeroVertex_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Q
 lemma fiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable B] (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q]
     {x y : E _⦋0⦌} (f : SSet.Truncated.Edge (X := (truncation 2).obj E) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) := by
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenFiberSquare (f.map ((truncation 2).map q))
   have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ t.square = SSet.yonedaEquiv.symm f.edge ≫ q :=
     t.right_edge.trans (SSet.yonedaEquiv_symm_comp f.edge q).symm
@@ -58,7 +58,7 @@ lemma fiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
     square := h.lift
     zero_corner := by
       apply (isZeroVertex_iff_of_trivialKanFibration q _).2
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (h.lift ≫ q) 0 1)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (h.lift ≫ q) 0 1)
       rw [h.fac_right]
       exact t.zero_corner
     right_edge := h.fac_left
@@ -73,7 +73,7 @@ lemma fiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
 lemma cofiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable B] (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q]
     {x y : E _⦋0⦌} (f : SSet.Truncated.Edge (X := (truncation 2).obj E) x y) :
-    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) := by
   let t := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (f.map ((truncation 2).map q))
   have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ t.square = SSet.yonedaEquiv.symm f.edge ≫ q :=
     t.bottom_edge.trans (SSet.yonedaEquiv_symm_comp f.edge q).symm
@@ -83,7 +83,7 @@ lemma cofiberSquare_nonempty_of_trivialKanFibration {E B : SSet.{u}}
     square := h.lift
     zero_corner := by
       apply (isZeroVertex_iff_of_trivialKanFibration q _).2
-      change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (h.lift ≫ q) 0 1)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (h.lift ≫ q) 0 1)
       rw [h.fac_right]
       exact t.zero_corner
     bottom_edge := h.fac_left
@@ -101,7 +101,7 @@ lemma isStable_of_trivialKanFibration {E B : SSet.{u}} [Quasicategory E] [Quasic
   fiber_exists f := fiberSquare_nonempty_of_trivialKanFibration q f
   cofiber_exists f := cofiberSquare_nonempty_of_trivialKanFibration q f
   fiber_iff_cofiber t := by
-    let b : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle B := ⟨t.square ≫ q,
+    let b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle B := ⟨t.square ≫ q,
       (isZeroVertex_iff_of_trivialKanFibration q _).1 t.zero_corner⟩
     exact (isPullbackSquare_iff_postcomp_of_trivialKanFibration q t.square).trans
       ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.fiber_iff_cofiber b).trans

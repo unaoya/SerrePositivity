@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWBoundaryTerms
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.KSTProExcisionAWBoundaryExpansion
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.KSTProExcisionAWBoundarySum
@@ -236,4 +238,9 @@ lemma alexanderWhitney_naturality
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 
+/-! Literature correspondences from the reviewed coverage tables. -/
 
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.3.22" (partial := special) "仮定：二つの整数加群値単体的対象（Lean が強い：一般の n 変数の多重加法関手でなくテンソルの場合）。結論：前面と後面を取り全次数の分割について加える Alexander–Whitney 写像（二変数の場合は一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney
+attribute [cite HA "1.2.3.24" (partial := special) "仮定：整数加群の単体的対象二つとそれぞれの射（Lean が強い：二変数テンソルに特化）。結論：正規化・非正規化の Alexander–Whitney 写像が各射について可換（二変数の場合は一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality
+attribute [cite HA "1.2.3.26" (partial := component) "仮定：整数加群のテンソル（Lean が強い：一般の冪等完備な加法的モノイダル圏ではない）。結論：正規化と非正規化それぞれのテンソル比較射。一般の両関手の oplax monoidal 構造を返す型は含まれない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney

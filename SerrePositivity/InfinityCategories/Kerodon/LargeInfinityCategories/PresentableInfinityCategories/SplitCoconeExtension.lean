@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompStructCocone
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IteratedSliceUnderRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.IteratedSliceUnderRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalCoconeRestriction
 
 /-!

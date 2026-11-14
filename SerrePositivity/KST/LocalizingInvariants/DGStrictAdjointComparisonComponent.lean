@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGStrictAdjointComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorClosedCycles
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionComponents
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorClosedCycles
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedPostcompositionComponents
 
 /-!
 概要：厳密 dg 左随伴比較の成分を、元の閉零射の通常の随伴比較式へ同定する。

@@ -71,7 +71,7 @@ lemma presentedPerfectDGEvaluation_quasiEquivalence :
 def presentedPerfectDGNerveEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PerfectDGModule A D)) :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (presentedPerfectDGEvaluation A D)
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgQuasiEquivalenceNerveEquivalence (presentedPerfectDGEvaluation A D)
     (presentedPerfectDGEvaluation_quasiEquivalence A D)
 
 /-- ラベル付き Perf の native nerve は、実際の評価同値で安定性を反映する。 -/

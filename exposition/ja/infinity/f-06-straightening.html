@@ -126,15 +126,6 @@
 <tr><td>底</td><td>quasicategory</td><td>任意</td><td>任意</td><td>空間値版に従う</td></tr>
 </table></div>
 <p>D は、底の pushout の上で全空間を貼り合わせると inner fibration にならない（horn が継ぎ目をまたぐ）ので、その直しと一意性の管理が要る。これはモデル圏が担っていた部分で、素直に実行すると B に近いものを作り直すことになりそう。C は \(\mathcal Z\) を避けられる唯一の方法だが、本質的全射性に相対版の比較が要り、同程度以上に重いと見込まれる。</p>
-<div class="box refactor">
-<p class="label">提案する順序</p>
-<ol>
-  <li>まず \(\mathcal Z\) を作る（A・B・D の共通部分）。</li>
-  <li>並行して fiberwise 判定 (a) を示す（A に必須、B・D でも役立つ）。</li>
-  <li>\(\mathcal Z\) ができた時点で、A で仕上げるか B に切り替えるかを決める。既存コードを活かすなら A、参照の確かさと底の一般性なら B。</li>
-  <li>C は \(\mathcal Z\) が予想以上に重かった場合の代替案。</li>
-</ol>
-</div>
 
 <!-- ============================================================ -->
 <h2>6. 普遍 cocartesian fibration \(\mathcal Z\)</h2>

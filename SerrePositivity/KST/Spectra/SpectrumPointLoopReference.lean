@@ -60,7 +60,7 @@ lemma pointLoopReferenceCone_isLimit (Y : OmegaSpectrum.{u}) :
 /-- 四角形から作る錐の頂点は、元の左下の頂点そのもの。 -/
 lemma circlePullbackCone_vertex (z : Sp.{u} _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (nativeCircleEvaluationSquare z)).vertex =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) 0 0 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (nativeCircleEvaluationSquare z) 0 0 := by
   have hs : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (nativeCircleEvaluationSquare z)) =
       nativeCircleEvaluationSquare z := by
     dsimp only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone]

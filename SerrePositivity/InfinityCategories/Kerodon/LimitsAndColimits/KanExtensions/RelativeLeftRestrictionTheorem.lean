@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftFunctorInitial
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftRestrictionExistence
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulBoundary
@@ -74,3 +76,9 @@ lemma kanRelativeLeftKanRestriction_trivialKanFibration {K C D E : SSet.{u}}
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_surjective U hU δ hδ s hlocal)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.2.15" (partial := stronger-hyp) "仮定：充満部分圏の包含と圏ファイブレーション（Lean が強い：固定した底図式だけでなく、両立する任意の部分図式と底図式に対して局所相対余極限を要求）。結論：この仮定では標的の全関手が条件を満たす。相対左 Kan 関手の制限は自明 Kan ファイブレーションであり、固定底図式への引き戻しも自明 Kan となる（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_trivialKanFibration
+attribute [cite HTT "4.3.2.16" (partial := stronger-hyp) "仮定：部分圏上の全関手に相対左 Kan 拡張が存在（Lean が強い：固定した底図式だけでなく、両立する任意の部分図式と底図式に対する局所相対余極限を要求）。結論：同じ相対制限の自明 Kan 性から切断を得る。切断の値は相対左 Kan 関手の充満部分圏にあり、同じ制限の繊維が可縮なのでその部分圏の全関手を本質像に含む（一致する場合）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_trivialKanFibration

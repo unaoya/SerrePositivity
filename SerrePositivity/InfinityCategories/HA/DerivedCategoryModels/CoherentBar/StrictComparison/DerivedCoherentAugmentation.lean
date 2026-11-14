@@ -23,7 +23,7 @@ lemma dgBarOutputAugmentation_vertex_mem
     {C : Type (max (u + 1) v)} [_root_.SerrePositivity.DifferentialGraded.DGCategory R C] (F : _root_.SerrePositivity.DifferentialGraded.DGFunctor R C (_root_.SerrePositivity.DifferentialGraded.RightModule R D))
     (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R C) _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedAugmentationHomotopy R C D F) x).edge ∈
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
   obtain ⟨M, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv (A := R) (D := C)).symm.surjective x
   let Q := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleOutputResolutionObject R C D F M
   refine ⟨_, _, Q.augmentation, Q.quasiIso, ?_⟩
@@ -46,10 +46,10 @@ def dgBarDerivedAugmentationHomotopy : SSet.Homotopy
 lemma dgBarDerivedAugmentationHomotopy_vertex_mem
     (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R D)) _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (dgBarDerivedAugmentationHomotopy R D) x).edge ∈
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedAugmentationHomotopy R (ModuleCategory R D) D (dgConeModuleForget R D))
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.dgBarRightModuleRelabel R D))) x).edge ∈ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.dgBarRightModuleRelabel R D))) x).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D
   rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge]
   exact dgBarOutputAugmentation_vertex_mem R D _ _
 
@@ -68,10 +68,10 @@ def dgBarDerivedCoherentAugmentation : SSet.Homotopy (dgBarDerivedCoherentDiagra
 
 lemma dgBarDerivedCoherentAugmentation_vertex_mem (j : J) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (dgBarDerivedCoherentAugmentation R D G)
-      (ULift.up (nerveEquiv.symm j))).edge ∈ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
+      (ULift.up (nerveEquiv.symm j))).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D := by
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (dgBarDerivedAugmentationHomotopy R D) G)
-      (ULift.up (nerveEquiv.symm j))).edge ∈ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleQuasiIsomorphismEdges R D
+      (ULift.up (nerveEquiv.symm j))).edge ∈ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.dgModuleQuasiIsomorphismEdges R D
   rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge]
   exact dgBarDerivedAugmentationHomotopy_vertex_mem R D _
 

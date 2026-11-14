@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageBoundary
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareBoundary
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGStrictNatTransNerveHom
 
 /-!
 概要：元 cone image・評価 square の native 全比較が元包含を同じ射として保つ。

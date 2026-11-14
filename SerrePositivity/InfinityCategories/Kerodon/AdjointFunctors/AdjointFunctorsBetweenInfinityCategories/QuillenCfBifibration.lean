@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalCartesianCriterion
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.IntervalCartesianCriterion
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfLeftCocartesian
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfRightCartesian
 
@@ -103,3 +105,9 @@ lemma quillenCfCollageProjection_cartesianFibration :
   · exact _root_.SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfRightLiftEdge_isCartesian R adj cofC SC SD X
 end
 end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.2.4.6" (partial := stronger-hyp) "仮定：二つの単体模型圏と単体的 Quillen 随伴（Lean が強い：固定 tensor/cotensor、固定 SM7、Hom 随伴の合成互換、および関手的な両側の分解を明示入力）。結論：原典と同じ cf 対応の射影が Cartesian かつ coCartesian で、両端ファイバーが元の cf nerve と同型（この入力の下で一致）。具体例に使う ModelCategory instance なし：SSet の Kan–Quillen 入力は sorry に依存し、本行でそれを実在する instance としては数えない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.quillenCfCollageProjection_cartesianFibration
+attribute [cite HTT "5.2.4.6" (partial := stronger-hyp) "仮定：二つの単体模型圏と単体的 Quillen 随伴（Lean が強い：固定 tensor/cotensor、固定 SM7、Hom 随伴の合成互換、および関手的な両側の分解を明示入力）。結論：原典と同じ cf 対応の射影が Cartesian かつ coCartesian で、両端ファイバーが元の cf nerve と同型（この入力の下で一致）。具体例に使う ModelCategory instance なし：SSet の Kan–Quillen 入力は sorry に依存し、本行でそれを実在する instance としては数えない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.quillenCfCollageProjection_cocartesianFibration

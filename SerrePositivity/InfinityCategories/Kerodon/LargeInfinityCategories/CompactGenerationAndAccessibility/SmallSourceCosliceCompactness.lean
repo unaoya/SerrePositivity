@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.ColimitSourceCosliceComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.FullCompactFactorization
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ConeTerminalSliceComparison
@@ -63,3 +65,8 @@ lemma isKappaCompact_smallSourceCosliceVertex
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe hμ A hA cq hcq hq) c hc
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.5.13" (partial := stronger-hyp) "仮定：非可算正則 κ、κ-small な準圏形状と全頂点が κ-compact な図式・κ-compact な余錐頂点（Lean が強い：周囲 C は全小余完備、形状は準圏）。結論：同じ全余錐自身が Cp/ の κ-compact 対象（この場合に一致）。頂点だけの compact 性に弱めていない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaCompact_smallSourceCosliceVertex

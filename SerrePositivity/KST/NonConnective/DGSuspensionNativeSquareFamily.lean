@@ -116,7 +116,7 @@ theorem dgSuspensionNativeSquareCornerFamily_at (i j : Fin 2)
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgSuspensionNativeSquareCornerFamily R F i j).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaResolvedConnectiveSquare R A (s A).cone) i j := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgKappaResolvedConnectiveSquare R A (s A).cone) i j := by
   have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgSuspensionNativeSquareAt R F A) =
       (dgSuspensionNativeSquareDiagramFamily R F).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _

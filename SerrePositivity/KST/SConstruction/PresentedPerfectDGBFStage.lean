@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStepWeakEquivalence
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFFirstProperties
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationWhisker
 
 /-! # 元の前向き弱比較を保持する実 BF 帰納データ
 概要：Bᵣ→K_(r+1) と Kan 性・全 Hom 自然性・弱比較を同じ帰納データに保持する。

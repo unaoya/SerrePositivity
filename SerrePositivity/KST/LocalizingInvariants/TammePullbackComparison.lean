@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxVerdierReflectiveCompatibility
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientShiftReflective
@@ -85,3 +87,11 @@ lemma square_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
   _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.square_right_of_boundary _ (square_boundary hΦ p q v adj hv)
 
 end SerrePositivity.KST.LocalizingInvariants.TammePullback
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (12)" (partial := stronger-hyp) "仮定：元の小安定圏の正方形が引き戻しで、右脚そのものが充満忠実な右随伴を持つ場合、Sp 値の弱局所化型の Φ（Lean が強い：小圏上で右随伴を与える）。結論：同じ四頂点の Φ 値が指定された射で引き戻し正方形を作る（原典の結論を Sp で実現）。"] _root_.SerrePositivity.KST.LocalizingInvariants.TammePullback.square_boundary
+attribute [cite Tamme "Eq (12)" (partial := stronger-hyp) "仮定：元の小安定圏の正方形が引き戻しで、右脚そのものが充満忠実な右随伴を持つ場合、Sp 値の弱局所化型の Φ（Lean が強い：小圏上で右随伴を与える）。結論：同じ四頂点の Φ 値が指定された射で引き戻し正方形を作る（原典の結論を Sp で実現）。"] _root_.SerrePositivity.KST.LocalizingInvariants.TammePullback.square_isPullback
+attribute [cite Tamme "Thm 18" (partial := stronger-hyp) "仮定：元の小安定圏の正方形が引き戻しで、右脚そのものが充満忠実な右随伴を持つ場合、Sp 値の弱局所化型の Φ（Lean が強い：小圏上で右随伴を与える）。結論：同じ四頂点の Φ 値が指定された射で引き戻し正方形を作る（原典の結論を Sp で実現）。"] _root_.SerrePositivity.KST.LocalizingInvariants.TammePullback.square_boundary
+attribute [cite Tamme "Thm 18" (partial := stronger-hyp) "仮定：元の小安定圏の正方形が引き戻しで、右脚そのものが充満忠実な右随伴を持つ場合、Sp 値の弱局所化型の Φ（Lean が強い：小圏上で右随伴を与える）。結論：同じ四頂点の Φ 値が指定された射で引き戻し正方形を作る（原典の結論を Sp で実現）。"] _root_.SerrePositivity.KST.LocalizingInvariants.TammePullback.square_isPullback

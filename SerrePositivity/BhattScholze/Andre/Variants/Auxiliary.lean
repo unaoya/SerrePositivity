@@ -6,7 +6,7 @@ public import Mathlib.RingTheory.TensorProduct.Maps
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
@@ -19,7 +19,7 @@ public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
-public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
@@ -39,10 +39,10 @@ public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 BS 著者版 Theorem 7.14 と Remark 7.15 に関連する根付き拡大の変種に使う補題を集める。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/FrobeniusPullback`、`PowerRootEnvelope/Initiality`、`PowerRootEnvelope/PerfectionFaithful`、`PowerRootEnvelope/Unconditional/FrobeniusPD`、`PowerRootEnvelope/Unconditional/Localization`、`Variants/ArbitraryFamily`、`Variants/MonicRootedExtension`、`Variants/RootedExtension`。
@@ -50,7 +50,7 @@ BS 著者版 Theorem 7.14 と Remark 7.15 に関連する根付き拡大の変�
 
 universe u v w z
 
-/-! ## André E1・E2：係数還元後の実 pd 包の普遍性（旧 Andre/Variants/PrincipalDPQuotientUniversal.lean）
+/-! ## 係数還元後の実 pd 包の普遍性
 
 ## 概要
 
@@ -170,7 +170,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalDPQuotientUniversal
 
-/-! ## André E1・E2：raw δ 包の係数自己同型比較の合成（旧 Andre/Variants/DeltaDivisionCoefficientAutComposition.lean）
+/-! ## raw δ 包の係数自己同型比較の合成
 
 ## 概要
 
@@ -223,7 +223,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DeltaDivisionCoefficientAutComposition
 
-/-! ## André E1・E2：係数環同型に沿う半線形同型の実底変換（旧 Andre/Variants/SemilinearTensorBaseChange.lean）
+/-! ## 係数環同型に沿う半線形同型の実底変換
 
 ## 概要
 
@@ -315,7 +315,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end SemilinearTensorBaseChange
 
-/-! ## André E1・E2：係数を保つ同型に沿う実 pd 包の源への移送（旧 Andre/Variants/PrincipalPDSourceTransport.lean）
+/-! ## 係数を保つ同型に沿う実 pd 包の源への移送
 
 ## 概要
 
@@ -464,7 +464,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrincipalPDSourceTransport
 
-/-! ## André E1・E2：prism 商の p 正則性を使わないモニック pd 包（旧 Andre/Variants/MonicPerfectPrismPDEnvelope.lean）
+/-! ## prism 商の p 正則性を使わないモニック pd 包
 
 ## 概要
 
@@ -619,7 +619,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPerfectPrismPDEnvelope
 
-/-! ## André E1・E2：正則主商への完全忠実平坦性の下降（旧 Andre/Variants/RegularQuotientCompleteFaithful.lean）
+/-! ## 正則主商への完全忠実平坦性の下降
 
 ## 概要
 
@@ -759,7 +759,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end RegularQuotientCompleteFaithful
 
-/-! ## André E1・E2：完全 δ 化後の任意の同じ生成元商（旧 Andre/Variants/PerfectedDeltaAlgebraQuotientFaithful.lean）
+/-! ## 完全 δ 化後の任意の同じ生成元商
 
 ## 概要
 
@@ -875,7 +875,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectedDeltaAlgebraQuotientFaithful
 
-/-! ## André E1・E2：任意モニック族内の有限部分族の実残余 Tor（旧 Andre/Variants/MonicPrismaticFiniteSubfamilyTor.lean）
+/-! ## 任意モニック族内の有限部分族の実残余 Tor
 
 ## 概要
 
@@ -988,7 +988,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticFiniteSubfamilyTor
 
-/-! ## André E1・E2：任意モニック族の実残余評価の Tor 消滅（旧 Andre/Variants/MonicPrismaticBoundedSupportTor.lean）
+/-! ## 任意モニック族の実残余評価の Tor 消滅
 
 ## 概要
 
@@ -1156,7 +1156,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticBoundedSupportTor
 
-/-! ## André A1-a：完全基底上の入力作用からの基底保存性（旧 Andre/Variants/BoundedPrismInputRigidity.lean）
+/-! ## André A1-a：完全基底上の入力作用からの基底保存性
 
 ## 概要
 
@@ -1191,7 +1191,7 @@ variable {W : OrientedPrism p A} {c : A ⧸ W.ideal →+* S}
 theorem prismHom_over_base_of_input (hW : W.deltaStructure.IsPerfect)
     (X Y : BoundedPrismInput W c) (f : OrientedPrism.Hom X.prism Y.prism)
     (hf : f.quotientMap.comp X.input = Y.input) : f.comp X.base = Y.base := by
-  apply perfectPrismHom_ext_to_bounded_target W hW Y.prism Y.bounded
+  apply _root_.SerrePositivity.BhattScholze.perfectPrismHom_ext_to_bounded_target W hW Y.prism Y.bounded
   rw [OrientedPrism.Hom.quotientMap_comp, ← X.input_base,
     ← RingHom.comp_assoc, hf, Y.input_base]
 
@@ -1223,7 +1223,7 @@ end SerrePositivity.BhattScholze.Andre.BoundedPrismInput
 
 end BoundedPrismInputRigidity
 
-/-! ## André E1・E2：冪零核を持つ商に沿う忠実平坦性（旧 Andre/Variants/FaithfullyFlatNilpotentSquare.lean）
+/-! ## 冪零核を持つ商に沿う忠実平坦性
 
 ## 概要
 
@@ -1278,7 +1278,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end FaithfullyFlatNilpotentSquare
 
-/-! ## André E1・E2：代数の主元完全忠実平坦性と正冪（旧 Andre/Variants/CompletelyFaithfullyFlatPrincipalPower.lean）
+/-! ## 代数の主元完全忠実平坦性と正冪
 
 ## 概要
 
@@ -1367,7 +1367,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end CompletelyFaithfullyFlatPrincipalPower
 
-/-! ## André E1・E2：根付き拡大の基底環同型による移送（旧 Andre/Variants/MonicRootedBaseEquiv.lean）
+/-! ## 根付き拡大の基底環同型による移送
 
 ## 概要
 
@@ -1452,7 +1452,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRootedBaseEquiv
 
-/-! ## André E1・E2：任意の整 perfectoid 基底上の有限モニック根付き拡大（旧 Andre/Variants/FiniteMonicRootedExtension.lean）
+/-! ## 任意の整 perfectoid 基底上の有限モニック根付き拡大
 
 ## 概要
 
@@ -1554,7 +1554,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end FiniteMonicRootedExtension
 
-/-! ## André E1・E2：モニック族の raw Frobenius 除算の初期係数商（旧 Andre/Variants/MonicFrobeniusCoefficient.lean）
+/-! ## モニック族の raw Frobenius 除算の初期係数商
 
 ## 概要
 

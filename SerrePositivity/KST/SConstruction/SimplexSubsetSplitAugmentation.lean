@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitRefinement
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetAt
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInWedge
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceInWedge
 
 /-! # 元の左右部分集合の分割 augmentation
 概要：元の左右部分集合の augmentation を共有頂点で貼り、全体への実射と照合する。

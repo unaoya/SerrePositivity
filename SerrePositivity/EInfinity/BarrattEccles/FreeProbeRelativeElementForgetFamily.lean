@@ -35,7 +35,7 @@ lemma freeProbeRelativeElementPinched_forget_family_arrow :
   dsimp only
   let J := freeProbeRelativeElementIndex A X B
   let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   let eS := (cAlgForgetDerived_sourceIso A).precomp
     (nerveMap ((Functor.const J).obj (freeProbeRelativeElementSource A X)))
   let eB := (cAlgForgetDerived_sourceIso A).precomp

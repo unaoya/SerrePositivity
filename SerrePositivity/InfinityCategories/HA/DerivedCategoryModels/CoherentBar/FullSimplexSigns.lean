@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.FullSimplexRhs
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarSubsetCuts
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarSubsetCuts
 /-!
 概要：全体 HA 右辺を二区間へ分けた際の符号を計算する。
 方針：内部頂点の右側の濃度を既存の tail の濃度公式で求める。

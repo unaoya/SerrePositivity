@@ -24,11 +24,11 @@ def loopSquare (x : Sp.{u} _⦋0⦌) : _root_.SerrePositivity.InfinityCategories
   let s := fiberSquare f
   have h (i : Fin 2) := congrArg
     (fun a : Δ[1] ⟶ Sp.{u} ↦ Sp.{u}.δ i (SSet.yonedaEquiv a)) s.right_edge
-  have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 1 1 = x := by
+  have ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 1 1 = x := by
     rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target]
     exact (h 0).trans ((congrArg (fun a : Sp.{u} _⦋1⦌ ↦ Sp.{u}.δ 0 a)
       (SSet.yonedaEquiv.apply_symm_apply f.edge)).trans f.tgt_eq)
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 1 0 = z.vertex := by
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 1 0 = z.vertex := by
     rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source]
     exact (h 1).trans ((congrArg (fun a : Sp.{u} _⦋1⦌ ↦ Sp.{u}.δ 1 a)
       (SSet.yonedaEquiv.apply_symm_apply f.edge)).trans f.src_eq)

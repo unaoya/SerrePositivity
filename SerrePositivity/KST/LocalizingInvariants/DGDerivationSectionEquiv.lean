@@ -26,13 +26,13 @@ def derivationOfSection (s : A ⟶ algebra A M) (hs : s ≫ projection A M = �
   hom := s.hom ≫ biprod.snd
   unit := by
     rw [← Category.assoc, IsMonHom.one_hom]
-    change (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M) ≫ biprod.snd = 0
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one, Category.assoc, biprod.inl_snd, comp_zero]
+    change (_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.one A M) ≫ biprod.snd = 0
+    rw [_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.one, Category.assoc, biprod.inl_snd, comp_zero]
   leibniz := by
     have hf : s.hom ≫ biprod.fst = 𝟙 A.X := congrArg Mon.Hom.hom hs
     rw [← Category.assoc, IsMonHom.mul_hom, Category.assoc]
-    change (s.hom ⊗ₘ s.hom) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M ≫ biprod.snd = _
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_snd]
+    change (s.hom ⊗ₘ s.hom) ≫ _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul A M ≫ biprod.snd = _
+    rw [_root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_snd]
     simp only [comp_add, tensorHom_comp_tensorHom_assoc, hf, id_tensorHom, tensorHom_id]
 
 def derivationSectionEquiv : Derivation A M ≃ Sections A M where

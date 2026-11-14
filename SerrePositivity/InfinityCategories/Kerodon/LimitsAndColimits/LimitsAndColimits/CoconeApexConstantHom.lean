@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ConstantPrecompositionFactor
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.ConstantPrecompositionFactor
 
 /-!
 概要：元の全余錐間の辺の頂点評価を保持し、その定値 Hom 像を元の頂点変換へ照合する。

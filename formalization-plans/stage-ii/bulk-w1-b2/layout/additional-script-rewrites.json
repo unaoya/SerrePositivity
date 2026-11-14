@@ -1,0 +1,52 @@
+[
+  {
+    "path": "scripts/audit/bhatt_scholze.lean",
+    "edits": [
+      {
+        "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
+        "new": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Existence.IntegralExistence"
+      },
+      {
+        "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
+        "new": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Existence.IntegralExistence"
+      }
+    ]
+  },
+  {
+    "path": "scripts/refactor/check_cleanup_c2.lean",
+    "edits": [
+      {
+        "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedFreeNativeFunctor"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceNativeAction",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeAction"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeFunctor"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceShiftAction",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceShiftAction"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedFreeNativeFunctor"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeAction"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceNativeFunctor"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+        "new": "SerrePositivity.Archive.InfinityCategories.DGKappaDiagnostics.DGKappaPresentedSourceShiftAction"
+      }
+    ]
+  }
+]

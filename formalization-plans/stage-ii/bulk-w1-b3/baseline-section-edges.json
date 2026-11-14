@@ -1,0 +1,137 @@
+[
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalConstantFamily",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalConstantFamily",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SpaceValueHomClass",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SpaceValueHomClass",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointCosliceIsoTransportComparison",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LeftFibrationPrismTransport",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointCosliceIsoTransportComparison",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LeftFibrationPrismTransport",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverUniverseNaturality",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverUniverseNaturality",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftCofinalUniverseLift",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CofinalUniverseLift",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftCofinalUniverseLift",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CofinalUniverseLift",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CartesianSectionsRestrictionEvaluation",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedStrictConeEvaluation",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CartesianSectionsRestrictionEvaluation",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedStrictConeEvaluation",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PointedIntervalTransportVertexComparison",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointedIntervalTransport",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PointedIntervalTransportVertexComparison",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointedIntervalTransport",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingNormalizedOverMap",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingNormalizedOverMap",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallSectionsComparisonEvaluation",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallSectionsComparisonEvaluation",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallUnstraighteningValueTransport",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.UnstraighteningValueTransport",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallUnstraighteningValueTransport",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.UnstraighteningValueTransport",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeCylinderShapeRestriction",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinComparisonNaturality",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeCylinderShapeRestriction",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinComparisonNaturality",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostcompositionVertices",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostcompositionVertices",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreCoconeLeg",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreCoconeLeg",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  },
+  {
+    "from": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableUnstraighteningEvaluationPost",
+    "to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition",
+    "before_from": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableUnstraighteningEvaluationPost",
+    "before_to": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition",
+    "exists_in_frozen_main": true,
+    "source_moved_in_b3": false,
+    "target_moved_in_b3": false
+  }
+]

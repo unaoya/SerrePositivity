@@ -1,0 +1,30 @@
+{
+  "status": "Final decisions after original-environment Lean queries and actual after-metadata checks",
+  "source_rows": 9048,
+  "declaration_references": 2436,
+  "final_row_actions": {
+    "do-not-attach": 6732,
+    "attach": 900,
+    "mixed": 56,
+    "hold-kerodon-review": 831,
+    "keep-native-existing": 520,
+    "hold": 9
+  },
+  "declaration_actions": {
+    "do-not-attach": 538,
+    "attach": 1884,
+    "hold": 14
+  },
+  "unique_attributes": 1883,
+  "attachment_modules": 880,
+  "attachment_relations_in_reference_rows": {
+    "exact": 617,
+    "component": 541,
+    "special": 437,
+    "direction": 91,
+    "stronger-hyp": 198
+  },
+  "native_Kerodon_tags_retained": 672,
+  "Kerodon_partial_rows_not_newly_tagged": 831,
+  "notes": "Every source row links to final reference IDs. Mixed rows retain each decision separately; native/withheld rows without attach references keep their authorized policy."
+}

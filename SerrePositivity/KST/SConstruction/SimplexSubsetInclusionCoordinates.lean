@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetInclusion
 public import SerrePositivity.KST.SConstruction.SimplexSubsetVertexIndex
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceBooleanMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceBooleanMap
 
 /-! # 元の部分集合包含の全内部頂点座標
 概要：元の部分集合包含の cube 作用は、欠けた内部頂点で零、残った内部頂点で元の値。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 public import Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction
 public import Mathlib.CategoryTheory.Adjunction.Limits
@@ -148,3 +150,9 @@ lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifu
         inferInstance hjC (Or.inr hjW))⟩
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.3.1.1" (partial := component) "仮定：三つの抽象モデル圏と二変数 functor（HTT と一致）。結論：cofibration 二つの pushout-product が cofibration で、片方が trivial なら trivial という (a) を正確に表す。IsQuillenBifunctor 自体は (b) の各変数での小余極限保存を課さず、その条件は別の adjunction/PreservesColimits として渡す必要がある。"] _root_.SerrePositivity.Quillen.IsQuillenBifunctor
+attribute [cite HTT "A.3.1.5"] _root_.SerrePositivity.Quillen.IsQuillenBifunctor

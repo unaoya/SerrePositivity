@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
 public import SerrePositivity.KST.SConstruction.DGPerfectRealization
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorTrianglePostcomposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorTrianglePostcomposition
 
 /-!
 概要：元包含・負符号・指定逆回転比較を持つ元上二単体を実 realization で運ぶ。

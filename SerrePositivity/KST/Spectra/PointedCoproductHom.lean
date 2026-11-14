@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CofiberMappingPullback
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FunctionComplexProduct
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Products.FunctionComplexProduct
 public import SerrePositivity.KST.Spectra.GroupCochainHomotopyDiagram
 public import Mathlib.CategoryTheory.Limits.Shapes.Opposites.Products
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products

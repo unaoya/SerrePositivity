@@ -42,7 +42,7 @@ theorem relativeSQuotient_zero_localized_isIso {B C : _root_.SerrePositivity.Inf
     eqToIso (congrArg (fun P : (sConstruction 0 B.obj).Subcomplex => (P : SSet.{u}))
       (relativeSQuotient_zero_eq_top q)) ≪≫ Subcomplex.topIso _
   have hb := initialVertex_toPoint_localized_isIso
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (sConstruction 0 B.obj)).isZero.1
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (sConstruction 0 B.obj)).isZero.1
   have he : e.hom ≫ terminal.from _ = terminal.from _ := terminal.hom_ext _ _
   have hs : IsIso (Q.map (terminal.from (relativeSConstruction q.hom 0 : SSet.{u}))) := by
     rw [← he, Functor.map_comp]

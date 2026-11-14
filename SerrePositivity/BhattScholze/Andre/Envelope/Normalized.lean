@@ -18,10 +18,10 @@ public import Mathlib.LinearAlgebra.TensorProduct.Tower
 BS 著者版 Remark 7.15 の包の比較に使う、正規化した δ 関係商の直極限と忠実平坦性を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/DivisionResidue`、`Envelope/MonicSource`、`Envelope/NormalizedStep`。
@@ -29,7 +29,7 @@ BS 著者版 Remark 7.15 の包の比較に使う、正規化した δ 関係商
 
 universe u v w
 
-/-! ## 有限正規化商の一段を前段商上のモニック冪根添加として実現（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedPowerEquiv.lean） -/
+/-! ## 有限正規化商の一段を前段商上のモニック冪根添加として実現 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedPowerEquiv
 
@@ -93,7 +93,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedPowerEquiv
 
-/-! ## 有限正規化商の標準一段射の自由性と忠実平坦性（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedStepFlat.lean） -/
+/-! ## 有限正規化商の標準一段射の自由性と忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedStepFlat
 
@@ -190,7 +190,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedStepFlat
 
-/-! ## 有限正規化商の標準射の直系（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedTowerMaps.lean） -/
+/-! ## 有限正規化商の標準射の直系 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedTowerMaps
 
@@ -275,7 +275,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedTowerMaps
 
-/-! ## 標準有限商直系の任意二段間の忠実平坦性（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedTowerFlat.lean） -/
+/-! ## 標準有限商直系の任意二段間の忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedTowerFlat
 
@@ -343,7 +343,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedTowerFlat
 
-/-! ## 初期係数商と通常根添加環の比較射（旧 Andre/RootedExtension/Division/DeltaDivisionFirstCoefficientPowerEquiv.lean）
+/-! ## 初期係数商と通常根添加環の比較射
 
 A/(p,d,a_s)を明示し、初期多項式商と通常根添加環の具体的な同型を構成する。
 さらに実際の初期δ剰余を後続変数の多項式環として表示する。
@@ -638,7 +638,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFirstCoefficientPowerEquiv
 
-/-! ## 初期有限正規化商と適切な係数商上の根添加環の比較（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedInitialPowerEquiv.lean） -/
+/-! ## 初期有限正規化商と適切な係数商上の根添加環の比較 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedInitialPowerEquiv
 
@@ -709,7 +709,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedInitialPowerEquiv
 
-/-! ## 適切な係数商上の初期有限正規化商の自由性と忠実平坦性（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedInitialFlat.lean） -/
+/-! ## 適切な係数商上の初期有限正規化商の自由性と忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedInitialFlat
 
@@ -794,7 +794,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedInitialFlat
 
-/-! ## 適切な共通係数商上の全有限正規化商の忠実平坦性（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedBaseFlat.lean） -/
+/-! ## 適切な共通係数商上の全有限正規化商の忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedBaseFlat
 
@@ -877,7 +877,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedBaseFlat
 
-/-! ## 標準有限正規化商から構成した具体的全段環（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedDirectLimit.lean） -/
+/-! ## 標準有限正規化商から構成した具体的全段環 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedDirectLimit
 
@@ -976,7 +976,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedDirectLimit
 
-/-! ## 全段環と有限商直系の共通係数商上の代数射・線形射（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteNormalizedDirectLimitAlgebra.lean） -/
+/-! ## 全段環と有限商直系の共通係数商上の代数射・線形射 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteNormalizedDirectLimitAlgebra
 
@@ -1057,7 +1057,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteNormalizedDirectLimitAlgebra
 
-/-! ## 無限相対自由多項式環から全段正規化環への具体的評価射（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedDirectLimitEvaluation.lean） -/
+/-! ## 無限相対自由多項式環から全段正規化環への具体的評価射 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedDirectLimitEvaluation
 
@@ -1157,7 +1157,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedDirectLimitEvaluation
 
-/-! ## 全段評価射の核と具体的正規化関係イデアル（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedDirectLimitKernel.lean） -/
+/-! ## 全段評価射の核と具体的正規化関係イデアル -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedDirectLimitKernel
 
@@ -1275,7 +1275,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedDirectLimitKernel
 
-/-! ## 実際の全δ剰余イデアルのWitt正規化と全段環の比較（旧 Andre/RootedExtension/Division/DeltaDivisionInfiniteWittNormalization.lean） -/
+/-! ## 実際の全δ剰余イデアルのWitt正規化と全段環の比較 -/
 
 @[expose] public noncomputable section DeltaDivisionInfiniteWittNormalization
 
@@ -1382,7 +1382,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionInfiniteWittNormalization
 
-/-! ## 実際のraw全δ剰余商の共通係数商上の代数表示（旧 Andre/RootedExtension/Division/DeltaDivisionInfiniteWittNormalizationAlgebra.lean） -/
+/-! ## 実際のraw全δ剰余商の共通係数商上の代数表示 -/
 
 @[expose] public noncomputable section DeltaDivisionInfiniteWittNormalizationAlgebra
 
@@ -1450,7 +1450,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionInfiniteWittNormalizationAlgebra
 
-/-! ## 全段正規化環と具体的加群直極限の比較（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedDirectLimitModule.lean） -/
+/-! ## 全段正規化環と具体的加群直極限の比較 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedDirectLimitModule
 
@@ -1519,7 +1519,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedDirectLimitModule
 
-/-! ## BSの具体的全段正規化環の共通係数商上の平坦性（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedDirectLimitFlat.lean） -/
+/-! ## BSの具体的全段正規化環の共通係数商上の平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedDirectLimitFlat
 
@@ -1568,7 +1568,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedDirectLimitFlat
 
-/-! ## 有限正規化商の標準射の共通係数商上のテンソル単射性（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedTensorTransition.lean） -/
+/-! ## 有限正規化商の標準射の共通係数商上のテンソル単射性 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedTensorTransition
 
@@ -1616,7 +1616,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionNormalizedTensorTransition
 
-/-! ## BSの具体的全段環とraw全δ商の共通係数商上の忠実平坦性（旧 Andre/RootedExtension/Division/DeltaDivisionNormalizedDirectLimitFaithfullyFlat.lean） -/
+/-! ## BSの具体的全段環とraw全δ商の共通係数商上の忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaDivisionNormalizedDirectLimitFaithfullyFlat
 

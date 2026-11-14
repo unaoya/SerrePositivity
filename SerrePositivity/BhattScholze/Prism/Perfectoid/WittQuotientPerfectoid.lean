@@ -28,7 +28,7 @@ F7（Fontaine 核進分離性）を仮定しない。
 
 universe u
 
-/-! ## Witt商の標準Fontaine比較写像（旧 Prism/Perfectoid/WittQuotientFontaineComparison.lean）
+/-! ## Witt商の標準Fontaine比較写像
 
 BS 著者版 Theorem 3.10の比較に使う具体的なδ射と商上の同型。
 商の古典的p進完備性は仮定し、台Witt環の同型とは区別する。
@@ -169,7 +169,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientFontaineComparison
 
-/-! ## 第0係数が正則なdistinguished Witt商のperfectoid性（旧 Prism/Perfectoid/WittRegularQuotientPerfectoid.lean）
+/-! ## 第0係数が正則なdistinguished Witt商のperfectoid性
 
 既存のIsIntegralPerfectoidとFontaine核判定を使う具体的な定理。
 商の古典的p完備性は明示的な仮定。一般のpねじれ商やWitt復元はまだ含めない。
@@ -265,7 +265,7 @@ end SerrePositivity.BhattScholze
 
 end WittRegularQuotientPerfectoid
 
-/-! ## 正則Witt商の標準比較射によるFontaine核の生成（旧 Prism/Perfectoid/WittRegularQuotientFontaineKernel.lean）
+/-! ## 正則Witt商の標準比較射によるFontaine核の生成
 
 存在だけでなく、元のdistinguished元dの標準Fontaine像が核を生成すると特定する。
 商の古典的p完備性とd₀の正則性を明示したBS 著者版 Theorem 3.10の部分定理。
@@ -309,7 +309,7 @@ end SerrePositivity.BhattScholze
 
 end WittRegularQuotientFontaineKernel
 
-/-! ## Witt商の標準Fontaine比較射の単射性と同型条件（旧 Prism/Perfectoid/WittQuotientFontaineIso.lean）
+/-! ## Witt商の標準Fontaine比較射の単射性と同型条件
 
 BS 著者版 Theorem 3.10の台環比較に向けた具体的な定理。
 源のd進分離性で単射性を証明し、全射性には標的の核進分離性を明示する。
@@ -464,7 +464,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientFontaineIso
 
-/-! ## 完全prismのWitt表示における一般商のtilt同型（旧 Prism/Perfectoid/WittQuotientTiltEquiv.lean）
+/-! ## 完全prismのWitt表示における一般商のtilt同型
 
 W(k)のd完備性からkのd₀完備性をF5で供給し、F6による全射性と既存の単射性を合成する。
 商のp正則性・d₀正則性・Fontaine核進分離性は要求しない。
@@ -521,7 +521,7 @@ end SerrePositivity.BhattScholze
 
 end WittQuotientTiltEquiv
 
-/-! ## 完備なdistinguished Witt商の一般perfectoid性（旧 Prism/Perfectoid/WittCompleteQuotientPerfectoid.lean）
+/-! ## 完備なdistinguished Witt商の一般perfectoid性
 
 F4/F5/F6の接続。標準Fontaine比較射の全単射性から核を直接移す。
 商のp正則性・第0係数の正則性・F7の核進分離性を仮定しない。

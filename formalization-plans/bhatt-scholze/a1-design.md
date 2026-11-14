@@ -41,7 +41,7 @@
 | Lemma 5.4 | 定理。有限変数、N は余単体的可換環（§10 の段 1）。無限変数は G-A1-15 | `frobeniusTwist_cech_quasiIso`、`frobeniusTwist_cech_quasiIso_infinite` | 余単体的ホモトピーの一般論（§4） | A1-3 |
 | Cor 5.5 | 定理。多項式代数、結晶 prism。(Z_p,(p)) の場合は `hodgeTate_iso_polynomial_Zp` ＝ `hodgeTate_of_deRham_cartier`（§10） | `hodgeTate_iso_crystalline` | Thm 5.2、Cartier 同型、Lemma 4.20 | A1-3 |
 | Constr 6.1 | 定義そのまま（B = A{φ(d)/p}^∧、α、性質 (1)(2)(3)） | `crystallineCover`、`crystallineCoverMap` | Cor 2.39 の r = 1（済）、Lemma 2.24（済）、導来 Nakayama、Tor 振幅 | A1-4 |
-| Prop 6.2 | 定理。一般の r、基底は §0 の範囲 | `hodgeTate_iso_of_crystallineCover` | Constr 6.1、Cor 5.5、Lemma 4.20 | A1-4 |
+| Prop 6.2 | 定理。一般の r、基底は §0 の範囲 | `hodgeTate_iso_of_construction61`（drafts） | Constr 6.1、Cor 5.5、Lemma 4.20 | A1-4 |
 | Thm 6.4 | 不要（多項式・mod p の場合は A1-5、§9） | — | — | — |
 | 結晶 site・RΓ_crys（Thm 5.2 の証明、[Ber06 §III.4]） | **11-07 追加**：最小限で定義（§11） | `CrysOver`・`zariskiTopology`・`crystallineCohomology` | drafts/A1/CrystallineSite | A1-6 |
 | Lemma 2.36 多変数 | 定理。変数の場合：Z_p{x_1,…,x_r, φ(x)/p} は離散・p ねじれなしで pd 包 D_{(x)}(Z_p{x}) | `pdEnvelope_eq_frobeniusDivision` | 像の形は済（`pDivisionFactorialSubring_eq_raw_range`）。p ねじれなしは r = 1 のみ（T2-2） | A1-2 |
@@ -91,6 +91,7 @@ A = Z_p、I = (p)、R = F_p[X_1,…,X_r]、B_0 = Z_p⟨X⟩ = Z_p[X]^∧_p、B =
 ### 2.4 Construction 6.1 の対象
 
 (A,(d)) 向き付き prism で A/p の Frobenius が平坦、A/d が p ねじれなし。
+（Lean の仮定は D77（design-status）：原典の「Frobenius が平坦」を本体で使う形に言い換えたもの。11-12 追記）
 - B := A{φ(d)/p}^∧（r = 1 の Cor 2.39、既存 `Andre/Envelope/PDivision` の形）。Lemma 2.24 で φ(d) = pu（u 単元）、B は (p, φ(d)) 完備ゆえ (p,d) 完備、
   (d) の pd 包の p 完備化で離散・p ねじれなし。(B,(p)) は結晶 prism。
 - α := (A → B) ∘ φ_A : (A,(d)) → (B,(p)) は prism の射（α(d) = φ(d) ∈ pB）。
@@ -165,7 +166,7 @@ A = Z_p、I = (p)、R = F_p[X_1,…,X_r]、B_0 = Z_p⟨X⟩ = Z_p[X]^∧_p、B =
 | G-A1-9 | de Rham 複体の普遍性（§2.1） | なし | Constr 4.9 |
 | G-A1-10 | D(R) で自由加群からの射を H^i の元から持ち上げる | 初等 | Prop 6.2 の η |
 | G-A1-11 | **値が CAlg の RΓ と模型の環構造の一致（D27 の一般論）**：Sheaves 層を E = CAlg_R（E∞-A 代数の ∞ 圏、EInfinity の `CAlg_R`）で使い、環の前層 O_Δ を CAlg 値前層として RΓ を取る（CAlg_R の presentable 性 G12 が要る）。余単体的可換環 C^• の Tot は Barratt–Eccles／Alexander–Whitney で E∞ 代数になり、S3 の補題の CAlg 版で RΓ_CAlg(O_Δ) ≃ Tot C^• が E∞ 代数の同値。その H^* の環構造が §2.2 の cup 積に一致する | EInfinity に Barratt–Eccles・Alexander–Whitney（余鎖の余モノイド）、忘却の極限保存。CAlg_R の presentable 性・余単体的環の Tot の E∞ 構造は未 | D27。A2（Construction 7.6 の可換代数対象）でも要る |
-| G-A1-12 | 普遍向き付き prism（Ex 2.21・3.4）：自由 δ 環の δ(d) での局所化と (p,d) 完備化、有界性、(p,d) 正則、Frobenius の mod p 平坦性、向き付き prism への普遍性 | 自由 δ 環・`DeltaLocalization`・完備化の δ 構造・Frobenius の mod p 自由性は済 | Prop 6.2 (c) |
+| G-A1-12 | 普遍向き付き prism（Ex 2.21・3.4）：自由 δ 環の δ(d) での局所化と (p,d) 完備化、有界性、(p,d) 正則、Frobenius の mod p 平坦性、向き付き prism への普遍性 | 自由 δ 環・`DeltaLocalization`・完備化の δ 構造・Frobenius の mod p 自由性は済 | Prop 6.2 (c) | **済**（11-12 確認：Ex 3.4 は本体で証明済み、`Delta/Distinguished/Universal`・`Prism/Basic/Construction61Frobenius`）
 | G-A1-13 | 底変換関手の合成の性質：Res_{A_0} が (p,d) 完備性と零を保つこと、Tor 振幅の合成、Lemma 4.22 の合成への適用 | HA/DerivedCompletion（2b の後に読む） | Prop 6.2 (c) |
 | G-A1-14 | **行の収縮**（Bhatt–de Jong 2011 Lemma 2.15–2.17）：pd Čech 脈体 D_0^• の余単体的加群 Ω^j_{D_0^•}（j ≥ 1）の収縮可能性。Ω^1 に基底ごとのホモトピーを作り、外冪・テンソル・完備化へ延ばす | なし | §3 の 6（W9-I-13 の訂正） |
 | G-A1-15 | Lemma 5.4 の無限変数版：任意の多項式代数（自由 δ 環 B/p は δ^k(X) で無限個の変数）へ filtered 余極限で延ばす（原典 p.48 の議論、W9-I-16） | なし | §3 の 4・5 |

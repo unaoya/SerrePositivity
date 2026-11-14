@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Smith.Recognition
 public import SerrePositivity.HomotopicalAlgebra.Smith.Completeness
 public import SerrePositivity.HomotopicalAlgebra.Smith.CoproductClosure
@@ -120,3 +122,15 @@ lemma cofibrantlyGeneratedOfSmith [ModelCategory C]
     (smithGenerators_factor I W hIW)
 
 end SerrePositivity.Smith
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.6.10" (partial := stronger-hyp) "仮定：Mathlib locally presentable C、small I、Cof=I.rlp.llp、W の intrinsic accessibility と包含の accessibility、二対三、Cof∩W の pushout/transfinite 閉性、I.rlp⊆W に加え W の retract 閉性（Lean が強い）。結論：指定の三射類 Cof,W,(Cof∩W).rlp に ModelCategory を構成し、small J の CofibrantlyGenerated を得る（一致）。抽象的な構造を新たに構成するので具体的な SSet instance は仮定しない。"] _root_.SerrePositivity.Smith.cofibrantlyGeneratedOfSmith
+attribute [cite HTT "A.2.6.10" (partial := stronger-hyp) "仮定：Mathlib locally presentable C、small I、Cof=I.rlp.llp、W の intrinsic accessibility と包含の accessibility、二対三、Cof∩W の pushout/transfinite 閉性、I.rlp⊆W に加え W の retract 閉性（Lean が強い）。結論：指定の三射類 Cof,W,(Cof∩W).rlp に ModelCategory を構成し、small J の CofibrantlyGenerated を得る（一致）。抽象的な構造を新たに構成するので具体的な SSet instance は仮定しない。"] _root_.SerrePositivity.Smith.modelCategoryOfSmith
+attribute [cite HTT "A.2.6.11" (partial := stronger-hyp) "仮定：抽象モデル圏 C が Mathlib locally presentable、I は small cofibration generators、W の可到達性は intrinsic accessible category と accessible inclusion を持つ形式（Lean の形式的仮定が強い）。結論：既存の combinatorial generation から元の W の accessibility、逆にその W の入力から同じモデル圏の small trivial-cofibration generators を構成する二方向が一致。原典の可呈示性・accessible full subcategory の定義からの入力比較は未供給。"] _root_.SerrePositivity.Smith.cofibrantlyGeneratedOfSmith
+attribute [cite HTT "A.2.6.15" (partial := stronger-hyp) "仮定：原典の W,I に加え Mathlib locally presentable と W の intrinsic/包含の accessibility、W の retract 閉性、Cof∩W の pushout/transfinite 閉性、さらに W の全 Cof=I.rlp.llp に沿う pushout 保存を明示（Lean が強い）。結論：元の Cof,W,(Cof∩W).rlp の combinatorial model を構成し、仮定した最後の閉性がその同じモデルの左固有性となる。この型は perfectness と生成 I の二段 pushout 条件のみから追加の閉性を導くものではない。"] _root_.SerrePositivity.Smith.cofibrantlyGeneratedOfSmith
+attribute [cite HTT "A.2.6.15" (partial := stronger-hyp) "仮定：原典の W,I に加え Mathlib locally presentable と W の intrinsic/包含の accessibility、W の retract 閉性、Cof∩W の pushout/transfinite 閉性、さらに W の全 Cof=I.rlp.llp に沿う pushout 保存を明示（Lean が強い）。結論：元の Cof,W,(Cof∩W).rlp の combinatorial model を構成し、仮定した最後の閉性がその同じモデルの左固有性となる。この型は perfectness と生成 I の二段 pushout 条件のみから追加の閉性を導くものではない。"] _root_.SerrePositivity.Smith.modelCategoryOfSmith
+attribute [cite HTT "A.2.6.9" (partial := stronger-hyp) "仮定：Mathlib locally presentable C、Cof=I.rlp.llp、W は accessible な full arrow subcategory で包含も accessible、二対三と Cof∩W の pushout/transfinite/retract 閉性に加え I.rlp⊆W と W の retract 閉性（Lean が強い）。結論：小さい smithGenerators I W が Cof∩W を生成する（一致）。原典の四条件だけの型はない。"] _root_.SerrePositivity.Smith.smithGenerators
+attribute [cite HTT "A.2.6.9" (partial := stronger-hyp) "仮定：Mathlib locally presentable C、Cof=I.rlp.llp、W は accessible な full arrow subcategory で包含も accessible、二対三と Cof∩W の pushout/transfinite/retract 閉性に加え I.rlp⊆W と W の retract 閉性（Lean が強い）。結論：小さい smithGenerators I W が Cof∩W を生成する（一致）。原典の四条件だけの型はない。"] _root_.SerrePositivity.Smith.smithGenerators_isSmall
+attribute [cite HTT "A.2.6.9" (partial := stronger-hyp) "仮定：Mathlib locally presentable C、Cof=I.rlp.llp、W は accessible な full arrow subcategory で包含も accessible、二対三と Cof∩W の pushout/transfinite/retract 閉性に加え I.rlp⊆W と W の retract 閉性（Lean が強い）。結論：小さい smithGenerators I W が Cof∩W を生成する（一致）。原典の四条件だけの型はない。"] _root_.SerrePositivity.Smith.smithGenerators_left

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndArrowInterpolationExistence
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.SmallDiagramComma
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeExistenceTransport
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 
 /-!
 概要：元の任意の射図式の実 diagram comma の小さい模型は κ-filtered。

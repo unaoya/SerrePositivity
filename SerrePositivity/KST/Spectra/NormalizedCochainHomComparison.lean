@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.ContravariantChainHom
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedCochainComplex
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.NormalizedCochainComplex
 
 /-!
 概要：正規化 cochain と通常の鎖からの Hom のホモトピー同値。

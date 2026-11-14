@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.EdgeApexPrism
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
@@ -12,17 +12,17 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotop
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanInvertible
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Vertices
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentFilteredTotalDetection
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanApexConeTransportEdges
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpecifiedApexLimitConeTransport
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanApexConeTransportEdges
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.SpecifiedApexLimitConeTransport
+public import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteCoherentProductNativeCone
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteCoherentProductTotalMap
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyFunctorProduct
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyOriginalKanComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyProductCone
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteKanProductNative
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CoherentDiagrams.FiniteCoherentProductTotalMap
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.FiniteFamilyFunctorProduct
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.FiniteFamilyOriginalKanComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FiniteFamilyProductCone
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.FiniteKanProductNative
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic
 
 /-!
@@ -50,8 +50,8 @@ variable {B : SSet.{u}} [_root_.SerrePositivity.InfinityCategories.Kerodon.Large
 
 /-- 元の同じ頂点比較の Kan 像を、元の Kan 対象間の指定射に束ねる。 -/
 def finiteFamilyConeApexKanObjectMap :
-    _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A ⟶
-      _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyCoherentProduct G) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A ⟶
+      _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyCoherentProduct G) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyConeApexKanMap G c hc A hA
 
 /-- 元の余極限積全錐を、全脚と同じ slice 代表から得た辺で頂点輸送する。 -/
@@ -59,7 +59,7 @@ def finiteFamilyOriginalColimitConeTransport :
     let Q := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nonemptyFiniteIndexPresentation J
     let F := fun k ↦ G (Q.2.symm (ULift.up k))
     _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.SpecifiedApexLimitConeTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteSiftedCoherentProductNativeCone Q.1 F)
-      (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A)))
+      (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A)))
       (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.edgeApexPrism (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (finiteFamilyConeApexKanObjectMap G c hc A hA))) := by
   let Q := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nonemptyFiniteIndexPresentation J
   let F := fun k ↦ G (Q.2.symm (ULift.up k))
@@ -80,7 +80,7 @@ def finiteFamilyOriginalColimitTransportedCone :=
 /-- 同じ元の比較辺で輸送した全積錐の頂点は、元の評価錐頂点の余極限。 -/
 lemma finiteFamilyOriginalColimitTransportedCone_vertex :
     (finiteFamilyOriginalColimitTransportedCone G c hc A hA).vertex =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A) :=
   _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.kanApexConeTransport_vertex _ (finiteFamilyConeApexKanObjectMap G c hc A hA)
     (finiteFamilyOriginalColimitConeTransport G c hc A hA) rfl
 

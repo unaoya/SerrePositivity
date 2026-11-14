@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.FamilyImage
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaPresentedFreeExtension
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaPresentedFreeExtension
 
 /-!
 概要：κ-small sphere-free 基底の実延長の互換を公開する。

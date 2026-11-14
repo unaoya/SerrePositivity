@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanWhiteheadComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FibrationAllFibers
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FibrationAllFibers
 
 /-!
 概要：全空間と底の実際の同値が Kan fibration の任意の fiber に誘導する射は同値。

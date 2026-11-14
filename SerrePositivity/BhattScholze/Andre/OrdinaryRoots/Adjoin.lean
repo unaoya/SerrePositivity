@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CommutativeAlgebra.Polynomial.MonicRelation
 
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.Algebra.Polynomial.Monic
@@ -27,7 +28,7 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 δ 構造を使わない可換環論として述べる。独立モニック関係の正則列（`Andre/MonicRelationRegularSequence`）は KST が import しているので別ファイルのまま残す。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/JetRegularity`、`Envelope/MonicCandidate`、`Envelope/Normalized`、`Envelope/RootRelation`、`OrdinaryRoots/Family`、`PowerRootEnvelope/DividedPowerPrime`、`PowerRootEnvelope/Varpi`、`Variants/MonicRootedExtension`、`Variants/RootedExtension`。
@@ -35,7 +36,7 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 
 universe u v w
 
-/-! ## André E1：独立変数のモニック関係式（旧 Andre/MonicRelation.lean）
+/-! ## André E1：独立変数のモニック関係式
 
 ## 概要
 
@@ -55,58 +56,6 @@ pd 包との比較や完備化後の忠実平坦性は主張しない。
 ## 使われ方
 
 一元のモニック関係式と、独立変数の有限族を扱う際の最初の正則性入力に使う。
--/
-
-@[expose] public noncomputable section MonicRelation
-
-namespace SerrePositivity.BhattScholze.Andre
-
-/-- 概要：指定変数に課す通常の多項式関係式。
-方針：係数を定数多項式へ写して評価する。
-規約：δ 構造を使わない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一元関係の多変数版。 -/
-def monicRelation {R : Type u} [CommRing R] {σ : Type v}
-    (f : Polynomial R) (s : σ) : MvPolynomial σ R :=
-  f.eval₂ MvPolynomial.C (MvPolynomial.X s)
-
-/-- 概要：指定変数のモニック関係式は多変数多項式環で非零因子。
-方針：指定変数の分離同型でモニックの一変数多項式に移す。
-規約：正次数・素数・δ 構造を仮定しない。
-使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の正則性入力。 -/
-theorem monicRelation_isSMulRegular {R : Type u} [CommRing R] {σ : Type v}
-    (f : Polynomial R) (hf : f.Monic) (s : σ) :
-    IsSMulRegular (MvPolynomial σ R) (monicRelation f s) := by
-  classical
-  let e := (MvPolynomial.renameEquiv R (Equiv.optionSubtypeNe s).symm).trans
-    (MvPolynomial.optionEquivLeft R {t : σ // t ≠ s})
-  have he : e (monicRelation f s) =
-      f.map (MvPolynomial.C : R →+* MvPolynomial {t : σ // t ≠ s} R) := by
-    change e.toRingHom (f.eval₂ MvPolynomial.C (MvPolynomial.X s)) = _
-    rw [Polynomial.hom_eval₂]
-    have hc : e.toRingHom.comp MvPolynomial.C =
-        Polynomial.C.comp (MvPolynomial.C : R →+* MvPolynomial {t : σ // t ≠ s} R) := by
-      ext a
-      simp [e, MvPolynomial.renameEquiv]
-    rw [hc]
-    have hx : e.toRingHom (MvPolynomial.X s) = Polynomial.X := by
-      simp [e, MvPolynomial.renameEquiv]
-    rw [hx]
-    rfl
-  have h := (hf.map (MvPolynomial.C : R →+* MvPolynomial {t : σ // t ≠ s} R)).isRegular.left
-  intro x y hxy
-  apply e.injective
-  apply h
-  have hh := congrArg e hxy
-  simpa only [smul_eq_mul, map_mul, he] using hh
-
-end SerrePositivity.BhattScholze.Andre
-
-end MonicRelation
-
-/-! ## B4-6：任意元族のモニック冪根添加環（旧 Andre/RootedExtension/MonicPowerFamilyCover.lean）
-
-expand作用の自由加群を係数評価で基底変更し、指定した元のn乗根を持つ通常の環を作る。
-この環のperfectoid性や完備性は結論しない。
 -/
 
 @[expose] public noncomputable section MonicPowerFamilyCover
@@ -207,7 +156,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyCover
 
-/-! ## B4-6：通常のモニック冪根添加環の普遍性（旧 Andre/RootedExtension/MonicPowerFamilyUniversal.lean）
+/-! ## 通常のモニック冪根添加環の普遍性
 
 指定した冪根を持つ任意の通常環への、係数と根を保つ一意な写像を構成する。
 完備性・perfectoid性は要求しない。
@@ -348,7 +297,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyUniversal
 
-/-! ## 通常冪根添加環の商表示（旧 Andre/RootedExtension/MonicPowerFamilyPresentation.lean）
+/-! ## 通常冪根添加環の商表示
 
 通常のテンソル積による構成を、実際のモニック関係式による商へ結び付ける。
 完備化やperfectoid性の比較はここでは主張しない。
@@ -485,7 +434,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyPresentation
 
-/-! ## モニック冪根添加の係数商との比較（旧 Andre/RootedExtension/MonicPowerFamilyBaseQuotient.lean）
+/-! ## モニック冪根添加の係数商との比較
 
 既存の係数商・二重商・モニック商表示の同型を合成する。
 BSの有限δ剰余の表示へ適用するための比較。
@@ -496,16 +445,6 @@ BSの有限δ剰余の表示へ適用するための比較。
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 variable (n : ℕ) (σ : Type u) (R : Type v) [CommRing R]
-
-/-- 既存係数商同型と標準商射の合成は係数の商写像である。 -/
-theorem monicPowerFamilyCoefficientQuotient_comp (I : Ideal R) :
-    (MvPolynomial.quotientEquivQuotientMvPolynomial (σ := σ) I).symm.toRingHom.comp
-      (Ideal.Quotient.mk (I.map (MvPolynomial.C : R →+* MvPolynomial σ R))) =
-      MvPolynomial.map (Ideal.Quotient.mk I) := by
-  apply RingHom.ext
-  intro x
-  change MvPolynomial.eval₂Hom (MvPolynomial.C.comp (Ideal.Quotient.mk I)) MvPolynomial.X x = _
-  rw [MvPolynomial.map_eq_eval₂Hom_C_comp]
 
 /-- モニック関係式は係数の商と既存係数商同型で、剰余係数の関係式へ移る。 -/
 theorem monicPowerFamilyRelationIdeal_map_coefficientQuotient (I : Ideal R) (c : σ → R) :
@@ -564,7 +503,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyBaseQuotient
 
-/-! ## André E1：係数商後のモニック関係の正則性（旧 Andre/MonicRelationResidue.lean）
+/-! ## André E1：係数商後のモニック関係の正則性
 
 ## 概要
 
@@ -648,7 +587,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRelationResidue
 
-/-! ## André E1：通常のモニック根添加の自由性（旧 Andre/OrdinaryMonicRoot.lean）
+/-! ## André E1：通常のモニック根添加の自由性
 
 ## 概要
 
@@ -735,7 +674,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end OrdinaryMonicRoot
 
-/-! ## 非零指数の通常冪根関係の正則性（旧 Andre/RootedExtension/MonicPowerFamilyRelationRegularity.lean）
+/-! ## 非零指数の通常冪根関係の正則性
 
 任意の係数環で、指定した変数のモニック冪関係式は非零因子となる。
 δ構造や指数の素数性は要求しない。
@@ -768,7 +707,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyRelationRegularity
 
-/-! ## 通常根添加環上の後続多項式環の自由性と忠実平坦性（旧 Andre/RootedExtension/MonicPowerFamilyPolynomialFlat.lean）
+/-! ## 通常根添加環上の後続多項式環の自由性と忠実平坦性
 
 既存の係数基底と直和の忠実平坦性を使う。零環・任意添字を含む。
 -/
@@ -809,7 +748,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyPolynomialFlat
 
-/-! ## B4-6：通常冪根添加環の完全忠実平坦性（旧 Andre/RootedExtension/Supplement/MonicPowerFamilyCompleteFlat.lean）
+/-! ## 通常冪根添加環の完全忠実平坦性
 
 具体的な自由・忠実平坦の結果を、既存Tor判定と剰余基底変更で接続する。
 対象は未完備の通常環であり、perfectoid性や実完備化の保存は結論しない。

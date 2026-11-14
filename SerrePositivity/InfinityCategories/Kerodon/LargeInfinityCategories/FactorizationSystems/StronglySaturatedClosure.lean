@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.LocalStrongSaturation
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -91,3 +93,12 @@ lemma stronglySaturatedClosure_range_smallGeneration (smallShape : SSet.{u} → 
   ⟨I, edges, rfl⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.4.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsOfSmallStrongGeneration
+attribute [cite HTT "5.5.4.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.stronglySaturatedClosure
+attribute [cite HTT "5.5.4.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.stronglySaturatedClosure_minimal
+attribute [cite HTT "5.5.4.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.stronglySaturatedClosure_stronglySaturated
+attribute [cite HTT "5.5.4.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.subset_stronglySaturatedClosure

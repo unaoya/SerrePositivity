@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
@@ -83,3 +85,11 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInf
 
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.4.2" (partial := component) "仮定：準圏（Lean が弱い：安定性は不要）。結論：presentable なら局所小で、余完備な Ind 模型による presentable 性の判定（Lean が弱い：小余積・hC の局所小性・単一の κ コンパクト生成対象という三条件の判定を与えない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_iff_cocompleteIndEquivalence
+attribute [cite HTT "5.5.3.10" (partial := special) "仮定：presentable C と終対象 x の一点図式（Lean が強い：一般の小図式 p を終対象の一点に限定）。結論：同じ C/x の元の射影が全準圏同値であるため C/x は presentable（この場合に一致）。元の射影の同値は終対象の境界条件から構成でき、別の圏との未供給比較ではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_iff_equivalence
+attribute [cite HTT "5.5.3.11" (partial := special) "仮定：presentable C と始対象 x の一点図式（Lean が強い：p を始対象の一点に限定）。結論：同じ Cx/ の元の射影が全準圏同値なので Cx/ は presentable（この場合に一致）。一般の小図式の下圏の compact 生成性は結論しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_iff_equivalence
+attribute [cite HTT "5.5.3.14" (partial := special) "仮定：presentable fibration p:X→S（Lean が強い：小基底 S は始対象 s を持つ準圏）。結論：同じ全 coCartesian 切断準圏の s での評価が実ファイバー Xs との全準圏同値であるため、同じ切断準圏が presentable（この場合に一致）。一般の小 S の極限や、coCartesian 条件を課さない全切断へは拡張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_iff_equivalence

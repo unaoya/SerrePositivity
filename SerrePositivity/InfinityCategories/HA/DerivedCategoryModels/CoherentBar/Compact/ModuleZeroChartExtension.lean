@@ -36,7 +36,7 @@ lemma dgBarCompactModuleZeroChartExtension_transport (n : ℕ)
       dgBarCompactModuleZeroChartExtension n α y b) :
     _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactPiTransport n e a b := by
   apply _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactModulePiTransport_of_homology_eq n e a b
-  exact congrArg (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.modulePiMooreGroupEquiv W n) (α.injective h)
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.HA.Section1_2_3.modulePiMooreGroupEquiv W n) (α.injective h)
 
 lemma dgBarCompactModuleZeroChartExtension_naturality (f : W ⟶ V) (n : ℕ)
     (α : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleUnderlyingSSet W) n 0 ≃ A)

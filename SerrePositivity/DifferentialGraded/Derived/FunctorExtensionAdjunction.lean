@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
@@ -1425,3 +1427,8 @@ end SerrePositivity.DifferentialGraded
 end
 
 end BimoduleRestrictionEquivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.6.2.17" (partial := special) "仮定：通常の可換環の準同型、または小さい dg 圏の dg 関手（Lean が強い：通常圏と通常の導来圏に限る）。結論：加群の制限に対してテンソルによる拡大が左随伴となり、dg では導来拡大・制限にも随伴を構成する（この仮定での HA の結論の一部に一致）。一般の左テンソル ∞ 圏は含まれない。"] _root_.SerrePositivity.DifferentialGraded.dgDerivedExtensionRestrictionAdjunction

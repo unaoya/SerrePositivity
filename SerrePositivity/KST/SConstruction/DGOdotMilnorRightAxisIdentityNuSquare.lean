@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 方針：同じ左辺の終点を読む。規約：零圏へ置換しない。
 使われ方：固定 ν の零角認証。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_zero_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d) 0 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R (dgOdotMilnorRightAxisIdentityBaseInput R d)) := by
   have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target (dgOdotMilnorRightAxisIdentityNullSquare R d)
   let le : (dgKInputInfinity.{u, u + 1} R).Edge
@@ -38,9 +38,9 @@ lemma dgOdotMilnorRightAxisIdentityNullSquare_zero_vertex :
 規約：対象別収縮の存在だけでは代用しない。使われ方：実面の零角条件。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_zero :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputNu R) 0 1)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputNu R) 0 1)) := by
   change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject ((dgKInputNu R).app _
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d) 0 1)))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d) 0 1)))
   rw [dgOdotMilnorRightAxisIdentityNullSquare_zero_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R _
 
@@ -49,7 +49,7 @@ lemma dgOdotMilnorRightAxisIdentityNullSquare_zero :
 規約：完備化後射影の認証とは別。使われ方：完備化付き実面の零角。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_perfect_zero :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (perfectStableObject
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
   have h := dgOdotMilnorRightAxisIdentityNullSquare_zero R d
   rw [← dgKInputPerfectNu_inclusion R] at h
   exact h

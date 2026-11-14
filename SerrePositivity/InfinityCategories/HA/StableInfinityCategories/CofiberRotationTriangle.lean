@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationSign
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberTriangle
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ShiftAdditive
@@ -24,7 +26,7 @@ local instance : Preadditive X.HomotopyCategory := _root_.SerrePositivity.Infini
 /-- 概要：回転列の第三射は一回シフトとの比較後も元の第一射の負のシフトとなる。
 方針：懸垂に値を取る符号の式を一回シフトとの自然同型で移す。
 規約：始点の厳密な等号による輸送を含める。使われ方：三角形同型の第三の可換式。 -/
-lemma CofiberRotationRectangle.triangle_mor₃_eq_neg_shift {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X}
+lemma CofiberRotationRectangle.triangle_mor₃_eq_neg_shift {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X}
     (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
     r.suspensionSquare.suspensionFunctorObjIso.hom ≫
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle r.rotatedZeroTriangle r.rotated_isCofiber).mor₃ ≫
@@ -54,8 +56,8 @@ lemma CofiberRotationRectangle.triangle_mor₃_eq_neg_shift {t : _root_.SerrePos
 /-- 概要：回転長方形の右面の cofiber 三角形は元の cofiber 三角形の回転と同型。
 方針：最初の二対象を等号で輸送し、最後を懸垂から一回シフトへ移す。
 規約：第三の可換式には回転接続射の負号を使う。使われ方：TR2 の順方向。 -/
-def CofiberRotationRectangle.triangleIsoRotate {t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X}
-    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
+def CofiberRotationRectangle.triangleIsoRotate {t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X}
+    (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle t) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle r.rotatedZeroTriangle r.rotated_isCofiber ≅ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht).rotate := by
   let e₁ := eqToIso (congrArg SSet.HomotopyCategory.mk r.rotated_source)
   let e₂ := eqToIso (congrArg SSet.HomotopyCategory.mk r.rotated_middle)
@@ -97,3 +99,8 @@ def CofiberRotationRectangle.triangleIsoRotate {t : _root_.SerrePositivity.Infin
 
 end
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.13"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle.triangleIsoRotate

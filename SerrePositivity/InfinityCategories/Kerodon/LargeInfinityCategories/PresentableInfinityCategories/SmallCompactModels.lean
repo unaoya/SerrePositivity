@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallCompactFamilies
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallFamilySaturation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Subcategory
@@ -84,3 +86,11 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfin
 
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.12"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactModel
+attribute [cite HTT "5.4.2.11" (partial := stronger-hyp) "仮定：C が κ-accessible（Lean が強い：ある濃度で accessible であるだけでなく同じ指定 κ を要求）。結論：同じ κ-compact 全部分準圏が小準圏と全同値（この場合に一致）。任意の κ に対する一般の accessibility からの回収は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactModel
+attribute [cite HTT "5.4.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactModel
+attribute [cite HTT "5.4.2.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactModel

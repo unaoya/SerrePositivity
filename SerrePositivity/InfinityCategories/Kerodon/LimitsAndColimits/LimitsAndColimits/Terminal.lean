@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OverIso
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.HTT.Section1_2_9.OverIso
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.HomotopyRecovery
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalMappingSpace
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
@@ -57,8 +59,8 @@ lemma nerveVertex_isTerminal (ht : IsTerminal t) : _root_.SerrePositivity.Infini
   have hi : IsIso (nerveMap (Over.forget t)) :=
     nerveFunctor.map_isIso (overForgetIsoOfTerminal ht).hom
   have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint t) =
-      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso t).inv ≫ nerveMap (Over.forget t) := by
-    rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection, Iso.inv_hom_id_assoc]
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso t).inv ≫ nerveMap (Over.forget t) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso_projection, Iso.inv_hom_id_assoc]
   have hq : IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint t)) := by rw [he]; infer_instance
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_iff_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex t)).2
   exact @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isIso_trivialKanFibration _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint t)) hq
@@ -83,3 +85,8 @@ def isTerminalOfNerveVertex (h : _root_.SerrePositivity.InfinityCategories.Kerod
 lemma nerveVertex_isTerminal_iff : Nonempty (IsTerminal t) ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex t) :=
   ⟨fun ⟨h⟩ ↦ nerveVertex_isTerminal h, fun h ↦ ⟨isTerminalOfNerveVertex h⟩⟩
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.2.12.7" (partial := component) "仮定：通常圏 C と t（HTT と一致）。結論：IsTerminal t の存在 iff nerveVertex t が strong terminal vertex であるという終対象の部分を得る。始対象側と H-enriched hN(C) の terminal 定義との比較は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveVertex_isTerminal_iff

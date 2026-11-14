@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.ExtendedSourceSliceInput
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.InputCoconeNaturality
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullSubcomplexCoconeLift
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FullSubcomplexCoconeLift
 
 /-!
 概要：指定 compact 始点を含む全入力の余錐を元の under 図式の余錐に戻す。

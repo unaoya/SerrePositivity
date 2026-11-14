@@ -39,17 +39,17 @@ theorem cofiberStableEdges_twoOfThree (P : Set (X _⦋0⦌)) (τ : Δ[2] ⟶ X) 
   let t := d.second.rightZeroTriangle
   have h₂ : SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ τ) ∈
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {z | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P z} ↔
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 0 0) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 0 0) := by
     rw [d.last_source]
     exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_mem_iff P s
   have h₁ : SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ τ) ∈
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {z | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P z} ↔
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 0) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 0) := by
     rw [d.last_middle]
     exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_mem_iff P d.compositeCofiberSquare
   have h₀ : SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ τ) ∈
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {z | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P z} ↔
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex t.square 1 1) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex t.square 1 1) := by
     rw [d.last_target]
     exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_mem_iff P d.nextCofiberSquare
   refine ⟨fun hf hg => h₁.mpr ?_, fun hf hc => h₀.mpr ?_, fun hg hc => h₂.mpr ?_⟩

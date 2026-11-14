@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.FreeDegeneraciesCalculations
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexConeVertex
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexConeVertex
 
 /-!
 # 標準単体の自由な退化の標準形への零点の追加

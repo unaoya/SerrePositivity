@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.Monoidal
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.Free
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.Symmetric
@@ -843,3 +845,9 @@ end SerrePositivity.MonoidalBalancedTensor
 end
 
 end BalancedTensorFreeAssociator
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.8.4.11" (partial := component) "仮定：通常のモノイダル圏の内部モノイド A（Lean が強い：左加群と右外部作用の版。モノイダル opposite により左右を交換できる）。結論：自由忘却随伴を構成し、自由対象 (A⊗X) の Y による右テンソルを A⊗(X⊗Y) と自然に同定する（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の相対随伴と coherent な線型関手の比較は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.freeTensorIso
+attribute [cite HA "4.8.4.11" (partial := component) "仮定：通常のモノイダル圏の内部モノイド A（Lean が強い：左加群と右外部作用の版。モノイダル opposite により左右を交換できる）。結論：自由忘却随伴を構成し、自由対象 (A⊗X) の Y による右テンソルを A⊗(X⊗Y) と自然に同定する（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の相対随伴と coherent な線型関手の比較は含まれない。"] _root_.SerrePositivity.MonoidalBalancedTensor.freeTensor_naturality

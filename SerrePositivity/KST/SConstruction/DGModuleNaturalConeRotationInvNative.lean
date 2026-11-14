@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInvComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：同じ実全厳密回転逆を native dg nerve の全関手同型へ送る。

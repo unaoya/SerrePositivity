@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberTriangle
 
 /-! # Cofiber 列の像で定義する distinguished triangle
@@ -19,14 +21,14 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：三角圏の公理は別途必要。使われ方：将来の Pretriangulated の distinguishedTriangles。 -/
 def cofiberDistinguishedTriangles (X : SSet.{u}) [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :
     Set (Triangle (hoFunctor.obj X)) :=
-  {T | ∃ (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t), Nonempty (T ≅ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht)}
+  {T | ∃ (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t), Nonempty (T ≅ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht)}
 
 /-- 概要：cofiber 列から構成した三角形は指定した集合に属する。
 方針：同じ三角形の恒等同型を使う。
 規約：これは TR1 全体ではない。使われ方：distinguished の基本的な代表。 -/
 lemma cofiberTriangle_mem_cofiberDistinguishedTriangles {X : SSet.{u}}
     [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) :
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence t) :
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht ∈ cofiberDistinguishedTriangles X := ⟨t, ht, ⟨Iso.refl _⟩⟩
 
 /-- 概要：cofiber の像として指定した三角形の集合は同型に閉じている。
@@ -47,3 +49,9 @@ lemma cofiberDistinguishedTriangles_iso_iff {X : SSet.{u}} [Quasicategory X] [_r
   ⟨mem_cofiberDistinguishedTriangles_of_iso e, mem_cofiberDistinguishedTriangles_of_iso e.symm⟩
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.11" (partial := stronger-hyp) "仮定：安定準圏 X（Lean が強い：HA の定義は点付きで余ファイバーがあればよい）。結論：hX で余ファイバー正方形から得た三角形に同型なものの集合（一致）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberDistinguishedTriangles
+attribute [cite HA "1.1.2.14" (partial := stronger-hyp) "仮定：安定準圏 X（Lean は IsStable を要求。HA の表現は点付き性・余ファイバー・懸垂同値）。結論：余ファイバー三角形と整数シフトを使う hX の三角圏構造（一致）。HA の形で仮定を与える入口は型にない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberDistinguishedTriangles

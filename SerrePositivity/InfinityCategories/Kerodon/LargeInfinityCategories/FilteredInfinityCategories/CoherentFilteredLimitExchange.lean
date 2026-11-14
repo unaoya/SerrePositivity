@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeEvaluation
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorVertexCone
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FunctorCoconeEvaluation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorVertexCone
 
 /-!
 概要：任意の形状について、一般 coherent filtered 余極限と極限の交換を定式化する。

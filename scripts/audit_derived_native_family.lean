@@ -16,8 +16,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativeMoritaFamily,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativePFamily,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaNativeMoritaFamily,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaNativePFamily,
     `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureNativeComparison,
     `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.NativeFullRestriction,

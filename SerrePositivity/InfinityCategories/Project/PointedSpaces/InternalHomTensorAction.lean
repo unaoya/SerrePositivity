@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorExchangeCoherence
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.TensorExchangeCoherence
 public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget
 
 /-!

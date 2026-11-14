@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLiftFillers
 
 /-!
 # 小さい比較空間の宇宙liftを値として大きいパラメータ上の指定族を相対延長する

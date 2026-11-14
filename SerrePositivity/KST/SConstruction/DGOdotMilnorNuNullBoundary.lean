@@ -40,18 +40,18 @@ variable (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategorie
 方針：元の全単体を保つ提示と同じ実零角の頂点式で照合する。
 規約：別の零角を選び直さない。使われ方：零角の全図式比較への入力。 -/
 def dgOdotMilnorNuNullSquareZeroVertexIso :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1) := by
-  have hs : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1 =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1) := by
+  have hs : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1 =
       perfectStableVertex _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u + 1} perfectZeroCategory_isIdempotentComplete := by
     apply Subtype.ext
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (perfectVerdierSquare _ ≫ perfectStableInfinityInclusion) 0 1 = _
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (perfectVerdierSquare _ ≫ perfectStableInfinityInclusion) 0 1 = _
     rw [perfectVerdierSquare_inclusion]
     exact (perfectVerdierRawSquare_vertices (dgOdotMilnorNuPerfectSequence R d h)).2.2.2
-  have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1 =
+  have ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1 =
       perfectStableVertex (Z) (hZ) := by
     change (dgKInputPerfectNu R).app _
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1) = _
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1) = _
     rw [dgOdotMilnorPerfectNullSquare_zero_vertex, dgKInputPerfectNu_vertex]
   exact eqToIso (congrArg HomotopyCategory.mk hs) ≪≫
     dgOdotMilnorNuNullZeroVertexIso R d ≪≫ (eqToIso (congrArg HomotopyCategory.mk ht)).symm
@@ -65,8 +65,8 @@ def dgOdotMilnorNuNullSquareZeroBoundary : _root_.SerrePositivity.InfinityCatego
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (pointFunctorEvaluationIso
     perfectStableInfinity.{u + 1})).isQCatEquivalence.isFullyFaithful.preimageVertexIso
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1)
   exact dgOdotMilnorNuNullSquareZeroVertexIso R d h
 
 /-- 概要：同じ実 ν 核面に対する包含・商・零角の指定三境界。

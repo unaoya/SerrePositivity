@@ -39,7 +39,7 @@
 <tr><td>写像空間 \(\mathrm{Map}(x,y)\)</td><td>右 pinched Hom（Kerodon §4.6.5）</td><td><a href="../../../SerrePositivity/InfinityCategories/PinchedHom/Basic.lean">PinchedHom/Basic</a></td></tr>
 <tr><td>終対象</td><td><code>IsTerminalVertex</code></td><td><a href="../../../SerrePositivity/InfinityCategories/Core/Terminal.lean">Core/Terminal</a></td></tr>
 <tr><td>錐・極限</td><td><code>JoinCone</code>、<code>IsLimitCone</code></td><td><a href="../../../SerrePositivity/InfinityCategories/Core/Limit.lean">Core/Limit</a></td></tr>
-<tr><td>余極限</td><td><code>IsColimitCone</code></td><td><a href="../../../SerrePositivity/InfinityCategories/Stable/Cocone.lean">Stable/Cocone</a>（注意：R2）</td></tr>
+<tr><td>余極限</td><td><code>IsColimitCone</code></td><td><a href="../../../SerrePositivity/InfinityCategories/Stable/Cocone.lean">Stable/Cocone</a></td></tr>
 </table></div>
 
 <h3>極限の定義</h3>
@@ -145,24 +145,7 @@ def IsLimitCone {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : Prop :=
 </ul>
 
 <h2>5. リファクタの候補</h2>
-<p>ここでは候補を挙げるだけにする。実施するかどうかは、該当する章を読んでから決める。</p>
-
-<div class="box refactor">
-<p class="label">R1　ディレクトリ名と層の不一致</p>
-<p>F1・F1B・F2 はレーン名で、F1 と F1B は互いに 64 回・119 回 import し合っている。数学的な主題（例：<code>Fibrations/</code>、<code>Straightening/</code>、<code>KanExtension/</code>、<code>Presentable/</code>）で分け直す案がある。ただしファイル数が数千あり、並行作業との衝突が大きいので、レーンが止まっている部分から段階的に行うのが現実的。</p>
-</div>
-<div class="box refactor">
-<p class="label">R2　基本定義の置き場所</p>
-<p><code>IsColimitCone</code> が Stable/Cocone に、<code>IsCocartesianEdge</code> が F1/CartesianEdge にある。<code>IsLimitCone</code>（Core/Limit）や Core の Cocartesian* と並べるべきもの。Core → Stable の依存を生む原因になりやすい。</p>
-</div>
-<div class="box refactor">
-<p class="label">R3　基盤から応用への依存</p>
-<p>HomotopyLimits は KST.Spectra を 25 回 import している。BF スペクトルの模型など、本当は基盤に属する部分が KST に置かれている可能性が高い。</p>
-</div>
-<div class="box refactor">
-<p class="label">R4　細かすぎるファイル分割</p>
-<p>平均 70 行で、入口ファイルの import 列が目次の役目を果たしていない。章ごとに「公開する主定理」と「途中の補題」を分け、途中の補題をまとめる余地がある。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>6. この後の読み順</h2>
 <ol>

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PreservedCoconeGluing
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.PushoutCommonExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.PushoutCommonExtension
 
 /-!
 概要：部分図式と点 span の余極限保存から、元の形状 pushout の余極限保存を導く。

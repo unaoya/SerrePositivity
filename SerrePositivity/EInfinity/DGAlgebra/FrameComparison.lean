@@ -39,8 +39,8 @@ lemma hammock_isLocalization :
 規約：追加の分解仮定なし。使われ方：Sp の cofibrant 源局所化の版。 -/
 lemma cofibrantHammock_isLocalization :
     letI _modelInst := modelCategory R
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R))))
-      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R))))
+      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R)))) := by
   let _modelInst := modelCategory R
   have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
   exact modelCofibrantHammock_isLocalization (rightFrameFamily R)

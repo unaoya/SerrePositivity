@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LiftedConePointedRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.LiftedConePointedRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SpacePointLimitDetection
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceLimitShapes
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.SpaceLimitShapes
 
 /-!
 概要：元の表現可能前層による全極限錐の保存を、像の極限の存在から証明する。

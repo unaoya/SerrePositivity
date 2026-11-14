@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PastingLeftAttachment
 
 /-! # 押し出し四角形の貼り合わせ
@@ -43,3 +45,8 @@ lemma isPushoutSquare_pasting_cancel_left {X : SSet.{u}} [Quasicategory X]
   (isPushoutSquare_pasting_iff F hleft).mpr houter
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.4.2.1"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPushoutSquare_pasting_iff

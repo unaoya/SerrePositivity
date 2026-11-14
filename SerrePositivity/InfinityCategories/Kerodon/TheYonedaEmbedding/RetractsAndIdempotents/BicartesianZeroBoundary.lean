@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Retracts
 
 /-- 元の下辺射影は、同じ元の全四角形の正次元境界を全て厳密に充填する。 -/
 lemma bicartesianZeroBottomProjection_hasLiftingProperty_boundary (X : SSet.{u})
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] (n : ℕ) :
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] (n : ℕ) :
     HasLiftingProperty (boundary (n + 1)).ι (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection X) := by
   constructor
   intro a b sq
@@ -104,7 +104,7 @@ lemma bicartesianZeroBottomProjection_hasLiftingProperty_boundary (X : SSet.{u})
 
 /-- 元の下辺射影は全写像空間で充満忠実。標的の安定性は不要。 -/
 lemma bicartesianZeroBottomProjection_isFullyFaithful (X : SSet.{u})
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection X) :=
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection X) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ _ (bicartesianZeroBottomProjection_hasLiftingProperty_boundary X)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents

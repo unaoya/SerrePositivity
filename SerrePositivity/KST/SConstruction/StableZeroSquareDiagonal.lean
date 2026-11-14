@@ -44,7 +44,7 @@ lemma stableSquareDiagonalMap_diagram :
 規約：元零角を保持。使われ方：元共有対角の全零性。 -/
 lemma stableSquareUpperTriangle_middle :
     (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ f)).obj ⟨ULift.up (1 : Fin 3)⟩ =
-      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex f 0 1) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex f 0 1) := by
   let t := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{u + 1} 0)
   have hn := NatTrans.naturality_apply f
     (SimplexCategory.const ⦋0⦌ ⦋2⦌ (1 : Fin 3)).op t
@@ -59,9 +59,9 @@ lemma stableSquareUpperTriangle_middle :
 /-- 概要：元零角を通る四角形の対角完全射は全零。
 方針：元上二単体の中間対象を同じ零角へ照合して零対角補題を使う。
 規約：元四角形・元対角を保持。使われ方：上下共有対角の比較一意性。 -/
-lemma stableSquareDiagonalMap_zero (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex f 0 1)))
+lemma stableSquareDiagonalMap_zero (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex f 0 1)))
     (x : ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ f)).obj ⟨ULift.up (0 : Fin 3)⟩).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableSquareDiagonalMap f).hom.app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableSquareDiagonalMap f).hom.app (Opposite.op ⦋0⦌) x) := by
   apply stableTriangleDiagonalMap_zero
   rw [stableSquareUpperTriangle_middle]
   exact hz

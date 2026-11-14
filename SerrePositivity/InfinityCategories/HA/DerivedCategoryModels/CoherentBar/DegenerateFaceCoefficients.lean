@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.DegenerateFaces
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.NormalizedHomotopyImage
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarFaceDifferential
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Faces.DGCoherentBarFaceDifferential
 /-!
 概要：退化単体の非例外面の正規化像は零で、同じ面ラベルの係数は一致する。
 方針：退化標的への全 Hom の消滅と、D の同じ単位 shift ブロックへの異種等号を使う。

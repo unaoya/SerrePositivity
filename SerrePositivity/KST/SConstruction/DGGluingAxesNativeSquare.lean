@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesCommonCells
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedYonedaExact
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Pretriangulated
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.DGPretriangulatedYonedaExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Pretriangulated
 
 /-! # 元の dg gluing の実二軸押し出し四角形
 概要：元の二軸二セルを共通宇宙で貼り、同じ Yoneda 像から実押し出し性を反映する。

@@ -38,7 +38,7 @@ instance first_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.Limit
   infer_instance
 
 lemma fromD_first_zero (d : D.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((LaxInclusion.fromD p q ≫ first p q r).app (Opposite.op ⦋0⦌) d) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((LaxInclusion.fromD p q ≫ first p q r).app (Opposite.op ⦋0⦌) d) := by
   let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (LaxInclusion.fromDAdjunction p q).counitHom
   let J := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (LaxInclusion.fromD p q)
   let K := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp J r.hom
@@ -62,7 +62,7 @@ lemma fromD_first_zero (d : D.obj _⦋0⦌) :
       (ofHomotopy_component_edge K d)).mpr
     exact hc
   have hz := CofiberRotation.inverseRotation_source_zero Q.obj _ ha
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((LaxInclusion.fromD p q ≫ arrow p q r) ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((LaxInclusion.fromD p q ≫ arrow p q r) ≫
     CofiberRotation.inverseRotation Q.obj ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) d)
       at hz

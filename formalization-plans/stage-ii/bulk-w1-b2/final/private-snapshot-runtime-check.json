@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "ordinary_private_user_name": "Shared.secret",
+  "distinct_defining_modules": [
+    "A",
+    "B"
+  ],
+  "legacy_comparison": "PASS",
+  "owned_comparison": "FAIL",
+  "owned_changes": [
+    {
+      "name": "chosen",
+      "module": "C",
+      "parent": "chosen",
+      "change": "body",
+      "before_sha256": "7e5a1152a82ce447fd9c0244c922e22530bc6cc6368ac7eda85cc8b32c74ffd9",
+      "after_sha256": "b38c7155c6ff568865883b79652912baa83daf341481760ccd3ec785a86ba060"
+    }
+  ],
+  "steps": [
+    {
+      "phase": "compile-A",
+      "rc": 0,
+      "seconds": 0.18090608343482018
+    },
+    {
+      "phase": "compile-B",
+      "rc": 0,
+      "seconds": 0.18034454062581062
+    },
+    {
+      "phase": "compile-before",
+      "rc": 0,
+      "seconds": 0.8353332914412022
+    },
+    {
+      "phase": "capture-before-legacy",
+      "rc": 0,
+      "seconds": 2.380950540304184
+    },
+    {
+      "phase": "capture-before-owned",
+      "rc": 0,
+      "seconds": 1.119058458134532
+    },
+    {
+      "phase": "compile-after",
+      "rc": 0,
+      "seconds": 0.8384784609079361
+    },
+    {
+      "phase": "capture-after-legacy",
+      "rc": 0,
+      "seconds": 1.1266992911696434
+    },
+    {
+      "phase": "capture-after-owned",
+      "rc": 0,
+      "seconds": 1.10477545671165
+    }
+  ],
+  "seconds": 10.705437418073416,
+  "only_compared_mathematical_declaration": "C.chosen; fixture elaborator is intentionally changed to choose a different private kernel constant"
+}

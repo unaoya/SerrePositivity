@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingHomology
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgZeroDegreeDiscrete
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgVertexPresentation
@@ -27,7 +29,7 @@ variable (A : Type u) [CommRing A] [HasDerivedCategory.{w} (ModuleCat.{u} A)]
 lemma cAlgUnderlyingDisc_of_iso {x y : (CAlg_R A) _⦋0⦌} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y)
     (h : cAlgUnderlyingDisc A x) : cAlgUnderlyingDisc A y := by
   let e' := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory
-    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).mapIso
+    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).mapIso
       (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (cAlgForgetDerived A))
   intro i hi
   exact (h i hi).of_iso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor A i).mapIso e').symm
@@ -63,3 +65,9 @@ theorem cAlgUnderlyingDisc_iff_discrete (x : (CAlg_R A) _⦋0⦌) :
     exact cAlgUnderlyingDisc_of_iso A e.symm (discreteCAlgEmbedding_underlyingDisc A B)
 
 end SerrePositivity.EInfinity.BarrattEccles
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.1.0.3" (partial := component) "仮定：通常の可換環 R 上の実 CAlg_R の頂点（Lean が強い：この模型の可換代数の場合）。結論：非零次数の基礎ホモロジーが消える頂点が通常の可換 R 代数の本質像にあることと同値となる（離散可換対象の本質像の部分に一致）。全 k の環スペクトル、全充満性、圏同値は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.cAlgUnderlyingDisc_iff_discrete
+attribute [cite HA "7.1.3.18" (partial := component) "仮定：可換環 R 上の構成済み実 CAlg_R と HasDerivedCategory（Lean が強い：Barratt–Eccles の dg 模型と通常環上の可換代数の場合）。結論：離散な基礎導来像を持つ頂点が通常の可換 R 代数の離散埋め込みの本質像にあることを同値で判定し、忘却後の離散入力を同定する（本質像の対象についての部分に一致）。埋め込みの全充満性、π₀ の環値関手による圏同値、一般 k の結論は含まれない。"] _root_.SerrePositivity.EInfinity.BarrattEccles.cAlgUnderlyingDisc_iff_discrete

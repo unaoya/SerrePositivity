@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaFlat
+public import SerrePositivity.BhattScholze.Prismatic.Envelopes.CompletedFreeDeltaFlat
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism
 

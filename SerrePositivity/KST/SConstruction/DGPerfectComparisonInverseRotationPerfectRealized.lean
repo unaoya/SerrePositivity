@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealized
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfectRealization
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFullSubcategoryNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
 
 /-!

@@ -19,7 +19,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 
 /-- 同じ実四角形と全単体の図式を保つ普遍性の比較。 -/
 lemma zeroCornerSquare_isPushout_of_sourcePoint_initial {X : SSet.{u}}
-    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] {x : X _⦋0⦌}
+    [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] {x : X _⦋0⦌}
     (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroCornerSquareSource X) x) _⦋0⦌)
     (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex z) (F : Δ[1] ⊗ Δ[1] ⟶ X)
     (hF : z.val.val = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F := by

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanCospanPathRectification
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.KanCospanPathRectification
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeMappingShapePushout
 
 /-!

@@ -32,7 +32,7 @@ lemma uncurry_vertex_restriction {A B C : SSet.{u}} (F : B ⟶ (ihom A).obj C) (
 /-- 概要：固定零 subobject の右辺の族を頂点で制限すると元の正方形の右辺。
 方針：uncurry の頂点制限と内部 Hom の前合成の式。
 規約：実際の射の等号。使われ方：元の右辺の可逆性の照合。 -/
-lemma zeroSourceCofibersRightPrism_vertex {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C)
+lemma zeroSourceCofibersRightPrism_vertex {C : SSet.{u}} (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C)
     (b : (zeroSourceCofibers z) _⦋0⦌) :
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const b) ≫ zeroSourceCofibersRightPrism z =
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
@@ -44,17 +44,17 @@ lemma zeroSourceCofibersRightPrism_vertex {C : SSet.{u}} (z : _root_.SerrePositi
 /-- 概要：固定零 subobject の cofiber 図式の右辺は h C の同型。
 方針：subobject は指定零対象、左上角も零対象なので押し出しの右辺の判定を使う。
 規約：元の右辺の同型性。使われ方：θ の点ごとの可逆性。 -/
-lemma zeroSourceCofibersRight_isIso {C : SSet.{u}} [Quasicategory C] (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C)
+lemma zeroSourceCofibersRight_isIso {C : SSet.{u}} [Quasicategory C] (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C)
     (b : (zeroSourceCofibers z) _⦋0⦌) :
-    IsIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
+    IsIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
       (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).app (Opposite.op ⦋0⦌)
         ((zeroSourceCofibersι z).app (Opposite.op ⦋0⦌) b)))) := by
   let v := (zeroSourceCofibersι z).app (Opposite.op ⦋0⦌) b
   have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
   have hs := ConcreteCategory.congr_hom (NatTrans.congr_app
     (zeroSourceCofibersι_source z) (Opposite.op ⦋0⦌)) b
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 0 0 = z.vertex := by
-    have he : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 0 0 =
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 0 0 = z.vertex := by
+    have he : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 0 0 =
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := C)
           (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm 0)).app
             (Opposite.op ⦋0⦌) v.val := functorVertexEquiv_symm_evaluate _ _
@@ -72,7 +72,7 @@ lemma zeroSourceCofibersRight_isIso {C : SSet.{u}} [Quasicategory C] (z : _root_
 方針：頂点制限を元の右辺に同定し、そのホモトピー類の同型性を使う。
 規約：指定された辺そのものの可逆性。使われ方：固定始点の矢印への反映。 -/
 lemma zeroSourceCofibersRightPrism_isInvertible {C : SSet.{u}} [Quasicategory C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (b : (zeroSourceCofibers z) _⦋0⦌) :
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (b : (zeroSourceCofibers z) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((zeroSourceCofibersRightPrism z).app (Opposite.op ⦋1⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant b 1))) := by
   let R := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram
@@ -88,7 +88,7 @@ lemma zeroSourceCofibersRightPrism_isInvertible {C : SSet.{u}} [Quasicategory C]
     (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant b 1) =
       SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ R) at he
   rw [← hi] at he
-  rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge] at he
+  rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge] at he
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).2
   exact zeroSourceCofibersRight_isIso z b
 

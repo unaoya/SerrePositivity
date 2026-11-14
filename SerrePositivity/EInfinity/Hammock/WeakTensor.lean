@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TensorHomotopy
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanProductUnit
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.ContinuousKanProductUnit
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 public import Mathlib.Tactic.CrossRefAttribute

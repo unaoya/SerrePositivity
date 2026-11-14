@@ -20,7 +20,7 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorElementDerivedRoofFamily : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantFunctorHom
-    (nerve (normalizedTensorElementIndex A X Y)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    (nerve (normalizedTensorElementIndex A X Y)) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
     ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
     ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) :=
   (complexOrdinaryDerivedConstantIso A (normalizedTensorElementIndex A X Y) X).inv ≫

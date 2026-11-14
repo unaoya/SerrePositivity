@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGGluingCellProjectiveInput
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingCellProjectiveInput
 import Lean
 /-! 固定 cell graph 射影性の全新規宣言：許容三公理のみ。 -/
 open Lean Elab Command in
@@ -8,12 +8,12 @@ run_cmd do
     `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
     `SerrePositivity.DifferentialGraded.Derived.Basic,
     `SerrePositivity.DifferentialGraded.Derived.BimoduleTensor,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.RingComplexColimits,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexProjectiveClosure,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellAttachmentProjective,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellSourceProjective,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCellResolvedGraphProjective,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGGluingCellProjectiveInput]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.ComplexHomotopies.RingComplexColimits,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.ComplexHomotopies.ComplexProjectiveClosure,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.CellAttachments.DGCellAttachmentProjective,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.CellAttachments.DGCellSourceProjective,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.CellAttachments.DGCellResolvedGraphProjective,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingCellProjectiveInput]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

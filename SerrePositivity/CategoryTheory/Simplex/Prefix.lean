@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
@@ -220,3 +222,8 @@ lemma cut_zero_factor (n : SimplexCategory) : cut n (endpoint.{v} n 0) =
 end SerrePositivity.SimplexPrefix
 
 end PrefixInterval
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.7.2.14" (partial := component) "仮定：通常の単体圏（Lean が強い：増大なしの非負次数に限る）。結論：[n] を [0]⋆[n]=[n+1] に送る prefix 関手を構成する（shift の非負次数の部分に一致）。増大対象への因子化と ∞ 関手圏上の T は含まれない。"] _root_.SerrePositivity.SimplexPrefix.functor

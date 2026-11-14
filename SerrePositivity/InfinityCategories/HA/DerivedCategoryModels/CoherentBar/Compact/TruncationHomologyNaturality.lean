@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MooreHomology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.MooreHomology
 /-!
 概要：既存の非正切断 Hom のホモロジー比較に、元の鎖写像の自然性を与える。
 方針：延長のホモロジー同型と切断包含の自然性を合成する。

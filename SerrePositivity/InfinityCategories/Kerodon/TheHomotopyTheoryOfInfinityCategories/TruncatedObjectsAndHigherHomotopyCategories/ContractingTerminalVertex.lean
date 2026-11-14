@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ContractingPinchedHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.ContractingPinchedHom
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalMappingSpace
 
 /-! # 収縮元を持つ dg 対象の終対象性

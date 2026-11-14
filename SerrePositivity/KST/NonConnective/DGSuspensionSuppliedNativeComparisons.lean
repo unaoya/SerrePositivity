@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativePFamily
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaNativePFamily
 public import SerrePositivity.KST.NonConnective.DGSuspensionCoherentSquareFamily
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FiberTransportFamilySourceComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.VertexFiberTotalIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FibersBaseIso
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FibersBaseIso
 
 /-!
 概要：底を変更する可換正方形による輸送族の後合成。

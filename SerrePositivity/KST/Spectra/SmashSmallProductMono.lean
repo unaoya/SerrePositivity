@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedSmallProduct
 public import SerrePositivity.KST.Spectra.SmashSmallProductSimplex
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashProductMono
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.SmashProductMono
 
 /-!
 概要：固定左因子との smash から、任意の小積の各座標との smash への比較の単射性。

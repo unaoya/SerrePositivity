@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SymmetricCoconeHomAddition
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionFixedReindexSwap
 
@@ -32,7 +34,7 @@ local instance : Preadditive X.HomotopyCategory := _root_.SerrePositivity.Infini
 方針：図式の等号を消して対称 span の符号の定理を使う。
 規約：固定図式の等号と交換不変性を明示。使われ方：懸垂四角形の標準 span 表示への適用。 -/
 lemma fixedCoconeSwap_eq_neg_id_of_diagram_eq {x z : X _⦋0⦌}
-    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z)
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x z) (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex z)
     {p : (horn 2 0 : SSet.{u}) ⟶ X} (h : p = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f f)
     (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone p) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) (hp : _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.spanSwap ≫ p = p) :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.fixedCoconeReindexVertexIso c hc _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.spanSwap hp _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.spanSwap_comp_self).hom =
@@ -48,11 +50,11 @@ lemma chosenSymmetricSuspensionSquare_swapIso_eq_neg_id (x : X _⦋0⦌) :
       -𝟙 (SSet.HomotopyCategory.mk
         (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenSymmetricSuspensionSquare x).vertex : hoFunctor.obj X) := by
   let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenSymmetricSuspensionSquare x
-  let f := Classical.choice ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isTerminal.nonempty_edge x)
+  let f := Classical.choice ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isTerminal.nonempty_edge x)
   have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan s.square = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f f :=
-    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.symmetricSuspensionSquare_span f (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.symmetricSuspensionSquare_span f (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero
   have hp := s.spanSwap_fixed (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenSymmetricSuspensionSquare_sameSpan x)
-  have hneg := fixedCoconeSwap_eq_neg_id_of_diagram_eq f (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero hs
+  have hneg := fixedCoconeSwap_eq_neg_id_of_diagram_eq f (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero hs
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone s.square) s.isPushout hp
   have hv : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone s.square).vertex = s.vertex := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pushoutCocone_vertex s.square
   have hN := congrArg (fun u => (Arrow.mk u : Arrow (hoFunctor.obj X))) hneg
@@ -70,3 +72,8 @@ lemma SuspensionSquare.swapIso_eq_neg_id {x : X _⦋0⦌} (s : _root_.SerrePosit
 
 end
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.10" (partial := stronger-hyp) "仮定：安定準圏の懸垂正方形（Lean が強い：HA は点付きで余ファイバーを持てばよい）。結論：二つの零角の交換が懸垂上の負の恒等射になり、そこからの射への前合成は符号を反転する（一致する安定な場合）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare.swapIso_eq_neg_id

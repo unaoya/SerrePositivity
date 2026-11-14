@@ -49,15 +49,15 @@ lemma coconeLeg_point_representative_of_weak {B : SSet.{u + 1}}
 lemma coherentTotalCoconeLeg_point_representative {B : SSet.{u}}
     (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
     (x : ((SSet.uliftFunctor.{u + 1, u}).obj
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F).vertex).obj) _⦋0⦌) :
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F).vertex).obj) _⦋0⦌) :
     ∃ b : ((SSet.uliftFunctor.{u + 1, u}).obj B) _⦋0⦌,
       ∃ v : ((SSet.uliftFunctor.{u + 1, u}).obj
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject (F.app (Opposite.op ⦋0⦌) b)).obj) _⦋0⦌,
         SSet.π₀.mk (((SSet.uliftFunctor.{u + 1, u}).map
           (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.spaceInfinityEdgeValue
-            (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.coconeTransportLeg (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F) b))).app (Opposite.op ⦋0⦌) v) =
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.coconeTransportLeg (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F) b))).app (Opposite.op ⦋0⦌) v) =
               SSet.π₀.mk x :=
-  coconeLeg_point_representative_of_weak (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F)
+  coconeLeg_point_representative_of_weak (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence F) x
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects

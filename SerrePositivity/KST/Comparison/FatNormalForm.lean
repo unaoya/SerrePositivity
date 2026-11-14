@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.FatRealization
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexImageMono
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexImageMono
 
 /-!
 # fat realization の各次数の全射な標準形

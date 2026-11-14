@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedClass
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionLift
 public import SerrePositivity.KST.LocalizingInvariants.DGDerivationOfMapOver
@@ -68,3 +70,8 @@ lemma postnikovCellDerivation_section : (postnikovCellDerivation R B n hn).secti
   SquareZero.derivationOfMapOver_section _ _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.4.1.28" (partial := component) "仮定：可換環 R 上の厳密非正次数の結合的 dg 代数 B と n≥0（Lean が強い：この E₁ の dg 模型の場合）。結論：τ≤n+1 B→τ≤n B を、cell resolution 上の実導分の class と零切断の homotopy pullback に底への射を保つ準同型の span で比較する（Postnikov 遷移の平方零表示の部分に一致）。一般の Eₖ と HA の普遍 cotangent による導分との比較は含まれない。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovCellDerivation

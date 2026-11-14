@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SigmaPresheafFamilyComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyConeUnitComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentTransformationKanCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FiniteFamilyConeUnitComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.CoherentTransformationKanCocones
 
 /-!
 概要：元の P_Σ の族から供給した同じ評価極限錐の全脚を、元の積脚と頂点比較へ照合する。
@@ -63,11 +63,11 @@ lemma sigmaPresheafConeLegTriangle_diagonal (j : J) :
 /-- 元の各脚の全空間作用は、指定単位の後で元の頂点比較と元の積脚の合成に同型。 -/
 def sigmaPresheafConeLegUnitIso (j : J) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentTransformationTotalMap A (G j)
-      (sigmaPresheafConeLegTransformation r c j) ≫ _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalUnit (G j))
+      (sigmaPresheafConeLegTransformation r c j) ≫ _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalUnit (G j))
       (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentTransformationTotalMap A (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyCoherentProduct G)
         (sigmaPresheafConeApexTransformation r c hc) ≫
       _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentTransformationTotalMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyCoherentProduct G) (G j)
-        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyProductLegTransformation G j) ≫ _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalUnit (G j)) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyProductLegTransformation G j) ≫ _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalUnit (G j)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyOriginalLegUnitIso G d hd A hv j
 
 /-- 元の各評価脚の Kan 像の全余錐作用は、同じ脚と指定単位の三角形の余錐に同型。 -/

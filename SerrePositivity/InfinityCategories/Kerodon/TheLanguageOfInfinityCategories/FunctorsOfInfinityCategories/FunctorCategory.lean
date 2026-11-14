@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 public import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 public import Mathlib.CategoryTheory.Monoidal.Closed.Functor
@@ -66,3 +68,12 @@ lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.
   rw [uncurry_expComparison, ← Category.assoc, IsIso.hom_inv_id, Category.id_comp]
 
 end SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "6.1.2.2" (partial := special) "仮定：C を通常圏 D の nerve に特殊化（Lean が強い）。結論：Δop→D と Δ+op→D としての単体対象・増大単体対象の定義は一致。増大対象の Mathlib 表示との同値、反対圏と関手圏の nerve の同型もある。任意の準圏 C 全体の定義ではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso
+attribute [cite HTT "6.1.2.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso
+attribute [cite HTT "6.5.3.1" (partial := special) "仮定：presentable X を通常圏 D の nerve に特殊化し、対応する ordinary right Kan extensions が存在（Lean が強い。D と Hom は nerve 比較と同じ宇宙に配置）。結論：Δ≤n への制限、その right Kan extension の右随伴、両者の合成としての coskeleton は一致。関手圏・反対圏の nerve 同型と随伴の nerve 比較を併用する。任意の準圏 X の coskeleton 全体は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso
+attribute [cite HTT "7.3.3.1" (partial := special) "仮定：位相空間 X と C=N(D)、D は通常圏（Lean が強い特殊形）。結論：Opens(X)op⥤D の ordinary sheaf condition は全 covering sieve の指定錐の極限性。nerveFunctorCategoryIso と nerveCone_isLimit_iff により同じ図式を N(D) に移すと原典の定義に一致。一般の準圏 C の higher sheaf full subcategory は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso
+attribute [cite HTT "7.3.3.2" (partial := special) "仮定：位相空間 X、C=N(D) の通常圏値の前層（Lean が強い特殊形）。結論：CategoryTheory.Presheaf.isSheaf_iff_isLimit は各被覆 sieve における F(U) の指定極限錐の iff であり、native nerve の極限比較により原典のこの場合と一致。一般の準圏値の sheaf condition の比較はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso

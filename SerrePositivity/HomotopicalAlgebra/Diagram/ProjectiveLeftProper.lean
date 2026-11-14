@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Quillen.LeftProper
 
@@ -34,3 +36,8 @@ lemma leftProper :
     (cofibrations_le_objectwise K I J f hf k) (hg k)
 
 end SerrePositivity.DiagramModel.Projective
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.8.4" (partial := component) "仮定：K 小さい、A は Mathlib locally presentable かつ cofibrantly generated、左固有な抽象モデル圏（HTT の左固有部分と一致）。結論：実際に構成した projective model の W が projective cofibration に沿う pushout を保つ。原典の projective-left-proper の部分は一致、injective と right-proper の残る三つの部分は含まない。"] _root_.SerrePositivity.DiagramModel.Projective.leftProper

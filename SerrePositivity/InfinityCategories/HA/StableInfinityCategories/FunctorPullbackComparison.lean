@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FunctorEdgeArrowFamily
 
 /-!
@@ -37,3 +39,9 @@ def functorPullbackComparisonFamily {K X : SSet.{u}}
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.arrowFamilyOfFunctorEdge (functorPullbackComparisonEdge Q c hc)
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.12" (partial := component) "仮定：四角形の関手族とその右上・左下・右下の極限錐を選ぶ（HA と一致：有限極限は選択された錐を与える）。結論：元の左上頂点から引き戻しへの比較辺とその関手族（Lean が弱い：零角の場合の F(X)→ΩF(ΣX) との同定はこの型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparisonEdge
+attribute [cite HA "1.4.2.12" (partial := component) "仮定：四角形の関手族とその右上・左下・右下の極限錐を選ぶ（HA と一致：有限極限は選択された錐を与える）。結論：元の左上頂点から引き戻しへの比較辺とその関手族（Lean が弱い：零角の場合の F(X)→ΩF(ΣX) との同定はこの型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparisonFamily

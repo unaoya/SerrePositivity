@@ -37,10 +37,10 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 
 /-- 閉零射の列を dg nerve に送る操作は項別係数制限と可換。 -/
 lemma complexClosedNerve_restriction :
-    (nerveMap (complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion T (Complex T)) ≫
+    (nerveMap (complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T)) ≫
       complexRestrictionNerve f =
     nerveMap (ScalarExtension.restriction f) ≫ nerveMap (complexToClosed S) ≫
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion S (Complex S) := by
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -79,7 +79,7 @@ lemma complexClosedNerve_restriction :
 def barrattEcclesRestrictD_sourceIso :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (complexOrdinaryDerivedSource T ≫ barrattEcclesRestrictD f)
       (nerveMap (ScalarExtension.restriction f) ≫ complexOrdinaryDerivedSource S) := by
-  let L := nerveMap (complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion T (Complex T)
+  let L := nerveMap (complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T)
   let R := complexRestrictionNerve f
   let Q := complexSemifreeResolutionInfinity S
   let H := complexSemifreeResolutionAugmentationHomotopy T

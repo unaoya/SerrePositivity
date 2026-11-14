@@ -19,7 +19,7 @@ open scoped Simplicial
 /-- 切断四角形の零角は元の切断位置の対角をそのまま保持する。 -/
 lemma arCutSquareAt_zero_corner {n : ℕ} {C : SSet.{u}} (k : Fin (n + 1))
     (a : Ar.{u} n) (F : arNerve n ⟶ C) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (arCutSquareAt k a ≫ F) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (arCutSquareAt k a ≫ F) 0 1 =
       F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj k k le_rfl)) := by
   apply congrArg (F.app (Opposite.op ⦋0⦌))
   apply ComposableArrows.ext₀
@@ -45,7 +45,7 @@ lemma arCutSquareAt_isPushout {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 /-- 任意の切断位置の四角形は元の零対角を持つ cofiber 四角形。 -/
 lemma arCutSquareAt_isCofiber {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (k : Fin (n + 1)) (a : Ar.{u} n) {F : arNerve n ⟶ C} (hF : IsGapped F) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (arCutSquareAt k a ≫ F) 0 1) ∧
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (arCutSquareAt k a ≫ F) 0 1) ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arCutSquareAt k a ≫ F) := by
   refine ⟨?_, arCutSquareAt_isPushout k a hF⟩
   rw [arCutSquareAt_zero_corner]

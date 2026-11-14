@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSmallReference
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDominatedSubcomplex
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallSimplicialValue
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SmallSimplicialValue
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarSmallSubcomplex

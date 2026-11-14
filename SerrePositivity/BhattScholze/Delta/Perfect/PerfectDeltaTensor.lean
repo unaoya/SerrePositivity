@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.HomologicalAlgebra.PerfectResidueTensorRegular
@@ -20,7 +22,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlge
 両因子の Frobenius 自己同型からテンソル積の Frobenius 持ち上げを作り、p ねじれなしで δ 構造を復元する。
 
 ## 規約
-一般の δ 環のテンソル積はまだない（A0 で Basic/DeltaColimit に作る）。
+一般の δ 環のテンソル積は `Delta/Basic/Tensor` で与える（A0 で Basic/DeltaColimit に作る）。
 
 ## 使われ方
 完全 prism の完備テンソル積（Prism/Tensor）。旧 Prism/Tensor から移した。
@@ -28,7 +30,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlge
 
 universe u
 
-/-! ## The actual p-completed tensor of perfect delta rings is discrete（旧 Prism/Tensor/PerfectDeltaCompletedTensorDiscrete.lean）
+/-! ## The actual p-completed tensor of perfect delta rings is discrete
 
 The p-regularity and perfect residue inputs are supplied by the original delta
 structures. This proves discreteness, p-regularity and classical completeness of
@@ -104,7 +106,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaCompletedTensorDiscrete
 
-/-! ## The ordinary tensor of perfect delta rings is p-torsion-free（旧 Prism/Tensor/PerfectDeltaTensorRegular.lean）
+/-! ## The ordinary tensor of perfect delta rings is p-torsion-free
 
 This supplies the regularity input for constructing a tensor Frobenius lift.
 A perfect delta structure on the tensor is not constructed here.
@@ -132,7 +134,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaTensorRegular
 
-/-! ## A perfect delta structure on the original ordinary tensor（旧 Prism/Tensor/PerfectDeltaTensorStructure.lean）
+/-! ## A perfect delta structure on the original ordinary tensor
 
 Both algebra maps are delta maps. The factor Frobenius automorphisms give the
 specified semilinear tensor automorphism, which is a Frobenius lift modulo p.
@@ -283,7 +285,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaTensorStructure
 
-/-! ## The classical p-completion of a perfect delta tensor（旧 Prism/Tensor/PerfectDeltaTensorPCompletion.lean）
+/-! ## The classical p-completion of a perfect delta tensor
 
 The original completion unit and both factor maps preserve delta. Comparison
 with the original derived completed tensor H0 is a separate theorem.
@@ -348,7 +350,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectDeltaTensorPCompletion
 
-/-! ## A perfect delta structure on the original completed derived tensor H0（旧 Prism/Tensor/PerfectDeltaCompletedTensorH0.lean）
+/-! ## A perfect delta structure on the original completed derived tensor H0
 
 The original H0 ring is compared with the classical completion preserving the
 unit, coefficient map, and factor maps. The perfect delta structure is transported
@@ -618,3 +620,8 @@ lemma perfectDeltaCompletedTensorH0Structure_distinguished_regular
 end SerrePositivity.BhattScholze
 
 end PerfectDeltaCompletedTensorH0
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.7" (partial := special) "通常のテンソル積（p 正則性なし、BS-W15）、有向余極限、完全 δ 環のテンソル、w_R : R → W(R)（ghost 単射かつ p ねじれなしのとき）。一般の極限・余極限、W が右随伴であることは未 ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§2 の見直し）"] _root_.SerrePositivity.BhattScholze.perfectDeltaTensorStructure

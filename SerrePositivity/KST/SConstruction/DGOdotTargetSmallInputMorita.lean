@@ -23,7 +23,7 @@ local notation "m" => dgOdotTargetSmallYonedaInputMap R d
 lemma dgOdotTargetSmallYonedaInputMap_isMorita :
     (quasiEquivalencePerfectExtension R (P) (Q) (m).down).IsEquivalence := by
   letI := dgOdotTargetSmallYoneda_isMorita R d
-  exact dgKUniverseLiftFunctor_isMorita R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.corner)
+  exact dgKUniverseLiftFunctor_isMorita R (_root_.SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory R d.corner)
     (DGOdotTargetSmallPerfect R d) (dgOdotTargetSmallYoneda R d)
 
 /-- 同じ ν 辺の元の完全射は、実安定 ∞ 圏の同値。 -/

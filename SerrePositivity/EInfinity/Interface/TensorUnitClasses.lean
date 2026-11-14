@@ -43,7 +43,7 @@ def coreUnitVertex (E : EInfinityCore.{u}) : (E.CAlg S) _⦋0⦌ :=
 
 /-- 通常のホモトピー圏上の零次ホモロジー。 -/
 abbrev vertexHZeroFunctor :=
-  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S)).inverse ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S 0
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S)).inverse ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S 0
 
 /-- 離散基底環からの指定比較は、その台の H⁰ を基底環と同定する。 -/
 def coreUnitHZeroIso (E : EInfinityCore.{u}) :
@@ -61,7 +61,7 @@ def coreUnitClass (E : EInfinityCore.{u}) (x : (E.CAlg S) _⦋0⦌)
     (h : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
       SSet.HomotopyCategory.mk x) :
     ModuleCat.of S S ⟶
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val.homology 0 :=
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val.homology 0 :=
   (coreUnitHZeroIso S E).inv ≫
     (vertexHZeroFunctor S).map ((hoFunctor.map (E.forget S)).toFunctor.map h) ≫
       (vertexHZeroRepresentativeIso S (atVertex (E.forget S) x)).hom
@@ -71,7 +71,7 @@ def NormalizedTensorUnit (E : EInfinityCore.{u}) (x : (E.CAlg S) _⦋0⦌)
     (h : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
       SSet.HomotopyCategory.mk x)
     (unitX : 𝟙_ (Complex S) ⟶
-      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val) : Prop :=
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val) : Prop :=
   (complexUnitHZeroIso S).inv ≫ HomologicalComplex.homologyMap unitX 0 = coreUnitClass S E x h
 
 end SerrePositivity.EInfinity

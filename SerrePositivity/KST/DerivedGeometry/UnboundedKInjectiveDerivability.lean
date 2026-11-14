@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedGeometry.KInjectiveLocalizationUnit
 public import Mathlib.Algebra.Homology.DerivedCategory.HomologySequence
 public import Mathlib.CategoryTheory.Localization.DerivabilityStructure.OfFunctorialResolutions
@@ -131,3 +133,8 @@ lemma kInjectiveLocalizerMorphism_derives {E : Type*} [Category* E]
   exact CategoryTheory.Functor.map_isIso ((kInjectiveHomotopyObjects C).ι ⋙ F) f
 
 end SerrePositivity.KST.DerivedGeometry
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.3.5.13" (partial := special) "仮定：通常の Grothendieck 圏のホモトピー圏、または可換環上の dg 加群（Lean が強い：準圏側は後者のみ）。結論：K-injective 置換の単位が準同型であり、dg 加群では半自由置換が局所化（Lean が弱い：一般の Grothendieck 圏で fibrant 複体の dg nerve が反射部分圏である型はない）。"] _root_.SerrePositivity.KST.DerivedGeometry.kInjectiveReplacementUnit_mem_quasiIso

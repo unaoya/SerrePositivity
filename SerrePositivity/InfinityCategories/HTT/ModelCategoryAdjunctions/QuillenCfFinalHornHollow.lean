@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FinalHornHollow
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.InitialFinalComparisons.FinalHornHollow
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfCollage
 
 /-!

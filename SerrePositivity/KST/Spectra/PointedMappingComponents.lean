@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedMappingHomotopy
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-!
 概要：点つき写像空間の連結成分の等式と基点固定ホモトピーの存在の同値。

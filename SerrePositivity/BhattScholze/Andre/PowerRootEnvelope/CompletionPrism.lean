@@ -23,10 +23,10 @@ raw 包の正則対と完備化の p 正則性、Hodge–Tate 候補の基底射
 BS 著者版 Proposition 3.13 の包の普遍性をモニック根の入力で扱うため、完備化 prism とその商を比較する。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `PowerRootEnvelope/FrobeniusPullback`、`PowerRootEnvelope/InputUniversal`、`PowerRootEnvelope/PerfectionFaithful`、`PowerRootEnvelope/Unconditional/FrobeniusPD`、`PowerRootEnvelope/VarpiComparison`、`Variants/MonicRootedExtension`。
@@ -34,7 +34,7 @@ BS 著者版 Proposition 3.13 の包の普遍性をモニック根の入力で�
 
 universe u
 
-/-! ## André E1・E2：無限根モニック raw 包の正則対（旧 Andre/Remark715/PowerRootPrismMonicRawPairRegular.lean）
+/-! ## 無限根モニック raw 包の正則対
 
 ## 概要
 
@@ -111,7 +111,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicRawPairRegular
 
-/-! ## André E1・E2：無限根モニック実完備化と Hodge–Tate 商の p 正則性（旧 Andre/Remark715/PowerRootPrismMonicCompletionRegular.lean）
+/-! ## 無限根モニック実完備化と Hodge–Tate 商の p 正則性
 
 ## 概要
 
@@ -185,7 +185,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletionRegular
 
-/-! ## André E1・E2：無限根モニック Hodge–Tate 候補の基底射と ϖ 商（旧 Andre/Remark715/PowerRootPrismMonicHodgeTateBase.lean）
+/-! ## 無限根モニック Hodge–Tate 候補の基底射と ϖ 商
 
 ## 概要
 
@@ -289,7 +289,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicHodgeTateBase
 
-/-! ## André E1・E2：元の無限根入力の Hodge–Tate 候補における実根（旧 Andre/Remark715/PowerRootPrismMonicHodgeTateRoot.lean）
+/-! ## 元の無限根入力の Hodge–Tate 候補における実根
 
 ## 概要
 
@@ -378,7 +378,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicHodgeTateRoot
 
-/-! ## André E1・E2：無限根モニック raw 包の実完備化 prism（旧 Andre/Remark715/PowerRootPrismMonicCompletionPrism.lean）
+/-! ## 無限根モニック raw 包の実完備化 prism
 
 ## 概要
 
@@ -487,7 +487,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletionPrism
 
-/-! ## André A1-a：生成元正則性を明示した元の H の prism 構造（旧 Andre/Remark715/PowerRootPrismMonicRegularSource.lean）
+/-! ## André A1-a：生成元正則性を明示した元の H の prism 構造
 
 ## 概要
 
@@ -638,7 +638,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicRegularSource
 
-/-! ## André E1・E2：具体的な実完備化 prism の普遍性と一段構成比較（旧 Andre/Remark715/PowerRootPrismMonicCompletionUniversal.lean）
+/-! ## 具体的な実完備化 prism の普遍性と一段構成比較
 
 ## 概要
 
@@ -789,7 +789,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletionUniversal
 
-/-! ## André E1・E2：互換な rank 1 根データによる実完備化の普遍射（旧 Andre/Remark715/PowerRootPrismMonicRootUniversal.lean）
+/-! ## 互換な rank 1 根データによる実完備化の普遍射
 
 ## 概要
 
@@ -943,7 +943,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicRootUniversal
 
-/-! ## André E1・E2：有界試験 prism の剰余根データによる実完備化の普遍性（旧 Andre/Remark715/PowerRootPrismMonicBoundedResidueRootUniversal.lean）
+/-! ## 有界試験 prism の剰余根データによる実完備化の普遍性
 
 ## 概要
 
@@ -1064,7 +1064,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicBoundedResidueRootUniversal
 
-/-! ## André E1・E2：一般の基底 prism 射を保つ実完備化の普遍性（旧 Andre/Remark715/PowerRootPrismMonicBasePrismUniversal.lean）
+/-! ## 一般の基底 prism 射を保つ実完備化の普遍性
 
 ## 概要
 
@@ -1184,7 +1184,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicBasePrismUniversal
 
-/-! ## André E1・E2：通常の方程式商からの入力射による実完備化の普遍性（旧 Andre/Remark715/PowerRootPrismMonicEquationInput.lean）
+/-! ## 通常の方程式商からの入力射による実完備化の普遍性
 
 ## 概要
 
@@ -1271,7 +1271,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicEquationInput
 
-/-! ## André A1-a：方程式商の p 完備化からの入力射（旧 Andre/Remark715/PowerRootPrismMonicCompletedEquationInput.lean）
+/-! ## André A1-a：方程式商の p 完備化からの入力射
 
 ## 概要
 
@@ -1355,7 +1355,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicCompletedEquationInput
 
-/-! ## André A1-a：原典の順序の完備入力環からの試験射（旧 Andre/Remark715/PowerRootPrismMonicOriginalCompletedInput.lean）
+/-! ## André A1-a：原典の順序の完備入力環からの試験射
 
 ## 概要
 
@@ -1473,7 +1473,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicOriginalCompletedInput
 
-/-! ## André E1・E2：自然な Hodge–Tate 候補の ϖ 剰余の忠実平坦性（旧 Andre/Remark715/PowerRootPrismMonicHodgeTateVarpiFlat.lean）
+/-! ## 自然な Hodge–Tate 候補の ϖ 剰余の忠実平坦性
 
 ## 概要
 
@@ -1645,7 +1645,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicHodgeTateVarpiFlat
 
-/-! ## André R1：Hodge–Tate 商の条件付き ϖ 正則性（旧 Andre/Remark715/PowerRootPrismMonicHodgeTateCompletelyFlat.lean）
+/-! ## André R1：Hodge–Tate 商の条件付き ϖ 正則性
 
 ## 概要
 

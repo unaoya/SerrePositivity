@@ -20,7 +20,7 @@ variable {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
 /-- 自明 Kan fibration の厳密な切断は零対象を保ち反映する。 -/
 lemma isZeroVertex_iff_map_section_of_trivialKanFibration
     (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q] (s : B ⟶ E) (hs : s ≫ q = 𝟙 B) (x : B _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x ↔ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (s.app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x ↔ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (s.app (Opposite.op ⦋0⦌) x) := by
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q (s.app (Opposite.op ⦋0⦌) x)
   have he := ConcreteCategory.congr_hom (congrArg (fun f : B ⟶ B => f.app (Opposite.op ⦋0⦌)) hs) x
   change q.app (Opposite.op ⦋0⦌) (s.app (Opposite.op ⦋0⦌) x) = x at he

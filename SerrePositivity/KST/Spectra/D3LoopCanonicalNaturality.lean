@@ -42,7 +42,7 @@ lemma d3LoopCanonicalFamily_target (F : A ⟶ _root_.SerrePositivity.InfinityCat
       F ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 1 1 := by
   rw [d3LoopCanonicalFamily, Category.assoc, hs, Category.comp_id]
 
-variable [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+variable [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
 
 /-- 元の厳密終点の同じ実 fiber 内で選ばれる、既存型の全図式比較。 -/
 def d3LoopCanonicalDiagramIso (F : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) :

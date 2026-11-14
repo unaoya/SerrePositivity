@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredKanColimitCanonical
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.FilteredKanColimitCanonical
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!

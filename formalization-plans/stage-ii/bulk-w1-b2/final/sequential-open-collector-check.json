@@ -1,0 +1,68 @@
+{
+  "helper_sha256": "45da217652c32acf13f15578fce8264ad7c3dba1caac67895bd2c6b5f5dcfeb8",
+  "source_module": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.Adjunction",
+  "seconds": 20.95501133427024,
+  "original_open_names": [
+    [
+      "CategoryTheory"
+    ],
+    [
+      "Bicategory"
+    ],
+    [],
+    [
+      "SSet"
+    ]
+  ],
+  "corrected_open_names": [
+    [
+      "CategoryTheory"
+    ],
+    [
+      "Bicategory",
+      "CategoryTheory.Bicategory"
+    ],
+    [
+      "CategoryTheory.MonoidalClosed"
+    ],
+    [
+      "SSet"
+    ]
+  ],
+  "reference_rows_unchanged": 994,
+  "sequential_chain_fixture": {
+    "plain": [
+      [
+        "BulkOpenFixture"
+      ],
+      [
+        "BulkOpenFixture.Level1"
+      ],
+      [
+        "BulkOpenFixture.Level1.Level2"
+      ]
+    ],
+    "local": [
+      [
+        "BulkOpenFixture"
+      ],
+      [
+        "BulkOpenFixture.Level1"
+      ]
+    ]
+  },
+  "shared_helper_or_python_modified": false,
+  "lake_setup": {
+    "async": false,
+    "configured": true,
+    "setup_options": {
+      "maxSynthPendingDepth": 3,
+      "pp.unicode.fun": true,
+      "relaxedAutoImplicit": false,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.header": false
+    },
+    "collector_sha256": "45da217652c32acf13f15578fce8264ad7c3dba1caac67895bd2c6b5f5dcfeb8",
+    "lake_setup_sha256": "c3363419d79f1dedf000255c407f0c418e6132a33cbdbb6c9dd7bea5afd5f7ca"
+  }
+}

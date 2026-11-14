@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.OuterHornDuality
 public import Mathlib.Tactic.CrossRefAttribute
@@ -78,3 +80,8 @@ lemma hasCocartesianHornLifting_iff_isInvertibleEdge_of_map {E B : SSet.{u}}
   ⟨fun he ↦ he.isInvertibleEdge_of_map hp, fun he ↦ he.hasCocartesianHornLifting p⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "B.1.7" (partial := stronger-hyp) "仮定：p:X→∆nと外側hornの先頭辺を指定し、その辺がX全体でp-coCartesianのhorn liftingを持つ（Leanが強い：局所∆{0,1,n}での条件を全体のcoCartesian条件に強める）。結論：同じ底上で外側hornを充填する∆n→Xが存在（原典の延長の結論に一致）。局所triangleでのcoCartesian性だけからこの全体条件を導く部分は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.HasCocartesianHornLifting

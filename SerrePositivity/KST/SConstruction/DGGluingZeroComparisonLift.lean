@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Projections
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.HomCalculus
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Projections
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.HomSpaces.HomComplexes.Models.HomCalculus
 
 /-! # 比較標的が実零である gluing Hom の指定持ち上げ
 概要：元の比較標的が実零なら、指定した両鎖写像を零比較で同じ gluing Hom へ持ち上げる。

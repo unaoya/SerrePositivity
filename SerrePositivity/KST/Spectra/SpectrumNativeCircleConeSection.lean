@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumPointLoopReference
 public import SerrePositivity.KST.Spectra.StrictCospanHorn
 public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConePointSection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConePointSection
 
 /-!
 概要：元の円評価錐を、元の通常の cospan の図式上で頂点固定の切断点として表示する。

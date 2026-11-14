@@ -23,7 +23,7 @@ lemma presentedPerfectDGNerveEquivalence_hom :
 lemma presentedPerfectDGEvaluationNerve_isExactFunctor :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D)) :=
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
       (presentedPerfectDGEvaluation A D) (presentedPerfectDGEvaluation_quasiEquivalence A D))
 
 /-- ラベル付き Perf への射の完全性は、同じ実評価の後合成で判定できる。 -/

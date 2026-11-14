@@ -130,7 +130,7 @@ lemma VerdierFiniteMappingCoconeRecovery.boundaryFractionComparison_sharedSource
         (pre (stdSimplex.δ (1 : Fin 2))).app
           ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj C.obj) =
       SSet.yonedaEquiv.symm
-        (((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
+        (((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
           ((ihom (Δ[n] : SSet.{u})).map
             ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).map q.hom)))).edge) ≫
         (pre (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.simplexLastPoint n)).app ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj C.obj) := by
@@ -154,7 +154,7 @@ lemma VerdierFiniteMappingCoconeRecovery.boundaryFractionComparison_sharedSource
   rw [SSet.yonedaEquiv_symm_comp]
   change _ = SSet.yonedaEquiv.symm
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n))).app (Opposite.op ⦋1⦌)
-      (((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
+      (((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow r.cylinderSquare).map ((truncation 2).map
         ((ihom (Δ[n] : SSet.{u})).map
           ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).map q.hom)))).edge))
   rw [r.cylinderSquare_left_quotient_terminal, Equiv.symm_apply_apply]

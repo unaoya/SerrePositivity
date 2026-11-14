@@ -24,17 +24,17 @@ variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
   (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) Q)
   (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i r)
 
-lemma bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (square Φ p q i r h)) =
+lemma bottom_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom (square Φ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ i)) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge]
   change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.comparisonSquare p q i r h ≫ Φ)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.comparisonSquare_bottom,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
-lemma top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop (square Φ p q i r h)) =
+lemma top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop (square Φ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ (IdentityLax.exactDiagonal Q))) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge]
@@ -44,7 +44,7 @@ lemma top_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.Qu
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
-lemma left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoLeft (square Φ p q i r h)) =
+lemma left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoLeft (square Φ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.kernelMap p q i r))) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge]
@@ -54,10 +54,10 @@ lemma left_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.Q
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
-lemma right_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (square Φ p q i r h)) =
+lemma right_arrow : Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight (square Φ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ (LaxUniversalDifference.exactLift p q r))) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.comparisonSquare p q i r h ≫ Φ)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceSquare.comparisonSquare_right,

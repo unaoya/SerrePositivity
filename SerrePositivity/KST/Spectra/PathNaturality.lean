@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopPathFiber
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationNaturalityAt
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.FibrationNaturalityAt
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeNumericJoin
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceWedgeBooleanMap
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceNumericMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgeBooleanMap
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceNumericMap
 
 /-! # 元の全 necklace 射の連結と数値 cube 作用
 概要：元の全連結射の数値頂点作用が、左右の元の数値作用の連結に等しい。

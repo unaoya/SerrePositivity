@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPrecomposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionInterval
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedPostcompositionInterval
 
 /-!
 # 元の複体射の Hom 後合成と dg nerve の同じ全区間族

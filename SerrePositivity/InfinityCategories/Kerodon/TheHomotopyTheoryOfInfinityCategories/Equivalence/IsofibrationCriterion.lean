@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativePathBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.EquivalenceLiftingInvertible
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PathReplacementLifting
@@ -86,3 +88,8 @@ lemma equivalenceLifting_iff_inner_and_invertibleTargetLifting
     exact equivalenceLifting_of_innerFibration_of_targetLifting U htarget i hm hi
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.3.3.29" (partial := stronger-hyp) "仮定：準圏間の inner fibration と同値辺の持ち上げ（Lean は可逆辺の持ち上げを直接入力。余デカルト持ち上げは底の辺が可逆なら可逆となる）。結論：単射な前合成同値に対する持ち上げ性（categorical fibration の結論に一致）。f-inert に可逆辺が含まれる operadic 条件は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceLifting_of_innerFibration_of_targetLifting

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallLimitFunctorContinuity
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamilyAdjunctionComparison
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Definition
@@ -68,3 +70,8 @@ lemma preservesKappaFilteredColimits_limitFamily_apex_of_small
   exact hcore.of_functorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp e.symm cU.val)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.4.7" (partial := special) "仮定：正則 κ が非可算、極限形状 K が κ-small な準圏（Lean が強い：任意の κ-small 単体集合形状を扱わない）。結論：各脚が κ-連続な元の全極限錐族の頂点関手も κ-連続（この形状の場合に一致）。各頂点で極限という hF は元の極限の指定であり、結論と別の比較写像を仮定しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesKappaFilteredColimits_limitFamily_apex_of_small

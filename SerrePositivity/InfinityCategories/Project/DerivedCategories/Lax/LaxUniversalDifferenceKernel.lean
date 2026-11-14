@@ -32,7 +32,7 @@ variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinit
 
 include h in
 lemma inclusion_difference_zero (x : A.obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((i.hom ≫ lift p q r) ≫ laxDifference (𝟙 Q) (𝟙 Q)).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((i.hom ≫ lift p q r) ≫ laxDifference (𝟙 Q) (𝟙 Q)).app
       (Opposite.op ⦋0⦌) x) := by
   have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (differenceIso p q r) i.hom
   have hz := (h.kills_inclusion x).of_vertexIso (e.app x).symm

@@ -50,7 +50,7 @@ lemma nativeCircleEvaluationSquare_right (z : Sp.{u} _⦋0⦌) :
 /-- 円評価四角形の上辺の終点は、右上の頂点。 -/
 lemma circleSquare_top_target (z : Sp.{u} _⦋0⦌) :
     Sp.{u}.δ 0 (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ nativeCircleEvaluationSquare z)) =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (nativeCircleEvaluationSquare z) 1 1 := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (nativeCircleEvaluationSquare z) 1 1 := by
   rw [← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc, SSet.yonedaEquiv_comp]
   apply congrArg (fun s : ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) _⦋0⦌ ↦
     (nativeCircleEvaluationSquare z).app _ s)

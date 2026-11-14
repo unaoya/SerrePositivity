@@ -43,7 +43,7 @@ lemma hasColimit_span_of_terminal_second {X : SSet.{u}} [Quasicategory X] [_root
 規約：入力の span 全体を保持する。使われ方：指定した零枝の cofiber。 -/
 lemma hasColimit_span_of_zero_second {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (p : (horn 2 0 : SSet.{u}) ⟶ X)
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((horn₂₀.ι₀₂ ≫ p).app (Opposite.op ⦋0⦌)
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((horn₂₀.ι₀₂ ≫ p).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit p :=
   hasColimit_span_of_terminal_second p hz.2
 
@@ -51,7 +51,7 @@ lemma hasColimit_span_of_zero_second {X : SSet.{u}} [Quasicategory X] [_root_.Se
 方針：第二枝の終点が指定された零角であることを使う。
 規約：元の四角形の押し出し性は仮定しない。使われ方：cofiber の入力を固定した構成。 -/
 lemma hasColimit_pushoutSpan_of_zeroTriangle {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan t.square) := by
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan t.square) := by
   apply hasColimit_span_of_zero_second
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge]
   exact t.zero_corner

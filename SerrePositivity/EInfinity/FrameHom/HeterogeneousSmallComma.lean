@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.CommaGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 

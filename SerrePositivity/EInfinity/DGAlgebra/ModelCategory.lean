@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.DGAlgebra.AWPath
 public import SerrePositivity.EInfinity.DGAlgebra.PathAcyclicity
 
@@ -100,3 +102,14 @@ lemma allFibrant (B : Mon (Complex R)) :
   exact ⟨terminalFrom_projectiveFibration R B⟩
 
 end SerrePositivity.EInfinity.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.8.3" (partial := special) "仮定：可換環 R 上の鎖複体に射影モデル構造を選ぶ（Lean は底をこの例に固定）。結論：厳密な結合 dg 代数にモデル構造があり、弱同値は底の擬同型、ファイブレーションは底の射影ファイブレーション、忘却は右 Quillen（(1) のモデル構造と右類の記述および (2) に一致）。組合せ性・単体モデル構造・左固有性はこの型に含まれない。"] _root_.SerrePositivity.EInfinity.DGAlgebra.forget_isRightQuillen
+attribute [cite HA "4.1.8.3" (partial := special) "仮定：可換環 R 上の鎖複体に射影モデル構造を選ぶ（Lean は底をこの例に固定）。結論：厳密な結合 dg 代数にモデル構造があり、弱同値は底の擬同型、ファイブレーションは底の射影ファイブレーション、忘却は右 Quillen（(1) のモデル構造と右類の記述および (2) に一致）。組合せ性・単体モデル構造・左固有性はこの型に含まれない。"] _root_.SerrePositivity.EInfinity.DGAlgebra.modelCategory
+attribute [cite HA "4.1.8.3" (partial := special) "仮定：可換環 R 上の鎖複体に射影モデル構造を選ぶ（Lean は底をこの例に固定）。結論：厳密な結合 dg 代数にモデル構造があり、弱同値は底の擬同型、ファイブレーションは底の射影ファイブレーション、忘却は右 Quillen（(1) のモデル構造と右類の記述および (2) に一致）。組合せ性・単体モデル構造・左固有性はこの型に含まれない。"] _root_.SerrePositivity.EInfinity.DGAlgebra.modelCategory_fibrations
+attribute [cite HA "4.1.8.3" (partial := special) "仮定：可換環 R 上の鎖複体に射影モデル構造を選ぶ（Lean は底をこの例に固定）。結論：厳密な結合 dg 代数にモデル構造があり、弱同値は底の擬同型、ファイブレーションは底の射影ファイブレーション、忘却は右 Quillen（(1) のモデル構造と右類の記述および (2) に一致）。組合せ性・単体モデル構造・左固有性はこの型に含まれない。"] _root_.SerrePositivity.EInfinity.DGAlgebra.modelCategory_weakEquivalences
+attribute [cite HA "7.1.4.5" (partial := component) "仮定：任意可換環 R と厳密 dg 代数 Mon(Complex R)（HA と一致する模型）。結論：実モデル構造を構成し、弱同値を底の擬同型、fibration を底の次数別全射と同定する（モデル構造・W・F の部分に一致）。combinatorial 性と体上の左固有性は含まれない。ModelCategory は構成済み。"] _root_.SerrePositivity.EInfinity.DGAlgebra.modelCategory
+attribute [cite HA "7.1.4.5" (partial := component) "仮定：任意可換環 R と厳密 dg 代数 Mon(Complex R)（HA と一致する模型）。結論：実モデル構造を構成し、弱同値を底の擬同型、fibration を底の次数別全射と同定する（モデル構造・W・F の部分に一致）。combinatorial 性と体上の左固有性は含まれない。ModelCategory は構成済み。"] _root_.SerrePositivity.EInfinity.DGAlgebra.modelCategory_fibrations
+attribute [cite HA "7.1.4.5" (partial := component) "仮定：任意可換環 R と厳密 dg 代数 Mon(Complex R)（HA と一致する模型）。結論：実モデル構造を構成し、弱同値を底の擬同型、fibration を底の次数別全射と同定する（モデル構造・W・F の部分に一致）。combinatorial 性と体上の左固有性は含まれない。ModelCategory は構成済み。"] _root_.SerrePositivity.EInfinity.DGAlgebra.modelCategory_weakEquivalences

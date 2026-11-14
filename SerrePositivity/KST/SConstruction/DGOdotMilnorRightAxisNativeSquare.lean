@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisResolvedLift
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeSquare
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleDerivedFunctor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleDerivedFunctor
 
 /-!
 概要：元右軸 graph の増大比較を同じ resolved 商の native 導来加群値へ移す。

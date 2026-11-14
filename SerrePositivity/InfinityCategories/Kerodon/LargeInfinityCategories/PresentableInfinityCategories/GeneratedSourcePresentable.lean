@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowsPresentable
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourcePointAccessibility
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiberAccessibility
@@ -59,3 +61,9 @@ lemma exists_bousfieldLocalReplacement
     (generatedSource_isAccessible hC edges x)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.4.15"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement
+attribute [cite HTT "5.5.5.14" (partial := stronger-hyp) "仮定：presentable C と小生成飽和 S（Lean が強い：S は小さい辺族の強飽和生成閉包）。結論：各 X から同じ S 内の辺で S-local Y に写す置換（この場合に一致）。局所対象は元の族と強飽和閉包で同じであり、小族への局所性だけを未比較のまま渡さない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement

@@ -34,29 +34,29 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCatego
   (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i r)
 
 lemma laxQuotientProductFiber_middle_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (value Φ C) (value Φ D)) :=
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquare_source_vertex (hΦ.laxQuotientProductFiberSquare p q i r h)
 
 lemma laxQuotientProductFiber_right_vertex :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (value Φ Q) :=
   _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquare_target_vertex (hΦ.laxQuotientProductFiberSquare p q i r h)
 
 def laxQuotientProductFiberLeftIso :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 0 0 ≅
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 0 0 ≅
       SpectrumHo.obj (value Φ A) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≪≫
       hΦ.fiberLeftIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientVerdierSequence p q i r h)
 
 def laxQuotientProductFiberMiddleIso :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 ≅
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 ≅
       SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
   eqToIso (congrArg SSet.HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiber_middle_vertex hΦ) p q i r h))
 
 def laxQuotientProductFiberRightIso :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 1 ≅
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 1 ≅
       SpectrumHo.obj (value Φ Q) :=
   eqToIso (congrArg SSet.HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiber_right_vertex hΦ) p q i r h))
 

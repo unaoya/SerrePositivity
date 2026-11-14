@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdgeLift
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryColimitDesc
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.ZeroHomotopy
 
 /-! # 二点図式の余極限からの射の一意性
 

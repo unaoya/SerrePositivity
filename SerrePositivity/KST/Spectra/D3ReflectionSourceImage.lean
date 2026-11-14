@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.Spectra
 
 section
 variable {A X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
-  [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y]
+  [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y]
   (sX : X ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) (hsX : sX ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 1 1 = 𝟙 X)
   (sY : Y ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Y) (hsY : sY ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Y 1 1 = 𝟙 Y)
   (H : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams X) (G : A ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Y) (f : X ⟶ Y)
@@ -29,7 +29,7 @@ variable {A X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).map f =
       G ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι)
 
-omit [Quasicategory X] [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y] in
+omit [Quasicategory X] [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y] in
 include hG in
 lemma d3LoopReflectionImage_source_eq :
     (H ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation X 0 0) ≫ f = G ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Y 0 0 := by
@@ -41,7 +41,7 @@ lemma d3LoopReflectionImage_source_eq :
   have h := congrArg (fun k ↦ k ≫ evY) hG
   simpa only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation, Category.assoc, heval] using h
 
-omit [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex Y] in
+omit [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex Y] in
 /-- 指定像の各角でも、元の指定全図式比較への同じ後合成を回収する。 -/
 lemma d3LoopImageTransposeIso_corner (i j : Fin 2) :
     HEq ((d3LoopImageTransposeIso sX hsX H G f hG).postcomp

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.NerveULiftHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne
 
 /-!

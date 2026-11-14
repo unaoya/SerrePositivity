@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：同じ元 cone の dg 関手像を native 全関手同型で比較する。

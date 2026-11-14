@@ -59129,9 +59129,11 @@
     "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary": null,
     "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary.BoundaryHom": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagBoundaryHomLaws",
     "SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.Hom": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingDiagramHomAppend",
+    "SerrePositivity.EInfinity.SimplicialLocalization": "SerrePositivity.EInfinity.SimplicialLocalization",
     "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization",
     "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FirstCut": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFirstCutSandwich",
-    "SerrePositivity.HomotopyFunctionComplex": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom",
+    "SerrePositivity.HomotopyFunctionComplex": "SerrePositivity.HomotopyFunctionComplex",
+    "SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators": "SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators",
     "SerrePositivity.HomotopyFunctionComplex.DiagonalFrame": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
     "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues": "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics",
     "SerrePositivity.HomotopyFunctionComplex.QuillenStandardFrame": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame",
@@ -59188,6 +59190,7 @@
     "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.F2.Presentable.Duality",
     "SerrePositivity.InfinityCategories.FatJoinStd": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces",
     "SerrePositivity.InfinityCategories.HomotopyCategoryMap": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories",
+    "SerrePositivity.InfinityCategories.HomotopyLimits": "SerrePositivity.InfinityCategories.HomotopyLimits",
     "SerrePositivity.InfinityCategories.Join": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join",
     "SerrePositivity.InfinityCategories.Kan.BoundaryFaces": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups",
     "SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit": "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries",
@@ -59227,6 +59230,7 @@
     "SerrePositivity.InfinityCategories.PinchedInterval": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces",
     "SerrePositivity.InfinityCategories.QCatAdjunction": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
     "SerrePositivity.InfinityCategories.SetWeight": "SerrePositivity.InfinityCategories.Project.SetWeightedTensors",
+    "SerrePositivity.InfinityCategories.Simplicial": "Simplicial",
     "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias": "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics",
     "SerrePositivity.InfinityCategories.Simplicial.NecklaceShape": "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics",
     "SerrePositivity.InfinityCategories.Simplicial.SquareTriangles": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups",
@@ -59390,7 +59394,7 @@
     "SerrePositivity.ModelGeneration": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
     "SerrePositivity.ModelGeneration.EvaluationFamily": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
     "SerrePositivity.SimplicialLatching": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72",
-    "SerrePositivity.SimplicialModel": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
+    "SerrePositivity.SimplicialModel": "SerrePositivity.SimplicialModel",
     "SerrePositivity.SimplicialModel.BoundaryGluing": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing",
     "SerrePositivity.SimplicialModel.CodiscreteNerveExtension": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets",
     "SerrePositivity.SimplicialModel.CompatibleInputMap": "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputMap",
@@ -59416,6 +59420,7 @@
     "SerrePositivity.SimplicialModel.SubcomplexGluing": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets",
     "SerrePositivity.SimplicialModel.UniverseLiftPiZero": "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries",
     "SerrePositivity.SimplicialModel.UniverseLiftProductParameter": "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries",
+    "Simplicial": "Simplicial",
     "Zigzag.FirstBoundary": "Zigzag.FirstBoundary",
     "Zigzag.Relative": "Zigzag.Relative"
   },
@@ -411798,5 +411803,22 @@
       "new_module": "SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.SquareCosliceSeed",
       "old": "SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint"
     }
-  ]
+  ],
+  "module_opens": {
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductNativeUniversal": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.NativeCoproduct": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.NativeCoproductLegs": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.Interface.Theory": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.EnrichedPointPrecomposition": {
+      "SerrePositivity.KST.Comparison": null
+    }
+  }
 }

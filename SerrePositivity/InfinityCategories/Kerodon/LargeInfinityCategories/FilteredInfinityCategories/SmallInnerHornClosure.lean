@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SmallSubcomplexStages
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallSubcomplexStages
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.Basic.Countable.Small
 

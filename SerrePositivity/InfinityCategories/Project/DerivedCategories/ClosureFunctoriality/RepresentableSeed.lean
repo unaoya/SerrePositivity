@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaSphereClosureOperations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleExtensionSphereComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaSphereClosureOperations
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleExtensionSphereComparison
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!

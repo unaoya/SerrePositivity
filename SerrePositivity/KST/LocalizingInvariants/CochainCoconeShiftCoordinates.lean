@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ConeMapProjections
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.ConeMapProjections
 
 /-!
 概要：mapping cocone の二座標を、元の cone の次数をずらした二座標で計算する。

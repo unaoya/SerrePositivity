@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.Pro
 
 @[expose] public section
@@ -119,3 +121,9 @@ theorem BiTower.diagonal_isProZero [HasZeroMorphisms C] (X : BiTower C)
   rw [hz, comp_zero]
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (4.3)" (partial := component) "仮定：自然数の二重添字の図式（Lean が強い）。結論：対角の共終性と、二重添字でプロ零の塔の対角のプロ零。各固定 m のスペクトル同値から二重添字全体への主張は別（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.BiTower.diagonal_isProZero
+attribute [cite KST "Lemma 4.7" (partial := component) "仮定：自然数の二重添字の図式（Lean が強い）。結論：対角の共終性と、二重添字でプロ零の塔の対角のプロ零。各固定 m のスペクトル同値から二重添字全体への主張は別（Lean が弱い）。"] _root_.SerrePositivity.KST.ProExcision.BiTower.diagonal_isProZero

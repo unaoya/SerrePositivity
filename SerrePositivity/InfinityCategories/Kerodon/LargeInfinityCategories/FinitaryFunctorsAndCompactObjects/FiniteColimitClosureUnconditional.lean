@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteColimitClosure
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFiniteLimitExchange
 public import Mathlib.Tactic.CrossRefAttribute
@@ -37,3 +39,9 @@ lemma hasFiniteColimits_kappaCompactObjects (κ : Cardinal.{u}) (hκ : Cardinal.
   _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects_of_exchange κ hκ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.indFiniteLimitExchangeInput C
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.4.15" (partial := special) "仮定：正則 κ、既存の余極限と各頂点の κ-compact 性（Lean が強い：形状は有限単体集合、または非可算 κ の κ-small 準圏）。結論：同じ指定余極限頂点が κ-compact（これらの場合に一致）。有限形状は任意の有限単体集合を含み、一般 κ-small 単体集合への拡張は主張しない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit
+attribute [cite HTT "5.3.4.17" (partial := special) "仮定：正則 κ、小準圏 C と表現可能前層の有限形状余極限の retract X（Lean が強い：κ-small 形状を有限形状に限定）。結論：同じ X が κ-compact（この場合の (1)⇒(2) と一致）。各表現可能頂点、同じ指定余極限、その retract の三宣言を直接適用する。逆方向と一般 κ-small 形状の表示は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit

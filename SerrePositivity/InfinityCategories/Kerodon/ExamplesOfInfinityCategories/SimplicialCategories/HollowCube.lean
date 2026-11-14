@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SubcomplexIso
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Cube
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HollowCylinder
@@ -159,3 +161,8 @@ lemma hollowCube_extension (i : T) {X : SSet.{u}} [SSet.KanComplex X]
 
 
 end SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.5.1" (partial := component) "仮定：座標集合 T（Lean は任意の集合を取り、HA の場合は Fin n を取る）。結論：包含順序の冪集合の神経、座標を一つ分離した ∆¹ との積同型、いずれかの座標が一定となる境界を与える（立方体と境界の定義に一致）。全 n 座標を同時に並べる積との同型は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeBoundary

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DoldKanIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedHomChainMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedHomChainMap
 
 /-!
 # 元の線形 Hom 模型への鎖写像の全作用

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionEquivalence
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -129,3 +131,9 @@ lemma IsWeakHomotopyEquivalence.weaklyContractible_iff {A B : SSet.{u}} {f : A �
     exact he ▸ hf.comp h
 
 end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.1.3.5" (partial := component) "仮定：可縮な二つの Kan 複体と任意の射（原典の第一の明記された観察と一致）。結論：一点への二射が弱同値なので cancel_right と Kan Whitehead により、その射は単体ホモトピー同値。一文目に一致するが、これを用いた left fibration の輸送 criterion と hT→H の関手性の議論は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.cancel_right
+attribute [cite HTT "2.2.2.7"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence

@@ -15,7 +15,7 @@ run_cmd do
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless `SerrePositivity.KST.DerivedBlowup |>.isPrefixOf mod do continue
+    unless ((`SerrePositivity.KST.DerivedBlowup).isPrefixOf mod || mod == `SerrePositivity.CommutativeAlgebra.Module.ScalarTensorView) do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "K-L5: unexpected axioms in {name}: {axioms}"

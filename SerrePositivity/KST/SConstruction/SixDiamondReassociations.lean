@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SixDiamondGeometricPasting
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamondImages
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CompositionDiamondImages
 
 /-! # 六つの結合替えを元の全面と共有面に沿って同時に保持する
 概要：元の六対角面からの六つの結合替え四面体を、同じ全共有面で束ねる。

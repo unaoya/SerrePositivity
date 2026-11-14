@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Homot
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.UnderSectionRightDiagram
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallLeftUnstraightening
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSSetMaps
 
 /-!
 概要：元の coherent 前層図式の共同評価から、同じ積上の小さい left fibration を作る。

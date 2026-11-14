@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagVertexRecovery
-public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.CoreEquivalence
+public import SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.EquivalenceStability
 
 /-!

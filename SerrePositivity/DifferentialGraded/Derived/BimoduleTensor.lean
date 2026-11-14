@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.DifferentialGraded.Tensor.Compose
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
@@ -1391,3 +1393,8 @@ end SerrePositivity.DifferentialGraded.BimoduleTensor
 end
 
 end BimoduleTensorKFlatComparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.4.3.14" (partial := special) "仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ。または小さい dg 圏と後二つが右相対 K-flat な dg 双加群（Lean が強い：通常圏、または指定した K-flat な dg 双加群）。結論：相対テンソルの二つの括り方を結ぶ同型を構成し、通常の導来圏の版では第一変数に関して自然な同型を得る（この仮定での HA の結論の一部に一致）。一般の ∞ 双加群圏は含まれない。"] _root_.SerrePositivity.DifferentialGraded.BimoduleTensor.derivedAssociatorIso

@@ -1,12 +1,12 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpanDiagram
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.FibrantRightSpanDiagram
 public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CostructuredArrowPreDiagram
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CostructuredArrowPreDiagram
 public import SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion
 public import SerrePositivity.EInfinity.FrameHom.CosimplicialHomCommaInvariance
 public import SerrePositivity.EInfinity.FrameHom.GrothendieckFiberInvariance
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.TargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.TargetInvariance
 
 /-!
 概要：fibrant な全右脚上で元の Reedy 解像と全左脚を比較する。

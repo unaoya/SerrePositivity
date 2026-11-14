@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftUnitInvertible
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftCanonical
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeColimitFunctorIso
@@ -51,3 +53,8 @@ lemma kanIsRelativeLeftKanExtendedFrom_of_functorIso {K C D E : SSet.{u}}
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp e (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonicalCoconeMap δ c))
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.3.2.6" (partial := component) "仮定：内ファイブレーションと関手準圏で同型な二関手（HTT の (1) と一致）。結論：関手同型とその逆に適用すると相対左 Kan 条件が同値（結論 (1) が一致。図式全体の圏同値での移送 (2) は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_of_functorIso

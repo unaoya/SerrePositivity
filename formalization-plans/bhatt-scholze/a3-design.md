@@ -21,6 +21,8 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 - 前提：A2 の Δ（CAlg 値、Kan 延長）、HT filtration と gr = (∧^i L)^∧[−i]、(4) 底変換、(5) 余極限との両立（filtered 余極限、pushout）。
   A0-3c の envelope（変数の場合の存在）。A1-4 の普遍向き付き prism A_0。既存：Cor 7.3（完全試験 prism への始対象）、Thm 7.4、Lemma 3.9（完全化）、
   Thm 3.10（完全 prism ↔ perfectoid）、`Semiperfectoid/RootEnvelope/`（完全 prism 上の X^p − b 族の envelope の離散性・平坦性）。
+  （11-13 追記：本体の Ex 7.9 は A1 の A_0 ではなく `universalOrientedPrism`（Ex 2.21・3.4、BS-W15 K2）を使う：`exists_bounded_lciRelationEnvelope`
+  （Semiperfectoid/LciEnvelopeExistence:142）。）
 
 ## 1. 原典の項目と形式化の対応
 
@@ -35,6 +37,15 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 | qrsp の定義 | 定義そのまま（原典 Not 7.1：semiperfectoid、**p 冪ねじれ有界**、L_{S/Z_p}[−1] の p 完備化が p 完全平坦。BMS19 Def 4.20） | `IsQuasiregularSemiperfectoid` | 余接複体（A2 の `cotangentWedge 1` を一般の基底 k で、D39）。**有界 p 冪ねじれの条件は W9-I-32 で復元**（他の条件から従わない：S = ∏ O_C/(p^n)） | A3-4 |
 | Prop 7.2 | 不要（D37。qrsp では Δ_S が始 prism） | — | 既存 Cor 7.3 は完全試験 prism への始対象 | — |
 | Prop 7.11、Ex 7.12・7.13 | 不要（D38） | — | — | — |
+
+（11-13 追記）古典的な部分は BS-W15 K5（main 1d5a7113b）と BS-W17 H5（d6ecc3c58・9d8509776）で本体 `BhattScholze/Semiperfectoid/` などに入った。
+Lemma 7.7(1)：`existsUnique_over_of_frobeniusLift`・`existsUnique_over_of_equiv`（DiscreteDelta:35・50）。Lemma 7.7(2)(3)：`OrientedPrism.ofDiscreteDelta`（DiscretePrism:36）、
+`PrismOver.homOfFrobenius`（DiscretePrism:101）、`exists_initial_of_primeRegular_evaluation`（PrismRetract:160）。Lemma 7.8：`initial_of_retraction_idempotent`
+（CategoryTheory/InitialOfRetraction:53）、`PrismOver.isIdempotentComplete`（PrismRetract:127）。Ex 7.9：`exists_bounded_lciRelationEnvelope_of_classifier`・
+`exists_bounded_lciRelationEnvelope`（LciEnvelopeExistence:62・142）。Prop 7.10 の T・S′：`exists_rootRelationAinfEnvelope`、`exists_rootLiftRelationCompletion_initial`、
+`exists_rootRelationCompletedInitial`、`exists_rootRelationPrismaticPerfection`（Root* の各ファイル）、完全化と Cor 7.3 は `classicalPrismPerfection`
+（Prism/Perfection/ClassicalPrismPerfection:34）と `IsClassicalCor73Comparison`（Cor73PrismComparison:63）。Δ との同一視（A2 の上の主張）は drafts/A3 のまま。
+Prop 7.10 の S′ の単位の p 完全忠実平坦性は後回し（design-status §0.2′ の「後回しの項目」(1)。E3 は使わない）。
 
 ## 2. 定義の形
 
@@ -68,6 +79,8 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 **D4-02（11-03、BS-D4 の質問への回答）**：A3 の普遍の場合（A_0{f} の envelope と分類射）は A1 の具体的な普遍向き付き prism に結び付けず、**任意の有界向き付き prism A₀ と
 d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示引数**にして述べる。A1 の `universalOrientedPrismRing` は現状 p を引数に取らず `CommRing` インスタンスもない
 （停止点 3 で直す）ので、A3 はそれに依存しない。停止点 3（A1）で A1 の具体的な A₀（Ex 2.21・3.4 の普遍向き付き prism、`universalOrientedPrism_hom`）に特殊化する。
+（11-13 追記：本体（BS-W15 K5）では分類射を引数に取る形が `exists_bounded_lciRelationEnvelope_of_classifier`（LciEnvelopeExistence:62）、
+`universalOrientedPrism` への特殊化が `exists_bounded_lciRelationEnvelope`（:142、:150 で `existsUnique_universalOrientedPrismHom` を使う）。）
 数学的内容は同じ（原典 Ex 7.9 の「普遍の場合に帰着」は分類射の存在だけを使う）。
 
 設定：(A,(d))、f_1,…,f_r ∈ A で f̄ が A/d 上 Koszul 正則、R := A/(d, f)、R の p ねじれ有界。主張：Δ_{R/A} は離散で d ねじれなし、
@@ -140,6 +153,8 @@ d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示�
 - RootEnvelope の再利用：`Semiperfectoid/RootEnvelope/` は完全 prism 上の X^p − b 族の割り算包 A{(X^p − b)/d}-型の離散性・p 完全忠実平坦性・
   完全化と perfectoid 候補の一致を示している。T の envelope A′{(X_i − f_i)/d}^∧（X_i は p 冪根をもつ変数）と形が近く、A3-3・A3-4 で
   Ex 7.9 の envelope の計算（特に完全化の同一視）に転用できる見込み。設計時に対応表を作る。
+  （11-13 追記：BS-W17 H5 は RootEnvelope を使わず、`Semiperfectoid/RootRelation*`・`RootFamily*` を新しく作った。T・S′ の閉包から
+  `Semiperfectoid/RootEnvelope/` には届かない。）
 
 ## 3. 必要な一般論（G-A3）
 
@@ -149,13 +164,13 @@ d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示�
 | G-A3-2 | 導来外冪の décalage：∧^i(M[1]) ≃ Γ^i(M)[i]（M 平坦）、p 完全平坦な M について (∧^i L)^∧ の離散性 | なし（Illusie I.4.3.2） | Ex 7.9、Prop 7.10 (a) |
 | G-A3-3 | 余接複体の完全列（transitivity triangle）と、全射 S′ → S が余接複体で全射なら HT で Δ_{S′} → Δ_S 全射 | なし | Prop 7.10 (b) |
 | G-A3-4 | Δ と filtered 余極限の交換（A2 (5) の系）、envelope と filtered 余極限 | A2-4 | Prop 7.10 (b) |
-| G-A3-5 | prism の圏の冪等完備性、retract の始対象（Lemma 7.8） | なし（圏論、短い） | Lemma 7.7(3) |
-| G-A3-6 | p ねじれなし環の Frobenius 持ち上げから δ 構造（Rem 2.2）、一意性 | 要確認（`Delta/Basic`） | Lemma 7.7(1′) |
-| G-A3-7 | Ex 7.9 の p 反転の議論：Δ̄_R[1/p] が gr^1 で生成される Banach 代数、[Bha12, Claim 3.30] の標準計算 | なし。A3 の最重量 | Ex 7.9 |
+| G-A3-5 | prism の圏の冪等完備性、retract の始対象（Lemma 7.8） | なし（圏論、短い）。**11-13：済**（`initial_of_retraction_idempotent`（CategoryTheory/InitialOfRetraction:53）、`PrismOver.isIdempotentComplete`（Semiperfectoid/PrismRetract:127）） | Lemma 7.7(3) |
+| G-A3-6 | p ねじれなし環の Frobenius 持ち上げから δ 構造（Rem 2.2）、一意性 | 要確認（`Delta/Basic`）。**11-13：済**（`existsUnique_over_of_frobeniusLift`（Semiperfectoid/DiscreteDelta:35）） | Lemma 7.7(1′) |
+| G-A3-7 | Ex 7.9 の p 反転の議論：Δ̄_R[1/p] が gr^1 で生成される Banach 代数、[Bha12, Claim 3.30] の標準計算 | なし。A3 の最重量。**11-13：古典的な部分は本体**（`surjective_of_continuous_retraction_of_denseRange`・`surjective_of_dense_filtration_retraction`（Semiperfectoid/LciEnvelopeInvertP）、`surjective_of_dense_dividedPower_generators_retraction`（LciEnvelopeInvertPGenerators:44）） | Ex 7.9 |
 | G-A3-8′ | 既存 Cor 7.3 入口（`exists_perfectoidization_of_perfectPrism_quotient`）への A′・r・非単元・零環の分岐の供給（W9-I-44） | 既存の型 | §2.3 |
-| G-A3-8 | 始 prism の完全化は始完全 prism（Lemma 3.9 の普遍性）、既存 Cor 7.3 の対象との一致 | `Prism/Perfection`（`existsUnique_perfectDeltaPDPrismHom`）、`Semiperfectoid/Perfectoidization` | Prop 7.10 → A5 |
+| G-A3-8 | 始 prism の完全化は始完全 prism（Lemma 3.9 の普遍性）、既存 Cor 7.3 の対象との一致 | `Prism/Perfection`（`existsUnique_perfectDeltaPDPrismHom`）、`Semiperfectoid/Perfectoidization`。**11-13：本体（BS-W17 H5）が使ったのは `classicalPrismPerfection`（Prism/Perfection/ClassicalPrismPerfection:34）**、比較は `IsClassicalCor73Comparison`（Semiperfectoid/Cor73PrismComparison:63） | Prop 7.10 → A5 |
 | G-A3-9 | p ねじれなし環 C と Frobenius 持ち上げ φ_C：φ_C が mod p で x ↦ x^p であることの判定。**A2 の模型から来る φ_R が C/p の E∞-F_p 代数の Frobenius 演算を誘導するという比較を含む**（π_0 への作用が p 乗という性質だけでは出ない、W9-I-45）。A4 の P⁰ の π_0 の部分を前倒しし、A4 の結論を使わない。段 II で A4 の P⁰ と同時に検証 | なし（W9-I-34・45） | (1′) |
-| G-A3-10 | (a) 通常の δ 環の押し出し N = E ⊗_U A の δ 構造（W₂ への切断の貼り合わせ）と δ-A 射の普遍性 Hom_{δ-A}(N, D) = Hom_{δ-U}(E, D)（非完全な δ 環。`PerfectDeltaTensor` は使えない、W9-I-42）；(b) 完備化の H⁰ 比較：K = E ⊗^L_U A → N は H⁰ 同型で、LΛ_I 後も H⁰ 同型（既存 `derivedComplexCompletion_h0_map_isIso`、W9-I-41）；(c) `existsUnique_deltaPDCompletionHom` で完備化の一意延長 | (b)(c) は既存、(a) は Delta/ の隣に | §2.2 (iii)(iv) |
+| G-A3-10 | (a) 通常の δ 環の押し出し N = E ⊗_U A の δ 構造（W₂ への切断の貼り合わせ）と δ-A 射の普遍性 Hom_{δ-A}(N, D) = Hom_{δ-U}(E, D)（非完全な δ 環。`PerfectDeltaTensor` は使えない、W9-I-42）；(b) 完備化の H⁰ 比較：K = E ⊗^L_U A → N は H⁰ 同型で、LΛ_I 後も H⁰ 同型（既存 `derivedComplexCompletion_h0_map_isIso`、W9-I-41）；(c) `existsUnique_deltaPDCompletionHom` で完備化の一意延長 | (b)(c) は既存、(a) は Delta/ の隣に。**11-13：(a) も本体**（`tensorDeltaStructure`・`tensorDeltaStructure_isDeltaHom_iff`（Delta/Basic/Tensor:101・135、BS-W15）） | §2.2 (iii)(iv) |
 
 ## 4. 原典との差
 
@@ -181,6 +196,8 @@ d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示�
 | A3-2 | Lemma 7.7(1′)(1″) | G-A3-6、A0-3c |
 | A3-3 | Ex 7.9：普遍の場合（A_0{f}）の envelope（A0-3c）、分類射と底変換、離散性（G-A3-1・2）、retraction と B → Δ_R、p 反転の議論（G-A3-7） | A1-4 の A_0、A2-4、A3-1・2 |
 | A3-4 | qrsp の定義、Prop 7.10（S′・T）、Cor 7.3 の対象との接続（G-A3-8）、RootEnvelope の転用 | A3-3、G-A3-3・4・8 |
+
+（11-13 追記：A3-1〜A3-4 の古典的な部分は本体に入った。対応は §1 の表の後の追記。）
 
 骨組みは A3-1 → A3-2 → A3-4（主張）→ A3-3。A3-3 の p 反転の議論（G-A3-7）は一つの補題に閉じ込める（**証明予定**の補題であって恒久的な引用ではない。W9 で計算 ○、W9-III-12）。
 
@@ -213,5 +230,6 @@ d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示�
 5. G-A3-8：始 prism の完全化が始完全 prism であること（Lemma 3.9 の普遍性）と、既存の `exists_perfectoidization_of_perfectPrism_quotient` の構成
    （δ 除算 → d ねじれ除去 → 完全化 → 完備化）が (Δ_{S′})_perf に一致すること。
 6. RootEnvelope の対応表：`PerfectPrismRootSource*`・`PerfectPrismRootPrismCompletelyFlat` などと T の envelope の対応。
+   （11-13 追記：不要になった。W17 H5 は RootEnvelope を使わない（§2.3 の追記）。この二つは今はファイルではなく、`Semiperfectoid/RootEnvelope/PerfectPrism.lean` の中の section の名前。）
 7. §2.2 の一般への帰着（W9-I-39・41・42 で差し替え、W9 で ○）：R = R_univ ⊗̂^L_U A（Koszul 正則性）、B := LΛ_I(E ⊗^L_U A) ≃ Δ_{R/A}（普遍の比較の底変換と A2 (4)）、
    Δ_{R/A} の離散性から B の離散性、H⁰ 比較で B ≃ H⁰ LΛ_I(E ⊗_U A)、通常の δ 押し出しと完備化の一意延長から envelope の普遍性と全 prism の中の始性。

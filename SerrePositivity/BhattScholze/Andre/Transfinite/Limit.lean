@@ -20,10 +20,10 @@ perfectoid 塔の未完備余極限と完備化の一様ねじれ境界、完備
 BS 著者版 Theorem 7.14 の証明の極限段に使う、perfectoid 塔の余極限と完備化を扱う。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Transfinite/Tower`。
@@ -31,7 +31,7 @@ BS 著者版 Theorem 7.14 の証明の極限段に使う、perfectoid 塔の余�
 
 universe u
 
-/-! ## Perfectoid 塔の未完備余極限と完備化の一様ねじれ境界（旧 Andre/Transfinite/TorsionBound.lean）
+/-! ## Perfectoid 塔の未完備余極限と完備化の一様ねじれ境界
 
 BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題を、被約性と逆極限の座標から証明する。
 被約性・ねじれの境界と、完備化の perfectoid 性・完全忠実平坦性とは区別する。
@@ -215,7 +215,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end TorsionBound
 
-/-! ## CompletedMaps（旧 Andre/Transfinite/CompletedMaps.lean） -/
+/-! ## CompletedMaps -/
 
 @[expose] public noncomputable section CompletedMaps
 
@@ -368,7 +368,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end CompletedMaps
 
-/-! ## PresentationColimit（旧 Andre/Transfinite/PresentationColimit.lean） -/
+/-! ## PresentationColimit -/
 
 @[expose] public noncomputable section PresentationColimit
 
@@ -522,7 +522,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end PresentationColimit
 
-/-! ## PerfectoidCompletionColimit（旧 Andre/Transfinite/PerfectoidCompletionColimit.lean） -/
+/-! ## PerfectoidCompletionColimit -/
 
 @[expose] public noncomputable section PerfectoidCompletionColimit
 
@@ -767,7 +767,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end PerfectoidCompletionColimit
 
-/-! ## 超限反復の終段における絶対整閉性（旧 Andre/Transfinite/RootClosure.lean）
+/-! ## 超限反復の終段における絶対整閉性
 
 BS 著者版 Theorem 7.14（著者版 p.61）の超限反復に必要な根の移送を扱う。
 極限環の完備性・perfectoid性・完全忠実平坦性はこのファイルでは主張しない。
@@ -816,7 +816,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end RootClosure
 
-/-! ## Type u 内の ω₁ と終段の完備性・根の存在（旧 Andre/Transfinite/OmegaOne.lean）
+/-! ## Type u 内の ω₁ と終段の完備性・根の存在
 
 BS 著者版 Theorem 7.14（著者版 p.61）の超限反復のため、ω₁ 未満の段を
 `Ordinal.ToType` で同じ宇宙に表し、可算データの上界を実証明する。

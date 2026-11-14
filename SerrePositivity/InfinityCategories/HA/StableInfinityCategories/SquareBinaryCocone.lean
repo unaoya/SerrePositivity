@@ -76,8 +76,8 @@ def squareBinaryCocone {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
 規約：端点の表示の等号を除いて実際の辺を保つ。使われ方：余積の第一包含。 -/
 lemma squareBinaryCocone_leg_left {X : SSet.{u}}
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    ((squareBinaryCocone R).leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft).edge = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow R).edge := by
-  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+    ((squareBinaryCocone R).leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft).edge = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow R).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   apply congrArg SSet.yonedaEquiv
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft (𝟙 Δ[0]) ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) (Δ[0] ⨿ Δ[0])) (𝟙 Δ[0]) ≫
@@ -107,7 +107,7 @@ lemma squareBinaryCocone_leg_left {X : SSet.{u}}
 規約：端点の表示の等号を除いて実際の辺を保つ。使われ方：余積の第二包含。 -/
 lemma squareBinaryCocone_leg_right {X : SSet.{u}}
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    ((squareBinaryCocone R).leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight).edge = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow R).edge := by
+    ((squareBinaryCocone R).leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight).edge = (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow R).edge := by
   rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge]
   apply congrArg SSet.yonedaEquiv
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight (𝟙 Δ[0]) ≫

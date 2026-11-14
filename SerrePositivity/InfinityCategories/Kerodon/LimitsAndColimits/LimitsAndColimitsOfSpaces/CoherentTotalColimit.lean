@@ -1,10 +1,12 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoconeFiberColimitCriterion
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalCoconePre
+public import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalCocone
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoconeComparison.CoherentTotalCoconePre
 
 /-!
 概要：小さい底上の任意の coherent 空間値図式の全空間 Kan 模型が元の余錐の native な余極限。
@@ -29,8 +31,8 @@ variable {B : SSet.{u}}
 規約：図式・余錐を選び直さない。使われ方：全空間 Kan 模型の普遍性。 -/
 lemma coherentDiagramTotalCocone_isColimit
     (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F) :=
-  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F)
     (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentTotalCoconeFiber_pre_homotopyEquivalence F)
 
 /-- 概要：小さい底上の任意の coherent 空間値図式は native な余極限を持つ。
@@ -38,6 +40,11 @@ lemma coherentDiagramTotalCocone_isColimit
 規約：strict 図式への置換を仮定しない。使われ方：一般 coherent 余極限の存在。 -/
 lemma hasColimit_coherentSpaceDiagram
     (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit F :=
-  ⟨_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "3.3.4.6" (partial := special) "仮定：任意の小さい K と p:K→SpaceInfinity に対し分類束を smallLeftUnstraightening p、余極限を coherentDiagramTotalCocone p の頂点に固定（Lean が強い特殊形）。結論：元の全空間からこの余極限への標準単位が弱ホモトピー同値（一致）。任意に指定された分類束・余極限への比較はこの型には含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit

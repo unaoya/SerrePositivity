@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseNerveFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorQuasiIsoFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGUniverseNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.DGFunctorQuasiIsoFullyFaithful
 
 /-! # Hom 準同型な実 dg 関手の共通宇宙での充満忠実性
 概要：異なる対象宇宙の dg 関手でも、Hom 準同型性は実 nerve の充満忠実性を与える。

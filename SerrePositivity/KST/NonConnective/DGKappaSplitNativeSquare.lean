@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.NonConnective.DGKappaFullPerfAction
 public import SerrePositivity.KST.NonConnective.DGKappaSplitRelations
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare
 
 /-!
@@ -31,12 +31,12 @@ abbrev DGKappaClosedFunctorCategory :=
 /-- 閉射の通常 nerve を、同じ全 native 入力へ持ち上げる実写像。 -/
 def dgKappaClosedFunctorNativeMap :
     nerve (DGKappaClosedFunctorCategory R D I) ⟶ dgKappaFullPerfParameter R D I where
-  app n := ↾fun x ↦ ULift.up ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R
+  app n := ↾fun x ↦ ULift.up ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R
     (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))).app n x)
   naturality _ _ f := by
     ext x
     apply ULift.ext
-    exact NatTrans.naturality_apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R
+    exact NatTrans.naturality_apply (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion R
       (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))) f x
 
 /-- 同じ左注入と右射影を持つ、元の閉関手圏の下二単体。 -/

@@ -26,7 +26,7 @@ variable (A : Type u) [CommRing A]
 def freeProbeDerivedUnitAmbientHom (X : Complex A) :
     (HomotopyCategory.mk ((ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
-        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
       HomotopyCategory.mk ((ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier)) :=
   (ComplexLimits.complexOrdinaryAmbientVertexIso A

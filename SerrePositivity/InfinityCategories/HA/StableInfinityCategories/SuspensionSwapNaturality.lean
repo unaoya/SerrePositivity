@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 lemma SuspensionSquare.diagramComparisonIso_transpose_source {X : SSet.{u}} [Quasicategory X]
     {x : X _⦋0⦌} (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare x) :
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map (s.diagramComparisonIso s.transpose).hom =
-      𝟙 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0) := by
+      𝟙 (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 0 0) := by
   change (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagramHoEvaluation X 0 0).map
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberSuspensionComparisonHom s.square s.isPushout
       (s.transpose.changeSource s.source_eq.symm)) = _

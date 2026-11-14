@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.SimplexTerminalAugmentation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 

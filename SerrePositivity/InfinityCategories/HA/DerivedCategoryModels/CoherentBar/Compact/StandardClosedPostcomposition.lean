@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.LinearHomCohomology
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStandardClosedPrecomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardClosedPrecomposition
 /-!
 概要：標準豊穣後合成を元の閉射の全 Hom 鎖写像へ同定する。
 方針：閉定数との AW 合成を各斉次成分で照合する。

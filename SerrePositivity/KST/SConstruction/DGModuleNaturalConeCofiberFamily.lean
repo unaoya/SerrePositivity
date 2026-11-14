@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeFullSquare
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InternalHomFlipVertices
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStability
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStability
 
 /-!
 概要：元 dg cone 全族を Sp 正本の cofiber 図式空間へ入れ、同じ底辺の選択図式へ全比較する。
@@ -43,7 +43,7 @@ def dgModuleNaturalConeCofiberFamily : _root_.SerrePositivity.InfinityCategories
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagram_functorVertex (dgModuleNaturalConeFullSquare R D P F G η ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := (X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)))
     have he := hs.trans (dgModuleNaturalConeFullSquare_evaluation R D P F G η x)
-    exact (congrArg (fun sq => _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex sq 0 1) ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare sq) he).mpr
+    exact (congrArg (fun sq => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex sq 0 1) ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare sq) he).mpr
       ⟨(_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeZeroTriangle R D (dgModuleNaturalConeArrow R D F G η x)).zero_corner,
         _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeSquare_isPushout R D _⟩)
 

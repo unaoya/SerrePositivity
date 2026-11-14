@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveSpan
 public import SerrePositivity.HomotopicalAlgebra.Diagram.PushoutComparison
 public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit
@@ -43,3 +45,8 @@ lemma comparison_weakEquivalence_of_span (D : K ⥤ C)
     (colimit.ι_map q _) (colimit.ι_map q _)
 
 end SerrePositivity.DiagramModel.HomotopyColimit
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.2.4.4" (partial := stronger-hyp) "仮定：左固有モデル圏 C、span の一辺が cofibration に加え IsLocallyPresentable と小さい cofibrant generators I,J（Lean が強い）。結論：実際の projective homotopy-colimit comparison が元の pushout への弱同値で、原典の (ii) の場合の homotopy pushout と一致。(i) の一般の cofibrant objects 版と非 combinatorial の C は含まない。"] _root_.SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_span

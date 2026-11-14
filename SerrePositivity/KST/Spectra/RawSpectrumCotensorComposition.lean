@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedComposition
 public import SerrePositivity.KST.Spectra.RawSpectrumCotensorIso
 public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeComposition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrengthNaturality
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomTensorStrengthNaturality
 
 /-!
 概要：元の cotensor 交換の、源の全 Hom パラメータに関する豊穣自然性。

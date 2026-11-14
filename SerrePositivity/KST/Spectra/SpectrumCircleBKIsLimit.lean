@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKConeSourceRestriction
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConeSourceApex
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConeSourceApex
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.CoherentConeFamilyHomotopy
 
 /-!

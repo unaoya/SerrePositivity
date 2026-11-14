@@ -43,12 +43,12 @@ lemma isColimitCone_of_coherent_spacePiData
   apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.isColimitCone_iff_nativeTotalPiCriterion F c).mpr
   refine _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.bridge_finite_piCriterion _ _ _ _ _ h
     (fun i ↦ _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.spaceInfinityEdgeValue
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.coconeTransportLeg (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F) (ULift.up (r i))))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.coconeTransportLeg (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F) (ULift.up (r i))))
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.nativeTotalValueComparison F c) ?_ ?_ ?_
   · intro i
     exact ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.nativeTotalComparison_leg_homotopy F c (ULift.up (r i))⟩
   · intro i j hij
-    exact ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.coconeLegNaturalityHomotopy (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalCocone F)
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.coconeLegNaturalityHomotopy (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalCocone F)
       (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.uliftTruncatedEdge.{u, u + 1} (e hij).toTruncated))⟩
   · intro K _ f
     obtain ⟨b, g, H⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.finite_nativeTotalLeg_detection F f

@@ -1,8 +1,9 @@
 module
+public meta import SerrePositivity.Util.Citation
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
-public import SerrePositivity.BhattScholze.Prismatic.PrismOver
+public import SerrePositivity.BhattScholze.Prism.Basic.Bounded
 
 /-!
 # prism の古典的な完全化
@@ -94,3 +95,7 @@ theorem existsUnique_classicalPrismPerfectionHom (Q : OrientedPrism p B)
     exact ⟨k.map_delta, congrArg OrientedPrism.Hom.toRingHom hk⟩
 
 end SerrePositivity.BhattScholze
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 3.9" (partial := special) "向き付き prism の場合に原典の形の定理がある（BS-W17）：classicalPrismPerfection（δ 完全化の (p,d) 完備化 H⁰、完全・有界）と、完全 prism への射についての普遍性 existsUnique_classicalPrismPerfectionHom。源の完全性は仮定しない。部品（完全δ環＋distinguished 元の PD 完備化が完全 prism で普遍、完全化と完備化の順序比較）も本体。付随の主張は一つの定理には入っていない。p 進完備化した段での正則性などは PCompletedPerfection:124–145 に別の定理としてある。未完備の A_perf についての主張と、導来と古典的完備化の一致は本体にない。PCompleted 版は d 進完備性を仮定。A3/A5 の始完全 prism で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：deltaPDCompletionPerfectionEquiv（原文の古典完備化との一致や普遍性とは別の比較同型。module docstring の関連を残す。） ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.classicalPrismPerfection
+attribute [cite BS19 "Lemma 3.9" (partial := special) "向き付き prism の場合に原典の形の定理がある（BS-W17）：classicalPrismPerfection（δ 完全化の (p,d) 完備化 H⁰、完全・有界）と、完全 prism への射についての普遍性 existsUnique_classicalPrismPerfectionHom。源の完全性は仮定しない。部品（完全δ環＋distinguished 元の PD 完備化が完全 prism で普遍、完全化と完備化の順序比較）も本体。付随の主張は一つの定理には入っていない。p 進完備化した段での正則性などは PCompletedPerfection:124–145 に別の定理としてある。未完備の A_perf についての主張と、導来と古典的完備化の一致は本体にない。PCompleted 版は d 進完備性を仮定。A3/A5 の始完全 prism で使う ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：deltaPDCompletionPerfectionEquiv（原文の古典完備化との一致や普遍性とは別の比較同型。module docstring の関連を残す。） ／ DOC1 照合：ok 3 件 ／ 11-12 夜更新 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.existsUnique_classicalPrismPerfectionHom

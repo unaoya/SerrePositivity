@@ -4,7 +4,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.Logic.Small.Set
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallActionClosure
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.SmallActionClosure
 
 /-!
 # 中断した任意モデル源への一般化：SmallParameterClosure

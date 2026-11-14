@@ -47,15 +47,23 @@
 | | 6-2 | 2f：BST13 Lemma 3.5〜3.9 | 6-1 |
 | | 6-3 | 2g：BS17 §2 | 6-2 |
 | | 6-4 | 2h：BS17 Thm 4.1 (i) → **恒久引用 2** | 6-3 |
-| ⑤∞ BS の ∞ 側（3a-2 と B3 の後に開く） | 5∞-1 | A-1：∞ 層の一般論 S1〜S8 | 3a-2、3a-3、3a-4、B3（BS の整理） |
+| ⑤∞ BS の ∞ 側（3a-2 と B3 の後に開く） | 5∞-0 | 準備（11-12 夜、`refactor-ledger.md` §7）：drafts の A0・A1 の古典的な部分を本体の宣言に寄せる（R4-1）、Tor 振幅の定義を本体の版に、prism の圏と平坦な射、prismatic site の本質的小ささ、Rem 4.6 の定義、Lemma 3.8 などの小さな補題。§5・§6 の分（11-12 夜）：drafts/A1 の 3 本（CrystallineInput・CrystallineSite・DeRhamComparisonPoly）も本体を指す形に（R5-1）、Prop 6.2 (b) と Cor 5.5 の一般の結晶 prism の二つの sorry を `hodgeTate_iso` の系に（R5-2）、Tor 振幅の定義と名前の重なりの一本化（BR40・R5-4 (e)）。§7・§8・§10 の分（11-13）：drafts/A3 を本体に寄せて約 26 の sorry を外し EInfinityTheory に移す（R7-1）、A2 の `Poly` を本体の `Prismatic.Poly` に、名前つきの述語（semiperfectoid・有界 p 冪ねじれ、R7-2 (b)）、drafts/A4 の Not 8.1 を本体の Thm 3.10 から、drafts の重複・同名・古い記述（R8-10）と Theory 版の界面への追従（R8-1）、drafts/A8 を本体を指す形に（同名 40、R10-4）、`IsConnectiveAt`・`isPCompleteVertex` を drafts と衝突する前に一般の場所へ（R10-5 (c)） | B3 |
+| | 5∞-1 | A-1：∞ 層の一般論 S1〜S8 | 3a-2、3a-3、3a-4、B3（BS の整理） |
+| | 5∞-1m | M13（plan-draft の A-2）：D(A) の t 構造と完備化の ∞ 関手（G-A2-2・G-A2-3、drafts/DerivedGeneral 3 本）。A2-3（HT filtration）・A3 の離散性・A4 の G-A4-4 の前提（11-13 夜に段を明示） | B3 |
 | | 5∞-2 | A0：site の RΓ、C^• が Δ を計算 | 5∞-1、3b-2 |
-| | 5∞-3 | A1：HT 比較の組み立て、D68 の置き換え（**恒久引用 1**） | 3b-2、3b-4 |
-| | 5∞-4 | A2：animated Δ、Künneth、底変換 | 5∞-3、5a-3、5a-4 |
-| | 5∞-5 | A4：perfectoidization、Lemma 8.4 | 5∞-4、5a-7、5a-8 |
-| | 5∞-6 | A5：Prop 8.5、descendability | 5∞-4、5a-9 |
-| | 5∞-7 | A6：arc 層、Prop 8.10 の組み立て（**恒久引用 3**） | 5∞-1、6-4 |
-| | 5∞-8 | A7・A8 | 5∞-4 |
-| | 5∞-9 | A9：E3 の組み立て → **主定理の閉包の sorry 0** | 5∞-5〜5∞-8 |
+| | 5∞-3a | A1 の古典の段：Prop 6.2・Thm 6.3（一般の有界向き付き基底の多項式代数の HT 比較、`HodgeTateIsoStatement` は古典の型）、Cor 5.5 の一般の結晶 prism を系に（R5-2）。入力は本体の鎖複体版（Construction 6.1 の保存性・Tor 振幅、Rem 4.19 の項ごとの底変換）と、Lemma 4.22 の鎖複体版（新規）。drafts の ∞ の型（`HasFiniteCompleteTorAmplitude`・`baseChangeB`・`affineModuleDiagram`）は古典の型に置き換えてよい（11-12 夜、§5・§6 の見直し） | B3、5∞-0（③-b を待たない） |
+| | 5∞-3b | A1 の ∞ の段：Cor 4.12 の CAlg 値、D27（site の RΓ と Čech–Alexander 模型の一致の結び） | 5∞-3a、3b-2、3b-4、5∞-2 |
+| | 5∞-4 | A2：animated Δ、Künneth、底変換 | 5∞-3b、5a-3、5a-4、5∞-1m |
+| | 5∞-4b | Thm 6.4（D69）の ∞ の組み立て：関手としての同型 `deRham_iso_polynomial_universal`、`bigZigzagIso`・`polyUnderlying_iso_bigCech`・`transferWittComparison`・`deRham_iso_polynomial_modP`・`deRham_iso_rootAlgebra_modP`（11-12 夜に段を明示） | 5∞-2、5∞-3b、5∞-4、3b-4 |
+| | 5∞-4c | A3：Lemma 7.7 の Δ 版、Ex 7.9・Prop 7.10（T・S′）の Δ との同一視、G-A3-1・2・9・10、G-A2-10。qrsp の定義（Not 7.1、原典どおり）もここで（11-13 夜に段を明示） | 5∞-2、5∞-4、5∞-1m、5a-8 |
+| | 5∞-5 | A4：perfectoidization、Lemma 8.4。A7 の DiscreteCore・AnimatedDomain もここで（A5 が import する） | 5∞-4、5∞-4c、5∞-1m、5a-7、5a-8 |
+| | 5∞-6 | A5：Prop 8.5、descendability | 5∞-4、5a-9、5∞-4b、5∞-4c、5∞-5 |
+| | 5∞-7a | A6 の古典の段：経路 B の B6 の残り、tilt への帰着、`cech_exact_of_arcCover_perfectoid`。ArcSheafProperty を経路 B に書き直す（R8-10）。B6 の最後だけ 6-4 を待つ | B3、5∞-0（B6 の最後は 6-4） |
+| | 5∞-7b | A6 の ∞ の段：CAlg 値の arc 層、Prop 8.10 の組み立て、Cor 8.12 の導来版 | 5∞-1、5∞-2、5∞-5、5∞-6、5∞-7a、6-4 |
+| | 5∞-8a | A7：Prop 8.13 の導来版（Cor 8.14 に要る特別な場合だけか確かめる）、Cor 8.14 | 5∞-4、5∞-5、5∞-6、5a-3 |
+| | 5∞-8b | A8 の組み立て：Thm 10.9 (a)、Thm 10.11 と E3 の欄 `integral`、Thm 10.9 (b) | 5∞-5、5∞-6、5∞-7b、5∞-8a、5∞-8c |
+| | 5∞-8c | A8 の古典の段：一般の J の Lemma 10.3・Prop 10.2（拡大）・Rem 10.7（冪等）の系、C1′ の残り（`completeBaseChangeUnitIso` など、research/bs-w13-scratch/）、`span_singleton_isModuleComplete`、`exists_principal_splitting_cover` | B3、5∞-0 |
+| | 5∞-9 | A9：E3 の組み立て → **主定理の閉包の sorry 0** | 5∞-5〜5∞-8c、5a-6 |
 
 ## 3. 読み方
 
@@ -63,3 +71,23 @@
 - K4 の後、③-a・③-b・⑤a・⑥ は独立に始められ、⑤∞ で合流する。
 - 一括レーンの B3 は各レーンに二度目の追従を求めるので、③ が新しいファイルを置き始める前が理想。B1 に時間がかかるなら ③ を先に始め、B4 を一回増やす。
 - ⑥ の合流（6-4 → 5∞-7）は遅いので、⑥ の遅れは経路に響かない。
+
+## 4. 追記（2026-11-12 夜、§5・§6 の見直しから）
+
+- 5∞-3 を 5∞-3a（古典）と 5∞-3b（∞）に分けた。5∞-3a は ③-b の橋を待たないので、B3 と 5∞-0 の後に、⑤∞ の開始を待たずに始められる。最長の経路の 3b-2 → 5∞-3 → 5∞-4 が短くなる。
+- Thm 6.4（D69）の ∞ の組み立てを 5∞-4b として明示し、5∞-6（A5 の Lemma 8.6 が使う）の依存に足した。
+
+## 5. 追記（2026-11-13、§7・§8・§10 の見直しから）
+
+- **A3 と M13 に段がなかった**ので足した：5∞-4c（A3）、5∞-1m（M13、B3 の後に 5∞-1 と並べて開ける）。担当は ⑤∞ の人の割り当てで決める。
+- **依存の不足を直した**：5∞-5 に 5∞-4c・5∞-1m（A7 の DiscreteCore・AnimatedDomain を 5∞-5 へ）、5∞-6 に 5∞-4c・5∞-5、5∞-9 に 5a-6（A9 は BE の組み立ての完成を要る）。
+- **5∞-7・5∞-8 を分けた**：5∞-7a（arc の古典、B3 の後すぐ）と 5∞-7b（∞）、5∞-8a（A7）・5∞-8b（A8 の組み立て、5∞-7b を待つので ⑥ が A8 の経路に乗る）・5∞-8c（A8 の古典、B3 の後すぐ）。
+- B3 の後すぐ開けられる古典の段は 5∞-0・5∞-3a・5∞-7a・5∞-8c の四つ。∞ の基盤（③）を待たない。
+
+## 6. 追記（2026-11-14、調整役）：M15・G12 を新しいレーン ⑤d へ（ユーザー決定）
+
+⑤a は M14（5a-8）で数日かかり、5∞-5 が M14 を待つので、5a-9（M15）と 5a-7（G12）を新しいレーン ⑤d（`math/bs-m15`、指示書 `bhatt-scholze/bhatt-scholze-codex-m15.md`）に移した。⑤a は M14 に集中する。
+
+## 7. 追記（2026-11-14、調整役）：5∞-0 は一括レーンが持つ
+
+B3 の取り込み（16d6b4547）で ⑤∞ を開く条件（3a-2・B3）がそろった。ユーザー決定（11-14）：5∞-0 は一括レーン（KL-W1 のチャット）が B4 の支援をしながら持つ（指示書 `bulk-5inf0.md`）。その後は B5、時機を見て B3′。⑤∞ の数学の段（5∞-1・5∞-1m・5∞-3a・5∞-7a・5∞-8c など）は 5∞-0 の完成の後に、新しい Codex のチャットを立てて始める。

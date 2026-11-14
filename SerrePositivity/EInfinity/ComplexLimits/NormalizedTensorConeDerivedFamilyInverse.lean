@@ -53,7 +53,7 @@ lemma normalizedTensorConeDerivedFamilyHom_inverse_arrow :
 lemma normalizedTensorConeDerivedFamilyHom_isIso :
     IsIso (normalizedTensorConeDerivedFamilyHom A X Y) := by
   let K := nerve (normalizedTensorElementIndex A X Y)
-  have ht : ∀ (a b : Arrow (hoFunctor.obj ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))),
+  have ht : ∀ (a b : Arrow (hoFunctor.obj ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)))),
       a = b → IsIso b.hom → IsIso a.hom := by
     intro a b h hb
     subst b

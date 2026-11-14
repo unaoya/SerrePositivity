@@ -50,8 +50,8 @@ lemma excisionComparison_theta_invertible_postcomp {X : SSet.{u}} [Quasicategory
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparison_diagonal_isInvertible A l hl
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionPullbackComparisonFamily_source_isPullback c hc d hd)
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionComparison_cospan_isEquivalencePath c d hd hF)
-  have hcomp : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow Q) ≫
-      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q)) := by
+  have hcomp : IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q) ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q)) := by
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomRight_homMk_diagonal]
     exact hdiag
   obtain ⟨e, he, htheta⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionRawSuspensionComparison_source_theta F i hi c hr d hd
@@ -62,19 +62,19 @@ lemma excisionComparison_theta_invertible_postcomp {X : SSet.{u}} [Quasicategory
   have hvertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.arrowFamilyOfFunctorEdge_vertex_edge
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparisonEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionRawSuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionReplaceInitial c))
       d hd) k
-  have hraw : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow Q).edge =
+  have hraw : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q).edge =
       ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorPullbackComparisonEdge
         (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionRawSuspensionSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionReplaceInitial c)) d hd).map
           ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k))).edge := hb0.trans hvertex
   have heq := (Truncated.HomotopyCategory.congr_arrowMk_homMk _ _ hraw).trans htheta
   have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isIso_comp_of_arrowMk_eq
-    (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow Q))
+    (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q))
     (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCoreComparisonEdge
       (nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridCoreInclusion ≫ nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridMiddleInclusion ≫ F)
       i hi e he))
-    (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q)) heq hcomp
-  exact ⟨e, he, (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 1 1) : hoFunctor.obj X),
+    (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q)) heq hcomp
+  exact ⟨e, he, (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 1 1) : hoFunctor.obj X),
     eqToHom (congrArg Arrow.right heq).symm ≫
-      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q), h⟩
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q), h⟩
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

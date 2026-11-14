@@ -30,21 +30,21 @@ local instance (X Y : OmegaSpectrum.{w}) :
 variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ) (Z : DGKappaZeroInput R D I)
   (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R))
-  (hMiddle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I))
-  (hRight : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I))
+  (hMiddle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I))
+  (hRight : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I))
 
 private lemma canonicalFiber_right :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (dgRelativeCanonicalFiberSquare R d).square =
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (d.square ≫ dgKInputK R) := by
-  rw [(dgRelativeCanonicalFiberSquare R d).right_edge, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+  rw [(dgRelativeCanonicalFiberSquare R d).right_edge, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
   exact SSet.yonedaEquiv.symm_apply_apply _
 
 include Z hMiddle in
 /-- 明示相対屋根に条件付きで、元の同じ K 四角形の右辺の始点は、同じ平坦 cone の固定 K 零頂点である。 -/
 theorem dgKappaSuspensionRelative_middle_isZero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK R) 1 0) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK R) 1 0) := by
   have he := congrArg ((dgKInputK R).app (Opposite.op ⦋0⦌)) hMiddle
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK R) 1 0 = _ at he
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK R) 1 0 = _ at he
   rw [dgKInputK_vertex] at he
   exact he.symm ▸ dgKappaResolvedConeK_isZeroVertex R D I Z
 
@@ -54,21 +54,21 @@ def dgKappaSuspensionLoopSquare :
   toZeroTriangle := (dgRelativeCanonicalFiberSquare R d).toZeroTriangle
   target_eq := by
     have he := congrArg ((dgKInputK R).app (Opposite.op ⦋0⦌)) hRight
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK R) 1 1 = _ at he
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK R) 1 1 = _ at he
     rw [dgKInputK_vertex] at he
-    have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgRelativeCanonicalFiberSquare R d).square 1 1 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK R) 1 1 := by
+    have ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgRelativeCanonicalFiberSquare R d).square 1 1 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK R) 1 1 := by
       rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target, canonicalFiber_right R d, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target]
     exact ht.trans he
   other_zero := by
-    have hs : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgRelativeCanonicalFiberSquare R d).square 1 0 =
-        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK R) 1 0 := by
+    have hs : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgRelativeCanonicalFiberSquare R d).square 1 0 =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK R) 1 0 := by
       rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, canonicalFiber_right R d, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source]
     exact hs.symm ▸ dgKappaSuspensionRelative_middle_isZero R D I Z d hMiddle
   isPullback := (dgRelativeCanonicalFiberSquare R d).isPullback
 
 variable (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hLeft : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex d.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)
+  (hLeft : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex d.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)
 
 /-- 元の厳密 dg 核入力の固定 K から、同じ実懸垂の実 loop 頂点への元の全比較辺。 -/
 def dgKappaSuspensionLoopComparison :
@@ -76,7 +76,7 @@ def dgKappaSuspensionLoopComparison :
       (dgKappaSuspensionLoopSquare R D I Z d hMiddle hRight).vertex :=
   (dgRelativeFiberVertexComparison R d).ofEq (by
     have he := congrArg ((dgKInputK R).app (Opposite.op ⦋0⦌)) hLeft
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ dgKInputK R) 0 0 = _ at he
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ dgKInputK R) 0 0 = _ at he
     rw [dgKInputK_vertex] at he
     exact he) rfl
 

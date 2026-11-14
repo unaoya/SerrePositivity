@@ -31,7 +31,7 @@ lemma simplexOrder_map {m n l : ℕ} (σ : ⦋l⦌ ⟶ ⦋n⦌)
 方針：入力の等号を消去し、条件の証明の違いを忘れる。
 規約：左 fiber の条件もそれぞれの入力に対するもの。使われ方：依存する入力の自然性。 -/
 lemma mcCarthyRho_congr {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
-    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C)
+    (z : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex C) (A : arNerve m ⟶ C)
     {α α' : Fin (n + 1) →o Fin (m + 1)} {τ τ' : Fin (n + 1) →o Fin 2}
     {E E' : arNerve n ⟶ cofiberDiagrams C}
     (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =

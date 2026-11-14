@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphExtendedNativeComparison
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectExtendedArrow
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomotopyInputExchange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.SimplicialFunctors.FunctorHomotopyInputExchange
 
 /-!
 概要：同じ二 graph の実 Perf 延長比較は元比較射を保って全自然である。

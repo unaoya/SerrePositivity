@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecomposition
 public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyTriangle
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleStrictNatTransIso
 
 /-!
 概要：元前合成 cone 比較を同じ native 全関手同型へ送る。

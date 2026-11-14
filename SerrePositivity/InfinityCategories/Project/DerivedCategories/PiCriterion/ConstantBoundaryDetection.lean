@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredLeftFibrationTransport
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.ContinuousKanHomotopy
 
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.AnchoredFiniteFactorization
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanRelativeReflection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.AnchoredFiniteFactorization
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.ContinuousKanRelativeReflection
 
 /-!
 概要：有限な定数境界付きの射を、定数境界のまま一つの実際の Kan fiber へ移す。

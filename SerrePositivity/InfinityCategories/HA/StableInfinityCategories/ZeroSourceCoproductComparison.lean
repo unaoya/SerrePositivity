@@ -20,9 +20,9 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：値域は quasicategory、安定性は不要。使われ方：標準包含との照合。 -/
 def zeroSourcePushoutCoproductIso {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0))
-    [HasBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1)] :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0) ⨿ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1) ≅ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 1 :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0))
+    [HasBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1)] :
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0) ⨿ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1) ≅ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 1 :=
   (coprodIsCoprod _ _).coconePointUniqueUpToIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz)
 
 /-- 概要：比較同型は標準第一包含を四角形の右辺に送る。
@@ -30,9 +30,9 @@ def zeroSourcePushoutCoproductIso {X : SSet.{u}} [Quasicategory X]
 規約：始点と終点を厳密に固定。使われ方：第一包含の cofiber 列。 -/
 lemma zeroSourcePushoutCoproductIso_inl {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0))
-    [HasBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1)] :
-    coprod.inl ≫ (zeroSourcePushoutCoproductIso R hR hz).hom = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0))
+    [HasBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1)] :
+    coprod.inl ≫ (zeroSourcePushoutCoproductIso R hR hz).hom = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R :=
   (coprodIsCoprod _ _).comp_coconePointUniqueUpToIso_hom
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) ⟨WalkingPair.left⟩
 
@@ -41,9 +41,9 @@ lemma zeroSourcePushoutCoproductIso_inl {X : SSet.{u}} [Quasicategory X]
 規約：始点と終点を厳密に固定。使われ方：第二包含と射影。 -/
 lemma zeroSourcePushoutCoproductIso_inr {X : SSet.{u}} [Quasicategory X]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0))
-    [HasBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1)] :
-    coprod.inr ≫ (zeroSourcePushoutCoproductIso R hR hz).hom = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop R :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0))
+    [HasBinaryCoproduct (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1)] :
+    coprod.inr ≫ (zeroSourcePushoutCoproductIso R hR hz).hom = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop R :=
   (coprodIsCoprod _ _).comp_coconePointUniqueUpToIso_hom
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) ⟨WalkingPair.right⟩
 
@@ -53,8 +53,8 @@ lemma zeroSourcePushoutCoproductIso_inr {X : SSet.{u}} [Quasicategory X]
 def zeroSourceCoproductFst {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 0 :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 0 :=
   BinaryCofan.IsColimit.desc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) (𝟙 _) 0
 
 /-- 概要：幾何学的二項余積から第二入力への射影。
@@ -63,8 +63,8 @@ def zeroSourceCoproductFst {X : SSet.{u}} [Quasicategory X]
 def zeroSourceCoproductSnd {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 1 1 ⟶ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex R 0 1 :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 1 1 ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex R 0 1 :=
   BinaryCofan.IsColimit.desc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) 0 (𝟙 _)
 
 /-- 概要：第一包含と第一射影の合成は恒等。
@@ -72,8 +72,8 @@ def zeroSourceCoproductSnd {X : SSet.{u}} [Quasicategory X]
 lemma zeroSourceCoproduct_right_fst {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R ≫ zeroSourceCoproductFst R hR hz = 𝟙 _ :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R ≫ zeroSourceCoproductFst R hR hz = 𝟙 _ :=
   BinaryCofan.IsColimit.inl_desc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) _ _
 
 /-- 概要：第二包含と第一射影の合成は零。
@@ -81,8 +81,8 @@ lemma zeroSourceCoproduct_right_fst {X : SSet.{u}} [Quasicategory X]
 lemma zeroSourceCoproduct_top_fst {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop R ≫ zeroSourceCoproductFst R hR hz = 0 :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop R ≫ zeroSourceCoproductFst R hR hz = 0 :=
   BinaryCofan.IsColimit.inr_desc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) _ _
 
 /-- 概要：第一包含と第二射影の合成は零。
@@ -90,8 +90,8 @@ lemma zeroSourceCoproduct_top_fst {X : SSet.{u}} [Quasicategory X]
 lemma zeroSourceCoproduct_right_snd {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight R ≫ zeroSourceCoproductSnd R hR hz = 0 :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight R ≫ zeroSourceCoproductSnd R hR hz = 0 :=
   BinaryCofan.IsColimit.inl_desc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) _ _
 
 /-- 概要：第二包含と第二射影の合成は恒等。
@@ -99,8 +99,8 @@ lemma zeroSourceCoproduct_right_snd {X : SSet.{u}} [Quasicategory X]
 lemma zeroSourceCoproduct_top_snd {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)]
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare R)
-    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex R 0 0)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoTop R ≫ zeroSourceCoproductSnd R hR hz = 𝟙 _ :=
+    (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex R 0 0)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoTop R ≫ zeroSourceCoproductSnd R hR hz = 𝟙 _ :=
   BinaryCofan.IsColimit.inr_desc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroSourcePushout_isBinaryCoproduct R hR hz) _ _
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

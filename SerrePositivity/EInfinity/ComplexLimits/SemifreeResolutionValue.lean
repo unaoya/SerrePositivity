@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionAugmentation
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleOutputResolutionAugmentation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Bar.DGModuleOutputResolutionAugmentation
 public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!

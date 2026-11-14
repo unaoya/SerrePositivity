@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckCommaTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.GrothendieckCommaTransport
 public import SerrePositivity.EInfinity.FrameHom.ThomasonNaturality
 public import SerrePositivity.EInfinity.FrameHom.CommaNerveBarProjection
 

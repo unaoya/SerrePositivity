@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordPresentationNaturality
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.UniverseLiftFillers
 
 /-!
 # 中断した任意モデル源への一般化：WordPresentationAction

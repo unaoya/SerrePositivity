@@ -1,0 +1,33 @@
+{
+  "additional_withdrawn_moves": [],
+  "specified_retentions": [
+    {
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
+      "reason": "Explicit §2(3) instruction; split before moving in B3-prime"
+    },
+    {
+      "module": "BhattScholze/Prismatic/Crystalline/Comparison/PDCechFrameHomotopy",
+      "reason": "PD-specific cochainHomotopy stays BS; generic algebraModule/index helpers extracted"
+    },
+    {
+      "paths": [
+        "KST/Spectra/CoherentNerve",
+        "KST/LocalizingInvariants/SpectrumHomotopyFunctor"
+      ],
+      "reason": "R83 deferred; approved scope avoids a 103-module expansion"
+    }
+  ],
+  "approved_literature_exception": "Kerodon 7.4 -> 9.3 retained, reason marked approved",
+  "baseline_debt": {
+    "bs_paper_reverse_edges": 34,
+    "bs_direct_references": 31,
+    "bs_public_import_visibility_only": 3,
+    "strict_section_reverse_edges": 15,
+    "strict_section_edges_both_endpoints_unmoved_in_B3": true
+  },
+  "excluded_scope": [
+    "Broad R21 9913-block proposal",
+    "Later B3-prime ledger sections 7/8/10 changes",
+    "Unused-declaration deletion"
+  ]
+}

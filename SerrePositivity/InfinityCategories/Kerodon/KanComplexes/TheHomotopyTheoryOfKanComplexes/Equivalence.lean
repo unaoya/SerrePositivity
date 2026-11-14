@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyNatTrans
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 public import Mathlib.AlgebraicTopology.Quasicategory.StrictBicategory
@@ -228,3 +230,9 @@ lemma QCatEquivalence.toHoEquivalence_inverse {X Y : SSet.{u}} [Quasicategory X]
     e.toHoEquivalence.inverse = (hoFunctor.map e.inv).toFunctor := rfl
 
 end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Cor 5.11" (partial := direction) "仮定：準圏の間の同値（Lean は安定性を使わない）。結論：ホモトピー圏の同値を与え、順方向は元の写像が誘導する関手（原典の順方向）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.toHoEquivalence
+attribute [cite BGT "Cor 5.11" (partial := direction) "仮定：準圏の間の同値（Lean は安定性を使わない）。結論：ホモトピー圏の同値を与え、順方向は元の写像が誘導する関手（原典の順方向）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.toHoEquivalence_functor

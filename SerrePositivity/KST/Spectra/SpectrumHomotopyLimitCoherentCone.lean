@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitEndPoint
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedHomHolimComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConePointSection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConePointSection
 
 /-!
 概要：任意の小さい通常図式について、元の BF homotopy limit を頂点とする coherent な錐。

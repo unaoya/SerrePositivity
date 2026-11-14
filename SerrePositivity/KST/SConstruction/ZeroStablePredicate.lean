@@ -19,12 +19,12 @@ open scoped Simplicial
 
 /-- 全零対象の条件は実際の安定な閉性条件。 -/
 def zeroStablePredicate (X : StableModel.{u}) : ClosedStablePredicate X where
-  predicate := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex
+  predicate := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex
   of_iso hx e := hx.of_vertexIso e
   zero_mem hz := hz
   pushout_mem F hF h00 h10 h01 :=
-    (⟨F, h01⟩ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X.carrier).zero_cofiber_of_zero_source_middle hF h00 h10
+    (⟨F, h01⟩ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X.carrier).zero_cofiber_of_zero_source_middle hF h00 h10
   pullback_mem F hF h10 h01 h11 :=
-    (⟨F, h01⟩ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X.carrier).zero_source_of_fiber_zero_middle_cofiber hF h10 h11
+    (⟨F, h01⟩ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle X.carrier).zero_source_of_fiber_zero_middle_cofiber hF h10 h11
 
 end SerrePositivity.KST.SConstruction

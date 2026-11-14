@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Preservation
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeUniverseContinuity
@@ -53,3 +55,8 @@ lemma leftClassification_baseChange_fst_preservesKappaFilteredColimits
     (pullbackSymmetry_hom_comp_snd G p)).symm
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.4.8" (partial := component) "仮定：準圏、正則 κ、左ファイブレーションと κ-連続な基底変換（HTT と一致）。結論：(1) 対象の compact 性とその余スライスの分類関手の compact 性、(2) κ-連続な基底変換による保存を与える（一致）。(3) の共変モデル構造の κ-small ホモトピー極限での閉性は含まない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassification_baseChange_preservesKappaFilteredColimits

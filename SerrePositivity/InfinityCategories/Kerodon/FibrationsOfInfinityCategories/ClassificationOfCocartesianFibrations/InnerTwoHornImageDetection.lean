@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InnerTwoHornDetection
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornImageEdges
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.InnerTwoHornImageEdges
 
 /-!
 概要：同型で表示した内ホーンの像上で辺を保つ元の関手は全ての cocartesian 辺を保つ。

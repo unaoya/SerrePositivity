@@ -25,7 +25,7 @@ d で割る包の関係式が最高変数について一次で係数 φⁿ(d) �
 @[expose] public noncomputable section
 universe u v w
 
-/-! ## 有限δ像の最高変数に関するp剰余次数評価（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaTopDegree.lean）
+/-! ## 有限δ像の最高変数に関するp剰余次数評価
 
 最高変数を分離し、係数側だけをpで割る具体的な環射を使う。
 係数商にδ構造を仮定しない。
@@ -169,7 +169,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaTopDegree
 
-/-! ## 有限δ像の最高変数係数（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaTopCoefficient.lean）
+/-! ## 有限δ像の最高変数係数
 
 初期係数p商へのFrobenius射を明示し、最高変数の係数を偏微分で計算する。
 -/
@@ -334,7 +334,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteDeltaTopCoefficient
 
-/-! ## 任意通常p剰余での有限δ像の最高偏微分（旧 Delta/Free/Finite/RelativeFreeFiniteDeltaTopDerivative.lean）
+/-! ## 任意通常p剰余での有限δ像の最高偏微分
 
 初期包含の最高偏微分が零であることから、実際のδ計算を微分する。
 -/

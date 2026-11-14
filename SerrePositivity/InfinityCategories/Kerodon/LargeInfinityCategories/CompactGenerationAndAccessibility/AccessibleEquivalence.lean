@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratorEquivalence
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleIndRepresentation
 public import Mathlib.Tactic.CrossRefAttribute
@@ -69,3 +71,13 @@ lemma isAccessible_iff_indEquivalence (C : SSet.{u + 1}) [Quasicategory C] :
   exists_congr (fun κ ↦ isKappaAccessible_iff_indEquivalence κ C)
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.2.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence
+attribute [cite HTT "5.4.2.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence
+attribute [cite HTT "5.4.5.1" (partial := special) "仮定：accessible な C と終対象 x の一点図式（Lean が強い：任意の小図式 p ではなく終対象の一点）。結論：元の C/x は C への同じ射影が trivial Kan fibration、従って全準圏同値となるので accessible（この場合に一致）。同値模型を新しく仮定するのでなく終対象の既存判定から構成する。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_equivalence
+attribute [cite HTT "5.4.5.15" (partial := special) "仮定：τ-accessible な C と τ-compact な始対象 x の一点図式（Lean が強い：一般の κ-small compact 図式を始対象の一点に限定）。結論：同じ Cx/ は C への射影が全準圏同値なので τ-accessible、かつ元の余錐の τ-compact 性は射影頂点の τ-compact 性と同値（この場合に両結論が一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_equivalence
+attribute [cite HTT "5.4.5.16" (partial := special) "仮定：accessible な C と始対象 x の一点図式（Lean が強い）。結論：元の Cx/ の射影は終始対象の境界判定から trivial Kan fibration であり、C と全同値なので accessible（この場合に一致）。一般の小図式の下圏の生成性を結論したとは数えない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_equivalence
+attribute [cite HTT "5.4.6.7" (partial := special) "仮定：accessible な C と終対象 x の一点図式（Lean が強い：p を終対象の一点に限定）。結論：同じ C/x は実際の射影によって C と全準圏同値、従って accessible（この場合に一致）。元の全 Hom と高次単体を保つ同値であり、通常圏の上圏への置換ではない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_equivalence

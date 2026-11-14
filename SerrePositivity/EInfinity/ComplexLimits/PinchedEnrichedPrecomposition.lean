@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.EnrichedPrecomposeComponents
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionInterval
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedPostcompositionInterval
 
 /-!
 # 小ささ仮定なしの元の豊穣前合成と全区間族

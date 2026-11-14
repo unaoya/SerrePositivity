@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Filtered.FilteredBinaryDiagonal
 
 /-!
@@ -30,3 +32,9 @@ instance isSiftedInfinity_of_filtered (K : SSet.{u}) [Quasicategory K]
   diagonal_rightCofinal := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Filtered.isRightCofinal_binaryDiagonal K
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.5.8.1"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity
+attribute [cite HTT "5.5.8.3"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isSiftedInfinity_of_filtered

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedTensorEnrichedFunctor
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationWhisker
 
 /-! # 同じ全 Hom 自然な比較の左 smash
 概要：任意の元の全 Hom 自然な比較を、固定左因子との同じ smash で保持する。

@@ -1,5 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
+
+public meta import SerrePositivity.Util.Citation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FiniteShapes
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseLimitExistence
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
 
@@ -22,3 +24,8 @@ lemma hasFiniteLimits_functorCategory (K X : SSet.{u}) [Quasicategory X]
   hasLimit p := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasLimit_of_hasPointwiseLimits p (fun _ ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits.hasLimit _)
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.4.2.3" (partial := component) "仮定：準圏 D が有限極限を持つ（Lean が強い：任意の指定形 K の極限を仮定する HA の場合に対し有限極限に限る）。結論：関手圏の有限極限と引き戻しの点ごとの判定（Lean が弱い：切除的関手と縮約関手それぞれの充満部分圏の閉性は型に含まれない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteLimits_functorCategory

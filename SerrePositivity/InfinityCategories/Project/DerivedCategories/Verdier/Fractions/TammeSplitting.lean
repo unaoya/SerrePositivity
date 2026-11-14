@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxSemiorthogonal
@@ -137,3 +139,10 @@ deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInv
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeFactorComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeFactorComparison._proof_1
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (14)" (partial := special) "仮定：安定圏の完全な二脚と Sp 値の局所化型不変量（標的をスペクトルに特殊化）。結論：二つの標準包含の和は lax 引き戻しの値と二つの値の直和を同定し、二射影が逆を与える（原典の分裂）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitComparison_C
+attribute [cite Tamme "Eq (14)" (partial := special) "仮定：安定圏の完全な二脚と Sp 値の局所化型不変量（標的をスペクトルに特殊化）。結論：二つの標準包含の和は lax 引き戻しの値と二つの値の直和を同定し、二射影が逆を与える（原典の分裂）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitComparison_D
+attribute [cite Tamme "Eq (14)" (partial := special) "仮定：安定圏の完全な二脚と Sp 値の局所化型不変量（標的をスペクトルに特殊化）。結論：二つの標準包含の和は lax 引き戻しの値と二つの値の直和を同定し、二射影が逆を与える（原典の分裂）。"] _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitEquivalence

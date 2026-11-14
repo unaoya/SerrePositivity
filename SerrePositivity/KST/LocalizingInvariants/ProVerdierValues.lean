@@ -33,10 +33,10 @@ lemma proFiberSequence_square (D : ProExcision.Tower _root_.SerrePositivity.Infi
 
 lemma proFiberSequence_inclusion (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (n : ℕ) :
     (ProFiberSequence.inclusion (hΦ.proFiberSequence D)).app n =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom ((D.obj n).square ≫ Φ) := rfl
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom ((D.obj n).square ≫ Φ) := rfl
 
 lemma proFiberSequence_projection (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (n : ℕ) :
     (ProFiberSequence.projection (hΦ.proFiberSequence D)).app n =
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight ((D.obj n).square ≫ Φ) := rfl
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight ((D.obj n).square ≫ Φ) := rfl
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant

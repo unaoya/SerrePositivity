@@ -43,30 +43,30 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePiZero
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Paths
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedComposition
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CellDGResolutionNerve
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFullSubcategoryNerve
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorQuasiIsoFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorZeroObjects
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleDerivedUnderlyingIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorExact
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveH0Naturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNerveReflectsQuasiEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedFunctorExact
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuasiEquivalenceNerve
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSemifreeModules
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSemifreeProjectiveEquivalence
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHom
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedActionEquivalences
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.VertexDiscreteFunctionSimplices
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.CellDGResolutionNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGFullSubcategoryNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.DGFunctorQuasiIsoFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorZeroObjects
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleDerivedUnderlyingIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleFunctorExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FunctorComparisons.DGNerveH0Naturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGNerveReflectsQuasiEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGPretriangulatedFunctorExact
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.DGSemifreeModules
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.DGSemifreeProjectiveEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.Nerves.DGStrictNatTransNerveHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PinchedActionEquivalences
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.VertexDiscreteFunctionSimplices
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.PinchedSliceTransport
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.SquareFrameFunctoriality
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.RelativeMappingEdge
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrameBoundary
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareZeroMultiplication
+public import SerrePositivity.InfinityCategories.HA.Section7_3_4.SquareZeroMultiplication
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.PinchedEndpointTransport
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy01
 public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy02
 public import SerrePositivity.InfinityCategories.Project.Compatibility.Legacy03
@@ -181,7 +181,7 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.cofiberTriangle := _r
 deprecated_alias _root_.SerrePositivity.InfinityCategories.IsStable.fiber_iff_cofiber := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.fiber_iff_cofiber
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroTriangle.zero_corner := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.zero_corner
+deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroTriangle.zero_corner := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle.zero_corner
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.IsStable.pullback_of_pushout := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pullback_of_pushout
@@ -238,10 +238,10 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.PushoutCofiberRectang
 deprecated_alias _root_.SerrePositivity.InfinityCategories.PushoutCofiberRectangle.right_isCofiber := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.right_isCofiber
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.CofiberSquare.bottom_edge := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare.bottom_edge
+deprecated_alias _root_.SerrePositivity.InfinityCategories.CofiberSquare.bottom_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare.bottom_edge
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.CofiberSquare.isPushout := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare.isPushout
+deprecated_alias _root_.SerrePositivity.InfinityCategories.CofiberSquare.isPushout := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare.isPushout
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.nonempty_cofiberSquareFunctorIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.nonempty_cofiberSquareFunctorIso
@@ -256,10 +256,10 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubc
 deprecated_alias _root_.SerrePositivity.InfinityCategories.isExactFunctor_of_preserves_chosen_cofibers := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_preserves_chosen_cofibers
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.FiberSquare.isPullback := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare.isPullback
+deprecated_alias _root_.SerrePositivity.InfinityCategories.FiberSquare.isPullback := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare.isPullback
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.FiberSquare.right_edge := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare.right_edge
+deprecated_alias _root_.SerrePositivity.InfinityCategories.FiberSquare.right_edge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare.right_edge
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.isStable_of_bicartesian_choices := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isStable_of_bicartesian_choices
@@ -271,16 +271,16 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Exact.exists_f
 deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.fiber_vertices := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FullSubcomplex.fiber_vertices
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroVertex.isInitial := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex.isInitial
+deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroVertex.isInitial := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex.isInitial
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroVertex.isTerminal := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex.isTerminal
+deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroVertex.isTerminal := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex.isTerminal
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroVertex.isZero := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex.isZero
+deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroVertex.isZero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroVertex.isZero
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.zeroVertexIso := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.zeroVertexIso
+deprecated_alias _root_.SerrePositivity.InfinityCategories.zeroVertexIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.zeroVertexIso
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge.over := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.RelativeMappingEdge.over
@@ -337,37 +337,37 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.
 deprecated_alias _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.pathExtension
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_fst := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_fst
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_fst := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_fst
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_snd := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_snd
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_snd := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_snd
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll_assoc
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll_assoc
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr_assoc
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr_assoc
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl_assoc
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl_assoc
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr_assoc := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr_assoc
+deprecated_alias _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr_assoc
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroTriangle.homMk_comp_eq_zero := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle.homMk_comp_eq_zero
+deprecated_alias _root_.SerrePositivity.InfinityCategories.ZeroTriangle.homMk_comp_eq_zero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle.homMk_comp_eq_zero
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.isIso_squareHoRight_of_pushout_initial_left := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isIso_squareHoRight_of_pushout_initial_left
@@ -430,7 +430,7 @@ deprecated_alias _root_.SerrePositivity.InfinityCategories.dgFunctor_quasiEquiva
 deprecated_alias _root_.SerrePositivity.InfinityCategories.dgPretriangulatedFunctor_isExactFunctor := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPretriangulatedFunctor_isExactFunctor
 
 @[deprecated (since := "2026-11-10")]
-deprecated_alias _root_.SerrePositivity.InfinityCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+deprecated_alias _root_.SerrePositivity.InfinityCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
 
 @[deprecated (since := "2026-11-10")]
 deprecated_alias _root_.SerrePositivity.InfinityCategories.dgSemifreeModulesInclusion_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgSemifreeModulesInclusion_isFullyFaithful

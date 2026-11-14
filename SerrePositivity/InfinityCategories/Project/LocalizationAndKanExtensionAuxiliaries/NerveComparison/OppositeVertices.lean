@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.OppositeIso
+public import SerrePositivity.InfinityCategories.HTT.Section6_1_2.OppositeIso
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 
 /-!
@@ -25,7 +25,7 @@ namespace SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtension
 規約：同じ宇宙の小さい圏の元の指定図式を扱う。
 使われ方：B5 の余錐の古典比較。 -/
 lemma nerveOppositeIso_vertex {C : Type u} [Category.{u} C] (x : C) :
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso C).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (op x)) =
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso C).hom.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (op x)) =
       SSet.opObjEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x) := by
   change (SSet.opObjEquiv (X := nerve C) (n := Opposite.op ⦋0⦌)).symm
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.oppositeNerveSimplex (ComposableArrows.mk₀ (op x))) = _
@@ -36,7 +36,7 @@ lemma nerveOppositeIso_vertex {C : Type u} [Category.{u} C] (x : C) :
 規約：同じ宇宙の小さい圏の元の指定図式を扱う。
 使われ方：B5 の余錐の古典比較。 -/
 lemma nerveOppositeIso_edge {C : Type u} [Category.{u} C] {x y : C} (f : x ⟶ y) :
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso C).hom.app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f.op) =
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso C).hom.app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f.op) =
       SSet.opObjEquiv.symm (ComposableArrows.mk₁ f) := by
   change (SSet.opObjEquiv (X := nerve C) (n := Opposite.op ⦋1⦌)).symm
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.oppositeNerveSimplex (ComposableArrows.mk₁ f.op)) = _
@@ -52,7 +52,7 @@ lemma nerveOppositeIso_edge {C : Type u} [Category.{u} C] {x y : C} (f : x ⟶ y
 規約：元の指定射を選び直さない。
 使われ方：Over の比較射の脚の同定。 -/
 lemma nerveUnopIso_edge {C : Type u} [Category.{u} C] {x y : C} (f : x ⟶ y) :
-    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnopIso C).hom.app (Opposite.op ⦋1⦌)
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveUnopIso C).hom.app (Opposite.op ⦋1⦌)
       (SSet.opObjEquiv.symm (ComposableArrows.mk₁ f.op)) = ComposableArrows.mk₁ f := by
   change _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.oppositeNerveSimplex (ComposableArrows.mk₁ f.op) = _
   refine ComposableArrows.ext₁ ?_ ?_ ?_

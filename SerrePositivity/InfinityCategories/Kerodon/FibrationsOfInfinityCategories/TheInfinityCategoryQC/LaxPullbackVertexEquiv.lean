@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackVertexOfData
 
 /-!
@@ -61,3 +63,8 @@ def laxPullbackVertexEquiv {A B C : SSet.{u}} (p : A ⟶ C) (q : B ⟶ C) :
     laxPullbackVertexOfData_data p q, laxPullbackVertexData_ofData p q⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Rem 6"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackVertexEquiv

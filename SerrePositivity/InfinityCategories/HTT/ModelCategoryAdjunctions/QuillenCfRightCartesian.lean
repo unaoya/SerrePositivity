@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FinalHornFilledRestriction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.FinalHornFilledRestriction
 public import SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.QuillenCfFinalHornUnknownHom
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianEdge
 

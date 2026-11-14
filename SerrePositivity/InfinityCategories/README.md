@@ -68,9 +68,17 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 | [9.7（Tag 06ZD）](https://kerodon.net/tag/06ZD) | Tensor Products of ∞-Categories | [`Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/`](Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/) |
 | [10.1（Tag 04QJ）](https://kerodon.net/tag/04QJ) | Simplicial Objects of ∞-Categories | [`Kerodon/ExactnessAndAnimation/SimplicialObjectsOfInfinityCategories/`](Kerodon/ExactnessAndAnimation/SimplicialObjectsOfInfinityCategories/) |
 
-改名は [モジュール対応表](../../scripts/refactor/targets/kl-module-map.json) と
+KL-W1 時点の改名は [モジュール対応表](../../scripts/refactor/targets/kl-module-map.json) と
 [宣言対応表](../../scripts/refactor/targets/kl-namespace-map.json) を参照。
 並行する枝の追従手順は [KL-W1 の報告](../../formalization-plans/stage-ii/kerodon-layout-w1-report.md) にある。
+
+今回の Project・BhattScholze の整理に追従する枝は、[B3 後の B4 資料](../../formalization-plans/stage-ii/bulk-w1-b3/B4-README.md) にある新しいモジュール表・所有元付きの実名表と、各枝の対象ファイル一覧を使う。移動前の環境で参照を採取してから main を取り込む。
+
+## Project の主題分けと文献の属性
+
+`Project/DerivedCategories/` の大きな群は、`MappingAndStability/`、`Gluing/`、`KanModels/`、`Verdier/`、`LocalizationAndRoofs/`、`CompactnessAndPresentability/`、`Tensor/` に分ける。既存の `PiCriterion/`、`KappaCovers/` なども保持する。strict 図式と D(A) の比較を追加する場所は `Project/DerivedCategories/DiagramComparison/` とする。他の Project ディレクトリも、錐・slice・Kan 置換などの主題ごとに分ける。ディレクトリだけを分ける移動では、公開の数学的な名前空間を保つ。
+
+HTT・HA の節が主題のファイルは `HTT/`・`HA/` に置く。複数の文献による引用があっても、同じ構成を複製しない。Kerodon と Stacks はそれぞれ既存の `@[kerodon TAG]`・`@[stacks TAG]` を使う。ほかの文献は `@[cite KEY "番号"]`、部分対応は理由を伴う `partial := special`・`direction`・`stronger-hyp`・`component` で記す。照会は `#cite_tags KEY`、型も見るときは `#cite_tags! KEY`。略号と版の正本は [bibliography.json](../../research/bibliography.json)、構文は [Citation.lean](../Util/Citation.lean) を参照する。
 
 ## 層・入口・監査
 
@@ -82,7 +90,7 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 
 | 開発レーン | 内容 | 入口 | 監査（scripts/） |
 | --- | --- | --- | --- |
-| Simplicial | 単体的集合の組合せ論、境界・prism・necklace・cube・fat realization の部品 | [BoundaryGluing](Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/BoundaryGluing.lean)、[CubeJoinNormalForm](Project/SimplicialCombinatorics/CubeJoinNormalForm.lean)（`Project.Entrypoints.Simplicial` は集約入口） | audit_homotopical_general_tools.lean、audit_kst_s_construction.lean |
+| Simplicial | 単体的集合の組合せ論、境界・prism・necklace・cube・fat realization の部品 | [BoundaryGluing](Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/BoundaryGluing.lean)、[CubeJoinNormalForm](Project/SimplicialCombinatorics/Cubes/CubeJoinNormalForm.lean)（`Project.Entrypoints.Simplicial` は集約入口） | audit_homotopical_general_tools.lean、audit_kst_s_construction.lean |
 | PinchedHom | 右 pinched 写像空間 | [PinchedHom/Basic.lean](Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/Basic.lean) | audit_infinity_core.lean |
 | Core | join・slice、終対象、極限、同値、写像空間、fibration の基礎 | [Core.lean](Project/Entrypoints/Core.lean) | audit_infinity_core.lean |
 | Kan | Core を使う空間の理論：Kan 充填、ホモトピー、置換、基本亜群と整合性の道具 | [Kan.lean](Project/Entrypoints/Kan.lean)、[LastHornContraction](Kerodon/KanComplexes/HomotopyGroups/LastHornContraction.lean) | audit_infinity_kan.lean、audit_kst_comparison.lean |
@@ -120,7 +128,7 @@ Kerodon の節番号に逆向きの import は、依存先の宣言を直接使�
 ```sh
 python3 scripts/refactor/layer_check.py --enforce KLW1 --root "$PWD"
 ```
-Derived の利用者のない試作入口は [Diagnostics](Derived/Diagnostics/README.md) に区別する。
+Derived の利用者のない試作4本は Archive の [Diagnostics](../Archive/InfinityCategories/DGKappaDiagnostics/README.md) に区別する。
 
 監査はリポジトリ直下で `lake env lean scripts/<監査名>`、対象のビルドは
 `lake build SerrePositivity.InfinityCategories.<入口名>` で行う。

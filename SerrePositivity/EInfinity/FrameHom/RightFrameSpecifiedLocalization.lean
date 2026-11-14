@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponent
 public import SerrePositivity.EInfinity.FrameHom.LocalizationComparison
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightFrameUnitFamily
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.RightFrameUnitFamily
 public import SerrePositivity.EInfinity.FrameHom.SourceRoofUnitNormalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges
 

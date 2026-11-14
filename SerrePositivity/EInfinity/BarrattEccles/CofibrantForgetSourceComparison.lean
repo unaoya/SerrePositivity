@@ -46,7 +46,7 @@ lemma cofibrantUnderlying_component_transport (X Y : CofibrantAlgebra A)
         (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
   have he := congrArg ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌))
     (cofibrantAlgebraForgetNerve_mk₁ A f)
-  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
     (cofibrantUnderlying_ordinary_vertex A X) (cofibrantUnderlying_ordinary_vertex A Y)
     ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated
     ((nerve.edgeMk ((cofibrantAlgebraDKForget A).map f)).map

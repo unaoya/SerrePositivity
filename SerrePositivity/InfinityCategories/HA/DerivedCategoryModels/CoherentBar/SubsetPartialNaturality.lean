@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGCoherentBarSubsetNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.CoherentBar.Structure.DGCoherentBarSubsetNaturality
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.DegenerateFaces
 /-!
 概要：単調写像の部分集合上の単射性だけで bar のラベル自然性を判定する。

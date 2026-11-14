@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.UniverseExactFunctor
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle
 /-!
 概要：完全関手は単体集合の宇宙持ち上げ後にも完全である。
 方針：任意の持ち上げ先の零角四角形を全写像の同値で降下し、保存後に戻す。

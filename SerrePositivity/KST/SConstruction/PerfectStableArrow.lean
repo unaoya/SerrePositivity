@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectStableInfinity
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagrams
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.FullSubcomplexEdgeLift
 
 /-! # Cat^perf の同じ完全関手の実辺
 概要：冪等完備な両端を持つ完全関手を、元の一単体を保つ Cat^perf の辺へ持ち上げる。

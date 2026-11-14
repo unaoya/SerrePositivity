@@ -47,30 +47,30 @@ import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeHomotopyEdges
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoconeReversePostcomp
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ArrowEndpointPair
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativePathKanPointComparison
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativePathComparisonFaces
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativePathBoundaryCylinderCompatibility
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeKanHomotopyStrictification
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeHomotopyConstantInverse
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeHomotopyConstantComposition
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativePathKanPointComparison
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativePathComparisonFaces
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativePathBoundaryCylinderCompatibility
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeKanHomotopyStrictification
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeHomotopyConstantInverse
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeHomotopyConstantComposition
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.NullHomotopyRestriction
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.MappedBoundaryKanComparison
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanPointHomotopy
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanBoundarySquare
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanBoundaryHomotopyExtension
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.MappedBoundaryKanComparison
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanCospanPointHomotopy
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanCospanBoundarySquare
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanBoundaryHomotopyExtension
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialShapeLimitExistence
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorTrianglePostcomposition
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorTrianglePostcomposition
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FunctorPointwiseColimitCriterion
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPointComparison
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPre
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredNullHomotopy
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.DiagonalCommaWeakContractibility
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanSpecifiedHomotopy
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoCurryPointComparison
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoComponentPre
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FilteredNullHomotopy
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.DiagonalCommaWeakContractibility
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.ContinuousKanSpecifiedHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeRestrictionTransport
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeMappingSpace
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeCompletion
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.BousfieldKanTerminalWeight
-import SerrePositivity.InfinityCategories.Project.FilteredExchange.ApexLimitConeTransport
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.BousfieldKanTerminalWeight
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.ApexLimitConeTransport
 import SerrePositivity.InfinityCategories.Project.Entrypoints.F1B
 import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences
 import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseDescent
@@ -90,7 +90,7 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let oldAuditPrefix1 := `SerrePositivity.InfinityCategories.F1B
-  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/bulk-kl-module-map.json")
   let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
   let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
     if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
@@ -966,9 +966,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
 #check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isSimplicialHomotopyEquivalence
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isContractibleKan_terminal
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.IsContractibleKan.isWeaklyContractible
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isWeaklyContractible_terminal
+#check @SerrePositivity.InfinityCategories.HTT.Section2_1_3.isContractibleKan_terminal
+#check @SerrePositivity.InfinityCategories.HTT.Section2_1_3.IsContractibleKan.isWeaklyContractible
+#check @SerrePositivity.InfinityCategories.HTT.Section2_1_3.isWeaklyContractible_terminal
 
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalFunctorSpace
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalFunctorPre
@@ -1183,9 +1183,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.op
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_isRightCofinal_op
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_isLeftCofinal_op
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.IsWeaklyContractible.op
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isWeaklyContractible_of_op
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.isWeaklyContractible_op_iff
+#check @SerrePositivity.InfinityCategories.HTT.Section5_1_4.IsWeaklyContractible.op
+#check @SerrePositivity.InfinityCategories.HTT.Section5_1_4.isWeaklyContractible_of_op
+#check @SerrePositivity.InfinityCategories.HTT.Section5_1_4.isWeaklyContractible_op_iff
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalPointSliceOverOpIso
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalSlicePullbackOpIso
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalWeaklyContractible_slice_iff_op_coslice
@@ -1290,9 +1290,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanCylinderEndpointInclusion_comparison
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanCylinderEndpointInclusion_leftKanCylinderDiagram
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanRelativeJoinRealization.endpointsIso
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorIsoExtension
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorIsoExtension_nonempty
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorIsoExtension.globalIso
+#check @SerrePositivity.InfinityCategories.HTT.Section5_1_4.FunctorIsoExtension
+#check @SerrePositivity.InfinityCategories.HTT.Section5_1_4.functorIsoExtension_nonempty
+#check @SerrePositivity.InfinityCategories.HTT.Section5_1_4.FunctorIsoExtension.globalIso
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanRelativeJoinRealization.Strictification
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanRelativeJoinRealization.strictification_nonempty
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanRelativeJoinRealization.Strictification.left_eq
@@ -2831,11 +2831,11 @@ end
 
 #check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransCell_whiskerLeft
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveAdjunctionOfAdjunction
+#check @SerrePositivity.InfinityCategories.HTT.Section5_2_5.nerveAdjunctionOfAdjunction
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveAdjunctionOfAdjunction_unitHom
+#check @SerrePositivity.InfinityCategories.HTT.Section5_2_5.nerveAdjunctionOfAdjunction_unitHom
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveAdjunctionOfAdjunction_counitHom
+#check @SerrePositivity.InfinityCategories.HTT.Section5_2_5.nerveAdjunctionOfAdjunction_counitHom
 
 #check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation
 
@@ -2935,21 +2935,21 @@ end
 
 #check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveRightKanShapeIso_hom_diagram
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso
+#check @SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOppositeIso_natural
+#check @SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveOppositeIso_natural
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnopIso
+#check @SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveUnopIso
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnopIso_natural
+#check @SerrePositivity.InfinityCategories.HTT.Section6_1_2.nerveUnopIso_natural
 
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceUnderOpIso_projection
 
 #check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverProjection_eqTransport
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso
+#check @SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso
 
-#check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection
+#check @SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso_projection
 
 #check @SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.costructuredArrowPullbackLift
 
@@ -3269,30 +3269,30 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.ApexLimitConeTransport,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.BousfieldKanTerminalWeight,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteLimits.ApexLimitConeTransport,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.BousfieldKanTerminalWeight,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ColimitCoconeCompletion,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeMappingSpace,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeRestrictionTransport,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanSpecifiedHomotopy,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.DiagonalCommaWeakContractibility,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredNullHomotopy,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPre,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPointComparison,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.ContinuousKanSpecifiedHomotopy,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.DiagonalCommaWeakContractibility,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FilteredNullHomotopy,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoComponentPre,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoCurryPointComparison,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FunctorPointwiseColimitCriterion,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorTrianglePostcomposition,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorTrianglePostcomposition,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialShapeLimitExistence,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanBoundaryHomotopyExtension,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanBoundarySquare,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanPointHomotopy,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.MappedBoundaryKanComparison,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanBoundaryHomotopyExtension,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanCospanBoundarySquare,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanCospanPointHomotopy,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.MappedBoundaryKanComparison,
     `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.NullHomotopyRestriction,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeHomotopyConstantComposition,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeHomotopyConstantInverse,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeKanHomotopyStrictification,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativePathBoundaryCylinderCompatibility,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativePathComparisonFaces,
-    `SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativePathKanPointComparison
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeHomotopyConstantComposition,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeHomotopyConstantInverse,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativeKanHomotopyStrictification,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativePathBoundaryCylinderCompatibility,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativePathComparisonFaces,
+    `SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.RelativePathKanPointComparison
   ]
   for mod in expected do
     unless env.header.modules.any (fun entry => entry.module == mod) do

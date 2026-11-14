@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.RightSimplicialCones
 public import SerrePositivity.EInfinity.ComplexLimits.Probe
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramFrame
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameCones
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameCones
 
 /-!
 # 複体の始域 frame の錐と実際の右 frame の錐の比較

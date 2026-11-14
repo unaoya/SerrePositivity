@@ -391,3 +391,467 @@ SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealizatio
 ```
 
 この時点では§4の上限改定の検収を待つ。指定された型と最初の native 余錐の照合を残したまま次段へ進まない。
+
+## 14. §5 の承認後：bar coend と元の単体的置換の接続（2026-11-12、a4d8cc83c）
+
+main `6d71b170a` を専用枝に取り込み、§5の最後の上限4800行で再開した。§13の上限による停止はこの承認で解除された。今回の7本669行は、対象ビルドと一時監査を通して `a4d8cc83c` にコミット済み。
+
+- `LinearWeightGenerators`：任意の線形重みの単位加群からの射を、元の coend の指定生成元へ送る。重みの全射と添字の全射に関する同じ関係式を示した。
+- `BarWeightEvaluation`・`BarWeightEvaluationIso`：under 射列の先頭の構造射を作用させ、底の同じ射列の余積へ評価する。恒等射による標準持ち上げの生成元から逆射を作り、両合成が恒等射であることを証明した。
+- `BarWeightRealizationNaturality`：標準持ち上げの制限の公式から、各次数の指定同型を、面と退化を含む全単体作用素に自然な同型にまとめた。
+- `ReplacementWeightComparison`：元の先頭頂点単体による `replacementAugmentation` が、既存の固定された bar／標準重みの比較の coend の像と、指定同型の下で同じ射であることを証明した。bar 重み側の全複体と元の単体的置換の全複体を同じ評価で同定する。
+- `ReplacementTotalHomotopy`：交代面複体と加法関手の標準同型を通して、前向きの射を元の `replacementAugmentation` の像に保った鎖ホモトピー同値を作った。非有界直和全複体への同じ鎖ホモトピー同値・擬同型を得て、全図式・全自然変換での自然比較 `replacementTotalAugmentationNatTrans` にまとめた。
+- `TotalRowCochain`：一般の加法圏の整数次数の二重複体について、横次数aの同じ直和包含を次数aのcochainとして記録した。その微分は隣の行への横微分の後の同じ包含であることを、縦の二項の相殺で示した。二重複体の全射への自然性もある。有界性を仮定しない。§13.2の2で使う一般補題を依頼どおり `HomologicalAlgebra/` に置いた。
+
+§13.2の1の接続（bar重みの各次数・全単体作用素と元の単体的置換、同じ増大の全複体の擬同型性）ができた。**native余錐との最初の照合の区切り、停止点1は依然未完**。次は§13.2の2の、既存Maurer–Cartan barの同じ微分・正規化との比較である。3・4への飛び越しや段2への着手はしていない。
+
+検証：対象ビルド `/private/tmp/isw2-build-23.log`（2322 jobs）、`isw2-build-25.log`（2441 jobs）、`isw2-build-26.log`（2443 jobs）はすべて終了コード0。途中のbuild22・24は、全余積のinstance探索の時間制限で失敗した。複体の必要な宇宙の余積を添字ごとに既存instanceから局所的に指定し、上記の再ビルドで解消した。新しい数学的仮定は加えていない。
+
+一時監査 `/private/tmp/AuditISW2FortyFive.lean`、ログ `/private/tmp/isw2-audit-fortyfive.log` は終了コード0。**新規45本・486宣言、標準三公理のみ**。sorry・独自公理0、既存宣言・drafts・入口・公式監査の変更0。鍵は各検証ごとに `--wait 3600` で一枚ずつ取得し、検証終了で返した。rootビルドはしていない。
+
+検証済み累計は、共通7本424行、**3b-1の38本3104行**、計45本3528行。今回の669行は§13.2表の第一行58行（全行のcochainの一般公式）、第二行611行に数える。途中実測は第一行140行、第二行2555行、第三・第四行0行、§10以前の409行は別。停止点1で完了時の実測と差へ更新する。
+
+追加登録候補（調整役が登録）：
+
+```text
+SerrePositivity.HomologicalAlgebra.LinearWeightGenerators
+SerrePositivity.HomologicalAlgebra.BarWeightEvaluation
+SerrePositivity.HomologicalAlgebra.BarWeightEvaluationIso
+SerrePositivity.HomologicalAlgebra.BarWeightRealizationNaturality
+SerrePositivity.HomologicalAlgebra.TotalRowCochain
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.ReplacementWeightComparison
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.ReplacementTotalHomotopy
+```
+
+## 15. native bar への具体的接続の準備と、最終上限による中間停止（2026-11-12）
+
+### 15.1 §13.2の2で作った部品
+
+§14の後、次の新規6本419行を構成した。実際のnative余錐の比較の完了ではない。
+
+- `SmallStrictBarDiagram`（67行）：宇宙0の添字Jの strict な一点dg加群図式を、既存の二段ULiftの同型を通して、元の coherent bar の入力へ渡す。全単体は元の閉零射の列そのもので、係数環の宇宙を制限しない。各射列の先頭の係数と高次零成分を厳密に照合した。
+- `StandardRowCochain`（68行）：元の単体次数nの複体から実現への次数−nの同じ標準成分を、添字延長の次数同型と全行の包含で構成した。その各成分とcochain微分を元の横微分で計算した。
+- `SmallStrictBarColumns`（82行）：上の小さいstrict図式について、既存thetaの高次prefixのHom・shiftブロック・列が零であることを示した。同じthetaの各列を、元の面と先頭の射の一次列の符号付き和へ戻す。
+- `SmallStrictBarTotalColumns`（88行）：射列の先頭の値を単体的置換の同じ因子へ入れ、上の次数−nの成分をshiftしたものから、既存barの各shifted因子の次数零のHom要素を構成した。一点dg加群の全Hom評価同型で戻し、既存graded余積のHom同値で一つの次数零要素にまとめた。各元の因子への制限は元の指定列そのもの。**この要素のMaurer–Cartan微分に対する閉性は、まだ証明していない**。従って、これをdg加群射や擬同型と呼ばない。
+- `StandardRowBoundary`（57行）：添字延長の同じ次数同型の下で、二行間の横微分を元の交代面微分へ戻した。すべての面の順序・符号を保つ境界公式を証明した。
+- `HomologicalAlgebra/UnsignedShiftCochain`（57行）：一般の加法圏のcochainについて、既存leftShiftの定数符号を打ち消す補助を作った。各成分は元の次数同型の後の同じ成分になり、同じcochain微分に両立する。零対象・有界性の追加仮定は不要。既存のleftShiftを変更していない。
+
+### 15.2 現在の不足と見積もりの修正
+
+§13.2の1は§14までで接続できたが、同節の2は以下の三つを残す。
+
+1. 上の実際の列族のMaurer–Cartan微分に対する閉性を、同じthetaの面・prefixの式と全行の境界公式で示すこと。
+2. 得られる**同じ射**の各次数の同型を、既存graded余積の各shifted因子と直和全複体の各因子の対応から示し、複体の同型へまとめること。
+3. 既存Maurer–Cartan barの正規化射影・補正包含・ホモトピーとの比較を、元の射で照合すること。通常のMoore正規化の擬同型性だけでは、この段を置き換えられない。
+
+その後に§13.2の3の半自由出力分解、同じD(A)の指定join余錐と標準脚・高次成分の輸送、4の全パラメーターでの族への接続が残る。既存 `SemifreeBarVertexCriterion` の頂点同型の存在だけを最終入口の代用にはしない。
+
+§13の第二行の残り400〜650行の見積もりは、coendの同定と、既存Maurer–Cartan barとのこの具体的な接続を十分に区別していなかった。§14で前者に611行を使い、後者の準備にも今回の294行が必要になった。ここが前回の見積もりの不足である。今回の残り400〜650行は、上記1〜3そのものに対する見込みであり、さらに未実装の補題を仮定した宣言で済ませる見込みではない。
+
+現在の実測は共通7本424行、**3b-1の44本3523行**、計51本3947行。§13.2表の現在の項目別の実測と残りは次のとおり。残りは設計上の見込みで、実測とは分けている。
+
+| §13.2 の項目 | §10の追加見込み | 現在の途中実測 | 残りの見込み | 完成時の見込み | 元の上端との差の見込み |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 全単体次数の包含・微分・退化・指定余錐の高次成分 | 500〜750 | 265 | 167〜317 | 432〜582 | −318〜−168 |
+| bar／重み・直和全複体の具体的比較・非有界擬同型 | 850〜1250 | 2849 | 400〜650 | 3249〜3499 | +1999〜+2249 |
+| 半自由出力分解・native余錐の輸送・同じ脚 | 500〜750 | 0 | 500〜750 | 500〜750 | −250〜0 |
+| 全パラメーターの関手同型・射・指定余錐 | 250〜350 | 0 | 250〜350 | 250〜350 | −100〜0 |
+| **追加計（§10以前の409行を除く）** | **2100〜3100** | **3114** | **1317〜2067** | **4431〜5181** | **+1331〜+2081** |
+
+§10以前の409行を含めると、**3b-1完成時の見込みは4840〜5590行（約4800〜5600行）**。現在のコードの明らかな重複や不要な一般化を取り除けば最終上限4800行に収まる、という根拠は得られていない。共通部分へ付け替えて数えたり、元の同じ射・全関手・指定錐の要件を弱めたりはしない。
+
+従って[指示書§1・§5](inf-supply-w2.md)の「超えそうなら止める」と、§5が最後の上限改定であるという指示に従い、**ここで新規実装を停止する**。停止点1の完了ではなく、最終上限による中間停止である。最初のnative余錐との照合も未完で、段2（G10）には進んでいない。上限内で閉じたという扱いにせず、検証済み部品と具体的な残件を調整役へ返す。
+
+追加登録候補（今回の停止は段1の検収とは別）：
+
+```text
+SerrePositivity.HomologicalAlgebra.UnsignedShiftCochain
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StandardRowCochain
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarColumns
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalColumns
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StandardRowBoundary
+```
+
+引き継ぐときの注意：`SmallStrictBarTotalColumns` の列族は**非正規化graded bar**からのものである。既存 `CoherentBar/NativeColumns` の `dgCoherentBarNativeColumn_degenerate` は、正規化されたnative列が退化射列で零になることを要求する。従って、今回の `standardRowCochain` の生の列を、そのままnative join余錐の高次成分と宣言してはいけない。実際の閉射を作った後、既存の正規化射影・補正包含を通した同じ列を指定し、第零列と高次列を照合する必要がある。
+
+残る最初の宣言の型は、`G := smallStrictBarDiagram A F`、`T := smallStrictBarTotalTarget A F` として、`moduleHom A PUnit (dgCoherentBarModuleUnconditional A PUnit G) T` の次数零の要素と、その**同じ要素**の微分が零であること。その要素は、今回の `smallStrictBarTotalGradedElement` を既存の `dgCoherentBarHomDegreeEquiv` で戻して指定する。閉性を追加入力として受け取った比較を最終定理にはしない。続いて、その閉射の一点評価が `directSumTotalFunctor` の元の射列の模型との複体同型になること、正規化後の射と `replacementAugmentationTotalHomotopyEquiv` の前向きの射が同じ比較を与えることが必要である。
+
+### 15.3 検証と確定した取り込み点
+
+今回6本のコードのコミットは **`ac36b96ea`**。§14の `a4d8cc83c` と合わせて、main `6d71b170a` からの新規13本1088行をすべて検証・コミットした。未検証のLean下書きは残していない。
+
+- 対象ビルド `/private/tmp/isw2-build-27.log`（3824 jobs、`SmallStrictBarDiagram`・`StandardRowCochain`）、`isw2-build-28.log`（3829 jobs、`SmallStrictBarColumns`・`SmallStrictBarTotalColumns`・`StandardRowBoundary`・`UnsignedShiftCochain` とその依存）はすべて終了コード0。個別検査からの公開import・依存型の照合も通常のモジュール単位で確かめた。
+- 一時監査 `/private/tmp/AuditISW2FiftyOne.lean`、ログ `/private/tmp/isw2-audit-fiftyone.log` は終了コード0。**累計新規51本・556宣言、標準三公理のみ**。sorry・独自公理0。前段の47本の監査（`isw2-audit-fortyseven.log`、513宣言）も成功した。
+- 各回 `with_build_lock.sh --wait 3600` で一枚ずつ待機し、ビルドまたは監査の実行終了で鍵を返した。最後のビルドと監査には先行一括束の順番待ちがあったが、待ちを理由に検証を省略していない。rootビルドは行っていない。
+- 既存宣言・drafts・入口・公式監査の変更0。変更は新規数学ファイルと自分の報告だけ。他レーンとのファイル重複0。`git diff --check` は成功。
+
+停止の理由は検証の失敗や鍵の待ちではなく、§15.2の最終上限超過の見込みである。停止点1を完了したとは報告せず、指定された型・同じ射・高次成分の残件を保持したまま、ここで調整役の次の判断を待つ。
+
+## 16. §6と新しい規模規則による再開：列の微分と全単体境界（2026-11-12、437d921b1）
+
+main の§6を `90388ad14`、新しい規模規則を `ae47e543e` で専用枝へ取り込んだ。§15の中間停止は承認により解除され、段1を継続している。3b-1は明示された5600行を維持する。新しい上限は共通2000、3b-2 8400、3b-3 8400、3b-4 9200行。段0上端の半分に達したときの報告は停止せず行う。3b-1の途中実測は既報のとおりで、停止点1では§13.2表を完了時の実測へ更新し、G10の見込みも実測を踏まえて出し直す。
+
+### 16.1 同じ列の微分・境界の確定（新規5本338行）
+
+- `SmallStrictBarTotalValues`：以前の各shifted因子の列を一点で評価し、元のシフト前の列を符号を変えずにshiftしたものと厳密に照合した。シフト前の各成分は同じ射列の余積因子の包含の後の標準行の包含。
+- `SmallStrictBarTotalDifferential`：同じ列の微分の一点評価は、シフト前の同じcochain微分を符号を変えずにshiftしたもの。全Homの評価鎖写像の可換式から証明した。
+- `StandardRowDifferential`：全行の成分公式と延長の次数同型の境界式から、標準列の微分が元の交代面微分と一つ下の標準列の合成になることを、cochain全体の等式で示した。直和包含の証明引数での依存型の書き換えを避け、同じ `ιTotalOrZero` を介して照合した。
+- `SmallStrictBarUnshiftedBoundary`：零次の標準cochainは既存 `standardZeroLeg` の同じcochainであり、零次のシフト前のbar列は閉じている。正次数の列の微分は、射列の同じ因子を元の単体的置換の境界に入れた後の標準列になる。
+- `HomologicalAlgebra/SimplicialReplacementBoundary`：一般の加法圏で、各元の射列上の交代面境界を、すべての面に対する先頭の射と同じ面の包含の符号付き和へ戻した。
+
+対象ビルド `isw2-build-29.log`（3828 jobs）、`isw2-build-30.log`（3829 jobs）、`isw2-build-31.log`（2388 jobs）、`isw2-build-32.log`（3834 jobs）は成功。一時監査で新規ファイルの無名local instanceが既存 `ReplacementWeightComparison` の生成名と衝突することを検出した。新規2本のlocal instanceに固有名を付け、影響する新規ファイルを `isw2-build-33.log`（3834 jobs）で再ビルドして解消した。数学的仮定と既存の宣言は変更していない。
+
+一時監査 `/private/tmp/AuditISW2FiftySix.lean`、成功ログ `/private/tmp/isw2-audit-fiftysix-recheck.log`：**累計新規56本・590宣言、標準三公理のみ**、終了コード0。sorry・独自公理0。全5本を **`437d921b1`** にコミットした。既存宣言・drafts・入口・公式監査は未変更。鍵は各検証ごとに `--wait 3600` で一枚ずつ取得し、実行後に返した。
+
+検証済み累計：共通7本424行、**3b-1の49本3861行**、計56本4285行。今回338行は§13.2表の第一行74行（全標準列の微分）、第二行264行に数える。途中実測は第一行339行、第二行3113行、第三・第四行0行、§10以前409行は別。native barへの比較射全体の閉性・複体の同型・指定余錐への輸送は未完で、最初のnative余錐の区切りと停止点1にはまだ到達していない。
+
+### 16.2 指定native余錐を直接使う短い経路の検討（紙、未実装）
+
+§6の確認を先に行う。既存 `CoherentBar/NativeColimit` は、正規化barの**指定された** `dgCoherentBarNormalizedNativeCoconeUnconditional` とその余極限性を供給する。`NativeCoconeFamily` の `dgCoherentBarNativeCoconePoint_column` は、その全単体の係数を同じ `dgCoherentBarNativeColumn` と照合し、`dgCoherentBarNativeCoconePoint_hom` は対応するHom要素が同じ単位であることを示す。従って、正規化barから計算済みの頂点への同じ閉射が得られれば、既存 `dgCoherentBarCoconeHomSpaceIsoUnconditional` を通して指定余錐の全高次成分を輸送する候補がある。join余錐のHA方程式・退化整合性を一から再構成する経路は省ける可能性がある。
+
+この短い候補でも、現在作っている比較射の閉性と、計算済み直和全複体への同じ射の比較は必要。非正規化barのgraded列をnative列と取り違えたり、頂点同型の存在だけで同じ標準脚を得たことにはできない。正規化の補正包含を通した射と第零のnative列の合成が、今回照合した標準脚そのものになることを確認する。全高次成分は、その同じ閉射を既存native列へ作用させたものとして指定する候補である。
+
+また `NativeColimit` の最初の値域は全右dg加群のdg nerveである。D(A)へ移す段階では既存の射影的bar・半自由出力の比較を使い、単なる擬同型を全右dg加群のdg nerveの可逆辺とみなさない。この経路を継続して調べ、上限超過の見込みで止める必要が生じた際には、短縮できた部分と残る比較を具体的に追記する。数字だけによる中間停止は行わない。
+
+追加登録候補（調整役が登録）：
+
+```text
+SerrePositivity.HomologicalAlgebra.SimplicialReplacementBoundary
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalDifferential
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StandardRowDifferential
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarUnshiftedBoundary
+```
+
+## 17. 同じ実 bar 比較の閉性と、指定 native 余錐を直接使う経路の再点検（2026-11-12）
+
+### 17.1 段1の途中実測と確定した証明
+
+新しい規模規則を適用し、3b-1は明示済みの5600行、共通2000行を基準とする。半分の時点の非停止報告は既報のとおりで、その後も途中実測を報告しながら進めた。以下は停止点1の完成報告ではなく、同じ比較射の閉性まで進めた区切りである。
+
+§16以後の新規9本987行は、いずれも§13.2表の第二行に数える。共通部分や段2へ付け替えていない。
+
+- `SmallStrictBarBlockCoefficients`・`SignedShiftBlockValues`：同じ面の係数が単位、最初のprefixの係数が元の先頭の射であることを保持し、元のshiftブロックの一点評価と外側の符号を計算した。
+- `SmallStrictBarBoundarySum`・`SmallStrictBarTotalComposition`：元の交代面境界を全ての面の和へ分け、比較を余積因子へ制限した値と後合成の値を照合した。同じgraded要素を元のMC barの次数零へ戻す `smallStrictBarTotalElement` も固定した。
+- `SignedShiftBlockComposition`・`SmallStrictBarSignedColumns`：正次数の面の列と最初のprefixの列の後合成を、それぞれ一つ下の同じ列、同じ先頭の射の後の列のシフトと同定した。高次prefixを残す仮定は追加していない。
+- `SmallStrictBarBoundaryFaces`：先頭を保つ各面の境界項を同じ面の列へ戻し、最初のtailが第零面と同じ添字であること、第零面が元の先頭の射の後の列であることを照合した。次数の異種等号から、同じ次数へのシフト後の等式を得た。
+- `SmallStrictBarThetaValues`：元のthetaの符号付き有限和を比較へ送る値が、元の同じ列の微分のシフトであることを、全正次数で証明した。
+- `SmallStrictBarTotalClosed`：零次の閉性と正次数の全列の等式を直和全体へ戻し、`smallStrictBarTotalElement_closed` を証明した。これは**以前指定した同じ要素の微分が零**という宣言であり、閉性を入力としていない。`smallStrictBarTotalHom` はその要素から得る厳密な射で、`smallStrictBarTotalHom_val` が同じ閉零要素へ戻る等式を記録する。
+
+従って§15.2の「最初の残件」であった実MC barからの同じ要素の閉性は閉じた。一方、この射の複体同型・鎖ホモトピー同値はまだ証明していない。native余錐の最初の照合、全関手比較、停止点1は未完で、G10には未着手。
+
+### 17.2 §6の紙の検討：NativeColimitから直接進む経路
+
+数字だけで止める前に、§16.2の候補を既存の宣言の型と照合した。短い経路は次のように具体化できるが、完成した証明とは区別する。
+
+1. `CoherentBar/Retract/DeformationRetract` の `dgCoherentBarNormalizedModuleInclusionUnconditional` を、今回の **同じ** `smallStrictBarTotalHom` の前に合成する。その後に、既に前向きの射を固定している `replacementAugmentationTotalHomotopyEquiv` を合成すれば、正規化barから元の実現への候補の射が得られる。正規化のretractや補正包含を作り直す必要はない。
+2. `CoherentBar/NativeColimit` の `dgCoherentBarNormalizedNativeCoconeUnconditional_isColimit` と、`dgCoherentBarCoconeHomSpaceIsoUnconditional` を使い、その同じ閉射に対応する指定join余錐を取る。`NativeCoconeFamily.dgCoherentBarNativeCoconePoint_column` および `NativeHomComposition.dgCoherentBarNativeColumn_compose_eq_coordinates` を使えば、全高次成分を同じnative列への後合成として指定できる。HAのjoin方程式と退化整合性を一から作る経路は不要。
+3. ただし `NativeColimit` の頂点は**正規化bar**であって、今回の直和全複体ではない。今回の閉射が可逆辺になることは、閉性だけからは従わない。まず一点評価の各次数で、元の余積因子を同じ直和全複体の因子へ送る射が同型であることを証明する必要がある。候補は、各次数のshift同型、余積の並べ替え、`totalDesc`・`ι_totalDesc` による逆射。同型の前向きの射を今回の `smallStrictBarTotalHom` の一点評価と照合する。通常のMoore正規化の同値をこの射へ無条件に置き換えない。
+4. 第零の標準脚は、補正包含を通したnative第零列と今回の射の合成について厳密に確認する。生の標準列は退化射列でも一般に零ではないので、生の列をそのままnative列にする短縮は不可。高次列は2の後合成で指定できても、第零列の等式と同じ頂点の比較は残る。
+5. 値域は最初、全右dg加群のdg nerveである。D(A)へは既存の射影的bar・半自由模型の比較と `SemifreePointComparison.semifreePointEquivalence` を使う。全右dg加群のdg nerveで単なる擬同型を可逆と宣言することはできない。
+6. 全パラメーターの比較も残る。既存 `exists_colimitCoconeFamily_extension` は、**既に指定された余錐の部分族を保つ**延長を供給する。そこから任意に選んだapex族が具体的な直和全複体の全関手と一致する、という結論は出ない。`exists_colimitCocone_edge` も下方の図式の辺と余錐の端点を固定するが、具体的な全複体の射をapexの辺へ厳密に指定する欄ではない。同じ比較の射への自然性と全関手の `FunctorIso`、その指定余錐との両立を別に供給する必要がある。対象ごとの頂点の選択やHo上の自然同型を代用しない。
+
+この経路はnative余錐自体の再構成を省き、第三行の残りを従来の500〜750行から350〜550行へ下げる候補になる。一方、3〜6の未実装の接続を0行とする根拠はない。既存の指定余錐から直接に標準脚を同定するだけで、同じ複体比較と全関手の欄まで自動的に閉じる短縮は確認できなかった。
+
+### 17.3 残件の見込みと規模による中間停止
+
+| §13.2の項目 | §10の追加見込み | 今回までの実測 | 残りの見込み | 完成時の見込み | 元の上端との差 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 全単体次数の包含・微分・退化・指定余錐の高次成分 | 500〜750 | 339 | 0（残るnative成分照合は第三行へ計上） | 339 | −411 |
+| bar／重み・直和全複体の具体的比較・非有界擬同型 | 850〜1250 | 4100 | 250〜400 | 4350〜4500 | +3100〜+3250 |
+| 半自由出力分解・native余錐の輸送・同じ脚 | 500〜750 | 0 | 350〜550 | 350〜550 | −400〜−200 |
+| 全パラメーターの関手同型・射・指定余錐 | 250〜350 | 0 | 350〜550 | 350〜550 | 0〜+200 |
+| **追加計（§10以前の409行を除く）** | **2100〜3100** | **4439** | **950〜1500** | **5389〜5939** | **+2289〜+2839** |
+
+§10以前409行を含む3b-1の実測は **58本4848行**、共通7本424行を含む全数学は **65本5272行**。短いnative経路を使った場合でも完成時の見込みは **5798〜6348行（約5800〜6350行）** となり、承認済み5600行を超える見込み。第二行の増加は、元のMC barのshiftブロック・端点・微分の符号を、元の全単体列と同じ厳密な射へ戻す証明が当初の幅に収まらなかったことによる。第四行は、任意のapex族の選択では具体的な全複体の全関手比較にならない点を再評価した。
+
+[指示書§6と最新の規模規則](inf-supply-w2.md)、`coordination.md` §2の「超えそうなときは、検証済みの分をコミットしてから報告して止める」に従い、検証の確定後、**ここで新規実装を中間停止する**。これは停止点1の完了報告ではない。上記は未実装部分の見込みであり、最小必要行数の証明ではない。共通への付け替えや全関手・指定錐の要件の弱化はしない。停止点1に到達した時点で§13.2表を完成実測へ更新し、G10の見込みを出し直すという指示は未消化のまま保持する。
+
+### 17.4 今回の追加登録候補と検証記録
+
+§16の5本とは別に、今回の9本を以下に列挙する。入口と公式監査は調整役が登録する。
+
+```text
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBlockCoefficients
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBoundarySum
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalComposition
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockComposition
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarSignedColumns
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBoundaryFaces
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarThetaValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalClosed
+```
+
+前8本のコードは `e664e0c80`（4本321行）、`b9f39f34e`（2本263行）、`c017fc56b`（1本138行）、`8aa62ef08`（1本139行）にコミット済み。対象ビルド `isw2-build-35.log`（3841 jobs）、`isw2-build-36.log`・`37.log`（3836 jobs）、`isw2-build-38.log`（3837 jobs）、`isw2-build-39.log`（3846 jobs）はすべて終了コード0。`37`は局所heartbeat上限の理由をコメントへ補った再ビルド。§16以降の累計一時監査は60本627宣言、62本657宣言、63本678宣言、64本691宣言で、いずれも標準三公理のみ、sorry・独自公理0。
+
+各回 `with_build_lock.sh --wait 3600` で整理券を一枚ずつ出し、ビルドまたは監査の実行終了で鍵を返した。一括レーンおよび他の実装レーンの順番待ちは、検証を省略する理由にしていない。rootビルドは行っていない。既存宣言・drafts・入口・公式監査の変更0、他レーンとのファイルの重複0。変更は新規数学ファイルと自分の報告のみ。
+
+最後の `SmallStrictBarTotalClosed` は対象ビルド `/private/tmp/isw2-build-40.log`（3848 jobs、終了コード0）を通し、**`170f0a4df`** にコミットした。一時監査 `/private/tmp/AuditISW2SixtyFive.lean`、ログ `/private/tmp/isw2-audit-sixtyfive.log` は終了コード0、**累計65本・707宣言、標準三公理のみ**。sorry・独自公理0。監査は65モジュールの宣言をモジュール番号で抽出して依存公理を調べ、各モジュールの宣言数が非零であることも確認している。ソースの実ファイルの再集計は65本5272行、重複・欠落なし。`git diff --check` は成功。
+
+以上の検証済みコードを全てコミットし、未検証のLean下書きは残していない。**停止点1ではなく、§17.2の短い経路を検討した上での規模による中間停止**として、調整役の判断を待つ。停止理由は鍵待ちではない。次に再開する最初の未実装の型は、`smallStrictBarTotalHom` の一点評価を前向きの射とする複体同型（または同じ射の鎖ホモトピー同値）である。
+
+## 18. §7による再開：同じ一点評価を前向きの射とする複体同型（2026-11-12、cc27ce728）
+
+main `b668a7aef` の§7を `8ed15f6ae` で専用枝へ取り込んだ。3b-1の上限を約6500行とし、§17の中間停止を解除して、承認された短い経路で段1を継続している。停止点1では§13.2表を完成時の実測へ更新し、3b-2〜3b-4の見込みを実測から出し直す。G10で再利用できる加法的coend・線形co-Yoneda・非有界二重複体・shiftの符号の部品もその報告に挙げる。後続段の範囲をこちらで削らない。
+
+### 18.1 複体同型の構成と同じ射の照合
+
+新規5本411行を **`cc27ce728`** にコミットした。
+
+- `RealizationDegreeCofan`：各全次数qで、元の行 `(X_n)^(q+n)` の標準包含が余積であることを証明。逆向きの射は `realizationDegreeDesc` として `totalDesc` で定義し、非正の横次数を自然数へ戻す次数同型、正の行の零性から制限公式と一意性を示した。内部次数の有界性は不要。
+- `ShiftedCoproductDegreeCofan`：元の複体の余積を次数で評価し、shiftの次数同型とULiftによる射列の添字変更を同時に扱う。係数側の必要な余積を型に明記し、このレーンの宇宙0の射列では既存インスタンスで供給する。
+- `SmallStrictBarDegreeCofan`：行の余積と射列ごとのshifted因子の余積を `Cofan.isColimitTrans` で合成。元の比較列の成分公式により、その脚が以前指定した `smallStrictBarTotalColumn` の一点評価そのものであることを照合した。
+- `SmallStrictBarTotalHomValues`：厳密な射 `smallStrictBarTotalHom` の一点評価の各成分を、同じgraded比較と照合し、元の射列の各因子への制限も同じ比較列になることを示した。MCによる微分の変更で台の成分を取り違えていない。
+- `SmallStrictBarTotalIso`：始域の各次数の元の余積と、上の標的の余積を比較。`smallStrictBarTotalDegreeIso_hom` は、その同型の前向きの射が **元の一点評価の同じ成分** であることを述べる。`smallStrictBarTotalDegreeIso_inv` は逆射を、totalDescで構成した標的の余積からの射として指定する。これらから `smallStrictBarTotalPointIso` を構成し、`smallStrictBarTotalPointIso_hom` で前向きの複体射が **smallStrictBarTotalHomの一点評価そのもの** であることを証明した。
+
+これで§17の再開時に指定された最初の複体同型は閉じた。native余錐自体は新しく構成せず、次は既存 `dgCoherentBarNormalizedModuleInclusionUnconditional` を前に合成し、既存retractとこの同型を接続する。最初の「一つのstrict Δᵒᵖ図式のnative余錐・標準脚・射」の区切りはまだ未完。段2には進んでいない。
+
+### 18.2 検証と途中実測
+
+- `/private/tmp/isw2-build-41.log`：`RealizationDegreeCofan`、2387 jobs、終了コード0。
+- `/private/tmp/isw2-build-42.log`：残る4本とその依存、3853 jobs、終了コード0。
+- `/private/tmp/isw2-build-audit-43.log`：必要な既存 `CoherentBar/Retract/DeformationRetract` の対象ビルド（3814 jobs）と、一時監査 `/private/tmp/AuditISW2Seventy.lean`。終了コード0、**累計70本・782宣言、標準三公理のみ**。sorry・独自公理0。既存のretractのソースは変更していない。
+
+全て `with_build_lock.sh --wait 3600` で整理券を一枚ずつ取り、各実行は30分以内。最後の枠は必要な対象ビルドと監査だけを続けて実行し、終了で鍵を返した。rootビルドは行っていない。
+
+検証済みの累計は、共通7本424行、**3b-1の63本5259行**、全体70本5683行。今回411行は§13.2の第二行へ計上し、同表の途中実測は第一行339、第二行4511、第三・第四行0、§10以前409行は別。既存宣言・drafts・入口・公式監査の変更0、他レーンとのファイル重複0。個別検査中の正規化接続とnative判定の下書きは、この検証済みコミットへ含めていない。
+
+追加登録候補：
+
+```text
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.RealizationDegreeCofan
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.ShiftedCoproductDegreeCofan
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDegreeCofan
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalHomValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalIso
+```
+
+
+## 19. 同じ元の実現を頂点とする指定余錐の余極限性（2026-11-12、7e17c2b1e・5668d9c9a）
+
+### 19.1 正規化との接続と同じ join 余錐
+
+新規4本312行を **`7e17c2b1e`** にコミットした。
+
+- `SmallStrictBarNormalizedComparison`：既存の補正包含と射影・retractホモトピーを一点評価し、§18の同じ複体同型へ合成した。正規化barから元の非正規化bar、単体的置換の全複体への合成の前向きの射を保持する。
+- `ClosedMapCocone`：既存 `dgCoherentBarCoconeHomSpaceIsoUnconditional` の逆で、指定した閉零射を同じ終点の実際のjoin余錐へ送る。頂点の等式と、Hom空間へ戻したcycleが最初に指定した同じ閉射であることを証明。nativeのHA成分を作り直していない。
+- `StrictSimplicialBarRealization`：正規化比較と既存 `replacementAugmentationTotalHomotopyEquiv` を合成し、**元の図式の直和全複体**を頂点とする閉射・join余錐を指定。一点評価の鎖ホモトピー同値の前向きの射が、その閉射の一点評価と同じことも照合した。
+- `CosliceInvertibleLegInitial`：一般の準圏の一点図式で、実際の脚が可逆なら、その同じjoin余錐がcosliceの始対象になる。恒等余錐からの辺と左ファイブレーションの可逆辺反映を使用。Kerodon 4.7（Tag 05EA）と4.4.2（Tag 019F）の配置に置いた。
+
+### 19.2 同じ余錐の余極限性
+
+新規3本261行を **`5668d9c9a`** にコミットした。
+
+- `PointHomSpaceVertexCycle`：既存の一点余錐Hom空間同型の零単体と、既存 `cosliceFiberVertexToEdge` の実際の辺のcycleを照合。端点の等式によるcastの値と、pinched Homの全係数を保っている。
+- `ClosedMapCoconeInitial`：指定閉射が加群H⁰で可逆なら、上記の**同じ指定余錐**が余極限であることを証明。余錐の一点比較の脚のcycleが最初の閉射そのものであることを先に示し、上のcoslice補題と既存のHom族・fiber比較で余極限性を戻す。別の余錐を選んで、その存在だけを返していない。
+- `StrictSimplicialNativeColimit`：一点評価と通常の複体ホモトピー圏の比較の同値は可逆射を反映する。元の実現への指定閉射の一点評価が既に鎖ホモトピー同値であることから、加群H⁰で同じ射が可逆と示し、**`strictSimplicialBarRealizationCocone_isColimit`** を閉じた。
+
+ここで得た余極限性の値域は **全右dg加群のdg nerve** である。一般の擬同型をそこで可逆としていない。D(A)の射影的・半自由模型への輸送、標準脚の最終等式、全パラメーターの指定余錐・実現関手との比較は残る。したがって**停止点1でも、最初の標準脚・射までの区切りでもない**。段2へは進んでいない。
+
+### 19.3 検証・実測・登録候補
+
+- `/private/tmp/isw2-build-audit-44.log`：4本の対象ビルド4275 jobsと一時監査 `AuditISW2SeventyFour.lean`、終了コード0。累計74本835宣言、標準三公理のみ。
+- `/private/tmp/isw2-build-audit-45.log`：3本の対象ビルド5542 jobs、次の頂点照合に必要な既存 `StrictComparison.NativeVertexModuleMaps` の対象ビルド4544 jobs、一時監査 `AuditISW2SeventySeven.lean`。終了コード0、**累計77本843宣言、標準三公理のみ**。sorry・独自公理0。
+
+両回とも `with_build_lock.sh --wait 3600`、整理券一枚、鍵はビルドと監査の実行中だけ、一回30分以内。rootビルドなし。既存宣言・drafts・入口・公式監査の変更0。他レーンとのファイル重複0。
+
+検証済み累計は、共通7本424行、**3b-1の70本5832行**、全体77本6256行。§13.2の途中実測は第一行339、第二行4511、第三行573、第四行0、§10以前409行は別。この節の追加573行を第三行へ計上した。未検証の頂点照合2本は、この検証済みコミットと数には含めていない。
+
+追加登録候補（§18の5本に加えて）：
+
+```text
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarNormalizedComparison
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.ClosedMapCocone
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StrictSimplicialBarRealization
+SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.PointHomSpaceVertexCycle
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.ClosedMapCoconeInitial
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StrictSimplicialNativeColimit
+```
+
+
+## 20. 頂点列の厳密な固定と、6500行に対する残件の再評価（2026-11-12）
+
+### 20.1 頂点列の照合
+
+新規2本159行を **`6ba1003fa`** にコミットした。個別検査 `/private/tmp/ISW2NativeVertexInclusion.lean` は終了コード0。個別検査は新規2本を同じソースから連結し、既存の依存をimportした。検査途中の単位評価と余積の型aliasの不一致は、単位の評価と零shift同型の逆則を明示して修正した。
+
+- `Retract/VertexProjector`：既存の安定化の制限を零単体の最初の一段へ戻し、`VertexBoundary` の境界消滅から元の単位の制限と等しいことを証明。さらにMC後の同じ自己射の成分が、元の頂点の余積包含を厳密に固定することを示す。恒等射へのホモトピーだけで代用していない。
+- `Retract/NativeVertexInclusion`：既存の零次元層の包含とnative頂点列の式を使い、実閉射影・補正包含の合成を同じ安定自己射へ戻す。`dgBarNativeVertexModuleMap_inclusion_f` は、native頂点列と補正包含の合成の一点でない任意の評価・各次数の成分が、**零shift同型の逆と元の余積包含の合成**に等しいと述べる。
+
+この二本だけで、最終的なjoin余錐の脚と元の `standardZeroLeg` の等式を閉じたとはしていない。次の接続には、同じ閉射から余錐へ戻す比較の脚の抽出、上記の式と `smallStrictBarTotalHom_point_ι`・元の増大の零行公式との合成が残る。
+
+### 20.2 短い経路の再確認
+
+規模の数字だけで止める前に、§17.2の既存指定余錐を使う短い経路を実装と照らし直した。
+
+1. **短い経路は使用済み**。元のnative列と正規化barの余錐Hom空間同型をそのまま使い、同じ閉射を逆像へ送っている。新たなBarratt–Eccles作用・hammock・native HA方程式・新しい正規化barは作っていない。元の `smallStrictBarTotalHom` の一点評価を前向きの射とする同型、および元の実現への同じ比較の余極限性は§18〜§19で閉じた。
+2. **標準脚の短縮**。零単体では安定作用素が厳密に恒等になるので、今回の二本で、補正包含の全成分を展開する長い経路を避けられる。この後の脚・増大の照合を100〜180行と見積もる。高次成分を生の標準列へ取り替える短縮はしない。退化列で生の列は一般に零ではない。
+3. **D(A)への輸送**。`ProjectiveBarNativeCocone` の `fullInclusionLift`・`dgBarCocone_vertices`・`FullColimitReflection` と、射影的模型・半自由模型の既存の同値を再利用する。今回の同じ比較の鎖ホモトピー同値から、元の実現の射影性を戻し、**今回の同じ余錐全体**を充満部分圏へ上げて輸送する必要がある。元の正規化barのapexだけを今回の全複体と同一視して済ませない。この接続を140〜240行と見積もる。
+4. **全関手**。`StrictSemifreeColimitFamily` は全nerve上のnative余錐族を既に返すが、そのapexは任意の切断であり、具体的な直和実現の射を保持する比較はまだ与えない。`exists_colimitCoconeFamily_extension` も、部分パラメーターで指定した余錐は保持するが、未構成の具体的実現関手に沿う全ての射・高次成分を自動で固定するものではない。`isColimitCone_of_pointwise` は**既に同じ全関手上の余錐がある**ことを入力とする。したがってこれらを組み合わせただけで、具体的実現との全関手同型が閉じたとする短縮は確認できない。比較閉射とnative列のstrictな自然性を全パラメーターへ組み、指定余錐族と照合する残件を従来と同じ350〜550行と見積もる。これは対象ごとの同型から高次の自然性が自動で従うという主張ではない。
+
+### 20.3 §13.2表の途中実測と残件
+
+| §13.2の項目 | §10の追加見込み | 今回までの実測 | 残りの見込み | 完成時の見込み | 元の上端との差 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 全単体次数の包含・微分・退化・指定余錐の高次成分 | 500〜750 | 339 | 0（nativeの最終照合は第三行へ） | 339 | −411 |
+| bar／重み・直和全複体の具体的比較・非有界擬同型 | 850〜1250 | 4511 | 0 | 4511 | +3261 |
+| 半自由出力分解・native余錐の輸送・同じ脚 | 500〜750 | 732 | 240〜420 | 972〜1152 | +222〜+402 |
+| 全パラメーターの関手同型・射・指定余錐 | 250〜350 | 0 | 350〜550 | 350〜550 | 0〜+200 |
+| **追加計（§10以前409行を除く）** | **2100〜3100** | **5582** | **590〜970** | **6172〜6552** | **+3072〜+3452** |
+
+§10以前409行を含む3b-1の途中実測は **72本5991行**、共通7本424行を含む全数学は **79本6415行**。§18以降の増加1143行は、第二行411行、第三行732行である。§17の第二行残り250〜400行に対して実測411行で+11行、第三行残り350〜550行に対して既に732行で+182行、さらに脚・D(A)の接続が残った。増加の中心は、指定余錐の実際の一点の脚を同じcycleへ戻し、元の終点と零shift同型を厳密に保持する接続が、以前のnative接続の幅に収まらなかったことである。
+
+現時点の完成見込みは **6581〜6961行（約6600〜7000行）** となり、[指示書§7](inf-supply-w2.md) の約6500行を超える見込み。上の幅は設計上の見込みであって、最小必要行数の証明ではない。共通部分への付け替えや、全関手・同じ指定余錐の要件の弱化はしない。
+
+規模規則に従い、上記の二本の対象ビルド・監査を確定し、検証済みをコミットした。**ここで新規実装を中間停止する。**これは**停止点1の完了報告ではない**。停止理由は鍵待ちではない。停止点1で§13.2を完成実測へ更新し、3b-2〜3b-4を実測に基づき出し直し、G10へ再利用できる道具を挙げるという指示は保持する。後続段の範囲はユーザーの判断に委ね、こちらでは狭めない。
+
+### 20.4 対象ビルド・監査の確定記録
+
+`/private/tmp/isw2-build-audit-46.log`：新規二本の対象ビルド4632 jobsと一時監査 `/private/tmp/AuditISW2SeventyNine.lean` はいずれも終了コード0。**累計79本845宣言、標準三公理のみ**。sorry・独自公理0。対象ソース79本を重複・欠落なしで再集計し、6415行（共通424、3b-1 5991）を確認した。
+
+`with_build_lock.sh --wait 3600` の一枚の整理券で待ち、実行は30分以内。対象ビルドと監査の終了で鍵を返した。rootビルドなし。`git diff --check` は成功。数学の追加は新規ファイルだけで、既存宣言・drafts・入口・公式監査の変更0、他レーンとのファイル重複0。コードコミットは **`6ba1003fa`**。未検証のLean下書きは残していない。
+
+追加登録候補（対象ビルド・監査を確定済み）：
+
+```text
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.VertexProjector
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.NativeVertexInclusion
+```
+
+
+### 20.5 G10への再利用の暫定メモ（完了時の再見積もりではない）
+
+停止点1の完了時の見積もりと区別して、現在の部品の再利用範囲を残す。
+
+- 加法的coendと線形co-Yonedaは、今回のbarから元のΔᵒᵖの複体への重み比較を閉じた。G10の極限にはend側の比較が必要で、同じcoend定理をそのまま積へ適用したとはしない。係数の表現可能性・添字の比較・Homによる双対の設計には再利用できる。
+- 非有界な二重複体の水平鎖ホモトピーの成分と符号の証明は、内部次数の有界性を使っていない。G10の積全複体では、直和のdescを使った最終の組立てをそのまま引用できず、積のlift・各射影で検査する版が必要。成分補題は再利用し、積全複体の主張を証明済みとはしない。
+- shiftブロックの符号、`unsignedLeftShift` の評価公式、shiftの次数同型は、strictな列から全複体への成分の比較に再利用可能。ただしG10側の余単体次数・積の規約で符号を照合する。今回のbar固有のprefix・faceの証明を丸ごと流用できるとは数えない。
+- 同じ閉射の可逆性から同じ指定余錐の余極限性を得る今回の接続は、G10の同じ頂点・脚を保つ極限側で何を双対化する必要があるかを明確にした。今回の余極限判定そのものを、極限判定として無証明で使わない。
+
+3b-2〜3b-4の正式な再見積もりは、まだ未完の3b-1を完成実測と呼んで出さず、停止点1の報告で更新するという指示を保持する。
+
+
+## 21. IS-W2 §8：図式ごとの停止点1（2026-11-12）
+
+### 21.1 承認された範囲と今回の完了内容
+
+main `95c8f5c8c` の指示書§8を **`0300478e2`** で取り込んだ。停止点1は§13.2の第一〜第三行、すなわち**一つのstrict Δᵒᵖ図式ごとに、元の実現を頂点とし標準脚を持つD(A)の指定余錐と、その余極限性**とする。全パラメーターの実現関手・射・指定余錐族の比較は、ユーザー承認により3b-3へ移す。§20までの「未完」は当時の広い範囲での状態であり、この節は§8の区切りを検収するもの。
+
+元の複体は引き続き `directSumTotalFunctor` による `|X|^q = ⨁_(n≥0) (X_n)^(q+n)`。内部次数の有界性は仮定しない。別の通常colimや、正規化barの頂点を元の全複体と同一視する置き換えはしていない。
+
+今回の新規6本567行は、全て§13.2の第三行へ計上した。
+
+- **`ClosedMapCoconeCoordinates`（67行、`27fd0a158`）**：終点固定の既存余錐空間同型の零次座標は、最初に指定した同じ閉射のcycleに等しい。
+- **`StrictSimplicialVertexLeg`（86行、`2fdea8317`）**：`smallStrictBarNormalizedTotalHom_vertex` が、補正包含を通した同じnative頂点列を、置換の零行の余積包含に厳密に合わせる。`strictSimplicialBarRealizationHom_vertex` は、元の増大まで合成した**同じ複体射**が、先頭単体の零頂点から元の零行へ送る `strictSimplicialStandardLeg` に等しいと述べる。零shiftの次数同型も保って証明した。
+- **`ClosedMapCoconeVertex`（62行、`2fdea8317`）**：`dgCoherentBarClosedMapCocone_leg_cycle` が、実際のjoin余錐の脚の閉零係数を、同じnative頂点列と指定閉射の合成へ照合する。端点のcastを異種等号で保持する。上の複体射の等式と組み合わせ、脚のホモロジーだけでなく標準脚そのものを確認できる。
+- **`SpecifiedProjectiveCocone`（98行、`2fdea8317`）**：同じ閉射のH⁰での可逆性から、標的の射影性を実retractとして戻す。全頂点の射影性を入力し、計算済みの**同じ余錐全体**を既存の充満部分圏へ持ち上げる。`specifiedProjectiveCocone_image` は包含後のjoinからの全写像が元の余錐と等しいことを述べる。余極限性は充満包含で反映する。
+- **`StrictSimplicialDerivedCocone`（77行、`2fdea8317`）**：元の実現の射影性を正規化barとの同じ比較から戻す。`strictSimplicialDerivedCocone` を、同じ余錐の射影的模型への持ち上げと、既存の半自由模型・一点評価の同値から定義した。`strictSimplicialDerivedCocone_isColimit` は、この**指定した余錐**が既存 `derivedInfinityCategory A` で余極限であることを示す。頂点は、同じ元の実現の半自由代表である。
+- **`StrictSemifreeRealizationCocone`（177行、`866fcdba7`）**：元のstrict半自由図式へ戻す入口。半自由・射影的模型の既存同値の単位の同じ代表辺を厳密に保持して可逆円柱へ延ばし、計算済みの全余錐を左端に**厳密に保持する**延長を指定した。その右端を元の図式の余錐とする。`pointSemifreeRealizationExtension_source` が左端の全写像の等式、`strictSemifreeRealizationCocone_vertex` が同じ実現の頂点の等式を公開し、`strictSemifreeRealizationCocone_isColimit` が余極限性を示す。頂点だけを保つ任意の余錐の選択で標準脚の輸送を済ませていない。脚と高次成分は、この指定された同じ円柱上で比較する。さらに `pointSemifreeRealizationCylinder_unit` が、円柱が同値の単位を表す**同じ代表辺そのもの**を保持する等式を公開する。その辺の類が元の単位の順方向の射であることは、既存 `FunctorIso.edge_homMk` に一致する。
+
+最後の入口の入力は `SimplicialObject (ClosedCategory A (SemifreeDGModules A PUnit))`。元の複体の半自由図式には既存 `semifreePointConstant A` の `onClosed` を適用してこの入力を与える。出力は既存 `semifreePointEquivalence A` を経由したD(A)の図式であり、別の導来∞圏を定義していない。比較対象の複体はその台の一点評価の元の直和実現。小さい添字の二段ULiftは、既存 `smallDiagramShapeIso` で直接の持ち上げへ結ぶ。
+
+**図式ごとの版の停止点1は、この範囲で閉じた。** 全図式の射に関する実現関手同型・錐族の比較をこの完了に含めない。当初の最初の区切りのうち、図式間の射の像の比較は第四行とともに3b-3へ移した。今回確認した射は、同じbar比較と標準脚、および指定した同値の単位の辺である。
+
+### 21.2 §13.2の表：完成時の実測
+
+| 項目 | §10の追加見込み | 完成実測 | 元の上端との差 | 状態 |
+| --- | ---: | ---: | ---: | --- |
+| 全単体次数の包含・微分・退化・指定余錐の高次成分 | 500〜750 | 339 | −411 | 完了。nativeの最終照合は第三行に計上 |
+| bar／重み・直和全複体の具体的比較・非有界擬同型 | 850〜1250 | 4511 | +3261 | 完了。同じ閉射の一点評価の同型を含む |
+| 半自由出力分解・native余錐の輸送・同じ脚 | 500〜750 | 1299 | +549 | 完了。標準脚の最終等式・D(A)輸送・元の図式への円柱を含む |
+| 全パラメーターの関手同型・射・指定余錐の族 | 250〜350 | 0 | — | §8により3b-3へ移管、未実装 |
+| **今回の範囲の追加計** | **1850〜2750** | **6149** | **+3399** | 第一〜第三行 |
+
+§10以前409行を含む3b-1は **78本6558行**。共通7本424行を含む全数学は **85本6982行**。見込みは停止点0で3b-1が1000〜1800行、その後、具体的な不足を確認して上げた停止基準が約6500行。完成実測はその約6500行に対して**+58行**。共通や段2への付け替えはしていない。今回の範囲を第一〜第三行に切った後の§20の見込み6231〜6411行に対しては、上端より147行増えた。主な増加は、元のstrict図式に戻す際に頂点だけでなく脚と全高次成分を保持する円柱の証拠を残したことによる。
+
+第二行が当初の幅を大きく超えた理由は、加法的coend・線形co-Yoneda・非有界な全複体の水平ホモトピーの一般補題と、元のMaurer–Cartan barのshift・prefix・faceの符号を、同じ厳密な閉射へ戻す接続を別々に必要としたこと。この一般部分も含めて3b-1の実測に数えた。第三行では、余錐の実際の脚のcycle、元の終点と零shift同型、充満部分圏への持ち上げ、既存D(A)と元の図式への輸送を一体の「薄い入口」として見積もった幅が不足した。
+
+### 21.3 3b-2〜3b-4の再見積もり
+
+以下は**未実装分の設計見込み**。完了済み3b-1の6558行を単純に定数倍せず、再利用できる部分と、別に証明が必要な部分を分けた。既承認の停止基準は、3b-2・3b-3が8400行、3b-4が9200行のまま。今回の見積もりで基準を自動で引き上げない。
+
+| 段 | 今回の見込み | 内訳と3b-1の実測からの修正 |
+| --- | ---: | --- |
+| 3b-2（G10） | **5000〜7200行** | 積全複体・正規化・非有界成分1100〜1600、end／Homとnative極限の比較1900〜2700、加群制限とホモロジー・標準脚600〜900、**全関手と指定錐族**1400〜2000。直和版の符号・成分は使えるが、積の組立てとnative錐の接続を新たに見積もった。G10の全関手版は段2に残し、段3の一般厳密化を待たせない |
+| 3b-3 | **4850〜7150行** | Δ・Δᵒᵖに固定したstrict図式の∞局所化と `Fun(I_J, DA)`、coherent図式の厳密化・錐の両方向輸送4400〜6400。**移管したstrict実現の全パラメーター比較450〜750を加算**（旧見込み350〜550から、具体的な射・同じ錐の整合性を追加）。対象ごとの選択やH⁰の自然同型で代用しない |
+| 3b-4 | **5300〜7800行** | BE実現1700〜2500、BEのTot1700〜2500、pointed KanのReedy条件付きraw版と置換後版1200〜1800、忘却との同じ写像・全関手比較700〜1000。⑤aのファイルは変更せず新規のBE固有補助を使う。忘却のsifted保存を仮定する循環は作らない |
+
+今後の共通補助は追加200〜400行程度、既存共通424行を含めて624〜824行の見込み。残る三段と共通の追加は **15350〜22550行**、完了済み6982行を含めた全体は **22332〜29532行**の見込みとなる。3b-3の具体的厳密化とBEの全関手比較は依然不確実性が高い。範囲をこちらで狭める判断はしていない。段ごとの非停止の途中報告は、段0上端の半分に達する早い時点でも行い、今回の新見込みの半分まで報告を遅らせない。
+
+### 21.4 G10へ再利用できるものと残る双対化
+
+- **加法的coend**：`HomologicalAlgebra.CoendAdditive`・`LinearWeightRealization`・`LinearFreeWeight`。加法圏の重みの表示と関係式の道具は再利用できる。G10の極限はend側なので、同じcoend定理を積に適用したことにはしない。Homで表現したendと各射影の整合性は段2で証明する。
+- **線形co-Yoneda**：`LinearCoYoneda`・`LinearCoYonedaNaturality`、`LinearWeightGenerators`・`BarWeightEvaluation*`。表現可能な係数・添字の計算と、元の同じ比較射の自然性の証明を再利用できる。余単体的入力ではHom側の係数と反変性を照合する必要がある。
+- **非有界二重複体**：`TotalHorizontalHomotopyComponents`・`TotalHorizontalHomotopy`・`ChainTotalizationHomotopy`。内部次数の有界性なしの水平ホモトピーの成分と符号は使える。直和のdescで組み立てた最終定理はそのまま積に使わず、積のlift・各射影で検査する版を追加する。積の完全性を無条件に仮定しない。
+- **shiftブロックの符号**：`UnsignedShiftCochain` と `SignedShiftBlockValues`・`SignedShiftBlockComposition`、次数ごとのshift・余積の照合。全次数で同じ射を保つ方法はG10へ使えるが、cosimplicialな横次数と積の規約で符号を照合する。bar固有のprefix・faceの証明はG10へそのまま持ち込まない。
+- **同じ頂点・脚を保つ接続**：`ClosedMapCocone*`・`SpecifiedProjectiveCocone`・今回の円柱延長。実在する同じ閉射とnative錐を照合する手順を共用できる。極限側の主張そのものは新たに示し、余極限判定を無証明で読み替えない。
+
+### 21.5 検証とコミット
+
+- `/private/tmp/isw2-build-audit-47.log`：`ClosedMapCoconeCoordinates` と必要な既存の射影的模型・同じ頂点の輸送の対象ビルド6049 jobs、既存の射影的retract補題2788 jobs、一時監査80本847宣言。終了コード0、標準三公理のみ。コード **`27fd0a158`**。
+- `/private/tmp/isw2-build-audit-48.log`：標準脚・実際の余錐脚・射影的持ち上げ・D(A)輸送の4本の対象ビルドと既存の閉nerve自然性6264 jobs、一時監査84本881宣言。終了コード0、標準三公理のみ。コード **`2fdea8317`**。
+- `/private/tmp/isw2-build-audit-49.log`：段1・共通の全85モジュールを明示した対象ビルド7349 jobsと一時監査85本909宣言は終了コード0、標準三公理のみ。この後、円柱が同値の単位の同じ代表辺を保持することを厳密に指定すべき点を確認し、既存 `exists_kanEquivalenceInterval_extension_of_invertibleEdge` へ切り替えて `pointSemifreeRealizationCylinder_unit` を公開した。単に両端を指定する存在定理の逆像を選ぶ形を残していない。
+- 補強後の `/private/tmp/isw2-build-audit-50.log`：**全85モジュールを明示した鍵付き対象ビルド7349 jobs** と `AuditISW2EightyFive.lean` による最終監査は終了コード0。**85本912宣言、標準三公理のみ、sorry・独自公理0**。最後のコードは **`866fcdba7`**。監査はモジュール番号で所有宣言を抽出して全依存公理を調べ、85本それぞれの宣言数が非零であることを確認した。
+
+各回 `with_build_lock.sh --wait 3600`、整理券は一枚、実行は30分以内のtimeoutを設定し、ビルド・監査の実行中だけ鍵を持つ。rootビルドは行っていない。最後の鍵も検証終了で返却した。`git diff --check` は成功。未検証のLean下書きは残していない。 検証基準は取り込み済みのmain `95c8f5c8c`。この基準とHEADのLean差分を再照合し、新規47本のみで既存Leanファイルの変更0を確認した。作業中にmainは `fbd1d7698` まで進んでいたが、今回の47本の直接importに後続mainで削除されたモジュールはない。後続mainの差分は今回の検証へ取り込んでいない。既存の宣言・drafts・入口・公式監査の変更0。他レーンとのファイル重複0。
+
+### 21.6 mainへの取り込みと登録候補
+
+main `95c8f5c8c` のソースの有無と全85モジュールのリストを照合した。最初の38本はmainに存在し、**47本が未取り込み**。§16の5本・§17の9本・その後の途中コミットを含む以下を、停止点1でまとめて取り込む。入口と `audit_derived_infinity` への正式登録は調整役が行う。この枝では登録しない。
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRealizationCocone
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StrictSimplicialVertexLeg
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.ClosedMapCoconeVertex
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SpecifiedProjectiveCocone
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplicialDerivedCocone
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.ClosedMapCoconeCoordinates
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.VertexProjector
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.NativeVertexInclusion
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.PointHomSpaceVertexCycle
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.ClosedMapCoconeInitial
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StrictSimplicialNativeColimit
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarNormalizedComparison
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.ClosedMapCocone
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StrictSimplicialBarRealization
+SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.RealizationDegreeCofan
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.ShiftedCoproductDegreeCofan
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDegreeCofan
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalHomValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalIso
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalClosed
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarThetaValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBoundaryFaces
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockComposition
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarSignedColumns
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBlockCoefficients
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBoundarySum
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalComposition
+SerrePositivity.HomologicalAlgebra.SimplicialReplacementBoundary
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalValues
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalDifferential
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StandardRowDifferential
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarUnshiftedBoundary
+SerrePositivity.HomologicalAlgebra.UnsignedShiftCochain
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarColumns
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarTotalColumns
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StandardRowBoundary
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.StandardRowCochain
+SerrePositivity.HomologicalAlgebra.LinearWeightGenerators
+SerrePositivity.HomologicalAlgebra.BarWeightEvaluation
+SerrePositivity.HomologicalAlgebra.BarWeightEvaluationIso
+SerrePositivity.HomologicalAlgebra.BarWeightRealizationNaturality
+SerrePositivity.HomologicalAlgebra.TotalRowCochain
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.ReplacementWeightComparison
+SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.ReplacementTotalHomotopy
+```
+
+検収対象は、§8に従う図式ごとの指定余錐・同じ頂点・標準脚・余極限性。移管した全パラメーターの比較は3b-3、G10は段2であり、この停止点の完了には含めない。
+
+以上を停止点1として報告する。段2の実装にはまだ着手していない。移管した族の比較と後続段の範囲の判断は、指示書どおりユーザー・調整役に委ねる。

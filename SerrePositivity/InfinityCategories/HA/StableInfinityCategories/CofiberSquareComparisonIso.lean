@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 規約：値域は quasicategory、安定性は不要。使われ方：cofiber 対象の比較同型。 -/
 lemma nonempty_cofiberSquareFunctorIso {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) : Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso s.square t.square) := by
+    (s t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) : Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso s.square t.square) := by
   obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.nonempty_functorIso_span_of_first_eq_terminal_second
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan s.square) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan t.square) (by
       rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan, ← Category.assoc horn₂₀.ι₀₁,
@@ -49,7 +49,7 @@ lemma nonempty_cofiberSquareFunctorIso {X : SSet.{u}} [Quasicategory X]
 規約：値域は quasicategory。使われ方：cofiber の零性の輸送。 -/
 def cofiberSquareComparisonIso {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso s.cofiber t.cofiber := by
+    (s t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso s.cofiber t.cofiber := by
   let e := Classical.choice (nonempty_cofiberSquareFunctorIso s t)
   let v : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) _⦋0⦌ :=
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))
@@ -68,7 +68,7 @@ def cofiberSquareComparisonIso {X : SSet.{u}} [Quasicategory X]
 規約：安定性は不要。使われ方：選んだ cofiber による同型判定の独立性。 -/
 lemma cofiberSquare_zero_iff {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
-    (s t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex s.cofiber ↔ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex t.cofiber :=
+    (s t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex s.cofiber ↔ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex t.cofiber :=
   ⟨fun h => h.of_vertexIso (cofiberSquareComparisonIso s t),
     fun h => h.of_vertexIso (cofiberSquareComparisonIso s t).symm⟩
 

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberSquareComparisonIso
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSpanComparison
@@ -27,7 +29,7 @@ variable {X : SSet.{u}} {L : Δ[1] ⊗ Δ[1] ⟶ X}
 
 /-- 零終点長方形の外側は、元の左辺の実 cofiber 四角形。 -/
 def PushoutCofiberRectangle.leftCofiberSquare (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle L) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow L) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow L) where
   toZeroTriangle := r.outerZeroTriangle
   bottom_edge := by
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ ((β_ Δ[1] Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 1) = _
@@ -38,12 +40,12 @@ def PushoutCofiberRectangle.leftCofiberSquare (r : _root_.SerrePositivity.Infini
 
 /-- 零終点長方形の右面は、元の右辺の実 cofiber 四角形。 -/
 def PushoutCofiberRectangle.rightCofiberSquare (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle L) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow L) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow L) where
   toZeroTriangle := r.rightZeroTriangle
   bottom_edge := by
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ ((β_ Δ[1] Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare r.diagram 0) = _
     rw [← Category.assoc, squareBottomEdge_transpose, ← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_sharedEdge,
-      r.left_eq, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge]
+      r.left_eq, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge]
     exact (SSet.yonedaEquiv.symm_apply_apply _).symm
   isPushout := r.right_isCofiber
 
@@ -53,11 +55,16 @@ lemma PushoutCofiberRectangle.cofiber_eq (r : _root_.SerrePositivity.InfinityCat
 
 /-- 左右の辺の任意の実 cofiber 対象は、押し出しに沿って実同型になる。 -/
 def cofiberPushoutComparisonIso [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
-    (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L) (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow L))
-    (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow L)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso s.cofiber t.cofiber := by
+    (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L) (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow L))
+    (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow L)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso s.cofiber t.cofiber := by
   let r := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenPushoutCofiberRectangle L hL
   exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberSquareComparisonIso s r.leftCofiberSquare ≪≫
     eqToIso (congrArg SSet.HomotopyCategory.mk r.cofiber_eq) ≪≫
       _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberSquareComparisonIso r.rightCofiberSquare t
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.4.14" (partial := direction) "仮定：安定準圏と引き戻し正方形に対する余ファイバー長方形（HA の一方向）。結論：引き戻しは押し出しなので、二つの余ファイバーの hC 上の同型が得られる。誘導射の可逆性から引き戻しを得る逆向きは採用した型にない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberPushoutComparisonIso

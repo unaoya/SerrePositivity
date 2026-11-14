@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ReverseBoundaryEdge
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.ReverseBoundaryEdge
 public import SerrePositivity.KST.Spectra.PointedZeroConnecting
 public import SerrePositivity.KST.Spectra.LoopBoundaryRepresentatives
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.HomotopyComponents
 
 /-!
 概要：基点から fiber の頂点への辺は、底の逆向きの loop の成分接続写像を計算する。

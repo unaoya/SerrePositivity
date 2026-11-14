@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomKan
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomFrames
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ResolutionHomSourceRestriction
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MappingSpaces.ResolutionHomSourceRestriction
 
 /-!
 # 元の始域を持つ標準 Hom から正規化共通 Hom への比較

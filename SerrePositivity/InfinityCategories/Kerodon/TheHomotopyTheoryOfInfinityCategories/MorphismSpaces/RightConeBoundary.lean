@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SectionsFiberwiseComparison
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeAnodyne
 
@@ -110,3 +112,8 @@ lemma sliceOverPostcomp_trivialKanFibration_of_rightFibration {E B : SSet.{u}}
     (sliceOverPostcomp_boundary_lifting_of_rightFibration c r)
 
 end SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "2.4.3.1" (partial := special) "仮定：Cartesian ファイブレーション p と図式（Lean が強い：p が右ファイブレーションで、図式を一点に限る）。結論：スライス間の後合成が自明 Kan ファイブレーション（Lean が弱い：一般の図式と、スライスの辺の Cartesian 性を像で判定する同値はない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceOverPostcomp_trivialKanFibration_of_rightFibration

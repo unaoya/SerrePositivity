@@ -9,15 +9,19 @@ private def span (stx : Syntax) : List (String × Json) :=
   | some r => [("start", toJson r.start.byteIdx), ("stop", toJson r.stop.byteIdx)]
 
 private def refRow (ref : Reference) : Option Json := do
+  -- Explicit universes belong to the application, not the constant's name.
+  -- Keep their exact source spelling and edit only the parsed identifier.
+  let stx := if ref.stx.isOfKind ``Parser.Term.explicitUniv && ref.stx[0].isIdent then
+      ref.stx[0] else ref.stx
   let kind := match ref.info with
     | .ofFieldInfo _ => "field"
     | .ofTermInfo _ =>
-      if ref.isBinder then "binder" else if ref.stx.isIdent then "term" else "syntax"
+      if ref.isBinder then "binder" else if stx.isIdent then "term" else "syntax"
     | _ => "syntax"
   let (module, name, kind) := match ref.ident with
     | .const module name => (module, name, kind)
     | .fvar _ _ => ("", "", "local")
-  let fields := span ref.stx
+  let fields := span stx
   if fields.isEmpty then none else
     some <| Json.mkObj (fields ++ [("kind", toJson kind), ("module", toJson module),
       ("name", toJson name), ("namespace", toJson ref.ci.currNamespace.toString)])
@@ -90,20 +94,34 @@ private partial def commandRows (state : Command.State) (cmd : CommandParsedSnap
   else acc
 
 unsafe def main (args : List String) : IO UInt32 := do
-  let [module, source, output] := args
-    | IO.eprintln "usage: lean --run klw1_collect_refs.lean MODULE SOURCE OUTPUT"; return 2
+  if args.length < 3 || args.length > 4 then
+    IO.eprintln "usage: lean --run klw1_collect_refs.lean MODULE SOURCE OUTPUT [SETUP.json]"
+    return 2
+  let [module, source, output] := args.take 3 | return 2
+  let moduleSetup? ← (args[3]?).mapM (fun path : String => ModuleSetup.load path)
   let name ← moduleNameOfFileName source none
   if name.toString != module then
     IO.eprintln s!"source module mismatch: expected {module}, inferred {name}"
     return 2
+  if let some config := moduleSetup? then
+    if config.name != name && config.name != `_unknown then
+      IO.eprintln s!"setup module mismatch: expected {name}, got {config.name}"
+      return 2
   let input ← IO.FS.readFile source
   initSearchPath (← getBuildDir)
   enableInitializersExecution
   let ictx := Parser.mkInputContext input source
-  let setup stx := pure <| .ok {
-    imports := stx.imports, isModule := stx.isModule, mainModuleName := name,
-    opts := Elab.async.set {} false
-  }
+  let setup stx := do
+    let config := moduleSetup?.getD { name }
+    liftM <| config.dynlibs.forM Lean.loadDynlib
+    return .ok {
+      mainModuleName := name, package? := config.package?,
+      imports := config.imports?.getD stx.imports,
+      isModule := config.isModule || stx.isModule,
+      importArts := config.importArts, plugins := config.plugins,
+      -- Synchronous snapshots are the only intentional elaboration override.
+      opts := Elab.async.set config.options.toOptions false
+    }
   let snap ← Language.Lean.process setup none { ictx with }
   let snapshots := Language.toSnapshotTree snap
   if ← snapshots.runAndReport {} false then return 1
@@ -113,6 +131,10 @@ unsafe def main (args : List String) : IO UInt32 := do
   let commands := commandRows header.cmdState header.firstCmdSnap.get
   IO.FS.writeFile output <| (Json.mkObj [
     ("schema_version", toJson (1 : Nat)), ("module", toJson module), ("source", toJson input),
-    ("refs", toJson refs), ("commands", toJson commands)]).compress
+    ("refs", toJson refs), ("commands", toJson commands),
+    ("elaboration", Json.mkObj [
+      ("configured", toJson moduleSetup?.isSome),
+      ("setup_options", toJson (moduleSetup?.map (·.options) |>.getD {})),
+      ("async", toJson false)])]).compress
   Runtime.forget snapshots
   return 0

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Topology.Homotopy.HomotopyGroup
 public import Mathlib.Topology.Category.TopCat.Basic
 
@@ -78,3 +80,9 @@ lemma weakHomotopyEquivalences_comp {f : X ⟶ Y} {g : Y ⟶ Z}
     exact (hg.2 (f x) n).comp (hf.2 x n)
 
 end SerrePositivity.TopologicalHomotopy
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "1.1.3.4"] _root_.SerrePositivity.TopologicalHomotopy.weakHomotopyEquivalences
+attribute [cite HTT "1.1.3.6" (partial := component) "仮定：位相豊穣関手 F の各 Hom に誘導される連続写像を入力（HTT の各 Hom の条件と一致）。結論：weakHomotopyEquivalences は π0 と全基点・正次数 πn の全単射を要求するので、明記された第一条件の弱ホモトピー同値の判定を表す。F 全体の hF の本質的全射を組み合わせた定義と hC との比較はない。"] _root_.SerrePositivity.TopologicalHomotopy.weakHomotopyEquivalences

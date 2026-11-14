@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
@@ -98,3 +100,11 @@ lemma tensorGenerated_le_weakEquivalences [HasMonoidAxiom.{w} C]
     (tensorCells_le_weakEquivalences J hJ)
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "4.1.8.1" (partial := component) "仮定：モノイダル圏とモデル構造（Lean が弱い：組合せ的・対称であることを仮定しない）。結論：自明余ファイブレーションを右から任意の対象でテンソルして作る、指定宇宙の余積・押し出し・超限合成とそのレトラクトの弱同値性（対称な場合に HA の生成射と同じ右テンソル側）。全宇宙の最小弱飽和類との比較は型に含まれない。"] _root_.SerrePositivity.Quillen.HasMonoidAxiom
+attribute [cite HA "4.1.8.1" (partial := component) "仮定：モノイダル圏とモデル構造（Lean が弱い：組合せ的・対称であることを仮定しない）。結論：自明余ファイブレーションを右から任意の対象でテンソルして作る、指定宇宙の余積・押し出し・超限合成とそのレトラクトの弱同値性（対称な場合に HA の生成射と同じ右テンソル側）。全宇宙の最小弱飽和類との比較は型に含まれない。"] _root_.SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences
+attribute [cite HA "4.5.4.2" (partial := component) "仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。"] _root_.SerrePositivity.Quillen.HasMonoidAxiom
+attribute [cite HA "4.5.4.2" (partial := component) "仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。"] _root_.SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences

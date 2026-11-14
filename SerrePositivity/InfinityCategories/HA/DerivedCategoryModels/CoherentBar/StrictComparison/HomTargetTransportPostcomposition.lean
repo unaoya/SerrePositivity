@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleHomEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleHomEndpointTransport
 public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 

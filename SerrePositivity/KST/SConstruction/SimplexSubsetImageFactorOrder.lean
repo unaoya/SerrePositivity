@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexSubsetInclusionOrder
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.SimplexSubsetInclusionOrder
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index
 
 /-! # 元の任意の単調写像の像部分集合への番号因子

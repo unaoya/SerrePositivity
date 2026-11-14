@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageFactorisation
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackProjectionQuasiIso
 
@@ -58,3 +60,8 @@ lemma postnikovImageFactorisation_fac : postnikovImageFactorisationSource R f n 
   HomotopyPullbackModel.lift_right R _ _ _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Lemma 2.30" (partial := component) "仮定：可換基礎環上の非正 dg 代数の自然数塔、n≥1（Lean が強い）。結論：Postnikov 切断からレベルごとに連結な左脚とプロ同値な右脚の因子分解。一般の Pro(Alg^cn) の同値表示は範囲外（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovImageFactorisationComparison_quasiIso

@@ -46,7 +46,7 @@ structure VerdierTwoArrowRoofComparison {A B C : _root_.SerrePositivity.Infinity
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram seed)
       twoArrowFirstTarget twoArrowSecondTarget fraction
       (twoArrowCoslice_projection q.hom D L F seed hb ht))
-  sourceDenominator_mem : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (twoArrowDenominatorSquare cone)).edge ∈
+  sourceDenominator_mem : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (twoArrowDenominatorSquare cone)).edge ∈
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i
 
 namespace VerdierTwoArrowRoofComparison
@@ -103,7 +103,7 @@ def numeratorIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexe
 lemma shared : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ twoArrowDenominatorSquare d.cone =
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ twoArrowNumeratorSquare d.cone := twoArrowConeSquares_shared d.cone
 
-lemma terminalDenominator_mem : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (twoArrowDenominatorSquare d.cone)).edge ∈
+lemma terminalDenominator_mem : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (twoArrowDenominatorSquare d.cone)).edge ∈
     _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i := by
   have he := TwoArrowNativeSquares.denominator_top D L (twoArrowCosliceDiagram d.seed)
     d.fraction d.cone

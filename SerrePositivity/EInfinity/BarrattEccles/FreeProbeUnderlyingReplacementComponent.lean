@@ -137,7 +137,7 @@ lemma freeProbeUnderlyingDerivedSourceIso_component_arrow :
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeElementCofibrantSource A X).obj := ComposableArrows.ext₀ rfl
   have hv' := congrArg (fun v => (Arrow.mk
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (algebraCAlgSource_underlyingDerivedIso A).hom v) :
-      Arrow (hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))) hv
+      Arrow (hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)))) hv
   exact (hs.trans hv').trans
     (algebraCAlgSource_underlyingDerivedIso_component_arrow A
       (freeProbeElementCofibrantSource A X).obj)

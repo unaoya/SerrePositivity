@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
 public import SerrePositivity.KST.SConstruction.DGModuleClosedExactInclusion
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleFunctorExact
 
 /-! # 実 Perf dg 延長の完全性
 概要：厳密 dg 関手の実 Perf 延長の native nerve は完全である。

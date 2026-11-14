@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FrameSpanNerve
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.FrameSpanNerve
 public import SerrePositivity.EInfinity.FrameHom.FrameSpanNaturality
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 

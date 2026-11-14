@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.ConcreteCubeMonoidal
 public import SerrePositivity.KST.SConstruction.CubicalPresheaf
 public import Mathlib.CategoryTheory.Monoidal.DayConvolution.DayFunctor
@@ -58,3 +60,9 @@ lemma cubicalDayTensor_hom_ext {K L M : CubicalSet.{u}}
   Functor.hom_ext_of_isLeftKanExtension _ (cubicalDayTensorUnit K L) _ _ h
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "2.2.6.17" (partial := special) "仮定：通常圏の立方体添字と集合値の前層（Lean が強い：具体的な通常圏を固定）。結論：関手圏の Day モノイダル構造と、テンソルを元のテンソルに沿う左 Kan 延長とする普遍性（この場合に一致）。一般の関手 ∞ operad とその対称構造は型に含まれない。"] _root_.SerrePositivity.KST.SConstruction.cubicalDayMonoidal
+attribute [cite HA "2.2.6.17" (partial := special) "仮定：通常圏の立方体添字と集合値の前層（Lean が強い：具体的な通常圏を固定）。結論：関手圏の Day モノイダル構造と、テンソルを元のテンソルに沿う左 Kan 延長とする普遍性（この場合に一致）。一般の関手 ∞ operad とその対称構造は型に含まれない。"] _root_.SerrePositivity.KST.SConstruction.cubicalDayTensor_isLeftKanExtension

@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.FullSubcomplex
 variable {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
 
 def squareLift (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i j)) :
+    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F i j)) :
     (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift P F (by
     rintro ⟨a, b⟩
@@ -32,7 +32,7 @@ def squareLift (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
     exact hP i j)
 
 lemma squareLift_ι (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i j)) :
+    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F i j)) :
     squareLift P F hP ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι = F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 lemma reflects_pullback (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶
@@ -46,12 +46,12 @@ lemma reflects_pushout (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F := reflects_colimit P (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone F) hF
 
 lemma squareLift_zero (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i j))
-    (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (squareLift P F hP) 0 1) := reflects_zero P _ hz
+    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F i j))
+    (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F 0 1)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (squareLift P F hP) 0 1) := reflects_zero P _ hz
 
 lemma squareLift_edge (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F i j))
+    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex F i j))
     (δ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1])
     {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj
@@ -68,16 +68,16 @@ variable {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTh
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u})) x y)
 
 def cofiberLift
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (f.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι)))
-    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square i j)) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f where
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (f.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι)))
+    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square i j)) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f where
   square := squareLift P s.square hP
   zero_corner := squareLift_zero P s.square hP s.zero_corner
   bottom_edge := squareLift_edge P s.square hP _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge f s.bottom_edge
   isPushout := reflects_pushout P _ (by rw [squareLift_ι]; exact s.isPushout)
 
 def fiberLift
-    (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (f.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι)))
-    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square i j)) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f where
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (f.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι)))
+    (hP : ∀ i j : Fin 2, P (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square i j)) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f where
   square := squareLift P s.square hP
   zero_corner := squareLift_zero P s.square hP s.zero_corner
   right_edge := squareLift_edge P s.square hP _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge f s.right_edge

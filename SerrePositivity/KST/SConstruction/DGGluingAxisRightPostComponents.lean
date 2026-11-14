@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesArrows
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Postcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.ExactSequences.ComparisonModels.Postcomposition
 
 /-! # 元の右軸包含の全 Hom 後合成の二成分
 概要：右軸包含による後合成は、左 Hom 成分を零にし、元の右 Hom 成分を保持する。

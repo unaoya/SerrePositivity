@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulBoundary
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
@@ -48,3 +50,10 @@ lemma trivialKanFibration_of_leftFibration_of_isQCatEquivalence
     (leftFibration_vertex_surjective_of_essentiallySurjective p hp.choose.isEssentiallySurjective)
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "3.1.1.5" (partial := direction) "仮定：準圏間の左ファイブレーションが準圏同値である（Lean は ψ という指定を外し、左ファイブレーション性を仮定）。結論：自明 Kan ファイブレーションになる（ψ に関する同値判定の一方向に一致）。ψ の左ファイブレーション性は型に含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.trivialKanFibration_of_leftFibration_of_isQCatEquivalence
+attribute [cite HTT "2.1.3.2"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibration_vertex_surjective_of_essentiallySurjective
+attribute [cite HTT "4.3.1.2" (partial := component) "仮定：内ファイブレーションと右結合上の余錐（Lean が強い：圏同値の判定では始域と終域が準圏）。結論：同じ相対コスライス比較の自明 Kan 性と準圏同値性が同値（Joyal 模型でのホモトピー引き戻しの同定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.trivialKanFibration_of_leftFibration_of_isQCatEquivalence

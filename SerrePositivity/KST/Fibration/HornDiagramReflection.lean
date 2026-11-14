@@ -23,18 +23,18 @@ lemma innerTwoHorn_vertex_cover (v : (Λ[2, 1] : SSet.{u}) _⦋0⦌) :
 
 /-- 全ホーン図式の両短辺が零対象なら、元の図式も零対象。 -/
 lemma innerTwoHorn_isZeroVertex_of_edges {B : SSet.{u}} [Quasicategory B]
-    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex B] (v : ((ihom (Λ[2, 1] : SSet.{u})).obj B) _⦋0⦌)
-    (h₀ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((pre horn₂₁.ι₀₁).app B).app (Opposite.op ⦋0⦌) v))
-    (h₁ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((pre horn₂₁.ι₁₂).app B).app (Opposite.op ⦋0⦌) v)) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v := by
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex B] (v : ((ihom (Λ[2, 1] : SSet.{u})).obj B) _⦋0⦌)
+    (h₀ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((pre horn₂₁.ι₀₁).app B).app (Opposite.op ⦋0⦌) v))
+    (h₁ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((pre horn₂₁.ι₁₂).app B).app (Opposite.op ⦋0⦌) v)) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex v := by
   apply isZeroVertex_of_pointwise
   intro k
   obtain (⟨a, rfl⟩ | ⟨a, rfl⟩) := innerTwoHorn_vertex_cover k
   · have h := isZeroVertex_evaluateFunctorAt h₀ a
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((pre horn₂₁.ι₀₁).app B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app _ v) at h
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((pre horn₂₁.ι₀₁).app B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app _ v) at h
     rwa [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt] at h
   · have h := isZeroVertex_evaluateFunctorAt h₁ a
-    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((pre horn₂₁.ι₁₂).app B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app _ v) at h
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((pre horn₂₁.ι₁₂).app B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app _ v) at h
     rwa [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt] at h
 
 /-- 全ホーン図式の実正方形は、両短辺で押し出しなら元も押し出し。 -/

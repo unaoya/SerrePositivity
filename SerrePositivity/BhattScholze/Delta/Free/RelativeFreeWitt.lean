@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 public import Mathlib.Logic.Function.Iterate
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
@@ -26,7 +28,7 @@ André の一段の拡大で、d で割る包の関係式を Witt 座標のモ�
 @[expose] public noncomputable section
 universe u v
 
-/-! ## 自由初期変数のFrobenius反復の正確な最高線形項（旧 Delta/Free/Finite/RelativeFreeFrobeniusTopLinear.lean）
+/-! ## 自由初期変数のFrobenius反復の正確な最高線形項
 
 下位部分は有限Frobenius計算で再帰的に構成する。
 -/
@@ -122,7 +124,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFrobeniusTopLinear
 
-/-! ## 自由初期変数のWitt係数と最高δ変数の全段再帰式（旧 Delta/Free/Finite/RelativeFreeWittGhostRecurrence.lean）
+/-! ## 自由初期変数のWitt係数と最高δ変数の全段再帰式
 
 正確なFrobenius線形表示を全ghost等式へ代入する。
 -/
@@ -164,7 +166,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeWittGhostRecurrence
 
-/-! ## 全Witt係数と最高δ変数の差の下位変数所属（旧 Delta/Free/Finite/RelativeFreeWittGhostSupport.lean）
+/-! ## 全Witt係数と最高δ変数の差の下位変数所属
 
 p乗算単射だけで係数の零判定を戻し、全段再帰式を強帰納する。
 -/
@@ -278,7 +280,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeWittGhostSupport
 
-/-! ## 全Witt係数の最高δ変数係数1の有限三角形表示（旧 Delta/Free/Finite/RelativeFreeWittGhostTriangular.lean）
+/-! ## 全Witt係数の最高δ変数係数1の有限三角形表示
 
 下位変数所属から初期有限多項式を取り出し、表示の一意性も確認する。
 -/
@@ -349,7 +351,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeWittGhostTriangular
 
-/-! ## 全Witt座標とδ変数の三角形代数同型（旧 Delta/Free/Finite/RelativeFreeWittCoordinateChange.lean）
+/-! ## 全Witt座標とδ変数の三角形代数同型
 
 下位有限多項式を評価して逆変数を強帰納で構成する。
 -/
@@ -479,7 +481,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeWittCoordinateChange
 
-/-! ## 逆Witt変数の段数と初期変数部分代数への制限（旧 Delta/Free/Finite/RelativeFreeWittInverseSupport.lean）
+/-! ## 逆Witt変数の段数と初期変数部分代数への制限
 
 三角形同型の順逆射が各初期変数部分代数を保存する。
 -/
@@ -586,7 +588,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeWittInverseSupport
 
-/-! ## 通常有限多項式環上のWitt座標代数同型（旧 Delta/Free/Finite/RelativeFreeFiniteWittCoordinateChange.lean）
+/-! ## 通常有限多項式環上のWitt座標代数同型
 
 初期変数部分代数との同型で制限済み座標同型を移す。
 -/
@@ -683,7 +685,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeFiniteWittCoordinateChange
 
-/-! ## 基底係数のWitt像と逆座標射での固定（旧 Delta/Free/Finite/RelativeFreeWittCoefficientNaturality.lean）
+/-! ## 基底係数のWitt像と逆座標射での固定
 
 相対係数δ射の自然性を使い、基底Witt係数を直接比較する。
 -/
@@ -746,7 +748,7 @@ end SerrePositivity.BhattScholze
 
 end RelativeFreeWittCoefficientNaturality
 
-/-! ## 任意の元のδjetとWitt jetの三角形比較（旧 Delta/Free/Finite/DeltaWittJetComparison.lean）
+/-! ## 任意の元のδjetとWitt jetの三角形比較
 
 自由変数の三角形表示をδ評価し、通常射の下での下位jet消滅を扱う。
 -/
@@ -847,3 +849,9 @@ theorem deltaWittGhostVector_jets_zero_iff_truncate_map_zero {B : Type v} [CommR
 end SerrePositivity.BhattScholze
 
 end DeltaWittJetComparison
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Rem 2.14" (partial := special) "相対自由 δ 環の Witt 座標（δ_n 変数による多項式表示）の相対版。André の補題の経路（Thm 7.14 → Thm 7.4）の計算で使う。目標に必要な証明済みの部品（調整役の判定、11-07） ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.relativeFreeFiniteWittCoordinateEquiv
+attribute [cite BS19 "Rem 2.14" (partial := special) "相対自由 δ 環の Witt 座標（δ_n 変数による多項式表示）の相対版。André の補題の経路（Thm 7.14 → Thm 7.4）の計算で使う。目標に必要な証明済みの部品（調整役の判定、11-07） ／ DOC1 照合：ok 2 件"] _root_.SerrePositivity.BhattScholze.relativeFreeWittCoordinateEquiv

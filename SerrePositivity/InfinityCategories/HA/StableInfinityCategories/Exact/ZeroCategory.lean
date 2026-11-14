@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagrams
@@ -50,7 +52,7 @@ lemma contractible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLangua
   fun _n _b ↦ ⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.hom_ext _ _⟩
 
 /-- 全ての実頂点は零対象。 -/
-lemma zero (x : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex x :=
+lemma zero (x : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex x :=
   ⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.contractible.isInitialVertex x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.contractible.isTerminalVertex x⟩
 
 /-- slice の各次数にも唯一の錐がある。 -/
@@ -92,7 +94,7 @@ def zeroCategory : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCa
     infer_instance
   isStable := by
     let : KanComplex (𝟙_ SSet.{u}) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.contractible.kanComplex
-    let : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex (𝟙_ SSet.{u}) :=
+    let : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex (𝟙_ SSet.{u}) :=
       ⟨⟨PUnit.unit, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.zero _⟩⟩
     let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits (𝟙_ SSet.{u}) :=
       ⟨fun _p ↦ ⟨⟨_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.hom_ext _ _⟩, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.limit _⟩⟩
@@ -189,3 +191,8 @@ deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sl
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.sliceUnique._proof_2
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.4.3" (partial := special) "仮定：二つの安定準圏（Lean が強い：任意の族でなく二項積を零 ∞ 圏への完全関手の引き戻しに特殊化）。結論：零 ∞ 圏上の引き戻しは安定。任意族の積の安定性と成分ごとの完全性の判定は型にない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory

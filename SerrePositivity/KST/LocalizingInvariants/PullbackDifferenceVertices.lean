@@ -63,14 +63,14 @@ def laxDifferenceVertex (x : (laxCategory p q).obj _⦋0⦌) : E.obj _⦋0⦌ :=
 
 /-- 差の頂点の消滅は、指定矢印の同値性と同値。 -/
 lemma laxDifferenceVertex_zero_iff (x : (laxCategory p q).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (laxDifferenceVertex p q x) ↔
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (laxDifferenceVertex p q x) ↔
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsLaxEquivalenceVertex p.hom q.hom x :=
   (laxDifferenceSquare p q x).homMk_isIso_iff_zero.symm
 
 /-- 通常 pullback は、差の cofiber が零である頂点をちょうど尽くす。 -/
 lemma exists_pullbackVertex_iff_difference_zero (x : (laxCategory p q).obj _⦋0⦌) :
     (∃ y, (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax p.hom q.hom).app (Opposite.op ⦋0⦌) y = x) ↔
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (laxDifferenceVertex p q x) :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (laxDifferenceVertex p q x) :=
   (exists_pullbackVertex_iff p q x).trans (laxDifferenceVertex_zero_iff p q x).symm
 
 end SerrePositivity.KST.LocalizingInvariants

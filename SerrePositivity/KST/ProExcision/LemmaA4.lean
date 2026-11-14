@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.ProExcision.PropA1Naturality
 public import SerrePositivity.KST.ProExcision.LinearizedBarMHomotopy
 public import SerrePositivity.KST.ProExcision.HomologyModel
@@ -63,3 +65,9 @@ theorem lemmaA4 (F : SSet.{u} ⥤ ModuleCat.{u} ℤ)
   relativeBarMap_zero_of_absolute_eq_trivial F f (lemmaA4_absolute F hF M hG f hf hi)
 
 end SerrePositivity.KST.ProExcision
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Def A.3"] _root_.SerrePositivity.KST.ProExcision.HomologicallyMConstant
+attribute [cite KST "Lemma A.4" (partial := stronger-hyp) "仮定：同変 homologically m-constant、i≤m、さらに具体的ホモロジーを F として入力し反転性と模型の証人を要求（Lean が強い）。結論：分裂余核で表す相対 bar ホモロジーで零を誘導（原典の相対項の模型で一致）。"] _root_.SerrePositivity.KST.ProExcision.lemmaA4

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwistedHomEndSection
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TwistedHomFunctorMap
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.TwistedHomFunctorMap
 
 /-!
 概要：end の実切断比較を関手の始域の制限と可換にする。

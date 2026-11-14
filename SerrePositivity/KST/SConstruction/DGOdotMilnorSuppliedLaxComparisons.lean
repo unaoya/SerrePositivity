@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.IdentityLaxComparisonInput
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.OriginalInputConeComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.IdentityLaxComparisonInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Comparison.OriginalInputConeComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOriginalLaxSupply
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareDiagramIso
 

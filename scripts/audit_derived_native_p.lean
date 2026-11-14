@@ -1,13 +1,13 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGSuspensionNativeNaturalityModel
 import Lean
 /-! 同じ P/Yoneda 比較と全入力への相対延長の全新規宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.NativeArrowRelativeComparison,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativePComparison,
-    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.NativeArrowRelativeComparison,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.CompactnessAndPresentability.DGKappaNativePComparison,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGComposition.DGSuspensionNativeNaturalityModel]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

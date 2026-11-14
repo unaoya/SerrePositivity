@@ -1,0 +1,7 @@
+from pathlib import Path
+import json,re,hashlib
+w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');rel='scripts/audit_derived_infinity.lean';file=w/'rewritten-delta'/rel;s=file.read_text();pat=re.compile(r'^<<<<<<<[^\n]*\n(.*?)^=======\n(.*?)^>>>>>>>[^\n]*\n',re.M|re.S);rows=[]
+def resolve(match):
+ left,right=match[1],match[2];assert left.replace('_root_.SerrePositivity.','SerrePositivity.')==right.replace('_root_.SerrePositivity.','SerrePositivity.'),(left[:300],right[:300]);assert all(not line.strip() or line.startswith(('#print axioms ','example ','    ')) for line in left.splitlines());rows.append({'left_sha256':hashlib.sha256(left.encode()).hexdigest(),'right_sha256':hashlib.sha256(right.encode()).hexdigest(),'lines':len(left.splitlines()),'policy':'same fully qualified operands in #print axioms and two Quasicategory examples; only explicit _root_.SerrePositivity prefix differs'});return right
+resolved,n=pat.subn(resolve,s);assert n==9,n;assert not re.search(r'^(<<<<<<<|=======|>>>>>>>)',resolved,re.M)
+(w/'audit-overlap-original.txt').write_text(s);(r/rel).write_text(resolved);(w/'audit-overlap-resolution.json').write_text(json.dumps({'path':rel,'conflict_groups':n,'rows':rows,'note':'Import union from the initial frozen-main/B2 merge is retained outside these nine blocks.'},indent=2));print('Resolved exact-root spelling conflicts',n)

@@ -19,6 +19,6 @@ def relativeSKernelBasepoint
     (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) : Δ[0] ⟶ simplicialDiagonalFunctor.obj
       (relativeSimplicialSConstruction (i.hom ≫ q.hom)) :=
   yonedaEquiv.symm ((relativeSKernelTopIso h 0).inv.app (Opposite.op ⦋0⦌)
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (sConstruction 0 A.obj)).vertex)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex (sConstruction 0 A.obj)).vertex)
 
 end SerrePositivity.KST.Fibration

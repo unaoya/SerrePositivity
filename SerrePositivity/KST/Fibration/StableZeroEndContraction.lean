@@ -23,15 +23,15 @@ def stableZeroEndMap (A : _root_.SerrePositivity.InfinityCategories.HA.StableInf
 
 /-- 元の零自己関手の実値は、同じ選ばれた零対象への定値関手。 -/
 theorem stableZeroEndMap_hom (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
-    (stableZeroEndMap A).hom = SSet.const (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex A.obj).vertex :=
+    (stableZeroEndMap A).hom = SSet.const (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex A.obj).vertex :=
   throughZero_hom A A
 
 /-- 元の零自己関手の頂点は、全自然変換を持つ完全関手圏の実始対象。 -/
 theorem stableZeroEndVertex_isInitial (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv A A (stableZeroEndMap A)) := by
-  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (stableZeroEndMap A).hom) := by
+  have hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (stableZeroEndMap A).hom) := by
     rw [stableZeroEndMap_hom]
-    exact functor_const_isZeroVertex _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex A.obj).isZero
+    exact functor_const_isZeroVertex _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex A.obj).isZero
   exact isInitialVertex_fullSubcomplex_of_ambient (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsExactVertex A A) _ hz.1
 
 /-- 同じ元の零自己関手から恒等関手への実自然変換を、一つだけ選ぶ。 -/

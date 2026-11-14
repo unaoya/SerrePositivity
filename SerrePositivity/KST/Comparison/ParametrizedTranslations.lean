@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MonoidTranslations
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexContraction
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexContraction
 public import SerrePositivity.KST.Comparison.GrouplikeTranslations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 

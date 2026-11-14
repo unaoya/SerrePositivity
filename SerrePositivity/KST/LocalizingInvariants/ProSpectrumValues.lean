@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Category.Grp.Zero
 public import SerrePositivity.KST.ProExcision.Pro
 public import SerrePositivity.KST.LocalizingInvariants.StableValueFunctor
@@ -90,3 +92,8 @@ lemma piProEquivalence_of_proIso {A B : Tower _root_.SerrePositivity.InfinityCat
   ProSpectrum.piProEquivalence_of_proIso (hf.map (stableValueFunctor Φ))
 
 end SerrePositivity.KST.LocalizingInvariants.ProValue
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Def 2.27" (partial := component) "仮定：自然数塔のレベル射とレベルごとのファイバー列（Lean が強い）。結論：整数次数での弱同値と連結度をプロ群で定義し、ファイバーの消滅と比較。任意の ∞ プロ圏の切断と弱引き戻しの一般定義はない（Lean が弱い）。"] _root_.SerrePositivity.KST.LocalizingInvariants.ProSpectrum.IsPiProEquivalence

@@ -18,8 +18,8 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 右射影の全射性は、その次の実接続射の自明性と同値。 -/
-lemma fiberProjection_surjective_iff_boundary_trivial (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
-    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) (j : ℤ) :
+lemma fiberProjection_surjective_iff_boundary_trivial (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t) (j : ℤ) :
     Function.Surjective (NativeFiber.right t (j + 1)) ↔
       ∀ a, NativeFiber.boundary t ht j a = 1 := by
   constructor
@@ -29,14 +29,14 @@ lemma fiberProjection_surjective_iff_boundary_trivial (t : _root_.SerrePositivit
     exact (NativeFiber.exact_base t ht j a).1 (h a)
 
 /-- 左項の指定次数の消滅は、その次の射影の全射性を与える。 -/
-lemma fiberProjection_surjective_of_fiberGroup_zero (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
-    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t) (j : ℤ) (hz : Subsingleton (NativeFiber.group t 0 0 j)) :
+lemma fiberProjection_surjective_of_fiberGroup_zero (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t) (j : ℤ) (hz : Subsingleton (NativeFiber.group t 0 0 j)) :
     Function.Surjective (NativeFiber.right t (j + 1)) :=
   (fiberProjection_surjective_iff_boundary_trivial t ht j).2 (fun _ => hz.elim _ _)
 
 /-- 連結な左項を持つ実 fiber 列は、元の零次射影が全射であることを強制する。 -/
-theorem connectiveFiber_projection_piZero_surjective (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u})
-    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t)
+theorem connectiveFiber_projection_piZero_surjective (t : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle Sp.{u})
+    (ht : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsFiberSequence t)
     (hconn : ∀ j : ℤ, j < 0 → Subsingleton (NativeFiber.group t 0 0 j)) :
     Function.Surjective (NativeFiber.right t 0) := by
   simpa only [Int.reduceNeg, Int.reduceAdd] using

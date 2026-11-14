@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.HomotopyAdditiveInverse
 public import Mathlib.CategoryTheory.Preadditive.Basic
 public import Mathlib.Algebra.Group.MinimalAxioms
@@ -39,3 +41,10 @@ instance preadditive_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity
   comp_add _ _ _ := SemiadditiveOfBinaryBiproducts.comp_add
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.9" (partial := stronger-hyp) "仮定：安定準圏 X（Lean は IsStable で仮定をまとめる。HA は点付き性・余ファイバー・懸垂同値で述べる）。結論：hX の前加法構造と有限双積（一致）。HA の仮定から IsStable への直接の比較宣言は採用した型にない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho
+attribute [cite HA "1.4.1.3" (partial := component) "仮定：安定準圏（Lean が弱い：presentable 性は不要）。結論：ホモトピー圏の前加法性と双積があり、原典冒頭の加法性に対応する（Lean が弱い：各対象の余群構造と compactly generated な場合の Brown の全仮定の確認は含まれない）。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho
+attribute [cite HA "6.1.6.17" (partial := component) "仮定：安定な準圏 C（HA と一致）。結論：hC は前加法圏で全有限双積を持つ（本文で明記された hC の additive 性に一致する部分）。C の全相対 norm の可逆性を束ねる semiadditive 述語への比較は含まれない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho

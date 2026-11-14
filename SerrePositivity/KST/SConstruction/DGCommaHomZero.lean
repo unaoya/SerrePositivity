@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCochainZeroTarget
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FunctorComparisons.DGFunctors.DGFunctorCommaHomExt
 
 /-! # 三つの実零 Hom から得る comma Hom の零性
 概要：両成分 Hom と比較標的が実零なら、元の comma Hom 複体自体が実零となる。

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPosetImageCompact
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallFamilyGeneratorTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallGeneratorPresentation
@@ -96,3 +98,8 @@ lemma exists_compactPreservingCardinal_of_smallFixedVertexMaps
   exact ⟨μ, hμ, hσρ.trans hρμ, hb, hC.of_cardinalChangeBound hb, hg⟩
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.2.13" (partial := stronger-hyp) "仮定：accessible な二準圏と accessible 関手（Lean が強い：始域の固定頂点全写像が宇宙小である strict 条件を要求）。結論：ある大きい正則濃度 μ で関手が μ-compact 対象を保ち、全 compact 小模型からの制限が元の関手を同値を除き決める（この場合に一致）。一般の始域への strict 模型輸送をここでは追加していない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactPreservingCardinal_of_smallFixedVertexMaps

@@ -1,14 +1,14 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Pointed
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.Pullback
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseBoundaryHom
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareShape
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseUniversalSquares
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroObjects
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseBoundaryHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSquareShape
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseZeroTriangle
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InnerFibration
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Definition
 
@@ -30,8 +30,8 @@ namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempot
 
 /-- 元の指定辺の実 fiber 四角形を、その同じ辺の宇宙持ち上げへ写す。 -/
 def fiberSquareULift {X : SSet.{u}} {x y : X _⦋0⦌}
-    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare f) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f) where
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare f) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare s.square
   zero_corner := by
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare_vertex]
@@ -43,8 +43,8 @@ def fiberSquareULift {X : SSet.{u}} {x y : X _⦋0⦌}
 
 /-- 元の指定辺の実 cofiber 四角形を、その同じ辺の宇宙持ち上げへ写す。 -/
 def cofiberSquareULift {X : SSet.{u}} {x y : X _⦋0⦌}
-    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f) where
+    {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare f) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare (X := (SSet.uliftFunctor.{v, u}).obj X) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge.{u, v} f) where
   square := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare s.square
   zero_corner := by
     rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftSquare_vertex]

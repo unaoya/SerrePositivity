@@ -193,7 +193,7 @@ instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjec
 <tr><td><b>関手版</b>（このページの目標）</td><td>\(\mathrm{Map}_{\mathcal P(C)}(h_y,F)\simeq F(y)\)、さらに \(C\to\mathcal P(C)\) が充満忠実</td><td>Hom 関手 \(C^{\mathrm{op}}\times C\to\mathcal S\) を<b>作る</b>ために必要</td></tr>
 </table></div>
 <p>fibration 版では、前層を「\(C\) 上の右 fibration（\(C^{\mathrm{op}}\) 上の左 fibration）」として扱い、表現可能前層を slice \(C_{/y}\) で表す。すると、主張は h₃ の後半そのものになる。証明は「\(\{b\}\hookrightarrow B_{b/}\) は left anodyne なので、そこへの制限は自明 Kan fibration」の一行で、straightening は出てこない。</p>
-<p>Lean では <code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>（F1/LeftFibrationInitialEvaluation）がこれにあたる。import の閉包は 256 モジュールで、関手版（約 1,750）よりはるかに小さい。閉包には <code>CatInfinity</code> と <code>LeftUnstraightening</code> が含まれるが、これは R8 で特定した <code>PullbackFiber → LeftUnstraightening</code> の汚染の経路によるもので、数学的には使っていない。</p>
+<p>Lean では <code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>（F1/LeftFibrationInitialEvaluation）がこれにあたる。import の閉包は 256 モジュールで、関手版（約 1,750）よりはるかに小さい。閉包には <code>CatInfinity</code> と <code>LeftUnstraightening</code> が含まれるが、これは<a href="../../../research/infinity-refactor-audit/r8-duplication.html">重複調査</a>で特定した <code>PullbackFiber → LeftUnstraightening</code> の汚染の経路によるもので、数学的には使っていない。</p>
 
 <h3>関手版で straightening が要る理由</h3>
 <p>∞ 圏では、Hom 関手 \(C^{\mathrm{op}}\times C\to\mathcal S\) を「各 \((x,y)\) に \(\mathrm{Map}(x,y)\) を対応させる」だけでは定義にならない。射の合成と、それに伴うすべての高次の整合性を、一つの単体的集合の射として与える必要があるからである。その作り方は主に三つある。</p>
@@ -211,16 +211,7 @@ instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjec
 
 <!-- ============================================================ -->
 <h2>6. この道で見つかったリファクタの候補</h2>
-<div class="box refactor">
-<p class="label">R58　Yoneda の閉包に入り込む応用側・無関係な層</p>
-<p class="meta">旧番号 R26。R2 計画の R26 と衝突したため 2026-10-28 に改番。実施は R2 計画の R27（HL・F1 → KST.Spectra）と R37（Stable の汎用葉を下へ）で扱う。</p>
-<p>Yoneda の補題の import の閉包は約 1,750 モジュールで、その中に KST.Spectra（8）、Stable（43）、HomotopicalAlgebra（167）が含まれる。最短の経路は次のとおり。</p>
-<ul>
-  <li>KST：YonedaPresheafEvaluation ← RepresentableUnstraighteningEvaluation ← RepresentableUnstraighteningComparison ← LeftStraighteningInfinityReconstruction ← LeftStraighteningEssentialSurjectivity ← SmallUnstraighteningRepresentation ← CoherentRepresentationExtension ← SmallFiberWitnessContractible ← … ← F1/ContractibleKanTower → <b>KST.Spectra.FibrationTowerLimitCone</b>（可縮 Kan 複体の塔の極限という一般論が KST にある）</li>
-  <li>Stable：YonedaPresheafEvaluation ← RepresentableUnstraighteningEvaluation ← F1/LeftFibrationInitialEvaluation → <b>Stable.IdentityCocone</b>（余錐の基本補題が Stable にある。R22）</li>
-</ul>
-<p>どちらも、一般論を Core（または HomotopyLimits）へ移せば閉包から外れる。R3・R22 の具体例。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この道で押さえること</h2>
 <ol class="checks">

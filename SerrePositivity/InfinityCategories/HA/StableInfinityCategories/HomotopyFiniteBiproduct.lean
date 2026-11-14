@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.HomotopyPreadditive
 public import Mathlib.CategoryTheory.Limits.Constructions.FiniteProductsOfBinaryProducts
 public import Mathlib.CategoryTheory.Preadditive.Biproducts
@@ -30,3 +32,9 @@ instance hasFiniteBiproducts_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePo
   HasFiniteBiproducts.of_hasFiniteProducts
 
 end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.1.2.9" (partial := stronger-hyp) "仮定：安定準圏 X（Lean は IsStable で仮定をまとめる。HA は点付き性・余ファイバー・懸垂同値で述べる）。結論：hX の前加法構造と有限双積（一致）。HA の仮定から IsStable への直接の比較宣言は採用した型にない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteBiproducts_ho
+attribute [cite HA "6.1.6.17" (partial := component) "仮定：安定な準圏 C（HA と一致）。結論：hC は前加法圏で全有限双積を持つ（本文で明記された hC の additive 性に一致する部分）。C の全相対 norm の可逆性を束ねる semiadditive 述語への比較は含まれない。"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteBiproducts_ho

@@ -54,7 +54,7 @@ lemma stableTriangleDiagonalMap_edge (s : _root_.SerrePositivity.InfinityCategor
 lemma stableTriangleDiagonalMap_zero (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌)
     (hz : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up (1 : Fin 3)⟩))
     (x : (s.obj ⟨ULift.up (0 : Fin 3)⟩).obj _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((stableTriangleDiagonalMap s).hom.app (Opposite.op ⦋0⦌) x) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((stableTriangleDiagonalMap s).hom.app (Opposite.op ⦋0⦌) x) := by
   let A := s.obj ⟨ULift.up (0 : Fin 3)⟩
   let B := s.obj ⟨ULift.up (2 : Fin 3)⟩
   letI : Quasicategory B.obj := B.isQuasicategory
@@ -72,7 +72,7 @@ lemma stableTriangleDiagonalMap_zero (s : _root_.SerrePositivity.InfinityCategor
   have hpq : P = p ≫ q := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMaximalPathFunctor (ULift.{u} (Fin 3))).map_comp
     (homOfLE (show (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 1 by decide))
     (homOfLE (show (ULift.up (1 : Fin 3) : ULift.{u} (Fin 3)) ≤ ULift.up 2 by decide))
-  have hmax : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((F.map P).hom.app (Opposite.op ⦋0⦌) x) := by
+  have hmax : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((F.map P).hom.app (Opposite.op ⦋0⦌) x) := by
     have he := congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.hom (F.map_comp p q)
     change (F.map (p ≫ q)).hom = (F.map p).hom ≫ (F.map q).hom at he
     rw [hpq, he]

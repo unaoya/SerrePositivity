@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.FrameSpanExtension
 public import SerrePositivity.KST.SConstruction.FirstRowLowDegrees
 
@@ -20,7 +22,7 @@ open scoped Simplicial
 方針：枠の対角の区間を (i,i) と同定する。
 規約：押し出し性は不要。使われ方：第一行からの零対角補完を入力にする。 -/
 lemma zeroFrameVertex_of_zero_diagonal {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C)
-    (hz : ∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+    (hz : ∀ i : Fin (n + 1), _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ (arObj i i le_rfl)))) :
     IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (frameInclusion n ≫ F)) := by
   intro x hd
@@ -28,7 +30,7 @@ lemma zeroFrameVertex_of_zero_diagonal {n : ℕ} {C : SSet.{u}} (F : arNerve n �
   let a := (nerveEquiv x).val
   have hx : x = ComposableArrows.mk₀ (nerveEquiv x) := (nerveEquiv.symm_apply_apply x).symm
   rw [hx]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
   have ha : a = arObj a.down.val.1 a.down.val.1 le_rfl := by
     apply ULift.ext
     apply Subtype.ext
@@ -100,3 +102,10 @@ lemma firstRowRestriction_vertexFiber_isContractibleKan (n : ℕ) (C : SSet.{u})
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan _ _
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BGT "Lemma 7.3" (partial := stronger-hyp) "仮定：有限余極限つき準圏のうち安定なもの（Lean が強い：安定性）。結論：全 Gap 図式から初項の列への制限が準圏の同値（原典と一致）。"] _root_.SerrePositivity.KST.SConstruction.firstRowEquivalence
+attribute [cite BGT "Lemma 7.3" (partial := stronger-hyp) "仮定：有限余極限つき準圏のうち安定なもの（Lean が強い：安定性）。結論：全 Gap 図式から初項の列への制限が準圏の同値（原典と一致）。"] _root_.SerrePositivity.KST.SConstruction.firstRowRestriction_trivialKanFibration
+attribute [cite HA "1.2.2.4" (partial := stronger-hyp) "仮定：有限全順序 [n] と安定準圏 C（Lean が強い：HA は任意の全順序と点付きかつ押し出しがあればよい）。結論：gapped 図式から始点を固定した第一行の関手圏への制限が準圏同値（有限安定な場合は一致）。"] _root_.SerrePositivity.KST.SConstruction.firstRowEquivalence

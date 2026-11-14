@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialSumPullbacks
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.SimplicialSumPullbacks
 public import SerrePositivity.KST.Comparison.SpanCylinderFunctor
 public import Mathlib.CategoryTheory.Category.Preorder
 

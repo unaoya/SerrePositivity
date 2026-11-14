@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.LaxDifferenceRho
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison
@@ -44,3 +46,9 @@ def laxDifferenceRho_sectionIso (a : _root_.SerrePositivity.InfinityCategories.K
   exact (by simpa only [laxDifferenceRho, Category.assoc] using h) ≪≫ asIso a.counitHom
 
 end SerrePositivity.KST.LocalizingInvariants
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (6)"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_sectionIso
+attribute [cite Tamme "Prop 11"] _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_fullyFaithful

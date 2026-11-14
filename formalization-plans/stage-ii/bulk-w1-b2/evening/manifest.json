@@ -1,0 +1,295 @@
+{
+  "status": "B2 in progress, not stop-point or freeze authorization",
+  "math_base": "0e8c85420",
+  "main_lean_files_changed": false,
+  "files": [
+    {
+      "source": "evening-whole-module-proposals.json",
+      "artifact": "evening-whole-module-proposals.json.gz",
+      "sha256": "58835fe9c78c6eab4c87bcd56e5d962e165431e39fbf740141672d47ee6e681a"
+    },
+    {
+      "source": "evening-split-plan.json",
+      "artifact": "evening-split-plan.json.gz",
+      "sha256": "426eda0de74fa0fb9caa2d5ebd097ebc7b93bb0a602080f2ad3c07147b63acd3"
+    },
+    {
+      "source": "added-foundation-layer-check.json",
+      "artifact": "added-foundation-layer-check.json.gz",
+      "sha256": "5cb68f738eb0abace6cea2922d3686a7551622fbf06d17eb9aa5820342d2b482"
+    },
+    {
+      "source": "docstring-reference-proposals.json",
+      "artifact": "docstring-reference-proposals.json.gz",
+      "sha256": "69ecf47622cf2a981ae3ad517aeadfec8c6d115ce2501fbe7a2f0c0f115cef4a"
+    },
+    {
+      "source": "docstring-reference-applied.json",
+      "artifact": "docstring-reference-applied.json.gz",
+      "sha256": "512de6dcf84cddca0a14adf9a6fc92bb77e7a4719fba93b2d50e32cfd0e26b27"
+    },
+    {
+      "source": "br48-collision-check.json",
+      "artifact": "br48-collision-check.json.gz",
+      "sha256": "4f3e58a9a45131fd3b78e2275de531543f7b27d0d05a3bd223226953e9c63038"
+    },
+    {
+      "source": "br48-capture-selection.json",
+      "artifact": "br48-capture-selection.json.gz",
+      "sha256": "28c286b5973aee8184de1ae3871797c8cee6fa04813e578bdca3e0eb0cc6d906"
+    },
+    {
+      "source": "current-bs-table-diff.json",
+      "artifact": "current-bs-table-diff.json.gz",
+      "sha256": "aa2020a46bfce85c6a7d549891abc4edec23ae48f318e30790c6f344367c2033"
+    },
+    {
+      "source": "current-attribute-plan/reference-delta.json",
+      "artifact": "current-attribute-plan--reference-delta.json.gz",
+      "sha256": "b3d9b5b2522dc713055a67d3c50ba28beb9dfb1aaeacb8acc4d52604307f3d5c"
+    },
+    {
+      "source": "current-attribute-check/receipt.json",
+      "artifact": "current-attribute-check--receipt.json.gz",
+      "sha256": "971ebfda4776d50a70747a0b8b935f9bf430f452f6d9eb35f4e373ff73a41511"
+    },
+    {
+      "source": "followup-closure-application.json",
+      "artifact": "followup-closure-application.json.gz",
+      "sha256": "e6cc136001f3d5b82e80e0cbf761ae1632066b906aa1c134e07ce8595fe0fd07"
+    },
+    {
+      "source": "evening-preview-fixes.json",
+      "artifact": "evening-preview-fixes.json.gz",
+      "sha256": "8f39bdd4d76688272e8b22faea5360309a2b542a3a7d7125e7227438a6d9dd9b"
+    },
+    {
+      "source": "layout.json",
+      "artifact": "module-paths.json.gz",
+      "sha256": "4b234fc6479b1a321754e50694454f81a321aa2b208ee7a8424e364d1f5b9cc6"
+    },
+    {
+      "source": "module-map.json",
+      "artifact": "module-map.json.gz",
+      "sha256": "0768b4411ea48da64ba07192377abc14703703e8051849e9c3767dbbbd5f7ea7"
+    },
+    {
+      "source": "namespace-plan-field-reviewed.json",
+      "artifact": "namespace-map.json.gz",
+      "sha256": "b332779de2faae01071f8061b99f140bdc7ffb3ed2a12c58ac03e823f18cf2d6"
+    },
+    {
+      "source": "attribute-declaration-final.json",
+      "artifact": "attribute-declarations.json.gz",
+      "sha256": "c4f2c062b8e3424e39f6008ea3a5cd19876022855340195edda4553ebcb0cecf"
+    },
+    {
+      "source": "attribute-row-plan.json",
+      "artifact": "attribute-rows.json.gz",
+      "sha256": "cf71fc939567310b9a371c4d2ad61901d61786860f9b547e8482402c8185df97"
+    },
+    {
+      "source": "br48-semantic-application.json",
+      "artifact": "br48-semantic-application.json.gz",
+      "sha256": "8ff11fca3f39c6da630b09b88edd7514345536e8e42968eee4697da52a505919"
+    },
+    {
+      "source": "br48-rename-plan.json",
+      "artifact": "br48-rename-plan.json.gz",
+      "sha256": "9795270b97f23b91e83e1ce4bbafc1a4cb3978ac4bd5e30e6d02f5e2f78fc31d"
+    },
+    {
+      "source": "remaining-docstrings-applied.json",
+      "artifact": "remaining-docstrings-applied.json.gz",
+      "sha256": "ce72529a840eb94d9a1978cc25f1204c9d4d7948abbaee59071341b8a242d1b1"
+    },
+    {
+      "source": "final-doc-corrections.json",
+      "artifact": "final-doc-corrections.json.gz",
+      "sha256": "5a1c774b81671a8beafa7c830eca8eea9a6756bcf793ba9f07245a88b34f8511"
+    },
+    {
+      "source": "relative-regularity-layout-fix.json",
+      "artifact": "relative-regularity-layout-fix.json.gz",
+      "sha256": "d7429b4328cdb6c48c67d77e99a205e9775d9d1a11fe3aa77a6d9a0128219e07"
+    },
+    {
+      "source": "factorial-downstream-repair.json",
+      "artifact": "factorial-downstream-repair.json.gz",
+      "sha256": "314efe01dff5dd41f6520e64a0b21c6427a02bc0355e50c03bf9178fa8fe54e6"
+    },
+    {
+      "source": "generator-regularity-direct-import.json",
+      "artifact": "generator-regularity-direct-import.json.gz",
+      "sha256": "f1ebe7e4a2afdac06086373f8cecf0242a698888b2567f5fd27dd96f47dbe630"
+    },
+    {
+      "source": "actual-graph-summary.json",
+      "artifact": "actual-graph-summary.json.gz",
+      "sha256": "d16fc82074d2d33193121181339ec1454d4f66b1b672524a087c152f40919cc3"
+    },
+    {
+      "source": "bs-section-order-check.json",
+      "artifact": "bs-section-order-check.json.gz",
+      "sha256": "79fe13f37c4c974a4cdd006101f546868ef4cbec3f9fa2ededdc566cf0be9d83"
+    },
+    {
+      "source": "bs-namespace-decisions.json",
+      "artifact": "bs-namespace-decisions.json.gz",
+      "sha256": "6c9dc9cea61ae3b597edb7813e528a015587788f3d9c93e108366a0c032f8ddd"
+    },
+    {
+      "source": "unused-bs-inventory.json",
+      "artifact": "unused-bs-inventory.json.gz",
+      "sha256": "3e425ed1a597eaef9859776c9ff24c235e030993d1acb81ab8d84a0e72bb0e0b"
+    },
+    {
+      "source": "original-private-names.json",
+      "artifact": "original-private-names.json.gz",
+      "sha256": "4b28b73d8726088c4ce1761f9e78ddf25e0e72f161ecb7f5cd222de49d51fe93"
+    },
+    {
+      "source": "r83-spectrum-closure.json",
+      "artifact": "r83-spectrum-closure.json.gz",
+      "sha256": "d0e7afcde1dd51caa1e5b289a3bb020006e592ef36d2fa0f22c5a3bfd825ce57"
+    },
+    {
+      "source": "r84-empty-namespace.json",
+      "artifact": "r84-empty-namespace.json.gz",
+      "sha256": "e20fc4177a26796c6994f2b281f1b72ae5c13bd6a319c0a28a85c310d5aafb0f"
+    },
+    {
+      "source": "full-destination-collision-check.json",
+      "artifact": "full-destination-collision-check.json.gz",
+      "sha256": "1be9ec325f9c8f4987fe8560626c1fb1a4d70f8a01167e60cb4baf42d3065ce7"
+    },
+    {
+      "source": "foundation-tier-proposal.json",
+      "artifact": "foundation-tier-proposal.json.gz",
+      "sha256": "52160e6cba4f4207457dcab539d1aaadd3bdebb7f749bf9b1fbc1309165403b3"
+    },
+    {
+      "source": "new-scope-measurement/receipt.json",
+      "artifact": "new-scope-measurement--receipt.json.gz",
+      "sha256": "6828b2695689a81cf8617cec6df53b100ee6ce334590e039882f315e078b9af6"
+    },
+    {
+      "source": "new-scope-measurement/snapshot-module-plan.json",
+      "artifact": "new-scope-measurement--snapshot-module-plan.json.gz",
+      "sha256": "2e71a1673760ee4addc0cc849525c7a9e92c5098c863bf74e7160660525c685e"
+    },
+    {
+      "source": "main-incremental-refresh.json",
+      "artifact": "main-incremental-refresh.json.gz",
+      "sha256": "a822b251d5e5666a4a23c4645c886093edf3403edca03cf3cca340d879b84141"
+    },
+    {
+      "source": "sequential-open-collector-check.json",
+      "artifact": "sequential-open-collector-check.json.gz",
+      "sha256": "5f214908d75268114fc3f0881bb90e9d6b680748bb0db736f3aabf3544517244"
+    },
+    {
+      "source": "sequential-open-rewrite-review.json",
+      "artifact": "sequential-open-rewrite-review.json.gz",
+      "sha256": "00131651e41c0bbfcc94cc30ea47d115068aac5181f375810bd0ae075e06166c"
+    },
+    {
+      "source": "final-open-bindings-correction.json",
+      "artifact": "final-open-bindings-correction.json.gz",
+      "sha256": "41f046bfefb756d4bf2cccada23c74083a30cc0110d21eae28dab5b38e5aacc9"
+    },
+    {
+      "source": "named-instance-correction.json",
+      "artifact": "named-instance-correction.json.gz",
+      "sha256": "c222758edeab73350d245d0b45bc782c9ae20c5d2959ae43d817550f0eaa1876"
+    },
+    {
+      "source": "private-snapshot/receipt.json",
+      "artifact": "private-snapshot--receipt.json.gz",
+      "sha256": "91f0f320e1c8563900ed66808cf8953a57d6fdf39e50d264332f3de3e7aa0f39"
+    },
+    {
+      "source": "private-snapshot-runtime-check.json",
+      "artifact": "private-snapshot-runtime-check.json.gz",
+      "sha256": "c83c6726c9e7d3406e3fe0d22b57143aa8c8d6ad75b48fae5acf3db9ffe5f5f9"
+    },
+    {
+      "source": "doc-cache-early-complete.json",
+      "artifact": "doc-cache-early-complete.json.gz",
+      "sha256": "dc3c5d9695345b2baa35fc0525c7e2131ec5da8fe6ed8c53453d3a06e55584bb"
+    },
+    {
+      "source": "r21-doc-format-inventory.json",
+      "artifact": "r21-doc-format-inventory.json.gz",
+      "sha256": "5cc421a9f3859fc7b998cb4a6960886a5fa2411924d42fd756bb55d83cff920b"
+    },
+    {
+      "source": "r21-whitespace-plan.json",
+      "artifact": "r21-whitespace-plan.json.gz",
+      "sha256": "1c9f7c9b0901582d3d3bf942f676edab9ebe19ac102d7c19c11f1e8f7590b62d"
+    },
+    {
+      "source": "replay-application-measurement.json",
+      "artifact": "replay-application-measurement.json.gz",
+      "sha256": "9b4031af9df8c5e8d1595ee7ee3e720d6faad731eff65720047fbaddec3f70b6"
+    },
+    {
+      "source": "preview-bundle-summary.json",
+      "artifact": "preview-bundle-summary.json.gz",
+      "sha256": "8b72d44b4353dbb44d51c9212f0ed4b7d6a6bce95abb789fb4495f6a36f88d04"
+    },
+    {
+      "source": "bulk-comparator-sensitivity.json",
+      "artifact": "bulk-comparator-sensitivity.json.gz",
+      "sha256": "3b33ec1f3c3d6785e7891475f39a761192a002687cb4467f178257da3b112fbc"
+    },
+    {
+      "artifact": "build-parallelism-adjustment.json",
+      "sha256": "65bd6818516622ad3a4f973167f4416a89de440ca70dd78264ef89650a5b4f60"
+    },
+    {
+      "artifact": "final-source-preview-bundle-summary.json",
+      "sha256": "ec4a882db0037cda9934be3cb8ab119af48bdc5b15079efbae1b844f96166eeb"
+    },
+    {
+      "artifact": "final-source-preview-edits.json.gz",
+      "sha256": "5d402907e295ee4d514b8fc3e32f4f4af28be9706ac1d6cb813eef4ac004da64"
+    },
+    {
+      "artifact": "final-source-replay-measurement.json",
+      "sha256": "d16828c2df18f809c3c571f977aa6f8e24b648ae128fb1207e82cce79250878d"
+    },
+    {
+      "artifact": "historical-gate-measurement.json",
+      "sha256": "dfb9bd253cd88100fdd8f029a1315a4bc0403b1353d937b3e870d3da6c996185"
+    },
+    {
+      "artifact": "progress-2026-11-13.json",
+      "sha256": "3e5be1de4b943473d99d697e4a6117fcb1308759ef3eda8dcfd9f63881e2705f"
+    },
+    {
+      "artifact": "preview-build-complete.json",
+      "sha256": "eaa46fea3a4bf881311d9e3f01d46ae559920a3df9bd1d9ed1ce344f70ec8246"
+    },
+    {
+      "artifact": "cache-portability-complete.json",
+      "sha256": "0449feb7214ac065c0249d9cc87500d42080ad6dd6ef6e4d6fb81d323b8a834b"
+    },
+    {
+      "artifact": "native-tag-metadata-check.json",
+      "sha256": "c3c6ac912342df907f5655ecf7c9ed1957186f1ae01778da2873705bc223848a"
+    },
+    {
+      "artifact": "attribute-metadata-check.json",
+      "sha256": "9090293b2f9dc9e52d4a07e9bf805139c4133e532474b51c074c35a5c84316e0"
+    },
+    {
+      "artifact": "attribute-metadata-filter-correction.json",
+      "sha256": "a367fab191da693ef25def0ce77ec7b6a47e4fa63bee06ff58f4d818c07dd78e"
+    },
+    {
+      "artifact": "doc-cache-pilot-complete.json",
+      "sha256": "b5bc0182afe7d666b2bc2d28d12df6adc9817f28cb190d76691827e65ce9d574"
+    }
+  ]
+}

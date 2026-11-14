@@ -58,43 +58,43 @@ def verdierOriginalNativeComposition (d : _root_.SerrePositivity.InfinityCategor
   let r := (verdierOriginalCompositeCoreEdgeData d j k).val.toTruncated
   let l : Truncated.Edge (X := (truncation 2).obj (verdierOriginalNativeHomTarget d)) a a :=
     Truncated.Edge.id (X := (truncation 2).obj (verdierOriginalNativeHomTarget d)) a
-  have hl : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow Q).edge =
+  have hl : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow Q).edge =
       l.edge := by
     rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge, verdierOriginalNativeHomSquare_left]
     exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one a
-  have hr : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q).edge = r.edge := by
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge, verdierOriginalNativeHomSquare_right, Equiv.apply_symm_apply]
+  have hr : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q).edge = r.edge := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow_edge, verdierOriginalNativeHomSquare_right, Equiv.apply_symm_apply]
     rfl
-  have h00 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 0 0 = a :=
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow Q).src_eq.symm.trans
+  have h00 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 0 0 = a :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow Q).src_eq.symm.trans
       ((congrArg ((verdierOriginalNativeHomTarget d).δ 1) hl).trans
         l.src_eq)
-  have h01 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 0 1 = a :=
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow Q).tgt_eq.symm.trans
+  have h01 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 0 1 = a :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow Q).tgt_eq.symm.trans
       ((congrArg ((verdierOriginalNativeHomTarget d).δ 0) hl).trans
         l.tgt_eq)
-  have h10 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 1 0 = _ :=
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q).src_eq.symm.trans
+  have h10 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 1 0 = _ :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q).src_eq.symm.trans
       ((congrArg ((verdierOriginalNativeHomTarget d).δ 1) hr).trans r.src_eq)
-  have h11 : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 1 1 = _ :=
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q).tgt_eq.symm.trans
+  have h11 : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 1 1 = _ :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareRightArrow Q).tgt_eq.symm.trans
       ((congrArg ((verdierOriginalNativeHomTarget d).δ 0) hr).trans r.tgt_eq)
   let f : Truncated.Edge (X := (truncation 2).obj (verdierOriginalNativeHomTarget d)) a
       (SimplicialCategory.homEquiv' _ _
         (stableCoreSingleKanMap (verdierNullCompositeOriginalMap d j))) :=
-    ⟨(_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow Q).edge, (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow Q).src_eq.trans h00,
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow Q).tgt_eq.trans h10⟩
+    ⟨(_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q).edge, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q).src_eq.trans h00,
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q).tgt_eq.trans h10⟩
   let g : Truncated.Edge (X := (truncation 2).obj (verdierOriginalNativeHomTarget d)) a
       (SimplicialCategory.homEquiv' _ _
         (stableCoreSingleKanMap (verdierNullCompositeOriginalMap d k))) :=
-    ⟨(_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow Q).edge, (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow Q).src_eq.trans h01,
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow Q).tgt_eq.trans h11⟩
+    ⟨(_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow Q).edge, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow Q).src_eq.trans h01,
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow Q).tgt_eq.trans h11⟩
   have hcomp := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.homMk_comp_eq_of_square f g l r Q rfl rfl hl hr
   have hfac : Truncated.HomotopyCategory.homMk f ≫ Truncated.HomotopyCategory.homMk r =
       Truncated.HomotopyCategory.homMk g := by
     simpa only [l, Truncated.HomotopyCategory.homMk_id, Category.id_comp] using hcomp
   refine ⟨f, g, Classical.choice (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac hfac), ?_, ?_⟩
-  · exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge Q).trans
+  · exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge Q).trans
       (congrArg SSet.yonedaEquiv (verdierOriginalNativeHomSquare_bottom d j k))
   · exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge Q).trans
       (congrArg SSet.yonedaEquiv (verdierOriginalNativeHomSquare_top d j k))

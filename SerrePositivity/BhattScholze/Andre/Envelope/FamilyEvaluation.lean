@@ -17,10 +17,10 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 BS 著者版 Proposition 3.13 の完全平坦性に向けた、有限根族の評価関係の正則性と Tor の計算を与える。
 
 ## 方針
-統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+構成ごとに補題をまとめ、各節で共通の仮定を明示する。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/MonicCandidate`、`Envelope/PDivisionSource`、`Envelope/RootFamilySource`、`RootEnvelope/Source`、`Variants/Auxiliary`。
@@ -28,7 +28,7 @@ BS 著者版 Proposition 3.13 の完全平坦性に向けた、有限根族の�
 
 universe u
 
-/-! ## 有限根添字に対する全δ深さの実残余弱正則列（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteFamilyResidueKoszul.lean） -/
+/-! ## 有限根添字に対する全δ深さの実残余弱正則列 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteFamilyResidueKoszul
 
@@ -203,7 +203,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteFamilyResidueKoszul
 
-/-! ## 有限根族の全深さ実評価列と源グラフの座標（旧 Andre/RootedExtension/Division/DeltaDivisionFiniteFamilyEvaluation.lean） -/
+/-! ## 有限根族の全深さ実評価列と源グラフの座標 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteFamilyEvaluation
 
@@ -417,7 +417,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteFamilyEvaluation
 
-/-! ## 有限根族評価の源有限グラフ商の標準逐次極限（旧 Andre/RootedExtension/Division/DeltaDivisionFamilySourceEvaluationColimit.lean）
+/-! ## 有限根族評価の源有限グラフ商の標準逐次極限
 
 源評価射βの核が有限グラフイデアルの上限であることから、実評価環Aへの標準余錐の普遍性を示す。
 Torとcolimitの交換はここでは仮定も結論もしない。
@@ -659,7 +659,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFamilySourceEvaluationColimit
 
-/-! ## 任意根族内の有限部分族の全深さ残余正則列（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteSubfamilyRegular.lean） -/
+/-! ## 任意根族内の有限部分族の全深さ残余正則列 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteSubfamilyRegular
 
@@ -785,7 +785,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteSubfamilyRegular
 
-/-! ## 任意根族内の有限部分族の実評価Koszul分解とTor消滅（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionFiniteSubfamilyTor.lean） -/
+/-! ## 任意根族内の有限部分族の実評価Koszul分解とTor消滅 -/
 
 @[expose] public noncomputable section DeltaDivisionFiniteSubfamilyTor
 
@@ -960,7 +960,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaDivisionFiniteSubfamilyTor
 
-/-! ## 源有限グラフ商の標準逐次極限（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionSourceFiniteColimit.lean）
+/-! ## 源有限グラフ商の標準逐次極限
 
 源評価射βの核が有限グラフイデアルの上限であることから、実評価環Aへの標準余錐の普遍性を示す。
 Torとcolimitの交換はここでは仮定も結論もしない。

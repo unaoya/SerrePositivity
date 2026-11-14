@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleSquareHomotopyPostcompose
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomotopyIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleConeSquareData
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleConePushout
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleSquareVertices
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleConeSquareData
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Fibers.DGModuleConePushout
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Actions.DGModuleSquareVertices
 
 /-! # 元の二軸 Yoneda 射の実 cofiber 四角形
 概要：同じ右軸・元の対象・左軸代表と元の二射を持つ実押し出しを構成する。
@@ -50,8 +50,8 @@ lemma dgGluingAxesYonedaCofiberSquare_isPushout :
 
 /-- 同じ実押し出しの零角は、元の標準零加群を保持する。 -/
 lemma dgGluingAxesYonedaCofiberSquare_zero :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgGluingAxesYonedaCofiberSquare R C D M zc hc zd hd X) 0 1) := by
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (dgGluingAxesYonedaCofiberSquare R C D M zc hc zd hd X) 0 1) := by
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex
     (dgGluingAxesYonedaCofiberData R C D M zc hc zd hd X).square 0 1)
   rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.square_vertex01]
   exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerveZeroVertex_isZero R G

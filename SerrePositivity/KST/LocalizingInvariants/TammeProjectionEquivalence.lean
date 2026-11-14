@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxValueProjectionAxes
 public import SerrePositivity.KST.LocalizingInvariants.BinaryAxesEquivalence
 
@@ -75,3 +77,8 @@ lemma tammeProjectionEquivalence_inv_inr :
   rw [Category.assoc, Iso.inv_hom_id, Category.comp_id, tammeProjectionEquivalence_fromD]
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite Tamme "Eq (14)" (partial := special) "仮定：安定圏の完全な二脚と Sp 値の局所化型不変量（標的をスペクトルに特殊化）。結論：二つの標準包含の和は lax 引き戻しの値と二つの値の直和を同定し、二射影が逆を与える（原典の分裂）。"] _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProjectionEquivalence

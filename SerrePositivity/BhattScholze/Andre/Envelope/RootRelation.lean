@@ -31,7 +31,7 @@ public import Mathlib.Algebra.CharP.Lemmas
 原典の「正則列の envelope は平坦」（BS 著者版 Proposition 3.13）を、根の関係 fᵢ(Xᵢ)/d の場合に Koszul 複体で直接示す。
 
 ## 規約
-宣言名・名前空間・型は統合前のまま。
+係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
 `Envelope/JetKoszul`、`Envelope/JetRegularity`、`Envelope/NormalizedStep`、`Envelope/PDivision`、`Envelope/RootFamilyRaw`、`Envelope/RootResidueKoszul`、`Envelope/RootSource`、`Envelope/SourceEvaluation`、`RootEnvelope/Source`。
@@ -39,7 +39,7 @@ public import Mathlib.Algebra.CharP.Lemmas
 
 universe u v w
 
-/-! ## 根添加の多項式関係による具体的係数商（旧 Andre/RootedExtension/DeltaRoot/DeltaRootRelationCoefficientQuotient.lean） -/
+/-! ## 根添加の多項式関係による具体的係数商 -/
 
 @[expose] public noncomputable section DeltaRootRelationCoefficientQuotient
 
@@ -100,7 +100,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRelationCoefficientQuotient
 
-/-! ## 根関係の正則性とKoszul分解（旧 Andre/RootedExtension/DeltaRoot/DeltaRootRelationKoszul.lean）
+/-! ## 根関係の正則性とKoszul分解
 
 係数環のp正則性・非零性・Noether性を仮定しない。
 相対完全正則性や完備化後の平坦性とは区別する。
@@ -154,7 +154,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRelationKoszul
 
-/-! ## 先行する根関係で割った商の具体的な多項式表示（旧 Andre/RootedExtension/DeltaRoot/DeltaRootPartialQuotient.lean）
+/-! ## 先行する根関係で割った商の具体的な多項式表示
 
 添字を残りの変数τと先行変数ιの直和として表示する。
 根添加済み係数環は既存MonicPowerFamilyCoverを使用する。
@@ -264,7 +264,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootPartialQuotient
 
-/-! ## 任意の先行添字集合の根関係の商（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSubsetQuotient.lean）
+/-! ## 任意の先行添字集合の根関係の商
 
 有限性を要求せず、補集合の変数と先行指定根を具体的に分離する。
 -/
@@ -388,7 +388,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSubsetQuotient
 
-/-! ## 有限根関係列の弱正則性と実Koszul分解（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFiniteRegularSequence.lean）
+/-! ## 有限根関係列の弱正則性と実Koszul分解
 
 重複のない添字列を用いる。係数環のp正則性やNoether性は不要。
 相対完全正則性・完備化後の完全平坦性は別工程。
@@ -504,7 +504,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteRegularSequence
 
-/-! ## 部分根関係の商の標準係数射に関する自由性・忠実平坦性（旧 Andre/RootedExtension/DeltaRoot/DeltaRootSubsetFlat.lean）
+/-! ## 部分根関係の商の標準係数射に関する自由性・忠実平坦性
 
 任意添字集合と零係数環を含む。実完備化後の完全忠実平坦性は別工程。
 -/
@@ -550,7 +550,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootSubsetFlat
 
-/-! ## 有限根関係の実商の係数側Tor（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFiniteTor.lean）
+/-! ## 有限根関係の実商の係数側Tor
 
 標準係数射A→商についてのTorと、源多項式環への平坦係数拡大後のTorを計算する。
 (p,d)のKoszul複体自体の次数零集中とは区別する。
@@ -635,7 +635,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteTor
 
-/-! ## 有限根関係の係数付きKoszulホモロジー（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFiniteKoszulCoefficients.lean）
+/-! ## 有限根関係の係数付きKoszulホモロジー
 
 係数環Aの任意加群Nに対し、B⊗_A N上の根関係Koszul複体を
 既存の反復錐モデルとTorの自然比較で計算する。係数側(p,d)の正則性は不要。
@@ -708,7 +708,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteKoszulCoefficients
 
-/-! ## 根関係の係数付きKoszul複体から実商への擬同型（旧 Andre/RootedExtension/DeltaRoot/DeltaRootFiniteKoszulAugmentation.lean）
+/-! ## 根関係の係数付きKoszul複体から実商への擬同型
 
 既存反復錐複体と実際の(Q⊗_A N)[0]の間の写像を供給する。
 係数側(p,d)の正則性・係数加群の平坦性は不要。
@@ -782,7 +782,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootFiniteKoszulAugmentation
 
-/-! ## 有限根関係と係数側Koszul操作の相対比較（旧 Andre/RootedExtension/DeltaRoot/DeltaRootRelativeKoszul.lean）
+/-! ## 有限根関係と係数側Koszul操作の相対比較
 
 係数側の列は任意であり、p,dの正則性やそのKoszul複体の次数零集中は仮定しない。
 -/
@@ -831,7 +831,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRelativeKoszul
 
-/-! ## 根関係の具体的係数商の標準射・自由性・忠実平坦性（旧 Andre/RootedExtension/DeltaRoot/DeltaRootRelationCoefficientFlat.lean） -/
+/-! ## 根関係の具体的係数商の標準射・自由性・忠実平坦性 -/
 
 @[expose] public noncomputable section DeltaRootRelationCoefficientFlat
 
@@ -921,7 +921,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootRelationCoefficientFlat
 
-/-! ## 根添加を入れた具体的δ除算包のraw残余商（旧 Andre/RootedExtension/DeltaRoot/DeltaRootAdjoinDivisionResidue.lean） -/
+/-! ## 根添加を入れた具体的δ除算包のraw残余商 -/
 
 @[expose] public noncomputable section DeltaRootAdjoinDivisionResidue
 
@@ -1018,7 +1018,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootAdjoinDivisionResidue
 
-/-! ## 根δ除算添加環の源変数のrank-one性と実際の根関係（旧 Andre/RootedExtension/DeltaRoot/DeltaRootAdjoinDivisionVariables.lean） -/
+/-! ## 根δ除算添加環の源変数のrank-one性と実際の根関係 -/
 
 @[expose] public noncomputable section DeltaRootAdjoinDivisionVariables
 
@@ -1077,7 +1077,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootAdjoinDivisionVariables
 
-/-! ## 先行根関係のp乗商における後続根関係の正則性（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootPowerSubsetRegular.lean）
+/-! ## 先行根関係のp乗商における後続根関係の正則性
 
 標数pでは先行関係のp乗は指数p²のモニック根関係である。
 既存の任意部分集合商の多項式表示を再利用する。
@@ -1134,7 +1134,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootPowerSubsetRegular
 
-/-! ## 先行根関係のp乗商と係数商の標準比較（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootPowerSubsetBaseQuotient.lean） -/
+/-! ## 先行根関係のp乗商と係数商の標準比較 -/
 
 @[expose] public noncomputable section DeltaRootPowerSubsetBaseQuotient
 
@@ -1220,7 +1220,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaRootPowerSubsetBaseQuotient
 
-/-! ## 二つの独立した根関係のraw除算への正則入力（旧 Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootPairInputRegular.lean） -/
+/-! ## 二つの独立した根関係のraw除算への正則入力 -/
 
 @[expose] public noncomputable section DeltaRootPairInputRegular
 

@@ -83,7 +83,7 @@ lemma tammeOreSquare_cospan (v : (tammeOreDiagrams p q) _⦋0⦌) :
     k.app (Opposite.op ⦋0⦌) v) hc
 
 lemma tammeOreSquare_top_mem (v : (tammeOreDiagrams p q) _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopArrow (tammeOreSquare p q v)).edge ∈ tammeLocalizingEdges p q := by
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow (tammeOreSquare p q v)).edge ∈ tammeLocalizingEdges p q := by
   have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex ((tammeOreProjection p q).app (Opposite.op ⦋0⦌) v)
   change SSet.yonedaEquiv (horn₂₂.ι₁₂ ≫ _) ∈ tammeLocalizingEdges p q at hv
   rw [← tammeOreSquare_cospan, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, ← Category.assoc,
@@ -91,7 +91,7 @@ lemma tammeOreSquare_top_mem (v : (tammeOreDiagrams p q) _⦋0⦌) :
   exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareTopArrow_edge (tammeOreSquare p q v)).symm ▸ hv
 
 lemma tammeOreSquare_bottom_mem (v : (tammeOreDiagrams p q) _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (tammeOreSquare p q v)).edge ∈ tammeLocalizingEdges p q :=
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow (tammeOreSquare p q v)).edge ∈ tammeLocalizingEdges p q :=
   (tammeLocalizingEdges_pullback_bottom_top p q _ (tammeOreSquare_isPullback p q v)).mpr
     (tammeOreSquare_top_mem p q v)
 

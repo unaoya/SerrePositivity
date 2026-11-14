@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
 
@@ -148,3 +150,9 @@ lemma isLeftQuillen_of_isRightQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R
 end Model
 
 end SerrePositivity.Quillen
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.3.7.2" (partial := direction) "仮定：抽象モデル圏の実際の随伴 L⊣R と left Quillen L（元の (1)、simplicial 条件を不要にする弱い仮定）。結論：L の cofibration 保存と R の fibrant object 保存を得るので (1)⇒(2) に一致。逆向きは native isLeftQuillen_of_fibrant_test が fibrant 対象間の fibration 保存も要求し、fibrant objects 保存のみからは証明していない。"] _root_.SerrePositivity.Quillen.IsLeftQuillen.map_cofibrations
+attribute [cite HTT "A.3.7.2" (partial := direction) "仮定：抽象モデル圏の実際の随伴 L⊣R と left Quillen L（元の (1)、simplicial 条件を不要にする弱い仮定）。結論：L の cofibration 保存と R の fibrant object 保存を得るので (1)⇒(2) に一致。逆向きは native isLeftQuillen_of_fibrant_test が fibrant 対象間の fibration 保存も要求し、fibrant objects 保存のみからは証明していない。"] _root_.SerrePositivity.Quillen.isRightQuillen_of_isLeftQuillen

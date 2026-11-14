@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>整備後の全体地図</title>
+<title>∞ 圏基盤の全体地図</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -18,17 +18,17 @@
 <nav class="top"><a href="index.html">目次</a> › 第 0 章</nav>
 <h1>第 0 章　全体地図</h1>
 <p class="meta">
-  基準コミット <code>91d8dc9cd</code>（2026-10-28）。
+  基準コミット <code>91d8dc9cd</code>（2026-10-28）、§2・§3 と所在の表は <code>f0ae62e99</code>（2026-11-12）。
   計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版、第 2 回外部レビュー反映後）。
-  整備はまだ段 0（検証の関門）を始めたところなので、ほとんどの宣言は「移動予定」である。
+  整備の計画と状態の正本は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）にある。表の「今の所在」は 2026-11-12（KL-W1 の後）に引き直した。
 </p>
 
-<p>この章では、整備後の ∞ 圏基盤がどういう形になるかを、数学の側から説明する。扱うことは次の五つ。</p>
+<p>この章では、∞ 圏基盤の全体の形を、数学の側から説明する。扱うことは次の五つ。</p>
 <ol>
   <li>符号化の前提</li>
-  <li>層の構成と、なぜその順序にするのか</li>
-  <li>各層の主な宣言と、いまどこにあるか</li>
-  <li>中核に入れないもの（KST・dg・モデル圏）と、その理由</li>
+  <li>今の配置と、数学の依存の順序</li>
+  <li>主な宣言と、今どこにあるか</li>
+  <li>∞ 圏論の基盤に入れないもの（KST・dg・モデル圏）と、その理由</li>
   <li>最終的な目標である Verdier 商まで、何がそろっていて何が足りないか</li>
 </ol>
 
@@ -48,120 +48,113 @@
 </table></div>
 
 <p>束ねた型（対象と構造を一つの structure にしたもの）は原則として作らない。
-例外は KST 由来の <code>StableCategory</code>・<code>ExactMap</code> で、これは第 4 章で扱う（束ねない形を包む定義として併存させる。計画の R50）。</p>
+例外は KST 由来の <code>StableCategory</code>・<code>ExactMap</code> で、これは第 4 章で扱う（束ねない形の定義はまだない）。</p>
 
-<h2>2. 層の構成</h2>
+<h2>2. 今の配置</h2>
 
-<p>整備後の中核は、次の順に積み上がる（下から上へ。各層は自分以下の層だけを使う）。</p>
-
-<pre><code>Simplicial &lt; Core &lt; Kan &lt; Coherent &lt; {F1, F1B, HomotopyLimits} &lt; Stable &lt; F2 &lt; StablePresentable
-                                                                  ── ここまでが中核 ──
-                                                    &lt; ModelBridge &lt; {DGNerve, DoldKanComparison} &lt; Derived</code></pre>
+<p>2026-11-12 の KL-W1 で、∞ 圏基盤のファイルは典拠に沿った配置になった（<a href="../../../SerrePositivity/InfinityCategories/README.md">InfinityCategories/README.md</a>）。</p>
+<ul>
+  <li><code>InfinityCategories/Kerodon/&lt;章&gt;/&lt;節&gt;/</code>：Kerodon の章・節の順。ディレクトリ名は Kerodon の英語の見出しで、節と Tag の対応は README の表にある。</li>
+  <li><code>InfinityCategories/HTT/</code>・<code>InfinityCategories/HA/</code>：HTT・HA が主題の構成（presentable 性の定義、安定 ∞ 圏、dg の導来圏の模型など）。</li>
+  <li><code>InfinityCategories/Project/</code>：プロジェクト固有の比較、補助の補題、集約の入口、互換名。</li>
+  <li>∞ 圏の一般論の一部は、まだ <code>InfinityCategories/</code> の外（<code>HomotopicalAlgebra/</code>・<code>KST/</code>・<code>EInfinity/</code>・<code>Spectra/</code>）にもある。<code>HomotopicalAlgebra/</code> はモデル圏を使わない単体的集合の道具とモデル圏の両方を含む（KL-W1 でできた <code>InfinityCategories/HA/</code>、Higher Algebra とは別）。</li>
+</ul>
+<p>以前の F1・F1B・F2・Core・HL・Stable などのディレクトリ（作業レーンの名前に由来）は、今は空である。数学の内容ごとの今の置き場所は次のとおり。</p>
 
 <div class="table-wrap"><table>
-<tr><th>層</th><th>数学の内容</th><th>代表的な結果</th></tr>
-<tr><td>Simplicial</td><td>単体的集合の組合せ論</td><td>horn・prism、inner anodyne と anodyne、small object argument、Ex∞、necklace、宇宙の持ち上げ</td></tr>
-<tr><td>Core</td><td>quasicategory の基本</td><td>join と slice、極限 = slice の終対象、同値・充満忠実、写像空間が Kan 複体であること、Joyal の定理、左右 fibration</td></tr>
-<tr><td>Kan</td><td>空間の理論</td><td>ホモトピー群、Kan fibration の長完全列、Whitehead の定理、Kan fibration の塔と lim¹（Milnor 列）、Kan 置換、基本亜群</td></tr>
-<tr><td>Kan/Pointed</td><td>基点付きの空間</td><td>Σ ⊣ Ω、smash、基点付き内部 Hom、道空間 fibration</td></tr>
-<tr><td>Coherent</td><td>単体的圏と coherent nerve</td><td>局所 Kan な単体的圏の coherent nerve は quasicategory（HTT 1.1.5.10）</td></tr>
-<tr><td>F1</td><td>fibration と straightening</td><td>cocartesian fibration、左 fibration の straightening、Yoneda、\(\mathcal S\) と \(\mathrm{Cat}_\infty\)</td></tr>
-<tr><td>F1B</td><td>随伴・Kan 拡張・局所化</td><td>随伴、Kan 拡張、cofinality（Quillen 定理 A）、局所化の存在と普遍性、hammock 局所化</td></tr>
-<tr><td>HomotopyLimits</td><td>ホモトピー極限</td><td>Bousfield–Kan のホモトピー極限 = ∞ 極限、写像空間による極限の判定</td></tr>
-<tr><td>Stable</td><td>安定 ∞ 圏</td><td>ホモトピー圏の三角構造、完全関手、Verdier 列（Stable/Verdier）、lax pullback と半直交分解、\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)</td></tr>
-<tr><td>F2</td><td>大きな ∞ 圏</td><td>\(\mathrm{Cat}_\infty\) の極限、Ind、compact 対象、冪等完備化、accessible・presentable、Bousfield 局所化</td></tr>
-<tr><td>StablePresentable</td><td>安定 presentable（新しい数学の置き場）</td><td>安定な Bousfield 局所化、Thomason–Neeman、Karoubi 列</td></tr>
-<tr><td>ModelBridge</td><td>モデル圏 → ∞ の比較（中核の外）</td><td>Quillen 随伴が誘導する ∞ 圏の随伴、モデル圏の ∞ 局所化</td></tr>
-<tr><td>dg 側</td><td>応用層（中核の外）</td><td>dg nerve、D(S)・Perf(S)、Drinfeld 商、gluing</td></tr>
+<tr><th>数学の内容</th><th>代表的な結果</th><th>今のディレクトリ（SerrePositivity/ から）</th></tr>
+<tr><td>単体的集合の組合せ論</td><td>horn・anodyne、inner anodyne 置換、small object argument による Kan 置換、Ex∞、necklace、宇宙の持ち上げ</td><td><code>Mathlib/AlgebraicTopology/SimplicialSet</code>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/"><code>InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/"><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor/"><code>InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor</code></a>、<a href="../../../SerrePositivity/HomotopicalAlgebra/Simplicial/"><code>HomotopicalAlgebra/Simplicial</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/SimplicialCombinatorics/"><code>InfinityCategories/Project/SimplicialCombinatorics</code></a></td></tr>
+<tr><td>quasicategory の基本</td><td>join と slice、極限 = slice の終対象、同値・充満忠実、写像空間が Kan 複体であること、Joyal の定理、左右 fibration</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/"><code>InfinityCategories/Kerodon/TheLanguageOfInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/"><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/"><code>InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits</code></a></td></tr>
+<tr><td>空間の理論</td><td>ホモトピー群、Kan fibration の長完全列、Whitehead の定理、Kan fibration の塔と lim¹、基本亜群</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/"><code>InfinityCategories/Kerodon/KanComplexes</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/KanComplexAuxiliaries/"><code>InfinityCategories/Project/KanComplexAuxiliaries</code></a>、<a href="../../../SerrePositivity/KST/Spectra/"><code>KST/Spectra</code></a>、<a href="../../../SerrePositivity/KST/SConstruction/"><code>KST/SConstruction</code></a></td></tr>
+<tr><td>基点付きの空間</td><td>Σ ⊣ Ω、smash、基点付き内部 Hom、道空間</td><td><a href="../../../SerrePositivity/InfinityCategories/HTT/PointedSimplicialSets/"><code>InfinityCategories/HTT/PointedSimplicialSets</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/PointedSpaces/"><code>InfinityCategories/Project/PointedSpaces</code></a>、<a href="../../../SerrePositivity/Spectra/"><code>Spectra</code></a></td></tr>
+<tr><td>単体的圏と coherent nerve</td><td>局所 Kan な単体的圏の coherent nerve は quasicategory（HTT 1.1.5.10）</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/"><code>InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories</code></a></td></tr>
+<tr><td>fibration と straightening</td><td>cocartesian fibration、左 fibration の straightening、Yoneda、\(\mathcal S\) と \(\mathrm{Cat}_\infty\)</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/"><code>InfinityCategories/Kerodon/FibrationsOfInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/"><code>InfinityCategories/Kerodon/TheYonedaEmbedding</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/"><code>InfinityCategories/Project/FibrationAuxiliaries</code></a></td></tr>
+<tr><td>随伴・Kan 拡張・局所化</td><td>随伴、Kan 拡張、cofinality（Quillen 定理 A）、局所化の存在と普遍性、hammock 局所化</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/"><code>InfinityCategories/Kerodon/AdjointFunctors</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/"><code>InfinityCategories/Kerodon/LimitsAndColimits</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/"><code>InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries</code></a>、<a href="../../../SerrePositivity/EInfinity/SimplicialLocalization/"><code>EInfinity/SimplicialLocalization</code></a></td></tr>
+<tr><td>ホモトピー極限</td><td>Bousfield–Kan のホモトピー極限 = ∞ 極限、写像空間による極限の判定</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/"><code>InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits</code></a></td></tr>
+<tr><td>安定 ∞ 圏</td><td>ホモトピー圏の三角構造、完全関手、Verdier 列、lax pullback と半直交分解、\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)、分数による写像空間</td><td><a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/"><code>InfinityCategories/HA/StableInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/DerivedCategories/"><code>InfinityCategories/Project/DerivedCategories</code></a>、<a href="../../../SerrePositivity/KST/LocalizingInvariants/"><code>KST/LocalizingInvariants</code></a>、<a href="../../../SerrePositivity/KST/Fibration/"><code>KST/Fibration</code></a></td></tr>
+<tr><td>大きな ∞ 圏</td><td>\(\mathrm{Cat}_\infty\) の極限、Ind、compact 対象、冪等完備化、accessible・presentable、Bousfield 局所化</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/"><code>InfinityCategories/Kerodon/LargeInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents/"><code>InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents</code></a>、<a href="../../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/"><code>InfinityCategories/HTT/PresentableInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/HTT/AccessibleInfinityCategories/"><code>InfinityCategories/HTT/AccessibleInfinityCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/HTT/RetractsAndIdempotentCompletion/"><code>InfinityCategories/HTT/RetractsAndIdempotentCompletion</code></a></td></tr>
+<tr><td>安定 presentable</td><td>安定な Bousfield 局所化、Thomason–Neeman、Karoubi 列（今は完全関手の補助だけで、これらの定理はまだない）</td><td><a href="../../../SerrePositivity/InfinityCategories/HA/StablePresentableInfinityCategories/"><code>InfinityCategories/HA/StablePresentableInfinityCategories</code></a></td></tr>
+<tr><td>モデル圏 → ∞ の比較</td><td>Quillen 随伴が誘導する ∞ 圏の随伴、モデル圏の ∞ 局所化、Kan–Quillen モデル構造（引用）</td><td><a href="../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/"><code>InfinityCategories/HTT/ModelCategoryAdjunctions</code></a>、<a href="../../../SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/"><code>InfinityCategories/HA/ModelCategoryComparison</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/"><code>InfinityCategories/Project/ModelCategoryComparison</code></a>、<a href="../../../SerrePositivity/EInfinity/SimplicialLocalization/"><code>EInfinity/SimplicialLocalization</code></a></td></tr>
+<tr><td>dg 側</td><td>dg nerve、D(S)・Perf(S)、Drinfeld 商、gluing</td><td><a href="../../../SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/"><code>InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories</code></a>、<a href="../../../SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/"><code>InfinityCategories/HA/DerivedCategoryModels</code></a>、<a href="../../../SerrePositivity/InfinityCategories/Project/DerivedCategories/"><code>InfinityCategories/Project/DerivedCategories</code></a>、<a href="../../../SerrePositivity/DifferentialGraded/"><code>DifferentialGraded</code></a></td></tr>
 </table></div>
 
-<p>F1・F1B・F2 という名前は、作業レーンの歴史に由来するもので、数学の層を表していない。改名は整備の最後に判断する（計画 §3）。</p>
+<h2>3. 数学の依存の順序</h2>
 
-<h2>3. なぜこの順序か</h2>
+<p>配置とは別に、数学としては次の順に積み上がる。各章はこの順で読む。</p>
+<pre><code>単体的集合の組合せ論 → quasicategory の基本 ⇄ 空間の理論 → coherent nerve
+  → {fibration と straightening, 随伴・局所化, ホモトピー極限} → 安定 ∞ 圏 → 大きな ∞ 圏 → 安定 presentable</code></pre>
 
-<h3>3.1 Simplicial が最下層</h3>
+<h3>3.1 単体的集合の組合せ論が最初</h3>
 <p>horn や anodyne 射は、∞ 圏の概念を使わずに単体的集合だけで定義できる。
-Kan 置換、inner anodyne 置換、Ex∞ はすべて「単体的集合の射の性質」の話なので、ここに置く。
-これらは quasicategory の定義（内 horn の充填）の前提でもある。</p>
+Kan 置換、inner anodyne 置換、Ex∞ はすべて「単体的集合の射の性質」の話で、quasicategory の定義（内 horn の充填）の前提でもある。</p>
 
-<h3>3.2 Core &lt; Kan（Kan 複体の層を quasicategory の上に置く）</h3>
-<p>数学的には、二通りの順序が考えられる。</p>
+<h3>3.2 quasicategory と空間の理論の順序</h3>
+<p>数学的には二通りの順序がある。</p>
 <ul>
-  <li><b>Kerodon の順序（Kan &lt; Core）</b>：第 3 章で Kan 複体（ホモトピー群、Whitehead）を扱い、第 4 章で ∞ 圏に進む。Kan 複体の理論は ∞ 圏を使わずに展開できる。</li>
-  <li><b>Core &lt; Kan</b>：Kan 複体を「すべての辺が可逆な quasicategory」とみて、quasicategory の道具（同値、同値の道、外 horn の充填）を使って空間の理論を展開する。</li>
+  <li><b>Kerodon の順序</b>（空間が先）：第 3 章で Kan 複体（ホモトピー群、Whitehead）を扱い、第 4 章で ∞ 圏に進む。Kan 複体の理論は ∞ 圏を使わずに展開できる。今のディレクトリの配置はこの順。</li>
+  <li><b>quasicategory が先</b>：Kan 複体を「すべての辺が可逆な quasicategory」とみて、quasicategory の道具（同値、同値の道、外 horn の充填）で空間の理論を展開する。</li>
 </ul>
-<p>本計画は後者を採る。理由はコードの現状にある。</p>
-<ul>
-  <li>いまある Kan 複体の道具は、quasicategory の理論を使って書かれている。例：<code>Core/KanFibrationTools</code> は <code>Core.EquivalencePath</code> を import している。</li>
-  <li>KST/Spectra（ホモトピー群・Whitehead などの本体）1,622 本のうち、∞ 層を使わないものは 242 本しかない。</li>
-</ul>
-<p>Kan &lt; Core にするには、これらの証明を書き換える必要がある。整備は「移動だけ」で行う方針なので、当面は Core &lt; Kan とし、Kerodon の順序に揃えるかは後で判断する（計画 §9-5）。</p>
-<div class="box">
-<p class="label">境目の決め方</p>
-<p>quasicategory と Kan 複体をつなぐ結果は Core に置く。例：写像空間が Kan 複体であること、Joyal の定理「ホモトピー圏が亜群なら Kan 複体」、Kan fibration の基本的な道具。
-Core を使ってよい「空間そのものの理論」は Kan に置く。例：π_n、長完全列、Whitehead、塔。</p>
-</div>
+<p>このプロジェクトの Kan 複体の道具の多くは、後者の形で証明されている（例：Kan fibration の道具が quasicategory の同値の道を使う）。そのため、ディレクトリは Kerodon の順でも、ファイルの import は quasicategory の基本を先に使うことがある。境目になるのは、写像空間が Kan 複体であること、Joyal の定理「ホモトピー圏が亜群なら Kan 複体」、Kan fibration の基本的な道具である。</p>
 
-<h3>3.3 Coherent は Kan の上</h3>
+<h3>3.3 coherent nerve は空間の後</h3>
 <p>空間の ∞ 圏 \(\mathcal S\) は、Kan 複体のなす単体的圏の coherent nerve として定義される。
-coherent nerve が quasicategory になることを示すにも、Hom が Kan 複体であることを使う。そのため Coherent は Kan の上に来る。</p>
+coherent nerve が quasicategory になることを示すにも、Hom が Kan 複体であることを使う。</p>
 
-<h3>3.4 Stable &lt; F2</h3>
+<h3>3.4 安定 ∞ 圏は presentable 性より前</h3>
 <p>安定 ∞ 圏の基礎（三角構造、完全関手、Verdier 列）は、presentable 性を使わずに展開できる。
-逆に、F2 の「安定 ∞ 圏 C の Ind(C) は安定」（<code>ind_isStable_unconditional</code>）は Stable を使う。
-いまは F2 → Stable の import が 193 辺あり、この順序と合っている。逆向き（Stable → F2 の 42 辺）を解消する（R38）。</p>
+逆に「安定 ∞ 圏 \(C\) の \(\mathrm{Ind}(C)\) は安定」（<code>ind_isStable_unconditional</code>）は安定性を使う。</p>
 
-<h3>3.5 StablePresentable は F2 の上</h3>
-<p>安定な Bousfield 局所化や Thomason–Neeman は、安定性と presentable 性の両方を使う。どちらの層にも収まらないので、両者の上に新しい層を置く。</p>
+<h3>3.5 安定 presentable は両方の後</h3>
+<p>安定な Bousfield 局所化や Thomason–Neeman は、安定性と presentable 性の両方を使う。</p>
 
-<h2>4. 中核に入れないもの</h2>
+<h2>4. ∞ 圏論の基盤に入れないもの</h2>
 
 <div class="table-wrap"><table>
-<tr><th>入れないもの</th><th>理由</th><th>いまの入り込み</th><th>処置</th></tr>
-<tr><td>KST（K 理論の形式化）</td><td>∞ 圏論は K 理論に依存すべきでない。依存の向きが逆</td><td>中核の閉包に KST が 115 本。主に HL・F1 → KST/Spectra（Kan 複体の道具）</td><td>Kan 複体の道具を Kan 層へ移す（R64・R27）</td></tr>
-<tr><td>dg（DifferentialGraded・Derived・DGNerve・DoldKan）</td><td>dg は ∞ 圏の一つの模型で、応用側にある</td><td>DG 約 660 本・Derived 391 本など。入口は Stable → Derived の 3 本、HL → DoldKan など</td><td>一般の補題を下の層へ抽出して切る（R39・R66・R71）</td></tr>
-<tr><td>モデル圏</td><td>∞ 圏論はモデル圏なしで展開できる。モデル圏はできるだけ避ける（10-28 決定）</td><td>F1 1,287 本・HL 727 本・Stable 124 本・F2 3,426 本の閉包に入る</td><td>付随的な依存を切り、本当に要る Quillen 系 42 本を ModelBridge へ（R72）</td></tr>
+<tr><th>入れないもの</th><th>理由</th></tr>
+<tr><td>KST（K 理論の形式化）</td><td>∞ 圏論は K 理論に依存すべきでない。依存の向きが逆</td></tr>
+<tr><td>dg（DifferentialGraded・Derived・DGNerve・DoldKan）</td><td>dg は ∞ 圏の一つの模型で、応用側にある</td></tr>
+<tr><td>モデル圏</td><td>∞ 圏論はモデル圏なしで展開できる。モデル圏はできるだけ避ける（10-28 決定）</td></tr>
 </table></div>
 
 <div class="box">
 <p class="label">モデル圏の入り込みは、ほとんどが付随的</p>
-<p>中核が HomotopicalAlgebra から使っているのは、どれもモデル圏を使わずに証明できる事実である。
+<p>∞ 圏論の基盤が HomotopicalAlgebra から使っているのは、どれもモデル圏を使わずに証明できる事実である。
 例：small object argument による Kan 置換、端点の包含 \(X \to X \times \Delta^1\) が anodyne であること、bisimplicial 集合の対角、宇宙の持ち上げ。
 ところが、それらを収めたファイルの末尾に <code>[ModelCategory SSet]</code> を仮定する節があったり、使っていない import があったりする。
-そのため、import の閉包にモデル圏が入り込んでいる。最大の経路は <code>HL.KanEquivalencePaths</code> → <code>AnodyneIntervalEndpoints</code> → <code>FixedBoundaryExtensions</code>（128 行目に Model の節）である。
-HA の 12 本からこれらの節を切り離せば、F1・F2 からモデル圏は消え、HL には Quillen 系の 42 本だけが残る（import の構造からの試算）。第 2 章で詳しく扱う。</p>
+そのため、import の閉包にモデル圏が入り込んでいる。最大の経路は（2026-10-28 の調べで）<code>HL.KanEquivalencePaths</code> → <code>AnodyneIntervalEndpoints</code> → <code>FixedBoundaryExtensions</code>（128 行目に Model の節）である。
+第 2 章で詳しく扱う。</p>
 </div>
 
-<h2>5. 各層の主な宣言と所在</h2>
+<h2>5. 主な宣言と所在</h2>
 
-<p>状態の凡例：<span class="tag">済</span> もう目標の場所にある。<span class="tag">移動予定</span> 移す計画がある（候補番号）。<span class="tag">未着手</span> まだない数学。</p>
+<p>状態の凡例：<b>済</b> コードにある（所在は 2026-11-12 に引き直した）。<b>コードにない</b> まだない数学。</p>
 
 <div class="table-wrap"><table>
-<tr><th>層</th><th>宣言（数学）</th><th>いまの所在 → 移し先</th><th>状態</th></tr>
-<tr><td>Simplicial</td><td>inner anodyne 置換 <code>exists_quasicategory_resolution_over</code></td><td>F1/Simplicial/InnerAnodyneReplacement → Simplicial</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>Simplicial</td><td>small object argument による Kan 置換</td><td>HA/Simplicial/AnodyneKanReplacement → Simplicial（Model の節を切る）</td><td><span class="tag">移動予定</span> R72</td></tr>
-<tr><td>Simplicial</td><td>Ex∞</td><td>KST/Comparison → Simplicial</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>Core</td><td>極限 <code>IsLimitCone</code>、同値 <code>IsQCatEquivalence</code>、充満忠実 <code>IsFullyFaithful</code></td><td>Core</td><td><span class="tag">済</span></td></tr>
-<tr><td>Core</td><td>写像空間 <code>pinchedHom</code></td><td>PinchedHom → Core</td><td><span class="tag">移動予定</span>（入口の整理）</td></tr>
-<tr><td>Core</td><td>Kan fibration の道具、Joyal の定理</td><td>Core/KanFibrationTools・KanCharacterization</td><td><span class="tag">済</span></td></tr>
-<tr><td>Kan</td><td>ホモトピー群、長完全列、Whitehead</td><td>KST/Spectra（PointedKanWhitehead など） → Kan</td><td><span class="tag">移動予定</span> R64・R27</td></tr>
-<tr><td>Kan</td><td>Kan fibration の塔、lim¹、Mittag–Leffler</td><td>KST/Spectra（Tower*） → Kan</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>Kan/Pointed</td><td>Σ ⊣ Ω、smash</td><td>KST/Spectra・KST/SConstruction・SerrePositivity/Spectra/PointedSimplicialSet → Kan/Pointed</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>Coherent</td><td><code>simplicialNerve_quasicategory</code></td><td>Coherent</td><td><span class="tag">済</span></td></tr>
-<tr><td>F1</td><td><code>CatInfinity</code>・<code>SpaceInfinity</code>・<code>yonedaInfinityMap_isFullyFaithful</code></td><td>F1</td><td><span class="tag">済</span></td></tr>
-<tr><td>F1B</td><td><code>IsLocalization</code> とその普遍性</td><td>F1B/Localization</td><td><span class="tag">済</span></td></tr>
-<tr><td>F1B</td><td><b>局所化の存在</b> <code>exists_quasicategory_localization</code></td><td>KST/LocalizingInvariants/LocalizationResolution.lean:37 → F1B/Localization</td><td><span class="tag">移動予定</span> R56a</td></tr>
-<tr><td>F1B</td><td>相対圏の hammock 局所化</td><td>EInfinity/SimplicialLocalization → F1B/Localization/DwyerKan</td><td><span class="tag">移動予定</span> R65</td></tr>
-<tr><td>HL</td><td><code>bousfieldKanHolim</code>、<code>isLimitCone_iff_conePinchedHom_isContractibleKan</code></td><td>HomotopyLimits</td><td><span class="tag">済</span></td></tr>
-<tr><td>Stable</td><td><code>IsStable</code>・<code>IsExactFunctor</code>・<code>isTriangulated_ho</code></td><td>Stable</td><td><span class="tag">済</span></td></tr>
-<tr><td>Stable/Verdier</td><td><code>IsVerdierSequence</code>・<code>StableInfinity</code>（\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)）</td><td>KST/LocalizingInvariants → Stable/Verdier・Stable/Infinity</td><td><span class="tag">移動予定</span> R48</td></tr>
-<tr><td>Stable/Verdier</td><td>束ねない形 <code>IsVerdierPair</code>（仮の名前）と同値補題</td><td>新設</td><td><span class="tag">移動予定</span> R50</td></tr>
-<tr><td>Stable/Verdier</td><td><code>IsStableVerdierSequence</code>（完全関手として普遍的な商）</td><td>Derived → Stable/Verdier</td><td><span class="tag">移動予定</span> R49a</td></tr>
-<tr><td>Stable/Verdier</td><td>分数による写像空間の記述 <code>verdierFractionMappingComparison_isFullyFaithful</code></td><td>KST/LocalizingInvariants → Stable/Verdier/Fractions</td><td><span class="tag">移動予定</span> R52</td></tr>
-<tr><td>Stable</td><td>lax pullback と半直交分解</td><td>KST/LocalizingInvariants → Stable/Lax・Semiorthogonal</td><td><span class="tag">移動予定</span> R68</td></tr>
-<tr><td>F2</td><td><code>IndInfinity</code>・<code>ind_isStable_unconditional</code>・<code>IsPresentable</code>・<code>bousfieldReflection</code></td><td>F2</td><td><span class="tag">済</span>（ルートの入口は R59 で直す）</td></tr>
-<tr><td>StablePresentable</td><td>安定な Bousfield 局所化、Thomason–Neeman、Karoubi 列</td><td>なし</td><td><span class="tag">未着手</span> M3〜M6</td></tr>
-<tr><td>ModelBridge</td><td><code>quillenCfDerivedAdjunction_exists</code>（Quillen 随伴 → ∞ 随伴）、<code>modelHammock_isLocalization</code>（モデル圏の ∞ 局所化）</td><td>HomotopyLimits の Quillen 系 42 本、EInfinity/SimplicialLocalization → ModelBridge</td><td><span class="tag">移動予定</span> R72・R65</td></tr>
+<tr><th>内容</th><th>今の所在（SerrePositivity/ から）・代表的な宣言</th><th>状態</th></tr>
+<tr><td>inner anodyne 置換 <code>exists_quasicategory_resolution_over</code></td><td><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations</code>。<code>exists_quasicategory_resolution_over</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/InnerAnodyneReplacement.lean">InnerAnodyneReplacement:49</a>）</td><td class="ok">済</td></tr>
+<tr><td>small object argument による Kan 置換</td><td><code>HomotopicalAlgebra/Simplicial</code>。<code>AnodyneKanReplacement.functor</code>（<a href="../../../SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean">AnodyneKanReplacement:79</a>）。このファイルはモデル圏を使わない</td><td class="ok">済</td></tr>
+<tr><td>Ex∞</td><td><code>InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor</code>。<code>exInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor/ExInfinity.lean">ExInfinity:80</a>）、<code>exInfinity_kanComplex</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor/ExInfinityKan.lean">ExInfinityKan:59</a>）</td><td class="ok">済</td></tr>
+<tr><td>極限 <code>IsLimitCone</code>、同値 <code>IsQCatEquivalence</code>、充満忠実 <code>IsFullyFaithful</code></td><td><code>InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits</code>、<code>InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes</code>、<code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors</code>。<code>IsLimitCone</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean">CoreLimit:49</a>）、<code>IsQCatEquivalence</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/Equivalence.lean">Equivalence:76</a>）、<code>IsFullyFaithful</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithful.lean">FullyFaithful:28</a>）</td><td class="ok">済</td></tr>
+<tr><td>写像空間 <code>pinchedHom</code></td><td><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces</code>。<code>pinchedHom</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/Basic.lean">Basic:116</a>）、<code>pinchedHom_kanComplex</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceRightKan.lean">MappingSpaceRightKan:192</a>）。同じ名前の dg 版が同じディレクトリの PinchedHom.lean にある（名前空間で区別）</td><td class="ok">済</td></tr>
+<tr><td>Kan fibration の道具、Joyal の定理</td><td><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations</code>、<code>InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FromCategoriesToSimplicialSets</code>。<code>fibration_of_hasLiftingProperty_horn</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/KanFibrationTools.lean">KanFibrationTools:27</a>）、<code>kanComplex_iff_isGroupoid</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FromCategoriesToSimplicialSets/KanCharacterization.lean">KanCharacterization:77</a>）</td><td class="ok">済</td></tr>
+<tr><td>ホモトピー群、長完全列、Whitehead</td><td><code>InfinityCategories/Kerodon/KanComplexes/HomotopyGroups</code>、<code>InfinityCategories/Project/KanComplexAuxiliaries</code>、一部は <code>KST/Spectra</code>。<code>fiberLongExact</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/FibrationSequence.lean">FibrationSequence:37</a>）、<code>exists_pointedHomotopyInverse</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/PointedKanWhitehead.lean">PointedKanWhitehead:141</a>）</td><td class="ok">済</td></tr>
+<tr><td>Kan fibration の塔、lim¹、Mittag–Leffler</td><td><code>InfinityCategories/Project/KanComplexAuxiliaries</code>、<code>KST/Spectra</code>。<code>TowerLimOne.twist</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/KanComplexAuxiliaries/TowerLimOne.lean">TowerLimOne:29</a>）、<code>IsMittagLeffler</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/KanComplexAuxiliaries/TowerLimOneMittagLeffler.lean">TowerLimOneMittagLeffler:46</a>）、<code>limOneBoundary</code>（<a href="../../../SerrePositivity/KST/Spectra/TowerMilnorExactness.lean">TowerMilnorExactness:23</a>）</td><td class="ok">済</td></tr>
+<tr><td>Σ ⊣ Ω、smash</td><td><code>InfinityCategories/HTT/PointedSimplicialSets</code>、<code>Spectra/Pointed</code>、<code>Spectra/PointedSimplicialSet</code>、<code>InfinityCategories/Project/PointedSpaces</code>。<code>suspensionLoopEquiv</code>（<a href="../../../SerrePositivity/InfinityCategories/HTT/PointedSimplicialSets/SuspensionLoop.lean">SuspensionLoop:80</a>）、<code>smash</code>（<a href="../../../SerrePositivity/Spectra/Pointed/Smash.lean">Smash:42</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>simplicialNerve_quasicategory</code></td><td><code>InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories</code>。<code>simplicialNerve_quasicategory</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/Quasicategory.lean">Quasicategory:32</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>CatInfinity</code>・<code>SpaceInfinity</code>・<code>yonedaInfinityMap_isFullyFaithful</code></td><td><code>InfinityCategories/Kerodon/FibrationsOfInfinityCategories/TheInfinityCategoryQC</code>、<code>InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding</code>。<code>CatInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/TheInfinityCategoryQC/CatInfinity.lean">CatInfinity:28</a>）、<code>yonedaInfinityMap_isFullyFaithful</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/YonedaInfinityFullyFaithful.lean">YonedaInfinityFullyFaithful:74</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>IsLocalization</code> とその普遍性</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>IsLocalization</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Localization.lean">Localization:103</a>）、<code>IsLocalization.exists_extension</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniversalConsequences.lean">UniversalConsequences:36</a>）</td><td class="ok">済</td></tr>
+<tr><td>局所化の存在 <code>exists_quasicategory_localization</code></td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>exists_quasicategory_localization</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/LocalizationResolution.lean">LocalizationResolution:41</a>）</td><td class="ok">済</td></tr>
+<tr><td>相対圏の hammock 局所化</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>、<code>EInfinity/SimplicialLocalization</code>。<code>RelativeCategory</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/RelativeCategory.lean">RelativeCategory:29</a>）、<code>hammockLocalizationNerveMap</code>（<a href="../../../SerrePositivity/EInfinity/SimplicialLocalization/KanHammockSourceFunctor.lean">KanHammockSourceFunctor:41</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>bousfieldKanHolim</code>、<code>isLimitCone_iff_conePinchedHom_isContractibleKan</code></td><td><code>InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits</code>。<code>bousfieldKanHolim</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/BousfieldKan.lean">BousfieldKan:42</a>）、<code>isLimitCone_iff_conePinchedHom_isContractibleKan</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/Detection.lean">Detection:40</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>IsStable</code>・<code>IsExactFunctor</code>・<code>isTriangulated_ho</code></td><td><code>InfinityCategories/HA/StableInfinityCategories</code>、<code>InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits</code>。<code>IsStable</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Definition.lean">Definition:26</a>）、<code>IsExactFunctor</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/ExactFunctor.lean">ExactFunctor:42</a>）、<code>isTriangulated_ho</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/TriangulatedInstance.lean">TriangulatedInstance:21</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>IsVerdierSequence</code>・<code>StableInfinity</code>（\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)）</td><td><code>InfinityCategories/HA/StableInfinityCategories/Verdier</code>、<code>InfinityCategories/HA/StableInfinityCategories/Infinity</code>。<code>IsVerdierSequence</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/VerdierSequence.lean">VerdierSequence:37</a>）、<code>StableInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Infinity/StableInfinity.lean">StableInfinity:84</a>）</td><td class="ok">済</td></tr>
+<tr><td>束ねない形の Verdier 対と、束ねた定義との同値</td><td>—</td><td class="todo">コードにない</td></tr>
+<tr><td><code>IsStableVerdierSequence</code>（完全関手として普遍的な商）</td><td><code>InfinityCategories/HA/StableInfinityCategories/Verdier</code>。<code>IsStableVerdierSequence</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/StableVerdierSequence.lean">StableVerdierSequence:15</a>）</td><td class="ok">済</td></tr>
+<tr><td>分数による写像空間の記述 <code>verdierFractionMappingComparison_isFullyFaithful</code></td><td><code>InfinityCategories/Project/DerivedCategories/Verdier/Fractions</code>。<code>verdierFractionMappingComparison_isFullyFaithful</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierSpanCoherentContraction.lean">VerdierSpanCoherentContraction:2333</a>）</td><td class="ok">済</td></tr>
+<tr><td>lax pullback と半直交分解</td><td><code>InfinityCategories/HA/StableInfinityCategories/Semiorthogonal</code>、<code>InfinityCategories/HA/StableInfinityCategories/Lax</code>、<code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces</code>、<code>KST/LocalizingInvariants</code>。<code>SemiorthogonalDecomposition</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Semiorthogonal/SemiorthogonalDecomposition.lean">SemiorthogonalDecomposition:31</a>）、<code>laxPullback</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/LaxPullback.lean">LaxPullback:29</a>）、<code>laxCategory</code>（<a href="../../../SerrePositivity/KST/LocalizingInvariants/LaxStableCategory.lean">LaxStableCategory:24</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>IndInfinity</code>・<code>ind_isStable_unconditional</code>・<code>IsPresentable</code>・<code>bousfieldReflection</code></td><td><code>InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories</code>、<code>InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories</code>、<code>InfinityCategories/HTT/PresentableInfinityCategories</code>。<code>IndInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafSubcategory.lean">PresheafSubcategory:26</a>）、<code>IsPresentable</code>（<a href="../../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/Definition.lean">Definition:41</a>）、<code>bousfieldReflection</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/BousfieldReflection.lean">BousfieldReflection:48</a>）</td><td class="ok">済</td></tr>
+<tr><td>安定な Bousfield 局所化、Thomason–Neeman、Karoubi 列</td><td>—（<code>InfinityCategories/HA/StablePresentableInfinityCategories</code> は完全関手の補助だけ）</td><td class="todo">コードにない</td></tr>
+<tr><td>Quillen 随伴 → ∞ 随伴 <code>quillenCfDerivedAdjunction_exists</code>、モデル圏の ∞ 局所化 <code>modelHammock_isLocalization</code></td><td><code>InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories</code>、<code>InfinityCategories/HTT/ModelCategoryAdjunctions</code>、<code>InfinityCategories/Project/ModelCategoryComparison</code>、<code>InfinityCategories/HA/ModelCategoryComparison</code>、<code>EInfinity/SimplicialLocalization</code>。<code>quillenCfDerivedAdjunction_exists</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/QuillenCfDerivedAdjunction.lean">QuillenCfDerivedAdjunction:103</a>）、<code>modelHammock_isLocalization</code>（<a href="../../../SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean">ModelHammockLocalization:84</a>）</td><td class="ok">済</td></tr>
 </table></div>
 
 <h2>6. Verdier 商までの道筋</h2>
@@ -177,37 +170,29 @@ HA の 12 本からこれらの節を切り離せば、F1・F2 からモデル�
 
 <div class="table-wrap"><table>
 <tr><th>部品</th><th>状態</th></tr>
-<tr><td>任意の辺の集合 \(W\) に対する Dwyer–Kan 局所化 \(X[W^{-1}]\) の存在（同じ宇宙で）</td><td>証明済み（KST にある。R56a で F1B へ）</td></tr>
-<tr><td>Verdier 列の定義と、随伴による判定 <code>isVerdierSequence_of_adjoint</code></td><td>証明済み（R48 で Stable/Verdier へ）</td></tr>
-<tr><td>商の写像空間を分数（屋根の filtered 余極限）で表す</td><td>証明済み。ただし、商が安定であることを仮定している（R52 で Stable/Verdier/Fractions へ）</td></tr>
+<tr><td>任意の辺の集合 \(W\) に対する Dwyer–Kan 局所化 \(X[W^{-1}]\) の存在（同じ宇宙で）</td><td>証明済み（InfinityCategories/Kerodon/AdjointFunctors/Localization）</td></tr>
+<tr><td>Verdier 列の定義と、随伴による判定 <code>isVerdierSequence_of_adjoint</code></td><td>証明済み（InfinityCategories/HA/StableInfinityCategories/Verdier）</td></tr>
+<tr><td>商の写像空間を分数（屋根の filtered 余極限）で表す</td><td>証明済み。ただし、商が安定であることを仮定している（InfinityCategories/Project/DerivedCategories/Verdier/Fractions ほか）</td></tr>
 <tr><td>M1：<code>IsVerdierSequence</code> ⇒ <code>IsStableVerdierSequence</code></td><td>未着手</td></tr>
 <tr><td>M2：安定な部分圏の cofiber 辺での局所化は安定で、局所化関手は完全</td><td>未着手（dg 版だけある）</td></tr>
 <tr><td>M7：商の存在。一般には核は \(A\) の厚い閉包。像が厚ければ <code>IsVerdierSequence</code> になる</td><td>未着手（局所化の存在と M2 から）</td></tr>
 <tr><td>M8：商の関手性（部分圏の組と、それを保つ完全関手について）</td><td>未着手。非連結 K の Calkin 懸垂に必要</td></tr>
 <tr><td>M11：一般の相対圏で hammock 局所化が ∞ 局所化であること（写像空間をジグザグで計算する。いまはモデル圏の場合だけ）</td><td>未着手（数学的には既知の定理）</td></tr>
-<tr><td>M3〜M6：Ind を経由する道（安定 Bousfield 局所化、Thomason–Neeman、Karoubi 列）</td><td>未着手。Ind・Bousfield 局所化・compact ≃ 冪等完備化は F2 にある</td></tr>
+<tr><td>M3〜M6：Ind を経由する道（安定 Bousfield 局所化、Thomason–Neeman、Karoubi 列）</td><td>未着手。Ind・Bousfield 局所化・compact ≃ 冪等完備化は InfinityCategories/Kerodon/LargeInfinityCategories にある</td></tr>
 </table></div>
 
 <p>つまり、商の構成に必要な「骨組み」（局所化の存在、Verdier 列の定義、分数）は、すでに KST の中にほぼそろっている。
 整備の目的の一つは、これらを Stable/ にまとめて、M1・M2・M7 を ∞ 層の中で証明できる状態にすることである。詳しくは第 4・5 章で扱う。</p>
 
-<h2>7. 整備の工程（いまどこか）</h2>
-
-<div class="table-wrap"><table>
-<tr><th>窓</th><th>内容</th><th>終わったときの状態</th></tr>
-<tr><td>W0（止めない）</td><td>検証の関門、層検査、対象リスト、保存検査の道具</td><td>検証が信頼できる。<b>いまここ（IF-W0-1 実行中）</b></td></tr>
-<tr><td>W1</td><td>入口・重複・Verdier の土台、dg への入口の切断</td><td>中核から DG・EInfinity が消える</td></tr>
-<tr><td>W2a</td><td>モデル圏の切り離し、Kan・Pointed 層、局所化の存在、hammock 局所化</td><td>中核から KST・モデル圏が消える</td></tr>
-<tr><td>W2b</td><td>FilteredExchange の三分割、層の逆辺の解消</td><td>中核の層の違反が 0 になり、<b>中核が完成する</b></td></tr>
-<tr><td>W2c</td><td>KST の一般部分（分数・lax・安定の補題）の取り込み</td><td>Verdier 商の部品が Stable/ にそろう</td></tr>
-</table></div>
+<h2>7. 整備の工程</h2>
+<p>整備の工程は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/notes-plan-sections.md">research/infinity-refactor-audit/notes-plan-sections.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">
-  <li>中核は Simplicial &lt; Core &lt; Kan &lt; Coherent &lt; {F1, F1B, HL} &lt; Stable &lt; F2 &lt; StablePresentable の順に積み上がる。KST・dg・モデル圏はその外に置く。</li>
-  <li>Kan を Core の上に置くのは、いまの Kan の証明が quasicategory の道具を使っているから。数学的には Kerodon の順序も可能で、後で判断する。</li>
-  <li>モデル圏の入り込みはほとんどが付随的で、本当に要るのは「モデル圏 → ∞」の比較だけ。それは ModelBridge に出す。</li>
-  <li>Verdier 商の骨組み（局所化の存在、Verdier 列、分数）はすでに KST の中にある。足りないのは、局所化の安定性（M2）、商の存在（M7）、関手性（M8）など。</li>
+  <li>ファイルは Kerodon・HTT・HA・Project の配置（KL-W1）。数学の依存は、単体的集合 → quasicategory と空間 → coherent nerve → fibration・局所化・ホモトピー極限 → 安定 → 大きな ∞ 圏 → 安定 presentable の順。</li>
+  <li>空間の理論は、ディレクトリは Kerodon の順（空間が先）だが、証明の多くは quasicategory の道具を使っている。</li>
+  <li>モデル圏の入り込みはほとんどが付随的で、本当に要るのは「モデル圏 → ∞」の比較だけ。</li>
+  <li>Verdier 商の骨組み（局所化の存在、Verdier 列、分数）はすでにある。足りないのは、局所化の安定性（M2）、商の存在（M7）、関手性（M8）など。</li>
 </ol>
 </main>
 </body>

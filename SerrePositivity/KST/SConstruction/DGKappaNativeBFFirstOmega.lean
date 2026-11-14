@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFFirstComparison
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.StrictSimplicialTransformationWhisker
 
 /-!
 概要：有限 native BF 再帰の基底の全 Hom 自然性と同じ実 Ω 条件。

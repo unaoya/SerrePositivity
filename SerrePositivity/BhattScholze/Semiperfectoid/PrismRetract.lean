@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism
 public import SerrePositivity.CategoryTheory.InitialOfRetraction
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
@@ -168,3 +170,10 @@ theorem exists_initial_of_primeRegular_evaluation
   exact ⟨Y, hY⟩
 
 end SerrePositivity.BhattScholze.Prismatic.PrismOver
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Lemma 7.7" (partial := component) "BS-W15 K5（11-11）：離散な場合の δ 構造の一意性、離散な prism と Frobenius からの射、p 正則な部分圏での始性は本体。導来 prismatic コホモロジー Δ_R/A との同一視（G10、∞ 側）は drafts の A3/DiscreteCase"] _root_.SerrePositivity.BhattScholze.Prismatic.PrismOver.exists_initial_of_primeRegular_evaluation
+attribute [cite BS19 "Lemma 7.8"] _root_.SerrePositivity.BhattScholze.Prismatic.PrismOver.exists_split_idempotent
+attribute [cite BS19 "Lemma 7.8"] _root_.SerrePositivity.BhattScholze.Prismatic.PrismOver.isIdempotentComplete

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
@@ -22,7 +24,7 @@ Fontaine 写像の自然性、環同型による perfectoid 性の移送、完�
 完全 prism を Witt 環で表し、Witt 商の計算に帰着する。
 
 ## 規約
-圏同値ではなく三つの事実（商の perfectoid 性、perfectoid 環の prism 表示、射の持ち上げ）として述べる（ノート D8、BR29）。
+圏同値ではなく三つの事実（商の perfectoid 性、perfectoid 環の prism 表示、射の持ち上げ）として述べる（BS 著者版 Theorem 3.10 の構成部分）。
 
 ## 使われ方
 BS 著者版 Corollary 7.3、André、perfectoid 環のテンソル（Perfectoidization）、CLMST。
@@ -30,7 +32,7 @@ BS 著者版 Corollary 7.3、André、perfectoid 環のテンソル（Perfectoid
 
 universe u
 
-/-! ## BSの完全prism対応に使うFontaine写像の自然性（旧 Prism/Perfectoid/FontaineNaturality.lean）
+/-! ## BSの完全prism対応に使うFontaine写像の自然性
 
 共通Witt持上げの一意性から導く。環のp正則性は要求しない。
 -/
@@ -64,7 +66,7 @@ end SerrePositivity.BhattScholze
 
 end FontaineNaturality
 
-/-! ## B4-5：Fontaine核のdistinguished生成元の底変換（旧 Prism/Perfectoid/FontaineKernelNaturality.lean）
+/-! ## Fontaine核のdistinguished生成元の底変換
 
 既存の核判定と自然性を使い、源の生成元の像が終域の核を生成することを示す。
 環そのもののp正則性を要求しない。
@@ -105,7 +107,7 @@ end SerrePositivity.BhattScholze
 
 end FontaineKernelNaturality
 
-/-! ## perfectoid環のFontaine核のdistinguished生成元（旧 Prism/Perfectoid/PerfectoidDistinguishedKernel.lean）
+/-! ## perfectoid環のFontaine核のdistinguished生成元
 
 既存のFontaine核判定を再利用する。pねじれを持つperfectoid環も含む。
 -/
@@ -149,7 +151,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidDistinguishedKernel
 
-/-! ## 完全prismの商同型に沿う既存perfectoid述語の移送（旧 Prism/Perfectoid/PerfectoidRingEquiv.lean） -/
+/-! ## 完全prismの商同型に沿う既存perfectoid述語の移送 -/
 
 @[expose] public noncomputable section PerfectoidRingEquiv
 
@@ -224,7 +226,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidRingEquiv
 
-/-! ## 完全oriented prismの標準Witt表示（旧 Prism/Perfectoid/PerfectPrismWittPresentation.lean）
+/-! ## 完全oriented prismの標準Witt表示
 
 既存のWitt復元同型と選択生成元をそのまま使い、主イデアルと標準商を比較する。
 環・商の比較は零環を含む。標準Witt δ構造との両立にはmod p環のCharPを明示する。
@@ -325,7 +327,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismWittPresentation
 
-/-! ## 一般の完全oriented prismの商のperfectoid性（旧 Prism/Perfectoid/PerfectPrismQuotientPerfectoid.lean）
+/-! ## 一般の完全oriented prismの商のperfectoid性
 
 BS 著者版 Theorem 3.10の商の向き。商のpねじれを許し、F7を要求しない。
 -/
@@ -365,7 +367,7 @@ end SerrePositivity.BhattScholze.OrientedPrism
 
 end PerfectPrismQuotientPerfectoid
 
-/-! ## 任意の非零perfectoid試験環の完全prism商表示（旧 Prism/Perfectoid/PerfectoidTrialPrism.lean）
+/-! ## 任意の非零perfectoid試験環の完全prism商表示
 
 標準Fontaine核を実PD完備化し、実H⁰の商比較で試験環を復元する。
 Fontaine核進完備性や試験環のp正則性を仮定しない。
@@ -404,7 +406,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidTrialPrism
 
-/-! ## B4-5：distinguished Witt商のperfectoid性の一般入口（旧 Prism/Perfectoid/WittDistinguishedQuotientPerfectoid.lean）
+/-! ## distinguished Witt商のperfectoid性の一般入口
 
 実PD完備化後の商とp完備な標準商の比較を使い、Witt環のd完備性の仮定を除く。
 標準Fontaine比較射自体の同型とは区別する。
@@ -437,3 +439,11 @@ theorem wittDistinguishedQuotient_isIntegralPerfectoid
 end SerrePositivity.BhattScholze
 
 end WittDistinguishedQuotientPerfectoid
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 1.3" (partial := special) "(1) 結晶 prism は本体（OrientedPrism.crystalline）。(2) 完全 prism ↔ perfectoid は Thm 3.10 の両向きを対象ごとに（圏同値としてではない）。Breuil–Kisin・q 型などの他の例は不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectPrismWittRecoveryEquiv（W(A/p) ≃ A を与える。R からの逆方向ではないので Example 1.3 (2) の候補から外す。Corol） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid
+attribute [cite BS19 "Thm 3.10" (partial := special) "圏同値ではなく三つの事実（商の perfectoid 性・perfectoid 環の prism 表示・射の持ち上げ）で（D8）。絶対の圏同値は本体にも drafts にもない（drafts/A5 の perfectSiteEquivPerfectoidUnder は固定基底の上の相対版、Lemma 4.8 の系） ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid
+attribute [cite BS19 "Thm 3.10" (partial := special) "圏同値ではなく三つの事実（商の perfectoid 性・perfectoid 環の prism 表示・射の持ち上げ）で（D8）。絶対の圏同値は本体にも drafts にもない（drafts/A5 の perfectSiteEquivPerfectoidUnder は固定基底の上の相対版、Lemma 4.8 の系） ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.exists_perfectoidTrialPrism
+attribute [cite BS19 "Thm 3.10" (partial := special) "圏同値ではなく三つの事実（商の perfectoid 性・perfectoid 環の prism 表示・射の持ち上げ）で（D8）。絶対の圏同値は本体にも drafts にもない（drafts/A5 の perfectSiteEquivPerfectoidUnder は固定基底の上の相対版、Lemma 4.8 の系） ／ DOC1 照合：ok 4 件 ／ 11-12 夜更新（§3 の見直し）"] _root_.SerrePositivity.BhattScholze.wittDistinguishedQuotient_isIntegralPerfectoid

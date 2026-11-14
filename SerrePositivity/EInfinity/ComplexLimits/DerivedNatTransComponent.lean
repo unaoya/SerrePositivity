@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.DiagramDerivedVertex
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransIso
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyEvaluationEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.HomotopyEvaluationEndpointTransport
 
 /-!
 # 元の通常複体自然変換の全二胞体と同じ成分辺

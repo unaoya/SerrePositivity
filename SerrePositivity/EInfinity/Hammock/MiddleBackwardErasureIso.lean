@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertionComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardIdentityInsertionComparison
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordInsertBetweenRange
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordFactorization
 

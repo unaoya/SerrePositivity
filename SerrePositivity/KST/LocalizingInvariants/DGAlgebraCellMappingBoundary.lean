@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeConvolutionTargetTrivial
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSmallMappingCellLift
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseBoundary
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseBoundary
 
 /-!
 概要：全射擬同型な標的射は、cell 写像上で全境界に対する右持ち上げ性を持つ。

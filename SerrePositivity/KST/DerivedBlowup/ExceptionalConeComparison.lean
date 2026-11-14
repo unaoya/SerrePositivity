@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.DerivedBlowup.KoszulConeComparison
 public import Mathlib.Logic.Equiv.Fin.Basic
 
@@ -84,3 +86,10 @@ def exceptionalChartBaseChangeIso (a : Fin (r + 1) → R) (i : Fin (r + 1)) :
   exceptionalChartProductIso a i ≪≫ (baseChangeKoszulIso MvPolynomial.C a).symm
 
 end SerrePositivity.KST.DerivedBlowup
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite KST "Eq (1.8)" (partial := component) "仮定：普遍多項式模型の指定チャートと有限列（Lean が強い）。結論：導来底変換の二種類の局所比較。通常・導来両側を含む全立方体は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exceptionalChartBaseChangeIso
+attribute [cite KST "Lemma 3.5" (partial := component) "仮定：指定普遍チャートとその底変換（Lean が強い）。結論：例外因子の dg チャートの比較と古典チャートの表示。正則列を保つ射全般の通常ブローアップと全厚化の導来 Cartesian 性は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exceptionalChartBaseChangeIso
+attribute [cite KST "Lemma 5.5" (partial := component) "仮定：有限生成ホモロジーを持つ複体の Koszul 塔、または指定例外因子のチャート（Lean が強い）。結論：プロホモロジー比較と局所の例外因子の底変換。K の絶対・相対スペクトルに移す三つの同値は未接続（Lean が弱い）。"] _root_.SerrePositivity.KST.DerivedBlowup.exceptionalChartBaseChangeIso

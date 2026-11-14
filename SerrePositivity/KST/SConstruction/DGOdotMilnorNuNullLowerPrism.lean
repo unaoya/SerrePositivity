@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismFullBoundary
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.HornBoundaryPushout
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.HornBoundaryPushout
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathInnerFibration
 
 /-!

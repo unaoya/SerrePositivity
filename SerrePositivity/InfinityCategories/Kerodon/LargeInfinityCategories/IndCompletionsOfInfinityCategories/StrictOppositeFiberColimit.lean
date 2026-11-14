@@ -33,11 +33,11 @@ def strictOppositeFiberCocone_isColimit (F : I ⥤ _root_.SerrePositivity.Infini
   apply (IsColimit.precomposeHomEquiv e (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget.mapCocone c)).toFun
   apply IsColimit.ofIsoColimit
     (isColimitOfPreserves SSet.opFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightFibrationFiberColimitCocone_isColimit F b))
-  refine Cocone.ext (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightFibrationColimitProjection F) b) ?_
+  refine Cocone.ext (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightFibrationColimitProjection F) b) ?_
   intro i
   change SSet.opFunctor.map ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightFibrationFiberColimitCocone F b).ι.app i) ≫
-    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightFibrationColimitProjection F) b).hom =
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.vertexFiberOpIso (F.obj i).val.hom b).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.strictRightFibrationColimitProjection F) b).hom =
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section2_1_3.vertexFiberOpIso (F.obj i).val.hom b).hom ≫
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
           (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationFiberEvaluationEnriched (SSet.opObjEquiv.symm b))).map
             ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.rightFibrationOppositeOrdinary B).map

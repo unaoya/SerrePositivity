@@ -34,7 +34,7 @@ lemma commonChosenLoopVertex_target (v : (SimplicialNerve CommonObject.{u}) _⦋
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1).app _ (commonChosenLoopVertex v) =
       commonNativeLoopEndpoint.app _ v := by
   rw [commonChosenLoopVertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare.diagramVertex_evaluation]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (commonLoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject v).val).square 1 1 = _
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (commonLoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject v).val).square 1 1 = _
   rw [(commonLoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject v).val).target_eq]
   exact (commonNativeLoopEndpoint_vertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject v)).symm.trans
     (congrArg (fun z ↦ commonNativeLoopEndpoint.app _ z) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object v))

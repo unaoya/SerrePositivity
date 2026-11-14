@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.CategoryTheory.Enriched.TensorCotensor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
 
@@ -61,3 +63,9 @@ lemma mapping_isRightQuillen (X : C) [IsCofibrant X] :
   exact isRightQuillen_of_isLeftQuillen (S.tensorHom.adj X)
 
 end SerrePositivity.Enriched
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "A.3.1.6"] _root_.SerrePositivity.Enriched.tensor_iff_cotensor_model
+attribute [cite HTT "A.3.1.6"] _root_.SerrePositivity.Enriched.tensor_iff_mapping_model

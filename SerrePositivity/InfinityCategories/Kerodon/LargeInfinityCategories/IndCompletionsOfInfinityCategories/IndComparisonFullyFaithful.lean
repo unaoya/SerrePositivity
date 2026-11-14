@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceColimitMapping
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndGeneratorMapping
 
@@ -80,3 +82,8 @@ lemma indComparison_isFullyFaithful_of_compact
   rwa [hv] at h
 
 end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.3.5.11" (partial := component) "仮定：小準圏 C と正則 κ、元の κ-連続 F、Fj が充満忠実で像が κ-compact（HTT と一致）。結論：(1) F が充満忠実、一方 κ-filtered な表示で D を生成すれば F は同値（(2) の十分性と一致）。F の同値から三条件を回収する必要性まで一つの同値として宣言されていないため、ここでは十分性だけを採用する。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact

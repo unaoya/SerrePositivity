@@ -50,12 +50,12 @@ lemma weakStringCofiberFamilyInput_projection {B C : _root_.SerrePositivity.Infi
 /-- 共通補完の全高次族を、元の列図式圏上の実 cofiber 列として保持する。 -/
 def weakStringCofiberFamily {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle ((ihom (weakStringCategory q n)).obj B.obj) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle ((ihom (weakStringCategory q n)).obj B.obj) :=
   cofiberFamilyZeroTriangle (weakStringCofiberFamilyInput q α)
 
 /-- 族の実列は関手圏の cofiber 列である。 -/
 lemma weakStringCofiberFamily_isCofiber {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
-    {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (weakStringCofiberFamily q α) :=
+    {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsCofiberSequence (weakStringCofiberFamily q α) :=
   cofiberFamily_isCofiber (weakStringCofiberFamilyInput q α)
 
 /-- 関手圏の列の底辺は、元の普遍評価の指定した実合成辺そのもの。 -/
@@ -91,7 +91,7 @@ lemma weakStringCofiberFamily_reindex {B C : _root_.SerrePositivity.InfinityCate
 /-- 関手圏内の cofiber 頂点は、既存の完全な核値 cofiber 関手を厳密に回収する。 -/
 lemma weakStringCofiberFamily_quotient {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringCofiberFamily q α).square 1 1 =
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringCofiberFamily q α).square 1 1 =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((weakStringKernelCofiber q α).val ≫
         (closedStableInclusion (kernelClosedPredicate q)).val) := by
   change (cofiberFamilySquare (weakStringCofiberFamilyInput q α)).app (Opposite.op ⦋0⦌)
@@ -112,10 +112,10 @@ lemma weakStringCofiberFamily_quotient {B C : _root_.SerrePositivity.InfinityCat
 /-- 同じ cofiber 頂点の商像は、関手圏の実際の零対象である。 -/
 lemma weakStringCofiberFamily_kernel {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((ihom (weakStringCategory q n)).map q.hom).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (weakStringCofiberFamily q α).square 1 1)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (((ihom (weakStringCategory q n)).map q.hom).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (weakStringCofiberFamily q α).square 1 1)) := by
   rw [weakStringCofiberFamily_quotient]
-  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (((weakStringKernelCofiber q α).val ≫
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (((weakStringKernelCofiber q α).val ≫
     (closedStableInclusion (kernelClosedPredicate q)).val) ≫ q.hom))
   apply isZeroVertex_functorVertex_of_pointwise
   intro v

@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
 public import Mathlib.Logic.Function.Iterate
@@ -9,7 +11,7 @@ public import Mathlib.Logic.Function.Iterate
 
 ## 概要
 δ 安定イデアルによる商の δ 構造と普遍性、δ 閉包（I を含む最小の δ 安定イデアル）とその生成元表示。
-勉強ノート第 2 章の命題 2.1.8・2.1.9。
+BS 著者版 Lemma 2.9・Example 2.10。
 
 ## 方針
 切断 A → W₂(A) → W₂(A/I) が I を零に送ることから商へ降ろす。生成元の表示は、生成元の δ が入れば
@@ -25,7 +27,7 @@ p ねじれを許す。
 @[expose] public noncomputable section
 universe u v
 
-/-! ## δ安定イデアルの閉包（旧 Delta/Basic/DeltaIdeal.lean）
+/-! ## δ安定イデアルの閉包
 
 BS 著者版 Example 2.10のδ安定化を、元のイデアルを含むδ安定イデアルの
 交わりとして構成する。商環のδ構造の構成とは独立な、最小性の部分を証明する。
@@ -104,7 +106,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaIdeal
 
-/-! ## δ安定イデアルによる商δ環（旧 Delta/Basic/DeltaQuotient.lean）
+/-! ## δ安定イデアルによる商δ環
 
 BS 著者版 Lemma 2.9とBS 著者版 Example 2.10。W₂切断を商へ降下し、
 pねじれの有無によらない商δ構造とδ射としての普遍性を構成する。
@@ -219,7 +221,7 @@ end SerrePositivity.BhattScholze
 
 end DeltaQuotient
 
-/-! ## 反復δ像によるδ閉包の生成（旧 Delta/Basic/DeltaClosureGeneration.lean）
+/-! ## 反復δ像によるδ閉包の生成
 
 BS 著者版 Example 2.10の表示を、δ安定イデアルの最小性と比較する。
 生成元でのδ安定性をイデアル全体へ拡張する際にδの加法・積公式を用いる。
@@ -298,3 +300,13 @@ theorem deltaClosure_eq_span_iterates (D : DeltaStructure p A) (I : Ideal A) :
 end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaClosureGeneration
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite BS19 "Ex 2.10"] _root_.SerrePositivity.BhattScholze.DeltaStructure.deltaClosure
+attribute [cite BS19 "Ex 2.10"] _root_.SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates
+attribute [cite BS19 "Ex 2.10"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_deltaClosure_quotient_lift
+attribute [cite BS19 "Lemma 2.9"] _root_.SerrePositivity.BhattScholze.DeltaStructure.existsUnique_quotient_lift
+attribute [cite BS19 "Lemma 2.9"] _root_.SerrePositivity.BhattScholze.DeltaStructure.isStable_iff_existsUnique_quotient
+attribute [cite BS19 "Lemma 2.9"] _root_.SerrePositivity.BhattScholze.DeltaStructure.quotient

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.FunctorOppositeEvaluation
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalFunctorOpposite
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.IntervalFunctorOpposite
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointwiseUnitComparison
 /-!
 概要：実余単位の標準区間比較から反対側の指定単位条件を得る。

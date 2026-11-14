@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -82,3 +84,13 @@ def joinCoconeFamilyEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
   _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderEquiv p
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "1.2.2.12" (partial := component) "仮定：準圏の N(ℕ) 図式または通常圏（HA と同じ形状を取れる）。結論：各図式の余極限の存在および 1 圏で形状の全図式に対する存在を表せる。t 構造の余連結側が列の余極限で閉じるという両立条件は型にない（Lean が弱い）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit
+attribute [cite HTT "1.2.13.4"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone
+attribute [cite HTT "1.2.13.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone.vertex
+attribute [cite HTT "1.2.13.5"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitVertexIso
+attribute [cite HTT "4.4.4.7" (partial := component) "仮定：準圏 C の任意の図式 p（HTT の双対の主張と一致）。結論：C の p 下のコスライスは左ファイブレーションであり、その全空間の始頂点の存在が HasColimit p である（一致する成分。一般の左ファイブレーションについて指定元による余表現と共変同値の双対判定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit
+attribute [cite HTT "4.4.4.7" (partial := component) "仮定：準圏 C の任意の図式 p（HTT の双対の主張と一致）。結論：C の p 下のコスライスは左ファイブレーションであり、その全空間の始頂点の存在が HasColimit p である（一致する成分。一般の左ファイブレーションについて指定元による余表現と共変同値の双対判定は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone

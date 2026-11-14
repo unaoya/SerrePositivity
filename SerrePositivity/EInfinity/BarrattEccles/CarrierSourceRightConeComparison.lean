@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialCones
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramFrame
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierDiagramForget
-public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameCones
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameCones
 
 /-!
 # 底の始域 frame の錐と元の右 frame の底の錐の比較

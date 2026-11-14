@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Fibration
 /-- 核に入る全評価を持つ零対象つき図式の相対部分複体は弱可縮。 -/
 lemma relativeDiagram_kernel_isWeaklyContractible
     {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     {J : Type v} (ev : J → (X ⟶ B.obj))
     (he : ∀ j x, (ev j).app (Opposite.op ⦋0⦌) x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (relativeDiagram q.hom ev : SSet.{u}) := by
@@ -37,7 +37,7 @@ lemma relativeDiagram_kernel_isWeaklyContractible
       inv_hom_id := by
         rw [← NatTrans.comp_app, ← pre_map, Iso.hom_inv_id, pre_id, NatTrans.id_app] }
     exact (SSet.π₀Functor.mapIso e).toEquiv.bijective
-  have hz : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible X := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X).isZero.2.isWeaklyContractible
+  have hz : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible X := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.chosenZeroVertex X).isZero.2.isWeaklyContractible
   have hc := hi.comp hz
   have ht : (Subcomplex.topIso X).hom ≫ terminal.from X =
       terminal.from ((⊤ : X.Subcomplex) : SSet.{u}) := terminal.hom_ext _ _

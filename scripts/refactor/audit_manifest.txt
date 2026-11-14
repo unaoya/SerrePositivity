@@ -1,6 +1,10 @@
-# Baseline HEAD: 4ab7665b36b02814d11bd04c0659ed6067d509d3 (99 audits)
+# B2 preview audit inventory: 105 entries; frozen math base 0e8c85420
 scripts/audit/adams.lean
 scripts/audit/bhatt_scholze.lean
+scripts/audit/bs_power_root_envelope/InitialCoefficient.lean
+scripts/audit/bs_power_root_envelope/Unoriented.lean
+scripts/audit/bs_power_root_envelope/VarpiComparison.lean
+scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean
 scripts/audit/clmst.lean
 scripts/audit/dg.lean
 scripts/audit/shared.lean
@@ -68,18 +72,20 @@ scripts/audit_infinity_f1_f1b.lean
 scripts/audit_infinity_f1b.lean
 scripts/audit_infinity_f2.lean
 scripts/audit_infinity_f2_checks.lean
+scripts/audit_infinity_kan.lean
+scripts/audit_infinity_model_bridge.lean
 scripts/audit_infinity_presentable.lean
 scripts/audit_infinity_presentable_duality.lean
 scripts/audit_infinity_presentable_local_objects.lean
 scripts/audit_infinity_presentable_localization.lean
 scripts/audit_infinity_presentable_supply.lean
 scripts/audit_infinity_stable.lean
+scripts/audit_infinity_stable_presentable.lean
 scripts/audit_kst_cofinality.lean
 scripts/audit_kst_comparison.lean
 scripts/audit_kst_core_flag.lean
 scripts/audit_kst_derived_blowup.lean
 scripts/audit_kst_derived_geometry.lean
-scripts/audit_kst_descent.lean
 scripts/audit_kst_descent_main.lean
 scripts/audit_kst_fibration.lean
 scripts/audit_kst_fibration_relative.lean
@@ -98,6 +104,4 @@ scripts/audit_refactor_infinity.lean
 scripts/audit_spectra.lean
 scripts/audit_stage4_contract.lean
 scripts/audit_triangulated_k0_shift_shared.lean
-scripts/audit_infinity_kan.lean
-scripts/audit_infinity_model_bridge.lean
-scripts/audit_infinity_stable_presentable.lean
+scripts/audit_bhatt_scholze_stage2.lean

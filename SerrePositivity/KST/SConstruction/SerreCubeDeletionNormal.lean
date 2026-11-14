@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormalDetection
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CubeDeletionNormalDetection
 public import SerrePositivity.KST.SConstruction.SerreCubePrefixNaturality
 
 /-! # 保持・削除標準表示の元の Serre 評価

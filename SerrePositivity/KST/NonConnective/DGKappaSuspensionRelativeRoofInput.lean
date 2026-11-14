@@ -35,12 +35,12 @@ structure DGKappaSuspensionRelativeRoofInput where
   /-- Sp-6：固定 ν の実相対 Verdier 四角形。平坦屋根の供給は D-9。 -/
   diagram : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
   /-- D-9・Sp-6：同じ実核への始点照合。元の Perf・P との照合は別途 K-B。 -/
-  left_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex kernel
+  left_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex diagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex kernel
   /-- D-9・Sp-6：同じ平坦 cone の指定入力頂点への照合。 -/
-  middle_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 1 0 =
+  middle_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex diagram.square 1 0 =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I)
   /-- D-9・Sp-6：同じ平坦商の指定懸垂頂点への照合。 -/
-  right_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I)
+  right_eq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex diagram.square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I)
   /-- D-9・Sp-6：元の平坦商射の全一単体との厳密一致。 -/
   quotient : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ diagram.square =
     SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge

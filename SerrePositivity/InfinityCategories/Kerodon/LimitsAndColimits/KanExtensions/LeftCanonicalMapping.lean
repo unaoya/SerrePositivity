@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PrecompositionMappingPair
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCanonicalRestrictionHom
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeInitialBoundaryCriterion
@@ -51,3 +53,10 @@ lemma kanLeftCanonical_pre_initialBoundary {K C D : SSet.{u}}
   exact kanLeftCanonical_pinchedHomMap_equivalence δ F hF G
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.1.5.6" (partial := component) "仮定：P(S) から小余完備な準圏への小余極限保存関手二つ（Lean が強い：S は準圏）。結論：同じ米田写像への制限は、この二関手間の全写像空間で同値となり、指定 Funᴸ 上で充満忠実である（結論の一部に一致。制限の本質的全射性を含む全関手準圏の同値は含まない）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_equivalence
+attribute [cite HTT "5.3.6.4" (partial := component) "仮定：小準圏 C と小余完備 D、P(C)→D の小余極限保存関手（Lean が強い：C は任意の単体集合でなく準圏）。結論：同じ米田制限が保存関手間の全写像空間で同値となる（普遍性の充満忠実性と一致）。全制限射の本質的全射性を含む同値までの証明はない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_equivalence
+attribute [cite HTT "5.3.6.6" (partial := component) "仮定：小準圏 C、K 空、K′ は全小形状（Lean が強い：任意の小単体集合 C ではない）。結論：P(C) の同じ制限の全写像空間での同値、すなわち普遍性の充満忠実性（一致する成分）。抽象的 PK′K との比較同値を構成したとは数えない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_equivalence

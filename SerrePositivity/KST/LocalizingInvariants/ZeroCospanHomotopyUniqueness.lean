@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanRestriction
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FullSubcomplexEdgeLift
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition
 
 /-!
 概要：零第二枝を持つ cospan 比較の類は、第一枝への全関手としての制限で決まる。
@@ -45,7 +45,7 @@ lemma homotopyEdge_map (F G : (horn 2 2 : SSet.{u}) ⟶ X)
   Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_fullSubcomplexEdgeLift (zeroSecond X)
     (vertex F hF) (vertex G hG) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
 
-lemma homotopy_homMk_eq [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
+lemma homotopy_homMk_eq [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.HasZeroVertex X]
     (F G : (horn 2 2 : SSet.{u}) ⟶ X)
     (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (hG : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
     (H J : SSet.Homotopy F G)

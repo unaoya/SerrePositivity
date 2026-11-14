@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorModuleModels
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorModuleResolution
 
@@ -130,3 +132,10 @@ lemma boundedAboveDerivedTensorModuleAugmentation_homology (M N : ModuleCat.{u} 
   rfl
 
 end SerrePositivity
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "7.0.0.1" (partial := component) "仮定：通常可換環 R 上の離散な二加群と有界上の通常導来テンソル（Lean が強い：通常の dg 導来模型の場合）。結論：導来テンソルの H⁻ⁿ を通常の Torₙ と自然同型にする（原典が 7.2.1.22 を引用する Tor 計算の部分に一致）。HR 加群スペクトルとの比較および一般の非可換環は含まれない。"] _root_.SerrePositivity.boundedAboveDerivedTensorModuleTorNatIso
+attribute [cite HA "7.2.1.22" (partial := special) "仮定：通常の可換環 R の離散な二つの加群（Lean が強い：可換環の通常の導来圏模型）。結論：その導来テンソルの H⁻ⁿ を Torₙ と自然に同定する（離散入力での HA の結論に一致する部分）。環スペクトルのテンソルとの比較は含まれない。"] _root_.SerrePositivity.boundedAboveDerivedTensorModuleTorNatIso
+attribute [cite HA "7.2.1.23" (partial := component) "仮定：通常の可換環 R の離散な二つの加群（Lean が強い：基底と入力がすべて離散な通常の導来圏模型）。結論：導来テンソルの H⁰ を通常テンソルに自然に同定する（結論 (2) のこの場合に一致）。一般の連結入力の連結性と環スペクトルへの比較は含まれない。"] _root_.SerrePositivity.boundedAboveDerivedTensorModuleH0NatIso

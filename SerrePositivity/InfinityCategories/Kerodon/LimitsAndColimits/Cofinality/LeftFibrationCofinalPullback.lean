@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftFibrationAnodynePullback
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFactorizationCriterion
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting
@@ -46,3 +48,8 @@ lemma leftFibration_pullback_isRightCofinal {E A B : SSet.{u}}
   exact h
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "4.1.2.10" (partial := special) "仮定：滑らかな写像 p と共終射 f（Lean が強い：p が左ファイブレーション）。結論：同じ引き戻しの射は共終（一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_isRightCofinal

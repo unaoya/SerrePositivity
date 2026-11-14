@@ -29,7 +29,7 @@ lemma exists_stable_pushoutPresentation_of_span {X : SSet.{u}} [Quasicategory X]
     (p : (horn 2 0 : SSet.{u}) ⟶ X) :
     ∃ F : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X,
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0) = p ∧
-      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) 0 1) ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) 0 1) ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0) ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 1) := by
   let f := horn₂₀.ι₀₁ ≫ p
@@ -42,19 +42,19 @@ lemma exists_stable_pushoutPresentation_of_span {X : SSet.{u}} [Quasicategory X]
       ((congrArg (fun k => k ≫ p) horn₂₀.isPushout.w).trans (Category.assoc _ _ _))
   have hv : X.δ 1 (SSet.yonedaEquiv f) = X.δ 1 (SSet.yonedaEquiv g) := by
     rw [← stdSimplex.yonedaEquiv_δ_comp, ← stdSimplex.yonedaEquiv_δ_comp, he]
-  have hs : X.δ 1 (SSet.yonedaEquiv f) = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 1 0 :=
+  have hs : X.δ 1 (SSet.yonedaEquiv f) = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 1 0 :=
     hv.trans ((congrArg (fun k => X.δ 1 (SSet.yonedaEquiv k)) hg).symm.trans
       (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source s.square))
   let b : SSet.Truncated.Edge (X := (truncation 2).obj X)
-      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex s.square 1 0) (X.δ 0 (SSet.yonedaEquiv f)) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex s.square 1 0) (X.δ 0 (SSet.yonedaEquiv f)) :=
     ⟨SSet.yonedaEquiv f, hs, rfl⟩
-  let c := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow s.square).compStruct b
+  let c := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow s.square).compStruct b
   let τ : (Δ[2] : SSet.{u}) ⟶ X := SSet.yonedaEquiv.symm c.simplex
   have hτ₂ : stdSimplex.δ (2 : Fin 3) ≫ τ = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ s.square := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp]
     exact (congrArg (fun a => X.δ 2 a) (SSet.yonedaEquiv.apply_symm_apply c.simplex)).trans
-      (c.d₂.trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge s.square))
+      (c.d₂.trans (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge s.square))
   have hτ₀ : stdSimplex.δ (0 : Fin 3) ≫ τ = f := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp]

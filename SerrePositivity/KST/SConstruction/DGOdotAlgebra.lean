@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.SConstruction.DGOdotQuotient
 public import SerrePositivity.KST.SConstruction.DGAlgebraRightEndOrientation
 public import SerrePositivity.DifferentialGraded.Functor.Closed
@@ -45,3 +47,8 @@ lemma dgOdotAlgebra_mul : μ[(dgOdotAlgebra R d).X] =
         EndomorphismObject.point := rfl
 
 end SerrePositivity.KST.SConstruction
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite LT "Construction §1 ⊙" (partial := component) "仮定：可換基礎環上の dg 圏、指定対角・左零・右代表（Lean が強い）。結論：(0,b,0) の dg 商での自己準同型とその dg 代数模型。一般の E₁ 環スペクトル版との比較は含まない（Lean が弱い）。"] _root_.SerrePositivity.KST.SConstruction.dgOdotAlgebra

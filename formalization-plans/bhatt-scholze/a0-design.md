@@ -312,3 +312,6 @@ Hom(C^0, D) ≠ ∅（選択）。R に smooth 性は不要。
   改名表が届いてから。それまで A0-3b・A0-3d・A0-4 は設計書 §2.6・§2.9 の数学の形で止め、S1・S2・S6・A0-1・A0-2 の骨組みを先に書く。
   **11-07**：2b が main に入ったので A0-3b・A0-3d・A0-4 の主張の型を drafts/A0/FlatDescent.lean・BaseChange.lean に置いた（§2.6・§2.9 の「置いた宣言」）。
   HA の部品は加群の版（CompletedFlat*）で、D(A) の対象の版・Amitsur の完全性・完備底変換の ∞ 関手は未（入口は drafts/DerivedGeneral）。
+
+
+> **11-12 夜の追記**：D22 は本体では採らなかった。本体の `flatTopology`（`Prismatic/FlatSiteSheaf`）は原典どおり Cor 3.12（`exists_isPushout_isFaithfullyFlat`）で被覆の引き戻しの公理を示して `flatCoverage … .toGrothendieck` で置いている。§1 の表と §2.6 で drafts の宣言として挙げた Lemma 3.7 (2)(3)・Cor 3.12 の正本は本体（design-status の記録の訂正）。

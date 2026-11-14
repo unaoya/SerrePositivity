@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberLocalizingComposition
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HigherHornEdgeCover
-public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornEdges
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.HigherHornEdgeCover
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Anodyne.InnerTwoHornEdges
 public import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseLeftFibration
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniverseLeftFibration
 
 /-!
 概要：反転した豊穣係数の weighted nerve と coherent な錐の切断空間の実際の比較射。

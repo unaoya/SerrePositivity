@@ -63,7 +63,7 @@ lemma octahedronModel_of_morphisms {X : SSet.{u}} [Quasicategory X] [_root_.Serr
   have hg' : Arrow.mk d.second.outerZeroTriangle.hoShortComplex.f =
       Arrow.mk (SSet.Truncated.HomotopyCategory.homMk q) := by
     apply SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk
-    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow_edge, hb]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow_edge, hb]
     exact SSet.yonedaEquiv.apply_symm_apply q.edge
   have hg := hg'.trans (congrArg Arrow.mk hq)
   rw [hf, hg] at hm

@@ -38,15 +38,15 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 /-- 既存の厳密商の相対証明書を、同じ四角形・恒等完備化で受ける。 -/
 def ofStrict (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (ν ≫ perfectStableInfinityInclusion))
     : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν := by
-  have hL := perfectStableObject_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν) 0 0)
-  have hM := perfectStableObject_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν) 1 0)
-  have hR := perfectStableObject_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν) 1 1)
+  have hL := perfectStableObject_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν) 0 0)
+  have hM := perfectStableObject_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν) 1 0)
+  have hR := perfectStableObject_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν) 1 1)
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete
-    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 0 0)).obj at hL
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 0 0)).obj at hL
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete
-    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 1 0)).obj at hM
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 1 0)).obj at hM
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete
-    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 1 1)).obj at hR
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 1 1)).obj at hR
   rw [d.image_eq, d.image.left_eq, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex] at hL
   rw [d.image_eq, d.image.middle_eq, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex] at hM
   rw [d.image_eq, d.image.right_eq, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex] at hR

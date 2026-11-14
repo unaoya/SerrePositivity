@@ -29,7 +29,7 @@ variable {B : SSet.{u}} {J : Type u} [Finite J] [Nonempty J]
 
 /-- 元の一般有限添字の全評価脚の Kan 像を持つ、元の余極限頂点からの全錐。 -/
 def finiteFamilyOriginalColimitFamilyCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve
-    (Discrete.functor (fun j ↦ _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject (G j)))) :=
+    (Discrete.functor (fun j ↦ _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject (G j)))) :=
   let Q := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nonemptyFiniteIndexPresentation J
   ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteFamilyOriginalColimitNativeCone G c A hA).reindexIso
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.liftedDiscreteIndexIso Q.2)).cast
@@ -39,7 +39,7 @@ def finiteFamilyOriginalColimitFamilyCone : _root_.SerrePositivity.InfinityCateg
 /-- 元の一般有限全錐の頂点は、元の評価錐頂点の余極限 Kan 模型そのもの。 -/
 lemma finiteFamilyOriginalColimitFamilyCone_vertex :
     (finiteFamilyOriginalColimitFamilyCone G c A hA).vertex =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A) := by
   rw [finiteFamilyOriginalColimitFamilyCone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_cast, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.joinCone_reindexIso_vertex,
     _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteFamilyOriginalColimitNativeCone_vertex]
 

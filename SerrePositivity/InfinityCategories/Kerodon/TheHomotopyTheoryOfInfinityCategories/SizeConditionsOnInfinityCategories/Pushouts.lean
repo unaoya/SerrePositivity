@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniversePullbacks
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.GrothendieckConstruction.UniversePullbacks
 
 /-!
 概要：元の単体集合の pushout を宇宙持ち上げ後も同じ四射の pushout として保持する。

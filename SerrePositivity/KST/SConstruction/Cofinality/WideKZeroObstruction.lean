@@ -74,9 +74,9 @@ lemma completionKZeroVertexClass_edge (r : ℕ) (ι : Fin r → SimplexCategory�
     ⟨q.toZeroTriangle, q.isPushout, ⟨Iso.refl _⟩⟩
   change TriangulatedK0.mk
       (C := hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
-      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q.square 1 0)) =
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex q.square 1 0)) =
     TriangulatedK0.mk (C := hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
-      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q.square 0 0)) +
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex q.square 0 0)) +
     TriangulatedK0.mk (C := hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
       (HomotopyCategory.mk q.cofiber) at hq
   have hq' := hs ▸ ht ▸ hq

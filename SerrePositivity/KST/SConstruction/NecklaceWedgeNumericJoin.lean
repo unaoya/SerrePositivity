@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceWedgeCoordinates
-public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceWedgeBooleanJoin
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgeCoordinates
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgeBooleanJoin
 public import SerrePositivity.KST.SConstruction.CubeVertexBlockCoordinates
 
 /-! # 元の necklace の数値 cube 頂点の連結

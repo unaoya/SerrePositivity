@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainCoconeShiftCoordinates
 public import SerrePositivity.KST.LocalizingInvariants.CochainConeMapQuasiIso
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorResolutionHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleFunctorResolutionHomExt
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 
 /-!

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientFlatKernel
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuotientZeroingExtension
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.ResolvedDGQuotientFlatKernel
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.DGQuotientZeroingExtension
 public import SerrePositivity.KST.LocalizingInvariants.DGKappaRelativeRoofTransport
 
 /-!
@@ -43,12 +43,12 @@ theorem dgKappaResolvedKernel_homKFlat : localHomKFlat R (dgKappaResolvedKernelK
 /-- 同じ実核の全頂点は、元の分解 cone の商包含との合成で零化される。 -/
 theorem dgKappaResolvedKernel_quotient_kills
     (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgKappaResolvedKernelKInput R D I)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((dgKappaResolvedKernelInputMap R D I).down.comp
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((dgKappaResolvedKernelInputMap R D I).down.comp
       (dgKappaResolvedSuspensionInputMap R D I).down)).app (Opposite.op ⦋0⦌) z) := by
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernel_isStable R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I)
   let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Pretriangulated.dgNerve_isStable_of_pretriangulated R
     (DGCategoryCellResolution.Source R (DGKappaCone R D I))
   let := dgKappaSuspensionInfinity_isStable R D I
   have h := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFlatKernel_isStableVerdierSequence R

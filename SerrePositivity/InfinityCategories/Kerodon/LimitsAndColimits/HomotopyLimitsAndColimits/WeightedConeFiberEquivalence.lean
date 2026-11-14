@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseVertexFiber
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.UniverseVertexFiber
 
 /-!
 概要：weighted nerve から coherent cone の全空間への実際の射は各 fiber で同値。

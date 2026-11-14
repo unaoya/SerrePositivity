@@ -5,6 +5,9 @@
 
 ## 0. リファクタ文書の索引（R1〜R79、2026-10-28 整理、10-30 更新）
 
+> **11-12 追記**：状態の正本は [refactor-ledger.md](refactor-ledger.md)。この §0 の状態欄とパスは 10-30 のまま（KL-W1 の前の構成）。
+
+
 ∞ 圏まわりのリファクタは、このファイルを入口とする。番号は全文書で通し番号。BS 側は [bhatt-scholze-refactoring.md](bhatt-scholze/bhatt-scholze-refactoring.md)（別セッション）。
 
 | 範囲 | 文書 | 状態 |
@@ -16,9 +19,9 @@
 | R59〜R67 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md) §3 末尾（入口の修正、台帳、重複、Kan・pointed 層、DK 局所化層、∞ 中核の dg 非依存化、分類し直し。10-28 の調査から） | 候補 |
 | R68〜R79 と全体の順序 | [infinity-foundation-plan.md](infinity-foundation-plan.md)（∞ 基盤の整備計画の正本。段 A〜G、窓 W0〜W2c、決定事項、目標構成） | W0 進行中（IF-W0-1・2 完了、IF-W0-3 で W1 の対象一覧を承認 10-30、w2a 以降は作成中） |
 | （別計画） | [refactor-plan.md](refactor-plan.md)（論文の層の整理・一般論の切り出し・Mathlib への提出。旧 paper-layer-extraction.md を統合） | 計画（10-30） |
-| R58 | 解説 [route-yoneda.html](../exposition/ja/infinity/route-yoneda.html) §6（旧番号 R26。R2 の R26 と衝突したため 10-28 に改番） | R27・R37 に統合して扱う |
+| R58 | 解説 [route-yoneda.html](../research/infinity-refactor-audit/route-yoneda.html) §6（旧番号 R26。R2 の R26 と衝突したため 10-28 に改番） | R27・R37 に統合して扱う |
 | 調査記録 | archive の `refactor-*-2026-10-23/24.*`（第 1 窓の検証・名前対応）、`r2-*-2026-10-27.*`（R2 の各調査）、[infinity-outside-survey-2026-10-28.md](archive/infinity-outside-survey-2026-10-28.md)（∞ 層の外にある一般論）、[repository-survey-2026-10-28.md](archive/repository-survey-2026-10-28.md)（SerrePositivity/ 全体の地図と問題点） | — |
-| 候補の出所 | 解説 [exposition/ja/infinity/](../exposition/ja/infinity/index.html) の赤い囲み、[r8-duplication.html](../exposition/ja/infinity/r8-duplication.html) | — |
+| 候補の出所 | 解説の赤い囲み（11-12 に台帳へ移した、原文は `research/infinity-refactor-audit/box-texts.md`）、[r8-duplication.html](../research/infinity-refactor-audit/r8-duplication.html) | — |
 
 ### 0.1 ∞ 基盤の整備（2026-10-28 以降の正本）
 

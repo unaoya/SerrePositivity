@@ -23,17 +23,17 @@ local instance fiberExactSimplicialCategory : SimplicialCategory OmegaSpectrum.{
   OmegaSpectrum.simplicialCategory
 
 variable {E B : OmegaSpectrum.{u}} (f : E ⟶ B)
-  (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated)
+  (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.FiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated)
 
-abbrev fiberGroup (j : ℤ) := (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0)
-abbrev totalGroup (j : ℤ) := (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 1 0)
-abbrev baseGroup (j : ℤ) := (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 1 1)
+abbrev fiberGroup (j : ℤ) := (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 0 0)
+abbrev totalGroup (j : ℤ) := (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 1 0)
+abbrev baseGroup (j : ℤ) := (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoVertex s.square 1 1)
 
 def bottom (j : ℤ) : fiberGroup f s j →* totalGroup f s j :=
-  ((SpectrumHo.piFunctor j).map (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom s.square)).hom
+  ((SpectrumHo.piFunctor j).map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoBottom s.square)).hom
 
 def right (j : ℤ) : totalGroup f s j →* baseGroup f s j :=
-  ((SpectrumHo.piFunctor j).map (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight s.square)).hom
+  ((SpectrumHo.piFunctor j).map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareHoRight s.square)).hom
 
 def fiberEquiv (j : ℤ) : fiberGroup f s j ≃* homotopyGroup (homotopyFiber f) j :=
   (fiberGroupIso f s j).commGroupIsoToMulEquiv

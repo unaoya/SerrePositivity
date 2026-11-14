@@ -5,17 +5,17 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Vertices
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedInfinity
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyFunctorProduct
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.FiniteFamilyFunctorProduct
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteFamilyOriginalColimitTransport
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyOriginalLegCocones
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteFamilyProductCone
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FiniteFamilyOriginalLegCocones
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.FiniteFamilyProductCone
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteFamilyTransportedLegComparison
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FiniteKanProductNative
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanDiscreteNativeConeOfLegs
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NativeDiscreteLegHomotopy
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.FiniteKanProductNative
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.KanDiscreteNativeConeOfLegs
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.NativeDiscreteLegHomotopy
 
 /-!
 概要：元の評価全錐の実際の全脚の Kan 像を持つ余極限全錐が、sifted な底で極限錐。
@@ -44,25 +44,25 @@ def finiteFamilyOriginalColimitNativeCone :
     let Q := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nonemptyFiniteIndexPresentation J
     let F := fun k ↦ G (Q.2.symm (ULift.up k))
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve
-      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteKanProductDiagram Q.1 (fun k ↦ _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject (F k)))) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteKanProductDiagram Q.1 (fun k ↦ _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject (F k)))) :=
   let Q := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nonemptyFiniteIndexPresentation J
   let F := fun k ↦ G (Q.2.symm (ULift.up k))
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.kanDiscreteNativeConeOfLegs
-    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteKanProductDiagram Q.1 (fun k ↦ _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject (F k)))
-    (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteKanProductDiagram Q.1 (fun k ↦ _root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject (F k)))
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A)
     (fun i ↦ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyOriginalLegKanMap_indexed G c A hA i.as.down)
 
 /-- 元の全錐の頂点は、元の評価錐頂点の余極限 Kan 模型。 -/
 lemma finiteFamilyOriginalColimitNativeCone_vertex :
     (finiteFamilyOriginalColimitNativeCone G c A hA).vertex =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.kanDiscreteNativeConeOfLegs_vertex _ _ _
 
 /-- 元の全錐の全脚は、元の実際の評価全脚の Kan 像そのもの。 -/
 lemma finiteFamilyOriginalColimitNativeCone_kanLeg
     (i : Discrete (ULift.{u} (Fin ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nonemptyFiniteIndexPresentation J).1 + 1)))) :
     _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.kanNativeConeLeg (finiteFamilyOriginalColimitNativeCone G c A hA)
-      (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A)
+      (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A)
       (finiteFamilyOriginalColimitNativeCone_vertex G c A hA) i =
         _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteFamilyOriginalLegKanMap_indexed G c A hA i.as.down :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.kanDiscreteNativeConeOfLegs_kanLeg _ _ _ i
@@ -73,7 +73,7 @@ lemma finiteFamilyOriginalColimitNativeCone_isLimit [_root_.SerrePositivity.Infi
   apply (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.discreteSpaceCone_isLimit_iff_of_leg_homotopies _
     (finiteFamilyOriginalColimitNativeCone G c A hA)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteFamilyOriginalColimitTransportedCone G c hc A hA)
-    (_root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.coherentDiagramTotalKanObject A) (finiteFamilyOriginalColimitNativeCone_vertex G c A hA)
+    (_root_.SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject A) (finiteFamilyOriginalColimitNativeCone_vertex G c A hA)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteFamilyOriginalColimitTransportedCone_vertex G c hc A hA) (fun i ↦ ?_)).mpr
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteFamilyOriginalColimitTransportedCone_isLimit G c hc A hA)
   rw [finiteFamilyOriginalColimitNativeCone_kanLeg]

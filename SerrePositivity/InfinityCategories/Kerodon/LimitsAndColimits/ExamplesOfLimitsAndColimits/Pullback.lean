@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Square
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -128,3 +130,8 @@ lemma isPullbackSquare_iff_trivialKanFibration {X : SSet.{u}} (F : Δ[1] ⊗ Δ[
   _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_trivialKanFibration (pullbackCone F)
 
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HA "6.1.1.2" (partial := component) "仮定：S が二元集合で、cube を Δ¹×Δ¹ の四角形として与える（Lean が強い：二次元の場合）。結論：Cartesian 性を対応 cospan の ∞ 極限錐、pushout 性を対応 span の ∞ 余極限余錐で定義する（二次元の二条件に一致する部分）。全有限 S の cube と P≤1 からの Kan 延長の一般定義は含まれない。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare

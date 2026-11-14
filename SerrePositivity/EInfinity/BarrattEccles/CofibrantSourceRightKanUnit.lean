@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanLegs
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyComponentTransport
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.RightKanTransportComponents
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.HomotopyComponentTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.FibrantModels.RightKanTransportComponents
 
 /-!
 # 元の実右 Kan 単位の全成分の可逆性

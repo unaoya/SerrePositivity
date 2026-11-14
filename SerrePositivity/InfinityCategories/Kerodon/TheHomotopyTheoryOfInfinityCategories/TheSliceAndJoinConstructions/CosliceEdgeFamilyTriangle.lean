@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceEdgeFamilyCylinder
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FixedBaseTerminalTriangle
-public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FixedBaseHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.FixedBaseTerminalTriangle
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.FixedBaseHomotopyClasses
 
 /-!
 概要：同じ終点族を持つ辺全体の二族を、元の二つの切断比較円柱を保って照合する。

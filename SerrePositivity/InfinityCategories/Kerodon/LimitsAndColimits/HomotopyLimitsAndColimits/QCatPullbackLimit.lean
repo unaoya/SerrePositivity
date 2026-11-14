@@ -1,5 +1,7 @@
 module
 
+
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCatPullbackHom
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.StrictHomotopyLimits
 
@@ -80,3 +82,8 @@ lemma qCatPullbackInfinityCone_isLimit
   exact (qCatPullbackHomCone_isLimit p q T hp).whiskerEquivalence
     (AsSmall.equiv : WalkingCospan ≌ AsSmall.{u} WalkingCospan).symm
 end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+
+/-! Literature correspondences from the reviewed coverage tables. -/
+
+/-! Reviewed literature correspondences. -/
+attribute [cite HTT "5.4.5.4" (partial := special) "仮定：元の平方を一方が categorical fibration である strict pullback 模型で与える（Lean が強い：任意の別の homotopy Cartesian 平方を入力しない）。結論：元の全余スライス平方は strict pullback で、その同じ脚は categorical lifting を保つため対応する Cat∞ の錐も極限（この模型で一致）。"] _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.qCatPullbackInfinityCone_isLimit

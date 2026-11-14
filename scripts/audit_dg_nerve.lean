@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeLimits
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.Resolutions.SemifreeLimits
 import SerrePositivity.InfinityCategories.Project.Entrypoints.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
