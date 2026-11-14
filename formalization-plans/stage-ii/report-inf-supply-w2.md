@@ -6874,3 +6874,106 @@ theorem nativeTotConeFamilyLift_apex (X : CosimplicialObject (Complex A))
 累計 **289モジュール・17,837行**、外枠まで2,163行。一覧 `/private/tmp/isw2-g10-twohundredeightynine-modules.txt`。sorry・新公理0、ModelCategory SSetの追加なし、計算上限・既存宣言・⑤a・入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
 
 B06（同じ族の制限と既存の全BK→native比較との厳密な一致）、B07・B08が残る。既存の `fixedVertexConeSpaceEquiv_cosliceSection`、`coherentConeSourceFamily_restriction_weighted`、`weightedConeEndPrecomposition_evaluation` を使って、元のweightedな錐の点を同じcosliceの前合成へ戻す経路を進める。Bの完了後にC・Dを再見積もりする。C・D、停止点2a・2b、3b-4段0は未完。
+
+
+## 142. B06：同じTot錐のweighted点・切断と固定点のend作用（2026-11-14 午後）
+
+一覧：済み 18／全体 36（うち追加 1）
+
+元の `nativeCoherentCone X` の正規化したcoslice切断を、指定の `reflectedWeightedConeSectionPoint` の評価へ戻した。さらにその点のYoneda表示と既存BK比較の評価則を使い、同じweightedな切断の表示を得た。B04の同じ族を制限した際の相対uncurryも、その切断に対する既存のcoslice前合成へ同定した。
+
+end作用の側では、既存のパラメータ自然性を全切断に対して証明し、同じweighted錐の点を固定した作用が `reflectedWeightedHomComparison` に一致する式を得た。今回の6宣言はB06の既存構成の単位・自然性・評価則と証明分割であり、新しい構成／数学の追加はない。B06の最終等式には、これらの式のULift・直積の照合がなお残る。
+
+
+### 142.1 `NativeTotConePointSection`（117行）
+
+```lean
+theorem nativeTotCone_cosliceSection (X : CosimplicialObject (Complex A)) :
+    coherentConeCosliceSection (nativeCoherentCone X) ≫
+      eqToHom (congrArg (fun w : (SimplicialNerve (ClosedCategory A (Complex A))) _⦋0⦌ =>
+        sliceUnder (SSet.yonedaEquiv.symm w)) (nativeCoherentCone_vertex X)) =
+    inv (fst ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))
+      (Δ[0] : SSet.{u+1})) ≫ relativeFunctorUncurry
+        (SSet.yonedaEquiv.symm (reflectedWeightedConeSectionPoint (liftedClosedDiagram X)
+          (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+          (liftedEnrichedBousfieldKanCone X)))
+
+theorem nativeTotCone_point_yoneda (X : CosimplicialObject (Complex A)) :
+    let F := liftedClosedDiagram X
+    let z := ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)
+    let φ := liftedEnrichedBousfieldKanCone X
+    SSet.yonedaEquiv.symm (reflectedWeightedConeSectionPoint F z φ) =
+      SSet.yonedaEquiv.symm (ULift.up (SSet.yonedaEquiv (weightedSectionsLift
+        (fst (bousfieldKanWeight (AsSmall.{u} SimplexCategory))
+          ((Functor.const (AsSmall.{u} SimplexCategory)).obj (Δ[0] : SSet.{u})) ≫ φ)))) ≫
+        reflectedHomHolimConeComparison F z
+
+theorem nativeTotCone_cosliceSection_weighted (X : CosimplicialObject (Complex A)) :
+    let I := AsSmall.{u} SimplexCategory
+    let F := liftedClosedDiagram X
+    let z := ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)
+    let H := simplicialHomDiagram F z ⋙ SSet.opFunctor
+    let φ := liftedEnrichedBousfieldKanCone X
+    let e : (Δ[0] : SSet.{u+1}) ⟶
+        (SSet.uliftFunctor.{u+1,u}).obj (bousfieldKanHolim H) :=
+      SSet.yonedaEquiv.symm (ULift.up (SSet.yonedaEquiv (weightedSectionsLift
+      (fst (bousfieldKanWeight I) ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ φ))))
+    let s := inv (fst ((SSet.uliftFunctor.{u+1,u}).obj (nerve I)) (Δ[0] : SSet.{u+1})) ≫
+      (((SSet.uliftFunctor.{u+1,u}).obj (nerve I)) ◁ e) ≫
+        (uliftTensorIso (nerve I) (bousfieldKanHolim H)).inv ≫
+          (SSet.uliftFunctor.{u+1,u}).map (bousfieldKanWeightedNerveEvaluation H)
+    coherentConeCosliceSection (nativeCoherentCone X) ≫
+      eqToHom (congrArg (fun w : (SimplicialNerve (ClosedCategory A (Complex A))) _⦋0⦌ =>
+        sliceUnder (SSet.yonedaEquiv.symm w)) (nativeCoherentCone_vertex X)) =
+    s ≫ weightedCosliceComparison F z
+
+theorem nativeTotConeFamilyLift_restriction_uncurry
+    (X : CosimplicialObject (Complex A)) (x : ClosedCategory A (Complex A)) :
+    let I := AsSmall.{u} SimplexCategory
+    let F := liftedClosedDiagram X
+    let z := ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)
+    let H := simplicialHomDiagram F z ⋙ SSet.opFunctor
+    let φ := liftedEnrichedBousfieldKanCone X
+    let e : (Δ[0] : SSet.{u+1}) ⟶
+        (SSet.uliftFunctor.{u+1,u}).obj (bousfieldKanHolim H) :=
+      SSet.yonedaEquiv.symm (ULift.up (SSet.yonedaEquiv (weightedSectionsLift
+      (fst (bousfieldKanWeight I) ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ φ))))
+    let s := inv (fst ((SSet.uliftFunctor.{u+1,u}).obj (nerve I)) (Δ[0] : SSet.{u+1})) ≫
+      (((SSet.uliftFunctor.{u+1,u}).obj (nerve I)) ◁ e) ≫
+        (uliftTensorIso (nerve I) (bousfieldKanHolim H)).inv ≫
+          (SSet.uliftFunctor.{u+1,u}).map (bousfieldKanWeightedNerveEvaluation H)
+    relativeFunctorUncurry (nativeTotConeFamilyLift X x ≫
+      coneSectionRestriction (nativeCoherentCone X) (coherentNerveVertex x)) =
+    (s ▷ (SSet.uliftFunctor.{u+1,u}).obj (SimplicialCategory.sHom x z).op) ≫
+      weightedCoslicePrecompositionFamily F x z
+
+```
+
+### 142.2 `WeightedSectionParameterNaturality`（75行）
+
+```lean
+theorem weightedSectionsParameterMap_precomp (W H H' : I ⥤ SSet.{u})
+    {K B : SSet.{u}} (η : H ⋙ tensorRight B ⟶ H')
+    (p : K ⟶ weightedSections W H) :
+    (p ⊗ₘ 𝟙 B) ≫ weightedSectionsParameterMap W η =
+      weightedSectionsLift (weightedSectionParameterTransform (weightedSectionsUncurry p) η)
+
+theorem reflectedWeightedHomComparison_point_precomposition
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F : I ⥤ C) (z : C)
+    (φ : bousfieldKanWeight I ⟶ simplicialHomDiagram F z ⋙ SSet.opFunctor) (x : C) :
+    let p := weightedSectionsLift
+      (fst (bousfieldKanWeight I) ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ φ)
+    (p ⊗ₘ 𝟙 (SimplicialCategory.sHom x z).op) ≫ weightedConeEndPrecomposition F x z =
+      snd (Δ[0] : SSet.{u}) (SimplicialCategory.sHom x z).op ≫
+        reflectedWeightedHomComparison F z φ x
+
+```
+
+### 142.3 検収と残り
+
+コード **`7d5fde8b1`**。今回初めて読む既存依存を対象ビルド155・156で作成し、残ったelaborationを個別検査で修正した。最終版の鍵付き対象ビルド `/private/tmp/isw2-build157.log` は **6,107 jobs・終了コード0**、新規分だけの監査は **6宣言（4・2）、標準三公理のみ**。鍵は `--class impl --wait 3600`、ビルドと監査の間だけ使用し返却済み。
+
+累計 **291モジュール・18,029行**、外枠まで1,971行。一覧 `/private/tmp/isw2-g10-twohundredninetyone-modules.txt`。sorry・新公理0。計算上限・再帰上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
+
+B06の元の制限の等式は未完。点のYoneda表示には既存 `uliftYonedaMap` がそのまま使えることを確認した。残りは、点を固定したend作用と指定weighted評価をULift直積同型で照合し、同じ相対uncurryの式を戻す接続。B07・B08、C・D、停止点2a・2b、3b-4段0も未完。
