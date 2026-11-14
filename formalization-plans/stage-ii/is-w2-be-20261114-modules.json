@@ -52,5 +52,9 @@
   "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveBoundaryContraction",
   "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightComparison",
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanComparisonValues",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotWeightComparison"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotWeightComparison",
+  "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSectionPoints",
+  "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointRestriction",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalBKProbeCone",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKSections"
 ]

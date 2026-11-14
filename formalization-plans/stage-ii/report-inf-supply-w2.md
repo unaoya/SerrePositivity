@@ -10662,3 +10662,145 @@ theorem exists_strictBETotWeightComparison :
           IsSimplicialHomotopyEquivalence (weightedSectionsPre j H)
 
 ```
+
+## 172. 元のprobe錐から同じBK切断への実写像・指定点の接続（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。R02・R03は未完了。
+
+### 172.1 今回の到達点
+
+§171までの重み比較を、元の普遍probe錐の**同じ零単体**へ適用した。先に既存のconeSpaceとnativeなweightedSectionsの右随伴同型が同じHom転置を運ぶ式を示し、標準零単体のテンソル同型がnativeな第一射影へ移ることを照合した。その結果、元の `conePoint s` が同じ自然変換sのnative切断の零単体へ移ることを、π₀でなく実際の零単体の等式として証明した。
+
+次に指定した一つの `bkFramedWeightComparison K` の前合成で、同じ普遍probe錐を `BK(Kᵒᵖᵒᵖ) →` 元の右frame Hom係数図式へ送った。元のprobe錐空間から同じBK切断空間への実写像 `strictBETotProbeConeBKMap` を定義し、そのホモトピー同値性を各右frameのKan性とR03a.1から証明した。この同じ写像が元の `strictBETotUniversalProbeConePoint` を指定された `strictBETotUniversalBKProbeConePoint` へ送る等式も閉じた。
+
+元のTot頂点・probe・右frame・一点重み・同じ比較jを保っている。まだBK切断の点から**全図式射を含むnative join錐の族**への接続はしていないため、R02・R03・停止点3b-4aの完成とは数えない。Uの極限保存から元のBE錐の極限性を逆算していない。
+
+### 172.2 検証
+
+230は右随伴の点・重み制限の点・元のBK普遍点の3本で **5,055 jobs・終了0、57モジュール380宣言**。231は同じ実写像のホモトピー同値の1本で **5,105 jobs・終了0、新規全58モジュール387宣言・標準三公理のみ**。実ハンドル31290・34664の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build230.log`・`231.log`、最終小監査 `/private/tmp/AuditISW2BKCells231.lean`。対象ビルドのみで、root・公式監査は流していない。
+
+個別検査では、opaqueなendを展開して転置を同一視する代わりに、元のHom同値の両側の逆性を明示した。またKan性を同じ右随伴の全関手評価の型で明示して型クラス探索に渡した。計算上限の変更・sorry・独自公理0。SSetモデル構造の仮定なし。`--class impl --wait 3600`、同時整理券一枚、ビルドと小監査の間だけ鍵を保持した。
+
+今回4本256行、各200行以下。3b-4の検証済み **58本・3,792行**。登録候補は同じBE用JSONへ追記。全体見込み・外枠15,000行は§170〜171のまま。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。
+
+### 172.3 型と残り
+
+今回全て既存の右随伴・前合成・元の右frameの法則の照合。独立の新しい数学の一覧への追加0。次は同じ係数図式を既存の全Hom∞比較の入口へ合わせ、分類された切断から同じnative join錐へ進む。SimplicialHomとそのopを定義的に同一視せず、元の全自然同型・同じ頂点・両境界を保持する。/goalはactiveのまま続ける。
+
+#### NativeWeightedSectionPoints（67行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I] (W : I ⥤ SSet.{u})
+
+theorem coneSpaceNativeSectionsIso_homEquiv (X : SSet.{u}) (H : I ⥤ SSet.{u})
+    (f : (WeightedCones.tensorDiagram I W).obj X ⟶ H) :
+    (WeightedCones.adjunction I W).homEquiv X H f ≫ (coneSpaceNativeSectionsIso I W).hom.app H =
+      weightedSectionsLift ((coneSpaceParameterIso I W).inv.app X ≫ f)
+
+theorem coneSpaceParameterIso_zero :
+    (coneSpaceParameterIso I W).inv.app (Δ[0] : SSet.{u}) ≫ (zeroTensorWeightIso I W).hom =
+      fst W ((Functor.const I).obj (Δ[0] : SSet.{u}))
+
+theorem coneSpaceNativeSectionsIso_point {H : I ⥤ SSet.{u}} (s : W ⟶ H) :
+    (((coneSpaceNativeSectionsIso I W).hom.app H).app (Opposite.op ⦋0⦌)) (conePoint I W s) =
+      SSet.yonedaEquiv (weightedSectionsLift
+        (fst W ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ s))
+
+```
+
+#### NativeWeightedPointRestriction（46行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def nativeWeightedPoint {W H : I ⥤ SSet.{u}} (s : W ⟶ H) :
+    (weightedSections W H) _⦋0⦌
+
+theorem nativeWeightedPoint_pre {V W H : I ⥤ SSet.{u}} (j : V ⟶ W) (s : W ⟶ H) :
+    ((weightedSectionsPre j H).app (Opposite.op ⦋0⦌)) (nativeWeightedPoint I s) =
+      nativeWeightedPoint I (j ≫ s)
+
+```
+
+#### StrictDiagramTotUniversalBKProbeCone（58行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory Opposite
+open SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
+
+abbrev strictBETotProbeCoefficients (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def strictBETotUniversalBKProbeWeightedCone (F : K ⥤ (operad A).Algebra) :
+    bousfieldKanWeight Kᵒᵖᵒᵖ ⟶
+      strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F)
+
+def strictBETotUniversalBKProbeConePoint (F : K ⥤ (operad A).Algebra) :
+    (weightedSections (bousfieldKanWeight Kᵒᵖᵒᵖ)
+      (strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F))) _⦋0⦌
+
+theorem strictBETotUniversalBKProbeConePoint_comparison (F : K ⥤ (operad A).Algebra) :
+    ((weightedSectionsPre (HomotopyWeight.bkFramedWeightComparison K)
+      (strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F))).app (op ⦋0⦌))
+        ((((HomotopyWeight.coneSpaceNativeSectionsIso Kᵒᵖᵒᵖ
+          (HomotopyWeight.framedLimitWeight K)).hom.app
+            (strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F))).app (op ⦋0⦌))
+              (strictBETotUniversalProbeConePoint A K F)) =
+      strictBETotUniversalBKProbeConePoint A K F
+
+```
+
+#### StrictDiagramTotBKSections（85行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory HomotopicalAlgebra Opposite SSet
+open SerrePositivity.DiagramModel SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
+local instance strictBETotBKSectionsModelCategory : ModelCategory (operad A).Algebra := modelCategory A
+local instance strictBETotBKSectionsProbeCofibrant (Y : (operad A).Algebra) :
+    IsCofibrant (framedLimitProbe A Y) := framedLimitProbe_cofibrant A Y
+
+theorem strictBETotProbeCoefficients_kanComplex (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
+    SSet.KanComplex ((strictBETotProbeCoefficients A K F Y).obj i)
+
+theorem strictBETotProbeBKRestriction_homotopyEquivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre (HomotopyWeight.bkFramedWeightComparison K)
+      (strictBETotProbeCoefficients A K F Y))
+
+def strictBETotProbeConeBKMap (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    ((framedLimitConeSpace A K Y).obj F) ⟶
+      weightedSections (bousfieldKanWeight Kᵒᵖᵒᵖ) (strictBETotProbeCoefficients A K F Y)
+
+theorem strictBETotProbeConeBKMap_homotopyEquivalence
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (strictBETotProbeConeBKMap A K F Y)
+
+theorem strictBETotProbeConeBKMap_point (F : K ⥤ (operad A).Algebra) :
+    ((strictBETotProbeConeBKMap A K F ((framedLimitFunctor A K).obj F)).app (op ⦋0⦌))
+      (strictBETotUniversalProbeConePoint A K F) = strictBETotUniversalBKProbeConePoint A K F
+
+```
