@@ -319,3 +319,11 @@ B4 は e9ca4d5d4 で完了し、main ad523c511 を取り込んだ。続いて既
 この束までの G1 本体は **1,794 行**、入口込み **1,835 行**（G0 の入口込み 710 行は別計）。25,000 行の外枠と約 12,000 行での途中報告を保つ。残る主項目は A07 と B01〜B04 の五つで、次の作業は A07 内 I04。今回の 110 行は I03 の見込み 400〜1,000 行より小さく、Mathlib の colimit の反映を再利用した結果である。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+## I04：Spec の逆系（実装前の型）
+
+`integralModelSpecDiagram : (IntegralModelIndex R B)ᵒᵖ ⥤ Scheme` は環の図式の op と Spec の合成。`integralModelSpecCone : Cone (integralModelSpecDiagram R B)` は既存の cocone の op を Spec で写した実際の cone。`integralModelSpecConeIsLimit [Algebra.IsIntegral R B] : IsLimit (integralModelSpecCone R B)` は I03 と右随伴 Spec の極限保存を使う。射影は各模型の B への環準同型の Spec.map と一致する。
+
+各段から Spec R への実際の構造射 `integralModelSpecBaseMap i` について、有限性・局所有限表示性と、射影との合成が Spec(algebraMap R B) であるという式を示す。後者と元の射の全射性から各段の全射性を得る。これらは既報 I04 内の構成とその法則で、追加主項目ではない。見込み 150〜400 行を維持する。
+
+一覧：済み 7／全体 12（うち追加 3）。

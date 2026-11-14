@@ -41,3 +41,9 @@ Mathlib `GammaSpecAdjunction.lean` の `Spec.reflective : Reflective Scheme.Spec
 Spec B→Spec R の全射性を仮定した場合、各模型の射 C→ₐ[R]B とその R 線形性により、Spec B→Spec C→Spec R の合成が元の Spec B→Spec R である。合成の全射性から第二の射 Spec C→Spec R の全射性が従う。この段では R→B の忠実平坦性を仮定しない。
 
 この逆系は R 上の有限・有限表示の段の近似であり、R 自身を有限型 F_p や Noether 環へ移した模型ではない。G2 の一般の固有有限表示模型と、その固有性・全射性を同じ有限段へそろえる仕事を完了扱いにしない。`ProperSurjectivityApproximation.exists_surjective_pullback_snd_of_isLimit` も、既に与えられた Noether な固有模型への全射性の降下であり、模型そのものを作る宣言ではない。
+
+## I04 の待ち時間の原典再照合
+
+[Rydh, Proposition 3.7 と Theorem 3.10](https://davidrydh.se/papers/submersion20100305.pdf#page=13) を再確認した。3.7 は準コンパクトな平坦開 U を Noether 模型へ降ろしてから平坦化する。模型上の平坦射の全射性は仮定せず、元の基底への引き戻し後に U 上の部分の閉包を使って示す。3.10 の整射の有限・有限表示段による近似が I01〜I04 に対応する。
+
+実装の確認点：既存 A03 の「正則な一つの主開上で平坦」は、この一般の U の模型を供給する API ではない。I04 後は、U の降下と Noether 模型上の平坦化、および引き戻した閉包による全射性を接続する必要がある。非 Noether 基底上の有限型ブローアップを無条件に有限表示として扱わない。これは残りの接続の識別であり、A07 の完成や新たな境界の宣言ではない。
