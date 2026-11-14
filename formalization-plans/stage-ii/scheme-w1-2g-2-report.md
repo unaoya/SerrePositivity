@@ -106,3 +106,20 @@ Lemma 2.6 に必要な出口は `∃ n, ProperInductiveLevel n f`。原典の次
 ### Noether 基底上の存在の具体的な出口（着手前の型、G3 の内数）
 
 `exists_properInductiveLevel_noetherian`：任意の Noether スキーム Y、固有・全射・局所有限表示 f:X→Y に対し ∃n, ProperInductiveLevel n f（見込み120〜300行、必要なら比較を分割）。閉集合の整礎帰納の命題は「閉像が C である任意の閉部分スキーム Y→S と、その上の任意の固有全射のレベルの存在」。被約化は同じ閉像を保ち、2d が供給する中心の閉像は C の真部分集合。中心上の帰納仮定を正段の証人へ入れ、最後に nilimmersion の消去で戻す。空な基底はレベル0。これは前節の同じ存在の証明の具体化であり、有限 Krull 次元という仮定や新しい存在の公理を追加しない。G3 の射影表示と G4〜G5 は別途残る。
+
+
+## G3：Noether 基底上の有限の帰納的レベルの存在
+
+`NoetherianProperInductiveLevel`（103行）：`exists_properInductiveLevel_noetherian` は任意の Noether 基底上の固有・全射・局所有限表示射に有限の帰納的レベルを供給する。閉部分スキームの閉像に関する整礎帰納で、空な基底、nilradical による被約化、2d の実際のブローアップ・proper fppf 細分、真に小さい閉中心への帰納を組み合わせる。Noether 基底に有限 Krull 次元は仮定せず、原典の次元による精密な上界は主張しない。
+
+本体103行・入口1行。閉部分の準コンパクト性と支持を明示して単独検証、ソース完全一致、対象・直接 importer のビルド5,073ジョブ、小監査1宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-noetherian-proper-inductive-level-check-3.log`・`2g-noetherian-proper-inductive-level-native.log`・`2g-noetherian-proper-inductive-level-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体480行・入口込み487行、小監査27宣言・標準三公理のみ。G3 の模型への移送と射影表示、G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### 次の模型への移送（着手前の型、G3 の内数）
+
+`exists_properInductiveLevel_affineBase`：任意の環 R、固有・全射・局所有限表示 f:X→Spec R に対し ∃n, ProperInductiveLevel n f（見込み35〜80行）。G2 の `exists_proper_surjective_finitePresentation_coefficient_model` に係数環 ℤ を取り、実際の有限生成係数模型を供給する。有限型 ℤ の係数環の Noether 性から上の存在を適用し、元の対象との Cartesian 正方形と `of_isPullback` で移す。元の R の Noether 性、模型の存在を追加仮定にしない。非アフィンな任意の qcqs 基底まで完成と呼ばない。
+
+G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 と同じ一般の固有な modification を許すため、この命題だけから全ての一般の固有射の四角形の完全性を引き出してはならない。射影版だけを使う G4 は、上の整礎帰納と同じ各段で 2d が実際に供給するブローアップを保持して使う。G3 の残りの射影表示はその実際のブローアップと有限ファイバー冪を 2f の入力へ渡す部分。既存の帰納的レベルの定義を射影的な射に狭めない。

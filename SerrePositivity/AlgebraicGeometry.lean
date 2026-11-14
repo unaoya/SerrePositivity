@@ -1639,3 +1639,5 @@ public import SerrePositivity.AlgebraicGeometry.ProperInductiveLevelBaseChange
 public import SerrePositivity.AlgebraicGeometry.ProperInductiveLevelTransport
 
 public import SerrePositivity.AlgebraicGeometry.SchemeNilradicalReduction
+
+public import SerrePositivity.AlgebraicGeometry.NoetherianProperInductiveLevel
