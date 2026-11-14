@@ -1,12 +1,12 @@
 {
   "all_passed": false,
-  "passed": 12,
-  "total_checks": 14,
+  "passed": 16,
+  "total_checks": 17,
   "scope_complete": 2,
   "scope_total": 22,
   "additional": 0,
-  "head": "033e1c72e42fee741d4f65127faf39785928260d",
-  "time": 1794677173.3286579,
+  "head": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6",
+  "time": 1794686449.2296472,
   "checks": [
     {
       "check": "Independent preparation complete",
@@ -22,6 +22,11 @@
       "check": "Actual native citation/tag metadata exact",
       "pass": true,
       "evidence": "actual-citation-comparison.json"
+    },
+    {
+      "check": "All actual citation paths and lines valid within source tree",
+      "pass": true,
+      "evidence": "actual-citation-location-check.json"
     },
     {
       "check": "Actual graph complete, acyclic, no EInfinity to BS, endpoints published",
@@ -52,7 +57,7 @@
     },
     {
       "check": "All106 formal audits exact inventory, serial, passed",
-      "pass": false,
+      "pass": true,
       "evidence": "all-audits-complete.json"
     },
     {
@@ -71,9 +76,19 @@
       "evidence": "actual-bs-reverse-edge-ledger.json"
     },
     {
+      "check": "All original module-literal audit scopes transported without loss",
+      "pass": true,
+      "evidence": "audit-module-scope-coverage.json"
+    },
+    {
       "check": "All22 scope rows have implementation and evidence",
       "pass": true,
       "evidence": "scope-items-applied.json"
+    },
+    {
+      "check": "B4 import supplement regression with actual after Lean environment",
+      "pass": true,
+      "evidence": "B4-regression-complete.json"
     },
     {
       "check": "B4 six live branches with no drafts in native collect",

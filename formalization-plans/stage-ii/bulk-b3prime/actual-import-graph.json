@@ -1,6 +1,6 @@
 {
   "baseline": "32d364b53",
-  "head": "c42e8b477aaed66497ea277af5953e38f3507a7d",
+  "head": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6",
   "scope": "Original complete active import graph plus every git source delta through current HEAD, including incoming main; Archive exclusions unchanged.",
   "modules": 32043,
   "source_delta_paths": 548,

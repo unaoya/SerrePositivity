@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "without_owner_import",
+      "rc": 1,
+      "seconds": 30.054993206635118,
+      "source_sha256": "04a60fe053116aad76f98f9cfaeed59da4f8d85edd60062ba49e495c8a48816b",
+      "log": "/tmp/bulk-b3prime/B4-tests-v4/without_owner_import.log"
+    },
+    {
+      "case": "with_actual_owner_import",
+      "rc": 0,
+      "seconds": 28.025920122861862,
+      "source_sha256": "fae014f0ffbf87c589166a97444d638b542d85de01342c33467c030ac65ad980",
+      "log": "/tmp/bulk-b3prime/B4-tests-v4/with_actual_owner_import.log"
+    }
+  ],
+  "static_cases": 4,
+  "header_cases": 3,
+  "script_sha256": "6399aab5758120aa4cfdfdf8624b4b2393cf65d6437085a007d5834213cfe01d",
+  "ownership_sha256": "907d6068e8bd6146488c62bea1a5e17cf681adbdd4e924967a2a7c1acd874184",
+  "fixture_provenance": "Synthetic source position fixture uses an actual native-validated unchanged public name whose old module moved. Original-source split/wrapper guards also tested against real earlier native captures. This is a tooling regression, not a native before/after preservation claim."
+}

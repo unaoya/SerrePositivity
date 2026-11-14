@@ -1454,3 +1454,16 @@ B4の採取候補を枝の最新HEADと未コミットの本体を読むだけ�
 [先行46本の入力一致の証跡](bulk-b3prime/audit-input-equivalence.json)を作った。各監査のソースSHA、本体全体・Root・Lake/toolchain・refactor道具・bibliographyのgit tree/blob、適用した非監査ソースはc2bf2a4fbと同一。原receiptは書き換えず、46本の原SHAも保存。FSを読む先行五つのarea監査は、いずれもモジュール名から導くSerrePositivityのソースだけを読み、他の監査スクリプトを入力にしていない。残り41本にも他の監査への依存はない。専用orchestratorの再開条件を本体/設定の指紋と各監査の個別SHAに分け、同一入力の既済46本を保持して47本目から再開した。比較器・publicなverify・採取器は変更0。最後のfull verifyではキャッシュ結果を使わず106本すべてを新規実行する。
 
 [監査のモジュール集合の照合](bulk-b3prime/audit-module-scope-coverage.json)は69本・欠落0。[属性の保存場所](bulk-b3prime/actual-citation-location-check.json)も2,564件・1,099ファイルで有効、すべて作業枝内の相対パス。R7-3(b)の[実際の八辺](bulk-b3prime/r7-3b-actual-edge-ledger.json)は基準解消2・今回解消5・維持1で、予定だけでなく実importと所有元を確認した。
+
+
+## B3′ 正式監査通過・full verify中断（11-15 05時）
+
+一覧：済み 2／全体 22（うち追加 0）。全22項目の適用は済んでいるが、最終ゲートが残るため完了とはしない。
+
+正式監査106本は全件成功（一本ずつ、通常のbulk鍵を監査ごとに返却）。[結果](bulk-b3prime/all-audits-complete.json)と[原記録](bulk-b3prime/formal-audits-checkpoint.tar.gz)を保存した。先行46本は既述の入力同一性の証跡により保持し、その元receiptを編集していない。保存比較29束・214本の未説明0、引用/タグ2,564組の欠落・余分0、root成功も維持している。
+
+B4の補助手順は、共有の書換器を変更せず、宣言の実際の移動先のimportを資料側で補う。[README](bulk-b3prime/B4/README.md)とrewrite.py、移動した公開宣言の所有元1,606行（同名721行）を保存した。静的4ケース・header3ケースと、実Leanの失敗再現/補完後成功の2ケースが通った（[結果](bulk-b3prime/B4-regression-complete.json)、[原記録](bulk-b3prime/B4-tool-regression.tar.gz)）。分割された定義・削除wrapper・EInfinityにBS依存を戻すものは保留にする。他のレーンの作業木の変更0。
+
+full verifyは`871516d78`でキャッシュを使わず4ジョブ・32GBで実行。rootと監査前提のbuildは成功したが、監査104／106の時点でプロセス合計RSSが32,190,054,400 bytesとなり、32GBの監視上限で中断した。04:29:26〜04:57:37、1,691秒。30分の上限の前に鍵を返している。[中断の全記録](bulk-b3prime/full-verify-attempt-001.tar.gz)を保存し、成功のsummaryを作っていない。古いverifyのsummaryを今回の成功として再利用していない。
+
+[チェック表](bulk-b3prime/completion-audit.json)は16／17成功、残りはfull verifyだけ。直列のaxiom監査とsorry検査も含むため、完全実行は30分を超える見込みである。指示書§2の通常の30分上限を維持し、full verifyの再実行一回だけ夜の鍵を最長60分使う承認を依頼した。メモリ上限は増やさず、次回はスケジューラに余裕を持たせる。現在は鍵を持たず、次のverifyも要求していない。5∞-3a段0の紙の案は準備しているが、B3′完了報告ではない。

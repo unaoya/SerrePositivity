@@ -1,8 +1,8 @@
 {
   "main": "391b2a0d2",
-  "own_head": "033e1c72e42fee741d4f65127faf39785928260d",
-  "changed_core_script_draft_paths": 309,
-  "authorized_writes": 255,
+  "own_head": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6",
+  "changed_core_script_draft_paths": 312,
+  "authorized_writes": 258,
   "authorized_deletions": 71,
   "prepared_identical_to_main": [
     "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PrincipalPair.lean",

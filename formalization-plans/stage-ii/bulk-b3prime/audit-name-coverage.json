@@ -48,7 +48,7 @@
     "scripts/audit_dg_projective_contraction.lean": "53be4e252a6763cc934029ce75d83346ba88ea4086c221cf6fdc84caf581b59e",
     "scripts/audit_dg_quotient_parameter.lean": "a883638a5cc7e3d390059bcac28a6602242b9449c491e00288d000fd3a370844",
     "scripts/audit_dold_kan_comparison.lean": "1bc4e72b09c59f1b1ea5efee0218d7e915f821628d9e12caaf87611f07543082",
-    "scripts/audit_einfinity.lean": "6fce44c2f2771091c47ee0ff63629dd943fda73c2620e5856ec8bad652a6d2da",
+    "scripts/audit_einfinity.lean": "abb5ddc488eabbca1d53ecfcf11922a38f775378b6dd5f8d4acb580a99029225",
     "scripts/audit_euler_betti_finite_support.lean": "3bc9d29a775b9454a1c03936888e64d24749979f57419261e16b0d5dc018a474",
     "scripts/audit_euler_group_shared.lean": "773b8e600037966d6b687bbd8ad308b1fd44ad8cd60ee235d7f20affef6b3c76",
     "scripts/audit_exact_euler_finite_support.lean": "039ceef05a125c81ad0069c47254d1e12d92f08fc5a510b702d06bf42b8e8b42",
