@@ -7346,3 +7346,41 @@ theorem nativeDerivedCone_vertex (X : CosimplicialObject (Complex A)) :
 C05の宇宙表記は§73.3の許可どおり、複体の対象宇宙u+1とHom宇宙uを分けた。`nerveMap X` は通常のMathlib版だと二つの圏の宇宙を同じに要求するため、そのままの表記を使わず、既存 `nerveAsSmallIso` と `resizedNerveMap (AsSmall.down ⋙ X)` で元のXの全単体を写す `strictCosimplicialComplexNerve` を明示した。元のXを別の図式へ置き換えるものではない。`nativeTotIndexIso` は同じAsSmallの逆と既存 `smallDiagramShapeIso` の合成で、指定次数の頂点の等式も厳密に保つ。C05の最終図式等式自体はまだ未完。
 
 未コミットの作業はC04の一般後合成則 `ConeLegPostcomposition`（個別検査済み）と `NativeDerivedTotLeg`（そのモジュールのビルド待ち）、C05の `ComplexStrictNerveComparison`（証明中）。C04〜C07が済んだ後に停止点2aをまとめ、同じ外枠の中でDへ進む。Dの型・範囲を弱めない。
+
+
+## 148. C04完了：同じ標準脚のD(A)への実一次単体の像（2026-11-14）
+
+一覧：済み 25／全体 36（うち追加 1）。C01〜C04完了。C05〜C07とDは未完。
+
+### 148.1 型
+
+一般の後合成の評価則はKerodonのLimitsAndColimitsに新規ファイルとして置いた。C04はその法則とC01を同じ元の錐に適用するだけで、錐・頂点・脚を取り換えない。
+
+登録対象：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeLegPostcomposition`（29行）。
+
+```lean
+theorem derivedConeLeg_mapJoinCone {K X Y : SSet.{u}} {p : K ⟶ X}
+    (f : X ⟶ Y) (c : JoinCone p) (v : K _⦋0⦌) :
+    (derivedConeLeg (mapJoinCone f c) v).edge =
+      f.app (Opposite.op ⦋1⦌) (derivedConeLeg c v).edge
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotLeg`（34行）。
+
+```lean
+theorem nativeDerivedCone_standardLeg (X : CosimplicialObject (Complex A)) (n : SimplexCategory) :
+    (derivedConeLeg (nativeDerivedCone X) (ULift.up (nerveVertex (AsSmall.up.obj n)))).edge =
+      (SerrePositivity.EInfinity.ComplexLimits.complexSemifreeResolutionInfinity A).app
+        (Opposite.op ⦋1⦌)
+        (dgClosedEdge A (Complex A)
+          ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map
+            (standardLeg A X n))).edge
+```
+
+### 148.2 検収と残り
+
+鍵付き対象ビルド167は **7,849 jobs・終了コード0**（`/private/tmp/isw2-build167.log`）。新規二本だけの監査は **2宣言（1・1）、標準三公理のみ**。鍵は `--class impl --wait 3600`、一つの整理券で待ち、対象ビルド・小監査の間だけ保持し返却済み。sorry・新公理0、計算上限・再帰上限、既存宣言、⑤a、入口・公式監査・mainの変更なし。rootビルド・大きな監査なし。
+
+累計 **315モジュール・19,247行**、外枠まで753行。一覧 `/private/tmp/isw2-g10-threehundredfifteen-modules.txt`。
+
+C05は、同じ閉零圏のstrict nerveからcoherent比較を通した射と、既存 `closedNerveInclusion` との全単体の等式を `ComplexStrictNerveComparison` に分割して証明中。対象の一致は確認できており、閉零射と高次零成分の照合が残る。新しい図式や比較を選ぶものではない。未コミットの下書きはこの一本だけ。停止点2a・2bと3b-4段0は未完。
