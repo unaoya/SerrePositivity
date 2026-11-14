@@ -1505,3 +1505,5 @@ public import SerrePositivity.AlgebraicGeometry.AffineCoverProperGraphClosure
 public import SerrePositivity.AlgebraicGeometry.DenseClosedFactor
 
 public import SerrePositivity.AlgebraicGeometry.ProperChartOpen
+
+public import SerrePositivity.AlgebraicGeometry.CommonDenseOpenGluing
