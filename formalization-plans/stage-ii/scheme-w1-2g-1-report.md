@@ -642,3 +642,15 @@ CompactOpenSpecialization（58 行）、VCoverClosedRestrictionSpecializations�
 この閉包の特殊化の補題は Noether 性を要求せず、U が基底全体で稠密であるとも仮定しない。生のブローアップの底変換上で U が稠密だという誤った主張を使わない。G1 累計は本体 **3,762 行**、入口込み **3,837 行**。C02 と合わせる図式の接続は引き続き下書き検証中で、A07 自体は未完。
 
 一覧：済み 8／全体 13（うち追加 4）。
+
+### C02 と平坦な閉部分の fppf 細分の接続：検証結果
+
+ClosedEnvelopeFlatRefinement **76 行**、入口 1 行を追加。`exists_fppf_closedEnvelope_refinement_of_flat_closedRestriction` は上に記した入力の図式から、実際の閉包絡の T=J.subscheme と W の pullback、固有・局所有限表示・全射 r、平坦・局所有限表示・準コンパクト・全射 q、および元の射との可換式を同時に供給する。r は固有なので準コンパクト・準分離でもあり、有限表示の固有全射である。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,862 ジョブ成功**、新モジュールの小監査 **1 宣言・標準三公理のみ**。ログ：`2g-closed-envelope-flat-refinement-check-3.log`、`2g-closed-envelope-flat-refinement-native.log`、`2g-closed-envelope-flat-refinement-audit.log`。共有鍵 `--class impl --wait 3600`、一つの待ち、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。
+
+これで C02 後の閉包・特殊化・全射性・平坦な閉部分との接続は四モジュール **216 行**、入口 4 行、小監査 **7 宣言・標準三公理のみ**。G1 累計は本体 **3,838 行**、入口込み **3,914 行**。
+
+A07 自体は未完。次は GenericFlatNoetherianModel の実際の模型、FiniteTypeFlatteningNoetherian の中心、strictTransformι・strictTransformπ、AffineTensorModelPullback の pullback 比較を、この図式の入力へ渡す。用いる平坦な閉部分は Noether 模型上の狭義変換の底変換であり、非 Noether 基底上の生の狭義変換を平坦と仮定しない。その後、整全射の有限・有限表示段への模型の移送と、G2 の一般の固有有限表示模型を接続する。条件付きの図式の接続を一般の Rydh 3.10 の完成とは数えない。
+
+一覧：済み 8／全体 13（うち追加 4）。
