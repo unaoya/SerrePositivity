@@ -6791,3 +6791,52 @@ theorem gammaReflectedBKComparison_factor (P : Complex A)
 累計 **286モジュール・17,668行**、外枠まで2,332行。一覧 `/private/tmp/isw2-g10-twohundredeightysix-modules.txt`。sorry・新公理0。計算上限、既存宣言、⑤a、入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
 
 B02の全体等式はまだ未完。今回の評価則と因数分解を通して、元の `reflectedWeightedHomFamily` の同じ成分へ照合する最後の接続を進める。B03〜B08・C・D、停止点2a・2b、3b-4段0は未完。
+
+
+## 140. B02・B03完了：元の全比較射の等式と同じ射の同値性（2026-11-14 午後）
+
+一覧：済み 16／全体 36（うち追加 1）
+
+型つき一覧B02 `gammaReflectedBKComparison_eq` とB03 `reflectedBKComparison_equivalence` を、§73.2の元の型のまま証明した。全試験対象・全単体・元のTot頂点・同じnative錐入力を保つ。B02では指定反転endとsmall添字の評価を通して実際の `reflectedWeightedHomFamily` そのものに一致させ、切断の普遍性で全射の等式へ戻した。B03はその等式へ既存のΓ比較の同値性を代入した。別の同値な空間／別の射への置換はしていない。
+
+native成分の最後の照合は、実Hom同型の両逆則を先に射の段階で消去し、残った元の錐入力の成分を定義で照合する形に分割した。計算上限・再帰上限は変更していない。前提の追加、ModelCategory SSetの追加、新しい構成／数学の追加なし。
+
+### 140.1 `GammaReflectedBKComparisonUncurry`（70行）
+
+```lean
+theorem gammaReflectedBKComparison_uncurry (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (j : AsSmall.{u} SimplexCategory) :
+    (weightedSectionsUncurry
+      (gammaReflectedBKComparison X (ForgetEnrichment.of (Complex A) P))).app j =
+    (reflectedWeightedHomFamily (liftedClosedDiagram X)
+      (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+      (liftedEnrichedBousfieldKanCone X) (ForgetEnrichment.of (Complex A) P)).app j
+
+```
+
+### 140.2 `GammaReflectedBKComparisonEquality`（52行）
+
+```lean
+theorem gammaReflectedBKComparison_eq (X : CosimplicialObject (Complex A))
+    (x : ClosedCategory A (Complex A)) :
+    gammaReflectedBKComparison X x =
+      reflectedWeightedHomComparison (liftedClosedDiagram X)
+        (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+        (liftedEnrichedBousfieldKanCone X) x
+
+theorem reflectedBKComparison_equivalence (X : CosimplicialObject (Complex A))
+    (x : ClosedCategory A (Complex A)) :
+    IsSimplicialHomotopyEquivalence
+      (reflectedWeightedHomComparison (liftedClosedDiagram X)
+        (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))
+        (liftedEnrichedBousfieldKanCone X) x)
+
+```
+
+### 140.3 検収と残り
+
+コード **`b74819308`**。結合個別検査 `/private/tmp/isw2-gamma-equality-combined.log` は終了コード0。最終2本の鍵付き対象ビルド `/private/tmp/isw2-build153.log` は **6,551 jobs・終了コード0**。新規分のみの監査は **3宣言（1・2）、標準三公理のみ**。鍵は `--class impl --wait 3600`、検証中のみ使用し返却済み。
+
+累計 **288モジュール・17,790行**、外枠まで2,210行。一覧 `/private/tmp/isw2-g10-twohundredeightyeight-modules.txt`。sorry・新公理0。既存宣言・⑤a・入口・公式監査の変更なし。rootビルド・大きな監査なし。未検証下書きなし。
+
+A01〜A12・A05a・B01〜B03が完了。B04〜B08（指定native切断の族、同じ頂点／制限の照合、極限性）へ進む。Bの残りが済んだ時点で指示どおりC・Dを再見積もりする。C01〜C07・D01〜D08、停止点2a・2b、3b-4段0は未完。これはG10全体の完成報告ではない。
