@@ -485,3 +485,19 @@ main の scheme-w1.md の追記とユーザーの指示を確認し、main を m
 Z⊆V と Z の全射性の接続は、準コンパクト開の閉包での特殊化・v 判定による特殊化の持ち上げ・固有射の閉像による法則として進める（見込み 200〜600 行、C02 の存在構成の子項目と混同しない）。
 
 一覧：済み 7／全体 13（うち追加 4）。
+
+C02.(i) のアフィン局所の有限選択の法則：`exists_fg_subideal_localization_contains` は、任意の環 A のイデアル I と局所化 A→B、有限集合 s⊆I B に対し、有限生成 J≤I で s⊆JB となる J を選ぶ。Stacks 01PF (28.23.2) のアフィンでの分母と分子の有限選択に対応する。既存の IsLocalization.mem_map_algebraMap_iff で各切断の分子を選び、その有限個の分子の span を使う。見込み 40〜100 行。大域の延長 C02.(i) の完成とは区別する。
+
+### C02 の有限型閉包含とアフィンでの有限選択：検証結果
+
+FiniteTypeIdealSheaf と FiniteIdealLocalizationApproximation の二モジュールは各 43 行、計 **86 行**、入口 2 行。下書き検証後、本体と直接の importer の入口の対象ビルド **4,839 ジョブ成功**。小監査は **3 宣言・標準三公理のみ**、終了コード 0。ログは `scheme-drafts/2g-c02-finite-type-ideal-check-3.log`、`2g-c02-localization-approximation-check.log`、`2g-c02-foundation-native.log`、`2g-c02-foundation-audit.log`。共有鍵 `--class impl --wait 3600`、待ちは一つ。新しい resource limit・sorry・追加公理はない。
+
+- `IsFiniteTypeIdealSheaf`：全アフィン開上の切断イデアルの有限生成性。
+- `locallyOfFinitePresentation_subschemeι_of_finiteType`：同じイデアル層の実際の閉包含は局所有限表示（C02.(ii)）。
+- `exists_fg_subideal_localization_contains`：局所化先の有限個のイデアル切断を、元の有限生成部分イデアルの像に同時に含める。
+
+C02 内の主三項目は済み **1／全体 3**（(ii) のみ）。(i) の大域の有限型部分イデアルと (iii) の閉包絡は未完で、局所化の有限選択だけで (i) の完成とはしない。G1 累計は本体 **2,681 行**、入口込み **2,735 行**。
+
+一覧：済み 7／全体 13（うち追加 4）。
+
+次の C02.(i) のアフィン比較の法則：`exists_fg_subideal_map_contains_finset f I s hs` は任意の環準同型 f:A→B と有限集合 s⊆Ideal.map f I に対し、有限生成 J≤I で s⊆Ideal.map f J を得る。これは Stacks 01PF のアフィンでの有限選択を、生成イデアルへの所属の有限性で扱う分割で、局所化の仮定を要しない。見込み 60〜140 行。この法則を K.map_ideal と組み、アフィン基底上の有限個のアフィン開の切断を同じ有限生成イデアルへ含める。
