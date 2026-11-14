@@ -5573,3 +5573,28 @@ lemma presheafEvaluation_isColimit_of_shapeIso {B A : SSet.{u}} {J : SSet.{u + 1
 今回45行、検証済み累計132本・10,729行。ログは `/tmp/is-w1/reindexed-colimit/`。
 この補題を用いる `HomWeightLeftKanEvaluation` の検証を、前の鍵の解放後に開始した。
 E01本体の指定比較射の可逆性は未了で、済み数には含めない。
+
+### 55.4 指定単位の元の局所インスタンスの再利用（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+指定単位の比較で、積の準圏性の同じ証明を別名のlocal instanceに包む代わりに、
+本体の `supplyHomWeightYonedaUnit_productQuasicategory` 自身をlocal instanceに登録する。
+元の構成と同じインスタンス定数を直接再利用し、重い定義的等式の照合を減らす試行。
+長時間になった `eq_def` の生成は除く。数学的な型は§55と同じ。
+現在の局所余錐の検証が終わってから、この変更を検証する。
+
+同じ方針で `ClassifiedSquareHomPasting` の引き戻しの左fibration性も、
+本体の `supplyClassifiedSquareHomNaturality_pullbackLeftFibration` 自身をlocal登録する。
+別名で同じ証明を包む補助instanceと、未検証の `eq_def` 書き換えは除いた。
+三つの法則を順に代入する証明分割と主張の型は維持する（未検証）。
+
+### 55.5 指定左 Kan 単位の点評価保存の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`HomWeightLeftKanEvaluation.lean` の対象ビルド成功（3,876 jobs）、
+依存する形状移送と合わせた2宣言の小監査成功、標準三公理のみ。
+ログ：`/tmp/is-w1/left-kan-evaluation/`。検証済み累計133本・10,781行。
+任意の候補Lと元のβを保ち、同じ評価後の単位の左Kan条件を結論する。
+E01本体は未了。次は§55.4の元の局所インスタンスを使う指定単位・正方形の比較を検証する。
