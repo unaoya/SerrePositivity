@@ -12543,3 +12543,56 @@ theorem grothWeightedNerveForward_projection :
     grothWeightedNerveForward F ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
       nerveMap (Grothendieck.forget F)
 ```
+
+## 195. R03eの逆向きの射列（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未完了。
+
+各weighted係数のYoneda表示を取り、prefixの最終対象を逆向きのGrothendieck対象とした。係数の自然性は、包含で制限した射列と基底の射に沿って送った射列の厳密な等式である。その最終対象への評価を型の移送に使い、同じ底を持つGrothendieck射を回収した。恒等射・合成則もこの自然性の射への評価と有限順序上の射の一意性から示し、逆向きの全射列に束ねた。
+
+264：新規二本の対象ビルド1,168 jobs・終了0、小監査115本866宣言・標準三公理のみ。実ハンドル19367の終了0を確認し、鍵返却済み。今回120行、累計115本・7,638行（外枠15,000）。R03eは349行／見込み500〜900行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りは、両往復と順向き写像の各次数での全単射性、そこからの同じ写像を前向きに持つ単体集合の同型、指定点の等式である。逆向き写像の面・退化との自然性を別に作り直さず、検証済みの順向き自然変換の各成分が可逆であることから全同型を得る。見込みの半分450行に達する前だが、現時点の残りは200〜450行と見積もる。R03d・R02・無条件のnative極限性はまだ閉じていない。
+
+### 195.1 型
+
+#### GrothendieckWeightedNerveInverseData（65行）
+
+```lean
+def grothWeightedNerveFiberChain (i : Fin (n+1)) : ComposableArrows (F.obj (s.1.obj i)) i.val
+
+theorem grothWeightedNerveFiberChain_naturality {i j : Fin (n+1)} (f : i ⟶ j) :
+    (simplexPrefixInclusion i.val j.val (leOfHom f)).toOrderHom.monotone.functor ⋙
+      grothWeightedNerveFiberChain F s j =
+        grothWeightedNerveFiberChain F s i ⋙ (F.map (s.1.map f)).toFunctor
+
+def grothWeightedNerveInverseObj (i : Fin (n+1)) : Grothendieck F
+
+def grothWeightedNerveInverseIndex {i j : Fin (n+1)} (f : i ⟶ j) : Fin (j.val+1)
+
+theorem grothWeightedNerveInverse_source {i j : Fin (n+1)} (f : i ⟶ j) :
+    (F.map (s.1.map f)).toFunctor.obj (grothWeightedNerveInverseObj F s i).fiber =
+      (grothWeightedNerveFiberChain F s j).obj (grothWeightedNerveInverseIndex f)
+
+def grothWeightedNerveInverseMap {i j : Fin (n+1)} (f : i ⟶ j) :
+    grothWeightedNerveInverseObj F s i ⟶ grothWeightedNerveInverseObj F s j
+
+theorem grothWeightedNerveInverseMap_base {i j : Fin (n+1)} (f : i ⟶ j) :
+    (grothWeightedNerveInverseMap F s f).base = s.1.map f
+```
+
+#### GrothendieckWeightedNerveInverseFunctor（53行）
+
+```lean
+theorem grothWeightedNerveInverseMap_id (i : Fin (n+1)) :
+    grothWeightedNerveInverseMap F s (𝟙 i) = 𝟙 (grothWeightedNerveInverseObj F s i)
+
+theorem grothWeightedNerveInverseMap_comp {i j k : Fin (n+1)} (f : i ⟶ j) (g : j ⟶ k) :
+    grothWeightedNerveInverseMap F s (f ≫ g) =
+      grothWeightedNerveInverseMap F s f ≫ grothWeightedNerveInverseMap F s g
+
+def grothWeightedNerveInverseSimplex : ComposableArrows (Grothendieck F) n
+
+theorem grothWeightedNerveInverseSimplex_base :
+    grothWeightedNerveInverseSimplex F s ⋙ Grothendieck.forget F = s.1
+```
