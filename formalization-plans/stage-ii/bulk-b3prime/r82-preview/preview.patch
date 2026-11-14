@@ -329,7 +329,7 @@
  public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
  public import Mathlib.Algebra.Category.Ring.FilteredColimits
  public import Mathlib.CategoryTheory.Functor.OfSequence
---- a/SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingCategories.lean
+--- /dev/null
 +++ b/SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingCategories.lean
 @@ -0,0 +1,174 @@
 +module
@@ -506,7 +506,7 @@
 +使われ方：Π2-5 以降で既存の二入力を界面依存の定理として導く。
 +-/
 +
---- a/SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingInterface.lean
+--- /dev/null
 +++ b/SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingInterface.lean
 @@ -0,0 +1,186 @@
 +module

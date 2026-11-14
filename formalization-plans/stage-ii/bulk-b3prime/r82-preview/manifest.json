@@ -1,6 +1,6 @@
 {
   "baseline": "32d364b53",
-  "status": "isolated R8-2 split build and v3b passed; consumer final post-import-repair recheck pending; not applied",
+  "status": "isolated R8-2 split and five consumer builds/v3b passed; not applied",
   "snapshot_binary_sha256": "044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9",
   "partition": {
     "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface": 32,
@@ -63,5 +63,7 @@
       "uncompressed_sha256": "621af88d924c0de6cd8e5df74ecdfeaf6aa01fa243dbd23ffd1a79d45a17d790",
       "bytes": 556
     }
-  ]
+  ],
+  "consumer_comparison": "r82-consumers-comparison.json",
+  "consumer_after_sha256": "e128b48e82843f38941828f4fe7988e5aaaad75524339f3c252089859be07656"
 }

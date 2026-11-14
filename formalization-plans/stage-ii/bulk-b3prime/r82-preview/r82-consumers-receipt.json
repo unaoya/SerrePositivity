@@ -1,0 +1,64 @@
+[
+  {
+    "side": "before",
+    "label": "build",
+    "command": [
+      "lake",
+      "build",
+      "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase"
+    ],
+    "rc": 0,
+    "seconds": 8.967364832758904
+  },
+  {
+    "side": "before",
+    "label": "snapshot",
+    "command": [
+      "lake",
+      "env",
+      "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+      "--stable-project",
+      "--modules",
+      "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction,SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion,SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation,SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit,SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase",
+      "--output",
+      "/tmp/bulk-b3prime/r82-consumers-before.json"
+    ],
+    "rc": 0,
+    "seconds": 29.616668418049812
+  },
+  {
+    "side": "after",
+    "label": "build",
+    "command": [
+      "lake",
+      "build",
+      "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit",
+      "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase"
+    ],
+    "rc": 0,
+    "seconds": 24.71736666560173
+  },
+  {
+    "side": "after",
+    "label": "snapshot",
+    "command": [
+      "lake",
+      "env",
+      "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+      "--stable-project",
+      "--modules",
+      "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction,SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion,SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation,SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit,SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase",
+      "--output",
+      "/tmp/bulk-b3prime/r82-consumers-after.json"
+    ],
+    "rc": 0,
+    "seconds": 16.45884400047362
+  }
+]

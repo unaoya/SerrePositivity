@@ -1299,3 +1299,14 @@ DivisionResidueの移動は暫定案。現在のファイルはNormalizedの有�
 全体の準備は187モジュールの元環境snapshot、162本の参照採取を再開可能な束で進めている。importだけの集約4本には所有宣言がないことを静的に確認し、importとroot検査で扱う。参照採取は既存bulk_collectを使い、Lakeの元のsetupを継承する。共有鍵は一回ずつ、昼270秒・夜1,650秒、--wait 3600。
 
 依存の閉包の調査で、DivisionResidue全体の移動は撤回し、独立な剰余・テンソル表示12宣言の切り出しへ変更した。[残す理由](bulk-b3prime/retentions.json)：平坦性・正則性がNormalizedとOrdinaryRoots/Adjoinの有限塔に依存し、全体移動はDelta→Andreを新設するため。残るLciEnvelopePresentationからその平坦性への辺を解消したとは扱わない。更新後の案は全体移動70本・切り出し先7本、公開ソース表1,848行（改名1,486）。またRootSourceの一般の反射比較は1460〜1591行の節だけを対象とし、その後の具体的δ根添加の完備性は一般のファイルへ混ぜない。
+
+
+### B3′ 準備・環側の再照合と静的な層の修正（11-14夜）
+
+一覧：済み 2／全体 22（うち追加 0）。R8-2の最後のimport修正後に環側5本を再ビルド・再採取し、[172親宣言の保存比較](bulk-b3prime/r82-preview/r82-consumers-comparison.json)は未説明0で通った。原環境とプレビューの生snapshot・各実行のreceiptを追加し、保留を解除した。本体への適用はまだ行っていない。
+
+InitialLimitの行き先をLimitsAndColimits/から**Cofinality/InitialValueCone**へ修正した。初期案の§7.1に置くと、実際に使うInitialCofinalityの§7.2への新しい逆辺になるため。同じ§7.2に置き、例外を追加せずに扱う。名前もCofinalityの名前空間に揃える。ネイティブの[切り出し前の依存の確認](bulk-b3prime/native-split-closure-preliminary.json)ではInitialLimitは一般のKerodonの部品だけ、RootSourceの反射比較も外部のBS依存なし。生成された式補題・局所notationの全所有元は既存の厳格なv3b処理で検査し、構文上の行数だけで検査済みにはしない。
+
+R8-4の互換wrapper一個は[削除・利用先変更の台帳](bulk-b3prime/redirects-and-deletions.json)へ独立に記録した。削除を改名と混ぜて比較の欠落を隠さない。Finiteとwrapper本体も参照採取に追加し、対象は187 snapshotモジュール・164意味上の参照ファイルとなった。
+
+改名のプレビューではnamespaceとopenを元のままに保ち、実際の使用を完全名へ書き換える。元環境の採取が済んだ19本はプレビューの保留0まで確認したが、改名後のビルドは未実行。宣言名の位置にLeanが同時に記録するLocalInfoは、同じ位置の自分のglobal binderと、宣言コマンド範囲またはネイティブのselection位置で照合できた場合だけ合成の情報として扱う。任意の用語位置の曖昧性は除外しない。この調整は隔離した準備用コードだけで、他レーンが使う共通の道具は変更していない。型・本体の保存比較による最終確認は別に必須とする。

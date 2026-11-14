@@ -54,7 +54,7 @@
     {
       "item": "B3P-11",
       "old_path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
-      "new_path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/InitialValueCone.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/InitialValueCone.lean",
       "source_section": "InitialLimit",
       "names": "preserve canonical names for first move; exact declaration ownership map completed by native v3b snapshot"
     },

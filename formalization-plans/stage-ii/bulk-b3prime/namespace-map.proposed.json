@@ -8435,113 +8435,113 @@
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.sliceIdentityCone_terminal",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceIdentityCone_terminal",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceIdentityCone_terminal",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 51,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialValueCone",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialValueCone",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialValueCone",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 96,
       "kind": "def"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialValueCone_restriction",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialValueCone_restriction",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialValueCone_restriction",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 101,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialValueCone_isLimit",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialValueCone_isLimit",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialValueCone_isLimit",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 109,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.coneHomotopyMap",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneHomotopyMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.coneHomotopyMap",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 125,
       "kind": "def"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.coneHomotopyMap_homMk",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneHomotopyMap_homMk",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.coneHomotopyMap_homMk",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 130,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.coneEdge_isIso_of_edge_eq",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneEdge_isIso_of_edge_eq",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.coneEdge_isIso_of_edge_eq",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 142,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialValueCone_leg",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialValueCone_leg",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialValueCone_leg",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 156,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialLimitConeIso",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialLimitConeIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialLimitConeIso",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 169,
       "kind": "def"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialLimitConeEdge",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialLimitConeEdge",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialLimitConeEdge",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 177,
       "kind": "def"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialLimitConeEdge_homMk",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialLimitConeEdge_homMk",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialLimitConeEdge_homMk",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 185,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialLimitConeEdge_path",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialLimitConeEdge_path",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialLimitConeEdge_path",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 194,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialLimitConeEdge_leg",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialLimitConeEdge_leg",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialLimitConeEdge_leg",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 204,
       "kind": "theorem"
     },
     {
       "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.initialLimitLeg_isIso",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialLimitLeg_isIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialLimitLeg_isIso",
       "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
-      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialValueCone",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
       "source_line": 214,
       "kind": "theorem"
     },

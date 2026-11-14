@@ -1,0 +1,869 @@
+{
+  "status": "source-private user names; raw kernel owners resolved from native snapshots/collector before use",
+  "rows": [
+    {
+      "old": "SerrePositivity.BhattScholze.quotient_tensor_map_mul",
+      "new": "SerrePositivity.BhattScholze.Almost.quotient_tensor_map_mul",
+      "old_module": "SerrePositivity.BhattScholze.Almost.Lemma103",
+      "new_module": "SerrePositivity.BhattScholze.Almost.Lemma103",
+      "source_line": 55,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.ideal_tensor_subtype_mul",
+      "new": "SerrePositivity.BhattScholze.Almost.ideal_tensor_subtype_mul",
+      "old_module": "SerrePositivity.BhattScholze.Almost.Lemma103",
+      "new_module": "SerrePositivity.BhattScholze.Almost.Lemma103",
+      "source_line": 159,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.annihilates_of_completedTensor_zero",
+      "new": "SerrePositivity.BhattScholze.Almost.annihilates_of_completedTensor_zero",
+      "old_module": "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost",
+      "new_module": "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost",
+      "source_line": 378,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.evaluation_one",
+      "new": "SerrePositivity.BhattScholze.Andre.evaluation_one",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "source_line": 453,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.finite_le_ker",
+      "new": "SerrePositivity.BhattScholze.Andre.finite_le_ker",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "source_line": 504,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.cocone_mk_independent",
+      "new": "SerrePositivity.BhattScholze.Andre.cocone_mk_independent",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "source_line": 569,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.cocone_base_ker",
+      "new": "SerrePositivity.BhattScholze.Andre.cocone_base_ker",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+      "source_line": 585,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.unit_mul_list_regular",
+      "new": "SerrePositivity.BhattScholze.Andre.unit_mul_list_regular",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity",
+      "source_line": 177,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.linear_polynomial_regular",
+      "new": "SerrePositivity.BhattScholze.Andre.linear_polynomial_regular",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity",
+      "source_line": 600,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.linear_mvpolynomial_regular",
+      "new": "SerrePositivity.BhattScholze.Andre.linear_mvpolynomial_regular",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity",
+      "source_line": 616,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.finite_le_raw",
+      "new": "SerrePositivity.BhattScholze.Andre.finite_le_raw",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "source_line": 1630,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.cocone_mk_independent",
+      "new": "SerrePositivity.BhattScholze.Andre.cocone_mk_independent",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "source_line": 1664,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.cocone_base_ker",
+      "new": "SerrePositivity.BhattScholze.Andre.cocone_base_ker",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "source_line": 1679,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.complete_of_zero_scalar",
+      "new": "SerrePositivity.BhattScholze.Andre.complete_of_zero_scalar",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivision",
+      "source_line": 1990,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.generatorRegular",
+      "new": "SerrePositivity.BhattScholze.Andre.generatorRegular",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+      "source_line": 685,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.finiteSourceGhost",
+      "new": "SerrePositivity.BhattScholze.Andre.finiteSourceGhost",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+      "source_line": 744,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.nextSourceGhost",
+      "new": "SerrePositivity.BhattScholze.Andre.nextSourceGhost",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource",
+      "source_line": 753,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.neg_list_regular",
+      "new": "SerrePositivity.BhattScholze.Andre.neg_list_regular",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul",
+      "source_line": 41,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.evaluation_one",
+      "new": "SerrePositivity.BhattScholze.Andre.evaluation_one",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "source_line": 160,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.finite_le_ker",
+      "new": "SerrePositivity.BhattScholze.Andre.finite_le_ker",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "source_line": 198,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.cocone_mk_independent",
+      "new": "SerrePositivity.BhattScholze.Andre.cocone_mk_independent",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "source_line": 262,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.cocone_base_ker",
+      "new": "SerrePositivity.BhattScholze.Andre.cocone_base_ker",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "source_line": 277,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.finiteSupport_le_ker",
+      "new": "SerrePositivity.BhattScholze.Andre.finiteSupport_le_ker",
+      "old_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "new_module": "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+      "source_line": 498,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.ApproximationIndex",
+      "new": "SerrePositivity.CommutativeAlgebra.ApproximationIndex",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 49,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Var",
+      "new": "SerrePositivity.CommutativeAlgebra.Var",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 72,
+      "kind": "abbrev"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.StagePolynomial",
+      "new": "SerrePositivity.CommutativeAlgebra.StagePolynomial",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 73,
+      "kind": "abbrev"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.restrictRelation",
+      "new": "SerrePositivity.CommutativeAlgebra.restrictRelation",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 75,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rename_restrictRelation",
+      "new": "SerrePositivity.CommutativeAlgebra.rename_restrictRelation",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 80,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.relations",
+      "new": "SerrePositivity.CommutativeAlgebra.relations",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 85,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stage",
+      "new": "SerrePositivity.CommutativeAlgebra.stage",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 90,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageQuotient",
+      "new": "SerrePositivity.CommutativeAlgebra.stageQuotient",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 99,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageToAlgebra",
+      "new": "SerrePositivity.CommutativeAlgebra.stageToAlgebra",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 102,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.varInclusion",
+      "new": "SerrePositivity.CommutativeAlgebra.varInclusion",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 117,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageMap",
+      "new": "SerrePositivity.CommutativeAlgebra.stageMap",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 120,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageMap_quotient",
+      "new": "SerrePositivity.CommutativeAlgebra.stageMap_quotient",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 140,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stage_finite",
+      "new": "SerrePositivity.CommutativeAlgebra.stage_finite",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 146,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageArrow",
+      "new": "SerrePositivity.CommutativeAlgebra.stageArrow",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 172,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.approximationDiagram",
+      "new": "SerrePositivity.CommutativeAlgebra.approximationDiagram",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 176,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.approximationCocone",
+      "new": "SerrePositivity.CommutativeAlgebra.approximationCocone",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 196,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageCanKill",
+      "new": "SerrePositivity.CommutativeAlgebra.stageCanKill",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 211,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.approximationCoconeIsColimit",
+      "new": "SerrePositivity.CommutativeAlgebra.approximationCoconeIsColimit",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 247,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageAway",
+      "new": "SerrePositivity.CommutativeAlgebra.stageAway",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 295,
+      "kind": "abbrev"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageToLocalization",
+      "new": "SerrePositivity.CommutativeAlgebra.stageToLocalization",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 298,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageToLocalization_on_base",
+      "new": "SerrePositivity.CommutativeAlgebra.stageToLocalization_on_base",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 302,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageLocalization_exists_surjective",
+      "new": "SerrePositivity.CommutativeAlgebra.stageLocalization_exists_surjective",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 312,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.stageLocalization_exists_bijective",
+      "new": "SerrePositivity.CommutativeAlgebra.stageLocalization_exists_bijective",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new_module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "source_line": 356,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.image_ne_zero_of_not_span_le_ker",
+      "new": "SerrePositivity.BhattScholze.Almost.image_ne_zero_of_not_span_le_ker",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "source_line": 42,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.reductionToIntegralClosure_integral",
+      "new": "SerrePositivity.BhattScholze.Almost.reductionToIntegralClosure_integral",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "source_line": 112,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.reductionToIntegralClosure_away_bijective",
+      "new": "SerrePositivity.BhattScholze.Almost.reductionToIntegralClosure_away_bijective",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "source_line": 118,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.integralClosure_p_power_torsion",
+      "new": "SerrePositivity.BhattScholze.Almost.integralClosure_p_power_torsion",
+      "old_module": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new_module": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "source_line": 210,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_bottom",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_bottom",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 70,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_left",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_left",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 77,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_right",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_right",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 84,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_top",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare_top",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 91,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_bottom_edge",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_bottom_edge",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 98,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_left_edge",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_left_edge",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 105,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_right_edge",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_right_edge",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 112,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_top_edge",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_top_edge",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 119,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.edge_source_eq",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.edge_source_eq",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 126,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.edge_target_eq",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.edge_target_eq",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 132,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_A",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_A",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 138,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_B",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_B",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 142,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_C",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_C",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 146,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_D",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.square_D",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 150,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ringModuleIso",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ringModuleIso",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 176,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ringModuleIso_map",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.ringModuleIso_map",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 181,
+      "kind": "lemma"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.PerfectoidizationInterface.h0SquareSequenceIso",
+      "new": "SerrePositivity.BhattScholze.PerfectoidizationInterface.h0SquareSequenceIso",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "source_line": 208,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_coeff",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_coeff",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 221,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_var",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_var",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 229,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_id",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_id",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 237,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_comp",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStepMap_comp",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 246,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_id",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_id",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 261,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_comp",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_comp",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 271,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicTower_succ",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicTower_succ",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 284,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_succ",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_succ",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 291,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_naturality",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.algebraicStageMap_naturality",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 296,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStepMap_id",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStepMap_id",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 341,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStepMap_comp",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStepMap_comp",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 348,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStepMap_comp_unit",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStepMap_comp_unit",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 355,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStageMap_id",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStageMap_id",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 373,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStageMap_comp",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedStageMap_comp",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 380,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedRootTower_succ",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.completedRootTower_succ",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 390,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootVar",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootVar",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 514,
+      "kind": "abbrev"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootVar_pow",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootVar_pow",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 516,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootLift",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootLift",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 523,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootLift_coeff",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootLift_coeff",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 533,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootLift_var",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootLift_var",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 539,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootHom_ext",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootHom_ext",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 545,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootMonomial",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootMonomial",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 551,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootMonomial_pow",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootMonomial_pow",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 554,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootToMonomials",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootToMonomials",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 564,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootTupleEval",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rootTupleEval",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 567,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootFromMonomials",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootFromMonomials",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 580,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootFromMonomials_coeff",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootFromMonomials_coeff",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 584,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootFromMonomials_var",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootFromMonomials_var",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 592,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootToMonomials_surjective",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootToMonomials_surjective",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 607,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootMonomialEquiv",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.rawRootMonomialEquiv",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 646,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialFrobenius",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialFrobenius",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 712,
+      "kind": "def"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialFrobenius_single",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialFrobenius_single",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 717,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialFrobenius_mod_p",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialFrobenius_mod_p",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 725,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_perfectMonomialDelta",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.exists_perfectMonomialDelta",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 758,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialMap_ker",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialMap_ker",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 781,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialBoundedTorsion",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialBoundedTorsion",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 816,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialAdicCompletionPerfectoid",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialAdicCompletionPerfectoid",
+      "old_module": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "source_line": 833,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.completionCast_algebraMap",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.completionCast_algebraMap",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid",
+      "source_line": 194,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.freeDelta_hom_ext_initial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.freeDelta_hom_ext_initial",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopePresentation",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopePresentation",
+      "source_line": 34,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.exists_primeDoubleQuotient_equiv",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.exists_primeDoubleQuotient_equiv",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidue",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidue",
+      "source_line": 37,
+      "kind": "theorem"
+    },
+    {
+      "old": "SerrePositivity.BhattScholze.coordinate_range",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.coordinate_range",
+      "old_module": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+      "source_line": 56,
+      "kind": "theorem"
+    }
+  ]
+}
