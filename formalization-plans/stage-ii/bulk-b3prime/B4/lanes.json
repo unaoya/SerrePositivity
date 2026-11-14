@@ -1,0 +1,77 @@
+{
+  "status": "git/worktree read-only B4 preparation; refresh before final handoff",
+  "rows": [
+    {
+      "lane": "5a",
+      "branch": "math/bs-impl",
+      "head": "afe18f7797798ef928a364f79b56c71db6a98ce3",
+      "merge_base": "81a3a3b311baeabfbe88509555f051ca10038041",
+      "collect_candidate_files": 79,
+      "literal_matching_files": [],
+      "literal_lower_bound": 0,
+      "files": "5a-files.json",
+      "class": "impl",
+      "scope": "Readonly committed-diff plus modified/untracked buildable core Lean; drafts excluded. Candidates are not confirmed change counts; native collect required for short names."
+    },
+    {
+      "lane": "5d",
+      "branch": "math/bs-m15",
+      "head": "7f6cf9595d88c8206823eda688fa1ffe192c2a13",
+      "merge_base": "825a7829f9a98f390eeecb3dc2b07f4754c6811e",
+      "collect_candidate_files": 191,
+      "literal_matching_files": [],
+      "literal_lower_bound": 0,
+      "files": "5d-files.json",
+      "class": "impl",
+      "scope": "Readonly committed-diff plus modified/untracked buildable core Lean; drafts excluded. Candidates are not confirmed change counts; native collect required for short names."
+    },
+    {
+      "lane": "3a",
+      "branch": "math/inf-supply",
+      "head": "fd91e19eca07be8bca7fd22a6caffb947d2bb37e",
+      "merge_base": "ec1b0efcfe53a7c6b62288012d0ae8b792467e14",
+      "collect_candidate_files": 102,
+      "literal_matching_files": [],
+      "literal_lower_bound": 0,
+      "files": "3a-files.json",
+      "class": "impl",
+      "scope": "Readonly committed-diff plus modified/untracked buildable core Lean; drafts excluded. Candidates are not confirmed change counts; native collect required for short names."
+    },
+    {
+      "lane": "3b",
+      "branch": "math/inf-supply-b",
+      "head": "213e4b3361eaa12d99cb909a4ae85222d5b85ee4",
+      "merge_base": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
+      "collect_candidate_files": 93,
+      "literal_matching_files": [],
+      "literal_lower_bound": 0,
+      "files": "3b-files.json",
+      "class": "impl",
+      "scope": "Readonly committed-diff plus modified/untracked buildable core Lean; drafts excluded. Candidates are not confirmed change counts; native collect required for short names."
+    },
+    {
+      "lane": "6",
+      "branch": "math/scheme",
+      "head": "8ae161300d03c95c8a642c511bf30bcbdfb443ca",
+      "merge_base": "78d0feeab6916320659f75bbe3504e3f91f49221",
+      "collect_candidate_files": 153,
+      "literal_matching_files": [],
+      "literal_lower_bound": 0,
+      "files": "6-files.json",
+      "class": "impl",
+      "scope": "Readonly committed-diff plus modified/untracked buildable core Lean; drafts excluded. Candidates are not confirmed change counts; native collect required for short names."
+    },
+    {
+      "lane": "kerodon",
+      "branch": "research/kerodon-review-c",
+      "head": "72858a30edef41e6b22b79fe3dff47e1cdfccc2f",
+      "merge_base": "72858a30edef41e6b22b79fe3dff47e1cdfccc2f",
+      "collect_candidate_files": 0,
+      "literal_matching_files": [],
+      "literal_lower_bound": 0,
+      "files": "kerodon-files.json",
+      "class": "research",
+      "scope": "Readonly committed-diff plus modified/untracked buildable core Lean; drafts excluded. Candidates are not confirmed change counts; native collect required for short names."
+    }
+  ]
+}
