@@ -2387,7 +2387,7 @@ B02・B03 の固定の平坦模型と細分の射の同じ段への接続（着�
 
 `IntegerModelStageFactor`（59行）：`exists_integerModel_stage_factor` は qcqs な係数模型と元の対象を頂点に保つ実際の極限から、固定の有限型 ℤ 上の局所有限表示対象への射をある有限段へ因子化し、元の射との指定された等式を返す。基底への射の忠実平坦性を要求しない。
 
-本体59行・入口1行。定値関手の終対象への自然性と可換式を明示して単独検証を完了。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,023ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-integer-model-stage-factor-check-2.log`・`2g-integer-model-stage-factor-native.log`・`2g-integer-model-stage-factor-audit.log`。
+本体59行・入口1行。定値関手の終対象への自然性と可換式を明示して単独検証を完了。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,024ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-integer-model-stage-factor-check-2.log`・`2g-integer-model-stage-factor-native.log`・`2g-integer-model-stage-factor-audit.log`。
 
 G1・G2共用部品込み本体13,999行、入口込み14,235行。β と細分の射・全射性を同じ段へそろえる接続は下書きで、B02〜B04 は未完。
 
@@ -2404,8 +2404,27 @@ B02・B03 の実際の共通係数模型の供給（着手前の型、見込み1
 
 `IntegerFlatRefinementStage`（69行）：`exists_integer_flat_refinement_stage` は実際の固有全射の模型から β を因子化し、その段で既存の平坦模型の全射性と細分の射の因子化を適用する。同じ後段の固有・全射・局所有限表示の Rⱼ、平坦・全射・局所有限表示・qcqs な Qⱼ、固定標的への射と基底上の可換式、元の細分の射との一致、元の W の実際の Cartesian 比較を返す。
 
-本体69行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,024ジョブ、小監査3宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-integer-flat-refinement-stage-check.log`・`2g-integer-flat-refinement-stage-native.log`・`2g-integer-flat-refinement-stage-audit.log`。
+本体69行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,025ジョブ、小監査3宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-integer-flat-refinement-stage-check.log`・`2g-integer-flat-refinement-stage-native.log`・`2g-integer-flat-refinement-stage-audit.log`。
 
 G1・G2共用部品込み本体14,068行、入口込み14,305行。実際の係数模型を供給しての適用と模型の v 被覆性はなお残り、B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+B03 の模型の v 判定に用いる、G0 の平坦全射の付値持ち上げの接続（着手前の型、見込み120〜240行）：`isSchemeVCover_of_flat_surjective` は任意のスキーム間の平坦全射を `IsSchemeVCover` にする。付値環で底変換し、その閉点上の点を含む affine チャートを選ぶ。平坦射の一般化の持ち上げによりこのチャートも付値環の Spec に全射となり、同じ affine な忠実平坦写像の既存の付値持ち上げを使える。任意の階数の付値環を保ち、有限表示・Noether 性は要求しない。既存の G0 の忠実平坦持ち上げ・affine チャート・底変換と平坦射の一般化性の接続で、親項目を増やさない。
+
+
+B03 の有限表示 affine v 被覆の実際の係数模型（着手前の型、見込み250〜500行）：`exists_affineVCover_finitePresentation_coefficient_model` は Noether な係数環 k、任意の k-代数 R と R-有限表示代数 C、Spec C→Spec R の v 判定から、有限生成 k-部分代数 B⊆R、実際の有限表示 B-代数 C₀、Spec C₀→Spec B の v 判定、実際の R⊗_B C₀≃_R C を返す。まず元の基底で C の有限表示模型 A₀,C₀ を選び、G1 の固定の整数平坦模型を保持する証人を供給し、上記の共通係数模型を k'=A₀ に対して適用する。固有全射と fppf 全射の合成が模型の射を通ることから、合成の消去で模型の v 判定を得る。基底 B の k 上有限生成性は k→A₀→B の有限型性の合成から得る。任意の元の R の Noether 性や、模型の v 判定を追加仮定にしない。k=F_p なら両模型環は有限型 F_p となる。B03 の元の型のうち有限表示側の実際の供給を閉じる接続として親項目を増やさない。一般の元の射の近似と filtered 図式は B04 とともに残す。
+
+
+### B02・B03：実際の係数図式と cone の、係数基底上の自然性
+
+`CoefficientSpecBaseNaturality`（37行）：`coefficientSpecBaseNatTrans` は実際の係数部分代数の各 Spec の構造射を自然変換に束ねる。`coefficientSpecCone_base` は元の Spec R の cone が同じ係数基底上で可換であること。
+
+本体37行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,026ジョブ、小監査の終了状態0と標準三公理のみを確認。直前二つの報告のビルドのジョブ数は実際のログに照らし5,024・5,025に修正（成功の結果は不変）。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-coefficient-spec-base-naturality-check.log`・`2g-coefficient-spec-base-naturality-native.log`・`2g-coefficient-spec-base-naturality-audit.log`。
+
+G1・G2共用部品込み本体14,105行、入口込み14,343行。実際の共通係数模型への適用と模型の v 被覆性の接続は下書きで、B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
+
+監査出力：`SerrePositivity.AlgebraicGeometry.CoefficientSpecBaseNaturality: 3 declarations, standard three axioms only. / G2 dense image open lifts audit passed: 3 declarations.`。
