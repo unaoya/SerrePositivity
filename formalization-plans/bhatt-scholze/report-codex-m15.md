@@ -4571,3 +4571,192 @@ frame 係数からの実全高次評価円柱を、§37 の同じ K の Hom 誘�
 M10 の一般の native な辺・fiber と全族、M11 以降と G12 の元の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 39. M10 の全 frame 単体の同じ実評価図式と源内の屋根（11-14）
+
+§35–§38 の同じテンソル frame Hom の反対要素圏を、元の相対圏と同じ
+対象・射の宇宙へ持ち上げた。全単体と全作用素の次数射影、その射影で前合成した
+元の加群 frame 図式、元の augmentation と実評価を保持する。
+augmentation の各成分と図式の全作用素は、検証済みの元の擬同型である。
+標的 Q は任意の元の通常 dg 加群であり、frame の各対象の半自由性は仮定しない。
+
+通常加群図式とその自然変換の全 nerve 円柱を、元の同じ
+`strictRawModuleSource` へ送る。各成分が擬同型なら、その同じ円柱の辺は
+全関手圏で同型になる。元の辺と切断された辺の表示の照合は、小さい私有補題に分割した。
+これは元の辺の可逆性の移送で、モデル構造や比較射の同値性を仮定に加えていない。
+
+この同じ全 augmentation の逆と同じ実評価を合成して、指定模型内の全屋根を作る。
+元の通常加群の指定された二つの頂点の定値図式へ端点を移し、元の全評価円柱を回収する
+三角等式を保持する。単体ごとの π₀ の屋根への置換はしていない。
+本節は M10 の既存比較の自然性・係数移送・単位/余単位の貼り合わせと証明の分割で、
+一次 ID は追加しない。全宣言の型は以下のとおり。
+
+`RawModuleTensorElementDiagram`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+abbrev strictRawModuleTensorElementIndex : Type (u + 1)
+
+instance strictRawModuleTensorElementIndexCategory :
+    Category.{u + 1} (strictRawModuleTensorElementIndex A X P Q)
+
+def strictRawModuleTensorElementDegree :
+    strictRawModuleTensorElementIndex A X P Q ⥤ SimplexCategory
+
+def strictRawModuleTensorElementDiagram :
+    strictRawModuleTensorElementIndex A X P Q ⥤ strictRawModuleCategory A X
+
+def strictRawModuleTensorElementAugmentation :
+    strictRawModuleTensorElementDiagram A X P Q ⟶
+      (Functor.const (strictRawModuleTensorElementIndex A X P Q)).obj
+        ((strictRawModuleProbeFunctor A X).obj P)
+
+def strictRawModuleTensorElementEvaluation :
+    strictRawModuleTensorElementDiagram A X P Q ⟶
+      (Functor.const (strictRawModuleTensorElementIndex A X P Q)).obj Q
+
+lemma strictRawModuleTensorElementAugmentation_weak (s : strictRawModuleTensorElementIndex A X P Q) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+      ((strictRawModuleTensorElementAugmentation A X P Q).app s)
+
+lemma strictRawModuleTensorElementDiagram_map_weak
+    {s t : strictRawModuleTensorElementIndex A X P Q} (f : s ⟶ t) :
+    moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
+      ((strictRawModuleTensorElementDiagram A X P Q).map f)
+```
+
+`RawModuleDiagramSource`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  {I : Type (u + 1)} [Category.{u + 1} I]
+  {F G : I ⥤ strictRawModuleCategory A X}
+
+def strictRawModuleDiagramSource (F : I ⥤ strictRawModuleCategory A X) :
+    nerve I ⟶ strictModuleInfinity A X
+
+private lemma mappedNerveEdge_invertible {C : Type (u + 1)} [Category.{u + 1} C]
+    {Y : SSet.{u + 1}} (F : nerve C ⟶ Y) {c d : C} (f : c ⟶ d)
+    (h : IsInvertibleEdge (X := Y)
+      ((edgeOfSimplex (ComposableArrows.mk₁ f)).map ((truncation 2).map F))) :
+    IsInvertibleEdge (((nerve.edgeMk f).map F).toTruncated)
+
+lemma strictRawModuleSource_edge_weak {M N : strictRawModuleCategory A X} (f : M ⟶ N)
+    (hf : moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) f) :
+    IsInvertibleEdge
+      (((nerve.edgeMk ((ULiftHom.up.{u, u + 1, u + 1}
+        (C := strictRawModuleCategory A X)).map f)).map (strictRawModuleSource A X)).toTruncated)
+
+def strictRawModuleDiagramNatTransHomotopy (η : F ⟶ G) :
+    SSet.Homotopy (strictRawModuleDiagramSource A X F) (strictRawModuleDiagramSource A X G)
+
+lemma strictRawModuleDiagramNatTransHomotopy_component (η : F ⟶ G) (i : I) :
+    (simplicialHomotopyVertexEdge (strictRawModuleDiagramNatTransHomotopy A X η)
+      (nerveVertex i)).edge =
+    ((nerve.edgeMk ((ULiftHom.up.{u, u + 1, u + 1}
+      (C := strictRawModuleCategory A X)).map (η.app i))).map (strictRawModuleSource A X)).edge
+
+def strictRawModuleDiagramNatTransHom (η : F ⟶ G) :
+    FunctorHom (strictRawModuleDiagramSource A X F) (strictRawModuleDiagramSource A X G)
+
+def strictRawModuleDiagramNatTransIso (η : F ⟶ G)
+    (hη : ∀ i, moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) (η.app i)) :
+    FunctorIso (strictRawModuleDiagramSource A X F) (strictRawModuleDiagramSource A X G)
+
+lemma strictRawModuleDiagramNatTransIso_hom (η : F ⟶ G)
+    (hη : ∀ i, moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) (η.app i)) :
+    (strictRawModuleDiagramNatTransIso A X η hη).hom =
+      strictRawModuleDiagramNatTransHom A X η
+
+lemma strictRawModuleDiagramSource_const (M : strictRawModuleCategory A X) :
+    strictRawModuleDiagramSource A X ((Functor.const I).obj M) =
+      SSet.const ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1}
+          (C := strictRawModuleCategory A X)).obj M)))
+
+def strictRawModuleDiagramSourceConstantIso (M : strictRawModuleCategory A X) :
+    FunctorIso (strictRawModuleDiagramSource A X ((Functor.const I).obj M))
+      (SSet.const ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1}
+          (C := strictRawModuleCategory A X)).obj M))))
+```
+
+`RawModuleTensorElementSourceRoof`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementSourceAugmentationIso :
+    FunctorIso
+      (strictRawModuleDiagramSource A X (strictRawModuleTensorElementDiagram A X P Q))
+      (strictRawModuleDiagramSource A X
+        ((Functor.const (strictRawModuleTensorElementIndex A X P Q)).obj
+          ((strictRawModuleProbeFunctor A X).obj P)))
+
+def strictRawModuleTensorElementSourceEvaluation :
+    FunctorHom
+      (strictRawModuleDiagramSource A X (strictRawModuleTensorElementDiagram A X P Q))
+      (strictRawModuleDiagramSource A X
+        ((Functor.const (strictRawModuleTensorElementIndex A X P Q)).obj Q))
+
+def strictRawModuleTensorElementSourceRoof :
+    FunctorHom
+      (strictRawModuleDiagramSource A X
+        ((Functor.const (strictRawModuleTensorElementIndex A X P Q)).obj
+          ((strictRawModuleProbeFunctor A X).obj P)))
+      (strictRawModuleDiagramSource A X
+        ((Functor.const (strictRawModuleTensorElementIndex A X P Q)).obj Q))
+
+lemma strictRawModuleTensorElementSourceRoof_triangle :
+    (strictRawModuleTensorElementSourceAugmentationIso A X P Q).hom ≫
+      strictRawModuleTensorElementSourceRoof A X P Q =
+        strictRawModuleTensorElementSourceEvaluation A X P Q
+
+def strictRawModuleTensorElementSourceRoofFamily :
+    ConstantFunctorHom (nerve (strictRawModuleTensorElementIndex A X P Q)) (strictModuleInfinity A X)
+      ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X)).obj
+          ((strictRawModuleProbeFunctor A X).obj P))))
+      ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (nerveVertex ((ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X)).obj Q)))
+
+lemma strictRawModuleTensorElementSourceRoofFamily_triangle :
+    ((strictRawModuleTensorElementSourceAugmentationIso A X P Q).hom ≫
+      (strictRawModuleDiagramSourceConstantIso A X (I := strictRawModuleTensorElementIndex A X P Q)
+        ((strictRawModuleProbeFunctor A X).obj P)).hom) ≫
+          strictRawModuleTensorElementSourceRoofFamily A X P Q =
+      strictRawModuleTensorElementSourceEvaluation A X P Q ≫
+        (strictRawModuleDiagramSourceConstantIso A X (I := strictRawModuleTensorElementIndex A X P Q) Q).hom
+```
+
+対象ビルド・小さい監査の結果と実測は §39.1 に記録した。
+同じ K の実 Hom 誘導射と、この全評価屋根を結ぶ正規化 dg 係数の全高次照合、
+その射の同値性・K の完全忠実性は引き続き未完。
+M10 の一般の native な辺・fiber と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 39.1 検証と実測
+
+RawModuleTensorElementDiagram・RawModuleDiagramSource・RawModuleTensorElementSourceRoof
+の通常の対象ビルドは成功した。新しい公開宣言 23 本の依存公理監査も成功し、
+propext・Classical.choice・Quot.sound の範囲である。
+指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は三ファイル、それぞれ 99・146・107 行、計 352 行、明示宣言 24 本
+（private 1 本、名前つき instance 1 本を含む）。§38.1 の累計に加え、
+検証済み累計は 77 ファイル・7,795 行・明示宣言 408 本（private 4 本）。
+200 行を超える証明はない。一次 ID は追加していない。
+
+元の全 frame Hom の要素圏、同じ全 augmentation と実評価、同じ源の全円柱と
+その反転、指定定値端点への屋根と三角式まで検証した。
+同じ K の実 Hom 誘導射との全高次照合・同値性・完全忠実性は未完であり、
+M10 完了には数えない。M10 の一般の native な辺・fiber と全族、M11 以降、
+G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
