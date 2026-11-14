@@ -1496,3 +1496,4 @@ public import SerrePositivity.AlgebraicGeometry.FiniteProperProduct
 public import SerrePositivity.AlgebraicGeometry.ProperGraphClosure
 public import SerrePositivity.AlgebraicGeometry.FiniteDenseAffineCover
 public import SerrePositivity.AlgebraicGeometry.AffineSchemeProperAmbient
+public import SerrePositivity.AlgebraicGeometry.DenseImageOpenLifts

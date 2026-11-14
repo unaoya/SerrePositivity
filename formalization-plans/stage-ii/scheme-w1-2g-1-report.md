@@ -2036,3 +2036,17 @@ C06 の共通の開の像と各チャートへの制限の法則（着手前の�
 G1・G2共用部品込み本体12,328行、入口込み12,539行。C06 は本体394行までで未完。実際の共通の開は供給済みだが、その scheme-theoretic な像に affine 被覆を引き、各チャートの閉包への射影を因子化し、元の X への固有全射を貼り合わせる接続はなお残る。C06 と B01〜B04 は未完。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 の scheme-theoretic に稠密な実際の affine 被覆模型（着手前の型、見込み180〜400行）：内部の `SchemeDenseAffineCoverModel X` は、元の X への閉全射 c:Z→X、Noether な Z、正の Fin n の実際の affine 開被覆 Vᵢ、Noether で空でない共通のスキーム W、scheme-theoretically dominant な開包含 a:W→Z と、各 Vᵢ への同じ性質を持つ実際の持ち上げ・可換式を束ねる。`exists_schemeDense_affine_cover_model` は任意の Noether な既約 X からこの内部データを無条件に構成する。実際の有限 affine 被覆と共通の開を取り、その開包含の像を Z とし、被覆を c に沿って引き、開の lift の既存の Cartesian 比較で稠密性を移す。内部データの存在を仮定したまま C06 の完成とは扱わず、Noether な元の X から実際に供給する C06 内の構成の分割として親項目を増やさない。
+
+
+### C06：共通の開の実際の像の全射性と、開への稠密な持ち上げ
+
+`DenseImageOpenLifts`（49行）：`surjective_schemeImageInclusion_of_isDominant` は稠密な射の実際の像の閉包含の全射性。`surjective_denseOpenImageInclusion` は稠密な開の実際の像の包含の全射性。`isSchemeTheoreticallyDominant_open_lift` と `isOpenImmersion_open_lift` は、像を含む開への実際の持ち上げで scheme-theoretic な稠密性と開包含性を保つ法則。
+
+本体49行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,999ジョブ成功。小監査4宣言・標準三公理のみ。最初の下書きの単独検証、公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-dense-image-open-lifts-check.log`・`2g-dense-image-open-lifts-native.log`・`2g-dense-image-open-lifts-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体12,377行、入口込み12,589行。C06 は本体443行までで未完。Noether な元の対象からの scheme-theoretic に稠密な affine 被覆模型の組立ては下書きで実測に含めない。C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
