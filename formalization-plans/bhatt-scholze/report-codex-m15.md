@@ -3421,3 +3421,109 @@ M11 以降の相対テンソル・RHom・完備反射・完備テンソル、G12
 M10 はまだ未完。一次一覧の完了数は M01–M09 と N01 の計 10 のまま。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 26. M10/C02：指定半自由模型への全比較の降下と制限の法則（11-14）
+
+§25 の元の通常 DK 源の全標的普遍性に、§18 の同じ通常源から指定半自由模型への関手を
+渡した。既存の `localizationDescend` と同じ `localizationDescendIso` により、
+全単体の比較関手 K と全関手間の指定三角同型を得る。
+標準局所化頂点、正則加群の指定単位、元の U との源上の比較も同じ三角から回収する。
+
+さらに源の全係数自然性、両端の同じ三角、§18 の同じ制限比較を貼り、
+実局所化の前合成の充満忠実性で全関手間の同型を降ろす。
+全厳密 BE 代数射を対象とし、元の制限が半自由対象を保つという仮定は置かない。
+これは既存の M10/C02 の構成の降下・自然性・単位・貼り合わせの法則と証明分割で、
+一次 ID は追加しない。
+
+型の文脈は `A : Type u`、`[CommRing A]`。
+
+### RawModuleComparison
+
+```lean
+def strictRawModuleComparison (X : (operad A).Algebra) :
+    localizationNerve (strictRawModuleRelativeCategory A X) ⟶ strictModuleInfinity A X
+
+def strictRawModuleComparison_sourceIso (X : (operad A).Algebra) :
+    FunctorIso
+      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
+        strictRawModuleComparison A X)
+      (strictRawModuleSource A X)
+
+def strictRawModuleComparison_vertexIso (X : (operad A).Algebra)
+    (M : (strictRawModuleRelativeCategory A X).category) :
+    VertexIso
+      ((strictRawModuleComparison A X).app (Opposite.op ⦋0⦌)
+        (localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
+          (show KanLocalizationCategory (strictRawModuleRelativeCategory A X) from M)))
+      ((strictRawModuleSource A X).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ M))
+
+lemma strictRawModuleComparison_essentiallySurjective (X : (operad A).Algebra) :
+    IsEssentiallySurjective (strictRawModuleComparison A X)
+
+def strictRawModuleComparison_regularIso (X : (operad A).Algebra) :
+    VertexIso
+      ((strictRawModuleComparison A X).app (Opposite.op ⦋0⦌)
+        (localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
+          (show KanLocalizationCategory (strictRawModuleRelativeCategory A X) from
+            (ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleCategory A X)).obj
+              (strictRawRegularObject A X).fiber)))
+      (strictModuleUnit A X)
+
+def strictRawModuleComparison_sourceUnderlyingIso (X : (operad A).Algebra) :
+    FunctorIso
+      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
+        strictRawModuleComparison A X ≫ strictModuleUnderlying A X)
+      (strictRawModuleSource A X ≫ strictModuleUnderlying A X)
+```
+
+### RawModuleComparisonRestriction
+
+```lean
+def strictRawModuleLocalization_descendIso (X : (operad A).Algebra)
+    {Y : SSet.{u+1}} [Quasicategory Y]
+    {F G : localizationNerve (strictRawModuleRelativeCategory A X) ⟶ Y}
+    (e : FunctorIso
+      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫ F)
+      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫ G)) :
+    FunctorIso F G
+
+def strictRawModuleComparison_restrictSourceIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    FunctorIso
+      (localizationNerveSourceMap (strictRawModuleRelativeCategory A Y) ≫
+        localizationNerveMap (strictRawModuleRestrictRelative f) ≫ strictRawModuleComparison A X)
+      (localizationNerveSourceMap (strictRawModuleRelativeCategory A Y) ≫
+        strictRawModuleComparison A Y ≫ strictModuleRestrict f)
+
+def strictRawModuleComparison_restrictIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    FunctorIso
+      (localizationNerveMap (strictRawModuleRestrictRelative f) ≫ strictRawModuleComparison A X)
+      (strictRawModuleComparison A Y ≫ strictModuleRestrict f)
+```
+
+
+K の本質的全射性は元の通常源の本質的全射性と同じ三角から従うが、完全忠実性は未完。
+K を同値・fiber 同定とまだ呼ばない。一般の native な底の辺・全族の cocartesian 性、
+M11 以降と G12 は引き続き残る。
+対象ビルドと小さい監査の結果は、この節の末尾に追記する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 26.1 全比較と制限の対象ビルド・小さい監査
+
+`RawModuleComparison`（107 行・6 宣言）と `RawModuleComparisonRestriction`（77 行・3 宣言）の
+通常対象ビルドが完了し、終了コード 0。新規 9 宣言の `#print axioms` について、実出力を
+宣言名と機械照合して監査も終了コード 0。依存公理は標準の
+`propext`・`Classical.choice`・`Quot.sound` の範囲内で、追加公理・sorryAx はない。
+共有 impl 鍵、実行上限 280 秒の組で行った。200 行を超える補題はない。
+
+前合成の表記は、通常圏の同名 `pre` ではなく `MonoidalClosed.pre` を選ぶよう明示した。
+構成された K・全三角・頂点・単位・台・全厳密制限との比較の型は上記のまま。
+K の完全忠実性、一般の native 底の辺・同じ全族の fiber 同定はまだ未完なので、
+M10 の完了数は更新しない。
+
+監査まで済んだ累計は、新規 Lean **55 ファイル・5,431 行・277 宣言（private 3 を含む）**。
+次は §22.3 の既存共変 Hom の合成を使い、実 frame と元の dg Hom の比較を進める。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
