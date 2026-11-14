@@ -1320,3 +1320,4 @@ public import SerrePositivity.AlgebraicGeometry.IntegralModelCategory
 public import SerrePositivity.AlgebraicGeometry.IntegralModelCocones
 public import SerrePositivity.AlgebraicGeometry.IntegralModelCoequalizer
 public import SerrePositivity.AlgebraicGeometry.IntegralModelFiltered
+public import SerrePositivity.AlgebraicGeometry.IntegralModelColimit

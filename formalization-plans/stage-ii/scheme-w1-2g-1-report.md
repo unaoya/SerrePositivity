@@ -291,3 +291,31 @@ I02 の filtered 性への組立て：`integralModelCategory_cocone_maps` は模
 - `integralModelCategory_cocone_maps` と二つの IsFiltered instance：模型と小さい添字の filtered 性。
 
 入口 `SerrePositivity.AlgebraicGeometry` は **4,824 jobs 成功**、新規五モジュールの小さい監査は生成宣言を含む **26 宣言、標準三公理のみ**で成功。ログ `scheme-drafts/2g-pre-b4-registered-check.log`。新しい resource limit・sorry・追加公理はない。B4 の指示を受けたので、この区切りをコミットし、原ソースの collect/rewrite を優先する。
+
+
+## I03：実際の小さい環の cocone の余極限（型つきの束、2026-11-14）
+
+B4 は e9ca4d5d4 で完了し、main ad523c511 を取り込んだ。続いて既報の I03 の証明分割を実装する。R・B は同じ宇宙の可換環、B は R-代数とする。
+
+- `integralModelSmallCocone_exists_rep [Algebra.IsIntegral R B] (b : B)`：`∃ i x, ((integralModelSmallCocone R B).ι.app i).hom x = b`。I01 の一元の模型を SmallModel の単位で運び、実際の cocone の自然性で表示を保つ。
+- `integralModelSmallCocone_eq_eventually i x y h`：同じ構造射で像が一致すれば、`∃ j (f : i ⟶ j), ((integralModelSmallDiagram R B).map f).hom x = ... y`。元の模型を span{x-y} で割り、有限・有限表示の商模型の射を SmallModel の逆関手の充満性で小さい射にする。この法則に B の整性は不要。
+- `integralModelSmallCoconeIsColimit [Algebra.IsIntegral R B]`：`IsColimit (integralModelSmallCocone R B)`。Mathlib の Types.FilteredColimit.isColimitOf' に二条件を渡し、forget CommRingCat の colimit の反映で実際の環の cocone の普遍性を得る。
+
+三宣言は package と同じ relaxedAutoImplicit=false・maxSynthPendingDepth=3 の下書き検証で成功した。本体と入口への登録後のビルド・監査はこれから行う。新しい主項目は追加せず、既存の I03 の証明分割とする。G2 の Noether 模型そのものを作ったとは扱わない。
+
+一覧：済み 7／全体 12（うち追加 3）。
+
+
+### I03 の検証結果と宣言一覧
+
+本体 `IntegralModelColimit.lean` **110 行**と入口の import 1 行。登録した入口 `SerrePositivity.AlgebraicGeometry` と新規モジュールの対象ビルドは **4,826 ジョブ成功**。新規モジュールの小監査は生成宣言を含む **7 宣言、標準三公理のみ**、終了コード 0。ログは `scheme-drafts/2g-i03-registered-build.log` と `scheme-drafts/2g-i03-small-audit.log`。共有鍵は `--class impl --wait 3600`、待ちは常に一つ。新しい resource limit・sorry・追加公理はない。
+
+- `integralModelSmallCocone_exists_rep`：整な B の各元を、有限・有限表示の小さい模型の実際の構造射の像として表す。
+- `integralModelSmallCocone_eq_eventually`：同じ模型の二元の B での一致を、有限・有限表示の商模型への射で実現し、小さい添字の実際の射へ移す。
+- `integralModelSmallCoconeIsColimit`：整な B を、固定した小さい模型の環の cocone の filtered colimit として、実際の普遍性で示す。
+
+整射近似内の一覧：済み **3／全体 4（うち追加 0）**。I03 を完了し、I04 の Spec の逆系・実際の極限比較・各段の有限性と有限表示性・全射性への接続が残る。一般の A07 の細分と G2 の Noether 模型は未完。
+
+この束までの G1 本体は **1,794 行**、入口込み **1,835 行**（G0 の入口込み 710 行は別計）。25,000 行の外枠と約 12,000 行での途中報告を保つ。残る主項目は A07 と B01〜B04 の五つで、次の作業は A07 内 I04。今回の 110 行は I03 の見込み 400〜1,000 行より小さく、Mathlib の colimit の反映を再利用した結果である。
+
+一覧：済み 7／全体 12（うち追加 3）。
