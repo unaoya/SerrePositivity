@@ -8785,3 +8785,72 @@ RawModuleTensorTrianglePieces と RawModuleTensorTriangleData の対象ビルド
 M10・M11 以降・G12 はまだ未完であり、外枠を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §60 同じ三相対象の全評価と複体側の実単体の表示移送
+
+元の三相加群対象の各対象での評価と、複体側の指定された三相対象を結ぶ閉零同型を
+作った。元の全列・全三相時刻・全頂点で定義し、両端には恒等、中央には §55 の
+同じ符号付き frame 同型を使う。別の中間対象・同値を選び直さない。
+
+この同じ対象同型で、既存の複体側の指定された実三相単体全体を表示移送した。
+§58 の全単体の移送を使うため、全有限部分集合・全整数次数の cochain と全 HA 方程式を
+保持している。これは既存構成の係数移送であり、一次 ID は追加しない。
+
+この移送した実単体が、元の加群の三相データを評価したデータと一致することは、
+まだ証明していない。その等式を前提として加えたり、元の加群側の HA 方程式が
+済んだと扱ったりしない。以下は今回の全宣言の型。
+
+`RawModuleTensorTriangleEvaluationObjects.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorTriangleEvaluationObjIso {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) (i : Fin (n + 1)) :
+    (complexToClosed A).obj (normalizedTensorTriangleObj A
+      ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
+      ((moduleEvaluation A _ x).obj Q)
+      (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x) τ i) ≅
+    (complexToClosed A).obj ((moduleEvaluationDG A _ x).obj
+      (strictRawModuleTensorTriangleObj A X P Q c τ i))
+```
+
+`RawModuleTensorTriangleEvaluationReference.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorTriangleEvaluationReference {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (x : dgAlgebraCategory A ((assocForget A).obj X)) :
+    SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex
+      A (Complex A) n
+```
+
+
+### 60.1 検証と実測
+
+RawModuleTensorTriangleEvaluationObjects と RawModuleTensorTriangleEvaluationReference の
+対象ビルドは終了値 0 で成功した。新規公開宣言二本の小さい監査も終了値 0。
+依存公理は propext・Classical.choice・Quot.sound のみで、引用属性の新規追加・引用出力は 0 本。
+impl 鍵・待ち 3600 秒・gtimeout 280 秒で対象だけを実行した。
+大きい監査・root ビルド・heartbeat の上限変更はない。
+
+新規 Lean は二ファイル・90 行・明示宣言二本（private 0 本）。
+所有ソース全体を再計数した累計は 213 ファイル・16,386 行・明示宣言 741 本
+（private 21 本）。外枠 17,000 行まで残り 614 行。
+§59.1 の対象評価比較の下書きも検証済みになった。
+200 行を超える証明や一次 ID の追加、既存 EInfinity ソースの変更はない。
+
+複体側の実単体を元の評価対象の表示へ戻す全構成まで通ったが、
+元の加群側三相データの全評価 cochain との等式は未証明である。
+元の加群側の全 HA 方程式、全三角形・K の実 Hom 誘導射の比較を未完として残す。
+M10・M11 以降・G12 の元の目標は維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
