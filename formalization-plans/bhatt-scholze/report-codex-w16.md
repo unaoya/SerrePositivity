@@ -12136,3 +12136,279 @@ C284は元のgeneratorの二分岐とrawComponent_value、C285は元のdifferent
 Finの添字替えは既存finCongrの和の保存を使い、追加の有限な対応は構成しない。
 その後、coefficientBoundaryTerm_succ_eqの同じ負号・同じ切断の有限和・同じ次数移送を
 上の元の線形微分へ照合する。上の型は現時点では紙のみで、実装・検証済み行数へは数えない。
+
+## 136. 係数境界の同じ添字への接続（11-14、型を先に記録）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C284・C285の対象生成は成功。C286〜C290と次の4法則は、既存のpositiveWordの
+等式移送を評価するだけで、新しい有限対応や削除係数を作らない。
+C296は元の語長への移送とpositiveWordの移送の合成を、同じ語の厳密な等式で戻す。
+C291〜C293・C296は個々の補題200行以内。C294・C295は後の接続に使う番号として空ける。
+
+```lean
+lemma positiveWord_cast_val {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) :
+    (positiveWord w).val = fun i : Fin (r + d + 1) =>
+      w.val (Fin.cast (by omega : r + d + 1 = (r + 1) + d) i)
+
+lemma erase_positiveWord {r d : ℕ} (w : Surjection.BasisWord (r + 1) (d + 1))
+    (a : Fin ((r + 1) + (d + 1))) :
+    Surjection.erase (positiveWord w).val
+        (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a) =
+      fun i : Fin (r + d + 1) => Surjection.erase w.val a
+        (Fin.cast (by omega : r + d + 1 = (r + 1) + d) i)
+
+lemma deletionCoefficient_positiveWord {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1)) (a : Fin ((r + 1) + (d + 1))) :
+    Surjection.deletionCoefficient (positiveWord w).val
+        (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a) =
+      Surjection.deletionCoefficient w.val a
+
+lemma positiveWord_of_cast {r d : ℕ} (w : Surjection.Word (r + 1) (r + d + 1)) :
+    positiveWord (Eq.mp (congrArg (Surjection.Word (r + 1))
+      (by omega : r + d + 1 = (r + 1) + d)) w) = w
+
+```
+
+### 136.1 同じ指定係数位置の有限和（C294・C295、型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C294はC290へ同じ削除語を代入し、C292で元の線形削除の生成元へ戻す法則。
+C295は既存C221の同じ切断項を足し、C296で同じ語のcutSumを復元する法則。
+局所hlは同じ語長の等式、heはC292とFinの移送の合成、hsはC221、stepは加群の
+等式移送の合成。非全射・退化な削除を零とする判定と符号を変えない。
+個々の補題200行以内。以下を検証前に記録する。
+
+```lean
+lemma rawComponent_generator_erase_positiveWord (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1))
+    (a : Fin ((r + 1) + (d + 1))) (x : S _⦋q⦌) :
+    rawComponent A S r d q (Surjection.generator A (Surjection.erase w.val a))
+        (ModuleCat.freeMk (ULift.up x)) =
+      if hv : Function.Surjective (Surjection.erase (positiveWord w).val
+          (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a)) ∧
+          Surjection.Nondegenerate (Surjection.erase (positiveWord w).val
+            (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a)) then
+        cutSum A S (Eq.mp (congrArg (Surjection.Word (r + 1))
+          (by omega : r + d + 1 = (r + 1) + d))
+          ⟨Surjection.erase (positiveWord w).val
+            (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a), hv⟩) x
+      else 0
+
+lemma coefficientBoundaryTerm_sum_cut (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1)) (a : Fin (r + d + 2)) (x : S _⦋q⦌)
+    (h : -((d + q : ℕ) : ℤ) = -(((d + 1) + q : ℕ) : ℤ) + 1) :
+    (∑ s : Cut (r + d) q, coefficientBoundaryTerm A S r (d + 1) q w (a, s) x) =
+      if hv : Function.Surjective (Surjection.erase (positiveWord w).val a) ∧
+          Surjection.Nondegenerate (Surjection.erase (positiveWord w).val a) then
+        -Surjection.deletionCoefficient (positiveWord w).val a •
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (cutSum A S (Eq.mp (congrArg (Surjection.Word (r + 1))
+              (by omega : r + d + 1 = (r + 1) + d))
+              ⟨Surjection.erase (positiveWord w).val a, hv⟩) x)
+      else 0
+
+```
+
+### 136.2 元の線形微分への全和の接続（C297〜C299、型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C297は既存finCongrによる同じ添字の和の保存、C285・C293・C294・C295と有限和の
+線形性を適用する。零判定は元と同じ。新しい対応は構成しない。
+局所heは既存の同じ全語長の等式、hrはそのfinCongrによる和の保存。
+C298・C299は元の境界の次数零の分岐を保持した零の全和。個々の補題200行以内。
+以下を検証前に記録する。
+
+```lean
+lemma sum_coefficientBoundaryTerm_succ (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1)) (x : S _⦋q⦌)
+    (h : -((d + q : ℕ) : ℤ) = -(((d + 1) + q : ℕ) : ℤ) + 1) :
+    (∑ c : CoefficientBoundaryIndex r (d + 1) q,
+      coefficientBoundaryTerm A S r (d + 1) q w c x) =
+      -((eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+        (rawComponent A S r d q
+          (Surjection.differential A (r + 1) d
+            (Surjection.basis A (r + 1) (d + 1) (ULift.up w)))
+          (ModuleCat.freeMk (ULift.up x))))
+
+lemma sum_coefficientBoundaryTerm_zero (S : SSet.{0}) {r q : ℕ}
+    (w : Surjection.BasisWord (r + 1) 0) (x : S _⦋q⦌) :
+    (∑ c : CoefficientBoundaryIndex r 0 q, coefficientBoundaryTerm A S r 0 q w c x) = 0
+
+lemma sum_simplexBoundaryTerm_zero (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋0⦌) :
+    (∑ c : SimplexBoundaryIndex r d 0, simplexBoundaryTerm A S w 0 c x) = 0
+
+```
+
+### 136.3 元の二つの微分の線形像とL09の包装（C300〜C302、L09の型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§108・§112のL09の右辺`cutSumLinear(boundaryCoefficient)`と
+`cutSumLinearSimplex(boundarySimplex)`を、既存rawComponent・normalizedComponentへ
+元のSurjection.differential・正規化鎖のdを適用した値として明示する記法を置く。
+以下の二つはその既存の線形像の略記であり、別の切断作用・微分・鎖模型を構成しない。
+とくに全境界和から逆向きに右辺を定義せず、元の二つの微分の像を直接使う。
+C300はC297・C298、C301は既存AlexanderWhitney.generator_dとL08の生成元評価、
+C302はC267・C299、L09は既存C283とこの二つの同じ線形像を合わせる。
+q=0・d=0を除かず、追加仮定はない。個々の補題200行以内。以下を検証前に記録する。
+
+```lean
+def cutSumCoefficientBoundary (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ) :
+    (d q : ℕ) → Surjection.BasisWord (r + 1) d → S _⦋q⦌ →
+      (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+def cutSumSimplexBoundary (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) :
+    (q : ℕ) → S _⦋q⦌ → (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+lemma sum_coefficientBoundaryTerm_eq (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (∑ c : CoefficientBoundaryIndex r d q, coefficientBoundaryTerm A S r d q w c x) =
+      -cutSumCoefficientBoundary A S r d q w x
+
+lemma cutSumSimplexBoundary_succ_eq_sum (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    cutSumSimplexBoundary A S w (q + 1) x =
+      ∑ i : Fin (q + 2), (-1 : ℤ) ^ i.val •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+          (cutSum A S w (S.δ i x))
+
+lemma sum_simplexBoundaryTerm_eq (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (∑ c : SimplexBoundaryIndex r d q, simplexBoundaryTerm A S w q c x) =
+      -((-1 : ℤ) ^ d) • cutSumSimplexBoundary A S w q x
+
+theorem cutSum_boundary (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      cutSumCoefficientBoundary A S r d q w x +
+        (-1 : ℤ) ^ d • cutSumSimplexBoundary A S w q x
+
+```
+
+検証まではL09の完了数へ足さない。C297・C300のhは算術で常に供給し、L09の仮定に残さない。
+
+### 136.4 検証待ちの間の次段L10の既存API点検（紙のみ）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+L10のLeanにはまだ進まず、§121の再利用の筋を本体で確認した。
+`IntervalCuts.surjection_d_neg_apply`は区間の入力を含まない次元によらない宣言で、
+次の型のまま使える。コピーしてχの微分の比較を作り直す必要はない。
+
+```lean
+IntervalCuts.surjection_d_neg_apply (A : Type u) [CommRing A] (n d : ℕ)
+    (x : (Surjection.complex A n).X (-((d + 1 : ℕ) : ℤ))) :
+    (Surjection.complexXIso A n d).hom
+      ((Surjection.complex A n).d (-((d + 1 : ℕ) : ℤ)) (-(d : ℤ)) x) =
+      Surjection.differential A n d ((Surjection.complexXIso A n (d + 1)).hom x)
+```
+
+入力の任意の負自然数次数では既存`SimplexCuts.chains_d_neg`を使い、
+正次数零は`NegativeTensor.isZero_positive`、χの正次数零は
+`Surjection.complex_isZero_positive`を使う。
+一般Sの負次数は全て現れうるため、`IntervalCuts.interval_eq_zero_of_other`の
+区間に固有の零性は適用対象ではない。
+`IntervalCuts.cochainActionComponent_d`の`TensorProduct.ext`・`tensorLift`の組み立ては
+§121のとおり再利用できる。
+
+§108.3ではarity零はL14で別に処理する規約であることも確認した。
+そのときには一般Sの既存`AlexanderWhitney.cochainCounit`と
+`Surjection.zeroAugmentation`（空語を含む）を再利用する。
+今回の点検は紙のみで、L10〜L28の未実装行数を控除せず、完了数へ足さない。
+
+## 137. L09の完了・検証・実測（11-14）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+### 137.1 完了した主張
+
+**L09 `cutSum_boundary` は完了**。§108・§112の同じ切断和について、
+任意の可換環A・単体的集合S・正のarity r+1・全語次数d・全入力次数qで、
+元の二つの微分のLeibniz則を、元の加群の厳密な等式として示した。
+q=0・d=0を除いていない。追加の数学的仮定はない。
+右辺は元の線形削除微分 `Surjection.differential` と元の正規化鎖微分
+`AlexanderWhitney.chains.d` を、既存のrawComponent・normalizedComponentで評価した値。
+全境界和の相殺から右辺を逆に定義することはしていない。
+
+```lean
+cutSum_boundary (A : Type u) [CommRing A] (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      cutSumCoefficientBoundary A S r d q w x +
+        (-1 : ℤ) ^ d • cutSumSimplexBoundary A S w q x
+```
+
+専用監査の実行内の `#check @...cutSum_boundary` でも、実際の型が
+A・CommRing A・S・r・d・q・w・xだけを引数に持つことを確認した。
+arity零は固定した§108.3の規約どおりL14で別に扱い、ここでは元のL09のr+1の型を維持した。
+L10やM14全体が完了したとは数えない。
+
+### 137.2 取り込み点・登録候補・検証
+
+新規 **7モジュール・432行**。最終対象ビルドは **成功、2,525 jobs**、
+専用の小さい監査は **7モジュール・70宣言・標準三公理のみ**。
+新規7本のsorry・追加公理0、Lean警告0、`git diff --check`成功。
+未検証の本体下書きは現在ない。
+既存の公開宣言・界面・drafts・共通入口・共通監査は変更していない。
+鍵は各対象ビルド・各監査の間だけ取り、終了を確認して返却した。
+整理券待ちは一枚にまとめ、最大約26分の待機中も別の鍵を取らなかった。
+
+登録候補（接頭部はすべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 | 検証済みの内容 |
+| --- | ---: | --- |
+| CoefficientDifferentialValues | 52 | 元の生成元・線形削除微分の実基底での値、C284・C285 |
+| CoefficientLengthTransports | 66 | 同じ語・文字削除・削除係数・有効性・実生成元の語長移送、C286〜C290 |
+| CoefficientWordComparisons | 58 | 同じpositiveWordと元の係数語、C291〜C293・C296 |
+| CoefficientBoundarySums | 83 | 同じ指定係数位置の生成元と切断の全和、C294・C295 |
+| CoefficientDifferentialSums | 64 | 全係数境界和と元の線形微分、二つの次数零の分岐、C297〜C299 |
+| CutSumBoundaryInputs | 78 | 元の二つの微分の既存線形像の記法と同じ境界和の照合、C300〜C302 |
+| CutSumBoundary | 31 | L09、全次数の同じ切断和のLeibniz則 |
+
+入口は `CutSumBoundary` の一対象がこの7本をすべて依存に含む。
+監査では7本の宣言元をそれぞれ明示し、各モジュールの監査宣言数が0でないことも検査した。
+
+- 最終対象ビルド：`/tmp/bsw16/m14-cut-sum-boundary-03.log`。
+- 監査ソース：`/tmp/bsw16/audit-m14-coefficient-boundary.lean`。
+- 監査結果と定理の実際の型：`/tmp/bsw16/m14-coefficient-boundary-audit.log`。
+
+途中の検証では、語長の算術の等式を明示し、定義上同じ型をタクティクが拾わない箇所を
+等式の直接の接続と反射性で照合した。元の語長での有限和は既存finCongrで添字替えした。
+未使用の簡約・既に閉じた後の手順の警告を除いた。
+新しい数学の仮定、別の切断作用、別の微分、別の比較射を足して対処していない。
+個々の補題は200行以内。
+
+### 137.3 実測と見込みの差
+
+§134から432行を加え、**L09a・L09の最終実測は8,991行**、
+**M14全体は14,057行**。旧coherent経路の保管済み10,216行、報告・監査・有限点検は除外。
+L09a完成時§132の7,740行から見たL09への接続は **1,251行**。
+§132の旧上端750行に対して501行増えたが、§134で最後に出し直した残り300〜500行には
+今回の432行が収まった。§134のL09a・L09の完成見込み8,859〜9,059行の範囲内。
+
+L09a・L09の残りは0。次は固定した一覧のL10へ進む。
+次元によらない既存のχの微分・生成元の外延性・全整数の次数の組み立てを再利用し、
+区間の入力に固有の零性や区間の境界定理を一般Sへ適用しない。
+
+| M14全体の残り | 下端 | 上端 |
+| --- | ---: | ---: |
+| L10〜L28（L12a込み） | 4,330 | 7,790 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後のnative Totへの適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **新規残り** | **7,830** | **14,040** |
+| **実測14,057行を含む完成見込み** | **21,887** | **28,097** |
+
+外枠25,000行は変更しない。現在の残り枠は **10,943行**。
+上側が外枠を **3,097行** 超えるリスクは残る。未実装部分から実測なしに控除しない。
+現在の実測は外枠に届いていないため、指示どおり止まらずL10へ進む。
+G10の部品、M15・G12は作らない。B4は595254e10で完了済みのまま。
