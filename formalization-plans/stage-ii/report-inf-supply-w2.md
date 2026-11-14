@@ -11252,3 +11252,114 @@ def strictBETotBKNativeClassificationIso (F : K ⥤ (operad A).Algebra)
         ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
           (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))))
 ```
+
+## 177. R03b完了と元のΔ図式上の一つの指定native錐（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。済みはR01・R03a・R03a.1・R03b。R02の全錐族、R03の極限性は未完了。
+
+§175の型のまま `classifiedLeftFibrationSectionsEquivalence` を証明した。元の二つの射影から共通の小さいunstraighteningへの底上の二本の比較を使い、元の切断空間の実際の同値へ戻した。BEでは、同じBK係数の切断から、元のCAlg図式と同じ頂点のnative錐の切断模型への同値を得た。
+
+この比較による**元の普遍BK点の像**を指定頂点の錐との既存全単射で戻して、実際のjoin錐を作った。左境界は元のTot頂点のYoneda射に等しく、同じ切断模型へ戻した点は元のBK点の同じ像に等しい。さらに元のAsSmall・二重反対の指定同型で元のΔ添字に戻した。同型に沿う全図式は `strictBECosimplicialDiagram A F` と厳密に等しく、戻したnative錐 `strictBETotNativeConeAt` の頂点も元のTot頂点そのものである。
+
+**まだ示していないもの**：この一図式の錐の全図式射についての族、元の標準脚の最終照合、元の同じ錐の極限性。そのため `strictBETotNativeConeAt` はR02の全族を完成と数える代用にしない。特にR03の判定のa・ha・heを省略せず、Uの極限保存から逆向きに元のBEの極限性を推論しない。
+
+### 177.1 検証と行数
+
+239：三本の対象ビルド10,639 jobs・終了0、小監査77本527宣言。240：二本の対象ビルド10,642 jobs・終了0、小監査79本539宣言。いずれも標準三公理のみ。実ハンドル35625・74011の終了0を確認、鍵は返却済み。個別検査で元の切断空間のKan性を局所に明示し、計算上限の変更なし。sorry・独自公理0。
+
+今回5本298行、累計79本・5044行（外枠15,000）。各200行以下。R03bの一般形・BEへの適用・元の指定BK点からの錐の組立ては199行で、§175の250〜500行の見込みを51〜301行下回った。添字移送と元のΔ上の錐の照合は別に99行の既存の構成の法則・証明分割で、追加項目には数えない。R03b以外の新しい項目は追加していない。⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparison・共通入口・公式監査・mainは変更していない。
+
+### 177.2 見込みの半分での追記
+
+§170で初期見込みの下端5,700行の半分を報告済み。今回、初期上端9,800行の半分4,900行も超えた。現在5044行。元の重み比較を作り直す必要はなくなり、元の指定BK点から実際の同じ頂点の錐へ到達した。一方、全族の高次自然性と標準脚の照合の部分には未実測の幅が残る。
+
+残りの見込み：R02〜R03の標準脚・全錐族・極限判定の接続1,000〜2,000行、R04〜R05の台のTotと局所化1,000〜1,800行、実現R06〜R10が2,800〜4,800行、R11〜R12が500〜900行。残り約5,300〜9,500行、累計約10,300〜14,500行。外枠15,000は維持するが上側の余裕は小さく、次の接続の実測で更新する。型・範囲を弱めたり、点ごとの錐を全族と読み替えたりしない。
+
+次は、同じ錐の脚の評価と、既存の全自然比較を使った全族の接続。R03bの切断の逆の選択だけで図式射について厳密な自然性が自動的に得られるとは主張しない。指定された全比較に戻して両境界を照合する。
+
+### 177.3 今回の型
+
+#### ClassifiedSectionsComparison（67行）
+
+```lean
+theorem simplicialSectionsMap_isQCatEquivalence_of_precompositionEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    IsQCatEquivalence (simplicialSectionsMap f hf)
+
+def classifiedLeftFibrationSectionsEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (η : FunctorIso (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram q)) :
+    QCatEquivalence (simplicialSections p) (simplicialSections q)
+```
+
+#### StrictDiagramTotBKNativeSections（55行）
+
+```lean
+def strictBETotBKNativeSectionsEquivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    QCatEquivalence
+      (bousfieldKanHolim (strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget))
+      (coherentConeSectionSpace (strictBETotUniverseSourceDiagram A K F)
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))
+```
+
+#### StrictDiagramTotUniverseNativeCone（77行）
+
+```lean
+def strictBETotUniverseNativeConePoint (F : K ⥤ (operad A).Algebra) :
+    (coherentConeSectionSpace (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A K).obj F)))) _⦋0⦌
+
+def strictBETotUniverseNativeCone (F : K ⥤ (operad A).Algebra) :
+    JoinCone (strictBETotUniverseSourceDiagram A K F)
+
+theorem strictBETotUniverseNativeCone_vertexMap (F : K ⥤ (operad A).Algebra) :
+    joinInl (Δ[0] : SSet.{u+1}) _ ≫ (strictBETotUniverseNativeCone A K F).val =
+      SSet.yonedaEquiv.symm ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A K).obj F)))
+
+theorem strictBETotUniverseNativeCone_section (F : K ⥤ (operad A).Algebra) :
+    fixedVertexConeSpaceEquiv (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A K).obj F)))
+      ⟨strictBETotUniverseNativeCone A K F, strictBETotUniverseNativeCone_vertexMap A K F⟩ =
+        strictBETotUniverseNativeConePoint A K F
+```
+
+#### StrictDiagramTotUniverseIndex（44行）
+
+```lean
+def strictBETotOpOpNerveIso (K : Type u) [SmallCategory K] : nerve Kᵒᵖᵒᵖ ≅ nerve K
+
+def strictBETotUniverseIndexIso (K : Type u) [SmallCategory K] :
+    nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ) ≅ (SSet.uliftFunctor.{u+1,u}).obj (nerve K)
+
+theorem strictBETotUniverseSourceDiagram_index (A : Type u) [CommRing A]
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    strictBETotUniverseSourceDiagram A (AsSmall.{u} SimplexCategory) F =
+      (strictBETotUniverseIndexIso (AsSmall.{u} SimplexCategory)).hom ≫
+        strictBECosimplicialDiagram A F
+```
+
+#### StrictDiagramTotNativeConeAt（55行）
+
+```lean
+def strictBETotNativeConeAt (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    JoinCone (strictBECosimplicialDiagram A F)
+
+theorem strictBETotNativeConeAt_vertexMap
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    joinInl (Δ[0] : SSet.{u+1}) _ ≫ (strictBETotNativeConeAt A F).val =
+      SSet.yonedaEquiv.symm ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F)))
+
+theorem strictBETotNativeConeAt_vertex
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (strictBETotNativeConeAt A F).vertex = (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F))
+```

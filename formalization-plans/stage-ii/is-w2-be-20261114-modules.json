@@ -72,5 +72,10 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCosliceClassification",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeKanDiagram",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKClassification",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeClassification"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeClassification",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedSectionsComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeSections",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniverseNativeCone",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniverseIndex",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeConeAt"
 ]
