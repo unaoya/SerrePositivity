@@ -1496,3 +1496,41 @@ G1・G2共用部品込み本体9,503行、入口込み9,666行。一般の有限
 次は上記の一般形の底変換の Cartesian 比較・三重交叉の同型と二射影を使い、六種の式を `Scheme.GlueData` の式へ戻し、実際の有限表示対象の模型の貼り合わせと元の対象との Cartesian 比較へ接続する。その後、一般の固有性の降下と被覆模型を続ける。B01〜B04は未完、2g-1の停止点ではない。外枠25,000行は不変、約12,000行で G2 の残りの規模の見込みを更新する。
 
 一覧：済み10／全体14（うち追加5）。
+
+
+同じ250〜600行の gluing の係数移送の分割の型：`OpenTransitionCandidate S` は添字 I、チャート Uᵢ、重なり Vᵢⱼ、構造射 pᵢ・qᵢⱼ、開包含 fᵢⱼ と `fᵢⱼ≫pᵢ=qᵢⱼ`、対角の候補 dᵢ・反転 tᵢⱼ・三重交叉の射 Lᵢⱼₖ とそれぞれの基底上の可換式を保持する入力。単位・逆・cocycle の等式はまだ要求しない。`baseChangedF`・`baseChangedD`・`baseChangedT`・`baseChangedL` は実際の後段の対象の間の射で、L は一般形の三重交叉の同型で移送する。`BaseChangedEquations` は後段の実際の六種の式、`baseChangedOpenTransitionGlueData` はこの具体的な六種の式を既存の `openTransitionGlueData` へ渡す。固定模型の合成の底変換の式から `BaseChangedEquations` を作る法則を別に分割する。既存の gluing 構成の入力の整理と係数移送で、親項目は増やさず、条件付きの入力の整理だけで模型の存在の完成とはしない。
+
+
+同じ gluing の係数移送の分割：`ProjectedModelEquations C γ` は六種の固定模型間の式を、各源の底変換の第二射影の後での式として保持する。対角・反転では `pullback.snd ≫ d ≫ f = pullback.snd`、`pullback.snd ≫ f ≫ d = pullback.snd`、`pullback.snd ≫ t = pullback.snd`、`pullback.snd ≫ t ≫ t = pullback.snd`。三重交叉では `pullback.snd ≫ L ≫ f = pullback.snd ≫ fst ≫ t ≫ f` と `pullback.snd ≫ L ≫ t ≫ f = pullback.snd ≫ snd ≫ t ≫ f`。`baseChangedEquations_of_projected` はこれらから後段の実際の `BaseChangedEquations` を二射影で供給し、三重交叉の式は具体的な同型を前合成して移す。`baseChangedModelArrow_eq_iff` により、既に供給した六種の底変換射の式をこの入力に渡せる。前記250〜600行の同じ構成の証明分割で、親項目は増やさない。
+
+
+B01 の六種の具体的な式から gluing への適用（着手前の型、見込み150〜350行）：`OpenAtlasModelData.transitionCandidate` は、供給済みの段のチャート・重なり・構造射・三種の射から `OpenTransitionCandidate` を実際に構成する。`projectedModelEquations_of_stageEquationsHold` は六種の具体的な有限族の各成分を取り出し、`baseChangedModelArrow_eq_iff` で模型への射影の式へ戻す。`baseChangedEquations_of_stageEquationsHold` は後段の実際の六種の式、`glueDataOfStageEquations` は後段の実際の `Scheme.GlueData` を返す。段の式の存在は既存の `exists_stageEquationsHold_of_fg` が供給するものを使い、式の存在や元の係数環の Noether 性を新しい主定理の仮定にしない。既存構成の入力の組立てと係数移送の適用で、親項目は増やさない。
+
+
+B01 の元の対象との比較の後段への移送（着手前の型、見込み150〜350行）：`cartesianBaseChangeComparison` は元の Cartesian 正方形 `IsPullback a x p g` と係数射の因子化 `e≫δ=g` から、元の源 X→pullback δ p の実際の比較を取る。二射影の式と `isPullback_cartesianBaseChangeComparison` は元の源・構造射を保つ。`cartesianBaseChangeComparison_naturality` は元の源の射 f と模型の射 r の可換式から、実際の後段への比較の自然性を供給する。`isPullback_cartesianBaseChangeComparison_square` は同じ可換式と源の構造射の一致から、後段の模型間の射との Cartesian 性を供給する。新しい存在の入力を要求せず、元のチャート・重なりとの比較をさらに後の係数段へ移す既存構成の法則。これを実際のgluingの比較・構造射へ渡す適用は別に型を記録する。親項目は増やさない。
+
+
+### B01：構造射を保つ後段の実際の gluing の係数移送
+
+| 登録モジュール | 行数 | 宣言と主張 |
+| --- | ---: | --- |
+| BaseChangedModelCartesian | 35 | `isPullback_baseChangedModelArrow`：任意の選んだ構造射の可換式で作る底変換射は Cartesian |
+| 同上 | 同上に含む | `isOpenImmersion_baseChangedModelArrow`：開包含を保存 |
+| BaseChangedModelTriple | 60 | `baseChangedModelTripleComparison`：後段の実際の交叉から固定三重交叉への比較 |
+| 同上 | 同上に含む | `isPullback_baseChangedModelTripleComparison`：係数基底上の Cartesian 性 |
+| 同上 | 同上に含む | `baseChangedModelTripleIso`：実際の交叉と固定三重交叉の底変換の具体的な同型 |
+| 同上 | 同上に含む | `_hom_fst`・`_hom_snd`（各 `_assoc`）：基底座標と固定模型への射影の保持 |
+| BaseChangedModelTripleProjections | 44 | `baseChangedModelTripleIso_hom_fstArrow`・`_hom_sndArrow`（各 `_assoc`）：固定三重交叉の二射影の底変換との可換式 |
+| OpenTransitionCandidate | 84 | `OpenTransitionCandidate`：チャート・重なり・三種の射と構造射の可換式を保つ具体的な入力 |
+| 同上 | 同上に含む | `baseChangedF`・`baseChangedD`・`baseChangedT`・`baseChangedL`：後段の実際の局所射 |
+| 同上 | 同上に含む | 開包含の instance、`baseChangedF_toBase`・`baseChangedD_toBase`・`baseChangedT_toBase`・`baseChangedL_toBase`（各 `_assoc`）：開包含性と基底座標の保持 |
+| BaseChangedOpenTransitionGlueData | 40 | `BaseChangedEquations`：後段の実際の六種の式 |
+| 同上 | 同上に含む | `baseChangedOpenTransitionGlueData`：具体的な六種の式を Scheme.GlueData に組み立てる |
+| BaseChangedTransitionEquations | 74 | `ProjectedModelEquations`：固定模型への射影の後での六種の式 |
+| 同上 | 同上に含む | `baseChangedEquations_of_projected`：二射影と三重交叉の具体的な同型で後段の実際の六種の式へ移送 |
+
+本体337行・入口6行。直接 importer AlgebraicGeometry まで対象ビルド4,957ジョブ成功。六モジュールの小監査102宣言（2・12・6・52・17・13）・標準三公理のみ。単独束の終了状態0、公開前のソース完全一致を確認済み。ログ `2g-model-transition-gluing-check-2.log`・`2g-model-transition-gluing-native.log`・`2g-model-transition-gluing-audit.log`。続けて検証したアトラスへの適用の下書きは有限族の成分の簡約で失敗したが、この六本の対象ビルド・監査はその前に成功。未検証の適用と元の対象との比較の下書きは本体・実測に含めない。既存宣言の型変更・追加公理・sorry・200行を超える宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、検証中だけ使用。
+
+G1・G2共用部品込み本体9,940行、入口込み10,111行。一般の有限表示対象の模型の分割3,278行。構造射の可換式を保つ gluing の係数移送は供給済みで、具体的な六種の式への適用と全体の模型・元の対象との比較は検証中／未完。一般の固有性の降下と被覆模型も残り、B01〜B04は未完。
+
+一覧：済み10／全体14（うち追加5）。
