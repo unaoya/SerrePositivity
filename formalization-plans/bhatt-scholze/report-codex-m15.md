@@ -5422,3 +5422,265 @@ RawModuleTensorSelectedClosed・RawModuleTensorConePairEquation の通常の対�
 指定 fiber・一般の native な辺と全族、M11 以降と G12 の元の目標は未完。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 45. M10 の選択 cochain の像と同じ全 cone データの単射制限（11-14）
+
+§44 の通常成分と二点の方程式に続き、任意終端への制限で元の方程式を戻すため、
+同じ全 cone データと始点つき単射 pullback の一致を検証する。
+
+まず、元の選択 cochain を濃度の等式と明示次数で表し直し、元の表示に厳密に戻す。
+既存の有限集合の列挙 `normalizedTensorElementSelectionOfCard` と、その終端・像の法則を
+再利用する。同じ列の最上位 cochain であることから、順序埋め込みの像を選んだ成分と
+制限列の元の成分を異種等号で照合し、元の次数符号の作用も保持する。
+frame 射の後合成の単射性を仮定して逆推論するものではない。
+
+同じ cone の全対象は、始点つき単射の制限と厳密に一致する。
+通常零次成分を元の frame 射の閉零元へ戻し、高次の通常成分は元の閉 nerve の消滅式で零とする。
+混合成分は同じ選択 cochain の像の式を使い、通常零次成分は同じ元の辺を、
+高次通常成分は同じ零成分を比較する。これらの全成分を従属関数の外延性でまとめ、
+全 `SimplexData` の単射 pullback と元の制限列のデータの一致を得る。
+
+本節は M10 の同じ構成の係数移送・再添字・成分の貼り合わせと証明の分割であり、
+一次 ID は追加しない。全作用素のうち非単射の全 cone データの整合性と、
+始点を含む三点以上の集合の HA 方程式は引き続き別に検証する。
+全宣言の型は以下のとおり。
+
+`RawModuleTensorSelectedCard`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementSelectedCochainAtMaxOfCard {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (r : ℕ) (hc : J.card = r + 1) :
+    GradedHom A (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)) (ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (J.max' hJ)))) k
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_eq_ofCard {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    strictRawModuleTensorElementSelectedCochainAtMax A X P Q c J k hJ hk =
+      strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q c J k hJ hk (J.card - 1)
+        (by have := Finset.card_pos.mpr hJ; omega)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMaxOfCard_congr {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (r s : ℕ) (hrs : r = s) (hr : J.card = r + 1) (hs : J.card = s + 1) :
+    strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q c J k hJ hk r hr =
+      strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q c J k hJ hk s hs
+
+lemma strictRawModuleTensorElementSelectedCochainAtMaxOfCard_raw {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (r : ℕ) (hc : J.card = r + 1) :
+    HEq (strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q c J k hJ hk r hc)
+      ((strictRawModuleTensorElementLinear A X P Q
+        ((SimplexCategory.toCat.map
+          (normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙ c)).val.component
+            Finset.univ k Finset.univ_nonempty
+            (by simpa only [Finset.card_univ, Fintype.card_fin, ← hc] using hk))
+```
+
+`RawModuleTensorSelectedCardImage`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMaxOfCard_image {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1)) (J : Finset (Fin (m + 1)))
+    (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (r : ℕ) (hc : J.card = r + 1) :
+    HEq (strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q c (J.image e) k (hJ.image e)
+      (by rw [Finset.card_image_of_injective _ e.injective]; exact hk) r
+      (by rw [Finset.card_image_of_injective _ e.injective]; exact hc))
+      (strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)
+        J k hJ hk r hc)
+```
+
+`RawModuleTensorSelectedImageReindex`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_image_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1)) (J : Finset (Fin (m + 1)))
+    (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    HEq (strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (J.image e) k (hJ.image e)
+      (by rw [Finset.card_image_of_injective _ e.injective]; exact hk))
+      (strictRawModuleTensorElementSelectedCochainAtMax A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)
+        J k hJ hk)
+
+lemma strictRawModuleTensorElementSelectedCochainAtMax_image_reindex_smul {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1)) (J : Finset (Fin (m + 1)))
+    (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) (r : ℤˣ) :
+    HEq (r • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (J.image e) k (hJ.image e)
+      (by rw [Finset.card_image_of_injective _ e.injective]; exact hk))
+      (r • strictRawModuleTensorElementSelectedCochainAtMax A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)
+        J k hJ hk)
+```
+
+`RawModuleTensorConePrependObjects`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_obj_prepend {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1)) (i : Fin (m + 2)) :
+    (strictRawModuleTensorConeData A X P Q c).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom i) =
+      (strictRawModuleTensorConeData A X P Q
+        ((SimplexCategory.toCat.map
+          (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)).obj i
+```
+
+`RawModuleTensorConeOrdinaryClosed`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_hom_ordinary_closed {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hab : a ≤ b) :
+    HEq ((strictRawModuleTensorConeData A X P Q c).hom I a b 0 hI ha hb hk)
+      (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ ((strictRawModuleTensorElementDiagram A X P Q).map
+          (c.map (homOfLE ((coneTailOrderHom n).monotone hab))))).val
+```
+
+`RawModuleTensorConeOrdinaryZero`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_hom_ordinary_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hc : I.card ≠ 2) :
+    (strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk = 0
+```
+
+`RawModuleTensorConeOrdinaryPullbackZero`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_pullback_hom_ordinary_zero {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1))
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
+    HEq (((strictRawModuleTensorConeData A X P Q c).pullback
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)).hom I a b 0 hI ha hb hk)
+      ((strictRawModuleTensorConeData A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)).hom
+          I a b 0 hI ha hb hk)
+```
+
+`RawModuleTensorConeMixedPullback`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_pullback_hom_mixed {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1))
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
+    HEq (((strictRawModuleTensorConeData A X P Q c).pullback
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorConeData A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)).hom
+          I a b k hI ha hb hk)
+```
+
+`RawModuleTensorConeOrdinaryPullback`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_pullback_hom_ordinary {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1))
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
+    HEq (((strictRawModuleTensorConeData A X P Q c).pullback
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)).hom I a b k hI ha hb hk)
+      ((strictRawModuleTensorConeData A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)).hom
+          I a b k hI ha hb hk)
+```
+
+`RawModuleTensorConeInjectivePullback`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+lemma strictRawModuleTensorConeData_pullback_injective {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (e : Fin (m + 1) ↪o Fin (n + 1)) :
+    (strictRawModuleTensorConeData A X P Q c).pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) =
+      strictRawModuleTensorConeData A X P Q
+        ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)
+```
+
+対象ビルド・小さい監査の結果と実測は §45.1 に記録した。
+M10 の元の屋根と同じ K の実 Hom 射への全高次照合、同値性・完全忠実性、指定 fiber、
+一般の native な辺と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 45.1 検証と実測
+
+RawModuleTensorSelectedCard・RawModuleTensorSelectedCardImage・RawModuleTensorSelectedImageReindex・
+RawModuleTensorConePrependObjects・RawModuleTensorConeOrdinaryClosed・RawModuleTensorConeOrdinaryZero・
+RawModuleTensorConeOrdinaryPullbackZero・RawModuleTensorConeMixedPullback・
+RawModuleTensorConeOrdinaryPullback・RawModuleTensorConeInjectivePullback の通常の対象ビルドは成功した。
+新しい公開宣言 14 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は十ファイル、それぞれ 66・61・69・35・35・46・69・77・64・60 行、
+計 582 行、公開宣言 14 本。§44.1 の累計に加え、検証済み累計は
+99 ファイル・9,442 行・明示宣言 473 本（private 4 本）。
+200 行を超える証明はない。一次 ID は追加していない。
+
+同じ選択 cochain の濃度による表示・元の表示との厳密一致・像の選択との異種等号・
+元の次数符号の作用、全 cone データの対象と混合/通常成分の単射制限、
+全データの単射 pullback 一致を検証した。
+元の通常辺を閉零射へ戻す段でも、同じ加群射を保持している。
+frame 射の作用の単射性は使っていない。
+
+次は先端と終端を含む三点以上の集合の微分・全削除和・最後の切断合成を、
+同じ全普遍線形 cochain の方程式へ照合する。一般の dg 閉後合成の全次数式
+`dgClosedPostcomposition_f` は既存の `eHomWhiskerLeft` の成分式そのものであり、
+複体専用の `homPostcompose` の再構成は不要と確認した。
+その後、単射制限によって任意の終端の集合へ戻し、非単射作用素との全整合性を検証する。
+
+全 HA 方程式・全 cone/prism・同じ屋根と K の実 Hom 射への照合、その同値性・完全忠実性、
+指定 fiber・一般の native な辺と全族はまだ未完。
+M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
