@@ -114,9 +114,7 @@ def localizationNerveMapIsoOfWeakNatTrans (η : F.functor ⟶ G.functor)
   have h1 : localizationNerveMap (relativeCylinderEndpoint C 1) ≫ H =
       localizationNerveMap G := by
     rw [← localizationNerveMap_comp, relativeNaturalCylinder_one]
-  exact eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) h0.symm) ≪≫
-    (relativeCylinderEndpointIso C).postcomp H ≪≫
-    eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) h1)
+  exact functorIsoTransport ((relativeCylinderEndpointIso C).postcomp H) h0 h1
 
 attribute [cite HTT "1.2.7" (partial := component)
   "同じ相対円筒の選択逆による全関手間の比較を構成する部分。一般の局所化の普遍性は含まない。"]

@@ -2650,3 +2650,89 @@ M10 は、最後の全弱自然変換の指定成分への接続、半自由 nat
 今回の inner fibration と弱 lift だけで M10 の完了とは数えない。
 
 **一覧：済み 9／全体 42（うち追加 0）**。
+
+### 17.2 最後の成分の kernel 照合の分割（着手）
+
+型だけの独立照合が通ったため、元の成分の型は保持して証明を分割する。
+全比較の後合成の評価と同じ射の Arrow の一致を別の宣言にし、最後に同じ
+`localizationNerveMap_vertex F/G` の等式による端点輸送へ戻す。
+Arrow の等式には同じ射と両端の等式が含まれ、最後の主張は §16.2 の型のまま。
+新たな数学の主張への範囲拡張ではなく、M10 の同じ成分の法則の証明の分割。
+追加する分割の型は以下。共通文脈は `C D : RelativeCategory.{u}`、`F G : C ⟶ D`。
+
+```lean
+lemma localizationWeakNat_component_factorization (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) (x : (localizationNerve C) _⦋0⦌) :
+    Arrow.mk (((localizationNerveMapIsoOfWeakNatTrans η hη).app x).hom) =
+      Arrow.mk ((hoFunctor.map (localizationNerveMap (relativeNaturalCylinder η hη))).toFunctor.map
+        (((relativeCylinderEndpointIso C).app x).hom))
+
+lemma localizationWeakNat_component_arrow (η : F.functor ⟶ G.functor)
+    (hη : ∀ X, D.weakEquivalences (η.app X)) (X : C.category) :
+    Arrow.mk (((localizationNerveMapIsoOfWeakNatTrans η hη).app
+      (localizationNerveVertexEquiv C X)).hom) =
+      Arrow.mk (SSet.HomotopyCategory.homMk
+        (coherentNerveEdge (kanLocalizationStrictHom D (η.app X))))
+
+```
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 17.3 同じ全比較の等式輸送の分割（着手）
+
+全比較を両端の等式で移す法則を一般の関手比較について一度証明し、同じ弱自然変換の
+比較はその法則を呼ぶ形にする。`localizationNerveMapIsoOfWeakNatTrans` は元の円筒比較・
+後合成・二つの端点等式を保持する。公開の型や元の可逆二胞体は変えない。
+`LocalizationComparisonEvaluation` に追加する法則は次の二つ。
+
+```lean
+def functorIsoTransport {A Y : SSet.{u}} {f g f' g' : A ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') : FunctorIso f' g'
+
+lemma functorIsoTransport_component_arrow {A Y : SSet.{u}}
+    [Quasicategory A] [Quasicategory Y] {f g f' g' : A ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') (x : A _⦋0⦌) :
+    Arrow.mk (((functorIsoTransport e hf hg).app x).hom) = Arrow.mk ((e.app x).hom)
+```
+
+既存の全比較の等式輸送・成分評価の法則であり、一次 ID は追加しない。
+元の §16.2 の成分式の型を保ち、kernel の計算のために範囲を縮めない。
+
+**一覧：済み 9／全体 42（うち追加 0）**。
+
+### 17.4 最後の指定成分までの検証済み結果と実測
+
+§16.2 の `localizationNerveMapIsoOfWeakNatTrans_component` は、元の型を保持して
+正規 Lake の対象ビルド・kernel 照合を通過した。
+等式輸送を `functorIsoTransport` の一般の法則へ分け、その同じ成分の法則を使い、
+全比較の後合成、同じ射の Arrow の一致、元の頂点比較による両端の輸送へ分けた。
+この最終ファイルの対象ビルドは 15 秒、計算上限の局所的変更は不要になった。
+元の円筒の選択逆・可逆二胞体・同じ全比較を保持し、最後の主張の範囲も型も変更していない。
+影響する `AlgebraRoundTripComparison` の対象も通過した。
+
+今回の新規公開 32 宣言、同じ全比較の既存 2 宣言、BE 往復比較の既存 4 宣言の
+計 38 宣言について、小さい `#print axioms` 監査が終了コード 0。
+38 件の宣言名と実出力を機械照合し、依存公理は標準の
+`propext`・`Classical.choice`・`Quot.sound` の範囲内。
+追加公理・`sorryAx` はない。新規 32・既存比較 2 の計 34 宣言の文献属性も、
+一件ずつの HTT `component` と、各宣言の指定した番号に一致することを環境から検査し、
+終了コード 0。全て指定の共有鍵、実行上限 280 秒の組で行った。
+
+この goal ターンの新規 Lean は **7 ファイル・667 行・31 宣言（公開）**。
+`LocalizationComparisonEvaluation` は最終 99 行・5 宣言、
+`LocalizationWeakNatComponent` は最終 110 行・4 宣言。
+他の五つのファイルの実測は §17.1 と同じ。
+自分の既存 `RelativeNaturalComparison` はこのターン全体で差引 21 行・1 宣言追加。
+200 行を超える補題はない。
+検証済み累計は新規 Lean **42 ファイル・3,974 行・214 宣言（private 3 を含む）**。
+§16.2・§17.1 で下書きとしていたファイルも今回検証済みとなり、未検証の Lean 下書きはない。
+全て既存構成の等式輸送・係数作用・恒等・成分評価・自然性・射影構成の証明の分割で、
+一次 ID は追加していない。
+
+M10 の全弱自然変換の指定成分への接続はできた。
+半自由 native fiber の同定、一般の底の辺の lift・transport と全族の cocartesian 性、
+同じ U・単位・随伴を持つ `moduleFamily` の組み立ては引き続き必要。
+M11 以降の相対テンソル・RHom・完備反射・完備テンソルと G12 も未完。
+M10 を完了とは数えず、元の全目標を維持して続ける。
+
+**一覧：済み 9／全体 42（うち追加 0）**。

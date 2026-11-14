@@ -73,9 +73,27 @@ lemma functorIso_eqToIso_hom_app {A Y : SSet.{u}} {f g : A ⟶ Y}
   subst g
   simp [FunctorIso.toNatIso]
 
+/-- 概要：同じ全関手比較を両端の等式で移す（HTT §1.2.7）。
+方針：元の比較に二つの等式の同型だけを前後合成する。
+規約：元の可逆二胞体を保持する。使われ方：局所化の全比較の指定端点。 -/
+def functorIsoTransport {A Y : SSet.{u}} {f g f' g' : A ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') : FunctorIso f' g' :=
+  eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) hf.symm) ≪≫ e ≪≫
+    eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) hg)
+
+/-- 概要：両端を等式で移した同じ全比較は同じ成分の射を与える（HTT §1.2.7）。
+方針：二つの関手の等式を消去し、同じ可逆二胞体へ戻す。
+規約：Arrow は端点の等式も含む。使われ方：円筒比較の成分照合の kernel 分割。 -/
+lemma functorIsoTransport_component_arrow {A Y : SSet.{u}}
+    [Quasicategory A] [Quasicategory Y] {f g f' g' : A ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') (x : A _⦋0⦌) :
+    Arrow.mk (((functorIsoTransport e hf hg).app x).hom) = Arrow.mk ((e.app x).hom) := by
+  subst f' g'
+  simp [functorIsoTransport]
+
 attribute [cite HTT "1.2.7" (partial := component)
   "元の全関手比較の前合成と成分評価の法則だけを照合する。局所化の普遍性は含まない。"]
   functorHomotopyEvaluation_precomp_map_app functorIso_precomp_hom_app
-  functorIso_eqToIso_hom_app
+  functorIso_eqToIso_hom_app functorIsoTransport functorIsoTransport_component_arrow
 
 end SerrePositivity.EInfinity.Modules
