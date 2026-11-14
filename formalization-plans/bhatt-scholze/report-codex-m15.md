@@ -8669,3 +8669,119 @@ root ビルド・大きい監査・heartbeat 上限の変更はない。
 全三角形・K の実 Hom 誘導射の完全忠実性、M10・M11 以降・G12 はまだ未完である。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §59 元の評価列と実三相単体データ
+
+同じ元の評価自然変換を通常余錐にし、元の各全単体列に終端 Q を付けた評価列を作った。
+そこからの通常閉 nerve 単体、元の実 cone 単体と元の大域 pinched 単体を、
+同じ三相時刻で引き戻した。各相が対象族と一致する等式を使い、同じ元の全 cochain を
+貼り合わせた実 SimplexData を作った。全有限部分集合・任意整数次数を保持し、
+端点の等式による cast を明示する。
+
+これは M10 の既存の全三角形の貼り合わせの一段であり、一次 ID は足さない。
+貼り合わせたデータの HA 方程式はまだ未証明であり、Simplex として出力していない。
+各三部品が実単体であることだけから、貼り合わせたデータも単体だとは主張しない。
+
+`RawModuleTensorElementEvaluatedColumn.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementEvaluationCocone :
+    Cocone (strictRawModuleTensorElementDiagram A X P Q ⋙
+      ULiftHom.up.{u, u + 1, u + 1} (C := strictRawModuleCategory A X))
+
+def strictRawModuleTensorElementEvaluatedColumn {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    ComposableArrows (strictRawModuleCategory A X) (n + 1)
+
+lemma strictRawModuleTensorElementEvaluatedColumn_obj_castSucc {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 1)) :
+    (strictRawModuleTensorElementEvaluatedColumn A X P Q c).obj i.castSucc =
+      (strictRawModuleTensorElementDiagram A X P Q).obj (c.obj i)
+
+lemma strictRawModuleTensorElementEvaluatedColumn_obj_last {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (strictRawModuleTensorElementEvaluatedColumn A X P Q c).obj (Fin.last (n + 1)) =
+      Q
+```
+
+`RawModuleTensorTriangleData.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorTriangleData {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n
+```
+
+`RawModuleTensorTrianglePieces.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorTriangleObj {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) : RightModule A (dgAlgebraCategory A ((assocForget A).obj X))
+
+def strictRawModuleTensorTriangleFront {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n
+
+def strictRawModuleTensorTriangleBack {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n
+
+def strictRawModuleTensorTrianglePinched {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n
+
+lemma strictRawModuleTensorTriangleFront_obj {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i ≠ 2) :
+    (strictRawModuleTensorTriangleFront A X P Q c τ).obj i =
+      strictRawModuleTensorTriangleObj A X P Q c τ i
+
+lemma strictRawModuleTensorTriangleBack_obj {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i ≠ 0) :
+    (strictRawModuleTensorTriangleBack A X P Q c τ).obj i =
+      strictRawModuleTensorTriangleObj A X P Q c τ i
+
+lemma strictRawModuleTensorTrianglePinched_obj_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i = 0) :
+    (strictRawModuleTensorTrianglePinched A X P Q c τ).obj i =
+      strictRawModuleTensorTriangleObj A X P Q c τ i
+
+lemma strictRawModuleTensorTrianglePinched_obj_two {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i = 2) :
+    (strictRawModuleTensorTrianglePinched A X P Q c τ).obj i =
+      strictRawModuleTensorTriangleObj A X P Q c τ i
+```
+
+### 59.1 検証と実測
+
+RawModuleTensorTrianglePieces と RawModuleTensorTriangleData の対象ビルド、および新規公開宣言
+13 本の小さい監査は終了値 0 で成功した。依存公理は propext・Classical.choice・Quot.sound
+の範囲。新規引用属性・引用出力は 0 本。impl 鍵・待ち 3600 秒・gtimeout 280 秒を使った。
+大きい監査・root ビルド・heartbeat 上限の変更はない。
+
+新規検証済み Lean は三ファイル・199 行・明示宣言 13 本（private 0 本）。
+検証済み累計は 211 ファイル・16,296 行・明示宣言 739 本（private 21 本）。
+外枠 17,000 行まで残り 704 行。200 行を超える証明や一次 ID の追加はない。
+既存の EInfinity ソース（参照した複体側のファイルも含む）は変更していない。
+
+次の対象評価比較 RawModuleTensorTriangleEvaluationObjects.lean は 51 行の新規下書きで、
+現作業木の所有ソース全体は 16,347 行、外枠まで残り 653 行。
+
+次は同じ実三相データの全評価比較と HA 方程式を進める。
+M10・M11 以降・G12 はまだ未完であり、外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
