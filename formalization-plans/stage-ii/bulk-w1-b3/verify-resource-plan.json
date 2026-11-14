@@ -1,0 +1,24 @@
+{
+  "VERIFY_JOBS": 3,
+  "VERIFY_MEMORY_GB": 24,
+  "memory_budget_bytes": 24000000000,
+  "authorization": "11-14 morning: serial audits allowed during daytime; full verify 3 jobs/24 GB during day, 4/32 optional at night",
+  "VERIFY_CACHE": 0,
+  "exclusive_audits": [
+    "scripts/audit_axioms.lean",
+    "scripts/audit_einfinity.lean",
+    "scripts/audit_infinity_core.lean",
+    "scripts/audit_infinity_f1.lean",
+    "scripts/audit_infinity_f1b.lean",
+    "scripts/audit_infinity_presentable_localization.lean",
+    "scripts/audit_kst_s_construction.lean"
+  ],
+  "observed_large_audits": [
+    "scripts/audit_axioms.lean",
+    "scripts/audit_infinity_core.lean",
+    "scripts/audit_infinity_f1.lean",
+    "scripts/audit_infinity_f1b.lean",
+    "scripts/audit_kst_s_construction.lean"
+  ],
+  "scope": "Scheduling only; no audit removed, no cached result reused"
+}
