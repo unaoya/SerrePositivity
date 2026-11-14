@@ -1609,3 +1609,7 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientModelCategory
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelImages
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientModelFiltered
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientModelDiagram
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientSquareBaseChange

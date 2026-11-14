@@ -2785,3 +2785,19 @@ G1・G2共用部品込み本体16,044行、入口込み16,311行。B02〜B04 は
 G1・G2共用部品込み本体16,103行、入口込み16,371行。c857c0b03 の後は3モジュール248行＋入口3行、小監査38宣言・標準三公理のみ。全模型の filtered 性は閉じたが、被覆模型への実際の射・final 性と全図式の余極限、B02 の整理は残り、B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+全模型から実際の環表示の被覆模型への射の登録（着手前の型、見込み50〜100行、前記250〜650行の内数）：`coefficientModelHomToRingCoverModel` は全模型 X、実際の二環の k 構造写像と有限型性、被覆模型の正方形、X の両辺からの環の二射と係数・三つの可換式から、X から登録した実際の被覆模型への射を返す。対象と遷移の登録を合わせる既存の法則で、被覆模型の存在を最終の主張の仮定にしない。
+
+
+### B03・B04：全模型の実際の図式と元の基底上の有限表示 v 被覆
+
+`CoefficientModelDiagram`（76行）：`coefficientModelArrowDiagram` と cocone は全模型の実際の環写像と元の g への構造写像。両辺の環の図式・cocone、同じ宇宙の小さい模型の Arrow と両辺の図式・cocone を供給する。
+
+`CoefficientSquareBaseChange`（60行）：`exists_finitePresentation_baseChange_of_coefficient_square` は Noether な k 上の有限型な旧模型の正方形から、実際の P=R⊗_A D を元の R 上有限表示な v 被覆として構成する。D→P・P→C と三つの可換式を保持し、元の R の Noether 性を要求しない。P の被覆性を追加仮定にせず、元の g の v 判定から合成を消去して得る。
+
+本体136行・入口2行。各最初の単独検証、ソース完全一致、二対象と直接 importer AlgebraicGeometry のビルド5,058ジョブ、小監査14宣言（13・1）・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-model-diagram-check.log`・`2g-coefficient-square-base-change-check.log`・`2g-coefficient-model-diagram-square-native.log`・`2g-coefficient-model-diagram-square-audit.log`。
+
+G1・G2共用部品込み本体16,239行、入口込み16,509行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
