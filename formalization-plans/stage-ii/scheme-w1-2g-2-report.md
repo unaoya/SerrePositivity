@@ -123,3 +123,20 @@ Lemma 2.6 に必要な出口は `∃ n, ProperInductiveLevel n f`。原典の次
 `exists_properInductiveLevel_affineBase`：任意の環 R、固有・全射・局所有限表示 f:X→Spec R に対し ∃n, ProperInductiveLevel n f（見込み35〜80行）。G2 の `exists_proper_surjective_finitePresentation_coefficient_model` に係数環 ℤ を取り、実際の有限生成係数模型を供給する。有限型 ℤ の係数環の Noether 性から上の存在を適用し、元の対象との Cartesian 正方形と `of_isPullback` で移す。元の R の Noether 性、模型の存在を追加仮定にしない。非アフィンな任意の qcqs 基底まで完成と呼ばない。
 
 G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 と同じ一般の固有な modification を許すため、この命題だけから全ての一般の固有射の四角形の完全性を引き出してはならない。射影版だけを使う G4 は、上の整礎帰納と同じ各段で 2d が実際に供給するブローアップを保持して使う。G3 の残りの射影表示はその実際のブローアップと有限ファイバー冪を 2f の入力へ渡す部分。既存の帰納的レベルの定義を射影的な射に狭めない。
+
+
+## G3：任意の affine 基底への実際の模型による移送
+
+`AffineBaseProperInductiveLevel`（32行）：`exists_properInductiveLevel_affineBase` は任意の環 R 上の固有・全射・局所有限表示 f:X→Spec R に有限の帰納的レベルを返す。G2 の一般の固有全射の実際の係数模型を ℤ 上で構成し、その Noether な模型のレベルを Cartesian 正方形で戻す。元の R の Noether 性・模型の存在・係数射の忠実平坦性を仮定しない。BS17 Lemma 2.6 の affine 基底の場合であり、非アフィンな任意の qcqs 基底への模型まで完成と呼ばない。
+
+本体32行・入口1行。最初の単独検証、ソース完全一致、対象・直接 importer のビルド5,074ジョブ、小監査1宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-affine-base-proper-inductive-level-check.log`・`2g-affine-base-proper-inductive-level-native.log`・`2g-affine-base-proper-inductive-level-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体512行・入口込み520行、小監査28宣言・標準三公理のみ。G3 の射影表示と G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+## G3 の射影表示の最初の束（着手前の型）
+
+- `reesDegreeOneLinearMap I`：中心イデアル I から Rees 代数への次数一の R-線形写像。既存の reesDegreeOne を線形射として扱う法則。
+- `exists_rees_finite_degreeOne_generators I hI`：有限生成イデアル I に対し、ある n と a:Fin n→I が存在し、reesDegreeOne I ∘a が Rees 代数を R 上生成する。有限生成加群の有限族と、既存の rees_adjoin_degreeOne を使う。
+- `exists_rees_degreeOne_polynomial_surjective I hI`：同じ n,a による MvPolynomial (Fin n) R→ₐ[R] reesAlgebra I の評価が全射。元の生成元は次数一で、有限な添字は Type 0 に置く。これを次数付きの作用・有限加群性・irrelevant ideal の標準開条件へ渡す。最初の三項の見込み100〜240行。G3 の既承認の Rees の射影表示の分割で、全体の外枠は変えない。
