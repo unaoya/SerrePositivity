@@ -1917,3 +1917,23 @@ C05 の評価と次数零の係数の可換式（着手前の型、見込み10�
 G1・G2共用部品込み本体11,790行、入口込み11,991行。5c362ecfe の後の今回の区切りは9モジュール、本体499行・入口9行、小監査合計34宣言・標準三公理のみ。約12,000行の途中報告は f185b6370 に記録済みで、全体の見込み17,424〜23,424行、外枠25,000行は不変。C05 は本体166行までで未完。次は標準開の環の全射を実際の Spec の閉埋め込みに移し、標準開包含と合成して Proj への immersion を作り、次数零の環同型で固有な構造射を Spec R 上へ戻す。C05・C06 と B01〜B04 は未完で、2g-1 の停止点ではない。
 
 一覧：済み11／全体17（うち追加8）。
+
+
+C05 の多項式環の Proj の固有な構造射（着手前の型、見込み80〜180行）：`polynomial_finiteType_gradeZero` は有限個の変数の多項式環が次数零成分上でも有限型であることを返す。`polynomialProjToSpec` は Proj の既存の構造射を次数零成分の係数の環同型によって Spec R へ戻した実際の射。`isProper_polynomialProjToSpec` はその固有性。係数 R から多項式環への有限型性を、次数零成分を経由する合成の同じ射へ照合し、Mathlib の Proj の固有性と既存の環同型を組み合わせる。C05 内の既存の構成の係数移送の法則で、親項目を増やさない。
+
+
+C05 の実際の Proj への immersion と係数上の可換式（着手前の型、見込み80〜180行）：`polynomialAffineToProj` は次数零局所化からの全射を Spec に移し、none 変数の標準開包含と合成した実際の `Spec(MvPolynomial ι R)→Proj(MvPolynomial (Option ι) R)`。`isImmersion_polynomialAffineToProj` はその immersion 性、`polynomialAffineToProj_toSpec` は固有な構造射との合成が元の係数射の Spec であることを返す。標準開の構造射の Mathlib の公式と、前記の評価の次数零の係数との可換式を使う。C05 内の構成の証明分割・係数移送の法則で、親項目を増やさない。
+
+
+C05 の一般の有限型 affine の出口（着手前の型、見込み40〜100行）：`exists_affine_immersion_proper_ambient` は任意の有限型 R-代数 A に対し、実際の P、固有な q:P→Spec R、immersion j:Spec A→P と係数上の可換式を無条件に供給する。有限型 affine の多項式空間への実際の閉埋め込みと、前記の多項式 affine の Proj への実際の immersion を合成する。C05 の当初の型の出口で、R の Noether 性や周辺の存在を追加仮定にしない。
+
+
+### C05：多項式環の Proj の Spec R 上の固有な構造射
+
+`PolynomialProjProper`（49行）：`polynomial_finiteType_gradeZero` は有限変数の多項式環の次数零成分上の有限型性。`polynomialProjToSpec` は次数零の係数の同型で元の Spec R へ戻した実際の Proj の構造射。`isProper_polynomialProjToSpec` はその固有性。元の係数環の Noether 性は要求しない。
+
+本体49行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,988ジョブ成功。小監査6宣言・標準三公理のみ。最初の下書きの単独検証、公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-polynomial-proj-proper-check.log`・`2g-polynomial-proj-proper-native.log`・`2g-polynomial-proj-proper-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,839行、入口込み12,041行。C05 は本体215行までで未完。標準開への実際の immersion と係数上の可換式は下書き検証中で実測に含めない。C05・C06 と B01〜B04 は未完。
+
+一覧：済み11／全体17（うち追加8）。
