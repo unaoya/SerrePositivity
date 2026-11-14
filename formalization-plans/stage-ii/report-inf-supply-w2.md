@@ -12619,6 +12619,8 @@ R03dの後半へ進むにあたり、`weightedNerveMap_isPrecompositionEquivalen
 
 ### 197.1 型
 
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。単体の法則ではさらに `{n : ℕ}` と `s : weightedNerveSimplex (F ⋙ nerveFunctor) n` または `σ : ComposableArrows (Grothendieck F) n` を用いる。
+
 #### GrothendieckWeightedNerveRecovery（63行）
 
 ```lean
@@ -12686,4 +12688,39 @@ theorem exists_grothendieckWeightedNerveIso :
         e.hom.app (Opposite.op ⦋0⦌) (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
           (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
             (Opposite.op ⦋0⦌) (nerveVertex x)
+```
+
+## 198. 同じ底上の置換同型と元の単位の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 18（うち追加 6）。R03e完了、R03d・R02・R03は未完了。
+
+検証済みの同じ射影の等式をOver.isoMkに渡し、R03eを元の同じ底のOverの同型にした。この同型を既存のcontinuousLeftFibrationReplacementに送り、元の指定された置換の単位との厳密な可換性を単位の自然性から示した。いずれも既存構成の同型保存・自然性の法則であり、新しい中間の定理の追加ではない。元の係数からの相対Kan分類が成立したとは主張しない。
+
+266：新規一本の対象ビルド1,517 jobs・終了0、小監査120本888宣言・標準三公理のみ。実ハンドル70589の終了0を確認し、鍵返却済み。個別検査も実ハンドル61213の終了0。今回45行、累計120本・7,941行／外枠15,000。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りは§197のとおり、同じ底上のKan分類と元のaugmentationの指定点の回収、それを全共同Hom比較へ接続することである。Kan係数を仮定するweightedNerveMapの既存の前合成同値判定を、一般の非Kanなnerve係数へ適用しない。候補§192.1はなお未証明・未登録。R03dの型・固定始域への一致・元の標準脚の型を保って続ける。
+
+### 198.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### GrothendieckWeightedNerveOver（45行）
+
+```lean
+def grothendieckWeightedNerveOverIso :
+    Over.mk (nerveMap (Grothendieck.forget F)) ≅ Over.mk (weightedNerveProjection (F ⋙ nerveFunctor))
+
+def grothendieckWeightedNerveReplacementIso :
+    (continuousLeftFibrationReplacement (nerve I)).obj
+      (Over.mk (nerveMap (Grothendieck.forget F))) ≅
+    (continuousLeftFibrationReplacement (nerve I)).obj
+      (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))
+
+theorem grothendieckWeightedNerveReplacementIso_unit :
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (Grothendieck.forget F)))).left ≫
+        (grothendieckWeightedNerveReplacementIso F).hom.left =
+      (grothendieckWeightedNerveOverIso F).hom.left ≫
+        ((continuousLeftFibrationReplacementUnit (nerve I)).app
+          (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))).left
 ```
