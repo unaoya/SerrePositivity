@@ -6265,3 +6265,56 @@ theorem liftedStandardSimplexHomIso_yoneda_postcomp {Z Z' : SSet.{u}} (f : Z ⟶
 累計 **272モジュール・16,692行・2,266宣言**。一覧 `/private/tmp/isw2-g10-twohundredseventytwo-modules.txt`。外枠まで残り3,308行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
 
 B02の最終等式とB03〜B08・C・D、G10後の3b-4段0は未完。次はA09の実際のtensor逆射の成分へ、§131の実A12の成分式をAsSmall制限とともに代入する。錐側の今回の最上位評価とパラメータ側の§126・今回のYoneda評価を合わせ、§127の各切断条件と全切断和へ進む。
+
+## 133. B02の途中：実A09 tensor逆射とA12の像の成分
+
+一覧：済み 14／全体 36（うち追加 1）
+
+A09の指定 `freeTensorDiagramHomIso` の逆射へ、実際のHom–Tot比較・Moore反転・指定自由重みHom同型を合成したA12の複体射のΓ像を入れた。全標準単体パラメータ、任意の自由重みの元、任意のパラメータ次数について、そのtensor成分が元の `σ ≫ normalizedBousfieldKanConeRepresentative X` とパラメータcochainの実dg合成になることを証明した。逆転置の符号、AsSmall制限、指定始域射は元のものを保持している。切断条件を仮定していない。
+
+これはB02内の指定射の成分照合で、既存構成の評価・自然性・合成則を合わせた証明分割であり、ID付き項目の追加ではない。
+
+### 133.1 登録対象・型
+
+`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorComparison`（90行）
+
+```lean
+theorem reflectedBKFreeTensor_inverse_component (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (m : SimplexCategory)
+    (α : ((truncatedDoldKanFunctor A).obj
+      (homComplex A P ((productTotalFunctor A).obj X))).obj (Opposite.op m))
+    (n : ℕ) (p r : ℤ) (hr : p - n = r)
+    (j : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ))
+    (w : ((freeNegativeChainsDiagram (A := A)
+      (reflectedNormalizedBKSmallWeight A)).obj j).X (-(n : ℤ)))
+    (x : ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj m)).X p) :
+    let Y := (homDiagramFunctor P).obj X
+    let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
+      (reflectedNormalizedBKSmallHomIso A Y).hom
+    let t := (freeTensorDiagramHomIso A (normalizedBKSmallDiagram A Y)
+      (reflectedNormalizedBKSmallWeight A)).inv.app (Opposite.op m)
+        (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m) α)
+    let σ := (normalizedLinearWeightDiagramIso A V).inv ≫
+      extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat
+    (t.app j).f r (ιTensorObj
+      ((freeNegativeChainsDiagram (A := A) (reflectedNormalizedBKSmallWeight A)).obj j)
+      ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+        (SSet.stdSimplex.obj m)) (-(n : ℤ)) p r (by omega) (w ⊗ₜ[A] x)) =
+      compose A (D := Complex A) (p := p) (q := -(n : ℤ)) (n := r)
+        (x := P) (y := (productTotalFunctor A).obj X)
+        (z := (doubleOppositeDiagram X).obj (AsSmall.down.obj j))
+        ((((σ ≫ normalizedBousfieldKanConeRepresentative X).f (-(n : ℤ))).app
+          (AsSmall.down.obj j)) w)
+        (((normalizedSimplexHomEquiv A (homComplex A P ((productTotalFunctor A).obj X)) m).symm
+          α).f p x) (by omega)
+```
+
+### 133.2 検収と残り
+
+コード **`00c9e5357`**（1本90行）。個別検査 `/private/tmp/isw2-reflected-bk-free-tensor-comparison2.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build147.log` は **4,573 jobs・終了コード0**。新規分のみの監査 `/private/tmp/AuditISW2G10B02TensorComparison.lean` は **3宣言・標準三公理のみ**。共有鍵は `--class impl --wait 3600` でビルド・監査の間だけ使用し返却済み。
+
+累計 **273モジュール・16,782行・2,269宣言**。一覧 `/private/tmp/isw2-g10-twohundredseventythree-modules.txt`。外枠まで残り3,218行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
+
+次は自由生成元の前面・後面をこの式に代入し、§132の錐の最上位評価、§126・§132のパラメータ評価、§127のAW各切断成分を合わせる。B02の全体等式とB03〜B08・C・D、G10後の3b-4段0は未完。
