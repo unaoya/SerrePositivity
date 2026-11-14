@@ -9391,6 +9391,12 @@ simplexVertexList_deletedFace {m q r : ℕ} (s : Cut m q)
 
 ### 121.1 実測と完成範囲
 
+一覧：済み 8／全体 48（うち追加 4）
+
+基準はL01〜L44にL09a・L12a・L43a・L43bを加えた48項目。
+済みはL01〜L08。C/R等の既存構成の法則・証明の分割とI01の既存作用の照合は、
+共通規則に従い数学の新しい項目として数えない。
+
 §119.22の3,634行から、今回の14モジュール934行を加え、
 **L09a・L09の実測4,568行、改訂MayのM14全体9,634行**。
 Leanファイルの空行・docstring込みで数え、報告書・監査用ファイルは含めない。
@@ -9549,3 +9555,84 @@ L09aの有限添字だけでなく、実際の境界符号・出力次数・指�
 - `InactiveColorDegrees`（51行）
 - `PreviousBoundarySigns`（49行）
 - `PreviousVertexPositions`（88行）
+
+## 122. 約4,600行の報告後：同じ指定面の厳密な移送（11-14、続行）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§121は **1fc84640c** に保存済み。停止せず、混合角の既存の型の照合を続ける。
+`deletedCutFace`は既存`deletedCutTensor`内の色ごとの指定面を、更新次数を始域にして
+書き出したもの。新しい作用・正規化・錐は構成しない。
+C155・C156は既存の面の頂点列の評価、C157はC27・C152と頂点列の単射性による
+元の単体圏の射の一致である。ホモトピー圏の一致で代用しない。
+
+```lean
+simplexVertexList_deletedCutFace {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j : Fin (outputDegree s v a + 1)) (c : Fin r) :
+  simplexVertexList (deletedCutFace s v a ha j c) =
+    if c = a then (verticesList s v.val a).eraseIdx j.val else verticesList s v.val c
+simplexVertexList_deletedCutFace_at_vertex {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (c : Fin r) :
+  simplexVertexList (deletedCutFace s v (label s v.val k) hd j c) =
+    deletedVerticesList s v.val k c
+deletedCutFace_swapSteps {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc))
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc) (c : Fin r) :
+  deletedCutFace (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) hn jn c =
+    eqToHom (congrArg SimplexCategory.mk
+      (congrFun (deletedOutputDegree_swapSteps s v a b hab ho hn) c)) ≫
+      deletedCutFace s v (label s v.val b.castSucc) ho jo c
+```
+
+### 122.1 既存生成元と純粋テンソルの次数移送（C158・C159）
+
+同じ等式で型を移す既存構成の法則。等式の帰納法だけで証明し、
+新たな作用・ホモトピー・数学の定理は追加しない。
+
+```lean
+gen_cast_source (A : Type u) [CommRing A] (S : SSet.{0}) {n n' q : ℕ} (h : n = n')
+    (f : (⦋n'⦌ : SimplexCategory) ⟶ ⦋q⦌) (x : S _⦋q⦌) :
+  gen A S n (S.map (eqToHom (congrArg SimplexCategory.mk h) ≫ f).op x) =
+    (eqToHom (congrArg (fun t : ℤ => (chains A S).X t)
+      (congrArg (fun k : ℕ => -(k : ℤ)) h.symm))).hom
+      (gen A S n' (S.map f.op x))
+tensorValue_congr_degree (A : Type u) [CommRing A] (K : Complex A) (n : ℕ)
+    (d e : Fin n → ℕ) (h : d = e)
+    (v : ∀ i, K.X (-(d i : ℤ))) (w : ∀ i, K.X (-(e i : ℤ)))
+    (hv : ∀ i, (eqToHom (congrArg (fun t : ℤ => K.X t)
+      (congrArg (fun k : ℕ => -(k : ℤ)) (congrFun h i)))).hom (v i) = w i) :
+  (eqToHom (congrArg (fun t : ℤ => (power K n).X t)
+    (congrArg (fun k : ℕ => -(k : ℤ)) (congrArg (degreeSum n) h)))).hom
+    (tensorValue K n d v) = tensorValue K n e w
+```
+
+### 122.2 指定面と次数移送の検証済み区切り
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§121の報告後も続行して、次の二本 **131行**を追加した。
+
+- `SerrePositivity.EInfinity.SimplexCuts.DeletedCutFaces`（85行）
+- `SerrePositivity.EInfinity.SimplexCuts.GeneratorDegreeTransfers`（46行）
+
+対象ビルドは `/tmp/bsw16/m14-deleted-cut-faces-03.log` と
+`/tmp/bsw16/m14-deleted-cut-faces-02.log` の各対象で成功。
+合同監査 `/tmp/bsw16/audit-m14-deleted-cut-faces.log` は
+**2モジュール・10宣言・標準三公理のみ**。sorry・追加公理0、Leanの警告0。
+いずれの補題も200行以下、共通入口・共通監査・既存の公開宣言は変更していない。
+調整役への登録候補には、この二本も加える。
+
+L09a・L09の実測 **4,699行**、改訂MayのM14全体 **9,765行**。
+§121の残り見込みの「混合角」のうち、指定面の厳密な一致と一般の次数移送を進めた。
+`deletedCutTensor`内部の各因子をこの指定面の生成元へ実際に書き換え、
+全体の次数移送と符号を合わせる接続はまだ残る。L09aの完了には数えない。
