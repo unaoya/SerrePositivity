@@ -1587,3 +1587,5 @@ public import SerrePositivity.AlgebraicGeometry.AffineTensorModelPushout
 public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutDiagram
 
 public import SerrePositivity.AlgebraicGeometry.FilteredRingSameStageEquality
+
+public import SerrePositivity.AlgebraicGeometry.FilteredRingArrowFactor
