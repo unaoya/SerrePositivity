@@ -1,11 +1,14 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Almost.AlmostPurityConnectivity（仮。原典 Thm 10.9 の J-almost 連結性の部分）
--- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.2・§3.2、単位 A8-2。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.2・§3.2、単位 A8-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates
+public import SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FiberTriangle
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.FiberTriangle
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
@@ -51,19 +54,17 @@ variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerf
 variable (S : Type u) [CommRing S] [Algebra R S]
 
 abbrev perfdModule (U : A_R R) : DVertex R :=
-  (perfectoidizationFunctor (E := E) p R hR ≫ E.forget R).app _ (nerveVertex U)
+  (perfectoidizationFunctor (E := E) p R hR ≫ E.forget R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)
 
 /-- 指定された離散代数の射の perfd の fibre。Cor 8.12 の比較を D(R) で読む。 -/
 def perfdMapFiber {U V : A_R R} (f : U ⟶ V) : DVertex R := by
   let e := ((nerve.edgeMk f).map (perfectoidizationFunctor (E := E) p R hR ≫ E.forget R)).toTruncated
-  let k := DGNerve.edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion))
-  exact ((derivedInfinityHomotopyEquivalence R).inverse.obj (standardFiberDerivedTriangle k).obj₁).pt
+  let k := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeChainMap (e.map ((SSet.truncation 2).map _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion))
+  exact (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).inverse.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.standardFiberDerivedTriangle k).obj₁)).pt
 
-def FiniteEtaleAway (g : R) : Prop :=
-  letI := GenericEtale.awayAlgebra R S g
-  Module.Finite (Localization.Away g) (Localization.Away (algebraMap R S g)) ∧
-    Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))
 
+
+include hR in
 /-- 概要：G-A8-3（W9-III-01 で訂正）：有限表示有限 R 代数 S は R 加群として有限表示なので導来 p 完備（既存
 `HomologicalAlgebra/DerivedCompletion/FinitePresentationComplete.lean` の `isModuleComplete_of_finitePresentation`）。
 **「有限なら導来 p 完備」は偽**：V = ℤ_p[p^{1/p^∞}]^∧、R = ∏V（perfectoid）、I = ⊕V、M = R/I で x_k = [(0,…,0,1,p,p²,…)] は p x_{k+1} = x_k、x_0 ≠ 0、
@@ -71,7 +72,6 @@ R[1/p] → M が非零。S = R × M は有限 R 代数で D(e_0) 上は自明な
 方針：既存。
 規約：—
 使われ方：Cor 8.12 の前提（S）。 -/
-include hR in
 theorem finitePresentation_isModuleComplete [Module.Finite R S] [Algebra.FinitePresentation R S] :
     IsModuleComplete R (p : R) (ModuleCat.of R S) := by
   letI := Module.FinitePresentation.of_finite_of_finitePresentation R S
@@ -113,68 +113,8 @@ theorem exists_principal_splitting_cover [Module.Finite R S] (hA : IsAbsolutelyI
           (Fin r → Localization.Away a)) := by
   sorry -- finiteEtaleAway_exists_finite_cover の有限族の分子を取る。f^N の所属から主開を被覆
 
-/-- 概要：§3.2 の 4：S[1/g] ≅ R[1/g]^r のとき、S′ := S と R^r の生成する R[1/g]^r の部分 R 代数。S → S′ と R^r → S′ は g の外で同型。
-G-A8-3′（W9-III-01 の修復計算）：標準冪等元 e_j と S の有限個の R 加群生成元 s_a について S′ は R 加群として有限個の e_j s_a で生成される
-（Σ_j e_j·image(S) は乗法で閉じ、両方の像を含む）ので有限 R 加群、S → S′・R^r → S′ は整。
-方針：部分代数の生成元の計算、局所化の計算（紙 2）。
-規約：S′ は有限表示とは限らない。
-使われ方：Cor 8.12 の適用。 -/
-abbrev AwaySplitting (g : R) (r : ℕ) :=
-  letI := GenericEtale.awayAlgebra R S g
-  Localization.Away (algebraMap R S g) ≃ₐ[Localization.Away g] (Fin r → Localization.Away g)
-
-def splitSource (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    S →ₐ[R] (Fin r → Localization.Away g) where
-  __ := e.toRingEquiv.toRingHom.comp (algebraMap S _)
-  commutes' := by sorry -- 局所化と e は R 上の射
-
-def splitProduct (g : R) (r : ℕ) : (Fin r → R) →ₐ[R] (Fin r → Localization.Away g) where
-  toFun x i := algebraMap R _ (x i)
-  map_zero' := by ext; simp
-  map_one' := by ext; simp
-  map_add' := by intros; ext; simp
-  map_mul' := by intros; ext; simp
-  commutes' := by intros; rfl
-
-/-- 部分代数の subtype から環・R 代数のインスタンスを継承する。 -/
-def trivialCoverComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    Subalgebra R (Fin r → Localization.Away g) :=
-  (splitSource R S g r e).range ⊔ (splitProduct R g r).range
-
-def sourceToComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    S →ₐ[R] trivialCoverComparison R S g r e :=
-  (splitSource R S g r e).codRestrict _ (fun x => le_sup_left (Set.mem_range_self x))
-
-def productToComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    (Fin r → R) →ₐ[R] trivialCoverComparison R S g r e :=
-  (splitProduct R g r).codRestrict _ (fun x => le_sup_right (Set.mem_range_self x))
-
-theorem trivialCoverComparison_finite [Module.Finite R S] (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    Module.Finite R (trivialCoverComparison R S g r e) := by
-  sorry -- e_j s_a が二つの像を含む有限生成加群を張り、冪等元の直交性で積にも閉じる
-
-theorem trivialCoverComparison_integral [Module.Finite R S] (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    (sourceToComparison R S g r e).toRingHom.IsIntegral ∧
-      (productToComparison R S g r e).toRingHom.IsIntegral := by
-  sorry -- R 上整な元のモニック式を S と R^r に移す
-
-theorem trivialCoverComparison_localization_iso (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    Function.Bijective (Localization.awayMap (sourceToComparison R S g r e).toRingHom (algebraMap R S g)) ∧
-      Function.Bijective (Localization.awayMap (productToComparison R S g r e).toRingHom
-        (algebraMap R (Fin r → R) g)) := by
-  sorry -- 両方の指定局所化射が e と標準射を通して同じ R[1/g]^r に至る
-
-/-- 概要：G-A8-3′：S′ は導来 p 完備（有限表示性なしに、構成固有の計算で）。
-方針：R は被約（perfectoid）なので ann(g^N) = ann(g)、R の R[1/g] での像 R̄ = R/ann(g) は導来 p 完備（乗法写像の核の余核、`isModuleComplete_ker`・`_coker`）。
-生成元 e_j s_a の分母を払う N で g^N S′ ⊂ R̄^r（`isModuleComplete_pi`）。g は R[1/g]^r で単元なので S′ ≅ g^N S′（R 加群同型）、g^N S′ は有限自由 R 加群から R̄^r への
-写像の像で導来 p 完備。
-規約：—
-使われ方：Cor 8.12 の前提（S′）。 -/
-include hR in
-theorem trivialCoverComparison_isModuleComplete [Module.Finite R S] (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
-    IsModuleComplete R (p : R) (ModuleCat.of R (trivialCoverComparison R S g r e)) := by
-  sorry -- R̄ = R/ann(g) は完備。有限族の分母を払い、S′ ≃ g^N S′ を有限自由加群から R̄^r への像として取る
-
+/- G-A8-3′ の完備性は本体 Almost/FiniteEtaleComparison.lean の
+trivialCoverComparison_isModuleComplete を直接使う。 -/
 /-- 概要：G-A8-3″（W9-III-02 で訂正）：**整**写像 S → S′ で局所化 S[1/g] → S′[1/g] が同型なら `ArcOutside`（g の像が**非零**（可逆とは限らない）な付値環 V への
 射 S → V は S′ へ一意に延びる）。整性なしでは偽：S = V = F_p[t^{1/p^∞}] の t 進完備付値環、S′ = V[1/t]、g = t で id : S → V は S′ に延びない。
 方針：g ↦ 非零なので S → V は S[1/g] = S′[1/g] → Frac(V) を与える。S′ の元は S 上整だから像は V 上整、付値環 V は Frac(V) で整閉なので像は V に入る。
@@ -202,8 +142,8 @@ theorem perfectoidization_almostIso_of_localization_iso {U V : A_R R} (f : U ⟶
 
 /-- 概要：(R^r)_perfd = R^r（G-A6-12 の有限積と `perfectoidization_of_perfectoid`）、離散。 -/
 def perfectoidization_pow_eq (r : ℕ) :
-    VertexIso (perfdValue (E := E) p R hR (ofAlgebra R (Fin r → R)))
-      ((E.discrete R).app _ (nerveVertex (ofAlgebra R (Fin r → R)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (perfdValue (E := E) p R hR (ofAlgebra R (Fin r → R)))
+      ((E.discrete R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra R (Fin r → R)))) := by
   sorry -- G-A6-12 と perfectoidization_of_perfectoid。積環の単位同型の逆（r=0 も含む）
 
 /-- 概要：Thm 10.9 の J-almost 連結性（D63）：S 有限表示有限 R 代数（原典どおり、W9-III-01）、各 i で S[1/f_i] が R[1/f_i] 上有限エタール ⇒ S_perfd は (f_1,…,f_r)-almost 連結。

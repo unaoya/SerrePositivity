@@ -1189,3 +1189,10 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 一覧：済み 11／全体 14（うち追加 0）。[第72束](bulk-5inf0/draft-block72-validation.json)でExcisionが成功。有効な成功は54／57本。同じIsIsoの証明をasIsoへ明示的に渡すことが通った。検査済みソースをコミットする。
 
 次のAlmostPurityConnectivityは本体へ移したtrivialCoverComparison_isModuleCompleteのdocstringとinclude hRだけが残った構文エラー1件。本体のAlmost/FiniteEtaleComparison.leanの所有元を示す通常の注記に替え、孤立したincludeは除いた。後続のarcOutside_of_integral_of_localization_isoに、本来不要なperfectoid基底の仮定を付けない。新しい仮定やsorryは追加しない。第73束へ並んだ。
+
+
+### 5∞-0 のdraft検査・第73束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第73束](bulk-5inf0/draft-block73-validation.json)でAlmostPurityConnectivityが成功。有効な成功は55／57本。本体への参照、D3の対象のpt、孤立していた移動済み宣言の注記の整理が通った。検査済みソースをコミットする。
+
+次のIntegralDiscretenessはquotientTensorを呼ぶ2箇所で失敗。本体Almost/AlmostTensor.leanの変数宣言を確認し、同じRは暗黙引数なので(R := R)と明示して渡す。型の内容・仮定は変えず、第74束に並んだ。残るのはこの1本とA9/Assembly。
