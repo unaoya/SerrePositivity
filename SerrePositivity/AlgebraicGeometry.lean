@@ -1675,3 +1675,4 @@ public import SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneAlgebraMaps
 public import SerrePositivity.AlgebraicGeometry.SegreNormalizedCoordinates
 public import SerrePositivity.AlgebraicGeometry.HomogeneousEvaluationScaling
 public import SerrePositivity.AlgebraicGeometry.SegreColumnEvaluation
+public import SerrePositivity.AlgebraicGeometry.SegreColumnDescent

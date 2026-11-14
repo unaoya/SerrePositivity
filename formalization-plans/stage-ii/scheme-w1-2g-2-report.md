@@ -428,3 +428,14 @@ S03 の係数の法則の分割（着手前、S03 の内数、40〜90行）：�
 2g-2 本体1,623行・入口込み1,651行、小監査171宣言・標準三公理のみ。S03 の一般の関係式への降下・逆写像以降は未完、見込み約5,500〜12,000行・外枠16,000行は不変。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3・S03：全関係式の列への降下
+
+`SegreColumnDescent`（65行）：`segreColumnPolynomialMap` は一列への代入の実際の代数写像。`degreeOne_aeval_kernel_homogeneous` は次数一評価の核の斉次性。`segreColumnPolynomialMap_kernel_le` は次数分解により全関係式を消すこと。`segreColumnFromFactor` は実際の全射表示による因子 A からの降下、`segreColumnFromFactor_generator` は次数一生成元の像。grading と次数一への所属を引数に保持し、平坦性を仮定しない。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,098ジョブ、小監査7宣言・標準三公理のみ、終了状態0。ログ `2g-segre-column-descent-check-2.log`・`2g-segre-column-descent-native.log`・`2g-segre-column-descent-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。
+
+2g-2 本体1,688行・入口込み1,717行、小監査178宣言・標準三公理のみ。今回 de7b09089 の後は5モジュール285行＋入口5行、小監査34宣言。S03 の行側・逆写像の組立てと互いの逆・重なりの自然性、S04 と有限冪、G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
