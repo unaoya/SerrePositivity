@@ -1,0 +1,401 @@
+{
+  "status": "preamble and README-derived staging dependency proposal; Lean validation still required",
+  "dependencies": {
+    "A4/InterfaceFields": [
+      "A4/Perfectoidization",
+      "A2/AnimatedAlgebra",
+      "A2/DerivedPrismaticCohomology",
+      "A2/HodgeTateFiltration",
+      "A2/BaseChangeAndTensor"
+    ],
+    "A4/Perfectoidization": [
+      "DerivedGeneral/ScalarRestriction",
+      "A2/DerivedPrismaticCohomology",
+      "A2/HodgeTateFiltration",
+      "A2/BaseChangeAndTensor",
+      "A3/DiscreteCase",
+      "DerivedGeneral/Truncation",
+      "DerivedGeneral/CompletionFunctor",
+      "Sheaves/CAlgValued",
+      "Shared/EInfinityPowerOperation"
+    ],
+    "A4/AfterComparison": [
+      "A4/Perfectoidization",
+      "A4/InterfaceFields",
+      "A5/PerfectSiteComparison",
+      "A2/BaseChangeAndTensor"
+    ],
+    "A3/DiscreteCase": [
+      "A2/DerivedPrismaticCohomology",
+      "A2/HodgeTateFiltration",
+      "A0/PrismaticSite",
+      "A0/PrismaticEnvelope",
+      "DerivedGeneral/Truncation",
+      "Sheaves/GlobalSections"
+    ],
+    "A3/LciAndQuasiregular": [
+      "A3/DiscreteCase",
+      "A0/PrismaticEnvelope",
+      "A2/DerivedPrismaticCohomology",
+      "A2/HodgeTateFiltration",
+      "A2/BaseChangeAndTensor"
+    ],
+    "A2/BaseChangeAndTensor": [
+      "A2/AnimatedAlgebra",
+      "A2/DerivedPrismaticCohomology",
+      "A2/HodgeTateFiltration",
+      "DerivedGeneral/CompletionFunctor",
+      "A1/HodgeTateComparison",
+      "A7/AnimatedDomain",
+      "DerivedGeneral/ScalarRestriction"
+    ],
+    "A2/AnimatedAlgebra": [],
+    "A2/DerivedPrismaticCohomology": [
+      "A2/AnimatedAlgebra",
+      "A0/PrismaticSite",
+      "A0/CechAlexander",
+      "Sheaves/CAlgValued",
+      "Shared/CosimplicialEInfinity",
+      "DerivedGeneral/CompletionFunctor",
+      "DerivedGeneral/ScalarRestriction"
+    ],
+    "A2/HodgeTateFiltration": [
+      "A2/AnimatedAlgebra",
+      "A2/DerivedPrismaticCohomology",
+      "DerivedGeneral/Truncation",
+      "A1/HodgeTateComparison",
+      "Shared/DeRhamPolynomial",
+      "A7/AnimatedDomain"
+    ],
+    "A5/PerfectSite": [
+      "A0/PrismaticSite",
+      "Sheaves/SheafCondition",
+      "Sheaves/GlobalSections",
+      "Sheaves/CechConerveLimit",
+      "Sheaves/CAlgValued",
+      "A3/DiscreteCase",
+      "A4/Perfectoidization",
+      "A4/InterfaceFields",
+      "A7/AnimatedDomain"
+    ],
+    "A5/PerfectSiteComparison": [
+      "A5/PerfectSite",
+      "A5/SemiperfectoidCase",
+      "A5/WeaklyInitialAndDescent",
+      "A5/StrongDescent",
+      "Sheaves/GlobalSections",
+      "Sheaves/CechConerveLimit",
+      "A7/AnimatedDomain"
+    ],
+    "A5/SemiperfectoidCase": [
+      "A5/PerfectSite",
+      "A4/Perfectoidization",
+      "A4/InterfaceFields",
+      "A3/LciAndQuasiregular",
+      "A2/HodgeTateFiltration",
+      "A2/BaseChangeAndTensor",
+      "DerivedGeneral/Truncation",
+      "A7/AnimatedDomain",
+      "A7/DiscreteCore"
+    ],
+    "A5/InterfaceLimitCone": [
+      "A4/InterfaceFields",
+      "A5/PerfectSiteComparison",
+      "Sheaves/CAlgValued"
+    ],
+    "A5/WeaklyInitialAndDescent": [
+      "A5/RootAdjunction",
+      "A5/PerfectSite",
+      "A5/SemiperfectoidCase",
+      "A5/StrongDescent",
+      "Sheaves/CechConerveLimit",
+      "Shared/Descendable",
+      "A2/BaseChangeAndTensor"
+    ],
+    "A5/StrongDescent": [
+      "Shared/Descendable",
+      "Shared/DeRhamPolynomial",
+      "A5/PerfectSite",
+      "A5/RootAdjunction",
+      "A2/BaseChangeAndTensor",
+      "DerivedGeneral/Truncation",
+      "A1/DeRhamComparisonPoly"
+    ],
+    "A5/RootAdjunction": [],
+    "Shared/CosimplicialEInfinity": [
+      "Shared/CosimplicialCupProduct",
+      "Sheaves/CechConerveLimit",
+      "Sheaves/CAlgValued",
+      "DerivedGeneral/ScalarRestriction"
+    ],
+    "Shared/Descendable": [
+      "DerivedGeneral/ScalarRestriction",
+      "DerivedGeneral/CompletionFunctor"
+    ],
+    "Shared/CosimplicialCupProduct": [],
+    "Shared/DeRhamPolynomial": [
+      "DerivedGeneral/CompletionFunctor",
+      "DerivedGeneral/Truncation"
+    ],
+    "Shared/BarrattEcclesTheory": [],
+    "Shared/EInfinityPowerOperation": [
+      "DerivedGeneral/ScalarRestriction",
+      "Shared/CosimplicialEInfinity"
+    ],
+    "A0/PrismaticSite": [
+      "Sheaves/SheafCondition",
+      "Sheaves/GlobalSections",
+      "DerivedGeneral/ScalarRestriction"
+    ],
+    "A0/CechAlexander": [
+      "A0/PrismaticSite",
+      "Sheaves/CechConerveLimit",
+      "A0/PrismaticEnvelope",
+      "A0/FlatDescent"
+    ],
+    "A0/PrismaticEnvelope": [
+      "A0/PrismaticSite"
+    ],
+    "A0/BaseChange": [
+      "A0/PrismaticSite",
+      "A0/CechAlexander",
+      "DerivedGeneral/Truncation",
+      "DerivedGeneral/CompletionFunctor",
+      "Sheaves/GlobalSections"
+    ],
+    "A0/FlatDescent": [
+      "A0/PrismaticSite",
+      "DerivedGeneral/Truncation",
+      "DerivedGeneral/CompletionFunctor",
+      "Sheaves/SheafCondition",
+      "Sheaves/GlobalSections"
+    ],
+    "A7/UniversalProperty": [
+      "A7/AnimatedDomain",
+      "A7/DiscreteCore",
+      "A7/AnimatedPerfectoidization",
+      "A4/Perfectoidization",
+      "A4/InterfaceFields",
+      "A5/PerfectSiteComparison",
+      "A5/SemiperfectoidCase"
+    ],
+    "A7/AnimatedPerfectoidization": [
+      "A2/AnimatedAlgebra",
+      "A2/DerivedPrismaticCohomology",
+      "A2/BaseChangeAndTensor",
+      "A4/Perfectoidization",
+      "DerivedGeneral/CompletionFunctor",
+      "A7/AnimatedDomain"
+    ],
+    "A7/AnimatedDomain": [
+      "A2/AnimatedAlgebra",
+      "DerivedGeneral/CompletionFunctor"
+    ],
+    "A7/DiscreteCore": [
+      "A4/Perfectoidization",
+      "DerivedGeneral/Truncation"
+    ],
+    "A9/Assembly": [
+      "A4/InterfaceFields",
+      "A5/InterfaceLimitCone",
+      "A6/Excision",
+      "A7/UniversalProperty",
+      "A8/IntegralDiscreteness"
+    ],
+    "A8/AlmostPurityConnectivity": [
+      "A8/AlmostConnectivity",
+      "A6/Excision",
+      "A6/SheafOfSetsExcision",
+      "A7/AnimatedPerfectoidization",
+      "A7/UniversalProperty",
+      "A8/W13AssemblyInputs"
+    ],
+    "A8/IntegralDiscreteness": [
+      "A8/AlmostConnectivity",
+      "A8/AlmostPurityConnectivity",
+      "A7/AnimatedPerfectoidization",
+      "A7/UniversalProperty",
+      "A5/PerfectSiteComparison",
+      "A5/WeaklyInitialAndDescent",
+      "A4/InterfaceFields",
+      "A4/AfterComparison",
+      "A8/W13AssemblyInputs"
+    ],
+    "A8/AlmostConnectivity": [
+      "A7/AnimatedPerfectoidization",
+      "DerivedGeneral/Truncation",
+      "DerivedGeneral/CompletionFunctor"
+    ],
+    "A8/W13AssemblyInputs": [],
+    "A6/ArcSite": [
+      "Sheaves/SheafCondition",
+      "Sheaves/CechConerveLimit",
+      "A5/RootAdjunction",
+      "A5/WeaklyInitialAndDescent",
+      "A5/SemiperfectoidCase",
+      "A0/PrismaticSite"
+    ],
+    "A6/ArcSheafProperty": [
+      "A5/PerfectSiteComparison",
+      "A5/InterfaceLimitCone",
+      "Sheaves/GlobalSections",
+      "DerivedGeneral/Truncation",
+      "A6/ArcSite",
+      "Sheaves/SheafCondition",
+      "Sheaves/CAlgValued",
+      "A0/PrismaticSite",
+      "A4/AfterComparison"
+    ],
+    "A6/ArcRouteB": [],
+    "A6/Excision": [
+      "A6/SheafOfSetsExcision",
+      "A6/ArcSheafProperty",
+      "Sheaves/SpaceValued",
+      "A4/InterfaceFields",
+      "A5/PerfectSiteComparison"
+    ],
+    "A6/SheafOfSetsExcision": [
+      "A6/ArcSite",
+      "A6/ArcSheafProperty",
+      "A5/PerfectSiteComparison"
+    ],
+    "A1/HodgeTateMap": [
+      "A2/DerivedPrismaticCohomology",
+      "A0/CechAlexander",
+      "Shared/CosimplicialCupProduct",
+      "Shared/DeRhamPolynomial"
+    ],
+    "A1/CrystallineInput": [
+      "A1/HodgeTateMap",
+      "A0/PrismaticEnvelope",
+      "Shared/DeRhamPolynomial",
+      "Shared/CosimplicialCupProduct",
+      "Shared/CosimplicialEInfinity"
+    ],
+    "A1/HodgeTateComparison": [
+      "A0/PrismaticSite",
+      "A0/PrismaticEnvelope",
+      "A0/CechAlexander",
+      "A1/HodgeTateMap",
+      "A1/CrystallineInput",
+      "Shared/DeRhamPolynomial"
+    ],
+    "A1/CrystallineSite": [
+      "Sheaves/SheafCondition",
+      "Sheaves/GlobalSections",
+      "Sheaves/CechConerveLimit",
+      "Sheaves/CAlgValued",
+      "A0/PrismaticSite",
+      "Shared/CosimplicialEInfinity",
+      "DerivedGeneral/ScalarRestriction",
+      "A2/DerivedPrismaticCohomology",
+      "A1/CrystallineInput",
+      "A0/PrismaticEnvelope"
+    ],
+    "A1/DeRhamComparisonPoly": [
+      "A1/CrystallineInput",
+      "A1/HodgeTateComparison",
+      "A1/HodgeTateMap",
+      "Shared/DeRhamPolynomial",
+      "A2/BaseChangeAndTensor",
+      "A3/LciAndQuasiregular",
+      "A5/RootAdjunction",
+      "A0/CechAlexander",
+      "A2/DerivedPrismaticCohomology"
+    ],
+    "DerivedGeneral/ScalarRestriction": [
+      "DerivedGeneral/CompletionFunctor"
+    ],
+    "DerivedGeneral/CompletionFunctor": [],
+    "DerivedGeneral/Truncation": [
+      "DerivedGeneral/CompletionFunctor"
+    ],
+    "Sheaves/GlobalSections": [
+      "Sheaves/SheafCondition"
+    ],
+    "Sheaves/CechConerveLimit": [
+      "Sheaves/SheafCondition"
+    ],
+    "Sheaves/SheafCondition": [],
+    "Sheaves/SheafGenerators": [
+      "Sheaves/SheafCondition",
+      "Sheaves/SetSections",
+      "Sheaves/GlobalSections"
+    ],
+    "Sheaves/SetSections": [
+      "Sheaves/SheafCondition"
+    ],
+    "Sheaves/CAlgValued": [
+      "Sheaves/SheafCondition",
+      "Sheaves/GlobalSections",
+      "Sheaves/SheafGenerators",
+      "Sheaves/CechConerveLimit"
+    ],
+    "Sheaves/SpaceValued": [
+      "Sheaves/SheafCondition",
+      "Sheaves/SetSections",
+      "Sheaves/GlobalSections"
+    ],
+    "A0/W15K1/AuditK1": []
+  },
+  "order": [
+    "A2/AnimatedAlgebra",
+    "DerivedGeneral/CompletionFunctor",
+    "Sheaves/SheafCondition",
+    "A5/RootAdjunction",
+    "Shared/CosimplicialCupProduct",
+    "Shared/BarrattEcclesTheory",
+    "A8/W13AssemblyInputs",
+    "A6/ArcRouteB",
+    "A0/W15K1/AuditK1",
+    "A7/AnimatedDomain",
+    "DerivedGeneral/ScalarRestriction",
+    "DerivedGeneral/Truncation",
+    "Sheaves/GlobalSections",
+    "Sheaves/CechConerveLimit",
+    "Sheaves/SetSections",
+    "Shared/Descendable",
+    "Shared/DeRhamPolynomial",
+    "A0/PrismaticSite",
+    "Sheaves/SheafGenerators",
+    "Sheaves/SpaceValued",
+    "A0/PrismaticEnvelope",
+    "A0/FlatDescent",
+    "Sheaves/CAlgValued",
+    "A0/CechAlexander",
+    "Shared/CosimplicialEInfinity",
+    "A0/BaseChange",
+    "A2/DerivedPrismaticCohomology",
+    "Shared/EInfinityPowerOperation",
+    "A1/HodgeTateMap",
+    "A1/CrystallineInput",
+    "A1/HodgeTateComparison",
+    "A1/CrystallineSite",
+    "A2/HodgeTateFiltration",
+    "A3/DiscreteCase",
+    "A2/BaseChangeAndTensor",
+    "A4/Perfectoidization",
+    "A3/LciAndQuasiregular",
+    "A4/InterfaceFields",
+    "A7/AnimatedPerfectoidization",
+    "A7/DiscreteCore",
+    "A1/DeRhamComparisonPoly",
+    "A5/PerfectSite",
+    "A8/AlmostConnectivity",
+    "A5/SemiperfectoidCase",
+    "A5/StrongDescent",
+    "A5/WeaklyInitialAndDescent",
+    "A5/PerfectSiteComparison",
+    "A6/ArcSite",
+    "A4/AfterComparison",
+    "A5/InterfaceLimitCone",
+    "A7/UniversalProperty",
+    "A6/ArcSheafProperty",
+    "A6/SheafOfSetsExcision",
+    "A6/Excision",
+    "A8/AlmostPurityConnectivity",
+    "A8/IntegralDiscreteness",
+    "A9/Assembly"
+  ],
+  "note": "Preamble comments plus explicit README edges; not a proof of imported declaration sufficiency. Protected input may be read/typechecked, never edited."
+}
