@@ -2865,3 +2865,38 @@ B04 の比較の法則の分割：`coefficientVCoverModelCechDiagram_hasColimit`
 G1・G2共用部品込み本体16,776行、入口込み17,053行。B02〜B04 の出口の照合と停止点のまとめは次の記録で行う。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+## 停止点 2g-1（2026-11-15）：G1・G2 完了
+
+数学の取り込み対象は `e5b3e411f`。G1・G2共用部品込み本体16,776行・入口込み17,053行で、外枠25,000行以内。直近 c857c0b03 の後は12モジュール921行＋入口12行、小監査計111宣言・標準三公理のみ。最後の対象・直接 importer のビルドは5,066ジョブ成功。root ビルド・下流の全ビルド・全体監査は実行していない。登録済みの個別モジュール・宣言・検証結果は本報告の各節に記載した。未検証の下書きはコミット対象に含めない。
+
+### B02 の完成条件との照合
+
+- 固有性と全射性を同じ有限段へ降ろす出口は `exists_proper_surjective_finitePresentation_coefficient_model`。一般の固有・局所有限表示・全射を入力に、実際の有限生成係数部分代数上の固有・局所有限表示・全射模型と元の対象との Cartesian 正方形を構成する。ブローアップへの制限、元の環の Noether 性、係数射の忠実平坦性は課していない。
+- 有限個の対象を共通係数へ移す出口は `exists_common_coefficient_scheme_models`。有限個の射の同時降下は `exists_finite_compositeStage_maps_of_isLimit`、有限個の等式をさらに同じ段へそろえる出口は `exists_finite_compositeStage_equalities_of_isLimit`。対象は既に構成した実際の模型で、後段への移送は実際の pullback。固有性・全射性などはその底変換で維持する。式の一致を忠実平坦性や単射性から推論していない。
+- G1 で実際に選んだ固有全射・固定の整数平坦模型・細分の射への適用は `exists_integer_flat_refinement_coefficient_model`。固有模型自体をここで供給し、β・平坦模型の全射性・元の対象への射・基底上の式を一つの有限生成係数段にそろえる。その出力を `exists_affineVCover_finitePresentation_coefficient_model` に実際に使用している。模型の存在・被覆性を追加仮定に残した条件付きの出口ではない。
+
+この三種の出口と具体的な適用により B02 を完了とする。
+
+### B03 の完成条件との照合
+
+`exists_primeField_vCover_filtered_model` は BS17 Lemma 2.12 の affine の出口を実際の cocone と IsColimit で供給する。元の f は任意の F_p-代数 R から任意の環 C への v 被覆。元の f が有限表示であるとは仮定しない。各段の両環は有限型 F_p、Noether で、各段の射は有限表示の v 被覆。小さい添字は元の環と同じ宇宙で filtered。
+
+被覆模型の filtered 性は被覆性の有限段への降下を仮定して作っていない。まず全有限型模型の圏の共同後段・像での一致判定・実際の余極限を構成し、任意の全模型から実際の被覆模型への射を構成して、Mathlib の filtered/final 判定を適用した。そこで使う有限表示被覆の模型は G1 と B02 の実際の細分から供給する。この順序により原典の有限段の v 判定に対応する接続に循環はない。
+
+零環は除外せず、exact な CharP p や Nontrivial を追加していない。ULift F_p の係数環を使い、有限型 F_p の構造へ環同型で戻す。元の R の Noether 性・元の射の有限表示性も追加していない。
+
+### B04 の完成条件との照合
+
+`coefficientVCoverModelSmallArrowCoconeIsColimit` は元の環写像そのものを頂点とする、小さい被覆模型の実際の filtered 余極限。両環だけでなく環写像の Arrow の余極限を構成している。
+
+`coefficientVCoverModelCechCoconeIsColimit`・`coefficientVCoverModelCechComparison` は、その図式に既存の増大 Čech conerve 関手を適用した比較。増大余単体環の圏での IsColimit と同型なので、面・退化・増大写像との可換性を一つの図式で保持する。B1 の conerve の左随伴性を使用し、filtered な完全性の証明や二重複体を作り直していない。後続 G3〜G5 では B1 の完全性 API を使う。
+
+### G1 の範囲と次段への受け渡し
+
+G1 は `exists_fppf_proper_refinement_vCover_affineBase`：任意の affine 基底上の準コンパクト・局所有限表示の v 被覆を、実際の有限表示固有全射と fppf 射で細分する Rydh 3.10 の affine 基底の場合。一般の元の射に平坦性・固有性・Noether 性を要求しない。C01〜C06 と A07 を含む途中の存在補題を条件付きの仮定に置き換えていない。
+
+G1・G2 は幾何と模型の供給の完成であり、v 被覆の Čech 完全性の完成ではない。G3 の固有全射の帰納的レベルと射影表示、G4 の射影 Čech 四角形からの判定、G5 の filtered 移送が残る。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` と利用側の型は変更していない。2g-2 の外枠16,000行は別計上する。取り込みは調整役に任せ、指示どおり承認待ちで止まらず G3 の型つき一覧と実装へ進む。
+
+一覧：済み17／全体17（うち追加8）。
