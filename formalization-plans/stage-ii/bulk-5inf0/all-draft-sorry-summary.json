@@ -1,0 +1,345 @@
+{
+  "scope": "all nonprotected drafts, including unchanged auxiliary inputs",
+  "files": 56,
+  "changed_files": 55,
+  "baseline_sorry": 819,
+  "current_sorry": 698,
+  "rows": [
+    {
+      "draft": "A0/BaseChange.lean",
+      "baseline_sorry": 3,
+      "current_sorry": 3,
+      "source_changed": true
+    },
+    {
+      "draft": "A0/CechAlexander.lean",
+      "baseline_sorry": 20,
+      "current_sorry": 4,
+      "source_changed": true
+    },
+    {
+      "draft": "A0/FlatDescent.lean",
+      "baseline_sorry": 10,
+      "current_sorry": 7,
+      "source_changed": true
+    },
+    {
+      "draft": "A0/PrismaticEnvelope.lean",
+      "baseline_sorry": 2,
+      "current_sorry": 1,
+      "source_changed": true
+    },
+    {
+      "draft": "A0/PrismaticSite.lean",
+      "baseline_sorry": 10,
+      "current_sorry": 4,
+      "source_changed": true
+    },
+    {
+      "draft": "A0/W15K1/AuditK1.lean",
+      "baseline_sorry": 0,
+      "current_sorry": 0,
+      "source_changed": true
+    },
+    {
+      "draft": "A1/CrystallineInput.lean",
+      "baseline_sorry": 35,
+      "current_sorry": 21,
+      "source_changed": true
+    },
+    {
+      "draft": "A1/CrystallineSite.lean",
+      "baseline_sorry": 45,
+      "current_sorry": 28,
+      "source_changed": true
+    },
+    {
+      "draft": "A1/DeRhamComparisonPoly.lean",
+      "baseline_sorry": 59,
+      "current_sorry": 34,
+      "source_changed": true
+    },
+    {
+      "draft": "A1/HodgeTateComparison.lean",
+      "baseline_sorry": 21,
+      "current_sorry": 19,
+      "source_changed": true
+    },
+    {
+      "draft": "A1/HodgeTateMap.lean",
+      "baseline_sorry": 1,
+      "current_sorry": 1,
+      "source_changed": true
+    },
+    {
+      "draft": "A2/AnimatedAlgebra.lean",
+      "baseline_sorry": 14,
+      "current_sorry": 14,
+      "source_changed": true
+    },
+    {
+      "draft": "A2/BaseChangeAndTensor.lean",
+      "baseline_sorry": 11,
+      "current_sorry": 11,
+      "source_changed": true
+    },
+    {
+      "draft": "A2/DerivedPrismaticCohomology.lean",
+      "baseline_sorry": 17,
+      "current_sorry": 17,
+      "source_changed": true
+    },
+    {
+      "draft": "A2/HodgeTateFiltration.lean",
+      "baseline_sorry": 17,
+      "current_sorry": 17,
+      "source_changed": true
+    },
+    {
+      "draft": "A3/DiscreteCase.lean",
+      "baseline_sorry": 23,
+      "current_sorry": 16,
+      "source_changed": true
+    },
+    {
+      "draft": "A3/LciAndQuasiregular.lean",
+      "baseline_sorry": 30,
+      "current_sorry": 25,
+      "source_changed": true
+    },
+    {
+      "draft": "A4/AfterComparison.lean",
+      "baseline_sorry": 3,
+      "current_sorry": 3,
+      "source_changed": true
+    },
+    {
+      "draft": "A4/InterfaceFields.lean",
+      "baseline_sorry": 14,
+      "current_sorry": 14,
+      "source_changed": true
+    },
+    {
+      "draft": "A4/Perfectoidization.lean",
+      "baseline_sorry": 26,
+      "current_sorry": 21,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/InterfaceLimitCone.lean",
+      "baseline_sorry": 5,
+      "current_sorry": 5,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/PerfectSite.lean",
+      "baseline_sorry": 36,
+      "current_sorry": 36,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/PerfectSiteComparison.lean",
+      "baseline_sorry": 11,
+      "current_sorry": 11,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/RootAdjunction.lean",
+      "baseline_sorry": 2,
+      "current_sorry": 2,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/SemiperfectoidCase.lean",
+      "baseline_sorry": 28,
+      "current_sorry": 28,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/StrongDescent.lean",
+      "baseline_sorry": 19,
+      "current_sorry": 19,
+      "source_changed": true
+    },
+    {
+      "draft": "A5/WeaklyInitialAndDescent.lean",
+      "baseline_sorry": 28,
+      "current_sorry": 28,
+      "source_changed": true
+    },
+    {
+      "draft": "A6/ArcRouteB.lean",
+      "baseline_sorry": 0,
+      "current_sorry": 0,
+      "source_changed": true
+    },
+    {
+      "draft": "A6/ArcSheafProperty.lean",
+      "baseline_sorry": 54,
+      "current_sorry": 54,
+      "source_changed": true
+    },
+    {
+      "draft": "A6/ArcSite.lean",
+      "baseline_sorry": 12,
+      "current_sorry": 12,
+      "source_changed": true
+    },
+    {
+      "draft": "A6/Excision.lean",
+      "baseline_sorry": 25,
+      "current_sorry": 25,
+      "source_changed": true
+    },
+    {
+      "draft": "A6/SheafOfSetsExcision.lean",
+      "baseline_sorry": 24,
+      "current_sorry": 24,
+      "source_changed": true
+    },
+    {
+      "draft": "A7/AnimatedDomain.lean",
+      "baseline_sorry": 15,
+      "current_sorry": 15,
+      "source_changed": true
+    },
+    {
+      "draft": "A7/AnimatedPerfectoidization.lean",
+      "baseline_sorry": 22,
+      "current_sorry": 22,
+      "source_changed": true
+    },
+    {
+      "draft": "A7/DiscreteCore.lean",
+      "baseline_sorry": 3,
+      "current_sorry": 3,
+      "source_changed": true
+    },
+    {
+      "draft": "A7/UniversalProperty.lean",
+      "baseline_sorry": 17,
+      "current_sorry": 17,
+      "source_changed": true
+    },
+    {
+      "draft": "A8/AlmostConnectivity.lean",
+      "baseline_sorry": 11,
+      "current_sorry": 6,
+      "source_changed": true
+    },
+    {
+      "draft": "A8/AlmostPurityConnectivity.lean",
+      "baseline_sorry": 12,
+      "current_sorry": 7,
+      "source_changed": true
+    },
+    {
+      "draft": "A8/IntegralDiscreteness.lean",
+      "baseline_sorry": 20,
+      "current_sorry": 12,
+      "source_changed": true
+    },
+    {
+      "draft": "A8/W13AssemblyInputs.lean",
+      "baseline_sorry": 0,
+      "current_sorry": 0,
+      "source_changed": true
+    },
+    {
+      "draft": "A9/Assembly.lean",
+      "baseline_sorry": 0,
+      "current_sorry": 0,
+      "source_changed": true
+    },
+    {
+      "draft": "DerivedGeneral/CompletionFunctor.lean",
+      "baseline_sorry": 5,
+      "current_sorry": 5,
+      "source_changed": true
+    },
+    {
+      "draft": "DerivedGeneral/ScalarRestriction.lean",
+      "baseline_sorry": 6,
+      "current_sorry": 6,
+      "source_changed": true
+    },
+    {
+      "draft": "DerivedGeneral/Truncation.lean",
+      "baseline_sorry": 13,
+      "current_sorry": 13,
+      "source_changed": true
+    },
+    {
+      "draft": "Shared/BarrattEcclesTheory.lean",
+      "baseline_sorry": 21,
+      "current_sorry": 21,
+      "source_changed": false
+    },
+    {
+      "draft": "Shared/CosimplicialCupProduct.lean",
+      "baseline_sorry": 0,
+      "current_sorry": 0,
+      "source_changed": true
+    },
+    {
+      "draft": "Shared/CosimplicialEInfinity.lean",
+      "baseline_sorry": 11,
+      "current_sorry": 9,
+      "source_changed": true
+    },
+    {
+      "draft": "Shared/DeRhamPolynomial.lean",
+      "baseline_sorry": 2,
+      "current_sorry": 2,
+      "source_changed": true
+    },
+    {
+      "draft": "Shared/Descendable.lean",
+      "baseline_sorry": 21,
+      "current_sorry": 21,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/CAlgValued.lean",
+      "baseline_sorry": 5,
+      "current_sorry": 5,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/CechConerveLimit.lean",
+      "baseline_sorry": 6,
+      "current_sorry": 6,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/GlobalSections.lean",
+      "baseline_sorry": 5,
+      "current_sorry": 5,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/SetSections.lean",
+      "baseline_sorry": 0,
+      "current_sorry": 0,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/SheafCondition.lean",
+      "baseline_sorry": 4,
+      "current_sorry": 4,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/SheafGenerators.lean",
+      "baseline_sorry": 2,
+      "current_sorry": 2,
+      "source_changed": true
+    },
+    {
+      "draft": "Sheaves/SpaceValued.lean",
+      "baseline_sorry": 13,
+      "current_sorry": 13,
+      "source_changed": true
+    }
+  ]
+}

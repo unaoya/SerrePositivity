@@ -875,3 +875,10 @@ SetSectionsでは篩の元の圏とOverの充満部分圏の反対圏の同値�
 Čechの問題は、同名の本体宣言が返すCategoryTheory.CechNerveDataと、draftの別構造体Sheaves.CechNerveDataの違いだった。両者のobj・proj・isLimit・proj_mapと弱終性の定義を比較し、完全に同じ内容であることを確かめた。新しい構造の移送は作らず、draft側の2宣言を本体へのabbrevに一本化した。既存の名前を残し、本体のČechデータをそのまま使う。変更したCechConerveLimitと利用側CAlgValuedを再検査して成功し、CechAlexanderも本体の引数順に合わせて成功した。
 
 SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされたラッパーから使えるようにした（型・元のsorry本文は同じ）。押し出し境界の反射律とprojectionの正式名、層の名前空間、presentabilityの曖昧さ、局所instance・docstringの位置も修正した。ここでコミットする6本はいずれも現在の署名で検査済み。共有Totの評価とBaseChangeの残りを修正し、第15束で検査する。
+
+
+### 5∞-0 のdraft検査・第15束と全体のsorry（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第15束でA0/BaseChangeが成功し、現在の署名での有効な成功は23本。[第15束](bulk-5inf0/draft-block15-validation.json)を保存し、BaseChangeをコミットする。残る前提はShared/CosimplicialEInfinityの評価比較1箇所。ホモトピー後合成の端点・空の相対条件、cdgaの忘却、層の名前空間は同じ検査で通った。評価の比較にはCatの射のtoFunctorとTypeの合成の公開評価補題を追加し、第16束に並べている。新しい数学的仮定や未証明本文は足していない。
+
+[保護対象以外の全体の集計](bulk-5inf0/all-draft-sorry-summary.json)は56本中55本が変更、sorryは **819→698**。A0〜A9の40本だけの値は **705→586**。全体の値と部分の値を区別する。現在のLean差分は追加2217・削除2486、合計4703行（外枠11,100行）。残りの見込み2,000〜4,000行は暫定のままで、外枠は増やさない。
