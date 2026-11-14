@@ -773,3 +773,17 @@ FiniteTypeIdealAffineGeneratorModel **61 行**、FiniteIdealColimitFamilyModel *
 G1 共用部品込み本体 **4,570 行**、入口込み **4,657 行**。C03.(iii) の一般の降下の出口は下書き検証中で未完。
 
 一覧：済み 8／全体 14（うち追加 5）。
+
+C03 の閉部分スキームへの係数移送の法則 `exists_finitePresentation_closed_model_of_isLimit` の型：一般の C03.(iii) と同じ D・c・K に対し、ある段 j の有限型 L、LocallyOfFinitePresentation L.subschemeι、および実際の同型 K.subscheme≅pullback(c.π.app j)(L.subschemeι) が存在し、第一射影との合成は K.subschemeι。C03 のイデアル模型と既存の comapIso を合成する分割で、独立の存在項目は増やさない（見込み 30〜80 行）。これだけで周辺空間の模型、射の因子化、全射性の降下を完成扱いにはしない。
+
+### C03 完了：一般の qcqs 極限上の有限型イデアル層の降下
+
+IdealModelRestrictionComparison **41 行**、FiniteTypeIdealLimitModel **66 行**、入口 2 行。`ideal_model_resLE_top_comparison` と `ideal_model_appLE_of_eq_preimage` は制限射の全体切断と元の開の切断環の比較。`exists_finiteType_ideal_model_of_isLimit` は C03.(iii) の一般の型そのままの出口：D:J→Scheme が cofiltered、各段 qcqs、遷移射 affine、c が実際の IsLimit を持つなら、c.pt の有限型イデアル層 K は、ある段 j の有限型 L の comap(c.π.app j) として実際に一致する。Noether 性・射影性・遷移射の単射性・忠実平坦性を仮定しない。
+
+有限アフィン被覆のイデアルの局所模型を一つの段へそろえ、C02 で (K.map π) の有限型部分イデアルに全ての生成元を含める。随伴とアフィン被覆上の包含で元の K との一致を得た。準連接加群の圏全体を追加せず、原典 0B8W (3) のこの存在の型を保っている。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,875 ジョブ成功**、今回の二モジュールの小監査 **4 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-c03-limit-batch-check-2.log`、`2g-c03-scheme-limit-native.log`、`2g-c03-scheme-limit-audit.log`。
+
+C03 は **3／3 完了**。C03 本体は **494 行**、入口 8 行、計 **502 行**（当初見込み1,300〜3,400行内）。C02 の部分イデアルの延長を共用して縮めた。C03 各束の小監査は計 **20 宣言・標準三公理のみ**。G1 共用部品込み本体 **4,677 行**、入口込み **4,766 行**。2g-1 の12,000行の途中報告点・25,000行の外枠には未到達。A07 の一般の基底と G2 は未完で、細分の周辺模型・因子化・全射性を同じ段へ移す接続を続ける。一般の Rydh 3.10 の完成とは呼ばない。
+
+一覧：済み 9／全体 14（うち追加 5）。
