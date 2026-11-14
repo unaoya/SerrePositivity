@@ -182,3 +182,33 @@ B1 の `Cech/Filtered.lean` の `isCechExact_colimit` は、この左随伴性�
 H04 の積について、Mathlib.FieldTheory.Perfect の instPerfectRingProd は ExpChar を仮定しているため、零環を含み得る積への入口としてそのまま使わない。各座標の p 乗の全単射性から、関数環の p 乗の単射性は funext と各座標の単射性、全射性は座標ごとの逆像の選択と funext で直接得られる。この法則は空の族でも成り立つ。p の像が零という式も座標ごとに保持し、ProjectiveLocalizedFrobenius.projectivePrimePowerRingHom p hp hz を使うので、積への CharP／ExpChar の追加仮定は不要。
 
 G0 の isAffineVCoverFamily_iff_pi は同じ RingHom.pi f と各 Pi.evalRingHom を使う。H04 の入口をこの既存の橋で一射へ渡し、その後の H01 の自然性も各射影に沿って同じ準同型で読む。利用側にある各 B_i の CharP・PerfectRing の仮定と、最終出力の Arrow.mk (CommRingCat.ofHom (RingHom.pi f)) の形は保つ。この段 0 の主項目を増やさず、2h の見込み 2,000〜5,000 行は維持する。
+
+## 9. C02 判断待ちの追加照合：H02 の環の型と H03 の移送
+
+2026-11-14。main 1ac9c7e37 の指示書の末尾と共通の停止規則を確認した。C02 の承認追記はまだないため、新しい存在構成の Lean は開始していない。この節も紙の照合である。
+
+2g-1 の一覧：済み 7／全体 12（うち追加 3）。
+
+2h の一覧：済み 0／全体 4（うち追加 0）。
+
+### 環値の図式と、既存の加法的な比較を区別する
+
+`FrobeniusRingSequentialDiagram.lean` の `frobeniusRingObjectSystem` は、名前に Ring を含むが型は `J ⥤ ℕ ⥤ ModuleCat ℤ` である。`frobeniusRingDiagram` も `J ⥤ ModuleCat ℤ`、`ringDirectLimitIntColimitIso` も整数加群の同型である。これらをそのまま H02 の可換環の圏の比較として使わない。
+
+環値の実装に使う核は既存の `frobeniusDirectLimitMap`。その値は環準同型で、`frobeniusDirectLimitMap_of`、`_id`、`_comp` が検証済みである。G5 の出口 `P_* C(f)` を可換環値の増大余単体対象として構成する際に、この環の写像を包んだ図式を一度作り、H02 で同じ定義を再利用する。2h のために別の同じ点ごとの完全化を定義しない。G5 が整数加群の表示を途中に使っても、2g-2 の出口の環の増大対象との自然な比較はその段で供給する。
+
+### H02 の Frobenius の一致を示す場所
+
+Mathlib.AlgebraicTopology.CechNerve の実際の定義を照合した。`Arrow.cechConerve.obj n` は `widePushout f.left (fun _ : Fin (n.len + 1) => f.right) (fun _ => f.hom)`。`Arrow.mapCechConerve` は、base の leg では Arrow の左成分、各右因子の leg では右成分を使う `WidePushout.desc` である。
+
+したがって Arrow 上の左右の p 乗準同型から誘導した第 n 項の環の自己射が、同じ環の p 乗準同型に等しいことは `WidePushout.hom_ext` で base の leg と全ての右因子の leg に帰着できる。各 leg では環準同型が p 乗を保つ式を使う。増大項は左成分そのものである。この一致を全余面・余退化ごとに新しく証明するのでなく、conerve の関手性とこの各次数での一致から自然変換の等式としてまとめる。これは未検証の証明案で、各次数の同型だけを完成物として提出しない。
+
+余極限比較は、`CosimplicialObject.cechConerveAdjunction` から左随伴性を供給し、同じ Arrow の逐次図式 D_f に `preservesColimitIso` を適用する。B1 の `isCechExact_colimit` は既にこの実装形式を使っている。環の Arrow の余極限が `P(f)` になることは、始域・終域の環の cocone と `DirectLimit.Ring.lift` の普遍性・構造射との式を示してから同定する。整数加群の同型を根拠に環の積の保存を省略しない。
+
+添字 ℕ の逐次図式を、B1 の同じ宇宙の small index を要求する API に渡す必要が生じた場合は、ULift した添字との同値で運ぶ。既存の B1 の型を変更したり、最終利用側の環の宇宙を狭めたりしない。
+
+### H03 の同型の方向と最終の型
+
+H01 の ε_A:P(A)≅A、ε_B:P(B)≅B とその自然性は、Arrow.isoMk によって `Arrow.mk P(f) ≅ Arrow.mk f` を与える。その conerve の mapIso と H02 の χ_f を合成して `P_* C(f) ≅ C(f)` を得る。G5 が左辺の AugmentedRingCechExact を供給したら、B1 の `ringCechExact_iff_of_iso` の順方向で右辺の同じ述語へ移す。
+
+ここで使う完全性は Basic.lean の定義そのもので、増大の単射・第 0 次・全正次数を含む。比較後に H⁰ だけを取り出す工程は入れない。H04 の有限族の Arrow.mk (CommRingCat.ofHom (RingHom.pi f)) にも同じ比較を使う。H01〜H04 の新しい主項目は追加せず、見込み 2,000〜5,000 行を維持する。Lean の実装・型検査を行ったという主張ではない。
