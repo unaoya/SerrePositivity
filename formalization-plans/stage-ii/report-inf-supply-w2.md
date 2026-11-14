@@ -8931,3 +8931,109 @@ def cosimplicialModuleCone_homology (M : CosimplicialObject (ModuleCat.{u} A)) (
 ### 160.4 そのまま3b-4へ
 
 IS-W2 §18・更新後の/goalに従い、ここで承認待ちにせず、承認済み§152のR01〜R12（外枠15,000行）のTot側から進む。TotのR01〜R05・R11/R12のTot部分が停止点3b-4a、実現のR06〜R10が停止点3b-4b。その後に任意coherent BE図式の段0を報告して止まる。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aを変えず、無条件の `cAlgForgetDerived_mapJoinCone_isLimit` を使う。点つきKan Totは作らない。3b-4の実測はG10とは別に数える。
+
+
+## 161. 3b-4開始：R01と同じstrict図式・実U比較の入口（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R01完了。R02・R04は同じ元のstrict図式・全評価と既存U比較を前合成する入口だけで、native全錐族・極限性・台の加群Totへの最終比較が完成したとは数えない。
+
+### 161.1 3b-3との境目・Tot先行の具体化
+
+§152の受け渡しを維持する。R01〜R04のstrict入力について、元のBE right frame/end・全図式射・同じalgebraCAlgSourceを使う。R05でstrict複体図式の∞局所化と全Fun比較を使う所、R09〜R10で③-aの元の実現余錐の全族を使う所が3b-3との境目。加群版のstrict図式評価の同値からBE値の任意coherent図式の厳密化を得たとは扱わない。
+
+R02〜R03の模型側では `FramedLimitCones` のKan錐空間・指定重み、`FramedLimitHomPiZero` の通常局所化Hom、一般 `ModelRightFrameComparison` の実right-frameとpinched Homの全比較を区別して使う。π₀のHom同値や通常局所化の随伴だけをnative全錐の普遍性と取り違えない。既存 `FramedLimit*`・`CAlgUnderlyingDerivedComparison`・⑤aは変更しない。既存の無条件 `cAlgForgetDerived_mapJoinCone_isLimit` は、構成したBE極限錐の像の検収に使い、逆方向に用いない。
+
+### 161.2 R11・R12で合わせる既存の欄
+
+読み取りで確認：`EInfinity/Interface/Theory` の `TotalizationCone D x` は **`{ c : JoinCone D // c.vertex = x ∧ IsLimitCone c }`**。`ofCosimplicial_forget` は全 `FunctorIso`、`ofCosimplicial_restrict` も全 `FunctorIso`。既存の型と指定頂点を変えない。
+
+またBE実例の `Theory.lean` で `discrete` に入るものは **`discreteCAlgUnderEmbedding`**（源は `Under (CommRingCat.of A)`）であり、単にCommAlgCat源の `discreteCAlgEmbedding` で代用しない。既存の全源表示は `nerveMap (commAlgCatEquivUnder ...).inverse ≫ discreteCAlgEmbedding`。従ってR11の元の離散BE図式は、この同じinverseと `discreteAlgebraFunctor` を図式へ後合成したものに固定する。`cosimplicialCochains` は既存の `discreteAlgebraModule`・交代余面・整数次数への零延長の全関手で、今回G10の離散入口に使った全関手との表示の法則を照合する。
+
+R12の係数制限は既存の `coefficientRestriction f`（strict代数）と `barrattEcclesRestrict f`（実CAlg）に固定。`barrattEcclesRestrict_sourceIso` は `algebraCAlgSource T ≫ barrattEcclesRestrict f` と `nerveMap (coefficientRestriction f) ≫ algebraCAlgSource S` の全比較。R12ではこの同じ比較の評価前合成を全錐族の右境界に保ち、左境界をTot頂点の比較に一致させる。R11の最終出口は次の既存欄そのものである（紙、未実装）：
+
+```lean
+-- S : Type u, [CommRing S]。FtotはR01を同じUnder→CommAlgCat→BE図式へ制限した全関手。
+FunctorIso (Ftot S ≫ cAlgForgetDerived S)
+  (nerveMap (cosimplicialCochains S) ≫ complexOrdinaryDerivedSource S)
+-- 同じFtotの指定頂点を保持する。
+(X : CosimplicialRingAlgebra S) →
+  TotalizationCone (cosimplicialNerve X ≫ discreteCAlgUnderEmbedding S)
+    (atVertex (Ftot S) (nerveVertex X))
+-- S T : Type u, [CommRing S] [CommRing T], f : S →+* T。
+FunctorIso
+  (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (restrictRingAlgebra f)) ≫ Ftot S)
+  (Ftot T ≫ barrattEcclesRestrict f)
+```
+
+R11・R12はこの欄と同じ全族の両境界を照合してから完了と数える。ここでは仮定・sorry付きのLean宣言を追加していない。
+
+### 161.3 今回の検証済みの型
+
+共通：`A : Type u`、`[CommRing A]`。
+
+登録候補：`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison`（33行）。
+
+```lean
+def strictBETotVertex :
+    nerve (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⟶ CAlg_R A
+
+theorem strictBETotVertex_at (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (strictBETotVertex A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ F) =
+      (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F))
+
+```
+
+登録候補：`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationInput`（74行）。
+
+```lean
+def strictBECosimplicialNerve (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶
+      nerve (operad A).Algebra
+
+def strictBECosimplicialDiagram (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶ CAlg_R A
+
+def strictBECosimplicialEvaluationNerve :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⊗
+      nerve (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⟶
+        nerve (operad A).Algebra
+
+def strictBECosimplicialEvaluation :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⊗
+      nerve (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⟶ CAlg_R A
+
+theorem strictBECosimplicialEvaluationNerve_at
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    inv (fst ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))
+      (Δ[0] : SSet.{u+1})) ≫ (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex F)) ≫
+        strictBECosimplicialEvaluationNerve A = strictBECosimplicialNerve A F
+
+```
+
+登録候補：`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingSource`（44行）。
+
+```lean
+def strictBETotUnderlyingSourceIso :
+    FunctorIso (strictBETotVertex A ≫ cAlgForgetDerived A)
+      (nerveMap (framedLimitFunctor A (AsSmall.{u} SimplexCategory) ⋙
+        Operad.Algebra.forget (operad A)) ≫ complexOrdinaryDerivedSource A)
+
+def strictBECosimplicialUnderlyingDiagramIso
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    FunctorIso (strictBECosimplicialDiagram A F ≫ cAlgForgetDerived A)
+      (strictBECosimplicialNerve A F ≫ algebraUnderlyingDerivedSource A)
+
+def strictBECosimplicialUnderlyingEvaluationIso :
+    FunctorIso (strictBECosimplicialEvaluation A ≫ cAlgForgetDerived A)
+      (strictBECosimplicialEvaluationNerve A ≫ algebraUnderlyingDerivedSource A)
+
+```
+
+### 161.4 検収・実測・次の接続
+
+コード **`03e732bf0`**。R01の最初の対象ビルド205は `.app _` の零単体の次数推論で失敗し、両方の次数を明示して修正。計算上限を増やさず個別検査を通した後、最終対象ビルド206は **9,459 jobs・終了コード0**、三本だけの小監査 **12（2・7・3）宣言、標準三公理のみ**。205を成功の回として数えない。ログ `/private/tmp/isw2-build205.log`・`206.log`、監査 `/private/tmp/AuditISW2BER01Input.lean`。ハンドル終了コード0を確認済み、鍵返却済み。整理券一枚、`--class impl --wait 3600`、対象ビルド・小監査中だけ使用。sorry・独自公理0。
+
+3b-4の検証済みは **3モジュール・151行**、外枠15,000行まで14,849行。登録候補は別の `is-w2-be-20261114-modules.json` に記録し、G10の366本・22,870行と混ぜない。200行超のファイルなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。
+
+次はR02の元のframe計算対象と全図式評価の間のnative全錐族、およびR03の実right-frame Homとpinched Homの同じ制限の比較を接続する。今回のU源比較だけでR04の加群Totとの最終同型が済んだとは数えない。承認待ち・範囲変更・規模による停止ではなく、検証済みの保存点。Tot先行・実現・任意coherent BE図式の段0までの/goalはactiveのまま保持する。
