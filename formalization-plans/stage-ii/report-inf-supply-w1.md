@@ -9920,3 +9920,156 @@ bousfieldKanConeComparison c ≫ bousfieldKanOpOpComparison H =
 独立の新しい比較を選ばず、成分と逆の合成を検査する係数移送の法則として進める。
 その後、§112.1の型にはこの再添字を挿入して、元の指定比較への一致を証明する。
 RR02(a)全体、(b)(c)、E01は未完。R3・R4には着手していない。
+
+### §112.3 二重反対の重みの逆（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanOpOpWeightIso (I : Type u) [SmallCategory I] :
+  bousfieldKanWeight I ≅ opOp I ⋙ bousfieldKanWeight Iᵒᵖᵒᵖ
+```
+
+`hom = bousfieldKanWeightPost (opOp I)`、逆は `unopUnop` のweightPostを
+`opOp`で制限したもの。既存の再添字の逆の法則を同型として束ねるだけ。
+
+### §112.4 endの二重反対の再添字（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma weightedSections_precomp_π (W H : I ⥤ SSet) (P : J ⥤ I) (j : J) :
+  precompEnrichedHom SSet W H P ≫ weightedSectionsπ (P ⋙ W) (P ⋙ H) j =
+    weightedSectionsπ W H (P.obj j)
+def weightedSectionsOpOpIso (W H : Iᵒᵖᵒᵖ ⥤ SSet) :
+  weightedSections W H ≅ weightedSections (opOp I ⋙ W) (opOp I ⋙ H)
+lemma weightedSectionsOpOpIso_cone (c : Cone H) :
+  weightedConeComparison W c ≫ (weightedSectionsOpOpIso I W H).hom =
+    weightedConeComparison (opOp I ⋙ W) (c.whisker (opOp I))
+```
+
+Mathlibの既存の再添字の成分式・逆・錐比較保存という法則。新しいendは定義しない。
+
+### §112.5 既存の移送の合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanOpOpWeightSectionsIso (H : I ⥤ SSet) :
+  weightedSections (opOp I ⋙ bousfieldKanWeight Iᵒᵖᵒᵖ) H ≅ bousfieldKanHolim H
+def bousfieldKanOpOpIso (H : Iᵒᵖᵒᵖ ⥤ SSet) :
+  bousfieldKanHolim H ≅ bousfieldKanHolim (opOp I ⋙ H)
+lemma bousfieldKanOpOpIso_cone (c : Cone H) :
+  bousfieldKanConeComparison c ≫ (bousfieldKanOpOpIso I H).hom =
+    bousfieldKanConeComparison (c.whisker (opOp I))
+```
+
+既存の `weightedSectionsPre_comp`・`weightedSectionsPre_id`・
+`weightedConeComparison_pre` による逆と合成の法則。§112.3〜4を合成する。
+
+### §112.6 実係数の下書きの型の修正（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§112.1の等式の左辺には、Hom同型と係数同型の間に
+`(bousfieldKanOpOpIso (StrictDiagramArrowElements d) _).hom` を挿入する。
+右辺の `strictDiagramFrameArrowComparison` は変更しない。
+一般保存則を元の錐の `unopUnop` による制限へ適用し、§112.5の錐比較保存で
+`opOp` の制限を戻す。元の脚の照合は既存の `strictDiagramFreeArrowAugmentation_hom`。
+
+### §112.7 元のBK比較の弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFrameArrowComparison_equivalence :
+  IsSimplicialHomotopyEquivalence (strictDiagramFrameArrowComparison A d X Y)
+```
+
+RR02(a)の実BK比較の結論。§111の実増大射のHomの同値性と、§112.6の等式、
+表示・再添字・係数の指定同型を合成する。RR02(b)(c)はこの後に残る。
+
+## §113 規模の再点検と停止時の紙の材料
+
+一覧：済み 1／全体 13（うち追加 11）
+
+### §113.1 R3の利用側の再確認（紙のみ）
+
+11-15、現在の本体とdraftsの型を読み直した。
+
+- `EInfinity/BarrattEccles/CAlgUnderlyingDerivedComparison.lean:62` の
+  `algebraCAlgSource_underlyingDerivedIso` は
+  `FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A) (algebraUnderlyingDerivedSource A)`。
+  strict源の実忘却との比較であって、任意coherent図式のstrict表示の存在ではない。
+- drafts `Shared/CosimplicialEInfinity.lean:115` の
+  `totEInfinity_isLimitCone (X : CosimplicialAlgebra A)` は指定した
+  `totEInfinityCone` の極限性。ここはstrict入力だが、界面
+  `E.ofCosimplicial_cone` が供給する性質を呼んでいるので、型の存在を
+  BE模型での独立な証明の完成と取り違えない。
+- drafts `A2/DerivedPrismaticCohomology.lean:229` の
+  `derivedPrismaticCohomology_preservesSifted` は `PreservesSmallSiftedColimits`。
+  本体の `SiftedColimitPreservation.lean:28` は任意の
+  `D : (SSet.uliftFunctor.obj I) ⟶ X` と任意の指定 `JoinCocone D` を量化する。
+  strict図式に対する保存性のみではこの全量化を満たさない。
+- ③-bの現在のworktreeの報告§38.2〜38.3を読み取りのみで再確認した。
+  1・2はstrict BE図式の模型と実U比較、3は任意coherent BE図式への拡張。
+  加群のstrict化だけでは、BE作用・coherent代数射を回復したことにならない。
+
+R3の範囲は変更せず、R3・R4のLeanは書いていない。他レーンのコードの変更・importもない。
+R2の停止点5aで調整役が利用側に照らして判断する材料として維持する。
+
+### §113.2 E01の別経路（紙）
+
+`FiniteSubcomplexEndComparison` を再読した。既存の両制限錐・比較錐の射は
+任意の単体集合Aについて定義できるが、それらの `IsLimit`、任意の有限単体集合での
+比較の同値性、逆極限への移行に要る実制限射の相対持ち上げが未供給。
+§95.1の三つの不足は解消していない。有限準圏だけの結果や成分ごとの弱同値で
+これらを代用せず、元の指定単位の直接比較・未供給の普遍性による一意性も再開していない。
+したがってE01を完了に数えず、従来の見込みを縮める根拠も得ていない。
+
+### §113.3 今回の検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§112.3〜§112.7の5本・311行・24宣言を検証。対象ビルド4,211 jobs成功、
+小監査は標準三公理のみ。計算上限は変更していない。
+ログ：`/tmp/is-w1/double-op-weight/build-13.log`。プロセス終了確認済み、鍵は解放済み。
+
+検証済み累計240本・17,488行（旧G2本文の+2/-3は別記のまま）。
+上限変更後のRR02(a)実測は4,990行、(b)(c)新規0行。
+`strictDiagramFrameArrowComparison_equivalence` は元のBK比較そのものの
+単体的ホモトピー同値性である。二重反対圏からの再添字も明示している。
+ただしBK endから指定した `strictDiagramEvaluatedFrameEnd` への接続が残り、
+RR02(a)全体・RR02全体は未完。E01も§113.2のまま。停止点5aではない。
+
+### §113.4 外枠との再照合：Leanの追加を停止
+
+一覧：済み 1／全体 13（うち追加 11）
+
+今回の実測を§68.1・§69.3の未実装分へ反映する。Eや(b)(c)をまだ実装していないので、
+それらの上端を短縮できたという根拠はない。R3・R4は次の表に含まない。
+
+| 残り | 型・不足 | 見込み（行） |
+|---|---|---:|
+| RR02(a)残り | `strictDiagramFrameDerivedEndMap` とその同値性。実BK endから指定twisted-arrow底の切断へ接続 | 未確定（下の楽観計算では0と仮置き） |
+| RR02(b) | `strictDiagramStandardEndToDerived` と同値性、D(A)のHom係数・宇宙・底 | 500〜900 |
+| RR02(c) | `strictDiagramFrameDerivedEndComparisonIso`、元のRR01射への全族の照合 | 500〜900 |
+| E01 | 一般のend比較、§113.2の別経路の不足 | 700〜1,400 |
+| E02〜E06 | 全パラメーター、実比較との照合、模型と宇宙の移送 | 1,150〜1,950 |
+| RR03 | 同じright frame・指定端点への移送 | 600〜1,000 |
+| RR04 | 元のevと全パラメーターの三角形 | 300〜450 |
+| RR05 | 元の右脚への二対三則 | 150〜250 |
+| R2d・R2e | 実評価の充満忠実性と局所化への接続 | 500〜700 |
+| (a)残りを除く合計 | §68.1・§69.3の据え置き値 | 4,400〜7,550 |
+| 検証済みを含む楽観的な比較 | (a)残りを0と仮定した場合 | 21,888〜25,038 |
+
+**(a)の残りを0行とする楽観的な計算でも上端25,038行、承認外枠24,000行を
+1,038行超える。実際には(a)の接続とE01別経路の規模も未確定。**
+従来の「完成までの上端」を維持して進める根拠が失われたので、外枠の停止規則に従い、
+今回の検証済みをコミットした地点でこの線のLeanの追加を止める。
+18,000行にはまだ達していないが、超過見込みの停止を優先し、(a)〜(c)の実測と
+E01の紙の状態をここで報告する。範囲・型を弱めず、R3は実装しない。
+
+次の判断として、外枠または実装経路について調整役の指示が必要。
+目標はR2全体の完成のままで、完了・停止点5aとは報告しない。
+代わりの紙の材料は§113.1〜2。未検証の旧E01の4本はコミット対象外。
