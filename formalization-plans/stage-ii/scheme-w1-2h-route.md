@@ -69,7 +69,7 @@ theorem cech_exact_of_vCover_perfect
 χ_f : P_* C(f) ≅ C(P(f))
 ```
 
-を構成する。増大項は P(A)、第 n 項は B の A 上の n+1 重テンソル冪の P と、P(B) の P(A) 上の同じテンソル冪との比較。環の余極限を交換し、有限個の Frobenius 段を同じ段に進める対角の終性を使う案。
+を構成する。増大項は P(A)、第 n 項は B の A 上の n+1 重テンソル冪の P と、P(B) の P(A) 上の同じテンソル冪との比較。下記 §7 の照合により、conerve 関手の左随伴性による余極限保存を使う方針に整理した。テンソル冪ごとの対角の終性を新しく実装することは第一案にしない。
 
 必要な可換式は、各テンソル因子の挿入、二因子の積、単位で検証する。これにより余面・余退化・増大との自然性を得る。各次数だけの同型やホモロジーの同型では代用しない。
 
@@ -134,3 +134,37 @@ H02 の幅は、環の余極限と対角の比較をどれだけ直接既存 API
 実装する際は H01 → H02 → H03 → H04 の小さい対象ビルド、最後に入口と小さい監査。すべて共有の鍵 `with_build_lock.sh --class impl --wait 3600` を使い、待ちは一つ。main の凍結と B4 の優先を守る。
 
 現在は 2g-1 の C01 による新しい独立構成の境界で止める指示に従い、段 0 の紙だけを記録した。H03 の未完の入口を仮定しただけの定理を完成扱いにしたり、この段 0 を理由に先に Lean 実装を始めたりはしない。
+
+## 7. 停止後の紙の照合：H01・H02 の実装入口
+
+2026-11-14。main は `fb3dfd20e` のままで、確認した正本の停止条件に変更はない。この追記は新しい主項目を追加しない。Lean の編集・検証は行っていない。
+
+2g-1 の一覧：済み 6／全体 12（うち追加 3）
+
+2h の一覧：済み 0／全体 4（うち追加 0）
+
+### H01：零環を含む仮定の直接照合
+
+Mathlib `FieldTheory/Perfect.lean` の `PerfectRing.bijective_frobenius` は、定義上 `Bijective (fun x : A ↦ x ^ p)` を与える。H01 の `projectivePrimePowerRingHom` の全単射性にはこれを直接使える。`ExpChar` を先に立てて通常の `frobenius` との一致を経由する必要はなく、積が零環になる場合にも仮定を増やさず済む。
+
+`Algebra/Colimit/DirectLimit.lean` の `DirectLimit.Ring.lift`、`lift_comp_of`、`hom_ext` を用いれば、逆 Frobenius の n 乗を第 n 段の射とした lift の構造射との式から同型の両逆性と自然性を確認できる。これらの API はソースで確認したが、H01 の Lean の型検査や証明はまだ行っていない。
+
+### H02：左随伴を再利用する経路
+
+Mathlib `AlgebraicTopology/CechNerve.lean` に次の既存の型がある。
+
+```text
+CosimplicialObject.augmentedCechConerve :
+  Arrow C ⥤ CosimplicialObject.Augmented C
+CosimplicialObject.cechConerveAdjunction :
+  augmentedCechConerve ⊣ Augmented.toArrow
+```
+
+B1 の `Cech/Filtered.lean` の `isCechExact_colimit` は、この左随伴性を `IsLeftAdjoint` に渡して `preservesColimitIso` を使っている。H02 でも同じ一般論を再利用する。
+
+1. f の始域・終域の Frobenius と可換式から `D_f : ℕ ⥤ Arrow CommRingCat` を作る。各対象は f、遷移射の左右の成分は実際の Frobenius の反復。
+2. 始域・終域の代数的順極限に `DirectLimit.Ring.lift` の普遍性を入れ、環の圏の余極限と比較する。既存の `ringDirectLimitIntColimitIso` は整数加群の同型なので、環の余極限同型としてそのまま使わない。
+3. 左随伴性から `colimit (D_f ⋙ augmentedCechConerve) ≅ C(colimit D_f)` を得る。右辺の矢印を `P(f)` と同定する。
+4. 左辺の各遷移が、conerve の各次数の p 乗反復に一致することを示し、`P_* C(f)` と同定する。wide pushout の挿入写像との式で環準同型を一意に決める。この一致を定義的な一致と決めつけず、増大項と全次数で照合する。
+
+この整理で、面・退化・増大の互換性の大部分を関手性と自然同型から受け取れる。第 2・第 4 項の構造射の式が H02 の残る実装内容。独立した「有限テンソル積と filtered 余極限の交換定理」を追加して作る計画にはしない。既存の上端 5,000 行はまだ維持し、実装前のソース照合だけで見積もりを縮めない。
