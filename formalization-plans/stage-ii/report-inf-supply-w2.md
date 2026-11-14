@@ -13558,3 +13558,81 @@ theorem exists_grothendieckKanCoefficientComparison :
       ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
         grothendieckKanCoefficientMap F ∧ IsPrecompositionEquivalence f
 ```
+
+## 218. 同じKan係数の全図式と元のnative全分類の接続（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元のR03fの存在から一つの底上の比較射を選び、同じ射について射影・単位の二つの厳密な等式と前合成同値性を記録した。これを既存のleftClassification_of_precompositionEquivalenceへ渡し、底全体のnative分類のFunctorIsoを得た。対象ごとに同型を選んだものではない。
+
+native分類とstrict transportの分類の接続には短い既存の経路があった。同じnerve上の射影pに対して、leftStraighteningInfinityDiagram_representationIsoとnerveStraighteningRepresentationIsoの両方を、同じnerveLeftTransportRepresentation pへ適用する。二つの全関手同型の合成だけでnative分類と候補を比較できる。その後、元のweightedNerveStraighteningUnitIsoを合成する。同じEx∞係数をKanObject値へ記録し直してこれを適用し、その同じ全係数図式から元のGrothendieck置換のnative分類への全FunctorIsoができた。この部分は既存の分類移送・単位・合成の法則であり、新しい独立の数学的な一覧項目は増やしていない。
+
+個別検査：GrothendieckKanClassificationの最初の版96770・終了0、native/strict分類の接続61750・終了0、二本を結合した最終版17493・終了0。290：最初の版の対象ビルド3,328 jobs・終了0、小監査152本1,033宣言・標準三公理のみ（実ハンドル79144・終了0）。291：最終版の二本と直接importerの対象ビルド3,329 jobs・終了0、小監査153本1,045宣言・標準三公理のみ（実ハンドル61295・終了0）。鍵返却済み。今回87＋41＝128行、累計153本・9,832行／外枠15,000。
+
+sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。残る正規化では、sourceFrameElementsFamilyのfiberが元のElementsの反対圏であることと、全SourceFrameArrowElementsのfiberの向きを区別する。次に既存のKan係数のedgewise反転比較・Ex∞単位・反転の弱同値保存を全図式へ合成する係数移送の法則を試す。型の案は次のとおり（見込み100〜220行）。
+
+```lean
+def kanHomFamilyOppositeComparisonIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    FunctorIso (kanHomFamilyCoherent F)
+      (kanHomFamilyCoherent (F ⋙ SSet.opFunctor))
+```
+
+ここで反転するのは値の単体集合のみで、底Cとその全射は保つ。元の係数FへEx∞単位を適用し、その反転と同じEx∞によるKan化を取る。Kan化後の値とその反転の比較には既存kanDiagramOppositeComparisonIsoを使い、同じ二つの自然変換の反転可能性を全関手圏で合成する。単純にFとF.opが厳密に同じとはしない。元のroof比較との等式が証明できるまでR03dを完了と扱わない。
+
+### 218.1 型
+
+Grothendieck側の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### GrothendieckKanClassification（87行）
+
+```lean
+def grothendieckKanCoefficientComparison :
+    ((continuousLeftFibrationReplacement (nerve I)).obj
+      (Over.mk (nerveMap (Grothendieck.forget F)))).left ⟶
+        weightedNerve (grothendieckKanCoefficients F)
+
+theorem grothendieckKanCoefficientComparison_projection :
+    grothendieckKanCoefficientComparison F ≫
+      weightedNerveProjection (grothendieckKanCoefficients F) =
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom
+
+theorem grothendieckKanCoefficientComparison_unit :
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (Grothendieck.forget F)))).left ≫
+        grothendieckKanCoefficientComparison F = grothendieckKanCoefficientMap F
+
+theorem grothendieckKanCoefficientComparison_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (grothendieckKanCoefficientComparison F)
+
+def grothendieckKanReplacementClassificationIso :
+    FunctorIso
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom)
+      (leftStraighteningInfinityDiagram
+        (weightedNerveProjection (grothendieckKanCoefficients F)))
+
+def grothendieckKanCoefficientDiagram : I ⥤ KanObject.{u}
+
+def grothendieckKanNativeClassificationUnitIso :
+    FunctorIso (kanDiagramCoherentNerve (grothendieckKanCoefficientDiagram F))
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom)
+```
+
+#### NativeNerveStraighteningComparison（41行）
+
+```lean
+def leftStraighteningInfinityDiagram_nerveCandidateIso
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    FunctorIso (leftStraighteningInfinityDiagram p) (leftStraighteningCandidate p)
+
+def weightedNerveNativeStraighteningUnitIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (leftStraighteningInfinityDiagram (weightedNerveProjection (F ⋙ kanObjectForget)))
+```
