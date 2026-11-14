@@ -2492,3 +2492,14 @@ G1・G2共用部品込み本体14,340行、入口込み14,581行。有限表示�
 G1・G2共用部品込み本体14,412行、入口込み14,655行。現在の区切り（8d7bacd9c の後）は5モジュール307行＋入口5行、小監査計8宣言・標準三公理のみ。B02〜B04 は未完で停止点 2g-1 ではない。全体の見込み約16,100〜19,200行、残り約1,700〜4,800行、外枠25,000行は維持。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B04：一般の代数への有限表示模型の実際の圏と cocone
+
+`FinitePresentationModelCategory`（87行）：`FinitePresentationModelCategory` は有限表示 R-代数から任意の R-代数 C への射の圏。`finitePresentationModelObj`・`finitePresentationModelHomMk` は実際の模型と可換な射を登録し、`finitePresentationModelDiagram`・`finitePresentationModelCocone` は同じ構造射の環の図式と cocone を返す。`FinitePresentationModelIndex` と対応する small diagram・cocone は元の環と同じ宇宙の添字を供給する。整性・有限加群性・元の C の有限型性は要求しない。filtered 性と余極限性はこのファイルではまだ結論しない。
+
+本体87行・入口1行。単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,032ジョブ、小監査17宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-finite-presentation-model-category-check.log`・`2g-finite-presentation-model-category-native.log`・`2g-finite-presentation-model-category-audit.log`。
+
+G1・G2共用部品込み本体14,499行、入口込み14,743行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
