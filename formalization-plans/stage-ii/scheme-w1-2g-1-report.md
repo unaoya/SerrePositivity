@@ -2232,3 +2232,18 @@ C06 の実測を反映し、2g-1 の残りの見込みを B01・B02（一般の�
 次は、一般の固有模型を Noether な係数段で供給するため、構成した Chow の支配の周辺への immersion を極限上で閉埋め込みにし、既存の C04 で有限段に降ろす。閉埋め込みになった同じ段で支配の源を固有にし、その全射性を使って元の有限表示対象の模型の固有性を得る。元の環 R や元の固有射を Noether・射影に限定しない。
 
 一覧：済み13／全体17（うち追加8）。
+
+
+### B01・B02：固有な支配の閉埋め込み性と、全射合成からの固有性の消去
+
+`ProperDominationDescent`（37行）：`isClosedImmersion_of_proper_immersion` は固有な immersion が閉埋め込み。`isClosedImmersion_of_proper_over_base` は分離的な周辺への immersion が同じ基底上で固有なら閉埋め込み。`isProper_of_proper_surjective_comp` は全射な支配との合成の固有性から、分離的局所有限型の元の射の固有性を反映する。
+
+本体37行・入口1行。最初の単独検証、ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,013ジョブ、小監査3宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-proper-domination-descent-check.log`・`2g-proper-domination-descent-native.log`・`2g-proper-domination-descent-audit.log`。
+
+G1・G2共用部品込み本体13,304行、入口込み13,530行。今回の区切り（6bc4fb99d の後）は9モジュール、本体593行＋入口9行、小監査合計21宣言・標準三公理のみ。C06 は完了、B01〜B04 は未完で、停止点 2g-1 ではない。全体の見込み約16,100〜19,200行、残り約2,800〜5,900行、外枠25,000行の見直しは不要。
+
+一覧：済み13／全体17（うち追加8）。
+
+B01・B02 の次の接続の型（着手前、見込み350〜800行、上記900〜2,000行の内数）：(i) h:T→X、t:T→P、q:P→S、t≫q=h≫f と任意の基底交換 S'→S に対し、P の底変換に t を引いた実際の二段の pullback から X×_S S' への実際の射を構成し、h の底変換の Cartesian 正方形と固有性・全射性を示す。(ii) その二段の pullback の射影が閉埋め込みなら、基底交換した f が固有であることを、上記の全射合成からの消去で示す。(iii) affine 遷移の qcqs な基底図式 D の極限について、ある affine な段 D_i 上の Noether な X の分離的局所有限型の射 f:X→D_i が極限で固有なら、ある後段での実際の底変換が固有であることを返す。C06 の支配を選び、`exists_closedImmersion_flatStageProjection_of_isLimit` により t の極限での閉埋め込み性を同じ二段の模型へ降ろして (ii) に渡す。これは既存の極限と底変換の構成の接続で、親項目を増やさない。
+
+(iii) の Noether な X は、既に供給済みの有限型 k-部分代数上の有限表示模型から得る（k は Noether）。元の R や元の固有射を Noether と仮定する出口へ置き換えない。分離性を先に降ろした模型に適用し、実際の係数段の固有模型へ接続するまで B01 は未完のままとする。

@@ -1523,3 +1523,5 @@ public import SerrePositivity.AlgebraicGeometry.IrreducibleNoetherianProperDomin
 public import SerrePositivity.AlgebraicGeometry.FiniteProperDominationUnion
 
 public import SerrePositivity.AlgebraicGeometry.NoetherianProperDomination
+
+public import SerrePositivity.AlgebraicGeometry.ProperDominationDescent
