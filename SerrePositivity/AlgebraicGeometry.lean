@@ -1338,3 +1338,6 @@ public import SerrePositivity.AlgebraicGeometry.FiniteIdealLocalizationApproxima
 public import SerrePositivity.AlgebraicGeometry.FiniteIdealMapApproximation
 
 public import SerrePositivity.AlgebraicGeometry.FiniteTypeIdealSheafLocality
+public import SerrePositivity.AlgebraicGeometry.AffineFiniteTypeSubideal
+public import SerrePositivity.AlgebraicGeometry.FiniteTypeIdealSheafCover
+public import SerrePositivity.AlgebraicGeometry.IdealSheafOpenBaseChange

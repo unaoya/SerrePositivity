@@ -520,3 +520,42 @@ FiniteIdealMapApproximation（57 行）と FiniteTypeIdealSheafLocality（44 行
 ログ：`2g-c02-map-locality-native.log`、`2g-c02-map-locality-audit.log`。G1 累計は本体 **2,782 行**、入口込み **2,838 行**。アフィンの有限族をまとめる次の補題は下書き検証成功、まだ本体ビルド・監査前。被覆の判定も検証前の作業木にあり、C02.(i) の大域延長の完成とは数えない。
 
 一覧：済み 7／全体 13（うち追加 4）。
+
+C02.(i) の開の重なりの係数移送の法則：`idealSheaf_comap_map_of_isPullback_openImmersion` は pullback square (a:W→X,b:W→Y,j:X→S,v:Y→S)、QuasiCompact j、IsOpenImmersion v に対し `(K.map j).comap v = (K.comap a).map b` を示す。既存の閉部分スキームの comapIso と開基底変換の核の公式による法則（Stacks 01PF の延長の貼り合わせで使用、見込み 40〜120 行）。新しい有限型性の存在構成とは数えない。
+
+C02.(i) の貼り合わせの法則：`exists_subideal_gluing_open_pair` は開埋め込み j:X→S,v:Y→S（ともに準コンパクト）の重なりの pullback (a,b) と、K≤I.comap j、L≤I.comap v、K.comap a=L.comap b に対し、J≤I、J.comap j=K、J.comap v=L を与える。J は既存の像・共通部分 `I ⊓ K.map j ⊓ L.map v` であり、被覆の仮定はこの貼り合わせの等式には不要。開の逆像の共通部分の保存と map/comap の随伴の法則を使う。Stacks 01PF の貼り合わせの分割（見込み 60〜160 行）。有限型性を主張するには、この後に被覆と有限型性の局所判定を使う。
+
+C02.(i) の一般の開被覆の有限型性の法則：`isFiniteTypeIdealSheaf_of_openCover` は実際の X.OpenCover 𝒰 と全 i での IsFiniteTypeIdealSheaf (K.comap (𝒰.f i)) から IsFiniteTypeIdealSheaf K を得る。既存の affineRefinement と切断環同型を通して上のアフィン開被覆の判定へ渡す。原典 01TV の局所判定、見込み 40〜100 行。有限型性を仮定から結論へ移す法則で、新しい存在項目とは数えない。
+
+C02.(iii) の有限選択への分割：`exists_finite_affine_sections_support_subset` は CompactSpace X、K.support⊆V に対して、K のアフィン切断から有限族 t を選び、t をすべて含む任意のイデアル層 J の支持が V に含まれることを示す。型は `∃ t : Finset (Σ U : X.affineOpens, K.ideal U), ∀ J, (∀ a ∈ t, (a.2 : Γ(X,a.1.1)) ∈ J.ideal a.1) → (J.support : Set X) ⊆ V`。01PF・01PG の有限型近似の支持への適用を、補集合のコンパクト性と basicOpen/zeroLocus の既存の比較で分割する（見込み 50〜130 行）。この有限選択だけで閉包絡の完成とはしない。
+
+C02.(i) のアフィン有限族との一致への分割：`exists_finiteType_subideal_eq_on_affine_family_of_isAffine` はアフィン X、有限族 U_i、全 i での (K.ideal U_i).FG に対して、J≤K、IsFiniteTypeIdealSheaf J、全 i で J.ideal U_i=K.ideal U_i を得る。各切断イデアルの有限生成元を先のアフィン有限選択へ渡す法則（原典 01PF のアフィン延長の部分、見込み 40〜100 行）。
+
+C02.(i) の貼り合わせの等式検出の法則：`idealSheaf_ext_of_openCover` は実際の開被覆上の comap の一致から大域の一致を得る。`idealSheaf_comap_eq_iff_affine_sections` はアフィン開 U への二つの comap の一致を、元の U 上の切断イデアルの一致と同値にする。既存の affineRefinement・アフィンでの ext・開の切断環同型による法則（原典 01PF の貼り合わせで使用、見込み 40〜100 行）。
+
+C02.(i) のアフィン基底から準コンパクト開への一致：`exists_finiteType_subideal_eq_on_quasiCompact_open_of_isAffine` はアフィン X、準コンパクト開 W、IsFiniteTypeIdealSheaf (K.comap W.ι) に対し、J≤K、IsFiniteTypeIdealSheaf J、J.comap W.ι=K.comap W.ι を得る。01PF のアフィン基底の場合そのものを、既存の基底の有限選択、前の有限アフィン族との一致、開被覆による等式検出に分割する。見込み 70〜180 行。次の非アフィンの二つの開の貼り合わせへの入力。
+
+C02.(i) の二開集合の延長への分割：`exists_finiteType_subideal_extending_open_pair` は j:X→S,v:Y→S が準コンパクトな開埋め込み、Y がアフィン、両者が S を覆うとき、H≤K.comap j、IsFiniteTypeIdealSheaf H から、J≤K、IsFiniteTypeIdealSheaf J、J.comap j=H を得る。重なり上で E=K⊓H.map j の制限を計算し、Y 上で有限型の N≤E.comap v を重なりと一致させてから既存の像・共通部分で貼る。01PF の有限アフィン被覆の帰納の一段（見込み 150〜350 行）。
+
+上の二開集合の一段は、先に `exists_subideal_extending_to_affine_open` として被覆の仮定を外し、結論を `J≤K ∧ IsFiniteTypeIdealSheaf (J.comap v) ∧ J.comap j=H` とする証明分割で進める。その後で被覆の仮定がある場合の大域有限型性を得る。有限被覆の帰納は基底 S を固定し、既に扱った準コンパクト開の和への制限を保ちながら、次のアフィン開上の有限型性を追加する。
+
+C02.(i) の有限被覆の帰納の分割：`exists_subideal_finiteType_on_finite_affine_family_extending` は準分離 S、準コンパクト開 W、H≤K.comap W.ι、有限型 H と有限アフィン族 (U_i)_{i∈t} に対し、J≤K、J.comap W.ι=H、各 i∈t で IsFiniteTypeIdealSheaf (J.comap U_i.ι) を得る。基底 S 上のイデアルを保ったまま二開集合の延長の法則を有限帰納する（01PF、見込み 120〜300 行）。その前提の法則 `isFiniteTypeIdealSheaf_comap_iSup` は開の和上の有限型性を各開への制限から得る。いずれも C02.(i) の既定の有限被覆の帰納の証明分割。
+
+C02.(i) の有限被覆の帰納の出口：`exists_finiteType_subideal_extension` の型は qcqs X、準コンパクト開 W、H≤K.comap W.ι、IsFiniteTypeIdealSheaf H から、J≤K、IsFiniteTypeIdealSheaf J、J.comap W.ι=H。Stacks 01PF (28.23.2) をイデアル層に適用した形で、前の有限族の帰納に X の有限アフィン被覆を渡す証明分割（見込み 60〜150 行）。既定の C02.(i) の有限切断族への出口は、この延長を各切断イデアルの有限生成部分へ適用し有限和を取る。
+
+C02.(i) の切断への出口：`idealSheaf_comap_opens_top` はアフィン開の制限の全体切断イデアルを topIso による元の切断イデアルの像と比較する法則。`exists_finiteType_subideal_containing_affine_finset` は qcqs X、アフィン U、有限集合 s⊆K(U) に対し J≤K、有限型 J、s⊆J(U) を得る。topIso で span(s) を U の全体切断へ移し、既定の延長 01PF を適用する分割（見込み 70〜170 行）。`exists_finiteType_subideal_containing_affine_sections` は既定の C02.(i) の有限族の型で、各アフィンの有限集合にこの延長を適用し有限和を取る（見込み 50〜120 行）。
+
+C02.(iii) の出口：`exists_finitePresentation_closedEnvelope` は qcqs X、K.support⊆V に対して J≤K、LocallyOfFinitePresentation J.subschemeι、J.support⊆V を得る（01PF・01PG・01TV、見込み 50〜120 行）。`exists_finitePresentation_closedEnvelope_of_proper` は基底 Spec R 上の一般の固有・局所有限表示 Y に同じ結論を与える指定の型へのラッパーであり、ブローアップ・射影性に制限しない。下書き段階であり、C02 の完成扱いは全ての対象ビルド・小監査の後に行う。
+
+### C02 のアフィン有限選択・被覆の判定・開基底変換：検証結果
+
+AffineFiniteTypeSubideal（63 行）、FiniteTypeIdealSheafCover（60 行）、IdealSheafOpenBaseChange（36 行）の三モジュール、計 **159 行**と入口 3 行を追加。対象ビルドは直接の importer AlgebraicGeometry まで **4,844 ジョブ成功**、小監査は補助宣言込み **5 宣言・標準三公理のみ**。ログは `2g-c02-affine-cover-native.log`、`2g-c02-affine-cover-audit.log`。共有鍵 `--class impl --wait 3600` をビルドの間だけ取得。resource limit の追加・sorry・追加公理なし。
+
+- `exists_finiteType_subideal_containing_affine_sections_of_isAffine`：アフィン基底の有限個のアフィン開の切断を同時に含む有限型部分イデアル層を選ぶ。
+- `isFiniteTypeIdealSheaf_of_affineCover`：アフィン開被覆上の切断イデアルの有限生成性から大域の有限型性を判定する。
+- `IsFiniteTypeIdealSheaf.comap_openImmersion`：開埋め込みへの制限は有限型性を保存する。
+- `idealSheaf_comap_map_of_isPullback_openImmersion`：準コンパクト射によるイデアル層の像は、実際の開 pullback square の基底変換と整合する。
+
+G1 累計は本体 **2,941 行**、入口込み **3,000 行**。C02.(i) の非アフィンの有限被覆の帰納と (iii) の一般の閉包絡は下書き段階。個別の下書きでは IdealSheafOpenPairGluing・AffineFiniteTypeSubidealFamily・FiniteIdealSupportSelection が検証成功したが、まだ本体ビルドと監査を通していないのでこの実測には加えない。C02 内は (ii) のみ完了のまま。
+
+一覧：済み 7／全体 13（うち追加 4）。
