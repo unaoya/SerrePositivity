@@ -11950,3 +11950,124 @@ theorem strictBETotJointNativeHomCoherent_fixSource (X : (operad A).Algebra) :
       homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
 
 ```
+
+## 186. 最初の三辺の両変数の全関手同型（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R02・R03の未完了部分は§185と同じ。
+
+元の関手的source frame・right frameの混合Homを始域にも反変な全関手として束ねた。左右の混合比較の始域自然性は、同じaugmentationの自然性と圏の結合則そのものである。BEでは同じprobe関手・標的の次数零置換・uncurry・ULiftを使い、六辺のうち最初の三辺を全両変数の自然変換にした。
+
+各辺の弱同値性には既存のrightFrameHammockFamilyEdge_weakを同じ入力で代入した。全自然変換自身をKan化して全関手圏で反転し、`strictBETotJointFirstSpanComparison` を得た。元の両変数raw Homとsource frame Homの**全関手同型**であり、点ごとの同値の選択ではない。ただし終点はsource frame Homであり、正本Hom∞との全同型はまだ含まない。
+
+### 186.1 検証・実測と累計の訂正
+
+255：二本の対象ビルド10,626 jobs・終了0、小監査98本739宣言・標準三公理のみ。実ハンドル13255の終了0を確認し、鍵を返却した。sorry・独自公理0、計算上限変更なし。
+
+今回二本242行（83＋159）、manifestの全ファイルを再集計した累計98本・6,412行（外枠15,000）。§185の三本は247行（119＋52＋76）、その時点の再集計6,170行は正しい。§184の累計6,023行には100行の過大計上があり、正しくは5,923行だった。以後はmanifestから再集計した値を用いる。過去の報告の検証結果と宣言数は変わらない。
+
+今回の二本は既存比較の自然性・係数移送・合成の法則で、一覧の新規定理の追加には数えない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 186.2 既存構成の法則の型
+
+#### RightMixedBifunctor（83行）
+
+```lean
+def rightMixedBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v} where
+  obj X
+
+theorem rightMixedBifunctor_obj (X : C) :
+    (rightMixedBifunctor q r).obj (Opposite.op X) = rightMixedFamily (q.atObject X) r
+
+def sourceFrameHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+def rightMixedLeftBifunctorMap : sourceFrameHomBifunctor q ⟶ rightMixedBifunctor q r where
+  app X
+
+def rightMixedRightBifunctorMap : rightFrameHomBifunctor r ⟶ rightMixedBifunctor q r where
+  app X
+
+theorem rightMixedLeftBifunctorMap_app (X : C) :
+    (rightMixedLeftBifunctorMap q r).app (Opposite.op X) =
+      rightMixedLeft (q.atObject X) r
+
+theorem rightMixedRightBifunctorMap_app (X : C) :
+    (rightMixedRightBifunctorMap q r).app (Opposite.op X) =
+      rightMixedRight (q.atObject X) r
+
+```
+
+#### StrictDiagramTotJointFirstSpan（159行）
+
+```lean
+def strictBETotJointFirstSpanBifunctor :
+    Fin 4 → ((operad A).Algebraᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u})
+
+def strictBETotJointFirstSpanUnit :
+    strictBETotJointFirstSpanBifunctor A 0 ⟶ strictBETotJointFirstSpanBifunctor A 1 where
+  app X
+
+def strictBETotJointFirstSpanRight :
+    strictBETotJointFirstSpanBifunctor A 1 ⟶ strictBETotJointFirstSpanBifunctor A 2
+
+def strictBETotJointFirstSpanLeft :
+    strictBETotJointFirstSpanBifunctor A 3 ⟶ strictBETotJointFirstSpanBifunctor A 2
+
+def strictBETotJointFirstSpanDiagram (i : Fin 4) :
+    ((operad A).Algebraᵒᵖ × (operad A).Algebra) ⥤ SSet.{u+1}
+
+def strictBETotJointFirstSpanEdgeSource : Fin 3 → Fin 4
+
+def strictBETotJointFirstSpanEdgeTarget : Fin 3 → Fin 4
+
+def strictBETotJointFirstSpanEdge (i : Fin 3) :
+    strictBETotJointFirstSpanDiagram A (strictBETotJointFirstSpanEdgeSource i) ⟶
+      strictBETotJointFirstSpanDiagram A (strictBETotJointFirstSpanEdgeTarget i)
+
+theorem strictBETotJointFirstSpanEdge_weak (i : Fin 3)
+    (P : (operad A).Algebraᵒᵖ × (operad A).Algebra) :
+    IsWeakHomotopyEquivalence ((strictBETotJointFirstSpanEdge A i).app P)
+
+def strictBETotJointFirstSpanKanDiagram (i : Fin 4) :
+    strictBETotJointHomIndex A ⥤ KanObject.{u+1}
+
+def strictBETotJointFirstSpanKanEdge (i : Fin 3) :
+    strictBETotJointFirstSpanKanDiagram A (strictBETotJointFirstSpanEdgeSource i) ⋙ kanObjectForget ⟶
+      strictBETotJointFirstSpanKanDiagram A (strictBETotJointFirstSpanEdgeTarget i) ⋙ kanObjectForget
+
+def strictBETotJointFirstSpanCoherent (i : Fin 4) :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (strictBETotJointHomIndex A)) ⟶ SpaceInfinity.{u+1}
+
+def strictBETotJointFirstSpanEdgeIso (i : Fin 3) :
+    FunctorIso (strictBETotJointFirstSpanCoherent A (strictBETotJointFirstSpanEdgeSource i))
+      (strictBETotJointFirstSpanCoherent A (strictBETotJointFirstSpanEdgeTarget i))
+
+theorem strictBETotJointFirstSpanCoherent_zero :
+    strictBETotJointFirstSpanCoherent A 0 = strictBETotJointRawHomCoherent A
+
+def strictBETotJointFirstSpanComparison :
+    FunctorIso (strictBETotJointRawHomCoherent A) (strictBETotJointFirstSpanCoherent A 3)
+
+```
+
+## 187. R03d：同じ固定始域比較で正規化された両変数比較の追加（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未証明。
+
+IS-W2 §19の承認済みの中間定理の枠により、R01〜R03のまとまりにR03dを追加する。型は次のとおり。両変数の同じ入力の全FunctorIsoを要求し、始域を固定した制限は既存の同じ `strictBETotProbeFrameHomInfinityIso` と一致させる。HEqは§185の二つの制限等式による型の移送を記すためのもので、点ごとの同値や可換性への弱化ではない。
+
+```lean
+theorem exists_strictBETotJointHomComparison (A : Type u) [CommRing A] :
+  ∃ e : FunctorIso (strictBETotJointRawHomCoherent A) (strictBETotJointNativeHomCoherent A),
+    ∀ X : (operad A).Algebra,
+      HEq (e.precomp ((SSet.uliftFunctor.{u+2,u+1}).map
+        (nerveMap (strictBETotJointHomFixSource A X))))
+        (strictBETotProbeFrameHomInfinityIso A X)
+```
+
+この主張の型を一時ファイル `/private/tmp/CheckStrictBEJointComparisonType.lean` のPropとして検査し、実ハンドル58644の終了0を確認した。定理の証明や本体への登録はまだしていない。
+
+残りの見込みは950〜1,450行：全パラメーターのaugmentationとroofを同じ底上に置く450〜700行、元の豊穣Yoneda・指定局所化比較へ運ぶ300〜450行、同じ固定始域比較との正規化200〜300行。今回の既存法則242行はこの残りに含めない。全体の外枠は15,000行のまま。
+
+短い経路を先に試す。source frameのaugmentationを全始域と全次数の自然変換として同じ局所化へ送り、弱辺を全関手圏で反転する。その同じ逆と元の射から、両端を変数とする一つの表示された比較を作り、分類に送る。固定始域では既存のframe・Yoneda・同じ局所化二胞体に戻ることを照合する。`FrameLeftRoofPrecompose` の各射の局所化内の等式だけを、全高次の自然性の証明として使わない。
+
+まとまり外の定理、1,500行を超える見込み、⑤aの欄の型への変更が必要と分かった場合は、検証済みをコミットして報告する。今回は同じR03のまとまりで上端1,450行なので、承認を待たずR03dの証明へ進む。
