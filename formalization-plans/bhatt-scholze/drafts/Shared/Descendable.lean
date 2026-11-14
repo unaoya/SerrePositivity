@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.EInfinity.Descendable.*（新設。調整役の決定、main 86acd98db、M15。E∞ を使わない thick ⊗-ideal・index・安定性は Derived/ へ下ろしてよい。時期・担当は段 G、A5 の中身の段階で）
--- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.4、G-A5-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.4、G-A5-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
@@ -7,11 +7,11 @@ public import Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Basic
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.RingTheory.FinitePresentation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianPathSpace
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeEquiv
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SquareDiagonal
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Stability
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.Stability
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Suspension
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Loop
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
@@ -56,27 +56,27 @@ variable (A : Type u) [CommRing A]
 方針：述語の閉性の構造。
 規約：`(derivedInfinityCategory A) _⦋0⦌ → Prop`。
 使われ方：`thickTensorIdealGenerated`。 -/
-structure IsThickTensorIdeal (P : (derivedInfinityCategory A) _⦋0⦌ → Prop) : Prop where
-  finiteColimits : ∀ {K : SSet.{u+1}} [K.Finite] (F : K ⟶ derivedInfinityCategory A)
-    (c : JoinCocone F), (∀ i, P (F.app _ i)) → IsColimitCone c → P c.vertex
+structure IsThickTensorIdeal (P : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ → Prop) : Prop where
+  finiteColimits : ∀ {K : SSet.{u+1}} [K.Finite] (F : K ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F), (∀ i, P (F.app _ i)) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c → P c.vertex
   retracts : ∀ {x y} (i : SSet.Edge x y) (r : SSet.Edge y x),
     Truncated.HomotopyCategory.homMk i.toTruncated ≫ Truncated.HomotopyCategory.homMk r.toTruncated =
       𝟙 (HomotopyCategory.mk x) → P y → P x
   shifts : ∀ x, P x →
-    P (((suspensionFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt) ∧
-    P (((loopFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt)
+    P ((SSet.HomotopyCategory.objEquiv ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)).obj (HomotopyCategory.mk x)))) ∧
+    P ((SSet.HomotopyCategory.objEquiv ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)).obj (HomotopyCategory.mk x))))
   -- tensorWith は Derived/Tensor/Fixed（IF-G1 ⊗ᴸ、main 7bda72c3c）。N ↦ N ⊗ᴸ M
-  tensor : ∀ (x M : (derivedInfinityCategory A) _⦋0⦌), P x → P ((tensorWith M).app _ x)
+  tensor : ∀ (x M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌), P x → P ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith M).app _ x)
 
 /-- 概要：対象 M の生成する thick ⊗-ideal（M を含む thick ⊗-ideal の sInf）。
 方針：述語の ∀ による交わり。
 規約：—
 使われ方：`IsDescendable`。 -/
-def thickTensorIdealGenerated (M : (derivedInfinityCategory A) _⦋0⦌) : (derivedInfinityCategory A) _⦋0⦌ → Prop :=
+def thickTensorIdealGenerated (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ → Prop :=
   fun N => ∀ P, IsThickTensorIdeal A P → P M → P N
 
 /-- CAlg_A の始対象 A。ここからの辺は各代数の構造射を表す。 -/
-abbrev unitAlgebra := (E.discrete A).app _ (nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))
+abbrev unitAlgebra := (E.discrete A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))
 
 /-- 概要：[Mat16, Def 3.18]：A → B（CAlg_A の対象 B）が descendable ⇔ B の生成する thick ⊗-ideal が単位 A を含む。
 方針：定義どおり。
@@ -116,14 +116,14 @@ theorem isDescendableOver_unit_iff (B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge (uni
 方針：Mod_R → Mod_{R′} の底変換は thick ⊗-ideal を保つ。押し出しの名前は A7 `relativeTensor` の E∞ 版（基盤待ち）。
 規約：基盤待ち。A5-4 の降下（Δ_T → Δ_S に沿う底変換）で使う。 -/
 theorem isDescendableOver_pushout (Q : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ E.CAlg A)
-    (hQ : IsColimitCone (pushoutCocone Q)) (h : IsDescendableOver (E := E) A _ _ (.ofTruncated (squareBottomArrow Q))) :
-    IsDescendableOver (E := E) A _ _ (.ofTruncated (squareTopArrow Q)) := by
+    (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone Q)) (h : IsDescendableOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q))) :
+    IsDescendableOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow Q)) := by
   sorry -- Mod_R の底変換は thick ⊗-ideal を保つ
 
 theorem hasDescentIndexLEOver_pushout (Q : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ E.CAlg A)
-    (hQ : IsColimitCone (pushoutCocone Q)) (n : ℕ)
-    (h : HasDescentIndexLEOver (E := E) A _ _ (.ofTruncated (squareBottomArrow Q)) n) :
-    HasDescentIndexLEOver (E := E) A _ _ (.ofTruncated (squareTopArrow Q)) n := by
+    (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone Q)) (n : ℕ)
+    (h : HasDescentIndexLEOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q)) n) :
+    HasDescentIndexLEOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow Q)) n := by
   sorry -- fiber の n 重テンソルの零写像を底変換する
 
 /-- 概要：(b)(c) の一般形：合成と相対テンソル。合成の辺の指定（quasicategory の合成の証人）は基盤の名前が決まってから。 -/
@@ -134,21 +134,21 @@ theorem isDescendableOver_comp {R B C : (E.CAlg A) _⦋0⦌} (f : SSet.Edge R B)
   sorry -- R 加群への制限と thick ⊗-ideal の生成の推移性
 
 theorem isDescendableOver_tensor (Q : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ E.CAlg A)
-    (hQ : IsColimitCone (pushoutCocone Q))
-    (hf : IsDescendableOver (E := E) A _ _ (.ofTruncated (squareBottomArrow Q)))
-    (hg : IsDescendableOver (E := E) A _ _ (.ofTruncated (squareLeftArrow Q))) :
-    IsDescendableOver (E := E) A _ _ (.ofTruncated (squareDiagonalArrow Q)) := by
+    (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone Q))
+    (hf : IsDescendableOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow Q)))
+    (hg : IsDescendableOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow Q))) :
+    IsDescendableOver (E := E) A _ _ (.ofTruncated (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagonalArrow Q)) := by
   sorry -- 押し出しの上辺への底変換と左辺の合成
 
 /-- 射の ∞ 圏の頂点 v を、実際の一単体に戻す。 -/
 abbrev algebraArrow := (ihom (Δ[1] : SSet.{u+1})).obj (E.CAlg A)
 def algebraArrowEdge (v : (algebraArrow (E := E) A) _⦋0⦌) :=
-  SSet.Edge.ofTruncated (intervalFunctorVertexTypedEdge v)
+  SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.intervalFunctorVertexTypedEdge v)
 
 /-- A5 の別々の始域をもつ二本の射のテンソル。射の圏の余積は両端での A 上のテンソル。 -/
 theorem isDescendableOver_tensorMaps (D : (SSet.uliftFunctor.{u+1,0}).obj (nerve (Discrete (Fin 2))) ⟶ algebraArrow (E := E) A)
-    (c : JoinCocone D) (hc : IsColimitCone c)
-    (h : ∀ j : Fin 2, IsDescendableOver (E := E) A _ _ (algebraArrowEdge (E := E) A (D.app _ (ULift.up (nerveVertex (Discrete.mk j)))))) :
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c)
+    (h : ∀ j : Fin 2, IsDescendableOver (E := E) A _ _ (algebraArrowEdge (E := E) A (D.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Discrete.mk j)))))) :
     IsDescendableOver (E := E) A _ _ (algebraArrowEdge (E := E) A c.vertex) := by
   sorry -- 各辺を他の始域・終域に沿って底変換し、二辺を合成
 
@@ -172,19 +172,19 @@ def amitsurTermCone (n : ℕ) : Cocone (amitsurStar n) where
 abbrev augmentedShape := (SSet.uliftFunctor.{u+1,0}).obj (nerve AugmentedSimplexCategory)
 
 def amitsurAug (D : augmentedShape.{u} ⟶ E.CAlg A) :=
-  mapJoinCone D (JoinCone.ulift.{0,u+1} (F1B.nerveCone augmentationIndexCone))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone D (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{0,u+1} (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone augmentationIndexCone))
 
 /-- D の増大と各段の脚・高次の整合性を同じ増大図式から制限する。
 各段の余極限条件が R を底とする B の (n+1) 重押し出しを指定する。 -/
 structure AmitsurData {R B : (E.CAlg A) _⦋0⦌} (f : SSet.Edge R B) where
   diagram : augmentedShape.{u} ⟶ E.CAlg A
-  base : VertexIso R (amitsurAug (E := E) A diagram).vertex
-  zero : VertexIso (diagram.app _ (ULift.up (nerveVertex (WithInitial.of ⦋0⦌)))) B
+  base : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso R (amitsurAug (E := E) A diagram).vertex
+  zero : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (diagram.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (WithInitial.of ⦋0⦌)))) B
   leg : base.hom ≫ Truncated.HomotopyCategory.homMk
-      (F2.nativeConeLeg (amitsurAug (E := E) A diagram) (ULift.up (nerveVertex ⦋0⦌))) ≫ zero.hom =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (amitsurAug (E := E) A diagram) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ⦋0⦌))) ≫ zero.hom =
     Truncated.HomotopyCategory.homMk f.toTruncated
-  term (n : ℕ) : IsColimitCone (mapJoinCocone diagram
-    (JoinCocone.ulift.{0,u+1} (F1B.nerveCoconeEquiv (amitsurTermCone n))))
+  term (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCocone diagram
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCocone.ulift.{0,u+1} (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (amitsurTermCone n))))
 
 abbrev AmitsurData.aug {A : Type u} [CommRing A] {R B : (E.CAlg A) _⦋0⦌} {f : SSet.Edge R B} (d : AmitsurData (E := E) A f) :=
   amitsurAug (E := E) A d.diagram
@@ -193,7 +193,7 @@ abbrev AmitsurData.aug {A : Type u} [CommRing A] {R B : (E.CAlg A) _⦋0⦌} {f 
 方針：index n で Tot_{≤n} の塔が分裂。Tot は HomotopyLimits（S3 と同じ）。
 規約：基盤待ち。 -/
 theorem isDescendableOver_tot_equiv {R B : (E.CAlg A) _⦋0⦌} (f : SSet.Edge R B)
-    (hf : IsDescendableOver (E := E) A R B f) (d : AmitsurData (E := E) A f) : IsLimitCone d.aug := by
+    (hf : IsDescendableOver (E := E) A R B f) (d : AmitsurData (E := E) A f) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d.aug := by
   sorry -- M = R。index による Amitsur 塔の分裂と忘却の極限反映
 
 /-- 概要：(f) の一般形：F := fib(R → B)、RHom_R(F^{⊗_R 2}, R) ∈ D^{≤−1}（Mod_R の内部 Hom。A5 StrongDescent の RHom_{Δ_T}）なら F^{⊗_R 2} → R は零で index ≤ 2。
@@ -204,8 +204,8 @@ theorem hasDescentIndexLEOver_two_of_rhom : True := by trivial -- 基盤待ち
 /-- 概要：(g)(h) の一般形：Frobenius 余極限（[BS17, Lemma 11.22]、index ≤ n ⇒ colim_φ で ≤ 2n）と完備版（完備な R・B で同じ定義）。 -/
 theorem hasDescentIndexLEOver_frobeniusColimit
     (D : (SSet.uliftFunctor.{u+1,0}).obj (nerve ℕ) ⟶ algebraArrow (E := E) A)
-    (c : JoinCocone D) (hc : IsColimitCone c) (n : ℕ)
-    (h : ∀ j : ℕ, HasDescentIndexLEOver (E := E) A _ _ (algebraArrowEdge (E := E) A (D.app _ (ULift.up (nerveVertex j)))) n) :
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c) (n : ℕ)
+    (h : ∀ j : ℕ, HasDescentIndexLEOver (E := E) A _ _ (algebraArrowEdge (E := E) A (D.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex j)))) n) :
     HasDescentIndexLEOver (E := E) A _ _ (algebraArrowEdge (E := E) A c.vertex) (2*n) := by
   sorry -- BS17 Lemma 11.22。射の圏の余極限は両端の余極限と誘導射を同時に指定する
 
@@ -231,16 +231,16 @@ theorem isDescendable_baseChange {A' : Type u} [CommRing A'] (g : A →+* A') (B
 
 /-- 概要：(b) 合成：A → B、B → C descendable なら A → C。 -/
 theorem isDescendable_comp {B : Type u} [CommRing B] (g : A →+* B)
-    (hB : IsDescendable (E := E) A ((E.discrete A).app _ (nerveVertex (Under.mk (CommRingCat.ofHom g)))))
+    (hB : IsDescendable (E := E) A ((E.discrete A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk (CommRingCat.ofHom g)))))
     (C : (E.CAlg B) _⦋0⦌) (hC : IsDescendable (E := E) B C) :
     IsDescendable (E := E) A ((cAlgRestrictScalars (E := E) g).app _ C) := by
   sorry -- 離散 B に沿う構造射の合成に (b) を適用
 
 /-- 概要：(c) テンソル：A → B、A → C descendable なら A → B ⊗_A C（(a) と (b)）。 -/
 theorem isDescendable_tensor (Q : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ E.CAlg A)
-    (hQ : IsColimitCone (pushoutCocone Q)) (hA : VertexIso (squareVertex Q 0 0) (unitAlgebra (E := E) A))
-    (hB : IsDescendable (E := E) A (squareVertex Q 1 0)) (hC : IsDescendable (E := E) A (squareVertex Q 0 1)) :
-    IsDescendable (E := E) A (squareVertex Q 1 1) := by
+    (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone Q)) (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 0 0) (unitAlgebra (E := E) A))
+    (hB : IsDescendable (E := E) A (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 1 0)) (hC : IsDescendable (E := E) A (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 0 1)) :
+    IsDescendable (E := E) A (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex Q 1 1) := by
   sorry -- 始対象 A 上の押し出しに (c) を適用
 
 /-- 概要：(e) 降下 [Mat16, Prop 3.22]：A → B descendable なら ∀ M ∈ D(A)、M ≃ Tot(M ⊗_A B^{⊗•+1})（Amitsur 複体の全化）。
@@ -248,7 +248,7 @@ theorem isDescendable_tensor (Q : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ E.CAlg A)
 規約：Tot は HomotopyLimits の全化（S3 の Tot と同じ）。
 使われ方：A5-4 の降下。 -/
 theorem isDescendable_tot_equiv (B : (E.CAlg A) _⦋0⦌) (hB : IsDescendable (E := E) A B)
-    (f : SSet.Edge (unitAlgebra (E := E) A) B) (d : AmitsurData (E := E) A f) : IsLimitCone d.aug := by
+    (f : SSet.Edge (unitAlgebra (E := E) A) B) (d : AmitsurData (E := E) A f) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d.aug := by
   sorry -- isDescendableOver_unit_iff と isDescendableOver_tot_equiv、M = A
 
 /-- 概要：(f) F := fib(A → B)。RHom_A(F^{⊗2}, A) ∈ D^{<0} なら F^{⊗2} → A は零、よって index ≤ 2。
@@ -265,33 +265,33 @@ structure DiscreteSource (v : (algebraArrow (E := E) A) _⦋0⦌) where
   scalars : A →+* base
   target : (E.CAlg base) _⦋0⦌
   unit : SSet.Edge (unitAlgebra (E := E) base) target
-  presentation : VertexIso v (functorVertex (SSet.yonedaEquiv.symm ((unit.map (cAlgRestrictScalars (E := E) scalars)).edge)))
+  presentation : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso v (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm ((unit.map (cAlgRestrictScalars (E := E) scalars)).edge)))
 
 /-- 概要：(g) [BS17, Lemma 11.22]：A → B が index ≤ n で両者に両立する自己準同型 φ があれば、colim_φ A → colim_φ B は index ≤ 2n。
 方針：BS17 の議論（余極限の fib のテンソル冪の零性）。
 規約：sequential 余極限。
 使われ方：Lemma 8.6 の perf 版。 -/
 theorem hasDescentIndexLE_frobeniusColimit (D : (SSet.uliftFunctor.{u+1,0}).obj (nerve ℕ) ⟶ algebraArrow (E := E) A)
-    (c : JoinCocone D) (hc : IsColimitCone c)
-    (s : ∀ j : ℕ, DiscreteSource (E := E) A (D.app _ (ULift.up (nerveVertex j)))) (t : DiscreteSource (E := E) A c.vertex)
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone D) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c)
+    (s : ∀ j : ℕ, DiscreteSource (E := E) A (D.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex j)))) (t : DiscreteSource (E := E) A c.vertex)
     (n : ℕ) (h : ∀ j, @HasDescentIndexLE (E := E) (s j).base (s j).ring (s j).target n) :
     @HasDescentIndexLE (E := E) t.base t.ring t.target (2*n) := by
   sorry -- 各離散底の Mod_base での index を一般形に移し、余極限の離散底で読み戻す
 
 /-- 離散底の完備 thick ⊗-ideal。テンソル積を s で導来完備化する。 -/
 structure IsThickCompleteTensorIdeal (s : Finset A)
-    (P : (derivedInfinityCategory A) _⦋0⦌ → Prop) : Prop where
-  finiteColimits : ∀ {K : SSet.{u+1}} [K.Finite] (F : K ⟶ derivedInfinityCategory A)
-    (c : JoinCocone F), (∀ i, P (F.app _ i)) → IsColimitCone c → P c.vertex
+    (P : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ → Prop) : Prop where
+  finiteColimits : ∀ {K : SSet.{u+1}} [K.Finite] (F : K ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone F), (∀ i, P (F.app _ i)) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone c → P c.vertex
   retracts : ∀ {x y} (i : SSet.Edge x y) (r : SSet.Edge y x),
     Truncated.HomotopyCategory.homMk i.toTruncated ≫ Truncated.HomotopyCategory.homMk r.toTruncated =
       𝟙 (HomotopyCategory.mk x) → P y → P x
   shifts : ∀ x, P x →
-    P (((suspensionFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt) ∧
-    P (((loopFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt)
+    P ((SSet.HomotopyCategory.objEquiv ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)).obj (HomotopyCategory.mk x)))) ∧
+    P ((SSet.HomotopyCategory.objEquiv ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)).obj (HomotopyCategory.mk x))))
   -- tensorWith は Derived/Tensor/Fixed（IF-G1 ⊗ᴸ、main 7bda72c3c）。N ↦ N ⊗ᴸ M
-  tensor : ∀ (x M : (derivedInfinityCategory A) _⦋0⦌), P x →
-    P ((tensorWith M ≫ Derived.completion A s).app _ x)
+  tensor : ∀ (x M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌), P x →
+    P ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith M ≫ Derived.completion A s).app _ x)
 
 /-- B の生成する完備 thick ⊗-ideal が完備化した単位を含む。 -/
 def IsDescendableComplete (s : Finset A) (B : (E.CAlg A) _⦋0⦌) : Prop :=
@@ -307,7 +307,7 @@ theorem isDescendable_complete (s : Finset A) (B : (E.CAlg A) _⦋0⦌)
 /-- 概要：[Mat16, Prop 3.31]、有限表示かつ忠実平坦な離散 A 代数は descendable。忠実平坦だけでは偽（Aoki, arXiv:2411.05995）。A5 では直接使わない記録（D5-04）。 -/
 theorem isDescendable_of_faithfullyFlat (B : Type u) [CommRing B] [Algebra A B]
     [Module.FaithfullyFlat A B] [Algebra.FinitePresentation A B] :
-    IsDescendable (E := E) A ((E.discrete A).app _ (nerveVertex (ofAlgebra A B))) := by
+    IsDescendable (E := E) A ((E.discrete A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra A B))) := by
   sorry -- 有限表示の忠実平坦射への Mathew Prop 3.31 の適用
 
 end SerrePositivity.EInfinity

@@ -857,3 +857,12 @@ A07の冒頭の更新はA0〜A9の40本だけに限定せず、保護対象を�
 係数制限は旧sifted名の完全修飾、Truncationは旧pt射影3箇所をMathlibのHomotopyCategory.objEquivへ、AnimatedDomainは既存の評価環射・R線形性と離散埋め込みの合成の定義展開を直したもの。いずれも新しい数学的仮定・構成を追加していない。SetSectionsは第8〜9束で同じ旧版の診断が残り、第9束の採取後に入った最新修正はまだ検査前（署名が異なる）で、成功には算入していない。
 
 次の前線はPrismaticSite・Shared/DeRhamPolynomial・Shared/Descendable。前者はCoverage.coverings・旧∞圏名、後二者は名前空間と旧pt射影の診断。A2で3宣言の所有元がimportの閉包に入っていなかったので、現在のソースから確かめた2モジュールを直接importした。古い対応表のmodule欄にはその後の分割前のパスが残るため、所有元の確認は現行ソースで行った。再検査した所有元の到達性は欠落0（型検査そのものではない）。
+
+
+### 5∞-0 のdraft検査・第10〜11束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第10束はPrismaticSite・Shared/DeRhamPolynomial・Shared/Descendable・PrismaticEnvelopeの4本、第11束はSetSections・A0/W15K1/AuditK1の2本が成功。全体の型検査が通ったdraftは計17本（最後の補助監査ファイルを含む）。この6本もソース署名を照合してコミットする。[第10束](bulk-5inf0/draft-block10-validation.json)・[第11束](bulk-5inf0/draft-block11-validation.json)に、失敗と依存待ちの未実行分を含めて記録した。置き換わった個別ログは置き換わったことを記録し、別の回のログを誤って添付しない。各束の終了時に鍵を返し、一束280秒以内を維持した。
+
+SetSectionsでは篩の元の圏とOverの充満部分圏の反対圏の同値、そのunit/counit、表現可能な指定錐、端点を移した同じ辺の可逆性の法則が通った。追加の数学的仮定は使わず、既存の構成の法則の証明と定義展開を直した。PrismaticSiteはCoverage.coverings、移動済みD(A)の正式名へ追従。未証明の `prismaticCohomologyFrobenius` は、既存の係数制限APIに合わせ `E : EInfinityTheory` を明示引数に取り、`Edge Δ ((E.restrictD φ).app _ Δ)` を返す型とした（その本体のsorryは保持、ほかのRΓ定義にEを加えていない）。共有de Rhamはdraftの既存の完備化と離散埋め込みの名前空間を明示した。旧pt射影の残り8箇所も標準のobjEquivに揃え、うちdescendabilityの4箇所はここで型検査が通った。
+
+次の前線はFlatDescentとSheafGenerators・SpaceValued。局所instance、docstringのコマンド上の位置、presentabilityの完全修飾、既存の補助定義の公開範囲とprojectionの参照を修正し、第12束を通常のbulk整理券で一つだけ並べた。CAlgValued・CosimplicialEInfinity・CechAlexander・BaseChangeは、前提が成功した順に検査する。
