@@ -1153,3 +1153,8 @@ InterfaceLimitConeとUniversalPropertyは失敗。前者はe3LimitConeが実際�
 一覧：済み 11／全体 14（うち追加 0）。[第66束](bulk-5inf0/draft-block66-validation.json)でInterfaceLimitCone・UniversalPropertyが成功。有効な成功は51／57本。hRの転送と通常のホモトピー圏の脚の表示、Prismaticのanimated代数の参照が通った。検査済みソースをコミットする。改名した参照の所有モジュールの到達漏れも再確認して0。依存グラフは12,940頂点、旧E3入力への経路0だった。
 
 次のArcSheafPropertyは失敗。AsSmallから元の圏へ戻る同じ関手のnerveは、射の宇宙が違うので既存のresizedNerveMapで読む。完備化H⁰の環構造は既存のprincipalCompletionCommRingを明示する。商への射は同じf.right.homをIdeal.quotientMapへ正しい順序で渡す。二成分の関数は同じBoolによる場合分けをfunの構文で明示し、層化・大域切断の名前はSheavesの所有元に揃える。新しい数学的入力やsorryは追加せず、第67束で検査する。
+
+
+### 5∞-0 のdraft検査・第67束（11-14夜）
+
+一覧：済み 11／全体 14（うち追加 0）。[第67束](bulk-5inf0/draft-block67-validation.json)でArcSheafPropertyの宇宙を調整したnerve、完備化H⁰の環構造、商写像、Sheavesの参照は通った。残るのは二成分の関数のパターン構文2件。同じfalse側・true側をBool.recとcasesで記し、第68束へ並んだ。有効な成功は51／57本のまま。
