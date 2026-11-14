@@ -11588,3 +11588,39 @@ L10〜L28の次元によらないconvolution・χ/TR・符号の再利用の筋�
 上側は外枠を **2,596行** 超えるリスクが残る。外枠を上げたとは扱わない。
 下端は収まり、現在の実測は外枠に届いていないため、指示どおり止まらずL09へ進む。
 次のL09a・L09の1,000行区切りは約8,600行。G10の部品、M15・G12は作らない。
+
+## 133. L09への接続：同じテンソルの微分則の型（実装前）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§132は56fc86f0bで保存した。L09aの対合・固定点零・全有限和零は検証済み。
+次のC257・C258は、既存の右括弧純粋テンソル・生成元・有限和の微分の法則を
+同じ出力境界項へ書き直すもの。新しい演算や別の鎖模型は作らない。
+C257は`tensorValue`の因子数に沿う再帰、既存`ιTensorObj`の二因子の微分則、
+既存`gen_d`を使う。因子の次数零は正次数への延長の零で分ける。
+`NegativeTensor.degreeMap_D₁`・`degreeMap_D₂`の零次数と符号の処理も参照できるが、
+IntervalCutsの区間上の境界定理を一般単体での証明の代用にはしない。
+C258はC257と`map_sum`、共通次数への`eqToHom`の自然性の貼り合わせ。
+いずれも§112のL09に必要な既存構成の法則の証明分割で、別の一覧IDを増やさない。
+
+```lean
+lemma cutTerm_d_eq_sum_outputBoundaryTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    (power (chains A S) r).d (-((m + q + 1 - r : ℕ) : ℤ))
+        (-((m + q + 1 - r : ℕ) : ℤ) + 1) (cutTerm A S s v x) =
+      ∑ a : Fin r, ∑ j : Fin (outputDegree s v a + 1),
+        outputBoundaryTerm A S s v a j x
+
+lemma cutSum_d_eq_sum_outputBoundaryTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌)
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      ∑ s : Cut (r + d) q, ∑ a : Fin (r + 1),
+        ∑ j : Fin (outputDegree s (positiveWord w) a + 1),
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (outputBoundaryTerm A S s (positiveWord w) a j x)
+```
+
+C258の`h`は算術で常に供給できる等式であり、未供給の数学的仮定としてL09へ残さない。
+C257・C258はここでは型の記録だけで、実装・検証・完成行数にはまだ数えない。
