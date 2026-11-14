@@ -1529,3 +1529,5 @@ public import SerrePositivity.AlgebraicGeometry.ProperDominationDescent
 public import SerrePositivity.AlgebraicGeometry.ProperDominationBaseChange
 
 public import SerrePositivity.AlgebraicGeometry.NoetherianProperLimitDescent
+
+public import SerrePositivity.AlgebraicGeometry.ProperFinitePresentationCoefficientModel

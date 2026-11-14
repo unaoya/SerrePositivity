@@ -2272,3 +2272,19 @@ G1・G2共用部品込み本体13,391行、入口込み13,618行。B01〜B04 は
 G1・G2共用部品込み本体13,465行、入口込み13,693行。実際の一般の固有係数模型への適用は下書きで、B01〜B04 はまだ未完。この定理単独の Noether な段の条件を元の R の条件にすり替えない。
 
 一覧：済み13／全体17（うち追加8）。
+
+
+B01 の F_p への係数移送（着手前の型、見込み30〜80行）：`exists_primeField_proper_coefficient_model` は素数 p、任意の F_p-代数 R、固有・局所有限表示の f:X→Spec R に対し、有限生成部分代数 A と `Algebra.FiniteType (ZMod p) A`、実際の固有・局所有限表示模型と Cartesian 正方形を返す。一般の Noether 係数環の API を F_p に適用する既存の係数移送で、親項目を増やさない。
+
+B02 の固有性と全射性を同じ係数段へそろえる接続（着手前の型、見込み120〜260行、既存の900〜2,000行の内数）：`exists_proper_surjective_finitePresentation_coefficient_model` は一般の固有・全射・局所有限表示の f:X→Spec R から、有限生成係数部分代数上の固有・全射・局所有限表示の実際の模型と Cartesian 正方形を返す。B01 の模型に既存の `exists_surjective_proper_pullback_of_isLimit` を適用し、全射性を得た後段で固有性・局所有限表示性を保つ。有限個の細分の射と等式の同じ段への供給は別に残る。既存の模型・底変換・全射性の接続として親項目を増やさない。
+
+
+### B01：一般の固有・局所有限表示射の実際の固有係数模型
+
+`ProperFinitePresentationCoefficientModel`（79行）：`exists_proper_finitePresentation_coefficient_model` は Noether な k、任意の k-代数 R、一般の固有・局所有限表示の f:X→Spec R から、有限生成 k-部分代数 A⊆R、実際の固有・局所有限表示の p:Y→Spec A と Cartesian 正方形を供給する。分離的な模型の Y の Noether 性は有限生成係数環から導き、元の環 R には Noether 性を課さない。係数環と加群・スキームの宇宙は既存の分離的模型と同じく独立。
+
+本体79行・入口1行。実際の係数段の affine 性を明示して単独検証を完了。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,016ジョブ、小監査1宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-proper-finite-presentation-coefficient-model-check-2.log`・`2g-proper-finite-presentation-coefficient-model-native.log`・`2g-proper-finite-presentation-coefficient-model-audit.log`。
+
+G1・G2共用部品込み本体13,544行、入口込み13,773行。一般の Noether 係数環上の固有模型は供給済み。B01 の F_p への明示的な係数移送は下書きで検証中のため、台帳はこの時点で13／17を維持する。B02〜B04 の同じ段の全射性・細分の有限図式・被覆模型・filtered 整合性は残る。
+
+一覧：済み13／全体17（うち追加8）。
