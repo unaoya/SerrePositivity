@@ -2247,3 +2247,17 @@ G1・G2共用部品込み本体13,304行、入口込み13,530行。今回の区�
 B01・B02 の次の接続の型（着手前、見込み350〜800行、上記900〜2,000行の内数）：(i) h:T→X、t:T→P、q:P→S、t≫q=h≫f と任意の基底交換 S'→S に対し、P の底変換に t を引いた実際の二段の pullback から X×_S S' への実際の射を構成し、h の底変換の Cartesian 正方形と固有性・全射性を示す。(ii) その二段の pullback の射影が閉埋め込みなら、基底交換した f が固有であることを、上記の全射合成からの消去で示す。(iii) affine 遷移の qcqs な基底図式 D の極限について、ある affine な段 D_i 上の Noether な X の分離的局所有限型の射 f:X→D_i が極限で固有なら、ある後段での実際の底変換が固有であることを返す。C06 の支配を選び、`exists_closedImmersion_flatStageProjection_of_isLimit` により t の極限での閉埋め込み性を同じ二段の模型へ降ろして (ii) に渡す。これは既存の極限と底変換の構成の接続で、親項目を増やさない。
 
 (iii) の Noether な X は、既に供給済みの有限型 k-部分代数上の有限表示模型から得る（k は Noether）。元の R や元の固有射を Noether と仮定する出口へ置き換えない。分離性を先に降ろした模型に適用し、実際の係数段の固有模型へ接続するまで B01 は未完のままとする。
+
+
+B01 の実際の固有係数模型への接続（着手前の型、見込み120〜260行、B01・B02 の残り900〜2,000行の内数）：`exists_proper_finitePresentation_coefficient_model` は Noether な環 k、任意の k-代数 R、一般の固有・局所有限表示の f:X→Spec R に対し、有限生成 k-部分代数 A⊆R、実際の固有・局所有限表示の p:Y→Spec A、射 a:X→Y と、元の f を実際の底変換とする Cartesian 正方形を返す。既に供給した分離的な係数模型は Noether な A 上で有限型・準コンパクトなので Y が Noether であり、上記の固有性の有限段への降下をその模型に適用する。元の R の Noether 性は仮定せず、係数環とスキームの宇宙も既存 API のまま分ける。B01 の既存の模型と性質の接続として親項目を増やさない。
+
+
+### B01・B02：二段の底変換と実際の固有全射の底変換
+
+`ProperDominationBaseChange`（87行）：`isPullback_dominationBaseChangeSource` は周辺を通る二段の底変換を元の構造射の底変換と比較。`dominationBaseChangeMap` はそこから元の対象の底変換への実際の射、`isPullback_dominationBaseChangeMap` はその射が元の支配射の底変換である正方形。`isProper_dominationBaseChangeMap`・`surjective_dominationBaseChangeMap` は固有性・全射性の保存。`isProper_pullback_fst_of_closed_domination` は周辺への射影の閉埋め込み性から同じ段の元の射の固有性を得る。`isClosedImmersion_dominationBaseChangeProjection` は元の射の底変換が固有なら、その同じ二段の射影が閉埋め込みであること。
+
+本体87行・入口1行。可換式を引数に保持し Cartesian 正方形の向きを明示して単独検証を完了。公開時に全射性の底変換の instance を持つ `Mathlib.AlgebraicGeometry.PullbackCarrier` を明示し、修正後のソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,014ジョブ、小監査10宣言・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-proper-domination-base-change-check-3.log`・`2g-proper-domination-base-change-native-2.log`・`2g-proper-domination-base-change-audit.log`。
+
+G1・G2共用部品込み本体13,391行、入口込み13,618行。B01〜B04 は未完。この二段の比較だけでは有限段での固有模型を供給したことにはしない。次は C04 による閉埋め込み性の降下と、実際の係数模型への適用。既存の `exists_surjective_proper_pullback_of_isLimit` 等は B02 の全射性に再利用し、新しく同じ証明を作らない。
+
+一覧：済み13／全体17（うち追加8）。
