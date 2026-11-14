@@ -4499,3 +4499,75 @@ RawModuleProbeNativeHom と RawModuleProbeComparisonMap の通常の対象ビル
 M11 以降と G12 の元の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 38. M10 の元の probe 全通常 nerve 上の同じ三角比較（11-14）
+
+§37 の頂点比較の元になっている同じ全解像度 retract を、probe の全通常 nerve へ前合成する。
+通常相対圏と同じ Hom 宇宙を保つため、元の probe 閉零圏に同じ ULiftHom 表示を適用する。
+元の全包含を関手として保持し、その全通常鎖を既存の `closedNerveSimplex` で指定半自由模型へ送る。
+
+同じ dg 包含に関する `dgFunctor_closedNerveSimplex` の全次元自然性から、
+全加群の元の dg 源と厳密に可換する全関手の等式を証明した。
+その等式で、同じ `dgModuleResolutionRetractIso` の前合成を移送する。
+さらに、同じ `strictRawModuleComparison_sourceIso` の前合成と合成し、
+K の同じ三角比較を probe の全通常 nerve 上の同じ関手同型として保持する。
+
+これは M10 の既存比較の係数移送・自然性・単位/余単位の貼り合わせの法則と証明の分割で、
+一次 ID は追加しない。比較は元の全通常鎖の上にある。
+frame 係数から作る全高次の評価円柱と同じ K の Hom 誘導射との照合は引き続き必要。
+文脈は `A : Type u`、`[CommRing A]`。`DifferentialGradedCategories.Functor.map` は
+既存の dg 関手の nerve。モデル構造や比較射の同値性を引数に置かない。
+
+```lean
+abbrev strictRawModuleLiftedProbeCategory (X : (operad A).Algebra) : Type (u + 1)
+
+def strictRawModuleLiftedProbeFunctor (X : (operad A).Algebra) :
+    strictRawModuleLiftedProbeCategory A X ⥤ (strictRawModuleRelativeCategory A X).category
+
+def strictRawModuleLiftedProbeDGSource (X : (operad A).Algebra) :
+    nerve (strictRawModuleLiftedProbeCategory A X) ⟶ strictModuleInfinity A X
+
+lemma strictRawModuleLiftedProbeDGSource_inclusion (X : (operad A).Algebra) :
+    nerveMap (strictRawModuleLiftedProbeFunctor A X) ≫ strictRawModuleDGSource A X =
+      strictRawModuleLiftedProbeDGSource A X ≫
+        DifferentialGradedCategories.Functor.map
+          (semifreeInclusion A (dgAlgebraCategory A ((assocForget A).obj X)))
+
+def strictRawModuleLiftedProbeSourceIso (X : (operad A).Algebra) :
+    FunctorIso
+      (nerveMap (strictRawModuleLiftedProbeFunctor A X) ≫ strictRawModuleSource A X)
+      (strictRawModuleLiftedProbeDGSource A X)
+
+def strictRawModuleLiftedProbeComparisonIso (X : (operad A).Algebra) :
+    FunctorIso
+      (nerveMap (strictRawModuleLiftedProbeFunctor A X) ≫
+        (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
+          strictRawModuleComparison A X))
+      (strictRawModuleLiftedProbeDGSource A X)
+```
+
+対象ビルド・小さい監査の結果と最終実測は §38.1 に記録した。
+K の同じ Hom 誘導射の同値性・完全忠実性、M10 の一般の native な辺・fiber と全族、
+M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 38.1 検証と実測
+
+RawModuleProbeSourceTriangle の通常の対象ビルドは成功した。
+新しい公開宣言 6 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。
+
+新規 Lean は一ファイル 113 行、公開宣言 6 本。
+§37.1 の累計に加え、検証済み累計は 74 ファイル・7,443 行・明示宣言 384 本
+（private 3 本）。200 行を超える証明はない。一次 ID は追加していない。
+
+元の probe の同じ全通常 nerve に沿い、元の dg 源との厳密な包含等式、同じ解像度 retract
+の全関手比較、同じ K の局所化三角の全関手比較まで検証した。
+frame 係数からの実全高次評価円柱を、§37 の同じ K の Hom 誘導射へ結ぶ照合とその同値性は
+引き続き未完であり、完全忠実性には数えない。
+M10 の一般の native な辺・fiber と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
