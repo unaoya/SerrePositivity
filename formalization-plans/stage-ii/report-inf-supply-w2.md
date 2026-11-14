@@ -11279,7 +11279,7 @@ def strictBETotBKNativeClassificationIso (F : K ⥤ (operad A).Algebra)
 
 ### 177.3 今回の型
 
-#### ClassifiedSectionsComparison（67行）
+#### ClassifiedSectionsComparison（62行）
 
 ```lean
 theorem simplicialSectionsMap_isQCatEquivalence_of_precompositionEquivalence
@@ -11415,7 +11415,20 @@ def classifiedLeftFibrationSectionsEquivalence_triangle :
 ```lean
 def strictBETotBKNativeSections_reconstruction
     (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
-    let H
+    let H := strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget
+    let p := weightedNerveProjection H
+    let q := coherentConeProjection (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))
+    let η := strictBETotBKNativeClassificationIso A K F Y
+    FunctorIso
+      (((strictBETotBKNativeSectionsEquivalence A K F Y).hom ≫
+        (coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv) ≫
+            simplicialSectionsMap (leftStraighteningInfinityReconstruction q)
+              (leftStraighteningInfinityReconstruction_projection q))
+      ((bousfieldKanSectionsIso H).hom ≫
+        simplicialSectionsMap (classifiedFibrationTransport p q η)
+          (classifiedFibrationTransport_projection p q η))
 ```
 
 ## 179. 同じ全切断比較の各次数のfiberでの評価（11-15）
@@ -11479,7 +11492,15 @@ theorem simplicialSectionsFiberEvaluation_naturality
 
 ```lean
 def classifiedLeftFibrationSectionsEquivalence_fiber_triangle (b : B _⦋0⦌) :
-    let r
+    let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q)
+    FunctorIso
+      ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+        simplicialSectionsFiberEvaluation q b ≫
+          vertexFiberMap q r (leftStraighteningInfinityReconstruction q)
+            (leftStraighteningInfinityReconstruction_projection q) b)
+      (simplicialSectionsFiberEvaluation p b ≫
+        vertexFiberMap p r (classifiedFibrationTransport p q η)
+          (classifiedFibrationTransport_projection p q η) b)
 ```
 
 #### StrictDiagramTotNativeFiberRecovery（79行）
@@ -11488,7 +11509,22 @@ def classifiedLeftFibrationSectionsEquivalence_fiber_triangle (b : B _⦋0⦌) :
 def strictBETotBKNativeSections_fiber_reconstruction
     (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra)
     (b : (nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ)) _⦋0⦌) :
-    let H
+    let H := strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget
+    let p := weightedNerveProjection H
+    let q := coherentConeProjection (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))
+    let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q)
+    let η := strictBETotBKNativeClassificationIso A K F Y
+    FunctorIso
+      (((strictBETotBKNativeSectionsEquivalence A K F Y).hom ≫
+        (coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv) ≫
+            simplicialSectionsFiberEvaluation q b ≫
+              vertexFiberMap q r (leftStraighteningInfinityReconstruction q)
+                (leftStraighteningInfinityReconstruction_projection q) b)
+      ((bousfieldKanSectionsIso H).hom ≫ simplicialSectionsFiberEvaluation p b ≫
+        vertexFiberMap p r (classifiedFibrationTransport p q η)
+          (classifiedFibrationTransport_projection p q η) b)
 ```
 
 ## 180. 元のBK指定点の係数への厳密な回収と宇宙変更・係数単位（11-15）
@@ -11554,7 +11590,15 @@ theorem bousfieldKanUniverseExInfinityCone_identityVertex
 
 theorem bousfieldKanUniverseExInfinityPoint_fiber
     (s : bousfieldKanWeight I ⟶ H) (i : I) :
-    let H'
+    let H' := (weightedDiagramUniverse.{u,v} I).obj H ⋙ exInfinity
+    let s' := bousfieldKanUniverseCone.{u,v} I s ≫ bousfieldKanExInfinityCoefficientUnit _ _
+    ((weightedNerveFiberIso H' (AsSmall.up.obj i)).inv.app (Opposite.op ⦋0⦌))
+      ((simplicialSectionsFiberEvaluation (weightedNerveProjection H')
+        (nerveVertex (AsSmall.up.obj i))).app (Opposite.op ⦋0⦌)
+          (((bousfieldKanSectionsIso H').hom.app (Opposite.op ⦋0⦌))
+            (nativeWeightedPoint (AsSmall.{v} I) s'))) =
+      (exInfinityUnit.app ((SSet.uliftFunctor.{max u v,u}).obj (H.obj i))).app (Opposite.op ⦋0⦌)
+        (ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))
 ```
 
 ## 181. 元のfiberへ戻す全切断比較 R03c の追加（11-15）
@@ -11645,7 +11689,15 @@ def strictBETotNativeFiberEquivalence (F : K ⥤ (operad A).Algebra)
 
 def strictBETotNativeFiberEquivalence_sectionsIso (F : K ⥤ (operad A).Algebra)
     (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
-    let H
+    let H := strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget
+    FunctorIso
+      ((strictBETotBKNativeSectionsEquivalence A K F Y).hom ≫
+        (coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv ≫
+            simplicialSectionsFiberEvaluation _ (nerveVertex i))
+      ((bousfieldKanSectionsIso H).hom ≫
+        simplicialSectionsFiberEvaluation (weightedNerveProjection H) (nerveVertex i) ≫
+          (weightedNerveFiberIso H i).inv ≫ (strictBETotNativeFiberEquivalence A K F Y i).hom)
 
 def strictBETotNativeFiberEquivalence_universalPointIso
     (F : K ⥤ (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
@@ -11661,5 +11713,65 @@ def strictBETotNativeFiberEquivalence_universalPointIso
 
 def strictBETotNativeFiberEquivalence_rawPointIso
     (F : K ⥤ (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
-    let Y
+    let Y := (framedLimitFunctor A K).obj F
+    let j : AsSmall.{u+1} Kᵒᵖᵒᵖ := AsSmall.up.obj i
+    VertexIso
+      ((simplicialSectionsFiberEvaluation _ (nerveVertex j)).app (Opposite.op ⦋0⦌)
+        (((coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv.app
+            (Opposite.op ⦋0⦌)) (strictBETotUniverseNativeConePoint A K F)))
+      (((strictBETotNativeFiberEquivalence A K F Y j).hom.app (Opposite.op ⦋0⦌))
+        ((exInfinityUnit.app ((SSet.uliftFunctor.{u+1,u}).obj
+          ((strictBETotProbeRightHomDiagram A K F Y).obj i))).app (Opposite.op ⦋0⦌)
+            (ULift.up (((strictBETotUniversalBKRightHomCone A K F).app i).app
+              (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))))
+```
+
+
+## 183. 元の同じnative錐の始域族aと頂点評価ha（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R03のhe・極限性、R02の全錐族は未完了。
+
+既存のCAlgの頂点全単射で、元の同じnative錐の頂点を表示する対象を指定し、その頂点の厳密な等式を証明した。この対象と同じ元の錐に、既存 `coherentConeSourceFamily` と `coherentConeSourceFamily_evaluation` を代入して、全始域Homの族aと標準coslice fiber比較に一致する頂点評価haを接続した。
+
+`strictBETotNativeConeAt_isLimit_of_sourceRestriction` は**残りのheを仮定した既存判定の特殊化**であり、R03の無条件の極限性を証明したとは数えない。同じ族の制限写像と、元のweighted Homの同値を比較してheを閉じる仕事が残る。既存のCAlgSimplicialCategory・cAlgVertexEquivだけを使い、新しいCAlg模型や代表の選択を作っていない。
+
+検証：249で新規一本の対象ビルド10,662 jobs・終了0、小監査90本659宣言、標準三公理のみ。実ハンドル45305の終了0を確認、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。
+
+新規一本75行、累計90本・5,845行。既存の始域族と判定の特殊化・証明分割で、一覧への追加は0。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+文書の補正：型の抽出で `let H := ...` の代入を宣言本体の始まりと誤認し、一部の再掲が `let H` の途中で切れていた。§177.3・§178.1・§179.2・§180.1・§182.3を現行のソースの完全な型から再掲し直した。これらの再掲のファイル行数は現行版の値で、各節本文の当時の検証・実測とは区別する。数学的な型やこれまでの監査結果は変更していない。
+
+次は元のright frame Homの始域作用を全関手として明示し、元のprobeつき係数の同型の始域自然性を照合する。固定始域ごとの全標的比較を、始域にも自然と仮定してheを閉じない。
+
+### 183.1 今回の既存構成の特殊化の型
+
+```lean
+def strictBETotNativeConeSourceObject
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) : CAlgSimplicialCategory A
+
+theorem strictBETotNativeConeSourceObject_vertex
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (strictBETotNativeConeAt A F).vertex =
+      coherentNerveVertex (strictBETotNativeConeSourceObject A F)
+
+def strictBETotNativeConeSourceFamily
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) (X : CAlgSimplicialCategory A) :
+    (SSet.uliftFunctor.{u+1,u+1}).obj
+      (SimplicialCategory.sHom X (strictBETotNativeConeSourceObject A F)).op ⟶
+        coherentConeSectionSpace (strictBETotNativeConeAt A F).val (coherentNerveVertex X)
+
+theorem strictBETotNativeConeSourceFamily_evaluation
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) (X : CAlgSimplicialCategory A) :
+    strictBETotNativeConeSourceFamily A F X ≫
+      coherentConeApexEvaluation (strictBETotNativeConeAt A F) (strictBETotNativeConeSourceObject A F)
+        (strictBETotNativeConeSourceObject_vertex A F) X =
+      coherentCosliceFiberComparison X (strictBETotNativeConeSourceObject A F)
+
+theorem strictBETotNativeConeAt_isLimit_of_sourceRestriction
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra)
+    (he : ∀ X : CAlgSimplicialCategory A,
+      IsSimplicialHomotopyEquivalence (strictBETotNativeConeSourceFamily A F X ≫
+        coneSectionRestriction (strictBETotNativeConeAt A F) (coherentNerveVertex X))) :
+    IsLimitCone (strictBETotNativeConeAt A F)
 ```

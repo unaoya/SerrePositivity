@@ -87,5 +87,6 @@
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanNativeFiberPoint",
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanUniverseCoefficientPoint",
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationFiberComparison",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberComparison"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSourceFamily"
 ]
