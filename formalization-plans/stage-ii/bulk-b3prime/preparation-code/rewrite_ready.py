@@ -88,6 +88,16 @@ source=source.replace(anchor,'''                if (module,a,b) in _verified_bin
                     replacements.add("_root_."+name)
                 elif normal == old or (row.get("field_namespace") and old.endswith("." + normal)):''')
 
+# Preserve the exact original open binding even if a newly introduced namespace
+# shadows its short spelling. Names come from the original native command capture,
+# never from a moved module path; add no new namespace to the environment.
+anchor='            if new_names == names and not ns_map:\n                continue'
+assert source.count(anchor)==1
+source=source.replace(anchor,"""            if new_names == names and not ns_map:
+                if len(names) == 1 and mode in ("simple", "scoped"):
+                    edit(row, "_root_." + names[0])
+                continue""")
+
 needle='    return (None if diagnostics else bytes(result)), diagnostics';assert source.count(needle)==1;scope=dict(vars(K));scope['_captured_edits']={};scope['_verified_binders']=verified_binders;scope['_declaration_namespace']=declaration_namespace;source=source.replace(needle,'    _captured_edits[data["module"]] = edits\n'+needle);exec(compile(source,'<B3prime verified rewrite instrumentation>','exec'),scope);rewrite=scope['rewrite'];out=W/'rewritten';out.mkdir(exist_ok=True);done={};review={}
 for path,data in captured:
  preview,issues=rewrite(data,migration)

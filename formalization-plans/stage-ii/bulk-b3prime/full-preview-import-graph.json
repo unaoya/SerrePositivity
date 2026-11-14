@@ -1,0 +1,46 @@
+{
+  "scope": "All active modules; cached baseline graph with final actual-source overlay and git-diff/source-SHA coverage guards. Archive remains excluded as in the original layer source graph.",
+  "baseline_modules": 31768,
+  "preview_modules": 31774,
+  "missing_project_imports": [],
+  "cycle_residual": [],
+  "EInfinity_to_BS_before": [
+    {
+      "module": "SerrePositivity.EInfinity.Perfectoidization.Comparison",
+      "import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface"
+    },
+    {
+      "module": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+      "import": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface"
+    }
+  ],
+  "EInfinity_to_BS_after": [],
+  "EInfinity_transitively_reaches_BS": [],
+  "publication_targets": [
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility",
+      "root_reachable": true
+    }
+  ],
+  "source_manifest_sha256": "6297400ebabc65bde8f3f1e3fcf96a89fe347dd05e6d6837e6dc41fc4c6c6b45"
+}

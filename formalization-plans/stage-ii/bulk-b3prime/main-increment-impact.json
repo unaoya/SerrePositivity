@@ -1,0 +1,695 @@
+{
+  "baseline": "32d364b53",
+  "main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
+  "changed_code_paths": 273,
+  "affected_paths": 2,
+  "hits": [
+    {
+      "path": "SerrePositivity/EInfinity.lean",
+      "line": 2499,
+      "old": "SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary",
+      "text": "public import SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary"
+    },
+    {
+      "path": "SerrePositivity/EInfinity.lean",
+      "line": 2504,
+      "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+      "text": "public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1,
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "text": "import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 113,
+      "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "text": "import SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 115,
+      "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "text": "import SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 121,
+      "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+      "text": "import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 307,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 308,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 325,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 326,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 671,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 672,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 673,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 674,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 675,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 680,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 682,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 683,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 685,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 686,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 687,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 688,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 689,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 690,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 691,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 692,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 693,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 694,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 695,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 696,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 697,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 698,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 699,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 700,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 701,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 702,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 771,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 773,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 774,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 775,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 776,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 777,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 778,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 779,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 780,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 781,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 782,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 783,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 784,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 785,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw",
+      "text": "import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1449,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1451,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1452,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1453,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1454,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1455,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1456,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1457,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1458,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1459,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1460,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1461,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1462,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1463,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1526,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1527,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1528,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1529,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1530,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1535,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1537,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1538,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1540,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1541,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1542,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1543,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1544,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1545,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1546,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1547,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1548,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1549,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1550,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1551,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1552,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1553,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1554,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1555,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1556,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1557,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1903,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1904,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1921,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 1922,
+      "old": "SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope",
+      "text": "    `SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 2120,
+      "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+      "text": "    `SerrePositivity.EInfinity.Perfectoidization.TheoryInterface,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 2122,
+      "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+      "new": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "text": "    `SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 2124,
+      "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+      "new": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "text": "    `SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion,"
+    },
+    {
+      "path": "scripts/audit_bhatt_scholze_stage2.lean",
+      "line": 2193,
+      "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "new": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "text": "    `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction,"
+    }
+  ],
+  "status": "Read-only text impact, not Lean resolution. Merge/recollect incremental users immediately before actual application; retain main EInfinity aggregate added imports."
+}
