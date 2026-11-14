@@ -9454,3 +9454,78 @@ RR02(a)の余単位による比較の証明の分割であり、自然性の仮�
 両端を係数移送を含む元の添字変更射へ照合し、通常の局所化で同じ射となる法則まで検証。
 次は要素圏とOverの随伴の余単位への適用と、指定増大射の比較。
 RR02(a)全体の弱同値性は未完。E01の別経路の紙は§95.1の不足が残る。
+
+## §107 RR02(a)：随伴の単位・余単位を実現へ移す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+まず既存の指定添字変更とframe族の射の両立を使う。
+
+```lean
+lemma reindexMap_frame_naturality :
+  reindexMap P A W ≫ (map K a).app W =
+    (map L (Functor.whiskerLeft P a)).app (P.op ⋙ W) ≫ reindexMap P B W
+lemma bousfieldKanReindexMap_frame_naturality :
+  bousfieldKanReindexMap P A ≫ (map K a).app (bousfieldKanWeight Kᵒᵖ) =
+    (map L (Functor.whiskerLeft P a)).app (bousfieldKanWeight Lᵒᵖ) ≫
+      bousfieldKanReindexMap P B
+```
+
+この法則と§105の合成則、§106の局所化での自然性を使う。
+随伴 `S ⊣ P` の単位の係数移送の後に `S` の指定添字変更を合成すると、
+`P` の指定添字変更の局所化での逆を与える。一方の合成は単位の自然性、
+他方は余単位の自然性と元の三角恒等式で照合する。新しい逆を任意に選ばない。
+
+### §107.1 指定単位からの逆の候補と一方の合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def adjointReindexInverse (adj : S ⊣ P) (A : K ⥤ SimplexCategory ⥤ C) :
+  (functor K A).obj (bousfieldKanWeight Kᵒᵖ) ⟶
+    (functor L (P ⋙ A)).obj (bousfieldKanWeight Lᵒᵖ)
+lemma adjointReindex_coefficient_triangle :
+  Functor.whiskerLeft P (Functor.whiskerRight adj.unit A) ≫
+    Functor.whiskerRight adj.counit (P ⋙ A) = 𝟙 (P ⋙ A)
+lemma adjointReindexInverse_comp_localization :
+  (weakEquivalences C).Q.map
+    (adjointReindexInverse adj A ≫ bousfieldKanReindexMap P A) = 𝟙 _
+```
+
+最後の補題の入力は、Aのpointwise Reedy cofibrant性とhomotopically constant性。
+§106の法則を指定単位に適用する。逆の候補は単位による係数移送とSの比較射の合成。
+反対順序の合成には上記の係数の三角恒等式と、余単位での§106の法則を使う。
+
+### §107.2 余単位での合成と指定比較射の弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma reindex_comp_adjointInverse_localization :
+  (weakEquivalences C).Q.map
+    (bousfieldKanReindexMap P A ≫ adjointReindexInverse adj A) = 𝟙 _
+lemma bousfieldKanReindexMap_weakEquivalence_of_adjunction :
+  weakEquivalences C (bousfieldKanReindexMap P A)
+```
+
+入力は指定随伴 `S ⊣ P` と、Aのpointwise Reedy cofibrant性・homotopically constant性。
+RR02(a)の承認済み比較の証明の分割。通常の局所化で両側の逆を示して、
+元のモデル圏の弱同値として検出する。SSetのモデル構造は要求しない。
+
+### §107.3 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+3本・165行の対象ビルドと8宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計221本・16,306行。
+上限変更後のRR02(a)は3,808行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/reindex-adjunction/build-4.log`。
+
+指定右随伴による元のBK添字変更射の弱同値性まで検証した。逆の候補は
+指定単位の係数移送と左随伴の比較射の合成で、両側の逆は単位・余単位の
+円柱と右三角恒等式で照合した。SSetのモデル構造は使用しない。
+
+次は実際の `strictDiagramFreeEvaluationSmallAdjunction` と
+`ElementsUniverseLift.equivalence` を合成し、持ち上げた要素圏から
+`AsSmall (Over k)` への指定比較へ適用する。係数は元の評価source frameを使う。
+RR02(a)全体は未完であり、元の自由実現の増大射への接続を残す。
