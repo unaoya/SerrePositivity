@@ -9807,3 +9807,190 @@ L09a・L09累計 **5,015行**、改訂MayのM14全体 **10,081行**。
 混合角の残りは0行として、ほかの見込みを据え置いたM14完成見込みは
 **19,211〜26,521行**。上端は外枠25,000行を1,521行上回るリスクが残る。
 外枠の変更は仮定せず、水平の分岐へ続行する。
+
+## 124. 水平・垂直の符号に共通する接頭順位（11-14、続行）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+混合角の完了は **46bd6230f** に保存済み。
+次は水平の分岐の符号を照合するため、展開した語の順位を元の語と垂直座標で読む。
+m=0〜4・q=0〜3・色数1〜3の全ての語（全射性・非退化性を要求しない）で
+**142,272頂点**の順位を点検してから実装した。
+これはL09a内の接頭部分の有限の数え上げ。型は次のとおり。
+
+```lean
+caesuraRank_label {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+  Surjection.caesuraRank (label s v) k =
+    (s.vertical k).val + Surjection.caesuraRank v (s.horizontal k)
+```
+
+証明は経路の頂点の帰納法で、水平辺では元の語のcaesuraだけが、垂直辺では一つが増える。
+既存のC129・C130、`step_of_mem`・`step_of_notMem`と隣接順位C135を使う。
+この法則を水平の単語削除係数と垂直の入力面の交代符号の双方へ使い、
+重み付き逆転数の二重和の展開を各分岐で繰り返さない。
+
+### 124.1 同じ削除集合の重み付き和（C171・C172）
+
+既存C121・C122の集合の一致に有限和を適用する法則。
+位置数1〜6・色数1〜3の全色列の活動/最後の位置について、
+重みH(i)=iおよびH(i)=(i+1)²で**11,344例**を点検してから実装する。
+
+```lean
+caesura_sum_erase_active {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : Surjection.Caesura v a) (H : Fin (N + 1) → ℕ) :
+  (∑ i ∈ caesuraPositions v, H i) =
+    (∑ i ∈ caesuraPositions (Surjection.erase v a), H (a.succAbove i)) + H a
+caesura_sum_erase_final {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : ¬Surjection.Caesura v a)
+    (hp : (Surjection.previousOccurrences v a).Nonempty) (H : Fin (N + 1) → ℕ) :
+  (∑ i ∈ caesuraPositions v, H i) =
+    (∑ i ∈ caesuraPositions (Surjection.erase v a), H (a.succAbove i)) +
+      H (previousVertex v a hp)
+```
+
+### 124.2 削除後に残る区間の右端（C173）
+
+一般の座標対応について既存C06の達成上界の法則を適用する、L09a内の有限fiberの評価。
+水平な二辺の内部の削除と両端の削除で、p=1〜5・q=0〜4の全経路の
+残る区間の右端を**5,700例**点検してから実装する。
+C173はその座標の対応を引数とする共通法則。水平の具体的な対応への適用は次に行う。
+
+```lean
+hi_eq_of_coordinate_cover {m n q : ℕ} (s : Cut m q) (t : Cut n q)
+    (ρ : Fin (n + q + 1) → Fin (m + q + 1)) (φ : Fin (n + 1) → Fin (m + 1))
+    (hφ : Function.Injective φ)
+    (hh : ∀ j, s.horizontal (ρ j) = φ (t.horizontal j))
+    (hv : ∀ j, s.vertical (ρ j) = t.vertical j) (i : Fin (n + 1))
+    (hcover : ∀ j, s.horizontal j = φ i → ∃ k, ρ k = j) :
+  hi t i = hi s (φ i)
+```
+
+### 124.3 水平の座標公式と位置指数への適用（C174〜C176）
+
+§124.1・§124.2の有限点検の組合せに対応する法則。
+C174は既存の`horizontalDeletion_horizontal`・`horizontalDeletion_vertical`をC173へ渡す。
+C175・C176は同じ右端の重みについてC171・C172を評価する。
+局所的な法則`positionExponent_eq_caesura_sum`は位置指数の定義を有限集合の和へ戻すだけ。
+
+```lean
+hi_horizontalDeletion {m q : ℕ} (s : Cut (m + 1) q)
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1)
+    (ha : a ∈ s.val) (hb : b ∈ s.val) (i : Fin (m + 1)) :
+  hi ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) i =
+    hi s ((s.horizontal a.succ).succAbove i)
+positionExponent_eq_caesura_sum {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) :
+  positionExponent s v = ∑ i ∈ caesuraPositions v, hi s i
+positionExponent_erase_active {m q r : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Fin (m + 2) → Fin r) (a : Fin (m + 2)) (ha : Surjection.Caesura v a)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  positionExponent s v = positionExponent t (Surjection.erase v a) + hi s a
+positionExponent_erase_final {m q r : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Fin (m + 2) → Fin r) (a : Fin (m + 2)) (ha : ¬Surjection.Caesura v a)
+    (hp : (Surjection.previousOccurrences v a).Nonempty)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  positionExponent s v = positionExponent t (Surjection.erase v a) +
+    hi s (previousVertex v a hp)
+```
+
+### 124.4 活動区間の係数削除の符号（C177）
+
+元の語の活動区間を消す場合、C170の垂直座標とC175の右端が等しく、
+同じ(-1)の冪が二回現れて消える。m=1〜4・q=0〜3・色数1〜3の全色列の
+内部/両端の水平削除で、活動位置を消す**27,644例**を点検してから実装する。
+これはL09a内の既存の符号規則の照合で、界面・作用・operad則は変更しない。
+
+```lean
+signedDeletionCoefficient_horizontal_active {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Fin (m + 2) → Fin r)
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1)) (ha : Surjection.Caesura v a)
+    (hk : s.horizontal k = a) (hy : (s.vertical k).val = hi s a)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  (-1 : ℤ) ^ positionExponent s v * Surjection.deletionCoefficient (label s v) k =
+    Surjection.deletionCoefficient v a * (-1 : ℤ) ^ positionExponent t (Surjection.erase v a)
+```
+
+C177の局所的な整数積の法則の型は
+`cancel (P R : ℤ) (n : ℕ) : (P * (-1 : ℤ)^n) * ((-1 : ℤ)^n * R) = R * P`。
+`(-1)^n * (-1)^n = 1`と可換結合法則だけを使う。
+最後の非活動区間の分岐と、実テンソル/無効な削除語の零の照合はまだ残る。
+
+### 124.5 最後の位置の前にある同色頂点（C178）
+
+m=1〜4・q=0〜3・色数1〜3の全ての色列について、一頂点の水平区間で元の語に
+直前同色位置がある**27,644例**を点検してから実装する。
+元の語と展開語の既存の`previousOccurrences`の最大を、同じ水平fiberの最大で照合する
+有限の数え上げ。新しいBE作用や削除の構成は作らない。
+
+```lean
+previousVertex_label_horizontal_singleton {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin (m + 1)) (k : Fin (m + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hp : (Surjection.previousOccurrences v a).Nonempty)
+    (he : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  previousVertex (label s v) k he =
+    (intervalPositions s (previousVertex v a hp)).max'
+      (intervalPositions_nonempty s (previousVertex v a hp))
+```
+
+### 124.6 最後の非活動区間の係数削除の符号（C179）
+
+m=1〜4・q=0〜3・色数1〜3の全ての色列の内部/両端の水平削除について、
+元の語の最後の非活動位置で直前同色位置がある**18,374例**を点検してから実装する。
+C178で直前同色区間の最後を指定し、C170・C176と既存の最後の削除係数の法則を適用する。
+同じ右端の冪の二乗を消す局所法則`cancel`の型はC177と同じ。
+
+```lean
+signedDeletionCoefficient_horizontal_final {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Fin (m + 2) → Fin r)
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1)) (ha : ¬Surjection.Caesura v a)
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hp : (Surjection.previousOccurrences v a).Nonempty)
+    (he : (Surjection.previousOccurrences (label s v) k).Nonempty)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  (-1 : ℤ) ^ positionExponent s v * Surjection.deletionCoefficient (label s v) k =
+    Surjection.deletionCoefficient v a *
+      (-1 : ℤ) ^ positionExponent t (Surjection.erase v a)
+```
+
+### 124.7 接頭順位と水平削除係数の検証済み区切り
+
+一覧：済み 8／全体 48（うち追加 4）
+
+次の七本 **366行**を対象ビルド・監査済みとして保存する。
+登録候補の接頭部は `SerrePositivity.EInfinity.SimplexCuts.`。
+
+- `ExpandedCaesuraRanks`：46行
+- `CaesuraDeletionSums`：42行
+- `DeletedIntervalMaxima`：38行
+- `HorizontalDeletionExponents`：79行
+- `HorizontalActiveDeletionSigns`：38行
+- `HorizontalPreviousVertices`：62行
+- `HorizontalFinalDeletionSigns`：61行
+
+対象ビルドは`m14-expanded-caesura-ranks-02.log`、`m14-caesura-deletion-sums-01.log`、
+`m14-deleted-interval-maxima-01.log`、`m14-horizontal-deletion-exponents-01.log`、
+`m14-horizontal-active-deletion-signs-02.log`、`m14-horizontal-previous-vertices-01.log`、
+`m14-horizontal-final-deletion-signs-03.log`（いずれも`/tmp/bsw16/`）で成功。
+新規七本のLean警告0、sorry・追加公理0、`git diff --check`成功。
+個々の補題は200行以下。
+専用監査 `/tmp/bsw16/audit-m14-horizontal-deletion-signs.log` は
+**7モジュール・23宣言・標準三公理のみ**。
+鍵スクリプトの他レーンの既存ビルド検出通知は出たが、監査のLeanの警告/エラーはない。
+鍵を持つ常駐プロセスは作っていない。
+
+C170は全ての色関数で成立し、Wordの非退化性を余分に仮定していない。
+C174は内部の水平削除の右端の具体的な対応、C175・C176は同じ右端を受け取る一般の位置指数の法則。
+C177・C179により、活動区間・最後の非活動区間の両方で、位置指数と単語削除係数が
+元の語の削除係数へ戻るところまで検証した。
+
+**水平のhcはまだ未完了**。共通の削除色列の逆転符号を小さい切断の符号へ移すこと、
+始端・終端への具体的な座標対応、実テンソルの一致、削除語が無効な場合の零が残る。
+C179の元の語と展開語の先行同色の非空性は、適用時に正の出力次数から供給する必要がある。
+その適用を仮定したままhcを証明したとは報告しない。垂直のhvも未完了。
+
+L09a・L09累計 **5,381行**、改訂MayのM14全体 **10,447行**。
+次の1,000行の区切りは約5,600行。12,500行の半分報告・25,000行の外枠には未到達。
+次は、同じ色列の次数移送で削除後の逆転符号を比較し、活動/最後の二つの係数公式を
+実際の水平境界符号へ適用する。共通入口・共通監査・界面の変更は行わない。
