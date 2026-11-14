@@ -7522,3 +7522,59 @@ lemma strictDiagramFreeValueFrame_homotopicallyConstant (X : StrictComplexDiagra
 検証済み累計160本・12,876行。外枠24,000行まで11,124行。
 上限変更後のRR02(a)実測は378行、(b)(c)新規0行。
 RR02全体は未完。実比較の弱同値性を、条件を加えずに証明する作業を続ける。
+
+## §73 RR02(a)：自由frameの全添字族
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `da1fd7d7b` の検証済み118行を追加した進捗。
+今回も§69.2(a)の証明分割で、§72の各値を同じHom要素圏全体に束ねる。
+既存の自由図式の対象・射を変えず、余積の添字の前合成で評価頂点を移送する。
+単位・合成則は既存の構成の法則で、IDを追加しない。
+
+```lean
+def strictDiagramFreeAtReindex {i j : strictDiagramIndex d} (f : i ⟶ j) :
+    strictDiagramFreeAt A d j ⟶ strictDiagramFreeAt A d i
+lemma strictDiagramFreeAtReindex_id (i : strictDiagramIndex d) :
+    strictDiagramFreeAtReindex A d (𝟙 i) = 𝟙 (strictDiagramFreeAt A d i)
+lemma strictDiagramFreeAtReindex_comp {i j k : strictDiagramIndex d}
+    (f : i ⟶ j) (g : j ⟶ k) :
+    strictDiagramFreeAtReindex A d (f ≫ g) =
+      strictDiagramFreeAtReindex A d g ≫ strictDiagramFreeAtReindex A d f
+def strictDiagramFreeAtFunctor :
+    (strictDiagramIndex d)ᵒᵖ ⥤ Complex A ⥤ StrictComplexDiagram A d
+def strictDiagramFreeArrowIndex (d : StrictDiagramDirection) :
+    (StrictDiagramArrowElements.{u} d)ᵒᵖ ⥤
+      (strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d
+def strictDiagramFreeValueFrameFamily (X : StrictComplexDiagram A d) :
+    (strictDiagramIndex d)ᵒᵖ ⥤ strictDiagramIndex d ⥤
+      SimplexCategory ⥤ StrictComplexDiagram A d
+def strictDiagramFreeArrowFrame (X : StrictComplexDiagram A d) :
+    (StrictDiagramArrowElements.{u} d)ᵒᵖ ⥤ SimplexCategory ⥤ StrictComplexDiagram A d
+lemma strictDiagramFreeArrowFrame_obj (X : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (strictDiagramFreeArrowFrame A d X).obj (Opposite.op t) =
+      strictDiagramFreeValueFrame A d X
+        (AsSmall.down.obj t.obj.1.unop) (AsSmall.down.obj t.obj.2)
+```
+
+全族のHomと実係数の自然同型、重みの実現と元のframeの比較は、この後の接続である。
+RR02の弱同値性はまだ結論していない。E01の別経路の紙は§71・§72の確認を維持する。
+
+### 73.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFreeAtReindex | 74 | 3,755 jobs成功 | 14宣言、標準三公理のみ |
+| StrictDiagramFreeArrowFrame | 54 | 3,757 jobs成功 | 7宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/free-at-reindex/build-3.log` と
+`/tmp/is-w1/free-arrow-frame/build.log`。単位則の最後を恒等射との合成の法則で明示して通した。
+計算上限は変更していない。既存の未検証のE01下書き4本は対象外。
+検証済み累計162本・13,004行、外枠24,000行まで10,996行。
+上限変更後のRR02(a)実測は506行、(b)(c)新規0行。
+
+この束は全添字射で作用する自由frameの族まで。実係数との全族の同型と、
+重みの実現の弱同値性は残る。RR02の完了数は変えず、R3・R4は実装しない。
