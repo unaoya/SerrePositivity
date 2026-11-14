@@ -1739,3 +1739,17 @@ C04(d) の有限個の制限の共通段（着手前の型、見込み30〜80行
 G1・G2共用部品込み本体11,075行、入口込み11,264行。C04 は本体659行まで検証。有限 affine 制限と共通段の下書きは未検証で実測に含めない。一般の閉埋め込み性と固有性の降下、被覆模型・図式の整合性は残り、C04 と B01〜B04 は未完。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+C04(d) の有限被覆での貼り合わせ（着手前の型、見込み100〜250行）：`isClosedImmersion_baseChange_restriction` は、合成 b=h≫g による f の底変換の閉埋め込み性を、f の g による底変換を h で制限した実際の pullback の第二射影へ移す。`exists_closedImmersion_pullback_of_isLimit_of_isAffineHom` は準コンパクトな段 D(i) への affine・局所有限型の射 f の極限での閉埋め込み性を、ある後段の同じ底変換へ降ろす。標的の有限 affine 被覆の制限を共通段へ取り、実際の二段の pullback の比較と閉埋め込み性の標的での局所性を使う。C04 の証明分割で、一般の qcqs な f をまず affine に降ろす最後の接続はなお別に残る。
+
+
+### C04(d)：有限個の affine な標的への制限の閉埋め込み性を同じ段へ降ろす
+
+`AffineRestrictionClosedLimit`（78行）：`exists_closedImmersion_restricted_stage` は affine・局所有限型の射を一つの affine な標的へ制限した実際の射について、極限での閉埋め込み性から後段での閉埋め込み性を返す。`exists_finite_closedImmersion_restricted_stage` は有限個のこの制限を同じ後段へそろえる。既存の底変換の極限の自然変換と Cartesian 正方形を使い、後段へ移しても閉埋め込み性を保つ。標的の Noether 性や固有性を仮定しない。
+
+本体78行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,976ジョブ成功。小監査2宣言・標準三公理のみ。単独検証は最初の下書きで成功し、公開前のソース完全一致、対象ビルドと監査の終了状態0を確認済み。ログ `2g-affine-restriction-closed-limit-check.log`・`2g-affine-restriction-closed-limit-native.log`・`2g-affine-restriction-closed-limit-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体11,153行、入口込み11,343行。C04 は本体737行まで検証。一般の標的での閉埋め込み性の貼り合わせは現在下書きで実測に含めない。一般の固有性の降下、被覆模型・図式の整合性も残り、C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。
