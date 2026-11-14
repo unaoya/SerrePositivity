@@ -1437,3 +1437,4 @@ public import SerrePositivity.AlgebraicGeometry.FiniteStagePullbackEqualities
 public import SerrePositivity.AlgebraicGeometry.BaseChangedOverlapTriple
 public import SerrePositivity.AlgebraicGeometry.ModelArrowStageNaturality
 public import SerrePositivity.AlgebraicGeometry.OpenAtlasStageArrows
+public import SerrePositivity.AlgebraicGeometry.OpenAtlasReverseNaturality
