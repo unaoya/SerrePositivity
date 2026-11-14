@@ -4581,3 +4581,143 @@ lemma simplexSectionBaseChangeCoefficient_pasting {E B D T : SSet.{u}}
 
 ```
 
+
+## 52. 対象別係数の合成則と正規化した指定底変換（11-14、途中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+三本の対象ビルド成功（5,517 jobs）、新しい環境の32宣言の小監査成功。
+標準三公理のみ、計算上限は不変。ログ：`/tmp/is-w1/coefficient-composition-verify/run-2.log`。
+今回293行、検証済み累計123本・10,002行。E01本体は未完了。
+
+元の係数評価の略記、元の係数の合成則、指定底変換の制限の共役表示を同じ端点の等式へ
+戻す入力が通った。新しい比較同型・独立した構成の選択や仮定は追加していない。
+標準引き戻し同型の分類は元の逆射を逆に持つ（既存の分類の合成則・恒等則の系）。
+
+### SimplexSectionCoefficientValues（99行、既存構成の法則・略記）
+
+```lean
+local instance coefficientValues_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+abbrev simplexSectionValue {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory B)) ⟶ SpaceInfinity.{u}
+
+def simplexSectionBaseChangeCoefficient {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    FunctorIso (simplexSectionValue (pullback.snd p k))
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k)) ≫
+        simplexSectionValue p)
+
+def simplexSectionCompositeCoefficient {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    FunctorIso (simplexSectionValue (pullback.snd p (l ≫ k)))
+      (simplexSectionValue (pullback.snd (pullback.snd p k) l))
+
+lemma simplexSectionBaseChangeCoefficient_heq {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq (simplexSectionBaseChangeCoefficient p k)
+      (FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso k)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+
+lemma leftStraightening_baseChange_firstVertex_coefficient
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D)))
+      ((leftClassificationSimplexIso p).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k))) ≪≫
+        (simplexSectionBaseChangeCoefficient p k).symm ≪≫
+        (leftClassificationSimplexIso (pullback.snd p k)).symm)
+
+```
+
+### SimplexSectionCoefficientComposition（111行、既存構成の法則・略記）
+
+```lean
+local instance coefficientComposition_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+lemma simplexSectionFirstCoefficient_normalized {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    diagramIsoCongr
+      (f' := simplexSectionValue (pullback.snd (pullback.snd p k) l))
+      (g' := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l)) ≫
+        simplexSectionValue (pullback.snd p k))
+      (by rw [Category.assoc, leftFibrationBaseChange_evaluate p k, Category.assoc,
+        leftFibrationBaseChange_evaluate (pullback.snd p k) l,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd (pullback.snd p k) l)])
+      (by rw [Category.assoc, Category.assoc, leftFibrationBaseChange_evaluate p k,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+      (FunctorIso.postcomp (simplexSectionFirstIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p))) =
+      simplexSectionBaseChangeCoefficient (pullback.snd p k) l
+
+lemma simplexSectionSecondCoefficient_normalized {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    let t := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l))
+    let s := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k))
+    diagramIsoCongr
+      (f' := t ≫ simplexSectionValue (pullback.snd p k))
+      (g' := t ≫ (s ≫ simplexSectionValue p))
+      (by rw [Category.assoc, Category.assoc, leftFibrationBaseChange_evaluate p k,
+        transportSimplexSectionInfinity_joint_evaluate (pullback.snd p k)])
+      (by rw [Category.assoc, Category.assoc, transportSimplexSectionInfinity_joint_evaluate p])
+      (FunctorIso.postcomp (simplexSectionSecondIso k l)
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p))) =
+      (simplexSectionBaseChangeCoefficient p k).precomp t
+
+lemma simplexSectionBaseChangeCoefficient_pasting {E B D T : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : T ⟶ D) :
+    HEq (simplexSectionCompositeCoefficient p k l ≪≫
+        simplexSectionBaseChangeCoefficient (pullback.snd p k) l ≪≫
+        (simplexSectionBaseChangeCoefficient p k).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l))))
+      (simplexSectionBaseChangeCoefficient p (l ≫ k))
+
+```
+
+### LeftStraighteningSimplexPastingInputs（83行、既存構成の法則・略記）
+
+```lean
+local instance simplexPastingInputs_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+lemma leftStraightening_baseChange_simplex_normalized
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc])
+      rfl
+      ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D))) =
+      (leftClassificationSimplexIso p).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k))) ≪≫
+        (simplexSectionBaseChangeCoefficient p k).symm ≪≫
+        (leftClassificationSimplexIso (pullback.snd p k)).symm
+
+lemma leftStraightening_baseChange_simplex_intertwining
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    (diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc])
+      rfl
+      ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D)))).hom ≫
+      (leftClassificationSimplexIso (pullback.snd p k)).hom =
+      ((leftClassificationSimplexIso p).precomp
+        ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k)))).hom ≫
+        (simplexSectionBaseChangeCoefficient p k).inv
+
+lemma leftClassificationHom_preserves_iso {E H B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (e : E ≅ H) (he : e.hom ≫ q = p) (hi : e.inv ≫ p = q) :
+    IsIso (leftClassificationHom p q e.hom he)
+
+```
+
+次は、標準引き戻し同型の分類の制限を同じ補正係数の逆の共役として回収し、
+二段の指定底変換の中間制限同型を相殺して初頂点制限の忠実性で降下する。
+指定単位の下書きの再検証は別ログへ分離しており、この成功の宣言数には含めない。
