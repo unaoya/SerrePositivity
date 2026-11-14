@@ -1490,3 +1490,4 @@ public import SerrePositivity.AlgebraicGeometry.PolynomialProjProper
 public import SerrePositivity.AlgebraicGeometry.PolynomialAffineProjImmersion
 public import SerrePositivity.AlgebraicGeometry.AffineProperAmbient
 public import SerrePositivity.AlgebraicGeometry.SchemeImageDominance
+public import SerrePositivity.AlgebraicGeometry.NoetherianComponentFamily

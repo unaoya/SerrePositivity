@@ -1968,3 +1968,17 @@ C06 の有限個の既存の成分への接続（着手前の型、見込み80�
 G1・G2共用部品込み本体11,994行、入口込み12,199行。C06 は本体60行までで未完。一般の Chow の固有全射、一般の固有性の降下、被覆模型・図式の整合性はまだ残り、C06 と B01〜B04 は未完。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 の実際の固有な閉包（着手前の型、見込み60〜140行）：`exists_immersion_proper_closure` は準コンパクトな immersion i:U→P と固有な q:P→S に対し、実際の閉包 Z、開包含 a:U→Z とその scheme-theoretic な稠密性、閉包含 j:Z→P、j≫q の固有性、a≫j=i を返す。`isNoetherian_schemeImage` は Noether な P への任意の射の実際の像が Noether と返す。前者は [Stacks 01RG, 29.7.7](https://stacks.math.columbia.edu/tag/01RG) の既存の image の構成と射の法則の組立てで、C06 内の証明分割。親項目は増やさず、閉包の存在を最終の模型の追加仮定にはしない。
+
+
+### C06：既存の Noether 成分の有限の全射的な族
+
+`NoetherianComponentFamily`（67行）：`noetherianComponentIndex` と `_finite` は既約成分の添字と有限性。`noetherianComponentScheme` と `noetherianComponentInclusion` は既存の成分のスキームと包含。`isClosedImmersion_noetherianComponentInclusion` は包含の閉埋め込み性、`irreducibleSpace_noetherianComponentScheme` と `isNoetherian_noetherianComponentScheme` は各成分の既約性と Noether 性、`noetherianComponentInclusion_jointly_surjective` は各点の実際の原像を返す。元の nilpotent の情報を保つ既存の成分の構成を使用する。
+
+本体67行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,993ジョブ成功。小監査11宣言・標準三公理のみ。下書きでは局所 Noether 性を包含に沿う有限型性から明示し、Noether 性の class の既存 instance を構造へ渡して単独検証を完了。公開前のソース完全一致、対象ビルドと監査を終了状態0で確認済み。ログ `2g-noetherian-component-family-check-2.log`・`2g-noetherian-component-family-native.log`・`2g-noetherian-component-family-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体12,061行、入口込み12,267行。C06 は本体127行までで未完。約12,000行の途中報告は f185b6370、その後の C05 完了時の更新は d8dbb7002 に記録済み。一般の Chow の固有全射、一般の固有性の降下、被覆模型・図式の整合性はまだ残り、C06 と B01〜B04 は未完。
+
+一覧：済み12／全体17（うち追加8）。
