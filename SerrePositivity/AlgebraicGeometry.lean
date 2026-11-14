@@ -1398,3 +1398,10 @@ public import SerrePositivity.AlgebraicGeometry.FlatStageModelFactorization
 public import SerrePositivity.AlgebraicGeometry.IntegralModelBaseNaturality
 public import SerrePositivity.AlgebraicGeometry.IntegralClosedFlatRefinement
 public import SerrePositivity.AlgebraicGeometry.CompactMinimalPrimeIntegralCover
+public import SerrePositivity.AlgebraicGeometry.AffineRingVCoverRefinement
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCoverOpenCover
+
+public import SerrePositivity.AlgebraicGeometry.AffineOpenVCoverRefinement
+
+public import SerrePositivity.AlgebraicGeometry.AffineBaseVCoverRefinement

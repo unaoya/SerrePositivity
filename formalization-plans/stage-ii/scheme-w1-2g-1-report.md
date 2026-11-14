@@ -1001,3 +1001,36 @@ IntegralClosedFlatRefinement **75 行**、CompactMinimalPrimeIntegralCover **47 
 G1 共用部品込み本体 **6,427 行**、入口込み **6,543 行**。A07 の affine 始域の出口は、これらの実際の証人を組み合わせる下書きを検証中で、この監査には含めない。一般の始域への接続と G2 も未完。
 
 一覧：済み 9／全体 14（うち追加 5）。
+
+A07 の一般の始域への接続の型（既定の有限アフィン被覆の分割、見込み180〜450行）：`isSchemeVCover_sigmaDesc_openCover` は開被覆の余積から元の空間への射が v 判定を持つことを、付値環の閉点の像を含む一つの開へ写像全体を因子化して示す。`isSchemeVCover_of_isIso` は同型の v 判定の法則。`exists_affine_finitePresentation_vCover_refinement` は、任意の affine 基底への局所有限表示・準コンパクトな v 被覆 f:X→Spec R に対し、有限アフィン開被覆の余積（Mathlib では affine）から有限表示 R-代数 B と k:Spec B→X、Spec B→Spec R の v 判定、k≫f=Spec.map(algebraMap R B) を返す。`exists_fppf_proper_refinement_vCover_affineBase` はこれに affine 始域の出口を適用し、任意の始域の A07 の型をそのまま閉じる。元の f に平坦性・固有性・Noether 性を追加しない。親 ID は増やさない。
+
+
+## A07 完了：一般の affine 基底と任意の始域の出口
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| AffineRingVCoverRefinement | 93 | `exists_fppf_proper_refinement_vCover_affineRing`：任意の環 R 上の有限表示代数の v 被覆を、実際の C01 整全射・Noether 閉模型・全射な有限段の証人を組み合わせて固有全射と fppf 射で細分する |
+| SchemeVCoverOpenCover | 43 | `isSchemeVCover_of_isIso`：同型の v 判定。付値環の拡大は恒等射 |
+| 同上 | 同上に含む | `isSchemeVCover_sigmaDesc_openCover`：開被覆の余積の v 判定。付値環の閉点を含む開への因子化を使う |
+| AffineOpenVCoverRefinement | 63 | `exists_affine_finitePresentation_vCover_refinement`：任意の始域を有限アフィン被覆の余積で細分し、有限表示 R-代数と元の被覆への実際の射・可換式・v 判定を返す |
+| AffineBaseVCoverRefinement | 36 | `exists_fppf_proper_refinement_vCover_affineBase`：任意の affine 基底、局所有限表示・準コンパクトな v 被覆に対し、固有・局所有限表示・全射 r:T→Spec R と、平坦・局所有限表示・準コンパクト・全射 q:W→T、k:W→X と k≫f=q≫r を返す |
+
+本体 **235 行**、入口 4 行。affine 始域の対象・入口ビルド **4,903 ジョブ成功**、小監査 **1 宣言・標準三公理のみ**。一般の始域への三モジュールと直接 importer AlgebraicGeometry の対象ビルド **4,906 ジョブ成功**、小監査は private な証明分割込み **5 宣言・標準三公理のみ**。新規四本は合わせて **6 宣言**を監査した。元の基底への Noether 性・被約性、元の射への固有性・平坦性、近似の遷移への忠実平坦性を追加していない。
+
+Rydh 3.10 の承認済み affine 基底版 A07 はこれで完了。G1 の一覧 A01〜A07・C01〜C03 が済み。**G2 の B01〜B04 は未完で、停止点 2g-1 ではない。**
+
+G1 共用部品込み本体 **6,662 行**、入口込み **6,782 行**。約12,000行の途中報告点と25,000行の外枠には未到達。G2 は有限型 F_p 上の一般の有限表示固有模型、同じ段での固有性・全射性、被覆模型の filtered 図式と Čech 図式への移送を残す。係数模型の法則から着手する。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-affine-ring-vcover-refinement-check-3.log`、`2g-affine-ring-refinement-native.log`、`2g-affine-ring-refinement-audit.log`、`2g-affine-base-refinement-batch-check-2.log`、`2g-affine-base-refinement-native.log`、`2g-affine-base-refinement-audit.log`。
+
+一覧：済み 10／全体 14（うち追加 5）。
+
+## G2 の最初の分割：係数体を保つ affine 模型（着手前の型）
+
+B01 の affine 局所の係数移送として `exists_finitePresentation_model_over_noetherian_coefficients` を作る（見込み50〜130行）。Noether 環 k、k-代数 R、有限表示 R-代数 S に対し、k 上有限生成な部分代数 A⊆R と有限表示 A-代数 S₀、実際の R-代数同型 R⊗[A]S₀≃ₐ[R]S を返す。`exists_finitePresentation_noetherian_model` が使った Mathlib の有限表示の Core の計算を、ℤ から指定した k へ移す法則。k=F_p にすれば係数体を保ち、B01 の有限型 F_p の affine 局所を供給する。有限表示の対象の降下は Stacks [01ZM](https://stacks.math.columbia.edu/tag/01ZM) の affine の場合（Algebra 10.127.8）。親 ID は増やさない。
+
+一般の固有射については、対象の模型の存在（01ZM）と、得られた模型が後の段で固有になること（[081F](https://stacks.math.columbia.edu/tag/081F)）を別に証明する。原典081Fの証明はChowの補題32.12.1を経由する。[0A0P](https://stacks.math.columbia.edu/tag/0A0P)の一般の固有射の逆極限表示は、この二つを合わせる。現在のMathlibと本レーンにChowの補題の宣言は見つかっていない。これは依存の調査であり、一般の模型を既存の射の因子化だけで完成とするものではない。B01〜B04の未完の型は保持する。
+
+同じ affine 局所の幾何への係数移送として `exists_affine_finitePresentation_coefficient_model`（見込み35〜90行）を作る。上記の A と S₀ に加え、実際の射 a:Spec S→Spec S₀ と、元の Spec S→Spec R・Spec S₀→Spec A・Spec R→Spec A による IsPullback を返す。既存の `isPullback_affineTensorModel` の適用であり、一般の固有模型の B01 はこれだけで完了としない。
+
+有限アフィン被覆を同じ係数環へそろえる法則 `exists_common_finitePresentation_coefficient_models`（見込み60〜150行）：有限個の有限表示 R-代数 Sᵢ に対し、一つの k 上有限生成部分代数 A⊆R と、全ての Sᵢ の有限表示 A-模型・実際の tensor 比較同型を返す。有限個の関係式の係数集合の和集合を取り、同じ `ModelOfHasCoeffs` を適用する。これは既存の係数模型の有限族への移送で、B01 の一般の対象の貼り合わせは別に残る。
