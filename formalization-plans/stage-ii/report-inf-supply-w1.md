@@ -5693,3 +5693,38 @@ lemma homWeightYonedaLeftKanComparison_evaluation_fac {A C : SSet.{u}}
 元の比較射の単位回収式を点評価できた。E01の可逆性そのものは未了。
 次は点評価した単位の Hom 類と `kanLeftUnitPostcomp` の Hom 類の照合、
 および未検証の指定単位・分類正方形の比較を閉じる。R3は実装しない。
+
+### 55.11 標準の後合成単位の Hom 類（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+同じ代表辺の端点輸送による既存構成の法則。
+
+```lean
+lemma kanLeftUnitPostcomp_hom {K C D E : SSet.{u}} {δ : K ⟶ C}
+    {F₀ : K ⟶ D} {F : C ⟶ D} (β : SSet.Homotopy F₀ (δ ≫ F)) (q : D ⟶ E) :
+    kanFunctorHomCongr rfl (Category.assoc δ F q)
+      (postcomposeFunctorHom q
+        (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β))) =
+      Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (kanLeftUnitPostcomp β q))
+```
+
+### 55.12 指定単位の定義展開による照合の再検証準備
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55 の `unit_heq_precomposeChosen` の型を保ち、
+`functorHomBifunctorUnit.eq_def` により左辺だけを展開する。
+以前の8分での手動停止は証明不能の根拠ではないため、今回は既定の1700秒の
+対象検証枠で終了結果を確認する。Lean の計算上限は変更しない。
+新しい構成や仮定は足さない。現在の単位の後合成則の検証終了後に、一枚の整理券で実行する。
+ログ予定：`/tmp/is-w1/unit-equation-full-window/build.log`。
+
+### 55.13 標準単位の照合の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.11 の対象ビルド成功（5,453 jobs）、新しい環境の1宣言の小監査成功、
+標準三公理のみ。計算上限は不変。ログ：`/tmp/is-w1/left-unit-postcomp-hom/build-2.log`。
+今回45行、検証済み累計137本・10,979行。E01本体は未了。
