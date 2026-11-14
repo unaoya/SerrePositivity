@@ -8473,3 +8473,48 @@ root ビルドや大きい監査、heartbeat 上限の変更はしていない�
 仮定にして済ませない。M10・M11 以降・G12 は未完、外枠 17,000 行は維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## §56 同じ符号付き frame 同型を通した元の augmentation の評価
+
+同じ全 frame 同型の後に元の加群 augmentation を評価した射は、
+元の AW 余単位を右因子にテンソルし、元の右単位子を合成した射に一致する。
+元の AW 余単位の評価式、符号付き交換の自然性と単位子の法則を使う。
+別の augmentation で置き換えた等式にはしない。
+
+これは既存構成の係数移送・貼り合わせの法則であり、一次 ID は追加しない。
+複体側の normalizedSimplexCochainContraction の順射との一致はまだこの主張には含めない。
+その照合を済ませてから、既存の複体の三角形の再利用へ進む。
+
+`TensorFrameAugmentationEvaluation.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+lemma moduleTensorEvaluationFrameIso_augmentation (P : ModuleCategory A D) (x : D)
+    (n : SimplexCategory) :
+    (moduleTensorEvaluationFrameIso A D P x).hom.app n ≫
+      (moduleEvaluation A D x).map ((moduleTensorSimplicesAugmentation A D P).app n) =
+    (𝟙 ((moduleEvaluation A D x).obj P) ⊗ₘ
+      AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)) ≫
+        (ρ_ ((moduleEvaluation A D x).obj P)).hom
+```
+
+
+### 56.1 検証と実測
+
+TensorFrameAugmentationEvaluation の対象ビルドと新規公開宣言一本の小さい依存公理監査は、
+同じ impl 鍵・待ち 3600 秒・gtimeout 280 秒の実行で終了値 0。
+依存公理は propext・Classical.choice・Quot.sound の範囲であり、
+新規引用属性・引用出力は 0 本。大きい監査・root ビルド・heartbeat の変更はない。
+
+新規 Lean は一ファイル・37 行・明示宣言一本（private 0 本）。
+§55.1 の下書きは検証済みとなり、所有ソース全体を再計数した累計は
+204 ファイル・15,878 行・明示宣言 718 本（private 21 本）。
+外枠 17,000 行まで残り 1,122 行。200 行を超える証明や一次 ID の追加はない。
+既存 EInfinity ソースの変更もない。
+
+元の augmentation の評価の等式は通ったが、複体の指定収縮の順射との比較と
+全三相単体の比較はまだ残る。M10・M11 以降・G12 は未完であり、目標を縮めない。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
