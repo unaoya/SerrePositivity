@@ -20655,3 +20655,109 @@ L12aは未完了。nullaryはここまで567行で、端点・caesura・符号�
 長さ2〜5、色数1〜3、q=0〜2、一度だけ出る削除色で区間が一点となる5,090組について、
 残る全区間の両端、全caesura、元の整数の符号指数が削除後と一致した。
 これはLeanの証明の代用ではなく、次の型を元の構成の法則として切り出す前の点検。
+
+## 326. 一点削除の全区間の両端と区切り（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§325の5,090組の点検に対応し、同じ切断の両端と同じraw語のcaesuraを比較する。
+以下は既存構成の法則・証明分割で、一覧の項目を増やさない。各証明200行以内。
+
+```lean
+lemma lo_eq_of_coordinate_cover {m n q : ℕ} (s : Cut m q) (t : Cut n q)
+    (ρ : Fin (n + q + 1) → Fin (m + q + 1)) (φ : Fin (n + 1) → Fin (m + 1))
+    (hφ : Function.Injective φ)
+    (hh : ∀ j, s.horizontal (ρ j) = φ (t.horizontal j))
+    (hv : ∀ j, s.vertical (ρ j) = t.vertical j)
+    (i : Fin (n + 1))
+    (hcover : ∀ j, s.horizontal j = φ i → ∃ k, ρ k = j) : lo t i = lo s (φ i)
+
+lemma lo_eq_of_horizontal_deleted_coordinates {m q : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j)
+    (i : Fin (m + 1)) : lo t i = lo s (a.succAbove i)
+
+lemma nullaryPointEraseCut_endpoints {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (i : Fin (m + 1)) :
+    lo (nullaryPointEraseCut s p) i = lo s (p.succAbove i) ∧
+      hi (nullaryPointEraseCut s p) i = hi s (p.succAbove i)
+
+lemma not_caesura_of_unique {l r : ℕ} (v : Fin (l + 1) → Fin r) (p : Fin (l + 1))
+    (hu : ∀ j, v j = v p → j = p) : ¬ Surjection.Caesura v p
+
+lemma caesura_erase_unique {l r : ℕ} (v : Fin (l + 1) → Fin r) (p : Fin (l + 1))
+    (hu : ∀ j, v j = v p → j = p) (i : Fin l) :
+    Surjection.Caesura (Surjection.erase v p) i ↔ Surjection.Caesura v (p.succAbove i)
+```
+
+左端は既存右端の証明を同じfiberのmin'とlo_eq_of_boundで読むだけ。
+両端は元のhorizontalBoundaryFaceEquivの全削除座標を使う。
+区切りはcaesura_erase_iff_witnessを使い、唯一の削除色は将来の同色位置にならないことを読む。
+
+## 327. 一点削除の区間重みと元の整数符号（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§326の全端点・caesuraから、同じ元の整数の指数を比較する。各証明200行以内。
+有限点検は§325の5,090組で指数の完全な等式まで行った。偶奇だけへの弱化はしない。
+以下で `hu : ∀ j, v j = v p → j = p` は、元の削除色が一度だけ出ること。
+
+```lean
+lemma intervalLength_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) : intervalLength s v p = 0
+
+lemma intervalLength_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) (i : Fin (m + 1)) :
+    intervalLength (nullaryPointEraseCut s p) (Surjection.erase v p) i =
+      intervalLength s v (p.succAbove i)
+
+lemma positionExponent_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) :
+    positionExponent (nullaryPointEraseCut s p) (Surjection.erase v p) = positionExponent s v
+
+lemma permutationExponent_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) :
+    permutationExponent (nullaryPointEraseCut s p) (Surjection.erase v p) =
+      permutationExponent s v
+
+lemma cutSign_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) :
+    cutSign (nullaryPointEraseCut s p) (Surjection.erase v p) = cutSign s v
+```
+
+削除位置の位置指数はcaesuraでないため零。二重和の削除位置の全項は区間重み零で消える。
+残りの順序は元のFin.succAboveのstrictMono、色の値は同じerase_apply。
+新しい符号規約や別の写像へ置き換えず、元の有限和の再添字だけを使う。
+
+
+## 328. 一点削除の全端点・区切り・元の整数符号（検証済み）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§326〜327の法則6本を検証した。元の順序・全区間の端点・全caesuraを保ち、
+位置指数と逆転指数はそれぞれ自然数として厳密に一致する。
+符号の偶奇やホモトピー圏の等式への置き換えはしていない。L12aは未完了。
+
+|登録候補（すべてSimplexCuts）|行数|
+|---|---:|
+|DeletedIntervalMinima|38|
+|HorizontalDeletionMinima|44|
+|NullaryPointEndpoints|33|
+|NullaryPointCaesuras|35|
+|NullaryPointWeights|32|
+|NullaryPointSigns|54|
+
+今回236行。M14実測25,956行、L12a 10,749行、外枠31,000行まで5,044行。
+対象ビルド m14-nullary-point-endpoints-01.log（2,311 jobs）と
+m14-nullary-point-signs-02.log（2,313 jobs）は成功。未使用simp引数は修正し対象警告0。
+小監査 audit-m14-nullary-point-signs.log は6本14宣言・標準三公理のみ、sorry・独自公理0。
+ビルドと監査は各回で鍵を返却。共有の入口・監査は変更していない。
