@@ -1201,3 +1201,39 @@ G1・G2共用部品込み本体 **7,567 行**、入口込み **7,704 行**。一
 共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-coefficient-atlas-connection-check-2.log`、`2g-coefficient-atlas-connection-native-2.log`、`2g-coefficient-atlas-connection-audit.log`。
 
 一覧：済み 10／全体 14（うち追加 5）。
+
+
+B01 の遷移の射を実際の段の射として同時に供給する法則（着手前の型、見込み100〜240行）：`compositeStageStructureMap` は合成係数の底変換図式から固定した係数基底 S₀ への実際の自然変換。`exists_finite_compositeStage_maps_of_isLimit` は、同じ基底図式 D,c,hc、段 i と D(i)→S₀ の因子化、有限個の元の対象から源模型 Yₐ⁰→S₀ への Cartesian な比較、固定した局所有限表示の標的 Xₐ⁰→S₀、元の基底上の射 lₐ:源∞→Xₐ⁰ に対し、一つの j:Over i と、実際の両模型の底変換の間の射 Yₐ,j→Xₐ,j を返す。その射は段の基底 D(j.left) 上にあり、元の極限射影と標的模型の射影との合成は lₐ に一致する。既存の有限個の射の因子化を pullback lift へ渡す法則で、親項目は増やさない。重なりの反転・対角の逆・三重交叉の射にまとめて適用する。
+
+
+B01 の三重交叉の模型への Cartesian 比較の法則（着手前の型、見込み100〜220行）：同じ基底射 w:B→C と二つの Cartesian な正方形 aᵢ:Xᵢ→Yᵢ、fᵢ:Xᵢ→B、gᵢ:Yᵢ→C に対し、`cartesianPullbackMap` は実際の X₁×[B]X₂→Y₁×[C]Y₂ を作り、`isPullback_cartesianPullbackMap` は二つの構造射との正方形も Cartesian と返す。pullback の lift の普遍性による既存の底変換・有限極限の法則。元の二重交叉と模型の重なりの二つの Cartesian な比較から、元の三重交叉と模型の三重交叉の係数比較を供給する。親項目は増やさない。
+
+
+### B01：全チャートと二重交叉の開の模型の実際の供給
+
+| 登録モジュール | 行数 | 宣言・主張 |
+| --- | ---: | --- |
+| FiniteAtlasOpenModels | 65 | `isCompact_atlas_overlap`：準分離な元の空間の準コンパクト開チャートの二重交叉の開が準コンパクト |
+| 同上 | 同上に含む | `exists_finite_atlas_opens_model_of_isLimit`：全チャートの有限個の準コンパクト開の模型を一つの共通段へ降ろす |
+| 同上 | 同上に含む | `exists_finite_atlas_open_equalities_of_isLimit`：全チャート上の有限個の開の極限での等式を一つの後の段へ降ろす |
+| OpenAtlasModelData | 155 | `OpenAtlasModelData`：有限生成係数部分代数、全 affine チャートの模型と構造射の fp・qc・qs 性、元の比較射と IsPullback、二重交叉の開と実際の逆像の等式を保持する具体的な証人 |
+| 同上 | 同上に含む | `exists_openAtlasModel_of_common_affine_models`：共通 affine 模型を具体的な係数図式へ移し、元のチャートと全二重交叉の開の同じ有限段上の模型を実際に取る |
+| 同上 | 同上に含む | `exists_finite_openAtlasModel`：任意の k-代数 R 上の qcqs・局所有限表示な対象から、有限 affine 開被覆とその実際の OpenAtlasModelData を無条件に供給（k は Noether） |
+| OpenAtlasModelProperties | 63 | `isNoetherian_coefficients`：係数環 A の Noether 性を k と有限生成性から供給 |
+| 同上 | 同上に含む | `isNoetherian_obj`：全模型チャートの Noether 性を供給 |
+| 同上 | 同上に含む | `overlapComparison`：元の二重交叉から模型の重なりへの実際の比較射を、開の逆像の等式から構成 |
+| 同上 | 同上に含む | `isPullback_overlapComparison`：元の二重交叉と模型の重なりはチャート上 Cartesian |
+| 同上 | 同上に含む | `isPullback_overlapComparison_toBase`：同じ重なりの比較は係数基底上でも Cartesian |
+| 同上 | 同上に含む | `finitePresentation_overlap`：模型の全重なりは係数基底上 qcqs・局所有限表示 |
+
+本体 **283 行**、入口 3 行。直接 importer AlgebraicGeometry まで対象ビルド **4,926 ジョブ成功**。三モジュールの小監査は補助宣言込み **46 宣言・標準三公理のみ**（内訳5・31・10）。模型の存在を入力にした出口ではなく、既存の無条件の共通 affine 模型・具体的な係数図式・実際の極限・有限個の開の降下を組み合わせて証人を供給した。元の R の Noether 性・v 判定・元の射の固有性を要求しない。有限被覆の添字は ULift で元のスキームと同じ宇宙へ置き、係数環 k の宇宙は独立に保った。
+
+下書きから本体への移動前に、検証した束と三本の完全一致と各 SHA-256 を照合し、共有鍵による再確認の Lean 終了状態 **0** を記録した。対象ビルドと監査はその同じソースで成功。既存の本体宣言の型を変更していない。200行を超える宣言はない。
+
+G1・G2共用部品込み本体 **7,850 行**、入口込み **7,990 行**。一般の有限表示対象の模型の分割は **1,188 行**まで検証。全チャートと重なりの開を実際に供給する部分は済んだが、重なりの反転・対角の逆・三重交叉の射と有限個の式を同じ段で成立させる部分、貼り合わせによる全体の模型の供給、一般の固有性の降下と被覆模型は未完。B01〜B04 は未完、2g-1 の停止点ではない。
+
+次の二本（`FiniteCompositeStageMaps`・`CartesianPullbackComparison`）は作業木の下書きのみで、この監査・実測には含めない。前者は元の有限個の射を同じ段の両模型の間の実際の射にし、後者は二重交叉の Cartesian な比較から三重交叉の比較を供給する。型と見込みは上記の着手前の記録どおり。
+
+共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-open-atlas-models-batch-check-4.log`、`2g-open-atlas-models-native.log`、`2g-open-atlas-models-audit.log`。
+
+一覧：済み 10／全体 14（うち追加 5）。
