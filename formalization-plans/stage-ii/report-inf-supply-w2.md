@@ -10016,3 +10016,213 @@ main取り込み後の219は既存の25本を対象ビルドし **10,619 jobs・
 個別検査ではover圏のeqToHom、退化の最終頂点、Yoneda同値の往復、自由な生成元を評価する型を明示して修正した。計算上限の変更・sorry・独自公理なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。登録候補は同じBE用JSONへ追記した。
 
 次は相対細胞の添字と自由細胞の余積を照合し、同じ骨格の押し出しから全BK重みの射影cofibrancyを得る。その後に同じjを選び、全Kan係数の制限のホモトピー同値を示す。相対細胞の添字替えの下書きは個別検査中で、この検証済み10本のコミットには含めない。全体の/goalは保持し、停止点3b-4aにもまだ届いていない。
+
+## 168. 同じ重み比較の中間定理 R03a.1 の追加（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 14（うち追加 2）。IS-W2 §19の「同じまとまりの中で一つの見込みが1,500行以下」の枠を使い、R03aのKan係数への制限の不変性を次の中間定理 **R03a.1** に分けて一覧へ追加する。R03a・R03a.1とも未完了。⑤aの欄の型・元の重み・native錐の型に変更なし。
+
+```lean
+-- universe u
+-- open CategoryTheory Limits
+-- open SerrePositivity.EInfinity
+-- open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+-- open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant
+    (I : Type u) [SmallCategory I] (V W : I ⥤ SSet.{u}) (f : V ⟶ W)
+    (hV : (HomotopyWeight.boundaries I).rlp.llp (initial.to V))
+    (hW : (HomotopyWeight.boundaries I).rlp.llp (initial.to W))
+    (hf : ∀ i, IsWeakHomotopyEquivalence (f.app i))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre f H)
+```
+
+型は `/private/tmp/CheckProjectiveWeightComparison.lean` で個別検査し、終了0。これは型の検査であって証明ではない。前段で個別検査を終えた元のBKの射影cofibrancyと指定された同じjの構成に、このHom不変性と各値の可縮性を合わせるのがR03aの経路。
+
+証明の案：自由ホーンの小対象分解でfを射影anodyneな左射と成分ごとのKan fibrationな右射へ分ける。左射は成分ごとのanodyneでもあるので、hfと二つ組から右射は成分ごとのtrivial Kan fibration。両方の元の重みの射影cofibrancyを使い、右射の切断と同じシリンダーによるホモトピーを取る。左射の制限は、パラメーター境界とのpushout-productの持ち上げでtrivial Kan fibrationとなる。この二つを同じ制限射の合成として合わせ、実際のホモトピー同値を得る。SSet・図式圏のModelCategoryは仮定しない。
+
+見込みは自由ホーンと点ごとの性質250〜400行、相対テンソルの持ち上げと切断空間の照合350〜550行、分解とホモトピー・最終の合成300〜450行、計900〜1,400行。一つの中間定理として1,500行以下で、R01〜R03とR03aの重み比較の同じまとまり。既存構成の法則と証明分割は各型を追記し、200行を超えるファイルは行数も記録する。見込みが1,500を超えると判明した場合・別のまとまりが必要な場合には検証済みを保存して報告する。
+
+前段の223は相対細胞の添字替え・各成分の評価・同じ骨格の押し出しを対象ビルドし、**1,608 jobs・終了0、38モジュール291宣言・標準三公理のみ**。実ハンドル60582の終了0・鍵返却を確認済み。BK全体のcofibrancyと一つの指定比較射の224は同時整理券一枚で待機中であり、その終了前に検証済みとは数えない。
+
+## 169. 元のBK重みの射影cofibrancyと一つの指定比較射（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 14（うち追加 2）。§168のR03a.1は§19の枠で追加済み。R03a・R03a.1の完成とは数えない。
+
+### 169.1 検証済みの到達点
+
+元の相対細胞の添字をBK自由細胞の添字に一致させ、全評価で余積の同型を指定した。各成分の評価が、同じ非退化単体のYoneda射そのものであることも閉じた。これによりMathlibの元の相対細胞の押し出しを、BKの同じ自由境界と二つの骨格の押し出しへ輸送し、評価関手で図式全体の押し出しへ戻した。
+
+左持ち上げ性の押し出し・逐次合成に対する安定性と、前段の元の骨格の余極限を使い、**任意の小圏Iについて元のbousfieldKanWeight Iが射影cofibrant**であることを証明した。最後に指定された二重反対化した一点比較の右持ち上げ性から、一つの `bkFramedWeightComparison J : BK(Jᵒᵖᵒᵖ) → framedLimitWeight J` を選び、元の一点比較を厳密に保つ等式を証明した。このjは係数Hに依存しない。まだその切断空間の制限のホモトピー同値は未完了。
+
+### 169.2 今回の証明分割・法則の型
+
+#### BousfieldKanCellReindex（75行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkInitialCellEquiv (n : ℕ) (i : I) :
+    relativeCellComplexOfMono.Cell ((⊥ : (nerve (Over i)).Subcomplex).ι) n ≃
+      NondegenerateData I n i
+
+theorem bkInitialCellEquiv_simplex (n : ℕ) (i : I)
+    (c : relativeCellComplexOfMono.Cell ((⊥ : (nerve (Over i)).Subcomplex).ι) n) :
+    ((nondegenerateEquiv I n i).symm (bkInitialCellEquiv I n i c)).val = c.simplex
+
+def bkCellReindexIsColimit {n : ℕ} {i : I} {α : Type u}
+    (e : α ≃ NondegenerateData I n i) (X : SSet.{u}) :
+    IsColimit (Cofan.mk (((bkCellTensor I n).obj X).obj i)
+      (fun a : α => bkCellComponentInclusion I (e a) X))
+
+def bkCellReindexIso {n : ℕ} {i : I} {α : Type u}
+    (e : α ≃ NondegenerateData I n i) (X : SSet.{u}) :
+    (∐ fun _ : α => X) ≅ ((bkCellTensor I n).obj X).obj i
+
+@[reassoc] theorem bkCellReindexIso_ι {n : ℕ} {i : I} {α : Type u}
+    (e : α ≃ NondegenerateData I n i) (X : SSet.{u}) (a : α) :
+    Sigma.ι (fun _ : α => X) a ≫ (bkCellReindexIso I e X).hom =
+      bkCellComponentInclusion I (e a) X
+
+```
+
+#### BousfieldKanCellEvaluation（81行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+@[reassoc] theorem bkCellComponentInclusion_cellDesc {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n))) :
+    bkCellComponentInclusion I s X ≫ (bkCellDesc I X Z f).app i =
+      f s.1 ≫ Z.map s.2
+
+@[reassoc] theorem bkCellComponentInclusion_map {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) {X Y : SSet.{u}} (f : X ⟶ Y) :
+    bkCellComponentInclusion I s X ≫ ((bkCellTensor I n).map f).app i =
+      f ≫ bkCellComponentInclusion I s Y
+
+theorem bkCellSimplex_map {n : ℕ} {i : I} (s : NondegenerateData I n i) :
+    ((bousfieldKanWeight I).map s.2).app (op ⦋n⦌) (bkCellSimplex I s.1).val =
+      ((nondegenerateEquiv I n i).symm s).val
+
+@[reassoc] theorem bkCellComponent_evaluation {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s Δ[n] ≫ (bkCellEvaluation I n).app i =
+      yonedaEquiv.symm ((nondegenerateEquiv I n i).symm s).val
+
+@[reassoc] theorem bkCellComponent_top_ι {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s Δ[n] ≫ (bkCellTop I n).app i ≫
+      (((bousfieldKanWeight I).obj i).skeleton (n+1)).ι =
+        yonedaEquiv.symm ((nondegenerateEquiv I n i).symm s).val
+
+@[reassoc] theorem bkCellComponent_boundary_ι {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s (∂Δ[n] : SSet.{u}) ≫ (bkCellBoundary I n).app i ≫
+      (((bousfieldKanWeight I).obj i).skeleton n).ι =
+        ∂Δ[n].ι ≫ yonedaEquiv.symm ((nondegenerateEquiv I n i).symm s).val
+
+```
+
+#### BousfieldKanSkeletonPushout（81行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkSkeletonInitialIso (n : ℕ) (i : I) :
+    (skeletonOfMono ((⊥ : (nerve (Over i)).Subcomplex).ι) n : SSet.{u}) ≅
+      ((bkSkeleton I).obj n).obj i
+
+@[reassoc] theorem bkSkeletonInitialIso_ι (n : ℕ) (i : I) :
+    (bkSkeletonInitialIso I n i).hom ≫ ((nerve (Over i)).skeleton n).ι =
+      (skeletonOfMono ((⊥ : (nerve (Over i)).Subcomplex).ι) n).ι
+
+theorem bkCellAttachment_isPushout_app (n : ℕ) (i : I) :
+    IsPushout ((bkCellBoundary I n).app i) (((bkCellTensor I n).map ∂Δ[n].ι).app i)
+      (((bkSkeleton I).map (homOfLE (Nat.le_succ n))).app i) ((bkCellTop I n).app i)
+
+theorem bkCellAttachment_isPushout (n : ℕ) :
+    IsPushout (bkCellBoundary I n) ((bkCellTensor I n).map ∂Δ[n].ι)
+      ((bkSkeleton I).map (homOfLE (Nat.le_succ n))) (bkCellTop I n)
+
+```
+
+#### BousfieldKanCofibrant（51行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkSkeletonZeroIsInitial : IsInitial ((bkSkeleton I).obj 0)
+
+theorem bkSkeleton_step_llp (n : ℕ) :
+    (boundaries I).rlp.llp ((bkSkeleton I).map (homOfLE (Nat.le_succ n)))
+
+def bkSkeletonTransfinite :
+    (boundaries I).rlp.llp.TransfiniteCompositionOfShape ℕ (initial.to (bousfieldKanWeight I))
+
+theorem bousfieldKanWeight_cofibrant :
+    (boundaries I).rlp.llp (initial.to (bousfieldKanWeight I))
+
+```
+
+#### BousfieldKanChosenComparison（57行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (J : Type u) [SmallCategory J]
+
+abbrev framedLimitWeightComparison := (doubleOpWeights J).map (comparison J)
+
+theorem framedLimitWeightComparison_rlp :
+    (boundaries Jᵒᵖᵒᵖ).rlp (framedLimitWeightComparison J)
+
+def bkFramedPointMap : bousfieldKanWeight Jᵒᵖᵒᵖ ⟶ (doubleOpWeights J).obj (point J)
+
+def bkFramedComparisonSquare :
+    CommSq (initial.to (framedLimitWeight J)) (initial.to (bousfieldKanWeight Jᵒᵖᵒᵖ))
+      (framedLimitWeightComparison J) (bkFramedPointMap J)
+
+def bkFramedWeightComparison : bousfieldKanWeight Jᵒᵖᵒᵖ ⟶ framedLimitWeight J
+
+theorem bkFramedWeightComparison_point :
+    bkFramedWeightComparison J ≫ framedLimitWeightComparison J = bkFramedPointMap J
+
+```
+
+### 169.3 検証・実測と残り
+
+223はこのうち先行3本で **1,608 jobs・終了0、38モジュール291宣言**。224は全体のcofibrancyと一つの比較射の2本を対象ビルドし **1,615 jobs・終了0、新規全40モジュール309宣言・標準三公理のみ**。両方の実ハンドル60582・52517の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build223.log`・`224.log`、小監査 `/private/tmp/AuditISW2BKCells224.lean`。同時整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ鍵を保持。sorry・独自公理・計算上限の変更0。
+
+今回345行、各200行以下。3b-4の検証済みは **40本・2,503行**。R03aの細胞と比較射の構成は累計1,092行で、当初の細胞の見込み300〜700行に対し約1.6倍。元の骨格への全自然な輸送と既存押し出しの四つの射の等式を明示する行数が増えた。Hom不変性は§168の中間定理R03a.1（900〜1,400行）として別に見積もった。全外枠15,000行にはまだ十分余地がある。
+
+次の自由ホーン・相対テンソル・native切断のKan性の新規下書きは個別検査中。この検証済み5本のコミットには含めない。元の重み・既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査は変更していない。/goalはactiveのまま、Hom不変性へ続ける。

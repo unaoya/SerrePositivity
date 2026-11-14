@@ -33,5 +33,10 @@
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellTensor",
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellLifting",
   "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellAttachment",
-  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellCoproduct"
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellCoproduct",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellReindex",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellEvaluation",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanSkeletonPushout",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCofibrant",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanChosenComparison"
 ]
