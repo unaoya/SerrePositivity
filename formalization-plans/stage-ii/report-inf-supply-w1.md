@@ -8895,3 +8895,90 @@ frame族へ戻す。重み `W` の各単体の射を余積の各挿入に制限�
 `π.op ⋙ W ⟶ hom _ (π ⋙ B) Y` との同値を作る。
 逆向きは同じ単体ごとの `Sigma.desc`。指定実現随伴を介して実現の同型へ移す。
 通常の余錐の同値だけでRR02(a)の弱同値性が終わったとはしない。
+
+## §102 RR02(a)：重み付きHomの要素圏への制限
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `33a8d1b8a` の83行の検証・コミットとして進捗。
+§101.1の重み付き版に進む。既存の余積の挿入の法則とRR02(a)の証明分割。
+
+```lean
+def frames : K ⥤ SimplexCategory ⥤ C
+def summand (k : K) (x : F.obj k) : B.obj k ⟶ (frames F B).obj k
+lemma summand_naturality {k l : K} (f : k ⟶ l) (x : F.obj k) :
+  B.map f ≫ summand F B l (F.map f x) =
+    summand F B k x ≫ (frames F B).map f
+def weightedHomToElements (W : Kᵒᵖ ⥤ SSet) (Y : C)
+  (a : W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y) :
+  (Functor.Elements.π F).op ⋙ W ⟶
+    (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).obj Y
+```
+
+逆向きは全単体の `Sigma.desc` で作る。今回の制限射だけで同値とはしない。
+
+### §102.1 待機中に書く逆写像と両逆（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンの対象検証の同じプロセス（session 3242）が生存していることを確認。
+待ちを増やさず、依存する逆写像と両逆を別ファイルの作業木に書く。
+
+```lean
+def weightedHomFromElements
+  (a : (Functor.Elements.π F).op ⋙ W ⟶
+    (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).obj Y) :
+  W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y
+def weightedHomEquiv :
+  (W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y) ≃
+    ((Functor.Elements.π F).op ⋙ W ⟶
+      (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).obj Y)
+```
+
+未検証分はコミットせず、検証済み累計にも入れない。
+
+### §102.2 指定実現への移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+制限と逆写像の対象検証に依存する次のファイルを、待機中に作業木へ書く。
+既存の指定随伴と余米田の法則を使う。
+
+```lean
+lemma weightedHomEquiv_target_naturality {Y Z : C} (f : Y ⟶ Z)
+  (a : W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y) :
+  weightedHomEquiv F B W Z (a ≫ (FrameWeightRealization.hom K (frames F B)).map f) =
+    weightedHomEquiv F B W Y a ≫
+      (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).map f
+def realizationHomEquiv (Y : C) :
+  ((FrameWeightRealization.functor K (frames F B)).obj W ⟶ Y) ≃
+    ((FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).obj
+      ((Functor.Elements.π F).op ⋙ W) ⟶ Y)
+lemma realizationHomEquiv_naturality {Y Z : C} (f : Y ⟶ Z)
+  (a : (FrameWeightRealization.functor K (frames F B)).obj W ⟶ Y) :
+  realizationHomEquiv F B W Z (a ≫ f) = realizationHomEquiv F B W Y a ≫ f
+def realizationIso :
+  (FrameWeightRealization.functor K (frames F B)).obj W ≅
+    (FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).obj
+      ((Functor.Elements.π F).op ⋙ W)
+```
+
+### §102.3 検証結果：重み付き実現の要素圏表示
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 結果 |
+|---|---:|---|
+| ElementsCopowerFrames | 70 | 余積frame・挿入・制限の自然性 |
+| ElementsCopowerWeightedHom | 80 | 逆写像・両逆 |
+| ElementsCopowerRealization | 57 | 標的自然性・指定随伴による実現の同型 |
+
+3本207行を対象ビルド2,149 jobsで検証。小監査22宣言・標準三公理のみ。
+ログ `/tmp/is-w1/elements-copower-frames/build-3.log`、終了コード0。
+各単体の等式を明示して余積の挿入へ制限することで自然性を照合した。
+計算上限変更なし。検証済み累計200本・15,139行。
+上限変更後のRR02(a)実測2,641行、(b)(c)新規0行。
+
+余積frameの実際の実現と、要素圏上で制限重みを使った実際の実現との同型まで検証済み。
+次は元の自由arrow frameを評価した族への適用と、BK重みの添字比較・増大射との照合。
+実増大射の弱同値性は未完であり、RR02の完了・停止点5aとはしない。
