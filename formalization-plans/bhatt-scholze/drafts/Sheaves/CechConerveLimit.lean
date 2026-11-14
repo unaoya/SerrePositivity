@@ -1,6 +1,7 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.CechConerveLimit（層 Sheaves）
 -- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1（弱終対象による計算）、単位 S3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.CategoryTheory.CechNerveData
 
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeExtension
@@ -48,22 +49,13 @@ variable {𝒟 : Type u} [SmallCategory 𝒟] {E : SSet.{u + 1}} [Quasicategory 
 方針：原典の「弱始対象」は環の圏（site の opposite）での言い方で、site では弱終。
 規約：一意性は要求しない。
 使われ方：Čech 脈体の補題の仮定。Constr 4.17 の C^0。 -/
-def IsWeaklyTerminal (U : 𝒟) : Prop := ∀ V : 𝒟, Nonempty (V ⟶ U)
+abbrev IsWeaklyTerminal (U : 𝒟) : Prop := CategoryTheory.IsWeaklyTerminal U
 
 /-- 概要：U の Čech 脈体のデータ：単体的対象 U_• と、各 U_n を U の (n+1) 個の積として示す錐。
 方針：一般の有限積の存在を仮定せず、必要な積だけをデータで持つ。単体的構造の射は射影と両立する（Čech 脈体の条件）。
 規約：`Fan` と `IsLimit` は Mathlib の 1 圏のもの。
 使われ方：補題の入力。prismatic site では C^• と、余積の普遍性（Constr 4.17 の最後の文）から作る。 -/
-structure CechNerveData (U : 𝒟) where
-  /-- 単体的対象 U_•。 -/
-  obj : SimplicialObject 𝒟
-  /-- U_n から U への (n+1) 本の射影。 -/
-  proj : ∀ (n : ℕ) (i : Fin (n + 1)), obj.obj (Opposite.op ⦋n⦌) ⟶ U
-  /-- 射影が U_n を U^{n+1} の積にする。 -/
-  isLimit : ∀ n : ℕ, IsLimit (Fan.mk (obj.obj (Opposite.op ⦋n⦌)) (proj n))
-  /-- 単体的構造の射は射影の添字を写す（Čech 脈体の条件）。 -/
-  proj_map : ∀ {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)),
-    obj.map θ.op ≫ proj m i = proj n (θ.toOrderHom i)
+abbrev CechNerveData (U : 𝒟) := CategoryTheory.CechNerveData U
 
 /-- 概要：Čech 脈体の形状の射：N(Δ) → N(𝒟)^op（U_• の rightOp の nerve を持ち上げたもの）。
 方針：`SimplicialObject 𝒟 = SimplexCategoryᵒᵖ ⥤ 𝒟` の `rightOp : SimplexCategory ⥤ 𝒟ᵒᵖ`。

@@ -5684,6 +5684,3570 @@
           }
         ]
       }
+    ],
+    "remaining-specific-root-names-applied.json": [
+      {
+        "path": "A0/BaseChange.lean",
+        "source_sha256": "c82433fd5d58ec63fd9686db3e1a031aa961ca170c3a634e051a324afc2429da",
+        "edits": [
+          {
+            "start": 7329,
+            "end": 7345,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 111
+          },
+          {
+            "start": 9424,
+            "end": 9440,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 136
+          }
+        ]
+      },
+      {
+        "path": "A0/CechAlexander.lean",
+        "source_sha256": "4f3148c909fdf01f48b0177ed6e2639959eeaca0abc91e233cddfff3bd23d2ac",
+        "edits": [
+          {
+            "start": 4365,
+            "end": 4381,
+            "old": "restrictJoinCone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.restrictJoinCone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone",
+            "line": 84
+          },
+          {
+            "start": 5957,
+            "end": 5973,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 99
+          },
+          {
+            "start": 7186,
+            "end": 7196,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 113
+          },
+          {
+            "start": 7300,
+            "end": 7316,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 114
+          },
+          {
+            "start": 7435,
+            "end": 7451,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 116
+          },
+          {
+            "start": 9267,
+            "end": 9283,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 139
+          },
+          {
+            "start": 9369,
+            "end": 9385,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 140
+          }
+        ]
+      },
+      {
+        "path": "A0/FlatDescent.lean",
+        "source_sha256": "61ce6daf7f843dc8d52cff4e5b89a10f735a188a5b20ed65d73015d58f8c5bd4",
+        "edits": [
+          {
+            "start": 4562,
+            "end": 4573,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 74
+          },
+          {
+            "start": 10706,
+            "end": 10717,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 183
+          }
+        ]
+      },
+      {
+        "path": "A1/CrystallineInput.lean",
+        "source_sha256": "e63f023078ad796fd53091c767bab7bf26bba1f4acc68a5b04223916ede9566e",
+        "edits": [
+          {
+            "start": 7925,
+            "end": 7936,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 132
+          },
+          {
+            "start": 8021,
+            "end": 8032,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 135
+          },
+          {
+            "start": 9215,
+            "end": 9236,
+            "old": "discreteAlgebraModule",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteAlgebraModule",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule",
+            "line": 166
+          },
+          {
+            "start": 9735,
+            "end": 9756,
+            "old": "discreteAlgebraModule",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteAlgebraModule",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule",
+            "line": 175
+          },
+          {
+            "start": 12340,
+            "end": 12356,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 220
+          },
+          {
+            "start": 14303,
+            "end": 14313,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 249
+          },
+          {
+            "start": 14662,
+            "end": 14672,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 254
+          },
+          {
+            "start": 15262,
+            "end": 15272,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 262
+          },
+          {
+            "start": 15468,
+            "end": 15507,
+            "old": "functorIsoOfPointwiseInvertibleHomotopy",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorIsoOfPointwiseInvertibleHomotopy",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy",
+            "line": 264
+          },
+          {
+            "start": 15515,
+            "end": 15536,
+            "old": "stableHomotopyPrecomp",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.stableHomotopyPrecomp",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp",
+            "line": 265
+          }
+        ]
+      },
+      {
+        "path": "A1/CrystallineSite.lean",
+        "source_sha256": "6e835c85fc3667f2ee45a3cc45967f00a354fbce14457670e236dbff645443af",
+        "edits": [
+          {
+            "start": 9894,
+            "end": 9904,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 155
+          },
+          {
+            "start": 10221,
+            "end": 10231,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 160
+          },
+          {
+            "start": 10846,
+            "end": 10856,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 171
+          },
+          {
+            "start": 11038,
+            "end": 11077,
+            "old": "functorIsoOfPointwiseInvertibleHomotopy",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorIsoOfPointwiseInvertibleHomotopy",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy",
+            "line": 174
+          },
+          {
+            "start": 11085,
+            "end": 11106,
+            "old": "stableHomotopyPrecomp",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.stableHomotopyPrecomp",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp",
+            "line": 175
+          },
+          {
+            "start": 18331,
+            "end": 18342,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 303
+          },
+          {
+            "start": 18394,
+            "end": 18405,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 304
+          },
+          {
+            "start": 29515,
+            "end": 29536,
+            "old": "discreteAlgebraModule",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteAlgebraModule",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule",
+            "line": 454
+          }
+        ]
+      },
+      {
+        "path": "A1/DeRhamComparisonPoly.lean",
+        "source_sha256": "68e6677d91b160d40b293d0b9852cf0d95b874ffa20ea09404ed40c3c42849ae",
+        "edits": [
+          {
+            "start": 4240,
+            "end": 4278,
+            "old": "fullSubcomplexOnVertices_quasicategory",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory",
+            "line": 68
+          },
+          {
+            "start": 6762,
+            "end": 6772,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 107
+          },
+          {
+            "start": 7654,
+            "end": 7664,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 119
+          },
+          {
+            "start": 10249,
+            "end": 10265,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 154
+          },
+          {
+            "start": 10267,
+            "end": 10295,
+            "old": "simplicialHomotopyVertexEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge",
+            "line": 154
+          },
+          {
+            "start": 10349,
+            "end": 10360,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 154
+          },
+          {
+            "start": 10386,
+            "end": 10402,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 155
+          },
+          {
+            "start": 12402,
+            "end": 12418,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 186
+          },
+          {
+            "start": 12754,
+            "end": 12770,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 191
+          },
+          {
+            "start": 14409,
+            "end": 14425,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 214
+          },
+          {
+            "start": 15355,
+            "end": 15371,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 228
+          },
+          {
+            "start": 15734,
+            "end": 15750,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 234
+          },
+          {
+            "start": 16278,
+            "end": 16294,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 243
+          },
+          {
+            "start": 17079,
+            "end": 17089,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 258
+          },
+          {
+            "start": 17837,
+            "end": 17847,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 270
+          },
+          {
+            "start": 18030,
+            "end": 18040,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 273
+          },
+          {
+            "start": 18215,
+            "end": 18225,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 276
+          },
+          {
+            "start": 18285,
+            "end": 18324,
+            "old": "functorIsoOfPointwiseInvertibleHomotopy",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorIsoOfPointwiseInvertibleHomotopy",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy",
+            "line": 277
+          },
+          {
+            "start": 18651,
+            "end": 18661,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 282
+          },
+          {
+            "start": 18710,
+            "end": 18749,
+            "old": "functorIsoOfPointwiseInvertibleHomotopy",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorIsoOfPointwiseInvertibleHomotopy",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy",
+            "line": 283
+          },
+          {
+            "start": 19847,
+            "end": 19857,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 302
+          },
+          {
+            "start": 21608,
+            "end": 21618,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 327
+          },
+          {
+            "start": 22115,
+            "end": 22125,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 335
+          },
+          {
+            "start": 23847,
+            "end": 23858,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 371
+          },
+          {
+            "start": 24074,
+            "end": 24085,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 375
+          },
+          {
+            "start": 24118,
+            "end": 24151,
+            "old": "homotopyCategory_homMk_surjective",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.homotopyCategory_homMk_surjective",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective",
+            "line": 376
+          },
+          {
+            "start": 25042,
+            "end": 25053,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 389
+          },
+          {
+            "start": 25766,
+            "end": 25777,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 397
+          },
+          {
+            "start": 25861,
+            "end": 25872,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 398
+          }
+        ]
+      },
+      {
+        "path": "A1/HodgeTateComparison.lean",
+        "source_sha256": "0f0f1fbe9f6d59b3924a7b7c06aa9f0cb6be909c23a6ae9b02e1a4b5c0ac2804",
+        "edits": [
+          {
+            "start": 9209,
+            "end": 9247,
+            "old": "fullSubcomplexOnVertices_quasicategory",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory",
+            "line": 180
+          },
+          {
+            "start": 16775,
+            "end": 16792,
+            "old": "discreteEmbedding",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteEmbedding",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding",
+            "line": 300
+          },
+          {
+            "start": 16907,
+            "end": 16925,
+            "old": "fullSubcomplexLift",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexLift",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift",
+            "line": 303
+          },
+          {
+            "start": 18446,
+            "end": 18456,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 320
+          }
+        ]
+      },
+      {
+        "path": "A2/BaseChangeAndTensor.lean",
+        "source_sha256": "b0b775a80881613ae3554c004507d39d0f0552cd7cbf53c79f4845f61e7257d4",
+        "edits": [
+          {
+            "start": 2857,
+            "end": 2884,
+            "old": "presheafInfinityRestriction",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.presheafInfinityRestriction",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinityRestriction",
+            "line": 65
+          },
+          {
+            "start": 4763,
+            "end": 4773,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 96
+          },
+          {
+            "start": 6148,
+            "end": 6159,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 113
+          },
+          {
+            "start": 6973,
+            "end": 6991,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 133
+          },
+          {
+            "start": 6993,
+            "end": 7004,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 133
+          },
+          {
+            "start": 7022,
+            "end": 7033,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 133
+          },
+          {
+            "start": 7052,
+            "end": 7071,
+            "old": "binaryCoconeOfEdges",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryCoconeOfEdges",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryCoconeOfEdges",
+            "line": 134
+          },
+          {
+            "start": 7080,
+            "end": 7091,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 134
+          },
+          {
+            "start": 7116,
+            "end": 7134,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 135
+          },
+          {
+            "start": 7136,
+            "end": 7151,
+            "old": "binaryPointLeft",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointLeft",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft",
+            "line": 135
+          },
+          {
+            "start": 7211,
+            "end": 7229,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 136
+          },
+          {
+            "start": 7231,
+            "end": 7247,
+            "old": "binaryPointRight",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointRight",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight",
+            "line": 136
+          },
+          {
+            "start": 8272,
+            "end": 8290,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 148
+          },
+          {
+            "start": 9448,
+            "end": 9463,
+            "old": "IsInitialVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInitialVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex",
+            "line": 166
+          },
+          {
+            "start": 9469,
+            "end": 9484,
+            "old": "IsInitialVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInitialVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex",
+            "line": 166
+          }
+        ]
+      },
+      {
+        "path": "A2/DerivedPrismaticCohomology.lean",
+        "source_sha256": "a2bf7c30badcae66b19f882daff862756f5efd51fd53f93a8479e209d6c667f4",
+        "edits": [
+          {
+            "start": 3492,
+            "end": 3530,
+            "old": "fullSubcomplexOnVertices_quasicategory",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory",
+            "line": 71
+          },
+          {
+            "start": 7298,
+            "end": 7309,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 135
+          },
+          {
+            "start": 8415,
+            "end": 8426,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 150
+          },
+          {
+            "start": 8461,
+            "end": 8472,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 151
+          },
+          {
+            "start": 9436,
+            "end": 9447,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 166
+          },
+          {
+            "start": 10608,
+            "end": 10617,
+            "old": "uliftEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.uliftEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge",
+            "line": 182
+          },
+          {
+            "start": 12147,
+            "end": 12160,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 208
+          },
+          {
+            "start": 12194,
+            "end": 12207,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 208
+          },
+          {
+            "start": 12402,
+            "end": 12413,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 210
+          },
+          {
+            "start": 14316,
+            "end": 14327,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 242
+          },
+          {
+            "start": 15305,
+            "end": 15318,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 257
+          },
+          {
+            "start": 15323,
+            "end": 15336,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 257
+          },
+          {
+            "start": 16934,
+            "end": 16951,
+            "old": "evaluateFunctorAt",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.evaluateFunctorAt",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt",
+            "line": 284
+          },
+          {
+            "start": 16983,
+            "end": 16994,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 284
+          },
+          {
+            "start": 17941,
+            "end": 17952,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 302
+          },
+          {
+            "start": 18282,
+            "end": 18293,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 305
+          },
+          {
+            "start": 19642,
+            "end": 19653,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 324
+          },
+          {
+            "start": 19776,
+            "end": 19787,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 325
+          }
+        ]
+      },
+      {
+        "path": "A2/HodgeTateFiltration.lean",
+        "source_sha256": "f3109b42c271e2a1e3e66547c8231baa46c453abe6ebf7083973a21d2632f08c",
+        "edits": [
+          {
+            "start": 2738,
+            "end": 2776,
+            "old": "fullSubcomplexOnVertices_quasicategory",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory",
+            "line": 58
+          },
+          {
+            "start": 5864,
+            "end": 5875,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 102
+          },
+          {
+            "start": 6957,
+            "end": 6975,
+            "old": "fullSubcomplexLift",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexLift",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift",
+            "line": 121
+          },
+          {
+            "start": 7220,
+            "end": 7231,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 125
+          },
+          {
+            "start": 7519,
+            "end": 7532,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 131
+          },
+          {
+            "start": 7726,
+            "end": 7739,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 133
+          },
+          {
+            "start": 7890,
+            "end": 7901,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 135
+          },
+          {
+            "start": 8052,
+            "end": 8069,
+            "old": "evaluateFunctorAt",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.evaluateFunctorAt",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt",
+            "line": 136
+          },
+          {
+            "start": 8975,
+            "end": 8984,
+            "old": "uliftEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.uliftEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge",
+            "line": 149
+          },
+          {
+            "start": 10484,
+            "end": 10515,
+            "old": "moduleSemifreeResolutionFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleSemifreeResolutionFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor",
+            "line": 171
+          },
+          {
+            "start": 10715,
+            "end": 10735,
+            "old": "closedNerveInclusion",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.closedNerveInclusion",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion",
+            "line": 175
+          },
+          {
+            "start": 10739,
+            "end": 10747,
+            "old": "Semifree",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.Semifree",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree",
+            "line": 175
+          },
+          {
+            "start": 11483,
+            "end": 11494,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 188
+          },
+          {
+            "start": 11969,
+            "end": 11980,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 195
+          },
+          {
+            "start": 12006,
+            "end": 12023,
+            "old": "moduleHeartVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleHeartVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex",
+            "line": 196
+          },
+          {
+            "start": 12593,
+            "end": 12604,
+            "old": "loopFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.loopFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor",
+            "line": 203
+          },
+          {
+            "start": 12953,
+            "end": 12963,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 209
+          },
+          {
+            "start": 13066,
+            "end": 13079,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 212
+          },
+          {
+            "start": 13088,
+            "end": 13101,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 212
+          },
+          {
+            "start": 13185,
+            "end": 13198,
+            "old": "CofiberSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.CofiberSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.CofiberSquare",
+            "line": 214
+          },
+          {
+            "start": 13328,
+            "end": 13341,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 214
+          },
+          {
+            "start": 13534,
+            "end": 13544,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 220
+          },
+          {
+            "start": 14417,
+            "end": 14427,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 232
+          },
+          {
+            "start": 15908,
+            "end": 15925,
+            "old": "evaluateFunctorAt",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.evaluateFunctorAt",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt",
+            "line": 251
+          },
+          {
+            "start": 16494,
+            "end": 16504,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 262
+          }
+        ]
+      },
+      {
+        "path": "A3/DiscreteCase.lean",
+        "source_sha256": "3719adc6dfda836412eb2a464b2a2c4d25013a7276d23bdcfec0d26038403d4e",
+        "edits": [
+          {
+            "start": 2735,
+            "end": 2746,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 66
+          },
+          {
+            "start": 4554,
+            "end": 4565,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 99
+          },
+          {
+            "start": 10700,
+            "end": 10711,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 204
+          },
+          {
+            "start": 11073,
+            "end": 11084,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 210
+          },
+          {
+            "start": 13741,
+            "end": 13752,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 251
+          },
+          {
+            "start": 13808,
+            "end": 13819,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 252
+          },
+          {
+            "start": 14162,
+            "end": 14173,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 257
+          }
+        ]
+      },
+      {
+        "path": "A3/LciAndQuasiregular.lean",
+        "source_sha256": "f90690b7f13a55b1252bddaf024a08b71e49c6ffd44dc96d8dd16047f4d0f18d",
+        "edits": [
+          {
+            "start": 6326,
+            "end": 6337,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 128
+          },
+          {
+            "start": 6788,
+            "end": 6799,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 134
+          },
+          {
+            "start": 10812,
+            "end": 10823,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 199
+          },
+          {
+            "start": 11533,
+            "end": 11544,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 208
+          },
+          {
+            "start": 16027,
+            "end": 16038,
+            "old": "loopFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.loopFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor",
+            "line": 290
+          },
+          {
+            "start": 16341,
+            "end": 16358,
+            "old": "moduleHeartVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleHeartVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex",
+            "line": 291
+          },
+          {
+            "start": 23087,
+            "end": 23098,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 421
+          }
+        ]
+      },
+      {
+        "path": "A4/AfterComparison.lean",
+        "source_sha256": "2cabc9bda57b51b3a2210a75e97b4f2565179b90d77a72d46878f3baa9ebc84c",
+        "edits": [
+          {
+            "start": 2444,
+            "end": 2455,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 51
+          },
+          {
+            "start": 4176,
+            "end": 4187,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 81
+          }
+        ]
+      },
+      {
+        "path": "A4/InterfaceFields.lean",
+        "source_sha256": "33baf00ea9d646b03d2927cce0e326b43689951c5cceac0fbd82779b9aa91db3",
+        "edits": [
+          {
+            "start": 3676,
+            "end": 3687,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 71
+          },
+          {
+            "start": 4999,
+            "end": 5010,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 99
+          },
+          {
+            "start": 5015,
+            "end": 5026,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 99
+          },
+          {
+            "start": 5851,
+            "end": 5862,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 111
+          },
+          {
+            "start": 7977,
+            "end": 7988,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 140
+          },
+          {
+            "start": 10195,
+            "end": 10206,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 166
+          },
+          {
+            "start": 11397,
+            "end": 11408,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 185
+          },
+          {
+            "start": 12321,
+            "end": 12332,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 200
+          },
+          {
+            "start": 12689,
+            "end": 12700,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 207
+          },
+          {
+            "start": 13778,
+            "end": 13789,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 222
+          }
+        ]
+      },
+      {
+        "path": "A4/Perfectoidization.lean",
+        "source_sha256": "8d0e79df54f8febcaf3299b66e0f1d87fbed95d05c8ea5f31f8e699c0cc887f7",
+        "edits": [
+          {
+            "start": 6183,
+            "end": 6194,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 121
+          },
+          {
+            "start": 7281,
+            "end": 7292,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 140
+          },
+          {
+            "start": 10425,
+            "end": 10436,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 188
+          },
+          {
+            "start": 10746,
+            "end": 10757,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 191
+          },
+          {
+            "start": 12555,
+            "end": 12565,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 214
+          },
+          {
+            "start": 13193,
+            "end": 13209,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 225
+          },
+          {
+            "start": 21257,
+            "end": 21268,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 355
+          }
+        ]
+      },
+      {
+        "path": "A5/InterfaceLimitCone.lean",
+        "source_sha256": "569799379ed40fb0d3c1c4c9246e9938c9b763e93dcb38ed3d0b03af38fdb6b6",
+        "edits": [
+          {
+            "start": 2440,
+            "end": 2451,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 53
+          }
+        ]
+      },
+      {
+        "path": "A5/PerfectSite.lean",
+        "source_sha256": "d860513d5832749c788a6c42a2e00c77574df89e9739672e1c8cdbf14b9073fb",
+        "edits": [
+          {
+            "start": 10677,
+            "end": 10687,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 211
+          },
+          {
+            "start": 15337,
+            "end": 15348,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 304
+          },
+          {
+            "start": 15614,
+            "end": 15625,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 307
+          },
+          {
+            "start": 16078,
+            "end": 16089,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 315
+          },
+          {
+            "start": 16274,
+            "end": 16285,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 316
+          },
+          {
+            "start": 17222,
+            "end": 17233,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 330
+          },
+          {
+            "start": 18086,
+            "end": 18097,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 339
+          },
+          {
+            "start": 20307,
+            "end": 20318,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 372
+          },
+          {
+            "start": 21511,
+            "end": 21522,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 383
+          },
+          {
+            "start": 23481,
+            "end": 23490,
+            "old": "sliceOver",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.sliceOver",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver",
+            "line": 413
+          },
+          {
+            "start": 23657,
+            "end": 23676,
+            "old": "sliceOverProjection",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.sliceOverProjection",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection",
+            "line": 415
+          }
+        ]
+      },
+      {
+        "path": "A5/PerfectSiteComparison.lean",
+        "source_sha256": "3129f13c6a6fea3e74cde3697ab3127c917a8bd4397afe2c6daea5a8989c11d5",
+        "edits": [
+          {
+            "start": 6842,
+            "end": 6853,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 109
+          },
+          {
+            "start": 9931,
+            "end": 9942,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 158
+          }
+        ]
+      },
+      {
+        "path": "A5/SemiperfectoidCase.lean",
+        "source_sha256": "c5380274a5e9548387494a416bd2403d69eaa19d64c73d40913191ce1e72e563",
+        "edits": [
+          {
+            "start": 3830,
+            "end": 3841,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 71
+          },
+          {
+            "start": 4475,
+            "end": 4486,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 82
+          },
+          {
+            "start": 4565,
+            "end": 4576,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 83
+          },
+          {
+            "start": 4893,
+            "end": 4904,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 89
+          },
+          {
+            "start": 5057,
+            "end": 5068,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 91
+          },
+          {
+            "start": 5391,
+            "end": 5402,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 96
+          },
+          {
+            "start": 5631,
+            "end": 5642,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 99
+          },
+          {
+            "start": 6965,
+            "end": 6981,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 121
+          },
+          {
+            "start": 8414,
+            "end": 8425,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 149
+          },
+          {
+            "start": 8911,
+            "end": 8922,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 159
+          },
+          {
+            "start": 11788,
+            "end": 11799,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 209
+          },
+          {
+            "start": 12161,
+            "end": 12172,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 213
+          },
+          {
+            "start": 13594,
+            "end": 13605,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 238
+          },
+          {
+            "start": 14104,
+            "end": 14115,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 245
+          },
+          {
+            "start": 22219,
+            "end": 22230,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 389
+          },
+          {
+            "start": 22376,
+            "end": 22387,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 390
+          },
+          {
+            "start": 22831,
+            "end": 22849,
+            "old": "fullSubcomplexLift",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexLift",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift",
+            "line": 398
+          },
+          {
+            "start": 25669,
+            "end": 25680,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 443
+          }
+        ]
+      },
+      {
+        "path": "A5/StrongDescent.lean",
+        "source_sha256": "eb88fdd13d089e77682c2ae7d19d5d2474cee2e09abacbb68509a02bf0621f4d",
+        "edits": [
+          {
+            "start": 5307,
+            "end": 5324,
+            "old": "moduleHeartVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleHeartVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex",
+            "line": 102
+          },
+          {
+            "start": 9224,
+            "end": 9241,
+            "old": "moduleHeartVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleHeartVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex",
+            "line": 158
+          },
+          {
+            "start": 10419,
+            "end": 10429,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 177
+          },
+          {
+            "start": 11741,
+            "end": 11752,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 195
+          },
+          {
+            "start": 12494,
+            "end": 12505,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 207
+          },
+          {
+            "start": 15429,
+            "end": 15446,
+            "old": "moduleHeartVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleHeartVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex",
+            "line": 254
+          }
+        ]
+      },
+      {
+        "path": "A5/WeaklyInitialAndDescent.lean",
+        "source_sha256": "01a676b2c5ede7a1496a127f1a18c21a8463bc282bc253dba6f9e4f25154fe60",
+        "edits": [
+          {
+            "start": 10767,
+            "end": 10783,
+            "old": "restrictJoinCone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.restrictJoinCone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone",
+            "line": 183
+          },
+          {
+            "start": 11286,
+            "end": 11296,
+            "old": "limitCones",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.limitCones",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitCones",
+            "line": 193
+          },
+          {
+            "start": 11330,
+            "end": 11349,
+            "old": "limitConeProjection",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.limitConeProjection",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeProjection",
+            "line": 194
+          },
+          {
+            "start": 11445,
+            "end": 11469,
+            "old": "relativeTerminalVertices",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.relativeTerminalVertices",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeTerminalVertices",
+            "line": 196
+          },
+          {
+            "start": 11471,
+            "end": 11486,
+            "old": "coneRestriction",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.coneRestriction",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction",
+            "line": 196
+          },
+          {
+            "start": 11497,
+            "end": 11515,
+            "old": "coneApexEvaluation",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.coneApexEvaluation",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.coneApexEvaluation",
+            "line": 196
+          },
+          {
+            "start": 12401,
+            "end": 12418,
+            "old": "evaluateFunctorAt",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.evaluateFunctorAt",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt",
+            "line": 206
+          },
+          {
+            "start": 12430,
+            "end": 12441,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 206
+          },
+          {
+            "start": 14020,
+            "end": 14039,
+            "old": "IsRightKanExtension",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsRightKanExtension",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension",
+            "line": 231
+          },
+          {
+            "start": 14413,
+            "end": 14424,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 237
+          },
+          {
+            "start": 17323,
+            "end": 17334,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 279
+          },
+          {
+            "start": 17595,
+            "end": 17606,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 282
+          },
+          {
+            "start": 21250,
+            "end": 21261,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 335
+          }
+        ]
+      },
+      {
+        "path": "A6/ArcSheafProperty.lean",
+        "source_sha256": "d5e70eede1a804646beb294ed3b6034aa7de60b134488e5a49cc0cf9a409367a",
+        "edits": [
+          {
+            "start": 10323,
+            "end": 10334,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 181
+          },
+          {
+            "start": 10600,
+            "end": 10616,
+            "old": "IsPullbackSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare",
+            "line": 186
+          },
+          {
+            "start": 27236,
+            "end": 27252,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 490
+          }
+        ]
+      },
+      {
+        "path": "A6/ArcSite.lean",
+        "source_sha256": "080a9a3d84ee817f7f0ad1dfbfdd6e4ec5540919258c3bfb69d30c2746b2cd2d",
+        "edits": [
+          {
+            "start": 5811,
+            "end": 5827,
+            "old": "restrictJoinCone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.restrictJoinCone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone",
+            "line": 109
+          },
+          {
+            "start": 11406,
+            "end": 11422,
+            "old": "restrictJoinCone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.restrictJoinCone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone",
+            "line": 204
+          }
+        ]
+      },
+      {
+        "path": "A6/Excision.lean",
+        "source_sha256": "0903ea5027fdc52d41183304ea95a9adcf916f49d7880528231c204b044a9999",
+        "edits": [
+          {
+            "start": 3156,
+            "end": 3166,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 65
+          },
+          {
+            "start": 3802,
+            "end": 3821,
+            "old": "IsRightKanExtension",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsRightKanExtension",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension",
+            "line": 76
+          },
+          {
+            "start": 13496,
+            "end": 13506,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 242
+          },
+          {
+            "start": 14088,
+            "end": 14099,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 248
+          },
+          {
+            "start": 14313,
+            "end": 14324,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 249
+          },
+          {
+            "start": 14468,
+            "end": 14479,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 251
+          },
+          {
+            "start": 14962,
+            "end": 14973,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 257
+          },
+          {
+            "start": 15729,
+            "end": 15745,
+            "old": "IsPullbackSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare",
+            "line": 270
+          },
+          {
+            "start": 16840,
+            "end": 16856,
+            "old": "IsPullbackSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare",
+            "line": 286
+          },
+          {
+            "start": 17949,
+            "end": 17965,
+            "old": "IsPullbackSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare",
+            "line": 301
+          }
+        ]
+      },
+      {
+        "path": "A6/SheafOfSetsExcision.lean",
+        "source_sha256": "2530302d63e267b0d0c5708d57554823352a769101146feaa8f64d4eb0e90fcf",
+        "edits": [
+          {
+            "start": 6774,
+            "end": 6792,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 143
+          },
+          {
+            "start": 6794,
+            "end": 6805,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 143
+          },
+          {
+            "start": 6810,
+            "end": 6821,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 143
+          },
+          {
+            "start": 6846,
+            "end": 6857,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 144
+          },
+          {
+            "start": 8953,
+            "end": 8963,
+            "old": "edgeCospan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.edgeCospan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan",
+            "line": 170
+          },
+          {
+            "start": 9393,
+            "end": 9404,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 175
+          },
+          {
+            "start": 12238,
+            "end": 12254,
+            "old": "IsPullbackSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare",
+            "line": 204
+          },
+          {
+            "start": 12322,
+            "end": 12338,
+            "old": "IsPullbackSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPullbackSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare",
+            "line": 205
+          }
+        ]
+      },
+      {
+        "path": "A7/AnimatedPerfectoidization.lean",
+        "source_sha256": "f571d3b6a44a816830d118085fb08911cbc9e708b63fa9841d3e403d1ad13e85",
+        "edits": [
+          {
+            "start": 3640,
+            "end": 3651,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 75
+          },
+          {
+            "start": 4290,
+            "end": 4311,
+            "old": "IsLeftKanExtensionHom",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsLeftKanExtensionHom",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsLeftKanExtensionHom",
+            "line": 86
+          },
+          {
+            "start": 5574,
+            "end": 5592,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 103
+          },
+          {
+            "start": 5729,
+            "end": 5747,
+            "old": "binaryPointDiagram",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.binaryPointDiagram",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram",
+            "line": 104
+          },
+          {
+            "start": 7465,
+            "end": 7478,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 130
+          },
+          {
+            "start": 7483,
+            "end": 7496,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 130
+          },
+          {
+            "start": 7850,
+            "end": 7863,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 136
+          },
+          {
+            "start": 7868,
+            "end": 7881,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 136
+          },
+          {
+            "start": 7987,
+            "end": 8000,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 138
+          },
+          {
+            "start": 8132,
+            "end": 8145,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 142
+          },
+          {
+            "start": 8150,
+            "end": 8163,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 142
+          },
+          {
+            "start": 8240,
+            "end": 8258,
+            "old": "functorVertexEquiv",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertexEquiv",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv",
+            "line": 144
+          },
+          {
+            "start": 9722,
+            "end": 9733,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 165
+          },
+          {
+            "start": 11025,
+            "end": 11035,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 190
+          },
+          {
+            "start": 11652,
+            "end": 11665,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 202
+          },
+          {
+            "start": 11670,
+            "end": 11683,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 202
+          },
+          {
+            "start": 13593,
+            "end": 13611,
+            "old": "fullSubcomplexLift",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexLift",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift",
+            "line": 233
+          },
+          {
+            "start": 15744,
+            "end": 15754,
+            "old": "sliceUnder",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.sliceUnder",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder",
+            "line": 265
+          },
+          {
+            "start": 15869,
+            "end": 15889,
+            "old": "sliceUnderProjection",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.sliceUnderProjection",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection",
+            "line": 267
+          },
+          {
+            "start": 16305,
+            "end": 16321,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 274
+          }
+        ]
+      },
+      {
+        "path": "A7/UniversalProperty.lean",
+        "source_sha256": "e8750b6d5c96161d3b992d83ecec180635740fb56c137b3b43084a39e3b1a043",
+        "edits": [
+          {
+            "start": 2394,
+            "end": 2405,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 48
+          },
+          {
+            "start": 2846,
+            "end": 2857,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 53
+          },
+          {
+            "start": 3178,
+            "end": 3189,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 58
+          },
+          {
+            "start": 3982,
+            "end": 3993,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 70
+          },
+          {
+            "start": 5845,
+            "end": 5856,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 97
+          },
+          {
+            "start": 6579,
+            "end": 6587,
+            "old": "edgeSpan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.edgeSpan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan",
+            "line": 110
+          },
+          {
+            "start": 6955,
+            "end": 6966,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 116
+          },
+          {
+            "start": 8625,
+            "end": 8635,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 143
+          },
+          {
+            "start": 10058,
+            "end": 10068,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 161
+          },
+          {
+            "start": 14799,
+            "end": 14810,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 224
+          }
+        ]
+      },
+      {
+        "path": "A8/AlmostConnectivity.lean",
+        "source_sha256": "58aeb4a12a4202d22582f45196f8fe42e676a153f282b5d74d1bad46bcb548aa",
+        "edits": [
+          {
+            "start": 3700,
+            "end": 3718,
+            "old": "fullSubcomplexLift",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.fullSubcomplexLift",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift",
+            "line": 62
+          },
+          {
+            "start": 4379,
+            "end": 4394,
+            "old": "IsFullyFaithful",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsFullyFaithful",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful",
+            "line": 74
+          },
+          {
+            "start": 7102,
+            "end": 7129,
+            "old": "moduleFreeCochainResolution",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.moduleFreeCochainResolution",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution",
+            "line": 103
+          }
+        ]
+      },
+      {
+        "path": "A8/AlmostPurityConnectivity.lean",
+        "source_sha256": "579a54d54ed9d5464bc5c1e7df857ca73a7614f7732a8ff6db1eb4df996f95b6",
+        "edits": [
+          {
+            "start": 2811,
+            "end": 2822,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 57
+          },
+          {
+            "start": 3060,
+            "end": 3080,
+            "old": "DGNerve.edgeChainMap",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.DGNerve.edgeChainMap",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeChainMap",
+            "line": 62
+          },
+          {
+            "start": 3337,
+            "end": 3365,
+            "old": "standardFiberDerivedTriangle",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.standardFiberDerivedTriangle",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.standardFiberDerivedTriangle",
+            "line": 63
+          },
+          {
+            "start": 8948,
+            "end": 8959,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 151
+          }
+        ]
+      },
+      {
+        "path": "A8/IntegralDiscreteness.lean",
+        "source_sha256": "1968b04ae7d87ad76b11f7d01f991c7dc3fe3002f9b0acc03ea623fdfbd25979",
+        "edits": [
+          {
+            "start": 3697,
+            "end": 3708,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 70
+          },
+          {
+            "start": 4173,
+            "end": 4189,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 82
+          },
+          {
+            "start": 6707,
+            "end": 6715,
+            "old": "edgeSpan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.edgeSpan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan",
+            "line": 122
+          },
+          {
+            "start": 14394,
+            "end": 14405,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 226
+          }
+        ]
+      },
+      {
+        "path": "Shared/CosimplicialEInfinity.lean",
+        "source_sha256": "ef2907962db842188174ff24527be8e38b41155919c8230cf0ea17965bcbeb31",
+        "edits": [
+          {
+            "start": 3009,
+            "end": 3020,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 68
+          },
+          {
+            "start": 3624,
+            "end": 3645,
+            "old": "discreteAlgebraModule",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteAlgebraModule",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule",
+            "line": 80
+          },
+          {
+            "start": 3753,
+            "end": 3774,
+            "old": "discreteAlgebraModule",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteAlgebraModule",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule",
+            "line": 82
+          },
+          {
+            "start": 3854,
+            "end": 3865,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 83
+          },
+          {
+            "start": 6711,
+            "end": 6732,
+            "old": "discreteAlgebraModule",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteAlgebraModule",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule",
+            "line": 132
+          },
+          {
+            "start": 6745,
+            "end": 6761,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 133
+          },
+          {
+            "start": 10703,
+            "end": 10719,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 203
+          },
+          {
+            "start": 10772,
+            "end": 10782,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 204
+          },
+          {
+            "start": 10838,
+            "end": 10877,
+            "old": "functorIsoOfPointwiseInvertibleHomotopy",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorIsoOfPointwiseInvertibleHomotopy",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy",
+            "line": 205
+          },
+          {
+            "start": 12372,
+            "end": 12382,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 245
+          },
+          {
+            "start": 13428,
+            "end": 13444,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 263
+          },
+          {
+            "start": 13446,
+            "end": 13474,
+            "old": "simplicialHomotopyVertexEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge",
+            "line": 263
+          },
+          {
+            "start": 13506,
+            "end": 13517,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 263
+          },
+          {
+            "start": 14341,
+            "end": 14351,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 283
+          }
+        ]
+      },
+      {
+        "path": "Shared/DeRhamPolynomial.lean",
+        "source_sha256": "7e35eb8a100b243b4737ad4aa2f7eb0601aba32ac081cfae462b5048ba507944",
+        "edits": [
+          {
+            "start": 3728,
+            "end": 3739,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 73
+          },
+          {
+            "start": 3816,
+            "end": 3827,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 74
+          }
+        ]
+      },
+      {
+        "path": "Shared/Descendable.lean",
+        "source_sha256": "6f5376049039c95b136e127280ede772a38f043bc9933a57a49ce160a4014f6e",
+        "edits": [
+          {
+            "start": 3658,
+            "end": 3675,
+            "old": "suspensionFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.suspensionFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor",
+            "line": 66
+          },
+          {
+            "start": 3834,
+            "end": 3845,
+            "old": "loopFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.loopFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor",
+            "line": 67
+          },
+          {
+            "start": 4770,
+            "end": 4781,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 79
+          },
+          {
+            "start": 7270,
+            "end": 7283,
+            "old": "pushoutCocone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.pushoutCocone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone",
+            "line": 119
+          },
+          {
+            "start": 7341,
+            "end": 7358,
+            "old": "squareBottomArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareBottomArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow",
+            "line": 119
+          },
+          {
+            "start": 7418,
+            "end": 7432,
+            "old": "squareTopArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareTopArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow",
+            "line": 120
+          },
+          {
+            "start": 7678,
+            "end": 7691,
+            "old": "pushoutCocone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.pushoutCocone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone",
+            "line": 124
+          },
+          {
+            "start": 7765,
+            "end": 7782,
+            "old": "squareBottomArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareBottomArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow",
+            "line": 125
+          },
+          {
+            "start": 7848,
+            "end": 7862,
+            "old": "squareTopArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareTopArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareTopArrow",
+            "line": 126
+          },
+          {
+            "start": 8510,
+            "end": 8523,
+            "old": "pushoutCocone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.pushoutCocone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone",
+            "line": 137
+          },
+          {
+            "start": 8586,
+            "end": 8603,
+            "old": "squareBottomArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareBottomArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareBottomArrow",
+            "line": 138
+          },
+          {
+            "start": 8667,
+            "end": 8682,
+            "old": "squareLeftArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareLeftArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareLeftArrow",
+            "line": 139
+          },
+          {
+            "start": 8742,
+            "end": 8761,
+            "old": "squareDiagonalArrow",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareDiagonalArrow",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagonalArrow",
+            "line": 140
+          },
+          {
+            "start": 8986,
+            "end": 9016,
+            "old": "intervalFunctorVertexTypedEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.intervalFunctorVertexTypedEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.intervalFunctorVertexTypedEdge",
+            "line": 146
+          },
+          {
+            "start": 9522,
+            "end": 9533,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 151
+          },
+          {
+            "start": 11351,
+            "end": 11362,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 182
+          },
+          {
+            "start": 11608,
+            "end": 11619,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 184
+          },
+          {
+            "start": 13699,
+            "end": 13710,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 208
+          },
+          {
+            "start": 15041,
+            "end": 15052,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 234
+          },
+          {
+            "start": 15519,
+            "end": 15532,
+            "old": "pushoutCocone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.pushoutCocone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone",
+            "line": 241
+          },
+          {
+            "start": 15649,
+            "end": 15661,
+            "old": "squareVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex",
+            "line": 241
+          },
+          {
+            "start": 15731,
+            "end": 15743,
+            "old": "squareVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex",
+            "line": 242
+          },
+          {
+            "start": 15784,
+            "end": 15796,
+            "old": "squareVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex",
+            "line": 242
+          },
+          {
+            "start": 15837,
+            "end": 15849,
+            "old": "squareVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.squareVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex",
+            "line": 243
+          },
+          {
+            "start": 17095,
+            "end": 17108,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 268
+          },
+          {
+            "start": 17777,
+            "end": 17788,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 276
+          },
+          {
+            "start": 18954,
+            "end": 18971,
+            "old": "suspensionFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.suspensionFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.suspensionFunctor",
+            "line": 290
+          },
+          {
+            "start": 19130,
+            "end": 19141,
+            "old": "loopFunctor",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.loopFunctor",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopFunctor",
+            "line": 291
+          },
+          {
+            "start": 20484,
+            "end": 20495,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 310
+          }
+        ]
+      },
+      {
+        "path": "Sheaves/CAlgValued.lean",
+        "source_sha256": "190f513bb6eea84101a053b20d3b1ea27a7e25255c00b9a3737ae6cf7a84abff",
+        "edits": [
+          {
+            "start": 3000,
+            "end": 3016,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 65
+          },
+          {
+            "start": 3053,
+            "end": 3069,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 65
+          },
+          {
+            "start": 5293,
+            "end": 5303,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 107
+          }
+        ]
+      },
+      {
+        "path": "Sheaves/SheafGenerators.lean",
+        "source_sha256": "081fabedd1992ff4ceed68f026bfb596ddcc2b6d27957a460b55e76ffcb099b8",
+        "edits": [
+          {
+            "start": 4120,
+            "end": 4137,
+            "old": "IsQCatEquivalence",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsQCatEquivalence",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence",
+            "line": 79
+          },
+          {
+            "start": 4333,
+            "end": 4349,
+            "old": "restrictJoinCone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.restrictJoinCone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone",
+            "line": 81
+          },
+          {
+            "start": 5176,
+            "end": 5190,
+            "old": "limitVertexIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.limitVertexIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitVertexIso",
+            "line": 88
+          },
+          {
+            "start": 5357,
+            "end": 5380,
+            "old": "restrictJoinCone_vertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.restrictJoinCone_vertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone_vertex",
+            "line": 90
+          },
+          {
+            "start": 6116,
+            "end": 6132,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 101
+          },
+          {
+            "start": 6681,
+            "end": 6697,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 112
+          },
+          {
+            "start": 7498,
+            "end": 7515,
+            "old": "IsQCatEquivalence",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsQCatEquivalence",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence",
+            "line": 125
+          },
+          {
+            "start": 7517,
+            "end": 7544,
+            "old": "PinchedInterval.postcompose",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.PinchedInterval.postcompose",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose",
+            "line": 125
+          },
+          {
+            "start": 8391,
+            "end": 8416,
+            "old": "SetWeight.sieveTensorEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SetWeight.sieveTensorEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.sieveTensorEdge",
+            "line": 142
+          },
+          {
+            "start": 10393,
+            "end": 10406,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 173
+          },
+          {
+            "start": 10435,
+            "end": 10448,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 174
+          }
+        ]
+      },
+      {
+        "path": "Sheaves/SpaceValued.lean",
+        "source_sha256": "05807cb3c9922b4f10a756137e54a5dd0fd0a73e0a55a7e1d4799314486642aa",
+        "edits": [
+          {
+            "start": 3190,
+            "end": 3203,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 56
+          },
+          {
+            "start": 3213,
+            "end": 3236,
+            "old": "kanDiagramCoherentNerve",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.kanDiagramCoherentNerve",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve",
+            "line": 57
+          },
+          {
+            "start": 3242,
+            "end": 3251,
+            "old": "setsToKan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.setsToKan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.setsToKan",
+            "line": 57
+          },
+          {
+            "start": 3389,
+            "end": 3400,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 61
+          },
+          {
+            "start": 3457,
+            "end": 3468,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 62
+          },
+          {
+            "start": 3499,
+            "end": 3535,
+            "old": "discreteSpaceInclusion_diagramVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteSpaceInclusion_diagramVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.discreteSpaceInclusion_diagramVertex",
+            "line": 63
+          },
+          {
+            "start": 3718,
+            "end": 3731,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 67
+          },
+          {
+            "start": 3760,
+            "end": 3771,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 68
+          },
+          {
+            "start": 3777,
+            "end": 3790,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 68
+          },
+          {
+            "start": 3899,
+            "end": 3934,
+            "old": "kanDiagramNaturalTransformationEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.kanDiagramNaturalTransformationEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge",
+            "line": 70
+          },
+          {
+            "start": 3946,
+            "end": 3955,
+            "old": "setsToKan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.setsToKan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.setsToKan",
+            "line": 70
+          },
+          {
+            "start": 3978,
+            "end": 3987,
+            "old": "setsToKan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.setsToKan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.setsToKan",
+            "line": 70
+          },
+          {
+            "start": 4055,
+            "end": 4064,
+            "old": "setsToKan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.setsToKan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.setsToKan",
+            "line": 71
+          },
+          {
+            "start": 4066,
+            "end": 4081,
+            "old": "kanObjectForget",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.kanObjectForget",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget",
+            "line": 71
+          },
+          {
+            "start": 4301,
+            "end": 4314,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 76
+          },
+          {
+            "start": 4343,
+            "end": 4354,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 77
+          },
+          {
+            "start": 4360,
+            "end": 4373,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 77
+          },
+          {
+            "start": 4484,
+            "end": 4501,
+            "old": "evaluateFunctorAt",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.evaluateFunctorAt",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt",
+            "line": 79
+          },
+          {
+            "start": 4513,
+            "end": 4524,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 79
+          },
+          {
+            "start": 4606,
+            "end": 4628,
+            "old": "discreteSpaceInclusion",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteSpaceInclusion",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.discreteSpaceInclusion",
+            "line": 80
+          },
+          {
+            "start": 4744,
+            "end": 4789,
+            "old": "discreteSpaceInclusion_presheafInclusion_edge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteSpaceInclusion_presheafInclusion_edge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.discreteSpaceInclusion_presheafInclusion_edge",
+            "line": 84
+          },
+          {
+            "start": 5029,
+            "end": 5046,
+            "old": "evaluateFunctorAt",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.evaluateFunctorAt",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt",
+            "line": 89
+          },
+          {
+            "start": 5058,
+            "end": 5069,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 89
+          },
+          {
+            "start": 5149,
+            "end": 5171,
+            "old": "discreteSpaceInclusion",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.discreteSpaceInclusion",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.discreteSpaceInclusion",
+            "line": 90
+          },
+          {
+            "start": 5301,
+            "end": 5314,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 94
+          },
+          {
+            "start": 5476,
+            "end": 5489,
+            "old": "functorVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.functorVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex",
+            "line": 95
+          },
+          {
+            "start": 5604,
+            "end": 5617,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 98
+          },
+          {
+            "start": 5667,
+            "end": 5684,
+            "old": "Is0TruncatedSpace",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.Is0TruncatedSpace",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Is0TruncatedSpace",
+            "line": 100
+          },
+          {
+            "start": 5724,
+            "end": 5735,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 100
+          },
+          {
+            "start": 6211,
+            "end": 6224,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 110
+          },
+          {
+            "start": 6259,
+            "end": 6269,
+            "old": "FunctorIso",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.FunctorIso",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso",
+            "line": 112
+          },
+          {
+            "start": 7232,
+            "end": 7245,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 130
+          },
+          {
+            "start": 7321,
+            "end": 7337,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 132
+          },
+          {
+            "start": 7960,
+            "end": 7973,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 143
+          },
+          {
+            "start": 8645,
+            "end": 8660,
+            "old": "IsPushoutSquare",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsPushoutSquare",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare",
+            "line": 156
+          },
+          {
+            "start": 8801,
+            "end": 8812,
+            "old": "pushoutSpan",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.pushoutSpan",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan",
+            "line": 157
+          },
+          {
+            "start": 9779,
+            "end": 9792,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 175
+          },
+          {
+            "start": 10407,
+            "end": 10420,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 183
+          },
+          {
+            "start": 10492,
+            "end": 10511,
+            "old": "IsRightKanExtension",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsRightKanExtension",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension",
+            "line": 184
+          },
+          {
+            "start": 11041,
+            "end": 11052,
+            "old": "nerveVertex",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.nerveVertex",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex",
+            "line": 192
+          },
+          {
+            "start": 11426,
+            "end": 11432,
+            "old": "edgeOp",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.edgeOp",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.edgeOp",
+            "line": 198
+          },
+          {
+            "start": 11947,
+            "end": 11960,
+            "old": "SpaceInfinity",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.SpaceInfinity",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity",
+            "line": 205
+          },
+          {
+            "start": 13191,
+            "end": 13204,
+            "old": "pushoutCocone",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.pushoutCocone",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone",
+            "line": 215
+          },
+          {
+            "start": 13825,
+            "end": 13841,
+            "old": "IsInvertibleEdge",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge",
+            "line": 227
+          }
+        ]
+      }
+    ],
+    "reviewed-general-root-names-applied.json": [
+      {
+        "path": "A0/FlatDescent.lean",
+        "source_sha256": "67c2c4f2f1bf38e6605d20db0bd5e4e92adf3befe372e006aaf31745112acb11",
+        "edits": [
+          {
+            "start": 4506,
+            "end": 4516,
+            "old": "tensorWith",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.tensorWith",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith",
+            "line": 74
+          },
+          {
+            "start": 10768,
+            "end": 10778,
+            "old": "tensorWith",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.tensorWith",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith",
+            "line": 183
+          }
+        ]
+      },
+      {
+        "path": "A2/DerivedPrismaticCohomology.lean",
+        "source_sha256": "327733cc868ac9db8764b76844ae3afd57ba70f96a5c9a6345415e16caa30c8c",
+        "edits": [
+          {
+            "start": 21904,
+            "end": 21914,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 328
+          }
+        ]
+      },
+      {
+        "path": "A4/Perfectoidization.lean",
+        "source_sha256": "2ce64acac67ac13444b76c607108ce600f870546c70655474fb89165aec443c8",
+        "edits": [
+          {
+            "start": 10121,
+            "end": 10131,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 179
+          }
+        ]
+      },
+      {
+        "path": "A5/PerfectSite.lean",
+        "source_sha256": "fa7e49d46f8450d0bb2ab6e1d098e6facef9e41ac95ece8ee6aa0e148dd01fc2",
+        "edits": [
+          {
+            "start": 23766,
+            "end": 23774,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 404
+          }
+        ]
+      },
+      {
+        "path": "A5/PerfectSiteComparison.lean",
+        "source_sha256": "473d3c3d5e9a93571d46ed0a39eaa8850535fdd41c3a4d30d0f955a67c5a956d",
+        "edits": [
+          {
+            "start": 7262,
+            "end": 7272,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 115
+          }
+        ]
+      },
+      {
+        "path": "A5/WeaklyInitialAndDescent.lean",
+        "source_sha256": "c585c54b8844fdf264c56cec59d4a9c299f6844585c8cb520dec61079d2774f7",
+        "edits": [
+          {
+            "start": 11258,
+            "end": 11266,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 191
+          },
+          {
+            "start": 13396,
+            "end": 13404,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 207
+          }
+        ]
+      },
+      {
+        "path": "A6/Excision.lean",
+        "source_sha256": "5dc1760e7c9565142a25559cd7b3c8b582c0e18fbe61f33cafe188ab2e963887",
+        "edits": [
+          {
+            "start": 5903,
+            "end": 5911,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 121
+          },
+          {
+            "start": 11363,
+            "end": 11371,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 207
+          },
+          {
+            "start": 11475,
+            "end": 11483,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 208
+          },
+          {
+            "start": 15219,
+            "end": 15227,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 255
+          }
+        ]
+      },
+      {
+        "path": "A7/AnimatedPerfectoidization.lean",
+        "source_sha256": "282ba53355e62747e1bf1a126e800fedbff96c45386cfe54a5f724cc1eca09d8",
+        "edits": [
+          {
+            "start": 5761,
+            "end": 5771,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 103
+          },
+          {
+            "start": 9188,
+            "end": 9198,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 143
+          },
+          {
+            "start": 9871,
+            "end": 9881,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 153
+          },
+          {
+            "start": 13247,
+            "end": 13257,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 203
+          },
+          {
+            "start": 13273,
+            "end": 13283,
+            "old": "HasColimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasColimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit",
+            "line": 204
+          }
+        ]
+      },
+      {
+        "path": "Shared/Descendable.lean",
+        "source_sha256": "92dcbeaa177385fdcd3a1118a708f53defb3f3e6d8109ee703a2ed07c3f81107",
+        "edits": [
+          {
+            "start": 4358,
+            "end": 4368,
+            "old": "tensorWith",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.tensorWith",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith",
+            "line": 69
+          },
+          {
+            "start": 22087,
+            "end": 22097,
+            "old": "tensorWith",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.tensorWith",
+            "new": "_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith",
+            "line": 294
+          }
+        ]
+      },
+      {
+        "path": "Sheaves/SheafGenerators.lean",
+        "source_sha256": "729fea7e3cc0accc0fac83eb23ed6bd8f67d0d44961f663ad8ad38b0b83924b9",
+        "edits": [
+          {
+            "start": 3598,
+            "end": 3606,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 75
+          },
+          {
+            "start": 6236,
+            "end": 6244,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 98
+          },
+          {
+            "start": 6288,
+            "end": 6296,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 99
+          },
+          {
+            "start": 10870,
+            "end": 10878,
+            "old": "IsStable",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.IsStable",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable",
+            "line": 167
+          }
+        ]
+      },
+      {
+        "path": "Sheaves/SpaceValued.lean",
+        "source_sha256": "a651fd97b2b67995c66357ec066aa52a3586033a76d0072d4ba64feb0916d832",
+        "edits": [
+          {
+            "start": 14779,
+            "end": 14787,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 190
+          },
+          {
+            "start": 15369,
+            "end": 15377,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 196
+          },
+          {
+            "start": 15409,
+            "end": 15417,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 196
+          },
+          {
+            "start": 18146,
+            "end": 18154,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 226
+          },
+          {
+            "start": 18186,
+            "end": 18194,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 226
+          },
+          {
+            "start": 18794,
+            "end": 18802,
+            "old": "HasLimit",
+            "old_resolved_name": "SerrePositivity.InfinityCategories.HasLimit",
+            "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit",
+            "line": 234
+          }
+        ]
+      }
+    ],
+    "relative-root-names-applied.json": [
+      {
+        "path": "A0/PrismaticSite.lean",
+        "source_sha256": "5b521983a5cfed1f7f77414a89adf89a9e4a8f4b45ac9eb4ee050a4b3517c4e1",
+        "edits": [
+          {
+            "start": 7472,
+            "end": 7514,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 158
+          },
+          {
+            "start": 7972,
+            "end": 8014,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 166
+          },
+          {
+            "start": 8120,
+            "end": 8162,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 167
+          },
+          {
+            "start": 8174,
+            "end": 8216,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 168
+          },
+          {
+            "start": 8622,
+            "end": 8664,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 177
+          },
+          {
+            "start": 8770,
+            "end": 8812,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 178
+          },
+          {
+            "start": 8824,
+            "end": 8866,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 179
+          },
+          {
+            "start": 9297,
+            "end": 9339,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 187
+          },
+          {
+            "start": 9445,
+            "end": 9487,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 188
+          },
+          {
+            "start": 10837,
+            "end": 10879,
+            "old": "InfinityCategories.derivedInfinityCategory",
+            "new": "_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory",
+            "line": 213
+          }
+        ]
+      }
     ]
   }
 }

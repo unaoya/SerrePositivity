@@ -866,3 +866,12 @@ A07の冒頭の更新はA0〜A9の40本だけに限定せず、保護対象を�
 SetSectionsでは篩の元の圏とOverの充満部分圏の反対圏の同値、そのunit/counit、表現可能な指定錐、端点を移した同じ辺の可逆性の法則が通った。追加の数学的仮定は使わず、既存の構成の法則の証明と定義展開を直した。PrismaticSiteはCoverage.coverings、移動済みD(A)の正式名へ追従。未証明の `prismaticCohomologyFrobenius` は、既存の係数制限APIに合わせ `E : EInfinityTheory` を明示引数に取り、`Edge Δ ((E.restrictD φ).app _ Δ)` を返す型とした（その本体のsorryは保持、ほかのRΓ定義にEを加えていない）。共有de Rhamはdraftの既存の完備化と離散埋め込みの名前空間を明示した。旧pt射影の残り8箇所も標準のobjEquivに揃え、うちdescendabilityの4箇所はここで型検査が通った。
 
 次の前線はFlatDescentとSheafGenerators・SpaceValued。局所instance、docstringのコマンド上の位置、presentabilityの完全修飾、既存の補助定義の公開範囲とprojectionの参照を修正し、第12束を通常のbulk整理券で一つだけ並べた。CAlgValued・CosimplicialEInfinity・CechAlexander・BaseChangeは、前提が成功した順に検査する。
+
+
+### 5∞-0 のdraft検査・第12〜14束（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。第12束でFlatDescent・SheafGenerators、第13束でSpaceValued・CAlgValuedが成功。第14束でCechConerveLimitとCAlgValuedを依存更新後に再検査し、CechAlexanderも成功。現在のソース・前提・oleanの署名で数える有効な成功は22本。依存を変更した古い成功を除く[集計器](bulk-5inf0/summarize_drafts.py)を追加した。[第12束](bulk-5inf0/draft-block12-validation.json)・[第13束](bulk-5inf0/draft-block13-validation.json)・[第14束](bulk-5inf0/draft-block14-validation.json)を保存。各束は通常のbulk整理券・280秒以内で、終了時に鍵を返した。
+
+Čechの問題は、同名の本体宣言が返すCategoryTheory.CechNerveDataと、draftの別構造体Sheaves.CechNerveDataの違いだった。両者のobj・proj・isLimit・proj_mapと弱終性の定義を比較し、完全に同じ内容であることを確かめた。新しい構造の移送は作らず、draft側の2宣言を本体へのabbrevに一本化した。既存の名前を残し、本体のČechデータをそのまま使う。変更したCechConerveLimitと利用側CAlgValuedを再検査して成功し、CechAlexanderも本体の引数順に合わせて成功した。
+
+SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされたラッパーから使えるようにした（型・元のsorry本文は同じ）。押し出し境界の反射律とprojectionの正式名、層の名前空間、presentabilityの曖昧さ、局所instance・docstringの位置も修正した。ここでコミットする6本はいずれも現在の署名で検査済み。共有Totの評価とBaseChangeの残りを修正し、第15束で検査する。
