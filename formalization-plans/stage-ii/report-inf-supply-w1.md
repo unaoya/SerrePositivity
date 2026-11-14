@@ -8728,3 +8728,43 @@ lemma strictDiagramFreeArrowRealizedAugmentation_zero (X : StrictComplexDiagram 
 上限変更後のRR02(a)実測2,166行、(b)(c)新規0行。
 指定自由arrow frameの全次数の実増大射と次数零の一致まで接続した。
 増大射の弱同値性は未完で、RR02の完了とは数えない。
+
+## §98 RR02(a)：実増大射のHom同型の下での全単体の式
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `f6c858fe7` の検証済み53行のコミットとして進捗。
+指定増大射による前合成を、指定随伴の転置とYoneda評価で照合する。
+既存構成の法則でIDは増やさない。追加の型は次の二つ。
+
+```lean
+lemma bousfieldKanFrameAugmentation_homEquiv (n : SimplexCategory) (Y : C)
+    (f : Q.obj n ⟶ Y) :
+    (adjunction K A).homEquiv _ Y ((bousfieldKanFrameAugmentation K A Q e).app n ≫ f) =
+      bousfieldKanCoconeParameter K A Q e n ≫ (hom K A).map f
+lemma bousfieldKanAugmentationHom_app (Y : C) (n : SimplexCategoryᵒᵖ)
+    (f : Q.obj n.unop ⟶ Y) :
+    (((bousfieldKanRealizationHomIso K A).hom.app Y).app n)
+        ((bousfieldKanFrameAugmentation K A Q e).app n.unop ≫ f) =
+      SSet.yonedaEquiv ((weightedSectionsAdjunction (bousfieldKanWeight Kᵒᵖ)).homEquiv _ _
+        (bousfieldKanCoconeParameter K A Q e n.unop ≫ (hom K A).map f))
+```
+
+弱同値性は未完。全SSetの未供給モデル構造は使わない。
+
+### §98.1 検証結果と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanAugmentationHom` 50行、対象ビルド2,802 jobs成功。
+小監査2宣言・標準三公理のみ。ログ `/tmp/is-w1/bk-augmentation-hom/build-3.log`、
+終了コード0。合成随伴の定義上の照合でなく、`Adjunction.comp_homEquiv` の等式を
+`congrArg` で移送している。計算上限変更なし。
+検証済み累計194本・14,714行。上限変更後のRR02(a)実測2,216行、(b)(c)新規0行。
+
+次の接続では、この全単体の式を元の自由arrow余錐へ適用し、Hom係数の同型を介して
+指定したBK錐比較と照合する。実増大射の弱同値性は別に残っている。
+既存の `terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence` は
+SSet値のcoendの定理であり、C値のframe実現へ直接適用しない。
+評価点での余積・要素圏による表示の比較と、収縮の移送が必要。
+この不足を型の仮定で置き換えず、RR02(a)の証明分割として続ける。
