@@ -10073,3 +10073,51 @@ E01の紙の状態をここで報告する。範囲・型を弱めず、R3は実
 次の判断として、外枠または実装経路について調整役の指示が必要。
 目標はR2全体の完成のままで、完了・停止点5aとは報告しない。
 代わりの紙の材料は§113.1〜2。未検証の旧E01の4本はコミット対象外。
+
+## §114 停止後の紙の点検：RR02(a)の残りの接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは検証済み5本を `17f644686` にコミットした進捗のあるターン。
+今回mainの指示書末尾を読み直したが、外枠24,000行を変更する追記はない。
+§113の停止判断を維持し、Lean・ビルド・鍵取得は行わない。
+
+既存 `BousfieldKanSectionsIso` の公開の型を確認した。
+
+```lean
+bousfieldKanSectionsIso (H : I ⥤ SSet) :
+  bousfieldKanHolim H ≅ simplicialSections (weightedNerveProjection H)
+```
+
+これに `H := strictDiagramFrameArrowDiagram A d X Y` を入れると、
+今回の実比較の先は `nerve (StrictDiagramArrowElements d)` 上のweighted nerveの切断になる。
+一方、要求された標的の定義は次の形である。
+
+```lean
+strictDiagramEvaluatedFrameEnd A d X Y :=
+  simplicialSections (smallLeftUnstraighteningProjection
+    (strictDiagramEvaluatedValueCoefficient A d X Y (strictDiagramEndIndexMap d)))
+```
+
+後者の底は `TwistedArrow (nerve (AsSmall (strictDiagramIndex d)))`。
+したがって上の既存の同型だけでRR02(a)の標的が得られたとはいえない。
+未完の接続の型を、紙の略記として次に固定する（新しいID・実装は加えない）。
+
+```lean
+-- H = strictDiagramFrameArrowDiagram A d X Y と略す
+-- p = smallLeftUnstraighteningProjection
+--       (strictDiagramEvaluatedValueCoefficient A d X Y (strictDiagramEndIndexMap d))
+arrowWeightedSectionsToEvaluatedEnd :
+  simplicialSections (weightedNerveProjection H) ⟶ simplicialSections p
+IsSimplicialHomotopyEquivalence arrowWeightedSectionsToEvaluatedEnd
+```
+
+必要な確認は、(i)通常のHom要素圏のnerveと指定twisted-arrowの底、
+(ii)その底の比較上で同じ評価係数のweighted nerveとsmall left unstraightening、
+(iii)それらが元の錐の全族を保つこと。単に二つの空間が同値という存在だけでは
+RR02(c)の元の比較射への照合に使えない。
+`bousfieldKanSectionsMap_evaluation` は元の普遍的切断族を与えるので、(iii)の入口として再利用する。
+
+今回の既存型の点検では、(i)〜(iii)がこのまま一つの既存宣言で閉じる根拠は得られなかった。
+従って§113.4の「(a)残りを0と仮置きした楽観比較」を実際の完成見積もりへ昇格させない。
+外枠または経路の判断が必要という状態は変わらない。R2全体の目標は維持する。
