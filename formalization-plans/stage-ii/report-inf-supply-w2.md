@@ -14489,3 +14489,48 @@ theorem strictBETotJointSourceNativeFiberUnit_map
       vertexFiberMap _ (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) =
         strictBETotJointSourceNativeFiberMap A P
 ```
+
+## 234. 外枠の再見積もりと次の判断点（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。検証済み213e2858e、178本・11,564行。残り枠は3,436行。
+
+### 234.1 残りの規模
+
+§152.4のR04〜R12だけの当初見込みでも下端4,300行で、残り枠を864行超える。さらにR02・R03のnative比較と標準脚が未完了である。これまでのfiber単位の比較を作ったことでその未完箇所を具体化できたが、これをもって全native Hom比較や標準脚の全自然性が済んだとは扱わない。以下は相互に重複しない残りの仕事の紙の見込みであり、新規Lean項目の無条件な追加承認とはしない。
+
+| 残り | 見込み（行） | 再利用と未検証点 |
+|---|---:|---|
+| R03d内：指定native fiber写像の弱同値 | 600〜1,400 | R03gと§233の厳密な三角形を使用。元の固定始域roofとの照合は未証明 |
+| R03d内：全FunctorIsoと固定始域への制限の等式 | 400〜900 | 全要素の同じ延長を使用。点ごとの同値だけでは閉じない |
+| R02・R03：指定native錐族と極限性 | 600〜1,200 | 元の重みの比較と指定Hom同型を接続。脚を作り替えない |
+| R04・R05：UのTot比較と局所化への輸送 | 500〜1,100 | G10の全図式射と指定錐族、既存forgetの極限保存を再利用 |
+| R06〜R08：strict実現の模型と同じ余錐族 | 1,600〜2,800 | §152の見込みを維持。台の通常colimだけで導来実現とはしない |
+| R09・R10：実現のU比較と全関手比較 | 1,000〜1,800 | ③-aの全族と指定輸送を使用。まだ実測していない |
+| R11・R12：離散制限と既存入口・係数変更 | 500〜900 | ⑤aの欄を変更せず照合。Totと実現の両部分を含む |
+| 合計 | **5,200〜10,100** | 完成時 **16,764〜21,664** |
+
+当初§152の全体5,700〜9,800行に対し、現在の完成見込みは下端で+11,064、上端で+11,864行。主な差は、二変数の指定native Homへの全自然性と、元の固定始域roof比較への正規化を、点ごとの同値の存在に弱めず証明するための一般の分類・fiber単位の道具にある。完成時の新しい外枠の提案は22,000行。上端に対する余裕は336行しかなく、再度の上振れを吸収できると保証しない。Tot側の停止点3b-4aと実現側3b-4bの分割は維持する。
+
+### 234.2 止める根拠と現在の状態
+
+coordination.md §2：『上限を超えそうなときは報告して止める（止まる前に、それまでの検証済みの分をコミット）』、夜の進め方も『その線の Lean は止めて決めておいた代わりの紙の作業へ』と指定している。IS-W2 §18は3b-4の外枠15,000行、§19も『外枠15,000行は変えない』。同じまとまり内の1,500行以下の中間定理の追加許可は、この外枠を変更する許可ではない。
+
+したがって、検証済みを213e2858eに保存した上で、この線のLeanの追加を止める。範囲、型、指定脚、全族、固定始域の同型の等式を弱めない。外枠の変更はユーザー判断を要する。停止点3b-4aに達したとの報告ではない。代わりの紙の作業を次節に記録する。
+
+### 234.3 紙：元のnative fiberから元のroofへの未完の橋
+
+次に必要な主張の候補は、既存の指定された写像そのものについての次の型である（ここではLean宣言を追加していない）。
+
+```lean
+theorem strictBETotJointSourceNativeFiberMap_isWeakHomotopyEquivalence
+    (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativeFiberMap A P)
+```
+
+この型を示す際、元のsource coefficientの通常の要素圏のnerveと、元のroofで使う逆向きの要素圏のnerveを同一視してはならない。既存のedgewise/opposite比較とterminal augmentationを通した同じ写像で比較し、その上で元のroofの弱同値性とKanHammockHomInfinityの指定Yoneda比較へ接続する。native Homのpullbackのfiberは、同じ元の頂点のtwisted-arrow fiberへ移す。経路修正のexactComponentIso_postcompで指定された底のpathを追跡する必要があり、任意の同型への置換では固定始域の最終等式を保証できない。
+
+この弱同値が示されれば、§233の等式とR03gの同じfiber単位の弱同値から、元の単位を固定する延長のfiber写像を弱同値と判定できる。両側のleft fibrationのKan fiber上で同値に移し、既存isPrecompositionEquivalence_of_leftFibration_nerve_fibersで同じ全延長の前合成同値性を得る。分類の全同型へ移しても、R03dの固定始域へ制限した全FunctorIsoが元のstrictBETotProbeFrameHomInfinityIsoに等しいことは別途残る。
+
+### 234.4 紙：3b-3との境目を維持する
+
+Totのstrict入力の模型、同じHom分類、指定native錐とその極限性は③-bで閉じる。R05でstrict複体図式の局所化上へ全評価・全指定錐族を輸送する部分は③-aの3b-3の指定された比較を使う。実現側R09・R10も、図式ごとの余錐だけではなく③-aの全パラメータの余錐族とその輸送を使う。任意のcoherentなBE図式の厳密化は今回の実装に含めない。既存FramedLimit*とCAlgUnderlyingDerivedComparisonを作り直さず、無条件cAlgForgetDerived_mapJoinCone_isLimitの保存方向を使う。Uが極限を保存することからBE値の極限性を逆に推論しない。
