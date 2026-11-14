@@ -4368,3 +4368,134 @@ TensorDoldKanBifunctor と RawModuleProbeDoldKanHom の通常の対象ビルド�
 M10 の一般の native な辺・fiber と全族の完成は未完。元の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 37. M10 の指定 pinched Hom と同じ K の実誘導射（11-14）
+
+§36 の同じ二変数 dg Hom 端点を、元の指定半自由模型の実 pinched Hom に同定する。
+既存の `doldKanHomPinchedIso` を、元の二つの半自由 probe に直接適用する。
+全単体テンソル Hom の端点も同じ二変数 Dold–Kan 同型と合成して同定する。
+任意の同じ Hom 鎖写像への可換性は、既存の `doldKanHomPinchedIso_chainMap` の特殊化。
+Dold–Kan・pinched 模型を作り直さない。
+
+次に元の probe 全包含を同じ ULiftHom 表示へ送る全関手を作り、その標準局所化頂点を保持する。
+同じ `dgModuleResolutionRetractIso` の成分から、元の通常源の値を指定半自由頂点へ戻す。
+既存の同じ `strictRawModuleComparison_vertexIso` の成分を合成し、K の値の指定端点同型を得る。
+対象ごとの別の同型を選ぶものではない。
+
+その同じ K の実 `pinchedHomMap` の後に、同じ二つの端点成分による
+`pinchedEndpointEquivalence` を合成する。さらに同じ実 Dold–Kan/pinched 同型の逆を合成し、
+K の誘導射を元の dg Hom 座標で具体化する。その同じ座標射は、端点同型の順射を
+後合成すると元の指定 pinched Hom 射を全単体で回収する。
+
+これは M10 の既存比較の単位/余単位・係数移送・自然性・貼り合わせの法則と証明の分割であり、
+一次 ID は追加しない。K の誘導射の同値性を仮定として置いていない。
+この具体化だけでその射の同値性や K の完全忠実性を証明したとは数えない。
+文脈は `A : Type u`、`[CommRing A]`。
+`PinchedHom.pinchedHom` は既存の dg nerve の実 pinched Hom、`Basic.pinchedHom` は
+既存の `TheHomotopyTheoryOfInfinityCategories.MorphismSpaces` のもの。
+`Simplex.vertex` と `DifferentialGradedCategories.Functor.map` は既存の dg nerve の関手である。
+
+### RawModuleProbeNativeHom
+
+```lean
+def strictRawModuleProbeNativeHomIso (X : (operad A).Algebra)
+    (P Q : strictRawModuleProbeCategory A X) :
+    SSet.uliftFunctor.{u + 1, u}.obj
+      (((strictRawModuleProbeDoldKanHom A X).obj (op P)).obj
+        ((strictRawModuleProbeFunctor A X).obj Q)) ≅
+      PinchedHom.pinchedHom A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+        (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) Q)
+
+def strictRawModuleProbeTensorNativeHomIso (X : (operad A).Algebra)
+    (P Q : strictRawModuleProbeCategory A X) :
+    SSet.uliftFunctor.{u + 1, u}.obj
+      (((strictRawModuleProbeTensorHom A X).obj (op P)).obj
+        ((strictRawModuleProbeFunctor A X).obj Q)) ≅
+      PinchedHom.pinchedHom A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+        (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) Q)
+
+lemma strictRawModuleProbeNativeHomIso_chainMap (X : (operad A).Algebra)
+    (P Q P' Q' : strictRawModuleProbeCategory A X)
+    (φ : homObject A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) Q) ⟶
+        homObject A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+          (ForgetEnrichment.to (Complex A) P') (ForgetEnrichment.to (Complex A) Q')) :
+    SSet.uliftFunctor.{u + 1, u}.map (doldKanHomSpaceChainMap
+      (D := SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (E := SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (x := ForgetEnrichment.to (Complex A) P) (y := ForgetEnrichment.to (Complex A) Q)
+      (x' := ForgetEnrichment.to (Complex A) P') (y' := ForgetEnrichment.to (Complex A) Q') φ) ≫
+        (strictRawModuleProbeNativeHomIso A X P' Q').hom =
+      (strictRawModuleProbeNativeHomIso A X P Q).hom ≫ pinchedHomChainMap φ
+```
+
+### RawModuleProbeComparisonMap
+
+```lean
+def strictRawModuleProbeRelativeFunctor (X : (operad A).Algebra) :
+    strictRawModuleProbeCategory A X ⥤ (strictRawModuleRelativeCategory A X).category
+
+def strictRawModuleProbeLocalizationVertex (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    (localizationNerve (strictRawModuleRelativeCategory A X)) _⦋0⦌
+
+def strictRawModuleProbeSourceVertexIso (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    VertexIso
+      ((strictRawModuleSource A X).app (op ⦋0⦌)
+        (ComposableArrows.mk₀ ((strictRawModuleProbeRelativeFunctor A X).obj P)))
+      (Simplex.vertex (A := A) (ForgetEnrichment.to (Complex A) P))
+
+def strictRawModuleProbeComparisonVertexIso (X : (operad A).Algebra)
+    (P : strictRawModuleProbeCategory A X) :
+    VertexIso
+      ((strictRawModuleComparison A X).app (op ⦋0⦌) (strictRawModuleProbeLocalizationVertex A X P))
+      (Simplex.vertex (A := A) (ForgetEnrichment.to (Complex A) P))
+
+def strictRawModuleProbeComparisonPinchedMap (X : (operad A).Algebra)
+    (P Q : strictRawModuleProbeCategory A X) :
+    Basic.pinchedHom (X := localizationNerve (strictRawModuleRelativeCategory A X))
+      (strictRawModuleProbeLocalizationVertex A X P) (strictRawModuleProbeLocalizationVertex A X Q) ⟶
+      PinchedHom.pinchedHom A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
+        (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) Q)
+
+def strictRawModuleProbeComparisonDoldKanMap (X : (operad A).Algebra)
+    (P Q : strictRawModuleProbeCategory A X) :
+    Basic.pinchedHom (X := localizationNerve (strictRawModuleRelativeCategory A X))
+      (strictRawModuleProbeLocalizationVertex A X P) (strictRawModuleProbeLocalizationVertex A X Q) ⟶
+      SSet.uliftFunctor.{u + 1, u}.obj
+        (((strictRawModuleProbeDoldKanHom A X).obj (op P)).obj
+          ((strictRawModuleProbeFunctor A X).obj Q))
+
+lemma strictRawModuleProbeComparisonDoldKanMap_triangle (X : (operad A).Algebra)
+    (P Q : strictRawModuleProbeCategory A X) :
+    strictRawModuleProbeComparisonDoldKanMap A X P Q ≫ (strictRawModuleProbeNativeHomIso A X P Q).hom =
+      strictRawModuleProbeComparisonPinchedMap A X P Q
+```
+
+
+対象ビルド・小さい監査の結果と最終実測は §37.1 に記録した。
+未完の中心は、ここで具体化した同じ K の全誘導射が §35–§36 の実 frame 比較と一致することと、
+その射の同値性・完全忠実性である。零単体・π₀ だけの一致で代用しない。
+M10 の一般の native な辺・fiber と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 37.1 検証と実測
+
+RawModuleProbeNativeHom と RawModuleProbeComparisonMap の通常の対象ビルドは成功した。
+新しい公開宣言 10 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。
+
+新規 Lean は二ファイル、それぞれ 76・120 行、計 196 行、公開宣言 10 本。
+§36.1 の累計に加え、検証済み累計は 73 ファイル・7,330 行・明示宣言 378 本
+（private 3 本）。200 行を超える証明はない。一次 ID は追加していない。
+
+同じ局所化比較 K の実 pinched Hom 射を、指定半自由端点と元の dg Hom の Dold–Kan 座標で
+具体化し、元の射を全単体で回収する三角等式まで検証した。その射と実 frame 比較との
+全高次照合・同値性・K の完全忠実性は未完。M10 の一般の native な辺・fiber と全族、
+M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
