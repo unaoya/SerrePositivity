@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall
 
 
 public meta import SerrePositivity.Util.Citation
@@ -43,7 +44,6 @@ theorem cechAlexanderAffine_weaklyInitial (n : ℕ) : CategoryTheory.IsWeaklyIni
     ((cechAlexanderAffine P hP r κ hκ).obj ⦋n⦌) :=
   (affineCechVertexFrame P (fun n => affineEnvelopeTerm P hP r n κ hκ)).weaklyInitial n
 
-variable [EssentiallySmall.{u} (PrismOver P (prismPolynomialCompletion P (Fin r)) κ)]
 
 /-- Construction 4.18：有限 affine 模型から作る小さい site の Čech データ。 -/
 def affineCechNerveData : CategoryTheory.CechNerveData

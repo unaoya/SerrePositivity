@@ -1,0 +1,211 @@
+{
+  "status": "PASS_CORE_AND_A03_ONLY",
+  "base_main": "efa846fe8",
+  "target_build": {
+    "step": "target-build",
+    "exit_code": 0,
+    "seconds": 6.388305209577084,
+    "targets": [
+      "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Basic",
+      "SerrePositivity.BhattScholze.Prism.Basic.Category",
+      "SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded",
+      "SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall",
+      "SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite",
+      "SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates",
+      "SerrePositivity.BhattScholze.Prismatic.Site.FlatCover",
+      "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.CechAlexanderSmall",
+      "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechSiteNerve",
+      "SerrePositivity.BhattScholze.Almost.AlmostTensorForward",
+      "SerrePositivity.BhattScholze.Almost.AlmostGenerators",
+      "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps"
+    ]
+  },
+  "source_artifacts": [
+    {
+      "module": "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded",
+      "source": "SerrePositivity/CommutativeAlgebra/PowerTorsion/Bounded.lean",
+      "source_sha256": "b120ac51cbddbeb4c0682ebc3e700b2515ded96f332d5b3688bbc6d8464e2b12",
+      "olean_sha256": "b9b670e492c843bcfdaed96fdbe09da22f2b61d22f2d879467a22546214ebf64"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Basic",
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/Basic.lean",
+      "source_sha256": "7eeccb4cb6aafdb7b4fdbb25925560181bb2c9fecaff2354b67622f3a3cf0db9",
+      "olean_sha256": "969efbc23edff6992eaf56ea1146dc33c450bb9a1d71c45d00955315c354ff5c"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Basic.Category",
+      "source": "SerrePositivity/BhattScholze/Prism/Basic/Category.lean",
+      "source_sha256": "8a3269d63986f1702b5bf403929f43870a25742dc467c614c2d5afd7f3757431",
+      "olean_sha256": "f6903d54724bc52831f7c3c927aecd5e2e911ce50aeb59d80ee699b67f29d9f4"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded",
+      "source": "SerrePositivity/BhattScholze/Prism/Basic/PerfectBounded.lean",
+      "source_sha256": "313b3143a8dbda9bb678cef668f0eea5794e64aed968fcf0cee6d533c5a04a9b",
+      "olean_sha256": "85483289e2a4eabaf54eb0238282dc1205d8d8710dbbeef34047ce91db093182"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall",
+      "source": "SerrePositivity/BhattScholze/Prismatic/Site/PrismOverSmall.lean",
+      "source_sha256": "500d9ec7fadf795d37403fb305aa03eefa44628a1731b9b45fb6936994d816ea",
+      "olean_sha256": "721e181581542e56da7c4af075b548547431d2c1a0e8d579c6a9ac4ae2e46979"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite",
+      "source": "SerrePositivity/BhattScholze/Prismatic/Site/PerfectSite.lean",
+      "source_sha256": "c8e30d181d4861d01d9dfbe894f12149ccd8f83545034131b3405cb042c2c401",
+      "olean_sha256": "797a99b9090282f03c0715cb7d3ec00f7dd3ceb74dc16a23e088947d316b9258"
+    },
+    {
+      "module": "SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates",
+      "source": "SerrePositivity/HomologicalAlgebra/DerivedInfinity/VertexPredicates.lean",
+      "source_sha256": "c9d0bff8c07f93de70940d88da5fd2893a59e2f67ab3967678d7822876969ecc",
+      "olean_sha256": "d38231aff2545e5484c02c37b276c4ac1b27a7a7a7dde78bb5032239a7d0091e"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.Site.FlatCover",
+      "source": "SerrePositivity/BhattScholze/Prismatic/Site/FlatCover.lean",
+      "source_sha256": "bbfa358c1a9dbe91d988f1af34410f57edfe8675f38e38156413c1bee309f11c",
+      "olean_sha256": "7be41afb04764b363ba75f968ee2381a24d2541ef87e6025c405d1f01efe53d1"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.CechAlexanderSmall",
+      "source": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/CechAlexanderSmall.lean",
+      "source_sha256": "5dfb68152acdb61d0374cf2501311f212c4cfe2ed364670f2fd19f07a7651cb3",
+      "olean_sha256": "967e5aef565fabc333a74f308829e11d96f355b078309c5561397dcb25e74f0f"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechSiteNerve",
+      "source": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/AffineCechSiteNerve.lean",
+      "source_sha256": "e2edeb994cf5a4b037e7c948af76e9a656ff9ae04b570ed1ccb0e6ed2a404d14",
+      "olean_sha256": "12192e522aadf12a9446a08341da8ab743a1cdd7abc2126c082a76e42871d0b1"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Almost.AlmostTensorForward",
+      "source": "SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean",
+      "source_sha256": "15cc23d017b06d3c188408346083f6ff73535cc71ce55f8b1322f328afc65cbd",
+      "olean_sha256": "153dd829f768834d45173e78e6b759214d0dc3d19ac2aeff599c498376ed7db1"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Almost.AlmostGenerators",
+      "source": "SerrePositivity/BhattScholze/Almost/AlmostGenerators.lean",
+      "source_sha256": "c856e5c075ba241c0253f35e934ed86fbc7f100b6a5e9ebfe413fd101a139802",
+      "olean_sha256": "cdbf9d95afc2d54aaa93c637f4407f9c304c5f8cade0e01f64562abc87901d76"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps",
+      "source": "SerrePositivity/BhattScholze/Semiperfectoid/AinfClassicalMaps.lean",
+      "source_sha256": "77bbc1c7146433e003421e8221026062a4b9861dc1d291af6642fc4cdb24cf6b",
+      "olean_sha256": "772bd3ca7de84186a7e6dd99b6d65866070563b2b103d16556ce478f4d753e46"
+    }
+  ],
+  "small_audit": {
+    "source": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/formalization-plans/stage-ii/bulk-5inf0/audit.lean",
+    "source_sha256": "e7d1c9d9a38fa1c62e3eb09ff173689b2e8c64a189131ca133f23393a78cc850",
+    "lake_setup_sha256": "6cc845382b3b665418e27cc7f70e7bce1fec9633ff8284320dfdccafb71eaa6b",
+    "lakefile_sha256": "ed9541f3b6cb53c408dc239f14c8623d09e983b7196879a4a48f9c7e1a3e8577",
+    "options": {
+      "maxSynthPendingDepth": 3,
+      "pp.unicode.fun": true,
+      "relaxedAutoImplicit": false,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.header": false
+    },
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxSynthPendingDepth=3",
+      "-Dpp.unicode.fun=true",
+      "-DrelaxedAutoImplicit=false",
+      "-Dweak.linter.mathlibStandardSet=true",
+      "-Dweak.linter.style.header=false",
+      "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/formalization-plans/stage-ii/bulk-5inf0/audit.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 25.523399084806442,
+    "status": "PASS"
+  },
+  "small_audit_declarations": 99,
+  "small_audit_owned_modules": [
+    "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded",
+    "SerrePositivity.BhattScholze.Semiperfectoid.Basic",
+    "SerrePositivity.BhattScholze.Prism.Basic.Category",
+    "SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded",
+    "SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall",
+    "SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite",
+    "SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates"
+  ],
+  "draft_A2": {
+    "draft": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+    "source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+    "staged_source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+    "extra_public_imports": [],
+    "options": {
+      "maxSynthPendingDepth": 3,
+      "pp.unicode.fun": true,
+      "relaxedAutoImplicit": false,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.header": false
+    },
+    "command": [
+      "lake",
+      "env",
+      "env",
+      "LEAN_PATH=/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+      "lean",
+      "-DmaxSynthPendingDepth=3",
+      "-Dpp.unicode.fun=true",
+      "-DrelaxedAutoImplicit=false",
+      "-Dweak.linter.mathlibStandardSet=true",
+      "-Dweak.linter.style.header=false",
+      "--root=/tmp/bulk-5inf0/validation",
+      "-o",
+      "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/AnimatedAlgebra.olean",
+      "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/AnimatedAlgebra.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 22.088280709460378,
+    "status": "PASS",
+    "olean": "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/AnimatedAlgebra.olean"
+  },
+  "notation_81_probe": {
+    "source": "/tmp/bulk-5inf0/Not81Probe.lean",
+    "source_sha256": "7695ce34f3f8d8472abb090910590d95295fed62e0a469a6ab2a2e05b9feb5de",
+    "lake_setup_sha256": "6cc845382b3b665418e27cc7f70e7bce1fec9633ff8284320dfdccafb71eaa6b",
+    "lakefile_sha256": "ed9541f3b6cb53c408dc239f14c8623d09e983b7196879a4a48f9c7e1a3e8577",
+    "options": {
+      "maxSynthPendingDepth": 3,
+      "pp.unicode.fun": true,
+      "relaxedAutoImplicit": false,
+      "weak.linter.mathlibStandardSet": true,
+      "weak.linter.style.header": false
+    },
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxSynthPendingDepth=3",
+      "-Dpp.unicode.fun=true",
+      "-DrelaxedAutoImplicit=false",
+      "-Dweak.linter.mathlibStandardSet=true",
+      "-Dweak.linter.style.header=false",
+      "/tmp/bulk-5inf0/Not81Probe.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 9.259178500622511,
+    "status": "PASS"
+  },
+  "full_5inf0_complete": false,
+  "root_build": "not requested or run in this goal; new public entry imports checked statically",
+  "remaining_items": [
+    "A01",
+    "A02",
+    "A04",
+    "A05",
+    "A06",
+    "A07"
+  ]
+}

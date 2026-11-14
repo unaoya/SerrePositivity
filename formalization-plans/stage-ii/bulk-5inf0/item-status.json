@@ -1,0 +1,64 @@
+{
+  "completed_or_authorized_deferred": 8,
+  "total": 14,
+  "additional": 0,
+  "items": [
+    {
+      "id": "A01",
+      "state": "pending_draft_typechecks"
+    },
+    {
+      "id": "A02",
+      "state": "pending_draft_typechecks"
+    },
+    {
+      "id": "A03",
+      "state": "PASS"
+    },
+    {
+      "id": "A04",
+      "state": "pending_draft_typechecks"
+    },
+    {
+      "id": "A05",
+      "state": "pending_draft_typechecks"
+    },
+    {
+      "id": "A06",
+      "state": "pending_draft_typechecks"
+    },
+    {
+      "id": "A07",
+      "state": "pending_draft_typechecks"
+    },
+    {
+      "id": "B01",
+      "state": "PASS"
+    },
+    {
+      "id": "B02",
+      "state": "PASS"
+    },
+    {
+      "id": "B03",
+      "state": "PASS"
+    },
+    {
+      "id": "B04",
+      "state": "PASS"
+    },
+    {
+      "id": "B05",
+      "state": "PASS"
+    },
+    {
+      "id": "B06",
+      "state": "authorized_deferred_to_5inf-3a"
+    },
+    {
+      "id": "B07",
+      "state": "PASS"
+    }
+  ],
+  "B06_note": "The explicit allowance in §2B6 is used; general crystalline comparison is not claimed proved."
+}

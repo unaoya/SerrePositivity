@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates
 
 
 public meta import SerrePositivity.Util.Citation
@@ -131,17 +132,6 @@ theorem perfectoidKernel_completedTensor_isZero_of_isAlmostZero
 end SerrePositivity.BhattScholze.Almost
 
 
-namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
-open CategoryTheory InfinityCategories DerivedCompletion
-open scoped Simplicial
-attribute [local instance] HasDerivedCategory.standard
-
-/-- 頂点を通常の導来圏に移し、主元 p に関する導来完備性を判定する。 -/
-def isPCompleteVertex (p : ℕ) (R : Type u) [CommRing R]
-    (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
-  IsComplete R (p : R) ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩)
-
-end SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 /-! Literature correspondences from the reviewed coverage tables. -/
 

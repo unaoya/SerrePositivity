@@ -1,0 +1,110 @@
+{
+  "changes": [
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks",
+      "new": "SerrePositivity.CommutativeAlgebra.DividedPowers.FreeDPModPBlocks"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionPD",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.Frobenius.FrobeniusDivisionPD"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionRegularSequence",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.Frobenius.FrobeniusDivisionRegularSequence"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePD",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequence.RegularSequencePD"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDFactorial",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequence.RegularSequencePDFactorial"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDKoszul",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequence.RegularSequencePDKoszul"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDPrimeRegular",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequence.RegularSequencePDPrimeRegular"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTor",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequence.RegularSequencePDTor"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDUniversalTor",
+      "new": "SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequence.RegularSequencePDUniversalTor"
+    },
+    {
+      "path": "A0/W15K1/AuditK1.lean",
+      "old": "SerrePositivity.BhattScholze.Delta.DividedPower.TruncatedPolynomialBasis",
+      "new": "SerrePositivity.CommutativeAlgebra.DividedPowers.TruncatedPolynomialBasis"
+    },
+    {
+      "path": "DerivedGeneral/CompletionFunctor.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange",
+      "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange"
+    },
+    {
+      "path": "DerivedGeneral/CompletionFunctor.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology",
+      "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology"
+    },
+    {
+      "path": "DerivedGeneral/CompletionFunctor.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.StableLimits",
+      "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.StableLimits"
+    },
+    {
+      "path": "DerivedGeneral/ScalarRestriction.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange",
+      "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange"
+    },
+    {
+      "path": "DerivedGeneral/ScalarRestriction.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.ScalarRestrictionNerve",
+      "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.ScalarRestrictionNerve"
+    },
+    {
+      "path": "Shared/CosimplicialEInfinity.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology",
+      "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.Homology"
+    },
+    {
+      "path": "Shared/Descendable.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits"
+    },
+    {
+      "path": "Shared/Descendable.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Stability",
+      "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.Stability"
+    },
+    {
+      "path": "Sheaves/SetSections.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseConeRestriction",
+      "new": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.UniverseConeRestriction"
+    },
+    {
+      "path": "Sheaves/SetSections.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.FilteredExchange.SimplexConeRestriction",
+      "new": "SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.SimplexConeRestriction"
+    },
+    {
+      "path": "Sheaves/SheafCondition.lean",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits",
+      "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits"
+    }
+  ],
+  "missing": []
+}

@@ -2,6 +2,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition
 
 public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOver
+public import SerrePositivity.BhattScholze.Prism.Basic.Category
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Identity
 public import SerrePositivity.HomologicalAlgebra.Cech.Basic
@@ -38,9 +39,8 @@ variable {R : Type u} [CommRing R] [Algebra (A ⧸ P.ideal) R] {κ : Cardinal.{u
 namespace PrismOver
 
 /-- (p,d) 完全忠実平坦性で表した prismatic site の被覆（BS 著者版 Corollary 3.12 (a)）。 -/
-def IsFaithfullyFlat {X Y : PrismOver P R κ} (f : X ⟶ Y) : Prop :=
-  letI : Algebra X.B Y.B := f.toHom.toRingHom.toAlgebra
-  IsCompletelyFaithfullyFlat (Ideal.span {(p : X.B), X.Q.generator}) Y.B
+abbrev IsFaithfullyFlat {X Y : PrismOver P R κ} (f : X ⟶ Y) : Prop :=
+  f.toHom.IsFaithfullyFlat
 
 /-- 同型は prismatic site の忠実平坦な被覆。 -/
 theorem isFaithfullyFlat_of_isIso {X Y : PrismOver P R κ} (f : X ⟶ Y) [IsIso f] :

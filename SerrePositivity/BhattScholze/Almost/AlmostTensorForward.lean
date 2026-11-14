@@ -395,7 +395,7 @@ set_option linter.unusedVariables false in
 /-- BS 著者版 Proposition 10.4 の完備複体の almost 零性を、核とのテンソルで判定する。 -/
 theorem isAlmostZero_iff_completedTensor_isZero
     (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
-    (M : DVertex R) (hM : isPCompleteVertex p R M) :
+    (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
     IsJAlmostZero p R hR J M ↔ IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨kernelTensor p R hR J M⟩) := by
   refine ⟨fun h ↦ ?_, fun h ↦ isAlmostZero_of_completedTensor_isZero p hR J M hM h⟩
@@ -472,8 +472,8 @@ set_option linter.unusedVariables false in
 /-- BS 著者版 Lemma 10.5 の比較に使う almost 連結性の判定。 -/
 theorem isAlmostConnective_iff_completedTensor_connective
     (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
-    (M : DVertex R) (hM : isPCompleteVertex p R M) :
-    IsAlmostConnective p R hR J M ↔ Derived.IsConnectiveAt R 0 (kernelTensor p R hR J M) :=
+    (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
+    IsAlmostConnective p R hR J M ↔ SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 (kernelTensor p R hR J M) :=
   ⟨fun h ↦ (isConnectiveAt_iff_isLE 0 _).mpr
     (kernelTensor_isLE_of_almostConnective p hR J M h),
     almostConnective_of_kernelTensor_connective p hR J M hM⟩
@@ -481,8 +481,8 @@ theorem isAlmostConnective_iff_completedTensor_connective
 /-- BS 著者版 Lemma 10.5。連結性を商との完備テンソルと almost 連結性で判定する。 -/
 theorem connective_iff_almost
     (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
-    (M : DVertex R) (hM : isPCompleteVertex p R M) :
-    Derived.IsConnectiveAt R 0 M ↔ Derived.IsConnectiveAt R 0 (quotientTensor p hR J M) ∧
+    (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
+    SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 M ↔ SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 (quotientTensor p hR J M) ∧
       IsAlmostConnective p R hR J M := by
   constructor
   · intro h

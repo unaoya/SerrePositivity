@@ -155,7 +155,7 @@ BS 著者版 Theorem 10.9 の証明の主イデアルへの帰着で使う。
 BS 著者版 Remark 10.7 に続く almost 零性の比較。
 -/
 theorem isAlmostZero_iff_forall_gen (J : Ideal R) {r : ℕ} (f : Fin r → R)
-    (hf : J = Ideal.span (Set.range f)) (M : DVertex R) (hM : isPCompleteVertex p R M) :
+    (hf : J = Ideal.span (Set.range f)) (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
     IsJAlmostZero p R hR J M ↔ ∀ i, IsJAlmostZero p R hR (Ideal.span {f i}) M := by
   classical
   constructor
