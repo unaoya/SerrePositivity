@@ -3661,3 +3661,65 @@ lemma leftStraighteningInfinityMap_baseChangeIso_firstVertex_heq {B D : SSet.{u}
 その後、元の切断底変換の三因子の合成則で中間の制限同型を消去し、
 `leftStraightening_baseChange_pasting` を初頂点局所化から反映する。
 `NormalizedFunctorIsoComponentRestriction` の二法則を対象ビルド中。
+
+### 49.1 指定対象成分と転置の係数評価
+
+一覧：済み 0／全体 13（うち追加 11）
+
+四本の対象ビルドと五宣言の小監査が成功
+（`/tmp/is-w1/restriction-value-audit-2.log`、5,473 jobs、標準三公理のみ）。
+既存の成分の後合成の法則 `functorIso_app_postcomp_heq`、
+既存の同型の後合成の厳密な式 `functorIso_postcomp_eq_mapIso` を再利用した。
+転置した指定比較の値は、転置前の同じ比較の評価後合成として計算できる。
+以下はすべて既存構成の法則。各宣言は200行未満。
+
+実測：`NormalizedFunctorIsoComponentRestriction` 60行、`LeftClassificationBaseChangeRestrictionValue` 70行、`InternalHomSwapEvaluationRight` 34行、`FunctorIsoTransposeValue` 44行。
+計208行。検証済み累計は105本・8,594行。
+
+#### NormalizedFunctorIsoComponentRestriction
+
+```lean
+lemma normalizedFunctorIsoComponent_heq_app {I Y : SSet.{u}}
+    [Quasicategory I] [Quasicategory Y] {F G : I ⟶ Y}
+    (e : FunctorIso F G) (x : I _⦋0⦌) {xf xg : Y _⦋0⦌}
+    (hf : xf = F.app (Opposite.op ⦋0⦌) x) (hg : xg = G.app (Opposite.op ⦋0⦌) x) :
+    HEq (normalizedFunctorIsoComponent e x hf hg) (e.app x)
+
+lemma normalizedFunctorIsoComponent_precomp_heq {I A B X : SSet.{u}}
+    [Quasicategory I] [Quasicategory X] {F G : I ⟶ (ihom A).obj X}
+    (e : FunctorIso F G) (x : I _⦋0⦌) {f g : A ⟶ X}
+    (hf : functorVertex f = F.app (Opposite.op ⦋0⦌) x)
+    (hg : functorVertex g = G.app (Opposite.op ⦋0⦌) x) (q : B ⟶ A) :
+    HEq ((show FunctorIso f g from normalizedFunctorIsoComponent e x hf hg).precomp q)
+      ((e.postcomp ((pre q).app X)).app x)
+```
+
+#### LeftClassificationBaseChangeRestrictionValue
+
+```lean
+lemma leftStraighteningInfinityDiagram_baseChangeIso_firstVertex_heq
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    HEq ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D)))
+      (functorIsoValue (straighteningBaseChangeRestrictionIso k).transpose
+        (leftFibrationInfinityVertex p))
+```
+
+#### InternalHomSwapEvaluationRight
+
+```lean
+lemma internalHomSwapIso_evaluate_right (A B X : SSet.{u}) (b : B _⦋0⦌) :
+    (internalHomSwapIso A B X).hom ≫ evaluateFunctorAt (Y
+```
+
+#### FunctorIsoTransposeValue
+
+```lean
+lemma functorIsoValue_transpose_heq_postcomp {A I X : SSet.{u}}
+    {F G : A ⟶ (ihom I).obj X} (e : FunctorIso F G) (i : I _⦋0⦌) :
+    HEq (functorIsoValue e.transpose i) (e.postcomp (evaluateFunctorAt (Y
+```
+
+同じ方法で初頂点制限同型の対象成分を共同制限の評価へ戻す
+`LeftClassificationSimplexRestrictionValue` を対象ビルド中。
