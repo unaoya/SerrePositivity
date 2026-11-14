@@ -670,3 +670,327 @@ lemma generated_isThickTensorIdeal (M : C _⦋0⦌) :
 lemma mem_generated (M : C _⦋0⦌) : thickTensorIdealGenerated C tensorWith M M
 
 ```
+
+
+## 4. 実 restriction の native 随伴、恒等・合成、正則加群の台（11-14）
+
+### 4.1 運用の更新と実測
+
+main の文書更新 `f0fac44da` を merge `fca3b6dff` で取り込んだ。
+ユーザーの 11-14 の続行指示と coordination.md §2 に従い、既存の構成の
+単位・余単位・自然性・係数移送・合成・貼り合わせの法則と証明の分割には
+本数の上限を設けない。§1〜§3 に残る旧「3 本まで」の記述はこの規則に置換する。
+型は以下に記録する。今回、200 行を超える補題はない。
+外枠は引き続き M01〜M42・17,000 新設 Lean 行。8,500 行の途中報告点には未到達。
+
+| 新設ファイル | 行 | 宣言（private を含む） | 一覧への対応 |
+| --- | ---: | ---: | --- |
+| `DGRestrictionLaws.lean` | 103 | 5 | M08 の制限の法則 |
+| `DGGraphCounit.lean` | 119 | 6 | M07 の同じ二関手の随伴・余単位の法則 |
+| `DGGraphNerveAdjunction.lean` | 77 | 3 | M07 の同じ二関手の随伴・余単位の法則 |
+| `DGResolutionAdjunction.lean` | 110 | 6 | M07 の同じ二関手の随伴・余単位の法則 |
+| `StrictRestrictionComparison.lean` | 85 | 3 | M07 の同じ二関手の随伴・余単位の法則 |
+| `StrictFunctoriality.lean` | 83 | 6 | M08 の四つの比較 |
+| `StrictUnderlyingComparison.lean` | 119 | 3 | M05 の台・正則加群の比較 |
+
+今回は 7 本・696 行・32 宣言（公開 29、private 3）。
+§3 までとの累積は **13 本・1301 行・73 宣言**。
+全てこのレーンの新設ファイル。⑤a の所有する既存ファイル・界面は変更していない。
+
+### 4.2 数学の接続と現在地
+
+生の graph 拡大の余単位を選び直さず、既存の通常の H⁰ 随伴対応を
+実加群シフトで全整数次数へ移し、全 Hom 複体の準同型性を証明した。
+同じ全 Hom 自然な厳密 dg 余単位を nerve へ送り、全区間写像空間条件から
+生の dg nerve 上の随伴 `graphRawAdjunction` を得た（HA §4.2.3）。
+
+半自由包含 `j` と指定解像度 `q` は **j ⊣ q**。
+各半自由加群のホモトピー射影性により、同じ augmentation が普遍余単位となる。
+ここでも H⁰ の随伴だけを native な随伴とせず、全区間条件から両三角式を得た。
+この随伴と生の graph 随伴を合成し、同じ実拡大の包含との比較を使って、
+graph 右随伴と当初から定義した `strictModuleRestrict` を全関手同型で接続した。
+これで M07 の主型 `QCatAdjunction (strictModuleExtend f) (strictModuleRestrict f)`
+を実装した。指定比較に沿う全関手圏の単位の式も `strictModuleAdjunction_unitHom`
+に明記した。C02 の全族・局所化・native な辺との照合は M10 とともに残る。
+
+M08 の恒等・合成は拡大・制限の両側で全関手同型を構成した。
+制限は既存の厳密な全 Hom 自然性を実出力解像度へ送り、拡大は
+同じ制限との随伴の一意性で比較する。制限に射影性保存を仮定しない。
+この四つの比較だけでは M10 の高次 coherence・局所化への降下は満たさない。
+
+M05 については、台の評価が準同型を保つことを使い、二段の指定解像度を
+同じ唯一点評価と一段の解像度へ全関手同型で比較した。
+これを元の表現可能加群で評価し、`strictModuleUnit` の台と同じ BE carrier の
+既存 D(A) 内の像との頂点同型 `strictModuleUnitUnderlyingIso` を得た。
+元の複体上の平坦性は仮定しない。指定代数単位辺・fiber・指数辺との C01/C03 の
+残りは M16 以降と合わせて実装する。
+
+現在地：M01〜M04 完了、M05 の台・正則加群比較を追加、M06 の二関手構成済み、
+M07 の実制限との native 随伴・単位移送式を検証、M08 の恒等・合成比較を検証、
+M09 の拡大の弱同値不変性を検証、M19 の共通の芯を先行実装。
+M10 の全族、M11 以降の相対テンソル、指数・降下、RHom、完備反射・完備テンソル、
+A5 の BE 特殊化は未完。M15 の停止点1・G12 の停止点2には未到達。
+
+### 4.3 検証
+
+新設 7 モジュールの対象ビルドは PASS。最後に M05・M07・M08 の三つを再検証し、
+公開宣言 29 件の `#print axioms` も PASS。全て
+`[propext, Classical.choice, Quot.sound]` のみ（private の依存も推移的に含む）。
+指定の `scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- ...` の内側で実行した。
+ログは `/tmp/m15-laws-audit.log`。大きい監査・全体ビルドは行っていない。
+既存 KST の dg 制限・余単位の法則を import して再利用した。
+改名前のキャッシュが残っていた四つの既存依存モジュールは、この worktree の
+ローカルキャッシュへ対象再ビルドし、元のソースは変更していない。
+計算上限の引き上げ、`sorry`、新しい公理の宣言はない。
+
+### 4.4 追加した法則・証明分割・主出力の型
+
+以下の `N` は dg nerve 関手。各ブロックに実装の変数・namespace を保持する。
+非可換の一般 dg 部分も M07/M08 の構成・法則のための共通部分で、任意 E への輸送ではない。
+
+`SerrePositivity/EInfinity/Modules/DGRestrictionLaws.lean`：
+
+```lean
+universe u v
+namespace SerrePositivity.EInfinity.Modules
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.KST.LocalizingInvariants
+variable (A : Type u) [CommRing A]
+variable (D E K : Type v) [DGCategory A D] [Small.{u} D]
+  [DGCategory A E] [Small.{u} E] [DGCategory A K] [Small.{u} K]
+
+def restrictionCompRawIso (F : DGFunctor A D E) (G : DGFunctor A E K) :
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleRestriction A E K G.op) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleRestriction A D E F.op))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleRestriction A D K (F.comp G).op))
+
+def restrictionIdRawIso :
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleRestriction A D D (DGFunctor.id D).op))
+      (𝟙 (dgModuleNerve A D))
+
+def resolvedRestriction (F : DGFunctor A D E) :
+    dgModuleDerivedInfinityCategory A E ⟶ dgModuleDerivedInfinityCategory A D
+
+def resolvedRestriction_compIso (F : DGFunctor A D E) (G : DGFunctor A E K) :
+    FunctorIso (resolvedRestriction A E K G ≫ resolvedRestriction A D E F)
+      (resolvedRestriction A D K (F.comp G))
+
+def resolvedRestriction_idIso :
+    FunctorIso (resolvedRestriction A D D (DGFunctor.id D))
+      (𝟙 (dgModuleDerivedInfinityCategory A D))
+```
+
+`SerrePositivity/EInfinity/Modules/DGGraphCounit.lean`：
+
+```lean
+universe u v
+namespace SerrePositivity.EInfinity.Modules
+open CategoryTheory
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+
+private lemma counitBijection {C T : Type*} [Category C] [Category T]
+    {L : C ⥤ T} {R : T ⥤ C} (adj : L ⊣ R) (x : C) (y : T) :
+    Function.Bijective (fun f : x ⟶ R.obj y => L.map f ≫ adj.counit.app y)
+
+private lemma transportedCounit {C T : Type*} [Category C] [Category T]
+    {L : C ⥤ T} {R R' : T ⥤ C} (adj : L ⊣ R) (e : R ≅ R') (y : T) :
+    (adj.ofNatIsoRight e).counit.app y = L.map (e.inv.app y) ≫ adj.counit.app y
+
+private lemma functorEqIso_hom_app {C T : Type*} [Category C] [Category T]
+    {F G : C ⥤ T} (h : F = G) (x : C) :
+    (eqToIso h).hom.app x = eqToHom (congrArg (fun H => H.obj x) h)
+
+variable (A : Type u) [CommRing A]
+variable (D E : Type v) [DGCategory A D] [Small.{u} D] [DGCategory A E] [Small.{u} E]
+
+lemma moduleGradedShiftWitness (M : RightModule A D) (s : ℤ) :
+    ∃ (N : RightModule A D) (f : GradedHom A M N (-s)) (g : GradedHom A N M s),
+      differential A f = 0 ∧ differential A g = 0 ∧
+      ∃ h : GradedHom A M M (-1),
+        (homObject A (RightModule A D) M M).d (-1) 0 h =
+          compose A g f (neg_add_cancel s) - (unitElement A M).val
+
+lemma graphCounit_homotopy_bijective (F : DGFunctor A D E) (M : RightModule A E)
+    (P : RightModule A D) :
+    Function.Bijective (fun f :
+      (toHomotopy A (RightModule A D)).obj (ForgetEnrichment.of (Complex A) P) ⟶
+        (toHomotopy A (RightModule A D)).obj
+          (ForgetEnrichment.of (Complex A) (restrictModule A D E F.op M)) =>
+      (dgModuleExtension A D E F).onHomotopy.map f ≫
+        (toHomotopy A (RightModule A E)).map (functorExtensionCounit A D E F M))
+
+def graphUniversalCounit (F : DGFunctor A D E) (M : RightModule A E) :
+    DGUniversalCounit A (RightModule A D) (RightModule A E) (dgModuleExtension A D E F) M
+```
+
+`SerrePositivity/EInfinity/Modules/DGGraphNerveAdjunction.lean`：
+
+```lean
+universe u v
+namespace SerrePositivity.EInfinity.Modules
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+open SerrePositivity.KST.LocalizingInvariants
+open scoped Simplicial
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+variable (A : Type u) [CommRing A] (D E : Type v)
+  [DGCategory A D] [Small.{u} D] [DGCategory A E] [Small.{u} E]
+
+def graphCounitHomotopy (F : DGFunctor A D E) :
+    SSet.Homotopy (N (dgModuleRestriction A D E F.op) ≫ N (dgModuleExtension A D E F))
+      (𝟙 (dgModuleNerve A E))
+
+lemma graphCounitHomotopy_vertex_edge (F : DGFunctor A D E) (M : RightModule A E) :
+    (simplicialHomotopyVertexEdge (graphCounitHomotopy A D E F) (Simplex.vertex M)).edge =
+      (dgClosedEdge A (RightModule A E) (functorExtensionCounit A D E F M)).edge
+
+def graphRawAdjunction (F : DGFunctor A D E) :
+    QCatAdjunction (N (dgModuleExtension A D E F)) (N (dgModuleRestriction A D E F.op))
+```
+
+`SerrePositivity/EInfinity/Modules/DGResolutionAdjunction.lean`：
+
+```lean
+universe u v
+namespace SerrePositivity.EInfinity.Modules
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+open scoped Simplicial
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+abbrev semifreeInclusion
+
+abbrev moduleResolution
+
+lemma semifreeCounitColumn_eq (P T : SemifreeDGModules A D) (M : RightModule A D)
+    (ε : ForgetEnrichment.of (Complex A) P.val ⟶ ForgetEnrichment.of (Complex A) M) :
+    dgCounitColumn A (SemifreeDGModules A D) (RightModule A D) (semifreeInclusion A D)
+      (closedHomEquiv A (RightModule A D)
+        (ForgetEnrichment.of (Complex A) ((semifreeInclusion A D).obj P))
+        (ForgetEnrichment.of (Complex A) M) ε) T =
+    moduleHomPostcompose A D T.val P.val M ε
+
+def semifreeUniversalCounit (P : SemifreeDGModules A D) (M : RightModule A D)
+    (ε : ForgetEnrichment.of (Complex A) P.val ⟶ ForgetEnrichment.of (Complex A) M)
+    (hε : moduleQuasiIso A D ε) :
+    DGUniversalCounit A (SemifreeDGModules A D) (RightModule A D) (semifreeInclusion A D) M
+
+lemma moduleResolution_vertex (M : RightModule A D) :
+    (moduleResolution A D).app (Opposite.op ⦋0⦌) (Simplex.vertex (A
+
+def moduleResolutionAdjunction :
+    QCatAdjunction (N (semifreeInclusion A D)) (moduleResolution A D)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRestrictionComparison.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory SSet MonoidalClosed
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.Modules
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+variable {A : Type u} [CommRing A]
+
+def strictModuleRestrictionComparison {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    FunctorIso (strictModuleAdjointRestrict f) (strictModuleRestrict f)
+
+def strictModuleAdjunction {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    QCatAdjunction (strictModuleExtend f) (strictModuleRestrict f)
+
+lemma strictModuleAdjunction_unitHom {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    (strictModuleAdjunction f).unitHom = (strictModuleGraphAdjunction f).unitHom ≫
+      (hoFunctor.map ((pre (strictModuleExtend f)).app (strictModuleInfinity A X))).toFunctor.map
+        (strictModuleRestrictionComparison f).hom
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictFunctoriality.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory MonoidalCategory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.Modules
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories
+open SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories
+variable (A : Type u) [CommRing A]
+
+lemma algebraMap_id (B : Mon (Complex A)) :
+    dgAlgebraMap A (𝟙 B) = DGFunctor.id (dgAlgebraCategory A B)
+
+lemma algebraMap_comp {B C T : Mon (Complex A)} (f : B ⟶ C) (g : C ⟶ T) :
+    dgAlgebraMap A (f ≫ g) = (dgAlgebraMap A f).comp (dgAlgebraMap A g)
+
+def strictModuleRestrict_idIso (X : (operad A).Algebra) :
+    FunctorIso (strictModuleRestrict (𝟙 X)) (𝟙 (strictModuleInfinity A X))
+
+def strictModuleRestrict_compIso {X Y Z : (operad A).Algebra} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    FunctorIso (strictModuleRestrict g ≫ strictModuleRestrict f)
+      (strictModuleRestrict (f ≫ g))
+
+def strictModuleExtend_idIso (X : (operad A).Algebra) :
+    FunctorIso (strictModuleExtend (𝟙 X)) (𝟙 (strictModuleInfinity A X))
+
+def strictModuleExtend_compIso {X Y Z : (operad A).Algebra} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    FunctorIso (strictModuleExtend (f ≫ g))
+      (strictModuleExtend f ≫ strictModuleExtend g)
+```
+
+`SerrePositivity/EInfinity/BarrattEccles/Modules/StrictUnderlyingComparison.lean`：
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.Modules
+open SerrePositivity.InfinityCategories.Project.DerivedCategories
+open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+variable (A : Type u) [CommRing A]
+
+lemma constant_evaluation_closed {P Q : Complex A}
+    (f : ForgetEnrichment.of (Complex A) P ⟶ ForgetEnrichment.of (Complex A) Q) :
+    (moduleEvaluation A PUnit.{1} PUnit.unit).map ((ringConstantDG A).onClosed.map f) =
+      (closedToComplex A).map f
+
+def strictModuleResolvedUnderlyingIso (X : (operad A).Algebra) :
+    FunctorIso
+      (moduleResolution A (dgAlgebraCategory A ((assocForget A).obj X)) ≫ strictModuleUnderlying A X)
+      (N (moduleEvaluationDG A (dgAlgebraCategory A ((assocForget A).obj X))
+        (Opposite.op DGAlgebraPoint.star)) ≫
+        dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
+          (semifreePointEquivalence A).hom)
+
+def strictModuleUnitUnderlyingIso (X : (operad A).Algebra) :
+    VertexIso ((strictModuleUnderlying A X).app (Opposite.op ⦋0⦌) (strictModuleUnit A X))
+      ((complexDerivedEvaluation A).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ X.carrier))
+```
