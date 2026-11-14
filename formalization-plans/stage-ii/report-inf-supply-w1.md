@@ -5598,3 +5598,26 @@ E01本体の指定比較射の可逆性は未了で、済み数には含めな�
 ログ：`/tmp/is-w1/left-kan-evaluation/`。検証済み累計133本・10,781行。
 任意の候補Lと元のβを保ち、同じ評価後の単位の左Kan条件を結論する。
 E01本体は未了。次は§55.4の元の局所インスタンスを使う指定単位・正方形の比較を検証する。
+
+### 55.6 指定単位回収式の評価に使う交換則（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存の正規化した射作用の合成則と内部前合成の自然性を合成する法則。
+`homWeightYonedaLeftKanComparison_fac` の同じ射を点評価するために使う。
+
+```lean
+lemma postcompose_precomposeFunctorHom_heq {A B X Y : SSet.{u}}
+    (k : B ⟶ A) (q : X ⟶ Y) {F G : A ⟶ X} (α : FunctorHom F G) :
+    HEq (postcomposeFunctorHom q (precomposeFunctorHom k α))
+      (precomposeFunctorHom k (postcomposeFunctorHom q α))
+```
+
+### 55.7 前後合成交換則の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.6 の対象ビルド成功（5,449 jobs）、新しい環境の1宣言の小監査成功、標準三公理のみ。
+計算上限は不変。ログは `/tmp/is-w1/whisker-interchange/build-2.log`。
+今回41行、検証済み累計134本・10,822行。E01本体は未了。
+§55.4 の二本は kernel の計算上限に達しており、未検証のまま保持する。
