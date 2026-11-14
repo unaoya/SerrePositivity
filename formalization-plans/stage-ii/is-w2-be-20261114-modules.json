@@ -17,5 +17,11 @@
   "SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedCone",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbePointComparison"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbePointComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeNativeHomComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedConeNaturality",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSourceComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomInfinity",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeHomInfinityComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotAlgebraHomInfinityComparison"
 ]

@@ -9480,3 +9480,156 @@ theorem strictBETotUniversalWeightedCone_naturality
 同時に整理券一枚、`--class impl --wait 3600`。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。新規200行超のファイルなし。これは保存点であり、承認待ちや外枠による停止ではない。
 
 3b-4新規は **19モジュール・1097行**（今回218行、共通二本を含む。外枠15,000行）。登録候補JSONにも共通二本を記録し、BSやG10の登録候補と混ぜない。次は元の試験対象とprobeのnative Homの始点を合わせ、同じ普遍錐・制限射へ接続する。/goalはactive。
+
+
+## 165. 元の全BE図式と正本Hom∞の全比較・普遍錐の全自然性（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R02・R03の元の全Hom比較・源移送・単位自然性まで。native join錐・極限性はまだ未完了。
+
+### 165.1 同じ全単体と同じ源を保持する
+
+§164.3で未検証だった `strictBETotUniversalWeightedCone_naturality` は、**報告した型のまま閉じた**。同じ全frame族の対象表示と同じ計算対象の反対表示を小さな等式で正規化してから、既存のmateの単位則を適用した。計算上限は変更していない。独立な二つの構成を同じものだと仮定することも、全自然性を点ごとの等式に置き換えることもしていない。
+
+元のprobe比較の実辺が与える源の頂点同型と、既存の `pinchedPrecomposeEquivalence` を用い、元の任意の試験対象に対する実right-frame Homから同じnative pinched Homへの無条件の全空間同値を得た。その頂点同型の順射は元のprobe辺の同じ類であり、実比較の順射は同じframe比較と同じprobe比較の逆による前合成。
+
+さらに既存 `FrameHom.rightFrameTerminalHomIso`（原本Yonedaの全比較を代入済み）を、既存六辺の全coherent比較と合成。元のright-frame Homの全標的図式から正本 `homInfinityCovariant` への**全FunctorIso**を得た。probe比較の源同型の反転・宇宙持ち上げを元のco-Yonedaで写すことで、こちらも元の任意の試験対象に無条件化。点ごとの逆を選んで自然だと仮定していない。
+
+モデル相対圏のAsSmall表示から元の全代数のnerveへの比較ではHom宇宙が異なるため、その包含を元の全nerve上で直接記述した。指定modelSourceへの合成は、元の `algebraCAlgSource` と**全単体で厳密に等しい**。この一致を使って全Hom∞比較を元の全代数源へ戻し、さらに元の同じstrict BE余単体図式の全nerveへ前合成した。
+
+### 165.2 今回の検証済みの型
+
+共通：`A : Type u`、`[CommRing A]`。普遍錐の全自然性には `K : Type u`、`[SmallCategory K]`。局所の模型とfactorizationは既存と同じ具体的なもの。源cofibrancyを要求する欄と、同じprobeで無条件化した欄を区別する。
+
+`StrictDiagramTotProbeNativeHomComparison`（65行）：
+
+```lean
+def strictBETotProbeSourceIso (X : (operad A).Algebra) :
+    VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (framedLimitProbe A X)))
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+
+theorem strictBETotProbeSourceIso_hom (X : (operad A).Algebra) :
+    (strictBETotProbeSourceIso A X).hom = Truncated.HomotopyCategory.homMk
+      ((nerve.edgeMk (framedLimitProbeComparison A X)).map (algebraCAlgSource A)).toTruncated
+
+def strictBETotProbeNativeHomEquivalence (X Y : (operad A).Algebra) :
+    QCatEquivalence
+      ((SSet.uliftFunctor.{u+1,u}).obj
+        ((rightFrameHom (rightFrameFamily A) (framedLimitProbe A X)).obj Y))
+      (pinchedHom ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))
+
+theorem strictBETotProbeNativeHomEquivalence_hom (X Y : (operad A).Algebra) :
+    (strictBETotProbeNativeHomEquivalence A X Y).hom =
+      (strictBETotRightFramePinchedEquivalence A (framedLimitProbe A X) Y).hom ≫
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))
+          (strictBETotProbeSourceIso A X).inv
+```
+
+`StrictDiagramTotUniversalWeightedConeNaturality`（45行）：
+
+```lean
+theorem strictBETotFrameDiagram_obj (F : K ⥤ (operad A).Algebra) :
+    (rightFrameDiagramFamily A K).obj (op F) = rightFrameDiagram A K F
+
+theorem strictBETotFunctor_obj_op (F : K ⥤ (operad A).Algebra) :
+    op ((framedLimitFunctor A K).obj F) =
+      (FrameWeightRealization.functor Kᵒᵖ
+        ((rightFrameDiagramFamily A K).obj (op F))).obj
+          (HomotopyWeight.framedLimitWeight K)
+
+theorem strictBETotUniversalWeightedCone_naturality
+    {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    strictBETotUniversalWeightedCone A K F ≫
+      ((FrameWeightRealization.homFamily Kᵒᵖ).map
+        ((rightFrameDiagramFamily A K).map f.op).op).app
+          (op ((framedLimitFunctor A K).obj F)) =
+      strictBETotUniversalWeightedCone A K G ≫
+        (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K G)).map
+          (((framedLimitFunctor A K).map f).op)
+```
+
+`StrictDiagramTotModelSourceComparison`（40行）：
+
+```lean
+def strictBETotModelUpNerve :
+    nerve (operad A).Algebra ⟶
+      nerve (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+        (operad A).Algebra).category
+
+theorem strictBETotModelSource_up :
+    strictBETotModelUpNerve A ≫ strictBETotModelSource A = algebraCAlgSource A
+```
+
+`StrictDiagramTotFrameHomInfinity`（43行）：
+
+```lean
+def strictBETotFrameHomInfinityIso (X : (operad A).Algebra) [IsCofibrant X] :
+    FunctorIso
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject X)
+        (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelSource A) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+```
+
+`StrictDiagramTotProbeHomInfinityComparison`（57行）：
+
+```lean
+def strictBETotProbeHomInfinitySourceIso (X : (operad A).Algebra) :
+    FunctorIso
+      (homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (framedLimitProbe A X))))
+      (homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex X)))
+
+def strictBETotProbeFrameHomInfinityIso (X : (operad A).Algebra) :
+    FunctorIso
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject
+          (framedLimitProbe A X)) (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelSource A) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+```
+
+`StrictDiagramTotAlgebraHomInfinityComparison`（64行）：
+
+```lean
+def strictBEAlgebraProbeHomInfinityIso (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+        FrameHom.rightFrameHammockCoherentDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject
+            (framedLimitProbe A X)) (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (algebraCAlgSource A) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+
+def strictBETotDiagramProbeHomInfinityIso
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra)
+    (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBECosimplicialNerve A F) ≫
+        (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+          FrameHom.rightFrameHammockCoherentDiagram
+            ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject
+              (framedLimitProbe A X)) (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBECosimplicialDiagram A F) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+```
+
+### 165.3 検収
+
+217は先頭の整理券で調整役の監査を待ち、同じ実ハンドル39750を生存確認し続けた。再起動・整理券の重複発行なし。最終 **9,818 jobs・終了0**、新規全20本の小監査 **123（§164の113に新規10）宣言・標準三公理のみ**。
+
+218はその終了0・返却後に次の一枚を発行し、残る五本と必要な既存依存だけを対象ビルド。**10,583 jobs・終了0**、新規全25本の小監査 **166（2・7・3・9・10・4・10・6・7・6・13・8・5・9・1・1・7・3・2・10・4・4・10・11・14）宣言・標準三公理のみ**。実ハンドル80009の終了0を確認。鍵返却済み。ログ `/private/tmp/isw2-build217.log`・`218.log`、最終小監査 `/private/tmp/AuditISW2BEHomInfinity.lean`。
+
+個別検査でprobeのcofibrancyを型推論へ渡す必要、AsSmall包含のHom宇宙の違い、Functor.hextの射の異種等式を明示する必要を検出して修正した。既存依存を一時合併した検査では `stdSimplex` の名前衝突があったため一時ファイルだけを完全修飾し、既存ソースを変えなかった。最終218は各実モジュールを独立にビルドし、合併監査も成功した。これにより一時合併検査だけから成功を推測していない。
+
+sorry・独自公理0。計算上限の変更なし。`--class impl --wait 3600`、同時整理券一枚、ビルド・小監査の間だけ鍵を保持。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+3b-4の検証済み **25モジュール・1411行**（今回314行、共通二本を含む。外枠15,000行）。新規200行超のファイルなし。登録候補は同じBE用JSONへ追記。R02・R03のnative錐・極限性を完成とは数えず、次の接続は重み付きframe錐とnative切断の間の比較。/goalはactive。
