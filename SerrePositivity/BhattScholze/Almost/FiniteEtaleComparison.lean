@@ -4,7 +4,8 @@ module
 public meta import SerrePositivity.Util.Citation
 public import Mathlib.Algebra.Algebra.Subalgebra.Pi
 public import Mathlib.RingTheory.Finiteness.Cardinality
-public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit
+public import SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 
@@ -30,7 +31,7 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Almost
 
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 
 variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
 
@@ -242,7 +243,7 @@ private theorem splitLocalizationRange_complete (p : ℕ) [Fact p.Prime]
     · intro hx
       obtain ⟨⟨y, n, rfl⟩, hn⟩ := (IsLocalization.map_eq_zero_iff (.powers g) L x).mp hx
       let : IsReduced R := hR.isReduced
-      exact Andre.Transfinite.mul_eq_zero_of_pow_mul_eq_zero_of_reduced g x n hn
+      exact _root_.SerrePositivity.CommutativeAlgebra.mul_eq_zero_of_pow_mul_eq_zero_of_reduced g x n hn
     · intro hx
       exact (IsLocalization.map_eq_zero_iff (.powers g) L x).mpr ⟨⟨g, 1, pow_one g⟩, hx⟩
   let e := l.quotKerEquivRange.symm ≪≫ₗ

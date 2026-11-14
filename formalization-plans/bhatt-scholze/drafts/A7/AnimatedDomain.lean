@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.AnimatedDomain（仮。原典 Def 8.2 の定義域「導来 p 完備な animated R 代数」）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.AnimatedDomain（仮。原典 Def 8.2 の定義域「導来 p 完備な animated R 代数」）
 -- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.1・§5（配置、W9-II-24）、単位 A7-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates

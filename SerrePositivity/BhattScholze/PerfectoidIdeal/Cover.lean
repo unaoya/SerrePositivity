@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
-public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid
 public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 
 /-! # perfectoid イデアルと互換根のイデアル、被覆からの貼り合わせ
@@ -32,24 +32,24 @@ section PerfectoidIdealCompatibleRootsPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity
-open BhattScholze
+open _root_.SerrePositivity.BhattScholze
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (ρ : ℕ → R)
     (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
 include hρ
 
 /-- The actual B3 kernel is the kernel of the actual completed root-ideal quotient map. -/
-theorem perfectoidIdeal_eq_compatibleRootCompletion_kernel :
-    perfectoidIdeal R p hR (ρ 0) = RingHom.ker
-      ((algebraMap (R ⧸ SerrePositivity.compatibleRootIdeal ρ) (CompatibleRootCompletion p ρ)).comp
+theorem BhattScholze.Almost.perfectoidIdeal_eq_compatibleRootCompletion_kernel :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) = RingHom.ker
+      ((algebraMap (R ⧸ SerrePositivity.compatibleRootIdeal ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ)).comp
         (Ideal.Quotient.mk (SerrePositivity.compatibleRootIdeal ρ))) := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {ρ 0}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (ρ 0))
-  have hf := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {ρ 0}) p hR
-  have hg := compatibleRootCompletionMap_isPerfectoidization hR ρ hρ
-  have he := IsPerfectoidization.ker_comp_eq p hf hg (Ideal.Quotient.mk (Ideal.span {ρ 0}))
-  have hc : (compatibleRootCompletionMap p ρ).comp (Ideal.Quotient.mk (Ideal.span {ρ 0})) =
-      (algebraMap (R ⧸ SerrePositivity.compatibleRootIdeal ρ) (CompatibleRootCompletion p ρ)).comp
+  have hf := _root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {ρ 0}) p hR
+  have hg := _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap_isPerfectoidization hR ρ hρ
+  have he := _root_.SerrePositivity.IsPerfectoidization.ker_comp_eq p hf hg (Ideal.Quotient.mk (Ideal.span {ρ 0}))
+  have hc : (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ).comp (Ideal.Quotient.mk (Ideal.span {ρ 0})) =
+      (algebraMap (R ⧸ SerrePositivity.compatibleRootIdeal ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ)).comp
         (Ideal.Quotient.mk (SerrePositivity.compatibleRootIdeal ρ)) := by
     ext x
     rfl
@@ -57,8 +57,8 @@ theorem perfectoidIdeal_eq_compatibleRootCompletion_kernel :
   exact he
 
 /-- At every p-power precision, elements of the perfectoid ideal lie in the root ideal. -/
-theorem perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow (k : ℕ) :
-    perfectoidIdeal R p hR (ρ 0) ≤ SerrePositivity.compatibleRootIdeal ρ ⊔
+theorem BhattScholze.Almost.perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow (k : ℕ) :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) ≤ SerrePositivity.compatibleRootIdeal ρ ⊔
       Ideal.span {(p : R) ^ k} := by
   let J := SerrePositivity.compatibleRootIdeal ρ
   let Q := R ⧸ J
@@ -66,8 +66,8 @@ theorem perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow (k : ℕ) :
   let P : Ideal Q := Ideal.span {(p : Q)}
   let K : Ideal R := Ideal.span {(p : R) ^ k}
   intro x hx
-  rw [perfectoidIdeal_eq_compatibleRootCompletion_kernel R p hR ρ hρ] at hx
-  change algebraMap Q (CompatibleRootCompletion p ρ) (q x) = 0 at hx
+  rw [_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_eq_compatibleRootCompletion_kernel R p hR ρ hρ] at hx
+  change algebraMap Q (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ) (q x) = 0 at hx
   have hy := congrArg (AdicCompletion.evalₐ P k) hx
   simp only [AdicCompletion.algebraMap_apply, map_zero] at hy
   have hmem : q x ∈ P ^ k := Ideal.Quotient.eq_zero_iff_mem.mp hy
@@ -85,42 +85,42 @@ theorem perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow (k : ℕ) :
   exact (sup_comm K J ▸ hxmap)
 
 /-- The roots themselves lie in the original B3 perfectoid ideal. -/
-theorem compatibleRootIdeal_le_perfectoidIdeal :
-    SerrePositivity.compatibleRootIdeal ρ ≤ perfectoidIdeal R p hR (ρ 0) := by
-  rw [perfectoidIdeal_eq_compatibleRootCompletion_kernel R p hR ρ hρ]
+theorem BhattScholze.Almost.compatibleRootIdeal_le_perfectoidIdeal :
+    SerrePositivity.compatibleRootIdeal ρ ≤ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) := by
+  rw [_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_eq_compatibleRootCompletion_kernel R p hR ρ hρ]
   intro x hx
   change algebraMap (R ⧸ SerrePositivity.compatibleRootIdeal ρ)
-    (CompatibleRootCompletion p ρ) (Ideal.Quotient.mk _ x) = 0
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ) (Ideal.Quotient.mk _ x) = 0
   rw [Ideal.Quotient.eq_zero_iff_mem.mpr hx, map_zero]
 
 /-- The ideal and the explicit root ideal agree to every p-power precision. -/
-theorem perfectoidIdeal_sup_p_pow_eq_compatibleRootIdeal (k : ℕ) :
-    perfectoidIdeal R p hR (ρ 0) ⊔ Ideal.span {(p : R) ^ k} =
+theorem BhattScholze.Almost.perfectoidIdeal_sup_p_pow_eq_compatibleRootIdeal (k : ℕ) :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) ⊔ Ideal.span {(p : R) ^ k} =
       SerrePositivity.compatibleRootIdeal ρ ⊔ Ideal.span {(p : R) ^ k} := by
   apply le_antisymm
-  · exact sup_le (perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k) le_sup_right
-  · exact sup_le_sup (compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ) le_rfl
+  · exact sup_le (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k) le_sup_right
+  · exact sup_le_sup (_root_.SerrePositivity.BhattScholze.Almost.compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ) le_rfl
 
 /-- The images in the actual R/p^k quotient agree, including k = 0. -/
-theorem perfectoidIdeal_mod_p_pow_eq_compatibleRootIdeal (k : ℕ) :
-    (perfectoidIdeal R p hR (ρ 0)).map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ k})) =
+theorem BhattScholze.Almost.perfectoidIdeal_mod_p_pow_eq_compatibleRootIdeal (k : ℕ) :
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0)).map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ k})) =
       (SerrePositivity.compatibleRootIdeal ρ).map
         (Ideal.Quotient.mk (Ideal.span {(p : R) ^ k})) := by
   apply (Ideal.map_eq_iff_sup_ker_eq_of_surjective
     (Ideal.Quotient.mk (Ideal.span {(p : R) ^ k})) Ideal.Quotient.mk_surjective).mpr
   rw [Ideal.mk_ker]
-  exact perfectoidIdeal_sup_p_pow_eq_compatibleRootIdeal R p hR ρ hρ k
+  exact _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_sup_p_pow_eq_compatibleRootIdeal R p hR ρ hρ k
 
 /-- Any ideal containing p^k contains the perfectoid ideal exactly when it contains every root. -/
-theorem perfectoidIdeal_le_iff_compatible_roots (J : Ideal R) (k : ℕ)
+theorem BhattScholze.Almost.perfectoidIdeal_le_iff_compatible_roots (J : Ideal R) (k : ℕ)
     (hp : (p : R) ^ k ∈ J) :
-    perfectoidIdeal R p hR (ρ 0) ≤ J ↔ ∀ n, ρ n ∈ J := by
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) ≤ J ↔ ∀ n, ρ n ∈ J := by
   constructor
   · intro h n
-    exact h ((compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
+    exact h ((_root_.SerrePositivity.BhattScholze.Almost.compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
       (Ideal.mem_span_range_self (x := n)))
   · intro h
-    apply (perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k).trans
+    apply (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k).trans
     apply sup_le
     · apply Ideal.span_le.mpr
       rintro _ ⟨n, rfl⟩
@@ -129,12 +129,12 @@ theorem perfectoidIdeal_le_iff_compatible_roots (J : Ideal R) (k : ℕ)
 
 /-- A p-adically separated ideal quotient detects containment of the perfectoid
 ideal through the original compatible roots. -/
-theorem perfectoidIdeal_le_iff_compatible_roots_of_quotient_isHausdorff
+theorem BhattScholze.Almost.perfectoidIdeal_le_iff_compatible_roots_of_quotient_isHausdorff
     (J : Ideal R) [IsHausdorff (Ideal.span {(p : R ⧸ J)}) (R ⧸ J)] :
-    perfectoidIdeal R p hR (ρ 0) ≤ J ↔ ∀ n, ρ n ∈ J := by
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) ≤ J ↔ ∀ n, ρ n ∈ J := by
   constructor
   · intro h n
-    exact h ((compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
+    exact h ((_root_.SerrePositivity.BhattScholze.Almost.compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
       (Ideal.mem_span_range_self (x := n)))
   · intro h s hs
     let Q := R ⧸ J
@@ -148,7 +148,7 @@ theorem perfectoidIdeal_le_iff_compatible_roots_of_quotient_isHausdorff
       (inferInstance : IsHausdorff (Ideal.span {(p : Q)}) Q) (q s)
     intro k
     obtain ⟨y, hy, z, hz, hsum⟩ := Submodule.mem_sup.mp
-      (perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k hs)
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k hs)
     have hqy : q y = 0 := Ideal.Quotient.eq_zero_iff_mem.mpr (hroot hy)
     have hqz : q z ∈ (Ideal.span {(p : Q)}) ^ k := by
       have hm := Ideal.mem_map_of_mem q hz
@@ -162,19 +162,19 @@ theorem perfectoidIdeal_le_iff_compatible_roots_of_quotient_isHausdorff
 
 /-- On an arbitrary p-power torsion module, almost zero is detected by
 the action of each compatible root. -/
-theorem perfectoidIdeal_annihilates_iff_compatible_roots
+theorem BhattScholze.Almost.perfectoidIdeal_annihilates_iff_compatible_roots
     (M : Type u) [AddCommGroup M] [Module R M] (k : ℕ)
     (hM : ∀ x : M, (p : R) ^ k • x = 0) :
-    (∀ s ∈ perfectoidIdeal R p hR (ρ 0), ∀ x : M, s • x = 0) ↔
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0), ∀ x : M, s • x = 0) ↔
       ∀ n, ∀ x : M, ρ n • x = 0 := by
   constructor
   · intro h n x
-    exact h _ ((compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
+    exact h _ ((_root_.SerrePositivity.BhattScholze.Almost.compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
       (Ideal.mem_span_range_self (x := n))) x
   · intro h s hs x
     have hroots : ∀ n, ρ n ∈ Module.annihilator R M :=
       fun n => Module.mem_annihilator.mpr (h n)
-    have hI := (perfectoidIdeal_le_iff_compatible_roots R p hR ρ hρ
+    have hI := (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_iff_compatible_roots R p hR ρ hρ
       (Module.annihilator R M) k (Module.mem_annihilator.mpr hM)).mpr hroots
     exact Module.mem_annihilator.mp (hI hs) x
 
@@ -186,46 +186,46 @@ section PerfectoidIdealCoverPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity
-open BhattScholze
+open _root_.SerrePositivity.BhattScholze
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p)
 
 /-- Any map to a perfectoid ring killing g kills the original perfectoid ideal. -/
-theorem perfectoidIdeal_le_ker_of_eq_zero {T : Type u} [CommRing T]
-    (hT : IsIntegralPerfectoid T p) (f : R →+* T) (g : R) (hg : f g = 0) :
-    perfectoidIdeal R p hR g ≤ RingHom.ker f := by
+theorem BhattScholze.Almost.perfectoidIdeal_le_ker_of_eq_zero {T : Type u} [CommRing T]
+    (hT : _root_.SerrePositivity.IsIntegralPerfectoid T p) (f : R →+* T) (g : R) (hg : f g = 0) :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g ≤ RingHom.ker f := by
   let k : R ⧸ Ideal.span {g} →+* T := Ideal.Quotient.lift _ f
     (fun a ha => ((Ideal.span_singleton_le_iff_mem (RingHom.ker f)).mpr hg) ha)
   obtain ⟨l, hl, _⟩ :=
-    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).2 T hT k
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).2 T hT k
   intro x hx
-  change toQuotientPerfectoidization R (Ideal.span {g}) p hR
+  change _root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR
     (Ideal.Quotient.mk _ x) = 0 at hx
   have he := RingHom.congr_fun hl (Ideal.Quotient.mk (Ideal.span {g}) x)
-  change l (toQuotientPerfectoidization R (Ideal.span {g}) p hR
+  change l (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR
     (Ideal.Quotient.mk _ x)) = f x at he
   rw [hx, map_zero] at he
   exact he.symm
 
 /-- A rooted cover controls the original ideal to every p-power precision. -/
-theorem perfectoidIdeal_le_compatibleRootFamilyIdeal_sup_p_pow
+theorem BhattScholze.Almost.perfectoidIdeal_le_compatibleRootFamilyIdeal_sup_p_pow
     {σ : Type u} (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    (g : R) (N : ℕ) (hcover : g ^ N ∈ compatibleRootFamilyZeroIdeal ρ) (k : ℕ) :
-    perfectoidIdeal R p hR g ≤ compatibleRootFamilyIdeal ρ ⊔ Ideal.span {(p : R) ^ k} := by
-  let J := compatibleRootFamilyIdeal ρ
+    (g : R) (N : ℕ) (hcover : g ^ N ∈ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ) (k : ℕ) :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g ≤ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ ⊔ Ideal.span {(p : R) ^ k} := by
+  let J := _root_.SerrePositivity.compatibleRootFamilyIdeal ρ
   let Q := R ⧸ J
   let q : R →+* Q := Ideal.Quotient.mk J
-  let P := CompatibleRootFamilyCompletion p ρ
+  let P := _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ
   let κ : R →+* P := (algebraMap Q P).comp q
-  have hP : IsIntegralPerfectoid P p := compatibleRootFamilyCompletion_isIntegralPerfectoid hR ρ hρ
+  have hP : _root_.SerrePositivity.IsIntegralPerfectoid P p := _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletion_isIntegralPerfectoid hR ρ hρ
   let := hP.isReduced P p
   have hg : κ g = 0 := by
     apply IsReduced.eq_zero
     refine ⟨N, ?_⟩
     rw [← map_pow]
     change algebraMap Q P (q (g ^ N)) = 0
-    rw [Ideal.Quotient.eq_zero_iff_mem.mpr (compatibleRootFamilyZeroIdeal_le ρ hcover), map_zero]
-  have hI := perfectoidIdeal_le_ker_of_eq_zero R p hR hP κ g hg
+    rw [Ideal.Quotient.eq_zero_iff_mem.mpr (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal_le ρ hcover), map_zero]
+  have hI := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_ker_of_eq_zero R p hR hP κ g hg
   intro x hx
   have hz := hI hx
   change algebraMap Q P (q x) = 0 at hz
@@ -247,33 +247,33 @@ theorem perfectoidIdeal_le_compatibleRootFamilyIdeal_sup_p_pow
   exact sup_comm K J ▸ hxmap
 
 /-- The local perfectoid ideals generate the original one modulo each p power. -/
-theorem perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover
+theorem BhattScholze.Almost.perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover
     {σ : Type u} (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    (g : R) (N : ℕ) (hcover : g ^ N ∈ compatibleRootFamilyZeroIdeal ρ) (k : ℕ) :
-    perfectoidIdeal R p hR g ≤ (⨆ s, perfectoidIdeal R p hR (ρ s 0)) ⊔
+    (g : R) (N : ℕ) (hcover : g ^ N ∈ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ) (k : ℕ) :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g ≤ (⨆ s, _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0)) ⊔
       Ideal.span {(p : R) ^ k} := by
-  apply (perfectoidIdeal_le_compatibleRootFamilyIdeal_sup_p_pow R p hR ρ hρ g N hcover k).trans
+  apply (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_compatibleRootFamilyIdeal_sup_p_pow R p hR ρ hρ g N hcover k).trans
   apply sup_le_sup _ le_rfl
   apply Ideal.span_le.mpr
   rintro _ ⟨⟨s, n⟩, rfl⟩
-  exact (le_iSup (fun s => perfectoidIdeal R p hR (ρ s 0)) s)
-    ((compatibleRootIdeal_le_perfectoidIdeal R p hR (ρ s) (hρ s))
+  exact (le_iSup (fun s => _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0)) s)
+    ((_root_.SerrePositivity.BhattScholze.Almost.compatibleRootIdeal_le_perfectoidIdeal R p hR (ρ s) (hρ s))
       (Ideal.mem_span_range_self (x := n)))
 
 /-- Local almost annihilation glues on arbitrary p-power-torsion modules.
 The cover need not be finite and the test module need not be finitely generated. -/
-theorem perfectoidIdeal_annihilates_of_rooted_cover
+theorem BhattScholze.Almost.perfectoidIdeal_annihilates_of_rooted_cover
     {σ : Type u} (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    (g : R) (N : ℕ) (hcover : g ^ N ∈ compatibleRootFamilyZeroIdeal ρ)
+    (g : R) (N : ℕ) (hcover : g ^ N ∈ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ)
     (M : Type u) [AddCommGroup M] [Module R M] (k : ℕ)
     (hM : ∀ x : M, (p : R) ^ k • x = 0)
-    (hlocal : ∀ s, ∀ a ∈ perfectoidIdeal R p hR (ρ s 0), ∀ x : M, a • x = 0) :
-    ∀ a ∈ perfectoidIdeal R p hR g, ∀ x : M, a • x = 0 := by
-  have hsum : (⨆ s, perfectoidIdeal R p hR (ρ s 0)) ≤ Module.annihilator R M :=
+    (hlocal : ∀ s, ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0), ∀ x : M, a • x = 0) :
+    ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ x : M, a • x = 0 := by
+  have hsum : (⨆ s, _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0)) ≤ Module.annihilator R M :=
     iSup_le (fun s a ha => Module.mem_annihilator.mpr (hlocal s a ha))
   have hp : Ideal.span {(p : R) ^ k} ≤ Module.annihilator R M :=
     (Ideal.span_singleton_le_iff_mem _).mpr (Module.mem_annihilator.mpr hM)
-  have hI := (perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover R p hR ρ hρ g N hcover k).trans
+  have hI := (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover R p hR ρ hρ g N hcover k).trans
     (sup_le hsum hp)
   exact fun a ha => Module.mem_annihilator.mp (hI ha)
 
@@ -285,39 +285,39 @@ section PerfectoidIdealPullbackPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 
 /-- An actual ring pullback with a perfectoid closed-side algebra gives almost
 annihilation of the top map over the original perfectoid base. -/
-theorem perfectoidIdeal_ker_coker_annihilated_of_isPullback
+theorem BhattScholze.Almost.perfectoidIdeal_ker_coker_annihilated_of_isPullback
     {R A B C D : Type u} [CommRing R] [CommRing A] [CommRing B]
     [CommRing C] [CommRing D] [Algebra R A] [Algebra R B] [Algebra R C] [Algebra R D]
-    {p : ℕ} [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    {p : ℕ} [Fact p.Prime] (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p)
     (f : A →ₐ[R] B) (l : A →ₐ[R] C) (r : B →ₐ[R] D) (b : C →ₐ[R] D)
     (hPB : IsPullback (CommRingCat.ofHom f.toRingHom) (CommRingCat.ofHom l.toRingHom)
       (CommRingCat.ofHom r.toRingHom) (CommRingCat.ofHom b.toRingHom))
-    (hC : IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0) :
-    (∀ s ∈ perfectoidIdeal R p hR g, ∀ x : f.toLinearMap.ker, s • x = 0) ∧
-    (∀ s ∈ perfectoidIdeal R p hR g, ∀ y : B ⧸ f.toLinearMap.range, s • y = 0) := by
-  have hI := perfectoidIdeal_le_ker_of_eq_zero R p hR hC (algebraMap R C) g hg
-  exact ⟨fun s hs => (algHom_ker_coker_annihilated_of_isPullback f l r b hPB s (hI hs)).1,
-    fun s hs => (algHom_ker_coker_annihilated_of_isPullback f l r b hPB s (hI hs)).2⟩
+    (hC : _root_.SerrePositivity.IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0) :
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ x : f.toLinearMap.ker, s • x = 0) ∧
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ y : B ⧸ f.toLinearMap.range, s • y = 0) := by
+  have hI := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_ker_of_eq_zero R p hR hC (algebraMap R C) g hg
+  exact ⟨fun s hs => (_root_.SerrePositivity.algHom_ker_coker_annihilated_of_isPullback f l r b hPB s (hI hs)).1,
+    fun s hs => (_root_.SerrePositivity.algHom_ker_coker_annihilated_of_isPullback f l r b hPB s (hI hs)).2⟩
 
 /-- The actual projection from the concrete fiber product is an almost
 comparison when its closed-side factor is perfectoid and kills the generator. -/
-theorem perfectoidIdeal_ker_coker_annihilated_pullbackFst
+theorem BhattScholze.Almost.perfectoidIdeal_ker_coker_annihilated_pullbackFst
     {R B C D : Type u} [CommRing R] [CommRing B] [CommRing C] [CommRing D]
     [Algebra R B] [Algebra R C] [Algebra R D]
-    {p : ℕ} [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    {p : ℕ} [Fact p.Prime] (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p)
     (r : B →ₐ[R] D) (b : C →ₐ[R] D)
-    (hC : IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0) :
-    (∀ s ∈ perfectoidIdeal R p hR g,
+    (hC : _root_.SerrePositivity.IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0) :
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
       ∀ x : (AlgHom.pullbackFst r b).toLinearMap.ker, s • x = 0) ∧
-    (∀ s ∈ perfectoidIdeal R p hR g,
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
       ∀ y : B ⧸ (AlgHom.pullbackFst r b).toLinearMap.range, s • y = 0) :=
-  perfectoidIdeal_ker_coker_annihilated_of_isPullback hR
+  _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_ker_coker_annihilated_of_isPullback hR
     (AlgHom.pullbackFst r b) (AlgHom.pullbackSnd r b) r b
-    (algHom_isPullback_pullback r b) hC g hg
+    (_root_.SerrePositivity.algHom_isPullback_pullback r b) hC g hg
 
 end SerrePositivity
 

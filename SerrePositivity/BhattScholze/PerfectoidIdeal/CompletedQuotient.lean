@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
-public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
@@ -38,32 +38,32 @@ section PerfectoidIdealCompletedMulPart
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory SerrePositivity.DerivedCompletion SerrePositivity.BhattScholze
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.BhattScholze
 attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
 
 /-- The original selected perfectoidization of the principal quotient is surjective. -/
 lemma perfectoidIdeal_quotientMap_surjective :
-    Function.Surjective (toQuotientPerfectoidization R (Ideal.span {g}) p hR) :=
-  surjective_of_isPerfectoidization_of_semiperfectoid_quotient hR
+    Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR) :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient hR
     (Ideal.Quotient.mk (Ideal.span {g})) Ideal.Quotient.mk_surjective
     (isModuleComplete_principal_quotient_natCast R p g (hR.isModuleComplete R p))
-    (toQuotientPerfectoidization R (Ideal.span {g}) p hR)
-    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR)
 
 /-- The original completed quotient product for the actual CLMST perfectoid ideal is invertible. -/
 lemma perfectoidIdeal_completedQuotientMul_map_isIso :
     IsIso ((derivedComplexCompletionFunctor R (p : R)).map
-      (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ perfectoidIdeal R p hR g)).hom) :=
-  integralPerfectoid_completedQuotientMul_isIso p R (perfectoidIdeal R p hR g) hR
-    (BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
+      (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g)).hom) :=
+  integralPerfectoid_completedQuotientMul_isIso p R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hR
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
 
 /-- The complete almost-zero modules for the actual ideal are extension closed. -/
 lemma perfectoidIdeal_completeIdealExtensionClosed :
-    CompleteIdealExtensionClosed R (p : R) (perfectoidIdeal R p hR g) :=
-  integralPerfectoid_completeIdealExtensionClosed p R (perfectoidIdeal R p hR g) hR
-    (BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
+    CompleteIdealExtensionClosed R (p : R) (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) :=
+  integralPerfectoid_completeIdealExtensionClosed p R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hR
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
 
 end SerrePositivity.BhattScholze
 
@@ -73,7 +73,7 @@ section PerfectoidIdealTorTransportPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
     (C D : Type u) [CommRing C] [CommRing D] [Algebra R C] [Algebra R D]
@@ -82,37 +82,37 @@ variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
 comparison. All test modules, exponents, positive degrees, and original scalars are retained. -/
 theorem perfectoidIdeal_powerTorsionTorInput_iff_of_almost_comparison
     (f : C →ₗ[R] D)
-    (hk : ∀ a ∈ perfectoidIdeal R p hR g, ∀ x : f.ker, a • x = 0)
-    (hc : ∀ b ∈ perfectoidIdeal R p hR g, ∀ y : D ⧸ f.range, b • y = 0) :
+    (hk : ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ x : f.ker, a • x = 0)
+    (hc : ∀ b ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ y : D ⧸ f.range, b • y = 0) :
     (∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR g,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0) ↔
     (∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR g,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism D N i (algebraMap R D s) = 0) := by
   constructor
   · intro h N k hN i hi
     exact (torCoefficientIdeal_eq_zero_iff_of_almost_comparison f
-      (perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
-      (perfectoidIdealMod_idempotent R p hR g k) i).mp (h N k hN i hi)
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g k) i).mp (h N k hN i hi)
   · intro h N k hN i hi
     exact (torCoefficientIdeal_eq_zero_iff_of_almost_comparison f
-      (perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
-      (perfectoidIdealMod_idempotent R p hR g k) i).mpr (h N k hN i hi)
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g k) i).mpr (h N k hN i hi)
 
 /-- A reverse finite free almost comparison supplies the original full Tor input,
 without assuming an almost inverse is represented by one fixed module map. -/
 theorem perfectoidIdeal_powerTorsionTorInput_of_reverse_finiteFree_comparison
     (r : ℕ) (f : (Fin r → R) →ₗ[R] C)
-    (hk : ∀ a ∈ perfectoidIdeal R p hR g, ∀ x : f.ker, a • x = 0)
-    (hc : ∀ b ∈ perfectoidIdeal R p hR g, ∀ y : C ⧸ f.range, b • y = 0) :
+    (hk : ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ x : f.ker, a • x = 0)
+    (hc : ∀ b ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ y : C ⧸ f.range, b • y = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR g,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   intro N k hN i hi s hs
   exact torCoefficientScalar_eq_zero_of_reverse_finiteFree_almost_comparison r f
-    (perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
-    (perfectoidIdealMod_idempotent R p hR g k) i hi s hs
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g k) i hi s hs
 
 end SerrePositivity.BhattScholze
 

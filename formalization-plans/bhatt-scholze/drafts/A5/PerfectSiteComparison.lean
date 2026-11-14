@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectSiteComparison（仮。原典 Prop 8.5 の主張と系。site・Lemma 4.8・比較写像は PerfectSite.lean、W9-III-09）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.PerfectSiteComparison（仮。原典 Prop 8.5 の主張と系。site・Lemma 4.8・比較写像は PerfectSite.lean、W9-III-09）
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.1・§2.2・§2.4、単位 A5-1（Lemma 8.6 の主張は A5-3 の予告）。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded

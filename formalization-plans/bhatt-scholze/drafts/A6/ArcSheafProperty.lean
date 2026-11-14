@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSheafProperty（仮。原典 Prop 8.10 の affine 版と三つの引用）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Arc.ArcSheafProperty（仮。原典 Prop 8.10 の affine 版と三つの引用）
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.2・§3.1、単位 A6-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 -- 引用 3 件の `sorry` 定理（G-A6-1a・1b・1c）は drafts/ の間は問題なし。SerrePositivity/ に入れるときは scripts/make_area_audits.py の許可一覧の更新を調整役に依頼する（main 7b8b96286）。
 module

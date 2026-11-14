@@ -1399,3 +1399,16 @@ B4用に[drafts本文の文字列の影響](bulk-b3prime/draft-body-b4-impact.js
 [適用前のmainの読み取り検査](bulk-b3prime/application-main-preflight.json)ではmain391b2a0d2、BS本体増分0、移動先衝突0。束に含む元ファイルの変更はEInfinity集約だけだった。実適用時にはmainの新しいimportを保って四つのBS固有モジュールへ追従し、基準プレビューの集約で上書きしない。
 
 引用/タグの前後のネイティブ採取は進行中。実際の枝への適用・凍結通知・root・正式全監査・full verifyは未実施であり、B3′完成とはしない。夜は通常の共有鍵bulk・wait3600・一束30分以内で続ける。
+
+
+### B3′ 適用開始・main増分の追従とroot成功（11-15 01:57〜02:06）
+
+一覧：済み 2／全体 22（うち追加 0）。[引用・タグの全件照合](bulk-b3prime/citation-comparison.json)は2,564→2,564件、欠落0・余分0・衝突0。KEY・番号・宣言名・実際の所有元・関係・理由・版を確認した。これで隔離準備の対象ビルド・全v3b・引用照合が全て通った。
+
+調整役へ「適用に入る」と通知し、main391b2a0d2を取り込んだ（merge2bbec4f28）。[適用前の全guardと適用結果](bulk-b3prime/actual-application.json)に従い、255パスへ書込み・71旧パスを削除。224モジュールの束、正式監査12本、draftsの将来の置き場所の第一行18本、層の設定だけを反映した。EInfinity集約はmainの新しいimportを保ち、BS固有の四ファイルへ至る二つの入口だけを外した。BS固有CAlg_R三本は削除せず、元の名前と型・本体を保ってBS側に置いた。
+
+層の登録は基準305本、main増分40本、一般の新ファイル1本の合計346件。既存の層・例外変更0。実作業枝の[Python層検査](bulk-b3prime/actual-layer-comparison.json)は32,043モジュール、既存の逆順46件・新規0。正式監査のモジュール集合は、分割先も含めて元の宣言の所有元を移送し、判定・axiom許可リスト・探索は保つ。
+
+最初のrootでは、BS集約に追加した十本のimportがmodule docstringの後ろになっている構文エラーを検出した。個別220対象から集約自身を除いていたため、rootで初めて見つかった。十本をヘッダに移し、importの集合が同一であることを検査した（[修正記録](bulk-b3prime/actual-aggregate-header-fix.json)）。[再実行のroot全体ビルド](bulk-b3prime/root-build-complete.json)は32,194 jobsで成功。通常の共有鍵bulk・wait3600・30分以内の束・32GB監視を用いた。
+
+検証済みプレビューとソースSHAが同じ223モジュールだけのキャッシュを原子的に複写し、旧モジュールの成果物を除去した（[記録](bulk-b3prime/verified-cache-install.json)）。main増分で異なるEInfinity集約のキャッシュと古いsetupは使わず、通常のLakeビルドで依存のtraceを検査した。原環境は保存済みsnapshotを使い、適用後の作業枝から採り直したafterとのv3bを進行中。正式全監査とfull verifyは未実行で、完了判定はまだ行わない。

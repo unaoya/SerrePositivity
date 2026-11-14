@@ -72,7 +72,7 @@ end EtaleLocusPart
 section KLFiniteComparisonExcisionPart
 
 namespace SerrePositivity.CLMST
-open BhattScholze DerivedCompletion
+open _root_.SerrePositivity.BhattScholze _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 
 /--
@@ -95,7 +95,7 @@ theorem perfectoidIdeal_powerTorsionTorInput
     letI := GenericEtale.awayAlgebra R A a
     Algebra.Etale (Localization.Away a) (Localization.Away (algebraMap R A a)) →
       ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-        ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+        ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
           torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   exact BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_finiteComparison_excision p hR
     (fun E _ _ hE _ => BhattScholze.klFiniteComparisonExcision_of_perfectoid E p hE) a f hf
@@ -107,7 +107,7 @@ end KLFiniteComparisonExcisionPart
 section FiniteStageKoszulAnnihilatorPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2
+open _root_.CategoryTheory _root_.SerrePositivity.Section2
 
 /-- The actual finite stages provide all the parameter support hypotheses for KL4/KL5. -/
 lemma finiteStageKoszul_positive_annihilator
@@ -144,7 +144,7 @@ end FiniteStageKoszulAnnihilatorPart
 section ConditionalCohomologyVanishingPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2
+open _root_.CategoryTheory _root_.SerrePositivity.Section2
 
 /-- The two conclusions of Corollary 4.0.4 follow from the explicit common inputs,
 without using the literature statement or any perfectoid existence input in the proof. -/
@@ -188,7 +188,7 @@ end ConditionalCohomologyVanishingPart
 section RPerfdCohomologyInputsPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2 IsLocalRing
+open _root_.CategoryTheory _root_.SerrePositivity.Section2 _root_.IsLocalRing
 attribute [local instance] HasDerivedCategory.standard
 
 variable (A : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -269,19 +269,19 @@ lemma rPerfd_torAlgebra_isModuleComplete (N : ModuleCat.{u} A) [Module.Finite A 
 /-- The original almost-Tor input is the actual completed-tower annihilator
 condition on algebra-valued Tor, for arbitrary test modules. -/
 lemma rPerfd_torAlgebra_annihilator_iff (N : ModuleCat.{u} A) (i : ℕ) (g : A) :
-    (∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g),
       torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
         (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ↔
       (letI := Module.compHom
         (((ModuleCat.extendScalars (algebraMap A (RPerfd A D t p hperf))).leftDerived i).obj N)
         (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-       perfectoidIdeal (CompletedTower A t p) p hperf
+       _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
          (algebraMap A (CompletedTower A t p) g) ≤ Module.annihilator (CompletedTower A t p)
            (((ModuleCat.extendScalars (algebraMap A (RPerfd A D t p hperf))).leftDerived i).obj N)) :=
   torAlgebraComparison_restricted_annihilator_iff (CompletedTower A t p)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)) N i
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)) N i
 
 /-- Both actual Tor-tower Milnor endpoints are complete over the original tower.
 The test module need not be finite or complete, and lim¹ is retained. -/
@@ -305,16 +305,16 @@ lemma rPerfd_torMilnor_endpoints_isModuleComplete (N : ModuleCat.{u} A) (i : ℕ
 lemma rPerfd_torMilnor_endpoints_annihilated (N : ModuleCat.{u} A) (i : ℕ) (g : A)
     (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
       (∀ x : L, (p : A) ^ k • x = 0) →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L i
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
-    perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
       Module.annihilator (CompletedTower A t p)
         ((ModuleCat.restrictScalars
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
             (DerivedCompletion.modulePowerTorAlgebraLimit (p : A) (RPerfd A D t p hperf) N i)) ∧
-    perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
       Module.annihilator (CompletedTower A t p)
         ((ModuleCat.restrictScalars
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
@@ -344,23 +344,23 @@ lemma rPerfd_torMilnorShortComplex_shortExact
 power-torsion tests and complete almost extension closure over the original tower. -/
 lemma rPerfd_tor_eq_zero_of_power_torsion_and_extensions (g : A)
     (hExt : DerivedCompletion.CompleteIdealExtensionClosed (CompletedTower A t p)
-      (p : CompletedTower A t p) (perfectoidIdeal (CompletedTower A t p) p hperf
+      (p : CompletedTower A t p) (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)))
     (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
       (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
     (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i) (s : CompletedTower A t p)
-    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (hs : s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) :
     torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
       (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
   DerivedCompletion.tor_eq_zero_of_power_torsion_and_complete_extensions p
     (RPerfd A D t p hperf) (CompletedTower A t p)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
     (rPerfd_isModuleComplete A t D p hperf) hExt hTor N i hi s hs
 
 /-- The original completed quotient multiplication supplies the extension input
@@ -369,23 +369,23 @@ lemma rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul (g : A)
     (hμ : IsIso ((DerivedCompletion.derivedComplexCompletionFunctor
       (CompletedTower A t p) (p : CompletedTower A t p)).map
         (boundedAboveDerivedAlgebraMul (R := CompletedTower A t p)
-          ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+          ((CompletedTower A t p) ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g))).hom))
     (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
       (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
     (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i) (s : CompletedTower A t p)
-    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (hs : s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) :
     torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
       (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
   DerivedCompletion.tor_eq_zero_of_power_torsion_and_complete_extensions p
     (RPerfd A D t p hperf) (CompletedTower A t p)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
     (rPerfd_isModuleComplete A t D p hperf)
     (DerivedCompletion.completeIdealExtensionClosed_of_completed_quotient_mul_isIso
       (p : CompletedTower A t p) _ hμ) hTor N i hi s hs
@@ -394,25 +394,25 @@ lemma rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul (g : A)
 the actual first self-Tor of the original almost quotient. -/
 lemma rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne (g : A)
     (hQ : Function.Surjective (fun x : TorModule (CompletedTower A t p) 1
-      ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+      ((CompletedTower A t p) ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g))
-      ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+      ((CompletedTower A t p) ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) => (p : CompletedTower A t p) • x))
     (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
       (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
     (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i) (s : CompletedTower A t p)
-    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (hs : s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) :
     torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
       (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
   DerivedCompletion.tor_eq_zero_of_power_torsion_and_quotientTorOne p
     (RPerfd A D t p hperf) (CompletedTower A t p)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
     (rPerfd_isModuleComplete A t D p hperf) hTor hQ N i hi s hs
 
 /-- The actual finite-stage map has the base compatibility required by the
@@ -435,13 +435,13 @@ lemma rPerfd_p_coordinate (j₀ : Fin h) (htp : t j₀ = (p : A)) :
 RPerfd. No completeness assumption is imposed on the arbitrary test module. -/
 lemma rPerfd_tor_eq_zero_of_finite (g : A)
     (hTor : ∀ (N : ModuleCat.{u} A), Module.Finite A N → ∀ (i : ℕ), 0 < i →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
     (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i)
     (s : CompletedTower A t p)
-    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (hs : s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) :
     torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
       (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
@@ -457,16 +457,16 @@ lemma rPerfd_cohomology_vanishing_of_tor_idempotent
     (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (j₀ : Fin h) (htp : t j₀ = (p : A)) (g : A)
     (hI : ∀ k : ℕ, 0 < k → IsIdempotentElem
-      ((perfectoidIdeal (CompletedTower A t p) p hperf
+      ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)).map
           (Ideal.Quotient.mk (Ideal.span {(p : CompletedTower A t p) ^ k}))))
     (hTor : ∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N j
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
     (∀ i : ℕ, i < h →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
           (RPerfd A D t p hperf)
@@ -478,7 +478,7 @@ lemma rPerfd_cohomology_vanishing_of_tor_idempotent
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p)
                 (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) := by
@@ -487,7 +487,7 @@ lemma rPerfd_cohomology_vanishing_of_tor_idempotent
     (fun n => (toRPerfd A D t p hperf n).toRingHom)
     (toRPerfd_algebraMap_A A t D p hperf)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-    (perfectoidIdeal (CompletedTower A t p) p hperf
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g))
     (p : CompletedTower A t p) j₀ (rPerfd_p_coordinate A t D p hperf j₀ htp) hI hTor
 
@@ -501,16 +501,16 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion
     (hμ : IsIso ((DerivedCompletion.derivedComplexCompletionFunctor
       (CompletedTower A t p) (p : CompletedTower A t p)).map
         (boundedAboveDerivedAlgebraMul (R := CompletedTower A t p)
-          ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+          ((CompletedTower A t p) ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g))).hom))
     (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
       (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
     (∀ i : ℕ, i < h →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
           (RPerfd A D t p hperf)
@@ -522,7 +522,7 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p)
                 (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) :=
@@ -538,7 +538,7 @@ end RPerfdCohomologyInputsPart
 section RPerfdTorBaseChangePart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2 IsLocalRing
+open _root_.CategoryTheory _root_.SerrePositivity.Section2 _root_.IsLocalRing
 attribute [local instance] HasDerivedCategory.standard
 variable (A : Type u) [CommRing A] [IsRegularLocalRing A]
     {h : ℕ} (t : Fin h → A)
@@ -550,14 +550,14 @@ variable (A : Type u) [CommRing A] [IsRegularLocalRing A]
 lemma rPerfd_power_torsion_tor_eq_zero_of_completedTower (g : A)
     (hTor : ∀ (L : ModuleCat.{u} (CompletedTower A t p)) (k : ℕ), 0 < k →
       (∀ x : L, (p : CompletedTower A t p) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
     (N : ModuleCat.{u} A) (k : ℕ) (hk : 0 < k)
     (hN : ∀ x : N, (p : A) ^ k • x = 0)
     (j : ℕ) (hj : 0 < j) (s : CompletedTower A t p)
-    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (hs : s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) :
     torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N j
       (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 := by
@@ -575,16 +575,16 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_tors
     (hμ : IsIso ((DerivedCompletion.derivedComplexCompletionFunctor
       (CompletedTower A t p) (p : CompletedTower A t p)).map
         (boundedAboveDerivedAlgebraMul (R := CompletedTower A t p)
-          ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+          ((CompletedTower A t p) ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g))).hom))
     (hTor : ∀ (L : ModuleCat.{u} (CompletedTower A t p)) (k : ℕ), 0 < k →
       (∀ x : L, (p : CompletedTower A t p) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
     (∀ i : ℕ, i < h →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
           (RPerfd A D t p hperf)
@@ -596,7 +596,7 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_tors
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p)
                 (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) :=
@@ -612,12 +612,12 @@ lemma rPerfd_cohomology_vanishing_of_tower_power_torsion
     (j₀ : Fin h) (htp : t j₀ = (p : A)) (g : A)
     (hTor : ∀ (L : ModuleCat.{u} (CompletedTower A t p)) (k : ℕ), 0 < k →
       (∀ x : L, (p : CompletedTower A t p) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
     (∀ i : ℕ, i < h →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
           (RPerfd A D t p hperf)
@@ -629,7 +629,7 @@ lemma rPerfd_cohomology_vanishing_of_tower_power_torsion
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p)
                 (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) :=
@@ -645,8 +645,8 @@ end RPerfdTorBaseChangePart
 section KLCohomologyFromExcisionPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2 IsLocalRing
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.Section2 _root_.IsLocalRing
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 
 /-- The full original low local-cohomology and all finite-stage Koszul
@@ -666,7 +666,7 @@ theorem rPerfd_cohomology_vanishing_of_finiteComparison_excision
     (hExcision : ∀ (E : Type u) [CommRing E] [Algebra (CompletedTower A t p) E],
       IsIntegralPerfectoid E p → IsAbsolutelyIntegrallyClosed E → BhattScholze.KLFiniteComparisonExcision E p) :
     (∀ i : ℕ, i < h →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
           (RPerfd A D t p hperf)
@@ -678,7 +678,7 @@ theorem rPerfd_cohomology_vanishing_of_finiteComparison_excision
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p)
                 (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) := by
@@ -706,7 +706,7 @@ section Corollary404Part
 set_option linter.unusedVariables false
 
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2
+open _root_.IsLocalRing _root_.SerrePositivity.Section2
 
 /--
 ## 概要
@@ -740,7 +740,7 @@ theorem corollary_4_0_4
     (g : A) (hg : g ≠ 0)
     (hEtale : let _ := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g))) :
-    (∀ i : ℕ, i < h → ∀ a ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    (∀ i : ℕ, i < h → ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g),
       HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
         (RPerfd A D t p hperf) (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) a) = 0) ∧
@@ -751,7 +751,7 @@ theorem corollary_4_0_4
           let _ := Module.compHom
             (koszulHomologySelf (fun j ↦ toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p)
                 (koszulHomologySelf (fun j ↦ toRPerfd A D t p hperf n (y j)) i)) := by
@@ -766,7 +766,7 @@ end Corollary404Part
 section CohomologyVanishingPart
 
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2
+open _root_.IsLocalRing _root_.SerrePositivity.Section2
 
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
@@ -792,7 +792,7 @@ theorem parameter_koszul_annihilates_of_etale (g : A) (hg : g ≠ 0)
     let _ := Module.compHom
       (koszulHomologySelf (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) i)
       (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-    perfectoidIdeal (CompletedTower A t p) p hperf
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) ≤
         Module.annihilator (CompletedTower A t p)
           (koszulHomologySelf (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) i) := by
@@ -819,7 +819,7 @@ theorem exists_perfectoidIdeal_annihilates_koszul :
         let _ := Module.compHom
           (koszulHomologySelf (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) i)
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
-        perfectoidIdeal (CompletedTower A t p) p hperf
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g) ≤
             Module.annihilator (CompletedTower A t p)
               (koszulHomologySelf (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) i) := by

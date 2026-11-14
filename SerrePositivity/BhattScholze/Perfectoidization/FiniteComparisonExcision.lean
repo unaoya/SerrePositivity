@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct
 public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Tor
@@ -22,7 +22,7 @@ KL の標準 excision の四角（`KLCanonicalExcisionSquare`）と、有限比�
 
 ## 規約
 
-旧 `CLMST/KLAicTorFromExcision`・`KLOriginalTorFromExcision` と、`CLMST/KLFiniteComparisonExcision` の証明の部分。主張 Prop 2.4.9(a)（`perfectoidIdeal_powerTorsionTorInput`）は CLMST/KoszulAnnihilation に残る。CLMST の `finiteComparison_excision`（Prop 2.4.7 の証明）は同じ述語の別証明で、論文側の統合で一本にする。
+旧 `CLMST/KLAicTorFromExcision`・`KLOriginalTorFromExcision` と、`CLMST/KLFiniteComparisonExcision` の証明の部分。主張 Prop 2.4.9(a)（`perfectoidIdeal_powerTorsionTorInput`）は CLMST/KoszulAnnihilation に残る。比較写像の Tor 消滅を CLMST の Prop 2.4.7 と Prop 2.4.9(a) へ渡す。
 
 ## 使われ方
 
@@ -36,7 +36,7 @@ universe u
 section KLAicTorFromExcisionPart
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits BhattScholze
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.BhattScholze
 set_option backward.isDefEq.respectTransparency false
 
 /-- The exact canonical excision square for the specified original units. -/
@@ -82,7 +82,7 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_aic_finiteComparison_excision
     letI := GenericEtale.awayAlgebra R A a
     Algebra.Etale (Localization.Away a) (Localization.Away (algebraMap R A a)) →
       ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-        ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+        ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
           torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   let := GenericEtale.awayAlgebra R A a
   intro hetale
@@ -115,8 +115,8 @@ end KLAicTorFromExcisionPart
 section KLOriginalTorFromExcisionPart
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
-open scoped TensorProduct
+open _root_.CategoryTheory
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 
 /-- One Andre extension is selected before all finite presentation algebras,
@@ -136,7 +136,7 @@ theorem exists_andre_extension_finiteComparison_excision_suffices
           letI := GenericEtale.awayAlgebra R A a
           Algebra.Etale (Localization.Away a) (Localization.Away (algebraMap R A a)) →
             ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-              ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+              ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
                 torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0) := by
   obtain ⟨E, hEring, hEalg, hE, hflat, haic, ρ, hρ0, hρ, hdesc⟩ :=
     BhattScholze.exists_andre_extension_descends_perfectoidIdeal_powerTorsionTorInput R p hR
@@ -169,7 +169,7 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_finiteComparison_excision
     letI := GenericEtale.awayAlgebra R A a
     Algebra.Etale (Localization.Away a) (Localization.Away (algebraMap R A a)) →
       ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-        ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+        ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
           torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   let := GenericEtale.awayAlgebra R A a
   intro hetale
@@ -184,7 +184,7 @@ end KLOriginalTorFromExcisionPart
 section PerfectoidFiniteComparisonExcisionPart
 
 namespace SerrePositivity.BhattScholze
-open DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 
 /--
@@ -230,7 +230,7 @@ end PerfectoidFiniteComparisonExcisionPart
 section CanonicalSingleTriangleBridgePart
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated BhattScholze
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.Pretriangulated _root_.SerrePositivity.BhattScholze
 attribute [local instance] HasDerivedCategory.standard
 variable {R A B C D : Type u}
     [CommRing R] [CommRing A] [CommRing B] [CommRing C] [CommRing D]

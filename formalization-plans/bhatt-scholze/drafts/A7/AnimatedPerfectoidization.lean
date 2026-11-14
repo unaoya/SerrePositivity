@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Animated（仮。原典 Def 8.2 の定義域どおりの版、Construction 7.6 (5) の相対版、Prop 8.13）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.Animated（仮。原典 Def 8.2 の定義域どおりの版、Construction 7.6 (5) の相対版、Prop 8.13）
 -- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.1・§2.2、単位 A7-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 

@@ -448,7 +448,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PDCompletionPairResidue
 
-/-! ## André A1-a：p 完備化から完備環への環射
+/-! ## André p 完備化から完備環への環射
 
 ## 概要
 
@@ -508,7 +508,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrimeAdicCompletionUniversal
 
-/-! ## André A1-a：全冪商で正則な入力による完備化の商
+/-! ## André 全冪商で正則な入力による完備化の商
 
 ## 概要
 
@@ -633,7 +633,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PrimeAdicCompletionPrincipalQuotient
 
-/-! ## André A1-a：全冪商で正則な主関係と p 完備化の交換
+/-! ## André 全冪商で正則な主関係と p 完備化の交換
 
 ## 概要
 

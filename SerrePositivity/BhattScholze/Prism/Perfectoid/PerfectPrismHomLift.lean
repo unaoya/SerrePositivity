@@ -36,7 +36,7 @@ BS 著者版 Theorem 3.10 の充満忠実性、BS 著者版 Corollary 7.3、A0�
 
 universe u v
 
-/-! ## André A1-a：p 冪近似を持つ源の環射の分離性
+/-! ## André p 冪近似を持つ源の環射の分離性
 
 ## 概要
 
@@ -134,7 +134,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectSourceAdicRigidity
 
-/-! ## André A1-a：完全な源から一般有界 prism への射の一意性
+/-! ## André 完全な源から一般有界 prism への射の一意性
 
 ## 概要
 
@@ -211,7 +211,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismBoundedTargetRigidity
 
-/-! ## André A1-a：完全な源からの環射の δ 保存性
+/-! ## André 完全な源からの環射の δ 保存性
 
 ## 概要
 
@@ -616,7 +616,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectPrismHomLift
 
-/-! ## André A1-a：完全 prism から一般有界 prism への商射の持上げ
+/-! ## André 完全 prism から一般有界 prism への商射の持上げ
 
 ## 概要
 

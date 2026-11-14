@@ -20,24 +20,24 @@ BM18 Lemma 4.4 の、完全環上の構造層での適用。
 
 universe u
 
-open CategoryTheory CategoryTheory.Limits MonoidalCategory
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 set_option backward.isDefEq.respectTransparency false
 
 /-- Tor₁ の消滅により、短完全列のテンソル積は左端でも完全になる。 -/
-theorem shortExact_tensorLeft_of_tor {V : Type u} [CommRing V] (M : Type u)
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.shortExact_tensorLeft_of_tor {V : Type u} [CommRing V] (M : Type u)
     [AddCommGroup M] [Module V M] (S : ShortComplex (ModuleCat.{u} V)) (hS : S.ShortExact)
-    (hTor : Subsingleton (TorModule V 1 M S.X₃)) :
+    (hTor : Subsingleton (_root_.SerrePositivity.TorModule V 1 M S.X₃)) :
     (S.map (tensorLeft (ModuleCat.of V M))).ShortExact := by
   let F := tensorLeft (ModuleCat.of V M)
   have hf : Function.Injective S.f := (ModuleCat.mono_iff_injective _).mp hS.mono_f
   have hg : Function.Surjective S.g := (ModuleCat.epi_iff_surjective _).mp hS.epi_g
   have he : Function.Exact S.f S.g :=
     (ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp hS.exact
-  have h := LeftDerivedLES.exact_δα F S.f.hom S.g.hom hf hg he 0
-  rw [LeftDerivedLES.α_eq_map] at h
+  have h := _root_.SerrePositivity.LeftDerivedLES.exact_δα F S.f.hom S.g.hom hf hg he 0
+  rw [_root_.SerrePositivity.LeftDerivedLES.α_eq_map] at h
   let I := (F.leftDerived 0).map (ModuleCat.ofHom S.f.hom)
   have hker (x : (F.leftDerived 0).obj (ModuleCat.of V S.X₁)) : I x = 0 → x = 0 := by
     intro hx
@@ -65,31 +65,31 @@ variable {V : Type u} [CommRing V]
 variable (P : Ideal V) [P.IsPrime]
 
 /-- Milnor 列の前半の V 線形写像（BS17 Lemma 6.3）。 -/
-def milnorInclusion : V →ₗ[V] Localization.AtPrime P × (V ⧸ P) :=
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorInclusion : V →ₗ[V] Localization.AtPrime P × (V ⧸ P) :=
   (Algebra.linearMap V (Localization.AtPrime P)).prod (Algebra.linearMap V (V ⧸ P))
 
 /-- Milnor 列の後半の V 線形写像は二つの剰余の差（BS17 Lemma 6.3）。 -/
-def milnorDifference : (Localization.AtPrime P × (V ⧸ P)) →ₗ[V] P.ResidueField :=
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorDifference : (Localization.AtPrime P × (V ⧸ P)) →ₗ[V] P.ResidueField :=
   ((IsScalarTower.toAlgHom V (Localization.AtPrime P) P.ResidueField).toLinearMap.comp
     (LinearMap.fst V _ _)) -
   ((IsScalarTower.toAlgHom V (V ⧸ P) P.ResidueField).toLinearMap.comp
     (LinearMap.snd V _ _))
 
 /-- 付値環の Milnor 列を V 加群の短複体として取る（BS17 Lemma 6.3）。 -/
-def milnorModuleComplex : ShortComplex (ModuleCat.{u} V) :=
-  ShortComplex.moduleCatMk (milnorInclusion P) (milnorDifference P) (by
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex : ShortComplex (ModuleCat.{u} V) :=
+  ShortComplex.moduleCatMk (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorInclusion P) (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorDifference P) (by
     apply LinearMap.ext
     intro x
     exact sub_self (algebraMap V P.ResidueField x))
 
 /-- 既存の Milnor 短完全列の加群版（BS17 Lemma 6.3）。 -/
-theorem milnorModuleComplex_shortExact [IsDomain V] [ValuationRing V] :
-    (milnorModuleComplex P).ShortExact := by
-  obtain ⟨hi, he, hs⟩ := valuationRing_milnorSquare P
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex_shortExact [IsDomain V] [ValuationRing V] :
+    (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex P).ShortExact := by
+  obtain ⟨hi, he, hs⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationRing_milnorSquare P
   exact ModuleCat.shortComplex_shortExact _ he hi hs
 
 /-- 完全標数 p 環の素点の剰余体は完全。 -/
-theorem perfectRing_primeResidue (p : ℕ) [Fact p.Prime] [PerfectRing V p]
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.perfectRing_primeResidue (p : ℕ) [Fact p.Prime] [PerfectRing V p]
     (hp : (p : V) = 0) : PerfectRing P.ResidueField p := by
   have hpQ : (p : V ⧸ P) = 0 := by
     rw [← map_natCast (Ideal.Quotient.mk P), hp, map_zero]
@@ -117,13 +117,13 @@ theorem perfectRing_primeResidue (p : ℕ) [Fact p.Prime] [PerfectRing V p]
 
 /-- 完全な V 代数とのテンソル積は Milnor 短完全列を保つ
 （BM18 Lemma 4.4 の、完全環上の構造層に用いる形）。 -/
-theorem milnorModuleComplex_tensor_shortExact
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex_tensor_shortExact
     [IsDomain V] [ValuationRing V] (D : Type u) [CommRing D] [Algebra V D]
     (p : ℕ) [Fact p.Prime] [PerfectRing V p] [PerfectRing D p]
     (hp : (p : V) = 0) :
-    ((milnorModuleComplex P).map (tensorLeft (ModuleCat.of V D))).ShortExact := by
-  let := perfectRing_primeResidue P p hp
-  apply shortExact_tensorLeft_of_tor D _ (milnorModuleComplex_shortExact P)
-  exact perfectRing_tor_subsingleton_of_char_eq_zero p V hp D P.ResidueField 1 (by decide)
+    ((_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex P).map (tensorLeft (ModuleCat.of V D))).ShortExact := by
+  let := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.perfectRing_primeResidue P p hp
+  apply _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.shortExact_tensorLeft_of_tor D _ (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex_shortExact P)
+  exact _root_.SerrePositivity.perfectRing_tor_subsingleton_of_char_eq_zero p V hp D P.ResidueField 1 (by decide)
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

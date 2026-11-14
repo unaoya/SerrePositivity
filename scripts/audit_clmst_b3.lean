@@ -1,5 +1,5 @@
 import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
-import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
+import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization
 import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
 import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
@@ -20,13 +20,13 @@ assert_no_sorry SerrePositivity.IsPerfectoidization.surjective_iff
 assert_no_sorry SerrePositivity.IsPerfectoidization.ker_eq
 assert_no_sorry SerrePositivity.IsPerfectoidization.ker_comp_eq
 
-assert_no_sorry SerrePositivity.QuotientPerfectoidization
-assert_no_sorry SerrePositivity.toQuotientPerfectoidization
-assert_no_sorry SerrePositivity.isPerfectoidization_toQuotientPerfectoidization
-assert_no_sorry SerrePositivity.algebraMap_quotientPerfectoidization
-assert_no_sorry SerrePositivity.algebraMap_base_quotientPerfectoidization
-assert_no_sorry SerrePositivity.quotientPerfectoidization_subsingleton
-assert_no_sorry SerrePositivity.quotientPerfectoidization_natCast_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.algebraMap_quotientPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.algebraMap_base_quotientPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.quotientPerfectoidization_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.quotientPerfectoidization_natCast_eq_zero
 
 open SerrePositivity
 
@@ -59,13 +59,13 @@ example {R : Type} [CommRing R] (p : ℕ) [Fact p.Prime]
   quotientPerfectoidization_natCast_eq_zero R _ p hR (Ideal.mem_span_singleton_self _)
 
 -- C2-3: kernel, roots, Frobenius, and torsion-factor comparisons.
-assert_no_sorry SerrePositivity.perfectoidIdeal
-assert_no_sorry SerrePositivity.span_le_perfectoidIdeal
-assert_no_sorry SerrePositivity.perfectoidIdeal_eq_top_of_isUnit
-assert_no_sorry SerrePositivity.perfectoidIdeal_mono
-assert_no_sorry SerrePositivity.perfectoidIdeal_le_of_mem
-assert_no_sorry SerrePositivity.perfectoidIdeal_p_pow_eq
-assert_no_sorry SerrePositivity.perfectoidIdeal_mul_unit_eq
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Almost.span_le_perfectoidIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_eq_top_of_isUnit
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_mono
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_of_mem
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_p_pow_eq
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_mul_unit_eq
 assert_no_sorry SerrePositivity.pTorsionIdeal
 assert_no_sorry SerrePositivity.mem_pTorsionIdeal
 assert_no_sorry SerrePositivity.pTorsionQuotient_isAdicComplete
@@ -73,7 +73,7 @@ assert_no_sorry SerrePositivity.IsIntegralPerfectoid.pTorsionQuotient_isAdicComp
 assert_no_sorry SerrePositivity.IsIntegralPerfectoid.pTorsionQuotient_p_mul_injective
 assert_no_sorry SerrePositivity.IsIntegralPerfectoid.pTorsionQuotient_root_mul_injective
 assert_no_sorry SerrePositivity.IsIntegralPerfectoid.surjective_pow_mod_p_quotient
-assert_no_sorry SerrePositivity.perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid
 assert_no_sorry SerrePositivity.mem_kernel_comp_quotient_of_pow_mem_span
 assert_no_sorry SerrePositivity.BhattScholze.perfectoidQuotient
 assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdealQuotientEquiv
@@ -160,7 +160,7 @@ elab "assert_cyclic_B3_dependencies" : command => do
     ``SerrePositivity.CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates]
   let allowed : List Name := []
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
-    `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
+    `SerrePositivity.BhattScholze.exists_perfectoidization_of_finite,
     `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization,
     `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
   let _seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
@@ -170,7 +170,7 @@ elab "assert_almost_B3_dependencies" : command => do
   let roots := [``SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso]
   let allowed : List Name := []
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
-    `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
+    `SerrePositivity.BhattScholze.exists_perfectoidization_of_finite,
     `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization,
     `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
   let _seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
@@ -180,4 +180,4 @@ end
 assert_cyclic_B3_dependencies
 assert_almost_B3_dependencies
 
-assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent
+assert_no_sorry SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent

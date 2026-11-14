@@ -59,12 +59,14 @@ for n in bs_special:
  if line in files[einf]:files[einf]=re.sub(r'(?m)^'+re.escape(line)+r'[ \t]*\n','',files[einf]);removed.append(n)
  assert 'public import '+n not in files[einf]
  for_aggregate='public import '+n+'\n'
- if for_aggregate not in files[bs]:files[bs]+='\n'+for_aggregate
+ if for_aggregate not in files[bs]:
+  at=files[bs].index('/-!');files[bs]=files[bs][:at]+for_aggregate+'\n'+files[bs][at:]
 audit.append({'kind':'BS-specific aggregate relocation','modules':bs_special,'removed_from_EInfinity':removed})
 # Approved publication of proved alternative endpoints; never delete unused mathematical results.
 for row in json.loads((D/'stage0-import-closure.json').read_text())['publication_targets']:
  n=modulemap.get(row['module'],row['module']);line='public import '+n+'\n'
- if line not in files[bs]:files[bs]+='\n'+line
+ if line not in files[bs]:
+  at=files[bs].index('/-!');files[bs]=files[bs][:at]+line+'\n'+files[bs][at:]
 # Comment-only approved scope outside the semantic reverse closure still needs
 # native before/after evidence and target builds. Do not invent semantic edits.
 for m in json.loads((W/'additional-doc-modules.json').read_text()):

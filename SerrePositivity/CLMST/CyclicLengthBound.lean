@@ -52,7 +52,7 @@ universe u
 section CyclicPLengthPart
 
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing
 variable (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
     (ht : ∀ j, t j ∈ maximalIdeal A)
@@ -65,17 +65,17 @@ theorem completedLength_cyclic_p_eq_zero_of_reduced
       (p : CompletedTower A t p))) (n : ℕ) :
     (RootTowerLength.completedNormalizedLength A t p ht).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p))) = 0 := by
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p))) = 0 := by
   have hp : (p : A) ∈ maximalIdeal A := hti ▸ ht i
   have hIK : ((maximalIdeal A) ^ n).map (algebraMap A (CompletedTower A t p)) ≤
       (completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) := by
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) := by
     rw [Ideal.map_pow]
     exact le_sup_left
   exact RootTowerLength.completedNormalizedLength_quotient_eq_zero_of_coordinate_roots
     A t p ht hp ((maximalIdeal A) ^ n)
     (RootTowerLength.finiteLength_quotient_maximalIdeal_pow A n) n le_rfl _ hIK i
-    (fun m ↦ (le_sup_right : perfectoidIdeal (CompletedTower A t p) p hperf
+    (fun m ↦ (le_sup_right : _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (p : CompletedTower A t p) ≤ _) (BhattScholze.completedTowerRoot_mem_perfectoidIdeal_p_of_reduced
         A t p hperf hred m i hti))
 
@@ -85,7 +85,7 @@ theorem completedLength_cyclic_p_eq_zero
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p) (n : ℕ) :
     (RootTowerLength.completedNormalizedLength A t p ht).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p))) = 0 :=
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p))) = 0 :=
   completedLength_cyclic_p_eq_zero_of_reduced A t p ht i hti hperf
     (BhattScholze.perfectoidQuotient_p_isReduced (CompletedTower A t p) p hperf) n
 
@@ -96,7 +96,7 @@ end CyclicPLengthPart
 section CyclicUnitLengthPart
 
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2 RootTowerLength
+open _root_.IsLocalRing _root_.SerrePositivity.Section2 _root_.SerrePositivity.RootTowerLength
 
 /-- 単元gの巡回商は、基底極大イデアルの任意の冪に対して長さ零。 -/
 theorem completedLength_cyclic_unit_eq_zero
@@ -107,15 +107,15 @@ theorem completedLength_cyclic_unit_eq_zero
     (g : A) (hg : IsUnit g) (n : ℕ) :
     (completedNormalizedLength A t p ht).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
       0 := by
-  have hI := perfectoidIdeal_eq_top_of_isUnit (CompletedTower A t p) p hperf
+  have hI := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_eq_top_of_isUnit (CompletedTower A t p) p hperf
     (algebraMap A (CompletedTower A t p) g) (hg.map (algebraMap A (CompletedTower A t p)))
   have htop : (completedTowerMaxIdeal A t p) ^ n ⊔
-      perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) =
       ⊤ := by rw [hI, sup_top_eq]
   let : Subsingleton (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
-      perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) :=
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) :=
     Ideal.Quotient.subsingleton_iff.mpr htop
   exact (completedNormalizedLength A t p ht).len_eq_zero_of_subsingleton _
 
@@ -127,7 +127,7 @@ section CyclicFactorReductionPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2 RootTowerLength
+open _root_.IsLocalRing _root_.SerrePositivity.Section2 _root_.SerrePositivity.RootTowerLength
 
 /-- 非零gからpの因子を有限回取り除ける。正則局所性やWitt表示は不要。 -/
 theorem exists_p_power_factor_of_nonzero
@@ -158,9 +158,9 @@ include c hg
 omit [IsLocalRing A] [IsNoetherianRing A] in
 /-- p因子を取り除くと、元のperfectoidイデアルは残りのイデアルに含まれる。 -/
 theorem perfectoidIdeal_le_of_p_power_factor :
-    perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
-      perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g') := by
-  apply perfectoidIdeal_mono
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g') := by
+  apply _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_mono
   apply Ideal.span_singleton_le_span_singleton.mpr
   refine ⟨algebraMap A (CompletedTower A t p) ((p : A) ^ c), ?_⟩
   rw [hg, map_mul, mul_comm]
@@ -173,7 +173,7 @@ end CyclicFactorReductionPart
 section CyclicPPowerLengthPart
 
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2 RootTowerLength
+open _root_.IsLocalRing _root_.SerrePositivity.Section2 _root_.SerrePositivity.RootTowerLength
 
 /-- pの冪の単元倍の場合、任意の冪の巡回長さは零。 -/
 theorem completedLength_cyclic_p_power_unit_eq_zero
@@ -184,18 +184,18 @@ theorem completedLength_cyclic_p_power_unit_eq_zero
     (g a : A) (c : ℕ) (hg : g = (p : A) ^ c * a) (ha : IsUnit a) (n : ℕ) :
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
       ((completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
       0 := by
   by_cases hc : c = 0
   · subst c
     have hga : g = a := by simpa only [pow_zero, one_mul] using hg
     exact completedLength_cyclic_unit_eq_zero A t p ht hperf g (hga ▸ ha) n
-  · have hI : perfectoidIdeal (CompletedTower A t p) p hperf
+  · have hI : _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g) =
-        perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) := by
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) := by
       rw [hg, map_mul, map_pow, map_natCast,
-        perfectoidIdeal_mul_unit_eq _ p hperf _ _ (ha.map (algebraMap A (CompletedTower A t p))),
-        perfectoidIdeal_p_pow_eq _ p hperf c (Nat.pos_of_ne_zero hc)]
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_mul_unit_eq _ p hperf _ _ (ha.map (algebraMap A (CompletedTower A t p))),
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_p_pow_eq _ p hperf c (Nat.pos_of_ne_zero hc)]
     have heq := congrArg (fun I : Ideal (CompletedTower A t p) ↦
       (completedTowerMaxIdeal A t p) ^ n ⊔ I) hI
     exact ((completedNormalizedLength A t p ht).len_congr _ _
@@ -212,7 +212,7 @@ theorem completedLength_cyclic_fin_one_eq_zero
     (completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
       0 := by
   obtain ⟨c, a, hga, ha⟩ := exists_p_power_unit_of_fin_one A t p ht htp g hg
   exact completedLength_cyclic_p_power_unit_eq_zero A t p _ 0 htp hperf g a c hga ha n
@@ -225,7 +225,7 @@ section CyclicTorsionComparisonPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2 RootTowerLength
+open _root_.IsLocalRing _root_.SerrePositivity.Section2 _root_.SerrePositivity.RootTowerLength
 
 /-- p因子を除去しても、任意の冪の巡回商の正規化長さは変わらない。
 pねじれ商のperfectoid性を内部で供給し、座標根による共通の長さ零判定を適用する。 -/
@@ -238,23 +238,23 @@ theorem completedLength_cyclic_pow_eq_of_p_factor
     (a : ℕ) :
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
       ((completedTowerMaxIdeal A t p) ^ a ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
       ((completedTowerMaxIdeal A t p) ^ a ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g'))) := by
   let C := CompletedTower A t p
   let : Algebra.FinitePresentation C (C ⧸ Ideal.span {algebraMap A C g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (algebraMap A C g))
   let S := BhattScholze.perfectoidQuotient C p hperf (algebraMap A C g)
-  let κ : C →+* S := (toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).comp
+  let κ : C →+* S := (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).comp
     (Ideal.Quotient.mk (Ideal.span {algebraMap A C g}))
   have hS : IsIntegralPerfectoid S p :=
-    (isPerfectoidization_toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).1
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).1
   have hQ : IsIntegralPerfectoid (S ⧸ pTorsionIdeal S p) p :=
     hS.pTorsionQuotient_isIntegralPerfectoid S p
   have hgzero : (p : S) ^ c * κ (algebraMap A C g') = 0 := by
-    have hh := (span_le_perfectoidIdeal C p hperf (algebraMap A C g))
+    have hh := (_root_.SerrePositivity.BhattScholze.Almost.span_le_perfectoidIdeal C p hperf (algebraMap A C g))
       (Ideal.subset_span (Set.mem_singleton _))
     change κ (algebraMap A C g) = 0 at hh
     simpa only [hg, map_mul, map_pow, map_natCast] using hh
@@ -262,7 +262,7 @@ theorem completedLength_cyclic_pow_eq_of_p_factor
     (hti ▸ ht i) i _ _ (perfectoidIdeal_le_of_p_power_factor A t p hperf g g' c hg) _ a
   intro n b hb
   have hpb : (p : S) * κ b = 0 :=
-    perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid C S p
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid C S p
       hperf hS hQ κ (algebraMap A C g') c hgzero b hb
   have hρ : κ (Section2.completedTowerRoot A t p n i) ^ (p ^ n) = (p : S) := by
     rw [← map_pow, Section2.completedTowerRoot_pow, hti, map_natCast, map_natCast]
@@ -279,7 +279,7 @@ section CyclicPerfectoidizationPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2
+open _root_.IsLocalRing _root_.SerrePositivity.Section2
 
 theorem completedTowerCyclicQuotient_p_regular_and_complete
     (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
@@ -344,7 +344,7 @@ theorem toPerfectoidization_cyclic_surjective_of_not_dvd
         (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
       Algebra.FinitePresentation.quotient
         (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-    Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+    Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf) := by
   exact BhattScholze.perfectoidIdeal_quotientMap_surjective (CompletedTower A t p) p hperf
     (algebraMap A (CompletedTower A t p) g)
@@ -357,8 +357,8 @@ section RootFiltrationBoundPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing RootTowerLength
-open scoped ENNReal
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.SerrePositivity.RootTowerLength
+open scoped _root_.ENNReal
 
 variable (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
@@ -536,7 +536,7 @@ end RootFiltrationBoundPart
 section PerfectoidFrobeniusComparisonPart
 
 namespace SerrePositivity.CLMST
-open Section2
+open _root_.SerrePositivity.Section2
 
 /-- 冪写像の反復は、指数を反復した冪写像。 -/
 theorem iterate_pow_apply {S : Type u} [Monoid S] (p m : ℕ) (x : S) :
@@ -681,19 +681,19 @@ theorem root_mem_sup_perfectoidIdeal_of_surjective
     (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
       Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
       Function.Surjective
-      (toQuotientPerfectoidization R (Ideal.span {g}) p hR))
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR))
     (ρ : ℕ → R) (hρ₀ : ρ 0 = (p : R)) (hρ : ∀ m, ρ (m + 1) ^ p = ρ m)
     (n : ℕ) (x : R) (hx : x ^ (p ^ n) - g ∈ Ideal.span {(p : R)}) :
-    x ∈ Ideal.span {ρ n} ⊔ perfectoidIdeal R p hR g := by
+    x ∈ Ideal.span {ρ n} ⊔ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  let f := (toQuotientPerfectoidization R (Ideal.span {g}) p hR).comp
+  let f := (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR).comp
     (Ideal.Quotient.mk (Ideal.span {g}))
   exact root_mem_sup_of_surjective_perfectoid p f
     (hsurj.comp Ideal.Quotient.mk_surjective)
-    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).1
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).1
     ρ hρ₀ hρ n g x
-    (by change toQuotientPerfectoidization R (Ideal.span {g}) p hR
+    (by change _root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR
           (Ideal.Quotient.mk (Ideal.span {g}) g) = 0
         rw [Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton _)), map_zero])
     hx
@@ -708,13 +708,13 @@ theorem exists_completed_root_mem_sup_perfectoidIdeal_of_surjective
       letI : Algebra.FinitePresentation (CompletedTower A t p)
           (CompletedTower A t p ⧸ Ideal.span {g}) :=
         Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {g}) p hperf))
     (i : Fin h) (hti : t i = (p : A)) (n : ℕ) :
     ∃ x : CompletedTower A t p,
       x ^ (p ^ n) - g ∈ Ideal.span {(p : CompletedTower A t p)} ∧
       x ∈ Ideal.span {Section2.completedTowerRoot A t p n i} ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf g := by
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf g := by
   obtain ⟨x, hx⟩ := exists_root_mod_p_of_perfectoid _ p hperf n g
   refine ⟨x, hx, root_mem_sup_perfectoidIdeal_of_surjective _ p hperf g hsurj
     (fun m ↦ Section2.completedTowerRoot A t p m i) ?_
@@ -761,7 +761,7 @@ theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
     (i : Fin h) (hti : t i = (p : A)) (n m₀ : ℕ) :
     ∃ (m : ℕ) (_ : m₀ ≤ m) (_ : n ≤ m) (z : TowerStage A t p m),
@@ -769,7 +769,7 @@ theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
         Ideal.span {(p : TowerStage A t p m)} ∧
       algebraMap (TowerStage A t p m) (CompletedTower A t p) z ∈
         Ideal.span {Section2.completedTowerRoot A t p n i} ⊔
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) := by
   obtain ⟨m, hm, z, hz⟩ := exists_stage_root_mod_p_of_perfectoid A t p hperf g n (max m₀ n)
   refine ⟨m, (le_max_left _ _).trans hm, (le_max_right _ _).trans hm, z, hz, ?_⟩
@@ -814,8 +814,8 @@ end PerfectoidFrobeniusComparisonPart
 section CyclicRootEstimatePart
 
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing RootTowerLength
-open scoped ENNReal
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.SerrePositivity.RootTowerLength
+open scoped _root_.ENNReal
 
 /-- 原典4.0.10の有限段の根と長さ上界までの接続。
 全射性は仮定として残し、低次元の成長評価を結論へ埋め込まない。 -/
@@ -829,11 +829,11 @@ theorem exists_cyclic_root_stage_length_estimate
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
     (i : Fin h) (hti : t i = (p : A)) (n m₀ : ℕ) :
     let K := completedTowerMaxIdeal A t p ⊔
-      perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)
     ∃ (m : ℕ) (_ : m₀ ≤ m) (_ : n ≤ m) (z : TowerStage A t p m),
       z ^ (p ^ n) - algebraMap A (TowerStage A t p m) g ∈
         Ideal.span {(p : TowerStage A t p m)} ∧
@@ -842,7 +842,7 @@ theorem exists_cyclic_root_stage_length_estimate
           ((Module.length (TowerStage A t p m)
             (TowerStage A t p m ⧸ stageRootRepresentativeIdeal A t p n m i z) : ℝ≥0∞) /
               (stageRank h p m : ℝ≥0∞)) := by
-  let I := perfectoidIdeal (CompletedTower A t p) p hperf
+  let I := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
     (algebraMap A (CompletedTower A t p) g)
   let K := completedTowerMaxIdeal A t p ⊔ I
   obtain ⟨m, hm, hnm, z, hz, hmem⟩ :=
@@ -862,8 +862,8 @@ section CyclicNormalizedBoundPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2 RootTowerLength
-open scoped ENNReal
+open _root_.IsLocalRing _root_.SerrePositivity.Section2 _root_.SerrePositivity.RootTowerLength
+open scoped _root_.ENNReal
 
 /-- 有限段の根の代表元による長さ評価を正規化すると、根の指数だけで減少する。 -/
 theorem exists_stage_root_normalized_bound
@@ -919,7 +919,7 @@ variable (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
 
 include ht htp hdim e ι he hgm hpg hsurj
@@ -928,7 +928,7 @@ include ht htp hdim e ι he hgm hpg hsurj
 perfectoid化への全射性は明示的な適用条件として残る。 -/
 theorem exists_completed_cyclic_div_pow_bound_of_surjective :
     let K := completedTowerMaxIdeal A t p ⊔
-      perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)
     ∃ c : ℕ, ∀ n : ℕ,
       (completedNormalizedLength A t p htmem).len (CompletedTower A t p ⧸ K) ≤
         (c : ℝ≥0∞) / (p : ℝ≥0∞) ^ n := by
@@ -942,7 +942,7 @@ theorem exists_completed_cyclic_div_pow_bound_of_surjective :
 theorem completedLength_cyclic_first_eq_zero_of_surjective :
     (completedNormalizedLength A t p htmem).len
       (CompletedTower A t p ⧸ (completedTowerMaxIdeal A t p ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
       0 := by
   obtain ⟨c, hc⟩ := exists_completed_cyclic_div_pow_bound_of_surjective
     A t p htmem ht htp hdim e ι he hperf g hgm hpg hsurj
@@ -953,7 +953,7 @@ theorem completedLength_cyclic_first_eq_zero_of_surjective :
 theorem completedLength_cyclic_pow_eq_zero_of_surjective (a : ℕ) :
     (completedNormalizedLength A t p htmem).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ a ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
       0 := by
   apply LengthAlgebra.cyclic_quotient_pow_length_eq_zero_of_first
     (completedNormalizedLength A t p htmem)
@@ -979,13 +979,13 @@ theorem completedLength_cyclic_pow_eq_zero_of_witt_of_surjective
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
     (a : ℕ) :
     (completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ a ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
       0 := by
   let σ := {i : Fin (r + 2) // (i : ℕ) ≠ 0}
   let eQ := wittPresentedModPEquiv A σ k p e
@@ -1004,7 +1004,7 @@ section CyclicLengthPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2
+open _root_.IsLocalRing _root_.SerrePositivity.Section2
 
 /-- pで割れない非単元の長さ零。標準写像の全射性の条件を具体的に供給する。 -/
 theorem cyclic_length_eq_zero_of_not_dvd
@@ -1020,7 +1020,7 @@ theorem cyclic_length_eq_zero_of_not_dvd
     (RootTowerLength.completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf
+        _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g))) = 0 := by
   exact completedLength_cyclic_pow_eq_zero_of_witt_of_surjective A k t p ht htp hdim e he
     hperf g hgm hpg
@@ -1041,7 +1041,7 @@ theorem cyclic_length_eq_zero
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
       ((CompletedTower A t p) ⧸
         ((completedTowerMaxIdeal A t p) ^ n ⊔
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g))) = 0 := by
   by_cases hgu : IsUnit g
   · exact completedLength_cyclic_unit_eq_zero A t p
@@ -1081,7 +1081,7 @@ end CyclicLengthPart
 section AlmostLengthPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory
+open _root_.CategoryTheory
 
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R) (J : Ideal R)
@@ -1090,33 +1090,33 @@ variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
 /-- perfectoid ideal の零化が長さ零を与えるなら、mod p^N で almost 同型な対象の長さは一致。
 元の perfectoid ideal の冪等性は仮定せず、mod p^N の像イデアルだけに要求する。 -/
 theorem length_eq_of_perfectoid_mod_almost_iso (N : ℕ)
-    [Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N)]
+    [Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)]
     (hzero : ∀ X : PowTorsionModule J,
-      Almost.IsAlmostZero (perfectoidIdeal R p hR g) X.obj → lam.len X.obj = 0)
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) X.obj → lam.len X.obj = 0)
     {M M' : PowTorsionModule (J.map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})))}
-    (e : (Almost.torsionLocalization (BhattScholze.perfectoidIdealMod R p hR g N)
+    (e : (Almost.torsionLocalization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)
       (J.map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})))).obj M ≅
-      (Almost.torsionLocalization (BhattScholze.perfectoidIdealMod R p hR g N)
+      (Almost.torsionLocalization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)
         (J.map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})))).obj M') :
     (lam.comap (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})) _ le_rfl).len M.obj =
       (lam.comap (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})) _ le_rfl).len M'.obj :=
-  LengthAlgebra.length_eq_of_almost_iso_baseChange (perfectoidIdeal R p hR g) J lam
+  LengthAlgebra.length_eq_of_almost_iso_baseChange (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) J lam
     Ideal.Quotient.mk_surjective hzero e
 
 /-- mod p^N の全加群の almost 圏での同型から、元の正規化長さの一致を得る。
 冪ねじれ部分圏への同型の移送を使い、原典の同型の範囲を保つ。 -/
 theorem length_eq_of_perfectoid_mod_full_almost_iso (N : ℕ)
-    [Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N)]
+    [Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)]
     (hzero : ∀ X : PowTorsionModule J,
-      Almost.IsAlmostZero (perfectoidIdeal R p hR g) X.obj → lam.len X.obj = 0)
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) X.obj → lam.len X.obj = 0)
     {M M' : PowTorsionModule (J.map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})))}
-    (e : (Almost.localization (BhattScholze.perfectoidIdealMod R p hR g N)).obj M.obj ≅
-      (Almost.localization (BhattScholze.perfectoidIdealMod R p hR g N)).obj M'.obj) :
+    (e : (Almost.localization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)).obj M.obj ≅
+      (Almost.localization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)).obj M'.obj) :
     (lam.comap (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})) _ le_rfl).len M.obj =
       (lam.comap (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N})) _ le_rfl).len M'.obj :=
-  LengthAlgebra.length_eq_of_full_almost_iso_baseChange (perfectoidIdeal R p hR g) J lam
+  LengthAlgebra.length_eq_of_full_almost_iso_baseChange (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) J lam
     Ideal.Quotient.mk_surjective hzero e
 
 end SerrePositivity.CLMST
@@ -1126,7 +1126,7 @@ end AlmostLengthPart
 section NormalizedAlmostLengthPart
 
 namespace SerrePositivity.CLMST
-open IsLocalRing Section2 CategoryTheory
+open _root_.IsLocalRing _root_.SerrePositivity.Section2 _root_.CategoryTheory
 
 variable (A k : Type u) [CommRing A] [IsRegularLocalRing A] [Field k]
     (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k]
@@ -1144,7 +1144,7 @@ theorem completedLength_eq_zero_of_perfectoidIdeal_annihilates
     (M : Type u) [AddCommGroup M] [Module (CompletedTower A t p) M]
     (hM : IsPowTorsion (completedTowerMaxIdeal A t p) M)
     (hann : Almost.IsAlmostZero
-      (perfectoidIdeal (CompletedTower A t p) p hperf
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) M) :
     (RootTowerLength.completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M = 0 := by
@@ -1164,7 +1164,7 @@ theorem exists_common_completedTower_p_pow_annihilates
     (hM' : IsPowTorsion (completedTowerMaxIdeal A t p) M') :
     ∃ N : ℕ, Almost.IsAlmostZero (Ideal.span {(p : CompletedTower A t p) ^ N}) M ∧
       Almost.IsAlmostZero (Ideal.span {(p : CompletedTower A t p) ^ N}) M' := by
-  apply BhattScholze.exists_common_p_pow_annihilates (CompletedTower A t p) p
+  apply _root_.SerrePositivity.BhattScholze.Almost.exists_common_p_pow_annihilates (CompletedTower A t p) p
     (completedTowerMaxIdeal A t p) _ M M' hM hM'
   have hp : (p : A) ∈ maximalIdeal A := by
     rw [← htp, ← ht]
@@ -1185,10 +1185,10 @@ theorem completedLength_eq_of_perfectoid_mod_almost_iso
     (hNM' : Almost.IsAlmostZero (Ideal.span {(p : CompletedTower A t p) ^ N}) M') :
     let _ := Almost.quotientModule (Ideal.span {(p : CompletedTower A t p) ^ N}) M hNM
     let _ := Almost.quotientModule (Ideal.span {(p : CompletedTower A t p) ^ N}) M' hNM'
-    ((BhattScholze.perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
+    ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N).obj
         (ModuleCat.of ((CompletedTower A t p) ⧸ Ideal.span {(p : CompletedTower A t p) ^ N}) M) ≅
-      (BhattScholze.perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g) N).obj
           (ModuleCat.of
             ((CompletedTower A t p) ⧸ Ideal.span {(p : CompletedTower A t p) ^ N}) M')) →
@@ -1196,16 +1196,16 @@ theorem completedLength_eq_of_perfectoid_mod_almost_iso
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M =
     (RootTowerLength.completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M' := by
-  let : Fact (BhattScholze.perfectoidIdealMod (CompletedTower A t p) p hperf
+  let : Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N *
-    BhattScholze.perfectoidIdealMod (CompletedTower A t p) p hperf
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N =
-    BhattScholze.perfectoidIdealMod (CompletedTower A t p) p hperf
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N) :=
-    ⟨BhattScholze.perfectoidIdealMod_idempotent _ p hperf _ N⟩
+    ⟨_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent _ p hperf _ N⟩
   apply LengthAlgebra.length_eq_of_quotient_almost_iso
     (Ideal.span {(p : CompletedTower A t p) ^ N})
-    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
     (completedTowerMaxIdeal A t p)
     (RootTowerLength.completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))) _ M M' hM hM' hNM hNM'

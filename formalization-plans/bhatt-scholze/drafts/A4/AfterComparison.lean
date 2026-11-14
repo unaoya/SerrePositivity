@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.AfterComparison（仮。Prop 8.5 の後に置く A4 の補足：D41 の直接の式との一致、Example 8.3）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.AfterComparison（仮。Prop 8.5 の後に置く A4 の補足：D41 の直接の式との一致、Example 8.3）
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.1 D41・Ex 8.3、単位 A4-3・A4-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 

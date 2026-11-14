@@ -60,11 +60,11 @@ variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zv" f => powerRootPolynomialBaseMap Rv p hp (Polynomial.map barr f)
+local notation "zv" f => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (Polynomial.map barr f)
 local notation "Dv" f => PrincipalDPPresentation Nv (zv f)
 
 /-- 概要：実 pd 包の素数冪分冪は切断表示の対応する変数へ写る。
@@ -99,7 +99,7 @@ BS 著者版 Remark 7.15(1)（著者版 p.62）の係数還元後の pd 普遍�
 
 ## 方針
 
-A1-b の射影的係数商による実分冪構造と標準値の公式を使う。
+分冪包 の射影的係数商による実分冪構造と標準値の公式を使う。
 原典の非零因子による帰着とは異なる射影的商の経路。
 係数元の消滅から主イデアル全体を評価で殺し、商の普遍性を適用する。
 
@@ -120,7 +120,7 @@ set_option maxRecDepth 2048
 namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
-local notation "N" => PowerRootPolynomial R₀ p (Nat.Prime.pos (Fact.out : p.Prime))
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p (Nat.Prime.pos (Fact.out : p.Prime))
 local notation "D" f => PowerRootCoefficientPDEnvelope p f
 local notation "z" f => powerRootCoefficientPDInput p f
 
@@ -160,7 +160,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiPDUniversalUnconditional
 
-/-! ## André R1：ϖ 還元した PD 包の普遍性の移行
+/-! ## André ϖ 還元した PD 包の普遍性の移行
 
 ## 概要
 
@@ -180,7 +180,7 @@ BS 著者版 Remark 7.15(1)（著者版 p.62）の元の係数消滅条件を持
 同じ標準商・係数消滅条件で原典の PD 包の普遍性を適用する。
 -/
 
-/-! ## André A1-a：正次数モニック入力に対する元の源 prism の初期性
+/-! ## André 正次数モニック入力に対する元の源 prism の初期性
 
 ## 概要
 
@@ -189,7 +189,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の源の構成と普遍性の合流
 
 ## 方針
 
-A1-b の元の H の生成元正則性と同じ T の有界性を、既存の条件付き初期性へ渡す。
+分冪包 の元の H の生成元正則性と同じ T の有界性を、既存の条件付き初期性へ渡す。
 原典を補う実逐次完備化・純性・明示的な入力圏による経路。
 
 ## 規約
@@ -208,13 +208,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -233,9 +233,9 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
 local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
@@ -244,16 +244,16 @@ local notation "CS" => AdicCompletion (Ideal.span {(p : S₀)}) S₀
 local notation "jS" => algebraMap S₀ CS
 local notation "qR" => Ideal.Quotient.mk (Ideal.span {zR})
 
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 local notation "cS" => RingHom.comp lS (algebraMap R PR)
 variable (hf : f.Monic)
 
 variable (hdeg : 0 < f.natDegree)
 
 set_option maxHeartbeats 800000 in
--- 元の H の環構造と A1-b の生成元正則性の依存型を照合するため。
+-- 元の H の環構造と 分冪包 の生成元正則性の依存型を照合するため。
 /-- 概要：正次数モニック入力から元の H に prism 構造を与える。
-方針：A1-b の同じ標準分母像の正則性を既存の prism 構成へ渡す。
+方針：分冪包 の同じ標準分母像の正則性を既存の prism 構成へ渡す。
 規約：prism 商の p 正則性や源の正則性を仮定しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の prismatic 源。 -/
 def powerRootPrismMonicCompletionPrismOfMonicPositive :
@@ -278,7 +278,7 @@ theorem powerRootPrismMonicCompletionPrismOfMonicPositive_generator :
 set_option maxHeartbeats 800000 in
 -- 完備入力の係数作用と元の H の正則性・有界性を一つの対象で照合するため。
 /-- 概要：正次数モニック入力から元の H を有界入力 prism の対象とする。
-方針：A1-b の生成元正則性と同じ通常商 T の有界性を既存の構成へ渡す。
+方針：分冪包 の生成元正則性と同じ通常商 T の有界性を既存の構成へ渡す。
 規約：hpR・hreg・hBound を引数に残さず、原典の順序の完備入力環を使う。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準源の初期性。 -/
 def powerRootPrismMonicSourceInputObjectOfMonicPositive : BoundedPrismInput W cS := by
@@ -290,7 +290,7 @@ def powerRootPrismMonicSourceInputObjectOfMonicPositive : BoundedPrismInput W cS
 set_option maxHeartbeats 800000 in
 -- 元の H の依存する入力対象と既存の初期性の型を照合するため。
 /-- 概要：元の正次数モニック源は有界入力 prism の圏で初期。
-方針：A1-b の同じ H と T の結果により初期性の二つの補助仮定を解消する。
+方針：分冪包 の同じ H と T の結果により初期性の二つの補助仮定を解消する。
 規約：固定完全基底・向き付き対象の圏での結果であり、絶対 site 比較は別工程。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の envelope 比較の合流点。 -/
 def powerRootPrismMonicSourceInput_isInitialOfMonicPositive :
@@ -303,7 +303,7 @@ def powerRootPrismMonicSourceInput_isInitialOfMonicPositive :
 set_option maxHeartbeats 800000 in
 -- 同じ H の台環と入力圏の任意の初期対象との比較を保つため。
 /-- 概要：同じ入力圏の任意の初期対象と元の正次数モニック源 H は環同型。
-方針：補助仮定を A1-b から供給して既存の初期対象比較を適用する。
+方針：補助仮定を 分冪包 から供給して既存の初期対象比較を適用する。
 規約：比較先の初期性だけはその普遍性として明示する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の同じ圏での envelope の一意性。 -/
 def powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive
@@ -318,7 +318,7 @@ def powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive
 set_option maxHeartbeats 800000 in
 -- 同型の基底保存性を元の H の全係数像の公式として照合するため。
 /-- 概要：正次数モニック源と任意の初期対象の環同型は元の A の係数像を保つ。
-方針：既存の基底保存公式に A1-b の正則性・有界性を代入する。
+方針：既存の基底保存公式に 分冪包 の正則性・有界性を代入する。
 規約：元の標準係数射を変更しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典との係数作用の比較。 -/
 theorem powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff
@@ -335,7 +335,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicSourceInitiality
 
-/-! ## André A1-a：基底射を指定しない有界入力への源の普遍性
+/-! ## André 基底射を指定しない有界入力への源の普遍性
 
 ## 概要
 
@@ -364,14 +364,14 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable {B : Type u} [CommRing B]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -390,9 +390,9 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
 local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
@@ -401,7 +401,7 @@ local notation "CS" => AdicCompletion (Ideal.span {(p : S₀)}) S₀
 local notation "jS" => algebraMap S₀ CS
 local notation "qR" => Ideal.Quotient.mk (Ideal.span {zR})
 
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 local notation "cS" => RingHom.comp lS (algebraMap R PR)
 variable (hf : f.Monic)
 
@@ -441,10 +441,10 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicAbsoluteUniversal
 
-/-! ## A1-f：向きなし入力圏での元の源の初期性
+/-! ## 向きなし入力圏での元の源の初期性
 
 ## 概要
-A1-a の正次数モニック源の初期性を向きなし入力圏へ移す。
+向き付き入力の源 の正次数モニック源の初期性を向きなし入力圏へ移す。
 ## 方針
 圏同値の恒等環射による比較同型と、既存の初期性を使う。
 ## 規約
@@ -456,7 +456,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の向きに依存しない普遍性
 @[expose] public noncomputable section Initial
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 variable {p : ℕ} [Fact p.Prime] {A S : Type u} [CommRing A] [CommRing S]
 variable {W : OrientedPrism p A} {c : A ⧸ W.ideal →+* S}
 
@@ -473,7 +473,7 @@ def BoundedPrismInput.initial_unoriented (hW : W.deltaStructure.IsPerfect)
   exact hi.hom_ext _ _
 
 /-- 概要：元の正次数モニック源は向きなし有界入力 prism の圏で初期。
-方針：A1-a の証明済みの初期性を、向きを忘れる関手に沿って移す。
+方針：向き付き入力の源 の証明済みの初期性を、向きを忘れる関手に沿って移す。
 規約：正則性・有界性の追加仮定はなく、元の台環・δ・基底・入力を保持する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の固定完全基底での向きなし envelope。 -/
 def powerRootPrismMonicSourceInput_initial_unoriented
@@ -509,13 +509,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -524,14 +524,14 @@ local notation "H" => PDCompletionH0 L p (jL dP)
 local notation "R" => A ⧸ W.ideal
 
 local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
 
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 local notation "cS" => RingHom.comp lS (algebraMap R PR)
 variable (hf : f.Monic)
 
@@ -623,7 +623,7 @@ BS 著者版 Remark 7.15(1)（著者版 p.62）の同じ源の係数計算。
 
 ## 方針
 
-A1-a・A1-f の初期性、A1-b の実源の純性、A1-c の自然な係数比較を合流する。
+向き付き入力の源・向きなし入力の源 の初期性、分冪包 の実源の純性、係数比較 の自然な係数比較を合流する。
 通常剰余からの逆向きには元の源の証明済み完全忠実平坦性を使う。
 原典の p ねじれなしへの帰着とは異なる純性・圏同値による経路。
 
@@ -641,17 +641,17 @@ hpR・正則性・有界性を追加仮定に残さない。元の H と標準�
 @[expose] public noncomputable section PowerRootPrismMonicCoefficientComparison
 
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
-open scoped TensorProduct
-open VarpiComparison
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
+open _root_.SerrePositivity.BhattScholze.Andre.VarpiComparison
 set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -664,11 +664,11 @@ local notation "v" => perfectPrismVarpi W hW
 local notation "Rv" => R ⧸ Ideal.span {v}
 local notation "φ" => powerRootPrismMonicHodgeTateBaseMap W hW f
 local notation "Tv" => T ⧸ Ideal.map φ (Ideal.span {v})
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {v})) (Ideal.Quotient.mk W.ideal)
 local notation "f'" => perfectPrismInverseFrobeniusPolynomial W hW f
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
   (Polynomial.map barr (perfectPrismInverseFrobeniusPolynomial W hW f))
 local notation "Dv" => PrincipalDPPresentation Nv zv
 local notation "Qv" => Nv ⧸ Ideal.span {zv ^ p}

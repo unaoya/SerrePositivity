@@ -37,60 +37,60 @@ perfectoid イデアルを核の定義のまま `p^N` を法とした環へ写�
 @[expose] public noncomputable section PerfectoidIdealModPart
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
 
 /-- p^N を法とした環での perfectoid ideal の像。
 元のイデアルは普遍 perfectoid 化への写像の核であり、根生成イデアルに置き換えない。 -/
-abbrev perfectoidIdealMod (N : ℕ) : Ideal (R ⧸ Ideal.span {(p : R) ^ N}) :=
-  (perfectoidIdeal R p hR g).map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N}))
+abbrev Almost.perfectoidIdealMod (N : ℕ) : Ideal (R ⧸ Ideal.span {(p : R) ^ N}) :=
+  (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N}))
 
 /-- p^N により零化される加群の商環作用で、perfectoid ideal の零化条件は変わらない。 -/
-theorem perfectoidIdealMod_annihilates_iff (N : ℕ) (M : ModuleCat.{u} R)
-    (hM : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M) :
-    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
-    Almost.IsAlmostZero (perfectoidIdealMod R p hR g N) M ↔
-      Almost.IsAlmostZero (perfectoidIdeal R p hR g) M :=
-  Almost.isAlmostZero_quotient_iff (Ideal.span {(p : R) ^ N}) M
-    (perfectoidIdeal R p hR g) hM
+theorem Almost.perfectoidIdealMod_annihilates_iff (N : ℕ) (M : ModuleCat.{u} R)
+    (hM : _root_.SerrePositivity.Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M) :
+    let _ := _root_.SerrePositivity.Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
+    _root_.SerrePositivity.Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N) M ↔
+      _root_.SerrePositivity.Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) M :=
+  _root_.SerrePositivity.Almost.isAlmostZero_quotient_iff (Ideal.span {(p : R) ^ N}) M
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hM
 
 /-- mod p^N の像イデアルの冪等性が供給されれば、almost 圏の零性と元の kernel による零化が一致。
 冪等性をこの接続の結論に隠さない。 -/
-theorem isZero_perfectoidIdealMod_localization_iff (N : ℕ)
-    [Fact (perfectoidIdealMod R p hR g N * perfectoidIdealMod R p hR g N =
-      perfectoidIdealMod R p hR g N)]
-    (M : ModuleCat.{u} R) (hM : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M) :
-    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
-    IsZero ((Almost.localization (perfectoidIdealMod R p hR g N)).obj
+theorem Almost.isZero_perfectoidIdealMod_localization_iff (N : ℕ)
+    [Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)]
+    (M : ModuleCat.{u} R) (hM : _root_.SerrePositivity.Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M) :
+    let _ := _root_.SerrePositivity.Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
+    IsZero ((_root_.SerrePositivity.Almost.localization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)).obj
       (ModuleCat.of (R ⧸ Ideal.span {(p : R) ^ N}) M)) ↔
-      Almost.IsAlmostZero (perfectoidIdeal R p hR g) M :=
-  Almost.isZero_quotient_localization_obj_iff (Ideal.span {(p : R) ^ N})
-    (perfectoidIdeal R p hR g) M hM
+      _root_.SerrePositivity.Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) M :=
+  _root_.SerrePositivity.Almost.isZero_quotient_localization_obj_iff (Ideal.span {(p : R) ^ N})
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) M hM
 
 /-- mod p^N の almost 圏で線形写像が同型となる条件を、元の環の核・余核の零化条件へ移す。 -/
-theorem isIso_perfectoidIdealMod_localization_iff (N : ℕ)
-    [Fact (perfectoidIdealMod R p hR g N * perfectoidIdealMod R p hR g N =
-      perfectoidIdealMod R p hR g N)]
+theorem Almost.isIso_perfectoidIdealMod_localization_iff (N : ℕ)
+    [Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)]
     {M M' : ModuleCat.{u} R}
-    (hM : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M)
-    (hM' : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M') (f : M ⟶ M') :
-    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
-    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M' hM'
-    IsIso ((Almost.localization (perfectoidIdealMod R p hR g N)).map
-      (ModuleCat.ofHom (Almost.quotientLinearMap (Ideal.span {(p : R) ^ N}) hM hM' f.hom))) ↔
-      Almost.IsAlmostIso (perfectoidIdeal R p hR g) f.hom :=
-  Almost.isIso_quotient_localization_map_iff (Ideal.span {(p : R) ^ N})
-    (perfectoidIdeal R p hR g) hM hM' f
+    (hM : _root_.SerrePositivity.Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M)
+    (hM' : _root_.SerrePositivity.Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M') (f : M ⟶ M') :
+    let _ := _root_.SerrePositivity.Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
+    let _ := _root_.SerrePositivity.Almost.quotientModule (Ideal.span {(p : R) ^ N}) M' hM'
+    IsIso ((_root_.SerrePositivity.Almost.localization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)).map
+      (ModuleCat.ofHom (_root_.SerrePositivity.Almost.quotientLinearMap (Ideal.span {(p : R) ^ N}) hM hM' f.hom))) ↔
+      _root_.SerrePositivity.Almost.IsAlmostIso (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) f.hom :=
+  _root_.SerrePositivity.Almost.isIso_quotient_localization_map_iff (Ideal.span {(p : R) ^ N})
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hM hM' f
 
 omit [Fact p.Prime] in
 /-- p が J に属すれば、一様な J 冪ねじれの二つの加群を同じ p の冪で零化できる。
 mod p^N の almost 圏へ移す指数は仮定ではなく、各加群の冪ねじれから供給する。 -/
-theorem exists_common_p_pow_annihilates (J : Ideal R) (hp : (p : R) ∈ J)
-    (M M' : ModuleCat.{u} R) (hM : IsPowTorsion J M) (hM' : IsPowTorsion J M') :
-    ∃ N : ℕ, Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M ∧
-      Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M' := by
+theorem Almost.exists_common_p_pow_annihilates (J : Ideal R) (hp : (p : R) ∈ J)
+    (M M' : ModuleCat.{u} R) (hM : _root_.SerrePositivity.IsPowTorsion J M) (hM' : _root_.SerrePositivity.IsPowTorsion J M') :
+    ∃ N : ℕ, _root_.SerrePositivity.Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M ∧
+      _root_.SerrePositivity.Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M' := by
   obtain ⟨n, hn⟩ := hM
   obtain ⟨n', hn'⟩ := hM'
   refine ⟨n + n', ?_, ?_⟩
@@ -127,7 +127,7 @@ BS 著者版 Remark 10.7（印刷 p.80）の mod p 冪冪等性の中間結果�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits HomologicalComplex SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.HomologicalComplex _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
@@ -142,37 +142,37 @@ perfectoid 化の核 K の conormal 加群 K/K² 上の p 作用は全単射で�
 ## 使われ方
 BS 著者版 Remark 10.7（印刷 p.80）の導来完備化消滅を証明する。
 -/
-theorem perfectoidIdeal_conormal_smul_bijective :
-    Function.Bijective (fun x : (perfectoidIdeal R p hR g).Cotangent => (p : R) • x) := by
-  let I := perfectoidIdeal R p hR g
+theorem Almost.perfectoidIdeal_conormal_smul_bijective :
+    Function.Bijective (fun x : (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).Cotangent => (p : R) • x) := by
+  let I := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g
   let Q := ModuleCat.of R (R ⧸ I)
-  let μ := boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)
-  have hμ := (perfectoidIdeal_lemma103 R p hR g).2.1
+  let μ := _root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)
+  have hμ := (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_lemma103 R p hR g).2.1
   have hk : IsIso ((derivedScalarConeFunctor R (p : R)).map μ.hom) := by
     have hh := derivedScalarCone_map_isIso_of_completion R (p : R) μ.hom hμ 1
     rw [_root_.pow_one] at hh
     exact hh
   let L := (CochainComplex.singleFunctor (ModuleCat R) 0).obj Q
   have hl (i : ℤ) (hi : i ≠ 0) : IsZero (L.homology i) :=
-    (derivedSingleHomology_isZero Q i hi).of_iso
+    (_root_.SerrePositivity.derivedSingleHomology_isZero Q i hi).of_iso
       ((DerivedCategory.homologyFunctorFactors (ModuleCat R) i).app L).symm
-  have hzL : IsZero (((scalarConeFunctor (p : R)).obj L).homology (-2)) :=
-    (Cone.exact₃ (smulId (p : R) L) (-2) (-1) (by omega)).isZero_of_both_isZero
+  have hzL : IsZero (((_root_.SerrePositivity.scalarConeFunctor (p : R)).obj L).homology (-2)) :=
+    (_root_.SerrePositivity.Cone.exact₃ (_root_.SerrePositivity.smulId (p : R) L) (-2) (-1) (by omega)).isZero_of_both_isZero
       (hl (-2) (by omega)) (hl (-1) (by omega))
   have hzY : IsZero ((DerivedCategory.homologyFunctor (ModuleCat R) (-2)).obj
       ((derivedScalarConeFunctor R (p : R)).obj
-        ((boundedAboveDerivedSingleFunctor.obj Q).obj))) := hzL.of_iso
+        ((_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj Q).obj))) := hzL.of_iso
     ((DerivedCategory.homologyFunctor (ModuleCat R) (-2)).mapIso
       ((derivedScalarConeComparison R (p : R)).app L) ≪≫
       (DerivedCategory.homologyFunctorFactors (ModuleCat R) (-2)).app
-        ((scalarConeFunctor (p : R)).obj L))
+        ((_root_.SerrePositivity.scalarConeFunctor (p : R)).obj L))
   have hzX := hzY.of_iso ((DerivedCategory.homologyFunctor (ModuleCat R) (-2)).mapIso
     (asIso ((derivedScalarConeFunctor R (p : R)).map μ.hom)))
   have hinj := derived_homology_smul_injective_of_scalarCone_isZero (p : R)
-    ((boundedAboveDerivedTensorModuleFunctor Q).obj Q) (-1)
-    (by simpa [boundedAboveDerivedTensorModuleFunctor, Q] using hzX)
-  let e := (((boundedAboveDerivedTensorModuleTorNatIso Q 1).app Q).toLinearEquiv).trans
-    (quotientTorOneConormalEquiv R I)
+    ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor Q).obj Q) (-1)
+    (by simpa [_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor, Q] using hzX)
+  let e := (((_root_.SerrePositivity.boundedAboveDerivedTensorModuleTorNatIso Q 1).app Q).toLinearEquiv).trans
+    (_root_.SerrePositivity.quotientTorOneConormalEquiv R I)
   constructor
   · intro x y hxy
     change (p : R) • x = (p : R) • y at hxy
@@ -180,7 +180,7 @@ theorem perfectoidIdeal_conormal_smul_bijective :
     apply hinj
     change (p : R) • e.symm x = (p : R) • e.symm y
     rw [← e.symm.map_smul, ← e.symm.map_smul, hxy]
-  · exact (quotientTorOne_smul_surjective_iff_conormal R I (p : R)).mp
+  · exact (_root_.SerrePositivity.quotientTorOne_smul_surjective_iff_conormal R I (p : R)).mp
       (quotientTorOne_smul_surjective_of_completed_mul_isIso (p : R) I hμ)
 
 /--
@@ -193,22 +193,22 @@ G2 の元の完備化関手を degree zero の conormal 加群へ適用する。
 ## 使われ方
 mod pⁿ の像の冪等性を導く中間結果を公開する。
 -/
-theorem perfectoidIdeal_conormal_completion_isZero :
+theorem Almost.perfectoidIdeal_conormal_completion_isZero :
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
       ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj
-        (ModuleCat.of R (perfectoidIdeal R p hR g).Cotangent))) := by
-  let M := ModuleCat.of R (perfectoidIdeal R p hR g).Cotangent
+        (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).Cotangent))) := by
+  let M := ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).Cotangent
   let X := (DerivedCategory.singleFunctor (ModuleCat R) 0).obj M
   let F := derivedComplexCompletionFunctor R (p : R)
   have hM : IsIso ((p : R) • 𝟙 M) := (ConcreteCategory.isIso_iff_bijective _).mpr
-    (perfectoidIdeal_conormal_smul_bijective R p hR g)
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_conormal_smul_bijective R p hR g)
   have hX : IsIso ((p : R) • 𝟙 X) := by
     have hh := (DerivedCategory.singleFunctor (ModuleCat R) 0).map_isIso ((p : R) • 𝟙 M)
     simpa only [Functor.map_smul, CategoryTheory.Functor.map_id] using hh
   have hF : IsIso ((p : R) • 𝟙 (F.obj X)) := by
     have hh := F.map_isIso ((p : R) • 𝟙 X)
     rwa [derivedCompletion_map_scalar_id] at hh
-  apply (derived_isZero_iff_homology _).mpr
+  apply (_root_.SerrePositivity.derived_isZero_iff_homology _).mpr
   intro i
   have hH : IsIso ((p : R) • 𝟙 ((DerivedCategory.homologyFunctor (ModuleCat R) i).obj
       (F.obj X))) := by
@@ -230,16 +230,16 @@ p 作用の全射性で代表を p 倍に書き、通常の商写像が p 倍を
 ## 使われ方
 BS 著者版 Remark 10.7（印刷 p.80）の K=K²+pK へ移る中間結果である。
 -/
-theorem perfectoidIdeal_conormal_mod_p_isZero :
+theorem Almost.perfectoidIdeal_conormal_mod_p_isZero :
     IsZero (modulePowerReduction (p : R)
-      (ModuleCat.of R (perfectoidIdeal R p hR g).Cotangent) 1) := by
-  let M := ModuleCat.of R (perfectoidIdeal R p hR g).Cotangent
+      (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).Cotangent) 1) := by
+  let M := ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).Cotangent
   apply ModuleCat.isZero_iff_subsingleton.mpr
   apply subsingleton_of_forall_eq 0
   intro x
   obtain ⟨m, rfl⟩ := (ModuleCat.epi_iff_surjective (modulePowerReductionMap (p : R) M 1)).mp
     (inferInstance) x
-  obtain ⟨y, hy⟩ := (perfectoidIdeal_conormal_smul_bijective R p hR g).surjective m
+  obtain ⟨y, hy⟩ := (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_conormal_smul_bijective R p hR g).surjective m
   change (modulePowerReductionMap (p : R) M 1).hom m = 0
   rw [← hy, map_smul]
   simpa only [_root_.pow_one] using
@@ -268,7 +268,7 @@ CLMST の BasicSetup と同じ署名で冪等性を渡す。BasicSetup 自体は
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
@@ -283,10 +283,10 @@ BS 著者版 Lemma 10.3 の商自己積から実 Tor₁ の p 可除性を得て
 ## 使われ方
 BS 著者版 Remark 10.7（印刷 p.80）の冪等性の計算に使う。
 -/
-theorem perfectoidIdeal_conormal_pow_smul_surjective (n : ℕ) :
+theorem Almost.perfectoidIdeal_conormal_pow_smul_surjective (n : ℕ) :
     Function.Surjective
-      (fun x : (perfectoidIdeal R p hR g).Cotangent => (p : R) ^ n • x) := by
-  have h := (perfectoidIdeal_conormal_smul_bijective R p hR g).surjective
+      (fun x : (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g).Cotangent => (p : R) ^ n • x) := by
+  have h := (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_conormal_smul_bijective R p hR g).surjective
   induction n with
   | zero =>
     intro x
@@ -311,13 +311,13 @@ pⁿK は span{pⁿ} と K のイデアル積で明示する。
 ## 使われ方
 mod pⁿ の像の冪等性の中間等式である。
 -/
-theorem perfectoidIdeal_eq_square_sup_pow_mul (n : ℕ) :
-    let K := perfectoidIdeal R p hR g
+theorem Almost.perfectoidIdeal_eq_square_sup_pow_mul (n : ℕ) :
+    let K := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g
     K = K * K ⊔ Ideal.span {(p : R) ^ n} * K := by
-  let K := perfectoidIdeal R p hR g
+  let K := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g
   apply le_antisymm
   · intro x hx
-    obtain ⟨y, hy⟩ := perfectoidIdeal_conormal_pow_smul_surjective R p hR g n
+    obtain ⟨y, hy⟩ := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_conormal_pow_smul_surjective R p hR g n
       (K.toCotangent ⟨x, hx⟩)
     obtain ⟨z, rfl⟩ := K.toCotangent_surjective y
     change (p : R) ^ n • K.toCotangent z = K.toCotangent ⟨x, hx⟩ at hy
@@ -342,11 +342,11 @@ BhattScholze.perfectoidIdealMod_idempotent と同じ署名を保持し、N=0 も
 ## 使われ方
 既存の入力引用を使わずに CLMST へ渡す証明済み入口である。
 -/
-theorem perfectoidIdealMod_idempotent (N : ℕ) :
-    BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N :=
-  ideal_mod_power_idempotent_of_conormal_surjective (p : R) (perfectoidIdeal R p hR g)
-    (perfectoidIdeal_conormal_smul_bijective R p hR g).surjective N
+theorem Almost.perfectoidIdealMod_idempotent (N : ℕ) :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N :=
+  _root_.SerrePositivity.ideal_mod_power_idempotent_of_conormal_surjective (p : R) (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g)
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_conormal_smul_bijective R p hR g).surjective N
 
 end SerrePositivity.BhattScholze
 
@@ -362,7 +362,7 @@ BS 著者版 Proposition 10.4（印刷 p.79）の環版を使う。商加群の�
 ## 規約
 既存の perfectoidIdeal、IsAlmostZero、G2 の実完備導来 tensor を使う。
 ## 使われ方
-KL-T が指定した正確な署名の拡大閉性を供給する。
+CLMST の Tor 比較 が指定した正確な署名の拡大閉性を供給する。
 -/
 
 @[expose] public noncomputable section PerfectoidAlmostExtension
@@ -370,35 +370,35 @@ KL-T が指定した正確な署名の拡大閉性を供給する。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits MonoidalCategory SerrePositivity.DerivedCompletion
-open Almost
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.Almost
 attribute [local instance] HasDerivedCategory.standard
 variable {R : Type u} [CommRing R]
 
-private lemma annihilates_of_completedTensor_zero (a : R) (I : Ideal R)
+private lemma Almost.annihilates_of_completedTensor_zero (a : R) (I : Ideal R)
     (M : ModuleCat.{u} R) (hM : IsModuleComplete R a M)
     (hz : IsZero ((derivedComplexCompletionFunctor R a).obj
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj M))) :
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj M))) :
     IsAlmostZero I M := by
   let F := derivedComplexCompletionFunctor R a
-  let Md := boundedAboveDerivedSingleFunctor.obj M
-  let Id := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I)
-  let Qd := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R (R ⧸ I))
+  let Md := _root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj M
+  let Id := _root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I)
+  let Qd := _root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R (R ⧸ I))
   let S := ModuleCat.shortComplexOfCompEqZero I.subtype I.mkQ
     (LinearMap.exact_subtype_mkQ I).linearMap_comp_eq_zero
   have hS : S.ShortExact := ModuleCat.shortComplex_shortExact S
     (LinearMap.exact_subtype_mkQ I) I.injective_subtype I.mkQ_surjective
   have hz' : IsZero (F.obj (Md ⊗ Id).obj) := hz.of_iso
     (F.mapIso (DerivedCategory.Minus.ι.mapIso (β_ Md Id)))
-  have hg : IsIso (F.map ((boundedAboveDerivedTensorModuleFunctor M).map S.g)) :=
+  have hg : IsIso (F.map ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor M).map S.g)) :=
     completedTensor_shortExact_rightMap_isIso_of_isZero a M S hS hz'
   have := hg
-  let eR : F.obj ((boundedAboveDerivedTensorModuleFunctor M).obj (ModuleCat.of R R)) ≅
+  let eR : F.obj ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor M).obj (ModuleCat.of R R)) ≅
       Md.obj :=
     F.mapIso (DerivedCategory.Minus.ι.mapIso (ρ_ Md)) ≪≫
       (derivedComplexCompletionUnitIso R a Md.obj hM).symm
   let e : Md.obj ≅ F.obj (Qd ⊗ Md).obj :=
-    eR.symm ≪≫ asIso (F.map ((boundedAboveDerivedTensorModuleFunctor M).map S.g)) ≪≫
+    eR.symm ≪≫ asIso (F.map ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor M).map S.g)) ≪≫
       F.mapIso (DerivedCategory.Minus.ι.mapIso (β_ Md Qd))
   let eH := ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).app M).symm ≪≫
     (DerivedCategory.homologyFunctor (ModuleCat R) 0).mapIso e
@@ -421,19 +421,19 @@ perfectoid 化の核 K が M を零化すれば、K⊗̂ᴸM は零である（B
 ## 使われ方
 短完全列の両端を完備テンソルで消し、BS 著者版 Proposition 10.2 の拡大閉性に使う。
 -/
-theorem perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
+theorem Almost.perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) (g : R)
-    (M : ModuleCat.{u} R) (hM : IsAlmostZero (perfectoidIdeal R p hR g) M) :
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (g : R)
+    (M : ModuleCat.{u} R) (hM : IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) M) :
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
-      ((boundedAboveDerivedTensorModuleFunctor
-        (ModuleCat.of R (perfectoidIdeal R p hR g))).obj M)) := by
-  let K := perfectoidIdeal R p hR g
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor
+        (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g))).obj M)) := by
+  let K := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g
   let := quotientModule K M hM
   let := quotientModule_scalarTower K M hM
   exact completedTensor_isZero_of_algebraModule R (p : R) (R ⧸ K) M
-    (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R K))
-    (perfectoidIdeal_lemma103 R p hR g).2.2
+    (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R K))
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_lemma103 R p hR g).2.2
 
 /--
 ## 概要
@@ -446,15 +446,15 @@ K→R→R/K の tensor 三角形から M≅(R/K)⊗̂ᴸM を得て、実 H⁰ �
 ## 使われ方
 BS 著者版 Proposition 10.2 の中央加群のテンソル消滅から、元の零化条件を復元する。
 -/
-theorem perfectoidIdeal_isAlmostZero_of_completedTensor_isZero
+theorem Almost.perfectoidIdeal_isAlmostZero_of_completedTensor_isZero
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) (g : R)
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (g : R)
     (M : ModuleCat.{u} R) (hM : IsModuleComplete R (p : R) M)
     (hz : IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
-      ((boundedAboveDerivedTensorModuleFunctor
-        (ModuleCat.of R (perfectoidIdeal R p hR g))).obj M))) :
-    IsAlmostZero (perfectoidIdeal R p hR g) M :=
-  annihilates_of_completedTensor_zero (p : R) (perfectoidIdeal R p hR g) M hM hz
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor
+        (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g))).obj M))) :
+    IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) M :=
+  _root_.SerrePositivity.BhattScholze.Almost.annihilates_of_completedTensor_zero (p : R) (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) M hM hz
 
 -- 指定署名を保持する。両端の tensor 消滅には h₁,h₃ は不要である。
 set_option linter.unusedVariables false in
@@ -467,28 +467,28 @@ BS 著者版 Proposition 10.4 の逆方向により、その実 H⁰ の R/K 作
 ## 規約
 指定の三つの完備性引数を保持する。両端からの消滅の方向は完備性なしにも成立する。
 ## 使われ方
-KL-T に指定された署名で渡す、証明済みの拡大閉性定理である。
+CLMST の Tor 比較 に指定された署名で渡す、証明済みの拡大閉性定理である。
 -/
-theorem perfectoidIdeal_isAlmostZero_extension
+theorem Almost.perfectoidIdeal_isAlmostZero_extension
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) (g : R)
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (g : R)
     (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
     (h₁ : IsModuleComplete R (p : R) S.X₁) (h₂ : IsModuleComplete R (p : R) S.X₂)
     (h₃ : IsModuleComplete R (p : R) S.X₃)
-    (hX₁ : IsAlmostZero (perfectoidIdeal R p hR g) S.X₁)
-    (hX₃ : IsAlmostZero (perfectoidIdeal R p hR g) S.X₃) :
-    IsAlmostZero (perfectoidIdeal R p hR g) S.X₂ := by
-  apply perfectoidIdeal_isAlmostZero_of_completedTensor_isZero R p hR g S.X₂ h₂
+    (hX₁ : IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₁)
+    (hX₃ : IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₃) :
+    IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₂ := by
+  apply _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_of_completedTensor_isZero R p hR g S.X₂ h₂
   exact completedTensor_isZero_of_shortExact (p : R)
-    (ModuleCat.of R (perfectoidIdeal R p hR g)) S hS
-    (perfectoidIdeal_completedTensor_isZero_of_isAlmostZero R p hR g S.X₁ hX₁)
-    (perfectoidIdeal_completedTensor_isZero_of_isAlmostZero R p hR g S.X₃ hX₃)
+    (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g)) S hS
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_completedTensor_isZero_of_isAlmostZero R p hR g S.X₁ hX₁)
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_completedTensor_isZero_of_isAlmostZero R p hR g S.X₃ hX₃)
 
 end SerrePositivity.BhattScholze
 
 end PerfectoidAlmostExtension
 
-/-! ## B5 の公開入口
+/-! ## perfectoid イデアルの almost 判定の公開入口
 
 ## 概要
 BS 著者版 Lemma 10.3（印刷 pp.78–79）、BS 著者版 Remark 10.7（印刷 p.80）の冪等性、
@@ -498,38 +498,38 @@ BS 著者版 Proposition 10.2（印刷 p.78）の導来完備 almost 零加群�
 ## 規約
 核と mod p 冪像の既存定義を保持し、全定理は追加の引用なしに証明されている。
 ## 使われ方
-ルートの一つの import と、KL-T・CLMST への証明済み公開定理の受渡しに使う。
+ルートの一つの import と、CLMST の Tor 比較・CLMST への証明済み公開定理の受渡しに使う。
 -/
 
 @[expose] public noncomputable section PerfectoidAlmostModCategoryPart
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
 
 /-- mod p^N の全加群の perfectoid almost 圏。
 文献入力の冪等性を定義の局所的な instance として供給する。 -/
-abbrev perfectoidAlmostModCategory (N : ℕ) :=
-  letI : Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N) := ⟨perfectoidIdealMod_idempotent R p hR g N⟩
-  Almost.ModuleCategory (BhattScholze.perfectoidIdealMod R p hR g N)
+abbrev Almost.perfectoidAlmostModCategory (N : ℕ) :=
+  letI : Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N) := ⟨_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g N⟩
+  _root_.SerrePositivity.Almost.ModuleCategory (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)
 
 /-- mod p^N の加群から、その perfectoid almost 圏への局所化関手。
 呼び出し側で冪等性の `Fact` を仮定する必要はない。 -/
-abbrev perfectoidAlmostModLocalization (N : ℕ) :
-    ModuleCat.{u} (R ⧸ Ideal.span {(p : R) ^ N}) ⥤ perfectoidAlmostModCategory R p hR g N :=
-  letI : Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N) := ⟨perfectoidIdealMod_idempotent R p hR g N⟩
-  Almost.localization (BhattScholze.perfectoidIdealMod R p hR g N)
+abbrev Almost.perfectoidAlmostModLocalization (N : ℕ) :
+    ModuleCat.{u} (R ⧸ Ideal.span {(p : R) ^ N}) ⥤ _root_.SerrePositivity.BhattScholze.Almost.perfectoidAlmostModCategory R p hR g N :=
+  letI : Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N) := ⟨_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g N⟩
+  _root_.SerrePositivity.Almost.localization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)
 
 /-- 明示的な冪等性の証拠を置いた場合、名前付き局所化は既存の局所化と定義上同じ。 -/
-theorem perfectoidAlmostModLocalization_eq (N : ℕ)
-    [Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
-      BhattScholze.perfectoidIdealMod R p hR g N)] :
-    perfectoidAlmostModLocalization R p hR g N =
-      Almost.localization (BhattScholze.perfectoidIdealMod R p hR g N) := rfl
+theorem Almost.perfectoidAlmostModLocalization_eq (N : ℕ)
+    [Fact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N * _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N =
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N)] :
+    _root_.SerrePositivity.BhattScholze.Almost.perfectoidAlmostModLocalization R p hR g N =
+      _root_.SerrePositivity.Almost.localization (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod R p hR g N) := rfl
 
 end SerrePositivity.BhattScholze
 
@@ -538,5 +538,5 @@ end PerfectoidAlmostModCategoryPart
 /-! Literature correspondences from the reviewed coverage tables. -/
 
 /-! Reviewed literature correspondences. -/
-attribute [cite BS19 "Prop 10.2" (partial := special) "本体は単項 J=(g) の perfectoid 核で、導来完備加群の短完全拡大での閉性のみ（sorry 0）。核・余核での閉性と almost 圏 (R/J)_perfd 加群との同値は未。使用先は CLMST ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：completedTensor_isZero_of_shortExact（任意の元と加群についてテンソル後の零性を述べる一般補助。J-almost zero への適用は別の宣言。）；perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion（p 冪ねじれ加群の仮定から一般加群の高次 Tor の零化。Prop 10.2 の拡大閉性の宣言ではない。） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension
-attribute [cite BS19 "Rem 10.7" (partial := special) "本体の perfectoidIdealMod_idempotent（単項 J=(g) の perfectoid 化の核の mod pⁿ 像が冪等）は、原典 Rem 10.7 の一文「J_perfd,n は R/pⁿ の冪等イデアル」の J=(g) の場合（調整役が原典の全文で確認、11-07。前の「ずれの疑い」は誤り）。使用先は CLMST。Galois 条件の mod pⁿ 版の部分は E3 に不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectoidIdeal_conormal_completion_isZero（原文は mod p^n 像の冪等性等を述べる。conormal の主張は別で、Lemma 10.3 の応用。）；perfectoidIdeal_eq_square_sup_pow_mul（核 K について K=K²+p^nK。原文の mod p^n 像の冪等性を出す補助で、原文の結論は perfectoid） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent
+attribute [cite BS19 "Prop 10.2" (partial := special) "本体は単項 J=(g) の perfectoid 核で、導来完備加群の短完全拡大での閉性のみ（sorry 0）。核・余核での閉性と almost 圏 (R/J)_perfd 加群との同値は未。使用先は CLMST ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：completedTensor_isZero_of_shortExact（任意の元と加群についてテンソル後の零性を述べる一般補助。J-almost zero への適用は別の宣言。）；perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion（p 冪ねじれ加群の仮定から一般加群の高次 Tor の零化。Prop 10.2 の拡大閉性の宣言ではない。） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension
+attribute [cite BS19 "Rem 10.7" (partial := special) "本体の perfectoidIdealMod_idempotent（単項 J=(g) の perfectoid 化の核の mod pⁿ 像が冪等）は、原典 Rem 10.7 の一文「J_perfd,n は R/pⁿ の冪等イデアル」の J=(g) の場合（調整役が原典の全文で確認、11-07。前の「ずれの疑い」は誤り）。使用先は CLMST。Galois 条件の mod pⁿ 版の部分は E3 に不要 ／ DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：perfectoidIdeal_conormal_completion_isZero（原文は mod p^n 像の冪等性等を述べる。conormal の主張は別で、Lemma 10.3 の応用。）；perfectoidIdeal_eq_square_sup_pow_mul（核 K について K=K²+p^nK。原文の mod p^n 像の冪等性を出す補助で、原文の結論は perfectoid） ／ DOC1 照合：ok 1 件"] _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent

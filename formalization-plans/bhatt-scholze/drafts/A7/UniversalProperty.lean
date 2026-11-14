@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.UniversalProperty（仮。原典 Cor 8.14 と E3 の欄 universal）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.UniversalProperty（仮。原典 Cor 8.14 と E3 の欄 universal）
 -- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3、単位 A7-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 

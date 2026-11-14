@@ -23,7 +23,7 @@ BS 著者版 Proposition 3.13 の普遍性を、Remark 7.15 のモニック根�
 
 universe u
 
-/-! ## André A1-a：通常の入力環から H/d への標準射
+/-! ## André 通常の入力環から H/d への標準射
 
 ## 概要
 
@@ -50,12 +50,12 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -83,7 +83,7 @@ def powerRootPrismMonicHodgeTateRoots (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     T := by
   let := pdCompletionCommRing L p (jL dP)
-  exact qH (uL (jL (powerRootPolynomialVariable A p hp n)))
+  exact qH (uL (jL (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n)))
 
 /-- 概要：H/d の標準根列は p 冪に関して互換。
 方針：無限根環の関係式を三つの標準環射で写す。
@@ -95,7 +95,7 @@ theorem powerRootPrismMonicHodgeTateRoots_pow (n : ℕ) :
       powerRootPrismMonicHodgeTateRoots W hW f n := by
   let := pdCompletionCommRing L p (jL dP)
   exact (map_pow ((qH).comp ((uL).comp jL)) _ _).symm.trans
-    (congrArg ((qH).comp ((uL).comp jL)) (powerRootPolynomialVariable_pow A p hp n))
+    (congrArg ((qH).comp ((uL).comp jL)) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable_pow A p hp n))
 
 /-- 概要：標準根列の第零根は元の入力多項式の係数商像を消す。
 方針：既存の raw 関係による第零根の評価定理を使う。
@@ -151,7 +151,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicStandardEquationInput
 
-/-! ## André A1-a：完備入力環から H/d への標準射の接続
+/-! ## André 完備入力環から H/d への標準射の接続
 
 ## 概要
 
@@ -179,12 +179,12 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -204,9 +204,9 @@ local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
 local notation "S₀" => PowerRootEquationQuotient p hp fR
 local notation "φ₀" => powerRootPrismMonicHodgeTateBaseMap W hW f
 
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
@@ -273,7 +273,7 @@ theorem powerRootPrismMonicOriginalInputMap_coeff :
 theorem powerRootPrismMonicOriginalInputMap_root (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     ∀ hT : IsAdicComplete (Ideal.span {(p : T)}) T,
-    powerRootPrismMonicOriginalInputMap W hW f hf hT (lS (powerRootPolynomialVariable R p hp n)) =
+    powerRootPrismMonicOriginalInputMap W hW f hf hT (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) =
       powerRootPrismMonicHodgeTateRoots W hW f n := by
   let := pdCompletionCommRing L p (jL dP)
   dsimp only
@@ -285,7 +285,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicStandardCompletedInput
 
-/-! ## André A1-a：標準入力射を保つ実完備化の普遍性
+/-! ## André 標準入力射を保つ実完備化の普遍性
 
 ## 概要
 
@@ -314,12 +314,12 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -408,7 +408,7 @@ theorem powerRootPrismMonicEquationInputSquare_iff_roots
     let := pdCompletionCommRing L p (jL dP)
     ∀ (F : H →+* B) (hF : F.comp baseH = k.toRingHom),
       (powerRootPrismMonicReductionMap W hW f Q k F hF).comp input₀ = η ↔
-        ∀ n, qB (F (uL (jL (powerRootPolynomialVariable A p hp n)))) = η (rS n) := by
+        ∀ n, qB (F (uL (jL (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n)))) = η (rS n) := by
   let := pdCompletionCommRing L p (jL dP)
   dsimp only
   intro F hF
@@ -453,7 +453,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicEquationInputSquare
 
-/-! ## André A1-a：原典の完備入力作用を保つ実完備化の普遍性
+/-! ## André 原典の完備入力作用を保つ実完備化の普遍性
 
 ## 概要
 
@@ -481,13 +481,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -506,9 +506,9 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
 local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
@@ -540,8 +540,8 @@ theorem powerRootPrismMonicOriginalInputSquare_iff_roots
       (F : H →+* B) (hF : F.comp baseH = k.toRingHom),
       (powerRootPrismMonicReductionMap W hW f Q k F hF).comp
         (powerRootPrismMonicOriginalInputMap W hW f hf hT) = η ↔
-          ∀ n, qB (F (uL (jL (powerRootPolynomialVariable A p hp n)))) =
-            η (lS (powerRootPolynomialVariable R p hp n)) := by
+          ∀ n, qB (F (uL (jL (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n)))) =
+            η (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) := by
   let := pdCompletionCommRing L p (jL dP)
   dsimp only
   intro hT F hF
@@ -549,7 +549,7 @@ theorem powerRootPrismMonicOriginalInputSquare_iff_roots
     _root_.SerrePositivity.BhattScholze.boundedPrism_quotient_isAdicComplete_prime Q hB
   constructor
   · intro hs n
-    have h := RingHom.congr_fun hs (lS (powerRootPolynomialVariable R p hp n))
+    have h := RingHom.congr_fun hs (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n))
     rw [RingHom.comp_apply, powerRootPrismMonicOriginalInputMap_root] at h
     exact h
   · intro hr
@@ -568,8 +568,8 @@ theorem powerRootPrismMonicOriginalInputSquare_iff_roots
     · intro n
       change powerRootPrismMonicReductionMap W hW f Q k F hF
         (powerRootPrismMonicOriginalInputMap W hW f hf hT
-          (lS (powerRootPolynomialVariable R p hp n))) =
-            η (lS (powerRootPolynomialVariable R p hp n))
+          (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n))) =
+            η (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n))
       rw [powerRootPrismMonicOriginalInputMap_root]
       exact hr n
 
@@ -606,7 +606,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicOriginalInputSquare
 
-/-! ## André A1-a：正則性を明示した源 prism の入力作用を保つ普遍性
+/-! ## André 正則性を明示した源 prism の入力作用を保つ普遍性
 
 ## 概要
 
@@ -635,13 +635,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -660,9 +660,9 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
 local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
@@ -827,7 +827,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootPrismMonicSourcePrismUniversal
 
-/-! ## André A1-a：元の H の入力作用を持つ対象と初期性
+/-! ## André 元の H の入力作用を持つ対象と初期性
 
 ## 概要
 
@@ -858,13 +858,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -883,9 +883,9 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
 local notation "fR" => f.map (Ideal.Quotient.mk W.ideal)
-local notation "PR" => PowerRootPolynomial R p hp
+local notation "PR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CR" => AdicCompletion (Ideal.span {(p : PR)}) PR
-local notation "zR" => powerRootPolynomialBaseMap R p hp fR
+local notation "zR" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp fR
 local notation "SI" => PowerRootMonicCompletedInput p hp fR
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})) (algebraMap PR CR)
@@ -894,7 +894,7 @@ local notation "CS" => AdicCompletion (Ideal.span {(p : S₀)}) S₀
 local notation "jS" => algebraMap S₀ CS
 local notation "qR" => Ideal.Quotient.mk (Ideal.span {zR})
 
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 local notation "cS" => RingHom.comp lS (algebraMap R PR)
 variable (hf : f.Monic)
 
@@ -1038,13 +1038,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -1077,7 +1077,7 @@ theorem existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots
       (DH).IsDeltaHom Q.deltaStructure F ∧
         F.comp (powerRootPrismMonicCompletionBaseMap W hW f) = k ∧
           ∀ n, Ideal.Quotient.mk Q.ideal
-            (F (uL (jL (powerRootPolynomialVariable A p hp n)))) = ρ n := by
+            (F (uL (jL (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n)))) = ρ n := by
   let := pdCompletionCommRing L p (jL dP)
   let qB := Ideal.Quotient.mk Q.ideal
   obtain ⟨g, hg, hgu⟩ :=
@@ -1085,16 +1085,16 @@ theorem existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots
       W.deltaStructure Q hQ k hk ρ hρ
   have hdg : g dP = Q.generator := (RingHom.congr_fun hg.2.1 W.generator).trans hd
   have hinput : g (powerRootMonicPDInput p f) =
-      f.eval₂ k (g (powerRootPolynomialVariable A p hp 0)) := by
-    unfold powerRootMonicPDInput powerRootPolynomialBaseMap
+      f.eval₂ k (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0)) := by
+    unfold powerRootMonicPDInput _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap
     rw [Polynomial.aeval_def, Polynomial.hom_eval₂, hg.2.1]
   have hzero : qB (g (powerRootMonicPDInput p f)) = 0 := by
     calc
-      _ = qB (f.eval₂ k (g (powerRootPolynomialVariable A p hp 0))) := congrArg qB hinput
-      _ = f.eval₂ (qB.comp k) (qB (g (powerRootPolynomialVariable A p hp 0))) :=
+      _ = qB (f.eval₂ k (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0))) := congrArg qB hinput
+      _ = f.eval₂ (qB.comp k) (qB (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0))) :=
         Polynomial.hom_eval₂ f k qB _
       _ = 0 := by
-        rw [show qB (g (powerRootPolynomialVariable A p hp 0)) = ρ 0 from hg.2.2 0]
+        rw [show qB (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0)) = ρ 0 from hg.2.2 0]
         exact hroot
   have hr : Function.Injective (fun x : B => g dP * x) := by
     rw [hdg]
@@ -1113,7 +1113,7 @@ theorem existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots
     rw [hF.2]
     exact hg.2.1
   · intro n
-    exact (congrArg qB (RingHom.congr_fun hF.2 (powerRootPolynomialVariable A p hp n))).trans
+    exact (congrArg qB (RingHom.congr_fun hF.2 (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n))).trans
       (hg.2.2 n)
   · intro K hK
     let gK := K.comp ((uL).comp jL)

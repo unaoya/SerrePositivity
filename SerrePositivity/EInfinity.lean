@@ -2496,12 +2496,10 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedLimits
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitLocalTransport
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
 
-public import SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary
 public import SerrePositivity.EInfinity.Interface.Core
 public import SerrePositivity.EInfinity.Interface.StrictInputs
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
-public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryInputActionEquality
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility

@@ -43,7 +43,7 @@ universe u
 section PerfectoidCokernelPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory
+open _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] [Algebra.FinitePresentation R S]
@@ -113,7 +113,7 @@ end PerfectoidCokernelPart
 section PerfectoidCokernelEulerPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory
+open _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] [Algebra.FinitePresentation R S]
@@ -145,9 +145,9 @@ end PerfectoidCokernelEulerPart
 
 section CompletedCokernelLengthPart
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     [CommRing D] [Algebra A D] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
@@ -272,9 +272,9 @@ end CompletedCokernelLengthPart
 
 section CompletedSourceLengthPart
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 
 variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     [CommRing D] [Algebra A D] [Module.Finite A D]
@@ -403,9 +403,9 @@ end CompletedSourceLengthPart
 
 section CompletedCokernelFiniteEulerPart
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 
 variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
@@ -513,9 +513,9 @@ end CompletedCokernelFiniteEulerPart
 
 section SourceEulerEvaluationPart
 
-open scoped TensorProduct ENNReal
+open scoped _root_.TensorProduct _root_.ENNReal
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 set_option backward.isDefEq.respectTransparency false
 
 variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
@@ -603,9 +603,9 @@ end SourceEulerEvaluationPart
 
 section CompletedTargetLengthPart
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 set_option backward.isDefEq.respectTransparency true
 
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -656,7 +656,7 @@ theorem completedTensor_stage_target_koszul_length_eq_zero
       let _ := Module.compHom ((koszulComplex (algebraMap S C ∘ z)).homology q)
         (algebraMap (CompletedTower A t p) C)
       Almost.IsAlmostZero
-        (perfectoidIdeal (CompletedTower A t p) p hperf
+        (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g))
         ((koszulComplex (algebraMap S C ∘ z)).homology q) := by
     rw [hseq, hqi]
@@ -749,9 +749,9 @@ end CompletedTargetLengthPart
 
 section SelectedParameterEulerPart
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -872,9 +872,9 @@ end SelectedParameterEulerPart
 
 section CompletedParameterFinitenessPart
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 namespace SerrePositivity.CLMST
-open Section2 IsLocalRing CategoryTheory
+open _root_.SerrePositivity.Section2 _root_.IsLocalRing _root_.CategoryTheory
 
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]

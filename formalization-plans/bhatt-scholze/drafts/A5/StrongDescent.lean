@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.StrongDescent（仮。原典 Lemma 8.6）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.StrongDescent（仮。原典 Lemma 8.6）
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.4・§3.5、単位 A5-3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
