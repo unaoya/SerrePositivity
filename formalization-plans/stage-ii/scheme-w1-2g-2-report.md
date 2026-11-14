@@ -203,3 +203,16 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 - Rees への特殊化：同じ schemeScalarMorphism が実際の affineBlowupπ I と等しい（見込み10〜30行）。reesZeroEquiv の逆と projectiveScalarToZero (reesGrade I) が同じ環準同型であることを使う。
 
 この比較の後、2d の affine 局所模型と 2f の実際の四角形を合わせ、有限ファイバー冪の Segre 表示へ進む。一般の固有射の四角形の完全性を追加仮定にしない。
+
+構造射の比較の証明分割：一般の Proj の比較と Rees の零次成分の式を先に検証し、Rees の構造射への特殊化を別モジュールへ分ける。必要なら `reesProjectiveScalarSections I : R→+*Γ(affineBlowup I,⊤)` を同じ大域スカラーの係数移送の略記として作る（見込み10〜30行、前記の内数）。同じ構造層の型を明示して照合し、既定の elaboration/kernel 上限を維持する。
+
+
+## G3：一般の Proj のスカラーと実際の構造射
+
+`ProjectiveScalarStructureMorphism`（45行）：`schemeScalarMorphism_projectiveScalar` は射影 Čech 側の大域スカラーの射と Proj.toSpecZero・projectiveScalarToZero の合成の一致。分母1の基本開・等しい開集合間の射と Γ–Spec の自然性を照合する。`rees_projectiveScalarToZero` は Rees の零次スカラーと reesZeroEquiv の逆の一致。零次成分が大域切断全体であるとは仮定しない。
+
+本体45行・入口1行。環の射の包装・開集合の等式の射を明示して単独検証、ソース完全一致、対象・直接 importer のビルド5,079ジョブ、小監査2宣言・標準三公理のみ、終了状態0。Rees への特殊化は未検証の下書きのまま分割し、既定の上限を維持。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-projective-scalar-structure-morphism-check-3.log`・`2g-projective-scalar-structure-morphism-native.log`・`2g-projective-scalar-structure-morphism-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体795行・入口込み808行、小監査50宣言・標準三公理のみ。G3 の Rees への構造射の特殊化・有限ファイバー冪と G4〜G5 は未完。外枠16,000行、全体の見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
