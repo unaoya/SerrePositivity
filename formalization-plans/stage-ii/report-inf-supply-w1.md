@@ -3440,12 +3440,45 @@ lemma KanEnrichedDiagram.realization_homMk_of_homEquiv
     {X Y : C} (f : X ⟶ Y)
     (η : D.evaluate X ⋙ kanObjectForget ⟶ D.evaluate Y ⋙ kanObjectForget)
     (h : eHomEquiv SSet.{u} f ≫ D.toEnrichedFunctor.map X Y =
-      eHomEquiv SSet.{u} (kanDiagramHom (F
+      eHomEquiv SSet.{u} (kanDiagramHom (F := ⟨D.evaluate X, trivial⟩)
+        (G := ⟨D.evaluate Y, trivial⟩) η)) :
+    normalizedVertexHomMap D.realization (D.realization_vertex X).symm
+        (D.realization_vertex Y).symm
+        (Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated) =
+      Truncated.HomotopyCategory.homMk
+        (kanDiagramNaturalTransformationEdge
+          (F := ⟨D.evaluate X, trivial⟩) (G := ⟨D.evaluate Y, trivial⟩) η).toTruncated
 ```
 
 ### KanEnrichedComparisonEvaluation
 
 ```lean
+private lemma coefficient_diagonal_constant
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
+    (X : C) {n : ℕ} (σ : (nerve J) _⦋n⦌) :
+    diagonalKanDiagramEvaluation (kanDiagramSimplexBase σ)
+      ((Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+        (coherentNerveVertex X) n).comp SSet D.toEnrichedFunctor) =
+      enrichedFunctorOfOrderDiagram (kanDiagramSimplexBase σ ⋙ D.evaluate X)
+
+private lemma enriched_map_app_heq {I : Type u} [LinearOrder I]
+    {F G : EnrichedFunctor SSet.{u} (SimplicialThickening I) KanObject.{u}}
+    (h : F = G) (i j : SimplicialThickening I) (d : SimplexCategoryᵒᵖ)
+    (P : (SimplicialCategory.sHom i j).obj d) :
+    HEq ((F.map i j).app d P) ((G.map i j).app d P)
+
+private lemma post_constant {A B C : SSet.{u}} (f : A ⟶ B) (g : B ⟶ C)
+    (d : SimplexCategoryᵒᵖ) :
+    ((ihom A).map g).app d
+      (Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+        (functorVertex f) d.unop.len) =
+      Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
+        (functorVertex (f ≫ g)) d.unop.len
+
+private lemma prism_transpose {A I X : SSet.{u}} (F : A ⟶ (ihom I).obj X) :
+    functorFamilyPrism (transposeFunctorFamily F) = uncurry F
+
 lemma KanEnrichedDiagramComparison.jointComparisonEdge_restrict
     {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
     {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
@@ -3454,7 +3487,7 @@ lemma KanEnrichedDiagramComparison.jointComparisonEdge_restrict
       (SSet.const (coherentNerveVertex X)))).app SpaceInfinity.{u}).app (Opposite.op ⦋1⦌)
         η.jointComparisonEdge.edge =
       (kanDiagramNaturalTransformationEdge
-        (F
+        (F := ⟨D.evaluate X, trivial⟩) (G := ⟨E.evaluate X, trivial⟩) (η.app X)).edge
 ```
 
 ### RelativeSectionOrdinaryAction
@@ -3472,7 +3505,13 @@ lemma relativeSectionPostTransformation_eHom
     (f : E ⟶ H) (hf : f ≫ q = p) {J : Type u} [Category.{u} J]
     (A : Jᵒᵖ ⥤ Over B) :
     eHomEquiv SSet.{u} (show leftFibrationObjectOf p ⟶ leftFibrationObjectOf q from
-        Over.homMk (U
+        Over.homMk (U := Over.mk p) (V := Over.mk q) f hf) ≫
+      (relativeSectionEnrichedDiagram A).toEnrichedFunctor.map
+        (leftFibrationObjectOf p) (leftFibrationObjectOf q) =
+      eHomEquiv SSet.{u} (kanDiagramHom
+        (F := ⟨(relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf p), trivial⟩)
+        (G := ⟨(relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf q), trivial⟩)
+        (relativeSectionPostTransformation p q f hf A))
 
 lemma relativeSectionRealization_homMk
     {E H B : SSet.{u}} (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
@@ -3483,7 +3522,9 @@ lemma relativeSectionRealization_homMk
       ((relativeSectionEnrichedDiagram A).realization_vertex (leftFibrationObjectOf q)).symm
       (Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated) =
       Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
-        (F
+        (F := ⟨(relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf p), trivial⟩)
+        (G := ⟨(relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf q), trivial⟩)
+        (relativeSectionPostTransformation p q f hf A)).toTruncated
 ```
 
 三本とも同じ共同実現・相対後合成の法則。独立の数学的な入力ではない。
@@ -3558,7 +3599,7 @@ lemma KanEnrichedDiagramComparison.jointComparisonEdge_restrict
       (SSet.const (coherentNerveVertex X)))).app SpaceInfinity.{u}).app (Opposite.op ⦋1⦌)
         η.jointComparisonEdge.edge =
       (kanDiagramNaturalTransformationEdge
-        (F
+        (F := ⟨D.evaluate X, trivial⟩) (G := ⟨E.evaluate X, trivial⟩) (η.app X)).edge
 ```
 
 #### KanEnrichedRealizationValueHom
@@ -3569,7 +3610,11 @@ lemma kanEnrichedRealizationValueIso_hom
     {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
     (η : KanEnrichedDiagramComparison D E)
     (hη : ∀ j (X : C), IsQCatEquivalence
-      (X
+      (X := ((D.obj j).obj X).obj) (Y := ((E.obj j).obj X).obj) ((η.component j).val X))
+    (X : C) :
+    (kanEnrichedRealizationValueIso η hη X).hom =
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := ⟨D.evaluate X, trivial⟩) (G := ⟨E.evaluate X, trivial⟩) (η.app X)).toTruncated
 ```
 
 #### SectionBaseChangeCompValueHom
@@ -3635,7 +3680,28 @@ lemma sectionBaseChangeCompRealizationIso_value_heq {E B D T : SSet.{u}}
 lemma sectionBaseChangeCompComparison_classified_hom {E B D T : SSet.{u}}
     [Quasicategory T] (p : E ⟶ B) [LeftFibration p]
     (k : D ⟶ B) (l : T ⟶ D) :
-    let q₀
+    let q₀ := pullback.snd p (l ≫ k)
+    let q₁ := pullback.snd (pullback.snd p k) l
+    (show FunctorHom
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap T) ≫
+          leftStraighteningInfinityDiagram q₀)
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap T) ≫
+          leftStraighteningInfinityDiagram q₁) from
+      precomposeFunctorHom
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap T))
+        (leftClassificationHom q₀ q₁ (pullbackLeftPullbackSndIso p k l).inv
+          (pullbackLeftPullbackSndIso_inv_snd_snd p k l))) ≫
+      (leftClassificationSimplexIso q₁).hom =
+      (show FunctorHom
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap T) ≫
+          leftStraighteningInfinityDiagram q₀)
+        (kanDiagramCoherentNerve
+          ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor T)).evaluate
+            (leftFibrationObjectOf q₀))) from (leftClassificationSimplexIso q₀).hom) ≫
+        (kanEnrichedRealizationValueIso
+          (sectionBaseChangeCompComparison k l (transportSimplexDomainFunctor T))
+          (sectionBaseChangeCompComparison_isQCatEquivalence k l (transportSimplexDomainFunctor T))
+          (leftFibrationObjectOf p)).hom
 ```
 
 ### LeftStraighteningBaseChangeRestrictionNormalization
@@ -3710,7 +3776,8 @@ lemma leftStraighteningInfinityDiagram_baseChangeIso_firstVertex_heq
 
 ```lean
 lemma internalHomSwapIso_evaluate_right (A B X : SSet.{u}) (b : B _⦋0⦌) :
-    (internalHomSwapIso A B X).hom ≫ evaluateFunctorAt (Y
+    (internalHomSwapIso A B X).hom ≫ evaluateFunctorAt (Y := (ihom A).obj X) b =
+      (ihom A).map (evaluateFunctorAt (Y := X) b)
 ```
 
 #### FunctorIsoTransposeValue
@@ -3718,7 +3785,7 @@ lemma internalHomSwapIso_evaluate_right (A B X : SSet.{u}) (b : B _⦋0⦌) :
 ```lean
 lemma functorIsoValue_transpose_heq_postcomp {A I X : SSet.{u}}
     {F G : A ⟶ (ihom I).obj X} (e : FunctorIso F G) (i : I _⦋0⦌) :
-    HEq (functorIsoValue e.transpose i) (e.postcomp (evaluateFunctorAt (Y
+    HEq (functorIsoValue e.transpose i) (e.postcomp (evaluateFunctorAt (Y := X) i))
 ```
 
 同じ方法で初頂点制限同型の対象成分を共同制限の評価へ戻す
@@ -3778,3 +3845,89 @@ B4終了後は§49のE01の接続へ戻る。R2完成まで、R3・R4は実装�
 - `inf-supply-b4/target-audit-result.json` に結果を保存した。
 
 B4は完了。続けて§49のE01の接続へ戻り、R2の評価の充満忠実性（停止点5a）まで進める。
+
+## 51. B4後のE01の接続（11-14、検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§49の続き。未検証だった初頂点制限の端点移送は、一般の `e ≪≫ eqToIso h` の
+異種等式の法則へ局所化し、大きい具体的同型にsimpを走らせない形へ直している。
+指定底変換を元の共同制限・元の切断比較の逆・元の共同制限の逆という三因子へ戻す
+計算も、同じ端点移送と後合成の法則だけで書いた。新しい数学的入力は追加しない。
+どちらも対象ビルド中。各宣言は200行未満。計算上限は変更していない。
+
+型（既存構成の法則と証明分割、IDのある新項目には数えない）：
+
+### LeftClassificationSimplexRestrictionValue
+
+```lean
+private lemma mp_heq {α β : Sort v} (h : α = β) (x : α) : HEq (Eq.mp h x) x
+
+private lemma iso_trans_eqToIso_heq {L : Type v} [Category.{w} L]
+    {a b c : L} (e : a ≅ b) (h : b = c) : HEq (e ≪≫ eqToIso h) e
+
+lemma leftStraighteningSimplexRestrictionIso_heq_transpose (B : SSet.{u}) :
+    HEq (leftStraighteningSimplexRestrictionIso B)
+      (leftStraighteningSectionJointDiagram_restrictIso B).transpose
+
+lemma leftClassificationSimplexIso_heq_joint_postcomp {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] :
+    HEq (leftClassificationSimplexIso p)
+      ((leftStraighteningSectionJointDiagram_restrictIso B).postcomp
+        (evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)))
+```
+
+### LeftClassificationBaseChangeRestrictionFactorization
+
+```lean
+private lemma eqIso_trans_postcomp_heq {A X Y : SSet.{u}}
+    {F F' G : A ⟶ X} (h : F = F') (e : FunctorIso F' G) (q : X ⟶ Y) :
+    HEq (FunctorIso.postcomp (f := F) (g := G)
+      (eqToIso (congrArg (fun f ↦ HomotopyCategory.mk (functorVertex f)) h) ≪≫ e) q)
+      (FunctorIso.postcomp e q)
+
+lemma leftStraighteningInfinityDiagram_baseChangeIso_firstVertex_factors
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let t := U.map (nerveMap (transportSimplexFunctor k))
+    let P := (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}
+    let evp := evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p)
+    HEq ((leftStraighteningInfinityDiagram_baseChangeIso p k).precomp
+        (U.map (transportSimplexFirstVertexMap D)))
+      (FunctorIso.postcomp ((leftStraighteningSectionJointDiagram_restrictIso B).precomp t) evp ≪≫
+        FunctorIso.postcomp (transportSimplexSectionInfinity_baseChangeIso k).symm evp ≪≫
+          FunctorIso.postcomp ((leftStraighteningSectionJointDiagram_restrictIso D).postcomp P).symm
+            evp)
+```
+
+### 51.1 係数評価と検証済みの区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+三本の対象ビルド成功（5,477 jobs）。新しい環境の小監査は8宣言、標準三公理のみ。
+計算上限は変更していない。E01本体は未完了。
+ログ：`/tmp/is-w1/joint-evaluation-verify/`。
+
+- `LeftClassificationSimplexRestrictionValue`：89行。
+- `LeftClassificationBaseChangeRestrictionFactorization`：83行。
+- `LeftClassificationJointEvaluation`：63行。
+
+既存構成の法則の型（各宣言200行未満）：
+
+```lean
+lemma leftStraighteningInfinityDiagram_joint_evaluate {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] :
+    leftStraighteningSectionJointDiagram B ≫
+      evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p) =
+      leftStraighteningInfinityDiagram p
+
+lemma transportSimplexSectionInfinity_joint_evaluate {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] :
+    transportSimplexSectionInfinity B ≫
+      evaluateFunctorAt (Y := SpaceInfinity.{u}) (leftFibrationInfinityVertex p) =
+      kanDiagramCoherentNerve
+        ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+          (leftFibrationObjectOf p))
+
+```
