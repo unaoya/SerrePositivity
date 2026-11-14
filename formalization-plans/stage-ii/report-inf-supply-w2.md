@@ -13636,3 +13636,89 @@ def weightedNerveNativeStraighteningUnitIso
     FunctorIso (kanDiagramCoherentNerve F)
       (leftStraighteningInfinityDiagram (weightedNerveProjection (F ⋙ kanObjectForget)))
 ```
+
+## 219. 全係数の反転と元の反対要素nerveの終端augmentationの接続（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§218の係数移送の法則を75行で閉じた（見込み100〜220行）。既存kanDiagramOppositeComparisonIsoでKan化後の値だけを反転し、元のEx∞単位とその反転の全自然変換をKan化した全関手同型を合成した。反転した単位の弱同値性は既存opposite_map_isWeakHomotopyEquivalenceを使う。底の圏や全作用素を変えず、値ごとに逆射を選ばない。
+
+次に、既存nerveOppositeMap_naturalityと同じnerveOppositeIsoを全Cat図式に適用し、元のnerveと反対圏のnerveのKan化の全FunctorIsoを50行で記録した。元の全要素nerveの比較では、既存SimplexNerve.functorとSimplexTerminalNerve.functor、同じoppositeIsoをそのまま使う。これらに同じ全係数図式Fを前合成し、元のaugmentationの自然変換と既存augmentation_localized_isIsoをKan化して、元の全要素nerveの係数から元のFの係数への全FunctorIsoを76行で得た。新しい要素圏や反転模型を構成しておらず、既存構成の単位・自然性・係数移送・合成の法則として記録する。一覧の独立の数学的な項目は増やしていない。
+
+この同型が元の固定始域のroof比較と同じものになるという等式はまだ証明していない。全要素圏のfiberと元の反対要素圏を取り違えず、元の単位・augmentation・roofへ戻る正規化はR03dの残りとして保つ。底全体のFunctorIsoは得られたが、これだけでR03d・R02・R03とnative極限性を完了とは扱わない。
+
+個別検査：KanHomFamilyOpposite70713・終了0、KanNerveOppositeFamily90441・終了0、KanElementsFamily28433・終了0。292は必要な既存二モジュールだけの対象ビルド2,729 jobs・終了0（実ハンドル58640）。293：反転係数の対象ビルド2,802 jobs・終了0、小監査154本1,056宣言・標準三公理のみ（86257・終了0）。294：全Cat図式の反転の対象ビルド2,804 jobs・終了0、小監査155本1,064宣言・標準三公理のみ（85024・終了0）。295：全要素nerveの係数移送の対象ビルド2,934 jobs・終了0、小監査156本1,078宣言・標準三公理のみ（33179・終了0）。いずれも鍵をビルド・小監査の間だけ取り、終了と返却を確認した。
+
+今回75＋50＋76＝201行、累計156本・10,033行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。今後は元の全source frameの要素圏をR03fの同じ底の分類へ接続し、同じ全augmentationの逆からのtwisted pairingと照合する。
+
+### 219.1 型
+
+全係数の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`、全Cat図式の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### KanHomFamilyOpposite（75行）
+
+```lean
+lemma kanHomFamilyUnit_isWeakHomotopyEquivalence (X : SSet.{u}) :
+    IsWeakHomotopyEquivalence (exInfinityUnit.app X)
+
+def kanDiagramExInfinityUnitIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (kanHomFamilyCoherent (F ⋙ kanObjectForget))
+
+def kanHomFamilyOppositeUnit {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    F ⋙ SSet.opFunctor ⟶ (kanHomFamily F ⋙ kanObjectOpFunctor) ⋙ kanObjectForget
+
+def kanHomFamilyOppositeUnitIso {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    FunctorIso (kanHomFamilyCoherent (F ⋙ SSet.opFunctor))
+      (kanHomFamilyCoherent ((kanHomFamily F ⋙ kanObjectOpFunctor) ⋙ kanObjectForget))
+
+def kanHomFamilyOppositeComparisonIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    FunctorIso (kanHomFamilyCoherent F)
+      (kanHomFamilyCoherent (F ⋙ SSet.opFunctor))
+```
+
+#### KanNerveOppositeFamily（50行）
+
+```lean
+def catNerveOppositeFamilyMap :
+    (F ⋙ nerveFunctor) ⋙ SSet.opFunctor ⟶ (F ⋙ Cat.opFunctor) ⋙ nerveFunctor
+
+lemma catNerveOppositeFamilyMap_weak (i : I) :
+    IsWeakHomotopyEquivalence ((catNerveOppositeFamilyMap F).app i)
+
+def catNerveOppositeFamilyUnitIso :
+    FunctorIso (kanHomFamilyCoherent ((F ⋙ nerveFunctor) ⋙ SSet.opFunctor))
+      (kanHomFamilyCoherent ((F ⋙ Cat.opFunctor) ⋙ nerveFunctor))
+
+def catNerveOppositeFamilyIso :
+    FunctorIso (kanHomFamilyCoherent (F ⋙ nerveFunctor))
+      (kanHomFamilyCoherent ((F ⋙ Cat.opFunctor) ⋙ nerveFunctor))
+```
+
+#### KanElementsFamily（76行）
+
+```lean
+abbrev simplexElementsNerveDiagram : I ⥤ SSet.{u}
+
+def simplexElementsOppositeNerveIso :
+    (simplexElementsNerveDiagram F) ⋙ SSet.opFunctor ≅ F ⋙ SimplexTerminalNerve.functor
+
+def simplexElementsOppositeNerveKanIso :
+    FunctorIso (kanHomFamilyCoherent ((simplexElementsNerveDiagram F) ⋙ SSet.opFunctor))
+      (kanHomFamilyCoherent (F ⋙ SimplexTerminalNerve.functor))
+
+def simplexElementsOppositeAugmentation : F ⋙ SimplexTerminalNerve.functor ⟶ F
+
+lemma simplexElementsOppositeAugmentation_weak (i : I) :
+    IsWeakHomotopyEquivalence ((simplexElementsOppositeAugmentation F).app i)
+
+def simplexElementsOppositeAugmentationIso :
+    FunctorIso (kanHomFamilyCoherent (F ⋙ SimplexTerminalNerve.functor))
+      (kanHomFamilyCoherent F)
+
+def simplexElementsKanAugmentationIso :
+    FunctorIso (kanHomFamilyCoherent (simplexElementsNerveDiagram F))
+      (kanHomFamilyCoherent F)
+```
