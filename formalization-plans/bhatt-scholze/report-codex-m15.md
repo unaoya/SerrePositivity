@@ -5215,3 +5215,89 @@ Ho や離散な対象族への弱化、モデル構造・完備反射の仮定�
 G12 は M15 完成後の元の段 0 と検収条件を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 43. M10 の同じ通常単体と高次 cochain の接合（11-14）
+
+§42 の途中報告後も元の目標を継続する。
+同じ全要素列の先端に元の probe を前置し、後続頂点は元の通常加群 frame 対象とする。
+元の末尾単調写像は ComplexLimits の既存 `coneTailOrderHom` を再利用し、
+その後の同じ通常図式を `closedNerveSimplex` で元の全通常 dg 加群の dg nerve へ送る。
+
+この同じ通常単体と、§41 の選択した高次 cochain を接合した `SimplexData` を作った。
+先端を含む成分には同じ次数の `k.negOnePow` と同じ最大元への型移送を適用する。
+先端を含まない成分は元の通常単体の同じ成分とする。
+`withoutFirst`・濃度・最大元の各有限集合補題は既存 ComplexLimits のものを再利用し、
+それらのファイルは変更していない。
+
+ここで得たものは元の全 cone の**データ**であり、HA の全方程式を持つ `Simplex` や
+全 cone/prism とはまだ主張しない。方程式を引数の仮定に加えていない。
+本節も M10 の同じ比較の係数移送・通常成分との貼り合わせと証明の分割で、一次 ID は追加しない。
+全宣言の型は以下のとおり。
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorConeObj {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    Fin (n + 2) → RightModule A (dgAlgebraCategory A ((assocForget A).obj X))
+
+lemma strictRawModuleTensorConeObj_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorConeObj A X P Q c 0 =
+      ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+
+lemma strictRawModuleTensorConeObj_succ {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 1)) :
+    strictRawModuleTensorConeObj A X P Q c i.succ =
+      ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj i))
+
+lemma strictRawModuleTensorConeObj_ne_zero {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (i : Fin (n + 2)) (hi : i ≠ 0) :
+    strictRawModuleTensorConeObj A X P Q c i =
+      ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (coneTailOrderHom n i)))
+
+def strictRawModuleTensorConeOrdinarySimplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (n + 1)
+
+lemma strictRawModuleTensorConeOrdinarySimplex_obj {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 2)) :
+    (strictRawModuleTensorConeOrdinarySimplex A X P Q c).obj i =
+      ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (coneTailOrderHom n i)))
+
+def strictRawModuleTensorConeData {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    SimplexData A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (n + 1)
+```
+
+対象ビルドと小さい監査の結果は §43.1 に記録した。
+元の全 HA 方程式・全作用素での自然性、元の全屋根と同じ K の Hom 射への照合は引き続き必要。
+M10 の完全忠実性・指定 fiber・一般の native な辺と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 43.1 検証と実測
+
+RawModuleTensorConeData の通常の対象ビルドは成功した。
+新しい公開宣言 7 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は一ファイル 119 行、公開宣言 7 本。
+§41.1 の累計に加え、検証済み累計は 84 ファイル・8,619 行・明示宣言 452 本
+（private 4 本）。200 行を超える証明はない。一次 ID は追加していない。
+§42 の 8,500 行の途中報告後も実装を継続した。
+
+同じ全通常成分と符号つき高次 cochain の接合データ・元の端点の型の移送を検証した。
+次は元の混合/通常成分の式、単射制限、全 HA 方程式と全作用素自然性を検証する。
+完全な cone/prism、同じ屋根と K の実 Hom 射の照合、その同値性・完全忠実性、
+指定 fiber・一般の native な辺と全族はまだ未完。
+M11 以降と G12 の元の目標、17,000 行の外枠を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
