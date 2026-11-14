@@ -8045,3 +8045,130 @@ lemma zeroWeightCocone_reindex (P : L ⥤ K) :
 またはそれに代わる実際の円柱・持ち上げを証明する必要がある。点ごとのframeの
 cofibrancyや、通常の添字圏のFinal性だけでこの入力を埋めない。
 E01別経路の紙の状態は§80.1のままである。
+
+## §84 RR02(a)：既存BK endの持ち上げを重みへ戻す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `a95624bbc` の検証済み169行の追加という進捗。
+`BousfieldKanCoefficientFibration.bousfieldKanMap_trivialKanFibration` は、
+任意の係数ごとの自明Kan fibrationをBK endが保つことを既に示している。
+これを単位パラメータの `weightedSectionsHomEquiv` で戻せば、重みからの実自然変換の
+持ち上げになる。新しいセル分解や新しい一般定理を仮定せず、この既存持ち上げの
+随伴移送をRR02(a)の証明分割として使う。
+
+```lean
+lemma exists_bousfieldKanWeight_lift {F G : K ⥤ SSet.{u}} (p : F ⟶ G)
+    [∀ k, TrivialKanFibration (p.app k)] (a : bousfieldKanWeight K ⟶ G) :
+    ∃ b : bousfieldKanWeight K ⟶ F, b ≫ p = a
+```
+
+値のKan性も遷移のfibration性も足さない。次はこの持ち上げを実際の射影的モデルの
+cofibrancyに渡す。点ごとのcofibrancyで代用しない。
+
+### 84.1 重みの持ち上げの検証
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanWeightLifting` は対象ビルド2,180 jobs成功、1宣言の小監査は標準三公理のみ。
+ログ：`/tmp/is-w1/bk-weight-lifting/build.log`。
+この実持ち上げから、モデルの既存の `trivialFibrations_llp` を用いて次へ進む。
+
+## §85 RR02(a)：既存モデルの左持ち上げ条件への接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+SSetの実際のQuillenモデルと境界・hornの生成族を使い、§84の実自然変換の持ち上げを
+射影的モデルのcofibrancyへ移す。モデル構造を利用者の追加仮定にしない。
+既存持ち上げ条件のモデルへの照合であり、IDを増やさない。
+
+```lean
+lemma bousfieldKanWeight_isCofibrant :
+    let := Projective.modelCategory K SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J
+    IsCofibrant (bousfieldKanWeight K)
+```
+
+§83.1で不足とした「実際のBK重みの射影的cofibrancy」の入力を直接閉じる段である。
+これだけから実増大射の弱同値性を結論しない。
+
+## §86 RR02(a)：実重みのcofibrancyを既存実現随伴へ渡す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§85が通った後に、既存の `FrameWeightRealization.isLeftQuillen`、
+`weighted_isLeftQuillen` に同じ重みを渡す。`hA` は各frameのReedy cofibrancy、
+`hconst` は全構造射の弱同値性で、元のfree frameでは既に証明している入力。
+新たな弱同値性や重みのcofibrancyを仮定しない。
+
+```lean
+lemma bousfieldKanRealization_isCofibrant :
+    IsCofibrant ((functor K A).obj (bousfieldKanWeight Kᵒᵖ))
+lemma bousfieldKanWeighted_isLeftQuillen :
+    Quillen.IsLeftQuillen (weightedFunctor K A (bousfieldKanWeight Kᵒᵖ))
+```
+
+いずれも既存Quillen随伴の法則への接続である。実増大射の弱同値性は別に残る。
+
+### 86.1 モデル入力の点検と直接移送への修正
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§85の初回対象検証は `ModelCategory SSet` の不足で失敗した。
+`open scoped SSet.modelCategoryQuillen` は完全なモデルのinstanceを供給しない。
+`Project/ModelCategoryComparison/Inputs/KanQuillen.lean` の `kanQuillenModel` は
+`kanQuillen_model_exists` のsorryに依存するため、importしない。
+§85〜86の未検証案にあった「実際の射影的モデル」「左Quillen」の表現は撤回する。
+公開済みの型やR2の範囲を変えず、以下の直接移送で入力を外す。
+
+```lean
+lemma bousfieldKanWeight_projective_llp :
+    (trivialKanFibrations.functorCategory K).llp (initial.to (bousfieldKanWeight K))
+lemma bousfieldKanRealization_isCofibrant
+    (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k))) :
+    IsCofibrant ((functor K A).obj (bousfieldKanWeight Kᵒᵖ))
+```
+
+後者の証明では、元のCの自明fibrationを既存 `boundary_lifting_of_reedyCofibrant`
+でcosimplicial Homの自明Kan fibrationへ送り、§84の持ち上げを指定随伴で戻す。
+SSetのモデル構造も、frameのhomotopically constant性も必要ない。
+これは既存の持ち上げ・随伴法則の直接接続であり、新しいモデル構造を作らない。
+
+## §87 RR02(a)：指定自由arrow frameへの直接適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§86.1の直接持ち上げを、検証済みの自由frameのReedy cofibrancyへ適用する。
+
+```lean
+lemma strictDiagramFreeArrowRealization_isCofibrant (X : StrictComplexDiagram A d) :
+    IsCofibrant (strictDiagramFreeArrowRealization A d X)
+```
+
+模型は元の `strictDiagramReedyModelCategory A d`。新しい弱同値性の仮定も
+SSetモデル入力も追加せず、§83で固定した同じ実現対象について述べる。
+
+### 87.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanWeightLifting | 40 | 2,180 jobs成功 | 1宣言、標準三公理のみ |
+| BousfieldKanWeightCofibrancy | 34 | 2,181 jobs成功 | 1宣言、標準三公理のみ |
+| BousfieldKanFrameCofibrancy | 53 | 2,794 jobs成功 | 1宣言、標準三公理のみ |
+| StrictDiagramFreeArrowRealizationCofibrant | 36 | 3,803 jobs成功 | 4宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/bk-weight-lifting/build.log`、
+`/tmp/is-w1/bk-weight-cofibrancy/build-2.log`、
+`/tmp/is-w1/bk-frame-cofibrancy/build-2.log`、
+`/tmp/is-w1/free-arrow-realization-cofibrant/build.log`。
+計算上限は変更していない。未証明の `Inputs/KanQuillen` はimportしていない。
+
+最終形は§86.1の直接持ち上げであり、§85〜86の未検証だったモデル存在入力は含まない。
+実際の自由arrow frameの実現対象について、元のReedyモデルでのcofibrancyを閉じた。
+§83.1の入力不足のうち、BK重みの射影的左持ち上げと実現対象のcofibrancyは解消。
+実増大射の弱同値性、全frameへの比較、RR02(b)(c)は未完。
+
+検証済み累計177本・13,874行、外枠24,000行まで10,126行。
+上限変更後のRR02(a)実測1,376行、(b)(c)新規0行。
+E01の別経路の紙は§80.1の状態で、単位の普遍性を仮定する経路は使っていない。
