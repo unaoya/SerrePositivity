@@ -8535,3 +8535,116 @@ RR02(b)(c)新規0行。E01の別経路の紙は§80.1のまま。
 `/tmp/is-w1/bk-parameter-naturality/build.log`。
 `BousfieldKanRealizationHomNaturality` はその後の検証対象。
 この2本は未検証として作業木に残す。実増大射の弱同値性は未完。
+
+## §94 RR02(a)：実増大射に用いる次数の移送（下書き）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§93.1の session 18201 は生存確認済みで同じ整理券を維持している。
+待ち時間に、実増大射を全次数に接続する既存Yonedaの法則を書く。
+
+```lean
+def degreeTransition (f : n ⟶ m) : degree K A n ⟶ degree K A m
+lemma homEquiv_degree_naturality (f : n ⟶ m) (Y : C)
+    (a : weight K m ⟶ (FrameWeightRealization.hom K A).obj Y) :
+  homEquiv K A n Y ((Functor.const Kᵒᵖ).map (SSet.stdSimplex.map f) ≫ a) =
+    degreeTransition K A f ≫ homEquiv K A m Y a
+```
+
+`degreeTransition` は既存の評価関手の射をwhiskerしたもの。
+この法則と既存の標的自然性を使い、BK重みと標準単体の直積から第二射影で
+標準単体重みに移した後の転置を、次数に自然な増大射へまとめる予定。
+実増大射の弱同値性は別の未完の段として保持する。
+
+### 94.1 検証の更新
+
+一覧：済み 1／全体 13（うち追加 11）
+
+session 18201 は終了。`BousfieldKanParameterNaturality` の初回ビルドは
+合成随伴の `homEquiv` を変形する `change` で失敗した。
+`simp only` に合成則を同時投入する形ではその則が未使用となったため、
+定義の簡約と `Adjunction.comp_homEquiv` の明示的な `rw` を分けた。
+計算上限は変更していない。
+
+準備済みの3本（ParameterNaturality、RealizationHomNaturality、
+ConstantWeightDegreeNaturality）をまとめた再検証 session 57859 は生存確認済み。
+整理券は一枚。ログ `/tmp/is-w1/bk-naturalities-batch/build.log`。
+この3本は未検証として作業木に残す。検証済み累計14,357行は変更なし。
+
+## §95 RR02(a)：全余単体次数の指定増大射（下書き）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§94.1の再検証 session 57859 は生存確認済み、同じ整理券で待機。
+待ち時間に、§94の法則を使う実増大射の転置を記述した。
+以下で `e : A ⟶ (Functor.const K).obj Q` は指定frame余錐。
+
+```lean
+def bousfieldKanCoconeDegree (n : SimplexCategory) :
+  ConstantWeightHom.degree K A n ⟶ (Functor.const K).obj (Q.obj n)
+def bousfieldKanCoconeWeight (n : SimplexCategory) :
+  ConstantWeightHom.weight K n ⟶ (hom K A).obj (Q.obj n)
+lemma bousfieldKanCoconeWeight_naturality (f : n ⟶ m) :
+  (Functor.const Kᵒᵖ).map (SSet.stdSimplex.map f) ≫ bousfieldKanCoconeWeight K A Q e m =
+    bousfieldKanCoconeWeight K A Q e n ≫ (hom K A).map (Q.map f)
+def bousfieldKanCoconeParameter (n : SimplexCategory) :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj (SSet.stdSimplex.obj n) ⟶
+    (hom K A).obj (Q.obj n)
+lemma bousfieldKanCoconeParameter_naturality (f : n ⟶ m) :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).map (SSet.stdSimplex.map f) ≫
+      bousfieldKanCoconeParameter K A Q e m =
+    bousfieldKanCoconeParameter K A Q e n ≫ (hom K A).map (Q.map f)
+def bousfieldKanFrameAugmentation :
+  SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A ⟶ Q
+```
+
+これはRR02(a)で指定された実増大射の証明の分割であり、余錐の脚を選び直さない。
+第二射影と既存Yoneda・随伴による転置だけを使う。次数零で§83の実増大射と
+一致する比較および弱同値性はまだ別に必要。未検証のためコミットしない。
+
+### 95.1 E01別経路の紙の更新
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`FiniteSubcomplexEndComparison` の宣言を読み直した。
+`finiteSubcomplexEndComparison`、両制限錐、比較錐の射は全て
+`{A C : SSet} (F G : A ⟶ C)` で定義され、Aの準圏性は要求しない。
+従って有限部分複体への制限は型として可能であるが、その比較の同値性を
+有限準圏に対する定理から得ることはできない。
+
+この経路を閉じるには、少なくとも次を別々に供給する必要がある。
+1. 両制限錐の通常の `IsLimit`。
+2. 任意の有限単体集合での実比較の同値性（有限準圏だけでは足りない）。
+3. 実際の制限図式について、その同値性が逆極限へ移るための相対持ち上げ条件。
+
+一般の図式の成分ごとの弱同値を通常の逆極限が保存するとはしない。
+骨格の塔で扱う場合も、各段の制限射のfibration性と極限錐の比較を別に示す必要がある。
+この候補は紙のままで、E01の完了に数えず、新しいLeanのまとまりを開始していない。
+RR02(a)の当面の順序（自然性の検証 → 全次数の実増大射）は変えない。
+
+### 95.2 自然性3本の検証完了
+
+一覧：済み 1／全体 13（うち追加 11）
+
+合成随伴の書き換えのエラーは、随伴を展開した後も実現関手の略記が残り、
+途中の型がimplicit透明度で整合しなくなることによるものだった。
+`bousfieldKanParameterAdjunction`、`bousfieldKanParameterRealization`、
+`bousfieldKanParameterMap` を同じ箇所で局所簡約してから既存の合成則を適用し、解消。
+計算上限も透明度の設定も変更していない。
+
+| ファイル | 行数 |
+|---|---:|
+| BousfieldKanParameterNaturality | 44 |
+| BousfieldKanRealizationHomNaturality | 39 |
+| ConstantWeightDegreeNaturality | 33 |
+
+対象ビルド2,803 jobs成功、3モジュール5宣言の小監査で標準三公理のみ。
+ログ `/tmp/is-w1/bk-naturalities-batch/build-2.log`、プロセス終了確認済み。
+今回116行、検証済み累計190本・14,473行。
+上限変更後のRR02(a)実測1,975行、(b)(c)新規0行。
+
+これで指定実現Hom同型のsource射の全族の可換性、および定値重みの次数自然性まで
+検証済み。`BousfieldKanFrameAugmentation` は引き続き未検証で、
+session 6391（ログ `/tmp/is-w1/bk-frame-augmentation/build.log`）を一枚の整理券で
+待機中、生存確認済み。今回のコミットには含めない。
+実増大射の弱同値性は未完、停止点5aにはまだ到達していない。
