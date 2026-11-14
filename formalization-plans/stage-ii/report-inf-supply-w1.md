@@ -5011,3 +5011,145 @@ E01本体には指定単位の始点固定評価とKan普遍性への接続が�
 次は分離した指定単位の点評価と、実正方形の持ち上げの合成を検証し、
 既存の `twistedSourceHomUnit_homUniversal` との同じ射の照合へ進む。
 今回の実測を入れた残りの見込みは15,965〜19,515行（外枠20,800行）。
+
+## 54. 元の指定単位の正規化付き評価と実正方形の合成（11-14、検証中）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+生の射作用で書いた旧下書きはkernelの既定上限に達した。上限は変更せず、
+既存の `postcomposeFunctorHom` の端点正規化に合わせた一般評価則へ局所化した。
+元の `homWeightYonedaUnit F` に既存のcurry表示を適用した正規化付き点評価は対象ビルド成功。
+元の指定単位を別の単位へ置き換えず、入力の一致は既存の本体の宣言で証明済み。
+E01の型・範囲・指定比較は変更しない。小監査は実行待ち。
+
+実持ち上げの合成も対象ビルド成功。実正方形を分類した射の合成では、
+元の指定底変換の自然性と貼り合わせの逆を相殺する。
+残った略記の展開と逆同型の結合括弧を直して再検証へ回した。
+旧単位正方形の下書きは未検証で、検証済み累計128本10,515行には含めていない。
+
+既存構成の法則・証明分割の完全な型（新しいID項目なし、各宣言200行未満）：
+
+### ClassifiedSquareHomPasting（135行）
+
+```lean
+local instance squareHomPasting_left {E B D : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k)
+
+private lemma isoPrecomp_hom {A D X : SSet.{u}} {f g : A ⟶ X}
+    (e : FunctorIso f g) (k : D ⟶ A) :
+    (e.precomp k).hom = precomposeFunctorHom k e.hom
+
+private lemma precomp_inv {A D X : SSet.{u}} {f g : A ⟶ X}
+    (e : FunctorIso f g) (k : D ⟶ A) :
+    precomposeFunctorHom k e.inv = (e.precomp k).inv
+
+private lemma classifiedHom_map_eq {E H B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    {f g : E ⟶ H} (hf : f ≫ q = p) (hg : g ≫ q = p) (h : f = g) :
+    leftClassificationHom p q f hf = leftClassificationHom p q g hg
+
+private lemma normalized_inverse_comp_heq {A X : SSet.{u}}
+    {f g f' h : A ⟶ X} (hf : f = f') (e : FunctorIso f g) (w : FunctorHom h g) :
+    HEq (w ≫ (diagramIsoCongr hf rfl e).inv) (w ≫ e.inv)
+
+lemma leftClassificationSquareHom_pasting {A B C E H J : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C]
+    (p : E ⟶ A) (q : H ⟶ B) (r : J ⟶ C)
+    [LeftFibration p] [LeftFibration q] [LeftFibration r]
+    (k : A ⟶ B) (l : B ⟶ C)
+    (f : E ⟶ H) (hf : f ≫ q = p ≫ k)
+    (g : H ⟶ J) (hg : g ≫ r = q ≫ l) :
+    HEq (leftClassificationSquareHom p q k f hf ≫
+        precomposeFunctorHom ((SSet.uliftFunctor.{u + 1, u}).map k)
+          (leftClassificationSquareHom q r l g hg))
+      (leftClassificationSquareHom p r (k ≫ l) (f ≫ g)
+        (by rw [Category.assoc, hg, ← Category.assoc, hf, Category.assoc]))
+
+```
+
+### CurryHomPointEvaluation（70行）
+
+```lean
+lemma postcomposeFunctorHom_value_heq {A X Y : SSet.{u}} (q : X ⟶ Y)
+    {F G : A ⟶ X} (α : FunctorHom F G) :
+    HEq (postcomposeFunctorHom q α)
+      ((hoFunctor.map ((ihom A).map q)).toFunctor.map α)
+
+lemma postcomposeFunctorHom_heq_of_heq {A X Y : SSet.{u}} (q : X ⟶ Y)
+    {F G F' G' : A ⟶ X} (hF : F = F') (hG : G = G')
+    (α : FunctorHom F G) (β : FunctorHom F' G') (h : HEq α β) :
+    HEq (postcomposeFunctorHom q α) (postcomposeFunctorHom q β)
+
+lemma curryFunctorHom_postcompose_evaluate_heq {A B X : SSet.{u}}
+    {f g : A ⊗ B ⟶ X} (α : FunctorHom f g) (a : A _⦋0⦌) :
+    HEq (postcomposeFunctorHom (evaluateFunctorAt (Y := X) a) (curryFunctorHom α))
+      (precomposeFunctorHom (lift (SSet.const a) (𝟙 B)) α)
+
+lemma curryFunctorHom_postcompose_evaluate_of_heq {A B X : SSet.{u}}
+    {f g : A ⊗ B ⟶ X} {f' g' : B ⟶ (ihom A).obj X}
+    (α : FunctorHom f g) (β : FunctorHom f' g')
+    (hf : f' = curry f) (hg : g' = curry g) (h : HEq β (curryFunctorHom α))
+    (a : A _⦋0⦌) :
+    HEq (postcomposeFunctorHom (evaluateFunctorAt (Y := X) a) β)
+      (precomposeFunctorHom (lift (SSet.const a) (𝟙 B)) α)
+
+```
+
+### HomWeightYonedaUnitNormalizedEvaluation（53行）
+
+```lean
+lemma homWeightYonedaUnit_postcompose_evaluate_heq {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) (a : A _⦋0⦌) :
+    HEq (postcomposeFunctorHom (presheafInfinityEvaluation a) (homWeightYonedaUnit F))
+      (precomposeFunctorHom
+        (lift (SSet.const (ULift.up (SSet.opObjEquiv.symm a)))
+          (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj A))) (functorHomBifunctorUnit F))
+
+```
+
+### HomWeightYonedaUnitSquareNormalized（53行）
+
+```lean
+local instance normalizedSquareProduct {A : SSet.{u}} [Quasicategory A] :
+    Quasicategory (A.op ⊗ A) := supplyHomWeightYonedaUnit_productQuasicategory (A := A)
+
+/-- 概要：指定共同Hom単位は、同じTw(F)の実正方形の分類の同じ宇宙移送による前合成。
+方針：元の定義と前合成の恒等端点移送を展開する。
+規約：元の全空間射を保つ。使われ方：指定単位の始点固定を分類の合成則へ渡す。
+対応：Kerodon Tag 03M5・03W8、HTT 5.1.3.1・5.1.5.3の基礎の下での指定射の計算。 -/
+lemma functorHomBifunctorUnit_heq_precompose_square {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    HEq (functorHomBifunctorUnit F)
+      (precomposeFunctorHom (uliftTensorIso.{u, u + 1} A.op A).inv
+        (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+          (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+          (twistedArrowProjection_naturality F)))
+
+lemma functorHomBifunctorUnit_heq_precompose_square {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    HEq (functorHomBifunctorUnit F)
+      (precomposeFunctorHom (uliftTensorIso.{u, u + 1} A.op A).inv
+        (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+          (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+          (twistedArrowProjection_naturality F)))
+
+```
+
+検証ログ：`/tmp/is-w1/unit-and-square-split/`（`point/` と `square/` は別の対象ビルド・小監査）。
+整理券は一枚。通った群だけをコミットする。
+
+### 54.1 正規化付きの指定単位の点評価の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+三本の対象ビルド成功（5,452 jobs）、新しい環境の7宣言の小監査成功、標準三公理のみ。
+計算上限は不変。ログ：`/tmp/is-w1/unit-and-square-split/point/`。
+今回169行、検証済み累計131本・10,684行。
+
+元の `homWeightYonedaUnit F` の点評価を、同じ共同Hom単位の始点固定制限として
+正規化付きの後合成で証明した。全準圏A・Cと任意のF・aを許す。
+実正方形の持ち上げの合成も元の標準比較の射影で証明した。
+E01本体の普遍性への接続は未了で、済み数には含めない。
+
+正方形側の二本は全ゴールを閉じた後のkernelの確認で既定上限に達した。
+検証済みに混ぜず、不透明な証明分割へ局所化して続ける。
