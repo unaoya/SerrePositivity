@@ -5621,3 +5621,75 @@ lemma postcompose_precomposeFunctorHom_heq {A B X Y : SSet.{u}}
 計算上限は不変。ログは `/tmp/is-w1/whisker-interchange/build-2.log`。
 今回41行、検証済み累計134本・10,822行。E01本体は未了。
 §55.4 の二本は kernel の計算上限に達しており、未検証のまま保持する。
+
+### 55.8 指定単位回収式の後合成（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存の射作用と単位回収写像の計算法則。型は次のとおり。
+
+```lean
+lemma postcomposeFunctorHom_eq_map {A X Y : SSet.{u}}
+    (q : X ⟶ Y) {F G : A ⟶ X} (α : FunctorHom F G) :
+    postcomposeFunctorHom q α =
+      (hoFunctor.map ((ihom A).map q)).toFunctor.map α
+
+lemma leftKanHomMap_postcompose_heq {K C D E : SSet.{u}}
+    (δ : K ⟶ C) (q : D ⟶ E) {F₀ : K ⟶ D} {F G : C ⟶ D}
+    (β : FunctorHom F₀ (δ ≫ F)) (η : FunctorHom F G) :
+    HEq (postcomposeFunctorHom q (leftKanHomMap δ β G η))
+      (postcomposeFunctorHom q β ≫ precomposeFunctorHom δ (postcomposeFunctorHom q η))
+```
+
+最初の対象検証は、主張の合成の端点照合で `isDefEq` の200,000に達した。
+同じ等式の結合則による移送を次のように明示して再検証中。計算上限は不変。
+
+```lean
+lemma leftKanHomMap_postcompose_heq {K C D E : SSet.{u}}
+    (δ : K ⟶ C) (q : D ⟶ E) {F₀ : K ⟶ D} {F G : C ⟶ D}
+    (β : FunctorHom F₀ (δ ≫ F)) (η : FunctorHom F G) :
+    HEq (postcomposeFunctorHom q (leftKanHomMap δ β G η))
+      (leftKanHomMap δ
+        (kanFunctorHomCongr rfl (Category.assoc δ F q) (postcomposeFunctorHom q β))
+        (G ≫ q) (postcomposeFunctorHom q η))
+```
+
+ログ：`/tmp/is-w1/kan-hom-postcomp/build-2.log`。単独の整理券で再検証。
+
+### 55.9 同じ指定比較の単位回収式の点評価（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+元の `homWeightYonedaLeftKanComparison_fac` の後合成。比較射を選び直さない。
+既存構成の係数移送則で、型は次のとおり。
+
+```lean
+lemma homWeightYonedaLeftKanComparison_evaluation_fac {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    {L : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ PresheafInfinity A}
+    (β : SSet.Homotopy (yonedaInfinityMap A)
+      ((SSet.uliftFunctor.{u + 1, u}).map F ≫ L))
+    (hβ : IsLeftKanExtension ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (yonedaInfinityMap A) L β) (a : A _⦋0⦌) :
+    HEq (leftKanHomMap ((SSet.uliftFunctor.{u + 1, u}).map F)
+      (kanFunctorHomCongr rfl (Category.assoc _ _ _)
+        (postcomposeFunctorHom (presheafInfinityEvaluation a)
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β))))
+      (presheafHomWeightDiagram F ≫ presheafInfinityEvaluation a)
+      (postcomposeFunctorHom (presheafInfinityEvaluation a)
+        (homWeightYonedaLeftKanComparison F β hβ)))
+      (postcomposeFunctorHom (presheafInfinityEvaluation a) (homWeightYonedaUnit F))
+```
+
+### 55.10 指定比較の点評価の検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§55.8 の最終型と §55.9 の対象ビルド成功（それぞれ5,451・5,456 jobs）。
+新しい環境の小監査はそれぞれ2・1宣言、標準三公理のみ。
+ログ：`/tmp/is-w1/kan-hom-postcomp/build-4.log`、
+`/tmp/is-w1/comparison-evaluation-fac/build.log`。計算上限は不変。
+今回2本・112行、検証済み累計136本・10,934行。
+元の比較射の単位回収式を点評価できた。E01の可逆性そのものは未了。
+次は点評価した単位の Hom 類と `kanLeftUnitPostcomp` の Hom 類の照合、
+および未検証の指定単位・分類正方形の比較を閉じる。R3は実装しない。
