@@ -4283,3 +4283,88 @@ propext・Classical.choice・Quot.sound の範囲である。指定の impl 鍵�
 M11 以降と G12 を含む元の目標を維持する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 36. M10 の元の dg Hom への二変数自然な端点同定（11-14）
+
+前の goal ターンは §35 の同じ全 probe・全標的の frame 比較を検証・コミットした進捗。
+今回は §34 の実 Dold–Kan Hom 同型に、probe 変数の自然性を付ける。
+既存の逆転置の加群始域射への自然性を、同じ転置との両逆の式で戻した。
+元の `eHomFunctor` と `truncatedDoldKanFunctor` を合成し、元の主 Hom end の
+実 Dold–Kan を二変数関手として保持する。
+源は元の閉零加群圏であり、対象の離散族に置き換えない。
+
+同じ二変数同型を元の半自由 probe 全包含で前合成し、その逆と §35 の同じ右脚を合成する。
+これにより元の dg Hom から共通 Hom への実二変数自然変換を得る。
+同じ実 Dold–Kan の Kan 性と、三つの同じ Kan Hom の比較の合成則を使い、
+その同じ射が各 probe・任意の元の標的で実単体的ホモトピー同値となることを照合する。
+
+いずれも既存の tensor/Hom の始域自然性・係数移送・同型の逆・貼り合わせの法則と、
+M10 の写像空間比較の証明分割であり、一次 ID は追加しない。
+一般部分の文脈は `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]`、`[Small.{u} D]`。
+BE 部分では表示された固定 BE 底 X を使う。
+`cosimplicialHomBifunctor` は既存の `Project.HomotopyDiagramComparison.CosimplicialHom`、
+`IsSimplicialHomotopyEquivalence` は既存の Kerodon の Kan 複体の実ホモトピー同値である。
+
+### TensorDoldKanBifunctor
+
+```lean
+lemma moduleParamCurry_sourceMap {K : Complex A} {M P N : ModuleCategory A D}
+    (g : M ⟶ P) (f : moduleTensorLeftObj A D K P ⟶ N) :
+    moduleParamCurry A D (moduleTensorLeftMap A D K g ≫ f) =
+      moduleParamCurry A D f ≫ eHomWhiskerRight (Complex A) g N
+
+def moduleDoldKanHomBifunctor :
+    (ModuleCategory A D)ᵒᵖ ⥤ ModuleCategory A D ⥤ SSet.{u}
+
+def moduleTensorHomDoldKanBifunctorIso :
+    (moduleTensorSimplicesFunctor A D).op ⋙ cosimplicialHomBifunctor ≅
+      moduleDoldKanHomBifunctor A D
+```
+
+### RawModuleProbeDoldKanHom
+
+```lean
+def strictRawModuleProbeDoldKanHom (X : (operad A).Algebra) :
+    (strictRawModuleProbeCategory A X)ᵒᵖ ⥤ strictRawModuleCategory A X ⥤ SSet.{u}
+
+def strictRawModuleProbeTensorDoldKanIso (X : (operad A).Algebra) :
+    strictRawModuleProbeTensorHom A X ≅ strictRawModuleProbeDoldKanHom A X
+
+def strictRawModuleProbeHomFromDoldKan (X : (operad A).Algebra) :
+    strictRawModuleProbeDoldKanHom A X ⟶ strictRawModuleProbeCommonHom A X
+
+lemma strictRawModuleProbeDoldKanHom_kanComplex (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    SSet.KanComplex (((strictRawModuleProbeDoldKanHom A X).obj P).obj N)
+
+lemma strictRawModuleProbeHomFromDoldKan_homotopyEquivalence (X : (operad A).Algebra)
+    (P : (strictRawModuleProbeCategory A X)ᵒᵖ) (N : strictRawModuleCategory A X) :
+    IsSimplicialHomotopyEquivalence (((strictRawModuleProbeHomFromDoldKan A X).app P).app N)
+```
+
+
+対象ビルド・小さい監査の結果と最終実測は §36.1 に記録した。
+同じ局所化比較 K が誘導する写像空間の射の照合と完全忠実性、M10 の一般の native な辺・fiber
+と全族の完成はまだ残る。M11 以降と G12 を含む元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 36.1 検証と実測
+
+TensorDoldKanBifunctor と RawModuleProbeDoldKanHom の通常の対象ビルドは成功した。
+新しい公開宣言 8 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。すべて指定の impl 鍵と一回 280 秒の塊で実行した。
+
+新規 Lean は二ファイル、それぞれ 72・79 行、計 151 行、公開宣言 8 本。
+§35.2 の累計に加え、検証済み累計は 71 ファイル・7,134 行・明示宣言 368 本
+（private 3 本）。200 行を超える証明はない。一次 ID は追加していない。
+
+同じテンソル Hom と元の dg Hom の実 Dold–Kan の同型が、元の始域・標的の両変数に
+自然になった。同じ実二変数自然変換の標準側・dg Hom 側の二脚を共通 Hom に保ち、
+各 probe と任意の元の標的でホモトピー同値となることまで検証した。
+指定半自由模型の実 pinched Hom への端点同定、K の同じ誘導射の照合と完全忠実性、
+M10 の一般の native な辺・fiber と全族の完成は未完。元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
