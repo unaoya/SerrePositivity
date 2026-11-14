@@ -11624,3 +11624,442 @@ lemma cutSum_d_eq_sum_outputBoundaryTerm (A : Type u) [CommRing A] (S : SSet.{0}
 
 C258の`h`は算術で常に供給できる等式であり、未供給の数学的仮定としてL09へ残さない。
 C257・C258はここでは型の記録だけで、実装・検証・完成行数にはまだ数えない。
+
+### 133.1 既存の因子微分の再帰的評価（C259）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存の任意の二複体の`IntervalCuts.tensorPair_d_apply`を、同じtensorValueの右括弧で
+繰り返す。`tensorValueDifferentialFactor`は、その微分の各因子の成分を評価する略記で、
+新しい作用・微分・複体を構成しない。零番目は先頭の既存微分、後続は先頭のKoszul符号を
+掛けた同じ包含。これは§133のC257の出力微分の法則を証明する再帰の証明分割。
+個々の補題200行以内。型は次のとおり。
+
+```lean
+def tensorValueDifferentialFactor (K : Complex A) : (n : ℕ) → (d : Fin n → ℕ) →
+    (∀ i, K.X (-(d i : ℤ))) → Fin n → (power K n).X (-(degreeSum n d : ℤ) + 1)
+
+lemma tensorValue_d_sum (K : Complex A) (n : ℕ) (d : Fin n → ℕ)
+    (v : ∀ i, K.X (-(d i : ℤ))) :
+    (power K n).d (-(degreeSum n d : ℤ)) (-(degreeSum n d : ℤ) + 1)
+        (tensorValue K n d v) = ∑ i : Fin n, tensorValueDifferentialFactor K n d v i
+```
+
+### 133.2 同じ生成元の零次数と指定標準面（C260〜C262）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C259の対象ビルド成功。以下は既存の微分・零延長・gen_d・境界面の次数移送の法則。
+C260は両等式の除去、C261は既存`NegativeTensor.isZero_positive`、C262は既存gen_dを
+同じ終域の等式射で移す。C262のhはhqから算術で供給する。どの零次数も捨てない。
+個々の補題200行以内。以下の型を実装前に記録する。
+
+```lean
+lemma complex_d_cast_source_target (K : Complex A) {i i' j j' : ℤ}
+    (hi : i = i') (hj : j = j') (x : K.X i) :
+    K.d i' j' ((eqToHom (congrArg K.X hi)).hom x) =
+      (eqToHom (congrArg K.X hj)).hom (K.d i j x)
+
+lemma gen_d_zero (S : SSet.{0}) (x : S _⦋0⦌) :
+    (chains A S).d 0 1 (gen A S 0 x) = 0
+
+lemma gen_d_boundaryFace (S : SSet.{0}) (q : ℕ) (hq : 0 < q) (x : S _⦋q⦌)
+    (h : -((q - 1 : ℕ) : ℤ) = -(q : ℤ) + 1) :
+    (chains A S).d (-(q : ℤ)) (-(q : ℤ) + 1) (gen A S q x) =
+      ∑ j : Fin (q + 1), (-1 : ℤ) ^ j.val •
+        (eqToHom (congrArg (fun t : ℤ => (chains A S).X t) h)).hom
+          (gen A S (q - 1) (S.map (boundaryFace q hq j).op x))
+
+```
+
+### 133.3 包含の次数移送と微分零の成分（C263・C264）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C263は既存の斉次テンソル包含で三つの次数の等式を除去する法則。C264は同じ因子微分の
+再帰を辿り、微分零・テンソル零・包含の零保存を使う。C261の零次数因子をC257へ戻す際に使う。
+新しい比較射や準同型は作らない。個々の補題200行以内。
+
+```lean
+lemma tensorPair_cast_indices (P Q : Complex A) {i j k i' j' k' : ℤ}
+    (h : i + j = k) (h' : i' + j' = k') (hi : i = i') (hj : j = j') (hk : k = k')
+    (x : P.X i) (y : Q.X j) :
+    (eqToHom (congrArg (fun t : ℤ => (P ⊗ Q).X t) hk)).hom
+        (ιTensorObj P Q i j k h (x ⊗ₜ[A] y)) =
+      ιTensorObj P Q i' j' k' h'
+        ((eqToHom (congrArg P.X hi)).hom x ⊗ₜ[A]
+          (eqToHom (congrArg Q.X hj)).hom y)
+
+lemma tensorValueDifferentialFactor_eq_zero_of_closed (K : Complex A) (n : ℕ)
+    (d : Fin n → ℕ) (v : ∀ i, K.X (-(d i : ℤ))) (i : Fin n)
+    (h : K.d (-(d i : ℤ)) (-(d i : ℤ) + 1) (v i) = 0) :
+    tensorValueDifferentialFactor K n d v i = 0
+
+```
+
+### 133.4 入力境界の和を同じcutSumへ戻す（C265〜C267）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+同じ入力境界項の定義、有限積の和の添字替え、cutSumの指定次数移送の合成、
+既存の整数冪・スカラー作用の法則を使う。新しい切断の同値や数学の主張は加えない。
+hは常に算術で供給し、界面やL09の仮定へ残さない。個々の補題200行以内。
+
+```lean
+lemma simplexBoundaryTerm_sum_cut (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (i : Fin (q + 2)) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    ∑ s : Cut (r + d) q, simplexBoundaryTerm A S w (q + 1) (i, s) x =
+      -((-1 : ℤ) ^ (d + i.val)) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+          (cutSum A S w (S.δ i x))
+
+lemma sum_simplexBoundaryTerm_succ_by_face (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    ∑ c : SimplexBoundaryIndex r d (q + 1), simplexBoundaryTerm A S w (q + 1) c x =
+      ∑ i : Fin (q + 2), -((-1 : ℤ) ^ (d + i.val)) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+          (cutSum A S w (S.δ i x))
+
+lemma sum_simplexBoundaryTerm_succ (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    ∑ c : SimplexBoundaryIndex r d (q + 1), simplexBoundaryTerm A S w (q + 1) c x =
+      -((-1 : ℤ) ^ d) •
+        ∑ i : Fin (q + 2), (-1 : ℤ) ^ i.val •
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (cutSum A S w (S.δ i x))
+
+```
+
+### 133.5 同じ純粋テンソルの一因子の線形性（C268・C269）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存のテンソル積の一因子の加法性・整数倍と包含の線形性を同じ右括弧で適用する法則。
+生成元の微分の面和をC257の同じ更新次数のテンソルへ運ぶ際に使う。
+変更しない他の因子の等式を仮定に明示するが、C257の型へ数学的仮定は加えない。
+新しいテンソル模型や線形写像を構成しない。個々の補題200行以内。
+
+```lean
+lemma tensorValue_sum_factor {J : Type*} [Fintype J] (K : Complex A) (n : ℕ)
+    (d : Fin n → ℕ) (v : ∀ i, K.X (-(d i : ℤ)))
+    (w : J → ∀ i, K.X (-(d i : ℤ))) (a : Fin n)
+    (hv : v a = ∑ j, w j a) (hw : ∀ j b, b ≠ a → w j b = v b) :
+    tensorValue K n d v = ∑ j, tensorValue K n d (w j)
+
+lemma tensorValue_zsmul_factor (K : Complex A) (n : ℕ) (d : Fin n → ℕ)
+    (v w : ∀ i, K.X (-(d i : ℤ))) (a : Fin n) (z : ℤ)
+    (hv : v a = z • w a) (hw : ∀ b, b ≠ a → w b = v b) :
+    tensorValue K n d v = z • tensorValue K n d w
+
+```
+
+### 133.6 同じ更新次数への因子微分の移送（C270〜C272、型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C270・C271は同じ次数の等式と因子の異種等式を除去するだけの既存構成の照合。
+ホモトピー圏は使わず、型が同じになれば元の加群の等式へ戻す。
+C272は同じテンソル微分の一因子の成分を、一つだけ次数を下げた同じ純粋テンソルへ
+戻すKoszulの法則。先頭・後続に分けた同じ右括弧の帰納でC263・C270・C271を使う。
+その後C268・C269で同じ生成元の面和を展開し、既存C161で指定削除テンソルへ接続する。
+以下はC270・C271の実装前の型と、C272の残りの証明分割の型。
+C272は未実装で、一覧の完了数・検証済み行数へは含めない。
+
+```lean
+lemma tensorValue_heq_degree (K : Complex A) (n : ℕ) (d e : Fin n → ℕ)
+    (hd : d = e) (v : ∀ i, K.X (-(d i : ℤ))) (w : ∀ i, K.X (-(e i : ℤ)))
+    (hv : ∀ i, HEq (v i) (w i)) : HEq (tensorValue K n d v) (tensorValue K n e w)
+
+lemma tensorPair_heq_indices (P Q : Complex A) {i j k i' j' k' : ℤ}
+    (h : i + j = k) (h' : i' + j' = k') (hi : i = i') (hj : j = j') (hk : k = k')
+    (x : P.X i) (y : Q.X j) (x' : P.X i') (y' : Q.X j')
+    (hx : HEq x x') (hy : HEq y y') :
+    HEq (ιTensorObj P Q i j k h (x ⊗ₜ[A] y))
+      (ιTensorObj P Q i' j' k' h' (x' ⊗ₜ[A] y'))
+
+lemma tensorValueDifferentialFactor_eq_updated_tensor (K : Complex A) (n : ℕ)
+    (d e : Fin n → ℕ) (v : ∀ i, K.X (-(d i : ℤ)))
+    (w : ∀ i, K.X (-(e i : ℤ))) (a : Fin n)
+    (hd : ∀ b, d b = e b + if b = a then 1 else 0)
+    (hv : HEq (K.d (-(d a : ℤ)) (-(d a : ℤ) + 1) (v a)) (w a))
+    (hw : ∀ b, b ≠ a → HEq (v b) (w b))
+    (h : -(degreeSum n e : ℤ) = -(degreeSum n d : ℤ) + 1) :
+    tensorValueDifferentialFactor K n d v a =
+      (-1 : ℤ) ^ (∑ b ∈ Finset.univ.filter (fun b : Fin n => b < a), d b) •
+        (eqToHom (congrArg (fun z : ℤ => (power K n).X z) h)).hom
+          (tensorValue K n e w)
+```
+
+hd・hv・hwは一因子の同じ微分の値を照合するための引数であり、C257の仮定に残さない。
+既存の純粋テンソルと微分の法則で、新しい作用や比較射は作らない。
+C270・C271は個々の補題200行以内。C272の実装が200行を超えれば実測も報告する。
+
+### 133.7 C272の実装に使う局所の法則
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§133.6の型のままC272の下書きを書く。`hcast`は
+`{M N : ModuleCat A} → (hMN : M = N) → (y : M) → HEq ((eqToHom hMN).hom y) y`、
+等式の除去だけ。先頭の`he`は残る次数の族の等式、`htail`はC270、
+後続の`htail`は全次数の既存等式から先頭次数を引いた同じ算術の等式。
+`hp`は既存の`Fin.sum_univ_succ`で接頭の有限和を分ける法則。
+符号の同定には既存`Int.negOnePow_neg`・`Int.coe_negOnePow_natCast`を使う。
+新しい数学や比較射は加えない。下書きは検証までコミットしない。
+
+### 133.8 指定削除面の同じ生成元への照合（C273〜C276）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存C158・deletedCutFaceの指定始域の等式移送を、同じ生成元の異種等式で読む。
+変更しない色の指定面は面番号に依存しないので、C268の他の因子の一致を供給できる。
+選んだ色は同じ標準面と元の面の合成。新しい面や比較射は作らない。
+個々の補題200行以内。以下の型を検証前に記録する。
+
+```lean
+lemma gen_cast_source_heq (S : SSet.{0}) {n n' q : ℕ} (h : n = n')
+    (f : (⦋n'⦌ : SimplexCategory) ⟶ ⦋q⦌) (x : S _⦋q⦌) :
+    HEq (gen A S n (S.map (eqToHom (congrArg SimplexCategory.mk h) ≫ f).op x))
+      (gen A S n' (S.map f.op x))
+
+lemma deletedCutFace_other_eq {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j j' : Fin (outputDegree s v a + 1)) (b : Fin r) (hb : b ≠ a) :
+    deletedCutFace s v a ha j b = deletedCutFace s v a ha j' b
+
+lemma deletedCutFace_gen_other_heq (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : 0 < outputDegree s v a) (j : Fin (outputDegree s v a + 1))
+    (b : Fin r) (hb : b ≠ a) (x : S _⦋q⦌) :
+    HEq (gen A S (outputDegree s v b) (S.map (face s v b).op x))
+      (gen A S (Function.update (outputDegree s v) a (outputDegree s v a - 1) b)
+        (S.map (deletedCutFace s v a ha j b).op x))
+
+lemma deletedCutFace_gen_self_heq (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : 0 < outputDegree s v a) (j : Fin (outputDegree s v a + 1)) (x : S _⦋q⦌) :
+    HEq (gen A S (outputDegree s v a - 1)
+        (S.map (boundaryFace _ ha j ≫ face s v a).op x))
+      (gen A S (Function.update (outputDegree s v) a (outputDegree s v a - 1) a)
+        (S.map (deletedCutFace s v a ha j a).op x))
+
+```
+
+### 133.9 微分の交代面和を同じ指定削除面へ戻す（C277〜C279）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存の加群の等式移送、有限和、整数倍、関手の合成の法則。C279はC262の標準面和を
+C276で同じ指定削除面へ移すだけで、新しい微分や比較は作らない。
+局所`e`は既存の一因子の更新次数、`f`は標準面の生成元、`g`は指定削除面の同じ生成元、
+`he`はFunction.update_self、`hshift`はhaからの整数次数の等式。
+`hu`はC262を共通終域で書いた等式、`hcast`は§133.7と同じ加群の等式の除去。
+個々の補題200行以内。以下の型を検証前に記録する。
+
+```lean
+lemma sum_zsmul_heq {J : Type*} [Fintype J] {M N : ModuleCat A} (h : M = N)
+    (c : J → ℤ) (x : J → M) (y : J → N) (hv : ∀ j, HEq (x j) (y j)) :
+    HEq (∑ j, c j • x j) (∑ j, c j • y j)
+
+lemma gen_map_comp (S : SSet.{0}) {n m q : ℕ}
+    (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋m⦌) (g : (⦋m⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (x : S _⦋q⦌) :
+    gen A S n (S.map (f ≫ g).op x) = gen A S n (S.map f.op (S.map g.op x))
+
+lemma gen_d_heq_sum_deletedCutFace (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : 0 < outputDegree s v a) (x : S _⦋q⦌) :
+    HEq ((chains A S).d (-(outputDegree s v a : ℤ)) (-(outputDegree s v a : ℤ) + 1)
+        (gen A S (outputDegree s v a) (S.map (face s v a).op x)))
+      (∑ j : Fin (outputDegree s v a + 1), (-1 : ℤ) ^ j.val •
+        gen A S (Function.update (outputDegree s v) a (outputDegree s v a - 1) a)
+          (S.map (deletedCutFace s v a ha j a).op x))
+
+```
+
+### 133.10 正次数の実因子微分への貼り合わせ（C280、実装前の型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C272・C279を同じ更新次数に適用し、C268・C269で一因子の面和と整数倍を展開して、
+既存C161の同じdeletedCutTensorへ戻す。新しい作用・面・添字の選択は作らない。
+hは既存outputDegree_sumから常に供給できる算術の等式で、C257へ仮定として残さない。
+局所dは既存出力次数、eはその一因子の更新、Gは既存指定削除面の生成元の族、
+wは指定因子だけを交代面和にした同じ族、W jはその一面の整数倍だけを入れた同じ族。
+hd・htは同じ更新次数の等式、hw・hvはC275・C279、hs・hzはC268・C269、hgはC161、
+stepは既存の加群の等式移送の合成。個々の補題200行以内。検証までは完了扱いしない。
+
+```lean
+lemma cast_tensorValueDifferentialFactor_eq_sum_deletedCutTensor (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (ha : 0 < outputDegree s v a) (x : S _⦋q⦌)
+    (h : -(degreeSum r (outputDegree s v) : ℤ) + 1 = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+    (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (tensorValueDifferentialFactor (chains A S) r (outputDegree s v)
+          (fun b => gen A S (outputDegree s v b) (S.map (face s v b).op x)) a) =
+      ∑ j : Fin (outputDegree s v a + 1),
+        (-1 : ℤ) ^ ((∑ b ∈ Finset.univ.filter (fun b : Fin r => b < a), outputDegree s v b) + j.val) •
+          deletedCutTensor A S s v a ha j x
+```
+
+### 133.11 C257の零次数を含む接続（C281、C257下書き）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C257の型は§133のまま。正次数の因子はC280、零次数はC261・C264を使い、
+既存の同じcutSignとoutputBoundarySignを保持する。
+局所hgは`(p : ℕ) → (hp : p = 0) → (y : S _⦋p⦌) →
+(chains A S).d (-(p : ℤ)) (-(p : ℤ)+1) (gen A S p y) = 0`で、pの置換後C261。
+h0・h1は既存outputDegree_sumの整数次数の等式、hcはC260による同じ微分の移送。
+新しい構成や微分の選択は作らない。個々の補題200行以内。下書きは検証までコミットしない。
+
+```lean
+lemma tensorValueDifferentialFactor_cut_zero (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : outputDegree s v a = 0) (x : S _⦋q⦌) :
+    tensorValueDifferentialFactor (chains A S) r (outputDegree s v)
+      (fun b => gen A S (outputDegree s v b) (S.map (face s v b).op x)) a = 0
+```
+
+### 133.12 C258と全境界和の貼り合わせ（C258・C282・C283下書き）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C258は§133の型のまま、C257・C260と有限和の線形性を適用する。
+C282は既存のΣ添字の有限和を展開し、C283は既存C256の三つの和を加群で整理する。
+新しい数学や操作は作らない。q=0・d=0も型から除かない。
+C283は同じ実境界項の二つの和までであり、係数の元の線形削除微分との照合が残るため、
+これだけでL09完成とは数えない。個々の補題200行以内。以下を検証前に記録する。
+
+```lean
+lemma cutSum_d_eq_sum_outputBoundaryTerm (S : SSet.{0})
+    {r d q : ℕ} (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌)
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      ∑ s : Cut (r + d) q, ∑ a : Fin (r + 1),
+        ∑ j : Fin (outputDegree s (positiveWord w) a + 1),
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (outputBoundaryTerm A S s (positiveWord w) a j x)
+
+lemma sum_boundaryBalanceTerm_output_eq_d_cutSum (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (∑ i : OutputBoundaryIndex w q, boundaryBalanceTerm A S w q (.inl i) x) =
+      (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x)
+
+lemma cutSum_d_eq_neg_boundarySums (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      -((∑ c : CoefficientBoundaryIndex r d q, coefficientBoundaryTerm A S r d q w c x) +
+        ∑ i : SimplexBoundaryIndex r d q, simplexBoundaryTerm A S w q i x)
+
+```
+
+## 134. 同じ切断和の微分への接続の検証・約8,600行の区切り（11-14）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+### 134.1 今回閉じた範囲と残り
+
+§133のC257・C258は、記録した型のまま検証を通した。
+任意の係数環・単体的集合・切断・非退化全射語・入力単体について、零次数の因子も含めて
+**同じcutTermの微分が全指定出力境界値の和**となり、さらに
+**同じcutSumの微分が移送した全出力境界和**となる。
+C283でL09aの全境界和の相殺を適用し、元の係数境界と入力境界の二つの和へ戻した。
+正の入力次数ではC267により入力境界の和が同じcutSumの交代面和になる。
+異種等式は次数の等式移送の照合にだけ用い、C257・C258・C283は元の加群での厳密な等式。
+
+**L09は未完**。残る係数境界の和と元の線形削除微分の照合、およびq=0・d=0を含む
+最終の線形境界式の包装を閉じる必要がある。C283だけをL09完成とは数えない。
+C257・C258に、未供給の数学的仮定を追加していない。
+C258のhは常に算術で供給できる共通次数の等式で、最終のL09の仮定へ残さない。
+
+### 134.2 検証・登録候補・取り込み点
+
+新規12モジュール・**819行**。対象ビルドと専用の小さい監査が成功。
+監査は **12モジュール・82宣言・標準三公理のみ**。
+新規12本のsorry・追加公理0、最終ソースのLean警告0。
+既存の公開宣言・界面・drafts・共通入口・共通監査は変更していない。
+鍵は各ビルド・監査の間だけ取り、終了を確認して返却。一枚だけ並び、待機中に別の鍵を取らなかった。
+
+登録候補（接頭部はすべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 | 検証済みの内容 |
+| --- | ---: | --- |
+| HomogeneousTensorDifferential | 58 | 同じ純粋テンソルの微分の因子和、C259 |
+| GeneratorDifferentialValues | 63 | 同じ生成元の零次数・標準面和・微分の次数移送、C260〜C262 |
+| HomogeneousTensorDifferentialTransports | 54 | 同じ包含の次数移送・微分零の因子の成分、C263・C264 |
+| InputBoundarySums | 62 | 同じcutSumの入力面の交代和、C265〜C267 |
+| HomogeneousFactorLinearity | 72 | 一因子の有限和・整数倍、C268・C269 |
+| HomogeneousTensorHEq | 44 | 同じ次数と因子の値の照合、C270・C271 |
+| UpdatedTensorDifferential | 93 | 同じ更新次数のテンソルへのKoszul符号付き移送、C272 |
+| DeletedGeneratorValues | 60 | 同じ指定削除面の生成元の照合、C273〜C276 |
+| DeletedGeneratorDifferential | 77 | 同じ微分の交代面和から指定削除面への移送、C277〜C279 |
+| PositiveOutputFactor | 95 | 正次数因子の微分から実削除テンソルへの接続、C280 |
+| CutTermDifferential | 74 | 零次数因子・各切断項の全出力境界、C281・C257 |
+| OutputBoundarySums | 67 | 同じcutSumの微分と全実境界和、C258・C282・C283 |
+
+最終の `OutputBoundarySums` の対象ビルドは **成功、2,369 jobs**。
+この依存閉包は上のInputBoundarySumsを除く11本を含む。
+InputBoundarySumsは先の組で自対象の生成が成功しており、現ソースを専用監査でも読み込んだ。
+その先の組全体は別対象の未検証の添字の下書きで失敗したため、組全体を成功とは扱わない。
+最終の監査は上の12本すべての宣言元を明示し、各モジュールの監査宣言数が0でないことも検査した。
+
+- 対象ビルド：`/tmp/bsw16/m14-output-boundary-sums-03.log`。
+- InputBoundarySumsの生成成功：`/tmp/bsw16/m14-input-sums-and-factor-laws-01.log`。
+- 監査ソース：`/tmp/bsw16/audit-m14-tensor-boundary-laws.lean`。
+- 監査結果：`/tmp/bsw16/m14-tensor-boundary-laws-audit.log`。
+
+途中のビルドでは、有限添字の既存API・局所の次数の略記の展開・同じ標準面の合成の展開・
+加群での有限和の分配・証明が閉じた後の余分な手順を修正した。
+一因子の更新次数の同定には既存degreeSum_deleteを、同じ局所の族の型を明示して適用した。
+新しい作用・鎖模型・微分・比較射を導入したり、既存の公開宣言を変えて対処していない。
+個々の証明は200行以内。未検証の本体下書きは現在ない。
+
+### 134.3 実測と残りの見込み
+
+検証済みの基準§132に819行を加え、**L09a・L09は8,559行**、**M14全体は13,625行**。
+約8,600行の41行手前だが、検証済みの束の区切りとしてここで途中報告する。
+旧coherent経路の保管済み10,216行・報告・監査・Pythonの点検は数えない。
+外枠25,000行は変更せず、現在の残り枠は **11,375行**。
+
+§132.7ではL09の残りを400〜750行としたが、今回819行を使い、係数微分との照合は残った。
+一般の二因子の微分公式だけでは、同じ更新次数の全因子の値・一因子の線形性・
+零次数・生成元の標準面和・全切断和の次数移送までは供給されず、それぞれを
+同じ実テンソルの型で明示する必要があった。この法則の供給を以前は過小評価していた。
+
+残りは次のとおり。L09aの対合や今回閉じた出力側の微分を作り直す部分は含まない。
+
+| 残り | 用いる既存の宣言と接続 | 新規見込み |
+| --- | --- | ---: |
+| 係数微分の実基底での値 | Surjection.differential_basis・differentialOnWord・generatorとrawComponent_value。非全射・退化な削除は元と同じく零 | 100〜180 |
+| 指定係数添字・語長の照合 | 同じFinの等式移送・positiveWord・erase・deletionCoefficientの構成の法則を使い、既存coefficientBoundaryTermの同じ添字と照合 | 100〜170 |
+| L09の包装 | C283、上の係数の式、C267の入力の面和、零次数の分岐を同じ線形境界式へまとめる | 100〜150 |
+| **L09残り** | **追加の数学的仮定を残さない** | **300〜500** |
+
+§132.7から見た新規総量の出し直しは819+(300〜500)=**1,119〜1,319行**。
+旧上端750行を少なくとも369行超える。L09a・L09の完成時は **8,859〜9,059行** の見込み。
+次はこの係数微分の同じ実生成元の型を記録してから進める。L09の完了時に実測を報告する。
+
+L10〜L28の次元によらないconvolution・χ/TR・符号の再利用の筋と各行の見込みは
+§121.3・§121.4のまま。今回の一因子の線形性・次数移送も再利用できるが、
+未実装部分から実測なしに控除しない。
+
+| M14全体の残り | 下端 | 上端 |
+| --- | ---: | ---: |
+| L09 | 300 | 500 |
+| L10〜L28（L12a込み） | 4,330 | 7,790 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後のnative Totへの適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **新規残り** | **8,130** | **14,540** |
+| **実測13,625行を含む完成見込み** | **21,755** | **28,165** |
+
+上側は外枠を **3,165行** 超えるリスクが残る。外枠の追加承認とは扱わない。
+現在の実測は外枠に届いておらず、指示どおり止まらずL09の残りへ進む。
+G10の部品、M15・G12は作らない。
