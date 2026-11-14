@@ -2439,3 +2439,14 @@ G1・G2共用部品込み本体14,105行、入口込み14,343行。実際の共�
 G1・G2共用部品込み本体14,181行、入口込み14,420行。B02〜B04 は未完。次は平坦全射の v 判定と、有限表示 affine v 被覆の実際の係数模型へ接続する。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B03：平坦全射の任意の付値環に関する持ち上げ
+
+`SchemeVCoverFlatSurjective`（61行）：`isSchemeVCover_of_flat_surjective` は任意のスキーム間の平坦全射を `IsSchemeVCover` にする。付値環の閉点上の affine チャートは一般化の持ち上げで全射となり、既存の affine 忠実平坦持ち上げを適用する。有限表示・Noether 性を仮定しない。
+
+本体61行・入口1行。恒等射との合成の等式を明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,028ジョブ、小監査1宣言・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-scheme-vcover-flat-surjective-check-3.log`・`2g-scheme-vcover-flat-surjective-native.log`・`2g-scheme-vcover-flat-surjective-audit.log`。
+
+G1・G2共用部品込み本体14,242行、入口込み14,482行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。

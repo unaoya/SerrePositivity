@@ -1551,3 +1551,5 @@ public import SerrePositivity.AlgebraicGeometry.IntegerFlatRefinementStage
 public import SerrePositivity.AlgebraicGeometry.CoefficientSpecBaseNaturality
 
 public import SerrePositivity.AlgebraicGeometry.IntegerFlatRefinementCoefficientModel
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCoverFlatSurjective
