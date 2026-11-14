@@ -1492,3 +1492,5 @@ public import SerrePositivity.AlgebraicGeometry.AffineProperAmbient
 public import SerrePositivity.AlgebraicGeometry.SchemeImageDominance
 public import SerrePositivity.AlgebraicGeometry.NoetherianComponentFamily
 public import SerrePositivity.AlgebraicGeometry.ImmersionProperClosure
+public import SerrePositivity.AlgebraicGeometry.FiniteProperProduct
+public import SerrePositivity.AlgebraicGeometry.ProperGraphClosure
