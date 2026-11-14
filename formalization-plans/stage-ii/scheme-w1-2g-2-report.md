@@ -364,3 +364,14 @@ S03 の商との比較の分割（着手前、前記100〜250行の内数）：`
 一覧：済み0／全体3（うち追加0）。
 
 S03 の係数の法則の分割（着手前、S03 の内数、40〜90行）：既存の `projectiveHomogeneousAwayAlgebra G f` の下で正規化が R の係数を保つことを示し、同じ環同型を `A/(f−1) ≃ₐ[R] Away G f` に束ねる。既存の代数構造を置き換えず、係数環の一般化や最終の型の変更はしない。
+
+
+## G3・S03：脱斉次化の同型の係数環との整合性
+
+`HomogeneousDegreeOneQuotientAlgebra`（51行）：`homogeneousDegreeOneNormalize_algebraMap` は既存の projectiveHomogeneousAwayAlgebra の下で正規化が係数を保つこと。`homogeneousDegreeOneQuotientAlgEquiv` は同じ環同型を R 上の代数同型に束ねる。`homogeneousDegreeOneQuotientAlgEquiv_toRingEquiv` は忘却した環同型が元の同型であること。既存の代数構造を保持し、係数環と代数を同じ宇宙に置いた既存 API の実際の用途に接続した。前二モジュールの宇宙を分けた一般の環の法則はそのまま残る。
+
+単独検証、ソース完全一致、対象と直接 importer のビルド5,093ジョブ、小監査9宣言・標準三公理のみ、終了状態0。ログ `2g-degree-one-quotient-algebra-check-5.log`・`2g-degree-one-quotient-algebra-native.log`・`2g-degree-one-quotient-algebra-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。鍵は検証中だけ使用（--class impl --wait 3600、待ちは一つ）。root・下流全ビルド・全体監査は実行していない。
+
+2g-2 本体1,403行・入口込み1,427行、小監査144宣言・標準三公理のみ。0476c334e の後の今回の束は5モジュール314行＋入口5行、小監査50宣言。S01〜S02 完了、S03 は次数一の標準開を脱斉次化の商と同じ基底上で比較するところまで到達した。残りは Segre の二因子のチャート比較と重なりの自然性、S04 の貼り合わせと有限冪、G4・G5 の主要三部分。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
