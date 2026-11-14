@@ -20475,3 +20475,183 @@ L12a全体は未完、一覧12/48（追加4）、goalはactive。
 既知の工程の見込みでも外枠超過のリスクがあり、完備化後のP⁰はその数字にまだ含まれない。
 完備化の(a)(b)の未供給の比較を仮定に足さず、(c)が必要と判明した場合の停止規則を保持する。
 3b-4aのmain取り込みは未受領のまま。次は§318の同じ水平辺の挿入/削除による有限対応。
+
+
+## 320. 同じ水平辺の前後の挿入と既存の全水平境界（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の内部の挿入は元の辺の直後、既存horizontalBoundaryFaceEquivは直前に挿入する。
+元の辺が属しているので二つの大きい辺集合は同じであり、同じCutの厳密な一致として照合する。
+まず有限辺集合でこの既存構成の法則を証明する。N=1〜7・全部分集合・全所属辺の769例で
+前後のinsertPositionが同じ集合になることを点検した。各証明200行以内の見込み。
+
+```lean
+lemma insertPosition_adjacent_of_mem {N : ℕ} (S : Finset (Fin N)) (a : Fin N) (ha : a ∈ S) :
+    BarrattEccles.insertPosition S a.castSucc = BarrattEccles.insertPosition S a.succ
+
+lemma horizontalInsertionEquiv_adjacent_of_mem {m q : ℕ} (t : Cut m q)
+    (a : Fin (m + q)) (ha : a ∈ t.val) :
+    (BarrattEccles.horizontalInsertionEquiv m q (Fin.cast (by omega) a.castSucc) t).val =
+      (BarrattEccles.horizontalInsertionEquiv m q (Fin.cast (by omega) a.succ) t).val
+```
+
+その後の照合・一頂点の法則の型は次。いずれも既存の同じ有限対応の法則である。
+
+```lean
+lemma nullaryPointInsertCut_eq_horizontalBoundaryFace {m q : ℕ}
+    (t : Cut m q) (p : Fin (m + 2)) :
+    nullaryPointInsertCut t p = (horizontalBoundaryFaceEquiv m q (p, t)).val.1
+
+lemma horizontalBoundaryFaceEquiv_hi_eq_lo (m q : ℕ) (p : Fin (m + 2)) (t : Cut m q) :
+    hi (horizontalBoundaryFaceEquiv m q (p, t)).val.1 p =
+      lo (horizontalBoundaryFaceEquiv m q (p, t)).val.1 p
+```
+
+最初と最後の挿入は既存のendpointの同値そのもの。
+内部では同じ昇順の水平辺の前後の挿入の等式を使い、元のCutに一致させる。
+一頂点の法則は既存boundaryVertexKind_eq_horizontal_gapと
+horizontalBoundaryFaceEquiv_horizontalから読む。
+置き換えて済ませず、§318の元の挿入位置のCutとの厳密な等式を供給してから再利用する。
+
+
+## 321. 挿入辺の三位置の評価と元の水平辺番号（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318・320の逆性を同じ挿入辺で読むため、既存構成の三つの評価と水平辺の昇順番号を
+証明分割として取り出す。各証明200行以内の見込み。
+
+```lean
+lemma nullaryPointInsertionEdge_first {m q : ℕ} (t : Cut m q) :
+    nullaryPointInsertionEdge t 0 = 0
+
+lemma nullaryPointInsertionEdge_last {m q : ℕ} (t : Cut m q) :
+    nullaryPointInsertionEdge t (Fin.last (m + 1)) = (⟨m + q, by omega⟩ : Fin (m + 1 + q))
+
+lemma nullaryPointInsertionEdge_interior {m q : ℕ} (t : Cut m q) (i : Fin m) :
+    nullaryPointInsertionEdge t i.castSucc.succ =
+      Fin.cast (by omega) (cutHorizontalEdge t i).succ
+
+lemma cutHorizontalEdge_eq_of_horizontal {m q : ℕ} (s : Cut m q)
+    (a : Fin (m + q)) (ha : a ∈ s.val) (i : Fin m)
+    (hi : s.horizontal a.castSucc = i.castSucc) : cutHorizontalEdge s i = a
+
+lemma nullaryPointInsertionEdge_mark_val {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    (horizontalBoundaryFaceEquiv m q (p, t)).val.2.val =
+      (nullaryPointInsertionEdge t p).val + if p.val = m + 1 then 1 else 0
+```
+
+三つの辺位置は元の定義の条件分岐を評価するだけ。
+番号の法則は元の辺集合のorderIsoOfFinの逆とhorizontal_before_cutHorizontalEdge。
+最後は同じ始点・内部・終点の水平境界の指定頂点を読み、元の挿入辺位置へ合わせる。
+辺を選び直したり、別の有限対応を同値として代用したりしない。
+
+
+## 322. 元の挿入辺の番号と一頂点の全Cutの逆性（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の両逆と同値を実装する前に、同じ有限対応の二つの証明分割を記す。
+既存構成の昇順番号と全射性の法則で、各証明200行以内の見込み。
+
+```lean
+lemma nullaryPointInsertCut_edge {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    cutHorizontalEdge (nullaryPointInsertCut t p)
+      ⟨min p.val m, by have h := Nat.min_le_right p.val m; omega⟩ =
+        nullaryPointInsertionEdge t p
+
+lemma nullaryPointInsertCut_surjective {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2))
+    (h : hi s p = lo s p) : ∃ t : Cut m q, nullaryPointInsertCut t p = s
+```
+
+最初は§321の同じ指定頂点を、終端では挿入辺の直後、他では直前として読む。
+既存step_of_memと水平辺の昇順番号の法則から、削除する辺が元の挿入辺と厳密に一致する。
+これでhorizontalInsertionEquivの同じ左逆を適用する。
+全射性は元の区間のmin'の頂点を水平境界として読み、既存horizontalBoundaryFaceEquivの逆へ渡す。
+その同値が保つ元の水平座標がpであるため、同じ指定位置へ戻る。
+右逆はこの全射性と左逆から得る。別のCutや選び直した対応を逆として置くものではない。
+
+
+## 323. 元の削除辺の等式を所属証明つきの逆へ移す（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§322の左逆で同じ水平辺の等式を使う際、逆写像の入力の所属証明も依存する。
+その移送を、次の既存構成の法則として分割する。証明は辺の等式の消去で200行以内。
+
+```lean
+lemma horizontalInsertionEquiv_symm_congr {m q : ℕ} (s : Cut (m + 1) q)
+    (a b : Fin (m + 1 + q)) (ha : a ∈ s.val) (hb : b ∈ s.val) (h : a = b) :
+    (BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩ =
+      (BarrattEccles.horizontalInsertionEquiv m q b).symm ⟨s, hb⟩
+```
+
+辺の番号を選び直さず、§322で証明する同じ挿入辺の等式を渡す。
+右逆のための既存水平境界の逆像は、同じ等式を持つ変数に一般化して扱い、
+大きい同値の定義を証明の途中で展開し続けない。
+
+
+## 324. 削除しない色の全頂点列と退化raw語の零項（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の両逆を元の頂点列へ適用する。既存の同じ削除座標と色選択の法則で、各証明200行以内。
+§316の全9,794組（削除の前後2,616組、退化削除890組を含む）の有限点検に対応する型は次。
+
+```lean
+lemma nullaryPointInsertCut_verticesList_remaining {m q r : ℕ} (t : Cut m q)
+    (p : Fin (m + 2)) (v : Fin (m + 2) → Fin r) (c : Fin r) (hc : v p ≠ c) :
+    verticesList t (Surjection.erase v p) c = verticesList (nullaryPointInsertCut t p) v c
+
+lemma nullaryPointEraseCut_verticesList_remaining {m q r : ℕ} (s : Cut (m + 1) q)
+    (p : Fin (m + 2)) (h : hi s p = lo s p)
+    (v : Fin (m + 2) → Fin r) (c : Fin r) (hc : v p ≠ c) :
+    verticesList (nullaryPointEraseCut s p) (Surjection.erase v p) c = verticesList s v c
+
+lemma erased_word_nondegenerate_of_point_cut_nondegenerate {m q r : ℕ}
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2)) (p : Fin (m + 2))
+    (hpoint : hi s p = lo s p) (hcut : Nondegenerate s v.val) :
+    Surjection.Nondegenerate (Surjection.erase v.val p)
+```
+
+元の水平境界の全削除座標とdeletedTrace_eq_of_horizontal_coordinatesを再利用し、
+削除色以外ではdeletedVerticesListが元の全verticesListであることを使う。
+削除語の退化については既存other_face_not_mono_horizontal_degenerateが同じ残り色の
+非単射面を与えるので、元のfaces_mono_iffと矛盾する。新しい退化の幾何を作り直さない。
+色をまだrenumberせず元の同じ色で述べる。nullaryの実出力のarityへ移すときに
+同じ残り色の埋め込みと照合する工程は別に残す。
+
+## 325. 一頂点の全Cutの同値と残り色の全頂点列（検証済み）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318〜324の元の挿入・削除の両逆、水平境界との厳密な一致、残り色の全頂点列、退化削除の零項を検証した。
+新規9本487行。M14実測25,720行、うちL12a 10,513行、外枠31,000行まで5,280行。
+L12aは未完了。nullaryはここまで567行で、端点・caesura・符号、色の番号の移送、実際の余単位と全arityの包装が残る。
+§314の完成見込みが外枠に収まらないという注意はそのまま。完備化後のP⁰の未評価分も含め、収まるとの主張はしていない。
+
+登録候補（すべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+|モジュール|行数|
+|---|---:|
+|NullaryPointCuts|34|
+|AdjacentHorizontalInsertions|58|
+|NullaryPointInsertionValues|50|
+|HorizontalEdgeRanks|30|
+|NullaryPointBoundaryComparison|71|
+|NullaryPointMark|44|
+|NullaryPointInverse|113|
+|NullaryPointVertexLists|52|
+|NullaryPointNondegenerate|35|
+
+対象ビルドは `m14-nullary-point-inverse-02.log`（2,271 jobs）と
+`m14-nullary-point-vertices-01.log`（2,314 jobs）まで成功、対象の警告0。
+小監査 `audit-m14-nullary-point-equivalence.log`（7本62宣言）と
+`audit-m14-nullary-point-vertices.log`（2本4宣言）は標準三公理のみ、sorry・独自公理0。
+各ビルド・監査ごとに鍵を取り返却。共有の入口・監査は編集していない。
+
+次の符号の照合に先立ち、surjective・nondegenerateを仮定しないraw語でも有限点検した。
+長さ2〜5、色数1〜3、q=0〜2、一度だけ出る削除色で区間が一点となる5,090組について、
+残る全区間の両端、全caesura、元の整数の符号指数が削除後と一致した。
+これはLeanの証明の代用ではなく、次の型を元の構成の法則として切り出す前の点検。
