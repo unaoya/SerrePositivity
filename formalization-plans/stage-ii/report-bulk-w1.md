@@ -1001,3 +1001,10 @@ CrystallineSiteは元からあったR̄という結合文字つきの識別子�
 ### A3 の意図した引数の復元の保存確認（11-14午後）
 
 一覧：済み 8／全体 14（うち追加 0）。[ソースの保存確認](bulk-5inf0/a3-restored-parameter-source-guard.json)で、環の略記・δ構造・生成元の式が基準efa846fe8と同一であることを確認した。事前に一覧にした14参照へh₀を渡している。現ソースには、既存の普遍性を用いるlciClassifyingMapの証明に明示したHomとその生成元の法則の2出現を加えて16出現ある。正則性は承認どおりcompletedFreeDelta_generator_regularから得る。全A3の型検査は前提待ちなので、まだ成功には加えない。
+
+
+### 5∞-0 のdraft検査・第38束（11-14午後）
+
+一覧：済み 8／全体 14（うち追加 0）。[第38束](bulk-5inf0/draft-block38-validation.json)でA1/CrystallineSiteが約46秒で成功し、有効な成功は32／57本。本体のpdCechNerveの変数の宇宙に合わせ、有限変数をULiftで持ち上げ、変数の対応はj↦j.downと明示した。hp・hgenを意図した引数に戻した型も通った。検査済みのソースをコミットする。
+
+更新後の本体全域の同名候補0、import allを含む所有元への到達の欠落0、57本から旧E3入力への経路0（閉包12,938モジュール）をPythonで再確認した。HodgeTateFiltrationは、旧loopFunctorが通常のホモトピー圏の関手だったため、同じ既存のloopDiagramTargetEquivalenceの逆射と左下の評価を合成する∞関手へ参照を合わせる。ほかはYonedaの定数の法則・letのスコープ・合成の括弧の明示で修正し、第39束で検査する。新しいloopの存在定理・仮定・sorryは加えない。

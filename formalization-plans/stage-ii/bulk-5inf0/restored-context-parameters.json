@@ -74,7 +74,7 @@
         "hgen : P.generator = p on etaBridge; propagated to frobeniusPdBridge"
       ],
       "reason": "Restore originally declared section variables omitted by sorry bodies; explicitly bind them. Coordinator authorization 2026-11-14 applies.",
-      "validation": "pending"
+      "validation": "PASS block38, current source unchanged"
     }
   ]
 }
