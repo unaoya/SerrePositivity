@@ -882,3 +882,10 @@ SpaceValuedは既存のkanDiscretePresheafInclusionを公開してexposeされ�
 一覧：済み 8／全体 14（うち追加 0）。第15束でA0/BaseChangeが成功し、現在の署名での有効な成功は23本。[第15束](bulk-5inf0/draft-block15-validation.json)を保存し、BaseChangeをコミットする。残る前提はShared/CosimplicialEInfinityの評価比較1箇所。ホモトピー後合成の端点・空の相対条件、cdgaの忘却、層の名前空間は同じ検査で通った。評価の比較にはCatの射のtoFunctorとTypeの合成の公開評価補題を追加し、第16束に並べている。新しい数学的仮定や未証明本文は足していない。
 
 [保護対象以外の全体の集計](bulk-5inf0/all-draft-sorry-summary.json)は56本中55本が変更、sorryは **819→698**。A0〜A9の40本だけの値は **705→586**。全体の値と部分の値を区別する。現在のLean差分は追加2217・削除2486、合計4703行（外枠11,100行）。残りの見込み2,000〜4,000行は暫定のままで、外枠は増やさない。
+
+
+### 5∞-0 の第16束と保護された前提（11-14昼）
+
+一覧：済み 8／全体 14（うち追加 0）。[第16束](bulk-5inf0/draft-block16-validation.json)は共有Totの評価比較1箇所で失敗、後続5本は依存待ちで未実行。Catの射のラッパーは解消したが、ホモトピー圏への写像とnerveの零単体の表示が残った。既存の定義で同じ対象であることを明示する修正を第17束で検査中。現在の有効な成功は23本のまま。失敗したソースはまだコミットしない。
+
+保護された前提 `Shared/EInfinityPowerOperation.lean` に、存在しない旧モジュール `SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology` のimportが残っていることを静的に確認した。A4の検査前提だが、指示§1の変更禁止に従いソースを維持している。⑤a側での追従またはimport・改名だけの例外の判断を依頼した。この保護対象を一時的な互換モジュールで隠して成功と数えることはしない。他の独立した検査を先に進める。
