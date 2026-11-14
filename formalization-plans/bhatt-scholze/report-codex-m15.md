@@ -4904,3 +4904,314 @@ ComplexLimits の既存ファイルは読み取りだけに留め、既存の構
 全族は未完。M11 以降と G12 の元の目標を維持し、約 8,500 行での途中見積りを予定する。
 
 **一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 41. M10 の元の全 pinched 評価・線形成分・選択 cochain（11-14）
+
+§40 の同じ実 Dold–Kan 族を、元の全通常 dg 加群の dg nerve の pinched Hom へ移す。
+既存の `doldKanHomPinchedIso` と任意 Hom 鎖写像への自然性を使い、
+同じ標的加群射による後合成、全単体作用素、恒等射による普遍族と実評価を保持する。
+係数 dg 圏の対象宇宙 v と環の宇宙 u を区別し、実加群対象宇宙
+`max (u + 1) v` へ持ち上げる。BE の一対象 dg 圏では v = 0 である。
+係数加群の半自由性も比較射の同値性も、引数の仮定に加えない。
+
+同じ全要素列の終端パラメータで普遍 pinched 族を前合成し、実評価・全再添字を保つ。
+同じ恒等単体で評価した実単体を、既存の `PinchedHom.toLinearSimplex` で元の線形成分へ送る。
+全有限部分集合・正しい次数の微分方程式、終端を変える全作用素の線形再添字、
+単射による像部分集合の成分式、非単射による退化成分の零を保持する。
+
+元の有限部分集合を昇順に選び、同じ制限列の最上位 cochain を取る。
+元の末尾射で送ると元の部分集合の成分に戻ることを同じ単射再添字式で照合し、
+同じ最大元への型の移送を保持する。
+これは M10 の既存比較の係数移送・自然性・恒等・合成則と証明の分割で、一次 ID は追加しない。
+各証明は 200 行以下。全宣言の型は以下のとおり。
+
+`TensorHomPinched.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
+
+def moduleDoldKanPinchedIso (P N : ModuleCategory A D) :
+    SSet.uliftFunctor.{max (u + 1) v, u}.obj
+      (((moduleDoldKanHomBifunctor A D).obj (op P)).obj N) ≅
+    PinchedHom.pinchedHom A (RightModule A D)
+      (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) N)
+
+lemma moduleDoldKanPinchedIso_postcomp (P : ModuleCategory A D)
+    {N N' : ModuleCategory A D} (h : N ⟶ N') :
+    SSet.uliftFunctor.{max (u + 1) v, u}.map
+      (((moduleDoldKanHomBifunctor A D).obj (op P)).map h) ≫
+        (moduleDoldKanPinchedIso A D P N').hom =
+    (moduleDoldKanPinchedIso A D P N).hom ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) P h)
+
+def moduleTensorHomPinchedSimplex (P N : ModuleCategory A D) (n : SimplexCategory)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) :
+    SSet.uliftFunctor.{max (u + 1) v, u}.obj (SSet.stdSimplex.obj n) ⟶
+    PinchedHom.pinchedHom A (RightModule A D)
+      (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) N)
+
+lemma moduleTensorHomPinchedSimplex_postcomp (P : ModuleCategory A D)
+    {N N' : ModuleCategory A D} (n : SimplexCategory)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) (h : N ⟶ N') :
+    moduleTensorHomPinchedSimplex A D P N n g ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) P h) =
+        moduleTensorHomPinchedSimplex A D P N' n (g ≫ h)
+
+lemma moduleTensorHomPinchedSimplex_reindex (P N : ModuleCategory A D)
+    {n m : SimplexCategory} (f : n ⟶ m)
+    (g : ((moduleTensorSimplicesFunctor A D).obj P).obj m ⟶ N) :
+    SSet.uliftFunctor.{max (u + 1) v, u}.map (SSet.stdSimplex.map f) ≫
+      moduleTensorHomPinchedSimplex A D P N m g =
+    moduleTensorHomPinchedSimplex A D P N n
+      (((moduleTensorSimplicesFunctor A D).obj P).map f ≫ g)
+
+def moduleTensorUniversalPinchedSimplex (P : ModuleCategory A D) (n : SimplexCategory) :
+    SSet.uliftFunctor.{max (u + 1) v, u}.obj (SSet.stdSimplex.obj n) ⟶
+    PinchedHom.pinchedHom A (RightModule A D) (ForgetEnrichment.to (Complex A) P)
+      (ForgetEnrichment.to (Complex A) (((moduleTensorSimplicesFunctor A D).obj P).obj n))
+
+lemma moduleTensorUniversalPinchedSimplex_evaluation (P N : ModuleCategory A D)
+    (n : SimplexCategory) (g : ((moduleTensorSimplicesFunctor A D).obj P).obj n ⟶ N) :
+    moduleTensorUniversalPinchedSimplex A D P n ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) P g) =
+        moduleTensorHomPinchedSimplex A D P N n g
+
+lemma moduleTensorUniversalPinchedSimplex_naturality (P : ModuleCategory A D)
+    {n m : SimplexCategory} (f : n ⟶ m) :
+    SSet.uliftFunctor.{max (u + 1) v, u}.map (SSet.stdSimplex.map f) ≫
+      moduleTensorUniversalPinchedSimplex A D P m =
+    moduleTensorUniversalPinchedSimplex A D P n ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) P
+        (((moduleTensorSimplicesFunctor A D).obj P).map f))
+```
+
+`RawModuleTensorElementPinched.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementPinchedFamily {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    SSet.uliftFunctor.{u + 1, u}.obj (Δ[n] : SSet.{u}) ⟶
+      PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+        (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+        (ForgetEnrichment.to (Complex A)
+          ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (Fin.last n))))
+
+lemma strictRawModuleTensorElementPinchedFamily_evaluation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    strictRawModuleTensorElementPinchedFamily A X P Q c ≫
+      pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+        ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n)))) =
+    SSet.uliftFunctor.{u + 1, u}.map
+      (SSet.stdSimplex.map (strictRawModuleTensorElementTerminalParameter A X P Q c)) ≫
+      moduleTensorHomPinchedSimplex A (dgAlgebraCategory A ((assocForget A).obj X))
+        ((strictRawModuleProbeFunctor A X).obj P) Q
+        ((strictRawModuleTensorElementDegree A X P Q).obj (c.obj (Fin.last n)))
+        ((strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n)))
+
+lemma strictRawModuleTensorElementPinchedFamily_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    SSet.uliftFunctor.{u + 1, u}.map (SSet.stdSimplex.map θ) ≫
+      strictRawModuleTensorElementPinchedFamily A X P Q c =
+    strictRawModuleTensorElementPinchedFamily A X P Q
+      ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) ≫
+    pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementDiagram A X P Q).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))))
+
+def strictRawModuleTensorElementPinchedSimplex {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    (PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (Fin.last n))))) _⦋n⦌
+
+lemma strictRawModuleTensorElementPinchedSimplex_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (PinchedHom.pinchedHom A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (Fin.last n))))).map θ.op
+      (strictRawModuleTensorElementPinchedSimplex A X P Q c) =
+    (pinchedHomChainMap (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementDiagram A X P Q).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))))).app (op ⦋m⦌)
+      (strictRawModuleTensorElementPinchedSimplex A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c))
+```
+
+`RawModuleTensorElementLinear.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+def strictRawModuleTensorElementLinear {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
+    LinearSimplex A
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (Fin.last n)))) n
+
+lemma strictRawModuleTensorElementLinear_equation {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    differential A ((strictRawModuleTensorElementLinear A X P Q c).val.component J k hJ hk) =
+      (strictRawModuleTensorElementLinear A X P Q c).val.rhs J k hk
+
+lemma strictRawModuleTensorElementLinear_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    LinearSimplex.pullback θ.toOrderHom (strictRawModuleTensorElementLinear A X P Q c) =
+    pinchedLinearSimplexMap
+      (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+        ((strictRawModuleTensorElementDiagram A X P Q).map
+          (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))))
+      (strictRawModuleTensorElementLinear A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c))
+
+lemma strictRawModuleTensorElementLinear_component_reindex {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (J : Finset (Fin (m + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementDiagram A X P Q).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).f k
+      ((strictRawModuleTensorElementLinear A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) =
+    LinearData.component (pullback θ.toOrderHom
+      (strictRawModuleTensorElementLinear A X P Q c).val) J k hJ hk
+
+lemma strictRawModuleTensorElementLinear_component_inj {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (J : Finset (Fin (m + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementDiagram A X P Q).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).f k
+      ((strictRawModuleTensorElementLinear A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) =
+    (strictRawModuleTensorElementLinear A X P Q c).val.component (J.image θ.toOrderHom) k
+      (hJ.image θ.toOrderHom) (by rw [Finset.card_image_of_injOn hi]; exact hk)
+
+lemma strictRawModuleTensorElementLinear_component_not_inj {n m : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (J : Finset (Fin (m + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : ¬ Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementDiagram A X P Q).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).f k
+      ((strictRawModuleTensorElementLinear A X P Q
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) = 0
+```
+
+`RawModuleTensorElementSelected.lean`：
+
+```lean
+variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
+  (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
+
+abbrev strictRawModuleTensorElementSelection {n : ℕ} (J : Finset (Fin (n + 1)))
+    (hJ : J.Nonempty) : ⦋J.card - 1⦌ ⟶ ⦋n⦌
+
+lemma strictRawModuleTensorElementSelection_last {n : ℕ} (J : Finset (Fin (n + 1)))
+    (hJ : J.Nonempty) :
+    (strictRawModuleTensorElementSelection J hJ).toOrderHom (Fin.last (J.card - 1)) =
+      J.max' hJ
+
+def strictRawModuleTensorElementSelectedCochain {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    GradedHom A
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj
+        (c.obj ((strictRawModuleTensorElementSelection J hJ).toOrderHom
+          (Fin.last (J.card - 1)))))) k
+
+lemma strictRawModuleTensorElementSelectedCochain_image {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    (eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P)
+      ((strictRawModuleTensorElementDiagram A X P Q).map
+        (c.map (homOfLE (Fin.le_last ((strictRawModuleTensorElementSelection J hJ).toOrderHom
+          (Fin.last (J.card - 1)))))))).f k
+      (strictRawModuleTensorElementSelectedCochain A X P Q c J k hJ hk) =
+    (strictRawModuleTensorElementLinear A X P Q c).val.component J k hJ hk
+
+def strictRawModuleTensorElementSelectedCochainAtMax {n : ℕ}
+    (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    GradedHom A
+      (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
+      (ForgetEnrichment.to (Complex A)
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (J.max' hJ)))) k
+```
+
+対象ビルド・小さい監査の結果と実測は §41.1 に記録した。
+同じ全 cochain を元の dg nerve の cone/prism へ組み立てる全方程式、元の全評価屋根との
+三角比較、同じ K の Hom 誘導射の同値性・完全忠実性はまだ完了としていない。
+M10 の一般の native な辺・fiber と全族、M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+### 41.1 検証と実測
+
+TensorHomPinched・RawModuleTensorElementPinched・RawModuleTensorElementLinear・
+RawModuleTensorElementSelected の通常の対象ビルドは成功した。
+新しい公開宣言 24 本の依存公理監査も成功し、propext・Classical.choice・Quot.sound
+の範囲である。指定の impl 鍵と一回 280 秒の塊で実行した。引用属性の新規追加はない。
+
+新規 Lean は四ファイル、それぞれ 126・134・124・97 行、計 481 行、公開宣言 24 本。
+§40.1 の累計に加え、検証済み累計は 83 ファイル・8,500 行・明示宣言 445 本
+（private 4 本）。200 行を超える証明はない。一次 ID は追加していない。
+全係数の pinched Hom の同じ実評価、全再添字、線形成分・全微分方程式、
+単射/非単射の成分式、選択した cochain と元の最大元への移送を検証した。
+
+同じ全 cone/prism と元の屋根の比較、同じ K の実 Hom 射の同値性・完全忠実性、
+指定 fiber・一般の native な辺と全族は未完。M11 以降と G12 の元の目標を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
+
+
+## 42. 約 8,500 行の途中報告と残作業の見積り更新（11-14）
+
+ユーザーの「約 8,500 行で止まらずに途中報告」に従う。
+§41 の四ファイルは通常の対象ビルドが通過し、§40.1 の 8,019 行に 481 行を加えると
+新設 Lean は 83 ファイル・8,500 行となる。既存の対象を変更した差分を別に隠す数え方はせず、
+現作業木の M15 所有ソースも同じ合計になることを確認した。
+小さい監査も成功し、確定結果は §41.1 に記録した。
+
+M01–M09 と追加 N01 が完了。M19 の共通 IsThick の芯とその閉包の法則は作成済みだが、
+同じ native 相対テンソルへの接続が残るため M19 完了には数えない。
+M10 は全圏・通常の全評価・厳密制限と随伴・同じ局所化比較 K、実モデル構造、
+frame 比較、元の dg Hom の全自然な同定を進めた段階である。
+元の K の完全忠実性、指定 native fiber、一般の底の辺の輸送と全族の検収は未完。
+
+段 0 の M06–M10 の 1,000〜1,800 行は、そのまま完成見込みに流用できない。
+実際の projective モデル構造 N01、異なる模型の Hom 比較、同じ誘導射との全高次の
+照合を個々に検収する費用が必要だった。以下は現時点の残りの**暫定作業見積り**であり、
+未実装の定理の存在や上端以内の完成を保証するものではない。
+M10 の幅は既存 FrameHom と一般の線形・方程式移送 API の再利用を前提とする。
+
+| 残りの束 | 追加行数の下端 | 追加行数の上端 | 未完の主な検収 |
+| --- | ---: | ---: | --- |
+| M10 | 1,500 | 3,000 | 同じ全 cone/prism と K の Hom 射の照合、完全忠実性、fiber と一般輸送・全族 |
+| M11–M15 | 1,800 | 2,800 | 同じ fiber の対称 operadic 相対テンソル、全構造・完全性・底変換 |
+| M16–M20 | 450 | 850 | 指定単位辺と fiber・指数射、単位底比較、共通 thick との接続 |
+| M21–M27 | 900 | 1,500 | 指数判定・底変換・合成・テンソル |
+| M28–M30 | 600 | 1,000 | Amitsur 塔と同じ指定増大の降下 |
+| M31–M35 | 500 | 800 | 同じ RHom 全関手・評価・指数二判定 |
+| M36–M42 | 700 | 1,200 | 実際の完備反射・完備テンソルと同じ評価・利用側接続 |
+| **残り合計** | **6,450** | **11,150** | |
+| **8,500 行との合計** | **14,950** | **19,650** | |
+
+したがって外枠 17,000 行以内の完成は、現時点では確証がない。
+外枠を変更せず、既存構成の再利用と法則の共通化を進める。
+Ho や離散な対象族への弱化、モデル構造・完備反射の仮定化、任意 E への範囲拡大はしない。
+今回の途中報告点では停止せず、新しい一次構成・新しい定理・まとまりの外への拡張が必要に
+なった時、または実際に外枠へ達した時に、共通規則どおり報告して止まる。
+G12 は M15 完成後の元の段 0 と検収条件を維持する。
+
+**一覧：済み 10／全体 43（うち追加 1）**。
