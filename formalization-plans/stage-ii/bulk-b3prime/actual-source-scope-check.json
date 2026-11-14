@@ -1,0 +1,37 @@
+{
+  "main": "391b2a0d2",
+  "own_head": "033e1c72e42fee741d4f65127faf39785928260d",
+  "changed_core_script_draft_paths": 309,
+  "authorized_writes": 255,
+  "authorized_deletions": 71,
+  "prepared_identical_to_main": [
+    "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PrincipalPair.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Cone.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/RootTower.lean",
+    "SerrePositivity/CLMST/Algebra.lean",
+    "SerrePositivity/CLMST/ParameterPowerLength.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/Consequences.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/Descent/Uniform.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/GeneralRank.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/Proof.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/Rank/ClosedSides.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/Rank/ComponentExcision.lean",
+    "SerrePositivity/CLMST/PerfectoidizationIsogeny/Rank/Diagram.lean",
+    "SerrePositivity/Paper/Section2/LengthAlgebra.lean",
+    "SerrePositivity/Paper/Section2/LengthAlgebra/MixedChar.lean",
+    "SerrePositivity/Paper/Section5/Reduction.lean",
+    "SerrePositivity/Paper/Section5/Setup.lean",
+    "SerrePositivity/Paper/Statement.lean"
+  ],
+  "outside_scope_core_script_draft_changes": [],
+  "hash_mismatches": [],
+  "statement_proof_change_policy": "Only authorized whole moves/splits/name and import transport, explicit original Finite telescope restoration, comments, and one approved wrapper deletion. Strict native v3b provides semantic gate.",
+  "mathematical_tooling_unchanged": [
+    "bulk_snapshot.py",
+    "bulk_compare.py",
+    "bulk_namespace.py",
+    "klw1_namespace.py",
+    "verify.sh",
+    "verify_runner.py"
+  ]
+}

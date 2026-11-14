@@ -1,0 +1,84 @@
+{
+  "all_passed": false,
+  "passed": 12,
+  "total_checks": 14,
+  "scope_complete": 2,
+  "scope_total": 22,
+  "additional": 0,
+  "head": "033e1c72e42fee741d4f65127faf39785928260d",
+  "time": 1794677173.3286579,
+  "checks": [
+    {
+      "check": "Independent preparation complete",
+      "pass": true,
+      "evidence": "preparation-complete.json"
+    },
+    {
+      "check": "Actual native v3b all29groups214modules unexplained0",
+      "pass": true,
+      "evidence": "actual-preservation/complete.json"
+    },
+    {
+      "check": "Actual native citation/tag metadata exact",
+      "pass": true,
+      "evidence": "actual-citation-comparison.json"
+    },
+    {
+      "check": "Actual graph complete, acyclic, no EInfinity to BS, endpoints published",
+      "pass": true,
+      "evidence": "actual-import-graph.json"
+    },
+    {
+      "check": "Layers unchanged46, no new violation",
+      "pass": true,
+      "evidence": "actual-layer-comparison.json"
+    },
+    {
+      "check": "Existing tiers/exceptions unchanged, 346 permitted additions",
+      "pass": true,
+      "evidence": "actual-application.json"
+    },
+    {
+      "check": "Final applied source hashes match validated source",
+      "pass": true,
+      "evidence": {
+        "mismatches": []
+      }
+    },
+    {
+      "check": "Actual root succeeded",
+      "pass": true,
+      "evidence": "root-build-complete.json"
+    },
+    {
+      "check": "All106 formal audits exact inventory, serial, passed",
+      "pass": false,
+      "evidence": "all-audits-complete.json"
+    },
+    {
+      "check": "Full gate verify root/audits/sorry all passed",
+      "pass": false,
+      "evidence": "full-verify-complete.json"
+    },
+    {
+      "check": "Own changes entirely authorized, tooling unchanged",
+      "pass": true,
+      "evidence": "actual-source-scope-check.json"
+    },
+    {
+      "check": "All34 original BS reversals explicitly reconciled",
+      "pass": true,
+      "evidence": "actual-bs-reverse-edge-ledger.json"
+    },
+    {
+      "check": "All22 scope rows have implementation and evidence",
+      "pass": true,
+      "evidence": "scope-items-applied.json"
+    },
+    {
+      "check": "B4 six live branches with no drafts in native collect",
+      "pass": true,
+      "evidence": "B4/lanes.json"
+    }
+  ]
+}

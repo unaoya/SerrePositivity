@@ -1425,3 +1425,12 @@ B4用に[drafts本文の文字列の影響](bulk-b3prime/draft-body-b4-impact.js
 [全22項目の実装照合表](bulk-b3prime/scope-items-applied.json)では承認範囲の実装・既存mainで済んだものを全件対応させた。適用済みと最終完了は区別し、正式全監査・full verifyが通るまでは済み2のまま。B3の維持表のうちPD固有cochainHomotopy、R83/Spectrum、広いR21、未使用削除は引き続き範囲外。
 
 B4の採取候補を枝の最新HEADと未コミットの本体を読むだけで更新：⑤a98本・⑤d191本・③-a102本・③-b98本・⑥164本・Kerodon0本。完全名/旧モジュールの文字列一致は0だが、非修飾名の追従まで不要とは判断しない。draftsは別表のまま。他レーンへの書込み0。現在は実配置の属性再照合を進め、続いて正式106監査を一本ずつ通常の共有鍵で行う。
+
+
+### B3′ 実配置の属性一致・正式監査の前提（11-15 02:26）
+
+一覧：済み 2／全体 22（うち追加 0）。[実配置の引用・タグ照合](bulk-b3prime/actual-citation-comparison.json)は2,564→2,564件、欠落0・余分0・衝突0。所有元1,099モジュール・18組・25 KEYのネイティブ採取で、KerodonとStacksも含む。[実環境の生記録](bulk-b3prime/native-citations-actual.tar.gz)を保存。
+
+[本体の範囲の検査](bulk-b3prime/actual-source-scope-check.json)はmain391b2a0d2との差で309の本体・scripts・draftsパス。承認束の255書込みと71削除の内側に収まり、準備時と同じ17パスはmainと同じバイト列である。全適用ソースのSHA一致、範囲外変更0。比較器・採取器・verify本体は変更0。
+
+[正式監査の全inventory](bulk-b3prime/all-audit-inventory.json)は106本でmanifestと完全一致。前提のビルドは36,526 jobs、31.1秒で成功（[記録](bulk-b3prime/all-audit-prerequisites-complete.json)）。監査本体を一本ずつ開始した。[完了条件の検査](bulk-b3prime/completion-audit.json)は12／14で、未完了は正式全監査とfull verifyのみ。これらを省いて完成扱いにはしない。
