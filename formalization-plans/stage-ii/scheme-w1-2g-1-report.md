@@ -2360,3 +2360,18 @@ B03 の上記の整数係数の法則を、`locallyOfFinitePresentation_to_termi
 G1・G2共用部品込み本体13,797行、入口込み14,030行。一般の affine v 被覆から固定の平坦模型の入力そのものを供給する接続は下書きで、B03 の完成とはしない。B02〜B04 は未完。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B03：一般の有限表示 affine v 被覆からの、固定の有限型整数平坦模型の証人
+
+`AffineVCoverFlatModelWitness`（102行）：`exists_flat_model_refinement_witness_vCover_affineRing` は任意の環 R と有限表示 R-代数 C の affine v 被覆から、有限型 ℤ-代数 A と Noether 性、実際の固有・局所有限表示の Y₀→Spec A、固定の平坦・局所有限表示・qcqs な q₀:Z₀→Y₀、実際の固有・全射・局所有限表示の r:T→Spec R と β:T→Y₀、q₀ の β に沿う標準の pullback の全射性、そこから Spec C への射と可換式を供給する。A07 と同じ整拡大・Noether 平坦模型・有限段を使い、構成された平坦な射が固定の q₀ の底変換であることを保持した。
+
+`IntegerModelAbsoluteFinitePresentation`（41行）：`locallyOfFinitePresentation_to_terminal_of_integer_model` は有限型 ℤ-代数 A と局所有限表示の Y→Spec A について、同じ宇宙の終対象への構造射が局所有限表示であること。既存の ULift ℤ の有限表示性の移送と終対象の canonical な同型を使った。
+
+合計本体143行・入口2行。両下書きは最初の単独検証で成功。ソース完全一致、二対象と直接 importer AlgebraicGeometry のビルド5,022ジョブ、小監査2宣言（1・1）・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を各検証中だけ使用。ログ `2g-affine-vcover-flat-model-witness-check.log`・`2g-integer-model-absolute-finite-presentation-check.log`・`2g-affine-flat-integer-model-witness-native.log`・`2g-affine-flat-integer-model-witness-audit.log`。
+
+G1・G2共用部品込み本体13,940行、入口込み14,175行。今回の区切り（9010ce12e の後）は9モジュール、本体636行＋入口9行、小監査合計19宣言・標準三公理のみ。B01 は完了。B02〜B04 は未完で、停止点 2g-1 ではない。全体の見込み約16,100〜19,200行、現在からの残り約2,200〜5,200行、外枠25,000行は不変。
+
+次はこの実際の β を B01 の固有模型の有限係数段へ因子化し、同じ固定の q₀ をその段へ引き戻す。既存の平坦模型の全射性・射の因子化の API を適用して元の対象への細分の射と可換式をそろえ、模型の v 被覆性を証明する。固定の平坦模型を取り出しただけで、有限型 F_p の v 被覆模型や filtered な図式まで完成したとは述べない。一般の（有限表示でない）元の環写像の扱いも、BS17 §2 の照合で記録した順序を保つ。まず元の基底上の有限表示代数の近似は、元の被覆からの合成の消去によって各々 v 被覆になる。その有限表示側に今回の証人を使って有限型 F_p への帰着を進め、元の一般の主張は変えない。
+
+一覧：済み14／全体17（うち追加8）。

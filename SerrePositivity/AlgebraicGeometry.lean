@@ -1539,3 +1539,7 @@ public import SerrePositivity.AlgebraicGeometry.ProperSurjectiveCoefficientModel
 public import SerrePositivity.AlgebraicGeometry.CommonCoefficientSchemeModels
 
 public import SerrePositivity.AlgebraicGeometry.IntegralClosedFlatModelWitness
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverFlatModelWitness
+
+public import SerrePositivity.AlgebraicGeometry.IntegerModelAbsoluteFinitePresentation
