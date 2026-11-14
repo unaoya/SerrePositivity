@@ -1511,3 +1511,9 @@ public import SerrePositivity.AlgebraicGeometry.CommonDenseOpenGluing
 public import SerrePositivity.AlgebraicGeometry.SchemeOpenUnionCover
 
 public import SerrePositivity.AlgebraicGeometry.OpenUnionGluedMap
+
+public import SerrePositivity.AlgebraicGeometry.ProperChartOpenRange
+
+public import SerrePositivity.AlgebraicGeometry.DenseChartRestriction
+
+public import SerrePositivity.AlgebraicGeometry.ProperOpenChartGluing

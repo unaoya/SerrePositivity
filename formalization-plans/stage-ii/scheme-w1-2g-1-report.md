@@ -2161,3 +2161,24 @@ C06 の貼り合わせた射のチャート上の比較（着手前の型、見�
 G1・G2共用部品込み本体12,830行、入口込み13,049行。C06 は本体896行までで未完。チャートの範囲の逆像との一致と固有性・全射性、一般の対象への接続、B01〜B04 は残る。
 
 一覧：済み12／全体17（うち追加8）。
+
+
+C06 のチャート逆像の一致からの固有性・全射性（着手前の型、見込み120〜260行）：`isProper_of_open_chart_ranges` は X の開被覆 Uᵢ と T の開部分 Vᵢ→T、固有射 Vᵢ→Uᵢ、可換式、range(Vᵢ→T)=a⁻¹(Uᵢ) から a:T→X の固有性を返す。各正方形を実際の pullback と示し、既存の固有性の標的局所性を使う。`surjective_of_proper_of_dense_comp` は固有な a:T→X と W→T の合成が稠密なら a が全射と返す。閉写像の像と稠密性の既存の法則を接続する C06 の分割で、親項目を増やさない。
+
+
+C06 の既約な Noether 対象からの実際の Chow の固有全射（着手前の型、見込み240〜520行）：`exists_dense_affine_cover_proper_domination` は実際の `SchemeDenseAffineCoverModel X` と affine な S への分離的局所有限型の f:X→S から、実際の固有全射 h:T→X、固有な q:P→S、開包含 t:T→P と t≫q=h≫f を返す。既存の有限グラフ閉包・チャートへの固有射・実際の開部分の和・比較・標的局所性を接続する。`exists_irreducible_noetherian_proper_domination` は Noether な既約 X から内部の被覆模型自体も供給し、同じ結論を無条件に返す。C06 全体の Noether 対象を既約に狭めるものではなく、有限個の既約成分を合わせる前の証明分割とする。C06 の親項目を増やさない。
+
+
+### C06：チャートの範囲・逆像の一致と、局所の固有性からの移送
+
+`ProperChartOpenRange`（67行）：`range_pullback_toImage` は実際のチャート像への pullback の範囲を元の射影によるチャート像の逆像と比較。`exists_proper_chart_open_range` はチャート上の固有射と共通の稠密な開を、その範囲の一致とともに構成。
+
+`DenseChartRestriction`（81行）：`restrict_eq_of_common_dense_chart` は共通の稠密な開上で指定されたチャートへの射の比較をチャートの逆像全体へ延ばす。`range_chart_eq_preimage_of_dense_comparison` はこの比較から、元の開部分の像と貼り合わせた射のチャートの逆像を一致させる。
+
+`ProperOpenChartGluing`（56行）：`isProper_of_open_chart_ranges` は実際のチャート逆像の一致から各正方形を pullback とし、局所の固有性を全体へ移す。`surjective_of_proper_of_dense_comp` は稠密な合成を持つ固有射の全射性。
+
+合計本体204行・入口3行。各下書きの単独検証、ソース完全一致、三対象と直接 importer AlgebraicGeometry のビルド5,009ジョブ、小監査7宣言（3・2・2）・標準三公理のみを終了状態0で確認。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600` を検証中だけ使用。ログ `2g-proper-chart-open-range-check-2.log`・`2g-dense-chart-restriction-check-2.log`・`2g-proper-open-chart-gluing-check.log`・`2g-chart-range-proper-gluing-native.log`・`2g-chart-range-proper-gluing-audit.log`。
+
+G1・G2共用部品込み本体13,034行、入口込み13,256行。C06 は本体1,100行までで未完。実際の被覆模型とグラフ閉包の全入力を接続する定理は下書きで、この時点では元の対象への無条件の Chow の固有全射の完成とはしない。一般の対象への接続、固有性の降下と B01〜B04 は残る。
+
+一覧：済み12／全体17（うち追加8）。
