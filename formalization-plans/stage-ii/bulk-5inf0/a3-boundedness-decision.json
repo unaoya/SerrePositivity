@@ -1,0 +1,177 @@
+{
+  "status": "approved by coordinator 2026-11-14; applied, awaiting draft validation",
+  "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+  "old_type": "universalLciPrism (P₀ : OrientedPrism p A₀) (r : Nat) : OrientedPrism p (completedFreeDelta P₀ (ULift (Fin r)))",
+  "proposed_type": "universalLciPrism (P₀ : OrientedPrism p A₀) (h₀ : IsBoundedPrism P₀) (r : Nat) : OrientedPrism p (completedFreeDelta P₀ (ULift (Fin r)))",
+  "existing_core_lemma": "completedFreeDelta_generator_regular P₀ h₀ (ULift (Fin r))",
+  "preserved_data": [
+    "ring",
+    "deltaStructure",
+    "generator"
+  ],
+  "affected_calls": [
+    {
+      "line": 89,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 97,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 216,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 217,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 218,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 220,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 221,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 225,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 237,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 238,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 239,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 240,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 241,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line": 243,
+      "old_call": "universalLciPrism P₀ r",
+      "proposed_call": "universalLciPrism P₀ h₀ r"
+    }
+  ],
+  "authorization": "Missing section variables dropped due to sorry may be restored, preserving intended mathematical input; analogous D4-03/D4-06.",
+  "applied_calls": [
+    {
+      "line_before": 92,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 100,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 219,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 220,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 221,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 223,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 224,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 228,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 240,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 241,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 242,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 243,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 244,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    },
+    {
+      "line_before": 246,
+      "old": "universalLciPrism P₀ r",
+      "new": "universalLciPrism P₀ h₀ r"
+    }
+  ],
+  "source_sha256_before": "b6d7c591eebd918e5168a24a48005a63d1ba15b272acea3c7d63a589167569e8",
+  "source_sha256_after": "aeabb17d1e14f91525b3d471f219a28d618b7bc9a7d3b7305d2e8423720483be",
+  "deltaStructure_and_generator_source_identical": true,
+  "dependent_call_followup": [
+    {
+      "line": 125,
+      "old": "lciClassifyingMap P f P₀ g hd",
+      "new": "lciClassifyingMap (h₀ := h₀) P f P₀ g hd"
+    },
+    {
+      "line": 131,
+      "old": "lciMap P f P₀ g hd",
+      "new": "lciMap (h₀ := h₀) P f P₀ g hd"
+    },
+    {
+      "line": 193,
+      "old": "lciMap P f P₀ g hd",
+      "new": "lciMap (h₀ := h₀) P f P₀ g hd"
+    }
+  ]
+}

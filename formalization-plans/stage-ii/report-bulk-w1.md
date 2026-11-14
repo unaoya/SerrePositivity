@@ -955,3 +955,10 @@ A2は280秒の束の残り時間内に完了せず、外側のgtimeoutで打切�
 一覧：済み 8／全体 14（うち追加 0）。[第27束](bulk-5inf0/draft-block27-validation.json)ではカーネル時間切れが消え、約39秒で端点のTypeの合成の評価2箇所に絞られた。同じ合成を定義から評価して[第28束](bulk-5inf0/draft-block28-validation.json)でA2/DerivedPrismaticCohomologyが約33秒で成功。有効な成功は28本。この検査済みソースをコミットする。有限の検査予算を増やすオプションは残していない。既存の辺の評価の始端・終端を公開補題で揃え、同じmapを等式で移送したもの。新しいFrobeniusや仮定は導入していない。siftedの述語2参照も[所有元の完全名](bulk-5inf0/a2-sifted-predicate-reference-refresh.json)へ追従して通った。
 
 A1/HodgeTateMapは `import all …Prismatic.HodgeTateOneDerivative` の旧パスが1行残っていて失敗。静的import解析が `import all` を拾っていなかったため、前の「import欠落0」はこの構文を除く範囲での値だった。全draftのimportをこの構文も含めて再走査し、[残る1行](bulk-5inf0/import-all-reference-refresh.json)をB3表の正しいパスへ直した。importの種類は維持。第29束でA1と後続を検査する。
+
+
+### 5∞-0 のA3のsection変数の復元（11-14午後、調整役承認）
+
+一覧：済み 8／全体 14（うち追加 0）。`universalLciPrism` のsection変数h₀がsorryのため型から落ちていることを確認。調整役よりD4-03・D4-06と同じ「意図した型に戻す」扱いとして承認を得た。[型と全参照の台帳](bulk-5inf0/a3-boundedness-decision.json)のとおり、`universalLciPrism P₀ h₀ r` として14参照を追従し、それでh₀が必要になるlciClassifyingMap・lciMapの呼出し3箇所にも同じ引数を明示した。環・δ構造・生成元のソースは同一で、正則性を既存のcompletedFreeDelta_generator_regularから証明する。p完備性・生成元完備性・pのイデアルへの所属・剰余の有界性の4欄も、追加の仮定を入れずに本体へ寄せた。A3全体は前提待ちで未検査なので、まだ成功に算入していない。
+
+同じ理由で型から落ちているsection変数は、調整役の承認に従い同じ扱いで戻し、今後も一覧に残す。新しい数学的な入力を追加する変更はこの扱いに混ぜない。
