@@ -10117,3 +10117,47 @@ mainの`citation-attributes.md` §14と`bulk-w1-b3/B4-README.md`を読んだ。
 昼の採取は`--class impl --wait 3600`で組ごとに取り、280秒の実行上限で分ける。
 索引と原ソースを保持し、保留0と差分確認の後にmainを取り込む。
 取り込み後のソースには古い索引を適用しない。
+
+### 126.1 B4採取中の記録（main取り込み前）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+M14の検証済み四本は **94c593fe0** に保存済み。
+基準c5c4436c0から自枝のコミットが触った本体Leanを再集計し、draftsを除外した対象は
+**106本**。既存のB4一覧95本をすべて含み、その後の11本を加えた。
+main上には、この106本の同名ファイルはまだないことも確認した。
+
+採取前のソースコミット・全106本のSHA256・改名表のSHA256は
+`bulk-w1-b4/bs-impl-before.json`に保存した。
+原ソースの完全なコピー、分割した採取のJSON、ログは
+`/tmp/bsw16/b4-20261114/`に保持している。
+初期の6本の組の鍵内実行時間が約72秒だったため、進行中の組の完了と鍵返却を確認して
+12本の組へまとめ直した。採取済み24本は原ソース一致を再検証して引き継ぎ、
+未採取分のみを続行している。各組は`--class impl --wait 3600`、実行上限280秒。
+整理券を重複して発行していない。
+
+この記録時点の採取完了は **36／106本**。採取ジョブは稼働しており、次の組は鍵待ち。
+完了済み36本の26,311件の参照を定義元つき改名表へ照合した範囲では、
+移動する宣言への直接参照は0。これは**部分的な事前照合**であり、
+全件のrewrite・`review.json`の保留0の確認に代えるものではない。
+通常importのmodule-mapへの直接該当と、106本自身のファイル配置の移動の該当はともに0。
+非修飾名の最終的な確認には全件の採取と正式rewriteを使う。
+
+取り込み後の対象ビルドの範囲は、106本の自モジュール内のimportグラフから求めた。
+次の8本の上位importerをすべてビルドすると、自分の106本を推移的にすべて覆う。
+追加の依存が少ない順と被覆数は`bulk-w1-b4/bs-impl-build-scope.json`、
+詳細な依存グラフは`/tmp/bsw16/b4-20261114/build-coverage-plan.json`に保存した。
+これは計画であり、まだmain取り込み後のビルド成功を主張しない。
+
+- `SerrePositivity.EInfinity.SimplexCuts.GeneratorBoundary`
+- `SerrePositivity.EInfinity.SimplexCuts.TopTerm`
+- `SerrePositivity.EInfinity.SimplexCuts.StraightTraceFaces`
+- `SerrePositivity.EInfinity.SimplexCuts.TerminalSignData`
+- `SerrePositivity.EInfinity.SimplexCuts.Normalization`
+- `SerrePositivity.EInfinity.SimplexCuts.HorizontalDeletedFaces`
+- `SerrePositivity.EInfinity.SimplexCuts.HorizontalBoundarySigns`
+- `SerrePositivity.EInfinity.SimplexCuts.MixedBoundaryValues`
+
+106本それぞれに宣言があることと標準三公理のみであることを検査する専用監査も用意した。
+採取中のLeanソースは変更せず、M14の次のLean実装には戻っていない。
+全件の採取→rewrite・保留/差分確認→main取り込み→対象ビルド/専用監査の順を保つ。

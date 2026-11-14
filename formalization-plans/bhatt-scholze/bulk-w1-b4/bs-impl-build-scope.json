@@ -1,0 +1,42 @@
+{
+  "phase": "planned verification after main merge; not yet executed",
+  "source_commit": "94c593fe000ed5111f89bb324a0dbe796f970af5",
+  "source_manifest": "bs-impl-before.json",
+  "module_count": 106,
+  "covered_module_count": 106,
+  "targets": [
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.GeneratorBoundary",
+      "new_own_dependencies": 2
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.TopTerm",
+      "new_own_dependencies": 3
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.StraightTraceFaces",
+      "new_own_dependencies": 10
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.TerminalSignData",
+      "new_own_dependencies": 9
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.Normalization",
+      "new_own_dependencies": 11
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.HorizontalDeletedFaces",
+      "new_own_dependencies": 11
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.HorizontalBoundarySigns",
+      "new_own_dependencies": 28
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.MixedBoundaryValues",
+      "new_own_dependencies": 32
+    }
+  ],
+  "coverage_evidence": "/tmp/bsw16/b4-20261114/build-coverage-plan.json"
+}
