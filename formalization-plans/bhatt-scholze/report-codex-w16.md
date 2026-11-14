@@ -13965,3 +13965,198 @@ sorry・新規公理は0。既存の公開宣言・界面・共有入口は変�
 L12a検証済み実測は675+387=**1,062行**、M14は15,882+387=**16,269行**。
 外枠25,000行まで**8,731行**。L12aの1,200行の途中報告点はまだ踏んでいない。
 §172のColorHeightRanksはこの時点では未検証の下書きで、上の実測・登録候補に含めない。
+
+## 174. L12a の同じ色別頂点写像との厳密な一致（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§172の有限点検は順位が元の水平位置・高さの頂点を指すことも点検している。
+次はその全称の照合。有限の狭義単調列では、添字の差以下には値が増えない。
+これを元の色別位置列の区間の前半・後半へ適用する。区間全体の順位の幅が高さの幅に
+等しいC399と元のcoordinate_sumから、どちらの増分にも隙間がないことが従う。
+既存の順序列挙・座標写像の法則だけで、元のverticesと厳密に一致する。
+型は次。C403〜C405はL12aの有限列挙の評価・照合の証明分割として数える。
+各証明200行以内の見込み。作用・ホモトピー・Totについての新しい主張は足さない。
+
+```lean
+lemma finite_strictMono_distance {N : ℕ} (f : Fin N → ℕ) (hf : StrictMono f)
+    (i j : Fin N) (hij : i ≤ j) : j.val - i.val ≤ f j - f i
+
+lemma vertices_on_colorIntervalRanks {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    (vertices s v a j).val = lo s p + (j.val - (colorIntervalFirst s v a p hp).val)
+
+lemma vertices_colorHeightRank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p) :
+    (vertices s v a (colorHeightRank s v a p hp h hl hr)).val = h
+```
+
+## 175. L12a の内側水平辺の同じ合成語位置（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C394〜398で所属を決めた同じ内側水平辺を、元の部分語の合成位置へ送る。
+位置は元の出現前の接頭長に、元の部分語内の相対位置を足したもの。
+型は次。C406〜C408はL12aの同じ有限対応の内部の位置・順序の法則として数える。
+各証明200行以内の見込み。新しい作用・ホモトピー・Totの主張は含まない。
+有限点検：`/tmp/bsw16/check-composite-inner-edges.py`、416条件・21,939組。
+所属部分語内で隣接する元の二位置を読み、合成語での位置が正しいことと狭義順序を確認。
+
+```lean
+lemma compositePrefixLength_occurrence_end_le {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (j : Fin (Surjection.occurrenceCount u.val k)) :
+    compositePrefixLength u v k r (Surjection.occurrenceAt u.val k j).val + (r.val j).val ≤
+      m + (n + 1) + (d + e)
+
+def compositeInnerEdge {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : Fin (n + e)) : Fin (m + n + (d + e))
+
+lemma compositeInnerEdge_val {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : Fin (n + e)) :
+    (compositeInnerEdge u v k r a).val =
+      compositePrefixLength u v k r
+          (Surjection.occurrenceAt u.val k
+            (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val)).val +
+        (a.val - r.start (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val))
+
+lemma compositeInnerEdge_strictMono {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    StrictMono (compositeInnerEdge u v k r)
+```
+
+## 176. L12a の同じ接頭境界と高さの範囲（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+内側射影の高さをC400へ渡すため、C393の射影した切断の左右の端点を読む。
+外側位置pに属する合成語内の水平辺は、元の接頭長α(p)からα(p+1)の間にある。
+その高さは射影した外側切断のloとhiの間にある。最初/最後は既存lo_zero・hi_last、
+途中は既存hi_eq_lo_succとC393の単調性だけを使う。
+C409は同じ射影の座標の法則・L12aの証明分割として追加する。各証明200行以内の見込み。
+有限点検：`/tmp/bsw16/check-composite-height-bounds.py`、416条件・21,939組。
+型は次。合成語や切断の公開定義は変更しない。
+
+```lean
+lemma positiveCompositeOuterCut_height_bounds {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (a : Fin (m + n + (d + e)))
+    (hl : compositePrefixLength u v k c.1 p.val ≤ a.val)
+    (hr : a.val + 1 < compositePrefixLength u v k c.1 (p.val + 1)) :
+    lo (positiveCompositeOuterCut u v k c) p ≤ (cutHeights c.2 a).val ∧
+      (cutHeights c.2 a).val ≤ hi (positiveCompositeOuterCut u v k c) p
+```
+
+## 177. L12a の1,200行の途中報告：実測と残りの出し直し
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§172・174〜176の4本は対象ビルドが成功した。小監査は別の一回の鍵で実行中。
+`ColorHeightRanks`82行、`ColorHeightVertices`79行、`CompositeInnerEdges`102行、
+`CompositeHeightBounds`53行、合計316行。
+ビルド：`/tmp/bsw16/m14-color-height-and-inner-02.log`（内側辺）、
+`/tmp/bsw16/m14-color-height-and-bounds-03.log`（残り、2,849 jobs）、対象警告0。
+一度目の頂点照合では、差の評価に加えて同じ列挙の値自体の単調性も明示する必要があった。
+その数値的な評価を同じ証明内に足し、元の頂点との厳密な一致を閉じた。
+
+ビルド済みのL12a実測は1,062+316=**1,378行**。監査後に検証済みへ数える。
+M14は同じ基準で16,269+316=**16,585行**、外枠25,000行まで**8,415行**。
+L12aの途中報告点1,200行を踏んだので、残りを次のように出し直す。
+
+| 残るL12aの行 | 見込み |
+| --- | ---: |
+| 内側切断の高さ・単調性と順方向の写像 | 150〜250 |
+| 二段切断から合成切断の逆復元 | 300〜550 |
+| 両方向の逆の等式 | 300〜500 |
+| 同じcompositionSign・cutSignの照合 | 200〜350 |
+| 同じ指定面・実テンソル・零項の照合 | 400〜750 |
+| nullaryの元の有限添字と項の接続 | 250〜400 |
+| **残り** | **1,600〜2,800** |
+| **L12a完成時（1,378行を含む）** | **2,978〜4,178** |
+
+§159のL12a全体1,400〜2,400行の上端より、今の完成上端は+1,778行。
+増えたのは、元のCutの座標・色別順位・重なる部分語の位置を、原型のリスト上の対応から
+元の有限添字の全称証明へつなぐ分である。この前段を全対応や符号の完成として控除しない。
+§156のL12a以外の見込みを据え置いて更新すると、次のとおり。
+
+| 部分 | 残りの下端 | 残りの上端 |
+| --- | ---: | ---: |
+| L12a | 1,600 | 2,800 |
+| L12〜L28（L12aを除く、既存L14前段控除済み） | 2,504 | 4,664 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後の指定比較への適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **M14完成時（実測込み）** | **24,189** | **30,299** |
+
+外枠25,000行に収まるとは主張しない。上端には**5,299行の超過リスク**がある。
+現在は実測16,585行で外枠には届いておらず、固定したL12aの内部の法則だけを進めている。
+既存構成の法則・証明分割は型を報告して続行し、新しい数学・範囲外・外枠で止める規則は維持する。
+G10・M15・G12は作らない。L12a未完のため一覧は12/48のまま。
+
+## 178. L12a の同じ出現位置と、内側高さの範囲の接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+次は元の出現位置をpositiveWordの同じ長さで読むだけの移送を明示し、C409へ渡す。
+C410〜C413は既存語長移送・出現位置・接頭長の法則として追加する。
+新しい作用や対応は作らない。各証明200行以内の見込み。型は次。
+
+```lean
+lemma word_eq_mp_value {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (i : Fin l') (j : Fin l) (hij : i.val = j.val) :
+    (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val i = v.val j
+
+def positiveOccurrencePosition {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (j : Fin (Surjection.occurrenceCount u.val k)) : Fin (m + d + 1)
+
+lemma positiveOccurrencePosition_value {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (j : Fin (Surjection.occurrenceCount u.val k)) :
+    (positiveWord u).val (positiveOccurrencePosition u k j) = k
+
+lemma positiveOccurrencePosition_strictMono {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) :
+    StrictMono (positiveOccurrencePosition u k)
+
+lemma positiveCompositeInnerEdge_height_bounds {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    lo (positiveCompositeOuterCut u v k c)
+        (positiveOccurrencePosition u k
+          (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val)) ≤
+        (cutHeights c.2 (compositeInnerEdge u v k c.1 a)).val ∧
+      (cutHeights c.2 (compositeInnerEdge u v k c.1 a)).val ≤
+        hi (positiveCompositeOuterCut u v k c)
+          (positiveOccurrencePosition u k
+            (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val))
+```
+
+これらの有限位置・高さは§175〜176の21,939組で点検した同じもの。
+
+## 179. L12a の同じ頂点・辺・高さの範囲：小監査完了
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§177の4本316行の小監査が成功した。
+入力 `/tmp/bsw16/audit-m14-color-height-and-inner.lean`、
+結果 `/tmp/bsw16/m14-color-height-and-inner-audit.log`、
+**4モジュール・38宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+L12a検証済み実測**1,378行**、M14**16,585行**、外枠まで**8,415行**。
+見込みは§177を維持する。既存の公開宣言・界面・共有入口は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+`ColorHeightRanks`、`ColorHeightVertices`、`CompositeInnerEdges`、`CompositeHeightBounds`。
+§178の2本はこの時点で未検証の下書き。上の実測・登録候補に含めない。
