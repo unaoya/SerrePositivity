@@ -6493,3 +6493,145 @@ RR01 の end 切断への比較、RR04 の元の評価との全族の照合は�
 元の増大射・fibrant 置換の端点同型を介して、指定評価と `functorPinchedEndMap` へ接続する。
 選んだ比較の三角形のホモトピーは捨てずに保持する。
 E01 の保留・R3 を実装しない方針は不変。
+
+
+## 63. RR01：元の増大射の端点移送
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存局所化の弱同値反転の適用。元の増大射と fibrant 置換比較の像を固定する。
+型は次のとおり（未検証）。
+
+```lean
+/-- 元の擬同型辺の指定局所化像から取る頂点同型。 -/
+def strictDiagramLocalizationQuasiIso {X Y : StrictComplexDiagram A d}
+    (f : X ⟶ Y) (hf : strictDiagramQuasiIsos A d f) :
+    VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y)) := by
+  have hi := (strictDiagramLocalization_inverts A d) ((strictDiagramWeakEdges_mk₁ A d f).2 hf)
+  change IsInvertibleEdge
+    ((edgeOfSimplex (X := strictComplexDiagramNerve A d) (ComposableArrows.mk₁ f)).map
+      ((truncation 2).map (strictDiagramLocalization A d))) at hi
+  have hi' : IsInvertibleEdge
+      (((nerve.edgeMk f).map (strictDiagramLocalization A d)).toTruncated) := by
+    exact (isInvertibleEdge_congr
+      (e := ((nerve.edgeMk f).map (strictDiagramLocalization A d)).toTruncated)
+      (f := (edgeOfSimplex (X := strictComplexDiagramNerve A d) (ComposableArrows.mk₁ f)).map
+        ((truncation 2).map (strictDiagramLocalization A d))) rfl).mpr hi
+  haveI := hi'
+  exact asIso (Truncated.HomotopyCategory.homMk
+    (((nerve.edgeMk f).map (strictDiagramLocalization A d)).toTruncated))
+
+/-- 同じ零次の source frame 対象から、元の図式への増大射の像。 -/
+def strictDiagramSourceFrameEndpointIso (X : StrictComplexDiagram A d) :
+    VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ (strictDiagramSourceFrameZero A d X)))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X)) :=
+  strictDiagramLocalizationQuasiIso A d
+    ((strictDiagramSourceFrame A d X).augmentation.app (SimplexCategory.mk 0)) (by
+      rw [← strictDiagramReedyModelCategory_weakEquivalences]
+      exact (strictDiagramSourceFrame A d X).augmentation_weakEquivalence _)
+
+/-- 元の fibrant 置換比較の像。端点を戻すときはこの同じ同型の逆を使う。 -/
+def strictDiagramFibrantTargetEndpointIso (Y : StrictComplexDiagram A d) :
+    VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ (strictDiagramFibrantTarget A d Y))) :=
+  strictDiagramLocalizationQuasiIso A d (strictDiagramFibrantTargetComparison A d Y)
+    (strictDiagramFibrantTargetComparison_quasiIso A d Y)
+```
+
+### 63.1 同じ局所化の pinched Hom への接続（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+端点ファイルの初回はモデル構造 instance の不足で失敗。既存 Reedy モデルを明示した。
+次に同じ両脚の比較と端点同型を合成する。
+
+```lean
+def strictDiagramSourceFramePinchedEquivalence (X Y : StrictComplexDiagram A d) :
+    QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj (strictDiagramFrameMapping A d X Y))
+      (pinchedHom
+        ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+        ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y))) :=
+  (Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsQCatEquivalence.ulift.{u, u + 1}
+    (strictDiagramSourceRightFrameEquivalence A d X Y).isQCatEquivalence).choose.trans
+      ((strictDiagramRightFramePinchedEquivalence A d (strictDiagramSourceFrameZero A d X)
+        (strictDiagramFibrantTarget A d Y)).trans
+          (pinchedEndpointEquivalence (strictDiagramSourceFrameEndpointIso A d X)
+            (strictDiagramFibrantTargetEndpointIso A d Y).symm))
+```
+
+### 63.2 RR01 の最終比較射の型（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+同じ source frame と fibrant target、全射列の評価を固定した合成。
+同値性は RR02 に残し、入力仮定として追加しない。
+
+```lean
+/-- 元の strict 図式評価の同じ頂点が表す coherent 図式。 -/
+def strictDiagramEvaluatedDiagram (X : StrictComplexDiagram A d) :
+    (SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)) ⟶
+      derivedInfinityCategory A :=
+  (functorVertexEquiv _ _).symm
+    ((strictComplexDiagramFamily A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+
+/-- 同じ全図式評価の頂点を復元する。 -/
+lemma strictDiagramEvaluatedDiagram_vertex (X : StrictComplexDiagram A d) :
+    functorVertex (strictDiagramEvaluatedDiagram A d X) =
+      (strictComplexDiagramFamily A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X) :=
+  (functorVertexEquiv _ _).apply_symm_apply _
+
+/-- 元の局所化評価と strict 評価を結ぶ、同じ全関手同型の成分。 -/
+def strictDiagramEvaluatedEndpointIso (X : StrictComplexDiagram A d) :
+    VertexIso
+      ((strictDiagramDerivedEvaluation A d).app (Opposite.op ⦋0⦌)
+        ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X)))
+      (functorVertex (strictDiagramEvaluatedDiagram A d X)) :=
+  (strictDiagramDerivedEvaluation_factor A d).app (ComposableArrows.mk₀ X) ≪≫
+    eqToIso (congrArg HomotopyCategory.mk (strictDiagramEvaluatedDiagram_vertex A d X).symm)
+
+/-- RR01：元の実 frame から元の coherent 図式の end 切断への実際の全単体的比較。
+この宣言は比較射の同値性を主張しない。 -/
+def strictDiagramFrameEndComparison (X Y : StrictComplexDiagram A d) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (strictDiagramFrameMapping A d X Y) ⟶
+      simplicialSections (functorEndProjection
+        (strictDiagramEvaluatedDiagram A d X) (strictDiagramEvaluatedDiagram A d Y)) :=
+  (strictDiagramSourceFramePinchedEquivalence A d X Y).hom ≫
+    pinchedHomMap (strictDiagramDerivedEvaluation A d)
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y)) ≫
+    (pinchedEndpointEquivalence (strictDiagramEvaluatedEndpointIso A d X)
+      (strictDiagramEvaluatedEndpointIso A d Y)).hom ≫
+    functorPinchedEndMap (strictDiagramEvaluatedDiagram A d X) (strictDiagramEvaluatedDiagram A d Y)
+```
+
+
+### 63.3 RR01 の射の構成完了
+
+一覧：済み 1／全体 13（うち追加 11）
+
+済みは RR01 のみ。E01 は保留、E06 は射の定義のみ済み（項目全体は未了）、
+RR02〜RR05・E02〜E05・R2d・R2e は未了。
+
+- 端点と pinched 比較の二本119行：対象ビルド9,504 jobs成功、小監査24宣言成功。
+- 最終比較一本72行：対象ビルド11,386 jobs成功、小監査12宣言成功。
+- 三本191行・36宣言、標準三公理のみ。計算上限は変更していない。
+  ログ `/tmp/is-w1/source-frame-pinched/` と `/tmp/is-w1/coherent-end-map/build-2.log`。
+
+型の照合：源は §44 の同じ `ulift (strictDiagramFrameMapping A d X Y)`。
+`strictDiagramEvaluatedDiagram A d X` は同じ strict 全図式評価の頂点を
+`functorVertexEquiv.symm` で表示し、頂点の回収等式を証明した。
+標的はその同じ二図式の `functorEndProjection` の切断空間。
+射は元の source frame と fibrant target の比較から、指定された
+`strictDiagramDerivedEvaluation` 自身の pinched Hom 作用へ渡し、元の全関手同型
+`strictDiagramDerivedEvaluation_factor` の成分で端点を移し、固定済み E06 の射へ合成する。
+各次数と全作用素を持つ単体集合の射で、cofibrancy・整合・弱同値性の追加入力はない。
+同じ source frame の零次対象の cofibrancy は本体の既存補題から得ている。
+
+この RR01 は比較射の構成の完了であり、その同値性（RR02）の完了ではない。
+`strictDiagramFrameEndComparison` を今後も同じ射として保持し、
+通常 end の Kan 性だけで RR02 を済ませない。
+§57.2 からの追加を含む検証済み累計は149本・12,009行（既存G2本文 +2/-3 は別記）。
+外枠20,800行まで8,791行。次は RR02 の相対充填・各値の比較の接続を進める。
