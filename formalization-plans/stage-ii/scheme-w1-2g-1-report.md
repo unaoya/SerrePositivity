@@ -731,3 +731,17 @@ A07 の C01 の整拡大後の閉包絡を有限表示段へ移すため、有�
 最初の宣言 `exists_fg_ideal_model_of_isColimit` は (i) の型。既存の forget CommRingCat の filtered colimit の保存、Types.jointly_surjective_of_isColimit、IsFiltered.sup_objs_exists で有限生成元を同じ段へ持ち上げ、その span を取る。有限個の元を同じ段へ戻すことはこの構成の分割で、別の主項目には数えない。
 
 一覧：済み 8／全体 14（うち追加 5）。
+
+C03.(ii) の所属の有限段への移送の分割：`exists_ideal_map_rep_of_colimit_mem` は x∈Ideal.map(c.ι.app i) I に対し、ある f:i→j と y∈Ideal.map(F.map f) I で c.ι.app j y=x を得る。`exists_ideal_map_mem_of_colimit_mem` は x:F.obj i が colimit で同じ段の I の像に入るなら、ある f:i→j で F.map f x∈Ideal.map(F.map f) I を得る。ここは I の有限生成性を要しない。既存の span の帰納法と filtered colimit の等式の有限段での一致を使う、0B8W (3) のアフィンの所属の比較（見込み 120〜300 行）。
+
+C03.(ii) の有限生成性を使う出口：`exists_finset_ideal_map_mem_of_colimit_mem` は同じ段の有限集合について、colimit でのイデアルへの所属を一つの後段へ同時に降ろす。`exists_ideal_map_le_of_colimit_map_le` は有限生成な左辺のイデアルの、colimit の像での包含を一つの後段の包含へ移す。`exists_ideal_map_eq_of_colimit_map_eq` は同じ段の二つの有限生成イデアルの像の等式をある後段へ移す。`exists_ideal_maps_eq_of_colimit_maps_eq` は異なる二段の有限生成イデアルから始め、二つの実際の遷移射を持つ共通段で一致させる（0B8W (3) のアフィンの等式、見込み 100〜250 行）。`ideal_map_map_functor`・`ideal_map_mem_functor_comp` はその合成の係数移送の法則。
+
+### C03.(i)：環の colimit の有限生成イデアルの模型
+
+FiniteIdealColimitModel **53 行**、入口 1 行を追加。`exists_fg_ideal_model_of_isColimit` は、任意の filtered な CommRingCat の図式の実際の colimit cocone に対して、有限生成イデアルを一つの段の有限生成イデアルの像として構成する。Noether 性・忠実平坦性・遷移射の単射性を仮定していない。
+
+対象ビルドは直接の importer AlgebraicGeometry まで **4,868 ジョブ成功**、新モジュールの小監査 **1 宣言・標準三公理のみ**。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルドと監査の間だけ取得。resource limit の追加・sorry・追加公理なし。ログ：`2g-c03-finite-ideal-colimit-check-2.log`、`2g-c03-colimit-model-native.log`、`2g-c03-colimit-model-audit.log`。
+
+C03 内は **1／3 完了**（(i)）。(ii) の後段での等式と (iii) のスキーム上の有限型イデアル層の降下は未完。G1 の共用部品込み累計は本体 **4,236 行**、入口込み **4,318 行**。A07 の一般の基底と G2 は未完。
+
+一覧：済み 8／全体 14（うち追加 5）。

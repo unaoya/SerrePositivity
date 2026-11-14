@@ -1363,3 +1363,4 @@ public import SerrePositivity.AlgebraicGeometry.IteratedModelBaseChange
 public import SerrePositivity.AlgebraicGeometry.DenseOpenModelBaseChange
 public import SerrePositivity.AlgebraicGeometry.FlatModelBaseChangeRefinement
 public import SerrePositivity.AlgebraicGeometry.CompactMinimalPrimeVCoverRefinement
+public import SerrePositivity.AlgebraicGeometry.FiniteIdealColimitModel
