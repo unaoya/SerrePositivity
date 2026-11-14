@@ -1042,3 +1042,10 @@ A3冒頭の[第40](bulk-5inf0/a3-prism-prefix-block40-validation.json)・[第41]
 A3冒頭の[部分検査](bulk-5inf0/a3-prism-prefix-block43-validation.json)も約33秒で成功。[生成した検査用ソース](bulk-5inf0/a3-prism-prefix-block43-source.txt.gz)とログを保存した。universalLciPrismの型はP₀・h₀・rを受け取り、universalLciPrism・universalLciPrism_bounded・lciClassifyingMapの[axioms](bulk-5inf0/a3-prism-prefix-audit.json)はすべてpropext・Classical.choice・Quot.soundだけ。環・δ構造・生成元の式を保った承認済みの変更が、既存の完成自由δ環の補題で通った。これはA3全体の成功とは分け、一覧の完了数にはまだ加えない。
 
 同じ束のDiscreteCaseとBaseChangeAndTensorは失敗。前者は同じ台環のFrobeniusを明示の環射型で読む照合、後者は多項式の係数変更・名前空間・神経の定数頂点の照合が残る。後者の係数変更は、本体の証明済みchangePolyを直接使う準備にした。第44束で再検査する。
+
+
+### 5∞-0 のdraft検査・第44束（11-14夕方）
+
+一覧：済み 8／全体 14（うち追加 0）。[第44束](bulk-5inf0/draft-block44-validation.json)でA3/DiscreteCaseが約41秒で成功し、有効な成功は34／57本。Frobeniusの制限先のUnder対象は同じC.rightと明示し、零次Frobeniusを同じ台環の環自己準同型という結果型で記述した。環・射・将来のmod p比較の主張は変えず、本体へ寄せた古典的な法則の証明も通った。検査済みのソースをコミットする。
+
+BaseChangeAndTensorは、係数変更を本体のchangePolyへ寄せたこととPΣの完全名の追従は通り、神経の端点の照合2箇所が残った。nerveEquivとYonedaの逆の評価を明示し、第45束で検査する。鍵は各束の終わりに返し、次は同時に1本だけ並んでいる。
