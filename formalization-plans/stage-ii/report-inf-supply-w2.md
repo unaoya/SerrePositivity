@@ -5648,3 +5648,63 @@ theorem freeNegativeStandardAW_generator_eval (S T : SSet.{u}) (x y z : D)
 累計 **256モジュール・15,599行・2,209宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftysix-modules.txt`。外枠まで残り4,401行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
 
 B02、B03〜B08・C・Dは未完。次の照合は、raw AWの各成分の等式を先に示し、**元のMoore包含を前合成して**正規化側の等式へ制限する。包含→射影の合成が恒等である指定分裂則を使い、P∞がAWと可換という未証明の仮定は置かない。
+
+## 125. B02の途中：raw AW成分等式のMoore制限
+
+raw AWの成分の等式を、元のMoore包含の前合成で正規化AWへ制限する式を証明した。係数移送は既存の加法関手と指定Moore比較で行い、包含→射影が恒等となる分裂則を使う。さらに同じ式を元の負次数AWに適用し、指定延長項同型と係数tensor同型を保持した成分の式へ戻した。**AWとP∞の可換性を仮定する必要はない**。B02に含まれる二つの既存射の照合の証明分割・合成則である。
+
+### 125.1 登録対象・行数・型
+
+`SerrePositivity.HomologicalAlgebra.MappedNormalizedAWRestriction`（61行）
+
+```lean
+theorem mappedNormalizedAlexanderWhitney_f_eq_of_raw (n : ℕ) (T : B)
+    (t : F.obj ((chainIntegerTensor ((normalizedMooreComplex _).obj C)
+      ((normalizedMooreComplex _).obj D)).X n) ⟶ T)
+    (h : ((normalizedMooreComplex B).obj (simplicialIntegerTensor C D ⋙ F)).X n ⟶ T)
+    (hraw : F.map ((alexanderWhitney C D).f n ≫
+        (chainIntegerTensorMap (PInftyToNormalizedMooreComplex C)
+          (PInftyToNormalizedMooreComplex D)).f n) ≫ t =
+      F.map ((PInftyToNormalizedMooreComplex (simplicialIntegerTensor C D)).f n) ≫
+        (normalizedMooreMapIso F (simplicialIntegerTensor C D)).hom.f n ≫ h) :
+    (mappedNormalizedAlexanderWhitney F C D).f n ≫ t = h
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeAWRestriction`（65行）
+
+```lean
+theorem negativeCoefficientAlexanderWhitney_f_eq_of_raw (n : ℕ) (T : ModuleCat A)
+    (t : (HomologicalComplex.tensorObj
+      (((normalizedMooreComplex (ModuleCat A)).obj (C ⋙ integerCoefficientExtension φ)).extend
+        ComplexShape.embeddingDownNat)
+      (((normalizedMooreComplex (ModuleCat A)).obj (D ⋙ integerCoefficientExtension φ)).extend
+        ComplexShape.embeddingDownNat)).X (-(n : ℤ)) ⟶ T)
+    (h : ((normalizedMooreComplex (ModuleCat A)).obj
+      (simplicialIntegerTensor C D ⋙ integerCoefficientExtension φ)).X n ⟶ T)
+    (hraw : (integerCoefficientExtension φ).map ((alexanderWhitney C D).f n ≫
+        (chainIntegerTensorMap (PInftyToNormalizedMooreComplex C)
+          (PInftyToNormalizedMooreComplex D)).f n) ≫
+        ((((integerCoefficientExtension φ).mapHomologicalComplex (.down ℕ)).obj
+          (chainIntegerTensor ((normalizedMooreComplex _).obj C)
+            ((normalizedMooreComplex _).obj D))).extendXIso ComplexShape.embeddingDownNat
+              (i := n) (i' := -(n : ℤ)) rfl).inv ≫
+        (negativeMooreTensorCoefficientIso φ C D).hom.f (-(n : ℤ)) ≫ t =
+      (integerCoefficientExtension φ).map
+        ((PInftyToNormalizedMooreComplex (simplicialIntegerTensor C D)).f n) ≫
+        (normalizedMooreMapIso (integerCoefficientExtension φ)
+          (simplicialIntegerTensor C D)).hom.f n ≫ h) :
+    (((normalizedMooreComplex (ModuleCat A)).obj
+      (simplicialIntegerTensor C D ⋙ integerCoefficientExtension φ)).extendXIso
+        ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv ≫
+      (negativeCoefficientAlexanderWhitney φ C D).f (-(n : ℤ)) ≫ t = h
+
+```
+
+### 125.2 検収と残り
+
+コード **`e6a651b2e`**（新規2本126行）。結合個別検査 `/private/tmp/isw2-negative-aw-restrict-combined.log` は終了コード0。鍵付き対象ビルド `/private/tmp/isw2-build140.log` は **2,239 jobs・終了コード0**。新規分だけの監査 `/private/tmp/AuditISW2G10B02AWRestriction.lean` は **3宣言（2・1）、標準三公理のみ**。共有鍵は返却済み。
+
+累計 **258モジュール・15,725行・2,212宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftyeight-modules.txt`。既存宣言・⑤a・入口・公式監査・mainの変更なし。計算上限を上げず、sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。B02の最終等式とB03〜B08・C・Dは未完。
+
+次は標準単体Homの逆同値を同じ自由随伴へ戻し、§124の最上位評価をA09のパラメータに直接適用する。raw成分の照合の仮定そのものは、§115の全切断和と§120の実dg合成成分を使って別途閉じる必要があり、今回の制限則だけでB02を完了とは数えない。
