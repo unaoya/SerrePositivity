@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGIntegerCoefficientTensor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGIntegerCoefficientTensor
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorVanishing
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney

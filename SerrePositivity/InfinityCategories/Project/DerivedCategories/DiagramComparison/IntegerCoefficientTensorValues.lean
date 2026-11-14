@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGIntegerCoefficientTensor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGIntegerCoefficientTensor
 public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Adjunction
 /-!
 概要：係数移送の純テンソル評価を随伴の単位で記す。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.DoldKanGammaChainNaturality
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStandardClosedPostcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardClosedPostcomposition
 
 /-!
 概要：指定 Γ 同型を元の閉射の豊穣後合成と照合する。

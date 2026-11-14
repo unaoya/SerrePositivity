@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSimplicialRingCoefficientComplex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGSimplicialRingCoefficientComplex
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerLinearizationDesc
 public import Mathlib.Algebra.Category.ModuleCat.Adjunctions
 public import Mathlib.CategoryTheory.Adjunction.Unique

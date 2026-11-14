@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.DoldKanPinchedChainNaturality
 public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedChainMapQuasiIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.PinchedChainMapQuasiIso
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Reflection
 
 /-!
