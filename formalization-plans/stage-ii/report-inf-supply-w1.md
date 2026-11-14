@@ -6733,3 +6733,101 @@ E01 別経路の紙の確認：`FiniteSubcomplexEndComparison` は元の実比�
 錐の射を供給するが、有限部分での弱同値性も逆極限の弱同値保存も主張しない。
 したがって制限図式があることを E01/E05 の証明の代用にはしない。
 指定単位の直接比較と、未供給の単位の普遍性による一意性の経路は再試行していない。
+
+
+## 65 RR02：同じ全添字の値の比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `FrameOverFunctor` の適用と二変数の自然変換を固定する。
+RR02 内の証明分割で、新しい ID は追加しない。型と使用する既存の証明は次のとおり。
+
+```lean
+/-- 標準複体frameの関手的分解を、元の生成モデルから固定する。 -/
+def strictDiagramValueCofFactorization :
+    MorphismProperty.FunctorialFactorizationData
+      (cofibrations (Complex A)) (trivialFibrations (Complex A)) := by
+  haveI := EInfinity.projectiveModelCategory_cofibrantlyGenerated A
+  haveI := hasFunctorialFactorization_cofibration_trivialFibration
+    (EInfinity.projectiveGeneratingCofibrations A)
+    (EInfinity.projectiveGeneratingTrivialCofibrations A)
+  exact MorphismProperty.functorialFactorizationData _ _
+
+variable (d : StrictDiagramDirection)
+
+/-- 同じ評価増大射と標準増大射の上の、全添字に自然な共通frame。 -/
+def strictDiagramCommonValueFrame (X : StrictComplexDiagram A d) :
+    strictDiagramIndex d ⥤ (SimplexCategory ⥤ Complex A) :=
+  FrameOverFunctor.commonObj (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+
+/-- 標準値frameのHomから共通frameのHomへの、二変数に自然な比較。 -/
+def strictDiagramValueFrameHomLeft (X : StrictComplexDiagram A d) :
+    FrameOverFunctor.hom
+      (X ⋙ (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)).obj) ⟶
+    FrameOverFunctor.hom (strictDiagramCommonValueFrame A d X) :=
+  FrameOverFunctor.homLeft (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+
+/-- 元の評価frameのHomから同じ共通frameのHomへの、二変数に自然な比較。 -/
+def strictDiagramValueFrameHomRight (X : StrictComplexDiagram A d) :
+    FrameOverFunctor.hom (strictDiagramEvaluatedSourceFrames A d X) ⟶
+    FrameOverFunctor.hom (strictDiagramCommonValueFrame A d X) :=
+  FrameOverFunctor.homRight (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+
+/-- 左脚は、同じfibrant標的の各値でホモトピー同値。 -/
+lemma strictDiagramValueFrameHomLeft_equivalence (X Y : StrictComplexDiagram A d)
+    (i : (strictDiagramIndex d)ᵒᵖ) (j : strictDiagramIndex d) :
+    IsSimplicialHomotopyEquivalence
+      (((strictDiagramValueFrameHomLeft A d X).app i).app
+        ((strictDiagramFibrantTarget A d Y).obj j)) := by
+  haveI := strictDiagramFibrantTarget_obj_isFibrant A d Y j
+  exact fixedFrameOverFunctor_homLeft_homotopyEquivalence
+    (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+    (strictDiagramEvaluatedAugmentation_weak A d X) i _
+
+/-- 右脚も、指定した評価frameのcofibrancyから各値でホモトピー同値。 -/
+lemma strictDiagramValueFrameHomRight_equivalence (X Y : StrictComplexDiagram A d)
+    (i : (strictDiagramIndex d)ᵒᵖ) (j : strictDiagramIndex d) :
+    IsSimplicialHomotopyEquivalence
+      (((strictDiagramValueFrameHomRight A d X).app i).app
+        ((strictDiagramFibrantTarget A d Y).obj j)) := by
+  haveI := strictDiagramFibrantTarget_obj_isFibrant A d Y j
+  exact fixedFrameOverFunctor_homRight_homotopyEquivalence
+    (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+    (strictDiagramEvaluatedAugmentation_weak A d X)
+    (strictDiagramEvaluatedSourceFrame_cofibrant A d X)
+    (strictDiagramEvaluatedSourceFrame_homotopicallyConstant A d X) i _
+
+```
+
+coherent end の同値性や、RR01 の実射との一致はまだ結論しない。
+
+### 65.1 検証と切断への接続の条件
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramValueFrameComparison` 92行を対象ビルド2,865 jobsで検証。
+小監査10宣言は標準三公理のみ。ログ `/tmp/is-w1/value-frame-comparison/build.log`。
+累計152本・12,190行、外枠20,800行まで8,610行。計算上限は変更していない。
+
+両脚は単なる値ごとの同値の選択ではなく、`FrameOverFunctor.homLeft`・
+`homRight` の同じ二変数の自然変換である。今回の弱同値性の証明は
+`strictDiagramEvaluatedAugmentation_weak` と指定評価frameの cofibrancy・
+homotopical constancy を使い、E01 や実評価の充満忠実性は使わない。
+
+次の運搬には既存の `kanDiagramFunctorIsoOfPointwise` が使える。
+入力は KanObject 値の通常の図式と、その忘却図式の自然変換であり、成分の
+`IsQCatEquivalence` から coherent な全関手同型を返す。型を弱める入力は要らない。
+ただし添字は `Type u`・射は宇宙 `u` に揃える必要があるため、
+元の二変数の添字を `AsSmall` へ移し、同じ自然変換を束縛する。
+この運搬だけでも、元の frame の通常endが coherent 切断を計算することは出ない。
+RR02 の残りはこの導来end比較と、元の `strictDiagramFrameEndComparison` との一致である。
