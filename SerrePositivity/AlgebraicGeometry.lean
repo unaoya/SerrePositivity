@@ -1470,3 +1470,4 @@ public import SerrePositivity.AlgebraicGeometry.BaseChangePairAffine
 public import SerrePositivity.AlgebraicGeometry.AffineHomGeneralLimitDescent
 public import SerrePositivity.AlgebraicGeometry.FiniteGeneratorSurjectivityLimit
 public import SerrePositivity.AlgebraicGeometry.PushoutRingGenerators
+public import SerrePositivity.AlgebraicGeometry.FiniteTypePushoutSurjectivityLimit

@@ -1681,3 +1681,16 @@ C04(c) の有限型の入力からの出口（着手前の型、見込み60〜15
 G1・G2共用部品込み本体10,857行、入口込み11,042行。C04 は本体441行まで検証。有限型と pushout の図式を入力とする全射性の出口は現在未検証の下書きで、この実測に含めない。C04 と B01〜B04 は未完。
 
 一覧：済み10／全体15（うち追加6）。
+
+
+### C04(c)：有限型の環写像の底変換図式での全射性の降下
+
+`FiniteTypePushoutSurjectivityLimit`（55行）：`exists_finset_ring_generators_of_finiteType` は有限型の環写像について、その像とともに環全体を生成する有限集合を供給する。`exists_surjective_stage_of_finiteType_pushouts` は、有限型の初期の環写像の底変換を表す実際の pushout の filtered 図式について、実際の余極限での全射性から有限段の全射性を返す。一様な生成元の補助入力は有限型性と pushout から導いた。
+
+本体55行・入口1行。直接 importer AlgebraicGeometry まで対象ビルド4,972ジョブ成功。小監査3宣言・標準三公理のみ。下書きの集合の像の API 名を現行の Set.range_comp' に直して単独検証を完了し、公開ソースとの完全一致、対象ビルド、監査を確認した。ログ `2g-finite-type-pushout-surjectivity-check-2.log`・`2g-finite-type-pushout-surjectivity-native.log`・`2g-finite-type-pushout-surjectivity-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 `--class impl --wait 3600`、待ちは一つ、ビルド・監査中だけ使用。
+
+G1・G2共用部品込み本体10,912行、入口込み11,098行。C04 は本体496行まで検証。スキームの実際の極限の Γ の余極限と pushout への接続、一般の閉埋め込み性の局所性と固有性の降下、被覆模型・図式の整合性はなお残る。C04 と B01〜B04 は未完。
+
+一覧：済み10／全体15（うち追加6）。
+
+C04(c) の affine スキームへの接続（着手前の型、見込み80〜200行）：`exists_closedImmersion_stage_of_affine_cartesian_limit` は affine な対象だけからなる二つの cofiltered 図式 E,D と自然変換 τ:E→D、実際の二つの極限 cone と可換な極限射 φ について、初期の τᵢ が局所有限型、後段への自然性の正方形が Cartesian、φ が閉埋め込みなら、ある後段の τⱼ が閉埋め込みと返す。Γ の実際の余極限、Cartesian 正方形の Γ の pushout、affine な閉埋め込みの全射性の特徴づけを前記の環の出口へ渡す。C04 内の証明分割で、親項目を増やさない。
