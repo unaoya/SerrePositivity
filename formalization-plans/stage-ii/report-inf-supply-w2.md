@@ -6399,3 +6399,87 @@ theorem reflectedBKFreeTensor_inverse_cut (P : Complex A)
 累計 **276モジュール・16,938行・2,274宣言**。一覧 `/private/tmp/isw2-g10-twohundredseventysix-modules.txt`。外枠まで残り3,062行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0。rootビルド・大きな監査なし。未検証下書きはない。
 
 B02の全体等式は引き続き未完。残る主接続は、各切断の有限和をraw係数写像の等式にまとめ、係数移送した積の自由化比較が同じMoore射影生成元を保つ式を使って、§125のMoore包含による制限へ渡すこと。その後に同じ自由随伴・uncurryで全単体的射を戻し、反転・添字の指定輸送を合わせる。B03〜B08・C・DとG10後の3b-4段0は未完。
+
+
+## 135. B4前の係数単位・積のMoore射影の照合（2026-11-14）
+
+一覧：済み 14／全体 36（うち追加 1）
+
+B02の係数移送の法則と証明分割。新しい数学・構成の追加なし。指定された正のMoore次数を保ち、同じ積の自由化同型が射影生成元を送る式を確認する。
+
+### 135.1 `CoefficientUnitNaturality`（52行）
+
+```lean
+theorem coefficientUnit_map_value {M N : ModuleCat.{u} ℤ} (f : M ⟶ N) (x : M) :
+    (integerCoefficientExtension φ).map f (coefficientUnit φ M x) =
+      coefficientUnit φ N (f x)
+
+theorem coefficientUnit_hom_ext (M : ModuleCat.{u} ℤ) (N : ModuleCat.{u} A)
+    (f g : (integerCoefficientExtension φ).obj M ⟶ N)
+    (h : ∀ x : M, f (coefficientUnit φ M x) = g (coefficientUnit φ M x)) : f = g
+
+theorem coefficientUnit_integerTensor_hom_ext (X Y : Type u) (N : ModuleCat.{u} A)
+    (f g : (integerCoefficientExtension φ).obj
+      (integerTensor (integerLinearization.obj X) (integerLinearization.obj Y)) ⟶ N)
+    (h : ∀ x y, f (coefficientUnit φ _ (integerGenerator x ⊗ₜ[ℤ] integerGenerator y)) =
+      g (coefficientUnit φ _ (integerGenerator x ⊗ₜ[ℤ] integerGenerator y))) : f = g
+
+```
+
+### 135.2 `ProductChainsCoefficientProjection`（126行）
+
+```lean
+theorem productChainsCoefficient_projection (X Y : SSet.{u}) :
+    let F := integerCoefficientExtension φ
+    let S := simplicialIntegerTensor (linearizedSpace X) (linearizedSpace Y)
+    let e := Functor.isoWhiskerRight (linearizedTensorIso X Y) F ≪≫
+      integerCoefficientSimplicialFreeIso φ (X ⊗ Y)
+    (F.mapHomologicalComplex (.down ℕ)).map (PInftyToNormalizedMooreComplex S) ≫
+      normalizedMooreMapHom F S ≫ (normalizedMooreComplex (ModuleCat A)).map e.hom =
+      (alternatingFaceMapComplexCompMapHomologicalComplexIso F).hom.app S ≫
+        (alternatingFaceMapComplex (ModuleCat A)).map e.hom ≫
+          PInftyToNormalizedMooreComplex ((X ⊗ Y) ⋙ ModuleCat.free A)
+
+theorem productChainsCoefficient_degree (X Y : SSet.{u}) (r : ℕ) :
+    let F := integerCoefficientExtension φ
+    let S := simplicialIntegerTensor (linearizedSpace X) (linearizedSpace Y)
+    let e := Functor.isoWhiskerRight (linearizedTensorIso X Y) F ≪≫
+      integerCoefficientSimplicialFreeIso φ (X ⊗ Y)
+    F.map ((PInftyToNormalizedMooreComplex S).f r) ≫ (normalizedMooreMapHom F S).f r ≫
+      (((normalizedMooreComplex (ModuleCat A)).obj (S ⋙ F)).extendXIso
+        ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv ≫
+      (integerCoefficientProductChainsIso φ X Y).hom.f (-(r : ℤ)) =
+      e.hom.app (Opposite.op ⦋r⦌) ≫
+        (PInftyToNormalizedMooreComplex ((X ⊗ Y) ⋙ ModuleCat.free A)).f r ≫
+        (((normalizedMooreComplex (ModuleCat A)).obj ((X ⊗ Y) ⋙ ModuleCat.free A)).extendXIso
+          ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
+
+theorem productChainsCoefficient_simplicial_generator (X Y : SSet.{u}) (r : ℕ)
+    (x : X.obj (Opposite.op ⦋r⦌)) (y : Y.obj (Opposite.op ⦋r⦌)) :
+    let F := integerCoefficientExtension φ
+    let e := Functor.isoWhiskerRight (linearizedTensorIso X Y) F ≪≫
+      integerCoefficientSimplicialFreeIso φ (X ⊗ Y)
+    e.hom.app (Opposite.op ⦋r⦌)
+      (coefficientUnit φ (integerTensor ((linearizedSpace X).obj (Opposite.op ⦋r⦌))
+        ((linearizedSpace Y).obj (Opposite.op ⦋r⦌)))
+          (integerGenerator x ⊗ₜ[ℤ] integerGenerator y)) = ModuleCat.freeMk (x, y)
+
+theorem productChainsCoefficient_generator_value (X Y : SSet.{u}) (r : ℕ)
+    (x : X.obj (Opposite.op ⦋r⦌)) (y : Y.obj (Opposite.op ⦋r⦌)) :
+    let F := integerCoefficientExtension φ
+    let S := simplicialIntegerTensor (linearizedSpace X) (linearizedSpace Y)
+    ((integerCoefficientProductChainsIso φ X Y).hom.f (-(r : ℤ)))
+      ((((normalizedMooreComplex (ModuleCat A)).obj (S ⋙ F)).extendXIso
+        ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
+          ((normalizedMooreMapHom F S).f r
+            (F.map ((PInftyToNormalizedMooreComplex S).f r)
+              (coefficientUnit φ (integerTensor ((linearizedSpace X).obj (Opposite.op ⦋r⦌))
+                ((linearizedSpace Y).obj (Opposite.op ⦋r⦌)))
+                  (integerGenerator x ⊗ₜ[ℤ] integerGenerator y))))) =
+      freeNegativeGenerator (X ⊗ Y) r (x, y)
+
+```
+
+### 135.3 検収
+
+コード `76453fce1`。鍵付き対象ビルド149は4,015 jobs・終了コード0。新規分だけの監査は7宣言（3・4）、標準三公理のみ。累計278モジュール・17,116行・2,281宣言。個別結合検査も警告のみで完了。計算上限の変更、sorry・新公理、既存宣言の変更なし。B02は未完。B4の指示を優先し、原ソースを保存して改名前の参照採取に移る。
