@@ -1603,3 +1603,7 @@ public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverRingMorphisms
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverDiagramFunctor
 
 public import SerrePositivity.AlgebraicGeometry.CoefficientPushoutModelFunctor
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientModelCategory
+
+public import SerrePositivity.AlgebraicGeometry.CoefficientModelImages

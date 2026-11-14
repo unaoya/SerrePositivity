@@ -2758,3 +2758,16 @@ G1・G2共用部品込み本体15,855行、入口込み16,120行。75d018aa2 の
 全体の見込み約17,000〜20,000行、現在からの残り約1,100〜4,200行、外枠25,000行は維持。今回に数学的な境界・型や範囲の変更なし。停止点 2g-1 ではない。
 
 一覧：済み14／全体17（うち追加8）。
+
+
+### B03・B04：全模型の圏と有限生成部分代数・像への移送
+
+`CoefficientModelCategory`（89行）：`CoefficientModelCategory` は v 判定を課す前の全模型の圏。実際の模型と射の登録、両辺の射による一致判定、正方形と二つの三角形の可換式、Nonempty と同じ宇宙の essentially small 性を供給する。
+
+`CoefficientModelImages`（100行）：`fg_algHom_range` は有限型代数の像の有限生成性。`coefficientModelSubalgebraObj`・`coefficientModelToSubalgebraObj` は g で両立する有限生成部分代数の模型と、像が含まれる模型からの実際の射。`coefficientModelHom_eq_of_injective_target` は元の両環への構造射が単射な標的への射の一意性。`coefficientModelImageObj`・`coefficientModelToImage` は実際の像の模型とそこへの射、両構造射の単射性を返す。元の R,C の Noether 性を要求しない。
+
+本体189行・入口2行。像の有限生成性で元の有限型代数の型を明示して単独検証。ソース完全一致、対象と直接 importer AlgebraicGeometry のビルド5,054・5,055ジョブ、小監査33宣言（14・19）・標準三公理のみ、終了状態0。ビルドと小監査はそれぞれ共有鍵 `--class impl --wait 3600` を取り直し、各検証中だけ使用。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-coefficient-model-category-check.log`・`2g-coefficient-model-images-check-2.log`・`2g-coefficient-model-category-native.log`・`2g-coefficient-model-images-native.log`・`2g-coefficient-model-images-audit.log`。
+
+G1・G2共用部品込み本体16,044行、入口込み16,311行。B02〜B04 は未完。
+
+一覧：済み14／全体17（うち追加8）。
