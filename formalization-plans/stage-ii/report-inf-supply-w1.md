@@ -8461,3 +8461,77 @@ lemma strictDiagramFreeArrowRealizedFrame_homotopicallyConstant
 `QuillenStandardFrame.homIso` が使える。`WeightedFrameHomNaturality` の
 別の重み実現をそのまま同一視せず、§88の指定随伴へ適用する。
 E01の別経路の紙は§80.1のまま。停止点5aにはまだ到達していない。
+
+## §93 RR02(a)：指定実現のHomとBK endの同定
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `0d460506c` の164行の検証・コミットとして進捗。
+既存の `adjunctionHomIsoSameUniverse` と `QuillenStandardFrame.homIso` を
+§88の指定随伴に適用し、次の同型と成分の式を証明する。
+
+```lean
+def bousfieldKanRealizationHomIso :
+  cosimplicialHom (SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A) ≅
+    hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanRealizationHomIso_hom_app (Y : C) (n : SimplexCategoryᵒᵖ)
+    (f : (bousfieldKanParameterRealization K A).obj (SSet.stdSimplex.obj n.unop) ⟶ Y) :
+  (((bousfieldKanRealizationHomIso K A).hom.app Y).app n) f =
+    SSet.yonedaEquiv ((bousfieldKanParameterAdjunction K A).homEquiv _ Y f)
+```
+
+標的自然性は同型自体に含まれる。source frame全族の自然性と実増大射の照合は
+別途接続が必要であり、この同型だけでRR02(a)の弱同値性を結論しない。
+既存の随伴・Yonedaの法則の移送としてIDは増やさない。
+
+### 93.1 source frameの自然性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§93の同型と成分式は2,798 jobs成功、小監査2宣言、標準三公理のみ。
+次は既存の `homEquiv_frame_naturality` を合成随伴へ移す。
+
+```lean
+def bousfieldKanParameterMap (a : A ⟶ B) :
+  bousfieldKanParameterRealization K A ⟶ bousfieldKanParameterRealization K B
+lemma bousfieldKanParameterHomEquiv_frame_naturality
+    (a : A ⟶ B) (T : SSet) (Y : C)
+    (t : (bousfieldKanParameterRealization K B).obj T ⟶ Y) :
+  (bousfieldKanParameterAdjunction K A).homEquiv T Y
+      ((bousfieldKanParameterMap K a).app T ≫ t) =
+    (bousfieldKanParameterAdjunction K B).homEquiv T Y t ≫
+      weightedSectionsMap (bousfieldKanWeight Kᵒᵖ) (((homFamily K).map a.op).app Y)
+```
+
+source射は元の実現の `map K a` を同じパラメータで制限したもの。
+既存随伴の自然性の移送としてIDは増やさない。
+
+### 93.2 Hom同型のsource側の照合（検証待ち）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanRealizationHomIso_source_naturality (a : A ⟶ B) :
+  cosimplicialHomMap (Functor.whiskerLeft SSet.stdSimplex (bousfieldKanParameterMap K a)) ≫
+      (bousfieldKanRealizationHomIso K A).hom =
+    (bousfieldKanRealizationHomIso K B).hom ≫
+      Functor.whiskerRight ((homFamily K).map a.op)
+        (weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ))
+```
+
+§93.1をYonedaの後合成自然性で移す。既存の法則の移送でIDは増やさない。
+
+### 93.3 検証済みの区切り
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanRealizationHom` 38行、2,798 jobs成功、小監査2宣言、標準三公理のみ。
+ログ `/tmp/is-w1/bk-realization-hom/build.log`。計算上限変更なし。
+検証済み累計187本・14,357行、上限変更後のRR02(a)実測1,859行。
+RR02(b)(c)新規0行。E01の別経路の紙は§80.1のまま。
+
+`BousfieldKanParameterNaturality` は session 18201 が生存確認済みで、
+共有鍵を同じ一枚の整理券で待機中。ログ
+`/tmp/is-w1/bk-parameter-naturality/build.log`。
+`BousfieldKanRealizationHomNaturality` はその後の検証対象。
+この2本は未検証として作業木に残す。実増大射の弱同値性は未完。
