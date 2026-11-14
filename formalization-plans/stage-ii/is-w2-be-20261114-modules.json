@@ -23,5 +23,15 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSourceComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomInfinity",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeHomInfinityComparison",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotAlgebraHomInfinityComparison"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotAlgebraHomInfinityComparison",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanSimplex",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanDegenerate",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFreeCells",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRepresentableCells",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.SimplicialDiagramSkeleton",
+  "SerrePositivity.HomotopicalAlgebra.Diagram.SimplicialCellSkeleton",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellTensor",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellLifting",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellAttachment",
+  "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellCoproduct"
 ]

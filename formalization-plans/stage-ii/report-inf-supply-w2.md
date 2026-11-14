@@ -9692,3 +9692,327 @@ theorem exists_strictBETotWeightComparison :
 IS-W2 §18.2が参照する `coordination.md` §2の明文は、**「止まって報告するのは、新しい構成・新しい定理（既存の構成の法則でないもの）、まとまりの外のもの、外枠に届くときだけ」**。今回は新しい数学的補題R03aの追加の判断が必要と解した。検証済みの全25本は先にコミットし、対象ビルド218・小監査166宣言の終了0、鍵の返却、作業木に未検証のLean変更がないことを確認してから、この紙の報告を保存した。
 
 **R03aを型つき一覧に追加して進めるか、別の既存の橋を指定してもらう所で当該Lean作業を止める。** R02・R03・R04以降を完成とは数えない。停止点3b-4aにはまだ届いていない。外枠・型・既存界面は変更しない。/goalの全範囲は保持し、complete・paused・blockedには変更していない。
+
+## 167. R03a 承認後：自由細胞と元の骨格の厳密な付着（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 13（うち追加 1）。§166のR03aはユーザー承認・IS-W2 §19により一覧へ追加済み。mainを `2ca5e7878` で取り込み、§19を確認して再開した。R03aそのもの・R02・R03のnative錐の完成とは数えない。
+
+### 167.1 今回閉じた証明分割
+
+BKの単体を「台の射列＋最後の射」に厳密に分解し、退化性が台だけで決まることを示した。非退化細胞の図式は終頂点の表現可能関手の余積である。これに任意の単体集合をテンソルした全関手からの射は標準生成元で一意に決まるため、各終頂点での境界の持ち上げを同じ全図式の射へ束ねられる。
+
+さらに任意の単体集合値図式の骨格を全関手として作り、その塔の余極限が元の図式であることを証明した。BKの非退化細胞のYoneda写像で旧骨格を引き戻すと元の標準境界になる。全自由細胞から連続する二つの元の骨格への射と、その厳密な可換性も証明した。これはR03aの細胞分解の証明分割であり、独立の新しい数学の項目は追加していない。
+
+今回の10本は747行、各200行以下。3b-4の検証済みは **35モジュール・2,158行**（共通を含む、外枠15,000）。当初のR03aの細胞部分300〜700行に対し747行で、余積の添字替え・骨格押し出しの照合がまだ残るため上振れしている。元の重み・型・⑤aの欄は変更しない。
+
+### 167.2 証明分割・既存構成の法則の型
+
+以下は全て今回の新規ファイル内。namespace・universe・変数は各ソースのまま。構成の本体は省略し、主張・構成の型を記録する。R03aの追加以外に一覧の追加は0。
+
+#### BousfieldKanSimplex（84行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+abbrev SimplexData (n : ℕ) (i : I)
+
+def overSimplex {n : ℕ} {i : I} (s : SimplexData I n i) :
+    ComposableArrows (Over i) n
+
+def simplexData {n : ℕ} {i : I} (s : ComposableArrows (Over i) n) :
+    SimplexData I n i := ⟨s ⋙ Over.forget i, (s.obj (Fin.last n)).hom⟩
+
+/-- 復元したover射列の各対象は元の同じ対象。 -/
+theorem overSimplex_simplexData_obj {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) (a : Fin (n+1)) :
+    (overSimplex I (simplexData I s)).obj a = s.obj a
+
+theorem overSimplex_simplexData_obj {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) (a : Fin (n+1)) :
+    (overSimplex I (simplexData I s)).obj a = s.obj a
+
+theorem overSimplex_simplexData {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) : overSimplex I (simplexData I s) = s
+
+theorem simplexData_overSimplex {n : ℕ} {i : I} (s : SimplexData I n i) :
+    simplexData I (overSimplex I s) = s
+
+def simplexEquiv (n : ℕ) (i : I) :
+    ComposableArrows (Over i) n ≃ SimplexData I n i
+
+theorem simplexData_postcomp {n : ℕ} {i j : I} (f : i ⟶ j)
+    (s : ComposableArrows (Over i) n) :
+    simplexData I (s ⋙ Over.map f) =
+      ⟨(simplexData I s).1, (simplexData I s).2 ≫ f⟩
+
+```
+
+#### BousfieldKanDegenerate（68行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits SSet
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem sigma_delta_eq_of_base {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) (n+1)) (k : Fin (n+1))
+    (t : ComposableArrows I n)
+    (ht : (nerve I).σ k t = s ⋙ Over.forget i) :
+    (nerve (Over i)).σ k ((nerve (Over i)).δ k.castSucc s) = s
+
+theorem degenerate_iff_base {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) :
+    s ∈ (nerve (Over i)).degenerate n ↔
+      (s ⋙ Over.forget i) ∈ (nerve I).degenerate n
+
+theorem nondegenerate_iff_base {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) :
+    s ∈ (nerve (Over i)).nonDegenerate n ↔
+      (s ⋙ Over.forget i) ∈ (nerve I).nonDegenerate n
+
+```
+
+#### BousfieldKanFreeCells（78行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits SSet
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+abbrev NondegenerateData (n : ℕ) (i : I)
+
+def nondegenerateEquiv (n : ℕ) (i : I) :
+    (nerve (Over i)).nonDegenerate n ≃ NondegenerateData I n i
+
+def freeCellDiagram (n : ℕ) : I ⥤ Type u
+
+def nondegenerateDiagram (n : ℕ) : I ⥤ Type u
+
+def nondegenerateDiagramIso (n : ℕ) :
+    nondegenerateDiagram I n ≅ freeCellDiagram I n
+
+```
+
+#### BousfieldKanRepresentableCells（58行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits Opposite SSet
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+abbrev cellRepresentables (n : ℕ) (c : (nerve I).nonDegenerate n) : I ⥤ Type u
+
+def freeCellCofan (n : ℕ) : Cofan (cellRepresentables I n)
+
+def freeCellDesc {n : ℕ} {Z : I ⥤ Type u}
+    (f : ∀ c, cellRepresentables I n c ⟶ Z) : freeCellDiagram I n ⟶ Z
+
+def freeCellCofanIsColimit (n : ℕ) : IsColimit (freeCellCofan I n)
+
+```
+
+#### SimplicialDiagramSkeleton（102行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open CategoryTheory Limits SSet
+open scoped Simplicial
+
+theorem skeleton_image_le {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ) :
+    (X.skeleton n).image f ≤ Y.skeleton n
+
+def skeletonMap {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ) :
+    (X.skeleton n : SSet.{u}) ⟶ (Y.skeleton n : SSet.{u})
+
+@[reassoc] theorem skeletonMap_ι {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ) :
+    skeletonMap f n ≫ (Y.skeleton n).ι = (X.skeleton n).ι ≫ f
+
+theorem skeletonMap_id (X : SSet.{u}) (n : ℕ) : skeletonMap (𝟙 X) n = 𝟙 _
+
+theorem skeletonMap_comp {X Y Z : SSet.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) (n : ℕ) :
+    skeletonMap (f ≫ g) n = skeletonMap f n ≫ skeletonMap g n
+
+def skeletonFamily : I ⥤ ℕ ⥤ SSet.{u}
+
+def skeletonFiltration : ℕ ⥤ I ⥤ SSet.{u} := (skeletonFamily I W).flip
+
+/-- 同じ骨格の塔から元の図式重みへの余錐。 -/
+def skeletonCocone : Cocone (skeletonFiltration I W)
+
+def skeletonCocone : Cocone (skeletonFiltration I W)
+
+def skeletonCoconeIsColimit : IsColimit (skeletonCocone I W)
+
+```
+
+#### SimplicialCellSkeleton（45行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open CategoryTheory SSet
+open scoped Simplicial
+
+theorem nondegenerate_preimage_skeleton {X : SSet.{u}} {n : ℕ}
+    (c : X.nonDegenerate n) :
+    (X.skeleton n).preimage (yonedaEquiv.symm c.val) = ∂Δ[n]
+
+theorem nondegenerate_range_skeleton {X : SSet.{u}} {n : ℕ}
+    (c : X.nonDegenerate n) :
+    Subcomplex.range (yonedaEquiv.symm c.val) ≤ X.skeleton (n+1)
+
+theorem nondegenerate_boundary_range_skeleton {X : SSet.{u}} {n : ℕ}
+    (c : X.nonDegenerate n) :
+    Subcomplex.range (∂Δ[n].ι ≫ yonedaEquiv.symm c.val) ≤ X.skeleton n
+
+```
+
+#### BousfieldKanCellTensor（107行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.DiagramModel SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkCellWeight (n : ℕ) : I ⥤ SSet.{u}
+
+def bkCellTensor (n : ℕ) : SSet.{u} ⥤ I ⥤ SSet.{u}
+
+def bkCellGenerator {n : ℕ} (c : (nerve I).nonDegenerate n) (X : SSet.{u}) :
+    X ⟶ ((bkCellTensor I n).obj X).obj (c.val.obj (Fin.last n))
+
+theorem bkCellGenerator_naturality {n : ℕ} (c : (nerve I).nonDegenerate n)
+    {X Y : SSet.{u}} (f : X ⟶ Y) :
+    bkCellGenerator I c X ≫ ((bkCellTensor I n).map f).app (c.val.obj (Fin.last n)) =
+      f ≫ bkCellGenerator I c Y
+
+def bkCellDesc {n : ℕ} (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n))) :
+    (bkCellTensor I n).obj X ⟶ Z
+
+theorem bkCellGenerator_desc {n : ℕ} (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n)))
+    (c : (nerve I).nonDegenerate n) :
+    bkCellGenerator I c X ≫ (bkCellDesc I X Z f).app (c.val.obj (Fin.last n)) = f c
+
+theorem bkCellDesc_unique {n : ℕ} (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n)))
+    (m : (bkCellTensor I n).obj X ⟶ Z)
+    (hm : ∀ c, bkCellGenerator I c X ≫ m.app (c.val.obj (Fin.last n)) = f c) :
+    m = bkCellDesc I X Z f
+
+theorem bkCellHom_ext {n : ℕ} {X : SSet.{u}} {Z : I ⥤ SSet.{u}}
+    {m m' : (bkCellTensor I n).obj X ⟶ Z}
+    (h : ∀ c, bkCellGenerator I c X ≫ m.app (c.val.obj (Fin.last n)) =
+      bkCellGenerator I c X ≫ m'.app (c.val.obj (Fin.last n))) : m = m'
+
+```
+
+#### BousfieldKanCellLifting（58行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.DiagramModel SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem bkCellTensor_map_llp (n : ℕ) {X Y : SSet.{u}} (f : X ⟶ Y)
+    (hf : SSet.modelCategoryQuillen.I f) :
+    (boundaries I).rlp.llp ((bkCellTensor I n).map f)
+
+```
+
+#### BousfieldKanCellAttachment（77行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel SerrePositivity.DiagramModel.BousfieldKanCells
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkCellSimplex {n : ℕ} (c : (nerve I).nonDegenerate n) :
+    (nerve (Over (c.val.obj (Fin.last n)))).nonDegenerate n
+
+abbrev bkSkeleton := skeletonFiltration I (bousfieldKanWeight I)
+
+/-- 全標準細胞から元の重みへの同じYoneda評価。 -/
+def bkCellEvaluation (n : ℕ) : (bkCellTensor I n).obj Δ[n] ⟶ bousfieldKanWeight I
+
+def bkCellEvaluation (n : ℕ) : (bkCellTensor I n).obj Δ[n] ⟶ bousfieldKanWeight I
+
+def bkCellBoundary (n : ℕ) : (bkCellTensor I n).obj (∂Δ[n] : SSet.{u}) ⟶
+    (bkSkeleton I).obj n
+
+def bkCellTop (n : ℕ) : (bkCellTensor I n).obj Δ[n] ⟶ (bkSkeleton I).obj (n+1)
+
+theorem bkCellTop_ι (n : ℕ) :
+    bkCellTop I n ≫ (skeletonCocone I (bousfieldKanWeight I)).ι.app (n+1) =
+      bkCellEvaluation I n
+
+theorem bkCellAttachment_comm (n : ℕ) :
+    bkCellBoundary I n ≫ (bkSkeleton I).map (homOfLE (Nat.le_succ n)) =
+      (bkCellTensor I n).map ∂Δ[n].ι ≫ bkCellTop I n
+
+```
+
+#### BousfieldKanCellCoproduct（70行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkCellComponentInclusion {n : ℕ} {i : I} (s : NondegenerateData I n i)
+    (X : SSet.{u}) : X ⟶ ((bkCellTensor I n).obj X).obj i
+
+def bkCellComponentCofan (n : ℕ) (i : I) (X : SSet.{u}) :
+    Cofan (fun _ : NondegenerateData I n i => X)
+
+def bkCellComponentDesc {n : ℕ} {i : I} (X Z : SSet.{u})
+    (f : NondegenerateData I n i → (X ⟶ Z)) :
+    ((bkCellTensor I n).obj X).obj i ⟶ Z
+
+@[reassoc] theorem bkCellComponentInclusion_desc {n : ℕ} {i : I} (X Z : SSet.{u})
+    (f : NondegenerateData I n i → (X ⟶ Z)) (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s X ≫ bkCellComponentDesc I X Z f = f s
+
+def bkCellComponentCofanIsColimit (n : ℕ) (i : I) (X : SSet.{u}) :
+    IsColimit (bkCellComponentCofan I n i X)
+
+theorem bkCellComponentHom_ext {n : ℕ} {i : I} {X Z : SSet.{u}}
+    {f g : ((bkCellTensor I n).obj X).obj i ⟶ Z}
+    (h : ∀ s : NondegenerateData I n i,
+      bkCellComponentInclusion I s X ≫ f = bkCellComponentInclusion I s X ≫ g) : f = g
+
+```
+
+### 167.3 検証と残り
+
+main取り込み後の219は既存の25本を対象ビルドし **10,619 jobs・終了0**、小監査166宣言・標準三公理のみ。220は自由細胞の先行4本を検証し、合計200宣言。import整理と骨格・自由テンソルの3本を加えた221は **1,590 jobs・終了0**、新規全32本の小監査 **231宣言・標準三公理のみ**。222は境界照合・付着・成分余積の3本を対象ビルドし **1,605 jobs・終了0**、新規全35本の小監査 **255宣言・標準三公理のみ**。実ハンドル35419・61534の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build219.log`〜`222.log`、最終小監査 `/private/tmp/AuditISW2BKCells222.lean`。
+
+個別検査ではover圏のeqToHom、退化の最終頂点、Yoneda同値の往復、自由な生成元を評価する型を明示して修正した。計算上限の変更・sorry・独自公理なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。登録候補は同じBE用JSONへ追記した。
+
+次は相対細胞の添字と自由細胞の余積を照合し、同じ骨格の押し出しから全BK重みの射影cofibrancyを得る。その後に同じjを選び、全Kan係数の制限のホモトピー同値を示す。相対細胞の添字替えの下書きは個別検査中で、この検証済み10本のコミットには含めない。全体の/goalは保持し、停止点3b-4aにもまだ届いていない。
