@@ -438,3 +438,26 @@ G1 累計は本体 **2,265 行**、入口込み **2,312 行**。次は有限個�
 G1 累計は本体 **2,351 行**、入口込み **2,399 行**。既存の比較の法則・有限被覆の貼り合わせとして、主項目の数は不変。新しい resource limit・sorry・追加公理はない。実際の Noether 模型への tensor 比較と幾何の平坦開、および固有模型上の全射性の接続は、この時点ではまだ未完。
 
 一覧：済み 7／全体 12（うち追加 3）。
+
+## 一般自由開を伴う実際の Noether 模型と Spec の図式：検証結果
+
+新規四モジュールは計 **244 行**（GenericFreeNoetherianModel 54 行、GenericFlatNoetherianOpen 59 行、GenericFlatNoetherianModel 57 行、AffineTensorModelPullback 74 行）、入口 4 行。最初の三本と入口の対象ビルド **4,836 ジョブ成功**、三本の小監査 **4 宣言・標準三公理のみ**。Spec の射影の比較の下書きを直して検証した後、本体と入口の対象ビルド **4,837 ジョブ成功**、同モジュールの小監査は生成宣言を含む **8 宣言・標準三公理のみ**。束全体の終了コード 0。
+
+ログは `scheme-drafts/2g-generic-flat-model-combined-check-3.log`、`2g-generic-flat-model-native.log`、`2g-generic-flat-model-audit.log`、`2g-affine-tensor-pullback-check-4.log`、`2g-affine-tensor-pullback-native.log`、`2g-affine-tensor-pullback-audit.log`。共有鍵は `--class impl --wait 3600`、同時の待ちは一つ、検証束は一回 30 分以内。ℤ の scalar tower は、標準の zsmul の型を暗黙に使うのでなく、代数構造による三つの作用を持つ instance を明示して整合させた。Spec の射影の証明は Iso.symm_hom の展開を明示した。新しい resource limit・sorry・追加公理はない。
+
+### 宣言と主張（一行ずつ）
+
+- `exists_generic_free_noetherian_model`：有限表示 R-代数 B を、ℤ 上有限型の Noether 模型 S/A の実際の tensor 底変換として表し、全極小素点を覆う有限個の一般自由基本開を模型上に添える。
+- `flat_restrict_iSup_of_flat_restrict`：各開での平坦性を和の開へ貼り合わせる。添字の宇宙はスキームの宇宙と独立。
+- `flat_restrict_iSup_basicOpen_of_free_tensor`：基本開ごとの away tensor の自由性から、その和での Spec の射の平坦性を得る。
+- `exists_generic_flat_noetherian_model`：実際の Noether 模型と tensor 同型に準コンパクトな平坦開 U を添え、元の基底へのその逆像が準コンパクト・稠密で全極小素点を含むことを示す。
+- `affineTensorModelIso`：実際の R-代数同型 R⊗[A]S≃B を、同じ係数射の Spec のファイバー積との同型へ移す。
+- `affineTensorModelIso_hom_fst`：第一射影は S→R⊗[A]S→B の Spec と一致する。
+- `affineTensorModelIso_hom_snd`：第二射影は元の R→B の Spec と一致する。
+- `isPullback_affineTensorModel`：同じ実際の四辺が pullback square を与える。
+
+G1 累計は本体 **2,595 行**、入口込み **2,647 行**。この束は既存模型の係数移送と開の貼り合わせ・射影の法則であり、主項目の数は変えない。既存の宣言の型・名前は変更していない。
+
+A07 の一般平坦開を伴うアフィン Noether 模型への接続は得た。引き戻した固有模型上の全射性と、有限表示を保つ細分の構成、整全射の有限段への refinement の移送は未完。G2 の一般の固有有限表示スキームの模型を、このアフィン模型で完成扱いにはしない。
+
+一覧：済み 7／全体 12（うち追加 3）。
