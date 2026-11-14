@@ -242,3 +242,23 @@ G4 の射影版への注意：`ProperInductiveLevel` は原典 Definition 2.5 �
 - 有限冪への適用（150〜350行）：S01〜S04 を反復し、正の有限ファイバー冪に同じ有限な次数一表示と基底上の同型を供給する。増大次数の基底そのものは別扱いで、不要な Proj 表示を要求しない。中心への底変換と構造射の式を保持する。
 
 これらは既承認の G3 の Rees・Segre・有限ファイバー冪の射影表示の分割。残りのこの部分は約1,520〜3,700行、G3〜G5 の全体は約5,500〜12,000行・外枠16,000行を維持する。一般の固有射のコホモロジー有限性・Stein 分解を追加せず、2f の射影 Čech 版に実際の入力を供給する。
+
+
+S01 の最初の実装の型（着手前、上記の内数）：`degreeOne_aeval_mem_grade D hR x hx f hf` は D:ℕ→Submodule S C、D の graded monoid 構造、R→C の係数が D0 に入ること、x_i∈D1、f の次数dの斉次性から、実際の評価が Dd に入ること。R と S の係数は同一と仮定せず、定数の積と graded な有限積で証明する（見込み40〜80行）。`degreeOneGradedEvaluation` はこれを GradedRingHom に束ねる。`segreCoordinateMap a b` と C・X の式は B⊗[R]A の実際の座標評価（見込み30〜60行）。いずれも S01 の座標・次数保存の最初の分割で、S02 の模型の存在・Proj の比較を仮定にしない。
+
+
+## G3・S01：次数一評価の一般の次数保存と実際の Segre 座標
+
+`DegreeOneGradedEvaluation`（44行）：`degreeOne_aeval_mem_grade` は係数が次数零、変数が次数一なら実際の評価が斉次次数を保つ法則。係数環 R と部分加群の係数環 S を分け、graded な積を使う。`degreeOneGradedEvaluation` は同じ評価を GradedRingHom に束ねる。
+
+`SegreCoordinates`（33行）：`segreCoordinateMap` は変数 (i,j) を b_j⊗a_i に送る実際の多項式評価。`segreCoordinateMap_X`・`segreCoordinateMap_C` は変数と係数の式。零環・空の添字を許し、平坦性を仮定しない。
+
+本体77行・入口2行。次数零と次数一の仮定を宣言に明示して単独検証、ソース完全一致、対象二本・直接 importer のビルド5,082ジョブ、小監査6宣言（2・4）・標準三公理のみ、終了状態0。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。ログ `2g-degree-one-graded-evaluation-check-2.log`・`2g-segre-coordinates-check.log`・`2g-degree-one-evaluation-segre-coordinates-native.log`・`2g-degree-one-evaluation-segre-coordinates-audit.log`。鍵は検証中だけ使用。
+
+2g-2 本体911行・入口込み927行、小監査61宣言・標準三公理のみ。S01 の底変換 grading への適用、S02〜S04、G4〜G5 は未完。外枠16,000行、見込み約5,500〜12,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
+
+### S01 の底変換 grading と S02 の核の法則（着手前の型、前記の内数）
+
+`segreLeftTensorGrade G n := (G n).baseChange B` に Mathlib の GradedAlgebra.baseChange を供給する。`segreLeftTensorGrade_algebraMap_zero` は R の係数がその次数零に入ること。`segreGradedCoordinateMap G a b ha` は a_i∈G1 なら実際の segreCoordinateMap をこの grading への GradedRingHom に束ねる（b の次数はこの左 grading には不要）。`segreCoordinateMap_kernel_homogeneous` は同じ写像の核の斉次性。既存の homogeneous ideal の comap を使い、次数分解と写像の可換性を再証明しない。見込み70〜150行。添字の DecidableEq は標準の grading のために明示し、最終の有限添字 Fin n では既存のものを使う。
