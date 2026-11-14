@@ -7928,3 +7928,120 @@ E01別経路の紙の再確認：`FiniteSubcomplexEndComparison` には、実射
 上限変更後のRR02(a)実測1,044行、(b)(c)新規0行。
 RR02(a)の実現後の弱同値性、(b)(c)、E01の別経路は未完で、停止点5aには未到達。
 未検証のE01下書き4本はコミット対象外。次は§80.1のBK重みの比較を接続する。
+
+## §81 RR02(a)：既存のBK重み比較をframe実現へ接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `3f86ea185` の検証済み112行の追加という進捗。
+§80.1の重み射は既に `Project/FilteredExchange/KanReplacement/BousfieldKanWeightPost`
+の `bousfieldKanWeightPost` として存在することを確認した。全射の自然性、恒等則、
+合成則もあるので再実装しない。SSet値のcoend用の `bousfieldKanReindex` もあるが、
+今回の複体値frame実現と型が違う。既存の重み射だけを再利用して、§80の指定随伴の
+添字変更に接続する。既存実現の移送の法則でありIDを増やさない。
+
+```lean
+def bousfieldKanReindexMap :
+    (functor L (P ⋙ A)).obj (bousfieldKanWeight Lᵒᵖ) ⟶
+      (functor K A).obj (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanReindexMap_homEquiv (Y : C)
+    (f : (functor K A).obj (bousfieldKanWeight Kᵒᵖ) ⟶ Y) :
+    (adjunction L (P ⋙ A)).homEquiv _ Y (bousfieldKanReindexMap P A ≫ f) =
+      bousfieldKanWeightPost P.op ≫
+        Functor.whiskerLeft P.op
+          ((adjunction K A).homEquiv (bousfieldKanWeight Kᵒᵖ) Y f) ≫
+        (homReindexIso P A).hom.app Y
+```
+
+弱同値性をright cofinal性から直ちに結論しない。元の係数と増大射に接続した
+実現射の弱同値性、およびRR02(b)(c)は依然として残る。
+
+## §82 RR02(a)：指定増大射の添字変更則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+次数零の任意の指定余錐から、定値零単体への重み射と既存のsimplicial Yonedaを
+使って同じ実現随伴で増大射を得る。その添字変更則を証明する。
+これは既存構成の係数移送の法則。弱同値性の仮定や新しいIDを追加しない。
+
+```lean
+def bousfieldKanZeroWeight (K : Type w) [SmallCategory K] :
+    bousfieldKanWeight Kᵒᵖ ⟶ ConstantWeightHom.weight K (SimplexCategory.mk 0)
+def bousfieldKanAugmentation
+    (c : Cocone (ConstantWeightHom.degree K A (SimplexCategory.mk 0))) :
+    (functor K A).obj (bousfieldKanWeight Kᵒᵖ) ⟶ c.pt
+lemma bousfieldKanAugmentation_homEquiv :
+    (adjunction K A).homEquiv _ _ (bousfieldKanAugmentation A c) =
+      bousfieldKanZeroWeight K ≫
+        (ConstantWeightHom.homEquiv K A (SimplexCategory.mk 0) c.pt).symm c.ι
+lemma bousfieldKanReindexMap_augmentation (P : L ⥤ K) :
+    bousfieldKanReindexMap P A ≫ bousfieldKanAugmentation A c =
+      bousfieldKanAugmentation (P ⋙ A) (c.whisker P)
+```
+
+## §83 RR02(a)：自由arrow frameの指定実現と増大射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§82を既存の `strictDiagramFreeArrowAugmentation` に特殊化し、指定source frame
+の次数零への実現射を固定する。既存の余錐・実現の接続であり、弱同値性はまだ主張しない。
+
+```lean
+def strictDiagramFreeArrowZeroCocone :
+    Cocone (ConstantWeightHom.degree (StrictDiagramArrowElements.{u} d)ᵒᵖ
+      (strictDiagramFreeArrowFrame A d X) (SimplexCategory.mk 0))
+def strictDiagramFreeArrowRealization : StrictComplexDiagram A d
+def strictDiagramFreeArrowRealizationAugmentation :
+    strictDiagramFreeArrowRealization A d X ⟶
+      (strictDiagramSourceFrame A d X).obj.obj (SimplexCategory.mk 0)
+```
+
+二重反対の添字を黙って同一視せず、重みの型に二重反対を残す。
+
+### 82.1 局所化した前提計算
+
+一覧：済み 1／全体 13（うち追加 11）
+
+広い成分比較の `change` は200,000 heartbeatで `whnf`／`isDefEq` に達した。
+上限を変更せず、次の二つの既存構成の法則に分割し、主証明は射の書き換えにする。
+Hom同型の定義全体を展開すると、implicit transparencyで中間項の型照合が失敗したため、
+定義全体の展開を使わない。
+
+```lean
+lemma bousfieldKanZeroWeight_post (P : L ⥤ K) :
+    bousfieldKanWeightPost P.op ≫ Functor.whiskerLeft P.op (bousfieldKanZeroWeight K) =
+      bousfieldKanZeroWeight L
+lemma zeroWeightCocone_reindex (P : L ⥤ K) :
+    Functor.whiskerLeft P.op
+        ((ConstantWeightHom.homEquiv K A (SimplexCategory.mk 0) c.pt).symm c.ι) ≫
+      (homReindexIso P A).hom.app c.pt =
+    (ConstantWeightHom.homEquiv L (P ⋙ A) (SimplexCategory.mk 0) c.pt).symm
+      (c.whisker P).ι
+```
+
+### 83.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| FrameBousfieldKanReindexing | 41 | 2,167 jobs成功 | 3宣言、標準三公理のみ |
+| FrameBousfieldKanAugmentation | 76 | 2,169 jobs成功 | 7宣言、標準三公理のみ |
+| StrictDiagramFreeArrowRealization | 52 | 3,799 jobs成功 | 10宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/frame-bk-reindexing/build-2.log`、
+`/tmp/is-w1/frame-bk-augmentation/build-7.log`、
+`/tmp/is-w1/free-arrow-realization/build.log`。
+増大射の法則は§82.1の小さい二補題への分割で通った。計算上限は変更していない。
+
+検証済み累計173本・13,711行、外枠24,000行まで10,289行。
+上限変更後のRR02(a)実測1,213行、(b)(c)新規0行。
+今回の169行は、既存の重み射の再利用、実現の添字変更と指定余錐の増大の可換性、
+元の自由arrow frameの実増大射までである。RR02(a)の実増大射の弱同値性は未完。
+
+次の点検：SSet値の `terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
+は既存だが、複体値のframe実現へそのまま適用しない。
+`FrameWeightRealization.isLeftQuillen` を使う場合は、指定BK重みの射影的cofibrancy
+またはそれに代わる実際の円柱・持ち上げを証明する必要がある。点ごとのframeの
+cofibrancyや、通常の添字圏のFinal性だけでこの入力を埋めない。
+E01別経路の紙の状態は§80.1のままである。
