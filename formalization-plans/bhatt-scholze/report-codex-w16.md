@@ -13360,3 +13360,216 @@ positiveCompositeNestedEquiv {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d
 退化入力については既存`DegenerateInput.lean`の`cutTensor_degenerate`が
 項ごとの零を供給することを確認した。したがって二段側の退化した元の面を扱う際、
 単に和全体の相殺を仮定しない。この補題を使える形への指定面の比較も残る。
+
+## 160. L12a の同じ切断区間の端点の法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンはL11と合成側の前段を検証・コミットした進捗。作業木はad079c9feから再開した。
+二段側から重なる分割を復元する際、内側切断の各縦fiberの横方向の最初/最後を使う。
+その隣接fiberの共有端点は、元のCutのlo・hiの同じ法則をexchangeした経路へ適用する。
+新しい端点や経路模型を選ばない。
+
+まずm,qが0〜5の全923経路について、最初/最後の端点、隣接区間の共有端点、
+lo・hiの単調性を有限点検した（正確な件数は下の実行ログを正本とする）。
+スクリプト：`/tmp/bsw16/check-cut-interval-boundaries.py`、
+結果：`/tmp/bsw16/check-cut-interval-boundaries.log`。
+Leanの全称証明は次のC348〜C352で別に行う。型は次。
+
+```lean
+lemma lo_zero {m q : ℕ} (s : Cut m q) : lo s 0 = 0
+
+lemma hi_last {m q : ℕ} (s : Cut m q) : hi s (Fin.last m) = q
+
+lemma hi_eq_lo_succ {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    hi s i.castSucc = lo s i.succ
+
+lemma hi_monotone {m q : ℕ} (s : Cut m q) : Monotone (hi s)
+
+lemma lo_monotone {m q : ℕ} (s : Cut m q) : Monotone (lo s)
+```
+
+C348・C349は既存lo_eq_of_bound・hi_eq_of_boundと元の経路の端点。
+C350は既存horizontal_edge、水平辺の直前の最大点、lo_eq_of_boundで同じ共有頂点を示す。
+C351・C352はC350と既存lo_le_hiをFinの隣接単調性へ渡す。
+各証明200行以内。固定したL12aの有限対応に使う既存構成の法則・証明分割として数える。
+
+## 161. L12a の二段側の添字と同じ色の順位の区間分解（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C350は共有辺の垂直座標の等式の向きをそのまま使うよう直す。
+次に、元の一色の頂点の順位を元の外側水平座標のfiberに分ける。
+C353は既存orderEmbOfFinによる同じ頂点の全単射で濃度を示す。
+C354・C355・C356は、その非空性・区間順序・全順位の被覆の法則である。
+新しい頂点列や選択した面を作らない。
+
+有限点検は外側区間数1〜4・arity1〜3の全非退化全射語、入力次元0〜3の全経路。
+**2,514例で濃度・非空性・順序・被覆を確認**した。
+スクリプト：`/tmp/bsw16/check-color-interval-ranks.py`、
+結果：`/tmp/bsw16/check-color-interval-ranks.log`。
+
+二段の添字は§159の型案のまま、外側の切断と、その指定色の全出力次数の内側切断のSigmaとする。
+C357は元の語長の等式移送が指定色の出現回数を保つ法則。
+構成済みの合成側と二段側の出現の有限添字を合わせるために使う。
+型は次。固定したL12aの同じ有限対応の証明の分割として数える。
+
+```lean
+def colorIntervalRanks {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) : Finset (Fin (outputDegree s v a + 1))
+
+lemma colorIntervalRanks_card {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    (colorIntervalRanks s v a p).card = (intervalPositions s p).card
+
+lemma colorIntervalRanks_nonempty {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    (colorIntervalRanks s v a p).Nonempty
+
+lemma colorIntervalRanks_ordered {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1)) (hp : p < p')
+    (i j : Fin (outputDegree s v a + 1))
+    (hi : i ∈ colorIntervalRanks s v a p) (hj : j ∈ colorIntervalRanks s v a p') : i < j
+
+lemma colorIntervalRanks_cover {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s v a + 1)) :
+    ∃ p : Fin (m + 1), v.val p = a ∧ j ∈ colorIntervalRanks s v a p
+
+abbrev PositiveNestedCutIndex {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (_v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ)
+
+lemma positiveWord_occurrenceCount {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) :
+    Surjection.occurrenceCount (positiveWord u).val k = Surjection.occurrenceCount u.val k
+```
+
+各証明200行以内。正の枝の対応そのもの・復元・符号・実テンソル・nullaryは未完。
+これらの法則や有限点検だけでL12aを完了へ数えない。
+
+## 162. L12a の同じ色の順位の閉区間（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§161の三本は2,241 jobsの対象ビルドに成功、Lean警告0。
+次に同じcolorIntervalRanksのmin'・max'を、その最初・最後の順位として読む。
+C358は既存の順序列挙と元の水平座標の単調性により、そのfiberが閉区間であることを示す。
+C359・C360は既存の非空性・順序をその二端点へ渡す法則。
+§161の2,514例へ閉区間の連続性の条件を加え、同じ全例で確認した。
+結果：`/tmp/bsw16/check-color-interval-ranks-convex.log`。
+型は次。選び直した順位ではなく元の同じ集合の両端である。
+
+```lean
+def colorIntervalFirst {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) : Fin (outputDegree s v a + 1)
+
+def colorIntervalLast {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) : Fin (outputDegree s v a + 1)
+
+lemma colorIntervalRanks_eq_Icc {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    colorIntervalRanks s v a p =
+      Finset.Icc (colorIntervalFirst s v a p hp) (colorIntervalLast s v a p hp)
+
+lemma colorIntervalFirst_le_last {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    colorIntervalFirst s v a p hp ≤ colorIntervalLast s v a p hp
+
+lemma colorIntervalLast_lt_first {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a) (hpp' : p < p') :
+    colorIntervalLast s v a p hp < colorIntervalFirst s v a p' hp'
+```
+
+各証明200行以内。次にこの両端を内側切断の縦fiberへ渡し、重なる分割の長さを復元する。
+有限対応の全体・符号・実テンソル・nullaryはまだ未完。
+
+## 163. L12a の同じ出現順の順位区間の端点（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§162の閉区間の法則まで2,242 jobsの対象ビルドに成功、Lean警告0。
+次に既存occurrenceAtで元の色の出現順を使い、同じ順位区間の最初/最後を読む。
+C361は既存の昇順リストのgetで元の位置を全列挙する法則。
+C362〜C365は既存の所属・区間順序、C366〜C368は同じ被覆と有限順序の法則。
+特にC368は隣の二出現の間に別の出現がないことから順位の隙間を排除する。
+
+§161の2,514例へ最初零・最後が全順位の最後・隣接区間の隙間なしを加え、
+同じ全例で確認した。結果：`/tmp/bsw16/check-color-occurrence-boundaries.log`。
+次の型を既存構成の法則・有限対応の証明分割として実装する。
+
+```lean
+lemma occurrenceAt_exists {r l : ℕ} (v : Fin l → Fin r) (a : Fin r)
+    (p : Fin l) (hp : v p = a) :
+    ∃ j : Fin (Surjection.occurrenceCount v a), Surjection.occurrenceAt v a j = p
+
+def colorOccurrenceFirst {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) : Fin (outputDegree s v a + 1)
+
+def colorOccurrenceLast {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) : Fin (outputDegree s v a + 1)
+
+lemma colorOccurrenceFirst_mem {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    colorOccurrenceFirst s v a j ∈ colorIntervalRanks s v a (Surjection.occurrenceAt v.val a j)
+
+lemma colorOccurrenceLast_mem {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    colorOccurrenceLast s v a j ∈ colorIntervalRanks s v a (Surjection.occurrenceAt v.val a j)
+
+lemma colorOccurrenceFirst_le_last {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    colorOccurrenceFirst s v a j ≤ colorOccurrenceLast s v a j
+
+lemma colorOccurrenceLast_lt_first {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (j j' : Fin (Surjection.occurrenceCount v.val a)) (hj : j < j') :
+    colorOccurrenceLast s v a j < colorOccurrenceFirst s v a j'
+
+lemma colorOccurrenceFirst_zero {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) :
+    (colorOccurrenceFirst s v a ⟨0, Surjection.occurrenceCount_pos v a⟩).val = 0
+
+lemma colorOccurrenceLast_top {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a))
+    (hj : j.val + 1 = Surjection.occurrenceCount v.val a) :
+    (colorOccurrenceLast s v a j).val = outputDegree s v a
+
+lemma colorOccurrence_adjacent {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j j' : Fin (Surjection.occurrenceCount v.val a)) (hj : j.val + 1 = j'.val) :
+    (colorOccurrenceLast s v a j).val + 1 = (colorOccurrenceFirst s v a j').val
+```
+
+各証明200行以内。新しい出現順・順位・面の選択はしない。
+この端点を内側切断へ渡し、既存OverlapPartitionの共有端点と総長を満たす復元へ使う。
+L12aの正の枝の全対応・符号・実テンソル・nullaryはまだ未完。
+
+## 164. L12a の二段添字・区間端点の最初の保存
+
+一覧：済み 12／全体 48（うち追加 4）
+
+対象ビルド成功（2,243 jobs）、専用の小さい監査成功（5モジュール・45宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。二段添字のFintypeも全パラメータで型検査した。
+C361の依存した長さの書き換えは、同じ長さの等式からの不等式の推移で処理した。
+最初/最後の順位と隣接する区間の隙間なしは、その元の出現順と被覆だけで証明している。
+個々の証明200行以内。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| IntervalBoundaryGlue | 73 |
+| ColorIntervalRanks | 76 |
+| ColorRankIntervals | 66 |
+| ColorOccurrenceBoundaries | 154 |
+| PositiveNestedCuts | 31 |
+
+`PositiveNestedCuts`からこの五本をすべてimportする。入口と共通監査の登録は調整役が行う。
+ログ：`/tmp/bsw16/m14-positive-nested-cuts-04.log`、
+監査入力：`/tmp/bsw16/audit-m14-positive-nested-cuts.lean`、
+結果：`/tmp/bsw16/m14-positive-nested-cuts-audit.log`。
+鍵はビルド・監査ごとに取り、終了・返却を確認した。
+
+今回400行。L12aの前段は78+400=**478行**、M14は15,285+400=**15,685行**。
+外枠25,000行の残り9,315行。L12aの1,400〜2,400行の見込みに478行を含め、
+あとで独立の新規として重ねて数えない。L12aの対応・復元・符号・実テンソル・nullaryは
+まだ未完で、一覧の完了数は増やさない。G10の部品は作らない。
