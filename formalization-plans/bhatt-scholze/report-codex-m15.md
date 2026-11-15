@@ -11633,3 +11633,134 @@ mainのcitation-attributes.md §15も読み取り、B3′の影響候補が⑤d�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み3,575行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §86 G01：全増大順序和と四つの水平作用の全射の表示（11-15）
+
+### 86.1 検証済みの追加
+
+追加は **3ファイル334行・明示宣言14**。累計 **30ファイル3,909行・明示宣言264**。
+この3ファイルまでを検証し、G01の一覧の済みは0のまま。
+
+| ファイル（InfinityCategories/HA/Monads/） | 行数 | 今回の検収 |
+|---|---:|---|
+| AugmentedOrdinalTensorMaps.lean | 149 | 非空の因子の添字の輸送、左右の空から非空への射の照合、両方空も含む全増大順序和の射の照合 |
+| OrdinalActionMapProfiles.lean | 113 | 関手等式からの全射の移送、有限随伴・区間表示・回収の型の輸送、通常側の二作用の全射の表示 |
+| OppositeOrdinalActionMapProfiles.lean | 72 | 二つの反対側の作用の全射と、区間表示との端点共有の射の一致 |
+| **追加** | **334** | G01の同じ合成・自然性・係数移送・貼り合わせの法則。新しい一覧IDなし |
+
+混合Homで使う一方が非空の順序和は、他方の空と非空を場合分けして照合した。
+空から非空への射では元の左・右包含の値を使う。両方の始域が空なら空の点を除去することで、
+全増大単体圏の順序和の射がordinalAppendと一致することもHEqでまとめた。
+両因子を非空に制限した結果だけを全増大単体圏の主張とは読んでいない。
+
+構成済みの忘却後の全関手等式から、通常側のtopOrdinalAction・bottomOrdinalActionの
+全射の表示を取り出した。対象の個数が違う表示を同じ型と仮定せず、
+区間表示・実左随伴・実右随伴・区間の回収の係数移送を、個数の等式を引数にして証明した。
+この個数の等式は実際の作用の長さの既存の法則から供給する。
+
+反対側では、実定義どおりGalois双対に送った通常側の作用の全射を正規化し、
+§85の実随伴の一意性による照合を適用した。その結果、
+topOppositeOrdinalActionの全射は元の最大元保存の射と区間表示の端点共有、
+bottomOppositeOrdinalActionの全射は区間表示と元の最小元保存の射の端点共有に一致する。
+この二つも空の自己Homの因子と空から非空へ動く射を含む。
+追加のModelCategoryや随伴の存在のinstanceは仮定していない。
+
+### 86.2 残る境界と型
+
+四つの作用の全射の表示が揃った。これから、実区間同値の逆を使う二つの混合合成の射も
+同じ表示へ移し、§84の二つの値の結合則を既存の水平合成の全関手へ戻す。
+§83の全結合則は **16通り中8通り**のまま。
+残る8通り、全豊穣walking adjunction、与えられた随伴からの全拡張、
+元のF≫U・単位・余単位との比較が未完であり、G01完成とは数えない。
+
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。200行を超える宣言・証明はない。
+以下はnamespace SerrePositivity.InfinityCategories.HA.Monads内。
+
+```lean
+lemma ordinalAppendNonempty_heq {m n p q : ℕ} (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin p →o Fin q) : HEq (ordinalAppendNonempty f g) (ordinalAppend f g)
+
+lemma simplexTensorHomOf_append_heq {X Y Z W : SimplexCategory} (f : X ⟶ Y) (g : Z ⟶ W) :
+    HEq (AugmentedSimplexCategory.tensorHomOf f g).toOrderHom
+      (ordinalAppend f.toOrderHom g.toOrderHom)
+
+lemma augmentedOrderHom_tensor_nonempty_right {A B : AugmentedSimplexCategory}
+    {C D : SimplexCategory} (f : A ⟶ B) (g : C ⟶ D) :
+    HEq (augmentedOrderHom (f ⊗ₘ WithInitial.incl.map g))
+      (ordinalAppend (augmentedOrderHom f) g.toOrderHom)
+
+lemma augmentedOrderHom_tensor_nonempty_left {A B : AugmentedSimplexCategory}
+    {C D : SimplexCategory} (f : C ⟶ D) (g : A ⟶ B) :
+    HEq (augmentedOrderHom (WithInitial.incl.map f ⊗ₘ g))
+      (ordinalAppend f.toOrderHom (augmentedOrderHom g))
+
+lemma augmentedOrderHom_tensor {A B C D : AugmentedSimplexCategory}
+    (f : A ⟶ B) (g : C ⟶ D) :
+    HEq (augmentedOrderHom (f ⊗ₘ g))
+      (ordinalAppend (augmentedOrderHom f) (augmentedOrderHom g))
+
+lemma augmentedOrderHom_functor_map_heq {I : Type u} [Category.{v} I]
+    {F G : I ⥤ AugmentedSimplexCategory} (h : F = G) {X Y : I} (f : X ⟶ Y) :
+    HEq (augmentedOrderHom (F.map f)) (augmentedOrderHom (G.map f))
+
+lemma ordinalIntervalMap_heq {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    {f : Fin a →o Fin b} {g : Fin c →o Fin d} (h : HEq f g) :
+    HEq (ordinalIntervalMap f) (ordinalIntervalMap g)
+
+lemma ordinalRightAdjoint_heq {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    {f : Fin (a + 1) →o Fin (b + 1)} {g : Fin (c + 1) →o Fin (d + 1)}
+    (hf : f 0 = 0) (hg : g 0 = 0) (h : HEq f g) :
+    HEq (ordinalRightAdjoint f hf) (ordinalRightAdjoint g hg)
+
+lemma ordinalLeftAdjoint_heq {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    {f : Fin (a + 1) →o Fin (b + 1)} {g : Fin (c + 1) →o Fin (d + 1)}
+    (hf : f (Fin.last a) = Fin.last b) (hg : g (Fin.last c) = Fin.last d)
+    (h : HEq f g) : HEq (ordinalLeftAdjoint f hf) (ordinalLeftAdjoint g hg)
+
+lemma ordinalRecoverMap_heq {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    {f : Fin (a + 1) →o Fin (b + 1)} {g : Fin (c + 1) →o Fin (d + 1)}
+    (hf₀ : f 0 = 0) (hf₁ : f (Fin.last a) = Fin.last b)
+    (hg₀ : g 0 = 0) (hg₁ : g (Fin.last c) = Fin.last d) (h : HEq f g) :
+    HEq (ordinalRecoverMap f hf₀ hf₁) (ordinalRecoverMap g hg₀ hg₁)
+
+lemma topOrdinalAction_map_heq {A B : AugmentedSimplexCategory} {X Y : TopSimplexCategory}
+    (f : A ⟶ B) (g : X ⟶ Y) :
+    HEq (topOrdinalAction.map (X
+
+lemma bottomOrdinalAction_map_heq {A B : AugmentedSimplexCategory}
+    {X Y : BottomSimplexCategory} (f : X ⟶ Y) (g : A ⟶ B) :
+    HEq (bottomOrdinalAction.map (X
+
+lemma topOppositeOrdinalAction_map_heq {A B : AugmentedSimplexCategoryᵒᵖ}
+    {X Y : TopSimplexCategory} (f : X ⟶ Y) (g : A ⟶ B) :
+    HEq (topOppositeOrdinalAction.map (X
+
+lemma bottomOppositeOrdinalAction_map_heq {A B : AugmentedSimplexCategoryᵒᵖ}
+    {X Y : BottomSimplexCategory} (f : A ⟶ B) (g : X ⟶ Y) :
+    HEq (bottomOppositeOrdinalAction.map (X
+```
+
+### 86.3 検証
+
+with_build_lock.sh --class impl --wait 3600、セッション65994の最大240秒の短いimpl枠で検証した。
+待ち列で対象をこの3ファイルの塊へまとめ、最終の対象は
+lake build SerrePositivity.InfinityCategories.HA.Monads.OppositeOrdinalActionMapProfiles:olean。
+依存のAugmentedOrdinalTensorMaps・OrdinalActionMapProfilesを含む。
+増大順序和の個数の簡約を明示した後、全増大順序和の比較は通った。
+左右作用の積の圏の始域・終域を明示し、既存の忘却比較のimportを補って修正した。
+最終 **G12_AUG_PROFILE_BUILD_EXIT=0**、警告なし（1263 jobs）。
+
+新設14根の小さい監査は **G12_AUG_PROFILE_AUDIT_EXIT=0**。
+入力14名と出力14名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。exitで外側の終了0まで確認し、枠を返却した。
+監査入力・根・全出力・最終対象ビルドログは
+[g12-action-profile-audit-2026-11-15/](g12-action-profile-audit-2026-11-15/)に保存した。
+現在、自分の生きたビルド・監査・整理券はない。
+
+既存の27ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み3,909行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。

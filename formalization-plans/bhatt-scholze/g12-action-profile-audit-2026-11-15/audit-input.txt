@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.HA.Monads.OppositeOrdinalActionMapProfiles
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppendNonempty_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexTensorHomOf_append_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_tensor_nonempty_right
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_tensor_nonempty_left
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_tensor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_functor_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRightAdjoint_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalLeftAdjoint_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRecoverMap_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalAction_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalAction_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOppositeOrdinalAction_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOppositeOrdinalAction_map_heq
