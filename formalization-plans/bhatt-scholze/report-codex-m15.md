@@ -12966,3 +12966,221 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み6,660行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §95 G01：切れ目の間の実関手と元の左因子の全包含（11-15）
+
+### 95.1 検証済みの追加
+
+追加は **4ファイル484行・明示宣言26**。累計 **55ファイル7,144行・明示宣言456**。
+WalkingAdjunctionIntervalLaws.lean は183行・9宣言、OrdinalOrderTransport.lean は68行・5宣言、
+WalkingAdjunctionResidualFunctor.lean は112行・6宣言、WalkingAdjunctionPrefixInclusions.lean は121行・6宣言。
+200行を超える個別の宣言・証明はない。
+G01の既存の水平合成の制限・係数移送・合成則・照合の法則と証明の分割なので、
+新しい一覧IDは足さない。
+
+四Homの共通表示の恒等射と全合成の保存をまとめた。
+二つの切れ目の間の区間の実包含と、その単射性、制限した射との全可換正方形を証明した。
+単射な包含を通すことで、制限した射の恒等射・全合成の保存を元の全単体の法則から回収した。
+また始点がminusなら最小元、終点がminusなら最大元を保つ条件を、
+共有点の可換条件から証明した。端点条件や全合成の法則を新しい仮定に追加していない。
+
+個数の等式に沿う射の輸送と、端点条件・恒等射・全合成との両立を証明した。
+同じHの二つの実水平分解の左因子の長さの比較を、同じH上の切れ目の順位へ移した。
+分解の切れ目の座標は左因子の重みであり、重みの差から作った残りの実対象の個数は
+切れ目の間の区間の個数に一致する。
+その等式で制限した射を移し、§94の四Homの実全単射で戻して、
+残りの実対象の間の実射を作った。
+
+これらを組み立て、Fin(n+1)から元のHomの圏への **residualFunctorを実際に構成した**。
+map_id・map_compは区間制限と個数の輸送の検証済みの法則を忠実な共通表示から戻して証明した。
+これは関手の存在を仮定する欄ではなく、実対象・実射・全法則を持つ構成である。
+
+続いて左因子の個数が全合成の個数以下であることを全八合成で証明した。
+共通表示を左の先頭区間で評価すると、元の左因子の全射に戻ることを、
+順序和と端点共有の全射の表示から照合した。
+指定したHの各実水平分解について、左因子をHへ入れる先頭区間の実包含を作り、
+全ての射についてこの包含との可換正方形を証明した。
+
+### 95.2 型と残る境界
+
+原典はRiehl–Verity Proposition 3.1.10・Remark 3.3.8、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+後半ではn・X・YとH : Fin(n+1) ⥤ walkingAdjunctionHom X Yを暗黙に固定する。
+
+```lean
+lemma walkingAdjunctionOrderHom_id (X Y : WalkingAdjunctionPoint) (A : walkingAdjunctionHom X Y) :
+    walkingAdjunctionOrderHom (𝟙 A) = OrderHom.id
+
+lemma walkingAdjunctionOrderHom_comp {X Y : WalkingAdjunctionPoint}
+    {A B C : walkingAdjunctionHom X Y} (f : A ⟶ B) (g : B ⟶ C) :
+    walkingAdjunctionOrderHom (f ≫ g) =
+      (walkingAdjunctionOrderHom g).comp (walkingAdjunctionOrderHom f)
+
+def walkingAdjunctionCutIntervalInclusion (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) (i : Fin (n + 1)) :
+    Fin (walkingAdjunctionCutIntervalSize a b i) →o
+      Fin (walkingAdjunctionOrdinalCard X Y (F.obj i))
+
+lemma walkingAdjunctionCutIntervalInclusion_injective (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) (i : Fin (n + 1)) :
+    Function.Injective (walkingAdjunctionCutIntervalInclusion a b h i)
+
+lemma walkingAdjunctionCutInterval_square (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (hij : i ≤ j) :
+    (walkingAdjunctionCutIntervalInclusion a b h j).comp
+        (walkingAdjunctionCutIntervalMap a b h hij) =
+      (walkingAdjunctionOrderHom (F.map (homOfLE hij))).comp
+        (walkingAdjunctionCutIntervalInclusion a b h i)
+
+lemma walkingAdjunctionCutInterval_square_apply (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (hij : i ≤ j) (k : Fin (walkingAdjunctionCutIntervalSize a b i)) :
+    walkingAdjunctionCutIntervalInclusion a b h j (walkingAdjunctionCutIntervalMap a b h hij k) =
+      walkingAdjunctionOrderHom (F.map (homOfLE hij))
+        (walkingAdjunctionCutIntervalInclusion a b h i k)
+
+lemma walkingAdjunctionCutIntervalMap_id (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) (i : Fin (n + 1)) :
+    walkingAdjunctionCutIntervalMap a b h (le_refl i) = OrderHom.id
+
+lemma walkingAdjunctionCutIntervalMap_comp (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j k : Fin (n + 1)} (hij : i ≤ j) (hjk : j ≤ k) :
+    walkingAdjunctionCutIntervalMap a b h (hij.trans hjk) =
+      (walkingAdjunctionCutIntervalMap a b h hjk).comp
+        (walkingAdjunctionCutIntervalMap a b h hij)
+
+lemma walkingAdjunctionCutIntervalMap_boundary (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (hij : i ≤ j) :
+    WalkingAdjunctionOrderBoundary M N (walkingAdjunctionCutIntervalMap a b h hij)
+
+def ordinalOrderHomTransport {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    (f : Fin a →o Fin b) : Fin c →o Fin d
+
+lemma ordinalOrderHomTransport_heq {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    (f : Fin a →o Fin b) : HEq (ordinalOrderHomTransport hac hbd f) f
+
+lemma ordinalOrderHomTransport_boundary {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    (X Y : WalkingAdjunctionPoint) (f : Fin a →o Fin b)
+    (hf : WalkingAdjunctionOrderBoundary X Y f) :
+    WalkingAdjunctionOrderBoundary X Y (ordinalOrderHomTransport hac hbd f)
+
+lemma ordinalOrderHomTransport_id {a c : ℕ} (hac : a = c) :
+    ordinalOrderHomTransport hac hac (OrderHom.id : Fin a →o Fin a) = OrderHom.id
+
+lemma ordinalOrderHomTransport_comp {a b c a' b' c' : ℕ}
+    (ha : a = a') (hb : b = b') (hc : c = c') (f : Fin a →o Fin b) (g : Fin b →o Fin c) :
+    ordinalOrderHomTransport ha hc (g.comp f) =
+      (ordinalOrderHomTransport hb hc g).comp (ordinalOrderHomTransport ha hb f)
+
+lemma WalkingAdjunctionFactorization.rank_le_of_prefix_le (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) :
+    ∀ i, walkingAdjunctionCutRank a.cut i ≤ walkingAdjunctionCutRank b.cut i
+
+lemma WalkingAdjunctionFactorization.cut_coordinate (a : WalkingAdjunctionFactorization H)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionCutCoordinate a.cut i = walkingAdjunctionWeight X a.middle (a.left.obj i)
+
+lemma WalkingAdjunctionFactorization.residualObject_card (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard a.middle b.middle
+      (walkingAdjunctionResidualObject (a.left.obj i) (b.left.obj i) (h i)) =
+        walkingAdjunctionCutIntervalSize a.cut b.cut i
+
+def WalkingAdjunctionFactorization.residualMap (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i))
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    walkingAdjunctionResidualObject (a.left.obj i) (b.left.obj i) (h i) ⟶
+      walkingAdjunctionResidualObject (a.left.obj j) (b.left.obj j) (h j)
+
+lemma WalkingAdjunctionFactorization.residualMap_profile (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i))
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    walkingAdjunctionOrderHom (a.residualMap b h f) =
+      ordinalOrderHomTransport (a.residualObject_card b h i).symm (a.residualObject_card b h j).symm
+        (walkingAdjunctionCutIntervalMap a.cut b.cut (a.rank_le_of_prefix_le b h) (leOfHom f))
+
+def WalkingAdjunctionFactorization.residualFunctor (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) :
+    Fin (n + 1) ⥤ walkingAdjunctionHom a.middle b.middle
+
+lemma ordinalOrderHom_heq_val {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    (f : Fin a →o Fin b) (g : Fin c →o Fin d) (h : HEq f g)
+    (i : Fin a) (j : Fin c) (hij : i.val = j.val) : (f i).val = (g j).val
+
+lemma walkingAdjunctionHorizontal_prefix_card_le (X M Y : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom M Y) :
+    walkingAdjunctionOrdinalCard X M A ≤
+      walkingAdjunctionOrdinalCard X Y ((walkingAdjunctionHorizontal X M Y).obj (A, B))
+
+lemma walkingAdjunctionHorizontal_prefix_val (X M Y : WalkingAdjunctionPoint)
+    {A A' : walkingAdjunctionHom X M} {B B' : walkingAdjunctionHom M Y}
+    (f : A ⟶ A') (g : B ⟶ B') (i : Fin (walkingAdjunctionOrdinalCard X M A)) :
+    (walkingAdjunctionOrderHom
+      ((walkingAdjunctionHorizontal X M Y).map (X := (A, B)) (Y := (A', B')) (f, g))
+        (Fin.castLE (walkingAdjunctionHorizontal_prefix_card_le X M Y A B) i)).val =
+      (walkingAdjunctionOrderHom f i).val
+
+lemma WalkingAdjunctionFactorization.prefix_card_le (a : WalkingAdjunctionFactorization H)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard X a.middle (a.left.obj i) ≤
+      walkingAdjunctionOrdinalCard X Y (H.obj i)
+
+def WalkingAdjunctionFactorization.prefixInclusion (a : WalkingAdjunctionFactorization H)
+    (i : Fin (n + 1)) :
+    Fin (walkingAdjunctionOrdinalCard X a.middle (a.left.obj i)) →o
+      Fin (walkingAdjunctionOrdinalCard X Y (H.obj i))
+
+lemma WalkingAdjunctionFactorization.prefix_square (a : WalkingAdjunctionFactorization H)
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    (a.prefixInclusion j).comp (walkingAdjunctionOrderHom (a.left.map f)) =
+      (walkingAdjunctionOrderHom (H.map f)).comp (a.prefixInclusion i)
+```
+
+残りの実関手residualFunctorの存在と全関手の法則は今回構成済みとなった。
+これを元の左因子と合成すると長い左因子に、短い右因子と合成すると長い右因子に戻るという
+全関手の二つの等式はまだ未完。対象の等式は§94で検証済みだが、それを全射の等式に流用しない。
+次は残りの実関手のHへの区間包含との可換性と、今回の先頭区間の可換性を使って照合する。
+
+原子的な自由な道の比較のFaithful、原子性の退化との両立、parental subcomputadの
+filtration・実充填、元のQCatAdjunctionからの全coherentな延長と同じF≫U・単位・余単位・
+HAモデルの照合、G02以降は引き続き未完。G01の済みは0を維持する。
+
+### 95.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大280秒の短いimpl枠。
+セッション94415で区間制限の法則と残りの実関手を検証した。
+共通表示の合成の定義の簡約と、二つの正方形を使う計算を明示した後、
+残りの実関手の数学の証明は初回の対象ビルドで通った。
+行長修正後にその枠は期限で終了124となったことを同じセッションで確認した。
+
+セッション74986で修正後の依存を含め、最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPrefixInclusions:olean
+を検証し、G12_PREFIX_BUILD_EXIT=0・警告なし（1290 jobs）。
+先頭区間の全射の照合と実包含の正方形も初回の対象ビルドで通った。
+追加26根の小さい監査はG12_PREFIX_AUDIT_EXIT=0。
+入力26名と出力26名は一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認して枠を返却した。
+入力・根・全出力・最終対象ビルドログは
+[g12-residual-functor-audit-2026-11-15/](g12-residual-functor-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み7,144行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
