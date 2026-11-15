@@ -222,5 +222,7 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingProjectionValues",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionProjectionValues",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionProjectionComponents",
-  "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoEvaluation"
+  "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoEvaluation",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceAugmentationPointValues",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetPointValues"
 ]
