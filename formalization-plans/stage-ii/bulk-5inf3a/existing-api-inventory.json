@@ -1,0 +1,111 @@
+{
+  "source_head": "107d005583fe01dc50b97945f0586063458e48af",
+  "source_tree": "ef1b4ea21d27d71d2f4e8ef9658e66cb0ae5ca14",
+  "items": [
+    {
+      "name": "complexCompletionFunctor",
+      "path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Basic.lean",
+      "line": 101,
+      "source_sha256": "354df6d0565760216bd575cb4420be792b311f67aad633f43f2306afae3213ac",
+      "declaration_start": "def complexCompletionFunctor (a : R) :",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "cochainProductTotalizationFunctor",
+      "path": "SerrePositivity/HomologicalAlgebra/CochainProductTotalizationHomotopy.lean",
+      "line": 23,
+      "source_sha256": "8c3951882ed4fade2468059cce6f944f3f0174b63b5a57a373b83f6226076f04",
+      "declaration_start": "def cochainProductTotalizationFunctor :",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "HasCochainCompleteTorAmplitude",
+      "path": "SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean",
+      "line": 37,
+      "source_sha256": "5132b194601266bf9cdb8cf109f4837118a0eee66155105e4025f74bbfecdc3f",
+      "declaration_start": "@[expose] def HasCochainCompleteTorAmplitude (f : R →+* S) {r : ℕ} (x : Fin r → R) (c : ℕ) : Prop :=",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "exists_cochainCompleteTor_model",
+      "path": "SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean",
+      "line": 48,
+      "source_sha256": "5132b194601266bf9cdb8cf109f4837118a0eee66155105e4025f74bbfecdc3f",
+      "declaration_start": "theorem exists_cochainCompleteTor_model (f : R →+* S) {r : ℕ} (x : Fin r → R) (c : ℕ)",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "quasiIso_of_completedCover_semifree_map_quasiIso",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/Construction61Reflection.lean",
+      "line": 78,
+      "source_sha256": "d2f78e51dd8449f72d774b9d13f432c197933b7429f831ecf20a7fbe2788ad11",
+      "declaration_start": "theorem quasiIso_of_completedCover_semifree_map_quasiIso",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "universal_crystallineCoverMap_torAmplitude",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineCoverCompleteTor.lean",
+      "line": 80,
+      "source_sha256": "e8e3b2fa0c7484b34aa71804cc3ee4e53641f386e2081a2ac180667df18137c9",
+      "declaration_start": "theorem universal_crystallineCoverMap_torAmplitude :",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "cechAlexanderAffine_baseChange",
+      "path": "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/AffineCechPrismBaseChange.lean",
+      "line": 51,
+      "source_sha256": "a6b12c9e4be3d56000925ca520004ffada7052d416cdd14e9a0e8a1a390676b7",
+      "declaration_start": "theorem cechAlexanderAffine_baseChange :",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "htSec",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateAffineModel.lean",
+      "line": 110,
+      "source_sha256": "99a0fb674294dacacd6a091c67edd048c724f26707547970033df87aafc937bb",
+      "declaration_start": "def htSec (n : SimplexCategory) : affineAlgebra P r →+* (reducedModel P hP r).obj n :=",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "htCoefficients",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateModule.lean",
+      "line": 42,
+      "source_sha256": "d62511382adf9fa728d3944e1ee5ccfb54c8b0fcfeb1985e1acd56ba612aea66",
+      "declaration_start": "private def htCoefficients : (Functor.const SimplexCategory).obj (CommRingCat.of R) ⟶ X where",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "HTAlgebraMap",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateCompletedMap.lean",
+      "line": 390,
+      "source_sha256": "bfc406728e023275c2443d09aeb532f7f7218436a15b5ea5b85afd7610013cf0",
+      "declaration_start": "structure HTAlgebraMap where",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "hodgeTateMap",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateCompletedMap.lean",
+      "line": 400,
+      "source_sha256": "bfc406728e023275c2443d09aeb532f7f7218436a15b5ea5b85afd7610013cf0",
+      "declaration_start": "def hodgeTateMap : HTAlgebraMap P hP r where",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "hodgeTateMap_unique",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateCompletedMap.lean",
+      "line": 410,
+      "source_sha256": "bfc406728e023275c2443d09aeb532f7f7218436a15b5ea5b85afd7610013cf0",
+      "declaration_start": "theorem hodgeTateMap_unique (f : HTAlgebraMap P hP r) : f = hodgeTateMap P hP r := by",
+      "kind": "existing-source-inventory-not-new-implementation"
+    },
+    {
+      "name": "HodgeTateIsoStatement",
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateCompletedMap.lean",
+      "line": 463,
+      "source_sha256": "bfc406728e023275c2443d09aeb532f7f7218436a15b5ea5b85afd7610013cf0",
+      "declaration_start": "def HodgeTateIsoStatement : Prop := ∀ i, Function.Bijective ((hodgeTateMap P hP r).app i)",
+      "kind": "existing-source-inventory-not-new-implementation"
+    }
+  ],
+  "note": "Static inventory with exact source hashes and declaration start locations. Not a new kernel typecheck or proof of the proposed new APIs. Existing build/full verify evidence recorded separately."
+}

@@ -1525,3 +1525,85 @@ Finiteは既存BS定理を直接呼ぶ際に落ちた有限表示性を、**元�
 ### 検証中に進んだmainとの境界
 
 今回のfull verifyの対象は上記の107d00558（取り込み済みmain391b2a0d2）である。終了時のmain51723ce33にはその後の非BS本体の増分766パスがあり、BS本体の変更は0。作業木を変えないmerge-treeの予覧ではEInfinity集約は自動統合、監査audit_bhatt_scholze_stage2.leanだけが競合した。新しいmainの行の旧module/変更対象の完全名の文字列一致は0だが、短名は未判定のため[main増分の採取候補763本・一覧・統合予覧](bulk-b3prime/B4/main-increment-handoff.json)をB4へ追加した。六レーンの一部の差分がmainへ取り込まれて候補0になった分も、この別の一覧に含めている。検証した枝へこの増分を混ぜず、主張の範囲を明記して渡す。調整役の取り込みではmain側の監査追加を保持する。統合後のmainが今回のfull verifyを通ったという主張ではない。mainへの書込み0。
+
+## 5∞-3a 段0：一般の多項式 Hodge–Tate 比較（紙の案）
+
+この節は B3′ 完了後の実装前の設計である。Lean の新規定義・定理・証明は追加していない。実在する本体の API と、これから型を設計する候補を分ける。③-b の ∞ 圏の橋は前提にしない。
+
+### 範囲と数学の終点
+
+`stage-ii-second-half.md` の5∞-3aに従い、一般の**有界向き付き** prism と有限変数の完備多項式代数について、既存の `hodgeTateMap` の全次数の全単射性 `HodgeTateIsoStatement P hP r` を示す。任意に選んだ同型の存在で標準のηの同型性を置き換えない。著者版のProp6.2はまず一変数、Thm6.3はétale層の一般の定理なので、この段で実装するのは多項式の古典模型に制限した部分であり、Thm6.3全体を完成扱いにしない。
+
+原典は `paper/refs/BS-prisms-author.pdf`（SHA256 `4cb49a42c80fc734fb7585da273538e09632431ba06709ae05a11ded6673c27a`）、PDF44頁のLemma4.22、51–52頁のConstruction6.1・Prop6.2・Thm6.3。テキスト抽出だけでなく三頁を画像でも確認した。arXiv版の番号に読み替えない。
+
+Cor5.5の一般の結晶prismへの帰結（5∞-0のB06）はこの段で回収する。ただし一般HT比較を使って、その一般HT比較の証明に必要な結晶入力を先に証明したことにはしない。まず既存のZp・多項式の結晶入力を一般の結晶基底へ標準写像ごと移し、その後に普遍向き付き基底、一般基底、公開する系の順にする。
+
+含めないものはCor4.12のCAlg値の底変換、siteのRΓとの同定D27、非向き付き基底・étale層全体、一般のE∞構造。これらは5∞-3b等の持ち分のまま。draftの `HasFiniteCompleteTorAmplitude`・`baseChangeB`・`affineModuleDiagram` に依存する証明は、今回の古典の実型へ置き換える。通常の導来圏の1圏としてのlimitをホモトピーTotの代わりにはしない。
+
+### 既存の入力（現在の本体で存在するもの）
+
+| 入力 | 実在する場所・API | そのままでは主張できないこと |
+| --- | --- | --- |
+| 完成と擬同型の保存 | `HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Basic.lean` の `complexCompletionFunctor` と擬同型保存 | 底変換と無限の積の可換性は別途必要 |
+| 積全複体 | `HomologicalAlgebra/CochainProductTotalizationHomotopy.lean` の `cochainProductTotalizationFunctor` | 全ての余単体的導来図式の関手的な模型を既に持つという意味ではない |
+| 有限完全Tor振幅 | `HomologicalAlgebra/CochainCompleteTorAmplitude.lean` の `HasCochainCompleteTorAmplitude`、`exists_cochainCompleteTor_model` | 後者の対象ごとの分解の存在から、関手的な半自由分解を仮定しない |
+| Construction6.1の保存性 | `BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/Construction61Reflection.lean` の `quasiIso_of_completedCover_semifree_map_quasiIso` 等 | K-flat性・完備性・指定された比較射という前提を落とさない |
+| 同じ被覆のTor入力 | 同ディレクトリの `CrystallineCoverCompleteTor.lean` | Koszul版の幅3と、mod pの普通のTor幅≤1を区別する |
+| 項ごとのprism底変換 | `Prismatic/CechAlexander/Comparison/AffineCechPrismBaseChange.lean` の `cechAlexanderAffine_baseChange` | 項ごとのδ同型からTotやηの比較まで済んだとはしない |
+| 厳密な多項式作用 | `Prismatic/HodgeTate/Affine/HodgeTateAffineModel.lean` の `htSec`、`HodgeTateModule.lean` のprivate `htCoefficients` | 必要なら既存データの公開wrapperを作る。新しい作用の存在を仮定しない |
+| 実際のR線形複体 | `HodgeTateModuleComplete.lean` 内の `toModules R X ι` と `alternatingCofaceMapComplex (ModuleCat R)` | `reducedModel` 自身は余単体的環であって鎖複体そのものではない |
+| 標準ηと終点 | `HodgeTateCompletedMap.lean` の `HTAlgebraMap`、`hodgeTateMap`、`hodgeTateMap_unique`、`HodgeTateIsoStatement` | `affineForms` は既に完備形式である。未完備の自由加群計算だけで完備版の結論に飛ばない |
+
+[既存API13件の場所・ソースハッシュ](bulk-5inf3a/existing-api-inventory.json)も保存した。これは静的なソース一覧であり、新しい比較射のLean型検査ではない。
+
+### 項目と実装順の案
+
+| ID | 作るもの・受け渡す型の要件 | 確認する出口 |
+| --- | --- | --- |
+| HT01 | 既存の厳密な余単体的R加群模型と、その積全複体・cohomology同一視を公開する最小のAPI | 元の `hodgeTateCohomology'` とη⁰・η¹との可換図式。標準写像を保存 |
+| HT02 | Lemma4.22の鎖複体版：有限生成J、`HasCochainCompleteTorAmplitude f x c`、一様に下に有界な余単体的入力について、**自然な**完備導来底変換–Tot比較射とその擬同型性 | 冪のKoszul塔・有限切断・尾部の一様下界。任意の非有界な余単体的入力へ拡張しない |
+| HT03 | Zpの結晶計算を一般の結晶prismの多項式模型へ移す。原典の平坦性の前提と標準脚、向きによるBocksteinの係数を明示 | draftの `hodgeTate_iso_crystalline` が意図する型。一般HTを仮定せずに得る入力 |
+| HT04 | 普遍向き付き基底について、Construction6.1のαによる比較とHT02を接続し、既存の保存性で標準ηの擬同型性を戻す | 一変数のProp6.2とその指定された比較写像 |
+| HT05 | 一般の有界向き付き基底へ戻し、有限変数へ拡張。形式の積・完成・Bocksteinと既存ηの一意性で照合 | 全rについて `HodgeTateIsoStatement P hP r` |
+| HT06 | Cor5.5の公開する系、対応表、専用監査、保留したdraftの項目との照合 | 系が一般の結晶入力と循環しないこと、全次数で標準ηそのものを検査 |
+
+HT02では元の有限列のTor条件から冪のKoszul塔に必要な一様の下界を渡す補題も証明する。新しい比較射のLean名・完全な引数列は未確定で、ここではLean型検査済みのsignatureを提示しない。候補の実型は、環C→S、有限列x、自然数c、C加群の厳密な余単体的鎖複体から、既存の積全複体模型上の完備導来底変換比較を作るもの。原典のD≥0条件を模型に反映し、一般の∞圏のlimitの追加を要求しない。固定したK-flat係数分解を用いてC線形で自然な比較を作り、S線形の標準写像へ制限後の模型比較で接続する案を最初に検査する。これは実装の候補であり、係数分解に架空のS作用を仮定しない。対象ごとの半自由分解を勝手に余単体的な分解へ束ねることもしない。
+
+HT04–05では原典52頁の一般基底への帰着をそのまま追う。A₀→Aを有限Tor振幅や平坦と仮定しない。制限したK-flat複体が自動的にK-flatだとも仮定しない。比較の模型と合成を明示する。prismの射でf(d)=u d′となるとき、向きの単元とBocksteinの正規化の式を確かめる。ηの底変換の係数を1と決め打ちしない。
+
+### 終点の型と補題の型の案
+
+本体へ置く公開終点の案は、現行draftと同じ次の型である（この段では未実装）。
+
+```text
+-- namespace SerrePositivity.BhattScholze.Prismatic
+-- {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+-- (P : OrientedPrism p A)
+affineLine_moduleComparison (hP : IsBoundedPrism P) :
+  Function.Bijective (hodgeTateMapZero P hP 1) ∧
+  Function.Bijective (hodgeTateMapOne P hP 1) ∧
+  ∀ i : ℕ, 1 < i → Subsingleton (hodgeTateCohomology' P hP 1 i)
+hodgeTate_iso (hP : IsBoundedPrism P) (r : ℕ) :
+  HodgeTateIsoStatement P hP r
+hodgeTate_iso_crystalline (hcrys : P.generator = (p : A)) (r : ℕ) :
+  HodgeTateIsoStatement P (crystallineBounded p P hcrys) r
+```
+
+HT02は、環射f:C→S、有限列x（J=(x)）、幅cとその有限完全Tor条件、厳密な余単体的C線形複体K、各項がD≥0に属するという条件から、自然な比較射
+`BĈ_f(TotΠ K) → TotΠ(BĈ_f K)` の `QuasiIso` を得る型を目指す。これは数学的なsignatureの案で、未定義のBĈをLeanの既存名のように扱わない。項ごとのホモロジーの下界を、勝手に複体の各成分の零条件へ置き換えない。半自由模型の選択をした場合は、比較射の自然性と模型への非依存を別の法則の補題として確認する。
+
+### B06とdraftへの返却
+
+`drafts/A1/HodgeTateComparison.lean` の `hodgeTate_iso_crystalline` と `hodgeTate_iso` は、この段の本体定理と同じ型を目指す。本体へ同じ完全名で昇格するdraft宣言は重複を除いてimport経由で使い、中間補題の名前が異なる場合にだけ委譲を書く。旧報告B06の `deRhamComparison` という表記は、本体BSと全draftの双方に該当する宣言がないため訂正する。存在しない名前を実装対象に数えず、現行の `affineLine_moduleComparison`・`hodgeTate_iso`・`hodgeTate_iso_crystalline` の上記の型で返却先を示す。Cor5.5の古典的な帰結を、CAlg∞の比較やCor4.12と混ぜない。一般の結晶比較をZpの特殊場合で置換して完了とはしない。
+
+### 規模・検査と最初の停止点
+
+新規のLemma4.22の模型と自然性が主な不確実性である。HT01とHT02の型・比較射をまず一つの小さい束にし、既存のK-flat/完備化APIへ無理なく接続するかを検査する。この時点で、追加の一般の導来関手や型の変更が必要になれば、数学の範囲を広げず報告する。HT03–06はその出口を固定してから実装する。
+
+初期の行数見込みは、HT01の公開wrapperが100〜300行、HT02が1,500〜3,000行、HT03〜HT05が計1,200〜3,000行、HT06の監査・draft追従が200〜500行、合わせて**約3,000〜7,000行**。新規のLemma4.22の自然性・模型比較が上端を左右する。共通の規模の規則に従うなら外枠は上端の2倍の14,000行だが、これはこの段0での実装承認を意味しない。見込みの半分に達した時点で実測と残りを報告する。
+
+時間の見積りは**API確認とHT02が2〜4日、結晶入力・普遍/一般基底・有限変数・監査が追加2〜4日、全体4〜8日程度**の作業幅とする。新しい鎖複体版のLemma4.22に実測はなく、B3′の移動の実測をこの数学の所要時間へ換算しない。初回のHT02の型検査と対象ビルドの後に見直す。既存のHT比較の古い行数見積りだけで全体を約束しない。
+
+実装段の各束は対象ビルド、標準ηとの可換性、axiom/sorry監査を行う。Zpの既存ケースだけでなく、一般の有界向き付き基底を引数に持つ終点を監査する。既存の本体の無関係な型や数学を変えない。段0ではLeanの変更0、ビルドの鍵の使用0。**紙の段0を提出し、数学の実装は承認後に進める。**
+
+一覧：済み 0／全体 6（うち追加 0、HT01〜HT06の実装件数）。段0の調査・設計を提出する。数学の実装はこの段0の範囲に含めない。

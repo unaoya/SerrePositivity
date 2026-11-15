@@ -1,0 +1,23 @@
+{
+  "stage": "5inf3a-stage0-paper-only",
+  "source_head": "60183b0f8a8e79bd5d26e115fdad7c5f60b19ab0",
+  "source_tree": "ef1b4ea21d27d71d2f4e8ef9658e66cb0ae5ca14",
+  "reference": "paper/refs/BS-prisms-author.pdf",
+  "reference_sha256": "4cb49a42c80fc734fb7585da273538e09632431ba06709ae05a11ded6673c27a",
+  "reviewed_pdf_pages": [
+    44,
+    51,
+    52
+  ],
+  "implemented_lean_declarations": 0,
+  "scope": "bounded oriented base, finite-variable completed polynomial, classical cochain model; Lemma4.22 new and not yet implemented; full etale sheaf/Cor4.12/D27 excluded",
+  "paper_work_shared_lock_uses": 0,
+  "proposed_items": [
+    "HT01",
+    "HT02",
+    "HT03",
+    "HT04",
+    "HT05",
+    "HT06"
+  ]
+}
