@@ -117,3 +117,74 @@ S7の型へこの条件を新たな入力として足して済ませたり、既
 本体Lean・drafts・他レーンのコードの変更、ビルド、鍵取得はしていない。
 配置はInfinityCategories/Sheaves。実装するdocstringのHTT/Kerodon番号・Tagは各原典を照合して
 記入する（今回は新規Leanのdocstringなし）。
+
+## 11-15：S7分離後の再開
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続の停止点）。
+
+調整役の承認に従いS1〜S6・S8を先行する。外枠18,600行、約9,300行で途中報告。
+S7の単位条件は5a-4mの後とし、前節の停止を解除する。R2は停止、R3は未着手。
+main `f116dfeeb` を指定枝へfast-forwardで取り込んだ。
+
+S1の最初の証明分割を `InfinityCategories/Sheaves/SheafCondition.lean` に置く。
+型はdraftsの同名宣言を保持し、現在の配置のnerveCone・JoinCone.ulift・postcompを再利用。
+
+```lean
+abbrev presheafShape (C : Type u) [SmallCategory C] : SSet.{u+1}
+abbrev Presheaf (C : Type u) [SmallCategory C] (E : SSet.{u+1}) := presheafShape C ⟶ E
+def sieveCategory (S : Sieve U) : Type u
+def sieveDiagram (S : Sieve U) : (sieveCategory S)ᵒᵖ ⥤ Cᵒᵖ
+def sieveCone (S : Sieve U) : Cone (sieveDiagram S)
+def restriction (F : Presheaf C E) (S : Sieve U) : presheafShape (sieveCategory S) ⟶ E
+def restrictionCone (F : Presheaf C E) (S : Sieve U) : JoinCone (restriction F S)
+def IsSheaf (J : GrothendieckTopology C) (F : Presheaf C E) : Prop :=
+  ∀ U S, S ∈ J U → IsLimitCone (restrictionCone F S)
+lemma IsSheaf.of_le (h : J ≤ J') (hF : IsSheaf J' F) : IsSheaf J F
+```
+
+HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）はdraftsと本体の指定錐の対応をdocstringに記録。
+S1のcoverage・sup・extensive・篩切断比較は未完なので、この分割でS1を完了には数えない。
+初回検証ログ `/tmp/is-w1/sheaf-condition/build.log`。共有の鍵の整理券は一枚のみ。
+
+### S1の要素圏の比較と次の接続（下書き）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`Sheaves/SieveElements.lean` に次を準備。まだ検証済みではない。
+
+```lean
+def sieveElementsToCategory (S : Sieve U) : S.functor.Elements ⥤ (sieveCategory S)ᵒᵖ
+def sieveCategoryToElements (S : Sieve U) : (sieveCategory S)ᵒᵖ ⥤ S.functor.Elements
+def sieveElementsEquivalence (S : Sieve U) : S.functor.Elements ≌ (sieveCategory S)ᵒᵖ
+lemma sieveCategoryToElements_comp_π (S : Sieve U) :
+  sieveCategoryToElements S ⋙ Functor.Elements.π S.functor = sieveDiagram S
+```
+
+S4の再利用先は現在の配置の
+`Kerodon/LargeInfinityCategories/PresentableInfinityCategories/DetectingFamily` と
+`BousfieldReflection`。S1の指定制限錐の極限性をG8の元の篩切断写像の可逆性へ結び、
+この可逆性を小さい検出族で試して被覆篩・検出対象からなる生成辺へ渡す。
+単なる対象ごとの同値を、全族の比較や層化の反射と読み替えない。
+
+### S1の基礎の検証結果
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`SheafCondition.lean` 100行の対象ビルド成功（1,739 jobs）、11宣言の小監査は
+標準三公理のみ。ログ `/tmp/is-w1/sheaf-condition/build.log`。計算上限変更なし。
+S1の残りを完了扱いにしない。
+
+次の保存則を `SieveSectionsDiagram.lean` に追加（未検証）。
+
+```lean
+abbrev sectionsOfDiagram (P : Cᵒᵖ ⥤ Type u) (F : Presheaf C E) := SetWeight.diagram P F
+lemma sieveCategoryToElements_inclusion_comp_π (S : Sieve U) :
+  sieveCategoryToElements S ⋙ S.functorInclusion.mapElements ⋙
+    Functor.Elements.π (yoneda.obj U) = sieveDiagram S
+lemma sieveSectionsDiagram_reindex (S : Sieve U) (F : Presheaf C E) :
+  (SSet.uliftFunctor.map (nerveMap (sieveCategoryToElements S))) ≫
+    sectionsOfDiagram S.functor F = restriction F S
+```
+
+基礎・要素圏・この再添字の3本の再検証を同じworktreeの一枚の整理券で実行中。
+ログ `/tmp/is-w1/sheaf-condition/build-2.log`。元の旧E01の未検証4本は対象外。
