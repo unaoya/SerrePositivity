@@ -1669,3 +1669,27 @@ mateEquiv (Classical.choice hK).adjunction (Classical.choice hJ).adjunction
 検証済み全体80本4,971行・448宣言。S6 の適用と大きい site の最終接続は残る。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の層化単位の全正方形と同じ全 RΓ 比較（11-15、未検証）
+
+`SheafificationSiteSpecifiedUnit.lean` は、元の `rK.adjunction.unit` を再添字で送り、
+包含の指定正方形と同じ横の mate の逆を合成したものが、元の
+`rJ.adjunction.unit` の再添字と等しい、という全二胞体の等式。
+この二胞体の合成が `sheafificationReindexSpecifiedFunctorIso` の本文そのものである。
+元の単位を複合随伴の別の単位に取り替えない。
+`DerivedGlobalSectionsSiteSpecifiedComparison.lean` はこの同じ比較に Γ を後合成し、
+任意の前層の全 RΓ 同型を与える。既存の Γ の指定全錐族の比較を再利用する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：指定二胞体を保つ可逆な mate の検証済みの区切り（11-15）
+
+`EquivalenceAdjunctionIsoData`・`EquivalenceSquareMate` の2本120行、
+それぞれ対象ビルドと合わせて10宣言の小監査成功（標準三公理のみ）。
+`/tmp/is-w1/s6-mate-canonical-2/{equivalence-iso-data,square-mate}/target-audit-result.json`。
+指定した正方形そのものへ戻る mate の等式、元の二つの単位の正方形、
+横の比較の逆を合成した単位の可換式まで閉じた。計算上限変更なし。
+検証済み全体82本5,091行・458宣言。層化への適用は明示した可逆性を
+補題の呼び出しにも渡して再検証する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
