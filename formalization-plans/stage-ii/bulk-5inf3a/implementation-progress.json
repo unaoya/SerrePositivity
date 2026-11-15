@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base d3e361bb26d56b13744b4d5ead6943db69b610fd",
+  "verified_head": "this commit: base 015afadb7ee948d1f713ce3b364ec99e81866db2",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,13 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "crystalline-affine-forms-checkpoint.json",
-  "latest_complete_audit_declarations": 1430,
+  "latest_complete_audit_checkpoint": "affine-raw-ht-generators-checkpoint.json",
+  "latest_complete_audit_declarations": 1441,
   "working_changes_unverified": [
-    "AffineRawHodgeTateGenerators",
-    "AffineRawPolynomialCoefficients"
+    "AffineRawFormWords"
   ],
-  "pending_check": "bundle-120 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-121 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
