@@ -15826,3 +15826,216 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み13,397行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §113 G01：最後の純粋な実親からの原子的・非退化な実子と両方向の往復（11-15）
+
+### 113.1 検証済みの追加
+
+追加は **5ファイル463行・明示宣言15**。累計 **123ファイル13,860行・明示宣言723**。
+ComposableArrowLastFace.lean は55行・3宣言、
+WalkingAdjunctionLastParentUniqueness.lean は59行・1宣言、
+WalkingAdjunctionLastFaceData.lean は94行・3宣言、
+WalkingAdjunctionPlusChild.lean は180行・5宣言、
+WalkingAdjunctionPlusParentChildRoundtrip.lean は75行・3宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実親・水平分解の構成、最初の実位置・全射の合成・実同型・係数移送・往復の照合と
+その証明の分割であり、一覧IDは追加しない。
+
+最後の実面の添字関手をcastSuccの実関手に同一視し、最後以前の全実対象・隣接実辺を回収した。
+同じ最後の実面を持ち、両方の実終点の個数が1である二つの実全鎖は、全関手として一致する。
+最後以外の対象・辺は面から回収し、最後の実対象は個数の単射性、最後の実辺は一点の終点への射の一意性で比較する。
+最後の実辺の等式は入力に置いていない。
+
+minus始点の原子的で非退化な実全単体Pについて、構成済みの最初の実併合の位置が最後の辺であり、
+その辺が元の始点の個数から定まる一つだけの併合の全点条件を満たす場合を扱った。
+実最小元の最小性から最後より前の全実辺で併合がないことを示し、最後の実面の全辺へ移した。
+最初の併合の証人は二点以上を与え、原子の終点の個数1と純粋性の個数の条件から、
+その最後の実面の終点の個数が2となることを得た。
+これらは一点の前置を除く構成の入力を実際に供給する法則であり、
+実面の条件を別の存在・反映・選択の仮定として増やしていない。
+
+最後の実面に§112の一点の前置の回収を適用し、始点plusの実全関手である子を構成した。
+回収した子の原子性は、個数の加法則・元の親の両端・元の端点判定から証明した。
+非退化性は、子の同型な辺からIso.prodで積の実同型を作り、実水平合成で前置した辺へ送り、
+元の最後の実面と親の辺へ戻して親の非退化性に反することから示した。長さ0も含む。
+子の存在・原子性・非退化性を新しい入力にしていない。
+
+この子に生成射を前置すると、元の親の最後の実面へ全関手として戻る。
+構成した子から再び実親を作ると、同じ最後の実面と個数1の終点による一意性で、元の同じ実親へ戻る。
+逆に、始点plusの非退化な実原子Hから実親を構成し、そこからこの実子を回収しても、
+前置の単射性と指定面の等式から、元の同じHへ全関手として戻ることを示した。
+両方向とも同型類に落とす前の実全関手の等式である。
+
+### 113.2 型と未完の境界
+
+原典はRiehl–Verity Lemma 4.1.4・§4.2、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma finiteChainFaceIndex_last (n : ℕ) :
+    finiteChainFaceIndex (Fin.last (n + 1)) = Fin.castSuccFunctor (n + 1)
+
+lemma finiteChainFace_last_obj {n : ℕ} (F : ComposableArrows C (n + 1)) (i : Fin (n + 1)) :
+    (finiteChainFace F (Fin.last (n + 1))).obj i = F.obj i.castSucc
+
+lemma finiteChainFace_last_edge {n : ℕ} (F : ComposableArrows C (n + 2)) (j : Fin (n + 1)) :
+    HEq ((finiteChainFace F (Fin.last (n + 2))).map
+      (homOfLE (Fin.castSucc_le_succ j)))
+      (F.map (homOfLE (Fin.castSucc_le_succ j.castSucc)))
+
+lemma walkingAdjunction_eq_of_last_face_and_card_one {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F G : ComposableArrows (walkingAdjunctionHom X Y) (n + 1))
+    (hface : finiteChainFace F (Fin.last (n + 1)) = finiteChainFace G (Fin.last (n + 1)))
+    (hf : walkingAdjunctionOrdinalCard X Y (F.obj (Fin.last (n + 1))) = 1)
+    (hg : walkingAdjunctionOrdinalCard X Y (G.obj (Fin.last (n + 1))) = 1) : F = G
+
+lemma walkingAdjunctionNoMerge_before_last_of_first_last {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n) (j : Fin n) :
+    ¬ WalkingAdjunctionBottomMergeAt P j.castSucc
+
+lemma walkingAdjunctionLastFace_no_one_of_first_last {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n) :
+    ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y
+      ((finiteChainFace P (Fin.last (n + 1))).obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        ((finiteChainFace P (Fin.last (n + 1))).map
+          (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0
+
+lemma walkingAdjunctionLastFace_card_two_of_first_last_pure {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1) :
+    walkingAdjunctionOrdinalCard .minus Y
+      ((finiteChainFace P (Fin.last (n + 1))).obj (Fin.last n)) = 2
+
+def walkingAdjunctionPlusChild {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1) :
+    ComposableArrows (walkingAdjunctionHom .plus Y) n
+
+lemma walkingAdjunctionPlusChild_prefix {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1) :
+    walkingAdjunctionPlusParentPrefix (walkingAdjunctionPlusChild P ha hnd hidx hp) =
+      finiteChainFace P (Fin.last (n + 1))
+
+lemma walkingAdjunctionPlusChild_atomic {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩)
+      (walkingAdjunctionPlusChild P ha hnd hidx hp)
+
+lemma walkingAdjunctionPlusChild_nondegenerate {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1) :
+    ULift.up (walkingAdjunctionPlusChild P ha hnd hidx hp) ∈
+      (WalkingAdjunctionHomShape.{u} .plus Y).nonDegenerate n
+
+lemma walkingAdjunctionPlusChild_parent {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = Fin.last n)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1) :
+    walkingAdjunctionPlusParent (walkingAdjunctionPlusChild P ha hnd hidx hp)
+      (walkingAdjunctionPlusChild_atomic P ha hnd hidx hp) = P
+
+lemma walkingAdjunctionPlusParent_before_last_card {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard .minus Y
+      ((walkingAdjunctionPlusParent H ha).obj (Fin.last n).castSucc) = 2
+
+lemma walkingAdjunctionPlusParent_last_pure_with_source {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionPlusParent H ha).obj (Fin.last n).succ) =
+      walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionPlusParent H ha).obj (Fin.last n).castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionPlusParent H ha).obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom ((walkingAdjunctionPlusParent H ha).map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1
+
+lemma walkingAdjunctionPlusParent_child {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .plus Y).nonDegenerate n) :
+    walkingAdjunctionPlusChild (walkingAdjunctionPlusParent H ha)
+      (walkingAdjunctionPlusParent_atomic H ha) (walkingAdjunctionPlusParent_nondegenerate H ha hnd)
+      (walkingAdjunctionPlusParent_first_index H ha hnd)
+      (walkingAdjunctionPlusParent_last_pure_with_source H ha) = H
+```
+
+実有限順序の模型の最後の深さの条件については、実親と始点plusの原子的・非退化な子の両方向の実構成と往復を検証した。
+原典の文字列表示とfillable条件との全比較、内側の深さの実親の逆方向の全照合、
+その他の面とのfiltrationの両立、parental subcomputadのfiltration、
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合はまだ未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 113.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加15根だけの公理監査を確認した。
+最終対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusParentChildRoundtrip:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+回収した子の終点の型を明示し、積の実辺の同型をIso.prodから構成してから最終検証した。
+追加15根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-plus-parent-child-roundtrip-audit-2026-11-15/](g12-plus-parent-child-roundtrip-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み13,860行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
