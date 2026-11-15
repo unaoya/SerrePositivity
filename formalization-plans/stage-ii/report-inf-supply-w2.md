@@ -16690,3 +16690,71 @@ lemma strictBETotJointSourceNativeTwistedFiberMap_unit_arrow (X : (operad A).Alg
 ### 278.2 検収と残り
 
 対象ビルド345は依存を含む12,293 jobsで成功。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を実行し、終了コード0。小監査は235モジュール・1,622宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本84行、公開定義一つ・公開補題三つ・局所instance二つ。自レーン累計231本・15,758行（外枠まで6,242行）、自レーン実環境1,615宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン597ファイル・1,896個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build345.log、isw2-validation345.json、isw2-declaration-collision-scan345.json。コードは413230b6dに保存した。元のnative fiber射そのものについて同じ単位の辺の類を回収する範囲であり、Hom空間の点の同型・全straightening比較の単位評価・全変換の一致はまだ主張しない。R03h・R03d・3b-4aも未完。
+
+## 279. 元の単位条件を満たす同じ全空間の射の単位への接続（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 279.1 型と範囲
+
+§277〜278の結果・型・コミットは4d59e83eaに報告した。既存のstrictBETotJointSourceNativeFiberUnit_mapを同じpullback同型で後合成し、その同じ写像の元の単位点での値を§278へ接続する。既存の単位・合成・係数移送の法則と証明の分割であり、新しい数学のIDの追加はない。
+
+個別検査の一時ファイルでvertexFiberMap・nerveVertexの名前空間が欠け、未知の短名が暗黙の変数として推論されていたため、型推論が既定上限に達した。必要なEquivalence・TheSliceAndJoinConstructionsを明示し、autoImplicit falseで再検査した9回目は終了コード0、出力なし。計算上限は上げていない。元の等式の型を保ち、HEqへの型の変更は採用していない。以下を本体へ分けて対象ビルド346と小監査を行う。
+
+#### StrictDiagramTotJointNativeLiftUnit（95行）
+
+```lean
+lemma strictBETotJointSourceNativeLiftUnit_twistedFiberMap
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P ≫
+      vertexFiberMap (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+        (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) ≫
+        (vertexFiberPullbackIso (twistedArrowProjection (CAlg_R A))
+          (strictBETotJointNativeHomInput A) (nerveVertex P)).hom =
+            strictBETotJointSourceNativeTwistedFiberMap A P
+
+lemma strictBETotJointSourceNativeLiftUnit_unit_arrow
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (X : (operad A).Algebra) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A)
+          (strictBETotJointUnitIndex A X) ≫
+        vertexFiberMap (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+          (strictBETotJointNativeHomProjection A) m hm (nerveVertex (strictBETotJointUnitIndex A X)) ≫
+        (vertexFiberPullbackIso (twistedArrowProjection (CAlg_R A))
+          (strictBETotJointNativeHomInput A) (nerveVertex (strictBETotJointUnitIndex A X))).hom).app
+          (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk ((strictBETotModelSource A).app
+        (Opposite.op ⦋0⦌) (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 279.2 検収と残り
+
+対象ビルド346は依存を含む12,294 jobsで成功。--class impl --wait 3600、一枚の整理券で順番を待ち、gtimeout 1700秒の中で対象ビルドと小監査を実行した。小監査は236モジュール・1,626宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本95行、公開二補題・局所instance二つ。自レーン累計232本・15,853行（外枠まで6,147行）、自レーン実環境1,619宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン598ファイル・1,898個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build346.log、isw2-validation346.json、isw2-declaration-collision-scan346.json。共通の入口・公式監査・⑤aのファイル・既存Leanは変更していない。コードは7d9e0ebb2に保存した。全空間の射には元の底の等式と元の単位条件だけを仮定した。実射自身の弱同値性・全straightening比較の単位の評価・全関手同型の一致はまだ未完であり、今回の単位点の辺の類で代用しない。R03h・R03d・3b-4aは未完のまま。
+
+### 279.3 次の確認箇所
+
+元のnative fiberの単位の辺の類の一致から、同じHom空間の点の同型へ戻す際に、既存のcosliceTwistedHomMapとcosliceFiberVertexToEdgeが同じ辺を表す次の構成の法則を調べた。
+
+```lean
+lemma cosliceTwistedHomMap_vertex_edge_arrow {C : SSet.{u}} {x y : C _⦋0⦌}
+    (v : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((cosliceTwistedHomMap x y).app (Opposite.op ⦋0⦌) v).val))) =
+      Arrow.mk (HomotopyCategory.homMk (cosliceFiberVertexToEdge v))
+```
+
+これは未検証の候補で、本体・manifest・監査・済みの数には入れていない。同じedgewiseWeightIsoの逆とcosliceEdgewiseCollapseの零次元の式を合わせれば足りる見込みだが、一時ファイルの一点の証明でSubsingletonの推論が通らず、未解決のままの大きい証明はkernelの既定上限にも達した。計算上限は上げず、小さい重みの等式と辺の等式に分割する検査用ファイル /private/tmp/isw2-coslice-twisted-unit-split.lean に残した。次はFin 1の座標を明示して小さい補題ごとに検査する。既存のcosliceFiberVertexIsoOfHomEqへ実際の単位点を戻す照合、元のstraightening評価の全自然性による全変換の一致をさらに示す必要があり、今回の結果で全関手同型を得たとはしない。
+
+B4′自体は§268で完了。統合81683a2ab・報告8c7971003、書換え0・保留0を維持し、§277〜279は/goal再開後の追加の検証である。
