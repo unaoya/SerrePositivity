@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 2adc5171c3af9cd997136861cccdf9cc12412702",
+  "verified_head": "this commit: base 73bd16b0ecbf2fd4616e9f1925a651fd139bc421",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,15 +12,15 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "completed-scalar-models-checkpoint.json",
-  "latest_complete_audit_declarations": 706,
+  "latest_complete_audit_checkpoint": "finite-row-equivalence-checkpoint.json",
+  "latest_complete_audit_declarations": 713,
   "working_changes_unverified": [
-    "FiniteRowEquivalence",
-    "FiniteCompletedComparisonIso",
     "ScalarModelNaturality",
-    "CompletedTotalComparisonIso"
+    "ScalarRestrictionTotal",
+    "CompletedTotalComparisonIso",
+    "FiniteCompletedComparisonIso"
   ],
-  "pending_check": "bundle-028 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-029 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
