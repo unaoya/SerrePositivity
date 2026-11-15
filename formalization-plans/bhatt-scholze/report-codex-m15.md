@@ -16039,3 +16039,204 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み13,860行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §114 G01：内側の実面の非退化性・最初の位置・元の純粋な実親の全関手の復元（11-15）
+
+### 114.1 検証済みの追加
+
+追加は **4ファイル435行・明示宣言18**。累計 **127ファイル14,295行・明示宣言741**。
+ComposableArrowInnerFace.lean は118行・7宣言、
+WalkingAdjunctionInnerFaceNondegenerate.lean は105行・4宣言、
+WalkingAdjunctionInnerFaceFirstMerge.lean は97行・3宣言、
+WalkingAdjunctionInnerParentReconstruction.lean は115行・4宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実親・実細分の構成、元の実辺の全合成・実最小元・実同型・係数移送・往復の照合と
+その証明の分割であり、一覧IDは追加しない。
+
+任意の圏の実全鎖について、内側の実面の全対象と隣接辺を元の実鎖へ照合した。
+指定位置までの対象とそれより前の辺は元の同じ位置、それより後は元の一つ後の位置となる。
+指定辺は元の二つの隣接実辺の合成に異種等式で一致する。内側の面は実終点も保つ。
+両端の実有限添字を同一視すれば全実射も一致することを使い、全射を保持している。
+
+原子的な実親の内側の指定面は、両端の対象が変わらないので原子的となる。
+左の元の実辺に底の二点の実併合があれば、右の実射の最小元保存により合成辺も実際に併合する。
+実併合の証人の値1と実同型の全点の値の保存から、併合する実辺は同型でないことを示した。
+親が非退化なら、子の指定辺はこの実併合で非同型となり、他の全実辺も親の非同型辺へ戻るので、
+子は元のHomのnerveで非退化となる。子の原子性・非退化性を新しい入力に置いていない。
+
+親の実際に選んだ最初の併合の位置が内側の指定した辺である場合には、
+実最小元の所属から左の実辺の併合の証人を供給した。
+指定辺より前の子の実辺で併合があれば、元の親にも同じ位置で併合があり、実最小元の最小性に反する。
+指定合成辺の実併合と合わせ、子の実際に選んだ最初の位置が指定位置に一致することを示した。
+
+親の指定した左の実辺が一つだけの併合の全点条件を満たす場合、
+子の始点の個数と実併合の証人を供給し、子の指定辺を実際に細分した実全関手が、元の親と一致することを証明した。
+使った一意性は、指定面と純粋な左の実辺から全実関手を回収する§109の法則である。
+さらに親の非退化性と、実細分の非退化性の必要十分条件から、子の指定辺は非純粋となることを回収した。
+親が最初の実位置で純粋に併合している場合には、子の実最小元と始点の実個数を照合し、
+元のwalkingAdjunctionFirstRefinementで親を選び直しても、元の同じ実親へ全関手として戻ることを示した。
+最後の個数の書き換えは実面の対象の型で明示している。
+
+### 114.2 型と未完の境界
+
+原典はRiehl–Verity Lemma 4.1.3・§4.2、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma finiteChainFace_map_heq_of_indices {n : ℕ} (F : ComposableArrows C (n + 1))
+    (p : Fin (n + 2)) {a b : Fin (n + 1)} {a' b' : Fin (n + 2)}
+    (ha : p.succAbove a = a') (hb : p.succAbove b = b') (hab : a ≤ b) (hab' : a' ≤ b') :
+    HEq ((finiteChainFace F p).map (homOfLE hab)) (F.map (homOfLE hab'))
+
+lemma finiteChainFace_inner_before_obj {n : ℕ} (F : ComposableArrows C (n + 2))
+    (k : Fin (n + 1)) (i : Fin (n + 2)) (hi : i.val ≤ k.val) :
+    (finiteChainFace F k.succ.castSucc).obj i = F.obj i.castSucc
+
+lemma finiteChainFace_inner_after_obj {n : ℕ} (F : ComposableArrows C (n + 2))
+    (k : Fin (n + 1)) (i : Fin (n + 2)) (hi : k.val < i.val) :
+    (finiteChainFace F k.succ.castSucc).obj i = F.obj i.succ
+
+lemma finiteChainFace_inner_before_edge {n : ℕ} (F : ComposableArrows C (n + 2))
+    (k j : Fin (n + 1)) (hj : j < k) :
+    HEq ((finiteChainFace F k.succ.castSucc).map (homOfLE (Fin.castSucc_le_succ j)))
+      (F.map (homOfLE (Fin.castSucc_le_succ j.castSucc)))
+
+lemma finiteChainFace_inner_after_edge {n : ℕ} (F : ComposableArrows C (n + 2))
+    (k j : Fin (n + 1)) (hj : k < j) :
+    HEq ((finiteChainFace F k.succ.castSucc).map (homOfLE (Fin.castSucc_le_succ j)))
+      (F.map (homOfLE (Fin.castSucc_le_succ j.succ)))
+
+lemma finiteChainFace_inner_merged_edge {n : ℕ} (F : ComposableArrows C (n + 2))
+    (k : Fin (n + 1)) :
+    HEq ((finiteChainFace F k.succ.castSucc).map (homOfLE (Fin.castSucc_le_succ k)))
+      (F.map (homOfLE (Fin.castSucc_le_succ k.castSucc)) ≫
+        F.map (homOfLE (Fin.castSucc_le_succ k.succ)))
+
+lemma finiteChainFace_inner_last {n : ℕ} (F : ComposableArrows C (n + 2)) (k : Fin (n + 1)) :
+    (finiteChainFace F k.succ.castSucc).obj (Fin.last (n + 1)) = F.obj (Fin.last (n + 2))
+
+lemma WalkingAdjunctionBottomMergeAt.not_isIso {n : ℕ} {Y : WalkingAdjunctionPoint}
+    {H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)} {k : Fin (n + 1)}
+    (h : WalkingAdjunctionBottomMergeAt H k) :
+    ¬ IsIso (H.map (homOfLE (Fin.castSucc_le_succ k)))
+
+lemma walkingAdjunctionInnerFace_atomic {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩)
+      (finiteChainFace P k.succ.castSucc)
+
+lemma walkingAdjunctionInnerFace_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (hm : WalkingAdjunctionBottomMergeAt P k.castSucc) :
+    WalkingAdjunctionBottomMergeAt (finiteChainFace P k.succ.castSucc) k
+
+lemma walkingAdjunctionInnerFace_nondegenerate {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hm : WalkingAdjunctionBottomMergeAt P k.castSucc) :
+    ULift.up (finiteChainFace P k.succ.castSucc) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)
+
+lemma walkingAdjunctionInnerFace_first_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = k.castSucc) :
+    WalkingAdjunctionBottomMergeAt P k.castSucc
+
+lemma walkingAdjunctionInnerFace_no_before_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = k.castSucc)
+    (j : Fin (n + 1)) (hj : j < k) :
+    ¬ WalkingAdjunctionBottomMergeAt (finiteChainFace P k.succ.castSucc) j
+
+lemma walkingAdjunctionInnerFace_first_index {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = k.castSucc) :
+    walkingAdjunctionFirstBottomMergeIndex (finiteChainFace P k.succ.castSucc)
+      (walkingAdjunctionAtomic_endpoint_cards _ (walkingAdjunctionInnerFace_atomic P k ha)).2
+      (walkingAdjunctionInnerFace_nondegenerate P k hnd
+        (walkingAdjunctionInnerFace_first_merge P k ha hnd hidx)) = k
+
+lemma walkingAdjunctionInnerFace_source_card {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (hm : WalkingAdjunctionBottomMergeAt P k.castSucc) :
+    walkingAdjunctionOrdinalCard .minus Y
+      ((finiteChainFace P k.succ.castSucc).obj k.castSucc) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc) - 2 + 2
+
+lemma walkingAdjunctionInnerFace_refinement {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (hm : WalkingAdjunctionBottomMergeAt P k.castSucc)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ k.castSucc))) i).val = i.val - 1) :
+    P = walkingAdjunctionBottomMergeRefinement (finiteChainFace P k.succ.castSucc) k
+      (walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc) - 2)
+      (walkingAdjunctionInnerFace_source_card P k hm)
+      (walkingAdjunctionInnerFace_merge P k hm).one_zero
+
+lemma walkingAdjunctionInnerFace_not_pure {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (hm : WalkingAdjunctionBottomMergeAt P k.castSucc)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ k.castSucc))) i).val = i.val - 1) :
+    ¬ (walkingAdjunctionOrdinalCard .minus Y
+        ((finiteChainFace P k.succ.castSucc).obj k.succ) =
+          walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y
+        ((finiteChainFace P k.succ.castSucc).obj k.castSucc)),
+        (walkingAdjunctionOrderHom ((finiteChainFace P k.succ.castSucc).map
+          (homOfLE (Fin.castSucc_le_succ k))) i).val = i.val - 1)
+
+lemma walkingAdjunctionInnerFace_firstRefinement {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (P : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)) (k : Fin (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) P)
+    (hnd : ULift.up P ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hidx : walkingAdjunctionFirstBottomMergeIndex P
+      (walkingAdjunctionAtomic_endpoint_cards P ha).2 hnd = k.castSucc)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.succ) =
+        walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc) - 2 + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (P.obj k.castSucc.castSucc)),
+        (walkingAdjunctionOrderHom (P.map
+          (homOfLE (Fin.castSucc_le_succ k.castSucc))) i).val = i.val - 1) :
+    walkingAdjunctionFirstRefinement (finiteChainFace P k.succ.castSucc)
+      (walkingAdjunctionInnerFace_atomic P k ha)
+      (walkingAdjunctionInnerFace_nondegenerate P k hnd
+        (walkingAdjunctionInnerFace_first_merge P k ha hnd hidx)) = P
+```
+
+実有限順序の模型では、内側の純粋な最初の親からの指定面について、
+原子性・非退化性・最初の位置・非純粋性・元の実親への再構成を検証した。
+順方向の選択した実細分の指定面が元の子へ戻る等式は既存の実指定面の法則である。
+ただし原典の文字列表示とfillable条件との全比較、その他の面とのfiltrationの両立、
+parental subcomputadのfiltration、元のQCatAdjunctionからの全coherentな延長、
+水平反対の向きの全比較、同じF≫U・単位・余単位・HAモデルとの照合はまだ未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 114.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加18根だけの公理監査を確認した。
+最終対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionInnerParentReconstruction:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+追加18根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-inner-parent-reconstruction-audit-2026-11-15/](g12-inner-parent-reconstruction-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み14,295行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
