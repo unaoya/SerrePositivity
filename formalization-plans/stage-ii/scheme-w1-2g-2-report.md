@@ -1394,3 +1394,16 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール76行＋入口1行。新規109モジュール本体7,187行・入口込み7,296行。既存追加25行を含む外枠計数は本体7,212行・入口込み7,321行。新規小監査累計716宣言、既存15宣言は別計上。次の既存の増大余単体の射の値と single からの射の可換性は単独検証に成功したが、本体ビルド・監査前で、この束には含めない。G4・G5 は未完、外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：基底の係数写像・同じ引き戻し・増大軸を保つ射
+
+`SchemePerfectCechTupleAugmentedPullback`（66行）の宣言：`schemePerfectCechTupleAugmentationHom_pullback` は元の R と S の single からの同じ増大写像、既存の single.map に渡した実際の Frobenius の q の写像、同じ nerve の実際の引き戻しの可換性。零次成分の外延性と前束の線形な係数移送で示す。`schemePerfectCechTupleAugmentedPullback` は left に同じ single.map の q、right に検証済みの実際の係数関手の自然変換を持つ既存の CosimplicialObject.Augmented の射。w も同じ可換性から供給する。最終出力の型や仮定は変えていない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,195ジョブ成功、小監査7宣言（所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-tuple-augmented-pullback-check-2.log`・`2g-perfect-cech-tuple-augmented-pullback-native.log`・`2g-perfect-cech-tuple-augmented-pullback-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。長い行の style 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール66行＋入口1行。基準56ea849a3からの追加ファイルを独立に数え直し、新規110モジュール本体7,253行・入口込み7,363行で一致。既存追加25行を含む外枠計数は本体7,278行・入口込み7,388行。新規小監査累計723宣言、既存15宣言は別計上。
+
+増大軸の整合性まで実際の写像でそろった。次は、この同じ被覆・実際の制限の射を F8 の四角形へ自然に渡し、同じ四角形の各項の完全性を B1 の二重 Čech に接続する。アフィン conerve と実際の Frobenius 係数の自然な比較、Noether 帰納、G5 の模型と filtered colimit への移送は残る。G4 の残りを約2,000〜4,000行、G5 を約1,000〜2,000行と見て、全体の着地を約10,000〜13,500行へ補正する。外枠16,000行は不変。条件付きの構成だけで Thm 2.9 の十分性や停止点2g-2の完成とは呼ばない。
+
+一覧：済み1／全体3（うち追加0）。
