@@ -10261,3 +10261,172 @@ M15のLean、main、⑤a・③系、Interface、draftsには書き込んでい�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。外枠20,000行中、検証済み695行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §77 G01：walking adjunction の混合Homの有限順序表示（11-15）
+
+### 77.1 実構成と検証
+
+G01の全拡張の添字に必要な混合Homを進めた。追加は2ファイル398行・明示宣言37。
+G12の累計は **10ファイル1,093行・明示宣言87**（§76の695行・50宣言との和）。
+G01は未完であり、G01〜G15の一覧の済みは0のまま。
+有限順序集合上の随伴を、準圏の全モナドを構成したことに読み替えない。
+
+- OrdinalAdjoints.lean：247行。有限下方fiberの最大による実右随伴、上方fiberの最小による
+  実左随伴、端点保存とそれぞれの存在の同値、往復・恒等射・合成則を証明した。
+- EndpointSimplex.lean：151行。最小元保存の圏BottomSimplexCategoryと最大元保存の圏
+  TopSimplexCategoryを実際に作り、右・左随伴による反変関手と、その往復の関手の等式から
+  BottomSimplexCategory ≌ TopSimplexCategoryᵒᵖを構成した。
+
+原典は[Riehl–Verity](https://math.jhu.edu/~eriehl/adjunctions.pdf) Observation 3.3.6・
+Remark 3.3.8。これらはHA Proposition 4.7.3.3の全拡張を構成するための
+walking adjunctionの混合Homの表示に使う。docstringにはその用途と
+Kerodon Remark 6.2.1.4（Tag 02EN）を記した。原典の番号をG01の完成属性として登録してはいない。
+
+G01の残りは、全walking adjunctionの合成とその全拡張、元のF≫Uへの比較、元の単位・余単位との照合。
+今回の混合Homの表示だけでこれらを完成とはしない。新しい一覧IDは加えていない。
+
+### 77.2 同じ構成の法則・表示の型
+
+以下は各ファイルと同じ文脈（m,n,k : ℕ、圏構造、端点保存の性質）で読む。
+全てG01の構成・その法則の分割。200行を超える宣言・証明はない。
+ファイル全体が200行を超えるOrdinalAdjoints.leanの行数は上にも明記した。
+
+`OrdinalAdjoints.lean`：
+
+```lean
+def ordinalLowerFiber (f : Fin (m + 1) →o Fin (n + 1)) (j : Fin (n + 1)) :
+    Finset (Fin (m + 1))
+
+lemma ordinalLowerFiber_nonempty (f : Fin (m + 1) →o Fin (n + 1))
+    (hf : f 0 = 0) (j : Fin (n + 1)) : (ordinalLowerFiber f j).Nonempty
+
+def ordinalRightAdjointValue (f : Fin (m + 1) →o Fin (n + 1))
+    (hf : f 0 = 0) (j : Fin (n + 1)) : Fin (m + 1)
+
+lemma ordinalRightAdjointValue_gc (f : Fin (m + 1) →o Fin (n + 1))
+    (hf : f 0 = 0) (i : Fin (m + 1)) (j : Fin (n + 1)) :
+    f i ≤ j ↔ i ≤ ordinalRightAdjointValue f hf j
+
+def ordinalRightAdjoint (f : Fin (m + 1) →o Fin (n + 1)) (hf : f 0 = 0) :
+    Fin (n + 1) →o Fin (m + 1)
+
+lemma ordinalRightAdjoint_gc (f : Fin (m + 1) →o Fin (n + 1)) (hf : f 0 = 0) :
+    GaloisConnection f (ordinalRightAdjoint f hf)
+
+lemma ordinalRightAdjoint_last (f : Fin (m + 1) →o Fin (n + 1)) (hf : f 0 = 0) :
+    ordinalRightAdjoint f hf (Fin.last n) = Fin.last m
+
+def ordinalUpperFiber (g : Fin (n + 1) →o Fin (m + 1)) (i : Fin (m + 1)) :
+    Finset (Fin (n + 1))
+
+lemma ordinalUpperFiber_nonempty (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) (i : Fin (m + 1)) :
+    (ordinalUpperFiber g i).Nonempty
+
+def ordinalLeftAdjointValue (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) (i : Fin (m + 1)) : Fin (n + 1)
+
+lemma ordinalLeftAdjointValue_gc (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) (i : Fin (m + 1)) (j : Fin (n + 1)) :
+    ordinalLeftAdjointValue g hg i ≤ j ↔ i ≤ g j
+
+def ordinalLeftAdjoint (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) : Fin (m + 1) →o Fin (n + 1)
+
+lemma ordinalLeftAdjoint_gc (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) :
+    GaloisConnection (ordinalLeftAdjoint g hg) g
+
+lemma ordinalLeftAdjoint_zero (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) : ordinalLeftAdjoint g hg 0 = 0
+
+lemma ordinal_zero_of_gc {f : Fin (m + 1) →o Fin (n + 1)}
+    {g : Fin (n + 1) →o Fin (m + 1)} (h : GaloisConnection f g) : f 0 = 0
+
+lemma ordinal_last_of_gc {f : Fin (m + 1) →o Fin (n + 1)}
+    {g : Fin (n + 1) →o Fin (m + 1)} (h : GaloisConnection f g) :
+    g (Fin.last n) = Fin.last m
+
+lemma ordinal_rightAdjoint_exists_iff (f : Fin (m + 1) →o Fin (n + 1)) :
+    (∃ g : Fin (n + 1) →o Fin (m + 1), GaloisConnection f g) ↔ f 0 = 0
+
+lemma ordinal_leftAdjoint_exists_iff (g : Fin (n + 1) →o Fin (m + 1)) :
+    (∃ f : Fin (m + 1) →o Fin (n + 1), GaloisConnection f g) ↔
+      g (Fin.last n) = Fin.last m
+
+lemma ordinal_left_right (f : Fin (m + 1) →o Fin (n + 1)) (hf : f 0 = 0) :
+    ordinalLeftAdjoint (ordinalRightAdjoint f hf) (ordinalRightAdjoint_last f hf) = f
+
+lemma ordinal_right_left (g : Fin (n + 1) →o Fin (m + 1))
+    (hg : g (Fin.last n) = Fin.last m) :
+    ordinalRightAdjoint (ordinalLeftAdjoint g hg) (ordinalLeftAdjoint_zero g hg) = g
+
+lemma ordinalRightAdjoint_id (m : ℕ) :
+    ordinalRightAdjoint (OrderHom.id : Fin (m + 1) →o Fin (m + 1)) rfl = OrderHom.id
+
+lemma ordinalRightAdjoint_comp (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (n + 1) →o Fin (k + 1)) (hf : f 0 = 0) (hg : g 0 = 0) :
+    ordinalRightAdjoint (g.comp f) (by change g (f 0) = 0; rw [hf, hg]) =
+      (ordinalRightAdjoint f hf).comp (ordinalRightAdjoint g hg)
+
+lemma ordinalLeftAdjoint_id (m : ℕ) :
+    ordinalLeftAdjoint (OrderHom.id : Fin (m + 1) →o Fin (m + 1)) rfl = OrderHom.id
+
+lemma ordinalLeftAdjoint_comp (f : Fin (n + 1) →o Fin (m + 1))
+    (g : Fin (k + 1) →o Fin (n + 1))
+    (hf : f (Fin.last n) = Fin.last m) (hg : g (Fin.last k) = Fin.last n) :
+    ordinalLeftAdjoint (f.comp g) (by change f (g (Fin.last k)) = Fin.last m; rw [hg, hf]) =
+      (ordinalLeftAdjoint g hg).comp (ordinalLeftAdjoint f hf)
+```
+
+`EndpointSimplex.lean`：
+
+```lean
+def simplexPreservesBottom : MorphismProperty SimplexCategory
+
+instance simplexPreservesBottom_multiplicative : simplexPreservesBottom.IsMultiplicative
+
+def simplexPreservesTop : MorphismProperty SimplexCategory
+
+instance simplexPreservesTop_multiplicative : simplexPreservesTop.IsMultiplicative
+
+abbrev BottomSimplexCategory
+
+abbrev TopSimplexCategory
+
+def bottomSimplexRightAdjoint {X Y : BottomSimplexCategory} (f : X ⟶ Y) :
+    (⟨Y.obj⟩ : TopSimplexCategory) ⟶ ⟨X.obj⟩
+
+def topSimplexLeftAdjoint {X Y : TopSimplexCategory} (g : X ⟶ Y) :
+    (⟨Y.obj⟩ : BottomSimplexCategory) ⟶ ⟨X.obj⟩
+
+def bottomSimplexToTopOp : BottomSimplexCategory ⥤ TopSimplexCategoryᵒᵖ
+
+def topOpSimplexToBottom : TopSimplexCategoryᵒᵖ ⥤ BottomSimplexCategory
+
+lemma bottomSimplex_roundtrip : bottomSimplexToTopOp ⋙ topOpSimplexToBottom =
+    𝟭 BottomSimplexCategory
+
+lemma topSimplex_roundtrip : topOpSimplexToBottom ⋙ bottomSimplexToTopOp =
+    𝟭 TopSimplexCategoryᵒᵖ
+
+def endpointSimplexEquivalence : BottomSimplexCategory ≌ TopSimplexCategoryᵒᵖ
+```
+
+### 77.3 対象検証と今回の受け渡し
+
+セッション61416をwith_build_lock.sh --class impl --wait 3600、最大280秒のimpl枠で検証した。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.EndpointSimplex:oleanだけ。
+依存にOrdinalAdjointsを含む。初回の型推論・importのエラーを同じ短い枠で修正し、
+最終 **G12_ORDINAL_BUILD_EXIT=0**、警告なし。
+続く新設37宣言の小さい監査は **G12_ORDINAL_AUDIT_EXIT=0**。
+全37の出力名が入力と一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+追加公理・sorryAxはない。監査後に枠へexitを渡して明示的に返却し、外側の終了値も0。
+自分の生きたビルド・監査・待ち整理券はない。
+
+監査の入力・根の名前・全出力は[g12-ordinal-audit-2026-11-15/](g12-ordinal-audit-2026-11-15/)へ保存した。
+§76の既存8ファイルは変更していない。M15のLean・drafts・main・⑤a・③系・Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み1,093行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
