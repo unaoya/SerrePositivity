@@ -1546,3 +1546,29 @@ conjugate の単位法則はビルドを通過したが、小監査はその適�
 検証済み全体72本4,452行・405宣言、S6 全体は未完。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の全被覆篩の層条件への接続（11-15、未検証）
+
+`AsSmallSiteInvariance.lean` の型は
+`IsSheaf J ((asSmallSiteShapeIso C).hom ≫ O) ↔
+ NativeIsSheaf ((AsSmall.down : AsSmall C ⥤ C).inducedTopology J) O`。
+前提は元の `C : Type u`・`E : SSet(u+1)` の準圏性だけで、係数を上げない。
+任意の AsSmall 表示の被覆篩は元の引き戻し篩へ移し、逆向きは元の篩の順像を用いる。
+Mathlib の元の誘導位相の判定を再利用し、新しい被覆条件を仮定しない。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：既存の随伴比較の指定単位法則の検証済みの区切り（11-15）
+
+`ConjugateUnit.lean`・`AdjointComparisonUnit.lean` の2本82行、
+対象ビルドと4宣言の小監査成功
+（`/tmp/is-w1/native-site-unit/target-audit-result.json`、標準三公理のみ）。
+二度の交換則と三角恒等式から、任意の双圏での conjugate の単位法則を示し、
+S6 の元の `adjointFunctorIsoOfRightIso` へ同じ全二胞体の等式として接続した。
+
+NativeSiteDescent はビルドを通過した。AsSmall の篩比較は一般の lift の
+充満忠実性の型クラスの探索を、元の Over.post の射の全射・単射の明示的適用に直す。
+元の被覆篩の層条件の同値まで、残りは再検証中。
+検証済み全体74本4,534行・409宣言。S6 全体の指定層化単位の照合はなお残る。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
