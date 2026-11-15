@@ -1682,3 +1682,4 @@ public import SerrePositivity.AlgebraicGeometry.SegreChartInverse
 public import SerrePositivity.AlgebraicGeometry.SegreChartForwardLaws
 public import SerrePositivity.AlgebraicGeometry.ProjectiveAwayStructureMap
 public import SerrePositivity.AlgebraicGeometry.DegreeOneChartExt
+public import SerrePositivity.AlgebraicGeometry.SegreChartEquiv
