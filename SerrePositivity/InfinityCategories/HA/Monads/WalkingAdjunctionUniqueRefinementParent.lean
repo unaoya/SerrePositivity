@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBottomMergeRigidity
-public import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementNondegenerateIff
+public import
+  SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementNondegenerateIff
 
 /-!
 概要：非退化な指定面を持つ純粋な併合の実親の存在・一意性を非純粋性と照合する。
