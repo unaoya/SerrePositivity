@@ -28,7 +28,7 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable {P : OrientedPrism p A} {Q : OrientedPrism p B}

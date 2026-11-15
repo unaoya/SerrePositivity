@@ -261,7 +261,7 @@ theorem relativeFreeWittGhostCoefficient_sub_X_mem_supported (D : DeltaStructure
           rw [relativeFreeWittGhostCoefficient_top_recurrence]
           exact S.sub_mem hlower hsum
 
-/-- 各Witt係数の変数は第n段以下。整域性・G4は不要。 -/
+/-- 各Witt係数の変数は第n段以下。整域性・ghost 成分の単射性の補題は不要。 -/
 theorem relativeFreeWittGhostCoefficient_variable_bound (D : DeltaStructure p A)
     (hp : Function.Injective (fun a : A => (p : A) * a)) (s : σ) (n : ℕ)
     (z : σ × ℕ) (hz : z ∈ (relativeFreeWittGhostCoefficient D s n).vars) : z.2 ≤ n := by

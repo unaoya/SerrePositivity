@@ -45,12 +45,12 @@ variable (D : DeltaStructure p A) (d : A) (a : σ → A)
 local notation "L₀" => RelativeFreeDeltaRing (R := A) σ
 local notation "J₀" => Ideal.span {(p : L₀), MvPolynomial.C d} ⊔
   deltaDivisionFiniteRelationIdeal D d a 0
-local notation "K₀" => deltaDivisionFirstBaseIdeal (p := p) d a
+local notation "K₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a
 
 /-- 全深さ0関係を課したmod(p,d)イデアルは、適切な係数イデアルの拡張。 -/
-theorem deltaDivisionInitialResidueIdeal_eq_map :
+theorem Andre.deltaDivisionInitialResidueIdeal_eq_map :
     J₀ = (K₀).map (MvPolynomial.C : A →+* L₀) := by
-  rw [deltaDivisionFirstBaseIdeal, Ideal.map_sup, Ideal.map_span, Ideal.map_span]
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal, Ideal.map_sup, Ideal.map_span, Ideal.map_span]
   simp only [Set.image_pair, map_natCast, ← Set.range_comp']
   apply le_antisymm
   · apply sup_le
@@ -58,7 +58,7 @@ theorem deltaDivisionInitialResidueIdeal_eq_map :
     · apply Ideal.span_le.mpr
       rintro _ ⟨⟨s, n⟩, rfl⟩
       have hn : n.val = 0 := by omega
-      change deltaDivisionIteratedRelation D d a s n.val ∈ _
+      change _root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s n.val ∈ _
       rw [hn]
       change MvPolynomial.C d * MvPolynomial.X (s, 0) - MvPolynomial.C (a s) ∈ _
       apply Ideal.sub_mem
@@ -71,8 +71,8 @@ theorem deltaDivisionInitialResidueIdeal_eq_map :
     · exact le_sup_left
     · apply Ideal.span_le.mpr
       rintro _ ⟨s, rfl⟩
-      have hg : deltaDivisionIteratedRelation D d a s 0 ∈ J₀ :=
-        (show deltaDivisionFiniteRelationIdeal D d a 0 ≤ J₀ from le_sup_right)
+      have hg : _root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s 0 ∈ J₀ :=
+        (show _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal D d a 0 ≤ J₀ from le_sup_right)
           (Ideal.subset_span ⟨(s, 0), rfl⟩)
       have hd : MvPolynomial.C d ∈ J₀ :=
         (show Ideal.span {(p : L₀), MvPolynomial.C d} ≤ J₀ from le_sup_left)
@@ -82,21 +82,21 @@ theorem deltaDivisionInitialResidueIdeal_eq_map :
       simpa only [sub_sub_cancel, SetLike.mem_coe] using h
 
 /-- 初期mod(p,d)通常商の、適切な係数商上の多項式表示。 -/
-def deltaDivisionInitialResiduePolynomialEquiv :
+def Andre.deltaDivisionInitialResiduePolynomialEquiv :
     (L₀ ⧸ J₀) ≃+* MvPolynomial (σ × ℕ) (A ⧸ K₀) :=
-  (Ideal.quotEquivOfEq (deltaDivisionInitialResidueIdeal_eq_map D d a)).trans
+  (Ideal.quotEquivOfEq (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResidueIdeal_eq_map D d a)).trans
     (MvPolynomial.quotientEquivQuotientMvPolynomial K₀).symm.toRingEquiv
 
 /-- 初期mod(p,d)表示は実自由環の標準像と両立する。 -/
-theorem deltaDivisionInitialResiduePolynomialEquiv_mk (f : L₀) :
-    deltaDivisionInitialResiduePolynomialEquiv D d a (Ideal.Quotient.mk J₀ f) =
+theorem Andre.deltaDivisionInitialResiduePolynomialEquiv_mk (f : L₀) :
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv D d a (Ideal.Quotient.mk J₀ f) =
       MvPolynomial.map (Ideal.Quotient.mk K₀) f := by
-  rw [deltaDivisionInitialResiduePolynomialEquiv, RingEquiv.trans_apply, Ideal.quotEquivOfEq_mk]
-  exact RingHom.congr_fun (monicPowerFamilyCoefficientQuotient_comp (σ × ℕ) A K₀) f
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv, RingEquiv.trans_apply, Ideal.quotEquivOfEq_mk]
+  exact RingHom.congr_fun (_root_.SerrePositivity.BhattScholze.monicPowerFamilyCoefficientQuotient_comp (σ × ℕ) A K₀) f
 
 /-- 初期mod(p,d)商で、最初のδ関係は単元係数を持つ冪関係。 -/
-theorem deltaDivisionFirstJet_residue (s : σ) :
-    Ideal.Quotient.mk J₀ (deltaDivisionIteratedRelation D d a s 1) =
+theorem Andre.deltaDivisionFirstJet_residue (s : σ) :
+    Ideal.Quotient.mk J₀ (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s 1) =
       Ideal.Quotient.mk J₀ (MvPolynomial.C (D.delta d)) *
         (Ideal.Quotient.mk J₀ (MvPolynomial.X (s, 0))) ^ p -
           Ideal.Quotient.mk J₀ (MvPolynomial.C (D.delta (a s))) := by
@@ -109,46 +109,46 @@ theorem deltaDivisionFirstJet_residue (s : σ) :
       (Ideal.subset_span (Set.mem_insert_of_mem _ (Set.mem_singleton _))))
   have ha : q (MvPolynomial.C (a s)) = 0 := by
     apply Ideal.Quotient.eq_zero_iff_mem.mpr
-    rw [deltaDivisionInitialResidueIdeal_eq_map]
+    rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResidueIdeal_eq_map]
     exact Ideal.mem_map_of_mem _ ((show Ideal.span (Set.range a) ≤ K₀ from le_sup_right)
       (Ideal.subset_span (Set.mem_range_self s)))
-  have h := deltaDivisionFirstRelation_delta_image (relativeFreeDeltaStructure σ D) q
+  have h := _root_.SerrePositivity.BhattScholze.deltaDivisionFirstRelation_delta_image (_root_.SerrePositivity.BhattScholze.relativeFreeDeltaStructure σ D) q
     (MvPolynomial.C d) (MvPolynomial.X (s, 0)) (MvPolynomial.C (a s)) hp hd ha
-  simpa only [deltaDivisionIteratedRelation, Function.iterate_one,
-    relativeFreeDeltaStructure_delta_C] using h
+  simpa only [_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation, Function.iterate_one,
+    _root_.SerrePositivity.BhattScholze.relativeFreeDeltaStructure_delta_C] using h
 
 /-- 初期係数商の多項式表示は、最初のδ関係を単元倍のモニック冪関係へ送る。 -/
-theorem deltaDivisionFirstJet_residue_polynomial (v : Aˣ)
+theorem Andre.deltaDivisionFirstJet_residue_polynomial (v : Aˣ)
     (hv : (v : A) = D.delta d) (s : σ) :
     let Q := A ⧸ K₀
     let w := v.map (Ideal.Quotient.mk K₀).toMonoidHom
-    deltaDivisionInitialResiduePolynomialEquiv D d a
-      (Ideal.Quotient.mk J₀ (deltaDivisionIteratedRelation D d a s 1)) =
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv D d a
+      (Ideal.Quotient.mk J₀ (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s 1)) =
       MvPolynomial.C (w : Q) *
         (MvPolynomial.X (s, 0) ^ p -
           MvPolynomial.C (((w⁻¹ : Qˣ) : Q) * Ideal.Quotient.mk K₀ (D.delta (a s)))) := by
   let Q := A ⧸ K₀
   let w := v.map (Ideal.Quotient.mk K₀).toMonoidHom
-  rw [deltaDivisionFirstJet_residue, map_sub, map_mul, map_pow,
-    deltaDivisionInitialResiduePolynomialEquiv_mk,
-    deltaDivisionInitialResiduePolynomialEquiv_mk,
-    deltaDivisionInitialResiduePolynomialEquiv_mk,
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstJet_residue, map_sub, map_mul, map_pow,
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv_mk,
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv_mk,
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv_mk,
     MvPolynomial.map_C, MvPolynomial.map_X, MvPolynomial.map_C, ← hv]
   change MvPolynomial.C (w : Q) * MvPolynomial.X (s, 0) ^ p -
     MvPolynomial.C (Ideal.Quotient.mk K₀ (D.delta (a s))) = _
   rw [mul_sub, ← MvPolynomial.C_mul, ← mul_assoc, Units.mul_inv, one_mul]
 
 /-- δdが指定単元なら、最初のδ関係は全深さ0を課したmod(p,d)商上で非零因子。 -/
-theorem deltaDivisionFirstJet_residue_isSMulRegular (v : Aˣ)
+theorem Andre.deltaDivisionFirstJet_residue_isSMulRegular (v : Aˣ)
     (hv : (v : A) = D.delta d) (s : σ) :
     IsSMulRegular (L₀ ⧸ J₀)
-      (Ideal.Quotient.mk J₀ (deltaDivisionIteratedRelation D d a s 1)) := by
-  let e := deltaDivisionInitialResiduePolynomialEquiv D d a
+      (Ideal.Quotient.mk J₀ (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s 1)) := by
+  let e := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv D d a
   let Q := A ⧸ K₀
   let w := v.map (Ideal.Quotient.mk K₀).toMonoidHom
-  have he := deltaDivisionFirstJet_residue_polynomial D d a v hv s
-  change e (Ideal.Quotient.mk J₀ (deltaDivisionIteratedRelation D d a s 1)) = _ at he
-  have hr := deltaRootRelation_isSMulRegular (p := p)
+  have he := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstJet_residue_polynomial D d a v hv s
+  change e (Ideal.Quotient.mk J₀ (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s 1)) = _ at he
+  have hr := _root_.SerrePositivity.BhattScholze.Andre.deltaRootRelation_isSMulRegular (p := p)
     (fun _ : σ × ℕ => ((w⁻¹ : Qˣ) : Q) * Ideal.Quotient.mk K₀ (D.delta (a s))) (s, 0)
   have hw : IsSMulRegular (MvPolynomial (σ × ℕ) Q) (MvPolynomial.C (w : Q)) :=
     (w.map (MvPolynomial.C : Q →+* MvPolynomial (σ × ℕ) Q).toMonoidHom).isSMulRegular _
@@ -157,7 +157,7 @@ theorem deltaDivisionFirstJet_residue_isSMulRegular (v : Aˣ)
   apply e.injective
   apply hreg
   have h := congrArg e hxy
-  simpa only [smul_eq_mul, map_mul, he, deltaRootRelationFamily] using h
+  simpa only [smul_eq_mul, map_mul, he, _root_.SerrePositivity.BhattScholze.Andre.deltaRootRelationFamily] using h
 
 end SerrePositivity.BhattScholze
 
@@ -174,7 +174,7 @@ end DeltaDivisionFirstJetResidueRegular
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 
-private theorem unit_mul_list_regular {R : Type u} [CommRing R] (w : Rˣ) (l : List R)
+private theorem Andre.unit_mul_list_regular {R : Type u} [CommRing R] (w : Rˣ) (l : List R)
     (h : RingTheory.Sequence.IsWeaklyRegular R l) :
     RingTheory.Sequence.IsWeaklyRegular R (l.map fun x => (w : R) * x) := by
   have hI (t : List R) : Ideal.ofList (t.map fun x => (w : R) * x) = Ideal.ofList t := by
@@ -194,12 +194,12 @@ variable (D : DeltaStructure p A) (d : A) (a : σ → A) (v : Aˣ)
 local notation "L₀" => RelativeFreeDeltaRing (R := A) σ
 local notation "J₀" => Ideal.span {(p : L₀), MvPolynomial.C d} ⊔
   deltaDivisionFiniteRelationIdeal D d a 0
-local notation "K₀" => deltaDivisionFirstBaseIdeal (p := p) d a
+local notation "K₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a
 local notation "f₀" => fun s : σ =>
   Ideal.Quotient.mk J₀ (deltaDivisionIteratedRelation D d a s 1)
 
 /-- 指定単元δdに対し、異なる有限個の深さ1関係は実初期mod(p,d)商上で弱正則。 -/
-theorem deltaDivisionFirstJetResidue_fin_isWeaklyRegular (hv : (v : A) = D.delta d)
+theorem Andre.deltaDivisionFirstJetResidue_fin_isWeaklyRegular (hv : (v : A) = D.delta d)
     {m : ℕ} (s : Fin m → σ) (hs : Function.Injective s) :
     RingTheory.Sequence.IsWeaklyRegular (L₀ ⧸ J₀) (List.ofFn fun i => f₀ (s i)) := by
   let Q := A ⧸ K₀
@@ -207,13 +207,13 @@ theorem deltaDivisionFirstJetResidue_fin_isWeaklyRegular (hv : (v : A) = D.delta
   let w := w₀.map (MvPolynomial.C : Q →+* MvPolynomial (σ × ℕ) Q).toMonoidHom
   let c : σ × ℕ → Q := fun z => ((w₀⁻¹ : Qˣ) : Q) *
     Ideal.Quotient.mk K₀ (D.delta (a z.1))
-  let e := deltaDivisionInitialResiduePolynomialEquiv D d a
-  have hr := deltaRootRelation_fin_isWeaklyRegular (p := p) c
+  let e := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionInitialResiduePolynomialEquiv D d a
+  have hr := _root_.SerrePositivity.BhattScholze.Andre.deltaRootRelation_fin_isWeaklyRegular (p := p) c
     (fun i => (s i, 0)) (fun _ _ hij => hs (congrArg Prod.fst hij))
-  have hm := unit_mul_list_regular w _ hr
+  have hm := _root_.SerrePositivity.BhattScholze.Andre.unit_mul_list_regular w _ hr
   have he (t : σ) : e (f₀ t) = (w : MvPolynomial (σ × ℕ) Q) *
-      deltaRootRelationFamily (p := p) c (t, 0) := by
-    exact deltaDivisionFirstJet_residue_polynomial D d a v hv t
+      _root_.SerrePositivity.BhattScholze.Andre.deltaRootRelationFamily (p := p) c (t, 0) := by
+    exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstJet_residue_polynomial D d a v hv t
   have hc := e.toAddEquiv.isWeaklyRegular_congr
     (as := List.ofFn fun i => f₀ (s i))
     (bs := (List.ofFn fun i => f₀ (s i)).map e)
@@ -224,11 +224,11 @@ theorem deltaDivisionFirstJetResidue_fin_isWeaklyRegular (hv : (v : A) = D.delta
   simpa only [List.map_ofFn, Function.comp_def, he] using hm
 
 /-- 最初のδ関係の異なる有限族のKoszul複体は、実初期mod(p,d)商上の実通常商の分解。 -/
-theorem deltaDivisionFirstJetResidue_fin_isKoszulResolution (hv : (v : A) = D.delta d)
+theorem Andre.deltaDivisionFirstJetResidue_fin_isKoszulResolution (hv : (v : A) = D.delta d)
     {m : ℕ} (s : Fin m → σ) (hs : Function.Injective s) :
     SerrePositivity.IsKoszulResolution (fun i => f₀ (s i)) :=
   SerrePositivity.isKoszulResolution_of_isWeaklyRegular _
-    (deltaDivisionFirstJetResidue_fin_isWeaklyRegular D d a v hv s hs)
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstJetResidue_fin_isWeaklyRegular D d a v hv s hs)
 
 end SerrePositivity.BhattScholze
 
@@ -247,27 +247,27 @@ namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 
 /-- 次段評価イデアルは、前段に次の評価関係を追加したもの。 -/
-theorem deltaDivisionFiniteEvaluationIdeal_succ
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) :
-    deltaDivisionFiniteEvaluationIdeal D d a (N + 1) =
-      deltaDivisionFiniteEvaluationIdeal D d a N ⊔
-        Ideal.span (Set.range fun s => deltaDivisionEvaluationRelation D d a s (N + 1)) := by
+theorem Andre.deltaDivisionFiniteEvaluationIdeal_succ
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) :
+    _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal D d a (N + 1) =
+      _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal D d a N ⊔
+        Ideal.span (Set.range fun s => _root_.SerrePositivity.BhattScholze.deltaDivisionEvaluationRelation D d a s (N + 1)) := by
   apply le_antisymm
   · apply Ideal.span_le.mpr
     rintro _ ⟨⟨s, i⟩, rfl⟩
     by_cases hi : i.val < N + 1
-    · apply (show deltaDivisionFiniteEvaluationIdeal D d a N ≤
-        deltaDivisionFiniteEvaluationIdeal D d a N ⊔ _ from le_sup_left)
+    · apply (show _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal D d a N ≤
+        _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal D d a N ⊔ _ from le_sup_left)
       exact Ideal.subset_span ⟨(s, ⟨i.val, hi⟩), rfl⟩
     · have he : i.val = N + 1 := by omega
-      change deltaDivisionEvaluationRelation D d a s i.val ∈ _
+      change _root_.SerrePositivity.BhattScholze.deltaDivisionEvaluationRelation D d a s i.val ∈ _
       rw [he]
-      exact (show Ideal.span (Set.range fun t => deltaDivisionEvaluationRelation D d a t (N + 1)) ≤
-        deltaDivisionFiniteEvaluationIdeal D d a N ⊔ _ from le_sup_right)
+      exact (show Ideal.span (Set.range fun t => _root_.SerrePositivity.BhattScholze.deltaDivisionEvaluationRelation D d a t (N + 1)) ≤
+        _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal D d a N ⊔ _ from le_sup_right)
           (Ideal.subset_span (Set.mem_range_self s))
   · apply sup_le
-    · rw [deltaDivisionFiniteEvaluationIdeal_eq, deltaDivisionFiniteEvaluationIdeal_eq]
-      exact deltaDivisionFiniteRelationIdeal_mono D d a (Nat.le_succ N)
+    · rw [_root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal_eq, _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal_eq]
+      exact _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal_mono D d a (Nat.le_succ N)
     · apply Ideal.span_le.mpr
       rintro _ ⟨s, rfl⟩
       exact Ideal.subset_span ⟨(s, ⟨N + 1, Nat.lt_succ_self _⟩), rfl⟩
@@ -279,10 +279,10 @@ local notation "h₀" => deltaDivisionEvaluationRelation D d a (default : σ)
 local notation "I₀" => deltaDivisionFiniteRelationIdeal D d a
 
 /-- 一元評価関係の全有限prefixの生成イデアルは既存の実I_N。 -/
-theorem deltaDivisionFiniteEvaluation_ofList (N : ℕ) :
+theorem Andre.deltaDivisionFiniteEvaluation_ofList (N : ℕ) :
     Ideal.ofList (List.ofFn fun i : Fin (N + 1) => h₀ i.val) = I₀ N := by
-  rw [← deltaDivisionFiniteEvaluationIdeal_eq]
-  unfold Ideal.ofList deltaDivisionFiniteEvaluationIdeal
+  rw [← _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal_eq]
+  unfold Ideal.ofList _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal
   congr 1
   ext z
   simp only [List.mem_ofFn, Set.mem_ofPred_eq, Set.mem_range]
@@ -295,13 +295,13 @@ theorem deltaDivisionFiniteEvaluation_ofList (N : ℕ) :
     exact ⟨i, rfl⟩
 
 /-- 前段を消す任意通常環射の下で、次の実反復δ関係の正則性は実評価関係へ移る。 -/
-theorem deltaDivisionFiniteEvaluation_next_isSMulRegular_map
+theorem Andre.deltaDivisionFiniteEvaluation_next_isSMulRegular_map
     {T : Type v} [CommRing T] (q : L₀ →+* T) (N : ℕ)
     (hI : I₀ N ≤ RingHom.ker q) (hg : IsSMulRegular T (q (g₀ (N + 1)))) :
     IsSMulRegular T (q (h₀ (N + 1))) := by
   have he : I₀ (N + 1) = I₀ N ⊔ Ideal.span {h₀ (N + 1)} := by
-    rw [← deltaDivisionFiniteEvaluationIdeal_eq D d a (N + 1),
-      deltaDivisionFiniteEvaluationIdeal_succ, deltaDivisionFiniteEvaluationIdeal_eq]
+    rw [← _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal_eq D d a (N + 1),
+      _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteEvaluationIdeal_succ, _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteEvaluationIdeal_eq]
     congr 1
     congr 1
     ext z
@@ -331,10 +331,10 @@ theorem deltaDivisionFiniteEvaluation_next_isSMulRegular_map
 
 
 /-- 前段商での次の反復差関係の非零因子性は、次の評価関係へ移る。 -/
-theorem deltaDivisionFiniteEvaluation_next_isSMulRegular (N : ℕ)
+theorem Andre.deltaDivisionFiniteEvaluation_next_isSMulRegular (N : ℕ)
     (hg : IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (g₀ (N + 1)))) :
     IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (h₀ (N + 1))) :=
-  deltaDivisionFiniteEvaluation_next_isSMulRegular_map D d a (Ideal.Quotient.mk (I₀ N)) N
+  _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteEvaluation_next_isSMulRegular_map D d a (Ideal.Quotient.mk (I₀ N)) N
     (fun _ hr => Ideal.Quotient.eq_zero_iff_mem.mpr hr) hg
 
 end SerrePositivity.BhattScholze
@@ -358,9 +358,9 @@ local notation "h₀" => deltaDivisionEvaluationRelation D d a (default : σ)
 local notation "I₀" => deltaDivisionFiniteRelationIdeal D d a
 
 /-- 通常射後の一元有限反復δ列の生成イデアルは、実有限関係イデアルの像。 -/
-theorem deltaDivisionMappedIterated_ofList (N : ℕ) :
+theorem Andre.deltaDivisionMappedIterated_ofList (N : ℕ) :
     Ideal.ofList (List.ofFn fun i : Fin (N + 1) => q (g₀ i.val)) = (I₀ N).map q := by
-  unfold deltaDivisionFiniteRelationIdeal
+  unfold _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal
   rw [Ideal.map_span, ← Set.range_comp']
   apply congrArg Ideal.span
   ext z
@@ -374,21 +374,21 @@ theorem deltaDivisionMappedIterated_ofList (N : ℕ) :
     exact ⟨i, rfl⟩
 
 /-- 通常射後の一元有限評価列も、同じ実有限関係イデアルの像を生成する。 -/
-theorem deltaDivisionMappedEvaluation_ofList (N : ℕ) :
+theorem Andre.deltaDivisionMappedEvaluation_ofList (N : ℕ) :
     Ideal.ofList (List.ofFn fun i : Fin (N + 1) => q (h₀ i.val)) = (I₀ N).map q := by
-  rw [← deltaDivisionFiniteEvaluation_ofList D d a N, Ideal.map_ofList, List.map_ofFn,
+  rw [← _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteEvaluation_ofList D d a N, Ideal.map_ofList, List.map_ofFn,
     Function.comp_def]
 
 /-- 全有限反復δ列が通常射後に弱正則なら、全有限実評価列も同じ環で弱正則。 -/
-theorem deltaDivisionMappedEvaluation_isWeaklyRegular
+theorem Andre.deltaDivisionMappedEvaluation_isWeaklyRegular
     (hg : ∀ N : ℕ, RingTheory.Sequence.IsWeaklyRegular T
       (List.ofFn fun i : Fin (N + 1) => q (g₀ i.val))) (N : ℕ) :
     RingTheory.Sequence.IsWeaklyRegular T
       (List.ofFn fun i : Fin (N + 1) => q (h₀ i.val)) := by
   induction N with
   | zero =>
-      simpa only [List.ofFn_succ, List.ofFn_zero, Fin.val_zero, deltaDivisionIteratedRelation,
-        deltaDivisionEvaluationRelation, Function.iterate_zero_apply] using hg 0
+      simpa only [List.ofFn_succ, List.ofFn_zero, Fin.val_zero, _root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation,
+        _root_.SerrePositivity.BhattScholze.deltaDivisionEvaluationRelation, Function.iterate_zero_apply] using hg 0
   | succ N ih =>
       rw [List.ofFn_succ', List.concat_eq_append,
         RingTheory.Sequence.isWeaklyRegular_append_iff]
@@ -401,10 +401,10 @@ theorem deltaDivisionMappedEvaluation_isWeaklyRegular
       rw [RingTheory.Sequence.isWeaklyRegular_singleton_iff] at hrg
       have hIg : (Ideal.ofList (List.ofFn fun i : Fin (N + 1) => q (g₀ i.val)) • ⊤ :
           Submodule T T) = (I₀ N).map q := by
-        rw [Ideal.smul_eq_mul, Ideal.mul_top, deltaDivisionMappedIterated_ofList]
+        rw [Ideal.smul_eq_mul, Ideal.mul_top, _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionMappedIterated_ofList]
       have hIh : (Ideal.ofList (List.ofFn fun i : Fin (N + 1) => q (h₀ i.val)) • ⊤ :
           Submodule T T) = (I₀ N).map q := by
-        rw [Ideal.smul_eq_mul, Ideal.mul_top, deltaDivisionMappedEvaluation_ofList]
+        rw [Ideal.smul_eq_mul, Ideal.mul_top, _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionMappedEvaluation_ofList]
       change IsSMulRegular (T ⧸
         (Ideal.ofList (List.ofFn fun i : Fin (N + 1) => q (g₀ i.val)) • ⊤ : Submodule T T))
         (q (g₀ (N + 1))) at hrg
@@ -420,15 +420,15 @@ theorem deltaDivisionMappedEvaluation_isWeaklyRegular
       have hrg' : IsSMulRegular (T ⧸ (I₀ N).map q) ((qN.comp q) (g₀ (N + 1))) :=
         (isSMulRegular_map qN (fun _ => rfl)).mpr hrg
       exact (isSMulRegular_map qN (fun _ => rfl)).mp
-        (deltaDivisionFiniteEvaluation_next_isSMulRegular_map D d a (qN.comp q) N hkill hrg')
+        (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteEvaluation_next_isSMulRegular_map D d a (qN.comp q) N hkill hrg')
 
 /-- 通常環射後の全有限実評価Koszul複体は、全有限反復δ列の弱正則性から実分解となる。 -/
-theorem deltaDivisionMappedEvaluation_isKoszulResolution
+theorem Andre.deltaDivisionMappedEvaluation_isKoszulResolution
     (hg : ∀ N : ℕ, RingTheory.Sequence.IsWeaklyRegular T
       (List.ofFn fun i : Fin (N + 1) => q (g₀ i.val))) (N : ℕ) :
     SerrePositivity.IsKoszulResolution (fun i : Fin (N + 1) => q (h₀ i.val)) :=
   SerrePositivity.isKoszulResolution_of_isWeaklyRegular _
-    (deltaDivisionMappedEvaluation_isWeaklyRegular D d a q hg N)
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionMappedEvaluation_isWeaklyRegular D d a q hg N)
 
 end SerrePositivity.BhattScholze
 
@@ -447,127 +447,127 @@ namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 
 /-- 任意の初期有限イデアルを拡張した自由環商は、初期商上の後続多項式環。 -/
-def relativeFreeFiniteInitialQuotientEquiv (n : ℕ)
+def Andre.relativeFreeFiniteInitialQuotientEquiv (n : ℕ)
     (J : Ideal (MvPolynomial (σ × Fin n) A)) :
-    (RelativeFreeDeltaRing (R := A) σ ⧸
-      J.map (relativeFreeFiniteInitialPolynomialMap n σ A).toRingHom) ≃+*
+    (_root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ ⧸
+      J.map (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteInitialPolynomialMap n σ A).toRingHom) ≃+*
       MvPolynomial (σ × ℕ) (MvPolynomial (σ × Fin n) A ⧸ J) := by
-  let e := relativeFreeFiniteVariableSplitAlgEquiv n σ A
-  have h : (J.map (relativeFreeFiniteInitialPolynomialMap n σ A).toRingHom).map
+  let e := _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv n σ A
+  have h : (J.map (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteInitialPolynomialMap n σ A).toRingHom).map
       e.toRingHom = J.map MvPolynomial.C := by
     rw [Ideal.map_map]
     congr 1
     apply RingHom.ext
     intro f
-    exact relativeFreeFiniteVariableSplitAlgEquiv_initial n σ A f
+    exact _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_initial n σ A f
   exact (Ideal.quotientEquiv _ _ e.toRingEquiv h.symm).trans
     (MvPolynomial.quotientEquivQuotientMvPolynomial (σ := σ × ℕ) J).symm.toRingEquiv
 
 /-- この同型の標準商射上の式。 -/
-theorem relativeFreeFiniteInitialQuotientEquiv_mk (n : ℕ)
-    (J : Ideal (MvPolynomial (σ × Fin n) A)) (f : RelativeFreeDeltaRing (R := A) σ) :
-    relativeFreeFiniteInitialQuotientEquiv n J (Ideal.Quotient.mk _ f) =
-      MvPolynomial.map (Ideal.Quotient.mk J) (relativeFreeFiniteVariableSplitAlgEquiv n σ A f) := by
-  rw [relativeFreeFiniteInitialQuotientEquiv, RingEquiv.trans_apply, Ideal.quotientEquiv_mk]
-  exact RingHom.congr_fun (monicPowerFamilyCoefficientQuotient_comp
+theorem Andre.relativeFreeFiniteInitialQuotientEquiv_mk (n : ℕ)
+    (J : Ideal (MvPolynomial (σ × Fin n) A)) (f : _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ) :
+    _root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv n J (Ideal.Quotient.mk _ f) =
+      MvPolynomial.map (Ideal.Quotient.mk J) (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv n σ A f) := by
+  rw [_root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv, RingEquiv.trans_apply, Ideal.quotientEquiv_mk]
+  exact RingHom.congr_fun (_root_.SerrePositivity.BhattScholze.monicPowerFamilyCoefficientQuotient_comp
     (σ × ℕ) (MvPolynomial (σ × Fin n) A) J)
-    (relativeFreeFiniteVariableSplitAlgEquiv n σ A f)
+    (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv n σ A f)
 
 /-- 初期側の元の像は、初期商の係数となる。 -/
-theorem relativeFreeFiniteInitialQuotientEquiv_initial (n : ℕ)
+theorem Andre.relativeFreeFiniteInitialQuotientEquiv_initial (n : ℕ)
     (J : Ideal (MvPolynomial (σ × Fin n) A)) (f : MvPolynomial (σ × Fin n) A) :
-    relativeFreeFiniteInitialQuotientEquiv n J
-      (Ideal.Quotient.mk _ (relativeFreeFiniteInitialPolynomialMap n σ A f)) =
+    _root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv n J
+      (Ideal.Quotient.mk _ (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteInitialPolynomialMap n σ A f)) =
       MvPolynomial.C (Ideal.Quotient.mk J f) := by
-  rw [relativeFreeFiniteInitialQuotientEquiv_mk,
-    relativeFreeFiniteVariableSplitAlgEquiv_initial, MvPolynomial.map_C]
+  rw [_root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv_mk,
+    _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_initial, MvPolynomial.map_C]
 
 /-- 後続変数の像はそのまま外側変数となる。 -/
-theorem relativeFreeFiniteInitialQuotientEquiv_tail (n : ℕ)
+theorem Andre.relativeFreeFiniteInitialQuotientEquiv_tail (n : ℕ)
     (J : Ideal (MvPolynomial (σ × Fin n) A)) (s : σ) (k : ℕ) :
-    relativeFreeFiniteInitialQuotientEquiv n J
+    _root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv n J
       (Ideal.Quotient.mk _ (MvPolynomial.X (s, k + n))) = MvPolynomial.X (s, k) := by
-  rw [relativeFreeFiniteInitialQuotientEquiv_mk,
-    relativeFreeFiniteVariableSplitAlgEquiv_X_tail, MvPolynomial.map_X]
+  rw [_root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv_mk,
+    _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_X_tail, MvPolynomial.map_X]
 
 /-- 深さiの有限関係式を、固定した深さNの初期環へ含める。 -/
-def deltaDivisionFiniteStageInitialRelation (D : DeltaStructure p A) (d : A) (a : σ → A)
+def Andre.deltaDivisionFiniteStageInitialRelation (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A)
     (N : ℕ) (s : σ) (i : Fin (N + 1)) : MvPolynomial (σ × Fin (N + 1)) A :=
   MvPolynomial.rename (fun z : σ × Fin (i.val + 1) =>
     (z.1, (⟨z.2.val, by omega⟩ : Fin (N + 1))))
-      (deltaDivisionFiniteRelationPolynomial D d a s i.val)
+      (_root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationPolynomial D d a s i.val)
 
 /-- 固定初期環内に置いた関係の像は実際の反復δ関係。 -/
-theorem deltaDivisionFiniteStageInitialRelation_image
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) (s : σ) (i : Fin (N + 1)) :
-    relativeFreeFiniteInitialPolynomialMap (N + 1) σ A
-      (deltaDivisionFiniteStageInitialRelation D d a N s i) =
-        deltaDivisionIteratedRelation D d a s i.val := by
-  rw [← deltaDivisionFiniteRelationPolynomial_image D d a s i.val]
-  simp only [deltaDivisionFiniteStageInitialRelation, relativeFreeFiniteInitialPolynomialMap,
+theorem Andre.deltaDivisionFiniteStageInitialRelation_image
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) (s : σ) (i : Fin (N + 1)) :
+    _root_.SerrePositivity.BhattScholze.relativeFreeFiniteInitialPolynomialMap (N + 1) σ A
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialRelation D d a N s i) =
+        _root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s i.val := by
+  rw [← _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationPolynomial_image D d a s i.val]
+  simp only [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialRelation, _root_.SerrePositivity.BhattScholze.relativeFreeFiniteInitialPolynomialMap,
     MvPolynomial.rename_rename, Function.comp_def]
 
 /-- 初期有限環内の全有限段関係イデアル。 -/
-def deltaDivisionFiniteStageInitialIdeal (D : DeltaStructure p A) (d : A) (a : σ → A)
+def Andre.deltaDivisionFiniteStageInitialIdeal (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A)
     (N : ℕ) : Ideal (MvPolynomial (σ × Fin (N + 1)) A) :=
   Ideal.span (Set.range fun z : σ × Fin (N + 1) =>
-    deltaDivisionFiniteStageInitialRelation D d a N z.1 z.2)
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialRelation D d a N z.1 z.2)
 
 /-- 初期関係イデアルの拡張は既存の実自由環上の有限関係イデアルに一致する。 -/
-theorem deltaDivisionFiniteStageInitialIdeal_map
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) :
-    (deltaDivisionFiniteStageInitialIdeal D d a N).map
-      (relativeFreeFiniteInitialPolynomialMap (N + 1) σ A).toRingHom =
-        deltaDivisionFiniteRelationIdeal D d a N := by
-  simp only [deltaDivisionFiniteStageInitialIdeal, Ideal.map_span, ← Set.range_comp',
+theorem Andre.deltaDivisionFiniteStageInitialIdeal_map
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) :
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N).map
+      (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteInitialPolynomialMap (N + 1) σ A).toRingHom =
+        _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal D d a N := by
+  simp only [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal, Ideal.map_span, ← Set.range_comp',
     AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-    deltaDivisionFiniteStageInitialRelation_image, deltaDivisionFiniteRelationIdeal]
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialRelation_image, _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal]
 
 /-- 実有限関係商を初期関係商上の後続多項式環へ分離する。 -/
-def deltaDivisionFiniteStageTailQuotientEquiv
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) :
-    (RelativeFreeDeltaRing (R := A) σ ⧸ deltaDivisionFiniteRelationIdeal D d a N) ≃+*
+def Andre.deltaDivisionFiniteStageTailQuotientEquiv
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) :
+    (_root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ ⧸ _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal D d a N) ≃+*
       MvPolynomial (σ × ℕ) (MvPolynomial (σ × Fin (N + 1)) A ⧸
-        deltaDivisionFiniteStageInitialIdeal D d a N) :=
-  (Ideal.quotEquivOfEq (deltaDivisionFiniteStageInitialIdeal_map D d a N).symm).trans
-    (relativeFreeFiniteInitialQuotientEquiv (N + 1) (deltaDivisionFiniteStageInitialIdeal D d a N))
+        _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N) :=
+  (Ideal.quotEquivOfEq (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal_map D d a N).symm).trans
+    (_root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv (N + 1) (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N))
 
 /-- 実有限関係商の分離同型は標準商射と両立する。 -/
-theorem deltaDivisionFiniteStageTailQuotientEquiv_mk
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
-    (f : RelativeFreeDeltaRing (R := A) σ) :
-    deltaDivisionFiniteStageTailQuotientEquiv D d a N (Ideal.Quotient.mk _ f) =
-      MvPolynomial.map (Ideal.Quotient.mk (deltaDivisionFiniteStageInitialIdeal D d a N))
-        (relativeFreeFiniteVariableSplitAlgEquiv (N + 1) σ A f) := by
-  rw [deltaDivisionFiniteStageTailQuotientEquiv, RingEquiv.trans_apply,
-    Ideal.quotEquivOfEq_mk, relativeFreeFiniteInitialQuotientEquiv_mk]
+theorem Andre.deltaDivisionFiniteStageTailQuotientEquiv_mk
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
+    (f : _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ) :
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv D d a N (Ideal.Quotient.mk _ f) =
+      MvPolynomial.map (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N))
+        (_root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv (N + 1) σ A f) := by
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv, RingEquiv.trans_apply,
+    Ideal.quotEquivOfEq_mk, _root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv_mk]
 
 /-- 次の実δ関係は、分離後も最高変数の一次式。残りは初期商の係数。 -/
-theorem deltaDivisionFiniteStageTailQuotientEquiv_next
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) (s : σ) :
-    deltaDivisionFiniteStageTailQuotientEquiv D d a N
-      (Ideal.Quotient.mk _ (deltaDivisionIteratedRelation D d a s (N + 1))) =
+theorem Andre.deltaDivisionFiniteStageTailQuotientEquiv_next
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ) (s : σ) :
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv D d a N
+      (Ideal.Quotient.mk _ (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s (N + 1))) =
         MvPolynomial.C (Ideal.Quotient.mk _ (MvPolynomial.C (D.frobeniusLift^[N + 1] d))) *
           MvPolynomial.X (s, 0) +
         MvPolynomial.C (Ideal.Quotient.mk _
-          (deltaDivisionFiniteLeadingLowerPolynomial D d a s (N + 1))) := by
-  rw [deltaDivisionFiniteStageTailQuotientEquiv_mk,
-    deltaDivisionIteratedRelation_eq_leading_add_lower]
-  have hx := relativeFreeFiniteVariableSplitAlgEquiv_X_tail (N + 1) σ A s 0
+          (_root_.SerrePositivity.BhattScholze.deltaDivisionFiniteLeadingLowerPolynomial D d a s (N + 1))) := by
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv_mk,
+    _root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation_eq_leading_add_lower]
+  have hx := _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_X_tail (N + 1) σ A s 0
   simp only [zero_add] at hx
-  rw [map_add, map_mul, relativeFreeFiniteVariableSplitAlgEquiv_C, hx,
-    relativeFreeFiniteVariableSplitAlgEquiv_initial, map_add, map_mul,
+  rw [map_add, map_mul, _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_C, hx,
+    _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_initial, map_add, map_mul,
     MvPolynomial.map_C, MvPolynomial.map_X, MvPolynomial.map_C]
 
 /-- 全自由環上の有限関係商のp正則性は、初期有限関係商へ降りる。 -/
-theorem deltaDivisionFiniteStageInitialQuotient_p_mul_injective
-    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
-    (hp : Function.Injective (fun x : RelativeFreeDeltaRing (R := A) σ ⧸
-      deltaDivisionFiniteRelationIdeal D d a N => (p : _) * x)) :
+theorem Andre.deltaDivisionFiniteStageInitialQuotient_p_mul_injective
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
+    (hp : Function.Injective (fun x : _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ ⧸
+      _root_.SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal D d a N => (p : _) * x)) :
     Function.Injective (fun x : MvPolynomial (σ × Fin (N + 1)) A ⧸
-      deltaDivisionFiniteStageInitialIdeal D d a N => (p : _) * x) := by
-  let B := MvPolynomial (σ × Fin (N + 1)) A ⧸ deltaDivisionFiniteStageInitialIdeal D d a N
-  let e := deltaDivisionFiniteStageTailQuotientEquiv D d a N
+      _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N => (p : _) * x) := by
+  let B := MvPolynomial (σ × Fin (N + 1)) A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N
+  let e := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv D d a N
   have hp' : Function.Injective (fun x : MvPolynomial (σ × ℕ) B => (p : _) * x) := by
     intro x y h
     apply e.symm.injective
@@ -597,7 +597,7 @@ end DeltaDivisionFiniteStageTailQuotient
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 
-private theorem linear_polynomial_regular {R : Type u} [CommRing R] (c b : R)
+private theorem Andre.linear_polynomial_regular {R : Type u} [CommRing R] (c b : R)
     (hc : Function.Injective (fun x : R => c * x)) :
     Function.Injective (fun x : Polynomial R =>
       (Polynomial.C c * Polynomial.X + Polynomial.C b) * x) := by
@@ -613,7 +613,7 @@ private theorem linear_polynomial_regular {R : Type u} [CommRing R] (c b : R)
     exact mem_nonZeroDivisors_iff_left.mpr fun x hx => hc (hx.trans (mul_zero c).symm)
   exact (isRegular_iff_mem_nonZeroDivisors.mpr hp).left
 
-private theorem linear_mvpolynomial_regular {R : Type u} [CommRing R] {τ : Type v}
+private theorem Andre.linear_mvpolynomial_regular {R : Type u} [CommRing R] {τ : Type v}
     (c b : R) (s : τ) (hc : Function.Injective (fun x : R => c * x)) :
     IsSMulRegular (MvPolynomial τ R) (MvPolynomial.C c * MvPolynomial.X s + MvPolynomial.C b) := by
   classical
@@ -624,7 +624,7 @@ private theorem linear_mvpolynomial_regular {R : Type u} [CommRing R] {τ : Type
     simp [e, MvPolynomial.renameEquiv]
   have hc' := (show IsSMulRegular R c from hc).of_flat
     (S := MvPolynomial {t : τ // t ≠ s} R)
-  have hr := linear_polynomial_regular (MvPolynomial.C c) (MvPolynomial.C b) hc'
+  have hr := _root_.SerrePositivity.BhattScholze.Andre.linear_polynomial_regular (MvPolynomial.C c) (MvPolynomial.C b) hc'
   intro x y h
   apply e.injective
   apply hr
@@ -637,26 +637,26 @@ local notation "L₀" => RelativeFreeDeltaRing (R := A) σ
 local notation "I₀" => deltaDivisionFiniteRelationIdeal D d a
 
 /-- 除数dが正則なら、任意元の最初の実除算関係は自由δ環上で非零因子。 -/
-theorem deltaDivisionFirstRelation_isSMulRegular (s : σ)
+theorem Andre.deltaDivisionFirstRelation_isSMulRegular (s : σ)
     (hd : IsSMulRegular A d) :
-    IsSMulRegular L₀ (deltaDivisionIteratedRelation D d a s 0) := by
+    IsSMulRegular L₀ (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s 0) := by
   change IsSMulRegular L₀ (MvPolynomial.C d * MvPolynomial.X (s, 0) - MvPolynomial.C (a s))
   rw [sub_eq_add_neg, ← map_neg]
-  exact linear_mvpolynomial_regular d (-(a s)) (s, 0) hd
+  exact _root_.SerrePositivity.BhattScholze.Andre.linear_mvpolynomial_regular d (-(a s)) (s, 0) hd
 
 /-- 前段商での先頭係数の正則性は、初期有限関係商の同じ係数へ降りる。 -/
-theorem deltaDivisionFiniteStageInitialQuotient_coefficient_isSMulRegular (N : ℕ) (c : A)
+theorem Andre.deltaDivisionFiniteStageInitialQuotient_coefficient_isSMulRegular (N : ℕ) (c : A)
     (hc : IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (MvPolynomial.C c))) :
     IsSMulRegular (MvPolynomial (σ × Fin (N + 1)) A ⧸
-      deltaDivisionFiniteStageInitialIdeal D d a N)
-      (Ideal.Quotient.mk (deltaDivisionFiniteStageInitialIdeal D d a N) (MvPolynomial.C c)) := by
-  let J := deltaDivisionFiniteStageInitialIdeal D d a N
+      _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N)
+      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N) (MvPolynomial.C c)) := by
+  let J := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N
   let B := MvPolynomial (σ × Fin (N + 1)) A ⧸ J
-  let e := deltaDivisionFiniteStageTailQuotientEquiv D d a N
+  let e := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv D d a N
   have he : e (Ideal.Quotient.mk (I₀ N) (MvPolynomial.C c)) =
       MvPolynomial.C (Ideal.Quotient.mk J (MvPolynomial.C c)) := by
-    rw [deltaDivisionFiniteStageTailQuotientEquiv_mk,
-      relativeFreeFiniteVariableSplitAlgEquiv_C, MvPolynomial.map_C]
+    rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv_mk,
+      _root_.SerrePositivity.BhattScholze.relativeFreeFiniteVariableSplitAlgEquiv_C, MvPolynomial.map_C]
   have hc' : IsSMulRegular (MvPolynomial (σ × ℕ) B)
       (MvPolynomial.C (σ := σ × ℕ) (Ideal.Quotient.mk J (MvPolynomial.C c))) := by
     intro x y h
@@ -671,21 +671,21 @@ theorem deltaDivisionFiniteStageInitialQuotient_coefficient_isSMulRegular (N : �
     congrArg (MvPolynomial.C : B →+* MvPolynomial (σ × ℕ) B) h
 
 /-- 前段商のφ^(N+1)(d)係数像が正則なら、次の実δ関係はその商上で非零因子。 -/
-theorem deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular (N : ℕ) (s : σ)
+theorem Andre.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular (N : ℕ) (s : σ)
     (hc : IsSMulRegular (L₀ ⧸ I₀ N)
       (Ideal.Quotient.mk (I₀ N) (MvPolynomial.C (D.frobeniusLift^[N + 1] d)))) :
     IsSMulRegular (L₀ ⧸ I₀ N)
-      (Ideal.Quotient.mk (I₀ N) (deltaDivisionIteratedRelation D d a s (N + 1))) := by
-  let J := deltaDivisionFiniteStageInitialIdeal D d a N
-  let e := deltaDivisionFiniteStageTailQuotientEquiv D d a N
-  have hc' := deltaDivisionFiniteStageInitialQuotient_coefficient_isSMulRegular D d a N
+      (Ideal.Quotient.mk (I₀ N) (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s (N + 1))) := by
+  let J := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N
+  let e := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv D d a N
+  have hc' := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialQuotient_coefficient_isSMulRegular D d a N
     (D.frobeniusLift^[N + 1] d) hc
-  have hr := linear_mvpolynomial_regular (Ideal.Quotient.mk J
+  have hr := _root_.SerrePositivity.BhattScholze.Andre.linear_mvpolynomial_regular (Ideal.Quotient.mk J
     (MvPolynomial.C (D.frobeniusLift^[N + 1] d)))
-    (Ideal.Quotient.mk J (deltaDivisionFiniteLeadingLowerPolynomial D d a s (N + 1)))
+    (Ideal.Quotient.mk J (_root_.SerrePositivity.BhattScholze.deltaDivisionFiniteLeadingLowerPolynomial D d a s (N + 1)))
     (s, 0) hc'
-  have he := deltaDivisionFiniteStageTailQuotientEquiv_next D d a N s
-  change e (Ideal.Quotient.mk (I₀ N) (deltaDivisionIteratedRelation D d a s (N + 1))) = _ at he
+  have he := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageTailQuotientEquiv_next D d a N s
+  change e (Ideal.Quotient.mk (I₀ N) (_root_.SerrePositivity.BhattScholze.deltaDivisionIteratedRelation D d a s (N + 1))) = _ at he
   intro x y h
   apply e.injective
   apply hr
@@ -705,11 +705,11 @@ namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 
 /-- φ(y_s)とy_s^pはpの倍数だけ異なり、raw残余の適切な係数イデアルは同じ。 -/
-theorem deltaPDivisionFirstBaseIdeal_frobenius_eq_power (D : DeltaStructure p A) (y : σ → A) :
-    deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ D.frobeniusLift (y s)) =
-      deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p) := by
-  let I := deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ D.frobeniusLift (y s))
-  let J := deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p)
+theorem Andre.deltaPDivisionFirstBaseIdeal_frobenius_eq_power (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (y : σ → A) :
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ D.frobeniusLift (y s)) =
+      _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p) := by
+  let I := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ D.frobeniusLift (y s))
+  let J := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p)
   have hpI : (p : A) ∈ I := by
     apply (show Ideal.span {(p : A), (p : A)} ≤ I from le_sup_left)
     exact Ideal.subset_span (by simp)
@@ -738,34 +738,34 @@ theorem deltaPDivisionFirstBaseIdeal_frobenius_eq_power (D : DeltaStructure p A)
 
 omit [Fact p.Prime] in
 /-- 定数一元族のp乗入力に対する係数イデアルは、具体的な(p,y^p)。 -/
-theorem deltaPDivisionFirstBaseIdeal_const_power [Nonempty σ] (y : A) :
-    deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun _ : σ ↦ y ^ p) =
+theorem Andre.deltaPDivisionFirstBaseIdeal_const_power [Nonempty σ] (y : A) :
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun _ : σ ↦ y ^ p) =
       Ideal.span {(p : A), y ^ p} := by
-  rw [deltaDivisionFirstBaseIdeal, Set.range_const]
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal, Set.range_const]
   have hp : Ideal.span {(p : A), (p : A)} = Ideal.span {(p : A)} :=
     congrArg Ideal.span (Set.insert_eq_of_mem (Set.mem_singleton (p : A)))
   rw [hp, ← Ideal.span_insert]
 
 /-- A/(p,y_s^p)で正則な元の像は、任意元族raw A{φ(y_s)/p}の実p商でも正則。 -/
-theorem deltaPDivisionRawModP_next_isSMulRegular
-    (D : DeltaStructure p A)
+theorem Andre.deltaPDivisionRawModP_next_isSMulRegular
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A)
     (hpA : Function.Injective (fun a : A ↦ (p : A) * a))
     (hg : Function.Injective (WittVector.ghostMap :
-      WittVector p (RelativeFreeDeltaRing (R := A) σ) → ℕ → RelativeFreeDeltaRing (R := A) σ))
+      WittVector p (_root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ) → ℕ → _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) σ))
     (y : σ → A) (w : Aˣ) (hw : (w : A) = D.delta (p : A)) (x : A)
     (hx : IsSMulRegular
-      (A ⧸ deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p))
-      (Ideal.Quotient.mk (deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p)) x)) :
+      (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p))
+      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ y s ^ p)) x)) :
     IsSMulRegular
-      (DeltaAdjoinDivision D (p : A) (fun s ↦ D.frobeniusLift (y s)) ⧸
-        Ideal.span {(p : DeltaAdjoinDivision D (p : A) (fun s ↦ D.frobeniusLift (y s)))})
+      (_root_.SerrePositivity.BhattScholze.DeltaAdjoinDivision D (p : A) (fun s ↦ D.frobeniusLift (y s)) ⧸
+        Ideal.span {(p : _root_.SerrePositivity.BhattScholze.DeltaAdjoinDivision D (p : A) (fun s ↦ D.frobeniusLift (y s)))})
       (Ideal.Quotient.mk
-        (Ideal.span {(p : DeltaAdjoinDivision D (p : A) (fun s ↦ D.frobeniusLift (y s)))})
-        (deltaAdjoinDivisionMap D (p : A) (fun s ↦ D.frobeniusLift (y s)) x)) := by
-  let e := Ideal.quotEquivOfEq (deltaPDivisionFirstBaseIdeal_frobenius_eq_power D y)
+        (Ideal.span {(p : _root_.SerrePositivity.BhattScholze.DeltaAdjoinDivision D (p : A) (fun s ↦ D.frobeniusLift (y s)))})
+        (_root_.SerrePositivity.BhattScholze.deltaAdjoinDivisionMap D (p : A) (fun s ↦ D.frobeniusLift (y s)) x)) := by
+  let e := Ideal.quotEquivOfEq (_root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionFirstBaseIdeal_frobenius_eq_power D y)
   have hr : IsSMulRegular
-      (A ⧸ deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ D.frobeniusLift (y s)))
-      (Ideal.Quotient.mk (deltaDivisionFirstBaseIdeal (p := p) (p : A)
+      (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) (fun s ↦ D.frobeniusLift (y s)))
+      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A)
         (fun s ↦ D.frobeniusLift (y s))) x) := by
     intro z t hzt
     change Ideal.Quotient.mk _ x * z = Ideal.Quotient.mk _ x * t at hzt
@@ -775,7 +775,7 @@ theorem deltaPDivisionRawModP_next_isSMulRegular
     have h := congrArg e hzt
     rw [map_mul, map_mul, Ideal.quotEquivOfEq_mk] at h
     exact h
-  exact deltaAdjoinDivisionModP_next_isSMulRegular D hpA hg
+  exact _root_.SerrePositivity.BhattScholze.deltaAdjoinDivisionModP_next_isSMulRegular D hpA hg
     (fun s ↦ D.frobeniusLift (y s)) w hw x hr
 
 end SerrePositivity.BhattScholze

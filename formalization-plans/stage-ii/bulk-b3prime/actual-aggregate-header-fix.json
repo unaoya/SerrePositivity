@@ -1,0 +1,19 @@
+{
+  "path": "SerrePositivity/BhattScholze.lean",
+  "operation": "Move ten appended aggregate imports before the module docstring, keeping the complete import set and docstring content",
+  "before_sha256": "4ff2743c18b3546f175b59e154098491992aade87bc0e2e9ce9564df1f93a3fc",
+  "after_sha256": "e6015ba70c6e0e529db9d8cc7c250faf1dabe09068858fc141cebaaaf3ca571c",
+  "imports": [
+    "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+    "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Comparison",
+    "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Definition",
+    "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary",
+    "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+    "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+    "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+    "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+    "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource",
+    "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility"
+  ],
+  "time": 1794675877.059505
+}

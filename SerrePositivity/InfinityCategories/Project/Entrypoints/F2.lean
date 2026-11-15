@@ -227,6 +227,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Coco
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaUnitNormalizedEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.LeftKanUnitPostcompositionHom
 public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.PresheafEvaluationReindexedColimit
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.FunctorPinchedEndMap
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。

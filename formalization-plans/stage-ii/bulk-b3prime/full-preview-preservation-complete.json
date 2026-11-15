@@ -1,0 +1,17 @@
+{
+  "signature": "eb08ae0c915b6750e3c139bf68fa4c1d8756c831b5ee4d1f545b5d1c25cd06c4",
+  "original_modules": 214,
+  "groups": 29,
+  "before_count": 4440,
+  "after_count": 4439,
+  "explained": [
+    {
+      "name": "SerrePositivity.Inputs.exists_perfectoidization_of_finite",
+      "module": "SerrePositivity.Inputs.Perfectoidization",
+      "change": "removed",
+      "authorization": "R8-4 approved removal of wrapper whose proof is direct BS theorem; raw difference retained"
+    }
+  ],
+  "unexplained": 0,
+  "finished": 1794674067.684006
+}

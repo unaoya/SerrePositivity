@@ -47,8 +47,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の H/dH と、その自然な
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 
 /-- 概要：指定した自然な主商射の作用で、通常係数拡大を同じ環商へ同定する。
@@ -120,8 +120,8 @@ theorem unconditionalGeneratorModPrimeH0_faithfullyFlat
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "d" => W.generator
 local notation "dP" => algebraMap A P d
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -217,7 +217,7 @@ theorem powerRootPrismMonicHodgeTateReduction_homology_isZero_of_unconditional
       (DerivedCategory.Minus.ι.mapIso e)).symm
 
 /-- 概要：元の H/dH の実 mod p 還元の H⁰ は忠実平坦。
-方針：A1-d の実剰余忠実平坦性を標準 mod p 比較と元の分母商比較へ渡す。
+方針：実剰余の比較 の実剰余忠実平坦性を標準 mod p 比較と元の分母商比較へ渡す。
 規約：追加の忠実平坦性仮定を残さない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 完全忠実平坦性の剰余入力。 -/
 theorem powerRootPrismMonicHodgeTateReductionH0_faithfullyFlat_of_unconditional
@@ -357,13 +357,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency true
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
-open SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -382,10 +382,10 @@ local notation "S" => H ⧸ Ideal.span {dH, xH}
 local notation "φ" => powerRootPrismMonicHodgeTateBaseMap W hW f
 
 local notation "Rp" => R ⧸ Ideal.span {(p : R)}
-local notation "Np" => PowerRootPolynomial Rp p hp
+local notation "Np" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rp p hp
 local notation "bp" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {(p : R)}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zp" => powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
+local notation "zp" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
 local notation "Dp" => PrincipalDPPresentation Np zp
 local notation "evp" => perfectPrismVarpiFrobeniusQuotientEquiv W hW
 local notation "Mv" => T ⧸ Ideal.map φ Iv
@@ -507,13 +507,13 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency true
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
-open SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -532,10 +532,10 @@ local notation "S" => H ⧸ Ideal.span {dH, xH}
 local notation "φ" => powerRootPrismMonicHodgeTateBaseMap W hW f
 
 local notation "Rp" => R ⧸ Ideal.span {(p : R)}
-local notation "Np" => PowerRootPolynomial Rp p hp
+local notation "Np" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rp p hp
 local notation "bp" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {(p : R)}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zp" => powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
+local notation "zp" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
 local notation "Dp" => PrincipalDPPresentation Np zp
 local notation "evp" => perfectPrismVarpiFrobeniusQuotientEquiv W hW
 local notation "Mv" => T ⧸ Ideal.map φ Iv

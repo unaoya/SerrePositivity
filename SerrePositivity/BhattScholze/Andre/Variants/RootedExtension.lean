@@ -56,7 +56,7 @@ BS 著者版 Corollary 7.3（著者版 p.56）、BS 著者版 Remark 7.15（p.62
 ## 方針
 
 既存の実完備化・δ 完全化の順序交換同型と p 完備化先行比較を合成する。
-B4-6 の根方程式に特化した比較を、方程式を使わない部分について一般化する。
+冪根関係の比較 の根方程式に特化した比較を、方程式を使わない部分について一般化する。
 
 ## 規約
 
@@ -72,7 +72,7 @@ B4-6 の根方程式に特化した比較を、方程式を使わない部分に
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (a : σ → A)
 local notation "Raw" => DeltaAdjoinDivision D d a
@@ -170,8 +170,8 @@ theorem rawDivisionPDPerfectionEquiv_generator :
     let := divisionPrismCommRing D d a
     let := pdCompletionCommRing (PCompletedDeltaPerfection F) p (pCompletedDeltaPerfectionMap F z)
     rawDivisionPDPerfectionEquiv D d a (s x) =
-      pdCompletionUnit (PCompletedDeltaDivision D d a) p
-        (pCompletedDeltaDivisionMap D d a d) (pCompletedDeltaDivisionMap D d a d) := by
+      pdCompletionUnit (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision D d a) p
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap D d a d) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap D d a d) := by
   let := pdCompletionCommRing Raw p z
   let := pdCompletionCommRing C p x
   let := divisionPrismCommRing D d a
@@ -285,7 +285,7 @@ end RawDivisionPDPerfectionComparison
 @[expose] public noncomputable section AutomorphismTensorPullback
 
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 
 /-- 概要：左係数環と元の係数環の作用を区別する同じ宇宙の型の写し。
 方針：一つの値を持つ構造体として与える。
@@ -556,7 +556,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicFamilyPowerResidue
 
-/-! ## André E1：一元モニック関係の raw δ p 除算包の p 正則性
+/-! ## André：一元モニック関係の raw δ p 除算包の p 正則性
 
 ## 概要
 
@@ -566,7 +566,7 @@ p は非零因子となる。BS 著者版 Corollary 2.39（p.25）の一元入�
 ## 方針
 
 モニック性から mod p 正則性を供給し、既存の任意正則元の raw p 除算定理を適用する。
-ghost 単射は係数環の p 正則性から多項式環の自由性と G4 により供給する。
+ghost 単射は係数環の p 正則性から多項式環の自由性と ghost 成分の単射性の補題 により供給する。
 
 ## 規約
 
@@ -616,7 +616,7 @@ theorem monicRawPDivision_p_mul_injective
   have hw : (w : B) = E.delta (p : B) := by
     change MvPolynomial.C (v : A) = _
     rw [hv, ← polynomialRankOneDeltaStructure_delta_C τ D (p : A), map_natCast]
-  exact deltaPDivisionRaw_p_mul_injective (σ := PUnit.{u + 1}) E (monicRelation f s)
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionRaw_p_mul_injective (σ := PUnit.{u + 1}) E (monicRelation f s)
     hpB hg w hw (monicRelation_modP_isSMulRegular p f hf s)
 
 /-- 概要：完全 prism 上では一元モニック関係の raw φ/p 包は p 正則。
@@ -674,7 +674,7 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {p : ℕ} [Fact p.Prime]
 
 /-- 概要：p 正則な係数環上の相対自由 δ 源では ghost 射が単射。
-方針：多項式環の自由性で p 正則性を移し G4 を適用する。
+方針：多項式環の自由性で p 正則性を移し ghost 成分の単射性の補題 を適用する。
 規約：添字の有限性は不要。
 使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の有限族帰納の ghost 入力。 -/
 private theorem sourceGhost_injective {S : Type u} [CommRing S]
@@ -693,7 +693,7 @@ local notation "E" => polynomialRankOneDeltaStructure σ D
 local notation "r" => fun s : σ => monicRelation (f s) s
 
 /-- 概要：任意有限部分族のモニック関係の raw φ/p 包は p 正則。
-方針：先行 p 乗商の後続正則性で一入力追加を帰納し、ghost 単射を G4 から供給する。
+方針：先行 p 乗商の後続正則性で一入力追加を帰納し、ghost 単射を ghost 成分の単射性の補題 から供給する。
 規約：モニック関係の次数は正でなくてもよい。
 使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の有限独立関係族の raw 計算。 -/
 theorem monicFiniteRaw_p_mul_injective (hf : ∀ s, (f s).Monic)
@@ -722,17 +722,17 @@ theorem monicFiniteRaw_p_mul_injective (hf : ∀ s, (f s).Monic)
     simpa only [map_mul, map_natCast] using congrArg e hxy
   | @insert s T hs ih =>
     have hx : IsSMulRegular
-        (P ⧸ deltaDivisionFirstBaseIdeal (p := p) (p : P) (fun t : T => r t ^ p))
+        (P ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : P) (fun t : T => r t ^ p))
         (Ideal.Quotient.mk
-          (deltaDivisionFirstBaseIdeal (p := p) (p : P) (fun t : T => r t ^ p)) (r s)) := by
+          (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : P) (fun t : T => r t ^ p)) (r s)) := by
       have hpp : Ideal.span {(p : P), (p : P)} = Ideal.span {(p : P)} :=
         congrArg Ideal.span (Set.insert_eq_of_mem (Set.mem_singleton (p : P)))
-      rw [deltaDivisionFirstBaseIdeal, hpp]
+      rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal, hpp]
       exact polynomialSubsetPowerModP_remaining_isSMulRegular (T : Set σ) f p (f s) (hf s) s hs
-    have hstep := deltaPDivisionFamilySum_p_mul_injective (η := PUnit.{max u v + 1}) E
+    have hstep := _root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionFamilySum_p_mul_injective (η := PUnit.{max u v + 1}) E
       (fun t : T => r t) (r s) hpP ih (sourceGhost_injective hpP T)
       (sourceGhost_injective ih PUnit.{max u v + 1}) wP hwP hx
-    let ρ := deltaRootFiniteInsertIndexEquiv (η := PUnit.{max u v + 1}) T s hs
+    let ρ := _root_.SerrePositivity.BhattScholze.Andre.deltaRootFiniteInsertIndexEquiv (η := PUnit.{max u v + 1}) T s hs
     let e := deltaAdjoinDivisionReindexEquiv E (p : P)
       (Sum.elim (fun t : T => DeltaStructure.frobeniusLift E (r t))
         (fun _ : PUnit.{max u v + 1} => DeltaStructure.frobeniusLift E (r s)))
@@ -982,7 +982,7 @@ set_option backward.defeqAttrib.useBackward true
 
 namespace SerrePositivity.BhattScholze.Andre
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (f : σ → Polynomial A)
@@ -1051,13 +1051,13 @@ def monicRawBaseChangeModPAlgEquiv :
 include hpA w hw in
 omit hg in
 /-- 概要：正次数モニック族の raw 包の通常剰余テンソルは A/p 上忠実平坦。
-方針：G4 で ghost 単射を供給し、実 p 商との代数同型で忠実平坦性を移す。
+方針：ghost 成分の単射性の補題 で ghost 単射を供給し、実 p 商との代数同型で忠実平坦性を移す。
 規約：族の濃度に制限せず、外部 ghost 仮定を要求しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 完全忠実平坦性の剰余入力。 -/
 theorem monicRaw_residueTensor_faithfullyFlat
     (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
     Module.FaithfullyFlat QA (QA ⊗[A] B) := by
-  let hg := deltaRootSource_ghostMap_injective (σ := σ) hpA
+  let hg := _root_.SerrePositivity.BhattScholze.Andre.deltaRootSource_ghostMap_injective (σ := σ) hpA
   let := monicRawModPBaseAlgebra D f hpA hg w hw
   let := monicRawModP_faithfullyFlat D f hpA hg w hw hf hdeg
   exact Module.FaithfullyFlat.of_linearEquiv QA (B ⧸ Ideal.span {(p : B)})
@@ -1137,8 +1137,8 @@ H⁰ が A/p 上忠実平坦である。BS 著者版 Corollary 2.39（著者版 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (f : σ → Polynomial A)
@@ -1263,8 +1263,8 @@ BS 著者版 Corollary 2.39（著者版 p.25）、BS 著者版 Remark 7.15（p.6
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (f : σ → Polynomial A)
@@ -1400,7 +1400,7 @@ end MonicRawPerfectionFlat
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (f : σ → Polynomial A)
 local notation "P" => MvPolynomial σ A
@@ -1575,7 +1575,7 @@ BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62�
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 
 /-- 概要：任意の整 perfectoid 基底上の任意正次数モニック族に、全根を持つ拡大がある。
 方針：完全 prism 商表示で任意族の拡大を構成し、基底環同型と評価の自然性で戻す。

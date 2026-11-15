@@ -1,0 +1,38 @@
+{
+  "status": "approved by coordinator/user reply, 2026-11-14 night, bulk-b3prime.md §5; preparation not application",
+  "baseline": "32d364b53",
+  "instruction": "formalization-plans/stage-ii/bulk-b3prime.md §1 R8-1 versus §2 protected EInfinity scope",
+  "conflict": "R8-1 requests removing both EInfinity-to-BS edges. TheoryInterface is an explicit exception, but Comparison is one of the protected CAlg_R modules and does not import TheoryInterface. Moving TheoryInterface alone leaves Comparison -> BS. Its two CAlg_R importers must also move to avoid relocating the reverse edge within EInfinity.",
+  "proposal": [
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/Comparison.lean",
+      "proposed_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean",
+      "source_sha256": "ff542b19526d89aa5fcd3b07d594f7cc1507a565f68f6031876535ddd681bb97",
+      "lines": 107,
+      "declaration_names": "unchanged: retain SerrePositivity.EInfinity.Perfectoidization namespace",
+      "status": "approved mechanical move; not yet applied"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/Interface.lean",
+      "proposed_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean",
+      "source_sha256": "1c5151c611f0dbac51692ac315c9e0d103dc5aedd6b34fe5c2ff42bc72d34017",
+      "lines": 86,
+      "declaration_names": "unchanged: retain SerrePositivity.EInfinity.Perfectoidization namespace",
+      "status": "approved mechanical move; not yet applied"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/Perfectoidization/DerivedCorollary.lean",
+      "proposed_path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean",
+      "source_sha256": "ece34fbe492c0600d4bd794f8ded8ee6f8a9680853cab4b907d94c27106c1506",
+      "lines": 62,
+      "declaration_names": "unchanged: retain SerrePositivity.EInfinity.Perfectoidization namespace",
+      "status": "approved mechanical move; not yet applied"
+    }
+  ],
+  "lines": 255,
+  "root_wiring": "Update aggregate imports consistently; old EInfinity module stubs would recreate reverse imports and are not proposed. Exact aggregate wiring remains subject to static source-import analysis.",
+  "mathematical_change": false,
+  "delete_CAlg_implementation": false,
+  "name_renaming": false,
+  "approval": "CAlg_R Comparison, Interface, DerivedCorollary included in protected-scope exception. Mechanical relocation, names/types/proofs unchanged; v3b unexplained 0; no deletion; include ⑤a/⑤d B4 impact."
+}

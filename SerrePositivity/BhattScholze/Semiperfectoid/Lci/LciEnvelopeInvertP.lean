@@ -15,7 +15,7 @@ public import Mathlib.RingTheory.Ideal.Cotangent
 分裂した像を連続な自己写像の固定点集合として閉じる。フィルトレーションでは各段を帰納して像に入れる。
 
 ## 規約
-BS 著者版 Example 7.9 の G-A3-7 の古典的な部分。位相は比較先に与える。
+BS 著者版 Example 7.9 の p 反転後の分冪計算 の古典的な部分。位相は比較先に与える。
 
 ## 使われ方
 普遍的な包絡の p を反転した後の比較。
@@ -27,9 +27,9 @@ namespace SerrePositivity.BhattScholze
 
 /-- 概要：連続な左逆を持つ比較の稠密な像は Hausdorff 空間全体。
 方針：比較と左逆の合成の固定点集合は閉集合なので、像の閉包に等しい。
-規約：p 反転後に与えられた位相で使う G-A3-7 の閉像の議論。
+規約：p 反転後に与えられた位相で使う p 反転後の分冪計算 の閉像の議論。
 使われ方：包絡の比較の全射性。 -/
-theorem surjective_of_continuous_retraction_of_denseRange
+theorem Semiperfectoid.surjective_of_continuous_retraction_of_denseRange
     {B C : Type*} [TopologicalSpace B] [TopologicalSpace C] [T2Space C]
     (q : B → C) (r : C → B) (hq : Continuous q) (hr : Continuous r)
     (h : Function.LeftInverse r q) (hd : DenseRange q) :
@@ -43,9 +43,9 @@ theorem surjective_of_continuous_retraction_of_denseRange
 
 /-- 概要：初項と各段の剰余を持ち上げられる加法群の射は、フィルトレーションの各段を像に含む。
 方針：各剰余の代表元を引いた差に帰納法を適用する。
-規約：G-A3-7 の稠密性に用いる有限段の持ち上げ。
+規約：p 反転後の分冪計算 の稠密性に用いる有限段の持ち上げ。
 使われ方：分冪の次数ごとの生成から像の稠密性を得る。 -/
-theorem filtration_le_range_of_lift {B C : Type*} [AddGroup B] [AddGroup C]
+theorem Semiperfectoid.filtration_le_range_of_lift {B C : Type*} [AddGroup B] [AddGroup C]
     (q : B →+ C) (F : ℕ → AddSubgroup C) (h₀ : F 0 ≤ q.range)
     (hs : ∀ n x, x ∈ F (n + 1) → ∃ b, -q b + x ∈ F n) :
     ∀ n, F n ≤ q.range := by
@@ -60,9 +60,9 @@ theorem filtration_le_range_of_lift {B C : Type*} [AddGroup B] [AddGroup C]
 
 /-- 概要：有理代数の比較の像は、像に属する元の分冪を含む。
 方針：分冪を階乗の逆数のスカラー倍で表し、比較の元を同じ式で取る。
-規約：G-A3-7 の p 反転後の古典的な分冪計算。
+規約：p 反転後の分冪計算 の p 反転後の古典的な分冪計算。
 使われ方：次数一の持ち上げから高い次数の分冪を持ち上げる。 -/
-theorem dividedPower_mem_range_of_ratAlgHom
+theorem Semiperfectoid.dividedPower_mem_range_of_ratAlgHom
     {B C : Type*} [CommRing B] [CommRing C] [Algebra ℚ B] [Algebra ℚ C]
     (q : B →ₐ[ℚ] C) {J : Ideal C} (H : DividedPowers J)
     {x : C} (hx : x ∈ J) (hqx : x ∈ Set.range q) (n : ℕ) :
@@ -73,9 +73,9 @@ theorem dividedPower_mem_range_of_ratAlgHom
 
 /-- 概要：差商の比較先の類が余法加群を生成するための判定。
 方針：関係の生成元の剰余での像を、余法加群の全射に沿って移す。
-規約：G-A3-7 の `[z_i] = f̄_i mod J̄²` が得られた後の計算。
+規約：p 反転後の分冪計算 の `[z_i] = f̄_i mod J̄²` が得られた後の計算。
 使われ方：フィルトレーションの一次の生成。 -/
-theorem cotangent_span_eq_top_of_relation_classes
+theorem Semiperfectoid.cotangent_span_eq_top_of_relation_classes
     {R σ : Type*} [CommRing R] {J : Ideal R} (f : σ → R)
     (hJ : Ideal.span (Set.range f) = J) (z : σ → J.Cotangent)
     (hz : ∀ i, z i = J.toCotangent ⟨f i, hJ ▸ Ideal.subset_span ⟨i, rfl⟩⟩) :
@@ -93,16 +93,16 @@ theorem cotangent_span_eq_top_of_relation_classes
 
 /-- 概要：有限段での持ち上げと稠密な和から、連続な分裂比較の全射性を得る。
 方針：各段を像に入れ、その合併の稠密性を像へ移す。
-規約：BS 著者版 Example 7.9、G-A3-7 の古典的な全射性の判定。
+規約：BS 著者版 Example 7.9、p 反転後の分冪計算 の古典的な全射性の判定。
 使われ方：p を反転した包絡の比較。 -/
-theorem surjective_of_dense_filtration_retraction
+theorem Semiperfectoid.surjective_of_dense_filtration_retraction
     {B C : Type*} [AddGroup B] [AddGroup C]
     [TopologicalSpace B] [TopologicalSpace C] [T2Space C]
     (q : B →+ C) (r : C → B) (hq : Continuous q) (hr : Continuous r)
     (h : Function.LeftInverse r q) (F : ℕ → AddSubgroup C) (h₀ : F 0 ≤ q.range)
     (hs : ∀ n x, x ∈ F (n + 1) → ∃ b, -q b + x ∈ F n)
     (hd : Dense (⋃ n, (F n : Set C))) : Function.Surjective q := by
-  apply surjective_of_continuous_retraction_of_denseRange q r hq hr h
-  exact hd.mono (Set.iUnion_subset fun n => filtration_le_range_of_lift q F h₀ hs n)
+  apply _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_continuous_retraction_of_denseRange q r hq hr h
+  exact hd.mono (Set.iUnion_subset fun n => _root_.SerrePositivity.BhattScholze.Semiperfectoid.filtration_le_range_of_lift q F h₀ hs n)
 
 end SerrePositivity.BhattScholze

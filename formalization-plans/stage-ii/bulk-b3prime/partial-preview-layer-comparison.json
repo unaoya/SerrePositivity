@@ -1,0 +1,23 @@
+{
+  "status": "partial isolated preview only; not final bundle validation",
+  "baseline_violations": 46,
+  "preview_violations": 46,
+  "new_violations": [],
+  "removed_violations": [],
+  "modified_tracked_modules": [
+    "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+    "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit",
+    "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+    "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase",
+    "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction"
+  ],
+  "new_manifest_modules": [
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+    "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0",
+    "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue"
+  ],
+  "policy": "Use existing checker and exact import parser; baseline tracked graph plus every modified tracked source and five declared new preview files, as staging those files would provide. No exclusions or exception additions."
+}

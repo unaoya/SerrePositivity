@@ -23,7 +23,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
-`Andre/Envelope/PDivision`、`Andre/Envelope/PDivisionSource`、`Andre/PowerRootEnvelope/DeltaDivisionResidue`、`Andre/PowerRootEnvelope/DeltaDivisionWitt`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Delta/DividedPower/PDivision`、`Delta/DividedPower/PDivisionCompletion`、`Delta/Division/Family`、`Delta/Division/Relations`、`Delta/Division/Residue`、`Semiperfectoid/PerfectPrismDivision`、`Semiperfectoid/PerfectPrismDivisionComparison`。
+`Andre/Envelope/PDivision`、`Andre/Envelope/PDivisionSource`、`Andre/PowerRootEnvelope/DeltaDivisionResidue`、`Andre/PowerRootEnvelope/DeltaDivisionWitt`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Delta/DividedPower/PDivision`、`Delta/DividedPower/PDivisionCompletion`、`Delta/Division/Family`、`Delta/Division/Relations`、`Delta/Division/Residue`、`Semiperfectoid/Perfection/PerfectPrismDivision`、`Semiperfectoid/Perfection/PerfectPrismDivisionComparison`。
 -/
 
 universe u v w

@@ -1,0 +1,16 @@
+{
+  "status": "read-only application preflight; not merged, not applied, refresh immediately before freeze",
+  "baseline": "32d364b53",
+  "main": "391b2a0d2522f5c7d05a9e5cbf74b238aa4a5672",
+  "original_source_paths": 218,
+  "changed_original_paths": [
+    {
+      "path": "SerrePositivity/EInfinity.lean",
+      "before_blob": "1d14b951724da25efeb2227515f701521c210ff8",
+      "main_blob": "b87f1c11c89ac019c901f85842edb4fee71e66a6"
+    }
+  ],
+  "new_destination_collisions": [],
+  "all_BS_source_changes": [],
+  "aggregate_reconciliation": "Preserve main EInfinity aggregate added imports; transform only moved imports and remove the four approved BS-specific specializations. Do not overwrite it with the baseline preview."
+}

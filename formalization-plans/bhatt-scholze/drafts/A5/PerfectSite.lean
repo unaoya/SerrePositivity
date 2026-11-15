@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectSite（仮。原典 Rem 4.6、Lemma 4.8、比較写像）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.PerfectSite（仮。原典 Rem 4.6、Lemma 4.8、比較写像）
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.1・§2.2、単位 A5-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 

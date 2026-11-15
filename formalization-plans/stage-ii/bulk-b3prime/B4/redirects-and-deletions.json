@@ -1,0 +1,14 @@
+{
+  "approved_scope": "R8-4, bulk-b3prime.md §1; no other declaration deletions",
+  "rows": [
+    {
+      "old_module": "SerrePositivity.Inputs.Perfectoidization",
+      "old": "SerrePositivity.Inputs.exists_perfectoidization_of_finite",
+      "operation": "rewrite uses to existing BS theorem then remove the compatibility wrapper module",
+      "target": "SerrePositivity.BhattScholze.exists_perfectoidization_of_finite",
+      "new_module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence",
+      "source_type_note": "Wrapper adds Algebra.FinitePresentation but its proof is exactly the BS theorem, with the same result. Existing caller types retained. No CAlg_R deletion.",
+      "preservation": "One intentional approved deletion must be explicitly accounted for; never hide other missing rows or assert raw missing=0."
+    }
+  ]
+}

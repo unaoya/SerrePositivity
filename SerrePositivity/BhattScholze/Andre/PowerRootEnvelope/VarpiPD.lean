@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput
 public import Mathlib.RingTheory.Regular.IsSMulRegular
-public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
 
 /-!
@@ -112,14 +112,14 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "G" => powerRootExponentMonoid p hp
+local notation "G" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
 local notation "barp" => Ideal.Quotient.mk (Ideal.span {(p : A)})
 local notation "a" => barp (perfectPrismVarpiLift W hW)
-local notation "N" => PowerRootPolynomial R₀ p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp
 local notation "K" => Ideal.span {algebraMap R₀ N a}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" =>
   RingHom.comp (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
     (Ideal.Quotient.mk (OrientedPrism.ideal W))
@@ -140,7 +140,7 @@ theorem perfectPrismVarpiQuotientEquiv_symm_mk (b : A) :
 規約：実際の係数主イデアル K による商を取る。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力台環の具体化。 -/
 def perfectPrismVarpiRootInputEquiv : (N ⧸ K) ≃+* Nv :=
-  (powerRootCoefficientQuotientEquiv R₀ p hp a).trans
+  (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientQuotientEquiv R₀ p hp a).trans
     (AddMonoidAlgebra.mapRingEquiv G (perfectPrismVarpiQuotientEquiv W hW).symm)
 
 /-- 概要：入力環同型は A 由来の単項式の係数を同じ R/ϖ 係数へ送る。
@@ -152,7 +152,7 @@ theorem perfectPrismVarpiRootInputEquiv_single (q : G) (b : A) :
       (Ideal.Quotient.mk K (AddMonoidAlgebra.single q (barp b))) =
         AddMonoidAlgebra.single q (barr b) := by
   simp only [perfectPrismVarpiRootInputEquiv, RingEquiv.trans_apply,
-    powerRootCoefficientQuotientEquiv_mk, powerRootCoefficientQuotientMap_single,
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientQuotientEquiv_mk, _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientQuotientMap_single,
     AddMonoidAlgebra.mapRingEquiv_single, perfectPrismVarpiQuotientEquiv_symm_mk]
 
 /-- 概要：入力環同型は元の係数環 A の像を保つ。
@@ -172,10 +172,10 @@ theorem perfectPrismVarpiRootInputEquiv_coeff (b : A) :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常変数での評価の比較。 -/
 theorem perfectPrismVarpiRootInputEquiv_variable (n : ℕ) :
     perfectPrismVarpiRootInputEquiv W hW
-      (Ideal.Quotient.mk K (powerRootPolynomialVariable R₀ p hp n)) =
-        powerRootPolynomialVariable Rv p hp n := by
-  simpa only [powerRootPolynomialVariable, map_one] using
-    perfectPrismVarpiRootInputEquiv_single W hW (powerRootVariableExponent p hp n) 1
+      (Ideal.Quotient.mk K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R₀ p hp n)) =
+        _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable Rv p hp n := by
+  simpa only [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable, map_one] using
+    perfectPrismVarpiRootInputEquiv_single W hW (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootVariableExponent p hp n) 1
 
 /-- 概要：名前付きモニック入力の係数還元は R/ϖ 上の同じ多項式の評価。
 方針：評価の環射に関する自然性と係数・変数の照合を使う。
@@ -184,16 +184,16 @@ theorem perfectPrismVarpiRootInputEquiv_variable (n : ℕ) :
 theorem perfectPrismVarpiRootInputEquiv_input (f : Polynomial A) :
     perfectPrismVarpiRootInputEquiv W hW
       (Ideal.Quotient.mk K (powerRootCoefficientPDInput p f)) =
-        powerRootPolynomialBaseMap Rv p hp (f.map barr) := by
-  unfold powerRootCoefficientPDInput powerRootPolynomialBaseMap
+        _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map barr) := by
+  unfold powerRootCoefficientPDInput _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap
   rw [Polynomial.aeval_def, Polynomial.eval₂_map, Polynomial.hom_eval₂]
   change (perfectPrismVarpiRootInputEquiv W hW).toRingHom
     (Polynomial.eval₂ ((Ideal.Quotient.mk K).comp ((algebraMap R₀ N).comp barp))
-      (Ideal.Quotient.mk K (powerRootPolynomialVariable R₀ p hp 0)) f) = _
+      (Ideal.Quotient.mk K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R₀ p hp 0)) f) = _
   rw [Polynomial.hom_eval₂]
   change Polynomial.eval₂ _
     (perfectPrismVarpiRootInputEquiv W hW
-      (Ideal.Quotient.mk K (powerRootPolynomialVariable R₀ p hp 0))) f = _
+      (Ideal.Quotient.mk K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R₀ p hp 0))) f = _
   rw [perfectPrismVarpiRootInputEquiv_variable, Polynomial.aeval_def, Polynomial.eval₂_map]
   congr 1
   apply RingHom.ext
@@ -207,7 +207,7 @@ theorem perfectPrismVarpiRootInputEquiv_input (f : Polynomial A) :
 theorem perfectPrismVarpiRootInput_monic_regular (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular (N ⧸ K) (Ideal.Quotient.mk K (powerRootCoefficientPDInput p f)) := by
   let e := perfectPrismVarpiRootInputEquiv W hW
-  have hr := powerRootPolynomial_monic_regular Rv p hp (f.map barr) (hf.map barr)
+  have hr := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_regular Rv p hp (f.map barr) (hf.map barr)
   intro t s hts
   apply e.injective
   apply hr
@@ -251,16 +251,16 @@ local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
 local notation "barp" => Ideal.Quotient.mk (Ideal.span {(p : A)})
 local notation "a" => barp (perfectPrismVarpiLift W hW)
-local notation "N" => PowerRootPolynomial R₀ p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp
 local notation "z" => powerRootCoefficientPDInput p f
 local notation "D" => PowerRootCoefficientPDEnvelope p f
 local notation "K" => Ideal.span {algebraMap R₀ D a}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp (f.map barr)
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map barr)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 
 /-- 概要：ϖ の持上げで還元した pd 表示環は原典の係数環上の標準表示と環同型。
@@ -329,7 +329,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismVarpiPDComparison
 
-/-! ## André R1：原典の R/ϖ 無限根環上の pd 比較の入口
+/-! ## André 原典の R/ϖ 無限根環上の pd 比較の入口
 
 ## 概要
 
@@ -385,11 +385,11 @@ variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zv" f => powerRootPolynomialBaseMap Rv p hp (Polynomial.map barr f)
+local notation "zv" f => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (Polynomial.map barr f)
 local notation "Dv" f => PrincipalDPPresentation Nv (zv f)
 
 /-- 概要：原典の R/ϖ 係数環で p は零。
@@ -463,7 +463,7 @@ theorem perfectPrismVarpiNativePDEnvelope_faithfullyFlat
 規約：係数環の非零性や入力多項式は不要。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常代数計算の最初の自由性。 -/
 theorem perfectPrismVarpiRootInput_free : Module.Free Rv Nv :=
-  powerRootPolynomial_free Rv p hp
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_free Rv p hp
 
 /-- 概要：原典のモニック入力の p 乗による実商は R/ϖ 上自由。
 方針：モニック冪商の既存の基底を評価された入力の主イデアル商へ移す。
@@ -471,11 +471,11 @@ theorem perfectPrismVarpiRootInput_free : Module.Free Rv Nv :=
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の P/(f^p) の自由性。 -/
 theorem perfectPrismVarpiRootPowerQuotient_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free Rv (Nv ⧸ Ideal.span {(zv f) ^ p}) := by
-  let := powerRootPolynomialBaseAlgebra Rv p hp
-  have h := powerRootPolynomialPowerQuotient_free Rv p hp (f.map barr) (hf.map barr)
+  let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseAlgebra Rv p hp
+  have h := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialPowerQuotient_free Rv p hp (f.map barr) (hf.map barr)
   change Module.Free Rv
     (Nv ⧸ (Ideal.span {(f.map barr) ^ p}).map (algebraMap (Polynomial Rv) Nv)) at h
-  rw [powerRootPolynomialQuotient_ideal, map_pow] at h
+  rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_ideal, map_pow] at h
   exact h
 
 

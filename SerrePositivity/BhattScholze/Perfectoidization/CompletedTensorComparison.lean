@@ -17,7 +17,7 @@ BS の環版の基底変更の比較と、完備なテンソルの離散性を�
 
 ## 規約
 
-単位の一致には perfectoid 性・平坦性・有限性は要らない。旧 `CLMST/Prop247TensorUnit`・`Prop247TargetComparison`（`prop247_` を外した）。`targetTensorAlgEquiv` は `.choose` でデータを作っている（計画 §8.2.2 では持ち上げの def に直す候補）。
+単位の一致には perfectoid 性・平坦性・有限性は要らない。旧 `CLMST/Prop247TensorUnit`・`Prop247TargetComparison`（`prop247_` を外した）。`targetTensorAlgEquiv` は `.choose` でデータを作っている（一意存在から選んだ比較データ）。
 
 ## 使われ方
 

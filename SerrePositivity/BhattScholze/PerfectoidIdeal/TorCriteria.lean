@@ -32,7 +32,7 @@ section PerfectoidIdealTorRootsPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (ρ : ℕ → R)
     (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
@@ -42,20 +42,20 @@ include hρ
 /-- Original coefficient zero actions on Tor are detected by the given compatible roots. -/
 theorem perfectoidIdeal_torCoefficientScalar_eq_zero_iff_compatible_roots
     (N : ModuleCat.{u} R) (k : ℕ) (hN : ∀ x : N, (p : R) ^ k • x = 0) (i : ℕ) :
-    (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
       torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0) ↔
       ∀ n, torCoefficientScalarEndomorphism C N i (algebraMap R C (ρ n)) = 0 := by
   let F := (Tor (ModuleCat.{u} R) i).flip.obj N
   let J := (coefficientFunctorAnnihilator (C := C) F).comap (algebraMap R C)
   have hp : (p : R) ^ k ∈ J :=
     torCoefficientScalar_algebraMap_eq_zero_of_annihilates N i ((p : R) ^ k) hN
-  change (perfectoidIdeal R p hR (ρ 0) ≤ J) ↔ ∀ n, ρ n ∈ J
-  exact perfectoidIdeal_le_iff_compatible_roots R p hR ρ hρ J k hp
+  change (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0) ≤ J) ↔ ∀ n, ρ n ∈ J
+  exact _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_iff_compatible_roots R p hR ρ hρ J k hp
 
 /-- The full power-torsion Tor input is equivalent to tests on every compatible root. -/
 theorem perfectoidIdeal_powerTorsionTorInput_iff_compatible_roots :
     (∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0) ↔
     (∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
       ∀ i : ℕ, 0 < i → ∀ n,
@@ -77,7 +77,7 @@ section PerfectoidIdealTorComparisonPart
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
 
@@ -86,15 +86,15 @@ The comparison is explicit; its existence and descent from an extension are sepa
 lemma perfectoidIdeal_powerTorsionTorInput_of_finiteFree_comparison
     (C : Type u) [CommRing C] [Algebra R C]
     (r : ℕ) (f : C →ₗ[R] (Fin r → R))
-    (hc : ∀ a ∈ perfectoidIdeal R p hR g, ∀ y : (Fin r → R) ⧸ f.range, a • y = 0)
-    (hk : ∀ b ∈ perfectoidIdeal R p hR g, ∀ x : f.ker, b • x = 0) :
+    (hc : ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ y : (Fin r → R) ⧸ f.range, a • y = 0)
+    (hk : ∀ b ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g, ∀ x : f.ker, b • x = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR g,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   intro N k hN i hi s hs
   exact torCoefficientScalar_eq_zero_of_finiteFree_almost_comparison r f
-    (perfectoidIdeal R p hR g) hc hk N ((p : R) ^ k) hN
-    (BhattScholze.perfectoidIdealMod_idempotent R p hR g k) i hi s hs
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hc hk N ((p : R) ^ k) hN
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g k) i hi s hs
 
 end SerrePositivity.BhattScholze
 
@@ -104,7 +104,7 @@ section PerfectoidIdealExcisionTorPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 
 /-- Actual excision transports original ideal Tor tests in every degree, for
 arbitrary p-power-torsion test modules. -/
@@ -117,15 +117,15 @@ theorem perfectoidIdeal_TorInput_iff_of_isPullback
       (CommRingCat.ofHom r.toRingHom) (CommRingCat.ofHom b.toRingHom))
     (hC : IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0)
     (N : ModuleCat.{u} R) (k : ℕ) (hN : ∀ x : N, (p : R) ^ k • x = 0) (i : ℕ) :
-    (∀ s ∈ perfectoidIdeal R p hR g,
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
       torCoefficientScalarEndomorphism A N i (algebraMap R A s) = 0) ↔
-    (∀ s ∈ perfectoidIdeal R p hR g,
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
       torCoefficientScalarEndomorphism B N i (algebraMap R B s) = 0) := by
-  obtain ⟨hk, hc⟩ := perfectoidIdeal_ker_coker_annihilated_of_isPullback
+  obtain ⟨hk, hc⟩ := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_ker_coker_annihilated_of_isPullback
     hR f l r b hPB hC g hg
   exact torCoefficientIdeal_eq_zero_iff_of_almost_comparison f.toLinearMap
-    (perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
-    (BhattScholze.perfectoidIdealMod_idempotent R p hR g k) i
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR g k) i
 
 end SerrePositivity.BhattScholze
 

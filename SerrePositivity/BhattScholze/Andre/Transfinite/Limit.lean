@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator
 
 public import Mathlib.Algebra.Colimit.Ring
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
@@ -39,7 +40,7 @@ BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題を、�
 
 @[expose] public noncomputable section TorsionBound
 
-open SerrePositivity
+open _root_.SerrePositivity
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
@@ -67,32 +68,6 @@ theorem isReduced_ringDirectLimit [∀ i, IsReduced (R i)] :
   obtain ⟨j, hij, hj⟩ := Ring.DirectLimit.of.zero_exact hz
   have hzero : f i j hij x = 0 := IsReduced.eq_zero _ ⟨n, by simpa only [map_pow] using hj⟩
   rw [← Ring.DirectLimit.of_f hij x, hzero, map_zero]
-
-/-- ## 概要
-被約可換環で a の冪が x を消せば、a 自身が x を消す。
-BS 著者版 Theorem 7.14（著者版 p.61）の極限段における一様ねじれ境界の補助命題。
-
-## 方針
-a*x の冪が零となることを掛け算の等式から示し、被約性を適用する。
-
-## 規約
-指数零と零環も許す。
-
-## 使われ方
-任意の p 冪ねじれに対し、共通指数 1 を与える。
--/
-theorem mul_eq_zero_of_pow_mul_eq_zero_of_reduced {S : Type u}
-    [CommRing S] [IsReduced S] (a x : S) (n : ℕ)
-    (hx : a ^ n * x = 0) : a * x = 0 := by
-  cases n with
-  | zero => simpa only [pow_zero, one_mul, mul_zero] using congrArg (a * ·) hx
-  | succ n =>
-    apply IsReduced.eq_zero _
-    refine ⟨n+1, ?_⟩
-    calc
-      (a*x)^(n+1) = (a^(n+1)*x)*x^n := by ring
-      _ = 0 := by rw [hx, zero_mul]
-
 
 /-- ## 概要
 perfectoid 可換環の有向余極限は、完備化前の段階で被約。
@@ -131,7 +106,7 @@ theorem ringDirectLimit_p_power_torsion_bound_of_perfectoid (p : ℕ) [Fact p.Pr
     (x : Ring.DirectLimit R (fun i j h ↦ f i j h)) (hx : (p : _) ^ n * x = 0) :
     (p : Ring.DirectLimit R (fun i j h ↦ f i j h)) * x = 0 := by
   have := isReduced_ringDirectLimit_of_perfectoid R f p hR
-  exact mul_eq_zero_of_pow_mul_eq_zero_of_reduced _ x n hx
+  exact _root_.SerrePositivity.CommutativeAlgebra.mul_eq_zero_of_pow_mul_eq_zero_of_reduced _ x n hx
 
 /-- ## 概要
 a 冪ねじれの共通境界 N は、主イデアル (a) による通常の完備化にも同じ N で保存される。
@@ -219,7 +194,7 @@ end TorsionBound
 
 @[expose] public noncomputable section CompletedMaps
 
-open SerrePositivity SerrePositivity.BhattScholze.Andre.Transfinite
+open _root_.SerrePositivity _root_.SerrePositivity.BhattScholze.Andre.Transfinite
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
@@ -372,8 +347,8 @@ end CompletedMaps
 
 @[expose] public noncomputable section PresentationColimit
 
-open SerrePositivity SerrePositivity.BhattScholze
-open SerrePositivity.BhattScholze.Andre.Transfinite
+open _root_.SerrePositivity _root_.SerrePositivity.BhattScholze
+open _root_.SerrePositivity.BhattScholze.Andre.Transfinite
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
@@ -526,7 +501,7 @@ end PresentationColimit
 
 @[expose] public noncomputable section PerfectoidCompletionColimit
 
-open SerrePositivity SerrePositivity.BhattScholze
+open _root_.SerrePositivity _root_.SerrePositivity.BhattScholze
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
@@ -775,7 +750,7 @@ BS 著者版 Theorem 7.14（著者版 p.61）の超限反復に必要な根の�
 
 @[expose] public noncomputable section RootClosure
 
-open Polynomial
+open _root_.Polynomial
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable {ι : Type u} [Preorder ι] [Nonempty ι] [IsDirectedOrder ι]
     (R : ι → Type u) [∀ i, CommRing (R i)]
@@ -825,7 +800,7 @@ BS 著者版 Theorem 7.14（著者版 p.61）の超限反復のため、ω₁ �
 @[expose] public noncomputable section OmegaOne
 
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
-open Ordinal Cardinal
+open _root_.Ordinal _root_.Cardinal
 
 /-- ## 概要
 ω₁ 未満の順序数の Type u 表現は空でない。BS 著者版 Theorem 7.14（著者版 p.61）の塔の添字。

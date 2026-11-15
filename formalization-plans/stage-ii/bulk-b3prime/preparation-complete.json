@@ -1,0 +1,47 @@
+{
+  "status": "isolated preparation gates passed; actual branch application, refreshed main and final root/audits/verify still pending",
+  "source_manifest_sha256": "68cabb3a0dc2f22450301c67ea303a83c47442ec4b1d575b55a33da72ebe091c",
+  "target": {
+    "modules": 220,
+    "groups": 28,
+    "signature": "c7c913cd8f1114a1abf720ba6aa66d7a74f839f32b087502fe66210153d6ef96",
+    "finished": 1794673370.054917
+  },
+  "preservation": {
+    "signature": "eb08ae0c915b6750e3c139bf68fa4c1d8756c831b5ee4d1f545b5d1c25cd06c4",
+    "original_modules": 214,
+    "groups": 29,
+    "before_count": 4440,
+    "after_count": 4439,
+    "explained": [
+      {
+        "name": "SerrePositivity.Inputs.exists_perfectoidization_of_finite",
+        "module": "SerrePositivity.Inputs.Perfectoidization",
+        "change": "removed",
+        "authorization": "R8-4 approved removal of wrapper whose proof is direct BS theorem; raw difference retained"
+      }
+    ],
+    "unexplained": 0,
+    "finished": 1794674067.684006
+  },
+  "citation_comparison": {
+    "before": 2564,
+    "after": 2564,
+    "missing": [],
+    "extra": [],
+    "scope": "Every citation whose actual defining module is SerrePositivity, including global-namespace and source-private declarations; imported Mathlib-owned citations are outside this project migration. Actual native names are retained in side receipts.",
+    "checked_fields": [
+      "key",
+      "number",
+      "declaration",
+      "module",
+      "relation",
+      "comment",
+      "edition"
+    ],
+    "source_locations": "Captured path and line retained in native before/after receipts; module ownership is compared after the explicit per-declaration split map. Path and line themselves intentionally move.",
+    "rule_sha256": "268ba032d38a7be059a4eb1a493a92f774dba997cb440ad53ac1f327fc45d5b2",
+    "module_plan_sha256": "0d9c8cf2401058e9ad389638e7fee59be45ecf6b90adea264ebdf6c43c624089"
+  },
+  "time": 1794675444.2529988
+}

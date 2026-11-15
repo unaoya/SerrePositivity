@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision
+public import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivision
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
@@ -34,7 +34,7 @@ public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 universe u
 
-/-! ## André E1：任意関係族の δ 除算による perfectoid 候補
+/-! ## André：任意関係族の δ 除算による perfectoid 候補
 
 ## 概要
 
@@ -44,7 +44,7 @@ BS 著者版 Proposition 3.13（pp.33–35）、BS 著者版 Theorem 7.14（p.61
 
 ## 方針
 
-B4-6 の候補構成のうち、冪根関係の形に依存しない部分を一般の元族で再構成する。
+冪根関係の比較 の候補構成のうち、冪根関係の形に依存しない部分を一般の元族で再構成する。
 既存の p 進完備 δ 完全化と実導来 (p,d) 完備化を使う。
 原典の BS 著者版 Proposition 7.11 を使う証明とは異なる経路の構成部分である。
 
@@ -64,14 +64,14 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace SerrePositivity.BhattScholze.Andre
 
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (a : σ → A)
 
-local notation "C" => PCompletedDeltaDivision D d a
-local notation "j" => pCompletedDeltaDivisionMap D d a
-local notation "E" => pCompletedDeltaDivisionStructure D d a
+local notation "C" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision D d a
+local notation "j" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap D d a
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionStructure D d a
 
 /-- 概要：任意関係族を除算した完全 δ 環の実 (p,d) 完備化の台集合。
 方針：既存の実完備化 H⁰ を使う。
@@ -94,8 +94,8 @@ def divisionPrism (hd : D.IsDistinguished d) :
     letI := divisionPrismCommRing D d a
     OrientedPrism p (DivisionPrismCarrier D d a) := by
   let := divisionPrismCommRing D d a
-  exact perfectDeltaPDPrism E (pCompletedDeltaDivision_isPerfect D d a) (j d)
-    ((pCompletedDeltaDivisionMap_isDeltaHom D d a).map_isDistinguished hd)
+  exact perfectDeltaPDPrism E (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivision_isPerfect D d a) (j d)
+    ((_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap_isDeltaHom D d a).map_isDistinguished hd)
 
 /-- 概要：構成した候補 prism の δ 構造は完全。
 方針：完全 δ 環の実完備化についての既存定理を適用する。
@@ -105,8 +105,8 @@ theorem divisionPrism_isPerfect (hd : D.IsDistinguished d) :
     letI := divisionPrismCommRing D d a
     (divisionPrism D d a hd).deltaStructure.IsPerfect := by
   let := divisionPrismCommRing D d a
-  exact perfectDeltaPDPrism_isPerfect E (pCompletedDeltaDivision_isPerfect D d a) (j d)
-    ((pCompletedDeltaDivisionMap_isDeltaHom D d a).map_isDistinguished hd)
+  exact perfectDeltaPDPrism_isPerfect E (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivision_isPerfect D d a) (j d)
+    ((_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap_isDeltaHom D d a).map_isDistinguished hd)
 
 /-- 概要：完全 prism 候補の標準商を perfectoid 候補とする。
 方針：prism の定義イデアルで割る。
@@ -160,7 +160,7 @@ theorem divisionPerfectoidCandidateMap_relation (hd : D.IsDistinguished d) (s : 
   let := divisionPrismCommRing D d a
   let q := (Ideal.Quotient.mk (divisionPrism D d a hd).ideal).comp
     (pdCompletionUnit C p (j d))
-  obtain ⟨z, hz⟩ := pCompletedDeltaDivisionMap_dvd D d a s
+  obtain ⟨z, hz⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap_dvd D d a s
   change q (j (a s)) = 0
   rw [hz, map_mul]
   have hqd : q (j d) = 0 := divisionPerfectoidCandidateMap_d D d a hd
@@ -186,7 +186,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DivisionPerfectoidCandidate
 
-/-! ## André E1：多項式族の根方程式を保つ perfectoid 候補
+/-! ## André：多項式族の根方程式を保つ perfectoid 候補
 
 ## 概要
 
@@ -344,8 +344,8 @@ PD 先行構成で証明した完全忠実平坦性を、根方程式を持つ�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
 local notation "E" => polynomialRankOneDeltaStructure σ D
@@ -363,8 +363,8 @@ local notation "x" => deltaPerfectionOf G 0 (v z)
 local notation "H" => PDCompletionH0 C p x
 local notation "r₀" => RingHom.comp (RingHom.comp (pdCompletionUnit C p x)
   (deltaPerfectionOf G 0)) v
-local notation "W" => PCompletedDeltaDivision E (MvPolynomial.C d) r
-local notation "j" => pCompletedDeltaDivisionMap E (MvPolynomial.C d) r
+local notation "W" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision E (MvPolynomial.C d) r
+local notation "j" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap E (MvPolynomial.C d) r
 local notation "T" => DivisionPrismCarrier E (MvPolynomial.C d) r
 
 /-- 概要：raw f/d 包から既存の多項式 prism 台環候補への標準環射。
@@ -645,7 +645,7 @@ p 正則な係数環と δ(d) の単元性を仮定する。正次数は不要�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
+open _root_.CategoryTheory
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
 local notation "P₁" => MvPolynomial σ A
@@ -663,7 +663,7 @@ theorem monicPrismaticFiniteResidueFamilyList_isWeaklyRegular
     (hpA : Function.Injective (fun z : A => (p : A) * z))
     (v : Aˣ) (hv : (v : A) = D.delta d) (N : ℕ) :
     RingTheory.Sequence.IsWeaklyRegular (L₁ ⧸ K₁)
-      (deltaDivisionFiniteResidueFamilyList E₁ (MvPolynomial.C d) bRel s N) := by
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteResidueFamilyList E₁ (MvPolynomial.C d) bRel s N) := by
   have hpP : IsSMulRegular P₁ (p : P₁) := by
     simpa only [map_natCast] using
       (show IsSMulRegular A (p : A) from hpA).of_flat (S := P₁)
@@ -673,7 +673,7 @@ theorem monicPrismaticFiniteResidueFamilyList_isWeaklyRegular
   have hvP : (vP : P₁) = (E₁).delta (MvPolynomial.C d) := by
     change MvPolynomial.C (v : A) = _
     rw [hv, polynomialRankOneDeltaStructure_delta_C]
-  exact deltaDivisionFiniteResidueFamilyList_isWeaklyRegular E₁ (MvPolynomial.C d) bRel s
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteResidueFamilyList_isWeaklyRegular E₁ (MvPolynomial.C d) bRel s
     hpP hpL (witt_ghostMap_injective_of_mul_prime_injective p L₁ hpL) vP hvP
     (monicPrismaticFirstRelation_mod_pd_fin_isWeaklyRegular D d f hf s s.injective) N
 
@@ -686,14 +686,14 @@ theorem monicPrismaticFiniteResidueFamilyList_isKoszulResolution
     (hpA : Function.Injective (fun z : A => (p : A) * z))
     (v : Aˣ) (hv : (v : A) = D.delta d) (N : ℕ) :
     SerrePositivity.IsKoszulResolution
-      (deltaDivisionFiniteResidueFamilyList E₁ (MvPolynomial.C d) bRel s N).get := by
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteResidueFamilyList E₁ (MvPolynomial.C d) bRel s N).get := by
   apply SerrePositivity.isKoszulResolution_of_isWeaklyRegular
   simpa only [List.ofFn_get] using
     monicPrismaticFiniteResidueFamilyList_isWeaklyRegular D d f hf s hpA v hv N
 
 
 variable {m : ℕ} (s : Fin m ≃ σ) (N : ℕ)
-local notation "cs" => deltaDivisionFiniteFamilyCoordinates (s : Fin m → σ) N
+local notation "cs" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates (s : Fin m → σ) N
 local notation "q₁" => Ideal.Quotient.mk K₁
 local notation "α₁" => deltaDivisionSourceMap (σ := σ) E₁ (MvPolynomial.C d)
 
@@ -713,7 +713,7 @@ theorem monicPrismaticFiniteResidueEvaluationFamily_isKoszulResolution
   change SerrePositivity.IsKoszulResolution (g ∘ (cs).get)
   apply SerrePositivity.isKoszulResolution_of_isWeaklyRegular
   rw [← List.map_ofFn, List.ofFn_get]
-  exact deltaDivisionFiniteEvaluationFamilyList_isWeaklyRegular E₁ (MvPolynomial.C d) bRel s
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteEvaluationFamilyList_isWeaklyRegular E₁ (MvPolynomial.C d) bRel s
     (fun k => monicPrismaticFiniteResidueFamilyList_isWeaklyRegular D d f hf s hpA v hv k) N
 
 /-- 概要：有限モニック族の全有限 δ 深さの源グラフ商は、残余自由 δ 射に沿う高次 Tor が零。
@@ -725,17 +725,17 @@ theorem monicPrismaticFiniteResidueEvaluationFamilySource_tor_subsingleton
     (hpA : Function.Injective (fun z : A => (p : A) * z))
     (v : Aˣ) (hv : (v : A) = D.delta d) (i : ℕ) :
     Subsingleton (SerrePositivity.TorAlg ((q₁).comp α₁) (i + 1)
-      (DeltaDivisionSourceFiniteCoordinateQuotient E₁ bRel (cs).get)) := by
+      (_root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionSourceFiniteCoordinateQuotient E₁ bRel (cs).get)) := by
   have e := SerrePositivity.torAlgKoszulIso ((q₁).comp α₁)
-    (fun j : Fin (cs).length => deltaDivisionSourceGraphRelation E₁ bRel ((cs).get j))
-    (deltaDivisionSourceGraph_fin_isKoszulResolution E₁ bRel (cs).get
-      (deltaDivisionFiniteFamilyCoordinates_nodup s s.injective N).injective_get) (i + 1)
+    (fun j : Fin (cs).length => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E₁ bRel ((cs).get j))
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_fin_isKoszulResolution E₁ bRel (cs).get
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates_nodup s s.injective N).injective_get) (i + 1)
   have he : ((q₁).comp α₁) ∘
-      (fun j : Fin (cs).length => deltaDivisionSourceGraphRelation E₁ bRel ((cs).get j)) =
+      (fun j : Fin (cs).length => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E₁ bRel ((cs).get j)) =
       (fun j : Fin (cs).length => q₁ (deltaDivisionEvaluationRelation E₁ (MvPolynomial.C d) bRel
         ((cs).get j).1 ((cs).get j).2)) := by
     funext j
-    exact congrArg q₁ (deltaDivisionSourceGraph_map E₁ (MvPolynomial.C d) bRel ((cs).get j))
+    exact congrArg q₁ (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_map E₁ (MvPolynomial.C d) bRel ((cs).get j))
   rw [he] at e
   have hr := monicPrismaticFiniteResidueEvaluationFamily_isKoszulResolution D d f s N hf hpA v hv
   exact ModuleCat.subsingleton_of_isZero ((hr.isZero (-((i + 1 : ℕ) : ℤ)) (by omega)).of_iso e)
@@ -753,7 +753,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実導来剰余比較の評価側
 
 ## 方針
 
-各有限 δ 深さの Koszul Tor 消滅を既存 G7 に渡し、Tor 対称性と標準 augmentation で比較する。
+各有限 δ 深さの Koszul Tor 消滅を既存 余極限との比較 に渡し、Tor 対称性と標準 augmentation で比較する。
 原典の BS 著者版 Proposition 7.11 を使う経路とは異なる明示関係による計算。
 
 ## 規約
@@ -770,8 +770,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の実導来剰余比較の評価側
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -796,7 +796,7 @@ theorem monicPrismaticResidueSource_tor_subsingleton
     letI := deltaDivisionSourceEvaluationAlgebra E₁ c₁
     Subsingleton (SerrePositivity.TorAlg ψ₁ (i + 1) P₁) := by
   let := deltaDivisionSourceEvaluationAlgebra E₁ c₁
-  apply deltaDivisionEvaluationSourceFamily_tor_subsingleton E₁ c₁ s ψ₁ i
+  apply _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSourceFamily_tor_subsingleton E₁ c₁ s ψ₁ i
   intro N
   exact monicPrismaticFiniteResidueEvaluationFamilySource_tor_subsingleton D d f s N hf hpA v hv i
 
@@ -889,7 +889,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の係数環への比較の準
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) {m : ℕ}
@@ -998,7 +998,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実係数商への比較。
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1270,8 +1270,8 @@ local notation "E" => polynomialRankOneDeltaStructure σ D
 local notation "r" => (fun t : σ => monicRelation (f t) t)
 local notation "F" => deltaAdjoinDivisionStructure E (MvPolynomial.C d) r
 local notation "T" => DivisionPrismCarrier E (MvPolynomial.C d) r
-local notation "W" => PCompletedDeltaDivision E (MvPolynomial.C d) r
-local notation "j" => pCompletedDeltaDivisionMap E (MvPolynomial.C d) r
+local notation "W" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision E (MvPolynomial.C d) r
+local notation "j" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap E (MvPolynomial.C d) r
 
 /-- 概要：既存多項式候補台環を、選択生成元を持つ prism として束ねる。
 方針：一般関係族の除算候補を独立変数の評価族に適用する。
@@ -1303,7 +1303,7 @@ theorem polynomialPrismRawMap_isDeltaHom (hd : D.IsDistinguished d) :
     letI := polynomialPrismCommRing D d f
     (F).IsDeltaHom (polynomialPrism D d f hd).deltaStructure (polynomialPrismRawMap D d f) := by
   let := polynomialPrismCommRing D d f
-  exact (pdCompletionUnit_isDeltaHom (pCompletedDeltaDivisionStructure E (MvPolynomial.C d) r)
+  exact (pdCompletionUnit_isDeltaHom (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionStructure E (MvPolynomial.C d) r)
     (j (MvPolynomial.C d))).comp (pCompletedDeltaPerfectionMap_isDeltaHom F)
 
 /-- 概要：元の A から候補への標準係数射は δ 射。

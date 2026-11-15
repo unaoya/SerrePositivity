@@ -1,0 +1,432 @@
+{
+  "scope": "Five audit scripts only; uniquely owned original source constants in original BS/Andre enclosing/open namespaces. No local binder has these names. Replace identifiers with exact native-validated new constants, retaining all tested types, predicates and axiom checks.",
+  "files": {
+    "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean": {
+      "PowerRootPolynomial": {
+        "old": "SerrePositivity.BhattScholze.Andre.PowerRootPolynomial",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial",
+        "lines": [
+          34
+        ]
+      },
+      "powerRootPolynomialDelta": {
+        "old": "SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta",
+        "lines": [
+          35
+        ]
+      }
+    },
+    "scripts/audit_andre_initial_coefficient.lean": {
+      "PowerRootPolynomial": {
+        "old": "SerrePositivity.BhattScholze.Andre.PowerRootPolynomial",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial",
+        "lines": [
+          53
+        ]
+      },
+      "powerRootPolynomialDelta": {
+        "old": "SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta",
+        "lines": [
+          54
+        ]
+      }
+    },
+    "scripts/audit_bhatt_scholze_b5.lean": {
+      "perfectoidIdeal": {
+        "old": "SerrePositivity.perfectoidIdeal",
+        "new": "SerrePositivity.BhattScholze.Almost.perfectoidIdeal",
+        "lines": [
+          111,
+          112,
+          113
+        ]
+      },
+      "BhattScholze.perfectoidIdeal_isAlmostZero_extension": {
+        "old": "SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension",
+        "new": "SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension",
+        "lines": [
+          114
+        ]
+      },
+      "BhattScholze.perfectoidIdealMod": {
+        "old": "SerrePositivity.BhattScholze.perfectoidIdealMod",
+        "new": "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod",
+        "lines": [
+          119,
+          119,
+          120
+        ]
+      },
+      "BhattScholze.perfectoidIdealMod_idempotent": {
+        "old": "SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent",
+        "new": "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent",
+        "lines": [
+          121
+        ]
+      }
+    },
+    "scripts/audit_bhatt_scholze_refactoring.lean": {
+      "CompatibleRootCompletion": {
+        "old": "SerrePositivity.BhattScholze.CompatibleRootCompletion",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion",
+        "lines": [
+          371,
+          375,
+          401,
+          411
+        ]
+      },
+      "compatibleRootCompletionMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootCompletionMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap",
+        "lines": [
+          374,
+          396,
+          412
+        ]
+      },
+      "compatibleRootQuotientMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootQuotientMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootQuotientMap",
+        "lines": [
+          376,
+          390
+        ]
+      },
+      "compatibleRootSingletonZeroQuotientEquiv": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv",
+        "lines": [
+          378,
+          391,
+          397
+        ]
+      },
+      "compatibleRootSingletonQuotientEquiv": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv",
+        "lines": [
+          381,
+          388,
+          401
+        ]
+      },
+      "compatibleRootSingletonCompletionEquiv": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv",
+        "lines": [
+          383,
+          394,
+          400
+        ]
+      },
+      "compatibleRootFamilyIdeal_singleton": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootFamilyIdeal_singleton",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyIdeal_singleton",
+        "lines": [
+          386
+        ]
+      },
+      "compatibleRootFamilyQuotientMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootFamilyQuotientMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyQuotientMap",
+        "lines": [
+          389,
+          527,
+          528
+        ]
+      },
+      "compatibleRootSingletonQuotientEquiv_comp_quotientMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_comp_quotientMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_comp_quotientMap",
+        "lines": [
+          392
+        ]
+      },
+      "compatibleRootFamilyCompletionMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootFamilyCompletionMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap",
+        "lines": [
+          395,
+          516,
+          525,
+          531,
+          542,
+          558,
+          572,
+          582
+        ]
+      },
+      "compatibleRootSingletonCompletionEquiv_comp_completionMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_comp_completionMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_comp_completionMap",
+        "lines": [
+          398
+        ]
+      },
+      "compatibleRootSingletonCompletionEquiv_algebraMap": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_algebraMap",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap",
+        "lines": [
+          402
+        ]
+      },
+      "existsUnique_compatibleRootCompletionLift": {
+        "old": "SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootCompletionLift",
+        "lines": [
+          413
+        ]
+      },
+      "CompatibleRootFamilyCompletion": {
+        "old": "SerrePositivity.BhattScholze.CompatibleRootFamilyCompletion",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion",
+        "lines": [
+          515,
+          522,
+          541,
+          556,
+          571,
+          581
+        ]
+      },
+      "existsUnique_compatibleRootFamilyCompletionLift": {
+        "old": "SerrePositivity.BhattScholze.existsUnique_compatibleRootFamilyCompletionLift",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift",
+        "lines": [
+          517,
+          543,
+          565,
+          576,
+          584,
+          587,
+          588
+        ]
+      },
+      "existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid": {
+        "old": "SerrePositivity.BhattScholze.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid",
+        "lines": [
+          589
+        ]
+      },
+      "compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid": {
+        "old": "SerrePositivity.BhattScholze.compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid",
+        "lines": [
+          590
+        ]
+      },
+      "DeltaRootSourceIteratedPDCompletion": {
+        "old": "SerrePositivity.BhattScholze.DeltaRootSourceIteratedPDCompletion",
+        "new": "SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion",
+        "lines": [
+          643,
+          855,
+          862
+        ]
+      },
+      "perfectPrismRootSource_pure": {
+        "old": "SerrePositivity.BhattScholze.perfectPrismRootSource_pure",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_pure",
+        "lines": [
+          646,
+          858,
+          864
+        ]
+      },
+      "perfectPrismRootSourceSingleIso": {
+        "old": "SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso",
+        "lines": [
+          651
+        ]
+      },
+      "perfectPrismRootSourceSingleIso_homologyZero": {
+        "old": "SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso_homologyZero",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso_homologyZero",
+        "lines": [
+          654
+        ]
+      },
+      "deltaDivisionEvaluationFiniteSupportIdeal": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionEvaluationFiniteSupportIdeal",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationFiniteSupportIdeal",
+        "lines": [
+          728,
+          821,
+          822
+        ]
+      },
+      "deltaDivisionFiniteSupportModuleDiagram": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportModuleDiagram",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportModuleDiagram",
+        "lines": [
+          731,
+          734,
+          765
+        ]
+      },
+      "deltaDivisionFiniteSupportTransition": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition",
+        "lines": [
+          735,
+          738
+        ]
+      },
+      "deltaDivisionFiniteSupportEval": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval",
+        "lines": [
+          743,
+          751,
+          752,
+          754,
+          767,
+          782
+        ]
+      },
+      "deltaDivisionFiniteSupportEvalCocone": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalCocone",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalCocone",
+        "lines": [
+          758,
+          828,
+          836
+        ]
+      },
+      "deltaDivisionFiniteSupportEvalIsColimit": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalIsColimit",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalIsColimit",
+        "lines": [
+          760,
+          831,
+          838
+        ]
+      },
+      "deltaDivisionFiniteSupportColimitEvalIso": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso",
+        "lines": [
+          766
+        ]
+      },
+      "deltaDivisionFiniteSupportColimitEvalIso_ι": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso_ι",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso_ι",
+        "lines": [
+          769
+        ]
+      },
+      "deltaDivisionBoundedSupportModuleDiagram": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionBoundedSupportModuleDiagram",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram",
+        "lines": [
+          780,
+          804
+        ]
+      },
+      "deltaDivisionBoundedSupportColimitEvalIso": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionBoundedSupportColimitEvalIso",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportColimitEvalIso",
+        "lines": [
+          781
+        ]
+      },
+      "deltaDivisionCoordinateHull": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionCoordinateHull",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionCoordinateHull",
+        "lines": [
+          782
+        ]
+      },
+      "deltaDivisionBoundedSupportColimitEvalIso_ι": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionBoundedSupportColimitEvalIso_ι",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportColimitEvalIso_ι",
+        "lines": [
+          784
+        ]
+      },
+      "deltaDivisionBoundedSupportEvalCocone": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionBoundedSupportEvalCocone",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportEvalCocone",
+        "lines": [
+          789
+        ]
+      },
+      "deltaDivisionBoundedSupportEvalIsColimit": {
+        "old": "SerrePositivity.BhattScholze.deltaDivisionBoundedSupportEvalIsColimit",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportEvalIsColimit",
+        "lines": [
+          791
+        ]
+      },
+      "deltaRootRelationFamily": {
+        "old": "SerrePositivity.BhattScholze.deltaRootRelationFamily",
+        "new": "SerrePositivity.BhattScholze.Andre.deltaRootRelationFamily",
+        "lines": [
+          800
+        ]
+      },
+      "deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit": {
+        "old": "SerrePositivity.BhattScholze.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit",
+        "lines": [
+          813
+        ]
+      }
+    },
+    "scripts/audit_clmst_b3.lean": {
+      "QuotientPerfectoidization": {
+        "old": "SerrePositivity.QuotientPerfectoidization",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization",
+        "lines": [
+          36,
+          45,
+          53,
+          58
+        ]
+      },
+      "toQuotientPerfectoidization": {
+        "old": "SerrePositivity.toQuotientPerfectoidization",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization",
+        "lines": [
+          40,
+          109
+        ]
+      },
+      "isPerfectoidization_toQuotientPerfectoidization": {
+        "old": "SerrePositivity.isPerfectoidization_toQuotientPerfectoidization",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization",
+        "lines": [
+          41
+        ]
+      },
+      "quotientPerfectoidization_subsingleton": {
+        "old": "SerrePositivity.quotientPerfectoidization_subsingleton",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.quotientPerfectoidization_subsingleton",
+        "lines": [
+          49,
+          54
+        ]
+      },
+      "quotientPerfectoidization_natCast_eq_zero": {
+        "old": "SerrePositivity.quotientPerfectoidization_natCast_eq_zero",
+        "new": "SerrePositivity.BhattScholze.Semiperfectoid.quotientPerfectoidization_natCast_eq_zero",
+        "lines": [
+          59
+        ]
+      },
+      "perfectoidIdeal": {
+        "old": "SerrePositivity.perfectoidIdeal",
+        "new": "SerrePositivity.BhattScholze.Almost.perfectoidIdeal",
+        "lines": [
+          108
+        ]
+      }
+    }
+  }
+}

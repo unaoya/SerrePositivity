@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.DiscreteCore（仮。原典 Cor 8.14 前半の芯）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.DiscreteCore（仮。原典 Cor 8.14 前半の芯）
 -- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3・§5（配置、W9-II-24）、単位 A7-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 

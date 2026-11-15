@@ -1,0 +1,10 @@
+{
+  "copied_files": 3345,
+  "module_sources_identical": 223,
+  "different_aggregate_sources_not_reused": [
+    "SerrePositivity.EInfinity"
+  ],
+  "obsolete_artifact_files_removed": 1088,
+  "policy": "Copy only native artifacts from validated source-identical modules; atomic replace breaks cache hardlinks, no setup paths copied; normal Lake build still validates dependency traces.",
+  "time": 1794675636.925452
+}

@@ -1258,3 +1258,270 @@ Mathlibの対応は外部のものとして保持し、宣言の所有元をSerr
 見込みは手書き890〜1,530行（道具・意味のあるfixture検査・文書。生成物と一時Leanは除く）、0.5〜1.5日。環境抽出は今回未実行なので所要時間は未実測。最初の50所有モジュールで壁時計・最大メモリを測り、残りの数から時間を見直す。待ち時間を除いた見込みと鍵待ちを分ける。一晩で済むとはまだ約束しない。実行時は--wait 3600・bulk、昼は280秒以内、夜は30分以内、所有モジュールごとのreceiptを保存して再開可能にする。
 
 B5段0はここで止める。B5の実装、既存地図の置き換え、追加の属性付け、B3′の移動・改名には進んでいない。
+
+
+### B3′ 着手・範囲の確認（11-14夜）
+
+一覧：済み 0／全体 22（うち追加 0）。main 32d364b53からbulk/b3primeを切った。22項目はR8-2を先頭に、R7-3(a)(b)(c)(d)・R7-4・R7-5・R7-6(c)・R7-7、R8-1・R8-3・R8-4・R8-7・R8-8・R8-9、R10-3・R10-5(a)(b)(d)(f/g)・R10-7、B3残りの照合を数える。段0の表を作成中で、Lean・既存scripts・他レーンの作業木は変更していない。ビルド・適用も未実行。
+
+R8-2はRingCompletion.leanへの既存の切り出しを再利用し、Setup・Completionの環の部品と、nerve・指定錐の部品を区別する。Completion節全体を環のファイルへ移すと∞の依存を残すため、一律の節単位では分けない。
+
+R8-1に指示の範囲の衝突がある。§1はEInfinity→BSの2辺の解消を求めるが、§2の保護例外はTheoryInterfaceとそのimporter。もう一辺はEInfinity/Perfectoidization/ComparisonからDerived/Interfaceへのもので、ComparisonはTheoryInterfaceをimportしない。TheoryInterfaceだけを動かしても残る。CAlg_R版のComparison・Interface・DerivedCorollaryの3本（計255行）を削除せずBS/Perfectoidization/Interface/CAlgへ機械的に移す案を[具体的な表](bulk-b3prime/r8-1-scope-decision.json)にした。宣言の完全名・型・証明は保持し、旧モジュールの再公開stubで逆辺を再導入しない案。保護例外の承認前には適用しない。
+
+4つの必須の旧パス文字列について、稼働5枝のmainとの分岐点以降のLeanと未コミット/未追跡Leanを読み取りで調べた[下限の調査](bulk-b3prime/mandatory-impact-lower-bound.json)は0ファイル。これは全移動・全改名の最終影響件数ではない。30ファイル条件を満たしたとまだ扱わず、残りの表と影響の静的調査を続ける。
+
+
+### B3′ 段0・全表と準備への移行（11-14夜）
+
+一覧：済み 2／全体 22（うち追加 0）。基準mainは32d364b53。[22項目の表](bulk-b3prime/stage0-items.json)、[モジュール移動案](bulk-b3prime/module-map.proposed.json)、[所有元付き宣言名の案](bulk-b3prime/namespace-map.proposed.json)、[6切り出し先](bulk-b3prime/split-plan.proposed.json)を保存。71本の全体移動、公開ソース宣言1,861行のうち1,486改名。これは構文上の表であり、private・生成宣言を含むカーネル全表は元の環境のsnapshotで準備中に補完する。R7-3(a)のMonicRelation/Familyと(d)のPrismPresentationはmainに実装済みなので再移動しない。
+
+調整役の§5の承認により、CAlg_RのComparison・Interface・DerivedCorollaryも保護例外となった。[承認記録](bulk-b3prime/r8-1-scope-decision.json)を更新。削除せず名前・型・証明を保ってBS側へ移す。旧パスの再公開stubはEInfinityからBSへの逆辺を戻すため作らず、集約importを整理する。
+
+[静的な衝突検査](bulk-b3prime/stage0-target-collisions.json)は本体33,638ファイルの公開ソース宣言に対する行き先名衝突0、分割先パス衝突0。[直接importの解析](bulk-b3prime/stage0-import-closure.json)では変更所有元111、逆向きの閉包191モジュール。RootEnvelope三本・PerfectPrismDivisionComparison・PDivisionSource・TensorCompatibilityは現rootから到達しない。証明済みの別構成・終点として公開し、未使用という理由では削除しない。監査に移動済みの四本は再移動しない。
+
+[稼働6枝の文字列調査](bulk-b3prime/branch-impact-stage0.json)は合計2ファイル（⑥の過去のB4 JSON二本）、Lean 0、行き先パス衝突0。⑤a・⑤d・③二枝・⑥・Kerodon reviewを読み取りだけで調査。未コミット/未追跡と文書・データも対象にし、改名対象の完全名・旧モジュール/パスを検索した。単なる文字列調査であり意味上の参照の採取とは区別する。過去の表は履歴として残し、B4用に写像の合成を提供する。適用前に動いている枝を再走査する。承認範囲内かつ30ファイル以下なので停止せず隔離した準備へ進む。
+
+DivisionResidueの移動は暫定案。現在のファイルはNormalizedの有限塔・忠実平坦性に依存するため、丸ごとの移動だけではDelta→Andreの逆辺を作る。一般の依存の閉包を調べ、分離できなければその移動を取り下げて元に残す。文書の「旧パス」は現在0件。工程名の候補と引用の歴史の注記を分け、属性の意味や対応番号を機械的に消さない。
+
+[時間の見込み](bulk-b3prime/stage0-timing.json)：準備4〜12時間、適用と全検証3〜8時間（鍵待ちを除く、今回のプレビューは未実測）。以前のB3の実測はroot 689秒、verify（3ジョブ）2,968秒。全監査106本の実測合計も付表に保存した。今回の閉包が小さくてもroot・全監査・verifyは省略せず、最初のプレビューの実測で見直す。昼は280秒以内、夜30分以内・--wait 3600・bulk、全監査/verifyは夜。適用の直前に通知し、それまではBSの取り込みを止めない。
+
+
+### B3′ 準備・R8-2の分割プレビュー（11-14夜、未適用）
+
+一覧：済み 2／全体 22（うち追加 0）。隔離worktree /tmp/bulk-b3prime-previewを作り、packagesは既存を参照、buildはcopy-on-writeの独立したコピーにした。他レーン・main・この枝の本体Leanは変更していない。R8-2を最初に実行した[プレビュー](bulk-b3prime/r82-preview/preview.patch)は、元の64宣言をBS側32・通常の圏16・通常の完備化16へ三分割する。元からHomologicalAlgebraにあるRingCompletionは再利用し、nerve・単体的四角形・指定錐はBS側に残す。
+
+対象3モジュールはビルド成功。[保存比較](bulk-b3prime/r82-preview/r82-comparison.json)はv3bの64親宣言で欠落・余分・未説明0（生のsnapshotは184→185カーネル行。生成行の取り扱いはB3と同じ既存比較器）。型・本体・公理・カーネル属性を検査し、比較器やsnapshotの規則は弱めていない。元の宣言のコマンドはバイト単位で保存。所有元の写像と原snapshotの圧縮版、ハッシュは[manifest](bulk-b3prime/r82-preview/manifest.json)に保存した。
+
+最初の25宣言だけの分割も未説明0だったが、通常の商図式とArcOutsideを使う環側に古い依存が残ったため7宣言を加えた。その初回比較で11差分を検出し、Mathlib.Combinatorics.Quiver.ReflQuiverのimport不足によるquiver instanceの違いと特定。元のinstanceを供給するimportを加え、最終比較で0に直した。初回の差分を許容して通したのではない。
+
+直接利用する環の5本はimport一行だけをRingInterfaceへ替えた。RootAdjunction・IntegralClosureCompletion・IntegralApproximation・PerfectoidFilteredColimit・ArcPerfectoidBaseで、その和の静的閉包334モジュールにInfinityCategoriesは0本。これら5本の対象ビルドと172親宣言の保存比較も成功したが、最後のMathlib import修正後の環境で再照合するため次の鍵の塊へ入れた。この再照合が済むまで最終receiptは保留とする。
+
+全体の準備は187モジュールの元環境snapshot、162本の参照採取を再開可能な束で進めている。importだけの集約4本には所有宣言がないことを静的に確認し、importとroot検査で扱う。参照採取は既存bulk_collectを使い、Lakeの元のsetupを継承する。共有鍵は一回ずつ、昼270秒・夜1,650秒、--wait 3600。
+
+依存の閉包の調査で、DivisionResidue全体の移動は撤回し、独立な剰余・テンソル表示12宣言の切り出しへ変更した。[残す理由](bulk-b3prime/retentions.json)：平坦性・正則性がNormalizedとOrdinaryRoots/Adjoinの有限塔に依存し、全体移動はDelta→Andreを新設するため。残るLciEnvelopePresentationからその平坦性への辺を解消したとは扱わない。更新後の案は全体移動70本・切り出し先7本、公開ソース表1,848行（改名1,486）。またRootSourceの一般の反射比較は1460〜1591行の節だけを対象とし、その後の具体的δ根添加の完備性は一般のファイルへ混ぜない。
+
+
+### B3′ 準備・環側の再照合と静的な層の修正（11-14夜）
+
+一覧：済み 2／全体 22（うち追加 0）。R8-2の最後のimport修正後に環側5本を再ビルド・再採取し、[172親宣言の保存比較](bulk-b3prime/r82-preview/r82-consumers-comparison.json)は未説明0で通った。原環境とプレビューの生snapshot・各実行のreceiptを追加し、保留を解除した。本体への適用はまだ行っていない。
+
+InitialLimitの行き先をLimitsAndColimits/から**Cofinality/InitialValueCone**へ修正した。初期案の§7.1に置くと、実際に使うInitialCofinalityの§7.2への新しい逆辺になるため。同じ§7.2に置き、例外を追加せずに扱う。名前もCofinalityの名前空間に揃える。ネイティブの[切り出し前の依存の確認](bulk-b3prime/native-split-closure-preliminary.json)ではInitialLimitは一般のKerodonの部品だけ、RootSourceの反射比較も外部のBS依存なし。生成された式補題・局所notationの全所有元は既存の厳格なv3b処理で検査し、構文上の行数だけで検査済みにはしない。
+
+R8-4の互換wrapper一個は[削除・利用先変更の台帳](bulk-b3prime/redirects-and-deletions.json)へ独立に記録した。削除を改名と混ぜて比較の欠落を隠さない。Finiteとwrapper本体も参照採取に追加し、対象は187 snapshotモジュール・164意味上の参照ファイルとなった。
+
+改名のプレビューではnamespaceとopenを元のままに保ち、実際の使用を完全名へ書き換える。元環境の採取が済んだ19本はプレビューの保留0まで確認したが、改名後のビルドは未実行。宣言名の位置にLeanが同時に記録するLocalInfoは、同じ位置の自分のglobal binderと、宣言コマンド範囲またはネイティブのselection位置で照合できた場合だけ合成の情報として扱う。任意の用語位置の曖昧性は除外しない。この調整は隔離した準備用コードだけで、他レーンが使う共通の道具は変更していない。型・本体の保存比較による最終確認は別に必須とする。
+
+
+### B3′ 準備・基準にある層の未登録（11-14夜）
+
+一覧：済み 2／全体 22（うち追加 0）。移動前の基準32d364b53と、R8-2等だけのプレビューで既存の層検査を実行したところ、どちらも既存305モジュールのper-file tier未登録で停止した。[全件と直接import](bulk-b3prime/baseline-unclassified.json)を保存。DiagramComparison149・CosimplicialTotalization91・その他65。これらはgitに追跡された本体であり、作業用一時ファイルではない。例：BKStandardZeroGeneratorはmainの1599b1e50で入った。現mainのlayers.jsonも基準と同じで、未登録を補う新しい表はまだ取り込まれていない。
+
+この失敗を「層の違反0」と扱わず、任意のConsumers指定や例外で覆わない。調整役へ割当の根拠を照会する。その間も、元環境の採取と承認範囲のプレビュー準備は続ける。今回新設するInitialValueConeにはPortableを提案しているが、基準の305件を登録したとは主張しない。
+
+
+### B3′ 準備・305本の層の機械的な登録（11-14夜、調整役の指示に追従）
+
+一覧：済み 2／全体 22（うち追加 0）。調整役が指定したB3のruleをimportの依存順に適用し、[305本の割当表](bulk-b3prime/new-main-tiers.json)を保存。Portable21・Comparison67・Consumers217。既存の層変更0・例外変更0。推測による補正、循環による未決定、tier-order/implementation-boundaryの違反は0。設定への追加はB3′の束に含め、現時点では隔離プレビューの設定にだけ加えた（元環境の本体・設定は採取中のまま）。
+
+[検査の概要](bulk-b3prime/tier-classification-summary.json)と[全出力](bulk-b3prime/tiers-baseline-report.json.gz)を保存。節の順序の逆辺は移動前から46件ある。以前のB3の出力との[差](bulk-b3prime/baseline-layer-delta-from-b3.json)も一覧化した。これらへ新しい例外を加えて0件にせず、今回の変更前後で増えないことを検査する。InitialValueConeの行き先をCofinalityへ直したのも、この新規逆辺を避けるためである。
+
+
+### B3′ 準備・夜の採取と全名前空間の表（11-14 23時台）
+
+一覧：済み 2／全体 22（うち追加 0）。R8-8の20本すべての旧Perfectoidization.Derived名前空間を表へ揃えた。ArcはPerfectoidization.Arc、RootAdjunctionはPerfectoidization.Construction、§10の四本はBhattScholze.Almost、純粋なIntegralApproximationはCommutativeAlgebraへ。移動しない型IsPerfectoidization・IsPrismaticEnvelope・OrientedPrism・DeltaStructure・PrismOverのメソッドは、その実際の型の名前空間を保つ。別ファイルの型に属するメソッドも親の新しい完全名と揃え、モジュールのパスから名前空間を推定しない。
+
+更新後は全体移動70本・切り出し先7本、公開ソースの所有元/改名表1,936行（改名1,607）。閉包は201モジュール、importだけの四本を除くsnapshot197・参照採取176。進行済みの束番号と成果物は保ち、増分10モジュールだけを末尾へ加えた。新しい全表でも他枝への文字列の影響は2ファイル、行き先パス衝突0。名前を変えず所有モジュールだけが移るCAlg_R等の宣言も検索に含めた。
+
+[一般の三つの新ファイル](bulk-b3prime/projected-generic-plan.json)は独立プレビューの対象ビルドとsnapshot採取に成功（[実行記録](bulk-b3prime/generic-target-build-receipt.json)）。InitialValueCone14・IteratedPDH0 8・AdjoinResidue12宣言。これは対象ビルドの成功であり、元ファイル全体の保存比較の成功とは区別する。[部分プレビューの層比較](bulk-b3prime/partial-preview-layer-comparison.json)は基準46・プレビュー46・新規0、例外追加0。
+
+[準備のチェックポイント](bulk-b3prime/preparation-checkpoint.json)：128モジュールの部分カーネル表15,367行を作り、この範囲の公開ソース名の欠落は0。前提9,629モジュールのprivate元名5,228件、.ileanの欠落0・モジュール内の正規化名の衝突0。notationの補助宣言は元のコマンドとネイティブの型を根拠に分け、通常のprivateをモジュールを無視して同一視しない。部分表は圧縮版を保存し、全体が採取されてから実際の移動後のカーネル名と再照合する。
+
+採取済み127本は改名プレビューの保留0。修飾付きの宣言名五箇所は、同じ位置のネイティブ宣言とsource selectionを確認して完全名へ書き換えた。宣言名の変更が本体の名前解決の文脈を変える場合も元の参照を保つよう扱う。共通の道具は変更せず、隔離した準備コードで行っている。全体の対象ビルド・v3b・引用/タグ・root・正式全監査・verifyは未実施であり、適用の通知もまだ出していない。夜は一束1,650秒以内・--wait3600・bulkの一つの整理券で続ける。
+
+
+### B3′ 準備・23:46の記録
+
+一覧：済み 2／全体 22（うち追加 0）。元環境の参照採取は160／176本、snapshotの束は22まで成功。共有鍵は夜の上限1,650秒で返却・再取得し、一つの整理券だけで続けている。全体の改名後のビルドと保存比較は未実施。
+
+[完全名の全本体走査](bulk-b3prime/qualified-name-coverage-check.json)でも、変更名への参照がimportの閉包の外へ漏れたものは0（文字列・コード双方）。[引用の採取計画](bulk-b3prime/citation-baseline-plan.json)は実際の属性適用元1,099モジュール・25 KEY。前後の実環境を照合する手順、対象ビルドの束、隔離プレビューの適用手順、コメント以外のバイト列を保つ文書更新の手順を準備コードへ保存した。これらの全体実行を終えたとは扱わない。
+
+
+### B3′ 準備・全体プレビューと対象ビルド（11-15未明）
+
+一覧：済み 2／全体 22（うち追加 0）。元環境の参照採取176／176とsnapshot197モジュールが完了。公開ソースの欠落0、ネイティブのカーネル表は17,543行。改名プレビューは176本で保留0となり、全体207モジュールのソース束（全体移動70本・切り出し先7本・旧wrapper削除1本）を隔離した作業木へ反映した。[記録と全ソースhash](bulk-b3prime/full-preview-preparation-checkpoint.json)。実際の枝のLean・scriptsにはまだ適用しておらず、凍結の通知も未実施。
+
+[全体の層の比較](bulk-b3prime/full-preview-layer-comparison.json)は基準46・プレビュー46・新規0、例外追加0。Finiteの旧wrapperへのimportが残る一箇所を全体生成器で直し、同じ検査を再実行した。静的な通常の本体のimportグラフでは欠落0・循環0、EInfinity→BSの直接辺2→0・間接依存0、公開対象6本はrootから到達を確認した。Archiveの非ビルド源は区別し、これを全ファイルのビルド成功とは扱わない。最終ソースの静的receiptは対象ビルド修正が揃ってから更新する。
+
+対象ビルド203本を共有鍵bulk（--wait3600、夜一束1,650秒）で開始した。切り出した被約環の補題のringタクティクのimport不足を修正。また、その補題だけを使う二本は、旧Transfinite/Limitの推移的importが供給していたperfectoidの被約性とHAの主元完備化の比較も使っていたため、宣言の実際の所有モジュールを明示した。型・証明は変えていない。修正後の束を検査中で、対象全体の成功・v3b全体の未説明0・引用/タグ一致・root・全監査・verifyは未完了。
+
+R8-8の[draftsの行き先欄](bulk-b3prime/draft-header-plan.json)は現基準で18本。A4/A7→Construction、A5→Descent、A6→Arc、A9→Interface、A8の§10→Almostの案を第一行のコメントだけに用意した。「仮」は保持し、A4のP⁰を含む本文・import・宣言名・型・証明のバイト列は変えていない。R8-9/R10-7で挙がった古い利用入口・別チャットとの調整・未存在の比較名・残る工程の説明もコメントだけで訂正した。全コメント以外のバイト列が同一である検査を付け、引用属性の文字列は変更していない。
+
+
+### B3′ 準備・元のopenの解決先とmain増分（11-15未明）
+
+一覧：済み 2／全体 22（うち追加 0）。新しいBhattScholze.Almost名前空間が元の`open Almost`を隠すことが対象ビルドで判明した。元環境のネイティブなcommand情報は`SerrePositivity.Almost`を示すので、元の解決先を`open _root_.SerrePositivity.Almost`として保つ。名前のある単純なopen/scoped openは同じ方法で元の解決先を明示し、移動先のモジュール名から新しいopenを作らない。この変更後も改名プレビュー176本・保留0。再生成したソースの対象ビルドを続けている。
+
+現main 391b2a0d2までの[差分の文字列走査](bulk-b3prime/main-increment-impact.json)はコード273パス・今回の旧名/旧モジュール名への該当2ファイル（EInfinity集約、BS正式監査）・98箇所。BS本体の差分0。実適用直前に再確認し、EInfinity集約の新しいimportを残して追従する。[追加40本の層の案](bulk-b3prime/main-increment-tiers.json)はPortable4・Comparison2・Consumers34、未決定0・既存の層/例外変更0、検出は同じ逆順46件のみ。これはまだ枝にmainを取り込んだ結果ではなく、適用準備である。
+
+[最新のプレビューimportグラフ](bulk-b3prime/full-preview-import-graph.json)は、通常の本体31,768→31,774モジュール、欠落0・循環0・EInfinity→BSの直接/間接依存0・公開6本のroot到達を確認。元の全本体のgraphに実ソースの束を重ね、変更外のファイルがないことをgitの差とソースSHAで検査している。Archiveは層検査と同じく対象外。カーネルの全行の所有元表は[圧縮版](bulk-b3prime/before-kernel-disposition.json.gz)にした（比較内容は省略していない）。
+
+
+### B3′ 準備・文書の対象追加と八辺の扱い（11-15未明）
+
+一覧：済み 2／全体 22（うち追加 0）。移動・改名の依存閉包の外にも、承認範囲のコメント訂正が[9モジュール](bulk-b3prime/additional-doc-modules.json)あった。追加の元環境snapshotを共有鍵で採取し、全体を206モジュール・18,384カーネル行へ拡張（公開ソース名の欠落0）。参照採取176本は変更していない。これらも対象ビルドと同じ厳格なv3bへ含める。文書を含むソース束は216モジュール、importだけの四本を除く対象ビルドは212本。現在のソース版で40本が成功し、残りを検査中。別のソース版の成功と混ぜずhashで区別する。[状態とソースhash](bulk-b3prime/preparation-status-2026-11-15.json)。
+
+R7-3(b)の[八辺の台帳](bulk-b3prime/r7-3b-edge-ledger.json)は、基準で解消済み2、今回の解消予定5、維持1。完全平坦性・主元完備化の三本はB3ですでに一般の場所にある所有元へimportを付け替え、LciEnvelopeRegularは切り出したIteratedPDH0へ付け替える。LciEnvelopePresentationは、実際に使うdeltaAdjoinDivisionResidue_moduleFaithfullyFlatとNormalizedの構成がAndré側の根添加にも依存するため、この辺を残す。DivisionResidue全体のDeltaへの移動は取り下げ、独立した12宣言だけを抽出する。維持した辺を解消済みと数えない。
+
+環の界面の大きいimportを外した後、下流ArcValuationExtensionが推移的に得ていたAlgebraicClosureを失うことも対象ビルドで検出した。元の採取はMathlib.FieldTheory.IsAlgClosed.AlgebraicClosureのAlgebraicClosureを示すので、その実際の定義元を明示する。証明・型の変更はしない。
+
+今回の文書束は252コメントを訂正し、コメント以外のバイト列を保持した。分割されたファイルのmodule docstringと、他の分割先の節見出しが文脈に付いて残る箇所も、該当する部分の説明へ整理した。CompletedTensorには§8と§10で共有する芯を明記した。引用属性の理由文字列は変更していない。現ソースの正式なPython層検査は基準46・プレビュー46・新規0、通常の本体のimport欠落0・循環0・EInfinity→BS直接/間接0。実際の枝への適用と凍結の通知はまだ行っていない。
+
+
+### B3′ 準備・最終プレビューの対象ビルドと保存比較による型の復元（11-15 01時台）
+
+一覧：済み 2／全体 22（うち追加 0）。省略された旧パスのコメントを全BSで調べ、閉包外の訂正を合計17本へ広げた。元環境snapshotは214モジュール・18,963カーネル行（公開ソース名の欠落0）。全体224モジュールのソース束について、importだけの四本を除く[220対象のビルド](bulk-b3prime/full-preview-target-complete.json)が全て成功した。原本と移動後のprivate名は前提9,637モジュール・元名5,231件で突き合わせ、通常のprivateの欠落0・衝突0・.ilean欠落0・notationの未対応0。共通スクリプトや比較器は変更していない。
+
+厳格なv3bの束009で、FiniteとConeの型・本体に24行の差分を検出した。旧wrapperだけが使っていたAlgebra.FinitePresentationのsection変数が、より弱い仮定の既存BS定理への直接呼出しでは未使用となり、定義の引数から落ちていたため。includeを置く案ではdefに保持されず、同じ差分が残ることも新しいsnapshotで確認した。そこでPerfectoidizationの定義の頭に**元の型と同じ引数列・順序・implicit性を明示**し、値は同じBS定理の選択のままとした。呼出し元も含む束009は、比較器を一切変えず型・本体の差分0でPASS。[復元の記録](bulk-b3prime/finite-fp-restoration.json)と[修正前二回・修正後の生snapshot](bulk-b3prime/finite-fp-restoration-evidence.tar.gz)を残した。24行を説明付きに分類して通したのではなく、実際に直して0とした。全体のv3bは引き続き検査中。
+
+引用・Kerodon/Stacksタグの実環境照合は、宣言名の接頭辞ではなく**実際の定義元モジュールがSerrePositivityであること**で対象を選ぶ。大域名前空間の拡張やprivate宣言を落とさず、元のカーネルの所有元表と同じprivate名規則で前後を比較する。まだ照合の成功とは扱わない。
+
+B4用に[drafts本文の文字列の影響](bulk-b3prime/draft-body-b4-impact.json)も採取した（28ファイル・50箇所、コメント・文字列を含む静的候補）。本文・import・型・証明は変更せず、A4のP⁰の保護を保つ。承認範囲の将来の置き場所の第一行18本とは区別して渡す。実際の枝のLean/scriptsへの適用と凍結の通知、root・正式全監査・full verifyは未実施。
+
+
+### B3′ 準備・全体保存比較の完了とB4の表（11-15 01:34以降）
+
+一覧：済み 2／全体 22（うち追加 0）。[全29束・214モジュールのv3b](bulk-b3prime/full-preview-preservation-complete.json)が完了した。比較対象4,440→4,439行、承認済みwrapper削除1行、**未説明0**。18,963行のネイティブなカーネル表・通常privateの所有元・生成補助宣言のinventoryも従来の基準で扱い、[生snapshot・比較・同じ規則](bulk-b3prime/full-preview-preservation-v3b.tar.gz)を保存した。比較器とバイナリは変更していない。削除行はrawのremovedに残して承認範囲を個別に記録した。
+
+[B4の改名資料](bulk-b3prime/B4/README.md)には70本のモジュール移動、所有元を持つ公開ソース宣言1,936行、実際の移動先が存在する2,580行の書換表を用意した。生成された式補題の同名が別々のネイティブ環境で作られる4行は、通常のAPIの所有元を推測せず別inventoryへ残す。既存のCLIの移動先一意性の検査も通した。旧wrapperの削除・弱い仮定のBS版への呼出しの変更は、同型の宣言の改名と区別する。元の有限表示性を必要とする定義では元の引数列を保つ。
+
+各枝の元HEADと採取一覧を[レーン表](bulk-b3prime/B4/lanes.json)に保存。短い名前を確認する候補は⑤a79本・⑤d191本・③-a102本・③-b93本・⑥153本、Kerodon0本。完全名/旧importの文字列一致は全枝のLeanで0だが、これを非修飾参照まで含む修正必要数0とは扱わない。draftsはこのcollectに含めず、本文28本の別表へ分けた。他のレーンの作業木への書込みは0。
+
+[適用前のmainの読み取り検査](bulk-b3prime/application-main-preflight.json)ではmain391b2a0d2、BS本体増分0、移動先衝突0。束に含む元ファイルの変更はEInfinity集約だけだった。実適用時にはmainの新しいimportを保って四つのBS固有モジュールへ追従し、基準プレビューの集約で上書きしない。
+
+引用/タグの前後のネイティブ採取は進行中。実際の枝への適用・凍結通知・root・正式全監査・full verifyは未実施であり、B3′完成とはしない。夜は通常の共有鍵bulk・wait3600・一束30分以内で続ける。
+
+
+### B3′ 適用開始・main増分の追従とroot成功（11-15 01:57〜02:06）
+
+一覧：済み 2／全体 22（うち追加 0）。[引用・タグの全件照合](bulk-b3prime/citation-comparison.json)は2,564→2,564件、欠落0・余分0・衝突0。KEY・番号・宣言名・実際の所有元・関係・理由・版を確認した。これで隔離準備の対象ビルド・全v3b・引用照合が全て通った。
+
+調整役へ「適用に入る」と通知し、main391b2a0d2を取り込んだ（merge2bbec4f28）。[適用前の全guardと適用結果](bulk-b3prime/actual-application.json)に従い、255パスへ書込み・71旧パスを削除。224モジュールの束、正式監査12本、draftsの将来の置き場所の第一行18本、層の設定だけを反映した。EInfinity集約はmainの新しいimportを保ち、BS固有の四ファイルへ至る二つの入口だけを外した。BS固有CAlg_R三本は削除せず、元の名前と型・本体を保ってBS側に置いた。
+
+層の登録は基準305本、main増分40本、一般の新ファイル1本の合計346件。既存の層・例外変更0。実作業枝の[Python層検査](bulk-b3prime/actual-layer-comparison.json)は32,043モジュール、既存の逆順46件・新規0。正式監査のモジュール集合は、分割先も含めて元の宣言の所有元を移送し、判定・axiom許可リスト・探索は保つ。
+
+最初のrootでは、BS集約に追加した十本のimportがmodule docstringの後ろになっている構文エラーを検出した。個別220対象から集約自身を除いていたため、rootで初めて見つかった。十本をヘッダに移し、importの集合が同一であることを検査した（[修正記録](bulk-b3prime/actual-aggregate-header-fix.json)）。[再実行のroot全体ビルド](bulk-b3prime/root-build-complete.json)は32,194 jobsで成功。通常の共有鍵bulk・wait3600・30分以内の束・32GB監視を用いた。
+
+検証済みプレビューとソースSHAが同じ223モジュールだけのキャッシュを原子的に複写し、旧モジュールの成果物を除去した（[記録](bulk-b3prime/verified-cache-install.json)）。main増分で異なるEInfinity集約のキャッシュと古いsetupは使わず、通常のLakeビルドで依存のtraceを検査した。原環境は保存済みsnapshotを使い、適用後の作業枝から採り直したafterとのv3bを進行中。正式全監査とfull verifyは未実行で、完了判定はまだ行わない。
+
+
+### B3′ 実配置の保存比較完了と全22項目の照合（11-15 02時台）
+
+一覧：済み 2／全体 22（うち追加 0）。本体の適用をc42e8b477へコミット。[実配置のv3b](bulk-b3prime/actual-preservation-complete.json)は保存済みの独立した元環境をbeforeとし、移動後の作業枝からafterを新規採取した。29束・214モジュール、4,440→4,439行、承認済みwrapper削除1・未説明0。[生snapshot・比較・同一規則](bulk-b3prime/actual-preservation-v3b.tar.gz)を保存。privateの元名は実作業枝の.ileanと検証済み独立プレビューで同じことも確認した。
+
+[実際の全importグラフ](bulk-b3prime/actual-import-graph.json)は32,043モジュール、基準からの全ソース差分548パスを重ねた。欠落0・循環0・EInfinity→BSの直接/間接依存0、公開対象六本のroot到達を確認。準備の束だけでなく取り込んだmainの増分も含む。
+
+[BSの元の逆向き34辺の台帳](bulk-b3prime/actual-bs-reverse-edge-ledger.json)は1解消・33維持。SupportedQuotientをExcisionTorの隣へ置いた一辺を解消。IntegralExistenceの三分割後もE3界面からTheorem10.11/Corollary8.14を導く存在部分への依存は残るため、その辺は解消済みとしない。原台帳のネイティブ参照と理由、改名後の両端・現在のimportも残した。層の例外は増やしていない。
+
+[全22項目の実装照合表](bulk-b3prime/scope-items-applied.json)では承認範囲の実装・既存mainで済んだものを全件対応させた。適用済みと最終完了は区別し、正式全監査・full verifyが通るまでは済み2のまま。B3の維持表のうちPD固有cochainHomotopy、R83/Spectrum、広いR21、未使用削除は引き続き範囲外。
+
+B4の採取候補を枝の最新HEADと未コミットの本体を読むだけで更新：⑤a98本・⑤d191本・③-a102本・③-b98本・⑥164本・Kerodon0本。完全名/旧モジュールの文字列一致は0だが、非修飾名の追従まで不要とは判断しない。draftsは別表のまま。他レーンへの書込み0。現在は実配置の属性再照合を進め、続いて正式106監査を一本ずつ通常の共有鍵で行う。
+
+
+### B3′ 実配置の属性一致・正式監査の前提（11-15 02:26）
+
+一覧：済み 2／全体 22（うち追加 0）。[実配置の引用・タグ照合](bulk-b3prime/actual-citation-comparison.json)は2,564→2,564件、欠落0・余分0・衝突0。所有元1,099モジュール・18組・25 KEYのネイティブ採取で、KerodonとStacksも含む。[実環境の生記録](bulk-b3prime/native-citations-actual.tar.gz)を保存。
+
+[本体の範囲の検査](bulk-b3prime/actual-source-scope-check.json)はmain391b2a0d2との差で309の本体・scripts・draftsパス。承認束の255書込みと71削除の内側に収まり、準備時と同じ17パスはmainと同じバイト列である。全適用ソースのSHA一致、範囲外変更0。比較器・採取器・verify本体は変更0。
+
+[正式監査の全inventory](bulk-b3prime/all-audit-inventory.json)は106本でmanifestと完全一致。前提のビルドは36,526 jobs、31.1秒で成功（[記録](bulk-b3prime/all-audit-prerequisites-complete.json)）。監査本体を一本ずつ開始した。[完了条件の検査](bulk-b3prime/completion-audit.json)は12／14で、未完了は正式全監査とfull verifyのみ。これらを省いて完成扱いにはしない。
+
+
+### B3′ 正式監査で検出した短名の追従（11-15 02:31以降）
+
+一覧：済み 2／全体 22（うち追加 0）。先行のadamsとBS全体の正式監査は成功。3本目のInitialCoefficientで、監査用の受渡し型に残ったPowerRootPolynomial・powerRootPolynomialDeltaの旧短名がunknown identifierとなった。[失敗と修正確認の生ログ](bulk-b3prime/formal-audit-initial-failure-and-confirmation.tar.gz)を保存し、二箇所を所有元付きの新しい完全名へ直した。同じ監査は16.6秒で成功、185生成宣言を含め標準三公理のみという結論も同じ。
+
+全監査を字句走査し、旧短名とBhattScholze.…の省略名も[五ファイル・111箇所の表](bulk-b3prime/audit-short-name-plan.json)へ追加した。元の所有元が一意の名前を、B4のネイティブ照合済み完全名で置換する。新しいopenは作らず、受渡し型の引数・仮定・式・axiom許可・判定条件は保持。従来の12本の追従と重なるため、変更した正式監査は合計14本となる。本体のLeanと保存比較の結果は変更していない。
+
+[正式106監査の全名・省略名の再走査](bulk-b3prime/audit-name-coverage.json)は残候補0。これは静的検査であり、全監査成功の代わりにはしない。最新の監査ソースのhashで正式監査をやり直す。適用のreceiptにも監査だけの追加を明記し、全ソースのhash guardを維持した。
+
+
+### B3′ 正式46監査成功・EInfinity監査の明示import（11-15 03:25以降）
+
+一覧：済み 2／全体 22（うち追加 0）。正式監査は46／106本まで成功。47本目のaudit_einfinityは、以前EInfinity集約経由で得ていたBS界面の宣言が見つからず停止した。CAlg_R三本とTheoryInterfaceの宣言は名前を変えずにBSへ移しているため、改名表の非恒等行だけの走査では捕捉できなかった。[元のエラーログ](bulk-b3prime/audit-einfinity-original-import-failure.tar.gz)を残した。
+
+同監査の先頭に、移動後の実際の所有元であるTheoryInterface、CAlg/Comparison・Definition・DerivedCorollaryの四importを追加。必要名配列、検査の述語、exampleの型、axiom許可は変更0。ライブラリのEInfinity→BSの辺は復活させず、BS界面も検査する専用監査の依存を明示した。正式監査の変更は合計15本。
+
+[先行46本の入力一致の証跡](bulk-b3prime/audit-input-equivalence.json)を作った。各監査のソースSHA、本体全体・Root・Lake/toolchain・refactor道具・bibliographyのgit tree/blob、適用した非監査ソースはc2bf2a4fbと同一。原receiptは書き換えず、46本の原SHAも保存。FSを読む先行五つのarea監査は、いずれもモジュール名から導くSerrePositivityのソースだけを読み、他の監査スクリプトを入力にしていない。残り41本にも他の監査への依存はない。専用orchestratorの再開条件を本体/設定の指紋と各監査の個別SHAに分け、同一入力の既済46本を保持して47本目から再開した。比較器・publicなverify・採取器は変更0。最後のfull verifyではキャッシュ結果を使わず106本すべてを新規実行する。
+
+[監査のモジュール集合の照合](bulk-b3prime/audit-module-scope-coverage.json)は69本・欠落0。[属性の保存場所](bulk-b3prime/actual-citation-location-check.json)も2,564件・1,099ファイルで有効、すべて作業枝内の相対パス。R7-3(b)の[実際の八辺](bulk-b3prime/r7-3b-actual-edge-ledger.json)は基準解消2・今回解消5・維持1で、予定だけでなく実importと所有元を確認した。
+
+
+## B3′ 正式監査通過・full verify中断（11-15 05時）
+
+一覧：済み 2／全体 22（うち追加 0）。全22項目の適用は済んでいるが、最終ゲートが残るため完了とはしない。
+
+正式監査106本は全件成功（一本ずつ、通常のbulk鍵を監査ごとに返却）。[結果](bulk-b3prime/all-audits-complete.json)と[原記録](bulk-b3prime/formal-audits-checkpoint.tar.gz)を保存した。先行46本は既述の入力同一性の証跡により保持し、その元receiptを編集していない。保存比較29束・214本の未説明0、引用/タグ2,564組の欠落・余分0、root成功も維持している。
+
+B4の補助手順は、共有の書換器を変更せず、宣言の実際の移動先のimportを資料側で補う。[README](bulk-b3prime/B4/README.md)とrewrite.py、移動した公開宣言の所有元1,606行（同名721行）を保存した。静的4ケース・header3ケースと、実Leanの失敗再現/補完後成功の2ケースが通った（[結果](bulk-b3prime/B4-regression-complete.json)、[原記録](bulk-b3prime/B4-tool-regression.tar.gz)）。分割された定義・削除wrapper・EInfinityにBS依存を戻すものは保留にする。他のレーンの作業木の変更0。
+
+full verifyは`871516d78`でキャッシュを使わず4ジョブ・32GBで実行。rootと監査前提のbuildは成功したが、監査104／106の時点でプロセス合計RSSが32,190,054,400 bytesとなり、32GBの監視上限で中断した。04:29:26〜04:57:37、1,691秒。30分の上限の前に鍵を返している。[中断の全記録](bulk-b3prime/full-verify-attempt-001.tar.gz)を保存し、成功のsummaryを作っていない。古いverifyのsummaryを今回の成功として再利用していない。
+
+[チェック表](bulk-b3prime/completion-audit.json)は16／17成功、残りはfull verifyだけ。直列のaxiom監査とsorry検査も含むため、完全実行は30分を超える見込みである。指示書§2の通常の30分上限を維持し、full verifyの再実行一回だけ夜の鍵を最長60分使う承認を依頼した。メモリ上限は増やさず、次回はスケジューラに余裕を持たせる。現在は鍵を持たず、次のverifyも要求していない。5∞-3a段0の紙の案は準備しているが、B3′完了報告ではない。
+
+
+### full verifyの再実行の準備（11-15 05時）
+
+一覧：済み 2／全体 22（うち追加 0）。今回の中断前の104本は公式の入力署名と原ログが一致したが、`verify.sh` のgateは `VERIFY_CACHE != 1` を要求するため、キャッシュによる再開案は取り下げた。キャッシュを有効にしたverifyは実行しておらず、試験準備で隔離したキャッシュも元に戻した。比較器・公開のverify・判定条件は変えていない。
+
+[次回の設定案](bulk-b3prime/next-full-verify-plan.json)は、通常のbulk鍵・wait3600・夜間・4ジョブ、スケジューラのメモリ予算28GB、実測の停止上限32GB。キャッシュなしで全106監査・root・前提・sorryを初めから回す。今回の監視上限超過を避けるためにメモリの余裕を設ける。長い鍵の一回の例外（最長60分）の回答待ちであり、再実行は始めていない。ゲート済みの完了報告もまだ出していない。
+
+
+## B3′ 完了報告（11-15 09:25）
+
+一覧：済み 22／全体 22（うち追加 0）。基準はmain32d364b53、適用前にmain391b2a0d2をmerge2bbec4f28で取り込んだ。適用の通知は11-15 01:57。本体の適用c42e8b477、監査側の改名/importの修正c2bf2a4fb・871516d78を含む検証HEADは`107d005583fe01dc50b97945f0586063458e48af`。本体のLeanは適用後の保存比較を通した版と同一で、以後の修正は監査側の参照とimportである。
+
+| 検査 | 結果 |
+| --- | --- |
+| 隔離プレビューの対象ビルド | 220／220成功（importだけの四集約はrootで検査） |
+| 実配置のv3b | 29束・214モジュール、比較対象の親宣言4,440→4,439行、wrapper削除1・未説明0 |
+| ネイティブな元の全カーネル表 | 18,963行、公開ソースの欠落0 |
+| 引用・Kerodon/Stacksタグ | 2,564→2,564、欠落0・余分0・衝突0。実場所も全件有効 |
+| 実配置のimportグラフ | 32,043モジュール、欠落0・循環0・EInfinity→BSの直接/間接0 |
+| 五段の層 | 既存の節逆順46→46・新規0。層/例外の変更0、346本を規則で登録 |
+| root | 32,194 jobs成功。full verifyでもrootと監査前提の二buildが成功 |
+| 正式監査 | 106／106成功、すべて一本ずつ。合計4931.6秒、観測最大24.17GB |
+| full verify | **PASS・gate:true**。build2・audit106・sorry1成功、失敗/既知扱い0、3036.568秒 |
+| B4補助の回帰 | 静的4ケース＋header3ケース、実Leanでimport欠落の再現と補完後の成功を確認 |
+| 完了条件 | [全17検査](bulk-b3prime/completion-audit.json)成功、[全22項目](bulk-b3prime/scope-items-complete.json)を照合 |
+
+[全保存比較](bulk-b3prime/actual-preservation-v3b.tar.gz)、[正式監査・verifyの原記録](bulk-b3prime/formal-audits-and-full-verify.tar.gz)、[full verifyの全summary](bulk-b3prime/full-verify-summary.json.gz)を保存した。full verifyは11-15朝の明示承認に従い、昼にVERIFY_JOBS=3・VERIFY_MEMORY_GB=24・VERIFY_CACHE=0で、全106監査を新規実行。10GB超の観測値と従来の大きい監査を同時実行しない組へ入れた。先行する正式監査は共有鍵bulk・wait3600を一監査ごとに返却し、各束30分以内。今回のfull verifyだけは明示承認どおり共有鍵を使わず、一回の時間上限を設けなかった。スケジューラの24GB予算と大きい監査の相互排他を維持し、従来の32GBの緊急停止監視も残した。
+
+正式監査の途中で、短名五ファイルとEInfinity集約から外したBS界面の明示import漏れを修正した。監査の型・述語・必須名・axiom許可を変えず、全監査を通した。同一入力の先行46本の原receiptは編集せず[入力一致の証跡](bulk-b3prime/audit-input-equivalence.json)で保持した。最後のfull verifyではそれらも含め全106本を結果キャッシュなしで実行している。比較器・採取器・publicなverifyの変更0。先の中断したverifyは成功として数えず、[中断の原記録](bulk-b3prime/full-verify-attempt-001.tar.gz)も残した。今回のPASSで再実行の承認待ちは解消した。
+
+### 移動・維持・取り下げ
+
+全体移動70本・切り出し先7本、旧パス71削除（旧wrapper1を含む）。公開ソースの所有元/改名表1,936行（改名1,607）、実在する新しい名前への書換表2,580行。型に属するIsPerfectoidization等のメソッドは実際の型のnamespaceを保つ。CAlg_R三本は削除せずBSへ移し、EInfinityの宣言名を保った。
+
+R7-3(b)は[八辺の実配置](bulk-b3prime/r7-3b-actual-edge-ledger.json)のとおり基準解消2・今回解消5・維持1。DivisionResidue全体のDeltaへの移動は取り下げ、独立した12宣言だけを抽出した。忠実平坦性とNormalizedのAndré依存は残す。BSの元の節順の34辺は[台帳](bulk-b3prime/actual-bs-reverse-edge-ledger.json)のとおり1解消・33維持。IntegralExistenceを分割しても残るTheorem10.11への依存は、解消済みと数えない。PD固有cochainHomotopy、R83/Spectrum、広いR21、未使用宣言の削除は範囲外のまま。これ以外の追加取り下げは0。
+
+Finiteは既存BS定理を直接呼ぶ際に落ちた有限表示性を、**元と同じ明示の引数列**で復元した。未説明の24行を説明扱いへ替えたのではなく、型・本体を実際に直し同じv3bで0にした。root最初の集約headerエラーもimportをdocstringの前へ直して再実行済み。
+
+### B4の資料
+
+[READMEと一行の書換コマンド](bulk-b3prime/B4/README.md)、module-map、所有元付きpublic-owner-map、namespace-rewrite-map、実際のimport元1,606行（同名721行）を渡す。共有の道具は変更せず、資料側のrewrite.pyで公開宣言の所有元を補う。分割元の定義・弱い仮定の削除wrapper・EInfinityへBSを戻す変更は保留にする。[回帰記録](bulk-b3prime/B4-tool-regression.tar.gz)。
+
+| レーン | 枝 | 元環境で採取する本体の候補 | 完全名/旧module文字列一致 |
+| --- | --- | ---: | ---: |
+| 5a | `math/bs-impl` | 0 | 0 |
+| 5d | `math/bs-m15` | 0 | 0 |
+| 3a | `math/inf-supply` | 7 | 0 |
+| 3b | `math/inf-supply-b` | 180 | 0 |
+| 6 | `math/scheme` | 7 | 0 |
+| kerodon | `research/kerodon-review-c` | 0 | 0 |
+
+これらは短名も調べるための候補数で、変更が確定した件数ではない。branch/HEAD・manifestはlanes.jsonへ保存。draftsはcollectから外し、本文28本・50箇所の別の文字列の影響表を渡す（保護したA4のP⁰も本文変更0）。将来の置き場所の第一行18本だけは承認範囲で追従済み。他のレーンの作業木/枝への書込み0。mainへの取り込みは調整役が行う。
+
+
+### 検証中に進んだmainとの境界
+
+今回のfull verifyの対象は上記の107d00558（取り込み済みmain391b2a0d2）である。終了時のmain51723ce33にはその後の非BS本体の増分766パスがあり、BS本体の変更は0。作業木を変えないmerge-treeの予覧ではEInfinity集約は自動統合、監査audit_bhatt_scholze_stage2.leanだけが競合した。新しいmainの行の旧module/変更対象の完全名の文字列一致は0だが、短名は未判定のため[main増分の採取候補763本・一覧・統合予覧](bulk-b3prime/B4/main-increment-handoff.json)をB4へ追加した。六レーンの一部の差分がmainへ取り込まれて候補0になった分も、この別の一覧に含めている。検証した枝へこの増分を混ぜず、主張の範囲を明記して渡す。調整役の取り込みではmain側の監査追加を保持する。統合後のmainが今回のfull verifyを通ったという主張ではない。mainへの書込み0。

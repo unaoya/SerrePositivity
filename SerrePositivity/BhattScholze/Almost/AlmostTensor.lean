@@ -27,10 +27,10 @@ BS 著者版 Proposition 10.4 の逆方向と Lemma 10.5 の係数三角形を�
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.BhattScholze.Almost
-open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
-open InfinityCategories DerivedCompletion DifferentialGraded MonoidalCategory
-open Perfectoidization.Derived
-open scoped Simplicial
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.Pretriangulated
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.DifferentialGraded _root_.CategoryTheory.MonoidalCategory
+open _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived
+open scoped _root_.Simplicial
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 
@@ -63,10 +63,10 @@ end SerrePositivity.BhattScholze.Almost
 
 
 namespace SerrePositivity.BhattScholze.Almost
-open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
-open InfinityCategories DerivedCompletion DifferentialGraded MonoidalCategory
-open Perfectoidization.Derived
-open scoped Simplicial
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.Pretriangulated
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.DifferentialGraded _root_.CategoryTheory.MonoidalCategory
+open _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived
+open scoped _root_.Simplicial
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 
@@ -76,7 +76,7 @@ variable (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (J : Ideal R)
 /-- 完備導来テンソルの左入力に古典的な perfectoid 商を置く。 -/
 abbrev quotientTensor (M : DVertex R) : DVertex R :=
   completedModuleTensor p R
-    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R (QuotientPerfectoidization R J p hR))) M
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR))) M
 
 /-- 頂点の連結性は通常の導来圏の t 構造で判定できる。 -/
 theorem isConnectiveAt_iff_isLE (n : ℤ) (M : DVertex R) :
@@ -93,8 +93,8 @@ theorem isLE_moduleHeartVertex (N : ModuleCat.{u} R) :
 
 /-- 商との完備テンソルの各コホモロジーは商環上の加群になる。 -/
 theorem quotientTensor_isAlmostZero (M : DVertex R) :
-    IsJAlmostZero p R hR J (quotientTensor p hR J M) := by
-  let B := QuotientPerfectoidization R J p hR
+    _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR J (quotientTensor p hR J M) := by
+  let B := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR
   let q := quotientPerfdMap p R hR J
   let P := (M.obj 0).val
   let F := derivedComplexCompletionFunctor R (p : R)
@@ -123,7 +123,7 @@ private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : SerrePositiv
       Nonempty (T.obj₃ ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
         ⟨quotientTensor p hR J M⟩) := by
   let K := perfectoidKernel p R hR J
-  let B := QuotientPerfectoidization R J p hR
+  let B := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR
   let P := (M.obj 0).val
   let F := derivedComplexCompletionFunctor R (p : R)
   let S := ModuleCat.shortComplexOfCompEqZero K.subtype K.mkQ
@@ -184,7 +184,7 @@ theorem isAlmostZero_of_completedTensor_isZero (M : DVertex R)
     (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M)
     (hz : IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨kernelTensor p R hR J M⟩)) :
-    IsJAlmostZero p R hR J M := by
+    _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR J M := by
   obtain ⟨T, hT, ⟨e₁⟩, ⟨e₂⟩, ⟨e₃⟩⟩ := exists_quotientTensorTriangle p hR J M hM
   have := (T.isZero₁_iff_isIso₂ hT).mp (hz.of_iso e₁)
   let e := e₂.symm ≪≫ asIso T.mor₂ ≪≫ e₃

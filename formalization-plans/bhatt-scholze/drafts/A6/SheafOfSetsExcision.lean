@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.SheafOfSetsExcision（仮。原典 Cor 8.12 の証明の集合の層の部分）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Arc.SheafOfSetsExcision（仮。原典 Cor 8.12 の証明の集合の層の部分）
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §3.2 の 1〜4、単位 A6-3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+public import SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived
 
 /-! # 導来 perfectoid 化界面の存在（文献入力）
 
@@ -9,7 +9,7 @@ perfectoid 側の文献入力は本ファイルの界面の存在に集約する
 
 導来 perfectoid 化の E3 界面の存在をまとめて引用する。
 根拠は BS 著者版 Definition 8.2、Lemma 8.4（pp.63–64）、Proposition 8.5（pp.64–65）、
-Corollary 8.11、Corollary 8.12（p.69）、Corollary 8.14（p.70）、Theorem 10.11（p.82）。
+Corollary 8.12（p.69）、Corollary 8.14（p.70）、Theorem 10.11（p.82）。
 -/
 
 public section
@@ -33,7 +33,7 @@ HA Cor 3.2.2.5 による極限の忘却との整合性に加え、単位・H⁰ 
 BS 著者版 Corollary 8.14 から離散の場合の perfectoid 性と環の射の普遍性を得る。
 整代数の欄では、引用する定理から p 完備化した整代数の離散性と perfectoid 性を得て、
 導来 p 完備化の H⁰ と perfectoid 標的への環 Hom の不変性（同計画 §2.2）で非完備始域へ延長する。
-BS 著者版 Proposition 8.10 の arc 降下から BS 著者版 Corollary 8.11、BS 著者版 Corollary 8.12 の E∞-S 代数の引き戻しへ進み、
+BS 著者版 Proposition 8.10 の arc 降下と Corollary 8.12 の E∞-S 代数の引き戻しから、
 HA Cor 3.2.2.5 とスカラー制限の極限保存で D(R) の excision を得る。
 
 ## 規約
@@ -48,8 +48,8 @@ HA Cor 3.2.2.5 とスカラー制限の極限保存で D(R) の excision を得�
 具体的な prismatic perfection とその降下の構成を実装したとは扱わない。
 
 ## 使われ方
-`Inputs/Perfectoidization.lean` と `Inputs/ArcExcision.lean` が界面を取り出し、
-Π2-6・Π2-7′ の証明済みの橋へ渡す。従来の公開名・型を通じて CLMST と主定理へ供給する。
+`Perfectoidization/Interface/IntegralExistence.lean` と `Perfectoidization/Interface/Excision.lean` が界面を取り出し、
+整代数の離散性と普遍性・環の excision の比較′ の証明済みの橋へ渡す。従来の公開名・型を通じて CLMST と主定理へ供給する。
 -/
 theorem exists_perfectoidizationInterfaceE3 (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) : Nonempty (PerfectoidizationInterfaceE3 R p hR) := by

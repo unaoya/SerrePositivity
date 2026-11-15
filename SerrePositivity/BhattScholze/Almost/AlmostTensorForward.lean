@@ -29,9 +29,9 @@ BS 著者版 Theorem 10.9 と Theorem 10.11 の almost 連結性の議論。
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.BhattScholze.Almost
-open CategoryTheory CategoryTheory.Limits HomologicalComplex DifferentialGraded
-open CategoryTheory.Pretriangulated MonoidalCategory
-open scoped ZeroObject
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.HomologicalComplex _root_.SerrePositivity.DifferentialGraded
+open _root_.CategoryTheory.Pretriangulated _root_.CategoryTheory.MonoidalCategory
+open scoped _root_.ZeroObject
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 
@@ -118,7 +118,7 @@ private def goodTruncationIsColimit (X : Complex R) :
   exact hF.isColimitOfIsIso c
 
 
-open CochainComplex
+open _root_.CochainComplex
 
 /-- 隣接する二つの切り捨ての差は、追加した次数のコホモロジー加群。 -/
 private def goodTruncationLayerIso (X : Complex R) (n : ℤ) :
@@ -190,7 +190,7 @@ private def goodTruncationLayerIso (X : Complex R) (n : ℤ) :
 
 
 
-open DerivedCompletion InfinityCategories
+open _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.InfinityCategories
 
 private theorem tensorRight_invertsQuasiIso (P : Complex R) (hP : complexKFlat R P) :
     (HomologicalComplex.quasiIso (ModuleCat R) (.up ℤ)).IsInvertedBy
@@ -359,7 +359,7 @@ private theorem completedTensorRight_isZero_of_homology (a : R) (P X : Complex R
 
 
 
-open Perfectoidization.Derived
+open _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 variable (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (J : Ideal R)
 
@@ -396,7 +396,7 @@ set_option linter.unusedVariables false in
 theorem isAlmostZero_iff_completedTensor_isZero
     (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
     (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
-    IsJAlmostZero p R hR J M ↔ IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
+    _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR J M ↔ IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨kernelTensor p R hR J M⟩) := by
   refine ⟨fun h ↦ ?_, fun h ↦ isAlmostZero_of_completedTensor_isZero p hR J M hM h⟩
   let X := (M.obj 0).val
@@ -487,7 +487,7 @@ theorem connective_iff_almost
   constructor
   · intro h
     refine ⟨(isConnectiveAt_iff_isLE 0 _).mpr ?_, ?_⟩
-    · have hB := isLE_moduleHeartVertex (ModuleCat.of R (QuotientPerfectoidization R J p hR))
+    · have hB := isLE_moduleHeartVertex (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR))
       have hM' := (isConnectiveAt_iff_isLE 0 M).mp h
       simpa only [add_zero] using completedModuleTensor_isLE p _ M 0 0 hB hM'
     · intro i hi

@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Definition（仮。原典 Not 8.1、Def 8.2、Example 8.3、Lemma 8.4）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.Definition（仮。原典 Not 8.1、Def 8.2、Example 8.3、Lemma 8.4）
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.1・§2.2・§2.4、単位 A4-1・A4-2・A4-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps

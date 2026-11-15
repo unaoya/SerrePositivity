@@ -34,7 +34,7 @@ BS 著者版 Remark 7.15（p.62）の mod p で ind-syntomic に取れるとい�
 
 ## 使われ方
 
-既存の `AndreCompatibleRootsConditional` と `AndreSurjectivity` などに、
+両立する根の選択と perfectoid 化の全射性などに、
 元の Inputs の署名のまま、証明済みの André 拡大を供給する。
 -/
 

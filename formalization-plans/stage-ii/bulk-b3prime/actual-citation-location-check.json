@@ -1,0 +1,8 @@
+{
+  "records": 2564,
+  "distinct_source_files": 1099,
+  "invalid_source_locations": [],
+  "policy": "Check native captured source paths exist and line numbers are within the actual source, without pretending a declaration name must occupy the attribute line.",
+  "outside_actual_source_tree": [],
+  "absolute_paths": 0
+}

@@ -24,14 +24,14 @@ BS 著者版 Proposition 8.10 の証明と、完全環上の Čech 降下。
 @[expose] public noncomputable section
 
 universe u
-open scoped nonZeroDivisors
+open scoped _root_.nonZeroDivisors
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 variable (p : ℕ) [Fact p.Prime]
 
 /-- 加法群としての付値環の Milnor 短完全列。最後の射は二つの剰余の差。 -/
-def MilnorShortExact {V : Type u} [CommRing V] (P : Ideal V) [P.IsPrime] : Prop :=
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.MilnorShortExact {V : Type u} [CommRing V] (P : Ideal V) [P.IsPrime] : Prop :=
   let L := Localization.AtPrime P
   let i := fun x : V => (algebraMap V L x, Ideal.Quotient.mk P x)
   let d := fun z : L × (V ⧸ P) => IsLocalRing.residue L z.1 - algebraMap (V ⧸ P) P.ResidueField z.2
@@ -40,8 +40,8 @@ def MilnorShortExact {V : Type u} [CommRing V] (P : Ideal V) [P.IsPrime] : Prop 
 /-- 任意の付値環 V と素イデアル 𝔭 に対し、加法群の列
 `0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0` は完全。
 核の分数 a/s について、a ∈ 𝔭 と s ∉ 𝔭 から s ∣ a が従い、商も 𝔭 に入る。 -/
-theorem valuationRing_milnorSquare {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
-    (𝔭 : Ideal V) [𝔭.IsPrime] : MilnorShortExact 𝔭 := by
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationRing_milnorSquare {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
+    (𝔭 : Ideal V) [𝔭.IsPrime] : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.MilnorShortExact 𝔭 := by
   classical
   let L := Localization.AtPrime 𝔭
   let f : V →+* L := algebraMap V L
@@ -84,9 +84,9 @@ theorem valuationRing_milnorSquare {V : Type u} [CommRing V] [IsDomain V] [Valua
     exact ⟨(x, 0), by simpa using hx⟩
 
 /-- 完全付値環の場合の Milnor 短完全列（Bhatt–Scholze, [BS17, Lemma 6.3]）。 -/
-theorem valuationRing_milnorSquare_perfect {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationRing_milnorSquare_perfect {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
     [CharP V p] [PerfectRing V p]
-    (𝔭 : Ideal V) [𝔭.IsPrime] : MilnorShortExact 𝔭 := by
-  exact valuationRing_milnorSquare 𝔭
+    (𝔭 : Ideal V) [𝔭.IsPrime] : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.MilnorShortExact 𝔭 := by
+  exact _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationRing_milnorSquare 𝔭
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

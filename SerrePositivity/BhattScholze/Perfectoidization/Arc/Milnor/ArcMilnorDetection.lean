@@ -19,8 +19,8 @@ BM18 Proposition 4.8 の証明 (5) の構造層での完全性。
 
 universe u
 
-open CategoryTheory CategoryTheory.Limits MonoidalCategory
-open HomologicalComplex
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory
+open _root_.HomologicalComplex
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -29,14 +29,14 @@ set_option backward.isDefEq.respectTransparency false
 variable {V : Type u} [CommRing V]
 
 /-- 係数加群を左からテンソルして得る余鎖複体。 -/
-def tensorCochain (K : CochainComplex (ModuleCat.{u} V) ℕ) (W : ModuleCat.{u} V) :
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain (K : CochainComplex (ModuleCat.{u} V) ℕ) (W : ModuleCat.{u} V) :
     CochainComplex (ModuleCat.{u} V) ℕ :=
   ((tensorLeft W).mapHomologicalComplex (.up ℕ)).obj K
 
 /-- 係数のテンソルを余鎖複体に施す関手。 -/
-def tensorCochainFunctor (K : CochainComplex (ModuleCat.{u} V) ℕ) :
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochainFunctor (K : CochainComplex (ModuleCat.{u} V) ℕ) :
     ModuleCat.{u} V ⥤ CochainComplex (ModuleCat.{u} V) ℕ where
-  obj := tensorCochain K
+  obj := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K
   map f := (NatTrans.mapHomologicalComplex ((tensoringLeft _).map f) (.up ℕ)).app K
   map_id W := by
     ext n : 1
@@ -45,7 +45,7 @@ def tensorCochainFunctor (K : CochainComplex (ModuleCat.{u} V) ℕ) :
     ext n : 1
     exact (tensorRight (K.X n)).map_comp f g
 
-instance (K : CochainComplex (ModuleCat.{u} V) ℕ) : (tensorCochainFunctor K).Additive where
+instance (K : CochainComplex (ModuleCat.{u} V) ℕ) : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochainFunctor K).Additive where
   map_add := by
     intro W Z f g
     ext n : 1
@@ -53,14 +53,14 @@ instance (K : CochainComplex (ModuleCat.{u} V) ℕ) : (tensorCochainFunctor K).A
       (tensorRight (K.X n)).map f + (tensorRight (K.X n)).map g
     exact Functor.map_add _
 
-theorem tensorCochain_prod_acyclic (K : CochainComplex (ModuleCat.{u} V) ℕ)
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain_prod_acyclic (K : CochainComplex (ModuleCat.{u} V) ℕ)
     (L Q : Type u) [AddCommGroup L] [Module V L] [AddCommGroup Q] [Module V Q]
-    (hl : (tensorCochain K (ModuleCat.of V L)).Acyclic)
-    (hq : (tensorCochain K (ModuleCat.of V Q)).Acyclic) :
-    (tensorCochain K (ModuleCat.of V (L × Q))).Acyclic := by
+    (hl : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V L)).Acyclic)
+    (hq : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V Q)).Acyclic) :
+    (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V (L × Q))).Acyclic := by
   intro n
   rw [exactAt_iff_isZero_homology, IsZero.iff_id_eq_zero]
-  let F := tensorCochainFunctor K ⋙ homologyFunctor (ModuleCat V) (.up ℕ) n
+  let F := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochainFunctor K ⋙ homologyFunctor (ModuleCat V) (.up ℕ) n
   let π₁ : ModuleCat.of V (L × Q) ⟶ ModuleCat.of V L := ModuleCat.ofHom (LinearMap.fst V L Q)
   let π₂ : ModuleCat.of V (L × Q) ⟶ ModuleCat.of V Q := ModuleCat.ofHom (LinearMap.snd V L Q)
   let ι₁ : ModuleCat.of V L ⟶ ModuleCat.of V (L × Q) := ModuleCat.ofHom (LinearMap.inl V L Q)
@@ -78,46 +78,46 @@ theorem tensorCochain_prod_acyclic (K : CochainComplex (ModuleCat.{u} V) ℕ)
     z₁.eq_zero_of_tgt (F.map π₁), z₂.eq_zero_of_tgt (F.map π₂), zero_comp, zero_comp, add_zero]
 
 /-- 次数ごとの Tor₁ 消滅により、係数短完全列は複体の短完全列を誘導する。 -/
-theorem tensorCochain_shortExact (K : CochainComplex (ModuleCat.{u} V) ℕ)
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain_shortExact (K : CochainComplex (ModuleCat.{u} V) ℕ)
     (T : ShortComplex (ModuleCat.{u} V)) (hT : T.ShortExact)
-    (htor : ∀ n, Subsingleton (TorModule V 1 (K.X n) T.X₃)) :
-    (T.map (tensorCochainFunctor K)).ShortExact := by
+    (htor : ∀ n, Subsingleton (_root_.SerrePositivity.TorModule V 1 (K.X n) T.X₃)) :
+    (T.map (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochainFunctor K)).ShortExact := by
   apply HomologicalComplex.shortExact_of_degreewise_shortExact
   intro n
   let e := BraidedCategory.tensorLeftIsoTensorRight (K.X n)
-  have h := shortExact_tensorLeft_of_tor (K.X n) T hT (htor n)
+  have h := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.shortExact_tensorLeft_of_tor (K.X n) T hT (htor n)
   exact ShortComplex.shortExact_of_iso (ShortComplex.mapNatIso T e) h
 
 /-- 係数列の中央と右端での完全性から左端での完全性を得る。 -/
-theorem acyclic_of_tensorShortExact (K : CochainComplex (ModuleCat.{u} V) ℕ)
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.acyclic_of_tensorShortExact (K : CochainComplex (ModuleCat.{u} V) ℕ)
     (T : ShortComplex (ModuleCat.{u} V)) (hT : T.ShortExact)
-    (htor : ∀ n, Subsingleton (TorModule V 1 (K.X n) T.X₃))
-    (h₂ : (tensorCochain K T.X₂).Acyclic) (h₃ : (tensorCochain K T.X₃).Acyclic) :
-    (tensorCochain K T.X₁).Acyclic := by
-  let S := T.map (tensorCochainFunctor K)
+    (htor : ∀ n, Subsingleton (_root_.SerrePositivity.TorModule V 1 (K.X n) T.X₃))
+    (h₂ : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K T.X₂).Acyclic) (h₃ : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K T.X₃).Acyclic) :
+    (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K T.X₁).Acyclic := by
+  let S := T.map (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochainFunctor K)
   have hqIso : QuasiIso S.g := by
     rw [quasiIso_iff]
     intro n
     exact (quasiIsoAt_iff_exactAt S.g n (h₂ n)).mpr (h₃ n)
-  exact (tensorCochain_shortExact K T hT htor).acyclic_X₁ hqIso
+  exact (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain_shortExact K T hT htor).acyclic_X₁ hqIso
 
 /-- 基底環を係数とするテンソルは元の余鎖複体に同型。 -/
-def tensorCochain_unitIso (K : CochainComplex (ModuleCat.{u} V) ℕ) :
-    tensorCochain K (ModuleCat.of V V) ≅ K :=
+def _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain_unitIso (K : CochainComplex (ModuleCat.{u} V) ℕ) :
+    _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V V) ≅ K :=
   (NatIso.mapHomologicalComplex (leftUnitorNatIso (ModuleCat.{u} V)) (.up ℕ)).app K ≪≫
     (Functor.mapHomologicalComplexIdIso (ModuleCat.{u} V) (.up ℕ)).app K
 
 /-- 次数ごとの Tor₁ 消滅と Milnor 四角形の三つの角での完全性から元の完全性を得る。
 （BM18 Lemma 4.4 と Proposition 4.8 の証明の、構造層の場合。） -/
-theorem acyclic_of_milnorTensor [IsDomain V] [ValuationRing V] (P : Ideal V) [P.IsPrime]
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.acyclic_of_milnorTensor [IsDomain V] [ValuationRing V] (P : Ideal V) [P.IsPrime]
     (K : CochainComplex (ModuleCat.{u} V) ℕ)
-    (htor : ∀ n, Subsingleton (TorModule V 1 (K.X n) P.ResidueField))
-    (hl : (tensorCochain K (ModuleCat.of V (Localization.AtPrime P))).Acyclic)
-    (hq : (tensorCochain K (ModuleCat.of V (V ⧸ P))).Acyclic)
-    (hr : (tensorCochain K (ModuleCat.of V P.ResidueField)).Acyclic) :
+    (htor : ∀ n, Subsingleton (_root_.SerrePositivity.TorModule V 1 (K.X n) P.ResidueField))
+    (hl : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V (Localization.AtPrime P))).Acyclic)
+    (hq : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V (V ⧸ P))).Acyclic)
+    (hr : (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain K (ModuleCat.of V P.ResidueField)).Acyclic) :
     K.Acyclic := by
-  have h₁ := acyclic_of_tensorShortExact K (milnorModuleComplex P)
-    (milnorModuleComplex_shortExact P) htor (tensorCochain_prod_acyclic K _ _ hl hq) hr
-  exact fun n => (h₁ n).of_iso (tensorCochain_unitIso K)
+  have h₁ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.acyclic_of_tensorShortExact K (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex P)
+    (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.milnorModuleComplex_shortExact P) htor (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain_prod_acyclic K _ _ hl hq) hr
+  exact fun n => (h₁ n).of_iso (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.tensorCochain_unitIso K)
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

@@ -1,0 +1,9 @@
+{
+  "whole_module_moves": 70,
+  "all_public_source_rows": 1936,
+  "changed_public_source_names": 1607,
+  "concrete_native_validated_rewrite_rows": 2580,
+  "native_source_destination_missing": 0,
+  "unpaired_compiler_names_not_autorewritten": 4,
+  "wrapper": "Approved removal/redirect, explicitly retain original finite-presentation parameter telescope in choosing definitions. Do not treat its weaker target as an identical-signature alias."
+}

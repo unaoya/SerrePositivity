@@ -37,7 +37,7 @@ section AndreTorDescentPart
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 
 /-- Choose the actual André extension once for the base ring, independently of every Tor test.
@@ -120,8 +120,8 @@ section AndrePerfectoidizationTorDescentPart
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
-open scoped TensorProduct
+open _root_.CategoryTheory
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 
 /-- Choose one extension before the original algebra, its perfectoidization,
@@ -165,8 +165,8 @@ section AndrePerfectoidIdealTorDescentPart
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory BhattScholze
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.BhattScholze
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 
 /-- Full ideal Tor annihilation over a specified completely faithfully flat
@@ -181,17 +181,17 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_baseChangedPerfectoidization
     (D : Type u) [CommRing D] [Algebra E D]
     (g : E ⊗[R] A →ₐ[E] D) (hg : IsPerfectoidization p g.toRingHom) (a : R)
     (hTor : ∀ (L : ModuleCat.{u} E) (k : ℕ), (∀ x : L, (p : E) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal E p hE (algebraMap R E a),
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal E p hE (algebraMap R E a),
         torCoefficientScalarEndomorphism D L i (algebraMap E D s) = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   intro N k hN i hi s hs
   let L := (ModuleCat.extendScalars (algebraMap R E)).obj N
   have hL : ∀ x : L, (p : E) ^ k • x = 0 := by
     simpa only [map_pow, map_natCast] using
       scalarExtension_annihilated (algebraMap R E) ((p : R) ^ k) N hN
-  have hsE := map_mem_perfectoidIdeal p hR hE (algebraMap R E) a s hs
+  have hsE := _root_.SerrePositivity.BhattScholze.Almost.map_mem_perfectoidIdeal p hR hE (algebraMap R E) a s hs
   have hz := hTor L k hL i hi (algebraMap R E s) hsE
   rw [torCoefficientScalar_algebraMap_eq_smul_id] at hz
   apply (perfectoidization_torCoefficientScalar_eq_zero_iff_baseChangedPerfectoidizationTor
@@ -215,11 +215,11 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_baseChanged_aic_principal_cover
     (ht : Ideal.span (t : Set (Localization.Away (algebraMap R E a))) = ⊤)
     (hlocal : ∀ q : t, ∀ (L : ModuleCat.{u} E) (k : ℕ),
       (∀ x : L, (p : E) ^ k • x = 0) → ∀ i : ℕ, 0 < i →
-      ∀ s ∈ perfectoidIdeal E p hE
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal E p hE
         (algebraMap R E a * (IsLocalization.Away.sec (algebraMap R E a) q.1).1),
         torCoefficientScalarEndomorphism D L i (algebraMap E D s) = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   apply perfectoidIdeal_powerTorsionTorInput_of_baseChangedPerfectoidization
     R E A C p hR hE hflat f hf D g hg a
@@ -240,10 +240,10 @@ theorem exists_andre_extension_descends_perfectoidIdeal_powerTorsionTorInput
         (D : Type u) [CommRing D] [Algebra E D] (g : E ⊗[R] A →ₐ[E] D)
         (_hg : IsPerfectoidization p g.toRingHom) (a : R),
         (∀ (L : ModuleCat.{u} E) (k : ℕ), (∀ x : L, (p : E) ^ k • x = 0) →
-          ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal E p hE (algebraMap R E a),
+          ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal E p hE (algebraMap R E a),
             torCoefficientScalarEndomorphism D L i (algebraMap E D s) = 0) →
         ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-          ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+          ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
             torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   obtain ⟨E, hEring, hEalg, hE, hflat, haic, ρ, hρ0, hρ, _hdet⟩ :=
     exists_andre_extension_detects_baseChangedPerfectoidizationTor R p hR

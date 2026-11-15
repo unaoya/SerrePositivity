@@ -1,0 +1,18 @@
+{
+  "signature": "5bb19dca62ae1a5bdbb3f806937e35c078a13b464dca88a5d970352e230ec0b1",
+  "groups": 29,
+  "original_modules": 214,
+  "before_count": 4440,
+  "after_count": 4439,
+  "unexplained": 0,
+  "explained": [
+    {
+      "name": "SerrePositivity.Inputs.exists_perfectoidization_of_finite",
+      "module": "SerrePositivity.Inputs.Perfectoidization",
+      "change": "removed"
+    }
+  ],
+  "same_rule_sha256": "268ba032d38a7be059a4eb1a493a92f774dba997cb440ad53ac1f327fc45d5b2",
+  "baseline": "stored independently captured original32d364b53 snapshots, never recaptured from mutated own worktree",
+  "time": 1794676391.11509
+}

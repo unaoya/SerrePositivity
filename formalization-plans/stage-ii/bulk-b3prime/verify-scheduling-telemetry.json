@@ -1,0 +1,1304 @@
+{
+  "scope": "Scheduling RSS/duration estimates only, no reused check result. Serial guard tree RSS conservatively includes Lake launcher; retain greater previous RSS.",
+  "before": {
+    "scripts/audit/adams.lean": {
+      "seconds": 55.293,
+      "max_rss_bytes": 3365208064,
+      "measured_at": "2026-11-14T19:44:17.272765+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/bhatt_scholze.lean": {
+      "seconds": 257.324,
+      "max_rss_bytes": 5904564224,
+      "measured_at": "2026-11-14T19:36:32.842979+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/clmst.lean": {
+      "seconds": 77.12,
+      "max_rss_bytes": 4048453632,
+      "measured_at": "2026-11-14T19:43:18.163158+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/dg.lean": {
+      "seconds": 50.384,
+      "max_rss_bytes": 3100917760,
+      "measured_at": "2026-11-14T19:45:19.354081+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/shared.lean": {
+      "seconds": 93.156,
+      "max_rss_bytes": 4351688704,
+      "measured_at": "2026-11-14T19:43:21.978671+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_adams_action_transport.lean": {
+      "seconds": 9.469,
+      "max_rss_bytes": 3165798400,
+      "measured_at": "2026-11-14T19:52:52.771638+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_andre_initial_coefficient.lean": {
+      "seconds": 12.5,
+      "max_rss_bytes": 3640655872,
+      "measured_at": "2026-11-14T19:52:50.149045+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_andre_unoriented.lean": {
+      "seconds": 11.688,
+      "max_rss_bytes": 3659563008,
+      "measured_at": "2026-11-14T19:52:52.194298+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze.lean": {
+      "seconds": 91.93,
+      "max_rss_bytes": 3260923904,
+      "measured_at": "2026-11-14T19:42:01.041837+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_andre_conditional.lean": {
+      "seconds": 17.496,
+      "max_rss_bytes": 3790848000,
+      "measured_at": "2026-11-14T19:51:13.068382+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_arc_excision.lean": {
+      "seconds": 21.965,
+      "max_rss_bytes": 3927982080,
+      "measured_at": "2026-11-14T19:50:24.083246+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_b4.lean": {
+      "seconds": 15.92,
+      "max_rss_bytes": 3915448320,
+      "measured_at": "2026-11-14T19:52:05.137443+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_b5.lean": {
+      "seconds": 11.706,
+      "max_rss_bytes": 3627663360,
+      "measured_at": "2026-11-14T19:52:29.688664+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_prop813.lean": {
+      "seconds": 11.632,
+      "max_rss_bytes": 3640229888,
+      "measured_at": "2026-11-14T19:53:25.366714+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_refactoring.lean": {
+      "seconds": 12.841,
+      "max_rss_bytes": 3670736896,
+      "measured_at": "2026-11-14T19:52:17.981680+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_bhatt_scholze_stage2.lean": {
+      "seconds": 236.262,
+      "max_rss_bytes": 6242533376,
+      "measured_at": "2026-11-14T19:40:29.109037+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_clmst.lean": {
+      "seconds": 229.879,
+      "max_rss_bytes": 4493819904,
+      "measured_at": "2026-11-14T19:41:48.817380+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_clmst_b3.lean": {
+      "seconds": 19.688,
+      "max_rss_bytes": 4018618368,
+      "measured_at": "2026-11-14T19:51:49.217748+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_coherent_nerve.lean": {
+      "seconds": 17.163,
+      "max_rss_bytes": 2059517952,
+      "measured_at": "2026-11-14T19:51:23.425469+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_cell_projective.lean": {
+      "seconds": 15.185,
+      "max_rss_bytes": 3963797504,
+      "measured_at": "2026-11-14T19:52:11.925509+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_closure_functoriality.lean": {
+      "seconds": 69.199,
+      "max_rss_bytes": 5328306176,
+      "measured_at": "2026-11-14T19:47:21.333144+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_coherent_bar.lean": {
+      "seconds": 18.904,
+      "max_rss_bytes": 4029972480,
+      "measured_at": "2026-11-14T19:52:12.375000+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_coherent_bar_compact.lean": {
+      "seconds": 38.436,
+      "max_rss_bytes": 4862967808,
+      "measured_at": "2026-11-14T19:50:02.113188+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_coherent_bar_retract.lean": {
+      "seconds": 12.594,
+      "max_rss_bytes": 3698655232,
+      "measured_at": "2026-11-14T19:52:28.131652+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_coherent_bar_strict.lean": {
+      "seconds": 37.061,
+      "max_rss_bytes": 4768088064,
+      "measured_at": "2026-11-14T19:50:33.744325+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_dg_nerve_reflection.lean": {
+      "seconds": 13.586,
+      "max_rss_bytes": 3905224704,
+      "measured_at": "2026-11-14T19:52:15.536944+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_gluing.lean": {
+      "seconds": 70.501,
+      "max_rss_bytes": 5545738240,
+      "measured_at": "2026-11-14T19:45:27.777602+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_infinity.lean": {
+      "seconds": 586.296,
+      "max_rss_bytes": 6705348608,
+      "measured_at": "2026-11-14T19:42:01.814173+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_kappa_perfect.lean": {
+      "seconds": 34.312,
+      "max_rss_bytes": 4661837824,
+      "measured_at": "2026-11-14T19:50:21.715520+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_native_family.lean": {
+      "seconds": 62.04,
+      "max_rss_bytes": 5318098944,
+      "measured_at": "2026-11-14T19:48:13.821816+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_native_p.lean": {
+      "seconds": 50.16,
+      "max_rss_bytes": 5103796224,
+      "measured_at": "2026-11-14T19:48:38.940806+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_sphere_closure.lean": {
+      "seconds": 39.502,
+      "max_rss_bytes": 4862787584,
+      "measured_at": "2026-11-14T19:49:56.679687+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_suspension_coherent.lean": {
+      "seconds": 44.732,
+      "max_rss_bytes": 5037916160,
+      "measured_at": "2026-11-14T19:49:23.676957+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_suspension_native.lean": {
+      "seconds": 41.23,
+      "max_rss_bytes": 5037441024,
+      "measured_at": "2026-11-14T19:49:47.402915+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_derived_suspension_replacement.lean": {
+      "seconds": 43.658,
+      "max_rss_bytes": 5038014464,
+      "measured_at": "2026-11-14T19:48:57.482691+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_dg_cell_comparison.lean": {
+      "seconds": 46.687,
+      "max_rss_bytes": 5003149312,
+      "measured_at": "2026-11-14T19:49:44.171583+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_dg_nerve.lean": {
+      "seconds": 14.791,
+      "max_rss_bytes": 3587407872,
+      "measured_at": "2026-11-14T19:51:56.729535+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_dg_perfect_projective_image.lean": {
+      "seconds": 10.047,
+      "max_rss_bytes": 3214180352,
+      "measured_at": "2026-11-14T19:52:54.191655+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_dg_projective_contraction.lean": {
+      "seconds": 9.002,
+      "max_rss_bytes": 2872885248,
+      "measured_at": "2026-11-14T19:53:34.369930+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_dg_quotient_parameter.lean": {
+      "seconds": 16.836,
+      "max_rss_bytes": 4018323456,
+      "measured_at": "2026-11-14T19:52:28.762922+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_dold_kan_comparison.lean": {
+      "seconds": 47.297,
+      "max_rss_bytes": 3548889088,
+      "measured_at": "2026-11-14T19:47:11.645863+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_euler_betti_finite_support.lean": {
+      "seconds": 9.551,
+      "max_rss_bytes": 3091808256,
+      "measured_at": "2026-11-14T19:53:39.195034+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_euler_group_shared.lean": {
+      "seconds": 9.193,
+      "max_rss_bytes": 3107684352,
+      "measured_at": "2026-11-14T19:53:23.444021+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_exact_euler_finite_support.lean": {
+      "seconds": 8.209,
+      "max_rss_bytes": 2758885376,
+      "measured_at": "2026-11-14T19:53:31.653951+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f2_compact.lean": {
+      "seconds": 18.59,
+      "max_rss_bytes": 2912157696,
+      "measured_at": "2026-11-14T19:51:22.189704+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f2_idempotent.lean": {
+      "seconds": 15.203,
+      "max_rss_bytes": 2793422848,
+      "measured_at": "2026-11-14T19:52:01.945038+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f2_ind.lean": {
+      "seconds": 22.977,
+      "max_rss_bytes": 3133341696,
+      "measured_at": "2026-11-14T19:51:07.133750+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f2_pi_criterion.lean": {
+      "seconds": 15.521,
+      "max_rss_bytes": 2711568384,
+      "measured_at": "2026-11-14T19:53:09.713026+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f4.lean": {
+      "seconds": 8.359,
+      "max_rss_bytes": 2665971712,
+      "measured_at": "2026-11-14T19:53:39.995025+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f5.lean": {
+      "seconds": 97.417,
+      "max_rss_bytes": 5804392448,
+      "measured_at": "2026-11-14T19:45:06.856140+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f6.lean": {
+      "seconds": 8.1,
+      "max_rss_bytes": 2591916032,
+      "measured_at": "2026-11-14T19:53:47.296260+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_f7.lean": {
+      "seconds": 83.786,
+      "max_rss_bytes": 5803769856,
+      "measured_at": "2026-11-14T19:48:45.122369+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_general_spectra.lean": {
+      "seconds": 7.909,
+      "max_rss_bytes": 2407694336,
+      "measured_at": "2026-11-14T19:53:29.643067+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_homotopical_foundations.lean": {
+      "seconds": 11.119,
+      "max_rss_bytes": 2699493376,
+      "measured_at": "2026-11-14T19:52:32.694411+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_homotopical_general_tools.lean": {
+      "seconds": 8.728,
+      "max_rss_bytes": 2361262080,
+      "measured_at": "2026-11-14T19:53:40.383083+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_homotopical_rectification.lean": {
+      "seconds": 12.471,
+      "max_rss_bytes": 2808905728,
+      "measured_at": "2026-11-14T19:53:04.666609+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_homotopy_cone_representative_shared.lean": {
+      "seconds": 9.198,
+      "max_rss_bytes": 3099131904,
+      "measured_at": "2026-11-14T19:52:21.574057+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_homotopy_limits.lean": {
+      "seconds": 56.685,
+      "max_rss_bytes": 5114839040,
+      "measured_at": "2026-11-14T19:46:24.379374+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_homotopy_property_shared.lean": {
+      "seconds": 7.216,
+      "max_rss_bytes": 2255831040,
+      "measured_at": "2026-11-14T19:52:44.143191+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_accessible_pullback.lean": {
+      "seconds": 22.486,
+      "max_rss_bytes": 3070574592,
+      "measured_at": "2026-11-14T19:51:03.598724+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_core.lean": {
+      "seconds": 45.028,
+      "max_rss_bytes": 13755580416,
+      "measured_at": "2026-11-14T19:48:14.599210+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_core_supply_s1_closed_stable.lean": {
+      "seconds": 21.047,
+      "max_rss_bytes": 4150312960,
+      "measured_at": "2026-11-14T19:49:06.169627+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_core_supply_s1_triangle.lean": {
+      "seconds": 7.47,
+      "max_rss_bytes": 2141880320,
+      "measured_at": "2026-11-14T19:53:47.854789+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_f1.lean": {
+      "seconds": 320.70573604106903,
+      "max_rss_bytes": 30218108928,
+      "measured_at": "2026-11-15T04:02:48.404517",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_f1_f1b.lean": {
+      "seconds": 21.519,
+      "max_rss_bytes": 3074801664,
+      "measured_at": "2026-11-14T19:51:06.315751+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_f1b.lean": {
+      "seconds": 60.017,
+      "max_rss_bytes": 14324940800,
+      "measured_at": "2026-11-14T19:47:29.550304+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_f2.lean": {
+      "seconds": 33.332,
+      "max_rss_bytes": 3332636672,
+      "measured_at": "2026-11-14T19:47:48.773266+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_f2_checks.lean": {
+      "seconds": 9.582,
+      "max_rss_bytes": 2460516352,
+      "measured_at": "2026-11-14T19:53:14.249678+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_kan.lean": {
+      "seconds": 6.935,
+      "max_rss_bytes": 2054373376,
+      "measured_at": "2026-11-14T19:53:51.301311+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_model_bridge.lean": {
+      "seconds": 7.236,
+      "max_rss_bytes": 2146762752,
+      "measured_at": "2026-11-14T19:52:36.926239+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_presentable.lean": {
+      "seconds": 34.609,
+      "max_rss_bytes": 3283632128,
+      "measured_at": "2026-11-14T19:50:18.773979+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_presentable_duality.lean": {
+      "seconds": 19.759,
+      "max_rss_bytes": 3005366272,
+      "measured_at": "2026-11-14T19:51:32.826714+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_presentable_local_objects.lean": {
+      "seconds": 22.378,
+      "max_rss_bytes": 3155558400,
+      "measured_at": "2026-11-14T19:51:29.528252+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_presentable_supply.lean": {
+      "seconds": 17.031,
+      "max_rss_bytes": 3031121920,
+      "measured_at": "2026-11-14T19:50:41.113065+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_stable.lean": {
+      "seconds": 415.871,
+      "max_rss_bytes": 5250367488,
+      "measured_at": "2026-11-14T19:39:11.385046+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_stable_presentable.lean": {
+      "seconds": 11.377,
+      "max_rss_bytes": 2497642496,
+      "measured_at": "2026-11-14T19:53:12.271056+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_cofinality.lean": {
+      "seconds": 35.643,
+      "max_rss_bytes": 4651040768,
+      "measured_at": "2026-11-14T19:48:50.251297+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_comparison.lean": {
+      "seconds": 43.411,
+      "max_rss_bytes": 3821879296,
+      "measured_at": "2026-11-14T19:47:15.301709+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_core_flag.lean": {
+      "seconds": 26.923,
+      "max_rss_bytes": 4390043648,
+      "measured_at": "2026-11-14T19:49:17.174676+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_derived_blowup.lean": {
+      "seconds": 12.018,
+      "max_rss_bytes": 3316957184,
+      "measured_at": "2026-11-14T19:53:21.733568+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_derived_geometry.lean": {
+      "seconds": 11.74,
+      "max_rss_bytes": 3320971264,
+      "measured_at": "2026-11-14T19:52:40.505514+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_descent.lean": {
+      "seconds": 17.341,
+      "max_rss_bytes": 3572039680,
+      "measured_at": "2026-11-12T00:53:06.034504+00:00",
+      "commit": "1304c688ff9e4b2486f547310d07bfc25a2780d7"
+    },
+    "scripts/audit_kst_descent_main.lean": {
+      "seconds": 13.526,
+      "max_rss_bytes": 3394912256,
+      "measured_at": "2026-11-14T19:51:53.467509+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_fibration.lean": {
+      "seconds": 82.698,
+      "max_rss_bytes": 5445599232,
+      "measured_at": "2026-11-14T19:46:29.557515+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_fibration_relative.lean": {
+      "seconds": 21.82,
+      "max_rss_bytes": 4149051392,
+      "measured_at": "2026-11-14T19:50:55.568039+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_nonconnective.lean": {
+      "seconds": 98.813,
+      "max_rss_bytes": 5646204928,
+      "measured_at": "2026-11-14T19:46:12.129948+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_pro_excision.lean": {
+      "seconds": 70.802,
+      "max_rss_bytes": 3926081536,
+      "measured_at": "2026-11-14T19:44:28.775317+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_s_construction.lean": {
+      "seconds": 154.497,
+      "max_rss_bytes": 10073210880,
+      "measured_at": "2026-11-14T19:44:33.208899+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_s_construction_tail.lean": {
+      "seconds": 72.676,
+      "max_rss_bytes": 5515624448,
+      "measured_at": "2026-11-14T19:46:32.032314+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_scheme_lemmas.lean": {
+      "seconds": 17.704,
+      "max_rss_bytes": 3653763072,
+      "measured_at": "2026-11-14T19:51:39.941665+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_spectra.lean": {
+      "seconds": 22.453,
+      "max_rss_bytes": 3509403648,
+      "measured_at": "2026-11-14T19:50:44.169186+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_spectra_d3.lean": {
+      "seconds": 13.914,
+      "max_rss_bytes": 2977513472,
+      "measured_at": "2026-11-14T19:51:46.744286+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_spectra_d3tail.lean": {
+      "seconds": 18.465,
+      "max_rss_bytes": 3151708160,
+      "measured_at": "2026-11-14T19:51:41.946663+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_kst_spectra_s3.lean": {
+      "seconds": 87.618,
+      "max_rss_bytes": 5756010496,
+      "measured_at": "2026-11-14T19:43:29.436117+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_local_algebra.lean": {
+      "seconds": 10.74,
+      "max_rss_bytes": 3095986176,
+      "measured_at": "2026-11-14T19:53:00.887616+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_localizing_invariants.lean": {
+      "seconds": 343.417,
+      "max_rss_bytes": 6319767552,
+      "measured_at": "2026-11-14T19:37:58.936100+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_refactor_infinity.lean": {
+      "seconds": 9.592,
+      "max_rss_bytes": 2390392832,
+      "measured_at": "2026-11-14T19:53:31.634291+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_spectra.lean": {
+      "seconds": 10.31,
+      "max_rss_bytes": 2659778560,
+      "measured_at": "2026-11-14T19:53:13.733762+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_stage4_contract.lean": {
+      "seconds": 10.606,
+      "max_rss_bytes": 2764783616,
+      "measured_at": "2026-11-14T19:52:43.301010+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_triangulated_k0_shift_shared.lean": {
+      "seconds": 9.498,
+      "max_rss_bytes": 3095887872,
+      "measured_at": "2026-11-14T19:52:37.630700+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_axioms.lean": {
+      "seconds": 190.21452858299017,
+      "max_rss_bytes": 10616553472,
+      "measured_at": "2026-11-15T02:54:21.857629",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/refactor/audit_sorries.lean": {
+      "seconds": 330.69,
+      "max_rss_bytes": 9750167552,
+      "measured_at": "2026-11-14T01:22:49.626581+00:00",
+      "commit": "d5f3713fc23ef3c8ee05b97f0e7af796e57ecaaf"
+    },
+    "scripts/audit_einfinity.lean": {
+      "seconds": 167.422,
+      "max_rss_bytes": 7186612224,
+      "measured_at": "2026-11-14T19:41:58.817939+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit_infinity_presentable_localization.lean": {
+      "seconds": 26.009,
+      "max_rss_bytes": 3184361472,
+      "measured_at": "2026-11-14T19:50:44.788307+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean": {
+      "seconds": 10.648,
+      "max_rss_bytes": 2012495872,
+      "measured_at": "2026-11-14T19:53:03.419549+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/bs_power_root_envelope/Unoriented.lean": {
+      "seconds": 9.77,
+      "max_rss_bytes": 2013855744,
+      "measured_at": "2026-11-14T19:53:22.042178+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/bs_power_root_envelope/VarpiComparison.lean": {
+      "seconds": 9.52,
+      "max_rss_bytes": 2009366528,
+      "measured_at": "2026-11-14T19:53:49.516868+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    },
+    "scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean": {
+      "seconds": 9.994,
+      "max_rss_bytes": 2022785024,
+      "measured_at": "2026-11-14T19:53:44.365110+00:00",
+      "commit": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6"
+    }
+  },
+  "after": {
+    "scripts/audit/adams.lean": {
+      "seconds": 51.91593379341066,
+      "max_rss_bytes": 4048273408,
+      "measured_at": "2026-11-15T02:42:27.088522",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/bhatt_scholze.lean": {
+      "seconds": 247.3529361244291,
+      "max_rss_bytes": 6591692800,
+      "measured_at": "2026-11-15T02:46:34.660788",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/clmst.lean": {
+      "seconds": 70.68707583285868,
+      "max_rss_bytes": 4734582784,
+      "measured_at": "2026-11-15T02:48:23.773918",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/dg.lean": {
+      "seconds": 47.92324195988476,
+      "max_rss_bytes": 3783720960,
+      "measured_at": "2026-11-15T02:49:11.896035",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/shared.lean": {
+      "seconds": 87.29908429272473,
+      "max_rss_bytes": 5035868160,
+      "measured_at": "2026-11-15T02:50:39.368169",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_adams_action_transport.lean": {
+      "seconds": 10.480624165385962,
+      "max_rss_bytes": 3165798400,
+      "measured_at": "2026-11-15T02:50:50.060409",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_andre_initial_coefficient.lean": {
+      "seconds": 10.53401100076735,
+      "max_rss_bytes": 4113776640,
+      "measured_at": "2026-11-15T02:51:00.764383",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_andre_unoriented.lean": {
+      "seconds": 10.51356479153037,
+      "max_rss_bytes": 4123869184,
+      "measured_at": "2026-11-15T02:51:11.450202",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze.lean": {
+      "seconds": 89.12282050028443,
+      "max_rss_bytes": 3946102784,
+      "measured_at": "2026-11-15T02:55:51.243137",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_andre_conditional.lean": {
+      "seconds": 17.07028870843351,
+      "max_rss_bytes": 4442324992,
+      "measured_at": "2026-11-15T02:56:08.546212",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_arc_excision.lean": {
+      "seconds": 20.926113666966558,
+      "max_rss_bytes": 4601741312,
+      "measured_at": "2026-11-15T02:56:29.643959",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_b4.lean": {
+      "seconds": 14.666463540866971,
+      "max_rss_bytes": 4674928640,
+      "measured_at": "2026-11-15T02:56:44.497882",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_b5.lean": {
+      "seconds": 10.698469959199429,
+      "max_rss_bytes": 3779805184,
+      "measured_at": "2026-11-15T02:56:55.367255",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_prop813.lean": {
+      "seconds": 10.392248334363103,
+      "max_rss_bytes": 4109795328,
+      "measured_at": "2026-11-15T02:57:05.935766",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_refactoring.lean": {
+      "seconds": 12.587593916803598,
+      "max_rss_bytes": 4353032192,
+      "measured_at": "2026-11-15T02:57:18.709372",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_bhatt_scholze_stage2.lean": {
+      "seconds": 237.8535364996642,
+      "max_rss_bytes": 6931382272,
+      "measured_at": "2026-11-15T03:01:16.737151",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_clmst.lean": {
+      "seconds": 219.17830950021744,
+      "max_rss_bytes": 5170151424,
+      "measured_at": "2026-11-15T03:04:56.151465",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_clmst_b3.lean": {
+      "seconds": 16.589453291147947,
+      "max_rss_bytes": 4688920576,
+      "measured_at": "2026-11-15T03:05:12.953322",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_coherent_nerve.lean": {
+      "seconds": 16.749014414846897,
+      "max_rss_bytes": 2747826176,
+      "measured_at": "2026-11-15T03:05:30.008889",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_cell_projective.lean": {
+      "seconds": 14.619887663051486,
+      "max_rss_bytes": 4429037568,
+      "measured_at": "2026-11-15T03:05:44.797703",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_closure_functoriality.lean": {
+      "seconds": 43.49511341750622,
+      "max_rss_bytes": 6016499712,
+      "measured_at": "2026-11-15T03:06:28.468423",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_coherent_bar.lean": {
+      "seconds": 14.645072834566236,
+      "max_rss_bytes": 4713283584,
+      "measured_at": "2026-11-15T03:06:43.389375",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_coherent_bar_compact.lean": {
+      "seconds": 25.101589208468795,
+      "max_rss_bytes": 5359255552,
+      "measured_at": "2026-11-15T03:07:08.677487",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_coherent_bar_retract.lean": {
+      "seconds": 10.716946624219418,
+      "max_rss_bytes": 3831627776,
+      "measured_at": "2026-11-15T03:07:19.681759",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_coherent_bar_strict.lean": {
+      "seconds": 22.711828790605068,
+      "max_rss_bytes": 5446696960,
+      "measured_at": "2026-11-15T03:07:42.585373",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_dg_nerve_reflection.lean": {
+      "seconds": 12.661645539104939,
+      "max_rss_bytes": 4591927296,
+      "measured_at": "2026-11-15T03:07:55.554638",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_gluing.lean": {
+      "seconds": 49.901992375031114,
+      "max_rss_bytes": 6159679488,
+      "measured_at": "2026-11-15T03:08:45.643639",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_infinity.lean": {
+      "seconds": 549.3767740428448,
+      "max_rss_bytes": 7401177088,
+      "measured_at": "2026-11-15T03:17:55.210669",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_kappa_perfect.lean": {
+      "seconds": 22.778297249227762,
+      "max_rss_bytes": 5133697024,
+      "measured_at": "2026-11-15T03:18:18.234051",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_native_family.lean": {
+      "seconds": 33.314433293417096,
+      "max_rss_bytes": 5777276928,
+      "measured_at": "2026-11-15T03:18:51.748891",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_native_p.lean": {
+      "seconds": 33.20383437536657,
+      "max_rss_bytes": 5222252544,
+      "measured_at": "2026-11-15T03:19:25.251079",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_sphere_closure.lean": {
+      "seconds": 25.16358100064099,
+      "max_rss_bytes": 4986339328,
+      "measured_at": "2026-11-15T03:19:50.624757",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_suspension_coherent.lean": {
+      "seconds": 28.954608917236328,
+      "max_rss_bytes": 5724274688,
+      "measured_at": "2026-11-15T03:20:19.791138",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_suspension_native.lean": {
+      "seconds": 26.869711751118302,
+      "max_rss_bytes": 5451415552,
+      "measured_at": "2026-11-15T03:20:46.856044",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_derived_suspension_replacement.lean": {
+      "seconds": 29.315438209101558,
+      "max_rss_bytes": 5499928576,
+      "measured_at": "2026-11-15T03:21:16.371907",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_dg_cell_comparison.lean": {
+      "seconds": 27.02876183204353,
+      "max_rss_bytes": 5119475712,
+      "measured_at": "2026-11-15T03:21:43.686524",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_dg_nerve.lean": {
+      "seconds": 14.69556195475161,
+      "max_rss_bytes": 4276289536,
+      "measured_at": "2026-11-15T03:21:58.589822",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_dg_perfect_projective_image.lean": {
+      "seconds": 10.45057187601924,
+      "max_rss_bytes": 3732471808,
+      "measured_at": "2026-11-15T03:22:09.275908",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_dg_projective_contraction.lean": {
+      "seconds": 8.363666417077184,
+      "max_rss_bytes": 3113861120,
+      "measured_at": "2026-11-15T03:22:17.827924",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_dg_quotient_parameter.lean": {
+      "seconds": 12.485597541555762,
+      "max_rss_bytes": 4167712768,
+      "measured_at": "2026-11-15T03:22:30.501892",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_dold_kan_comparison.lean": {
+      "seconds": 39.51039862446487,
+      "max_rss_bytes": 4238131200,
+      "measured_at": "2026-11-15T03:23:10.204156",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_euler_betti_finite_support.lean": {
+      "seconds": 8.35969483293593,
+      "max_rss_bytes": 3091808256,
+      "measured_at": "2026-11-15T03:50:57.067827",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_euler_group_shared.lean": {
+      "seconds": 8.63669429346919,
+      "max_rss_bytes": 3377168384,
+      "measured_at": "2026-11-15T03:51:06.177252",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_exact_euler_finite_support.lean": {
+      "seconds": 8.376144625246525,
+      "max_rss_bytes": 3147956224,
+      "measured_at": "2026-11-15T03:51:14.915497",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f2_compact.lean": {
+      "seconds": 16.84539983421564,
+      "max_rss_bytes": 2912157696,
+      "measured_at": "2026-11-15T03:51:32.220322",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f2_idempotent.lean": {
+      "seconds": 14.691178999841213,
+      "max_rss_bytes": 3483795456,
+      "measured_at": "2026-11-15T03:51:47.668653",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f2_ind.lean": {
+      "seconds": 18.70590141788125,
+      "max_rss_bytes": 3821699072,
+      "measured_at": "2026-11-15T03:52:06.896453",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f2_pi_criterion.lean": {
+      "seconds": 10.434956999495625,
+      "max_rss_bytes": 3253649408,
+      "measured_at": "2026-11-15T03:52:17.837603",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f4.lean": {
+      "seconds": 8.357649916782975,
+      "max_rss_bytes": 2665971712,
+      "measured_at": "2026-11-15T03:52:26.555332",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f5.lean": {
+      "seconds": 50.29651866480708,
+      "max_rss_bytes": 5959385088,
+      "measured_at": "2026-11-15T03:53:17.285952",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f6.lean": {
+      "seconds": 8.319100501015782,
+      "max_rss_bytes": 2958737408,
+      "measured_at": "2026-11-15T03:53:26.103893",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_f7.lean": {
+      "seconds": 37.841412207111716,
+      "max_rss_bytes": 6473564160,
+      "measured_at": "2026-11-15T03:54:04.445158",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_general_spectra.lean": {
+      "seconds": 8.529264625161886,
+      "max_rss_bytes": 2720120832,
+      "measured_at": "2026-11-15T03:54:13.931266",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_homotopical_foundations.lean": {
+      "seconds": 10.627903835847974,
+      "max_rss_bytes": 3385475072,
+      "measured_at": "2026-11-15T03:54:24.931504",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_homotopical_general_tools.lean": {
+      "seconds": 8.337854415178299,
+      "max_rss_bytes": 3018276864,
+      "measured_at": "2026-11-15T03:54:33.631583",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_homotopical_rectification.lean": {
+      "seconds": 10.437949335202575,
+      "max_rss_bytes": 3456417792,
+      "measured_at": "2026-11-15T03:54:44.439609",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_homotopy_cone_representative_shared.lean": {
+      "seconds": 10.952195582911372,
+      "max_rss_bytes": 3599876096,
+      "measured_at": "2026-11-15T03:54:55.762152",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_homotopy_limits.lean": {
+      "seconds": 45.82341996021569,
+      "max_rss_bytes": 6071222272,
+      "measured_at": "2026-11-15T03:55:42.082381",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_homotopy_property_shared.lean": {
+      "seconds": 10.545221917331219,
+      "max_rss_bytes": 2531344384,
+      "measured_at": "2026-11-15T03:55:53.425526",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_accessible_pullback.lean": {
+      "seconds": 18.773356830701232,
+      "max_rss_bytes": 3759161344,
+      "measured_at": "2026-11-15T03:56:12.579797",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_core.lean": {
+      "seconds": 39.383649289608,
+      "max_rss_bytes": 14421622784,
+      "measured_at": "2026-11-15T03:56:52.326880",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_core_supply_s1_closed_stable.lean": {
+      "seconds": 27.43236774764955,
+      "max_rss_bytes": 4333436928,
+      "measured_at": "2026-11-15T03:57:20.305858",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_core_supply_s1_triangle.lean": {
+      "seconds": 6.460936456918716,
+      "max_rss_bytes": 2141880320,
+      "measured_at": "2026-11-15T03:57:27.336361",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_f1.lean": {
+      "seconds": 320.70573604106903,
+      "max_rss_bytes": 30218108928,
+      "measured_at": "2026-11-15T04:02:48.404517",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_f1_f1b.lean": {
+      "seconds": 18.692306919023395,
+      "max_rss_bytes": 3758981120,
+      "measured_at": "2026-11-15T04:03:07.723023",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_f1b.lean": {
+      "seconds": 43.57871425151825,
+      "max_rss_bytes": 15013216256,
+      "measured_at": "2026-11-15T04:03:51.801719",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_f2.lean": {
+      "seconds": 29.019674126058817,
+      "max_rss_bytes": 4021698560,
+      "measured_at": "2026-11-15T04:04:21.319261",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_f2_checks.lean": {
+      "seconds": 10.424673372879624,
+      "max_rss_bytes": 2460516352,
+      "measured_at": "2026-11-15T04:04:32.566451",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_kan.lean": {
+      "seconds": 6.268021333962679,
+      "max_rss_bytes": 2054373376,
+      "measured_at": "2026-11-15T04:04:39.203708",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_model_bridge.lean": {
+      "seconds": 10.560945292934775,
+      "max_rss_bytes": 2567225344,
+      "measured_at": "2026-11-15T04:04:50.111133",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_presentable.lean": {
+      "seconds": 22.800375876948237,
+      "max_rss_bytes": 3969531904,
+      "measured_at": "2026-11-15T04:05:13.431309",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_presentable_duality.lean": {
+      "seconds": 16.729829831048846,
+      "max_rss_bytes": 3693527040,
+      "measured_at": "2026-11-15T04:05:30.804558",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_presentable_local_objects.lean": {
+      "seconds": 16.7316382098943,
+      "max_rss_bytes": 3155558400,
+      "measured_at": "2026-11-15T04:05:48.159470",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_presentable_supply.lean": {
+      "seconds": 18.814291290938854,
+      "max_rss_bytes": 3707666432,
+      "measured_at": "2026-11-15T04:06:35.088488",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_stable.lean": {
+      "seconds": 397.3490558322519,
+      "max_rss_bytes": 5943115776,
+      "measured_at": "2026-11-15T04:13:13.064410",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_stable_presentable.lean": {
+      "seconds": 10.427974538877606,
+      "max_rss_bytes": 2497642496,
+      "measured_at": "2026-11-15T04:13:24.045294",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_cofinality.lean": {
+      "seconds": 29.14133254252374,
+      "max_rss_bytes": 5312970752,
+      "measured_at": "2026-11-15T04:13:53.658727",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_comparison.lean": {
+      "seconds": 39.41406745649874,
+      "max_rss_bytes": 4515348480,
+      "measured_at": "2026-11-15T04:14:33.566106",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_core_flag.lean": {
+      "seconds": 27.08316404186189,
+      "max_rss_bytes": 4390043648,
+      "measured_at": "2026-11-15T04:15:01.314082",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_derived_blowup.lean": {
+      "seconds": 10.420050166547298,
+      "max_rss_bytes": 3316957184,
+      "measured_at": "2026-11-15T04:15:12.242512",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_derived_geometry.lean": {
+      "seconds": 10.571020793169737,
+      "max_rss_bytes": 3518726144,
+      "measured_at": "2026-11-15T04:15:23.176949",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_descent.lean": {
+      "seconds": 17.341,
+      "max_rss_bytes": 3572039680,
+      "measured_at": "2026-11-12T00:53:06.034504+00:00",
+      "commit": "1304c688ff9e4b2486f547310d07bfc25a2780d7"
+    },
+    "scripts/audit_kst_descent_main.lean": {
+      "seconds": 14.746145458891988,
+      "max_rss_bytes": 3656728576,
+      "measured_at": "2026-11-15T04:15:38.533664",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_fibration.lean": {
+      "seconds": 47.44513833336532,
+      "max_rss_bytes": 6128189440,
+      "measured_at": "2026-11-15T04:16:26.466261",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_fibration_relative.lean": {
+      "seconds": 18.78309129178524,
+      "max_rss_bytes": 4836409344,
+      "measured_at": "2026-11-15T04:16:45.732726",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_nonconnective.lean": {
+      "seconds": 47.70019658282399,
+      "max_rss_bytes": 6240829440,
+      "measured_at": "2026-11-15T04:17:33.946587",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_pro_excision.lean": {
+      "seconds": 58.23566933348775,
+      "max_rss_bytes": 4621320192,
+      "measured_at": "2026-11-15T04:18:32.665917",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_s_construction.lean": {
+      "seconds": 103.5396453756839,
+      "max_rss_bytes": 11873026048,
+      "measured_at": "2026-11-15T04:20:17.254770",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_s_construction_tail.lean": {
+      "seconds": 45.87815241701901,
+      "max_rss_bytes": 6203572224,
+      "measured_at": "2026-11-15T04:21:03.910222",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_scheme_lemmas.lean": {
+      "seconds": 16.649657875299454,
+      "max_rss_bytes": 4064837632,
+      "measured_at": "2026-11-15T04:21:21.040464",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_spectra.lean": {
+      "seconds": 20.75419933348894,
+      "max_rss_bytes": 4195123200,
+      "measured_at": "2026-11-15T04:21:42.296759",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_spectra_d3.lean": {
+      "seconds": 14.789521539583802,
+      "max_rss_bytes": 3560456192,
+      "measured_at": "2026-11-15T04:21:57.805543",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_spectra_d3tail.lean": {
+      "seconds": 16.59505662508309,
+      "max_rss_bytes": 3775496192,
+      "measured_at": "2026-11-15T04:22:14.941635",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_kst_spectra_s3.lean": {
+      "seconds": 58.300712041556835,
+      "max_rss_bytes": 6446989312,
+      "measured_at": "2026-11-15T04:23:13.748177",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_local_algebra.lean": {
+      "seconds": 10.440176416188478,
+      "max_rss_bytes": 3333865472,
+      "measured_at": "2026-11-15T04:23:24.667144",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_localizing_invariants.lean": {
+      "seconds": 318.54134079255164,
+      "max_rss_bytes": 7005700096,
+      "measured_at": "2026-11-15T04:28:43.556746",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_refactor_infinity.lean": {
+      "seconds": 8.410414876416326,
+      "max_rss_bytes": 2390392832,
+      "measured_at": "2026-11-15T04:28:52.502214",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_spectra.lean": {
+      "seconds": 10.427274376153946,
+      "max_rss_bytes": 3346055168,
+      "measured_at": "2026-11-15T04:29:03.420579",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_stage4_contract.lean": {
+      "seconds": 10.551547376438975,
+      "max_rss_bytes": 3449143296,
+      "measured_at": "2026-11-15T04:29:14.340081",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_triangulated_k0_shift_shared.lean": {
+      "seconds": 10.612413791939616,
+      "max_rss_bytes": 3780968448,
+      "measured_at": "2026-11-15T04:29:25.465971",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_axioms.lean": {
+      "seconds": 190.21452858299017,
+      "max_rss_bytes": 10616553472,
+      "measured_at": "2026-11-15T02:54:21.857629",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/refactor/audit_sorries.lean": {
+      "seconds": 330.69,
+      "max_rss_bytes": 9750167552,
+      "measured_at": "2026-11-14T01:22:49.626581+00:00",
+      "commit": "d5f3713fc23ef3c8ee05b97f0e7af796e57ecaaf"
+    },
+    "scripts/audit_einfinity.lean": {
+      "seconds": 165.84549324773252,
+      "max_rss_bytes": 7876624384,
+      "measured_at": "2026-11-15T03:50:48.335417",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit_infinity_presentable_localization.lean": {
+      "seconds": 20.877880038693547,
+      "max_rss_bytes": 3873521664,
+      "measured_at": "2026-11-15T04:06:15.761152",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean": {
+      "seconds": 10.436751499772072,
+      "max_rss_bytes": 2699591680,
+      "measured_at": "2026-11-15T02:46:45.273032",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/bs_power_root_envelope/Unoriented.lean": {
+      "seconds": 10.395244875922799,
+      "max_rss_bytes": 2699460608,
+      "measured_at": "2026-11-15T02:46:55.856548",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/bs_power_root_envelope/VarpiComparison.lean": {
+      "seconds": 8.311748456209898,
+      "max_rss_bytes": 2525757440,
+      "measured_at": "2026-11-15T02:47:04.373794",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    },
+    "scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean": {
+      "seconds": 8.322840292006731,
+      "max_rss_bytes": 2498363392,
+      "measured_at": "2026-11-15T02:47:12.891246",
+      "commit": "107d005583fe01dc50b97945f0586063458e48af"
+    }
+  },
+  "source": "all-audits-complete.json"
+}

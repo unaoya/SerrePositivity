@@ -33,7 +33,7 @@ section PerfectoidIdealTorCoverPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p)
 
@@ -43,16 +43,16 @@ theorem perfectoidIdeal_torCoefficientScalar_eq_zero_of_rooted_cover
     (g : R) (e : ℕ) (hcover : g ^ e ∈ BhattScholze.compatibleRootFamilyZeroIdeal ρ)
     (C : Type u) [CommRing C] [Algebra R C]
     (N : ModuleCat.{u} R) (k : ℕ) (hN : ∀ x : N, (p : R) ^ k • x = 0) (i : ℕ)
-    (hlocal : ∀ s, ∀ a ∈ perfectoidIdeal R p hR (ρ s 0),
+    (hlocal : ∀ s, ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0),
       torCoefficientScalarEndomorphism C N i (algebraMap R C a) = 0) :
-    ∀ a ∈ perfectoidIdeal R p hR g,
+    ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
       torCoefficientScalarEndomorphism C N i (algebraMap R C a) = 0 := by
   let F := (Tor (ModuleCat.{u} R) i).flip.obj N
   let J := (coefficientFunctorAnnihilator (C := C) F).comap (algebraMap R C)
-  have hsum : (⨆ s, perfectoidIdeal R p hR (ρ s 0)) ≤ J := iSup_le hlocal
+  have hsum : (⨆ s, _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0)) ≤ J := iSup_le hlocal
   have hp : Ideal.span {(p : R) ^ k} ≤ J := (Ideal.span_singleton_le_iff_mem J).mpr
     (torCoefficientScalar_algebraMap_eq_zero_of_annihilates N i ((p : R) ^ k) hN)
-  exact (perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover R p hR ρ hρ g e hcover k).trans
+  exact (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover R p hR ρ hρ g e hcover k).trans
     (sup_le hsum hp)
 
 /-- On an AIC base the local generators themselves suffice; compatible roots
@@ -64,10 +64,10 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_aic_cover
     (C : Type u) [CommRing C] [Algebra R C]
     (hlocal : ∀ s, ∀ (N : ModuleCat.{u} R) (k : ℕ),
       (∀ x : N, (p : R) ^ k • x = 0) → ∀ i : ℕ, 0 < i →
-      ∀ a ∈ perfectoidIdeal R p hR (d s),
+      ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (d s),
         torCoefficientScalarEndomorphism C N i (algebraMap R C a) = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ a ∈ perfectoidIdeal R p hR g,
+      ∀ i : ℕ, 0 < i → ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N i (algebraMap R C a) = 0 := by
   choose ρ hρ0 hρ using fun s =>
     hAIC.exists_compatible_pow_roots (Fact.out : p.Prime).pos (d s)
@@ -90,10 +90,10 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_aic_principal_cover
     (C : Type u) [CommRing C] [Algebra R C]
     (hlocal : ∀ f : t, ∀ (N : ModuleCat.{u} R) (k : ℕ),
       (∀ x : N, (p : R) ^ k • x = 0) → ∀ i : ℕ, 0 < i →
-      ∀ a ∈ perfectoidIdeal R p hR (g * (IsLocalization.Away.sec g f.1).1),
+      ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (g * (IsLocalization.Away.sec g f.1).1),
         torCoefficientScalarEndomorphism C N i (algebraMap R C a) = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ a ∈ perfectoidIdeal R p hR g,
+      ∀ i : ℕ, 0 < i → ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N i (algebraMap R C a) = 0 :=
   perfectoidIdeal_powerTorsionTorInput_of_aic_cover R p hR hAIC
     (fun f : t => g * (IsLocalization.Away.sec g f.1).1) g
