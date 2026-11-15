@@ -1435,3 +1435,20 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回2モジュール170行＋入口2行。新規112モジュール本体7,423行・入口込み7,535行。既存追加25行を含む外枠計数は本体7,448行・入口込み7,560行。新規小監査累計751宣言、既存15宣言は別計上。次の各項の F8 の完全性と同じ四角形の射の自然性は単独検証に成功したが、本体ビルド・監査前でこの束には含めない。G4・G5 は未完、外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：同じ可換な nerve の四角形の各項へ F8 を渡す
+
+`DegreeOneProjectiveCechTupleAcyclic`（73行）：`DegreeOneProjectiveModel.perfectCechTupleSquare_acyclic` は Noether R、元の g の表示 m・全射性・中心外同型性、同じ Spec(R/I^1) と Cartesian な Arrow の射、元の有限アフィン被覆 U から、全ての n における同じ schemePerfectCechTupleSquare の全複体の完全性を返す。表示は m.cechTerm、幾何学的条件は既存の有限冪の法則、Cartesian square は既存の実際の mapCechNerve の底変換、アフィン被覆条件は同じタプル被覆の法則で供給する。中心の逆像被覆とタプル被覆の同じ等式に沿い、実際の四角形の射で移す。各項の完全性や射影表示を仮定し直さない。Čech 版と原典との対応を docstring に明記。
+
+`SchemePerfectCechTupleSquareMap`（77行）：`CechAugmentedSquare.Map.ext_components` は四つの実際の成分の一致から既存の射全体の一致。`schemePerfectCechTupleSquare_map` は left・right に検証済みの二つの係数関手の写像、base・center に恒等を持ち、restriction は同じ実際の引き戻しの自然性、scalar・center は同じ増大写像の自然性、quotient は元の係数写像の恒等性による射。
+
+`SchemePerfectCechTupleSquareFunctor`（59行）：`schemePerfectCechTupleSquare_map_id`・`…_map_comp` は同じ四つの成分の外延性と係数関手の単位・合成則による法則。`schemePerfectCechTupleSquareFunctor` は各項を同じ四角形の全複体、各射を既存の totalComplexMap に渡した SimplexCategory 上の複体の関手。単位・合成の保存にも既存の totalComplexMap_id/comp を使う。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,199・5,200ジョブ成功、小監査1・6・6宣言（計13、所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-degree-one-projective-cech-tuple-acyclic-check-2.log`・`2g-perfect-cech-tuple-square-map-check-1.log`・`2g-termwise-f8-and-square-map-native.log`、`2g-perfect-cech-tuple-square-functor-check-1.log`・`2g-perfect-cech-tuple-square-functor-native.log`、`2g-termwise-f8-square-functor-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。letI の style 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回3モジュール209行＋入口3行。基準56ea849a3からの追加ファイルを独立に再計数し、新規115モジュール本体7,632行・入口込み7,747行で一致。既存追加25行を含む外枠計数は本体7,657行・入口込み7,772行。新規小監査累計764宣言、既存15宣言は別計上。
+
+各項の完全性と同じ余単体図式の自然性がそろったが、これだけで原典の Thm 2.9 十分性や v 降下全体を完成とは呼ばない。次は実際のアフィン conerve と Frobenius の係数の自然な比較、B1 の二重 Čech の適用、実際の 2d のブローアップを保つ Noether 帰納へ接続する。G5 の模型・二つの filtered colimit への移送も残る。全体の見込み約10,000〜13,500行・外枠16,000行は不変。G4・G5 と停止点2g-2は未完。
+
+一覧：済み1／全体3（うち追加0）。
