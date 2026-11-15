@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base ccb27f384fc42eaed2df02ce035a2cabef8c29ee",
+  "verified_head": "this commit: base 42df6d66e6048b20ec46fca450c4bc281501123b",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,18 +12,16 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "kernel-step-and-restricted-unit-checkpoint.json",
-  "latest_complete_audit_declarations": 939,
+  "latest_complete_audit_checkpoint": "restricted-completed-rows-checkpoint.json",
+  "latest_complete_audit_declarations": 957,
   "working_changes_unverified": [
-    "ResolutionCandidateFunctor",
-    "ResolutionStageFunctor",
-    "RestrictedCompletedRowsTotal",
     "CosimplicialResolvedModels",
-    "RestrictionCompletionNaturality",
-    "RestrictedCompletedRows",
-    "ComplexResolutionFunctor"
+    "ComplexResolutionFunctor",
+    "ResolutionStageFunctor",
+    "ResolutionCandidateFunctor",
+    "RestrictedCompletedRowsTotal"
   ],
-  "pending_check": "bundle-050 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-051 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
