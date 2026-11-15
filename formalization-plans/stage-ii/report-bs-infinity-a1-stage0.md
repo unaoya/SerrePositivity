@@ -2384,3 +2384,41 @@ coherent 表示と全次数で一致する法則。
 検証済み全体147本9,191行・803宣言、外枠18,600行内。
 S1 の生成 coverage・extensive の判定と、S8 の全重み比較・局所同値は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8：前層の同じ全余錐の押し出し判定・中間実測（11-15）
+
+2本148行・10宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s8-presheaf-essential-1/`、source SHA 一致。
+
+```lean
+(mapJoinCocone (evaluateFunctorAt (ULift.up (nerveVertex U)))
+  (discretePresheafCocone c)).val =
+(discreteSpaceCocone (((evaluation Cᵒᵖ (Type u)).obj U).mapCocone c)).val
+
+(c : Cocone F) → IsColimit c →
+[Mono (F.map (AsSmall.up.map WalkingSpan.Hom.fst))] →
+IsColimitCone (discretePresheafCocone c)
+
+(discretePresheafCocone c).vertex = functorVertex (discretePresheaf c.pt)
+
+(d : JoinCocone (strictCoherentDiagram (F ⋙ kanDiscretePresheafFunctor C) ≫
+  kanDiagramRealization Cᵒᵖ)) → IsColimitCone d → Is0Truncated d.vertex
+```
+
+最後の型では同じ c の通常の余極限性と一脚の単射性を引数に取る。
+`DiscretePresheafPushoutCocones` は全余錐を点ごとに評価して元の集合の同じ余錐へ照合し、
+点ごとの余極限判定を適用した。`DiscretePresheafEssentialImage` の `Is0Truncated` は
+元の drafts の本質像の存在型で、指定した頂点同型で任意の余極限へ運ぶ。
+元の押し出し四角形はまだ同定していないため、その型の最終定理の完成とはしない。
+
+照合中、一般の全余錐の後合成則が既存の
+`IndCompletionsOfInfinityCategories/StrictCoconePostcomposition` にあることを確認した。
+試作した反転・帰還の重複2本は作業木から除き、この既存の宣言を直接再利用した。
+計算上限は変更していない。
+
+中間実測：検証済み全体149本9,339行・813宣言。目安9,300行を超えた。
+元の四角形への接続は現時点で200〜400行程度を見込む。
+残りの S1 の生成 coverage・extensive、S8 の一般重みの全比較・連続性・局所同値は未完。
+一般重み側の依存照合が未確定なので、全残量の確定見積もりは保留する。
+外枠18,600行は維持し、新しい一まとまりや上限超過の必要が判明したら共通の規則で止める。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
