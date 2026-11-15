@@ -17472,3 +17472,43 @@ lemma twistedArrowHomOppositePinchedEquivalence_edgewise_interval_family {K C : 
 累計255本・17,332行、実環境1,690宣言。外枠22,000行まで4,668行。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン621ファイル1,949名を照合し、異なるファイルの同名宣言0、内部も0。git diff --check通過。公式入口・公式監査は変更せず、登録候補の一覧is-w2-be-20261114-modules.jsonに1本を追加した。証跡：/private/tmp/isw2-build357.log、isw2-validation357.json、isw2-declaration-collision-scan357.json。§289の2本は0c24adfd9に保存済み。
 
 元の反対twisted Homの任意の族について、同じedgewiseLeftの指定逆とedgewiseRight・同じcoslice比較の指定逆を使う一本の式へまとめる前提計算も一時ファイルで検査中。これを元のnative射へ適用し、同じcorrected pairingと元のroofの全族を比較する工程が残る。R03h・R03d・3b-4aの完成とはしない。今回の全Kの等式は点ごとの等式を代用せずに既存の三角形を移送したものである。目標の型・範囲と外枠は維持する。
+
+## 291. 元のnative射の全interval族を同じ指定逆の一本の式へ戻す次の検査単位（2026-11-15、個別検査）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§290の次に、同じedgewiseLeftの指定逆・edgewiseRight・同じcoslice比較の指定逆を、一つの全interval族の式へ合成する。一般の反対twisted Homでの式は/private/tmp/isw2-opposite-interval-family.leanの個別検査2で終了0（名前空間Equivalenceのopenを追加して再検査）。本体のモジュールにはまだ追加しておらず、§290の検証済み255本・17,332行の数は増やさない。
+
+その式を元のstrictBETotJointSourceNativePinchedMapへ適用する型も次のとおり。新しい数学ではなく、元の既存比較射の定義と同じ指定三角形の係数移送である。元の射を別の同値へ置き換えない。モデル源の両端の定義的簡約を大きなsimpでまとめて扱うと型の照合に失敗したため、元のnative pinched射の定義からの等式hmapをrflで切り出し、その後で全族の法則を適用する形へ証明を分けた。計算上限は上げていない。
+
+以下は本体で検証済みの新規宣言ではなく、次の個別検査の型案。最後のBEへの適用は/private/tmp/isw2-native-pinched-interval-family.leanの検査4（ハンドル28748）で検査中。対象ビルド・小監査・ソースのコミットはまだであり、成功したとは記録しない。
+
+```lean
+lemma twistedArrowHomOppositePinchedEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ (twistedArrowHomSpace x y).op) :
+    intervalFamilyHom (g ≫ (twistedArrowHomOppositePinchedEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+
+lemma strictBETotJointSourceNativePinchedMap_interval_family_normalization (P : strictBETotJointHomIndex A) :
+    let x := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop))
+    let y := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+    let e := SSet.opFunctor.mapIso (eqToIso
+      (congrArg (fun b => vertexFiber (twistedArrowProjection (CAlg_R A)) b)
+        (strictBETotJointNativeHomInput_model_vertex A P)))
+    intervalFamilyHom (strictBETotJointSourceNativePinchedMap A P ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (strictBETotJointSourceNativeOppositeFiberMap A P ≫ e.hom ≫
+        (isQCatEquivalence_of_trivialKanFibration (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+```
+
+次はこの元のnative射の同じ全族を、同じcorrected pairingの全族へ戻し、§269以降の元のroofのaugmentation・評価・標的置換の全族の式と照合する。R03hの最終の全interval族の等式と、元の実射自身の弱同値性は未証明。R03dと3b-4aの残りも維持する。今回の既存構成の移送の法則を、新しい数学の完成や停止点3b-4aとは数えない。§289・§290の検証済みコードは0c24adfd9・6c1483d21に保存した。作業木に未検証のLeanは追加していない。
