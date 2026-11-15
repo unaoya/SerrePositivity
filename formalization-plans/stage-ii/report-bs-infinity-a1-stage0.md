@@ -1107,3 +1107,134 @@ def derivedGlobalSectionsReindexFunctorIso e J K hf hg hJ hK hE :
 検証済み全体51本3,148行・321宣言。外枠18,600行内。
 S6 の新しい4本（層圏同値・随伴表示・層化比較・任意前層RΓ比較）は別の対象検証中で、
 本コミットには含めない。S1・S5・S6・S8 は継続中、S7 は指示どおり後続。
+
+### S5：極限閉性と係数移送（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+```lean
+theorem sheafProperty_limitCone J hE (c : JoinCone D) (hc : IsLimitCone c)
+  (hD : ∀ k, sheafProperty J (D.app _ k)) : sheafProperty J c.vertex
+lemma IsSheaf.postcomp_of_preservesSmallLimits hF G (hG : PreservesSmallLimits G) :
+  IsSheaf J (F ≫ G)
+lemma IsSheaf.postcomp_of_equivalence hF (e : QCatEquivalence E B) : IsSheaf J (F ≫ e.hom)
+```
+最初は S4 の既存生成辺と `isLocalObject_limitCone` の合成。後二つは同じ篩錐に
+既存の極限保存を適用する係数移送の法則。S5 の安定性・層化の有限極限保存はまだ未完。
+
+### S6 対象検証の修正（11-15）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`EquivalenceAdjunction` はビルド成功。層圏への制限は層条件全体の `change` で
+既定200,000 heartbeatsの `whnf` 上限に到達。上限は変えず、次の表示の法則へ分割する。
+```lean
+lemma vertexToPresheaf_reindex f v :
+  vertexToPresheaf ((reindexPresheafFunctor f).app _ v) =
+    reindexPresheaf f (vertexToPresheaf v)
+lemma sheafProperty_reindex_of_equivalence e J K hf v (hv : sheafProperty K v) :
+  sheafProperty J ((reindexPresheafFunctor e.functor).app _ v)
+```
+最初は既存の `functorVertexMap_precomp` そのもの。後者はこの等式による書き換え。
+`fullSubcomplexLift` の証明引数にはコンパイルした頂点条件を渡し、巨大な条件を一度に展開しない。
+
+### S6・S5 再検証の結果（11-15）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`SheafSiteEquivalence` と `SheafLimitClosure` は対象ビルド成功。
+S6 の既定 `whnf` 時間切れは、小さい読み戻しの等式と明示した係数引数により解消した。
+層化比較の末尾では `s.hom` のままでは自動書き換えが合わないため、
+元の `reindexSheafFunctor_comp` を `s.hom ≫ iJ = iK ≫ t.hom` として明示して使う。
+これは既存構成の包含との可換則の再表示。5本の対象ビルドと小監査を再検証中。
+
+### S5：周囲の前層圏の安定性の回収（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+S5 の証明を、周囲の関手圏・層の零/fiber/cofiber閉性・反射の完全性に分ける。
+既存の `FunctorLoopEquivalence` と `isStable_of_loopEquivalence` をつなぐ部分：
+```lean
+theorem isStable_functorCategory (K X : SSet) [Quasicategory X] [IsStable X] :
+  IsStable ((ihom K).obj X)
+```
+`HA/StableInfinityCategories/FunctorStability.lean`。既存の零対象と有限極限、
+loop の全族の評価式と同値性を使う。点ごとの cofiber 選択を全族とみなす工程は作らない。
+S5 の証明分割であり、一覧のIDは増やさない。
+
+### S5：有限極限と零対象の持ち上げ（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+既存 `fullSubcomplex_hasLimit_of_apex` と空図式の指定極限錐を使う証明分割。
+```lean
+lemma sheafProperty_of_isTerminalVertex J hE x (hx : IsTerminalVertex x) : sheafProperty J x
+theorem sheaf_hasFiniteLimits [IsStable E] J hE : HasFiniteLimits (SheafCat J E)
+theorem sheaf_hasZeroVertex [IsStable E] J hE : HasZeroVertex (SheafCat J E)
+```
+始対象性の反映は、既存の全頂点の延長則を同じ境界へ適用する法則として分ける。
+```lean
+lemma fullSubcomplexOnVertices_isInitialVertex_of_image P x
+  (hx : IsInitialVertex x.val) : IsInitialVertex x
+```
+新しい零対象の選択を仮定せず、周囲の元の零頂点を使う。各補題は200行未満。
+S5 の fiber/cofiber、loop の制限、安定性と反射の有限極限保存は後続。
+
+S6 の `SheafificationSiteComparison` は対象ビルド成功。RΓ 比較の `.postcomp` 直前の
+改行が Lean の field notation の構文エラーになったため修正した。
+次は S6・極限閉性の5本を先に対象ビルド・小監査し、その後 S5 の持ち上げ3本を検証する。
+双方とも同じ鍵の間の検証のみで、編集は鍵を取る前に済ませる。
+
+### S5：係数の同値を層圏へ制限（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+loop の係数同値を層圏へ制限するため、元の係数同値についての移送を分ける。
+```lean
+lemma vertexToPresheaf_postcomp G v :
+  vertexToPresheaf (((ihom (presheafShape C)).map G).app _ v) = vertexToPresheaf v ≫ G
+lemma isSheaf_postcomp_equivalence_iff J (e : QCatEquivalence E B) F :
+  IsSheaf J (F ≫ e.hom) ↔ IsSheaf J F
+def postcomposeSheafFunctor J (e : QCatEquivalence E B) : SheafCat J E ⟶ SheafCat J B
+lemma postcomposeSheafFunctor_comp J e :
+  postcomposeSheafFunctor J e ≫ sheafInclusion J =
+    sheafInclusion J ≫ (ihom (presheafShape C)).map e.hom
+theorem postcomposeSheafFunctor_isQCatEquivalence J e :
+  IsQCatEquivalence (postcomposeSheafFunctor J e)
+```
+元の全後合成を既存の全部分圏の同値判定へ入れる法則。各頂点での所属の計算は
+`sheafProperty_postcomp_equivalence_iff` に分ける（200行未満）。
+S5 の loop の証明分割であり、S7 の忘却・層化の単位条件には使わない。
+
+### S5：loop 図式の所属の反映（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+元の全部分複体への制限の法則：
+```lean
+lemma fullSubcomplexOnVertices_isZeroVertex_of_image P x
+  (hx : IsZeroVertex x.val) : IsZeroVertex x
+lemma fullSubcomplexOnVertices_isPullbackSquare_of_image P R
+  (hR : IsPullbackSquare (R ≫ (fullSubcomplexOnVertices X P).ι)) : IsPullbackSquare R
+lemma isLoopDiagramVertex_of_fullSubcomplex P v
+  (hv : IsLoopDiagramVertex (((ihom square).map inclusion).app _ v)) : IsLoopDiagramVertex v
+```
+既存の同じ錐の反映を用いる。最後は零角二つと引き戻しの三条件への分割。
+各補題は200行未満。持ち上げた全 loop 族の頂点条件の確認で使う。
+
+### S6 全関手比較・S5 極限閉性の検証済みの区切り（11-15）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`/tmp/is-w1/s6-s5-sequence.log` の前半：対象5本279行、7,383 jobs成功。
+`/tmp/is-w1/sheaf-site-equivalence/target-audit-result.json`：25宣言、標準三公理のみ。
+計算上限は変更なし。検証済み全体56本3,427行・346宣言。
+
+S6 は層条件・層圏・層化の全関手・任意の前層の全 RΓ の比較まで検証済み。
+指定単位との照合と、大きい site の小さい模型への適用は残す。S6 完成とは数えない。
+S5 は局所対象の極限閉性と係数移送まで検証済み。
+
+後半の S5 は `FunctorStability`・`FullSubcomplexInitialReflection` がビルド成功。
+`SheafFiniteLimits` の空頂点の除去で `simpa` の型不一致が一つ残ったため、
+空部分複体の所属の証明を直接 `False.elim` に渡す形へ直して再検証する。
+この3本と係数同値・loop条件反映の2本は未検証で、コミットに含めない。
