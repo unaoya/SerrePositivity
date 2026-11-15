@@ -1702,3 +1702,5 @@ public import SerrePositivity.AlgebraicGeometry.PairOpenCoverPullback
 public import SerrePositivity.AlgebraicGeometry.DegreeOneStandardOpen
 public import SerrePositivity.AlgebraicGeometry.SegreProjectivePullback
 public import SerrePositivity.AlgebraicGeometry.SegreProjectiveStructureMap
+public import SerrePositivity.AlgebraicGeometry.FiniteFiberPowerSucc
+public import SerrePositivity.AlgebraicGeometry.FiniteFiberPowerUnit

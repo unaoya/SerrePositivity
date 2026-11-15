@@ -756,3 +756,28 @@ S04 の有限冪の射影の法則の分割（着手前、既存の有限 wide p
 今回4モジュール284行＋入口4行。2g-2 本体3,624行・入口込み3,679行、小監査410宣言・標準三公理のみ。Segre の大域のファイバー積と元の構造射の比較まで到達。有限ファイバー冪の射影表示、G4、G5 は未完。`FiniteFiberPowerSucc.lean` の58行の下書きは単独検証まで成功したが、本体の対象ビルド・小監査前なので今回のコミットに含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の有限冪の単位の法則の分割（着手前、既存の wide pullback の単位の内数、40〜90行）：`finiteFiberPowerZeroIso f` は、Fin 1 で添字づけた f:X→S の一個の wide pullback と X の同型。`finiteFiberPowerZeroIso_hom_base` は、その射影の同型と f の合成が同じ base に等しいこと。既存の π・lift の法則と Fin 1 の一意性だけを使う。有限冪の表示の帰納の最初を、既存の Čech nerve の零次の同じ対象へ合わせる法則である。
+
+
+S04 の有限な次数一表示の証人の束ね直し（着手前、既存の表示と係数移送の内数、80〜180行）：`DegreeOneProjectiveModel f` は、有限で順序のある添字、実際の R 代数 A、次数成分 G、次数一の全射評価、Y≅Proj G の同型、同型が元の射 f:Y→Spec R を保つ式を一つにまとめるデータ。存在を仮定する新しい命題を最終定理へ足さず、既に作った Rees・Segre の実際の証人を渡すための束ね直しである。`degreeOneProjectiveModelOfProj` は同じ Proj の表示の証人、`DegreeOneProjectiveModel.ofIso` は元の同型による移送の法則。後続で実際の pullback と有限冪にこの同じ表示を帰納する。多項式環上の作用・有限加群性・irrelevant ideal の条件は、証人の全射評価から導き、追加の仮定として残さない。
+
+
+S04 の表示の pullback での合成則（着手前、既存の Segre の比較と表示の移送の内数、100〜220行）：`DegreeOneProjectiveModel.pullback` は、元の二つの射 f:X→Spec R・g:Y→Spec R の有限な次数一表示の証人から、実際の `pullback.fst f g ≫ f` の同じ種類の証人を返す。座標環は既に作った SegreCoordinateRing、次数分解・全射評価・大域の Cartesian 四角形も既存のもの。二つの同型を通して同じ図式を移送し、基底への射は構造射の合成則で照合する。添字の有限積に順序を選ぶだけで、元の環や射に条件を追加しない。この合成則を既存の有限冪の単位・後続段の法則へ渡す。
+
+
+S04 の表示から 2f の係数構造への移送の法則の分割（着手前、既存の評価とスカラー移送の内数、80〜180行）：`degreeOnePolynomialAlgebra a` は元の評価による同じ多項式作用。`degreeOnePolynomial_scalarTower` は R 作用との塔、`degreeOnePolynomial_finite a hs` は全射評価からの有限加群性、`degreeOnePolynomial_gradedSMul G a ha` は次数を保つ作用。`degreeOne_projective_cech_data` はこれらと前記の irrelevant ideal の条件を同じ評価について同時に返す。既存の Rees の計算の一般形として、モデルの証人の全射性から導き、2f の入力を仮定に置き換えない。
+
+
+## G3・S04：既存の有限ファイバー冪の単位と後続段の四角形
+
+`FiniteFiberPowerSucc`（58行）：`isPullback_finiteFiberPowerSucc` は、既存の n+2 個の wide pullback の、末尾の n+1 個への lift と先頭への π が、同じ S 上の Cartesian 四角形になること。既存の lift・π・base の式と普遍性で証明し、新しい再帰的な別のファイバー冪を作っていない。
+
+`FiniteFiberPowerUnit`（39行）：`finiteFiberPowerZeroIso` は Fin 1 で添字づけた一個の冪と元の X の同型。`finiteFiberPowerZeroIso_hom_base` は同じ基底への射を保つ式。
+
+単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,126ジョブ、小監査12宣言（3・9）・標準三公理のみ、終了状態0。一般の有限極限を持つ圏での普遍性の法則であり、スキームに余分な性質を仮定しない。既定の透明性・資源制限で通る。追加公理・sorry・既存の型変更・200行超の宣言なし。ログ `2g-finite-fiber-power-succ-check-2.log`・`2g-finite-fiber-power-unit-check.log`・`2g-finite-fiber-powers-native.log`・`2g-finite-fiber-powers-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回2モジュール97行＋入口2行。2g-2 本体3,721行・入口込み3,778行、小監査422宣言・標準三公理のみ。有限冪の次数一表示の証人の帰納・2f への係数構造の接続と G4・G5 は未完。表示の証人とその pullback での合成、係数構造の一般形は未検証の下書きとして drafts に残し、今回のコミットには含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
