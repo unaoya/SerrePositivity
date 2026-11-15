@@ -15351,3 +15351,15 @@ theorem strictBETotJointSourceNativePinchedMap_interval_family
 使用する既存の入口：RoofPrefixFamilyTriangle.native_family_eq_roof_arrow（一般の同じ宇宙の相対圏での全roof族）、CoherentLocalizationComparison.pinchedEquivalence_homとtriangle_naturality、pinchedEndpointEquivalence_family、今回のtwistedArrowHomPinchedEquivalence_cosliceとtwistedArrowHomOppositePinchedEquivalence_edgewise、元のstrictBETotJointSourceFiberPairingIso_postcomp（同じ底のpathの保存）。全族の評価の等式を得た後はintervalFamilyHom_eq_imp_homotopyとpinched・区間比較の弱同値性で、元の実射自身の弱同値性に戻す。以降も元の固定始域の全FunctorIsoへの正規化を省かない。
 
 §255〜256のコードは3693013ba、§257〜259のコードは7edd92b76に保存済み。検証済み196本・12,815行／外枠22,000行。停止点3b-4aの完成報告ではない。
+
+## 261. B4′の取り込み前採取を開始（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03hは未完了。B4′もまだ完了ではない。
+
+検証済みLeanは670ef9d75までの履歴に保存済み。B4′開始時の作業木はクリーン。基準391b2a0d2から追加・変更されたLean（drafts除外、存在するソース）は197本。原ソースを/private/tmp/isw2-b4prime-20261115/original-sources.tar.gz、一覧を同ディレクトリfiles.json、元HEADとmainの記録をprovenance.jsonへ保存した。元HEADは670ef9d75、開始時mainはb29addabd。公式指示はmainのcitation-attributes.md §15とbulk-b3prime/B4/README.mdを読んだ。
+
+最初の三本と次の八本、計11本のcollectと指定rewrite.pyによるプレビューが成功。確認済みのreview.jsonは全て空、追加import0、現ソースとの差分0本。自分の検証済み196モジュールのパスにはmodule-map.jsonとの一致0。これは残りの短名束縛の確認の代用にはせず、残りも採取する。
+
+残りは8本以下ずつの組で採取・プレビューする単一の実行ハンドル41644へまとめた。各組で--class impl --wait 3600、鍵取得後280秒guard。前の組の終了・鍵返却の後に次の組を一度だけ出し、失敗や保留で停止する。複数の整理券を同時に出さず、同じ採取の時間切れを取り直すループも使わない。現在は第2組を実行中。mainのmerge・プレビュー反映・取り込み後の対象ビルドと小監査はまだ。古い索引を取り込み後のソースへ流用しない。
+
+R03hの並行する紙と一時検査：元のfiber上の同じroof図式・augmentation・評価、同じ全単体の二列図式、元のAsSmall比較を通した実roof比較とRoofPrefix.familyMapの厳密な等式を一時ファイル/private/tmp/isw2-rooffiberprefix.leanで検査し、ハンドル47381・終了0。既存依存RoofPrefixColumnRoofの326対象ビルド7,211 jobsも成功（ハンドル57972・終了0）。新規本体モジュールを追加・コミットした検収ではないため、検証済み196本・12,815行の数は増やさない。B4′の参照採取中の原ソースも変更していない。B4′完了後にこの同じ型の法則を本体で検査し直し、元のnative pairingが保存する指定された底のpathとの全族照合へ戻る。
