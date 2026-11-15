@@ -1293,3 +1293,20 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール78行＋入口1行。基準56ea849a3からの追加ファイルを独立に数え直して、新規100モジュール本体6,637行・入口込み6,737行で一致した。既存追加25行を含む外枠計数は本体6,662行・入口込み6,762行。新規小監査累計678宣言、既存15宣言は別計上。次は実際の有限ファイバー冪の全射性・中心外同型性、閉中心への自然な底変換、同じ図式の B1 への接続。二重 Čech の判定法や Noether 帰納、G5 はまだ完成していない。外枠16,000行は不変、停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+実際の有限ファイバー冪の幾何学的入力の法則（着手前、G4 の同じ F8 の入力の底変換の内数、85〜180行）：`isPullback_restrict_left_isIso H W` は H:IsPullback a b f g と g∣W の同型性から a∣f⁻¹W の同型性を、既存の H.isPullback_resLE に沿う底変換で返す。`finiteFiberPowerBase_surjective f n` は元の f の全射性から同じ WidePullback.base の全射性を、実際の対角 lift と base の合成が f であることから返す。`finiteFiberPowerBase_restrict_isIso f W n` は f∣W の同型性から同じ base∣W の同型性を、既存の一個の冪の同型と先頭・末尾の Cartesian な帰納で返す。Noether 性・射影性は不要で、G3 の表示と同じ実際の有限冪を保つ。
+
+
+閉中心と実際の nerve の底変換の法則（着手前、既存の幾何的 Čech nerve の底変換の内数、65〜155行）：`isPullback_cechNerve_base F H n` は既存の Arrow の射 F:f→g と H:IsPullback F.left f.hom g.hom F.right から、実際の Arrow.mapCechNerve F の n 次と二つの既存の WidePullback.base、F.right が Cartesian square であることを返す。既存の mapCechNerve の射そのものを使い、その自然性も既存の NatTrans のまま保持する。各点の全単射や無関係な各次数の表示の同型ではなく、元の H と同じ wide pullback の普遍性から示す。閉中心の基底変更への特殊化で、同じ係数の四角形と中心の nerve の項を照合する。
+
+
+## G4：同じ有限ファイバー冪の全射性・中心外同型性
+
+`FiniteFiberPowerGeometricInputs`（72行）の宣言：`isPullback_restrict_left_isIso` は元の Cartesian square の右辺の W 上の同型性から、左辺の f⁻¹W 上の同型性を既存の isPullback_resLE で供給する。`finiteFiberPowerBase_surjective` は対角 lift と同じ base の合成が元の f に等しいことと Surjective.of_comp による全射性。`finiteFiberPowerBase_restrict_isIso` は元の f∣W の同型性から、既存の一個の冪の同型と先頭・末尾の Cartesian な帰納で、同じ base∣W の同型性。全て G3 の表示と同じ有限 wide pullback の base を使い、Noether 性・射影性は仮定していない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,186ジョブ成功、小監査3宣言・標準三公理のみ、終了状態0。ログ `2g-finite-fiber-power-geometric-inputs-check-2.log`・`2g-finite-fiber-power-geometric-inputs-native.log`・`2g-finite-fiber-power-geometric-inputs-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール72行＋入口1行。新規101モジュール本体6,709行・入口込み6,810行。既存追加25行を含む外枠計数は本体6,734行・入口込み6,835行。新規小監査累計681宣言、既存15宣言は別計上。次の実際の mapCechNerve の Cartesian な底変換の法則は drafts で検証中であり、本体に含めない。閉中心と同じ図式の係数の照合・二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
