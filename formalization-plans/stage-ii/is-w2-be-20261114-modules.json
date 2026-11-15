@@ -231,5 +231,9 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectedUnitArrow",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitFiber",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeLiftUnit",
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CosliceTwistedHomVertexEdge"
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CosliceTwistedHomVertexEdge",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.VertexFiberEdgeProjectedArrow",
+  "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.ArrowMiddleIdentity",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexEdgeClasses",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexIsoOfArrowEq"
 ]
