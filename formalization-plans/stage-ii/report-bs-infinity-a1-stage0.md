@@ -2596,3 +2596,26 @@ joinInr (nerve C) (nerve D) ≫ nerveJoinComparison C D =
 左右の射列の復元、twisted arrow との両端射影を保持する同型、元の固定 Yoneda の全族比較は残る。
 S1 と S8 は引き続き未完成。S7 は後続とし、R2・R3 は再開しない。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：同じ切断の復元
+
+`NerveJoinCut`（63行8宣言）の対象ビルド・小監査が成功した。
+標準三公理のみ、source SHA 一致。記録：`/tmp/is-w1/s8-nerve-join-cut-2/`。
+
+```lean
+nerveJoinCollapseLeft C D : CategoryTheory.Join C D ⥤ WithInitial D
+nerveJoinCut s := initialNerveCut (s ⋙ nerveJoinCollapseLeft C D)
+nerveJoinCut (nerveJoinChain s) = s.1.val
+```
+
+最初の関手は既存 `Join.mkFunctor` に左の定値関手・右の包含・始対象の射を入れた特殊化。
+切断の等式は既存 `Join.cut_ext` と `initialNerve_lt_cut_iff` から出した。
+新しい独立の定理の ID は足していない。検証済み全体165本10,773行・935宣言。
+
+次の接続の注意：edgewise の始域は標準単体の join なので、既存の
+`joinStdSimplexIso` と `stdSimplex.isoNerve` を使う経路を先に照合する。
+一般の `nerveJoinComparison` の逆比較を全て作ることが必要かは、その照合で判断する。
+元の Hom の元の圏から twisted arrow への比較と、固定した Yoneda への全族比較は未完成。
+S1・S8 は未完成、外枠18,600行を維持する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
