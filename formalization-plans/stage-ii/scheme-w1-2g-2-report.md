@@ -846,3 +846,22 @@ G4 の忠実平坦なアフィン射と Frobenius 順極限（着手前、既承
 今回1モジュール58行＋入口1行。2g-2 本体4,128行・入口込み4,193行、小監査501宣言・標準三公理のみ。G4 の同型移送の最初の法則までで、fppf の完全性・射影四角形からの Noether 帰納・二重 Čech の判定、G5 は未完。忠実平坦な場合の元の conerve と Frobenius 反復系の余極限の完全性の下書きは単独検証まで成功し、任意の底変換・標数の押し出しを追加して再検証中。これらは今回のコミットに含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+忠実平坦な底変換の係数移送の法則の補足（着手前、上の同じ束の内数、10〜30行）：`faithfullyFlat_mkUnder` は、元の R 代数 S の忠実平坦性を、同じ algebraMap から作った mkUnder R S の加群構造へ移す。`toAlgebra_algebraMap` による同じ代数構造の等式を使い、テンソル積の通常の加群構造と Under の射から復元した構造を照合する。新しい平坦性の仮定や存在は追加しない。
+
+
+G4 の共通細分の cone の完全性の法則（着手前、既存の cone の準同型性と被覆比較の内数、80〜180行）：`cechRefinementCone_acyclic_of_quasiIso` は、非負次数の複体の実際の射 f:A→B と全次数の QuasiIsoAt f q から、既存の cechRefinementCone A B f の Acyclic を返す。既存の cechRefinementCone_cycle_boundary_of_homology と cechCycles_boundary_of_homology_injective を使い、零次の単射性と正次数の完全性を揃える。基底環と加群の宇宙は独立。これは既存の cone の完全性から準同型性を得る法則の逆向きで、導来関手の層の H との比較を追加しない。後続で実際の細分の cochain map と可換性を持つ CechAugmentedSquare.Map を使い、F8 の全複体の被覆による比較へ接続する。H の同型だけから四角形の可換性を仮定するものではない。
+
+
+## G4：忠実平坦なアフィン射と、その任意の底変換の Frobenius 反復系
+
+`AffineFrobeniusCechExact`（103行）：`affineRingCechExact_of_faithfullyFlat` は B1 の底変換による反映と恒等射での切断から、元の増大 conerve の完全性を得る。`faithfullyFlat_mkUnder` は同じ algebraMap から Under が復元する加群構造への忠実平坦性の移送。`affineRingCechExact_baseChange_of_faithfullyFlat` は任意の A 代数への底変換後の完全性で、底変換先の平坦性を仮定しない。`underPrimeCast_eq_zero` は元の基底の標数条件を押し出す式。
+
+`frobeniusArrowStep` は既存の二つの Frobenius 環写像を元の矢印の可換な自己射にする。`frobeniusArrowDiagram` はその同じ矢印の反復系。`frobeniusArrowSmallDiagram` は同じ自然数系を AsSmall の同値で環と同じ宇宙へ移す。`isCechExact_frobeniusArrowColimit_of_faithfullyFlat` は実際の Arrow の余極限の完全性を B1 の filtered 余極限から得る。`isCechExact_frobeniusArrowBaseChangeColimit_of_faithfullyFlat` は任意の底変換後の同じ反復系の余極限の完全性。
+
+単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,151ジョブ、小監査12宣言・標準三公理のみ、終了状態0。通常のテンソル積と Under の構造射から復元した加群構造は toAlgebra_algebraMap で照合した。元の忠実平坦性を各段で使い、一般の Frobenius の平坦性は仮定していない。標数条件は元の基底の p=0 だけから供給する。追加公理・sorry・既存の型変更・透明性や資源制限の変更・200行超の宣言なし。ログ `2g-affine-frobenius-cech-exact-check-5.log`・`2g-affine-frobenius-cech-native.log`・`2g-affine-frobenius-cech-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回1モジュール103行＋入口1行。2g-2 本体4,231行・入口込み4,297行、小監査513宣言・標準三公理のみ。完全性の出口はこの実際の反復系の Arrow の colimit であり、最終型をこれに置き換えるものではない。各次数の実際の Frobenius 係数との自然な比較、一般の fppf の二重 Čech、射影四角形からの Noether 帰納と G5 は未完。cone の準同型性からの完全性の下書きはまだ未検証で、今回のコミットには含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。

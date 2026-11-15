@@ -1712,3 +1712,4 @@ public import SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModelFiberPow
 public import SerrePositivity.AlgebraicGeometry.ReesFiniteFiberPowerModel
 public import SerrePositivity.AlgebraicGeometry.BlowupAffineProjectiveModel
 public import SerrePositivity.AlgebraicGeometry.SchemeStructurePerfectCechIso
+public import SerrePositivity.AlgebraicGeometry.AffineFrobeniusCechExact
