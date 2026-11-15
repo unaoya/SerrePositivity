@@ -1,0 +1,2 @@
+✔ [1164/1164] Built SerrePositivity.InfinityCategories.HA.Monads.OrdinalIntervalLaws (1.5s)
+Build completed successfully (1164 jobs).

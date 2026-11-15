@@ -10836,3 +10836,231 @@ sorryAx・追加公理はない。監査入力・根・全出力と対象ビル�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,004行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §81 G01：逆区間表示の厳密な往復と、全水平合成の対象の法則（11-15）
+
+### 81.1 実装と残る検収
+
+§80の実区間同値の逆を使う箇所について、選択した逆関手の対象・往復を照合した。
+さらに、walking adjunctionの二対象・四Hom圏・八つの水平合成を同じ型族に組み合わせた。
+今回の追加は次の2ファイル401行・明示した根33（構成子2件は別）。
+累計 **18ファイル2,405行・明示宣言188**。一覧の済みは0のまま。
+
+| ファイル（InfinityCategories/HA/Monads/） | 行数 | 今回の検収 |
+|---|---:|---|
+| OrdinalIntervalLaws.lean | 182 | 増大単体圏・区間圏の同型の剛性、実区間同値の往復の関手等式、逆・混合合成の対象の個数と正準の対象等式 |
+| WalkingAdjunctionComposition.lean | 219 | 二対象・四Hom圏・八実双関手、重みの単射性と加法則、全対象の結合則・左右単位則 |
+| **追加** | **401** | G01の同じ構成と法則の分割。新しい一覧IDは加えない |
+
+一般の同値の逆を使っていることから対象の一致を推測せず、
+実際の単位・余単位と、同型の射がeqToHomになることから関手そのものの往復等式を証明した。
+逆区間表示の対象の個数は元の区間の次元であり、二つの混合合成の個数は
+X.obj.len + Y.obj.len + 1になる。全ての逆は§80の構成済みの同値から来ている。
+
+水平合成の引数は「先に使う射、後に使う射」の順。
+Riehl–Verityのwalking adjunctionの水平反対を採る規約で、
+Hom(plus,plus)=Δ₊、Hom(minus,minus)=Δ₊ᵒᵖ、
+Hom(plus,minus)=最大元保存、Hom(minus,plus)=最小元保存とした。
+これによりplusの自己Homの順序和を既存NativeMonadの積と合わせる。
+これは向きの規約であり、対象の型を取り替えたというだけで元の随伴との比較を済みとはしない。
+
+四Homの共通の重みは順に点の個数、反対の点の個数、次元、次元+1。
+重みが対象を区別し、全水平合成の重みが加法になることから、対象の全16組の結合則と
+左右単位則を同じ型で証明した。ただし**射についての結合則・単位則は未完**。
+EnrichedCategoryのinstanceを宣言せず、豊穣walking adjunctionの完成とは数えない。
+元のQCatAdjunctionからの全拡張、F≫Uとの比較、元の単位・余単位との照合も残る。
+
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。完成の引用属性はまだ登録していない。
+200行を超える宣言・証明はない（219行はファイル全体）。
+
+### 81.2 同じ構成の法則の型
+
+以下はnamespace SerrePositivity.InfinityCategories.HA.Monads内。
+WalkingAdjunctionPointとその構成子は同じG01のwalking adjunctionの添字。
+
+```lean
+@[simp] lemma augmentedOrdinalOfCard_card (X : AugmentedSimplexCategory) :
+    augmentedOrdinalOfCard (augmentedOrdinalCard X) = X
+
+lemma augmentedOrdinalCard_injective : Function.Injective augmentedOrdinalCard
+
+lemma augmentedIso_obj_eq {X Y : AugmentedSimplexCategory} (e : X ≅ Y) : X = Y
+
+lemma augmentedIso_hom_eqToHom {X Y : AugmentedSimplexCategory} (e : X ≅ Y) :
+    e.hom = eqToHom (augmentedIso_obj_eq e)
+
+lemma augmentedOpIso_obj_eq {X Y : AugmentedSimplexCategoryᵒᵖ} (e : X ≅ Y) : X = Y
+
+lemma augmentedOpIso_hom_eqToHom {X Y : AugmentedSimplexCategoryᵒᵖ} (e : X ≅ Y) :
+    e.hom = eqToHom (augmentedOpIso_obj_eq e)
+
+lemma intervalIso_obj_eq {X Y : IntervalSimplexCategory} (e : X ≅ Y) : X = Y
+
+lemma intervalIso_hom_eqToHom {X Y : IntervalSimplexCategory} (e : X ≅ Y) :
+    e.hom = eqToHom (intervalIso_obj_eq e)
+
+lemma ordinalInterval_source_roundtrip :
+    ordinalIntervalRepresentation ⋙ ordinalIntervalEquivalence.inverse =
+      𝟭 AugmentedSimplexCategoryᵒᵖ
+
+lemma ordinalInterval_target_roundtrip :
+    ordinalIntervalEquivalence.inverse ⋙ ordinalIntervalRepresentation =
+      𝟭 IntervalSimplexCategory
+
+lemma ordinalInterval_inverse_card (X : IntervalSimplexCategory) :
+    augmentedOrdinalCard (ordinalIntervalEquivalence.inverse.obj X).unop = X.obj.len
+
+lemma ordinalInterval_inverse_obj (X : IntervalSimplexCategory) :
+    ordinalIntervalEquivalence.inverse.obj X = op (augmentedOrdinalOfCard X.obj.len)
+
+lemma mixedBottomTopOrdinal_card (X : BottomSimplexCategory) (Y : TopSimplexCategory) :
+    augmentedOrdinalCard (mixedBottomTopOrdinal.obj (X, Y)).unop =
+      X.obj.len + Y.obj.len + 1
+
+lemma mixedBottomTopOrdinal_obj (X : BottomSimplexCategory) (Y : TopSimplexCategory) :
+    mixedBottomTopOrdinal.obj (X, Y) =
+      op (augmentedOrdinalOfCard (X.obj.len + Y.obj.len + 1))
+
+lemma mixedTopBottomOrdinal_card (X : TopSimplexCategory) (Y : BottomSimplexCategory) :
+    augmentedOrdinalCard (mixedTopBottomOrdinal.obj (X, Y)) =
+      X.obj.len + Y.obj.len + 1
+
+lemma mixedTopBottomOrdinal_obj (X : TopSimplexCategory) (Y : BottomSimplexCategory) :
+    mixedTopBottomOrdinal.obj (X, Y) =
+      augmentedOrdinalOfCard (X.obj.len + Y.obj.len + 1)
+
+inductive WalkingAdjunctionPoint where
+  | plus
+  | minus
+
+def walkingAdjunctionHom : WalkingAdjunctionPoint → WalkingAdjunctionPoint → Type
+  | .plus, .plus => AugmentedSimplexCategory
+  | .plus, .minus => TopSimplexCategory
+  | .minus, .plus => BottomSimplexCategory
+  | .minus, .minus => AugmentedSimplexCategoryᵒᵖ
+
+/-- 概要：四つのHomはそれぞれ構成済みの実圏。
+方針：対象を場合分けする。規約：Homの圏構造を引数の仮定にしない。
+使われ方：Riehl–Verity Remark 3.3.8 の全単体のnerve。 -/
+instance walkingAdjunctionHom_category (X Y : WalkingAdjunctionPoint) :
+    Category (walkingAdjunctionHom X Y)
+
+instance walkingAdjunctionHom_category (X Y : WalkingAdjunctionPoint) :
+    Category (walkingAdjunctionHom X Y)
+
+def walkingAdjunctionHorizontal : (X Y Z : WalkingAdjunctionPoint) →
+    walkingAdjunctionHom X Y × walkingAdjunctionHom Y Z ⥤ walkingAdjunctionHom X Z
+  | .plus, .plus, .plus => tensor AugmentedSimplexCategory
+  | .plus, .plus, .minus => topOrdinalAction
+  | .plus, .minus, .plus => mixedTopBottomOrdinal
+  | .plus, .minus, .minus => topOppositeOrdinalAction
+  | .minus, .plus, .plus => bottomOrdinalAction
+  | .minus, .plus, .minus => mixedBottomTopOrdinal
+  | .minus, .minus, .plus => bottomOppositeOrdinalAction
+  | .minus, .minus, .minus =>
+      (prodOpEquiv (C
+
+def walkingAdjunctionIdentity : (X : WalkingAdjunctionPoint) → walkingAdjunctionHom X X
+  | .plus => WithInitial.star
+  | .minus => op WithInitial.star
+
+/-- 概要：四つのHomの対象を共通の非負整数の重みで表す。
+方針：最小元保存側だけ次元に1を加える。規約：左随伴の生成射の重みは0。
+使われ方：Riehl–Verity Remark 3.3.8 の全対象の結合則。 -/
+def walkingAdjunctionWeight : (X Y : WalkingAdjunctionPoint) → walkingAdjunctionHom X Y → ℕ
+  | .plus, .plus, f => augmentedOrdinalCard f
+  | .plus, .minus, f => f.obj.len
+  | .minus, .plus, f => f.obj.len + 1
+  | .minus, .minus, f => augmentedOrdinalCard f.unop
+
+/-- 概要：各Homの重みは対象を区別する。
+方針：増大単体圏の個数と単体圏の次元の単射性を使う。
+規約：同じ始点・終点の対象同士。使われ方：Riehl–Verity Remark 3.3.8 の骨格。 -/
+lemma walkingAdjunctionWeight_injective (X Y : WalkingAdjunctionPoint) :
+    Function.Injective (walkingAdjunctionWeight X Y)
+
+def walkingAdjunctionWeight : (X Y : WalkingAdjunctionPoint) → walkingAdjunctionHom X Y → ℕ
+  | .plus, .plus, f => augmentedOrdinalCard f
+  | .plus, .minus, f => f.obj.len
+  | .minus, .plus, f => f.obj.len + 1
+  | .minus, .minus, f => augmentedOrdinalCard f.unop
+
+/-- 概要：各Homの重みは対象を区別する。
+方針：増大単体圏の個数と単体圏の次元の単射性を使う。
+規約：同じ始点・終点の対象同士。使われ方：Riehl–Verity Remark 3.3.8 の骨格。 -/
+lemma walkingAdjunctionWeight_injective (X Y : WalkingAdjunctionPoint) :
+    Function.Injective (walkingAdjunctionWeight X Y)
+
+lemma walkingAdjunctionWeight_injective (X Y : WalkingAdjunctionPoint) :
+    Function.Injective (walkingAdjunctionWeight X Y)
+
+lemma augmentedOrdinalCard_tensor (X Y : AugmentedSimplexCategory) :
+    augmentedOrdinalCard (X ⊗ Y) = augmentedOrdinalCard X + augmentedOrdinalCard Y
+
+lemma topOrdinalAction_len (a : AugmentedSimplexCategory) (X : TopSimplexCategory) :
+    (topOrdinalAction.obj (a, X)).obj.len = augmentedOrdinalCard a + X.obj.len
+
+lemma bottomOrdinalAction_len (X : BottomSimplexCategory) (a : AugmentedSimplexCategory) :
+    (bottomOrdinalAction.obj (X, a)).obj.len = X.obj.len + augmentedOrdinalCard a
+
+lemma bottomOppositeOrdinalAction_len (a : AugmentedSimplexCategoryᵒᵖ)
+    (X : BottomSimplexCategory) :
+    (bottomOppositeOrdinalAction.obj (a, X)).obj.len =
+      augmentedOrdinalCard a.unop + X.obj.len
+
+lemma topOppositeOrdinalAction_len (X : TopSimplexCategory)
+    (a : AugmentedSimplexCategoryᵒᵖ) :
+    (topOppositeOrdinalAction.obj (X, a)).obj.len =
+      X.obj.len + augmentedOrdinalCard a.unop
+
+lemma walkingAdjunctionHorizontal_weight (X Y Z : WalkingAdjunctionPoint)
+    (f : walkingAdjunctionHom X Y) (g : walkingAdjunctionHom Y Z) :
+    walkingAdjunctionWeight X Z ((walkingAdjunctionHorizontal X Y Z).obj (f, g)) =
+      walkingAdjunctionWeight X Y f + walkingAdjunctionWeight Y Z g
+
+lemma walkingAdjunctionIdentity_weight (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionWeight X X (walkingAdjunctionIdentity X) = 0
+
+lemma walkingAdjunctionHorizontal_obj_assoc (W X Y Z : WalkingAdjunctionPoint)
+    (f : walkingAdjunctionHom W X) (g : walkingAdjunctionHom X Y)
+    (h : walkingAdjunctionHom Y Z) :
+    (walkingAdjunctionHorizontal W Y Z).obj
+        ((walkingAdjunctionHorizontal W X Y).obj (f, g), h) =
+      (walkingAdjunctionHorizontal W X Z).obj
+        (f, (walkingAdjunctionHorizontal X Y Z).obj (g, h))
+
+lemma walkingAdjunctionHorizontal_obj_id_left (X Y : WalkingAdjunctionPoint)
+    (f : walkingAdjunctionHom X Y) :
+    (walkingAdjunctionHorizontal X X Y).obj (walkingAdjunctionIdentity X, f) = f
+
+lemma walkingAdjunctionHorizontal_obj_id_right (X Y : WalkingAdjunctionPoint)
+    (f : walkingAdjunctionHom X Y) :
+    (walkingAdjunctionHorizontal X Y Y).obj (f, walkingAdjunctionIdentity Y) = f
+```
+
+### 81.3 対象ビルドと小さい監査
+
+全てwith_build_lock.sh --class impl --wait 3600を使った短いimpl枠。
+最初のOrdinalIntervalLawsの対象ビルドではレコードの構文と反対射の簡約で失敗し、
+修正後、セッション60228の最大280秒枠で最終 **G12_LAWS_BUILD_EXIT=0**、警告なし。
+同じ枠の16根の監査も終了0、入力名・出力名一致、標準公理のみ。exitで終了0まで確認した。
+
+続くセッション93781も最大280秒枠で、対象は
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionComposition:olean。
+順序和の実定義への帰着と空の場合の加法の簡約を明示して修正し、
+最終 **G12_COMPOSITION_BUILD_EXIT=0**、警告なし（1253 jobs）。
+二つの新設ファイルの33根にWalkingAdjunctionPointの構成子2件を加えた35件の
+小さい監査は **G12_COMPOSITION_AUDIT_EXIT=0**。
+入力35名と出力35名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。exitで外側の終了0も確認した。
+監査入力・根・全出力と対象ビルドログは
+[g12-composition-audit-2026-11-15/](g12-composition-audit-2026-11-15/)に保存した。
+現在、自分の生きたビルド・監査・整理券はない。
+
+既存の16ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,405行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
