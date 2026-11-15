@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "037342553",
+  "verified_head": "this commit: base fcc8e61d4bd3ddb68906cb2a47b98b8984b16606",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,16 +12,16 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "restricted-completed-rows-checkpoint.json",
-  "latest_complete_audit_declarations": 957,
+  "latest_complete_audit_checkpoint": "restricted-completed-source-checkpoint.json",
+  "latest_complete_audit_declarations": 968,
   "working_changes_unverified": [
-    "CosimplicialResolvedModels",
     "ComplexResolutionFunctor",
-    "ResolutionStageFunctor",
     "ResolutionCandidateFunctor",
+    "ResolutionStageFunctor",
+    "CosimplicialResolvedModels",
     "RestrictedCompletedRowsTotal"
   ],
-  "pending_check": "bundle-051 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-052 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -395,7 +395,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
