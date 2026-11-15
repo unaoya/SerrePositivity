@@ -11764,3 +11764,155 @@ sorryAx・追加公理はない。exitで外側の終了0まで確認し、枠�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み3,909行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §87 G01：実区間同値の逆と全水平合成の共通表示（11-15）
+
+### 87.1 検証済みの追加
+
+追加は **2ファイル346行・明示宣言24**。累計 **32ファイル4,255行・明示宣言288**。
+IntervalInverseMapProfiles.lean は111行・5宣言、WalkingAdjunctionMapRepresentation.lean は235行・19宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ構成の自然性・係数移送・合成則の証明の分割なので、新しい一覧IDは足さない。
+
+実区間同値の逆の射を、構成済みの厳密な往復と区間射の回収から照合した。
+その比較を使って、二つの混合合成の全射の有限単調射の表示も確定した。
+四つのHomについて、共通の点の個数・全射の表示、minusへの入出の区間の次元を定めた。
+共通表示の異種等式から元のHomの射を回収する補題を証明し、
+plusを経由する四合成は順序和、minusを経由する四合成は端点共有としてまとめた。
+空の自己Homを排除する仮定や、追加のModelCategory・随伴の存在の仮定は置いていない。
+
+### 87.2 型と残る境界
+
+原典の対応はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。今回検証した型は以下。
+
+```lean
+lemma intervalOrderHom_functor_map_heq {I : Type u} [Category.{v} I]
+    {F G : I ⥤ IntervalSimplexCategory} (h : F = G) {X Y : I} (f : X ⟶ Y) :
+    HEq (F.map f).hom.toOrderHom (G.map f).hom.toOrderHom
+
+lemma ordinalIntervalInverse_map_heq {X Y : IntervalSimplexCategory} (f : X ⟶ Y) :
+    HEq (augmentedOrderHom (ordinalIntervalEquivalence.inverse.map f).unop)
+      (ordinalRecoverMap f.hom.toOrderHom f.property.1 f.property.2)
+
+lemma augmentedInterval_tensor_heq {A B C D : AugmentedSimplexCategory}
+    (f : A ⟶ B) (g : C ⟶ D) :
+    HEq (ordinalIntervalMap (augmentedOrderHom (f ⊗ₘ g)))
+      (ordinalGlue (ordinalIntervalMap (augmentedOrderHom f))
+        (ordinalIntervalMap (augmentedOrderHom g)))
+
+lemma mixedBottomTopInterval_map_heq {X₁ X₂ : BottomSimplexCategory}
+    {Y₁ Y₂ : TopSimplexCategory} (f : X₁ ⟶ X₂) (g : Y₁ ⟶ Y₂) :
+    HEq (ordinalIntervalMap (augmentedOrderHom
+        (mixedBottomTopOrdinal.map (X := (X₁, Y₁)) (Y := (X₂, Y₂)) (f, g)).unop))
+      (ordinalAppend f.hom.toOrderHom g.hom.toOrderHom)
+
+lemma mixedTopBottomOrdinal_map_heq {X₁ X₂ : TopSimplexCategory}
+    {Y₁ Y₂ : BottomSimplexCategory} (f : X₁ ⟶ X₂) (g : Y₁ ⟶ Y₂) :
+    HEq (augmentedOrderHom
+        (mixedTopBottomOrdinal.map (X := (X₁, Y₁)) (Y := (X₂, Y₂)) (f, g)))
+      (ordinalGlue f.hom.toOrderHom g.hom.toOrderHom)
+
+def walkingAdjunctionOrdinalCard : (X Y : WalkingAdjunctionPoint) → walkingAdjunctionHom X Y → ℕ
+
+def walkingAdjunctionOrderHom {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) :
+    Fin (walkingAdjunctionOrdinalCard X Y A) →o Fin (walkingAdjunctionOrdinalCard X Y B)
+
+def walkingAdjunctionIncomingDim : (X : WalkingAdjunctionPoint) → walkingAdjunctionHom X .minus → ℕ
+
+def walkingAdjunctionOutgoingDim : (Y : WalkingAdjunctionPoint) → walkingAdjunctionHom .minus Y → ℕ
+
+def walkingAdjunctionIncomingMap {X : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X .minus} (f : A ⟶ B) :
+    Fin (walkingAdjunctionIncomingDim X A + 1) →o Fin (walkingAdjunctionIncomingDim X B + 1)
+
+def walkingAdjunctionOutgoingMap {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) :
+    Fin (walkingAdjunctionOutgoingDim Y A + 1) →o Fin (walkingAdjunctionOutgoingDim Y B + 1)
+
+def walkingAdjunctionTargetCorrection : WalkingAdjunctionPoint → ℕ
+
+lemma walkingAdjunctionOrdinalCard_weight (X Y : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X Y) :
+    walkingAdjunctionOrdinalCard X Y A =
+      walkingAdjunctionWeight X Y A + walkingAdjunctionTargetCorrection Y
+
+lemma walkingAdjunctionIncomingDim_weight (X : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X .minus) :
+    walkingAdjunctionIncomingDim X A = walkingAdjunctionWeight X .minus A
+
+lemma walkingAdjunctionIncoming_card (X : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X .minus) :
+    walkingAdjunctionOrdinalCard X .minus A = walkingAdjunctionIncomingDim X A + 1
+
+lemma walkingAdjunctionOutgoing_card (Y : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom .minus Y) :
+    walkingAdjunctionOrdinalCard .minus Y A = walkingAdjunctionOutgoingDim Y A + 1
+
+lemma walkingAdjunctionIncomingMap_heq {X : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X .minus} (f : A ⟶ B) :
+    HEq (walkingAdjunctionIncomingMap (X := X) f)
+      (walkingAdjunctionOrderHom (X := X) (Y := .minus) f)
+
+lemma walkingAdjunctionOutgoingMap_heq {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) :
+    HEq (walkingAdjunctionOutgoingMap (Y := Y) f)
+      (walkingAdjunctionOrderHom (X := .minus) (Y := Y) f)
+
+lemma walkingAdjunctionOrdinalCard_injective (X Y : WalkingAdjunctionPoint) :
+    Function.Injective (walkingAdjunctionOrdinalCard X Y)
+
+lemma walkingAdjunctionOrdinalCard_comp_plus (X Z : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X .plus) (B : walkingAdjunctionHom .plus Z) :
+    walkingAdjunctionOrdinalCard X Z ((walkingAdjunctionHorizontal X .plus Z).obj (A, B)) =
+      walkingAdjunctionOrdinalCard X .plus A + walkingAdjunctionOrdinalCard .plus Z B
+
+lemma walkingAdjunctionOrdinalCard_comp_minus (X Z : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X .minus) (B : walkingAdjunctionHom .minus Z) :
+    walkingAdjunctionOrdinalCard X Z ((walkingAdjunctionHorizontal X .minus Z).obj (A, B)) =
+      walkingAdjunctionIncomingDim X A + walkingAdjunctionOutgoingDim Z B + 1
+
+lemma walkingAdjunctionOrderHom_hext {X Y : WalkingAdjunctionPoint}
+    {A B A' B' : walkingAdjunctionHom X Y} (hA : A = A') (hB : B = B')
+    (f : A ⟶ B) (g : A' ⟶ B')
+    (h : HEq (walkingAdjunctionOrderHom (X := X) (Y := Y) f)
+      (walkingAdjunctionOrderHom (X := X) (Y := Y) g)) : HEq f g
+
+lemma walkingAdjunctionOrderHom_comp_plus (X Z : WalkingAdjunctionPoint)
+    {A A' : walkingAdjunctionHom X .plus} {B B' : walkingAdjunctionHom .plus Z}
+    (f : A ⟶ A') (g : B ⟶ B') :
+    HEq (walkingAdjunctionOrderHom (X := X) (Y := Z)
+        ((walkingAdjunctionHorizontal X .plus Z).map (X := (A, B)) (Y := (A', B')) (f, g)))
+      (ordinalAppend (walkingAdjunctionOrderHom (X := X) (Y := .plus) f)
+        (walkingAdjunctionOrderHom (X := .plus) (Y := Z) g))
+
+lemma walkingAdjunctionOrderHom_comp_minus (X Z : WalkingAdjunctionPoint)
+    {A A' : walkingAdjunctionHom X .minus} {B B' : walkingAdjunctionHom .minus Z}
+    (f : A ⟶ A') (g : B ⟶ B') :
+    HEq (walkingAdjunctionOrderHom (X := X) (Y := Z)
+        ((walkingAdjunctionHorizontal X .minus Z).map (X := (A, B)) (Y := (A', B')) (f, g)))
+      (ordinalGlue (walkingAdjunctionIncomingMap (X := X) f)
+        (walkingAdjunctionOutgoingMap (Y := Z) g))
+```
+
+全水平合成の残る結合則と豊穣圏構造の実装は別の未検証の作業木に置いている。
+それらを今回の検証済み数には入れない。
+元のQCatAdjunctionからの全coherentな延長、HAのモデルとの比較、
+元のF≫Uと単位・余単位の照合は引き続き未完であり、G01を済みにはしない。
+
+### 87.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600 の最大240秒の枠、セッション73700で、
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMapRepresentation:olean
+を実行し、終了0・警告なし（1267 jobs）。その後の追加24根の監査も終了0。
+入力24名と出力24名は完全一致、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。外側の終了0を確認して枠は返却済み。
+入力・根・全出力・ビルドログは
+[g12-inverse-representation-audit-2026-11-15/](g12-inverse-representation-audit-2026-11-15/)に保存。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み4,255行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
