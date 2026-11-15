@@ -16944,3 +16944,328 @@ private lemma jointNativeUnitPointTransport_value {E B : SSet.{u}} (p : E ⟶ B)
 新規二本160行の対象ビルド350は成功（依存を含む12,307 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を行い、終了コード0。小監査は243モジュール・1,646宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開定義三つ・公開補題五つ・private補題一つ・局所instance二つ。自レーン累計239本・16,283行（外枠まで5,717行）、自レーン実環境1,639宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン605ファイル・1,914個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build350.log、isw2-validation350.json、isw2-declaration-collision-scan350.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。コードは87305debaに保存した。元の単位点の同じHom空間での同型までは本体で検証したが、この同型を元の全straighteningの評価と指定単位を通して全変換の一致へ接続する部分はまだ未完。R03h・R03d・3b-4aは未完のまま。
 
 R03iの見込み450〜950行に対し、一般の判定202行・元のcosliceの零次元の式68行・元のnative単位点への適用160行の実測は計430行（下端より20行少ない）。この範囲の中間定理は閉じた。元の単位条件を満たす全空間の射を同じfiberへ戻す§279の95行は前回の検証済みで、この差分へ重ねて数えていない。
+
+## 283. 同じ全straighteningの射と指定fiber評価の全自然性の照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 283.1 型と範囲
+
+§282の同じnative単位点の比較は87305deba、§280〜282の報告は720c1893fに保存した。次に、元のleftStraighteningInfinityDiagramHomと元のleftStraighteningInfinityMapの同じ射の像の端点正規化を照合し、任意の底上の射について元のleftStraighteningInfinityMap_evaluateIsoの自然性を適用する。定義のidと二つのEq.mpの処理を分割し、同じ両端の等式をArrowの式で保持した。自然性は既存のNatIso.naturality_2を使い、元の指定評価同型を選び直していない。
+
+以下は既存構成の係数移送・評価・自然性・合成則と証明の分割で、新しい数学のIDは追加しない。個別検査 /private/tmp/isw2-straightening-map-arrow.lean は9回目で終了コード0、出力なし。既存の型・計算上限は変更していない。新規三本はすべて200行未満。
+
+#### FunctorHomEvaluationArrow（35行）
+
+```lean
+lemma functorHomEvaluate_arrow {K X : SSet.{u}} {U V : K ⟶ X}
+    (a : FunctorHom U V) (x : K _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate a x) =
+      Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := X) x)).toFunctor.map a)
+```
+
+#### LeftStraighteningDiagramHomArrow（60行）
+
+```lean
+lemma leftStraighteningInfinityDiagramHom_heq {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    HEq (leftStraighteningInfinityDiagramHom p q f hf)
+      ((hoFunctor.map (leftStraighteningInfinityMap B)).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated))
+
+lemma leftStraighteningInfinityDiagramHom_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    Arrow.mk (leftStraighteningInfinityDiagramHom p q f hf) =
+      Arrow.mk ((hoFunctor.map (leftStraighteningInfinityMap B)).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated))
+```
+
+#### LeftStraighteningDiagramHomEvaluation（84行）
+
+```lean
+lemma leftStraighteningInfinityDiagramHom_evaluate_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b)) =
+      Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := SpaceInfinity.{u}) (ULift.up b))).toFunctor.map
+        ((hoFunctor.map (leftStraighteningInfinityMap B)).toFunctor.map
+          (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)))
+
+lemma leftStraighteningInfinityMap_fiberEvaluate_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk ((hoFunctor.map
+      (leftStraighteningInfinityMap B ≫ evaluateFunctorAt (Y := SpaceInfinity.{u}) (ULift.up b))).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)) =
+      Arrow.mk (((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex p)).hom ≫
+        (hoFunctor.map (leftFibrationInfinityFiberEvaluation b)).toFunctor.map
+          (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated) ≫
+        ((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex q)).inv)
+
+lemma leftStraighteningInfinityDiagramHom_fiber_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b)) =
+      Arrow.mk (((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex p)).hom ≫
+        (hoFunctor.map (leftFibrationInfinityFiberEvaluation b)).toFunctor.map
+          (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated) ≫
+        ((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex q)).inv)
+```
+
+privateの係数移送の二補題の型：
+
+```lean
+private lemma straighteningHomEqMp_heq_iff {α β : Sort u} (h : α = β) (a : α)
+    {γ : Sort _} (b : γ) : HEq (Eq.mp h a) b ↔ HEq a b
+
+private lemma straighteningHomArrow_of_heq {D : Type u} [Category.{v} D]
+    {a b a' b' : D} (ha : a = a') (hb : b = b')
+    {f : a ⟶ b} {g : a' ⟶ b'} (h : HEq f g) : Arrow.mk f = Arrow.mk g
+```
+
+### 283.2 検収と残り
+
+新規三本179行の対象ビルド351は成功（依存を含む3,107 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で順番を待ち、対象ビルドと小監査を実行した。小監査は246モジュール・1,654宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開六補題・private二補題。自レーン累計242本・16,462行（外枠まで5,538行）、自レーン実環境1,647宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と自レーン608ファイル・1,920個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build351.log、isw2-validation351.json、isw2-declaration-collision-scan351.json。既存のLean・⑤aのファイル・公式入口・公式監査は変更していない。今回の結論は同じ全図式の射の評価について、元の指定評価同型とfiber評価の同じ射の像を結ぶ自然性の式。fiber評価の像を実際のvertexFiberMapへさらに合わせ、元の全native変換の分類同型の成分と指定単位を通す必要がある。これだけで全変換の一致やR03h・R03d・3b-4aを閉じたとはしない。
+
+## 284. 元の全straighteningの射の評価と、同じ実際のfiber射の厳密な等式（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 284.1 型と範囲
+
+§283の同じ全射の評価はf49a6d017に保存した。さらに元のleftFibrationInfinityFiberEvaluationの同じcoherentな辺の像を、実際のvertexFiberMapの同じcoherentな辺へ一致させた。元のleftStraighteningInfinityMap_evaluateIsoの同じ成分を既存の頂点の等式だけで正規化し、同じホモトピー圏の射の厳密な等式を回収する。
+
+以下は既存の豊穣作用・評価・全自然性・係数移送・合成則と証明の分割であり、新しい数学のIDは足さない。個別検査 /private/tmp/isw2-fiber-evaluation-edge.lean は4回目で終了コード0、出力なし。頂点の等式の直接の項がwhnfの既定上限に達した箇所は、既存の評価の法則と元の頂点の等式へ分割し、評価の始域も明記して通した。計算上限・既存の型は変更していない。
+
+#### LeftFibrationFiberEvaluationEdge（61行）
+
+```lean
+lemma leftFibrationInfinityFiberEvaluation_edge {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    (leftFibrationInfinityFiberEvaluation b).app (Opposite.op ⦋1⦌)
+        (leftFibrationInfinityEdge p q f hf).edge =
+      (coherentNerveEdge (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+          leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)).edge
+
+lemma leftFibrationInfinityFiberEvaluation_hom_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk ((hoFunctor.map (leftFibrationInfinityFiberEvaluation b)).toFunctor.map
+      (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)) =
+      Arrow.mk (HomotopyCategory.homMk (coherentNerveEdge
+        (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+          leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)))
+```
+
+#### LeftStraighteningDiagramFiberComparison（55行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_fiber_vertex {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌) :
+    (leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up b) =
+      (leftStraighteningInfinityMap B ≫ evaluateFunctorAt (Y := SpaceInfinity.{u}) (ULift.up b)).app
+        (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p)
+
+def leftStraighteningInfinityDiagram_fiberIso {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌) :
+    VertexIso ((leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up b))
+      (coherentNerveVertex (leftFibrationFiberObject b (leftFibrationObjectOf p)))
+```
+
+#### LeftStraighteningDiagramFiberNaturality（79行）
+
+```lean
+lemma leftStraighteningInfinityDiagramHom_actualFiber_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b)) =
+      Arrow.mk ((leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv)
+
+lemma leftStraighteningInfinityDiagramHom_actualFiber_value {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b) =
+      (leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv
+```
+
+privateの同じ合成の係数移送の型：
+
+```lean
+private lemma straighteningFiberArrow_conjugation {D : Type u} [Category.{v} D]
+    {a b x y x' y' : D} (hx : x = x') (hy : y = y')
+    (l : a ⟶ x) (r : y ⟶ b) (f : x ⟶ y) (g : x' ⟶ y')
+    (h : Arrow.mk f = Arrow.mk g) :
+    Arrow.mk (l ≫ f ≫ r) =
+      Arrow.mk ((l ≫ eqToHom hx) ≫ g ≫ (eqToHom hy.symm ≫ r))
+```
+
+### 284.2 検収と残り
+
+新規三本195行の対象ビルド352は成功（依存を含む3,111 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は249モジュール・1,662宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開定義一つ・公開補題五つ・private補題一つ。自レーン累計245本・16,657行（外枠まで5,343行）、自レーン実環境1,655宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン611ファイル・1,926個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build352.log、isw2-validation352.json、isw2-declaration-collision-scan352.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。次は元のstrictBETotJointSourceNativeTransformationの両側の元の分類同型を、この同じ評価の等式へ合成する。その分類同型の指定単位での実際の作用、局所化に沿う全前合成の充満忠実性とYoneda評価を通した全変換の一致はまだ未完。今回の任意の射についての評価の式を、その全変換の一致の代わりにはしない。R03h・R03d・3b-4aは未完のまま続ける。
+
+## 285. 元の二変数native全変換の評価の式と、同じ全射の単位点の像（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 285.1 型と範囲
+
+§284の元の全射の評価と実fiber射の厳密な等式は6f9d939f7に保存した。元のstrictBETotJointSourceNativeTransformationの定義へ、既存のfunctorHomEvaluate_compと同じ全straighteningの評価の等式を代入し、元の両側の分類同型を含む式を得る。さらに元の置換単位を保つ同じ全空間の射について、同じfiber単位・pullback同型・底の等式を通した元の単位点の像が、元の恒等点と同型になることを得た。
+
+前者は任意のmとhmだけを扱う。後者のhuは元のexists_strictBETotJointSourceNativeLiftで保証される元の置換単位の条件そのもので、弱同値性や新しい単位保存条件を前提には足していない。これらは既存の評価・合成・単位・係数移送の法則とR03iの適用の分割であり、新しい数学のIDは追加しない。
+
+個別検査は/private/tmp/isw2-native-transform-eval.leanが初回、/private/tmp/isw2-native-lift-unit-point.leanが2回目で終了コード0、出力なし。後者の初回は一時ファイルでcontinuousLeftFibrationReplacementUnitの名前空間が不足しており、明示して直した。計算上限・既存の型を変えていない。新規二本は200行未満。
+
+#### StrictDiagramTotJointNativeTransformationEvaluation（68行）
+
+```lean
+lemma strictBETotJointSourceNativeTransformation_evaluate
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (P : strictBETotJointHomIndex A) :
+    let p := (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+    let q := strictBETotJointNativeHomProjection A
+    let b := nerveVertex P
+    functorHomEvaluate (strictBETotJointSourceNativeTransformation A m hm) (ULift.up b) =
+      functorHomEvaluate (strictBETotJointRawSourceElementsClassificationIso A).hom (ULift.up b) ≫
+        (leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q m hm b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv ≫
+        functorHomEvaluate (strictBETotJointNativeHomClassificationIso A).hom (ULift.up b)
+```
+
+#### StrictDiagramTotJointNativeLiftUnitPoint（77行）
+
+```lean
+lemma strictBETotJointSourceNativeLiftUnit_identityPoint
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (X : (operad A).Algebra) :
+    let P := strictBETotJointUnitIndex A X
+    Nonempty (VertexIso
+      ((strictBETotJointNativeUnitFiberIso A X).hom.app (Opposite.op ⦋0⦌)
+        (((simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P ≫
+          vertexFiberMap (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+            (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) ≫
+          (vertexFiberPullbackIso (twistedArrowProjection (CAlg_R A))
+            (strictBETotJointNativeHomInput A) (nerveVertex P)).hom).app (Opposite.op ⦋0⦌)
+              (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X)))))
+      (twistedArrowHomSpaceIdentityPoint ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 285.2 検収と残り
+
+新規二本145行の対象ビルド353は成功（依存を含む12,318 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は251モジュール・1,669宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開二補題・局所instance五つ。自レーン累計247本・16,802行（外枠まで5,198行）、自レーン実環境1,662宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン613ファイル・1,928個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build353.log、isw2-validation353.json、isw2-declaration-collision-scan353.json。既存のLean・⑤aのファイル・公式入口・公式監査は変更していない。次に残るのは、元のraw側の全分類同型が元のraw単位を同じfiber単位へ送り、元のnative側の全分類同型が同じ実fiberの恒等点へ合うことの、指定された元の成分での照合。さらに局所化に沿う全前合成の充満忠実性と既存のYoneda評価の全同値を使い、全変換の同じ射の一致へ戻す必要がある。R03hの全interval族、R03dの全関手同型と元の固定始域の同型の一致、3b-4aは未完のまま。今回の任意のmに対する式と元のmの単位点の同型を、その全変換の一致の代用にはしない。
+
+## 286. 元の分類同型の順射と、同じ元の全射の像の照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 286.1 型と範囲
+
+§285の元のnative全変換の評価と同じ全射の単位点の比較は389a5c352に保存した。raw側の全分類同型に現れるleftClassification_of_precompositionEquivalenceについて、その既存の順射が同じ元の射のleftStraighteningInfinityDiagramHomそのものであることを合わせ、同じ実fiberの評価の式へ接続した。定義が元の辺の類のasIsoを使っていることと、元の二つの頂点の等式を保持する。
+
+以下は既存構成の係数移送・合成・評価の法則と証明の分割であり、新しい数学のIDは追加しない。個別検査 /private/tmp/isw2-classification-forward-hom.lean は2回目で終了コード0（unused simp引数id_eqの警告一件）。新規本体ではその未使用引数だけを外し、対象ビルド354で確かめる。計算上限・既存の型は変えていない。
+
+#### ClassificationTransportHom（84行）
+
+```lean
+lemma leftClassification_of_precompositionEquivalence_value {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    HEq (leftClassification_of_precompositionEquivalence p q f hf ef)
+      (VertexIso.map (leftFibrationInfinityVertexIsoOfPrecompositionEquivalence p q f hf ef)
+        (leftStraighteningInfinityMap B))
+
+lemma leftClassification_of_precompositionEquivalence_hom {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    (leftClassification_of_precompositionEquivalence p q f hf ef).hom =
+      leftStraighteningInfinityDiagramHom p q f hf
+
+lemma leftClassification_of_precompositionEquivalence_fiber_value {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f)
+    (b : B _⦋0⦌) :
+    functorHomEvaluate (leftClassification_of_precompositionEquivalence p q f hf ef).hom (ULift.up b) =
+      (leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv
+```
+
+privateの係数移送の型：
+
+```lean
+private lemma classificationTransportEqMp_heq_iff {α β : Sort u} (h : α = β) (a : α)
+    {γ : Sort _} (b : γ) : HEq (Eq.mp h a) b ↔ HEq a b
+
+private lemma classificationTransportIsoHom_heq {D : Type u} [Category.{v} D]
+    {a b a' b' : D} (ha : a = a') (hb : b = b')
+    (e : a ≅ b) (e' : a' ≅ b') (h : HEq e e') : HEq e.hom e'.hom
+```
+
+### 286.2 検収と残り
+
+新規一本84行の対象ビルド354は成功（依存を含む3,117 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は252モジュール・1,673宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開三補題・private二補題。自レーン累計248本・16,886行（外枠まで5,114行）、自レーン実環境1,666宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン614ファイル・1,931個の名前を照合し、異なるファイル間の重複0、内部も0。mainのInfinityCategories/にも今回の分類同型の追加名・actualFiber_value・functorHomEvaluate_arrowが宣言されていないことをgit grepで確認した。git diff --check通過。証跡は /private/tmp/isw2-build354.log、isw2-validation354.json、isw2-declaration-collision-scan354.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。コードは4139b0da4に保存した。これによりraw側のGrothendieckの二つの分類同型は、元の比較射の単位の厳密な式を使って実fiberで追える。残る重み付きnerveの標準単位とnativeな指定fiber評価との照合、native側の底変換同型の同じfiber同型への照合、全Yoneda評価・局所化の全前合成の充満忠実性による全変換の一致は、次の検査単位として維持する。R03h・R03d・3b-4aは未完。
+
+## 287. 次の重み付きnerveの元の単位の評価：型の確認と残り（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 287.1 次の検査単位の型（未証明）
+
+次は既存のweightedNerveNativeStraighteningUnitIsoの同じ順射と、元の指定fiber評価の同じ成分の合成を、元のweightedNerveFiberMapへ合わせる。次の型を/private/tmp/isw2-weighted-native-unit-fiber-type.leanで、等式そのものをPropとして定義して検査した。個別Leanは終了コード0、表示は関数の型だけで、証明は置いていない。本体・manifest・監査・済みの数には追加していない。
+
+以下ではKanObjectはKerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC、kanDiagramCoherentNerve_vertexとkanObjectForgetはKerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes、weightedNerveProjection・weightedNerveFiberMapはKerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategoriesの既存の宣言。Fの値のKan性は(F.obj c).isKanComplexから局所instanceで供給し、新しい仮定にはしない。
+
+```lean
+lemma weightedNerveNativeStraighteningUnitIso_fiber_value
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    let p := weightedNerveProjection (F ⋙ kanObjectForget)
+    functorHomEvaluate (weightedNerveNativeStraighteningUnitIso F).hom
+        (ULift.up (nerveVertex c)) ≫
+      (leftStraighteningInfinityDiagram_fiberIso p (nerveVertex c)).hom =
+        eqToHom (congrArg HomotopyCategory.mk
+          ((kanDiagramCoherentNerve_vertex F c).trans
+            (spaceInfinityVertex_eq_coherent (F.obj c)))) ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show F.obj c ⟶ leftFibrationFiberObject (nerveVertex c)
+              (leftFibrationObjectOf p) from
+            weightedNerveFiberMap (F ⋙ kanObjectForget) c))
+```
+
+既存の単位・係数移送の法則の照合として、見込み250〜650行。これはこの重み付き単位の照合だけの見込みで、R03d以下の全残りの見込みではない。まだ既定の計算上限内での証明・本体化はしていない。
+
+### 287.2 使う既存の元の比較と順序
+
+1. leftStraighteningInfinityDiagram_representationIsoは、元のfirstVertex局所化の全前合成の充満忠実性で、同じ制限上の同型をpreimageVertexIsoとして戻している。まず同じpreimageの順射を制限して元の順射へ戻す法則を使い、零単体のfirstVertexで評価する。leftStraighteningInfinityMap_evaluateIsoも同じ零単体のfirstVertexFiberIsoから作られており、その同じ成分へ合わせる。
+2. 同じnerveStraighteningRepresentationIsoとnerveCoherentTransportRepresentationIsoの評価を、元のstrict transportの評価へ合わせる。最後は既存のweightedNerveTransportUnit_evaluateが、標準単位とその評価の合成を元のweightedNerveFiberMapへ厳密に一致させる。
+3. raw側ではtotalElementsNativeClassificationIsoの元の三因子を保持する。今回のleftClassification_of_precompositionEquivalence_hom・fiber_valueは、その中の二つのGrothendieckの分類同型を元の実射へ戻す入口。既存のgrothendieckKanCoefficientComparison_unitとsimplicialElementsGrothendieckReplacementMap_unitを使う。最初の三辺のmixed比較では、元の単位ラベルのaug₀・probe比較・右置換単位と、元のrightFrameReplacementUnitの自然性で同じ零単体を追う。
+4. native側のstrictBETotJointNativeHomClassificationIsoは、元のleftStraighteningInfinityDiagram_baseChangeIsoの逆。その同じ成分を、元のvertexFiberPullbackIsoと同じ底の等式へ合わせる。元のmの単位点の像と元の恒等点の比較は§285で得ており、mの弱同値性は前提にしていない。
+5. 全変換の一致には、モデル源の局所化に沿う全前合成の充満忠実性と、既存のcanonicalYonedaTransformationFiberEvaluation_isQCatEquivalenceおよび同じ指定恒等点の比較が候補になる。この既存の評価は任意の標的への全変換空間を扱う。共変のHom側へ移す際は、同じ反転・両端交換・IdentityCoordinatesの恒等点の式を保つ。ここには未検証の照合が残り、対象ごとの一致で代用しない。
+6. R03hの元の全interval族の等式を維持し、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型のHEqを閉じる。その後はR02・R03→R04・R05→R11・R12のTotの分、停止点3b-4aの報告、実現R06〜R10の順。点つきKanのTotは作らない。
+
+### 287.3 今回の検証済みの区切り
+
+前回81e99bcecから新規16本・1,033行を検証して保存した。R03iの型は閉じたが、R03h・R03d・3b-4aは未完であり、停止点3b-4aの完了報告ではない。自レーンは248本・16,886行／外枠22,000行、残り5,114行。登録候補一覧はformalization-plans/stage-ii/is-w2-be-20261114-modules.jsonを更新済み。公式入口・公式監査への登録とmainへの取り込みは調整役が行うため、こちらでは変更していない。鍵は全て返却済み。/goalは元の全範囲を維持する。
