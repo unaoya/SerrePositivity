@@ -14171,3 +14171,182 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み9,661行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §102 G01：最初の実併合・元の射の実因子化・約10,000行の途中報告（11-15）
+
+### 102.1 検証済みの追加
+
+追加は **3ファイル341行・明示宣言21**。累計 **81ファイル10,002行・明示宣言581**。
+OrdinalBottomMerge.lean は100行・7宣言、WalkingAdjunctionBottomMerge.lean は141行・8宣言、
+WalkingAdjunctionBottomMergeLaws.lean は100行・6宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ実区間・原子の親の実表示の構成と、その単位・係数移送・合成・照合の法則と証明の分割なので、
+新しい一覧IDは足さない。
+
+最初の二点を併合する実有限単調射Fin(m+2)→Fin(m+1)と、後の点を選ぶ実切断を構成した。
+最初の二点の像が同じ有限単調射fは、fとその切断の合成を残余射として、併合を通して実際に因子化する。
+切断の等式、全点での因子化の等式、最小元・最大元の保存と残余射の端点条件を証明した。
+
+始点minusの元の実Homでは、点の個数が一つ小さい実対象を構成した。
+元の実射fが二番目の点を0へ送る場合、元の最小元の保存と合わせて最初の二点の像は同じになる。
+個数の等式による輸送と四Homの共通表示の回収により、実併合射と実残余射を構成し、
+それらの合成が元の実射fに、元のHom内の射の等式として一致することを証明した。
+二つの実射やその合成の等式の存在を仮定に追加していない。
+
+実併合の共通表示は構成済みの切断から全射である。
+全射性を使い、実併合との合成は右因子を区別することと、右因子が構成した実残余射に一意に一致することを示した。
+併合前後の実対象は点の個数が一つ違うため異なり、この最初の実射は対象の等式による単位ではない。
+
+### 102.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+現模型での原子の親に用いる射の細分とその法則として、検証した型は以下。
+
+```lean
+def ordinalBottomMerge (m : ℕ) : Fin (m + 2) →o Fin (m + 1)
+
+def ordinalBottomMergeSection (m : ℕ) : Fin (m + 1) →o Fin (m + 2)
+
+lemma ordinalBottomMerge_val (m : ℕ) (i : Fin (m + 2)) :
+    (ordinalBottomMerge m i).val = i.val - 1
+
+lemma ordinalBottomMerge_section (m : ℕ) :
+    (ordinalBottomMerge m).comp (ordinalBottomMergeSection m) = OrderHom.id
+
+lemma ordinalBottomMerge_factor {m n : ℕ} (f : Fin (m + 2) →o Fin n)
+    (h : f 0 = f (0 : Fin (m + 1)).succ) :
+    (f.comp (ordinalBottomMergeSection m)).comp (ordinalBottomMerge m) = f
+
+lemma ordinalBottomMerge_boundary (m : ℕ) :
+    WalkingAdjunctionOrderBoundary .minus .minus (ordinalBottomMerge m)
+
+lemma ordinalBottomMerge_residual_boundary {m n : ℕ} (Y : WalkingAdjunctionPoint)
+    (f : Fin (m + 2) →o Fin n) (hf : WalkingAdjunctionOrderBoundary .minus Y f)
+    (h1 : (f (0 : Fin (m + 1)).succ).val = 0) :
+    WalkingAdjunctionOrderBoundary .minus Y (f.comp (ordinalBottomMergeSection m))
+
+def walkingAdjunctionBottomMergeObject (Y : WalkingAdjunctionPoint) (m : ℕ) :
+    walkingAdjunctionHom .minus Y
+
+lemma walkingAdjunctionBottomMergeObject_card (Y : WalkingAdjunctionPoint) (m : ℕ) :
+    walkingAdjunctionOrdinalCard .minus Y (walkingAdjunctionBottomMergeObject Y m) = m + 1
+
+def walkingAdjunctionBottomMergeArrow {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2) :
+    A ⟶ walkingAdjunctionBottomMergeObject Y m
+
+lemma walkingAdjunctionBottomMergeArrow_profile {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2) :
+    walkingAdjunctionOrderHom (walkingAdjunctionBottomMergeArrow A m hA) =
+      ordinalOrderHomTransport hA.symm (walkingAdjunctionBottomMergeObject_card Y m).symm
+        (ordinalBottomMerge m)
+
+lemma walkingAdjunctionBottomMerge_raw_one {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0) :
+    ((ordinalOrderHomTransport hA rfl (walkingAdjunctionOrderHom f))
+      (0 : Fin (m + 1)).succ).val = 0
+
+def walkingAdjunctionBottomMergeResidual {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0) :
+    walkingAdjunctionBottomMergeObject Y m ⟶ B
+
+lemma walkingAdjunctionBottomMergeResidual_profile {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0) :
+    walkingAdjunctionOrderHom (walkingAdjunctionBottomMergeResidual f m hA h1) =
+      ordinalOrderHomTransport (walkingAdjunctionBottomMergeObject_card Y m).symm rfl
+        ((ordinalOrderHomTransport hA rfl (walkingAdjunctionOrderHom f)).comp
+          (ordinalBottomMergeSection m))
+
+lemma walkingAdjunctionBottomMerge_factor {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0) :
+    walkingAdjunctionBottomMergeArrow A m hA ≫ walkingAdjunctionBottomMergeResidual f m hA h1 =
+      f
+
+lemma ordinalBottomMerge_surjective (m : ℕ) : Function.Surjective (ordinalBottomMerge m)
+
+lemma ordinalOrderHomTransport_surjective {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    (f : Fin a →o Fin b) (hf : Function.Surjective f) :
+    Function.Surjective (ordinalOrderHomTransport hac hbd f)
+
+lemma walkingAdjunctionBottomMergeArrow_surjective {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2) :
+    Function.Surjective (walkingAdjunctionOrderHom (walkingAdjunctionBottomMergeArrow A m hA))
+
+lemma walkingAdjunctionBottomMergeObject_ne {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2) :
+    A ≠ walkingAdjunctionBottomMergeObject Y m
+
+lemma walkingAdjunctionBottomMergeArrow_cancel {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    {B : walkingAdjunctionHom .minus Y} (f g : walkingAdjunctionBottomMergeObject Y m ⟶ B)
+    (h : walkingAdjunctionBottomMergeArrow A m hA ≫ f =
+      walkingAdjunctionBottomMergeArrow A m hA ≫ g) : f = g
+
+lemma walkingAdjunctionBottomMergeResidual_unique {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0)
+    (g : walkingAdjunctionBottomMergeObject Y m ⟶ B)
+    (hg : walkingAdjunctionBottomMergeArrow A m hA ≫ g = f) :
+    g = walkingAdjunctionBottomMergeResidual f m hA h1
+```
+
+今回は一つの元の射の実細分とその一意性までである。
+全単体で最初の併合を選ぶ過程、細分した射を挿入した実全単体、
+非退化の原子のfillable条件と親、parental subcomputadのfiltration、
+元のQCatAdjunctionからの全coherentな延長はまだ未完。
+原典の向きと現模型の水平反対の全比較、同じF≫U・単位・余単位・HAモデルの照合も未完。
+今回の元の射の因子化を、原子の親の完成やcoherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 102.3 検証
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+セッション5607では切断の単調性の型が一致せず、その未完成の定義に依存する後続宣言にも失敗が出た。
+切断の単調性を値の加算の不等式として明記し、34740でOrdinalBottomMergeと
+WalkingAdjunctionBottomMergeの対象ビルド・追加15根の小さい監査の終了0を確認した。
+元の実Homの因子化の回収は最初の対象ビルドで通った。
+セッション7377で最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBottomMergeLaws:olean
+と、続く追加21根だけの公理監査、外側の終了0を確認した。
+最終対象ビルドは警告なし（1293 jobs）。追加21根は入力名と出力名が一致し、
+公理依存はpropext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。
+入力・根・全出力・最終対象ビルドログは
+[g12-bottom-merge-audit-2026-11-15/](g12-bottom-merge-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+### 102.4 約10,000行の途中報告
+
+BS-M15 §8の約10,000行の途中報告として記録する。
+外枠20,000行中、検証済みは**10,002行**、残りは**9,998行**である。
+現在までに全随伴の有限順序による全Hom・全水平合成・原子的な自由表示・退化の原子性・
+切れ目と実分解の両往復・原子の有限端点による判定・元の射の最初の併合による細分までを検証した。
+これらはG01の入力模型とその実構成の法則であり、G01の実結論の完成とは数えていない。
+G01の全coherentな延長と指定された元のモナドとの照合が未完、G02〜G15も未完である。
+承認済みの指示どおり、この途中の行数では止めずに原子の親の実構成へ続ける。
+外枠・一覧を変更したことにはしない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,002行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
