@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 41c177c4ce90a18d7b31e0a8eb8cae25e8984009",
+  "verified_head": "this commit: base 6c73fba503c671e857d9d5a0e7969e318b7a2dbf",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-base-coefficient-models-checkpoint.json",
-  "latest_complete_audit_declarations": 1201,
+  "latest_complete_audit_checkpoint": "crystalline-tensor-residue-checkpoint.json",
+  "latest_complete_audit_declarations": 1202,
   "working_changes_unverified": [],
-  "pending_check": "bundle-079 terminal; all prepared modules passed",
+  "pending_check": "bundle-081 terminal; all prepared modules passed",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
