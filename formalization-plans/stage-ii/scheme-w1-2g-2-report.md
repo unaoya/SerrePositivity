@@ -620,3 +620,16 @@ S04 の係数移送の大域の射の法則の分割（着手前、前記200〜5
 2g-2 本体2,360行・入口込み2,399行、小監査262宣言・標準三公理のみ。90649a8b1 の後の今回の束は3モジュール137行＋入口3行、小監査21宣言。任意の係数移送の大域の射は次の drafts にあり、Proj の pullback の証明・S03 の重なりの自然性・S04 の貼り合わせと有限冪・G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3・S04：任意の係数移送の Proj の実際の射
+
+`ProjectiveCoefficientMap`（53行）：`projectiveCoefficientGradedMap` は includeRight の同じ環写像を B の次数成分への graded な射に束ねる。`projectiveCoefficient_irrelevant_le_map` は移送後の irrelevant ideal が元の irrelevant ideal の像に入ること。`projectiveCoefficientMap` は既存の Proj.map で作った実際の射。`projectiveCoefficientMap_preimage_basicOpen` は標準開の逆像の式。flat 性・Noether 性・次数一生成はいずれも不要。
+
+単独検証は初回成功、本体と保存した下書きのソース完全一致、対象と直接 importer のビルド5,109ジョブ、小監査9宣言・標準三公理のみ、終了状態0。ログ `2g-projective-coefficient-map-check.log`・`2g-projective-coefficient-map-native.log`・`2g-projective-coefficient-map-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。
+
+2g-2 本体2,413行・入口込み2,453行、小監査271宣言・標準三公理のみ。90649a8b1 の後の係数移送の束は4モジュール190行＋入口4行、小監査30宣言。大域の射に到達したが、基底への構造射との整合性と Proj の pullback、S03 の重なりの自然性、S04 の貼り合わせと有限冪、G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+S04 の係数移送の標準開の射の法則の分割（着手前、係数移送の内数、40〜100行）：`projectiveCoefficientAwayMap_eq` は元の標準開からの Away.map が、テンソル積への includeRight と係数移送の同型の合成であること。正規化の全射性と純テンソルの像の式で照合する。`projectiveCoefficientMap_awayι` は対応する Spec の写像と Proj の射の四角形の可換性。Mathlib の awayι_comp_map に渡す。追加の flat 性や Noether 性を仮定しない。
