@@ -14968,3 +14968,200 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み11,382行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §107 G01：最初の併合位置の保存と細分後の厳密な併合条件（11-15）
+
+### 107.1 検証済みの追加
+
+追加は **3ファイル372行・明示宣言13**。累計 **100ファイル11,754行・明示宣言652**。
+ComposableArrowRefinementPrefix.lean は110行・3宣言、WalkingAdjunctionBottomMergeTransport.lean は57行・2宣言、
+WalkingAdjunctionRefinementFirstMerge.lean は205行・8宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ原子の実細分・実辺の回収・最初の位置の照合・係数移送・最小性とその証明の分割なので、
+新しい一覧IDは足さない。
+
+実全鎖の細分について、挿入した頂点までの実対象が元の対象であることを指定面から回収した。
+挿入した左因子と、挿入位置より前の全実辺を実precompの再帰で異種等式として回収した。
+先頭の射では対象の等式による右の輸送を取り除き、元の全射を保持している。
+この射の照合を、両端の実対象の等式も使って、併合の実点の条件と一つだけの併合の全点条件へ両方向に移した。
+
+実併合で細分した実全単体では、挿入した左辺に実際に併合の位置の証人がある。
+その辺は終点の個数m+1、全点の値i↦i−1という一つだけの併合の条件を満たす。
+細分の位置より前の辺の併合条件は元の辺の条件と同値である。
+従って元の位置が最小なら、細分後もそれより前の併合の位置はなく、挿入した左辺の位置が最小である。
+前の全ての新しい有限添字を元の添字に戻して検収している。
+
+§105で実際に選んだ最小位置にこれらの法則を適用し、
+構成した一つ高次の実全単体の最初の併合の所属・最小性と、一つだけの併合の全点条件を証明した。
+位置の保存や最小性の証人を新しい入力に追加していない。
+元の選択位置が一つだけの併合の条件に一致しない場合には、
+§106の法則を適用し、この実際に選んだ細分が元のHomの単体集合で非退化となることも検証した。
+
+### 107.2 型と残る境界
+
+原典は[Riehl–Verity §3.1・§4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+原典の文字列の最初の折り返しとレベルの重複の条件を、現在は実有限順序の辺の個数・全点の値と比較している。
+今回、細分後の実際の最初の位置と、その厳密な併合の条件を証明した。
+検証した型は以下。
+
+```lean
+lemma composableArrowRefinement_before_obj {n : ℕ} (F : ComposableArrows C (n + 1))
+    (k : Fin (n + 1)) (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ)
+    (fac : q ≫ g = F.map (homOfLE (Fin.castSucc_le_succ k)))
+    (i : Fin (n + 2)) (hi : i.val ≤ k.val) :
+    (composableArrowRefinement F k B q g).obj i.castSucc = F.obj i
+
+lemma composableArrowRefinement_left_edge :
+    ∀ (n : ℕ) (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+      (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ),
+      HEq ((composableArrowRefinement F k B q g).map
+        (homOfLE (Fin.castSucc_le_succ k.castSucc))) q
+
+lemma composableArrowRefinement_before_edge :
+    ∀ (n : ℕ) (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+      (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ)
+      (j : Fin (n + 1)), j < k →
+      HEq ((composableArrowRefinement F k B q g).map
+        (homOfLE (Fin.castSucc_le_succ j.castSucc)))
+          (F.map (homOfLE (Fin.castSucc_le_succ j)))
+
+lemma walkingAdjunctionMergesBottom_heq {Y : WalkingAdjunctionPoint}
+    {A B A' B' : walkingAdjunctionHom .minus Y} (hA : A = A') (hB : B = B')
+    (f : A ⟶ B) (g : A' ⟶ B') (h : HEq f g) :
+    (∃ i : Fin (walkingAdjunctionOrdinalCard .minus Y A), i.val = 1 ∧
+      (walkingAdjunctionOrderHom f i).val = 0) ↔
+    (∃ i : Fin (walkingAdjunctionOrdinalCard .minus Y A'), i.val = 1 ∧
+      (walkingAdjunctionOrderHom g i).val = 0)
+
+lemma walkingAdjunctionPureBottomMerge_heq {Y : WalkingAdjunctionPoint}
+    {A B A' B' : walkingAdjunctionHom .minus Y} (hA : A = A') (hB : B = B')
+    (f : A ⟶ B) (g : A' ⟶ B') (h : HEq f g) (m : ℕ) :
+    (walkingAdjunctionOrdinalCard .minus Y B = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+        (walkingAdjunctionOrderHom f i).val = i.val - 1) ↔
+    (walkingAdjunctionOrdinalCard .minus Y B' = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A'),
+        (walkingAdjunctionOrderHom g i).val = i.val - 1)
+
+lemma walkingAdjunctionBottomMergeRefinement_at {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0) :
+    WalkingAdjunctionBottomMergeAt (walkingAdjunctionBottomMergeRefinement H k m hA h1)
+      k.castSucc
+
+lemma walkingAdjunctionBottomMergeRefinement_pure {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0) :
+    walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionBottomMergeRefinement H k m hA h1).obj k.castSucc.succ) = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionBottomMergeRefinement H k m hA h1).obj k.castSucc.castSucc)),
+        (walkingAdjunctionOrderHom ((walkingAdjunctionBottomMergeRefinement H k m hA h1).map
+          (homOfLE (Fin.castSucc_le_succ k.castSucc))) i).val = i.val - 1
+
+lemma walkingAdjunctionBottomMergeRefinement_before_merge_iff {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    {j : Fin (n + 1)} (hj : j < k) :
+    WalkingAdjunctionBottomMergeAt (walkingAdjunctionBottomMergeRefinement H k m hA h1)
+      j.castSucc ↔ WalkingAdjunctionBottomMergeAt H j
+
+lemma walkingAdjunctionBottomMergeRefinement_no_earlier_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (hmin : ∀ j, WalkingAdjunctionBottomMergeAt H j → k ≤ j)
+    {r : Fin (n + 2)} (hr : r < k.castSucc) :
+    ¬ WalkingAdjunctionBottomMergeAt (walkingAdjunctionBottomMergeRefinement H k m hA h1) r
+
+lemma walkingAdjunctionBottomMergeRefinement_minimal {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (hmin : ∀ j, WalkingAdjunctionBottomMergeAt H j → k ≤ j) :
+    ∀ r, WalkingAdjunctionBottomMergeAt (walkingAdjunctionBottomMergeRefinement H k m hA h1) r →
+      k.castSucc ≤ r
+
+lemma walkingAdjunctionFirstRefinement_first_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    let k := walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd
+    WalkingAdjunctionBottomMergeAt (walkingAdjunctionFirstRefinement H ha hnd) k.castSucc ∧
+      ∀ r, WalkingAdjunctionBottomMergeAt (walkingAdjunctionFirstRefinement H ha hnd) r →
+        k.castSucc ≤ r
+
+lemma walkingAdjunctionFirstRefinement_pure {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    let k := walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd
+    let m := walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) - 2
+    walkingAdjunctionOrdinalCard .minus Y ((walkingAdjunctionFirstRefinement H ha hnd).obj
+      k.castSucc.succ) = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionFirstRefinement H ha hnd).obj k.castSucc.castSucc)),
+        (walkingAdjunctionOrderHom ((walkingAdjunctionFirstRefinement H ha hnd).map
+          (homOfLE (Fin.castSucc_le_succ k.castSucc))) i).val = i.val - 1
+
+lemma walkingAdjunctionFirstRefinement_nondegenerate_of_not_pure
+    {n : ℕ} {Y : WalkingAdjunctionPoint} (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hp :
+      let k := walkingAdjunctionFirstBottomMergeIndex H
+        (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd
+      let m := walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) - 2
+      ¬ (walkingAdjunctionOrdinalCard .minus Y (H.obj k.succ) = m + 1 ∧
+        ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+          (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ k))) i).val =
+            i.val - 1)) :
+    ULift.up (walkingAdjunctionFirstRefinement H ha hnd) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2)
+```
+
+実有限順序の模型で、選んだ非純粋な最初の併合の細分は、原子的・非退化で、
+同じ位置が最小となり、そこで一つだけの併合の条件を満たすところまで構成した。
+原典の文字列表示との全比較とfillable条件の表示の照合、親の一意性はまだ未完。
+始点plusの場合の別の親、その他の面とのfiltrationの両立、parental subcomputadのfiltration、
+元のQCatAdjunctionからの全coherentな延長、原典の向きと現模型の水平反対の全比較、
+同じF≫U・単位・余単位・HAモデルの照合も引き続き未完である。
+今回の最初の位置と厳密な併合条件の保存を、coherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 107.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+セッション71217で実細分より前の対象・実辺・挿入左因子の回収の対象ビルドの終了0を確認した。
+最終セッション58980の最大240秒の一つの枠で、
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementFirstMerge:olean
+の終了0と、続く追加13根だけの公理監査の終了0を確認した。
+最後の型に含めた複数のletのレイアウトと行長の警告を整えてから最終検証した。
+先行する72907では対象ビルドと監査はともに終了0だったが、終了確認前に制御枠の期限で終了124となった。
+最終枠はビルドと監査の後に自動で閉じる形で外側の終了0を確認した。最終対象ビルドは警告なし。
+追加13根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・全出力・最終対象ビルドログは
+[g12-first-merge-preservation-audit-2026-11-15/](g12-first-merge-preservation-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み11,754行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
