@@ -2103,3 +2103,31 @@ HasLimit p → (IsLimitCone c ↔ ∀ y, Function.Bijective
 検証済み全体116本7,268行・680宣言、外枠18,600行内。
 S1・S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：形状制限と指定右 Kan の余単位との合成則（11-15）
+
+3本157行・8宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-counit-composition-1/`。source SHA 一致。
+
+```lean
+kanFunctorHomCongr (SSet.comp_const i c.vertex) rfl
+  ((hoFunctor.map ((pre i).app X)).toFunctor.map (coneCounitHom c)) =
+kanFunctorHomCongr (congrArg SSet.const (restrictJoinCone_vertex c i)) rfl
+  (coneCounitHom (restrictJoinCone c i))
+```
+
+`FunctorHomCongrArrow` は端点の移送を Arrow の対象として相殺する法則。
+`ConeCounitShapeRestriction` は元の円柱の自然性を使い、元の錐を制限した同じ余単位を比較。
+`RightKanCounitHomComposition` は指定右 Kan 射の元の Hom 全単射を定値始域へ
+正規化し、その余単位との合成が Hom 判定を保ち反映することを証明した。
+計算上限は変更せず、全図式・指定変換を保持した。
+
+次の接続は、通常の `sieveFactorizationCone_triangle` の同じ三角形を
+既存の `nerveConePostcomposeHomotopy` で写し、頂点で恒等な全錐の変換を使う部分。
+この構成は既存の `ConePostcomposeHomotopy` を再利用し、作り直さない。
+その後、極限存在下の判定を完全な空間値で使い、任意の係数へ表現可能関手で反映する。
+S1 の交叉降下自体を閉じたとはしていない。
+
+検証済み全体119本7,425行・688宣言、外枠18,600行内。
+S1・S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
