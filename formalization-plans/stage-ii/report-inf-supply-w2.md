@@ -15375,3 +15375,195 @@ R03hの並行する紙と一時検査：元のfiber上の同じroof図式・augm
 作業木を変えないgit merge-treeの事前確認では、共通祖先57705f223からmain側の取り込み取り消しedf81f92eが効くため、検証済みの自分の176本が削除扱いになった。対象一覧は/private/tmp/isw2-b4prime-20261115/merge-preview-absent-own-files.json。重複修正済みのStrictDiagramTotUniversalProbePointComparison・TensorConeUnitPointとモジュール一覧はmodify/delete、報告は内容競合の候補。最終のmergeでは、取り消しの目的だった重複が既に修正されている元の自分のソースを、検査済みプレビューから保持する必要がある。B3′で移動した別の本体ソース全体へ上書きせず、今回の197本と宣言の所有元表・module-mapに従う。公式入口や監査の取り消された登録は勝手に戻さず、調整役への登録候補に残す。mainの独立した変更は保持する。
 
 鍵待ち中の一時検査では、同じ実roof全族の任意の後合成を、元の全augmentationの逆と評価の像へ戻す式まで検査できた（/private/tmp/isw2-rooffibercolumn.lean、199行、ハンドル26704・終了0）。同じ全FunctorIsoの定値族が元の指定成分に一致する法則も、既存の未ビルドの評価補題を一時結合して検査した（/private/tmp/isw2-constantisofamily-combined.lean、ハンドル53401・終了0）。どちらもプロジェクトのソースは変更しておらず、B4′後の本体の対象ビルド・小監査はまだ。検証済み196本・12,815行の数は維持する。
+
+## 263. B4′採取55本と、同じ全augmentationの一時照合（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03h・B4′は未完了。
+
+B4′は55／197本の参照採取・プレビューが成功。全てreview.jsonは空、追加import0、原ソースとの差分0本。12本の組r00・r01・r02も280秒guardの範囲内で成功した（待ちを含む経過748.5秒・759.6秒・483.6秒）。同じ単一runner38504を継続し、これから第r03組。mainの実際のmergeはまだ行っていない。
+
+取り込み前の全索引とプレビューをまとめる/private/tmp/isw2-b4prime-20261115/assemble-before.pyを準備した。全197本が重複・欠落なく揃い、全captureのsourceが現原ソースと一致することを検査してから、before-allと新しいpreview-allを作る。MERGE_HEADがあるとき、またはmain取り込み後には動かせないガードを置き、旧索引を取り込み後のソースへ流用しない。事前mergeで消える176本については、全てがedf81f92eの削除対象に含まれることもgit diff-treeと照合した。
+
+R03hの一時検査では、同じroof図式・同じ全単体の二列図式・元のroof比較とRoofPrefix全族の一致・任意の後合成の全roof公式に続き、同じfull augmentationが元の全パラメータのaugmentation自身の引き戻しであることまで検査した。最初の全関手の照合は200,000 heartbeatに達したため上限を変えず、対象・射・一般のfiber包含の単体作用素の法則へ分割した。後者の等式輸送はGrothendieck.ιの元のeqToHomを射影して処理し、別の包含や別のpathに替えていない。最終/private/tmp/isw2-roofparameter2.lean（355行、一時入力全体）は実ハンドル3044・終了0。一般のfiber作用素の独立検査36768も終了0。
+
+同じ元のnerveTransformationPostIsoの順射を元の全自然変換のNerveColumn.homへ戻す法則も/private/tmp/isw2-nervepostisocolumn.leanで検査し、実ハンドル80148・終了0。定値族の法則の検査53401も終了0。全て一時ファイルの個別検査で、プロジェクトには追加・変更していない。検証済み196本・12,815行／外枠22,000行の計数は維持。本体モジュールへの配置と対象ビルド・小監査はB4′後に行う。
+
+以下は通過した一時の型（名称は本体反映時に新規宣言名との重複を確認する）。BE側の共通入力は `(A : Type u) [CommRing A]`、canonicalな既存modelCategory AとmappingCofibrantFactorization Aのlocal instanceのみを使う。既存構成の合成・単位・係数移送・証明分割の法則として一覧の項目数は増やさない。元のnative射とroof射の全族の等式、すなわちR03hそのものはなお未証明。
+
+```lean
+abbrev strictBETotJointRoofResolution (P : strictBETotJointHomIndex A)
+
+def strictBETotJointSourceRoofFrameDiagram (P : strictBETotJointHomIndex A) :
+    ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⥤
+      (modelRelativeCategory (operad A).Algebra).category
+
+def strictBETotJointSourceRoofFrameAugmentation (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofFrameDiagram A P ⟶
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra
+          (framedLimitProbe A (AsSmall.down.obj P).1.unop))
+
+def strictBETotJointSourceRoofFrameEvaluation (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofFrameDiagram A P ⟶
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra
+          ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))
+
+lemma strictBETotJointSourceRoofFrameAugmentation_weak
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (modelRelativeCategory (operad A).Algebra).weakEquivalences
+      ((strictBETotJointSourceRoofFrameAugmentation A P).app s)
+
+lemma strictBETotJointSourceRoofFrameDiagram_weak
+    (P : strictBETotJointHomIndex A)
+    {s t : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ}
+    (f : s ⟶ t) :
+    (modelRelativeCategory (operad A).Algebra).weakEquivalences
+      ((strictBETotJointSourceRoofFrameDiagram A P).map f)
+
+def strictBETotJointSourceRoofFrameZigzag (P : strictBETotJointHomIndex A)
+
+theorem strictBETotJointSourceRoofFrameZigzag_nerve
+    (P : strictBETotJointHomIndex A) :
+    (elementsOppositeUniverseNerveIso.{u+1,u}
+      ((SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
+        (strictBETotJointRoofResolution A P).obj).obj
+          ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))).hom ≫
+      FrameHom.frameLeftRoofNerveMap (weakEquivalences (operad A).Algebra)
+        (strictBETotJointRoofResolution A P).obj
+        (strictBETotJointRoofResolution A P).augmentation
+        (strictBETotJointRoofResolution A P).augmentation_weakEquivalence
+        (fun f => (strictBETotJointRoofResolution A P).homotopicallyConstant f) ≫
+      (Hammock.AsSmallComparison.graphIso (weakEquivalences (operad A).Algebra)
+        (framedLimitProbe A (AsSmall.down.obj P).1.unop)
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+        LeftRoof.word).hom =
+      nerveMap (strictBETotJointSourceRoofFrameZigzag A P)
+
+theorem strictBETotJointSourceRoofKanComparison_prefix
+    (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofKanComparison A P =
+      SimplicialLocalization.RoofPrefix.familyMap
+        (modelRelativeCategory (operad A).Algebra)
+        (strictBETotJointSourceRoofFrameDiagram A P)
+        (strictBETotJointSourceRoofFrameAugmentation A P)
+        (strictBETotJointSourceRoofFrameAugmentation_weak A P)
+        (strictBETotJointSourceRoofFrameEvaluation A P)
+        (strictBETotJointSourceRoofFrameDiagram_weak A P)
+
+theorem strictBETotJointSourceRoofPinchedComparison_column_roof
+    {E : SSet.{u+1}} [Quasicategory E] (P : strictBETotJointHomIndex A)
+    (F : SimplicialLocalization.kanHammockNerve
+      (modelRelativeCategory (operad A).Algebra) ⟶ E) :
+    let R := modelRelativeCategory (operad A).Algebra
+    let V := strictBETotJointSourceRoofFrameDiagram A P
+    let p := strictBETotJointSourceRoofFrameAugmentation A P
+    let hp := strictBETotJointSourceRoofFrameAugmentation_weak A P
+    Arrow.mk
+      (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom
+        ((strictBETotJointSourceRoofPinchedComparison A P ≫
+          SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F _ _) ≫
+          SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk
+      ((FrameHom.NerveColumn.augmentationIso
+        (SimplicialLocalization.hammockLocalizationNerveMap R ≫ F) V p
+        (SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible R V p hp F)).inv ≫
+        FrameHom.NerveColumn.hom
+          (SimplicialLocalization.hammockLocalizationNerveMap R ≫ F)
+          (strictBETotJointSourceRoofFrameEvaluation A P))
+
+def strictBETotJointSourceRoofFullAugmentation (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofFrameDiagram A P ⟶
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra (AsSmall.down.obj P).1.unop)
+
+theorem strictBETotJointSourceRoofFullAugmentation_app
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (strictBETotJointSourceRoofFullAugmentation A P).app s =
+      (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+        ((strictBETotJointRoofResolution A P).augmentation.app s.unop.obj.unop ≫
+          framedLimitProbeComparison A (AsSmall.down.obj P).1.unop)
+
+theorem strictBETotJointSourceRoofFullAugmentation_original
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (strictBETotJointSourceRoofFullAugmentation A P).app s =
+      (strictBETotJointSourceFrameAugmentation A).app
+        ((AsSmall.up : (operad A).Algebra × SimplexCategory ⥤
+          strictBETotJointSourceFrameIndex A).obj
+            ((AsSmall.down.obj P).1.unop, s.unop.obj.unop))
+
+theorem strictBETotJointSourceRoofFullAugmentation_weak
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (modelRelativeCategory (operad A).Algebra).weakEquivalences
+      ((strictBETotJointSourceRoofFullAugmentation A P).app s)
+
+def strictBETotJointRoofParameterIndex (P : strictBETotJointHomIndex A) :
+    ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⥤
+      strictBETotJointSourceFrameIndex A
+
+theorem strictBETotJointRoofParameterIndex_obj (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (strictBETotJointRoofParameterIndex A P).obj s =
+      (AsSmall.up : (operad A).Algebra × SimplexCategory ⥤ strictBETotJointSourceFrameIndex A).obj
+        ((AsSmall.down.obj P).1.unop, s.unop.obj.unop)
+
+lemma sameSimplicialElementsFiberFunctor_degree {I : Type u} [SmallCategory I]
+    (G : I ⥤ SSet.{u}) (i : I)
+    {s t : (simplicialElementsCatDiagram G).obj i} (f : s ⟶ t) :
+    ((simplicialElementsFiberFunctor G i).map f).hom.2 = f.down.hom
+
+theorem strictBETotJointRoofParameterIndex_map (P : strictBETotJointHomIndex A)
+    {s t : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ}
+    (f : s ⟶ t) :
+    HEq ((strictBETotJointRoofParameterIndex A P).map f)
+      ((AsSmall.up : (operad A).Algebra × SimplexCategory ⥤ strictBETotJointSourceFrameIndex A).map
+        ((𝟙 (AsSmall.down.obj P).1.unop, f.unop.down.hom.unop) :
+          ((AsSmall.down.obj P).1.unop, s.unop.obj.unop) ⟶
+            ((AsSmall.down.obj P).1.unop, t.unop.obj.unop)))
+
+theorem strictBETotJointRoofParameterIndex_evaluation (P : strictBETotJointHomIndex A) :
+    strictBETotJointRoofParameterIndex A P ⋙ strictBETotJointSourceFrameEvaluation A =
+      strictBETotJointSourceRoofFrameDiagram A P
+
+theorem strictBETotJointRoofParameterIndex_constant (P : strictBETotJointHomIndex A) :
+    strictBETotJointRoofParameterIndex A P ⋙ strictBETotJointSourceFrameConstant A =
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra (AsSmall.down.obj P).1.unop)
+
+theorem strictBETotJointRoofParameterIndex_augmentation
+    (P : strictBETotJointHomIndex A) :
+    HEq (CategoryTheory.Functor.whiskerLeft (strictBETotJointRoofParameterIndex A P)
+      (strictBETotJointSourceFrameAugmentation A))
+      (strictBETotJointSourceRoofFullAugmentation A P)
+
+private theorem sameFunctor_map_heq {C D : Type*} [Category C] [Category D]
+    (F : C ⥤ D) {x y x' y' : C} (hx : x = x') (hy : y = y')
+    (f : x ⟶ y) (g : x' ⟶ y') (h : HEq f g) : HEq (F.map f) (F.map g)
+
+private theorem sameNatTrans_heq {I C : Type*} [Category I] [Category C]
+    {F G F' G' : I ⥤ C} (hF : F = F') (hG : G = G')
+    (η : F ⟶ G) (η' : F' ⟶ G')
+    (ha : ∀ i, HEq (η.app i) (η'.app i)) : HEq η η'
+```
+
+定値族の法則（一般の準圏K・X、任意のT）と元の全augmentation同型の順射の法則：
+
+```lean
+lemma sameFunctorIso_constant_family {K X : SSet.{u}} [Quasicategory K] [Quasicategory X]
+    (T : SSet.{u}) {f g : K ⟶ X} (e : FunctorIso f g) (x : K _⦋0⦌) :
+    (constantFunctorCompIso T x f).inv ≫
+      (e.precomp (SSet.const x : T ⟶ K)).hom ≫
+      (constantFunctorCompIso T x g).hom =
+        constantFunctorHomMap T (e.app x).hom
+
+lemma sameNerveTransformationPostIso_column
+    {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {F G : I ⥤ C} (η : F ⟶ G) {Q : SSet.{u}} [Quasicategory Q]
+    (L : nerve C ⟶ Q)
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    (nerveTransformationPostIso η L hη).hom = NerveColumn.hom L η
+```
