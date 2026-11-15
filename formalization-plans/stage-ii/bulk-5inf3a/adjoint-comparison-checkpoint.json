@@ -1,0 +1,47 @@
+{
+  "complete": 1,
+  "total": 6,
+  "added": 0,
+  "checked_sources": [
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ExtensionRows",
+      "source_sha256": "0ca24c73c22ec4a2c039b85f064f409f5f8b7033a75e8899027fc4ee5c804802",
+      "rc": 0,
+      "seconds": 9.573669418692589,
+      "log": "Totalization.ExtensionRows.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.TensorAdjointComparison",
+      "source_sha256": "9d34bc306fb09c3038b4fe35849eeacb7c97fe5e153f0b14cfbb58ea2da91eac",
+      "rc": 0,
+      "seconds": 14.345479207113385,
+      "log": "Totalization.TensorAdjointComparison.log"
+    }
+  ],
+  "source_inventory": {
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineCochainModel": "927aa630bf106feba3cb34399eb21407e10bc19ab91181ddd15644a9ccac2158",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineCochainMap": "e1387bf360d3d08bb58e918c6fbc190985554d81f36acf35491f772406251348",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineTotalModel": "f20de8abd8f645fe9c3ff084b564510e5206b9c13b3e0a34e266df5e415cf2d6",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.Components": "b30ee4c6b6a42cb79f5a2fb108ef8a939ce88e1105d65e5c4952db8879664adb",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CompletionBounds": "31cef13bca00b8b9a50fde621a44170cefd7b01a619bc2afc1274b248918349c",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ResolvedScalarExtension": "e07c6ad322b3c34b68e286779b04816522c9d818feb5c84eb9fb7d3786d9d7ed",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ColumnPrimitive": "3596155e530b0545aaf7ef92d8fb5a412469afd7b25287d7194b5ada6c95c596",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.LowerBound": "2048d9f1aadd31b886c3e7a0fcdccece73bc91b92a02115ec22d0c94aa3f0d20",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.FixedTorBounds": "e921cf2285c2c977168de34ec0e4ac19bfae3710edbcbdcec2cea0c9db513112",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.TensorComponents": "b7a436c8de476805e089ca5e752903a2799bad71203abd2baef479b0c2e8c60b",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.FixedTorTotalBounds": "ea30e7bf33d0cbb16a949bbce104411e0aa29516d97cccb1bd9e8159eb38887d",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.TensorZeroRow": "41964c618b0ba320db4b06d53a0d2f3ab605da4a3dd64e71e03af16b9582c214",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.TailBounds": "4ec9d69e83946b8b64ea2f1a4a273d320af4c89f776840b5a6eed8cb8235c63f",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.TensorAdjointComparison": "9d34bc306fb09c3038b4fe35849eeacb7c97fe5e153f0b14cfbb58ea2da91eac",
+    "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ExtensionRows": "0ca24c73c22ec4a2c039b85f064f409f5f8b7033a75e8899027fc4ee5c804802"
+  },
+  "audit": {
+    "rc": 0,
+    "declarations": 293
+  },
+  "not_claimed": [
+    "naturality and degree formula for nonnegative-row comparison",
+    "finite-skeleton comparison",
+    "completed base-change/Tot quasi-isomorphism"
+  ]
+}
