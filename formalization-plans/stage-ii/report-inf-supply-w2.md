@@ -15750,3 +15750,79 @@ lemma sameFunctorIso_op_precomp {A X Y : SSet.{u}} [Quasicategory Y]
     {f g : X ⟶ Y} (e : FunctorIso f g) (p : A ⟶ X) :
     HEq (e.precomp p).op (e.op.precomp (SSet.opFunctor.map p))
 ```
+
+## 267. B4′ の191本までの確認と、同じnative augmentationのroofへの制限（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 267.1 B4′
+
+採取とプレビューは 191／197。完了分の review は空、プレビューと元ソースのバイト列の差分は0。最後の s05（6本）を同じ一枚の整理券で継続中。実処理の上限280秒、--class impl --wait 3600を維持している。main はまだ取り込んでいない。統合直前の merge-tree も再確認した（main 58d6a0de9）。予覧で欠ける自レーン176本は全て以前の revert edf81f92e の削除であり、二つの修正済みLeanのmodify/delete、一覧JSON、報告の競合も前回と同じ。main の報告への独立した追記は0。B3′の新配置の変更を保持し、この自レーンの検証済みソースを落とさずに統合する。
+
+### 267.2 元のnative側の全同型を同じroofへ合わせる法則
+
+一時ファイル isw2-nerveleftop.lean と isw2-roofopaugmentation.lean を lake env lean で検査した。最終ログ nerveleftop と roofopaugmentation2 はともに exit 0。後者は検査用に既存の定義・以前の検証済み補題を結合した 821 行で、新しいnative側の部分は 118 行。これは本体の対象ビルドや監査の代用ではない。原環境のLeanソースには変更を入れておらず、本体へ分けた後に対象ビルドと小監査を行う。
+
+元のfiberの反変入力を、同じ leftOp パラメータと既存の nerve 反転で表し、元の strictBETotJointSourceAugmentationDomainIso の全値を保持して制限した。§266の反転・前合成の法則と§264の全augmentationの制限則をつなぎ、同じ全 FunctorIso の fiber 制限が、同じroofのaugmentationIsoを反転して同じ入力へ引き戻したものに HEq で一致するところまで確認した。任意に別の同型を選んだり、点ごとの同値で代用していない。
+
+以下は既存構成の反転・制限・端点輸送の法則と証明の分割であり、一覧の新しい数学には数えない。R03h の最終の interval 族の等式、元のnative fiber射自身の弱同値性、R03d は未完である。
+
+```lean
+lemma sameNerveLeftOp_input {C D : Type u} [SmallCategory C] [SmallCategory D]
+    (F : C ⥤ Dᵒᵖ) :
+    nerveMap F ≫ (nerveOppositeIso (C := D)).inv =
+      (nerveMap (opOp C) ≫ (nerveOppositeIso (C := Cᵒᵖ)).inv) ≫
+        SSet.opFunctor.map (nerveMap F.leftOp)
+
+lemma sameFunctorIso_precomp_of_heq {K X Y : SSet.{u}} {f g f' g' : X ⟶ Y}
+    (e : FunctorIso f g) (e' : FunctorIso f' g') (hf : f = f') (hg : g = g')
+    (he : HEq e e') (p : K ⟶ X) : HEq (e.precomp p) (e'.precomp p)
+
+lemma sameFunctorIso_op_of_heq {X Y : SSet.{u}} [Quasicategory Y]
+    {f g f' g' : X ⟶ Y} (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (hf : f = f') (hg : g = g') (he : HEq e e') : HEq e.op e'.op
+
+theorem strictBETotJointSourceAugmentationInput_fiber
+    (P : strictBETotJointHomIndex A) :
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      strictBETotJointSourceAugmentationInput A =
+    (nerveMap (opOp ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)) ≫
+      (nerveOppositeIso (C := ((simplicialElementsCatDiagram
+        (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv) ≫
+      SSet.opFunctor.map (nerveMap (strictBETotJointRoofParameterIndex A P))
+
+theorem strictBETotJointSourceAugmentationDomainIso_value :
+    HEq (strictBETotJointSourceAugmentationDomainIso A)
+      ((strictBETotJointSourceFrameAugmentationIso A).op.precomp
+        (strictBETotJointSourceAugmentationInput A))
+
+theorem strictBETotJointSourceAugmentationDomainIso_fiber_value
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceAugmentationDomainIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      ((strictBETotJointSourceFrameAugmentationIso A).op.precomp
+        (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+          strictBETotJointSourceAugmentationInput A))
+
+theorem strictBETotJointSourceAugmentationDomainIso_fiber_parameter
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceAugmentationDomainIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      (((strictBETotJointSourceFrameAugmentationIso A).precomp
+        (nerveMap (strictBETotJointRoofParameterIndex A P))).op.precomp
+          (nerveMap (opOp ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)) ≫
+            (nerveOppositeIso (C := ((simplicialElementsCatDiagram
+              (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv))
+
+theorem strictBETotJointSourceAugmentationDomainIso_roof_restriction
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceAugmentationDomainIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      ((FrameHom.NerveColumn.augmentationIso (strictBETotModelSource A)
+        (strictBETotJointSourceRoofFrameDiagram A P)
+        (strictBETotJointSourceRoofFullAugmentation A P)
+        (strictBETotJointSourceRoofFullAugmentation_inverted A P)).op.precomp
+          (nerveMap (opOp ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)) ≫
+            (nerveOppositeIso (C := ((simplicialElementsCatDiagram
+              (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv))
+```
