@@ -15117,3 +15117,96 @@ theorem strictBETotJointSourceRoofPinchedComparison_app_val (P : strictBETotJoin
 - SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched
 
 次は既存CoherentLocalizationComparison.pinchedEquivalenceを、元のstrictBETotRightFrameCoherentComparisonの同じ第二成分に適用し、同じ指定二胞体の両端の共役として元のCAlg源へ輸送する。probe始域と右置換標的を元のnative fiberの両端へ合わせること、元のnative射と基準roof射との全単体での照合、R03dの元の固定始域の全FunctorIsoへの正規化はなお残る。
+
+## 255. 同じ指定局所化比較と端点同型によるroof基準射の輸送（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+既存のCoherentLocalizationComparison.pinchedEquivalenceを元のstrictBETotRightFrameCoherentComparisonの同じ第二成分に適用する。比較関手と指定二胞体の両端成分への分解は既存の厳密な等式から得る。さらに元のprobe比較と元の全標的右置換単位を使い、基準roof射の両端を元のモデル源の頂点へ合わせる。新しい比較同値や指定経路は選び直さない。既存の合成・係数移送の法則として項目数は増やさない。二本183行。対象ビルド・監査はこれから実行し、成功前にコードをコミットしない。
+
+これは弱同値である基準射の端点を揃える段であり、元のnative fiber射そのものの弱同値性はまだ主張しない。同じnative射との全単体の照合と元の固定始域の全FunctorIsoへの正規化が残る。
+
+共通入力は `(A : Type u) [CommRing A]`。型は以下のとおり。
+
+#### StrictDiagramTotJointSourceRoofNativePinched（84行）
+
+```lean
+def strictBETotJointRoofLocalizationComparison (P : strictBETotJointHomIndex A) :
+    FrameHom.CoherentLocalizationComparison
+      (SimplicialLocalization.hammockLocalizationNerveMap
+        (modelRelativeCategory (operad A).Algebra)) (strictBETotModelSource A)
+
+def strictBETotJointSourceRoofNativePinchedComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (strictBETotJointRoofSourceObject A P)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (strictBETotJointRoofTargetObject A P)))
+
+theorem strictBETotJointSourceRoofNativePinchedComparison_weak (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofNativePinchedComparison A P)
+
+theorem strictBETotJointSourceRoofNativePinchedComparison_normalization
+    (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofNativePinchedComparison A P =
+      strictBETotJointSourceRoofPinchedComparison A P ≫
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap
+          (strictBETotJointRoofLocalizationComparison A P).equivalence.hom _ _ ≫
+        (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedEndpointEquivalence
+          ((strictBETotJointRoofLocalizationComparison A P).triangle.toNatIso.app
+            (HomotopyCategory.mk (nerveVertex (strictBETotJointRoofSourceObject A P))))
+          ((strictBETotJointRoofLocalizationComparison A P).triangle.toNatIso.app
+            (HomotopyCategory.mk (nerveVertex (strictBETotJointRoofTargetObject A P))))).hom
+```
+
+#### StrictDiagramTotJointSourceRoofEndpointTransport（99行）
+
+```lean
+def strictBETotJointRoofProbeEndpointIso (P : strictBETotJointHomIndex A) :
+    VertexIso
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointRoofSourceObject A P)))
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+
+theorem strictBETotJointRoofTargetReplacement_vertex (P : strictBETotJointHomIndex A) :
+    ((nerveMap (strictBETotTargetReplacement A) ≫ strictBETotModelSource A).app
+      (Opposite.op ⦋0⦌)) (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)) =
+      (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointRoofTargetObject A P))
+
+def strictBETotJointRoofTargetEndpointUnitIso (P : strictBETotJointHomIndex A) :
+    VertexIso
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointRoofTargetObject A P)))
+
+def strictBETotJointSourceRoofNormalizedPinchedComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))
+
+theorem strictBETotJointSourceRoofNormalizedPinchedComparison_weak
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofNormalizedPinchedComparison A P)
+```
+
+## 256. 同じ指定比較と端点輸送の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+322の鍵付き対象ビルド12,241 jobsと小監査197モジュール・1,391宣言が成功し、標準三公理のみ。実ハンドル80601・終了0、鍵返却済み。--class impl --wait 3600、1700秒guardを使用。二つの互換入口の宣言0と既存補題の定義元の検査を維持した。二本の新規宣言名はmain EInfinityとのgit grepで重複なし。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainを変更していない。
+
+今回二本183行。検証済み193本・12,586行／外枠22,000行、自分の宣言は1,384。監査には既存定義元等の4モジュールも含む。既存の合成・係数移送の法則で項目数は増やさない。
+
+登録候補：
+
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativePinched
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport
+
+元のnative fiber射との全単体の比較と、その実射の弱同値性はなお残る。次は元のnative Hom入力の頂点を元のモデル源の二頂点と厳密に合わせ、twisted-arrow fiberの比較の両端を明示する。

@@ -189,5 +189,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.OppositeWeakHomotopyReflection",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber",
   "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPinchedSimplexValue",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativePinched",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport"
 ]
