@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base bb46d64228002fab49646b72239d63480d12dd95",
+  "verified_head": "this commit: base 680288003e7859a5a83ecd1ca814d7569ca30f43",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "crystalline-resolved-ordinary-totals-checkpoint.json",
-  "latest_complete_audit_declarations": 1268,
+  "latest_complete_audit_checkpoint": "affine-crystalline-completed-totals-checkpoint.json",
+  "latest_complete_audit_declarations": 1287,
   "working_changes_unverified": [],
-  "pending_check": "bundle-092 terminal; all prepared modules passed",
+  "pending_check": "bundle-094 terminal; all prepared modules passed",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
