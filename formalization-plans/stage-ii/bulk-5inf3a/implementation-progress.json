@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 714b19e981402570d8b929475149652bf14a0a95",
+  "verified_head": "this commit: base c87ba8949948cf4ef008093005ea0e65116276d4",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,16 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "standard-native-comparison-iso-checkpoint.json",
-  "latest_complete_audit_declarations": 1088,
+  "latest_complete_audit_checkpoint": "derived-unit-and-cosimplicial-naturality-checkpoint.json",
+  "latest_complete_audit_declarations": 1136,
   "working_changes_unverified": [
-    "NativeCanonicalComparison",
-    "CosimplicialResolutionNaturality",
-    "FiniteDerivedReflection",
     "NativeCosimplicialNaturality",
-    "NativeModelComparisonNaturality"
+    "NativeModelComparisonNaturality",
+    "NativeCanonicalComparison"
   ],
-  "pending_check": "bundle-063 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-064 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
