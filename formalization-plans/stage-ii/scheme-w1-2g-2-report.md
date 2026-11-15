@@ -1383,3 +1383,14 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール78行＋入口1行。新規108モジュール本体7,111行・入口込み7,219行。既存追加25行を含む外枠計数は本体7,136行・入口込み7,244行。新規小監査累計714宣言、既存15宣言は別計上。基底環の射に沿う線形な増大写像の係数移送は単独検証に成功したが、本体ビルド・監査前なのでこの束には含めない。この増大余単体図式だけで B1 の二重図式の完全性や Noether 帰納を完成とせず、同じ基底・中心の増大軸の供給として扱う。G4・G5 は未完、外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：基底環の射に沿う同じ増大写像の係数移送
+
+`SchemePerfectCechTupleScalarPullback`（76行）の宣言：`schemeCechNerveMapScalarHom_naturality` は F.right=Spec.map q を保つ実際の mapCechNerve の各項の大域スカラーの可換性。`schemePerfectCechTuplePullback_augmentation` は同じ引き戻しの零次と R の増大写像の合成が、S の増大写像と実際の Frobenius 順極限の q の写像の合成に等しいこと。元の増大射・同じ被覆の逆像・同じ切断の写像を使い、Cartesian 性・平坦性・完全性は仮定しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,194ジョブ成功、小監査2宣言・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-tuple-scalar-pullback-check-2.log`・`2g-perfect-cech-tuple-scalar-pullback-native.log`・`2g-perfect-cech-tuple-scalar-pullback-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。letI の style 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール76行＋入口1行。新規109モジュール本体7,187行・入口込み7,296行。既存追加25行を含む外枠計数は本体7,212行・入口込み7,321行。新規小監査累計716宣言、既存15宣言は別計上。次の既存の増大余単体の射の値と single からの射の可換性は単独検証に成功したが、本体ビルド・監査前で、この束には含めない。G4・G5 は未完、外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
