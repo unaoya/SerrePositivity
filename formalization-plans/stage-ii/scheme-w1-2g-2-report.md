@@ -1061,3 +1061,36 @@ G4 の Frobenius 係数への同じ自然性の特殊化（着手前、前記の
 G4 の増大項までの比較と、実際のスカラー・引き戻し・細分の自然性まで。閉中心の逆像被覆への四角形の適用、選んだ一つの被覆と nerve の整合性、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と実際の blowup を保持した Noether 帰納、G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。次の幾何的な接続の紙の筋は作業メモに整理し、未検証の Lean の数学はこのコミットに含めない。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 のスカラーの係数移送の合成則（着手前、既存の増大写像の合成の内数、25〜60行）：`schemeStructurePerfectCechAugmentation_comp Y φ q p hp hR hS hY U` は実際の q:R→S、φ:S→Γ(Y,⊤) に対し、`Aug(Y,φ.comp q,U) = Aug(Y,φ,U).comp (frobeniusDirectLimitMap … q).toAddMonoidHom.toIntLinearMap` を返す。既存の増大写像と Frobenius の環準同型の合成則だけを使う。
+
+次の F8 の係数への適用（着手前、既存の CechAugmentedSquare への同じ係数・射の代入、50〜110行）：`schemeStructurePerfectCechSquare f q φ ψ hφ p hp hR hS hY hX U : CechAugmentedSquare.{u} ℤ`。既存の二つの複体に Y の U と X の f⁻¹U の実際の Frobenius 係数の Čech 複体を入れ、制限は schemeStructurePerfectCechPullbackMap。基底・中心は既存の R・S の Frobenius 順極限、スカラー・中心の増大写像は検証済みの schemeStructurePerfectCechAugmentation、商の辺は実際の q の Frobenius 順極限。`hφ:f.appTop.hom.comp φ=ψ.comp q` により可換性を、前束の引き戻しの自然性と上の合成則から供給する。これは新しい四角形の概念・全複体を定義するものでなく、F8 が使う既存の四角形の同じ構成への native な係数移送の明示。完全性はデータの仮定にしない。後続の比較の射・細分の単位と合成を同じ値で示し、既存の projectivePerfectCartesianAugmentedSquare から完全性を移す。
+
+
+G4 の同じ四角形の細分の射（着手前、既存の CechAugmentedSquare.Map と細分の自然性の内数、55〜110行）：`schemeStructurePerfectCechSquare_refinement … U V ρ hρ : CechAugmentedSquare.Map (schemeStructurePerfectCechSquare … U) (schemeStructurePerfectCechSquare … V)`。left は Y の実際の細分の cochain map、right は X の f⁻¹U・f⁻¹V への実際の細分、base・center は恒等。制限の可換性は既存の schemeStructurePerfectCechPullbackMap_refinement の等式（Map の向きへ反転）、増大写像の可換性は検証済みの augmentation_refinement。完全性・被覆性・アフィン性はこの射の定義の仮定に足さない。
+
+
+G4 の同じ四角形の有限アフィン細分・共通細分による完全性の比較（着手前、既存の被覆比較の法則の内数、65〜140行）：`schemeStructurePerfectCechSquare_refinement_acyclic_iff … U V ρ hρ hU hV hcV` は f のアフィン性と X・Y のアフィン対角の下で、同じスカラーの四角形の全複体の完全性を有限アフィン細分で両向きに移す。Y の cone は既存の有限アフィン細分から、X 側は実際の逆像のアフィン性 `(hU i).preimage f` と逆像の被覆性から供給する。完全性・QuasiIsoAt を仮定し直さない。`schemeStructurePerfectCechSquare_commonAffine_acyclic_iff … U V hU hV hcU hcV` は既存の同じ有限共通開被覆と二つの射影を使い、二つの任意の有限アフィン被覆での同値を返す。f が閉埋め込みである F8 への適用では、そのアフィン性を既存の instance から供給する。X・Y のアフィン対角も後の射影模型から供給し、最終出力の新しい仮定にはしない。
+
+
+次の F8 の native な係数移送の分割（着手前、既存の projectivePerfectCartesianAugmentedSquare の辺の自然性の内数、80〜200行）：`projectivePerfectCartesianScalarCompatibility` は既存の Cartesian な閉中心の H.w から、`g.appTop.hom.comp (projectiveScalarToGlobalSections G) = (schemeScalarHom X iX).comp (Ideal.Quotient.mk (I^1))` を返す。schemeScalarHom_naturality と schemeScalarHom_scalarMorphism の既存の等式の特殊化。`projectivePerfectCartesianScalarSquare … V` は同じ G・I・実際の閉中心とスカラーを、上記の既存の四角形への native な係数の代入に渡す略記。`projectivePerfectCartesianToScalarSquare` は標準開被覆における old F8 四角形からこの値への実際の CechAugmentedSquare.Map。C・E・基底・中心の項の写像は恒等で、制限・スカラー・商・中心の四辺の一致を既存の Edges の等式と検証済みの増大写像の自然性で示す。四角形全体の依存的な等式を強制せず、この実際の射と cone の比較で既知の F8 の完全性を移す。完全性を追加仮定にせず、Noether・有限表示・中心外の同型・全射性は既存の F8 の適用条件のまま。必要な源・先の条件と主張は変えない。
+
+
+## G4：同じ四角形への native な係数移送と有限アフィン被覆の比較
+
+`SchemePerfectCechAugmentationComposition`（39行）：`schemeStructurePerfectCechAugmentation_comp` は、実際のスカラーの合成を、同じ既存の増大写像と Frobenius の係数写像の合成へ移す。
+
+`SchemeStructurePerfectCechSquare`（47行）：`schemeStructurePerfectCechSquare` は、既存の CechAugmentedSquare の各項と辺に、実際の構造層の Frobenius 係数・逆像被覆・大域スカラー・基底の環準同型を入れた値。制限の可換性は検証済みの増大写像の引き戻しと上の合成則から供給し、閉性も既存の増大写像から供給する。新しい四角形の概念や全複体は作っていない。完全性はデータの仮定ではない。
+
+`SchemePerfectCechSquareRefinement`（49行）：`schemeStructurePerfectCechSquare_refinement` は、同じスカラーと基底・中心の係数を保つ、実際の細分の四角形の射。left・right は両空間の実際の細分の cochain map、基底・中心の項は恒等。四つの辺の自然性を既存の等式から供給する。
+
+`SchemePerfectCechSquareAffineComparison`（73行）：`schemeStructurePerfectCechSquare_refinement_acyclic_iff` は f がアフィン、両空間がアフィン対角を持つとき、有限アフィン細分で同じ四角形の全複体の完全性が保たれ反映されること。X 側の逆像のアフィン性と被覆性も明示的に供給する。`schemeStructurePerfectCechSquare_commonAffine_acyclic_iff` は既存の同じ有限共通被覆を介して、二つの有限アフィン被覆での同値を返す。完全性や QuasiIsoAt の追加仮定はなく、実際の四角形の射を使う。原典との対応を Čech 版と明記した。
+
+各単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,167・5,168・5,169・5,170ジョブ、小監査1・9・9・2宣言（計21、所有元の生成・非公開宣言も全件）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-augmentation-composition-check-1.log`・`2g-perfect-cech-augmentation-composition-native.log`・`2g-perfect-cech-augmentation-composition-audit.log`、`2g-scheme-structure-perfect-square-check-1.log`・`2g-scheme-structure-perfect-square-native.log`・`2g-scheme-structure-perfect-square-audit.log`、`2g-scheme-perfect-square-refinement-check-2.log`・`2g-scheme-perfect-square-refinement-native.log`・`2g-scheme-perfect-square-refinement-audit.log`、`2g-scheme-perfect-square-affine-comparison-check-1.log`・`2g-scheme-perfect-square-affine-comparison-native.log`・`2g-scheme-perfect-square-affine-comparison-audit.log`。合成則・既存の四角形への代入・細分の射・最初の有限アフィン比較に局所的な backward.isDefEq.respectTransparency false を使用。共通細分の比較は既定の透明性。有限性を証明で使うが型の表示には現れないという Fintype linter の警告がある。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと小監査は別の枠。root・下流全ビルド・全体監査なし。
+
+今回4モジュール208行＋入口4行。新規85モジュール本体5,485行・入口込み5,570行、既存の追加25行を保守的に含む外枠計数は本体5,510行・入口込み5,595行。新規モジュールの小監査の累計603宣言と、既存モジュール15宣言は別計上（全体の再監査ではなく各束の小監査の和）。
+
+次は F8 の projectivePerfectCartesianAugmentedSquare から、標準開でのこの native な値への実際の四角形の射で、既知の完全性を移す。既存の各辺の等式とスカラーの自然性は照合済みで、上に型を記録した。F8 の完全性の任意のアフィン被覆への適用そのもの、nerve との整合性、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と Noether 帰納、G5 は未完。条件付きの部品だけで Thm 2.9 の十分性を完成と呼ばない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
