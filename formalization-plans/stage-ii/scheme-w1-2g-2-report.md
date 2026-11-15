@@ -945,3 +945,22 @@ G4 の増大項まで含む比較の法則（着手前、既存の全複体の�
 今回2モジュール84行＋入口2行。2g-2 本体4,692行・入口込み4,765行、小監査561宣言・標準三公理のみ。増大項まで含む完全性の移送は、上記の型と紙の筋までで Lean は次の束。共通細分の実際の射の四角形への適用、Frobenius 係数との自然な比較、一般の fppf の二重 Čech、実際の blowup を保持した Noether 帰納と G5 は未完。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+上の増大項の移送の証明分割（着手前、同じ150〜280行の見込みの内数）：任意の非負次数の複体 C,D と実際の k:C→D、増大写像 a:Z→C⁰・a′:Z′→D⁰、全単射 ζ と k₀a=a′ζ に対し、`cochainAugmentation_exact_of_comparison` は source の `Injective a ∧ Exact a dC₀ ∧ ∀ n, Exact dCₙ dCₙ₊₁` を target の同じ性質へ移す。仮定は K(k) の Acyclic と a′ の閉性。これは新しい増大複体を定義せず、既存の augmentedCechCone の微分の判定へ渡す要素計算の分割である。逆方向も同じ型で、source の閉性を用いる。最終的には C=K(f), D=K(g) として前記の公開する増大 cone の比較へまとめる。
+
+
+G4 の四角形の実際の射に沿う全複体の比較の法則（着手前、既存の CechAugmentedSquare.Map の自然性の内数、40〜100行）：`CechAugmentedSquare.Map.totalComplex_acyclic_iff_of_cones (m:Map s t)` は、`hC:(cechRefinementCone s.C t.C m.left).Acyclic`・`hE:(cechRefinementCone s.E t.E m.right).Acyclic` と m.base・m.center の全単射性から `s.totalComplex.Acyclic ↔ t.totalComplex.Acyclic` を返す。実際の零次項拡張の写像・差の写像の自然性・coneMap・増大写像の自然性を合成する。細分の H の同型を単に並べるのでなく、m の restriction・scalar・quotient・center_naturality の四条件を保持する。共通細分の実際の cochain map とその cone の完全性を供給する幾何への適用は、この法則の後に行う。
+
+
+## G4：増大列の完全性の正向きの移送と反映
+
+`CochainAugmentationComparisonForward`（93行）：`cochainAugmentation_exact_of_comparison` は、実際の比較 k:C→D の cone の完全性と増大項 ζ の全単射性・増大写像の自然性から、増大写像の単射性・零次の完全性・正次数の微分の完全性を source から target に移す。target の増大写像の閉性を明示し、正次数のサイクルは比較の cone の完全性で持ち上げる。
+
+`CochainAugmentationComparisonBackward`（95行）：`cochainAugmentation_exact_reflected_of_comparison` は同じ入力で、source の増大写像の閉性を用い、target の増大列の完全性を反映する。零次のサイクルの差は cone の最初の微分の単射性で消し、正次数では `(-b,x)` の境界表示の第二成分から source の境界を得る。
+
+各単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,159・5,160ジョブ、小監査各1宣言（計2）・標準三公理のみ、終了状態0。ログ `2g-cochain-augmentation-forward-check-1.log`・`2g-cochain-augmentation-forward-native.log`・`2g-cochain-augmentation-forward-audit.log` と `2g-cochain-augmentation-backward-check-1.log`・`2g-cochain-augmentation-backward-native.log`・`2g-cochain-augmentation-backward-audit.log`。二つの法則に局所的な backward.isDefEq.respectTransparency false を使用。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと小監査は別の枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール188行＋入口2行。2g-2 本体4,880行・入口込み4,955行、小監査563宣言・標準三公理のみ。新しい増大複体は作っていない。元の augmentedCechCone の完全性の同値への接続と、四角形の実際の射への適用は下書きの検証中で、本体にはまだ含めない。G4・G5 は未完、見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
