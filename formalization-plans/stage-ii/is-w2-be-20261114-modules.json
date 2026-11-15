@@ -237,5 +237,8 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexEdgeClasses",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexIsoOfArrowEq",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIdentityPoint",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitPoint"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitPoint",
+  "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationArrow",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHomArrow",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHomEvaluation"
 ]
