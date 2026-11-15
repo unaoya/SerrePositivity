@@ -542,3 +542,38 @@ S04 の係数移送のチャートの法則の分割（着手前、前記200〜5
 待ち時間の係数移送の下書き `scheme-drafts/HomogeneousDegreeOneBaseChange.lean`（49行）では、`degreeOneDehomogenizationIdeal_baseChange` と `homogeneousDegreeOneBaseChangeEquiv` の型・合成を記述した。Mathlib の `Algebra.TensorProduct.tensorQuotientEquiv` と `Ideal.quotientEquivAlgOfEq` を使い、標準開の任意の係数移送を脱斉次化の商へ戻す。未検証なので drafts のままコミットせず、自然性の式と Proj の貼り合わせも依然として未証明。検証順は現在待っている外延性 → 本体の対象ビルド → 4本の小監査 → チャートの二つの合成と同型 → 重なりとこの係数移送、を維持する。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S03〜S04 の正規化の自然性の法則の分割（着手前、同じ自然性の内数、40〜90行）：graded な環写像 g:G→H と次数一 f∈G1 について、`Away.map g f (normalize_G x) = normalize_H (g x)` を示す。係数環は別でもよく、Mathlib `Away.map_mk` と既存の正規化の斉次元での式を使い、直和の外延性で一般の x へ戻す。係数移送の 1⊗− と標準開の写像の自然性に使う。新しい主項目ではない。
+
+
+## G3・S03〜S04：逆向きのチャート写像・外延性・合成則・基底構造射の検証
+
+`SegreChartInverse`（118行）：
+- `segreColumnChartMap`：列の因子写像を正規化し、因子の標準開から Segre 標準開へ特殊化する。
+- `segreColumnChartMap_normalize`：列の写像と元の因子の正規化の合成の式。
+- `segreRowChartMap`：同じ構成を行側で特殊化する。
+- `segreRowChartMap_normalize`：行の写像と正規化の合成の式。
+- `segreTensorToStandardOpen`：二因子の標準開のテンソル積から Segre 標準開への実際の代数写像。
+- `segreTensorToStandardOpen_generators`：正規化した二生成元の純テンソルは、同じ Segre 座標の正規化に移る。
+
+`DegreeOneChartExt`（54行）：
+- `homogeneousDegreeOneNormalize_surjective`：次数一の分母による正規化は斉次局所化の全体へ全射。
+- `degreeOneChart_algHom_ext`：全射な次数一表示では、正規化した生成元上の一致が標準開の代数写像を決める。
+
+`SegreChartForwardLaws`（75行）：
+- `segreStandardOpenToTensor_normalize`：Segre 座標環の正規化の後の順写像は、同じ正規化された座標写像。
+- `segreNormalizedCoordinateMap_column`：列の因子写像との合成は右因子の正規化とテンソル積への包含。
+- `segreNormalizedCoordinateMap_row`：行の因子写像との合成は左因子の正規化とテンソル積への包含。
+
+`ProjectiveAwayStructureMap`（49行）：
+- `projectiveAway_scalarMap`：次数零のスカラーを標準開へ送る合成は、既存の基底環の係数写像。
+- `projectiveAway_structureMap`：標準開から Proj への射は、同じ Spec R 上の構造射と整合する。
+
+本体と保存した下書きの一致を確認。各ファイルの単独検証に続く入口の同時 import で匿名 local instance の名前が衝突したため、この4本のローカル instance を固有名にした。数学の仮定・既存の代数構造を変更せず、4本と直接 importer `SerrePositivity.AlgebraicGeometry` を再ビルドして成功（5,104ジョブ、終了状態0）。小監査は4モジュール39宣言（21・5・9・4）すべて標準三公理のみ、終了状態0。
+
+ログ `2g-segre-chart-inverse-check-4.log`・`2g-degree-one-chart-ext-check-3.log`・`2g-segre-chart-forward-laws-check-2.log`・`2g-projective-away-structure-map-check-2.log`・`2g-segre-chart-laws-native-2.log`・`2g-segre-chart-laws-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。検証・ビルド・小監査は共有鍵 --class impl --wait 3600 の下で実行し、待ちは常に一つ。root SerrePositivity・下流全ビルド・全体監査は行っていない。
+
+今回4モジュール296行＋入口4行。2g-2 本体2,116行・入口込み2,151行、小監査227宣言・標準三公理のみ。S03 の二つの合成と代数同型はまだ drafts のままで、重なりの自然性、S04 の貼り合わせ・有限冪・任意の係数移送、G4〜G5 も未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。

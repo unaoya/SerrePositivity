@@ -1678,3 +1678,7 @@ public import SerrePositivity.AlgebraicGeometry.SegreColumnEvaluation
 public import SerrePositivity.AlgebraicGeometry.SegreColumnDescent
 public import SerrePositivity.AlgebraicGeometry.SegreRowDescent
 public import SerrePositivity.AlgebraicGeometry.SegreCoordinateMinors
+public import SerrePositivity.AlgebraicGeometry.SegreChartInverse
+public import SerrePositivity.AlgebraicGeometry.SegreChartForwardLaws
+public import SerrePositivity.AlgebraicGeometry.ProjectiveAwayStructureMap
+public import SerrePositivity.AlgebraicGeometry.DegreeOneChartExt
