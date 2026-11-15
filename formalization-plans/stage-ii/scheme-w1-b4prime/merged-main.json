@@ -1,0 +1,15 @@
+{
+  "merge_head": "0f41722a4577f4efb8ee008550c83ffd51417885",
+  "parents": [
+    "cac6b317dddf6f1d5d023ca0f00e5867db7e54fe",
+    "58d6a0de918c6d61815631611a133fc7524d396c"
+  ],
+  "main_merged": "58d6a0de918c6d61815631611a133fc7524d396c",
+  "original_ag_files": 285,
+  "ag_files_changed_by_merge": [],
+  "preview_changes_applied": 0,
+  "preview_files_copied": 0,
+  "old_index_reused_after_merge": false,
+  "build_lock_sha256": "10f2d486d42413b937e80671a8a6cdaad9b81cb83cdcf38abd26e0c32a3ccda9",
+  "snapshot_phase": "post-merge-source-check"
+}
