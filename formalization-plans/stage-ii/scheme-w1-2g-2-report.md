@@ -1181,3 +1181,20 @@ F8 の射影的な場合について、実際の構造層の Frobenius 係数・
 G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius 係数の四角形の完全性を、任意の有限アフィン被覆に移す所まで済み。実際の表示の同型による移送は、上の三角形の射を使う同型比較の下書きを検証中。残り G4 は同型移送・一つの被覆と nerve の整合性・Frobenius 係数と実際のアフィン conerve の比較・nilpotent な閉厚化・fppf の二重 Čech と Noether 帰納、約2,000〜4,000行。G5 は既存の有限型 F_p 被覆模型と filtered colimit への自然な移送、約1,000〜2,000行。合計の着地を約9,000〜12,100行へ補正し、外枠16,000行は不変。最終の AugmentedRingCechExact の型・仮定は変えない。G4・G5 と停止点2g-2は未完であり、条件付きの射影比較だけを Thm 2.9 の十分性全体の完成とは呼ばない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+実際の DegreeOneProjectiveModel の構造射の移送（着手前、既存の表示の同型・Cartesian square の法則の内数、65〜130行）：`DegreeOneProjectiveModel.scalarHom` は schemeScalarHom Y f が m.iso.hom による Proj の大域スカラーの引き戻しであること。`DegreeOneProjectiveModel.cartesian` は H:IsPullback g iX f q から同じ X・iX を保ち、上辺を g≫m.iso.hom、右辺を projectiveCechStructureMap m.grade とする Cartesian square を返す。`DegreeOneProjectiveModel.structure_surjective` は元の f の全射性から同じ Proj の構造射の全射性。`DegreeOneProjectiveModel.restrict_isIso` は任意の基底開 W に対し f∣W の同型性から Proj の構造射の W 上の同型性を返す。全て m.over と m.iso を使う移送で、新しい幾何学的仮定や模型の存在を要求しない。
+
+
+同じ F8 の実際の模型への適用（着手前、既存の完全性の同型移送の法則の内数、85〜180行）：`DegreeOneProjectiveModel.perfectCartesianSquare_acyclic` は Noether 環 R、f:Y→Spec R の既存の表示 m、I:Ideal R、元の IsPullback g iX f (Spec.map quotient)、f の全射性と中心外同型性、p が素数かつ R 上で零、Y の任意の有限アフィン被覆 V から、実際の g・schemeScalarHom Y f・schemeScalarHom X iX・商の Frobenius 係数を持つ native な四角形の全複体の完全性を返す。m.projectiveCechData から同じ多項式環作用・有限性・標準開の被覆を供給し、m.iso.inv による V の逆像で Proj 版 F8 を適用して、上の実際の同型比較で戻す。R の標数から m.ring の標数も供給する。F8 の幾何学的入力は変えず、完全性・表示先の全射性などを仮定として追加しない。
+
+
+## G4：表示の同型に沿う同じ四角形の完全性の比較
+
+`SchemePerfectCechSquareIsoComparison`（73行）：`openCoverCechRefinementMap_isIso_of_eq` は等しい被覆の恒等添字の細分の射そのものが同型。`schemeStructurePerfectCechSquare_iso_acyclic_iff` は前記の実際の triangleMap の両辺の同型から cone の完全性を供給し、同じ閉中心とスカラーの native な四角形の全複体の完全性を表示の同型に沿って両向きに移す。完全性や QuasiIsoAt を仮定として追加しない。Čech 版と原典との対応を docstring に明記。
+
+単独検証、本体ソース完全一致、対象と入口のビルド5,177ジョブ成功、小監査2宣言・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-square-iso-comparison-check-3.log`・`2g-perfect-cech-square-iso-comparison-native.log`・`2g-perfect-cech-square-iso-comparison-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール73行＋入口1行。新規92モジュール本体6,069行・入口込み6,161行。既存追加25行を含む計数は本体6,094行・入口込み6,186行。新規の小監査累計643宣言、既存15宣言は別計上。残りの模型条件の移送と実際の模型への F8 の適用は drafts で検証中で、本体には含めない。残り G4 約2,000〜4,000行・G5 約1,000〜2,000行、外枠16,000行は不変。停止点2g-2は未完。
+
+一覧：済み1／全体3（うち追加0）。
