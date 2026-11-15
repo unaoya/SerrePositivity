@@ -11064,3 +11064,212 @@ sorryAx・追加公理はない。exitで外側の終了0も確認した。
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,405行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §82 G01：全水平単位則と、順序和・Galois双対による六つの全結合則（11-15）
+
+### 82.1 今回の検収
+
+前のgoal turnは§80〜§81のLeanと報告を検証・コミットした進捗あり。
+今回は対象の等式から射の全法則へ進めた。追加は3ファイル444行・明示宣言27。
+累計 **21ファイル2,849行・明示宣言215**。G01は未完、一覧の済みは0。
+
+| ファイル（InfinityCategories/HA/Monads/） | 行数 | 検収 |
+|---|---:|---|
+| WalkingAdjunctionUnits.lean | 137 | 四Homの全8通りの左右単位則。任意の添字圏Iの全関手の等式 |
+| OrdinalActionComparison.lean | 168 | 忠実かつ対象で単射な端点の包含、作用と順序和の全比較、左右作用の全結合則 |
+| OppositeOrdinalActionLaws.lean | 139 | Galois双対の厳密な往復と作用比較、反対の順序和と反対側の二作用の全結合則 |
+| **追加** | **444** | G01の同じ構成・自然性・合成則の分割。新しい一覧IDは加えない |
+
+単位則は空の順序集合の作用の全射の一致を証明した。
+反対の自己Homでは元の順序和の単位則の反対を使い、混合Homでは実際の左・右Galois随伴の
+往復を使う。これはh Funでの単位の一致だけでなく、全I上の実関手の等式である。
+
+endpointAugmentedForgetは広部分圏の包含と非空部分の包含の合成であり、
+忠実性を実際に構成し、対象でも単射であることを証明した。
+この包含へ忘却した最大元保存の左作用・最小元保存の右作用は、元の増大単体圏の順序和と
+全関手で一致する。空から非空への射も場合分けし、包含の自然性と順序和の関手性で照合した。
+この全比較から、元の順序和の全結合則を作用へ戻せる。
+
+反対側はtopToBottomOpEquivalenceの両方の厳密な往復を証明した。
+同じ双対へ送った作用の実関手は元の作用の反対に等しく、
+その等式から二つの反対側の作用と反対の順序和の全結合則を得た。
+双対や結合則を引数の仮定に置いていない。
+
+### 82.2 残る境界
+
+W,X,Y,Zの16通りのうち、全関手の結合則が揃ったのは次の6通り。
+`+`はplus、`-`はminus。
+
+| 四対象 | 法則 |
+|---|---|
+| ++++ | 既存ordinalSumFunctor_assoc |
+| +++- | topOrdinalActionFunctor_assoc |
+| -+++ | bottomOrdinalActionFunctor_assoc |
+| ---- | oppositeOrdinalSumFunctor_assoc |
+| ---+ | bottomOppositeOrdinalActionFunctor_assoc |
+| +--- | topOppositeOrdinalActionFunctor_assoc |
+
+残る10通りは、二方向の作用の可換性2通りと、混合Hom同士の合成を含む8通り。
+これらが揃うまでwalking adjunctionのEnrichedCategoryのinstanceは宣言しない。
+また、与えられたQCatAdjunctionからの全拡張、元のF≫U・単位・余単位との比較は未完。
+G01の完成、G09の途中の取り込みの点、G12のpresentabilityの完成とは数えない。
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。完成の引用属性はまだ登録していない。
+200行を超える宣言・証明はない。
+
+### 82.3 同じ構成の法則・比較の型
+
+namespace SerrePositivity.InfinityCategories.HA.Monads内。
+I : Type u、[Category.{v} I]を共通の変数とする。
+
+```lean
+lemma topOrdinalAction_leftUnit (F : I ⥤ TopSimplexCategory) :
+    (((Functor.const I).obj WithInitial.star).prod' F ⋙ topOrdinalAction) = F
+
+lemma bottomOrdinalAction_rightUnit (F : I ⥤ BottomSimplexCategory) :
+    (F.prod' ((Functor.const I).obj WithInitial.star) ⋙ bottomOrdinalAction) = F
+
+lemma bottomOppositeOrdinalAction_leftUnit (F : I ⥤ BottomSimplexCategory) :
+    (((Functor.const I).obj (op (WithInitial.star : AugmentedSimplexCategory))).prod' F ⋙
+      bottomOppositeOrdinalAction) = F
+
+lemma topOppositeOrdinalAction_rightUnit (F : I ⥤ TopSimplexCategory) :
+    (F.prod' ((Functor.const I).obj (op (WithInitial.star : AugmentedSimplexCategory))) ⋙
+      topOppositeOrdinalAction) = F
+
+lemma oppositeOrdinalSum_leftUnit (F : I ⥤ AugmentedSimplexCategoryᵒᵖ) :
+    (((Functor.const I).obj (op (WithInitial.star : AugmentedSimplexCategory))).prod' F ⋙
+      (prodOpEquiv (C
+
+lemma oppositeOrdinalSum_rightUnit (F : I ⥤ AugmentedSimplexCategoryᵒᵖ) :
+    (F.prod' ((Functor.const I).obj (op (WithInitial.star : AugmentedSimplexCategory))) ⋙
+      (prodOpEquiv (C
+
+lemma walkingAdjunctionHorizontal_leftUnit (X Y : WalkingAdjunctionPoint)
+    (F : I ⥤ walkingAdjunctionHom X Y) :
+    (((Functor.const I).obj (walkingAdjunctionIdentity X)).prod' F ⋙
+      walkingAdjunctionHorizontal X X Y) = F
+
+lemma walkingAdjunctionHorizontal_rightUnit (X Y : WalkingAdjunctionPoint)
+    (F : I ⥤ walkingAdjunctionHom X Y) :
+    (F.prod' ((Functor.const I).obj (walkingAdjunctionIdentity Y)) ⋙
+      walkingAdjunctionHorizontal X Y Y) = F
+
+def endpointAugmentedForget (P : MorphismProperty SimplexCategory) [P.IsMultiplicative] :
+    WideSubcategory P ⥤ AugmentedSimplexCategory
+
+instance endpointAugmentedForget_faithful (P : MorphismProperty SimplexCategory)
+    [P.IsMultiplicative] : (endpointAugmentedForget P).Faithful
+
+lemma endpointAugmentedForget_obj_injective (P : MorphismProperty SimplexCategory)
+    [P.IsMultiplicative] : Function.Injective (endpointAugmentedForget P).obj
+
+lemma endpointAugmentedForget_comp_injective (P : MorphismProperty SimplexCategory)
+    [P.IsMultiplicative] {F G : I ⥤ WideSubcategory P}
+    (h : F ⋙ endpointAugmentedForget P = G ⋙ endpointAugmentedForget P) : F = G
+
+lemma topOrdinalAction_forget :
+    topOrdinalAction ⋙ endpointAugmentedForget simplexPreservesTop =
+      (𝟭 AugmentedSimplexCategory).prod (endpointAugmentedForget simplexPreservesTop) ⋙
+        tensor AugmentedSimplexCategory
+
+lemma bottomOrdinalAction_forget :
+    bottomOrdinalAction ⋙ endpointAugmentedForget simplexPreservesBottom =
+      (endpointAugmentedForget simplexPreservesBottom).prod (𝟭 AugmentedSimplexCategory) ⋙
+        tensor AugmentedSimplexCategory
+
+lemma topOrdinalActionFunctor_forget (F : I ⥤ AugmentedSimplexCategory)
+    (G : I ⥤ TopSimplexCategory) :
+    (F.prod' G ⋙ topOrdinalAction) ⋙ endpointAugmentedForget simplexPreservesTop =
+      F.prod' (G ⋙ endpointAugmentedForget simplexPreservesTop) ⋙
+        tensor AugmentedSimplexCategory
+
+lemma bottomOrdinalActionFunctor_forget (F : I ⥤ BottomSimplexCategory)
+    (G : I ⥤ AugmentedSimplexCategory) :
+    (F.prod' G ⋙ bottomOrdinalAction) ⋙ endpointAugmentedForget simplexPreservesBottom =
+      (F ⋙ endpointAugmentedForget simplexPreservesBottom).prod' G ⋙
+        tensor AugmentedSimplexCategory
+
+lemma topOrdinalActionFunctor_assoc (F G : I ⥤ AugmentedSimplexCategory)
+    (H : I ⥤ TopSimplexCategory) :
+    ((F.prod' G ⋙ tensor AugmentedSimplexCategory).prod' H ⋙ topOrdinalAction) =
+      (F.prod' (G.prod' H ⋙ topOrdinalAction) ⋙ topOrdinalAction)
+
+lemma bottomOrdinalActionFunctor_assoc (F : I ⥤ BottomSimplexCategory)
+    (G H : I ⥤ AugmentedSimplexCategory) :
+    ((F.prod' G ⋙ bottomOrdinalAction).prod' H ⋙ bottomOrdinalAction) =
+      (F.prod' (G.prod' H ⋙ tensor AugmentedSimplexCategory) ⋙ bottomOrdinalAction)
+
+lemma topToBottomOp_source_roundtrip :
+    topToBottomOpEquivalence.functor ⋙ topToBottomOpEquivalence.inverse =
+      𝟭 TopSimplexCategory
+
+lemma topToBottomOp_target_roundtrip :
+    topToBottomOpEquivalence.inverse ⋙ topToBottomOpEquivalence.functor =
+      𝟭 BottomSimplexCategoryᵒᵖ
+
+lemma bottomFunctor_eq_of_dual {F G : I ⥤ BottomSimplexCategory}
+    (h : F ⋙ endpointSimplexEquivalence.functor = G ⋙ endpointSimplexEquivalence.functor) :
+    F = G
+
+lemma topFunctor_eq_of_dual {F G : I ⥤ TopSimplexCategory}
+    (h : F ⋙ topToBottomOpEquivalence.functor = G ⋙ topToBottomOpEquivalence.functor) :
+    F = G
+
+lemma bottomOppositeOrdinalActionFunctor_dual (F : I ⥤ AugmentedSimplexCategoryᵒᵖ)
+    (G : I ⥤ BottomSimplexCategory) :
+    (F.prod' G ⋙ bottomOppositeOrdinalAction) ⋙ endpointSimplexEquivalence.functor =
+      (F.leftOp.prod' (G ⋙ endpointSimplexEquivalence.functor).leftOp ⋙
+        topOrdinalAction).rightOp
+
+lemma topOppositeOrdinalActionFunctor_dual (F : I ⥤ TopSimplexCategory)
+    (G : I ⥤ AugmentedSimplexCategoryᵒᵖ) :
+    (F.prod' G ⋙ topOppositeOrdinalAction) ⋙ topToBottomOpEquivalence.functor =
+      ((F ⋙ topToBottomOpEquivalence.functor).leftOp.prod' G.leftOp ⋙
+        bottomOrdinalAction).rightOp
+
+lemma oppositeOrdinalSumFunctor_assoc (F G H : I ⥤ AugmentedSimplexCategoryᵒᵖ) :
+    ((F.prod' G ⋙ walkingAdjunctionHorizontal .minus .minus .minus).prod' H ⋙
+      walkingAdjunctionHorizontal .minus .minus .minus) =
+      (F.prod' (G.prod' H ⋙ walkingAdjunctionHorizontal .minus .minus .minus) ⋙
+        walkingAdjunctionHorizontal .minus .minus .minus)
+
+lemma bottomOppositeOrdinalActionFunctor_assoc
+    (F G : I ⥤ AugmentedSimplexCategoryᵒᵖ) (H : I ⥤ BottomSimplexCategory) :
+    ((F.prod' G ⋙ walkingAdjunctionHorizontal .minus .minus .minus).prod' H ⋙
+      bottomOppositeOrdinalAction) =
+      (F.prod' (G.prod' H ⋙ bottomOppositeOrdinalAction) ⋙ bottomOppositeOrdinalAction)
+
+lemma topOppositeOrdinalActionFunctor_assoc (F : I ⥤ TopSimplexCategory)
+    (G H : I ⥤ AugmentedSimplexCategoryᵒᵖ) :
+    ((F.prod' G ⋙ topOppositeOrdinalAction).prod' H ⋙ topOppositeOrdinalAction) =
+      (F.prod' (G.prod' H ⋙ walkingAdjunctionHorizontal .minus .minus .minus) ⋙
+        topOppositeOrdinalAction)
+```
+
+### 82.4 対象ビルドと小さい監査
+
+全てwith_build_lock.sh --class impl --wait 3600、最大280秒の短いimpl枠で実行した。
+
+- セッション46826：WalkingAdjunctionUnits:olean。Functor.ext・Functor.map_idの名前衝突を
+  完全名で解き、空での値を構成済みの恒等関手に正規化した。最終
+  **G12_UNITS_BUILD_EXIT=0**、警告なし（1254 jobs）。新設8根の監査も終了0。
+- セッション46645：OrdinalActionComparison:olean。関手等式の回収で合成関手の
+  対象・射の簡約を明示して修正した。最終 **G12_ACTION_COMPARE_BUILD_EXIT=0**、
+  警告なし（1255 jobs）。上の2ファイル18根の監査も終了0。
+- セッション28649：OppositeOrdinalActionLaws:olean。初回で
+  **G12_OPPOSITE_BUILD_EXIT=0**、警告なし（1256 jobs）。3ファイル27根の監査も
+  **G12_OPPOSITE_AUDIT_EXIT=0**。
+
+各枠はexitで外側の終了0まで確認して返却した。
+最終の入力27名と出力27名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。監査入力・根・全出力と三つの対象ビルドログは
+[g12-unit-assoc-audit-2026-11-15/](g12-unit-assoc-audit-2026-11-15/)に保存した。
+現在、自分の生きたビルド・監査・整理券はない。
+
+既存の18ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,849行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。

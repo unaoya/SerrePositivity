@@ -1,0 +1,2 @@
+✔ [1255/1255] Built SerrePositivity.InfinityCategories.HA.Monads.OrdinalActionComparison (1.6s)
+Build completed successfully (1255 jobs).
