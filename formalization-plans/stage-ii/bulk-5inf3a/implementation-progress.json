@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base e99339bb463dbf2d41a763c0dbca911c07d96206",
+  "verified_head": "5ca931a48",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -15,16 +15,21 @@
   "latest_complete_audit_checkpoint": "finite-reduction-truncation-checkpoint.json",
   "latest_complete_audit_declarations": 587,
   "working_changes_unverified": [
-    "FiniteCompletedComparison",
-    "FiniteTensorInverse",
-    "FiniteCompletionDerived",
-    "TensorNatComponents",
-    "FiniteTruncationTorBounds",
-    "FiniteCompletionReflection",
-    "FiniteTensorComparisonIso",
-    "FiniteCompletionExact"
+    "CompletedTotalComparisonIso.lean",
+    "FiniteCompletedComparison.lean",
+    "FiniteCompletedComparisonIso.lean",
+    "FiniteCompletionDerived.lean",
+    "FiniteCompletionExact.lean",
+    "FiniteCompletionIdempotent.lean",
+    "FiniteCompletionReflection.lean",
+    "FiniteRowEquivalence.lean",
+    "FiniteTensorComparisonIso.lean",
+    "FiniteTensorInverse.lean",
+    "FiniteTruncationTorBounds.lean",
+    "SingleHorizontalRow.lean",
+    "TensorNatComponents.lean"
   ],
-  "pending_check": "bundle-024 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-025: one normal bulk request, session 2786, wait 3600, whole body 280 seconds. 34 unchanged audited modules, 13 unverified; inspect exact audit inventory after terminal.",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -152,8 +157,13 @@
       "lines": 97
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedTotalComparisonIso.lean",
+      "sha256": "ce8ee005d7df01f1324f9b1fd8807f5c0e1b4500461f4443f98b345c0182caac",
+      "lines": 74
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletionAdditive.lean",
-      "sha256": "388380d77d14a4d63a2a5d03831449f6efa81d5ebaebeaebb4bace51820abc5b",
+      "sha256": "56a4823f98a5ae4cf7c44502733f763b4827138ed8f267258841fa98d09d730b",
       "lines": 88
     },
     {
@@ -168,8 +178,8 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ExtensionFunctor.lean",
-      "sha256": "743f49709254de53f48326cd95caa04e003ffff4b631794085ed10b0304ebebe",
-      "lines": 85
+      "sha256": "a70c94d33059e92de8b700ddf376674c39502ab97eada77ef7e13f83a3057719",
+      "lines": 90
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ExtensionRows.lean",
@@ -177,24 +187,54 @@
       "lines": 72
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletedComparison.lean",
+      "sha256": "21c2d0795803df5dda9fd91dbfb7be30e583ddd829929647e6d50e6bed5fc123",
+      "lines": 126
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletedComparisonIso.lean",
+      "sha256": "4adde901f668042cb4d2caa582204d444f26f6953e524daf35d0a30831de2348",
+      "lines": 91
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletion.lean",
-      "sha256": "d52b94bfbfb11248c80ba6468aacd90f4fc3fdcdcc1a9ef6f96c48965cddf4de",
-      "lines": 115
+      "sha256": "ab2d7edc12a82338b377ce8790e602785149e9040d9167438a55041677a31e28",
+      "lines": 116
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionDerived.lean",
+      "sha256": "bbfefe8c5934cce0f0a1eb7056223b9139c246721f83797e5551b43f78def09d",
+      "lines": 101
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionExact.lean",
+      "sha256": "591c2bc3ae0da5e563e814406d5976c7e5b5a964eeffea866b0eccd1e1edb3eb",
+      "lines": 63
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionIdempotent.lean",
+      "sha256": "952a1c7b43154e57c0753ec445bc3b899ee885e85daf5338bd7a97c044106907",
+      "lines": 64
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionReduction.lean",
-      "sha256": "b152d2f7b18fbcb800252724eb20978caac2a21929c1a02f6a8a39a16d52bf04",
-      "lines": 97
+      "sha256": "5149570f3ce2e07ba3c164ce8dbe426b161e286c1f98fea1cd4df0c00e26e8d9",
+      "lines": 100
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionReflection.lean",
-      "sha256": "74f18914eda1790e23822504906469bb9410214c91c5c27d6167d6f930bcb4da",
-      "lines": 86
+      "sha256": "8c8b49b5f98ed32409b1fae16ec6623e7488cbc27e0cae0a56117017a7ad97a1",
+      "lines": 89
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteComponents.lean",
-      "sha256": "512bf40cb3a8c115dc7e96d77eab071c76f16f487856de159a3ca53c1190d60b",
+      "sha256": "132af292231615a68e21aeea89045be9f0db33bfdfc0a27f13dda784b3d0c1a2",
       "lines": 61
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteRowEquivalence.lean",
+      "sha256": "fa8dd5270b854b60eecbe1768d5eab05fcb4eef85209b7e357859b022f7dae32",
+      "lines": 133
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTensorComparison.lean",
@@ -208,8 +248,13 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTensorInverse.lean",
-      "sha256": "deecd69ff14e682b4e22e83609802962dcb32d3e999d9f9f6de1cb227e4493df",
-      "lines": 138
+      "sha256": "893fcd5e03b952fb61a7ea5dda63bc370f89e6cda1d8bada5de1c768283624ae",
+      "lines": 140
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTruncationTorBounds.lean",
+      "sha256": "c9b3a0a32d7cddb99d0c97318c1699a02fa1f03983b0e52c408a3e7cf4866edb",
+      "lines": 96
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FixedTorBounds.lean",
@@ -238,8 +283,8 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NaturalTruncation.lean",
-      "sha256": "f52235c54c7d34546393826eea720890b698b2a141a51862343720f0b44064a9",
-      "lines": 141
+      "sha256": "385474211c92e1cb8c9cdb19e558cff107415136c282509f011f1082359dae2a",
+      "lines": 144
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolvedScalarExtension.lean",
@@ -250,6 +295,11 @@
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RowTruncationExact.lean",
       "sha256": "b45892fee8d5aacd307fb7d7790668ff3531cc791624b31df03c5c79f28fbcf0",
       "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/SingleHorizontalRow.lean",
+      "sha256": "68827581a6f6337714941d794eb0d5d27f1f25000d233e73711d4f57e1b50122",
+      "lines": 106
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TailBounds.lean",
@@ -263,8 +313,8 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorComparisonComponents.lean",
-      "sha256": "03954e8d781713b942dd086e3b20ab1673935550ecdc90a3f4c221bbbfa65eef",
-      "lines": 77
+      "sha256": "528cf1f4f74ec516f141e7886f107032dfa88ac9e398961f77932fe823794afc",
+      "lines": 79
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorComponents.lean",
@@ -273,13 +323,13 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorHomComponents.lean",
-      "sha256": "6cb4e3a15789480dc94ebbffd202f21781814798c9d4233c393a614185c843fc",
-      "lines": 63
+      "sha256": "b1ae4635bd1e3c354d3a3265f25a29f624ca47e69928d1c46d8223250e6187ff",
+      "lines": 66
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorNatComponents.lean",
-      "sha256": "ab4b743440852ebdb70de2b2cdfc16115fc5939ce084cf19ab5dc1e89e0ee4c8",
-      "lines": 106
+      "sha256": "f333dcb2fdeada17f4b750de9992ab61be14d8d7d3870c5e9cde26af7228f350",
+      "lines": 114
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorNaturalComparison.lean",
@@ -298,8 +348,8 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TotalSplitExact.lean",
-      "sha256": "77a1b57a8d0a1ab825a36a069b49e882f8e4bd83295eb25297544eabc886d6c6",
-      "lines": 95
+      "sha256": "7f46a320dcd13fe7ce6a4e8c483167104482fa988853b77d08132b8842f6af92",
+      "lines": 109
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TruncationHomology.lean",
@@ -307,13 +357,18 @@
       "lines": 66
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TruncationNaturality.lean",
+      "sha256": "7d55ec8ede76f16edede31eba02629c8d82033b970e8a75c3c5bccdb3691f8b7",
+      "lines": 100
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TruncationTorBounds.lean",
       "sha256": "fa4a821b4b314a32733a3a7dcdd579419e4728252d3e11406ad53dd2eb346b3c",
       "lines": 74
     }
   ],
-  "working_written_lines": 3528,
-  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "working_written_lines": 4526,
+  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
