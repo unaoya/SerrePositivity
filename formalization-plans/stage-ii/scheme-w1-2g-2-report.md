@@ -1041,3 +1041,23 @@ G4 の引き戻しと増大写像の自然性（着手前、既存の係数移�
 既存1ファイルの差分は追加25行・削除14行（section の分割と既存二証明の位置の変更を含む）。新規78モジュール本体5,100行・入口込み5,178行は不変。外枠の計数には保守的にこの既存の追加25行も含め、本体5,125行・入口込み5,203行とする。新規モジュールの小監査567宣言に加え、今回の既存モジュール15宣言を別に監査した。G4・G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 の Frobenius 係数への同じ自然性の特殊化（着手前、前記の引き戻しの法則の内数、35〜75行）：`schemeStructurePerfectCechPullbackMap_augmentation f φ ψ hψ p hp hR hY hX U` は実際の φ:R→Γ(Y,⊤)、ψ:R→Γ(X,⊤) と `hψ:ψ=f.appTop.hom.comp φ` から、`((schemeStructurePerfectCechPullbackMap f … U).f 0).hom.comp (schemeStructurePerfectCechAugmentation Y φ … U) = schemeStructurePerfectCechAugmentation X ψ … (fun i ↦ f ⁻¹ᵁ U i)` を返す。一般の引き戻しの増大写像の自然性と Frobenius の実際の環準同型の合成則を使う。平坦性を仮定せず、閉厚化にも同じ射を使う。
+
+
+## G4：実際のスカラー・引き戻しと増大写像の自然性
+
+`SchemeStructurePerfectCechAugmentation`（70行）：`schemeStructurePerfectCechAugmentation` は大域スカラー φ の実際の Frobenius 順極限を、既存の開被覆の増大写像へ合成したもの。`schemeStructurePerfectCechAugmentation_cycle` は Čech 微分の核に入ること。`schemeStructurePerfectCechAugmentation_refinement` は実際の被覆の細分が同じ増大写像を保つこと。`schemeStructurePerfectCechAugmentation_apply` は各長さ一タプルで、元のスカラーと実際の切断の制限の合成の Frobenius 順極限に一致する式。
+
+`SchemeCechPullbackAugmentation`（64行）：`schemeCechCoefficientMap_augmentation` は係数前層の射の零次と大域切断の増大写像の可換性。`schemeCechPreimageComplexIso_augmentation` は既存の逆像被覆の比較と同じ増大写像の可換性。`schemeCechPullbackMap_augmentation` はそれらを合成し、既存の実際の Čech 引き戻しが係数の全空間の成分と増大写像の四角形を可換にすること。係数環と加群の宇宙は独立。
+
+`SchemePerfectCechPullbackAugmentation`（43行）：`schemeStructurePerfectCechPullbackMap_augmentation` は、φ と ψ=f.appTop.comp φ が実際の大域スカラーであるとき、実際の構造層の Frobenius 係数の引き戻しが、上の二つの増大写像と可換であること。平坦性を仮定せず、閉中心にも同じ引き戻しの射を使える。
+
+各単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,165・5,166ジョブ、所有元による小監査11・3・1宣言（計15、非公開・生成宣言も含む）・標準三公理のみ、終了状態0。ログ `2g-scheme-perfect-cech-augmentation-check-2.log`・`2g-scheme-cech-pullback-augmentation-check-1.log`・`2g-perfect-and-pullback-augmentation-native.log`・`2g-scheme-perfect-cech-augmentation-audit.log`・`2g-scheme-cech-pullback-augmentation-audit.log`、および `2g-perfect-cech-pullback-augmentation-check-1.log`・`2g-perfect-cech-pullback-augmentation-native.log`・`2g-perfect-cech-pullback-augmentation-audit.log`。新規の定義の透明性は既定、自然性等の七法則には局所的な backward.isDefEq.respectTransparency false を用いた。追加公理・sorry・前節の6宣言以外の既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回3モジュール177行＋入口3行。2g-2 の新規81モジュール本体5,277行・入口込み5,358行。既存ファイルの追加25行を保守的に加えた外枠の計数は本体5,302行・入口込み5,383行。新規モジュールの小監査の累計582宣言に、前節の既存モジュール15宣言を別に監査した（累計は各束の所有元での小監査の和であり、今回全体を再監査した数ではない）。
+
+G4 の増大項までの比較と、実際のスカラー・引き戻し・細分の自然性まで。閉中心の逆像被覆への四角形の適用、選んだ一つの被覆と nerve の整合性、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と実際の blowup を保持した Noether 帰納、G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。次の幾何的な接続の紙の筋は作業メモに整理し、未検証の Lean の数学はこのコミットに含めない。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
