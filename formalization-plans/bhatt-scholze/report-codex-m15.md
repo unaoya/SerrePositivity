@@ -15659,3 +15659,170 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み13,060行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §112 G01：一点の実前置因子の回収・元の全関手への合成・往復（11-15）
+
+### 112.1 検証済みの追加
+
+追加は **3ファイル337行・明示宣言14**。累計 **118ファイル13,397行・明示宣言708**。
+WalkingAdjunctionZeroReflection.lean は75行・2宣言、
+WalkingAdjunctionBottomPointCut.lean は106行・4宣言、
+WalkingAdjunctionRemoveBottomPrefix.lean は156行・8宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実親・水平分解の構成、全実射の合成・切れ目の自然性・係数移送・往復の照合と
+その証明の分割であり、一覧IDは追加しない。
+
+minus始点の全実鎖で、全隣接辺が二番目の点を0へ送らなければ、
+終点への全実射が0の逆像を反映することを逆帰納で示した。
+一般の二頂点間の実射も、終点まで合成し、その後半の実射の最小元保存を使うことで同じ反映を満たす。
+長さ0の鎖も含む。従来の終点が一点の場合に限った計算を、終点の個数を仮定しない全射の法則に広げた。
+
+全実頂点で座標1のplusの切れ目を構成した。
+全実射の最小元保存と0の逆像の反映から、実区間表示がこの切れ目を保つことを証明した。
+終点の個数が2なら、この実切れ目は両外端の間にあるので、
+既存の実区間関手の全水平分解を適用して左右の全実関手と合成の等式を構成できる。
+切れ目・因子・自然性・全合成の等式の存在を仮定する入力欄は設けていない。
+
+左因子は全頂点で一点を持つことを、切れ目の座標1と左外端の座標0から示した。
+一点の終点への元の実射は一意であることを実順序表示の忠実性から検証し、
+左因子全体がminusからplusへの実生成射の定値関手に一致することを示した。
+右因子を始点plusの全実関手として回収し、それへ実生成射を前置すると元の全実鎖へ戻ることを証明した。
+この実右因子の各頂点の点の個数に1を加えると元の個数となる。
+
+さらに生成射の前置は全実関手を区別することを、対象の個数と実水平合成の忠実性から示した。
+前置した任意の長さの全鎖には、隣接辺が値1の点を0へ送らないことも明示した。
+従って、元から始点plusの実原子を前置していた場合には、その一点を取り除く操作が、
+元の同じ実全関手へ戻ることを検証した。逆の証人を入力に置いた往復ではない。
+
+### 112.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 3.1.10・Lemma 4.1.4・§4.2、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionReflectsZeroToLast_of_no_bottom_merge {n : ℕ}
+    {Y : WalkingAdjunctionPoint} (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0) :
+    ∀ (i : Fin (n + 1)) (a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj i))),
+      (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.le_last i))) a).val = 0 → a.val = 0
+
+lemma walkingAdjunctionReflectsZeroMap_of_no_bottom_merge {n : ℕ}
+    {Y : WalkingAdjunctionPoint} (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    {i j : Fin (n + 1)} (hij : i ≤ j)
+    (a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj i)))
+    (ha : (walkingAdjunctionOrderHom (H.map (homOfLE hij)) a).val = 0) : a.val = 0
+
+def walkingAdjunctionBottomPointCut {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0) : WalkingAdjunctionPlusCut H
+
+lemma walkingAdjunctionBottomPointCut_val {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0) (i : Fin (n + 1)) :
+    ((walkingAdjunctionBottomPointCut H hno).value i).val = 1
+
+def walkingAdjunctionBottomPointFactorization {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last n)) = 2) :
+    WalkingAdjunctionFactorization H
+
+lemma walkingAdjunctionBottomPointFactorization_left_card {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last n)) = 2)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard .minus .plus
+      ((walkingAdjunctionBottomPointFactorization H hno hlast).left.obj i) = 1
+
+lemma walkingAdjunctionHom_ext_of_card_one_target {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f g : A ⟶ B)
+    (hc : walkingAdjunctionOrdinalCard X Y B = 1) : f = g
+
+lemma walkingAdjunctionBottomPointFactorization_left {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last n)) = 2) :
+    (walkingAdjunctionBottomPointFactorization H hno hlast).left =
+      (CategoryTheory.Functor.const (Fin (n + 1))).obj
+        (walkingAdjunctionGeneratorVertex .minus)
+
+def walkingAdjunctionRemoveBottomPrefix {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last n)) = 2) :
+    ComposableArrows (walkingAdjunctionHom .plus Y) n
+
+lemma walkingAdjunctionRemoveBottomPrefix_prefix {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last n)) = 2) :
+    walkingAdjunctionPlusParentPrefix (walkingAdjunctionRemoveBottomPrefix H hno hlast) = H
+
+lemma walkingAdjunctionRemoveBottomPrefix_card {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    (hno : ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last n)) = 2) (i : Fin (n + 1)) :
+    1 + walkingAdjunctionOrdinalCard .plus Y
+      ((walkingAdjunctionRemoveBottomPrefix H hno hlast).obj i) =
+        walkingAdjunctionOrdinalCard .minus Y (H.obj i)
+
+lemma walkingAdjunctionPlusParentPrefix_injective {n : ℕ} {Y : WalkingAdjunctionPoint} :
+    Function.Injective (walkingAdjunctionPlusParentPrefix (n := n) (Y := Y))
+
+lemma walkingAdjunctionPlusParentPrefix_no_one {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n) :
+    ∀ k : Fin n, ∀ a : Fin (walkingAdjunctionOrdinalCard .minus Y
+      ((walkingAdjunctionPlusParentPrefix H).obj k.castSucc)),
+      a.val = 1 → (walkingAdjunctionOrderHom
+        ((walkingAdjunctionPlusParentPrefix H).map
+          (homOfLE (Fin.castSucc_le_succ k))) a).val ≠ 0
+
+lemma walkingAdjunctionRemoveBottomPrefix_roundtrip {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionRemoveBottomPrefix (walkingAdjunctionPlusParentPrefix H)
+      (walkingAdjunctionPlusParentPrefix_no_one H)
+      (walkingAdjunctionPlusParentPrefix_last_card H ha) = H
+```
+
+今回は、終点が二点・全隣接辺に併合がない実鎖から始点plusの実因子を回収し、全合成と前置の往復まで検証した。
+任意の最後の深さの純粋な実親から、その最後の面をこの回収へ渡すための条件を自動で供給し、
+回収した因子の原子性・非退化性を含む実親の対応の逆方向を全て検収する部分はまだ未完。
+原典の文字列表示とfillable条件との全比較、その他の面とのfiltrationの両立、
+parental subcomputadのfiltration、元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 112.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加14根だけの公理監査を確認した。
+最終対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRemoveBottomPrefix:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+追加14根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-remove-bottom-prefix-audit-2026-11-15/](g12-remove-bottom-prefix-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み13,397行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
