@@ -9929,3 +9929,156 @@ main、⑤a・③系のファイルは変更していない。ビルド・大き
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。
+
+## §75 BS-M15 §8 の受領と G01 の実装開始（11-15）
+
+### 75.1 承認された範囲
+
+G01〜G15、外枠20,000行を受領した。順序はG01〜G03、G04〜G06、G07〜G09、
+G10〜G12、G13〜G15。約10,000行で途中報告し、G09のcanonical比較の同値の完成を
+途中取り込みの点として報告する。その時点で実装を止めない。
+G12の完成後に5a-4mの段0を出す。M15は5∞-2待ちを維持する。
+G01の部品を小さく分けても一覧の済みを増やさず、G01の実結論を検収してから1と数える。
+
+### 75.2 全自己関手の合成と walking monad の入力型
+
+新設場所は InfinityCategories/HA/Monads/。BEへの適用はまだない。
+
+- EndofunctorComposition.lean：全Fun(C,C)の合成の単体写像、単位・結合則、
+  実際の内部MonObj、元の単体写像f≫gのcurryとの照合。
+- EndofunctorSimplicialMonoid.lean：同じ合成を次数ごとのMonCat値単体的対象へ表示し、
+  全ての単体作用・単位・積が元の全関手単体集合のものと一致することを示す。
+- WalkingMonad.lean：空順序集合を含むΔ₊のnerve、全次数の順序和、単位、
+  一点順序集合の指定を、対象Cと同じ宇宙へ持ち上げる。
+- NativeMonad.lean：その全単体作用と単位・順序和の保存を持つモナドの型を定義し、
+  一点順序集合の作用から実際のunderlying endofunctorを取り出す。
+
+主な型（同じ構成の法則。新しい一覧IDには数えない）：
+
+```lean
+EndofunctorSpace (C : SSet.{u}) := (ihom C).obj C
+endofunctorComposition C :
+  EndofunctorSpace C ⊗ EndofunctorSpace C ⟶ EndofunctorSpace C
+endofunctorCompositionMonObj C : MonObj (EndofunctorSpace C)
+endofunctorSimplicialMonoid C : SimplicialObject MonCat.{u}
+WalkingMonadShape : SSet.{u}
+walkingMonadUnit : 𝟙_ SSet.{u} ⟶ WalkingMonadShape
+walkingMonadComposition : WalkingMonadShape ⊗ WalkingMonadShape ⟶ WalkingMonadShape
+
+structure NativeMonad (C : SSet.{u}) where
+  action : WalkingMonadShape ⟶ EndofunctorSpace C
+  map_unit : walkingMonadUnit ≫ action = endofunctorUnit C
+  map_composition : walkingMonadComposition ≫ action =
+    (action ⊗ₘ action) ≫ endofunctorComposition C
+
+NativeMonad.endofunctor (T : NativeMonad C) : C ⟶ C
+```
+
+NativeMonadのデータはh Fun上の通常Monadではなく、N(Δ₊)の全単体からの作用である。
+これはG01の構成先の型を定めた段階。与えられたQCatAdjunctionからこの全作用を
+構成したことにはしない。G01のinducedNativeMonadと元のF≫UへのFunctorIsoは未完。
+このwalking monadの表示とHAのモナドの表示の比較、および同じ単位・余単位の照合も
+G01の検収に残す。h Funの随伴を構造の欄へ入れただけでG01完成とはしない。
+
+原典はHA §4.7.2–§4.7.3・Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+全walking monadの順序和の表示と随伴の全coherenceへの拡張の証明経路として、
+[Riehl–Verity, *Homotopy coherent adjunctions and the formal theory of monads*](https://math.jhu.edu/~eriehl/adjunctions.pdf)
+Remark 3.3.8、Theorems 4.3.9・4.3.11を確認した。
+これらの拡張定理は未証明の引用や追加instanceとして入れていない。
+
+### 75.3 同じ構成の法則の型
+
+`EndofunctorComposition.lean`（NativeMonad.lean内はnamespace NativeMonad）：
+
+```lean
+lemma endofunctorUnit_comp (C : SSet.{u}) :
+    (λ_ (EndofunctorSpace C)).inv ≫ endofunctorUnit C ▷ _ ≫
+      endofunctorComposition C = 𝟙 _
+
+lemma endofunctorComp_unit (C : SSet.{u}) :
+    (ρ_ (EndofunctorSpace C)).inv ≫ _ ◁ endofunctorUnit C ≫
+      endofunctorComposition C = 𝟙 _
+
+lemma endofunctorComp_assoc (C : SSet.{u}) :
+    (α_ _ _ _).inv ≫ endofunctorComposition C ▷ _ ≫ endofunctorComposition C =
+      _ ◁ endofunctorComposition C ≫ endofunctorComposition C
+
+lemma endofunctorUnit_eq_curry (C : SSet.{u}) :
+    endofunctorUnit C = curry' (𝟙 C)
+
+lemma endofunctorComposition_curry {C : SSet.{u}} (f g : C ⟶ C) :
+    (λ_ (𝟙_ SSet)).inv ≫ (curry' f ⊗ₘ curry' g) ≫ endofunctorComposition C =
+      curry' (f ≫ g)
+```
+
+`EndofunctorSimplicialMonoid.lean`（NativeMonad.lean内はnamespace NativeMonad）：
+
+```lean
+lemma endofunctorSimplicialMonoid_obj (C : SSet.{u}) (n : SimplexCategoryᵒᵖ) :
+    ↥((endofunctorSimplicialMonoid C).obj n) = (EndofunctorSpace C).obj n
+
+lemma endofunctorSimplicialMonoid_map_apply (C : SSet.{u})
+    {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m)
+    (x : (EndofunctorSpace C).obj n) :
+    (endofunctorSimplicialMonoid C).map f x = (EndofunctorSpace C).map f x
+
+lemma endofunctorSimplicialMonoid_one (C : SSet.{u}) (n : SimplexCategoryᵒᵖ) :
+    (1 : (endofunctorSimplicialMonoid C).obj n) =
+      (endofunctorUnit C).app n PUnit.unit
+
+lemma endofunctorSimplicialMonoid_mul (C : SSet.{u}) (n : SimplexCategoryᵒᵖ)
+    (x y : (endofunctorSimplicialMonoid C).obj n) :
+    x * y = (endofunctorComposition C).app n (x, y)
+```
+
+`NativeMonad.lean`（NativeMonad.lean内はnamespace NativeMonad）：
+
+```lean
+lemma ext {T T' : NativeMonad C} (h : T.action = T'.action) : T = T'
+
+lemma curry_endofunctor (T : NativeMonad C) :
+    curry' T.endofunctor = (SSet.unitHomEquiv _).symm
+      (T.action.app (Opposite.op ⦋0⦌) walkingMonadGenerator)
+
+lemma endofunctor_vertex (T : NativeMonad C) :
+    SSet.unitHomEquiv _ (curry' T.endofunctor) =
+      T.action.app (Opposite.op ⦋0⦌) walkingMonadGenerator
+```
+
+`WalkingMonad.lean`（NativeMonad.lean内はnamespace NativeMonad）：
+
+```lean
+lemma walkingMonadComposition_apply (n : SimplexCategoryᵒᵖ)
+    (x y : WalkingMonadShape.{u}.obj n) :
+    ((walkingMonadComposition).app n (x, y)).down =
+      x.down.prod' y.down ⋙ tensor AugmentedSimplexCategory
+```
+
+### 75.4 実測と検証の状態
+
+現作業木の追加は4ファイル312行、明示宣言25（structure 1、その他24）。
+全てG01の構成・その法則の途中であり、G01〜G15の済みは0のまま。
+200行を超える証明はない。M15の検証済み16,936行は変更していない。
+
+最初のEndofunctorComposition（105行の版）は指定のimpl鍵で対象ビルドに成功した。
+class値のdefの還元性の警告を受けて@[instance_reducible]を付けた現行106行版は、
+他の3ファイルとまとめた再検証の対象にした。
+現時点では次の1件だけが生きた実行セッションで共有鍵を待っている：
+
+```text
+session 29814
+scripts/refactor/with_build_lock.sh --class impl --wait 3600 --
+  gtimeout --kill-after=3s 280 lake build
+  SerrePositivity.InfinityCategories.HA.Monads.NativeMonad:olean
+  SerrePositivity.InfinityCategories.HA.Monads.EndofunctorSimplicialMonoid:olean
+```
+
+既存セッションをポーリングして追い、待機を失敗とみなして重複起動しない。
+新設の4ファイルの全検証が終わるまでLeanのコミットを保留する。
+小さい公理監査の入力は/tmp/g12-small-audit.leanに準備済み（24宣言とNativeMonad.mk）。
+監査はまだ実行していない。対象ビルドの終了後、同じimpl鍵でこの監査だけを行う。
+大きい監査・rootビルド・他レーンへの書き込みは行っていない。
+この節のコミットは、未検証のLeanを検証済みとするものではない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
