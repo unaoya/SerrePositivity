@@ -14454,3 +14454,151 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,153行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §104 G01：細分の指定面の全関手での回収と元のnerveの面との照合（11-15）
+
+### 104.1 検証済みの追加
+
+追加は **3ファイル296行・明示宣言17**。累計 **86ファイル10,449行・明示宣言605**。
+ComposableArrowFaces.lean は106行・8宣言、ComposableArrowRefinementFaces.lean は117行・5宣言、
+WalkingAdjunctionRefinementFaces.lean は73行・4宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ原子の実細分・全鎖への挿入・面の全合成・係数移送・貼り合わせ・照合とその証明の分割なので、
+新しい一覧IDは足さない。
+
+一点を飛ばす実有限順序関手で全実鎖の面を構成した。
+後続点でのsuccAboveの法則と薄い順序圏の全射の一意性から、尾部との全合成則を証明した。
+これにより、面の尾部は元の尾部の対応する面であり、先頭を残す面の始点は元の始点である。
+先頭へ一射を挿入して0番の面を取れば元の実鎖に戻り、先頭二点を残す面は先頭への挿入と可換となる。
+先頭へ二射を挿入して中間点を除く面は、その二射の合成を先頭へ挿入したものと全関手として一致する。
+対象だけで終えず、実precompのmapも展開して最初の射を検収した。
+
+§103の細分の先頭・尾部での実定義を等式で取り出し、
+元の尾部へ最初の実射を戻す等式と、先頭の対象の等式の輸送の法則を証明した。
+これらの法則を使い、指定位置について再帰して、細分した実全鎖の中間点を除く指定面が
+元の実全鎖に、全射を含む全関手の等式として一致することを証明した。
+入力は元の指定辺が二つの実射の合成であるという等式だけである。
+
+実面の順序関手は単体圏の実面δの順序関手そのものであることを照合した。
+元のWalkingAdjunctionHomShapeのnerveの面が同じ実全鎖の面であることを実定義で証明し、
+§102の元の実併合・実残余射の因子化を、§103の実全単体へ挿入した場合に適用した。
+その指定面が元の実全単体に戻ることを、元のHomの単体集合の実際の面の作用として検収した。
+別の面の模型上の等式だけではない。
+
+### 104.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+検証した型は以下。
+
+```lean
+def finiteChainFaceIndex {n : ℕ} (k : Fin (n + 2)) : Fin (n + 1) ⥤ Fin (n + 2)
+
+lemma finiteChainFaceIndex_succ {n : ℕ} (k : Fin (n + 2)) :
+    Fin.succFunctor (n + 1) ⋙ finiteChainFaceIndex k.succ =
+      finiteChainFaceIndex k ⋙ Fin.succFunctor (n + 2)
+
+def finiteChainFace {n : ℕ} (F : ComposableArrows C (n + 1)) (k : Fin (n + 2)) :
+    ComposableArrows C n
+
+lemma finiteChainFace_first {n : ℕ} (F : ComposableArrows C (n + 1)) (k : Fin (n + 1)) :
+    (finiteChainFace F k.succ).obj 0 = F.obj 0
+
+lemma finiteChainFace_tail {n : ℕ} (F : ComposableArrows C (n + 2)) (k : Fin (n + 2)) :
+    (finiteChainFace F k.succ).δ₀ = finiteChainFace F.δ₀ k
+
+lemma finiteChainFace_precomp_zero {n : ℕ} (F : ComposableArrows C n) {A : C}
+    (f : A ⟶ F.left) : finiteChainFace (F.precomp f) 0 = F
+
+lemma finiteChainFace_precomp_succ {n : ℕ} (F : ComposableArrows C (n + 1))
+    {A : C} (f : A ⟶ F.left) (k : Fin (n + 1)) :
+    finiteChainFace (F.precomp f) k.succ.succ =
+      (finiteChainFace F k.succ).precomp (f ≫ eqToHom (finiteChainFace_first F k).symm)
+
+lemma finiteChainFace_precomp_pair {n : ℕ} (F : ComposableArrows C n)
+    {A B : C} (q : A ⟶ B) (g : B ⟶ F.left) :
+    finiteChainFace ((F.precomp g).precomp q) (1 : Fin (n + 3)) = F.precomp (q ≫ g)
+
+lemma composableArrowRefinement_zero {n : ℕ} (F : ComposableArrows C (n + 1))
+    (B : C) (q : F.obj (0 : Fin (n + 1)).castSucc ⟶ B)
+    (g : B ⟶ F.obj (0 : Fin (n + 1)).succ) :
+    composableArrowRefinement F 0 B q g = (F.δ₀.precomp g).precomp q
+
+lemma composableArrowRefinement_succ {n : ℕ} (F : ComposableArrows C (n + 2))
+    (k : Fin (n + 1)) (B : C) (q : F.obj k.succ.castSucc ⟶ B)
+    (g : B ⟶ F.obj k.succ.succ) :
+    composableArrowRefinement F k.succ B q g =
+      (composableArrowRefinement F.δ₀ k B q g).precomp
+        (F.map' 0 1 ≫ eqToHom (composableArrowRefinement_first F.δ₀ k B q g).symm)
+
+lemma composableArrowPrecomp_decompose {n : ℕ} (F : ComposableArrows C (n + 1)) :
+    F.δ₀.precomp (F.map' 0 1) = F
+
+lemma composableArrowPrecomp_transport {n : ℕ} {R S : ComposableArrows C n} (h : R = S)
+    {A : C} (f : A ⟶ S.left) (h0 : R.left = S.left) :
+    R.precomp (f ≫ eqToHom h0.symm) = S.precomp f
+
+lemma composableArrowRefinement_face :
+    ∀ (n : ℕ) (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+      (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ),
+      q ≫ g = F.map (homOfLE (Fin.castSucc_le_succ k)) →
+        finiteChainFace (composableArrowRefinement F k B q g) k.succ.castSucc = F
+
+lemma finiteChainFaceIndex_simplex {n : ℕ} (k : Fin (n + 2)) :
+    finiteChainFaceIndex k = walkingAdjunctionSimplexFunctor (SimplexCategory.δ k)
+
+lemma walkingAdjunctionHomShape_face {n : ℕ} (X Y : WalkingAdjunctionPoint)
+    (k : Fin (n + 2)) (F : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) :
+    (((WalkingAdjunctionHomShape.{u} X Y).map (SimplexCategory.δ k).op) (ULift.up F)).down =
+      finiteChainFace F k
+
+lemma walkingAdjunctionBottomMergeRefinement_face {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0) :
+    finiteChainFace (walkingAdjunctionBottomMergeRefinement H k m hA h1) k.succ.castSucc = H
+
+lemma walkingAdjunctionBottomMergeRefinement_nerve_face {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0) :
+    (((WalkingAdjunctionHomShape.{u} .minus Y).map
+      (SimplexCategory.δ k.succ.castSucc).op)
+        (ULift.up (walkingAdjunctionBottomMergeRefinement H k m hA h1))).down = H
+```
+
+現在は、指定した位置と二番目の点の像0の条件を入力に、実全単体の細分・原子性・
+元のnerveの指定面が元へ戻る等式までを構成している。
+全ての対象の非fillableな原子に対する適切な最初の位置の実選択、
+新しい全単体の非退化性、fillable条件、親の一意性、その他の面とのfiltrationの両立はまだ未完。
+従って原子のfillableな親の完成とは数えていない。
+parental subcomputadのfiltration、元のQCatAdjunctionからの全coherentな延長、
+原典の向きと現模型の水平反対の全比較、同じF≫U・単位・余単位・HAモデルの照合も未完。
+今回の元のnerveの指定面の回収を、coherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 104.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+初期のセッション58328・5172・26873は、実全鎖の比較先の型推論、
+実precompの最初のmapの展開・計算の未完による終了1をそれぞれ確認した。
+セッション82561の最大240秒の一つの枠内で、比較する全関手・実mapを明記して面の合成則を検証した。
+細分の再帰では、同じ有限点の値を明示し、尾部の半可約な型への書き換えの透明度を合わせた。
+その後の最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementFaces:olean
+は終了0、警告なし（1349 jobs）。続く追加17根だけの公理監査も終了0を確認し、
+同じ枠を明示的に閉じて外側の終了0を確認した。
+追加17根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・全出力・最終対象ビルドログは
+[g12-refinement-faces-audit-2026-11-15/](g12-refinement-faces-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,449行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
