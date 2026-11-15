@@ -12029,3 +12029,162 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み4,530行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §89 G01：全頂点の自由な生成語と指定F・Uの零次元の延長（11-15）
+
+### 89.1 検証済みの追加
+
+追加は **3ファイル423行・明示宣言32**。累計 **37ファイル4,953行・明示宣言331**。
+WalkingAdjunctionVertices.lean は178行・16宣言、WalkingAdjunctionVertexPaths.lean は133行・9宣言、
+WalkingAdjunctionVertexEvaluation.lean は112行・7宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じwalking adjunctionの生成射・合成則・係数移送・照合の証明の分割であり、
+新しい一覧IDを追加していない。
+
+§88の実豊穣圏のHom圏の対象を射とする頂点の圏を構成した。
+二点を結ぶ一つずつの生成射のquiverから、その道を水平合成する実関手を作った。
+四Homの各対象に語の長さを与え、八つの合成全ての長さの加法則を証明した。
+長さは同じ端点の頂点を区別し、道の長さはその実像の長さと一致する。
+
+同じ始点と長さを持つ交互の道は終点を含めて一致することを道の帰納法で示した。
+自己Homには標準の偶数語、混合Homには標準の奇数語を与えたので、
+空の自己Homを含む全頂点が道の像となる。これにより比較関手のFull・Faithfulを実際に構成した。
+その原像から実頂点を道へ戻す実関手を作り、実像の回収と二つの生成射の回収を検証した。
+
+任意の圏DのC・Eと、指定したF : C ⟶ E・U : E ⟶ Cに対して、
+この逆比較と自由な道の普遍性を用い、全頂点を評価する実関手を構成した。
+二つの生成射の像は同型類ではなく指定したF・Uそのものである。
+この構成は元の準圏間の射に適用できる零次元の指定であり、
+単位・余単位や高次の延長の存在は仮定していない。
+
+### 89.2 型と残る境界
+
+原典の対応はRiehl–Verity Proposition 3.1.10・Example 3.1.11・Theorem 4.3.9、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+検証した型は以下。
+
+```lean
+structure WalkingAdjunctionVertex where
+  point : WalkingAdjunctionPoint
+
+instance walkingAdjunctionVertexCategory : Category WalkingAdjunctionVertex
+
+def walkingAdjunctionOther : WalkingAdjunctionPoint → WalkingAdjunctionPoint
+
+lemma walkingAdjunctionOther_other (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionOther (walkingAdjunctionOther X) = X
+
+instance walkingAdjunctionGeneratingQuiver : Quiver WalkingAdjunctionPoint
+
+def walkingAdjunctionGeneratorVertex (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionHom X (walkingAdjunctionOther X)
+
+def walkingAdjunctionGeneratorPrefunctor :
+    WalkingAdjunctionPoint ⥤q WalkingAdjunctionVertex
+
+def walkingAdjunctionPathFunctor :
+    Paths WalkingAdjunctionPoint ⥤ WalkingAdjunctionVertex
+
+def walkingAdjunctionVertexLength : (X Y : WalkingAdjunctionPoint) →
+    walkingAdjunctionHom X Y → ℕ
+
+lemma walkingAdjunctionVertexLength_weight (X Y : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X Y) :
+    walkingAdjunctionVertexLength X Y A + walkingAdjunctionTargetCorrection X =
+      2 * walkingAdjunctionWeight X Y A + walkingAdjunctionTargetCorrection Y
+
+lemma walkingAdjunctionVertexLength_comp (X Y Z : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X Y) (B : walkingAdjunctionHom Y Z) :
+    walkingAdjunctionVertexLength X Z ((walkingAdjunctionHorizontal X Y Z).obj (A, B)) =
+      walkingAdjunctionVertexLength X Y A + walkingAdjunctionVertexLength Y Z B
+
+lemma walkingAdjunctionVertexLength_injective (X Y : WalkingAdjunctionPoint) :
+    Function.Injective (walkingAdjunctionVertexLength X Y)
+
+lemma walkingAdjunctionVertexLength_id (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionVertexLength X X (walkingAdjunctionIdentity X) = 0
+
+lemma walkingAdjunctionVertexLength_generator (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionVertexLength X (walkingAdjunctionOther X)
+      (walkingAdjunctionGeneratorVertex X) = 1
+
+lemma walkingAdjunctionVertexLength_prefunctor {X Y : WalkingAdjunctionPoint} (e : X ⟶ Y) :
+    walkingAdjunctionVertexLength X Y (walkingAdjunctionGeneratorPrefunctor.map e) = 1
+
+lemma walkingAdjunctionPathFunctor_length {X Y : WalkingAdjunctionPoint} (p : Quiver.Path X Y) :
+    walkingAdjunctionVertexLength X Y (walkingAdjunctionPathFunctor.map p) = p.length
+
+def walkingAdjunctionGeneratingArrow (X : WalkingAdjunctionPoint) :
+    X ⟶ walkingAdjunctionOther X
+
+def walkingAdjunctionEvenPath (X : WalkingAdjunctionPoint) : ℕ → Quiver.Path X X
+
+def walkingAdjunctionOddPath (X : WalkingAdjunctionPoint) (n : ℕ) :
+    Quiver.Path X (walkingAdjunctionOther X)
+
+lemma walkingAdjunctionEvenPath_length (X : WalkingAdjunctionPoint) (n : ℕ) :
+    (walkingAdjunctionEvenPath X n).length = 2 * n
+
+lemma walkingAdjunctionOddPath_length (X : WalkingAdjunctionPoint) (n : ℕ) :
+    (walkingAdjunctionOddPath X n).length = 2 * n + 1
+
+lemma walkingAdjunctionOther_of_ne {X Y : WalkingAdjunctionPoint} (h : X ≠ Y) :
+    Y = walkingAdjunctionOther X
+
+lemma walkingAdjunctionGeneratingPath_hext {X Y Z : WalkingAdjunctionPoint}
+    (p : Quiver.Path X Y) (q : Quiver.Path X Z) (h : p.length = q.length) :
+    Y = Z ∧ HEq p q
+
+instance walkingAdjunctionPathFunctor_faithful : walkingAdjunctionPathFunctor.Faithful
+
+instance walkingAdjunctionPathFunctor_full : walkingAdjunctionPathFunctor.Full
+
+def walkingAdjunctionVertexToPath : WalkingAdjunctionVertex ⥤ Paths WalkingAdjunctionPoint
+
+lemma walkingAdjunctionVertexToPath_map (X Y : WalkingAdjunctionVertex) (f : X ⟶ Y) :
+    walkingAdjunctionPathFunctor.map (walkingAdjunctionVertexToPath.map f) = f
+
+lemma walkingAdjunctionVertexToPath_generator (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionVertexToPath.map
+      (X
+
+def walkingAdjunctionEvaluationPrefunctor (C E : D) (F : C ⟶ E) (U : E ⟶ C) :
+    WalkingAdjunctionPoint ⥤q D
+
+def walkingAdjunctionVertexEvaluation (C E : D) (F : C ⟶ E) (U : E ⟶ C) :
+    WalkingAdjunctionVertex ⥤ D
+
+lemma walkingAdjunctionVertexEvaluation_left (C E : D) (F : C ⟶ E) (U : E ⟶ C) :
+    (walkingAdjunctionVertexEvaluation C E F U).map
+      (X
+
+lemma walkingAdjunctionVertexEvaluation_right (C E : D) (F : C ⟶ E) (U : E ⟶ C) :
+    (walkingAdjunctionVertexEvaluation C E F U).map
+      (X
+```
+
+今回得た自由性は零次元に限る。高次のatomicな射の自由な分解・退化との両立、
+parental subcomputadのfiltrationと実充填、水平反対の向きの照合は引き続き残る。
+元の随伴の単位・余単位の辺の代表は既存のAdjunctionRepresentativesで選んでいるが、
+その全coherentな延長を今回の頂点の評価関手から推定しない。
+元のF≫UとのFunctorIso、HAモデルの比較とG02以降も未完。
+G01の一覧の済みは0を維持する。
+
+### 89.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、セッション39231、最大280秒の短いimpl枠。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionVertexEvaluation:olean。
+単体記法のスコープ、道の圏と元のquiverの基底型の明示、
+道の帰納法における終点の等式輸送と既に閉じた証明の余分なタクティクを修正した。
+最終の対象ビルドはG12_VERTEX_BUILD_EXIT=0、警告なし（1277 jobs）。
+追加32根の小さい監査はG12_VERTEX_AUDIT_EXIT=0。
+入力32名と出力32名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認して枠を返却した。
+入力・根・全出力・最終対象ビルドログは
+[g12-adjunction-vertices-audit-2026-11-15/](g12-adjunction-vertices-audit-2026-11-15/)に保存した。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み4,953行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
