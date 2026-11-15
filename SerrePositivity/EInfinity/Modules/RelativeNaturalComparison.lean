@@ -1,6 +1,8 @@
 module
 
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.Modules.RelativeCylinderLaws
+public import SerrePositivity.EInfinity.Modules.LocalizationComparisonEvaluation
 public import SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor
 public import Mathlib.Tactic.FinCases
 
@@ -25,23 +27,31 @@ open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOf
 
 variable (C : RelativeCategory.{u})
 
+/-- 概要：同じ円筒の選択逆を元の端点関手へ比較する（HA §1.3.4）。
+方針：元の逆の同じ余単位を端点で前合成し、全関手の等式だけを明示的に移す。
+規約：選択逆と可逆二胞体を保持する。使われ方：指定交差辺との成分の照合。 -/
+def relativeCylinderInverseEndpointIso (i : Fin 2) :
+    FunctorIso (relativeCylinderProjection_isQCatEquivalence C).choose.inv
+      (localizationNerveMap (relativeCylinderEndpoint C i)) := by
+  let e := (relativeCylinderProjection_isQCatEquivalence C).choose
+  let E := localizationNerveMap (relativeCylinderEndpoint C i)
+  have h : E ≫ e.hom = 𝟙 (localizationNerve C) := by
+    change localizationNerveMap (relativeCylinderEndpoint C i) ≫
+      localizationNerveMap (relativeCylinderProjection C) = _
+    rw [← localizationNerveMap_comp, relativeCylinderEndpoint_projection, localizationNerveMap_id]
+  have hl : e.inv = E ≫ (e.hom ≫ e.inv) := by
+    rw [← Category.assoc, h, Category.id_comp]
+  exact eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) hl) ≪≫
+    e.homInvIso.precomp E ≪≫
+    eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) (Category.comp_id E))
+
 /-- 概要：同じ円筒の両端点の全関手間の比較（HA §1.3.4）。
 方針：同じ射影の逆と、端点・射影の厳密な合成則を使う。
 規約：頂点ごとの比較に弱めない。使われ方：弱自然変換の局所化。 -/
 def relativeCylinderEndpointIso :
     FunctorIso (localizationNerveMap (relativeCylinderEndpoint C 0))
-      (localizationNerveMap (relativeCylinderEndpoint C 1)) := by
-  let e := (relativeCylinderProjection_isQCatEquivalence C).choose
-  have h (i : Fin 2) : FunctorIso e.inv (localizationNerveMap (relativeCylinderEndpoint C i)) := by
-    have h := e.homInvIso.precomp (localizationNerveMap (relativeCylinderEndpoint C i))
-    change FunctorIso
-      (localizationNerveMap (relativeCylinderEndpoint C i) ≫
-        (localizationNerveMap (relativeCylinderProjection C) ≫ e.inv))
-      (localizationNerveMap (relativeCylinderEndpoint C i) ≫ 𝟙 _) at h
-    simpa only [← Category.assoc, ← localizationNerveMap_comp,
-      relativeCylinderEndpoint_projection, localizationNerveMap_id,
-      Category.id_comp, Category.comp_id] using h
-  exact (h 0).symm ≪≫ h 1
+      (localizationNerveMap (relativeCylinderEndpoint C 1)) :=
+  (relativeCylinderInverseEndpointIso C 0).symm ≪≫ relativeCylinderInverseEndpointIso C 1
 
 variable {C} {D : RelativeCategory.{u}} {F G : C ⟶ D}
 
@@ -97,7 +107,18 @@ lemma relativeNaturalCylinder_one (η : F.functor ⟶ G.functor)
 def localizationNerveMapIsoOfWeakNatTrans (η : F.functor ⟶ G.functor)
     (hη : ∀ X, D.weakEquivalences (η.app X)) :
     FunctorIso (localizationNerveMap F) (localizationNerveMap G) := by
-  have h := (relativeCylinderEndpointIso C).postcomp (localizationNerveMap (relativeNaturalCylinder η hη))
-  simpa only [← localizationNerveMap_comp, relativeNaturalCylinder_zero, relativeNaturalCylinder_one] using h
+  let H := localizationNerveMap (relativeNaturalCylinder η hη)
+  have h0 : localizationNerveMap (relativeCylinderEndpoint C 0) ≫ H =
+      localizationNerveMap F := by
+    rw [← localizationNerveMap_comp, relativeNaturalCylinder_zero]
+  have h1 : localizationNerveMap (relativeCylinderEndpoint C 1) ≫ H =
+      localizationNerveMap G := by
+    rw [← localizationNerveMap_comp, relativeNaturalCylinder_one]
+  exact functorIsoTransport ((relativeCylinderEndpointIso C).postcomp H) h0 h1
+
+attribute [cite HTT "1.2.7" (partial := component)
+  "同じ相対円筒の選択逆による全関手間の比較を構成する部分。一般の局所化の普遍性は含まない。"]
+  relativeCylinderInverseEndpointIso relativeCylinderEndpointIso
+  localizationNerveMapIsoOfWeakNatTrans
 
 end SerrePositivity.EInfinity.Modules
