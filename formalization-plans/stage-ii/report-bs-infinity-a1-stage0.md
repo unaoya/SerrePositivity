@@ -1420,3 +1420,100 @@ S3 の検証済み `nerveAsSmallIso`・`nerveAsSmallMaxIso` と既存の通常�
 S5 の証明分割は極限閉性からの15本931行。段0見込み600〜1,100行の範囲内。
 検証済み全体70本4,306行・393宣言、外枠18,600行内。
 S1・S6・S8 は継続、S7 は指示どおり後続。S6 の新しい大きい site の形状比較は未検証。
+
+### S6：係数と同じ宇宙での篩錐の比較（11-15、未検証）
+
+`NativeSiteDescent.lean` に、`C : Type u`・`E : SSet.{u}` の補助表示を置く。
+`nativeRestrictionCone` は既存の `sieveCone` の nerve を元の前層で後合成した指定錐。
+`NativeIsSheaf J O := ∀ U S, S ∈ J U → IsLimitCone (nativeRestrictionCone O S)`。
+型つきの接続は
+`NativeIsSheaf J (nerveMap e.functor.op ≫ O) ↔ NativeIsSheaf K O`
+（`e : C ≌ D`、両向きの被覆保存性）で、実際の篩圏の同値と錐全体の等式から証明する。
+既存の `sieveSiteFunctor`・`sieveSiteEquivalence` を再利用する。
+大きい site はその AsSmall 表示をこの補助表示に入れ、係数を上げずに比較する予定。
+既存の層条件との接続と指定単位の照合は残り、S6 完成とは数えない。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：AsSmall 表示の篩の全射比較（11-15、未検証）
+
+`AsSmallSieveComparison.lean` の比較は、`S : Sieve (AsSmall.up.obj U)` に対して
+`AsSmall (sieveCategory (S.functorPullback AsSmall.up)) ≌ sieveCategory S`。
+対応する形状比較は
+`QCatEquivalence (presheafShape (sieveCategory (S.functorPullback AsSmall.up)))
+  (nerve (sieveCategory S)ᵒᵖ)`。
+既存の `Over.post`・充満部分圏の lift・`nerveAsSmallIso` の移送であり、
+新しい被覆条件や濃度条件を追加しない。指定錐の比較を次に接続する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：指定単位の比較に使う conjugate の法則（11-15、未検証）
+
+既存の構成の法則として、`ConjugateUnit.lean` に次の型を書く：
+`a.unit ≫ l₁ ◁ conjugateEquiv a b α = b.unit ≫ α ▷ r₂`
+（任意の双圏、`a : l₁ ⊣ r₁`・`b : l₂ ⊣ r₂`・`α : l₂ ⟶ l₁`）。
+逆 conjugate の型も同じ指定単位で保持する。証明は交換則二回と三角恒等式。
+これは層化比較の mate の指定単位への接続の前提計算で、S6 の新しい定理としては数えない。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：既存の左随伴比較の指定単位法則（11-15、未検証）
+
+`AdjointComparisonUnit.lean` の型は、既存の比較 `i := adjointFunctorIsoOfRightIso a b e` に対して
+`a.unit ≫ qcatMap F ◁ (functorIsoToQcatIso e).hom =
+ b.unit ≫ (functorIsoToQcatIso i).inv ▷ qcatMap G'`。
+全二胞体の等式であり、頂点ごとの等式へ忘却しない。
+S6 の検証済み層化比較で実際に用いた同じ構成の法則として接続する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：残る同じ宇宙の指定錐・単位の接続（紙）
+
+次の既存構成の法則を、篩固有の比較に先行させる。
+`I,C : Type u`・`[SmallCategory I]`・`[SmallCategory C]`・`F : I ⥤ C`、
+`c : CategoryTheory.Limits.Cone F` に対して、
+`cA := (AsSmall.up.mapCone c).whisker AsSmall.down` とおく。
+必要な全錐の式は
+```lean
+joinMap (𝟙 _) (nerveAsSmallIso I).hom ≫ (nerveCone cA).val =
+  (nerveCone c).ulift.val ≫ (nerveAsSmallIso C).hom
+```
+である。右辺・左辺の係数となる nerve はすべて SSet(u+1)。
+これを `AsSmallSieveComparison` の形状同値に適用し、元の
+`restrictionCone` と `nativeRestrictionCone` の極限性を比較する。
+大きい site は AsSmall 表示を経由するが、元のすべての被覆篩を用いる。
+
+単位は、検証済み層化比較で使った同じ `t,s,rC,rD,hright` について、
+`a := (equivalenceAdjunction t).comp rC.adjunction` と
+`b := rD.adjunction.comp (equivalenceAdjunction s)` の
+`adjointFunctorIsoOfRightIso_unit a b hright` を使う。
+`functorIsoInverseSquare` の元の等式と同じ指定同値の単位を相殺し、
+元の層化単位の全関手の正方形へ戻す。別の比較同型を選び直して代用しない。
+S6 はこの二つの接続を終えるまで未完とする。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：錐の宇宙表示の法則の下書き（11-15、未検証）
+
+上の紙の全錐の式を `ConeUniverseNaturality.lean` に書いた。
+証明は `nerve_joinPoint_hom_ext` による点・図式・すべての脚の三つの照合。
+頂点だけの比較を結論にせず、元の全錐の射の等式を保つ。
+既存の構成の宇宙移送の法則として扱い、S6 の一覧の項目は追加しない。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6 の元の大きい形状の検証済みの区切り（11-15）
+
+`SiteSmallModelShape.lean`：1本73行、対象ビルド 7,176 jobs と
+10宣言の小監査成功（`/tmp/is-w1/native-site-shape-only/target-audit-result.json`）。
+元の `nerve Cᵒᵖ` と小さい模型の持ち上げた nerve の同値、全単体の順射の式、
+同じ係数の全前層圏の同値と極限の存在の回収、EssentiallySmall 入力まで検証した。
+標準三公理のみ、計算上限変更なし。
+
+篩錐・AsSmall 篩圏・単位法則2本・錐の宇宙表示の5本は未検証のまま作業木に残す。
+今回の検証で、逆同値の型を先に明示する箇所と、合成の括弧・単位子・
+ComposableArrows の脚の照合を修正している。
+S6 は元の指定錐と指定単位の全比較が残るため未完。
+検証済み全体71本4,379行・403宣言。S1・S6・S8 は継続、S7 は後続。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
