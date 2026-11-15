@@ -1046,3 +1046,64 @@ S6 の残りは層化・任意の前層の RΓ の単位を保つ比較、大き
 層条件の輸送と全 Γ 関手の比較まで。層化・任意の前層の RΓ・大きい site の比較は未完。
 S3 の追加2本と S6 の `SheafSiteEquivalence` はまだコミットに含めない。
 S3 初回は Prop から Type への除去制限で失敗。`Classical.choice` を明示して再検証中。
+
+### S6：反射の輸送の前提計算（11-15、未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7 は後続）。
+
+既存の同値の法則として、次の随伴表示を固定する。新しい逆関手を作るものではない。
+```lean
+def equivalenceAdjunction (e : QCatEquivalence X Y) : QCatAdjunction e.hom e.inv
+```
+`e.homInvIso.symm.hom` を指定単位にし、既存の全パラメータ単位 Hom 判定を使う。
+逆射の充満忠実性と単位の可逆性だけで全単射を証明する。200行未満。
+
+同じ前提計算について Mathlib の `Bicategory.Equivalence.mkOfAdjointifyCounit` が見つかったため、
+Hom 全単射の証明を重ねず、同じ指定単位を持つ既存の補正を使う。
+```lean
+def functorIsoToQcatIso (e : FunctorIso F G) : qcatMap F ≅ qcatMap G
+def adjointFunctorIsoOfRightIso (a : QCatAdjunction F G) (b : QCatAdjunction F' G')
+  (e : FunctorIso G G') : FunctorIso F F'
+```
+後者は既存の mate 同型による係数移送。いずれも既存構成の表示・法則で、200行未満。
+
+### S6：指定反射の全関手比較（11-15、未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7 は後続）。
+
+`functorIsoInverseSquare` と既存の mate 同型を再利用し、任意前層上の比較を書く。
+```lean
+def sheafificationReindexFunctorIso e J K hf hg hJ hK :
+  FunctorIso (sheafificationFunctor K hK ≫ reindexPresheafFunctor e.functor)
+    (reindexPresheafFunctor e.functor ≫ sheafificationFunctor J hJ)
+```
+ここでは全関手同型の構成まで。元の指定単位との可換性は未検証の残りとして保持し、
+これだけで S6 全体の完成とはしない。
+
+### S6：任意前層の全 RΓ 比較（11-15、未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7 は後続）。
+
+```lean
+def derivedGlobalSectionsReindexFunctorIso e J K hf hg hJ hK hE :
+  FunctorIso (reindexPresheafFunctor e.functor ≫ derivedGlobalSectionsFunctor J hJ hE)
+    (derivedGlobalSectionsFunctor K hK hE)
+```
+上の層化比較を Γ で送り、検証済みの `globalSectionsReindexFunctorIso` を前合成する。
+任意の前層が源で、層であるという余分な仮定は加えない。
+
+### S3 完了：頂点の等号と指定した制限錐の同値（11-15）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+承認された訂正後の型で、S3 の逆向きを小さい site と大きい site の両方で閉じた。
+- `SpecifiedCofinalLimitLift` の元の全錐 `cone` は `vertex_eq` を厳密な等号で保持。
+- `comparison` は制限後の錐から指定錐への、同じ slice 圏内の指定同値。存在だけにしない。
+- `CechLimitLift` の存在命題は drafts の `∃ c, IsLimitCone c ∧ c.vertex = t.vertex`。
+- module docs と各宣言の docstring に「制限の厳密な等号は要求しない」を記載。
+
+`/tmp/is-w1/cech-lift/build-2.log`：対象2本114行、5,700 jobs成功。
+新しい環境の27宣言の小監査も成功、標準三公理のみ。計算上限は変更なし。
+検証済み全体51本3,148行・321宣言。外枠18,600行内。
+S6 の新しい4本（層圏同値・随伴表示・層化比較・任意前層RΓ比較）は別の対象検証中で、
+本コミットには含めない。S1・S5・S6・S8 は継続中、S7 は指示どおり後続。
