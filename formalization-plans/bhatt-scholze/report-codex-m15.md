@@ -12607,3 +12607,127 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み5,816行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §93 G01：同じ全単体の実水平分解の全比較と等しい切れ目の回収（11-15）
+
+### 93.1 検証済みの追加
+
+追加は **2ファイル271行・明示宣言14**。累計 **47ファイル6,087行・明示宣言399**。
+WalkingAdjunctionCutRank.lean は113行・6宣言、WalkingAdjunctionFactorOrder.lean は158行・8宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ水平合成の切れ目・係数移送・分解の照合の法則と証明の分割なので、
+新しい一覧IDは足さない。
+
+plusの切れ目を偶数の順位、minusの共有点を奇数の順位としてまとめた。
+合成関手の等式に沿って切れ目の全データを同じ単体へ移す構成と、
+その輸送が各頂点の順位を変えないことを証明した。
+§92の三種類の比較から、任意の二種類の切れ目の順位が全頂点で一貫して比較できる。
+
+指定した同じ全単体Hの水平分解の実データとして、中点・左右の実関手・全合成の等式を記録した。
+実分解から構成した切れ目を、合成の等式に沿ってHへ輸送した。
+その順位は、元の左因子の頂点の長さと始点の補正の和に一致する。
+従って、同じHの任意の二つの水平分解の左因子の長さは、全頂点で一貫して比較できる。
+
+左因子の長さが全頂点で一致する二つの分解については、長さの偶奇から中点を回収した。
+長さの単射性から左因子の全頂点の対象を回収し、合成の重みの加法則から右因子の全頂点も回収した。
+§91の全関手の消去則を適用し、左右の実関手と分解の実データ全体の等式を証明した。
+分解の存在や、元の随伴からの高次の延長の存在を仮定として増やしていない。
+
+### 93.2 型と残る境界
+
+原典はRiehl–Verity Proposition 3.1.10・Remark 3.3.8、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+
+```lean
+def WalkingAdjunctionCut {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) : WalkingAdjunctionPoint → Type
+
+def walkingAdjunctionCutCoordinate {n : ℕ} {X Y M : WalkingAdjunctionPoint}
+    {F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y} (a : WalkingAdjunctionCut F M)
+    (i : Fin (n + 1)) : ℕ
+
+def walkingAdjunctionCutRank {n : ℕ} {X Y M : WalkingAdjunctionPoint}
+    {F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y} (a : WalkingAdjunctionCut F M)
+    (i : Fin (n + 1)) : ℕ
+
+def walkingAdjunctionCutTransport (h : F = G) (M : WalkingAdjunctionPoint)
+    (a : WalkingAdjunctionCut F M) : WalkingAdjunctionCut G M
+
+lemma walkingAdjunctionCutRank_transport (h : F = G) (a : WalkingAdjunctionCut F M)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionCutRank (walkingAdjunctionCutTransport h M a) i =
+      walkingAdjunctionCutRank a i
+
+lemma walkingAdjunctionCutRank_total (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N) :
+    (∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) ∨
+      (∀ i, walkingAdjunctionCutRank b i ≤ walkingAdjunctionCutRank a i)
+
+structure WalkingAdjunctionFactorization {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) where
+  middle : WalkingAdjunctionPoint
+  left : Fin (n + 1) ⥤ walkingAdjunctionHom X middle
+  right : Fin (n + 1) ⥤ walkingAdjunctionHom middle Y
+  fac : left.prod' right ⋙ walkingAdjunctionHorizontal X middle Y = H
+
+def WalkingAdjunctionFactorization.sourceCut (a : WalkingAdjunctionFactorization H) :
+    WalkingAdjunctionCut
+      (a.left.prod' a.right ⋙ walkingAdjunctionHorizontal X a.middle Y) a.middle
+
+def WalkingAdjunctionFactorization.cut (a : WalkingAdjunctionFactorization H) :
+    WalkingAdjunctionCut H a.middle
+
+lemma WalkingAdjunctionFactorization.sourceCut_rank (a : WalkingAdjunctionFactorization H)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionCutRank a.sourceCut i =
+      walkingAdjunctionVertexLength X a.middle (a.left.obj i) +
+        walkingAdjunctionTargetCorrection X
+
+lemma WalkingAdjunctionFactorization.cut_rank (a : WalkingAdjunctionFactorization H)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionCutRank a.cut i =
+      walkingAdjunctionVertexLength X a.middle (a.left.obj i) +
+        walkingAdjunctionTargetCorrection X
+
+lemma WalkingAdjunctionFactorization.prefix_total (a b : WalkingAdjunctionFactorization H) :
+    (∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) ∨
+    (∀ i, walkingAdjunctionVertexLength X b.middle (b.left.obj i) ≤
+      walkingAdjunctionVertexLength X a.middle (a.left.obj i))
+
+lemma WalkingAdjunctionFactorization.middle_eq_of_length (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) =
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) : a.middle = b.middle
+
+lemma WalkingAdjunctionFactorization.ext_prefix_length (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) =
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) : a = b
+```
+
+今回得たのは、全単体の実水平分解についての全比較と、左因子の長さによる等式の反映である。
+長さが小さい方の左因子を大きい方の左因子から実際に分離する、残りの因子の構成は未完。
+大小の比較だけから、その残りの実関手の存在を推定していない。
+この残りの因子を有限単調射の制限と既存の端点条件の照合から構成する部分へ進む。
+
+§90の原子的な自由な道の比較のFaithful、原子性の退化との両立、parental subcomputadの
+filtration・実充填、元のQCatAdjunctionからの全coherentな延長と同じF≫U・単位・余単位・
+HAモデルの照合、G02以降は引き続き未完。G01の済みは0を維持する。
+
+### 93.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、セッション32752、最大280秒の短いimpl枠。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorOrder:olean。
+順位の全比較は初回の対象ビルドで通った。
+分解の全比較・一意性は、既存の頂点の長さのimportを補った後、数学の証明を変更せず通った。
+最終G12_RANK_BUILD_EXIT=0・警告なし（1282 jobs）。
+追加14根の小さい監査はG12_RANK_AUDIT_EXIT=0。
+入力14名と出力14名は一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認し、枠を返却した。
+入力・根・全出力・対象ビルドログは
+[g12-factor-order-audit-2026-11-15/](g12-factor-order-audit-2026-11-15/)に保存した。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み6,087行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
