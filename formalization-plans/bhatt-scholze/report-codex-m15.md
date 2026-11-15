@@ -16450,3 +16450,127 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み14,849行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §116 G01：幅による全実頂点の境界と、全次数・四Homでの有限性（11-15）
+
+### 116.1 検証済みの追加
+
+追加は **4ファイル326行・明示宣言12**。累計 **136ファイル15,175行・明示宣言781**。
+WalkingAdjunctionOrdinalWidthVertices.lean は81行・3宣言、
+FiniteFunctorObjects.lean は54行・1宣言、
+WalkingAdjunctionBoundedChains.lean は64行・3宣言、
+WalkingAdjunctionOrdinalWidthFinite.lean は127行・5宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実全随伴と実filtrationに必要な実個数・全関手の有限表示、
+元の実辺の全合成・既存の原子・幅・次元の法則とその証明の分割であり、一覧IDは追加しない。
+
+任意の実全鎖で、各実頂点の点の個数は、始点の個数と全実辺の変化量の和以下となることを示した。
+尾部に帰納し、先頭の辺の個数の差の上限と全辺の変化量の和の分解を合わせている。
+原子の始点の個数と幅の式を適用すると、全実頂点の個数は幅と両端の補正の和より小さく、
+全実頂点の重みは有限順序の幅以下となる。元の全関手の全頂点についての境界である。
+
+一般の補題として、有限な対象・射を持つ圏から、対象が有限な範囲にあり各Homが有限な圏への実関手は有限個であることを示した。
+対象の関数と全射の作用の関数を依存和へ符号化し、その単射性を実関手の構造と証明非依存性で証明した。
+全射の作用の暗黙の両端引数を明示し、関手の実作用を失わずに比較している。
+仮定した有限性は一般の補題の型に明示し、walking Homへの適用では以下のように実際に証明する。
+
+四つのwalking Homの任意の二対象間の実射は、忠実な有限単調射の表示から有限関数型へ単射で入り、有限個となる。
+重みが指定値以下の実対象も、重みの単射性で有限個となる。
+従って全頂点の重みを制限した固定次数の実全関手は、一般の関手の有限性から有限個となる。
+これに全実頂点の幅の境界を適用し、固定次数・固定幅の実原子は有限個であることを示した。
+
+非退化な原子の次元は有限順序の幅より小さいという§115の法則から、
+固定幅の全次数の非退化実原子を、有限個の次数と有限個の実関手の依存和の像に入れた。
+さらに二つの実対象の有限性を明示し、四Hom・全次数を合わせても、固定幅の非退化な実原子は有限集合となることを示した。
+幅が指定値以下の全非退化実原子も、有限個の各幅の集合の有限和へ入るので有限である。
+いずれも元の実全関手そのものの有限性であり、同型類だけの有限性へ置き換えていない。
+
+### 116.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionVertexCard_le_first_add_variation {X Y : WalkingAdjunctionPoint} :
+    ∀ (n : ℕ) (H : ComposableArrows (walkingAdjunctionHom X Y) n) (i : Fin (n + 1)),
+      walkingAdjunctionOrdinalCard X Y (H.obj i) ≤
+        walkingAdjunctionOrdinalCard X Y (H.obj 0) +
+          ∑ j : Fin n, ordinalMapVariation
+            (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ j))))
+
+lemma walkingAdjunctionOrdinalWidth_vertex_card_lt {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard X Y (H.obj i) < walkingAdjunctionOrdinalWidth H +
+      walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y
+
+lemma walkingAdjunctionOrdinalWidth_vertex_weight_le {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) (i : Fin (n + 1)) :
+    walkingAdjunctionWeight X Y (H.obj i) ≤ walkingAdjunctionOrdinalWidth H
+
+lemma finite_functors_of_objectwise_finite {I : Type u₁} {D : Type u₂}
+    [Category.{v₁} I] [Category.{v₂} D] [Finite I]
+    [∀ i j : I, Finite (i ⟶ j)] [∀ A B : D, Finite (A ⟶ B)]
+    (P : D → Prop) [Finite {A : D // P A}] :
+    Finite {F : I ⥤ D // ∀ i, P (F.obj i)}
+
+lemma walkingAdjunctionHom_finite (X Y : WalkingAdjunctionPoint) (A B : walkingAdjunctionHom X Y) :
+    Finite (A ⟶ B)
+
+lemma walkingAdjunctionBoundedObjects_finite (X Y : WalkingAdjunctionPoint) (w : ℕ) :
+    Finite {A : walkingAdjunctionHom X Y // walkingAdjunctionWeight X Y A ≤ w}
+
+lemma walkingAdjunctionBoundedChains_finite (n : ℕ) (X Y : WalkingAdjunctionPoint) (w : ℕ) :
+    Finite {H : ComposableArrows (walkingAdjunctionHom X Y) n //
+      ∀ i, walkingAdjunctionWeight X Y (H.obj i) ≤ w}
+
+lemma walkingAdjunctionAtomicWidth_finite (n : ℕ) (X Y : WalkingAdjunctionPoint) (w : ℕ) :
+    Finite {H : ComposableArrows (walkingAdjunctionHom X Y) n //
+      WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H ∧
+        walkingAdjunctionOrdinalWidth H = w}
+
+lemma walkingAdjunctionAtomicWidth_set_finite (X Y : WalkingAdjunctionPoint) (w : ℕ) :
+    {p : Σ n : ℕ, ComposableArrows (walkingAdjunctionHom X Y) n |
+      WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) p.2 ∧
+        ULift.up p.2 ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate p.1 ∧
+          walkingAdjunctionOrdinalWidth p.2 = w}.Finite
+
+lemma walkingAdjunctionPoint_finite : Finite WalkingAdjunctionPoint
+
+lemma walkingAdjunctionAllAtomicWidth_set_finite (w : ℕ) :
+    {p : Σ X : WalkingAdjunctionPoint, Σ Y : WalkingAdjunctionPoint,
+        Σ n : ℕ, ComposableArrows (walkingAdjunctionHom X Y) n |
+      WalkingAdjunctionLevelIsAtomic (X := ⟨p.1⟩) (Y := ⟨p.2.1⟩) p.2.2.2 ∧
+        ULift.up p.2.2.2 ∈
+          (WalkingAdjunctionHomShape.{u} p.1 p.2.1).nonDegenerate p.2.2.1 ∧
+            walkingAdjunctionOrdinalWidth p.2.2.2 = w}.Finite
+
+lemma walkingAdjunctionAllAtomicWidth_le_set_finite (w : ℕ) :
+    {p : Σ X : WalkingAdjunctionPoint, Σ Y : WalkingAdjunctionPoint,
+        Σ n : ℕ, ComposableArrows (walkingAdjunctionHom X Y) n |
+      WalkingAdjunctionLevelIsAtomic (X := ⟨p.1⟩) (Y := ⟨p.2.1⟩) p.2.2.2 ∧
+        ULift.up p.2.2.2 ∈
+          (WalkingAdjunctionHomShape.{u} p.1 p.2.1).nonDegenerate p.2.2.1 ∧
+            walkingAdjunctionOrdinalWidth p.2.2.2 ≤ w}.Finite
+```
+
+現在の実有限順序の幅では、実非退化原子の次元と全実頂点の境界、固定幅と指定幅以下での全体の有限性を検証した。
+原典の文字列の幅・fillable条件との全比較、始点plusの前置と最後の親の幅の計算、
+指定以外の面と原子分解の幅・深さの比較、parental subcomputadのfiltrationと全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 116.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加12根だけの公理監査を確認した。
+最終対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionOrdinalWidthFinite:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+Finiteの積・依存和、有限像・有限和の正規import、集合の所属の現行名、符号化先の部分型を整えて最終検証した。
+追加12根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-ordinal-width-finite-audit-2026-11-15/](g12-ordinal-width-finite-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み15,175行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
