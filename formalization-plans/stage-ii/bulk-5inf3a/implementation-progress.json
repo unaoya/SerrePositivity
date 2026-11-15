@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base dcf128444ee7d4b2da0ad58b4fe7918e97d7bd30",
+  "verified_head": "this commit: base 54783d10324e7d3b249a8b8e42b0d4abec080987",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,13 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "resolution-disk-functor-checkpoint.json",
+  "latest_complete_audit_checkpoint": "kernel-identity-normalization-checkpoint.json",
   "latest_complete_audit_declarations": 881,
   "working_changes_unverified": [
     "ResolutionKernelFunctor",
-    "ResolutionStepFunctor"
+    "ResolutionStepFunctor",
+    "ResolutionCandidateFunctor"
   ],
-  "pending_check": "bundle-042 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-043 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
