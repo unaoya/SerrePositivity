@@ -12731,3 +12731,238 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み6,087行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §94 G01：残りの実対象・実射の回収と二つの切れ目の間への実制限（11-15）
+
+### 94.1 検証済みの追加
+
+追加は **4ファイル573行・明示宣言31**。累計 **51ファイル6,660行・明示宣言430**。
+WalkingAdjunctionOrderProfiles.lean は182行・10宣言、WalkingAdjunctionResidualObjects.lean は127行・8宣言、
+OrdinalRestriction.lean は110行・6宣言、WalkingAdjunctionCutIntervals.lean は154行・7宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ四Homの射の回収・係数移送・合成則・区間への制限と証明の分割であり、
+新しい一覧IDは足さない。
+
+始点がminusなら最小元、終点がminusなら最大元を保つという共通表示の端点条件を定義した。
+実Homの対象が端点を持つときの個数の非零を、各実Homから証明した。
+四Homの全ての実射がこの端点条件を満たすことを示し、条件を持つ有限単調射から
+元の実Homの射を作る構成と両方向の往復を証明した。これにより四Homの全単射を構成した。
+
+左因子の長さの比較から重みの大小を回収し、その差に対応する元の実Homの対象を作った。
+minusからplusへの重みが正でなければならない場合も、長さの比較の偶奇から証明した。
+短い左因子とこの残りの対象の合成が長い左因子になること、
+同じ合成の二分解についてこの残りの対象と短い右因子の合成が長い右因子になることを照合した。
+今回の対象の構成は存在を仮定する欄ではなく、元の四Hom内の実対象である。
+
+有限区間への包含と、元の射の像の上下の条件から実際の区間制限を構成した。
+その包含との可換性、恒等射の保存、合成の保存を証明した。
+実切れ目については、切れ目の右にある点の像も切れ目の右にあり、
+切れ目の左側の区間の像も対応する区間内にあることを、plusのGalois条件とminusの共有点から示した。
+二つの順位が比較済みなら、その間の区間は元の全体に入り、元の各射の像も対応する区間へ入る。
+これらを使って、上下の条件を追加の仮定として課さず、二つの切れ目の間の実有限単調射を構成した。
+
+### 94.2 型と残る境界
+
+原典はRiehl–Verity Proposition 3.1.10・Remark 3.3.8、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。型の一覧は以下。
+後半の区間の法則では、n・X・Y・M・Nと実関手F : Fin(n+1) ⥤ walkingAdjunctionHom X Yを暗黙に固定する。
+
+```lean
+instance walkingAdjunctionOrdinalCard_sourceMinus_neZero (Y : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom .minus Y) : NeZero (walkingAdjunctionOrdinalCard .minus Y A)
+
+instance walkingAdjunctionOrdinalCard_targetMinus_neZero (X : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X .minus) : NeZero (walkingAdjunctionOrdinalCard X .minus A)
+
+def WalkingAdjunctionOrderBoundary (X Y : WalkingAdjunctionPoint)
+    {m n : ℕ} (f : Fin m →o Fin n) : Prop
+
+lemma walkingAdjunctionOrderHom_bottom {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B)
+    (i : Fin (walkingAdjunctionOrdinalCard .minus Y A)) (hi : i.val = 0) :
+    (walkingAdjunctionOrderHom f i).val = 0
+
+lemma walkingAdjunctionOrderHom_top {X : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X .minus} (f : A ⟶ B)
+    (i : Fin (walkingAdjunctionOrdinalCard X .minus A))
+    (hi : i.val + 1 = walkingAdjunctionOrdinalCard X .minus A) :
+    (walkingAdjunctionOrderHom f i).val + 1 = walkingAdjunctionOrdinalCard X .minus B
+
+lemma walkingAdjunctionOrderHom_boundary {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) :
+    WalkingAdjunctionOrderBoundary X Y (walkingAdjunctionOrderHom f)
+
+def walkingAdjunctionHomOfOrder {X Y : WalkingAdjunctionPoint}
+    (A B : walkingAdjunctionHom X Y)
+    (f : Fin (walkingAdjunctionOrdinalCard X Y A) →o Fin (walkingAdjunctionOrdinalCard X Y B))
+    (hf : WalkingAdjunctionOrderBoundary X Y f) : A ⟶ B
+
+lemma walkingAdjunctionOrderHom_ofOrder {X Y : WalkingAdjunctionPoint}
+    (A B : walkingAdjunctionHom X Y)
+    (f : Fin (walkingAdjunctionOrdinalCard X Y A) →o Fin (walkingAdjunctionOrdinalCard X Y B))
+    (hf : WalkingAdjunctionOrderBoundary X Y f) :
+    walkingAdjunctionOrderHom (walkingAdjunctionHomOfOrder A B f hf) = f
+
+lemma walkingAdjunctionHomOfOrder_order {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) :
+    walkingAdjunctionHomOfOrder A B (walkingAdjunctionOrderHom f)
+      (walkingAdjunctionOrderHom_boundary f) = f
+
+def walkingAdjunctionOrderProfileEquiv {X Y : WalkingAdjunctionPoint}
+    (A B : walkingAdjunctionHom X Y) :
+    (A ⟶ B) ≃ {f : Fin (walkingAdjunctionOrdinalCard X Y A) →o
+      Fin (walkingAdjunctionOrdinalCard X Y B) // WalkingAdjunctionOrderBoundary X Y f}
+
+def walkingAdjunctionObjectOfWeight (X Y : WalkingAdjunctionPoint) (w : ℕ)
+    (_h : X = .minus → Y = .plus → 0 < w) : walkingAdjunctionHom X Y
+
+lemma walkingAdjunctionObjectOfWeight_weight (X Y : WalkingAdjunctionPoint) (w : ℕ)
+    (h : X = .minus → Y = .plus → 0 < w) :
+    walkingAdjunctionWeight X Y (walkingAdjunctionObjectOfWeight X Y w h) = w
+
+lemma walkingAdjunctionPrefix_weight_le {X M N : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom X N)
+    (h : walkingAdjunctionVertexLength X M A ≤ walkingAdjunctionVertexLength X N B) :
+    walkingAdjunctionWeight X M A ≤ walkingAdjunctionWeight X N B
+
+lemma walkingAdjunctionPrefix_difference_admissible {X M N : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom X N)
+    (h : walkingAdjunctionVertexLength X M A ≤ walkingAdjunctionVertexLength X N B) :
+    M = .minus → N = .plus →
+      0 < walkingAdjunctionWeight X N B - walkingAdjunctionWeight X M A
+
+def walkingAdjunctionResidualObject {X M N : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom X N)
+    (h : walkingAdjunctionVertexLength X M A ≤ walkingAdjunctionVertexLength X N B) :
+    walkingAdjunctionHom M N
+
+lemma walkingAdjunctionResidualObject_weight {X M N : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom X N)
+    (h : walkingAdjunctionVertexLength X M A ≤ walkingAdjunctionVertexLength X N B) :
+    walkingAdjunctionWeight M N (walkingAdjunctionResidualObject A B h) =
+      walkingAdjunctionWeight X N B - walkingAdjunctionWeight X M A
+
+lemma walkingAdjunctionResidualObject_prefix {X M N : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom X N)
+    (h : walkingAdjunctionVertexLength X M A ≤ walkingAdjunctionVertexLength X N B) :
+    (walkingAdjunctionHorizontal X M N).obj (A, walkingAdjunctionResidualObject A B h) = B
+
+lemma walkingAdjunctionResidualObject_suffix {X M N Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom X M) (B : walkingAdjunctionHom X N)
+    (C : walkingAdjunctionHom M Y) (D : walkingAdjunctionHom N Y)
+    (h : walkingAdjunctionVertexLength X M A ≤ walkingAdjunctionVertexLength X N B)
+    (hc : (walkingAdjunctionHorizontal X M Y).obj (A, C) =
+      (walkingAdjunctionHorizontal X N Y).obj (B, D)) :
+    (walkingAdjunctionHorizontal M N Y).obj (walkingAdjunctionResidualObject A B h, D) = C
+
+def ordinalSegmentInclusion (m a r : ℕ) (h : a + r ≤ m) : Fin r →o Fin m
+
+def ordinalRestrict {m n : ℕ} (f : Fin m →o Fin n) (a c r s : ℕ) (ha : a + r ≤ m)
+    (hl : ∀ i, c ≤ (f (ordinalSegmentInclusion m a r ha i)).val)
+    (hu : ∀ i, (f (ordinalSegmentInclusion m a r ha i)).val < c + s) : Fin r →o Fin s
+
+lemma ordinalRestrict_val {m n : ℕ} (f : Fin m →o Fin n) (a c r s : ℕ) (ha : a + r ≤ m)
+    (hl : ∀ i, c ≤ (f (ordinalSegmentInclusion m a r ha i)).val)
+    (hu : ∀ i, (f (ordinalSegmentInclusion m a r ha i)).val < c + s) (i : Fin r) :
+    (ordinalRestrict f a c r s ha hl hu i).val =
+      (f (ordinalSegmentInclusion m a r ha i)).val - c
+
+lemma ordinalRestrict_square {m n : ℕ} (f : Fin m →o Fin n) (a c r s : ℕ)
+    (ha : a + r ≤ m) (hc : c + s ≤ n)
+    (hl : ∀ i, c ≤ (f (ordinalSegmentInclusion m a r ha i)).val)
+    (hu : ∀ i, (f (ordinalSegmentInclusion m a r ha i)).val < c + s) :
+    (ordinalSegmentInclusion n c s hc).comp (ordinalRestrict f a c r s ha hl hu) =
+      f.comp (ordinalSegmentInclusion m a r ha)
+
+lemma ordinalRestrict_id {m a r : ℕ} (ha : a + r ≤ m)
+    (hl : ∀ i, a ≤ ((OrderHom.id : Fin m →o Fin m)
+      (ordinalSegmentInclusion m a r ha i)).val)
+    (hu : ∀ i, ((OrderHom.id : Fin m →o Fin m)
+      (ordinalSegmentInclusion m a r ha i)).val < a + r) :
+    ordinalRestrict OrderHom.id a a r r ha hl hu = OrderHom.id
+
+lemma ordinalRestrict_comp {m n k a c d r s t : ℕ} (f : Fin m →o Fin n) (g : Fin n →o Fin k)
+    (ha : a + r ≤ m) (hc : c + s ≤ n)
+    (hlf : ∀ i, c ≤ (f (ordinalSegmentInclusion m a r ha i)).val)
+    (huf : ∀ i, (f (ordinalSegmentInclusion m a r ha i)).val < c + s)
+    (hlg : ∀ i, d ≤ (g (ordinalSegmentInclusion n c s hc i)).val)
+    (hug : ∀ i, (g (ordinalSegmentInclusion n c s hc i)).val < d + t)
+    (hl : ∀ i, d ≤ ((g.comp f) (ordinalSegmentInclusion m a r ha i)).val)
+    (hu : ∀ i, ((g.comp f) (ordinalSegmentInclusion m a r ha i)).val < d + t) :
+    ordinalRestrict (g.comp f) a d r t ha hl hu =
+      (ordinalRestrict g c d s t hc hlg hug).comp (ordinalRestrict f a c r s ha hlf huf)
+
+lemma walkingAdjunctionCut_bound (a : WalkingAdjunctionCut F M) (i : Fin (n + 1)) :
+    walkingAdjunctionCutCoordinate a i + walkingAdjunctionTargetCorrection M ≤
+      walkingAdjunctionOrdinalCard X Y (F.obj i)
+
+lemma walkingAdjunctionCutCoordinate_le (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N) (i : Fin (n + 1))
+    (h : walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) :
+    walkingAdjunctionCutCoordinate a i ≤ walkingAdjunctionCutCoordinate b i
+
+lemma walkingAdjunctionCut_lower (a : WalkingAdjunctionCut F M) {i j : Fin (n + 1)}
+    (h : i ≤ j) (k : Fin (walkingAdjunctionOrdinalCard X Y (F.obj i)))
+    (hk : walkingAdjunctionCutCoordinate a i ≤ k.val) :
+    walkingAdjunctionCutCoordinate a j ≤
+      (walkingAdjunctionOrderHom (F.map (homOfLE h)) k).val
+
+lemma walkingAdjunctionCut_upper (a : WalkingAdjunctionCut F M) {i j : Fin (n + 1)}
+    (h : i ≤ j) (k : Fin (walkingAdjunctionOrdinalCard X Y (F.obj i)))
+    (hk : k.val < walkingAdjunctionCutCoordinate a i + walkingAdjunctionTargetCorrection M) :
+    (walkingAdjunctionOrderHom (F.map (homOfLE h)) k).val <
+      walkingAdjunctionCutCoordinate a j + walkingAdjunctionTargetCorrection M
+
+def walkingAdjunctionCutIntervalSize (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N) (i : Fin (n + 1)) : ℕ
+
+lemma walkingAdjunctionCutInterval_bound (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N) (i : Fin (n + 1))
+    (h : walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) :
+    walkingAdjunctionCutCoordinate a i + walkingAdjunctionCutIntervalSize a b i ≤
+      walkingAdjunctionOrdinalCard X Y (F.obj i)
+
+def walkingAdjunctionCutIntervalMap (a : WalkingAdjunctionCut F M)
+    (b : WalkingAdjunctionCut F N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (hij : i ≤ j) :
+    Fin (walkingAdjunctionCutIntervalSize a b i) →o
+      Fin (walkingAdjunctionCutIntervalSize a b j)
+```
+
+二つの切れ目の間の有限単調射を作るところまで検証した。
+それが持つべき端点条件、恒等射・全合成の保存を実単体の全射に対して照合し、
+重みの差から作った実対象の間の射へ戻して残りの実関手を構成する部分はまだ残る。
+一般の区間制限の恒等・合成則だけから、元の準圏でのこの実関手の存在を推定していない。
+
+原子的な自由な道の比較のFaithful、原子性の退化との両立、parental subcomputadの
+filtration・実充填、元のQCatAdjunctionからの全coherentな延長と同じF≫U・単位・余単位・
+HAモデルの照合、G02以降も引き続き未完。G01の済みは0を維持する。
+
+### 94.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大280秒の短いimpl枠。
+実Homの射の回収はセッション12403で対象ビルド終了0・警告なし（1270 jobs）、
+追加10根の監査もG12_PROFILE_AUDIT_EXIT=0。
+この監査終了後、実行中の制御スクリプトを編集していたことにより外側は構文エラーで終了1となった。
+対象ビルドと監査の終了0はそれぞれログ・印字で確認済みであり、同じセッションの終了1も確認している。
+以後は実行中の制御スクリプトを変更せず、対象・指令の別ファイルだけを更新した。
+
+セッション45142で残りの実対象と区間制限をまとめて検証し、
+最終対象はlake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionCutIntervals:olean。
+実対象は初回の対象ビルドで通った。区間制限は像の下限を各点で明示し、
+包含との可換式を各点の式へ変えて修正した。
+切れ目の制限は共有点の自然数の不等式と、値域の幅だけを書き換える等式を明示した。
+最終G12_RESTRICT_BUILD_EXIT=0・警告なし（1285 jobs）。
+残りの追加21根の監査はG12_RESTRICT_AUDIT_EXIT=0。
+10根・21根とも入力名と出力名は完全一致、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。後の枠はexitで外側の終了0まで確認して返却した。
+入力・根・両監査の全出力・対象ビルドログは
+[g12-residual-construction-audit-2026-11-15/](g12-residual-construction-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み6,660行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
