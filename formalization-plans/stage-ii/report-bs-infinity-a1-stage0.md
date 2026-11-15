@@ -2571,3 +2571,28 @@ nerveJoinChain (Join.simplexMap _ _ α s) = α.toFunctor ⋙ nerveJoinChain s
 次は係数関手による後合成の法則を新規ファイルで示す。
 検証済み全体162本10,513行・906宣言。S1・S8 の完成にはまだ数えない。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：模型比較の後合成と両側の制限
+
+`NerveJoinPostcomposition`（116行11宣言）と `NerveJoinBoundaries`（81行10宣言）の
+対象ビルド・小監査が成功した（標準三公理のみ、source SHA 一致）。
+記録：`/tmp/is-w1/s8-nerve-join-postcomp-2/`、`/tmp/is-w1/s8-nerve-join-boundaries-3/`。
+法則の型は以下のとおり。いずれも既存の比較射の法則で、追加 ID はない。
+
+```lean
+joinMap (nerveMap F) (nerveMap G) ≫ nerveJoinComparison C' D' =
+  nerveJoinComparison C D ≫ nerveMap (CategoryTheory.Join.mapPair F G)
+
+joinInl (nerve C) (nerve D) ≫ nerveJoinComparison C D =
+  nerveMap (CategoryTheory.Join.inclLeft C D)
+joinInr (nerve C) (nerve D) ≫ nerveJoinComparison C D =
+  nerveMap (CategoryTheory.Join.inclRight C D)
+```
+
+後合成は空単体を含む全射列の対象・射から、制限は元の左右の全射列から証明した。
+計算上限は変更していない。検証済み全体164本10,710行・927宣言。
+逆比較は、既存の `initialNerveCut` を通常圏の join に適用して切断を復元するところを検証待ち。
+左右の射列の復元、twisted arrow との両端射影を保持する同型、元の固定 Yoneda の全族比較は残る。
+S1 と S8 は引き続き未完成。S7 は後続とし、R2・R3 は再開しない。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
