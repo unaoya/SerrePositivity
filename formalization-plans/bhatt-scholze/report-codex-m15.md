@@ -11520,3 +11520,116 @@ sorryAx・追加公理はない。外側の終了0まで確認して枠を返却
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み3,352行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §85 G01：既存の順序和・区間表示と混合合成の実随伴の照合（11-15）
+
+### 85.1 検証済みの区切り
+
+前のgoal turnは§83〜§84のLeanと報告を検証・コミットした進捗あり。
+今回は§84の作業木の区間表示の比較を仕上げ、混合合成に使う実随伴との照合を進めた。
+追加は **2ファイル223行・明示宣言9**。累計 **27ファイル3,575行・明示宣言250**。
+G01は未完で一覧の済みは0のまま。
+
+| ファイル（InfinityCategories/HA/Monads/） | 行数 | 今回の検収 |
+|---|---:|---|
+| OrdinalIntervalConcatenation.lean | 131 | 最大元付加と順序和・端点共有の照合、区間表示の順序和への適合、既存tensorHomOfとの全射の照合 |
+| OrdinalMixedAdjoints.lean | 92 | 順序和の端点保存の実証明、左・右実随伴と端点共有の一致、混合区間の回収の照合 |
+| **追加** | **223** | G01の同じ合成の法則・自然性・係数輸送・貼り合わせの分割。新しい一覧IDなし |
+
+空も許す順序和の最後に最大元を付加する操作は、右因子へ最大元を付加する操作と一致する。
+端点共有の写像でも同じ照合を最後の点と元の区間の全点で証明した。
+この照合と構成済みのGalois条件から、順序和の区間表示が二つの区間表示の端点共有の射に
+等しいことを、同じ右随伴を持つ左随伴の一意性で示した。
+既存のAugmentedSimplexCategory.tensorHomOfとの比較も、元のFin.addCasesと添字の輸送まで展開した。
+
+続いて、左の非空因子が最小元を保つときの順序和の最小元保存、右の非空因子が最大元を保つ
+ときの最大元保存を実際に証明した。それらを入力に使い、既存の実右随伴・実左随伴が
+端点共有の写像と同じであることを一意性から証明した。随伴の存在を未証明のinstanceにしていない。
+混合合成の逆区間表示に必要なordinalRecoverMapの照合は、元の区間射が持つ両端点の条件を
+引数とし、最大元付加の単射性と同じ右随伴の一意性で示した。
+これらは既存の混合合成の実際の射の比較であり、対象の個数を合わせただけではない。
+
+### 85.2 残る境界と型
+
+これから、§84の値の結合則を既存の八つの水平合成の全関手へ戻す。
+AugmentedOrdinalTensorMaps.leanを作業木に置き、混合Homの非空の因子を持つ順序和について、
+他方が空から非空へ動く射も含めた比較を検証中。このファイルは今回の検証済み行数・宣言数・
+コミットには含めない。
+§83の全結合則は **16通り中8通り**のまま。残る8通り、全豊穣walking adjunction、
+元の随伴からの全拡張、F≫U・単位・余単位との比較が未完であり、G01完成とは数えない。
+
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。200行を超える宣言・証明はない。
+以下はnamespace SerrePositivity.InfinityCategories.HA.Monads内、m,n,p,q : ℕを共通の暗黙変数とする。
+
+```lean
+lemma ordinalAppend_adjoinTop (f : Fin m →o Fin n) (g : Fin p →o Fin q) :
+    ordinalAdjoinTop (ordinalAppend f g) =
+      ordinalAppend (m
+
+lemma ordinalGlue_adjoinTop (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) :
+    ordinalGlue (p
+
+lemma ordinalIntervalMap_append (f : Fin m →o Fin n) (g : Fin p →o Fin q) :
+    ordinalIntervalMap (ordinalAppend f g) =
+      ordinalGlue (ordinalIntervalMap f) (ordinalIntervalMap g)
+
+lemma simplexTensorHomOf_append {X Y Z W : SimplexCategory} (f : X ⟶ Y) (g : Z ⟶ W) :
+    (AugmentedSimplexCategory.tensorHomOf f g).toOrderHom =
+      ordinalAppendNonempty f.toOrderHom g.toOrderHom
+
+lemma ordinalAppendNonempty_zero (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin p →o Fin q) (hf : f 0 = 0) : ordinalAppendNonempty f g 0 = 0
+
+lemma ordinalAppend_last (f : Fin m →o Fin n)
+    (g : Fin (p + 1) →o Fin (q + 1)) (hg : g (Fin.last p) = Fin.last q) :
+    ordinalAppend (m
+
+lemma ordinalRightAdjoint_append_glue (f : Fin (m + 1) →o Fin (n + 1))
+    (hf : f (Fin.last m) = Fin.last n) (g : Fin q →o Fin p) :
+    ordinalRightAdjoint (ordinalAppendNonempty (ordinalLeftAdjoint f hf) g)
+        (ordinalAppendNonempty_zero _ _ (ordinalLeftAdjoint_zero f hf)) =
+      ordinalGlue f (ordinalIntervalMap g)
+
+lemma ordinalLeftAdjoint_append_glue (f : Fin n →o Fin m)
+    (g : Fin (p + 1) →o Fin (q + 1)) (hg : g 0 = 0) :
+    ordinalLeftAdjoint
+        (ordinalAppend (m
+
+lemma ordinalRecoverMap_append_glue (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (hf : f (Fin.last m) = Fin.last n) (hg : g 0 = 0)
+    (h₀ : ordinalAppendNonempty (ordinalLeftAdjoint f hf) (ordinalRightAdjoint g hg) 0 = 0)
+    (h₁ : ordinalAppendNonempty (ordinalLeftAdjoint f hf) (ordinalRightAdjoint g hg)
+      (Fin.last (n + q + 1)) = Fin.last (m + p + 1)) :
+    ordinalRecoverMap
+        (ordinalAppendNonempty (ordinalLeftAdjoint f hf) (ordinalRightAdjoint g hg)) h₀ h₁ =
+      ordinalGlue f g
+```
+
+### 85.3 検証
+
+各枠はwith_build_lock.sh --class impl --wait 3600、最大280秒の短いimpl枠。
+セッション3934では最後の点の依存する添字の書換えと既存順序和の輸送を修正し、終了124まで確認。
+セッション60532ではOrdinalMixedAdjoints:oleanを対象に依存のOrdinalIntervalConcatenationも検証した。
+最後の点の輸送を明示的な等式にconvertして修正後、両ファイルを含む対象ビルドは
+**G12_CONCAT_BUILD_EXIT=0**。不要な手続きと長い行を整理し、最終は警告なし（1165 jobs）。
+
+その後、新設2ファイル9根の小さい監査は **G12_CONCAT_AUDIT_EXIT=0**。
+入力9名と出力9名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。成功した対象ビルドと9根の監査のログは別名に保存してから、
+同じ枠の残りで作業木のAugmentedOrdinalTensorMapsの対象ビルドを始めた。
+こちらでは空の対象の個数の簡約を明示して修正し、修正後の再検証を残して枠の終了124を確認した。
+枠の終了124を、先に確認・保存した上の2ファイルの検証の成功と取り違えていない。
+
+入力・根・全出力と成功した対象ビルドログは
+[g12-mixed-comparison-audit-2026-11-15/](g12-mixed-comparison-audit-2026-11-15/)に保存した。
+現在、自分の生きたビルド・監査・整理券はない。
+既存の25ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+mainのcitation-attributes.md §15も読み取り、B3′の影響候補が⑤dは0であることを確認した。
+この区切りでmainの取り込みや古い索引の流用はしていない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み3,575行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
