@@ -16021,3 +16021,157 @@ lemma twistedSquare_right_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌)
 3b-4の実測は**214モジュール・14,343行・1,527宣言**。外枠22,000行まで7,657行。今回は既存の合成則の分割で、一覧のIDの完了数と追加数は変わらない。登録候補は自レーンのJSONだけに追記し、共通の入口と公式監査は変更していない。
 
 登録候補：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowThreeSimplexCoordinates`。R03h・R03dの未完の範囲は270.1のとおりで、/goalは継続。
+
+## 271. 元の射影の合成則と、元の単位ラベルの pairing の像（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 271.1 既存の構成の法則の分割
+
+§270の座標計算を、実際の左右射影の辺に接続した。twisted-arrowの頂点を同じ重みの逆で元の辺へ戻し、同じ辺の左射影（反転を戻したもの）、始点の辺、右射影の合成は終点の辺になることを証明する。これは任意の単体集合についての既存の合成則で、Kan性や[ModelCategory SSet]を仮定しない。両端の辺の類が可逆で、外側の辺が元の単位の合成なら、内側の辺の類は恒等射になるという相殺則も分けた。
+
+さらに元の全twisted pairingの零単体は元のラベルの実射そのものであることを計算した。その同じ全pairingを元のモデル源へ後合成する値も保持する。BEの元の単位ラベルを全要素圏の同じ次数0の要素として読み、そのnative pairingの像が、元のsource-frame増大写像・probe比較・標的置換単位の同じ合成になることを照合した。新しい単位や逆は選んでいない。
+
+これはR03d/R03hの証明の前提の合成・単位・射影の法則であり、一覧の新しい数学のIDは追加しない。新規3本（共通2・BE1）、312行。各ファイルは200行以下。既存のLeanの変更は0。
+
+### 271.2 型
+
+全17個の名前付きdef/lemmaの型を記録する。BEのlocal instanceは同じmodelCategory AとmappingCofibrantFactorization Aを使う従来の二つ（代数のModelCategoryと、cofibrations/trivialFibrationsの関手的因子分解）で、SSetの模型構造は足さない。
+
+#### TwistedArrowEdgeComposition（170行）
+
+```lean
+lemma twistedSquare_composite_of_edge_coordinates {C : SSet.{u}}
+    (σ : (Δ[3] : SSet.{u}) ⟶ C)
+    {q x y z : C _⦋0⦌} (p : SSet.Edge q x) (a : SSet.Edge x y)
+    (r : SSet.Edge y z) (b : SSet.Edge q z)
+    (hp : ((twistedSquareStdEdge 3 0 1 (by decide)).map σ).edge = p.edge)
+    (ha : ((twistedSquareStdEdge 3 1 2 (by decide)).map σ).edge = a.edge)
+    (hr : ((twistedSquareStdEdge 3 2 3 (by decide)).map σ).edge = r.edge)
+    (hb : ((twistedSquareStdEdge 3 0 3 (by decide)).map σ).edge = b.edge) :
+    HomotopyCategory.homMk p ≫ HomotopyCategory.homMk a ≫
+      HomotopyCategory.homMk r = HomotopyCategory.homMk b
+
+lemma twistedSquare_mapped_edge_yoneda {C : SSet.{u}} (σ : (Δ[3] : SSet.{u}) ⟶ C)
+    (i j : Fin 4) (h : i ≤ j) :
+    SSet.yonedaEquiv.symm (((twistedSquareStdEdge 3 i j h).map σ).edge) =
+      stdSimplex.map (stdSimplex.edge.{u} 3 i j h).down ≫ σ
+
+lemma twistedSquare_composite_of_projections {C : SSet.{u}}
+    (s : (TwistedArrow C) _⦋1⦌)
+    {q x y z : C _⦋0⦌} (p : SSet.Edge q x) (a : SSet.Edge x y)
+    (r : SSet.Edge y z) (b : SSet.Edge q z)
+    (hp : SSet.opObjEquiv ((edgewiseLeft C).app _ s) = p.edge)
+    (ha : (TwistedArrow C).δ 1 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm a.edge)
+    (hr : (edgewiseRight C).app _ s = r.edge)
+    (hb : (TwistedArrow C).δ 0 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm b.edge) :
+    HomotopyCategory.homMk p ≫ HomotopyCategory.homMk a ≫
+      HomotopyCategory.homMk r = HomotopyCategory.homMk b
+
+lemma twistedSquare_unit_of_projections {C : SSet.{u}}
+    (s : (TwistedArrow C) _⦋1⦌)
+    {q x z : C _⦋0⦌} (p : SSet.Edge q x) (a : SSet.Edge x x)
+    (r : SSet.Edge x z) (b : SSet.Edge q z)
+    [IsIso (HomotopyCategory.homMk p)] [IsIso (HomotopyCategory.homMk r)]
+    (hp : SSet.opObjEquiv ((edgewiseLeft C).app _ s) = p.edge)
+    (ha : (TwistedArrow C).δ 1 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm a.edge)
+    (hr : (edgewiseRight C).app _ s = r.edge)
+    (hb : (TwistedArrow C).δ 0 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm b.edge)
+    (hu : HomotopyCategory.homMk b = HomotopyCategory.homMk p ≫ HomotopyCategory.homMk r) :
+    HomotopyCategory.homMk a = 𝟙 (HomotopyCategory.mk x)
+
+lemma twistedSquare_zero_left_inclusion :
+    (stdSimplex.opIso ⦋0⦌).inv ≫ joinInl (Δ[0] : SSet.{u}).op Δ[0] =
+      stdSimplex.δ 1 ≫ (edgewiseWeightIso 0).inv
+
+lemma twistedSquare_zero_right_inclusion :
+    joinInr (Δ[0] : SSet.{u}).op Δ[0] =
+      stdSimplex.δ 0 ≫ (edgewiseWeightIso 0).inv
+
+def twistedArrowVertexEdge {C : SSet.{u}} (a : (TwistedArrow C) _⦋0⦌) :
+    SSet.Edge (SSet.opObjEquiv ((edgewiseLeft C).app _ a)) ((edgewiseRight C).app _ a)
+
+lemma twistedArrowVertexEdge_inverse {C : SSet.{u}} (a : (TwistedArrow C) _⦋0⦌) :
+    (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm (twistedArrowVertexEdge a).edge = a
+
+lemma twistedArrowEdge_composition {C : SSet.{u}} {a b : (TwistedArrow C) _⦋0⦌}
+    (s : SSet.Edge a b) :
+    HomotopyCategory.homMk (SSet.Edge.ofTruncated (edgeUnop (s.map (edgewiseLeft C)).toTruncated)) ≫
+      HomotopyCategory.homMk (twistedArrowVertexEdge a) ≫
+        HomotopyCategory.homMk (s.map (edgewiseRight C)) =
+      HomotopyCategory.homMk (twistedArrowVertexEdge b)
+```
+
+#### TwistedPairingZero（60行）
+
+```lean
+lemma twistedPairingSimplex_zero (i : I) :
+    twistedPairingSimplex A B h (nerveVertex i) = ComposableArrows.mk₁ (h i)
+
+lemma twistedPairingNerveMap_zero
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) (i : I) :
+    (twistedPairingNerveMap A B h hh).app (Opposite.op ⦋0⦌) (nerveVertex i) =
+      (edgewiseWeightIso 0).hom ≫ (SSet.yonedaEquiv (X := nerve C)).symm (ComposableArrows.mk₁ (h i))
+
+lemma twistedPairingNerveMap_zero_postcomp {D : SSet.{u}} (G : nerve C ⟶ D)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) (i : I) :
+    (twistedPairingNerveMap A B h hh ≫ edgewiseSubdivisionMap G).app
+      (Opposite.op ⦋0⦌) (nerveVertex i) =
+      (edgewiseWeightIso 0).hom ≫ (SSet.yonedaEquiv (X := nerve C)).symm (ComposableArrows.mk₁ (h i)) ≫ G
+```
+
+#### StrictDiagramTotJointSourceUnitLabel（82行）
+
+```lean
+def strictBETotJointUnitIndex (X : (operad A).Algebra) : strictBETotJointHomIndex A
+
+def strictBETotJointSourceUnitLabel (X : (operad A).Algebra) : StrictBETotJointSourceElements A
+
+lemma strictBETotJointSourceNativePairing_vertex (t : StrictBETotJointSourceElements A) :
+    (strictBETotJointSourceNativePairing A).app (Opposite.op ⦋0⦌)
+      (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex t) =
+      (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm
+        (ComposableArrows.mk₁ (SerrePositivity.EInfinity.FrameHom.liftedSourceFrameArrowValue
+          (strictBETotJointSourceFrame A) (rightFrameReplacement (rightFrameFamily A)) t)) ≫
+            strictBETotModelSource A
+
+lemma strictBETotJointSourceUnitLabel_value (X : (operad A).Algebra) :
+    SerrePositivity.EInfinity.FrameHom.liftedSourceFrameArrowValue
+      (strictBETotJointSourceFrame A) (rightFrameReplacement (rightFrameFamily A))
+      (strictBETotJointSourceUnitLabel A X) =
+      (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+        (((strictBETotJointRoofResolution A (strictBETotJointUnitIndex A X)).augmentation.app ⦋0⦌ ≫
+          framedLimitProbeComparison A X) ≫
+          ((rightFrameUnit (rightFrameFamily A)).app X).app (Opposite.op ⦋0⦌))
+
+lemma strictBETotJointSourceUnitLabel_native_pairing (X : (operad A).Algebra) :
+    (strictBETotJointSourceNativePairing A).app (Opposite.op ⦋0⦌)
+      (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex
+        (strictBETotJointSourceUnitLabel A X)) =
+      (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm
+        (ComposableArrows.mk₁ ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          (((strictBETotJointRoofResolution A (strictBETotJointUnitIndex A X)).augmentation.app ⦋0⦌ ≫
+            framedLimitProbeComparison A X) ≫
+            ((rightFrameUnit (rightFrameFamily A)).app X).app (Opposite.op ⦋0⦌)))) ≫
+              strictBETotModelSource A
+```
+
+### 271.3 残る照合と検証
+
+今回の相殺則の仮定を、元のcorrectedPairingIsoの成分の左右射影の式から回収する必要がある。今回のBEの単位ラベルの像は元のoriginal pairingについての式であり、corrected pairingの像が既に恒等射だとみなさない。その後に同じ全straightening変換の単位の像へ接続し、全Yoneda評価による全変換の照合が必要である。頂点ごとの等式を全族の等式として扱わない。
+
+R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型との一致は引き続き未完。今回はこれらの完了を報告する段階ではない。§269の残り450〜850行の見込みには、今回の前提の分割312行も増えた。全族の照合の主証明の検証はまだなく、その見込みで完成を保証しない。外枠22,000行と§19の停止条件を維持する。
+
+コードのコミット：**c9dda3e9d**。新規3本・312行、名前付きdef/lemma17個。実環境の新規3本は15・6・9宣言（生成された定数とlocal instanceを含む）。既存のLeanの変更は0。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド333：新規3本、成功（依存を含む12,249 jobs）。332では本体化の際の二つの有限の場合分けへのrflの適用が欠けていたため失敗し、元の個別検査済みの形へ戻して333で成功した。計算上限を変更していない。
+- 小監査：AuditISW2BKCells332.lean、**221モジュール・1,563宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と、既存の定理の定義元の検査も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン583ファイル・1,859個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build333.log、isw2-validation333.json、isw2-declaration-collision-scan332.json。
+
+今回までの検証済みの実測は**217モジュール・14,655行・1,556宣言**。外枠22,000行まで7,345行。監査の生成定数を含む実環境の数は単純加算せず、今回のimport後の集計を用いた（既存OppositeFunctorIsoWhiskerは12→11、ソース変更0。公開宣言の追加・変更ではない）。登録候補JSONだけを更新し、共通の入口と公式監査は変更していない。
+
+登録候補は上記三本。今回の検証の後、同じ成分の合成則をホモトピー圏の元の射へ移す分割を続ける。R03h・R03dは未完で、一覧の完了数は増やしていない。
