@@ -2327,3 +2327,30 @@ coverage の refine の条件を、実際の引き戻し篩そのものが生成
 
 検証済み全体143本8,945行・782宣言、外枠18,600行内。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8：元の集合の押し出し余錐を保持する（11-15）
+
+2本153行・16宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s8-discrete-pushout-4/`、source SHA 一致。
+
+```lean
+{F : AsSmall WalkingSpan ⥤ KanObject} →
+(c : Cocone F) → IsColimit (kanObjectForget.mapCocone c) →
+[Mono ((F ⋙ kanObjectForget).map (AsSmall.up.map WalkingSpan.Hom.fst))] →
+IsColimitCone (strictNativeCocone c)
+
+{F : AsSmall WalkingSpan ⥤ Type u} →
+(c : Cocone F) → IsColimit c →
+[Mono (F.map (AsSmall.up.map WalkingSpan.Hom.fst))] →
+IsColimitCone (discreteSpaceCocone c)
+```
+
+`KanPushoutCocones` は既存の反変 Hom の極限性と一脚 fibration の cospan 判定の接続。
+`DiscretePushoutCocones` は同じ集合の余錐の定値単体集合への像を使う。
+`discreteSpaceCocone_vertex` は元の `c.pt` の離散空間との頂点の等号。
+Kan 置換へ頂点や脚を移して済ませず、元の全余錐を保持した。
+計算上限は変更していない。前層の元の押し出し四角形との接続はまだ残る。
+
+検証済み全体145本9,098行・798宣言、外枠18,600行内。
+S1 の生成 coverage・extensive の判定と、S8 の全重み比較・局所同値は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
