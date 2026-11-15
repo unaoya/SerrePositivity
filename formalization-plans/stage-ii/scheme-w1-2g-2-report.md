@@ -498,3 +498,15 @@ Segre チャートの同型では、追加の座標 Z_kl/Z_ij の像は、二因
 続く S04 は Mathlib `Proj.awayι_toSpecZero` と本体の `schemeScalarMorphism_projectiveScalar` で Spec R への構造射をそろえ、アフィン pullback のテンソル表示と `Scheme.Cover.glueMorphisms` を使う。上記は既承認の S03〜S04 の法則の分割で、追加の主項目・最終仮定を設けない。見込み約5,500〜12,000行・外枠16,000行は不変。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の基底への構造射の法則の分割（着手前、S04 の内数、40〜90行）：`projectiveAway_scalarMap` は次数零のスカラーを fromZeroRingHom で標準開へ送る合成が、既存の projectiveHomogeneousAwayAlgebra の係数写像と等しいこと。`projectiveAway_structureMap` は `Proj.awayι G f hf hd ≫ projectiveCechStructureMap G = Spec.map(algebraMap R (Away G f))`。Mathlib の `awayι_toSpecZero` と既存の構造射の比較に渡し、新しい構造層・新しい基底上の対象を定義しない。
+
+
+### S03 逆写像の単独検証の区切り（対象ビルド・監査前）
+
+`SegreChartInverse` の118行は `2g-segre-chart-inverse-check-4.log` で単独検証成功（終了状態0）。行・列の標準開の写像、テンソル積への束ね方、正規化した二生成元の純テンソルが同じ Segre 座標に戻る式までを含む。ソース完全一致を確認して本体の新しいファイルへ移したが、対象・直接 importer のビルドと小監査は未了のため、この数学はまだコミットしていない。
+
+同じ検証の束の残り3本では、正規化の環写像と代数写像の表示を明示する修正と、RingHom の外延性が斉次局所化の値まで進みすぎる箇所の修正を行った。次の待ちは一つで、外延性・順写像の合成則・基底構造射の修正検証を順に行い、最後に逆写像と直接 importer の対象ビルドを行う。未了の3本は drafts のまま。本体1,820行・入口込み1,851行、小監査188宣言という検証済み実測はまだ更新しない。
+
+一覧：済み0／全体3（うち追加0）。
