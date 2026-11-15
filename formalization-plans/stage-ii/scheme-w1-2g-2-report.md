@@ -1310,3 +1310,22 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール72行＋入口1行。新規101モジュール本体6,709行・入口込み6,810行。既存追加25行を含む外枠計数は本体6,734行・入口込み6,835行。新規小監査累計681宣言、既存15宣言は別計上。次の実際の mapCechNerve の Cartesian な底変換の法則は drafts で検証中であり、本体に含めない。閉中心と同じ図式の係数の照合・二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じタプル被覆の Arrow の射による逆像（着手前、既存の被覆の底変換の法則の内数、30〜75行）：`schemeCechTupleOpen_mapCechNerve_preimage F U n t` は任意の実際の Arrow の射 F:f→g に対し、f の項上での F.left⁻¹U のタプル開が、既存の mapCechNerve F の n 次による g の同じタプル開の逆像に等しいこと。有限交叉と逆像の交換、同じ mapCechNerve の各射影との可換性を使う。Cartesian 性・平坦性は不要で、閉中心への適用ではその同じ実際の逆像被覆を供給する。
+
+
+同じ二つの係数関手の自然な引き戻し（着手前、既存の係数移送の自然性の内数、90〜180行）：`schemePerfectCechTuplePullbackMap F U p hp hf hg n` は F:f→g の実際の mapCechNerve の n 次と、直前の同じ被覆の逆像の等式による恒等添字の refinedPullback。`schemePerfectCechTuplePullback_naturality … a` は元の自然変換 mapCechNerve F の naturality と、異なる添字の二つの compIndex を同じ合成射・同じ包含へ渡した自然性。`schemePerfectCechTuplePullback` はこれらを元の係数関手から閉中心側の係数関手への NatTrans にまとめる。Cartesian 性は不要で、各項の p の零化だけを保持し、後で実際の基底の標数から供給する。独立なコホモロジーの比較や全複体の完全性は仮定しない。
+
+
+## G4：実際の nerve と同じタプル被覆の閉中心への底変換
+
+`CechNerveCartesianBaseChange`（60行）：`isPullback_cechNerve_base` は Cartesian な Arrow の射 F:f→g とその元の証人 H から、既存の自然変換 mapCechNerve F の n 次・二つの同じ WidePullback.base・F.right が Cartesian square であること。元の H と同じ wide pullback の普遍性で示し、各次数の無関係な対象を選ばない。任意の有限極限を持つ圏での法則で、スキームの閉中心への特殊化に使う。
+
+`SchemeCechTupleBaseChange`（37行）：`schemeCechTupleOpen_mapCechNerve_preimage` は元の U の F.left による逆像のタプル開と、同じ mapCechNerve の項による元のタプル開の逆像の一致。有限交叉と逆像の可換性と同じ射影の合成則を使う。Cartesian 性・平坦性は不要。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,187・5,188ジョブ成功、小監査各1宣言（計2、所有元の全宣言）・標準三公理のみ、終了状態0。ログ `2g-cech-nerve-cartesian-base-change-check-2.log`・`2g-cech-nerve-cartesian-base-change-native.log`、`2g-scheme-cech-tuple-base-change-check-1.log`・`2g-scheme-cech-tuple-base-change-native.log`、`2g-cech-nerve-and-tuple-base-change-audit.log`。被覆の等式に局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール97行＋入口2行。新規103モジュール本体6,806行・入口込み6,909行。既存追加25行を含む外枠計数は本体6,831行・入口込み6,934行。新規小監査累計683宣言、既存15宣言は別計上。次の同じ係数関手の自然変換は drafts で検証する段であり、本体には含めない。二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
