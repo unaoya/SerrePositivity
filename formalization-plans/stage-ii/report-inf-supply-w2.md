@@ -14630,3 +14630,94 @@ theorem strictBETotJointSourceFiberPairingIso_postcomp (P : strictBETotJointHomI
 - SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPath
 
 次は§234.3・§235のとおり、同じnative fiber射を元の固定始域のroof比較と照合し、その実射自身の弱同値性へ接続する。Tot側の停止点3b-4aはまだ未到達であり、この検収を停止点の完成とはしない。
+
+## 239. R03dの次の接続：同じfiber包含の通常圏での表示（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+前ターンは§236〜§238を検証して1c8716f15へ保存した進捗。今回も§238の次から続ける。mainにIS-W2 §20の追記は入ったが、この確認時点では57705f223はmainの祖先ではないので、取り込み完了後のmergeはまだ行わない（ユーザーはmerge前の続行を承認済み）。
+
+元のroofは固定始域の実際のHom単体のラベルで定義される。§238のfiber包含をこの通常圏のラベルに照合するため、元のGrothendieck表示を経由するfiber包含が通常のGrothendieck.ιと同じnerve射であることを示す。元のweighted nerve同型の逆を別の逆で置き換えず、同じ順射を合成して確認する。既存構成の単位・係数表示の法則であり、数学的な一覧項目は増やさない。見込み80〜180行。共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+```lean
+theorem grothWeightedNerveForward_fiberInclusion (i : I) :
+    nerveMap (Grothendieck.ι F i) ≫ grothWeightedNerveForward F =
+      weightedNerveConstantLift (F ⋙ nerveFunctor) i
+
+theorem grothendieckFiberInclusion_eq_nerveMap (i : I) :
+    grothendieckFiberInclusion F i = nerveMap (Grothendieck.ι F i)
+```
+
+この照合だけでnative fiber射自身の弱同値性は結論しない。元の通常の要素圏とroofの反対要素圏の規約、同じcorrected pairingの指定path、固定始域の元の全Hom比較の合成順序を、引き続き追跡する。
+
+## 240. 元のfiber包含から元のsource-frameのラベルへ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§239の順射のprefix計算は個別検査90750で終了0。その同じ順射を合成して元の逆を消去し、grothendieckFiberInclusionが通常のGrothendieck.ιのnerveと厳密に等しいことを示した。これを元の全要素圏へ移すと、同じsimplicialElementsFiberInclusionは同じ通常の要素圏の包含のnerveとなる。通常の包含を元のsource-frameのdownへ合成し、同じ底・単体次数と元のHom単体のラベルを厳密に回収する。元のnative pairingへの制限も同じ通常の包含のnerveを通る。
+
+全て、元のfiber包含・係数表示・合成則の照合であり、新しい数学の一覧項目は増やさない。通常の要素圏をroofの反対要素圏と同一視しておらず、弱同値性やR03dの全同型の正規化を完了と数えない。一般版は116行（見込み80〜180行、上端との差−64行）、BEの係数表示の特殊化は62行。一般版の完成形の個別検査31293は終了0。BEの合成検査と対象ビルド・監査は別途以下へ記録する。
+
+### 240.1 型
+
+一般版の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。Gは同じI上のSSet値の図式。BE版は `(A : Type u) [CommRing A]`。Gを使う宣言には未使用のFは入らない。
+
+#### SimplicialElementsFiberInclusion（116行）
+
+```lean
+theorem grothWeightedNerveForward_fiberInclusion (i : I) :
+    nerveMap (Grothendieck.ι F i) ≫ grothWeightedNerveForward F =
+      weightedNerveConstantLift (F ⋙ nerveFunctor) i
+
+theorem grothendieckFiberInclusion_eq_nerveMap (i : I) :
+    grothendieckFiberInclusion F i = nerveMap (Grothendieck.ι F i)
+
+def simplicialElementsFiberFunctor (G : I ⥤ SSet.{u}) (i : I) :
+    (simplicialElementsCatDiagram G).obj i ⥤ SimplicialTotalElements G
+
+theorem simplicialElementsFiberInclusion_eq_nerveMap (G : I ⥤ SSet.{u}) (i : I) :
+    simplicialElementsFiberInclusion G i = nerveMap (simplicialElementsFiberFunctor G i)
+
+theorem simplicialElementsFiberFunctor_obj (G : I ⥤ SSet.{u}) (i : I)
+    (s : (simplicialElementsCatDiagram G).obj i) :
+    ((simplicialElementsFiberFunctor G i).obj s).obj = (i, s.obj)
+
+theorem simplicialElementsFiberFunctor_value (G : I ⥤ SSet.{u}) (i : I)
+    (s : (simplicialElementsCatDiagram G).obj i) :
+    ((simplicialElementsFiberFunctor G i).obj s).val = s.val
+```
+
+#### StrictDiagramTotJointSourceFiberElements（62行）
+
+```lean
+def strictBETotJointSourceFiberElements (P : strictBETotJointHomIndex A) :
+    (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P ⥤
+      FrameHom.SourceFrameArrowElements (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A))
+
+theorem strictBETotJointSourceFiberElements_parameters (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    ((strictBETotJointSourceFiberElements A P).obj s).obj = (AsSmall.down.obj P, s.obj)
+
+theorem strictBETotJointSourceFiberElements_value (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    FrameHom.sourceFrameArrowValue (strictBETotJointSourceFrame A)
+      (rightFrameReplacement (rightFrameFamily A))
+      ((strictBETotJointSourceFiberElements A P).obj s) = s.val.down
+
+theorem strictBETotJointSourceFiberPairing_eq (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+      strictBETotJointSourceNativePairing A =
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      strictBETotJointSourceNativePairing A
+```
+
+## 241. 対象ビルドの順番待ち中の照合：roofの余終性の入力範囲（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+316の対象ビルドと小監査を、一枚の整理券で--class impl --wait 3600により待機中。一般版の個別検査は通過したが、一時的な結合検査ではBE側の全importを先に読み込んだ文脈でprefix証明が200,000 heartbeatsに達した。計算上限は上げず、実際のモジュール分割で一般版を先にビルドしてからBEの特殊化を検査する。結合検査の失敗を対象ビルドの成功と扱わない。最終結果は次の検収欄へ記す。
+
+待機中に既存のroof側のAPIを確認した。CofibrantSourceFrameRightKanCofinalityのcofibrantSourceFrameRawRoofMap_isLeftCofinalは、X・YともCofibrantAlgebra Aであり、cofibrantAlgebraRelativeCategoryのhammockを使う。ModelBifibrantFrameRightKanCofinalityのmodelBifibrantSourceFrameRawRoofMap_isLeftCofinalは、X・YともBifibrantObjectであり、modelBifibrantRelativeCategoryのhammockを使う。今回の元の右置換RYを、そのままこれらの入力に読み替えることはできない。元のnative Homの入力と全局所化の比較を保ち、必要な係数移送と端点同型を明示する必要がある。
+
+またcosliceTwistedHomMap_isQCatEquivalenceは任意のquasicategoryの同じ端点での同値で、cosliceTwistedHomMap_ιは元のcosliceからtwisted-arrowへの包含後の等式を与える。ただし今回のroof評価のpinched Homとcoslice fiberの規約を合わせる工程が残る。この同値を引用するだけで§238の実射自身が弱同値になったとはしない。今回のラベル回収と、元のroofとの正規化を接続してから判定する。
