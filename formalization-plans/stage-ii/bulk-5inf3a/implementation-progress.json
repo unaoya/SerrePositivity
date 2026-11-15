@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 40c9b5e7ed1d9cd724b3de263df62fb56052a4cb",
+  "verified_head": "b96688df2",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -393,7 +393,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -409,5 +409,8 @@
       "log": "/tmp/bulk-5inf3a/bundle-021.retry1.lease.log"
     }
   ],
-  "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC"
+  "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
+  "HT02_remaining": "Strict native semifree resolution functor on cosimplicial inputs, and standard S-linear completed Tot comparison coupling. R-model finite complete comparison already proved; do not count HT02 complete.",
+  "prepared_source_lines": 6414,
+  "prepared_modules": 66
 }
