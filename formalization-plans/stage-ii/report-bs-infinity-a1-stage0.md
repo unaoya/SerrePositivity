@@ -73,7 +73,7 @@ S7の`forget_sheafify`の単位条件が⑤aのCAlg模型から供給される�
 |---|---|---|
 | S1 | `IsSheaf J F := ∀ U S, S ∈ J U → IsLimitCone (restrictionCone F S)`；`IsSheaf J F ↔ ∀ U S, S ∈ J U → IsInvertibleEdge (sectionsOf_map S.functorInclusion F _ _)`；`IsSheaf (K.toGrothendieck) F ↔ ∀ U S, S ∈ K U → IsLimitCone (restrictionCone F S)`；`IsSheaf (J ⊔ J') F ↔ IsSheaf J F ∧ IsSheaf J' F`；extensive位相と有限積保存の同値 | drafts SheafCondition/SetSections、G8の元の篩錐比較。700〜1,200行 |
 | S2 | `globalSectionsCone F h : JoinCone F` と `IsLimitCone`；`derivedGlobalSectionsCone J hJ hE F : JoinCone (sheafify J hJ F)` と `IsLimitCone`；`IsSheaf J F → ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F`；射・位相比較は同じ単位と指定錐を保つ全族 | drafts GlobalSections、反射の単位と指定極限比較。500〜900行 |
-| S3 | `IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShape d))`；逆向き `∃ c, IsLimitCone c ∧ restrictJoinCone c (cechShape d) = c₀`（元の頂点の指定Čech錐を保つ）。大きいsite版も同じ頂点 | G9のleft cofinality、CategoryTheory/CechNerveData。600〜1,000行 |
+| S3 | `IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShape d))`；逆向き `∃ c, IsLimitCone c ∧ c.vertex = c₀.vertex`（制限後の錐とc₀の指定同値を保持、11-15調整役承認）。大きいsite版も同じ頂点 | G9のleft cofinality、CategoryTheory/CechNerveData。600〜1,000行 |
 | S4 | `∃ (I : Type u) (edges : I → (PresheafCat C E) _⦋1⦌), ∀ F, IsLocalObject (Set.range edges) F ↔ sheafProperty J F`；`Sheafification J E`（反射そのもの）；層化単位・層での可逆性 | G14検出族・G8・presentable関手圏のBousfield反射。600〜1,000行 |
 | S5 | `[IsStable E] → IsStable (SheafCat J E)`；`[IsStable E] → PreservesFiniteLimits (sheafificationFunctor J hJ)`（記法は既存native極限条件へ展開して固定する）。零・fiberでの閉性と有限余極限保存から結ぶ | 安定部分圏と極限交換。600〜1,100行。一般のPostnikov左完全性はこの型からは結論しない |
 | S6 | site同値 `e : C ≌ D` と対応する位相 `J,K` に対し `IsSheaf J (e.op.functor ⋆ F) ↔ IsSheaf K F`；反射・単位の全関手同型の輸送；`VertexIso (derivedGlobalSections J ... (e.op.functor ⋆ F)) (derivedGlobalSections K ... F)` | `⋆`はnerve/uliftによる前合成の略記。一般のsite同値と指定錐の輸送のみ。mainのPrismatic/Site/PrismOverSmallにEssentiallySmallの入力あり。κの新切り落としなし。400〜800行 |
@@ -933,3 +933,116 @@ S8の元の反対 Yoneda に沿う一般重みの全右 Kan 関手・指定変�
 S6の全前層圏の比較は検証済みだが、篩錐・層・層化・RΓ・大きい模型の輸送は未完。
 SieveSiteComparison・SieveSiteConeComparison・SheafSiteInvariance は未検証の作業木。
 S3の型の訂正案は判断待ち。S1の残り・S5も未完。S7は後続。
+
+### S6：全 Γ 比較の指定極限錐族（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`GlobalSectionsFamilyData.lean` の既存の極限錐の選択・全族の制限の法則：
+```lean
+def globalSectionsFamilyData hE : {s // s ≫ coneRestriction _ E = 𝟙 _ ∧ ∀ v, IsLimitCone (functorVertexCone (s.app _ v))}
+lemma globalSectionsFamilyData_restrict : (globalSectionsFamilyData hE).val ≫ coneRestriction _ E = 𝟙 _
+lemma globalSectionsFamilyData_isLimit v : IsLimitCone (functorVertexCone ((globalSectionsFamilyData hE).val.app _ v))
+```
+既存の exists_pointwiseLimitConeFamily を使う。
+site 同値の後の全 Γ 比較では、この族を同じ形状写像で制限し、
+S2の globalSectionsConeFamilyIso の二つの全比較を合成する予定。
+
+### S6：指定 Γ 錐の値の比較（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`GlobalSectionsSiteComparison.lean` の同じ錐の移送・単位の法則：
+```lean
+def globalSectionsReindexIso e hE O : VertexIso (globalSections (reindexPresheaf e.functor O) _) (globalSections O _)
+def derivedGlobalSectionsReindexIso_of_isSheaf (hO : IsSheaf K O) :
+  VertexIso (derivedGlobalSections J hJ hE (reindexPresheaf e.functor O)) (derivedGlobalSections K hK hE O)
+```
+後者は S2 の単位を使う層での中間の系。S6全体の任意の前層の RΓ 比較・反射と単位の全関手比較は未完。
+この中間の系で S6 の元の範囲を狭めない。
+
+### S6：全錐族の再添字の三法則（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`Kerodon/LimitsAndColimits/LimitsAndColimits/EquivalentShapeConeFamilies.lean`：
+```lean
+lemma isLimitCone_functorVertexCone_reindex_iff_of_equivalence (hf : IsQCatEquivalence f) v :
+  IsLimitCone (functorVertexCone (((pre (joinMap (𝟙 _) f)).app X).app _ v)) ↔ IsLimitCone (functorVertexCone v)
+lemma coneReindex_precomp_restriction : (pre (joinMap (𝟙 _) f)).app X ≫ coneRestriction J X = coneRestriction K X ≫ (pre f).app X
+lemma coneReindex_precomp_apex : (pre (joinMap (𝟙 _) f)).app X ≫ evaluateFunctorAt apexJ = evaluateFunctorAt apexK
+```
+既存の全錐の読み戻し、同値な添字の制限、join の両端自然性による前提計算。
+S6の全 Γ 関手比較はこの三法則と、既存の S2 の全錐比較を組み合わせる。
+
+### S6：全 Γ 関手の比較（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`GlobalSectionsSiteFamilyComparison.lean` の指定極限錐族による全係数移送：
+```lean
+def globalSectionsReindexFunctorIso (e : C ≌ D) hE :
+  FunctorIso (reindexPresheafFunctor e.functor ≫ globalSectionsFunctor hE) (globalSectionsFunctor (C := D) hE)
+```
+同じ全錐族を e の元の形状写像で制限し、S2 の globalSectionsConeFamilyIso を二回使う。
+射・高次単体も全前層圏上で比較する。
+
+### S3 の訂正承認と指定比較の回収（11-15、未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+調整役より、型の正本は drafts/Sheaves なので、同じ頂点の元の型への訂正を承認された。
+制限した錐と t の比較は指定同値として保持する。元の段0の表も訂正した。
+
+`Kerodon/LimitsAndColimits/Cofinality/SpecifiedCofinalLimitLift.lean`：
+```lean
+structure CofinalLimitLiftData f F t where
+  cone : JoinCone F
+  isLimit : IsLimitCone cone
+  vertex_eq : cone.vertex = t.vertex
+  comparison : VertexIso (X := sliceOver (f ≫ F)) (restrictJoinCone cone f) t
+def specifiedCofinalLimitLift f hf F t ht : CofinalLimitLiftData f F t
+```
+既存の cofinal 極限存在・可逆頂点への輸送・錐圏内の極限錐の一意比較を合成する。
+安定性や追加の極限の存在は仮定しない。
+
+`CechLimitLift.lean`：
+```lean
+def cechLimitLift hU d F t ht : CofinalLimitLiftData (cechShape d) F t
+theorem exists_limitCone_of_cech hU d F t ht : ∃ c, IsLimitCone c ∧ c.vertex = t.vertex
+def cechLimitLiftLarge hU d F t ht : CofinalLimitLiftData (cechShapeLarge d) F t
+theorem exists_limitCone_of_cech_large hU d F t ht : ∃ c, IsLimitCone c ∧ c.vertex = t.vertex
+```
+全ての docstring に「制限の厳密な等号は要求しない」と明記。
+`cechLimitLift.comparison` / `cechLimitLiftLarge.comparison` で指定した同値を実際に返し、
+存在命題だけにはしない。
+
+### S6：層の全部分準圏への制限（11-15、未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7 は後続）。
+
+既存の `isQCatEquivalence_fullSubcomplexRestriction` を使い、新しい一般の同値判定は作らない。
+`SheafSiteEquivalence.lean` の型：
+```lean
+def reindexSheafFunctor e J K hf : SheafCat K E ⟶ SheafCat J E
+lemma reindexSheafFunctor_comp e J K hf :
+  reindexSheafFunctor e J K hf ≫ sheafInclusion J =
+    sheafInclusion K ≫ reindexPresheafFunctor e.functor
+theorem reindexSheafFunctor_isQCatEquivalence e J K hf hg :
+  IsQCatEquivalence (reindexSheafFunctor e J K hf)
+```
+前提計算は再添字の頂点における層条件の同値。全単体の再添字を包含へ制限する。
+S6 の残りは層化・任意の前層の RΓ の単位を保つ比較、大きい site の小さい模型への適用。
+
+### S6 の検証済みの区切り（11-15）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7 は後続）。
+
+今回の7本419行・45宣言が対象ビルドと新しい環境の小監査に成功。
+- `sieve-site/build-3.log`：2本14宣言、7,189 jobs。
+- `sheaf-site-invariance/build-2.log`：2本13宣言、7,251 jobs。
+- `global-site-families/build-2.log`：3本18宣言、7,256 jobs。
+いずれも標準三公理のみ、計算上限は変更なし。検証済み全体49本3,034行・294宣言。
+層条件の輸送と全 Γ 関手の比較まで。層化・任意の前層の RΓ・大きい site の比較は未完。
+S3 の追加2本と S6 の `SheafSiteEquivalence` はまだコミットに含めない。
+S3 初回は Prop から Type への除去制限で失敗。`Classical.choice` を明示して再検証中。
