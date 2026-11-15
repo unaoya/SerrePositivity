@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base dae3e6c8765ae4989ef68478af17e8e8b8a41c5c",
+  "verified_head": "this commit: base 02a871fe9cdeb9c5d169b14b123250d9b17e6292",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-crystalline-coefficient-algebras-checkpoint.json",
-  "latest_complete_audit_declarations": 1235,
+  "latest_complete_audit_checkpoint": "affine-crystalline-row-base-change-checkpoint.json",
+  "latest_complete_audit_declarations": 1237,
   "working_changes_unverified": [
-    "AffineCrystallineRowBaseChange"
+    "AffineCompletedCoefficientIsomorphism",
+    "AffineCrystallineCompletedRows"
   ],
-  "pending_check": "bundle-085 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-086 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
