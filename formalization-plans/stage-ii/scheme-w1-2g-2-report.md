@@ -1407,3 +1407,31 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 増大軸の整合性まで実際の写像でそろった。次は、この同じ被覆・実際の制限の射を F8 の四角形へ自然に渡し、同じ四角形の各項の完全性を B1 の二重 Čech に接続する。アフィン conerve と実際の Frobenius 係数の自然な比較、Noether 帰納、G5 の模型と filtered colimit への移送は残る。G4 の残りを約2,000〜4,000行、G5 を約1,000〜2,000行と見て、全体の着地を約10,000〜13,500行へ補正する。外枠16,000行は不変。条件付きの構成だけで Thm 2.9 の十分性や停止点2g-2の完成とは呼ばない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ中心の細分した被覆への四角形の移送（着手前、既存の CechAugmentedSquare の細分・係数移送の法則の内数、105〜200行）：`schemeStructurePerfectCechRefinedSquare f q φ ψ hφ … U V ρ hρ` は既存の四角形のデータへ、C を Y の U、E を X の V の同じ Frobenius 係数の複体、restriction を実際の refinedPullback、基底・中心・商を元の環のものとして渡した値。完全性は仮定しない。`…_map` は元の逆像被覆の native な四角形から、left は恒等、right は同じ実際の細分、base・center は恒等の射。`…_acyclic_iff_of_eq` は同じ添字で V=f⁻¹U のとき、実際の等しい被覆の細分の同型と検証済みの cone の比較による全複体の完全性の同値。閉中心のタプル被覆の既存の等式へ適用して、同じ自然な係数図式に F8 を渡す。新しい四角形の概念や二重複体の判定法は作らない。
+
+
+同じ nerve の係数と増大軸の四角形への代入（着手前、既存の四角形への係数移送の法則の内数、75〜150行）：`schemePerfectCechTupleSquare f g F q hq U p hp hR hS n` は同じ mapCechNerve の n 次、同じ二つのタプル被覆と実際のスカラーを上の refined な四角形の値へ渡す。`…_C`・`…_E` は検証済みの二つの係数複体との定義上の一致、`…_restriction` は実際の係数関手の引き戻しとの一致、`…_scalar`・`…_center` は検証済みの増大写像との一致、`…_quotient` は同じ Frobenius の q の写像との一致。これらを個別に示し、四角形全体や無関係な H の同型で自然性を代用しない。完全性を仮定しない。
+
+
+同じ nerve の各項への F8 の適用（着手前、既存の F8 と有限ファイバー冪の底変換・係数移送の法則の内数、75〜160行）：`DegreeOneProjectiveModel.perfectCechTupleSquare_acyclic` は Noether R、同じ元の g の表示 m、全射性と中心外同型性、同じ閉基底 Spec(R/I^1) と Cartesian な Arrow の射 F、その元の有限アフィン被覆 U から、全ての n の同じ schemePerfectCechTupleSquare の全複体の完全性を返す。m.cechTerm、既存の有限冪の全射性・中心外同型性、mapCechNerve の Cartesian な底変換、同じタプル被覆のアフィン性・被覆性を供給し、前記の等しい中心被覆での四角形の比較を使う。各項の完全性・射影表示・表示先の幾何学的条件を仮定し直さない。
+
+
+同じ四角形の nerve の射への自然性（着手前、既存の四角形の射・係数の自然性の内数、80〜160行）：`CechAugmentedSquare.Map.ext_components` は既存の射の left・right・base・center の四つの成分の一致から射全体の一致。辺の条件は証明の一意性で保たれる。`schemePerfectCechTupleSquare_map a` は left・right に検証済みの二つの係数関手の実際の a の写像、base・center に恒等を持つ同じ四角形の射。restriction は実際の引き戻しの自然性、scalar・center は検証済みの増大写像の自然性、quotient は同じ元の係数写像の恒等性から供給する。完全性を射の仮定にしない。
+
+
+同じ四角形の全複体の余単体図式（着手前、既存の射の単位・合成と全複体への自然性の内数、55〜125行）：`schemePerfectCechTupleSquare_map_id` と `…_map_comp` は上の四つの成分の外延性と、検証済みの二つの係数関手の単位・合成則による同じ四角形の射の法則。`schemePerfectCechTupleSquareFunctor` は各項を同じ四角形の totalComplex、各射を既存の Map.totalComplexMap とする SimplexCategory 上の複体の関手。単位・合成の保存も既存の totalComplexMap_id/comp に渡す。B1 の比較そのものや最終出力の型の変更は行わない。
+
+
+## G4：同じ中心の細分と、同じ nerve の四角形
+
+`SchemePerfectCechRefinedSquare`（100行）：`schemeStructurePerfectCechRefinedSquare` は既存の四角形のデータに中心の細分した被覆と実際の refinedPullback を渡した値。`…_map` は元の逆像被覆から、left は恒等、right は同じ実際の細分、base・center は恒等で全ての辺を保つ射。`…_acyclic_iff_of_eq` は等しい中心の被覆の場合に、実際の細分の同型と検証済みの cone 比較による全複体の完全性の同値。Čech 版と原典との対応を docstring に明記。
+
+`SchemePerfectCechTupleSquare`（70行）：`schemePerfectCechTupleSquare` は同じ nerve の実際の係数・二つのスカラー・商・引き戻しを、上の既存の四角形の値へ代入する。`…_C`・`…_E` は二つの同じ係数複体、`…_restriction` は同じ実際の引き戻し、`…_scalar`・`…_center` は検証済みの増大写像、`…_quotient` は同じ Frobenius の q の写像との定義上の一致。完全性は値の仮定に含めない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,196・5,197ジョブ成功、小監査17・11宣言（計28、所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-refined-square-check-1.log`・`2g-perfect-cech-refined-square-native.log`、`2g-perfect-cech-tuple-square-check-1.log`・`2g-perfect-cech-tuple-square-native.log`、`2g-refined-and-tuple-square-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール170行＋入口2行。新規112モジュール本体7,423行・入口込み7,535行。既存追加25行を含む外枠計数は本体7,448行・入口込み7,560行。新規小監査累計751宣言、既存15宣言は別計上。次の各項の F8 の完全性と同じ四角形の射の自然性は単独検証に成功したが、本体ビルド・監査前でこの束には含めない。G4・G5 は未完、外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
